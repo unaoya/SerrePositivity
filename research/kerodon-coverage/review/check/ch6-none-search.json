@@ -2557,7 +2557,8 @@
         "anchor": "同じ小節の前回 own・both の採用先を起点とし、そのファイルと直近のディレクトリの型を確認。",
         "review": "localizing な辺の集合と反射的充満部分圏を局所対象で対応させる全単射。反射からの局所同値の同定だけでは任意の localizing な集合からの逆を束ねない。"
       },
-      "result": "none"
+      "result": "partial",
+      "accepted": "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq @ SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124 | SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25"
     },
     "6.2.3.16": {
       "a": {
@@ -8533,7 +8534,8 @@
         "anchor": "同じ小節の前回 own・both に自前の採用宣言がないため、引用元または型検索から近接ファイルを選定。",
         "review": "categorical pushout の背面を含む指定立体で局所化を伝播させる結論。初頂点写像の strict pushout の補題では立体の仮定を扱わない。"
       },
-      "result": "none"
+      "result": "partial",
+      "accepted": "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout @ SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20"
     },
     "6.3.5.4": {
       "a": {
@@ -11543,5 +11545,506 @@
     "b": "本文・小節の語と対語を展開し、宣言名に加えてソースの型ヘッダーを照合。own と Mathlib を別に検索",
     "c": "同小節の採用先と近傍の宣言型を確認。採用先がない場合は代替の探索先を明示",
     "candidate_scope": "候補は型と宣言名を含む上位検索結果。review に当該項目の判定基準と、関連する候補との具体的な差を記録。検索結果の順位自体は判定に使わない。"
+  },
+  "cross_recheck": {
+    "base": "9b689a7185f71fb0cf9cd5243859436b2de9e6db",
+    "citation_index_sha256": "34a5446558dd58f4d05656ee20d91b96db337939a8070672f0f1567a56970ab1",
+    "method": "既存の行別 (a)–(c) と照合し、同じ小節および目次で隣接する小節の引用先の型を併読。特例・片方向・双対・Mathlib の概念名を別クエリで型見出しに照合。候補欄は各クエリの比較先であり、採用は decision と kernel_evidence で区別した。",
+    "directories": [
+      "SerrePositivity/InfinityCategories",
+      "SerrePositivity/CategoryTheory",
+      "SerrePositivity/HomotopicalAlgebra",
+      "SerrePositivity/EInfinity",
+      "SerrePositivity/KST",
+      "Mathlib/CategoryTheory",
+      "Mathlib/AlgebraicTopology",
+      "Mathlib/Order",
+      "Mathlib/SetTheory",
+      "Mathlib/Topology",
+      "Mathlib/Combinatorics"
+    ],
+    "sections": {
+      "6.2.3": {
+        "same_and_adjacent": [
+          "6.2.3",
+          "6.2.2",
+          "6.2.4"
+        ],
+        "references": {
+          "SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:42",
+            "items": [
+              "6.2.2.1",
+              "6.2.3.1"
+            ],
+            "kernel_type_id": "a419ec2463bc8569"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.LocalEquivalenceHom": {
+            "source": "SerrePositivity/InfinityCategories/F1/Presentable/LocalEquivalences.lean:23",
+            "items": [
+              "6.2.2.1"
+            ],
+            "kernel_type_id": "2765486603a03dee"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements": {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean:24",
+            "items": [
+              "6.2.2.6",
+              "6.2.2.19",
+              "6.2.3.14",
+              "6.2.3.16"
+            ],
+            "kernel_type_id": "dea730339e58ba89"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isIso_map_iff_localHom": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:74",
+            "items": [
+              "6.2.2.16"
+            ],
+            "kernel_type_id": "b054f976c9ed03e6"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalenceHom_iff": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:111",
+            "items": [
+              "6.2.2.16"
+            ],
+            "kernel_type_id": "b964cb0a1936b7a1"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean:26",
+            "items": [
+              "6.2.2.19",
+              "6.2.2.23",
+              "6.2.2.24"
+            ],
+            "kernel_type_id": "499199b7d54e441d"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflectionMappingEquivalence": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean:72",
+            "items": [
+              "6.2.2.19",
+              "6.2.2.24"
+            ],
+            "kernel_type_id": "1a3c85c55ffab46e"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.exists_qcatAdjunction_of_commaFiberInitial": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean:59",
+            "items": [
+              "6.2.2.19"
+            ],
+            "kernel_type_id": "305e4b7502518d7c"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean:43",
+            "items": [
+              "6.2.2.20"
+            ],
+            "kernel_type_id": "3386d62866dfb9b5"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.unit": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean:48",
+            "items": [
+              "6.2.2.20"
+            ],
+            "kernel_type_id": "0cc40b0450424831"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflectedUnitIso": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveUnitInvertible.lean:61",
+            "items": [
+              "6.2.2.24"
+            ],
+            "kernel_type_id": "d844c581438d6d9c"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.unitOnInclusionIso": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveUnitInvertible.lean:50",
+            "items": [
+              "6.2.2.24"
+            ],
+            "kernel_type_id": "796945d4d8420026"
+          },
+          "SerrePositivity.InfinityCategories.QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean:29",
+            "items": [
+              "6.2.2.26"
+            ],
+            "kernel_type_id": "52ce4a1ed10a3b78"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.counitIso": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean:62",
+            "items": [
+              "6.2.2.26"
+            ],
+            "kernel_type_id": "0c4c7c1bb92909f9"
+          },
+          "SerrePositivity.InfinityCategories.bicategory_counit_isIso_of_postcomp_fullyFaithful": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/RepresentableAdjunction.lean:50",
+            "items": [
+              "6.2.2.26"
+            ],
+            "kernel_type_id": "490f545a55879663"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.idempotentIso": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean:70",
+            "items": [
+              "6.2.2.29"
+            ],
+            "kernel_type_id": "90b99f755d96df3e"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.unitOnLocalizationIso": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveUnitInvertible.lean:78",
+            "items": [
+              "6.2.2.29"
+            ],
+            "kernel_type_id": "644196102107e993"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:103",
+            "items": [
+              "6.2.3.1"
+            ],
+            "kernel_type_id": "0f0fb7e2f43b1015"
+          },
+          "SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/AdjointLocalization.lean:114",
+            "items": [
+              "6.2.3.9"
+            ],
+            "kernel_type_id": "ef36081f1674983d"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isLocal_iff_invertedEdges": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:59",
+            "items": [
+              "6.2.3.10"
+            ],
+            "kernel_type_id": "be2a157c6f0a0fa8"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocal_iff_essentialImage": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:77",
+            "items": [
+              "6.2.3.10"
+            ],
+            "kernel_type_id": "e35fd43e01a48483"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124",
+            "items": [
+              "6.2.3.10",
+              "6.2.3.14",
+              "6.2.3.16"
+            ],
+            "kernel_type_id": "0ef9b8d6a4ab157d"
+          },
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean:118",
+            "items": [
+              "6.2.3.16"
+            ],
+            "kernel_type_id": "5e280d08bd1ddc73"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.localObjectsSubcomplex": {
+            "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean:114",
+            "items": [
+              "6.2.3.17"
+            ],
+            "kernel_type_id": "cf6b395407bfafd2"
+          }
+        },
+        "citation_files": [
+          "SerrePositivity/InfinityCategories/F1/Presentable/LocalEquivalences.lean",
+          "SerrePositivity/InfinityCategories/F1B/Adjunction/RepresentableAdjunction.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/AdjointLocalization.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveUnitInvertible.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean",
+          "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+          "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalObjects.lean",
+          "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean"
+        ],
+        "directories": [
+          "SerrePositivity/InfinityCategories/F1/Presentable",
+          "SerrePositivity/InfinityCategories/F1B/Adjunction",
+          "SerrePositivity/InfinityCategories/F1B/Localization",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/HomotopyLimits",
+          "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable"
+        ],
+        "queries": {
+          "反射的充満部分圏からの一方向": {
+            "pattern": "reflective_localEquivalences_eq|reflective_isLocal_iff_localObject",
+            "header_matches": 2
+          },
+          "通常圏・Bousfield 反射": {
+            "pattern": "Reflective|Bousfield.*[Ll]ocal",
+            "header_matches": 177
+          }
+        }
+      },
+      "6.3.5": {
+        "same_and_adjacent": [
+          "6.3.5",
+          "6.3.4",
+          "6.3.6"
+        ],
+        "references": {
+          "SerrePositivity.InfinityCategories.isLocalization_of_deformation": {
+            "source": "SerrePositivity/InfinityCategories/F1B/Localization/DeformationLocalization.lean:71",
+            "items": [
+              "6.3.5.9"
+            ],
+            "kernel_type_id": "329c006bafc081c5"
+          },
+          "SSet.sd": {
+            "source": "Mathlib/AlgebraicTopology/SimplicialSet/Subdivision.lean:45",
+            "items": [
+              "6.3.6.2"
+            ],
+            "kernel_type_id": "7e6183d9f4930e9d"
+          },
+          "SerrePositivity.KST.Comparison.subdivisionLastVertexMap": {
+            "source": "SerrePositivity/KST/Comparison/SubdivisionLastVertexMap.lean:29",
+            "items": [
+              "6.3.6.2"
+            ],
+            "kernel_type_id": "55105f69cd7623dd"
+          },
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization": {
+            "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationAllBases.lean:23",
+            "items": [
+              "6.3.6.4",
+              "6.3.6.5"
+            ],
+            "kernel_type_id": "6124a566c2bc7109"
+          },
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_ulift_isLocalization": {
+            "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationUlift.lean:20",
+            "items": [
+              "6.3.6.5"
+            ],
+            "kernel_type_id": "24409e563cf2eed4"
+          },
+          "SSet.Nonsingular": {
+            "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean:48",
+            "items": [
+              "6.3.6.6"
+            ],
+            "kernel_type_id": "e5f7613c37654d36"
+          }
+        },
+        "citation_files": [
+          "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean",
+          "Mathlib/AlgebraicTopology/SimplicialSet/Subdivision.lean",
+          "SerrePositivity/InfinityCategories/F1/Transport/LocalizationAllBases.lean",
+          "SerrePositivity/InfinityCategories/F1/Transport/LocalizationUlift.lean",
+          "SerrePositivity/InfinityCategories/F1B/Localization/DeformationLocalization.lean",
+          "SerrePositivity/KST/Comparison/SubdivisionLastVertexMap.lean"
+        ],
+        "directories": [
+          "Mathlib/AlgebraicTopology/SimplicialSet",
+          "SerrePositivity/InfinityCategories/F1/Transport",
+          "SerrePositivity/InfinityCategories/F1B/Localization",
+          "SerrePositivity/KST/Comparison"
+        ],
+        "queries": {
+          "厳密 pushout と初頂点": {
+            "pattern": "transportSimplexFirstVertexMap_isLocalization_of_isPushout",
+            "header_matches": 1
+          },
+          "双対と圏論的押し出し": {
+            "pattern": "[Ll]ocalization.*[Pp]ushout|[Pp]ushout.*[Ll]ocalization",
+            "header_matches": 5
+          }
+        }
+      }
+    },
+    "adjacent_reference_types": {
+      "a419ec2463bc8569": "@SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom.{u_1} : {X : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} X] →\n    {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →\n      Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y) →\n        CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop",
+      "2765486603a03dee": "@SerrePositivity.InfinityCategories.HomotopyLimits.LocalEquivalenceHom.{u_1} : {X : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} X] →\n    Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })) →\n      {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →\n        Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y) → Prop",
+      "dea730339e58ba89": "@SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements.{u_1} : ∀\n  {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ y e,\n        Membership.mem.{u_1, u_1} (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1} W)\n            (SSet.Truncated.Edge.edge.{u_1} e) ∧\n          SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W y) →\n    SerrePositivity.InfinityCategories.IsReflectiveSubcategory.{u_1} X\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W)",
+      "b054f976c9ed03e6": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isIso_map_iff_localHom.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y)),\n  CategoryTheory.IsIso.{u_1, u_1}\n      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n        f) ↔\n    ∀ (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z →\n        SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom.{u_1} f z",
+      "b964cb0a1936b7a1": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalenceHom_iff.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y)),\n  SerrePositivity.InfinityCategories.HomotopyLimits.LocalEquivalenceHom.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))\n      f ↔\n    CategoryTheory.IsIso.{u_1, u_1}\n      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n        f)",
+      "499199b7d54e441d": "SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} : (X : SSet.{u_1}) →\n  [SSet.Quasicategory.{u_1} X] →\n    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop) → Type u_1",
+      "1a3c85c55ffab46e": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflectionMappingEquivalence.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →\n          (y :\n              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}\n                (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P))\n                (Opposite.op.{1} { len := 0 })) →\n            SerrePositivity.InfinityCategories.QCatEquivalence.{u_1}\n              (SerrePositivity.InfinityCategories.pinchedHom.{u_1}\n                ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                    (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}\n                      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)\n                      (Opposite.op.{1} { len := 0 })))\n                  x)\n                ↑y)\n              (SerrePositivity.InfinityCategories.pinchedHom.{u_1} x ↑y)",
+      "305e4b7502518d7c": "@SerrePositivity.InfinityCategories.HomotopyLimits.exists_qcatAdjunction_of_commaFiberInitial.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (G : Quiver.Hom.{u_1, u_1 + 1} Y X),\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ v, SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} v) →\n    ∃ F, Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)",
+      "3386d62866dfb9b5": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P → Quiver.Hom.{u_1, u_1 + 1} X X",
+      "0cc40b0450424831": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.unit.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorHom.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)\n          (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)",
+      "d844c581438d6d9c": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflectedUnitIso.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1}\n          (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+      "796945d4d8420026": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.unitOnInclusionIso.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1}\n          (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P))\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P))\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r))",
+      "52ce4a1ed10a3b78": "@SerrePositivity.InfinityCategories.QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {F : Quiver.Hom.{u_1, u_1 + 1} X Y}\n  {G : Quiver.Hom.{u_1, u_1 + 1} Y X} (a : SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)\n  (h :\n    CategoryTheory.Functor.FullyFaithful.{u_1, u_1, u_1, u_1}\n      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.ihom.{u_1, u_1 + 1} Y) G)))),\n  CategoryTheory.IsIso.{u_1, u_1} (SerrePositivity.InfinityCategories.QCatAdjunction.counitHom.{u_1} a)",
+      "0c4c7c1bb92909f9": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.counitIso.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P))\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n            (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} X P)))",
+      "490f545a55879663": "@SerrePositivity.InfinityCategories.bicategory_counit_isIso_of_postcomp_fullyFaithful.{u_1, u_2,\n    u_3} : ∀ {B : Type u_1} [inst : CategoryTheory.Bicategory.{u_3, u_2, u_1} B] {a b : B}\n  {f : Quiver.Hom.{u_2, u_1} a b} {g : Quiver.Hom.{u_2, u_1} b a}\n  (adj : CategoryTheory.Bicategory.Adjunction.{u_3, u_2, u_1} f g)\n  (h :\n    CategoryTheory.Functor.FullyFaithful.{u_3, u_3, u_2, u_2} (CategoryTheory.Bicategory.postcomp.{u_3, u_2, u_1} b g)),\n  CategoryTheory.IsIso.{u_3, u_2} (CategoryTheory.Bicategory.Adjunction.counit.{u_3, u_2, u_1} adj)",
+      "90b99f755d96df3e": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.idempotentIso.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r))\n          (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)",
+      "644196102107e993": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.unitOnLocalizationIso.{u_1} : {X : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop} →\n      (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P) →\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1}\n          (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r)\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.localization.{u_1} r))",
+      "0f0fb7e2f43b1015": "@SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} : {X : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} X] →\n    Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })) →\n      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop",
+      "ef36081f1674983d": "@SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {F : Quiver.Hom.{u_1, u_1 + 1} X Y}\n  {G : Quiver.Hom.{u_1, u_1 + 1} Y X} (a : SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)\n  [CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.Bicategory.Adjunction.counit.{u_1, u_1, u_1 + 1} a)],\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1} F (SerrePositivity.InfinityCategories.invertedEdges.{u_1} F)",
+      "be2a157c6f0a0fa8": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isLocal_iff_invertedEdges.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z ↔\n    SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))\n      z",
+      "e35fd43e01a48483": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocal_iff_essentialImage.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r x ↔\n    ∃ y, Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.VertexIso.{u_1} (↑y) x)",
+      "0ef9b8d6a4ab157d": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  Eq.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+      "5e280d08bd1ddc73": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+      "cf6b395407bfafd2": "@SerrePositivity.InfinityCategories.HomotopyLimits.localObjectsSubcomplex.{u_1} : {X : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} X] →\n    Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })) →\n      SSet.Subcomplex.{u_1} X",
+      "329c006bafc081c5": "@SerrePositivity.InfinityCategories.isLocalization_of_deformation.{u_1} : ∀ {X D : SSet.{u_1}}\n  (L : Quiver.Hom.{u_1, u_1 + 1} X D) (I : Quiver.Hom.{u_1, u_1 + 1} D X)\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SerrePositivity.InfinityCategories.InvertsEdges.{u_1} L W →\n    ∀\n      (e :\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} I L)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} D))\n      (H :\n        SSet.Homotopy.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L I)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)),\n      (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n          Membership.mem.{u_1, u_1} W\n            (SSet.Edge.edge.{u_1} (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1} L W",
+      "7e6183d9f4930e9d": "SSet.sd.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})\n  SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})",
+      "55105f69cd7623dd": "SerrePositivity.KST.Comparison.subdivisionLastVertexMap.{u_1} : Quiver.Hom.{u_1 + 1, u_1 + 1} SSet.sd.{u_1}\n  (CategoryTheory.Functor.id.{u_1, u_1 + 1} SSet.{u_1})",
+      "6124a566c2bc7109": "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization.{u_1} : ∀ (B : SSet.{u_1}),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} B)\n    (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} B)",
+      "24409e563cf2eed4": "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_ulift_isLocalization.{u_1,\n  u_2} : ∀ (B : SSet.{u_1}),\n  SerrePositivity.InfinityCategories.IsLocalization.{max u_1 u_2}\n    (CategoryTheory.Functor.map.{u_1, max u_1 u_2, u_1 + 1, max (u_1 + 1) (u_2 + 1)} SSet.uliftFunctor.{u_2, u_1}\n      (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} B))\n    (Set.image.{u_1, max u_1 u_2} ULift.up.{u_2, u_1}\n      (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} B))",
+      "e5f7613c37654d36": "SSet.Nonsingular.{u_1} : SSet.{u_1} → Prop"
+    },
+    "candidate_type_headers": {
+      "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25": {
+        "name": "reflective_isLocal_iff_localObject",
+        "type_header": "lemma reflective_isLocal_iff_localObject {C : SSet.{u}} [Quasicategory C] (W : Set (C _⦋1⦌)) (r : ReflectiveSubcategory C (IsLocalObject W)) (z : C _⦋0⦌) : r.IsLocal z ↔ IsLocalObject W z"
+      },
+      "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124": {
+        "name": "reflective_localEquivalences_eq",
+        "type_header": "lemma reflective_localEquivalences_eq (r : ReflectiveSubcategory X P) : localEquivalences (invertedEdges r.reflector) = invertedEdges r.reflector"
+      },
+      "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:56": {
+        "name": "isLocal_of_vertexIso",
+        "type_header": "lemma isLocal_of_vertexIso {x y : X _⦋0⦌} (e : VertexIso x y) (hx : r.IsLocal x) : r.IsLocal y"
+      },
+      "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:42": {
+        "name": "isLocal_inclusion",
+        "type_header": "lemma isLocal_inclusion (y : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) : r.IsLocal y.val"
+      },
+      "Mathlib/CategoryTheory/Adjunction/Reflective.lean:172": {
+        "name": "equivEssImageOfReflective",
+        "type_header": "def equivEssImageOfReflective [Reflective i] : D ≌ i.EssImageSubcategory"
+      },
+      "Mathlib/CategoryTheory/Limits/VanKampen.lean:353": {
+        "name": "IsVanKampenColimit.map_reflective",
+        "type_header": "theorem IsVanKampenColimit.map_reflective [HasColimitsOfShape J C] {Gl : C ⥤ D} {Gr : D ⥤ C} (adj : Gl ⊣ Gr) [Gr.Full] [Gr.Faithful] {F : J ⥤ D} {c : Cocone (F ⋙ Gr)} (H : IsVanKampenColimit c) [∀ X (f : X ⟶ Gl.obj c.pt), HasPullback (Gr.map f) (adj.unit.app c.pt)] [∀ X (f : X ⟶ Gl.obj c.pt), PreservesLimit (cospan (Gr.map f) (adj.unit.app c.pt)) Gl] [∀ X i (f : X ⟶ c.pt), PreservesLimit (cospan f (c.ι.app i)) Gl] : IsVanKampenColimit (Gl.mapCocone c)"
+      },
+      "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20": {
+        "name": "transportSimplexFirstVertexMap_isLocalization_of_isPushout",
+        "type_header": "lemma transportSimplexFirstVertexMap_isLocalization_of_isPushout {A B C D : SSet.{u}} {i : A ⟶ B} [Mono i] {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D} (h : IsPushout i g k j) (hA : IsLocalization (transportSimplexFirstVertexMap A) (transportSimplexInitialEdges A)) (hB : IsLocalization (transportSimplexFirstVertexMap B) (transportSimplexInitialEdges B)) (hC : IsLocalization (transportSimplexFirstVertexMap C) (transportSimplexInitialEdges C)) : IsLocalization (transportSimplexFirstVertexMap D) (transportSimplexInitialEdges D)"
+      },
+      "SerrePositivity/InfinityCategories/F1B/Localization/ParametricDiagramGluing.lean:56": {
+        "name": "pushoutFamilyGlue_inl",
+        "type_header": "lemma pushoutFamilyGlue_inl {A C D B X : SSet.{u}} (i : A ⟶ C) (j : A ⟶ D) (f : B ⟶ (ihom C).obj X) (g : B ⟶ (ihom D).obj X) (h : f ≫ (pre i).app X = g ≫ (pre j).app X) : _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue i j f g h ≫ (pre (pushout.inl i j)).app X = f"
+      }
+    },
+    "items": {
+      "6.2.3.15": {
+        "tag": "02G8",
+        "statement_sha256": "ab76a7bcd859b62b1ab704561df5bba751093446fe46235feeb99ed49cdb6ee4",
+        "subsection": "6.2.3",
+        "kerodon_claim_and_initial_gap": "localizing な辺の集合と反射的充満部分圏を局所対象で対応させる全単射。反射からの局所同値の同定だけでは任意の localizing な集合からの逆を束ねない",
+        "section_searches": {
+          "反射的充満部分圏からの一方向": {
+            "own": [
+              "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25",
+              "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124"
+            ],
+            "mathlib": [],
+            "neighbor": [
+              "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124"
+            ]
+          },
+          "通常圏・Bousfield 反射": {
+            "own": [
+              "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:56",
+              "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:42"
+            ],
+            "mathlib": [
+              "Mathlib/CategoryTheory/Adjunction/Reflective.lean:172",
+              "Mathlib/CategoryTheory/Limits/VanKampen.lean:353"
+            ],
+            "neighbor": [
+              "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:56",
+              "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:42"
+            ]
+          }
+        },
+        "result": "partial",
+        "accepted": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject"
+        ],
+        "decision": "仮定：∞ 圏 X の反射的充満部分圏、または Bousfield 反射のデータ。結論：反射から局所同値と局所対象を同定する方向を確認。任意の localizing collection からの逆と充満反射部分圏との全単射は未確認。",
+        "initial_search_record": "items.6.2.3.15",
+        "item_terms": [
+          "reflective",
+          "objects",
+          "subcategories",
+          "sim",
+          "replete",
+          "there",
+          "collection",
+          "local",
+          "full",
+          "bijection",
+          "infty",
+          "localizing",
+          "subcategory",
+          "coreflective",
+          "let",
+          "components",
+          "faithful",
+          "adjunction",
+          "localization",
+          "surjective",
+          "unit"
+        ],
+        "item_dual_terms": []
+      },
+      "6.3.5.3": {
+        "tag": "01N7",
+        "statement_sha256": "50e4294dc5786d37a471c92204c9fab56a2d20c5dae8e84a665ffca8c2795925",
+        "subsection": "6.3.5",
+        "kerodon_claim_and_initial_gap": "categorical pushout の背面を含む指定立体で局所化を伝播させる結論。初頂点写像の strict pushout の補題では立体の仮定を扱わない",
+        "section_searches": {
+          "厳密 pushout と初頂点": {
+            "own": [
+              "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20"
+            ],
+            "mathlib": [],
+            "neighbor": []
+          },
+          "双対と圏論的押し出し": {
+            "own": [
+              "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20",
+              "SerrePositivity/InfinityCategories/F1B/Localization/ParametricDiagramGluing.lean:56"
+            ],
+            "mathlib": [],
+            "neighbor": []
+          }
+        },
+        "result": "partial",
+        "accepted": [
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout"
+        ],
+        "decision": "仮定：単射に沿う厳密 pushout と各頂点の初頂点写像。結論：三頂点での局所化から第四頂点での局所化を得る。一般の二つの四角形での圏論的押し出しと局所化との同値は未確認。",
+        "initial_search_record": "items.6.3.5.3",
+        "item_terms": [
+          "categorical",
+          "containing",
+          "cup",
+          "respect",
+          "collection",
+          "localizations",
+          "conditions",
+          "back",
+          "are",
+          "equivalent",
+          "front",
+          "localization",
+          "commutative",
+          "properties",
+          "edges",
+          "universal",
+          "pushout",
+          "face",
+          "saturation",
+          "inverting",
+          "inverted",
+          "localizing",
+          "square",
+          "diagram"
+        ],
+        "item_dual_terms": []
+      }
+    }
   }
 }
