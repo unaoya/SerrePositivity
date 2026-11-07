@@ -10,11 +10,11 @@
 | 点 | 決定 |
 | --- | --- |
 | 時期 | **整理を先に**する。③ ∞ 供給と① ∞ 中核は、この束が main に入ってから始める。⑤ BS 実装と⑥ スキーム論は並行してよい（束が入ったら main を取り込み、改名表で追従する） |
-| 層 | **今の層（`scripts/refactor/layers.json`：Core < … < F1 < F1B < F2 < …）は残し**、各層の中を Kerodon の節で分ける。Kerodon の順と逆向きの依存は、段 1 で一覧にする |
+| 層 | **Kerodon の配置を優先する（11-07 夜に改訂、ユーザー：「層の順序よりも移動を優先」）**。トップは `Kerodon/<Chapter>/<Section>/` と出どころ別の区分にし、今の層（`scripts/refactor/layers.json`：Core < … < F1 < F1B < F2 < …）は新しい配置に合わせて**組み直す**（layers.json と `layer_check.py` の規則を新しい構成で書き直す）。Kerodon の順と逆向きの依存は段 1 で一覧にし、置き場所の調整かファイルの分割で解く。Lean の import に循環は作れないので、解けないものだけ報告する |
 | 名前空間 | **ディレクトリに合わせて変える**（F-2 の規約「名前空間＝ディレクトリ」を保つ）。旧名は deprecated alias で残し、改名表を利用側（BS・KST・CLMST・drafts）へ回す。仕組みは F-2 と同じ |
 | 細かさ | **節（Section、a.b）まで**をディレクトリにする。名前は Kerodon の見出しの英語（UpperCamelCase）。Subsection（a.b.c）はファイル名か module docstring で示す。番号は版で変わりうるので、ディレクトリ名に番号を入れない。対応は Tag で持つ |
 | Kerodon にないもの | **出どころ別に分ける**。各層の中で `Kerodon/`（Kerodon の章・節）と、`HTT/`・`HA/`・`Project/`（プロジェクト固有の補助）などを並べる。具体的な区分は段 1 で提案 |
-| 範囲 | `InfinityCategories/` の全体と、**ほかのディレクトリに散らばった Kerodon の内容**（KST の S 構成・ProExcision の Alexander–Whitney と shuffle、`KST/LocalizingInvariants/LocalizationResolution` の局所化の存在、HomotopicalAlgebra・CategoryTheory・EInfinity の該当部分など。`research/kerodon-coverage/items.csv` と `review/ch*.csv` で、InfinityCategories の外の宣言を拾う）。外から移すものは、層の順序に反しないことを確かめてから |
+| 範囲 | `InfinityCategories/` の全体と、**ほかのディレクトリに散らばった Kerodon の内容**（KST の S 構成・ProExcision の Alexander–Whitney と shuffle、`KST/LocalizingInvariants/LocalizationResolution` の局所化の存在、HomotopicalAlgebra・CategoryTheory・EInfinity の該当部分など。`research/kerodon-coverage/items.csv` と `review/ch*.csv` で、InfinityCategories の外の宣言を拾う）。**外から移すものも、層の順序より移動を優先する**：移すファイルが依存する外のファイル（の Kerodon に当たる部分）も一緒に移すか分割する。依存の閉包が大きすぎる・K 理論の本体まで引きずるものは、段 1 で候補として挙げて判断を仰ぐ |
 
 ## 1. 前提と材料
 
@@ -27,9 +27,9 @@
 | 段 | 内容 | 止めて報告 |
 | --- | --- | --- |
 | **段 0** | **項目ごとの Tag の表**を作る。Kerodon の Subsection のページから、項目（a.b.c.d）ごとの Tag を取り直し、`research/kerodon-coverage/item-tags.csv`（number・kind・tag）に置く。11-06 の抜き出しでは項目ごとの Tag が不正確だったので、ページの各項目の見出しのリンクから取る | 停止点 0（表の件数と抜き取りの照合） |
-| **段 1（計画）** | (a) **割り当て表**：`InfinityCategories/` の全ファイルと、外から移す候補のファイルを、行き先（`<層>/Kerodon/<Chapter>/<Section>/`、または `<層>/HTT/…`・`<層>/HA/…`・`<層>/Project/…`）に割り当てる。根拠は、そのファイルの宣言が対応表のどの項目か、と docstring の引用。一つのファイルが複数の節にまたがるときは、主な節に置くか分割するかを提案する（分割は既存の `split_module.py`）。(b) **ディレクトリの木**の案（見出しの英語の名前、出どころの区分の名前）。(c) **逆向きの依存**の一覧（Kerodon で後の節に置かれるファイルを、前の節のファイルが import するもの）。(d) 外から移す候補が層の順序に反するかの判定。(e) 規模（動かすファイル数、名前空間が変わる宣言の数、alias の数、再ビルドの見込み） | **停止点 1**：調整役とユーザーが木と割り当てを確かめる。ここで止まる |
+| **段 1（計画）** | (a) **割り当て表**：`InfinityCategories/` の全ファイルと、外から移す候補のファイルを、行き先（`<層>/Kerodon/<Chapter>/<Section>/`、または `<層>/HTT/…`・`<層>/HA/…`・`<層>/Project/…`）に割り当てる。根拠は、そのファイルの宣言が対応表のどの項目か、と docstring の引用。一つのファイルが複数の節にまたがるときは、主な節に置くか分割するかを提案する（分割は既存の `split_module.py`）。(b) **ディレクトリの木**の案（見出しの英語の名前、出どころの区分の名前）。(c) **逆向きの依存**の一覧（Kerodon で後の節に置かれるファイルを、前の節のファイルが import するもの）と、それぞれの解き方の案（置き場所の調整・ファイルの分割）。(d) 外から移す候補と、一緒に移す必要のある依存の閉包。(d′) 新しい配置に合わせた layers.json の案（層の名前・順序・許す import の向き）。(e) 規模（動かすファイル数、名前空間が変わる宣言の数、alias の数、再ビルドの見込み） | **停止点 1**：調整役とユーザーが木と割り当てを確かめる。ここで止まる |
 | **段 2（Tag）** | 対応表で `own`・`both` と確かめた宣言（`review/ch<N>.csv` の `ok`・`fix` のうち SerrePositivity のもの）に `@[kerodon TAG]` を付ける（Mathlib の `Mathlib.Tactic.CrossRefAttribute`。docstring に Kerodon へのリンクが自動で足される）。`partial` の宣言には付けず、docstring に「Kerodon a.b.c.d（Tag XXXX）の特別な場合」のように書く。既存の docstring の「Kerodon a.b.c.d」の引用には「（Tag XXXX）」を添える。番号のずれ（`README.md` の一覧）もここで直す。`#kerodon_tags` の出力を `research/kerodon-coverage/kerodon-tags-lean.txt` に保存し、対応表と突き合わせる | 停止点 2（付けた件数、突き合わせの差） |
-| **段 3（移動）** | 段 1 の承認された割り当てで、ファイルを動かし、import 行を書き換え、名前空間を付け替える（旧名は deprecated alias）。`layers.json`・入口ファイル・監査（`scripts/audit_*.lean`）・`InfinityCategories/README.md` を更新する。改名表を `scripts/refactor/targets/kl-namespace-map.json` に置く。保存比較 v3b で、移動の前後で宣言の型と本文が一致することを示す | **停止点 3**：保存比較の未説明 0、対象のビルド。下流ビルドと verify は調整役の合図で |
+| **段 3（移動）** | 段 1 の承認された割り当てで、ファイルを動かし、import 行を書き換え、名前空間を付け替える（旧名は deprecated alias）。新しい layers.json と `layer_check.py` の規則・入口ファイル・監査（`scripts/audit_*.lean`）・`InfinityCategories/README.md` を更新する。改名表を `scripts/refactor/targets/kl-namespace-map.json` に置く。保存比較 v3b で、移動の前後で宣言の型と本文が一致することを示す | **停止点 3**：保存比較の未説明 0、対象のビルド。下流ビルドと verify は調整役の合図で |
 | 段 4 | 下流ビルドと verify（調整役の暦）。BS・KST・CLMST・drafts の利用側の import と名前を改名表で書き換える（BS・drafts の分は調整役が確かめる） | 停止点 4：取り込み |
 
 - 段 2 と段 3 はどちらも多くのファイルを書き換える。全体の再ビルドを一回にするため、**段 2 と段 3 は一つの束にし、下流ビルドと verify は段 3 の後に一回だけ**行う（段 2 の途中は、触ったモジュールだけの小さなビルド）。
