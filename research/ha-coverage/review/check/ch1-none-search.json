@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "b31cce8c2d200c3bd3bd104ca96782ce9fb50879",
+  "worktree_commit": "d4ea5a9d727536c89456e278d790237902083000",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
   "items": {
@@ -39,10 +39,10 @@
           "files_with_matches": 6,
           "total_matching_lines": 6,
           "sample_paths": [
+            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
             "SerrePositivity/Spectra/Stable/LocalizingHom.lean",
             "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
             "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
-            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
             "SerrePositivity/KST/SConstruction/StableModels.lean",
             "SerrePositivity/KST/SConstruction/RelativeStableModels.lean"
           ]
@@ -114,18 +114,18 @@
           "files_with_matches": 122,
           "total_matching_lines": 355,
           "sample_paths": [
-            "SerrePositivity/CategoryTheory/IteratedCone.lean",
-            "SerrePositivity/CategoryTheory/Triangulated/Padding.lean",
-            "SerrePositivity/CategoryTheory/Triangulated/Idempotent.lean",
-            "SerrePositivity/CategoryTheory/HomotopyProperty.lean",
-            "SerrePositivity/CategoryTheory/Euler.lean",
             "SerrePositivity/InfinityCategories/Stable/StableHoTriangulated.lean",
-            "SerrePositivity/CategoryTheory/TriangulatedK0.lean",
             "SerrePositivity/InfinityCategories/Stable/DistinguishedCoconeTriangle.lean",
-            "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Basic.lean"
+            "SerrePositivity/InfinityCategories/Stable/IdentityCofiber.lean",
+            "SerrePositivity/InfinityCategories/Stable/TriangleMorphismExtension.lean",
+            "SerrePositivity/InfinityCategories/Stable/IdempotentCompletionDensity.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorNaturalTransformation.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorTriangulated.lean",
+            "SerrePositivity/InfinityCategories/Stable/LongExactSequence.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/ExactTransformationStableLocus.lean",
+            "SerrePositivity/InfinityCategories/Stable/OctahedronFromComparisons.lean",
+            "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
+            "SerrePositivity/InfinityCategories/Stable/CofiberOctahedronModel.lean"
           ]
         },
         "Mathlib": {
@@ -137,12 +137,12 @@
             "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
             "Mathlib/Algebra/Homology/HomotopyCategory/Triangulated.lean",
             "Mathlib/Algebra/Homology/Factorizations/CM5a.lean",
-            "Mathlib/CategoryTheory/Localization/Triangulated.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/ShortExact.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExtClass.lean",
             "Mathlib/Algebra/Homology/DerivedCategory/SingleTriangle.lean",
+            "Mathlib/CategoryTheory/Localization/Triangulated.lean",
             "Mathlib/CategoryTheory/Functor/Derived/RightDerivedTriangulated.lean",
             "Mathlib/CategoryTheory/Functor/Derived/LeftDerivedTriangulated.lean"
           ]
@@ -197,17 +197,17 @@
           "total_matching_lines": 1177,
           "sample_paths": [
             "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInitialEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionBoundary.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionTransport.lean",
             "SerrePositivity/InfinityCategories/F1/Cocartesian.lean",
-            "SerrePositivity/InfinityCategories/F1/Categories/CoreEnrichedFunctor.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
             "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
             "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeInitialAdjunction.lean",
+            "SerrePositivity/InfinityCategories/F1/Categories/CoreEnrichedFunctor.lean",
             "SerrePositivity/InfinityCategories/Stable/Semiorthogonal/SemiorthogonalDecomposition.lean",
             "SerrePositivity/InfinityCategories/Stable/Straightening/StraighteningBaseChangeLeftEndpoints.lean",
-            "SerrePositivity/InfinityCategories/Stable/Exact/CofiberInputFamily.lean",
-            "SerrePositivity/InfinityCategories/Stable/Exact/SuspensionExactFunctor.lean",
-            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsReindex.lean",
-            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsEvaluation.lean",
-            "SerrePositivity/InfinityCategories/F1/Diagrams/DiagonalCocartesianSectionsConstant.lean"
+            "SerrePositivity/InfinityCategories/Stable/Exact/CofiberInputFamily.lean"
           ]
         },
         "Mathlib": {
@@ -272,8 +272,8 @@
           "files_with_matches": 2,
           "total_matching_lines": 2,
           "sample_paths": [
-            "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean",
-            "SerrePositivity/KST/NonConnective/DGKInputIndNativeFamily.lean"
+            "SerrePositivity/KST/NonConnective/DGKInputIndNativeFamily.lean",
+            "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean"
           ]
         },
         "Mathlib": {
@@ -328,18 +328,18 @@
           "files_with_matches": 14,
           "total_matching_lines": 28,
           "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectionColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePresheafReflection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallLimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveModelLimitDetection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
             "SerrePositivity/KST/DerivedGeometry/RingedForgetExact.lean",
             "SerrePositivity/KST/DerivedGeometry/CoefficientExact.lean",
             "SerrePositivity/BhattScholze/Delta/Basic/DeltaColimit.lean",
-            "SerrePositivity/HomologicalAlgebra/FiniteCohomologyBaseChange.lean",
-            "SerrePositivity/HomologicalAlgebra/BoundedAboveDerivedTruncation.lean",
-            "SerrePositivity/HomologicalAlgebra/CochainTensor/ShortExact.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectionColimits.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveModelLimitDetection.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallColimits.lean",
-            "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean"
+            "SerrePositivity/HomologicalAlgebra/FiniteCohomologyBaseChange.lean"
           ]
         },
         "Mathlib": {
@@ -347,13 +347,13 @@
           "files_with_matches": 7,
           "total_matching_lines": 24,
           "sample_paths": [
+            "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+            "Mathlib/CategoryTheory/Monad/Limits.lean",
+            "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Ideal.lean",
             "Mathlib/Topology/Category/UniformSpace.lean",
             "Mathlib/ModelTheory/DirectLimit.lean",
-            "Mathlib/Topology/LocallyFinsupp.lean",
-            "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
-            "Mathlib/CategoryTheory/Limits/VanKampen.lean",
-            "Mathlib/CategoryTheory/Monad/Limits.lean",
-            "Mathlib/CategoryTheory/Monoidal/Closed/Ideal.lean"
+            "Mathlib/Topology/LocallyFinsupp.lean"
           ]
         }
       },
@@ -451,11 +451,11 @@
           "total_matching_lines": 9,
           "sample_paths": [
             "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
             "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean",
             "SerrePositivity/KST/Spectra/SpectrumTracedSourceUnitStep.lean",
-            "SerrePositivity/KST/Spectra/SpectrumKanAdjointStructureCounit.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Localization.lean"
+            "SerrePositivity/KST/Spectra/SpectrumKanAdjointStructureCounit.lean"
           ]
         },
         "Mathlib": {
@@ -463,18 +463,18 @@
           "files_with_matches": 13,
           "total_matching_lines": 38,
           "sample_paths": [
-            "Mathlib/Order/Bounds/Basic.lean",
-            "Mathlib/Order/ConditionallyCompleteLattice/Indexed.lean",
-            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
-            "Mathlib/RingTheory/WittVector/MulP.lean",
-            "Mathlib/RingTheory/WittVector/Frobenius.lean",
-            "Mathlib/RingTheory/WittVector/Basic.lean",
-            "Mathlib/RingTheory/WittVector/MulCoeff.lean",
-            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
             "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
             "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
             "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean"
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/AbelianSubcategory.lean",
+            "Mathlib/Order/ConditionallyCompleteLattice/Indexed.lean",
+            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
+            "Mathlib/Order/Bounds/Basic.lean",
+            "Mathlib/RingTheory/WittVector/MulP.lean",
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
+            "Mathlib/RingTheory/WittVector/Frobenius.lean",
+            "Mathlib/RingTheory/WittVector/MulCoeff.lean"
           ]
         }
       },
@@ -520,10 +520,10 @@
           "files_with_matches": 783,
           "total_matching_lines": 21451,
           "sample_paths": [
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
             "SerrePositivity/BhattScholze/Delta/DividedPower/RankOneDP.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
@@ -584,18 +584,18 @@
           "files_with_matches": 829,
           "total_matching_lines": 22174,
           "sample_paths": [
-            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Source.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
-            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/RawRegular.lean",
-            "SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
-            "SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean",
-            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilyRaw.lean",
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
-            "SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean",
-            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilySource.lean"
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CLMST/PerfectoidizationIsogeny/Descent/StandardSquare.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean"
           ]
         },
         "Mathlib": {
@@ -716,14 +716,14 @@
             "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
             "SerrePositivity/Asymptotic/UniformLift.lean",
             "SerrePositivity/Asymptotic/LengthSequence.lean",
-            "SerrePositivity/KST/LocalizingInvariants.lean",
-            "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCellFactorizationImagePath.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageValue.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightGlueNaturality.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectRelativeInput.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonClassRightCoefficientZeroMap.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean"
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
           ]
         },
         "Mathlib": {
@@ -731,14 +731,14 @@
           "files_with_matches": 8,
           "total_matching_lines": 24,
           "sample_paths": [
-            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
-            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
-            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
             "Mathlib/RingTheory/WittVector/MulP.lean",
             "Mathlib/RingTheory/WittVector/Frobenius.lean",
             "Mathlib/RingTheory/WittVector/Basic.lean",
             "Mathlib/RingTheory/WittVector/MulCoeff.lean",
-            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean"
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
+            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
           ]
         }
       },
@@ -835,11 +835,11 @@
           "total_matching_lines": 37,
           "sample_paths": [
             "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Formula.lean",
-            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/AdicEuler.lean",
             "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Rees.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/AdicEuler.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimit.lean",
             "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimitLegs.lean",
             "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/StrictHomologyColimit.lean",
-            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimit.lean",
             "SerrePositivity/HomologicalAlgebra/AdicFilteredComplex.lean"
           ]
         },
@@ -893,17 +893,17 @@
           "total_matching_lines": 61,
           "sample_paths": [
             "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Checks/KFlatColimits.lean",
             "SerrePositivity/DifferentialGraded/Tensor/Graded.lean",
             "SerrePositivity/DifferentialGraded/Tensor/Enriched.lean",
             "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
             "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean",
-            "SerrePositivity/DifferentialGraded/Checks/KFlatColimits.lean",
             "SerrePositivity/DifferentialGraded/Resolution/Basic.lean",
             "SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean",
             "SerrePositivity/DifferentialGraded/Resolution/Cells/Boundary.lean",
             "SerrePositivity/DifferentialGraded/Resolution/Cells/Length.lean",
-            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
-            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean"
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean",
+            "SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean"
           ]
         },
         "Mathlib": {
@@ -913,7 +913,7 @@
           "sample_paths": [
             "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
             "Mathlib/Algebra/Category/ModuleCat/AB.lean",
-            "Mathlib/Condensed/AB.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/FunctorCategory/PreservesLimits.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Colim.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/FunctorCategory.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Connected.lean",
@@ -921,8 +921,8 @@
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Indization.lean",
             "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/SheafOfModules.lean",
-            "Mathlib/CategoryTheory/ObjectProperty/FunctorCategory/PreservesLimits.lean",
-            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean"
+            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+            "Mathlib/CategoryTheory/Sites/Point/Basic.lean"
           ]
         }
       },
@@ -1021,18 +1021,18 @@
           "files_with_matches": 15,
           "total_matching_lines": 19,
           "sample_paths": [
-            "SerrePositivity/KST/SConstruction/StableZeroArrowLoop.lean",
-            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberGroups.lean",
-            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberMap.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWDifferential.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/AWErasure.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/StandardTopBoundary.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeLowDimensional.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean",
             "SerrePositivity/InfinityCategories/DoldKanComparison/CubeDifferential.lean",
-            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryReindex.lean"
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryReindex.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/CoherentCubeDifferential.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryMatch.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWDifferential.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/WeightedBoundaryPrefixAgreement.lean"
           ]
         },
         "Mathlib": {
@@ -1086,18 +1086,18 @@
           "files_with_matches": 20,
           "total_matching_lines": 35,
           "sample_paths": [
-            "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
-            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
             "SerrePositivity/CommutativeAlgebra/Localization/Lattice.lean",
             "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
             "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
             "SerrePositivity/DifferentialGraded/Morita/Kernel.lean",
             "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean",
-            "SerrePositivity/KST/Spectra/RationalInitialDetection.lean",
-            "SerrePositivity/KST/SConstruction/TriangulatedKZeroEquiv.lean",
-            "SerrePositivity/KST/Spectra/SkeletalMappingDetection.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
             "SerrePositivity/DifferentialGraded/Category/Basic.lean",
-            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean"
+            "SerrePositivity/HomologicalAlgebra/TorCoefficientIdeal.lean",
+            "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
+            "SerrePositivity/KST/SConstruction/TriangulatedKZeroEquiv.lean",
+            "SerrePositivity/KST/SConstruction/Cofinality/ZeroComparison.lean"
           ]
         },
         "Mathlib": {
@@ -1107,16 +1107,16 @@
           "sample_paths": [
             "Mathlib/Algebra/Group/AddChar.lean",
             "Mathlib/Algebra/Group/Subsemigroup/Defs.lean",
-            "Mathlib/Algebra/Homology/HomotopyCategory/ShortExact.lean",
             "Mathlib/Algebra/MonoidAlgebra/PointwiseSMul.lean",
-            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
-            "Mathlib/Combinatorics/Additive/CovBySMul.lean",
-            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
-            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
             "Mathlib/Algebra/Category/MonCat/Limits.lean",
-            "Mathlib/Algebra/Group/Basic.lean",
-            "Mathlib/Algebra/Homology/HomologicalComplex.lean",
-            "Mathlib/Algebra/Module/Submodule/Order.lean"
+            "Mathlib/Algebra/Homology/HomotopyCategory/ShortExact.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
+            "Mathlib/Dynamics/SymbolicDynamics/Basic.lean",
+            "Mathlib/Algebra/Module/LinearMap/FiniteRange.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+            "Mathlib/Algebra/Module/Congruence/Defs.lean",
+            "Mathlib/Algebra/Module/Submodule/Order.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean"
           ]
         }
       },
@@ -1226,16 +1226,16 @@
           "sample_paths": [
             "SerrePositivity/InfinityCategories/Kan/SkeletalSphericalRealization.lean",
             "SerrePositivity/InfinityCategories/F1/Transport/CellAttachment.lean",
-            "SerrePositivity/KST/Spectra.lean",
             "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
-            "SerrePositivity/KST/Spectra/SkeletalEdgeDoubleLoop.lean",
-            "SerrePositivity/KST/Spectra/CellCofiberProjections.lean",
-            "SerrePositivity/KST/Spectra/FixedPoints.lean",
+            "SerrePositivity/KST/Spectra.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonRowRelations.lean",
             "SerrePositivity/KST/Comparison/FatSkeleton.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonMaps.lean",
             "SerrePositivity/KST/Comparison/FatSkeletonAttachment.lean",
-            "SerrePositivity/KST/Comparison/FatRealizationInvariance.lean"
+            "SerrePositivity/KST/Comparison/FatRealizationInvariance.lean",
+            "SerrePositivity/KST/Comparison/FatBoundaryCriterion.lean",
+            "SerrePositivity/KST/Spectra/SkeletalEdgeDoubleLoop.lean",
+            "SerrePositivity/KST/Spectra/CellCofiberProjections.lean"
           ]
         },
         "Mathlib": {
@@ -1293,6 +1293,7 @@
           "files_with_matches": 12,
           "total_matching_lines": 16,
           "sample_paths": [
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexReedy.lean",
             "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/NerveCoherentExtension.lean",
             "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/CofibrantBoundary.lean",
             "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/ComponentClasses.lean",
@@ -1300,11 +1301,10 @@
             "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/ObjectwiseTrivial.lean",
             "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/BoundaryTensor.lean",
             "SerrePositivity/HomotopicalAlgebra/Diagram/EvaluatedFrame.lean",
-            "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexReedy.lean",
-            "SerrePositivity/KST/Spectra/TotalizationComparisonPi.lean",
             "SerrePositivity/KST/Spectra/OriginalWeightEndComparison.lean",
-            "SerrePositivity/KST/Spectra/PartialTotalizationKan.lean",
-            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean"
+            "SerrePositivity/KST/Spectra/TotalizationComparisonPi.lean",
+            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean",
+            "SerrePositivity/KST/Spectra/PartialTotalizationKan.lean"
           ]
         },
         "Mathlib": {
@@ -1372,8 +1372,8 @@
             "Mathlib/Algebra/Homology/SpectralSequence/ComplexShape.lean",
             "Mathlib/Algebra/Homology/SpectralObject/HasSpectralSequence.lean",
             "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
-            "Mathlib/CategoryTheory/Triangulated/SpectralObject.lean",
-            "Mathlib/Analysis/Complex/PhragmenLindelof.lean"
+            "Mathlib/Analysis/Complex/PhragmenLindelof.lean",
+            "Mathlib/CategoryTheory/Triangulated/SpectralObject.lean"
           ]
         }
       },
@@ -1427,8 +1427,8 @@
           "sample_paths": [
             "SerrePositivity/KST/Spectra/SkeletalCellCofiber.lean",
             "SerrePositivity/KST/Spectra/FixedPoints.lean",
-            "SerrePositivity/KST/Spectra/SkeletalCellFiberNaturality.lean",
-            "SerrePositivity/KST/Spectra/SimplexCellCofiber.lean"
+            "SerrePositivity/KST/Spectra/SimplexCellCofiber.lean",
+            "SerrePositivity/KST/Spectra/SkeletalCellFiberNaturality.lean"
           ]
         },
         "Mathlib": {
@@ -1486,18 +1486,18 @@
           "files_with_matches": 25,
           "total_matching_lines": 41,
           "sample_paths": [
-            "SerrePositivity/CommutativeAlgebra/HenselianFinite.lean",
             "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+            "SerrePositivity/CommutativeAlgebra/HenselianFinite.lean",
             "SerrePositivity/InfinityCategories/Stable/UniverseKernelEdges.lean",
             "SerrePositivity/InfinityCategories/Derived/Gluing/NativeStability.lean",
             "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/StableLaxStructure.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/StableObjects.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/EssentialImageDiagram.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/RightFibrationRetracts.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCofibers.lean",
             "SerrePositivity/InfinityCategories/F2/Idempotent/CartesianWeakRetraction.lean",
-            "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialComplete.lean",
-            "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessUniverse.lean",
-            "SerrePositivity/InfinityCategories/Derived/Gluing/StableLaxStructure.lean"
+            "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialComplete.lean"
           ]
         },
         "Mathlib": {
@@ -1506,8 +1506,8 @@
           "total_matching_lines": 13,
           "sample_paths": [
             "Mathlib/RingTheory/Idempotents.lean",
-            "Mathlib/RingTheory/Etale/QuasiFinite.lean",
-            "Mathlib/CategoryTheory/Preadditive/Biproducts.lean"
+            "Mathlib/CategoryTheory/Preadditive/Biproducts.lean",
+            "Mathlib/RingTheory/Etale/QuasiFinite.lean"
           ]
         }
       },
@@ -1728,17 +1728,17 @@
           "total_matching_lines": 286,
           "sample_paths": [
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightRestored.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageValue.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWCompletedPath.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCellPath.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectSourceWitness.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightGammaEndpoints.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoRightWSource.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightFollowing.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWSource.lean",
             "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWInitialPath.lean",
-            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedModel.lean"
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightZeroSquare.lean",
+            "SerrePositivity/KST/LocalizingInvariants.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWCompletedPath.lean"
           ]
         },
         "Mathlib": {
@@ -1855,15 +1855,15 @@
             "SerrePositivity/InfinityCategories/F1/Pointed/AcyclicFibrationLifting.lean",
             "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
             "SerrePositivity/KST/Comparison/FibrantTargetLifting.lean",
-            "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/KanLocalizedComparisonResolution.lean",
-            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryKanBarMappingClasses.lean",
-            "SerrePositivity/HomotopicalAlgebra/GeneralTools.lean",
-            "SerrePositivity/KST/LocalizingInvariants/KanCylinderComparisonExtension.lean",
+            "SerrePositivity/KST/SConstruction/FundamentalGroupoidEquivalence.lean",
+            "SerrePositivity/KST/Spectra/PointedExtension.lean",
+            "SerrePositivity/KST/SConstruction/RelativeFaceTransportFromZero.lean",
             "SerrePositivity/KST/SConstruction/RelativeFamilyRectification.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanPullbackDeformation.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoPushoutEquivalence.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoEndpointExtension.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/DiscreteKanExtension.lean"
+            "SerrePositivity/KST/Spectra/PointedHomotopyExtension.lean",
+            "SerrePositivity/KST/SConstruction/RelativeFaceTransportFromOne.lean",
+            "SerrePositivity/KST/SConstruction/PrescribedFamilyTransport.lean",
+            "SerrePositivity/KST/Spectra/RelativeTriangleContraction.lean",
+            "SerrePositivity/KST/Spectra/AnodyneCofiberSource.lean"
           ]
         },
         "Mathlib": {
@@ -1880,6 +1880,67 @@
         "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean"
       ],
       "reason": "左・右 Kan 拡張の判定と安定 ∞ 圏の押し出し・引き戻しの同値を調べた。最高次数と増大次数をそれぞれ切り落とす二つの制限に対し、この同じ F の Kan 拡張条件を比較する型は確認できなかった。"
+    },
+    "1.3.0.1": {
+      "ha_page": 78,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.0.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.0",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Verdier.*(thesis|introduced|histor)|derived category.*(thesis|introduced)",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Verdier.*(thesis|introduced|histor)|derived category.*(thesis|introduced)",
+          "files_with_matches": 3,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/HomotopyCategory/Pretriangulated.lean",
+            "Mathlib/CategoryTheory/Shift/CommShift.lean",
+            "Mathlib/CategoryTheory/Triangulated/Opposite/Pretriangulated.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
+        "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+        "SerrePositivity/InfinityCategories/DGNerve/HomotopyCategory.lean"
+      ],
+      "reason": "導来圏の構成と Verdier 局所化の型を確認した。ここでの HA の主張は Verdier の学位論文への歴史的帰属と文献案内で、構成定理に対応する主張を含まない。"
     },
     "1.3.1.7": {
       "ha_page": 82,
@@ -1936,6 +1997,1583 @@
         "SerrePositivity/DifferentialGraded/Category/Basic.lean"
       ],
       "reason": "DGCategory と SimplexData.rhs は Leibniz 則と二項合成まで。高次積を入力する A∞ 圏およびそれに対応する nerve の方程式を探したが、該当する宣言は確認できなかった。"
+    },
+    "1.3.2.5": {
+      "ha_page": 89,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.2.5",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          },
+          {
+            "prefix": "1.3.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "projective.*sifted|sifted.*projective|projective.*nerve|ProjectiveObject|SigmaRestrictionEquivalence",
+          "files_with_matches": 66,
+          "total_matching_lines": 205,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaFilteredGeometricRestriction.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/KProjectiveDerivedSource.lean",
+            "SerrePositivity/KST/NonConnective/DGKappaResolvedEvaluationPerfect.lean",
+            "SerrePositivity/KST/NonConnective/DGKappaResolvedYonedaEvaluation.lean",
+            "SerrePositivity/KST/NonConnective/DGKappaResolvedEvaluationInclusion.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
+            "SerrePositivity/HomologicalAlgebra/TorBaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/TorFlatBaseChangeVanishing.lean",
+            "SerrePositivity/HomologicalAlgebra/TorAcyclicBaseChangeResolution.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKappaClosedProjectiveFamily.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleKappaCompactProjectiveComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeProjectiveEquivalence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "projective.*sifted|sifted.*projective|projective.*nerve|ProjectiveObject|SigmaRestrictionEquivalence",
+          "files_with_matches": 7,
+          "total_matching_lines": 27,
+          "sample_paths": [
+            "Mathlib/RingTheory/LocalProperties/ProjectiveDimension.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/MapBijective.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Ulift.lean",
+            "Mathlib/RingTheory/Depth/Basic.lean",
+            "Mathlib/CategoryTheory/Preadditive/Projective/Resolution.lean",
+            "Mathlib/CategoryTheory/Preadditive/Projective/Preserves.lean",
+            "Mathlib/RepresentationTheory/Coinduced.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Preadditive/Projective/Basic.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+      ],
+      "reason": "通常のエピに対する Projective と、PΣ の sifted 余極限保存を調べた。アーベル圏の nerve 内で両方の射影性を同定する宣言は確認できなかった。"
+    },
+    "1.3.2.11": {
+      "ha_page": 89,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.2.11",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          },
+          {
+            "prefix": "1.3.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "KanFibration.*(Moore|DoldKan|SimplicialAbelian|SimplicialModule)|(Moore|DoldKan|SimplicialAbelian|SimplicialModule).*(KanFibration|surject|fibration)|projectiveFibrations",
+          "files_with_matches": 32,
+          "total_matching_lines": 67,
+          "sample_paths": [
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraMultiplicativeMatching.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraRelativeConvolutionFibration.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraRelativeCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraSimplicialConvolutionRestriction.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeRightFrame.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraRelativeMappingFiber.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraMultiplicativeReedyUnderlying.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraRelativeConvolutionTargetTrivial.lean",
+            "SerrePositivity/EInfinity/ProjectiveModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingFibration.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/CodiskFibrations.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingHorn.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "KanFibration.*(Moore|DoldKan|SimplicialAbelian|SimplicialModule)|(Moore|DoldKan|SimplicialAbelian|SimplicialModule).*(KanFibration|surject|fibration)|projectiveFibrations",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/AlgebraicTopology/MooreComplex.lean",
+        "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
+        "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean"
+      ],
+      "reason": "正規化 Moore 複体と複体の射影 fibration を確認した。単体アーベル群の一般の射について、正次数の正規化成分が全射であることと underlying Kan fibration を結ぶ型は確認できなかった。"
+    },
+    "1.3.2.14": {
+      "ha_page": 90,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.2.14",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          },
+          {
+            "prefix": "1.3.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "doldKan.*fibration|precomp.*(fibration|surject)|(homSpace|MappingSpace).*fibration|projectiveFibrations",
+          "files_with_matches": 137,
+          "total_matching_lines": 224,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+            "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationComparisonBaseChange.lean",
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationNerveComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeHomPointedRecoveryEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/SmallLeftUnstraighteningLift.lean",
+            "SerrePositivity/InfinityCategories/F1/MappingSpaces/HomSpanSectionFiberCoherence.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/SmallLeftUnstraighteningOverMap.lean",
+            "SerrePositivity/InfinityCategories/F1/MappingSpaces/RelativePathEndpointCorner.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/StrictKanUnstraighteningComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorEvaluationLifting.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "doldKan.*fibration|precomp.*(fibration|surject)|(homSpace|MappingSpace).*fibration|projectiveFibrations",
+          "files_with_matches": 17,
+          "total_matching_lines": 37,
+          "sample_paths": [
+            "Mathlib/Topology/Algebra/Module/Spaces/ContinuousLinearMap.lean",
+            "Mathlib/Probability/Independence/Kernel/Indep.lean",
+            "Mathlib/Probability/Independence/Kernel/IndepFun.lean",
+            "Mathlib/Probability/Independence/Basic.lean",
+            "Mathlib/Probability/Independence/InfinitePi.lean",
+            "Mathlib/RingTheory/AdicCompletion/Basic.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/Homotopy.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/FundamentalLemma.lean",
+            "Mathlib/RingTheory/Coalgebra/Convolution.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/FibrantObjectHomotopy.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+            "Mathlib/Algebra/Category/Ring/Topology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/DoldKanComparison/HomSpace.lean",
+        "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
+        "SerrePositivity/EInfinity/ComplexLimits/PullbackHomTargetTrivial.lean"
+      ],
+      "reason": "dg 圏の Dold–Kan 豊穣 Hom が Kan であることと、複体側の正規化テンソルから誘導する射の fibration を確認した。次数ごとの前合成の全射性を仮定する単体 Hom 射の判定は見つからなかった。"
+    },
+    "1.3.3.2": {
+      "ha_page": 97,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RightTExact|leftDerivedToHomotopyCategory|leftComplete.*derived|rightExact.*heart|SigmaRestrictionEquivalence",
+          "files_with_matches": 15,
+          "total_matching_lines": 51,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Derived.lean",
+            "SerrePositivity/CategoryTheory/ExactDerivedTStructure.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaFilteredGeometricRestriction.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorRealization.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorModuleNaturality.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorBaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedBaseChangeAugmentationModels.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorTorNaturality.lean",
+            "SerrePositivity/HomologicalAlgebra/ChainAugmentationNormalization.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RightTExact|leftDerivedToHomotopyCategory|leftComplete.*derived|rightExact.*heart|SigmaRestrictionEquivalence",
+          "files_with_matches": 2,
+          "total_matching_lines": 55,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+            "Mathlib/CategoryTheory/Abelian/LeftDerived.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+      ],
+      "reason": "アーベル圏上で射影分解を用いて左導来を作る型と、PΣ の Yoneda 制限の普遍性を確認した。左完備な安定標的で右 t 完全関手を心の右完全関手で分類する型は見つからなかった。"
+    },
+    "1.3.3.5": {
+      "ha_page": 98,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.5",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Eilenberg.?Mac.?Lane|generalized.*spectrum|HZ[Ss]pectrum|derivedInfinityCategory|OmegaSpectrum",
+          "files_with_matches": 1461,
+          "total_matching_lines": 7916,
+          "sample_paths": [
+            "SerrePositivity/KST/Spectra.lean",
+            "SerrePositivity/InfinityCategories/F1/Pointed/MonoRightHomotopyEquivalence.lean",
+            "SerrePositivity/InfinityCategories/F1/Pointed/SpectrumHomotopyFunctor.lean",
+            "SerrePositivity/InfinityCategories/F1/Pointed/PointedHomotopy.lean",
+            "SerrePositivity/KST/Fibration/DGRelativeFiberComparison.lean",
+            "SerrePositivity/KST/Fibration/DGNuSBoundaryInfinity.lean",
+            "SerrePositivity/KST/Fibration/BFFiberSpaceEvaluation.lean",
+            "SerrePositivity/KST/Fibration/SpectrumZeroFromPositiveLevels.lean",
+            "SerrePositivity/KST/Fibration/BFFiberKanEvaluation.lean",
+            "SerrePositivity/KST/Fibration/FiberSquareKanEvaluation.lean",
+            "SerrePositivity/KST/Fibration/DGRelativePositiveDetection.lean",
+            "SerrePositivity/KST/Fibration/DGKZeroComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Eilenberg.?Mac.?Lane|generalized.*spectrum|HZ[Ss]pectrum|derivedInfinityCategory|OmegaSpectrum",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean",
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+      ],
+      "reason": "D(ℤ) を含む加群の導来模型と Ω スペクトルの模型を確認した。アーベル群の複体を一般化 Eilenberg–Mac Lane スペクトルへ送る ∞ 関手は確認できなかった。"
+    },
+    "1.3.3.6": {
+      "ha_page": 98,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.6",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LeftTExact|RightTExact|leftDerivedZeroIsoSelf|heart.*exact|exact.*heart",
+          "files_with_matches": 19,
+          "total_matching_lines": 50,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Derived.lean",
+            "SerrePositivity/CategoryTheory/ExactDerivedTStructure.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Basic.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
+            "SerrePositivity/IntersectionMultiplicity/ParameterQuotient.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorRealization.lean",
+            "SerrePositivity/HomologicalAlgebra/Tor.lean",
+            "SerrePositivity/KST/DerivedGeometry/RightDerivedPlusBounds.lean",
+            "SerrePositivity/HomologicalAlgebra/TorNaturality.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LeftTExact|RightTExact|leftDerivedZeroIsoSelf|heart.*exact|exact.*heart",
+          "files_with_matches": 4,
+          "total_matching_lines": 35,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/DerivedCategory/SingleTriangle.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+            "Mathlib/CategoryTheory/Abelian/LeftDerived.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean"
+      ],
+      "reason": "t 完全性の通常圏での型と H₀ で元の右完全関手を回復する型を確認した。左 t 完全性・心の保存・心での完全性の三条件の同値は見つからなかった。"
+    },
+    "1.3.3.9": {
+      "ha_page": 102,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.9",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ProjectiveResolution|projective.*(rightExact|coequalizer)|rightExact.*projective|SigmaRestrictionEquivalence",
+          "files_with_matches": 137,
+          "total_matching_lines": 1380,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Scalar.lean",
+            "SerrePositivity/DifferentialGraded/Checks/ResolutionFunctor.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LayerTriangles.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorComputation.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorChoice.lean",
+            "SerrePositivity/DifferentialGraded/Checks/HomBifunctor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/ProjectiveResolutionLift.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceUnitChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/KernelDerivedFunctorChecks.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "ProjectiveResolution|projective.*(rightExact|coequalizer)|rightExact.*projective|SigmaRestrictionEquivalence",
+          "files_with_matches": 14,
+          "total_matching_lines": 188,
+          "sample_paths": [
+            "Mathlib/RepresentationTheory/Homological/Resolution.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupCohomology/Shapiro.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupCohomology/Basic.lean",
+            "Mathlib/RepresentationTheory/Homological/FiniteCyclic.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/Shapiro.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupHomology/Basic.lean",
+            "Mathlib/Algebra/Category/ModuleCat/LeftResolution.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Extend.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Ext.lean",
+            "Mathlib/CategoryTheory/Preadditive/Projective/Resolution.lean",
+            "Mathlib/CategoryTheory/Abelian/Ext.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean",
+        "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+      ],
+      "reason": "射影分解の持ち上げとその鎖ホモトピー、PΣ に対する制限同値を確認した。通常の圏で射影対象に制限し、余等化子から右完全拡張を逆構成する同値は見つからなかった。"
+    },
+    "1.3.3.11": {
+      "ha_page": 103,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.11",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RightTExact|leftComplete|connective.*geometric|geometric.*connective|CoproductRealization",
+          "files_with_matches": 14,
+          "total_matching_lines": 20,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/IndImageCoproductColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourceCoproducts.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaSmallColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ElementsCoproductLeftKan.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/PreservedColimitGeneration.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricRealizations.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ColimitFromDiscreteRestrictions.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean",
+            "SerrePositivity/CategoryTheory/Derived.lean",
+            "SerrePositivity/CategoryTheory/ExactDerivedTStructure.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RightTExact|leftComplete|connective.*geometric|geometric.*connective|CoproductRealization",
+          "files_with_matches": 1,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationPreservation.lean"
+      ],
+      "reason": "通常の三角圏で t 完全性の型と、準圏の余積・幾何学的実現による余極限保存を確認した。connective 部分圏への制限同値および左完備性からその実現を構成する型は見つからなかった。"
+    },
+    "1.3.3.12": {
+      "ha_page": 105,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.12",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RightTExact|leftComplete|projective.*restriction|SigmaRestrictionEquivalence|PreservesFiniteCoproductsOnBase",
+          "files_with_matches": 25,
+          "total_matching_lines": 48,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Derived.lean",
+            "SerrePositivity/CategoryTheory/ExactDerivedTStructure.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
+            "SerrePositivity/AlgebraicGeometry/ProductRingBaseChangeProjective.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraMultiplicativeMatching.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraRelativeConvolutionFibration.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraNativeRightFrame.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingHorn.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraSmallMappingCellLift.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Basic.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RightTExact|leftComplete|projective.*restriction|SigmaRestrictionEquivalence|PreservesFiniteCoproductsOnBase",
+          "files_with_matches": 1,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductsOnBase.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean"
+      ],
+      "reason": "PΣ では射影対象を代入できる Yoneda 制限を確認した。一般の左完備安定圏に対して右 t 完全な導来関手を connective 値の有限余積保存関手と比較する宣言は見つからなかった。"
+    },
+    "1.3.3.14": {
+      "ha_page": 106,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.14",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SigmaPresheafInfinity|DoldKan|Indization|derived.*[Ss]igma|[Ss]igma.*derived",
+          "files_with_matches": 445,
+          "total_matching_lines": 1469,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/InfinityCategories/Simplicial/UniverseKan.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Functor.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/IteratedModels.lean",
+            "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean",
+            "SerrePositivity/InfinityCategories/F1/Coherent/SmallCoherentTransformationSpace.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+            "SerrePositivity/DifferentialGraded/Perfect/RepresentableHomology.lean",
+            "SerrePositivity/DifferentialGraded/Perfect/Compact/Enhancement.lean",
+            "SerrePositivity/InfinityCategories/Derived/SkeletalHomotopyGluing.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSimplicialRingDGAlgebraNaturality.lean",
+            "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SigmaPresheafInfinity|DoldKan|Indization|derived.*[Ss]igma|[Ss]igma.*derived",
+          "files_with_matches": 32,
+          "total_matching_lines": 129,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/DoldKan/Compatibility.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/FunctorN.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/Homology/Nondegenerate.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/Notations.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/EquivalenceAdditive.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/PInfty.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/NCompGamma.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/Homotopies.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/Degeneracies.lean",
+            "Mathlib/AlgebraicTopology/DoldKan/GammaCompN.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+        "Mathlib/CategoryTheory/Abelian/Indization.lean",
+        "SerrePositivity/InfinityCategories/Derived/InfinityCategory.lean"
+      ],
+      "reason": "PΣ の構成と制限同値、通常の Ind 圏を確認した。A の Ind 圏の connective 有界導来 ∞ 圏を PΣ と同定する型は確認できなかった。"
+    },
+    "1.3.3.15": {
+      "ha_page": 106,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.3.15",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "IndYoneda|derived.*[Ii]nd|[Ii]nd.*homology|DerivedCategory.Minus",
+          "files_with_matches": 587,
+          "total_matching_lines": 2037,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleIndependence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleNaturality.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleComparison.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGLeftUnitRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleMiddleFullComparison.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleComposeHomotopy.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/BalancedElements.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Graded.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean",
+            "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/KernelComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "IndYoneda|derived.*[Ii]nd|[Ii]nd.*homology|DerivedCategory.Minus",
+          "files_with_matches": 31,
+          "total_matching_lines": 95,
+          "sample_paths": [
+            "Mathlib/Algebra/ContinuedFractions/Computation/Approximations.lean",
+            "Mathlib/Algebra/Homology/Homotopy.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/ShiftSequence.lean",
+            "Mathlib/Algebra/Homology/Factorizations/CM5a.lean",
+            "Mathlib/Algebra/Homology/Localization.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/ExactFunctor.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/LeftHomology.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/Homology.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/Preadditive.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/Linear.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Limits/IndYoneda.lean",
+        "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+        "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean"
+      ],
+      "reason": "通常の Ind 圏への Yoneda 埋め込みと D⁻ の有界性を確認した。導来 ∞ 圏に持ち上げた埋め込みの像を全ホモロジーで特徴づける型は見つからなかった。"
+    },
+    "1.4.2.4": {
+      "ha_page": 141,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "excisive|reducedFunctor|accessibleLocalization|isPresentable_of_reflection|BousfieldLocal|PreservesZeroVertices",
+          "files_with_matches": 36,
+          "total_matching_lines": 88,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackZeroVertices.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackZeroProjections.lean",
+            "SerrePositivity/InfinityCategories/Stable/TrivialFibrationStabilityDescent.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorChoice.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Accessible.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourcePresentable.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/All.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "excisive|reducedFunctor|accessibleLocalization|isPresentable_of_reflection|BousfieldLocal|PreservesZeroVertices",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean"
+      ],
+      "reason": "反射部分圏の presentability は局所化が既に与えられたときの型。切除性や縮約性の局所化を生成する射の集合と、その可到達な反射は確認できなかった。"
+    },
+    "1.4.2.6": {
+      "ha_page": 141,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.6",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "FiniteSpace|free.*finiteColimit|finiteCoproductsOnBase|rightExact.*evaluat|SigmaRestrictionEquivalence",
+          "files_with_matches": 13,
+          "total_matching_lines": 75,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentFunctorProductLimit.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/NativeDiscreteLegHomotopy.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaFilteredGeometricRestriction.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductsOnBase.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaColimitPreservationCriterion.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaFamilyCoproductComparison.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaFiniteCoproductPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductsOnBaseIso.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpacePresentation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "FiniteSpace|free.*finiteColimit|finiteCoproductsOnBase|rightExact.*evaluat|SigmaRestrictionEquivalence",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "有限単体集合の空間模型がコンパクトであることと、PΣ の sifted 余極限による普遍性を確認した。有限余極限完備な空間の部分圏からの右完全関手を一点評価で分類する宣言は見つからなかった。"
+    },
+    "1.4.2.9": {
+      "ha_page": 142,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.9",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SpectrumObject|excisive|stabili[sz].*functorCategor|functorCategor.*stabili[sz]|hasFiniteLimits_functorCategory|OmegaSpectrum",
+          "files_with_matches": 1255,
+          "total_matching_lines": 7322,
+          "sample_paths": [
+            "SerrePositivity/KST/Spectra.lean",
+            "SerrePositivity/KST/Fibration/DGRelativeFiberComparison.lean",
+            "SerrePositivity/KST/Fibration/DGNuSBoundaryInfinity.lean",
+            "SerrePositivity/InfinityCategories/Stable/FunctorLoopEquivalence.lean",
+            "SerrePositivity/KST/Fibration/BFFiberSpaceEvaluation.lean",
+            "SerrePositivity/KST/Fibration/SpectrumZeroFromPositiveLevels.lean",
+            "SerrePositivity/KST/Fibration/BFFiberKanEvaluation.lean",
+            "SerrePositivity/InfinityCategories/Stable/IntervalCofiberSourceReflection.lean",
+            "SerrePositivity/KST/Fibration/FiberSquareKanEvaluation.lean",
+            "SerrePositivity/KST/Fibration/DGRelativePositiveDetection.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionRawSuspensionCriterion.lean",
+            "SerrePositivity/KST/Fibration/DGKZeroComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SpectrumObject|excisive|stabili[sz].*functorCategor|functorCategor.*stabili[sz]|hasFiniteLimits_functorCategory|OmegaSpectrum",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "関手圏の有限極限を点ごとに計算する結果と、点付き空間の Ω スペクトル模型を確認した。関手圏に値を取るスペクトルを curry してスペクトル値関手と同定する型は確認できなかった。"
+    },
+    "1.4.2.10": {
+      "ha_page": 142,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.10",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "excisive|reducedFunctor|exactFunctors_quasicategory|hasFiniteLimits_functorCategory",
+          "files_with_matches": 26,
+          "total_matching_lines": 30,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
+            "SerrePositivity/InfinityCategories/Stable/FunctorLoopEquivalence.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCoconeCylinder.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredPullbackComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierUniformTerminalRefinement.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRefinementBoundaryProjection.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCylinderSquare.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRelativeCoconeAttachment.lean",
+            "SerrePositivity/InfinityCategories/Stable/IntervalCofiberSourceReflection.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierParametricSourceIso.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierFiniteMappingCoconeRecovery.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "excisive|reducedFunctor|exactFunctors_quasicategory|hasFiniteLimits_functorCategory",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/FunctorFiniteLimits.lean",
+        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "有限極限を持つ標的への関手圏全体の有限極限と、安定圏間の完全関手の充満部分圏は確認した。一般の標的で縮約切除関手の部分圏が零対象と有限極限を持つ宣言は見つからなかった。"
+    },
+    "1.4.2.16": {
+      "ha_page": 145,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.16",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "stable.*excis|excis.*stable|reducedFunctor|exactFunctors|sp_isStable",
+          "files_with_matches": 210,
+          "total_matching_lines": 739,
+          "sample_paths": [
+            "SerrePositivity/KST/Fibration/ZeroEndPostcompFamily.lean",
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean",
+            "SerrePositivity/KST/Fibration/QuotientSKernelZeroFunctorMap.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionArrowPullbackDiagonal.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionCoreComparisonConeTriangle.lean",
+            "SerrePositivity/KST/Fibration/ZeroFunctorFullSDiagramFamily.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridSuspensionShape.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridSuspensionCorners.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "stable.*excis|excis.*stable|reducedFunctor|exactFunctors|sp_isStable",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+        "SerrePositivity/KST/Spectra/D3TailStability.lean"
+      ],
+      "reason": "切除性を suspension 面で検出する定理は一つの関手の像を判定する。縮約切除関手全体の安定性を示す型は、完全関手の部分圏や具体的な Ω スペクトルの場合も含めて確認できなかった。"
+    },
+    "1.4.2.18": {
+      "ha_page": 146,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.18",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "pointed.*stabili[sz]|stabili[sz].*pointed|SpectrumObject|PointedSpaceInfinity|OmegaCondition",
+          "files_with_matches": 255,
+          "total_matching_lines": 513,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Coherent/SmallCoherentFamilyUniqueness.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/RepresentationFamilyWitness.lean",
+            "SerrePositivity/KST/Spectra.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/SquareFunctor.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/WitnessPullbackSymmetry.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/SquareColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Coherent/CollagePointedExtension.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/WitnessDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/PointProductSquareRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/TransportWitnessPointEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Ind/MappingVertexLiftPrism.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/PointedVertexPointHom.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "pointed.*stabili[sz]|stabili[sz].*pointed|SpectrumObject|PointedSpaceInfinity|OmegaCondition",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/IsFundamentalgroup.lean",
+            "Mathlib/CategoryTheory/Galois/Topology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "SerrePositivity/KST/Spectra/KanSequence.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "空間の pointed coslice と Ω スペクトルの具体模型を確認した。一般の C について点を忘れる写像を Sp に移して同値とする宣言は見つからなかった。"
+    },
+    "1.4.2.19": {
+      "ha_page": 146,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.19",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "excisive|reducedFunctor|pointedSpaceProjection|adjoin.*basepoint|disjoint.*basepoint|CofiberAdjunction",
+          "files_with_matches": 822,
+          "total_matching_lines": 2905,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Compact/UniverseUnstraightening.lean",
+            "SerrePositivity/InfinityCategories/F1/Compact/CoconeFiberPrism.lean",
+            "SerrePositivity/InfinityCategories/F1/Compact/RepresentationDiagramComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/UnstraighteningFamilyComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraighteningRelativeSimplexLifts.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraighteningFiberTransport.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/PointedSpaceFiberVertices.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraightening.lean",
+            "SerrePositivity/InfinityCategories/F1/Compact/UnstraighteningVertexPrism.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraighteningIdentity.lean",
+            "SerrePositivity/InfinityCategories/F1/Compact/RepresentationPointedFiber.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraighteningCompositionLift.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "excisive|reducedFunctor|pointedSpaceProjection|adjoin.*basepoint|disjoint.*basepoint|CofiberAdjunction",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+        "SerrePositivity/KST/LocalizingInvariants/CofiberAdjunction.lean"
+      ],
+      "reason": "点付き空間を coslice で表す構成と cofiber を取る図式を確認した。基点付加への前合成と cofiber 構成が切除関手の二部分圏を互いに逆にする型は見つからなかった。"
+    },
+    "1.4.2.21": {
+      "ha_page": 146,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.21",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "OmegaInfinity|SpectrumObject|stabili[sz].*equivalence|isStable_of_loopEquivalence|spectrumLevelFunctor",
+          "files_with_matches": 16,
+          "total_matching_lines": 33,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Stable/LoopEquivalenceStability.lean",
+            "SerrePositivity/Spectra/Stable/UniversalLocalizingMaps.lean",
+            "SerrePositivity/KST/Fibration/SpectrumSpaceEvaluation.lean",
+            "SerrePositivity/KST/Fibration/RawFiberSpaceEvaluation.lean",
+            "SerrePositivity/KST/Fibration/SpectrumKanEvaluationOrdinary.lean",
+            "SerrePositivity/KST/LocalizingInvariants/RawFiberInfinityCone.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BinarySecondProjection.lean",
+            "SerrePositivity/KST/Spectra/D3StagePullback.lean",
+            "SerrePositivity/KST/Spectra/D3TailStability.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumTowers.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumPullbackCones.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BinaryProjectionCone.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "OmegaInfinity|SpectrumObject|stabili[sz].*equivalence|isStable_of_loopEquivalence|spectrumLevelFunctor",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/LoopEquivalenceStability.lean",
+        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "loop 自己同値による安定性の判定は C 内部のもの。スペクトルのレベル 0 の評価を確認したが、その評価が Sp(C) と C の同値になることによる判定は見つからなかった。"
+    },
+    "1.4.2.22": {
+      "ha_page": 147,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.22",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "excisive|reducedFunctor|OmegaInfinity|spectrumLevelFunctor|stabili[sz].*universa",
+          "files_with_matches": 13,
+          "total_matching_lines": 30,
+          "sample_paths": [
+            "SerrePositivity/KST/Fibration/SpectrumKanEvaluationOrdinary.lean",
+            "SerrePositivity/KST/Fibration/RawFiberSpaceEvaluation.lean",
+            "SerrePositivity/KST/LocalizingInvariants/RawFiberInfinityCone.lean",
+            "SerrePositivity/KST/Fibration/SpectrumSpaceEvaluation.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BinaryProjectionCone.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BinarySecondProjection.lean",
+            "SerrePositivity/KST/Spectra/D3StagePullback.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumTowers.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumPullbackCones.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumFiniteProducts.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean",
+            "SerrePositivity/KST/Spectra/Limits/SpectrumHomLimitFamilies.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "excisive|reducedFunctor|OmegaInfinity|spectrumLevelFunctor|stabili[sz].*universa",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean",
+        "SerrePositivity/InfinityCategories/Stable/FunctorPullbackSquares.lean",
+        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean"
+      ],
+      "reason": "具体的なスペクトルのレベル評価と、切除性の判定を確認した。レベル評価との後合成で縮約切除関手を一意に持ち上げる型は見つからなかった。"
+    },
+    "1.4.2.23": {
+      "ha_page": 147,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.23",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "leftExact.*(stabili|spectrum)|(stabili|spectrum).*leftExact|OmegaInfinity|exactFunctors|preservesPullbackSquare",
+          "files_with_matches": 81,
+          "total_matching_lines": 355,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Stable/Verdier/StableCategories.lean",
+            "SerrePositivity/InfinityCategories/Stable/Infinity/ExactEnrichment.lean",
+            "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorSuspensionObjectComparison.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorNaturalTransformation.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategoryEquivalence.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackSquareCriteria.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorSuspension.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/ExactFunctorSpanCospanPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackSquareSufficiency.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "leftExact.*(stabili|spectrum)|(stabili|spectrum).*leftExact|OmegaInfinity|exactFunctors|preservesPullbackSquare",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Exact/ExactFunctorCategory.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExactFunctor.lean",
+        "SerrePositivity/KST/Spectra/Limits/SpectrumMappingDiagram.lean"
+      ],
+      "reason": "安定圏間の完全関手の充満部分圏は構成されている。安定始域から一般の標的への左完全関手を Ω∞ に沿って持ち上げ、その関手圏を同値とする型は見つからなかった。"
+    },
+    "1.4.2.26": {
+      "ha_page": 147,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.4.2.26",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.4.2",
+          "count": 931,
+          "distinct_files": 408,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Stable/PullbackConeVertex.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialFunctors.lean:16 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionFullInitialInverse.lean:17 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridCoreSourceCone.lean:10 (1.4.2.15)",
+            "SerrePositivity/InfinityCategories/Stable/ExcisionGridPastCocone.lean:10 (1.4.2.15)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.4.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.4.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "reducedPresheaf|pointedPresheaf|zero.*presheaf|presheaf.*zero|BousfieldLocal|isPresentable_of_reflection",
+          "files_with_matches": 17,
+          "total_matching_lines": 52,
+          "sample_paths": [
+            "SerrePositivity/KST/Descent/IdentityCenterSquare.lean",
+            "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean",
+            "SerrePositivity/KST/DerivedGeometry/SheafInjectiveSections.lean",
+            "SerrePositivity/KST/DerivedGeometry/AffineLocalVanishing.lean",
+            "SerrePositivity/KST/DerivedGeometry/RelativeFreeCech.lean",
+            "SerrePositivity/KST/DerivedGeometry/SheafSectionCohomology.lean",
+            "SerrePositivity/KST/DerivedGeometry/LocallyZeroSheafification.lean",
+            "SerrePositivity/KST/DerivedGeometry/RingedFreeCechExact.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Accessible.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "reducedPresheaf|pointedPresheaf|zero.*presheaf|presheaf.*zero|BousfieldLocal|isPresentable_of_reflection",
+          "files_with_matches": 9,
+          "total_matching_lines": 21,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Properties.lean",
+            "Mathlib/AlgebraicGeometry/ResidueField.lean",
+            "Mathlib/AlgebraicGeometry/FunctionField.lean",
+            "Mathlib/AlgebraicGeometry/AffineTransitionLimit.lean",
+            "Mathlib/AlgebraicGeometry/Scheme.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/QuasiCompact.lean",
+            "Mathlib/Topology/Sheaves/CommRingCat.lean",
+            "Mathlib/Geometry/RingedSpace/LocallyRingedSpace/ResidueField.lean",
+            "Mathlib/Geometry/RingedSpace/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean",
+        "SerrePositivity/InfinityCategories/Stable/ExcisionFunctorCriterion.lean"
+      ],
+      "reason": "前層の反射部分圏の presentability と Bousfield 局所対象の構成を確認した。始対象から終対象への一射で零対象における被約性を課し、その前層圏の普遍性と点付き性を合わせて与える型は見つからなかった。"
     }
   }
 }
