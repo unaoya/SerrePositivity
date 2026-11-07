@@ -5,6 +5,43 @@ import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationComple
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDP
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBaseChange
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBasis
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPFactorial
+import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
+import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeMaps
+import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
+import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDelta
+import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaBounds
+import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat
+import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaResidue
+import SerrePositivity.BhattScholze.Prismatic.Envelope
+import SerrePositivity.BhattScholze.Prismatic.PrismOver
+import SerrePositivity.BhattScholze.Prismatic.VariableEnvelope
+import SerrePositivity.CommutativeAlgebra.DeRham.CompletedCoefficient
+import SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential
+import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
+import SerrePositivity.CommutativeAlgebra.DeRham.CompletedWedge
+import SerrePositivity.CommutativeAlgebra.DeRham.Graded
+import SerrePositivity.CommutativeAlgebra.DeRham.Polynomial
+import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCompletion
+import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
+import SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.Bockstein
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.BocksteinClass
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.BocksteinCochains
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.Cohomology
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupLeibniz
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupProduct
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.Homotopy
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.PrincipalShortExact
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.Quotient
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.ShortExact
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.SplitCechConerve
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue
 import Lean.Util.CollectAxioms
 
 /-!
@@ -23,7 +60,44 @@ run_cmd do
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt,
-    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt]
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDP,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBaseChange,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBasis,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPFactorial,
+    `SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction,
+    `SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeMaps,
+    `SerrePositivity.BhattScholze.Prismatic.AffinePolynomial,
+    `SerrePositivity.BhattScholze.Prismatic.CompletedFreeDelta,
+    `SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaBounds,
+    `SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat,
+    `SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaResidue,
+    `SerrePositivity.BhattScholze.Prismatic.Envelope,
+    `SerrePositivity.BhattScholze.Prismatic.PrismOver,
+    `SerrePositivity.BhattScholze.Prismatic.VariableEnvelope,
+    `SerrePositivity.CommutativeAlgebra.DeRham.CompletedCoefficient,
+    `SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential,
+    `SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz,
+    `SerrePositivity.CommutativeAlgebra.DeRham.CompletedWedge,
+    `SerrePositivity.CommutativeAlgebra.DeRham.Graded,
+    `SerrePositivity.CommutativeAlgebra.DeRham.Polynomial,
+    `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCompletion,
+    `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz,
+    `SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.Bockstein,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.BocksteinClass,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.BocksteinCochains,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.Cohomology,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.CupLeibniz,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.CupProduct,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.Homotopy,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.PrincipalShortExact,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.Quotient,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.ShortExact,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.SplitCechConerve,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
