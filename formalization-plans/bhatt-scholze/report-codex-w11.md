@@ -202,3 +202,8 @@ B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward し�
 - `ArcSite` の対象ビルドは 19 秒（対象コンパイル 12 秒）。対象自身の警告は 0。`ArcCardinality` と `ArcSite` の単独監査は 37 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 679 モジュールで E3 入口へ到達しない。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
 - 残る下書きは、A5 根添加の filtered 余極限との可換性と完備忠実平坦性（2 件）、A6 の相対 Čech 比較と生成系からの層条件、および一般の `baseExtensionUnit_pCompletelyFaithfullyFlat`（計 12 件）。A6 の後者はこの被覆の証明で使わない。A8 の G-A8-6 より後の項目は引き続き drafts にある（20 件）。
 - 入口と段階 II 監査への登録は、D-1・D-2 の計 2 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`、`SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite`。C-2 の登録は C-2 の欄を参照。
+
+### B-3 の警告整理
+
+- `completionInverseFrobenius_pow` と `arcValuation_extendField` では、従来セクションから入っていた引数を同じ順序で明示し、未使用セクション引数の警告を解消した。変更前後の型は `#check @...` で照合した。素数性インスタンスの重複は従来の型に含まれるため残した。
+- `ArcValuationCompletion`・`ArcValuationExtension`・`ArcSite` の再ビルドは 25 秒。前二者の単独監査は 41 宣言、標準三公理のみ。追加の登録は 0 本。

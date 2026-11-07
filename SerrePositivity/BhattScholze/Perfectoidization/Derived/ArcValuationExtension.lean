@@ -309,7 +309,8 @@ theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
       RingHom.FaithfullyFlat.stableUnderComposition g j hflat hj, j ∘ ρ, map_natCast _ _, hρT⟩
 
 /-- 階数 0 の非単元分岐。冪級数付値環を階数 1 の完全付値環へ忠実平坦に拡大する。 -/
-theorem arcValuation_extendField [Fact p.Prime] (k : Type u) [Field k] [CharP k p] [PerfectRing k p]
+theorem arcValuation_extendField (p : ℕ) [Fact p.Prime] [Fact p.Prime]
+    (k : Type u) [Field k] [CharP k p] [PerfectRing k p]
     (a : k) (ha : ¬ IsUnit a) :
     ∃ (V : CommRingCat.{u}) (hV : IsDomain V) (e : k →+* V),
       @ValuationRing V _ hV ∧ ringKrullDim V = 1 ∧ CharP V p ∧ PerfectRing V p ∧
