@@ -20,7 +20,8 @@ T_∞ = R⟨X_i^{1/p^∞}⟩ では ≃ T_∞/p。Lemma 8.6（A5-3）の入力�
 ## 方針
 D69（a1-design §9.1、W9-I-15 の訂正後）：完全 prism ← 普遍向き付き prism A_0（Cor 4.12 の底変換）、A_0 上では原典 Thm 6.4 の証明
 （ψ : A_0 → W(A_0/d_0)、Thm 5.2 β（`wittSmallBridge_isInvertible`、旧 `wittPdBridge`）、J つき pd 比較 G-A1-17、w_0 に沿う底変換）。D68 改訂（11-05 夜）で
-結晶の黒箱はなくなった：Thm 5.2 β は Lemma 5.4（A1/CrystallineInput）と導来 Nakayama で `wittSmallBridge_isInvertible` の中で示す。可換代数構造は各段で保つ。
+結晶の黒箱はなくなった：Thm 5.2 は A1/CrystallineSite の (c)（`crystallineComparison_polynomial`、比較写像は原典の η）を (W, J) で使い、
+`wittSmallBridge_isInvertible` の中で X ↦ X^p の形（`frobeniusPdBridge_tot`）に読む。可換代数構造は各段で保つ。
 11-07（a1-design §10.5、D69 は関手の同型のまま）：A_0 上の比較 `deRham_iso_polynomial_universal` は、大きい Čech–Alexander 模型
 `bigCechAlexander` と W 上の大きい J つき pd 模型 `wittBigPdModel`（Q^∧ の元すべてを変数にする枠）、C 上の小さい模型 `pdModel C n` の
 厳密な自然変換の zigzag（`bigZigzagIso`）で作る。成分の可逆性は小さい模型の結果を枠の取り替え（`pdCechNerveMap_quasiIso`）で移す。
@@ -277,7 +278,12 @@ theorem wittSmallFrame_isInvertible (Q : Poly (residueU.{u} p)) :
     IsInvertibleEdge (Cosimplicial.totEInfinity_map _ (wittSmallFrame p Q)).toTruncated := by
   sorry -- pdCechNerveMap_quasiIso（どちらの枠も Q^∧/p を覆う、W は p 完備）と totEInfinity_map_isInvertible
 
-/-- 概要：小さい模型での結晶の橋 C_small(n)^• → ψ_* pdModel(W, n)^•（X ↦ X^p、A₀ → W は ψ）。pdModel W n の δ 構造は δ(X) = 0 の延長。 -/
+/-- 概要：小さい模型での結晶の橋 C_small(n)^• → ψ_* pdModel(W, n)^•（X ↦ X^p、A₀ → W は ψ）。
+方針：各項で envelope の lift（δ 射 X ↦ X^p、基底 ψ。pdModel W n の δ 構造は δ(X) = 0 の延長）。
+規約：原典の η ではなく、η から δ 変数を収縮した形：W 上では A1/CrystallineSite の `frobeniusPdBridge`（(A, I) = (W(C), J) の
+`etaBridge ≫ pdDeltaRetraction`）を `pdModel_iso_pdCechNerve` で pdModel W n に移したもの（ψ に沿う C_small の底変換を前に合成）。
+型は δ 変数なしの pdModel W n への写像のまま（大きい模型 `wittBigPdModel` が δ 変数なしで、`wittBridge_frame_comm` を X ↦ x^p で書くため）。
+使われ方：`wittSmallBridge_isInvertible`、`wittBridge_frame_comm`。 -/
 def wittSmallBridge (n : ℕ) :
     polyCosimplicialAlgebra (U.{u} p) (universalOrientedPrism_bounded (p := p)) n ⟶
       (Cosimplicial.restrictCosimplicial (psiRing p)).obj (pdModel p (WU p) n) := by
@@ -285,15 +291,17 @@ def wittSmallBridge (n : ℕ) :
 
 /-- 概要：小さい模型の原典 Thm 6.4 の核心（ψ に沿う底変換 ＋ Thm 5.2 β）：転置した辺 completeChange ψ (Tot C_small(n)) → Tot pdModel(W, n) は可逆。
 方針：`psiBaseChange`（Cor 4.12）と A0 の `cechAlexanderAffine_baseChange` で左辺を W 上の Čech–Alexander 模型 C_W(T′)^• の Tot に、
-W 上の Thm 5.2 β：mod p は Lemma 5.4（`frobeniusTwist_cech_quasiIso_infinite`、k = W/p）と G-A1-16 の mod p 版、持ち上げは両辺 p 完備なので
-導来 Nakayama（G-A1-4）。旧 `wittPdBridge`（VertexIso の存在）をこの辺の可逆性に置き換えた。
-規約：—
+W 上の Thm 5.2：A1/CrystallineSite の `crystallineComparison_polynomial`（(A, I) = (W(C), J)、比較写像は原典の η `etaBridge` と
+δ 変数の収縮 `pdDeltaRetraction` の Tot）を `frobeniusPdBridge_tot` で X ↦ X^p の写像（`frobeniusPdBridge`）の Tot の可逆性に読み、
+`pdModel_iso_pdCechNerve` で pdModel W n へ移す（(a) の同型は可逆なので 2-out-of-3 で外れる）。旧 `wittPdBridge`（VertexIso の存在）を
+この辺の可逆性に置き換えた。
+規約：Frobenius との両立は使わない。
 使われ方：`wittBigBridge_isInvertible`。 -/
 theorem wittSmallBridge_isInvertible (n : ℕ) :
     IsInvertibleEdge (baseChangeTotEdge p (psiRing p) (wittSmallBridge.{u} p n)
       (pdModel_complete p (WU p) (by sorry) n)).toTruncated := by
-  sorry -- psiBaseChange・cechAlexanderAffine_baseChange・Lemma 5.4（無限変数、k = W/p）・G-A1-16・導来 Nakayama
-        -- （W の p 完備性の sorry は wittCrystallinePrism と同じ根拠）
+  sorry -- psiBaseChange・cechAlexanderAffine_baseChange・crystallineComparison_polynomial（(W, J)）・frobeniusPdBridge_tot・
+        -- pdModel_iso_pdCechNerve（W の p 完備性の sorry は wittCrystallinePrism と同じ根拠）
 
 theorem wittBridge_frame_comm (Q : Poly (residueU.{u} p)) :
     wittSmallBridge p Q.n ≫ (Cosimplicial.restrictCosimplicial (psiRing p)).map (wittSmallFrame p Q) =

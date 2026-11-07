@@ -62,3 +62,14 @@ BS-W10 §4 と同じ形で `report-codex-w11.md` に追記。各停止点で `gi
 5. **停止点**：§1〜§4 の停止点で報告する（`report-codex-w11.md` に追記し、`math/bs-impl` にコミット）。**取り込み**は調整役が A-2・B-2・B-3・C-2・D-2 の各停止点で行う（sorry 0 のファイルだけ）。新規モジュールは入口（`BhattScholze.lean`・`CommutativeAlgebra.lean` など）と監査（`scripts/audit_bhatt_scholze*.lean`）に登録し、監査を単独で流す。
 6. **条件付きの事前承認**：型の停止点（A-1・B-1・C-1・D-1）は、主張が drafts の型と同じなら報告して待たずに証明へ進んでよい。型を変える必要があれば止める（原典どおりの定義を変えない。避けられない差は D 番号でユーザーに相談するので、報告に書く）。証明の停止点は「対象のビルドと監査が通り、sorry・公理 0、既存の宣言を変えていない」なら次の作業へ進んでよい。
 7. **ビルド**：小さなビルドだけ（`ps -axo command= | grep '[l]ake build'` が空で、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build …` で鍵が取れること）。main の作業木では作業しない。
+
+## 7. 追記（2026-11-07、調整役）：⑤a のこの後の予定
+
+BS-W11 の後、⑤a は次の順で進む（指示書は調整役が順に出す。今は読むだけでよい）。
+
+1. **BS-W12（BM18 の経路 B）**：完全環の arc 被覆で構造層の Čech 複体が完全（G-A6-1 `cech_exact_of_arcCover_perfect`、BS 著者版 Prop 8.10 の証明の中の主張）を、可換環論で直接示す。部品 B1〜B6（Čech の完全性の API、付値環の Milnor 列と完全代数、付値環の性質、超積、A → ∏ W_t が v 被覆、組み立て。`bhatt-scholze/citations-survey-2026-11-05.md` §2）。作業 B の付値環（G-A6-3・G-A6-6・1c）を使う。最後の組み立て B6 は ⑥ の BS17 Thm 4.1 (i) を待つ。
+2. **BS-W13（A8-1・A8-2）**：§10 の古典的な部分。A8-1 は J_perfd を一般の J に（Def 10.1）、Lemma 10.3 の一般の J、Prop 10.4 の複体版、Lemma 10.5（drafts/A8/AlmostConnectivity）。A8-2 は Thm 10.9 の J-almost 連結性の部分（drafts/A8/AlmostPurityConnectivity）。どちらも本体の Derived・André・semiperfectoid だけを使い、∞ の供給も E3 も待たない。作業 C（G-A8-6、有限エタールの perfectoid 性）が A8 の前段。
+
+これで、論文の §10 の目標に必要な項目は Thm 10.11（E3 の integral の欄。導来の perfectoid 化と Cor 8.12 を待つ）以外が埋まる。
+
+作業 A〜D の中で、後の BS-W12・BS-W13 で使う形（付値環の補題、有限エタールの perfectoid 性）は、使う側を意識した一般性で置く。

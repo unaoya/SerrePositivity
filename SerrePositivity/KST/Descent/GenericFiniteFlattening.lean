@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.SchemeLemmas.NoetherianFiniteModuleFlattening
+public import SerrePositivity.AlgebraicGeometry.NoetherianFiniteModuleFlattening
 public import Mathlib.RingTheory.Localization.Free
 public import Mathlib.RingTheory.Localization.FractionRing
 public import Mathlib.RingTheory.Localization.BaseChange
@@ -26,7 +26,7 @@ Noether 整域上の有限加群を非空基本開で自由にし、既存の実
 universe u v
 
 open scoped TensorProduct nonZeroDivisors
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 

@@ -42,7 +42,8 @@
 | Cor 5.5 | 定理。多項式代数、結晶 prism。(Z_p,(p)) の場合は `hodgeTate_iso_polynomial_Zp` ＝ `hodgeTate_of_deRham_cartier`（§10） | `hodgeTate_iso_crystalline` | Thm 5.2、Cartier 同型、Lemma 4.20 | A1-3 |
 | Constr 6.1 | 定義そのまま（B = A{φ(d)/p}^∧、α、性質 (1)(2)(3)） | `crystallineCover`、`crystallineCoverMap` | Cor 2.39 の r = 1（済）、Lemma 2.24（済）、導来 Nakayama、Tor 振幅 | A1-4 |
 | Prop 6.2 | 定理。一般の r、基底は §0 の範囲 | `hodgeTate_iso_of_crystallineCover` | Constr 6.1、Cor 5.5、Lemma 4.20 | A1-4 |
-| Thm 6.4 | 不要 | — | — | — |
+| Thm 6.4 | 不要（多項式・mod p の場合は A1-5、§9） | — | — | — |
+| 結晶 site・RΓ_crys（Thm 5.2 の証明、[Ber06 §III.4]） | **11-07 追加**：最小限で定義（§11） | `CrysOver`・`zariskiTopology`・`crystallineCohomology` | drafts/A1/CrystallineSite | A1-6 |
 | Lemma 2.36 多変数 | 定理。変数の場合：Z_p{x_1,…,x_r, φ(x)/p} は離散・p ねじれなしで pd 包 D_{(x)}(Z_p{x}) | `pdEnvelope_eq_frobeniusDivision` | 像の形は済（`pDivisionFactorialSubring_eq_raw_range`）。p ねじれなしは r = 1 のみ（T2-2） | A1-2 |
 | Lemma 2.38・Cor 2.39 | 変数の場合は Lemma 2.36 多変数と自由 δ 環の平坦底変換で済む | — | — | A1-2 |
 | Ex 2.21・Ex 3.4 | 定義そのまま（普遍 distinguished δ 環 Z_(p){d, δ(d)^{-1}} と、その (p,d) 完備化 A_0。有界 prism、(p,d) 正則、A_0/p の Frobenius が d 完全平坦、向き付き prism への普遍性） | `universalOrientedPrism` | 未（T2-4）。自由 δ 環・δ 環の局所化（`DeltaLocalization`）・完備化の δ 構造は済。Frobenius の mod p 自由性は `FreeDeltaFrobeniusFlat` | A1-4 |
@@ -175,7 +176,7 @@ A = Z_p、I = (p)、R = F_p[X_1,…,X_r]、B_0 = Z_p⟨X⟩ = Z_p[X]^∧_p、B =
 
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
-| D25 | Thm 5.2 は Δ_{R^{(1)}/A} ≃ RΓ_crys(R/A)（大きい結晶 site のコホモロジー） | **β（2026-11-02 決定）**：E3 で使う形 Δ_{R^{(1)}/Z_p} ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}（RΓ_crys を既知の値で置き換えた特別な場合）で述べる。結晶 site は定義しない。α（結晶 site と RΓ_crys、pro 版の脚注 10）は β の上に後から足せる | E3 の経路で RΓ_crys を使うのは Thm 5.2 だけ。定理の特別な場合であり、定義は増やさない |
+| D25 | Thm 5.2 は Δ_{R^{(1)}/A} ≃ RΓ_crys(R/A)（大きい結晶 site のコホモロジー） | **β（2026-11-02 決定）**：E3 で使う形 Δ_{R^{(1)}/Z_p} ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}（RΓ_crys を既知の値で置き換えた特別な場合）で述べる。結晶 site は定義しない。α（結晶 site と RΓ_crys、pro 版の脚注 10）は β の上に後から足せる | E3 の経路で RΓ_crys を使うのは Thm 5.2 だけ。定理の特別な場合であり、定義は増やさない。**改訂（11-07、ユーザー）：結晶 site を必要最小限で原典どおり定義する（§11）。β の「結晶 site は定義しない」は撤回** |
 | D26 | 微分形式は p 進形式スキームの（連続）Kähler 微分 | p 完備多項式代数について dX 上の自由加群として直接定義 | 原典の用法と同じ。Mathlib の `KaehlerDifferential` の p 完備化との一致は注記 |
 | D27 | H^*(Ō_{X/A}) は位相の可換環対象のコホモロジーの環 | Čech–Alexander 模型の cup 積と Bockstein で与え、CAlg 値の Δ との一致は A2・A4 | A1 の定理は模型について述べる |
 | D28 | 捻り {i}（I^i/I^{i+1}） | 向き付きなので落とす（原典 Constr 4.9 の最後の文） | 同じ |
@@ -190,10 +191,11 @@ A = Z_p、I = (p)、R = F_p[X_1,…,X_r]、B_0 = Z_p⟨X⟩ = Z_p[X]^∧_p、B =
 | A1-2 | 結晶側の対象（§2.3）：Lemma 2.36 の多変数（変数の場合）、pd 包 D^•、η : C^• → D^•、D^• = C^• ⊗_φ B^• | A0-3c、G-A1-6、T2-2（変数） |
 | A1-3 | Lemma 5.4、Thm 5.2（特別な場合）、D25 の形の de Rham 比較、Cartier、Cor 5.5 | A1-2、G-A1-3・4・7・8、Lemma 4.20 |
 | A1-4 | Construction 6.1、Prop 6.2（一般の r）、Thm 6.3、Cor 4.12、Lemma 4.10 | A1-3、A0-4（Lemma 4.20・4.22）、G-A1-4・5 |
+| A1-6（11-07） | 結晶 site（最小限）：site・O_crys・RΓ_crys、(a) Čech–Alexander（pro）、(b) Poincaré 補題、(c) Thm 5.2 の多項式の場合、(d) 関手性（§11） | A1-3 の pd 模型（CrystallineInput）、S2・S3（pro 版を新設）、A2 の Δ_0 |
 
 骨組みの順（2026-11-02 決定）：A1-1 → **A1-4** → A1-2 → A1-3。結晶側の話は最小限にする：A1-4 は結晶側の入力を一つの定理
 `hodgeTate_iso_polynomial_Zp`（(Z_p,(p))・R = F_p[X_1,…,X_r] の Cor 5.5）に閉じ込め、A1-2・A1-3 はその証明だけを供給する。
-結晶 site・crystal・RΓ_crys は定義せず（D25 β）、Thm 5.2 の一般の pd イデアル・結晶側の Frobenius の議論・Thm 6.4 の一般形は扱わない（多項式・mod p の特別な場合は A1-5、§9）。
+結晶 site・crystal・RΓ_crys は定義せず（D25 β。**11-07 改訂：site と RΓ_crys は §11 で最小限に定義、crystal は定義しない**）、Thm 5.2 の一般の pd イデアル・結晶側の Frobenius の議論・Thm 6.4 の一般形は扱わない（多項式・mod p の特別な場合は A1-5、§9）。
 A1-3 の de Rham 比較（§3 の 6）と Cartier は BS と独立な古典なので、別のファイルに分けて共有層へ出せる形にする（置き場所は調整役と相談）。
 
 **結晶側に残るもの（最小限）**：(1) Lemma 5.4（余単体的代数、無限変数版 G-A1-15）、(2) pd 包の Čech 脈体 D^•/p の Tot ≃ Ω^•_{F_p[X]/F_p}（δ 座標なしの D_0^• で pd 微分の
@@ -206,7 +208,7 @@ A5 の Lemma 8.6 が使う標数 p の de Rham 比較は (2) の W(k) への平�
 
 ## 7. 決定（2026-11-02、ユーザー）
 
-1. **D-A1-1（D25）**：β。Thm 5.2 は E3 で使う形（Δ_{R^{(1)}/Z_p} ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}）の特別な場合として述べ、結晶 site は定義しない。
+1. **D-A1-1（D25）**（**11-07 改訂：§11 で結晶 site と RΓ_crys を最小限で定義**）：β。Thm 5.2 は E3 で使う形（Δ_{R^{(1)}/Z_p} ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}）の特別な場合として述べ、結晶 site は定義しない。
    「pd 包の Čech 脈体 ≃ de Rham 複体」（§3 の 6）を証明する。α は後から足せる。
 2. **D-A1-2（D30）**：一般の有界向き付き prism で行う。導来テンソル E は環として作らず、b̂^*・ĉ^* を通常の環の底変換と制限の合成として
    定義する（§0・§3 の (c)）。普遍向き付き prism（G-A1-12）が範囲に入る。
@@ -255,7 +257,8 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
    C = A_0/d_0、W = W(C)、w_0 : W → C として
    (Δ_{T_0/A_0} ⊗̂^L_{A_0,ψ} W) ⊗̂^L_{W,w_0} C ≃ RΓ_crys((T_0/p)/W) ⊗̂^L_W C ≃ Ω^*_{T_0/C}、
    w_0 ∘ ψ は A_0 の Frobenius の後に C へ射影する射なので左辺は φ_0^*Δ_{T_0/A_0} ⊗̂^L_{A_0} C。**比較同型は原典の構成で与えられる**。
-   RΓ_crys の記号は原典との照合のためで、D25 β では J つき pd Čech 模型とその de Rham 計算（G-A1-17）で埋める。
+   RΓ_crys の記号は原典との照合のためで、D25 β では J つき pd Čech 模型とその de Rham 計算（G-A1-17）で埋める。**11-07 改訂：RΓ_crys は §11 の
+   `crystallineCohomology` として定義し、模型はそれを計算する定理 (a) の担い手（§11.3）。**
 3. 結晶 prism (W(A_0/d_0),(p)) と多項式：Thm 5.2 β の使う形（Δ ≃ Tot D^•、D^• の Tot ≃ 持ち上げの de Rham 複体＝§3 の 6）を、Lemma 4.20
    （(p)-prism の Δ は任意の p 完備底変換と可換、A0-4）で Z_p に帰着。
 4. （**11-07 注：D68 改訂で以下の黒箱は削除。HT は §10 の六段で直接、A1-5 の Thm 5.2 β は `wittSmallBridge_isInvertible`（旧 `wittPdBridge`）の中で Lemma 5.4 と導来 Nakayama から**）
@@ -283,6 +286,7 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
 | D68 | 結晶の入力は Thm 5.2（結晶 site）と Cor 5.5 | ~~黒箱を Thm 5.2 β の de Rham 形一つにし、HT（Cor 5.5）と de Rham mod p の両方をそこから出す~~ **改訂（11-05 夜、ユーザー）**：黒箱を外し、使う側が要る対象ごとの `HodgeTateIsoStatement` を mod p で直接証明（§10）。A1-5 の Thm 5.2 β は W 上で Lemma 5.4 と導来 Nakayama から | 恒久の引用なし（段階 II は sorry 0） |
+| D25（改訂、11-07） | Thm 5.2・Thm 6.4 の RΓ_crys は big crystalline site のコホモロジー | **結晶 site を最小限で原典どおり定義**（affine な対象、Zariski 位相、p 冪零、cutoff κ）。(a) Čech–Alexander・(b) Poincaré 補題・(c) Thm 5.2 の多項式の場合・(d) 関手性を定理に（§11） | 定義は原典どおり。差は要相談（§11.6）として D 番号を付けない |
 | D69 | Thm 6.4 の証明は ψ : A → W(A/I) と pd イデアル、仮定「W(A/I) p ねじれなし」 | 原典の証明を**普遍向き付き prism A_0 上だけ**で行い（A_0/d_0 は p ねじれなしなので仮定が成り立つ）、完全 prism へは底変換 (4) で移す（W9-I-15 で訂正：以前の「保存性で帰着」は比較射を欠いていた） | 原典の証明そのもの。perfectoid R について W(R) の p ねじれを確かめる必要はない |
 
 ### 9.4 決定事項（相談）
@@ -455,7 +459,7 @@ site の RΓ からの制限として同じ類（S3 の制限の自然性）。
 1. A2 の `PolyDeltaData` に「大きい Čech–Alexander 模型の Tot との FunctorIso」の欄を持たせるか。A2 の docstring は「∞ 関手としての整合性は
    大きい模型の厳密な関手性から」と書くが、今の欄（val・obj_eq・map_eval）からは段 1 の同型が出ない。構成は大きい模型の Tot の頂点を RΓ に
    差し替える（Joyal の isofibration Fun(K,X) → Fun(sk_0 K, X)、本体の名前は未確認）。
-2. 大きい枠 W[x_q | q ∈ Q^∧] の J つき pd Čech 模型は原典にない（原典 Thm 6.4 は結晶 site の RΓ_crys で、関手性は site から来る）。
+2. **（11-07、§11 で解消：模型は RΓ_crys を計算する定理 (a) の担い手）** 大きい枠 W[x_q | q ∈ Q^∧] の J つき pd Čech 模型は原典にない（原典 Thm 6.4 は結晶 site の RΓ_crys で、関手性は site から来る）。
    D25 β（結晶 site を pd Čech 模型で代える）の延長で、Construction 4.18 の考え方を結晶側に転用したもの。
 3. 一般の J つき pd 包（`IsCompletedPDEnvelope`・存在）と「表示によらない」補題は Mathlib にない古典（Berthelot）。BS は当然として使う。
 4. **削除した（11-07、ユーザー決定）**。旧 `pdPolynomialComparison`・`PDPolynomialComparison`・`pdTotMap`（1 単体までの自然性）は D69 の経路から使われなくなった。削除するか。
@@ -471,3 +475,137 @@ site の RΓ からの制限として同じ類（S3 の制限の自然性）。
 4. w_0 が pd 射：γ_n(Vx) = (p^{n−1}/n!) V(x^n) ↦ 0、γ_n(p) ↦ p^n/n!（p = 2 も）。
 5. 列 0 への射影の擬同型（ホモトピー的に定数な余単体的複体の Tot）、射影が AW × 外積の積を保つこと。
 6. `pdModelBaseChange_isInvertible`：Tot と完備底変換の交換を de Rham の span で示せること（両辺の span が係数変換と厳密に可換）。
+
+## 11. 結晶 site（最小限）（2026-11-07、ユーザーの方針変更）
+
+概要：11-07 のユーザー決定「crystalline site も必要最小限で作りましょう。方針変更です。」により、D25（11-02、Thm 5.2 の β 形：RΓ_crys を定義しない）を改め、
+Berthelot の結晶 site を**必要最小限で原典どおり**定義する。目的は、Thm 6.4 の比較同型（D69 の `deRham_iso_polynomial_universal`）の各段を、原典どおり
+「RΓ_crys とその site の関手性」で読めるようにすること。§10.5 の厳密な模型は「RΓ_crys を計算する」という定理の担い手として残す。
+方針：定義は原典どおり（BS 著者版 Thm 5.2 の証明の「big crystalline site (R/A)_CRYS as in [Ber06, §III.4]」、affine な対象）。定理は E3 に要る特別な場合だけ
+（(a) Čech–Alexander 型の計算、(b) 多項式の Poincaré 補題、(c) Thm 5.2 の多項式の場合、(d) R̄ と基底についての関手性と模型の射との一致）。
+計算用の模型（§10.5 の `wittBigPdModel`・`pdModel`）は「RΓ_crys を計算する」定理にする。
+規約：骨組みは drafts/A1/CrystallineSite.lean（新設、単位 A1-6）。S3 の pro 版（`exists_limitCone_of_proCech`）も当面そのファイルの先頭に置き、中身の段階で
+drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Crystalline Cohomology の章（Tag 07GI）の §5（07HL）・§18（07JI）・§21（07LE）。
+使われ方：A1-5（§9・§10.5）の各対象での可逆性の証明の読み方（§11.3）。D68 の経路（§10）は使わない（§11.5）。
+
+### 11.1 最小限の範囲：原典の項目との対応
+
+| 原典の項目 | 扱い | 形（drafts/A1/CrystallineSite） | 原典との差 |
+| --- | --- | --- | --- |
+| site の対象（[Ber06 §III.4] の (U, T, δ)、BS の (D/p^n → R′ ← R)） | **そのまま定義（affine な対象）** | `CrysOver`：k 代数 B、J_B と δ、k → B は pd 射、p は B で冪零、R̄ → B/J_B（Stacks Tag 07HM の CRIS(C/A)） | T は affine に限る（§11.6 の 1） |
+| U = Spec R 全体に限る小さい site（Stacks の Cris(C/A)、R̄ ≅ B/J_B） | **採らない** | — | BS の (D/p^n → R′ ← R) は R′ ≠ R で小さい site に入らず、f : R̄ → R̄′ の引き戻し関手もない。big site なら `crysPullback` が厳密な関手 |
+| [Ber06 Prop III.4.1.4]（big と small の比較） | 不要 | — | RΓ_crys を big site で定義するので比較を使わない |
+| 位相（Zariski） | **そのまま定義** | `zariskiTopology`（有限個の局所化 B → B_{f_i}、(f_i) = B の族が生成） | affine な対象の上の Zariski 被覆（§11.6 の 2） |
+| RΓ が位相によらないこと | 定理 | `crystallineStructure_isSheaf`（Stacks Tag 07JJ の O の場合）、`crystallineCohomology_isLimit`（RΓ = lim O ＝ chaotic 位相の RΓ、Stacks Tag 07JK の C） | — |
+| étale 位相 | 不要 | — | — |
+| 基底 (W(A/I), J, 標準の divided powers) | 既存の定義を使う | `wittPdIdeal`・`wittPdStructure`（A1/DeRhamComparisonPoly）。一般には (k, J, γ)、p ∈ J | — |
+| J と p の divided powers の両立 | 既存の sorry の中（`wittPdStructure`：VW と p の標準 divided powers は共通部分で一致）。W は p ねじれなしなので γ_n(p) = p^n/n! は一意 | Berthelot の「γ と両立」は J B ⊆ J_B のもとで k → B が pd 射であることと同じ（R̄ が k/J 代数なので自動） | — |
+| (C, (p), 標準) と w₀ が pd 射 | 既存 | `residuePdStructure`・`wZero_isDPMorphism` | — |
+| 大きさ | A0 と同じ cutoff | `IsCrystallineCutoff k R̄ κ`（κ ≥ `cutoff k R̄`）、枠の添字 #S ≤ κ。A1-5 では Poly(C) 全体で κ := cutoff W W | 宇宙は上げない。κ 不変性は使わない（κ を固定、§11.6 の 6） |
+| 構造層 O_crys | そのまま定義 | `crystallineStructureRing`（B ↦ B）、`crystallineStructure`（CAlg_k 値） | — |
+| RΓ_crys(R̄/k) := RΓ(site, O_crys) | そのまま定義 | `crystallineCohomology`（Sheaves の `derivedGlobalSectionsCAlg`、A2 の Δ と同じ入力） | 値は CAlg_k（D(k) 値は忘却） |
+| (a) Čech–Alexander（pro 対象 {D/p^n} が弱終、余積、[Ber06] の計算） | 定理（全射な枠 S → R̄） | `pdCechTower`・`pdCechTower_proWeaklyTerminal`・`totEInfinity_isLimit_truncations`・`crystallineCechIso`；一般論 `exists_limitCone_of_proCech` | 対象は p 冪零なので弱終なのは pro 対象（BS p.45–46、Stacks Tag 07HP・07JL・07JN） |
+| (b) 多項式の場合の Poincaré 補題（RΓ_crys は持ち上げの de Rham 複体） | 定理（R̄ = (k/J)[X]） | `crystallineCohomology_polynomial_deRham`（Stacks Tag 07LG の F = O） | — |
+| (c) Thm 5.2（I ∋ p、多項式の場合） | 定理 | `pdDeltaCechNerve`（δ 変数つきの D^• = B^•{φ(J₀)/p}^∧）、`etaBridge`（原典の η、b ↦ φ(b)）、`pdDeltaRetraction`（δ 変数の収縮、`_quasiIso`）、`crystallineComparison_polynomial`；`crystallineBridge_eq_eta`（D68 の η はその (ℤ_p,(p)) の場合）；`frobeniusPdBridge`（= η ≫ ρ、X ↦ X^p）・`frobeniusPdBridge_tot` | 比較写像は原典の η（§11.6 の 3、11-07 決定）。Frobenius との両立は述べない |
+| (d) R̄ についての関手性 | 辺の定義と定理 | `crysPullback`・`crysPullbackSite`・`crystallineCohomology_map`・`crystallineCohomology_map_comp`・`crystallineCohomology_map_frame` | ∞ 関手としての RΓ_crys は置かない（§11.4、§11.6 の 4） |
+| (d′) 基底についての関手性（W(C) → C） | 辺の定義 | `crysBaseRestriction`・`crystallineCohomology_baseChangeEdge`；多項式での可逆性は既存の `pdModelBaseChange_isInvertible` | — |
+| crystal、一般の O_{X/S} 加群、Frobenius の RΓ_crys への作用、Thm 5.2 の一般の smooth R・Frobenius との両立 | 不要 | — | E3 で使わない |
+
+### 11.2 置いた宣言（drafts/A1/CrystallineSite.lean、48 宣言・sorry のある宣言 40。11-07 の η への書き直しで +8 宣言・+5）
+
+- S3 の pro 版（名前空間 `InfinityCategories.Sheaves`）：`IsProWeaklyTerminal`、`ProCechNerveData`、`proCechIndexFunctor`（＋`_obj`）、`proCechShape`、`exists_limitCone_of_proCech`。
+- site：`IsCrystallineCutoff`、`CrysOver`（＋`Hom`・圏・`IsZariskiFamily`・`essentiallySmall`）、`CrysOverSmall`、`CrystallineSite`、`zariskiTopology`、`crysAlgebras`、
+  `crystallineStructureRing`、`crystallineStructure`、`crystallineStructure_isSheaf`、`crystallineCohomology`、`crystallineCohomology_isLimit`。
+- 関手性：`crysPullback`、`crysPullbackSite`、`crystallineCohomology_map`、`crystallineCohomology_map_comp`、`crysBaseRestriction`、`crystallineCohomology_baseChangeEdge`。
+- (a)：`crysResidueAlgebra`、`crysResidue_kernel`、`pdCechNerveIdeal`・`pdCechNerveDP`・`pdCechNerve_isDPMorphism`（`pdCechNerve` の選択の pd 構造を取り出す）、
+  `pdCechTower`、`pdCechTower_proWeaklyTerminal`、`totEInfinity_isLimit_truncations`、`crystallineCechIso`、(d) の `crystallineCohomology_map_frame`。
+- (b)：`crystallineCohomology_polynomial_deRham`。(c)：`crysPolynomial`、`polyPdCech`、`deltaCechVariable`、`pdDeltaCechNerve`、`etaBridge`、
+  `pdDeltaRetraction`、`pdDeltaRetraction_quasiIso`、`frobeniusPdBridge`（合成で定義、sorry なし）、`frobeniusPdBridge_tot`、`crystallineComparison_polynomial`、
+  `crystallineBridge_eq_eta`。
+- 結論が `True` の仮置き・仮定の `True` はない。既存ファイルは編集していない（CrystallineInput も）。
+
+### 11.3 D69（Thm 6.4）の筋の書き直し：原典の文と §10.5 の段
+
+原典 Thm 6.4 の証明は「Δ_{R/A} ⊗̂_{A,ψ} W(A/I) ≃ RΓ_crys((R/p)/W(A/I))（底変換 Cor 4.12 ＋ Thm 5.2 を pd イデアル J で）」と「RΓ_crys((R/p)/W(A/I)) は
+Ω_{R/(A/I)} を持ち上げる（結晶コホモロジーの一般論）」の二つ。A₀ 上（§9.1）で、Q ∈ Poly(C)、R̄_Q := Q^∧/p = (C/p)[X] = (W/J)[X] とすると
+§10.5.2 の段はそれぞれ次の原典の文を厳密な模型で実現したものになる：
+
+| 段 | 原典の文（RΓ_crys で） | 厳密な模型（§10.5、残る） | 各対象での可逆性の読み方（新） |
+| --- | --- | --- | --- |
+| 0 | q ∘ φ = w₀ ∘ ψ | `completeChange_comp`・`wZero_psi` | 変更なし |
+| 1 | Δ_0 の関手性（prismatic site） | `polyUnderlying_iso_bigCech`（A2 の `PolyDeltaData` の欄） | 変更なし |
+| 2 | Δ_{Q^∧/A₀} ⊗̂_ψ W ≃ RΓ_crys(R̄_Q/W) | `wittBigBridge`：C_big(Q)^• → ψ_* D_W(Q)^•、D_W(Q)^• = `wittBigPdModel`（大きい枠 Q^∧ → R̄_Q の pd Čech 脈体） | (a)：Tot D_W(Q)^• ≃ RΓ_crys(R̄_Q/W)（`crystallineCechIso`、枠 S = Q^∧）。`wittSmallFrame_isInvertible` は (d) で f = id（二つの枠がどちらも RΓ_crys を計算し、枠の射が site の射と一致）。`wittSmallBridge_isInvertible` は `psiBaseChange`（Cor 4.12）と (c) を (A, I) = (W, J) で（η の形の (c) を `frobeniusPdBridge_tot` で X ↦ X^p の `wittSmallBridge` に読む） |
+| 3 | RΓ_crys(R̄_Q/W) ⊗̂_{W,w₀} C ≃ RΓ_crys(R̄_Q/C)（基底 (W,J) → (C,(p)) の pd 射に沿う底変換） | `wittToSmall`：D_W(Q)^• → (w₀)_* D_0(C,Q)^• | 辺は `crystallineCohomology_baseChangeEdge`（g = w₀）の転置。D_0(C,Q)^• = `pdModel C n` は小さい枠の pd Čech 脈体（`pdModel_iso_pdCechNerve`）なので (a) で RΓ_crys(R̄_Q/C) を計算。可逆性は `pdModelBaseChange_isInvertible`（模型の定理）と (d) |
+| 4 | RΓ_crys(R̄_Q/C) ≃ Ω̂^•_{Q^∧/C}（Poincaré 補題） | `pdDeRhamFunctorIso`（k = C） | 各成分は (b)（`crystallineCohomology_polynomial_deRham`、k = C、J = (p)） |
+
+**§10.5 のうち残るもの**（「RΓ_crys を計算する」定理の担い手、∞ 関手としての高次の整合性の出どころ）：`bigCechAlexander`、`wittBigPdModel`、`wittBigCrystalline`、
+`wittBigBridge`、`wittToSmall`、`pdPolynomialFunctor`、`pdDeRhamCDGA` 以下の段 4、`baseChangeTotHomotopy` 系、Shared の厳密な自然変換の部品、`bigZigzagIso`、
+`wittComposite`、`deRham_iso_polynomial_universal`（型は変えない）、各対象の `cechAlexanderFrame`・`wittSmallFrame`・`wittSmallBridge`・`pdModelBaseChange` と四角形。
+**要らなくなるもの・軽くなるもの**：
+1. `pdCechNerveMap_quasiIso`（表示によらない、積の枠と pd 多項式の Čech 因子の extra degeneracy・mod p^a ごとの収縮と Rlim）：(a)＋(d) の系になる（BS 著者版 Thm 5.2 の
+   「this recipe is independent of the choice of (B₀ → R)」の原典どおりの理由）。主張は残し、証明の筋を site に差し替える（11-07 決定、§11.6 の 5）。変数変換
+   D_{S⊔S′} ≅ D_S⟨t⟩^∧ は `wittBigCrystalline` の p ねじれなしに残る。
+2. §10.5.6 の要相談 2（「大きい枠の J つき pd Čech 模型は原典にない」）：解消。模型は原典の定義 RΓ_crys を計算する定理 (a) の担い手になった。
+3. §10.4 の代案・§10.5.4 の決定は変わらない（`wittComposite` は zigzag の成分のまま）。
+4. `extraCech_comparison`（G-A1-16）：D_0^• と δ 変数つきの D^• がどちらも RΓ_crys を計算する（big site の対象 (D/p^e → R′ ← R)）ので site の系にもできるが、
+   既存の extra degeneracy の証明は短いのでそのまま（どちらでもよい）。一般の基底の版が (c) の `pdDeltaRetraction_quasiIso`。
+
+**(c) の形（11-07 決定、§11.6 の 3）**：比較写像は原典の η。一般の基底 (A, I, γ_I)（A は結晶 prism で生成元 p、有界）について
+`etaBridge` : C^• = `polyCosimplicialAlgebra P hP r`（Rem 4.19）→ D_δ^• = `pdDeltaCechNerve`（B^• = A{X^{(0..•)}}^∧ の J₀ = I B + (X^{(i)} − X^{(0)}) の
+γ_I と両立する p 完備な pd 包、Cor 2.39 の形 B^•{φ(J₀)/p}^∧）、b ↦ φ(b)。`crystallineComparison_polynomial` の結論は
+Δ ≃ Tot C^• →(Tot η) Tot D_δ^• →(Tot ρ) Tot D^• ≃(a) RΓ_crys の合成が同型。D68 の `crystallineBridge` は (A, I) = (ℤ_p, (p)) の場合
+（`crystallineBridge_eq_eta`：`pdDeltaModel` ≅ `pdDeltaCechNerve` のもとで一致。一般の η が本体で crystallineBridge はその特殊化だが、
+CrystallineInput は CrystallineSite より前なので crystallineBridge は独立の定義のまま、関係を CrystallineSite の補題で述べる）。
+
+**(a) とのつなぎ方**：D_δ^• は big site の対象 (D_δ^0/p^e, R̄ → R′ = B/J₀B ≠ R̄) の Čech 脈体だが、(a) は全射な枠 k[S] → R̄ の pd Čech 脈体についての定理。
+二案：(i) δ 変数つきの {D_δ^0/p^e} を弱終な pro 対象として (a) をもう一つ置く（塔・各段の pd 構造・弱終性・同型の 4〜5 宣言）、
+(ii) δ 変数なしの枠と比較する補題を置く。**(ii) を採った**：δ 変数の収縮 ρ = `pdDeltaRetraction` : D_δ^• → D^•（δ^a(X) ↦ 0、a ≥ 1）と
+その擬同型 `pdDeltaRetraction_quasiIso`（G-A1-16 の一般の基底の版：D_δ^n ≅ D^n ⊗̂ E^n、E^• の extra degeneracy）の 2 宣言で済み、証明は
+ℤ_p の `extraCech_comparison`・D68 の段 3 と同じ型で既にある。(a) は全射な枠の版だけでよい。
+
+**X ↦ X^p の写像**：旧 `frobeniusPdBridge` は A1-5 の `wittSmallBridge`（δ 変数なしの `pdModel W n` へ、X ↦ X^p）と `wittBridge_frame_comm` が使うので、
+η からの計算として残した：`frobeniusPdBridge := etaBridge ≫ pdDeltaRetraction`（ρ(φ(X)) = X^p）、`frobeniusPdBridge_tot`（Tot の類は Tot η ≫ Tot ρ）。
+`wittSmallBridge` の型は変えない。
+
+### 11.4 自然性：site の関手性が与えるもの・与えないもの
+
+- 与えるもの：頂点（各 Q の RΓ_crys(R̄_Q/W)・RΓ_crys(R̄_Q/C)）と辺（`crystallineCohomology_map`：R̄ の射、`crystallineCohomology_baseChangeEdge`：基底の pd 射）、
+  ホモトピー圏での関手則（`crystallineCohomology_map_comp`）、そして厳密な模型の射がその辺に一致すること（`crystallineCohomology_map_frame`）。
+  big site なので R̄ → R̄′ の引き戻し `crysPullback` は厳密な関手（関手則は rfl）。
+- 与えないもの：関手 ∞ 圏 Fun(N(Poly C), CAlg) の頂点としての Q ↦ RΓ_crys(R̄_Q)（2 単体以上の整合性）。site の族から ∞ 関手を作るには「厳密な site の族の上の
+  極限の関手性」（Grothendieck 構成と右 Kan 延長）の基盤が要り、今の Sheaves にない。Δ_0（A2 の `PolyDeltaData`）と同じく、∞ 関手は厳密な模型から nerve で作り、
+  site はその頂点と辺の意味を与える。D69 の `FunctorIso` の型と `bigZigzagIso` の組み立ては変えない（§11.6 の 4）。
+
+### 11.5 D68（§10、HT の直接証明）への影響
+
+なし。§10 の六段は (Z_p,(p))・F_p[X] の Čech–Alexander 模型の mod p の cohomology 同型で、RΓ_crys を通らない。A1/CrystallineInput の宣言（`pdModel`・`pdRow`・
+`withExtraCoords`・`pdDeRhamFunctorIso` など）は変更せず、CrystallineSite はそれを import して使うだけ。共有するのは Lemma 5.4（`frobeniusTwist_cech_quasiIso_infinite`）で、
+(c) の証明でも使う（重複しない）。段 2〜4 は (c)・(a)・(b) の (Z_p,(p)) の場合の mod p の読み替えにもなるが、§10 の証明は書き換えない。
+
+### 11.6 要相談（原典との差・設計の未決、D 番号なし）→ 11-07 に 1〜6 とも決定（design-status §0.3.1 の末尾）
+
+1. **affine な対象に限る**（Berthelot の (U, T, δ) は一般の T）。**決定（11-07）：限る**。理由：BS 自身が affine で議論し（「enough to solve the problem in the affine case」）、
+   prismatic site（Def 4.1 の扱い）と同じ。全体の site との比較（Stacks Tag 07JK の special cocontinuous の議論）は E3 で使わないので証明しない。
+2. **位相**：Zariski（原典どおり）／indiscrete（chaotic）。**決定（11-07）：Zariski**。Zariski で定義し、O_crys が層であること（`crystallineStructure_isSheaf`）を定理にする。理由：定義が原典どおりで、
+   RΓ は層なので chaotic と同じ（`crystallineCohomology_isLimit`）。費用は有限個の局所化の族の Amitsur 複体（A0 の `structurePresheafDerived_isLimit_singleton` と同じ型）
+   一件。この一件が重ければ chaotic に替える（その場合は Stacks Tag 07JK を根拠として定義の差を記録）。
+3. **(c) の比較写像**：**決定（11-07、ユーザー）：Thm 5.2 は原典の η（b ↦ φ(b)、δ 変数つきの D^• = B^•{φ(J₀)/p}^∧、R′ = B/J₀B ≠ R の対象を通る）の写像が
+   同型であるという形で述べる**（`etaBridge`・`crystallineComparison_polynomial`）。理由：X ↦ X^p で δ 変数なしの D^• に入れる形だと、D68 の `crystallineBridge`
+   （(ℤ_p,(p)) の原典の η）と二つの比較写像が並び、Frobenius との両立やほかでの使い回しで困る。η の形なら crystallineBridge はその特殊化（`crystallineBridge_eq_eta`）。
+   (a) とのつなぎは δ 変数の収縮 `pdDeltaRetraction`（Tot で可逆）で、X ↦ X^p の写像は `frobeniusPdBridge := etaBridge ≫ pdDeltaRetraction` として残る（§11.3）。
+4. **∞ 関手としての RΓ_crys**：置かない／`PolyDeltaData` と同じ形の `PolyCrystallineData`（val・obj_eq・map_eq と模型との `FunctorIso` の欄）を W と C について置き、
+   `bigZigzagIso` が文字どおり RΓ_crys を通るようにする。**決定（11-07）：置かない**。理由：§11.4 のとおり ∞ の整合性は模型から来るので、欄を足しても zigzag の中で打ち消し合うだけ。
+5. **`pdCechNerveMap_quasiIso`**：主張を残して証明の筋を (a)＋(d) に差し替える／削除して `wittSmallFrame_isInvertible` などを (d) から直接。**決定（11-07）：主張を残し証明を site 経由に**。理由：使う側の
+   docstring・sorry の理由を変えずに済み、sorry は増減しない。差し替えは CrystallineInput・DeRhamComparisonPoly の sorry の理由の行だけ（本体へ移す Codex の作業と合わせる）。
+6. **対象は p 冪零**（Berthelot どおり）／p 進完備な対象（Stacks Remark 07KH の Cris^∧、D が弱終で pro 版の S3 が要らない）。**決定（11-07）：p 冪零**。理由：原典の定義のまま。
+   費用は一般論 `exists_limitCone_of_proCech` 一件と `totEInfinity_isLimit_truncations`（Mittag-Leffler）。cutoff は κ := cutoff W W に固定し κ 不変性は置かない。
+
+### 11.7 紙で確かめる項目
+
+1. `pdCechTower`：p^e D ⊆ J̄ が divided powers で閉じる（γ_m(p^e x) = p^{em}/m!·x^m、v_p ≥ e、p = 2 も）こと、D_S^n/p^e が CRYS(R̄) で D_S^0/p^e の (n+1) 個の余積
+   （Stacks Tag 07HN の余積の構成と pd 包の普遍性）、濃度 ≤ κ。
+2. (c) を一般の I ∋ p で：D^• が (A,(p)) 上の結晶 prism の余単体的対象（Lemma 2.38 の議論）で、mod p の押し出し D^n/p ≅ C^n/p ⊗_φ B^n/p が I の pd を加えても成り立つこと
+   （原典は I = (p) の場合に示してから一般へ帰着、本書は多項式で直接）。
+3. (d)：m の mod p^{e+1} が pro 対象の間の site の射（pd 射・sec と両立）であること、O の極限の制限が pro Čech 図式の上で m に一致すること。
+4. Zariski：divided powers が局所化に一意に延びること（平坦な底変換）、有限族の Amitsur 複体の完全性を ∞ の篩の条件へ移す議論。
+5. 段 3：`crysBaseRestriction`（w₀）で C 上の対象が W 上の対象になる（W/J ≅ C/p、R̄_Q の二つの構造が両立）こと。
