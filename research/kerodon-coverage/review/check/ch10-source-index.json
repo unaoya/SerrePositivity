@@ -1,0 +1,740 @@
+{
+  "site": "https://kerodon.net/tag/",
+  "pages_sha256": {
+    "04QJ": "1e9e7a1b1a57e8447b4cdae3dc9205738d2cc26dbd034a4a5e2b3336cc8e8c0d",
+    "04QQ": "191b6ff486a046311b97d033d52267b99f78fa3c2f0e3691042c672e9750cb80",
+    "04R8": "f8747373dc9e4c7428160305d6c99eed327e0126cfd96a01891d5af7e3a559e9",
+    "05G3": "a3a71396face6d6eb8a085346940c68de51a36298310db6a5f20c87b98789f7d",
+    "05GU": "4468d7a77cae425d801f424b60225df80dc393a227e1c39e0fdcee422adced5c",
+    "04SV": "0e3d3dab012b4ddec6c61ca39fcb0d8853f7d57f8927b50990a46d2ba033deeb",
+    "04S6": "1ec163485563c35faf865e8439a41e7aefc60f878a4e2b87d3bc2c770ce75090",
+    "04TM": "acf2d16e7f804712961cc47631fdbd0e232f0c657ba9b74255d9557c9b466ee7",
+    "04TZ": "757c91ee8ce743897dcf9a03de54b1960bf43b5d187e37ac15fe16be7fbd3022",
+    "04WG": "0f64ddac9844245c2a630afa88bf36dbcc33850a3bdf936905fa9471ff7d53fb",
+    "04X1": "41b98a84d78b3a839cc6b2e7dcd95e47aa2c20b5f124194dfcb33129e5abc3ae",
+    "04XV": "de820195c25e252112fb5f843b5f10d002d2df30d3767e61dddc4cb20203b53c",
+    "04YE": "57069c4472a50d16871ff4861e8121acb4b620574be903236ed79d7fc33217df"
+  },
+  "items": {
+    "10.1.0.2": {
+      "tag": "04QL",
+      "page": "04QJ",
+      "priority": "A"
+    },
+    "10.1.1.13": {
+      "tag": "04R3",
+      "page": "04QQ",
+      "priority": "A"
+    },
+    "10.1.2.22": {
+      "tag": "04RX",
+      "page": "04R8",
+      "priority": "A"
+    },
+    "10.1.2.28": {
+      "tag": "04S3",
+      "page": "04R8",
+      "priority": "A"
+    },
+    "10.1.3.1": {
+      "tag": "05G4",
+      "page": "05G3",
+      "priority": "A"
+    },
+    "10.1.3.18": {
+      "tag": "05GM",
+      "page": "05G3",
+      "priority": "A"
+    },
+    "10.1.3.23": {
+      "tag": "05GS",
+      "page": "05G3",
+      "priority": "A"
+    },
+    "10.1.4.4": {
+      "tag": "04SZ",
+      "page": "05GU",
+      "priority": "A"
+    },
+    "10.1.4.8": {
+      "tag": "04T3",
+      "page": "05GU",
+      "priority": "A"
+    },
+    "10.1.4.15": {
+      "tag": "05H1",
+      "page": "05GU",
+      "priority": "A"
+    },
+    "10.1.4.17": {
+      "tag": "05H3",
+      "page": "05GU",
+      "priority": "A"
+    },
+    "10.1.4.21": {
+      "tag": "05H7",
+      "page": "05GU",
+      "priority": "A"
+    },
+    "10.1.5.5": {
+      "tag": "04T8",
+      "page": "04SV",
+      "priority": "A"
+    },
+    "10.1.5.9": {
+      "tag": "05H8",
+      "page": "04SV",
+      "priority": "A"
+    },
+    "10.1.6.7": {
+      "tag": "04SF",
+      "page": "04S6",
+      "priority": "A"
+    },
+    "10.1.6.9": {
+      "tag": "04SH",
+      "page": "04S6",
+      "priority": "A"
+    },
+    "10.1.6.11": {
+      "tag": "04SK",
+      "page": "04S6",
+      "priority": "A"
+    },
+    "10.1.0.1": {
+      "tag": "04QK",
+      "page": "04QJ",
+      "priority": ""
+    },
+    "10.1.0.4": {
+      "tag": "04QN",
+      "page": "04QJ",
+      "priority": ""
+    },
+    "10.1.1.1": {
+      "tag": "04QR",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.2": {
+      "tag": "04QS",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.3": {
+      "tag": "04QT",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.5": {
+      "tag": "04QV",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.9": {
+      "tag": "04QZ",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.10": {
+      "tag": "04R0",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.12": {
+      "tag": "04R2",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.1.16": {
+      "tag": "04R6",
+      "page": "04QQ",
+      "priority": ""
+    },
+    "10.1.2.1": {
+      "tag": "04R9",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.2": {
+      "tag": "04RA",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.6": {
+      "tag": "04RE",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.7": {
+      "tag": "04RF",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.9": {
+      "tag": "04RH",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.11": {
+      "tag": "04RK",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.12": {
+      "tag": "04RM",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.13": {
+      "tag": "04RN",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.14": {
+      "tag": "04RP",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.15": {
+      "tag": "04RQ",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.16": {
+      "tag": "04RR",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.23": {
+      "tag": "04RY",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.25": {
+      "tag": "04S0",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.27": {
+      "tag": "04S2",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.2.29": {
+      "tag": "04S4",
+      "page": "04R8",
+      "priority": ""
+    },
+    "10.1.3.2": {
+      "tag": "05G5",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.3": {
+      "tag": "05G6",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.4": {
+      "tag": "05G7",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.10": {
+      "tag": "05GD",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.12": {
+      "tag": "05GF",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.13": {
+      "tag": "05GG",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.14": {
+      "tag": "05GH",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.16": {
+      "tag": "05GK",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.3.17": {
+      "tag": "05GL",
+      "page": "05G3",
+      "priority": ""
+    },
+    "10.1.4.1": {
+      "tag": "04SW",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.3": {
+      "tag": "04SY",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.5": {
+      "tag": "04T0",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.6": {
+      "tag": "04T1",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.9": {
+      "tag": "05GV",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.14": {
+      "tag": "05H0",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.4.16": {
+      "tag": "05H2",
+      "page": "05GU",
+      "priority": ""
+    },
+    "10.1.5.1": {
+      "tag": "04T4",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.4": {
+      "tag": "04T7",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.6": {
+      "tag": "04T9",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.8": {
+      "tag": "04TB",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.10": {
+      "tag": "05H9",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.14": {
+      "tag": "05HD",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.18": {
+      "tag": "05HH",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.20": {
+      "tag": "05HK",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.21": {
+      "tag": "05HL",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.5.22": {
+      "tag": "05HM",
+      "page": "04SV",
+      "priority": ""
+    },
+    "10.1.6.1": {
+      "tag": "04S7",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.3": {
+      "tag": "04S9",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.13": {
+      "tag": "04SM",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.14": {
+      "tag": "05HN",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.15": {
+      "tag": "04TL",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.16": {
+      "tag": "05HP",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.19": {
+      "tag": "04TE",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.20": {
+      "tag": "04TF",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.21": {
+      "tag": "04TG",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.1.6.22": {
+      "tag": "04SN",
+      "page": "04S6",
+      "priority": ""
+    },
+    "10.2.0.2": {
+      "tag": "04TP",
+      "page": "04TM",
+      "priority": ""
+    },
+    "10.2.0.6": {
+      "tag": "04TT",
+      "page": "04TM",
+      "priority": ""
+    },
+    "10.2.1.1": {
+      "tag": "04U0",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.5": {
+      "tag": "04U4",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.6": {
+      "tag": "04U5",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.8": {
+      "tag": "04U7",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.12": {
+      "tag": "04UA",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.13": {
+      "tag": "04UB",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.18": {
+      "tag": "04UD",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.22": {
+      "tag": "04UH",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.24": {
+      "tag": "04UL",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.26": {
+      "tag": "04UN",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.29": {
+      "tag": "04UR",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.33": {
+      "tag": "04UV",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.1.34": {
+      "tag": "04UW",
+      "page": "04TZ",
+      "priority": ""
+    },
+    "10.2.2.1": {
+      "tag": "04WH",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.2": {
+      "tag": "04WJ",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.4": {
+      "tag": "04WL",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.5": {
+      "tag": "04WM",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.6": {
+      "tag": "04WN",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.7": {
+      "tag": "04WP",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.9": {
+      "tag": "04WR",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.11": {
+      "tag": "04WT",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.12": {
+      "tag": "04WU",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.14": {
+      "tag": "04WW",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.2.17": {
+      "tag": "04X0",
+      "page": "04WG",
+      "priority": ""
+    },
+    "10.2.3.1": {
+      "tag": "04X2",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.6": {
+      "tag": "04X8",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.9": {
+      "tag": "04XB",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.10": {
+      "tag": "04XC",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.11": {
+      "tag": "04XD",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.12": {
+      "tag": "04XG",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.13": {
+      "tag": "05HS",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.14": {
+      "tag": "04XH",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.17": {
+      "tag": "0738",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.18": {
+      "tag": "04XM",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.21": {
+      "tag": "04XQ",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.22": {
+      "tag": "04XR",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.23": {
+      "tag": "04XS",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.3.24": {
+      "tag": "04XT",
+      "page": "04X1",
+      "priority": ""
+    },
+    "10.2.4.1": {
+      "tag": "04XW",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.6": {
+      "tag": "04Y1",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.7": {
+      "tag": "04Y3",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.8": {
+      "tag": "04Y4",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.9": {
+      "tag": "04Y5",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.10": {
+      "tag": "04Y6",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.12": {
+      "tag": "04Y8",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.13": {
+      "tag": "04Y9",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.14": {
+      "tag": "04YA",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.15": {
+      "tag": "04YB",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.16": {
+      "tag": "04YC",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.4.17": {
+      "tag": "04YD",
+      "page": "04XV",
+      "priority": ""
+    },
+    "10.2.5.1": {
+      "tag": "04YF",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.3": {
+      "tag": "04YH",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.5": {
+      "tag": "04YM",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.6": {
+      "tag": "04YN",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.9": {
+      "tag": "0739",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.10": {
+      "tag": "04YR",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.11": {
+      "tag": "04YS",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.13": {
+      "tag": "04YU",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.15": {
+      "tag": "04YW",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.17": {
+      "tag": "04YY",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.18": {
+      "tag": "04YZ",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.19": {
+      "tag": "04Z0",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.20": {
+      "tag": "04Z1",
+      "page": "04YE",
+      "priority": ""
+    },
+    "10.2.5.21": {
+      "tag": "04Z4",
+      "page": "04YE",
+      "priority": ""
+    }
+  }
+}

@@ -1,0 +1,2498 @@
+{
+  "base": "33ce6cfca",
+  "stages": {
+    "1": "runs/all-20261107-01/declaration-results.csv",
+    "1prime": "runs/stage1-prime-01/verified-candidates.csv",
+    "2": "supplemental"
+  },
+  "items": {
+    "8.1.2.11": {
+      "adopted": [
+        {
+          "id": "a05b2cdf065e1c5a28fc",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_mono",
+          "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomComparison.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean",
+          "phase": "2"
+        }
+      ],
+      "discarded": [
+        {
+          "id": "53f7a603329e3e215b76",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.6.5": {
+      "adopted": [
+        {
+          "id": "ff842ff2ed7bd1d54b07",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.7.8": {
+      "adopted": [
+        {
+          "id": "70449e30e9593059252d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.2.5.1": {
+      "adopted": [
+        {
+          "id": "d5e903c947e305054886",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.1.6": {
+      "adopted": [
+        {
+          "id": "dc444e86944c6546cc61",
+          "phase": "1prime"
+        },
+        {
+          "id": "dc3a1f5926ab9fc34faf",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.5": {
+      "adopted": [
+        {
+          "id": "862a3120aee732356fa8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.12": {
+      "adopted": [
+        {
+          "id": "862a3120aee732356fa8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.13": {
+      "adopted": [
+        {
+          "id": "f6853abb92483c664ced",
+          "phase": "1prime"
+        },
+        {
+          "id": "02b06cd48c27f8edfb8c",
+          "phase": "1prime"
+        },
+        {
+          "id": "e23894ee0d22050fd630",
+          "phase": "1prime"
+        },
+        {
+          "id": "41cc26a892ddaada9501",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.14": {
+      "adopted": [
+        {
+          "id": "4566c2fe03217691c58a",
+          "phase": "1prime"
+        },
+        {
+          "id": "41a3e55efa3ccf7c04fa",
+          "phase": "1prime"
+        }
+      ],
+      "discarded": [
+        {
+          "id": "d6d86fe29c745b9c7d54",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.15": {
+      "adopted": [
+        {
+          "id": "4566c2fe03217691c58a",
+          "phase": "1prime"
+        },
+        {
+          "id": "41a3e55efa3ccf7c04fa",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.4.4": {
+      "adopted": [
+        {
+          "id": "023054860741bde6be9b",
+          "phase": "1prime"
+        },
+        {
+          "id": "0e8e34f2fdfc922b7158",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.0.3": {
+      "adopted": [
+        {
+          "id": "ac5480192b2b6083dff8",
+          "phase": "1prime"
+        },
+        {
+          "id": "972eb8c407feac872dc2",
+          "phase": "1prime"
+        },
+        {
+          "id": "d0dfd589329f58c244f5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.2.1": {
+      "adopted": [
+        {
+          "id": "0b8e56e7f112912d0265",
+          "phase": "1prime"
+        },
+        {
+          "id": "ceaba321ca9de3c762a2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.2.4": {
+      "adopted": [
+        {
+          "id": "0b8e56e7f112912d0265",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.2.7": {
+      "adopted": [
+        {
+          "id": "232619fc84419d572aa6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.3.2": {
+      "adopted": [
+        {
+          "id": "972eb8c407feac872dc2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.3.5": {
+      "adopted": [
+        {
+          "id": "d0dfd589329f58c244f5",
+          "phase": "1prime"
+        },
+        {
+          "id": "587b32975638ea3138cc",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.5.2": {
+      "adopted": [
+        {
+          "id": "587b32975638ea3138cc",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.9.1": {
+      "adopted": [
+        {
+          "id": "232619fc84419d572aa6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.2.4": {
+      "adopted": [
+        {
+          "id": "328ce5167d627c5a7f3b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.2.6": {
+      "adopted": [
+        {
+          "id": "328ce5167d627c5a7f3b",
+          "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.Idempotents.isIdempotentComplete_iff_opposite",
+          "source": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "8.5.3.12": {
+      "adopted": [
+        {
+          "id": "c0634029f3f26f445d51",
+          "phase": "1prime"
+        },
+        {
+          "id": "fd7827c8a9fe3213eff2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.5.6": {
+      "adopted": [
+        {
+          "id": "43a77e587da9b874a157",
+          "phase": "1prime"
+        },
+        {
+          "id": "6066b81b0816ec847327",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.19": {
+      "adopted": [
+        {
+          "id": "331b75858780d1828791",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.8.4": {
+      "adopted": [
+        {
+          "id": "181b324869e94fe65ba7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.0.1": {
+      "adopted": []
+    },
+    "8.1.1.1": {
+      "adopted": [
+        {
+          "id": "1b53eff6ed4150dbff9d",
+          "phase": "1prime"
+        },
+        {
+          "id": "52f72637e1d0b615464a",
+          "phase": "1prime"
+        },
+        {
+          "id": "202e0f37b05db5dd6991",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.2": {
+      "adopted": [
+        {
+          "id": "b29d6ec7b4933f6950f1",
+          "phase": "1prime"
+        },
+        {
+          "id": "52f72637e1d0b615464a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.4": {
+      "adopted": [
+        {
+          "id": "e2c16bd4bc0077ac1bec",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.6": {
+      "adopted": [
+        {
+          "id": "cf11b96d1cfe067b06d4",
+          "phase": "1prime"
+        },
+        {
+          "id": "e1a88c21aacdec8ed0c1",
+          "phase": "1prime"
+        },
+        {
+          "id": "e1e4cca94dac014d01d7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.7": {
+      "adopted": [
+        {
+          "id": "94c9a4d458ff8fc4dae0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.10": {
+      "adopted": []
+    },
+    "8.1.1.11": {
+      "adopted": [
+        {
+          "id": "0c87734eaa7504d4e678",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.12": {
+      "adopted": [
+        {
+          "id": "3a9e84d58ce31fbdef80",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.13": {
+      "adopted": [
+        {
+          "id": "0c87734eaa7504d4e678",
+          "phase": "1prime"
+        },
+        {
+          "id": "a10f726cc2d576a1268e",
+          "phase": "1prime"
+        },
+        {
+          "id": "8951bd158f7a149b9fc3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.1.14": {
+      "adopted": []
+    },
+    "8.1.1.15": {
+      "adopted": []
+    },
+    "8.1.1.16": {
+      "adopted": []
+    },
+    "8.1.2.1": {
+      "adopted": [
+        {
+          "id": "e764d41326c6d1e2ae0a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.3": {
+      "adopted": [
+        {
+          "id": "7f54c39e4961d8ac6e78",
+          "phase": "1prime"
+        },
+        {
+          "id": "81b7a57f359289ce1805",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.4": {
+      "adopted": []
+    },
+    "8.1.2.5": {
+      "adopted": []
+    },
+    "8.1.2.6": {
+      "adopted": []
+    },
+    "8.1.2.7": {
+      "adopted": [
+        {
+          "id": "a37dde0eb60bca44930c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.10": {
+      "adopted": [
+        {
+          "id": "2abc7d43a4cebf5e7454",
+          "phase": "1prime"
+        },
+        {
+          "id": "0da6396301bb0f6410c4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.12": {
+      "adopted": []
+    },
+    "8.1.2.15": {
+      "adopted": [
+        {
+          "id": "a05b2cdf065e1c5a28fc",
+          "phase": "1prime"
+        },
+        {
+          "id": "9fa7a8410f3f25e78729",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.16": {
+      "adopted": [
+        {
+          "id": "fa4929a235502fcc582d",
+          "phase": "1prime"
+        },
+        {
+          "id": "0b9ea120cc9d4e95eaad",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.2.17": {
+      "adopted": []
+    },
+    "8.1.2.18": {
+      "adopted": []
+    },
+    "8.1.2.19": {
+      "adopted": []
+    },
+    "8.1.2.21": {
+      "adopted": []
+    },
+    "8.1.2.22": {
+      "adopted": []
+    },
+    "8.1.2.23": {
+      "adopted": []
+    },
+    "8.1.3.1": {
+      "adopted": []
+    },
+    "8.1.3.5": {
+      "adopted": []
+    },
+    "8.1.3.7": {
+      "adopted": []
+    },
+    "8.1.3.8": {
+      "adopted": []
+    },
+    "8.1.3.10": {
+      "adopted": []
+    },
+    "8.1.3.11": {
+      "adopted": []
+    },
+    "8.1.3.12": {
+      "adopted": [
+        {
+          "id": "ff842ff2ed7bd1d54b07",
+          "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.Span.SpanBicat.instBicategory",
+          "source": "Mathlib/CategoryTheory/Bicategory/Span/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "8.1.3.14": {
+      "adopted": []
+    },
+    "8.1.3.15": {
+      "adopted": []
+    },
+    "8.1.4.1": {
+      "adopted": []
+    },
+    "8.1.4.2": {
+      "adopted": []
+    },
+    "8.1.4.3": {
+      "adopted": []
+    },
+    "8.1.4.4": {
+      "adopted": []
+    },
+    "8.1.4.6": {
+      "adopted": []
+    },
+    "8.1.4.7": {
+      "adopted": []
+    },
+    "8.1.4.8": {
+      "adopted": []
+    },
+    "8.1.5.1": {
+      "adopted": []
+    },
+    "8.1.5.2": {
+      "adopted": []
+    },
+    "8.1.6.1": {
+      "adopted": []
+    },
+    "8.1.6.7": {
+      "adopted": []
+    },
+    "8.1.6.8": {
+      "adopted": []
+    },
+    "8.1.6.10": {
+      "adopted": []
+    },
+    "8.1.6.12": {
+      "adopted": []
+    },
+    "8.1.7.1": {
+      "adopted": []
+    },
+    "8.1.7.2": {
+      "adopted": []
+    },
+    "8.1.7.4": {
+      "adopted": []
+    },
+    "8.1.7.5": {
+      "adopted": []
+    },
+    "8.1.7.6": {
+      "adopted": []
+    },
+    "8.1.7.9": {
+      "adopted": []
+    },
+    "8.1.7.12": {
+      "adopted": []
+    },
+    "8.1.7.13": {
+      "adopted": []
+    },
+    "8.1.7.14": {
+      "adopted": []
+    },
+    "8.1.8.2": {
+      "adopted": []
+    },
+    "8.1.8.4": {
+      "adopted": []
+    },
+    "8.1.8.6": {
+      "adopted": []
+    },
+    "8.1.9.1": {
+      "adopted": []
+    },
+    "8.1.9.5": {
+      "adopted": [
+        {
+          "id": "f0ee9428c789889f0a4d",
+          "phase": "1prime"
+        },
+        {
+          "id": "25ece9ed58c4e07d74e8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.1.9.9": {
+      "adopted": []
+    },
+    "8.1.9.10": {
+      "adopted": []
+    },
+    "8.1.10.1": {
+      "adopted": []
+    },
+    "8.1.10.3": {
+      "adopted": []
+    },
+    "8.1.10.5": {
+      "adopted": []
+    },
+    "8.1.10.6": {
+      "adopted": []
+    },
+    "8.1.10.9": {
+      "adopted": []
+    },
+    "8.1.10.12": {
+      "adopted": []
+    },
+    "8.2.0.1": {
+      "adopted": [
+        {
+          "id": "0c87734eaa7504d4e678",
+          "phase": "1prime"
+        },
+        {
+          "id": "e1e4cca94dac014d01d7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.2.0.3": {
+      "adopted": []
+    },
+    "8.2.0.4": {
+      "adopted": []
+    },
+    "8.2.1.1": {
+      "adopted": []
+    },
+    "8.2.1.3": {
+      "adopted": []
+    },
+    "8.2.1.6": {
+      "adopted": []
+    },
+    "8.2.1.7": {
+      "adopted": []
+    },
+    "8.2.1.8": {
+      "adopted": []
+    },
+    "8.2.1.10": {
+      "adopted": []
+    },
+    "8.2.2.1": {
+      "adopted": []
+    },
+    "8.2.2.2": {
+      "adopted": []
+    },
+    "8.2.2.5": {
+      "adopted": []
+    },
+    "8.2.2.9": {
+      "adopted": []
+    },
+    "8.2.2.10": {
+      "adopted": []
+    },
+    "8.2.2.11": {
+      "adopted": []
+    },
+    "8.2.2.13": {
+      "adopted": []
+    },
+    "8.2.3.1": {
+      "adopted": []
+    },
+    "8.2.3.4": {
+      "adopted": []
+    },
+    "8.2.3.5": {
+      "adopted": []
+    },
+    "8.2.3.6": {
+      "adopted": []
+    },
+    "8.2.3.7": {
+      "adopted": []
+    },
+    "8.2.3.8": {
+      "adopted": []
+    },
+    "8.2.3.9": {
+      "adopted": []
+    },
+    "8.2.4.1": {
+      "adopted": []
+    },
+    "8.2.4.3": {
+      "adopted": []
+    },
+    "8.2.4.4": {
+      "adopted": []
+    },
+    "8.2.4.5": {
+      "adopted": []
+    },
+    "8.2.4.6": {
+      "adopted": []
+    },
+    "8.2.4.9": {
+      "adopted": []
+    },
+    "8.2.5.2": {
+      "adopted": [
+        {
+          "id": "023054860741bde6be9b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.2.6.1": {
+      "adopted": []
+    },
+    "8.2.6.6": {
+      "adopted": []
+    },
+    "8.2.6.7": {
+      "adopted": []
+    },
+    "8.2.6.8": {
+      "adopted": []
+    },
+    "8.2.6.9": {
+      "adopted": []
+    },
+    "8.3.0.1": {
+      "adopted": [
+        {
+          "id": "0e9c1cbf9f5784ea2ed3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.1.1": {
+      "adopted": [
+        {
+          "id": "e050372de1268a777b53",
+          "phase": "1prime"
+        },
+        {
+          "id": "931eff0da596c6036125",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.1.2": {
+      "adopted": [
+        {
+          "id": "862a3120aee732356fa8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.1.3": {
+      "adopted": [
+        {
+          "id": "5e0cfabe2d669ba0748e",
+          "phase": "1prime"
+        },
+        {
+          "id": "64e6a1216330890901da",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.1.7": {
+      "adopted": []
+    },
+    "8.3.1.8": {
+      "adopted": []
+    },
+    "8.3.1.9": {
+      "adopted": []
+    },
+    "8.3.2.1": {
+      "adopted": [
+        {
+          "id": "7df7d24f91284100c05b",
+          "phase": "1prime"
+        },
+        {
+          "id": "bb8d3009853639233be5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.2.6": {
+      "adopted": []
+    },
+    "8.3.2.7": {
+      "adopted": []
+    },
+    "8.3.2.9": {
+      "adopted": [
+        {
+          "id": "660d6a7b3224fcacd36a",
+          "phase": "1prime"
+        },
+        {
+          "id": "2b4d3501f5019a37b4ee",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.2.17": {
+      "adopted": []
+    },
+    "8.3.2.18": {
+      "adopted": []
+    },
+    "8.3.2.20": {
+      "adopted": []
+    },
+    "8.3.2.21": {
+      "adopted": []
+    },
+    "8.3.3.1": {
+      "adopted": [
+        {
+          "id": "7df7d24f91284100c05b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.2": {
+      "adopted": [
+        {
+          "id": "7df7d24f91284100c05b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f8521ef92571e48d9f5f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.7": {
+      "adopted": [
+        {
+          "id": "7df7d24f91284100c05b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f8521ef92571e48d9f5f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.8": {
+      "adopted": []
+    },
+    "8.3.3.9": {
+      "adopted": [
+        {
+          "id": "e23894ee0d22050fd630",
+          "phase": "1prime"
+        },
+        {
+          "id": "41cc26a892ddaada9501",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.3.17": {
+      "adopted": [
+        {
+          "id": "f6853abb92483c664ced",
+          "phase": "1prime"
+        },
+        {
+          "id": "9e0ab79beca8862d79f8",
+          "phase": "1prime"
+        },
+        {
+          "id": "ac5480192b2b6083dff8",
+          "phase": "1prime"
+        },
+        {
+          "id": "41a3e55efa3ccf7c04fa",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.4.1": {
+      "adopted": []
+    },
+    "8.3.4.2": {
+      "adopted": [
+        {
+          "id": "023054860741bde6be9b",
+          "phase": "1prime"
+        },
+        {
+          "id": "dc3a1f5926ab9fc34faf",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.4.9": {
+      "adopted": [
+        {
+          "id": "023054860741bde6be9b",
+          "phase": "1prime"
+        },
+        {
+          "id": "d5e903c947e305054886",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.4.10": {
+      "adopted": []
+    },
+    "8.3.4.11": {
+      "adopted": [
+        {
+          "id": "862a3120aee732356fa8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.4.12": {
+      "adopted": []
+    },
+    "8.3.4.15": {
+      "adopted": []
+    },
+    "8.3.4.16": {
+      "adopted": []
+    },
+    "8.3.4.19": {
+      "adopted": []
+    },
+    "8.3.4.20": {
+      "adopted": []
+    },
+    "8.3.4.21": {
+      "adopted": []
+    },
+    "8.3.5.1": {
+      "adopted": []
+    },
+    "8.3.5.5": {
+      "adopted": []
+    },
+    "8.3.5.6": {
+      "adopted": []
+    },
+    "8.3.5.7": {
+      "adopted": []
+    },
+    "8.3.5.8": {
+      "adopted": []
+    },
+    "8.3.6.1": {
+      "adopted": [
+        {
+          "id": "bd1b340113d6b23e91ed",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.6.2": {
+      "adopted": [
+        {
+          "id": "3a03875a890e9a61ca7b",
+          "phase": "1prime"
+        },
+        {
+          "id": "d1391880725bd9d76cd9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.3.6.5": {
+      "adopted": []
+    },
+    "8.3.6.7": {
+      "adopted": []
+    },
+    "8.3.7.1": {
+      "adopted": []
+    },
+    "8.3.7.3": {
+      "adopted": []
+    },
+    "8.3.7.4": {
+      "adopted": []
+    },
+    "8.3.7.6": {
+      "adopted": []
+    },
+    "8.3.7.7": {
+      "adopted": []
+    },
+    "8.4.0.1": {
+      "adopted": []
+    },
+    "8.4.1.1": {
+      "adopted": [
+        {
+          "id": "da7f57e609731c423efc",
+          "phase": "1"
+        },
+        {
+          "id": "b9771f974ff7daead708",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.1.5": {
+      "adopted": [
+        {
+          "id": "10649d7774929002fdfa",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.1.8": {
+      "adopted": [
+        {
+          "id": "d1855ac4f4ae9093dc94",
+          "phase": "1"
+        },
+        {
+          "id": "65060cf35dfef3c4239d",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.4.1.9": {
+      "adopted": []
+    },
+    "8.4.1.15": {
+      "adopted": [
+        {
+          "id": "10649d7774929002fdfa",
+          "phase": "1prime"
+        },
+        {
+          "id": "da7f57e609731c423efc",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.4.1.22": {
+      "adopted": [
+        {
+          "id": "d1855ac4f4ae9093dc94",
+          "phase": "1"
+        },
+        {
+          "id": "65060cf35dfef3c4239d",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.4.1.23": {
+      "adopted": []
+    },
+    "8.4.2.2": {
+      "adopted": [
+        {
+          "id": "0b8e56e7f112912d0265",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.2.5": {
+      "adopted": [
+        {
+          "id": "5e0cfabe2d669ba0748e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.2.8": {
+      "adopted": []
+    },
+    "8.4.3.1": {
+      "adopted": []
+    },
+    "8.4.3.4": {
+      "adopted": []
+    },
+    "8.4.3.8": {
+      "adopted": []
+    },
+    "8.4.3.9": {
+      "adopted": []
+    },
+    "8.4.4.1": {
+      "adopted": []
+    },
+    "8.4.4.3": {
+      "adopted": []
+    },
+    "8.4.4.5": {
+      "adopted": []
+    },
+    "8.4.5.1": {
+      "adopted": [
+        {
+          "id": "972eb8c407feac872dc2",
+          "phase": "1prime"
+        },
+        {
+          "id": "47a1e00efeb6ebb376d9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.5.3": {
+      "adopted": []
+    },
+    "8.4.5.4": {
+      "adopted": []
+    },
+    "8.4.5.6": {
+      "adopted": []
+    },
+    "8.4.6.1": {
+      "adopted": []
+    },
+    "8.4.6.3": {
+      "adopted": [
+        {
+          "id": "b7b6bbcc5789086f3e77",
+          "phase": "1prime"
+        },
+        {
+          "id": "55c1df3e4daf29bb4d6c",
+          "phase": "1prime"
+        },
+        {
+          "id": "335925268f85dac3f35f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.6.6": {
+      "adopted": []
+    },
+    "8.4.6.8": {
+      "adopted": [
+        {
+          "id": "e8040ce1ad8809f99ac7",
+          "phase": "1prime"
+        },
+        {
+          "id": "55c1df3e4daf29bb4d6c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.4.6.9": {
+      "adopted": []
+    },
+    "8.4.6.10": {
+      "adopted": []
+    },
+    "8.4.6.11": {
+      "adopted": []
+    },
+    "8.4.6.12": {
+      "adopted": []
+    },
+    "8.4.6.13": {
+      "adopted": []
+    },
+    "8.4.7.1": {
+      "adopted": []
+    },
+    "8.4.7.2": {
+      "adopted": []
+    },
+    "8.4.7.3": {
+      "adopted": []
+    },
+    "8.4.7.5": {
+      "adopted": []
+    },
+    "8.4.7.7": {
+      "adopted": []
+    },
+    "8.4.7.8": {
+      "adopted": []
+    },
+    "8.4.7.9": {
+      "adopted": []
+    },
+    "8.4.7.10": {
+      "adopted": []
+    },
+    "8.4.7.12": {
+      "adopted": []
+    },
+    "8.4.7.14": {
+      "adopted": []
+    },
+    "8.4.8.1": {
+      "adopted": []
+    },
+    "8.4.8.3": {
+      "adopted": []
+    },
+    "8.4.8.6": {
+      "adopted": []
+    },
+    "8.4.8.7": {
+      "adopted": []
+    },
+    "8.4.8.8": {
+      "adopted": []
+    },
+    "8.4.8.9": {
+      "adopted": []
+    },
+    "8.4.8.10": {
+      "adopted": []
+    },
+    "8.4.9.6": {
+      "adopted": []
+    },
+    "8.4.9.7": {
+      "adopted": []
+    },
+    "8.5.0.2": {
+      "adopted": [
+        {
+          "id": "8d47dcbfe235dbbd2c7b",
+          "phase": "1prime"
+        },
+        {
+          "id": "a1abed1a972ba8a5e334",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.1": {
+      "adopted": [
+        {
+          "id": "7512fbb3777f0957082a",
+          "phase": "1prime"
+        },
+        {
+          "id": "3e91292fe2b61a074838",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.3": {
+      "adopted": []
+    },
+    "8.5.1.7": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.MorphismProperty.IsStableUnderRetracts.isomorphisms",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/Retract.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "8.5.1.8": {
+      "adopted": [
+        {
+          "id": "81bbec4786033d69e5d3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.9": {
+      "adopted": []
+    },
+    "8.5.1.10": {
+      "adopted": []
+    },
+    "8.5.1.11": {
+      "adopted": []
+    },
+    "8.5.1.12": {
+      "adopted": [
+        {
+          "id": "633229a024140080a766",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.13": {
+      "adopted": []
+    },
+    "8.5.1.14": {
+      "adopted": [
+        {
+          "id": "4852a26082cda9177711",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.15": {
+      "adopted": []
+    },
+    "8.5.1.18": {
+      "adopted": []
+    },
+    "8.5.1.20": {
+      "adopted": []
+    },
+    "8.5.1.22": {
+      "adopted": [
+        {
+          "id": "f7f77203d6e6cec905cf",
+          "phase": "1prime"
+        },
+        {
+          "id": "a3725e7dec6c29433582",
+          "phase": "1prime"
+        },
+        {
+          "id": "c13131973b0d26313167",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.27": {
+      "adopted": [
+        {
+          "id": "8d47dcbfe235dbbd2c7b",
+          "phase": "1prime"
+        },
+        {
+          "id": "b795aa10e327b5523952",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.30": {
+      "adopted": [
+        {
+          "id": "7df3bca60a726e8192b1",
+          "phase": "1prime"
+        },
+        {
+          "id": "325b945d77e94f967197",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.31": {
+      "adopted": [
+        {
+          "id": "331b75858780d1828791",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.33": {
+      "adopted": [
+        {
+          "id": "331b75858780d1828791",
+          "phase": "1prime"
+        },
+        {
+          "id": "b8a89ed0b6f262c1e1cd",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.1.35": {
+      "adopted": []
+    },
+    "8.5.1.36": {
+      "adopted": [
+        {
+          "id": "632a5b5efb456bfa48d2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.2.1": {
+      "adopted": [
+        {
+          "id": "c07a81c93ce5d25a4297",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.5.2.5": {
+      "adopted": [
+        {
+          "id": "328ce5167d627c5a7f3b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.2.7": {
+      "adopted": [
+        {
+          "id": "2077728f3ad649a6e712",
+          "phase": "1prime"
+        },
+        {
+          "id": "29c81d6963ea8abbcb2d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.3.1": {
+      "adopted": [
+        {
+          "id": "7ac495dc4359fbc93ddf",
+          "phase": "1prime"
+        },
+        {
+          "id": "b2ae32d30cc4157981e6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.3.5": {
+      "adopted": [
+        {
+          "id": "2ab208bf3454049fc40e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.3.8": {
+      "adopted": [
+        {
+          "id": "bde7ae8e4900b53d82a6",
+          "phase": "1prime"
+        },
+        {
+          "id": "5b242ca2bfd71e91d212",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.3.10": {
+      "adopted": [
+        {
+          "id": "00a91982fb913294d09f",
+          "phase": "1prime"
+        },
+        {
+          "id": "1aa63b0c581d6778556a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.3.11": {
+      "adopted": [
+        {
+          "id": "df4b52b1397c4a541d96",
+          "phase": "1prime"
+        },
+        {
+          "id": "f3dcfda0793f4de26d07",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.1": {
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete",
+          "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "8.5.4.3": {
+      "adopted": []
+    },
+    "8.5.4.10": {
+      "adopted": [
+        {
+          "id": "00dc01455a54507d4608",
+          "phase": "1prime"
+        },
+        {
+          "id": "e6b3f7a082ce7203cd2d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.11": {
+      "adopted": [
+        {
+          "id": "c8917a73c2979bd7600f",
+          "phase": "1prime"
+        },
+        {
+          "id": "9e6c0dae24363ff52842",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.13": {
+      "adopted": [
+        {
+          "id": "7b1f3ac60e7d510971db",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.14": {
+      "adopted": [
+        {
+          "id": "4cf99fa13a4a47b43d67",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.15": {
+      "adopted": []
+    },
+    "8.5.4.19": {
+      "adopted": []
+    },
+    "8.5.4.20": {
+      "adopted": []
+    },
+    "8.5.4.25": {
+      "adopted": [
+        {
+          "id": "4cf99fa13a4a47b43d67",
+          "phase": "1prime"
+        },
+        {
+          "id": "87fe9b417c7a03c243b2",
+          "phase": "1prime"
+        },
+        {
+          "id": "3b89f096aafd91d901c2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.26": {
+      "adopted": [
+        {
+          "id": "7b227ce0898d9fd55d9b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f9c5bc860e6e026fc3e7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.4.27": {
+      "adopted": []
+    },
+    "8.5.4.28": {
+      "adopted": []
+    },
+    "8.5.4.29": {
+      "adopted": []
+    },
+    "8.5.5.1": {
+      "adopted": [
+        {
+          "id": "7440da7bfb3bddfcb010",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.5.3": {
+      "adopted": [
+        {
+          "id": "026a15c719c65396eda0",
+          "phase": "1prime"
+        },
+        {
+          "id": "6f84bba9bf23c5073cf2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.5.4": {
+      "adopted": [
+        {
+          "id": "335925268f85dac3f35f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.5.5": {
+      "adopted": [
+        {
+          "id": "335925268f85dac3f35f",
+          "phase": "1prime"
+        },
+        {
+          "id": "a4bdc6568c936cff22b4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.5.7": {
+      "adopted": []
+    },
+    "8.5.5.8": {
+      "adopted": []
+    },
+    "8.5.5.9": {
+      "adopted": []
+    },
+    "8.5.5.10": {
+      "adopted": []
+    },
+    "8.5.6.1": {
+      "adopted": []
+    },
+    "8.5.6.10": {
+      "adopted": []
+    },
+    "8.5.6.11": {
+      "adopted": [
+        {
+          "id": "7440da7bfb3bddfcb010",
+          "phase": "1prime"
+        },
+        {
+          "id": "026a15c719c65396eda0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.6.12": {
+      "adopted": []
+    },
+    "8.5.6.13": {
+      "adopted": [
+        {
+          "id": "ff26047989827a206508",
+          "phase": "1prime"
+        },
+        {
+          "id": "52d3a57227e530883a6e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.6.14": {
+      "adopted": []
+    },
+    "8.5.6.15": {
+      "adopted": [
+        {
+          "id": "fb01664ab51fab7a15a6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.6.16": {
+      "adopted": []
+    },
+    "8.5.6.17": {
+      "adopted": [
+        {
+          "id": "67c266406bce85f6efcf",
+          "phase": "1prime"
+        },
+        {
+          "id": "5e62a518be6226abecf1",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.6.18": {
+      "adopted": [
+        {
+          "id": "fb01664ab51fab7a15a6",
+          "phase": "1prime"
+        },
+        {
+          "id": "9d61553bfbdee575aed9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.6.20": {
+      "adopted": [
+        {
+          "id": "9b187288af84961a0db6",
+          "phase": "1prime"
+        },
+        {
+          "id": "93f84d09555e501a0164",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.1": {
+      "adopted": [
+        {
+          "id": "d0e3e58dd51e2368bc46",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.5.7.3": {
+      "adopted": [
+        {
+          "id": "7ac495dc4359fbc93ddf",
+          "phase": "1prime"
+        },
+        {
+          "id": "d5232c4cdc15893fed41",
+          "phase": "1prime"
+        },
+        {
+          "id": "2077728f3ad649a6e712",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.4": {
+      "adopted": []
+    },
+    "8.5.7.5": {
+      "adopted": []
+    },
+    "8.5.7.8": {
+      "adopted": [
+        {
+          "id": "c13131973b0d26313167",
+          "phase": "1prime"
+        },
+        {
+          "id": "2ab208bf3454049fc40e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.10": {
+      "adopted": [
+        {
+          "id": "181b324869e94fe65ba7",
+          "phase": "1prime"
+        },
+        {
+          "id": "b8a89ed0b6f262c1e1cd",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.11": {
+      "adopted": []
+    },
+    "8.5.7.12": {
+      "adopted": [
+        {
+          "id": "df4b52b1397c4a541d96",
+          "phase": "1prime"
+        },
+        {
+          "id": "f3dcfda0793f4de26d07",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.14": {
+      "adopted": []
+    },
+    "8.5.7.15": {
+      "adopted": [
+        {
+          "id": "8d47dcbfe235dbbd2c7b",
+          "phase": "1prime"
+        },
+        {
+          "id": "b795aa10e327b5523952",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.16": {
+      "adopted": [
+        {
+          "id": "5b242ca2bfd71e91d212",
+          "phase": "1prime"
+        },
+        {
+          "id": "25849c35493b869470ab",
+          "phase": "1prime"
+        },
+        {
+          "id": "11196ed68b8919135f88",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.5.7.17": {
+      "adopted": []
+    },
+    "8.5.8.1": {
+      "adopted": []
+    },
+    "8.5.8.5": {
+      "adopted": []
+    },
+    "8.5.8.6": {
+      "adopted": []
+    },
+    "8.5.8.7": {
+      "adopted": []
+    },
+    "8.5.8.9": {
+      "adopted": []
+    },
+    "8.5.8.12": {
+      "adopted": []
+    },
+    "8.5.8.13": {
+      "adopted": []
+    },
+    "8.5.8.14": {
+      "adopted": []
+    },
+    "8.5.8.15": {
+      "adopted": []
+    },
+    "8.5.9.4": {
+      "adopted": []
+    },
+    "8.5.9.6": {
+      "adopted": []
+    },
+    "8.5.9.8": {
+      "adopted": []
+    },
+    "8.5.9.9": {
+      "adopted": []
+    },
+    "8.5.9.10": {
+      "adopted": []
+    },
+    "8.5.9.11": {
+      "adopted": []
+    },
+    "8.5.9.13": {
+      "adopted": []
+    },
+    "8.5.10.1": {
+      "adopted": []
+    },
+    "8.5.10.3": {
+      "adopted": []
+    },
+    "8.5.10.4": {
+      "adopted": []
+    },
+    "8.5.10.5": {
+      "adopted": []
+    },
+    "8.5.10.6": {
+      "adopted": []
+    },
+    "8.5.10.7": {
+      "adopted": []
+    },
+    "8.5.10.9": {
+      "adopted": []
+    },
+    "8.5.10.11": {
+      "adopted": []
+    },
+    "8.5.10.12": {
+      "adopted": []
+    },
+    "8.5.10.15": {
+      "adopted": []
+    },
+    "8.5.10.16": {
+      "adopted": []
+    },
+    "8.5.10.18": {
+      "adopted": []
+    },
+    "8.6.1.1": {
+      "adopted": []
+    },
+    "8.6.1.5": {
+      "adopted": []
+    },
+    "8.6.1.6": {
+      "adopted": []
+    },
+    "8.6.1.7": {
+      "adopted": []
+    },
+    "8.6.1.8": {
+      "adopted": []
+    },
+    "8.6.1.9": {
+      "adopted": []
+    },
+    "8.6.1.10": {
+      "adopted": []
+    },
+    "8.6.1.11": {
+      "adopted": []
+    },
+    "8.6.1.12": {
+      "adopted": []
+    },
+    "8.6.1.13": {
+      "adopted": []
+    },
+    "8.6.2.1": {
+      "adopted": []
+    },
+    "8.6.2.2": {
+      "adopted": []
+    },
+    "8.6.2.3": {
+      "adopted": []
+    },
+    "8.6.2.4": {
+      "adopted": []
+    },
+    "8.6.2.6": {
+      "adopted": []
+    },
+    "8.6.2.7": {
+      "adopted": []
+    },
+    "8.6.2.8": {
+      "adopted": []
+    },
+    "8.6.2.9": {
+      "adopted": []
+    },
+    "8.6.3.1": {
+      "adopted": []
+    },
+    "8.6.3.5": {
+      "adopted": []
+    },
+    "8.6.3.6": {
+      "adopted": []
+    },
+    "8.6.3.8": {
+      "adopted": []
+    },
+    "8.6.3.9": {
+      "adopted": []
+    },
+    "8.6.3.11": {
+      "adopted": []
+    },
+    "8.6.3.14": {
+      "adopted": []
+    },
+    "8.6.3.15": {
+      "adopted": []
+    },
+    "8.6.3.17": {
+      "adopted": []
+    },
+    "8.6.3.18": {
+      "adopted": []
+    },
+    "8.6.4.1": {
+      "adopted": []
+    },
+    "8.6.4.7": {
+      "adopted": []
+    },
+    "8.6.4.8": {
+      "adopted": []
+    },
+    "8.6.4.9": {
+      "adopted": []
+    },
+    "8.6.4.10": {
+      "adopted": []
+    },
+    "8.6.4.12": {
+      "adopted": []
+    },
+    "8.6.4.13": {
+      "adopted": []
+    },
+    "8.6.4.15": {
+      "adopted": []
+    },
+    "8.6.4.16": {
+      "adopted": []
+    },
+    "8.6.4.17": {
+      "adopted": []
+    },
+    "8.6.4.19": {
+      "adopted": []
+    },
+    "8.6.4.20": {
+      "adopted": []
+    },
+    "8.6.4.21": {
+      "adopted": []
+    },
+    "8.6.4.22": {
+      "adopted": []
+    },
+    "8.6.4.23": {
+      "adopted": []
+    },
+    "8.6.5.1": {
+      "adopted": []
+    },
+    "8.6.5.2": {
+      "adopted": []
+    },
+    "8.6.5.3": {
+      "adopted": []
+    },
+    "8.6.5.6": {
+      "adopted": []
+    },
+    "8.6.5.8": {
+      "adopted": []
+    },
+    "8.6.5.9": {
+      "adopted": []
+    },
+    "8.6.5.11": {
+      "adopted": []
+    },
+    "8.6.5.12": {
+      "adopted": []
+    },
+    "8.6.5.13": {
+      "adopted": []
+    },
+    "8.6.5.14": {
+      "adopted": []
+    },
+    "8.6.5.15": {
+      "adopted": []
+    },
+    "8.6.5.16": {
+      "adopted": []
+    },
+    "8.6.5.18": {
+      "adopted": []
+    },
+    "8.6.5.19": {
+      "adopted": []
+    },
+    "8.6.6.1": {
+      "adopted": []
+    },
+    "8.6.6.2": {
+      "adopted": []
+    },
+    "8.6.6.3": {
+      "adopted": []
+    },
+    "8.6.6.5": {
+      "adopted": []
+    },
+    "8.6.6.7": {
+      "adopted": []
+    },
+    "8.6.6.12": {
+      "adopted": []
+    },
+    "8.6.6.14": {
+      "adopted": []
+    },
+    "8.6.7.1": {
+      "adopted": []
+    },
+    "8.6.7.2": {
+      "adopted": []
+    },
+    "8.6.7.4": {
+      "adopted": [
+        {
+          "id": "ef255119515c688137f4",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.QCat",
+          "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "8.6.7.5": {
+      "adopted": []
+    },
+    "8.6.7.6": {
+      "adopted": []
+    },
+    "8.6.7.7": {
+      "adopted": []
+    },
+    "8.6.7.9": {
+      "adopted": []
+    },
+    "8.6.7.11": {
+      "adopted": []
+    },
+    "8.6.7.12": {
+      "adopted": []
+    },
+    "8.6.8.1": {
+      "adopted": []
+    },
+    "8.6.8.3": {
+      "adopted": []
+    },
+    "8.6.8.4": {
+      "adopted": []
+    },
+    "8.6.8.5": {
+      "adopted": []
+    },
+    "8.6.8.11": {
+      "adopted": []
+    },
+    "8.6.8.12": {
+      "adopted": []
+    },
+    "8.6.8.13": {
+      "adopted": []
+    },
+    "8.6.8.15": {
+      "adopted": []
+    },
+    "8.6.8.16": {
+      "adopted": []
+    },
+    "8.6.8.17": {
+      "adopted": [
+        {
+          "id": "ef255119515c688137f4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "8.6.8.19": {
+      "adopted": []
+    },
+    "8.6.8.22": {
+      "adopted": []
+    },
+    "8.6.9.1": {
+      "adopted": []
+    },
+    "8.6.9.2": {
+      "adopted": []
+    },
+    "8.6.9.3": {
+      "adopted": []
+    },
+    "8.6.9.5": {
+      "adopted": [
+        {
+          "id": "fceb40dc7fc55836f61a",
+          "phase": "1"
+        }
+      ]
+    },
+    "8.6.9.6": {
+      "adopted": []
+    },
+    "8.6.9.9": {
+      "adopted": []
+    },
+    "8.6.9.11": {
+      "adopted": []
+    },
+    "8.6.9.12": {
+      "adopted": []
+    },
+    "8.7.0.1": {
+      "adopted": []
+    },
+    "8.7.0.2": {
+      "adopted": []
+    },
+    "8.7.1.1": {
+      "adopted": []
+    },
+    "8.7.1.4": {
+      "adopted": []
+    },
+    "8.7.1.5": {
+      "adopted": []
+    },
+    "8.7.1.11": {
+      "adopted": []
+    },
+    "8.7.1.12": {
+      "adopted": []
+    },
+    "8.7.1.13": {
+      "adopted": []
+    },
+    "8.7.1.14": {
+      "adopted": []
+    },
+    "8.7.1.17": {
+      "adopted": []
+    },
+    "8.7.1.18": {
+      "adopted": []
+    },
+    "8.7.1.19": {
+      "adopted": []
+    },
+    "8.7.1.20": {
+      "adopted": []
+    },
+    "8.7.1.21": {
+      "adopted": []
+    },
+    "8.7.2.1": {
+      "adopted": []
+    },
+    "8.7.2.2": {
+      "adopted": []
+    },
+    "8.7.2.3": {
+      "adopted": []
+    },
+    "8.7.2.5": {
+      "adopted": []
+    },
+    "8.7.3.1": {
+      "adopted": []
+    },
+    "8.7.3.2": {
+      "adopted": []
+    },
+    "8.7.3.3": {
+      "adopted": []
+    },
+    "8.7.3.4": {
+      "adopted": []
+    },
+    "8.7.4.1": {
+      "adopted": []
+    },
+    "8.7.4.2": {
+      "adopted": []
+    },
+    "8.7.4.3": {
+      "adopted": []
+    },
+    "8.7.4.4": {
+      "adopted": []
+    },
+    "8.7.5.1": {
+      "adopted": []
+    },
+    "8.7.5.6": {
+      "adopted": []
+    },
+    "8.7.5.7": {
+      "adopted": []
+    },
+    "8.7.5.8": {
+      "adopted": []
+    },
+    "8.7.5.9": {
+      "adopted": []
+    },
+    "8.7.5.11": {
+      "adopted": []
+    },
+    "8.7.5.12": {
+      "adopted": []
+    },
+    "8.7.5.13": {
+      "adopted": []
+    },
+    "8.7.5.14": {
+      "adopted": []
+    },
+    "8.7.5.16": {
+      "adopted": []
+    },
+    "8.7.5.17": {
+      "adopted": []
+    },
+    "8.7.5.19": {
+      "adopted": []
+    },
+    "8.7.5.20": {
+      "adopted": []
+    },
+    "8.7.5.22": {
+      "adopted": []
+    },
+    "8.7.5.23": {
+      "adopted": []
+    },
+    "8.7.5.24": {
+      "adopted": []
+    },
+    "8.7.5.26": {
+      "adopted": []
+    },
+    "8.7.5.27": {
+      "adopted": []
+    },
+    "8.7.5.28": {
+      "adopted": []
+    },
+    "8.7.5.29": {
+      "adopted": []
+    },
+    "8.7.5.30": {
+      "adopted": []
+    },
+    "8.7.6.1": {
+      "adopted": []
+    },
+    "8.7.6.2": {
+      "adopted": []
+    },
+    "8.7.6.3": {
+      "adopted": []
+    },
+    "8.7.6.4": {
+      "adopted": []
+    },
+    "8.7.7.1": {
+      "adopted": []
+    },
+    "8.7.7.2": {
+      "adopted": []
+    },
+    "8.7.7.3": {
+      "adopted": []
+    },
+    "8.7.7.4": {
+      "adopted": []
+    },
+    "8.7.7.6": {
+      "adopted": []
+    },
+    "8.7.7.7": {
+      "adopted": []
+    },
+    "8.7.7.8": {
+      "adopted": []
+    }
+  },
+  "supplemental": {
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence : ∀ {C : SSet} [inst : C.Quasicategory]\n  (x y : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence (SerrePositivity.InfinityCategories.cosliceTwistedHomMap x y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 27
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomComparison.lean": {
+      "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_mono": {
+        "type": "@SerrePositivity.InfinityCategories.cosliceTwistedHomMap_mono : ∀ {C : SSet} (x y : C.obj (Opposite.op { len := 0 })),\n  CategoryTheory.Mono (SerrePositivity.InfinityCategories.cosliceTwistedHomMap x y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.cosliceTwistedHomMap_mono' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 52
+      }
+    },
+    "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence : ∀ {X Y : SSet}\n  [inst : X.KanComplex] [inst_1 : Y.KanComplex] (f : X ⟶ Y),\n  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence f ↔\n    SerrePositivity.InfinityCategories.IsQCatEquivalence f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 62
+      }
+    },
+    "Mathlib/CategoryTheory/Idempotents/Basic.lean": {
+      "CategoryTheory.Idempotents.isIdempotentComplete_iff_opposite": {
+        "type": "@CategoryTheory.Idempotents.isIdempotentComplete_iff_opposite : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C],\n  CategoryTheory.IsIdempotentComplete Cᵒᵖ ↔ CategoryTheory.IsIdempotentComplete C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Idempotents.isIdempotentComplete_iff_opposite' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 181
+      }
+    },
+    "Mathlib/CategoryTheory/Bicategory/Span/Basic.lean": {
+      "CategoryTheory.Span.SpanBicat.instBicategory": {
+        "type": "@CategoryTheory.Span.SpanBicat.instBicategory : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {Wₗ Wᵣ : CategoryTheory.MorphismProperty C} →\n      [Wₗ.ContainsIdentities] →\n        [Wᵣ.ContainsIdentities] →\n          [Wₗ.HasPullbacksAgainst Wᵣ] →\n            [Wₗ.IsStableUnderBaseChangeAgainst Wᵣ] →\n              [Wᵣ.IsStableUnderBaseChangeAgainst Wₗ] →\n                [Wₗ.IsStableUnderComposition] →\n                  [Wᵣ.IsStableUnderComposition] → CategoryTheory.Bicategory (CategoryTheory.Span.SpanBicat C Wₗ Wᵣ)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Span.SpanBicat.instBicategory' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 364
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/Retract.lean": {
+      "CategoryTheory.MorphismProperty.IsStableUnderRetracts.isomorphisms": {
+        "type": "@CategoryTheory.MorphismProperty.IsStableUnderRetracts.isomorphisms : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C], (CategoryTheory.MorphismProperty.isomorphisms C).IsStableUnderRetracts",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.IsStableUnderRetracts.isomorphisms' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 53
+      }
+    },
+    "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": {
+      "SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete": {
+        "type": "SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete : SSet → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 40
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean": {
+      "SerrePositivity.InfinityCategories.QCat": {
+        "type": "SerrePositivity.InfinityCategories.QCat : Type (u_1 + 1)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.QCat' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 69
+      }
+    }
+  },
+  "model_category_assumptions": {}
+}

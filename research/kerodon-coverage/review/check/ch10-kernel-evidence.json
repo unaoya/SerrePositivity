@@ -1,0 +1,987 @@
+{
+  "base": "33ce6cfca",
+  "stages": {
+    "1": "runs/all-20261107-01/declaration-results.csv",
+    "1prime": "runs/stage1-prime-01/verified-candidates.csv",
+    "2": "supplemental"
+  },
+  "items": {
+    "10.1.0.2": {
+      "adopted": [
+        {
+          "id": "0fc382ad7c85488364d0",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.1.13": {
+      "adopted": [
+        {
+          "id": "beaeb85d830b20f989d9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.2.22": {
+      "adopted": [
+        {
+          "name": "AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex",
+          "source": "Mathlib/AlgebraicTopology/DoldKan/Normalized.lean",
+          "phase": "2"
+        },
+        {
+          "name": "AlgebraicTopology.normalizedMooreComplex",
+          "source": "Mathlib/AlgebraicTopology/MooreComplex.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.2.28": {
+      "adopted": [
+        {
+          "id": "5d5125e284133fa08040",
+          "phase": "1"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.δ_comp_δ",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.σ_comp_σ",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.δ_comp_σ_of_le",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.δ_comp_σ_of_gt",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.3.1": {
+      "adopted": [
+        {
+          "id": "44bdc49f29f287396459",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.3.18": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.SimplicialObject.sk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.skAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.3.23": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.SimplicialObject.sk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.skAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.4.4": {
+      "adopted": [
+        {
+          "id": "f2d5c628d8de0900f21a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.4.8": {
+      "adopted": [
+        {
+          "id": "821abeb8588026620063",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.4.15": {
+      "adopted": [
+        {
+          "id": "46d48363534d6530a565",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.4.17": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.SimplicialObject.cosk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.coskAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.4.21": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.SimplicialObject.cosk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.coskAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.5.5": {
+      "adopted": [
+        {
+          "id": "e89206d5edf2217ee14a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.5.9": {
+      "adopted": [
+        {
+          "id": "5d5125e284133fa08040",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.6.7": {
+      "adopted": [
+        {
+          "id": "b3ce31a4a49d4333829f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.6.9": {
+      "adopted": [
+        {
+          "id": "b7be3fef0d6680d75c55",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.6.11": {
+      "adopted": [
+        {
+          "id": "b3ce31a4a49d4333829f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.0.1": {
+      "adopted": [
+        {
+          "id": "0fc382ad7c85488364d0",
+          "phase": "1"
+        },
+        {
+          "id": "822daece11b8687e94ae",
+          "phase": "1"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.0.4": {
+      "adopted": [
+        {
+          "id": "7ad32ffe5cfe3a0736d8",
+          "phase": "1prime"
+        },
+        {
+          "id": "6a2e5c8af926fbf21b33",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.1.1": {
+      "adopted": []
+    },
+    "10.1.1.2": {
+      "adopted": []
+    },
+    "10.1.1.3": {
+      "adopted": [
+        {
+          "id": "562f33864039449f36f8",
+          "phase": "1prime"
+        },
+        {
+          "id": "90aaf10c1b14824d7b98",
+          "phase": "1prime"
+        },
+        {
+          "id": "2693e659c98c0251b53c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.1.5": {
+      "adopted": []
+    },
+    "10.1.1.9": {
+      "adopted": [
+        {
+          "name": "SerrePositivity.KST.Spectra.KanSequence.ordinaryTotalization",
+          "source": "SerrePositivity/KST/Spectra/StandardEndKanSequence.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.1.10": {
+      "adopted": [
+        {
+          "id": "5d5125e284133fa08040",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.1.12": {
+      "adopted": [
+        {
+          "id": "beaeb85d830b20f989d9",
+          "phase": "1prime"
+        },
+        {
+          "id": "bf9e751a89a5b68fa2e6",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.1.16": {
+      "adopted": []
+    },
+    "10.1.2.1": {
+      "adopted": [
+        {
+          "id": "ad0f71b3792d4a42f493",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.2.2": {
+      "adopted": []
+    },
+    "10.1.2.6": {
+      "adopted": []
+    },
+    "10.1.2.7": {
+      "adopted": []
+    },
+    "10.1.2.9": {
+      "adopted": []
+    },
+    "10.1.2.11": {
+      "adopted": []
+    },
+    "10.1.2.12": {
+      "adopted": []
+    },
+    "10.1.2.13": {
+      "adopted": []
+    },
+    "10.1.2.14": {
+      "adopted": []
+    },
+    "10.1.2.15": {
+      "adopted": []
+    },
+    "10.1.2.16": {
+      "adopted": []
+    },
+    "10.1.2.23": {
+      "adopted": []
+    },
+    "10.1.2.25": {
+      "adopted": []
+    },
+    "10.1.2.27": {
+      "adopted": []
+    },
+    "10.1.2.29": {
+      "adopted": []
+    },
+    "10.1.3.2": {
+      "adopted": []
+    },
+    "10.1.3.3": {
+      "adopted": [
+        {
+          "id": "fd5efff07238ead8418e",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.1.3.4": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.SimplicialObject.sk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.skAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.3.10": {
+      "adopted": []
+    },
+    "10.1.3.12": {
+      "adopted": []
+    },
+    "10.1.3.13": {
+      "adopted": []
+    },
+    "10.1.3.14": {
+      "adopted": []
+    },
+    "10.1.3.16": {
+      "adopted": []
+    },
+    "10.1.3.17": {
+      "adopted": []
+    },
+    "10.1.4.1": {
+      "adopted": []
+    },
+    "10.1.4.3": {
+      "adopted": [
+        {
+          "id": "f2d5c628d8de0900f21a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.4.5": {
+      "adopted": []
+    },
+    "10.1.4.6": {
+      "adopted": [
+        {
+          "id": "f2d5c628d8de0900f21a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.4.9": {
+      "adopted": [
+        {
+          "id": "17cab0f2770e25e3865b",
+          "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.cosk",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.SimplicialObject.coskAdj",
+          "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.1.4.14": {
+      "adopted": []
+    },
+    "10.1.4.16": {
+      "adopted": []
+    },
+    "10.1.5.1": {
+      "adopted": []
+    },
+    "10.1.5.4": {
+      "adopted": [
+        {
+          "id": "e89206d5edf2217ee14a",
+          "phase": "1prime"
+        },
+        {
+          "id": "7fffacaaf92499ea7f6f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.5.6": {
+      "adopted": [
+        {
+          "id": "e89206d5edf2217ee14a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.5.8": {
+      "adopted": [
+        {
+          "id": "821abeb8588026620063",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.5.10": {
+      "adopted": []
+    },
+    "10.1.5.14": {
+      "adopted": []
+    },
+    "10.1.5.18": {
+      "adopted": []
+    },
+    "10.1.5.20": {
+      "adopted": []
+    },
+    "10.1.5.21": {
+      "adopted": []
+    },
+    "10.1.5.22": {
+      "adopted": []
+    },
+    "10.1.6.1": {
+      "adopted": []
+    },
+    "10.1.6.3": {
+      "adopted": [
+        {
+          "id": "b3ce31a4a49d4333829f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.6.13": {
+      "adopted": []
+    },
+    "10.1.6.14": {
+      "adopted": [
+        {
+          "id": "ac3311d569de74431ae1",
+          "phase": "1prime"
+        },
+        {
+          "id": "dcfd2455b76c93cb2c2f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "10.1.6.15": {
+      "adopted": []
+    },
+    "10.1.6.16": {
+      "adopted": []
+    },
+    "10.1.6.19": {
+      "adopted": []
+    },
+    "10.1.6.20": {
+      "adopted": []
+    },
+    "10.1.6.21": {
+      "adopted": []
+    },
+    "10.1.6.22": {
+      "adopted": []
+    },
+    "10.2.0.2": {
+      "adopted": [
+        {
+          "id": "acc151d794a0f33e6c29",
+          "phase": "1"
+        },
+        {
+          "id": "8a1e42a25de4f382bfb8",
+          "phase": "1"
+        },
+        {
+          "id": "54da4855ab3e7914e7f2",
+          "phase": "1"
+        },
+        {
+          "name": "CategoryTheory.isRegularEpi_iff_effectiveEpi",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.0.6": {
+      "adopted": [
+        {
+          "id": "0a9dbff8a370ebb8390b",
+          "phase": "1"
+        },
+        {
+          "id": "a9791b44e117677e499f",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.2.1.1": {
+      "adopted": []
+    },
+    "10.2.1.5": {
+      "adopted": []
+    },
+    "10.2.1.6": {
+      "adopted": []
+    },
+    "10.2.1.8": {
+      "adopted": []
+    },
+    "10.2.1.12": {
+      "adopted": []
+    },
+    "10.2.1.13": {
+      "adopted": []
+    },
+    "10.2.1.18": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Sieve",
+          "source": "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.1.22": {
+      "adopted": []
+    },
+    "10.2.1.24": {
+      "adopted": []
+    },
+    "10.2.1.26": {
+      "adopted": []
+    },
+    "10.2.1.29": {
+      "adopted": []
+    },
+    "10.2.1.33": {
+      "adopted": []
+    },
+    "10.2.1.34": {
+      "adopted": []
+    },
+    "10.2.2.1": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Sieve.EffectiveEpimorphic",
+          "source": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Sieve.generateSingleton",
+          "source": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.2.2": {
+      "adopted": []
+    },
+    "10.2.2.4": {
+      "adopted": []
+    },
+    "10.2.2.5": {
+      "adopted": []
+    },
+    "10.2.2.6": {
+      "adopted": []
+    },
+    "10.2.2.7": {
+      "adopted": []
+    },
+    "10.2.2.9": {
+      "adopted": []
+    },
+    "10.2.2.11": {
+      "adopted": []
+    },
+    "10.2.2.12": {
+      "adopted": []
+    },
+    "10.2.2.14": {
+      "adopted": []
+    },
+    "10.2.2.17": {
+      "adopted": []
+    },
+    "10.2.3.1": {
+      "adopted": []
+    },
+    "10.2.3.6": {
+      "adopted": []
+    },
+    "10.2.3.9": {
+      "adopted": []
+    },
+    "10.2.3.10": {
+      "adopted": []
+    },
+    "10.2.3.11": {
+      "adopted": []
+    },
+    "10.2.3.12": {
+      "adopted": []
+    },
+    "10.2.3.13": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.isIso_of_mono_of_strongEpi",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/StrongEpi.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.3.14": {
+      "adopted": []
+    },
+    "10.2.3.17": {
+      "adopted": []
+    },
+    "10.2.3.18": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.HasImages",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Images.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.3.21": {
+      "adopted": []
+    },
+    "10.2.3.22": {
+      "adopted": []
+    },
+    "10.2.3.23": {
+      "adopted": []
+    },
+    "10.2.3.24": {
+      "adopted": []
+    },
+    "10.2.4.1": {
+      "adopted": []
+    },
+    "10.2.4.6": {
+      "adopted": []
+    },
+    "10.2.4.7": {
+      "adopted": []
+    },
+    "10.2.4.8": {
+      "adopted": []
+    },
+    "10.2.4.9": {
+      "adopted": [
+        {
+          "id": "fa5c5eed2f01bc813fd7",
+          "phase": "1"
+        },
+        {
+          "id": "58aa09552e5474742685",
+          "phase": "1"
+        }
+      ]
+    },
+    "10.2.4.10": {
+      "adopted": []
+    },
+    "10.2.4.12": {
+      "adopted": []
+    },
+    "10.2.4.13": {
+      "adopted": []
+    },
+    "10.2.4.14": {
+      "adopted": []
+    },
+    "10.2.4.15": {
+      "adopted": []
+    },
+    "10.2.4.16": {
+      "adopted": []
+    },
+    "10.2.4.17": {
+      "adopted": []
+    },
+    "10.2.5.1": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Regular",
+          "source": "Mathlib/CategoryTheory/RegularCategory/Basic.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "10.2.5.3": {
+      "adopted": []
+    },
+    "10.2.5.5": {
+      "adopted": []
+    },
+    "10.2.5.6": {
+      "adopted": []
+    },
+    "10.2.5.9": {
+      "adopted": []
+    },
+    "10.2.5.10": {
+      "adopted": []
+    },
+    "10.2.5.11": {
+      "adopted": []
+    },
+    "10.2.5.13": {
+      "adopted": []
+    },
+    "10.2.5.15": {
+      "adopted": []
+    },
+    "10.2.5.17": {
+      "adopted": []
+    },
+    "10.2.5.18": {
+      "adopted": []
+    },
+    "10.2.5.19": {
+      "adopted": []
+    },
+    "10.2.5.20": {
+      "adopted": []
+    },
+    "10.2.5.21": {
+      "adopted": []
+    }
+  },
+  "supplemental": {
+    "Mathlib/AlgebraicTopology/DoldKan/Normalized.lean": {
+      "AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex": {
+        "type": "@AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex : {A : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} A] →\n    [inst_1 : CategoryTheory.Abelian A] →\n      (X : CategoryTheory.SimplicialObject A) →\n        AlgebraicTopology.AlternatingFaceMapComplex.obj X ⟶ AlgebraicTopology.NormalizedMooreComplex.obj X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 68
+      }
+    },
+    "Mathlib/AlgebraicTopology/MooreComplex.lean": {
+      "AlgebraicTopology.normalizedMooreComplex": {
+        "type": "AlgebraicTopology.normalizedMooreComplex : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : CategoryTheory.Abelian C] → CategoryTheory.Functor (CategoryTheory.SimplicialObject C) (ChainComplex C ℕ)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'AlgebraicTopology.normalizedMooreComplex' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 158
+      }
+    },
+    "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean": {
+      "CategoryTheory.SimplicialObject.δ_comp_δ": {
+        "type": "@CategoryTheory.SimplicialObject.δ_comp_δ : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (X : CategoryTheory.SimplicialObject C) {n : ℕ} {i j : Fin (n + 2)},\n  i ≤ j →\n    CategoryTheory.CategoryStruct.comp (X.δ j.succ) (X.δ i) =\n      CategoryTheory.CategoryStruct.comp (X.δ i.castSucc) (X.δ j)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.δ_comp_δ' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 111
+      },
+      "CategoryTheory.SimplicialObject.σ_comp_σ": {
+        "type": "@CategoryTheory.SimplicialObject.σ_comp_σ : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (X : CategoryTheory.SimplicialObject C) {n : ℕ} {i j : Fin (n + 1)},\n  i ≤ j →\n    CategoryTheory.CategoryStruct.comp (X.σ j) (X.σ i.castSucc) =\n      CategoryTheory.CategoryStruct.comp (X.σ i) (X.σ j.succ)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.σ_comp_σ' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 191
+      },
+      "CategoryTheory.SimplicialObject.δ_comp_σ_of_le": {
+        "type": "@CategoryTheory.SimplicialObject.δ_comp_σ_of_le : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (X : CategoryTheory.SimplicialObject C) {n : ℕ} {i : Fin (n + 2)} {j : Fin (n + 1)},\n  i ≤ j.castSucc →\n    CategoryTheory.CategoryStruct.comp (X.σ j.succ) (X.δ i.castSucc) =\n      CategoryTheory.CategoryStruct.comp (X.δ i) (X.σ j)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.δ_comp_σ_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 145
+      },
+      "CategoryTheory.SimplicialObject.δ_comp_σ_of_gt": {
+        "type": "@CategoryTheory.SimplicialObject.δ_comp_σ_of_gt : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (X : CategoryTheory.SimplicialObject C) {n : ℕ} {i : Fin (n + 2)} {j : Fin (n + 1)},\n  j.castSucc < i →\n    CategoryTheory.CategoryStruct.comp (X.σ j.castSucc) (X.δ i.succ) =\n      CategoryTheory.CategoryStruct.comp (X.δ i) (X.σ j)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.δ_comp_σ_of_gt' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 176
+      },
+      "CategoryTheory.SimplicialObject.sk": {
+        "type": "@CategoryTheory.SimplicialObject.sk : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasLeftKanExtension F] →\n        CategoryTheory.Functor (CategoryTheory.SimplicialObject C) (CategoryTheory.SimplicialObject C)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.sk' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 297
+      },
+      "CategoryTheory.SimplicialObject.skAdj": {
+        "type": "@CategoryTheory.SimplicialObject.skAdj : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [inst_1 :\n          ∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasLeftKanExtension F] →\n        CategoryTheory.SimplicialObject.Truncated.sk n ⊣ CategoryTheory.SimplicialObject.truncation n",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.skAdj' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 320
+      },
+      "CategoryTheory.SimplicialObject.cosk": {
+        "type": "@CategoryTheory.SimplicialObject.cosk : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] →\n        CategoryTheory.Functor (CategoryTheory.SimplicialObject C) (CategoryTheory.SimplicialObject C)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.cosk' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 302
+      },
+      "CategoryTheory.SimplicialObject.coskAdj": {
+        "type": "@CategoryTheory.SimplicialObject.coskAdj : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [inst_1 :\n          ∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] →\n        CategoryTheory.SimplicialObject.truncation n ⊣ CategoryTheory.SimplicialObject.Truncated.cosk n",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.SimplicialObject.coskAdj' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 324
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations": {
+        "type": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations : SSet → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 31
+      }
+    },
+    "SerrePositivity/KST/Spectra/StandardEndKanSequence.lean": {
+      "SerrePositivity.KST.Spectra.KanSequence.ordinaryTotalization": {
+        "type": "SerrePositivity.KST.Spectra.KanSequence.ordinaryTotalization : (D :\n    CategoryTheory.CosimplicialObject SerrePositivity.KST.Spectra.KanSequence) →\n  SerrePositivity.KST.Spectra.KanSequence.TotalizationReedy D → SerrePositivity.KST.Spectra.KanSequence",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.KST.Spectra.KanSequence.ordinaryTotalization' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 41
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean": {
+      "CategoryTheory.isRegularEpi_iff_effectiveEpi": {
+        "type": "@CategoryTheory.isRegularEpi_iff_effectiveEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {B X : C}\n  (f : X ⟶ B) [CategoryTheory.Limits.HasPullback f f], CategoryTheory.IsRegularEpi f ↔ CategoryTheory.EffectiveEpi f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.isRegularEpi_iff_effectiveEpi' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 521
+      }
+    },
+    "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean": {
+      "CategoryTheory.Sieve": {
+        "type": "@CategoryTheory.Sieve : {C : Type u_2} → [CategoryTheory.Category.{u_1, u_2} C] → C → Type (max u_2 u_1)",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.Sieve' does not depend on any axioms",
+        "line": 50
+      }
+    },
+    "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean": {
+      "CategoryTheory.Sieve.EffectiveEpimorphic": {
+        "type": "@CategoryTheory.Sieve.EffectiveEpimorphic : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {X : C} → CategoryTheory.Sieve X → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Sieve.EffectiveEpimorphic' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 36
+      },
+      "CategoryTheory.Sieve.generateSingleton": {
+        "type": "@CategoryTheory.Sieve.generateSingleton : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {X Y : C} → (Y ⟶ X) → CategoryTheory.Sieve X",
+        "axioms": [
+          "propext"
+        ],
+        "axioms_output": "'CategoryTheory.Sieve.generateSingleton' depends on axioms: [propext]",
+        "line": 49
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/StrongEpi.lean": {
+      "CategoryTheory.isIso_of_mono_of_strongEpi": {
+        "type": "@CategoryTheory.isIso_of_mono_of_strongEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {P Q : C}\n  (f : P ⟶ Q) [CategoryTheory.Mono f] [CategoryTheory.StrongEpi f], CategoryTheory.IsIso f",
+        "axioms": [
+          "propext",
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.isIso_of_mono_of_strongEpi' depends on axioms: [propext, Classical.choice]",
+        "line": 128
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/Images.lean": {
+      "CategoryTheory.Limits.HasImages": {
+        "type": "CategoryTheory.Limits.HasImages : (C : Type u_2) → [CategoryTheory.Category.{u_1, u_2} C] → Prop",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.Limits.HasImages' does not depend on any axioms",
+        "line": 451
+      }
+    },
+    "Mathlib/CategoryTheory/RegularCategory/Basic.lean": {
+      "CategoryTheory.Regular": {
+        "type": "CategoryTheory.Regular : (C : Type u_1) → [CategoryTheory.Category.{u_2, u_1} C] → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Regular' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 52
+      }
+    }
+  },
+  "model_category_assumptions": {}
+}
