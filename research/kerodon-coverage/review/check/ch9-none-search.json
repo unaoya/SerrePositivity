@@ -3018,12 +3018,12 @@
       },
       "examined": [
         {
-          "declaration": "CategoryTheory.nerveAdjunction",
           "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
           "line": 389,
+          "declaration": "nerveAdjunction",
+          "source_signature": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor ",
           "assessment": "標準写像 C→N(hC) は通常の nerve 随伴の単位として取れる。filtered な C についてこの単位の右余終性を示す型は見つからない。",
-          "role": "reviewed_non_match",
-          "kernel_type": "CategoryTheory.nerveAdjunction : SSet.hoFunctor ⊣ CategoryTheory.nerveFunctor"
+          "role": "reviewed_non_match"
         }
       ],
       "reason": "標準写像 C→N(hC) は通常の nerve 随伴の単位として取れる。filtered な C についてこの単位の右余終性を示す型は見つからない。",
@@ -8090,6 +8090,3183 @@
       ],
       "reason": "全小余極限保存から κ-finitary 性を得る型と特定の Ind 左 Kan 延長の保存性はある。指数余終性の下で任意の K-余完備化関手が λ-small κ-filtered 余極限を保つ型は見つからない。",
       "decision": "none"
+    },
+    "9.2.0.1": {
+      "number": "9.2.0.1",
+      "tag": "063A",
+      "query": [
+        "finite presentation module",
+        "finitely presentable object",
+        "Hom filtered colimit",
+        "free rank one",
+        "left module"
+      ],
+      "a": {
+        "terms": [
+          "9.2.0.1",
+          "9.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimit",
+            "filtered",
+            "finite",
+            "finitely",
+            "free",
+            "hom",
+            "left",
+            "module",
+            "object",
+            "one",
+            "presentable",
+            "presentation",
+            "rank"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Module/FinitePresentation.lean",
+              "line": 162,
+              "declaration": "Module.finitePresentation_of_projective"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 82,
+              "declaration": "IsFinitelyPresentable.exists_hom_of_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "filtered",
+            "finite",
+            "finitely",
+            "free",
+            "hom",
+            "limit",
+            "module",
+            "object",
+            "one",
+            "presentable",
+            "presentation",
+            "rank",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Module/FinitePresentation.lean",
+              "line": 162,
+              "declaration": "Module.finitePresentation_of_projective"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/ModuleCat/FilteredColimits.lean",
+              "line": 201,
+              "declaration": "forget_preservesFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimit",
+            "filtered",
+            "finite",
+            "finitely",
+            "free",
+            "hom",
+            "left",
+            "module",
+            "object",
+            "one",
+            "presentable",
+            "presentation",
+            "rank"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Module/FinitePresentation.lean",
+              "line": 162,
+              "declaration": "Module.finitePresentation_of_projective"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 82,
+              "declaration": "IsFinitelyPresentable.exists_hom_of_isColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/AlgebraicTopology/SimplicialSet/Presentable.lean",
+          "Mathlib/CategoryTheory/Presentable/Finite.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean"
+        ],
+        "locations": [
+          "Mathlib/AlgebraicTopology/SimplicialSet",
+          "Mathlib/CategoryTheory/Presentable",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "colimit",
+          "filtered",
+          "finite",
+          "finitely",
+          "free",
+          "hom",
+          "left",
+          "module",
+          "object",
+          "one",
+          "presentable",
+          "presentation",
+          "rank"
+        ],
+        "declaration_count": 3485,
+        "lead_locations": [
+          {
+            "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+            "line": 82,
+            "declaration": "IsFinitelyPresentable.exists_hom_of_isColimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FiniteColimitFromPresentation.lean",
+            "line": 25,
+            "declaration": "ind_hasColimit_of_singleFilteredDiagramPresentation"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/Algebra/Category/ModuleCat/Adjunctions.lean",
+          "line": 92,
+          "declaration": "ModuleCat.adj",
+          "kernel_type": "ModuleCat.adj : (R : Type u_1) → [inst : Ring R] → ModuleCat.free R ⊣ CategoryTheory.forget (ModuleCat R)",
+          "assessment": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+          "line": 540,
+          "declaration": "CategoryTheory.Adjunction.compCoyonedaIso",
+          "kernel_type": "@CategoryTheory.Adjunction.compCoyonedaIso : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {D : Type u_3} →\n      [inst_1 : CategoryTheory.Category.{u_1, u_3} D] →\n        {F : CategoryTheory.Functor C D} →\n          {G : CategoryTheory.Functor D C} →\n            (F ⊣ G) →\n              (F.op.comp CategoryTheory.coyoneda ≅\n                CategoryTheory.coyoneda.comp ((CategoryTheory.Functor.whiskeringLeft D C (Type u_1)).obj G))",
+          "assessment": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Yoneda.lean",
+          "line": 244,
+          "declaration": "CategoryTheory.Coyoneda.punitIso",
+          "kernel_type": "CategoryTheory.Coyoneda.punitIso : CategoryTheory.coyoneda.obj (Opposite.op PUnit.{u_1 + 1}) ≅\n  CategoryTheory.Functor.id (Type u_1)",
+          "assessment": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/Algebra/Category/ModuleCat/FilteredColimits.lean",
+          "line": 201,
+          "declaration": "ModuleCat.FilteredColimits.forget_preservesFilteredColimits",
+          "kernel_type": "@ModuleCat.FilteredColimits.forget_preservesFilteredColimits : ∀ {R : Type u_1} [inst : Ring R],\n  CategoryTheory.Limits.PreservesFilteredColimits (CategoryTheory.forget (ModuleCat R))",
+          "assessment": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/Algebra/Module/FinitePresentation.lean",
+          "line": 162,
+          "declaration": "Module.finitePresentation_of_projective",
+          "kernel_type": "Module.finitePresentation_of_projective : ∀ (R : Type u_1) (M : Type u_2) [inst : Ring R] [inst_1 : AddCommGroup M]\n  [inst_2 : Module R M] [Module.Projective R M] [Module.Finite R M], Module.FinitePresentation R M",
+          "assessment": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "有限自由加群の有限表示があり、階数1では free 随伴と PUnit の coyoneda で Hom 関手を forget と比較し、filtered 余極限保存を得る。任意の左 R-加群で代数的有限表示と Hom の保存性を結ぶ iff は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.3": {
+      "number": "9.2.1.3",
+      "tag": "06DD",
+      "query": [
+        "relative cocomplete",
+        "kappa filtered",
+        "lambda small",
+        "two regular cardinals"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.3",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinals",
+            "cocomplete",
+            "filtered",
+            "kappa",
+            "lambda",
+            "regular",
+            "relative",
+            "small",
+            "two"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/RelativeCardinalAccessibility.lean",
+              "line": 26,
+              "declaration": "pullback_isKappaAccessible_of_relativeCardinals"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinals",
+            "cocomplete",
+            "effective",
+            "filtered",
+            "kappa",
+            "lambda",
+            "relative",
+            "small",
+            "two"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/RelativeCardinalAccessibility.lean",
+              "line": 26,
+              "declaration": "pullback_isKappaAccessible_of_relativeCardinals"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinals",
+            "colimits",
+            "filtered",
+            "has",
+            "kappa",
+            "lambda",
+            "regular",
+            "relative",
+            "small",
+            "two"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 414,
+              "declaration": "HasCardinalFilteredColimits"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/Grp/AB.lean",
+              "line": 67,
+              "declaration": "Ab.hasFilteredColimitsOfSize"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "cardinals",
+          "cocomplete",
+          "filtered",
+          "kappa",
+          "lambda",
+          "regular",
+          "relative",
+          "small",
+          "two"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 28,
+            "declaration": "HasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReduction.lean",
+            "line": 23,
+            "declaration": "preservesSmallKappaFilteredColimits_of_poset"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits",
+          "kernel_type": "SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits : Cardinal.{u_1} → SSet → Prop",
+          "assessment": "準圏で小さい κ-filtered 形状すべてに余極限を要求する述語はある。その小ささを別の正則濃度 λ による明示の制限にした二濃度の定義は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+          "line": 414,
+          "declaration": "HasCardinalFilteredColimits",
+          "source_signature": "class HasCardinalFilteredColimits (C : Type u₁) [Category.{v₁} C] (κ : Cardinal.{w}) [Fact κ.IsRegular] : Prop",
+          "assessment": "準圏で小さい κ-filtered 形状すべてに余極限を要求する述語はある。その小ささを別の正則濃度 λ による明示の制限にした二濃度の定義は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "準圏で小さい κ-filtered 形状すべてに余極限を要求する述語はある。その小ささを別の正則濃度 λ による明示の制限にした二濃度の定義は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.7": {
+      "number": "9.2.1.7",
+      "tag": "062W",
+      "query": [
+        "lambda cocomplete iff",
+        "sharply below",
+        "kappa cocomplete",
+        "relative filtered colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.7",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "cocomplete",
+            "colimits",
+            "filtered",
+            "kappa",
+            "lambda",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+              "line": 29,
+              "declaration": "hasSmallColimits_of_coproducts_geometricRealizations"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "cocomplete",
+            "filtered",
+            "kappa",
+            "lambda",
+            "limits",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+              "line": 29,
+              "declaration": "hasSmallColimits_of_coproducts_geometricRealizations"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "colimits",
+            "filtered",
+            "has",
+            "kappa",
+            "lambda",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Grp/AB.lean",
+              "line": 67,
+              "declaration": "Ab.hasFilteredColimitsOfSize"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Sheaf.lean",
+              "line": 58,
+              "declaration": "hasFilteredColimitsOfSize"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "below",
+          "cocomplete",
+          "colimits",
+          "filtered",
+          "kappa",
+          "lambda",
+          "relative",
+          "sharply"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 28,
+            "declaration": "HasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+            "line": 29,
+            "declaration": "hasSmallColimits_of_coproducts_geometricRealizations"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "HasSmallKappaFilteredColimits",
+          "source_signature": "def HasSmallKappaFilteredColimits (κ : Cardinal.{u}) (Y : SSet.{u + 1}) : Prop ",
+          "assessment": "宇宙小の κ-filtered 余極限の存在述語と、余積・幾何学的実現から全小余極限を作る型はある。κ-small な余極限と λ-small κ-filtered な余極限から λ-余完備性を得る濃度分解は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "line": 29,
+          "declaration": "hasSmallColimits_of_coproducts_geometricRealizations",
+          "source_signature": "lemma hasSmallColimits_of_coproducts_geometricRealizations {X : SSet.{u + 1}} [Quasicategory X] (hcop : HasSmallCoproducts X) (hgeom : HasSmallGeometricRealizations X) : HasSmallColimits X ",
+          "assessment": "宇宙小の κ-filtered 余極限の存在述語と、余積・幾何学的実現から全小余極限を作る型はある。κ-small な余極限と λ-small κ-filtered な余極限から λ-余完備性を得る濃度分解は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "宇宙小の κ-filtered 余極限の存在述語と、余積・幾何学的実現から全小余極限を作る型はある。κ-small な余極限と λ-small κ-filtered な余極限から λ-余完備性を得る濃度分解は見つからない。",
+      "decision": "none"
+    },
+    "9.2.1.9": {
+      "number": "9.2.1.9",
+      "tag": "03DK",
+      "query": [
+        "cocomplete iff kappa small colimits",
+        "small kappa filtered",
+        "has all small colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.9",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocomplete",
+            "colimits",
+            "filtered",
+            "has",
+            "kappa",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+              "line": 54,
+              "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 44,
+              "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocomplete",
+            "filtered",
+            "has",
+            "kappa",
+            "limits",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+              "line": 54,
+              "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 44,
+              "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimits",
+            "filtered",
+            "has",
+            "kappa",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Grp/AB.lean",
+              "line": 67,
+              "declaration": "Ab.hasFilteredColimitsOfSize"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Sheaf.lean",
+              "line": 58,
+              "declaration": "hasFilteredColimitsOfSize"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "cocomplete",
+          "colimits",
+          "filtered",
+          "has",
+          "kappa",
+          "small"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+            "line": 54,
+            "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+            "line": 44,
+            "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "line": 44,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits : ∀ {C : SSet},\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits C →\n    ∀ (κ : Cardinal.{u_1}), SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits κ C",
+          "assessment": "全小余極限があれば小さい κ-filtered 余極限もある型は確認できる。任意の小さい κ について κ-small な余極限と小 κ-filtered 余極限を合わせて全小余極限を得る逆向きは見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "全小余極限があれば小さい κ-filtered 余極限もある型は確認できる。任意の小さい κ について κ-small な余極限と小 κ-filtered 余極限を合わせて全小余極限を得る逆向きは見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.10": {
+      "number": "9.2.1.10",
+      "tag": "06DJ",
+      "query": [
+        "lambda cocomplete iff finitely cocomplete",
+        "lambda small filtered",
+        "finite colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.10",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocomplete",
+            "colimits",
+            "filtered",
+            "finite",
+            "finitely",
+            "lambda",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+              "line": 54,
+              "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 44,
+              "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocomplete",
+            "filtered",
+            "finite",
+            "finitely",
+            "lambda",
+            "limits",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+              "line": 54,
+              "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 44,
+              "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimits",
+            "filtered",
+            "finite",
+            "finitely",
+            "has",
+            "lambda",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 38,
+              "declaration": "Functor.IsFinitelyAccessible_iff_preservesFilteredColimitsOfSize"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Constructions/Filtered.lean",
+              "line": 124,
+              "declaration": "has_colimits_of_finite_and_filtered"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "cocomplete",
+          "colimits",
+          "filtered",
+          "finite",
+          "finitely",
+          "lambda",
+          "small"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean",
+            "line": 54,
+            "declaration": "IsKappaAccessible.hasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+            "line": 44,
+            "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "line": 44,
+          "declaration": "HasSmallColimits.hasSmallKappaFilteredColimits",
+          "source_signature": "lemma HasSmallColimits.hasSmallKappaFilteredColimits {C : SSet.{u + 1}} (h : HasSmallColimits C) (κ : Cardinal.{u}) : Ind.HasSmallKappaFilteredColimits κ C ",
+          "assessment": "全小余極限から小 filtered 余極限への制限と、余積・実現による全小余極限の構成はある。有限余極限と λ-small filtered 余極限を仮定して λ-small な任意の形状に余極限を作る型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "line": 29,
+          "declaration": "hasSmallColimits_of_coproducts_geometricRealizations",
+          "source_signature": "lemma hasSmallColimits_of_coproducts_geometricRealizations {X : SSet.{u + 1}} [Quasicategory X] (hcop : HasSmallCoproducts X) (hgeom : HasSmallGeometricRealizations X) : HasSmallColimits X ",
+          "assessment": "全小余極限から小 filtered 余極限への制限と、余積・実現による全小余極限の構成はある。有限余極限と λ-small filtered 余極限を仮定して λ-small な任意の形状に余極限を作る型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全小余極限から小 filtered 余極限への制限と、余積・実現による全小余極限の構成はある。有限余極限と λ-small filtered 余極限を仮定して λ-small な任意の形状に余極限を作る型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.1.11": {
+      "number": "9.2.1.11",
+      "tag": "062K",
+      "query": [
+        "relative kappa lambda cocomplete",
+        "directed poset nerve",
+        "sharply below",
+        "cofinal reduction"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.11",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "cocomplete",
+            "cofinal",
+            "directed",
+            "kappa",
+            "lambda",
+            "nerve",
+            "poset",
+            "reduction",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 31,
+              "declaration": "exists_cofinal_kappaFiltered_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+              "line": 35,
+              "declaration": "hasColimit_of_rightCofinalRestriction"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "cocomplete",
+            "cofinal",
+            "directed",
+            "kappa",
+            "lambda",
+            "nerve",
+            "poset",
+            "reduction",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 31,
+              "declaration": "exists_cofinal_kappaFiltered_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+              "line": 35,
+              "declaration": "hasColimit_of_rightCofinalRestriction"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "coherent",
+            "colimits",
+            "directed",
+            "final",
+            "has",
+            "initial",
+            "kappa",
+            "lambda",
+            "nerve",
+            "poset",
+            "reduction",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+              "line": 362,
+              "declaration": "hasExactColimitsOfShape_of_final"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+              "line": 422,
+              "declaration": "hasColimitsOfShape_of_final"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "below",
+          "cocomplete",
+          "cofinal",
+          "directed",
+          "kappa",
+          "lambda",
+          "nerve",
+          "poset",
+          "reduction",
+          "relative",
+          "sharply"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+            "line": 31,
+            "declaration": "exists_cofinal_kappaFiltered_poset"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+            "line": 35,
+            "declaration": "hasColimit_of_rightCofinalRestriction"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "line": 31,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] (C : SSet) [inst_1 : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C],\n  ∃ I o f,\n    CategoryTheory.IsCardinalFiltered I κ ∧\n      SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (CategoryTheory.nerve I) ∧\n        SerrePositivity.InfinityCategories.IsRightCofinal f",
+          "assessment": "宇宙小の κ-filtered 準圏には右余終な κ-directed poset があり、余終制限の余極限を戻せる。その poset を λ-small とする明示の濃度条件は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "line": 35,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_rightCofinalRestriction",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_rightCofinalRestriction : ∀ {A B X : SSet}\n  [B.Quasicategory] [X.Quasicategory] (i : A ⟶ B),\n  SerrePositivity.InfinityCategories.IsRightCofinal i →\n    ∀ (F : B ⟶ X),\n      SerrePositivity.InfinityCategories.HasColimit (CategoryTheory.CategoryStruct.comp i F) →\n        SerrePositivity.InfinityCategories.HasColimit F",
+          "assessment": "宇宙小の κ-filtered 準圏には右余終な κ-directed poset があり、余終制限の余極限を戻せる。その poset を λ-small とする明示の濃度条件は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "宇宙小の κ-filtered 準圏には右余終な κ-directed poset があり、余終制限の余極限を戻せる。その poset を λ-small とする明示の濃度条件は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.13": {
+      "number": "9.2.1.13",
+      "tag": "039G",
+      "query": [
+        "lambda-small filtered colimits iff directed poset",
+        "uncountable regular",
+        "aleph0 reduction"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.13",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "aleph0",
+            "colimits",
+            "directed",
+            "filtered",
+            "lambda",
+            "poset",
+            "reduction",
+            "regular",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 31,
+              "declaration": "exists_cofinal_kappaFiltered_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReduction.lean",
+              "line": 23,
+              "declaration": "preservesSmallKappaFilteredColimits_of_poset"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "aleph0",
+            "directed",
+            "effective",
+            "filtered",
+            "lambda",
+            "limits",
+            "poset",
+            "reduction",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 31,
+              "declaration": "exists_cofinal_kappaFiltered_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/Aleph0PosetExchange.lean",
+              "line": 23,
+              "declaration": "cardinalFilteredLimitExchangeShape_aleph0_poset"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "aleph0",
+            "colimits",
+            "directed",
+            "filtered",
+            "lambda",
+            "poset",
+            "reduction",
+            "regular",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/CardinalDirectedPoset.lean",
+              "line": 104,
+              "declaration": "CardinalDirectedPoset"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "aleph0",
+          "colimits",
+          "directed",
+          "filtered",
+          "lambda",
+          "poset",
+          "reduction",
+          "regular",
+          "small",
+          "uncountable"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+            "line": 31,
+            "declaration": "exists_cofinal_kappaFiltered_poset"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReduction.lean",
+            "line": 23,
+            "declaration": "preservesSmallKappaFilteredColimits_of_poset"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "line": 31,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] (C : SSet) [inst_1 : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C],\n  ∃ I o f,\n    CategoryTheory.IsCardinalFiltered I κ ∧\n      SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (CategoryTheory.nerve I) ∧\n        SerrePositivity.InfinityCategories.IsRightCofinal f",
+          "assessment": "κ=ℵ₀ で宇宙小の filtered 準圏に右余終な小さい有向 poset を選び、余極限を移せる。任意の非可算正則 λ の下でその poset が λ-small になるとする型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "line": 35,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_rightCofinalRestriction",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_rightCofinalRestriction : ∀ {A B X : SSet}\n  [B.Quasicategory] [X.Quasicategory] (i : A ⟶ B),\n  SerrePositivity.InfinityCategories.IsRightCofinal i →\n    ∀ (F : B ⟶ X),\n      SerrePositivity.InfinityCategories.HasColimit (CategoryTheory.CategoryStruct.comp i F) →\n        SerrePositivity.InfinityCategories.HasColimit F",
+          "assessment": "κ=ℵ₀ で宇宙小の filtered 準圏に右余終な小さい有向 poset を選び、余極限を移せる。任意の非可算正則 λ の下でその poset が λ-small になるとする型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "κ=ℵ₀ で宇宙小の filtered 準圏に右余終な小さい有向 poset を選び、余極限を移せる。任意の非可算正則 λ の下でその poset が λ-small になるとする型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.15": {
+      "number": "9.2.1.15",
+      "tag": "06DK",
+      "query": [
+        "three cardinals",
+        "relative cocompleteness decomposition",
+        "sharply below",
+        "filtered colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.15",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "cardinals",
+            "cocompleteness",
+            "colimits",
+            "decomposition",
+            "filtered",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "cardinals",
+            "cocompleteness",
+            "decomposition",
+            "filtered",
+            "limits",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "cardinals",
+            "cocompleteness",
+            "colimits",
+            "decomposition",
+            "filtered",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/Algebra/Group/Submonoid/Support.lean",
+              "line": 111,
+              "declaration": "of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "below",
+          "cardinals",
+          "cocompleteness",
+          "colimits",
+          "decomposition",
+          "filtered",
+          "relative",
+          "sharply",
+          "three"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 28,
+            "declaration": "HasSmallKappaFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "HasSmallKappaFilteredColimits",
+          "source_signature": "def HasSmallKappaFilteredColimits (κ : Cardinal.{u}) (Y : SSet.{u + 1}) : Prop ",
+          "assessment": "準圏と通常圏に宇宙小の濃度別余極限の述語はある。三つの正則濃度で (κ,μ) の存在を (κ,λ) と (λ,μ) の存在に分解する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+          "line": 423,
+          "declaration": "HasCardinalFilteredColimits.of_le",
+          "source_signature": "lemma HasCardinalFilteredColimits.of_le {κ : Cardinal.{w}} [Fact κ.IsRegular] [HasCardinalFilteredColimits C κ] {κ' : Cardinal.{w}} [Fact κ'.IsRegular] (h : κ ≤ κ') : HasCardinalFilteredColimits C κ'",
+          "assessment": "準圏と通常圏に宇宙小の濃度別余極限の述語はある。三つの正則濃度で (κ,μ) の存在を (κ,λ) と (λ,μ) の存在に分解する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏と通常圏に宇宙小の濃度別余極限の述語はある。三つの正則濃度で (κ,μ) の存在を (κ,λ) と (λ,μ) の存在に分解する型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.1.16": {
+      "number": "9.2.1.16",
+      "tag": "06DL",
+      "query": [
+        "small kappa filtered colimits iff lambda filtered",
+        "relative kappa lambda",
+        "cardinal monotonicity"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.16",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinal",
+            "colimits",
+            "filtered",
+            "kappa",
+            "lambda",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinal",
+            "filtered",
+            "kappa",
+            "lambda",
+            "limits",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinal",
+            "colimits",
+            "filtered",
+            "kappa",
+            "lambda",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 40,
+              "declaration": "Small.of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "cardinal",
+          "colimits",
+          "filtered",
+          "kappa",
+          "lambda",
+          "monotonicity",
+          "relative",
+          "small"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 28,
+            "declaration": "HasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+          "line": 423,
+          "declaration": "CategoryTheory.HasCardinalFilteredColimits.of_le",
+          "kernel_type": "@CategoryTheory.HasCardinalFilteredColimits.of_le : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  {κ : Cardinal.{u_1}} [inst_1 : Fact κ.IsRegular] [CategoryTheory.HasCardinalFilteredColimits C κ]\n  {κ' : Cardinal.{u_1}} [inst_3 : Fact κ'.IsRegular], κ ≤ κ' → CategoryTheory.HasCardinalFilteredColimits C κ'",
+          "assessment": "通常圏では正則 κ の filtered 余極限の存在から、より大きい濃度で filtered な形状の余極限の存在を得る。準圏で λ-small 部分と小 λ-filtered 部分を合わせる逆向きは見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "HasSmallKappaFilteredColimits",
+          "source_signature": "def HasSmallKappaFilteredColimits (κ : Cardinal.{u}) (Y : SSet.{u + 1}) : Prop ",
+          "assessment": "通常圏では正則 κ の filtered 余極限の存在から、より大きい濃度で filtered な形状の余極限の存在を得る。準圏で λ-small 部分と小 λ-filtered 部分を合わせる逆向きは見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏では正則 κ の filtered 余極限の存在から、より大きい濃度で filtered な形状の余極限の存在を得る。準圏で λ-small 部分と小 λ-filtered 部分を合わせる逆向きは見つからない。",
+      "decision": "partial"
+    },
+    "9.2.1.17": {
+      "number": "9.2.1.17",
+      "tag": "06DM",
+      "query": [
+        "filtered colimits iff lambda filtered and lambda small",
+        "aleph0",
+        "relative decomposition"
+      ],
+      "a": {
+        "terms": [
+          "9.2.1.17",
+          "9.2.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "aleph0",
+            "colimits",
+            "decomposition",
+            "filtered",
+            "lambda",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "aleph0",
+            "decomposition",
+            "filtered",
+            "lambda",
+            "limits",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "aleph0",
+            "colimits",
+            "decomposition",
+            "filtered",
+            "lambda",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 40,
+              "declaration": "Small.of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/IdemFiltered.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CofinalColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationColimits.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "aleph0",
+          "colimits",
+          "decomposition",
+          "filtered",
+          "lambda",
+          "relative",
+          "small"
+        ],
+        "declaration_count": 4462,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 28,
+            "declaration": "HasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+          "line": 423,
+          "declaration": "CategoryTheory.HasCardinalFilteredColimits.of_le",
+          "kernel_type": "@CategoryTheory.HasCardinalFilteredColimits.of_le : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  {κ : Cardinal.{u_1}} [inst_1 : Fact κ.IsRegular] [CategoryTheory.HasCardinalFilteredColimits C κ]\n  {κ' : Cardinal.{u_1}} [inst_3 : Fact κ'.IsRegular], κ ≤ κ' → CategoryTheory.HasCardinalFilteredColimits C κ'",
+          "assessment": "通常圏の濃度別の単調性は κ=ℵ₀ から λ-filtered 形状への制限を含む。準圏で小 λ-filtered 余極限と λ-small filtered 余極限を組み合わせて全小 filtered 余極限に戻す型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "HasSmallKappaFilteredColimits",
+          "source_signature": "def HasSmallKappaFilteredColimits (κ : Cardinal.{u}) (Y : SSet.{u + 1}) : Prop ",
+          "assessment": "通常圏の濃度別の単調性は κ=ℵ₀ から λ-filtered 形状への制限を含む。準圏で小 λ-filtered 余極限と λ-small filtered 余極限を組み合わせて全小 filtered 余極限に戻す型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の濃度別の単調性は κ=ℵ₀ から λ-filtered 形状への制限を含む。準圏で小 λ-filtered 余極限と λ-small filtered 余極限を組み合わせて全小 filtered 余極限に戻す型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.2.6": {
+      "number": "9.2.2.6",
+      "tag": "062F",
+      "query": [
+        "relative finitary functors",
+        "kappa filtered",
+        "lambda small",
+        "full subcategory"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.6",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "filtered",
+            "finitary",
+            "full",
+            "functors",
+            "kappa",
+            "lambda",
+            "relative",
+            "small",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Small.lean",
+              "line": 102,
+              "declaration": "small_fullSubcategory_filteredClosure"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "filtered",
+            "finitary",
+            "full",
+            "functors",
+            "kappa",
+            "lambda",
+            "relative",
+            "small",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Small.lean",
+              "line": 102,
+              "declaration": "small_fullSubcategory_filteredClosure"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "filtered",
+            "finitary",
+            "full",
+            "functors",
+            "kappa",
+            "lambda",
+            "relative",
+            "small",
+            "subcategory"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Small.lean",
+              "line": 102,
+              "declaration": "small_fullSubcategory_filteredClosure"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+              "line": 263,
+              "declaration": "locallySmall_fullSubcategory"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "filtered",
+          "finitary",
+          "full",
+          "functors",
+          "kappa",
+          "lambda",
+          "relative",
+          "small",
+          "subcategory"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 21,
+            "declaration": "PreservesSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/DiagramCommaConePushoutFiltered.lean",
+            "line": 44,
+            "declaration": "smallDiagramComma_cone_pushout_isKappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 21,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.PreservesSmallKappaFilteredColimits",
+          "kernel_type": "SerrePositivity.InfinityCategories.F2.Ind.PreservesSmallKappaFilteredColimits : Cardinal.{u_1} →\n  {X Y : SSet} → (X ⟶ Y) → Prop",
+          "assessment": "宇宙小の κ-filtered 余錐を保つ述語と頂点の全部分複体はある。二濃度 (κ,λ) を指定し、λ-small な形状だけを保つ関手を選ぶ部分準圏は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/TerminalVertices.lean",
+          "line": 23,
+          "declaration": "fullSubcomplexOnVertices",
+          "source_signature": "def fullSubcomplexOnVertices (X : SSet.{u}) (P : X _⦋0⦌ → Prop) : X.Subcomplex",
+          "assessment": "宇宙小の κ-filtered 余錐を保つ述語と頂点の全部分複体はある。二濃度 (κ,λ) を指定し、λ-small な形状だけを保つ関手を選ぶ部分準圏は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "宇宙小の κ-filtered 余錐を保つ述語と頂点の全部分複体はある。二濃度 (κ,λ) を指定し、λ-small な形状だけを保つ関手を選ぶ部分準圏は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.2.14": {
+      "number": "9.2.2.14",
+      "tag": "06DT",
+      "query": [
+        "QC relative cocomplete subcategory",
+        "relative finitary",
+        "mu small",
+        "three cardinals"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.14",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinals",
+            "cocomplete",
+            "finitary",
+            "mu",
+            "qc",
+            "relative",
+            "small",
+            "subcategory",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Cardinals.lean",
+              "line": 24,
+              "declaration": "exists_relativeCardinals"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinals",
+            "cocomplete",
+            "finitary",
+            "mu",
+            "qc",
+            "relative",
+            "small",
+            "subcategory",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Cardinals.lean",
+              "line": 24,
+              "declaration": "exists_relativeCardinals"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinals",
+            "colimits",
+            "finitary",
+            "has",
+            "mu",
+            "qc",
+            "relative",
+            "small",
+            "subcategory",
+            "three"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/EssentiallySmall.lean",
+              "line": 34,
+              "declaration": "hasColimitsOfShape_of_essentiallySmall"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+              "line": 237,
+              "declaration": "hasColimitsOfShape_of_finallySmall"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "cardinals",
+          "cocomplete",
+          "finitary",
+          "mu",
+          "qc",
+          "relative",
+          "small",
+          "subcategory",
+          "three"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 21,
+            "declaration": "PreservesSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaRelativeFactorization.lean",
+            "line": 31,
+            "declaration": "kappaSmall_relative_factorization_of_isColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+          "line": 49,
+          "declaration": "PrL",
+          "source_signature": "def PrL : SSet.{u + 2} ",
+          "assessment": "PrL の対象は presentable、射は全小余極限を保つ。κ-filtered かつ λ-small な形状で対象と射を制限し、さらに μ-small な対象へ絞る QC 部分圏は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 21,
+          "declaration": "PreservesSmallKappaFilteredColimits",
+          "source_signature": "def PreservesSmallKappaFilteredColimits (κ : Cardinal.{u}) {X Y : SSet.{u + 1}} (F : X ⟶ Y) : Prop ",
+          "assessment": "PrL の対象は presentable、射は全小余極限を保つ。κ-filtered かつ λ-small な形状で対象と射を制限し、さらに μ-small な対象へ絞る QC 部分圏は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "PrL の対象は presentable、射は全小余極限を保つ。κ-filtered かつ λ-small な形状で対象と射を制限し、さらに μ-small な対象へ絞る QC 部分圏は見つからない。",
+      "decision": "none"
+    },
+    "9.2.2.21": {
+      "number": "9.2.2.21",
+      "tag": "06DV",
+      "query": [
+        "lambda cocontinuous iff",
+        "kappa cocontinuous",
+        "relative finitary",
+        "sharply below"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.21",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "cocontinuous",
+            "finitary",
+            "kappa",
+            "lambda",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "cocontinuous",
+            "finitary",
+            "kappa",
+            "lambda",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 21,
+              "declaration": "PreservesSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "cocontinuous",
+            "finitary",
+            "kappa",
+            "lambda",
+            "relative",
+            "sharply"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+              "line": 53,
+              "declaration": "SharplyLT"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+              "line": 32,
+              "declaration": "Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "below",
+          "cocontinuous",
+          "finitary",
+          "kappa",
+          "lambda",
+          "relative",
+          "sharply"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 21,
+            "declaration": "PreservesSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaRelativeFactorization.lean",
+            "line": 31,
+            "declaration": "kappaSmall_relative_factorization_of_isColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+          "line": 84,
+          "declaration": "preservesSmallColimits_of_coproducts_finite",
+          "source_signature": "lemma preservesSmallColimits_of_coproducts_finite {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) : PreservesSmallColimits U ",
+          "assessment": "全小余極限保存を小余積と有限余極限の保存から導く型はある。κ-small な全形状と λ-small κ-filtered 形状の保存を組み合わせる二濃度の判定は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 21,
+          "declaration": "PreservesSmallKappaFilteredColimits",
+          "source_signature": "def PreservesSmallKappaFilteredColimits (κ : Cardinal.{u}) {X Y : SSet.{u + 1}} (F : X ⟶ Y) : Prop ",
+          "assessment": "全小余極限保存を小余積と有限余極限の保存から導く型はある。κ-small な全形状と λ-small κ-filtered 形状の保存を組み合わせる二濃度の判定は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全小余極限保存を小余積と有限余極限の保存から導く型はある。κ-small な全形状と λ-small κ-filtered 形状の保存を組み合わせる二濃度の判定は見つからない。",
+      "decision": "none"
+    },
+    "9.2.2.22": {
+      "number": "9.2.2.22",
+      "tag": "06DW",
+      "query": [
+        "cocontinuous iff kappa cocontinuous and finitary",
+        "small regular cardinal",
+        "all small"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.22",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinal",
+            "cocontinuous",
+            "finitary",
+            "kappa",
+            "regular",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 50,
+              "declaration": "PreservesSmallColimits.isKappaAccessibleFunctor"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinal",
+            "cocontinuous",
+            "effective",
+            "finitary",
+            "kappa",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+              "line": 50,
+              "declaration": "PreservesSmallColimits.isKappaAccessibleFunctor"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinal",
+            "cocontinuous",
+            "finitary",
+            "kappa",
+            "regular",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Combinatorics/Matroid/Rank/Cardinal.lean",
+              "line": 312,
+              "declaration": "invariantCardinalRank_of_finitary"
+            },
+            {
+              "source": "Mathlib/SetTheory/Cardinal/HasCardinalLT.lean",
+              "line": 201,
+              "declaration": "exists_regular_cardinal"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "cardinal",
+          "cocontinuous",
+          "finitary",
+          "kappa",
+          "regular",
+          "small"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean",
+            "line": 46,
+            "declaration": "isCardinalPresentable_of_isKappaSmall"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/SmallVerticesFreshLabel.lean",
+            "line": 20,
+            "declaration": "cardinal_vertices_lt_of_isKappaSmall"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "line": 50,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor : ∀ {C E : SSet}\n  {F : C ⟶ E},\n  SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits F →\n    ∀ (κ : Cardinal.{u_1}), SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor κ F",
+          "assessment": "全小余極限保存から小 κ-filtered 余極限保存を得る向きはある。任意の κ について κ-small 形状の保存と小 κ-filtered 形状の保存から全保存を得る型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+          "line": 84,
+          "declaration": "preservesSmallColimits_of_coproducts_finite",
+          "source_signature": "lemma preservesSmallColimits_of_coproducts_finite {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) : PreservesSmallColimits U ",
+          "assessment": "全小余極限保存から小 κ-filtered 余極限保存を得る向きはある。任意の κ について κ-small 形状の保存と小 κ-filtered 形状の保存から全保存を得る型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "全小余極限保存から小 κ-filtered 余極限保存を得る向きはある。任意の κ について κ-small 形状の保存と小 κ-filtered 形状の保存から全保存を得る型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.2.23": {
+      "number": "9.2.2.23",
+      "tag": "06DX",
+      "query": [
+        "lambda cocontinuous iff finite and filtered",
+        "lambda small",
+        "finite coproducts"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.23",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocontinuous",
+            "coproducts",
+            "filtered",
+            "finite",
+            "lambda",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean",
+              "line": 36,
+              "declaration": "preservesSmallCoproducts_of_finite_filtered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocontinuous",
+            "coproducts",
+            "filtered",
+            "finite",
+            "lambda",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean",
+              "line": 36,
+              "declaration": "preservesSmallCoproducts_of_finite_filtered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+              "line": 84,
+              "declaration": "preservesSmallColimits_of_coproducts_finite"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocontinuous",
+            "coproducts",
+            "filtered",
+            "finite",
+            "lambda",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Constructions/Filtered.lean",
+              "line": 120,
+              "declaration": "hasCoproducts_of_finite_and_filtered"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/EssentiallySmall.lean",
+              "line": 42,
+              "declaration": "hasCoproductsOfShape_of_small"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "cocontinuous",
+          "coproducts",
+          "filtered",
+          "finite",
+          "lambda",
+          "small"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+            "line": 36,
+            "declaration": "smallSpaceFilteredColimit_map_isLimit_finite"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramFiltered.lean",
+            "line": 43,
+            "declaration": "smallFinitePosetDiagramComma_isKappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean",
+          "line": 36,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallCoproducts_of_finite_filtered",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallCoproducts_of_finite_filtered : ∀ {X Y : SSet}\n  [X.Quasicategory] [Y.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallCoproducts X →\n    ∀ (U : X ⟶ Y),\n      SerrePositivity.InfinityCategories.F2.Presentable.PreservesFiniteCoproducts U →\n        SerrePositivity.InfinityCategories.F2.Ind.PreservesSmallKappaFilteredColimits Cardinal.aleph0 U →\n          SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallCoproducts U",
+          "assessment": "固定宇宙で始域に小余積があり、有限余積と filtered 余極限の保存から小余積の保存を、さらに有限余極限の存在・保存から全小余極限の保存を得る。λ の明示的制限を伴う版は確認できない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+          "line": 84,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite : ∀ {X Y : SSet}\n  [X.Quasicategory] [Y.Quasicategory] (U : X ⟶ Y),\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallCoproducts X →\n    SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallCoproducts U →\n      (∀ (K : SSet) [K.Finite] (D : K ⟶ X), SerrePositivity.InfinityCategories.F2.Ind.HasPreservedColimit U D) →\n        SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits U",
+          "assessment": "固定宇宙で始域に小余積があり、有限余積と filtered 余極限の保存から小余積の保存を、さらに有限余極限の存在・保存から全小余極限の保存を得る。λ の明示的制限を伴う版は確認できない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "固定宇宙で始域に小余積があり、有限余積と filtered 余極限の保存から小余積の保存を、さらに有限余極限の存在・保存から全小余極限の保存を得る。λ の明示的制限を伴う版は確認できない。",
+      "decision": "partial"
+    },
+    "9.2.2.27": {
+      "number": "9.2.2.27",
+      "tag": "06E1",
+      "query": [
+        "lambda-small filtered colimit preservation",
+        "directed poset nerve",
+        "aleph0",
+        "size bound"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.27",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "aleph0",
+            "bound",
+            "colimit",
+            "directed",
+            "filtered",
+            "lambda",
+            "nerve",
+            "poset",
+            "preservation",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean",
+              "line": 21,
+              "declaration": "Compact.preservesKappaFilteredColimits_of_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredNerveColimit.lean",
+              "line": 56,
+              "declaration": "smallFilteredNerveCocone_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "aleph0",
+            "bound",
+            "directed",
+            "filtered",
+            "lambda",
+            "limit",
+            "nerve",
+            "poset",
+            "preservation",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean",
+              "line": 21,
+              "declaration": "Compact.preservesKappaFilteredColimits_of_poset"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/Aleph0PosetExchange.lean",
+              "line": 23,
+              "declaration": "cardinalFilteredLimitExchangeShape_aleph0_poset"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "aleph0",
+            "bound",
+            "coherent",
+            "colimit",
+            "directed",
+            "filtered",
+            "lambda",
+            "nerve",
+            "poset",
+            "preservation",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/CardinalDirectedPoset.lean",
+              "line": 104,
+              "declaration": "CardinalDirectedPoset"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/SharplyLT/Basic.lean",
+              "line": 65,
+              "declaration": "exists_cofinal_of_isCardinalAccessibleCategory_cardinalDirectedPoset"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "aleph0",
+          "bound",
+          "colimit",
+          "directed",
+          "filtered",
+          "lambda",
+          "nerve",
+          "poset",
+          "preservation",
+          "size",
+          "small"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean",
+            "line": 21,
+            "declaration": "Compact.preservesKappaFilteredColimits_of_poset"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetDiagramFiltered.lean",
+            "line": 43,
+            "declaration": "smallFinitePosetDiagramComma_isKappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean",
+          "line": 21,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.Compact.preservesKappaFilteredColimits_of_poset",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.Compact.preservesKappaFilteredColimits_of_poset : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] {C : SSet} {Y : SSet} [C.Quasicategory] [Y.Quasicategory] (F : SSet.uliftFunctor.obj C ⟶ Y),\n  (∀ (I : Type u_1) [inst_3 : PartialOrder I] [CategoryTheory.IsCardinalFiltered I κ]\n      (D : SSet.uliftFunctor.obj (CategoryTheory.nerve I) ⟶ C) (c : SerrePositivity.InfinityCategories.JoinCocone D),\n      SerrePositivity.InfinityCategories.IsColimitCone c →\n        SerrePositivity.InfinityCategories.IsColimitCone (SerrePositivity.InfinityCategories.mapJoinCocone F c.ulift)) →\n    SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits κ F",
+          "assessment": "κ=ℵ₀ で、宇宙小の有向 poset の nerve に対する保存から宇宙小の filtered 準圏の余極限保存を得る。別の正則 λ による濃度上限を両方の形状に課した型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "κ=ℵ₀ で、宇宙小の有向 poset の nerve に対する保存から宇宙小の filtered 準圏の余極限保存を得る。別の正則 λ による濃度上限を両方の形状に課した型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.2.29": {
+      "number": "9.2.2.29",
+      "tag": "062T",
+      "query": [
+        "relative finitary three cardinals",
+        "composition of bounds",
+        "sharply below",
+        "filtered preservation"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.29",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "bounds",
+            "cardinals",
+            "composition",
+            "filtered",
+            "finitary",
+            "preservation",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "bounds",
+            "cardinals",
+            "composition",
+            "filtered",
+            "finitary",
+            "preservation",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "bounds",
+            "cardinals",
+            "composition",
+            "filtered",
+            "finitary",
+            "preservation",
+            "relative",
+            "sharply",
+            "three"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/Algebra/Group/Submonoid/Support.lean",
+              "line": 111,
+              "declaration": "of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "below",
+          "bounds",
+          "cardinals",
+          "composition",
+          "filtered",
+          "finitary",
+          "preservation",
+          "relative",
+          "sharply",
+          "three"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 21,
+            "declaration": "PreservesSmallKappaFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 21,
+          "declaration": "PreservesSmallKappaFilteredColimits",
+          "source_signature": "def PreservesSmallKappaFilteredColimits (κ : Cardinal.{u}) {X Y : SSet.{u + 1}} (F : X ⟶ Y) : Prop ",
+          "assessment": "宇宙小の κ-filtered 余極限保存と、より大きい濃度で filtered な形状への制限はある。(κ,μ)-finitary 性を (κ,λ) と (λ,μ) の二条件に分ける iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "line": 40,
+          "declaration": "PreservesKappaFilteredColimits.of_le",
+          "source_signature": "lemma PreservesKappaFilteredColimits.of_le {κ μ : Cardinal.{u}} (hκμ : κ ≤ μ) {C : SSet.{max u v}} {Y : SSet.{max u v + 1}} {F : (SSet.uliftFunctor.{max u v + 1, max u v}).obj C ⟶ Y} (h : PreservesKappaFilteredColimits.{u, v} κ F) : PreservesKappaFilteredColimits.{u, v} μ F ",
+          "assessment": "宇宙小の κ-filtered 余極限保存と、より大きい濃度で filtered な形状への制限はある。(κ,μ)-finitary 性を (κ,λ) と (λ,μ) の二条件に分ける iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "宇宙小の κ-filtered 余極限保存と、より大きい濃度で filtered な形状への制限はある。(κ,μ)-finitary 性を (κ,λ) と (λ,μ) の二条件に分ける iff は見つからない。",
+      "decision": "none"
+    },
+    "9.2.2.30": {
+      "number": "9.2.2.30",
+      "tag": "062U",
+      "query": [
+        "kappa finitary iff lambda finitary",
+        "relative small filtered",
+        "cardinal monotonicity"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.30",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinal",
+            "filtered",
+            "finitary",
+            "kappa",
+            "lambda",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinal",
+            "filtered",
+            "finitary",
+            "kappa",
+            "lambda",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinal",
+            "filtered",
+            "finitary",
+            "kappa",
+            "lambda",
+            "monotonicity",
+            "relative",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 40,
+              "declaration": "Small.of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "cardinal",
+          "filtered",
+          "finitary",
+          "kappa",
+          "lambda",
+          "monotonicity",
+          "relative",
+          "small"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+            "line": 21,
+            "declaration": "PreservesSmallKappaFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "line": 40,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits.of_le",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits.of_le : ∀ {κ μ : Cardinal.{u_1}},\n  κ ≤ μ →\n    ∀ {C : SSet} {Y : SSet} {F : SSet.uliftFunctor.obj C ⟶ Y},\n      SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits κ F →\n        SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits μ F",
+          "assessment": "κ≤λ で κ-filtered 余極限保存から λ-filtered 余極限保存を得る向きはある。λ-small κ-filtered 形状での保存を加えて逆に小 κ-filtered 形状全部を得る型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "κ≤λ で κ-filtered 余極限保存から λ-filtered 余極限保存を得る向きはある。λ-small κ-filtered 形状での保存を加えて逆に小 κ-filtered 形状全部を得る型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.2.31": {
+      "number": "9.2.2.31",
+      "tag": "062V",
+      "query": [
+        "finitary iff lambda finitary and lambda-small filtered",
+        "aleph0",
+        "cardinal monotonicity"
+      ],
+      "a": {
+        "terms": [
+          "9.2.2.31",
+          "9.2.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "aleph0",
+            "cardinal",
+            "filtered",
+            "finitary",
+            "lambda",
+            "monotonicity",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "aleph0",
+            "cardinal",
+            "filtered",
+            "finitary",
+            "lambda",
+            "monotonicity",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+              "line": 40,
+              "declaration": "PreservesKappaFilteredColimits.of_le"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "aleph0",
+            "cardinal",
+            "filtered",
+            "finitary",
+            "lambda",
+            "monotonicity",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 423,
+              "declaration": "HasCardinalFilteredColimits.of_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 40,
+              "declaration": "Small.of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "SerrePositivity/InfinityCategories/F2/Ind/NativePreservationPosetReductionUniverse.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "aleph0",
+          "cardinal",
+          "filtered",
+          "finitary",
+          "lambda",
+          "monotonicity",
+          "small"
+        ],
+        "declaration_count": 2182,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+            "line": 40,
+            "declaration": "PreservesKappaFilteredColimits.of_le"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FiniteExchangeBasicShapes.lean",
+            "line": 25,
+            "declaration": "coherentFilteredLimitExchangeShape_iff_cardinal_aleph0"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+          "line": 40,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits.of_le",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits.of_le : ∀ {κ μ : Cardinal.{u_1}},\n  κ ≤ μ →\n    ∀ {C : SSet} {Y : SSet} {F : SSet.uliftFunctor.obj C ⟶ Y},\n      SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits κ F →\n        SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits μ F",
+          "assessment": "κ=ℵ₀ の濃度単調性で、filtered 余極限保存を λ-filtered な形状へ制限できる。λ-small filtered な形状の保存と合わせて一般の小 filtered 形状に戻す型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "κ=ℵ₀ の濃度単調性で、filtered 余極限保存を λ-filtered な形状へ制限できる。λ-small filtered な形状の保存と合わせて一般の小 filtered 形状に戻す型は見つからない。",
+      "decision": "partial"
     },
     "9.2.4.5": {
       "number": "9.2.4.5",
