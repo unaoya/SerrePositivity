@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Descent.AlgebraPureTransform
-public import SerrePositivity.KST.SchemeLemmas.AffineIdealPullback
+public import SerrePositivity.AlgebraicGeometry.AffineIdealPullback
 public import Mathlib.AlgebraicGeometry.Morphisms.Flat
 public import Mathlib.AlgebraicGeometry.Morphisms.Finite
 
@@ -26,7 +26,7 @@ public import Mathlib.AlgebraicGeometry.Morphisms.Finite
 universe u
 
 open CategoryTheory AlgebraicGeometry
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 
