@@ -136,3 +136,48 @@ SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 ```text
 SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 ```
+
+## BS-D68 段 2 継続（2026-11-07）
+
+作業開始前に、調整役による停止点 1 と `PolynomialFrobeniusCech` の登録（`49d0ca4f1`）を含む main `f261f37cf` を取り込んだ。
+
+### Lemma 5.4
+
+- `deedbbd11` で無限変数の `frobeniusTwist_cech_quasiIso_infinite` と有限変数の `frobeniusTwist_cech_quasiIso` を、草稿と同じ型で証明した。
+- 全零添字への射影は余鎖写像になる。残りの成分では、最初の非零頂点の直前の零頂点を削り、係数にはその位置の余退化を符号付きで施す。余面との合成で恒等項が一つ残り、ほかは対消滅する。有限変数版は任意の変数集合での証明の特殊化。
+- 鍵付き対象ビルドは成功。一時監査の 2 宣言は標準三公理のみ。
+
+### 結晶の橋の構成
+
+- `92012213f` で `crystallineBasePrism`（生成元 p の ℤₚ の prism）、`cartierBaseEquiv`（剰余と ℤ/p の同型）、`modPrimeCosimplicial` と `modPrimeMap`（各項の p による商）を追加した。`htCech` と `htRings` は affine 模型の余単体的代数と台環、`htBase` と `htGenerator` は基底射と選択生成元、`reducedModel`、`htResidueIso`、`htSec` は剰余模型とその座標を与える。
+- `8f1e35778` で `deltaAdjoinDivisionBaseChange_isPushout`（δ 除算関係式の商と通常の底変換）、`crystallineFreeDivisionEquiv`（差の p 除算と自由 δ 環の同型）、`crystallineModPrime_isPushout`（mod p が押し出しを保つこと）を追加した。
+- `crystallineTensor_isSMulRegular` は p 完全平坦な底変換での p 正則性を示す。`crystallineCompletelyFlat_frobenius` は剰余が多項式環の場合の Frobenius の p 完全平坦性を与える。`crystallineCompletedFreeDelta_primeRegular` と `crystallineCompletedFreeDeltaResidue` は完備自由 δ 環の正則性と剰余の多項式表示を与える。
+- `crystallineCechSource` は完備自由 δ Čech 余脈体。`deltaCoordinatesModP` は多項式 Čech 余脈体の変数を affine 模型の剰余の反復 δ 座標に送る。`crystallineDivision_isPrismaticEnvelope` は生成元 p の基底上の古典的完備 δ 除算の普遍性を示す。`pdDeltaTerm`、`pdDeltaModel`、`pdDeltaRings` は結晶側の完備 p 除算模型を与える。これらの型を保ち、実装には古典的 p 完備化を用いた。
+- 二つの束の鍵付き対象ビルドは成功。一時監査はそれぞれ 22 宣言、49 宣言で、標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
+- 残りは、結晶の橋の mod p を Frobenius に沿う押し出しの脚として同定し、Lemma 5.4 を適用することと、余分な δ 座標の Čech 因子を収縮すること。
+
+### 橋の自然変換と剰余
+
+- `crystallineBridge` は、Frobenius で差が p で割り切れることから、affine envelope の普遍性で構成した自然変換。 `crystallineBridge_generator` は生成元の像が p であることを示し、`crystallineBridgeModP` はその剰余写像。
+- `crystallineCechResidueIso` は、完備自由 δ Čech 余脈体の剰余を多項式 Čech 余脈体と同一視する。`crystallineDivisionCompletionModPrimeEquiv` は、p 正則なときに完備 p 除算と未完備の関係式の商の剰余を同一視する。`deltaAdjoinDivisionBaseChange_isDeltaHom` は、係数の底変換が δ 構造を保つことを示す。
+- 鍵付き対象ビルドは成功。一時監査の 11 宣言は標準三公理のみ。そのうち 3 宣言は前回監査済み。
+
+### 今回の登録対象
+
+```text
+SerrePositivity.BhattScholze.Delta.Division.BaseChange
+SerrePositivity.BhattScholze.Prismatic.CrystallineBase
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechSource
+SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedFreeDelta
+SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion
+SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
+SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
+SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
+SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
+SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
+SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+```

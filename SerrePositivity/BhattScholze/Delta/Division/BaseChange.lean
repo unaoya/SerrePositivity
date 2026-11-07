@@ -75,6 +75,22 @@ theorem deltaAdjoinDivisionBaseChange_mk (x : RelativeFreeDeltaRing (R := A) σ)
   unfold deltaAdjoinDivisionBaseChange
   rfl
 
+/-- 係数を移す射は添加環の δ 構造を保つ。 -/
+theorem deltaAdjoinDivisionBaseChange_isDeltaHom :
+    (deltaAdjoinDivisionStructure D d a).IsDeltaHom
+      (deltaAdjoinDivisionStructure E (f d) (fun s => f (a s)))
+      (deltaAdjoinDivisionBaseChange D E f hf d a) := by
+  intro x
+  obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
+  have hA : (relativeFreeDeltaStructure σ D).IsDeltaHom
+      (deltaAdjoinDivisionStructure D d a) (qA) :=
+    (relativeFreeDeltaStructure σ D).isDeltaHom_quotient_mk _ _
+  have hB : (relativeFreeDeltaStructure σ E).IsDeltaHom
+      (deltaAdjoinDivisionStructure E (f d) (fun s => f (a s))) (qB) :=
+    (relativeFreeDeltaStructure σ E).isDeltaHom_quotient_mk _ _
+  rw [← hA x, deltaAdjoinDivisionBaseChange_mk,
+    polynomialMap_isDeltaHom D E f hf x, hB, deltaAdjoinDivisionBaseChange_mk]
+
 /-- δ 除算を添加した後の底変換と、基底を移してからの添加は通常の可換環の押し出しをなす。 -/
 theorem deltaAdjoinDivisionBaseChange_isPushout :
     IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom jA) (CommRingCat.ofHom jB)

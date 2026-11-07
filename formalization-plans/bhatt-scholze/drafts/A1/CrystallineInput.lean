@@ -6,7 +6,8 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
-public import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
+public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
@@ -434,29 +435,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 2：C^•/p → D^•/p -/
 
-abbrev zpCech (r : ℕ) := htRings (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r
-
-/-- 概要：Thm 5.2 の橋 η : C^• → D^•（C^n = B^n{z/p}^∧ → D^n = B^n{φ(z)/p}^∧、b ↦ φ(b)、z/p ↦ φ(z)/p。a1-design §2.3）。
-方針：envelope の普遍性（A0 の `IsPrismaticEnvelope.lift`。D^n は (Z_p,(p)) 上の prism）。余単体的射は普遍性の一意性から。
-規約：A = Z_p なので φ_A = id。
-使われ方：段 2。 -/
-def crystallineBridge (r : ℕ) : zpCech.{u} p r ⟶ pdDeltaRings p r := by
-  sorry -- 各項で φ_{B^n} を envelope の普遍性で延長。一意性で余面・余退化と可換
-
-theorem crystallineBridge_generator (r : ℕ) (n : SimplexCategory) :
-    (crystallineBridge p r).app n
-      (htGenerator (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r n) = (p : (pdDeltaRings p r).obj n) := by
-  sorry -- htGenerator は基底の p の像、橋は環射
-
-/-- 概要：橋の mod p：C^•/p → D^•/p（左辺は HT の模型 `reducedModel` そのもの）。
-方針：`quotPowMap` に `crystallineBridge_generator`。
-規約：—
-使われ方：段 2・6。 -/
-abbrev crystallineBridgeModP (r : ℕ) :
-    reducedModel (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r ⟶ modPrimeCosimplicial p (pdDeltaRings p r) :=
-  quotPowMap (zpCech p r) (htGenerator _ _ r) (htGenerator_nat _ _ r)
-    (fun n => (p : (pdDeltaRings p r).obj n)) (fun θ => map_natCast ((pdDeltaRings p r).map θ).hom p)
-    (crystallineBridge p r) (crystallineBridge_generator p r) 1
+-- 結晶の橋とその mod p は本体の CrystallineBridge に置く。
 
 /-- 概要：D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p（項ごと、余単体的に）で、C^•/p からの脚が橋の mod p。
 方針：D^n ≅ C^n ⊗̂_{B^n, φ} B^n（a1-design §2.3、§8 の 2：C^n = Z_p{X^{(0)}, Y}^∧、z = pY の φ 底変換は z ↦ φ(z)）、p 完備化は mod p で消える
