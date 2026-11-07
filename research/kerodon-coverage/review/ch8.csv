@@ -1,5 +1,5 @@
 number,verdict,status_new,declarations_new,reason,axioms,check
-8.1.0.1,ok,none,,確認済み・なし（探索範囲内）。通常の圏の射を対象とする twisted arrow 圏とその合成を探した。自前の edgewise subdivision は単体的集合上の構成。,,not_found
+8.1.0.1,fix,mathlib,CategoryTheory.coyoneda @ Mathlib/CategoryTheory/Yoneda.lean:89 | CategoryTheory.Functor.uncurry @ Mathlib/CategoryTheory/Functor/Currying.lean:37 | CategoryTheory.Functor.Elements @ Mathlib/CategoryTheory/Elements.lean:48 | CategoryTheory.Functor.Elements.Hom @ Mathlib/CategoryTheory/Elements.lean:75 | CategoryTheory.Functor.Elements.instCategory @ Mathlib/CategoryTheory/Elements.lean:85,仮定：通常圏 C を与える（Kerodon と一致）。結論：coyoneda を uncurry した Hom 二変数関手の Elements で、対象は f:X→Y、射は逆向き u と順向き v で u≫f≫v=f'、合成は Cᵒᵖ×C の成分別合成になる（一致）。,,found
 8.1.1.1,fix,own,SerrePositivity.InfinityCategories.edgewiseSubdivision @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:35 | SerrePositivity.InfinityCategories.edgewiseWeight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:23 | SerrePositivity.InfinityCategories.TwistedArrow @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:20,仮定：C : SSet。∞圏性の仮定なし（Kerodon と一致）。結論：TwistedArrow C は edgewiseWeight の各重みから C への写像で作る単体集合。重みは [n]ᵒᵖ⋆[n] を表す（原文の Tw(C) と一致）。,,renamed
 8.1.1.2,fix,partial,SerrePositivity.InfinityCategories.edgewiseSimplexEquiv @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseStandardSimplex.lean:32 | SerrePositivity.InfinityCategories.edgewiseWeight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:23,仮定：任意の単体集合 C と n : ℕ（Kerodon と一致）。結論：edgewiseSimplexEquiv は Tw(C)ₙ と C₂ₙ₊₁ の全単射。原文にある面・退化の合成式の全体は引用型にない（Lean が弱い）。,,renamed
 8.1.1.4,fix,partial,SerrePositivity.InfinityCategories.edgewiseSubdivisionFunctor @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:68,関手性はある。極限・余極限の保存は見つからない。,,renamed
@@ -77,28 +77,28 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 8.1.10.9,ok,none,,通常双圏の Pith と一辺の持ち上げはある。持ち上げた L・R による Cospan の Pith 間で、cartesian ファイブレーションの構成と cartesian 辺の両脚判定は見つからない。,,not_found
 8.1.10.12,ok,none,,通常双圏の Pith と span 双圏はある。両脚を (co)cartesian に制限した全空間の高次双圏性、Pith 上の右ファイブレーション、底が準圏の場合の Cospan 自体の右ファイブレーションの三結論は見つからない。,,not_found
 8.2.0.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61 | SerrePositivity.InfinityCategories.twistedArrowProjection @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:23,一般の coupling（left fibration C→C₋^op×C₊）の名前付き定義はない。典型例 Tw(C)→C^op×C が left fibration であること（twisted arrow coupling）だけがある。LeftFibration と ⊗ で書けば表せる。,,renamed
-8.2.0.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.0.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.1.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない（Tw の場合の類似：TwistedArrow/SourceInitial、leftFibration_exists_initial_of_covariantRepresentation）。,,not_found
-8.2.1.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.1.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.1.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.1.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.1.10,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.2,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.10,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.11,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.2.13,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.3.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.0.3,fix,partial,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61 | SerrePositivity.InfinityCategories.leftFibration_pullback_snd @ SerrePositivity/InfinityCategories/F1/Fibrations/PullbackTransport.lean:29,Tw の左ファイブレーションと任意の基底変更での左ファイブレーション性がある。指定 G の id×G に沿う引き戻しを λ_G としてまとめ、Tw(C₋)×_{C₋}C₊ の表示と比較する宣言は見つからない。,,found
+8.2.0.4,ok,none,,Yoneda の充満忠実性と一つの終点における表現可能ファイブレーションの比較はある。全代表可能 coupling の同値類を関手の同型類と対応させる全単射は見つからない。,,not_found
+8.2.1.1,ok,none,,準圏の初期頂点と Tw の特定の始域ファイバーでの恒等射の初期性はある。任意の coupling で片方の射影のファイバーに初期性を課す二つの定義は見つからない。,,not_found
+8.2.1.3,ok,none,,始域固定の Tw で初期対象を得る補題と終点固定の表現可能模型はある。任意の左ファイブレーションで、片方の座標の各頂点のファイバーに初期対象があることを要求する二つの述語は見つからない。,,not_found
+8.2.1.6,fix,partial,SerrePositivity.InfinityCategories.rightRepresentableTwistedArrowMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowEquivalence.lean:55 | SerrePositivity.InfinityCategories.F1B.sliceIdentityCone_isTerminalVertex @ SerrePositivity/InfinityCategories/F1B/Cones/SliceIdentityTerminal.lean:27,終点固定の Tw と slice の反転を比較する同値と、slice の恒等射の終対象性はある。任意の G の各ファイバーで普遍対象を可逆射として特徴づける iff は見つからない。,,found
+8.2.1.7,ok,none,,単一の左ファイブレーションを全辺 cocartesian の条件で判定する iff はある。二射影のそれぞれの cocartesian 辺を反対側の座標の可逆性で判定し、joint な isofibration と組み合わせる iff は見つからない。,,not_found
+8.2.1.8,ok,none,,単独の初期頂点の評価から全辺で cocartesian な図式を延ばせる。corepresentable coupling 上の相対関手圏で初期対象を作り、全 couniversal 頂点の像と辺保存で初期性を判定する型は見つからない。,,not_found
+8.2.1.10,ok,none,,Tw の始域ファイバーでの恒等射の初期性と、初期頂点からの cocartesian 延長はある。Tw(C) 全体上の相対関手圏での初期対象と、全恒等射および指定辺による特徴づけは見つからない。,,not_found
+8.2.2.1,ok,none,,固定した一つの底写像への相対関手空間はある。負側と正側の底関手も動かす三つ組を、二つの制限の引き戻しで表す構成は見つからない。,,not_found
+8.2.2.2,fix,partial,SerrePositivity.InfinityCategories.leftFibration_pullbackObjObjπ @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean:25,単射と左ファイブレーションから得る相対内部 Hom の比較射は左ファイブレーションになる。そこから Fun± の両側可変の底への射を得る指定の引き戻しと同定する型は見つからない。,,found
+8.2.2.5,ok,none,,"一つの左ファイブレーションの固定底の相対関手空間には Kan 性がある。両側の底関手を動かす Fun±(C,D) の準圏性を述べる型は見つからない。",,not_found
+8.2.2.9,ok,none,,同じ底上の左ファイブレーション間の同値をファイバーで判定する型と余終性の基底変更はある。一方または両方の座標ファイバーが弱可縮のとき、指定の忘却関手を辺保存の全部分圏への同値とする三結論は見つからない。,,not_found
+8.2.2.10,ok,none,,固定底で (co)cartesian な辺の保存を要求する構成と左 straightening の相対比較はある。正側の F₊ を固定したときの Fun± からの忘却の充満忠実性と、辺保存による像の特徴づけは見つからない。,,not_found
+8.2.2.11,ok,none,,個別の Tw ファイバーの初期頂点と相対内部 Hom の左ファイブレーション性はある。表現可能な λ と余表現可能な μ に対する Fun± の余表現可能性、および普遍対象から余普遍対象への移送での判定は見つからない。,,not_found
+8.2.2.13,ok,none,,Tw の関手性は同じ F を両端に適用した四角形を与える。異なる F₋ と F₊ を端点に持ち可逆射を可逆射へ送る写像の存在と F₋≅F₊ の iff は見つからない。,,not_found
+8.2.3.1,ok,none,,指定した終点の表現可能左ファイブレーションの比較はある。G を任意の正側準圏上で動かし、λ が joint な底上で λ_G と同値であるとする述語は見つからない。,,not_found
+8.2.3.4,ok,none,,単独の終点での表現可能比較と Yoneda の充満忠実性はある。初期対象が各ファイバーにあるという入力から全体の G を構成して、その同型を除いた一意性を結論する型は見つからない。,,not_found
+8.2.3.5,ok,none,,左 straightening の基底変更と一つの終点の Tw への底上の比較を確認した。任意の G の id×G に沿う指定正方形の categorical pullback 性と λ の表現可能性を比較する型は見つからない。,,not_found
+8.2.3.6,fix,partial,SerrePositivity.InfinityCategories.leftFibration_isQCatEquivalence_iff_fibers @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean:63,左ファイブレーションを同じ底へそろえた比較の同値は各頂点ファイバーで判定できる。負側の F₋ の同値性と λ の表現可能性を使い、正側ファイバー全体および普遍対象保存と比較する三条件は見つからない。,,found
+8.2.3.7,ok,none,,"終点固定の Tw の表現可能模型と左ファイブレーションの同値のファイバー判定はある。指定 λ の普遍対象が可逆射へ移ること、および (id,G̃,G) の初期性まで含む四条件は見つからない。",,not_found
+8.2.3.8,ok,none,,Tw の両端交換は反対圏との指定の底変換を保つ。Fᵒᵖ×id への任意の categorical pullback による余表現可能性と F の同型を除いた一意性は見つからない。,,not_found
+8.2.3.9,fix,partial,SerrePositivity.InfinityCategories.relativeFunctorIsPullbackIso @ SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean:26 | SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex @ SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean:80,固定した一つの底写像に対する相対関手空間は、厳密な引き戻しによって同型になる。両端または正側だけを固定した Fun± に同じ比較を適用し、全 coupling を量化した三条件は確認できない。,,found
 8.2.4.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
 8.2.4.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
 8.2.4.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
