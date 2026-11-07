@@ -733,5 +733,1927 @@
       }
     ],
     "decision": "左アノダイン射による相対 Hom の制限は自明 Kan ファイブレーションとなるが、共変ファイブレーションや共変ファイブレーション性から左ファイブレーション性を導く型は見つからなかった。"
+  },
+  "2.2.3.9": {
+    "page": 83,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibrant|model)|rightStraighteningInfinityEquivalence|RightFibrationObject|ModelCategory.*Over",
+          "SerrePositivity"
+        ],
+        "file_count": 113,
+        "line_count": 196
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibrant|model)|rightStraighteningInfinityEquivalence|RightFibrationObject|ModelCategory.*Over",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Over.lean",
+        "signatures": [
+          {
+            "line": 143,
+            "head": "instance ModelCategory.over [ModelCategory C] : ModelCategory (Over S) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def rightStraighteningInfinityEquivalence (B : SSet.{u}) [Quasicategory B] :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightFibrationInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def RightFibrationObject (B : SSet.{u}) := {p : Over B // RightFibration p.hom}"
+          },
+          {
+            "line": 31,
+            "head": "instance rightFibrationObject_category (B : SSet.{u}) : Category.{u} (RightFibrationObject B) where"
+          },
+          {
+            "line": 43,
+            "head": "instance rightFibrationObject_projection {B : SSet.{u}} (p : RightFibrationObject B) :"
+          }
+        ]
+      }
+    ],
+    "decision": "標準単体を含む準圏上の右ファイブレーションと前層の分類、通常のスライスモデル構造を読んだが、反変ファイブランスな対象から RFib(Δⁿ) への豊穣包含とその同値は見つからなかった。"
+  },
+  "2.2.3.12": {
+    "page": 85,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibrant|model)|rightFibrations|RightFibrationObject|ModelCategory.*Over",
+          "SerrePositivity"
+        ],
+        "file_count": 143,
+        "line_count": 240
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibrant|model)|rightFibrations|RightFibrationObject|ModelCategory.*Over",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Over.lean",
+        "signatures": [
+          {
+            "line": 143,
+            "head": "instance ModelCategory.over [ModelCategory C] : ModelCategory (Over S) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def rightFibrations : MorphismProperty SSet.{u} := rightHornInclusions.rlp"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightFibrationInfinity.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def RightFibrationObject (B : SSet.{u}) := {p : Over B // RightFibration p.hom}"
+          },
+          {
+            "line": 31,
+            "head": "instance rightFibrationObject_category (B : SSet.{u}) : Category.{u} (RightFibrationObject B) where"
+          },
+          {
+            "line": 43,
+            "head": "instance rightFibrationObject_projection {B : SSet.{u}} (p : RightFibrationObject B) :"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の台のモデル構造を移すスライス instance と、右ファイブレーションの右ホーン判定を読んだが、反変構造を使うファイブランス性との同値は見つからなかった。"
+  },
+  "2.2.3.14": {
+    "page": 86,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.2",
+        "2.2.3",
+        "2.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibration|model)|rightFibrations|rightFibrationInfinityEdge|ModelCategory.*Over",
+          "SerrePositivity"
+        ],
+        "file_count": 38,
+        "line_count": 51
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "contravariant.*(fibration|model)|rightFibrations|rightFibrationInfinityEdge|ModelCategory.*Over",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Over.lean",
+        "signatures": [
+          {
+            "line": 143,
+            "head": "instance ModelCategory.over [ModelCategory C] : ModelCategory (Over S) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def rightFibrations : MorphismProperty SSet.{u} := rightHornInclusions.rlp"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightFibrationMappingSpaces.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "noncomputable def rightFibrationInfinityEdge {E F B : SSet.{u}}"
+          }
+        ]
+      }
+    ],
+    "decision": "右ホーン持ち上げ条件と底を保つ右ファイブレーションの射、通常のスライスのファイブレーションを調べたが、反変モデル構造の持ち上げ性を用いた両方向の比較は見つからなかった。"
+  },
+  "2.2.5.3": {
+    "page": 92,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Jj]oyal|[Rr]ightProper|right[ -]proper|isPrecompositionEquivalence_of_innerAnodyne|[Pp]ullback.*[Ww]eakEquivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 61,
+        "line_count": 74
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Jj]oyal|[Rr]ightProper|right[ -]proper|isPrecompositionEquivalence_of_innerAnodyne|[Pp]ullback.*[Ww]eakEquivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 3,
+        "line_count": 9
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 99,
+            "head": "lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "as the class of morphisms that satisfy the left lifting property with respect"
+          },
+          {
+            "line": 24,
+            "head": "to the class of inner fibrations."
+          }
+        ]
+      }
+    ],
+    "decision": "内ホーン包含の前合成同値と、一般モデル圏の引き戻しの補題を読んだが、Λ¹₂ を辺 {0,2} へ引き戻す指定の反例を Joyal モデル圏で判定する宣言は見つからなかった。"
+  },
+  "2.2.5.6": {
+    "page": 93,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ergner|[Rr]igidification|[Cc]ategorical.*[Pp]roduct|[Pp]roduct.*[Ss]implicialNerve|[Pp]recompositionEquivalence.whiskerRight",
+          "SerrePositivity"
+        ],
+        "file_count": 37,
+        "line_count": 72
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ergner|[Rr]igidification|[Cc]ategorical.*[Pp]roduct|[Pp]roduct.*[Ss]implicialNerve|[Pp]recompositionEquivalence.whiskerRight",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 13,
+        "line_count": 37
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "structure SimplicialThickening (J : Type*) [LinearOrder J] : Type _ where"
+          },
+          {
+            "line": 64,
+            "head": "structure Path {J : Type*} [LinearOrder J] (i j : J) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def f₂ (x : X _⦋2⦌₂) : Y _⦋2⦌₂ :="
+          },
+          {
+            "line": 80,
+            "head": "lemma spineEquiv_f₂_arrow_zero (x : X _⦋2⦌₂) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionTensor.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma IsPrecompositionEquivalence.whiskerRight {A B : SSet.{u}} {f : A ⟶ B}"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の nerve と単体 nerve、前合成同値が直積で保存される型を調べたが、C[S×T] から C[S]×C[T] への比較を豊穣圏同値とする宣言は見つからなかった。"
+  },
+  "2.2.5.9": {
+    "page": 95,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Jj]oyal.*(fibrant|[Mm]odel)|categorical.*[Ff]ibrant|[Bb]ergner|[Qq]uasicategory.*hasLiftingProperty|isPrecompositionEquivalence_of_innerAnodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 21,
+        "line_count": 24
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Jj]oyal.*(fibrant|[Mm]odel)|categorical.*[Ff]ibrant|[Bb]ergner|[Qq]uasicategory.*hasLiftingProperty|isPrecompositionEquivalence_of_innerAnodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 6
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "lemma quasicategory_of_hasLiftingProperty (S : SSet) {X : SSet} (t : Limits.IsTerminal X)"
+          },
+          {
+            "line": 80,
+            "head": "lemma Quasicategory.hasLiftingProperty (S : SSet) [Quasicategory S] {X : SSet}"
+          },
+          {
+            "line": 86,
+            "head": "lemma quasicategory_iff_hasLiftingProperty (S : SSet) {X : SSet} (t : Limits.IsTerminal X) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 99,
+            "head": "lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) :="
+          }
+        ]
+      }
+    ],
+    "decision": "内ホーンによる準圏の定義と前合成同値を用いる比較を読んだが、Joyal の構成と HTT の構成の一致をファイブランス対象の判定から導くモデル圏の宣言は見つからなかった。"
+  },
+  "2.2.5.10": {
+    "page": 95,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.4",
+        "2.2.5",
+        "2.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Rezk|[Cc]omplete[Ss]egal|[Cc]omplete [Ss]egal|[Cc]osimplicial.*Quillen|IsPrecompositionEquivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 289,
+        "line_count": 660
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Rezk|[Cc]omplete[Ss]egal|[Cc]omplete [Ss]egal|[Cc]osimplicial.*Quillen|IsPrecompositionEquivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop :="
+          },
+          {
+            "line": 31,
+            "head": "lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A) := by"
+          },
+          {
+            "line": 40,
+            "head": "lemma IsPrecompositionEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C}"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "noncomputable def coherentResolution : SSet.{u} ⥤ SSet.{u} :="
+          },
+          {
+            "line": 32,
+            "head": "noncomputable def coherentResolutionRightAdjoint : SSet.{u} ⥤ SSet.{u} :="
+          }
+        ]
+      }
+    ],
+    "decision": "前合成同値で準圏を試験する定義と一般の Quillen 比較を読んだが、余単体的対象による Rezk の完全 Segal 空間モデル圏との Quillen 同値は見つからなかった。"
+  },
+  "2.3.1.1": {
+    "page": 97,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.5",
+        "2.3.1",
+        "2.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ollage|[Pp]rofunctor|[Cc]orrespondence.*[Jj]oin|[Jj]oin.*[Cc]orrespondence",
+          "SerrePositivity"
+        ],
+        "file_count": 87,
+        "line_count": 994
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ollage|[Pp]rofunctor|[Cc]orrespondence.*[Jj]oin|[Jj]oin.*[Cc]orrespondence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 5,
+        "line_count": 118
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "structure ProfunctorCore where"
+          },
+          {
+            "line": 53,
+            "head": "abbrev Profunctor := C ⥤ Dᵒᵖ ⥤ Type w"
+          },
+          {
+            "line": 58,
+            "head": "abbrev Functor.profunctor (F : C ⥤ Dᵒᵖ ⥤ Type w) : Profunctor.{w} C D := F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def augObj (K : SSet.{u}) : ℕ → Type u"
+          },
+          {
+            "line": 36,
+            "head": "def augMap (K : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) : augObj K n → augObj K m :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/RelativeArrowCollage.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeArrowCollageProjection {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          },
+          {
+            "line": 33,
+            "head": "lemma relativeArrowCollageProjection_fst {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          },
+          {
+            "line": 42,
+            "head": "lemma relativeArrowCollageProjection_snd {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          }
+        ]
+      }
+    ],
+    "decision": "集合値 Profunctor の定義と単体集合の join を読んだが、一点値の profunctor の collage を通常圏の join と同定する宣言は見つからなかった。"
+  },
+  "2.3.1.4": {
+    "page": 97,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.2.5",
+        "2.3.1",
+        "2.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ollage|[Pp]rofunctor|[Cc]orrespondence.*([Ss]pace|[Cc]lassif)|rightStraighteningInfinityEquivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 90,
+        "line_count": 994
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ollage|[Pp]rofunctor|[Cc]orrespondence.*([Ss]pace|[Cc]lassif)|rightStraighteningInfinityEquivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 5,
+        "line_count": 118
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "structure ProfunctorCore where"
+          },
+          {
+            "line": 53,
+            "head": "abbrev Profunctor := C ⥤ Dᵒᵖ ⥤ Type w"
+          },
+          {
+            "line": 58,
+            "head": "abbrev Functor.profunctor (F : C ⥤ Dᵒᵖ ⥤ Type w) : Profunctor.{w} C D := F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/RelativeArrowCollage.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def relativeArrowCollageProjection {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          },
+          {
+            "line": 33,
+            "head": "lemma relativeArrowCollageProjection_fst {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          },
+          {
+            "line": 42,
+            "head": "lemma relativeArrowCollageProjection_snd {E F B : SSet.{u}} (f : E ⟶ F) (q : F ⟶ B) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def rightStraighteningInfinityEquivalence (B : SSet.{u}) [Quasicategory B] :"
+          }
+        ]
+      }
+    ],
+    "decision": "relative collage の端点引き戻し、右ファイブレーションの分類と通常圏の Profunctor を読んだが、任意の区間対応を Cᵒᵖ×D 上の空間値関手と分類する型は見つからなかった。"
+  },
+  "2.3.3.1": {
+    "page": 101,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Inner|Kan|Fibration|Quasicategory)|[Mm]inimal (inner fibration|Kan fibration|∞-category)|relative.*[Hh]omotopy|innerFibrations",
+          "SerrePositivity"
+        ],
+        "file_count": 227,
+        "line_count": 450
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Inner|Kan|Fibration|Quasicategory)|[Mm]inimal (inner fibration|Kan fibration|∞-category)|relative.*[Hh]omotopy|innerFibrations",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 4,
+        "line_count": 13
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FixedDiagramHomotopy.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_relative_homotopy_of_fixedDiagram_vertexIso"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 66,
+            "head": "def innerFibrations : MorphismProperty SSet.{u} := innerHornInclusions.rlp"
+          },
+          {
+            "line": 75,
+            "head": "lemma mem_innerFibrations {X Y : SSet} (q : X ⟶ Y) [InnerFibration q] : innerFibrations q :="
+          },
+          {
+            "line": 105,
+            "head": "lemma quasicategory_of_from_innerFibrations (S : SSet) {X : SSet} (t : Limits.IsTerminal X)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Homotopy.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def RelativeMorphism.botEquiv :"
+          },
+          {
+            "line": 50,
+            "head": "def Homotopy (f g : X ⟶ Y) : Type u :="
+          }
+        ]
+      }
+    ],
+    "decision": "境界を固定した相対ホモトピーと内ファイブレーションの定義を読んだが、相対ホモトピーから全次数の単体の厳密な等号を要求する極小性の述語は見つからなかった。"
+  },
+  "2.3.3.2": {
+    "page": 102,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Inner|Kan|Fibration)|[Mm]inimal (Kan|inner) fibration|[Kk]an.*[Hh]omotopy|[Ff]ibration.*[Rr]elative",
+          "SerrePositivity"
+        ],
+        "file_count": 1485,
+        "line_count": 5667
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Inner|Kan|Fibration)|[Mm]inimal (Kan|inner) fibration|[Kk]an.*[Hh]omotopy|[Ff]ibration.*[Rr]elative",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FilteredExchange/RelativeHomotopyTriangleFilling.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma exists_relativeHomotopyTriangle {K X : SSet.{u}} [KanComplex X]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Homotopy.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def RelativeMorphism.botEquiv :"
+          },
+          {
+            "line": 50,
+            "head": "def Homotopy (f g : X ⟶ Y) : Type u :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma horn_ι_mem_innerHornInclusions {n : ℕ} {i : Fin (n + 1)}"
+          },
+          {
+            "line": 44,
+            "head": "lemma innerHornInclusions_eq_iSup :"
+          }
+        ]
+      }
+    ],
+    "decision": "Kan 複体の相対ホモトピーと右持ち上げ性を読んだが、極小 Kan ファイブレーションの定義や極小内ファイブレーションとの比較は見つからなかった。"
+  },
+  "2.3.3.5": {
+    "page": 102,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Hh]omotopy.*[Mm]ono|thinNerve_hom_ext_vertices",
+          "SerrePositivity"
+        ],
+        "file_count": 128,
+        "line_count": 230
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Hh]omotopy.*[Mm]ono|thinNerve_hom_ext_vertices",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 3
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionHomotopy.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isPrecompositionEquivalence_of_composites {A B C D : SSet.{u}}"
+          },
+          {
+            "line": 38,
+            "head": "lemma isPrecompositionEquivalence_iff_of_homotopy {A B : SSet.{u}} {f g : A ⟶ B}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma thinNerve_hom_ext_vertices {C : Type u} [Category.{u} C] [Quiver.IsThin C]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Homotopy.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def RelativeMorphism.botEquiv :"
+          },
+          {
+            "line": 50,
+            "head": "def Homotopy (f g : X ⟶ Y) : Type u :="
+          }
+        ]
+      }
+    ],
+    "decision": "準圏のホモトピーから前合成の同値を移す型と、単体の頂点による等号を薄い nerve で判定する型を読んだが、極小性から任意の次数で自己写像が単射となる補題は見つからなかった。"
+  },
+  "2.3.3.6": {
+    "page": 102,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Hh]omotopy.*[Ii]sIso|thinNerve_hom_ext_vertices",
+          "SerrePositivity"
+        ],
+        "file_count": 246,
+        "line_count": 333
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Hh]omotopy.*[Ii]sIso|thinNerve_hom_ext_vertices",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 2
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionHomotopy.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isPrecompositionEquivalence_of_composites {A B C D : SSet.{u}}"
+          },
+          {
+            "line": 38,
+            "head": "lemma isPrecompositionEquivalence_iff_of_homotopy {A B : SSet.{u}} {f g : A ⟶ B}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma thinNerve_hom_ext_vertices {C : Type u} [Category.{u} C] [Quiver.IsThin C]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Homotopy.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def RelativeMorphism.botEquiv :"
+          },
+          {
+            "line": 50,
+            "head": "def Homotopy (f g : X ⟶ Y) : Type u :="
+          }
+        ]
+      }
+    ],
+    "decision": "ホモトピー逆から得られる準圏同値と、薄い nerve の射の等号判定を調べたが、極小性からホモトピックな自己写像が厳密な同型になる補題は見つからなかった。"
+  },
+  "2.3.3.7": {
+    "page": 103,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Ee]quivalence.*[Ii]sIso|nerve.*fully[Ff]aithful",
+          "SerrePositivity"
+        ],
+        "file_count": 178,
+        "line_count": 271
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Mm]inimal ∞-categor|[Ee]quivalence.*[Ii]sIso|nerve.*fully[Ff]aithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 12,
+        "line_count": 24
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def functorEdgeOfSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y}"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def functorIsoOfSimplicialHomotopy {X Y : SSet.{u}} [KanComplex Y]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 402,
+            "head": "noncomputable def nerveFunctor.fullyfaithful : nerveFunctor.FullyFaithful :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma horn_ι_mem_innerHornInclusions {n : ℕ} {i : Fin (n + 1)}"
+          },
+          {
+            "line": 44,
+            "head": "lemma innerHornInclusions_eq_iSup :"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏同値と、通常圏の nerve を完全忠実にする比較を読んだが、極小な準圏どうしの同値を同じ射の厳密な同型性へ強める型は見つからなかった。"
+  },
+  "2.3.3.8": {
+    "page": 103,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Dd]eformation[Rr]etract|[Hh]omotopy.*[Rr]etract|exists_innerAnodyne_innerFibration_factorization",
+          "SerrePositivity"
+        ],
+        "file_count": 96,
+        "line_count": 169
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Mm]inimal(Quasicategory|Inner|Fibration)|[Dd]eformation[Rr]etract|[Hh]omotopy.*[Rr]etract|exists_innerAnodyne_innerFibration_factorization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def rightFibrations : MorphismProperty SSet.{u} := rightHornInclusions.rlp"
+          },
+          {
+            "line": 34,
+            "head": "def leftFibrations : MorphismProperty SSet.{u} := leftHornInclusions.rlp"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FixedDiagramHomotopy.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma simplicialHomotopyOfFunctorEdge_pre_eq_constant {K T X : SSet.{u}}"
+          },
+          {
+            "line": 49,
+            "head": "lemma exists_relative_homotopy_of_fixedDiagram_vertexIso"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "as the class of morphisms that satisfy the left lifting property with respect"
+          },
+          {
+            "line": 24,
+            "head": "to the class of inner fibrations."
+          }
+        ]
+      }
+    ],
+    "decision": "ホーンを添付する内ファイブレーションへの因子分解と、相対ホモトピーの補題を調べたが、極小な部分複体への底上の変形レトラクトを構成する宣言は見つからなかった。"
+  },
+  "2.3.4.1": {
+    "page": 106,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Cc]oskeletal|[Ss]trictSegal|[Tt]runcated.*[Qq]uasicat|[Mm]inimal[Qq]uasicat",
+          "SerrePositivity"
+        ],
+        "file_count": 443,
+        "line_count": 650
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Cc]oskeletal|[Ss]trictSegal|[Tt]runcated.*[Qq]uasicat|[Mm]inimal[Qq]uasicat",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 47,
+        "line_count": 341
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "structure StrictSegal where"
+          },
+          {
+            "line": 56,
+            "head": "class IsStrictSegal (X : SSet.Truncated.{u} (n + 1)) : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "lemma spine_injective (X : SSet.Truncated.{u} (n + 1)) [X.IsStrictSegal]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 67,
+            "head": "noncomputable def lift {X : SSet.{u}} (sx : StrictSegal X) {n}"
+          },
+          {
+            "line": 226,
+            "head": "theorem isRightKanExtension (sx : StrictSegal X) :"
+          },
+          {
+            "line": 232,
+            "head": "theorem isCoskeletal (sx : StrictSegal X) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FixedDiagramHomotopy.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma simplicialHomotopyOfFunctorEdge_pre_eq_constant {K T X : SSet.{u}}"
+          },
+          {
+            "line": 49,
+            "head": "lemma exists_relative_homotopy_of_fixedDiagram_vertexIso"
+          }
+        ]
+      }
+    ],
+    "decision": "通常圏の nerve の strict Segal 性、単体集合の余骨格と境界相対ホモトピーを読んだが、次数 n の極小性とそれ以上の境界充填の一意性を合わせた一般の n 圏の定義は見つからなかった。"
+  },
+  "2.3.4.6": {
+    "page": 108,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Ss]keletal.*[Nn]erve|[Tt]hin.*[Nn]erve|isContractibleKan_of_nonempty_of_degreewise_subsingleton",
+          "SerrePositivity"
+        ],
+        "file_count": 504,
+        "line_count": 805
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Ss]keletal.*[Nn]erve|[Tt]hin.*[Nn]erve|isContractibleKan_of_nonempty_of_degreewise_subsingleton",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 40,
+        "line_count": 182
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def f₂ (x : X _⦋2⦌₂) : Y _⦋2⦌₂ :="
+          },
+          {
+            "line": 80,
+            "head": "lemma spineEquiv_f₂_arrow_zero (x : X _⦋2⦌₂) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma thinNerve_hom_ext_vertices {C : Type u} [Category.{u} C] [Quiver.IsThin C]"
+          },
+          {
+            "line": 46,
+            "head": "lemma thinNerve_hom_ext_horn {C : Type u} [Category.{u} C] [Quiver.IsThin C]"
+          },
+          {
+            "line": 58,
+            "head": "instance thinNerve_innerFibration {C : Type u} [Category.{u} C] [Quiver.IsThin C]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/StdSimplexTerminal.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isContractibleKan_of_nonempty_of_degreewise_subsingleton (K : SSet.{u})"
+          }
+        ]
+      }
+    ],
+    "decision": "通常圏の同値と nerve の準圏同値の比較、各次数が高々一元の場合を読んだが、多対象の自明な亜群と一点の例を n 圏性の差として述べる型は見つからなかった。"
+  },
+  "2.3.4.7": {
+    "page": 108,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Ss]keleton.*[Hh]omotop|[Hh]omotop.*[Ss]keleton|exists_relative_homotopy_of_fixedDiagram_vertexIso",
+          "SerrePositivity"
+        ],
+        "file_count": 444,
+        "line_count": 647
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Ss]keleton.*[Hh]omotop|[Hh]omotop.*[Ss]keleton|exists_relative_homotopy_of_fixedDiagram_vertexIso",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 38,
+        "line_count": 179
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "We show that this filtration is part of a relative cell complex structure for `i`,"
+          },
+          {
+            "line": 49,
+            "head": "def skeleton : ℕ →o X.Subcomplex where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def rightExtensionInclusion (X : SSet.{u}) (n : ℕ) :"
+          },
+          {
+            "line": 59,
+            "head": "abbrev strArrowMk₂ {i : ℕ} {n : ℕ} (φ : ⦋i⦌ ⟶ ⦋n⦌) (hi : i ≤ 2 := by lia) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FixedDiagramHomotopy.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_relative_homotopy_of_fixedDiagram_vertexIso"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の骨格と固定部分上の相対ホモトピーを読んだが、n 骨格での相対ホモトピーによる全写像の等号と n 圏性の同値を結ぶ型は見つからなかった。"
+  },
+  "2.3.4.11": {
+    "page": 110,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Ss]keleton.*[Hh]omotop|[Hh]omotop.*[Ss]keleton|[Ss]keleton.*[Ee]xten|exists_relative_homotopy_of_fixedDiagram_vertexIso",
+          "SerrePositivity"
+        ],
+        "file_count": 445,
+        "line_count": 649
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Ss]keleton.*[Hh]omotop|[Hh]omotop.*[Ss]keleton|[Ss]keleton.*[Ee]xten|exists_relative_homotopy_of_fixedDiagram_vertexIso",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 35,
+        "line_count": 175
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "We show that this filtration is part of a relative cell complex structure for `i`,"
+          },
+          {
+            "line": 49,
+            "head": "def skeleton : ℕ →o X.Subcomplex where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def rightExtensionInclusion (X : SSet.{u}) (n : ℕ) :"
+          },
+          {
+            "line": 59,
+            "head": "abbrev strArrowMk₂ {i : ℕ} {n : ℕ} (φ : ⦋i⦌ ⟶ ⦋n⦌) (hi : i ≤ 2 := by lia) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FixedDiagramHomotopy.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_relative_homotopy_of_fixedDiagram_vertexIso"
+          }
+        ]
+      }
+    ],
+    "decision": "骨格、切断、固定図式の相対ホモトピーを読んだが、次の骨格に延長可能な写像だけを取り、その相対ホモトピー商を作る宣言は見つからなかった。"
+  },
+  "2.3.4.18": {
+    "page": 112,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Mm]inimal[Qq]uasicat|[Tt]runcated.*(Kan|Space)|[Pp]inchedHom.*[Kk]anComplex|[Ss]trictSegal",
+          "SerrePositivity"
+        ],
+        "file_count": 469,
+        "line_count": 695
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Mm]inimal[Qq]uasicat|[Tt]runcated.*(Kan|Space)|[Pp]inchedHom.*[Kk]anComplex|[Ss]trictSegal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 48,
+        "line_count": 311
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 120,
+            "head": "def Is0TruncatedSpace (x : SpaceInfinity.{u} _⦋0⦌) : Prop :="
+          },
+          {
+            "line": 124,
+            "head": "private lemma pinched_ext_last {X : SSet.{u}} [X.IsStrictSegal] {x y : X _⦋0⦌}"
+          },
+          {
+            "line": 143,
+            "head": "private lemma pinched_last_injective {X : SSet.{u}} [X.IsStrictSegal] {x y : X _⦋0⦌}"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "structure StrictSegal where"
+          },
+          {
+            "line": 56,
+            "head": "class IsStrictSegal (X : SSet.Truncated.{u} (n + 1)) : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "lemma spine_injective (X : SSet.Truncated.{u} (n + 1)) [X.IsStrictSegal]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/MappingSpaceRightKan.lean",
+        "signatures": [
+          {
+            "line": 188,
+            "head": "instance pinchedHom_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :"
+          }
+        ]
+      }
+    ],
+    "decision": "可縮・離散 Kan 複体、右写像空間の Kan 性、通常圏の nerve の strict Segal 性を読んだが、写像空間の切断から極小 n 圏模型を得る判定は見つからなかった。"
+  },
+  "2.3.4.19": {
+    "page": 113,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Tt]runcated.*(Kan|Space)|[Kk]an.*[Tt]runcat|[Hh]omotopyGroup|[Cc]ontractibleKan",
+          "SerrePositivity"
+        ],
+        "file_count": 1355,
+        "line_count": 4627
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Nn]Category|[Nn]-categor|[Tt]runcated.*(Kan|Space)|[Kk]an.*[Tt]runcat|[Hh]omotopyGroup|[Cc]ontractibleKan",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 43,
+        "line_count": 241
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 120,
+            "head": "def Is0TruncatedSpace (x : SpaceInfinity.{u} _⦋0⦌) : Prop :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def functorEdgeOfSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y}"
+          },
+          {
+            "line": 40,
+            "head": "noncomputable def functorIsoOfSimplicialHomotopy {X Y : SSet.{u}} [KanComplex Y]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def rightExtensionInclusion (X : SSet.{u}) (n : ℕ) :"
+          },
+          {
+            "line": 59,
+            "head": "abbrev strArrowMk₂ {i : ℕ} {n : ℕ} (φ : ⦋i⦌ ⟶ ⦋n⦌) (hi : i ≤ 2 := by lia) :"
+          }
+        ]
+      }
+    ],
+    "decision": "離散空間の述語と Kan 複体間のホモトピー同値の判定を読んだが、一般の切断性と n 圏模型の存在を同値とする型は見つからなかった。"
+  },
+  "2.3.4.20": {
+    "page": 114,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.3.3",
+        "2.3.4",
+        "2.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Tt]runcated.*(Kan|Space|[Ff]unctor)|[Ff]unctor.*[Tt]runcat|[Tt]runcated.*[Mm]apping|innerFibration_pullbackObjObjπ",
+          "SerrePositivity"
+        ],
+        "file_count": 599,
+        "line_count": 1442
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Tt]runcated.*(Kan|Space|[Ff]unctor)|[Ff]unctor.*[Tt]runcat|[Tt]runcated.*[Mm]apping|innerFibration_pullbackObjObjπ",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 9,
+        "line_count": 61
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+        "signatures": [
+          {
+            "line": 120,
+            "head": "def Is0TruncatedSpace (x : SpaceInfinity.{u} _⦋0⦌) : Prop :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 74,
+            "head": "lemma innerFibration_pullbackObjObjπ [Mono i] [InnerFibration p]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/MappingSpaceRightKan.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma kanComplex_of_rightHornFillers (X : SSet.{u})"
+          },
+          {
+            "line": 46,
+            "head": "lemma pinchedExtend_δ {n : ℕ} (i : Fin (n + 2)) :"
+          }
+        ]
+      }
+    ],
+    "decision": "内部 Hom の準圏性と離散空間の述語を読んだが、写像空間が一様に n-切断なら任意の関手準圏の写像空間も n-切断となる宣言は見つからなかった。"
   }
 }
