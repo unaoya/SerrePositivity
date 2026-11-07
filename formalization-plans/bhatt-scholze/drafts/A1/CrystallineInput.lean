@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
+public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
@@ -474,28 +474,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 1：Lemma 5.4（Frobenius ひねりの Čech 脈体） -/
 
--- 多項式 Čech 余脈体と相対 Frobenius は本体の PolynomialFrobeniusCech に置く。
-
-/-- 概要：Lemma 5.4（有限変数）：標数 p の環 k、有限集合 σ、B^{•,(1)} 代数 N^•（余単体的可換環の射 ι : B^{•,(1)} → N^•）について、
-N^• → N^• ⊗_{B^{•,(1)}} B^•（相対 Frobenius に沿う項ごとの押し出し）は交代余面複体の cohomology 同型。
-方針：原典どおり。S = {0,…,p−1}^σ の剰余類代表で k[EM] ≅ k[E(pM)] ⊗_k k[ES]（半余単体的加群として）、k[ES] は切断をもつ
-Čech 脈体と同じで余単体的ホモトピー同値（G-A1-3）、テンソルで保たれ、非正規化複体は半余単体的構造だけで決まる。
-規約：原典は任意の余単体的 B^{•,(1)} 加群 N。ここでは使う形（N が余単体的可換環）に限る（定理の特別な場合）。
-使われ方：G-A1-15 を経て段 2。 -/
-theorem frobeniusTwist_cech_quasiIso (k : Type u) [CommRing k] (hk : (p : k) = 0) (σ : Type) [Finite σ]
-    (N : CosimplicialObject CommRingCat.{u}) (ι : polynomialCech k σ ⟶ N) :
-    IsCohomologyIso (pushout.inl ι (relativeFrobeniusCech p k σ)) := by
-  sorry -- 剰余類代表による半余単体的な分解と、切断つき Čech 脈体の extra degeneracy（G-A1-3）
-
-/-- 概要：G-A1-15：Lemma 5.4 の任意個の変数の版。
-方針：σ の有限部分集合 F について polynomialCech k F の filtered 余極限。押し出しと交代余面複体の cohomology は filtered 余極限と可換
-（原典 p.48、W9-I-16）。ι を F ごとに制限し、有限版を使う。
-規約：—
-使われ方：段 2（B = ℤ_p{X}^∧ の mod p は変数 δ^a(X_j)、a ∈ ℕ で無限個）。 -/
-theorem frobeniusTwist_cech_quasiIso_infinite (k : Type u) [CommRing k] (hk : (p : k) = 0) (σ : Type)
-    (N : CosimplicialObject CommRingCat.{u}) (ι : polynomialCech k σ ⟶ N) :
-    IsCohomologyIso (pushout.inl ι (relativeFrobeniusCech p k σ)) := by
-  sorry -- 有限部分集合の filtered 余極限と frobeniusTwist_cech_quasiIso
+-- 有限・無限変数の比較は本体の FrobeniusCechComparison に置く。
 
 /-! ### 段 2：C^•/p → D^•/p -/
 
