@@ -72,6 +72,54 @@
       "type": "@CategoryTheory.Bicategory.conjugateEquiv.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {c d : B} →\n      {l₁ l₂ : Quiver.Hom.{u_2, u_3} c d} →\n        {r₁ r₂ : Quiver.Hom.{u_2, u_3} d c} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₁ r₁ →\n            CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₂ r₂ →\n              Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} l₂ l₁) (Quiver.Hom.{u_1, u_2} r₁ r₂)",
       "axioms": [],
       "evidence": "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+    },
+    "CategoryTheory.Bicategory.Adjunction.homEquiv₁": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:64",
+      "type": "@CategoryTheory.Bicategory.Adjunction.homEquiv₁.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {b c d : B} →\n      {l : Quiver.Hom.{u_2, u_3} b c} →\n        {r : Quiver.Hom.{u_2, u_3} c b} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l r →\n            {g : Quiver.Hom.{u_2, u_3} b d} →\n              {h : Quiver.Hom.{u_2, u_3} c d} →\n                Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} g (CategoryTheory.CategoryStruct.comp.{u_2, u_3} l h))\n                  (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} r g) h)",
+      "evidence": "202ee9c34b2f71173c7d",
+      "axioms": []
+    },
+    "CategoryTheory.Bicategory.Adjunction.homEquiv₂": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:91",
+      "type": "@CategoryTheory.Bicategory.Adjunction.homEquiv₂.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {l : Quiver.Hom.{u_2, u_3} b c} →\n        {r : Quiver.Hom.{u_2, u_3} c b} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l r →\n            {g : Quiver.Hom.{u_2, u_3} a b} →\n              {h : Quiver.Hom.{u_2, u_3} a c} →\n                Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g l) h)\n                  (Quiver.Hom.{u_1, u_2} g (CategoryTheory.CategoryStruct.comp.{u_2, u_3} h r))",
+      "evidence": "d9e8f119f8e1d3438a67",
+      "axioms": []
+    },
+    "CategoryTheory.tensorRightHomEquiv": {
+      "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:411",
+      "type": "@CategoryTheory.tensorRightHomEquiv.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (X Y Y' Z : C) →\n        [@CategoryTheory.ExactPairing.{u_1, u_2} C inst inst_1 Y Y'] →\n          Equiv.{u_1 + 1, u_1 + 1}\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) X Y)\n              Z)\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              X\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) Z Y'))",
+      "evidence": "a673b9c9ab0edddd4a6b",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements": {
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean:24",
+      "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements.{u_1} : ∀\n  {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ y e,\n        Membership.mem.{u_1, u_1} (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1} W)\n            (SSet.Truncated.Edge.edge.{u_1} e) ∧\n          SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W y) →\n    SerrePositivity.InfinityCategories.IsReflectiveSubcategory.{u_1} X\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W)",
+      "evidence": "a81453c09102996746cf",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq": {
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124",
+      "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  Eq.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+      "evidence": "252587d0b72bae264f10",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean:118",
+      "type": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+      "evidence": "c95711ad03dd83341ca4",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit": {
+      "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationSequential.lean:41",
+      "type": "@SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit.{u_1} : ∀\n  {F : CategoryTheory.Functor.{0, u_1, 0, u_1 + 1} ℕ SSet.{u_1}}\n  [∀ (n : ℕ),\n      CategoryTheory.Mono.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} F (CategoryTheory.homOfLE.{0} ⋯))]\n  {c : CategoryTheory.Limits.Cocone.{0, u_1, 0, u_1 + 1} F}\n  (hc : CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1 + 1} c),\n  (∀ (n : ℕ),\n      SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n        (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1}\n          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} F n))\n        (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1}\n          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} F n))) →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n      (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1}\n        (CategoryTheory.Limits.Cocone.pt.{0, u_1, 0, u_1 + 1} c))\n      (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1}\n        (CategoryTheory.Limits.Cocone.pt.{0, u_1, 0, u_1 + 1} c))",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1.Transport.LocalizationSequential"
+    },
+    "SerrePositivity.InfinityCategories.isLocalization_of_deformation": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Localization/DeformationLocalization.lean:71",
+      "type": "@SerrePositivity.InfinityCategories.isLocalization_of_deformation.{u_1} : ∀ {X D : SSet.{u_1}}\n  (L : Quiver.Hom.{u_1, u_1 + 1} X D) (I : Quiver.Hom.{u_1, u_1 + 1} D X)\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SerrePositivity.InfinityCategories.InvertsEdges.{u_1} L W →\n    ∀\n      (e :\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} I L)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} D))\n      (H :\n        SSet.Homotopy.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L I)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)),\n      (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n          Membership.mem.{u_1, u_1} W\n            (SSet.Edge.edge.{u_1} (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1} L W",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization"
     }
   },
   "probes": [
@@ -210,6 +258,798 @@
       "tag_on_decl": "02MT",
       "number_for_tag": "6.3.6.16",
       "actual_tag_of_reviewed_item": "02MU"
+    }
+  },
+  "depth_review": {
+    "review_base": "81e593fb9a34a26921706f38c47cf7eeb07c06d1",
+    "method": "段 1・段 1′ と本章の追加 #check / #print axioms の出力。該当モジュールの既存 olean を読む。",
+    "items": {
+      "6.1.0.1": {
+        "tag": "02CB",
+        "statement_sha256": "e3016270bd8f31802944f69eaca3657da03fc12ae2dfa05ad7c342fd6491a9dd",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Adjunction.CoreHomEquiv",
+          "CategoryTheory.Adjunction.mkOfHomEquiv"
+        ]
+      },
+      "6.1.0.2": {
+        "tag": "02CC",
+        "statement_sha256": "9deb37fa6ff363db3291853aad4befa0c0691d3448319370697ef523109133e2",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Adjunction",
+          "CategoryTheory.Adjunction.mkOfUnitCounit"
+        ]
+      },
+      "6.1.1.1": {
+        "tag": "02CG",
+        "statement_sha256": "b56d5d3f9bacc9d84002e02f3adcd662707842a1c490be5cff1028910551c20d",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction"
+        ]
+      },
+      "6.1.2.1": {
+        "tag": "02CQ",
+        "statement_sha256": "dacd89385a01fea3933ac1cbcd901386293a5faa0073b97a2795cad68dd10345",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₂",
+          "SerrePositivity.InfinityCategories.bicategoryUnitHomMap"
+        ]
+      },
+      "6.1.2.5": {
+        "tag": "02CU",
+        "statement_sha256": "01b59f20331568733baa2cb616471051bdc22b95cb1aa153f4022a5ff49c754f",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₁",
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₂"
+        ]
+      },
+      "6.1.2.8": {
+        "tag": "02CX",
+        "statement_sha256": "6f2c1e20037c5929ebf7f0b09c6ba2da2c906eb8c9fb5d3ab189639b29d66252",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.rightZigzag_idempotent_of_left_triangle"
+        ]
+      },
+      "6.1.2.9": {
+        "tag": "02CY",
+        "statement_sha256": "e34c591709dfdfb81ae810fcf6667d30cce739f6126bcf6f560b16304c7deb26",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.bicategory_exists_adjunction_unit_iff",
+          "SerrePositivity.InfinityCategories.bicategoryAdjunctionOfUnitHomBijective"
+        ]
+      },
+      "6.1.2.10": {
+        "tag": "02CZ",
+        "statement_sha256": "c4628f305b8b7c0bd211e9cb34f34c81963abab0551f4faba929a10f4155a5df",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.bicategory_exists_adjunction_unit_iff"
+        ]
+      },
+      "6.1.3.1": {
+        "tag": "02D5",
+        "statement_sha256": "3c10156cdb847c92e39f8e1ad0b76c764d857b8640832a0dd1804b09ba9d42f2",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₂",
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₁"
+        ]
+      },
+      "6.1.3.2": {
+        "tag": "02D6",
+        "statement_sha256": "9f8649062ea0b6dd89f12020504874001d8794c9bb604f4bdf82659faf4c32c2",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₁",
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₂"
+        ]
+      },
+      "6.1.3.3": {
+        "tag": "02D7",
+        "statement_sha256": "028f2df9c402660a922dc9cf9810b4a1f2eecb277e198c012a577c5be09295d0",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₁",
+          "CategoryTheory.Adjunction.rightAdjointUniq",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointIso"
+        ]
+      },
+      "6.1.3.4": {
+        "tag": "02D8",
+        "statement_sha256": "98ff66d6c0a204cfc8f7efb6b835b4cd3b76067261f7e5b3f986352d7351d35d",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.mateEquiv",
+          "CategoryTheory.Bicategory.conjugateEquiv"
+        ]
+      },
+      "6.1.3.7": {
+        "tag": "02DB",
+        "statement_sha256": "ba2c2e0c08e4ec54cff46e5c1089040c4026860a5ad2012660faf8cd1eb4b9bd",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.homEquiv₂",
+          "CategoryTheory.Adjunction.leftAdjointUniq",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointIso"
+        ]
+      },
+      "6.1.4.2": {
+        "tag": "02DF",
+        "statement_sha256": "e59919915a7b36cfc7566eac9dc5fd5cefcf4ea2c46f0dc85f815d0c8f1decee",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Equivalence.mkOfAdjointifyCounit",
+          "CategoryTheory.Bicategory.Equivalence.adj"
+        ]
+      },
+      "6.1.5.1": {
+        "tag": "02DN",
+        "statement_sha256": "d8e42726be388bdf619fbf80db81b8de5865e2ae237b6c6e7f8dee02152e7797",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.compUnit"
+        ]
+      },
+      "6.1.5.4": {
+        "tag": "02DS",
+        "statement_sha256": "c172a7aabac7f6843c2690d429102699b2a3eb8c7572917467da8e2a386433fb",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.comp"
+        ]
+      },
+      "6.1.5.5": {
+        "tag": "02DT",
+        "statement_sha256": "e2ca60570be8ae2e6eb808885a22322bb5c76b864e142c09f3fd3b05392ef608",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.comp"
+        ]
+      },
+      "6.1.5.7": {
+        "tag": "02DV",
+        "statement_sha256": "51c52685cf800f02ec0ecb784934f2caf0b636b8d8d4805e5843e3f9dfc077b5",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.compCounit"
+        ]
+      },
+      "6.1.5.9": {
+        "tag": "02DX",
+        "statement_sha256": "852b1b366180f78a895d0f3f0ff5666024729ede82b99386000999ba8509d5cd",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Bicategory.Adjunction.comp"
+        ]
+      },
+      "6.1.6.1": {
+        "tag": "02DZ",
+        "statement_sha256": "0df7600e2c5b1c04f4d5f50fd3fc1a5e3f8cd1d6db92c1f99f16fac720726ae4",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.ExactPairing"
+        ]
+      },
+      "6.1.6.9": {
+        "tag": "02E7",
+        "statement_sha256": "469c17a9ae71c80b9820a24f742cf3d6143e787ed4e92eca4e5218dd54dd5b0f",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.HasRightDual",
+          "CategoryTheory.HasLeftDual"
+        ]
+      },
+      "6.1.6.13": {
+        "tag": "02EB",
+        "statement_sha256": "1206aeaf591b5885a5d0e09bdc74e3a7f64503db4f23dd0c4135a634c24351ef",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.tensorRightHomEquiv"
+        ]
+      },
+      "6.2.1.1": {
+        "tag": "02EK",
+        "statement_sha256": "a92bbe99ba90034279a17ffc0c718d3808294cb8d62069d2d80d8622466f4676",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction.mkOfHomTriangles",
+          "SerrePositivity.InfinityCategories.QCatAdjunction",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.left_triangle_hom"
+        ]
+      },
+      "6.2.1.2": {
+        "tag": "02EL",
+        "statement_sha256": "e9bb1e22d81bb2300a2761139a2846bcb8a3e3e0061a29078b7ad4a5ffa9157c",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.unitHom"
+        ]
+      },
+      "6.2.1.4": {
+        "tag": "02EN",
+        "statement_sha256": "56389edf1a44e6ecbcf9d94f15b3005ffc4a8451d50b56a99f95d89ed7089f25",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction",
+          "SerrePositivity.InfinityCategories.qcatHomFunctor",
+          "SerrePositivity.InfinityCategories.qcatCellEquiv"
+        ]
+      },
+      "6.2.1.8": {
+        "tag": "02ES",
+        "statement_sha256": "bbc5570a1e8ade482c45bb4502eb0f32f44614e27aefb912c7480e1ed923d0b4",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction.comp"
+        ]
+      },
+      "6.2.1.15": {
+        "tag": "02EZ",
+        "statement_sha256": "91bc92c611e62e9b3f9e373ac60affcce561ae85f6db0294074306cec9eb4063",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.hoHomEquiv"
+        ]
+      },
+      "6.2.1.17": {
+        "tag": "02F1",
+        "statement_sha256": "b68c14a4e54fc0140b35c5f212162b09aad9c9ccb22bb108e9089f8b9a8b18d7",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence"
+        ]
+      },
+      "6.2.1.19": {
+        "tag": "02F3",
+        "statement_sha256": "c3c00e83439aa62f28070f0240ec552ef9b7fe3d86e0b9d463fe39ad9941e680",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso",
+          "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointIso"
+        ]
+      },
+      "6.2.2.16": {
+        "tag": "03XA",
+        "statement_sha256": "80870d3fd401aa6fa48a8944873fb2cb38500888c1ef607ff659b456edf9d2da",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isIso_map_iff_localHom",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalenceHom_iff"
+        ]
+      },
+      "6.2.3.10": {
+        "tag": "06TB",
+        "statement_sha256": "8e1964d42d6df95c67478338e495735d2a1a35a8324dd245865719df16fccfb7",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isLocal_iff_invertedEdges",
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocal_iff_essentialImage",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq"
+        ]
+      },
+      "6.2.3.16": {
+        "tag": "06TC",
+        "statement_sha256": "0f3b8fda629e2dfd30bd4dc7bf0b3a850d76e3d4eadf02523278d7feeae2629b",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq",
+          "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization"
+        ]
+      },
+      "6.2.6.1": {
+        "tag": "02FV",
+        "statement_sha256": "ddf168252d4da7a8706e9cceb45811cbccbc0d54d7459f37d442f67250014e04",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.exists_qcatAdjunction_of_commaFiberInitial"
+        ]
+      },
+      "6.2.6.4": {
+        "tag": "02FW",
+        "statement_sha256": "e8ccc51efd6631f6aa9cd188445871b8b0f66d00b9572476f69a8a2e53343abf",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Functor.isRightAdjoint_iff_leftAdjointObjIsDefined_eq_top"
+        ]
+      },
+      "6.2.6.5": {
+        "tag": "02FX",
+        "statement_sha256": "bed1644b1691510690458d99fcbb1d0e09f93b698392594682a38626f1ab9620",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition",
+          "SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff"
+        ]
+      },
+      "6.3.0.1": {
+        "tag": "01M5",
+        "statement_sha256": "177bdaf59b572770afe4e7a9f19b86d5b4472410e610b36dd7470a5944d9258a",
+        "status": "mathlib",
+        "declarations": [
+          "CategoryTheory.Localization.StrictUniversalPropertyFixedTarget"
+        ]
+      },
+      "6.3.0.6": {
+        "tag": "01M9",
+        "statement_sha256": "83bcbfa0fb57f073dbcb553c2a4c9dc88778368624aefd555f4992d07d496424",
+        "status": "partial",
+        "declarations": [
+          "CategoryTheory.Functor.IsLocalization",
+          "CategoryTheory.Localization.full_whiskeringLeft"
+        ]
+      },
+      "6.3.1.1": {
+        "tag": "01MF",
+        "statement_sha256": "bd07fd0470ac882803edfb434b890fc3e4cbf6dbd2059c19b7d13d67d6f2d556",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.invertingFunctors",
+          "SerrePositivity.InfinityCategories.invertingFunctors_quasicategory"
+        ]
+      },
+      "6.3.1.9": {
+        "tag": "01MP",
+        "statement_sha256": "13f09c26f5bcd4d961b027015c1d2092c3631fcbae1fd5eb7bd47c56396516e1",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsLocalization",
+          "SerrePositivity.InfinityCategories.localizationPrecomposition"
+        ]
+      },
+      "6.3.1.23": {
+        "tag": "02LT",
+        "statement_sha256": "4262754a10fd1d96c922e44ba88120990549ebb11314339967c2114759196da9",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsLocalization.of_subset_invertedEdges"
+        ]
+      },
+      "6.3.2.1": {
+        "tag": "01N0",
+        "statement_sha256": "79208e788cd6cb68c76323d87dbae41592ba8afa3e9288a6b07ba4188d704f4f",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization",
+          "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization"
+        ]
+      },
+      "6.3.2.12": {
+        "tag": "05ZQ",
+        "statement_sha256": "d672d454ca1c65646d4e6340e0fd0e46d673890823eda04fbb0a76a98d5ab96e",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit"
+        ]
+      },
+      "6.3.3.3": {
+        "tag": "04JH",
+        "statement_sha256": "8b57413fed102162b3e395b62891fc176a62b3d491cd02e23b355b4ac1fa2580",
+        "status": "own",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.IsLocalization.saturate",
+          "SerrePositivity.InfinityCategories.invertedEdges"
+        ]
+      },
+      "6.3.5.9": {
+        "tag": "04JT",
+        "statement_sha256": "da7b81a8f3ca03e745791cbbf08d89bd1cf20f9d18c939d3801d09aa35085030",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.isLocalization_of_deformation"
+        ]
+      },
+      "6.3.6.6": {
+        "tag": "02MG",
+        "statement_sha256": "02191512a96ce2c2ddf4b3f40aab8f94e06c754ee0bab44d42713a110b4c0c9a",
+        "status": "mathlib",
+        "declarations": [
+          "SSet.Nonsingular"
+        ]
+      }
+    },
+    "declarations": {
+      "CategoryTheory.Adjunction.CoreHomEquiv": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean:350",
+        "type": "@CategoryTheory.Adjunction.CoreHomEquiv.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} D] →\n        @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1 →\n          @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_1 C inst → Type (max (max (max u_3 u_4) u_1) u_2)",
+        "evidence": "536f60984286c38095ce",
+        "axioms": []
+      },
+      "CategoryTheory.Adjunction.mkOfHomEquiv": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean:435",
+        "type": "@CategoryTheory.Adjunction.mkOfHomEquiv.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} D] →\n        {F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1} →\n          {G : @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_1 C inst} →\n            @CategoryTheory.Adjunction.CoreHomEquiv.{u_1, u_2, u_3, u_4} C inst D inst_1 F G →\n              @CategoryTheory.Adjunction.{u_1, u_2, u_3, u_4} C inst D inst_1 F G",
+        "evidence": "5909a33943e4e75b26ee",
+        "axioms": []
+      },
+      "CategoryTheory.Adjunction": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean:108",
+        "type": "@CategoryTheory.Adjunction.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} D] →\n        @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1 →\n          @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_1 C inst → Type (max (max (max u_3 u_4) u_1) u_2)",
+        "evidence": "048ad9d16970b0aabd0d",
+        "axioms": []
+      },
+      "CategoryTheory.Adjunction.mkOfUnitCounit": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean:460",
+        "type": "@CategoryTheory.Adjunction.mkOfUnitCounit.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} D] →\n        {F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1} →\n          {G : @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_1 C inst} →\n            @CategoryTheory.Adjunction.CoreUnitCounit.{u_1, u_2, u_3, u_4} C inst D inst_1 F G →\n              @CategoryTheory.Adjunction.{u_1, u_2, u_3, u_4} C inst D inst_1 F G",
+        "evidence": "2c7b78f9d14be2cda478",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Adjunction": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:89",
+        "type": "@CategoryTheory.Bicategory.Adjunction.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b : B} → Quiver.Hom.{u_2, u_3} a b → Quiver.Hom.{u_2, u_3} b a → Type u_1",
+        "axioms": [],
+        "evidence": "f9ecbc721c4cde44ba08"
+      },
+      "CategoryTheory.Bicategory.Adjunction.homEquiv₂": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:91",
+        "type": "@CategoryTheory.Bicategory.Adjunction.homEquiv₂.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {l : Quiver.Hom.{u_2, u_3} b c} →\n        {r : Quiver.Hom.{u_2, u_3} c b} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l r →\n            {g : Quiver.Hom.{u_2, u_3} a b} →\n              {h : Quiver.Hom.{u_2, u_3} a c} →\n                Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g l) h)\n                  (Quiver.Hom.{u_1, u_2} g (CategoryTheory.CategoryStruct.comp.{u_2, u_3} h r))",
+        "evidence": "d9e8f119f8e1d3438a67",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.bicategoryUnitHomMap": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitHomCriterion.lean:22",
+        "type": "@SerrePositivity.InfinityCategories.bicategoryUnitHomMap.{u_1, u_2,\n    u_3} : {B : Type u_1} →\n  [inst : CategoryTheory.Bicategory.{u_3, u_2, u_1} B] →\n    {a b c : B} →\n      {l : Quiver.Hom.{u_2, u_1} b c} →\n        {r : Quiver.Hom.{u_2, u_1} c b} →\n          Quiver.Hom.{u_3, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_1} b)\n              (CategoryTheory.CategoryStruct.comp.{u_2, u_1} l r) →\n            (g : Quiver.Hom.{u_2, u_1} a b) →\n              (h : Quiver.Hom.{u_2, u_1} a c) →\n                Quiver.Hom.{u_3, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_1} g l) h →\n                  Quiver.Hom.{u_3, u_2} g (CategoryTheory.CategoryStruct.comp.{u_2, u_1} h r)",
+        "evidence": "70c592996b74d0e58ac3",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Adjunction.homEquiv₁": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:64",
+        "type": "@CategoryTheory.Bicategory.Adjunction.homEquiv₁.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {b c d : B} →\n      {l : Quiver.Hom.{u_2, u_3} b c} →\n        {r : Quiver.Hom.{u_2, u_3} c b} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l r →\n            {g : Quiver.Hom.{u_2, u_3} b d} →\n              {h : Quiver.Hom.{u_2, u_3} c d} →\n                Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} g (CategoryTheory.CategoryStruct.comp.{u_2, u_3} l h))\n                  (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} r g) h)",
+        "evidence": "202ee9c34b2f71173c7d",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.rightZigzag_idempotent_of_left_triangle": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:73",
+        "type": "@CategoryTheory.Bicategory.rightZigzag_idempotent_of_left_triangle.{u_1, u_2,\n    u_3} : ∀ {B : Type u_3} [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] {a b : B}\n  {f : Quiver.Hom.{u_2, u_3} a b} {g : Quiver.Hom.{u_2, u_3} b a}\n  (η :\n    Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_3} a)\n      (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f g))\n  (ε :\n    Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g f)\n      (CategoryTheory.CategoryStruct.id.{u_2, u_3} b)),\n  Eq.{u_1 + 1} (CategoryTheory.Bicategory.leftZigzag.{u_1, u_2, u_3} η ε)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_2}\n        (CategoryTheory.Iso.hom.{u_1, u_2} (CategoryTheory.Bicategory.leftUnitor.{u_1, u_2, u_3} f))\n        (CategoryTheory.Iso.inv.{u_1, u_2} (CategoryTheory.Bicategory.rightUnitor.{u_1, u_2, u_3} f))) →\n    Eq.{u_1 + 1}\n      (CategoryTheory.bicategoricalComp.{u_1, u_2, u_3} (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε)\n        (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε))\n      (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε)",
+        "axioms": [],
+        "evidence": "cec8a3876ce294076ee3"
+      },
+      "SerrePositivity.InfinityCategories.bicategory_exists_adjunction_unit_iff": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitHomCriterion.lean:114",
+        "type": "@SerrePositivity.InfinityCategories.bicategory_exists_adjunction_unit_iff.{u_1, u_2,\n    u_3} : ∀ {B : Type u_1} [inst : CategoryTheory.Bicategory.{u_3, u_2, u_1} B] {b c : B}\n  {l : Quiver.Hom.{u_2, u_1} b c} {r : Quiver.Hom.{u_2, u_1} c b}\n  (η :\n    Quiver.Hom.{u_3, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_1} b)\n      (CategoryTheory.CategoryStruct.comp.{u_2, u_1} l r)),\n  (∃ a, Eq.{u_3 + 1} (CategoryTheory.Bicategory.Adjunction.unit.{u_3, u_2, u_1} a) η) ↔\n    ∀ {a : B} (g : Quiver.Hom.{u_2, u_1} a b) (h : Quiver.Hom.{u_2, u_1} a c),\n      Function.Bijective.{u_3 + 1, u_3 + 1}\n        (SerrePositivity.InfinityCategories.bicategoryUnitHomMap.{u_1, u_2, u_3} η g h)",
+        "evidence": "a90e36b5596d5685b91a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.bicategoryAdjunctionOfUnitHomBijective": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitHomCriterion.lean:93",
+        "type": "@SerrePositivity.InfinityCategories.bicategoryAdjunctionOfUnitHomBijective.{u_1, u_2,\n    u_3} : {B : Type u_1} →\n  [inst : CategoryTheory.Bicategory.{u_3, u_2, u_1} B] →\n    {b c : B} →\n      {l : Quiver.Hom.{u_2, u_1} b c} →\n        {r : Quiver.Hom.{u_2, u_1} c b} →\n          (η :\n              Quiver.Hom.{u_3, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_1} b)\n                (CategoryTheory.CategoryStruct.comp.{u_2, u_1} l r)) →\n            (∀ {a : B} (g : Quiver.Hom.{u_2, u_1} a b) (h : Quiver.Hom.{u_2, u_1} a c),\n                Function.Bijective.{u_3 + 1, u_3 + 1}\n                  (SerrePositivity.InfinityCategories.bicategoryUnitHomMap.{u_1, u_2, u_3} η g h)) →\n              CategoryTheory.Bicategory.Adjunction.{u_3, u_2, u_1} l r",
+        "evidence": "25c06937fdb0a6e96d12",
+        "axioms": []
+      },
+      "CategoryTheory.Adjunction.rightAdjointUniq": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Unique.lean:102",
+        "type": "@CategoryTheory.Adjunction.rightAdjointUniq.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  {D : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} C] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n        {F : @CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C inst D inst_1} →\n          {G G' : @CategoryTheory.Functor.{u_3, u_1, u_4, u_2} D inst_1 C inst} →\n            @CategoryTheory.Adjunction.{u_1, u_3, u_2, u_4} C inst D inst_1 F G →\n              @CategoryTheory.Adjunction.{u_1, u_3, u_2, u_4} C inst D inst_1 F G' →\n                @CategoryTheory.Iso.{max u_4 u_1, max (max (max u_2 u_4) u_1) u_3}\n                  (@CategoryTheory.Functor.{u_3, u_1, u_4, u_2} D inst_1 C inst)\n                  (@CategoryTheory.Functor.category.{u_3, u_1, u_4, u_2} D inst_1 C inst) G G'",
+        "evidence": "0c111cd89024d72ab20d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointIso": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:225",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G G' : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G' →\n              CategoryTheory.Iso.{u_1, u_1} (SerrePositivity.InfinityCategories.qcatMap.{u_1} G)\n                (SerrePositivity.InfinityCategories.qcatMap.{u_1} G')",
+        "evidence": "aa47c2689a89801a7414",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.mateEquiv": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:146",
+        "type": "@CategoryTheory.Bicategory.mateEquiv.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {c d e f : B} →\n      {g : Quiver.Hom.{u_2, u_3} c e} →\n        {h : Quiver.Hom.{u_2, u_3} d f} →\n          {l₁ : Quiver.Hom.{u_2, u_3} c d} →\n            {r₁ : Quiver.Hom.{u_2, u_3} d c} →\n              {l₂ : Quiver.Hom.{u_2, u_3} e f} →\n                {r₂ : Quiver.Hom.{u_2, u_3} f e} →\n                  CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₁ r₁ →\n                    CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₂ r₂ →\n                      Equiv.{u_1 + 1, u_1 + 1}\n                        (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g l₂)\n                          (CategoryTheory.CategoryStruct.comp.{u_2, u_3} l₁ h))\n                        (Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} r₁ g)\n                          (CategoryTheory.CategoryStruct.comp.{u_2, u_3} h r₂))",
+        "evidence": "e3e05d878bd33c28538a",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.conjugateEquiv": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:394",
+        "type": "@CategoryTheory.Bicategory.conjugateEquiv.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {c d : B} →\n      {l₁ l₂ : Quiver.Hom.{u_2, u_3} c d} →\n        {r₁ r₂ : Quiver.Hom.{u_2, u_3} d c} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₁ r₁ →\n            CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₂ r₂ →\n              Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} l₂ l₁) (Quiver.Hom.{u_1, u_2} r₁ r₂)",
+        "axioms": [],
+        "evidence": "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+      },
+      "CategoryTheory.Adjunction.leftAdjointUniq": {
+        "source": "Mathlib/CategoryTheory/Adjunction/Unique.lean:36",
+        "type": "@CategoryTheory.Adjunction.leftAdjointUniq.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  {D : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} C] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n        {F F' : @CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C inst D inst_1} →\n          {G : @CategoryTheory.Functor.{u_3, u_1, u_4, u_2} D inst_1 C inst} →\n            @CategoryTheory.Adjunction.{u_1, u_3, u_2, u_4} C inst D inst_1 F G →\n              @CategoryTheory.Adjunction.{u_1, u_3, u_2, u_4} C inst D inst_1 F' G →\n                @CategoryTheory.Iso.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                  (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C inst D inst_1)\n                  (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} C inst D inst_1) F F'",
+        "evidence": "4223f7634ed4b2b7ca85",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointIso": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:232",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F F' : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F' G →\n              CategoryTheory.Iso.{u_1, u_1} (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)\n                (SerrePositivity.InfinityCategories.qcatMap.{u_1} F')",
+        "evidence": "dafcbcb6828bf76e41f4",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Equivalence.mkOfAdjointifyCounit": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:276",
+        "type": "@CategoryTheory.Bicategory.Equivalence.mkOfAdjointifyCounit.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b : B} →\n      {f : Quiver.Hom.{u_2, u_3} a b} →\n        {g : Quiver.Hom.{u_2, u_3} b a} →\n          CategoryTheory.Iso.{u_1, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_3} a)\n              (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f g) →\n            CategoryTheory.Iso.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g f)\n                (CategoryTheory.CategoryStruct.id.{u_2, u_3} b) →\n              CategoryTheory.Bicategory.Equivalence.{u_1, u_2, u_3} a b",
+        "evidence": "d34629ae84df851c416c",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Equivalence.adj": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:285",
+        "type": "@CategoryTheory.Bicategory.Equivalence.adj.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b : B} →\n      (e : CategoryTheory.Bicategory.Equivalence.{u_1, u_2, u_3} a b) →\n        CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3}\n          (CategoryTheory.Bicategory.Equivalence.hom.{u_1, u_2, u_3} e)\n          (CategoryTheory.Bicategory.Equivalence.inv.{u_1, u_2, u_3} e)",
+        "evidence": "1a9b3058b490ac699404",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Adjunction.compUnit": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:121",
+        "type": "@CategoryTheory.Bicategory.Adjunction.compUnit.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {f₁ : Quiver.Hom.{u_2, u_3} a b} →\n        {g₁ : Quiver.Hom.{u_2, u_3} b a} →\n          {f₂ : Quiver.Hom.{u_2, u_3} b c} →\n            {g₂ : Quiver.Hom.{u_2, u_3} c b} →\n              CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₁ g₁ →\n                CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₂ g₂ →\n                  Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_3} a)\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f₁ f₂)\n                      (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g₂ g₁))",
+        "evidence": "0d5549e16e3d2a954974",
+        "axioms": []
+      },
+      "CategoryTheory.Bicategory.Adjunction.comp": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:161",
+        "type": "@CategoryTheory.Bicategory.Adjunction.comp.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {f₁ : Quiver.Hom.{u_2, u_3} a b} →\n        {g₁ : Quiver.Hom.{u_2, u_3} b a} →\n          {f₂ : Quiver.Hom.{u_2, u_3} b c} →\n            {g₂ : Quiver.Hom.{u_2, u_3} c b} →\n              CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₁ g₁ →\n                CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₂ g₂ →\n                  CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3}\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f₁ f₂)\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g₂ g₁)",
+        "axioms": [],
+        "evidence": "7c2afaef83cce064c10c"
+      },
+      "CategoryTheory.Bicategory.Adjunction.compCounit": {
+        "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:126",
+        "type": "@CategoryTheory.Bicategory.Adjunction.compCounit.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {f₁ : Quiver.Hom.{u_2, u_3} a b} →\n        {g₁ : Quiver.Hom.{u_2, u_3} b a} →\n          {f₂ : Quiver.Hom.{u_2, u_3} b c} →\n            {g₂ : Quiver.Hom.{u_2, u_3} c b} →\n              CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₁ g₁ →\n                CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₂ g₂ →\n                  Quiver.Hom.{u_1, u_2}\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g₂ g₁)\n                      (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f₁ f₂))\n                    (CategoryTheory.CategoryStruct.id.{u_2, u_3} c)",
+        "evidence": "75c1c2c2151f0fb771cd",
+        "axioms": []
+      },
+      "CategoryTheory.ExactPairing": {
+        "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:78",
+        "type": "@CategoryTheory.ExactPairing.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → C → C → Type u_1",
+        "evidence": "3c25c232d8069d30a332",
+        "axioms": []
+      },
+      "CategoryTheory.HasRightDual": {
+        "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:237",
+        "type": "@CategoryTheory.HasRightDual.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → C → Type (max u_2 u_1)",
+        "evidence": "dd37085c14e1b4a05f1b",
+        "axioms": []
+      },
+      "CategoryTheory.HasLeftDual": {
+        "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:243",
+        "type": "@CategoryTheory.HasLeftDual.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → C → Type (max u_2 u_1)",
+        "evidence": "d7c7b2a3f9ff69621987",
+        "axioms": []
+      },
+      "CategoryTheory.tensorRightHomEquiv": {
+        "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:411",
+        "type": "@CategoryTheory.tensorRightHomEquiv.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (X Y Y' Z : C) →\n        [@CategoryTheory.ExactPairing.{u_1, u_2} C inst inst_1 Y Y'] →\n          Equiv.{u_1 + 1, u_1 + 1}\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) X Y)\n              Z)\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              X\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) Z Y'))",
+        "evidence": "a673b9c9ab0edddd4a6b",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.mkOfHomTriangles": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:191",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.mkOfHomTriangles.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          (η :\n              Quiver.Hom.{u_1, u_1}\n                (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.qcatOf.{u_1} X))\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)\n                  (SerrePositivity.InfinityCategories.qcatMap.{u_1} G))) →\n            (ε :\n                Quiver.Hom.{u_1, u_1}\n                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n                    (SerrePositivity.InfinityCategories.qcatMap.{u_1} G)\n                    (SerrePositivity.InfinityCategories.qcatMap.{u_1} F))\n                  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n                    (SerrePositivity.InfinityCategories.qcatOf.{u_1} Y))) →\n              Eq.{u_1 + 1}\n                  (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n                    (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} X Y)\n                    (CategoryTheory.Bicategory.leftZigzag.{u_1, u_1, u_1 + 1} η ε))\n                  (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n                    (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} X Y)\n                    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}\n                      (CategoryTheory.Iso.hom.{u_1, u_1}\n                        (CategoryTheory.Bicategory.leftUnitor.{u_1, u_1, u_1 + 1}\n                          (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)))\n                      (CategoryTheory.Iso.inv.{u_1, u_1}\n                        (CategoryTheory.Bicategory.rightUnitor.{u_1, u_1, u_1 + 1}\n                          (SerrePositivity.InfinityCategories.qcatMap.{u_1} F))))) →\n                Eq.{u_1 + 1}\n                    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n                      (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} Y X)\n                      (CategoryTheory.Bicategory.rightZigzag.{u_1, u_1, u_1 + 1} η ε))\n                    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n                      (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} Y X)\n                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}\n                        (CategoryTheory.Iso.hom.{u_1, u_1}\n                          (CategoryTheory.Bicategory.rightUnitor.{u_1, u_1, u_1 + 1}\n                            (SerrePositivity.InfinityCategories.qcatMap.{u_1} G)))\n                        (CategoryTheory.Iso.inv.{u_1, u_1}\n                          (CategoryTheory.Bicategory.leftUnitor.{u_1, u_1, u_1 + 1}\n                            (SerrePositivity.InfinityCategories.qcatMap.{u_1} G))))) →\n                  SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G",
+        "evidence": "9dcc1045973823d56e3c",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:38",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} : {X Y : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} X] →\n    [SSet.Quasicategory.{u_1} Y] → Quiver.Hom.{u_1, u_1 + 1} X Y → Quiver.Hom.{u_1, u_1 + 1} Y X → Type u_1",
+        "evidence": "19cbe91e1577b12c3a55",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.left_triangle_hom": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:272",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.left_triangle_hom.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {F : Quiver.Hom.{u_1, u_1 + 1} X Y}\n  {G : Quiver.Hom.{u_1, u_1 + 1} Y X} (a : SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G),\n  Eq.{u_1 + 1}\n    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} X Y)\n      (CategoryTheory.Bicategory.leftZigzag.{u_1, u_1, u_1 + 1}\n        (CategoryTheory.Bicategory.Adjunction.unit.{u_1, u_1, u_1 + 1} a)\n        (CategoryTheory.Bicategory.Adjunction.counit.{u_1, u_1, u_1 + 1} a)))\n    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1} (SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} X Y)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1}\n        (CategoryTheory.Iso.hom.{u_1, u_1}\n          (CategoryTheory.Bicategory.leftUnitor.{u_1, u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)))\n        (CategoryTheory.Iso.inv.{u_1, u_1}\n          (CategoryTheory.Bicategory.rightUnitor.{u_1, u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)))))",
+        "evidence": "b429c4a8640000e30cd6",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.unitHom": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:239",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.unitHom.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            Quiver.Hom.{u_1, u_1}\n              (SSet.HomotopyCategory.mk.{u_1}\n                (SerrePositivity.InfinityCategories.functorVertex.{u_1}\n                  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)))\n              (SSet.HomotopyCategory.mk.{u_1}\n                (SerrePositivity.InfinityCategories.functorVertex.{u_1}\n                  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F G)))",
+        "evidence": "304f30dbb141a8615565",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.qcatHomFunctor": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:47",
+        "type": "SerrePositivity.InfinityCategories.qcatHomFunctor.{u_1} : (X Y : SSet.{u_1}) →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      CategoryTheory.Functor.{u_1, u_1, u_1, u_1}\n        (Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.qcatOf.{u_1} X)\n          (SerrePositivity.InfinityCategories.qcatOf.{u_1} Y))\n        ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (X ⟹ Y))",
+        "evidence": "e13fcd893ddedc46e9f8",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.qcatCellEquiv": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:63",
+        "type": "@SerrePositivity.InfinityCategories.qcatCellEquiv.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      (F G : Quiver.Hom.{u_1, u_1 + 1} X Y) →\n        Equiv.{u_1 + 1, u_1 + 1}\n          (Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.qcatMap.{u_1} F)\n            (SerrePositivity.InfinityCategories.qcatMap.{u_1} G))\n          (Quiver.Hom.{u_1, u_1}\n            (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} F))\n            (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} G)))",
+        "evidence": "68b43c7fe8f14bfd8a76",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.comp": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:217",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.comp.{u_1} : {X Y Z : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      [inst_2 : SSet.Quasicategory.{u_1} Z] →\n        {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n          {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n            {F' : Quiver.Hom.{u_1, u_1 + 1} Y Z} →\n              {G' : Quiver.Hom.{u_1, u_1 + 1} Z Y} →\n                SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n                  SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F' G' →\n                    SerrePositivity.InfinityCategories.QCatAdjunction.{u_1}\n                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F F')\n                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} G' G)",
+        "evidence": "63e4490e812781d674ea",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean:85",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            CategoryTheory.Adjunction.{u_1, u_1, u_1, u_1}\n              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))\n              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G))",
+        "axioms": [],
+        "evidence": "fba17ce6138db946465e"
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.hoHomEquiv": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean:78",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.hoHomEquiv.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            (x : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)) →\n              (y : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} Y)) →\n                Equiv.{u_1 + 1, u_1 + 1}\n                  (Quiver.Hom.{u_1, u_1}\n                    (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}\n                      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))\n                      x)\n                    y)\n                  (Quiver.Hom.{u_1, u_1} x\n                    (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}\n                      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G))\n                      y))",
+        "evidence": "0a964164deb9dd8aaeb6",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/AdjunctionMappingSpaces.lean:128",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  {F : Quiver.Hom.{u_1, u_1 + 1} X Y} {G : Quiver.Hom.{u_1, u_1 + 1} Y X}\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)\n  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))\n  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} Y (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap.{u_1} a x y)",
+        "evidence": "6874b41f987487e5b3db",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/AdjunctionPinchedSpaces.lean:35",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.pinchedHomEquivalence.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →\n              (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} Y (Opposite.op.{1} { len := 0 })) →\n                SerrePositivity.InfinityCategories.QCatEquivalence.{u_1}\n                  (SerrePositivity.InfinityCategories.pinchedHom.{u_1}\n                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} F (Opposite.op.{1} { len := 0 })))\n                      x)\n                    y)\n                  (SerrePositivity.InfinityCategories.pinchedHom.{u_1} x\n                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} G (Opposite.op.{1} { len := 0 })))\n                      y))",
+        "evidence": "4f304b470f73f4900087",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean:257",
+        "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G G' : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G' →\n              SerrePositivity.InfinityCategories.FunctorIso.{u_1} G G'",
+        "evidence": "d508f47e955ed87001c2",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isIso_map_iff_localHom": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:74",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isIso_map_iff_localHom.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y)),\n  CategoryTheory.IsIso.{u_1, u_1}\n      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n        f) ↔\n    ∀ (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z →\n        SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom.{u_1} f z",
+        "evidence": "fd8452c2a7bb27175c49",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalenceHom_iff": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:111",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalenceHom_iff.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (f : Quiver.Hom.{u_1, u_1} (SSet.HomotopyCategory.mk.{u_1} x) (SSet.HomotopyCategory.mk.{u_1} y)),\n  SerrePositivity.InfinityCategories.HomotopyLimits.LocalEquivalenceHom.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))\n      f ↔\n    CategoryTheory.IsIso.{u_1, u_1}\n      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}\n        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}\n            (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n        f)",
+        "evidence": "dc5ae0574dcc3d15d89c",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isLocal_iff_invertedEdges": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_isLocal_iff_invertedEdges.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z ↔\n    SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))\n      z",
+        "evidence": "c547568a1493c0def058",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocal_iff_essentialImage": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalObjects.lean:77",
+        "type": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocal_iff_essentialImage.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P)\n  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r x ↔\n    ∃ y, Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.VertexIso.{u_1} (↑y) x)",
+        "evidence": "e44cf0630dd87f4b1f2d",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  Eq.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+        "evidence": "252587d0b72bae264f10",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements": {
+        "source": "SerrePositivity/InfinityCategories/F2/Presentable/LocalReplacementReflection.lean:24",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.isReflectiveSubcategory_of_localReplacements.{u_1} : ∀\n  {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ y e,\n        Membership.mem.{u_1, u_1} (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1} W)\n            (SSet.Truncated.Edge.edge.{u_1} e) ∧\n          SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W y) →\n    SerrePositivity.InfinityCategories.IsReflectiveSubcategory.{u_1} X\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W)",
+        "evidence": "a81453c09102996746cf",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean:118",
+        "type": "@SerrePositivity.InfinityCategories.ReflectiveSubcategory.isLocalization.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+        "evidence": "c95711ad03dd83341ca4",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable": {
+        "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69",
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (G : Quiver.Hom.{u_1, u_1 + 1} Y X),\n  (∃ F, Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)) ↔\n    ∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ y,\n        Nonempty.{u_1 + 2}\n          (SerrePositivity.InfinityCategories.FunctorIso.{u_1 + 1}\n            (SerrePositivity.InfinityCategories.covariantRepresentableInfinity.{u_1} y)\n            (CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2}\n              (CategoryTheory.Functor.map.{u_1, u_1 + 1, u_1 + 1, u_1 + 2} SSet.uliftFunctor.{u_1 + 1, u_1} G)\n              (SerrePositivity.InfinityCategories.covariantRepresentableInfinity.{u_1} x)))",
+        "evidence": "a5480a7f0c14f62aaacd",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.exists_qcatAdjunction_of_commaFiberInitial": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.exists_qcatAdjunction_of_commaFiberInitial.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  (G : Quiver.Hom.{u_1, u_1 + 1} Y X),\n  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n      ∃ v, SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} v) →\n    ∃ F, Nonempty.{u_1 + 1} (SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)",
+        "evidence": "932cce598a31ea8ca1ab",
+        "axioms": []
+      },
+      "CategoryTheory.Functor.isRightAdjoint_iff_leftAdjointObjIsDefined_eq_top": {
+        "source": "Mathlib/CategoryTheory/Adjunction/PartialAdjoint.lean:142",
+        "type": "@CategoryTheory.Functor.isRightAdjoint_iff_leftAdjointObjIsDefined_eq_top.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_2, u_4} D] (F : CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D C),\n  CategoryTheory.Functor.IsRightAdjoint.{u_1, u_2, u_3, u_4} F ↔\n    Eq.{u_3 + 1} (CategoryTheory.Functor.leftAdjointObjIsDefined.{u_1, u_2, u_3, u_4} F) Top.top.{u_3}",
+        "evidence": "4f94e370eedfa0d9e201",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean:59",
+        "type": "@SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition.{u_1} : ∀\n  {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y]\n  {F : Quiver.Hom.{u_1, u_1 + 1} X Y} {G : Quiver.Hom.{u_1, u_1 + 1} Y X}\n  (η :\n    SerrePositivity.InfinityCategories.FunctorHom.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F G)),\n  (∃ a, Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.QCatAdjunction.unitHom.{u_1} a) η) ↔\n    SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.{u_1} η",
+        "evidence": "a80432fa1dc92264d37c",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/QCatUnitHomCriterion.lean:86",
+        "type": "@SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {F : Quiver.Hom.{u_1, u_1 + 1} X Y}\n  {G : Quiver.Hom.{u_1, u_1 + 1} Y X}\n  (η :\n    SerrePositivity.InfinityCategories.FunctorHom.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F G)),\n  (∃ a, Eq.{u_1 + 1} (SerrePositivity.InfinityCategories.QCatAdjunction.unitHom.{u_1} a) η) ↔\n    ∀ {A : SSet.{u_1}} [inst_2 : SSet.Quasicategory.{u_1} A] (U : Quiver.Hom.{u_1, u_1 + 1} A X)\n      (V : Quiver.Hom.{u_1, u_1 + 1} A Y),\n      Function.Bijective.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.qcatUnitHomMap.{u_1} η U V)",
+        "evidence": "4273ae68c7b2a154fc11",
+        "axioms": []
+      },
+      "CategoryTheory.Localization.StrictUniversalPropertyFixedTarget": {
+        "source": "Mathlib/CategoryTheory/Localization/Predicate.lean:75",
+        "type": "@CategoryTheory.Localization.StrictUniversalPropertyFixedTarget.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : {C : Type u_2} →\n  {D : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} C] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n        CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D →\n          CategoryTheory.MorphismProperty.{u_1, u_2} C →\n            (E : Type u_6) →\n              [CategoryTheory.Category.{u_5, u_6} E] → Type (max (max (max (max (max u_2 u_4) u_6) u_1) u_3) u_5)",
+        "evidence": "5585f28da498f34f892e",
+        "axioms": []
+      },
+      "CategoryTheory.Functor.IsLocalization": {
+        "source": "Mathlib/CategoryTheory/Localization/Predicate.lean:52",
+        "type": "@CategoryTheory.Functor.IsLocalization.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  {D : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} C] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n        CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D → CategoryTheory.MorphismProperty.{u_1, u_2} C → Prop",
+        "evidence": "e9ef4f1233c32bf46e0a",
+        "axioms": []
+      },
+      "CategoryTheory.Localization.full_whiskeringLeft": {
+        "source": "Mathlib/CategoryTheory/Localization/Predicate.lean:268",
+        "type": "@CategoryTheory.Localization.full_whiskeringLeft.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : ∀ {C : Type u_2} {D : Type u_4} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : CategoryTheory.Category.{u_3, u_4} D] (L : CategoryTheory.Functor.{u_1, u_3, u_2, u_4} C D)\n  (W : CategoryTheory.MorphismProperty.{u_1, u_2} C) [CategoryTheory.Functor.IsLocalization.{u_1, u_2, u_3, u_4} L W]\n  (E : Type u_6) [inst_3 : CategoryTheory.Category.{u_5, u_6} E],\n  CategoryTheory.Functor.Full.{max u_4 u_5, max u_2 u_5, max (max (max u_4 u_6) u_3) u_5,\n      max (max (max u_2 u_6) u_1) u_5}\n    (CategoryTheory.Functor.obj.{max u_2 u_3, max (max (max (max u_2 u_4) u_6) u_3) u_5,\n        max (max (max u_2 u_4) u_1) u_3, max (max (max (max (max u_2 u_4) u_6) u_1) u_3) u_5}\n      (CategoryTheory.Functor.whiskeringLeft.{u_2, u_1, u_4, u_3, u_6, u_5} C D E) L)",
+        "evidence": "b8b0a1b3e80d3d772c0b",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.invertingFunctors": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:57",
+        "type": "SerrePositivity.InfinityCategories.invertingFunctors.{u_1} : (X E : SSet.{u_1}) →\n  Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })) →\n    SSet.Subcomplex.{u_1} (X ⟹ E)",
+        "evidence": "f2b5fa40300a4aa8837a",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.invertingFunctors_quasicategory": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:63",
+        "type": "SerrePositivity.InfinityCategories.invertingFunctors_quasicategory.{u_1} : ∀ (X E : SSet.{u_1})\n  [SSet.Quasicategory.{u_1} E]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SSet.Quasicategory.{u_1}\n    (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.invertingFunctors.{u_1} X E W))",
+        "evidence": "78f47a0241539cf72242",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsLocalization": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:95",
+        "type": "@SerrePositivity.InfinityCategories.IsLocalization.{u_1} : {X D : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X D →\n    Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 })) → Prop",
+        "evidence": "d1a48e90a34e41de1c96",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.localizationPrecomposition": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:72",
+        "type": "@SerrePositivity.InfinityCategories.localizationPrecomposition.{u_1} : {X D : SSet.{u_1}} →\n  (F : Quiver.Hom.{u_1, u_1 + 1} X D) →\n    (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))) →\n      SerrePositivity.InfinityCategories.InvertsEdges.{u_1} F W →\n        (E : SSet.{u_1}) →\n          Quiver.Hom.{u_1, u_1 + 1} (D ⟹ E)\n            (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.invertingFunctors.{u_1} X E W))",
+        "evidence": "f2fb1e8ff3d1c568b7fa",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.IsLocalization.of_subset_invertedEdges": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Saturation.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.IsLocalization.of_subset_invertedEdges.{u_1} : ∀ {X D : SSet.{u_1}}\n  {F : Quiver.Hom.{u_1, u_1 + 1} X D}\n  {W W' : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))},\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1} F W →\n    W ⊆ W' →\n      W' ⊆ SerrePositivity.InfinityCategories.invertedEdges.{u_1} F →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1} F W'",
+        "evidence": "7a9e4c5cb826fb0ab911",
+        "axioms": []
+      },
+      "SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization": {
+        "source": "SerrePositivity/KST/LocalizingInvariants/LocalizationResolution.lean:37",
+        "type": "SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization.{u_1} : ∀ (X : SSet.{u_1})\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  ∃ Q F, SSet.Quasicategory.{u_1} Q ∧ SerrePositivity.InfinityCategories.IsLocalization.{u_1} F W",
+        "evidence": "80c5a15283a1302cc110",
+        "axioms": []
+      },
+      "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization": {
+        "source": "SerrePositivity/KST/LocalizingInvariants/InverseAttachmentUniversal.lean:28",
+        "type": "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization.{u_1} : ∀ (X : SSet.{u_1})\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.KST.LocalizingInvariants.inverseAttachmentInclusion.{u_1} X W) W",
+        "evidence": "bc76ac99b513ebaba58c",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationSequential.lean:41",
+        "type": "@SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_sequential_colimit.{u_1} : ∀\n  {F : CategoryTheory.Functor.{0, u_1, 0, u_1 + 1} ℕ SSet.{u_1}}\n  [∀ (n : ℕ),\n      CategoryTheory.Mono.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.map.{0, u_1, 0, u_1 + 1} F (CategoryTheory.homOfLE.{0} ⋯))]\n  {c : CategoryTheory.Limits.Cocone.{0, u_1, 0, u_1 + 1} F}\n  (hc : CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_1 + 1} c),\n  (∀ (n : ℕ),\n      SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n        (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1}\n          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} F n))\n        (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1}\n          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} F n))) →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n      (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1}\n        (CategoryTheory.Limits.Cocone.pt.{0, u_1, 0, u_1 + 1} c))\n      (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1}\n        (CategoryTheory.Limits.Cocone.pt.{0, u_1, 0, u_1 + 1} c))",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1.Transport.LocalizationSequential"
+      },
+      "SerrePositivity.InfinityCategories.IsLocalization.saturate": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Saturation.lean:64",
+        "type": "@SerrePositivity.InfinityCategories.IsLocalization.saturate.{u_1} : ∀ {X D : SSet.{u_1}}\n  {F : Quiver.Hom.{u_1, u_1 + 1} X D}\n  {W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))},\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1} F W →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1} F (SerrePositivity.InfinityCategories.invertedEdges.{u_1} F)",
+        "evidence": "59409cc43a565aeb70f6",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.invertedEdges": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:28",
+        "type": "@SerrePositivity.InfinityCategories.invertedEdges.{u_1} : {X D : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X D →\n    Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))",
+        "evidence": "ba74605023efdbcb9f81",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.isLocalization_of_deformation": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Localization/DeformationLocalization.lean:71",
+        "type": "@SerrePositivity.InfinityCategories.isLocalization_of_deformation.{u_1} : ∀ {X D : SSet.{u_1}}\n  (L : Quiver.Hom.{u_1, u_1 + 1} X D) (I : Quiver.Hom.{u_1, u_1 + 1} D X)\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SerrePositivity.InfinityCategories.InvertsEdges.{u_1} L W →\n    ∀\n      (e :\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} I L)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} D))\n      (H :\n        SSet.Homotopy.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L I)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)),\n      (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n          Membership.mem.{u_1, u_1} W\n            (SSet.Edge.edge.{u_1} (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1} L W",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization"
+      },
+      "SSet.Nonsingular": {
+        "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean:48",
+        "type": "SSet.Nonsingular.{u_1} : SSet.{u_1} → Prop",
+        "evidence": "61bb82deb5968b2e56cd",
+        "axioms": []
+      }
     }
   }
 }

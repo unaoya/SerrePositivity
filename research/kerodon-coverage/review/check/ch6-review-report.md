@@ -38,3 +38,27 @@ fix は名前空間・出典・引用の訂正も含む。主張の範囲の変�
 - 「なし」は SerrePositivity と固定版 Mathlib の宣言見出し・周辺コメント・番号を探索した範囲の判定。語による順位付けは同義語のすべてを網羅するものではない。
 - 所定の 7 列、元表と同一の番号・順序、重複なし、採用した引用と検査結果の対応を確認。標準3公理以外を含む採用行は 0 件。
 - 6.2.5.4・6.2.5.7 の原文は任意のファイバーを扱う。引用は任意の圏 C・D に [ModelCategory C]・[ModelCategory D] と単体豊穣を要求し、具体的な SSet での #synth ModelCategory SSet も失敗した。ModelBridge/Inputs/KanQuillen.lean の kanQuillenModel は文献入力を使う def。
+
+## やり直し（11-07）
+
+§7 の対象として、前回の own・both・mathlib 41 件と、none 58 件、unsure 0 件を再照合した。
+採用した宣言の型は [kernel の記録](ch6-kernel-evidence.json) の `depth_review`、none の番号・タグ、対語を含む型検索、同小節の近接宣言は [行ごとの検索記録](ch6-none-search.json) に置いた。
+引用は原典の `citations.csv` 9,711 件と、基点のソースのコメント・タグの再走査で照合した。小節内に own・both の採用先がない行は、近傍を選ぶ代替の起点を検索記録に明記した。
+
+| status | 件数 |
+| --- | ---: |
+| own | 15 |
+| both | 0 |
+| mathlib | 16 |
+| partial | 60 |
+| none | 54 |
+
+ok 63 件、fix 82 件、unsure 0 件。
+
+- 6.1.6.13 は partial。仮定：モノイダル圏の X,Y と評価 ev:X⊗Y→𝟙（Lean が強い：ev を ExactPairing Y X の評価と仮定）。結論：tensorRightHomEquiv Z Y X 𝟙 の逆は、左単位子で 𝟙⊗X を X と同一視して、指定評価による Hom(Z,X)→Hom(Z⊗Y,𝟙) の全単射を与える（Lean が弱い：任意の ev の弱双対を定める述語は未確認）。
+- 6.2.3.16 は partial。仮定：∞ 圏 X と辺集合 W。各 x に W-局所同値で W-局所対象へ向かう辺を仮定（原文の局所置換に対応）（Kerodon と一致）。結論：W-局所対象の全部分圏の反射性と随伴を確認。反射が反転する集合に関する局所化もある（Lean が弱い：localizing の全条件から、反転される集合が元の W と一致する判定は未確認）。
+- 6.3.2.12 は partial。仮定：単体集合のフィルター図式（Lean が強い：単射の可算列で初頂点射だけを扱う）。結論：各段の初頂点射が初頂点を保つ辺に関して局所化なら、余極限でも同種の局所化（Lean が弱い：任意の arrow 図式と指定辺の像の和集合には及ばない）。
+- 6.3.5.9 は partial。仮定：射 L と逆向きの I、各変形成分の辺を反転させる仮定（Lean が強い：Fun の相対的な同じ成分という条件の代わりに明示的な単体ホモトピーを用いる）。結論：L が指定辺に関する局所化（Lean が弱い：任意の底変換での局所化を結論しない）。
+- 6.2.5.4 と 6.2.5.7 は partial。Quillen 随伴の cf collage は両圏に ModelCategory を仮定する。SSet の instance が合成できない結果は kernel の記録に残した。
+
+前回からの status の変更は both → partial が 3 件、mathlib → partial が 4 件、none → partial が 4 件、own → partial が 3 件。
