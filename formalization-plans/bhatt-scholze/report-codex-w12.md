@@ -64,3 +64,70 @@ B1 の合成からの消去には、合成自身の完全性と、二重複体�
 - `SerrePositivity.HomologicalAlgebra.Cech.Composition`
 
 専用 worktree で共有ロック付きの対象ビルドが成功した（7 本、依存を含む Lake の集計 2,130 jobs、最終回 16 秒、対象の Lean 警告なし）。新規 7 本の `import all` による監査は 207 宣言が標準三公理のみ。新規宣言の `sorry`・`admit`・追加公理は 0。import 閉包に E3 の `PerfectoidizationInterface` はなく、既存の Lean 宣言に差分なし。`git diff --cached --check` も通過した。停止点 1 で調整役による取り込みを待つ。
+
+## 停止点 2（B2・B3、2026-11-07）
+
+`math/bs-impl` を `2553b6e93` へ fast-forward してから開始した。⑤b・⑥の作業木と枝の差分を確認し、編集先に重複はなかった。
+
+### B2　完全代数とのテンソルと Čech 完全性の検出
+
+- `milnorModuleComplex_shortExact` は BS-W11 の `valuationRing_milnorSquare` の加群版。`milnorModuleComplex_tensor_shortExact` は完全代数とのテンソル後の短完全性を、`PerfectTorIndependence.Basic` が再利用する `perfectRing_tor_subsingleton_of_char_eq_zero` と Tor の長完全列から示す。係数の零環を含む。
+- `cechConerve_perfectRing` は広い押し出しに各脚の逆 Frobenius を延ばし、増大 Čech 複体の各項で使う完全性を与える。`moduleCech_tor_subsingleton` は完全な係数環に対する各項の Tor 消滅。
+- `cechExact_of_milnorTensor` は局所化、商、剰余体の三つで検出する。`cechExact_of_overlapTensor` は重なる二つの区間と交わりの三つで検出する。後者は、停止点 0 の二つの四角形を貼る計算を、局所化から交わりの区間環への全射とその核の直接計算に置き換えた。得られた短完全列に各次数の Tor 消滅を使い、複体の短完全列から完全性を得る。[BM18 Lemma 4.4・Proposition 4.8 の証明 (5)、図式 (6)](https://arxiv.org/pdf/1807.04725#page=29)
+
+### B3　付値環の区間、剰余体への近似、Zorn
+
+- `ValuationIntervalRing` は下端で割って上端で局所化した環。`intervalRingMap` は区間の包含と逆向きで、`valuationRing_interval` はその環が付値環であることを示す。既存の絶対整閉性の商・局所化の補題を再利用して `aic_interval` と `IsAbsolutelyIntegrallyClosed.primeResidue_isAlgClosed` を得た。`IsAbsolutelyIntegrallyClosed.perfectRing_of_charP` は標数 p の絶対整閉整域の完全性。
+- `intervalRingCoconeIsColimit` は縮小する有向区間族の共通部分の環を余極限として表す。`intervalAboveColimitIsoResidue`・`intervalBelowColimitIsoResidue` は直後・直前の素点がないときの剰余体版。`exists_intervalRingFactor_of_finitePresentation` は有限表示の代数から剰余体への射を区間の有限段へ降ろす。
+- `valuationIntervalProperty_of_localExtensions` は左端を固定し、良い右端に Zorn を適用する。Lemma 4.7 の長さ ≤ 1 の条件からは一点区間だけを使用する。部分区間への制限、左右への延長、重なる区間の貼り合わせはそれぞれ仮定にした。[BM18 Definition 4.6・Lemma 4.7・Proposition 4.8](https://arxiv.org/pdf/1807.04725#page=27)
+
+取り込み時に入口・監査への登録を依頼するモジュールは次の 11 本（1,275 行）。
+
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Basic`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Colimit`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.FinitePresentation`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Endpoint`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Zorn`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechMilnor`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcIntervalOverlap`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap`
+
+共有ロック付きの対象ビルド成功（11 本、Lake の依存込み集計 3,497 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `ArcValuationMilnor.lean` では `valuationRing_milnorSquare_perfect` の未使用の節引数の警告が再掲された。新規モジュールを `import all` で監査し、133 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存の Lean 宣言に差分なし。`git diff --cached --check` を通過。段 3 は §3 の事前承認の条件に従って開始する。
+
+## 停止点 3（B4・B5、2026-11-07）
+
+⑤b・⑥の作業木と枝の差分を再確認し、新規の編集先に重複はなかった。
+
+### B4　超積と完全性の検出
+
+- `RingUltraproduct` は超フィルター上で零になる元で割った商。`valuationRing_ultraproduct` は整除の二択を超フィルターで選ぶ。`aic_ultraproduct` は各成分でモニック多項式の根を選び、直積から商へ移す。完全標数 p の入口は `perfectRing_ultraproduct_of_aic`。[BM18 Lemma 3.27](https://arxiv.org/pdf/1807.04725#page=22)
+- `isLocalization_ringUltraproduct` は超フィルターの指示冪等元による局所化。`ultrafilterOfPrime` は積環の素点の外にある指示冪等元から超フィルターを作る。`subsingleton_of_ultraproduct_tensor` は加群の元の零化イデアルを含む素点で零性を検出し、`cechExact_of_ultraproducts` は平坦局所化とホモロジーの可換性を使って増大 Čech 複体に適用する。[BM18 Lemma 3.25](https://arxiv.org/pdf/1807.04725#page=22)
+
+### B5　代表付値環の積による v 被覆
+
+- `exists_valuationSubring_algebraicClosure` は分数体の代数閉包へ付値環を忠実平坦に拡大する。`exists_valuationProbe_factor` は絶対整閉な試験付値環への射を小さい代表で因子化し、代表から試験付値環への射も忠実平坦と示す。[BM18 Lemmas 3.28・3.29](https://arxiv.org/pdf/1807.04725#page=23)
+- 代表の添字は、素点ごとの固定した `AlgebraicClosure (FractionRing (A ⧸ P))` のうち基底環の像を含む付値部分環。環構造を集合上に符号化する方式の代わりに、この添字で `Type u` に収めた。各代表の濃度は `valuationProbe_cardinal_le` で `max (#A) ℵ₀` 以下。
+- `valuationProbeProduct_vCover` は代表の積への射が `IsAffineVCover` であることを示す。`valuationProbeProduct_perfectRing` は `(p : A) = 0` から積の完全性を得る。空の積もこの形で扱える。[BM18 Proposition 3.30](https://arxiv.org/pdf/1807.04725#page=23)
+
+取り込み時に入口・監査への登録を依頼するモジュールは次の 5 本（573 行）。
+
+- `SerrePositivity.CommutativeAlgebra.Ultraproduct.Basic`
+- `SerrePositivity.CommutativeAlgebra.Ultraproduct.Localization`
+- `SerrePositivity.CommutativeAlgebra.ValuationExtension.Aic`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct`
+
+共有ロック付きの対象ビルド成功（5 本、Lake の依存込み集計 3,499 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `AbsolutelyIntegrallyClosed/Basic.lean` と `ArcValuationMilnor.lean` の警告が再掲された。新規モジュールの `import all` による監査は 61 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存 Lean 宣言の変更はない。`git diff --cached --check` を通過した。
+
+## 停止点 4（B6 の型、2026-11-07）
+
+[drafts/A6/ArcRouteB.lean](drafts/A6/ArcRouteB.lean) に G-A6-1 の結論 `ArcRouteBGoal` と ⑥ の入力 `BS17VCechInput` を置いた。元の [ArcSheafProperty.lean](drafts/A6/ArcSheafProperty.lean) から被覆・余脈体・完全性の定義と二つの定理の型を取り出し、両方について `Iff.rfl` で一致を検査した。⑥の本体が取り込まれる前なので、接続の型検査では BS17 を明示的な仮定として受け取った。
+
+- `cechExact_of_affineVCover_from_BS17` は一射を一要素の有限族にし、積と元の環の同型に沿って完全性を移す。完全標数 p の入口 `cechExact_of_perfectAffineVCover_from_BS17` は、零基底では切断、非零基底では剰余体での v 被覆の試験により型を揃える。
+- `isAffineVCover_tensor` と `cechExact_valuationProbeProduct_tensor_from_BS17` で、B5 の積射を完全係数に底変換して ⑥ に渡せる。通常のテンソル積の完全性は零環も含めた。
+- `cechExact_of_valuationProbeTests` は ⑥ の入力から積射自身と、B の正次数の各 Čech 項上での積射の完全性を得て、B1 の比較に渡す。残る仮定は、積射の正次数の各項上での B の底変換の完全性。ここは B4 で超積へ帰着し、B2・B3 と有限表示模型、階数 ≤ 1 の切断から閉じる。有限族の積への縮約も、最終の `ArcRouteBGoal` の証明に残る。[BM18 Proposition 4.8](https://arxiv.org/pdf/1807.04725#page=28)・[BS 著者版 Proposition 8.10](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=67)
+
+drafts の新規ファイルと型比較の両方が、共有ロック付きの `lake env lean` で警告なしに通った。新規の本体モジュールや登録対象はない。G-A6-1 の証明を本体へ移すのは、⑥の BS17 Theorem 4.1 (i) の取り込み後とする。
