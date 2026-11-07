@@ -5,8 +5,7 @@ module
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
-public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedWedge
-public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential
+public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
@@ -92,13 +91,5 @@ def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
       (nerveVertex (ModuleCat.of k (forms k T i)))))
       ((discreteModuleEmbedding k).app _ (nerveVertex (ModuleCat.of k (completedForms k T p i)))) := by
   sorry -- 多項式形式は多項式環上有限自由。係数のねじれの一様な上界により導来完備化は次数零
-
-/-! ## 完備形式上の連続微分と外積（D4-05、11-03。A1 の Ω̂ の dg 構造） -/
-
-theorem completedDeRhamD_wedge (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) {i j : ℕ}
-    (ω : completedForms k T p i) (η : completedForms k T p j) :
-    cast (by omega) (completedDeRhamD k T p (i + j) (completedWedge k T p ω η)) =
-      cast (by omega) (completedWedge k T p (completedDeRhamD k T p i ω) η) + (-1 : ℤ) ^ i • completedWedge k T p ω (completedDeRhamD k T p j η) := by
-  sorry
 
 end SerrePositivity.DeRham

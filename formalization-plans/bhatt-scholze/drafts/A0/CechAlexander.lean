@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.8、単位 A0-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeMaps
 public import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
 
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -260,40 +261,10 @@ def cechAlexanderReducedComplex : CochainComplex (ModuleCat.{u} A) ℕ :=
 
 /-! ## Rem 4.19：affine 空間の小さい模型 -/
 
-abbrev AffineIndex (r n : ℕ) := ULift.{u} (Fin r × Fin (n+1))
-
-def affineVariable (r n : ℕ) (j : Fin r) (i : Fin (n+1)) : completedFreeDelta P (AffineIndex.{u} r n) :=
-  pdCompletionUnit (RelativeFreeDeltaRing (R := A) (AffineIndex.{u} r n)) p (algebraMap A _ P.generator)
-    (MvPolynomial.X (ULift.up (j, i), 0))
-
-def affineDifferenceIdeal (r n : ℕ) : Ideal (completedFreeDelta P (AffineIndex.{u} r n)) :=
-  Ideal.span (insert (completedFreeDeltaBase P _ P.generator)
-    (Set.range (fun ji : Fin r × Fin (n+1) =>
-      affineVariable P r n ji.1 ji.2 - affineVariable P r n ji.1 0)))
-
-/-- 次数 n の envelope とその座標を、site の対象の構造写像に結び付ける。 -/
-structure AffineEnvelopeTerm (r n : ℕ) (κ : Cardinal.{u}) where
-  X : PrismOver P (prismPolynomialCompletion P (Fin r)) κ
-  η : completedFreeDelta P (AffineIndex.{u} r n) →+* X.B
-  envelope : IsPrismaticEnvelope P (completedFreeDeltaStructure P _) (completedFreeDeltaBase P _)
-    (completedFreeDeltaBase_isDeltaHom P _) (affineDifferenceIdeal P r n)
-    (Ideal.subset_span (Set.mem_insert _ _)) X.Q η
-  base_eq : η.comp (completedFreeDeltaBase P _) = X.toHom.toRingHom
-  sec_X : ∀ j : Fin r, X.sec (prismPolynomialUnit P (Fin r) (MvPolynomial.X j)) =
-    Ideal.Quotient.mk X.Q.ideal (η (affineVariable P r n j 0))
-
 def affineEnvelopeTerm (hP : IsBoundedPrism P) (r n : ℕ) (κ : Cardinal.{u})
     (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ) : AffineEnvelopeTerm P r n κ := by
   sorry -- 各 j の copy 0 を残し他を差変数にして exists_prismaticEnvelope_of_variables。
         -- 商の座標と p 完備化単位で sec を作り、自由変数模型の濃度評価を移す
-
-/-- 頂点の添字を θ で写す一意の envelope 射。 -/
-def affineTermMap {r m n : ℕ} {κ : Cardinal.{u}} (X : AffineEnvelopeTerm P r m κ)
-    (Y : AffineEnvelopeTerm P r n κ) (θ : ⦋m⦌ ⟶ ⦋n⦌) : X.X ⟶ Y.X :=
-  Classical.choose (show ∃! f : X.X ⟶ Y.X, ∀ j i,
-    f.toHom.toRingHom (X.η (affineVariable P r m j i)) =
-      Y.η (affineVariable P r n j (θ.toOrderHom i)) from by
-    sorry) -- 指定した生成元の像に自由 δ 環・完備化・envelope の普遍性を順に使う
 
 /-- 概要：R = (A/d)⟨X_1,…,X_r⟩ に対する B₀ = A⟨X_1,…,X_r⟩ の小さい模型。C^n は (A{X^{(0)},…,X^{(n)}}^∧, (d, X^{(i)} − X^{(0)})) の envelope。
 方針：`exists_prismaticEnvelope_of_variables`（S = Fin r × Fin (n+1)、Z = 差の変数、変数変換後）。
@@ -301,11 +272,8 @@ def affineTermMap {r m n : ℕ} {κ : Cardinal.{u}} (X : AffineEnvelopeTerm P r 
 使われ方：Lemma 4.20、Prop 6.2、Thm 5.2 の計算。 -/
 def cechAlexanderAffine (hP : IsBoundedPrism P) (r : ℕ) (κ : Cardinal.{u})
     (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ) :
-    CosimplicialObject (PrismOver P (prismPolynomialCompletion P (Fin r)) κ) where
-  obj n := (affineEnvelopeTerm P hP r n.len κ hk).X
-  map {m n} θ := affineTermMap P (affineEnvelopeTerm P hP r m.len κ hk) (affineEnvelopeTerm P hP r n.len κ hk) θ
-  map_id := by sorry -- 恒等射は指定の座標を保つ
-  map_comp := by sorry -- 合成は θ の合成と同じ座標を持つ
+    CosimplicialObject (PrismOver P (prismPolynomialCompletion P (Fin r)) κ) :=
+  cechAlexanderOfAffineTerms P (fun n => affineEnvelopeTerm P hP r n κ hk)
 
 /-- Rem 4.19 の模型でも頂点入射が余積の脚になる。 -/
 def cechAlexanderAffine_isCoproduct (hP : IsBoundedPrism P) (r : ℕ) (κ : Cardinal.{u})
