@@ -9,11 +9,11 @@ public import Mathlib.Data.List.Nodup
 
 ## 概要
 
-独立な変数ごとのモニック関係は、重複しない有限な添字の列で弱正則列をなし、Koszul 分解を与える（`monicRelation_fin_isWeaklyRegular`・`monicRelation_fin_isKoszulResolution`）。BS Rem 7.15（著者版 p.62）の一般の f/d 包の残りの計算の入力。
+独立な変数ごとのモニック関係は、重複しない有限な添字の列で弱正則列をなし、Koszul 分解を与える（`monicRelation_fin_isWeaklyRegular`・`monicRelation_fin_isKoszulResolution`）。BS 著者版 Remark 7.15（著者版 p.62）の一般の f/d 包の残りの計算の入力。
 
 ## 方針
 
-先行する添字の集合による商を使い、後続のモニック関係が各位置で非零因子であることを適用する。原典の Prop 7.11 とは違う、明示的な商による計算。
+先行する添字の集合による商を使い、後続のモニック関係が各位置で非零因子であることを適用する。原典の BS 著者版 Proposition 7.11 とは違う、明示的な商による計算。
 
 ## 規約
 
@@ -37,7 +37,7 @@ variable {A : Type u} [CommRing A] {σ : Type v}
 /-- 概要：有限モニック関係列の生成イデアルは、その添字集合のモニック関係イデアル。
 方針：先行添字の関係商で残りのモニック関係の正則性を用いる。
 規約：係数環の非零性や多項式の正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
 theorem monicRelation_ofList_eq_subset (f : σ → Polynomial A) (l : List σ) :
     Ideal.ofList (l.map (fun s => monicRelation (f s) s)) =
       polynomialSubsetRelationIdeal {s | s ∈ l} f := by
@@ -54,7 +54,7 @@ theorem monicRelation_ofList_eq_subset (f : σ → Polynomial A) (l : List σ) :
 /-- 概要：異なる有限個のモニック関係は、任意係数環上の弱正則列。
 方針：先行添字の関係商で残りのモニック関係の正則性を用いる。
 規約：係数環の非零性や多項式の正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
 theorem monicRelation_list_isWeaklyRegular (f : σ → Polynomial A)
     (hf : ∀ s, (f s).Monic) (l : List σ) (hl : l.Nodup) :
     RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)
@@ -86,7 +86,7 @@ theorem monicRelation_list_isWeaklyRegular (f : σ → Polynomial A)
 /-- 概要：Fin nで指定した異なるモニック関係の有限族は弱正則列。
 方針：先行添字の関係商で残りのモニック関係の正則性を用いる。
 規約：係数環の非零性や多項式の正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
 theorem monicRelation_fin_isWeaklyRegular (f : σ → Polynomial A)
     (hf : ∀ s, (f s).Monic) {n : ℕ} (s : Fin n → σ) (hs : Function.Injective s) :
     RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)
@@ -98,7 +98,7 @@ theorem monicRelation_fin_isWeaklyRegular (f : σ → Polynomial A)
 /-- 概要：異なる有限個のモニック関係のKoszul複体は、実際の通常商の分解。
 方針：先行添字の関係商で残りのモニック関係の正則性を用いる。
 規約：係数環の非零性や多項式の正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実残余 Koszul 入力。 -/
 theorem monicRelation_fin_isKoszulResolution (f : σ → Polynomial A)
     (hf : ∀ s, (f s).Monic) {n : ℕ} (s : Fin n → σ) (hs : Function.Injective s) :
     SerrePositivity.IsKoszulResolution
@@ -109,7 +109,7 @@ theorem monicRelation_fin_isKoszulResolution (f : σ → Polynomial A)
 /-- 概要：負のモニック関係の異なる有限族も弱正則列。
 方針：モニック族の有限弱正則性に一括符号変更を適用する。
 規約：正次数を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の実 δ 関係の弱正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の実 δ 関係の弱正則性。 -/
 theorem monicRelation_neg_fin_isWeaklyRegular (f : σ → Polynomial A)
     (hf : ∀ s, (f s).Monic) {m : ℕ} (s : Fin m → σ) (hs : Function.Injective s) :
     RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)

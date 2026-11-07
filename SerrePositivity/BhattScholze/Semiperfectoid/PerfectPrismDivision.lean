@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-!
-# 完全 prism の中で J/d を割る構成（BS 著者版 Prop 7.2・Cor 7.3 の代数的部分）
+# 完全 prism の中で J/d を割る構成（BS 著者版 Proposition 7.2・BS 著者版 Corollary 7.3 の代数的部分）
 
 ## 概要
 δ 環で元の族を d で割る包の p 進完備完全化とその普遍性、族の比較、d 商への標準射と完全 prism への延長、族の取り方によらないこと。
@@ -19,14 +19,15 @@ d で割る包（Delta/Division）を p 進完備に完全化する。原典の�
 perfectoid 性・IsPerfectoidization はここでは結論しない。
 
 ## 使われ方
-Cor 7.3（Semiperfectoid/Perfectoidization）、André の perfectoid 候補。旧 Prism/Perfection から移した。
+BS 著者版 Corollary 7.3（`Semiperfectoid/Perfectoidization`）、André の perfectoid 候補。
+旧 `Prism/Perfection` から移した。
 -/
 
 universe u v w t
 
 /-! ## δ除算添加環のp進完備δ完全化（旧 Prism/Perfection/PCompletedDeltaDivision.lean）
 
-著者公開版Prop 7.2とLemma 3.9に使う具体的な代数的候補。
+BS 著者版 Proposition 7.2とBS 著者版 Lemma 3.9に使う具体的な代数的候補。
 除算添加の後に既存のp進完備δ完全化を施し、完全p進完備δ環への普遍性を証明する。
 mod d商のperfectoid性・prism性・導来(p,d)完備化との比較は結論しない。
 -/
@@ -144,7 +145,7 @@ end PCompletedDeltaDivision
 
 /-! ## 除算する元族の包含とp進完備δ除算候補の標準比較（旧 Prism/Perfection/PCompletedDeltaDivisionComparison.lean）
 
-著者公開版Prop 7.2のJ/d添加に向け、任意の生成元族の生成イデアルに関する
+BS 著者版 Proposition 7.2のJ/d添加に向け、任意の生成元族の生成イデアルに関する
 包含から具体的なδ比較射を作り、恒等射・合成との両立を証明する。
 候補のperfectoid性や標準射の全射性は結論しない。
 -/
@@ -258,7 +259,7 @@ end PCompletedDeltaDivisionComparison
 
 /-! ## p進完備δ除算完全化のd商と完全prismへの延長（旧 Prism/Perfection/PCompletedDeltaDivisionQuotient.lean）
 
-著者公開版Prop 7.2とCor 7.3に向けた具体的な環・標準写像・普遍性の部分定理。
+BS 著者版 Proposition 7.2とBS 著者版 Corollary 7.3に向けた具体的な環・標準写像・普遍性の部分定理。
 任意の基底イデアルJを扱うが、d商のperfectoid性とIsPerfectoidizationは未結論。
 -/
 
@@ -488,7 +489,7 @@ end PCompletedDeltaDivisionPresentation
 
 /-! ## 具体的なp進完備δ除算候補の生成元冪商の有界ねじれ（旧 Prism/Perfection/PCompletedDeltaDivisionPowerTorsion.lean）
 
-原典Lemma 3.9に向け、distinguished像のn乗商の有界pねじれ条件を供給する。
+原典BS 著者版 Lemma 3.9に向け、distinguished像のn乗商の有界pねじれ条件を供給する。
 商のp完備性や導来(p,d)完備化との比較は結論しない。
 -/
 

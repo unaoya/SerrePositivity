@@ -21,13 +21,14 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexComple
 public import Mathlib.Algebra.CharP.Lemmas
 
 /-!
-# 根の関係式の正則性と Koszul 分解（Prop 3.13・Ex 3.14 を根の関係式に限った形の土台）
+# 根の関係式の正則性と Koszul 分解（BS 著者版 Proposition 3.13・BS 著者版 Example 3.14 を根の関係式に限った形の土台）
 
 ## 概要
 根添加の多項式関係による具体的係数商とその自由性・忠実平坦性、根 δ 除算添加環の源変数と raw 剰余、先行する根関係・任意の先行添字集合による商、有限根関係列の弱正則性・Koszul 分解・係数側 Tor、p 乗商での後続根関係の正則性、二つの独立根関係の raw 除算への正則入力。
+根関係の正則性と Koszul 分解は、BS 著者版 Proposition 3.13 の包の平坦性を根の入力で扱うための補助である。
 
 ## 方針
-原典の「正則列の envelope は平坦」（Prop 3.13）を、根の関係 fᵢ(Xᵢ)/d の場合に Koszul 複体で直接示す。
+原典の「正則列の envelope は平坦」（BS 著者版 Proposition 3.13）を、根の関係 fᵢ(Xᵢ)/d の場合に Koszul 複体で直接示す。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。

@@ -13,15 +13,16 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 ## 概要
 有界 prism の台環は古典的 p 進・(p,d) 進完備で p 進分離。完全 prism の (p,d) 進完備性、正則元の冪商の有界ねじれ。
+古典的 p 進完備性は、BS 著者版 Lemma 3.7 (1) の (p,d) 進完備性から取り出す帰結であり、Lemma 4.8 と Remark 7.15 の入力射の構成に使う。
 
 ## 方針
 導来完備性と分離性から古典的完備性を出す。d の冪商のねじれを帰納的に評価する。
 
 ## 規約
-向き付き。Lemma 3.7 の (2)〜(4) は未。
+向き付き。BS 著者版 Lemma 3.7 の (2)〜(4) は未。
 
 ## 使われ方
-Lemma 4.8（Prism/PerfectPrismHomLift）、有界 prism の tilt。旧 Andre/Remark715 から移した。
+BS 著者版 Lemma 4.8（Prism/PerfectPrismHomLift）、有界 prism の tilt。旧 Andre/Remark715 から移した。
 -/
 
 universe u
@@ -31,7 +32,7 @@ universe u
 ## 概要
 
 d が正則で B/(d) の a 冪ねじれが a^N で消えるなら、B/(d^m) の a 冪ねじれは
-a^(N*m) で消える。BS Rem 7.15（著者版 p.62）の有界試験 prism の完備性への入力。
+a^(N*m) で消える。BS 著者版 Remark 7.15（著者版 p.62）の有界試験 prism の完備性への入力。
 
 ## 方針
 
@@ -55,7 +56,7 @@ variable {B : Type u} [CommRing B]
 /-- 概要：一乗商でのねじれの有界指数 N は m 乗商で N*m となる。
 方針：a^N x=d y と書き、d の正則性による消去と m に関する帰納法を使う。
 規約：可除性として述べ、係数元 a には制約しない。
-使われ方：BS Rem 7.15（著者版 p.62）の全冪商における有界ねじれ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全冪商における有界ねじれ。 -/
 theorem regular_power_quotient_torsion_bound_dvd (a d : B)
     (hd : Function.Injective (fun x : B => d * x)) (N : ℕ)
     (hN : ∀ k : ℕ, ∀ x : B, d ∣ a ^ k * x → d ∣ a ^ N * x)
@@ -88,7 +89,7 @@ theorem regular_power_quotient_torsion_bound_dvd (a d : B)
 /-- 概要：正則生成元の m 乗商の a 冪ねじれは、一乗商の有界指数の m 倍で消える。
 方針：商での零を主イデアルの可除性に戻し、一般の帰納計算を適用する。
 規約：素数性・p 正則性を要求せず、元の実商環を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の有界試験 prism の全冪商の完備性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界試験 prism の全冪商の完備性。 -/
 theorem regular_power_quotient_torsion_bound (a d : B)
     (hd : Function.Injective (fun x : B => d * x)) (N : ℕ)
     (hN : ∀ k : ℕ, ∀ x : B ⧸ Ideal.span {d},
@@ -121,7 +122,7 @@ end RegularPowerQuotientTorsion
 ## 概要
 
 prism 商の p 冪ねじれが有界なら、台環は (p,d) に沿って古典的完備となり、p 進分離でもある。
-BS Rem 7.15（著者版 p.62）の一般の有界試験 prism への根列持上げに用いる。
+BS 著者版 Remark 7.15（著者版 p.62）の一般の有界試験 prism への根列持上げに用いる。
 
 ## 方針
 
@@ -152,7 +153,7 @@ include hB in
 /-- 概要：有界 prism の生成元の全冪商は p に沿って古典的完備。
 方針：N*m のねじれ評価と商の導来完備性を、有界ねじれによる比較へ渡す。
 規約：台環や商の p 正則性は不要で、零冪商も含む。
-使われ方：BS Rem 7.15（著者版 p.62）の有界試験 prism の共通完備性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界試験 prism の共通完備性。 -/
 theorem boundedPrism_generator_power_quotient_prime_complete (m : ℕ) :
     IsAdicComplete (Ideal.span {(p : B)}) (B ⧸ (Ideal.span {Q.generator}) ^ m) := by
   obtain ⟨N, hN⟩ := hB
@@ -180,10 +181,10 @@ theorem boundedPrism_generator_power_quotient_prime_complete (m : ℕ) :
       (by simpa only [map_natCast] using hx)
 
 include hB in
-/-- 概要：有界 prism の台環は (p,d) に沿って古典的完備。
+/-- 概要：有界 prism の台環は (p,d) に沿って古典的完備（BS 著者版 Lemma 3.7 (1) の向き付き prism の場合）。
 方針：d 完備性と全 d 冪商の p 完備性から和イデアルの完備性を得る。
 規約：prism の完全性や p,d の正則列条件は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の一般有界試験 prism の共通完備商。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一般有界試験 prism の共通完備商。 -/
 theorem boundedPrism_pair_isAdicComplete :
     IsAdicComplete (Ideal.span {(p : B), Q.generator}) B := by
   let := Q.isAdicComplete_generator
@@ -201,7 +202,7 @@ include hB in
 /-- 概要：有界 prism の商は p に沿って古典的完備。
 方針：商の導来 p 完備性と定義の有界ねじれを比較定理へ供給する。
 規約：試験 prism の台環にも商にも p 正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の共通完備商による根列の持上げ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の共通完備商による根列の持上げ。 -/
 theorem boundedPrism_quotient_isAdicComplete_prime :
     IsAdicComplete (Ideal.span {(p : B ⧸ Q.ideal)}) (B ⧸ Q.ideal) :=
   (isRingModuleComplete_iff_isAdicComplete_natCast_of_bounded_torsion
@@ -212,7 +213,7 @@ include hB in
 /-- 概要：有界 prism の台環は p 進分離である。
 方針：(p)⊆(p,d) の冪合同を共通完備イデアルの分離性へ移す。
 規約：古典的 p 完備性や p 正則性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の持上げた互換根列の rank 1 判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の持上げた互換根列の rank 1 判定。 -/
 theorem boundedPrism_isHausdorff_prime : IsHausdorff (Ideal.span {(p : B)}) B := by
   let := boundedPrism_pair_isAdicComplete Q hB
   have hle : Ideal.span {(p : B)} ≤ Ideal.span {(p : B), Q.generator} := by
@@ -235,7 +236,7 @@ end BoundedPrismAdicComplete
 ## 概要
 
 導来主元完備で主元進分離な環は古典的に完備である。これを有界 prism に適用する。
-BS Lemma 4.8（著者版 pp.38–39）の基底射の存在と Rem 7.15（p.62）の入力比較の準備。
+BS 著者版 Lemma 4.8（著者版 pp.38–39）の基底射の存在と BS 著者版 Remark 7.15（p.62）の入力比較の準備。
 
 ## 方針
 
@@ -258,7 +259,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：導来主元完備かつ主元進分離な環は古典的に主元進完備。
 方針：差分作用の全射性から前完備性を得て、分離性と合わせる。
 規約：主元の正則性は要求しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの準備。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの準備。 -/
 theorem isAdicComplete_of_isModuleComplete_of_isHausdorff
     (R : Type u) [CommRing R] (a : R)
     (h : DerivedCompletion.IsModuleComplete R a (ModuleCat.of R R))
@@ -271,7 +272,7 @@ theorem isAdicComplete_of_isModuleComplete_of_isHausdorff
 /-- 概要：有界 prism の台環は古典的に p 完備である。
 方針：導来 p 完備性と (p,d) 分離性からの p 分離性を一般比較へ渡す。
 規約：標的の完全性・p 正則性・台環の有界 p ねじれは要求しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）と Rem 7.15（p.62）の入力射の構成。 -/
+使われ方：完全 prism から有界標的への入力射の構成。 -/
 theorem boundedPrism_isAdicComplete_prime
     {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime] (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -289,7 +290,7 @@ end BoundedPrismPrimeComplete
 ## 概要
 
 完全 prism の台環は (p,d) に沿って古典的完備である。
-BS Rem 7.15（著者版 p.62）の剰余根列の一意持上げに用いる完備性。
+BS 著者版 Remark 7.15（著者版 p.62）の剰余根列の一意持上げに用いる完備性。
 
 ## 方針
 
@@ -315,7 +316,7 @@ include hQ in
 /-- 概要：完全 prism の生成元の全冪商は元の p イデアルに沿って完備。
 方針：distinguished 冪商の p 完備性を、元の係数環による作用へ戻す。
 規約：零冪商・零環も含み、商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の共通二元イデアルの完備性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の共通二元イデアルの完備性への入力。 -/
 theorem perfectPrism_generator_power_quotient_prime_complete (n : ℕ) :
     IsAdicComplete (Ideal.span {(p : B)}) (B ⧸ (Ideal.span {Q.generator}) ^ n) := by
   let := Q.isAdicComplete_p_of_perfect hQ
@@ -327,10 +328,10 @@ theorem perfectPrism_generator_power_quotient_prime_complete (n : ℕ) :
     hQ.distinguished_power_quotient_isAdicComplete (Q.isDistinguished_generator) n
 
 include hQ in
-/-- 概要：完全 prism の台環は (p,d) に沿って古典的完備。
+/-- 概要：完全 prism の台環は (p,d) に沿って古典的完備（BS 著者版 Lemma 3.8 (2) の完備性を与える向き付きの場合）。
 方針：d 完備性と全 d 冪商の p 完備性から和イデアルの完備性を構成する。
 規約：p,d が正則列であることは要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の台環と prism 商の共通完備商。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の台環と prism 商の共通完備商。 -/
 theorem perfectPrism_pair_isAdicComplete :
     IsAdicComplete (Ideal.span {(p : B), Q.generator}) B := by
   let := Q.isAdicComplete_generator

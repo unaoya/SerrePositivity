@@ -13,6 +13,7 @@ public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
 
 ## 概要
 δ 除算関係式の有限深さの通常剰余と、(p,d) 剰余で現れる最初・二段目のモニック方程式、最初の剰余と第 2 有限段の剰余のモニック関係式表示・後続変数の多項式表示・関係式消滅の逆向き比較。
+BS 著者版 Corollary 2.39 と Proposition 3.13 の包の計算に使う、δ 関係式の剰余を求める。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。

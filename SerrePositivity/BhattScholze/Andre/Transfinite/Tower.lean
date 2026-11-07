@@ -8,10 +8,11 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 
 /-!
-# ω₁ 塔と André の平坦性補題（BS 著者版 Thm 7.14）
+# ω₁ 塔と André の平坦性補題（BS 著者版 Theorem 7.14）
 
 ## 概要
-固定初段上の塔の代数の圏と実余極限、族の一元飽和と拡大、一元拡大（`Perfection/PerfectPrismMonic`）の任意の perfectoid 基底への移送、ω₁ 反復の存在と終段の三性質、Thm 7.14 の無条件存在定理 `exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、一般の有向系の完備化。
+固定初段上の塔の代数の圏と実余極限、族の一元飽和と拡大、一元拡大（`Perfection/PerfectPrismMonic`）の任意の perfectoid 基底への移送、ω₁ 反復の存在と終段の三性質、BS 著者版 Theorem 7.14 の無条件存在定理 `exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、一般の有向系の完備化。
+一元のモニック方程式に根を足す完全忠実平坦拡大を後続段に使い、BS 著者版 Theorem 7.14 の絶対整閉拡大を作る。Remark 7.15 の mod p ind-syntomic 性はこの構成の結論に含めない。
 
 ## 方針
 原典は R ↦ R₁ を超限回くり返すとだけ書く。Lean では後続基数による一元ずつの飽和と `SmallObject.SuccStruct.iterationFunctor` で ω₁ まで反復し、終段は可算個の証人の降下で自動的に p 進完備になる。
@@ -41,7 +42,7 @@ local notation "D" => _root_.DirectLimit S f
 local notation "ofL" => Ring.DirectLimit.of S (fun i j h ↦ AlgHom.toRingHom (f i j h))
 /-- ## 概要
 環余極限モデルと代数の非交和余極限モデルの環同型を作る。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 両モデルの普遍性から二つの環写像を作り、標準段射上で両合成を検証する。
@@ -78,7 +79,7 @@ def algebraRingDirectLimitEquiv : L ≃+* D := by
       right_inv := RingHom.congr_fun hab }
 /-- ## 概要
 余極限モデルの比較同型は各標準段射を保つ。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 実際の環余極限の持上げの計算規則を使う。
@@ -96,7 +97,7 @@ theorem algebraRingDirectLimitEquiv_of (i : ι) (x : S i) :
     (fun i j h x ↦ _root_.DirectLimit.Ring.of_f (G := S) (f := f) h x) i x
 /-- ## 概要
 代数有向系の環余極限への共通基底の標準写像を定める。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 非交和代数余極限の係数写像を、明示的な比較同型の逆写像で移す。
@@ -111,7 +112,7 @@ def algebraRingDirectLimitBaseMap : A →+* L :=
   (algebraRingDirectLimitEquiv S f).symm.toRingHom.comp (algebraMap A D)
 /-- ## 概要
 共通基底の余極限への標準写像は、任意の一段を経由する。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 比較同型の単射性と、非交和余極限の係数写像の任意の段での表示を使う。
@@ -132,7 +133,7 @@ theorem algebraRingDirectLimitBaseMap_eq (i : ι) (a : A) :
   rfl
 /-- ## 概要
 共通基底の環余極限への標準写像から代数構造を定める。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 標準環準同型の toAlgebra を使う。
@@ -150,7 +151,7 @@ attribute [local instance] algebraRingDirectLimitAlgebra
 
 /-- ## 概要
 環余極限への標準段射を共通基底上の代数射として実現する。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 共通基底の標準写像が各段を経由する公式により係数との両立性を示す。
@@ -165,7 +166,7 @@ def algebraRingDirectLimitOf (i : ι) : S i →ₐ[A] L :=
   { ofL i with commutes' := fun a ↦ (algebraRingDirectLimitBaseMap_eq S f i a).symm }
 /-- ## 概要
 固定基底上で各段が I 完全忠実平坦なら、環余極限も同じ係数作用で I 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 余極限モデルの比較を元の係数作用について線形化し、代数余極限での保存を移す。
@@ -196,7 +197,7 @@ theorem isCompletelyFaithfullyFlat_algebraRingDirectLimit (I : Ideal A)
 
 /-- ## 概要
 両立する段ごとの代数射は、環余極限からの共通基底上の代数射を誘導する。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 環余極限の持上げを作り、基底の標準写像を任意の一段を経由させて係数との両立性を示す。
@@ -223,7 +224,7 @@ def algebraRingDirectLimitLift {B : Type u} [CommRing B] [Algebra A B]
 
 /-- ## 概要
 余極限からの代数射は標準段射上で与えられた代数射に一致する。
-BS Thm 7.14（著者版 p.61）の極限段の代数構造を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数構造を扱う。
 
 ## 方針
 実際の環余極限の持上げの計算規則を使う。
@@ -265,7 +266,7 @@ include hbound in
 /-- ## 概要
 一段の元の可算族に関する等式が環余極限で成り立ち、可算添字集合が上界を持つなら、
 すべての等式が同時に成り立つ後の段が存在する。
-BS Thm 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
 
 ## 方針
 各等式が成り立つ段を環余極限の零の判定で選び、それらの可算集合に共通上界を取る。
@@ -296,7 +297,7 @@ include hbound in
 /-- ## 概要
 各段が p 進完備な有向系で、可算添字集合がすべて上界を持つなら、
 環余極限は p 進完備である。遷移射の単射性は不要。
-BS Thm 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
 
 ## 方針
 分離性の冪割算の証人と、Cauchy 列の差の冪割算の証人を一段へ降ろす。
@@ -378,7 +379,7 @@ theorem isAdicComplete_directLimit_of_countable_upperBound_without_injective (p 
 include hbound in
 /-- ## 概要
 perfectoid 環の有向系で可算添字集合が上界を持つとき、環余極限自体が perfectoid となる。
-BS Thm 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段を補足する。
 
 ## 方針
 遷移射の単射性なしで証明した自動的完備性を用い、標準完備化との環同型によって
@@ -413,7 +414,7 @@ end CountableRelations
 
 /-! ## ω₁ 塔の終段における三性質（旧 Andre/Transfinite/Terminal.lean）
 
-BS Thm 7.14（著者版 p.61）の超限塔が与えられた後の合成を行う。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限塔が与えられた後の合成を行う。
 塔の存在を追加の公理や引用として宣言しない。
 -/
 
@@ -422,7 +423,7 @@ BS Thm 7.14（著者版 p.61）の超限塔が与えられた後の合成を行�
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 open Ordinal Cardinal
 /-- ## 概要
-ω₁ の小さい添字型に最小元を与える。BS Thm 7.14（著者版 p.61）の初段に用いる。
+ω₁ の小さい添字型に最小元を与える。BS 著者版 Theorem 7.14（著者版 p.61）の初段に用いる。
 
 ## 方針
 非空な整列線形順序の標準の最小元構造を使う。
@@ -439,7 +440,7 @@ instance omegaOneIndex_orderBot : OrderBot (Ordinal.ToType (ω₁ : Ordinal.{u})
 /-- ## 概要
 ω₁ 添字の p 完全忠実平坦な perfectoid 塔で、各後続段が前段の全正次数モニック多項式の
 根を持てば、環余極限は perfectoid かつ絶対整閉であり、初段からの標準射は p 完全忠実平坦。
-BS Thm 7.14（著者版 p.61）の終段の三性質を合成する。
+BS 著者版 Theorem 7.14（著者版 p.61）の終段の三性質を合成する。
 
 ## 方針
 可算添字集合の上界から完備性と perfectoid 性を得る。最小段からの完全忠実平坦性は
@@ -450,7 +451,7 @@ BS Thm 7.14（著者版 p.61）の終段の三性質を合成する。
 塔自体の存在や一段拡大を新たな仮定なしで証明したことにはしない。
 
 ## 使われ方
-訂正済み step による超限塔を構成した後、Thm 7.14 の結論を取り出す。
+訂正済み step による超限塔を構成した後、BS 著者版 Theorem 7.14 の結論を取り出す。
 -/
 theorem omegaOne_directLimit_properties
     (R : Ordinal.ToType (ω₁ : Ordinal.{u}) → Type u) [∀ i, CommRing (R i)]
@@ -487,7 +488,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 /-- ## 概要
 固定初段 R 上で perfectoid かつ p 完全忠実平坦な代数を、標準係数環射とともに束ねる。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 環と係数環射をデータとして保持し、perfectoid 性と、その射の toAlgebra に関する完全忠実平坦性を記録する。
@@ -508,7 +509,7 @@ structure AndreTowerAlgebra where
 attribute [instance] AndreTowerAlgebra.commRing
 /-- ## 概要
 塔の代数の台集合を同じ Type u の環として使う。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 構造の carrier 射影を CoeSort に用いる。
@@ -524,7 +525,7 @@ instance andreTowerAlgebraCoeSort : CoeSort (AndreTowerAlgebra R p) (Type u) :=
   ⟨AndreTowerAlgebra.carrier⟩
 /-- ## 概要
 塔の代数に元の標準係数環射による R 代数構造を与える。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 保持している baseMap の toAlgebra を使う。
@@ -541,7 +542,7 @@ namespace AndreTowerAlgebra
 variable {R p}
 /-- ## 概要
 固定初段上の塔の代数の射を、係数環射と両立する環準同型として定める。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 環準同型とその係数射との合成が終域の係数射に等しいという条件を保持する。
@@ -558,7 +559,7 @@ structure Hom (X Y : AndreTowerAlgebra R p) where
   commutes : toRingHom.comp X.baseMap = Y.baseMap
 /-- ## 概要
 塔の代数の射は、その環準同型が等しければ等しい。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 構造を場合分けし、両立性条件の証明無関係性を使う。
@@ -575,7 +576,7 @@ theorem Hom.ext {X Y : AndreTowerAlgebra R p} {f g : Hom X Y}
     (h : f.toRingHom = g.toRingHom) : f = g := by cases f; cases g; congr
 /-- ## 概要
 固定初段上の perfectoid 完全忠実平坦代数と、通常の係数両立環射は圏をなす。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 恒等・合成は元の環準同型のものとし、係数との両立性は環射の結合律から示す。
@@ -596,7 +597,7 @@ instance category : Category (AndreTowerAlgebra R p) where
   assoc := by intros; ext x; rfl
 /-- ## 概要
 塔の代数は通常の p 進完備性を持つ。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 perfectoid の定義の完備性を取り出し、零環の場合は標準インスタンスを使う。
@@ -617,7 +618,7 @@ variable {ι : Type u} [Preorder ι] [OrderBot ι] [IsDirectedOrder ι]
     (F : ι ⥤ AndreTowerAlgebra R p)
 /-- ## 概要
 塔の代数の図式から各段の同じ宇宙の環の台集合を取り出す。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 函手の対象の carrier を使う。
@@ -632,7 +633,7 @@ BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
 def diagramRing (i : ι) : Type u := F.obj i
 /-- ## 概要
 取り出した図式の各段に元の可換環構造を与える。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 元の束ねた環の構造をそのまま返す。
@@ -648,7 +649,7 @@ instance diagramCommRing (i : ι) : CommRing (diagramRing F i) :=
   inferInstanceAs (CommRing (F.obj i))
 /-- ## 概要
 取り出した図式の各段に元の固定初段の係数作用を与える。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 各対象の baseMap から既に定めた代数構造をそのまま使う。
@@ -664,7 +665,7 @@ instance diagramAlgebra (i : ι) : Algebra R (diagramRing F i) :=
   inferInstanceAs (Algebra R (F.obj i))
 /-- ## 概要
 塔の代数の函手から、共通基底上の有向系の代数遷移射を取り出す。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 函手の射の環準同型と係数射の両立条件を使う。
@@ -681,7 +682,7 @@ def diagramMap (i j : ι) (h : i ≤ j) : diagramRing F i →ₐ[R] diagramRing 
     commutes' := fun r ↦ RingHom.congr_fun (F.map (homOfLE h)).commutes r }
 /-- ## 概要
 函手から取り出した環と遷移射は DirectedSystem の恒等・合成条件を満たす。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 函手の map_id と map_comp を元ごとの等式へ移す。
@@ -710,7 +711,7 @@ local notation "C" => AdicCompletion (Ideal.span {(p : L)}) L
 local notation "ofL" => Ring.DirectLimit.of S (fun i j h ↦ AlgHom.toRingHom (maps i j h))
 /-- ## 概要
 最小元を持つ有向添字の塔の代数の図式に対し、環余極限の通常 p 進完備化は再び塔の代数となる。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 Fontaine 表示による完備化の perfectoid 性と、各段の共通基底上の完全忠実平坦性を使う。
@@ -738,7 +739,7 @@ def colimitObject : AndreTowerAlgebra R p := by
 
 /-- ## 概要
 各段から完備化した余極限対象への標準射を、固定初段上の射として実現する。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 元の環余極限の標準段射を完備化射と合成し、基底写像の各段での表示で係数両立性を示す。
@@ -761,7 +762,7 @@ def colimitOf (i : ι) : F.obj i ⟶ colimitObject F where
 
 /-- ## 概要
 完備化した余極限対象と標準段射は元の図式の余錐をなす。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 環余極限の標準段射の両立性を完備化射で写す。
@@ -787,7 +788,7 @@ def colimitCocone : Cocone F where
 
 /-- ## 概要
 任意の余錐に対し、完備化した余極限対象から余錐の頂点への標準射を構成する。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 元の環余極限の普遍代数射を作り、perfectoid な頂点の p 進完備性により延長する。
@@ -818,7 +819,7 @@ def colimitDesc (t : Cocone F) : colimitObject F ⟶ t.pt := by
 
 /-- ## 概要
 余極限の標準普遍写像は各段射との合成で、与えられた余錐の射に一致する。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 通常完備化の標準延長と環余極限の持上げの計算規則を順に適用する。
@@ -840,7 +841,7 @@ theorem colimitDesc_fac (t : Cocone F) (i : ι) :
 
 /-- ## 概要
 構成した完備化余極限の余錐は、塔の代数の圏で実際の余極限である。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 標準普遍写像の因子分解を使い、一意性を完備化の環射の一意性と元の環余極限の一意性で示す。
@@ -871,7 +872,7 @@ def colimitIsColimit : IsColimit (colimitCocone F) where
 end AndreTowerAlgebra
 /-- ## 概要
 任意の非空整列線形順序 Type u による、塔の代数の圏の余極限が存在する。
-BS Thm 7.14（著者版 p.61）の超限反復の補助構成。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の補助構成。
 
 ## 方針
 整列順序の最小元を選び、完備化した環余極限と検証した普遍性を使う。
@@ -911,7 +912,7 @@ variable (step : ∀ (B : Type u) [CommRing B] (_hB : IsIntegralPerfectoid B p)
 include step in
 /-- ## 概要
 固定初段上の塔の代数には、全正次数モニック多項式の根を含む後続対象への射が存在する。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 すべての正次数モニック多項式の部分型を添字とする族に指定 step を適用し、
@@ -943,7 +944,7 @@ theorem exists_root_successor (X : AndreTowerAlgebra R p) :
 
 /-- ## 概要
 任意の可換環 R は、自身上で任意のイデアル I に関して完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 R の平坦性から正次数 Tor を消し、剰余テンソルを剰余環自身と線形同型で比較する。
@@ -967,7 +968,7 @@ theorem isCompletelyFaithfullyFlat_self (I : Ideal R) : IsCompletelyFaithfullyFl
 
 /-- ## 概要
 指定 step の存在証明から、塔の代数の後続対象を選ぶ。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 証明済みの後続対象の存在に Classical.choose を適用する。
@@ -983,7 +984,7 @@ def rootSuccessor (X : AndreTowerAlgebra R p) : AndreTowerAlgebra R p :=
   (exists_root_successor R p step X).choose
 /-- ## 概要
 選んだ後続対象への、固定初段と両立する環射を選ぶ。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 同じ後続存在証明から射を取り出す。
@@ -999,7 +1000,7 @@ def rootSuccessorMap (X : AndreTowerAlgebra R p) : X ⟶ rootSuccessor R p step 
   (exists_root_successor R p step X).choose_spec.choose
 /-- ## 概要
 選んだ後続対象は、前段の全正次数モニック多項式の根を持つ。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 後続存在証明の同じ選択に付随する根の存在条件を取り出す。
@@ -1019,7 +1020,7 @@ theorem rootSuccessorMap_roots (X : AndreTowerAlgebra R p) (P : Polynomial X)
 
 /-- ## 概要
 perfectoid な初段 R と指定 step から、Mathlib の超限反復用の後続操作を作る。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 零段は R 自身と恒等係数射とし、後続対象と射は一段拡大の選択を使う。
@@ -1040,7 +1041,7 @@ def rootSuccessorStructure (hR : IsIntegralPerfectoid R p) :
 
 /-- ## 概要
 非空整列線形順序に沿う超限反復に必要な、塔の代数の圏の余極限条件が成り立つ。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 全体と各真の極限初期区間に、検証済みの整列添字余極限を供給する。
@@ -1064,7 +1065,7 @@ open Ordinal Cardinal in
 /-- ## 概要
 perfectoid 環 R には、perfectoid かつ絶対整閉な環 S への p 完全忠実平坦な代数構造が存在する。
 ただし、正次数条件を追加した指定の一段拡大 step を明示仮定とする。
-BS Thm 7.14（著者版 p.61）の超限反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復。
 
 ## 方針
 固定初段上の perfectoid・p 完全忠実平坦代数の圏で、全正次数モニックの根を添加する操作を
@@ -1134,7 +1135,7 @@ set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 /-- ## 概要
 環同型 R≃S による係数作用について、S は任意のイデアル I に関して R 上完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の一段拡大への適用。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Theorem 3.10（p.32）の一段拡大への適用。
 
 ## 方針
 環同型を、元の R 作用と toAlgebra の作用の間の線形同型として扱い、R 自身の完全忠実平坦性を移す。
@@ -1155,7 +1156,6 @@ theorem isCompletelyFaithfullyFlat_ringEquiv {R S : Type u} [CommRing R] [CommRi
   exact isCompletelyFaithfullyFlat_of_linearEquiv I E (isCompletelyFaithfullyFlat_self R I)
 /-- ## 概要
 任意の perfectoid 環 R 上の正次数モニック多項式は、p 完全忠実平坦な perfectoid 拡大で根を持つ。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の一段拡大への適用。
 
 ## 方針
 非零枝では既存の実 Fontaine・PD 構成による完全 prism 商表示に多項式を移し、
@@ -1219,7 +1219,7 @@ variable {R : Type u} [CommRing R] {p : ℕ} [Fact p.Prime]
     {σ : Type u} (f : σ → Polynomial R)
 /-- ## 概要
 固定基底 R の多項式族の一項が、塔の代数 X 内に根を持つという性質を表す。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 元の多項式を X の標準係数射で評価する存在命題を使う。
@@ -1235,7 +1235,7 @@ def HasBasePolynomialRoot (X : AndreTowerAlgebra R p) (s : σ) : Prop :=
   ∃ x : X, (f s).eval₂ X.baseMap x = 0
 /-- ## 概要
 固定基底の多項式の根の存在は、塔の代数の任意の射に沿って保存される。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 根を環射で写し、係数射の両立性と評価の自然性を使う。
@@ -1257,7 +1257,7 @@ variable (grow : ∀ (X : AndreTowerAlgebra R p) (s : σ),
 include grow in
 /-- ## 概要
 各多項式一項の根を持つ拡大があれば、全族の根を既に持つか、未解決の一項の根を新たに持つ後続対象を得る。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 全族が解決済みなら恒等射を使う。そうでなければ未解決の添字を選び、その一項の拡大を使う。
@@ -1281,7 +1281,7 @@ theorem exists_rootAdvancement (X : AndreTowerAlgebra R p) :
   exact ⟨Y, φ, Or.inr ⟨s, hs, hy⟩⟩
 /-- ## 概要
 未解決の一項を解決する後続対象を選ぶ。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 証明済みの一項前進の存在に Classical.choose を適用する。
@@ -1297,7 +1297,7 @@ def rootAdvancement (X : AndreTowerAlgebra R p) : AndreTowerAlgebra R p :=
   (exists_rootAdvancement f grow X).choose
 /-- ## 概要
 選んだ一項前進の対象への、固定基底と両立する射を取り出す。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 同じ存在証明の射の選択を使う。
@@ -1313,7 +1313,7 @@ def rootAdvancementMap (X : AndreTowerAlgebra R p) : X ⟶ rootAdvancement f gro
   (exists_rootAdvancement f grow X).choose_spec.choose
 /-- ## 概要
 選んだ後続対象では、全族が既に解決済みか、前段で未解決の一項が解決される。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 前進対象と射の同じ選択に付随する条件を取り出す。
@@ -1334,7 +1334,7 @@ include grow in
 /-- ## 概要
 固定基底の任意の多項式族について、各対象・各一項に根を持つ拡大が可能なら、
 全族の根を持つ一つの perfectoid・p 完全忠実平坦な代数が存在する。
-BS Thm 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
+BS 著者版 Theorem 7.14（著者版 p.61）の一段根添加を任意族へ拡張する補助反復。
 
 ## 方針
 添字族の濃度と可算濃度の上限の後続基数を取り、その始順序数に沿って未解決の一項を
@@ -1411,7 +1411,7 @@ variable {R : Type u} [CommRing R] {p : ℕ} [Fact p.Prime]
     {σ : Type u} (f : σ → Polynomial R)
 /-- ## 概要
 固定基底 R の正次数モニック族の任意の一項は、任意の塔の代数からの拡大先で根を持つ。
-BS Thm 7.14（著者版 p.61）の根添加の一段の存在。
+BS 著者版 Theorem 7.14（著者版 p.61）の根添加の一段の存在。
 
 ## 方針
 非零枝では元の多項式を係数射で移すと正次数モニックのままなので、一元根付き拡大を適用する。
@@ -1422,7 +1422,7 @@ BS Thm 7.14（著者版 p.61）の根添加の一段の存在。
 一段拡大 step 自体や、有限性・追加の平坦性・比較条件を仮定しない。
 
 ## 使われ方
-指定された step と同じ型の証明を、Thm 7.14 の ω₁ 反復に入力する。
+指定された step と同じ型の証明を、BS 著者版 Theorem 7.14 の ω₁ 反復に入力する。
 -/
 theorem exists_familyRoot_successor (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree)
     (X : AndreTowerAlgebra R p) (s : σ) :
@@ -1447,7 +1447,7 @@ theorem exists_familyRoot_successor (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 <
 
 /-- ## 概要
 perfectoid 環 R 上の任意の正次数モニック多項式族は、同じ p 完全忠実平坦な perfectoid 拡大内に根を持つ。
-BS Thm 7.14（著者版 p.61）の根添加の一段の存在。
+BS 著者版 Theorem 7.14（著者版 p.61）の根添加の一段の存在。
 
 ## 方針
 各対象で一項の根を得る拡大を構成し、添字族より大きい後続基数による既証の飽和反復を使う。
@@ -1458,7 +1458,7 @@ BS Thm 7.14（著者版 p.61）の根添加の一段の存在。
 一段拡大 step 自体や、有限性・追加の平坦性・比較条件を仮定しない。
 
 ## 使われ方
-指定された step と同じ型の証明を、Thm 7.14 の ω₁ 反復に入力する。
+指定された step と同じ型の証明を、BS 著者版 Theorem 7.14 の ω₁ 反復に入力する。
 -/
 theorem exists_monicFamilyRootedPerfectoidExtension (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) {σ : Type u} (f : σ → Polynomial R)
@@ -1479,7 +1479,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end FamilyExtension
 
-/-! ## BS Thm 7.14：André の完全忠実平坦な絶対整閉拡大（旧 Andre/Transfinite/Theorem714.lean）
+/-! ## BS 著者版 Theorem 7.14：André の完全忠実平坦な絶対整閉拡大（旧 Andre/Transfinite/Theorem714.lean）
 
 A1 の完全 prism 商上の一元根付き拡大を一般の perfectoid 基底へ移し、
 固定した多項式族を一元ずつ飽和させて指定 step を証明する。
@@ -1490,8 +1490,8 @@ A1 の完全 prism 商上の一元根付き拡大を一般の perfectoid 基底�
 
 namespace SerrePositivity.BhattScholze.Andre
 /-- ## 概要
-perfectoid 環 R には、perfectoid かつ絶対整閉な環 S への p 完全忠実平坦な代数構造が存在する。
-BS Thm 7.14（著者版 p.61）。R と S は同じ Type u に取る。
+perfectoid 環 R には、perfectoid かつ絶対整閉な環 S への p 完全忠実平坦な代数構造が存在する（BS 著者版 Theorem 7.14 の第一文）。
+R と S は同じ Type u に取る。
 
 ## 方針
 A1 の一元根付き拡大を完全 prism 商表示から一般の perfectoid 基底へ移す。
@@ -1503,7 +1503,7 @@ A1 の一元根付き拡大を完全 prism 商表示から一般の perfectoid �
 終段は自動的に p 進完備な環余極限を使い、有限係数の降下と次段の根から絶対整閉性を得る。
 
 ## 使われ方
-Inputs の元の Thm 7.14 と同じ署名の、追加存在仮定なしの証明を供給する。
+Inputs の元の BS 著者版 Theorem 7.14 と同じ署名の、追加存在仮定なしの証明を供給する。
 原典と異なる一段拡大の PD 経路と一元飽和の補足は計画ファイルに記録する。
 -/
 theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
@@ -1539,7 +1539,7 @@ local notation "ofA" => Ring.DirectLimit.of A (fun i j h ↦ fA i j h)
 local notation "ofR" => Ring.DirectLimit.of R (fun i j h ↦ fR i j h)
 /-- ## 概要
 完全 δ 表示の核生成元が一段以降の全段で両立すれば、その像は余極限射の核を生成する。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の極限操作を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Theorem 3.10（p.32）の極限操作を補足する。
 
 ## 方針
 核の元を一段に代表し、零となる段と指定の基点段の共通上界へ移して単項核表示を使う。
@@ -1588,7 +1588,7 @@ include hθ in
 /-- ## 概要
 非空有向系の完全 δ 表示で、一段の distinguished 元の像がその段以降の核を生成すれば、
 表示先の余極限の p 進完備化は perfectoid である。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の極限操作を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Theorem 3.10（p.32）の極限操作を補足する。
 
 ## 方針
 完全 δ 構造を余極限へ移し、基点段以降の核表示から全体の単項核を同定する。
@@ -1618,7 +1618,7 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 /-- ## 概要
 各段で p が非単元な perfectoid 環の非空有向系について、余極限の通常 p 進完備化は perfectoid である。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の極限操作を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Theorem 3.10（p.32）の極限操作を補足する。
 
 ## 方針
 任意の一段の Fontaine 核の distinguished 生成元を選び、
@@ -1670,7 +1670,7 @@ private theorem isIntegralPerfectoid_completion_of_nonunit_directed_system
     exact fontaineKernel_eq_span_image_distinguished p (f i₀ i h) d hd hd0 (hdata i).2.2
 /-- ## 概要
 perfectoid 環の任意の非空有向系の環余極限の通常 p 進完備化は perfectoid である。
-BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）の極限操作を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Theorem 3.10（p.32）の極限操作を補足する。
 
 ## 方針
 完備化が非零なら、各段から完備化への標準環射により全段の非零性を得る。
@@ -1713,7 +1713,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 /-- ## 概要
 固定基底 B 上の p 完全忠実平坦な perfectoid 代数の非空有向系について、
 環余極限の通常 p 進完備化への標準係数射も p 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限操作を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限操作を補足する。
 
 ## 方針
 共通係数作用での環余極限の完全忠実平坦性を用い、
@@ -1747,11 +1747,11 @@ end SerrePositivity.BhattScholze.Andre.Transfinite
 
 end DirectedCompletion
 
-/-! ## André E3：BS Thm 7.14 の超限反復と証明済み存在定理（旧 Andre/Transfinite/Basic.lean）
+/-! ## André E3：BS 著者版 Theorem 7.14 の超限反復と証明済み存在定理（旧 Andre/Transfinite/Basic.lean）
 
 ## 概要
 
-BS Thm 7.14（著者版 p.61）の第一文を、追加の存在仮定なしで証明する。
+BS 著者版 Theorem 7.14（著者版 p.61）の第一文を、追加の存在仮定なしで証明する。
 一般の非空有向系の完備化の perfectoid 性と完全忠実平坦性も供給する。
 
 ## 方針

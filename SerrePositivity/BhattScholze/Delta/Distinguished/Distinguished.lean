@@ -7,20 +7,20 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Ideal.Span
 
 /-!
-# distinguished 元（BS 著者版 §2.3：Ex 2.20(1)、Lemma 2.23〜2.25）
+# distinguished 元（BS 著者版 §2.3：BS 著者版 Example 2.20(1)、BS 著者版 Lemma 2.23〜2.25）
 
 ## 概要
 δ(p) ≡ 1 mod p（標数 p の環へは δ(p) ↦ 1）、p ∈ rad なら p は distinguished、単元倍・因子、
 p ∈ (d, φ(d)) との同値と、それが主イデアルだけで決まること。
 
 ## 方針
-積公式を展開して根基に入る項を除く。Lemma 2.25 の逆向きは δ(d) を含む極大イデアルでの計算（局所化・完備化を使わない）。
+積公式を展開して根基に入る項を除く。BS 著者版 Lemma 2.25 の逆向きは δ(d) を含む極大イデアルでの計算（局所化・完備化を使わない）。
 
 ## 規約
 rad は Jacobson 根基。完備性・p 正則性を仮定しない。
 
 ## 使われ方
-prism の定義（Prism/Basic）、Lemma 2.28、Prop 3.13 の単元係数。
+prism の定義（Prism/Basic）、BS 著者版 Lemma 2.28、BS 著者版 Proposition 3.13 の単元係数。
 -/
 
 @[expose] public noncomputable section
@@ -29,7 +29,7 @@ universe u v
 /-! ## δ(p)のmod p計算（旧 Delta/Distinguished/DeltaPrime.lean）
 
 W₂切断の自然数上の値とMathlibの標数pにおけるWitt係数を用いる。
-BS著者版Example 2.20(1)の単元性に必要な合同式を、p正則性なしで証明する。
+BS 著者版 Example 2.20(1)の単元性に必要な合同式を、p正則性なしで証明する。
 -/
 
 section DeltaPrime
@@ -49,7 +49,8 @@ theorem map_delta_p {B : Type v} [CommRing B] [CharP B p]
   rw [map_natCast]
   exact h.symm
 
-/-- δ(p)はmod pで1に一致する。零環・pねじれを持つ環も含む。 -/
+/-- δ(p)はmod pで1に一致する（BS 著者版 Example 2.20 (1) の合同式の部分）。
+  零環・pねじれを持つ環も含む。 -/
 theorem delta_p_sub_one_mem (D : DeltaStructure p A) :
     D.delta (p : A) - 1 ∈ Ideal.span {(p : A)} := by
   let I := Ideal.span {(p : A)}
@@ -66,7 +67,7 @@ theorem delta_p_sub_one_mem (D : DeltaStructure p A) :
     change q (D.delta (p : A) - 1) = 0
     rw [map_sub, D.map_delta_p q, map_one, sub_self]
 
-/-- pがJacobson根基に属するδ環ではpがdistinguished。
+/-- pがJacobson根基に属するδ環ではpがdistinguished（BS 著者版 Example 2.20 (1) の p が Jacobson 根基にある δ 環への一般化）。
 δ(p)-1が(p)に属する合同式とJacobson根基の単元判定を使う。 -/
 theorem isDistinguished_p (D : DeltaStructure p A)
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) : D.IsDistinguished (p : A) := by
@@ -81,7 +82,7 @@ end DeltaPrime
 
 /-! ## distinguished元の単元倍と因子（旧 Delta/Distinguished/Distinguished.lean）
 
-BS著者公開版§2.3、Lemma 2.23–2.25。
+BS著者公開版§2.3、BS 著者版 Lemma 2.23–2.25。
 原典のrad(A)はJacobson根基であり、nilradicalとは区別する。
 完備性・p正則性を追加せず、δの積公式とJacobson根基の単元判定を使う。
 -/
@@ -107,8 +108,8 @@ private theorem unit_add_radical_iff {a b : A}
     simpa using unit_add_radical h ((Ideal.jacobson (⊥ : Ideal A)).neg_mem hb)
   · exact fun h ↦ unit_add_radical h hb
 
-/-- distinguished元の単元倍はdistinguished。
-d,pがJacobson根基に属する仮定により、δ積公式の補正項が単元性を変えない（BS Lemma 2.23）。 -/
+/-- distinguished元の単元倍はdistinguished（BS 著者版 Lemma 2.23）。
+d,pがJacobson根基に属する仮定により、δ積公式の補正項が単元性を変えない。 -/
 theorem IsDistinguished.unit_mul {D : DeltaStructure p A} {d : A}
     (hd : D.IsDistinguished d) (u : Aˣ)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
@@ -123,7 +124,8 @@ theorem IsDistinguished.unit_mul {D : DeltaStructure p A} {d : A}
     ((Ideal.jacobson (⊥ : Ideal A)).mul_mem_right (D.delta d)
       ((Ideal.jacobson (⊥ : Ideal A)).mul_mem_right (D.delta ↑u) hpr))
 
-/-- 単元倍でdistinguished性は変わらない。逆単元によるLemma 2.23を使う。 -/
+/-- 単元倍でdistinguished性は変わらない（BS 著者版 Lemma 2.23 の単元倍に関する同値の形）。
+  逆単元によるBS 著者版 Lemma 2.23を使う。 -/
 theorem isDistinguished_unit_mul_iff (D : DeltaStructure p A) (d : A) (u : Aˣ)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) :
@@ -135,8 +137,8 @@ theorem isDistinguished_unit_mul_iff (D : DeltaStructure p A) (d : A) (u : Aˣ)
       using h.unit_mul (u⁻¹) hrd hpr
   · exact fun h ↦ h.unit_mul u hdr hpr
 
-/-- f*hがdistinguishedでf,pがJacobson根基に属すれば、fはdistinguishedでhは単元。
-δ積公式から根基内の二項を除き、h^p*δ(f)の単元性を得る（BS Lemma 2.24）。 -/
+/-- f*hがdistinguishedでf,pがJacobson根基に属すれば、fはdistinguishedでhは単元（BS 著者版 Lemma 2.24）。
+δ積公式から根基内の二項を除き、h^p*δ(f)の単元性を得る。 -/
 theorem isDistinguished_factor (D : DeltaStructure p A) (f h : A)
     (hfh : D.IsDistinguished (f * h))
     (hfr : f ∈ Ideal.jacobson (⊥ : Ideal A))
@@ -160,7 +162,7 @@ theorem isDistinguished_factor (D : DeltaStructure p A) (f h : A)
   obtain ⟨hf, hh⟩ := (Commute.all _ _).isUnit_mul_iff.mp hu
   exact ⟨hf, (isUnit_pow_iff (Fact.out : p.Prime).ne_zero).mp hh⟩
 
-/-- distinguished元dについてpは(d,φ(d))に属する（BS Lemma 2.25の順方向）。
+/-- distinguished元dについてpは(d,φ(d))に属する（BS 著者版 Lemma 2.25の順方向）。
 この方向にはJacobson根基の仮定もp正則性も不要。 -/
 theorem IsDistinguished.p_mem_span {D : DeltaStructure p A} {d : A}
     (hd : D.IsDistinguished d) : (p : A) ∈ Ideal.span {d, D.frobeniusLift d} := by
@@ -178,7 +180,7 @@ theorem IsDistinguished.p_mem_span {D : DeltaStructure p A} {d : A}
 
 /-- pが(d,φ(d))に属しd,pがJacobson根基に属すればdはdistinguished。
 δ(d)を含む極大イデアルがあると仮定し、p(1-bδ(d))=cdへδを適用する。
-剰余体では左辺のδが1、右辺のδが0となる（BS Lemma 2.25の逆方向）。 -/
+剰余体では左辺のδが1、右辺のδが0となる（BS 著者版 Lemma 2.25の逆方向）。 -/
 theorem isDistinguished_of_p_mem_span (D : DeltaStructure p A) (d : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A))
@@ -210,17 +212,17 @@ theorem isDistinguished_of_p_mem_span (D : DeltaStructure p A) (d : A)
     zero_add, add_zero, one_mul] at h
   exact one_ne_zero h
 
-/-- d,pがJacobson根基に属すれば、distinguished性はp∈(d,φ(d))と同値。
-完備性・p正則性を仮定しないBS著者版Lemma 2.25。 -/
+/-- d,pがJacobson根基に属すれば、distinguished性はp∈(d,φ(d))と同値（BS 著者版 Lemma 2.25 の第一文）。
+完備性・p正則性を仮定しないBSBS 著者版 Lemma 2.25。 -/
 theorem isDistinguished_iff_p_mem_span (D : DeltaStructure p A) (d : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) :
     D.IsDistinguished d ↔ (p : A) ∈ Ideal.span {d, D.frobeniusLift d} :=
   ⟨fun h ↦ h.p_mem_span, D.isDistinguished_of_p_mem_span d hdr hpr⟩
 
-/-- 同じ主イデアルを生成する元のdistinguished性は一致する。
-両生成元とpがJacobson根基に属する仮定でLemma 2.24を両方向に適用する。
-非零因子の仮定は不要（BS Lemma 2.25の末尾）。 -/
+/-- 同じ主イデアルを生成する元のdistinguished性は一致する（BS 著者版 Lemma 2.25 の第二文）。
+両生成元とpがJacobson根基に属する仮定でBS 著者版 Lemma 2.24を両方向に適用する。
+非零因子の仮定は不要。 -/
 theorem isDistinguished_iff_of_span_eq (D : DeltaStructure p A) (d e : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (her : e ∈ Ideal.jacobson (⊥ : Ideal A))

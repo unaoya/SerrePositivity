@@ -10,6 +10,7 @@ public import SerrePositivity.HomologicalAlgebra.TorFlatBaseChangeVanishing
 
 ## 概要
 一段での Koszul 分解と相対比較、前段関係だけで割った源商での最高段関係の正則性、全相対自由環の下位関係商との比較、最高段 Koszul 複体から次段の正規化商への擬同型と Tor の消滅。
+BS 著者版 Remark 7.15 の包の比較に使う、正規化した δ 関係の一段での Koszul 分解を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

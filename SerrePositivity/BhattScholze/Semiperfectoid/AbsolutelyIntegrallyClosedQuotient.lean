@@ -11,6 +11,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 ## 概要
 
 絶対整閉な perfectoid 環の根基イデアルでは、各元の互換根がそのイデアルに留まるので、完備な根基商は perfectoid になる（`aicPerfectoid_quotient_of_radical_and_complete`）。特にスカラーの零化イデアルによる商に当てはまる。perfectoid な零化商を元の普遍写像の検査対象にして、絶対整閉な perfectoid 環への単射があれば、全射の核の台が perfectoid 化の後も保たれることを示す。
+BS 著者版 Theorem 7.14 の試験拡大に関連して、絶対整閉な perfectoid 環の根基商を扱う。
 
 ## 方針
 

@@ -9,6 +9,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 ## 概要
 
 integral perfectoid な `R` と `g : R` に対し、主イデアル商 `R/(g)` の perfectoid 化（BS の B3 で選んだ普遍対象）への写像の核として perfectoid イデアル `perfectoidIdeal` を定める。`(g) ⊆ perfectoidIdeal`、`g` が単元なら全体、単調性を示す。環準同型に沿った主イデアル商の perfectoid 化の射（`quotientPerfectoidizationMap`）とその合成、perfectoid イデアルの像の包含と商の間の写像を与える。
+BS 著者版 §10.1 の単項 J に対する J_perfd を定め、Definition 10.1 の零化条件に使う。
 
 ## 方針
 
@@ -31,7 +32,8 @@ section PerfectoidIdealPart
 
 namespace SerrePositivity
 
-/-- CLMSTの(g)_perfd。B3の標準写像との合成の核で定義する。 -/
+/-- CLMSTの(g)_perfd（BS 著者版 §10.1 の導入で定める J_perfd の単項 J の場合、序論の Remark 1.13）。
+  B3の標準写像との合成の核で定義する。 -/
 def perfectoidIdeal (R : Type u) [CommRing R]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (g : R) : Ideal R :=
   RingHom.ker ((toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp

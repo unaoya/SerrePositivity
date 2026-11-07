@@ -36,6 +36,7 @@ public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 ## 概要
 入力作用からの基底保存性、係数自己同型比較の合成、冪零核の商に沿う忠実平坦性、主元完全忠実平坦性と冪、Frobenius 除算の初期係数商、p 正則性を使わないモニック pd 包、任意族の中の有限部分族・有界支持の残余 Tor、根付き拡大の基底同型による移送、整 perfectoid 基底上の有限モニック根付き拡大、係数還元後の pd 包の普遍性と移送、正則主商への完全忠実平坦性の下降、完全 δ 化後の商、半線形同型の底変換。
+BS 著者版 Theorem 7.14 と Remark 7.15 に関連する根付き拡大の変種に使う補題を集める。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -55,7 +56,7 @@ universe u v w z
 
 一次関係商のさらに商 Q が実分冪構造を持ち、入力の分冪が標準生成元の商像なら、
 関係式を殺す任意の分冪標的への係数を保つ分冪射は一意に存在する。
-BS Rem 7.15(1)（著者版 p.62）の係数変更後の実 pd 包を扱う。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更後の実 pd 包を扱う。
 
 ## 方針
 
@@ -89,21 +90,21 @@ variable (hK : ∀ t ∈ K, principalDPEval Ht y hyB t = 0)
 /-- 概要：標準分冪評価は関係式を殺すなら実商からの射へ降りる。
 方針：通常の代数商の普遍射を使う。
 規約：関係式は任意のイデアル K で指定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数還元後の評価。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数還元後の評価。 -/
 def principalDPQuotientEval : Q →ₐ[A] B :=
   Ideal.Quotient.liftₐ K (principalDPEval Ht y hyB) hK
 
 /-- 概要：商の評価は代表元で元の標準評価に一致する。
 方針：商の普遍射の定義を使う。
 規約：元の一次関係商の任意の元を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の射の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の射の比較。 -/
 theorem principalDPQuotientEval_mk (t : D) :
     principalDPQuotientEval y K Ht hyB hK (q t) = principalDPEval Ht y hyB t := rfl
 
 /-- 概要：商の標準生成元の評価は標的の入力元の分冪。
 方針：代表元公式と元の評価公式を使う。
 規約：全次数を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪射の判定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪射の判定。 -/
 theorem principalDPQuotientEval_generator (n : ℕ) :
     principalDPQuotientEval y K Ht hyB hK (q (principalDPGenerator y n)) =
       Ht.dpow n (algebraMap A B y) := by
@@ -118,7 +119,7 @@ include hγ in
 /-- 概要：商の標準評価は実分冪構造を保つ。
 方針：像イデアルの正次数生成元で分冪合成則を照合する。
 規約：商の構造と標準値の公式だけを仮定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実商からの pd 普遍射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実商からの pd 普遍射。 -/
 theorem principalDPQuotientEval_isDPMorphism :
     Hq.IsDPMorphism Ht (principalDPQuotientEval y K Ht hyB hK).toRingHom := by
   have hbase : q (algebraMap A D y) ∈ J :=
@@ -143,7 +144,7 @@ include hγ hyB hK in
 /-- 概要：関係式を殺す任意の分冪標的への係数を保つ分冪射は一意に存在する。
 方針：商の標準評価で存在を示し、入力元の分冪から全生成元上の一致を得る。
 規約：標的にねじれなし等の追加仮定を置かない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更後の pd 普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更後の pd 普遍性。 -/
 theorem existsUnique_principalDPQuotientMorphism :
     ∃! F : Q →ₐ[A] B, Hq.IsDPMorphism Ht F.toRingHom := by
   refine ⟨principalDPQuotientEval y K Ht hyB hK,
@@ -174,7 +175,7 @@ end PrincipalDPQuotientUniversal
 ## 概要
 
 係数 δ 自己同型を順に適用した raw 除算包の比較射は、合成自己同型の比較射と一致する。
-BS Rem 7.15（著者版 p.62）の係数成分と指数成分の比較に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の係数成分と指数成分の比較に使う。
 
 ## 方針
 
@@ -198,7 +199,7 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 /-- 概要：raw 包の係数自己同型比較は自己同型の合成と両立する。
 方針：係数合成の等式と初期変数の保存を使い、δ 射の外延性で証明する。
 規約：e の後に f を適用する向き。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 分解の raw 包への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 分解の raw 包への移送。 -/
 theorem deltaDivisionCoefficientAutMap_trans
     (D : DeltaStructure p A) (e f : A ≃+* A)
     (he : D.IsDeltaHom D e.toRingHom) (hf : D.IsDeltaHom D f.toRingHom)
@@ -227,7 +228,7 @@ end DeltaDivisionCoefficientAutComposition
 ## 概要
 
 係数環同型に沿う半線形環同型は、通常テンソル底変換の代数同型を与える。
-BS Rem 7.15（著者版 p.62）の Frobenius 引戻しを実際のテンソルで記述する準備。
+BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しを実際のテンソルで記述する準備。
 
 ## 方針
 
@@ -253,7 +254,7 @@ variable [Algebra R B] [Algebra S C]
 /-- 概要：半線形環同型は実テンソル底変換の代数同型を誘導する。
 方針：順方向のテンソル普遍射と右因子への逆射を単純テンソル上で照合する。
 規約：係数環同型とその係数可換性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の係数 Frobenius に沿う引戻し。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数 Frobenius に沿う引戻し。 -/
 def tensorBaseChangeAlgEquivOfSemilinearRingEquiv
     (e : R ≃+* S) (F : B ≃+* C)
     (hF : ∀ r : R, F (algebraMap R B r) = algebraMap S C (e r)) :
@@ -300,7 +301,7 @@ def tensorBaseChangeAlgEquivOfSemilinearRingEquiv
 /-- 概要：実底変換同型は単純テンソルを標準係数と半線形像の積へ送る。
 方針：テンソル普遍射の単純テンソル公式を使う。
 規約：係数環の任意の元と元の代数の任意の元を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の実引戻しの標準係数を追跡する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実引戻しの標準係数を追跡する。 -/
 theorem tensorBaseChangeAlgEquivOfSemilinearRingEquiv_tmul
     (e : R ≃+* S) (F : B ≃+* C)
     (hF : ∀ r : R, F (algebraMap R B r) = algebraMap S C (e r)) (s : S) (b : B) :
@@ -319,7 +320,7 @@ end SemilinearTensorBaseChange
 ## 概要
 
 主分冪表示との代数同型は、源の実分冪構造・入力元の分冪値・pd 普遍性を与える。
-BS Rem 7.15(1)（著者版 p.62）の実テンソル側を pd 包として扱う準備。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の実テンソル側を pd 包として扱う準備。
 
 ## 方針
 
@@ -344,14 +345,14 @@ variable (e : B ≃ₐ[A] PrincipalDPPresentation A y)
 /-- 概要：実同型の源の分冪イデアルは正次数イデアルの逆像として指定する。
 方針：逆環同型による像イデアルを使う。
 規約：同じ源環のイデアルを構成する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 源のイデアル。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 源のイデアル。 -/
 def principalPDSourceIdeal : Ideal B :=
   (principalDPPositiveIdeal y).map e.symm.toRingHom
 
 /-- 概要：同型の源にも比較先から実分冪構造を戻せる。
 方針：逆環同型による分冪構造の移送を使う。
 規約：比較先の分冪構造を明示する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実テンソル上の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実テンソル上の構造。 -/
 def principalPDSourceDividedPowers (Hs : DividedPowers (principalDPPositiveIdeal y)) :
     DividedPowers (principalPDSourceIdeal y e) :=
   DividedPowers.ofRingEquiv rfl Hs
@@ -359,7 +360,7 @@ def principalPDSourceDividedPowers (Hs : DividedPowers (principalDPPositiveIdeal
 /-- 概要：源の分冪イデアルは元の入力元の係数像を含む。
 方針：比較先での入力元の所属と逆代数同型の係数可換性を使う。
 規約：同じ入力 y の像を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の pd 包の入力条件。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の入力条件。 -/
 theorem principalPDSourceIdeal_base_mem : algebraMap A B y ∈ principalPDSourceIdeal y e := by
   rw [← e.symm.commutes y]
   exact Ideal.mem_map_of_mem e.symm.toRingHom (principalDPPositiveIdeal_base_mem y)
@@ -367,7 +368,7 @@ theorem principalPDSourceIdeal_base_mem : algebraMap A B y ∈ principalPDSource
 /-- 概要：源の分冪構造に対して順同型は分冪射。
 方針：像イデアルの逆合成と移送された分冪の定義を使う。
 規約：比較先の実分冪構造を保つ。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の pd 普遍性の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 普遍性の移送。 -/
 theorem principalPDSourceEquiv_isDPMorphism (Hs : DividedPowers (principalDPPositiveIdeal y)) :
     (principalPDSourceDividedPowers y e Hs).IsDPMorphism Hs e.toRingHom := by
   refine ⟨?_, ?_⟩
@@ -379,7 +380,7 @@ theorem principalPDSourceEquiv_isDPMorphism (Hs : DividedPowers (principalDPPosi
 /-- 概要：逆同型も比較先から源への分冪射。
 方針：移送イデアルの定義と分冪作用の移送公式を使う。
 規約：順逆の実構造を同じものに固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の普遍射の一意性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の普遍射の一意性。 -/
 theorem principalPDSourceEquiv_symm_isDPMorphism
     (Hs : DividedPowers (principalDPPositiveIdeal y)) :
     Hs.IsDPMorphism (principalPDSourceDividedPowers y e Hs) e.symm.toRingHom := by
@@ -390,7 +391,7 @@ theorem principalPDSourceEquiv_symm_isDPMorphism
 /-- 概要：源の入力元の標準分冪値は比較先の標準生成元の逆像。
 方針：逆同型の分冪射性と係数可換性を使う。
 規約：全次数 n の入力値を明示する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 生成元。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 生成元。 -/
 theorem principalPDSourceDividedPowers_base_apply
     (Hs : DividedPowers (principalDPPositiveIdeal y))
     (hγ : ∀ n, Hs.dpow n (algebraMap A (PrincipalDPPresentation A y) y) =
@@ -407,7 +408,7 @@ theorem principalPDSourceDividedPowers_base_apply
 /-- 概要：同じ実同型の源から任意の分冪標的への係数を保つ分冪射は一意に存在。
 方針：比較先の普遍射を順同型と合成し、一意性は逆同型で戻して使う。
 規約：標的の宇宙・ねじれ・完備性を制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実テンソルを pd 包とする普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実テンソルを pd 包とする普遍性。 -/
 theorem existsUnique_principalPDSourceMorphism
     (Hs : DividedPowers (principalDPPositiveIdeal y))
     (hγ : ∀ n, Hs.dpow n (algebraMap A (PrincipalDPPresentation A y) y) =
@@ -431,7 +432,7 @@ theorem existsUnique_principalPDSourceMorphism
 /-- 概要：係数を保つ主分冪表示への同型は通常多項式の評価も保つ。
 方針：同型の単射性で比較先へ移し、評価と環射の可換性を使う。
 規約：係数環作用と入力変数の像を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な実テンソルで元の f を評価する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な実テンソルで元の f を評価する。 -/
 theorem principalPDSourcePolynomialEvaluation
     {K : Type w} [CommRing K] [Algebra K A] [Algebra K B]
     [Algebra K (PrincipalDPPresentation A y)]
@@ -469,7 +470,7 @@ end PrincipalPDSourceTransport
 
 完全 prism 上のモニック入力について、R/ϖ と R/p の無限根標準表示に
 実分冪構造・入力分冪公式・pd 普遍性を与える。
-BS Rem 7.15(1)（著者版 p.62）の係数還元における追加正則性を解消する。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の係数還元における追加正則性を解消する。
 
 ## 方針
 
@@ -513,7 +514,7 @@ local notation "Dv" => PrincipalDPPresentation Nv zv
 /-- 概要：原典の係数環上のモニック入力の標準表示に実分冪構造を与える。
 方針：射影的な正次数商により還元した構造を表示環同型で移す。
 規約：prism 商の p 正則性を要求せず、モニック性のみを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
 def perfectPrismVarpiNativeDividedPowersOfMonic
     (hf : f.Monic) :
     DividedPowers (principalDPPositiveIdeal zv) :=
@@ -523,7 +524,7 @@ def perfectPrismVarpiNativeDividedPowersOfMonic
 /-- 概要：原典の係数環上でも入力元の分冪は全標準生成元に一致する。
 方針：移送公式と還元前の標準値の公式、同型の入力・生成元の比較を使う。
 規約：全次数 n を含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 普遍性への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 普遍性への入力。 -/
 theorem perfectPrismVarpiNativeDividedPowersOfMonic_base_apply
     (hf : f.Monic) (n : ℕ) :
     (perfectPrismVarpiNativeDividedPowersOfMonic W hW f hf).dpow n
@@ -536,7 +537,7 @@ theorem perfectPrismVarpiNativeDividedPowersOfMonic_base_apply
 /-- 概要：原典の係数環上の実 pd 包から任意の分冪標的への射は一意に存在する。
 方針：移送済みの実分冪構造と標準値を一般の pd 普遍性へ供給する。
 規約：標的は無限根環 Nv の任意の代数。
-使われ方：BS Rem 7.15(1)（著者版 p.62）のモニック入力の実 pd 包の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）のモニック入力の実 pd 包の同定。 -/
 theorem existsUnique_perfectPrismVarpiNativePDMorphismOfMonic
     (hf : f.Monic)
     {B : Type v} [CommRing B] [Algebra Nv B] {I : Ideal B}
@@ -580,7 +581,7 @@ local notation "hInput" => powerRootVarpiPrimeFrobeniusEquiv_input W hW f
 /-- 概要：元の mod p 入力の標準表示は実分冪構造を持つ。
 方針：逆係数入力の実分冪構造を入力を保つ係数環同型で移す。
 規約：prism 商の p 正則性を要求せず、モニック性のみを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の同定。 -/
 def powerRootPrimeFrobeniusDividedPowersOfMonic
     (hf : f.Monic) :
     DividedPowers (principalDPPositiveIdeal zp) :=
@@ -590,7 +591,7 @@ def powerRootPrimeFrobeniusDividedPowersOfMonic
 /-- 概要：元の入力の n 次分冪は n 次標準生成元。
 方針：入力を保つ係数移送の分冪公式と元の標準値を使う。
 規約：零次数を含む全次数を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 普遍性の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 普遍性の入力。 -/
 theorem powerRootPrimeFrobeniusDividedPowersOfMonic_base_apply
     (hf : f.Monic) (n : ℕ) :
     (powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf).dpow n
@@ -602,7 +603,7 @@ theorem powerRootPrimeFrobeniusDividedPowersOfMonic_base_apply
 /-- 概要：元の mod p 入力の実分冪包から任意の分冪標的への射は一意に存在。
 方針：標準分冪値を持つ一次関係商の一般普遍性を適用する。
 規約：標的は Np の任意の代数と分冪イデアル。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実テンソル比較先の pd 包性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実テンソル比較先の pd 包性。 -/
 theorem existsUnique_powerRootPrimeFrobeniusPDMorphismOfMonic
     (hf : f.Monic)
     {B : Type v} [CommRing B] [Algebra Np B] {I : Ideal B}
@@ -623,7 +624,7 @@ end MonicPerfectPrismPDEnvelope
 ## 概要
 
 基底と代数で正則な d による通常商は、元の (p,d) 完全忠実平坦性から p 完全忠実平坦性を得る。
-BS Rem 7.15（著者版 p.62）の最終生成元商への移送。
+BS 著者版 Remark 7.15（著者版 p.62）の最終生成元商への移送。
 
 ## 方針
 
@@ -650,7 +651,7 @@ attribute [local instance] HasDerivedCategory.standard principalAdicQuotientAlge
 /-- 概要：正則主商への二元完全忠実平坦性の下降。
 方針：導来主剰余と通常主商を比較し、二段階剰余の離散性と忠実平坦性を移す。
 規約：元の標準代数作用とその標準主商作用を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の perfectoid 商の平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の perfectoid 商の平坦性。 -/
 theorem completelyFaithfullyFlat_principal_quotient_of_pair
     {A : Type u} [CommRing A] (p : ℕ) (d : A) (hd : IsSMulRegular A d)
     (S : Type u) [CommRing S] [Algebra A S]
@@ -763,7 +764,7 @@ end RegularQuotientCompleteFaithful
 ## 概要
 
 完全 δ 基底上の実剰余入力から、完全化後の生成元商の自然な射は p 完全忠実平坦。
-BS Rem 7.15（著者版 p.62）の最終商への一般移送。
+BS 著者版 Remark 7.15（著者版 p.62）の最終商への一般移送。
 
 ## 方針
 
@@ -810,7 +811,7 @@ local notation "R" => A ⧸ Ideal.span {OrientedPrism.generator P}
 /-- 概要：完全化の指定生成元商への標準基底射。
 方針：生成元の係数像との等式を用いて通常主商へ降ろす。
 規約：商に使う元 b を明示し、生成元像と等しいことを要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の異なる生成元表記の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の異なる生成元表記の照合。 -/
 def perfectedDeltaAlgebraQuotientBaseMap (b : C) (hb : κ P.generator = b) :
     let := pdCompletionCommRing C p b
     R →+* (PDCompletionH0 C p b ⧸ Ideal.span {pdCompletionUnit C p b b}) := by
@@ -827,7 +828,7 @@ def perfectedDeltaAlgebraQuotientBaseMap (b : C) (hb : κ P.generator = b) :
 /-- 概要：標準基底射は元の基底係数の像を保つ。
 方針：通常主商の降下射の代表元公式。
 規約：b の等式の証明の選択には依存しない。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的基底射の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的基底射の照合。 -/
 theorem perfectedDeltaAlgebraQuotientBaseMap_mk (b : C) (hb : κ P.generator = b) (r : A) :
     let := pdCompletionCommRing C p b
     perfectedDeltaAlgebraQuotientBaseMap P E j b hb (Ideal.Quotient.mk _ r) =
@@ -838,7 +839,7 @@ include hP hj hzero hFF in
 /-- 概要：完全化後の指定生成元商の自然な基底射は p 完全忠実平坦。
 方針：生成元の等式で標準表記へ戻し、二元完全忠実平坦性を正則主商へ下降する。
 規約：同じ実剰余入力と自然な基底作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終 perfectoid 候補。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終 perfectoid 候補。 -/
 theorem perfectedDeltaAlgebraQuotientBaseMap_completelyFaithfullyFlat
     (b : C) (hb : κ P.generator = b) :
     let := pdCompletionCommRing C p b
@@ -880,13 +881,13 @@ end PerfectedDeltaAlgebraQuotientFaithful
 
 任意モニック族内の有限部分族について、全ての有界 δ 深さの実評価関係は
 Koszul 分解を与え、対応する実源グラフ商の高次 Tor は零となる。
-BS Rem 7.15（著者版 p.62）の任意族への実余極限の入力。
+BS 著者版 Remark 7.15（著者版 p.62）の任意族への実余極限の入力。
 
 ## 方針
 
 モニック族の最初の弱正則列を既存の部分族分離と δ 深さの帰納へ渡す。
 源グラフの Koszul 分解と標準残余係数射により Tor を同定する。
-原典の Prop 7.11 による証明とは異なる具体的 PD 計算の経路。
+原典の BS 著者版 Proposition 7.11 による証明とは異なる具体的 PD 計算の経路。
 
 ## 規約
 
@@ -919,7 +920,7 @@ local notation "cs" N => deltaDivisionFiniteFamilyCoordinates (fun i => (s i : �
 /-- 概要：任意モニック族の有限部分族の有界深さ実評価列は Koszul 分解を与える。
 方針：モニック初項の弱正則性を一般部分族の δ 帰納へ渡す。
 規約：全添字型の有限性と正次数は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実余極限での Tor 消滅。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実余極限での Tor 消滅。 -/
 theorem monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution (N : ℕ)
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -947,7 +948,7 @@ theorem monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution (N : ℕ)
 /-- 概要：有限部分族の実源グラフ商の Tor は実残余評価 Koszul ホモロジーと同型。
 方針：源グラフの分解と実残余係数射の関係式を使う。
 規約：この比較にはモニック性も p 正則性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の有界深さ入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界深さ入力。 -/
 def monicPrismaticFiniteSubfamilySourceTorIso (N i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} ((q₁).comp α₁)).leftDerived i).obj
       (ModuleCat.of L₁ (DeltaDivisionSourceFiniteCoordinateQuotient E₁ c₁ (cs N).get)) ≅
@@ -971,7 +972,7 @@ def monicPrismaticFiniteSubfamilySourceTorIso (N i : ℕ) :
 /-- 概要：任意モニック族内の有限部分族の有界深さ源グラフ商の高次 Tor は零。
 方針：実残余評価の Koszul 分解の非零次数消滅を Tor 比較で戻す。
 規約：係数環の p 正則性と δ(d) の単元性だけを補助前提とする。
-使われ方：BS Rem 7.15（著者版 p.62）の有限部分族図式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限部分族図式。 -/
 theorem monicPrismaticFiniteSubfamilySource_tor_subsingleton (N : ℕ)
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -992,13 +993,13 @@ end MonicPrismaticFiniteSubfamilyTor
 ## 概要
 
 任意モニック族の有界深さ有限部分族図式の全段、および全評価源の高次 Tor は零。
-BS Rem 7.15（著者版 p.62）の任意族の実導来剰余計算。
+BS 著者版 Remark 7.15（著者版 p.62）の任意族の実導来剰余計算。
 
 ## 方針
 
 既存の有限部分族の Koszul 分解と実評価図式の余極限を使い、
 同じ TorAlg 関手が有限部分集合図式の余極限を保つことを適用する。
-原典の Prop 7.11 による証明とは異なる PD 計算の経路。
+原典の BS 著者版 Proposition 7.11 による証明とは異なる PD 計算の経路。
 
 ## 規約
 
@@ -1052,7 +1053,7 @@ local notation "K" => deltaDivisionEvaluationFiniteSupportIdeal E r
 /-- 概要：任意モニック族の有界深さ評価図式の全段の高次 Tor は零。
 方針：有限座標の hull を選び、有限部分族の源グラフ商へ同定する。
 規約：全添字型の有限性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実余極限の段ごとの入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実余極限の段ごとの入力。 -/
 theorem monicPrismaticBoundedSupportStage_tor_subsingleton
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -1089,7 +1090,7 @@ theorem monicPrismaticBoundedSupportStage_tor_subsingleton
 /-- 概要：実図式の Tor 交換から、任意モニック族の全評価環の高次 Tor が消える。
 方針：各段の消滅を余極限に移し、元の評価環との標準同型を使う。
 規約：この中間補題の保存仮定は後の公開入口で解消する。
-使われ方：BS Rem 7.15（著者版 p.62）の全評価源。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全評価源。 -/
 theorem monicPrismaticEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -1112,7 +1113,7 @@ theorem monicPrismaticEvaluation_tor_subsingleton_of_preservesBoundedSupportColi
 /-- 概要：任意モニック族の全評価環の高次 Tor は零。
 方針：既存の TorAlg の有限部分集合余極限保存を実評価図式に適用する。
 規約：余極限交換の追加仮定を残さない。正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の任意族の実残余係数拡大。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の任意族の実残余係数拡大。 -/
 theorem monicPrismaticEvaluation_tor_subsingleton
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun z : A => (p : A) * z))
@@ -1130,7 +1131,7 @@ local notation "Mβ" => baseChangeScalarModule β
 /-- 概要：任意モニック族の実残余係数加群は全 β 評価射に関して Tor 非輪状。
 方針：全評価環の TorAlg 消滅を通常 Tor 比較と対称性で移す。
 規約：族全体の有限性も余極限交換仮定も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の標準導来 augmentation による比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準導来 augmentation による比較。 -/
 theorem monicPrismaticBoundedSupportResidueEval_torVanishing
     (hf : ∀ t, (f t).Monic)
     (hpA : Function.Injective (fun x : A => (p : A) * x))
@@ -1160,7 +1161,7 @@ end MonicPrismaticBoundedSupportTor
 ## 概要
 
 完全基底上の有界入力 prism 間の射では、入力作用を保てば基底射も自動的に保たれる。
-BS Lemma 4.8（著者版 pp.38–39）の一意性を Rem 7.15（p.62）の入力圏へ接続する。
+BS 著者版 Lemma 4.8（著者版 pp.38–39）の一意性を BS 著者版 Remark 7.15（p.62）の入力圏へ接続する。
 
 ## 方針
 
@@ -1186,7 +1187,7 @@ variable {W : OrientedPrism p A} {c : A ⧸ W.ideal →+* S}
 /-- 概要：完全基底上の有界 prism 射は入力作用を保つなら基底も保つ。
 方針：商射の基底制限を一致させ、一般有界標的での完全源の剛性を使う。
 規約：標的の完全性・p 正則性は不要。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）と Rem 7.15（p.62）の入力圏の比較。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）と BS 著者版 Remark 7.15（p.62）の入力圏の比較。 -/
 theorem prismHom_over_base_of_input (hW : W.deltaStructure.IsPerfect)
     (X Y : BoundedPrismInput W c) (f : OrientedPrism.Hom X.prism Y.prism)
     (hf : f.quotientMap.comp X.input = Y.input) : f.comp X.base = Y.base := by
@@ -1197,7 +1198,7 @@ theorem prismHom_over_base_of_input (hW : W.deltaStructure.IsPerfect)
 /-- 概要：入力作用だけを保つ prism 射を入力圏の射へまとめる。
 方針：完全基底に関する基底保存性を一意性から自動的に供給する。
 規約：基底保存性を追加の引数として要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の基底を省く比較射の構成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底を省く比較射の構成。 -/
 def homOfInput (hW : W.deltaStructure.IsPerfect)
     (X Y : BoundedPrismInput W c) (f : OrientedPrism.Hom X.prism Y.prism)
     (hf : f.quotientMap.comp X.input = Y.input) : X ⟶ Y where
@@ -1208,7 +1209,7 @@ def homOfInput (hW : W.deltaStructure.IsPerfect)
 /-- 概要：入力圏の射は、入力作用を保つ prism 射と型同値。
 方針：台の prism 射への射影と基底保存性を自動供給する構成が互いに逆と示す。
 規約：対象の基底射の存在は保持し、射の追加基底条件だけを除く。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）による絶対入力圏への比較の射の部分。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）による絶対入力圏への比較の射の部分。 -/
 def homEquivInputPreserving (hW : W.deltaStructure.IsPerfect)
     (X Y : BoundedPrismInput W c) :
     (X ⟶ Y) ≃ { f : OrientedPrism.Hom X.prism Y.prism //
@@ -1228,7 +1229,7 @@ end BoundedPrismInputRigidity
 
 平坦な環射の可換四角形で、基底の商射が全射かつ核の各元が冪零なら、
 商側の忠実平坦性から元の環射の忠実平坦性が従う。
-BS Rem 7.15（著者版 p.62）の ϖ 冪剰余の忠実性への一般環計算。
+BS 著者版 Remark 7.15（著者版 p.62）の ϖ 冪剰余の忠実性への一般環計算。
 
 ## 方針
 
@@ -1251,7 +1252,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：平坦な可換四角形の基底商が冪零核の全射なら、下辺の忠実平坦性は上辺へ戻る。
 方針：素スペクトルの全射性を冪零核の基底商と下辺に沿って合成する。
 規約：右辺の射は全射でなくてもよい。
-使われ方：BS Rem 7.15（著者版 p.62）の主冪剰余の忠実性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の主冪剰余の忠実性。 -/
 theorem faithfullyFlat_of_flat_of_nilpotent_square
     {R S B C : Type u} [CommRing R] [CommRing S] [CommRing B] [CommRing C]
     [Algebra R S] [Algebra B C] [Module.Flat R S] [Module.FaithfullyFlat B C]
@@ -1282,7 +1283,7 @@ end FaithfullyFlatNilpotentSquare
 ## 概要
 
 a 完全忠実平坦な可換代数は、全ての正冪 aⁿ に関しても完全忠実平坦。
-BS Rem 7.15（著者版 p.62）の ϖ から p への移送に用いる。
+BS 著者版 Remark 7.15（著者版 p.62）の ϖ から p への移送に用いる。
 
 ## 方針
 
@@ -1309,7 +1310,7 @@ attribute [local instance] adicQuotientAlgebra
 /-- 概要：a 完全忠実平坦な代数の各正冪剰余は忠実平坦。
 方針：冪剰余の平坦性と第一剰余への冪零核の可換四角形を使う。
 規約：正則性も完備性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の p 剰余の忠実性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 剰余の忠実性。 -/
 theorem faithfullyFlat_power_algebraQuotient_of_completelyFaithfullyFlat
     {R : Type u} [CommRing R] (a : R) (S : Type u) [CommRing S] [Algebra R S]
     (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) S) (n : ℕ) (hn : 0 < n) :
@@ -1349,7 +1350,7 @@ theorem faithfullyFlat_power_algebraQuotient_of_completelyFaithfullyFlat
 /-- 概要：主元完全忠実平坦性は全ての正冪に保存される。
 方針：既存の完全平坦性の冪保存と、環商の忠実平坦性を剰余テンソルへ移す比較を結ぶ。
 規約：可換代数を対象とし、正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の (ϖ^p)=(p) に沿う移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の (ϖ^p)=(p) に沿う移送。 -/
 theorem completelyFaithfullyFlat_principal_power_algebra
     {R : Type u} [CommRing R] (a : R) (S : Type u) [CommRing S] [Algebra R S]
     (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) S) (n : ℕ) (hn : 0 < n) :
@@ -1371,13 +1372,13 @@ end CompletelyFaithfullyFlatPrincipalPower
 ## 概要
 
 環同型は任意イデアルに関して完全忠実平坦であり、根付き p 完全忠実平坦拡大を
-同じ宇宙の同型な基底環へ移せる。BS Thm 7.14（著者版 p.61）の構成の基底表示の比較。
+同じ宇宙の同型な基底環へ移せる。BS 著者版 Theorem 7.14（著者版 p.61）の構成の基底表示の比較。
 
 ## 方針
 
 基底自身の完全忠実平坦性を線形同型で移し、既存の環射の合成定理を使う。
 根方程式には多項式 map と eval₂ の自然性を用いる。
-原典の Prop 7.11 による証明とは異なる、Rem 7.15（p.62）に沿う構成の補助計算。
+原典の BS 著者版 Proposition 7.11 による証明とは異なる、BS 著者版 Remark 7.15（p.62）に沿う構成の補助計算。
 
 ## 規約
 
@@ -1398,7 +1399,7 @@ variable {R S T σ : Type u} [CommRing R] [CommRing S] [CommRing T]
 /-- 概要：基底自身は任意イデアルに関して完全忠実平坦。
 方針：高次 Tor の消滅と剰余テンソルの右単位同型を使う。
 規約：通常の自己スカラー作用を使う。
-使われ方：BS Thm 7.14（著者版 p.61）の基底環同型への移送。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の基底環同型への移送。 -/
 theorem monicRootedBase_self_isCompletelyFaithfullyFlat (I : Ideal R) :
     IsCompletelyFaithfullyFlat I R := by
   constructor
@@ -1413,7 +1414,7 @@ theorem monicRootedBase_self_isCompletelyFaithfullyFlat (I : Ideal R) :
 /-- 概要：環同型は任意イデアルに関して完全忠実平坦。
 方針：環同型を元の環上の線形同型とみなし、自己拡大の性質を移す。
 規約：終域の係数作用は同型の toAlgebra に固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的商表示からの移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的商表示からの移送。 -/
 theorem monicRootedBase_equiv_isCompletelyFaithfullyFlat (e : R ≃+* S) (I : Ideal R) :
     letI := e.toRingHom.toAlgebra
     IsCompletelyFaithfullyFlat I S := by
@@ -1430,7 +1431,7 @@ theorem monicRootedBase_equiv_isCompletelyFaithfullyFlat (e : R ≃+* S) (I : Id
 /-- 概要：同型先の基底の根付き p 完全忠実平坦拡大は元の基底の拡大でもある。
 方針：同型の完全忠実平坦性と環射の合成定理を使い、eval₂_map で根方程式を移す。
 規約：多項式族の性質や有限性はこの移送には不要。
-使われ方：BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の基底表示の解消。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62）の基底表示の解消。 -/
 theorem monicRootedExtension_of_baseEquiv (p : ℕ) [Fact p.Prime]
     (e : R ≃+* S) (f : σ → Polynomial R) (g : S →+* T) (ρ : σ → T)
     (hT : IsIntegralPerfectoid T p)
@@ -1457,13 +1458,13 @@ end MonicRootedBaseEquiv
 
 任意の整 perfectoid 環上の有限正次数モニック族には、全ての多項式の根を持つ
 p 完全忠実平坦な整 perfectoid 拡大がある。
-BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の一段の有限版。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62）の一段の有限版。
 
 ## 方針
 
 非零枝では Fontaine 写像の核の実 PD 完備化から完全 prism 商表示を得る。
 商表示へ多項式を移して有限族の構成を適用し、環同型に沿って基底作用と根を戻す。
-零枝は自己拡大を使う。原典の Prop 7.11 による証明とは異なる PD 計算の経路である。
+零枝は自己拡大を使う。原典の BS 著者版 Proposition 7.11 による証明とは異なる PD 計算の経路である。
 
 ## 規約
 
@@ -1483,7 +1484,7 @@ open SerrePositivity.DerivedCompletion
 /-- 概要：任意の整 perfectoid 基底上の有限正次数モニック族に、全根を持つ拡大がある。
 方針：完全 prism 商表示で有限族を構成し、基底環同型と評価の自然性で戻す。
 規約：全列挙以外に補助的な忠実平坦性や基底表示を仮定しない。
-使われ方：BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の一段構成の有限版。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62）の一段構成の有限版。 -/
 theorem exists_finiteMonicRootedPerfectoidExtension
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     {σ : Type u} (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
@@ -1521,7 +1522,7 @@ theorem exists_finiteMonicRootedPerfectoidExtension
 /-- 概要：有限添字型で与えられた正次数モニック族に同じ根付き拡大が存在する。
 方針：Fin による全列挙を選び、一般基底上の有限族構成を適用する。
 規約：有限性は命題の型クラスで与え、根の添字型は元のままに保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の任意有限部分族の根添加。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の任意有限部分族の根添加。 -/
 theorem exists_monicRootedPerfectoidExtension_of_finite
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     {σ : Type u} [Finite σ] (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
@@ -1536,7 +1537,7 @@ theorem exists_monicRootedPerfectoidExtension_of_finite
 /-- 概要：任意の整 perfectoid 環上の正次数モニック多項式に、根を持つ拡大がある。
 方針：一元族に一般基底上の有限族の存在定理を適用する。
 規約：基底環への追加条件を課さず、同じ p に関する完全忠実平坦性を結論する。
-使われ方：BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の一元根添加。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62）の一元根添加。 -/
 theorem exists_monicRootPerfectoidExtension
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     (f : Polynomial R) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
@@ -1559,7 +1560,7 @@ end FiniteMonicRootedExtension
 
 任意のモニック族の raw φ/p 包の初期係数商を、mod p における関係の p 乗の通常商として表示する。
 正次数モニック族ならこの係数商は A/p 上忠実平坦。
-BS 著者版 Cor 2.39（p.25）、Rem 7.15(1)（p.62）の実剰余計算の一部である。
+BS 著者版 Corollary 2.39（p.25）、BS 著者版 Remark 7.15(1)（p.62）の実剰余計算の一部である。
 
 ## 方針
 
@@ -1598,13 +1599,13 @@ local notation "C" => PolynomialFamilyQuotient g
 /-- 概要：モニック関係族の raw φ/p 包の初期係数商。
 方針：既存 δ 除算の初期係数イデアルの商をそのまま使う。
 規約：関係式のモニック性は定義に含めない。
-使われ方：BS Cor 2.39（著者版 p.25）の実 mod p 表示の係数環。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の実 mod p 表示の係数環。 -/
 abbrev MonicFrobeniusCoefficientQuotient := P ⧸ J
 
 /-- 概要：初期係数イデアルは p の係数拡張と関係多項式の p 乗のイデアルの和。
 方針：Frobenius と p 乗の初期イデアル比較、および評価と冪の可換性を使う。
 規約：任意多項式族に成立する。
-使われ方：BS Cor 2.39（著者版 p.25）の係数商を通常モニック商へ移す。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の係数商を通常モニック商へ移す。 -/
 theorem monicFrobeniusCoefficientIdeal_eq :
     J = (I).map (MvPolynomial.C : A →+* P) ⊔ polynomialFamilyRelationIdeal (fun s => f s ^ p) := by
   rw [deltaPDivisionFirstBaseIdeal_frobenius_eq_power]
@@ -1623,7 +1624,7 @@ theorem monicFrobeniusCoefficientIdeal_eq :
 /-- 概要：raw 初期係数商は mod p の多項式の p 乗の通常商に同型。
 方針：初期イデアルの表示と全族の係数商の交換同型を合成する。
 規約：この同型は任意族に対して定義する。
-使われ方：BS Rem 7.15（著者版 p.62）の実剰余の通常忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実剰余の通常忠実平坦性。 -/
 def monicFrobeniusCoefficientEquiv : MonicFrobeniusCoefficientQuotient D f ≃+* C :=
   (Ideal.quotEquivOfEq (monicFrobeniusCoefficientIdeal_eq D f)).trans
     (polynomialFamilyBaseQuotientEquiv I (fun s => f s ^ p))
@@ -1631,7 +1632,7 @@ def monicFrobeniusCoefficientEquiv : MonicFrobeniusCoefficientQuotient D f ≃+*
 /-- 概要：係数商同型は多項式の係数を mod p に写す。
 方針：商イデアル同定と係数商同型の代表元公式を使う。
 規約：元の変数は保持する。
-使われ方：BS Cor 2.39（著者版 p.25）の実係数作用の比較。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の実係数作用の比較。 -/
 theorem monicFrobeniusCoefficientEquiv_mk (x : P) :
     monicFrobeniusCoefficientEquiv D f (Ideal.Quotient.mk J x) =
       Ideal.Quotient.mk (polynomialFamilyRelationIdeal g) (MvPolynomial.map q x) := by
@@ -1641,7 +1642,7 @@ theorem monicFrobeniusCoefficientEquiv_mk (x : P) :
 /-- 概要：表示同型は元の係数の標準像を A/p の通常係数作用に対応させる。
 方針：代表元公式に定数多項式を代入する。
 規約：元の A の任意元で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数環への平坦性移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数環への平坦性移送。 -/
 theorem monicFrobeniusCoefficientEquiv_C (x : A) :
     monicFrobeniusCoefficientEquiv D f (Ideal.Quotient.mk J (MvPolynomial.C x)) =
       algebraMap QA C (q x) := by
@@ -1651,14 +1652,14 @@ theorem monicFrobeniusCoefficientEquiv_C (x : A) :
 /-- 概要：初期係数商への標準 A/p 係数射。
 方針：通常商への係数射を表示同型の逆で戻す。
 規約：次の代表元公式で自然な係数射に一致することを確認する。
-使われ方：BS Cor 2.39（著者版 p.25）の実係数商の代数構造。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の実係数商の代数構造。 -/
 def monicFrobeniusCoefficientBaseMap : QA →+* MonicFrobeniusCoefficientQuotient D f :=
   (monicFrobeniusCoefficientEquiv D f).symm.toRingHom.comp (algebraMap QA C)
 
 /-- 概要：標準 A/p 係数射は元の A 係数の自然な商像で与えられる。
 方針：表示同型を適用して元の係数像を比較する。
 規約：環射の定義だけでなく代表元での等式を保証する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 商の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 商の係数作用。 -/
 theorem monicFrobeniusCoefficientBaseMap_mk (x : A) :
     monicFrobeniusCoefficientBaseMap D f (q x) = Ideal.Quotient.mk J (MvPolynomial.C x) := by
   apply (monicFrobeniusCoefficientEquiv D f).injective
@@ -1669,7 +1670,7 @@ theorem monicFrobeniusCoefficientBaseMap_mk (x : A) :
 /-- 概要：標準係数射による初期係数商の A/p 代数構造。
 方針：明示した環射の toAlgebra を用いる。
 規約：利用箇所で局所的に導入する。
-使われ方：BS Cor 2.39（著者版 p.25）の係数商の忠実平坦性。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の係数商の忠実平坦性。 -/
 @[instance_reducible] def monicFrobeniusCoefficientBaseAlgebra :
     Algebra QA (MonicFrobeniusCoefficientQuotient D f) :=
   (monicFrobeniusCoefficientBaseMap D f).toAlgebra
@@ -1677,7 +1678,7 @@ theorem monicFrobeniusCoefficientBaseMap_mk (x : A) :
 /-- 概要：初期係数商の表示は標準 A/p 係数作用に関する代数同型。
 方針：表示同型の逆で定義した係数射との可換性を使う。
 規約：元の A/p スカラーを変えない。
-使われ方：BS Rem 7.15（著者版 p.62）の忠実平坦性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の忠実平坦性の移送。 -/
 def monicFrobeniusCoefficientAlgEquiv :
     letI := monicFrobeniusCoefficientBaseAlgebra D f
     MonicFrobeniusCoefficientQuotient D f ≃ₐ[QA] C := by
@@ -1690,7 +1691,7 @@ def monicFrobeniusCoefficientAlgEquiv :
 方針：mod p の非零係数環ではモニック性と次数を保つ係数変更を使い、
 通常の任意モニック族商の忠実平坦性を移す。零係数商は加群の自明性で処理する。
 規約：A の p 正則性も族の有限性も不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の raw 実 mod p 商の忠実平坦性の係数入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の raw 実 mod p 商の忠実平坦性の係数入力。 -/
 theorem monicFrobeniusCoefficient_faithfullyFlat
     (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
     letI := monicFrobeniusCoefficientBaseAlgebra D f

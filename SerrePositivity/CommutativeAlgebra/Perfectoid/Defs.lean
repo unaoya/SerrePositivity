@@ -9,6 +9,7 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 ## 概要
 
 CLMST Definition 2.4.1 の四条件で整 perfectoid 環 `IsIntegralPerfectoid` を定め、perfectoid 化を perfectoid 環への写像の普遍性 `IsPerfectoidization` として表す。同じ環の二つの普遍 perfectoid 化は元の環からの写像と両立する同型を持つこと（標準写像の全射性もこれで移る）、環準同型が誘導する perfectoid 化の射（`IsPerfectoidization.map`）とその関手性、perfectoid 環自身の perfectoid 化、元の基底の上の代数写像としての比較、指定した perfectoid 化の商（excision の図式の閉じた側）を与える。
+BS 著者版 Corollary 7.3 の第一文で使う普遍 perfectoid 化の性質を環の写像で表す。
 
 ## 方針
 
@@ -44,7 +45,7 @@ def IsIntegralPerfectoid (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] : Pr
      letI := hc
      (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
 
-/-- `f : S → C` が perfectoid 化であるという普遍性。
+/-- `f : S → C` が perfectoid 化であるという普遍性（BS 著者版 Corollary 7.3 の第一文で使う普遍性）。
 `C` は perfectoid で、任意の perfectoid 環への写像が一意に `f` を経由する。 -/
 def IsPerfectoidization {S C : Type u} [CommRing S] [CommRing C]
     (p : ℕ) [Fact p.Prime] (f : S →+* C) : Prop :=

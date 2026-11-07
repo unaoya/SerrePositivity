@@ -5,7 +5,7 @@ public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.Logic.Function.Iterate
 
 /-!
-# δ 安定イデアル・商・δ 閉包（BS 著者版 Lemma 2.9、Ex 2.10）
+# δ 安定イデアル・商・δ 閉包（BS 著者版 Lemma 2.9、BS 著者版 Example 2.10）
 
 ## 概要
 δ 安定イデアルによる商の δ 構造と普遍性、δ 閉包（I を含む最小の δ 安定イデアル）とその生成元表示。
@@ -27,7 +27,7 @@ universe u v
 
 /-! ## δ安定イデアルの閉包（旧 Delta/Basic/DeltaIdeal.lean）
 
-BS著者版Example 2.10のδ安定化を、元のイデアルを含むδ安定イデアルの
+BS 著者版 Example 2.10のδ安定化を、元のイデアルを含むδ安定イデアルの
 交わりとして構成する。商環のδ構造の構成とは独立な、最小性の部分を証明する。
 -/
 
@@ -47,8 +47,8 @@ theorem IsDeltaHom.isStable_comap {B : Type v} [CommRing B]
   rw [hf x]
   exact hJ (f x) hx
 
-/-- δ閉包：Iを含むすべてのδ安定イデアルの交わり。
-余分な正則性・完備性を要求せず、δ環の商構成に用いる（BS Example 2.10）。 -/
+/-- δ閉包：Iを含むすべてのδ安定イデアルの交わり（BS 著者版 Example 2.10 のδ 安定化の構成）。
+余分な正則性・完備性を要求せず、δ環の商構成に用いる。 -/
 def deltaClosure (D : DeltaStructure p A) (I : Ideal A) : Ideal A :=
   sInf {J : Ideal A | I ≤ J ∧ D.IsStable J}
 
@@ -106,7 +106,7 @@ end DeltaIdeal
 
 /-! ## δ安定イデアルによる商δ環（旧 Delta/Basic/DeltaQuotient.lean）
 
-BS著者公開版Lemma 2.9とExample 2.10。W₂切断を商へ降下し、
+BS 著者版 Lemma 2.9とBS 著者版 Example 2.10。W₂切断を商へ降下し、
 pねじれの有無によらない商δ構造とδ射としての普遍性を構成する。
 -/
 
@@ -134,7 +134,8 @@ theorem sectionHom_quotient_eq_zero (D : DeltaStructure p A) (I : Ideal A)
   · simp only [RingHom.comp_apply, wittTwoMap_coeff, TruncatedWittVector.coeff_zero]
     exact Ideal.Quotient.eq_zero_iff_mem.mpr (hI x hx)
 
-/-- δ安定イデアルによる商δ構造。切断の環準同型を商の普遍性で降下する。 -/
+/-- δ安定イデアルによる商δ構造（BS 著者版 Lemma 2.9 の存在方向の構成）。
+  切断の環準同型を商の普遍性で降下する。 -/
 def quotient (D : DeltaStructure p A) (I : Ideal A) (hI : D.IsStable I) :
     DeltaStructure p (A ⧸ I) where
   sectionHom := Ideal.Quotient.lift I
@@ -151,7 +152,7 @@ def quotient (D : DeltaStructure p A) (I : Ideal A) (hI : D.IsStable I) :
     (D.quotient I hI).delta (Ideal.Quotient.mk I x) = Ideal.Quotient.mk I (D.delta x) := by
   simp [quotient, delta, Ideal.Quotient.lift_mk]
 
-/-- δ安定商への標準写像はδ射である（BS Lemma 2.9の存在）。 -/
+/-- δ安定商への標準写像はδ射である（BS 著者版 Lemma 2.9の存在）。 -/
 theorem isDeltaHom_quotient_mk (D : DeltaStructure p A) (I : Ideal A) (hI : D.IsStable I) :
     D.IsDeltaHom (D.quotient I hI) (Ideal.Quotient.mk I) := by
   intro x
@@ -166,8 +167,8 @@ theorem quotient_unique (D : DeltaStructure p A) (I : Ideal A) (hI : D.IsStable 
   obtain ⟨a, rfl⟩ := Ideal.Quotient.mk_surjective x
   rw [quotient_delta_mk, ← hE a]
 
-/-- 商に標準写像と両立するδ構造があるのは、イデアルがδ安定である場合に限る。
-存在・一意性をp正則性なしにまとめる（BS著者版Lemma 2.9）。 -/
+/-- 商に標準写像と両立するδ構造があるのは、イデアルがδ安定である場合に限る（BS 著者版 Lemma 2.9）。
+存在・一意性をp正則性なしにまとめる。 -/
 theorem isStable_iff_existsUnique_quotient (D : DeltaStructure p A) (I : Ideal A) :
     D.IsStable I ↔ ∃! E : DeltaStructure p (A ⧸ I), D.IsDeltaHom E (Ideal.Quotient.mk I) := by
   constructor
@@ -179,7 +180,7 @@ theorem isStable_iff_existsUnique_quotient (D : DeltaStructure p A) (I : Ideal A
     apply Ideal.Quotient.eq_zero_iff_mem.mp
     rw [hE x, Ideal.Quotient.eq_zero_iff_mem.mpr hx, delta_zero]
 
-/-- Iを零に送るδ射は、δ安定商からの一意なδ射に降下する。
+/-- Iを零に送るδ射は、δ安定商からの一意なδ射に降下する（BS 著者版 Lemma 2.9 の商からの射の形）。
 環準同型の商の普遍性とδの標準像上の公式を使う。 -/
 theorem existsUnique_quotient_lift (D : DeltaStructure p A) (I : Ideal A)
     (hI : D.IsStable I) (E : DeltaStructure p B) (f : A →+* B)
@@ -202,7 +203,7 @@ theorem existsUnique_quotient_lift (D : DeltaStructure p A) (I : Ideal A)
     obtain ⟨a, rfl⟩ := Ideal.Quotient.mk_surjective x
     exact (DFunLike.congr_fun hk.1 a).trans (DFunLike.congr_fun hg a).symm
 
-/-- δ閉包で割った商は、Iを零に送るδ射の普遍対象（BS Example 2.10）。
+/-- δ閉包で割った商は、Iを零に送るδ射の普遍対象（BS 著者版 Example 2.10 の普遍性の部分）。
 Iそのもののδ安定性は要求しない。 -/
 theorem existsUnique_deltaClosure_quotient_lift (D : DeltaStructure p A) (I : Ideal A)
     (E : DeltaStructure p B) (f : A →+* B) (hf : D.IsDeltaHom E f)
@@ -220,7 +221,7 @@ end DeltaQuotient
 
 /-! ## 反復δ像によるδ閉包の生成（旧 Delta/Basic/DeltaClosureGeneration.lean）
 
-BS著者版Example 2.10の表示を、δ安定イデアルの最小性と比較する。
+BS 著者版 Example 2.10の表示を、δ安定イデアルの最小性と比較する。
 生成元でのδ安定性をイデアル全体へ拡張する際にδの加法・積公式を用いる。
 -/
 
@@ -287,7 +288,7 @@ theorem deltaClosure_span_eq_span_generator_iterates
       rw [Function.iterate_succ_apply']
       exact D.isStable_deltaClosure _ _ ih
 
-/-- δ閉包はIのすべての反復δ像で生成されるイデアル（BS Example 2.10）。
+/-- δ閉包はIのすべての反復δ像で生成されるイデアル（BS 著者版 Example 2.10 の生成元の記述）。
 抽象的な交わりによる構成に、具体的な生成元表示を与える。 -/
 theorem deltaClosure_eq_span_iterates (D : DeltaStructure p A) (I : Ideal A) :
     D.deltaClosure I = Ideal.span (⋃ n : ℕ, D.delta^[n] '' (I : Set A)) := by

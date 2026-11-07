@@ -8,6 +8,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 ## 概要
 
 `p` の正の冪や単元倍で生成元を取り替えても perfectoid イデアルが変わらないこと、ねじれ商が perfectoid なら `p` 倍が零になることを示す。perfectoid イデアルが根基イデアルであること、`(g)` の根基がそれに含まれること、生成元の任意の正の冪で同じイデアルになることを与える。
+BS 著者版 §10.1 の単項 perfectoid 核を、冪と根基に沿って比較する。
 
 ## 方針
 

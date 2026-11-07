@@ -1,0 +1,185 @@
+number,declaration,verdict,scope,reason
+1.1,SerrePositivity.BhattScholze.OrientedPrism,ok,向き付きの場合,正則な生成元と二つの主イデアルに関する導来完備性を持つ。本文 Definition 3.2 (1) を主にする。
+1.1,SerrePositivity.BhattScholze.OrientedPrism.ofDistinguished,ok,向き付きの場合の構成,distinguished な正則元から prism 条件を得る。Definition 3.2 (1) と Lemma 3.1 の主イデアルの場合。
+1.2,SerrePositivity.BhattScholze.DeltaStructure,ok,δ 構造の部分,W₂ の切断で δ を表現する。本文 Definition 2.1 と Remark 2.4 を主にする。
+1.2,SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift,ok,Frobenius 持ち上げの構成,第 1 ghost 成分と切断の合成。本文 Remark 2.2 を主にする。
+1.3,SerrePositivity.BhattScholze.OrientedPrism.crystalline,ok,(1) の構成,p 正則・p 進完備な δ 環に生成元 p を取る。本文 Example 3.3 を主にする。
+1.3,SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff,ok,(1) の構成と逆向き,生成元が p であることと p 正則・p 進完備性との同値。逆向きも本文 Example 3.3 にある。
+1.3,SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid,ok,(2) の商の方向,向き付き完全 prism の商が perfectoid。本文 Theorem 3.10 を主にする。
+1.3,SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv,fix,Witt 環としての復元,W(A/p) ≃ A を与える。R からの逆方向ではないので Example 1.3 (2) の候補から外す。Corollary 2.31 の対象ごとの帰結として別途検収。
+1.4,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect,fix,該当なし,Frobenius が可逆という完全性。Definition 1.4 は A/I の p 冪ねじれの有界性。正しい対応は Definition 2.26。
+1.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq,ok,向き付き prism の射,I の像イデアルが J。本文 Lemma 3.5 の順方向を主にする。
+1.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit,ok,向き付き prism の射の生成元による表現,f(d) と e が単元倍で一致する形で剛性を表す。本文 Lemma 3.5 の順方向。
+1.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv,ok,向き付き prism の射のテンソル比較,本文 Lemma 3.5 の I ⊗ B ≃ J。序論の Proposition 1.5 は IB = J を述べる。
+1.12,SerrePositivity.BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient,ok,(2) の普遍 perfectoid 化の存在,半 perfectoid 商に普遍写像。本文 Corollary 7.3 第一文を主にする。
+1.12,SerrePositivity.BhattScholze.perfectPrismQuotientPerfectoidizationMap_isPerfectoidization,ok,(2) の完全 prism の商からの構成,指定の写像が普遍。Δinit による式は含まず、本文 Corollary 7.3 第一文の具体化。
+1.12,SerrePositivity.BhattScholze.exists_surjective_perfectoidization_of_semiperfectoid_quotient,ok,(2) の存在と全射性,普遍 perfectoid 化の存在と単位の全射性。本文 Corollary 7.3 第一文および Theorem 7.4 を主にする。
+1.13,SerrePositivity.perfectoidIdeal,ok,単項 J に対する J_perfd の定義,R → (R/J)_perfd の核。本文 §10.1 の導入を主にする。
+1.13,SerrePositivity.BhattScholze.perfectoidIdeal_conormal_completion_isZero,fix,conormal の導来完備化の消滅,序論が述べる核の自己テンソル同型から導く別の主張。Lemma 10.3 の応用として扱う。
+1.17,SerrePositivity.BhattScholze.PerfectoidizationInterface.exists_perfectoidization_of_integral,ok,(1) の整代数の普遍 perfectoid 化の存在,E3 を引数に取る環の帰結。本文 Theorem 10.11 の離散性・perfectoid 性と Corollary 8.14 が対応する。
+1.17,SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3,fix,E3 界面全体の存在,型は Nonempty E3 で複数の項目を一括して仮定する引用。(1) との対応は integral 欄とその帰結に限定する。
+2.1,SerrePositivity.BhattScholze.DeltaStructure,ok,W₂ 切断による同値な定義,実装の定義は Remark 2.4。加法・積の恒等式と逆構成で Definition 2.1 と対応する。
+2.1,SerrePositivity.BhattScholze.DeltaStructure.delta_mul,ok,積の恒等式,δ(xy) の三項の式が一致する。
+2.1,SerrePositivity.BhattScholze.DeltaStructure.delta_add,ok,加法の恒等式,補正項は Witt 第 1 和座標で表す。delta_add_polynomial が整数係数での表現を与える。
+2.1,SerrePositivity.BhattScholze.DeltaStructure.ofFunction,ok,恒等式からの構成,零・単位・和・積の四条件から切断を構成する。
+2.2,SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift,ok,持ち上げの構成,δ から環準同型 φ を定める。適用式は frobeniusLift_apply。
+2.2,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_frobeniusLift,ok,p 正則環での逆構成,φx−x^p の p 可除性から δ の存在と一意性。
+2.2,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_of_mod_p,ok,p 正則環での逆構成,持ち上げ条件を mod p で書いた存在と一意性。
+2.2,SerrePositivity.BhattScholze.DeltaStructure.isDeltaHom_of_map_frobeniusLift,fix,δ 射の判定,対象上の対応を使う射についての補助結果。型は標的に p 正則性を仮定しており Remark 2.2 の存在一意性そのものとは別。
+2.4,SerrePositivity.BhattScholze.WittTwo,ok,長さ 2 の Witt 環,本文の W₂(R) に対応する略記。
+2.4,SerrePositivity.BhattScholze.DeltaStructure,ok,切断による δ 構造,第 0 座標が恒等となる環準同型をデータにする。
+2.4,SerrePositivity.BhattScholze.DeltaStructure.isDeltaHom_iff_sectionHom_comp,fix,射に関する切断表示,δ 射の条件を W₂ の関手性と切断の可換図式で表す。Remark 2.4 は構造の対応を述べる。
+2.6,SerrePositivity.BhattScholze.DeltaStructure.subsingleton_of_isNilpotent_p,ok,末尾の結論,p が冪零なら環が零。
+2.6,SerrePositivity.BhattScholze.relativeFreeDeltaStructure_int_eq,fix,整数上の相対自由 δ 構造の比較,Z 上の二構成の一致で、Z_(p) の始性や δ 構造の一意性を主張する型ではない。
+2.7,SerrePositivity.BhattScholze.deltaDirectLimitStructure,ok,有向直系の余極限の δ 構造,基礎環の Ring.DirectLimit に構造を載せる。
+2.7,SerrePositivity.BhattScholze.deltaDirectLimitLift_isDeltaHom,ok,有向直系の余極限の余錐射,基礎環の余極限の普遍射が δ 射になる。
+2.7,SerrePositivity.BhattScholze.perfectDeltaTensorStructure,ok,完全 δ 環のテンソル積への構造,δ 射を両脚とする完全 δ 環の押し出しの構造部分。
+2.7,SerrePositivity.BhattScholze.deltaWittGhostRingHom,ok,ghost 写像が単射の場合の w_R,W(R) への環準同型の部分。右随伴全体や一般の δ 射性は含まない。Remark 2.13 が主。
+2.8,SerrePositivity.BhattScholze.RelativeFreeDeltaRing,ok,任意の族を添加する記法の実装,相対自由 δ 環の基礎環を多項式環で与える。
+2.8,SerrePositivity.BhattScholze.existsUnique_relativeFreeDeltaHom,ok,添加の普遍性,生成元の行き先と基底の δ 射から一意延長。
+2.8,SerrePositivity.BhattScholze.existsUnique_relativeFreePresentationHom,ok,添加と関係式の δ 商の普遍性,関係式を殺す δ 射が δ 閉包による商を通る。
+2.9,SerrePositivity.BhattScholze.DeltaStructure.isStable_iff_existsUnique_quotient,ok,全体,δ 安定性と商への一意延長との同値。
+2.9,SerrePositivity.BhattScholze.DeltaStructure.quotient,ok,存在方向の構成,δ 安定性を仮定し A/I に構造を与える。
+2.9,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_quotient_lift,ok,商からの射の形,I を殺す δ 射が商の δ 構造を通る。本文の compatible の普遍性の形。
+2.10,SerrePositivity.BhattScholze.DeltaStructure.deltaClosure,ok,δ 安定化の構成,元のイデアルを含む δ 安定閉包を定義する。
+2.10,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_deltaClosure_quotient_lift,ok,普遍性の部分,I を殺す δ 射が A/δClosure(I) を一意に通る。
+2.10,SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates,ok,生成元の記述,反復 δ 像の合併で生成されるイデアルに一致。
+2.11,SerrePositivity.BhattScholze.FreeDeltaRing,ok,多項式表示の整数係数・任意変数族の場合,Z 上の多項式環を基礎環として取る。原典の Z_(p) と係数が異なる。
+2.11,SerrePositivity.BhattScholze.existsUnique_freeDeltaHom,ok,自由性の整数係数・任意変数族の場合,指定した変数像を持つ一意な δ 射。
+2.11,SerrePositivity.BhattScholze.freeDeltaModPFrobenius_moduleFaithfullyFlat,ok,Frobenius の mod p 忠実平坦性,整数上の自由 δ 環で mod p に限る。
+2.11,SerrePositivity.BhattScholze.freeDeltaFrobenius_isCompletelyFaithfullyFlat,ok,Frobenius の p 完全忠実平坦性,整数上の自由 δ 環で完全忠実平坦性。通常の忠実平坦性には言及しない。
+2.13,SerrePositivity.BhattScholze.deltaWittGhostRingHom,ok,ghost 写像が単射の場合の w_R,W(A) への環準同型。
+2.13,SerrePositivity.BhattScholze.deltaWittGhostVector_frobenius_formula,ok,ghost 写像が単射の場合の φ と δ の関係,W(A) 内で Frobenius と w_R が満たす式。全 δ_n の多項式記述は含まない。
+2.13,SerrePositivity.BhattScholze.deltaWittGhostRingHom_unique,ok,ghost 写像が単射の場合の特徴づけ,ghost 座標が φ の反復である写像の一意性。
+2.14,SerrePositivity.BhattScholze.relativeFreeWittCoordinateEquiv,ok,p 正則な δ 基底上の相対版,δ_n 座標と通常の相対自由 δ 座標の多項式環の比較。
+2.14,SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEquiv,ok,p 正則な δ 基底上の相対版で有限段の座標,最初の N 個の Witt 座標を使う多項式座標変換。
+2.15,SerrePositivity.BhattScholze.DeltaStructure.localization,ok,構造の構成,φ(M) ⊂ M のもとで局所化へ δ 構造を載せる。
+2.15,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization,ok,第一文の存在一意性,基底射と両立する δ 構造が一意。
+2.15,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_localization_lift,ok,第二文の普遍性,M を単元にする δ 射の一意な局所化延長。
+2.16,SerrePositivity.BhattScholze.DeltaStructure.frobeniusDenominators,ok,Frobenius 飽和の部分,反復 φ で閉じた分母集合 T の構成。
+2.16,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_saturatedLocalization_lift,ok,Frobenius 飽和での普遍性,T による局所化の普遍性。原典の p 局所化との同一視は含まない。
+2.17,SerrePositivity.BhattScholze.DeltaStructure.delta_mem_pow,ok,第一文の評価に使う I 冪の評価,δ(I^{n+1}) ⊂ I^n。二点間の連続性評価そのものより手前の段階なので概要に範囲を示す。
+2.17,SerrePositivity.BhattScholze.DeltaStructure.adicCompletion,ok,第二文の構成,古典 I 進完備化への δ 構造の構成。
+2.17,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_adicCompletion,ok,第二文の存在一意性,p を含む有限生成 I の古典完備化上で一意。
+2.18,SerrePositivity.BhattScholze.existsUnique_deltaPDCompletionStructure,ok,"末尾の導来完備化の帰結で (p,d)・H⁰ の場合",指定した完備化単位に沿う δ 構造の存在と一意性。
+2.18,SerrePositivity.BhattScholze.deltaPDCompletionStructure,ok,"末尾の導来完備化の帰結で (p,d)・H⁰ の構成",H⁰ の環に延長した δ 構造。
+2.18,SerrePositivity.BhattScholze.existsUnique_deltaPDCompletionHom,fix,導来完備な標的への射の延長,完備化の射の普遍性。原文は構造の延長を述べるため補助として module docstring に置く。
+2.19,SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished,ok,定義,δ(d) が単元という述語。
+2.19,SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.map_isDistinguished,ok,直後の保存性,δ 射が distinguished 元を保存する。
+2.20,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_p,ok,(1) の p が Jacobson 根基にある δ 環への一般化,p が distinguished であること。Z_p に限らない。
+2.20,SerrePositivity.BhattScholze.DeltaStructure.delta_p_sub_one_mem,ok,(1) の合同式の部分,δ(p) ≡ 1 mod p。原文の明示式の合同として使う。
+2.23,SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.unit_mul,ok,全体,"p,d が Jacobson 根基にあり d が distinguished なら単元倍も distinguished。"
+2.23,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_unit_mul_iff,ok,単元倍に関する同値の形,逆向きは逆単元を使う。
+2.24,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_factor,ok,全体,"p,f が Jacobson 根基にあり fh が distinguished なら f が distinguished かつ h が単元。"
+2.25,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span,ok,第一文,"Jacobson 根基の仮定のもと distinguished と p ∈ (d,φ(d)) が同値。"
+2.25,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_of_span_eq,ok,第二文,同じ単項イデアルを生成する元について述語が一致。
+2.25,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span_pow,ok,φ(d) と d^p による表示,"p ∈ (d^p,φ(d)) で判定する形。主イデアルでの Lemma 3.1 とも対応。"
+2.26,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect,ok,全体,Frobenius 持ち上げが全単射。
+2.27,SerrePositivity.BhattScholze.DeltaPerfection,ok,左側の完全化の台,φ の順系の余極限として定義。
+2.27,SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom,ok,左随伴の普遍性,完全 δ 標的への射が一意に延長。
+2.27,SerrePositivity.BhattScholze.deltaPerfection_isPerfect,ok,左側の完全化の完全性,余極限上の Frobenius が可逆。
+2.28,SerrePositivity.BhattScholze.DeltaStructure.torsion_calculation,ok,(1) の証明中の p ねじれの計算,p x=0 なら φ(x)=0 かつ p^pδ(x)=0。原典の証明中の形。
+2.28,SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_frobeniusLift_injective,ok,(1),φ が単射なら p 正則。
+2.28,SerrePositivity.BhattScholze.DeltaStructure.p_mul_injective_of_isReduced,ok,(2),被約なら p 正則。
+2.31,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.perfectRing_mod_p,ok,(1) から (3) の対象上の部分,完全 δ 環の mod p が完全。
+2.31,SerrePositivity.BhattScholze.existsUnique_wittDeltaStructure,ok,W(k) 上の δ 構造の一意性の部分,標準 Frobenius を持ち上げる構造の存在一意性。
+2.31,SerrePositivity.BhattScholze.perfectDeltaWittRecoveryEquiv,ok,対象上の Witt 復元,p 完備な完全 δ 環を W(A/p) で復元。
+2.31,SerrePositivity.BhattScholze.wittDeltaStructure_ringHom_isDeltaHom_of_complete,ok,射に関する帰結の一形態,W(k) から p 正則・p 完備 δ 標的への環射が δ 射になる。
+2.32,SerrePositivity.BhattScholze.DeltaStructure.pow_p_dvd_delta_pow,ok,第一文,p^n が δ(x^{p^n}) を割る。
+2.32,SerrePositivity.BhattScholze.DeltaStructure.delta_eq_zero_of_has_pow_roots,ok,第二文,p 進分離のもと、各 n で根を持てば δ(y)=0。
+2.33,SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff,ok,第 1 Witt 座標で書いた判定,完全標数 p の係数環上の Witt 環で、第 1 座標の単元性で判定。
+2.33,SerrePositivity.BhattScholze.wittDeltaStructure_isDistinguished_iff_teichmuller_coefficient,ok,Teichmüller 係数で書いた判定,逆 Frobenius を第 1 Witt 座標に当てた係数の単元性で判定。
+2.34,SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.mul_injective,ok,(1),p 正則・分離と mod p 被約のもと distinguished 元が正則。
+2.34,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.distinguished_mul_injective,ok,(1) の完全 δ 環の場合,完全性と p 進分離性を使う。
+2.34,SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.quotient_p_pow_torsion_killed_by_p,ok,(2),A/(d) の p 冪ねじれが p で消える。
+2.35,SerrePositivity.BhattScholze.DeltaStructure.factorial_dvd_pow_of_prime_dvd_pow,ok,p 局所の場合の階乗可除性,x^p の p 可除性から x^n の n! 可除性。p 正則の場合に原典の γ_n と読める。
+2.35,SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem,ok,p 局所の場合の階乗商の存在,p 次冪が p で割れるイデアル内で階乗商を構成する形。
+2.36,SerrePositivity.BhattScholze.pDivisionFactorialSubring_eq_raw_range,ok,p 局所 δ 環の A[1/p] 内の像の記述,φ(y_s)/p の δ 除算の像と階乗商部分環を同定する。生の pushout との同定は別。
+2.36,SerrePositivity.BhattScholze.deltaPDivisionToAway_range_eq_of_deltaStructure,fix,像の δ 構造非依存性,二つの δ 構造で得る像の一致。原文が述べる PD 包との同定の補助。
+2.36,SerrePositivity.BhattScholze.deltaPDivisionRaw_p_mul_injective,fix,一元での生の δ 除算包の p 正則性,p 正則性だけを述べ、PD 包との同定を含まない。明示的に p 正則性を結論に含む Corollary 2.39 の行で採用する。
+2.37,SerrePositivity.BhattScholze.deltaPDivisionFirstRelation_pair_isKoszulResolution,fix,最初の関係式と p の Koszul 正則性,族の一成分の第 0 段の組だけ。原文は全 δ 関係を含む導来 pushout の離散性。
+2.38,SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injective,ok,一元 PD 表示の p 正則性,p 局所・p 正則、mod p で y 正則の仮定。
+2.38,SerrePositivity.BhattScholze.principalDPFactorialEquiv,ok,一元の場合の具体的同定,p 正則のもと PD 表示を階乗商部分環と比較。
+2.38,SerrePositivity.BhattScholze.principalDPBaseChangeUniversalEquiv,ok,一元の場合の古典的底変換,PD 表示をテンソル後の表示と同定。導来 pushout は扱わない。
+2.38,SerrePositivity.BhattScholze.principalDPModPEquiv,ok,一元の場合の mod p 底変換,PD 表示の mod p を mod p 上の PD 表示と同定。
+2.39,SerrePositivity.BhattScholze.deltaPDivisionRaw_p_mul_injective,ok,一元の場合の p 正則性,mod p 正則、δ(p) の単元性、ghost 単射を仮定。
+2.39,SerrePositivity.BhattScholze.deltaPDivisionRawTorsionEquiv,ok,一元の場合の p 冪ねじれ除去との同定,生の包とねじれ除去後の包が一致する部分。
+2.39,SerrePositivity.BhattScholze.deltaPDivisionRawToAway_injective,ok,一元の場合の A[1/p] への比較の単射性,生の包から局所化への単射性。PD 包との同定の構成には別の比較も要る。
+3.1,SerrePositivity.BhattScholze.DeltaStructure.isDistinguished_iff_p_mem_span_pow,ok,主イデアルの場合の (1) と distinguished 性,根基仮定のもと I^p+φ(I)A の条件を選んだ生成元で特徴づける。忠実平坦局所化は含まない。
+3.1,SerrePositivity.BhattScholze.DeltaStructure.IsDistinguished.p_mem_span_pow,ok,主イデアルの場合の (3) から (1) の計算,既に distinguished な生成元がある場合に (1) を直接示す。
+3.1,SerrePositivity.BhattScholze.OrientedPrism.isDistinguished_generator,ok,向き付き prism の生成元について (2) から distinguished 性,prism 条件と完備性を用いて選択生成元が distinguished となる。
+3.2,SerrePositivity.BhattScholze.OrientedPrism,ok,(1) の向き付きの場合,"(p,d) の導来完備性と p ∈ (d,φ(d))、正則な生成元を記録。"
+3.2,SerrePositivity.BhattScholze.OrientedPrism.Hom,ok,δ 対の圏の向き付き prism 間の射,δ 構造とイデアルの包含を保つ射。生成元を厳密に保存する必要はない。
+3.3,SerrePositivity.BhattScholze.OrientedPrism.crystalline,ok,順方向の構成,p 正則・p 進完備な δ 環から結晶 prism。
+3.3,SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff,ok,両方向の向き付きの場合,指定の δ 構造と生成元 p を持つ prism の存在を特徴づける。
+3.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq,ok,順方向の像イデアルの等式,向き付き prism の射について IB=J。
+3.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv,ok,順方向のテンソル同型,向き付き prism の射に沿う I ⊗ B ≃ J。
+3.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.idealTensorEquiv,ok,順方向の指定代数構造の場合,指定の algebraMap が prism 射に一致する場合の I ⊗ B ≃ J。
+3.5,SerrePositivity.BhattScholze.OrientedPrism.Hom.bijective_iff_quotientMap_bijective,fix,商上の全単射による元の射の判定,本文のテンソル比較と像等式とは別の帰結。
+3.7,SerrePositivity.BhattScholze.Andre.boundedPrism_pair_isAdicComplete,ok,(1) の向き付き prism の場合,"A/d の p 冪ねじれ有界から古典 (p,d) 進完備性。"
+3.7,SerrePositivity.BhattScholze.Andre.boundedPrism_isAdicComplete_prime,fix,古典 p 進完備性,"Lemma 3.7 (1) の結論は (p,I) 進完備性。p 進への移行は別の帰結。"
+3.8,SerrePositivity.BhattScholze.OrientedPrism.quotient_p_pow_torsion_killed_by_p,ok,(2) の有界性を与える向き付きの場合,p 冪ねじれが p で消えるという形。
+3.8,SerrePositivity.BhattScholze.Andre.perfectPrism_pair_isAdicComplete,ok,(2) の完備性を与える向き付きの場合,"完全な向き付き prism が古典 (p,d) 進完備。"
+3.8,SerrePositivity.BhattScholze.OrientedPrism.isAdicComplete_p_of_perfect,fix,p 進完備性,"完全 prism の古典 (p,I) 進完備性と結論が異なる。"
+3.8,SerrePositivity.BhattScholze.DeltaStructure.IsPerfect.distinguished_quotient_isAdicComplete,fix,商 A/(d) の p 進完備性,Lemma 3.8 (2) の完備性は A 上。商の完備性は Theorem 3.10 の証明に現れる別の帰結。
+3.9,SerrePositivity.BhattScholze.existsUnique_perfectDeltaPDPrismHom,ok,完全 δ 環と distinguished な元からの完備化の延長,完全な向き付き試験 prism への一意な環射を与える範囲。
+3.9,SerrePositivity.BhattScholze.existsUnique_deltaPerfectionPDCompletionHom,ok,完全化と導来完備化を通る δ 射,p と元に関する完備性を持つ完全 δ 標的への延長。向き付き prism としての普遍性は含まない。
+3.9,SerrePositivity.BhattScholze.existsUnique_pCompletedPrismHom,ok,向き付き prism の普遍性で完全化後に追加の d 進完備性を仮定,p 進完備化で作った prism の一意な射の延長。
+3.9,SerrePositivity.BhattScholze.deltaPDCompletionPerfectionEquiv,fix,完全化と完備化の順序比較,原文の古典完備化との一致や普遍性とは別の比較同型。module docstring の関連を残す。
+3.10,SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid,ok,完全 prism から perfectoid 環への方向,向き付き完全 prism の商が integral perfectoid。
+3.10,SerrePositivity.BhattScholze.exists_perfectoidTrialPrism,ok,perfectoid 環から完全 prism を作る方向の非自明な枝,p が非単元で θ の核の単項性等を明示した入力。θ と整合する商同型を得る。
+3.10,SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift,ok,完全 prism 間の射の持ち上げ,双方が向き付き、p 非単元の場合の商からの一意な持ち上げ。
+3.10,SerrePositivity.BhattScholze.wittDistinguishedQuotient_isIntegralPerfectoid,ok,完全 Witt 環からの商の方向,完全標数 p の k で distinguished 元による Witt 商が integral perfectoid。
+3.13,SerrePositivity.BhattScholze.deltaRootRelation_singleton_isKoszulResolution,fix,根関係式の一成分の Koszul 正則性,原文の結論は prism 包の存在・完全平坦性・底変換。正則性は別の補助結果。
+4.8,SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismHomLift_to_bounded,ok,標的が有界な向き付き prism の場合,商の環射を prism 射へ一意に持ち上げる。番号は BS 著者版で確認。
+4.8,SerrePositivity.BhattScholze.Andre.perfectPrismHom_ext_to_bounded_target,ok,標的が有界な向き付き prism の場合の一意性,商の射が等しい二つの prism 射は一致。
+4.8,SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismRingHomLift_to_bounded,ok,標的が有界な向き付き prism の場合の環射表示,商との可換性を満たす一意な環射として述べる。
+5.1,SerrePositivity.BhattScholze.OrientedPrism.crystalline,fix,結晶 prism の構成,Notation 5.1 は結晶 prism を仮定して Frobenius ひねり R^(1) を置く。構成は Example 3.3。
+7.2,SerrePositivity.BhattScholze.existsUnique_deltaAdjoinDivisionHom,fix,δ 除算の普遍性,原文の始 prism の構成に使う代数段階。始性そのものは得ていない。
+7.2,SerrePositivity.BhattScholze.DeltaStructure.existsUnique_torsionReductionHom,fix,d ねじれ除去の普遍性,d 正則標的への商の普遍性は原文の構成の一段階。
+7.2,SerrePositivity.BhattScholze.existsUnique_deltaDivisionTorsionHom,fix,除算とねじれ除去を合わせた普遍性,完備化や始 prism の超限構成を含まない。Prop 7.2 の証明に対応する補助として扱う。
+7.3,SerrePositivity.BhattScholze.exists_perfectoidization_of_perfectoid_surjective_quotient,ok,第一文の perfectoid 環の全射商の場合,普遍 perfectoid 化を与える。命題の仮定に商の完備性を明示しない。
+7.3,SerrePositivity.BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient,ok,第一文,半 perfectoid 商の普遍 perfectoid 化の存在。
+7.3,SerrePositivity.BhattScholze.exists_perfectoidization_of_perfectPrism_quotient,ok,第一文の完全 prism の剰余環からの全射商の場合,完全で向き付きの prism、p 非単元を仮定した構成から存在を得る。
+7.3,SerrePositivity.IsPerfectoidization,ok,第一文の普遍性の定義,perfectoid 標的と任意の perfectoid 環への一意な延長を記述。存在定理は別。
+7.4,SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient,ok,全体,半 perfectoid 商の普遍単位が全射。
+7.4,SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre,ok,André の補題を経由する形,同じ全射性を明示された型で与える。
+7.4,SerrePositivity.BhattScholze.exists_surjective_perfectoidization_of_semiperfectoid_quotient,ok,Corollary 7.3 第一文との結合,普遍 perfectoid 化の存在と全射性を一つの命題で述べる。
+7.4,SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope,ok,根の包を経由する証明,半 perfectoid 商の普遍単位が全射。
+7.14,SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed,ok,第一文,p 完全忠実平坦で絶対整閉な integral perfectoid 拡大の存在。
+7.14,SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed,ok,第一文,超限反復を経由する存在定理。別名前空間に同じ結論の窓口がある。
+7.14,SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots,ok,第二文の根の主張の一般化,絶対整閉なら任意の正の次数で両立する冪根。
+7.15,SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpi_isDPMorphism,ok,証明中の φ 引き戻しの PD 比較の一方向,指定したテンソル後の自然射が PD 準同型。mod p ind-syntomic 性は含まない。
+7.15,SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism_of_unconditional,ok,証明中の PD 比較でモニック根の包の普遍性,指定した関係式と ϖ の条件を満たす PD 標的へ一意な射。
+7.15,SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff,ok,証明中の被覆判定の比較,標的の p 正則性とモニック性のもとで Hodge–Tate 側の完全忠実平坦性を PD 側と比較する。
+7.15,SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicRootPerfectoidExtension,fix,モニック根を足す完全忠実平坦拡大,型は R からの一段拡大の存在。原文が直接扱う方程式商 S から T への被覆や mod p ind-syntomic 性は含まない。
+8.1,SerrePositivity.BhattScholze.exists_perfectoidTrialPrism,fix,非自明な perfectoid 環からの試験 prism の存在,Notation 8.1 は固定した完全 prism のイデアル内で distinguished 生成元を選ぶ記法。存在は Theorem 3.10 に対応。
+8.2,SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.perfd,unsure,(2) の離散入力で底の導来対象を受け取る E3 の欄,入力は通常の R-代数。型に Δ の完全化・底変換の式や E∞ 構造が現れないので、この欄に Definition 8.2 を直接付けるかは検収まで保留。
+8.5,SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.limitCone,ok,離散入力に対する極限表示の指定錐の欄,Type u の試験対象で添字付けた錐のデータ。極限性は別の E3.limit_isLimit にあり、#check で型を確認した。
+8.12,SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.excision,ok,離散入力で導来引き戻しを仮定する E3 の欄,始域・標的・イデアルの p 完備性と arc 条件から四角形の極限性を受け取る。
+8.12,SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback,ok,離散な環への帰結,環の perfectoid 化を指定して環の引き戻しを得る。E3 を経由する。
+8.13,SerrePositivity.BhattScholze.prop813CompletedTensorMap_isPerfectoidization,ok,環の普遍 perfectoid 化での完備テンソル版,三つの普遍単位を与えた場合に完備テンソル写像が普遍。原文の導来モノイダル性の環版。
+8.13,SerrePositivity.BhattScholze.exists_prop813BaseChange_of_perfectoid_quotient,ok,環の完備テンソル版で片脚が perfectoid 環からの全射の場合,存在と完備底変換の普遍性。原文の一般の E∞ 版は含まない。
+8.14,SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.universal,ok,離散入力・離散値で普遍性を受け取る E3 の欄,Disc を仮定し H⁰ の環の単位が IsPerfectoidization を満たす。連結性から離散性を示す部分は含まない。
+10.1,SerrePositivity.Almost.IsAlmostZero,ok,通常の加群で I=J_perfd としたときの零化述語,任意のイデアルの零化述語。p 完備性と I=J_perfd は適用側で課す。
+10.1,SerrePositivity.perfectoidIdeal,fix,単項の場合の J_perfd の定義,表のパスは perfectoidIdeal_lemma103 を指す。実体は SerrePositivity.perfectoidIdeal（PerfectoidIdeal/Basic.lean）。Definition 10.1 は almost zero の定義で、核の定義は §10.1 の導入。
+10.2,SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension,ok,拡大閉性で単項 J の場合,導来 p 完備な短完全列の両端が零化されれば中項も零化。
+10.2,SerrePositivity.DerivedCompletion.completedTensor_isZero_of_shortExact,fix,完備導来テンソルの零対象の拡大閉性,任意の元と加群についてテンソル後の零性を述べる一般補助。J-almost zero への適用は別の宣言。
+10.2,SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion,fix,CLMST の Tor 零化への応用,p 冪ねじれ加群の仮定から一般加群の高次 Tor の零化。Prop 10.2 の拡大閉性の宣言ではない。
+10.3,SerrePositivity.BhattScholze.perfectoidIdeal_lemma103,ok,三つの主張で単項 J の場合,核の自己積と商の自己積の同型および混合積の零性。
+10.3,SerrePositivity.BhattScholze.integralPerfectoid_completedQuotientTensorIdeal_isZero,ok,混合積消滅で任意の perfectoid 商の場合,R と R/I が perfectoid なら商と I の完備導来テンソルが零。
+10.3,SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul_isIso,ok,第二の積射で単項 J の場合,指定した完備導来テンソルの商の積射が同型。
+10.3,SerrePositivity.BhattScholze.lemma103_perfectoidTensor,fix,三つの perfectoid 環の完備テンソルの離散性・perfectoid 性,商の自己積の同型を示す証明に利用するが、この型は積射の同型を主張しない。
+10.4,SerrePositivity.BhattScholze.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero,ok,同値の順方向で単項 J と加群の場合,加群の零化から完備導来テンソルが零。Lean 側は加群の完備性を仮定しない。
+10.4,SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_of_completedTensor_isZero,ok,同値の逆方向で単項 J と導来 p 完備加群の場合,完備導来テンソルが零なら核が加群を零化。
+10.7,SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent,ok,mod p^n の冪等性で単項 J の場合,J_perfd の mod p^n 像の自己積が自身に等しい。
+10.7,SerrePositivity.BhattScholze.perfectoidIdeal_conormal_completion_isZero,fix,conormal の導来完備化の消滅,原文は mod p^n 像の冪等性等を述べる。conormal の主張は別で、Lemma 10.3 の応用。
+10.7,SerrePositivity.BhattScholze.perfectoidIdeal_eq_square_sup_pow_mul,fix,mod p^n の冪等性を導く R 上の式,核 K について K=K²+p^nK。原文の mod p^n 像の冪等性を出す補助で、原文の結論は perfectoidIdealMod_idempotent に対応。
+10.11,SerrePositivity.BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3.integral,ok,S_perfd の離散性と perfectoid 性に対応する E3 の欄,Δ の側は含まない。Lean 欄は未完備の整代数も入力に取るため、原典の完備化された整写像の場合と区別して書く。
+10.11,SerrePositivity.BhattScholze.Inputs.exists_perfectoidizationInterfaceE3,fix,E3 界面全体の存在,型は Nonempty E3。対象ごとの prismatic perfection の離散性・perfectoid 性を直接述べる宣言は integral 欄に対応させる。
+10.12,SerrePositivity.CommutativeAlgebra.exists_finiteEtaleStratification,ok,全体,根基商の局所化上で有限エタール・普遍同相に分解。HasEtaleFactorization が p を反転した同型性を含む。
+10.12,SerrePositivity.CommutativeAlgebra.exists_noetherian_finiteEtaleStratification,ok,基底が Noetherian の場合,有限性と Noetherian 仮定で同じ (1)〜(3)。
+10.12,SerrePositivity.CommutativeAlgebra.IsUniversalHomeomorphism,fix,普遍同相の定義,Lemma 10.12 (2) で用いる一般の述語で、層別化の結論そのものではない。
+10.12,SerrePositivity.CommutativeAlgebra.isUniversalHomeomorphism_bijective_of_perfect_reduced,fix,標数 p の完全被約な場合の普遍同相の判定,層別化に使う補助結果。結論は環射の全単射性で、(2) の因子分解ではない。
+16.3,（関連のみ）一元の pd 包＝Lemma 2.38 の r=1,fix,関連モジュールのみ,表には宣言名がない。PrincipalDPPresentation の型は確認したが、原文の δ-PD 対の特徴づけに当たる宣言はこの行にない。
+16.9,SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_semiperfectoid_quotient,fix,誤抽出,表の宣言の型は半 perfectoid 商の普遍単位の全射性で、Theorem 7.4 に対応。著者版 16.9 は q-PD 対の Example で、本文の引用は GR Theorem 16.9.17。

@@ -20,6 +20,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Comple
 
 ## 概要
 二つの主元完備化の H⁰ と PD H⁰ の反射比較、根添加の残余全源 Tor・導来評価比較、係数側の導来還元と raw 残余商、商環上の還元と H⁰ の忠実平坦性、射影モデルの制限、(p,d) 還元、逐次主元完備化後の還元と導来完備性、冪零剰余射による還元、ghost 単射入力。
+BS 著者版 Remark 7.15 の根の包を構成するため、根添加の源の導来還元と完備性を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

@@ -7,16 +7,16 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 public import SerrePositivity.CommutativeAlgebra.Localization.Away
 
 /-!
-# perfectoid 化の環としての excision の帰結（BS 著者版 Cor 8.12 の環版の適用）
+# perfectoid 化の環としての excision の帰結（BS 著者版 Corollary 8.12 の環版の適用）
 
 ## 概要
 excision 図式の四つの普遍環と標準射、CLMST の KL 標準 excision 四角形への接続（整で a の外で同型な場合を含む）。
 
 ## 方針
-Cor 8.12 の環版（PerfectoidizationInterface/Excision）を図式に当てる。
+BS 著者版 Corollary 8.12 の環版（PerfectoidizationInterface/Excision）を図式に当てる。
 
 ## 規約
-Cor 8.12 自体は E3 から導いた定理。
+BS 著者版 Corollary 8.12 自体は E3 から導いた定理。
 
 ## 使われ方
 CLMST。
@@ -179,7 +179,7 @@ set_option backward.defeqAttrib.useBackward true
 /--
 ## 概要
 付値環への一意延長条件の下で、指定された perfectoid 化と B3 の閉側による
-標準 excision 四角形は引き戻しである（BS 著者版 Cor 8.12、印刷 p.69）。
+標準 excision 四角形は引き戻しである（BS 著者版 Corollary 8.12、印刷 p.69）。
 
 ## 方針
 閉側の B3 単位の普遍性を ArcExcision の引用へ渡す。
@@ -231,7 +231,7 @@ theorem klCanonicalExcisionSquare_of_excision
 /--
 ## 概要
 整写像 q が指定元の外で同型なら、標準 perfectoid 化の excision 四角形は引き戻しである
-（BS 著者版 Cor 8.12、印刷 p.69 の系）。
+（BS 著者版 Corollary 8.12、印刷 p.69 の系）。
 
 ## 方針
 主イデアルを消さない条件を生成元の像の非零性へ直し、共通の整拡大・局所化からの
@@ -281,7 +281,7 @@ end PerfectoidizationExcision
 /-! ## 環の excision の引用とその二つの系の集約（旧 Perfectoidization/PerfectoidizationExcisionResults.lean）
 
 ## 概要
-BS 著者版 Cor 8.12（印刷 p.69）の環の引用と、標準閉側四角形に関する二つの系を公開する。
+BS 著者版 Corollary 8.12（印刷 p.69）の環の引用と、標準閉側四角形に関する二つの系を公開する。
 ## 方針
 既存の引用モジュールと、その引用だけから導いた系のモジュールを読み込む。
 ## 規約

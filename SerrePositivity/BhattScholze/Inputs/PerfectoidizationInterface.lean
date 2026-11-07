@@ -6,6 +6,10 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 
 perfectoid 側の文献入力は本ファイルの界面の存在に集約する。
 整代数の普遍環の存在と環の excision は、この界面から証明した定理である。
+
+導来 perfectoid 化の E3 界面の存在をまとめて引用する。
+根拠は BS 著者版 Definition 8.2、Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、
+Corollary 8.11、Corollary 8.12（p.69）、Corollary 8.14（p.70）、Theorem 10.11（p.82）。
 -/
 
 public section
@@ -18,20 +22,18 @@ open SerrePositivity.BhattScholze.PerfectoidizationInterface
 Bhatt–Scholze, *Prisms and prismatic cohomology* の著者版から、導来 perfectoid 化の
 E3 界面の存在を引用する。出典は `paper/refs/BS-prisms-author.pdf`、公開元は
 https://people.mpim-bonn.mpg.de/scholze/prisms.pdf 。
-根拠は Def 8.2、Lemma 8.4（pp.63–64）、Prop 8.5（pp.64–65）、
-Cor 8.11、Cor 8.12（p.69）、Cor 8.14（p.70）、Thm 10.11（p.82）である。
 
 ## 方針
 各欄の導出鎖は `formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3 に対応する。
-Def 8.2 の p 完備 E∞-S 代数から、底の D(R) の関手 perfd、自然な unit、H⁰ の環と
-環準同型の関手性を取る。Lemma 8.4（負次数のコホモロジーの消滅）は界面のどの欄からも読まれないので要求しない（2026-10-26 に欄を削除）。
-Prop 8.5 と同証明の u-small な semiperfectoid cover の Čech 計算・coinitiality
+BS 著者版 Definition 8.2 の p 完備 E∞-S 代数から、底の D(R) の関手 perfd、自然な unit、H⁰ の環と
+環準同型の関手性を取る。BS 著者版 Lemma 8.4（負次数のコホモロジーの消滅）は界面のどの欄からも読まれないので要求しない（2026-10-26 に欄を削除）。
+BS 著者版 Proposition 8.5 と同証明の u-small な semiperfectoid cover の Čech 計算・coinitiality
 （同計画 §2.1）から、Type u の perfectoid 標的の図式上の指定極限錐を得る。
 HA Cor 3.2.2.5 による極限の忘却との整合性に加え、単位・H⁰ の射影の乗法整合性も保持する。
-Cor 8.14 から離散の場合の perfectoid 性と環の射の普遍性を得る。
-Thm 10.11 から p 完備化した整代数の離散性と perfectoid 性を得て、
+BS 著者版 Corollary 8.14 から離散の場合の perfectoid 性と環の射の普遍性を得る。
+整代数の欄では、引用する定理から p 完備化した整代数の離散性と perfectoid 性を得て、
 導来 p 完備化の H⁰ と perfectoid 標的への環 Hom の不変性（同計画 §2.2）で非完備始域へ延長する。
-Prop 8.10 の arc 降下から Cor 8.11、Cor 8.12 の E∞-S 代数の引き戻しへ進み、
+BS 著者版 Proposition 8.10 の arc 降下から BS 著者版 Corollary 8.11、BS 著者版 Corollary 8.12 の E∞-S 代数の引き戻しへ進み、
 HA Cor 3.2.2.5 とスカラー制限の極限保存で D(R) の excision を得る。
 
 ## 規約

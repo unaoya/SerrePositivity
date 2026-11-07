@@ -15,6 +15,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorCartierProducts
 ## 概要
 
 反復した (p, d) 完備化の代数の `H⁰` を二座標の実際の完備化と比べ、反復完備テンソル積の `H⁰` が両方の座標について完備であることを示す。正則な主イデアルの基底変更の後の反復完備テンソル積を、二つの剰余因子の Tor の入力を保ったまま比較し、剰余因子の代数写像から反復 Cartier 商への写像、完備化の単位と代表の類の上の線形な Cartier 比較、完備な純テンソルの類の上の比較を与える。
+BS 著者版 Lemma 3.5 のイデアル比較に関わる、反復完備テンソルの Cartier 商を計算する。
 
 ## 方針
 

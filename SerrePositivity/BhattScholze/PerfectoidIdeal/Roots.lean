@@ -13,6 +13,7 @@ public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 ## 概要
 
 主イデアル商の選んだ perfectoid 化を `perfectoidQuotient` と書き、perfectoid イデアルによる商との同型（`perfectoidIdealQuotientEquiv`）を与える。この商が被約であること（`p` を法としても）から、冪が `(g)` に入る元は perfectoid イデアルに入ることを示し、完備塔の根の座標（`Section2.completedTowerRoot`）が perfectoid イデアルに入ることを具体化する。
+BS 著者版 Theorem 7.4 の全射性と §10.1 の核イデアルを、互換根の所属の判定に使う。
 
 ## 方針
 

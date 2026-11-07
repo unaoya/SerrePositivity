@@ -22,6 +22,7 @@ public import Mathlib.Algebra.Polynomial.AlgebraMap
 
 ## 概要
 無限根初期係数商と通常モニック商、prism 商の p 正則性を使わないモニック pd 包、R/ϖ の標数条件、残余 Koszul 分解と導来評価比較、係数還元、A 係数での (p,d) 還元、raw 残余商と H⁰ の忠実平坦性、raw 包の最初の段の p 正則性、ϖ の持ち上げによる hpR の解消。
+BS 著者版 Remark 7.15 の包に関わる剰余比較を、追加の正則性を置かずに与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -41,7 +42,7 @@ universe u v
 
 完全 prism 上のモニック入力について、R/ϖ と R/p の無限根標準表示に
 実分冪構造・入力分冪公式・pd 普遍性を与える。
-BS Rem 7.15(1)（著者版 p.62）の係数還元における追加正則性を解消する。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の係数還元における追加正則性を解消する。
 
 ## 方針
 
@@ -85,7 +86,7 @@ local notation "Dv" => PrincipalDPPresentation Nv zv
 /-- 概要：原典の係数環上のモニック入力の標準表示に実分冪構造を与える。
 方針：射影的な正次数商により還元した構造を表示環同型で移す。
 規約：prism 商の p 正則性を要求せず、モニック性のみを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
 def perfectPrismVarpiNativeDividedPowers_of_unconditional
     (hf : f.Monic) :
     DividedPowers (principalDPPositiveIdeal zv) :=
@@ -95,7 +96,7 @@ def perfectPrismVarpiNativeDividedPowers_of_unconditional
 /-- 概要：原典の係数環上でも入力元の分冪は全標準生成元に一致する。
 方針：移送公式と還元前の標準値の公式、同型の入力・生成元の比較を使う。
 規約：全次数 n を含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 普遍性への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 普遍性への入力。 -/
 theorem perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional
     (hf : f.Monic) (n : ℕ) :
     (perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow n
@@ -108,7 +109,7 @@ theorem perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional
 /-- 概要：原典の係数環上の実 pd 包から任意の分冪標的への射は一意に存在する。
 方針：移送済みの実分冪構造と標準値を一般の pd 普遍性へ供給する。
 規約：標的は無限根環 Nv の任意の代数。
-使われ方：BS Rem 7.15(1)（著者版 p.62）のモニック入力の実 pd 包の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）のモニック入力の実 pd 包の同定。 -/
 theorem existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
     (hf : f.Monic)
     {B : Type v} [CommRing B] [Algebra Nv B] {I : Ideal B}
@@ -153,7 +154,7 @@ local notation "hInput" => powerRootVarpiPrimeFrobeniusEquiv_input W hW f
 /-- 概要：元の mod p 入力の標準表示は実分冪構造を持つ。
 方針：逆係数入力の実分冪構造を入力を保つ係数環同型で移す。
 規約：prism 商の p 正則性を要求せず、モニック性のみを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の同定。 -/
 def powerRootPrimeFrobeniusDividedPowers_of_unconditional
     (hf : f.Monic) :
     DividedPowers (principalDPPositiveIdeal zp) :=
@@ -163,7 +164,7 @@ def powerRootPrimeFrobeniusDividedPowers_of_unconditional
 /-- 概要：元の入力の n 次分冪は n 次標準生成元。
 方針：入力を保つ係数移送の分冪公式と元の標準値を使う。
 規約：零次数を含む全次数を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 普遍性の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 普遍性の入力。 -/
 theorem powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional
     (hf : f.Monic) (n : ℕ) :
     (powerRootPrimeFrobeniusDividedPowers_of_unconditional W hW f hf).dpow n
@@ -175,7 +176,7 @@ theorem powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional
 /-- 概要：元の mod p 入力の実分冪包から任意の分冪標的への射は一意に存在。
 方針：標準分冪値を持つ一次関係商の一般普遍性を適用する。
 規約：標的は Np の任意の代数と分冪イデアル。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実テンソル比較先の pd 包性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実テンソル比較先の pd 包性。 -/
 theorem existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional
     (hf : f.Monic)
     {B : Type v} [CommRing B] [Algebra Np B] {I : Ideal B}
@@ -195,7 +196,7 @@ end MonicPDEnvelope
 /-! ## ϖ 持上げによる分冪還元の hpR 解消（旧 Andre/Remark715/Unconditional/VarpiPDReduction.lean）
 
 ## 概要
-BS Rem 7.15(1)（著者版 p.62）のモニック入力について、prism 商の p 正則性なしに分冪を降下する。
+BS 著者版 Remark 7.15(1)（著者版 p.62）のモニック入力について、prism 商の p 正則性なしに分冪を降下する。
 
 ## 方針
 コミット 4c97d497 の射影的正次数商の線形切断を使い、元の還元環と元の入力を保つ。
@@ -218,7 +219,7 @@ local notation "J" f => principalDPPositiveIdeal (z f)
 /-- 概要：原典の ϖ の持上げで還元した無限根 pd 包に実分冪構造を与える。
 方針：モニック正次数商の射影性により任意係数元の降下を適用する。
 規約：f のモニック性のみを仮定し、prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の R/ϖ への係数変更。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の R/ϖ への係数変更。 -/
 def perfectPrismVarpiPowerRootDividedPowers_of_unconditional
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) :
@@ -231,7 +232,7 @@ def perfectPrismVarpiPowerRootDividedPowers_of_unconditional
 /-- 概要：ϖ 還元後の入力元の分冪は標準分冪生成元の商像。
 方針：一般射影的係数還元の計算公式を具体的な持上げに適用する。
 規約：全次数を含み、還元前と同じ入力元を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 普遍射の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 普遍射の照合。 -/
 theorem perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (n : ℕ) :
@@ -246,7 +247,7 @@ theorem perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
 /-- 概要：ϖ の持上げによる商への標準射は分冪を保つ。
 方針：一般射影的係数還元の分冪射の定理を使う。
 規約：分冪イデアルは正次数イデアルの実商像。
-使われ方：BS Rem 7.15（著者版 p.62）の係数還元の構造射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数還元の構造射。 -/
 theorem perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) :
@@ -265,7 +266,7 @@ end VarpiPDReduction
 /-! ## hpR を使わない無限根モニック入力の実残余 Koszul 分解（旧 Andre/Remark715/Unconditional/PowerRootResidueKoszul.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の raw 包について、mod(p,d) の有限 δ 関係列は
+BS 著者版 Remark 7.15（著者版 p.62）の元の raw 包について、mod(p,d) の有限 δ 関係列は
 hpR なしに Koszul 分解を与える。
 
 ## 方針
@@ -302,7 +303,7 @@ include hf in
 /-- 概要：最初の実 δ 関係は mod(p,d) の自由環で正則。
 方針：係数商との交換で負のモニック入力へ移し、多項式の平坦性を用いる。
 規約：d mod p の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の hpR なしの有限残余帰納法の初項。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の hpR なしの有限残余帰納法の初項。 -/
 theorem powerRootPrismMonicFirst_mod_pair_regular_of_unconditional :
     IsSMulRegular (L₀ ⧸ K) (q (deltaDivisionIteratedRelation E dP a default 0)) := by
   have hK : (KP).map (MvPolynomial.C : P →+* L₀) = K := by
@@ -335,7 +336,7 @@ include hf in
 /-- 概要：元の有限 δ 関係列は mod(p,d) で全深さにおいて弱正則。
 方針：モニック初項、完全 prism の p 正則性、自由環の ghost 単射性を一般残余定理へ渡す。
 規約：hpR や正次数を追加せず、元の全有限関係を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の無条件の実導来還元の Tor 消滅。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無条件の実導来還元の Tor 消滅。 -/
 theorem powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional (N : ℕ) :
     RingTheory.Sequence.IsWeaklyRegular (L₀ ⧸ K)
       (List.ofFn fun i : Fin (N + 1) =>
@@ -353,7 +354,7 @@ include hf in
 /-- 概要：元の有限 δ 関係列は mod(p,d) で Koszul 分解。
 方針：既証の弱正則列の分解判定を適用する。
 規約：hpR と正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実剰余 Tor 計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実剰余 Tor 計算。 -/
 theorem powerRootPrismMonicFiniteResidue_isKoszulResolution_of_unconditional (N : ℕ) :
     SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) =>
       q (deltaDivisionIteratedRelation E dP a default i.val)) :=
@@ -364,7 +365,7 @@ include hf in
 /-- 概要：実評価関係の全有限深さの残余 Koszul 複体も分解を与える。
 方針：δ 反復列と実評価列の三角比較を用いる。
 規約：元の係数商・実関係を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の全評価源への Tor 移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全評価源への Tor 移送。 -/
 theorem powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_unconditional
     (N : ℕ) :
     SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) =>
@@ -378,7 +379,7 @@ include hf in
 /-- 概要：実残余自由 δ 射に沿う一つの有限源商の正次数 Tor は零。
 方針：源グラフの Koszul 分解で実評価関係のホモロジーへ移す。
 規約：δ 深さと正次数のすべてを扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の無条件の実導来剰余比較の有限入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無条件の実導来剰余比較の有限入力。 -/
 theorem powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional
     (N i : ℕ) :
     Subsingleton (SerrePositivity.TorAlg ψ (i + 1)
@@ -404,7 +405,7 @@ include hf in
 /-- 概要：元の全評価源の、実残余自由 δ 射に沿う正次数 Tor は零。
 方針：有限深さの消滅を、証明済みの Tor と逐次余極限の交換で全評価環へ渡す。
 規約：hpR や新しい交換仮定を残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の無条件の標準導来 augmentation の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無条件の標準導来 augmentation の入力。 -/
 theorem powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional (i : ℕ) :
     letI := deltaDivisionSourceEvaluationAlgebra E a
     Subsingleton (SerrePositivity.TorAlg ψ (i + 1) P) := by
@@ -421,7 +422,7 @@ end PowerRootResidueKoszul
 /-! ## 元の無限根モニック残余源の無条件の導来評価比較（旧 Andre/Remark715/Unconditional/PowerRootResidueSource.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実残余自由 δ 源の導来評価は、
+BS 著者版 Remark 7.15（著者版 p.62）の元の実残余自由 δ 源の導来評価は、
 元の raw (p,d) 剰余の single 対象に一致する。
 
 ## 方針
@@ -465,7 +466,7 @@ include hf in
 /-- 概要：Tor対称性で、同じ実残余終域をβに沿って導来拡大するための消滅条件を得る。
 方針：有限 δ 深さの Tor 消滅を既存の逐次余極限と Tor 対称性で移す。
 規約：元の一元入力を固定し、hpR と正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の標準導来 augmentation の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準導来 augmentation の入力。 -/
 theorem powerRootPrismMonicResidueSourceEval_torVanishing_of_unconditional :
     scalarExtensionTorVanishing β₁ Mψ := by
   intro n hn
@@ -491,7 +492,7 @@ include hf in
 /-- 概要：無限根モニック入力の実残余終域の導来評価は raw (p,d) 商の次数零対象と標準同型。
 方針：高次 Tor 消滅による標準 augmentation と、通常残余テンソルの既存同型を合成する。
 規約：同じ元の自由 δ 源射と評価射を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数側の実導来剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数側の実導来剰余比較。 -/
 def powerRootPrismMonicResidueSourceDerivedIso_of_unconditional :
     (boundedAboveDerivedBaseChange β₁).obj (boundedAboveDerivedSingleFunctor.obj Mψ) ≅
       boundedAboveDerivedSingleFunctor.obj (ModuleCat.of P₁ Res₁) := by
@@ -518,7 +519,7 @@ end PowerRootResidueSource
 /-! ## 元の無限根入力の実係数還元の無条件比較（旧 Andre/Remark715/Unconditional/PowerRootCoefficientReduction.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
+BS 著者版 Remark 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
 
 ## 方針
 hpR なしの実導来評価比較と、商射の全射性による係数作用の降下を用いる。
@@ -562,7 +563,7 @@ local notation "r₀" => Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal E₀
 /-- 概要：一般モニック f/d 包の自由 δ 源上の三因子導来還元対象。
 方針：評価・除算の二因子導来テンソルを実 (p,d) 商のスカラー対象とテンソルする。
 規約：導来還元の実対象を明示する。平坦性は定義に含めない。
-使われ方：BS Rem 7.15（著者版 p.62）の実商還元を raw 剰余へ比較する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実商還元を raw 剰余へ比較する。 -/
 abbrev PowerRootPrismMonicSourceCoefficientReduced_of_unconditional :=
   boundedAboveDerivedTensor.obj
     (boundedAboveDerivedTensor.obj
@@ -572,7 +573,7 @@ abbrev PowerRootPrismMonicSourceCoefficientReduced_of_unconditional :=
 /-- 概要：無限根モニック入力について、係数商による実三因子還元は既存raw(p,d)商の次数零対象に一致する。
 方針：一般の結合子比較と標準導来評価比較を合成する。
 規約：完全 prism とモニック性のみを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数商への実還元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数商への実還元。 -/
 def powerRootPrismMonicSourceCoefficientResidueIso_of_unconditional (hf : f.Monic) :
     PowerRootPrismMonicSourceCoefficientReduced_of_unconditional W hW f ≅
       boundedAboveDerivedSingleFunctor.obj MRes := by
@@ -591,7 +592,7 @@ def powerRootPrismMonicSourceCoefficientResidueIso_of_unconditional (hf : f.Moni
 /-- 概要：実係数還元のH0は、βによる実源作用を持つ既存raw残余商と加群同型。
 方針：一般の結合子比較と標準導来評価比較を合成する。
 規約：完全 prism とモニック性のみを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数商への実還元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数商への実還元。 -/
 def powerRootPrismMonicSourceCoefficientResidueHomologyZeroIso_of_unconditional (hf : f.Monic) :
     ((DerivedCategory.homologyFunctor (ModuleCat L₀) 0).obj
       (PowerRootPrismMonicSourceCoefficientReduced_of_unconditional W hW f).obj) ≅ MRes :=
@@ -603,7 +604,7 @@ def powerRootPrismMonicSourceCoefficientResidueHomologyZeroIso_of_unconditional 
 /-- 概要：実係数商還元の非零次数ホモロジーは、同じ明示入力の下で零。
 方針：一般の結合子比較と標準導来評価比較を合成する。
 規約：完全 prism とモニック性のみを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数商への実還元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数商への実還元。 -/
 theorem powerRootPrismMonicSourceCoefficientResidue_homology_isZero_of_unconditional
     (hf : f.Monic)
     (i : ℤ) (hi : i ≠ 0) :
@@ -622,7 +623,7 @@ end PowerRootCoefficientReduction
 /-! ## 元の無限根入力の実係数還元の無条件比較（旧 Andre/Remark715/Unconditional/PowerRootQuotientDerived.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
+BS 著者版 Remark 7.15（著者版 p.62）の元の自由 δ 源上の実導来還元を、同じ raw 残余商へ比較する。
 
 ## 方針
 hpR なしの実導来評価比較と、商射の全射性による係数作用の降下を用いる。
@@ -666,7 +667,7 @@ local notation "r₀" => Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal E₀
 /-- 概要：実二因子導来テンソルを実商環Q上へ基底変更した対象。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 abbrev PowerRootPrismMonicSourceQuotientDerived_of_unconditional :=
   (boundedAboveDerivedBaseChange q₀).obj
     (boundedAboveDerivedTensor.obj
@@ -675,7 +676,7 @@ abbrev PowerRootPrismMonicSourceQuotientDerived_of_unconditional :=
 /-- 概要：raw残余商上のβを経由する源作用の、実商環への標準降下。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientResidueMap_of_unconditional : Q₀ →+* Res₀ :=
   Ideal.Quotient.lift K₀ ((r₀).comp ((j₀).comp β₀)) (by
     change K₀ ≤ RingHom.ker ((r₀).comp ((j₀).comp β₀))
@@ -697,7 +698,7 @@ def powerRootPrismMonicSourceQuotientResidueMap_of_unconditional : Q₀ →+* Re
 /-- 概要：商代表元の作用は、β、raw係数射、残余商射の合成である。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 theorem powerRootPrismMonicSourceQuotientResidueMap_mk_of_unconditional (x : L₀) :
     powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f (q₀ x) =
       r₀ (j₀ (β₀ x)) := rfl
@@ -705,7 +706,7 @@ theorem powerRootPrismMonicSourceQuotientResidueMap_mk_of_unconditional (x : L�
 /-- 概要：商環作用をqで制限すると、前工程のβによる実L加群になる。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientResidueRestrictionIso_of_unconditional :
     letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
     letI : Module Q₀ Res₀ := Algebra.toModule
@@ -735,7 +736,7 @@ def powerRootPrismMonicSourceQuotientResidueRestrictionIso_of_unconditional :
 /-- 概要：実商環上の基底変更を制限すると、既存の実三因子還元に一致する。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientDerivedRestrictionIso_of_unconditional :
     (boundedAboveDerivedRestrictScalars q₀).obj
         (PowerRootPrismMonicSourceQuotientDerived_of_unconditional W hW f) ≅
@@ -746,7 +747,7 @@ def powerRootPrismMonicSourceQuotientDerivedRestrictionIso_of_unconditional :
 /-- 概要：実商環上の還元のホモロジーを制限した対象と、raw残余商とのH0同型。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional (hf : f.Monic) :
     (ModuleCat.restrictScalars q₀).obj
       ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
@@ -762,7 +763,7 @@ def powerRootPrismMonicSourceQuotientDerivedRestrictedH0Iso_of_unconditional (hf
 /-- 概要：無限根モニック入力について、実商環上の還元そのものの非零次数ホモロジーが消える。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 theorem powerRootPrismMonicSourceQuotientDerived_homology_isZero_of_unconditional
     (hf : f.Monic)
     (i : ℤ) (hi : i ≠ 0) :
@@ -786,7 +787,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：実商環上でのH0同型。qの全射性により、L線形比較を実Q線形比較へ昇格する。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientDerivedH0Iso_of_unconditional (hf : f.Monic) :
     letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
     letI : Module Q₀ Res₀ := Algebra.toModule
@@ -833,7 +834,7 @@ local notation "X₀" => PowerRootPrismMonicSourceQuotientDerived_of_uncondition
 /-- 概要：無限根モニック入力の実商還元は、標準t構造の非負部分に属する。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 theorem powerRootPrismMonicSourceQuotientDerived_isGE_zero_of_unconditional
     (hf : f.Monic) :
     DerivedCategory.IsGE (X₀).obj 0 := by
@@ -845,7 +846,7 @@ theorem powerRootPrismMonicSourceQuotientDerived_isGE_zero_of_unconditional
 /-- 概要：同じ入力の下で標準t構造の非正部分にも属する。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 theorem powerRootPrismMonicSourceQuotientDerived_isLE_zero_of_unconditional
     (hf : f.Monic) :
     DerivedCategory.IsLE (X₀).obj 0 := by
@@ -857,7 +858,7 @@ theorem powerRootPrismMonicSourceQuotientDerived_isLE_zero_of_unconditional
 /-- 概要：実Q上の還元対象は、作用を降下した既存raw残余商の次数零対象と同型。
 方針：実商射の全射性と係数制限のホモロジー比較で、前工程の具体的比較を商作用へ降下する。
 規約：構成する各作用は元の自由 δ 源射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A/(p,d) 上への比較。 -/
 def powerRootPrismMonicSourceQuotientDerivedSingleIso_of_unconditional (hf : f.Monic) :
     letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
     letI : Module Q₀ Res₀ := Algebra.toModule
@@ -879,7 +880,7 @@ end PowerRootQuotientDerived
 /-! ## 元の A 係数における無限根源の実 (p,d) 還元（旧 Andre/Remark715/Unconditional/PowerRootAResidue.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の無限根モニック源について、
+BS 著者版 Remark 7.15（著者版 p.62）の元の無限根モニック源について、
 A/(p,d) に沿う実導来還元を、同じ raw 残余商の single 対象へ同定する。
 
 ## 方針
@@ -915,7 +916,7 @@ local notation "q₀" => Ideal.Quotient.mk K₀
 /-- 概要：元の係数イデアル (p,d) の拡張は無限根自由 δ 源の実 (p,dP) イデアル。
 方針：二元生成イデアルの像と係数射の定義を計算する。
 規約：prism の完全性も hpR も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の係数還元の正確な型の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数還元の正確な型の照合。 -/
 theorem powerRootSourcePDIdeal_map_of_unconditional : (I₀).map C₀ = K₀ := by
   rw [Ideal.map_span, Set.image_pair, map_natCast]
   rfl
@@ -923,7 +924,7 @@ theorem powerRootSourcePDIdeal_map_of_unconditional : (I₀).map C₀ = K₀ := 
 /-- 概要：A/(p,d) から元の自由 δ 源の実残余商への標準係数射。
 方針：拡張イデアルの等式で元の A 係数射を商へ降下する。
 規約：元の全係数の像を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の実残余商の元の基底作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実残余商の元の基底作用。 -/
 def powerRootSourceQuotientCoefficientMap_of_unconditional : R₀ →+* Q₀ :=
   Ideal.quotientMap K₀ C₀ (by
     rw [← powerRootSourcePDIdeal_map_of_unconditional W]
@@ -933,7 +934,7 @@ local notation "κ₀" => powerRootSourceQuotientCoefficientMap_of_unconditional
 /-- 概要：元の A/(p,d) 導来還元と実自由 δ 源商の導来還元の係数制限は同型。
 方針：自由な係数代数の一般正方形比較を拡張イデアルの等式で移す。
 規約：実導来対象と射影モデルだけを引数にし、hpR を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A 作用に沿う実剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A 作用に沿う実剰余比較。 -/
 def powerRootSourcePDDerivedSquareIso_of_unconditional
     (X : DerivedCategory.Minus (ModuleCat.{u} L₀)) (M : BoundedAboveDerivedModel X.obj) :
     (boundedAboveDerivedBaseChange (Ideal.Quotient.mk I₀)).obj
@@ -978,7 +979,7 @@ local notation "LCoef" => C₀
 /-- 概要：一般モニック f/d 包の実二因子導来対象を元の係数環 A へ制限する。
 方針：二重多項式係数包含に沿う既存の導来係数制限を適用する。
 規約：有限性やモニック性は対象の定義には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数環上の実 prismatic 源。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数環上の実 prismatic 源。 -/
 abbrev PowerRootPrismMonicSourceCoefficientObject_of_unconditional :=
   (boundedAboveDerivedRestrictScalars LCoef).obj X₀
 
@@ -988,7 +989,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：元の A/(p,d) に沿う実還元は、実自由 δ 源商上の還元の係数制限と同型。
 方針：二重多項式源に対する既存の一般導来係数正方形比較を再利用する。
 規約：正方形比較自体にはモニック性も有限性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余の元の係数作用への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余の元の係数作用への比較。 -/
 def powerRootPrismMonicSourceCoefficientPDReductionIso_of_unconditional :
     (boundedAboveDerivedBaseChange (Ideal.Quotient.mk I₀)).obj
         (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f) ≅
@@ -1005,7 +1006,7 @@ local notation "Y₀" => CategoryTheory.Functor.obj
 /-- 概要：元のA上の実モニック族添加対象の実(p,d)還元と、作用を制限したraw商のsingle比較。
 方針：元の係数商への実正方形比較と、実源商上の正規化比較を合成する。
 規約：完全 prism とモニック性のみを使う。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
 def powerRootPrismMonicSourceCoefficientPDResidueIso_of_unconditional (hf : f.Monic) :
     letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
     letI : Module Q₀ Res₀ := Algebra.toModule
@@ -1020,7 +1021,7 @@ def powerRootPrismMonicSourceCoefficientPDResidueIso_of_unconditional (hf : f.Mo
 /-- 概要：元のA上の実還元のH0と、標準係数作用を制限したraw商の加群同型。
 方針：元の係数商への実正方形比較と、実源商上の正規化比較を合成する。
 規約：完全 prism とモニック性のみを使う。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
 def powerRootPrismMonicSourceCoefficientPDResidueH0Iso_of_unconditional (hf : f.Monic) :
     letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
     letI : Module Q₀ Res₀ := Algebra.toModule
@@ -1035,7 +1036,7 @@ def powerRootPrismMonicSourceCoefficientPDResidueH0Iso_of_unconditional (hf : f.
 /-- 概要：元のA上の実(p,d)還元の非零次数ホモロジーは零。
 方針：元の係数商への実正方形比較と、実源商上の正規化比較を合成する。
 規約：完全 prism とモニック性のみを使う。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の剰余入力。 -/
 theorem powerRootPrismMonicSourceCoefficientPDResidue_homology_isZero_of_unconditional
     (hf : f.Monic)
     (i : ℤ) (hi : i ≠ 0) :
@@ -1056,7 +1057,7 @@ end PowerRootAResidue
 
 ## 概要
 P/(p,dP,f(Y₀)) を A/(p,d) 上の通常モニック無限根商と比較する。
-BS Rem 7.15（著者版 p.62）の raw 残余商へ渡す係数の忠実平坦性。
+BS 著者版 Remark 7.15（著者版 p.62）の raw 残余商へ渡す係数の忠実平坦性。
 
 ## 方針
 係数商と無限根環の交換を用い、同じ f の関係を課してから係数作用を照合する。
@@ -1092,7 +1093,7 @@ local notation "M" => PowerRootPolynomialQuotient R p hp (f.map q)
 /-- 概要：初期係数イデアルは係数 (p,d) の拡張と f(Y₀) の関係の和。
 方針：一元分子族の像と二元係数イデアルの像を展開する。
 規約：モニック性や正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の同じ通常商の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の同じ通常商の比較。 -/
 theorem initialCoefficientIdeal_eq : J = IP ⊔ Ideal.span {y} := by
   rw [deltaDivisionFirstBaseIdeal, Ideal.map_span, Set.image_pair, map_natCast]
   congr 1
@@ -1103,7 +1104,7 @@ theorem initialCoefficientIdeal_eq : J = IP ⊔ Ideal.span {y} := by
 /-- 概要：初期係数商は係数商上で f(Y₀) を零にする無限根環と環同型。
 方針：係数商と関係商の順序を交換し、係数還元の入力評価公式を使う。
 規約：通常の元の商を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の通常モニック商への係数比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常モニック商への係数比較。 -/
 def initialCoefficientPrincipalEquiv : Q ≃+* Pbar ⧸ Ideal.span {ybar} := by
   let e := powerRootCoefficientIdealQuotientEquiv A p hp I
   have he : e (Ideal.Quotient.mk IP y) = ybar := by
@@ -1127,7 +1128,7 @@ def initialCoefficientPrincipalEquiv : Q ≃+* Pbar ⧸ Ideal.span {ybar} := by
 /-- 概要：主関係商との比較は元の無限根環の全代表元を保つ。
 方針：二重商と係数還元の代表元公式を合成する。
 規約：係数・根変数に限定せず全ての元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な係数射の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な係数射の同定。 -/
 theorem initialCoefficientPrincipalEquiv_mk (x : P) :
     initialCoefficientPrincipalEquiv (p := p) d f (Ideal.Quotient.mk J x) =
       Ideal.Quotient.mk _ (powerRootCoefficientIdealQuotientMap A p hp I x) := by
@@ -1136,7 +1137,7 @@ theorem initialCoefficientPrincipalEquiv_mk (x : P) :
 /-- 概要：初期係数商を既存の PowerRootPolynomialQuotient そのものへ同定する。
 方針：f(Y₀) の主イデアルと通常多項式から拡張した関係イデアルの一致を使う。
 規約：モニック性は同型の仮定にしない。
-使われ方：BS Rem 7.15（著者版 p.62）の既存のモニック商基底 API への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の既存のモニック商基底 API への接続。 -/
 def initialCoefficientEquiv : Q ≃+* M :=
   (initialCoefficientPrincipalEquiv (p := p) d f).trans
     (Ideal.quotEquivOfEq (powerRootPolynomialQuotient_ideal R p hp (f.map q)).symm)
@@ -1144,7 +1145,7 @@ def initialCoefficientEquiv : Q ≃+* M :=
 /-- 概要：標準モニック商への同型は元の係数を同じ係数商の標準像へ送る。
 方針：主関係商の代表元公式と無限根係数還元の公式を使う。
 規約：全ての A 係数を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の A/(p,d) 作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A/(p,d) 作用の照合。 -/
 theorem initialCoefficientEquiv_coeff (x : A) :
     initialCoefficientEquiv (p := p) d f (Ideal.Quotient.mk J (algebraMap A P x)) =
       algebraMap R M (q x) := by
@@ -1155,14 +1156,14 @@ theorem initialCoefficientEquiv_coeff (x : A) :
 /-- 概要：A/(p,d) から元の初期係数商への係数射。
 方針：通常モニック商の係数射を比較同型で戻す。
 規約：次の全係数公式で自然な作用を検証する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 残余商への係数射の合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 残余商への係数射の合成。 -/
 def initialCoefficientBaseMap : R →+* Q :=
   (initialCoefficientEquiv (p := p) d f).symm.toRingHom.comp (algebraMap R M)
 
 /-- 概要：初期係数商の係数射は元の係数の標準商像で与えられる。
 方針：係数を保つ比較同型の単射性を使う。
 規約：元の A の任意元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な基底作用の保証。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な基底作用の保証。 -/
 theorem initialCoefficientBaseMap_mk (x : A) :
     initialCoefficientBaseMap (p := p) d f (q x) = Ideal.Quotient.mk J (algebraMap A P x) := by
   apply (initialCoefficientEquiv (p := p) d f).injective
@@ -1172,14 +1173,14 @@ theorem initialCoefficientBaseMap_mk (x : A) :
 /-- 概要：自然な係数射による初期係数商の代数構造。
 方針：検証済みの係数環射から構成する。
 規約：利用時に局所導入する。
-使われ方：BS Rem 7.15（著者版 p.62）の忠実平坦性の型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の忠実平坦性の型。 -/
 @[instance_reducible] def initialCoefficientAlgebra : Algebra R Q :=
   (initialCoefficientBaseMap (p := p) d f).toAlgebra
 
 /-- 概要：通常モニック商との比較は A/(p,d) 代数同型。
 方針：係数射の定義から可換性を確認する。
 規約：単なる環同型でなく同じ係数作用を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の基底と忠実平坦性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底と忠実平坦性の移送。 -/
 def initialCoefficientAlgEquiv :
     let := initialCoefficientAlgebra (p := p) d f
     Q ≃ₐ[R] M := by
@@ -1190,7 +1191,7 @@ def initialCoefficientAlgEquiv :
 /-- 概要：モニック初期係数商は A/(p,d) 上自由。
 方針：既存の通常モニック無限根商の基底を係数代数同型で戻す。
 規約：正次数・hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の初期係数商の平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期係数商の平坦性。 -/
 theorem initialCoefficient_free (hf : f.Monic) :
     let := initialCoefficientAlgebra (p := p) d f
     Module.Free R Q := by
@@ -1201,7 +1202,7 @@ theorem initialCoefficient_free (hf : f.Monic) :
 /-- 概要：正次数モニック初期係数商は A/(p,d) 上忠実平坦。
 方針：零係数商を分け、非零枝では次数保存と既存のモニック商の忠実平坦性を使う。
 規約：係数商の非零性を追加せず、hpR も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 残余商への忠実平坦性の第一段。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 残余商への忠実平坦性の第一段。 -/
 theorem initialCoefficient_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := initialCoefficientAlgebra (p := p) d f
     Module.FaithfullyFlat R Q := by
@@ -1227,7 +1228,7 @@ end Comparison
 
 ## 概要
 初期係数商の通常モニック比較を一般の raw 残余商の忠実平坦性へ合成する。
-BS Rem 7.15（著者版 p.62）の A1-b の鎖の第一段を供給する。
+BS 著者版 Remark 7.15（著者版 p.62）の A1-b の鎖の第一段を供給する。
 
 ## 方針
 元の全係数で合成射を照合し、A1-b の自然な係数制限作用と既存 H⁰ 比較へ移す。
@@ -1267,7 +1268,7 @@ include hW in
 /-- 概要：元の無限根自由 δ 源でも p の乗算は単射。
 方針：完全 prism の p 正則性を自由多項式環へ平坦移送する。
 規約：prism 商の p 正則性とは異なり、hpR を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の一般 raw 残余商の既存 API への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一般 raw 残余商の既存 API への入力。 -/
 theorem freeDelta_prime_regular : Function.Injective (fun x : L₀ => (p : L₀) * x) := by
   simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
     (show IsSMulRegular P (p : P) from hpP).of_flat (S := L₀)
@@ -1280,7 +1281,7 @@ local notation "r" => Ideal.Quotient.mk (deltaAdjoinDivisionResidueIdeal E dP a)
 /-- 概要：初期商を経由した A/(p,d) から raw 残余商への係数射。
 方針：検証済みの二つの標準係数射を合成する。
 規約：必要な p 正則性・ghost 単射性・distinguished 単元は内部供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数作用での忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数作用での忠実平坦性。 -/
 def rawResidueBaseMap : R →+* Res :=
   (deltaAdjoinDivisionResidueBaseMap E hpP hpL hg dP a (hd).unit (hd).unit_spec).comp
     (initialCoefficientBaseMap (p := p) W.generator f)
@@ -1288,7 +1289,7 @@ def rawResidueBaseMap : R →+* Res :=
 /-- 概要：合成係数射は元の A の全係数の標準 raw 剰余像に一致する。
 方針：初期商と raw 残余商への代表元公式を順に使う。
 規約：任意の係数を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な作用の確認。 -/
 theorem rawResidueBaseMap_mk (x : A) :
     rawResidueBaseMap W hW f (Ideal.Quotient.mk _ x) = r (j (algebraMap A P x)) := by
   rw [rawResidueBaseMap, RingHom.comp_apply, initialCoefficientBaseMap_mk,
@@ -1297,7 +1298,7 @@ theorem rawResidueBaseMap_mk (x : A) :
 /-- 概要：初期商を経由した係数射は A1-b の実源商を経由する係数射と同じ。
 方針：A/(p,d) の全代表元で二つの合成を比較する。
 規約：初期商 Qinit と自由 δ 源商 Q₀ を同一視しない。
-使われ方：BS Rem 7.15（著者版 p.62）の受渡し指定の自然な R 作用を保証する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の受渡し指定の自然な R 作用を保証する。 -/
 theorem rawResidueBaseMap_eq_source : rawResidueBaseMap W hW f = (ψ).comp κ := by
   apply Ideal.Quotient.ringHom_ext
   apply RingHom.ext
@@ -1310,14 +1311,14 @@ theorem rawResidueBaseMap_eq_source : rawResidueBaseMap W hW f = (ψ).comp κ :=
 /-- 概要：検証済みの自然な係数射による raw 残余商の R 代数構造。
 方針：元の合成環射から定める。
 規約：既存の自然係数制限作用との一致は上の射の等式で保証する。
-使われ方：BS Rem 7.15（著者版 p.62）の忠実平坦性の合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の忠実平坦性の合成。 -/
 @[instance_reducible] def rawResidueAlgebra : Algebra R Res :=
   (rawResidueBaseMap W hW f).toAlgebra
 
 /-- 概要：元の raw 残余商は合成係数射によって A/(p,d) 上忠実平坦。
 方針：初期商の忠実平坦性と既存の初期商上の raw 残余商の忠実平坦性を合成する。
 規約：モニック性・正次数以外の追加仮定を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の A1-b 指定作用への移送の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-b 指定作用への移送の入力。 -/
 theorem rawResidueBase_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := rawResidueAlgebra W hW f
     Module.FaithfullyFlat R Res := by
@@ -1335,7 +1336,7 @@ local notation "MRes" => (CategoryTheory.Functor.obj
 /-- 概要：A1-b の指定係数制限作用と初期商経由の作用は同じ元を保つ線形同型で結ばれる。
 方針：全係数での合成射の一致をスカラー作用の一致へ移す。
 規約：元の Res の元を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の正確な受渡し型への忠実平坦性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正確な受渡し型への忠実平坦性の移送。 -/
 def rawResidueRestrictionLinearEquiv :
     letI := (ψ).toAlgebra
     letI : Module Q₀ Res := Algebra.toModule
@@ -1360,7 +1361,7 @@ def rawResidueRestrictionLinearEquiv :
 /-- 概要：A1-b の指定した κ による係数制限のまま、raw 残余商は忠実平坦。
 方針：初期商を経由した忠実平坦性を同じ元を保つ線形同型で移す。
 規約：受渡しの正確な型を保ち、hpR を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A 係数の実還元 H⁰ への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A 係数の実還元 H⁰ への入力。 -/
 theorem rawResidue_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := (ψ).toAlgebra
     letI : Module Q₀ Res := Algebra.toModule
@@ -1375,7 +1376,7 @@ theorem rawResidue_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
 /-- 概要：元の A/(p,d) による実導来還元の H⁰ は忠実平坦。
 方針：既存の A1-b の実 H⁰ 比較へ指定作用での raw 残余商の忠実平坦性を渡す。
 規約：モニック性・正次数だけを追加し、hpR・Tor 消滅・平坦性は追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の A1-b の次の純性・正則性接続への受渡し。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-b の次の純性・正則性接続への受渡し。 -/
 theorem sourceResidueH0_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat R
       ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
@@ -1395,7 +1396,7 @@ end RawResidue
 /-! ## hpR の正則性計算における境界（旧 Andre/Remark715/Unconditional/RegularityBoundary.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の生成元・ϖ 持上げの mod p 正則性は、
+BS 著者版 Remark 7.15（著者版 p.62）の生成元・ϖ 持上げの mod p 正則性は、
 完全 prism の商の p 正則性と同値である。
 
 ## 方針
@@ -1420,7 +1421,7 @@ set_option backward.defeqAttrib.useBackward true
 /-- 概要：完全 prism の生成元の mod p 正則性は商の p 正則性と同値。
 方針：完全 δ 環の p 正則性を使って、既存の順序交換を逆向きにも適用する。
 規約：有界 p ねじれだけでこの同値の右辺を得たとは扱わない。
-使われ方：BS Rem 7.15（著者版 p.62）の hpR を保持する正則性補題の判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の hpR を保持する正則性補題の判定。 -/
 theorem perfectPrism_generator_modPrime_regular_iff
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) :
     IsSMulRegular (A ⧸ Ideal.span {(p : A)})
@@ -1435,7 +1436,7 @@ theorem perfectPrism_generator_modPrime_regular_iff
 /-- 概要：ϖ 持上げの mod p 正則性も商の p 正則性と同値。
 方針：x^p=d modulo p と正の冪の正則性の同値を、生成元の判定へ渡す。
 規約：零環も含み、prism 商の追加仮定を導入しない。
-使われ方：BS Rem 7.15（著者版 p.62）の旧正則係数降下の必要条件を明示する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の旧正則係数降下の必要条件を明示する。 -/
 theorem perfectPrismVarpiLift_modPrime_regular_iff
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) :
     IsSMulRegular (A ⧸ Ideal.span {(p : A)})
@@ -1456,7 +1457,7 @@ theorem perfectPrismVarpiLift_modPrime_regular_iff
 /-- 概要：完全 prism の任意生成元冪商の p 冪ねじれは既定の冪で消える。
 方針：完全性・生成元の distinguished 性と正則性を既存の冪ねじれ定理へ供給する。
 規約：hpR を仮定せず、p 正則性とは区別する。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化比較に使える無条件の弱い入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化比較に使える無条件の弱い入力。 -/
 theorem perfectPrism_generator_power_bounded_torsion_of_unconditional
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (n N : ℕ) (x : A ⧸ Ideal.span {W.generator ^ n})
@@ -1470,7 +1471,7 @@ omit [Fact p.Prime] in
 /-- 概要：非零な標数 p 環では p の乗算は単射でない。
 方針：1 と 0 の像が一致することを単射性に渡す。
 規約：有界 p ねじれ・被約性から hpR は従わないことを説明するための一般補題。
-使われ方：BS Rem 7.15（著者版 p.62）の基底変更前の正則性を誤って仮定しないための境界。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底変更前の正則性を誤って仮定しないための境界。 -/
 theorem not_prime_regular_of_charP (R : Type u) [CommRing R] [Nontrivial R]
     [CharP R p] : ¬ IsSMulRegular R (p : R) := by
   intro hp
@@ -1484,7 +1485,7 @@ end RegularityBoundary
 
 ## 概要
 PowerRootMonicPDFlat の hpR は p 正則性ではなく p=0 を意味する。
-BS Rem 7.15(1)（著者版 p.62）の R/ϖ ではこの条件を内部で供給できる。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の R/ϖ ではこの条件を内部で供給できる。
 
 ## 方針
 (ϖ^p)=(p) から p∈(ϖ) を得て、既存の自由性・忠実平坦性を適用する。
@@ -1511,7 +1512,7 @@ local notation "bv" => RingHom.comp (Ideal.Quotient.mk (Ideal.span {perfectPrism
 /-- 概要：原典の R/ϖ では p が零。
 方針：(ϖ^p)=(p) と (ϖ^p)⊆(ϖ) を組み合わせる。
 規約：prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の通常分冪表示への標数条件の供給。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の通常分冪表示への標数条件の供給。 -/
 theorem perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional : (p : Rv) = 0 := by
   have hle : Ideal.span {perfectPrismVarpi W hW ^ p} ≤
       Ideal.span {perfectPrismVarpi W hW} := by
@@ -1527,7 +1528,7 @@ theorem perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional : (p : Rv) = 0 
 /-- 概要：R/ϖ 上のモニック無限根分冪表示環は自由。
 方針：原典の係数商の p=0 を内部で証明して既存の自由性へ渡す。
 規約：正次数も prism 商の p 正則性も不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実係数環上の自由性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実係数環上の自由性。 -/
 theorem powerRootMonicDPPresentation_free_of_unconditional
     (f : Polynomial A) (hf : f.Monic) :
     Module.Free Rv (PrincipalDPPresentation Nv
@@ -1538,7 +1539,7 @@ theorem powerRootMonicDPPresentation_free_of_unconditional
 /-- 概要：R/ϖ 上の正次数モニック無限根分冪表示環は忠実平坦。
 方針：p=0 と、係数商後のモニック性・正次数を既存の忠実平坦性へ供給する。
 規約：原典の正次数条件を保持し、非零性を追加しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の通常代数の忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の通常代数の忠実平坦性。 -/
 theorem powerRootMonicDPPresentation_faithfullyFlat_of_unconditional
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat Rv (PrincipalDPPresentation Nv
@@ -1552,7 +1553,7 @@ end MonicPDFlat
 /-! ## 元の raw 包の最初の有限段の p 正則性（旧 Andre/Remark715/Unconditional/RawInitialRegular.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の無限根モニック入力について、深さ零の実関係商は p 正則。
+BS 著者版 Remark 7.15（著者版 p.62）の無限根モニック入力について、深さ零の実関係商は p 正則。
 
 ## 方針
 定数係数が正則な一次多項式の非零因子判定を、元の mod p 関係に適用する。
@@ -1573,7 +1574,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：定数係数が正則な一次多項式は正則。
 方針：一つの係数の非零因子性から多項式の非零因子性を得る。
 規約：一次係数の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の初期線形関係の p 飽和性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期線形関係の p 飽和性。 -/
 theorem unconditionalLinearPolynomial_regular_of_constant
     {R : Type u} [CommRing R] (c b : R) (hb : IsSMulRegular R b) :
     IsSMulRegular (Polynomial R) (Polynomial.C c * Polynomial.X + Polynomial.C b) := by
@@ -1586,7 +1587,7 @@ theorem unconditionalLinearPolynomial_regular_of_constant
 /-- 概要：指定変数の定数係数正則な一次式は、多変数多項式環でも正則。
 方針：指定変数を分離し、残りの変数への平坦拡大で係数正則性を保つ。
 規約：変数族の有限性と一次係数の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の自由 δ 環の初期関係。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の自由 δ 環の初期関係。 -/
 theorem unconditionalLinearMvPolynomial_regular_of_constant
     {R : Type u} [CommRing R] {τ : Type v} (c b : R) (s : τ) (hb : IsSMulRegular R b) :
     IsSMulRegular (MvPolynomial τ R)
@@ -1617,7 +1618,7 @@ local notation "B" => L ⧸ Ideal.span {g}
 /-- 概要：正則な分子の mod p 像だけで、最初の実 δ 関係は mod p で正則。
 方針：自由環の実 mod p 同型で定数係数正則な一次式へ移す。
 規約：分母の mod p 正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の関係商の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の関係商の p 正則性。 -/
 theorem unconditionalDeltaDivisionUnaryFirst_mod_prime_regular
     (ha : IsSMulRegular (A ⧸ Ideal.span {(p : A)}) (qP (a default))) :
     IsSMulRegular (L ⧸ Ideal.span {(p : L)}) (qL g) := by
@@ -1635,7 +1636,7 @@ theorem unconditionalDeltaDivisionUnaryFirst_mod_prime_regular
 /-- 概要：元の最初の関係商は、正則な分子の mod p 像だけで p 正則。
 方針：自由源の p 正則性と初期関係の mod p 正則性で順序交換する。
 規約：分母の mod p 正則性を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の無限根モニック有限段の初期値。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無限根モニック有限段の初期値。 -/
 theorem unconditionalDeltaDivisionUnaryFirst_prime_regular
     (hpA : IsSMulRegular A (p : A))
     (ha : IsSMulRegular (A ⧸ Ideal.span {(p : A)}) (qP (a default))) :
@@ -1660,7 +1661,7 @@ local notation "I" => deltaDivisionFiniteRelationIdeal E dP a
 /-- 概要：無限根モニック raw 包の深さ零の実有限関係商は p 正則。
 方針：既存のモニック入力の mod p 正則性を初期関係の定数係数判定へ渡す。
 規約：hf のみを要求し、hpR と正次数を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw p 正則性の有限段帰納法の初期値。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw p 正則性の有限段帰納法の初期値。 -/
 theorem powerRootPrismMonicFinite_prime_regular_zero_of_unconditional (hf : f.Monic) :
     IsSMulRegular (L ⧸ I 0) (p : L ⧸ I 0) := by
   have hpP := powerRootPolynomial_primeRegular p hW.p_mul_injective
@@ -1676,7 +1677,7 @@ theorem powerRootPrismMonicFinite_prime_regular_zero_of_unconditional (hf : f.Mo
 /-- 概要：無限根モニック入力の最初の mod p 線形関係は、hpR なしに正則。
 方針：分子のモニック性から定数係数の正則性を供給する。
 規約：任意の変数族を許し、元の非モニック一般形まで無条件化したとはしない。
-使われ方：BS Rem 7.15（著者版 p.62）のモニック入力における旧補題の置換先。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のモニック入力における旧補題の置換先。 -/
 theorem powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
     (hf : f.Monic) {τ : Type v} (s : τ) :
     IsSMulRegular (MvPolynomial τ (P ⧸ Ideal.span {(p : P)}))

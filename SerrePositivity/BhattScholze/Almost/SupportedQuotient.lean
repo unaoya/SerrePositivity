@@ -18,7 +18,7 @@ public import Mathlib.RingTheory.Finiteness.Basic
 全射に沿う perfectoid 化の比較写像の核・余核は perfectoid イデアルで零化される。有限比較の像への全射部分。
 
 ## 方針
-André の補題で絶対整閉な試験拡大を作り、Thm 7.4 で余核を消す。
+André の補題で絶対整閉な試験拡大を作り、BS 著者版 Theorem 7.4 で余核を消す。
 
 ## 規約
 原典の項目ではない。
@@ -31,7 +31,7 @@ universe u
 
 /-! ## Almost kernel support for perfectoidizations of actual surjections（旧 Almost/PerfectoidizationSupportedQuotientKernel.lean）
 
-André's existing Theorem 7.14 supplies an injective AIC perfectoid test extension.
+André's existing BS 著者版 Theorem 7.14 supplies an injective AIC perfectoid test extension.
 The common proof then applies to the actual functorial comparison. The
 comparison is surjective by B4, so its cokernel vanishes. General integral
 modifications remain separate statements.
@@ -143,7 +143,7 @@ variable {R A B C D : Type u}
     {p : ℕ} [Fact p.Prime] {f : A →ₐ[R] C} {g : B →ₐ[R] D}
 
 /-- The actual R-linear comparison has almost-zero kernel and zero cokernel.
-The sole existence citation is the existing BS Theorem 7.14. -/
+The sole existence citation is the existing BS 著者版 Theorem 7.14. -/
 theorem perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel
     (hR : IsIntegralPerfectoid R p)
     (hf : IsPerfectoidization p f.toRingHom) (hg : IsPerfectoidization p g.toRingHom)

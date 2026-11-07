@@ -26,7 +26,7 @@ p 完全忠実平坦性は共通基盤の判定（源と終域が p 正則、mod
 本当の忠実平坦性は述べない。
 
 ## 使われ方
-今は監査だけが読む。Lemma 2.36 (a)・Cor 2.44 で使う予定。
+今は監査だけが読む。BS 著者版 Lemma 2.36 (a)・BS 著者版 Corollary 2.44 で使う予定。
 -/
 
 @[expose] public noncomputable section
@@ -227,7 +227,7 @@ theorem freeDeltaModPFrobenius_moduleFree :
   let := polynomialExpand_moduleFree p (σ × ℕ) (ZMod p) (Fact.out : p.Prime).pos
   exact Module.Free.of_equiv (freeDeltaModPFrobeniusEquiv p σ).symm
 
-/-- 自由δ環の実際のmod p Frobenius作用の剰余環は忠実平坦。 -/
+/-- 自由δ環の実際のmod p Frobenius作用の剰余環は忠実平坦（BS 著者版 Lemma 2.11 の Frobenius の mod p 忠実平坦性）。 -/
 theorem freeDeltaModPFrobenius_moduleFaithfullyFlat :
     Module.FaithfullyFlat (ModP (FreeDeltaRing σ) p) (FreeDeltaModPFrobeniusTarget p σ) := by
   let : Nontrivial (ModP (FreeDeltaRing σ) p) :=
@@ -335,7 +335,7 @@ theorem freeDeltaFrobeniusTarget_p_regular : IsSMulRegular B₀ (p : A₀) := by
   rw [map_natCast] at h
   exact congrArg ULift.down h
 
-/-- G3による、自由整数δ環の実Frobeniusのp完全忠実平坦性。 -/
+/-- G3による、自由整数δ環の実Frobeniusのp完全忠実平坦性（BS 著者版 Lemma 2.11 の Frobenius の p 完全忠実平坦性）。 -/
 theorem freeDeltaFrobenius_isCompletelyFaithfullyFlat :
     IsCompletelyFaithfullyFlat I₀ B₀ :=
   isCompletelyFaithfullyFlat_principal_of_regular (p : A₀)
