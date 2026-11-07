@@ -25098,6 +25098,4817 @@
       ],
       "reason": "各頂点の標準左 Kan 余錐の余極限性から、各 G に対し Hom の制限を自明 Kan ファイブレーションにする向きがある。別の拡張の存在を使う逆向きは残る。",
       "decision": "partial"
+    },
+    "7.3.7.3": {
+      "number": "7.3.7.3",
+      "tag": "047Y",
+      "query": [
+        "exponentiable inner fibration",
+        "relative functor over base",
+        "uncurry",
+        "relative left Kan"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.3",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "base",
+            "exponentiable",
+            "fibration",
+            "functor",
+            "inner",
+            "kan",
+            "left",
+            "over",
+            "relative",
+            "uncurry"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Diagrams/RelativeSectionInitialRestriction.lean",
+              "line": 26,
+              "declaration": "relativeFunctorOverPre_trivialKanFibration_of_leftAnodyne"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "base",
+            "exponentiable",
+            "fibration",
+            "functor",
+            "inner",
+            "kan",
+            "relative",
+            "right",
+            "uncurry",
+            "under"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseInnerFibration.lean",
+              "line": 38,
+              "declaration": "kanRelativeJoinBaseProjection_innerFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "base",
+            "exponentiable",
+            "functor",
+            "inner",
+            "kan",
+            "left",
+            "lifting",
+            "over",
+            "relative",
+            "uncurry"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Bifunctor.lean",
+              "line": 86,
+              "declaration": "Lifting₂.uncurry"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Quadrifunctor.lean",
+              "line": 65,
+              "declaration": "Lifting₄.uncurry"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "base",
+          "exponentiable",
+          "fibration",
+          "functor",
+          "inner",
+          "kan",
+          "left",
+          "over",
+          "relative",
+          "uncurry"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+            "line": 44,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseInnerFibration.lean",
+            "line": 38,
+            "declaration": "kanRelativeJoinBaseProjection_innerFibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "line": 25,
+          "declaration": "relativeFunctorSpace",
+          "source_signature": "def relativeFunctorSpace {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) : SSet.{u} ",
+          "assessment": "relativeFunctorSpace は底上の固定図式の空間。相対左 Kan 性と comma ファイバーの相対余極限の比較もある。可変ファイバーを持つ Fun(C/B,D) の射影について、引き戻し上の非相対左 Kan 性を移す型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+          "line": 44,
+          "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers",
+          "source_signature": "lemma kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] (δ : K ⟶ C) (F : C ⟶ D) : IsRelativeLeftKanExtendedFrom U δ F ↔ ∀ c : C _⦋0⦌, IsRelativeColimitCone U (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ F)) ",
+          "assessment": "relativeFunctorSpace は底上の固定図式の空間。相対左 Kan 性と comma ファイバーの相対余極限の比較もある。可変ファイバーを持つ Fun(C/B,D) の射影について、引き戻し上の非相対左 Kan 性を移す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "relativeFunctorSpace は底上の固定図式の空間。相対左 Kan 性と comma ファイバーの相対余極限の比較もある。可変ファイバーを持つ Fun(C/B,D) の射影について、引き戻し上の非相対左 Kan 性を移す型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.7.4": {
+      "number": "7.3.7.4",
+      "tag": "047Z",
+      "query": [
+        "uncurry",
+        "product of shapes",
+        "relative left Kan",
+        "postcomposition",
+        "constant parameter"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.4",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "constant",
+            "kan",
+            "left",
+            "parameter",
+            "postcomposition",
+            "product",
+            "relative",
+            "shapes",
+            "uncurry"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+              "line": 35,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramReflectedHomPostcomposition.lean",
+              "line": 56,
+              "declaration": "kanDiagramReflectedHomPostcomposition_uncurry"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "constant",
+            "coproduct",
+            "kan",
+            "parameter",
+            "precomposition",
+            "relative",
+            "right",
+            "shapes",
+            "uncurry"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+              "line": 35,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+              "line": 100,
+              "declaration": "constantHom_precomp_bijective_of_parameterRightKan"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "constant",
+            "kan",
+            "left",
+            "parameter",
+            "postcomposition",
+            "product",
+            "relative",
+            "shapes",
+            "uncurry"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Data/Finset/NAry.lean",
+              "line": 281,
+              "declaration": "image_uncurry_product"
+            },
+            {
+              "source": "Mathlib/Analysis/Complex/Harmonic/Liouville.lean",
+              "line": 28,
+              "declaration": "InnerProductSpace.bounded_harmonic_on_complex_plane_is_constant_aux"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "constant",
+          "kan",
+          "left",
+          "parameter",
+          "postcomposition",
+          "product",
+          "relative",
+          "shapes",
+          "uncurry"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+            "line": 35,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+            "line": 52,
+            "declaration": "kanIsRelativeColimitCone_constantFamily"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+          "line": 35,
+          "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily",
+          "source_signature": "lemma kanIsRelativeLeftKanExtendedFrom_constantFamily {A K C D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] (δ : K ⟶ C) (F : C ⟶ D) (hF : IsRelativeLeftKanExtendedFrom U δ F) : IsRelativeLeftKanExtendedFrom ((ihom A).map U) δ (F ≫ constantFunctorMap A D) ",
+          "assessment": "相対左 Kan 図式から関手圏内の定値パラメータ族を作って相対左 Kan 性を保つ。A×C 上の任意の図式の左 Kan 性を仮定し curry に渡す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対左 Kan 図式から関手圏内の定値パラメータ族を作って相対左 Kan 性を保つ。A×C 上の任意の図式の左 Kan 性を仮定し curry に渡す型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.7.5": {
+      "number": "7.3.7.5",
+      "tag": "0480",
+      "query": [
+        "curry",
+        "product shape",
+        "left Kan extension",
+        "functor category",
+        "pointwise"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.5",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "curry",
+            "extension",
+            "functor",
+            "kan",
+            "left",
+            "pointwise",
+            "product",
+            "shape"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+              "line": 35,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseLeftDerived.lean",
+              "line": 78,
+              "declaration": "hasPointwiseRightKanExtension_of_hasPointwiseLeftDerivedFunctor"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "coproduct",
+            "curry",
+            "extension",
+            "functor",
+            "kan",
+            "pointwise",
+            "right",
+            "shape"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseLeftDerived.lean",
+              "line": 78,
+              "declaration": "hasPointwiseRightKanExtension_of_hasPointwiseLeftDerivedFunctor"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseRightDerived.lean",
+              "line": 77,
+              "declaration": "hasPointwiseLeftKanExtension_of_hasPointwiseRightDerivedFunctor"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "curry",
+            "extension",
+            "functor",
+            "kan",
+            "left",
+            "pointwise",
+            "product",
+            "shape"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseLeftDerived.lean",
+              "line": 78,
+              "declaration": "hasPointwiseRightKanExtension_of_hasPointwiseLeftDerivedFunctor"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseRightDerived.lean",
+              "line": 77,
+              "declaration": "hasPointwiseLeftKanExtension_of_hasPointwiseRightDerivedFunctor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "category",
+          "curry",
+          "extension",
+          "functor",
+          "kan",
+          "left",
+          "pointwise",
+          "product",
+          "shape"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+            "line": 35,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftFunctorBoundary.lean",
+            "line": 46,
+            "declaration": "exists_kanRelativeLeft_functor_relative_boundary_extension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean",
+          "line": 35,
+          "declaration": "kanIsRelativeLeftKanExtendedFrom_constantFamily",
+          "source_signature": "lemma kanIsRelativeLeftKanExtendedFrom_constantFamily {A K C D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] (δ : K ⟶ C) (F : C ⟶ D) (hF : IsRelativeLeftKanExtendedFrom U δ F) : IsRelativeLeftKanExtendedFrom ((ihom A).map U) δ (F ≫ constantFunctorMap A D) ",
+          "assessment": "内部 Hom への定値族は扱う。一般の F:A×C→D を A⁰×C から左 Kan 拡張する条件で、その curry が A⁰ から左 Kan 拡張となる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "内部 Hom への定値族は扱う。一般の F:A×C→D を A⁰×C から左 Kan 拡張する条件で、その curry が A⁰ から左 Kan 拡張となる型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.7.6": {
+      "number": "7.3.7.6",
+      "tag": "0481",
+      "query": [
+        "exponentiable",
+        "postcomposition isofibration",
+        "interval pullback",
+        "relative left Kan",
+        "cocartesian edge"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.6",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "edge",
+            "exponentiable",
+            "interval",
+            "isofibration",
+            "kan",
+            "left",
+            "postcomposition",
+            "pullback",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianEdges.lean",
+              "line": 28,
+              "declaration": "kanRelativeJoinInl_base_isCocartesianEdge"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/PostcompositionFiber.lean",
+              "line": 41,
+              "declaration": "cocartesianIntervalPostcompositionFiber_kanComplex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "edge",
+            "exponentiable",
+            "interval",
+            "isofibration",
+            "kan",
+            "precomposition",
+            "pushout",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianEdges.lean",
+              "line": 28,
+              "declaration": "kanRelativeJoinInl_base_isCocartesianEdge"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalIsofibrationDiagram.lean",
+              "line": 26,
+              "declaration": "exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "edge",
+            "exponentiable",
+            "interval",
+            "isofibration",
+            "kan",
+            "left",
+            "postcomposition",
+            "pullback",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/LocallyCartesianClosed/ExponentiableMorphism.lean",
+              "line": 43,
+              "declaration": "ExponentiableMorphism"
+            },
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+              "line": 138,
+              "declaration": "intervalEdge"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "cocartesian",
+          "edge",
+          "exponentiable",
+          "interval",
+          "isofibration",
+          "kan",
+          "left",
+          "postcomposition",
+          "pullback",
+          "relative"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianEdges.lean",
+            "line": 28,
+            "declaration": "kanRelativeJoinInl_base_isCocartesianEdge"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalIsofibrationDiagram.lean",
+            "line": 26,
+            "declaration": "exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianEdges.lean",
+          "line": 28,
+          "declaration": "kanRelativeJoinInl_base_isCocartesianEdge",
+          "source_signature": "lemma kanRelativeJoinInl_base_isCocartesianEdge {K C : SSet.{u}} (p : K ⟶ C) (e : K _⦋1⦌) (he : IsCocartesianEdge p e) : IsCocartesianEdge (relativeJoinBaseProjection p (𝟙 C)) ((relativeJoinInl p (𝟙 C)).app (Opposite.op ⦋1⦌) e) ",
+          "assessment": "相対 join に含めた特定の底辺の cocartesian 性はある。Δ¹×_B C 上の V-左 Kan 性から関手圏の後合成 V′ に関する辺の cocartesian 性を得る型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対 join に含めた特定の底辺の cocartesian 性はある。Δ¹×_B C 上の V-左 Kan 性から関手圏の後合成 V′ に関する辺の cocartesian 性を得る型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.7.9": {
+      "number": "7.3.7.9",
+      "tag": "0484",
+      "query": [
+        "exponentiable",
+        "relative functor",
+        "projection",
+        "left Kan extension",
+        "interval",
+        "cocartesian"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.9",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "exponentiable",
+            "extension",
+            "functor",
+            "interval",
+            "kan",
+            "left",
+            "projection",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianFibration.lean",
+              "line": 49,
+              "declaration": "kanRelativeJoinBaseProjection_cocartesianFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftFunctorBoundary.lean",
+              "line": 46,
+              "declaration": "exists_kanRelativeLeft_functor_relative_boundary_extension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "exponentiable",
+            "extension",
+            "functor",
+            "interval",
+            "kan",
+            "projection",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianFibration.lean",
+              "line": 49,
+              "declaration": "kanRelativeJoinBaseProjection_cocartesianFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinCartesianTransport.lean",
+              "line": 27,
+              "declaration": "kanRelativeJoinRestriction_isCartesianEdge_of_projection"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "exponentiable",
+            "extension",
+            "functor",
+            "interval",
+            "kan",
+            "left",
+            "projection",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/LeftDerived.lean",
+              "line": 55,
+              "declaration": "isLeftDerivedFunctor_iff_isRightKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseLeftDerived.lean",
+              "line": 78,
+              "declaration": "hasPointwiseRightKanExtension_of_hasPointwiseLeftDerivedFunctor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "cocartesian",
+          "exponentiable",
+          "extension",
+          "functor",
+          "interval",
+          "kan",
+          "left",
+          "projection",
+          "relative"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianFibration.lean",
+            "line": 49,
+            "declaration": "kanRelativeJoinBaseProjection_cocartesianFibration"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftFunctorBoundary.lean",
+            "line": 46,
+            "declaration": "exists_kanRelativeLeft_functor_relative_boundary_extension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinBaseCocartesianFibration.lean",
+          "line": 49,
+          "declaration": "kanRelativeJoinBaseProjection_cocartesianFibration",
+          "source_signature": "instance kanRelativeJoinBaseProjection_cocartesianFibration {K C : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] : CocartesianFibration (relativeJoinBaseProjection p (𝟙 C))",
+          "assessment": "相対 join の底射影に関する cocartesian fibration はある。Fun(C/B,D)→B の指定辺を、左端ファイバーからの左 Kan 性で判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対 join の底射影に関する cocartesian fibration はある。Fun(C/B,D)→B の指定辺を、左端ファイバーからの左 Kan 性で判定する型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.7.10": {
+      "number": "7.3.7.10",
+      "tag": "0485",
+      "query": [
+        "relative colimit",
+        "all join extensions",
+        "essential image",
+        "restriction equivalence",
+        "isofibration"
+      ],
+      "a": {
+        "terms": [
+          "7.3.7.10",
+          "7.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimit",
+            "equivalence",
+            "essential",
+            "extensions",
+            "image",
+            "isofibration",
+            "join",
+            "relative",
+            "restriction"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRelativeUniversalExistence.lean",
+              "line": 26,
+              "declaration": "kanRelativeJoinRelativeColimitRestriction_surjective"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "equivalence",
+            "essential",
+            "extensions",
+            "image",
+            "isofibration",
+            "join",
+            "limit",
+            "relative",
+            "restriction"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/RelativeJoinRightNativeRestriction.lean",
+              "line": 29,
+              "declaration": "relativeJoinInr_nativeRestriction_isQCatEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimit",
+            "equivalence",
+            "essential",
+            "extensions",
+            "image",
+            "isofibration",
+            "join",
+            "relative",
+            "restriction"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/GroupTheory/FreeGroup/Basic.lean",
+              "line": 358,
+              "declaration": "equivalence_join_red"
+            },
+            {
+              "source": "Mathlib/Logic/Relation.lean",
+              "line": 974,
+              "declaration": "equivalence_join"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1B/KanExtension"
+        ],
+        "terms": [
+          "colimit",
+          "equivalence",
+          "essential",
+          "extensions",
+          "image",
+          "isofibration",
+          "join",
+          "relative",
+          "restriction"
+        ],
+        "declaration_count": 863,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+            "line": 39,
+            "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRelativeUniversalExistence.lean",
+            "line": 26,
+            "declaration": "kanRelativeJoinRelativeColimitRestriction_surjective"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+          "line": 39,
+          "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial",
+          "source_signature": "lemma kanIsRelativeColimitCone_iff_family_relativeInitial {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) {p : K ⟶ D} (c : JoinCocone p) : IsRelativeColimitCone U c ↔ KanRelativeInitialVertex (kanCoconeFamilyPostcomp p U) (coconeFamilyVertexEquiv p c) ",
+          "assessment": "全余錐族の相対始性と指定余錐の相対余極限性の iff を確認した。全 A と底への拡張を量化した join 制限の同値性から、指定充満部分圏の全対象を判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全余錐族の相対始性と指定余錐の相対余極限性の iff を確認した。全 A と底への拡張を量化した join 制限の同値性から、指定充満部分圏の全対象を判定する型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.2": {
+      "number": "7.3.8.2",
+      "tag": "06AX",
+      "query": [
+        "relative initial objects",
+        "relative colimit",
+        "cone vertex",
+        "constant initial"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.2",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimit",
+            "cone",
+            "constant",
+            "initial",
+            "objects",
+            "relative",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Terminal.lean",
+              "line": 165,
+              "declaration": "colimitConstInitial"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinColimitProjection.lean",
+              "line": 39,
+              "declaration": "exists_kanRelativeJoin_initial_vertex_of_colimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cone",
+            "constant",
+            "final",
+            "limit",
+            "objects",
+            "relative",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeTriangleFinalFiberOutput.lean",
+              "line": 68,
+              "declaration": "relativeTriangleFinalFiberOutput_vertex"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Terminal.lean",
+              "line": 165,
+              "declaration": "colimitConstInitial"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimit",
+            "cone",
+            "constant",
+            "initial",
+            "objects",
+            "relative",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Terminal.lean",
+              "line": 165,
+              "declaration": "colimitConstInitial"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+              "line": 79,
+              "declaration": "IsInitial.isVanKampenColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "colimit",
+          "cone",
+          "constant",
+          "initial",
+          "objects",
+          "relative",
+          "vertex"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinColimitProjection.lean",
+            "line": 39,
+            "declaration": "exists_kanRelativeJoin_initial_vertex_of_colimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+            "line": 52,
+            "declaration": "kanIsRelativeColimitCone_constantFamily"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Terminal.lean",
+          "line": 165,
+          "declaration": "colimitConstInitial",
+          "source_signature": "def colimitConstInitial {J : Type*} [Category* J] {C : Type*} [Category* C] [HasInitial C] : colimit ((CategoryTheory.Functor.const J).obj (⊥_ C)) ≅ ⊥_ C",
+          "assessment": "通常圏で始対象の定値図式の余極限がその始対象と同型になる。任意の U、U-始な全頂点の図式と指定余錐の相対余極限性の iff は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で始対象の定値図式の余極限がその始対象と同型になる。任意の U、U-始な全頂点の図式と指定余錐の相対余極限性の iff は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.3": {
+      "number": "7.3.8.3",
+      "tag": "030Y",
+      "query": [
+        "left Kan extended",
+        "restrict specified cocone",
+        "colimit iff",
+        "full subcategory"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.3",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "extended",
+            "full",
+            "kan",
+            "left",
+            "restrict",
+            "specified",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeLeftHomTriangle.lean",
+              "line": 35,
+              "declaration": "specifiedCoconeLeftFullHomFamily"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocone",
+            "extended",
+            "full",
+            "kan",
+            "limit",
+            "restrict",
+            "right",
+            "specified",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRightHomTriangle.lean",
+              "line": 27,
+              "declaration": "specifiedCoconeRightFullHomFamily"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "extended",
+            "full",
+            "kan",
+            "left",
+            "restrict",
+            "specified",
+            "subcategory"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FullSubcategory.lean",
+              "line": 53,
+              "declaration": "createsColimitFullSubcategoryInclusion'"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "cocone",
+          "colimit",
+          "extended",
+          "full",
+          "kan",
+          "left",
+          "restrict",
+          "specified",
+          "subcategory"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+            "line": 29,
+            "declaration": "presheafLeftKanCanonicalCocone_restrict_val"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaSiftedContinuousLeftKan.lean",
+            "line": 28,
+            "declaration": "sigmaLeftKanCanonicalCocone_restrict_val"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 845,
+          "declaration": "isColimitCoconeOfIsLeftKanExtension",
+          "source_signature": "noncomputable def isColimitCoconeOfIsLeftKanExtension {c : Cocone F} (hc : IsColimit c) : IsColimit (F'.coconeOfIsLeftKanExtension α c)",
+          "assessment": "通常圏の左 Kan 拡張では元の余極限余錐を構成的に延長して余極限にできる。∞圏で任意の指定余錐を制限する同値は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の左 Kan 拡張では元の余極限余錐を構成的に延長して余極限にできる。∞圏で任意の指定余錐を制限する同値は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.4": {
+      "number": "7.3.8.4",
+      "tag": "06AY",
+      "query": [
+        "relative Fubini",
+        "relative colimit",
+        "product join",
+        "corner",
+        "curry"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.4",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimit",
+            "corner",
+            "curry",
+            "fubini",
+            "join",
+            "product",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Quasicategory/RelativeConeProductCurry.lean",
+              "line": 27,
+              "declaration": "relativeConeProductCurryIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "coproduct",
+            "corner",
+            "curry",
+            "fubini",
+            "join",
+            "limit",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinInvertingRestriction.lean",
+              "line": 35,
+              "declaration": "kanRelativeJoinCurry_pre_isCartesianEdge"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimit",
+            "corner",
+            "curry",
+            "fubini",
+            "join",
+            "product",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesProduct.lean",
+              "line": 99,
+              "declaration": "colimitPointwiseProductToProductColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "colimit",
+          "corner",
+          "curry",
+          "fubini",
+          "join",
+          "product",
+          "relative"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinInvertingRestriction.lean",
+            "line": 35,
+            "declaration": "kanRelativeJoinCurry_pre_isCartesianEdge"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinColimitProjection.lean",
+            "line": 39,
+            "declaration": "exists_kanRelativeJoin_initial_vertex_of_colimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "line": 478,
+          "declaration": "isColimitCoconeOfHasColimitCurryCompColim",
+          "source_signature": "noncomputable def isColimitCoconeOfHasColimitCurryCompColim : IsColimit (coconeOfHasColimitCurryCompColim G) ",
+          "assessment": "通常圏で内側と外側の余極限が存在すれば積形状の構成済み余錐が余極限となる。任意の U と指定した二重 join 図式の相対余極限性の iff は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で内側と外側の余極限が存在すれば積形状の構成済み余錐が余極限となる。任意の U と指定した二重 join 図式の相対余極限性の iff は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.5": {
+      "number": "7.3.8.5",
+      "tag": "06AZ",
+      "query": [
+        "relative Fubini",
+        "both orders",
+        "iterated colimit",
+        "product",
+        "three equivalences"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.5",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "both",
+            "colimit",
+            "equivalences",
+            "fubini",
+            "iterated",
+            "orders",
+            "product",
+            "relative",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/ModelCategory.lean",
+              "line": 49,
+              "declaration": "objectwiseWeakEquivalences_twoOutOfThree"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "both",
+            "coproduct",
+            "equivalences",
+            "fubini",
+            "iterated",
+            "limit",
+            "orders",
+            "relative",
+            "three"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/KST/Descent/DerivedCechFubini.lean",
+              "line": 90,
+              "declaration": "cechHomotopyLimitFubiniIso"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "both",
+            "colimit",
+            "equivalences",
+            "fubini",
+            "iterated",
+            "orders",
+            "product",
+            "relative",
+            "three"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "Mathlib/Analysis/Calculus/IteratedDeriv/FaaDiBruno.lean",
+              "line": 90,
+              "declaration": "iteratedDerivWithin_vcomp_three"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "both",
+          "colimit",
+          "equivalences",
+          "fubini",
+          "iterated",
+          "orders",
+          "product",
+          "relative",
+          "three"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ColimitPreservationRestriction.lean",
+            "line": 26,
+            "declaration": "colimitPreservation_of_restrictionEquivalences"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/BoundaryRelativeCoconeExistence.lean",
+            "line": 26,
+            "declaration": "exists_kanBoundaryRelativeCocone_of_first_colimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "line": 478,
+          "declaration": "isColimitCoconeOfHasColimitCurryCompColim",
+          "source_signature": "noncomputable def isColimitCoconeOfHasColimitCurryCompColim : IsColimit (coconeOfHasColimitCurryCompColim G) ",
+          "assessment": "通常圏で一方の反復順序の存在から積形状の余極限を構成する。両方向の行列条件で指定した三余錐の相対余極限性を比較する型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で一方の反復順序の存在から積形状の余極限を構成する。両方向の行列条件で指定した三余錐の相対余極限性を比較する型は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.6": {
+      "number": "7.3.8.6",
+      "tag": "06B0",
+      "query": [
+        "levelwise relative colimits",
+        "closure",
+        "functor category",
+        "object property"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.6",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "closure",
+            "colimits",
+            "functor",
+            "levelwise",
+            "object",
+            "property",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/StrongGenerator.lean",
+              "line": 69,
+              "declaration": "ObjectProperty.isCardinalFiltered_costructuredArrow_colimitsCardinalClosure_ι"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+              "line": 52,
+              "declaration": "kanIsRelativeColimitCone_constantFamily"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "closure",
+            "functor",
+            "levelwise",
+            "limits",
+            "object",
+            "property",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+              "line": 52,
+              "declaration": "kanIsRelativeColimitCone_constantFamily"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsClosure.lean",
+              "line": 35,
+              "declaration": "limitsClosure"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "closure",
+            "colimits",
+            "functor",
+            "levelwise",
+            "object",
+            "property",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/StrongGenerator.lean",
+              "line": 69,
+              "declaration": "ObjectProperty.isCardinalFiltered_costructuredArrow_colimitsCardinalClosure_ι"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/ColimitsCardinalClosure.lean",
+              "line": 38,
+              "declaration": "colimitsCardinalClosure"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "category",
+          "closure",
+          "colimits",
+          "functor",
+          "levelwise",
+          "object",
+          "property",
+          "relative"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+            "line": 52,
+            "declaration": "kanIsRelativeColimitCone_constantFamily"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/StableHoClosure.lean",
+            "line": 22,
+            "declaration": "stableHoClosure"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+          "line": 52,
+          "declaration": "kanIsRelativeColimitCone_constantFamily",
+          "source_signature": "lemma kanIsRelativeColimitCone_constantFamily {A J D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : J ⟶ D} (c : JoinCocone p) (hc : IsRelativeColimitCone U c) : IsRelativeColimitCone ((ihom A).map U) (kanCoconeConstantFamily c A) ",
+          "assessment": "相対余極限余錐を定値パラメータ族に写す型はある。相対余極限図式を頂点に持つ任意の族の levelwise U-余極限での閉性は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対余極限余錐を定値パラメータ族に写す型はある。相対余極限図式を頂点に持つ任意の族の levelwise U-余極限での閉性は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.7": {
+      "number": "7.3.8.7",
+      "tag": "06TJ",
+      "query": [
+        "n-truncated object",
+        "limits",
+        "closed under limits",
+        "truncated maps",
+        "mapping spaces"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.7",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "closed",
+            "limits",
+            "mapping",
+            "maps",
+            "object",
+            "spaces",
+            "truncated",
+            "under"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Indization/Equalizers.lean",
+              "line": 70,
+              "declaration": "isClosedUnderLimitsOfShape_isIndObject_walkingParallelPair"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsOfShape.lean",
+              "line": 184,
+              "declaration": "IsClosedUnderLimitsOfShape"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "closed",
+            "colimits",
+            "mapping",
+            "maps",
+            "object",
+            "over",
+            "spaces",
+            "truncated"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingCylinderOverFunctor.lean",
+              "line": 130,
+              "declaration": "mappingCylinderOverFunctor_preservesColimitsOfShape"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Limit.lean",
+              "line": 46,
+              "declaration": "IsLimitCone"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "closed",
+            "limits",
+            "mapping",
+            "maps",
+            "object",
+            "spaces",
+            "truncated",
+            "under"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Indization/Equalizers.lean",
+              "line": 70,
+              "declaration": "isClosedUnderLimitsOfShape_isIndObject_walkingParallelPair"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsOfShape.lean",
+              "line": 184,
+              "declaration": "IsClosedUnderLimitsOfShape"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "closed",
+          "limits",
+          "mapping",
+          "maps",
+          "object",
+          "spaces",
+          "truncated",
+          "under"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/StableHoClosure.lean",
+            "line": 31,
+            "declaration": "stableHoClosure_isClosedUnderIsomorphisms"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+            "line": 65,
+            "declaration": "PrLMappingSpace"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Limit.lean",
+          "line": 46,
+          "declaration": "IsLimitCone",
+          "source_signature": "def IsLimitCone {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : Prop ",
+          "assessment": "準圏の一般の極限性と n-truncation 関連の用語を別々に検索した。全写像空間の n-truncation で定義した対象のクラスが任意の極限に閉じる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏の一般の極限性と n-truncation 関連の用語を別々に検索した。全写像空間の n-truncation で定義した対象のクラスが任意の極限に閉じる型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.8": {
+      "number": "7.3.8.8",
+      "tag": "06B1",
+      "query": [
+        "levelwise colimits",
+        "closure of colimit diagrams",
+        "functor category",
+        "Fubini"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.8",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "closure",
+            "colimit",
+            "colimits",
+            "diagrams",
+            "fubini",
+            "functor",
+            "levelwise"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/FilteredExchange/FunctorPointwiseColimitCriterion.lean",
+              "line": 67,
+              "declaration": "isColimitCone_of_pointwise"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "closure",
+            "diagrams",
+            "fubini",
+            "functor",
+            "levelwise",
+            "limit",
+            "limits"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/KST/Descent/DerivedCechFubini.lean",
+              "line": 90,
+              "declaration": "cechHomotopyLimitFubiniIso"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "closure",
+            "colimit",
+            "colimits",
+            "diagrams",
+            "fubini",
+            "functor",
+            "levelwise"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+              "line": 478,
+              "declaration": "isColimitCoconeOfHasColimitCurryCompColim"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+              "line": 193,
+              "declaration": "functorCategoryHasColimitsOfShape"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "category",
+          "closure",
+          "colimit",
+          "colimits",
+          "diagrams",
+          "fubini",
+          "functor",
+          "levelwise"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRelativeUniversalRestriction.lean",
+            "line": 36,
+            "declaration": "kanRelativeJoinRelativeColimitDiagrams"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinUniversalRestriction.lean",
+            "line": 37,
+            "declaration": "kanRelativeJoinColimitDiagrams"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/FilteredExchange/FunctorPointwiseColimitCriterion.lean",
+          "line": 67,
+          "declaration": "isColimitCone_of_pointwise",
+          "source_signature": "lemma isColimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X] {p : J ⟶ (ihom K).obj X} (c : JoinCocone p) (hc : IsPointwiseColimitCone c) : IsColimitCone c ",
+          "assessment": "関手圏の点ごとの余極限判定と通常圏の積図式の余極限構成はある。各項目が余極限図式である族の、点ごとの余極限も余極限図式となる型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "line": 478,
+          "declaration": "isColimitCoconeOfHasColimitCurryCompColim",
+          "source_signature": "noncomputable def isColimitCoconeOfHasColimitCurryCompColim : IsColimit (coconeOfHasColimitCurryCompColim G) ",
+          "assessment": "関手圏の点ごとの余極限判定と通常圏の積図式の余極限構成はある。各項目が余極限図式である族の、点ごとの余極限も余極限図式となる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "関手圏の点ごとの余極限判定と通常圏の積図式の余極限構成はある。各項目が余極限図式である族の、点ごとの余極限も余極限図式となる型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.9": {
+      "number": "7.3.8.9",
+      "tag": "030Z",
+      "query": [
+        "right fibration",
+        "relative left Kan at vertex",
+        "pullback of full subcategory",
+        "comma fiber"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.9",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "at",
+            "comma",
+            "fiber",
+            "fibration",
+            "full",
+            "kan",
+            "left",
+            "pullback",
+            "relative",
+            "right",
+            "subcategory",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeVertexFiberLifting.lean",
+              "line": 85,
+              "declaration": "kanRelativeVertexFiberMap_innerFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "at",
+            "comma",
+            "fiber",
+            "fibration",
+            "full",
+            "kan",
+            "left",
+            "pushout",
+            "relative",
+            "right",
+            "subcategory",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeVertexFiberLifting.lean",
+              "line": 85,
+              "declaration": "kanRelativeVertexFiberMap_innerFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "at",
+            "comma",
+            "fiber",
+            "fibre",
+            "full",
+            "kan",
+            "left",
+            "lifting",
+            "pullback",
+            "relative",
+            "right",
+            "subcategory",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 100,
+              "declaration": "hasPointwiseRightKanExtensionAt_iff_of_natIso_left"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Monoidal/ExternalProduct/KanExtension.lean",
+              "line": 102,
+              "declaration": "isPointwiseLeftKanExtensionAtExtensionUnitRight"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "at",
+          "comma",
+          "fiber",
+          "fibration",
+          "full",
+          "kan",
+          "left",
+          "pullback",
+          "relative",
+          "right",
+          "subcategory",
+          "vertex"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+            "line": 44,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeVertexFiberLifting.lean",
+            "line": 85,
+            "declaration": "kanRelativeVertexFiberMap_innerFibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+          "line": 44,
+          "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers",
+          "source_signature": "lemma kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] (δ : K ⟶ C) (F : C ⟶ D) : IsRelativeLeftKanExtendedFrom U δ F ↔ ∀ c : C _⦋0⦌, IsRelativeColimitCone U (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ F)) ",
+          "assessment": "点ごとの comma 余錐に相対余極限性を課す形はある。右ファイブレーションで引き戻した部分圏に対し b と V(b) の条件を比較する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "点ごとの comma 余錐に相対余極限性を課す形はある。右ファイブレーションで引き戻した部分圏に対し b と V(b) の条件を比較する型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.10": {
+      "number": "7.3.8.10",
+      "tag": "0310",
+      "query": [
+        "right fibration",
+        "relative left Kan",
+        "pullback",
+        "nonempty fibers",
+        "reflection"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.10",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "fibers",
+            "fibration",
+            "kan",
+            "left",
+            "nonempty",
+            "pullback",
+            "reflection",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeMappingPullback.lean",
+              "line": 69,
+              "declaration": "kanRelativeMappingPullback_right_fibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "fibers",
+            "fibration",
+            "kan",
+            "left",
+            "nonempty",
+            "pushout",
+            "reflection",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftFibrationFiberComparison.lean",
+              "line": 58,
+              "declaration": "kanIsPrecompositionEquivalence_of_leftFibration_fibers"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "fibers",
+            "kan",
+            "left",
+            "lifting",
+            "nonempty",
+            "pullback",
+            "reflection",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+              "line": 746,
+              "declaration": "IsUniversalColimit.nonempty_isColimit_of_pullbackCone_left"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+              "line": 56,
+              "declaration": "isDense_iff_nonempty_isPointwiseLeftKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "fibers",
+          "fibration",
+          "kan",
+          "left",
+          "nonempty",
+          "pullback",
+          "reflection",
+          "relative",
+          "right"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+            "line": 44,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeMappingPullback.lean",
+            "line": 69,
+            "declaration": "kanRelativeMappingPullback_right_fibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+          "line": 44,
+          "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers",
+          "source_signature": "lemma kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] (δ : K ⟶ C) (F : C ⟶ D) : IsRelativeLeftKanExtendedFrom U δ F ↔ ∀ c : C _⦋0⦌, IsRelativeColimitCone U (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ F)) ",
+          "assessment": "全点での条件は comma ファイバーの相対余極限性で特徴付ける。右ファイブレーションに沿う保存と、各ファイバー非空による反映は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全点での条件は comma ファイバーの相対余極限性で特徴付ける。右ファイブレーションに沿う保存と、各ファイバー非空による反映は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.11": {
+      "number": "7.3.8.11",
+      "tag": "0311",
+      "query": [
+        "right fibration",
+        "left Kan extended",
+        "pullback",
+        "nonempty fibers",
+        "absolute"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.11",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "absolute",
+            "extended",
+            "fibers",
+            "fibration",
+            "kan",
+            "left",
+            "nonempty",
+            "pullback",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "absolute",
+            "extended",
+            "fibers",
+            "fibration",
+            "kan",
+            "left",
+            "nonempty",
+            "pushout",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+              "line": 44,
+              "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "absolute",
+            "extended",
+            "fibers",
+            "kan",
+            "left",
+            "lifting",
+            "nonempty",
+            "pullback",
+            "right"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Bicategory/Kan/Adjunction.lean",
+              "line": 50,
+              "declaration": "Adjunction.isAbsoluteLeftKan"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "absolute",
+          "extended",
+          "fibers",
+          "fibration",
+          "kan",
+          "left",
+          "nonempty",
+          "pullback",
+          "right"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaUniversalCriterion.lean",
+            "line": 44,
+            "declaration": "kanIsRelativeLeftKanExtendedFrom_iff_universal_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean",
+            "line": 152,
+            "declaration": "IsLeftKanExtension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 171,
+          "declaration": "IsLeftKanExtension",
+          "source_signature": "class IsLeftKanExtension : Prop",
+          "assessment": "左 Kan 拡張の述語と通常圏の同値による添字変更はある。右ファイブレーションに沿う絶対左 Kan 性の保存と非空ファイバーによる反映は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 796,
+          "declaration": "isLeftKanExtension_iff_precomp_equivalence",
+          "source_signature": "lemma isLeftKanExtension_iff_precomp_equivalence {F₁' : D ⥤ H} {L₁ : C ⥤ D} {F₁ : C ⥤ H} (α₁ : F₁ ⟶ L₁ ⋙ F₁') {F₂' : D' ⥤ H} {L₂ : C' ⥤ D'} {F₂ : C' ⥤ H} (α₂ : F₂ ⟶ L₂ ⋙ F₂') {G : C ⥤ C'} {G' : D ⥤ D'} [G.IsEquivalence] [G'.IsEquivalence] (iso : G ⋙ L₂ ≅ L₁ ⋙ G') (e : F₁ ≅ G ⋙ F₂) (e' : G' ⋙ F₂' ≅ F₁') (h : α₁ = e.hom ≫ whiskerLeft G α₂ ≫ (associator _ _ _).inv ≫ whiskerRight iso.hom F₂' ≫ (associator _ _ _).hom ≫ whiskerLeft L₁ e'.hom ",
+          "assessment": "左 Kan 拡張の述語と通常圏の同値による添字変更はある。右ファイブレーションに沿う絶対左 Kan 性の保存と非空ファイバーによる反映は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "左 Kan 拡張の述語と通常圏の同値による添字変更はある。右ファイブレーションに沿う絶対左 Kan 性の保存と非空ファイバーによる反映は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.14": {
+      "number": "7.3.8.14",
+      "tag": "0314",
+      "query": [
+        "left Kan extension",
+        "transitivity",
+        "postcompose",
+        "nested full subcategories"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.14",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "extension",
+            "full",
+            "kan",
+            "left",
+            "nested",
+            "postcompose",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+              "line": 92,
+              "declaration": "LeftExtension.IsPointwiseLeftKanExtensionAt.postcompose"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "extension",
+            "full",
+            "kan",
+            "nested",
+            "postcompose",
+            "right",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+              "line": 353,
+              "declaration": "RightExtension.IsPointwiseRightKanExtensionAt.postcompose"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "extension",
+            "full",
+            "kan",
+            "left",
+            "nested",
+            "postcompose",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+              "line": 92,
+              "declaration": "LeftExtension.IsPointwiseLeftKanExtensionAt.postcompose"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "extension",
+          "full",
+          "kan",
+          "left",
+          "nested",
+          "postcompose",
+          "subcategories",
+          "transitivity"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/ComparisonCartesian.lean",
+            "line": 182,
+            "declaration": "isLeftKanExtension_iff_forall_transport"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean",
+            "line": 152,
+            "declaration": "IsLeftKanExtension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 734,
+          "declaration": "isLeftKanExtension_iff_postcompose",
+          "source_signature": "theorem isLeftKanExtension_iff_postcompose [F₁.IsLeftKanExtension α] {F₂ : D' ⥤ H} (L'' : C ⥤ D') (e : L ⋙ L' ≅ L'') (β : F₁ ⟶ L' ⋙ F₂) (γ : F₀ ⟶ L'' ⋙ F₂) (hγ : α ≫ whiskerLeft _ β ≫ (Functor.associator _ _ _).inv ≫ whiskerRight e.hom F₂ = γ ",
+          "assessment": "通常圏の合成で、第1段の左 Kan 性と単位の合成の適合を仮定し、第2段の左 Kan 性と合成の左 Kan 性の iff を得る。任意の∞圏の全部分圏の塔で原文の条件をすべて比較する型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の合成で、第1段の左 Kan 性と単位の合成の適合を仮定し、第2段の左 Kan 性と合成の左 Kan 性の iff を得る。任意の∞圏の全部分圏の塔で原文の条件をすべて比較する型は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.15": {
+      "number": "7.3.8.15",
+      "tag": "0315",
+      "query": [
+        "pointwise relative left Kan",
+        "isomorphic vertices",
+        "transport",
+        "at object"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.15",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "at",
+            "isomorphic",
+            "kan",
+            "left",
+            "object",
+            "pointwise",
+            "relative",
+            "transport",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 269,
+              "declaration": "isPointwiseLeftKanExtensionAtOfIso'"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseRightDerived.lean",
+              "line": 113,
+              "declaration": "isPointwiseLeftKanExtensionAtOfIsoOfIsLocalization"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "at",
+            "isomorphic",
+            "kan",
+            "object",
+            "pointwise",
+            "relative",
+            "right",
+            "transport",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 269,
+              "declaration": "isPointwiseLeftKanExtensionAtOfIso'"
+            },
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean",
+              "line": 186,
+              "declaration": "isPointwiseRightKanExtensionAt"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "at",
+            "isomorphic",
+            "kan",
+            "left",
+            "object",
+            "pointwise",
+            "relative",
+            "transport",
+            "vertices"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 269,
+              "declaration": "isPointwiseLeftKanExtensionAtOfIso'"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseRightDerived.lean",
+              "line": 113,
+              "declaration": "isPointwiseLeftKanExtensionAtOfIsoOfIsLocalization"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "at",
+          "isomorphic",
+          "kan",
+          "left",
+          "object",
+          "pointwise",
+          "relative",
+          "transport",
+          "vertices"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeCriterion.lean",
+            "line": 27,
+            "declaration": "kanLeftCommaCoconeTransport_isRelativeColimit_iff"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean",
+            "line": 34,
+            "declaration": "kanRelativeLeftReflTransport"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+          "line": 269,
+          "declaration": "isPointwiseLeftKanExtensionAtOfIso'",
+          "source_signature": "def isPointwiseLeftKanExtensionAtOfIso' {Y : D} (hY : E.IsPointwiseLeftKanExtensionAt Y) {Y' : D} (e : Y ≅ Y') : E.IsPointwiseLeftKanExtensionAt Y' ",
+          "assessment": "通常圏で指定した点ごとの左 Kan 性を同型な対象へ運ぶ。一般の U に関する相対左 Kan 性を∞圏内の同型頂点へ運ぶ型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で指定した点ごとの左 Kan 性を同型な対象へ運ぶ。一般の U に関する相対左 Kan 性を∞圏内の同型頂点へ運ぶ型は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.17": {
+      "number": "7.3.8.17",
+      "tag": "0319",
+      "query": [
+        "relative coslice restriction",
+        "trivial Kan fibration",
+        "inner fibration",
+        "left Kan"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.17",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "coslice",
+            "fibration",
+            "inner",
+            "kan",
+            "left",
+            "relative",
+            "restriction",
+            "trivial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+              "line": 110,
+              "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean",
+              "line": 54,
+              "declaration": "relativeCosliceRestriction_trivialKanFibration_comp"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "fibration",
+            "inner",
+            "kan",
+            "relative",
+            "restriction",
+            "right",
+            "slice",
+            "trivial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+              "line": 110,
+              "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean",
+              "line": 90,
+              "declaration": "kanRelativeRightKanRestriction_trivialKanFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coslice",
+            "inner",
+            "kan",
+            "left",
+            "lifting",
+            "relative",
+            "restriction",
+            "trivial"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Analysis/InnerProductSpace/Basic.lean",
+              "line": 96,
+              "declaration": "inner_smul_left_eq_smul"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/MorphismProperty/RetractArgument.lean",
+              "line": 35,
+              "declaration": "RetractArrow.ofLeftLiftingProperty"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "coslice",
+          "fibration",
+          "inner",
+          "kan",
+          "left",
+          "relative",
+          "restriction",
+          "trivial"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+            "line": 110,
+            "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftTerminalRestrictionExistence.lean",
+            "line": 71,
+            "declaration": "kanRelativeLeftKanRestriction_terminal_trivialKanFibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+          "line": 110,
+          "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence",
+          "source_signature": "lemma kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q) (K₀ : K.Subcomplex) (hK : IsPrecompositionEquivalence K₀.ι) : TrivialKanFibration (relativeCosliceMap p q K₀) ",
+          "assessment": "指定された相対 coslice 制限の自明 Kan ファイブレーション性は、部分複体包含の前合成同値性と U の EquivalenceLifting を課す場合にある。原文の F の相対左 Kan 性と U の inner fibration から得る形は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "指定された相対 coslice 制限の自明 Kan ファイブレーション性は、部分複体包含の前合成同値性と U の EquivalenceLifting を課す場合にある。原文の F の相対左 Kan 性と U の inner fibration から得る形は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.18": {
+      "number": "7.3.8.18",
+      "tag": "031A",
+      "query": [
+        "coslice restriction",
+        "trivial Kan fibration",
+        "left Kan",
+        "absolute",
+        "terminal base"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.18",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "absolute",
+            "base",
+            "coslice",
+            "fibration",
+            "kan",
+            "left",
+            "restriction",
+            "terminal",
+            "trivial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+              "line": 110,
+              "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/CanonicalMappingTrivial.lean",
+              "line": 26,
+              "declaration": "kanLeftCanonical_pinchedHomMap_trivialKanFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "absolute",
+            "base",
+            "fibration",
+            "initial",
+            "kan",
+            "restriction",
+            "right",
+            "slice",
+            "trivial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/CanonicalMappingTrivial.lean",
+              "line": 26,
+              "declaration": "kanLeftCanonical_pinchedHomMap_trivialKanFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+              "line": 110,
+              "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "absolute",
+            "base",
+            "coslice",
+            "kan",
+            "left",
+            "lifting",
+            "restriction",
+            "terminal",
+            "trivial"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Bicategory/Kan/Adjunction.lean",
+              "line": 50,
+              "declaration": "Adjunction.isAbsoluteLeftKan"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/LiftingProperties/PushoutProduct.lean",
+              "line": 94,
+              "declaration": "hasLiftingProperty_mk_isTerminal_iff"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "absolute",
+          "base",
+          "coslice",
+          "fibration",
+          "kan",
+          "left",
+          "restriction",
+          "terminal",
+          "trivial"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+            "line": 110,
+            "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/CanonicalMappingTrivial.lean",
+            "line": 26,
+            "declaration": "kanLeftCanonical_pinchedHomMap_trivialKanFibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean",
+          "line": 110,
+          "declaration": "kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence",
+          "source_signature": "lemma kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (hq : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting q) (K₀ : K.Subcomplex) (hK : IsPrecompositionEquivalence K₀.ι) : TrivialKanFibration (relativeCosliceMap p q K₀) ",
+          "assessment": "相対 coslice で包含が前合成同値なら自明 Kan となる型と、左 Kan 性から指定 Hom 比較が自明 Kan となる型がある。一般の絶対左 Kan 性から全 coslice 制限が自明 Kan となる型は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/CanonicalMappingTrivial.lean",
+          "line": 26,
+          "declaration": "kanLeftCanonical_pinchedHomMap_trivialKanFibration",
+          "source_signature": "lemma kanLeftCanonical_pinchedHomMap_trivialKanFibration {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) [Mono δ] (F : C ⟶ D) (hF : ∀ c : C _⦋0⦌, IsColimitCone (leftKanCanonicalCocone δ F c)) (G : C ⟶ D) : TrivialKanFibration (pinchedHomMap ((pre δ).app D) (functorVertex F) (functorVertex G)) ",
+          "assessment": "相対 coslice で包含が前合成同値なら自明 Kan となる型と、左 Kan 性から指定 Hom 比較が自明 Kan となる型がある。一般の絶対左 Kan 性から全 coslice 制限が自明 Kan となる型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "相対 coslice で包含が前合成同値なら自明 Kan となる型と、左 Kan 性から指定 Hom 比較が自明 Kan となる型がある。一般の絶対左 Kan 性から全 coslice 制限が自明 Kan となる型は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.19": {
+      "number": "7.3.8.19",
+      "tag": "031B",
+      "query": [
+        "relative colimit",
+        "extension existence",
+        "restrict cocone",
+        "relative left Kan",
+        "inner fibration"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.19",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "existence",
+            "extension",
+            "fibration",
+            "inner",
+            "kan",
+            "left",
+            "relative",
+            "restrict"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+              "line": 46,
+              "declaration": "kanRelativeCoconeLifting_of_isRelativeColimitCone"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocone",
+            "existence",
+            "extension",
+            "fibration",
+            "inner",
+            "kan",
+            "limit",
+            "relative",
+            "restrict",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+              "line": 46,
+              "declaration": "kanRelativeCoconeLifting_of_isRelativeColimitCone"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "existence",
+            "extension",
+            "inner",
+            "kan",
+            "left",
+            "lifting",
+            "relative",
+            "restrict"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 250,
+              "declaration": "IsPointwiseLeftKanExtensionAt"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "cocone",
+          "colimit",
+          "existence",
+          "extension",
+          "fibration",
+          "inner",
+          "kan",
+          "left",
+          "relative",
+          "restrict"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+            "line": 46,
+            "declaration": "kanRelativeCoconeLifting_of_isRelativeColimitCone"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+            "line": 26,
+            "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+          "line": 46,
+          "declaration": "kanRelativeCoconeLifting_of_isRelativeColimitCone",
+          "source_signature": "lemma kanRelativeCoconeLifting_of_isRelativeColimitCone {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p : K ⟶ D} (c : JoinCocone p) (hc : IsRelativeColimitCone U c) : KanRelativeCoconeLifting U c ",
+          "assessment": "既存 U-余極限余錐の充填性と、各 comma 余錐からの厳密相対左 Kan 拡張の存在はある。相対左 Kan 性を持つ F の指定底余錐を持ち上げる存在を部分圏で判定する iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+          "line": 26,
+          "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits",
+          "source_signature": "lemma exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (F₀ : K ⟶ D) (H₀ : C ⟶ E) (hFU : F₀ ≫ U = δ ≫ H₀) (hlocal : ∀ c : C _⦋0⦌, ∃ z : JoinCocone (vertexFiberι (kanLeftCommaProjection δ) c ≫ kanLeftCommaSource δ ≫ F₀), IsRelativeColimitCone U z ∧ z.val ≫ U = (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ H₀)).val) : ∃ G : C ⟶ D, δ ≫ G = F₀ ∧ G ≫ U = H₀ ∧ IsRelativeLeftKanExtendedFrom U δ G ",
+          "assessment": "既存 U-余極限余錐の充填性と、各 comma 余錐からの厳密相対左 Kan 拡張の存在はある。相対左 Kan 性を持つ F の指定底余錐を持ち上げる存在を部分圏で判定する iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "既存 U-余極限余錐の充填性と、各 comma 余錐からの厳密相対左 Kan 拡張の存在はある。相対左 Kan 性を持つ F の指定底余錐を持ち上げる存在を部分圏で判定する iff は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.20": {
+      "number": "7.3.8.20",
+      "tag": "031E",
+      "query": [
+        "colimit existence",
+        "left Kan extension",
+        "restriction",
+        "HasColimit",
+        "constant cocone"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.20",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "constant",
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "left",
+            "restriction"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+              "line": 70,
+              "declaration": "hasColimit_iff_leftKanExtension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocone",
+            "constant",
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "limit",
+            "restriction",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+              "line": 449,
+              "declaration": "preservesPointwiseRightKanExtensionAtOfPreservesLimit"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocone",
+            "colimit",
+            "constant",
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "left",
+            "restriction"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 78,
+              "declaration": "leftKanExtensionObjIsoColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "cocone",
+          "colimit",
+          "constant",
+          "existence",
+          "extension",
+          "has",
+          "kan",
+          "left",
+          "restriction"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+            "line": 70,
+            "declaration": "hasColimit_iff_leftKanExtension"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeBoundaryExistence.lean",
+            "line": 70,
+            "declaration": "exists_kanCocone_boundary_extension_of_first_colimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 845,
+          "declaration": "isColimitCoconeOfIsLeftKanExtension",
+          "source_signature": "noncomputable def isColimitCoconeOfIsLeftKanExtension {c : Cocone F} (hc : IsColimit c) : IsColimit (F'.coconeOfIsLeftKanExtension α c)",
+          "assessment": "通常圏で元の図式の余極限から拡張後の余極限余錐を作る。両余極限を仮定した頂点の同型もある。∞圏での存在の iff は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 863,
+          "declaration": "colimitIsoOfIsLeftKanExtension",
+          "source_signature": "noncomputable def colimitIsoOfIsLeftKanExtension : colimit F' ≅ colimit F ",
+          "assessment": "通常圏で元の図式の余極限から拡張後の余極限余錐を作る。両余極限を仮定した頂点の同型もある。∞圏での存在の iff は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で元の図式の余極限から拡張後の余極限余錐を作る。両余極限を仮定した頂点の同型もある。∞圏での存在の iff は残る。",
+      "decision": "partial"
+    },
+    "7.3.8.22": {
+      "number": "7.3.8.22",
+      "tag": "031F",
+      "query": [
+        "relative left Kan extension",
+        "existence",
+        "transitivity",
+        "nested full subcategories",
+        "isofibration"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.22",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "existence",
+            "extension",
+            "full",
+            "isofibration",
+            "kan",
+            "left",
+            "nested",
+            "relative",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "existence",
+            "extension",
+            "full",
+            "isofibration",
+            "kan",
+            "nested",
+            "relative",
+            "right",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "existence",
+            "extension",
+            "full",
+            "isofibration",
+            "kan",
+            "left",
+            "nested",
+            "relative",
+            "subcategories",
+            "transitivity"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean",
+              "line": 398,
+              "declaration": "IsPointwiseLeftKanExtension.isIso_hom"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "existence",
+          "extension",
+          "full",
+          "isofibration",
+          "kan",
+          "left",
+          "nested",
+          "relative",
+          "subcategories",
+          "transitivity"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+            "line": 26,
+            "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalIsofibrationDiagram.lean",
+            "line": 26,
+            "declaration": "exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+          "line": 26,
+          "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits",
+          "source_signature": "lemma exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (F₀ : K ⟶ D) (H₀ : C ⟶ E) (hFU : F₀ ≫ U = δ ≫ H₀) (hlocal : ∀ c : C _⦋0⦌, ∃ z : JoinCocone (vertexFiberι (kanLeftCommaProjection δ) c ≫ kanLeftCommaSource δ ≫ F₀), IsRelativeColimitCone U z ∧ z.val ≫ U = (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ H₀)).val) : ∃ G : C ⟶ D, δ ≫ G = F₀ ∧ G ≫ U = H₀ ∧ IsRelativeLeftKanExtendedFrom U δ G ",
+          "assessment": "各局所相対余極限からの一段の厳密延長と、通常圏の指定単位に沿う左 Kan 性の推移性はある。既存の F を与えた isofibration の二つの持ち上げ問題の解の存在を比較する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 734,
+          "declaration": "isLeftKanExtension_iff_postcompose",
+          "source_signature": "theorem isLeftKanExtension_iff_postcompose [F₁.IsLeftKanExtension α] {F₂ : D' ⥤ H} (L'' : C ⥤ D') (e : L ⋙ L' ≅ L'') (β : F₁ ⟶ L' ⋙ F₂) (γ : F₀ ⟶ L'' ⋙ F₂) (hγ : α ≫ whiskerLeft _ β ≫ (Functor.associator _ _ _).inv ≫ whiskerRight e.hom F₂ = γ ",
+          "assessment": "各局所相対余極限からの一段の厳密延長と、通常圏の指定単位に沿う左 Kan 性の推移性はある。既存の F を与えた isofibration の二つの持ち上げ問題の解の存在を比較する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "各局所相対余極限からの一段の厳密延長と、通常圏の指定単位に沿う左 Kan 性の推移性はある。既存の F を与えた isofibration の二つの持ち上げ問題の解の存在を比較する型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.23": {
+      "number": "7.3.8.23",
+      "tag": "031L",
+      "query": [
+        "left Kan extension",
+        "existence",
+        "transitivity",
+        "restriction",
+        "HasLeftKanExtension"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.23",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "left",
+            "restriction",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaHom.lean",
+              "line": 52,
+              "declaration": "kanLeftCommaHomRestriction_extension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "restriction",
+            "right",
+            "transitivity"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/LeftDerived.lean",
+              "line": 181,
+              "declaration": "HasLeftDerivedFunctor.hasRightKanExtension"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "existence",
+            "extension",
+            "has",
+            "kan",
+            "left",
+            "restriction",
+            "transitivity"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 734,
+              "declaration": "isLeftKanExtension_iff_postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Bicategory/Kan/HasKan.lean",
+              "line": 55,
+              "declaration": "HasLeftKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "existence",
+          "extension",
+          "has",
+          "kan",
+          "left",
+          "restriction",
+          "transitivity"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaHom.lean",
+            "line": 52,
+            "declaration": "kanLeftCommaHomRestriction_extension"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+            "line": 70,
+            "declaration": "hasColimit_iff_leftKanExtension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 734,
+          "declaration": "isLeftKanExtension_iff_postcompose",
+          "source_signature": "theorem isLeftKanExtension_iff_postcompose [F₁.IsLeftKanExtension α] {F₂ : D' ⥤ H} (L'' : C ⥤ D') (e : L ⋙ L' ≅ L'') (β : F₁ ⟶ L' ⋙ F₂) (γ : F₀ ⟶ L'' ⋙ F₂) (hγ : α ≫ whiskerLeft _ β ≫ (Functor.associator _ _ _).inv ≫ whiskerRight e.hom F₂ = γ ",
+          "assessment": "通常圏で二段の指定済み変換の左 Kan 性を比較する。∞圏の F と制限からの拡張の存在の iff としての推移性は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常圏で二段の指定済み変換の左 Kan 性を比較する。∞圏の F と制限からの拡張の存在の iff としての推移性は見つからない。",
+      "decision": "none"
+    },
+    "7.3.8.26": {
+      "number": "7.3.8.26",
+      "tag": "039X",
+      "query": [
+        "left Kan unit",
+        "constant diagram",
+        "colimit criterion",
+        "restriction of cocones",
+        "HasColimit"
+      ],
+      "a": {
+        "terms": [
+          "7.3.8.26",
+          "7.3.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocones",
+            "colimit",
+            "constant",
+            "criterion",
+            "diagram",
+            "has",
+            "kan",
+            "left",
+            "restriction",
+            "unit"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/KanLocalExistence.lean",
+              "line": 30,
+              "declaration": "nerve_leftKanDiagram_hasColimit_iff"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocones",
+            "constant",
+            "criterion",
+            "diagram",
+            "has",
+            "kan",
+            "limit",
+            "restriction",
+            "right",
+            "unit"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanLimits.lean",
+              "line": 39,
+              "declaration": "cofibrantSourceRightKanDiagram_hasLimit"
+            },
+            {
+              "source": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+              "line": 58,
+              "declaration": "modelBifibrantSourceRightKanDiagram_hasLimit_all"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocones",
+            "colimit",
+            "constant",
+            "criterion",
+            "diagram",
+            "has",
+            "kan",
+            "left",
+            "restriction",
+            "unit"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/HasLimits.lean",
+              "line": 752,
+              "declaration": "HasColimit.ofCoconesIso"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean",
+          "SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Ind",
+          "SerrePositivity/InfinityCategories/F1B/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/Stable"
+        ],
+        "terms": [
+          "cocones",
+          "colimit",
+          "constant",
+          "criterion",
+          "diagram",
+          "has",
+          "kan",
+          "left",
+          "restriction",
+          "unit"
+        ],
+        "declaration_count": 5172,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ElementsCoproductKanProjection.lean",
+            "line": 42,
+            "declaration": "elements_leftKanDiagram_hasColimit_of_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ElementsCoproductLeftKan.lean",
+            "line": 58,
+            "declaration": "elementsCoproduct_leftKanDiagram_hasColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 845,
+          "declaration": "isColimitCoconeOfIsLeftKanExtension",
+          "source_signature": "noncomputable def isColimitCoconeOfIsLeftKanExtension {c : Cocone F} (hc : IsColimit c) : IsColimit (F'.coconeOfIsLeftKanExtension α c)",
+          "assessment": "通常圏で指定左 Kan 単位による余極限余錐の延長と頂点の同型を確認した。任意の単体集合 K と∞圏で、指定自然変換 β の余極限性を制限・前合成後と比較する iff は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 863,
+          "declaration": "colimitIsoOfIsLeftKanExtension",
+          "source_signature": "noncomputable def colimitIsoOfIsLeftKanExtension : colimit F' ≅ colimit F ",
+          "assessment": "通常圏で指定左 Kan 単位による余極限余錐の延長と頂点の同型を確認した。任意の単体集合 K と∞圏で、指定自然変換 β の余極限性を制限・前合成後と比較する iff は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で指定左 Kan 単位による余極限余錐の延長と頂点の同型を確認した。任意の単体集合 K と∞圏で、指定自然変換 β の余極限性を制限・前合成後と比較する iff は残る。",
+      "decision": "partial"
+    },
+    "7.3.9.1": {
+      "number": "7.3.9.1",
+      "tag": "06B2",
+      "query": [
+        "cocartesian fibration",
+        "fiber colimits",
+        "transport preserves",
+        "relative colimit lifts"
+      ],
+      "a": {
+        "terms": [
+          "7.3.9.1",
+          "7.3.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "colimits",
+            "fiber",
+            "fibration",
+            "lifts",
+            "preserves",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+              "line": 32,
+              "declaration": "IsRelativeColimitCone"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitImageIso.lean",
+              "line": 27,
+              "declaration": "exists_kanRelativeColimit_over_iso_image"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "fiber",
+            "fibration",
+            "lifts",
+            "limit",
+            "limits",
+            "preserves",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+              "line": 716,
+              "declaration": "isLimitCartesianMonoidalCategoryOfPreservesLimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFiberCartesian.lean",
+              "line": 42,
+              "declaration": "kanRelativeJoinRestrictionFiber_cartesianFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "colimits",
+            "fiber",
+            "fibre",
+            "lifting",
+            "lifts",
+            "preserves",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Preserves/FunctorCategory.lean",
+              "line": 107,
+              "declaration": "whiskeringLeft_preservesColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Creates.lean",
+              "line": 247,
+              "declaration": "LiftsToColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cocartesian",
+          "colimit",
+          "colimits",
+          "fiber",
+          "fibration",
+          "lifts",
+          "preserves",
+          "relative",
+          "transport"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "line": 32,
+          "declaration": "IsRelativeColimitCone",
+          "source_signature": "def IsRelativeColimitCone {K D E : SSet.{u}} (U : D ⟶ E) {p : K ⟶ D} (c : JoinCocone p) : Prop ",
+          "assessment": "相対余極限の定義と、既存の相対余極限余錐の像に同型な指定底余錐へ移す構成がある。各ファイバーの K-余完備性と全輸送による保存が任意の指定底余錐の持ち上げと同値となる型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitImageIso.lean",
+          "line": 27,
+          "declaration": "exists_kanRelativeColimit_over_iso_image",
+          "source_signature": "lemma exists_kanRelativeColimit_over_iso_image {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (p : K ⟶ D) (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (c : JoinCocone p) (hc : IsRelativeColimitCone U c) (b : JoinCocone (p ≫ U)) (e : VertexIso (coconeFamilyVertexEquiv (p ≫ U) b) (coconeFamilyVertexEquiv (p ≫ U) (kanPostcomposeCocone U c))) : ∃ d : JoinCocone p, IsRelativeColimitCone U d ∧ d.val ≫ U = b.val ",
+          "assessment": "相対余極限の定義と、既存の相対余極限余錐の像に同型な指定底余錐へ移す構成がある。各ファイバーの K-余完備性と全輸送による保存が任意の指定底余錐の持ち上げと同値となる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対余極限の定義と、既存の相対余極限余錐の像に同型な指定底余錐へ移す構成がある。各ファイバーの K-余完備性と全輸送による保存が任意の指定底余錐の持ち上げと同値となる型は見つからない。",
+      "decision": "none"
+    },
+    "7.3.9.2": {
+      "number": "7.3.9.2",
+      "tag": "0320",
+      "query": [
+        "cocartesian fibration",
+        "comma colimits",
+        "fiberwise preservation",
+        "relative left Kan existence"
+      ],
+      "a": {
+        "terms": [
+          "7.3.9.2",
+          "7.3.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "colimits",
+            "comma",
+            "existence",
+            "fiberwise",
+            "fibration",
+            "kan",
+            "left",
+            "preservation",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftComma.lean",
+              "line": 89,
+              "declaration": "kanLeftCommaProjection_cocartesianFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "comma",
+            "existence",
+            "fiberwise",
+            "fibration",
+            "kan",
+            "limits",
+            "preservation",
+            "relative",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+              "line": 26,
+              "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinFiberCartesian.lean",
+              "line": 42,
+              "declaration": "kanRelativeJoinRestrictionFiber_cartesianFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "colimits",
+            "comma",
+            "existence",
+            "fiberwise",
+            "kan",
+            "left",
+            "lifting",
+            "preservation",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 127,
+              "declaration": "leftKanExtensionIsoFiberwiseColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 219,
+              "declaration": "preservesColimitsOfSize_of_isLeftKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cocartesian",
+          "colimits",
+          "comma",
+          "existence",
+          "fiberwise",
+          "fibration",
+          "kan",
+          "left",
+          "preservation",
+          "relative"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+          "line": 26,
+          "declaration": "exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits",
+          "source_signature": "lemma exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits {K C D E : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E] (U : D ⟶ E) (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (F₀ : K ⟶ D) (H₀ : C ⟶ E) (hFU : F₀ ≫ U = δ ≫ H₀) (hlocal : ∀ c : C _⦋0⦌, ∃ z : JoinCocone (vertexFiberι (kanLeftCommaProjection δ) c ≫ kanLeftCommaSource δ ≫ F₀), IsRelativeColimitCone U z ∧ z.val ≫ U = (kanRelativeJoinFiberCocone (kanLeftCommaProjection δ) c (kanLeftCommaUniversalDiagram δ ≫ H₀)).val) : ∃ G : C ⟶ D, δ ≫ G = F₀ ∧ G ≫ U = H₀ ∧ IsRelativeLeftKanExtendedFrom U δ G ",
+          "assessment": "各 c の指定底余錐上に相対余極限余錐がある場合に厳密な相対左 Kan 拡張を構成する。全ファイバーの C⁰_{/c} 余極限と輸送保存からその入力が得られる型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "各 c の指定底余錐上に相対余極限余錐がある場合に厳密な相対左 Kan 拡張を構成する。全ファイバーの C⁰_{/c} 余極限と輸送保存からその入力が得られる型は残る。",
+      "decision": "partial"
+    },
+    "7.3.9.3": {
+      "number": "7.3.9.3",
+      "tag": "031R",
+      "query": [
+        "cocartesian natural transformation",
+        "relative colimit",
+        "transport",
+        "invertible cone point"
+      ],
+      "a": {
+        "terms": [
+          "7.3.9.3",
+          "7.3.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "invertible",
+            "natural",
+            "point",
+            "relative",
+            "transformation",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_of_functorIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramNaturalTransformation.lean",
+              "line": 96,
+              "declaration": "kanDiagramNaturalTransformationEdge_isInvertible"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "cone",
+            "invertible",
+            "limit",
+            "natural",
+            "point",
+            "relative",
+            "transformation",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_of_functorIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FilteredExchange/PointConeIdentityComparison.lean",
+              "line": 63,
+              "declaration": "isLimitCone_point_iff_invertible"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "invertible",
+            "natural",
+            "point",
+            "relative",
+            "transformation",
+            "transport"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean",
+              "line": 595,
+              "declaration": "Cofork.IsColimit.homIso_natural"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/WideEqualizers.lean",
+              "line": 408,
+              "declaration": "Cotrident.IsColimit.homIso_natural"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cocartesian",
+          "colimit",
+          "cone",
+          "invertible",
+          "natural",
+          "point",
+          "relative",
+          "transformation",
+          "transport"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+          "line": 39,
+          "declaration": "kanIsRelativeColimitCone_iff_of_functorIso",
+          "source_signature": "lemma kanIsRelativeColimitCone_iff_of_functorIso {A D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U] {p q : A ⟶ D} (c : JoinCocone p) (d : JoinCocone q) (e : FunctorIso c.val d.val) : IsRelativeColimitCone U c ↔ IsRelativeColimitCone U d ",
+          "assessment": "同一の底図式に載る二余錐を全体の関手同型で比較する場合、相対余極限性を保ち反映する。各成分が U-cocartesian な変換に沿う前向きと、頂点成分だけ可逆の場合の逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "同一の底図式に載る二余錐を全体の関手同型で比較する場合、相対余極限性を保ち反映する。各成分が U-cocartesian な変換に沿う前向きと、頂点成分だけ可逆の場合の逆向きは残る。",
+      "decision": "partial"
+    },
+    "7.3.9.4": {
+      "number": "7.3.9.4",
+      "tag": "031V",
+      "query": [
+        "weakly contractible",
+        "cocartesian edges",
+        "relative colimit",
+        "cone iff"
+      ],
+      "a": {
+        "terms": [
+          "7.3.9.4",
+          "7.3.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "contractible",
+            "edges",
+            "relative",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial"
+            },
+            {
+              "source": "SerrePositivity/EInfinity/Hammock/FreeQuiverCoverContractible.lean",
+              "line": 26,
+              "declaration": "colimit_isWeaklyContractible"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "cone",
+            "contractible",
+            "edges",
+            "limit",
+            "relative",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+              "line": 39,
+              "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/FiniteSliceWeakContractibility.lean",
+              "line": 21,
+              "declaration": "HasFiniteHomotopyRelativeFillers.weaklyContractiblePullback"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "contractible",
+            "edges",
+            "relative",
+            "weakly"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/ColimitLimit.lean",
+              "line": 99,
+              "declaration": "colimitLimitToLimitColimitCone"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+              "line": 325,
+              "declaration": "colimitLimitToLimitColimitCone_iso"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cocartesian",
+          "colimit",
+          "cone",
+          "contractible",
+          "edges",
+          "relative",
+          "weakly"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFamilyCriterion.lean",
+          "line": 39,
+          "declaration": "kanIsRelativeColimitCone_iff_family_relativeInitial",
+          "source_signature": "lemma kanIsRelativeColimitCone_iff_family_relativeInitial {K D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) {p : K ⟶ D} (c : JoinCocone p) : IsRelativeColimitCone U c ↔ KanRelativeInitialVertex (kanCoconeFamilyPostcomp p U) (coconeFamilyVertexEquiv p c) ",
+          "assessment": "相対余極限性を全余錐族の相対始性と比較する型はある。弱可縮な K 上の全辺の U-cocartesian 性と、底の各辺と余錐の相対余極限性との iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対余極限性を全余錐族の相対始性と比較する型はある。弱可縮な K 上の全辺の U-cocartesian 性と、底の各辺と余錐の相対余極限性との iff は見つからない。",
+      "decision": "none"
+    },
+    "7.3.9.5": {
+      "number": "7.3.9.5",
+      "tag": "031W",
+      "query": [
+        "cocartesian transport",
+        "fiber of cone point",
+        "relative colimit existence",
+        "pushforward preserves"
+      ],
+      "a": {
+        "terms": [
+          "7.3.9.5",
+          "7.3.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "existence",
+            "fiber",
+            "point",
+            "preserves",
+            "pushforward",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/Transport.lean",
+              "line": 24,
+              "declaration": "cocartesianFibration_lift_prism"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/PartialColimitSpanHomPath.lean",
+              "line": 32,
+              "declaration": "partialColimitSpanLeftTransportFiberPoint"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "cone",
+            "existence",
+            "fiber",
+            "limit",
+            "point",
+            "preserves",
+            "pushforward",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Continuous.lean",
+              "line": 105,
+              "declaration": "functorPushforward_sieve₁'_of_preservesLimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+              "line": 716,
+              "declaration": "isLimitCartesianMonoidalCategoryOfPreservesLimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "colimit",
+            "cone",
+            "existence",
+            "fiber",
+            "fibre",
+            "point",
+            "preserves",
+            "pushforward",
+            "relative",
+            "transport"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Continuous.lean",
+              "line": 105,
+              "declaration": "functorPushforward_sieve₁'_of_preservesLimit"
+            },
+            {
+              "source": "Mathlib/Geometry/RingedSpace/PresheafedSpace/HasColimits.lean",
+              "line": 103,
+              "declaration": "pushforwardDiagramToColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cocartesian",
+          "colimit",
+          "cone",
+          "existence",
+          "fiber",
+          "point",
+          "preserves",
+          "pushforward",
+          "relative",
+          "transport"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/Transport.lean",
+          "line": 24,
+          "declaration": "cocartesianFibration_lift_prism",
+          "source_signature": "lemma cocartesianFibration_lift_prism {A X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p] (F₀ : A ⟶ X) (b : (Δ[1] : SSet.{u}) ⊗ A ⟶ B) (hb : F₀ ≫ p = prismEndpoint 0 A ≫ b) : ∃ F : (Δ[1] : SSet.{u}) ⊗ A ⟶ X, prismEndpoint 0 A ≫ F = F₀ ∧ F ≫ p = b ∧ ∀ x : A _⦋0⦌, IsCocartesianEdge p (F.app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)) ",
+          "assessment": "円柱に沿って指定図式を成分ごとに cocartesian に持ち上げる存在がある。原文の終点ファイバーの余極限と任意の輸送での保存を同時に要求する、相対余極限の存在の iff は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "円柱に沿って指定図式を成分ごとに cocartesian に持ち上げる存在がある。原文の終点ファイバーの余極限と任意の輸送での保存を同時に要求する、相対余極限の存在の iff は残る。",
+      "decision": "partial"
     }
   }
 }

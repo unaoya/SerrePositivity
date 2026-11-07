@@ -217,42 +217,42 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 7.3.6.14,fix,partial,SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean:55 | SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean:27 | SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean:90,仮定：U の EquivalenceLifting と全部分圏の包含。Lean は引き戻しの全頂点について局所余錐の存在を要求し、原文は存在する頂点だけを張る B を取る（Lean が強い）。結論：全域への制限の自明 Kan ファイブレーション。原文の B に限定した結果の型はこの行にない。,,renamed
 7.3.6.15,fix,partial,SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftTerminalRestrictionExistence.lean:71,仮定：Lean の終対象への U の特殊化は全 F₀ の局所余極限を要求するが、原文は局所余極限がある F₀ だけを張る（Lean が強い）。結論：終対象への相対版の制限が TrivialKanFibration。原文の任意の充満部分圏版には追加比較が要る。,,renamed
 7.3.7.1,fix,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_constantFamily @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftConstantFamily.lean:35,B が一点で、F: A×C→D が C 成分に依らない（F∘pr）定値族の場合だけ（相対左 Kan 拡張が (ihom A).map U について保たれる）。exponentiable inner fibration 一般・F が C に依る場合はない。,,renamed
-7.3.7.3,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
-7.3.7.4,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
-7.3.7.5,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
-7.3.7.6,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
-7.3.7.9,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
-7.3.7.10,ok,none,,確認済み・なし（探索範囲内）。exponentiable inner fibration・関手 ∞ 圏の中の Kan 拡張（§7.3.7）は見つからない。,,not_found
+7.3.7.3,ok,none,,"relativeFunctorSpace は底上の固定図式の空間。相対左 Kan 性と comma ファイバーの相対余極限の比較もある。可変ファイバーを持つ Fun(C/B,D) の射影について、引き戻し上の非相対左 Kan 性を移す型は見つからない。",,not_found
+7.3.7.4,ok,none,,相対左 Kan 図式から関手圏内の定値パラメータ族を作って相対左 Kan 性を保つ。A×C 上の任意の図式の左 Kan 性を仮定し curry に渡す型は見つからない。,,not_found
+7.3.7.5,ok,none,,内部 Hom への定値族は扱う。一般の F:A×C→D を A⁰×C から左 Kan 拡張する条件で、その curry が A⁰ から左 Kan 拡張となる型は見つからない。,,not_found
+7.3.7.6,ok,none,,相対 join に含めた特定の底辺の cocartesian 性はある。Δ¹×_B C 上の V-左 Kan 性から関手圏の後合成 V′ に関する辺の cocartesian 性を得る型は見つからない。,,not_found
+7.3.7.9,ok,none,,"相対 join の底射影に関する cocartesian fibration はある。Fun(C/B,D)→B の指定辺を、左端ファイバーからの左 Kan 性で判定する型は見つからない。",,not_found
+7.3.7.10,ok,none,,全余錐族の相対始性と指定余錐の相対余極限性の iff を確認した。全 A と底への拡張を量化した join 制限の同値性から、指定充満部分圏の全対象を判定する型は見つからない。,,not_found
 7.3.7.13,fix,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_functor_of_pointwise @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean:40 | SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_constantFamily @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean:52,B が一点の場合で、仮定を「各 a ∈ A で K◁ 上の図式が V-余極限」と点ごとに置いた形（K×C からの V-左 Kan 拡張という仮定の形ではない）。exponentiable inner fibration 一般はない。,,renamed
 7.3.8.1,fix,partial,SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_poset_nested_canonical @ SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean:44 | SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean:41 | SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean:104 | SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean:70,U = id（絶対版）だけ。名前付きの定理は順序集合の場合（poset_nested_canonical）。一般の ∞ 圏では kanLeftCanonical_pre_initialBoundary と isColimitCone_iff_restrict_of_initialBoundary の合成で得られる（単一の宣言はない）。存在の形は hasColimit_iff_leftKanExtension。相対版（U 一般）はない。,,renamed
-7.3.8.2,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.3,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.4,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.5,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.6,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.7,ok,none,,確認済み・なし（探索範囲内）。n-truncated 対象の極限での閉性は見つからない（truncated の定義自体がない）。,,not_found
-7.3.8.8,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.9,ok,none,,確認済み・なし（探索範囲内）。right fibration に沿う引き戻しと点ごとの相対左 Kan 拡張の比較はない。旧注記：§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.10,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.11,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
+7.3.8.2,fix,partial,CategoryTheory.Limits.colimitConstInitial @ Mathlib/CategoryTheory/Limits/Shapes/Terminal.lean:165,通常圏で始対象の定値図式の余極限がその始対象と同型になる。任意の U、U-始な全頂点の図式と指定余錐の相対余極限性の iff は残る。,,found
+7.3.8.3,fix,partial,CategoryTheory.Functor.isColimitCoconeOfIsLeftKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:845,通常圏の左 Kan 拡張では元の余極限余錐を構成的に延長して余極限にできる。∞圏で任意の指定余錐を制限する同値は残る。,,found
+7.3.8.4,fix,partial,CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim @ Mathlib/CategoryTheory/Limits/Fubini.lean:478,通常圏で内側と外側の余極限が存在すれば積形状の構成済み余錐が余極限となる。任意の U と指定した二重 join 図式の相対余極限性の iff は残る。,,found
+7.3.8.5,fix,partial,CategoryTheory.Limits.isColimitCoconeOfHasColimitCurryCompColim @ Mathlib/CategoryTheory/Limits/Fubini.lean:478,通常圏で一方の反復順序の存在から積形状の余極限を構成する。両方向の行列条件で指定した三余錐の相対余極限性を比較する型は残る。,,found
+7.3.8.6,ok,none,,相対余極限余錐を定値パラメータ族に写す型はある。相対余極限図式を頂点に持つ任意の族の levelwise U-余極限での閉性は見つからない。,,not_found
+7.3.8.7,ok,none,,準圏の一般の極限性と n-truncation 関連の用語を別々に検索した。全写像空間の n-truncation で定義した対象のクラスが任意の極限に閉じる型は見つからない。,,not_found
+7.3.8.8,ok,none,,関手圏の点ごとの余極限判定と通常圏の積図式の余極限構成はある。各項目が余極限図式である族の、点ごとの余極限も余極限図式となる型は見つからない。,,not_found
+7.3.8.9,ok,none,,点ごとの comma 余錐に相対余極限性を課す形はある。右ファイブレーションで引き戻した部分圏に対し b と V(b) の条件を比較する型は見つからない。,,not_found
+7.3.8.10,ok,none,,全点での条件は comma ファイバーの相対余極限性で特徴付ける。右ファイブレーションに沿う保存と、各ファイバー非空による反映は見つからない。,,not_found
+7.3.8.11,ok,none,,左 Kan 拡張の述語と通常圏の同値による添字変更はある。右ファイブレーションに沿う絶対左 Kan 性の保存と非空ファイバーによる反映は見つからない。,,not_found
 7.3.8.12,fix,partial,SerrePositivity.InfinityCategories.posetSubtype_canonicalColimit_nested @ SerrePositivity/InfinityCategories/Stable/PosetNestedCanonicalRestriction.lean:20,順序集合・U = id の場合に、C⁰ から左 Kan 拡張なら制限 F|C も C⁰ から左 Kan 拡張（易しい向きの条件 (2)）だけ。逆向き（(1)(2) ⇒ C⁰ から）と一般の ∞ 圏・相対版はない。Mathlib にも 1 圏の推移性は見当たらない。,,renamed
-7.3.8.14,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.15,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
+7.3.8.14,fix,partial,CategoryTheory.Functor.isLeftKanExtension_iff_postcompose @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:734,通常圏の合成で、第1段の左 Kan 性と単位の合成の適合を仮定し、第2段の左 Kan 性と合成の左 Kan 性の iff を得る。任意の∞圏の全部分圏の塔で原文の条件をすべて比較する型は残る。,,found
+7.3.8.15,fix,partial,CategoryTheory.Functor.LeftExtension.isPointwiseLeftKanExtensionAtOfIso' @ Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean:269,通常圏で指定した点ごとの左 Kan 性を同型な対象へ運ぶ。一般の U に関する相対左 Kan 性を∞圏内の同型頂点へ運ぶ型は残る。,,found
 7.3.8.16,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.sliceUnderRestrict_isQCatEquivalence_of_initialBoundary @ SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean:94 | SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean:41,U = id の場合（D_{F/} → D_{F₀/} が同値）は二つの補題の合成で得られる（単一の宣言はない）。E 側の coslice との引き戻しを取る相対版はない（相対の始点境界は F1B/KanExtension/RelativeLeftFunctorInitial にあるが coslice の形では述べていない）。,,renamed
-7.3.8.17,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.18,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.19,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.20,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.22,ok,none,,確認済み・なし（探索範囲内）。相対 Kan 拡張の存在の推移性（持ち上げ問題の解）はない。存在は F1B/KanExtension/LeftStrictExistence・RelativeLeftBoundaryExtension にあるが推移性の形ではない。旧注記：§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.8.23,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
+7.3.8.17,fix,partial,SerrePositivity.InfinityCategories.F1B.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean:110,指定された相対 coslice 制限の自明 Kan ファイブレーション性は、部分複体包含の前合成同値性と U の EquivalenceLifting を課す場合にある。原文の F の相対左 Kan 性と U の inner fibration から得る形は残る。,,found
+7.3.8.18,fix,partial,SerrePositivity.InfinityCategories.F1B.kanRelativeCosliceMap_trivialKanFibration_of_precompositionEquivalence @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCosliceEquivalence.lean:110 | SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pinchedHomMap_trivialKanFibration @ SerrePositivity/InfinityCategories/F1B/KanExtension/CanonicalMappingTrivial.lean:26,相対 coslice で包含が前合成同値なら自明 Kan となる型と、左 Kan 性から指定 Hom 比較が自明 Kan となる型がある。一般の絶対左 Kan 性から全 coslice 制限が自明 Kan となる型は残る。,,found
+7.3.8.19,ok,none,,既存 U-余極限余錐の充填性と、各 comma 余錐からの厳密相対左 Kan 拡張の存在はある。相対左 Kan 性を持つ F の指定底余錐を持ち上げる存在を部分圏で判定する iff は見つからない。,,not_found
+7.3.8.20,fix,partial,CategoryTheory.Functor.isColimitCoconeOfIsLeftKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:845 | CategoryTheory.Functor.colimitIsoOfIsLeftKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:863,通常圏で元の図式の余極限から拡張後の余極限余錐を作る。両余極限を仮定した頂点の同型もある。∞圏での存在の iff は残る。,,found
+7.3.8.22,ok,none,,各局所相対余極限からの一段の厳密延長と、通常圏の指定単位に沿う左 Kan 性の推移性はある。既存の F を与えた isofibration の二つの持ち上げ問題の解の存在を比較する型は見つからない。,,not_found
+7.3.8.23,ok,none,,通常圏で二段の指定済み変換の左 Kan 性を比較する。∞圏の F と制限からの拡張の存在の iff としての推移性は見つからない。,,not_found
 7.3.8.24,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_of_initialBoundary @ SerrePositivity/InfinityCategories/F1/Ind/InitialBoundaryCoconeRestriction.lean:104 | SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_pre_initialBoundary @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalMapping.lean:41,C₂ が一点で G が全部分圏の包含（F₁∘G = F₀ が厳密）という特別な場合だけ、7.3.8.1 と同じ二つの補題の合成で得られる。一般の G・H に沿う左 Kan 拡張の合成の定理はない（Mathlib の 1 圏版にも見当たらない）。,,renamed
 7.3.8.25,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_iff_leftKanExtension @ SerrePositivity/InfinityCategories/F2/Presentable/LeftKanColimitExistence.lean:70,C₂ が一点の場合（F₁ が F₀ の左 Kan 拡張なら、F₁ の余極限の存在と F₀ の余極限の存在は同値）だけ。一般の H に沿う存在の同値はない。,,renamed
-7.3.8.26,ok,none,,確認済み・なし（探索範囲内）。§7.3.8（推移性・相対余極限の Fubini）は見つからない。,,not_found
-7.3.9.1,ok,none,,確認済み・なし（探索範囲内）。cocartesian fibration U の fiber ごとの余極限と相対余極限の存在の同値はない（F1B/KanExtension の cocartesian は添字側の fibration）。旧注記：cocartesian fibration の相対余極限（§7.3.9）は見つからない。,,not_found
-7.3.9.2,ok,none,,確認済み・なし（探索範囲内）。cocartesian fibration の相対余極限（§7.3.9）は見つからない。,,not_found
-7.3.9.3,ok,none,,確認済み・なし（探索範囲内）。U-cocartesian な成分を持つ変換に沿う U-余極限の移送はない（RelativeTerminalFiberTransfer は fiber の相対終対象の移送で別の主張）。旧注記：cocartesian fibration の相対余極限（§7.3.9）は見つからない。,,not_found
-7.3.9.4,ok,none,,確認済み・なし（探索範囲内）。cocartesian fibration の相対余極限（§7.3.9）は見つからない。,,not_found
-7.3.9.5,unsure,none,,内容は cocartesian fibration 上の持ち上げ問題で、cocartesian 辺の変換で fiber D_E の図式に取り替えること。該当する宣言はない。旧注記：抜粋が短く内容未確認。§7.3.9 は全体に見つからない。 cocartesian・cocone・colimit・relative を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.3.8.26,fix,partial,CategoryTheory.Functor.isColimitCoconeOfIsLeftKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:845 | CategoryTheory.Functor.colimitIsoOfIsLeftKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean:863,通常圏で指定左 Kan 単位による余極限余錐の延長と頂点の同型を確認した。任意の単体集合 K と∞圏で、指定自然変換 β の余極限性を制限・前合成後と比較する iff は残る。,,found
+7.3.9.1,ok,none,,相対余極限の定義と、既存の相対余極限余錐の像に同型な指定底余錐へ移す構成がある。各ファイバーの K-余完備性と全輸送による保存が任意の指定底余錐の持ち上げと同値となる型は見つからない。,,not_found
+7.3.9.2,fix,partial,SerrePositivity.InfinityCategories.F1B.exists_kanRelativeLeftCanonical_strict_extension_of_comma_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean:26,各 c の指定底余錐上に相対余極限余錐がある場合に厳密な相対左 Kan 拡張を構成する。全ファイバーの C⁰_{/c} 余極限と輸送保存からその入力が得られる型は残る。,,found
+7.3.9.3,fix,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean:39,同一の底図式に載る二余錐を全体の関手同型で比較する場合、相対余極限性を保ち反映する。各成分が U-cocartesian な変換に沿う前向きと、頂点成分だけ可逆の場合の逆向きは残る。,,found
+7.3.9.4,ok,none,,相対余極限性を全余錐族の相対始性と比較する型はある。弱可縮な K 上の全辺の U-cocartesian 性と、底の各辺と余錐の相対余極限性との iff は見つからない。,,not_found
+7.3.9.5,fix,partial,SerrePositivity.InfinityCategories.cocartesianFibration_lift_prism @ SerrePositivity/InfinityCategories/F1/Cocartesian/Transport.lean:24,円柱に沿って指定図式を成分ごとに cocartesian に持ち上げる存在がある。原文の終点ファイバーの余極限と任意の輸送での保存を同時に要求する、相対余極限の存在の iff は残る。,,found
 7.4.1.1,fix,partial,SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:36,切断空間の錐が極限であることのみ。任意の Y についての判定（iff）としては述べていない。,,renamed
 7.4.1.2,unsure,none,,抜粋が短く内容未確認。 spaces・limits・corollary・essentially を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
 7.4.1.3,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:77 | SerrePositivity.InfinityCategories.hasLimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:42,仮定：小さい単体集合 B から SpaceInfinity への図式。原文と同じく B に Quasicategory を要求しない（Kerodon と一致）。結論：space_hasSmallLimits と各図式の HasLimit（原文と一致）。,,renamed
