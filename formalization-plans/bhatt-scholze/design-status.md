@@ -55,6 +55,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 - 後始末：Tor 振幅の定義が A1（HodgeTateComparison）と A0（BaseChange の `Derived.` 版）に重複。中身の段階で A0 の版に一本化する。
 - **決定（11-07、ユーザー）**：要相談の 2（Lemma 5.4 を余単体的可換環の N に限る）と 5（Lemma 3.7(2) で導来 (p,d) 完備を仮定）は承認。1（D69 の代案）は採らず、**元のまま関手としての同型 `deRham_iso_polynomial_universal` を作る**。そのための部品は a1-design §10.4：(i) 選び方によらない模型と厳密に自然な zigzag（BS 側、プリズム側とド・ラーム側の両方）、(ii) `totEInfinityFunctor` と、厳密な自然変換から関手 ∞ 圏の辺を作る部品（∞ 側）、(iii) 成分ごとに可逆なら可逆（本体に既存）。
 - **D69 の部品 (i) の設計（11-07、a1-design §10.5、drafts に型）**：厳密な関手性の原理は「対象は選んでよく、射は普遍性で一意に決まる持ち上げ」。C 上の小さい模型 `pdModel C n` は Poly(C) について厳密に関手的なので、大きい模型（要素すべてを変数にする）が要るのは A₀ と W の上だけ。Ω*_{Q/C} へは C 上の小さい模型で span（Tot D₀ ← Tot K → K⁰）。`wittComposite` は大きい zigzag を通る形に定義し直した。sorry +60（Shared 8→20、CrystallineInput 70→87、DeRhamComparisonPoly 28→59）。**要相談（ユーザーに尋ねる）**：(1) A2 の `PolyDeltaData` に「大きい模型の Tot との関手同型」の欄を足すか。(2) 大きい枠の J つき pd Čech 模型は原典にない（Constr 4.18 の考え方を結晶側に転用、D25 β の延長）。(3) 一般の J つき pd 包と「表示によらない」補題は Mathlib にない古典（Berthelot）。(4) D69 で使われなくなった `pdPolynomialComparison`・`PDPolynomialComparison`・`pdTotMap` を削除するか。(5) cutoff を Q ごとから共通にするか。
+  **決定（11-07、ユーザー）**：(1) 欄を足す。(3) 承認。(4) 削除した。(5) 保留。(2) は説明の後に判断（原典の定義は変えず、Thm 6.4 の証明で結晶 site の関手性を使う所を大きい模型の厳密な関手性で置き換える。D25 の延長）。
 
 ### 0.4 ∞ に頼んでいて未着の項目
 

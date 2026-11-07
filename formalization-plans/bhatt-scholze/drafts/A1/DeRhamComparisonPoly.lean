@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 -- 本ファイルは drafts/A1/{CrystallineInput,HodgeTateComparison,HodgeTateMap}.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A2/BaseChangeAndTensor.lean、
 -- drafts/A3/LciAndQuasiregular.lean（D4-02 の特殊化だけ）、drafts/A5/RootAdjunction.lean（`polyRootAlgebra`。W9-III-09：WeaklyInitialAndDescent ではなく先行ファイル）を import する。
--- J つき pd 模型（`pdModel`・`pdPolynomialComparison`）と `formsCAlg` は drafts/A1/CrystallineInput.lean（W9-III-09）。D68 改訂（11-05 夜）で結晶の黒箱は外した。
+-- J つき pd 模型（`pdModel`）と `formsCAlg` は drafts/A1/CrystallineInput.lean（W9-III-09）。D68 改訂（11-05 夜）で結晶の黒箱は外した。
 -- 11-07（a1-design §10.5）：D69 の大きい模型のため drafts/A0/CechAlexander.lean（`cechAlexander`・`hasEnvelopes_of_polynomial`）と
 -- drafts/A2/DerivedPrismaticCohomology.lean（`polyCompletion`・`polyCutoff`・`polyCosimplicialAlgebra`・`prismSiteAlgebras`）も使う。
 

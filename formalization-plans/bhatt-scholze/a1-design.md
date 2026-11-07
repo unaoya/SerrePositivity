@@ -458,7 +458,7 @@ site の RΓ からの制限として同じ類（S3 の制限の自然性）。
 2. 大きい枠 W[x_q | q ∈ Q^∧] の J つき pd Čech 模型は原典にない（原典 Thm 6.4 は結晶 site の RΓ_crys で、関手性は site から来る）。
    D25 β（結晶 site を pd Čech 模型で代える）の延長で、Construction 4.18 の考え方を結晶側に転用したもの。
 3. 一般の J つき pd 包（`IsCompletedPDEnvelope`・存在）と「表示によらない」補題は Mathlib にない古典（Berthelot）。BS は当然として使う。
-4. 旧 `pdPolynomialComparison`・`PDPolynomialComparison`・`pdTotMap`（1 単体までの自然性）は D69 の経路から使われなくなった。削除するか。
+4. **削除した（11-07、ユーザー決定）**。旧 `pdPolynomialComparison`・`PDPolynomialComparison`・`pdTotMap`（1 単体までの自然性）は D69 の経路から使われなくなった。削除するか。
 5. 宇宙と cutoff：`bigCechAlexander` は Q ごとの `polyCutoff` を使う（値は A_0 代数なので関手は作れる）。Q^∧ の濃度は n によらないので共通の
    cutoff にしてもよい。
 6. 基盤待ち：`totEInfinityFunctor`・`totCDGAFunctor`（McClure–Smith／Berger–Fresse の E∞ 構造）、`cAlgBaseChange` とその随伴の関手 ∞ 圏への延長。

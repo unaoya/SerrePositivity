@@ -33,7 +33,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 4. H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})（`pdDeRhamCohomologyIso`。双複体 Ω^j_pd(D_0^n)：列は pd Poincaré G-A1-7、j ≥ 1 の行は BdJ の収縮 G-A1-14）、cup 積と両立。
 5. n 変数の Cartier 同型（`finitePolynomialCartier`）。
 6. 生成元での照合（`crystallineChain_generators`）。
-後半（`pdModel` 以下の J つき模型・`pdPolynomialComparison`・`formsCAlg`）は A1-5（D69、A1/DeRhamComparisonPoly）用で、上の経路では
+後半（`pdModel` 以下の J つき模型・`formsCAlg`）は A1-5（D69、A1/DeRhamComparisonPoly）用で、上の経路では
 `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・`insertPdFactor` だけを使う。
 
 ## 方針
@@ -45,7 +45,7 @@ cohomology の cup 積は `cohomologyMap_cup` で、Bockstein は `bockstein_nat
 「cohomology 同型」は `Cosimplicial.IsCohomologyIso`（全次数で `cohomologyMap` が全単射）。
 
 ## 使われ方
-A1-3：`hodgeTate_iso_polynomial_Zp`（A1/HodgeTateComparison）。A1-5：後半の模型と `pdPolynomialComparison`（A1/DeRhamComparisonPoly）。
+A1-3：`hodgeTate_iso_polynomial_Zp`（A1/HodgeTateComparison）。A1-5：後半の模型と大きい模型 `wittBigPdModel`（A1/DeRhamComparisonPoly）。
 -/
 
 @[expose] public section
@@ -130,7 +130,7 @@ abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
   ULift.up (nerveVertex (⟨n⟩ : Poly k))
 
 /-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・
-`insertPdFactor` を使い、J つきの比較 `pdPolynomialComparison` は A1-5 用。 -/
+`insertPdFactor` を使う。 -/
 
 /-- 第 0 copy の座標と残りの copy との差の自由 pd 代数。 -/
 abbrev pdRaw (k : Type u) [CommRing k] (r n : ℕ) :=
@@ -143,7 +143,7 @@ instance pdTermAlgebra (k : Type u) [CommRing k] (r n : ℕ) : Algebra k (pdTerm
 /-- 概要：δ 座標なしの pd Čech 脈体 D_0^•（D_0^n = k⟨X^{(0)}⟩⟨X^{(i)} − X^{(0)}⟩_pd の p 完備化）。
 方針：`pdRaw` の p 完備化。余面・余退化は copy の添字の写像と差の pd 射。
 規約：k = F_p では完備化は恒等。
-使われ方：段 3・4（D68 改訂後）、A1-5 の `pdPolynomialComparison`。 -/
+使われ方：段 3・4（D68 改訂後）、A1-5 の大きい模型（§10.5）。 -/
 def pdModel (k : Type u) [CommRing k] (r : ℕ) : Cosimplicial.CosimplicialAlgebra k where
   obj n := Under.mk (CommRingCat.ofHom ((completionUnit p _).hom.comp (algebraMap k (pdRaw k r n.len))))
   map θ := by sorry -- X^(a)↦X^(θa)。差を差に送り γ_m を保つ pd 射を完備化
@@ -161,7 +161,7 @@ def pdRow (k : Type u) [CommRing k] (r j : ℕ) : CosimplicialObject (ModuleCat.
 /-- 概要：G-A1-14：j ≥ 1 の行 Ω^j_pd(D_0^•) は余単体的加群として収縮可能（[BdJ11, Lemma 2.15–2.17]）。
 方針：Ω^1 に copy の基底ごとのホモトピーを作り、外冪・テンソル・p 完備化へ延ばす。j = 0 の行 D_0^• は収縮しない（W9-I-13）。
 規約：11-07：基底 k を一般にした（以前は ℤ_p に固定）。段 4 は k = F_p で使う。
-使われ方：段 4（`pdDeRhamCohomologyIso`）、A1-5 の `pdPolynomialComparison`。 -/
+使われ方：段 4（`pdDeRhamCohomologyIso`）、A1-5 の大きい模型（§10.5）。 -/
 theorem pdRow_contractible (k : Type u) [CommRing k] (r j : ℕ) (hj : 0 < j) :
     let K := (AlgebraicTopology.alternatingCofaceMapComplex _).obj (pdRow p k r j)
     Nonempty (Homotopy (𝟙 K) 0) := by
@@ -242,33 +242,8 @@ def pdPolynomialFunctor (k : Type u) [CommRing k] : Poly k ⥤ Cosimplicial.Cosi
   map_id := by sorry -- pd 包の普遍性
   map_comp := by sorry -- 同じ延長の一意性
 
-def pdTotMap {k : Type u} [CommRing k] {P Q : Poly k} (f : P ⟶ Q) :
-    HomotopyCategory.mk (Cosimplicial.totEInfinity k (pdModel p k P.n)) ⟶
-    HomotopyCategory.mk (Cosimplicial.totEInfinity k (pdModel p k Q.n)) := by
-  sorry -- 要確認：Shared の totEInfinity_map へ。(pdPolynomialFunctor p k).map f を全化
-
-structure PDPolynomialComparison (k : Type u) [CommRing k] (J : Ideal k) where
-  app (r : ℕ) : VertexIso (Cosimplicial.totEInfinity k (pdModel p k r)) (formsVertex p k r)
-  natural {P Q : Poly k} (f : P ⟶ Q) :
-    pdTotMap p f ≫ (app Q.n).hom = (app P.n).hom ≫
-      Truncated.HomotopyCategory.homMk ((uliftEdge (nerve.edgeMk f).toTruncated).map
-        ((truncation 2).map (formsCAlg p k)))
-  changeLift {P Q : Poly k} (f g : P ⟶ Q)
-      (h : (changePoly (Ideal.Quotient.mk J)).map f = (changePoly (Ideal.Quotient.mk J)).map g) :
-    pdTotMap p f = pdTotMap p g
-
-/-- G-A1-17。p 正則な完備基底と標準 pd を延長する J。持ち上げの射が
-mod J で一致すれば共通の pd 脈体で同じ射になる。
-TODO（11-07、a1-design §10.4）：`natural`・`changeLift` はホモトピー圏の等式（1 単体まで）で、A1-5 の
-`deRham_iso_polynomial_universal` の `FunctorIso` を貼るには足りない（高次の整合性）。
-**11-07（§10.5）**：A1-5 は下の `pdDeRhamFunctorIso`（C 上で厳密に関手的な小さい模型）と大きい模型 `wittBigPdModel` に切り替えたので、
-この宣言は D69 の経路から使われなくなった（削除するかは調整役の判断、要相談）。 -/
-def pdPolynomialComparison (k : Type u) [CommRing k] (J : Ideal k) (γ : DividedPowers J)
-    (hp : (p : k) ∈ J) (hγ : ∀ n : ℕ, (n.factorial : k) * γ.dpow n (p : k) = (p : k)^n)
-    (hk : IsModuleComplete k (p : k) (ModuleCat.of k k))
-    (hreg : Function.Injective (fun x : k => (p : k) * x)) : PDPolynomialComparison p k J := by
-  sorry -- pd-Poincaré の列、正次数の行の収縮、extraCech_comparison。
-        -- 共通の J つき pd 厚化を経由して natural と changeLift を得る
+-- 11-07：旧 `pdTotMap`・`PDPolynomialComparison`・`pdPolynomialComparison`（G-A1-17、1 単体までの自然性）は
+-- D69 の大きい模型（a1-design §10.5）に置き換えたので削除（ユーザー決定）。
 
 /-! ## A1-5（D69）用：枠つきの J つき pd Čech 脈体と、厳密に関手的な小さい模型の de Rham 比較（a1-design §10.5、11-07）
 
