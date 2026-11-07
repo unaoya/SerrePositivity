@@ -64,3 +64,35 @@ B1 の合成からの消去には、合成自身の完全性と、二重複体�
 - `SerrePositivity.HomologicalAlgebra.Cech.Composition`
 
 専用 worktree で共有ロック付きの対象ビルドが成功した（7 本、依存を含む Lake の集計 2,130 jobs、最終回 16 秒、対象の Lean 警告なし）。新規 7 本の `import all` による監査は 207 宣言が標準三公理のみ。新規宣言の `sorry`・`admit`・追加公理は 0。import 閉包に E3 の `PerfectoidizationInterface` はなく、既存の Lean 宣言に差分なし。`git diff --cached --check` も通過した。停止点 1 で調整役による取り込みを待つ。
+
+## 停止点 2（B2・B3、2026-11-07）
+
+`math/bs-impl` を `2553b6e93` へ fast-forward してから開始した。⑤b・⑥の作業木と枝の差分を確認し、編集先に重複はなかった。
+
+### B2　完全代数とのテンソルと Čech 完全性の検出
+
+- `milnorModuleComplex_shortExact` は BS-W11 の `valuationRing_milnorSquare` の加群版。`milnorModuleComplex_tensor_shortExact` は完全代数とのテンソル後の短完全性を、`PerfectTorIndependence.Basic` が再利用する `perfectRing_tor_subsingleton_of_char_eq_zero` と Tor の長完全列から示す。係数の零環を含む。
+- `cechConerve_perfectRing` は広い押し出しに各脚の逆 Frobenius を延ばし、増大 Čech 複体の各項で使う完全性を与える。`moduleCech_tor_subsingleton` は完全な係数環に対する各項の Tor 消滅。
+- `cechExact_of_milnorTensor` は局所化、商、剰余体の三つで検出する。`cechExact_of_overlapTensor` は重なる二つの区間と交わりの三つで検出する。後者は、停止点 0 の二つの四角形を貼る計算を、局所化から交わりの区間環への全射とその核の直接計算に置き換えた。得られた短完全列に各次数の Tor 消滅を使い、複体の短完全列から完全性を得る。[BM18 Lemma 4.4・Proposition 4.8 の証明 (5)、図式 (6)](https://arxiv.org/pdf/1807.04725#page=29)
+
+### B3　付値環の区間、剰余体への近似、Zorn
+
+- `ValuationIntervalRing` は下端で割って上端で局所化した環。`intervalRingMap` は区間の包含と逆向きで、`valuationRing_interval` はその環が付値環であることを示す。既存の絶対整閉性の商・局所化の補題を再利用して `aic_interval` と `IsAbsolutelyIntegrallyClosed.primeResidue_isAlgClosed` を得た。`IsAbsolutelyIntegrallyClosed.perfectRing_of_charP` は標数 p の絶対整閉整域の完全性。
+- `intervalRingCoconeIsColimit` は縮小する有向区間族の共通部分の環を余極限として表す。`intervalAboveColimitIsoResidue`・`intervalBelowColimitIsoResidue` は直後・直前の素点がないときの剰余体版。`exists_intervalRingFactor_of_finitePresentation` は有限表示の代数から剰余体への射を区間の有限段へ降ろす。
+- `valuationIntervalProperty_of_localExtensions` は左端を固定し、良い右端に Zorn を適用する。Lemma 4.7 の長さ ≤ 1 の条件からは一点区間だけを使用する。部分区間への制限、左右への延長、重なる区間の貼り合わせはそれぞれ仮定にした。[BM18 Definition 4.6・Lemma 4.7・Proposition 4.8](https://arxiv.org/pdf/1807.04725#page=27)
+
+取り込み時に入口・監査への登録を依頼するモジュールは次の 11 本（1,275 行）。
+
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Basic`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Colimit`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.FinitePresentation`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Endpoint`
+- `SerrePositivity.CommutativeAlgebra.ValuationInterval.Zorn`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechMilnor`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcIntervalOverlap`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap`
+
+共有ロック付きの対象ビルド成功（11 本、Lake の依存込み集計 3,497 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `ArcValuationMilnor.lean` では `valuationRing_milnorSquare_perfect` の未使用の節引数の警告が再掲された。新規モジュールを `import all` で監査し、133 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存の Lean 宣言に差分なし。`git diff --cached --check` を通過。段 3 は §3 の事前承認の条件に従って開始する。
