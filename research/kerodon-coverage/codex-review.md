@@ -84,3 +84,54 @@
    - `-c`：Ch 7〜10
    
    `-b`・`-c` は main から `../SerrePositivity-kerodon-review-b`・`-c`（枝 `research/kerodon-review-b`・`-c`）を切る。どのチャットも、書くのは自分の章の `review/ch<N>.csv` と `review/check/ch<N>-*` の証拠ファイルだけ。Ch 1 の `ch1-review-report.md` と同じ形で、章ごとの報告を書く。
+
+## 6. 追記（2026-11-07 15:40、調整役）：モデル圏の仮定つきの宣言
+
+段 1′ で名前の補正に採用した宣言のうち 14 件は、型に `ModelCategory` の仮定がある（一覧は `review/check/runs/stage1-prime-01/verified-candidates.csv` の型の列）。この種の仮定は公理の監査を通るが、満たせないことがある。
+
+1. **`[ModelCategory SSet]` を要求するもの**（`SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations` の 1 件）：満たせない仮定なので、Kerodon の項目の own・both としては数えない。`verdict` は `unsure`、`reason` に仮定を書く。
+2. **一般の圏にモデル圏構造を仮定するもの**（13 件）：その項目で使われる具体的な圏（単体集合の圏など）で、その instance が本体に実在するかを確かめる。実在すれば判定どおり、実在しなければ `partial` にして `reason` に仮定と「instance なし」を書く。
+3. 段 2 の型の確認では、ほかの宣言についても、型の仮定に `ModelCategory` が現れたら同じ扱いにする。
+4. コミットは自分の章のファイル（`review/ch<N>.csv`、`review/check/ch<N>-*`）を明示して行う。`git add -A` や `git add research/` は使わない（古い枝の未追跡ファイル、特に `runs/stage1-prime-01/plan.json`（25 MB）が入るのを防ぐ）。
+
+## 7. 追記（2026-11-07 16 時、調整役）：確認の深さの基準と、Ch 4〜10 のやり直し
+
+ユーザーの希望：**徹底的に調べたい。速さより深さを優先する。** Ch 4〜10 の確認は、own・both・mathlib の行で仮定と結論を照らした跡が少なく（理由の中央値 35〜50 字、Ch 1 は 59 字）、none の行で同じ定型文が 1 章で最大 54 回繰り返されていた。次の基準で確認し直す。
+
+### 7.1 行ごとの基準
+
+1. **own・both・mathlib の行**：`reason` に必ず次の形で書く。
+   `仮定：…（Kerodon と一致／Lean が強い：…／Lean が弱い：…）。結論：…（一致／Lean が弱い：…／Lean が強い：…）。`
+   Lean の型は kernel の出力（`#check` の結果、`ch<N>-kernel-evidence.json`）から写し、Kerodon の主張は本文（`https://kerodon.net/tag/<Tag>`）から取る。仮定が強い（特別な場合だけ）・結論が弱い場合は `partial` にする。一致を言い切れなければ `unsure` にして、何が足りないかを書く。
+2. **none の行**：文字列の検索に加えて、次の三つで探し、**探した語と場所を行ごとに記録する**（`ch<N>-none-search.json` に、行ごとの検索の語・ディレクトリ・候補と却下の理由）。
+   - (a) docstring の Kerodon の引用（9,711 件、`citations-summary.md` と `citations.csv`）に、その番号や近い番号（同じ Subsection）がないか。
+   - (b) 双対・特別な場合の版：反対圏（op）、左右の入れ替え、1 圏の版、Mathlib の名前（`#find` 相当の型の検索、命名規則）。
+   - (c) 同じ Subsection の own・both の宣言のファイルの近く（同じファイル・同じディレクトリの宣言を読む）。
+   定型文だけの理由は不可。
+3. **unsure を残さない**：上の基準で `ok`（表のとおり）・`fix`・`partial` のどれかに決める。決められないものは、何が足りないか（例：「Lean の型で Δ¹ 上に限られているかを確かめられない」）を具体的に書く。
+4. **モデル圏の仮定**：§6 のとおり。
+
+### 7.2 やり直しの範囲と分担
+
+- **-b**：Ch 4〜6。**-c**：Ch 7〜10。どちらも、own・both・mathlib の全行、unsure の全行、none の全行を 7.1 の基準で確認し直す（none の ok の行も含む）。結果は `review/ch<N>.csv` を上書きし、`ch<N>-review-report.md` に「やり直し（11-07）」の節を足す。
+- **-a2**：Ch 2〜3。最初から 7.1 の基準で行う。
+- Ch 1 は、own・both・mathlib の行の理由だけを 7.1 の 1 の形に書き直す（担当は -a2、Ch 2〜3 の後）。
+
+### 7.3 交差の抜き取り検査
+
+やり直しが終わったら、-b が -c の章から、-c が -b の章から、own・both・mathlib と none をそれぞれ **1 章 20 件ずつ**無作為に選んで、独立に確かめる（乱数の種を報告に書く）。誤りが 1 割を超えた章は、その status の行をもう一度全部やり直す。結果は `review/check/cross-<N>.md`。
+
+追記（11-07、調整役）：第 1〜3 章は -a2 がやり直した（取り込み済み、829a2b041）。抜き取りの組み合わせを次のようにする。
+
+| 抜き取る側 | 対象の章 | 始める時 |
+| --- | --- | --- |
+| -a2 | 第 4〜6 章（-b のやり直し） | -b のやり直しが main に入った後 |
+| -b | 第 7〜10 章（-c のやり直し） | -c のやり直しが main に入った後 |
+| -c | 第 1〜3 章（-a2 のやり直し） | -c 自身のやり直しが終わった後 |
+
+件数・乱数の種・やり直しの基準は上と同じ。
+
+### 7.4 進め方
+
+- 速さより深さを優先する。1 章を一度に流さず、Subsection ごとに確かめてコミットしてよい。
+- KL-W1 の段 2（Tag を付ける）・段 3（移動）は、このやり直しと交差の検査が終わってから（Tag は own・both だけに付けるので、own の照合の精度がそのまま Tag の精度になる）。

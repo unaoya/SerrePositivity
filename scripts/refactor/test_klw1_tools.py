@@ -1,0 +1,224 @@
+"""Unit and optional Lean integration tests for the KL-W1 migration tools."""
+
+import json
+import os
+from pathlib import Path
+import subprocess
+from tempfile import TemporaryDirectory
+import unittest
+
+from klw1_layer_check import check
+from klw1_namespace import Migration, checked_capture, module_name, render_aliases, rewrite, select_aliases
+from klw1_review_assignment import check_review_gate, load_reviews, refresh, toc_sections
+
+
+def occurrence(data, token, old, owner, kind="term", start=0):
+    a = data.encode().index(token.encode(), start)
+    return {"start": a, "stop": a + len(token.encode()), "name": old, "module": owner,
+            "kind": kind, "namespace": "[anonymous]"}
+
+
+class NamespaceTests(unittest.TestCase):
+    def test_rewrite_uses_resolution_and_byte_offsets(self):
+        text = '-- 日本語 Old.f\npublic meta import\n  OldModule\ndef use (f : Nat) := Old.f + f\n'
+        ref = occurrence(text, "Old.f", "Old.f", "OldModule", start=text.encode().index(b"def use"))
+        plan = Migration({"rows": [{"module": "OldModule", "old": "Old.f", "new": "New.f"}],
+                          "modules": {"OldModule": "NewModule"}})
+        result, issues = rewrite({"module": "Use", "source": text, "refs": [ref], "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(result.decode(), text.replace("  OldModule", "  NewModule")
+                         .replace(":= Old.f", ":= _root_.New.f"))
+
+    def test_competing_resolutions_block_the_entire_file(self):
+        ref = occurrence("same", "same", "Old.same", "OldModule")
+        local = {**ref, "kind": "local", "name": "", "module": ""}
+        plan = Migration({"rows": [{"module": "OldModule", "old": "Old.same", "new": "New.same"}]})
+        result, issues = rewrite({"module": "Use", "source": "same", "refs": [ref, local], "commands": []}, plan)
+        self.assertIsNone(result)
+        self.assertTrue(issues)
+
+    def test_alias_use_requires_external_resolution_and_orders_selected_types(self):
+        owner = "SerrePositivity.InfinityCategories.OldModule"
+        plan = Migration({"rows": [
+            {"module": owner, "old": "Old.f", "new": "New.f", "type_dependencies": ["Old.Box"]},
+            {"module": owner, "old": "Old.Box", "new": "New.Box"},
+            {"module": owner, "old": "Old.unused", "new": "New.unused"},
+        ], "modules": {owner: "SerrePositivity.InfinityCategories.NewModule",
+                        "SerrePositivity.KST.Moving": "SerrePositivity.InfinityCategories.Moved"},
+            "existing_aliases": {"Past.f": "Old.f"}})
+        refs = [occurrence(n, n, n, owner) for n in ("Old.f", "Old.Box", "Past.f")]
+        inside = occurrence("Old.unused", "Old.unused", "Old.unused", owner)
+        entries = [
+            ("main", "KST.lean", {"module": "SerrePositivity.KST", "refs": refs}),
+            ("branch", "drafts/F.lean", {"module": "drafts.F", "refs": refs[:1]}),
+            ("main", "Internal.lean", {"module": owner, "refs": [inside]}),
+            ("main", "KST/Moving.lean", {"module": "SerrePositivity.KST.Moving", "refs": [inside]}),
+        ]
+        selected, existing = select_aliases(entries, plan)
+        self.assertEqual(set(selected), {"Old.f", "Old.Box"})
+        self.assertEqual(len(selected["Old.f"]["uses"]), 2)
+        self.assertEqual(set(existing), {"Past.f"})
+        output = render_aliases(selected, plan, "F2.DeprecatedAlias", "2026-11-07")
+        self.assertLess(output.index("_root_.Old.Box"), output.index("_root_.Old.f"))
+        self.assertNotIn("unused", output)
+        self.assertNotIn("Past.f", output)
+
+    def test_qualified_name_in_unindexed_syntax_is_blocked(self):
+        plan = Migration({"rows": [{"module": "Old", "old": "Old.f", "new": "New.f"}]})
+        result, issues = rewrite({"module": "Use", "source": "macroInput Old.f\n",
+                                  "refs": [], "commands": []}, plan)
+        self.assertIsNone(result)
+        self.assertIn("no semantic source span", issues[0]["reason"])
+
+    def test_stale_capture_rejected(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Test.lean").write_text("def f := 2\n")
+            capture = root / "index.json"
+            capture.write_text(json.dumps({"schema_version": 1, "module": "Test", "source": "def f := 1\n"}))
+            with self.assertRaisesRegex(ValueError, "exact source"):
+                checked_capture(root, "Test.lean", capture)
+
+
+class LayerTests(unittest.TestCase):
+    def setUp(self):
+        k = "SerrePositivity.InfinityCategories.Kerodon"
+        self.a, self.b, self.c = (f"{k}.{part}.Basic" for part in ("Early", "Later", "Comp"))
+        self.i = "SerrePositivity.KST.Internal"
+        self.graph = {self.a: {self.b, "Mathlib.X"}, self.b: set(), self.c: {self.i}, self.i: set()}
+        self.config = {"schema_version": 1,
+                       "modules": {self.a: "Portable", self.b: "SharedFoundation", self.c: "Comparison"},
+                       "external_prefixes": ["Mathlib"],
+                       "implementation_prefixes": ["SerrePositivity.KST"],
+                       "sections": {f"{k}.Early": [1, 1], f"{k}.Later": [2, 1], f"{k}.Comp": [3, 1]},
+                       "reverse_edges": [{"from": self.a, "to": self.b, "reason": "shared comparison"}],
+                       "implementation_edges": [{"from": self.c, "to": self.i, "reason": "model input"}]}
+
+    def test_same_section_rank_is_not_directory_rank(self):
+        report = check(self.graph, self.config)
+        self.assertFalse(report["violations"])
+        self.assertEqual(len(report["approved_reverse_edges"]), 1)
+        self.assertLess(report["topological_order"].index(self.b), report["topological_order"].index(self.a))
+
+    def test_transitive_implementation_and_unresolved_import(self):
+        self.graph[self.b] = {self.c, "SerrePositivity.Missing"}
+        issues = check(self.graph, self.config)["violations"]
+        self.assertIn({"kind": "portable-implementation-closure", "path": (self.a, self.b, self.c, self.i)}, issues)
+        self.assertIn({"kind": "unresolved-import", "path": (self.b, "SerrePositivity.Missing")}, issues)
+
+    def test_cycle_and_stale_exception(self):
+        self.graph[self.b] = {self.a}
+        self.assertIn("import-cycle", {r["kind"] for r in check(self.graph, self.config)["violations"]})
+        self.graph[self.c].clear()
+        with self.assertRaisesRegex(ValueError, "stale exception"):
+            check(self.graph, self.config)
+
+
+class ReviewTests(unittest.TestCase):
+    def test_review_changes_section_and_preserves_holds_and_model_flags(self):
+        path = "SerrePositivity/InfinityCategories/X.lean"
+        outside = "SerrePositivity/KST/Y.lean"
+        def row(p, scope, action):
+            return {"source": p, "scope": scope, "action": action, "basis": "items", "section": "1.1",
+                    "section_tag": "AAAA", "proposed_path": f"Old/{Path(p).name}", "evidence": "declaration",
+                    "declarations": "old", "declaration_items": "1.1.1.1", "other_declarations": "",
+                    "docstring_refs": "", "other_sections": "", "model_category": "verify-instance:X"}
+        items = [{"number": "1.1.1.1", "status": "own", "declarations": f"X @ {path}:10"},
+                 {"number": "2.2.1.1", "status": "none", "declarations": ""}]
+        reviews = {"1.1.1.1": {"status_new": "none", "verdict": "unsure", "declarations_new": ""},
+                   "2.2.1.1": {"status_new": "own", "verdict": "fix", "declarations_new": f"X @ {path}:10 | Y @ {outside}:12"}}
+        sections = toc_sections("- Chapter 2 [0002] Tests\n  - 2.2 [BBBB] Other Stuff\n")
+        refreshed, changes = refresh([row(path, "inside", "move"), row(outside, "external-candidate", "hold-K-theory")],
+                                     items, reviews, sections, [outside])
+        self.assertEqual(refreshed[0]["proposed_path"], "SerrePositivity/InfinityCategories/Kerodon/Tests/OtherStuff/X.lean")
+        self.assertEqual(refreshed[0]["basis"], "review")
+        self.assertEqual(refreshed[0]["model_category"], "verify-instance:X")
+        self.assertEqual(refreshed[1]["move_approved"], "no")
+        self.assertIn("unsure items", changes[0]["reason"])
+
+    def test_cross_gate_and_missing_chapter(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            items = [{"number": "2.1.1.1"}]
+            self.assertEqual(load_reviews(items, root, complete=False), {})
+            with self.assertRaises(FileNotFoundError):
+                load_reviews(items, root)
+            with self.assertRaisesRegex(ValueError, "accept-cross-review"):
+                check_review_gate({}, root, False)
+            with self.assertRaisesRegex(ValueError, "cross-4.md"):
+                check_review_gate({}, root, True)
+
+
+@unittest.skipUnless(os.getenv("KLW1_TEST_LEAN"), "set KLW1_TEST_LEAN and use the build lock")
+class LeanIntegrationTests(unittest.TestCase):
+    def test_qualified_relative_and_open_rewrite_then_elaborate(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        text = """-- 日本語と Old.f
+namespace Old
+def f (x : Nat) := x + 1
+structure Box where
+  value : Nat
+namespace Nested
+def result := f 0
+end Nested
+scoped notation "kRef" => f 1
+end Old
+
+open Old
+open Old (f)
+open Old renaming f -> ofn
+open scoped Old
+def rel := f 3
+def rel2 := ofn 3
+def fully := Old.f 3
+def shadow (f : Nat) := f + 1
+def dot (x : Old.Box) := x.value
+def localOpen := open Old in f 4
+def withNotation := kRef
+"""
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = "formalization-plans/drafts/Old.lean"
+            source, capture, after = (root / n for n in (path, "refs.json", "After.lean"))
+            source.parent.mkdir(parents=True)
+            source.write_text(text)
+            owner = module_name(path)
+            subprocess.run([lean, "--run", str(helper), owner, path, capture.name], cwd=root, check=True)
+            data = checked_capture(root, path, capture)
+            symbols = ["Old.f", "Old.Box", "Old.Box.value", "Old.Nested.result"]
+            plan = Migration({"rows": [{"module": owner, "old": n, "new": n.replace("Old.", "New.Home.", 1)} for n in symbols],
+                              "namespaces": {owner: {"Old": "New.Home"}}, "opens": {"Old": "New.Home"}})
+            result, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            self.assertIn(b"namespace New.Home", result)
+            self.assertIn(b"open _root_.New.Home renaming f -> ofn", result)
+            self.assertIn(b"x.value", result)
+            self.assertIn(b"def shadow (f : Nat) := f + 1", result)
+            after.write_bytes(result + b"\nexample : fully = 4 := rfl\nexample : withNotation = 2 := rfl\n")
+            subprocess.run([lean, after.name], cwd=root, check=True)
+
+    @unittest.skipUnless(os.getenv("KLW1_TEST_ALIAS_HELPER"), "set KLW1_TEST_ALIAS_HELPER and LEAN_PATH")
+    def test_generated_aliases_elaborate_with_f2_helper(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = os.environ["KLW1_TEST_ALIAS_HELPER"]
+        plan = Migration({"rows": [
+            {"old": "Old.g", "new": "New.g", "module": "Moved"},
+            {"old": "Old.g_eq", "new": "New.g_eq", "module": "Moved"},
+        ]})
+        selected = {r["old"]: r for r in plan.symbols.values()}
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Moved.lean").write_text(
+                "module\n@[expose] public section\ndef New.g (n : Nat) := n\n"
+                "theorem New.g_eq (n : Nat) : New.g n = n := rfl\n")
+            (root / "Aliases.lean").write_text(render_aliases(selected, plan, helper, "2026-11-07"))
+            env = dict(os.environ, LEAN_PATH=directory + os.pathsep + os.environ["LEAN_PATH"])
+            for module in ("Moved", "Aliases"):
+                subprocess.run([lean, "-o", module + ".olean", module + ".lean"], cwd=root, env=env, check=True)
+            (root / "Consumer.lean").write_text("import Aliases\nexample (n : Nat) : Old.g n = n := Old.g_eq n\n")
+            subprocess.run([lean, "Consumer.lean"], cwd=root, env=env, check=True)
+
+
+if __name__ == "__main__":
+    unittest.main()

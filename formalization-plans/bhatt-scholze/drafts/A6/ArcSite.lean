@@ -1,8 +1,9 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite（仮。原典 Def 8.7 の affine 版、Lemma 8.8 の affine 版）
+-- 1 圏の arc site と Lemma 8.8 の affine 版は本体の ArcSite に移した。
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- W9-III-08（致命・配置）：現行の CompletedTensor は IntegralExistence 経由で消去対象の Inputs/PerfectoidizationInterface を import する。2a の取り込み後に
@@ -56,124 +57,6 @@ namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.DerivedCompletion
 
 variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
-
-/-! ## 台の圏 -/
-
-/-- 導来 p 完備性と濃度を併記する、環の圏上の対象条件。 -/
-def affComplProperty : ObjectProperty CommRingCat.{u} := fun S =>
-  IsModuleComplete S (p : S) (ModuleCat.of S S) ∧ Cardinal.mk S ≤ κ
-
-/-- 小さい模型を取る前の充満部分圏。 -/
-abbrev AffComplLarge := (affComplProperty p κ).FullSubcategory
-
-instance affComplLarge_essentiallySmall : EssentiallySmall.{u} (AffComplLarge p κ) := by
-  sorry -- 濃度 κ の固定した台の部分集合に環構造を移し、小さい同値な圏を作る
-
-/-- 概要：κ-small の p 完備環の圏（affine の p 進形式スキーム）。
-方針：`CommRingCat.{u}` の充満部分圏（導来 p 完備、濃度 ≤ κ）の `SmallModel`（A0 の `PrismOverSmall` と同じ道具。`EssentiallySmall.{u}` を上で供給）。
-規約：対象の濃度 ≤ κ。
-使われ方：arc site の台。 -/
-abbrev AffCompl : Type u := SmallModel (AffComplLarge p κ)
-
-instance : Category.{u} (AffCompl p κ) := inferInstance
-
-/-- 小さい模型から元の環への忘却。射の環準同型もこの関手で取り出す。 -/
-def affComplForget : AffCompl p κ ⥤ CommRingCat.{u} :=
-  (equivSmallModel (AffComplLarge p κ)).inverse ⋙ (affComplProperty p κ).ι
-
-/-- 小さい p 完備環の圏内での perfectoid 条件。 -/
-def affPerfdProperty : ObjectProperty (AffCompl p κ) := fun S =>
-  IsIntegralPerfectoid ((affComplForget p κ).obj S) p
-
-/-- 概要：κ-small の perfectoid 環の充満部分圏 affPerfd_κ ⊂ affCompl_κ。
-方針：`IsIntegralPerfectoid` の `ObjectProperty.FullSubcategory`。
-規約：—
-使われ方：Prop 8.10、F_T。 -/
-abbrev AffPerfd : Type u := (affPerfdProperty p κ).FullSubcategory
-
-instance : Category.{u} (AffPerfd p κ) := inferInstance
-
-/-- 概要：包含関手 affPerfd_κ ⥤ affCompl_κ（充満忠実）。 -/
-def affPerfdInclusion : AffPerfd p κ ⥤ AffCompl p κ :=
-  (affPerfdProperty p κ).ι
-
-/-! ## arc 被覆と arc 位相 -/
-
-/-- 概要：有限族 {R → R_i} が arc 被覆（[BM18, Def 1.2]、Def 8.7 の affine 版）。
-方針：∀ V（`IsRankOneCompleteValuationRing`）、∀ R → V、∃ i W（同じ種類）、V → W 忠実平坦、∃ R_i → W、両立。
-規約：族の添字は `Finite`。単射の場合は族 = 一点。
-使われ方：`arcTopology`、Prop 8.10、Cor 8.12 の二つの被覆。 -/
-def IsArcCoverFamily {R : Type u} [CommRing R] {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]
-    (f : ∀ i, R →+* B i) : Prop :=
-  ∀ (V : Type u) [CommRing V], IsRankOneCompleteValuationRing p V → ∀ k : R →+* V,
-    ∃ (i : ι) (W : Type u) (_ : CommRing W), IsRankOneCompleteValuationRing p W ∧
-      ∃ (e : V →+* W), e.FaithfullyFlat ∧ -- 原典 Def 8.7 の「忠実平坦な拡大」そのもの（W9-II-10：「平坦かつ単射」は弱すぎる。
-        -- 標数 p の A = F_p[t^{1/p^∞}] で {A → A[1/t], A → F_p} が被覆になり O の Čech 降下が破綻する。付値環の局所単射で代える場合は同値を証明する）
-        ∃ l : B i →+* W, l.comp (f i) = e.comp k
-
-/-- 概要：arc 位相：有限 arc 被覆族の生成 sieve を含む Grothendieck 位相の sInf（A0 の `flatTopology` と同じ形）。
-方針：`Sieve.generate (Presieve.ofArrows …)`。
-規約：affCompl_κ の opposite の上。
-使われ方：以下。 -/
-def arcTopology : GrothendieckTopology (AffCompl p κ)ᵒᵖ :=
-  sInf { J | ∀ (ι : Type u) [Finite ι] (R : AffCompl p κ)
-    (B : ι → AffCompl p κ) (f : ∀ i, R ⟶ B i),
-    IsArcCoverFamily p (fun i => (affComplForget p κ).obj (B i))
-      (fun i => ((affComplForget p κ).map (f i)).hom) →
-    Sieve.generate (Presieve.ofArrows (fun i => Opposite.op (B i))
-      (fun i => (f i).op)) ∈ J (Opposite.op R) }
-
-/-- 概要：affPerfd_κ への誘導位相（`affPerfdInclusion.op` による引き戻し、Mathlib `Functor.inducedTopology`。包含は site の opposite の向きで渡す、W9-II-25）。
-定義の本体は `(affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)`。
-Mathlib `Sites/InducedTopology.lean` の定義には cover-dense の仮定は不要（比較定理の仮定とは区別）。
-方針：Mathlib の dense subsite の道具。
-規約：原典 "Perfd ⊂ fSch with the induced topology" の affine 版。
-使われ方：Prop 8.10、Cor 8.12。 -/
-def arcTopologyPerfd : GrothendieckTopology (AffPerfd p κ)ᵒᵖ :=
-  (affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)
-
-/-! ## coverage -/
-
-/-- 概要：arc 被覆族は底変換で安定：R → R′ と {R → R_i} に対し {R′ → R_i ⊗̂_R R′}（p 完備テンソル）も arc 被覆族。
-方針：R′ → V は R → V を与え、持ち上げ R_i → W と R′ → V → W から R_i ⊗̂_R R′ → W（W は p 完備）。
-規約：完備テンソルは `CompletedTensor`（perfectoid なら perfectoid）。
-使われ方：生成系の補題（S1 `isSheaf_toGrothendieck_iff`）を使うための coverage 条件。 -/
-theorem isArcCoverFamily_baseChange
-    {R R' : Type u} [CommRing R] [CommRing R']
-    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]
-    (f : ∀ i, R →+* B i) (g : R →+* R')
-    (hR : IsModuleComplete R (p : R) (ModuleCat.of R R))
-    (hR' : IsModuleComplete R' (p : R') (ModuleCat.of R' R'))
-    (hB : ∀ i, IsModuleComplete (B i) (p : B i) (ModuleCat.of (B i) (B i)))
-    (hf : IsArcCoverFamily p B f) :
-    letI : Algebra R R' := g.toAlgebra
-    letI : ∀ i, Algebra R (B i) := fun i => (f i).toAlgebra
-    IsArcCoverFamily p
-      (fun i => completionRing p (CommRingCat.of (B i ⊗[R] R')))
-      (fun i => (completionUnit p (CommRingCat.of (B i ⊗[R] R'))).hom.comp
-        (Algebra.TensorProduct.includeRight : R' →ₐ[R] B i ⊗[R] R').toRingHom) := by
-  sorry -- R' → V を R に制限して持ち上げ、テンソルと完備化の普遍性で W へ延ばす
-
-/-- 概要：合成・有限族の合併・有限積への置き換え（{R → R_i} と R → ∏R_i は同じ位相を生成）。 -/
-theorem isArcCoverFamily_comp
-    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]
-    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i)
-    (J : ι → Type u) [∀ i, Finite (J i)]
-    (C : ∀ i, J i → Type u) [∀ i j, CommRing (C i j)]
-    (g : ∀ i j, B i →+* C i j)
-    (hf : IsArcCoverFamily p B f)
-    (hg : ∀ i, IsArcCoverFamily p (C i) (g i)) :
-    IsArcCoverFamily p (fun ij : Sigma J => C ij.1 ij.2)
-      (fun ij => (g ij.1 ij.2).comp (f ij.1)) := by
-  sorry -- V → W → W' の二段の持ち上げと忠実平坦射の合成、有限添字の Sigma
-
-theorem isArcCoverFamily_prod_iff
-    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]
-    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i) :
-    IsArcCoverFamily p B f ↔
-      IsArcCoverFamily p (fun _ : PUnit.{u + 1} => ∀ i, B i)
-        (fun _ => RingHom.pi f) := by
-  sorry -- 付値環は非零整域なので有限積からの射は一因子を通る（空積の場合も含む）
 
 section ArcCech
 
@@ -330,11 +213,6 @@ W9-II-16：A5-4 の `rootClosure_isSemiperfectoid` は `hR : IsIntegralPerfectoi
 distinguished 元を使う）。全 p 完備環 S にそのまま当てることはできない（S = ℤ_p：基底なしの根添加 C_∞ は ℤ_p へ retraction をもち、perfectoid 環から
 ℤ_p への環準同型はないので semiperfectoid でない）。そこで前段 G-A6-11 を置く。 -/
 
-theorem baseExtension_cardinal_le (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    Cardinal.mk (baseExtension p S hS) ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
-  sorry -- R₀ の濃度は連続体以下、テンソルは有限和、最後の完備化は可算個のデータで評価する
-
 /-- 概要：記録：S → S₀ は p 完備忠実平坦（ℤ_p → R₀ が p 完備忠実平坦：R₀ は p ねじれなしで R₀/p ≠ 0）。原典 Lemma 8.8 の証明の
 「semiperfectoid な p 完備忠実平坦被覆」は S → S̃₀（S₀ の R₀ 上の `rootClosure`）がそれにあたる。
 方針：記録のみ。E3 には下の arc 被覆性だけ要る。
@@ -345,53 +223,5 @@ theorem baseExtensionUnit_pCompletelyFaithfullyFlat (S : Type u) [CommRing S]
     letI := (baseExtensionUnit p S hS).toAlgebra
     IsCompletelyFaithfullyFlat (Ideal.span {(p : S)}) (baseExtension p S hS) := by
   sorry -- ℤ_p → R₀ の p 完全忠実平坦性を S へ完備底変換し、上の単位射による S 加群として読む
-
-/-- 概要：G-A6-3：p 完備な階数 1 の付値環 V は、perfectoid な p 完備階数 1 の付値環 W に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長）。
-W には p の両立する p 冪根の列がある（絶対整閉包から来る）ので、環準同型 R₀ → W が取れる。
-方針：Mathlib の付値の整拡大への延長（要確認）、絶対整閉な p 完備付値環は perfectoid（p 乗根の存在で Frobenius 全射、ker θ は主イデアル）。
-規約：—
-使われ方：下（W を**先に**取る）、Prop 8.10 の §3.1 の 2。 -/
-theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
-    (hV : IsRankOneCompleteValuationRing p V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W), IsRankOneCompleteValuationRing p W ∧
-      IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
-      ∃ ρ : ℕ → W, ρ 0 = (p : W) ∧ ∀ n, ρ (n + 1) ^ p = ρ n := by
-  sorry -- 絶対整閉包で両立根を選んで p 完備化する。付値環の局所拡大は忠実平坦
-
-/-- W と b を G-A6-3 で選んだ後、同じ e に沿って S → V を延長する。 -/
-theorem exists_baseExtension_lift (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
-    (V : CommRingCat.{u}) (hV : IsRankOneCompleteValuationRing p V) (k : S →+* V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W) (l : baseExtension p S hS →+* W),
-      IsRankOneCompleteValuationRing p W ∧ IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
-      l.comp (baseExtensionUnit p S hS) = e.comp k := by
-  sorry -- exists_perfectoid_valuation_extension の根を b に移し、exists_baseExtension_lift_of_map を同じ W に適用
-
-/-- 概要：Lemma 8.8（affine 版）：任意の p 完備環 S は perfectoid による arc 被覆 S → S₀ → S̃₀ → (S̃₀)_perfd をもつ
-（S̃₀ は S₀ の R₀ 上の A5-4 `rootClosure`、(S̃₀)_perfd は A5-2 の普遍 perfectoid 環）。
-方針（W9-II-16 で訂正）：S → V に対し**先に** perfectoid な W（`exists_perfectoid_valuation_extension`）を取り、`exists_baseExtension_lift` で S₀ → W、
-`rootClosure_extends`（標的は perfectoid）で S̃₀ → W、S̃₀ は R₀ 上 semiperfectoid（`rootClosure_isSemiperfectoid`、基底 R₀ で仮定が満たされる）
-なので普遍性で (S̃₀)_perfd → W。旧方針「S̃ → V に延びてから W に替える」は `rootClosure_extends` の標的の仮定と順序が合わなかった。
-規約：濃度 ≤ κ（S₀・S̃₀・(S̃₀)_perfd とも (#S + ℵ₀)^{ℵ₀} 以下）。未証明の E3・A7 の普遍性は使わない。
-使われ方：cover-dense。 -/
-theorem exists_perfectoid_arcCover (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    ∃ (T : CommRingCat.{u}) (g : baseExtension p S hS →+* T),
-      IsIntegralPerfectoid T p ∧ Cardinal.mk T ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 ∧
-      IsArcCoverFamily p (fun _ : PUnit.{u + 1} => (T : Type u))
-        (fun _ => g.comp (baseExtensionUnit p S hS)) := by
-  -- S₀ に R₀ 上の rootClosure を施し、その semiperfectoid 性と Cor 7.3 で T と g を取る。
-  -- 各 S → V に対し上の拡大 W を先に選び、指定根で R₀ → W、二脚の持ち上げで S₀ → W を得る。
-  sorry -- rootClosure_extends と普遍 perfectoid 環の普遍性で同じ W へ延長。濃度は根添加と商の評価
-
-/-- 概要：affPerfd_κ ⥤ affCompl_κ は arc 位相について cover-dense（Mathlib `Functor.IsCoverDense`）。
-方針：`exists_perfectoid_arcCover`（前段 G-A6-11 つき。global な affCompl_κ を維持する、W9-II-16）。
-規約：Mathlib の 1 圏の道具。これで集合の層の圏同値 `Functor.sheafInducedTopologyEquivOfIsCoverDense`（= `IsDenseSubsite.sheafEquiv`、G-A6-8。W9-II-25 で名前を訂正）が使える。
-使われ方：A6-3。 -/
-theorem affPerfdInclusion_isCoverDense [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
-    (affPerfdInclusion p κ).op.IsCoverDense (arcTopology p κ) := by
-  apply Functor.isCoverDense_of_generate_singleton_functor_π_mem
-  intro X
-  sorry -- exists_perfectoid_arcCover の T は hκ で ≤κ。模型に移し、同型で運んだ一点被覆の生成 sieve を arcTopology に入れる
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived
