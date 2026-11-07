@@ -54,6 +54,22 @@ import SerrePositivity.HomologicalAlgebra.Cech.Filtered
 import SerrePositivity.HomologicalAlgebra.Cech.Diagonal
 import SerrePositivity.HomologicalAlgebra.Cech.Double
 import SerrePositivity.HomologicalAlgebra.Cech.Composition
+import SerrePositivity.CommutativeAlgebra.Ultraproduct.Basic
+import SerrePositivity.CommutativeAlgebra.Ultraproduct.Localization
+import SerrePositivity.CommutativeAlgebra.ValuationExtension.Aic
+import SerrePositivity.CommutativeAlgebra.ValuationInterval.Basic
+import SerrePositivity.CommutativeAlgebra.ValuationInterval.Colimit
+import SerrePositivity.CommutativeAlgebra.ValuationInterval.Endpoint
+import SerrePositivity.CommutativeAlgebra.ValuationInterval.FinitePresentation
+import SerrePositivity.CommutativeAlgebra.ValuationInterval.Zorn
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechMilnor
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcIntervalOverlap
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct
 import Lean.Util.CollectAxioms
 
 /-!
@@ -66,6 +82,22 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.CommutativeAlgebra.Ultraproduct.Basic,
+    `SerrePositivity.CommutativeAlgebra.Ultraproduct.Localization,
+    `SerrePositivity.CommutativeAlgebra.ValuationExtension.Aic,
+    `SerrePositivity.CommutativeAlgebra.ValuationInterval.Basic,
+    `SerrePositivity.CommutativeAlgebra.ValuationInterval.Colimit,
+    `SerrePositivity.CommutativeAlgebra.ValuationInterval.Endpoint,
+    `SerrePositivity.CommutativeAlgebra.ValuationInterval.FinitePresentation,
+    `SerrePositivity.CommutativeAlgebra.ValuationInterval.Zorn,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechMilnor,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcIntervalOverlap,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct,
     `SerrePositivity.HomologicalAlgebra.Cech.Basic,
     `SerrePositivity.HomologicalAlgebra.Cech.BaseChange,
     `SerrePositivity.HomologicalAlgebra.Cech.Split,
