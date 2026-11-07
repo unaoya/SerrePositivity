@@ -1,0 +1,31 @@
+{
+  "imports": [
+    "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+    "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit"
+  ],
+  "open_scoped": "SSet.modelCategoryQuillen",
+  "commands": [
+    "#synth CategoryWithCofibrations SSet",
+    "#synth CategoryWithFibrations SSet",
+    "#synth ModelCategory SSet"
+  ],
+  "results": [
+    {
+      "line": 7,
+      "message": "SSet.modelCategoryQuillen.instCategoryWithCofibrations",
+      "severity": "information"
+    },
+    {
+      "line": 8,
+      "message": "SSet.modelCategoryQuillen.instCategoryWithFibrations",
+      "severity": "information"
+    },
+    {
+      "line": 9,
+      "message": "failed to synthesize\n  ModelCategory SSet\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "severity": "error"
+    }
+  ],
+  "input_source": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean:36",
+  "input_status": "kanQuillenModel は sorry を含む存在定理からの局所的な選択。グローバル instance の登録なし。"
+}

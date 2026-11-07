@@ -1,0 +1,3924 @@
+{
+  "base": "33ce6cfca",
+  "stages": {
+    "1": "runs/all-20261107-01/declaration-results.csv",
+    "1prime": "runs/stage1-prime-01/verified-candidates.csv",
+    "2": "supplemental"
+  },
+  "items": {
+    "7.1.2.1": {
+      "adopted": []
+    },
+    "7.1.2.11": {
+      "adopted": [
+        {
+          "id": "69f4938c1bdd35fa062b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.2": {
+      "adopted": [
+        {
+          "id": "4566c2fe03217691c58a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.12": {
+      "adopted": [
+        {
+          "id": "528c787a16f5bdbfcc09",
+          "phase": "1prime"
+        },
+        {
+          "id": "8919fc27d9287923ff18",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceColimits.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.4.18": {
+      "adopted": [
+        {
+          "id": "528c787a16f5bdbfcc09",
+          "phase": "1prime"
+        },
+        {
+          "id": "f4e0fde9358921d00d8d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.23": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.CreatesLimit",
+          "source": "Mathlib/CategoryTheory/Limits/Creates.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.CreatesColimit",
+          "source": "Mathlib/CategoryTheory/Limits/Creates.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.4.29": {
+      "adopted": [
+        {
+          "id": "8bf39dd6446a2f63b50b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f7d6491b882ff6fd21a9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.17": {
+      "adopted": [
+        {
+          "id": "8275158e2ebd93aac0c4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.20": {
+      "adopted": [
+        {
+          "id": "186f2dfa2d2207eb3cde",
+          "phase": "1prime"
+        },
+        {
+          "id": "2553dd9d573f46134162",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.7.8": {
+      "adopted": [
+        {
+          "id": "767d910d897827571c95",
+          "phase": "1prime"
+        },
+        {
+          "id": "5c9d73f7a679fcd0447d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.7.9": {
+      "adopted": []
+    },
+    "7.1.8.8": {
+      "adopted": [
+        {
+          "id": "6e752c4018ad5c46ad0b",
+          "phase": "1prime"
+        },
+        {
+          "id": "56ef9f9a4895adb97470",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.10": {
+      "adopted": [
+        {
+          "id": "2df7b3386c2a6fbc0549",
+          "phase": "1prime"
+        },
+        {
+          "id": "457ff2d41b5576960761",
+          "phase": "1prime"
+        },
+        {
+          "id": "009c77136f48c620472b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.11": {
+      "adopted": [
+        {
+          "id": "2df7b3386c2a6fbc0549",
+          "phase": "1prime"
+        },
+        {
+          "id": "fb947072e5ae5f0ab590",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.1": {
+      "adopted": [
+        {
+          "id": "25161817cbd5ec26638f",
+          "phase": "1prime"
+        },
+        {
+          "id": "c5fce177145f8a9f75a3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.6": {
+      "adopted": [
+        {
+          "id": "730425fc9915a1a3895e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.5": {
+      "adopted": [
+        {
+          "id": "a7c14dabb30ee6556752",
+          "phase": "1prime"
+        },
+        {
+          "id": "521e18cbb67641e773f8",
+          "phase": "1prime"
+        },
+        {
+          "id": "2e2c26518fbc70af4197",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.13": {
+      "adopted": [
+        {
+          "id": "b8be3bca1a6b5608e433",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.3.18": {
+      "adopted": [
+        {
+          "id": "495cd7c8a5467464aaa1",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.3.22": {
+      "adopted": [
+        {
+          "id": "66e85f8ea31e67e09c3c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.3.23": {
+      "adopted": [
+        {
+          "id": "66e85f8ea31e67e09c3c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.1": {
+      "adopted": [
+        {
+          "id": "ef77ec6351d2af62f0b2",
+          "phase": "1prime"
+        },
+        {
+          "id": "0d427aecd87eb7d92512",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.3": {
+      "adopted": [
+        {
+          "id": "37d9d2aa0e40bff19c78",
+          "phase": "1prime"
+        },
+        {
+          "id": "c36a71d53323e0159a5d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.6": {
+      "adopted": [
+        {
+          "id": "fecd40873b734c216441",
+          "phase": "1prime"
+        },
+        {
+          "id": "67470242b1015c6b6b35",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.8": {
+      "adopted": [
+        {
+          "id": "c5e2b00d2e25597d4c53",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.6.14": {
+      "adopted": [
+        {
+          "id": "057b2c387cc1bcdad564",
+          "phase": "1prime"
+        },
+        {
+          "id": "bf278cf6332fe757f18c",
+          "phase": "1prime"
+        },
+        {
+          "id": "b59fb1d8bad4347dcaec",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.7.1": {
+      "adopted": [
+        {
+          "id": "246ae1cfc0f219d3dc9a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.24": {
+      "adopted": [
+        {
+          "id": "d2354c864177d0c192bd",
+          "phase": "1prime"
+        },
+        {
+          "id": "0cb154a89fd49a3a53d7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.1": {
+      "adopted": [
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.3": {
+      "adopted": [
+        {
+          "id": "a6738111dde684b34f8c",
+          "phase": "1prime"
+        },
+        {
+          "id": "c935b5178283fbb3b015",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.9": {
+      "adopted": [
+        {
+          "id": "cb9065bcc4978aaab74d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.13": {
+      "adopted": [
+        {
+          "id": "f5ed091b730c1cee1c34",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.14": {
+      "adopted": [
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        },
+        {
+          "id": "506ada953aecbad863b3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.18": {
+      "adopted": [
+        {
+          "id": "506ada953aecbad863b3",
+          "phase": "1prime"
+        },
+        {
+          "id": "bd98f05b8200a3fa1c71",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.19": {
+      "adopted": [
+        {
+          "id": "506ada953aecbad863b3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.1": {
+      "adopted": [
+        {
+          "id": "5372eccff8fe404d9162",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.4": {
+      "adopted": [
+        {
+          "id": "2144ba14ca8fa3fed2ae",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.4.6": {
+      "adopted": []
+    },
+    "7.4.5.8": {
+      "adopted": []
+    },
+    "7.4.5.13": {
+      "adopted": []
+    },
+    "7.5.4.8": {
+      "adopted": []
+    },
+    "7.5.5.1": {
+      "adopted": []
+    },
+    "7.5.5.11": {
+      "adopted": []
+    },
+    "7.5.6.9": {
+      "adopted": [
+        {
+          "id": "ce4ad03e94364338dc31",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.7.3": {
+      "adopted": []
+    },
+    "7.5.7.6": {
+      "adopted": [
+        {
+          "id": "38724db7a00edbd4231f",
+          "phase": "1prime"
+        },
+        {
+          "id": "a7f340d1591625aacc18",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.8.2": {
+      "adopted": []
+    },
+    "7.6.1.1": {
+      "adopted": []
+    },
+    "7.6.1.7": {
+      "adopted": [
+        {
+          "id": "395057af829c80ead7a8",
+          "phase": "1prime"
+        },
+        {
+          "id": "34576632042d85a7a16b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.13": {
+      "adopted": [
+        {
+          "id": "7dfddd8438827b10f964",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.16": {
+      "adopted": [
+        {
+          "id": "82cdfbd4036c9d41bdc5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.33": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.pullback",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.6.5.11": {
+      "adopted": [
+        {
+          "id": "8c57fcaee28b029aa213",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration",
+          "source": "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex",
+          "source": "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.6.6.6": {
+      "adopted": []
+    },
+    "7.6.6.24": {
+      "adopted": [
+        {
+          "id": "edb4f6b1b47a9b1029fd",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.28": {
+      "adopted": []
+    },
+    "7.6.6.41": {
+      "adopted": [
+        {
+          "id": "ee7e6df442cee30fbf42",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.0.4": {
+      "adopted": [
+        {
+          "id": "01cde4c7a98c9673e23d",
+          "phase": "1prime"
+        },
+        {
+          "id": "192d2c4fe9c5c86d18c6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.2.5": {
+      "adopted": []
+    },
+    "7.7.2.8": {
+      "adopted": []
+    },
+    "7.7.2.24": {
+      "adopted": []
+    },
+    "7.7.5.1": {
+      "adopted": []
+    },
+    "7.7.6.1": {
+      "adopted": [
+        {
+          "id": "01cde4c7a98c9673e23d",
+          "phase": "1prime"
+        },
+        {
+          "id": "ab99a71ea57fa4b35e64",
+          "phase": "1prime"
+        },
+        {
+          "id": "192d2c4fe9c5c86d18c6",
+          "phase": "1prime"
+        },
+        {
+          "id": "b67ac143e5f486803102",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.7.2": {
+      "adopted": []
+    },
+    "7.1.0.1": {
+      "adopted": [
+        {
+          "id": "8b4645332a61e34fd6a0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.1": {
+      "adopted": [
+        {
+          "id": "4afeff1dd66b5e6b896b",
+          "phase": "1prime"
+        },
+        {
+          "id": "b5de3b1b56708f33d948",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsColimitCone",
+          "source": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.isColimitCone_iff_coconePointHomFamily_homotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CoconePointHomInitiality.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.1.12": {
+      "adopted": [
+        {
+          "id": "968912061320250f017c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.13": {
+      "adopted": [
+        {
+          "id": "250773af1846e700322a",
+          "phase": "1prime"
+        },
+        {
+          "id": "8786cded1e6b71dd30a8",
+          "phase": "1prime"
+        },
+        {
+          "id": "baffbfa5d12c0e56f38c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.14": {
+      "adopted": []
+    },
+    "7.1.1.15": {
+      "adopted": [
+        {
+          "id": "968912061320250f017c",
+          "phase": "1prime"
+        },
+        {
+          "id": "2666ab0589ecf19982fd",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.16": {
+      "adopted": [
+        {
+          "id": "61f62450c4da45cc8ae9",
+          "phase": "1prime"
+        },
+        {
+          "id": "2666ab0589ecf19982fd",
+          "phase": "1prime"
+        },
+        {
+          "id": "ae0b2aa24253d3a65334",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.18": {
+      "adopted": [
+        {
+          "id": "425c5d5c1fcfb0802c99",
+          "phase": "1prime"
+        },
+        {
+          "id": "8609a33bb4314534f3e7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.1.19": {
+      "adopted": [
+        {
+          "id": "690866aa9c34093facea",
+          "phase": "1prime"
+        },
+        {
+          "id": "08e22cef5f3357fc6cd2",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.2.5": {
+      "adopted": []
+    },
+    "7.1.2.8": {
+      "adopted": []
+    },
+    "7.1.2.15": {
+      "adopted": []
+    },
+    "7.1.2.16": {
+      "adopted": []
+    },
+    "7.1.2.18": {
+      "adopted": []
+    },
+    "7.1.3.1": {
+      "adopted": [
+        {
+          "id": "4afeff1dd66b5e6b896b",
+          "phase": "1prime"
+        },
+        {
+          "id": "b5de3b1b56708f33d948",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.3": {
+      "adopted": [
+        {
+          "id": "968912061320250f017c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.4": {
+      "adopted": [
+        {
+          "id": "b5de3b1b56708f33d948",
+          "phase": "1prime"
+        },
+        {
+          "id": "6e95f74a7d3b3153b161",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.5": {
+      "adopted": [
+        {
+          "id": "145c62bcb9a1b03ed7f1",
+          "phase": "1prime"
+        },
+        {
+          "id": "74d896a58da7c4119d49",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.15": {
+      "adopted": []
+    },
+    "7.1.3.17": {
+      "adopted": [
+        {
+          "id": "32cd1c1e06da7c5094d9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.18": {
+      "adopted": [
+        {
+          "id": "8dbc9324b9ad0b752ece",
+          "phase": "1prime"
+        },
+        {
+          "id": "0552ae53521975d1c0a4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.19": {
+      "adopted": [
+        {
+          "id": "baffbfa5d12c0e56f38c",
+          "phase": "1prime"
+        },
+        {
+          "id": "294c26e79175f9c3fb01",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.3.20": {
+      "adopted": [
+        {
+          "id": "0759c5ba927a371b6e79",
+          "phase": "1prime"
+        },
+        {
+          "id": "6fdb7a4c6b96be79baae",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.1": {
+      "adopted": [
+        {
+          "id": "9a05d37be0a4b44c1d9f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.4": {
+      "adopted": [
+        {
+          "id": "933b9e34695199049b7c",
+          "phase": "1prime"
+        },
+        {
+          "id": "72a31a895facc25f1082",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.5": {
+      "adopted": [
+        {
+          "id": "933b9e34695199049b7c",
+          "phase": "1prime"
+        },
+        {
+          "id": "dba2ccc5ad2e322e2d4c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.13": {
+      "adopted": [
+        {
+          "id": "ebfd68c9ce2b0bc932c8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.14": {
+      "adopted": []
+    },
+    "7.1.4.15": {
+      "adopted": []
+    },
+    "7.1.4.17": {
+      "adopted": []
+    },
+    "7.1.4.19": {
+      "adopted": [
+        {
+          "id": "16d65bcf2114849c6be0",
+          "phase": "1prime"
+        },
+        {
+          "id": "849f5c9fa72b72d6eb2b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.21": {
+      "adopted": [
+        {
+          "id": "7a673203f7e024563a02",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.22": {
+      "adopted": [
+        {
+          "id": "7a673203f7e024563a02",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.25": {
+      "adopted": []
+    },
+    "7.1.4.26": {
+      "adopted": [
+        {
+          "id": "3f189e5d8f7d05d80c00",
+          "phase": "1prime"
+        },
+        {
+          "id": "b08a292f15c8dd3dbe67",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.27": {
+      "adopted": [
+        {
+          "id": "fc445a2b63f9ed4e62ff",
+          "phase": "1prime"
+        },
+        {
+          "id": "5ca9f36fa88f60def3c1",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.28": {
+      "adopted": [
+        {
+          "id": "a5e4e88f5c9839470f91",
+          "phase": "1prime"
+        },
+        {
+          "id": "1d0feeddcdcc0eda926b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.31": {
+      "adopted": [
+        {
+          "id": "f7d6491b882ff6fd21a9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.33": {
+      "adopted": [
+        {
+          "id": "f81c580af027165a2fcb",
+          "phase": "1prime"
+        },
+        {
+          "id": "f81c8d996dad62d019c3",
+          "phase": "1prime"
+        },
+        {
+          "id": "1d48b0dd6d5be21f5c2b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.4.34": {
+      "adopted": []
+    },
+    "7.1.4.35": {
+      "adopted": [
+        {
+          "id": "39cda24fb0670889145a",
+          "phase": "1prime"
+        },
+        {
+          "id": "f7d6491b882ff6fd21a9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.1": {
+      "adopted": [
+        {
+          "id": "1b98258306621fe9cf00",
+          "phase": "1prime"
+        },
+        {
+          "id": "ef52aa66ea71b8876315",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.10": {
+      "adopted": []
+    },
+    "7.1.5.11": {
+      "adopted": [
+        {
+          "id": "326a0973dd1711abff11",
+          "phase": "1prime"
+        },
+        {
+          "id": "7cff405a0ed140d1cfc8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.12": {
+      "adopted": [
+        {
+          "id": "f25d5b30cf49227b7313",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso",
+          "source": "SerrePositivity/InfinityCategories/F1B/Quasicategory/RelativeInitialVertexIso.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.5.13": {
+      "adopted": [
+        {
+          "id": "320c5013a079d3643cff",
+          "phase": "1prime"
+        },
+        {
+          "id": "e370020c45d29d03119a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.14": {
+      "adopted": []
+    },
+    "7.1.5.15": {
+      "adopted": []
+    },
+    "7.1.5.16": {
+      "adopted": [
+        {
+          "id": "d0fabb08dd27d9263ef7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.17": {
+      "adopted": [
+        {
+          "id": "cfe442051af59c0b37af",
+          "phase": "1prime"
+        },
+        {
+          "id": "d0fabb08dd27d9263ef7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.18": {
+      "adopted": []
+    },
+    "7.1.5.19": {
+      "adopted": [
+        {
+          "id": "a77fd31e3cc8e1018af9",
+          "phase": "1prime"
+        },
+        {
+          "id": "2b63a744add4c7bdef13",
+          "phase": "1prime"
+        },
+        {
+          "id": "ba4472a7df7b5f30f12e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.21": {
+      "adopted": [
+        {
+          "id": "767d910d897827571c95",
+          "phase": "1prime"
+        },
+        {
+          "id": "9f6ca26f757cb0b9c8b5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.5.22": {
+      "adopted": [
+        {
+          "id": "320c5013a079d3643cff",
+          "phase": "1prime"
+        },
+        {
+          "id": "9f6ca26f757cb0b9c8b5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.1": {
+      "adopted": [
+        {
+          "id": "a8c6d453f2e57a0a5ae3",
+          "phase": "1prime"
+        },
+        {
+          "id": "31e5978c17837411a77a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.9": {
+      "adopted": [
+        {
+          "id": "bbdd9f98ac5aa6dab57e",
+          "phase": "1prime"
+        },
+        {
+          "id": "8ce54fb660e49e519f4c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.10": {
+      "adopted": [
+        {
+          "id": "d10a3970e4d36a28f33a",
+          "phase": "1prime"
+        },
+        {
+          "id": "2ffe810c2e468e7d3923",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.11": {
+      "adopted": [
+        {
+          "id": "0a57baa48fcc88d295d8",
+          "phase": "1prime"
+        },
+        {
+          "id": "cdae31a04a6b329f00ce",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.12": {
+      "adopted": [
+        {
+          "id": "3a3af4be0088dccba208",
+          "phase": "1prime"
+        },
+        {
+          "id": "798ea9bfff0a5e69c288",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.13": {
+      "adopted": [
+        {
+          "id": "c3a0de0b980304a9a1e9",
+          "phase": "1prime"
+        },
+        {
+          "id": "ca718a8a5891931a44bd",
+          "phase": "1prime"
+        },
+        {
+          "id": "5a75ac7518a4672f6828",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.14": {
+      "adopted": []
+    },
+    "7.1.6.15": {
+      "adopted": []
+    },
+    "7.1.6.16": {
+      "adopted": [
+        {
+          "id": "2553dd9d573f46134162",
+          "phase": "1prime"
+        },
+        {
+          "id": "6a9e93253e39dcb0f661",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.6.19": {
+      "adopted": []
+    },
+    "7.1.7.1": {
+      "adopted": [
+        {
+          "id": "c3a0de0b980304a9a1e9",
+          "phase": "1prime"
+        },
+        {
+          "id": "3284e0976f24bf12f5b7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.7.4": {
+      "adopted": []
+    },
+    "7.1.7.5": {
+      "adopted": []
+    },
+    "7.1.7.6": {
+      "adopted": [
+        {
+          "id": "66e85f8ea31e67e09c3c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.7.7": {
+      "adopted": []
+    },
+    "7.1.7.14": {
+      "adopted": []
+    },
+    "7.1.7.15": {
+      "adopted": []
+    },
+    "7.1.7.16": {
+      "adopted": []
+    },
+    "7.1.7.18": {
+      "adopted": []
+    },
+    "7.1.8.1": {
+      "adopted": [
+        {
+          "id": "918f45f70f64ad14a9a1",
+          "phase": "1prime"
+        },
+        {
+          "id": "9ea712cb4d6df0456096",
+          "phase": "1prime"
+        },
+        {
+          "id": "5297e512555e51cabfdf",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.2": {
+      "adopted": [
+        {
+          "id": "48b89c48fd2bf3dfae78",
+          "phase": "1prime"
+        },
+        {
+          "id": "30869d7e9b6fa128a7ef",
+          "phase": "1prime"
+        },
+        {
+          "id": "bdf61c6c4523acfdb6c5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.3": {
+      "adopted": [
+        {
+          "id": "37bab2f290df1dfa4a94",
+          "phase": "1prime"
+        },
+        {
+          "id": "48b89c48fd2bf3dfae78",
+          "phase": "1prime"
+        },
+        {
+          "id": "aff27abac021c97f9005",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.4": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.colimitIsoColimitCurryCompColim",
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.8.5": {
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.colimitIsoColimitCurryCompColim",
+          "source": "Mathlib/CategoryTheory/Limits/Fubini.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.1.8.6": {
+      "adopted": []
+    },
+    "7.1.8.7": {
+      "adopted": [
+        {
+          "id": "6e752c4018ad5c46ad0b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f9a7da09358a6e605cb8",
+          "phase": "1prime"
+        },
+        {
+          "id": "80247a8b53d76394158f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.9": {
+      "adopted": [
+        {
+          "id": "37bab2f290df1dfa4a94",
+          "phase": "1prime"
+        },
+        {
+          "id": "80247a8b53d76394158f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.13": {
+      "adopted": [
+        {
+          "id": "3b608b647d5bf0a7207a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.14": {
+      "adopted": [
+        {
+          "id": "3b608b647d5bf0a7207a",
+          "phase": "1prime"
+        },
+        {
+          "id": "56ef9f9a4895adb97470",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.8.15": {
+      "adopted": [
+        {
+          "id": "be87b7672fb96b4b1b70",
+          "phase": "1prime"
+        },
+        {
+          "id": "6c0544585d92cfdc0565",
+          "phase": "1prime"
+        },
+        {
+          "id": "a61a23f76a9748b2973c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.1": {
+      "adopted": [
+        {
+          "id": "edb4f6b1b47a9b1029fd",
+          "phase": "1prime"
+        },
+        {
+          "id": "1a818a6e5105f5f22b0d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.2": {
+      "adopted": []
+    },
+    "7.1.9.3": {
+      "adopted": [
+        {
+          "id": "8f2212aaca4f88a20ba3",
+          "phase": "1prime"
+        },
+        {
+          "id": "8f88e3412fd975c89d7e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.4": {
+      "adopted": [
+        {
+          "id": "2a708d9e67841fcce56e",
+          "phase": "1prime"
+        },
+        {
+          "id": "846728ded3c4703fdb5f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.5": {
+      "adopted": [
+        {
+          "id": "af4100f38a042d24b52a",
+          "phase": "1prime"
+        },
+        {
+          "id": "a884f1361555e3f84bc4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.7": {
+      "adopted": [
+        {
+          "id": "1a818a6e5105f5f22b0d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.8": {
+      "adopted": [
+        {
+          "id": "752ba6b3012804d62ff1",
+          "phase": "1prime"
+        },
+        {
+          "id": "0312191930a5aaeaf809",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.9.9": {
+      "adopted": []
+    },
+    "7.1.9.10": {
+      "adopted": []
+    },
+    "7.1.10.1": {
+      "adopted": [
+        {
+          "id": "30869d7e9b6fa128a7ef",
+          "phase": "1prime"
+        },
+        {
+          "id": "48b89c48fd2bf3dfae78",
+          "phase": "1prime"
+        },
+        {
+          "id": "3b608b647d5bf0a7207a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.1.10.2": {
+      "adopted": []
+    },
+    "7.1.10.3": {
+      "adopted": []
+    },
+    "7.1.10.4": {
+      "adopted": []
+    },
+    "7.1.10.5": {
+      "adopted": []
+    },
+    "7.1.10.7": {
+      "adopted": []
+    },
+    "7.1.10.8": {
+      "adopted": []
+    },
+    "7.2.1.1": {
+      "adopted": [
+        {
+          "id": "4be4a71dfc6d2e667665",
+          "phase": "1prime"
+        },
+        {
+          "id": "678ab47425a5cf34b46a",
+          "phase": "1prime"
+        },
+        {
+          "id": "fc326488603c611a7ba7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.3": {
+      "adopted": [
+        {
+          "id": "c113b69c70963028a97b",
+          "phase": "1prime"
+        },
+        {
+          "id": "11d035128ef7649d32c5",
+          "phase": "1prime"
+        },
+        {
+          "id": "4c0023341aff7fd0abe4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.4": {
+      "adopted": [
+        {
+          "id": "23efe78e1b975fe29951",
+          "phase": "1prime"
+        },
+        {
+          "id": "5c92f1355bf975c76494",
+          "phase": "1prime"
+        },
+        {
+          "id": "ae1aee3c0fb32fcc9726",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.5": {
+      "adopted": [
+        {
+          "id": "d95c0febbdbb2644a806",
+          "phase": "1prime"
+        },
+        {
+          "id": "fed0e987901bd9f84d4b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.6": {
+      "adopted": [
+        {
+          "id": "4bbef415631b714f26cd",
+          "phase": "1prime"
+        },
+        {
+          "id": "e5c5939a05a66de12e3f",
+          "phase": "1prime"
+        },
+        {
+          "id": "da5bb990b38951dee2fc",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.7": {
+      "adopted": [
+        {
+          "id": "e5c5939a05a66de12e3f",
+          "phase": "1prime"
+        },
+        {
+          "id": "11d035128ef7649d32c5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.9": {
+      "adopted": []
+    },
+    "7.2.1.10": {
+      "adopted": []
+    },
+    "7.2.1.11": {
+      "adopted": []
+    },
+    "7.2.1.12": {
+      "adopted": []
+    },
+    "7.2.1.13": {
+      "adopted": [
+        {
+          "id": "a0f398ec34c8e584d6ad",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.14": {
+      "adopted": [
+        {
+          "id": "3c7973edb6065ac22504",
+          "phase": "1prime"
+        },
+        {
+          "id": "bdd2c92ad1c8ed0e3763",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.15": {
+      "adopted": [
+        {
+          "id": "4c089776184272fa5053",
+          "phase": "1prime"
+        },
+        {
+          "id": "8c14b82a4bd67fd7a3ca",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.16": {
+      "adopted": []
+    },
+    "7.2.1.17": {
+      "adopted": []
+    },
+    "7.2.1.18": {
+      "adopted": []
+    },
+    "7.2.1.19": {
+      "adopted": [
+        {
+          "id": "4e49e908657c80ebbc31",
+          "phase": "1prime"
+        },
+        {
+          "id": "2d0191d806a9cecc7db3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.20": {
+      "adopted": [
+        {
+          "id": "4e49e908657c80ebbc31",
+          "phase": "1prime"
+        },
+        {
+          "id": "fbda1dcdeaee2c19bd48",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.21": {
+      "adopted": [
+        {
+          "id": "044e58b04681dbc2cae1",
+          "phase": "1prime"
+        },
+        {
+          "id": "a0f398ec34c8e584d6ad",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.1.22": {
+      "adopted": []
+    },
+    "7.2.1.23": {
+      "adopted": [
+        {
+          "id": "cec73d85998e8983781d",
+          "phase": "1prime"
+        },
+        {
+          "id": "b905cf10c82739ec7ba1",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.1": {
+      "adopted": [
+        {
+          "id": "5b899f7f5b3226152372",
+          "phase": "1prime"
+        },
+        {
+          "id": "233b66e0513e5637985e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.2": {
+      "adopted": [
+        {
+          "id": "b7c5119251941d9ad62f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.3": {
+      "adopted": [
+        {
+          "id": "26b833061f57cc5d961e",
+          "phase": "1prime"
+        },
+        {
+          "id": "0ce7256e18b9cba717a0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.5": {
+      "adopted": [
+        {
+          "id": "730425fc9915a1a3895e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.6": {
+      "adopted": [
+        {
+          "id": "8734ab24321f3ed8ee4e",
+          "phase": "1prime"
+        },
+        {
+          "id": "c76f11e229468beaab98",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.7": {
+      "adopted": []
+    },
+    "7.2.2.8": {
+      "adopted": [
+        {
+          "id": "60a3a1e60ae63c362eb1",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.9": {
+      "adopted": [
+        {
+          "id": "fc53ec3d6c656e419c71",
+          "phase": "1prime"
+        },
+        {
+          "id": "2ab381e766f329b46952",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.10": {
+      "adopted": [
+        {
+          "id": "fc53ec3d6c656e419c71",
+          "phase": "1prime"
+        },
+        {
+          "id": "2ab381e766f329b46952",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.11": {
+      "adopted": [
+        {
+          "id": "26b833061f57cc5d961e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.12": {
+      "adopted": [
+        {
+          "id": "2ab381e766f329b46952",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.2.13": {
+      "adopted": []
+    },
+    "7.2.2.14": {
+      "adopted": []
+    },
+    "7.2.3.4": {
+      "adopted": []
+    },
+    "7.2.3.5": {
+      "adopted": []
+    },
+    "7.2.3.7": {
+      "adopted": [
+        {
+          "id": "350445f0b4c9005573f0",
+          "phase": "1prime"
+        },
+        {
+          "id": "99c29690876dcb97b5f7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.9": {
+      "adopted": [
+        {
+          "id": "66407c17aeca81c32cc0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.10": {
+      "adopted": [
+        {
+          "id": "b3fd16958237a2b4567b",
+          "phase": "1prime"
+        },
+        {
+          "id": "f40412ba3c4863135561",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.11": {
+      "adopted": [
+        {
+          "id": "538f11a4d3f63356020f",
+          "phase": "1prime"
+        },
+        {
+          "id": "81deb97ea762ab8b5df6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.12": {
+      "adopted": [
+        {
+          "id": "e57e61efe35e7d513924",
+          "phase": "1prime"
+        },
+        {
+          "id": "b219baffe6efe658ef43",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.2.3.13": {
+      "adopted": []
+    },
+    "7.2.3.14": {
+      "adopted": []
+    },
+    "7.3.0.1": {
+      "adopted": [
+        {
+          "id": "baddfa293b58988b6807",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.1": {
+      "adopted": [
+        {
+          "id": "8582abae6bde212f7844",
+          "phase": "1prime"
+        },
+        {
+          "id": "6b278eb58a68a7d18e7e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.2": {
+      "adopted": [
+        {
+          "id": "b898710e638b84b645c9",
+          "phase": "1prime"
+        },
+        {
+          "id": "175cacef4179ae46411e",
+          "phase": "1prime"
+        },
+        {
+          "id": "272861fc66ab202fc1c5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.4": {
+      "adopted": [
+        {
+          "id": "3a6aa0c71e9a6f3e90d8",
+          "phase": "1prime"
+        },
+        {
+          "id": "9e8e46133592cde82afb",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.10": {
+      "adopted": [
+        {
+          "id": "8f0c3b402fc12afd82f6",
+          "phase": "1prime"
+        },
+        {
+          "id": "93381b080ea5063b20a0",
+          "phase": "1prime"
+        },
+        {
+          "id": "609189bfe938ef9e7bd4",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.14": {
+      "adopted": [
+        {
+          "id": "960de27abf12d8633ade",
+          "phase": "1prime"
+        },
+        {
+          "id": "6f8c7b37fe7a32e0b9ab",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.15": {
+      "adopted": []
+    },
+    "7.3.1.16": {
+      "adopted": [
+        {
+          "id": "c9f93a05a0675e7a5848",
+          "phase": "1prime"
+        },
+        {
+          "id": "c4edba1619202378581e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.17": {
+      "adopted": [
+        {
+          "id": "ed937ecf82db0c8438ca",
+          "phase": "1prime"
+        },
+        {
+          "id": "02159ba157cc1c2c5b39",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.1.18": {
+      "adopted": [
+        {
+          "id": "1cff20aec45d6a755da8",
+          "phase": "1prime"
+        },
+        {
+          "id": "a5fa4d460a2ee163a79d",
+          "phase": "1prime"
+        },
+        {
+          "id": "e5040142522baa4c28a3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.1": {
+      "adopted": [
+        {
+          "id": "d6d05a1c9a66a15a0b23",
+          "phase": "1prime"
+        },
+        {
+          "id": "2586ed37354feaf584af",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.6": {
+      "adopted": [
+        {
+          "id": "2c7ab9dccec436636faa",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.7": {
+      "adopted": [
+        {
+          "id": "ed937ecf82db0c8438ca",
+          "phase": "1prime"
+        },
+        {
+          "id": "3308b27d49a8a288f976",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.8": {
+      "adopted": [
+        {
+          "id": "757ace80f732c1e317d9",
+          "phase": "1prime"
+        },
+        {
+          "id": "c263f7972407479b14a6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.9": {
+      "adopted": [
+        {
+          "id": "a7c14dabb30ee6556752",
+          "phase": "1prime"
+        },
+        {
+          "id": "c263f7972407479b14a6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.11": {
+      "adopted": [
+        {
+          "id": "b997516d6e3baa5df50b",
+          "phase": "1prime"
+        },
+        {
+          "id": "9379e20efd5504c9b1ae",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.2.14": {
+      "adopted": []
+    },
+    "7.3.3.1": {
+      "adopted": [
+        {
+          "id": "2586ed37354feaf584af",
+          "phase": "1prime"
+        },
+        {
+          "id": "a8c6d453f2e57a0a5ae3",
+          "phase": "1prime"
+        },
+        {
+          "id": "95ec2eeae0b880074182",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.3.7": {
+      "adopted": [
+        {
+          "id": "41fd825eba8e9342a6fe",
+          "phase": "1prime"
+        },
+        {
+          "id": "47cbeb1e761b45ad78b8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.3.11": {
+      "adopted": []
+    },
+    "7.3.3.12": {
+      "adopted": []
+    },
+    "7.3.3.13": {
+      "adopted": []
+    },
+    "7.3.3.14": {
+      "adopted": []
+    },
+    "7.3.3.21": {
+      "adopted": [
+        {
+          "id": "66e85f8ea31e67e09c3c",
+          "phase": "1prime"
+        },
+        {
+          "id": "4d4a1511566f48621439",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.2": {
+      "adopted": [
+        {
+          "id": "ef77ec6351d2af62f0b2",
+          "phase": "1prime"
+        },
+        {
+          "id": "bfede2471f39281aca2d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.4": {
+      "adopted": [
+        {
+          "id": "360bbec6fa5f3d73692b",
+          "phase": "1prime"
+        },
+        {
+          "id": "c5e2b00d2e25597d4c53",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.5": {
+      "adopted": [
+        {
+          "id": "071e42aec7bcbd429587",
+          "phase": "1prime"
+        },
+        {
+          "id": "fecd40873b734c216441",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.4.7": {
+      "adopted": [
+        {
+          "id": "67470242b1015c6b6b35",
+          "phase": "1prime"
+        },
+        {
+          "id": "3a4cb21723deba4e698f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.5.1": {
+      "adopted": [
+        {
+          "id": "757ace80f732c1e317d9",
+          "phase": "1prime"
+        },
+        {
+          "id": "d19cd65a1cb23fa6937b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.5.2": {
+      "adopted": [
+        {
+          "id": "347732318ad368ea4306",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.5.3": {
+      "adopted": []
+    },
+    "7.3.5.5": {
+      "adopted": [
+        {
+          "id": "f151788a424b4ee0ec5f",
+          "phase": "1prime"
+        },
+        {
+          "id": "5df56744f92dbef32a5d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.5.7": {
+      "adopted": []
+    },
+    "7.3.5.8": {
+      "adopted": [
+        {
+          "id": "c263f7972407479b14a6",
+          "phase": "1prime"
+        },
+        {
+          "id": "757ace80f732c1e317d9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.5.9": {
+      "adopted": []
+    },
+    "7.3.5.10": {
+      "adopted": []
+    },
+    "7.3.5.11": {
+      "adopted": []
+    },
+    "7.3.6.1": {
+      "adopted": [
+        {
+          "id": "afa3a9d04911d3f4c16a",
+          "phase": "1prime"
+        },
+        {
+          "id": "e6fa7515fa956aa44420",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.6.3": {
+      "adopted": []
+    },
+    "7.3.6.4": {
+      "adopted": []
+    },
+    "7.3.6.5": {
+      "adopted": []
+    },
+    "7.3.6.7": {
+      "adopted": [
+        {
+          "id": "10ff821de97f1e2eab3b",
+          "phase": "1prime"
+        },
+        {
+          "id": "a9ee1db78a489eafc3d0",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.6.9": {
+      "adopted": [
+        {
+          "id": "b619a2311986eabe6a41",
+          "phase": "1prime"
+        },
+        {
+          "id": "f25d9bdebeccbd9666fe",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.6.10": {
+      "adopted": []
+    },
+    "7.3.6.11": {
+      "adopted": []
+    },
+    "7.3.6.12": {
+      "adopted": []
+    },
+    "7.3.6.13": {
+      "adopted": []
+    },
+    "7.3.6.15": {
+      "adopted": [
+        {
+          "id": "cd586340edc5aa5dc6e3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.7.3": {
+      "adopted": []
+    },
+    "7.3.7.4": {
+      "adopted": []
+    },
+    "7.3.7.5": {
+      "adopted": []
+    },
+    "7.3.7.6": {
+      "adopted": []
+    },
+    "7.3.7.9": {
+      "adopted": []
+    },
+    "7.3.7.10": {
+      "adopted": []
+    },
+    "7.3.7.13": {
+      "adopted": [
+        {
+          "id": "3b608b647d5bf0a7207a",
+          "phase": "1prime"
+        },
+        {
+          "id": "19b66c18c76a31359de6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.1": {
+      "adopted": [
+        {
+          "id": "a5561f84c1ac82a72535",
+          "phase": "1prime"
+        },
+        {
+          "id": "0cb154a89fd49a3a53d7",
+          "phase": "1prime"
+        },
+        {
+          "id": "d2354c864177d0c192bd",
+          "phase": "1prime"
+        },
+        {
+          "id": "86b09feb1f852f4c2c0a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.2": {
+      "adopted": []
+    },
+    "7.3.8.3": {
+      "adopted": []
+    },
+    "7.3.8.4": {
+      "adopted": []
+    },
+    "7.3.8.5": {
+      "adopted": []
+    },
+    "7.3.8.6": {
+      "adopted": []
+    },
+    "7.3.8.7": {
+      "adopted": []
+    },
+    "7.3.8.8": {
+      "adopted": []
+    },
+    "7.3.8.9": {
+      "adopted": []
+    },
+    "7.3.8.10": {
+      "adopted": []
+    },
+    "7.3.8.11": {
+      "adopted": []
+    },
+    "7.3.8.12": {
+      "adopted": [
+        {
+          "id": "1dba75b79e465374d688",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.14": {
+      "adopted": []
+    },
+    "7.3.8.15": {
+      "adopted": []
+    },
+    "7.3.8.16": {
+      "adopted": [
+        {
+          "id": "324fdd2e60825f558beb",
+          "phase": "1prime"
+        },
+        {
+          "id": "0cb154a89fd49a3a53d7",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.17": {
+      "adopted": []
+    },
+    "7.3.8.18": {
+      "adopted": []
+    },
+    "7.3.8.19": {
+      "adopted": []
+    },
+    "7.3.8.20": {
+      "adopted": []
+    },
+    "7.3.8.22": {
+      "adopted": []
+    },
+    "7.3.8.23": {
+      "adopted": []
+    },
+    "7.3.8.25": {
+      "adopted": [
+        {
+          "id": "86b09feb1f852f4c2c0a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.3.8.26": {
+      "adopted": []
+    },
+    "7.3.9.1": {
+      "adopted": []
+    },
+    "7.3.9.2": {
+      "adopted": []
+    },
+    "7.3.9.3": {
+      "adopted": []
+    },
+    "7.3.9.4": {
+      "adopted": []
+    },
+    "7.3.9.5": {
+      "adopted": []
+    },
+    "7.4.1.2": {
+      "adopted": []
+    },
+    "7.4.1.4": {
+      "adopted": []
+    },
+    "7.4.1.6": {
+      "adopted": [
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        },
+        {
+          "id": "f4cf57e2013af93c5d92",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.7": {
+      "adopted": [
+        {
+          "id": "c935b5178283fbb3b015",
+          "phase": "1prime"
+        },
+        {
+          "id": "e048fad1f4836d76f181",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.8": {
+      "adopted": [
+        {
+          "id": "cb9065bcc4978aaab74d",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.15": {
+      "adopted": []
+    },
+    "7.4.1.16": {
+      "adopted": [
+        {
+          "id": "04eb4cc738b46b3eab28",
+          "phase": "1prime"
+        },
+        {
+          "id": "b2f5fe4e2f877df49e55",
+          "phase": "1prime"
+        },
+        {
+          "id": "506ada953aecbad863b3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.20": {
+      "adopted": []
+    },
+    "7.4.1.21": {
+      "adopted": []
+    },
+    "7.4.1.22": {
+      "adopted": [
+        {
+          "id": "3e94ede2ee447d0aaf51",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.1.23": {
+      "adopted": [
+        {
+          "id": "55121dcfc59d6c286186",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.2": {
+      "adopted": [
+        {
+          "id": "3dcb177b40cb096adcc8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.6": {
+      "adopted": [
+        {
+          "id": "f48c84ccbe5cb266b2b1",
+          "phase": "1prime"
+        },
+        {
+          "id": "032d0d03a997be8781f1",
+          "phase": "1prime"
+        },
+        {
+          "id": "bb9f1616da797bc7603b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.11": {
+      "adopted": [
+        {
+          "id": "6499d55ba0a2bc0c181a",
+          "phase": "1prime"
+        },
+        {
+          "id": "36aec9d1f5b5dd590fcb",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.2.13": {
+      "adopted": []
+    },
+    "7.4.2.14": {
+      "adopted": []
+    },
+    "7.4.2.15": {
+      "adopted": []
+    },
+    "7.4.2.17": {
+      "adopted": []
+    },
+    "7.4.3.1": {
+      "adopted": [
+        {
+          "id": "6484a1b568632771d221",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.3": {
+      "adopted": [
+        {
+          "id": "b6c5c07d927f4781b7f1",
+          "phase": "1prime"
+        },
+        {
+          "id": "1c1c0482ec99e68298af",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.4": {
+      "adopted": [
+        {
+          "id": "2c5c942c5686dc84ead5",
+          "phase": "1prime"
+        },
+        {
+          "id": "0d032500be88f3cfe5de",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.6": {
+      "adopted": [
+        {
+          "id": "3e160aa08b40cd7f9d77",
+          "phase": "1prime"
+        },
+        {
+          "id": "6484a1b568632771d221",
+          "phase": "1prime"
+        },
+        {
+          "id": "a54e7054e5e8d0f1d296",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.8": {
+      "adopted": []
+    },
+    "7.4.3.10": {
+      "adopted": []
+    },
+    "7.4.3.11": {
+      "adopted": [
+        {
+          "id": "0ce7256e18b9cba717a0",
+          "phase": "1prime"
+        },
+        {
+          "id": "c5fce177145f8a9f75a3",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.12": {
+      "adopted": []
+    },
+    "7.4.3.13": {
+      "adopted": [
+        {
+          "id": "3e160aa08b40cd7f9d77",
+          "phase": "1prime"
+        },
+        {
+          "id": "a54e7054e5e8d0f1d296",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.3.14": {
+      "adopted": []
+    },
+    "7.4.3.15": {
+      "adopted": []
+    },
+    "7.4.4.1": {
+      "adopted": [
+        {
+          "id": "6b6ff8cab1273c732c87",
+          "phase": "1prime"
+        },
+        {
+          "id": "37827245d9979b8efbb8",
+          "phase": "1prime"
+        },
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.4.2": {
+      "adopted": [
+        {
+          "id": "6b6ff8cab1273c732c87",
+          "phase": "1prime"
+        },
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.4.3": {
+      "adopted": []
+    },
+    "7.4.4.9": {
+      "adopted": []
+    },
+    "7.4.4.12": {
+      "adopted": []
+    },
+    "7.4.4.14": {
+      "adopted": []
+    },
+    "7.4.4.15": {
+      "adopted": [
+        {
+          "id": "752ba6b3012804d62ff1",
+          "phase": "1prime"
+        },
+        {
+          "id": "0360e37bd49a2c77ac3c",
+          "phase": "1prime"
+        },
+        {
+          "id": "0abd80c9f88b76283deb",
+          "phase": "1prime"
+        },
+        {
+          "id": "a85c71d595d00883978a",
+          "phase": "1prime"
+        },
+        {
+          "id": "fc4ffe0d08646d8d9061",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.4.16": {
+      "adopted": [
+        {
+          "id": "1a818a6e5105f5f22b0d",
+          "phase": "1prime"
+        },
+        {
+          "id": "db7c0986b419a6385115",
+          "phase": "1prime"
+        },
+        {
+          "id": "de5d4a8d6af19a369c82",
+          "phase": "1prime"
+        },
+        {
+          "id": "9bf56487d4aaaa652334",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.4.4.17": {
+      "adopted": []
+    },
+    "7.4.5.1": {
+      "adopted": []
+    },
+    "7.4.5.2": {
+      "adopted": []
+    },
+    "7.4.5.3": {
+      "adopted": []
+    },
+    "7.4.5.5": {
+      "adopted": []
+    },
+    "7.4.5.10": {
+      "adopted": []
+    },
+    "7.4.5.17": {
+      "adopted": []
+    },
+    "7.4.5.18": {
+      "adopted": []
+    },
+    "7.4.5.20": {
+      "adopted": []
+    },
+    "7.4.5.22": {
+      "adopted": []
+    },
+    "7.4.5.23": {
+      "adopted": []
+    },
+    "7.4.6.1": {
+      "adopted": []
+    },
+    "7.4.6.2": {
+      "adopted": []
+    },
+    "7.4.6.3": {
+      "adopted": []
+    },
+    "7.5.1.1": {
+      "adopted": [
+        {
+          "id": "5f4a4cc7d19ed96599dd",
+          "phase": "1prime"
+        },
+        {
+          "id": "6b62d06a11b65bd6a008",
+          "phase": "1prime"
+        },
+        {
+          "id": "9f5e499011cbc24d9537",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.1.2": {
+      "adopted": [
+        {
+          "id": "47c012011dc1ae24d5ed",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.1.5": {
+      "adopted": [
+        {
+          "id": "0ab95b9895017ad4fdd6",
+          "phase": "1prime"
+        },
+        {
+          "id": "91b84b95753bf22dcb6f",
+          "phase": "1prime"
+        },
+        {
+          "id": "a2155151a2de53d78a2c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.2.1": {
+      "adopted": [
+        {
+          "id": "5f4a4cc7d19ed96599dd",
+          "phase": "1prime"
+        },
+        {
+          "id": "9f5e499011cbc24d9537",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.2.4": {
+      "adopted": []
+    },
+    "7.5.2.6": {
+      "adopted": []
+    },
+    "7.5.2.13": {
+      "adopted": []
+    },
+    "7.5.3.1": {
+      "adopted": []
+    },
+    "7.5.3.2": {
+      "adopted": [
+        {
+          "id": "02086de2630b9ffbab79",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.3.3": {
+      "adopted": []
+    },
+    "7.5.3.4": {
+      "adopted": []
+    },
+    "7.5.3.5": {
+      "adopted": []
+    },
+    "7.5.3.6": {
+      "adopted": []
+    },
+    "7.5.3.7": {
+      "adopted": [
+        {
+          "id": "a2155151a2de53d78a2c",
+          "phase": "1prime"
+        },
+        {
+          "id": "2e1f8bff415df1b99c3b",
+          "phase": "1prime"
+        },
+        {
+          "id": "92af3f1a6a8a4f3dbf94",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.3.8": {
+      "adopted": []
+    },
+    "7.5.3.10": {
+      "adopted": []
+    },
+    "7.5.3.12": {
+      "adopted": [
+        {
+          "id": "a2155151a2de53d78a2c",
+          "phase": "1prime"
+        },
+        {
+          "id": "1313ab9b9b044b38ea94",
+          "phase": "1prime"
+        },
+        {
+          "id": "2e1f8bff415df1b99c3b",
+          "phase": "1prime"
+        },
+        {
+          "id": "92af3f1a6a8a4f3dbf94",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.1": {
+      "adopted": [
+        {
+          "id": "30626acda69dee383249",
+          "phase": "1prime"
+        },
+        {
+          "id": "15d0129443fe6ad6f8fd",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.4": {
+      "adopted": [
+        {
+          "id": "67863862360b1f68d52c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.5": {
+      "adopted": [
+        {
+          "id": "91b84b95753bf22dcb6f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.6": {
+      "adopted": [
+        {
+          "id": "115bf0e66b6184b7e039",
+          "phase": "1prime"
+        },
+        {
+          "id": "d18a91d1d498f9dd2c93",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.7": {
+      "adopted": [
+        {
+          "id": "a2155151a2de53d78a2c",
+          "phase": "1prime"
+        },
+        {
+          "id": "91b84b95753bf22dcb6f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.10": {
+      "adopted": []
+    },
+    "7.5.4.11": {
+      "adopted": []
+    },
+    "7.5.4.12": {
+      "adopted": [
+        {
+          "id": "d1d3ea878a388f211f1e",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.4.13": {
+      "adopted": [
+        {
+          "id": "84db754e6786b97a0890",
+          "phase": "1prime"
+        },
+        {
+          "id": "e91768cd4ce4e5d80174",
+          "phase": "1prime"
+        },
+        {
+          "id": "2e1f8bff415df1b99c3b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.5.7": {
+      "adopted": []
+    },
+    "7.5.5.8": {
+      "adopted": [
+        {
+          "id": "37827245d9979b8efbb8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.5.9": {
+      "adopted": [
+        {
+          "id": "37827245d9979b8efbb8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.5.10": {
+      "adopted": [
+        {
+          "id": "6b6ff8cab1273c732c87",
+          "phase": "1prime"
+        },
+        {
+          "id": "37827245d9979b8efbb8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.5.13": {
+      "adopted": []
+    },
+    "7.5.5.14": {
+      "adopted": []
+    },
+    "7.5.5.15": {
+      "adopted": []
+    },
+    "7.5.6.1": {
+      "adopted": [
+        {
+          "id": "56dbdb925f48fd329046",
+          "phase": "1prime"
+        },
+        {
+          "id": "ce0df80908745945ca10",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.6.7": {
+      "adopted": [
+        {
+          "id": "343f4718fedbcc89e68c",
+          "phase": "1prime"
+        },
+        {
+          "id": "3045b04e45e22efd9869",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.6.8": {
+      "adopted": [
+        {
+          "id": "004a30beeadd45bf3fd7",
+          "phase": "1prime"
+        },
+        {
+          "id": "dbed03c7b2839b407b38",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.6.12": {
+      "adopted": []
+    },
+    "7.5.6.14": {
+      "adopted": [
+        {
+          "id": "3045b04e45e22efd9869",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.7.1": {
+      "adopted": [
+        {
+          "id": "2c5c942c5686dc84ead5",
+          "phase": "1prime"
+        },
+        {
+          "id": "0d032500be88f3cfe5de",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.7.5": {
+      "adopted": []
+    },
+    "7.5.7.7": {
+      "adopted": [
+        {
+          "id": "38724db7a00edbd4231f",
+          "phase": "1prime"
+        },
+        {
+          "id": "a7f340d1591625aacc18",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.5.7.8": {
+      "adopted": []
+    },
+    "7.5.7.9": {
+      "adopted": []
+    },
+    "7.5.8.1": {
+      "adopted": []
+    },
+    "7.5.8.4": {
+      "adopted": []
+    },
+    "7.5.8.5": {
+      "adopted": []
+    },
+    "7.5.8.6": {
+      "adopted": []
+    },
+    "7.5.8.7": {
+      "adopted": []
+    },
+    "7.5.8.8": {
+      "adopted": []
+    },
+    "7.5.8.9": {
+      "adopted": []
+    },
+    "7.5.8.10": {
+      "adopted": []
+    },
+    "7.5.8.11": {
+      "adopted": []
+    },
+    "7.5.8.12": {
+      "adopted": []
+    },
+    "7.5.8.13": {
+      "adopted": []
+    },
+    "7.6.1.3": {
+      "adopted": [
+        {
+          "id": "395057af829c80ead7a8",
+          "phase": "1prime"
+        },
+        {
+          "id": "b15034887e23d5ca7a8e",
+          "phase": "1prime"
+        },
+        {
+          "id": "34576632042d85a7a16b",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.1.13": {
+      "adopted": []
+    },
+    "7.6.1.15": {
+      "adopted": []
+    },
+    "7.6.1.16": {
+      "adopted": []
+    },
+    "7.6.1.17": {
+      "adopted": []
+    },
+    "7.6.1.23": {
+      "adopted": []
+    },
+    "7.6.1.25": {
+      "adopted": []
+    },
+    "7.6.1.26": {
+      "adopted": []
+    },
+    "7.6.2.1": {
+      "adopted": [
+        {
+          "id": "d82273fc866338731064",
+          "phase": "1prime"
+        },
+        {
+          "id": "b3cdd10624b6623a7e1f",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.6": {
+      "adopted": []
+    },
+    "7.6.2.8": {
+      "adopted": [
+        {
+          "id": "31e5978c17837411a77a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.14": {
+      "adopted": [
+        {
+          "id": "5be461b0d732a963ed26",
+          "phase": "1prime"
+        },
+        {
+          "id": "d2a6b3259eb0367e48ab",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.18": {
+      "adopted": []
+    },
+    "7.6.2.19": {
+      "adopted": []
+    },
+    "7.6.2.20": {
+      "adopted": []
+    },
+    "7.6.2.22": {
+      "adopted": []
+    },
+    "7.6.2.23": {
+      "adopted": []
+    },
+    "7.6.2.24": {
+      "adopted": []
+    },
+    "7.6.2.27": {
+      "adopted": []
+    },
+    "7.6.2.29": {
+      "adopted": []
+    },
+    "7.6.2.30": {
+      "adopted": [
+        {
+          "id": "82cdfbd4036c9d41bdc5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.31": {
+      "adopted": []
+    },
+    "7.6.2.34": {
+      "adopted": []
+    },
+    "7.6.2.35": {
+      "adopted": []
+    },
+    "7.6.2.37": {
+      "adopted": []
+    },
+    "7.6.2.38": {
+      "adopted": []
+    },
+    "7.6.2.39": {
+      "adopted": []
+    },
+    "7.6.2.40": {
+      "adopted": [
+        {
+          "id": "201f31cb4690d2261dd8",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.41": {
+      "adopted": [
+        {
+          "id": "618cc65fe83e6915d5e2",
+          "phase": "1prime"
+        },
+        {
+          "id": "2502e6c5015b81719678",
+          "phase": "1prime"
+        },
+        {
+          "id": "5be461b0d732a963ed26",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.2.42": {
+      "adopted": [
+        {
+          "id": "5be461b0d732a963ed26",
+          "phase": "1prime"
+        },
+        {
+          "id": "61f62450c4da45cc8ae9",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.3.1": {
+      "adopted": [
+        {
+          "id": "64e614943b14720006ed",
+          "phase": "1prime"
+        },
+        {
+          "id": "46a425ac3bef5e6a9fa5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.3.8": {
+      "adopted": [
+        {
+          "id": "37827245d9979b8efbb8",
+          "phase": "1prime"
+        },
+        {
+          "id": "9660bcf17d47fba48128",
+          "phase": "1prime"
+        },
+        {
+          "id": "5ddd98728649a9497fd5",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.3.9": {
+      "adopted": [
+        {
+          "id": "5ddd98728649a9497fd5",
+          "phase": "1prime"
+        },
+        {
+          "id": "9660bcf17d47fba48128",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.3.10": {
+      "adopted": [
+        {
+          "id": "cfc8597ea5436753bd56",
+          "phase": "1prime"
+        },
+        {
+          "id": "64e614943b14720006ed",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.3.11": {
+      "adopted": []
+    },
+    "7.6.3.14": {
+      "adopted": [
+        {
+          "id": "64e614943b14720006ed",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.4.1": {
+      "adopted": []
+    },
+    "7.6.4.4": {
+      "adopted": [
+        {
+          "id": "9a41547e2b1459e8c88c",
+          "phase": "1"
+        },
+        {
+          "id": "e8a6b214676c0a812483",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.6.4.5": {
+      "adopted": [
+        {
+          "id": "9a41547e2b1459e8c88c",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.6.4.9": {
+      "adopted": []
+    },
+    "7.6.4.10": {
+      "adopted": [
+        {
+          "id": "8251f0ad3cdce3994e1e",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.6.4.14": {
+      "adopted": []
+    },
+    "7.6.4.15": {
+      "adopted": []
+    },
+    "7.6.4.16": {
+      "adopted": []
+    },
+    "7.6.4.18": {
+      "adopted": []
+    },
+    "7.6.4.19": {
+      "adopted": []
+    },
+    "7.6.4.20": {
+      "adopted": []
+    },
+    "7.6.4.21": {
+      "adopted": []
+    },
+    "7.6.4.22": {
+      "adopted": [
+        {
+          "id": "8ed521657428852139d4",
+          "phase": "1prime"
+        },
+        {
+          "id": "90eb9926374eb405e5ae",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.4.23": {
+      "adopted": [
+        {
+          "id": "69f16e14c5794e6f3d41",
+          "phase": "1prime"
+        },
+        {
+          "id": "9cc2800aca317ea5fdca",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.4.25": {
+      "adopted": [
+        {
+          "id": "d98a7dd6deedc37e279e",
+          "phase": "1prime"
+        },
+        {
+          "id": "6683631f6618b361d92a",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.5.1": {
+      "adopted": [
+        {
+          "id": "8c57fcaee28b029aa213",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.5.2": {
+      "adopted": []
+    },
+    "7.6.5.9": {
+      "adopted": [
+        {
+          "id": "995341394b2a41983089",
+          "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex",
+          "source": "SerrePositivity/InfinityCategories/Kan/FilteredKanColimit.lean",
+          "phase": "2"
+        }
+      ]
+    },
+    "7.6.5.12": {
+      "adopted": []
+    },
+    "7.6.5.13": {
+      "adopted": []
+    },
+    "7.6.5.14": {
+      "adopted": []
+    },
+    "7.6.5.16": {
+      "adopted": []
+    },
+    "7.6.6.1": {
+      "adopted": [
+        {
+          "id": "2666ab0589ecf19982fd",
+          "phase": "1prime"
+        },
+        {
+          "id": "ae0b2aa24253d3a65334",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.4": {
+      "adopted": [
+        {
+          "id": "933b9e34695199049b7c",
+          "phase": "1prime"
+        },
+        {
+          "id": "72a31a895facc25f1082",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.5": {
+      "adopted": []
+    },
+    "7.6.6.7": {
+      "adopted": []
+    },
+    "7.6.6.15": {
+      "adopted": [
+        {
+          "id": "e819bc6e40c8ae821513",
+          "phase": "1prime"
+        },
+        {
+          "id": "90eb9926374eb405e5ae",
+          "phase": "1prime"
+        },
+        {
+          "id": "5be461b0d732a963ed26",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.18": {
+      "adopted": []
+    },
+    "7.6.6.19": {
+      "adopted": []
+    },
+    "7.6.6.20": {
+      "adopted": [
+        {
+          "id": "61f62450c4da45cc8ae9",
+          "phase": "1prime"
+        },
+        {
+          "id": "2666ab0589ecf19982fd",
+          "phase": "1prime"
+        },
+        {
+          "id": "421ec29ff4d162fb9e42",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.22": {
+      "adopted": [
+        {
+          "id": "72a31a895facc25f1082",
+          "phase": "1prime"
+        },
+        {
+          "id": "933b9e34695199049b7c",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.6.6.26": {
+      "adopted": []
+    },
+    "7.6.6.27": {
+      "adopted": []
+    },
+    "7.6.6.29": {
+      "adopted": []
+    },
+    "7.6.6.39": {
+      "adopted": []
+    },
+    "7.6.6.40": {
+      "adopted": []
+    },
+    "7.7.0.1": {
+      "adopted": [
+        {
+          "id": "8fabfed3ce78ff4ad544",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.0.6": {
+      "adopted": []
+    },
+    "7.7.1.1": {
+      "adopted": [
+        {
+          "id": "a5bb7f825d80be0ba158",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.7.1.13": {
+      "adopted": []
+    },
+    "7.7.1.14": {
+      "adopted": []
+    },
+    "7.7.1.15": {
+      "adopted": [
+        {
+          "id": "8fabfed3ce78ff4ad544",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.1.19": {
+      "adopted": []
+    },
+    "7.7.1.20": {
+      "adopted": []
+    },
+    "7.7.1.21": {
+      "adopted": [
+        {
+          "id": "8fabfed3ce78ff4ad544",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.2.1": {
+      "adopted": []
+    },
+    "7.7.2.10": {
+      "adopted": []
+    },
+    "7.7.2.12": {
+      "adopted": []
+    },
+    "7.7.2.13": {
+      "adopted": [
+        {
+          "id": "54b2cf7b09f3e2b5df50",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.2.15": {
+      "adopted": [
+        {
+          "id": "54b2cf7b09f3e2b5df50",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.2.19": {
+      "adopted": []
+    },
+    "7.7.2.23": {
+      "adopted": []
+    },
+    "7.7.2.26": {
+      "adopted": []
+    },
+    "7.7.2.28": {
+      "adopted": []
+    },
+    "7.7.2.30": {
+      "adopted": []
+    },
+    "7.7.2.31": {
+      "adopted": []
+    },
+    "7.7.2.32": {
+      "adopted": []
+    },
+    "7.7.2.33": {
+      "adopted": []
+    },
+    "7.7.2.34": {
+      "adopted": []
+    },
+    "7.7.3.1": {
+      "adopted": [
+        {
+          "id": "04baab551cc6e741e5d9",
+          "phase": "1"
+        },
+        {
+          "id": "165c027a05a98d47c5f1",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.7.3.4": {
+      "adopted": [
+        {
+          "id": "24d69cac05b35c213bf0",
+          "phase": "1prime"
+        },
+        {
+          "id": "9c707dcf3069745bc1ab",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.3.13": {
+      "adopted": []
+    },
+    "7.7.3.14": {
+      "adopted": [
+        {
+          "id": "f594af1ef4ac79a047ef",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.7.3.17": {
+      "adopted": []
+    },
+    "7.7.3.19": {
+      "adopted": []
+    },
+    "7.7.3.20": {
+      "adopted": []
+    },
+    "7.7.3.21": {
+      "adopted": []
+    },
+    "7.7.3.23": {
+      "adopted": []
+    },
+    "7.7.4.1": {
+      "adopted": [
+        {
+          "id": "b9deb8cdbb94a768818b",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.7.4.5": {
+      "adopted": [
+        {
+          "id": "9fee9b2c17fd66e0feab",
+          "phase": "1"
+        }
+      ]
+    },
+    "7.7.4.8": {
+      "adopted": []
+    },
+    "7.7.4.9": {
+      "adopted": []
+    },
+    "7.7.4.10": {
+      "adopted": []
+    },
+    "7.7.4.11": {
+      "adopted": []
+    },
+    "7.7.4.12": {
+      "adopted": []
+    },
+    "7.7.5.6": {
+      "adopted": []
+    },
+    "7.7.5.7": {
+      "adopted": []
+    },
+    "7.7.5.8": {
+      "adopted": []
+    },
+    "7.7.5.9": {
+      "adopted": []
+    },
+    "7.7.5.10": {
+      "adopted": []
+    },
+    "7.7.6.2": {
+      "adopted": []
+    },
+    "7.7.6.3": {
+      "adopted": []
+    },
+    "7.7.6.5": {
+      "adopted": []
+    },
+    "7.7.6.6": {
+      "adopted": []
+    },
+    "7.7.6.7": {
+      "adopted": []
+    },
+    "7.7.7.1": {
+      "adopted": []
+    },
+    "7.7.7.3": {
+      "adopted": [
+        {
+          "id": "a03bb2fdf765937b0908",
+          "phase": "1prime"
+        },
+        {
+          "id": "ca969e83de6512a49020",
+          "phase": "1prime"
+        }
+      ]
+    },
+    "7.7.7.4": {
+      "adopted": []
+    }
+  },
+  "supplemental": {
+    "SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceColimits.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff : ∀ {K C E : SSet}\n  [inst : C.Quasicategory] [inst_1 : E.Quasicategory] {G : C ⟶ E},\n  SerrePositivity.InfinityCategories.IsQCatEquivalence G →\n    ∀ {D : K ⟶ C} (c : SerrePositivity.InfinityCategories.JoinCocone D),\n      SerrePositivity.InfinityCategories.IsColimitCone c ↔\n        SerrePositivity.InfinityCategories.IsColimitCone (SerrePositivity.InfinityCategories.mapJoinCocone G c)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 24
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Creates.lean": {
+      "CategoryTheory.CreatesLimit": {
+        "type": "@CategoryTheory.CreatesLimit : {C : Type u_5} →\n  [inst : CategoryTheory.Category.{u_3, u_5} C] →\n    {D : Type u_6} →\n      [inst_1 : CategoryTheory.Category.{u_4, u_6} D] →\n        {J : Type u_2} →\n          [inst_2 : CategoryTheory.Category.{u_1, u_2} J] →\n            CategoryTheory.Functor J C → CategoryTheory.Functor C D → Type (max (max (max (max u_5 u_6) u_3) u_4) u_2)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.CreatesLimit' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 72
+      },
+      "CategoryTheory.CreatesColimit": {
+        "type": "@CategoryTheory.CreatesColimit : {C : Type u_5} →\n  [inst : CategoryTheory.Category.{u_3, u_5} C] →\n    {D : Type u_6} →\n      [inst_1 : CategoryTheory.Category.{u_4, u_6} D] →\n        {J : Type u_2} →\n          [inst_2 : CategoryTheory.Category.{u_1, u_2} J] →\n            CategoryTheory.Functor J C → CategoryTheory.Functor C D → Type (max (max (max (max u_5 u_6) u_3) u_4) u_2)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.CreatesColimit' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 106
+      }
+    },
+    "Mathlib/CategoryTheory/Comma/Over/Pullback.lean": {
+      "CategoryTheory.Over.pullback": {
+        "type": "@CategoryTheory.Over.pullback : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      (f : X ⟶ Y) →\n        [CategoryTheory.Limits.HasPullbacksAlong f] →\n          CategoryTheory.Functor (CategoryTheory.Over Y) (CategoryTheory.Over X)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.pullback' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 60
+      }
+    },
+    "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean": {
+      "SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration": {
+        "type": "SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration : ∀ (X : ℕ → SSet)\n  (d : (n : ℕ) → X (n + 1) ⟶ X n) [∀ (n : ℕ), HomotopicalAlgebra.Fibration (d n)],\n  HomotopicalAlgebra.Fibration (SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 152
+      },
+      "SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex": {
+        "type": "SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex : ∀ (X : ℕ → SSet)\n  (d : (n : ℕ) → X (n + 1) ⟶ X n) [∀ (n : ℕ), HomotopicalAlgebra.Fibration (d n)] [(X 0).KanComplex],\n  (SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d).KanComplex",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 164
+      }
+    },
+    "SerrePositivity/InfinityCategories/Core/Cocone.lean": {
+      "SerrePositivity.InfinityCategories.IsColimitCone": {
+        "type": "@SerrePositivity.InfinityCategories.IsColimitCone : {K X : SSet} →\n  {p : K ⟶ X} → SerrePositivity.InfinityCategories.JoinCocone p → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsColimitCone' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 38
+      }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/CoconePointHomInitiality.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.isColimitCone_iff_coconePointHomFamily_homotopyEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.isColimitCone_iff_coconePointHomFamily_homotopyEquivalence : ∀\n  {K X : SSet} [inst : X.Quasicategory] {p : K ⟶ X} (d : SerrePositivity.InfinityCategories.JoinCocone p),\n  SerrePositivity.InfinityCategories.IsColimitCone d ↔\n    ∀ (y : X.obj (Opposite.op { len := 0 })),\n      SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence\n        (SerrePositivity.InfinityCategories.HomotopyLimits.coconePointHomFamily d y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.isColimitCone_iff_coconePointHomFamily_homotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 23
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Quasicategory/RelativeInitialVertexIso.lean": {
+      "SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso": {
+        "type": "@SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso : {X Y : SSet} →\n  [X.Quasicategory] →\n    [Y.Quasicategory] →\n      (p : X ⟶ Y) →\n        (x y : X.obj (Opposite.op { len := 0 })) →\n          SerrePositivity.InfinityCategories.InitialBoundaryLifting p x →\n            SerrePositivity.InfinityCategories.InitialBoundaryLifting p y →\n              SerrePositivity.InfinityCategories.VertexIso\n                  ((CategoryTheory.ConcreteCategory.hom (p.app (Opposite.op { len := 0 }))) x)\n                  ((CategoryTheory.ConcreteCategory.hom (p.app (Opposite.op { len := 0 }))) y) →\n                SerrePositivity.InfinityCategories.VertexIso x y",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F1B.Quasicategory.relativeInitialVertexIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 28
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Fubini.lean": {
+      "CategoryTheory.Limits.colimitIsoColimitCurryCompColim": {
+        "type": "@CategoryTheory.Limits.colimitIsoColimitCurryCompColim : {J : Type u_2} →\n  {K : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} J] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} K] →\n        {C : Type u_6} →\n          [inst_2 : CategoryTheory.Category.{u_5, u_6} C] →\n            (G : CategoryTheory.Functor (J × K) C) →\n              [inst_3 : CategoryTheory.Limits.HasColimitsOfShape K C] →\n                [inst_4 :\n                    CategoryTheory.Limits.HasColimit\n                      ((CategoryTheory.Functor.curry.obj G).comp CategoryTheory.Limits.colim)] →\n                  CategoryTheory.Limits.colimit G ≅\n                    CategoryTheory.Limits.colimit\n                      ((CategoryTheory.Functor.curry.obj G).comp CategoryTheory.Limits.colim)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.colimitIsoColimitCurryCompColim' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 636
+      }
+    },
+    "SerrePositivity/InfinityCategories/Kan/FilteredKanColimit.lean": {
+      "SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex": {
+        "type": "@SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex : ∀ {J : Type u_1}\n  [inst : CategoryTheory.SmallCategory J] [CategoryTheory.IsFiltered J] (D : CategoryTheory.Functor J SSet)\n  [∀ (j : J), (D.obj j).KanComplex], (CategoryTheory.Limits.colimit D).KanComplex",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 92
+      }
+    }
+  },
+  "model_category_assumptions": {
+    "7.5.6.9": [
+      {
+        "declaration": "SerrePositivity.DiagramModel.HomotopyColimit.replacement_isCofibrant",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "assumption": "ModelCategory C"
+      }
+    ],
+    "7.3.1.18": [
+      {
+        "declaration": "SerrePositivity.EInfinity.SimplicialLocalization.modelBifibrantSourceRightKanExtension_refl_of_frameCofinality",
+        "source": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+        "assumption": "ModelCategory C"
+      }
+    ],
+    "7.5.6.1": [
+      {
+        "declaration": "SerrePositivity.DiagramModel.Projective.modelCategory",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/Projective.lean",
+        "assumption": "ModelCategory C"
+      },
+      {
+        "declaration": "SerrePositivity.DiagramModel.Projective.isCofibrant_obj",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveCofibrations.lean",
+        "assumption": "ModelCategory C"
+      }
+    ],
+    "7.5.6.7": [
+      {
+        "declaration": "SerrePositivity.DiagramModel.HomotopyColimit.map_weakEquivalence",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "assumption": "ModelCategory C"
+      },
+      {
+        "declaration": "SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_cofibrant",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "assumption": "ModelCategory C"
+      }
+    ],
+    "7.5.6.8": [
+      {
+        "declaration": "SerrePositivity.DiagramModel.HomotopyColimit.replacement",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "assumption": "ModelCategory C"
+      }
+    ],
+    "7.5.6.14": [
+      {
+        "declaration": "SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_cofibrant",
+        "source": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "assumption": "ModelCategory C"
+      }
+    ]
+  }
+}
