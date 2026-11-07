@@ -10,6 +10,7 @@ public import Mathlib.Algebra.MvPolynomial.PDeriv
 
 ## 概要
 p 剰余での最高段変数に関する次数、最高係数（基底 Frobenius で表される）、最高偏微分。
+BS 著者版 Remark 2.14 の相対自由 δ 座標について、最高段の変数を分離する。
 
 ## 方針
 最高段変数を分離し、係数側だけを p で割る環射で計算する。

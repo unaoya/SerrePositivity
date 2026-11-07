@@ -12,6 +12,7 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 
 ## 概要
 A → A/(a) → A/(a,d)、冪剰余 A/(a,dⁿ) → A/(a,d)、mod p 還元に沿う導来底変換の比較と忠実平坦性の判定。
+BS 著者版 Proposition 3.13 の底変換の計算に使う、prism 係数の商に沿う導来還元を扱う。
 
 ## 方針
 既存の導来基底変更関手を標準的な因数分解に沿って比較する。

@@ -14,6 +14,7 @@ public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 
 ## 概要
 raw 二重剰余と Frobenius、モニック入力の完備化剰余と pd 表示、raw 包の有限段の正則対、mod (p,d) 正則性、ϖ pd 表示と ϖ 剰余の忠実平坦性、逆 Frobenius 入力を mod p 入力へ戻すこと。
+BS 著者版 Remark 7.15 の φ 引き戻しの計算に使う、無限根入力の完備化剰余と分冪表示を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -33,7 +34,7 @@ universe u v
 
 完全 prism の無限根 δ 入力上で、prism 生成元の商と選択済みの ϖ の持上げの商を、
 Frobenius 側の d 商と p 商へ具体的な環同型で送る。
-BS Rem 7.15（著者版 p.62）の完備化前の入力への適用。
+BS 著者版 Remark 7.15（著者版 p.62）の完備化前の入力への適用。
 
 ## 方針
 
@@ -67,7 +68,7 @@ local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 /-- 概要：無限根入力環内でも選択済みの ϖ の持上げは生成元の逆 Frobenius 像。
 方針：係数 Frobenius との可換性と φ(x)=d を使い、Frobenius 同型で消去する。
 規約：係数射は既存の標準射。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 二重剰余の正確な係数元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 二重剰余の正確な係数元。 -/
 theorem powerRootPrismVarpiLift_inverseFrobenius :
     ((E).frobeniusEquiv hE).symm dP = xP := by
   apply ((E).frobeniusEquiv hE).injective
@@ -79,7 +80,7 @@ theorem powerRootPrismVarpiLift_inverseFrobenius :
 /-- 概要：prism 生成元の係数像は無限根 δ 環でも distinguished。
 方針：係数 δ 射による δ 値の可換性と単元の像の単元性を使う。
 規約：正則性を追加仮定にしない。
-使われ方：BS Rem 7.15（著者版 p.62）の二元イデアル標準化への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二元イデアル標準化への入力。 -/
 theorem powerRootPrismGenerator_isDistinguished : (E).IsDistinguished dP := by
   have hunit := (W.isDistinguished_generator).map (algebraMap A P)
   change IsUnit ((algebraMap A P) (W.deltaStructure.delta W.generator)) at hunit
@@ -99,7 +100,7 @@ local notation "jφ" => deltaAdjoinDivisionMap E (DeltaStructure.frobeniusLift E
 /-- 概要：無限根入力の raw 二重商は Frobenius 側の d,p 二重商と環同型。
 方針：逆 Frobenius 係数元を選択済みの ϖ の持上げへ書き換え、一般比較を適用する。
 規約：入力族は任意で、生成元の distinguished 性は完全 prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の実入力上の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実入力上の raw 剰余比較。 -/
 def powerRootPrismFrobeniusDoubleResidueEquiv :
     ((Raw ⧸ Ideal.span {j dP}) ⧸
       Ideal.span {Ideal.Quotient.mk (Ideal.span {j dP}) (j xP)}) ≃+*
@@ -114,7 +115,7 @@ def powerRootPrismFrobeniusDoubleResidueEquiv :
 /-- 概要：無限根 raw 二重商の比較は任意の入力係数に標準 Frobenius を適用する。
 方針：係数元の商同型と一般 raw 比較の係数公式を合成する。
 規約：係数は無限根入力環 P の全ての元。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用を保つ後続の完備化比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用を保つ後続の完備化比較。 -/
 theorem powerRootPrismFrobeniusDoubleResidueEquiv_coeff (b : P) :
     powerRootPrismFrobeniusDoubleResidueEquiv W hW a
       (Ideal.Quotient.mk _ (Ideal.Quotient.mk _ (j b))) =
@@ -135,7 +136,7 @@ end PowerRootPrismFrobeniusResidue
 
 完全 prism 上の無限根多項式環で、モニック入力の raw 包の実完備化を
 prism 生成元と ϖ の持上げで割ると、係数二元商上の主分冪表示と環同型。
-BS Rem 7.15（著者版 p.62）の一元モニック入力への具体的適用。
+BS 著者版 Remark 7.15（著者版 p.62）の一元モニック入力への具体的適用。
 
 ## 方針
 
@@ -169,7 +170,7 @@ local notation "xP" => algebraMap A P (perfectPrismVarpiLift W hW)
 /-- 概要：無限根入力の δ 構造でも自然数 p は distinguished。
 方針：係数 prism の p 完備性による単元 δ(p) を標準係数 δ 射で送る。
 規約：無限根多項式環そのものの完備性は仮定しない。
-使われ方：BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の階乗比較の入力。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）、BS 著者版 Remark 7.15（p.62）の階乗比較の入力。 -/
 theorem powerRootPrismPrime_isDistinguished : (E).IsDistinguished (p : P) := by
   let := W.isAdicComplete_p_of_perfect hW
   have hdp := DeltaStructure.isDistinguished_p W.deltaStructure
@@ -185,7 +186,7 @@ local notation "y" => powerRootMonicPDInput p f
 /-- 概要：モニック無限根入力を同じ宇宙の一元族として固定する。
 方針：一元添字型上の定数関数を使う。
 規約：全ての適用で同じ添字型を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の一元 raw 比較の宇宙照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元 raw 比較の宇宙照合。 -/
 abbrev powerRootPrismMonicUnaryFamily : PUnit.{u + 1} → P := fun _ => y
 local notation "a" => powerRootPrismMonicUnaryFamily (p := p) f
 local notation "L" => DeltaAdjoinDivision E dP a
@@ -199,7 +200,7 @@ local notation "bar" => Ideal.Quotient.mk K
 /-- 概要：無限根モニック raw 包の実完備化剰余は係数二元商上の主分冪表示と環同型。
 方針：一般実完備化比較へ完全 prism の正則性とモニック入力の mod p 正則性を供給する。
 規約：補助的な正則性・ghost 単射性・分母単元を仮定に残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的無限根 pd 台環への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的無限根 pd 台環への接続。 -/
 def powerRootPrismMonicCompletionPDEquiv :
     letI := pdCompletionCommRing L p (jL dP)
     (H ⧸ Ideal.span {uL (jL dP), uL (jL xP)}) ≃+*
@@ -232,7 +233,7 @@ def powerRootPrismMonicCompletionPDEquiv :
 /-- 概要：無限根入力の実完備化比較は全係数 r を φ(r) の剰余係数へ送る。
 方針：一般比較の係数公式と ϖ 持上げの商の書換えを使う。
 規約：r は元の係数 A に限らず無限根環 P の任意の元。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 引戻しの係数作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しの係数作用の照合。 -/
 theorem powerRootPrismMonicCompletionPDEquiv_coeff (r : P) :
     letI := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicCompletionPDEquiv W hW f hf
@@ -270,7 +271,7 @@ end PowerRootPrismMonicCompletionPD
 
 無限根モニック raw 包の実完備化の二元剰余を R/ϖ 上の主 pd 表示と比較する。
 標準変数を固定した入力は逆 Frobenius で係数変更した多項式である。
-BS Rem 7.15（著者版 p.62）への比較で係数作用を明示する。
+BS 著者版 Remark 7.15（著者版 p.62）への比較で係数作用を明示する。
 
 ## 方針
 
@@ -321,14 +322,14 @@ local notation "C" => powerRootFrobeniusPairVarpiInputEquiv W hW
 /-- 概要：二元係数商上の主分冪表示は逆 Frobenius 係数入力の ϖ 表示と環同型。
 方針：入力を保つ係数環同型を主分冪表示へ持ち上げる。
 規約：入力 f' の係数変更を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化比較へ合成する pd 台環同型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化比較へ合成する pd 台環同型。 -/
 def powerRootPrismInverseVarpiPDEquiv : PrincipalDPPresentation Q (bar y) ≃+* Dv :=
   principalDPRingEquivOfEq C (bar y) zv (powerRootFrobeniusPairVarpiInputEquiv_input W hW f)
 
 /-- 概要：ϖ 表示への主分冪同型は全標準生成元の次数を保つ。
 方針：主分冪係数同型の生成元公式を使う。
 規約：全次数 n を含める。
-使われ方：BS Rem 7.15（著者版 p.62）の実分冪構造の比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実分冪構造の比較への入力。 -/
 theorem powerRootPrismInverseVarpiPDEquiv_generator (n : ℕ) :
     powerRootPrismInverseVarpiPDEquiv W hW f (principalDPGenerator (bar y) n) =
       principalDPGenerator zv n :=
@@ -337,7 +338,7 @@ theorem powerRootPrismInverseVarpiPDEquiv_generator (n : ℕ) :
 /-- 概要：主分冪同型は全入力係数を明示した無限根係数同型で送る。
 方針：主分冪係数同型の一般公式を使う。
 規約：係数は Q の全ての元。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化係数作用の合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化係数作用の合成。 -/
 theorem powerRootPrismInverseVarpiPDEquiv_coeff (r : Q) :
     powerRootPrismInverseVarpiPDEquiv W hW f (algebraMap Q _ r) = algebraMap Nv Dv (C r) :=
   principalDPRingEquivOfEq_coeff _ _ _ _ r
@@ -345,7 +346,7 @@ theorem powerRootPrismInverseVarpiPDEquiv_coeff (r : Q) :
 /-- 概要：実完備化の二元剰余は逆 Frobenius 係数入力の R/ϖ 主分冪表示と環同型。
 方針：実完備化の二元商比較と ϖ 係数への主分冪同型を合成する。
 規約：完全 prism とモニック性のみを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の ϖ 剰余の通常平坦性への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の ϖ 剰余の通常平坦性への接続。 -/
 def powerRootPrismMonicVarpiCompletionPDEquiv (hf : f.Monic) :
     letI := pdCompletionCommRing L p (jL dP)
     (H ⧸ Ideal.span {uL (jL dP), uL (jL xP)}) ≃+* Dv := by
@@ -356,7 +357,7 @@ def powerRootPrismMonicVarpiCompletionPDEquiv (hf : f.Monic) :
 /-- 概要：実完備化比較は全無限根係数に Frobenius と明示係数比較を順に適用する。
 方針：二つの環同型の係数公式を合成する。
 規約：元の実完備化単位を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の変数を含む係数作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数を含む係数作用の照合。 -/
 theorem powerRootPrismMonicVarpiCompletionPDEquiv_coeff (hf : f.Monic) (r : P) :
     letI := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicVarpiCompletionPDEquiv W hW f hf
@@ -369,7 +370,7 @@ theorem powerRootPrismMonicVarpiCompletionPDEquiv_coeff (hf : f.Monic) (r : P) :
 /-- 概要：実完備化比較は元の A の係数を自然な R/ϖ 係数として保つ。
 方針：Frobenius と逆係数 Frobenius の相殺と係数作用の塔を使う。
 規約：逆 Frobenius 係数多項式を使った同型についての公式。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な ϖ 係数作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な ϖ 係数作用の確認。 -/
 theorem powerRootPrismMonicVarpiCompletionPDEquiv_base_coeff (hf : f.Monic) (r : A) :
     letI := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicVarpiCompletionPDEquiv W hW f hf
@@ -391,7 +392,7 @@ end PowerRootPrismMonicVarpiPDComparison
 
 完全 prism 上の無限根モニック入力について、実完備化を生成元と ϖ 持上げで割った
 通常環は R/ϖ 上自由であり、入力が正次数なら忠実平坦。
-BS Rem 7.15（著者版 p.62）の具体的 pd 計算による通常平坦性。
+BS 著者版 Remark 7.15（著者版 p.62）の具体的 pd 計算による通常平坦性。
 
 ## 方針
 
@@ -442,7 +443,7 @@ local notation "F" => powerRootPrismMonicVarpiCompletionPDEquiv W hW f hf
 /-- 概要：実完備化の ϖ 剰余に R/ϖ の係数代数構造を与える。
 方針：検証済みの主 pd 同型の逆射で標準係数射を戻す。
 規約：次の係数公式で元の完備化係数像との一致を確認する。
-使われ方：BS Rem 7.15（著者版 p.62）の通常忠実平坦性の自然な係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常忠実平坦性の自然な係数作用。 -/
 @[instance_reducible] def powerRootPrismMonicVarpiResidueAlgebra :
     letI := pdCompletionCommRing L p (jL dP)
     Algebra Rv S := by
@@ -452,7 +453,7 @@ local notation "F" => powerRootPrismMonicVarpiCompletionPDEquiv W hW f hf
 /-- 概要：主 pd 表示への実完備化剰余同型は R/ϖ 代数同型。
 方針：逆同型で定めた係数作用に対し順逆合成の公式を使う。
 規約：元の実完備化 H⁰ の通常商を維持する。
-使われ方：BS Rem 7.15（著者版 p.62）の自由性と忠実平坦性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自由性と忠実平坦性の移送。 -/
 def powerRootPrismMonicVarpiResidueAlgEquiv :
     letI := pdCompletionCommRing L p (jL dP)
     letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
@@ -464,7 +465,7 @@ def powerRootPrismMonicVarpiResidueAlgEquiv :
 /-- 概要：R/ϖ の係数作用は元の A 係数の実完備化像と一致する。
 方針：主 pd 同型の単射性と自然係数上の公式を使う。
 規約：全ての r∈A で指定するため、作用は任意の移送として残らない。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な通常係数作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な通常係数作用の確認。 -/
 theorem powerRootPrismMonicVarpiResidueAlgebra_base_coeff (r : A) :
     letI := pdCompletionCommRing L p (jL dP)
     letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
@@ -478,7 +479,7 @@ theorem powerRootPrismMonicVarpiResidueAlgebra_base_coeff (r : A) :
 /-- 概要：実完備化の ϖ 剰余は自然な R/ϖ 作用で自由。
 方針：逆 Frobenius 係数多項式のモニック性と pd 表示の基底を移す。
 規約：入力の正次数と prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の通常平坦性の具体的結論。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常平坦性の具体的結論。 -/
 theorem powerRootPrismMonicVarpiResidue_free :
     letI := pdCompletionCommRing L p (jL dP)
     letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
@@ -492,7 +493,7 @@ theorem powerRootPrismMonicVarpiResidue_free :
 /-- 概要：正次数モニック入力の実完備化の ϖ 剰余は自然な R/ϖ 作用で忠実平坦。
 方針：逆 Frobenius で次数を保存し、pd 表示の忠実平坦性を代数同型で移す。
 規約：prism 商の p 正則性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化剰余からの忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化剰余からの忠実平坦性。 -/
 theorem powerRootPrismMonicVarpiResidue_faithfullyFlat (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
     letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
@@ -519,7 +520,7 @@ end PowerRootPrismMonicVarpiFlat
 ## 概要
 
 R/ϖ から R/p への係数 Frobenius 同型は、逆 Frobenius 係数の入力の pd 表示を
-元の多項式の mod p 入力の pd 表示へ送る。BS Rem 7.15（著者版 p.62）の係数の追跡。
+元の多項式の mod p 入力の pd 表示へ送る。BS 著者版 Remark 7.15（著者版 p.62）の係数の追跡。
 
 ## 方針
 
@@ -557,7 +558,7 @@ local notation "frob" => DeltaStructure.frobeniusEquiv W.deltaStructure hW
 /-- 概要：係数 Frobenius は逆 Frobenius 係数を元の mod p 係数へ戻す。
 方針：既存の二重商の代表元公式と Frobenius の逆合成を使う。
 規約：任意の元 a∈A を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の元の入力多項式の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の入力多項式の照合。 -/
 theorem varpiPrimeFrobenius_inverse_coeff (a : A) : evp (bv ((frob).symm a)) = bp a := by
   simp only [RingHom.comp_apply]
   rw [perfectPrismVarpiFrobeniusQuotientEquiv_mk]
@@ -567,13 +568,13 @@ theorem varpiPrimeFrobenius_inverse_coeff (a : A) : evp (bv ((frob).symm a)) = b
 /-- 概要：係数 Frobenius は同じ指数の無限根多項式環の環同型を与える。
 方針：加法モノイド環の係数同型を使う。
 規約：無限根変数の番号は固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 入力を保つ係数比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 入力を保つ係数比較。 -/
 def powerRootVarpiPrimeFrobeniusEquiv : Nv ≃+* Np := AddMonoidAlgebra.mapRingEquiv G evp
 
 /-- 概要：無限根同型は係数に指定 Frobenius 同型を作用させる。
 方針：零指数の単項式の公式を使う。
 規約：R/ϖ の全ての係数を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の半線形性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の半線形性。 -/
 theorem powerRootVarpiPrimeFrobeniusEquiv_coeff (a : Rv) :
     powerRootVarpiPrimeFrobeniusEquiv W hW (algebraMap Rv Nv a) = algebraMap Rp Np (evp a) := by
   simp only [powerRootVarpiPrimeFrobeniusEquiv, AddMonoidAlgebra.coe_algebraMap,
@@ -583,7 +584,7 @@ theorem powerRootVarpiPrimeFrobeniusEquiv_coeff (a : Rv) :
 /-- 概要：係数 Frobenius 同型は全ての根変数を固定する。
 方針：係数 1 の単項式の公式を使う。
 規約：全段 n を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の多項式評価の自然性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の多項式評価の自然性。 -/
 theorem powerRootVarpiPrimeFrobeniusEquiv_variable (n : ℕ) :
     powerRootVarpiPrimeFrobeniusEquiv W hW (powerRootPolynomialVariable Rv p hp n) =
       powerRootPolynomialVariable Rp p hp n := by
@@ -600,7 +601,7 @@ local notation "Dp" => PrincipalDPPresentation Np zp
 /-- 概要：逆 Frobenius 係数の入力は元の f の mod p 評価に送られる。
 方針：評価と係数環射の可換性に逆係数の相殺公式を適用する。
 規約：モニック性・次数・p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の正確な pd 入力の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正確な pd 入力の照合。 -/
 theorem powerRootVarpiPrimeFrobeniusEquiv_input :
     powerRootVarpiPrimeFrobeniusEquiv W hW zv = zp := by
   let q : Nv →+* Np := (powerRootVarpiPrimeFrobeniusEquiv W hW).toRingHom
@@ -622,7 +623,7 @@ theorem powerRootVarpiPrimeFrobeniusEquiv_input :
 /-- 概要：係数 Frobenius は逆係数入力の pd 表示を元の mod p 入力の表示へ送る。
 方針：入力を保つ無限根環同型を主分冪表示へ持ち上げる。
 規約：底環は明示した R/ϖ と R/p。
-使われ方：BS Rem 7.15（著者版 p.62）の実テンソル引戻しの比較先。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実テンソル引戻しの比較先。 -/
 def powerRootVarpiPrimeFrobeniusPDEquiv : Dv ≃+* Dp :=
   principalDPRingEquivOfEq (powerRootVarpiPrimeFrobeniusEquiv W hW) zv zp
     (powerRootVarpiPrimeFrobeniusEquiv_input W hW f)
@@ -630,7 +631,7 @@ def powerRootVarpiPrimeFrobeniusPDEquiv : Dv ≃+* Dp :=
 /-- 概要：pd 表示の同型は R/ϖ 係数に指定 Frobenius を作用させる。
 方針：入力環の係数公式と係数作用の塔を合成する。
 規約：全ての剰余係数を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の実底変換同型の半線形性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実底変換同型の半線形性。 -/
 theorem powerRootVarpiPrimeFrobeniusPDEquiv_coeff (a : Rv) :
     powerRootVarpiPrimeFrobeniusPDEquiv W hW f (algebraMap Rv Dv a) =
       algebraMap Rp Dp (evp a) := by
@@ -641,7 +642,7 @@ theorem powerRootVarpiPrimeFrobeniusPDEquiv_coeff (a : Rv) :
 /-- 概要：pd 表示の全標準生成元は同じ次数の標準生成元に送られる。
 方針：主分冪同型の生成元公式。
 規約：零次数を含む全次数を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の実分冪構造の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実分冪構造の比較。 -/
 theorem powerRootVarpiPrimeFrobeniusPDEquiv_generator (n : ℕ) :
     powerRootVarpiPrimeFrobeniusPDEquiv W hW f (principalDPGenerator zv n) =
       principalDPGenerator zp n := principalDPRingEquivOfEq_generator _ _ _ _ n
@@ -654,7 +655,7 @@ end PowerRootVarpiPrimeFrobeniusPD
 
 ## 概要
 
-元の mod p 入力に関する係数比較の import を保持する。BS Rem 7.15(1)（著者版 p.62）。
+元の mod p 入力に関する係数比較の import を保持する。BS 著者版 Remark 7.15(1)（著者版 p.62）。
 
 ## 方針
 
@@ -676,7 +677,7 @@ end PowerRootVarpiPrimeFrobeniusPD
 
 モニック入力は任意の係数イデアル商後も正則。
 prism 商が p 正則なら、無限根入力の mod p で d とモニック入力は正則対となる。
-BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の有限関係商への入力。
+BS 著者版 Remark 7.15（著者版 p.62）の p ねじれなしの場合の有限関係商への入力。
 
 ## 方針
 
@@ -703,7 +704,7 @@ local notation "P" => PowerRootPolynomial A p hp
 /-- 概要：任意の係数イデアル商後も無限根モニック入力は正則。
 方針：係数商同型で商係数上のモニック入力の正則性へ移す。
 規約：係数イデアル I の正則性や主性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の mod(p,d) 正則入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の mod(p,d) 正則入力。 -/
 theorem powerRootPolynomial_monic_mod_ideal_regular (I : Ideal A)
     (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular (P ⧸ I.map (algebraMap A P))
@@ -722,7 +723,7 @@ theorem powerRootPolynomial_monic_mod_ideal_regular (I : Ideal A)
 /-- 概要：無限根入力の実二元係数商でモニック入力は正則。
 方針：(p,d) の像を二元生成イデアルと同定する。
 規約：d は任意の係数元。
-使われ方：BS Rem 7.15（著者版 p.62）の有限源の初期正則対。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限源の初期正則対。 -/
 theorem powerRootPolynomial_monic_mod_pair_regular (d : A)
     (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular (P ⧸ Ideal.span {(p : P), algebraMap A P d})
@@ -743,7 +744,7 @@ include hW in
 /-- 概要：p 正則な prism 商では無限根入力の d の mod p 像も正則。
 方針：係数上の d の mod p 正則性を無限根環の自由性で移す。
 規約：prism 商 R の p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の有限 δ 関係商の初期値。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限 δ 関係商の初期値。 -/
 theorem powerRootPrismGenerator_modPrime_regular
     (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
     IsSMulRegular (Pp ⧸ Ideal.span {(p : Pp)})
@@ -761,7 +762,7 @@ theorem powerRootPrismGenerator_modPrime_regular
 /-- 概要：無限根モニック入力は mod p の後に d を課した実二重商で正則。
 方針：二重商同型で一重の (p,d) 商のモニック正則性を戻す。
 規約：この入力自体には prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の初期線形除算関係の正則対。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期線形除算関係の正則対。 -/
 theorem powerRootPrismMonic_modPrime_generator_regular (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular ((Pp ⧸ Ideal.span {(p : Pp)}) ⧸
       Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : Pp)}) dP})
@@ -784,7 +785,7 @@ include hW in
 /-- 概要：最初の mod p 線形除算関係は無限根モニック入力でも正則。
 方針：d の mod p 正則性を最高係数の正則性判定へ渡す。
 規約：変数族 τ は任意で、prism 商の p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の有限関係商の p 正則性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の有限関係商の p 正則性への入力。 -/
 theorem powerRootPrismFirstModPrimeRelation_regular
     (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
     (f : Polynomial A) {τ : Type v} (s : τ) :
@@ -801,7 +802,7 @@ include hW in
 /-- 概要：最初の mod p 線形除算関係を課しても prism 生成元の係数像は正則。
 方針：モニック入力の mod(p,d) 正則性と線形関係の正則対の順序交換を使う。
 規約：prism 商の p 正則性とモニック性のみを要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の有限関係商の同時帰納法の初期値。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限関係商の同時帰納法の初期値。 -/
 theorem powerRootPrismMonicFirstModPrime_generator_regular
     (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
     (f : Polynomial A) (hf : f.Monic) {τ : Type v} (s : τ) :
@@ -825,7 +826,7 @@ end PowerRootMonicModPairRegular
 ## 概要
 
 p 正則な prism 商を持つ完全 prism 上で、全有限段の p と mod p の生成元は正則。
-BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の源の計算。
+BS 著者版 Remark 7.15（著者版 p.62）の p ねじれなしの場合の源の計算。
 
 ## 方針
 
@@ -852,7 +853,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：無限根入力の同じ宇宙の一元自由 δ 環の台環を固定する。
 方針：一元添字型を宇宙付きで定義する。
 規約：入力族と自由環で同じ添字型を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的 ghost 単射性の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的 ghost 単射性の入力。 -/
 abbrev PowerRootUnaryFreeDeltaRing (A : Type u) [CommRing A] (p : ℕ) (hp : 0 < p) :=
   RelativeFreeDeltaRing (R := PowerRootPolynomial A p hp) PUnit.{u + 1}
 
@@ -873,7 +874,7 @@ include hpR hf in
 /-- 概要：無限根モニック入力の全有限段で p と mod p の生成元は正則。
 方針：モニック正則性・prism の正則対・ghost 単射性を内部で供給して帰納する。
 規約：正次数は不要で、prism 商の p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 包の p 正則性の具体的入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 包の p 正則性の具体的入力。 -/
 theorem powerRootPrismMonicFinite_all_regular (N : ℕ) :
     let B := L₀ ⧸ I N
     IsSMulRegular B (p : B) ∧ IsSMulRegular (B ⧸ Ideal.span {(p : B)})

@@ -15,6 +15,7 @@ public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt
 
 ## 概要
 係数 Frobenius と指数 Frobenius の分離、無限根多項式環の普遍性、方程式商 S とその p 完備化の普遍性、原典の順序による完備入力環、rank 1 の互換根列による δ 射、試験 prism の剰余根列からの入力 δ 射、mod p 分冪包、Frobenius 二元商と ϖ 係数、モニック分冪表示環の自由性と係数還元。
+BS 著者版 Remark 7.15 の方程式商を定め、入力射と mod p の分冪包を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -34,7 +35,7 @@ universe u v
 
 p 正則・p 局所 δ 環上の無限根多項式環で、モニック入力の mod p 一次関係商に
 実分冪構造と pd 普遍性を与える。完全 prism からこれらの前提を供給する。
-BS Rem 7.15(1)（著者版 p.62）の無限根変数を含む実 pd 計算。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根変数を含む実 pd 計算。
 
 ## 方針
 
@@ -63,7 +64,7 @@ local notation "bar" => Ideal.Quotient.mk (Ideal.span {(p : P)})
 /-- 概要：無限根環の通常変数 Y₀ で多項式 f を評価した入力元。
 方針：既存の標準評価射を名前付きの元として固定する。
 規約：分冪構造の型照合で評価の内部を展開し続けないよう irreducible とする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根環の一元入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根環の一元入力。 -/
 @[irreducible] def powerRootMonicPDInput (f : Polynomial A) : P :=
   powerRootPolynomialBaseMap A p hp f
 
@@ -72,7 +73,7 @@ local notation "root" f => powerRootMonicPDInput p f
 /-- 概要：名前付きモニック入力は実 mod p 商で非零因子。
 方針：入力元の定義を一度だけ展開し、係数商比較で得た正則性を使う。
 規約：表示の内部展開を他の分冪構造の型へ持ち込まない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根 pd 包の正則入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根 pd 包の正則入力。 -/
 theorem powerRootMonicPDInput_modPrime_regular (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular Q (bar (root f)) := by
   simpa only [powerRootMonicPDInput] using
@@ -81,7 +82,7 @@ theorem powerRootMonicPDInput_modPrime_regular (f : Polynomial A) (hf : f.Monic)
 /-- 概要：p 局所な係数環上の無限根多項式環も p 局所。
 方針：係数の単元を標準係数射で送る。
 規約：係数環の p 完備性はこの段階では不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の階乗計算の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の階乗計算の入力。 -/
 theorem powerRootPolynomial_primeLocal
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A)) :
     ∀ m : ℕ, ¬p ∣ m → IsUnit (m : P) := by
@@ -91,14 +92,14 @@ theorem powerRootPolynomial_primeLocal
 /-- 概要：無限根環上のモニック入力の実 mod p 分冪表示環の台環。
 方針：通常変数 Y₀ での評価を実 mod p 商へ送って一次関係を課す。
 規約：台環の定義そのものにはモニック性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根環上の pd 包。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根環上の pd 包。 -/
 abbrev PowerRootMonicModPrimePDEnvelope (f : Polynomial A) :=
   PrincipalDPPresentation Q (bar (root f))
 
 /-- 概要：無限根環上のモニック入力の mod p 表示環には実分冪構造がある。
 方針：無限根環の δ 持ち上げと p 正則性、入力の mod p 正則性を内部で供給する。
 規約：係数環の p 正則性・p 局所性・δ 構造は明示する。f の正次数は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根環上の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根環上の実 pd 包の構造。 -/
 def powerRootMonicModPrimeDividedPowers
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A => (p : A) * a))
@@ -111,7 +112,7 @@ def powerRootMonicModPrimeDividedPowers
 /-- 概要：無限根環上の入力元の n 次分冪は標準の n 次生成元。
 方針：正則一元構成の生成元公式へ無限根環の実入力を代入する。
 規約：全ての次数 n を含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の普遍性と明示表示の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の普遍性と明示表示の比較。 -/
 theorem powerRootMonicModPrimeDividedPowers_base_apply
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A => (p : A) * a))
@@ -129,7 +130,7 @@ theorem powerRootMonicModPrimeDividedPowers_base_apply
 /-- 概要：無限根環上のモニック入力の実 mod p 分冪包から分冪標的への射は一意に存在。
 方針：構成した実構造と標準生成元の公式を一次関係商の普遍性へ渡す。
 規約：標的の p ねじれ・正則性・δ 構造・完備性を要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根環上の実 pd 包の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根環上の実 pd 包の普遍性。 -/
 theorem existsUnique_powerRootMonicModPrimePDMorphism
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A => (p : A) * a))
@@ -145,7 +146,7 @@ theorem existsUnique_powerRootMonicModPrimePDMorphism
 /-- 概要：完全 prism 上の無限根環で、モニック入力の実 mod p 分冪構造を構成する。
 方針：完全性から係数環の p 正則性と p 局所性を供給する。
 規約：追加の正則性や分冪構造の存在を前提に残さない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の完全 prism 上の無限根 pd 包。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の完全 prism 上の無限根 pd 包。 -/
 def perfectPrismPowerRootMonicModPrimeDividedPowers
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) :
@@ -156,7 +157,7 @@ def perfectPrismPowerRootMonicModPrimeDividedPowers
 /-- 概要：完全 prism 上の無限根環のモニック入力について実 pd 普遍射は一意に存在。
 方針：完全 prism から係数の全補助条件を供給した構成を適用する。
 規約：モニック多項式の正次数も標的の正則性も要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根 pd 包の具体的な普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根 pd 包の具体的な普遍性。 -/
 theorem existsUnique_perfectPrismPowerRootMonicModPrimePDMorphism
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic)
@@ -171,7 +172,7 @@ theorem existsUnique_perfectPrismPowerRootMonicModPrimePDMorphism
 /-- 概要：無限根環の実 mod p 商では p は零。
 方針：定義の p 主イデアルへの所属を使う。
 規約：元の係数環の標数は任意。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示切断表示への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示切断表示への入力。 -/
 theorem powerRootModPrime_prime_eq_zero : (p : Q) = 0 := by
   change bar (p : P) = 0
   exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
@@ -179,7 +180,7 @@ theorem powerRootModPrime_prime_eq_zero : (p : Q) = 0 := by
 /-- 概要：無限根環上の実 mod p 分冪包の台環は入力の p 乗商上の可算切断表示。
 方針：一次関係商の明示的な係数商上の代数同型を同じ実台環へ適用する。
 規約：台環の同型自体にはモニック性や prism は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根 pd 包の具体的な自由表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根 pd 包の具体的な自由表示。 -/
 def powerRootMonicModPrimePDEnvelope_truncatedEquiv (f : Polynomial A) :
     letI := principalDPQuotientAlgebra hp (powerRootModPrime_prime_eq_zero (A := A) p)
       (bar (root f))
@@ -190,7 +191,7 @@ def powerRootMonicModPrimePDEnvelope_truncatedEquiv (f : Polynomial A) :
 /-- 概要：無限根環上の実 mod p 分冪包の台環は入力の p 乗係数商上自由。
 方針：同じ既存係数商作用に明示切断表示を介した自由性を適用する。
 規約：分冪構造の構成に必要なモニック性は、台加群の自由性には不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根 pd 包の自由性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根 pd 包の自由性。 -/
 theorem powerRootMonicModPrimePDEnvelope_quotient_free (f : Polynomial A) :
     letI := principalDPQuotientAlgebra hp (powerRootModPrime_prime_eq_zero (A := A) p)
       (bar (root f))
@@ -207,7 +208,7 @@ end PowerRootMonicModPrimePDEnvelope
 
 標数 p の係数環上の無限 p 冪根多項式環 P 内で、モニック f の像の分冪表示環は
 元の係数環上自由であり、f が正次数なら忠実平坦。
-BS Rem 7.15（著者版 p.62）の通常代数の自由性計算。
+BS 著者版 Remark 7.15（著者版 p.62）の通常代数の自由性計算。
 
 ## 方針
 
@@ -234,7 +235,7 @@ local notation "P" => PowerRootPolynomial R p hp
 /-- 概要：無限 p 冪根変数内のモニック関係の分冪表示環は元の係数環上自由。
 方針：実 fᵖ 商の自由性と、その商上の分冪表示環の自由性をスカラー塔で合成する。
 規約：p は素数で係数環内で零とする。自由性には f の正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 表示の自由性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 表示の自由性。 -/
 theorem powerRootMonicDPPresentation_free (hprime : p.Prime) (hpR : (p : R) = 0)
     (f : R[X]) (hf : f.Monic) :
     Module.Free R (PrincipalDPPresentation P (powerRootPolynomialBaseMap R p hp f)) := by
@@ -259,7 +260,7 @@ theorem powerRootMonicDPPresentation_free (hprime : p.Prime) (hpR : (p : R) = 0)
 /-- 概要：正次数モニック関係の分冪表示環は元の係数環上忠実平坦。
 方針：同じ実 fᵖ 商の忠実平坦性を標準係数射のスカラー塔で表示環へ移す。
 規約：係数環の非零性や被約性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の通常平坦性計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の通常平坦性計算。 -/
 theorem powerRootMonicDPPresentation_faithfullyFlat (hprime : p.Prime) (hpR : (p : R) = 0)
     (f : R[X]) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat R
@@ -286,7 +287,7 @@ end PowerRootMonicPDFlat
 
 完全 prism の係数環 A の mod p 無限根環 (A/(p))[Y¹⸍ᵖ∞] 上で、
 モニック入力の実分冪構造と普遍性を構成する。同じ台環は A/(p) 上自由で、
-正次数入力では忠実平坦。BS Rem 7.15(1)（著者版 p.62）の係数環上の自由性の計算。
+正次数入力では忠実平坦。BS 著者版 Remark 7.15(1)（著者版 p.62）の係数環上の自由性の計算。
 
 ## 方針
 
@@ -323,7 +324,7 @@ local notation "y" f => q (powerRootMonicPDInput p f)
 /-- 概要：係数 mod p 無限根環におけるモニック多項式の指定入力元。
 方針：係数を mod p に写した多項式を Y₀ で評価する。
 規約：分冪構造の型照合で内部評価を展開し続けないよう irreducible とする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数商上の実 pd 包の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数商上の実 pd 包の入力。 -/
 @[irreducible] def powerRootCoefficientPDInput (f : Polynomial A) : N :=
   powerRootPolynomialBaseMap R p hp (f.map bar)
 
@@ -332,7 +333,7 @@ local notation "z" f => powerRootCoefficientPDInput p f
 /-- 概要：実 mod p 比較同型は元の入力を係数商上の指定入力へ送る。
 方針：入力元の定義を明示展開し、商同型と評価の自然性を使う。
 規約：この比較自体にはモニック性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪包の係数比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪包の係数比較。 -/
 theorem powerRootCoefficientPDInput_compare (f : Polynomial A) : e (y f) = z f := by
   unfold powerRootMonicPDInput powerRootCoefficientPDInput
   rw [powerRootPolynomialModPrimeEquiv_mk, powerRootPolynomialModPrimeMap_baseMap]
@@ -340,13 +341,13 @@ theorem powerRootCoefficientPDInput_compare (f : Polynomial A) : e (y f) = z f :
 /-- 概要：係数商上の無限根環の一次関係商の実台環。
 方針：同じ係数商上の指定入力に γ₁=z の関係を課す。
 規約：分冪構造の存在は別途構成する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の pd 包の自由性と構造の共通台環。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の自由性と構造の共通台環。 -/
 abbrev PowerRootCoefficientPDEnvelope (f : Polynomial A) := PrincipalDPPresentation N (z f)
 
 /-- 概要：実 mod p 無限根 pd 表示と係数商上の無限根 pd 表示は環同型。
 方針：係数比較が入力を保つことを一次関係商の係数同型へ渡す。
 規約：標準係数と全標準生成元を保つ同型を使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 構造の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 構造の移送。 -/
 def powerRootCoefficientPDEnvelopeEquiv (f : Polynomial A) :
     PowerRootMonicModPrimePDEnvelope p f ≃+* PowerRootCoefficientPDEnvelope p f :=
   principalDPRingEquivOfEq e (y f) (z f) (powerRootCoefficientPDInput_compare p f)
@@ -354,7 +355,7 @@ def powerRootCoefficientPDEnvelopeEquiv (f : Polynomial A) :
 /-- 概要：係数商上の無限根環の正次数イデアルに実分冪構造を与える。
 方針：完全 prism 上で構成した実 mod p 構造を係数比較同型で移す。
 規約：追加の分冪構造・正則性を仮定として残さない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数 mod p 無限根 pd 包。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数 mod p 無限根 pd 包。 -/
 def powerRootCoefficientDividedPowers
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) : DividedPowers (principalDPPositiveIdeal (z f)) :=
@@ -364,7 +365,7 @@ def powerRootCoefficientDividedPowers
 /-- 概要：移送した実構造で入力元の n 次分冪は n 次標準生成元。
 方針：係数同型の構造移送の公式と移送前の標準値を使う。
 規約：名前付き入力を保ち、型照合では評価の内部を展開しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 普遍性への標準値。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 普遍性への標準値。 -/
 theorem powerRootCoefficientDividedPowers_base_apply
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (n : ℕ) :
@@ -387,7 +388,7 @@ theorem powerRootCoefficientDividedPowers_base_apply
 /-- 概要：係数商上の無限根環の実 pd 包から任意の分冪標的への射は一意に存在。
 方針：移送した構造と標準値の公式を一次関係商の一般普遍性へ渡す。
 規約：標的の正則性・ねじれ・δ 構造・完備性には条件を置かない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数商上の実 pd 包の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数商上の実 pd 包の普遍性。 -/
 theorem existsUnique_powerRootCoefficientPDMorphism
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic)
@@ -402,7 +403,7 @@ omit [Fact p.Prime] in
 /-- 概要：係数商 A/(p) では p は零。
 方針：定義の主イデアルへの所属を使う。
 規約：係数環の標数は任意。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の通常自由性の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の通常自由性の入力。 -/
 theorem powerRootCoefficient_prime_eq_zero : (p : R) = 0 := by
   change bar (p : A) = 0
   exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
@@ -410,7 +411,7 @@ theorem powerRootCoefficient_prime_eq_zero : (p : R) = 0 := by
 /-- 概要：同じ実 pd 包の台環は元の係数商 A/(p) 上自由。
 方針：モニック性を係数商に移し、無限根モニック冪商の既存の基底計算を使う。
 規約：自由性自体に完全 prism や入力の正次数は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の基底環上の実 pd 包の自由性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の基底環上の実 pd 包の自由性。 -/
 theorem powerRootCoefficientPDEnvelope_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free R (PowerRootCoefficientPDEnvelope p f) := by
   unfold PowerRootCoefficientPDEnvelope powerRootCoefficientPDInput
@@ -420,7 +421,7 @@ theorem powerRootCoefficientPDEnvelope_free (f : Polynomial A) (hf : f.Monic) :
 /-- 概要：正次数モニック入力の同じ実 pd 包の台環は A/(p) 上忠実平坦。
 方針：非零係数商ではモニック次数保存と既存の忠実平坦性を使い、零係数商は自明性で扱う。
 規約：正次数は元の f に要求し、係数商の非零性は仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の基底環上の忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の基底環上の忠実平坦性。 -/
 theorem powerRootCoefficientPDEnvelope_faithfullyFlat (f : Polynomial A) (hf : f.Monic)
     (hdeg : 0 < f.natDegree) : Module.FaithfullyFlat R (PowerRootCoefficientPDEnvelope p f) := by
   rcases subsingleton_or_nontrivial R with hs | hnR
@@ -440,7 +441,7 @@ theorem powerRootCoefficientPDEnvelope_faithfullyFlat (f : Polynomial A) (hf : f
 /-- 概要：係数商上の無限根環でも p は零。
 方針：係数商での等式を標準係数射で送る。
 規約：非零性や完全 prism は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示切断表示への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示切断表示への入力。 -/
 theorem powerRootCoefficientRing_prime_eq_zero : (p : N) = 0 := by
   simpa only [map_natCast, map_zero] using
     congrArg (algebraMap R N) (powerRootCoefficient_prime_eq_zero (A := A) p)
@@ -448,7 +449,7 @@ theorem powerRootCoefficientRing_prime_eq_zero : (p : N) = 0 := by
 /-- 概要：係数商上の実無限根 pd 包は入力の p 乗商上の可算切断表示を持つ。
 方針：同じ一次関係商へ既存の明示切断表示同型を適用する。
 規約：係数商作用は既存の principalDPQuotientAlgebra を固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の自然な係数商射の表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の自然な係数商射の表示。 -/
 def powerRootCoefficientPDEnvelope_truncatedEquiv (f : Polynomial A) :
     letI := principalDPQuotientAlgebra hp (powerRootCoefficientRing_prime_eq_zero (A := A) p)
       (z f)
@@ -466,7 +467,7 @@ end PowerRootCoefficientPDEnvelope
 
 無限根環上のモニック入力の正次数分冪商は係数環上自由。
 したがって正則な係数元による商に実分冪構造が降りる。
-BS Rem 7.15(1)（著者版 p.62）の R/ϖ 係数へ進むための具体的な降下。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の R/ϖ 係数へ進むための具体的な降下。
 
 ## 方針
 
@@ -501,7 +502,7 @@ local notation "J" f => principalDPPositiveIdeal (z f)
 /-- 概要：係数商上の無限根環の通常モニック入力商は元の係数商上自由。
 方針：名前付き入力を展開し、通常のモニック商の既存の基底を実主イデアル商へ移す。
 規約：モニック f の正次数は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の正次数分冪商の自由性の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の正次数分冪商の自由性の入力。 -/
 theorem powerRootCoefficientInputQuotient_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free R (N ⧸ Ideal.span {(z f)}) := by
   unfold powerRootCoefficientPDInput
@@ -515,7 +516,7 @@ theorem powerRootCoefficientInputQuotient_free (f : Polynomial A) (hf : f.Monic)
 /-- 概要：実無限根 pd 包を正次数分冪イデアルで割った商は係数商 A/(p) 上自由。
 方針：正次数商と通常入力商の代数同型を係数へ制限して自由性を戻す。
 規約：完全 prism や実分冪構造の存在自体はこの台加群の自由性には不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更時の交わりの制御。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更時の交わりの制御。 -/
 theorem powerRootCoefficientPDPositiveQuotient_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free R ((D f) ⧸ J f) := by
   let := powerRootCoefficientInputQuotient_free p f hf
@@ -525,7 +526,7 @@ theorem powerRootCoefficientPDPositiveQuotient_free (f : Polynomial A) (hf : f.M
 /-- 概要：正則な係数元は正次数分冪商でも正則。
 方針：正次数商の係数環上の自由性と平坦性で正則性を移す。
 規約：正則性は元の係数商 A/(p) に要求する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数元による実分冪降下。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数元による実分冪降下。 -/
 theorem powerRootCoefficientPDPositiveQuotient_regular (f : Polynomial A) (hf : f.Monic)
     (a : R) (ha : IsSMulRegular R a) :
     IsSMulRegular ((D f) ⧸ J f) (Ideal.Quotient.mk (J f) (algebraMap R (D f) a)) := by
@@ -536,7 +537,7 @@ theorem powerRootCoefficientPDPositiveQuotient_regular (f : Polynomial A) (hf : 
 /-- 概要：完全 prism 上の実無限根 pd 包の構造は正則な係数元による実商へ降りる。
 方針：係数元の正次数商上の正則性を供給し、一般の正則元分冪商を適用する。
 規約：降下後のイデアルは正次数イデアルの実商射による像。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数 R/ϖ へ進む実分冪構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数 R/ϖ へ進む実分冪構造。 -/
 def powerRootCoefficientPDRegularReduction
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) (ha : IsSMulRegular R a) :
@@ -547,7 +548,7 @@ def powerRootCoefficientPDRegularReduction
 /-- 概要：正則係数元による商の入力元の分冪は標準生成元の商像。
 方針：商分冪作用の互換性と還元前の標準分冪値の公式を使う。
 規約：全次数 n を含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更後の pd 普遍性への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更後の pd 普遍性への入力。 -/
 theorem powerRootCoefficientPDRegularReduction_base_apply
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) (ha : IsSMulRegular R a) (n : ℕ) :
@@ -562,7 +563,7 @@ theorem powerRootCoefficientPDRegularReduction_base_apply
 /-- 概要：正則係数元による実還元の標準商射は分冪射。
 方針：一般の正則元分冪商の射の互換性を具体的な実構造に適用する。
 規約：元の正次数イデアルと還元後の実像を比較する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更後の普遍射の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更後の普遍射の照合。 -/
 theorem powerRootCoefficientPDRegularReduction_isDPMorphism
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) (ha : IsSMulRegular R a) :
@@ -582,7 +583,7 @@ end PowerRootCoefficientPDRegularReduction
 
 無限根環 P の (p,d) 商は R/ϖ 上の無限根環と環同型。
 係数は逆 Frobenius で移り、根変数の番号は保つ。
-BS Rem 7.15（著者版 p.62）の入力比較で係数変更を明示する。
+BS 著者版 Remark 7.15（著者版 p.62）の入力比較で係数変更を明示する。
 
 ## 方針
 
@@ -619,7 +620,7 @@ local notation "barr" => RingHom.comp
 /-- 概要：無限根入力の二元商と R/ϖ 上の同じ無限根環の同型。
 方針：任意係数イデアル商との交換と逆係数 Frobenius を合成する。
 規約：指数モノイドは変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の主分冪入力の係数移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の主分冪入力の係数移送。 -/
 def powerRootFrobeniusPairVarpiInputEquiv : (P ⧸ KP) ≃+* Nv :=
   ((Ideal.quotEquivOfEq (show KP = (K).map (algebraMap A P) by
     rw [Ideal.map_span, Set.image_pair, map_natCast])).trans
@@ -629,7 +630,7 @@ def powerRootFrobeniusPairVarpiInputEquiv : (P ⧸ KP) ≃+* Nv :=
 /-- 概要：入力同型は単項式の係数に逆 Frobenius を適用する。
 方針：商比較とモノイド環の係数写像の公式を合成する。
 規約：指数を変えない。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的係数作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的係数作用の確認。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_single (q : G) (r : A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (AddMonoidAlgebra.single q r)) =
@@ -642,7 +643,7 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_single (q : G) (r : A) :
 /-- 概要：入力同型の標準係数上の公式。
 方針：零指数の単項式を計算する。
 規約：元の全ての係数を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 係数作用の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 係数作用の移送。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_coeff (r : A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (algebraMap A P r)) = algebraMap Rv Nv (barr ((e).symm r)) := by
@@ -652,7 +653,7 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_coeff (r : A) :
 /-- 概要：入力同型は全ての根変数の番号を保つ。
 方針：係数 1 の単項式の比較を使う。
 規約：全ての段 n を含める。
-使われ方：BS Rem 7.15（著者版 p.62）の一元多項式評価の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元多項式評価の比較。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_variable (n : ℕ) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (powerRootPolynomialVariable A p hp n)) =
@@ -663,14 +664,14 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_variable (n : ℕ) :
 /-- 概要：元の無限根環から ϖ 係数の無限根環への通常比較射。
 方針：二元商射と入力同型を合成する。
 規約：逆 Frobenius 係数作用を持つ。
-使われ方：BS Rem 7.15（著者版 p.62）の評価の自然性を適用するための環射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の評価の自然性を適用するための環射。 -/
 def powerRootFrobeniusPairVarpiInputMap : P →+* Nv :=
   (powerRootFrobeniusPairVarpiInputEquiv W hW).toRingHom.comp (Ideal.Quotient.mk KP)
 
 /-- 概要：通常入力多項式は逆 Frobenius で係数変更した評価へ送られる。
 方針：評価の自然性と標準係数・根変数の公式を使う。
 規約：モニック性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の主分冪表示の正確な入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の主分冪表示の正確な入力。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_baseMap (f : Polynomial A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (powerRootPolynomialBaseMap A p hp f)) =
@@ -691,7 +692,7 @@ theorem powerRootFrobeniusPairVarpiInputEquiv_baseMap (f : Polynomial A) :
 /-- 概要：名前付きモニック入力も同じ逆 Frobenius 係数評価へ送られる。
 方針：入力の定義を一度展開して評価公式を使う。
 規約：元の多項式を暗黙に変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の標準主 pd 同型への入力等式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準主 pd 同型への入力等式。 -/
 theorem powerRootFrobeniusPairVarpiInputEquiv_input (f : Polynomial A) :
     powerRootFrobeniusPairVarpiInputEquiv W hW
       (Ideal.Quotient.mk KP (powerRootMonicPDInput p f)) =
@@ -709,7 +710,7 @@ end PowerRootFrobeniusPairVarpiInput
 ## 概要
 
 完全 prism 上の無限根モニック入力の実 pd 包は、任意の mod p 係数元で還元しても
-実分冪構造を持つ。BS Rem 7.15(1)（著者版 p.62）の係数変更。
+実分冪構造を持つ。BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更。
 
 ## 方針
 
@@ -743,7 +744,7 @@ local notation "J" f => principalDPPositiveIdeal (z f)
 /-- 概要：無限根モニック pd 包の構造は任意係数元の商へ降りる。
 方針：正次数商の自由性から射影性を供給し、一般の係数商の実分冪構造を使う。
 規約：係数元の正則性も prism 商の p 正則性も仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）のモニック入力の無条件の係数還元。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）のモニック入力の無条件の係数還元。 -/
 def powerRootCoefficientPDReductionOfMonic
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) :
@@ -755,7 +756,7 @@ def powerRootCoefficientPDReductionOfMonic
 /-- 概要：任意係数還元後の入力元の分冪は元の標準生成元の商像。
 方針：係数商の分冪評価と還元前の入力分冪の公式を合成する。
 規約：全次数 n を含み、係数元には制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の還元後の pd 普遍性への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の還元後の pd 普遍性への入力。 -/
 theorem powerRootCoefficientPDReductionOfMonic_base_apply
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) (n : ℕ) :
@@ -770,7 +771,7 @@ theorem powerRootCoefficientPDReductionOfMonic_base_apply
 /-- 概要：任意係数元によるモニック pd 包の標準商射は分冪射。
 方針：射影的な正次数商を使う分冪商の互換性を適用する。
 規約：還元前と還元後の実分冪構造を使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の任意係数還元の構造比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の任意係数還元の構造比較。 -/
 theorem powerRootCoefficientPDReductionOfMonic_isDPMorphism
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (a : R) :
@@ -791,7 +792,7 @@ end PowerRootCoefficientPDProjectiveReduction
 
 完全 δ 係数環上の無限根環の Frobenius は、係数 Frobenius と指数 p 倍の
 互いに可換な二つの δ 自己同型の合成。
-BS Rem 7.15（著者版 p.62）の φ_A による係数変更と変数の作用を区別する。
+BS 著者版 Remark 7.15（著者版 p.62）の φ_A による係数変更と変数の作用を区別する。
 
 ## 方針
 
@@ -821,21 +822,21 @@ variable (D : DeltaStructure p A) (hD : D.IsPerfect)
 /-- 概要：係数 Frobenius のみを適用する無限根環の環同型。
 方針：係数環同型を加法モノイド環へ持ち上げる。
 規約：単項式の指数は固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の φ_A による係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の φ_A による係数作用。 -/
 def powerRootCoefficientFrobeniusEquiv : P ≃+* P :=
   AddMonoidAlgebra.mapRingEquiv G (D.frobeniusEquiv hD)
 
 /-- 概要：指数の p 倍のみを適用する無限根環の環同型。
 方針：指数加法同型をモノイド環へ持ち上げる。
 規約：係数を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の全体 Frobenius の変数成分。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全体 Frobenius の変数成分。 -/
 def powerRootVariableFrobeniusEquiv : P ≃+* P :=
   AddMonoidAlgebra.mapDomainRingEquiv A (powerRootExponentPrimeScaleEquiv p)
 
 /-- 概要：係数 Frobenius は単項式の係数だけを送る。
 方針：係数環同型の単項式公式を使う。
 規約：任意の指数・係数を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数と変数の分離。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数と変数の分離。 -/
 theorem powerRootCoefficientFrobeniusEquiv_single (q : G) (b : A) :
     powerRootCoefficientFrobeniusEquiv p D hD (AddMonoidAlgebra.single q b) =
       AddMonoidAlgebra.single q (D.frobeniusLift b) :=
@@ -844,7 +845,7 @@ theorem powerRootCoefficientFrobeniusEquiv_single (q : G) (b : A) :
 /-- 概要：指数 Frobenius は単項式の指数だけを p 倍する。
 方針：指数同型の単項式公式を使う。
 規約：係数は同じ元を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の指数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の指数作用。 -/
 theorem powerRootVariableFrobeniusEquiv_single (q : G) (b : A) :
     powerRootVariableFrobeniusEquiv (A := A) p (AddMonoidAlgebra.single q b) =
       AddMonoidAlgebra.single (p • q) b :=
@@ -853,7 +854,7 @@ theorem powerRootVariableFrobeniusEquiv_single (q : G) (b : A) :
 /-- 概要：係数 Frobenius は元の係数の標準像をその Frobenius 像へ送る。
 方針：零指数の単項式で計算する。
 規約：標準係数射を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の照合。 -/
 theorem powerRootCoefficientFrobeniusEquiv_coeff (b : A) :
     powerRootCoefficientFrobeniusEquiv p D hD (algebraMap A P b) =
       algebraMap A P (D.frobeniusLift b) := by
@@ -863,7 +864,7 @@ theorem powerRootCoefficientFrobeniusEquiv_coeff (b : A) :
 /-- 概要：係数 Frobenius は全ての根変数を固定する。
 方針：係数 1 の単項式で計算する。
 規約：全ての段 n を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の入力多項式の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力多項式の係数変更。 -/
 theorem powerRootCoefficientFrobeniusEquiv_variable (n : ℕ) :
     powerRootCoefficientFrobeniusEquiv p D hD (powerRootPolynomialVariable A p hp n) =
       powerRootPolynomialVariable A p hp n := by
@@ -872,7 +873,7 @@ theorem powerRootCoefficientFrobeniusEquiv_variable (n : ℕ) :
 /-- 概要：指数 Frobenius は元の係数の標準像を固定する。
 方針：零指数の単項式で計算する。
 規約：係数環 A の全ての元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の A 線形な変数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A 線形な変数作用。 -/
 theorem powerRootVariableFrobeniusEquiv_coeff (b : A) :
     powerRootVariableFrobeniusEquiv (A := A) p (algebraMap A P b) = algebraMap A P b := by
   simpa [AddMonoidAlgebra.coe_algebraMap] using
@@ -881,7 +882,7 @@ theorem powerRootVariableFrobeniusEquiv_coeff (b : A) :
 /-- 概要：指数 Frobenius は各根変数をその p 乗へ送る。
 方針：単項式の冪と指数 p 倍の公式を使う。
 規約：全ての段 n を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の変数の再配置。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数の再配置。 -/
 theorem powerRootVariableFrobeniusEquiv_variable (n : ℕ) :
     powerRootVariableFrobeniusEquiv (A := A) p (powerRootPolynomialVariable A p hp n) =
       powerRootPolynomialVariable A p hp n ^ p := by
@@ -891,7 +892,7 @@ theorem powerRootVariableFrobeniusEquiv_variable (n : ℕ) :
 /-- 概要：係数と指数の Frobenius は環射として可換。
 方針：モノイド環の係数写像と指数写像の自然性を使う。
 規約：両側の合成順序を環射の等式で明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の δ 互換性の判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の δ 互換性の判定。 -/
 theorem powerRootFrobeniusFactors_commute :
     (powerRootCoefficientFrobeniusEquiv p D hD).toRingHom.comp
       (powerRootVariableFrobeniusEquiv (A := A) p).toRingHom =
@@ -902,7 +903,7 @@ theorem powerRootFrobeniusFactors_commute :
 /-- 概要：全体 Frobenius は係数成分の後に指数成分を適用したもの。
 方針：既存の標準 Frobenius の定義を使う。
 規約：既存 δ 構造の Frobenius を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の二つの作用の正確な関係。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの作用の正確な関係。 -/
 theorem powerRootFrobeniusFactors_apply (t : P) :
     powerRootVariableFrobeniusEquiv (A := A) p (powerRootCoefficientFrobeniusEquiv p D hD t) =
       powerRootPolynomialFrobenius p D t := rfl
@@ -910,7 +911,7 @@ theorem powerRootFrobeniusFactors_apply (t : P) :
 /-- 概要：係数 Frobenius 成分は標準無限根 δ 構造の δ 自己同型。
 方針：全体 Frobenius との可換性を p 正則性の下で δ 互換性に戻す。
 規約：既存の δ 構造を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数変更を raw δ 包へ適用する入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数変更を raw δ 包へ適用する入力。 -/
 theorem powerRootCoefficientFrobeniusEquiv_isDeltaHom :
     (powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
       (powerRootPolynomialDelta p hD.p_mul_injective D)
@@ -925,7 +926,7 @@ theorem powerRootCoefficientFrobeniusEquiv_isDeltaHom :
 /-- 概要：指数 Frobenius 成分も標準無限根 δ 構造の δ 自己同型。
 方針：係数成分との可換性を全体 Frobenius との可換性にし、p 正則性を使う。
 規約：係数環の完全性から p 正則性を供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の変数成分を raw δ 包へ適用する入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数成分を raw δ 包へ適用する入力。 -/
 theorem powerRootVariableFrobeniusEquiv_isDeltaHom :
     (powerRootPolynomialDelta p hD.p_mul_injective D).IsDeltaHom
       (powerRootPolynomialDelta p hD.p_mul_injective D)
@@ -940,7 +941,7 @@ theorem powerRootVariableFrobeniusEquiv_isDeltaHom :
 /-- 概要：係数 Frobenius は通常多項式の係数だけを Frobenius で送って評価する。
 方針：評価の自然性と係数・変数の公式を使う。
 規約：モニック性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の φ_A 係数変更後の f の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の φ_A 係数変更後の f の追跡。 -/
 theorem powerRootCoefficientFrobeniusEquiv_baseMap (f : Polynomial A) :
     powerRootCoefficientFrobeniusEquiv p D hD (powerRootPolynomialBaseMap A p hp f) =
       powerRootPolynomialBaseMap A p hp (f.map D.frobeniusLift) := by
@@ -959,7 +960,7 @@ theorem powerRootCoefficientFrobeniusEquiv_baseMap (f : Polynomial A) :
 /-- 概要：二成分の合成同型は既存 δ 構造の Frobenius 同型そのもの。
 方針：各元上で全体 Frobenius と一致することを使い環同型の外延性を適用する。
 規約：完全性証明は既存の無限根 δ 完全性を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数成分と以前の全体比較の接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数成分と以前の全体比較の接続。 -/
 theorem powerRootFrobeniusFactors_equiv :
     (powerRootCoefficientFrobeniusEquiv p D hD).trans
       (powerRootVariableFrobeniusEquiv (A := A) p) =
@@ -976,7 +977,7 @@ theorem powerRootFrobeniusFactors_equiv :
 /-- 概要：指数成分は通常多項式の係数を保ち、通常変数だけを p 乗にする。
 方針：多項式評価の自然性と係数・変数の計算公式を使う。
 規約：任意の多項式を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数引戻し後の変数再配置。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数引戻し後の変数再配置。 -/
 theorem powerRootVariableFrobeniusEquiv_baseMap (f : Polynomial A) :
     powerRootVariableFrobeniusEquiv (A := A) p (powerRootPolynomialBaseMap A p hp f) =
       Polynomial.eval₂ (algebraMap A P) (powerRootPolynomialVariable A p hp 0 ^ p) f := by
@@ -1001,7 +1002,7 @@ end PowerRootFrobeniusFactors
 ## 概要
 
 任意の係数環射と互換な p 冪根列に対し、現在の単項式表示の無限根多項式環から
-係数と全根を保つ環射が一意に存在する。BS Rem 7.15（著者版 p.62）の入力環。
+係数と全根を保つ環射が一意に存在する。BS 著者版 Remark 7.15（著者版 p.62）の入力環。
 
 ## 方針
 
@@ -1028,7 +1029,7 @@ local notation "P" => PowerRootPolynomial R p hp
 /-- 概要：無限根多項式環の環射は係数と全根変数の像で決まる。
 方針：単項式を一つの根変数の冪に表し、単項式による加法的生成を使う。
 規約：終域には任意の可換環を許す。
-使われ方：BS Rem 7.15（著者版 p.62）の入力射の一意性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力射の一意性。 -/
 theorem powerRootPolynomial_ringHom_ext (F G : P →+* B)
     (hcoeff : F.comp (algebraMap R P) = G.comp (algebraMap R P))
     (hroot : ∀ n, F (powerRootPolynomialVariable R p hp n) =
@@ -1051,7 +1052,7 @@ variable (f : R →+* B) (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
 /-- 概要：指定した互換根列への無限根多項式の評価射。
 方針：指数のモノイド射と係数環射を加法モノイド環の普遍射へ渡す。
 規約：元の具体的な無限根多項式環を源とする。
-使われ方：BS Rem 7.15（著者版 p.62）の根データからの実入力射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データからの実入力射。 -/
 def powerRootPolynomialEval : P →+* B :=
   AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ)
     (fun _ _ => Commute.all _ _)
@@ -1059,7 +1060,7 @@ def powerRootPolynomialEval : P →+* B :=
 /-- 概要：無限根評価射は元の係数を指定係数射へ送る。
 方針：零指数の単項式を評価し、モノイド射の単位保存性を使う。
 規約：全ての係数元を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の基底環上の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底環上の普遍性。 -/
 theorem powerRootPolynomialEval_coeff (a : R) :
     powerRootPolynomialEval p hp f ρ hρ (algebraMap R P a) = f a := by
   change AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ) _
@@ -1071,7 +1072,7 @@ theorem powerRootPolynomialEval_coeff (a : R) :
 /-- 概要：無限根評価射は全ての根変数を指定根列へ送る。
 方針：係数 1 の単項式の評価と指数モノイド射の変数公式を使う。
 規約：全段 n の元の根の像を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の根付き入力射の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根付き入力射の照合。 -/
 theorem powerRootPolynomialEval_variable (n : ℕ) :
     powerRootPolynomialEval p hp f ρ hρ (powerRootPolynomialVariable R p hp n) = ρ n := by
   change AddMonoidAlgebra.liftNCRingHom f (powerRootExponentEvalHom p hp ρ hρ) _
@@ -1083,7 +1084,7 @@ include hρ in
 /-- 概要：係数と互換な根列を保つ無限根多項式環からの環射は一意に存在。
 方針：具体的評価射を証人とし、係数・全根変数による外延性を使う。
 規約：prism・分冪構造・完備性の仮定は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の指定 δ 射を根データで構成する準備。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の指定 δ 射を根データで構成する準備。 -/
 theorem existsUnique_powerRootPolynomialHom :
     ∃! F : P →+* B,
       F.comp (algebraMap R P) = f ∧
@@ -1107,7 +1108,7 @@ end PowerRootPolynomialUniversal
 ## 概要
 
 通常の商 R[Y^(1/p^∞)]/(f(Y)) からの環射は、係数射と f を消す互換根列で一意に決まる。
-BS Rem 7.15（著者版 p.62）の完備入力環 S に接続するための未完備入力環。
+BS 著者版 Remark 7.15（著者版 p.62）の完備入力環 S に接続するための未完備入力環。
 
 ## 方針
 
@@ -1134,27 +1135,27 @@ local notation "I" => Ideal.span {powerRootPolynomialBaseMap R p hp f}
 /-- 概要：無限根多項式環を f(Y) = 0 で割った通常の入力環。
 方針：第零変数での多項式評価が生成する主イデアルで割る。
 規約：完備化をまだ施さず、モニック性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の S への未完備入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の S への未完備入力。 -/
 abbrev PowerRootEquationQuotient := P ⧸ I
 
 /-- 概要：方程式商への係数環の標準射。
 方針：無限根多項式環の係数射と商射を合成する。
 規約：商上の algebra インスタンスの選択を必要としない環射。
-使われ方：BS Rem 7.15（著者版 p.62）の基底射を保つ入力データ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底射を保つ入力データ。 -/
 def powerRootEquationQuotientCoeff : R →+* PowerRootEquationQuotient p hp f :=
   (Ideal.Quotient.mk I).comp (algebraMap R P)
 
 /-- 概要：方程式商内の全ての標準根変数。
 方針：各 Yₙ を商射で写す。
 規約：第零根が f の根になる。
-使われ方：BS Rem 7.15（著者版 p.62）の根列の標準入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根列の標準入力。 -/
 def powerRootEquationQuotientRoot (n : ℕ) : PowerRootEquationQuotient p hp f :=
   Ideal.Quotient.mk I (powerRootPolynomialVariable R p hp n)
 
 /-- 概要：方程式商の標準根列は p 冪について互換。
 方針：無限根多項式環の関係式を商射で写す。
 規約：任意の係数環を許す。
-使われ方：BS Rem 7.15（著者版 p.62）の試験射からの根列抽出。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の試験射からの根列抽出。 -/
 theorem powerRootEquationQuotientRoot_pow (n : ℕ) :
     powerRootEquationQuotientRoot p hp f (n + 1) ^ p = powerRootEquationQuotientRoot p hp f n := by
   unfold powerRootEquationQuotientRoot
@@ -1163,7 +1164,7 @@ theorem powerRootEquationQuotientRoot_pow (n : ℕ) :
 /-- 概要：方程式商の第零根は指定された f を消す。
 方針：評価と商射の可換性から主イデアルの生成元の消滅に帰着する。
 規約：定数多項式を含めて成り立つ。
-使われ方：BS Rem 7.15（著者版 p.62）の入力環内の方程式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力環内の方程式。 -/
 theorem powerRootEquationQuotientRoot_equation :
     f.eval₂ (powerRootEquationQuotientCoeff p hp f)
       (powerRootEquationQuotientRoot p hp f 0) = 0 := by
@@ -1179,7 +1180,7 @@ variable {B : Type v} [CommRing B]
 /-- 概要：方程式商からの環射は係数と全根の像で決まる。
 方針：商射で引き戻し、無限根多項式環の外延性を適用する。
 規約：終域には完備性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の入力射の一意性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力射の一意性。 -/
 theorem powerRootEquationQuotient_ringHom_ext (F G : PowerRootEquationQuotient p hp f →+* B)
     (hc : F.comp (powerRootEquationQuotientCoeff p hp f) =
       G.comp (powerRootEquationQuotientCoeff p hp f))
@@ -1191,7 +1192,7 @@ theorem powerRootEquationQuotient_ringHom_ext (F G : PowerRootEquationQuotient p
 /-- 概要：f を消す互換根列と係数射は方程式商からの一意な環射を与える。
 方針：無限根評価射を生成元が消える主イデアルで降下し、外延性で一意性を得る。
 規約：全ての根を同時に保存し、終域の正則性や完備性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の根データと入力射の具体的な対応。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データと入力射の具体的な対応。 -/
 theorem existsUnique_powerRootEquationQuotientHom (k : R →+* B)
     (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) (hf : f.eval₂ k (ρ 0) = 0) :
     ∃! F : PowerRootEquationQuotient p hp f →+* B,
@@ -1231,7 +1232,7 @@ end PowerRootEquationQuotient
 ## 概要
 
 通常の方程式商 R[Y^(1/p^∞)]/(f) の p 完備化から p 完備環への射は、
-係数射と f を消す互換根列で一意に決まる。BS Rem 7.15（著者版 p.62）の入力比較。
+係数射と f を消す互換根列で一意に決まる。BS 著者版 Remark 7.15（著者版 p.62）の入力比較。
 
 ## 方針
 
@@ -1262,7 +1263,7 @@ local notation "r" => powerRootEquationQuotientRoot p hp f
 /-- 概要：方程式商の p 完備化からの射は係数と互換な方程式の根列で一意に定まる。
 方針：通常の商からの一意な射を p 完備化へ一意に延長する。
 規約：完備化前の入力根の自然像を全て保存する。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力環からの試験射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力環からの試験射。 -/
 theorem existsUnique_powerRootEquationCompletionHom (k : R →+* B)
     (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) (hf : f.eval₂ k (ρ 0) = 0) :
     ∃! F : C →+* B, (F.comp j).comp c = k ∧ ∀ n, F (j (r n)) = ρ n := by
@@ -1286,7 +1287,7 @@ end PowerRootEquationCompletionUniversal
 
 R⟨Y^(1/p^∞)⟩/(f) を、無限根多項式環の通常の p 完備化を f で割った環として定義する。
 モニック f に対し、通常の方程式商の p 完備化と全入力元を保つ環同型を持つ。
-BS Rem 7.15（著者版 p.62）の S との接続。
+BS 著者版 Remark 7.15（著者版 p.62）の S との接続。
 
 ## 方針
 
@@ -1317,13 +1318,13 @@ local notation "CS" => AdicCompletion (Ideal.span {(p : S₀)}) S₀
 /-- 概要：無限根多項式環を p 完備化してから f で割った入力環。
 方針：原典の括弧の順序を通常の完備化と主商で明示する。
 規約：型の定義にはモニック性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の S=R⟨Y^(1/p^∞)⟩/(f)。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の S=R⟨Y^(1/p^∞)⟩/(f)。 -/
 abbrev PowerRootMonicCompletedInput := CP ⧸ Ideal.span {jP z}
 
 /-- 概要：モニック入力では完備化してから割る環と、割ってから完備化する環は同型。
 方針：モニック入力の全 p 冪商での正則性を完備化と主商の交換に使う。
 規約：元の係数環の p 正則性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の S を既存の完備入力へ接続する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の S を既存の完備入力へ接続する。 -/
 def powerRootMonicCompletedInputEquiv (hf : f.Monic) :
     PowerRootMonicCompletedInput p hp f ≃+* CS :=
   primeAdicCompletionQuotientEquiv P p z
@@ -1332,7 +1333,7 @@ def powerRootMonicCompletedInputEquiv (hf : f.Monic) :
 /-- 概要：完備入力環の交換同型は元の無限根多項式の全ての像を保つ。
 方針：一般の主商交換同型の係数公式を使う。
 規約：係数元と全段の根変数もこの式に含まれる。
-使われ方：BS Rem 7.15（著者版 p.62）の試験射と根の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の試験射と根の追跡。 -/
 theorem powerRootMonicCompletedInputEquiv_coeff (hf : f.Monic) (x : P) :
     powerRootMonicCompletedInputEquiv p hp f hf
       (Ideal.Quotient.mk (Ideal.span {jP z}) (jP x)) =
@@ -1343,7 +1344,7 @@ theorem powerRootMonicCompletedInputEquiv_coeff (hf : f.Monic) (x : P) :
 /-- 概要：原典の順序で作ったモニック完備入力環は p 完備。
 方針：全 p 冪商でのモニック正則性と完備化後の主商の完備性を使う。
 規約：係数環に p 正則性・有界ねじれを追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の S の通常の完備性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の S の通常の完備性。 -/
 theorem powerRootMonicCompletedInput_isAdicComplete (hf : f.Monic) :
     IsAdicComplete (Ideal.span {(p : PowerRootMonicCompletedInput p hp f)})
       (PowerRootMonicCompletedInput p hp f) :=
@@ -1359,7 +1360,7 @@ end PowerRootMonicCompletedInput
 ## 概要
 
 原典の順序の完備入力環から p 完備環への環射は、係数と全根の像で決まる。
-BS Rem 7.15（著者版 p.62）の入力作用を含む比較。
+BS 著者版 Remark 7.15（著者版 p.62）の入力作用を含む比較。
 
 ## 方針
 
@@ -1390,7 +1391,7 @@ local notation "lS" => RingHom.comp
 /-- 概要：p 完備な標的への完備入力射は係数と全根の像で決まる。
 方針：主商と完備化の外延性を通じて無限根多項式環の外延性へ帰着する。
 規約：源のモニック性・標的の p 正則性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の全入力作用の保存。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全入力作用の保存。 -/
 theorem powerRootMonicCompletedInput_ringHom_ext (F G : SI →+* B)
     (hc : (F.comp lS).comp (algebraMap R P) = (G.comp lS).comp (algebraMap R P))
     (hr : ∀ n, F (lS (powerRootPolynomialVariable R p hp n)) =
@@ -1408,7 +1409,7 @@ end PowerRootMonicCompletedInputExt
 ## 概要
 
 互換根列の全ての δ が零なら、係数 δ 射と根列から一意な無限根 δ 射が得られる。
-BS Rem 7.15（著者版 p.62）の指定入力 δ 射を根データで構成する。
+BS 著者版 Remark 7.15（著者版 p.62）の指定入力 δ 射を根データで構成する。
 
 ## 方針
 
@@ -1436,7 +1437,7 @@ local notation "P" => PowerRootPolynomial R p hp
 /-- 概要：無限根環からの環射が係数・全根変数上で δ と可換なら δ 射。
 方針：二つの W₂ 切断の合成を通常環射の外延性と二つの Witt 座標で比較する。
 規約：源の δ 構造は任意で、終域には p ねじれを許す。
-使われ方：BS Rem 7.15（著者版 p.62）の無限根入力射の δ 条件。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無限根入力射の δ 条件。 -/
 theorem isDeltaHom_powerRootPolynomial
     (D : DeltaStructure p P) (E : DeltaStructure p B) (g : P →+* B)
     (hcoeff : ∀ a : R, g (D.delta (algebraMap R P a)) = E.delta (g (algebraMap R P a)))
@@ -1467,7 +1468,7 @@ theorem isDeltaHom_powerRootPolynomial
 /-- 概要：p 進分離な δ 環の互換根列は全て rank 1 である。
 方針：後続の根を各 p 冪根の証人にし、既存の分離性による δ=0 判定を使う。
 規約：終域の p 正則性や根列の非零性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の根データに課す δ 条件を自動で供給する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データに課す δ 条件を自動で供給する。 -/
 theorem compatiblePowerRoots_delta_eq_zero (E : DeltaStructure p B)
     [IsHausdorff (Ideal.span {(p : B)}) B]
     (ρ : ℕ → B) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n) (n : ℕ) : E.delta (ρ n) = 0 :=
@@ -1483,7 +1484,7 @@ include hf hδρ in
 /-- 概要：係数 δ 射と rank 1 の互換根列による評価射は δ 射。
 方針：標準無限根 δ 構造の係数公式と根変数の δ=0 を一般の判定へ渡す。
 規約：終域の p ねじれや完備性には制約しない。
-使われ方：BS Rem 7.15（著者版 p.62）の根データからの実入力 δ 射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根データからの実入力 δ 射。 -/
 theorem powerRootPolynomialEval_isDeltaHom :
     (powerRootPolynomialDelta p hpR D).IsDeltaHom E (powerRootPolynomialEval p hp f ρ hρ) := by
   apply isDeltaHom_powerRootPolynomial p
@@ -1497,7 +1498,7 @@ include hf hρ hδρ in
 /-- 概要：係数と rank 1 の互換根列を保つ δ 射は一意に存在。
 方針：具体的評価射の δ 性を存在側に使い、通常環射の外延性で一意性を得る。
 規約：根の δ=0 と隣接根関係を明示し、prism の完備性や終域の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の指定入力射を根データへ置き換える。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の指定入力射を根データへ置き換える。 -/
 theorem existsUnique_powerRootPolynomialDeltaHom :
     ∃! g : P →+* B,
       (powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
@@ -1521,7 +1522,7 @@ include hf hρ in
 /-- 概要：p 進分離な終域の互換根列へ、係数と根を保つ δ 射が一意に存在する。
 方針：全根の rank 1 性を分離性から導き、一般の根データの δ 普遍性を使う。
 規約：終域の p 正則性を要求せず、δ=0 を追加引数に残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の分離な試験環への入力 δ 射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分離な試験環への入力 δ 射。 -/
 theorem existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff
     [IsHausdorff (Ideal.span {(p : B)}) B] :
     ∃! g : P →+* B,
@@ -1541,7 +1542,7 @@ end PowerRootPolynomialDeltaUniversal
 
 有界試験 prism の剰余内にある互換根列と基底 δ 射から、
 剰余根列を保つ無限根入力 δ 射が一意に存在する。
-BS Rem 7.15（著者版 p.62）の入力 δ 射の持上げの有界試験環での計算。
+BS 著者版 Remark 7.15（著者版 p.62）の入力 δ 射の持上げの有界試験環での計算。
 
 ## 方針
 
@@ -1569,7 +1570,7 @@ local notation "P" => PowerRootPolynomial R p hp
 /-- 概要：完全 prism の剰余互換根列を保つ無限根入力 δ 射は一意に存在。
 方針：実根列への一意持上げと rank 1 根列の δ 普遍性を合成する。
 規約：根列は商内に与え、台環内の根列や δ 条件を引数に残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の有界試験 prism に対する入力射の一意持上げ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界試験 prism に対する入力射の一意持上げ。 -/
 theorem existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
     (hpR : Function.Injective (fun x : R => (p : R) * x)) (D : DeltaStructure p R)
     (Q : OrientedPrism p B)
@@ -1608,7 +1609,7 @@ end PowerRootPolynomialBoundedPrismLift
 
 完全試験 prism の剰余内にある互換根列と基底 δ 射から、
 剰余根列を保つ無限根入力 δ 射が一意に存在する。
-BS Rem 7.15（著者版 p.62）の入力 δ 射の持上げの完全試験環での計算。
+BS 著者版 Remark 7.15（著者版 p.62）の入力 δ 射の持上げの完全試験環での計算。
 
 ## 方針
 
@@ -1636,7 +1637,7 @@ local notation "P" => PowerRootPolynomial R p hp
 /-- 概要：完全 prism の剰余互換根列を保つ無限根入力 δ 射は一意に存在。
 方針：実根列への一意持上げと rank 1 根列の δ 普遍性を合成する。
 規約：根列は商内に与え、台環内の根列や δ 条件を引数に残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の完全試験 prism に対する入力射の一意持上げ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全試験 prism に対する入力射の一意持上げ。 -/
 theorem existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
     (hpR : Function.Injective (fun x : R => (p : R) * x)) (D : DeltaStructure p R)
     (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)

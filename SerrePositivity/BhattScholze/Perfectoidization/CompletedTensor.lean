@@ -25,7 +25,7 @@ Fontaine 表示（完全 prism の完備テンソル積）から離散性を得�
 有限直積の perfectoid 性は `BhattScholze.Perfectoid.FiniteProduct` に置く。
 
 ## 使われ方
-Lemma 10.3、Prop 8.13 の環版、CLMST。
+BS 著者版 Lemma 10.3、BS 著者版 Proposition 8.13 の環版、CLMST。
 -/
 
 universe u
@@ -453,7 +453,7 @@ end CompletedTensorPerfectoidization
 
 Use the existing G2 principal-completion comparison and its universal property.
 No discreteness of the original tensor, bounded torsion, or classical-completion
-comparison is assumed. This is the ring-valued part needed for BS Prop. 8.13.
+comparison is assumed. This is the ring-valued part needed for BS 著者版 Proposition 8.13.
 -/
 
 @[expose] public noncomputable section CompletedTensorPerfectoidUniversal

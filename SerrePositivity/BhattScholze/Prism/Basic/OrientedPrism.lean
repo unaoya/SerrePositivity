@@ -5,17 +5,18 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplet
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-!
-# 向き付き prism の定義と射（BS 著者版 Lemma 3.1・Def 3.2・Ex 3.3・Lemma 3.8）
+# 向き付き prism の定義と射（BS 著者版 Lemma 3.1・BS 著者版 Definition 3.2・BS 著者版 Example 3.3・BS 著者版 Lemma 3.8）
 
 ## 概要
-単項イデアル (d) を持つ prism とその射。p ∈ (d, φ(d)) と distinguished 性の同値（Lemma 3.1 の単項の場合）、
+単項イデアル (d) を持つ prism とその射。p ∈ (d, φ(d)) と distinguished 性の同値（BS 著者版 Lemma 3.1 の単項の場合）、
 prism の p と d は Jacobson 根基に属し生成元は distinguished であること、射でイデアルの像が標的のイデアル全体になること、
-結晶 prism（Ex 3.3）、完全 prism の台環は p 進完備で商のねじれは p で消えること（Lemma 3.8）。
+結晶 prism（BS 著者版 Example 3.3）、完全 prism の台環は p 進完備で商のねじれは p で消えること（BS 著者版 Lemma 3.8）。
+BS 著者版 Lemma 3.8 の完全 prism の性質に加え、p 進完備性を取り出す。結晶 prism の構成は Example 3.3 に対応し、Notation 5.1 の前提になる。
 
 ## 方針
 導来完備性は共通基盤の IsModuleComplete で述べる。導来 a 完備な環では a が Jacobson 根基に属する
 （`DerivedCompletion.mem_jacobson_bot_of_isModuleComplete`）ので、生成元の distinguished 性と射の剛性は
-p 正則性・完全性・有界性を仮定せずに Lemma 2.24・2.25 から出る。
+p 正則性・完全性・有界性を仮定せずに BS 著者版 Lemma 2.24・Lemma 2.25 から出る。
 
 ## 規約
 一般の局所単項なイデアルは扱わない（ノート D5）。
@@ -26,7 +27,7 @@ BS のすべての prism の議論の土台。射の剛性の続き（I ⊗ B �
 
 universe u v w t
 
-/-! ## 主イデアルを持つ δ-pair の代数的条件（Lemma 3.1 の単項の場合、Lemma 3.5 の局所計算）
+/-! ## 主イデアルを持つ δ-pair の代数的条件（BS 著者版 Lemma 3.1 の単項の場合、BS 著者版 Lemma 3.5 の局所計算）
 
 distinguished 生成元について必要なイデアルの包含と、δ 射によるイデアルの像を計算する。
 prism の導来完備性はここでは使わない。
@@ -37,8 +38,9 @@ prism の導来完備性はここでは使わない。
 namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- distinguished元dについてp∈(d^p,φ(d))。φ(d)-d^p=pδ(d)とδ(d)の逆元を使う。
-Lemma 3.1の主イデアルの場合の強い包含で、完備性・根基の仮定は不要。 -/
+/-- distinguished元dについてp∈(d^p,φ(d))（BS 著者版 Lemma 3.1 の主イデアルの場合に distinguished 性から (1) を得る計算）。
+  φ(d)-d^p=pδ(d)とδ(d)の逆元を使う。
+BS 著者版 Lemma 3.1の主イデアルの場合の強い包含で、完備性・根基の仮定は不要。 -/
 theorem IsDistinguished.p_mem_span_pow {D : DeltaStructure p A} {d : A}
     (hd : D.IsDistinguished d) : (p : A) ∈ Ideal.span {d ^ p, D.frobeniusLift d} := by
   let I := Ideal.span {d ^ p, D.frobeniusLift d}
@@ -52,8 +54,8 @@ theorem IsDistinguished.p_mem_span_pow {D : DeltaStructure p A} {d : A}
   rw [← hu, mul_assoc, Units.mul_inv, mul_one] at h
   exact h
 
-/-- d,pがJacobson根基に属せば、distinguished性はp∈(d^p,φ(d))と同値。
-弱い包含の判定Lemma 2.25と、主イデアルの強い包含を組み合わせる。 -/
+/-- d,pがJacobson根基に属せば、distinguished性はp∈(d^p,φ(d))と同値（BS 著者版 Lemma 3.1 の主イデアルの場合と Lemma 2.25 の判定）。
+弱い包含の判定BS 著者版 Lemma 2.25と、主イデアルの強い包含を組み合わせる。 -/
 theorem isDistinguished_iff_p_mem_span_pow (D : DeltaStructure p A) (d : A)
     (hdr : d ∈ Ideal.jacobson (⊥ : Ideal A))
     (hpr : (p : A) ∈ Ideal.jacobson (⊥ : Ideal A)) :
@@ -71,7 +73,7 @@ theorem isDistinguished_iff_p_mem_span_pow (D : DeltaStructure p A) (d : A)
     exact Ideal.subset_span (by simp)
 
 /-- δ射がdistinguished元dを(e)の中へ送り、e,pが終域のJacobson根基に属せば、d=e·rのrは単元。
-Lemma 2.24をd=e·rに当てる。Lemma 3.5の局所的な計算。 -/
+BS 著者版 Lemma 2.24をd=e·rに当てる。BS 著者版 Lemma 3.5の局所的な計算。 -/
 theorem IsDeltaHom.exists_isUnit_of_distinguished_of_mem_span
     {B : Type v} [CommRing B] {D : DeltaStructure p A} {E : DeltaStructure p B}
     {f : A →+* B} (hf : D.IsDeltaHom E f) {d : A} {e : B}
@@ -86,7 +88,7 @@ theorem IsDeltaHom.exists_isUnit_of_distinguished_of_mem_span
 
 /-- δ射がdistinguished生成元dを(e)へ送れば、その主イデアルの像は(e)全体。
 e,pが終域のJacobson根基に属する仮定で因子判定を使う。
-Lemma 3.5の局所的な計算であり、一般prismの降下までは含まない。 -/
+BS 著者版 Lemma 3.5の局所的な計算であり、一般prismの降下までは含まない。 -/
 theorem IsDeltaHom.map_span_eq_of_distinguished_of_mem_span
     {B : Type v} [CommRing B] {D : DeltaStructure p A} {E : DeltaStructure p B}
     {f : A →+* B} (hf : D.IsDeltaHom E f) {d : A} {e : B}
@@ -101,7 +103,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end OrientedDeltaPair
 
-/-! ## 非零因子の生成元を選択した prism（Def 3.2 の単項の場合）
+/-! ## 非零因子の生成元を選択した prism（BS 著者版 Definition 3.2 の単項の場合）
 
 Cartier イデアルは (d) とし、導来 (p,d) 完備性は p と d それぞれの導来完備性で述べる。
 導来完備性から p と d は Jacobson 根基に属するので、生成元はいつも distinguished。
@@ -112,7 +114,8 @@ Cartier イデアルは (d) とし、導来 (p,d) 完備性は p と d それぞ
 namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A]
 
-/-- oriented prism：δ環、正則な生成元、導来(p,d)完備性、prismのイデアル条件。
+/-- δ 環、正則な生成元、導来 (p,d) 完備性とイデアル条件を持つ向き付き prism
+（BS 著者版 Definition 3.2 (1) の向き付きの場合、序論の Definition 1.1）。
 生成元以外のCartierイデアルはこの型の対象外。 -/
 structure OrientedPrism where
   deltaStructure : DeltaStructure p A
@@ -138,7 +141,8 @@ theorem p_mem_sup_map (P : OrientedPrism p A) :
   simpa only [ideal, Ideal.map_span, Set.image_singleton, ← Ideal.span_union,
     Set.singleton_union] using P.p_mem
 
-/-- distinguishedな正則元と実導来完備性からoriented prismを構成する。 -/
+/-- distinguished な正則元と導来完備性から向き付き prism を構成する
+（BS 著者版 Definition 3.2 (1) と Lemma 3.1 の主イデアルの場合、序論の Definition 1.1）。 -/
 def ofDistinguished (D : DeltaStructure p A) (d : A)
     (hd : D.IsDistinguished d) (hreg : Function.Injective (fun x : A ↦ d * x))
     (hp : DerivedCompletion.IsModuleComplete A (p : A) (ModuleCat.of A A))
@@ -166,15 +170,16 @@ theorem generator_mem_jacobson (P : OrientedPrism p A) :
     P.generator ∈ Ideal.jacobson (⊥ : Ideal A) :=
   DerivedCompletion.mem_jacobson_bot_of_isModuleComplete A P.generator P.complete_generator
 
-/-- oriented prismの選択生成元はdistinguished。p,dがJacobson根基に属するので、
-Lemma 2.25をp∈(d,φ(d))に当てる。p正則性・完全性は要らない。 -/
+/-- oriented prismの選択生成元はdistinguished（BS 著者版 Lemma 3.1 (2) からの帰結で向き付き prism の場合）。
+  p,dがJacobson根基に属するので、
+BS 著者版 Lemma 2.25をp∈(d,φ(d))に当てる。p正則性・完全性は要らない。 -/
 theorem isDistinguished_generator (P : OrientedPrism p A) :
     P.deltaStructure.IsDistinguished P.generator :=
   P.deltaStructure.isDistinguished_of_p_mem_span P.generator
     P.generator_mem_jacobson P.p_mem_jacobson P.p_mem
 
 /-- δ射が源の生成元を終域のイデアルへ送れば、イデアルの像は終域のイデアル全体。
-Lemma 3.5の単項の場合。 -/
+BS 著者版 Lemma 3.5の単項の場合。 -/
 theorem map_ideal_eq_of_isDeltaHom {B : Type v} [CommRing B]
     (P : OrientedPrism p A) (Q : OrientedPrism p B)
     (f : A →+* B) (hf : P.deltaStructure.IsDeltaHom Q.deltaStructure f)
@@ -187,7 +192,7 @@ end SerrePositivity.BhattScholze
 
 end OrientedPrism
 
-/-! ## oriented prism の射と標準商への誘導（Def 3.2 の射）
+/-! ## oriented prism の射と標準商への誘導（BS 著者版 Definition 3.2 の射）
 
 δ-pair の射を主イデアルの場合に束ねる。選択した生成元そのものの保存は要求せず、
 イデアルの保存を要求する。標準商上の射は Mathlib の quotientMap を再利用する。
@@ -200,7 +205,8 @@ variable {p : ℕ} [Fact p.Prime]
 variable {A : Type u} {B : Type v} {C : Type w} {D : Type t}
 variable [CommRing A] [CommRing B] [CommRing C] [CommRing D]
 
-/-- δ構造とprismイデアルを保存する環射。選択したorientationの厳密な保存は不要。 -/
+/-- δ構造とprismイデアルを保存する環射（BS 著者版 Definition 3.2 の δ 対の圏における向き付き prism 間の射）。
+  選択したorientationの厳密な保存は不要。 -/
 structure Hom (P : OrientedPrism p A) (Q : OrientedPrism p B) extends A →+* B where
   map_delta : P.deltaStructure.IsDeltaHom Q.deltaStructure toRingHom
   ideal_le : P.ideal ≤ Q.ideal.comap toRingHom
@@ -245,7 +251,7 @@ theorem comp_assoc (h : Hom T U) (g : Hom Q T) (f : Hom P Q) :
 theorem map_generator_mem (f : Hom P Q) : f.toRingHom P.generator ∈ Q.ideal :=
   f.ideal_le (Ideal.subset_span (by simp))
 
-/-- prism射ではイデアルの像が終域のイデアル全体。Lemma 3.5の単項の場合（IB = J）。 -/
+/-- prism射ではイデアルの像が終域のイデアル全体（IB = J）（BS 著者版 Lemma 3.5 の像イデアルの等式の向き付きの場合、序論の Proposition 1.5）。 -/
 theorem map_ideal_eq (f : Hom P Q) : P.ideal.map f.toRingHom = Q.ideal :=
   P.map_ideal_eq_of_isDeltaHom Q f.toRingHom f.map_delta f.map_generator_mem
 
@@ -288,7 +294,7 @@ end SerrePositivity.BhattScholze.OrientedPrism
 
 end OrientedPrismHom
 
-/-! ## p を生成元に持つ結晶 oriented prism（Ex 3.3）
+/-! ## p を生成元に持つ結晶 oriented prism（BS 著者版 Example 3.3）
 
 p 正則・古典的 p 進完備な δ 環から実導来条件を持つ結晶 prism を構成し、逆方向も共通比較で証明する。
 -/
@@ -298,7 +304,7 @@ p 正則・古典的 p 進完備な δ 環から実導来条件を持つ結晶 p
 namespace SerrePositivity.BhattScholze.OrientedPrism
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- p正則・p進完備なδ環に標準生成元pを持つ結晶oriented prismを付ける。 -/
+/-- p正則・p進完備なδ環に標準生成元pを持つ結晶oriented prismを付ける（BS 著者版 Example 3.3 の構成、序論の Example 1.3 (1)）。 -/
 def crystalline (D : DeltaStructure p A)
     (hp : Function.Injective (fun x : A ↦ (p : A) * x))
     [IsAdicComplete (Ideal.span {(p : A)}) A] : OrientedPrism p A :=
@@ -318,8 +324,8 @@ def crystalline (D : DeltaStructure p A)
     (hp : Function.Injective (fun x : A ↦ (p : A) * x))
     [IsAdicComplete (Ideal.span {(p : A)}) A] : (crystalline D hp).generator = (p : A) := rfl
 
-/-- 指定δ構造と生成元pを持つ結晶oriented prismの存在条件は、p正則・p進完備性。
-Example 3.3の両方向を実導来完備性と古典的完備性の比較により証明する。 -/
+/-- 指定δ構造と生成元pを持つ結晶oriented prismの存在条件は、p正則・p進完備性（BS 著者版 Example 3.3 の向き付きの場合、序論の Example 1.3 (1)）。
+BS 著者版 Example 3.3の両方向を実導来完備性と古典的完備性の比較により証明する。 -/
 theorem exists_crystalline_iff (D : DeltaStructure p A) :
     (∃ P : OrientedPrism p A, P.deltaStructure = D ∧ P.generator = (p : A)) ↔
       Function.Injective (fun x : A ↦ (p : A) * x) ∧ IsAdicComplete (Ideal.span {(p : A)}) A := by
@@ -336,7 +342,7 @@ end SerrePositivity.BhattScholze.OrientedPrism
 
 end CrystallineOrientedPrism
 
-/-! ## 完全 oriented prism（Lemma 3.8 の単項の場合）
+/-! ## 完全 oriented prism（BS 著者版 Lemma 3.8 の単項の場合）
 
 完全 prism の台環は p 正則なので古典的 p 進完備、商の p 冪ねじれは p で消える（有界性の N = 1 の評価）。
 生成元が distinguished であることは一般の `isDistinguished_generator` にある。
@@ -352,7 +358,7 @@ theorem isAdicComplete_p_of_perfect (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) : IsAdicComplete (Ideal.span {(p : A)}) A :=
   P.isAdicComplete_p_of_regular hP.p_mul_injective
 
-/-- 完全oriented prismの商のp冪ねじれはpで消える。
+/-- 完全oriented prismの商のp冪ねじれはpで消える（BS 著者版 Lemma 3.8 (2) の有界性を与える向き付きの場合）。
 原典のbounded性の具体的な評価N=1。 -/
 theorem quotient_p_pow_torsion_killed_by_p (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) (n : ℕ) (x : A ⧸ P.ideal)

@@ -16,6 +16,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 
 ## 概要
 初期有限 δ 関係商の後続多項式表示、一般の除数の次の δ 関係・有限反復 δ 関係と評価関係の正則性、Frobenius 入力の次の p 除算入力、最初の δ 関係の mod (p,d) 正則性と Koszul 分解、環射に沿う Koszul 分解の移送。
+BS 著者版 Proposition 3.13 の包を明示的な関係式で扱うため、δ 関係の有限反復で正則性を示す。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

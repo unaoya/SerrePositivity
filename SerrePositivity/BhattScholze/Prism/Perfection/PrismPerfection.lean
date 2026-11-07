@@ -13,22 +13,24 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 ## 概要
 完全 δ 環と distinguished 元の導来 (p,d) 完備化 H⁰ は完全 prism で、完全試験 prism への普遍性を持つ。
 任意の δ 環から完全化を挟んだ普遍性と、完全化と PD 完備化の順序の比較。
+完備化と完全化の順序を比較し、BS 著者版 Lemma 3.9 の普遍性に向けた構成を整理する。
 
 ## 方針
-完全化の普遍性（Rem 2.27）と導来完備化の普遍性を合成する。
+完全化の普遍性（BS 著者版 Remark 2.27）と導来完備化の普遍性を合成する。
 
 ## 規約
 原典の形（prism の完全化が普遍な完全 prism）の一つの定理にはまとめていない（ノート BR28）。
 
 ## 使われ方
-Cor 7.3 の構成、Thm 3.10（perfectoid 環の prism 表示）、André。PD 完備化の比較は旧 Andre/RootedExtension から移した。
+BS 著者版 Corollary 7.3 の構成、Theorem 3.10 の perfectoid 環の prism 表示、André。
+PD 完備化の比較は旧 `Andre/RootedExtension` から移した。
 -/
 
 universe u
 
 /-! ## 完全δ環のdistinguished元による実完備化の完全prism（旧 Prism/Perfection/PerfectDeltaPDPrism.lean）
 
-実H⁰の完全δ性からp正則性を供給し、導来/古典的比較とLemma 2.34で
+実H⁰の完全δ性からp正則性を供給し、導来/古典的比較とBS 著者版 Lemma 2.34で
 生成元の正則性を証明する。F5で商のp完備性も供給する。
 -/
 
@@ -106,7 +108,8 @@ namespace SerrePositivity.BhattScholze
 open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A T : Type u} [CommRing A] [CommRing T]
 
-/-- 完全試験prismへdをそのイデアルに送る基底δ射は、実完備化prismへ一意延長する。 -/
+/-- d を完全試験 prism のイデアルに送る基底 δ 射は、実完備化 prism へ一意に延長する
+（BS 著者版 Lemma 3.9 の完全 δ 環と distinguished 元からの完備化の延長）。 -/
 theorem existsUnique_perfectDeltaPDPrismHom
     (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (hd : D.IsDistinguished d)
     (Q : OrientedPrism p T) (hQ : Q.deltaStructure.IsPerfect)
@@ -240,7 +243,7 @@ variable (hp : IsModuleComplete T (p : T) (ModuleCat.of T T))
 variable (hd : IsModuleComplete T (f b) (ModuleCat.of T T))
 include hF hf hp hd
 
-/-- δ完全化の直接PD完備化から、同じ完全なp,f(b)完備δ試験環への一意延長。 -/
+/-- δ完全化の直接PD完備化から、同じ完全なp,f(b)完備δ試験環への一意延長（BS 著者版 Lemma 3.9 の完全化と導来完備化を通る δ 射）。 -/
 theorem existsUnique_deltaPerfectionPDCompletionHom :
     letI := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
     ∃! g : PDCompletionH0 (DeltaPerfection E) p (deltaPerfectionOf E 0 b) →+* T,

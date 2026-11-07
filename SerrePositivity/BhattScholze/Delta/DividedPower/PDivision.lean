@@ -17,9 +17,10 @@ public import Mathlib.RingTheory.Regular.Flat
 
 ## 概要
 p 除算添加環の p 局所化、A[1/p] の中の階乗分母生成部分環と raw δ 評価の像、その δ 安定性・δ 構造・分冪作用、raw 包の像の最小性、正次数の階乗分母の生成イデアルの分冪構造、写像の関手性・一意性、p 正則な分冪標的への延長と普遍性、最初の p 除算関係の正則性、q(y)=0 となる係数射に沿う Witt 解と raw 包からの環射。
+像の δ 構造からの独立性と最初の関係式の Koszul 分解は、BS 著者版 Lemma 2.36 と Remark 2.37 の押し出しの計算に関わる補助である。
 
 ## 方針
-原典の Lemma 2.36 を、任意の p 局所 δ 環と元族について A[1/p] の中の像の形で述べる（生の pushout が p ねじれなしであることは r = 1 で `Andre/Envelope/PDivision` にある）。
+原典の BS 著者版 Lemma 2.36 を、任意の p 局所 δ 環と元族について A[1/p] の中の像の形で述べる（生の pushout が p ねじれなしであることは r = 1 で `Andre/Envelope/PDivision` にある）。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。
@@ -744,7 +745,7 @@ theorem pDivisionFactorialSubring_delta_mem (hlocal : ∀ m : ℕ, ¬p ∣ m →
     exact pDivisionFactorialSubring_coeff_mem y (D.delta a)
   · exact pDivisionFactorialValue_delta_mem hlocal D y s n
 
-/-- p局所性だけで、階乗生成部分環はrawφ除算包の実局所化像に一致する。 -/
+/-- p局所性だけで、階乗生成部分環はrawφ除算包の実局所化像に一致する（BS 著者版 Lemma 2.36 の p 局所 δ 環の A[1/p] 内の像の記述）。 -/
 theorem pDivisionFactorialSubring_eq_raw_range (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (D : DeltaStructure p A) (y : σ → A) :
     pDivisionFactorialSubring p y =

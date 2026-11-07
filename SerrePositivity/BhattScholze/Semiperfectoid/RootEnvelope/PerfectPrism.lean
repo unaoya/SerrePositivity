@@ -16,10 +16,10 @@ public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 
 /-!
-# 完全 prism 上の根の割り算包と Thm 7.4 の別証明
+# 完全 prism 上の根の割り算包と BS 著者版 Theorem 7.4 の別証明
 
 ## 概要
-完全 prism 上の任意根族の冪商の G9 入力と離散性、源の離散性、PD 完備化環・prism 候補・perfectoid 候補の完全忠実平坦性、完全化への入力、候補の生成元商と perfectoid 商、根付き拡大と全射性、Thm 7.4 の別証明。
+完全 prism 上の任意根族の冪商の G9 入力と離散性、源の離散性、PD 完備化環・prism 候補・perfectoid 候補の完全忠実平坦性、完全化への入力、候補の生成元商と perfectoid 商、根付き拡大と全射性、BS 著者版 Theorem 7.4 の別証明。
 
 ## 方針
 André を使わない旧経路を保存したもの（2026-10-25 に主経路は原典どおり André 経由へ切り替えた）。
@@ -964,7 +964,7 @@ end PerfectPrismRootedPerfectoidExtension
 /-! ## B4：根の割り算包による別証明（旧 Semiperfectoid/RootEnvelope/RootEnvelopeSurjectivity.lean）
 
 ## 概要
-perfectoid 環の導来 p 完備な全射商の任意の perfectoid 化は全射（Thm 7.4）の、
+perfectoid 環の導来 p 完備な全射商の任意の perfectoid 化は全射（BS 著者版 Theorem 7.4）の、
 André の補題を使わない別証明。
 
 ## 方針
@@ -988,7 +988,7 @@ namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {R S C : Type u}
 variable [CommRing R] [CommRing S] [CommRing C]
 
-/-- 任意perfectoid環の導来p完備な全射商の、任意の普遍perfectoid化は全射。
+/-- 任意perfectoid環の導来p完備な全射商の、任意の普遍perfectoid化は全射（BS 著者版 Theorem 7.4 の根の包を経由する証明）。
 André の補題を使わず、完全 prism 上の根の割り算包から降下する別証明。 -/
 theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient_of_rootEnvelope
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)

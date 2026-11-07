@@ -11,7 +11,7 @@ public import Mathlib.RingTheory.Localization.Integral
 
 ## 概要
 
-可換環 S が絶対整閉（`IsAbsolutelyIntegrallyClosed`）であるとは、次数が正のモニック多項式がすべて S に根を持つことをいう（Bhatt–Scholze, Thm 7.14 の用語）。任意の元は両立する p 冪根の系を持つ。絶対整閉性は全射像・商・局所化で保たれ、絶対整閉な体は代数閉体で、剰余体も代数閉である。有限エタール代数の剰余体でのファイバーは代数として比較できる。
+可換環 S が絶対整閉（`IsAbsolutelyIntegrallyClosed`）であるとは、次数が正のモニック多項式がすべて S に根を持つことをいう（BS 著者版 Theorem 7.14 の用語）。任意の元は両立する p 冪根の系を持つ。絶対整閉性は全射像・商・局所化で保たれ、絶対整閉な体は代数閉体で、剰余体も代数閉である。有限エタール代数の剰余体でのファイバーは代数として比較できる。
 
 ## 方針
 
@@ -37,11 +37,12 @@ open Polynomial
 namespace SerrePositivity
 
 /-- 環 `S` が絶対整閉であること。次数が正の任意のモニック多項式が `S` に根を持つ。
-BS Thm 7.14 の用語で、André の平坦性補題が与える拡大の性質である。 -/
+BS 著者版 Theorem 7.14 の用語で、André の平坦性補題が与える拡大の性質である。 -/
 def IsAbsolutelyIntegrallyClosed (S : Type u) [CommRing S] : Prop :=
   ∀ P : S[X], P.Monic → 0 < P.natDegree → ∃ x : S, P.IsRoot x
 
-/-- 絶対整閉な環では、任意の元 `a` が両立する `n` 乗根の系を持つ。すなわち
+/-- 絶対整閉な環では、任意の元 `a` が両立する `n` 乗根の系を持つ（BS 著者版 Theorem 7.14 の第二文の根の主張の一般化）。
+  すなわち
 `r 0 = a` かつ各 `k` で `r (k+1) ^ n = r k` を満たす列 `r` がある。ただし `0 < n`。
 各段で `X^n - r k` が次数 `n` のモニック多項式であることから、根を順に選ぶ。 -/
 theorem IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots {S : Type u} [CommRing S]

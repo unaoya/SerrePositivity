@@ -15,6 +15,7 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 
 ## 概要
 完備化後の Frobenius 比較と二重剰余、Frobenius 側の剰余を raw へ戻すこと、p 除算剰余への接続、二元剰余と主 pd 表示、Frobenius 係数変更、有限 mod p 関係商・有限 δ 関係商の正則性の伝播、一元 raw 包の正則対と p 正則性。
+BS 著者版 Remark 7.15 の包に向けて、δ 除算包の完備化後の剰余と正則性を調べる。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -34,7 +35,7 @@ universe u v w
 
 完全 δ 環上の distinguished 元 d に対し、raw 包の実導来完備化を取った後の
 (d,φ⁻¹(d)) 商は、Frobenius 側の実完備化後の (p,d) 商と環同型。
-BS Rem 7.15（著者版 p.62）の Frobenius 比較の剰余への降下。
+BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の剰余への降下。
 
 ## 方針
 
@@ -74,7 +75,7 @@ local notation "F" => deltaDivisionCoefficientPDCompletionEquiv D
 /-- 概要：実完備化同型は (d,φ⁻¹(d)) の係数像を (p,d) の係数像へ送る。
 方針：標準完備化像の係数公式と distinguished 元の二元イデアル計算を使う。
 規約：イデアルは実 H⁰ の環内で取る。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余比較への入力。 -/
 theorem deltaDivisionFrobeniusCompleted_pairIdeal (hd : D.IsDistinguished d) :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -95,7 +96,7 @@ theorem deltaDivisionFrobeniusCompleted_pairIdeal (hd : D.IsDistinguished d) :
 /-- 概要：実完備化後の (d,φ⁻¹(d)) 商は Frobenius 側の (p,d) 商と環同型。
 方針：像イデアルの計算を実完備化同型からの標準商同型へ供給する。
 規約：完備化と剰余を交換せず、完備化済みの両環で商を取る。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化後の Frobenius 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の Frobenius 剰余比較。 -/
 def deltaDivisionFrobeniusCompletedResidueEquiv (hd : D.IsDistinguished d) :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -108,7 +109,7 @@ def deltaDivisionFrobeniusCompletedResidueEquiv (hd : D.IsDistinguished d) :
 /-- 概要：実完備化の剰余同型は元の係数代表元 b を φ(b) へ送る。
 方針：商同型の代表元公式と完備化比較の係数公式を使う。
 規約：元の A 係数射と標準完備化単位を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包比較へ渡す係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包比較へ渡す係数作用。 -/
 theorem deltaDivisionFrobeniusCompletedResidueEquiv_coeff
     (hd : D.IsDistinguished d) (b : A) :
     letI := pdCompletionCommRing L p (jL d)
@@ -132,7 +133,7 @@ end DeltaDivisionFrobeniusCompletedResidue
 
 完全 δ 環上の raw 包の実完備化後の (d,φ⁻¹(d)) 商は、
 Frobenius 側の未完備 raw 包の (p,d) 商と環同型。
-BS Rem 7.15（著者版 p.62）の実完備化後の剰余計算の一段。
+BS 著者版 Remark 7.15（著者版 p.62）の実完備化後の剰余計算の一段。
 
 ## 方針
 
@@ -169,7 +170,7 @@ local notation "uL" => pdCompletionUnit L p (jL d)
 /-- 概要：Frobenius 側の実完備化の第二座標は raw 包の (p,d) イデアルに属す。
 方針：φ(d)=d^p+pδ(d) の各項の所属を係数射で送る。
 規約：d の distinguished 性はこの所属計算には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化座標を殺す商比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化座標を殺す商比較への入力。 -/
 theorem deltaDivisionFrobeniusCompletionCoordinate_mem :
     jM (e d) ∈ Ideal.span {(p : M), jM d} := by
   have hd : d ∈ Ideal.span {(p : A), d} := Ideal.subset_span (by simp)
@@ -186,7 +187,7 @@ theorem deltaDivisionFrobeniusCompletionCoordinate_mem :
 /-- 概要：元の raw 包の実完備化後の剰余は Frobenius 側の未完備 raw 剰余と環同型。
 方針：実完備化後の Frobenius 同型と、両座標を殺す二元商の比較を合成する。
 規約：係数 δ 環は完全、d は distinguished とする。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包へ進む未完備剰余への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包へ進む未完備剰余への接続。 -/
 def deltaDivisionFrobeniusCompletionToRawEquiv (hd : D.IsDistinguished d) :
     letI := pdCompletionCommRing L p (jL d)
     (HL ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+*
@@ -200,7 +201,7 @@ def deltaDivisionFrobeniusCompletionToRawEquiv (hd : D.IsDistinguished d) :
 /-- 概要：実完備化から raw 剰余への比較は係数 b を φ(b) の剰余へ送る。
 方針：完備化後の Frobenius 係数公式と二元剰余比較の単位公式を使う。
 規約：元の係数射と実完備化単位を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包へ接続する係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包へ接続する係数作用。 -/
 theorem deltaDivisionFrobeniusCompletionToRawEquiv_coeff
     (hd : D.IsDistinguished d) (b : A) :
     letI := pdCompletionCommRing L p (jL d)
@@ -221,7 +222,7 @@ end DeltaDivisionFrobeniusCompletionToRaw
 
 完全 δ 環の distinguished d に対し、A{a/d} の実完備化後の
 (d,φ⁻¹(d)) 商を A{φ(a)/p}/(p,d) と環同型にする。
-BS Rem 7.15（著者版 p.62）の具体的 pd 包比較への接続。
+BS 著者版 Remark 7.15（著者版 p.62）の具体的 pd 包比較への接続。
 
 ## 方針
 
@@ -259,7 +260,7 @@ local notation "Qp" => DeltaDivisionPairResidue D (p : A) b d
 /-- 概要：実完備化後の二元剰余は Frobenius 分子の raw p 除算剰余と環同型。
 方針：実完備化から raw への比較に、Witt 単元による分母変換を合成する。
 規約：完全 δ 環、distinguished d、源の p 正則性と ghost 単射性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化から具体的 pd 包への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化から具体的 pd 包への接続。 -/
 def deltaDivisionCompletionPResidueEquiv :
     letI := pdCompletionCommRing L p (jL d)
     (H ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+* Qp := by
@@ -270,7 +271,7 @@ def deltaDivisionCompletionPResidueEquiv :
 /-- 概要：実完備化から raw p 剰余への同型は係数 r を φ(r) の剰余へ送る。
 方針：Frobenius 比較の係数公式と分母変換の係数保存を使う。
 規約：元の標準完備化単位を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 引戻しの係数作用を追う。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しの係数作用を追う。 -/
 theorem deltaDivisionCompletionPResidueEquiv_coeff (r : A) :
     letI := pdCompletionCommRing L p (jL d)
     deltaDivisionCompletionPResidueEquiv D hpA hgA hgL hD d hd a
@@ -291,7 +292,7 @@ end DeltaDivisionCompletionPResidue
 
 完全 δ 環上の一元 raw 包 A{y/d} の実完備化後の (d,φ⁻¹(d)) 商は、
 A/(p,d) 上の y の標準主分冪表示と環同型。
-BS Rem 7.15（著者版 p.62）の具体的な pd 台環の比較。
+BS 著者版 Remark 7.15（著者版 p.62）の具体的な pd 台環の比較。
 
 ## 方針
 
@@ -337,7 +338,7 @@ local notation "bar" => Ideal.Quotient.mk K
 /-- 概要：実完備化後の一元 raw 剰余は係数二元商上の標準主分冪表示と環同型。
 方針：Frobenius と Witt 分母変換による比較に raw-pd 係数商同型を合成する。
 規約：仮定は源と入力の正則性・局所性・完全性であり、比較同型自体は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の剰余の具体的 pd 表示。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の剰余の具体的 pd 表示。 -/
 def deltaDivisionCompletionPrincipalPDEquiv :
     letI := pdCompletionCommRing L p (jL d)
     (H ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+* PrincipalDPPresentation R (bar y) := by
@@ -348,7 +349,7 @@ def deltaDivisionCompletionPrincipalPDEquiv :
 /-- 概要：実完備化の pd 台環比較は係数 r を φ(r) の剰余係数へ送る。
 方針：実完備化から raw への係数公式と raw-pd の係数保存を使う。
 規約：実完備化単位と元の係数射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 引戻しを係数上で照合する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しを係数上で照合する。 -/
 theorem deltaDivisionCompletionPrincipalPDEquiv_coeff (r : A) :
     letI := pdCompletionCommRing L p (jL d)
     deltaDivisionCompletionPrincipalPDEquiv hA hpA D hD hgA hgL d hd y v hv hy
@@ -368,7 +369,7 @@ end DeltaDivisionCompletionPrincipalPD
 ## 概要
 
 有限 δ 関係商の mod p で d が正則なら、次の δ 関係もそこで正則。
-BS Rem 7.15（著者版 p.62）の p 正則性の同時帰納法への次段の入力。
+BS 著者版 Remark 7.15（著者版 p.62）の p 正則性の同時帰納法への次段の入力。
 
 ## 方針
 
@@ -392,7 +393,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：正則な先頭係数を持つ一次多項式は正則。
 方針：最高係数による多項式の非零因子判定を使う。
 規約：係数環が零環の場合も含める。
-使われ方：BS Rem 7.15（著者版 p.62）の次 δ 関係の線形表示。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次 δ 関係の線形表示。 -/
 theorem linearPolynomial_regular {R : Type u} [CommRing R] (c b : R)
     (hc : IsSMulRegular R c) :
     IsSMulRegular (Polynomial R) (Polynomial.C c * Polynomial.X + Polynomial.C b) := by
@@ -413,7 +414,7 @@ theorem linearPolynomial_regular {R : Type u} [CommRing R] (c b : R)
 /-- 概要：指定変数の正則係数一次式は多変数多項式環でも正則。
 方針：指定変数を一変数として分離し、残りの変数の平坦性を使う。
 規約：変数族は任意。
-使われ方：BS Rem 7.15（著者版 p.62）の有限商後の次関係。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限商後の次関係。 -/
 theorem linearMvPolynomial_regular {R : Type u} [CommRing R] {τ : Type v}
     (c b : R) (s : τ) (hc : IsSMulRegular R c) :
     IsSMulRegular (MvPolynomial τ R) (MvPolynomial.C c * MvPolynomial.X s + MvPolynomial.C b) := by
@@ -434,7 +435,7 @@ theorem linearMvPolynomial_regular {R : Type u} [CommRing R] {τ : Type v}
 /-- 概要：正則対 c,b の線形除算関係 cX-b を課しても c は正則。
 方針：mod c で関係が -b になることを使い、正則対の順序交換を適用する。
 規約：c は係数環で正則、b は mod c で正則とする。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の δ 関係商で d を保つ計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の δ 関係商で d を保つ計算。 -/
 theorem linearMvPolynomial_coefficient_regular_quotient
     {R : Type u} [CommRing R] {τ : Type v} (c b : R) (s : τ)
     (hc : IsSMulRegular R c)
@@ -464,7 +465,7 @@ theorem linearMvPolynomial_coefficient_regular_quotient
 /-- 概要：p を殺す通常環射では反復 Frobenius は対応する p 冪。
 方針：φ(r)=r^p+pδ(r) の像を帰納的に計算する。
 規約：終域の δ 構造や非零性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の次関係の最高係数の正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次関係の最高係数の正則性。 -/
 theorem deltaFrobeniusIterate_map_of_prime_zero
     {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {B : Type w} [CommRing B]
     (D : DeltaStructure p A) (q : A →+* B) (hpq : q (p : A) = 0) (d : A) (n : ℕ) :
@@ -488,7 +489,7 @@ local notation "e" => deltaDivisionFiniteModPrimeTailEquiv D d a N
 /-- 概要：全自由環の有限 mod p 商での係数の正則性は初期係数商へ降りる。
 方針：変数分離と係数多項式射の単射性を使う。
 規約：元の A 係数 r を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の最高係数の冪の正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最高係数の冪の正則性。 -/
 theorem deltaDivisionFiniteModPrimeInitial_coefficient_regular (r : A)
     (hr : IsSMulRegular (L₀ ⧸ Ip) (Ideal.Quotient.mk Ip (MvPolynomial.C r))) :
     IsSMulRegular (B₀ ⧸ Jp) (Ideal.Quotient.mk Jp (MvPolynomial.C r)) := by
@@ -509,7 +510,7 @@ theorem deltaDivisionFiniteModPrimeInitial_coefficient_regular (r : A)
 /-- 概要：mod p の有限関係商で d が正則なら次の δ 関係も正則。
 方針：初期商の先頭係数を d の正冪と同定し、後続変数の一次式へ適用する。
 規約：帰納法の入力である d の mod p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の有限 raw 関係商の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限 raw 関係商の p 正則性。 -/
 theorem deltaDivisionFiniteModPrime_next_regular
     (hd : IsSMulRegular (L₀ ⧸ Ip) (Ideal.Quotient.mk Ip (MvPolynomial.C d))) (s : σ) :
     IsSMulRegular (L₀ ⧸ Ip)
@@ -544,7 +545,7 @@ end DeltaDivisionFiniteModPrimeRegularity
 
 有限 raw 関係商の mod p、さらに mod d を、元の自由環の対応する一重商へ移す。
 一元族で次関係を課す商も次の有限段と同定する。
-BS Rem 7.15（著者版 p.62）の正則性の帰納法に用いる。
+BS 著者版 Remark 7.15（著者版 p.62）の正則性の帰納法に用いる。
 
 ## 方針
 
@@ -568,7 +569,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：イデアル商に主関係を追加する二重商は和イデアル商と環同型。
 方針：生成イデアルを像イデアルに書き換え第三同型定理を使う。
 規約：元の代表元を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の有限関係追加と係数商。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限関係追加と係数商。 -/
 def idealThenPrincipalQuotEquiv {R : Type u} [CommRing R] (I : Ideal R) (r : R) :
     ((R ⧸ I) ⧸ Ideal.span {Ideal.Quotient.mk I r}) ≃+* R ⧸ (I ⊔ Ideal.span {r}) :=
   (Ideal.quotEquivOfEq (show Ideal.span {Ideal.Quotient.mk I r} =
@@ -578,7 +579,7 @@ def idealThenPrincipalQuotEquiv {R : Type u} [CommRing R] (I : Ideal R) (r : R) 
 /-- 概要：主関係を追加する商同型は元の代表元を保つ。
 方針：第三同型定理の代表元公式を使う。
 規約：任意のイデアルと関係元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の有限段の係数照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限段の係数照合。 -/
 theorem idealThenPrincipalQuotEquiv_mk {R : Type u} [CommRing R]
     (I : Ideal R) (r t : R) :
     idealThenPrincipalQuotEquiv I r (Ideal.Quotient.mk _ (Ideal.Quotient.mk I t)) =
@@ -599,7 +600,7 @@ local notation "Ipd" => Ideal.span {(p : L₀), MvPolynomial.C d} ⊔ I
 /-- 概要：有限関係商の通常 mod p は元の自由環の (p)+I_N 商と環同型。
 方針：自然数の像を照合して主関係追加の同型を使う。
 規約：一重商は既存の有限 mod p 分離と同じイデアル順序にする。
-使われ方：BS Rem 7.15（著者版 p.62）の次関係正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次関係正則性の移送。 -/
 def deltaDivisionFiniteStagePrimeQuotientEquiv : (B ⧸ Ideal.span {(p : B)}) ≃+* L₀ ⧸ Ip :=
   (Ideal.quotEquivOfEq (show Ideal.span {(p : B)} = Ideal.span {q (p : L₀)} by
     rw [map_natCast])).trans
@@ -608,7 +609,7 @@ def deltaDivisionFiniteStagePrimeQuotientEquiv : (B ⧸ Ideal.span {(p : B)}) �
 /-- 概要：有限段の mod p 比較は元の自由環の代表元を保つ。
 方針：主関係追加同型の公式を使う。
 規約：全ての自由環元 t を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数と次関係の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数と次関係の照合。 -/
 theorem deltaDivisionFiniteStagePrimeQuotientEquiv_mk (t : L₀) :
     deltaDivisionFiniteStagePrimeQuotientEquiv D d a N (qp (q t)) = Ideal.Quotient.mk Ip t := by
   rw [deltaDivisionFiniteStagePrimeQuotientEquiv, RingEquiv.trans_apply,
@@ -620,7 +621,7 @@ local notation "Ep" => deltaDivisionFiniteStagePrimeQuotientEquiv D d a N
 /-- 概要：有限関係商の mod p,d 二重剰余は既存の一重 mod(p,d) 商と環同型。
 方針：mod p 比較を d の商へ降ろし、和イデアルを整理する。
 規約：Witt 正規化と同じ一重イデアル商を対象にする。
-使われ方：BS Rem 7.15（著者版 p.62）の次関係の mod d 正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次関係の mod d 正則性の移送。 -/
 def deltaDivisionFiniteStagePairQuotientEquiv :
     ((B ⧸ Ideal.span {(p : B)}) ⧸ Ideal.span {qp (q (MvPolynomial.C d))}) ≃+* L₀ ⧸ Ipd :=
   ((Ideal.quotientEquiv _ _ Ep (show
@@ -636,7 +637,7 @@ def deltaDivisionFiniteStagePairQuotientEquiv :
 /-- 概要：有限段の mod p,d 比較は元の自由環の代表元を保つ。
 方針：商への降下と主関係追加の二つの代表元公式を使う。
 規約：三つの実商射をそのまま用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の実 δ 関係の正則性の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 δ 関係の正則性の照合。 -/
 theorem deltaDivisionFiniteStagePairQuotientEquiv_mk (t : L₀) :
     deltaDivisionFiniteStagePairQuotientEquiv D d a N (Ideal.Quotient.mk _ (qp (q t))) =
       Ideal.Quotient.mk Ipd t := by
@@ -650,7 +651,7 @@ local notation "g" => deltaDivisionIteratedRelation D d a (default : σ)
 /-- 概要：一元族の深さ零の関係イデアルは初期関係の主イデアル。
 方針：唯一の族添字と唯一の深さ零添字を照合する。
 規約：分母 d と分子族 a は任意。
-使われ方：BS Rem 7.15（著者版 p.62）の正則性帰納法の初期段。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則性帰納法の初期段。 -/
 theorem deltaDivisionUnaryFiniteIdeal_zero :
     deltaDivisionFiniteRelationIdeal D d a 0 = Ideal.span {g 0} := by
   unfold deltaDivisionFiniteRelationIdeal
@@ -669,7 +670,7 @@ theorem deltaDivisionUnaryFiniteIdeal_zero :
 /-- 概要：一元族の次有限段は一つの次 δ 関係を追加して得る。
 方針：既存の族の和イデアル式で唯一の添字を照合する。
 規約：任意の深さ N。
-使われ方：BS Rem 7.15（著者版 p.62）の正則性の次段への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則性の次段への移送。 -/
 theorem deltaDivisionUnaryFiniteIdeal_succ :
     deltaDivisionFiniteRelationIdeal D d a (N + 1) = I ⊔ Ideal.span {g (N + 1)} := by
   rw [deltaDivisionFiniteRelationIdeal_succ]
@@ -687,7 +688,7 @@ theorem deltaDivisionUnaryFiniteIdeal_succ :
 /-- 概要：一元の次関係商は元の次有限段と環同型。
 方針：主関係追加の同型と次段イデアルの等式を合成する。
 規約：完備化を行わない通常商の同型。
-使われ方：BS Rem 7.15（著者版 p.62）の正則対の帰納法。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則対の帰納法。 -/
 def deltaDivisionUnaryFiniteStepEquiv :
     (B ⧸ Ideal.span {q (g (N + 1))}) ≃+*
       L₀ ⧸ deltaDivisionFiniteRelationIdeal D d a (N + 1) :=
@@ -697,7 +698,7 @@ def deltaDivisionUnaryFiniteStepEquiv :
 /-- 概要：次有限段の比較は元の自由環の代表元を保つ。
 方針：主関係追加同型の代表元公式を使う。
 規約：元の自由環の全ての元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数正則性の移送。 -/
 theorem deltaDivisionUnaryFiniteStepEquiv_mk (t : L₀) :
     deltaDivisionUnaryFiniteStepEquiv D d a N (Ideal.Quotient.mk _ (q t)) =
       Ideal.Quotient.mk _ t := by
@@ -713,7 +714,7 @@ end DeltaDivisionFinitePrimeQuotients
 ## 概要
 
 一元 raw 包の有限段で p が正則、mod p で d が正則なら、次段でも両条件が成り立つ。
-BS Rem 7.15（著者版 p.62）の源の p 正則性の帰納法。
+BS 著者版 Remark 7.15（著者版 p.62）の源の p 正則性の帰納法。
 
 ## 方針
 
@@ -758,7 +759,7 @@ include hpA hgL hv in
 /-- 概要：有限段の次関係は mod p,d の通常二重商上で正則。
 方針：最初の δ 関係とそれ以降の既存 Witt 正則性を場合分けして移す。
 規約：前段の p,d 正則性はこの mod(p,d) 計算には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の正則対の次段への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則対の次段への移送。 -/
 theorem deltaDivisionUnaryFinite_next_mod_pair_regular :
     IsSMulRegular ((B ⧸ Ideal.span {(p : B)}) ⧸ Ideal.span {qp dN})
       (Ideal.Quotient.mk (Ideal.span {qp dN}) (qp gN)) := by
@@ -778,7 +779,7 @@ theorem deltaDivisionUnaryFinite_next_mod_pair_regular :
 /-- 概要：d が有限段の mod p で正則なら次関係も同じ mod p で正則。
 方針：一重商で証明した次関係の正則性を標準 mod p 商同型で戻す。
 規約：d の正則性を次段帰納法の入力とする。
-使われ方：BS Rem 7.15（著者版 p.62）の p 正則性の保存。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 正則性の保存。 -/
 theorem deltaDivisionUnaryFinite_next_mod_prime_regular
     (hd : IsSMulRegular (B ⧸ Ideal.span {(p : B)}) (qp dN)) :
     IsSMulRegular (B ⧸ Ideal.span {(p : B)}) (qp gN) := by
@@ -794,7 +795,7 @@ include hpA hgL hv in
 /-- 概要：一元有限関係商の p 正則性と mod p の d 正則性は次段へ保存される。
 方針：次関係の mod p と mod(p,d) 正則性で三元の正則性保存を使う。
 規約：前段の二つの正則性は明示仮定。
-使われ方：BS Rem 7.15（著者版 p.62）の全有限段への同時帰納法。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全有限段への同時帰納法。 -/
 theorem deltaDivisionUnaryFinite_step_regular
     (hpN : IsSMulRegular B (p : B))
     (hdN : IsSMulRegular (B ⧸ Ideal.span {(p : B)}) (qp dN)) :
@@ -844,7 +845,7 @@ end DeltaDivisionFiniteRegularStep
 
 完全 δ 環の distinguished 元 d に対し、raw 包の (d,φ⁻¹(d)) 商は
 Frobenius で移した raw 包の (p,d) 商と環同型。
-BS Rem 7.15（著者版 p.62）の二重剰余の代数的比較。
+BS 著者版 Remark 7.15（著者版 p.62）の二重剰余の代数的比較。
 
 ## 方針
 
@@ -877,7 +878,7 @@ local notation "F" => deltaDivisionCoefficientAutEquiv D e he d a
 /-- 概要：raw 係数自己同型は任意の二元係数イデアルを対応する像へ送る。
 方針：span の像を二つの係数元で計算する。
 規約：二元は除算分母と一致する必要はない。
-使われ方：BS Rem 7.15（著者版 p.62）の二重剰余への降下。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二重剰余への降下。 -/
 theorem deltaDivisionCoefficientAut_pairIdeal (r s : A) :
     (Ideal.span {jL r, jL s}).map (F).toRingHom = Ideal.span {jM (e r), jM (e s)} := by
   rw [Ideal.map_span, Set.image_pair]
@@ -887,7 +888,7 @@ theorem deltaDivisionCoefficientAut_pairIdeal (r s : A) :
 /-- 概要：raw 係数自己同型は二元係数イデアルの実商の同型を誘導する。
 方針：像イデアルの計算を標準商同型へ供給する。
 規約：両側とも実際の span の商を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余台環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余台環の比較。 -/
 def deltaDivisionCoefficientAutResidueEquiv (r s : A) :
     (L ⧸ Ideal.span {jL r, jL s}) ≃+* (M ⧸ Ideal.span {jM (e r), jM (e s)}) :=
   Ideal.quotientEquiv _ _ F (deltaDivisionCoefficientAut_pairIdeal D e he d a r s).symm
@@ -895,7 +896,7 @@ def deltaDivisionCoefficientAutResidueEquiv (r s : A) :
 /-- 概要：raw 剰余比較は代表元を元の raw 同型で送る。
 方針：商同型の標準代表元公式を使う。
 規約：raw 包の任意の元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数・除算変数の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数・除算変数の照合。 -/
 theorem deltaDivisionCoefficientAutResidueEquiv_mk (r s : A) (t : L) :
     deltaDivisionCoefficientAutResidueEquiv D e he d a r s (Ideal.Quotient.mk _ t) =
       Ideal.Quotient.mk _ (F t) := rfl
@@ -909,7 +910,7 @@ local notation "jφ" => deltaAdjoinDivisionMap D (φ d) (fun s => φ (a s))
 /-- 概要：Frobenius で移した二元イデアルは (p,d) の係数像。
 方針：φ(φ⁻¹(d))=d と distinguished 元の二元イデアル計算を使う。
 規約：等式は Frobenius 側の raw 包内で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の二重剰余の標準化。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二重剰余の標準化。 -/
 theorem deltaDivisionFrobenius_pairIdeal (hd : D.IsDistinguished d) :
     Ideal.span {jφ (φ d), jφ (φ x)} = Ideal.span {(p : Mφ), jφ d} := by
   have hx : φ x = d := (D.frobeniusEquiv hD).apply_symm_apply d
@@ -920,7 +921,7 @@ theorem deltaDivisionFrobenius_pairIdeal (hd : D.IsDistinguished d) :
 /-- 概要：raw 包の (d,φ⁻¹(d)) 商は Frobenius 側の (p,d) 商と環同型。
 方針：Frobenius の raw 同型を商へ降ろし、像の二元イデアルを標準化する。
 規約：d は distinguished、係数 δ 環は完全とする。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化前の二重剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化前の二重剰余比較。 -/
 def deltaDivisionFrobeniusResidueEquiv (hd : D.IsDistinguished d) :
     (L ⧸ Ideal.span {jL d, jL x}) ≃+* (Mφ ⧸ Ideal.span {(p : Mφ), jφ d}) :=
   (deltaDivisionCoefficientAutResidueEquiv D (D.frobeniusEquiv hD)
@@ -930,7 +931,7 @@ def deltaDivisionFrobeniusResidueEquiv (hd : D.IsDistinguished d) :
 /-- 概要：二重剰余比較は元の係数 b を Frobenius 係数 φ(b) へ送る。
 方針：raw 係数公式と二つの商同型の代表元公式を使う。
 規約：同型は元の A 係数に関して Frobenius 半線形。
-使われ方：BS Rem 7.15（著者版 p.62）の残余係数作用の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の残余係数作用の追跡。 -/
 theorem deltaDivisionFrobeniusResidueEquiv_coeff (hd : D.IsDistinguished d) (b : A) :
     deltaDivisionFrobeniusResidueEquiv D d a hD hd (Ideal.Quotient.mk _ (jL b)) =
       Ideal.Quotient.mk _ (jφ (φ b)) := by
@@ -941,7 +942,7 @@ theorem deltaDivisionFrobeniusResidueEquiv_coeff (hd : D.IsDistinguished d) (b :
 /-- 概要：二重剰余比較は初期除算変数の添字を保つ。
 方針：raw 変数公式と商代表元公式を合成する。
 規約：任意の入力族を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の根関係の残余座標の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根関係の残余座標の追跡。 -/
 theorem deltaDivisionFrobeniusResidueEquiv_variable (hd : D.IsDistinguished d) (s : σ) :
     deltaDivisionFrobeniusResidueEquiv D d a hD hd
       (Ideal.Quotient.mk _ (deltaAdjoinDivisionVariable D d a s)) =
@@ -953,7 +954,7 @@ theorem deltaDivisionFrobeniusResidueEquiv_variable (hd : D.IsDistinguished d) (
 /-- 概要：raw 包の Hodge–Tate 型商の ϖ 型商を、Frobenius 側の同じ順序の p 商へ移す。
 方針：二重主イデアル商を二元商にし、Frobenius 比較後に順序を戻す。
 規約：ここでの商は未完備 raw 包の通常商。
-使われ方：BS Rem 7.15（著者版 p.62）の T/ϖ に対応する代数的剰余。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の T/ϖ に対応する代数的剰余。 -/
 def deltaDivisionFrobeniusDoubleResidueEquiv (hd : D.IsDistinguished d) :
     ((L ⧸ Ideal.span {jL d}) ⧸
       Ideal.span {Ideal.Quotient.mk (Ideal.span {jL d}) (jL x)}) ≃+*
@@ -969,7 +970,7 @@ def deltaDivisionFrobeniusDoubleResidueEquiv (hd : D.IsDistinguished d) :
 /-- 概要：raw 二重商の比較は係数代表元 b を φ(b) へ送る。
 方針：二元商への変換と Frobenius 剰余比較の係数公式を使う。
 規約：二つの商の順序を保って公式を述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の T/ϖ の係数作用の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の T/ϖ の係数作用の追跡。 -/
 theorem deltaDivisionFrobeniusDoubleResidueEquiv_coeff
     (hd : D.IsDistinguished d) (b : A) :
     deltaDivisionFrobeniusDoubleResidueEquiv D d a hD hd
@@ -994,7 +995,7 @@ end DeltaDivisionFrobeniusResidue
 
 係数環で p が正則、mod p で d が正則、mod(p,d) で分子が正則なら、
 最初の線形除算関係を課した有限段でも p と mod p の d は正則。
-BS Rem 7.15（著者版 p.62）の有限段帰納法の初期値。
+BS 著者版 Remark 7.15（著者版 p.62）の有限段帰納法の初期値。
 
 ## 方針
 
@@ -1024,7 +1025,7 @@ local notation "qp" => Ideal.Quotient.mk (Ideal.span {(p : L₀)})
 /-- 概要：自由 δ 環の mod p は mod p 係数上の同じ自由多項式環。
 方針：標準の多項式係数商同型で自然数の像を照合する。
 規約：δ 構造を係数商に入れない通常環同型。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の線形関係の計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の線形関係の計算。 -/
 def relativeFreeModPrimePolynomialEquiv :
     (L₀ ⧸ Ideal.span {(p : L₀)}) ≃+* MvPolynomial (σ × ℕ) R₀ :=
   (Ideal.quotEquivOfEq (show Ideal.span {(p : L₀)} =
@@ -1037,7 +1038,7 @@ omit [Fact p.Prime] in
 /-- 概要：自由環の mod p 同型は各多項式の係数だけを還元する。
 方針：標準多項式商比較の合成公式を使う。
 規約：全ての自由環元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数・初期関係の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数・初期関係の照合。 -/
 theorem relativeFreeModPrimePolynomialEquiv_mk (t : L₀) :
     relativeFreeModPrimePolynomialEquiv (p := p) (A := A) (σ := σ) (qp t) =
       MvPolynomial.map bar t := by
@@ -1048,7 +1049,7 @@ theorem relativeFreeModPrimePolynomialEquiv_mk (t : L₀) :
 /-- 概要：最初の δ 関係の mod p 像は還元した係数による同じ線形関係。
 方針：δ 反復の深さ零の定義と係数変更公式を使う。
 規約：添字 s の初期変数を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の初期有限段の正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期有限段の正則性。 -/
 theorem relativeFreeModPrimePolynomialEquiv_first (s : σ) :
     relativeFreeModPrimePolynomialEquiv (p := p) (A := A) (σ := σ)
       (qp (deltaDivisionIteratedRelation D d a s 0)) =
@@ -1069,7 +1070,7 @@ local notation "F" => relativeFreeModPrimePolynomialEquiv (p := p) (A := A) (σ 
 /-- 概要：最初の関係商の mod p は還元係数上の線形関係商と環同型。
 方針：二重商を交換し、自由環の mod p 同型を線形関係の商へ降ろす。
 規約：最初の実 δ 関係だけを課す。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の商での d 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最初の商での d 正則性。 -/
 def deltaDivisionUnaryFirstPrimeEquiv :
     (B ⧸ Ideal.span {(p : B)}) ≃+* (MvPolynomial (σ × ℕ) R₀ ⧸ Ideal.span {G}) :=
   ((Ideal.quotEquivOfEq (show Ideal.span {(p : B)} = Ideal.span {qg (p : L₀)} by
@@ -1083,7 +1084,7 @@ def deltaDivisionUnaryFirstPrimeEquiv :
 /-- 概要：最初の関係の mod p 比較は元の係数を還元した係数へ送る。
 方針：二重商交換と自由環の mod p の代表元公式を使う。
 規約：元の A の全係数を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の初期係数正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期係数正則性の移送。 -/
 theorem deltaDivisionUnaryFirstPrimeEquiv_coeff (r : A) :
     deltaDivisionUnaryFirstPrimeEquiv D d a
       (Ideal.Quotient.mk _ (qg (MvPolynomial.C r))) =
@@ -1095,7 +1096,7 @@ theorem deltaDivisionUnaryFirstPrimeEquiv_coeff (r : A) :
 /-- 概要：最初の実線形 δ 関係は mod p の自由環上で正則。
 方針：係数 d の正則性から一次式の正則性を得て戻す。
 規約：分子の正則性はこの非零因子判定には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の初期関係商の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期関係商の p 正則性。 -/
 theorem deltaDivisionUnaryFirst_mod_prime_regular
     (hdA : IsSMulRegular R₀ (bar d)) :
     IsSMulRegular (L₀ ⧸ Ideal.span {(p : L₀)}) (qp g) := by
@@ -1107,7 +1108,7 @@ theorem deltaDivisionUnaryFirst_mod_prime_regular
 /-- 概要：最初の一元有限 δ 関係商は p 正則で、その mod p で d も正則。
 方針：p と初期関係の順序交換、還元係数上の線形関係商の係数正則性を使う。
 規約：係数環の正則対と分子の mod(p,d) 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の全有限段の同時帰納法の初期値。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全有限段の同時帰納法の初期値。 -/
 theorem deltaDivisionUnaryFirst_regular
     (hpA : IsSMulRegular A (p : A))
     (hdA : IsSMulRegular R₀ (bar d))
@@ -1138,7 +1139,7 @@ end DeltaDivisionUnaryFiniteInitialRegular
 
 係数環の p,d と mod(p,d) の分子が正則で d が distinguished なら、
 全有限関係商および一元 raw δ 除算包は p 正則。
-BS Rem 7.15（著者版 p.62）の無限根モニック入力の p 正則性への一般計算。
+BS 著者版 Remark 7.15（著者版 p.62）の無限根モニック入力の p 正則性への一般計算。
 
 ## 方針
 
@@ -1180,7 +1181,7 @@ include hpA hdA haA hgL hv
 /-- 概要：全有限 δ 関係商で p と mod p の d は正則。
 方針：初期線形関係商から、Witt 正則性による次段保存を帰納する。
 規約：分子族は一元添字型上の任意の族。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 全体の p 飽和性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 全体の p 飽和性への入力。 -/
 theorem deltaDivisionUnaryFinite_all_regular (N : ℕ) :
     let B := L₀ ⧸ I N
     IsSMulRegular B (p : B) ∧
@@ -1201,7 +1202,7 @@ theorem deltaDivisionUnaryFinite_all_regular (N : ℕ) :
 /-- 概要：実 δ 関係イデアルは p で飽和している。
 方針：有限関係イデアルの有向上限から一段へ降り、そこで p を消去する。
 規約：全 δ 閉包を有限段で近似する。
-使われ方：BS Rem 7.15（著者版 p.62）の一元 raw 包の新しい p ねじれの排除。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元 raw 包の新しい p ねじれの排除。 -/
 theorem deltaDivisionUnaryRaw_relationIdeal_p_saturated (f : L₀) (hf : (p : L₀) * f ∈ J) :
     f ∈ J := by
   rw [deltaDivision_deltaClosure_eq_iSup_finiteRelations] at hf ⊢
@@ -1218,7 +1219,7 @@ theorem deltaDivisionUnaryRaw_relationIdeal_p_saturated (f : L₀) (hf : (p : L�
 /-- 概要：正則対と正則分子を持つ一元 raw δ 除算包そのものは p 正則。
 方針：係数商の p 飽和性を代表元へ適用する。
 規約：ねじれを除く新しい商へ取り替えない。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の前の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の前の p 正則性。 -/
 theorem deltaDivisionUnaryRaw_p_mul_injective :
     Function.Injective (fun r : Raw => (p : Raw) * r) := by
   let q := Ideal.Quotient.mk J
@@ -1241,7 +1242,7 @@ end DeltaDivisionUnaryRawRegular
 ## 概要
 
 有限 δ 関係商の mod p の分母正則性を、実 δ 閉包の商へ移す。
-BS Rem 7.15（著者版 p.62）の完備化前の正則対を提供する。
+BS 著者版 Remark 7.15（著者版 p.62）の完備化前の正則対を提供する。
 
 ## 方針
 
@@ -1273,7 +1274,7 @@ local notation "K" => Ideal.span {(p : L₀)} ⊔ J
 /-- 概要：raw δ 包の通常 mod p は元の自由環の (p)+δ 閉包商と同型。
 方針：主関係追加の第三同型定理を使う。
 規約：正則性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の有限段から raw 包への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限段から raw 包への比較。 -/
 def deltaDivisionRawPrimeQuotientEquiv : (Raw ⧸ Ideal.span {(p : Raw)}) ≃+* L₀ ⧸ K :=
   (Ideal.quotEquivOfEq (show Ideal.span {(p : Raw)} =
     Ideal.span {Ideal.Quotient.mk J (p : L₀)} by rw [map_natCast])).trans
@@ -1282,7 +1283,7 @@ def deltaDivisionRawPrimeQuotientEquiv : (Raw ⧸ Ideal.span {(p : Raw)}) ≃+* 
 /-- 概要：raw 包の mod p 比較は自由環の代表元を保つ。
 方針：主関係追加の代表元公式を使う。
 規約：全ての自由環元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正則性の移送。 -/
 theorem deltaDivisionRawPrimeQuotientEquiv_mk (t : L₀) :
     deltaDivisionRawPrimeQuotientEquiv D d a
       (Ideal.Quotient.mk (Ideal.span {(p : Raw)}) (Ideal.Quotient.mk J t)) =
@@ -1306,7 +1307,7 @@ include hpA hdA haA hgL hv
 /-- 概要：実 δ 関係イデアルに p を加えたイデアルは分母で飽和している。
 方針：和と有向上限を交換し、一有限段の mod p の分母正則性で消去する。
 規約：分母の係数像を元の自由環で扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 包の mod p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 包の mod p 正則性。 -/
 theorem deltaDivisionUnaryRaw_primeIdeal_d_saturated (t : L₀)
     (ht : MvPolynomial.C d * t ∈ K) : t ∈ K := by
   have hK : K = ⨆ N, Ideal.span {(p : L₀)} ⊔ I N := by
@@ -1332,7 +1333,7 @@ theorem deltaDivisionUnaryRaw_primeIdeal_d_saturated (t : L₀)
 /-- 概要：元の一元 raw δ 包の mod p で分母は正則。
 方針：和イデアルの分母飽和性を代表元に適用し、標準比較で実 mod p へ戻す。
 規約：完備性を要求せず、追加のねじれ除去商も作らない。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化前の正則対の第二成分。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化前の正則対の第二成分。 -/
 theorem deltaDivisionUnaryRaw_mod_prime_d_regular :
     IsSMulRegular (Raw ⧸ Ideal.span {(p : Raw)})
       (Ideal.Quotient.mk (Ideal.span {(p : Raw)}) (Ideal.Quotient.mk J (MvPolynomial.C d))) := by

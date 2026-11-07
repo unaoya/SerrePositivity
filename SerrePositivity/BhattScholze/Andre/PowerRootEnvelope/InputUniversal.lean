@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 
 ## 概要
 完全試験 prism の剰余根データによる普遍性、方程式入力・完備入力から H/d への標準射とそれを保つ普遍性、源 prism の入力作用を保つ普遍性、入力作用を持つ対象の圏での初期性（原典の Δ_S が envelope であること）。
+BS 著者版 Proposition 3.13 の普遍性を、Remark 7.15 のモニック根の入力で扱う。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -27,7 +28,7 @@ universe u
 ## 概要
 
 通常の方程式商 (A/d)[Y^(1/p^∞)]/(f) を、元の実完備化の分母商 H/d へ送る。
-全根変数と係数を自然な標準像へ写す。BS Rem 7.15（著者版 p.62）の入力作用。
+全根変数と係数を自然な標準像へ写す。BS 著者版 Remark 7.15（著者版 p.62）の入力作用。
 
 ## 方針
 
@@ -77,7 +78,7 @@ local notation "φ₀" => powerRootPrismMonicHodgeTateBaseMap W hW f
 /-- 概要：H/d 内の全ての標準無限根変数の像。
 方針：元の根変数を raw 包・実完備化・分母商へ順に写す。
 規約：全ての段 n を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の入力の標準根列。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力の標準根列。 -/
 def powerRootPrismMonicHodgeTateRoots (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     T := by
@@ -87,7 +88,7 @@ def powerRootPrismMonicHodgeTateRoots (n : ℕ) :
 /-- 概要：H/d の標準根列は p 冪に関して互換。
 方針：無限根環の関係式を三つの標準環射で写す。
 規約：正則性の追加仮定は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の入力環の標準作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力環の標準作用。 -/
 theorem powerRootPrismMonicHodgeTateRoots_pow (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicHodgeTateRoots W hW f (n + 1) ^ p =
@@ -99,7 +100,7 @@ theorem powerRootPrismMonicHodgeTateRoots_pow (n : ℕ) :
 /-- 概要：標準根列の第零根は元の入力多項式の係数商像を消す。
 方針：既存の raw 関係による第零根の評価定理を使う。
 規約：モニック性・正次数・p 正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の方程式商の降下条件。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の方程式商の降下条件。 -/
 theorem powerRootPrismMonicHodgeTateRoots_eval :
     let := pdCompletionCommRing L p (jL dP)
     (fR).eval₂ φ₀ (powerRootPrismMonicHodgeTateRoots W hW f 0) = 0 :=
@@ -108,7 +109,7 @@ theorem powerRootPrismMonicHodgeTateRoots_eval :
 /-- 概要：通常の方程式商から元の H/d への標準入力射。
 方針：自然な係数射と標準互換根列を方程式商の普遍性に渡す。
 規約：標的の通常の p 完備性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の未完備入力作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の未完備入力作用。 -/
 def powerRootPrismMonicEquationInputMap :
     let := pdCompletionCommRing L p (jL dP)
     S₀ →+* T := by
@@ -121,7 +122,7 @@ def powerRootPrismMonicEquationInputMap :
 /-- 概要：標準入力射は係数射と可換。
 方針：方程式商の一意存在の係数条件を取り出す。
 規約：元の prism 商 R の自然な作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の基底を保つ入力作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底を保つ入力作用。 -/
 theorem powerRootPrismMonicEquationInputMap_coeff :
     let := pdCompletionCommRing L p (jL dP)
     (powerRootPrismMonicEquationInputMap W hW f).comp
@@ -135,7 +136,7 @@ theorem powerRootPrismMonicEquationInputMap_coeff :
 /-- 概要：標準入力射は全ての入力根を元の H/d の標準像へ送る。
 方針：方程式商の一意存在の根条件を取り出す。
 規約：全ての段 n に対する実際の入力像を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の入力射と試験射の可換性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力射と試験射の可換性。 -/
 theorem powerRootPrismMonicEquationInputMap_root (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicEquationInputMap W hW f (powerRootEquationQuotientRoot p hp fR n) =
@@ -155,7 +156,7 @@ end PowerRootPrismMonicStandardEquationInput
 ## 概要
 
 H/d の通常の p 完備性を明示仮定にすると、原典の順序の完備入力環から H/d への
-係数と全根を保つ標準射を構成できる。BS Rem 7.15（著者版 p.62）の入力作用。
+係数と全根を保つ標準射を構成できる。BS 著者版 Remark 7.15（著者版 p.62）の入力作用。
 
 ## 方針
 
@@ -217,7 +218,7 @@ variable (hf : f.Monic)
 /-- 概要：H/d の通常の p 完備性から、原典の完備入力環の標準作用を構成する。
 方針：通常の入力射を完備化へ延長し、モニック交換同型と合成する。
 規約：hT は証明済みとみなさず明示引数のまま保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の S→H/d の条件付き接続点。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の S→H/d の条件付き接続点。 -/
 def powerRootPrismMonicOriginalInputMap :
     let := pdCompletionCommRing L p (jL dP)
     (hT : IsAdicComplete (Ideal.span {(p : T)}) T) → SI →+* T := by
@@ -231,7 +232,7 @@ def powerRootPrismMonicOriginalInputMap :
 /-- 概要：完備入力の標準作用は元の無限根多項式の像を通常の入力射へ戻す。
 方針：交換同型の係数公式と完備化の延長条件を使う。
 規約：元の無限根多項式の全ての元で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力作用の根・係数の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力作用の根・係数の追跡。 -/
 theorem powerRootPrismMonicOriginalInputMap_poly (x : PR) :
     let := pdCompletionCommRing L p (jL dP)
     ∀ hT : IsAdicComplete (Ideal.span {(p : T)}) T,
@@ -250,7 +251,7 @@ theorem powerRootPrismMonicOriginalInputMap_poly (x : PR) :
 /-- 概要：原典の完備入力環からの標準射は元の R 係数射と可換。
 方針：多項式入力公式と通常の入力射の係数公式を合成する。
 規約：自然な係数作用を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の基底上の完備入力図式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底上の完備入力図式。 -/
 theorem powerRootPrismMonicOriginalInputMap_coeff :
     let := pdCompletionCommRing L p (jL dP)
     ∀ hT : IsAdicComplete (Ideal.span {(p : T)}) T,
@@ -268,7 +269,7 @@ theorem powerRootPrismMonicOriginalInputMap_coeff :
 /-- 概要：原典の完備入力環の全根は H/d の元の標準根へ写る。
 方針：多項式入力公式を各根変数に適用し、通常の入力射の根公式を使う。
 規約：全ての段 n を保持し、hT の解消は別工程。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力図式を全根で確認する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力図式を全根で確認する。 -/
 theorem powerRootPrismMonicOriginalInputMap_root (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     ∀ hT : IsAdicComplete (Ideal.span {(p : T)}) T,
@@ -290,7 +291,7 @@ end PowerRootPrismMonicStandardCompletedInput
 
 基底を保つ H の環射は H/d から試験 prism の商への射を誘導する。
 通常の入力射の可換性は全根の保存と同値であり、それを保つ δ 射は一意に存在する。
-BS Rem 7.15（著者版 p.62）の入力作用を含む比較への接続。
+BS 著者版 Remark 7.15（著者版 p.62）の入力作用を含む比較への接続。
 
 ## 方針
 
@@ -350,7 +351,7 @@ local notation "DH" => deltaPDCompletionStructure (deltaAdjoinDivisionStructure 
 /-- 概要：基底を保つ H の環射は H/d から試験 prism の商への射を誘導する。
 方針：分母の像が基底 prism 射の生成元像となることを使って主商へ降下する。
 規約：射自体の δ 保存性はこの剰余射の定義には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の入力図式の右側の剰余射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力図式の右側の剰余射。 -/
 def powerRootPrismMonicReductionMap :
     let := pdCompletionCommRing L p (jL dP)
     (F : H →+* B) → F.comp baseH = k.toRingHom → T →+* B ⧸ Q.ideal := by
@@ -371,7 +372,7 @@ def powerRootPrismMonicReductionMap :
 /-- 概要：誘導剰余射は H の代表元に元の射を適用する。
 方針：主商への降下の定義を使う。
 規約：任意の H の元について成り立つ。
-使われ方：BS Rem 7.15（著者版 p.62）の全標準根の像の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全標準根の像の比較。 -/
 theorem powerRootPrismMonicReductionMap_mk :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (F : H →+* B) (hF : F.comp baseH = k.toRingHom) (x : H),
@@ -384,7 +385,7 @@ theorem powerRootPrismMonicReductionMap_mk :
 /-- 概要：誘導剰余射は元の prism 商からの基底射と可換。
 方針：元の基底 A の代表元で環射の合成等式を確認する。
 規約：自然な商係数作用を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の基底上の入力作用の保存。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底上の入力作用の保存。 -/
 theorem powerRootPrismMonicReductionMap_coeff :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (F : H →+* B) (hF : F.comp baseH = k.toRingHom),
@@ -401,7 +402,7 @@ theorem powerRootPrismMonicReductionMap_coeff :
 /-- 概要：通常の入力図式の可換性は全ての標準根の保存と同値。
 方針：係数の可換性を基底保存性で供給し、方程式商の外延性で全根から全元へ移す。
 規約：基底を保つ任意の環射について成立する。
-使われ方：BS Rem 7.15（著者版 p.62）の入力作用を含む普遍性への変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力作用を含む普遍性への変換。 -/
 theorem powerRootPrismMonicEquationInputSquare_iff_roots
     (η : S₀ →+* B ⧸ Q.ideal) (hη : η.comp cS = k.quotientMap) :
     let := pdCompletionCommRing L p (jL dP)
@@ -428,7 +429,7 @@ theorem powerRootPrismMonicEquationInputSquare_iff_roots
 /-- 概要：通常の標準入力射を保つ H から有界試験 prism への δ 射は一意に存在。
 方針：根列の普遍性と入力図式の可換性との同値を使う。
 規約：H 自体の prism 性はこの段階で主張しない。
-使われ方：BS Rem 7.15（著者版 p.62）の入力作用を含む絶対 envelope 比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力作用を含む絶対 envelope 比較。 -/
 theorem existsUnique_powerRootPrismMonicHom_preserving_equation_input
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
       (p : B ⧸ Q.ideal) ^ n * x = 0 → (p : B ⧸ Q.ideal) ^ N * x = 0)
@@ -457,7 +458,7 @@ end PowerRootPrismMonicEquationInputSquare
 ## 概要
 
 H/d の通常の p 完備性の明示仮定の下で、原典の完備入力環の標準作用を保つ
-H から有界試験 prism への δ 射は一意に存在する。BS Rem 7.15（著者版 p.62）の比較。
+H から有界試験 prism への δ 射は一意に存在する。BS 著者版 Remark 7.15（著者版 p.62）の比較。
 
 ## 方針
 
@@ -528,7 +529,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：完備入力図式の可換性は全ての標準根の保存と同値。
 方針：標的の p 完備性を有界試験 prism から供給し、係数と全根の外延性を使う。
 規約：H/d の p 完備性を明示仮定にする。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力作用を含む普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力作用を含む普遍性。 -/
 theorem powerRootPrismMonicOriginalInputSquare_iff_roots
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
       (p : B ⧸ Q.ideal) ^ n * x = 0 → (p : B ⧸ Q.ideal) ^ N * x = 0)
@@ -577,7 +578,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：原典の完備入力作用を保つ H から有界試験 prism への δ 射は一意に存在。
 方針：根保存の普遍性を、完備入力図式の可換性との同値で言い換える。
 規約：hT と H 自体の prism 性の解消は別工程に残す。
-使われ方：BS Rem 7.15（著者版 p.62）の絶対 envelope 比較の入力作用を含む接続点。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の絶対 envelope 比較の入力作用を含む接続点。 -/
 theorem existsUnique_powerRootPrismMonicHom_preserving_original_input
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
       (p : B ⧸ Q.ideal) ^ n * x = 0 → (p : B ⧸ Q.ideal) ^ N * x = 0)
@@ -610,7 +611,7 @@ end PowerRootPrismMonicOriginalInputSquare
 ## 概要
 
 H の生成元正則性と H/d の p 完備性を明示すると、原典の完備入力作用を保つ
-H の prism から有界試験 prism への射は一意に存在する。BS Rem 7.15（著者版 p.62）。
+H の prism から有界試験 prism への射は一意に存在する。BS 著者版 Remark 7.15（著者版 p.62）。
 
 ## 方針
 
@@ -678,7 +679,7 @@ local notation "φ₀" => powerRootPrismMonicHodgeTateBaseMap W hW f
 /-- 概要：基底を保つ H の δ 射は条件付き源 prism からの prism 射になる。
 方針：分母の像が基底 prism 射の生成元像となることからイデアル保存性を得る。
 規約：元の環射と δ 構造を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の δ 普遍性から prism 普遍性への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の δ 普遍性から prism 普遍性への移送。 -/
 def powerRootPrismMonicSourceHomOfDelta :
     let := pdCompletionCommRing L p (jL dP)
     (hreg : IsSMulRegular H (uL (jL dP))) →
@@ -701,7 +702,7 @@ def powerRootPrismMonicSourceHomOfDelta :
 /-- 概要：構成した源 prism 射の台の環射は元の F。
 方針：構成の定義を使う。
 規約：標準射の値を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の環射の一意性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の環射の一意性の移送。 -/
 theorem powerRootPrismMonicSourceHomOfDelta_toRingHom :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP))) (F : H →+* B)
@@ -715,7 +716,7 @@ theorem powerRootPrismMonicSourceHomOfDelta_toRingHom :
 /-- 概要：構成した源 prism 射は元の基底 prism 射と可換。
 方針：台の環射の合成等式を prism 射の外延性で戻す。
 規約：同じ標準基底射を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の基底上の prism 射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の基底上の prism 射。 -/
 theorem powerRootPrismMonicSourceHomOfDelta_comp_base :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP))) (F : H →+* B)
@@ -730,7 +731,7 @@ theorem powerRootPrismMonicSourceHomOfDelta_comp_base :
 /-- 概要：条件付き源 prism の商射は既存の H/d の剰余射と一致する。
 方針：H の代表元上で二つの主商の射を比較する。
 規約：任意の基底保存 prism 射について成り立つ。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力図式を prism 射で表す。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力図式を prism 射で表す。 -/
 theorem powerRootPrismMonicSourceHom_quotientMap :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP)))
@@ -748,7 +749,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：原典の完備入力作用を保つ条件付き源 prism からの射は一意に存在。
 方針：入力作用を保つ一意な δ 射を prism 射にまとめ、台の環射による外延性を使う。
 規約：hreg と hT の解消は別工程。条件付き成果を最終同定とは数えない。
-使われ方：BS Rem 7.15（著者版 p.62）の絶対 prismatic envelope の合流点。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の絶対 prismatic envelope の合流点。 -/
 theorem existsUnique_powerRootPrismMonicPrismHom_preserving_original_input
     (hf : f.Monic)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -783,7 +784,7 @@ theorem existsUnique_powerRootPrismMonicPrismHom_preserving_original_input
 /-- 概要：H/d の有界 p ねじれから通常の p 完備性を得る。
 方針：実完備化の導来 p 完備性を主商へ移し、有界ねじれ比較を使う。
 規約：生成元正則性や hpR は使わず、有界ねじれを明示引数とする。
-使われ方：BS Rem 7.15（著者版 p.62）の有界源から完備入力作用への接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界源から完備入力作用への接続。 -/
 theorem powerRootPrismMonicSourceQuotient_complete_of_bounded :
     let := pdCompletionCommRing L p (jL dP)
     (∃ N : ℕ, ∀ n : ℕ, ∀ x : T, (p : T) ^ n * x = 0 → (p : T) ^ N * x = 0) →
@@ -800,7 +801,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：源の生成元正則性と剰余の有界 p ねじれから、入力作用を保つ prism 射は一意。
 方針：有界ねじれから通常の p 完備性を内部で供給し、証明済みの prism 普遍性を使う。
 規約：hreg と有界ねじれの証明は明示仮定に残す。
-使われ方：BS Rem 7.15（著者版 p.62）の有界源の絶対 envelope への合流点。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界源の絶対 envelope への合流点。 -/
 theorem existsUnique_powerRootPrismMonicPrismHom_of_bounded_source
     (hf : f.Monic)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -832,7 +833,7 @@ end PowerRootPrismMonicSourcePrismUniversal
 
 生成元正則性と H/d の有界 p ねじれが供給されたとき、元の H を原典の完備入力作用を持つ
 有界 prism の対象とし、その圏で初期であることを証明する。
-BS Rem 7.15（著者版 p.62）の envelope 比較の合流点。
+BS 著者版 Remark 7.15（著者版 p.62）の envelope 比較の合流点。
 
 ## 方針
 
@@ -902,7 +903,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：正則性と有界ねじれが供給されると元の H を有界入力 prism の対象にまとめる。
 方針：同じ台環・生成元・基底射・標準入力射とその可換性を束ねる。
 規約：hreg と hBound は証明済みとみなさず明示引数とする。
-使われ方：BS Rem 7.15（著者版 p.62）の源の初期性を述べる対象。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の源の初期性を述べる対象。 -/
 def powerRootPrismMonicSourceInputObject :
     let := pdCompletionCommRing L p (jL dP)
     (hreg : IsSMulRegular H (uL (jL dP))) →
@@ -931,7 +932,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：明示した正則性と有界ねじれの下で元の H の入力 prism 対象は初期。
 方針：任意の有界入力 prism への射の一意存在を既存の普遍性から供給する。
 規約：hreg と hBound の無条件の解消は別工程。
-使われ方：BS Rem 7.15（著者版 p.62）の envelope の初期性への条件付き接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の envelope の初期性への条件付き接続。 -/
 def powerRootPrismMonicSourceInput_isInitial :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP)))
@@ -951,7 +952,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：元の H の条件付き初期対象は、同じ入力圏の任意の初期対象と同型。
 方針：二つの初期対象の一意な同型を使う。
 規約：比較先の初期性も明示引数として要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の普遍性との条件付き同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の普遍性との条件付き同定。 -/
 def powerRootPrismMonicSourceInputIso :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP)))
@@ -969,7 +970,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：同じ入力圏の任意の初期対象と元の H の台環は条件付きで環同型。
 方針：初期対象の一意な同型から台環の環同型を取り出す。
 規約：hreg、hBound、比較先の初期性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H と envelope の実環としての比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H と envelope の実環としての比較。 -/
 def powerRootPrismMonicSourceEnvelopeRingEquiv :
     let := pdCompletionCommRing L p (jL dP)
     IsSMulRegular H (uL (jL dP)) →
@@ -988,7 +989,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：初期対象との環同型は元の A の全ての係数像を保つ。
 方針：同型の prism 射の基底保存条件を各係数元に適用する。
 規約：元の H の標準係数射を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の比較同型の係数作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の比較同型の係数作用の確認。 -/
 theorem powerRootPrismMonicSourceEnvelopeRingEquiv_base_coeff (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
     ∀ (hreg : IsSMulRegular H (uL (jL dP)))
@@ -1013,7 +1014,7 @@ end PowerRootPrismMonicEnvelopeInitial
 
 完全試験 prism の商に互換根列を指定し、その第零根が元の多項式の根なら、
 raw 実完備化から試験 prism へ基底と剰余根を保つ δ 射が一意に存在する。
-BS Rem 7.15（著者版 p.62）の絶対 envelope 比較の完全試験環での段階。
+BS 著者版 Remark 7.15（著者版 p.62）の絶対 envelope 比較の完全試験環での段階。
 
 ## 方針
 
@@ -1064,7 +1065,7 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 /-- 概要：完全試験 prism の剰余根データを保つ実完備化からの δ 射は一意に存在。
 方針：一意な入力 δ 持上げで分子の可除性を得て、raw 実完備化の普遍性を使う。
 規約：根列は商内だけに指定する。試験 prism の完全性と生成元の一致は前提に残す。
-使われ方：BS Rem 7.15（著者版 p.62）の完全試験 prism への絶対入力データによる比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全試験 prism への絶対入力データによる比較。 -/
 theorem existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
     {B : Type u} [CommRing B] (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
     (k : A →+* B) (hk : W.deltaStructure.IsDeltaHom Q.deltaStructure k)

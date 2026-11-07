@@ -18,6 +18,7 @@ public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Localiza
 
 ## 概要
 整性と Spec の全射性、単射性、剰余体拡大の純非分離性で普遍同相を表す。
+普遍同相の述語と標数 p での判定を、BS 著者版 Lemma 10.12 (2) の層別に使う。
 
 ## 方針
 標数 p では核が nil であり、各元の適当な p 冪が像に入ることで判定する。
@@ -26,7 +27,7 @@ public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Localiza
 核の条件は `RingHom.ker f ≤ nilradical A`。冪零指数は元ごとに取る。
 
 ## 使われ方
-有限エタール層別の各層の後半の射を記述する（BS Lemma 10.12）。
+有限エタール層別の各層の後半の射を記述する（BS 著者版 Lemma 10.12）。
 -/
 
 @[expose] public section
@@ -40,7 +41,7 @@ open scoped TensorProduct
 /-- 概要：G-A8-4：環の射が普遍同相：整・Spec で全射・radicial（普遍単射：剰余体の拡大が純非分離で Spec で単射）。
 方針：定義。
 規約：—
-使われ方：Lemma 10.12 (2)。 -/
+使われ方：有限エタール層別の各層の後半の射を記述する。 -/
 structure IsUniversalHomeomorphism {A B : Type u} [CommRing A] [CommRing B]
     (f : A →+* B) : Prop where
   isIntegral : f.IsIntegral
@@ -523,7 +524,7 @@ theorem isUniversalHomeomorphism_iff_charP {A B : Type u} [CommRing A] [CommRing
 /-- 概要：G-A8-5：完全 F_p 環 A から被約環 B への普遍同相は同型。
 方針：b^{p^n} = f(a)、a = σ^{p^n}、(b − f σ)^{p^n} = 0、B 被約 ⇒ b = f σ；核は nil で A 被約 ⇒ 零。
 規約：`PerfectRing A p`。
-使われ方：Thm 10.11 の n = 1 と 5。 -/
+使われ方：層別の標数 p の場合に普遍同相の全単射性を判定する。 -/
 theorem isUniversalHomeomorphism_bijective_of_perfect_reduced
     {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0) [PerfectRing A p] [IsReduced B]

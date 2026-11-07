@@ -12,7 +12,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-!
-# E3 から整代数の普遍 perfectoid 化へ（BS 著者版 Thm 1.17(1)＝Thm 10.11 の環版）
+# E3 から整代数の普遍 perfectoid 化へ（BS 著者版 Theorem 1.17(1)＝BS 著者版 Theorem 10.11 の環版）
 
 ## 概要
 指定された普遍 perfectoid 化と導来極限の比較、始対象の値による極限錐の計算、整代数・有限代数・完備化の普遍 perfectoid 化の存在。
@@ -417,7 +417,8 @@ end InitialBridge
 
 namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
 
-/-- 任意の整代数の普遍 perfectoid 化は、界面の integral と universal の欄から従う。 -/
+/-- 整代数の普遍 perfectoid 化は、E3 の integral と universal の欄から従う
+（BS 著者版 Theorem 10.11 と Corollary 8.14 の環としての帰結、序論の Theorem 1.17 (1)）。 -/
 theorem exists_perfectoidization_of_integral
     (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Algebra.IsIntegral R S]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
@@ -438,7 +439,7 @@ end IntegralExistence
 
 /-! ## 整代数の普遍 perfectoid 化（界面から導出した定理）（旧 PerfectoidizationInterface/IntegralPerfectoidization.lean）
 
-従来 BS Thm 1.17(1) を直接引用していた公開入口である。
+従来 BS 著者版 Theorem 1.17(1) を直接引用していた公開入口である。
 現在は導来 perfectoid 化界面の存在だけを引用し、integral と universal から導く。
 公開名・型と、非完備を含む任意の整代数という範囲を保つ。
 -/
@@ -449,14 +450,14 @@ namespace SerrePositivity.BhattScholze.Inputs
 
 /--
 ## 概要
-BS Thm 1.17(1) の存在命題を、E3 界面から導出した定理。
+BS 著者版 Theorem 1.17(1) の存在命題を、E3 界面から導出した定理。
 
 ## 方針
 界面の存在を取り出し、Π2-6 の integral → 離散性 → universal の証明へ渡す。
-integral の原典は Thm 10.11、離散時 universal の原典は Cor 8.14 である。
+integral の原典は BS 著者版 Theorem 10.11、離散時 universal の原典は BS 著者版 Corollary 8.14 である。
 
 ## 規約
-この公開入口は以前 Thm 1.17(1) の文献入力であったが、現在は直接の未証明箇所を持たない。
+この公開入口は以前 BS 著者版 Theorem 1.17(1) の文献入力であったが、現在は直接の未証明箇所を持たない。
 有限性・有限表示性・有界 p 冪ねじれ・S の完備性は追加しない。
 原典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf 。
 

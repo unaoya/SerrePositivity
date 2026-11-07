@@ -10,6 +10,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot
 
 ## 概要
 完全 prism 商への射が延長する完備な全射候補と導来 PD 完備化商の比較、単一根・根族の場合の比較、互換根商の完備化の perfectoid 性。
+BS 著者版 Theorem 7.4 の根付き拡大による証明に使う、互換 p 冪根の商の perfectoid 性を示す。
 
 ## 方針
 完全 prism の Witt 表示と PD 完備化商の比較から perfectoid 性を移す。

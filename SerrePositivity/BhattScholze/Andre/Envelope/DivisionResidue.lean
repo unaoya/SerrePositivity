@@ -9,6 +9,7 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 
 ## 概要
 δ 除算添加環の raw (p,d) 商の具体的表示・標準係数射の忠実平坦性・次の入力の正則性、残余自由 δ 射の通常テンソルと raw (p,d) 商。
+BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、δ 除算包の剰余表示を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

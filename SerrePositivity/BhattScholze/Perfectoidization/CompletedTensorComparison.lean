@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 ## 概要
 
 元の完備な基底変更の単位と BS の通常のテンソルの写像が一致することを示し（`completedBaseChangeTensorH0_unit`）、終域の完備な導来基底変更の零次と perfectoid 化の代数同型（`targetTensorAlgEquiv`）、その `H⁰` の線形同型を導来対象全体の同型へ持ち上げる（`targetCompletedBaseChangeIso`）。
+BS 著者版 Proposition 8.13 の環版に向けて、完備導来底変換と perfectoid 化を比較する。
 
 ## 方針
 

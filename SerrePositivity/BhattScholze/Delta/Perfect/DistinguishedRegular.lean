@@ -10,6 +10,7 @@ public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 ## 概要
 p ねじれなし・p 進分離で A/p が被約な δ 環の distinguished 元は非零因子で、A/(d) の p 冪ねじれは p で消える。
 冪 dⁿ への反復、完全 p 進完備 δ 環での商の p 進完備性。
+distinguished 商の p 進完備性は、BS 著者版 Theorem 3.10 の商が perfectoid になる方向で使う。
 
 ## 方針
 fd = 0 に δ と φ を当てて mod p で f^{2p} = 0 を得、被約性と p 進分離性を使う。
@@ -18,7 +19,7 @@ fd = 0 に δ と φ を当てて mod p で f^{2p} = 0 を得、被約性と p �
 商の導来完備性・perfectoid 性は仮定しない。
 
 ## 使われ方
-完全 prism の性質（Lemma 3.8）、Thm 3.10、prism の完全化。
+完全 prism の性質（BS 著者版 Lemma 3.8）、BS 著者版 Theorem 3.10、prism の完全化。
 -/
 
 @[expose] public noncomputable section
@@ -26,7 +27,7 @@ universe u
 
 /-! ## distinguished元の非零因子性（旧 Delta/Perfect/DistinguishedRegular.lean）
 
-BS著者公開版Lemma 2.34(1)。mod pの被約性から零因子のp可除性を導き、
+BS 著者版 Lemma 2.34(1)。mod pの被約性から零因子のp可除性を導き、
 pの消去とp進分離性により零因子を零と判定する。
 -/
 
@@ -36,7 +37,7 @@ namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
 /-- mod pが被約なら、distinguished元dを消す元fはpで割り切れる。
-δ(fd)=0とφ(fd)=0を組み合わせ、mod pでf^(2p)=0を得る（BS Lemma 2.34）。 -/
+δ(fd)=0とφ(fd)=0を組み合わせ、mod pでf^(2p)=0を得る（BS 著者版 Lemma 2.34）。 -/
 theorem p_dvd_of_mul_distinguished_eq_zero (D : DeltaStructure p A)
     [IsReduced (A ⧸ Ideal.span {(p : A)})] {d f : A}
     (hd : D.IsDistinguished d) (hfd : f * d = 0) : (p : A) ∣ f := by
@@ -58,8 +59,8 @@ theorem p_dvd_of_mul_distinguished_eq_zero (D : DeltaStructure p A)
   apply Ideal.mem_span_singleton.mp
   exact Ideal.Quotient.eq_zero_iff_mem.mp (eq_zero_of_pow_eq_zero hnil)
 
-/-- p正則・p進分離でmod pが被約なδ環のdistinguished元は非零因子。
-零因子を繰り返しpで割り、各p^nでの可除性からp進分離性を適用する（BS Lemma 2.34(1)）。 -/
+/-- p正則・p進分離でmod pが被約なδ環のdistinguished元は非零因子（BS 著者版 Lemma 2.34 (1)）。
+零因子を繰り返しpで割り、各p^nでの可除性からp進分離性を適用する。 -/
 theorem IsDistinguished.mul_injective {D : DeltaStructure p A}
     [IsReduced (A ⧸ Ideal.span {(p : A)})]
     [IsHausdorff (Ideal.span {(p : A)}) A]
@@ -90,7 +91,7 @@ theorem IsDistinguished.mul_injective {D : DeltaStructure p A}
   apply hker
   rw [sub_mul, mul_comm x d, mul_comm y d, hxy, sub_self]
 
-/-- p進分離な完全δ環のdistinguished元は非零因子。
+/-- p進分離な完全δ環のdistinguished元は非零因子（BS 著者版 Lemma 2.34 (1) の完全 δ 環の場合）。
 完全δ構造からp正則性とmod pの完全性・被約性を供給する。 -/
 theorem IsPerfect.distinguished_mul_injective {D : DeltaStructure p A}
     (hD : D.IsPerfect) [IsHausdorff (Ideal.span {(p : A)}) A] {d : A}
@@ -109,7 +110,7 @@ end DistinguishedRegular
 
 /-! ## distinguished商の有界p冪ねじれ（旧 Delta/Perfect/DistinguishedTorsion.lean）
 
-BS著者公開版Lemma 2.34(2)。p正則でmod pが被約なδ環をdistinguished元で割ると、
+BS 著者版 Lemma 2.34(2)。p正則でmod pが被約なδ環をdistinguished元で割ると、
 商の任意のp冪ねじれはpで消える。導来完備性やperfectoid性は仮定しない。
 -/
 
@@ -126,7 +127,7 @@ theorem map_delta_p_sq_mul {B : Type*} [CommRing B] (D : DeltaStructure p A)
     zero_mul, mul_zero, add_zero]
 
 /-- p²f=gdでdがdistinguished、mod pが被約ならpはgを割る。
-δとφの等式をmod pで組み合わせてg^(2p)=0を得る（BS Lemma 2.34(2)の核心）。 -/
+δとφの等式をmod pで組み合わせてg^(2p)=0を得る（BS 著者版 Lemma 2.34(2)の核心）。 -/
 theorem p_dvd_of_p_sq_mul_eq_mul_distinguished (D : DeltaStructure p A)
     [IsReduced (A ⧸ Ideal.span {(p : A)})] {d f g : A}
     (hd : D.IsDistinguished d) (he : (p : A) ^ 2 * f = g * d) : (p : A) ∣ g := by
@@ -190,7 +191,7 @@ theorem IsDistinguished.dvd_p_mul_of_dvd_p_pow_mul {D : DeltaStructure p A}
       rw [pow_succ]
       ring
 
-/-- 商A/(d)で任意のp冪により零化される元はpで零化される（BS Lemma 2.34(2)）。
+/-- 商A/(d)で任意のp冪により零化される元はpで零化される（BS 著者版 Lemma 2.34 (2)）。
 N=0も含む。商のp進完備性を仮定しない。 -/
 theorem IsDistinguished.quotient_p_pow_torsion_killed_by_p {D : DeltaStructure p A}
     [IsReduced (A ⧸ Ideal.span {(p : A)})]
@@ -230,7 +231,7 @@ end DistinguishedTorsion
 
 /-! ## distinguished元の冪商の有界pねじれ（旧 Delta/Perfect/DistinguishedPowerTorsion.lean）
 
-著者公開版Lemma 2.34(2)を、正則なdistinguished元の冪商に反復適用する。
+BS 著者版 Lemma 2.34(2)を、正則なdistinguished元の冪商に反復適用する。
 A/(dⁿ)のp冪ねじれはpⁿで消える。商の古典的・導来完備性は結論しない。
 -/
 
@@ -318,7 +319,7 @@ end DistinguishedPowerTorsion
 
 /-! ## 完全p進完備δ環のdistinguished商と冪商のp完備性（旧 Delta/Perfect/DistinguishedQuotientComplete.lean）
 
-受領したF5に既存BS Lemma 2.34の有界ねじれ評価を供給する。
+受領したF5に既存BS BS 著者版 Lemma 2.34の有界ねじれ評価を供給する。
 商のp正則性・Noether性・有限表示性を仮定しない。
 -/
 

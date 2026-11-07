@@ -13,7 +13,7 @@ public import Mathlib.RingTheory.KrullDimension.Basic
 public import Mathlib.RingTheory.Valuation.ValuationRing
 
 /-!
-# E3 から環としての excision へ（BS 著者版 Cor 8.12 の環版）
+# E3 から環としての excision へ（BS 著者版 Corollary 8.12 の環版）
 
 ## 概要
 離散性を仮定した excision の橋、四つの指定普遍環からの excision、環としての excision の引き戻し四角形。
@@ -520,7 +520,7 @@ end Excision
 
 /-! ## perfectoid 化の環としての excision（界面から導出した定理）（旧 PerfectoidizationInterface/ArcExcision.lean）
 
-従来 BS Cor 8.12 の環としての帰結を直接引用していた公開入口である。
+従来 BS 著者版 Corollary 8.12 の環としての帰結を直接引用していた公開入口である。
 現在は E3 界面から指定錐の比較・離散性・長完全列を経て導く。
 公開名・型と四つの指定普遍環・標準誘導射を保つので、CLMST の利用箇所は変更しない。
 -/
@@ -532,18 +532,20 @@ open CategoryTheory SerrePositivity.DerivedCompletion
 
 /--
 ## 概要
-BS Cor 8.12（著者版 p.69）の環としての帰結を、E3 界面から導出した定理。
+arc 条件を満たす商の四角形について、指定した普遍 perfectoid 化の環の四角形が引き戻しになる（BS 著者版 Corollary 8.12 の離散な環への帰結）。
 
 ## 方針
-界面の存在を取り出して Π2-7′ の定理へ渡す。Prop 8.5 の制限付き極限を
+界面の存在を取り出して Π2-7′ の定理へ渡す。BS 著者版 Proposition 8.5 の制限付き極限を
 四つの指定普遍環の始対象性で計算し、導来対象全体の離散性を得る。
 界面の D(R) の excision と D4・D6a の指定四辺の長完全列から、H⁰ の短完全列と
 環の引き戻しを導く。単位の自然性と環の普遍性で元の四辺に同定する。
 
 ## 規約
-この公開入口は以前 Cor 8.12 の文献入力であったが、現在は直接の未証明箇所を持たない。
-根拠の照合は Lemma 8.4（pp.63–64）、Prop 8.5（pp.64–65）、Cor 8.11・8.12、
-Cor 8.14（p.70）と `formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3・§6 に記録する。
+この公開入口は以前 BS 著者版 Corollary 8.12 の文献入力であったが、現在は直接の未証明箇所を持たない。
+根拠は BS 著者版 Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、
+Corollary 8.11、Corollary 8.12、
+Corollary 8.14（p.70）。照合は
+`formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3・§6 に記録する。
 原典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf 。
 差写像の全射性は Π2 の定理として公開し、この Inputs の公開型には追加しない。
 

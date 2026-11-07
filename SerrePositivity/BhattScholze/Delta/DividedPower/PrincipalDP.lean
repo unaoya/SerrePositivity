@@ -19,7 +19,7 @@ public import Mathlib.RingTheory.Polynomial.Quotient
 一元分冪表示環 Γ_B⟨T⟩/(T − y) と任意の分冪標的への評価、係数環への評価テンソル、底変換とその関係式・普遍性、階乗部分環への全射とその核（p 冪ねじれ）・同型、mod p 比較と標数 p での忠実平坦性、正則入力での p 正則性、元の係数環上の導来完備化・導来底変換・p Koszul 比較、正則一元階乗部分環の底変換・mod p 比較・普遍射。
 
 ## 方針
-原典の Lemma 2.38 を r = 1 で、離散性・p ねじれなし・pd 包との同一視・底変換・mod p の自由性まで示す。r 元への一般化はノート §2.5 の課題 T2-1。
+原典の BS 著者版 Lemma 2.38 を r = 1 で、離散性・p ねじれなし・pd 包との同一視・底変換・mod p の自由性まで示す。r 元への一般化はノート §2.5 の課題 T2-1。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。
@@ -239,7 +239,7 @@ theorem principalDPPresentation_p_mul_injective_of_regular_mod
     principalDPRelationIdeal] using h
 
 set_option linter.unusedVariables false in
-/-- 正則一元入力の下で、具体的分冪表示環にはpねじれがない。 -/
+/-- 正則一元入力の下で、具体的分冪表示環にはpねじれがない（BS 著者版 Lemma 2.38 の一元 PD 表示の p 正則性）。 -/
 theorem principalDPPresentation_p_mul_injective
     (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) (y : A)
@@ -470,7 +470,7 @@ theorem principalDPToFactorial_injective : Function.Injective (principalDPToFact
   rw [mul_zero]
   exact hn
 
-/-- 正則一元表示環と具体的階乗部分環の、実比較射による環同型。 -/
+/-- 正則一元表示環と具体的階乗部分環の、実比較射による環同型（BS 著者版 Lemma 2.38 の一元の場合の具体的同定）。 -/
 def principalDPFactorialEquiv :
     PrincipalDPPresentation A y ≃+* pDivisionFactorialSubring p (fun _ : Unit ↦ y) :=
   RingEquiv.ofBijective (principalDPToFactorial hA D y)
@@ -652,7 +652,7 @@ theorem principalDPBaseChangeUniversal_relationIdeal (y : A) :
   congr 1
   exact (rankOneDPBaseChangeMap_relation (B := B) y).symm
 
-/-- 一元分冪表示環の、任意の可換係数環への実テンソル基底変更同型。 -/
+/-- 一元分冪表示環の、任意の可換係数環への実テンソル基底変更同型（BS 著者版 Lemma 2.38 の一元の場合の古典的底変換）。 -/
 def principalDPBaseChangeUniversalEquiv (y : A) :
     B ⊗[A] PrincipalDPPresentation A y ≃ₐ[B]
       PrincipalDPPresentation B (algebraMap A B y) :=
@@ -1135,7 +1135,7 @@ theorem principalDPModP_coefficientIdeal_map :
     (I₀).map (algebraMap A R₀) = Ideal.span {(p : R₀)} := by
   rw [Ideal.map_span, Set.image_singleton, map_natCast]
 
-/-- 一元分冪表示環の実p商と、係数環のp商上の実表示環の標準環同型。 -/
+/-- 一元分冪表示環の実p商と、係数環のp商上の実表示環の標準環同型（BS 著者版 Lemma 2.38 の一元の場合の mod p 底変換）。 -/
 def principalDPModPEquiv :
     (R₀ ⧸ Ideal.span {(p : R₀)}) ≃+* PrincipalDPPresentation Q₀ (bar₀ y) :=
   (Ideal.quotEquivOfEq (principalDPModP_coefficientIdeal_map p y).symm).trans

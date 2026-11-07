@@ -24,6 +24,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuo
 
 ## 概要
 源の逐次完備性、モニック f/d 源と raw 包の完備化比較、raw PD 比較と完全忠実平坦性、源の純性と生成元の正則性、先行 p 還元と完備化の p 正則性、p 錐と d 完備化の純性。
+BS 著者版 Remark 7.15 の根の包に使う、無限根源の完備化と純性の比較を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -40,7 +41,7 @@ universe u
 /-! ## 元の無限根源の実逐次完備性（旧 Andre/Remark715/Unconditional/PowerRootSourceComplete.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の A 上の無限根源を p,d の順に実導来完備化する。
+BS 著者版 Remark 7.15（著者版 p.62）の元の A 上の無限根源を p,d の順に実導来完備化する。
 生成元冪商への実還元も、その商環上で p 導来完備である。
 
 ## 方針
@@ -68,7 +69,7 @@ local notation "XB" => PowerRootPrismMonicSourceCoefficientObject_of_uncondition
 /-- 概要：元の無限根源を p 完備化してから生成元で完備化した実対象。
 方針：二つの既存主元導来完備化関手を合成する。
 規約：raw 包のねじれ除去商へ置き換えない。
-使われ方：BS Rem 7.15（著者版 p.62）の hpR なしの実完備化の純性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の hpR なしの実完備化の純性。 -/
 abbrev PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional :=
   (boundedAboveDerivedCompletionFunctor A d).obj
     ((boundedAboveDerivedCompletionFunctor A (p : A)).obj XB)
@@ -76,7 +77,7 @@ abbrev PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional :=
 /-- 概要：実p完備化後に実d完備化を施した具体的モニック族添加対象は、なおp導来完備。
 方針：既存の完備性の錐・塔極限での閉性と、係数制限の標準単位比較を使う。
 規約：モニック性・正次数・hpR は不要。生成元の正則性は prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
 theorem powerRootPrismMonicSourceIteratedPDCompletion_isComplete_p_of_unconditional :
     DerivedCompletion.IsComplete A (p : A)
       (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj := by
@@ -106,7 +107,7 @@ theorem powerRootPrismMonicSourceIteratedPDCompletion_isComplete_p_of_unconditio
 /-- 概要：同じ具体的逐次対象は、最後の主元完備化によりd導来完備。
 方針：既存の完備性の錐・塔極限での閉性と、係数制限の標準単位比較を使う。
 規約：モニック性・正次数・hpR は不要。生成元の正則性は prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
 theorem powerRootPrismMonicSourceIteratedPDCompletion_isComplete_d_of_unconditional :
     DerivedCompletion.IsComplete A d
       (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj :=
@@ -119,7 +120,7 @@ local notation "X₀" => PowerRootPrismMonicSourceIteratedPDCompletion_of_uncond
 /-- 概要：正則dの実冪商への基底変更を制限すると、候補の実dⁿ Koszul錐になる。
 方針：既存の完備性の錐・塔極限での閉性と、係数制限の標準単位比較を使う。
 規約：モニック性・正次数・hpR は不要。生成元の正則性は prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
 def powerRootPrismMonicSourceGeneratorPowerReductionKoszulIso_of_unconditional (n : ℕ) :
     ((boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {d ^ n}))).obj
       ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).obj X₀)).obj ≅
@@ -130,7 +131,7 @@ def powerRootPrismMonicSourceGeneratorPowerReductionKoszulIso_of_unconditional (
 /-- 概要：正則dの任意冪商での実導来還元をAへ制限した対象は、p導来完備。
 方針：既存の完備性の錐・塔極限での閉性と、係数制限の標準単位比較を使う。
 規約：モニック性・正次数・hpR は不要。生成元の正則性は prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
 theorem powerRootPrismMonicSourceGeneratorPowerReduction_isComplete_p_of_unconditional
     (n : ℕ) :
     DerivedCompletion.IsComplete A (p : A)
@@ -151,7 +152,7 @@ theorem powerRootPrismMonicSourceGeneratorPowerReduction_isComplete_p_of_uncondi
 /-- 概要：正則生成元の任意冪商への実還元は、その商環上でp導来完備。n=0も含む。
 方針：既存の完備性の錐・塔極限での閉性と、係数制限の標準単位比較を使う。
 規約：モニック性・正次数・hpR は不要。生成元の正則性は prism から供給する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪商上の導来完備 Nakayama 入力。 -/
 theorem powerRootPrismMonicSourceGeneratorPowerReduction_isComplete_over_quotient_of_unconditional
     (n : ℕ) :
     IsComplete (A ⧸ Ideal.span {d ^ n}) (p : A ⧸ Ideal.span {d ^ n})
@@ -187,7 +188,7 @@ local notation "XC" => PowerRootPrismMonicSourceIteratedPDCompletion_of_uncondit
 /-- 概要：実逐次完備化の (p,d) 導来還元は元の実源の還元と同型。
 方針：元の A での p と d の個別正則性を標準完備化単位の比較へ供給する。
 規約：d mod p の正則性も hpR も仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の A1-d の実剰余入力を完備化後へ渡す。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A1-d の実剰余入力を完備化後へ渡す。 -/
 def powerRootPrismMonicSourceIteratedPDReductionIso_of_unconditional :
     (boundedAboveDerivedBaseChange q).obj XC ≅ (boundedAboveDerivedBaseChange q).obj XB :=
   prismaticCoefficientIteratedCompletionPairIso (p : A) d hW.p_mul_injective
@@ -196,7 +197,7 @@ def powerRootPrismMonicSourceIteratedPDReductionIso_of_unconditional :
 /-- 概要：実逐次完備化の (p,d) 還元の全非零次数は消える。
 方針：完備化単位の実還元比較と、証明済みの元の源の消滅を合成する。
 規約：モニック性だけを追加し、hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の純性判定への実剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の純性判定への実剰余入力。 -/
 theorem powerRootPrismMonicSourceIteratedPDResidue_homology_isZero_of_unconditional
     (hf : f.Monic) (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat R) i).obj
@@ -210,7 +211,7 @@ theorem powerRootPrismMonicSourceIteratedPDResidue_homology_isZero_of_unconditio
 /-- 概要：A1-d の元の H⁰ 忠実平坦性入力は、同じ元の作用で実逐次完備化後に移る。
 方針：標準単位を保つ実剰余比較の H⁰ 線形同型で移送する。
 規約：入力は A1-d への受渡し型そのものを明示仮定にし、証明済みとは扱わない。
-使われ方：BS Rem 7.15（著者版 p.62）の純性と分母正則性への条件付き接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の純性と分母正則性への条件付き接続。 -/
 theorem powerRootPrismMonicSourceIteratedPDResidueH0_faithfullyFlat_of_initialCoefficient
     (hFF : Module.FaithfullyFlat R
       ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
@@ -233,7 +234,7 @@ end PowerRootSourceComplete
 /-! ## 元の無限根源の純性と生成元の正則性（旧 Andre/Remark715/Unconditional/PowerRootSourcePurity.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実逐次完備化は次数零に集中し、生成元はその H⁰ に正則。
+BS 著者版 Remark 7.15（著者版 p.62）の元の実逐次完備化は次数零に集中し、生成元はその H⁰ に正則。
 
 ## 方針
 A1-d の元の係数作用での忠実平坦性を受け取り、冪零還元、生成元冪商の有界 p ねじれ、
@@ -274,7 +275,7 @@ local notation "WC" => CategoryTheory.Functor.obj
 /-- 概要：標準冪零還元は元の (p,d) 還元の係数制限。
 方針：実係数拡大の合成比較と標準商環同型を合成する。
 規約：完全 prism の同じ実逐次完備化を使用する。
-使われ方：BS Rem 7.15（著者版 p.62）の冪零厚化での純性判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪零厚化での純性判定。 -/
 def powerRootPrismMonicSourceCanonicalPowerResidueIso_of_unconditional :
     WC ≅ (boundedAboveDerivedRestrictScalars (eₙ).toRingHom).obj
       ((boundedAboveDerivedBaseChange q₀).obj XC) :=
@@ -286,7 +287,7 @@ include hn in
 /-- 概要：標準冪零還元の非零次数ホモロジーは零。
 方針：元の残余比較と係数制限のホモロジー比較を使う。
 規約：モニック性を仮定するが hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の冪零還元判定への消滅入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の冪零還元判定への消滅入力。 -/
 theorem powerRootPrismMonicSourceCanonicalPowerResidue_homology_isZero_of_unconditional
     (hf : f.Monic) (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Sₙ) i).obj (WC).obj) := by
@@ -303,7 +304,7 @@ include hn in
 /-- 概要：標準冪零還元の H⁰ は忠実平坦。
 方針：A1-d の無条件入力を実完備化へ移し、商環同型による係数制限へ移す。
 規約：モニック正次数のみ追加し、別の忠実平坦性仮定を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の実生成元冪商の平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実生成元冪商の平坦性。 -/
 theorem powerRootPrismMonicSourceCanonicalPowerResidueH0_faithfullyFlat_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat Sₙ
@@ -331,7 +332,7 @@ include hn in
 /-- 概要：実 A/(p,dⁿ) 還元は次数零に集中し H⁰ は平坦。
 方針：標準冪零還元へ純性・平坦性判定を適用する。
 規約：正の冪 n とモニック正次数のみを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の生成元冪商の mod p 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商の mod p 入力。 -/
 theorem powerRootPrismMonicSourcePowerResidue_pure_flat_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (Y₀).obj.IsGE 0 ∧ (Y₀).obj.IsLE 0 ∧
@@ -346,7 +347,7 @@ include hn in
 /-- 概要：実冪剰余の非零次数ホモロジー消滅。
 方針：純性の二つの t 構造境界から消滅を読む。
 規約：hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の生成元冪商計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元冪商計算。 -/
 theorem powerRootPrismMonicSourcePowerResidue_homology_isZero_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Qₙ) i).obj (Y₀).obj) := by
@@ -364,7 +365,7 @@ include hn in
 /-- 概要：実 A/(dⁿ) 還元は次数零に集中し H⁰ の p ねじれは有界。
 方針：同じ実 mod p 還元の純性・平坦性、商上の導来完備性、有界ねじれ判定を合成する。
 規約：raw p 正則性を仮定せず、生成元冪商の既存ねじれ評価を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の純性と分母正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の純性と分母正則性。 -/
 theorem powerRootPrismMonicSourceGeneratorPowerReduction_pure_bounded_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (ZN).obj.IsGE 0 ∧ (ZN).obj.IsLE 0 ∧
@@ -386,7 +387,7 @@ theorem powerRootPrismMonicSourceGeneratorPowerReduction_pure_bounded_of_uncondi
 /-- 概要：元の実逐次完備化は次数零に集中し、生成元は H⁰ に正則。
 方針：一乗生成元商の純性と d 導来完備性から、正則商による純性判定を使う。
 規約：元の A 作用を保持し、hpR と raw p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H の分母正則性への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H の分母正則性への移送。 -/
 theorem powerRootPrismMonicSourceIteratedPDCompletion_pure_regular_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (XC).obj.IsGE 0 ∧ (XC).obj.IsLE 0 ∧
@@ -406,7 +407,7 @@ theorem powerRootPrismMonicSourceIteratedPDCompletion_pure_regular_of_unconditio
 /-- 概要：元の実逐次完備化は同じ H⁰ の次数零対象と同型。
 方針：証明済みの純性へ標準正規化比較を適用する。
 規約：元の A 作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw PD 環への比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw PD 環への比較。 -/
 def powerRootPrismMonicSourceSingleIso_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (XC).obj ≅ (DerivedCategory.singleFunctor (ModuleCat A) 0).obj
@@ -426,12 +427,12 @@ end PowerRootSourcePurity
 ## 概要
 
 元の無限根モニック源の実 H⁰ を、同じ係数作用の raw 包およびその実完備化へ比較する。
-BS Rem 7.15（著者版 p.62）の raw PD 環との比較の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備。
 
 ## 方針
 
 一般 δ 除算の通常テンソル表示、標準 augmentation、実係数制限と完備化の既存比較を再利用する。
-原典の Prop 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
 
 ## 規約
 
@@ -453,7 +454,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：通常テンソルの指定同型を標準導来 augmentation へ合成する。
 方針：実テンソルの標準 H⁰ 比較を使う。
 規約：モニック性・平坦性・有限性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
 def unconditionalTensorRawAugmentation {S : Type u} [CommRing S]
     (M N K : ModuleCat.{u} S) (e : (tensorLeft M).obj N ≅ K) :
     boundedAboveDerivedTensor.obj
@@ -468,7 +469,7 @@ def unconditionalTensorRawAugmentation {S : Type u} [CommRing S]
 /-- 概要：指定した標準 augmentation は H⁰ で同型を誘導する。
 方針：実テンソルの標準 H⁰ 比較を使う。
 規約：モニック性・平坦性・有限性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
 theorem unconditionalTensorRawAugmentation_h0_isIso {S : Type u} [CommRing S]
     (M N K : ModuleCat.{u} S) (e : (tensorLeft M).obj N ≅ K) :
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat S) 0).map
@@ -483,7 +484,7 @@ theorem unconditionalTensorRawAugmentation_h0_isIso {S : Type u} [CommRing S]
 /-- 概要：二因子の実導来テンソルの H⁰ 比較は元の係数制限と両立する。
 方針：実テンソルの標準 H⁰ 比較を使う。
 規約：モニック性・平坦性・有限性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw 実完備化との比較。 -/
 def unconditionalRestrictedTensorRawH0Iso {S T : Type u} [CommRing S] [CommRing T]
     (k : T →+* S) (M N K : ModuleCat.{u} S) (e : (tensorLeft M).obj N ≅ K) :
     (DerivedCategory.homologyFunctor (ModuleCat T) 0).obj
@@ -518,7 +519,7 @@ local notation "C₀" => algebraMap A L
 /-- 概要：raw包に、評価βを経由する元の実源L作用を明示した加群対象。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def PowerRootPrismMonicSourceRawModule_of_unconditional : ModuleCat.{u} L := by
   let := deltaDivisionSourceRawAlgebra E dP r
   let : Module L Raw := Algebra.toModule
@@ -527,7 +528,7 @@ def PowerRootPrismMonicSourceRawModule_of_unconditional : ModuleCat.{u} L := by
 /-- 概要：通常二因子テンソルとraw包は、元の実源L上で線形同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceOrdinaryTensorRawIso_of_unconditional :
     (tensorLeft Mβ).obj Mα ≅ PowerRootPrismMonicSourceRawModule_of_unconditional W hW f := by
   let := deltaDivisionSourceEvaluationAlgebra E r
@@ -549,7 +550,7 @@ set_option backward.isDefEq.respectTransparency true in
 /-- 概要：元の実導来二因子源から、raw次数零対象への標準augmentation。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawAugmentation_of_unconditional :
     X ⟶ boundedAboveDerivedSingleFunctor.obj (PowerRootPrismMonicSourceRawModule_of_unconditional W hW f) := by
   with_reducible exact (unconditionalTensorRawAugmentation (S := L) Mβ Mα
@@ -561,7 +562,7 @@ set_option maxHeartbeats 100000 in
 /-- 概要：元の実導来二因子源のH0と実源作用付きraw包の比較。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat L) 0).obj (X).obj ≅
       PowerRootPrismMonicSourceRawModule_of_unconditional W hW f :=
@@ -572,7 +573,7 @@ set_option backward.isDefEq.respectTransparency true in
 /-- 概要：raw標準augmentationはH0では同型である。高次の消滅はここでは主張しない。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawAugmentation_h0_isIso_of_unconditional :
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat L) 0).map
       (powerRootPrismMonicSourceRawAugmentation_of_unconditional W hW f).hom) := by
@@ -584,7 +585,7 @@ theorem powerRootPrismMonicSourceRawAugmentation_h0_isIso_of_unconditional :
 /-- 概要：元のAへ係数制限したraw次数零対象。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 abbrev PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional :=
   (boundedAboveDerivedRestrictScalars C₀).obj
     (boundedAboveDerivedSingleFunctor.obj (PowerRootPrismMonicSourceRawModule_of_unconditional W hW f))
@@ -594,7 +595,7 @@ set_option maxHeartbeats 100000 in
 /-- 概要：元のAへ係数制限した実導来源のH0も、raw包の同じ係数制限と同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawCoefficientH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
         (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f).obj ≅
@@ -606,7 +607,7 @@ def powerRootPrismMonicSourceRawCoefficientH0Iso_of_unconditional :
 /-- 概要：元のA上の実導来源からraw次数零対象への、同じ実係数制限による射。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawCoefficientAugmentation_of_unconditional :
     PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f ⟶ PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f :=
   (boundedAboveDerivedRestrictScalars C₀).map (powerRootPrismMonicSourceRawAugmentation_of_unconditional W hW f)
@@ -619,14 +620,14 @@ local notation "Ud" => DerivedCompletion.boundedAboveDerivedCompletionUnit A d
 /-- 概要：raw次数零対象へ元と同じp,d逐次実導来完備化を施した対象。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 abbrev PowerRootPrismMonicSourceRawIteratedCompletion_of_unconditional :=
   (Cd).obj ((Cp).obj (PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f))
 
 /-- 概要：元の実逐次完備化源から、rawの同じ実逐次完備化への標準比較射。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawIteratedComparison_of_unconditional :
     PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f ⟶ PowerRootPrismMonicSourceRawIteratedCompletion_of_unconditional W hW f :=
   (Cd).map ((Cp).map (powerRootPrismMonicSourceRawCoefficientAugmentation_of_unconditional W hW f))
@@ -634,7 +635,7 @@ def powerRootPrismMonicSourceRawIteratedComparison_of_unconditional :
 /-- 概要：完備化後の比較射は、元のp,d合成標準単位と可換。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawIteratedComparison_unit_of_unconditional :
     ((Up).app (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f) ≫
       (Ud).app ((Cp).obj (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f))) ≫
@@ -658,12 +659,12 @@ end PowerRootRawSourceComparison
 ## 概要
 
 元の無限根モニック源の実 H⁰ を、同じ係数作用の raw 包およびその実完備化へ比較する。
-BS Rem 7.15（著者版 p.62）の raw PD 環との比較の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備。
 
 ## 方針
 
 一般 δ 除算の通常テンソル表示、標準 augmentation、実係数制限と完備化の既存比較を再利用する。
-原典の Prop 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
 
 ## 規約
 
@@ -684,7 +685,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：二つの次数零加群の実導来テンソルは、係数制限後も非正次数にある。
 方針：非正射影モデルのテンソルと正確な係数制限で計算する。
 規約：平坦性・モニック性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の実源の H⁰ 完備化比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の実源の H⁰ 完備化比較。 -/
 theorem unconditionalRestrictedTensor_isLE_zero
     {S T : Type u} [CommRing S] [CommRing T] (k : T →+* S)
     (M N : ModuleCat.{u} S) :
@@ -742,7 +743,7 @@ set_option backward.isDefEq.respectTransparency true in
 /-- 概要：同じ元の実A対象は非正次数の対象であり、離散性や完備性は仮定しない。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceCoefficient_isLE_zero_of_unconditional :
     (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f).obj.IsLE 0 := by
   with_reducible exact (unconditionalRestrictedTensor_isLE_zero (S := L) (T := A) C₀ Mβ Mα)
@@ -750,7 +751,7 @@ theorem powerRootPrismMonicSourceCoefficient_isLE_zero_of_unconditional :
 /-- 概要：元Aへ制限した同じ実二因子源は、全正次数でホモロジーが消える。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceCoefficient_homology_isZero_positive_of_unconditional (i : ℤ) (hi : 0 < i) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat A) i).obj
       (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f).obj) :=
@@ -759,7 +760,7 @@ theorem powerRootPrismMonicSourceCoefficient_homology_isZero_positive_of_uncondi
 /-- 概要：同じaugmentationの終域である係数制限raw singleも非正次数である。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawCoefficient_isLE_zero_of_unconditional :
     (PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f).obj.IsLE 0 := by
   let e : (PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f).obj ≅
@@ -771,7 +772,7 @@ theorem powerRootPrismMonicSourceRawCoefficient_isLE_zero_of_unconditional :
 /-- 概要：元Aへ制限した標準augmentationそのものも、H0に同型を誘導する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawCoefficientAugmentation_h0_isIso_of_unconditional :
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat A) 0).map
       (powerRootPrismMonicSourceRawCoefficientAugmentation_of_unconditional W hW f).hom) := by
@@ -797,12 +798,12 @@ end PowerRootSourceNonpositive
 ## 概要
 
 元の無限根モニック源の実 H⁰ を、同じ係数作用の raw 包およびその実完備化へ比較する。
-BS Rem 7.15（著者版 p.62）の raw PD 環との比較の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備。
 
 ## 方針
 
 一般 δ 除算の通常テンソル表示、標準 augmentation、実係数制限と完備化の既存比較を再利用する。
-原典の Prop 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
 
 ## 規約
 
@@ -832,7 +833,7 @@ local notation "Cd" => DerivedCompletion.boundedAboveDerivedCompletionFunctor A 
 /-- 概要：元の実係数源のp,d逐次実完備化も非正である。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceIteratedPDCompletion_isLE_zero_of_unconditional :
     (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj.IsLE 0 := by
   apply DerivedCompletion.boundedAboveDerivedCompletionFunctor_isLE A d _ 0
@@ -842,7 +843,7 @@ theorem powerRootPrismMonicSourceIteratedPDCompletion_isLE_zero_of_unconditional
 /-- 概要：raw係数対象の同じp,d逐次実完備化も非正である。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawIteratedCompletion_isLE_zero_of_unconditional :
     (PowerRootPrismMonicSourceRawIteratedCompletion_of_unconditional W hW f).obj.IsLE 0 := by
   apply DerivedCompletion.boundedAboveDerivedCompletionFunctor_isLE A d _ 0
@@ -852,7 +853,7 @@ theorem powerRootPrismMonicSourceRawIteratedCompletion_isLE_zero_of_unconditiona
 /-- 概要：同じ元のaugmentationは、実p完備化後にもH0同型を誘導する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawPComparison_h0_isIso_of_unconditional :
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).map
       (((Cp).map (powerRootPrismMonicSourceRawCoefficientAugmentation_of_unconditional W hW f)).hom)) := by
@@ -865,7 +866,7 @@ theorem powerRootPrismMonicSourceRawPComparison_h0_isIso_of_unconditional :
 /-- 概要：既存の標準逐次完備化比較射そのものがH0同型を誘導する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicSourceRawIteratedComparison_h0_isIso_of_unconditional :
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).map
       (powerRootPrismMonicSourceRawIteratedComparison_of_unconditional W hW f).hom) := by
@@ -880,7 +881,7 @@ theorem powerRootPrismMonicSourceRawIteratedComparison_h0_isIso_of_unconditional
 /-- 概要：実逐次源のH0とrawの実逐次完備化のH0を、同じ標準比較射で同定する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawIteratedH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).obj
         (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj ≅
@@ -899,12 +900,12 @@ end PowerRootSourceCompletionH0
 ## 概要
 
 元の無限根モニック源の実 H⁰ を、同じ係数作用の raw 包およびその実完備化へ比較する。
-BS Rem 7.15（著者版 p.62）の raw PD 環との比較の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備。
 
 ## 方針
 
 一般 δ 除算の通常テンソル表示、標準 augmentation、実係数制限と完備化の既存比較を再利用する。
-原典の Prop 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
 
 ## 規約
 
@@ -940,7 +941,7 @@ local notation "C₀" => algebraMap A L
 /-- 概要：評価βを経由する制限作用と、raw環の標準A作用の恒等線形同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawCoefficientModuleIso_of_unconditional :
     (ModuleCat.restrictScalars C₀).obj (PowerRootPrismMonicSourceRawModule_of_unconditional W hW f) ≅
       ModuleCat.of A Raw := by
@@ -962,7 +963,7 @@ def powerRootPrismMonicSourceRawCoefficientModuleIso_of_unconditional :
 /-- 概要：元のAへの実係数制限後のraw対象を、標準A作用付きraw環の次数零対象へ戻す。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawCoefficientSingleIso_of_unconditional :
     PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f ≅
       boundedAboveDerivedSingleFunctor.obj (ModuleCat.of A Raw) :=
@@ -976,7 +977,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：元の実導来源のH0は、標準A作用付きraw r/d環と線形同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceRawStandardH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
         (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f).obj ≅ ModuleCat.of A Raw :=
@@ -991,12 +992,12 @@ end PowerRootRawCoefficients
 ## 概要
 
 元の無限根モニック源の実 H⁰ を、同じ係数作用の raw 包およびその実完備化へ比較する。
-BS Rem 7.15（著者版 p.62）の raw PD 環との比較の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の raw PD 環との比較の準備。
 
 ## 方針
 
 一般 δ 除算の通常テンソル表示、標準 augmentation、実係数制限と完備化の既存比較を再利用する。
-原典の Prop 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる、具体的な元の係数作用を保つ計算。
 
 ## 規約
 
@@ -1036,7 +1037,7 @@ local notation "Res" => derivedRestrictScalars c
 /-- 概要：元のraw係数対象は、raw環自身のsingleを実係数射で制限した対象。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicRawCoefficientRestrictionIso_of_unconditional :
     (PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f).obj ≅ (Res).obj M :=
   DerivedCategory.Minus.ι.mapIso (powerRootPrismMonicSourceRawCoefficientSingleIso_of_unconditional W hW f) ≪≫
@@ -1045,13 +1046,13 @@ def powerRootPrismMonicRawCoefficientRestrictionIso_of_unconditional :
 /-- 概要：raw環自身の二つの主元についての実逐次完備化。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 abbrev PowerRootPrismMonicRawInternalIteratedCompletion_of_unconditional := (Bd).obj ((Bp).obj M)
 
 /-- 概要：二度のG8を同じ係数射に適用した、元のraw実逐次対象との同型。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicRawIteratedRestrictionIso_of_unconditional :
     (PowerRootPrismMonicSourceRawIteratedCompletion_of_unconditional W hW f).obj ≅
       (Res).obj (PowerRootPrismMonicRawInternalIteratedCompletion_of_unconditional W hW f) :=
@@ -1062,7 +1063,7 @@ def powerRootPrismMonicRawIteratedRestrictionIso_of_unconditional :
 /-- 概要：係数比較は両方の元の主元完備化単位を保つ。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 theorem powerRootPrismMonicRawIteratedRestrictionIso_unit_of_unconditional :
     ((derivedComplexCompletionUnit A (p : A)).app
         (PowerRootPrismMonicSourceRawCoefficientObject_of_unconditional W hW f).obj ≫
@@ -1100,7 +1101,7 @@ theorem powerRootPrismMonicRawIteratedRestrictionIso_unit_of_unconditional :
 /-- 概要：raw環上の同じ実逐次完備化のH0へ、元のA作用を保って比較する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicRawIteratedRestrictionH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
         (PowerRootPrismMonicSourceRawIteratedCompletion_of_unconditional W hW f).obj ≅
@@ -1114,7 +1115,7 @@ def powerRootPrismMonicRawIteratedRestrictionH0Iso_of_unconditional :
 /-- 概要：元の実モニック族添加源のH0をraw環上の実逐次完備化のH0と同定する。
 方針：一般の標準 augmentation と実係数制限・完備化比較を、同じ実対象へ適用する。
 規約：元の係数射と作用を保持し、モニック性・正次数・有限性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ と raw PD 環の比較。 -/
 def powerRootPrismMonicSourceInternalRawH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
         (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj ≅
@@ -1132,12 +1133,12 @@ end PowerRootRawCompletionRestriction
 ## 概要
 
 元の無限根モニック源の実逐次 p,d 完備化の H⁰ は、raw f/d 包の実 PD 完備化 H⁰ と A 線形同型。
-BS Rem 7.15（著者版 p.62）の実源と環候補の比較。
+BS 著者版 Remark 7.15（著者版 p.62）の実源と環候補の比較。
 
 ## 方針
 
 源の標準 augmentation の H⁰ 比較、G8 の係数制限比較、既存の一般二座標 H⁰ 反射比較を合成する。
-原典の Prop 7.11 を使う証明とは異なる具体的係数射を保つ計算。
+原典の BS 著者版 Proposition 7.11 を使う証明とは異なる具体的係数射を保つ計算。
 
 ## 規約
 
@@ -1174,14 +1175,14 @@ local notation "H" => CategoryTheory.Functor.obj (DerivedCategory.homologyFuncto
 /-- 概要：raw 包自身の逐次実完備化 H⁰ は、元の Raw 線形単位を保って PD 完備化 H⁰ と同型。
 方針：一般二座標 H⁰ 反射の既存比較をそのまま適用する。
 規約：第一座標の像が自然数 p であることを明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の実源から環候補への比較の最終段。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実源から環候補への比較の最終段。 -/
 def powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional : H Z ≃ₗ[Raw] PDCompletionH0 Raw p z :=
   iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
 
 /-- 概要：raw 自身の比較は、すべての raw 係数の元の標準完備化像を保つ。
 方針：一般 H⁰ 反射比較の標準単位公式を再利用する。
 規約：単位 1 だけでなく任意の raw 元で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の候補係数射との後続比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の候補係数射との後続比較。 -/
 theorem powerRootPrismMonicRawInternalPDLinearEquiv_unit_of_unconditional (x : Raw) :
     powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional W hW f (iteratedPDH0Unit Raw a z x) =
       pairCompletionH0Unit Raw (p : Raw) z x :=
@@ -1190,7 +1191,7 @@ theorem powerRootPrismMonicRawInternalPDLinearEquiv_unit_of_unconditional (x : R
 /-- 概要：元の実モニック源の逐次完備化 H⁰ は、raw PD 環の同じ A 係数制限と同型。
 方針：標準 augmentation、二度の G8、Raw 線形 H⁰ 反射比較を順に合成する。
 規約：元の A 作用を保つ加群同型を構成する。
-使われ方：BS Rem 7.15（著者版 p.62）の環候補の完全忠実平坦性への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の環候補の完全忠実平坦性への移送。 -/
 def powerRootPrismMonicSourcePDH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
         (PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f).obj ≅
@@ -1208,13 +1209,13 @@ end PowerRootRawPDComparison
 ## 概要
 
 完全 prism 上の正次数モニック無限根族の raw f/d 包の実 PD 完備化環は、元の (p,d) に関して
-完全忠実平坦。BS Rem 7.15（著者版 p.62）の環候補への平坦性の移送。
+完全忠実平坦。BS 著者版 Remark 7.15（著者版 p.62）の環候補への平坦性の移送。
 
 ## 方針
 
 同じ実源の離散性と、元の係数作用を保つ H⁰ 比較から raw PD 環の single 比較を構成する。
 実剰余の Tor 消滅と忠実平坦性を完全忠実平坦性の一般判定へ渡す。
-原典の Prop 7.11 を用いる証明とは異なる経路の計算。
+原典の BS 著者版 Proposition 7.11 を用いる証明とは異なる経路の計算。
 
 ## 規約
 
@@ -1258,7 +1259,7 @@ include hf hdeg
 /-- 概要：元の実逐次源は、標準A作用付きraw PD環のsingle対象と同型。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 def powerRootPrismMonicSourcePDSingleIso_of_unconditional : X ≅ boundedAboveDerivedSingleFunctor.obj M :=
   ObjectProperty.isoMk _ (powerRootPrismMonicSourceSingleIso_of_unconditional W hW f hf hdeg ≪≫
     (DerivedCategory.singleFunctor (ModuleCat A) 0).mapIso (powerRootPrismMonicSourcePDH0Iso_of_unconditional W hW f))
@@ -1266,7 +1267,7 @@ def powerRootPrismMonicSourcePDSingleIso_of_unconditional : X ≅ boundedAboveDe
 /-- 概要：実PD環の同じ(p,d)導来還元の非零次数は消える。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem powerRootPrismMonicRawPD_reduction_homology_isZero_of_unconditional (i : ℤ) (hi : i ≠ 0) :
     IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj (Y).obj) := by
   have hz := powerRootPrismMonicSourceIteratedPDResidue_homology_isZero_of_unconditional W hW f hf i hi
@@ -1278,7 +1279,7 @@ theorem powerRootPrismMonicRawPD_reduction_homology_isZero_of_unconditional (i :
 /-- 概要：実PD環の同じ(p,d)導来還元のH0は忠実平坦。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem powerRootPrismMonicRawPD_reductionH0_faithfullyFlat_of_unconditional :
     Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj (Y).obj) := by
   let : Module.FaithfullyFlat Q
@@ -1297,7 +1298,7 @@ theorem powerRootPrismMonicRawPD_reductionH0_faithfullyFlat_of_unconditional :
 /-- 概要：実PD環の具体的A係数加群の(p,d)高次Torは零。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem powerRootPrismMonicRawPD_torVanishing_of_unconditional : scalarExtensionTorVanishing q M := by
   apply (derivedModuleBaseChange_negative_homology_vanishes_iff q M).mp
   intro n hn
@@ -1308,7 +1309,7 @@ theorem powerRootPrismMonicRawPD_torVanishing_of_unconditional : scalarExtension
 /-- 概要：実PD環の通常係数拡大も同じ商環上忠実平坦。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem powerRootPrismMonicRawPD_scalarExtension_faithfullyFlat_of_unconditional :
     Module.FaithfullyFlat Q ((ModuleCat.extendScalars q).obj M) := by
   let : Module.FaithfullyFlat Q
@@ -1321,7 +1322,7 @@ theorem powerRootPrismMonicRawPD_scalarExtension_faithfullyFlat_of_unconditional
 /-- 概要：正次数モニック無限根族のraw実PD環は、元の(p,d)に関して完全忠実平坦。
 方針：実完備化源の純性と同じ A 線形 H⁰ 比較を用い、実剰余の離散・忠実平坦性を移す。
 規約：完全 prism とモニック性、正次数を仮定し、元の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終完全 prism 候補との比較への入力。 -/
 theorem powerRootPrismMonicRawPD_isCompletelyFaithfullyFlat_of_unconditional :
     IsCompletelyFaithfullyFlat I (ModuleCat.carrier M) := by
   let Mc : ModuleCat.{u} A := M
@@ -1336,7 +1337,7 @@ theorem powerRootPrismMonicRawPD_isCompletelyFaithfullyFlat_of_unconditional :
 /-- 概要：元の raw PD 実完備化 H の標準分母像は正則。
 方針：元の実源 H⁰ の A 線形比較で生成元の単射性を移し、標準完備化射の作用を照合する。
 規約：同じ H と同じ分母像を用い、hpR を仮定しない。正次数モニック入力を要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H の prism 構造への無条件入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H の prism 構造への無条件入力。 -/
 theorem powerRootPrismMonicRaw_pdCompletion_generator_regular_of_unconditional :
     let := pdCompletionCommRing Raw p (c d)
     IsSMulRegular B (pdCompletionUnit Raw p (c d) (c d)) := by
@@ -1366,7 +1367,7 @@ end PowerRootRawPDCompletelyFlat
 /-! ## 元の源の先行 p 還元と実完備化の p 正則性（旧 Andre/Remark715/Unconditional/PrimeReductionPurity.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実逐次完備化を先に p で還元し、その純性を示す。
+BS 著者版 Remark 7.15（著者版 p.62）の元の実逐次完備化を先に p で還元し、その純性を示す。
 
 ## 方針
 A/(p) の被約性による d ねじれの上界と、実二生成剰余の純性・平坦性を使う。
@@ -1390,7 +1391,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：被約環の任意主元の冪ねじれは、その主元で零になる。
 方針：積の冪が零になることから被約性を使う。
 規約：零環と冪零指数零も含める。
-使われ方：BS Rem 7.15（著者版 p.62）の A/(p) での有界ねじれ入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の A/(p) での有界ねじれ入力。 -/
 theorem unconditionalReduced_power_torsion_bound
     {K : Type u} [CommRing K] [IsReduced K] (d : K) (n : ℕ) (x : K)
     (h : d ^ n * x = 0) : d * x = 0 := by
@@ -1415,7 +1416,7 @@ local notation "e" => principalDoubleQuotEquiv a b
 /-- 概要：標準二段主商の係数拡大を同じ二生成商への拡大・係数制限へ比較する。
 方針：全代表元を保つ二重商同型と標準係数拡大合成を使う。
 規約：a,b の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の先行 p 還元の実剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の先行 p 還元の実剰余比較。 -/
 def unconditionalDoubleReductionCochainIso :
     (ModuleCat.extendScalars qA).mapHomologicalComplex (.up ℤ) ⋙
         (ModuleCat.extendScalars qB).mapHomologicalComplex (.up ℤ) ≅
@@ -1443,7 +1444,7 @@ def unconditionalDoubleReductionCochainIso :
 /-- 概要：同じ二段主商比較を実導来対象に適用する。
 方針：選択射影モデルと元の係数拡大モデルの比較を合成する。
 規約：元の導来対象を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の先行 p 還元の純性判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の先行 p 還元の純性判定。 -/
 def unconditionalDoubleReductionDerivedIso
     (X : DerivedCategory.Minus (ModuleCat.{u} A)) :
     (boundedAboveDerivedBaseChange qB).obj ((boundedAboveDerivedBaseChange qA).obj X) ≅
@@ -1462,7 +1463,7 @@ def unconditionalDoubleReductionDerivedIso
 /-- 概要：実二段主商のホモロジーを同じ二生成商ホモロジーの係数制限へ比較する。
 方針：実導来比較と正確な係数制限を合成する。
 規約：全整数次数に適用する。
-使われ方：BS Rem 7.15（著者版 p.62）の消滅と平坦性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の消滅と平坦性の移送。 -/
 def unconditionalDoubleReductionHomologyIso
     (X : DerivedCategory.Minus (ModuleCat.{u} A)) (i : ℤ) :
     (DerivedCategory.homologyFunctor (ModuleCat QB) i).obj
@@ -1478,7 +1479,7 @@ def unconditionalDoubleReductionHomologyIso
 /-- 概要：二生成商の H⁰ 平坦性は実二段主商へ移る。
 方針：商環同型の係数制限とホモロジー比較を使う。
 規約：正則性を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の有界ねじれ純性判定への平坦性入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有界ねじれ純性判定への平坦性入力。 -/
 theorem unconditionalDoubleReductionH0_flat
     (X : DerivedCategory.Minus (ModuleCat.{u} A))
     (h : Module.Flat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj
@@ -1501,7 +1502,7 @@ end DoubleReduction
 /-- 概要：別の主元に関して導来完備な対象の正則主商も、商環上で導来完備。
 方針：正則主商を実 Koszul 錐で計算し、係数制限で完備性を反映する。
 規約：商にする元だけの正則性を要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の先行 p 還元の d 完備性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の先行 p 還元の d 完備性。 -/
 theorem unconditionalRegularQuotient_isComplete
     {A : Type u} [CommRing A] (a b : A) (ha : IsSMulRegular A a)
     (X : DerivedCategory.Minus (ModuleCat.{u} A)) (hc : IsComplete A b X.obj) :
@@ -1545,7 +1546,7 @@ local notation "qPD" => Ideal.Quotient.mk (Ideal.span {(p : A), d})
 /-- 概要：元の実逐次完備化の先行 p 還元は次数零に集中する。
 方針：A/(p) の d 冪ねじれ上界、実二生成剰余の純性・平坦性、商上の d 完備性を使う。
 規約：d mod p の正則性も hpR も仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の実完備化の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の実完備化の p 正則性。 -/
 theorem powerRootPrismMonicSourcePrimeReduction_pure_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     (Y).obj.IsGE 0 ∧ (Y).obj.IsLE 0 := by
@@ -1572,7 +1573,7 @@ theorem powerRootPrismMonicSourcePrimeReduction_pure_of_unconditional
 /-- 概要：元の実逐次完備化の H⁰ で p は単射に作用する。
 方針：先行 p 商の純性と元の p 導来完備性を正則商純性判定に渡す。
 規約：元の A 上の実対象で述べ、raw の p 正則性は使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H の p 正則性への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H の p 正則性への移送。 -/
 theorem powerRootPrismMonicSourceIteratedPDCompletion_prime_injective_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Function.Injective
@@ -1598,7 +1599,7 @@ local notation "M" => CategoryTheory.Functor.obj (ModuleCat.restrictScalars c) (
 /-- 概要：元の raw PD 実完備化 H には p ねじれがない。
 方針：元の実源 H⁰ の p 単射性を標準 A 線形比較で移す。
 規約：hpR・raw p 正則性を仮定せず、元の H の環構造を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の p 正則性の無条件版。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の p 正則性の無条件版。 -/
 theorem powerRootPrismMonic_pdCompletion_prime_regular_of_positive_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := pdCompletionCommRing Raw p (c d)
@@ -1622,7 +1623,7 @@ theorem powerRootPrismMonic_pdCompletion_prime_regular_of_positive_unconditional
 /-- 概要：次数零モニック入力では元の実完備化 H は零環。
 方針：f=1 から標準分母像の乗法逆元を作り、同じ分母での導来完備性を使う。
 規約：元の raw 包と元の実 H⁰ のままで述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の正則性を余分な正次数仮定なしに述べる。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則性を余分な正次数仮定なしに述べる。 -/
 theorem powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero
     (hf : f.Monic) (hz : f.natDegree = 0) :
     let := pdCompletionCommRing Raw p (c d)
@@ -1652,7 +1653,7 @@ theorem powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero
 /-- 概要：元の実完備化 H は、任意のモニック入力について p 正則。
 方針：正次数では先行 p 還元の純性、次数零では同じ H の零環性を使う。
 規約：旧定理から hpR だけを除き、正次数仮定を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の実 H の p 正則性の置換先。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の実 H の p 正則性の置換先。 -/
 theorem powerRootPrismMonic_pdCompletion_prime_regular_of_unconditional
     (hf : f.Monic) :
     let := pdCompletionCommRing Raw p (c d)
@@ -1670,7 +1671,7 @@ theorem powerRootPrismMonic_pdCompletion_prime_regular_of_unconditional
 /-- 概要：元の H の標準分母像は、任意のモニック入力について正則。
 方針：正次数の場合の実源の純性と、次数零の場合の H の零環性を合流する。
 規約：旧定理の hf を保持し、hpR と余分な正次数仮定を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H の prism 構造への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H の prism 構造への入力。 -/
 theorem powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional
     (hf : f.Monic) :
     let := pdCompletionCommRing Raw p (c d)
@@ -1692,7 +1693,7 @@ end PrimeReductionPurity
 /-! ## 元の raw 源の p 錐と d 完備化の純性（旧 Andre/Remark715/Unconditional/PowerRootRawPrimeConeCompletion.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実源の先行 p 錐を d 完備化すると負次数は消える。
+BS 著者版 Remark 7.15（著者版 p.62）の元の実源の先行 p 錐を d 完備化すると負次数は消える。
 
 ## 方針
 p 完備化単位の p 錐同値性と、d 完備化と p 錐の可換性を合成する。
@@ -1716,7 +1717,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：元の b 錐の a 完備化は、b 完備化後の a 完備化の b 錐と同型。
 方針：b 完備化単位の b 錐同値と a 完備化の錐比較を合成する。
 規約：a,b の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の先行 p 錐の純性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の先行 p 錐の純性。 -/
 def unconditionalIteratedCompletion_scalarConeIso
     {R : Type u} [CommRing R] (a b : R)
     (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
@@ -1736,7 +1737,7 @@ def unconditionalIteratedCompletion_scalarConeIso
 /-- 概要：正則主元での実導来商の負次数消滅は、同じ実スカラー錐の負次数消滅を与える。
 方針：実 Koszul 比較と正確な係数制限のホモロジー比較を使う。
 規約：正則性は係数環上の主元だけに課す。
-使われ方：BS Rem 7.15（著者版 p.62）の既証明の p 還元純性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の既証明の p 還元純性の移送。 -/
 theorem unconditionalScalarCone_isGE_of_regular_quotient_isGE
     {R : Type u} [CommRing R] (b : R) (hb : IsSMulRegular R b)
     (X : DerivedCategory.Minus (ModuleCat.{u} R))
@@ -1758,7 +1759,7 @@ variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomi
 /-- 概要：元の実源の先行 p 錐の d 完備化は負次数を持たない。
 方針：逐次完備化の p 還元純性を、元の実 p 錐と d 完備化の比較で移す。
 規約：hpR・raw p 正則性は不要。元の標準 A 作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の局所化と完備化による raw 正則性検出。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の局所化と完備化による raw 正則性検出。 -/
 theorem powerRootPrismMonicSourcePrimeConeCompletion_isGE_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     ((derivedComplexCompletionFunctor A W.generator).obj

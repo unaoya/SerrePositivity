@@ -12,6 +12,7 @@ public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 
 ## 概要
 完全 prism の射の剰余因子の代数同型と、各 prism 自身の剰余環を使う Cartier テンソル比較、係数表示への移送。
+BS 著者版 Lemma 3.5 と Theorem 3.10 に関わる、完全 prism の射の剰余テンソルを比較する。
 
 ## 方針
 完全 prism の Cartier 比較を剰余因子で書き換える。

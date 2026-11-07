@@ -16,7 +16,7 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 全源評価環への Tor の移送、自由 δ 射の通常テンソル積と raw δ 包・分冪表示環、導来分冪比較、テンソルの δ 構造・p 正則性・導来完備化 H⁰ との比較。
 
 ## 方針
-主定理には使われない。旧 B4 経路の部品のうち、Cor 2.39・Cor 2.44 の一般化に使える部分として残した（BS-W8）。
+主定理には使われない。旧 B4 経路の部品のうち、BS 著者版 Corollary 2.39・BS 著者版 Corollary 2.44 の一般化に使える部分として残した（BS-W8）。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。

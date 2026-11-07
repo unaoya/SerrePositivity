@@ -29,7 +29,7 @@ public import Mathlib.RingTheory.Perfectoid.FontaineTheta
 標的は有界（原典は任意の prism）。prismatic site の対象は有界なので E3 には足りる。
 
 ## 使われ方
-Thm 3.10 の充満忠実性、Cor 7.3、A0（完全試験 prism）。有界な標的の版は旧 Andre/Remark715 から移した。
+BS 著者版 Theorem 3.10 の充満忠実性、BS 著者版 Corollary 7.3、A0（完全試験 prism）。有界な標的の版は旧 Andre/Remark715 から移した。
 -/
 
 universe u v
@@ -40,7 +40,7 @@ universe u v
 
 源の各元が b^p+p*c と書け、標的が p を含むイデアルで分離的なら、
 そのイデアル商上で一致する二つの環射は等しい。
-BS Lemma 4.8（著者版 pp.38–39）、Rem 7.15（p.62）の基底射の一意性への準備。
+BS 著者版 Lemma 4.8（著者版 pp.38–39）、BS 著者版 Remark 7.15（p.62）の基底射の一意性への準備。
 
 ## 方針
 
@@ -65,7 +65,7 @@ variable {B : Type v} [CommRing B]
 /-- 概要：商で一致する二元の幾何和は、商で消える長さ p の倍数となる。
 方針：商射で二元を同一視し、同じ元の幾何和の公式を使う。
 規約：p は任意の自然数とし、p 自体がイデアルに入ることを要求する。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の環射の剛性の直接計算。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の環射の剛性の直接計算。 -/
 theorem geomSum_mem_ideal_of_natCast_mem (p : ℕ) (I : Ideal B) (hp : (p : B) ∈ I)
     (x y : B) (hxy : x - y ∈ I) :
     (∑ i ∈ Finset.range p, x ^ i * y ^ (p - 1 - i)) ∈ I := by
@@ -85,7 +85,7 @@ theorem geomSum_mem_ideal_of_natCast_mem (p : ℕ) (I : Ideal B) (hp : (p : B) �
 /-- 概要：p を含むイデアルで合同な二元の p 冪差は、差の所属冪より一段深く入る。
 方針：幾何和のイデアル所属と元の差を乗算する。
 規約：差の最初のイデアル所属と任意の n 冪所属を明示する。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の冪による一意性帰納。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の冪による一意性帰納。 -/
 theorem pow_sub_pow_mem_ideal_succ (p : ℕ) (I : Ideal B) (hp : (p : B) ∈ I)
     (x y : B) (hxy : x - y ∈ I) (n : ℕ) (hn : x - y ∈ I ^ n) :
     x ^ p - y ^ p ∈ I ^ (n + 1) := by
@@ -95,7 +95,7 @@ theorem pow_sub_pow_mem_ideal_succ (p : ℕ) (I : Ideal B) (hp : (p : B) ∈ I)
 /-- 概要：p 冪近似を持つ源からの二つの環射は、標的の分離イデアル商で一致すれば等しい。
 方針：源の表示 a=b^p+p*c と幾何和を使い、差を標的イデアルの全冪へ押し込む。
 規約：源・標的の p 正則性や素数性は要求しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の一般有界試験 prism での一意性。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界試験 prism での一意性。 -/
 theorem ringHom_ext_of_pow_add_natCast_mul (p : ℕ)
     {A : Type u} [CommRing A]
     (hA : ∀ a : A, ∃ b c : A, a = b ^ p + (p : A) * c)
@@ -137,7 +137,7 @@ end PerfectSourceAdicRigidity
 ## 概要
 
 完全 δ 環から有界 prism の台環への環射は、prism 商への合成で決まる。
-完全 prism からの prism 射も商射で決まる。BS Lemma 4.8（著者版 pp.38–39）の一意性。
+完全 prism からの prism 射も商射で決まる。BS 著者版 Lemma 4.8（著者版 pp.38–39）の一意性。
 
 ## 方針
 
@@ -150,7 +150,7 @@ end PerfectSourceAdicRigidity
 
 ## 使われ方
 
-BS Rem 7.15（著者版 p.62）の基底射の選択の一意性と入力圏の比較に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の基底射の選択の一意性と入力圏の比較に使う。
 -/
 
 @[expose] public noncomputable section PerfectPrismBoundedTargetRigidity
@@ -161,7 +161,7 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} {B : Type v} [CommRing A] [CommRi
 /-- 概要：完全 δ 源から有界 prism への環射は、標準 prism 商への合成で決まる。
 方針：完全 Frobenius による p 冪近似と標的の (p,d) 分離性で差を全冪に入れる。
 規約：射の δ 保存性すらこの剛性には不要。標的の p 正則性を要求しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の一般有界標的での一意性。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的での一意性。 -/
 theorem ringHom_ext_to_boundedPrism_of_perfect_source
     (D : DeltaStructure p A) (hD : D.IsPerfect) (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -192,10 +192,10 @@ theorem ringHom_ext_to_boundedPrism_of_perfect_source
   rw [map_sub, sub_eq_zero]
   exact RingHom.congr_fun hFG a
 
-/-- 概要：完全 prism から有界 prism への射は、その誘導商射で一意に決まる。
+/-- 概要：完全 prism から有界 prism への射は、その誘導商射で一意に決まる（BS 著者版 Lemma 4.8 の標的が有界な向き付き prism の場合の一意性）。
 方針：商射の合成公式で環射の剛性へ帰着する。
 規約：標的を完全 prism に制限しない。持上げの存在は主張しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の基底持上げの一意性。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の基底持上げの一意性。 -/
 theorem perfectPrismHom_ext_to_bounded_target
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -214,7 +214,7 @@ end PerfectPrismBoundedTargetRigidity
 ## 概要
 
 完全 δ 環から p 進分離な δ 環への環射は δ を自動的に保つ。
-BS Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの δ 判定部分。
+BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界標的への持上げの δ 判定部分。
 
 ## 方針
 
@@ -267,7 +267,7 @@ private theorem additive_twisted_derivation_eq_zero
 /-- 概要：完全な源から p 進分離な δ 標的への環射は Frobenius 持上げと可換。
 方針：二つの合成射は mod p で一致するため、p 冪近似による環射の剛性を使う。
 規約：標的の p 正則性は要求しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の δ 保存性の直接証明。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の δ 保存性の直接証明。 -/
 theorem perfectSource_ringHom_map_frobenius
     (D : DeltaStructure p A) (hD : D.IsPerfect) (E : DeltaStructure p B)
     [IsHausdorff (Ideal.span {(p : B)}) B] (f : A →+* B) :
@@ -289,7 +289,7 @@ theorem perfectSource_ringHom_map_frobenius
 /-- 概要：同じ第0成分と ghost 成分を持つ W₂ 射は p 冪近似を持つ源で一致。
 方針：第1座標の差は p で消える導分となり、源の p 冪近似で消える。
 規約：標的の p 正則性・完備性は不要。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の p ねじれを許す δ 判定。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の p ねじれを許す δ 判定。 -/
 theorem wittTwoHom_ext_of_perfectSource_approximation
     (hA : ∀ a : A, ∃ b c : A, a = b ^ p + (p : A) * c)
     (f : A →+* B) (s t : A →+* WittTwo p B)
@@ -339,7 +339,7 @@ theorem wittTwoHom_ext_of_perfectSource_approximation
 /-- 概要：完全 δ 源から p 進分離な δ 標的への環射は δ を自動的に保つ。
 方針：Frobenius 可換性を環射の剛性で得て、二つの W₂ 射を第1座標の導分で比較する。
 規約：標的の p 正則性は不要。環射の存在は主張しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の一般有界 prism への基底射の δ 判定。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の一般有界 prism への基底射の δ 判定。 -/
 theorem perfectSource_ringHom_isDeltaHom
     (D : DeltaStructure p A) (hD : D.IsPerfect) (E : DeltaStructure p B)
     [IsHausdorff (Ideal.span {(p : B)}) B] (f : A →+* B) : D.IsDeltaHom E f := by
@@ -364,7 +364,7 @@ theorem perfectSource_ringHom_isDeltaHom
 /-- 概要：完全 δ 源から一般有界 prism への環射は δ を自動的に保つ。
 方針：有界 prism の p 分離性を一般の δ 保存性定理へ渡す。
 規約：標的の完全性・p 正則性は要求しない。環射は明示する。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の持上げた基底環射の δ 判定。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の持上げた基底環射の δ 判定。 -/
 theorem perfectSource_ringHom_isDeltaHom_to_boundedPrism
     (D : DeltaStructure p A) (hD : D.IsPerfect) (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -518,7 +518,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
 
-/-- pが非可逆な商を持つ完全prism間では、任意の商射は唯一のprism射に持ち上がる。 -/
+/-- pが非可逆な商を持つ完全prism間では、任意の商射は唯一のprism射に持ち上がる（BS 著者版 Theorem 3.10 の完全 prism 間の射の持ち上げ）。 -/
 theorem existsUnique_perfectPrismHomLift
     (P : OrientedPrism p A) (Q : OrientedPrism p B)
     (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect)
@@ -619,7 +619,7 @@ end PerfectPrismHomLift
 ## 概要
 
 完全 prism の商から有界 prism の商への環射は、唯一の prism 射へ持ち上がる。
-BS Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での証明。
+BS 著者版 Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での証明。
 
 ## 方針
 
@@ -635,7 +635,7 @@ BS Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での証明。
 
 ## 使われ方
 
-BS Rem 7.15（著者版 p.62）の絶対入力対象に、完全基底からの一意な基底射を供給する。
+BS 著者版 Remark 7.15（著者版 p.62）の絶対入力対象に、完全基底からの一意な基底射を供給する。
 -/
 
 @[expose] public noncomputable section PerfectPrismBoundedTargetLift
@@ -705,10 +705,10 @@ private theorem exists_perfectPrismRingHomLift_nonunit
   exact (RingHom.congr_fun hFw (ea.symm a)).trans
     (congrArg (g.comp qA) (ea.apply_symm_apply a))
 
-/-- 概要：完全 prism の商射は一般有界 prism の台環へ唯一の環射として持ち上がる。
+/-- 概要：完全 prism の商射は一般有界 prism の台環へ唯一の環射として持ち上がる（BS 著者版 Lemma 4.8 の標的が有界な向き付き prism の場合の環射表示）。
 方針：非零商では tilt 比較と Fontaine 写像、零商では生成元完備性を使う。
 規約：標的の完全性・p 正則性・非零性を仮定しない。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）の環射の存在と一意性。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）の環射の存在と一意性。 -/
 theorem existsUnique_perfectPrismRingHomLift_to_bounded
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -742,10 +742,10 @@ theorem existsUnique_perfectPrismRingHomLift_to_bounded
   exact ringHom_ext_to_boundedPrism_of_perfect_source W.deltaStructure hW Q hB G F
     (hG.trans hF.symm)
 
-/-- 概要：完全 prism の商射は一般有界 prism へ唯一の prism 射として持ち上がる。
+/-- 概要：完全 prism の商射は一般有界 prism へ唯一の prism 射として持ち上がる（BS 著者版 Lemma 4.8 の標的が有界な向き付き prism の場合）。
 方針：環射の一意持上げに自動的な δ 保存性と商図式からのイデアル保存性を付ける。
 規約：向きは生成元の厳密な保存を要求せず、標的の完全性・p 正則性も不要。
-使われ方：BS Lemma 4.8（著者版 pp.38–39）と Rem 7.15（p.62）の絶対入力圏。 -/
+使われ方：BS 著者版 Lemma 4.8（著者版 pp.38–39）と BS 著者版 Remark 7.15（p.62）の絶対入力圏。 -/
 theorem existsUnique_perfectPrismHomLift_to_bounded
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,

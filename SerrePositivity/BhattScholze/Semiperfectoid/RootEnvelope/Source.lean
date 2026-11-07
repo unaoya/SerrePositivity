@@ -26,7 +26,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization
 
 /-!
-# 根の割り算包の源（Thm 7.4 の別証明）
+# 根の割り算包の源（BS 著者版 Theorem 7.4 の別証明）
 
 ## 概要
 有界深さの部分族図式の Tor 消滅、任意根族の全源 Tor 入力からの係数還元、商還元の純性と H⁰ の忠実平坦性、(p,d) 還元・逐次完備化後の還元、Tor 交換、根 δ 除算包の通常商の互換 p 冪根族、perfectoid 候補と基底射、直接 PD 完備化・δ 完全化との比較、生成元冪商の完備性、源の raw 比較・非正性・H⁰、完全 δ 環の rank-one 元の互換根列、根付き生成族による全射性とその降下。

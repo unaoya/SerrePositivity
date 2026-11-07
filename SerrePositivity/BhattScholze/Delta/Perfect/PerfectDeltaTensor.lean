@@ -11,7 +11,7 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraH0
 
 /-!
-# 完全 δ 環のテンソル積（BS 著者版 Rem 2.7 と §2.4）
+# 完全 δ 環のテンソル積（BS 著者版 Remark 2.7 と §2.4）
 
 ## 概要
 完全 δ 環の通常テンソル積は p ねじれなしで完全 δ 構造を持ち、その古典的 p 進完備化と導来完備テンソル積 H⁰ も完全 δ 環で離散。
@@ -196,7 +196,7 @@ lemma perfectDeltaTensorFrobeniusEquiv_mod_p (x : S ⊗[R] T) :
     have h := add_pow_prime_eq (Fact.out : p.Prime) (q x) (q y)
     simpa only [hqp, zero_mul, add_zero] using h.symm
 
-/-- The original ordinary tensor carries the reconstructed delta structure. -/
+/-- 完全 δ 環の通常のテンソル積に、両方の構造射と両立する δ 構造を載せる（BS 著者版 Remark 2.7 の押し出しの構成で完全 δ 環の場合）。 -/
 def perfectDeltaTensorStructure : DeltaStructure p (S ⊗[R] T) :=
   (DeltaStructure.existsUnique_of_mod_p
     (perfectDelta_tensor_p_mul_injective p R S T DR DS DT hR hS hT)

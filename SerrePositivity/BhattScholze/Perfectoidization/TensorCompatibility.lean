@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 
 /-!
-# perfectoid 化と完備テンソル積の可換性（BS 著者版 Prop 8.13 の環版）
+# perfectoid 化と完備テンソル積の可換性（BS 著者版 Proposition 8.13 の環版）
 
 ## 概要
 指定済みの環の perfectoid 化をもつ一般のテンソル図式で、完備テンソル積の perfectoid 化は perfectoid 化の完備テンソル積。perfectoid な底変換の場合。
@@ -25,8 +25,8 @@ universe u
 
 /-! ## Ring-perfectoidization of a general tensor diagram（旧 Perfectoidization/PerfectoidizationTensorCompatibility.lean）
 
-This is the ring-valued pushout statement underlying author-version BS Prop.
-8.13. The three specified perfectoidizations form a compatible diagram. Its
+This is the ring-valued pushout statement underlying BS 著者版 Proposition 8.13.
+The three specified perfectoidizations form a compatible diagram. Its
 completed tensor is supplied by the existing perfectoid tensor theorem, rather
 than by rebuilding prismatic cohomology or its symmetric monoidal structure.
 -/
@@ -148,7 +148,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationTensorCompatibility
 
-/-! ## BS Proposition 8.13 in the ring-valued reflection domain（旧 Perfectoidization/PerfectoidizationCompletedTensorCompatibility.lean）
+/-! ## BS 著者版 Proposition 8.13 in the ring-valued reflection domain（旧 Perfectoidization/PerfectoidizationCompletedTensorCompatibility.lean）
 
 For any compatible diagram of three specified ring-perfectoidizations, the
 original completed tensor of the perfectoid rings is discrete and perfectoid.
@@ -243,8 +243,8 @@ lemma prop813CompletedTensorMap_unit_tmul (x : S) (y : T) :
     (perfectoidizationTensorDiagramMap r s t hs ht (x ⊗ₜ[R] y)) at h
   simpa only [RingHom.comp_apply, perfectoidizationTensorDiagramMap_tmul] using h
 
-/-- Ring form of BS Prop. 8.13: the same actual completed perfectoid tensor H⁰
-is the universal perfectoidization of the original completed tensor H⁰. -/
+/-- 指定した普遍 perfectoid 化の完備テンソルの H⁰ は、元の完備テンソルの H⁰ の
+普遍 perfectoid 化を与える（BS 著者版 Proposition 8.13 の環としての完備テンソル版）。 -/
 lemma prop813CompletedTensorMap_isPerfectoidization :
     letI := derivedH0CommRing X
     letI := derivedH0CommRing Y
@@ -262,7 +262,7 @@ lemma prop813_perfectoidTensor_pure : (Y).X.obj.IsGE 0 ∧ (Y).X.obj.IsLE 0 :=
   integralPerfectoid_completedTensor_pure p P C D hr.1 hsp.1 htp.1
 
 /-- The standard comparison with any specified ring-perfectoidization of the
-original completed tensor. Its orientation is the one in BS Prop. 8.13. -/
+original completed tensor. Its orientation is the one in BS 著者版 Proposition 8.13. -/
 def prop813ComparisonEquiv (E : Type u) [CommRing E] :
     letI := derivedH0CommRing X
     letI := derivedH0CommRing Y
@@ -323,7 +323,7 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidizationCompletedTensorCompatibility
 
-/-! ## The ring form of BS Prop. 8.13 for perfectoid base change（旧 Perfectoidization/Prop813PerfectoidBaseChange.lean）
+/-! ## The ring form of BS 著者版 Proposition 8.13 for perfectoid base change（旧 Perfectoidization/Prop813PerfectoidBaseChange.lean）
 
 The base and new base are perfectoid. The original algebra is arbitrary once its
 ring-perfectoidization is specified. The map out of the original G2 completed
@@ -425,7 +425,7 @@ lemma prop813BaseChangeMap_left (b : S) :
       perfectoidizationCompletedBaseChangeMap R p S A C f (b ⊗ₜ[R] 1) at h
   exact h.trans (perfectoidizationCompletedBaseChangeMap_left R p S A C f b)
 
-/-- BS Prop. 8.13, ring base-change form: comparison with any specified
+/-- BS 著者版 Proposition 8.13, ring base-change form: comparison with any specified
 perfectoidization of the original completed tensor preserves the new base and
 the entire completed base-change map. -/
 lemma prop813BaseChange_exists_algEquiv (E : Type u) [CommRing E] [Algebra S E] :
@@ -500,8 +500,9 @@ lemma prop813BaseChange_exists_linearEquiv (E : Type u) [CommRing E] [Algebra S 
   rw [map_natCast] at eH
   exact ⟨eH.trans e.toLinearEquiv⟩
 
-/-- B3 supplies the specified perfectoidization for every perfectoid quotient,
-so the base-change theorem does not require a new integral-existence citation. -/
+/-- perfectoid 環の全射商の普遍 perfectoid 化を取り、その完備底変換も普遍 perfectoid 化になる
+（BS 著者版 Proposition 8.13 の環版で片方が perfectoid 環の全射商の場合）。
+方針：全射商の普遍 perfectoid 化の存在から指定の写像を取り、環の完備底変換の比較を適用する。 -/
 theorem exists_prop813BaseChange_of_perfectoid_quotient
     (hq : Function.Surjective (algebraMap R A)) :
     ∃ (C : Type u) (_ : CommRing C) (_ : Algebra R C) (f : A →ₐ[R] C),

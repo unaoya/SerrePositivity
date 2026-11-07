@@ -14,7 +14,7 @@ public import Mathlib.Data.List.Nodup
 下位関係商での次段関係の正則性、一元一般除算の全有限 δ 列の mod (p,d) Koszul 分解、有限根族の次段 Witt 関係・δ 次段関係の有限族の Koszul 分解、同段の部分集合の関係の追加、段の間の射の Koszul 擬同型・射影分解・スカラー塔・Tor。
 
 ## 方針
-Cor 2.44・Prop 3.13 の平坦性を Koszul 複体の帰納法で得る部分（ノート §2.6 の課題 T2-3 の材料）。
+BS 著者版 Corollary 2.44・BS 著者版 Proposition 3.13 の平坦性を Koszul 複体の帰納法で得る部分（ノート §2.6 の課題 T2-3 の材料）。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。

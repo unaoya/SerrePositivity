@@ -13,7 +13,7 @@ public import SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilato
 
 ## 概要
 
-BS Thm 7.14 の André 拡大を一つ選ぶと、元の冪ねじれ加群の Tor の係数への作用（完備な基底変更の Tor を含む）がその拡大の後で検出できること、perfectoid 化を基底変更した後の Tor も同じ拡大で検出できることを示す。これにより、perfectoid イデアルの冪ねじれ Tor の入力を André 拡大から元の環へ降ろす（`exists_andre_extension_descends_perfectoidIdeal_powerTorsionTorInput`）。元の `baseChangeScalarModule` に対する p 完全忠実平坦な降下の基底も与える（`exists_andre_descent_base`）。
+BS 著者版 Theorem 7.14 の André 拡大を一つ選ぶと、元の冪ねじれ加群の Tor の係数への作用（完備な基底変更の Tor を含む）がその拡大の後で検出できること、perfectoid 化を基底変更した後の Tor も同じ拡大で検出できることを示す。これにより、perfectoid イデアルの冪ねじれ Tor の入力を André 拡大から元の環へ降ろす（`exists_andre_extension_descends_perfectoidIdeal_powerTorsionTorInput`）。元の `baseChangeScalarModule` に対する p 完全忠実平坦な降下の基底も与える（`exists_andre_descent_base`）。
 
 ## 方針
 
@@ -21,7 +21,7 @@ BS Thm 7.14 の André 拡大を一つ選ぶと、元の冪ねじれ加群の To
 
 ## 規約
 
-使う深い入力は BS Thm 7.14 の拡大だけで、絶対整閉化の分裂や perfectoid の基底変更の比較は主張しない。旧 `CLMST/AndreTorDescent`・`AndrePerfectoidizationTorDescent`・`AndrePerfectoidIdealTorDescent`・`Prop247AndreBase`（`prop247_` を外した）。
+使う深い入力は BS 著者版 Theorem 7.14 の拡大だけで、絶対整閉化の分裂や perfectoid の基底変更の比較は主張しない。旧 `CLMST/AndreTorDescent`・`AndrePerfectoidizationTorDescent`・`AndrePerfectoidIdealTorDescent`・`Prop247AndreBase`（`prop247_` を外した）。
 
 ## 使われ方
 
@@ -41,7 +41,7 @@ open CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 
 /-- Choose the actual André extension once for the base ring, independently of every Tor test.
-Only the existing BS Theorem 7.14 citation is used to supply this extension. -/
+Only the existing BS 著者版 Theorem 7.14 citation is used to supply this extension. -/
 lemma exists_andre_extension_detects_powerTorsion_Tor
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
     ∃ (E : Type u) (_ : CommRing E) (_ : Algebra R E),
@@ -265,7 +265,7 @@ section AndreBasePart
 namespace SerrePositivity.BhattScholze
 
 /-- 元の R から選ぶ、perfectoid・絶対整閉な André 拡大と実降下用の完全忠実平坦性。
-存在を新しい仮定・引用とせず、証明済み BS Thm 7.14 から供給する。 -/
+存在を新しい仮定・引用とせず、証明済み BS 著者版 Theorem 7.14 から供給する。 -/
 theorem exists_andre_descent_base
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
     ∃ (B : Type u) (_ : CommRing B) (_ : Algebra R B),

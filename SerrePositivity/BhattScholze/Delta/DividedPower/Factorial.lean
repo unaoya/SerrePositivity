@@ -12,10 +12,10 @@ public import Mathlib.RingTheory.Localization.Rat
 public import Mathlib.RingTheory.Localization.Away.Basic
 
 /-!
-# δ 環の階乗分母と分冪構造（BS 著者版 Lemma 2.35・Lemma 2.36 の係数）
+# δ 環の階乗分母と分冪構造（BS 著者版 Lemma 2.35・BS 著者版 Lemma 2.36 の係数）
 
 ## 概要
-δ 環で反復 p 除算から p 典型の分母を作り、x^{pⁿ}/pⁿ! 型の階乗分母の可除性（Lemma 2.35）を示す。p 除算可能イデアルが階乗分母で閉じること、分冪展開係数の恒等式と p 整性（Lemma 2.36 の証明の計算）、p 局所・p 正則な δ 環の具体的な分冪構造。
+δ 環で反復 p 除算から p 典型の分母を作り、x^{pⁿ}/pⁿ! 型の階乗分母の可除性（BS 著者版 Lemma 2.35）を示す。p 除算可能イデアルが階乗分母で閉じること、分冪展開係数の恒等式と p 整性（BS 著者版 Lemma 2.36 の証明の計算）、p 局所・p 正則な δ 環の具体的な分冪構造。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。
@@ -29,7 +29,7 @@ public import Mathlib.RingTheory.Localization.Away.Basic
 
 universe u
 
-/-! ## Lemma 2.36の分冪展開係数のp可積分性（旧 Delta/DividedPower/DeltaDividedPowerCoefficients.lean）
+/-! ## BS 著者版 Lemma 2.36の分冪展開係数のp可積分性（旧 Delta/DividedPower/DeltaDividedPowerCoefficients.lean）
 
 著者公開版p.23の係数をpで割った値について、既存p進付値で評価する。
 分冪生成部分環のδ安定性への数論的入力。
@@ -196,7 +196,7 @@ end DeltaDividedPowerExpansion
 
 /-! ## δ環の反復p除算とp典型分母（旧 Delta/DividedPower/DeltaDividedPowerStep.lean）
 
-著者公開版Lemma 2.35の代数的入力。一般のpねじれを許す。
+BS 著者版 Lemma 2.35の代数的入力。一般のpねじれを許す。
 階乗分母全体・分冪構造・分冪包との同定は別工程。
 -/
 
@@ -276,7 +276,7 @@ end SerrePositivity.BhattScholze.DeltaStructure
 
 end DeltaDividedPowerStep
 
-/-! ## Lemma 2.35の階乗分母の可除性（旧 Delta/DividedPower/DeltaFactorialDivision.lean）
+/-! ## BS 著者版 Lemma 2.35の階乗分母の可除性（旧 Delta/DividedPower/DeltaFactorialDivision.lean）
 
 δ環のp除算閉性から、すべての階乗分母の存在を示す。
 p局所性は非p倍の自然数が単元であるという仮定で明示する。
@@ -312,7 +312,7 @@ theorem factorial_valuation_pow_dvd (D : DeltaStructure p A) (n : ℕ) :
           rw [mul_pow, hw, he, pow_add]
           ring
 
-/-- 非p倍の自然数が単元であるδ環で、x^pのp除算から全階乗分母を得る。 -/
+/-- 非p倍の自然数が単元であるδ環で、x^pのp除算から全階乗分母を得る（BS 著者版 Lemma 2.35 の p 局所の場合の階乗可除性）。 -/
 theorem factorial_dvd_pow_of_prime_dvd_pow (D : DeltaStructure p A)
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A)) {x : A}
     (hx : (p : A) ∣ x ^ p) (n : ℕ) : (n.factorial : A) ∣ x ^ n := by
@@ -387,7 +387,7 @@ theorem exists_factorial_valuation_quotient_mem (D : DeltaStructure p A) (n : �
             _ = x ^ n := by rw [← hz, ← pow_mul, ← pow_add, Nat.div_add_mod]
         · exact (D.primeDividedPowerIdeal).mul_mem_right _ (hwmem hk0)
 
-/-- p局所性の下で、正の次数の階乗分母も同じイデアルに選べる。 -/
+/-- p局所性の下で、正の次数の階乗分母も同じイデアルに選べる（BS 著者版 Lemma 2.35 の p 局所の場合の階乗商の存在）。 -/
 theorem exists_factorial_quotient_mem (D : DeltaStructure p A)
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A)) {x : A}
     (hx : x ∈ D.primeDividedPowerIdeal) (n : ℕ) : ∃ w : A,

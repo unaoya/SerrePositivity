@@ -23,7 +23,7 @@ public import Mathlib.RingTheory.AdicCompletion.RingHom
 存在に有限生成性・p 正則性は不要。導来完備化との比較はここにはない。
 
 ## 使われ方
-Cor 7.3 の構成、完全化の p 進完備化、相対自由 δ 環の有限段の計算。
+BS 著者版 Corollary 7.3 の構成、完全化の p 進完備化、相対自由 δ 環の有限段の計算。
 -/
 
 @[expose] public noncomputable section
@@ -184,7 +184,7 @@ end RelativeDeltaEstimate
 
 /-! ## δ写像のイデアル冪に対する評価（旧 Delta/Extension/DeltaAdicEstimate.lean）
 
-BS著者公開版Lemma 2.17の連続性に使う代数的評価。
+BS 著者版 Lemma 2.17の連続性に使う代数的評価。
 p∈Iならδ(I^{n+1})⊂I^nを証明する。有限生成性・p正則性・完備性は不要。
 完備化へのδ構造の延長はここでは構成しない。
 -/
@@ -196,14 +196,14 @@ variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
 
 namespace DeltaStructure
 
-/-- pを含むイデアルのn+1乗の元のδは、そのn乗に属する。 -/
+/-- pを含むイデアルのn+1乗の元のδは、そのn乗に属する（BS 著者版 Lemma 2.17 の連続性に使うイデアル冪の評価）。 -/
 theorem delta_mem_pow (D : DeltaStructure p R) (I : Ideal R) (hp : (p : R) ∈ I)
     (n : ℕ) (x : R) (hx : x ∈ I ^ (n + 1)) : D.delta x ∈ I ^ n := by
   exact wittTwoLift_delta_mem_pow (RingHom.id R) D.sectionHom D.projection_comp I hp n x
     (by simpa only [Ideal.comap_id] using hx)
 
 /-- I^{n+1}の摂動でδの値はI^nの範囲でしか変わらない。
-Lemma 2.17の具体的な連続性評価m=n+1。 -/
+BS 著者版 Lemma 2.17の具体的な連続性評価m=n+1。 -/
 theorem delta_add_sub_mem_pow (D : DeltaStructure p R) (I : Ideal R)
     (hp : (p : R) ∈ I) (n : ℕ) (x y : R) (hy : y ∈ I ^ (n + 1)) :
     D.delta (x + y) - D.delta x ∈ I ^ n := by
@@ -331,7 +331,7 @@ end DeltaAdicExtension
 
 /-! ## 古典的I進完備化のδ構造（旧 Delta/Extension/DeltaAdicCompletion.lean）
 
-著者公開版Lemma 2.17の存在部分。Mathlibの古典的完備化上に構成したδ写像が
+BS 著者版 Lemma 2.17の存在部分。Mathlibの古典的完備化上に構成したδ写像が
 δ恒等式を満たすことを有限商の座標で確認する。導来完備化への置換ではない。
 -/
 
@@ -391,7 +391,7 @@ theorem adicDeltaExtension_add (D : DeltaStructure p R) (I : Ideal R)
     WittVector.teichmuller p (evalₐ I n y)).coeff 1 = _
   rw [ha', hb']
 
-/-- pを含む任意のイデアルの古典的完備化のδ構造。
+/-- pを含む任意のイデアルの古典的完備化のδ構造（BS 著者版 Lemma 2.17 の第二文の構成）。
 存在の構成に有限生成性・p正則性は不要。 -/
 def adicCompletion (D : DeltaStructure p R) (I : Ideal R) (hp : (p : R) ∈ I) :
     DeltaStructure p (AdicCompletion I R) :=
@@ -446,8 +446,8 @@ theorem adicCompletion_unique (D : DeltaStructure p R) (I : Ideal R)
   rw [adicCompletion_delta, D.eval_adicDeltaExtension, hr, D.adicDeltaStep_mk I hp]
   exact sub_eq_zero.mp he'
 
-/-- pを含む有限生成イデアルの古典的完備化は、一意な適合δ構造を持つ。
-著者公開版Lemma 2.17の存在・一意性。 -/
+/-- pを含む有限生成イデアルの古典的完備化は、一意な適合δ構造を持つ（BS 著者版 Lemma 2.17 の第二文の存在一意性）。
+BS 著者版 Lemma 2.17の存在・一意性。 -/
 theorem existsUnique_adicCompletion (D : DeltaStructure p R) (I : Ideal R)
     (hp : (p : R) ∈ I) (hI : I.FG) :
     ∃! E : DeltaStructure p (AdicCompletion I R),
@@ -463,7 +463,7 @@ end DeltaAdicCompletion
 
 有限生成I、p∈I、J進分離したδ終域への基底δ射を扱う。
 Mathlibの完備化・環射の持上げと共通評価核APIを再利用する。
-導来完備化との比較やProp 7.2の超限構成を代替しない。
+導来完備化との比較やBS 著者版 Proposition 7.2の超限構成を代替しない。
 -/
 
 section DeltaAdicLift

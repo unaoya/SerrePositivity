@@ -12,6 +12,7 @@ public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 
 ## 概要
 完全係数 δ 環の Frobenius 反復の各段における prism 係数商の同定と、Frobenius 係数制限による射影モデルの移送。
+BS 著者版 Lemma 3.9 の完全化に使う、完全な係数の Frobenius 各段の prism 剰余を比較する。
 
 ## 方針
 p を消す環射の下での Frobenius 反復の計算。

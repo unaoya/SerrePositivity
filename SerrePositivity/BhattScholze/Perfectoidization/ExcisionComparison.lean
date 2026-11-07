@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 ## 概要
 
 四つの写像をすべて元の普遍単位で固定した標準の四角について、それが引き戻しなら perfectoid 化の比較写像が almost 同型になることを示す（`perfectoidization_comparison_almost_of_canonical_excision`）。
+BS 著者版 Corollary 8.12 の excision を、有限比較で使う標準四角形に適用する。
 
 ## 規約
 

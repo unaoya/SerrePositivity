@@ -9,6 +9,7 @@ public import Mathlib.Algebra.Exact.Basic
 ## 概要
 
 イデアル I が加群全体を消すことを almost zero と定め、部分加群・商・同型で保たれること、完全列の両端を I が消せば中央は I² で消えること（I² = I なら拡大で閉じる）を示す。線形写像の almost 単射・全射・同型を核と余核が I で消えることで定め、合成が I² について同じ条件を満たすことを示す。
+BS 著者版 Definition 10.1 では perfectoid 核を指定し、このイデアルによる加群の零化述語を使う。
 
 ## 方針
 
@@ -33,7 +34,7 @@ namespace SerrePositivity.Almost
 
 variable {R : Type u} [CommRing R]
 
-/-- イデアル `I` の全ての元が加群 `M` 全体を消すこと。 -/
+/-- イデアル `I` の全ての元が加群 `M` 全体を消すこと（BS 著者版 Definition 10.1 の完備加群に対する条件を、任意の加群とイデアルに対して表す述語）。 -/
 def IsAlmostZero (I : Ideal R) (M : Type v) [AddCommGroup M] [Module R M] : Prop :=
   I ≤ Module.annihilator R M
 

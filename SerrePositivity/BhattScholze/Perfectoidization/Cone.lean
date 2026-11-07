@@ -8,6 +8,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 ## 概要
 
 選んだ普遍 perfectoid 環への標準写像を `R` 線形写像（`perfectoidizationModuleMap`）にし、零次の加群写像の写像錐を導来圏へ送った錐 `perfectoidizationCone` と、その完全三角形を与える。
+BS 著者版 Corollary 8.12 の excision の環版に使う、標準写像の導来錐を比較する。
 
 ## 方針
 
