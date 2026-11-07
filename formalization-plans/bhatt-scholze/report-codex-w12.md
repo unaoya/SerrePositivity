@@ -96,3 +96,28 @@ B1 の合成からの消去には、合成自身の完全性と、二重複体�
 - `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechOverlap`
 
 共有ロック付きの対象ビルド成功（11 本、Lake の依存込み集計 3,497 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `ArcValuationMilnor.lean` では `valuationRing_milnorSquare_perfect` の未使用の節引数の警告が再掲された。新規モジュールを `import all` で監査し、133 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存の Lean 宣言に差分なし。`git diff --cached --check` を通過。段 3 は §3 の事前承認の条件に従って開始する。
+
+## 停止点 3（B4・B5、2026-11-07）
+
+⑤b・⑥の作業木と枝の差分を再確認し、新規の編集先に重複はなかった。
+
+### B4　超積と完全性の検出
+
+- `RingUltraproduct` は超フィルター上で零になる元で割った商。`valuationRing_ultraproduct` は整除の二択を超フィルターで選ぶ。`aic_ultraproduct` は各成分でモニック多項式の根を選び、直積から商へ移す。完全標数 p の入口は `perfectRing_ultraproduct_of_aic`。[BM18 Lemma 3.27](https://arxiv.org/pdf/1807.04725#page=22)
+- `isLocalization_ringUltraproduct` は超フィルターの指示冪等元による局所化。`ultrafilterOfPrime` は積環の素点の外にある指示冪等元から超フィルターを作る。`subsingleton_of_ultraproduct_tensor` は加群の元の零化イデアルを含む素点で零性を検出し、`cechExact_of_ultraproducts` は平坦局所化とホモロジーの可換性を使って増大 Čech 複体に適用する。[BM18 Lemma 3.25](https://arxiv.org/pdf/1807.04725#page=22)
+
+### B5　代表付値環の積による v 被覆
+
+- `exists_valuationSubring_algebraicClosure` は分数体の代数閉包へ付値環を忠実平坦に拡大する。`exists_valuationProbe_factor` は絶対整閉な試験付値環への射を小さい代表で因子化し、代表から試験付値環への射も忠実平坦と示す。[BM18 Lemmas 3.28・3.29](https://arxiv.org/pdf/1807.04725#page=23)
+- 代表の添字は、素点ごとの固定した `AlgebraicClosure (FractionRing (A ⧸ P))` のうち基底環の像を含む付値部分環。環構造を集合上に符号化する方式の代わりに、この添字で `Type u` に収めた。各代表の濃度は `valuationProbe_cardinal_le` で `max (#A) ℵ₀` 以下。
+- `valuationProbeProduct_vCover` は代表の積への射が `IsAffineVCover` であることを示す。`valuationProbeProduct_perfectRing` は `(p : A) = 0` から積の完全性を得る。空の積もこの形で扱える。[BM18 Proposition 3.30](https://arxiv.org/pdf/1807.04725#page=23)
+
+取り込み時に入口・監査への登録を依頼するモジュールは次の 5 本（573 行）。
+
+- `SerrePositivity.CommutativeAlgebra.Ultraproduct.Basic`
+- `SerrePositivity.CommutativeAlgebra.Ultraproduct.Localization`
+- `SerrePositivity.CommutativeAlgebra.ValuationExtension.Aic`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCechUltraproduct`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct`
+
+共有ロック付きの対象ビルド成功（5 本、Lake の依存込み集計 3,499 jobs、17 秒）。新規モジュールの Lean 警告は 0。既存の `AbsolutelyIntegrallyClosed/Basic.lean` と `ArcValuationMilnor.lean` の警告が再掲された。新規モジュールの `import all` による監査は 61 宣言が標準三公理のみ。新規の `sorry`・`admit`・追加公理は 0。E3 は import 閉包に含まれず、既存 Lean 宣言の変更はない。`git diff --cached --check` を通過した。
