@@ -68,3 +68,5 @@ main の `6dd825028` を `math/bs-impl` に取り込み、指示書 §4 の承�
 - 変更済みの 151 モジュールを直接 import する、変更対象外の 30 モジュールを 2 組、実行時間計 23 秒で確認した。Lake が既存成果物を再利用し、プロジェクトの Lean モジュールの再コンパイルは 0 本だった。ログには既存の警告が再表示された。対象には BS の集約、CLMST と Paper の直接 importer、共通基盤の直接 importer を含む。`ps` と共有ロックを経由した。ルート `SerrePositivity` も直接 importer だが、全体ビルドになるため調整役の合図待ちに分けた。
 - 基準からの Lean 差分は 151 ファイルすべてコメントだけ。段 1 の照合 CSV と本報告が引き渡し資料。`items.csv` と drafts の変更はこの束に含まれない。⑤b の作業パスとの重複は 0。
 - `math/bs-impl` は調整役の取り込み待ち。W11 の開始条件は BS-DOC1 の main 取り込み。
+
+停止点 3 の後、⑥ の移動を含む main `4fbd8c0b7` を `eb30f187d` で取り込んだ。151 ファイルのコメント外差分は引き続き 0 で、⑤b の作業パスとの重複も 0。取り込み後に共有ロックで `SerrePositivity.BhattScholze` と `SerrePositivity.Paper.Section2.LengthAlgebra.MixedChar` を再確認し、成功した。
