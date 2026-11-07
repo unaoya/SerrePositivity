@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology
+public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.Algebra.Category.ModuleCat.Basic
 public import Mathlib.Algebra.Category.Ring.Basic
@@ -26,23 +26,3 @@ E∞ 構造（Barratt–Eccles）はここでは扱わない（G-A1-11）。
 ## 使われ方
 A1 の HT 比較の写像（Constr 4.9）：H^*(Ō_{R/A}) の模型 H^*(Tot(C^•/d)) の環構造。Lemma 5.4 の計算。
 -/
-
-@[expose] public section
-noncomputable section
-universe u
-open CategoryTheory CategoryTheory.Limits
-open scoped Simplicial
-
-namespace SerrePositivity.Cosimplicial
-
-variable (X : CosimplicialObject CommRingCat.{u})
-
-/-- 概要：コホモロジー環は次数付き可換：a ∪ b = (−1)^{mn} b ∪ a。
-方針：鎖のレベルの cup₁ ホモトピー（Steenrod）、または余単体的可換環の cup 積が E∞ の H^* であること。
-規約：鎖のレベルでは主張しない。
-使われ方：Constr 4.9 の H^*(Ō) の次数付き可換性（原典の「generalities on cohomology of commutative ring objects」）。 -/
-theorem cohomologyCup_comm {m n : ℕ} (a : cohomology X m) (b : cohomology X n) :
-    cast (by rw [Nat.add_comm]) (cohomologyCup X a b) = (-1 : ℤ) ^ (m * n) • cohomologyCup X b a := by
-  sorry -- cup₁ 積のホモトピー
-
-end SerrePositivity.Cosimplicial
