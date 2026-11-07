@@ -1,0 +1,63 @@
+{
+  "worktree_commit": "01d9d1b2fad3a7a0175b6c5b2f4269a71537757e",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "1.3.1.7": {
+      "ha_page": 82,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.3.1.7",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.3.1",
+          "count": 1578,
+          "distinct_files": 407,
+          "examples": [
+            "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+            "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+            "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+            "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "A∞.?圏|AInfinity(Category|Nerve)|higher.?multiplication",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "A∞.?圏|AInfinity(Category|Nerve)|higher.?multiplication",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/DGNerve/Simplex.lean",
+        "SerrePositivity/DifferentialGraded/Category/Basic.lean"
+      ],
+      "reason": "DGCategory と SimplexData.rhs は Leibniz 則と二項合成まで。高次積を入力する A∞ 圏およびそれに対応する nerve の方程式を探したが、該当する宣言は確認できなかった。"
+    }
+  }
+}

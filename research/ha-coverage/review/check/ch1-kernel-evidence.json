@@ -1,0 +1,386 @@
+{
+  "worktree_commit": "01d9d1b2fad3a7a0175b6c5b2f4269a71537757e",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "1.3.1.1": {
+      "ha_page": 80,
+      "declarations": [
+        "SerrePositivity.DifferentialGraded.DGCategory"
+      ]
+    },
+    "1.3.1.4": {
+      "ha_page": 81,
+      "declarations": [
+        "SerrePositivity.DifferentialGraded.DGCategory",
+        "SerrePositivity.DifferentialGraded.ClosedCategory"
+      ]
+    },
+    "1.3.1.5": {
+      "ha_page": 81,
+      "declarations": [
+        "SerrePositivity.DifferentialGraded.HomotopyCategory",
+        "SerrePositivity.DifferentialGraded.homotopyHomologyEquiv"
+      ]
+    },
+    "1.3.1.6": {
+      "ha_page": 81,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.dgNerve",
+        "SerrePositivity.InfinityCategories.DGNerve.Simplex",
+        "SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback"
+      ]
+    },
+    "1.3.1.10": {
+      "ha_page": 82,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.dgNerve.instQuasicategory",
+        "SerrePositivity.InfinityCategories.dgNerve.hornFilling"
+      ]
+    },
+    "1.3.1.11": {
+      "ha_page": 83,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence"
+      ]
+    },
+    "1.3.1.13": {
+      "ha_page": 83,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.DoldKanComparison.doldKanSimplicialCategory",
+        "SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso",
+        "SerrePositivity.InfinityCategories.DoldKanComparison.standardAW"
+      ]
+    },
+    "1.3.1.15": {
+      "ha_page": 84,
+      "declarations": [
+        "CategoryTheory.SimplicialNerve",
+        "CategoryTheory.SimplicialThickening.Path"
+      ]
+    },
+    "1.3.1.16": {
+      "ha_page": 84,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison",
+        "SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag"
+      ]
+    },
+    "1.3.1.17": {
+      "ha_page": 85,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence"
+      ]
+    },
+    "1.3.1.18": {
+      "ha_page": 85,
+      "declarations": [
+        "SerrePositivity.DifferentialGraded.DGFunctor"
+      ]
+    }
+  },
+  "declarations": {
+    "SerrePositivity.DifferentialGraded.DGCategory": {
+      "name": "SerrePositivity.DifferentialGraded.DGCategory",
+      "module": "SerrePositivity.DifferentialGraded.Category.Basic",
+      "path": "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+      "line": 58,
+      "source_sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c",
+      "type": "SerrePositivity.DifferentialGraded.DGCategory.{u_1,\n  u_2} : (A : Type u_1) → [CommRing.{u_1} A] → Type u_2 → Type (max (max u_2 (u_1 + 1)) u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "2eec28487491a848eb4e",
+      "previous_commit": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.DifferentialGraded.ClosedCategory": {
+      "name": "SerrePositivity.DifferentialGraded.ClosedCategory",
+      "module": "SerrePositivity.DifferentialGraded.Category.Basic",
+      "path": "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+      "line": 63,
+      "source_sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c",
+      "type": "SerrePositivity.DifferentialGraded.ClosedCategory.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) → [@SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A inst D] → Type u_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "766450df0fe7ad8f0950",
+      "previous_commit": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.DifferentialGraded.HomotopyCategory": {
+      "name": "SerrePositivity.DifferentialGraded.HomotopyCategory",
+      "module": "SerrePositivity.DifferentialGraded.Category.Basic",
+      "path": "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+      "line": 242,
+      "source_sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c",
+      "type": "SerrePositivity.DifferentialGraded.HomotopyCategory.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) → [@SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A inst D] → Type u_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "ce816401db2806e10823",
+      "previous_commit": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.DifferentialGraded.homotopyHomologyEquiv": {
+      "name": "SerrePositivity.DifferentialGraded.homotopyHomologyEquiv",
+      "module": "SerrePositivity.DifferentialGraded.Category.Basic",
+      "path": "SerrePositivity/DifferentialGraded/Category/Basic.lean",
+      "line": 356,
+      "source_sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c",
+      "type": "SerrePositivity.DifferentialGraded.homotopyHomologyEquiv.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →\n        (x y : SerrePositivity.DifferentialGraded.ClosedCategory.{u_1, u_2} A D) →\n          Equiv.{u_1 + 1, u_1 + 1}\n            (Quiver.Hom.{u_1, u_2}\n              (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2}\n                (SerrePositivity.DifferentialGraded.toHomotopy.{u_1, u_2} A D) x)\n              (CategoryTheory.Functor.obj.{u_1, u_1, u_2, u_2}\n                (SerrePositivity.DifferentialGraded.toHomotopy.{u_1, u_2} A D) y))\n            ↑(HomologicalComplex.homology.{u_1, u_1 + 1, 0}\n                (SerrePositivity.DifferentialGraded.homObject.{u_1, u_2} A D x y) 0)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "f5158849571ffc62c64c",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.dgNerve": {
+      "name": "SerrePositivity.InfinityCategories.dgNerve",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.Basic",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/Basic.lean",
+      "line": 31,
+      "source_sha256": "11c532546cb5341d77490909e6ce7b373688490df10e6078803245ad59496310",
+      "type": "SerrePositivity.InfinityCategories.dgNerve.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) → [SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] → SSet.{max u_1 u_2}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "bca9bf4b823591dcabd3",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DGNerve.Simplex": {
+      "name": "SerrePositivity.InfinityCategories.DGNerve.Simplex",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.Simplex",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/Simplex.lean",
+      "line": 93,
+      "source_sha256": "4c69e13f3e32c13c72f09cb6641539e2437bf2ffffa74a6dc544623b2d7e7fb6",
+      "type": "SerrePositivity.InfinityCategories.DGNerve.Simplex.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) → [SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] → ℕ → Type (max u_1 u_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "6faec9ec0a3355bf9669",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback": {
+      "name": "SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.Pullback",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/Pullback.lean",
+      "line": 50,
+      "source_sha256": "fc50126164beddb2c14c7650a95742641ae30ed484ae56cf35508d3a635b0a2a",
+      "type": "@SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback.{u_1,\n    u_2} : {A : Type u_1} →\n  [inst : CommRing.{u_1} A] →\n    {D : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →\n        {m n : ℕ} →\n          SerrePositivity.InfinityCategories.DGNerve.Simplex.{u_1, u_2} A D n →\n            OrderHom.{0, 0} (Fin (HAdd.hAdd.{0, 0, 0} m 1)) (Fin (HAdd.hAdd.{0, 0, 0} n 1)) →\n              SerrePositivity.InfinityCategories.DGNerve.Simplex.{u_1, u_2} A D m",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "35e042cf9ee024092899",
+      "previous_commit": "33ce6cfca551ba04b769f3d46096d381c059dd06"
+    },
+    "SerrePositivity.InfinityCategories.dgNerve.instQuasicategory": {
+      "name": "SerrePositivity.InfinityCategories.dgNerve.instQuasicategory",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.Quasicategory",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/Quasicategory.lean",
+      "line": 54,
+      "source_sha256": "3c16d4727c2375a7e9169d16a6cd9b659c07b4e5fd0e35f0fbb9041dce36fe9a",
+      "type": "SerrePositivity.InfinityCategories.dgNerve.instQuasicategory.{u_1,\n  u_2} : ∀ (A : Type u_1) [inst : CommRing.{u_1} A] (D : Type u_2)\n  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D],\n  SSet.Quasicategory.{max u_2 u_1} (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "3179429d050569f857cc",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.dgNerve.hornFilling": {
+      "name": "SerrePositivity.InfinityCategories.dgNerve.hornFilling",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.Quasicategory",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/Quasicategory.lean",
+      "line": 45,
+      "source_sha256": "3c16d4727c2375a7e9169d16a6cd9b659c07b4e5fd0e35f0fbb9041dce36fe9a",
+      "type": "SerrePositivity.InfinityCategories.dgNerve.hornFilling.{u_1,\n  u_2} : ∀ (A : Type u_1) [inst : CommRing.{u_1} A] (D : Type u_2)\n  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] {n : ℕ} {i : Fin (HAdd.hAdd.{0, 0, 0} n 3)}\n  (σ :\n    Quiver.Hom.{max u_1 u_2, max (u_1 + 1) (u_2 + 1)}\n      (SSet.Subcomplex.toSSet.{max u_1 u_2} (SSet.horn.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 2) i))\n      (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} A D)),\n  LT.lt.{0} 0 i →\n    LT.lt.{0} i (Fin.last (HAdd.hAdd.{0, 0, 0} n 2)) →\n      ∃ τ,\n        Eq.{max (u_1 + 1) (u_2 + 1)} σ\n          (CategoryTheory.CategoryStruct.comp.{max u_1 u_2, (max u_1 u_2) + 1}\n            (SSet.Subcomplex.ι.{max u_1 u_2} (SSet.horn.{max u_1 u_2} (HAdd.hAdd.{0, 0, 0} n 2) i)) τ)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "5a94dc728c124d2ec816",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence": {
+      "name": "SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence",
+      "module": "SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory",
+      "path": "SerrePositivity/InfinityCategories/DGNerve/HomotopyCategory.lean",
+      "line": 98,
+      "source_sha256": "0e6a6e952395a58d59043ec914495f66b47d8285af166bda754f8bdcf45006d3",
+      "type": "SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence.{u_1,\n  u_2} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A D] →\n        CategoryTheory.Equivalence.{max u_1 u_2, u_1, max u_2 u_1, u_2}\n          (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory.{u_1, u_2} A D)\n          (SerrePositivity.DifferentialGraded.HomotopyCategory.{u_1, u_2} A D)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "eac06b7080552afdb147",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.doldKanSimplicialCategory": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.doldKanSimplicialCategory",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.SimplicialCategory",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/SimplicialCategory.lean",
+      "line": 28,
+      "source_sha256": "544202fca048b5ba18852ca433323c35181f43588ac643a7450463947de33652",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.doldKanSimplicialCategory.{u_1,\n    u_2} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    {D : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} R D] →\n        CategoryTheory.SimplicialCategory.{u_1, u_2} (SerrePositivity.DifferentialGraded.ClosedCategory.{u_1, u_2} R D)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "ff0a4909744b54f3545a",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.DoldKanIso",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/DoldKanIso.lean",
+      "line": 30,
+      "source_sha256": "b010ba8a18497a5f1a5156642cc588c3e1e6c4ccd55daaea5a2ac774ce5e86ca",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso.{u_1,\n    u_2} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    {D : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} R D] →\n        (x y : D) →\n          CategoryTheory.Iso.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.DoldKanComparison.standardModule.{u_1, u_2} x y)\n            (SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomModule.{u_1, u_2} x y)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "0ee4cc03455e43f6bd85",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.standardAW": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.standardAW",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.AWPreservation",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
+      "line": 104,
+      "source_sha256": "c22e47bfbab89b59be253b7bb9b2c5ad4b552847b5c9cb6b8a3e99ce48ea13e8",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.standardAW.{u_1,\n    u_2} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    {D : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} R D] →\n        {x y z : D} →\n          {n : ℕ} →\n            SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex.{u_1, u_2} R y z n →\n              SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex.{u_1, u_2} R x y n →\n                SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex.{u_1, u_2} R x z n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "9f401dc5dd51c319607f",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "CategoryTheory.SimplicialNerve": {
+      "name": "CategoryTheory.SimplicialNerve",
+      "module": "Mathlib.AlgebraicTopology.SimplicialNerve",
+      "path": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+      "line": 190,
+      "source_sha256": "ccac642eb29c93dfac5f3788e99e47f73c377d3f149498e659125475afccc7ee",
+      "type": "CategoryTheory.SimplicialNerve.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.SimplicialCategory.{u_1, u_2} C inst] → SSet.{max u_2 u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "da413521e1d66fd80f96",
+      "previous_commit": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.SimplicialThickening.Path": {
+      "name": "CategoryTheory.SimplicialThickening.Path",
+      "module": "Mathlib.AlgebraicTopology.SimplicialNerve",
+      "path": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+      "line": 64,
+      "source_sha256": "ccac642eb29c93dfac5f3788e99e47f73c377d3f149498e659125475afccc7ee",
+      "type": "@CategoryTheory.SimplicialThickening.Path.{u_1} : {J : Type u_1} → [LinearOrder.{u_1} J] → J → J → Type u_1",
+      "axioms": [
+        "propext"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "b7dab04f1bf9843fbba6",
+      "previous_commit": "33ce6cfca551ba04b769f3d46096d381c059dd06"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.CoherentComparison",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/CoherentComparison.lean",
+      "line": 59,
+      "source_sha256": "64f1972580c3350d3db25d56dc5b9d416ee563a4ab46ea6d76bcdc15511ed24c",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison.{u_1,\n    u_2} : {R : Type u_1} →\n  [inst : CommRing.{u_1} R] →\n    {D : Type u_2} →\n      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} R D] →\n        Quiver.Hom.{max u_1 u_2, max (u_2 + 1) (u_1 + 1)}\n          SerrePositivity.InfinityCategories.DoldKanComparison.doldKanCoherentNerve.{u_1, u_2}\n          (SerrePositivity.InfinityCategories.dgNerve.{u_1, u_2} R D)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "f9c4a331c884fcf3b33c",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.CubeFlags",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/CubeFlags.lean",
+      "line": 38,
+      "source_sha256": "5ff3d4636cdf4b3bd9f1711edf042dea627b284b2bdd0d3690bb61272b0525cd",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag.{u_1} : {T : Type u_1} →\n  {m : ℕ} →\n    Equiv.{1, u_1 + 1} (Fin m) T →\n      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.Coherent.cube.{u_1} T)\n        (Opposite.op.{1} { len := m })",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "430ea3cb53d5ff00f21d",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence": {
+      "name": "SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence",
+      "module": "SerrePositivity.InfinityCategories.DoldKanComparison.ComparisonEquivalence",
+      "path": "SerrePositivity/InfinityCategories/DoldKanComparison/ComparisonEquivalence.lean",
+      "line": 74,
+      "source_sha256": "2a456fda0479c2ce78bda6f33340671e9f1129d6efad0fe3e9edca9829e22d47",
+      "type": "@SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence.{u_1,\n    u_2} : ∀ {R : Type u_1} [inst : CommRing.{u_1} R] {D : Type u_2}\n  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} R D],\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{max u_1 u_2}\n    SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison.{u_1, u_2}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "3ba90ba773c3e4942b2b",
+      "previous_commit": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.DifferentialGraded.DGFunctor": {
+      "name": "SerrePositivity.DifferentialGraded.DGFunctor",
+      "module": "SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence",
+      "path": "SerrePositivity/DifferentialGraded/Functor/QuasiEquivalence.lean",
+      "line": 41,
+      "source_sha256": "79b2aa80bd73ac2afb941f4a808304f3b076fa942582bce5b62c8677bb035649",
+      "type": "SerrePositivity.DifferentialGraded.DGFunctor.{u_1, u_2,\n  u_3} : (A : Type u_1) →\n  [inst : CommRing.{u_1} A] →\n    (D : Type u_2) →\n      (E : Type u_3) →\n        [@SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_2} A inst D] →\n          [@SerrePositivity.DifferentialGraded.DGCategory.{u_1, u_3} A inst E] → Type (max (max u_2 u_3) u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "previous_evidence_path": "research/kerodon-coverage/review/check/ch2-kernel-evidence.json",
+      "previous_evidence_id": "9642e3d1295963ac5bb0",
+      "previous_commit": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    }
+  }
+}
