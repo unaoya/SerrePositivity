@@ -252,6 +252,42 @@
       "type": "@isCofinal_setOfPred_imp_lt.{u_1} : ∀ {α : Type u_1} [inst : LinearOrder.{u_1} α] (r : α → α → Prop)\n  [h : WellFounded.{u_1 + 1} r], IsCofinal.{u_1} (Set.ofPred.{u_1} fun a => ∀ (b : α), r b a → LT.lt.{u_1} b a)",
       "axioms": [],
       "evidence": "depth:Mathlib.Order.Cofinal"
+    },
+    "SerrePositivity.InfinityCategories.relativeEquivalenceCylinder": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:36",
+      "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinder.{u_1} : {A B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} A B → SSet.{u_1}",
+      "evidence": "5936e3c6a02d2c1bbafa",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeMappingCylinder.lean:23",
+      "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection.{u_1} : {A B : SSet.{u_1}} →\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) →\n    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.relativeEquivalenceCylinder.{u_1} i) B",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder"
+    },
+    "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_projection": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeMappingCylinder.lean:36",
+      "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_projection.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) (b : Bool),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection.{u_1} i))\n    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} B)",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder"
+    },
+    "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_fixed": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:51",
+      "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_fixed.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) (b : Bool),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b))\n    (CategoryTheory.Limits.pushout.inr.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} i\n        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1})\n      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A\n        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
+    },
+    "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_mono": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:124",
+      "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_mono.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (b : Bool),\n  CategoryTheory.Mono.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
+    },
+    "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:135",
+      "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint.{u_1} : ∀\n  {A B : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A B) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (b : Bool),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)",
+      "axioms": [],
+      "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
     }
   },
   "probes": [
@@ -1873,6 +1909,19 @@
           "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison"
         ]
       },
+      "4.6.3.3": {
+        "tag": "01K5",
+        "statement_sha256": "02d46fafea305cd2054b73a39713533f98fc36da3bb0c68a7cfc936099ea8eb6",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.relativeEquivalenceCylinder",
+          "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection",
+          "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_projection",
+          "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_fixed",
+          "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_mono",
+          "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint"
+        ]
+      },
       "4.6.4.1": {
         "tag": "01KF",
         "statement_sha256": "81ba6e69c1b765192d944018bf6dd4afe99c2e562d98086197e6931db3862a4c",
@@ -3403,6 +3452,42 @@
         "type": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison_stdSimplex.{u_1} : ∀ (n m : ℕ),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1}\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n })\n      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := m }))",
         "evidence": "ccc9c7220ff4f20e3944",
         "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeEquivalenceCylinder": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:36",
+        "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinder.{u_1} : {A B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} A B → SSet.{u_1}",
+        "evidence": "5936e3c6a02d2c1bbafa",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeMappingCylinder.lean:23",
+        "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection.{u_1} : {A B : SSet.{u_1}} →\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) →\n    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.relativeEquivalenceCylinder.{u_1} i) B",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder"
+      },
+      "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_projection": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeMappingCylinder.lean:36",
+        "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_projection.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) (b : Bool),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderProjection.{u_1} i))\n    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} B)",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder"
+      },
+      "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_fixed": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:51",
+        "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_fixed.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) (b : Bool),\n  Eq.{u_1 + 1}\n    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i\n      (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b))\n    (CategoryTheory.Limits.pushout.inr.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} i\n        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1})\n      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} A\n        SerrePositivity.InfinityCategories.equivalenceInterval.{u_1}))",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
+      },
+      "SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_mono": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:124",
+        "type": "@SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint_mono.{u_1} : ∀ {A B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A B) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (b : Bool),\n  CategoryTheory.Mono.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
+      },
+      "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint": {
+        "source": "SerrePositivity/InfinityCategories/Core/RelativeEquivalenceCylinder.lean:135",
+        "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint.{u_1} : ∀\n  {A B : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A B) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (b : Bool),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.relativeEquivalenceCylinderEndpoint.{u_1} i b)",
+        "axioms": [],
+        "evidence": "depth:SerrePositivity.InfinityCategories.Core.RelativeEquivalenceCylinder"
       },
       "SerrePositivity.InfinityCategories.F2.laxPullback": {
         "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean:25",

@@ -53,14 +53,14 @@ fix は名前空間・出典・引用の訂正も含む。主張の範囲の変�
 | own | 96 |
 | both | 0 |
 | mathlib | 35 |
-| partial | 172 |
-| none | 285 |
+| partial | 173 |
+| none | 284 |
 
-ok 314 件、fix 274 件、unsure 0 件。
+ok 313 件、fix 275 件、unsure 0 件。
 
 - 4.4.1.8 は own。仮定：∞ 圏間の F（Lean が弱い：EquivalenceLifting.op 自体は任意の単体集合間で成り立つ）。結論：EquivalenceLifting は ∞ 圏上では内ファイブレーションと同値辺持ち上げの組。反転で保たれ、二重反転が恒等なので反対方向にも保たれる（一致）。
+- 4.6.3.3 は partial。仮定：A→B は単体集合の単射。Lean は可逆区間を使う相対円柱を構成（Kerodon と一致）。結論：二つの切断は A 上で一致し、個々が単射かつ前合成同値で射影との合成は恒等（Lean が弱い：B∐_A B からの合わせた射の単射性と、全ての円柱を束ねる定義は未確認）。
 - 4.8.4.5 は partial。仮定：∞ 圏間の内ファイブレーション（Lean が強い：正次元の一方向は F の充満忠実性を仮定）。結論：全ての正次元の境界充填と充満忠実性の対応を確認。単一の n での n-full との同値や n=0 の isofibration 版は未確認（Lean が弱い）。
+- 4.9.1.27 は partial。仮定：線形順序 T（Lean が強い：共終集合の順序型の定理は T 自体の整礎性を仮定）。結論：任意の T について isCofinal_setOfPred_imp_lt は別の整礎関係から共終部分集合を与える（Lean が弱い：誘導順序の整礎性を結論に含む宣言は未確認）。
 
-- 4.9.1.27 の verdict は unsure から fix にした。任意の線形順序について共終部分集合を与える型は確認した。誘導順序の整礎性を含む型は未確認のため partial とした。
-
-前回からの status の変更は mathlib → partial が 6 件、none → own が 1 件、none → partial が 1 件、own → partial が 21 件。
+前回からの status の変更は mathlib → partial が 6 件、none → own が 1 件、none → partial が 2 件、own → partial が 21 件。
