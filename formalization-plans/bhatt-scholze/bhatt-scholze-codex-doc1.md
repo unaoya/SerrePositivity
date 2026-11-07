@@ -40,3 +40,11 @@
 3. worktree は main から切る（`../SerrePositivity-bs-impl`、枝 `math/bs-impl`）。main の作業木では作業しない。取り込みは調整役。
 4. ビルドは小さなものだけ（`ps -axo command= | grep '[l]ake build'` と `scripts/refactor/with_build_lock.sh --wait 0`）。下流の全ビルドは調整役の合図で。
 5. F-2 の改名表 `scripts/refactor/targets/f-namespace-map.json` で名前空間が変わった宣言は、新しい名前で扱う。
+
+## 4. 追記（2026-11-07、調整役）：停止点 1 の承認
+
+**承認**：照合（184 行：ok 149・fix 34・unsure 1、`research/bs-coverage/doc1-check.csv`）と段 2 の範囲（45 ファイル・136 宣言：新規 80、既存の確認 56）。段 2 に進んでよい。§2 のとおり、変更が docstring とコメントだけで対象のビルドが通るなら、報告して段 3 へ進んでよい。
+
+1. **fix の扱い**：照合で「項目そのものではなく補助・別の帰結」とした宣言には、宣言ごとの番号を付けない。代わりに module docstring に、そのファイルが論文のどの項目のための補助かを書く（§1 の補助の補題の規則）。対応の誤り（例：Def 1.4 の候補、Rem 10.7 の振り分け、16.9 の抜き出しの誤り）は、doc1-check.csv の `reason` のとおりに扱う。
+2. **unsure（8.2、E3 の perfd 欄）**：欄の型は普通の R 代数を受け取る界面で、Δ の完全化の式は型に現れない。欄の docstring には、定義そのものとしてではなく「何を受け取る欄か」として書く。例：`（BS 著者版 Definition 8.2 の perfectoid 化を受け取る E3 の欄。Lemma 8.4 とあわせて引用）`。E3 のほかの欄も同じ扱いにする（limitCone は Prop 8.5、excision は Cor 8.12、universal は Cor 8.14、integral は Thm 10.11）。
+3. 取り込みの後、調整役が `research/bs-coverage/items.csv` と形式化マップに doc1-check.csv の訂正を反映する（Codex は items.csv を編集しない）。
