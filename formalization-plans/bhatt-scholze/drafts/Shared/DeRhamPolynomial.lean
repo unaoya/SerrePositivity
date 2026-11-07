@@ -4,7 +4,8 @@ module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Core.NerveCone
-public import Mathlib.Algebra.MvPolynomial.PDeriv
+public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
+public import SerrePositivity.CommutativeAlgebra.DeRham.Polynomial
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplex
@@ -34,66 +35,16 @@ Constr 4.9（η^*）、Thm 4.11 の主張、Cor 5.5（Cartier）、Thm 5.2 の �
 noncomputable section
 universe u
 open CategoryTheory
+open scoped DirectSum
 
 namespace SerrePositivity.DeRham
 
 variable (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T]
 
-/-- 概要：多項式代数 P = k[X_T]。
-方針：`MvPolynomial`。
-規約：—
-使われ方：de Rham 複体の係数。 -/
-abbrev Poly : Type u := MvPolynomial T k
-
-/-- 概要：Ω^i_{P/k} := P ⊗_k Λ^i(k^T)（dX_t の i 次の外積が基底の自由 P 加群）。
-方針：`exteriorPower k i (T → k)` を P 上に係数拡大。
-規約：i > #T なら零。
-使われ方：de Rham 複体の項。 -/
-def forms (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (i : ℕ) : Type u :=
-  sorry -- TensorProduct k (Poly k T) (exteriorPower k i (T → k))。11-03（BS-D4 の D4-01）：k・T を明示引数に（body が sorry だと section 変数が落ちる）
-
-instance (i : ℕ) : AddCommGroup (forms k T i) := sorry
-instance (i : ℕ) : Module (Poly k T) (forms k T i) := sorry
-instance (i : ℕ) : Module k (forms k T i) := sorry
-
-/-- 概要：dX_t ∈ Ω^1。
-方針：1 ⊗ e_t。
-規約：—
-使われ方：η^1 の定義、Cartier の計算。 -/
-def dX (t : T) : forms k T 1 := sorry
-
-/-- 概要：外積 Ω^i × Ω^j → Ω^{i+j}。
-方針：外積代数の積を P 線形に延ばす。
-規約：次数付き可換（ω ∧ η = (−1)^{ij} η ∧ ω）。
-使われ方：dg 代数の構造。 -/
-def wedge {i j : ℕ} : forms k T i → forms k T j → forms k T (i + j) := sorry
-
-/-- 概要：de Rham 微分 d : Ω^i → Ω^{i+1}、d(f dX_I) = Σ_t (∂_t f) dX_t ∧ dX_I。
-方針：`MvPolynomial.pderiv` と `wedge`。
-規約：d² = 0、Leibniz d(ω ∧ η) = dω ∧ η + (−1)^i ω ∧ dη。
-使われ方：de Rham 複体。 -/
-def deRhamD (i : ℕ) : forms k T i →+ forms k T (i + 1) := sorry
-
-theorem deRhamD_comp (i : ℕ) (ω : forms k T i) : deRhamD k T (i + 1) (deRhamD k T i ω) = 0 := by
-  sorry
-
 theorem deRhamD_wedge {i j : ℕ} (ω : forms k T i) (η : forms k T j) :
     cast (by omega) (deRhamD k T (i + j) (wedge k T ω η)) =
       cast (by omega) (wedge k T (deRhamD k T i ω) η) + (-1 : ℤ) ^ i • wedge k T ω (deRhamD k T j η) := by
   sorry
-
-/-- 概要：de Rham 複体 Ω^•_{P/k} を k 加群の余鎖複体として。
-方針：`CochainComplex.of`。
-規約：次数 i に Ω^i。
-使われ方：H^i(Ω^•) と Cartier 同型。 -/
-def deRhamComplex (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] : CochainComplex (ModuleCat.{u} k) ℕ :=
-  sorry -- CochainComplex.of (fun i => ModuleCat.of k (forms k T i)) (deRhamD k T) (deRhamD_comp k T)。11-03（D4-05）：k・T を明示引数に
-
-/-- 概要：Ω^0_{P/k} = P。
-方針：Λ^0 = k の基底 1。
-規約：k 線形同型。11-07 追加（A1 の Cartier の次数 0）。
-使われ方：A1/CrystallineInput の `cartierZeroClass`・`PolynomialCartier.on_zero`。 -/
-def formsZeroEquiv : Poly k T ≃ₗ[k] forms k T 0 := sorry -- P ⊗_k Λ^0(k^T) ≅ P
 
 /-- 概要：de Rham cohomology の積 H^i × H^j → H^{i+j}（外積から）。
 方針：`deRhamD_wedge` により外積は余輪体 × 余輪体を余輪体へ、余境界 × 余輪体を余境界へ送る。
@@ -105,19 +56,6 @@ def deRhamCohomologyWedge {i j : ℕ} :
 
 /-! ## 普遍性（Constr 4.9 の「universal property of the de Rham complex」） -/
 
-/-- 概要：次数付き可換 dg k 代数（次数ごとの k 加群、結合的な積、次数付き可換性、微分と Leibniz）。H^*(Ō) の模型の型。
-方針：必要な構造だけを構造体にする（Mathlib の dg 代数は使わない）。
-規約：次数付き可換性は a·b = (−1)^{mn} b·a（奇数次の平方零は要求しない：p = 2 のため。Lemma 4.10 が別に要る）。
-使われ方：η^* の標的。 -/
-structure GradedCommDGAlgebra where
-  carrier : ℕ → Type u
-  [addCommGroup : ∀ n, AddCommGroup (carrier n)]
-  [module : ∀ n, Module k (carrier n)]
-  mul : ∀ {m n}, carrier m → carrier n → carrier (m + n)
-  one : carrier 0
-  d : ∀ n, carrier n →+ carrier (n + 1)
-  -- 結合律・単位律・双線形性・次数付き可換性・d² = 0・Leibniz は略（骨組み）
-
 /-- 概要：普遍性：環の射 η^0 : P → H^0 と、P 線形（H^0 を経由）な η^1 : Ω^1 → H^1 で、η^1(df) = d(η^0 f) かつ η^1(ω)·η^1(ω) = 0 となるものから、
 dg 代数の射 Ω^* → H^* が一意に延びる。
 方針：Ω^* = Λ^*_P(Ω^1) の外積代数の普遍性（`ExteriorAlgebra.lift`：平方零の線形写像から代数射）と、微分との両立を生成元で。
@@ -125,11 +63,11 @@ dg 代数の射 Ω^* → H^* が一意に延びる。
 使われ方：Constr 4.9 の η^*。 -/
 theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
     (η0 : Poly k T →+* H.carrier 0) (η1 : forms k T 1 →+ H.carrier 1)
-    (hlin : True) -- 要確認：η^1 の P 線形性（H^0 の作用を η0 で）の述べ方
-    (hd : ∀ f : Poly k T, η1 (deRhamD k T 0 (cast (by sorry) f)) = H.d 0 (η0 f))
+    (hlin : ∀ (f : Poly k T) (ω : forms k T 1), η1 (f • ω) = η0 f • η1 ω)
+    (hd : ∀ f : Poly k T, η1 (deRhamD k T 0 (formsZeroEquiv k T f)) = H.d 0 (η0 f))
     (hsq : ∀ ω : forms k T 1, H.mul (η1 ω) (η1 ω) = 0) :
     ∃! Φ : ∀ i, forms k T i →+ H.carrier i,
-      (∀ f, Φ 0 (cast (by sorry) f) = η0 f) ∧ (∀ ω, Φ 1 ω = η1 ω) ∧
+      (∀ f, Φ 0 (formsZeroEquiv k T f) = η0 f) ∧ (∀ ω, Φ 1 ω = η1 ω) ∧
       (∀ {i j} (ω : forms k T i) (η : forms k T j), Φ (i + j) (wedge k T ω η) = H.mul (Φ i ω) (Φ j η)) ∧
       (∀ i ω, Φ (i + 1) (deRhamD k T i ω) = H.d i (Φ i ω)) := by
   sorry -- 外積代数の普遍性と生成元での検算
