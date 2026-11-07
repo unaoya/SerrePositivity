@@ -172,7 +172,7 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 7.3.2.1,fix,partial,SerrePositivity.InfinityCategories.leftKanCanonicalCocone @ SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean:89 | SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean:26,仮定：δ は全部分圏の包含として使える。原文は指定した c での条件を述べる。結論：左側の標準余錐と全頂点の相対左 Kan 条件を与える。原文の頂点ごとの右 Kan 条件は引用型にない（Lean が弱い）。,,renamed
 7.3.2.6,fix,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtendedFrom_iff_refl_extension @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean:51,相対版（U は inner fibration）の「恒等変換が Kan 拡張を与える」同値のみ。絶対版を単独で述べた宣言と後半の主張は見当たらない。,,renamed
 7.3.2.7,fix,partial,SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_unit_isIso @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftUnitInvertible.lean:76 | SerrePositivity.InfinityCategories.F1B.kanLeftKanExtension_canonicalColimits_of_unit_isIso @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftUnitCanonical.lean:58,仮定：全部分圏の包含のような充満忠実 inner fibration と、指定 β が左 Kan 拡張（原文の順方向に対応）。結論：β の同型性と標準余錐の余極限性。これら二条件から β の左 Kan 性を得る向きは引用型にない（Lean が弱い）。,,renamed
-7.3.2.8,fix,own,SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_iff_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaCoconeColimit.lean:115 | SerrePositivity.InfinityCategories.F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean:44,仮定：C⁰↪C は充満忠実な mono で inner fibration、各圏は quasicategory（原文の全部分圏の包含を表す）。結論：変換つき左 Kan 拡張の存在と各局所余極限を比較し、局所余極限から制限が F₀ に厳密に等しい標準左 Kan 拡張を構成する（原文の二つの存在に一致）。,,renamed
+7.3.2.8,fix,own,SerrePositivity.InfinityCategories.F1B.exists_kanLeftExtension_iff_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaCoconeColimit.lean:115 | SerrePositivity.InfinityCategories.F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean:44,仮定：C⁰↪C は充満忠実な mono で inner fibration、各圏は quasicategory（原文の全部分圏の包含と一致）。結論：変換つき左 Kan 拡張の存在と各局所余極限を比較し、局所余極限から制限が F₀ に厳密に等しい標準左 Kan 拡張を構成する（原文の二つの存在に一致）。,,renamed
 7.3.2.9,fix,partial,SerrePositivity.InfinityCategories.IsLeftKanExtension @ SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean:152 | SerrePositivity.InfinityCategories.F1B.exists_kanLeftCanonical_strict_extension_of_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean:44,仮定：全部分圏の包含と F₀。引用の存在定理は各局所余極限を仮定する。結論：左側で制限が F₀ に等しく標準余錐が余極限となる G を与える。原文の指定 F についての左右両方の定義は引用型にない（Lean が弱い）。,,renamed
 7.3.2.11,fix,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeLeftKanExtension_relativeJoin_iff_local_relativeColimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean:42 | SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean:43,仮定：δ と相対 join 上の G。引用の絶対版には指定変換の Strictification が必要（Lean が強い）。結論：局所余錐の余極限性との iff。元の join 上の全部分圏からの左 Kan 延長との同定は引用型にない（Lean が弱い）。,,renamed
 7.3.2.13,fix,partial,SerrePositivity.InfinityCategories.IsLeftKanExtension.exists_relativeJoin_local_colimits @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean:58,Kan 拡張から相対 join 表示を得る向きのみ。同値の形では述べていない。,,renamed
@@ -259,7 +259,7 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 7.4.1.4,ok,none,,宇宙で小さい図式の極限と定値始域比較はある。非可算 κ を固定して Hom の本質的 κ-small 性を必要十分とし、さらに λ への包含が極限を保つ主張は見つからない。,,not_found
 7.4.1.6,fix,partial,SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:36 | SerrePositivity.InfinityCategories.HomotopyLimits.transportSectionsConeIsLimit @ SerrePositivity/InfinityCategories/HomotopyLimits/TransportSectionsLimit.lean:119,仮定：Lean の coherentDiagramSectionsCone は F の標準 unstraightening を使い、別引用は通常圏の nerve 上。原文は与えた左ファイブレーション U とその輸送表現（Lean が強い）。結論：標準の切断余域が極限錐。任意の表現 U の指定切断空間との比較はこの行の型にない。,,renamed
 7.4.1.7,fix,own,SerrePositivity.InfinityCategories.hasLimit_coherentSpaceDiagram @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:42 | SerrePositivity.InfinityCategories.coherentDiagramSectionsCone @ SerrePositivity/InfinityCategories/F1/Coherent/DiagramSectionsCone.lean:30,仮定：小さい B と空間値 F（Kerodon と一致）。結論：HasLimit F と、F の標準 unstraightening の切断から構成する coherentDiagramSectionsCone（原文の切断モデルと一致）。,,renamed
-7.4.1.8,fix,own,SerrePositivity.InfinityCategories.LeftTransportRepresentation @ SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean:66,仮定：左ファイブレーション p と空間値図式（Kerodon と一致）。結論：LeftTransportRepresentation の comparison は底上で指定 unstraightening へ写し、全頂点のファイバーで圏同値。各ファイバーは Kan で、点付き空間模型における原文のファイバーごとのホモトピー同値条件に対応。,,renamed
+7.4.1.8,fix,own,SerrePositivity.InfinityCategories.LeftTransportRepresentation @ SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean:66,仮定：左ファイブレーション p と空間値図式（Kerodon と一致）。結論：LeftTransportRepresentation の comparison は底上で指定 unstraightening へ写し、全頂点のファイバーで圏同値。各ファイバーは Kan で、点付き空間模型でファイバーごとのホモトピー同値を得る（原文と一致）。,,renamed
 7.4.1.9,fix,partial,SerrePositivity.InfinityCategories.LeftTransportRepresentation @ SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean:66,表現の別の述べ方の同値は確認できない。,,renamed
 7.4.1.13,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.simplicialSections @ SerrePositivity/InfinityCategories/HomotopyLimits/SimplicialSections.lean:25,切断の単体集合はあるが、評価写像から得る比較の構成としては未確認。,,renamed
 7.4.1.14,fix,partial,SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit @ SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean:36 | SerrePositivity.InfinityCategories.LeftTransportRepresentation.coneRestriction_iff @ SerrePositivity/InfinityCategories/Derived/LeftTransportConeRestriction.lean:52,表現 F 自身の unstraightening では示されている。一般の left fibration U への比較射 T の同値としては未確認。,,renamed
@@ -387,7 +387,7 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 7.6.1.23,ok,none,,離散形状上の対象族の積はある。各 Kᵢ の図式の極限を先に取り、その積を Kᵢ の単体的余積上の図式の極限とする型は見つからない。,,not_found
 7.6.1.25,ok,none,,小さい全形状の極限存在・保存を述べる述語はある。Kᵢ の極限と I-積だけで余積形状の極限存在・保存を得る型は見つからない。本文の保存条件には Kᵢ-indexed colimits とある。,,not_found
 7.6.1.26,fix,partial,CategoryTheory.hasFiniteProducts_of_has_binary_and_terminal @ Mathlib/CategoryTheory/Limits/Constructions/FiniteProductsOfBinaryProducts.lean:106,通常圏で二項積と終対象から有限積の存在を得る。任意の∞圏の有限離散単体集合についての iff は残る。,,found
-7.6.2.1,fix,own,SerrePositivity.InfinityCategories.IsPullbackSquare @ SerrePositivity/InfinityCategories/Core/Pullback.lean:114 | SerrePositivity.InfinityCategories.IsPushoutSquare @ SerrePositivity/InfinityCategories/Core/PushoutShape.lean:115,仮定：Δ¹×Δ¹→X の指定正方形。述語の形成には X の Quasicategory は不要（Lean が弱い）。結論：span 上の余錐の余極限性と cospan 上の錐の極限性。四角形の押し出し・引き戻しの定義と一致。,,renamed
+7.6.2.1,fix,own,SerrePositivity.InfinityCategories.IsPullbackSquare @ SerrePositivity/InfinityCategories/Core/Pullback.lean:114 | SerrePositivity.InfinityCategories.IsPushoutSquare @ SerrePositivity/InfinityCategories/Core/PushoutShape.lean:115,仮定：Δ¹×Δ¹→X の指定正方形。述語の形成には X の Quasicategory は不要（Lean が弱い）。結論：span 上の余錐の余極限性と cospan 上の錐の極限性（四角形の押し出し・引き戻しの定義と一致）。,,renamed
 7.6.2.6,fix,partial,CategoryTheory.IsPullback.mono_snd_of_mono @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean:137,通常圏の引き戻しでは一方の射の単射性が対応する射に移る。任意の n-truncated な射の∞圏での基底変換は残る。,,found
 7.6.2.8,fix,partial,SerrePositivity.InfinityCategories.F1B.IsRelativeLimitCone @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLimit.lean:33,相対極限 IsRelativeLimitCone の一般定義だけで、U-pullback square の名前付き定義はない。,,renamed
 7.6.2.13,fix,partial,SerrePositivity.InfinityCategories.F2.catPullbackDiagram_hasLimit @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackCone.lean:61,一般の ∞ 圏の fiber product の記法・対象はない（Λ²₂ 図式の HasLimit を直接使う）。Cat∞ では catPullback。,,renamed
@@ -416,105 +416,105 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 7.6.3.8,fix,partial,SerrePositivity.InfinityCategories.F2.qCatPullbackInfinityCone_isLimit @ SerrePositivity/InfinityCategories/F2/CatInfinity/QCatPullbackLimit.lean:66 | SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_isLimit @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackReplacementCone.lean:58 | SerrePositivity.InfinityCategories.F2.catPullback @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullback.lean:28,QC の strict な引き戻し（一脚が同値を持ち上げる）と path 置換の錐が Cat∞ の極限錐、まで。一般の正方形の「C01→ホモトピー fiber 積が同値 ⟺ 引き戻し」の同値判定はない。,,renamed
 7.6.3.9,fix,partial,SerrePositivity.InfinityCategories.F2.catPullback @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullback.lean:28 | SerrePositivity.InfinityCategories.F2.catPullbackReplacementCone_isLimit @ SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackReplacementCone.lean:58,"仮定：三つの quasicategory と二脚 p,q（Kerodon と一致）。結論：catPullback の置換図式の IsLimitCone。原文の指定した α を備える QC 内の正方形そのものとの比較は引用型にない。",,renamed
 7.6.3.10,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.spacePullbackCone_isLimitCone @ SerrePositivity/InfinityCategories/HomotopyLimits/SpacePullbacks.lean:90 | SerrePositivity.InfinityCategories.HomotopyLimits.strictCoherentCone_isLimit_iff_cospan_representableComparison @ SerrePositivity/InfinityCategories/HomotopyLimits/RepresentableLimitEquivalence.lean:62,𝒮 で一脚 Kan fibration の strict な引き戻しが極限錐になる向きのみ。一般の正方形の ⟺ はない。,,renamed
-7.6.3.11,ok,none,,確認済み・なし（探索範囲内）。𝒮 の n-truncated・n-connective な射の引き戻し安定性はない（truncated な射の概念自体がない）。,,not_found
+7.6.3.11,ok,none,,Kan 複体の厳密引き戻しを空間圏の引き戻し錐とする型はある。任意の n の二種類の連結性条件を引き戻しで移す型は見つからない。,,not_found
 7.6.3.14,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.strictCoherentCone_isLimit_iff_cospan_representableComparison @ SerrePositivity/InfinityCategories/HomotopyLimits/RepresentableLimitEquivalence.lean:62,strict に可換な錐の場合のみ（Hom の一脚 fibration を仮定）。N^hc の一般の正方形 σ に対する判定はない。,,renamed
-7.6.4.1,ok,none,,確認済み・なし（探索範囲内）。(•⇉•) = Δ1 ⊔_{∂Δ1} Δ1 の単体集合は定義されていない（Mathlib の WalkingParallelPair は 1 圏の添字）。,,not_found
+7.6.4.1,fix,partial,CategoryTheory.Limits.parallelPair @ Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean:254,通常圏の二本の平行射を WalkingParallelPair 上の関手とする定義はある。Δ¹ を境界で貼った単体集合からの射を指定平行辺の対と同定する型は残る。,,found
 7.6.4.4,ok,partial,CategoryTheory.Limits.equalizer @ Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean:835 | CategoryTheory.Limits.HasEqualizers @ Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean:1241,1 圏版のみ Mathlib にある（∞ 圏版はない）。∞ 圏のイコライザー・余イコライザーの定義はない。,,found
 7.6.4.5,ok,partial,CategoryTheory.Limits.equalizer @ Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean:835,"1 圏版のみ Mathlib にある（∞ 圏版はない）（記法 Eq(f0,f1) に当たる equalizer）。",,found
-7.6.4.9,ok,none,,確認済み・なし（探索範囲内）。B Z≥0 上の図式（反復の余極限）の変種はない。,,not_found
+7.6.4.9,ok,none,,左余終な制限の極限から元の極限を得る一般の向きはある。自由一生成モノイドの nerve への単体円の包含の inner anodyne 性と、その制限の（余）等化子表示は見つからない。,,not_found
 7.6.4.10,ok,partial,CategoryTheory.Limits.Fork @ Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean:345,1 圏版のみ Mathlib にある（∞ 圏版はない）（Fork と IsLimit）。∞ 圏のイコライザー図式の定義はない。,,found
-7.6.4.14,ok,none,,確認済み・なし（探索範囲内）。QC のイコライザー図式の判定はない。∞ 圏のイコライザー（WalkingParallelPair 形の錐）は InfinityCategories・KST・Mathlib のいずれにもない。,,not_found
-7.6.4.15,ok,none,,確認済み・なし（探索範囲内）。Kan 複体のイコライザーの 𝒮 での判定はない。,,not_found
-7.6.4.16,ok,none,,確認済み・なし（探索範囲内）。局所 Kan 単体圏のイコライザー判定はない。,,not_found
-7.6.4.18,ok,none,,確認済み・なし（探索範囲内）。QC のイコライザーの判定はない。,,not_found
-7.6.4.19,ok,none,,確認済み・なし（探索範囲内）。ホモトピーイコライザーの構成はない。,,not_found
-7.6.4.20,unsure,none,,coequalizer・cofork・fork・parallel を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.4.21,ok,none,,確認済み・なし（探索範囲内）。例（hKan でイコライザーでない）。対応なし。,,not_found
+7.6.4.14,fix,partial,CategoryTheory.Limits.isPullback_equalizer_prod @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equalizer.lean:27,通常圏の等化子は対角と二射の積への組による引き戻しを与える。QC の指定平行関手図式の等化子性と categorical pullback の iff は残る。,,found
+7.6.4.15,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.spacePullbackCone_isLimitCone @ SerrePositivity/InfinityCategories/HomotopyLimits/SpacePullbacks.lean:90 | CategoryTheory.Limits.isPullback_equalizer_prod @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equalizer.lean:27,通常圏の対角による等化子表示と、片脚がファイブレーションである Kan 複体の引き戻しが空間の極限錐になる型はある。指定平行射の等化子性と対角正方形の homotopy pullback 性との iff は残る。,,found
+7.6.4.16,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.strictCoherentCone_isLimit_iff_general_representableComparison @ SerrePositivity/InfinityCategories/HomotopyLimits/GeneralOriginalCriterion.lean:38 | CategoryTheory.Limits.isPullback_equalizer_prod @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equalizer.lean:27,豊穣圏の厳密錐の極限を全対象の BK Hom 比較で判定する。通常圏の対角による等化子表示もある。指定平行射の各豊穣 Hom 正方形がホモトピー引き戻しである条件との iff は残る。,,found
+7.6.4.18,ok,none,,通常圏の等化子と対角の引き戻しは対応する。指定 E から categorical homotopy pullback への T が同値であることと QC での等化子性を比較する型は見つからない。,,not_found
+7.6.4.19,ok,none,,準圏の同値辺の空間と端点評価、写像の path replacement の inner fibration 性はある。二関手の組 D→C×C に沿って両端点を引き戻す homotopy equalizer の指定構成は見つからない。,,not_found
+7.6.4.20,ok,none,,通常圏の等化子から対角引き戻しへの型はある。同値辺空間を使った指定 hEq が QC で等化子となる型は見つからない。,,not_found
+7.6.4.21,ok,none,,片脚がファイブレーションである Kan 複体の引き戻しは空間圏の引き戻しになる。hEq の具体的 path モデルを指定し、その Kan 性と平行射の等化子性を結ぶ型は見つからない。,,not_found
 7.6.4.22,fix,partial,CategoryTheory.Limits.HasEqualizersOfHasPullbacksAndBinaryProducts.equalizerConeIsLimit @ Mathlib/CategoryTheory/Limits/Constructions/Equalizers.lean:68 | CategoryTheory.Limits.hasEqualizers_of_hasPullbacks_and_binary_products @ Mathlib/CategoryTheory/Limits/Constructions/Equalizers.lean:84,Mathlib に 1 圏版（イコライザーを積と引き戻しで構成）。∞ 圏の版はない（∞ 圏のイコライザー自体がない）。,,renamed
 7.6.4.23,fix,partial,CategoryTheory.Limits.hasLimit_cospan_of_hasLimit_pair_of_hasLimit_parallelPair @ Mathlib/CategoryTheory/Limits/Constructions/Pullbacks.lean:28 | CategoryTheory.Limits.hasPullbacks_of_hasBinaryProducts_of_hasEqualizers @ Mathlib/CategoryTheory/Limits/Constructions/Pullbacks.lean:56,Mathlib に 1 圏版（引き戻しを積とイコライザーで構成）。∞ 圏の版はない。,,renamed
 7.6.4.25,fix,partial,CategoryTheory.Limits.hasFiniteLimits_of_hasEqualizers_and_finite_products @ Mathlib/CategoryTheory/Limits/Constructions/LimitsOfProductsAndEqualizers.lean:138 | CategoryTheory.Limits.preservesFiniteLimits_of_preservesEqualizers_and_finiteProducts @ Mathlib/CategoryTheory/Limits/Constructions/LimitsOfProductsAndEqualizers.lean:195,1 圏版のみ Mathlib にある（∞ 圏版はない）。自前は終対象＋引き戻しから有限極限（hasFiniteLimits_of_terminal_pullbacks、F1/Joins/FiniteLimitGeneration.lean:36）で、積とイコライザーの形はない。,,renamed
 7.6.5.1,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.spaceTowerCone_isLimitCone @ SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTowers.lean:90,塔は strict な AsSmall ℕᵒᵖ 図式としてだけ扱う。∞ 圏の塔と sequentially (co)complete の定義はない。,,renamed
-7.6.5.2,unsure,none,,記法のみ。 telescope・sequential・tower・limit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.6.5.2,fix,partial,CategoryTheory.Functor.ofSequence @ Mathlib/CategoryTheory/Functor/OfSequence.lean:104 | CategoryTheory.Functor.ofOpSequence @ Mathlib/CategoryTheory/Functor/OfSequence.lean:154,通常圏で連続する射から ℕ または ℕᵒᵖ 上の関手を構成する型がある。準圏の nerve 上の図式の記法と高次単体の選択の扱いは残る。,,found
 7.6.5.9,fix,own,SerrePositivity.InfinityCategories.F2.Ind.strictNativeCocone_isColimit_of_filtered_forget @ SerrePositivity/InfinityCategories/F2/Ind/FilteredKanCocone.lean:21 | SerrePositivity.InfinityCategories.Kan.filteredColimit_kanComplex @ SerrePositivity/InfinityCategories/Kan/FilteredKanColimit.lean:92,仮定：小さい通常圏 I の filtered 図式で各値が Kan、通常圏の余錐が台で IsColimit。I=ℕ が原文（Lean が弱い）。結論：通常の余極限が Kan で、同じ頂点を持つ strictNativeCocone は標準 coherent 図式上の余極限（原文と一致）。,,renamed
 7.6.5.11,fix,own,SerrePositivity.InfinityCategories.HomotopyLimits.spaceTowerCone_isLimitCone @ SerrePositivity/InfinityCategories/HomotopyLimits/SpaceTowers.lean:90 | SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration @ SerrePositivity/InfinityCategories/Kan/FibrationTower.lean:152 | SerrePositivity.InfinityCategories.Kan.FibrationTower.limit_kanComplex @ SerrePositivity/InfinityCategories/Kan/FibrationTower.lean:164,仮定：ℕᵒᵖ 上の Kan 図式で隣接遷移が Fibration。Kan 性の補題には初段の Kan 性だけが必要（Lean が弱い）。結論：通常の塔極限の Kan 性と、同じ塔の coherent 図式での spaceTowerCone の IsLimitCone（原文と一致）。,,renamed
-7.6.5.12,ok,none,,確認済み・なし（探索範囲内）。QC の一般の塔の極限（isofibration への置換）はない。,,not_found
-7.6.5.13,ok,none,,確認済み・なし（探索範囲内）。列の余極限上の図式の極限を塔の極限で書く命題はない。,,not_found
-7.6.5.14,unsure,none,,telescope・sequential・tower・limit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.5.16,ok,none,,確認済み・なし（探索範囲内）。列の極限をイコライザーで書く命題はない。,,not_found
+7.6.5.12,ok,none,,Kan 値で遷移がファイブレーションの塔の空間極限と、一写像の path replacement の inner fibration 性がある。任意の準圏の塔を指定した反復ホモトピー引き戻しで置換して QC の極限とする型は見つからない。,,not_found
+7.6.5.13,ok,none,,既に与えられた Kan 値の塔の極限と、左余終な形状制限による極限性の iff はある。形状の逐次余極限から各段の極限をつなぐ塔を構成する型は見つからない。,,not_found
+7.6.5.14,ok,none,,小形状全体の極限存在と、左余終な写像に沿う極限性の制限はある。逐次完備性と各 K(n) 上の極限から余極限形状 K での存在・保存を得る型は見つからない。本文の存在の箇所には K-indexed colimits とある。,,not_found
+7.6.5.16,ok,none,,Kan 値の塔の極限と、通常圏の等化子の対角引き戻し表示はある。任意の∞圏の塔で指定積上の shift をホモトピーまで一意に構成し、その恒等射との等化子で塔極限を判定する型は見つからない。,,not_found
 7.6.6.1,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:25 | SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:21,仮定：単体集合 C を固定。述語形成には Quasicategory を要求しない（Lean が弱い）。結論：HasSmallLimits と HasSmallColimits は宇宙で小さい K の全図式の HasLimit・HasColimit（原文と一致）。,,renamed
 7.6.6.4,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceSmallLimits.lean:25 | SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:29,仮定：単体写像 F:C→D。定義自体は両端の∞圏性を要求しない（Lean が弱い）。結論：小さい K 上の全極限錐・余極限錐について、写した錐の極限性・余極限性を要求（原文と一致）。,,renamed
-7.6.6.5,ok,none,,確認済み・なし（探索範囲内）。Fun^cont・Fun^cocont の充満部分圏はない（SiftedContinuousFunctorInfinity などは別の条件）。,,not_found
-7.6.6.6,ok,none,,確認済み・なし（探索範囲内）。κ-complete・κ-cocomplete はない。HasSmallKappaFilteredColimits（F2/Ind/NativeFilteredPreservation.lean:28）は κ-filtered 余極限で別物。κ-continuous を名に持つ KappaContinuousFunctorInfinity（F2/Ind/ContinuousFunctorRestriction.lean:19）は κ-filtered 余極限保存の意味で別物。,,not_found
-7.6.6.7,ok,none,,確認済み・なし（探索範囲内）。Fun^{κ-cont} はない。KappaContinuousFunctorInfinity（F2/Ind/ContinuousFunctorRestriction.lean:19）は κ-filtered 余極限の保存で別物（名前に注意）。,,not_found
+7.6.6.5,ok,none,,"各関手の小極限・小余極限保存は述語として定義される。対応する全頂点が張る Fun(C,D) の充満部分準圏としての記法は見つからない。",,not_found
+7.6.6.6,ok,none,,宇宙で小さい全形状の完備性・余完備性と κ-small の濃度条件は別々にある。任意の κ を取ってその全 κ-small 形状に量化する四つの述語は見つからない。,,not_found
+7.6.6.7,ok,none,,全頂点が張る部分複体を作る一般の構成はある。κ-small な形状の極限・余極限を保存する関手の充満部分圏としての指定定義は見つからない。,,not_found
 7.6.6.15,fix,partial,CategoryTheory.Limits.has_limits_of_hasEqualizers_and_products @ Mathlib/CategoryTheory/Limits/Constructions/LimitsOfProductsAndEqualizers.lean:131 | CategoryTheory.Limits.hasEqualizers_of_hasPullbacks_and_binary_products @ Mathlib/CategoryTheory/Limits/Constructions/Equalizers.lean:84 | SerrePositivity.InfinityCategories.hasFiniteLimits_of_terminal_pullbacks @ SerrePositivity/InfinityCategories/F1/Joins/FiniteLimitGeneration.lean:36,Mathlib の 1 圏・宇宙版（積とイコライザー⇒極限、積と引き戻し⇒イコライザー）。∞ 圏では有限版（終対象と引き戻し⇒有限極限）だけ。∞ 圏の κ 版はない。,,renamed
-7.6.6.18,unsure,none,,completeness・cocontinuous・limit・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.6.19,unsure,none,,再確認済み。 completeness・cocontinuous・limit・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.6.6.18,ok,none,,宇宙で小さい全極限の述語と濃度制限はある。特異 λ で全 κ<λ にわたる完備性から λ⁺-完備性を得る同値は見つからない。,,not_found
+7.6.6.19,fix,partial,CategoryTheory.Functor.pointwiseRightKanExtension @ Mathlib/CategoryTheory/Functor/KanExtension/Pointwise.lean:694,通常圏で各 structured arrow 図式の極限を仮定し点ごとの右 Kan 拡張を構成する。局所 κ-small な∞圏で各形状が小さいことと κ-完備性から拡張を得る型は残る。,,found
 7.6.6.20,fix,partial,SerrePositivity.InfinityCategories.HasFiniteLimits @ SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:19 | SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:25 | SerrePositivity.InfinityCategories.HomotopyLimits.HasSmallSiftedColimits @ SerrePositivity/InfinityCategories/F2/Presentable/SiftedColimitPreservation.lean:30,𝕂 一般の定義はなく、有限・小・sifted など個別の 𝕂 だけ。,,renamed
 7.6.6.22,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:29 | SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/EquivalenceSmallLimits.lean:25,𝕂 一般の 𝕂-continuous はなく、小・有限余積・sifted など個別の場合だけ。,,renamed
 7.6.6.24,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackSmallColimits.lean:33,余極限側で、余極限保存関手の引き戻しが小余完備、という特別な場合だけ。一般の極限図式 A→QC はない。,,renamed
-7.6.6.26,ok,none,,確認済み・なし（探索範囲内）。QC_{<λ} はない（QCat は小さい ∞ 圏だけ）。,,not_found
-7.6.6.27,unsure,none,,再確認済み。 completeness・cocontinuous・limit・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.6.28,ok,none,,確認済み・なし（探索範囲内）。𝕂-cocomplete な inner fibration の定義はない。,,not_found
-7.6.6.29,unsure,none,,completeness・cocontinuous・limit・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.6.39,unsure,none,,再確認済み。 transitivity・completeness・cocontinuous・limit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.6.6.40,unsure,none,,再確認済み。 completeness・cocontinuous・limit・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.6.6.26,ok,none,,対象の完備性と関手の保存性の述語はある。指定形状集合に対応し、それぞれを対象条件・辺条件とする QC_{<λ} の部分圏は見つからない。,,not_found
+7.6.6.27,ok,none,,通常圏 Cat の小極限と、既に頂点が属する充満部分複体への極限性移送はある。濃度境界つき QC の完備・余完備部分圏で κ-極限が存在し包含で保つ型は見つからない。,,not_found
+7.6.6.28,ok,none,,全空間の相対余極限性を coslice 上で定義する。各ファイバーの図式に edgewise U-余極限余錐が存在することを全 K で量化した述語は見つからない。,,not_found
+7.6.6.29,ok,none,,相対余極限と κ-small の述語はある。κ-small、有限、宇宙で小さい形状に対する edgewise 余極限付きファイブレーションの三種類の定義は見つからない。,,not_found
+7.6.6.39,ok,none,,固定 U に対する相対余極限は定義される。二つの edgewise 余完備なファイブレーションの合成で、上側が cocartesian のとき余完備性を保つ型は見つからない。,,not_found
+7.6.6.40,ok,none,,全空間の小余極限存在と射影の保存を別々に書く述語はある。底の余完備性の下で、それらの連言を edgewise なファイブレーションの余完備性と比較する iff は見つからない。,,not_found
 7.6.6.41,fix,partial,SerrePositivity.InfinityCategories.F2.isColimitCone_of_pointwise @ SerrePositivity/InfinityCategories/F1B/FilteredExchange/FunctorPointwiseColimitCriterion.lean:67,自明な fibration（関手圏）で各点の余極限が関手圏の余極限、という特別な場合だけ。,,renamed
 7.7.0.1,fix,partial,CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45,1 圏版のみ Mathlib にある（∞ 圏版はない）（IsUniversalColimit）。,,renamed
 7.7.0.4,fix,partial,SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanGluing.lean:53 | SerrePositivity.KST.Comparison.sequential_homotopyPullback @ SerrePositivity/KST/Comparison/SequentialHomotopyPullback.lean:32,原文は空間の任意の小余極限が強普遍的という主張。自前は二重写像円筒と単射列の余極限で、各頂点からの正方形のホモトピー引き戻し性を示す特例。,,renamed
-7.7.0.6,unsure,none,,colimits・corollary・are・complexes を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.0.6,ok,none,,左ファイブレーション分類での基底変換は κ-filtered 余極限を保ち、空間値図式の全空間モデルは余極限を与える。任意の β の余極限性と全点ファイバーの可縮余極限を含む四条件の iff は見つからない。,,not_found
 7.7.1.1,ok,partial,CategoryTheory.NatTrans.Equifibered @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean:47,1 圏版のみ Mathlib にある（∞ 圏版はない）（cartesian 自然変換 = NatTrans.Equifibered）。,,found
-7.7.1.13,ok,none,,確認済み・なし（探索範囲内）。Mathlib の Equifibered（Limits/Shapes/Pullback/Equifibered.lean:47）は 1 圏の cartesian 自然変換の定義で、この同値の命題ではない。,,not_found
-7.7.1.14,unsure,none,,cartesian・transformation・universal・cocartesian を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.1.13,fix,partial,CategoryTheory.NatTrans.Equifibered @ Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean:47,通常圏では自然変換の各辺の四角形が引き戻しという述語がある。∞圏で指定の余錐頂点への制限四角形の levelwise 引き戻し性との iff は残る。,,found
+7.7.1.14,ok,none,,通常圏の辺ごとの引き戻し述語と join 余錐の頂点への収縮はある。指定 γ の cartesian 性と定値図式への点ごとの引き戻し表示を比較する型は見つからない。,,not_found
 7.7.1.15,fix,partial,CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45,1 圏版のみ Mathlib にある（∞ 圏版はない）（IsUniversalColimit）。,,renamed
-7.7.1.19,ok,none,,確認済み・なし（探索範囲内）。Mathlib の IsUniversalColimit（Limits/VanKampen.lean:45）は 1 圏の定義のみで、この判定はない。,,not_found
-7.7.1.20,unsure,none,,cartesian・transformation・universal・cocartesian を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.1.19,fix,partial,CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45,通常圏では余錐頂点への各引き戻しを取って再び余極限となる条件を定義している。∞圏の指定 β で原文の二表現を比較する iff は残る。,,found
+7.7.1.20,ok,none,,通常圏の一つの余錐に対する基底変換閉性は定義される。任意の∞圏の形状 K で全余極限がその性質を持つことと、圏の K-余極限の普遍性を比較する型は見つからない。,,not_found
 7.7.1.21,fix,partial,CategoryTheory.IsUniversalColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:45,1 圏版のみ Mathlib にある（∞ 圏版はない）。,,renamed
-7.7.2.1,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の Fun_{/C}^{ACart} の記法に当たるものは見つからない。,,not_found
-7.7.2.5,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration に対する descent 図式の定義はない（KST/Descent はスキームの層の descent で無関係）。,,not_found
-7.7.2.8,unsure,none,,再確認済み。 descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.10,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.12,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.2.1,fix,partial,SerrePositivity.InfinityCategories.cocartesianSections @ SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianSections.lean:65,双対側で全辺を cocartesian 辺に送る切断の充満部分複体を構成する。cartesian ファイブレーション側の任意の F 上での指定構成は残る。,,found
+7.7.2.5,ok,none,,双対の cocartesian 切断を前合成で制限する射と充満忠実の述語はある。K▷→K の cartesian 切断制限に対する descent と effective descent の二定義は見つからない。,,not_found
+7.7.2.8,ok,none,,通常圏の余極限の普遍性と、双対の切断制限は別々にある。ev₁ に対する descent の順方向と、K-余極限または終対象を仮定した逆方向は見つからない。,,not_found
+7.7.2.10,ok,none,,"通常圏の equifibered 述語と頂点が張る部分複体の一般構成はある。Fun(K,C) の指定スライスで cartesian な γ のみを集めた充満部分圏は見つからない。",,not_found
+7.7.2.12,ok,none,,通常圏の普遍余極限述語と準圏の充満忠実はある。任意の指定余極限に対する cartesian なスライスの制限が充満忠実であることとの同値は見つからない。,,not_found
 7.7.2.13,fix,partial,CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56,1 圏版のみ Mathlib にある（∞ 圏版はない）（strongly universal ≈ IsVanKampenColimit）。,,renamed
 7.7.2.15,fix,partial,CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56,1 圏版のみ Mathlib にある（∞ 圏版はない）。,,renamed
-7.7.2.19,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.23,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.24,ok,none,,確認済み・なし（探索範囲内）。weak colimit diagram の定義はない。,,not_found
-7.7.2.26,unsure,none,,再確認済み。 descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.28,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.30,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.31,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.32,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.33,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.2.34,unsure,none,,descent・cartesian・universal・fibration を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.3.1,ok,mathlib,CategoryTheory.Closed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:39 | CategoryTheory.MonoidalClosed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:46,仮定：通常圏に有限積を選び、それを CartesianMonoidalCategory のテンソルとする。Closed と MonoidalClosed の型は一般のモノイダル積も許す（Lean が弱い）。結論：Closed X は X とのテンソルの右随伴を与え、Hom の随伴全単射は評価射との合成。全 X での MonoidalClosed は原文の Cartesian closed 性と一致。,,found
+7.7.2.19,fix,partial,CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56,通常圏の van Kampen 条件は底の自然変換が equifibered のとき、頂点までの各引き戻しと上の余極限性を比較する。指定余錐に対する∞圏の強普遍性との iff は残る。,,found
+7.7.2.23,fix,partial,CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56,通常圏の一つの van Kampen 余錐について、上の余極限性と頂点までの引き戻しを比較する。全ての K-余極限についての∞圏の強普遍性の特徴付けは残る。,,found
+7.7.2.24,ok,none,,任意に与えたスライス余錐を元の圏への射影で判定する。K⋆Δ¹ の縮退から指定した lift を作り、それにより弱余極限を定義する型は見つからない。,,not_found
+7.7.2.26,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_iff_projection @ SerrePositivity/InfinityCategories/F2/Presentable/SliceOverColimitCreation.lean:67,頂点 a 上のスライスの指定余錐について、台の余極限性との iff がある。原文の縮退で作る標準 lift との照合は残る。,,found
+7.7.2.28,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_iff_projection @ SerrePositivity/InfinityCategories/F2/Presentable/SliceOverColimitCreation.lean:67,スライスに既に与えられた各余錐は射影の余極限性で判定できる。原文の標準 lift と任意の lift の量化の比較は残る。,,found
+7.7.2.30,ok,none,,相対左 Kan 性を仮定した四つの Hom の引き戻し比較はある。弱余極限図式を入力に、cartesian な相手に対するスライス Hom の制限を同値にする iff は見つからない。,,not_found
+7.7.2.31,ok,none,,指定スライス余錐の余極限性を台で判定する。ev₁ の descent と、全 cartesian な変換の上側が弱余極限となる条件の iff は見つからない。,,not_found
+7.7.2.32,ok,none,,通常圏で引き戻しが後合成の右随伴になる。∞圏の向き付きスライスに lift した指定図式の余極限性を全 u* に要求する descent 判定は見つからない。,,not_found
+7.7.2.33,ok,none,,左ファイブレーション分類の特定の基底変換が κ-filtered 余極限を保つ。任意のスライス引き戻しの保存と全弱余極限の descent との iff は見つからない。,,not_found
+7.7.2.34,ok,none,,通常圏の余錐の引き戻し不変性と、左ファイブレーション分類の κ-filtered 保存を確認した。任意の∞圏の K-余極限が普遍であることと全 u* の K-余極限保存の iff は見つからない。,,not_found
+7.7.3.1,ok,mathlib,CategoryTheory.Closed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:39 | CategoryTheory.MonoidalClosed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:46,仮定：通常圏に有限積を選び、それを CartesianMonoidalCategory のテンソルとする。Closed と MonoidalClosed の型は一般のモノイダル積も許す（Lean が弱い）。結論：Closed X は X とのテンソルの右随伴を与え、Hom の随伴全単射は評価射との合成。全 X にこれを要求する MonoidalClosed（原文の Cartesian closed 性と一致）。,,found
 7.7.3.4,fix,partial,CategoryTheory.Closed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:39 | CategoryTheory.MonoidalClosed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:46,Mathlib の 1 圏版（cartesian monoidal 圏での Closed A＝指数対象）。∞ 圏の写像空間による定義はない。,,renamed
-7.7.3.13,unsure,none,,再確認済み。 exponential・ihom・cartesian・closed を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.3.13,fix,partial,CategoryTheory.forgetAdjToOver @ Mathlib/CategoryTheory/LocallyCartesianClosed/Over.lean:327 | CategoryTheory.Over.toOverSectionsAdj @ Mathlib/CategoryTheory/LocallyCartesianClosed/Sections.lean:156,通常圏では有限積を用いたスライスへの toOver が forget の右随伴で、Cartesian closed の下でさらに sections を右随伴に持つ。∞圏の指数対象との iff は残る。,,found
 7.7.3.14,ok,partial,CategoryTheory.ExponentiableMorphism @ Mathlib/CategoryTheory/LocallyCartesianClosed/ExponentiableMorphism.lean:43,1 圏版のみ Mathlib にある（∞ 圏版はない）（ExponentiableMorphism）。,,found
-7.7.3.17,ok,none,,確認済み・なし（探索範囲内）。𝒮 の局所デカルト閉性はない（Mathlib の SSet の内部 Hom は strict）。Mathlib の SSet の内部 Hom・ExponentiableMorphism は strict な 1 圏の話で、𝒮 の局所デカルト閉性ではない。,,not_found
-7.7.3.19,ok,none,,確認済み・なし（探索範囲内）。Mathlib の ExponentiableMorphism（LocallyCartesianClosed/ExponentiableMorphism.lean:43）は「引き戻しが右随伴を持つ」を定義に採る 1 圏版で、この同値の命題はない。,,not_found
-7.7.3.20,unsure,none,,exponential・ihom・cartesian・closed を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.3.21,unsure,none,,exponential・ihom・cartesian・closed を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.3.23,ok,none,,確認済み・なし（探索範囲内）。𝒮 の余極限の普遍性はない。,,not_found
+7.7.3.17,ok,none,,通常圏の指数可能な射の右随伴データと空間圏の小極限はある。SpaceInfinity の各スライスが Cartesian closed である型は見つからない。,,not_found
+7.7.3.19,fix,partial,CategoryTheory.ExponentiableMorphism @ Mathlib/CategoryTheory/LocallyCartesianClosed/ExponentiableMorphism.lean:43 | CategoryTheory.ExponentiableMorphism.isExponentiable @ Mathlib/CategoryTheory/LocallyCartesianClosed/ExponentiableMorphism.lean:56,通常圏の選んだ引き戻しに対して pushforward が右随伴となる型はある。すべての f での存在と∞圏の局所 Cartesian closed 性との iff は残る。,,found
+7.7.3.20,ok,none,,通常圏で指数可能な射の引き戻しを左随伴にし、左随伴は余極限を保つ。∞圏の ev₁ に対する弱余極限の descent を得る型は見つからない。,,not_found
+7.7.3.21,ok,none,,通常圏の引き戻しが左随伴であれば余極限を保つ。終対象または K-余極限存在を仮定した∞圏で、K-余極限の普遍性までを述べる型は見つからない。,,not_found
+7.7.3.23,ok,none,,左ファイブレーション分類の特定の基底変換で κ-filtered 余極限の保存はある。SpaceInfinity で任意の小形状の余極限が普遍である型は見つからない。,,not_found
 7.7.4.1,ok,partial,CategoryTheory.Limits.CoproductDisjoint @ Mathlib/CategoryTheory/Limits/Shapes/DisjointCoproduct.lean:47,1 圏版のみ Mathlib にある（∞ 圏版はない）（CoproductDisjoint）。,,found
 7.7.4.5,ok,partial,CategoryTheory.Limits.BinaryCoproductsDisjoint @ Mathlib/CategoryTheory/Limits/Shapes/DisjointCoproduct.lean:234,1 圏版のみ Mathlib にある（∞ 圏版はない）。,,found
-7.7.4.8,unsure,none,,extensive・coproduct・disjoint・initial を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.4.9,ok,none,,確認済み・なし（探索範囲内）。Mathlib の CoproductDisjoint・CoproductsOfShapeDisjoint（Limits/Shapes/DisjointCoproduct.lean）は 1 圏の定義で、二項から I 個への持ち上げはない。KST/Comparison/CoproductPullbacks は単体集合の strict な余積の引き戻し。,,not_found
-7.7.4.10,ok,none,,確認済み・なし（探索範囲内）。Mathlib の FinitaryExtensive.isVanKampen_finiteCoproducts は 1 圏の有限版で仮定が異なる。,,not_found
-7.7.4.11,unsure,none,,extensive・coproduct・disjoint・initial を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.4.12,ok,none,,確認済み・なし（探索範囲内）。𝒮・QC の余積の strongly universal 性はない（Mathlib の types.finitaryExtensive は Type の 1 圏版）。,,not_found
-7.7.5.1,ok,none,,確認済み・なし（探索範囲内）。Mather の立方体定理の定義はない。Mathlib の IsVanKampenColimit・Adhesive は 1 圏の類似、KST/Comparison/SpanGluing（Segal Lemma 1.7）は単体集合の模型での 𝒮 の場合の主張で、一般の ∞ 圏の定義はない。,,not_found
-7.7.5.6,unsure,none,,再確認済み。 adhesive・pushout・cube・admits を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.5.7,unsure,none,,adhesive・pushout・cube・admits を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.5.8,unsure,none,,再確認済み。 adhesive・pushout・cube・admits を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.5.9,unsure,none,,adhesive・pushout・cube・admits を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.5.10,unsure,none,,adhesive・pushout・cube・corollary を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.4.8,ok,none,,通常圏で各余射影が単射かつ相異なる射影の引き戻しが始対象なら非交差余積を得る。CatInfinity の余積とその二射影がこの条件を満たす型は見つからない。,,not_found
+7.7.4.9,fix,partial,CategoryTheory.Limits.CoproductDisjoint.of_hasCoproduct @ Mathlib/CategoryTheory/Limits/Shapes/DisjointCoproduct.lean:77,通常圏で任意添字の余積に対し各余射影の単射性と二つずつの引き戻しの始性から非交差性を得る。∞圏の二項の非交差性だけから任意添字に移す型は残る。,,found
+7.7.4.10,fix,partial,CategoryTheory.BinaryCofan.isVanKampen_iff @ Mathlib/CategoryTheory/Limits/VanKampen.lean:448 | CategoryTheory.BinaryCofan.isPullback_initial_to_of_isVanKampen @ Mathlib/CategoryTheory/Limits/VanKampen.lean:530,通常圏の二項 van Kampen 余錐に対し引き戻し判定と、始対象があると相異なる余射影の引き戻しが始対象となる向きがある。普遍 I-余積に対する非交差性との iff は残る。,,found
+7.7.4.11,fix,partial,CategoryTheory.IsVanKampenColimit.isUniversal @ Mathlib/CategoryTheory/Limits/VanKampen.lean:61 | CategoryTheory.isPullback_initial_to_of_cofan_isVanKampen @ Mathlib/CategoryTheory/Limits/VanKampen.lean:704,通常圏で van Kampen 性から普遍性を得る。余積では相異なる余射影の引き戻しに始対象が現れる。κ-small と有限の強普遍性の三条件の iff は残る。,,found
+7.7.4.12,fix,partial,CategoryTheory.FinitaryExtensive.isVanKampen_finiteCoproducts @ Mathlib/CategoryTheory/Extensive.lean:476 | CategoryTheory.types.finitaryExtensive @ Mathlib/CategoryTheory/Extensive.lean:210,通常の集合圏では finitary extensive 性から有限余積が van Kampen になる。空間圏と準圏の圏での全小余積に関する強普遍性は残る。,,found
+7.7.5.1,fix,partial,CategoryTheory.IsPushout.IsVanKampen @ Mathlib/CategoryTheory/Adhesive/Basic.lean:60,通常圏の指定押し出しについて、奥側が引き戻しの立方体で上面押し出しと手前側引き戻しの iff を定義する。任意の∞圏における二つの全立方体条件は残る。,,found
+7.7.5.6,fix,partial,CategoryTheory.IsInitial.isVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:79 | CategoryTheory.IsVanKampenColimit.isUniversal @ Mathlib/CategoryTheory/Limits/VanKampen.lean:61,通常圏で厳密始対象があれば空余錐が van Kampen で普遍になる。任意の∞圏の有限余極限の普遍性と第二立方体条件・始対象条件の iff は残る。,,found
+7.7.5.7,ok,none,,通常圏の立方体判定と指定余錐の普遍性はある。κ-small な全余極限を κ-small 余積と第二立方体条件に還元する型は見つからない。,,not_found
+7.7.5.8,fix,partial,CategoryTheory.IsInitial.isVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:79 | CategoryTheory.IsPushout.IsVanKampen @ Mathlib/CategoryTheory/Adhesive/Basic.lean:60,通常圏の押し出しの立方体条件と、厳密始対象の空余錐の van Kampen 性がある。二つの立方体条件と始対象条件で全有限余極限の強普遍性を特徴付ける型は残る。,,found
+7.7.5.9,ok,none,,通常圏で指定押し出しの立方体条件と個別余錐の普遍性を記述する。両立方体条件と κ-small 余積の普遍性で全 κ-small 余極限を判定する型は見つからない。,,not_found
+7.7.5.10,ok,none,,空間圏の小余完備性と通常圏の van Kampen 述語はある。空間圏の全小余極限が強普遍である型は見つからない。,,not_found
 7.7.6.1,fix,partial,SerrePositivity.KST.Comparison.spanCylinder_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanGluing.lean:53 | SerrePositivity.KST.Comparison.spanPushout_vertex_homotopyPullback @ SerrePositivity/KST/Comparison/SpanPushoutGluing.lean:30 | SerrePositivity.KST.Comparison.sequential_homotopyPullback @ SerrePositivity/KST/Comparison/SequentialHomotopyPullback.lean:32 | SerrePositivity.KST.Comparison.fatRealizationInclusion_homotopyPullback @ SerrePositivity/KST/Comparison/FatRealizationHomotopyPullback.lean:32,二重写像円筒・押し出し・単射列・fat realization の正方形のホモトピー引き戻し性まで。空間の任意の小余極限が強普遍的となる一般形は未確認。,,renamed
-7.7.6.2,unsure,none,,再確認済み。 descent・universal・span・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.6.3,ok,none,,確認済み・なし（探索範囲内）。左 fibration 間の isofibration が左 fibration になる補題は見つからない。,,not_found
-7.7.6.5,unsure,none,,再確認済み。 descent・universal・span・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.6.6,unsure,none,,再確認済み。 descent・universal・span・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.6.7,unsure,none,,再確認済み。 descent・universal・span・colimit を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.7.1,unsure,none,,再確認済み。 commutation・exchange・filtered・product を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
-7.7.7.2,ok,none,,確認済み・なし（探索範囲内）。𝒮 で filtered 余極限が有限極限と交換する特別な場合（smallSpaceFilteredColimit_map_isLimit_finite）だけで、一般の定義はない。,,not_found
+7.7.6.2,ok,none,,左ファイブレーションの可縮ファイバーと filtered な底から全空間の Kan 置換が可縮となる。二つの引き戻しで指定された包含の弱同値性と延長射影の Kan 性を比較する iff は見つからない。,,not_found
+7.7.6.3,fix,partial,SerrePositivity.InfinityCategories.leftFibration_equivalenceLifting @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean:43 | SerrePositivity.InfinityCategories.leftFibration_innerFibration @ SerrePositivity/InfinityCategories/Core/RightFibration.lean:66,準圏間の左ファイブレーションには inner fibration 性と同値の持ち上げがある。左ファイブレーション間の射の isofibration 性から LeftFibration に戻る向きは残る。,,found
+7.7.6.5,ok,none,,小さい左ファイブレーションの表現間で相対 Hom と変換空間を比較する型はある。Γ の Kan 性、Δ¹ の終点制限、各辺の引き戻し、γ の cartesian 性を比較する iff は見つからない。,,not_found
+7.7.6.6,ok,none,,固定宇宙での空間の小余極限はある。cf(λ)-small な形状で S_{<λ} の各余極限が強普遍となる型は見つからない。,,not_found
+7.7.6.7,fix,partial,CategoryTheory.IsVanKampenColimit @ Mathlib/CategoryTheory/Limits/VanKampen.lean:56,通常圏で van Kampen 余錐と equifibered な底の変換を仮定し、上の余極限性と頂点までの引き戻し性を比較する。濃度境界つきの空間値図式での同じ判定は残る。,,found
+7.7.7.1,ok,none,,通常圏では各ファイバーの余極限が J-極限を保つ仮定から Grothendieck 全圏添字の余極限も保つ。原文の保存条件二つと図式の閉性二つを比較する四条件の iff は見つからない。,,not_found
+7.7.7.2,ok,none,,"通常圏の余極限関手による極限保存の例はある。任意の K,L に対する四条件を同値として用いる∞圏の交換の述語は見つからない。",,not_found
 7.7.7.3,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.smallSpaceFilteredColimit_map_isLimit_finite @ SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean:36 | CategoryTheory.Limits.filtered_colim_preservesFiniteLimits @ Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean:353,𝒮 で小さい filtered 余極限が有限極限と交換する特別な場合だけ（Mathlib は Type の 1 圏版）。一般の判定 (∗) はない。,,renamed
-7.7.7.4,unsure,none,,commutation・exchange・filtered・product を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+7.7.7.4,ok,none,,切断で検出する局所対象の極限閉性と、固定宇宙の空間の小極限はある。濃度 μ の空間値関手のうち可縮余極限を持つ充満部分圏の極限閉性と、K-余極限・L-極限の交換との iff は見つからない。,,not_found
