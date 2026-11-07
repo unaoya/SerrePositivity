@@ -41,4 +41,4 @@ BS-W11 §6・BS-W12 §4 と同じ（新規ファイルだけ、本体に sorry �
 
 1. **C1′**：完備テンソルで、生成元ごとの判定と完備忠実平坦な底変換での反映を Prop 8.13 なしで示す経路でよい。`CompletedTensor.lean` の模型と drafts の `DVertex` の完備テンソルの比較が段 1 で取れなければ、そこで止めて報告する。
 2. **C2**：Lemma 10.12（`EtaleStratification/Stratification.lean` の `exists_finiteEtaleStratification`、BS-W10 B-3）と G-A8-4・5・7（`UniversalHomeomorphism/`・`EtaleStratification/`）は本体にある。新しく書くのは C4 で要る包装だけ。G-A8-6 も BS-W11 の `isIntegralPerfectoid_of_finiteEtale` で済み。段 2 は包装が要るときだけ行い、要らなければ段 3 へ進む。
-3. **G-A8-10 の整性**：報告の反例のとおり、S → T̂ は整とは限らない。§0 の表の C3 の行の「S → T・S → T̂ の整性と ArcOutside」は誤りで、正しくは「S → T は整、S → T と S → T̂ は ArcOutside、T̂ は完備」（a8-design §4 と drafts のとおり）。Cor 8.12 の界面（`perfectoidization_excision_of_disc`）が要求するのは完備性と ArcOutside だけで、整性は要らないので、Thm 10.11 の組み立てに影響しない。
+3. **G-A8-10 の整性**：報告の反例のとおり、S → T̂ は整とは限らない。§0 の表の C3 の行の初版の「S → T・S → T̂ の整性と ArcOutside」は誤りで（表は直した）、正しくは「S → T は整、S → T と S → T̂ は ArcOutside、T̂ は完備」（a8-design §4 と drafts のとおり）。Cor 8.12 の界面（`perfectoidization_excision_of_disc`）が要求するのは完備性と ArcOutside だけで、整性は要らないので、Thm 10.11 の組み立てに影響しない。
