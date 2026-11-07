@@ -7,6 +7,7 @@ public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
 import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
 import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
@@ -130,20 +131,7 @@ abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
 
 -- 未完備 pd 模型は本体の PDPolynomialCech に置く。
 
-abbrev pdTerm (k : Type u) [CommRing k] (r n : ℕ) := completionRing p (CommRingCat.of (pdRaw k r n))
-
-instance pdTermAlgebra (k : Type u) [CommRing k] (r n : ℕ) : Algebra k (pdTerm p k r n) :=
-  ((completionUnit p _).hom.comp (algebraMap k (pdRaw k r n))).toAlgebra
-
-/-- 概要：δ 座標なしの pd Čech 脈体 D_0^•（D_0^n = k⟨X^{(0)}⟩⟨X^{(i)} − X^{(0)}⟩_pd の p 完備化）。
-方針：`pdRaw` の p 完備化。余面・余退化は copy の添字の写像と差の pd 射。
-規約：k = F_p では完備化は恒等。
-使われ方：段 3・4（D68 改訂後）、A1-5 の大きい模型（§10.5）。 -/
-def pdModel (k : Type u) [CommRing k] (r : ℕ) : Cosimplicial.CosimplicialAlgebra k where
-  obj n := Under.mk (CommRingCat.ofHom ((completionUnit p _).hom.comp (algebraMap k (pdRaw k r n.len))))
-  map θ := by sorry -- X^(a)↦X^(θa)。差を差に送り γ_m を保つ pd 射を完備化
-  map_id := by sorry -- copy とその差の divided powers で判定
-  map_comp := by sorry -- 頂点写像の合成
+-- 完備 pd 模型は本体の PDCompletedCech に置く。
 
 /-- Ω^j_pd(D₀^•) の基底は各 copy の dX。γ_m(z) の微分は γ_{m−1}(z) dz。 -/
 def pdRow (k : Type u) [CommRing k] (r j : ℕ) : CosimplicialObject (ModuleCat.{u} k) where

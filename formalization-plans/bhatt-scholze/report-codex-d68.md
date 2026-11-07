@@ -171,6 +171,12 @@ SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 - 鍵付き対象ビルドが成功。一時監査の 20 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
 - 残りは、結晶模型を pd 模型と正の反復 δ 座標の多項式 Čech 因子に分離し、`pdInclusionModP_isCohomologyIso` に収縮を適用すること。
 
+### 余分な δ 座標の比較の準備（2026-11-08）
+
+- `principalCompletionRingFunctor` と `principalCompletionUnder` は主完備化の H⁰ を可換環と係数環つきの可換環に施す。`pdTerm` と `pdModel` は未完備 pd Čech 模型を項ごとに完備化した模型。
+- `crystallinePDRawComparison` は未完備自由 δ 環で先に p 除算しても完備結晶模型の剰余が変わらないことを示す。`crystallineRawCoordinateEquiv` は未完備自由 δ 環を基点の座標、頂点差、正の反復 δ 座標に分ける。
+- 鍵付き対象ビルドは成功。一時監査の 16 宣言は標準三公理のみ。余分な座標を分離する同型とその自然性は引き続き証明中。
+
 ### 今回の登録対象
 
 ```text
@@ -191,9 +197,13 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
 SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
 SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates
 SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
 SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
 ```
