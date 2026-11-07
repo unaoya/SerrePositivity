@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
@@ -329,11 +330,6 @@ end ArcCech
 W9-II-16：A5-4 の `rootClosure_isSemiperfectoid` は `hR : IsIntegralPerfectoid R p` と `Algebra R S` を仮定する（G-A5-14 は θ の核に R 由来の
 distinguished 元を使う）。全 p 完備環 S にそのまま当てることはできない（S = ℤ_p：基底なしの根添加 C_∞ は ℤ_p へ retraction をもち、perfectoid 環から
 ℤ_p への環準同型はないので semiperfectoid でない）。そこで前段 G-A6-11 を置く。 -/
-
-theorem baseExtension_cardinal_le (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    Cardinal.mk (baseExtension p S hS) ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
-  sorry -- R₀ の濃度は連続体以下、テンソルは有限和、最後の完備化は可算個のデータで評価する
 
 /-- 概要：記録：S → S₀ は p 完備忠実平坦（ℤ_p → R₀ が p 完備忠実平坦：R₀ は p ねじれなしで R₀/p ≠ 0）。原典 Lemma 8.8 の証明の
 「semiperfectoid な p 完備忠実平坦被覆」は S → S̃₀（S₀ の R₀ 上の `rootClosure`）がそれにあたる。

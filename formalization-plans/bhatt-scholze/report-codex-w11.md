@@ -185,3 +185,12 @@ B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward し�
 - 対象 1 モジュールのロック付きビルドは 12 秒（対象コンパイル 8.5 秒）。対象モジュール自身の警告は 0。単独監査は 25 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 73 モジュールで E3 入口へ到達しない。`git diff --check` を通過し、対象パスの⑤b との重複は 0。
 - B-3 の未使用セクション引数は、一時ファイルで名前を付けて `include` しても警告が残った。警告対象の引数を `omit` すると型から外れるので、`completionInverseFrobenius_pow` と `arcValuation_extendField` の型を維持した。素数性インスタンスの重複もそのまま。
 - 入口と段階 II 監査への登録は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid`。
+
+## BS-W11 停止点 D-1（2026-11-07）
+
+- §8 の前段として `rootClosure_cardinal_le` と `baseExtension_cardinal_le` を下書きと同じ型で証明した。導来完備化の H⁰ は既存の可算列の商表示を使う。根添加では各段の多項式環と可算余極限、底変換では ℤₚ の有理 Cauchy 列表示とテンソルの有限和表示を評価した。
+- `ArcCardinality` の対象ビルドは 9 秒（対象コンパイル 3.8 秒）。対象自身の警告は 0。単独監査は 11 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 647 モジュールで E3 入口へ到達しない。
+- `AffCompl`・`AffPerfd`、有限 arc 被覆族と位相、coverage の底変換・合成・有限積、`exists_perfectoid_arcCover`・`affPerfdInclusion_isCoverDense` を下書きの型のまま一時ファイルで検査した。12.22 秒、終了コード 0。未証明 6 件は型検査用の一時ファイルに置いた。
+- Lemma 8.8 の affine 版で必要な忠実平坦性は、各試験付値環の拡大 `V → W`。既存の `exists_baseExtension_lift` で、同じ `W` への `S₀ → W` と元の `S → V` との両立が得られる。この射を根添加と普遍 perfectoid 化に沿って延長するので、一般の `baseExtensionUnit_pCompletelyFaithfullyFlat` は drafts に残す。
+- D-2 の証明に進む。半 perfectoid 商を与える箇所は、標数 p の剰余 Frobenius と、整 perfectoid 基底から来る distinguished 元を用いる。∞ 圏の Čech 比較は別工程。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
+- 入口と段階 II 監査への追加候補は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`（D-2 取り込み時）。
