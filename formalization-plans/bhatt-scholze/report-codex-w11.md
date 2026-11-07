@@ -194,3 +194,11 @@ B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward し�
 - Lemma 8.8 の affine 版で必要な忠実平坦性は、各試験付値環の拡大 `V → W`。既存の `exists_baseExtension_lift` で、同じ `W` への `S₀ → W` と元の `S → V` との両立が得られる。この射を根添加と普遍 perfectoid 化に沿って延長するので、一般の `baseExtensionUnit_pCompletelyFaithfullyFlat` は drafts に残す。
 - D-2 の証明に進む。半 perfectoid 商を与える箇所は、標数 p の剰余 Frobenius と、整 perfectoid 基底から来る distinguished 元を用いる。∞ 圏の Čech 比較は別工程。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
 - 入口と段階 II 監査への追加候補は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`（D-2 取り込み時）。
+
+## BS-W11 停止点 D-2（2026-11-07）
+
+- `ArcSite` に、`AffCompl`・`AffPerfd`、有限 arc 被覆族、生成される位相と誘導位相、底変換・合成・有限積の比較、`exists_perfectoid_arcCover` と `affPerfdInclusion_isCoverDense` を移した。完備性の仮定は下書きどおり。底変換の証明で使わない三引数には、型を保って名前の先頭に `_` を付けた。
+- Lemma 8.8 の affine 版では、導来根添加の mod p Frobenius の全射性を示し、古典的 p 完備化に移した。基底の Fontaine 核の distinguished 元を使って完全 prism の商からの全射を得て、既存の全射な普遍 perfectoid 化を適用した。対象の濃度には D-1 の両方の評価を使う。持ち上げの忠実平坦性は試験付値環 `V → W` のもの。
+- `ArcSite` の対象ビルドは 19 秒（対象コンパイル 12 秒）。対象自身の警告は 0。`ArcCardinality` と `ArcSite` の単独監査は 37 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 679 モジュールで E3 入口へ到達しない。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
+- 残る下書きは、A5 根添加の filtered 余極限との可換性と完備忠実平坦性（2 件）、A6 の相対 Čech 比較と生成系からの層条件、および一般の `baseExtensionUnit_pCompletelyFaithfullyFlat`（計 12 件）。A6 の後者はこの被覆の証明で使わない。A8 の G-A8-6 より後の項目は引き続き drafts にある（20 件）。
+- 入口と段階 II 監査への登録は、D-1・D-2 の計 2 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`、`SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite`。C-2 の登録は C-2 の欄を参照。
