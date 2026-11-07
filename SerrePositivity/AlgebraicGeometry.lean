@@ -1,8 +1,12 @@
 module
 
+public import SerrePositivity.AlgebraicGeometry.AffineOpenClosure
+public import SerrePositivity.AlgebraicGeometry.AffineStrictTransformFlatness
 public import SerrePositivity.AlgebraicGeometry.Blowup
 public import SerrePositivity.AlgebraicGeometry.ChartAlgebra
 public import SerrePositivity.AlgebraicGeometry.ChartLocalization
+public import SerrePositivity.AlgebraicGeometry.DensePrincipalOpen
+public import SerrePositivity.AlgebraicGeometry.FiniteStrictTransformFlattening
 public import SerrePositivity.AlgebraicGeometry.ProjBase
 public import SerrePositivity.AlgebraicGeometry.BlowupAway
 public import SerrePositivity.AlgebraicGeometry.QuotientPullback
@@ -34,6 +38,7 @@ public import SerrePositivity.AlgebraicGeometry.SchemeBlowupAffine
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupProper
 public import SerrePositivity.AlgebraicGeometry.SchemeBlowupAway
 public import SerrePositivity.AlgebraicGeometry.PullbackComparison
+public import SerrePositivity.AlgebraicGeometry.StrictTransformLocality
 public import SerrePositivity.AlgebraicGeometry.SubschemeAffinePullback
 public import SerrePositivity.AlgebraicGeometry.SchemeExceptional
 public import SerrePositivity.AlgebraicGeometry.BaseComparisonExt
@@ -317,3 +322,6 @@ public import SerrePositivity.AlgebraicGeometry.GenericFreePolynomialQuotient
 public import SerrePositivity.AlgebraicGeometry.GenericFreeAlgebra
 public import SerrePositivity.AlgebraicGeometry.GenericFreeReducedAlgebra
 public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralProjectivity
+public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralFreeOpenBlowup
+public import SerrePositivity.AlgebraicGeometry.ProperFlatBlowupRefinement
+public import SerrePositivity.AlgebraicGeometry.GenericFlatness
