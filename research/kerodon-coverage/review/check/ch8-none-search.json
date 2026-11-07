@@ -6488,16 +6488,16 @@
         {
           "source": "SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean",
           "line": 25,
-          "declaration": "twistedArrowFunctorComparison",
-          "source_signature": "def twistedArrowFunctorComparison {C D : SSet.{u}} (f : C ⟶ D) : TwistedArrow C ⟶ pullback (twistedArrowProjection D) (SSet.opFunctor.map f ⊗ₘ f) ",
+          "declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison",
+          "kernel_type": "@SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison : {C D : SSet} →\n  (f : C ⟶ D) →\n    SerrePositivity.InfinityCategories.TwistedArrow C ⟶\n      CategoryTheory.Limits.pullback (SerrePositivity.InfinityCategories.twistedArrowProjection D)\n        (CategoryTheory.MonoidalCategoryStruct.tensorHom (SSet.opFunctor.map f) f)",
           "assessment": "原文の引き戻しへの比較写像を定義し、準圏間の充満忠実な f に対する前合成同値まで確認した。任意の inner fibration U の比較が LeftFibration となる型は残る。",
           "role": "adopted_part"
         },
         {
           "source": "SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean",
           "line": 52,
-          "declaration": "twistedArrowFunctorComparison_isPrecompositionEquivalence",
-          "source_signature": "lemma twistedArrowFunctorComparison_isPrecompositionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : IsFullyFaithful f) : IsPrecompositionEquivalence (twistedArrowFunctorComparison f) ",
+          "declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence",
+          "kernel_type": "@SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence : ∀\n  {C D : SSet} [C.Quasicategory] [D.Quasicategory] (f : C ⟶ D),\n  SerrePositivity.InfinityCategories.IsFullyFaithful f →\n    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence\n      (SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison f)",
           "assessment": "原文の引き戻しへの比較写像を定義し、準圏間の充満忠実な f に対する前合成同値まで確認した。任意の inner fibration U の比較が LeftFibration となる型は残る。",
           "role": "adopted_part"
         }
@@ -9366,16 +9366,16 @@
         {
           "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean",
           "line": 27,
-          "declaration": "cosliceTwistedHomMap_isQCatEquivalence",
-          "source_signature": "lemma cosliceTwistedHomMap_isQCatEquivalence {C : SSet.{u}} [Quasicategory C] (x y : C _⦋0⦌) : IsQCatEquivalence (cosliceTwistedHomMap x y) ",
+          "declaration": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence",
+          "kernel_type": "@SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence : ∀ {C : SSet} [inst : C.Quasicategory]\n  (x y : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence (SerrePositivity.InfinityCategories.cosliceTwistedHomMap x y)",
           "assessment": "固定二端点の coslice 模型から twisted Hom への準圏同値と、hC の等しい射を結ぶ pinched Hom 内の辺の存在がある。Tw ファイバーでの連結成分の判定と hC の Hom から π₀ への指定同値の型は残る。",
           "role": "adopted_part"
         },
         {
           "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/EdgeRepresentativeLift.lean",
           "line": 26,
-          "declaration": "exists_kanPinchedHomEdge_of_homMk_eq",
-          "source_signature": "lemma exists_kanPinchedHomEdge_of_homMk_eq {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌} (f g : SSet.Truncated.Edge (X ",
+          "declaration": "SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq : ∀ {X : SSet} [X.Quasicategory]\n  {x y : X.obj (Opposite.op { len := 0 })} (f g : SSet.Truncated.Edge x y),\n  SSet.Truncated.HomotopyCategory.homMk f = SSet.Truncated.HomotopyCategory.homMk g →\n    Nonempty\n      (SSet.Edge ((SerrePositivity.InfinityCategories.pinchedHomVertexEquiv x y).symm g)\n        ((SerrePositivity.InfinityCategories.pinchedHomVertexEquiv x y).symm f))",
           "assessment": "固定二端点の coslice 模型から twisted Hom への準圏同値と、hC の等しい射を結ぶ pinched Hom 内の辺の存在がある。Tw ファイバーでの連結成分の判定と hC の Hom から π₀ への指定同値の型は残る。",
           "role": "adopted_part"
         }
@@ -9890,8 +9890,8 @@
         {
           "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
           "line": 116,
-          "declaration": "twistedArrowIdentityHomTransport_isQCatEquivalence",
-          "source_signature": "lemma twistedArrowIdentityHomTransport_isQCatEquivalence {C : SSet.{u}} [Quasicategory C] (x y : C _⦋0⦌) : IsQCatEquivalence (twistedArrowIdentityHomTransport x y) ",
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence",
+          "kernel_type": "@SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence : ∀ {C : SSet}\n  [inst : C.Quasicategory] (x y : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport x y)",
           "assessment": "各 x,y について恒等点からの輸送で pinchedHomLeft x y と twisted Hom を比較する同値を得る。hCᵒᵖ×hC 上の二変数の自然同型と指定 enrichment の同定は残る。",
           "role": "adopted_part"
         }
@@ -10056,8 +10056,8 @@
         {
           "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
           "line": 56,
-          "declaration": "cosliceToTwistedArrowSource_isQCatEquivalence",
-          "source_signature": "lemma cosliceToTwistedArrowSource_isQCatEquivalence {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsQCatEquivalence (cosliceToTwistedArrowSource x) ",
+          "declaration": "SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence",
+          "kernel_type": "@SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence : ∀ {C : SSet}\n  [inst : C.Quasicategory] (x : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource x)",
           "assessment": "K が点の場合、頂点 x の coslice から始点を x に固定した twisted arrow への比較が同値。一般の図式 f の Fun_{/Cᵒᵖ}(Kᵒᵖ,Tw(C)) での比較は残る。",
           "role": "adopted_part"
         }
@@ -10397,14 +10397,2956 @@
         {
           "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
           "line": 74,
-          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
-          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex",
+          "kernel_type": "@SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex : ∀ {C : SSet} [C.Quasicategory]\n  (x : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex (SerrePositivity.InfinityCategories.twistedArrowSourceIdentity x)",
           "assessment": "恒等辺に当たる頂点は始点固定の twisted arrow で始対象になる。任意の辺での iff と終点固定側の同じ判定は残る。",
           "role": "adopted_part"
         }
       ],
       "reason": "恒等辺に当たる頂点は始点固定の twisted arrow で始対象になる。任意の辺での iff と終点固定側の同じ判定は残る。",
       "decision": "partial"
+    },
+    "8.4.1.23": {
+      "number": "8.4.1.23",
+      "tag": "03VZ",
+      "query": [
+        "dense functor",
+        "dense full subcategory",
+        "image factorization",
+        "restricted Yoneda"
+      ],
+      "a": {
+        "terms": [
+          "8.4.1.23",
+          "8.4.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "dense",
+            "factorization",
+            "full",
+            "functor",
+            "image",
+            "restricted",
+            "subcategory",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+              "line": 159,
+              "declaration": "isDense_iff_fullyFaithful_restrictedULiftYoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Equivalence.lean",
+              "line": 66,
+              "declaration": "congrFullSubcategory"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "dense",
+            "factorization",
+            "full",
+            "functor",
+            "image",
+            "restricted",
+            "subcategory",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+              "line": 159,
+              "declaration": "isDense_iff_fullyFaithful_restrictedULiftYoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Equivalence.lean",
+              "line": 66,
+              "declaration": "congrFullSubcategory"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "dense",
+            "factorization",
+            "full",
+            "functor",
+            "image",
+            "restricted",
+            "subcategory",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+              "line": 159,
+              "declaration": "isDense_iff_fullyFaithful_restrictedULiftYoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Equivalence.lean",
+              "line": 66,
+              "declaration": "congrFullSubcategory"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/DenseCanonicalColimits.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Functor/KanExtension",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "dense",
+          "factorization",
+          "full",
+          "functor",
+          "image",
+          "restricted",
+          "subcategory",
+          "yoneda"
+        ],
+        "declaration_count": 2533,
+        "lead_locations": [
+          {
+            "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+            "line": 159,
+            "declaration": "isDense_iff_fullyFaithful_restrictedULiftYoneda"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/DiscreteDiagramReconstruction.lean",
+            "line": 52,
+            "declaration": "sigmaYonedaFamily_factorization"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+          "line": 159,
+          "declaration": "isDense_iff_fullyFaithful_restrictedULiftYoneda",
+          "source_signature": "lemma isDense_iff_fullyFaithful_restrictedULiftYoneda [F.Full] : F.IsDense ↔ Nonempty (restrictedULiftYoneda.{w} F).FullyFaithful ",
+          "assessment": "通常圏の充満関手では密性を制限 Yoneda の充満忠実性で判定できる。任意の単体写像の密性から像を含む充満∞部分圏の密性へ移す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常圏の充満関手では密性を制限 Yoneda の充満忠実性で判定できる。任意の単体写像の密性から像を含む充満∞部分圏の密性へ移す型は見つからない。",
+      "decision": "none"
+    },
+    "8.4.2.8": {
+      "number": "8.4.2.8",
+      "tag": "05WB",
+      "query": [
+        "Yoneda limit",
+        "opposite slice",
+        "left fibration",
+        "transport representation",
+        "exponential cofinality"
+      ],
+      "a": {
+        "terms": [
+          "8.4.2.8",
+          "8.4.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cofinality",
+            "exponential",
+            "fibration",
+            "left",
+            "limit",
+            "opposite",
+            "representation",
+            "slice",
+            "transport",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean",
+              "line": 66,
+              "declaration": "LeftTransportRepresentation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/YonedaSliceOppositeComparison.lean",
+              "line": 39,
+              "declaration": "oppositeYonedaSliceProjection_leftFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cofinality",
+            "colimit",
+            "coslice",
+            "exponential",
+            "fibration",
+            "opposite",
+            "representation",
+            "right",
+            "transport",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean",
+              "line": 66,
+              "declaration": "LeftTransportRepresentation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaPointedDisplay.lean",
+              "line": 76,
+              "declaration": "dgCosliceYonedaTransportRepresentation"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cofinality",
+            "exponential",
+            "left",
+            "lifting",
+            "limit",
+            "opposite",
+            "representation",
+            "slice",
+            "transport",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/IndYoneda.lean",
+              "line": 311,
+              "declaration": "colimitYonedaHomIsoLimit'_π_apply"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/PartialAdjoint.lean",
+              "line": 302,
+              "declaration": "representableByCompYonedaObjOfIsLimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Yoneda"
+        ],
+        "terms": [
+          "cofinality",
+          "exponential",
+          "fibration",
+          "left",
+          "limit",
+          "opposite",
+          "representation",
+          "slice",
+          "transport",
+          "yoneda"
+        ],
+        "declaration_count": 148,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RepresentablePresheafLimits.lean",
+            "line": 35,
+            "declaration": "representablePresheafInfinity_isLimit_of_spaceLimitsOfShape"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PinchedSlicePrismTransportIso.lean",
+            "line": 36,
+            "declaration": "pinchedSlicePrism_oppositeTransportIso"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RepresentablePresheafLimits.lean",
+          "line": 35,
+          "declaration": "representablePresheafInfinity_isLimit_of_spaceLimitsOfShape",
+          "source_signature": "lemma representablePresheafInfinity_isLimit_of_spaceLimitsOfShape (hc : IsLimitCone c) (hK : F2.HasSpaceLimitsOfShape K) : IsLimitCone (mapJoinCone (representablePresheafInfinity y) (JoinCone.ulift.{u, u + 1} c)) ",
+          "assessment": "元の図式が C で極限を持つ場合にその表現可能前層の極限を扱う。一般の f の前層極限が反対スライスの輸送を表すという同定は、ecf(κ) の形状制限を含めて見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Transport/LeftTransportRepresentation.lean",
+          "line": 66,
+          "declaration": "LeftTransportRepresentation",
+          "source_signature": "structure LeftTransportRepresentation {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p]",
+          "assessment": "元の図式が C で極限を持つ場合にその表現可能前層の極限を扱う。一般の f の前層極限が反対スライスの輸送を表すという同定は、ecf(κ) の形状制限を含めて見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "元の図式が C で極限を持つ場合にその表現可能前層の極限を扱う。一般の f の前層極限が反対スライスの輸送を表すという同定は、ecf(κ) の形状制限を含めて見つからない。",
+      "decision": "none"
+    },
+    "8.4.3.4": {
+      "number": "8.4.3.4",
+      "tag": "03WG",
+      "query": [
+        "representable presheaves",
+        "over F",
+        "essentially kappa-small",
+        "category of elements"
+      ],
+      "a": {
+        "terms": [
+          "8.4.3.4",
+          "8.4.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "elements",
+            "essentially",
+            "kappa",
+            "over",
+            "presheaves",
+            "representable",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+              "line": 30,
+              "declaration": "presheafElementsYonedaDiagram"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "elements",
+            "essentially",
+            "kappa",
+            "presheaves",
+            "representable",
+            "small",
+            "under"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+              "line": 30,
+              "declaration": "presheafElementsYonedaDiagram"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "elements",
+            "essentially",
+            "kappa",
+            "over",
+            "presheaves",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+              "line": 59,
+              "declaration": "essentiallySmall_monoOver_iff_small_subobject"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Elements.lean",
+              "line": 324,
+              "declaration": "essentiallySmall"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "category",
+          "elements",
+          "essentially",
+          "kappa",
+          "over",
+          "presheaves",
+          "representable",
+          "small"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SliceOverSmallColimits.lean",
+            "line": 47,
+            "declaration": "sliceOver_hasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+            "line": 37,
+            "declaration": "IsRepresentableSmallSpaceFunctor"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+          "line": 30,
+          "declaration": "presheafElementsYonedaDiagram",
+          "source_signature": "def presheafElementsYonedaDiagram : (SSet.uliftFunctor.{u + 1, u}).obj (smallRightUnstraightening F) ⟶ PresheafInfinity C ",
+          "assessment": "小さい標準 right unstraightening から表現可能前層への図式がある。表現可能前層の充満部分圏と F 上のスライスの引き戻し自体の本質的 κ-small 性を示す型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+          "line": 45,
+          "declaration": "HasEssentiallySmallFibers",
+          "source_signature": "def HasEssentiallySmallFibers {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] : Prop ",
+          "assessment": "小さい標準 right unstraightening から表現可能前層への図式がある。表現可能前層の充満部分圏と F 上のスライスの引き戻し自体の本質的 κ-small 性を示す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "小さい標準 right unstraightening から表現可能前層への図式がある。表現可能前層の充満部分圏と F 上のスライスの引き戻し自体の本質的 κ-small 性を示す型は見つからない。",
+      "decision": "none"
+    },
+    "8.4.3.8": {
+      "number": "8.4.3.8",
+      "tag": "03WL",
+      "query": [
+        "presheaf density",
+        "colimit of representables",
+        "small category of elements",
+        "Yoneda"
+      ],
+      "a": {
+        "terms": [
+          "8.4.3.8",
+          "8.4.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "colimit",
+            "density",
+            "elements",
+            "presheaf",
+            "representables",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+              "line": 30,
+              "declaration": "presheafElementsYonedaDiagram"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+              "line": 23,
+              "declaration": "presheafDensityCocone_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "density",
+            "elements",
+            "limit",
+            "presheaf",
+            "representables",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+              "line": 30,
+              "declaration": "presheafElementsYonedaDiagram"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+              "line": 23,
+              "declaration": "presheafDensityCocone_isColimit"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "colimit",
+            "density",
+            "elements",
+            "presheaf",
+            "representables",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Point/Basic.lean",
+              "line": 149,
+              "declaration": "shrinkYonedaCompPresheafFiberIso"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 828,
+              "declaration": "isInitialElementsMkShrinkYonedaObjObjEquivId"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "category",
+          "colimit",
+          "density",
+          "elements",
+          "presheaf",
+          "representables",
+          "small",
+          "yoneda"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+            "line": 80,
+            "declaration": "presheafYonedaLeftKan_density_image_isColimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+            "line": 69,
+            "declaration": "presheafDensityIsoOfYoneda"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+          "line": 23,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit : ∀ {C : SSet} [inst : C.Quasicategory]\n  (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.IsColimitCone (SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone F)",
+          "assessment": "小さい準圏 C 上の任意の空間値前層 F に、標準の小さい元の圏から C を経る Yoneda 図式の余極限余錐があり、頂点は F。非可算正則 κ を明示した本質的 κ-small 版は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensityCocone.lean",
+          "line": 46,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex : ∀ {C : SSet} [inst : C.Quasicategory]\n  (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  (SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone F).vertex =\n    SerrePositivity.InfinityCategories.functorVertex F",
+          "assessment": "小さい準圏 C 上の任意の空間値前層 F に、標準の小さい元の圏から C を経る Yoneda 図式の余極限余錐があり、頂点は F。非可算正則 κ を明示した本質的 κ-small 版は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+          "line": 30,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram : {C : SSet} →\n  [C.Quasicategory] →\n    (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity) →\n      SSet.uliftFunctor.obj (SerrePositivity.InfinityCategories.smallRightUnstraightening F) ⟶\n        SerrePositivity.InfinityCategories.PresheafInfinity C",
+          "assessment": "小さい準圏 C 上の任意の空間値前層 F に、標準の小さい元の圏から C を経る Yoneda 図式の余極限余錐があり、頂点は F。非可算正則 κ を明示した本質的 κ-small 版は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "小さい準圏 C 上の任意の空間値前層 F に、標準の小さい元の圏から C を経る Yoneda 図式の余極限余錐があり、頂点は F。非可算正則 κ を明示した本質的 κ-small 版は残る。",
+      "decision": "partial"
+    },
+    "8.4.3.9": {
+      "number": "8.4.3.9",
+      "tag": "05JC",
+      "query": [
+        "representability criterion",
+        "small limits",
+        "presheaf",
+        "restricted Yoneda",
+        "regular cardinal"
+      ],
+      "a": {
+        "terms": [
+          "8.4.3.9",
+          "8.4.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cardinal",
+            "criterion",
+            "limits",
+            "presheaf",
+            "regular",
+            "representability",
+            "restricted",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+              "line": 23,
+              "declaration": "presheafDensityCocone_isColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/PartialAdjoint.lean",
+              "line": 302,
+              "declaration": "representableByCompYonedaObjOfIsLimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cardinal",
+            "colimits",
+            "criterion",
+            "effective",
+            "presheaf",
+            "representability",
+            "restricted",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+              "line": 136,
+              "declaration": "exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFromContravariantModels.lean",
+              "line": 47,
+              "declaration": "exists_rightAdjoint_iff_preservesSmallColimits_of_representability"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cardinal",
+            "criterion",
+            "limits",
+            "presheaf",
+            "regular",
+            "representability",
+            "restricted",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/PartialAdjoint.lean",
+              "line": 302,
+              "declaration": "representableByCompYonedaObjOfIsLimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Point/Basic.lean",
+              "line": 149,
+              "declaration": "shrinkYonedaCompPresheafFiberIso"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "cardinal",
+          "criterion",
+          "limits",
+          "presheaf",
+          "regular",
+          "representability",
+          "restricted",
+          "small",
+          "yoneda"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+            "line": 46,
+            "declaration": "presheaf_isRepresentable_of_sendsSmallColimitsToLimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+            "line": 67,
+            "declaration": "presheaf_hasSmallLimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+          "line": 23,
+          "declaration": "presheafDensityCocone_isColimit",
+          "source_signature": "lemma presheafDensityCocone_isColimit : IsColimitCone (presheafDensityCocone F) ",
+          "assessment": "前層の表現可能生成と、通常圏で極限が誘導する表現可能データはある。T の制限の κ-small 性・極限保存から T をその制限前層で表現する iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Adjunction/PartialAdjoint.lean",
+          "line": 302,
+          "declaration": "representableByCompYonedaObjOfIsLimit",
+          "source_signature": "noncomputable def representableByCompYonedaObjOfIsLimit {J : Type*} [Category* J] {R : J ⥤ F.PartialRightAdjointSource} {c : Cone (R ⋙ ObjectProperty.ι _)} (hc : IsLimit c) {c' : Cone (R ⋙ F.partialRightAdjoint)} (hc' : IsLimit c') : (F.op ⋙ yoneda.obj c.pt).RepresentableBy c'.pt",
+          "assessment": "前層の表現可能生成と、通常圏で極限が誘導する表現可能データはある。T の制限の κ-small 性・極限保存から T をその制限前層で表現する iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "前層の表現可能生成と、通常圏で極限が誘導する表現可能データはある。T の制限の κ-small 性・極限保存から T をその制限前層で表現する iff は見つからない。",
+      "decision": "none"
+    },
+    "8.4.5.3": {
+      "number": "8.4.5.3",
+      "tag": "04BG",
+      "query": [
+        "representable functor",
+        "left adjoint",
+        "preserves limits",
+        "opposite presheaf category"
+      ],
+      "a": {
+        "terms": [
+          "8.4.5.3",
+          "8.4.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "adjoint",
+            "category",
+            "functor",
+            "left",
+            "limits",
+            "opposite",
+            "preserves",
+            "presheaf",
+            "representable"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+              "line": 203,
+              "declaration": "rightAdjoint_preservesLimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+              "line": 96,
+              "declaration": "exists_leftAdjoint_iff_accessible_preservesLimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "adjoint",
+            "category",
+            "colimits",
+            "functor",
+            "opposite",
+            "preserves",
+            "presheaf",
+            "representable",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+              "line": 203,
+              "declaration": "rightAdjoint_preservesLimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+              "line": 45,
+              "declaration": "exists_rightAdjoint_iff_preservesSmallColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "adjoint",
+            "category",
+            "functor",
+            "left",
+            "limits",
+            "opposite",
+            "preserves",
+            "presheaf",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+              "line": 203,
+              "declaration": "rightAdjoint_preservesLimits"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Yoneda.lean",
+              "line": 181,
+              "declaration": "yonedaFunctor_preservesLimits"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "adjoint",
+          "category",
+          "functor",
+          "left",
+          "limits",
+          "opposite",
+          "preserves",
+          "presheaf",
+          "representable"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+            "line": 96,
+            "declaration": "exists_leftAdjoint_iff_accessible_preservesLimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+            "line": 24,
+            "declaration": "exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+          "line": 203,
+          "declaration": "CategoryTheory.Adjunction.rightAdjoint_preservesLimits",
+          "kernel_type": "@CategoryTheory.Adjunction.rightAdjoint_preservesLimits : ∀ {C : Type u_5} [inst : CategoryTheory.Category.{u_3, u_5} C]\n  {D : Type u_6} [inst_1 : CategoryTheory.Category.{u_4, u_6} D] {F : CategoryTheory.Functor C D}\n  {G : CategoryTheory.Functor D C} (adj : F ⊣ G),\n  CategoryTheory.Limits.PreservesLimitsOfSize.{u_1, u_2, u_4, u_3, u_6, u_5} G",
+          "assessment": "通常圏で左随伴を持つ右随伴が極限を保存する一方向がある。空間値前層の反対圏に対する表現可能性と、極限保存からの逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で左随伴を持つ右随伴が極限を保存する一方向がある。空間値前層の反対圏に対する表現可能性と、極限保存からの逆向きは残る。",
+      "decision": "partial"
+    },
+    "8.4.5.4": {
+      "number": "8.4.5.4",
+      "tag": "03WP",
+      "query": [
+        "presheaf free cocompletion",
+        "Yoneda left Kan",
+        "restricted hom",
+        "left adjoint",
+        "colimit preservation"
+      ],
+      "a": {
+        "terms": [
+          "8.4.5.4",
+          "8.4.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "adjoint",
+            "cocompletion",
+            "colimit",
+            "free",
+            "hom",
+            "kan",
+            "left",
+            "preservation",
+            "presheaf",
+            "restricted",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+              "line": 44,
+              "declaration": "presheaf_exists_yonedaLeftKan"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/LocalLeftKanColimitPreservation.lean",
+              "line": 55,
+              "declaration": "colimitPreservation_of_localLeftKan"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "adjoint",
+            "cocompletion",
+            "free",
+            "hom",
+            "kan",
+            "limit",
+            "preservation",
+            "presheaf",
+            "restricted",
+            "right",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+              "line": 44,
+              "declaration": "presheaf_exists_yonedaLeftKan"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaFiniteCoproducts.lean",
+              "line": 31,
+              "declaration": "sigmaYoneda_oppositeCone_isLimit_of_vertexPreservation"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "adjoint",
+            "cocompletion",
+            "colimit",
+            "free",
+            "hom",
+            "kan",
+            "left",
+            "preservation",
+            "presheaf",
+            "restricted",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 138,
+              "declaration": "restrictedULiftYonedaHomEquiv'_symm_app_naturality_left"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/ModuleCat/Presheaf/Generator.lean",
+              "line": 206,
+              "declaration": "isColimitFreeYonedaCoproductsCokernelCofork"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "adjoint",
+          "cocompletion",
+          "colimit",
+          "free",
+          "hom",
+          "kan",
+          "left",
+          "preservation",
+          "presheaf",
+          "restricted",
+          "yoneda"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+            "line": 44,
+            "declaration": "presheaf_exists_yonedaLeftKan"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LocalLeftKanColimitPreservation.lean",
+            "line": 55,
+            "declaration": "colimitPreservation_of_localLeftKan"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "line": 44,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan : ∀ {A : SSet} [inst : A.Quasicategory]\n  {D : SSet} [D.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits D →\n    ∀ (F₀ : SSet.uliftFunctor.obj A ⟶ D),\n      ∃ L β,\n        SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.yonedaInfinityMap A)\n          F₀ L β",
+          "assessment": "固定宇宙で小余極限を持つ D へ Yoneda 左 Kan 拡張を構成し、その指定単位の可逆性を得る。原文の濃度つき Hom 関手との随伴とその余極限保存は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "line": 63,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso : ∀ {A : SSet}\n  [inst : A.Quasicategory] {D : SSet} [D.Quasicategory] {F₀ : SSet.uliftFunctor.obj A ⟶ D}\n  {L : SerrePositivity.InfinityCategories.PresheafInfinity A ⟶ D}\n  (β :\n    SSet.Homotopy F₀ (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap A) L)),\n  SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.yonedaInfinityMap A) F₀ L\n      β →\n    CategoryTheory.IsIso\n      (SSet.Truncated.HomotopyCategory.homMk (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy β))",
+          "assessment": "固定宇宙で小余極限を持つ D へ Yoneda 左 Kan 拡張を構成し、その指定単位の可逆性を得る。原文の濃度つき Hom 関手との随伴とその余極限保存は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "固定宇宙で小余極限を持つ D へ Yoneda 左 Kan 拡張を構成し、その指定単位の可逆性を得る。原文の濃度つき Hom 関手との随伴とその余極限保存は残る。",
+      "decision": "partial"
+    },
+    "8.5.1.10": {
+      "number": "8.5.1.10",
+      "tag": "03YS",
+      "query": [
+        "retract",
+        "relative left Kan extension",
+        "functor category",
+        "closure",
+        "relative colimit"
+      ],
+      "a": {
+        "terms": [
+          "8.5.1.10",
+          "8.5.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "closure",
+            "colimit",
+            "extension",
+            "functor",
+            "kan",
+            "left",
+            "relative",
+            "retract"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean",
+              "line": 26,
+              "declaration": "IsRelativeLeftKanExtendedFrom"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftFunctorBoundary.lean",
+              "line": 46,
+              "declaration": "exists_kanRelativeLeft_functor_relative_boundary_extension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "closure",
+            "extension",
+            "functor",
+            "kan",
+            "limit",
+            "relative",
+            "retract",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean",
+              "line": 26,
+              "declaration": "IsRelativeLeftKanExtendedFrom"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialRetracts.lean",
+              "line": 35,
+              "declaration": "relativeInitial_of_vertexRetraction"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "closure",
+            "colimit",
+            "extension",
+            "functor",
+            "kan",
+            "left",
+            "relative",
+            "retract"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Triangulated/Subcategory.lean",
+              "line": 313,
+              "declaration": "extensionProduct_retractClosure_retractClosure_le"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 78,
+              "declaration": "leftKanExtensionObjIsoColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean",
+          "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean",
+          "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakInnerAnodyne.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/Core",
+          "SerrePositivity/InfinityCategories/Core/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "category",
+          "closure",
+          "colimit",
+          "extension",
+          "functor",
+          "kan",
+          "left",
+          "relative",
+          "retract"
+        ],
+        "declaration_count": 3004,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialRetracts.lean",
+            "line": 35,
+            "declaration": "relativeInitial_of_vertexRetraction"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+            "line": 66,
+            "declaration": "retractClosure_isIdempotentComplete"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean",
+          "line": 26,
+          "declaration": "IsRelativeLeftKanExtendedFrom",
+          "source_signature": "def IsRelativeLeftKanExtendedFrom {K C D E : SSet.{u}} (U : D ⟶ E) (δ : K ⟶ C) (F : C ⟶ D) : Prop ",
+          "assessment": "相対始頂点が retract に閉じ、標準相対左 Kan 性は局所相対余錐の条件である。関手圏で与えた retract が各標準余錐に誘導する比較を含む閉性の型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialRetracts.lean",
+          "line": 35,
+          "declaration": "relativeInitial_of_vertexRetraction",
+          "source_signature": "lemma relativeInitial_of_vertexRetraction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) {x y : X _⦋0⦌} (r : VertexRetraction x y) (hy : F1B.KanRelativeInitialVertex p y) : F1B.KanRelativeInitialVertex p x ",
+          "assessment": "相対始頂点が retract に閉じ、標準相対左 Kan 性は局所相対余錐の条件である。関手圏で与えた retract が各標準余錐に誘導する比較を含む閉性の型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "相対始頂点が retract に閉じ、標準相対左 Kan 性は局所相対余錐の条件である。関手圏で与えた retract が各標準余錐に誘導する比較を含む閉性の型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.1.18": {
+      "number": "8.5.1.18",
+      "tag": "03YV",
+      "query": [
+        "retract in CatInfinity",
+        "essentially kappa-small",
+        "size closure",
+        "quasicategory"
+      ],
+      "a": {
+        "terms": [
+          "8.5.1.18",
+          "8.5.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cat",
+            "closure",
+            "essentially",
+            "infinity",
+            "kappa",
+            "quasicategory",
+            "retract",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureSemifreeCovers.lean",
+              "line": 102,
+              "declaration": "dgKappaSphereClosureObjects_smallSemifreeRetractCovers"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cat",
+            "closure",
+            "essentially",
+            "infinity",
+            "kappa",
+            "quasicategory",
+            "retract",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureSemifreeCovers.lean",
+              "line": 102,
+              "declaration": "dgKappaSphereClosureObjects_smallSemifreeRetractCovers"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cat",
+            "closure",
+            "essentially",
+            "infinity",
+            "kappa",
+            "quasicategory",
+            "retract",
+            "size",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsClosure.lean",
+              "line": 230,
+              "declaration": "isEssentiallySmall_limitsClosure"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 155,
+              "declaration": "EssentiallySmall.exists_eq_isoClosure_ofObj"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean",
+          "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean",
+          "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakInnerAnodyne.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/Core",
+          "SerrePositivity/InfinityCategories/Core/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "cat",
+          "closure",
+          "essentially",
+          "infinity",
+          "kappa",
+          "quasicategory",
+          "retract",
+          "size",
+          "small"
+        ],
+        "declaration_count": 3004,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompleteImageRetracts.lean",
+            "line": 32,
+            "declaration": "IsIdempotentComplete.retract_iso_in_image"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/RepresentableRetractions.lean",
+            "line": 65,
+            "declaration": "IsKappaCompact.of_retract"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+          "line": 45,
+          "declaration": "HasEssentiallySmallFibers",
+          "source_signature": "def HasEssentiallySmallFibers {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] : Prop ",
+          "assessment": "本質的小性は左ファイブレーションのファイバーに対して定義され、充満忠実像内の対象の retract に別の結果がある。QC の対象の retract による本質的 κ-small 性の閉性は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompleteImageRetracts.lean",
+          "line": 32,
+          "declaration": "IsIdempotentComplete.retract_iso_in_image",
+          "source_signature": "lemma IsIdempotentComplete.retract_iso_in_image {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (hC : IsIdempotentComplete C) (f : C ⟶ D) (hf : IsFullyFaithful f) (c : C _⦋0⦌) (d : D _⦋0⦌) (r : VertexRetraction d (f.app (Opposite.op ⦋0⦌) c)) : ∃ c' : C _⦋0⦌, Nonempty (VertexIso d (f.app (Opposite.op ⦋0⦌) c')) ",
+          "assessment": "本質的小性は左ファイブレーションのファイバーに対して定義され、充満忠実像内の対象の retract に別の結果がある。QC の対象の retract による本質的 κ-small 性の閉性は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "本質的小性は左ファイブレーションのファイバーに対して定義され、充満忠実像内の対象の retract に別の結果がある。QC の対象の retract による本質的 κ-small 性の閉性は見つからない。",
+      "decision": "none"
+    },
+    "8.5.1.20": {
+      "number": "8.5.1.20",
+      "tag": "03YX",
+      "query": [
+        "retract in spaces",
+        "Kan complex",
+        "essentially kappa-small",
+        "small Kan model"
+      ],
+      "a": {
+        "terms": [
+          "8.5.1.20",
+          "8.5.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "complex",
+            "essentially",
+            "kan",
+            "kappa",
+            "model",
+            "retract",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureSemifreeCovers.lean",
+              "line": 102,
+              "declaration": "dgKappaSphereClosureObjects_smallSemifreeRetractCovers"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "complex",
+            "essentially",
+            "kan",
+            "kappa",
+            "model",
+            "retract",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+              "line": 45,
+              "declaration": "HasEssentiallySmallFibers"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureSemifreeCovers.lean",
+              "line": 102,
+              "declaration": "dgKappaSphereClosureObjects_smallSemifreeRetractCovers"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "complex",
+            "essentially",
+            "kan",
+            "kappa",
+            "model",
+            "retract",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/EssentiallySmall.lean",
+              "line": 56,
+              "declaration": "SmallModel"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/CommAlgCat/FiniteType.lean",
+              "line": 115,
+              "declaration": "essentiallySmall_of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean",
+          "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean",
+          "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+          "SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakInnerAnodyne.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/Core",
+          "SerrePositivity/InfinityCategories/Core/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Compact",
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "complex",
+          "essentially",
+          "kan",
+          "kappa",
+          "model",
+          "retract",
+          "small",
+          "spaces"
+        ],
+        "declaration_count": 3004,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Core/SmallModelNerve.lean",
+            "line": 20,
+            "declaration": "smallModelNerveComparison"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean",
+            "line": 33,
+            "declaration": "PreservesKappaFilteredColimits.of_retract"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Universe/SmallKanModel.lean",
+          "line": 45,
+          "declaration": "HasEssentiallySmallFibers",
+          "source_signature": "def HasEssentiallySmallFibers {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] : Prop ",
+          "assessment": "左ファイブレーションの各 Kan ファイバーが小さい模型を持つ述語はある。空間圏で本質的 κ-small な Kan 複体の retract に同じ濃度の模型を与える型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "左ファイブレーションの各 Kan ファイバーが小さい模型を持つ述語はある。空間圏で本質的 κ-small な Kan 複体の retract に同じ濃度の模型を与える型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.4.28": {
+      "number": "8.5.4.28",
+      "tag": "0608",
+      "query": [
+        "categorical pullback",
+        "idempotent completeness",
+        "left fibration",
+        "right fibration"
+      ],
+      "a": {
+        "terms": [
+          "8.5.4.28",
+          "8.5.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "completeness",
+            "fibration",
+            "idempotent",
+            "left",
+            "pullback",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+              "line": 31,
+              "declaration": "isIdempotentComplete_of_leftFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionBaseChange.lean",
+              "line": 25,
+              "declaration": "IsIdempotentCompletion.pullback_rightFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "completeness",
+            "fibration",
+            "idempotent",
+            "left",
+            "pushout",
+            "right"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+              "line": 31,
+              "declaration": "isIdempotentComplete_of_leftFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionBaseChange.lean",
+              "line": 25,
+              "declaration": "IsIdempotentCompletion.pullback_rightFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "completeness",
+            "idempotent",
+            "left",
+            "lifting",
+            "pullback",
+            "right"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+              "line": 73,
+              "declaration": "rightZigzag_idempotent_of_left_triangle"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/CompleteSubcomplexRetracts.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessEquivalence.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent",
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "categorical",
+          "completeness",
+          "fibration",
+          "idempotent",
+          "left",
+          "pullback",
+          "right"
+        ],
+        "declaration_count": 539,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+            "line": 31,
+            "declaration": "isIdempotentComplete_of_leftFibration"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionBaseChange.lean",
+            "line": 25,
+            "declaration": "IsIdempotentCompletion.pullback_rightFibration"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "line": 21,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration : ∀ {X Y : SSet} (p : X ⟶ Y)\n  [SerrePositivity.InfinityCategories.RightFibration p],\n  SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete Y →\n    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete X",
+          "assessment": "完備な底へ向かう左右ファイブレーションの全空間に冪等完備性を移す。一般の categorical pullback で二つの脚の始域の完備性から引き戻しの完備性を得る型は残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "line": 31,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration : ∀ {X Y : SSet} (p : X ⟶ Y)\n  [SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete Y →\n    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete X",
+          "assessment": "完備な底へ向かう左右ファイブレーションの全空間に冪等完備性を移す。一般の categorical pullback で二つの脚の始域の完備性から引き戻しの完備性を得る型は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "完備な底へ向かう左右ファイブレーションの全空間に冪等完備性を移す。一般の categorical pullback で二つの脚の始域の完備性から引き戻しの完備性を得る型は残る。",
+      "decision": "partial"
+    },
+    "8.5.4.29": {
+      "number": "8.5.4.29",
+      "tag": "060A",
+      "query": [
+        "idempotent complete subcategory",
+        "closed under small limits",
+        "CatInfinity",
+        "functor"
+      ],
+      "a": {
+        "terms": [
+          "8.5.4.29",
+          "8.5.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cat",
+            "closed",
+            "complete",
+            "functor",
+            "idempotent",
+            "infinity",
+            "limits",
+            "small",
+            "subcategory",
+            "under"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+              "line": 20,
+              "declaration": "functor_isIdempotentComplete"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallLimitsIdempotentComplete.lean",
+              "line": 27,
+              "declaration": "HasSmallLimits.isIdempotentComplete"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cat",
+            "closed",
+            "colimits",
+            "complete",
+            "functor",
+            "idempotent",
+            "infinity",
+            "over",
+            "small",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+              "line": 20,
+              "declaration": "functor_isIdempotentComplete"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGPerfectIdempotentCompleteGeneral.lean",
+              "line": 40,
+              "declaration": "dgSmallPerfectModuleOverNerve_isIdempotentComplete"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cat",
+            "closed",
+            "functor",
+            "has",
+            "idempotent",
+            "infinity",
+            "limits",
+            "small",
+            "subcategory",
+            "under"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Under/Property.lean",
+              "line": 39,
+              "declaration": "RingHom.HasFiniteProducts.isClosedUnderLimitsOfShape"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FullSubcategory.lean",
+              "line": 81,
+              "declaration": "hasLimit_of_closedUnderLimits"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+          "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/CompleteSubcomplexRetracts.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessEquivalence.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+          "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/Core/Idempotent",
+          "SerrePositivity/InfinityCategories/F1B/Idempotent",
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "cat",
+          "closed",
+          "complete",
+          "functor",
+          "idempotent",
+          "infinity",
+          "limits",
+          "small",
+          "subcategory",
+          "under"
+        ],
+        "declaration_count": 539,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+            "line": 20,
+            "declaration": "functor_isIdempotentComplete"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+            "line": 35,
+            "declaration": "isIdempotentComplete_iff_hasLimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+          "line": 20,
+          "declaration": "functor_isIdempotentComplete",
+          "source_signature": "lemma functor_isIdempotentComplete (K : SSet.{u}) {X : SSet.{u}} [Quasicategory X] (hX : IsIdempotentComplete X) : IsIdempotentComplete ((ihom K).obj X) ",
+          "assessment": "冪等完備な X を値域とする関手準圏の完備性がある。QC の充満部分圏で非定値の任意の小図式に対して極限閉性を述べる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "冪等完備な X を値域とする関手準圏の完備性がある。QC の充満部分圏で非定値の任意の小図式に対して極限閉性を述べる型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.5.9": {
+      "number": "8.5.5.9",
+      "tag": "0415",
+      "query": [
+        "limit of idempotent complete quasicategories",
+        "small diagram",
+        "CatInfinity",
+        "functor"
+      ],
+      "a": {
+        "terms": [
+          "8.5.5.9",
+          "8.5.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cat",
+            "complete",
+            "diagram",
+            "functor",
+            "idempotent",
+            "infinity",
+            "limit",
+            "quasicategories",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+              "line": 20,
+              "declaration": "functor_isIdempotentComplete"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean",
+              "line": 47,
+              "declaration": "IsIdempotentComplete.hasLimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cat",
+            "colimit",
+            "complete",
+            "diagram",
+            "functor",
+            "idempotent",
+            "infinity",
+            "quasicategories",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+              "line": 20,
+              "declaration": "functor_isIdempotentComplete"
+            },
+            {
+              "source": "SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean",
+              "line": 1171,
+              "declaration": "smallPerfectDGHomotopyIsIdempotentComplete"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cat",
+            "diagram",
+            "functor",
+            "has",
+            "idempotent",
+            "infinity",
+            "limit",
+            "limits",
+            "quasicategories",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+              "line": 55,
+              "declaration": "liftToDiagramLimitObjAux"
+            },
+            {
+              "source": "Mathlib/Topology/Category/TopCat/Limits/Basic.lean",
+              "line": 167,
+              "declaration": "topCat_hasLimitsOfShape"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean",
+          "SerrePositivity/InfinityCategories/F1/Idempotent/PresheafClosure.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Idempotent"
+        ],
+        "terms": [
+          "cat",
+          "complete",
+          "diagram",
+          "functor",
+          "idempotent",
+          "infinity",
+          "limit",
+          "quasicategories",
+          "small"
+        ],
+        "declaration_count": 38,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Idempotent/PresheafComplete.lean",
+            "line": 39,
+            "declaration": "presheafInfinity_isIdempotentComplete"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Idempotent/IdemComplete.lean",
+            "line": 27,
+            "declaration": "idem_isIdempotentComplete"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean",
+          "line": 20,
+          "declaration": "functor_isIdempotentComplete",
+          "source_signature": "lemma functor_isIdempotentComplete (K : SSet.{u}) {X : SSet.{u}} [Quasicategory X] (hX : IsIdempotentComplete X) : IsIdempotentComplete ((ihom K).obj X) ",
+          "assessment": "同じ冪等完備な値域を持つ関手準圏は完備になる。各頂点が異なる準圏を取り得る小図式の QC 内の極限へ完備性を移す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "同じ冪等完備な値域を持つ関手準圏は完備になる。各頂点が異なる準圏を取り得る小図式の QC 内の極限へ完備性を移す型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.5.10": {
+      "number": "8.5.5.10",
+      "tag": "0416",
+      "query": [
+        "retract of quasicategory",
+        "homotopy category of QCat",
+        "idempotent completeness"
+      ],
+      "a": {
+        "terms": [
+          "8.5.5.10",
+          "8.5.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cat",
+            "category",
+            "completeness",
+            "homotopy",
+            "idempotent",
+            "quasicategory",
+            "retract"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+              "line": 66,
+              "declaration": "retractClosure_isIdempotentComplete"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+              "line": 162,
+              "declaration": "isIdempotentComplete_iff_of_equivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cat",
+            "category",
+            "completeness",
+            "homotopy",
+            "idempotent",
+            "quasicategory",
+            "retract"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+              "line": 66,
+              "declaration": "retractClosure_isIdempotentComplete"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+              "line": 162,
+              "declaration": "isIdempotentComplete_iff_of_equivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cat",
+            "category",
+            "completeness",
+            "homotopy",
+            "idempotent",
+            "quasicategory",
+            "retract"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+              "line": 162,
+              "declaration": "isIdempotentComplete_iff_of_equivalence"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Idempotents/FunctorCategories.lean",
+              "line": 59,
+              "declaration": "functor_category_isIdempotentComplete"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean",
+          "SerrePositivity/InfinityCategories/F1/Idempotent/PresheafClosure.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Idempotent"
+        ],
+        "terms": [
+          "cat",
+          "category",
+          "completeness",
+          "homotopy",
+          "idempotent",
+          "quasicategory",
+          "retract"
+        ],
+        "declaration_count": 38,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean",
+            "line": 34,
+            "declaration": "idemVertex_retract_idemYoneda"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Idempotent/PresheafClosure.lean",
+            "line": 37,
+            "declaration": "IsRetractPresheaf"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean",
+          "line": 66,
+          "declaration": "retractClosure_isIdempotentComplete",
+          "source_signature": "lemma retractClosure_isIdempotentComplete {X : SSet.{u}} (P : X _⦋0⦌ → Prop) (hX : IsIdempotentComplete X) : IsIdempotentComplete (fullSubcomplexOnVertices X (retractClosure P)) ",
+          "assessment": "完備な準圏の適切な充満像の retract closure の完備性と、準圏同値による保存はある。h QCat の対象としての任意の retract に完備性を移す型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessEquivalence.lean",
+          "line": 34,
+          "declaration": "isIdempotentComplete_iff_of_equivalence",
+          "source_signature": "lemma isIdempotentComplete_iff_of_equivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsIdempotentComplete X ↔ IsIdempotentComplete Y ",
+          "assessment": "完備な準圏の適切な充満像の retract closure の完備性と、準圏同値による保存はある。h QCat の対象としての任意の retract に完備性を移す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "完備な準圏の適切な充満像の retract closure の完備性と、準圏同値による保存はある。h QCat の対象としての任意の retract に完備性を移す型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.8.5": {
+      "number": "8.5.8.5",
+      "tag": "0420",
+      "query": [
+        "homotopy idempotent",
+        "sequential limit and colimit",
+        "telescope",
+        "coherent splitting"
+      ],
+      "a": {
+        "terms": [
+          "8.5.8.5",
+          "8.5.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "coherent",
+            "colimit",
+            "homotopy",
+            "idempotent",
+            "limit",
+            "sequential",
+            "splitting",
+            "telescope"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+              "line": 41,
+              "declaration": "isIdempotentComplete_iff_hasColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+              "line": 35,
+              "declaration": "isIdempotentComplete_iff_hasLimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "coherent",
+            "colimit",
+            "homotopy",
+            "idempotent",
+            "limit",
+            "sequential",
+            "splitting",
+            "telescope"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+              "line": 41,
+              "declaration": "isIdempotentComplete_iff_hasColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+              "line": 35,
+              "declaration": "isIdempotentComplete_iff_hasLimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coherent",
+            "colimit",
+            "homotopy",
+            "idempotent",
+            "limit",
+            "sequential",
+            "splitting",
+            "telescope"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean",
+              "line": 1320,
+              "declaration": "splitMonoOfIdempotentOfIsLimitFork"
+            },
+            {
+              "source": "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
+              "line": 250,
+              "declaration": "homotopyEquivalences_shortComplexF_iff_of_splitting"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "coherent",
+          "colimit",
+          "homotopy",
+          "idempotent",
+          "limit",
+          "sequential",
+          "splitting",
+          "telescope"
+        ],
+        "declaration_count": 360,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+            "line": 35,
+            "declaration": "isIdempotentComplete_iff_hasLimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean",
+            "line": 33,
+            "declaration": "oppositeIdempotentSplittingToOriginal"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+          "line": 35,
+          "declaration": "isIdempotentComplete_iff_hasLimits",
+          "source_signature": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d ",
+          "assessment": "特定の coherent 冪等図式の極限・余極限の存在を冪等完備性で判定する。単一の homotopy idempotent を入力に、二つの逐次（余）極限の指定合成の可逆性から coherent 冪等性を判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean",
+          "line": 41,
+          "declaration": "isIdempotentComplete_iff_hasColimits",
+          "source_signature": "lemma isIdempotentComplete_iff_hasColimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasColimit d ",
+          "assessment": "特定の coherent 冪等図式の極限・余極限の存在を冪等完備性で判定する。単一の homotopy idempotent を入力に、二つの逐次（余）極限の指定合成の可逆性から coherent 冪等性を判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "特定の coherent 冪等図式の極限・余極限の存在を冪等完備性で判定する。単一の homotopy idempotent を入力に、二つの逐次（余）極限の指定合成の可逆性から coherent 冪等性を判定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.8.6": {
+      "number": "8.5.8.6",
+      "tag": "0421",
+      "query": [
+        "pointed connected Kan complex",
+        "homotopy idempotent",
+        "split idempotent",
+        "based homotopy"
+      ],
+      "a": {
+        "terms": [
+          "8.5.8.6",
+          "8.5.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "based",
+            "complex",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "pointed",
+            "split"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+              "line": 81,
+              "declaration": "StrongSplitting.vertexRetraction"
+            },
+            {
+              "source": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+              "line": 51,
+              "declaration": "basedPathSpace_homotopy_eq_point"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "based",
+            "complex",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "pointed",
+            "split"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+              "line": 81,
+              "declaration": "StrongSplitting.vertexRetraction"
+            },
+            {
+              "source": "SerrePositivity/KST/Spectra/PathContractibility.lean",
+              "line": 51,
+              "declaration": "basedPathSpace_homotopy_eq_point"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "based",
+            "complex",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "pointed",
+            "split"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Homology/HomotopyCategory/ChainComplex.lean",
+              "line": 33,
+              "declaration": "homotopyEquivalences_shortComplexF_iff_of_degreewiseSplit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Equalizers.lean",
+              "line": 1320,
+              "declaration": "splitMonoOfIdempotentOfIsLimitFork"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "based",
+          "complex",
+          "connected",
+          "homotopy",
+          "idempotent",
+          "kan",
+          "pointed",
+          "split"
+        ],
+        "declaration_count": 360,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+            "line": 28,
+            "declaration": "RetractionTriangle.vertexRetraction"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/BicartesianZeroSquares.lean",
+            "line": 70,
+            "declaration": "bicartesianZeroSquares_isIdempotentComplete"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "line": 81,
+          "declaration": "StrongSplitting.vertexRetraction",
+          "source_signature": "def StrongSplitting.vertexRetraction {X : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) : VertexRetraction s.vertex d.vertex ",
+          "assessment": "coherent splitting から頂点 retract を得る型と空間の小極限はある。連結な基点つき Kan 複体の homotopy idempotent に split 冪等性を与える型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "line": 77,
+          "declaration": "space_hasSmallLimits",
+          "source_signature": "lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u} ",
+          "assessment": "coherent splitting から頂点 retract を得る型と空間の小極限はある。連結な基点つき Kan 複体の homotopy idempotent に split 冪等性を与える型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "coherent splitting から頂点 retract を得る型と空間の小極限はある。連結な基点つき Kan 複体の homotopy idempotent に split 冪等性を与える型は見つからない。",
+      "decision": "none"
+    },
+    "8.5.8.7": {
+      "number": "8.5.8.7",
+      "tag": "0422",
+      "query": [
+        "homotopy idempotent Kan",
+        "pointed lift",
+        "connected",
+        "coherent idempotent"
+      ],
+      "a": {
+        "terms": [
+          "8.5.8.7",
+          "8.5.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "coherent",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "lift",
+            "pointed"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+              "line": 81,
+              "declaration": "StrongSplitting.vertexRetraction"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+              "line": 28,
+              "declaration": "RetractionTriangle.vertexRetraction"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "coherent",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "lift",
+            "pointed"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+              "line": 81,
+              "declaration": "StrongSplitting.vertexRetraction"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+              "line": 28,
+              "declaration": "RetractionTriangle.vertexRetraction"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coherent",
+            "connected",
+            "homotopy",
+            "idempotent",
+            "kan",
+            "lift",
+            "pointed"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/FundamentalGroupoid/SimplyConnected.lean",
+              "line": 52,
+              "declaration": "ContinuousMap.HomotopyEquiv.simplyConnectedSpace"
+            },
+            {
+              "source": "Mathlib/Topology/Connected/LocallyPathConnected.lean",
+              "line": 138,
+              "declaration": "connectedComponentsEquivZerothHomotopy"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "coherent",
+          "connected",
+          "homotopy",
+          "idempotent",
+          "kan",
+          "lift",
+          "pointed"
+        ],
+        "declaration_count": 360,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+            "line": 28,
+            "declaration": "RetractionTriangle.vertexRetraction"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean",
+            "line": 23,
+            "declaration": "oppositeIdempotent"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+          "line": 81,
+          "declaration": "StrongSplitting.vertexRetraction",
+          "source_signature": "def StrongSplitting.vertexRetraction {X : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) : VertexRetraction s.vertex d.vertex ",
+          "assessment": "coherent splitting の頂点 retract は構成される。指定基点への lift の存在と unpointed 冪等性を比較する iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "coherent splitting の頂点 retract は構成される。指定基点への lift の存在と unpointed 冪等性を比較する iff は見つからない。",
+      "decision": "none"
+    },
+    "8.5.8.13": {
+      "number": "8.5.8.13",
+      "tag": "0429",
+      "query": [
+        "Thompson group",
+        "dyadic homeomorphism",
+        "unit interval",
+        "left half extension",
+        "orientation preserving"
+      ],
+      "a": {
+        "terms": [
+          "8.5.8.13",
+          "8.5.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "dyadic",
+            "extension",
+            "group",
+            "half",
+            "homeomorphism",
+            "interval",
+            "left",
+            "orientation",
+            "preserving",
+            "thompson",
+            "unit"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+              "line": 128,
+              "declaration": "homeomorph"
+            },
+            {
+              "source": "Mathlib/AlgebraicGeometry/Scheme.lean",
+              "line": 324,
+              "declaration": "Hom.homeomorph"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "dyadic",
+            "extension",
+            "group",
+            "half",
+            "homeomorphism",
+            "interval",
+            "orientation",
+            "preserving",
+            "right",
+            "thompson",
+            "unit"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+              "line": 128,
+              "declaration": "homeomorph"
+            },
+            {
+              "source": "Mathlib/Topology/ContinuousMap/Basic.lean",
+              "line": 441,
+              "declaration": "Function.RightInverse.homeomorph"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "dyadic",
+            "extension",
+            "group",
+            "half",
+            "homeomorphism",
+            "interval",
+            "left",
+            "orientation",
+            "preserving",
+            "thompson",
+            "unit"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+              "line": 128,
+              "declaration": "homeomorph"
+            },
+            {
+              "source": "Mathlib/AlgebraicGeometry/Scheme.lean",
+              "line": 324,
+              "declaration": "Hom.homeomorph"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Idempotent"
+        ],
+        "terms": [
+          "dyadic",
+          "extension",
+          "group",
+          "half",
+          "homeomorphism",
+          "interval",
+          "left",
+          "orientation",
+          "preserving",
+          "thompson",
+          "unit"
+        ],
+        "declaration_count": 360,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionExtension.lean",
+            "line": 25,
+            "declaration": "exists_extension_to_complete_of_full_inclusion"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionExtensionImage.lean",
+            "line": 23,
+            "declaration": "IsIdempotentCompletion.exists_extension"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+          "line": 128,
+          "declaration": "homeomorph",
+          "source_signature": "def homeomorph : I ≃ₜ unitInterval ",
+          "assessment": "単位区間の宇宙持ち上げとの同相はある。二進有理数を保つ区間の自己同相の群と、左半区間への縮小と右半区間の恒等を貼る自己準同型の宣言は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "単位区間の宇宙持ち上げとの同相はある。二進有理数を保つ区間の自己同相の群と、左半区間への縮小と右半区間の恒等を貼る自己準同型の宣言は見つからない。",
+      "decision": "none"
     }
   }
 }

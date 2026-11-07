@@ -1165,7 +1165,23 @@
       "adopted": []
     },
     "8.4.3.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensityCocone.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.4.3.9": {
       "adopted": []
@@ -1192,10 +1208,27 @@
       ]
     },
     "8.4.5.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Adjunction.rightAdjoint_preservesLimits",
+          "source": "Mathlib/CategoryTheory/Adjunction/Limits.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.4.5.4": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.4.5.6": {
       "adopted": []
@@ -1635,7 +1668,18 @@
       "adopted": []
     },
     "8.5.4.28": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration",
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration",
+          "source": "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.5.4.29": {
       "adopted": []
@@ -2597,6 +2641,98 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 74
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit : ∀ {C : SSet} [inst : C.Quasicategory]\n  (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.IsColimitCone (SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 23
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensityCocone.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex : ∀ {C : SSet} [inst : C.Quasicategory]\n  (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  (SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone F).vertex =\n    SerrePositivity.InfinityCategories.functorVertex F",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_vertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 46
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/ElementsDiagram.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram : {C : SSet} →\n  [C.Quasicategory] →\n    (F : SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity) →\n      SSet.uliftFunctor.obj (SerrePositivity.InfinityCategories.smallRightUnstraightening F) ⟶\n        SerrePositivity.InfinityCategories.PresheafInfinity C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaDiagram' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 30
+      }
+    },
+    "Mathlib/CategoryTheory/Adjunction/Limits.lean": {
+      "CategoryTheory.Adjunction.rightAdjoint_preservesLimits": {
+        "type": "@CategoryTheory.Adjunction.rightAdjoint_preservesLimits : ∀ {C : Type u_5} [inst : CategoryTheory.Category.{u_3, u_5} C]\n  {D : Type u_6} [inst_1 : CategoryTheory.Category.{u_4, u_6} D] {F : CategoryTheory.Functor C D}\n  {G : CategoryTheory.Functor D C} (adj : F ⊣ G),\n  CategoryTheory.Limits.PreservesLimitsOfSize.{u_1, u_2, u_4, u_3, u_6, u_5} G",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Adjunction.rightAdjoint_preservesLimits' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 203
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan : ∀ {A : SSet} [inst : A.Quasicategory]\n  {D : SSet} [D.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits D →\n    ∀ (F₀ : SSet.uliftFunctor.obj A ⟶ D),\n      ∃ L β,\n        SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.yonedaInfinityMap A)\n          F₀ L β",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 44
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso : ∀ {A : SSet}\n  [inst : A.Quasicategory] {D : SSet} [D.Quasicategory] {F₀ : SSet.uliftFunctor.obj A ⟶ D}\n  {L : SerrePositivity.InfinityCategories.PresheafInfinity A ⟶ D}\n  (β :\n    SSet.Homotopy F₀ (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap A) L)),\n  SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.yonedaInfinityMap A) F₀ L\n      β →\n    CategoryTheory.IsIso\n      (SSet.Truncated.HomotopyCategory.homMk (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy β))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 63
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean": {
+      "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration : ∀ {X Y : SSet} (p : X ⟶ Y)\n  [SerrePositivity.InfinityCategories.RightFibration p],\n  SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete Y →\n    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 21
+      },
+      "SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration : ∀ {X Y : SSet} (p : X ⟶ Y)\n  [SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete Y →\n    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 31
       }
     }
   },
