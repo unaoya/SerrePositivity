@@ -1,6 +1,10 @@
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
 import Lean.Util.CollectAxioms
 
 /-!
@@ -15,7 +19,11 @@ run_cmd do
   let mods : Array Name := #[
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase,
-    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor]
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

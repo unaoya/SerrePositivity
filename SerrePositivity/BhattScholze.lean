@@ -13,6 +13,10 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
 public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness

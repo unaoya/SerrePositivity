@@ -84,3 +84,12 @@
    - `-c`：Ch 7〜10
    
    `-b`・`-c` は main から `../SerrePositivity-kerodon-review-b`・`-c`（枝 `research/kerodon-review-b`・`-c`）を切る。どのチャットも、書くのは自分の章の `review/ch<N>.csv` と `review/check/ch<N>-*` の証拠ファイルだけ。Ch 1 の `ch1-review-report.md` と同じ形で、章ごとの報告を書く。
+
+## 6. 追記（2026-11-07 15:40、調整役）：モデル圏の仮定つきの宣言
+
+段 1′ で名前の補正に採用した宣言のうち 14 件は、型に `ModelCategory` の仮定がある（一覧は `review/check/runs/stage1-prime-01/verified-candidates.csv` の型の列）。この種の仮定は公理の監査を通るが、満たせないことがある。
+
+1. **`[ModelCategory SSet]` を要求するもの**（`SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations` の 1 件）：満たせない仮定なので、Kerodon の項目の own・both としては数えない。`verdict` は `unsure`、`reason` に仮定を書く。
+2. **一般の圏にモデル圏構造を仮定するもの**（13 件）：その項目で使われる具体的な圏（単体集合の圏など）で、その instance が本体に実在するかを確かめる。実在すれば判定どおり、実在しなければ `partial` にして `reason` に仮定と「instance なし」を書く。
+3. 段 2 の型の確認では、ほかの宣言についても、型の仮定に `ModelCategory` が現れたら同じ扱いにする。
+4. コミットは自分の章のファイル（`review/ch<N>.csv`、`review/check/ch<N>-*`）を明示して行う。`git add -A` や `git add research/` は使わない（古い枝の未追跡ファイル、特に `runs/stage1-prime-01/plan.json`（25 MB）が入るのを防ぐ）。
