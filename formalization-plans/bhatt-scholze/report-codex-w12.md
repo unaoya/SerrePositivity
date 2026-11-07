@@ -40,3 +40,27 @@ $E(f)$ を、環準同型 $f:A\to B$ の `Arrow.augmentedCechConerve` に対す�
 B1 の合成からの消去には、合成自身の完全性と、二重複体の行に必要な底変換後の完全性の両方を入力とする。平坦性を仮定しない場合は、必要な底変換後の完全性を個別に供給する。B6 では v 被覆が底変換で保たれることと、完全標数 $p$ では通常のテンソルが完全であることを用いる。原典の役割分担は BS 著者版 Proposition 8.10 の証明、BM18 Lemma 3.4・3.25・3.27・3.29・Proposition 3.30、BS17 Thm 4.1 (i) に対応。[BS 著者版](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=67)・[BM18](https://arxiv.org/pdf/1807.04725)・[BS17](https://arxiv.org/pdf/1507.06490)
 
 合計は約 3,350–6,350 行。実装順は W12 の B1、B2・B3、B4・B5、B6 の型の確認。段 0 はこの報告のみ。Lean の編集・型検査・ビルド・監査は実施していない。段 1 の開始は調整役の確認を待つ。
+
+## 停止点 1（B1、2026-11-07）
+
+`main` の `30d46f897` を `math/bs-impl` に取り込み（`9adc341c8`）、指示書 §5 を読んで実装した。⑤b と⑥の作業木および枝の差分を再確認し、新規 Čech モジュールと報告の編集先に重複はなかった。
+
+`SerrePositivity.Cech.AugmentedRingCechExact` は `drafts/A6/ArcSheafProperty.lean` の定義と定義的に同じで、増大射の単射性、通常の次数 0、全正次数の完全性を表す。`ringCechExact_iff_acyclic` は増大項を次数 0 に置いた複体の全次数の完全性との同値。環の射には `IsCechExact (Arrow.mk f)` を使う。
+
+- `isCechExact_baseChange` は平坦底変換で保存し、`isCechExact_baseChange_iff` は忠実平坦底変換で反映する。各項の有限余積を基底環の下の圏で比較してから、加群のテンソル積に移す。
+- `isCechExact_of_retraction` は環として左逆がある場合。既存の `cechSplitHomotopy` と `cechAugmentation_retraction` を再利用した。`isCechExact_baseChange_of_map` は底変換先への代数準同型から左逆を作る。
+- `isCechExact_iff_of_tensorCech` は二射の正次数の Čech 項上で互いの底変換が完全なとき、元の二射の完全性を比較する。`isCechExact_of_comp` では合成 $A\to C$ 自身とその $B$ の正次数の各項上での完全性を仮定し、$C$ の各項上での $A\to B$ は切断により完全と示した。[BM18 Lemma 3.4](https://arxiv.org/pdf/1807.04725)
+- `isCechExact_colimit` は環の射の filtered 図式に対する保存。`ringCechExact_colimit` は増大余単体対象の filtered 図式版で、図式の `HasColimit` を受け取る。
+- ⑥の入口は `doubleCech_acyclic_iff`。二つの増大単体圏の積から加法群への図式を受け取る。`exact_zero_row_iff_zero_col_of_commute` は可換な微分を持つ第一象限の増大二重複体に直接使える。全複体のサイクルを次数ごとの有限な対角線で消去して、零番の行と列を比較した。
+
+取り込み時に入口・監査への登録を依頼するモジュールは次の 7 本（1,364 行）。
+
+- `SerrePositivity.HomologicalAlgebra.Cech.Basic`
+- `SerrePositivity.HomologicalAlgebra.Cech.BaseChange`
+- `SerrePositivity.HomologicalAlgebra.Cech.Split`
+- `SerrePositivity.HomologicalAlgebra.Cech.Filtered`
+- `SerrePositivity.HomologicalAlgebra.Cech.Diagonal`
+- `SerrePositivity.HomologicalAlgebra.Cech.Double`
+- `SerrePositivity.HomologicalAlgebra.Cech.Composition`
+
+専用 worktree で共有ロック付きの対象ビルドが成功した（7 本、依存を含む Lake の集計 2,130 jobs、最終回 16 秒、対象の Lean 警告なし）。新規 7 本の `import all` による監査は 207 宣言が標準三公理のみ。新規宣言の `sorry`・`admit`・追加公理は 0。import 閉包に E3 の `PerfectoidizationInterface` はなく、既存の Lean 宣言に差分なし。`git diff --cached --check` も通過した。停止点 1 で調整役による取り込みを待つ。
