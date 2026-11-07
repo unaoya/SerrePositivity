@@ -16,18 +16,19 @@ Kerodon の対応表（`research/kerodon-coverage/`）と同じものを HA に�
 
 | 段 | 内容 | 止めて報告 |
 | --- | --- | --- |
-| 段 0 | `toc.md`（全章の Section・Subsection の見出し）と `items.csv`（第 1 章の全項目、第 2〜7 章は `plan-citations.csv` の項目だけ）を作る。各行の `lean_citations`・`plan_citations`・`goal` を埋め、`status` は空のまま | **停止点 0**：件数（章・節・kind ごと）と、`citations.csv` の番号で `items.csv` にないもの（番号の誤記の候補）を報告。調整役が範囲を確かめる |
-| 段 1 | 第 1 章の §1.1〜§1.2 の全項目の照合（§4 の基準） | 停止点 1 |
-| 段 2 | 第 1 章の §1.3〜§1.4 の全項目の照合（§1.3.1 は Kerodon の行を参照、README） | 停止点 2 |
-| 段 3 | 第 2〜7 章の項目の照合 | 停止点 3：要約 `review/summary.md` |
+| 段 0 | `toc.md`（全章の Section・Subsection の見出し）と `items.csv`（全章の全項目）を作る。各行の `lean_citations`・`plan_citations`・`goal` を埋め、`status` は空のまま | **停止点 0**：件数（章・節・kind ごと）と、`citations.csv`・`plan-citations.csv` の番号で `items.csv` にないもの（番号の誤記の候補）を報告。調整役が範囲を確かめる |
+| 段 1 | 第 1 章の照合（§4 の基準。§1.3.1 は Kerodon の行を参照、README） | 停止点 1 |
+| 段 2 | 第 2〜4 章の照合 | 停止点 2：章ごとに報告 |
+| 段 3 | 第 7 章の照合 | 停止点 3 |
+| 段 4 | 第 5・6 章と付録の照合 | 停止点 4：要約 `review/summary.md` |
 
-- 停止点 0 だけは調整役の承認を待つ。段 1〜3 は、報告してそのまま次へ進んでよい。
+- 停止点 0 だけは調整役の承認を待つ。段 1〜4 は、報告してそのまま次へ進んでよい。
 - 報告は短く：段の件数（status ごと）、`unsure` の件数（0 を目指す）、よくある誤りの型。
 
 ## 3. 返してほしいもの
 
 - `research/ha-coverage/toc.md`・`items.csv`（段 0）。
-- 章ごとに `review/ch<N>.csv`。列は `number,status,declarations,reason,axioms,check`（Kerodon と同じ意味。`check` は `found`・`not_found`・`renamed`）。段 1・2 は同じ `ch1.csv` に節ごとに追記してよい。
+- 章ごとに `review/ch<N>.csv`。列は `number,status,declarations,reason,axioms,check`（Kerodon と同じ意味。`check` は `found`・`not_found`・`renamed`）。章の途中でコミットするときは、節ごとに追記してよい。
 - 証拠は `review/check/ch<N>-kernel-evidence.json`（`#check` の型）と `ch<N>-none-search.json`（none の行の検索の記録）。一つのファイルを 2 MB 以内に保つ（大きくなるなら節で分ける）。モジュールごとの生の出力はコミットしない（`.gitignore`）。
 
 ## 4. 確認の深さの基準（Kerodon §7.1 と同じ、HA 用に読み替え）
@@ -41,6 +42,7 @@ Kerodon の対応表（`research/kerodon-coverage/`）と同じものを HA に�
    - (c) 同じ Subsection と隣の Subsection で引用されている宣言のファイルを開き、型を読む。名前の検索だけで済ませない。
    none のまま残す行には、どの特別な場合を探し、なぜ当てはまらないかを一行で書く。定型文だけの理由は不可。
 3. **unsure を残さない**：決められなければ、何が足りないかを具体的に書く。
+3′. **Lean に何もない Subsection**：Subsection 全体で、(a) の引用が 0 件で、(b)・(c) の検索（その Subsection の主な概念の名前を、SerrePositivity と Mathlib の両方で）にも候補が一つもないときは、検索の記録を Subsection に一つ書き、各項目の `reason` はその記録を指してよい（「§2.1.1 の検索記録（none-search の 2.1.1）による」）。候補が一つでもあれば、その Subsection は項目ごとに確かめる。どの Subsection をこの扱いにしたかは報告に書く。
 4. **モデル圏の仮定**：型に `ModelCategory` の仮定があれば、使う具体的な圏でその instance が本体に実在するかを確かめる。実在しなければ `partial` にして「instance なし」と書く。`[ModelCategory SSet]` を要求するものは own・both に数えない（Kerodon §6 と同じ）。
 5. **∞ 圏の模型の違い**：HA は準圏で述べ、本体は単体集合の準圏・Kan 豊穣圏・dg 圏など複数の模型を使う。模型が違うだけで主張が同じなら一致としてよいが、比較の宣言がないために使えない場合は `partial` にして、どの比較が欠けているかを書く。
 
