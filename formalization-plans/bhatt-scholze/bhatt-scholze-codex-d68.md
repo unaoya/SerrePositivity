@@ -49,3 +49,13 @@ drafts の宣言を、`drafts/README.md` の置き場所の表どおりに、本
 5. ビルドは小さなビルドだけ（`ps -axo command= | grep '[l]ake build'` と `scripts/refactor/with_build_lock.sh --wait 0`）。全ビルドは調整役の合図で。
 6. F-2 の改名表 `scripts/refactor/targets/f-namespace-map.json` の旧名は使わない。
 7. 報告は段ごとに：ビルド、監査、追加した宣言の名前と主張（言葉で一行ずつ）、残っている一歩、コミット。
+
+## 4. 追記（2026-11-07、調整役）：停止点 0 の承認
+
+**承認**：段 0 の報告（順序・置き場所・規模 8,000〜15,000 行・再利用する材料・Bockstein の紙の確認）。段 1 に進んでよい。§2 の条件付きの事前承認のとおり、段 1〜3 は「対象のビルドと監査が通り、sorry・公理 0、既存の宣言を変えていない」なら報告して次へ進んでよい。
+
+1. **置き場所**：報告の案どおり（多変数 pd 包は `BhattScholze/Delta/DividedPower/` の新規ファイル、de Rham は `CommutativeAlgebra/DeRham/`、余単体的な extra degeneracy・Alexander–Whitney 積・Bockstein は `HomologicalAlgebra/Cosimplicial/`、A1 の本体は `BhattScholze/Prismatic/`）。
+2. **段 4 の写像の向き**：drafts の包含の向きを、総複体から第 0 行・第 0 列への二つの射影に直す案を承認。本体に移すときに直し、drafts 側の対応する宣言も同じ向きに直してよい（drafts の編集は `A1/` の該当宣言だけ）。
+3. **確認事項 1（承認）**：`HodgeTateIsoStatement` の型を保つため、A0 の affine 模型（Rem 4.19、`cechAlexanderAffine` の古典的な部分）と、A1 の η⁰・η¹・外積への延長・平方零（p = 2 の扱いを含む）を、段 1〜2 の古典的な部分として先に入れる。drafts/README の DAG では `A1/HodgeTateMap` が A2 の `polyCosimplicialAlgebra` を使っている。これが古典的な余単体的代数（∞ を使わない）なら、その定義を古典的な新規ファイルに切り出して使う。∞ の部分（CAlg 値の関手など）に触れる必要が出たら止めて報告する。
+4. **確認事項 2（承認）**：共通の入口（`SerrePositivity/BhattScholze.lean`、`CommutativeAlgebra.lean`、`HomologicalAlgebra.lean` など）と監査のスクリプト（`scripts/audit_bhatt_scholze*.lean` など）には登録しない。新規モジュールは直接ビルドし、監査は新しいモジュールを import する一時の監査ファイル（コミットしない）で流す。登録は調整役が取り込みのときにまとめて行う。報告には、登録すべきモジュールの一覧を付ける。
+5. 番号の docstring は BS-DOC1 と同じ形（`（BS 著者版 Lemma 5.4 の、N が余単体的可換環の場合）` など）。
