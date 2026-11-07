@@ -21129,6 +21129,1620 @@
       "reason": "固定した一つの底写像に対する相対関手空間は、厳密な引き戻しによって同型になる。両端または正側だけを固定した Fun± に同じ比較を適用し、全 coupling を量化した三条件は確認できない。",
       "decision": "partial"
     },
+    "8.2.4.1": {
+      "number": "8.2.4.1",
+      "tag": "0456",
+      "query": [
+        "coupling exhibited by morphism",
+        "identity goes universal",
+        "twisted arrow",
+        "negative base change"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.1",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "base",
+            "change",
+            "coupling",
+            "exhibited",
+            "goes",
+            "identity",
+            "morphism",
+            "negative",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowComparison.lean",
+              "line": 43,
+              "declaration": "rightRepresentableTwistedArrowComparison"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "base",
+            "change",
+            "coupling",
+            "exhibited",
+            "goes",
+            "identity",
+            "morphism",
+            "negative",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowComparison.lean",
+              "line": 43,
+              "declaration": "rightRepresentableTwistedArrowComparison"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "base",
+            "change",
+            "coupling",
+            "exhibited",
+            "goes",
+            "identity",
+            "morphism",
+            "negative",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicGeometry/Morphisms/AffineAnd.lean",
+              "line": 212,
+              "declaration": "HasAffineProperty.affineAnd_isStableUnderBaseChange"
+            },
+            {
+              "source": "Mathlib/AlgebraicGeometry/Morphisms/Basic.lean",
+              "line": 429,
+              "declaration": "IsStableUnderBaseChange"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "base",
+          "change",
+          "coupling",
+          "exhibited",
+          "goes",
+          "identity",
+          "morphism",
+          "negative",
+          "twisted",
+          "universal"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 74,
+          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
+          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "assessment": "特定の Tw ファイバーで恒等射が初期となる型と底を保つ表現可能比較はある。Gᵒᵖ×id の上の Tw(C₊) からの写像について、全恒等頂点の像に普遍性を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowComparison.lean",
+          "line": 43,
+          "declaration": "rightRepresentableTwistedArrowComparison",
+          "source_signature": "def rightRepresentableTwistedArrowComparison {C : SSet.{u}} (c : C _⦋0⦌) : Over.mk (SSet.opFunctor.map (sliceOverProjection (SSet.yonedaEquiv.symm c))) ⟶ Over.mk (twistedArrowTargetProjection c) ",
+          "assessment": "特定の Tw ファイバーで恒等射が初期となる型と底を保つ表現可能比較はある。Gᵒᵖ×id の上の Tw(C₊) からの写像について、全恒等頂点の像に普遍性を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "特定の Tw ファイバーで恒等射が初期となる型と底を保つ表現可能比較はある。Gᵒᵖ×id の上の Tw(C₊) からの写像について、全恒等頂点の像に普遍性を要求する述語は見つからない。",
+      "decision": "none"
+    },
+    "8.2.4.3": {
+      "number": "8.2.4.3",
+      "tag": "0459",
+      "query": [
+        "representable coupling iff witness",
+        "twisted identity",
+        "universal object",
+        "pullback"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.3",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "coupling",
+            "identity",
+            "object",
+            "pullback",
+            "representable",
+            "twisted",
+            "universal",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowEquivalence.lean",
+              "line": 55,
+              "declaration": "rightRepresentableTwistedArrowMap_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+              "line": 26,
+              "declaration": "relativeFunctorIsPullbackIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "coupling",
+            "identity",
+            "object",
+            "pushout",
+            "representable",
+            "twisted",
+            "universal",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowEquivalence.lean",
+              "line": 55,
+              "declaration": "rightRepresentableTwistedArrowMap_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+              "line": 26,
+              "declaration": "relativeFunctorIsPullbackIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coupling",
+            "identity",
+            "object",
+            "pullback",
+            "twisted",
+            "universal",
+            "witness",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/MetricSpace/GromovHausdorffRealized.lean",
+              "line": 480,
+              "declaration": "OptimalGHCoupling"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+              "line": 746,
+              "declaration": "IsUniversalColimit.nonempty_isColimit_of_pullbackCone_left"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "coupling",
+          "identity",
+          "object",
+          "pullback",
+          "representable",
+          "twisted",
+          "universal",
+          "witness"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+          "line": 26,
+          "declaration": "relativeFunctorIsPullbackIso",
+          "source_signature": "def relativeFunctorIsPullbackIso : relativeFunctorSpace r a ≅ relativeFunctorSpace p b",
+          "assessment": "底を固定した引き戻しから相対関手空間を比較する型と一つの終点での Tw の表現可能比較はある。λ_G との同値を、全恒等頂点に条件を課す witness の存在に置き換える iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RightRepresentableTwistedArrowEquivalence.lean",
+          "line": 55,
+          "declaration": "rightRepresentableTwistedArrowMap_isQCatEquivalence",
+          "source_signature": "lemma rightRepresentableTwistedArrowMap_isQCatEquivalence {C : SSet.{u}} [Quasicategory C] (y : C _⦋0⦌) : IsQCatEquivalence (rightRepresentableTwistedArrowMap y) ",
+          "assessment": "底を固定した引き戻しから相対関手空間を比較する型と一つの終点での Tw の表現可能比較はある。λ_G との同値を、全恒等頂点に条件を課す witness の存在に置き換える iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "底を固定した引き戻しから相対関手空間を比較する型と一つの終点での Tw の表現可能比較はある。λ_G との同値を、全恒等頂点に条件を課す witness の存在に置き換える iff は見つからない。",
+      "decision": "none"
+    },
+    "8.2.4.4": {
+      "number": "8.2.4.4",
+      "tag": "045C",
+      "query": [
+        "representable coupling morphism",
+        "natural isomorphism square",
+        "preserves universal objects",
+        "whiskering"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.4",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "coupling",
+            "isomorphism",
+            "morphism",
+            "natural",
+            "objects",
+            "preserves",
+            "representable",
+            "square",
+            "universal",
+            "whiskering"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "coupling",
+            "isomorphism",
+            "morphism",
+            "natural",
+            "objects",
+            "preserves",
+            "representable",
+            "square",
+            "universal",
+            "whiskering"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coupling",
+            "isomorphism",
+            "morphism",
+            "natural",
+            "objects",
+            "preserves",
+            "square",
+            "universal",
+            "whiskering",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 803,
+              "declaration": "shrinkYonedaCompWhiskeringLeftObjπCompColimIso"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Types/Yoneda.lean",
+              "line": 99,
+              "declaration": "whiskeringLimYonedaIsoCones"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "coupling",
+          "isomorphism",
+          "morphism",
+          "natural",
+          "objects",
+          "preserves",
+          "representable",
+          "square",
+          "universal",
+          "whiskering"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+          "line": 37,
+          "declaration": "twistedArrowProjection_naturality",
+          "source_signature": "lemma twistedArrowProjection_naturality {C D : SSet.{u}} (f : C ⟶ D) : edgewiseSubdivisionMap f ≫ twistedArrowProjection D = twistedArrowProjection C ≫ (SSet.opFunctor.map f ⊗ₘ f) ",
+          "assessment": "同じ関手を Tw の両端に適用する自然性と Yoneda の充満忠実性はある。H∘F₊≅F₋∘G と、普遍対象を保つ coupling 写像の存在を往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+          "line": 72,
+          "declaration": "yonedaInfinityMap_isFullyFaithful",
+          "source_signature": "lemma yonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] : IsFullyFaithful (yonedaInfinityMap C) ",
+          "assessment": "同じ関手を Tw の両端に適用する自然性と Yoneda の充満忠実性はある。H∘F₊≅F₋∘G と、普遍対象を保つ coupling 写像の存在を往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "同じ関手を Tw の両端に適用する自然性と Yoneda の充満忠実性はある。H∘F₊≅F₋∘G と、普遍対象を保つ coupling 写像の存在を往復する型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.4.5": {
+      "number": "8.2.4.5",
+      "tag": "045G",
+      "query": [
+        "corepresented witness",
+        "identity couniversal",
+        "opposite swap",
+        "positive base change"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.5",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "base",
+            "change",
+            "corepresented",
+            "couniversal",
+            "identity",
+            "opposite",
+            "positive",
+            "swap",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSwap.lean",
+              "line": 34,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 40,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "base",
+            "change",
+            "corepresented",
+            "couniversal",
+            "identity",
+            "opposite",
+            "positive",
+            "swap",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSwap.lean",
+              "line": 34,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 40,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "base",
+            "change",
+            "corepresented",
+            "couniversal",
+            "identity",
+            "opposite",
+            "positive",
+            "swap",
+            "witness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Lie/BaseChange.lean",
+              "line": 169,
+              "declaration": "LieModule.toEnd_baseChange"
+            },
+            {
+              "source": "Mathlib/Algebra/Lie/Nilpotent.lean",
+              "line": 931,
+              "declaration": "LieSubmodule.lowerCentralSeries_tensor_eq_baseChange"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "base",
+          "change",
+          "corepresented",
+          "couniversal",
+          "identity",
+          "opposite",
+          "positive",
+          "swap",
+          "witness"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSwap.lean",
+          "line": 34,
+          "declaration": "twistedArrowOppositeSwap_projection",
+          "source_signature": "lemma twistedArrowOppositeSwap_projection (C : SSet.{u}) : twistedArrowOppositeSwap C ≫ twistedArrowProjection C = twistedArrowProjection C.op ≫ twistedArrowBaseSwap C ",
+          "assessment": "Tw の両端交換と始域固定ファイバー内の恒等射の初期性はある。id×F の上の写像の恒等頂点の像で余表現を定義し、反対圏の表現条件と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 74,
+          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
+          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "assessment": "Tw の両端交換と始域固定ファイバー内の恒等射の初期性はある。id×F の上の写像の恒等頂点の像で余表現を定義し、反対圏の表現条件と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "Tw の両端交換と始域固定ファイバー内の恒等射の初期性はある。id×F の上の写像の恒等頂点の像で余表現を定義し、反対圏の表現条件と同定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.4.6": {
+      "number": "8.2.4.6",
+      "tag": "045J",
+      "query": [
+        "functor coupling representation",
+        "G compose T compose F",
+        "universal iff",
+        "corepresentable source"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.6",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "compose",
+            "corepresentable",
+            "coupling",
+            "functor",
+            "representation",
+            "source",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+              "line": 25,
+              "declaration": "leftFibration_pullbackObjObjπ"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compose",
+            "corepresentable",
+            "coupling",
+            "functor",
+            "representation",
+            "source",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+              "line": 25,
+              "declaration": "leftFibration_pullbackObjObjπ"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "compose",
+            "coupling",
+            "coyoneda",
+            "functor",
+            "representation",
+            "source",
+            "universal"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/MetricSpace/GromovHausdorffRealized.lean",
+              "line": 480,
+              "declaration": "OptimalGHCoupling"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Comma/Presheaf/Basic.lean",
+              "line": 682,
+              "declaration": "CostructuredArrow.overEquivPresheafCostructuredArrow_functor_map_toOverCompCoyoneda"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "compose",
+          "corepresentable",
+          "coupling",
+          "functor",
+          "representation",
+          "source",
+          "universal"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+          "line": 73,
+          "declaration": "adjunctionCovariantHomIso",
+          "source_signature": "def adjunctionCovariantHomIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) : FunctorIso (covariantRepresentableInfinity (F.app (Opposite.op ⦋0⦌) x)) ((SSet.uliftFunctor.{u + 1, u}).map G ≫ covariantRepresentableInfinity x) ",
+          "assessment": "一つの随伴に対する自然な Hom 比較と相対内部 Hom の左ファイブレーション性はある。Fun± の表現関手を T₊↦G∘T₊∘F とし、余普遍対象から普遍対象への移送で特徴づける型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+          "line": 25,
+          "declaration": "leftFibration_pullbackObjObjπ",
+          "source_signature": "lemma leftFibration_pullbackObjObjπ {A D E B : SSet.{u}} (i : D ⟶ A) [Mono i] (p : E ⟶ B) [LeftFibration p] (sq' : internalHom.PullbackObjObj i p) : LeftFibration sq'.π",
+          "assessment": "一つの随伴に対する自然な Hom 比較と相対内部 Hom の左ファイブレーション性はある。Fun± の表現関手を T₊↦G∘T₊∘F とし、余普遍対象から普遍対象への移送で特徴づける型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "一つの随伴に対する自然な Hom 比較と相対内部 Hom の左ファイブレーション性はある。Fun± の表現関手を T₊↦G∘T₊∘F とし、余普遍対象から普遍対象への移送で特徴づける型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.4.9": {
+      "number": "8.2.4.9",
+      "tag": "045P",
+      "query": [
+        "representable coupling iff left cofinal",
+        "identity vertices",
+        "universal objects",
+        "Quillen A"
+      ],
+      "a": {
+        "terms": [
+          "8.2.4.9",
+          "8.2.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cofinal",
+            "coupling",
+            "identity",
+            "left",
+            "objects",
+            "quillen",
+            "representable",
+            "universal",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+              "line": 23,
+              "declaration": "isLeftCofinal_iff_weaklyContractible_slices"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cofinal",
+            "coupling",
+            "identity",
+            "objects",
+            "quillen",
+            "representable",
+            "right",
+            "universal",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+              "line": 23,
+              "declaration": "isLeftCofinal_iff_weaklyContractible_slices"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coupling",
+            "final",
+            "identity",
+            "initial",
+            "left",
+            "objects",
+            "quillen",
+            "universal",
+            "vertices",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+              "line": 493,
+              "declaration": "final_of_isTerminal_colimit_comp_yoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+              "line": 61,
+              "declaration": "HasStrictInitialObjects"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cofinal",
+          "coupling",
+          "identity",
+          "left",
+          "objects",
+          "quillen",
+          "representable",
+          "universal",
+          "vertices"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+          "line": 23,
+          "declaration": "isLeftCofinal_iff_weaklyContractible_slices",
+          "source_signature": "lemma isLeftCofinal_iff_weaklyContractible_slices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsLeftCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceOverProjection (SSet.yonedaEquiv.symm b))) ",
+          "assessment": "任意の写像の左余終性は slice の弱可縮性で判定でき、Tw の始域ファイバーの恒等射は初期となる。指定された Tw(C₊)→C の左余終性を恒等頂点または可逆頂点の像の普遍性で判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 74,
+          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
+          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "assessment": "任意の写像の左余終性は slice の弱可縮性で判定でき、Tw の始域ファイバーの恒等射は初期となる。指定された Tw(C₊)→C の左余終性を恒等頂点または可逆頂点の像の普遍性で判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "任意の写像の左余終性は slice の弱可縮性で判定でき、Tw の始域ファイバーの恒等射は初期となる。指定された Tw(C₊)→C の左余終性を恒等頂点または可逆頂点の像の普遍性で判定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.6.1": {
+      "number": "8.2.6.1",
+      "tag": "045X",
+      "query": [
+        "balanced coupling",
+        "representable corepresentable",
+        "universal iff couniversal",
+        "adjunction equivalence"
+      ],
+      "a": {
+        "terms": [
+          "8.2.6.1",
+          "8.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "adjunction",
+            "balanced",
+            "corepresentable",
+            "couniversal",
+            "coupling",
+            "equivalence",
+            "representable",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/AdjunctionHomLimits.lean",
+              "line": 76,
+              "declaration": "representableComparison_adjunction_homotopyEquivalence_iff"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "adjunction",
+            "balanced",
+            "corepresentable",
+            "couniversal",
+            "coupling",
+            "equivalence",
+            "representable",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/AdjunctionHomLimits.lean",
+              "line": 76,
+              "declaration": "representableComparison_adjunction_homotopyEquivalence_iff"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "adjunction",
+            "balanced",
+            "couniversal",
+            "coupling",
+            "coyoneda",
+            "equivalence",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/ModuleEmbedding/GabrielPopescu.lean",
+              "line": 55,
+              "declaration": "tensorObjPreadditiveCoyonedaObjAdjunction"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/ModuleCat/Presheaf/Pullback.lean",
+              "line": 70,
+              "declaration": "pushforwardCompCoyonedaFreeYonedaCorepresentableBy"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "adjunction",
+          "balanced",
+          "corepresentable",
+          "couniversal",
+          "coupling",
+          "equivalence",
+          "representable",
+          "universal"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+          "line": 73,
+          "declaration": "adjunctionCovariantHomIso",
+          "source_signature": "def adjunctionCovariantHomIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) : FunctorIso (covariantRepresentableInfinity (F.app (Opposite.op ⦋0⦌) x)) ((SSet.uliftFunctor.{u + 1, u}).map G ≫ covariantRepresentableInfinity x) ",
+          "assessment": "随伴による二変数の表現比較と個別 Tw ファイバーの初期頂点はある。任意の coupling で両側の初期対象の存在と、その二種類の頂点条件の一致をまとめた述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 74,
+          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
+          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "assessment": "随伴による二変数の表現比較と個別 Tw ファイバーの初期頂点はある。任意の coupling で両側の初期対象の存在と、その二種類の頂点条件の一致をまとめた述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "随伴による二変数の表現比較と個別 Tw ファイバーの初期頂点はある。任意の coupling で両側の初期対象の存在と、その二種類の頂点条件の一致をまとめた述語は見つからない。",
+      "decision": "none"
+    },
+    "8.2.6.6": {
+      "number": "8.2.6.6",
+      "tag": "045Z",
+      "query": [
+        "balanced iff represented by equivalence",
+        "corepresented by equivalence",
+        "both fibers",
+        "adjoint equivalence"
+      ],
+      "a": {
+        "terms": [
+          "8.2.6.6",
+          "8.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "adjoint",
+            "balanced",
+            "both",
+            "corepresented",
+            "equivalence",
+            "fibers",
+            "represented"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/QCatEquivalenceAdjunction.lean",
+              "line": 34,
+              "declaration": "QCatEquivalence.toAdjunction"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+              "line": 715,
+              "declaration": "toAdjunction"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "adjoint",
+            "balanced",
+            "both",
+            "corepresented",
+            "equivalence",
+            "fibers",
+            "represented"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/QCatEquivalenceAdjunction.lean",
+              "line": 34,
+              "declaration": "QCatEquivalence.toAdjunction"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+              "line": 715,
+              "declaration": "toAdjunction"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "adjoint",
+            "balanced",
+            "both",
+            "corepresented",
+            "equivalence",
+            "fibers",
+            "represented"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+              "line": 715,
+              "declaration": "toAdjunction"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/RepresentedBy.lean",
+              "line": 50,
+              "declaration": "IsRepresentedBy"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "adjoint",
+          "balanced",
+          "both",
+          "corepresented",
+          "equivalence",
+          "fibers",
+          "represented"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/QCatEquivalenceAdjunction.lean",
+          "line": 34,
+          "declaration": "QCatEquivalence.toAdjunction",
+          "source_signature": "def QCatEquivalence.toAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatAdjunction e.hom e.inv ",
+          "assessment": "準圏の同値から随伴を作り、その随伴から Hom の自然同型を取れる。balanced 条件を、表現関手 G または余表現関手 F が準圏同値であることと往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+          "line": 73,
+          "declaration": "adjunctionCovariantHomIso",
+          "source_signature": "def adjunctionCovariantHomIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) : FunctorIso (covariantRepresentableInfinity (F.app (Opposite.op ⦋0⦌) x)) ((SSet.uliftFunctor.{u + 1, u}).map G ≫ covariantRepresentableInfinity x) ",
+          "assessment": "準圏の同値から随伴を作り、その随伴から Hom の自然同型を取れる。balanced 条件を、表現関手 G または余表現関手 F が準圏同値であることと往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏の同値から随伴を作り、その随伴から Hom の自然同型を取れる。balanced 条件を、表現関手 G または余表現関手 F が準圏同値であることと往復する型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.6.7": {
+      "number": "8.2.6.7",
+      "tag": "04AX",
+      "query": [
+        "equivalent infinity categories iff balanced coupling",
+        "existence",
+        "twisted arrow graph"
+      ],
+      "a": {
+        "terms": [
+          "8.2.6.7",
+          "8.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "categories",
+            "coupling",
+            "equivalent",
+            "existence",
+            "graph",
+            "infinity",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean",
+              "line": 61,
+              "declaration": "twistedArrowProjection_leftFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 28,
+              "declaration": "twistedArrowHomInfinity"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "categories",
+            "coupling",
+            "equivalent",
+            "existence",
+            "graph",
+            "infinity",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean",
+              "line": 61,
+              "declaration": "twistedArrowProjection_leftFibration"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 28,
+              "declaration": "twistedArrowHomInfinity"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "categories",
+            "coupling",
+            "equivalent",
+            "existence",
+            "graph",
+            "infinity",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+              "line": 715,
+              "declaration": "toAdjunction"
+            },
+            {
+              "source": "Mathlib/Topology/MetricSpace/GromovHausdorffRealized.lean",
+              "line": 480,
+              "declaration": "OptimalGHCoupling"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "balanced",
+          "categories",
+          "coupling",
+          "equivalent",
+          "existence",
+          "graph",
+          "infinity",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/QCatEquivalenceAdjunction.lean",
+          "line": 34,
+          "declaration": "QCatEquivalence.toAdjunction",
+          "source_signature": "def QCatEquivalence.toAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : QCatAdjunction e.hom e.inv ",
+          "assessment": "準圏同値から随伴を作る型と Tw の左ファイブレーションはある。任意の二準圏の同値を、それらを結ぶ balanced coupling の存在で判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean",
+          "line": 61,
+          "declaration": "twistedArrowProjection_leftFibration",
+          "source_signature": "instance twistedArrowProjection_leftFibration (C : SSet.{u}) [Quasicategory C] : LeftFibration (twistedArrowProjection C)",
+          "assessment": "準圏同値から随伴を作る型と Tw の左ファイブレーションはある。任意の二準圏の同値を、それらを結ぶ balanced coupling の存在で判定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏同値から随伴を作る型と Tw の左ファイブレーションはある。任意の二準圏の同値を、それらを結ぶ balanced coupling の存在で判定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.2.6.8": {
+      "number": "8.2.6.8",
+      "tag": "0460",
+      "query": [
+        "balanced coupling equivalent twisted arrow",
+        "product of equivalences",
+        "coupling model"
+      ],
+      "a": {
+        "terms": [
+          "8.2.6.8",
+          "8.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "coupling",
+            "equivalences",
+            "equivalent",
+            "model",
+            "product",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 55,
+              "declaration": "oppositeHomPullbackComparison"
+            },
+            {
+              "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftWeakEquivalence.lean",
+              "line": 79,
+              "declaration": "weakEquivalences_iff_of_liftedArrowIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "coproduct",
+            "coupling",
+            "equivalences",
+            "equivalent",
+            "model",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 55,
+              "declaration": "oppositeHomPullbackComparison"
+            },
+            {
+              "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftWeakEquivalence.lean",
+              "line": 79,
+              "declaration": "weakEquivalences_iff_of_liftedArrowIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "coupling",
+            "equivalences",
+            "equivalent",
+            "model",
+            "product",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/ModelTheory/Bundled.lean",
+              "line": 189,
+              "declaration": "ElementarilyEquivalent.toModel"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Resolution.lean",
+              "line": 402,
+              "declaration": "hasRightResolutions_arrow_iff_of_equivalences"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "balanced",
+          "coupling",
+          "equivalences",
+          "equivalent",
+          "model",
+          "product",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+          "line": 55,
+          "declaration": "oppositeHomPullbackComparison",
+          "source_signature": "def oppositeHomPullbackComparison (C : SSet.{u}) : TwistedArrow C.op ⟶ pullback (twistedArrowProjection C) (oppositeHomBaseIso C).hom ",
+          "assessment": "Tw(Cᵒᵖ) と Tw(C) の底交換による引き戻しの同型はある。任意の balanced coupling を、両側の底同値と共に一つの Tw(D) へ移す iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+          "line": 64,
+          "declaration": "oppositeHomPullbackComparison_isIso",
+          "source_signature": "instance oppositeHomPullbackComparison_isIso (C : SSet.{u}) : IsIso (oppositeHomPullbackComparison C) ",
+          "assessment": "Tw(Cᵒᵖ) と Tw(C) の底交換による引き戻しの同型はある。任意の balanced coupling を、両側の底同値と共に一つの Tw(D) へ移す iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "Tw(Cᵒᵖ) と Tw(C) の底交換による引き戻しの同型はある。任意の balanced coupling を、両側の底同値と共に一つの Tw(D) へ移す iff は見つからない。",
+      "decision": "none"
+    },
+    "8.2.6.9": {
+      "number": "8.2.6.9",
+      "tag": "0461",
+      "query": [
+        "universal couniversal fully faithful",
+        "representable coupling",
+        "counit iso",
+        "adjunction"
+      ],
+      "a": {
+        "terms": [
+          "8.2.6.9",
+          "8.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "adjunction",
+            "counit",
+            "couniversal",
+            "coupling",
+            "faithful",
+            "fully",
+            "iso",
+            "representable",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean",
+              "line": 29,
+              "declaration": "QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Lax/LaxDifferenceRho.lean",
+              "line": 54,
+              "declaration": "fullyFaithfulRightAdjunction_counitHom_isIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "adjunction",
+            "counit",
+            "couniversal",
+            "coupling",
+            "faithful",
+            "fully",
+            "iso",
+            "representable",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean",
+              "line": 29,
+              "declaration": "QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Lax/LaxDifferenceRho.lean",
+              "line": 54,
+              "declaration": "fullyFaithfulRightAdjunction_counitHom_isIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "adjunction",
+            "counit",
+            "couniversal",
+            "coupling",
+            "faithful",
+            "fully",
+            "iso",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/FullyFaithful.lean",
+              "line": 95,
+              "declaration": "counit_isIso_of_R_fully_faithful"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Adjunction/Restrict.lean",
+              "line": 70,
+              "declaration": "map_restrictFullyFaithful_counit_app"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "adjunction",
+          "counit",
+          "couniversal",
+          "coupling",
+          "faithful",
+          "fully",
+          "iso",
+          "representable",
+          "universal"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveIdempotence.lean",
+          "line": 29,
+          "declaration": "QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful",
+          "source_signature": "lemma QCatAdjunction.counitHom_isIso_of_postcompFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (h : (hoFunctor.map ((ihom Y).map G)).toFunctor.FullyFaithful) : IsIso a.counitHom ",
+          "assessment": "随伴を追加し h Fun での後合成を充満忠実と仮定すると余単位の可逆性が得られる。λ が表現可能という仮定だけで、全普遍対象の余普遍性と G の充満忠実性を往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "随伴を追加し h Fun での後合成を充満忠実と仮定すると余単位の可逆性が得られる。λ が表現可能という仮定だけで、全普遍対象の余普遍性と G の充満忠実性を往復する型は見つからない。",
+      "decision": "none"
+    },
     "8.4.1.23": {
       "number": "8.4.1.23",
       "tag": "03VZ",

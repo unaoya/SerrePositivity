@@ -99,19 +99,19 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 8.2.3.7,ok,none,,"終点固定の Tw の表現可能模型と左ファイブレーションの同値のファイバー判定はある。指定 λ の普遍対象が可逆射へ移ること、および (id,G̃,G) の初期性まで含む四条件は見つからない。",,not_found
 8.2.3.8,ok,none,,Tw の両端交換は反対圏との指定の底変換を保つ。Fᵒᵖ×id への任意の categorical pullback による余表現可能性と F の同型を除いた一意性は見つからない。,,not_found
 8.2.3.9,fix,partial,SerrePositivity.InfinityCategories.relativeFunctorIsPullbackIso @ SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean:26 | SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex @ SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean:80,固定した一つの底写像に対する相対関手空間は、厳密な引き戻しによって同型になる。両端または正側だけを固定した Fun± に同じ比較を適用し、全 coupling を量化した三条件は確認できない。,,found
-8.2.4.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.4.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.4.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.4.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.4.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.4.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.1,ok,none,,特定の Tw ファイバーで恒等射が初期となる型と底を保つ表現可能比較はある。Gᵒᵖ×id の上の Tw(C₊) からの写像について、全恒等頂点の像に普遍性を要求する述語は見つからない。,,not_found
+8.2.4.3,ok,none,,底を固定した引き戻しから相対関手空間を比較する型と一つの終点での Tw の表現可能比較はある。λ_G との同値を、全恒等頂点に条件を課す witness の存在に置き換える iff は見つからない。,,not_found
+8.2.4.4,ok,none,,同じ関手を Tw の両端に適用する自然性と Yoneda の充満忠実性はある。H∘F₊≅F₋∘G と、普遍対象を保つ coupling 写像の存在を往復する型は見つからない。,,not_found
+8.2.4.5,ok,none,,Tw の両端交換と始域固定ファイバー内の恒等射の初期性はある。id×F の上の写像の恒等頂点の像で余表現を定義し、反対圏の表現条件と同定する型は見つからない。,,not_found
+8.2.4.6,ok,none,,一つの随伴に対する自然な Hom 比較と相対内部 Hom の左ファイブレーション性はある。Fun± の表現関手を T₊↦G∘T₊∘F とし、余普遍対象から普遍対象への移送で特徴づける型は見つからない。,,not_found
+8.2.4.9,ok,none,,任意の写像の左余終性は slice の弱可縮性で判定でき、Tw の始域ファイバーの恒等射は初期となる。指定された Tw(C₊)→C の左余終性を恒等頂点または可逆頂点の像の普遍性で判定する型は見つからない。,,not_found
 8.2.5.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean:73,"coupling の形ではない。G=λ_G の場合の「F が G の左随伴なら F は corepresent する」向きに当たる、随伴から対象ごとの Hom(Fx,−)≃Hom(x,G−)（FunctorIso）だけがある。逆向き（Hom の同型から随伴）を固定した F について述べる主張はない。",,renamed
 8.2.5.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69,"coupling は経由しない。λ=λ_G（Hom(−,G−) の twisted arrow による coupling）の場合の同値「各 x で Hom(x,G−) が余表現可能 ⇔ G が左随伴を持つ」が exists_leftAdjoint_iff_covariantHom_representable。一般の coupling の corepresentable 性の定義はない。",,renamed
-8.2.6.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない（F2/Presentable/Duality の Pair* は Pr^L≃(Pr^R)^op 用の随伴の対で、coupling 一般ではない）。,,not_found
-8.2.6.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.6.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.6.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
-8.2.6.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.6.1,ok,none,,随伴による二変数の表現比較と個別 Tw ファイバーの初期頂点はある。任意の coupling で両側の初期対象の存在と、その二種類の頂点条件の一致をまとめた述語は見つからない。,,not_found
+8.2.6.6,ok,none,,準圏の同値から随伴を作り、その随伴から Hom の自然同型を取れる。balanced 条件を、表現関手 G または余表現関手 F が準圏同値であることと往復する型は見つからない。,,not_found
+8.2.6.7,ok,none,,準圏同値から随伴を作る型と Tw の左ファイブレーションはある。任意の二準圏の同値を、それらを結ぶ balanced coupling の存在で判定する型は見つからない。,,not_found
+8.2.6.8,ok,none,,Tw(Cᵒᵖ) と Tw(C) の底交換による引き戻しの同型はある。任意の balanced coupling を、両側の底同値と共に一つの Tw(D) へ移す iff は見つからない。,,not_found
+8.2.6.9,ok,none,,随伴を追加し h Fun での後合成を充満忠実と仮定すると余単位の可逆性が得られる。λ が表現可能という仮定だけで、全普遍対象の余普遍性と G の充満忠実性を往復する型は見つからない。,,not_found
 8.3.0.1,fix,mathlib,CategoryTheory.Coyoneda.fullyFaithful @ Mathlib/CategoryTheory/Yoneda.lean:199,仮定：通常圏 C。Hom の宇宙を値域 Type に取る（Kerodon の局所小圏と一致）。結論：Coyoneda.fullyFaithful は Cᵒᵖ から共変表現可能関手を送る coyoneda の充満忠実性（原文と一致）。,,renamed
 8.3.1.1,fix,mathlib,CategoryTheory.coyonedaEquiv @ Mathlib/CategoryTheory/Yoneda.lean:999 | CategoryTheory.yonedaEquiv @ Mathlib/CategoryTheory/Yoneda.lean:722,仮定：通常圏 C、対象 X、F : C⥤Type（Kerodon と一致）。結論：coyonedaEquiv は自然変換 hˣ→F と F(X) の同値で、順写像は X で恒等射を評価する（原文の全単射と一致）。,,renamed
 8.3.1.2,fix,partial,SerrePositivity.InfinityCategories.SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,"仮定：原文は C と二つの空間値関手 F,G、頂点 η∈F(X) を指定する。SpaceInfinity の型自体はこれらを取らない。結論：空間の値圏の模型だけで、評価と η による前合成の指定比較写像は引用型にない（Lean が弱い）。",,renamed
