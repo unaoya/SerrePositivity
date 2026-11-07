@@ -1,6 +1,9 @@
 module
 
+public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.Algebra.Category.Ring.FilteredColimits
 public import Mathlib.CategoryTheory.Functor.OfSequence
 
@@ -9,10 +12,11 @@ public import Mathlib.CategoryTheory.Functor.OfSequence
 
 ## 概要
 全元に mod p で p 乗根を添加する完備な一段と可算塔、完備化前の代数的な根添加、
-有限変数の両立する根の環と完備な底変換を構成する。
+有限変数の両立する根の環と完備な底変換を構成する。完備な根添加と代数的な根添加は関手的である。
 
 ## 方針
-多項式環の商の普遍性、逐次余極限、既存の導来完備化 H⁰ の普遍性を用いる。
+多項式環の商の普遍性、逐次余極限、導来完備化 H⁰ の普遍性を用いる。
+有限変数の根の環の perfectoid 性は、単項式表示と distinguished 係数商から示す。
 
 ## 規約
 入力は通常の可換環。完備化は導来 p 完備化の H⁰ を取る。
@@ -31,7 +35,7 @@ namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 
-variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
+variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 variable (S : Type u) [CommRing S] [Algebra R S]
 
 /-! ## (1) S̃（弱始対象の土台） -/
@@ -495,6 +499,169 @@ def polyRootIdeal (r : ℕ) : Ideal (MvPolynomial (Fin r × ℕ) R) :=
   Ideal.span (Set.range fun j : Fin r × ℕ =>
     MvPolynomial.X (j.1, j.2 + 1) ^ p - MvPolynomial.X j)
 
+section PolynomialMonomials
+
+open SerrePositivity.BhattScholze.Andre
+open scoped BigOperators
+
+variable (r : ℕ)
+local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
+local notation "G" => powerRootExponentMonoid p hp
+local notation "Q" => MvPolynomial (Fin r × ℕ) R ⧸ polyRootIdeal p R r
+local notation "M" => AddMonoidAlgebra R (Fin r → G)
+local notation "q" => Ideal.Quotient.mk (polyRootIdeal p R r)
+
+private abbrev rawRootVar (i : Fin r) (n : ℕ) : Q := q (MvPolynomial.X (i, n))
+
+private theorem rawRootVar_pow (i : Fin r) (n : ℕ) :
+    rawRootVar p R r i (n + 1) ^ p = rawRootVar p R r i n := by
+  apply sub_eq_zero.mp
+  change q (MvPolynomial.X (i, n + 1)) ^ p - q (MvPolynomial.X (i, n)) = 0
+  rw [← map_pow, ← map_sub]
+  exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span ⟨(i, n), rfl⟩)
+
+private def rawRootLift {B : Type u} [CommRing B] (f : R →+* B) (x : Fin r → ℕ → B)
+    (hx : ∀ i n, x i (n + 1) ^ p = x i n) : Q →+* B := by
+  let ev : MvPolynomial (Fin r × ℕ) R →+* B := MvPolynomial.eval₂Hom f (fun j => x j.1 j.2)
+  refine Ideal.Quotient.lift (polyRootIdeal p R r) ev ?_
+  change polyRootIdeal p R r ≤ RingHom.ker ev
+  apply Ideal.span_le.mpr
+  rintro _ ⟨⟨i, n⟩, rfl⟩
+  change ev _ = 0
+  simp only [ev, map_sub, map_pow, MvPolynomial.eval₂Hom_X', hx, sub_self]
+
+private theorem rawRootLift_coeff {B : Type u} [CommRing B] (f : R →+* B) (x : Fin r → ℕ → B)
+    (hx : ∀ i n, x i (n + 1) ^ p = x i n) (a : R) :
+    rawRootLift p R r f x hx (q (MvPolynomial.C a)) = f a := by
+  unfold rawRootLift
+  erw [Ideal.Quotient.lift_mk, MvPolynomial.eval₂Hom_C]
+
+private theorem rawRootLift_var {B : Type u} [CommRing B] (f : R →+* B) (x : Fin r → ℕ → B)
+    (hx : ∀ i n, x i (n + 1) ^ p = x i n) (i : Fin r) (n : ℕ) :
+    rawRootLift p R r f x hx (rawRootVar p R r i n) = x i n := by
+  unfold rawRootLift
+  erw [Ideal.Quotient.lift_mk, MvPolynomial.eval₂Hom_X']
+
+private theorem rawRootHom_ext {B : Type u} [CommRing B] {f g : Q →+* B}
+    (hC : ∀ a, f (q (MvPolynomial.C a)) = g (q (MvPolynomial.C a)))
+    (hX : ∀ i n, f (rawRootVar p R r i n) = g (rawRootVar p R r i n)) : f = g := by
+  apply Ideal.Quotient.ringHom_ext
+  exact MvPolynomial.ringHom_ext hC (fun j => hX j.1 j.2)
+
+private def rootMonomial (i : Fin r) (n : ℕ) : M :=
+  AddMonoidAlgebra.single (Pi.single i (powerRootVariableExponent p hp n)) 1
+
+private theorem rootMonomial_pow (i : Fin r) (n : ℕ) :
+    rootMonomial p R r i (n + 1) ^ p = rootMonomial p R r i n := by
+  rw [rootMonomial, rootMonomial, AddMonoidAlgebra.single_pow, one_pow]
+  congr 1
+  ext j
+  by_cases h : j = i
+  · subst j
+    simp [powerRootVariableExponent_nsmul]
+  · simp [Pi.single_eq_of_ne h]
+
+private def rawRootToMonomials : Q →+* M :=
+  rawRootLift p R r (algebraMap R M) (rootMonomial p R r) (rootMonomial_pow p R r)
+
+private def rootTupleEval : Multiplicative (Fin r → G) →* Q where
+  toFun a := ∏ i, powerRootExponentEvalHom p hp (rawRootVar p R r i)
+    (rawRootVar_pow p R r i) (Multiplicative.ofAdd (a.toAdd i))
+  map_one' := by
+    change (∏ i, powerRootExponentEvalHom p hp (rawRootVar p R r i)
+      (rawRootVar_pow p R r i) (1 : Multiplicative G)) = 1
+    simp
+  map_mul' a b := by
+    change (∏ i, powerRootExponentEvalHom p hp (rawRootVar p R r i)
+      (rawRootVar_pow p R r i)
+      (Multiplicative.ofAdd (a.toAdd i) * Multiplicative.ofAdd (b.toAdd i))) = _
+    simp only [map_mul, Finset.prod_mul_distrib]
+
+private def rawRootFromMonomials : M →+* Q :=
+  AddMonoidAlgebra.liftNCRingHom ((q).comp MvPolynomial.C) (rootTupleEval p R r)
+    (fun _ _ => Commute.all _ _)
+
+private theorem rawRootFromMonomials_coeff (a : R) :
+    rawRootFromMonomials p R r (algebraMap R M a) = q (MvPolynomial.C a) := by
+  change AddMonoidAlgebra.liftNCRingHom ((q).comp MvPolynomial.C) (rootTupleEval p R r) _
+    (AddMonoidAlgebra.single 0 a) = _
+  rw [AddMonoidAlgebra.liftNCRingHom_single]
+  change q (MvPolynomial.C a) * rootTupleEval p R r 1 = q (MvPolynomial.C a)
+  rw [map_one, mul_one]
+
+private theorem rawRootFromMonomials_var (i : Fin r) (n : ℕ) :
+    rawRootFromMonomials p R r (rootMonomial p R r i n) = rawRootVar p R r i n := by
+  rw [rawRootFromMonomials, rootMonomial, AddMonoidAlgebra.liftNCRingHom_single, map_one, one_mul]
+  let v : Fin r → G := Pi.single i (powerRootVariableExponent p hp n)
+  change rootTupleEval p R r (Multiplicative.ofAdd v) = rawRootVar p R r i n
+  change (∏ j : Fin r, powerRootExponentEvalHom p hp
+    (rawRootVar p R r j) (rawRootVar_pow p R r j) (Multiplicative.ofAdd (v j))) = _
+  dsimp only [v]
+  rw [Finset.prod_eq_single i]
+  · simp only [Pi.single_eq_same, powerRootExponentEvalHom_variable]
+  · intro j _ hj
+    rw [Pi.single_eq_of_ne hj]
+    exact map_one _
+  · simp
+
+private theorem rawRootToMonomials_surjective : Function.Surjective (rawRootToMonomials p R r) := by
+  classical
+  let f := rawRootToMonomials p R r
+  let mono := AddMonoidAlgebra.of R (Fin r → G)
+  have hcoeff (a : R) : f (q (MvPolynomial.C a)) = algebraMap R M a :=
+    rawRootLift_coeff p R r _ _ _ _
+  have hvar (i : Fin r) (n : ℕ) : f (rawRootVar p R r i n) =
+      mono (Multiplicative.ofAdd (Pi.single i (powerRootVariableExponent p hp n))) :=
+    rawRootLift_var p R r _ _ _ _ _
+  intro x
+  induction x using AddMonoidAlgebra.induction_on with
+  | of e =>
+    have hcoord (i : Fin r) : ∃ x : Q, f x = mono (Multiplicative.ofAdd (Pi.single i (e i))) := by
+      obtain ⟨n, k, hn⟩ := powerRootExponent_exists_nsmul p hp (e i)
+      refine ⟨rawRootVar p R r i n ^ k, ?_⟩
+      rw [map_pow, hvar, ← map_pow]
+      apply congrArg mono
+      change Multiplicative.ofAdd (k • (Pi.single i (powerRootVariableExponent p hp n) :
+        Fin r → G)) = Multiplicative.ofAdd (Pi.single i (e i) : Fin r → G)
+      rw [hn, Pi.single_nsmul]
+    choose a ha using hcoord
+    refine ⟨∏ i, a i, ?_⟩
+    rw [map_prod]
+    calc
+      (∏ i, f (a i)) = ∏ i, mono (Multiplicative.ofAdd (Pi.single i (e i))) :=
+        Finset.prod_congr rfl (fun i _ => ha i)
+      _ = _ := by
+        rw [← map_prod]
+        apply congrArg mono
+        change Multiplicative.ofAdd (∑ i, Pi.single i (e i)) = Multiplicative.ofAdd e
+        exact congrArg Multiplicative.ofAdd (Finset.univ_sum_single e)
+  | add x y hx hy =>
+    obtain ⟨x', rfl⟩ := hx
+    obtain ⟨y', rfl⟩ := hy
+    exact ⟨x' + y', map_add f x' y'⟩
+  | smul a x hx =>
+    obtain ⟨x', rfl⟩ := hx
+    exact ⟨q (MvPolynomial.C a) * x', by rw [map_mul, hcoeff, Algebra.smul_def]⟩
+
+private def rawRootMonomialEquiv : Q ≃+* M := by
+  refine RingEquiv.ofBijective (rawRootToMonomials p R r)
+    ⟨?_, rawRootToMonomials_surjective p R r⟩
+  have h : (rawRootFromMonomials p R r).comp (rawRootToMonomials p R r) = RingHom.id Q := by
+    apply rawRootHom_ext p R r
+    · intro a
+      change rawRootFromMonomials p R r
+        (rawRootLift p R r _ _ _ (q (MvPolynomial.C a))) = q (MvPolynomial.C a)
+      rw [rawRootLift_coeff, rawRootFromMonomials_coeff]
+    · intro i n
+      change rawRootFromMonomials p R r
+        (rawRootLift p R r _ _ _ (rawRootVar p R r i n)) = rawRootVar p R r i n
+      rw [rawRootLift_var, rawRootFromMonomials_var]
+  have hleft : Function.LeftInverse (rawRootFromMonomials p R r) (rawRootToMonomials p R r) :=
+    fun x => RingHom.congr_fun h x
+  exact hleft.injective
+
+end PolynomialMonomials
+
 /-- 両立する根の関係で割った多項式環の導来 p 完備化 H⁰。 -/
 abbrev polyRootAlgebra (r : ℕ) :=
   ↥(completionRing p (CommRingCat.of (MvPolynomial (Fin r × ℕ) R ⧸ polyRootIdeal p R r)))
@@ -514,16 +681,11 @@ def polyAlgebraToRoot (r : ℕ) : polyAlgebra p R r →+* polyRootAlgebra p R r 
 /-- 添加した各変数の根は p 乗で前の段の元に移る。 -/
 theorem polyRootAlgebraVar_pow (r : ℕ) (i : Fin r) (n : ℕ) :
     polyRootAlgebraVar p R r i (n + 1) ^ p = polyRootAlgebraVar p R r i n := by
-  let q := Ideal.Quotient.mk (polyRootIdeal p R r)
-  have h : q (MvPolynomial.X (i, n + 1)) ^ p = q (MvPolynomial.X (i, n)) := by
-    apply sub_eq_zero.mp
-    rw [← map_pow, ← map_sub]
-    apply Ideal.Quotient.eq_zero_iff_mem.mpr
-    exact Ideal.subset_span ⟨(i, n), rfl⟩
   let C := CommRingCat.of (MvPolynomial (Fin r × ℕ) R ⧸ polyRootIdeal p R r)
-  change (completionUnit p C).hom (q (MvPolynomial.X (i, n + 1))) ^ p =
-    (completionUnit p C).hom (q (MvPolynomial.X (i, n)))
-  rw [← map_pow, h]
+  change (completionUnit p C).hom (rawRootVar p R r i (n + 1)) ^ p =
+    (completionUnit p C).hom (rawRootVar p R r i n)
+  rw [← map_pow, rawRootVar_pow]
+
 /-- 通常の多項式変数は両立する根の第零段へ移る。 -/
 theorem polyAlgebraToRoot_var (r : ℕ) (i : Fin r) :
     polyAlgebraToRoot p R r (polyAlgebraVar p R r i) = polyRootAlgebraVar p R r i 0 := by
@@ -536,6 +698,182 @@ theorem polyAlgebraToRoot_var (r : ℕ) (i : Fin r) :
     (MvPolynomial.rename (fun j : Fin r => (j, 0)) (MvPolynomial.X i))) = _
   rw [MvPolynomial.rename_X]
   rfl
+
+section PolynomialPerfectoid
+
+open SerrePositivity.BhattScholze.Andre
+open SerrePositivity.BhattScholze.Andre.Transfinite
+open SerrePositivity.DerivedCompletion
+
+universe v
+
+variable {A : Type u} [CommRing A] {E : Type v} [AddCommMonoid E]
+
+private def monomialFrobenius (D : DeltaStructure p A) (hD : D.IsPerfect) (scale : E ≃+ E) :
+    AddMonoidAlgebra A E ≃+* AddMonoidAlgebra A E :=
+  (AddMonoidAlgebra.mapRingEquiv E (D.frobeniusEquiv hD)).trans
+    (AddMonoidAlgebra.mapDomainRingEquiv A scale)
+
+private theorem monomialFrobenius_single (D : DeltaStructure p A) (hD : D.IsPerfect)
+    (scale : E ≃+ E) (e : E) (a : A) :
+    monomialFrobenius p D hD scale (AddMonoidAlgebra.single e a) =
+      AddMonoidAlgebra.single (scale e) (D.frobeniusLift a) := by
+  change AddMonoidAlgebra.mapDomain scale
+    (AddMonoidAlgebra.mapRingHom E D.frobeniusLift (AddMonoidAlgebra.single e a)) = _
+  rw [AddMonoidAlgebra.mapRingHom_single, AddMonoidAlgebra.mapDomain_single]
+
+private theorem monomialFrobenius_mod_p (D : DeltaStructure p A) (hD : D.IsPerfect)
+    (scale : E ≃+ E) (hs : ∀ e, scale e = p • e) (x : AddMonoidAlgebra A E) :
+    let q := Ideal.Quotient.mk (Ideal.span {(p : AddMonoidAlgebra A E)})
+    q (monomialFrobenius p D hD scale x) = q x ^ p := by
+  let B := AddMonoidAlgebra A E
+  let q := Ideal.Quotient.mk (Ideal.span {(p : B)})
+  have hpQ : (p : B ⧸ Ideal.span {(p : B)}) = 0 := by
+    change q (p : B) = 0
+    exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
+  have hc (a : A) :
+      q (monomialFrobenius p D hD scale (algebraMap A (AddMonoidAlgebra A E) a)) =
+        q (algebraMap A (AddMonoidAlgebra A E) a) ^ p := by
+    have h : monomialFrobenius p D hD scale (algebraMap A (AddMonoidAlgebra A E) a) =
+        algebraMap A (AddMonoidAlgebra A E) (D.frobeniusLift a) := by
+      change monomialFrobenius p D hD scale (AddMonoidAlgebra.single 0 a) =
+        AddMonoidAlgebra.single 0 (D.frobeniusLift a)
+      rw [monomialFrobenius_single, map_zero]
+    rw [h, D.frobeniusLift_apply]
+    simp only [map_add, map_mul, map_natCast, map_pow, hpQ, zero_mul, add_zero]
+  change q (monomialFrobenius p D hD scale x) = q x ^ p
+  induction x using AddMonoidAlgebra.induction_on with
+  | of e =>
+    change q (monomialFrobenius p D hD scale (AddMonoidAlgebra.single e 1)) =
+      q (AddMonoidAlgebra.single e 1) ^ p
+    rw [monomialFrobenius_single, hs, map_one, ← map_pow, AddMonoidAlgebra.single_pow, one_pow]
+  | add x y hx hy =>
+    simp only [map_add, hx, hy]
+    symm
+    simpa only [hpQ, zero_mul, add_zero] using add_pow_prime_eq' (Fact.out : p.Prime) (q x) (q y)
+  | smul a x hx =>
+    rw [Algebra.smul_def]
+    simp only [map_mul, hc, hx, mul_pow]
+
+private theorem exists_perfectMonomialDelta (D : DeltaStructure p A) (hD : D.IsPerfect)
+    (scale : E ≃+ E) (hs : ∀ e, scale e = p • e) :
+    ∃ D' : DeltaStructure p (AddMonoidAlgebra A E),
+      D'.IsPerfect ∧ D.IsDeltaHom D' (algebraMap A (AddMonoidAlgebra A E)) := by
+  let B := AddMonoidAlgebra A E
+  let : Module.Free A B := Module.Free.of_basis (AddMonoidAlgebra.basis E A)
+  have hpB : Function.Injective (fun a : B => (p : B) * a) := by
+    simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
+      (show IsSMulRegular A (p : A) from hD.p_mul_injective).of_flat (S := B)
+  let φ := monomialFrobenius p D hD scale
+  obtain ⟨D', h, _⟩ := DeltaStructure.existsUnique_of_mod_p hpB φ.toRingHom
+    (monomialFrobenius_mod_p p D hD scale hs)
+  refine ⟨D', ?_, DeltaStructure.isDeltaHom_of_map_frobeniusLift (algebraMap A B) hpB ?_⟩
+  · change Function.Bijective D'.frobeniusLift
+    rw [h]
+    exact φ.bijective
+  · intro a
+    rw [h]
+    symm
+    change monomialFrobenius p D hD scale (AddMonoidAlgebra.single 0 a) =
+      AddMonoidAlgebra.single 0 (D.frobeniusLift a)
+    rw [monomialFrobenius_single, map_zero]
+
+private theorem monomialMap_ker (f : A →+* R) (d : A) (hd : RingHom.ker f = Ideal.span {d}) :
+    RingHom.ker (AddMonoidAlgebra.mapRingHom E f) =
+      Ideal.span {algebraMap A (AddMonoidAlgebra A E) d} := by
+  classical
+  let B := AddMonoidAlgebra A E
+  let f' := AddMonoidAlgebra.mapRingHom E f
+  let J : Ideal B := Ideal.span {algebraMap A B d}
+  change RingHom.ker f' = J
+  apply le_antisymm
+  · intro x hx
+    have hz : f' x = 0 := hx
+    rw [← AddMonoidAlgebra.sum_coeff_single x]
+    apply J.sum_mem
+    intro e _
+    have he : f (x.coeff e) = 0 := by
+      have h := congrArg (fun z : AddMonoidAlgebra R E => z.coeff e) hz
+      simpa only [f', AddMonoidAlgebra.coeff_mapRingHom, AddMonoidAlgebra.coeff_zero,
+        Finsupp.zero_apply] using h
+    have he' : x.coeff e ∈ Ideal.span {d} := hd ▸ (show x.coeff e ∈ RingHom.ker f from he)
+    obtain ⟨a, ha⟩ := Ideal.mem_span_singleton.mp he'
+    rw [ha]
+    have hh : AddMonoidAlgebra.single e (d * a) =
+        algebraMap A B d * AddMonoidAlgebra.single e a := by
+      change AddMonoidAlgebra.single e (d * a) =
+        AddMonoidAlgebra.single 0 d * AddMonoidAlgebra.single e a
+      rw [AddMonoidAlgebra.single_mul_single, zero_add]
+    rw [hh]
+    exact J.mul_mem_right _ (Ideal.mem_span_singleton_self _)
+  · apply Ideal.span_le.mpr
+    rintro _ (rfl : _ = _)
+    change f' (algebraMap A B d) = 0
+    have h : f d = 0 := show d ∈ RingHom.ker f from hd.symm ▸ Ideal.mem_span_singleton_self d
+    change f' (AddMonoidAlgebra.single 0 d) = 0
+    simp only [f', AddMonoidAlgebra.mapRingHom_single, h, AddMonoidAlgebra.single_zero]
+
+private theorem monomialBoundedTorsion (hR : IsIntegralPerfectoid R p) :
+    ∃ N : ℕ, ∀ n : ℕ, ∀ x : AddMonoidAlgebra R E,
+      (p : AddMonoidAlgebra R E) ^ n * x = 0 → (p : AddMonoidAlgebra R E) ^ N * x = 0 := by
+  let B := AddMonoidAlgebra R E
+  refine ⟨1, fun n x hx => ?_⟩
+  have h : ((p : R) ^ n) • x = 0 := by
+    simpa only [Algebra.smul_def, map_pow, map_natCast] using hx
+  have hz : (p : R) • x = 0 := by
+    ext e
+    have he := congrArg (fun y : B => y.coeff e) h
+    have he' : (p : R) ^ n * x.coeff e = 0 := by
+      simpa only [AddMonoidAlgebra.coeff_smul_apply, smul_eq_mul, AddMonoidAlgebra.coeff_zero,
+        Finsupp.zero_apply] using he
+    simpa only [AddMonoidAlgebra.coeff_smul_apply, smul_eq_mul, AddMonoidAlgebra.coeff_zero,
+      Finsupp.zero_apply] using hR.p_mul_eq_zero_of_pow_mul_eq_zero R p n (x.coeff e) he'
+  simpa only [Algebra.smul_def, map_natCast, pow_one] using hz
+
+private theorem monomialAdicCompletionPerfectoid (hR : IsIntegralPerfectoid R p)
+    (scale : E ≃+ E) (hs : ∀ e, scale e = p • e) :
+    IsIntegralPerfectoid
+      (AdicCompletion (Ideal.span {(p : AddMonoidAlgebra R E)}) (AddMonoidAlgebra R E)) p := by
+  let T := AddMonoidAlgebra R E
+  rcases hR with hR | ⟨hp, hc, ⟨π, u, hu⟩, hF, hker⟩
+  · let : Subsingleton R := hR
+    exact Or.inl (algebraMap T (AdicCompletion (Ideal.span {(p : T)}) T)).codomain_trivial
+  · let : Fact (¬ IsUnit (p : R)) := ⟨hp⟩
+    let := hc
+    let k := PreTilt R p
+    let W := WittVector p k
+    let D := wittDeltaStructure p k
+    have hD := wittDeltaStructure_isPerfect p k
+    let θ := WittVector.fontaineTheta R p
+    have hθ : Function.Surjective θ := surjective_fontaineTheta hF
+    obtain ⟨d, hd, hker'⟩ := exists_distinguished_fontaine_kernel_generator R p hF hker π u hu
+    obtain ⟨D', hD', hmap⟩ := exists_perfectMonomialDelta p D hD scale hs
+    let f := AddMonoidAlgebra.mapRingHom E θ
+    exact isIntegralPerfectoid_adicCompletion_of_distinguished_kernel D' hD'
+      (algebraMap W (AddMonoidAlgebra W E) d) (hmap.map_isDistinguished hd)
+      f (AddMonoidAlgebra.map_surjective θ.toAddMonoidHom hθ) (monomialMap_ker R θ d hker')
+
+include hR in
+/-- 有限変数に両立する p 冪根を添加した導来 p 完備環は、基底が整 perfectoid なら整 perfectoid。
+方針：単項式表示で係数の Fontaine 商を延長し、指数の p 倍の同型で Frobenius を持ち上げる。
+規約：係数の p 冪ねじれは有界性を使う。変数が空の場合も含む。
+使われ方：BS 著者版 Proposition 8.5 の証明に現れる完備テンソル被覆。 -/
+theorem polyRootAlgebra_isIntegralPerfectoid (r : ℕ) :
+    IsIntegralPerfectoid (polyRootAlgebra p R r) p := by
+  let E := Fin r → powerRootExponentMonoid p (Nat.Prime.pos (Fact.out : p.Prime))
+  let M := AddMonoidAlgebra R E
+  let scale : E ≃+ E := AddEquiv.piCongrRight (fun _ => powerRootExponentPrimeScaleEquiv p)
+  have hs (e : E) : scale e = p • e := rfl
+  have h := monomialAdicCompletionPerfectoid p R (E := E) hR scale hs
+  let := principalCompletionCommRing M (p : M)
+  let := principalCompletionAlgebra M (p : M)
+  let j := boundedPrincipalCompletionAdicAlgEquiv M (p : M)
+    (monomialBoundedTorsion p R (E := E) hR)
+  let e := (ringCompletionFunctor p).mapIso (rawRootMonomialEquiv p R r).toCommRingCatIso
+  exact isIntegralPerfectoid_of_ringEquiv p
+    (j.toRingEquiv.symm.trans e.symm.commRingCatIsoToRingEquiv) h
+
+end PolynomialPerfectoid
 
 /-- 概要：S̃ = S ⊗̂_T T_∞（T → S、f で X_i ↦ f i）と S̃^n = (S̃^{⊗_S n+1})^∧。
 方針：完備テンソル（A2 `BaseChangeAndTensor`、既存 `CompletedTensor` の芯）。

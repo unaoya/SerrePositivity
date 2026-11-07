@@ -8,11 +8,11 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 # 根添加の残る定理
 
 ## 概要
-濃度、代数的根添加と filtered 余極限、有限変数の根添加環の
-perfectoid 性と完全忠実平坦性を扱う。
+濃度、代数的根添加の filtered 余極限との可換性、有限変数の根添加環の
+完全忠実平坦性を扱う。
 
 ## 方針
-移行済みの構成・延長性・mod p の根の結果を利用する。
+移行済みの根添加の構成・延長性・関手性と perfectoid 性を利用する。
 設計は a5-design.md §3.1〜§3.3。
 
 ## 規約
@@ -49,15 +49,6 @@ theorem rootClosure_cardinal_le : Cardinal.mk (rootClosure p R S) ≤ (Cardinal.
 theorem algebraicRootClosure_filteredColimit {J : Type u} [SmallCategory J] [IsFiltered J]
     (D : J ⥤ CommRingCat.{u}) : IsIso (Limits.colimit.post D (algebraicRootFunctor p)) := by
   sorry -- 一つの多項式と関係の有限和は有限段から来る。各段の比較と ω 余極限を交換する
-
-include hR in
-/-- 概要：R perfectoid なら T_∞ は perfectoid（R⟨X^{1/p^∞}⟩ は R の perfectoid 性を継ぐ：p 完備、ϖ は R から、mod p の Frobenius は変数の根で全射、
-核は R の核の生成元で生成）。
-方針：一変数の `compatibleRootCompletion_isIntegralPerfectoid` の計算を有限個の根変数で行う。
-規約：—
-使われ方：Lemma 8.6 の T_∞ 側（L_{T_∞/R}^∧ = 0）、A5-4 の S̃ の semiperfectoid 性。 -/
-theorem polyRootAlgebra_isIntegralPerfectoid (r : ℕ) : IsIntegralPerfectoid (polyRootAlgebra p R r) p := by
-  sorry -- 基底の擬一様化元と変数の根から各条件を得る
 
 include hR in
 /-- 概要：T → T_∞ は p 完備忠実平坦（T_∞ は T 上、単項式 X^{a}（a ∈ (ℤ[1/p] ∩ [0,1))^r）を基底とする自由加群の p 完備化）。よって S → S̃ も。
