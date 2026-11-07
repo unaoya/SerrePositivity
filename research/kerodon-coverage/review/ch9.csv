@@ -293,56 +293,56 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 9.4.1.22,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isMuAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:24 | SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:46,"κ ◁ μ で κ-accessible ⇒ μ-accessible の向きに関連するのみ。(κ,μ) の同値の判定はなし。",,renamed
 9.4.2.1,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Compact/Definition.lean:23 | SerrePositivity.InfinityCategories.F2.Presentable.adjunction_isKappaCompact_image @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean:30 | SerrePositivity.InfinityCategories.F2.Presentable.adjunction_hom_preservesKappaFilteredColimits_iff @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomPreservation.lean:25,compact 関手という名前の定義はなし。finitary（filtered 余極限保存）と、随伴での compact 像の補題のみ。,,renamed
 9.4.2.2,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Compact/Definition.lean:23 | SerrePositivity.InfinityCategories.F2.Presentable.adjunction_isKappaCompact_image @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean:30,同上（κ 版）。,,renamed
-9.4.2.4,ok,none,,"確認済み・なし（探索範囲内）。(κ,λ)-compact 関手はなし。",,not_found
-9.4.2.15,ok,none,,確認済み・なし（探索範囲内）。compact 関手を射とする QC の部分圏はなし。,,not_found
+9.4.2.4,ok,none,,既存の関手の κ-accessibility は小 κ-filtered 余極限の保存であり、PrL は小余極限の保存を課す。κ≤λ における finitary 条件と compact 対象保存の両方を課した全部分圏は確認できない。,,not_found
+9.4.2.15,ok,none,,"presentable 圏を集める構成と単独の κ-accessibility はある。原文の (κ,λ)-compactly generated 圏を対象とし、compact 対象も保つ関手を射にする QC の部分圏は未確認。",,not_found
 9.4.2.18,ok,none,,"小 κ-filtered な半順序の κ-compact 図式から選んだ余極限頂点が μ-compact となる部分はある。三濃度での関手の compact 性、制限上の (κ,λ)-compact 性、余域生成を仮定した逆向きは見つからない。",,not_found
 9.4.2.19,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestrictionEquivalence @ SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean:60,一つの κ について小 κ-filtered 余極限を保つ関手の Ind 制限同値はある。冪等完備な D に対し、双方を λ から μ へ延長し、compact 対象も保つ関手に制限する同値は確認できない。,,found
 9.4.3.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.reflectiveSubcategory_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean:29 | SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isPresentable_of_reflection @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/Presentable.lean:62,κ-accessible 版（反射部分圏で包含が κ-filtered 余極限を保存なら κ-accessible、C は余完備を仮定）。compactly generated（小ささなし）の版はなし。,,renamed
 9.4.3.4,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.reflectiveSubcategory_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean:29,"(κ,λ)-compactly generated 版はなし。κ-accessible の反射部分圏の場合のみ。「(κ,λ)-compactly generated」の述語は SerrePositivity にない（κ-accessible のみ）。",,renamed
-9.4.3.5,ok,none,,確認済み・なし（探索範囲内）。n-truncated Kan 複体・本質的に有限な模型の理論はない（0-truncated の述語 Is0TruncatedSpace のみ）。,,not_found
-9.4.3.6,ok,none,,確認済み・なし（探索範囲内）。S^{≤n}_fin なし。,,not_found
-9.4.3.9,ok,none,,確認済み・なし（探索範囲内）。n-truncated Kan 複体・本質的に有限な模型の理論はない（0-truncated の述語 Is0TruncatedSpace のみ）。,,not_found
-9.4.3.10,ok,none,,確認済み・なし（探索範囲内）。局所 (n-1)-truncated ∞ 圏の有限性なし。,,not_found
-9.4.3.12,ok,none,,確認済み・なし（探索範囲内）。QC^{≤n}_fin なし。,,not_found
-9.4.3.13,ok,none,,確認済み・なし（探索範囲内）。n-truncated Kan 複体・本質的に有限な模型の理論はない（0-truncated の述語 Is0TruncatedSpace のみ）。,,not_found
-9.4.3.14,ok,none,,小形状の余極限頂点が compact となる補題と空間の 0-truncated 述語はある。局所 (n−1)-truncated な準圏の圏における有限局所切断対象の有限余極限閉性は見つからない。,,not_found
-9.4.3.15,ok,none,,確認済み・なし（探索範囲内）。n-truncated 空間の有限部分圏の理論なし。,,not_found
-9.4.3.16,ok,none,,確認済み・なし（探索範囲内）。n-truncated 空間の有限部分圏の理論なし。,,not_found
-9.4.3.17,ok,none,,確認済み・なし（探索範囲内）。n-truncated 空間の有限部分圏の理論なし。,,not_found
-9.4.3.18,ok,none,,確認済み・なし（探索範囲内）。n-truncated 空間の有限部分圏の理論なし。,,not_found
-9.4.3.19,ok,none,,Ind 内の compact 部分の冪等完備化と、空間の 0-truncated 述語を確認した。QC の局所 (n−1)-truncated 部分での compact 性を、本質的有限準圏の局所切断で特徴づける型は見つからない。,,not_found
-9.4.3.20,ok,none,,確認済み・なし（探索範囲内）。n-truncated 空間の有限部分圏の理論なし。,,not_found
-9.4.3.21,ok,none,,一般の Ind の小 κ-filtered 余極限と空間の 0-truncated 述語はある。任意の n と非可算 κ で、有限切断空間または有限局所切断準圏からの Ind と本質的 κ-small な部分を同一視する型は見つからない。,,not_found
-9.4.4.1,ok,none,,"確認済み・なし（探索範囲内）。右ファイブレーションの全空間の compact 生成なし。「(κ,λ)-compactly generated」の述語は SerrePositivity にない（κ-accessible のみ）。",,not_found
-9.4.4.2,ok,none,,確認済み・なし（探索範囲内）。slice の compact 生成なし（slice の余極限の創出 sliceOver_hasColimit_of_projection などはある）。,,not_found
+9.4.3.5,ok,none,,離散空間と同値である述語と、有限単体集合の Kan 置換を有限コードで表す宣言はある。任意の n に対する空間の n 切断、および有限な K からの (n+1)-連結な射との同値は確認できない。,,not_found
+9.4.3.6,ok,none,,離散空間の充満忠実な埋め込みと全空間の有限模型の生成圏を確認した。n 切断と本質的有限性の両方を課す S^{≤n}_fin という全部分圏は未確認。,,not_found
+9.4.3.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceGeneratorVertex_isCompact @ SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean:29 | SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSpaceGeneratorIso @ SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean:46,有限単体集合の Kan 置換が全空間の圏でコンパクトになる側はある。原文は n 切断空間の圏でのコンパクト性と有限模型の n 切断であることの両向きであり、その圏と比較は未確認。,,found
+9.4.3.10,ok,none,,ホモトピー圏と有限単体集合のコードは確認した。mapping space の局所 (n−1) 切断と K→C の (n+1)-圏論的連結性をつなぐ原文の二条件は未確認。,,not_found
+9.4.3.12,ok,none,,有限な単体集合のコードと、離散空間の述語を確認した。局所 (n−1) 切断で有限模型から来る準圏を選ぶ QC^{≤n}_fin の宣言は未確認。,,not_found
+9.4.3.13,ok,none,,空間の離散性と離散空間の充満忠実な表示はある。Kan 複体を準圏と見たとき、空間としての有限模型条件と局所切断による圏としての有限模型条件が一致する定理は未確認。,,not_found
+9.4.3.14,ok,none,,有限余極限のある一般の準圏で κ-コンパクト対象が有限余極限で閉じる結果は確認した。QC^{≤n} における有限模型の部分圏を同定する段がないため、原文の閉性はこの型から確認できない。,,not_found
+9.4.3.15,ok,none,,一般のコンパクト対象の閉性と空間側の有限模型はある。局所切断された圏における Δ¹ を含む最小の有限余極限閉部分圏の同定は未確認。,,not_found
+9.4.3.16,ok,none,,全空間のコンパクト生成と一般のコンパクト対象の有限余極限閉性を確認した。切断空間における有限模型の部分圏と、その圏で計算した有限余極限の閉性は未確認。,,not_found
+9.4.3.17,ok,none,,既存の空間の生成族は全ての有限単体集合の Kan 置換。原文が特定する Δ⁰ 一つからの有限余極限閉包を、S^{≤n}_fin と同定する結論は確認できない。,,not_found
+9.4.3.18,ok,none,,任意の準圏の冪等完備化は作れる。原文の二つの有限切断部分圏がそのまま冪等完備であることや、有限模型が retract を取っても存在することは未確認。,,not_found
+9.4.3.19,ok,none,,有限単体集合を定義域にした内部 Hom のアクセス可能性は確認した。局所切断圏の圏でのコンパクト性から有限模型を回収する向きも、その逆向きも確認できない。,,not_found
+9.4.3.20,ok,none,,全空間が有限単体模型で ℵ₀-アクセス可能になる結果はある。原文の n 切断空間および局所切断圏を、それぞれの有限模型の Ind 完備化とする二つの同定は未確認。,,not_found
+9.4.3.21,ok,none,,全空間のアクセス可能性と有限単体模型のコードを確認した。κ-小かつ n 切断という制約を持つ空間や準圏を、同じ基数で制限した Ind_{ℵ₀}^{κ} と同定する型は未確認。,,not_found
+9.4.4.1,ok,none,,"コンパクトな図式を指定して作る slice 射影と、右ファイブレーションの厳密な filtered 余極限を調べた。任意の右ファイブレーションの全空間への (κ,λ)-compact 生成の移送、および射影による compact 性の両向きは未確認。",,not_found
+9.4.4.2,ok,none,,slice の余極限を射影の余極限から得る型と、指定した compact source slice の密度余錐はある。任意の図式上の slice の compact 生成と射影での compact 性判定は確認できない。,,not_found
 9.4.4.4,fix,partial,CategoryTheory.Comma.isCardinalAccessibleCategory @ Mathlib/CategoryTheory/Presentable/Comma.lean:435 | CategoryTheory.Comma.isCardinalPresentable_iff @ Mathlib/CategoryTheory/Presentable/Comma.lean:447,"1 圏の版（λ=∞）：F₁・F₂ が κ-accessible、F₁ が κ-presentable を保つとき Comma F₁ F₂ は κ-accessible で、κ-presentable な対象は両成分が κ-presentable なもの。∞ 圏の oriented fiber product・(κ,λ) の版はなし。",,renamed
 9.4.4.6,ok,none,,同時に二脚の濃度別保存と compact 性を仮定した通常の引き戻しの accessibility はある。任意の向き付き引き戻しで、一方の脚だけが compact 対象を保つときの同じ κ での生成と両成分による compact 性判定は見つからない。,,not_found
 9.4.4.7,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.isKappaCompact_smallSourceCosliceVertex @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean:51 | SerrePositivity.InfinityCategories.F2.Presentable.sourceCoslice_hasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean:45,非可算な μ と小余完備性のもとで、小さい図式の各頂点と余錐頂点の μ-compact 性から coslice 内の compact 性を導く型がある。二濃度での coslice の compact 生成と compact 性の逆向きは確認できない。,,found
-9.4.4.9,ok,none,,"確認済み・なし（探索範囲内）。Fun(Q,C) の compact 生成なし。",,not_found
+9.4.4.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean:26,非可算 κ と小余完備性、全 Hom を計算する end の錐族を追加すると、点ごとの compact 性から関手の compact 性を得る。有限半順序形状に対する原文の二濃度での生成と、compact 性の逆向きは未確認。,,found
 9.4.4.12,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.tensor_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/TensorPresentable.lean:75 | SerrePositivity.InfinityCategories.F2.Presentable.tensorHom_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/TensorAccessibility.lean:48,二項積の presentable 性と積関手の accessibility のみ。compact 生成と compact 対象の特徴づけはなし。,,renamed
 9.4.4.13,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.piSSet_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean:57 | SerrePositivity.InfinityCategories.F2.Presentable.piSSetMap_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/PiAccessibility.lean:47,"小さい積の presentable 性のみ。(κ,λ)-compactly generated 版なし。",,renamed
 9.4.4.14,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.piSSet_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean:57,presentable 版のみ。,,renamed
 9.4.4.15,ok,none,,選んだ部分複体への左ファイブレーションの引き戻しを使う比較と単射像の小ささはある。弱可縮な全空間から、同時に弱可縮かつ λ-small で、制限が左ファイブレーションとなる部分を選ぶ型は見つからない。,,not_found
 9.4.5.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isKappaAccessible_of_relativeCardinals @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/RelativeCardinalAccessibility.lean:26 | SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean:32 | SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_isPullback @ SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactPullback.lean:69,引き戻し（p は EquivalenceLifting）の μ-accessibility（κ⊴μ の濃度変更条件つき）と、両成分が compact なら引き戻しの対象も compact の向き。同じ κ での compact 生成と compact 対象の完全な特徴づけ（逆向き）はなし。,,renamed
 9.4.5.4,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25,"accessible な引き戻し（p は EquivalenceLifting）の accessibility のみ。(κ,λ)-compact 生成の版はなし。",,renamed
-9.4.5.7,ok,none,,確認済み・なし（探索範囲内）。塔の逆極限の compact 生成なし。,,not_found
+9.4.5.7,ok,none,,空間の Kan ファイブレーション塔における極限と、二脚の引戻しの accessibility は確認した。κ₀-sequential 余極限を保つ compact な isofibration の塔で、逆極限の compact 生成および各段による判定を得る型は未確認。,,not_found
 9.4.5.8,ok,none,,二脚の引き戻しの accessibility と厳密な単体集合極限の filtered 余極限保存はある。可算 isofibration 塔の準圏極限に同じ κ の compact 生成を与え、各段で compact かどうかで判定する型は見つからない。,,not_found
 9.4.5.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25,accessible 版のみ。,,renamed
 9.4.5.10,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25,accessible 版のみ。,,renamed
 9.4.5.11,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25 | SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean:74,accessible 版と射影の accessibility のみ。,,renamed
-9.4.6.1,ok,none,,確認済み・なし（探索範囲内）。compactly generated な内ファイブレーションの定義なし。,,not_found
+9.4.6.1,ok,none,,単独の準圏に対する生成関手の述語と任意の底変換はある。内ファイブレーションを各標準単体へ引き戻した全空間に、ℵ₀-compact 生成を要求する述語は未確認。,,not_found
 9.4.6.2,ok,none,,単独の準圏の κ-accessibility と指定二脚の引き戻しを扱う宣言はある。内ファイブレーションを任意の Δⁿ 上に引き戻して κ-compact 生成を要求する述語は見つからない。,,not_found
 9.4.6.4,ok,none,,"濃度変更を使う指定引き戻しの定理はある。引き戻しをすべての Δⁿ 上で取り、その各全空間に (κ,λ)-compact 生成を要求する定義は見つからない。",,not_found
-9.4.6.8,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.9,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.10,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.11,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.12,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.13,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.14,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.16,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.17,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
-9.4.6.20,ok,none,,確認済み・なし（探索範囲内）。9.4.6（compactly generated fibration）全体が未形式化。,,not_found
+9.4.6.8,ok,none,,余カルテシアンな辺での輸送と二脚の引戻しの accessibility はある。全単体上の compact 生成を、頂点ファイバーと Δ¹ 上の始点包含の finitary 性・compact 保存だけで特徴付ける型は未確認。,,not_found
+9.4.6.9,ok,none,,単独の Ind の κ-compact 生成と compact 部分の冪等完備化はある。底上で U を U₀ の相対 Ind とする条件と、U₀ を各ファイバーの compact 対象から選ぶ構成は未確認。,,not_found
+9.4.6.10,ok,none,,"大域的なカルテシアン・ファイブレーションから反変輸送を作れる。局所的な射に対し、その各輸送の (κ,λ)-finitary 性とファイバーの生成が全単体での生成と同値になる結論は未確認。",,not_found
+9.4.6.11,ok,none,,"大域的な余カルテシアン射の輸送関手を確認した。局所余カルテシアンな場合に、各輸送の (κ,λ)-compact 性とファイバーの生成を全単体での生成と結ぶ同値は未確認。",,not_found
+9.4.6.12,ok,none,,任意の射の切断を相対関手空間で表す構成と、固定標的への関手の点ごとの余極限および条件付き compact 性はある。変動ファイバーでの切断の余完備性、点ごとの compact 性、切断圏の相対 Ind の充満忠実性は未確認。,,not_found
+9.4.6.13,ok,none,,小さい生成モデルと一つの圏の Ind 比較を確認した。κ₀-sequential 余極限を使い、切断が compact 部分を経由することを compact 性と同値にし、その切断圏を相対 Ind と同定する定理は未確認。,,not_found
+9.4.6.14,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean:26,準圏形状と小余完備な標的、全 Hom の end 比較を追加した場合の点ごとから全体への compact 性はある。一般の κ-小単体集合での compact 生成と逆向きの判定は未確認。,,found
+9.4.6.16,ok,none,,固定形状の余カルテシアン切断の準圏性と、通常圏の重み付き切断関手の filtered 余極限保存を確認した。コンパクトなファイバーへの因子化と切断の compact 性の同値、さらに相対 Ind 同値は未確認。,,not_found
+9.4.6.17,ok,none,,二脚の引戻しの accessibility と厳密な単体集合極限の交換はある。任意の κ-小図式の QC での極限を同じ二濃度で compact 生成し、各評価で compact 性を特徴付ける型は未確認。,,not_found
+9.4.6.20,ok,none,,Ind の制限の普遍性と厳密な単体集合極限の交換を確認した。逐次余極限を保存する関手からなる QC 部分圏上で、相対 Ind_{κ}^{λ} が κ-小極限を保存する宣言は未確認。,,not_found
 9.4.7.1,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean:41 | SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_indEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean:45,仮定：Quasicategory C と小さい正則 κ（Kerodon と一致）。結論：IsKappaAccessible κ C と小さい A からの IndInfinity κ A との圏同値の存在を比較（原文の Ind 完備化の定義と一致）。,,renamed
 9.4.7.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_indEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleEquivalence.lean:45 | SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating @ SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean:32,仮定：Quasicategory C と正則 κ（Kerodon と一致）。結論：IsKappaAccessible と小さい A の Ind 模型との同値の存在を比較。essentially small な生成圏と compact 対象全体の本質小性を含む全条件は引用型にない（Lean が弱い）。,,renamed
 9.4.7.3,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean:55 | SerrePositivity.InfinityCategories.F2.Compact.compactIndYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F2/Compact/CompactIndCompletion.lean:30 | SerrePositivity.InfinityCategories.F2.Compact.ind_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Compact/IndComplete.lean:33,Ind_κ が κ-accessible、compact 部分が冪等完備化、の部品のみ。同値類の全単射としての主張はない。,,renamed
@@ -353,15 +353,15 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 9.4.7.15,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:64,仮定：Quasicategory C と IsAccessible C（Kerodon と一致）。結論：任意の小さい σ を上回る μ で IsKappaAccessible μ C。μ の正則性はこの述語から得られる（原文の任意に大きい小正則基数と一致）。,,renamed
 9.4.7.17,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:71,仮定：小さい添字型 ι 上の quasicategory の族と各 IsAccessible（Kerodon と一致）。結論：任意の σ を上回る共通の正則 μ で全ての Cᵢ が IsKappaAccessible μ（原文と一致）。,,renamed
 9.4.7.18,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.piSSet_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean:57,小さい積は presentable 版のみ（accessible 版の積はない）。,,renamed
-9.4.7.19,ok,none,,"確認済み・なし（探索範囲内）。「(κ,λ)-compactly generated」の述語は SerrePositivity にない（κ-accessible のみ）。",,not_found
+9.4.7.19,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Accessible.lean:51 | SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.compactModel_isKappaCompactGenerating @ SerrePositivity/InfinityCategories/F2/Presentable/CompactModelGenerators.lean:28,κ-accessible から accessible と κ-compact な生成モデルが得られる向きは確認した。Kerodon の κ-compactly generated と別の κ′ での accessibility から、同じ κ での余極限を回収する逆向きは未確認。,,found
 9.4.7.20,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.compactIndYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F2/Compact/CompactIndCompletion.lean:30 | SerrePositivity.InfinityCategories.F2.Compact.ind_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Compact/IndComplete.lean:33 | SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/IndAccessible.lean:55,部品のみ。essentially small C について accessible ⇔ 冪等完備の主張はない。,,renamed
 9.4.7.21,ok,none,,通常圏の κ-filtered 性を nerve に移す型はある。大きな半順序 Q も許して N(Q) の accessibility と Q の小ささを結ぶ iff は見つからない。,,not_found
-9.4.7.22,ok,none,,確認済み・なし（探索範囲内）。集合の λ-directed 余極限の κ-小ささ。Mathlib にも同形の補題は見当たらない。,,not_found
+9.4.7.22,ok,none,,通常の集合の余極限における成分からの代表元と、集合を小部分集合の余極限で書く結果を調べた。λ-directed 性を使い、各項が κ 未満なら余極限全体も κ 未満とする濃度評価は未確認。,,not_found
 9.4.7.23,ok,none,,小空間の余極限を取る関手と、κ-small な始域から余極限への写像の因数分解はある。λ-filtered 図式の頂点に課したより小さい本質的 κ-small 性が余極限で保たれる型は見つからない。,,not_found
 9.4.7.24,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.compactIndYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F2/Compact/CompactIndCompletion.lean:30,単一の κ の Ind の κ-compact 部分への Yoneda が冪等完備化となる型はある。局所 κ-small・本質的 λ-small のもとで相対 Ind_{λ}^{μ} 全体を冪等完備化とする型は見つからない。,,found
 9.4.7.25,ok,none,,指定された図式の retract に余極限を移す補題と Ind の小 κ-filtered 余極限存在はある。本質的 λ-small・局所 κ-small な任意の冪等完備 C の λ-filtered 余極限の存在と、任意の関手による保存は見つからない。,,not_found
 9.4.8.1,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean:25 | SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean:21,"仮定：写像 F:C→D。定義は C,D の accessible 性を引数に要求しない（Lean が弱い）。結論：小さい正則 κ が存在して F が小 κ-filtered 余極限を保存する（原文と一致）。",,renamed
-9.4.8.8,ok,none,,確認済み・なし（探索範囲内）。accessibly embedded 部分圏の定義なし（1 圏の Smith で「accessible かつ accessibly embedded な W」を仮定の形で使うが定義はない）。,,not_found
+9.4.8.8,ok,none,,圏と関手それぞれの accessibility、および一つの具体的な部分圏の頂点同型に関する述語はある。replete 性、部分圏の accessibility、包含の accessibility を任意の部分圏について束ねる定義は未確認。,,not_found
 9.4.8.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.reflectiveImage_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean:42 | SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.reflectiveSubcategory_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean:29,包含が accessible ⇒ 反射部分圏が accessible の一方向のみ。,,renamed
 9.4.8.11,ok,none,,対象を presentable に、射を小余極限保存または accessible な小極限保存の条件で絞った構成と、単独の accessible 関手の述語はある。固定された強到達不能濃度で全 accessible 準圏と全 accessible 関手を集めた QC^Acc の構成は見つからない。,,not_found
 9.4.8.12,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_common_compactCardinal @ SerrePositivity/InfinityCategories/F2/Presentable/ObjectCompactCardinals.lean:69 | SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal @ SerrePositivity/InfinityCategories/F2/Presentable/IndCardinalChange.lean:71,同値条件の比較そのものはない。,,renamed
@@ -370,23 +370,23 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 9.4.8.18,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean:55 | SerrePositivity.InfinityCategories.F2.Presentable.adjunction_preservesSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointAllColimitPreservation.lean:69 | SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:57,仮定：C と D は accessible な準圏で、L ⊣ R を与える（Kerodon と一致）。結論：右随伴の accessibility を直接得て、左随伴は小余極限保存とその accessibility への変換で得る（一致）。,,found
 9.4.9.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.functor_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean:67 | SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_isKappaAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean:30,"Fun(K,C) は presentable 版（K は quasicategory）のみ。accessible 版なし。",,renamed
 9.4.9.4,fix,partial,CategoryTheory.Comma.isAccessibleCategory @ Mathlib/CategoryTheory/Presentable/Comma.lean:469 | SerrePositivity.InfinityCategories.F2.Presentable.Localization.arrow_isPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/Localization/ArrowCardinals.lean:39,"Mathlib は 1 圏の版（accessible 関手の Comma は accessible、Over・Under・Arrow も）。∞ 圏では F₋=F₊=id の場合（Fun(Δ¹,C) の presentable 性）のみ自前。一般の oriented fiber product の accessibility はなし。",,renamed
-9.4.9.6,ok,none,,確認済み・なし（探索範囲内）。slice・coslice の accessibility なし（slice の射影の accessibility sliceOverProjection_isKappaAccessibleFunctor はある）。,,not_found
+9.4.9.6,fix,partial,CategoryTheory.Over.instIsAccessibleCategory @ Mathlib/CategoryTheory/Presentable/Comma.lean:567 | CategoryTheory.Under.instIsAccessibleCategory @ Mathlib/CategoryTheory/Presentable/Comma.lean:579,Mathlib の通常圏では一対象上・下の圏が accessible になる。準圏の slice・coslice の射影については filtered 余極限保存がある。任意の小さい図式の上・下で全空間の accessibility を得る型は未確認。,,found
 9.4.9.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25,仮定：三つの accessible な quasicategory と二つの accessible な関手に加え、Lean は p の EquivalenceLifting を仮定する（Lean が強い）。結論：その厳密引き戻しの IsAccessible。任意の与えられたホモトピー引き戻しへの適用は引用型にない。,,renamed
 9.4.9.11,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean:74 | SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25,同値持ち上げを片側に仮定する厳密引き戻しの accessible 性と第一射影の κ-accessibility。原文の一般の categorical pullback と、両射影との合成による関手の判定は未確認。,,renamed
-9.4.9.12,ok,none,,確認済み・なし（探索範囲内）。accessibly embedded の概念なし（ファイバーの accessibility fiber_isAccessible_of_presentable のみ）。,,not_found
+9.4.9.12,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible @ SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/Accessibility.lean:25 | SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean:74,片脚の同値持ち上げを追加した二つの accessible 関手の厳密引戻しの accessibility と、固定濃度での射影の保存がある。原文の replete な逆像包含を組み立てて、その包含の accessibility まで同時に得る型は未確認。,,found
 9.4.9.13,ok,none,,片脚に同値持ち上げを課した二つの accessible 関手の引き戻しの accessibility はある。accessibly embedded な任意の小族の共通部分と、元の C への包含が accessibly embedded であることを一緒に与える型は見つからない。,,not_found
-9.4.9.14,ok,none,,確認済み・なし（探索範囲内）。n-truncated 対象の部分圏の accessibility なし。,,not_found
-9.4.9.15,ok,none,,確認済み・なし（探索範囲内）。QC^Acc とその極限なし（引き戻しのみ）。,,not_found
-9.4.9.16,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible なし。,,not_found
+9.4.9.14,ok,none,,空間に限った 0 切断とその充満忠実な表示はある。任意の accessible 準圏で n 切断対象を選ぶ構成と、包含および部分圏そのものの accessibility は未確認。,,not_found
+9.4.9.15,ok,none,,二脚の引戻しで得る圏の accessibility と、厳密な単体集合の交換定理を確認した。accessible 圏・関手の QC 部分圏の任意の小極限、および QC_{≤Ω} への包含での保存は未確認。,,not_found
+9.4.9.16,ok,none,,底変換と単独の準圏の accessibility はある。全標準単体 σ に量化して引戻し E_σ の accessibility を課す述語は確認できない。,,not_found
 9.4.9.19,ok,none,,指定二脚から作る引き戻しの定理はある。内ファイブレーション E→C の任意の Δⁿ→C への引き戻しに κ-accessibility を課す述語は見つからない。,,not_found
-9.4.9.23,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.25,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.26,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.27,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.28,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.29,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.32,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
-9.4.9.33,ok,none,,確認済み・なし（探索範囲内）。edgewise accessible fibration の理論なし。,,not_found
+9.4.9.23,ok,none,,一つの κ-accessible 準圏の compact 生成モデルと、小さい compact source slice はある。内ファイブレーション全体での四条件、特に各ファイバーの compact 頂点を集めた制限の本質的小ささとの比較は未確認。,,not_found
+9.4.9.25,ok,none,,二脚引戻しの accessibility とカルテシアン辺の輸送を確認した。Δ¹ 上だけの accessibility から任意の Δⁿ 上の accessibility を導く iff は未確認。,,not_found
+9.4.9.26,ok,none,,大域的なカルテシアン射の反変輸送と、指定 κ の余極限保存述語はある。局所カルテシアン射で、各輸送の κ-finitary 性と頂点ファイバーの条件が全単体上の κ-accessibility と同値になる型は未確認。,,not_found
+9.4.9.27,ok,none,,大域的な反変輸送の持ち上げと、二脚の accessible 関手に共通濃度を選ぶ結果はある。任意の局所カルテシアン射について各ファイバーと各輸送の accessibility から全単体上の accessibility を得る比較は未確認。,,not_found
+9.4.9.28,ok,none,,余カルテシアン辺の共変輸送、compact 生成、および余極限保存は個別にある。局所余カルテシアン射における、輸送の κ-compact 性とファイバーの κ-accessibility による全単体の判定は未確認。,,not_found
+9.4.9.29,ok,none,,共変の辺輸送とそのホモトピー圏での計算を確認した。各ファイバーと各輸送が濃度を固定せず accessible であることと、全単体上の accessibility の iff は未確認。,,not_found
+9.4.9.32,ok,none,,相対関手空間と通常圏での重み付き切断関手の余極限保存はある。小さい底の上の内ファイブレーションに逐次余完備性を課して、全切断圏の λ-accessibility を得る型は未確認。,,not_found
+9.4.9.33,ok,none,,切断の相対関手空間、二脚引戻しの accessibility、左ファイブレーションの切断比較を確認した。任意の小さい底上の edgewise accessible な内ファイブレーションの全切断圏の accessibility は未確認。,,not_found
 9.5.0.1,fix,mathlib,isLUB_sSup @ Mathlib/Order/CompleteLattice/Defs.lean:82,仮定：CompleteSemilatticeSup と任意の部分集合 s。原文は完備束なので下限も持つ（Lean が弱い）。結論：isLUB_sSup s は sSup s が s の最小上界であること（原文と一致）。,,renamed
 9.5.1.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.hasSmallLimits @ SerrePositivity/InfinityCategories/F2/Presentable/PresentableSmallLimits.lean:25,余完備 ⇒ 完備（presentable ⇒ 小極限）の向きのみ。完備 ⇒ 余完備はなし。,,renamed
 9.5.1.2,fix,own,SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:34,仮定：Quasicategory C（Kerodon と一致）。結論：IsPresentable C は IsAccessible と HasSmallColimits の連言（原文の accessible かつ余完備と一致）。,,renamed
