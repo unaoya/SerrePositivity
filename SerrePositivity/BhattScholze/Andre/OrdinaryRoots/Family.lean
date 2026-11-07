@@ -11,6 +11,7 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
 
 ## 概要
 任意個の正次数モニック多項式に独立な根を添加した商を、有限部分族の商の有向余極限として表し、普遍性・再添字付け・一変数の追加・部分族による商・係数商との交換を示す。有限族の商は自由、任意族の商は忠実平坦。
+BS 著者版 Theorem 7.14 の根付き拡大に向けて、通常のモニック根商を有限部分族から構成する。
 
 ## 方針
 有限族は帰納法で自由基底を作り、任意族は `Transfinite/Colimit` の忠実平坦性の余極限保存に渡す。
@@ -30,7 +31,7 @@ universe u v w
 
 先行変数だけの任意多項式関係で割った環は、その関係の商を係数とする残りの変数の
 多項式環となる。残りの変数のモニック関係はこの商でも非零因子である。
-BS 著者版 Cor 2.39（p.25）、Rem 7.15(1)（p.62）の有限独立関係族への準備。
+BS 著者版 Corollary 2.39（p.25）、BS 著者版 Remark 7.15(1)（p.62）の有限独立関係族への準備。
 
 ## 方針
 
@@ -59,7 +60,7 @@ variable {R : Type u} [CommRing R] {τ : Type v} {ι : Type w}
 /-- 概要：独立変数ごとの任意多項式関係が生成するイデアル。
 方針：各多項式を対応変数で評価し、その像族の span を取る。
 規約：名前によらずモニック性は定義には含めない。
-使われ方：BS Rem 7.15（著者版 p.62）の関係族の通常商。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の関係族の通常商。 -/
 def polynomialFamilyRelationIdeal {σ : Type v} (f : σ → Polynomial R) :
     Ideal (MvPolynomial σ R) :=
   Ideal.span (Set.range fun s => monicRelation (f s) s)
@@ -67,7 +68,7 @@ def polynomialFamilyRelationIdeal {σ : Type v} (f : σ → Polynomial R) :
 /-- 概要：直和の右側の変数の関係だけを課すイデアル。
 方針：右側の添字を評価関係族に制限する。
 規約：左側の変数には関係を課さない。
-使われ方：BS Cor 2.39（著者版 p.25）の先行関係の商。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の先行関係の商。 -/
 def partialPolynomialRelationIdeal (f : τ ⊕ ι → Polynomial R) :
     Ideal (MvPolynomial (τ ⊕ ι) R) :=
   Ideal.span (Set.range fun s : ι => monicRelation (f (Sum.inr s)) (Sum.inr s))
@@ -75,7 +76,7 @@ def partialPolynomialRelationIdeal (f : τ ⊕ ι → Polynomial R) :
 /-- 概要：変数分割で右側の多項式関係は係数内の関係へ移る。
 方針：多項式評価の自然性と変数分割同型の生成元公式を使う。
 規約：任意多項式を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の部分族商の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の部分族商の同定。 -/
 theorem monicRelation_sum_inr (f : Polynomial R) (s : ι) :
     MvPolynomial.sumRingEquiv R τ ι (monicRelation f (Sum.inr s)) =
       MvPolynomial.C (monicRelation f s) := by
@@ -98,7 +99,7 @@ theorem monicRelation_sum_inr (f : Polynomial R) (s : ι) :
 /-- 概要：変数分割は先行関係のイデアルを係数イデアルの拡張へ送る。
 方針：各生成元の像を計算して span の像を同定する。
 規約：族の有限性を要求しない。
-使われ方：BS Cor 2.39（著者版 p.25）の有限族計算の通常商。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の有限族計算の通常商。 -/
 theorem partialPolynomialRelationIdeal_map_sum (f : τ ⊕ ι → Polynomial R) :
     (partialPolynomialRelationIdeal f).map (MvPolynomial.sumRingEquiv R τ ι).toRingHom =
       (polynomialFamilyRelationIdeal (fun s : ι => f (Sum.inr s))).map
@@ -113,7 +114,7 @@ theorem partialPolynomialRelationIdeal_map_sum (f : τ ⊕ ι → Polynomial R) 
 /-- 概要：先行関係の商は先行関係商を係数とする残りの多項式環。
 方針：変数分割の商同型と係数商の交換同型を合成する。
 規約：先行関係のモニック性や有限性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の独立関係の正則性を再利用する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の独立関係の正則性を再利用する。 -/
 def partialPolynomialQuotientEquiv (f : τ ⊕ ι → Polynomial R) :
     (MvPolynomial (τ ⊕ ι) R ⧸ partialPolynomialRelationIdeal f) ≃+*
       MvPolynomial τ (MvPolynomial ι R ⧸
@@ -126,7 +127,7 @@ def partialPolynomialQuotientEquiv (f : τ ⊕ ι → Polynomial R) :
 /-- 概要：部分族商の同型は実係数商による多項式写像で与えられる。
 方針：商同型の代表元公式と既存の係数商の可換式を使う。
 規約：元の係数射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の実係数作用を追跡する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実係数作用を追跡する。 -/
 theorem partialPolynomialQuotientEquiv_mk (f : τ ⊕ ι → Polynomial R)
     (x : MvPolynomial (τ ⊕ ι) R) :
     partialPolynomialQuotientEquiv f (Ideal.Quotient.mk _ x) =
@@ -141,7 +142,7 @@ theorem partialPolynomialQuotientEquiv_mk (f : τ ⊕ ι → Polynomial R)
 /-- 概要：商同型は元の係数を先行商の係数像へ送る。
 方針：代表元公式に定数多項式を代入する。
 規約：通常の係数作用を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の係数射の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数射の比較。 -/
 theorem partialPolynomialQuotientEquiv_C (f : τ ⊕ ι → Polynomial R) (a : R) :
     partialPolynomialQuotientEquiv f (Ideal.Quotient.mk _ (MvPolynomial.C a)) =
       MvPolynomial.C (Ideal.Quotient.mk
@@ -151,7 +152,7 @@ theorem partialPolynomialQuotientEquiv_C (f : τ ⊕ ι → Polynomial R) (a : R
 /-- 概要：商同型は残りの変数をそのまま多項式変数へ送る。
 方針：代表元公式と変数分割の公式を使う。
 規約：先行変数には適用しない。
-使われ方：BS Cor 2.39（著者版 p.25）の後続関係の同定。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の後続関係の同定。 -/
 theorem partialPolynomialQuotientEquiv_X_inl (f : τ ⊕ ι → Polynomial R) (s : τ) :
     partialPolynomialQuotientEquiv f (Ideal.Quotient.mk _ (MvPolynomial.X (Sum.inl s))) =
       MvPolynomial.X s := by
@@ -160,7 +161,7 @@ theorem partialPolynomialQuotientEquiv_X_inl (f : τ ⊕ ι → Polynomial R) (s
 /-- 概要：先行関係商の下で残りのモニック関係は非零因子。
 方針：多項式環表示へ移し、係数変更したモニック関係の正則性を適用する。
 規約：先行多項式には制限せず、対象となる関係だけモニックとする。
-使われ方：BS Cor 2.39（著者版 p.25）の独立関係族の正則性入力。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の独立関係族の正則性入力。 -/
 theorem partialPolynomialQuotient_remaining_isSMulRegular
     (f : τ ⊕ ι → Polynomial R) (h : Polynomial R) (hh : h.Monic) (s : τ) :
     IsSMulRegular (MvPolynomial (τ ⊕ ι) R ⧸ partialPolynomialRelationIdeal f)
@@ -199,7 +200,7 @@ end MonicFamilyPartialQuotient
 ## 概要
 
 先行する任意の変数集合に各一変数多項式の関係を課しても、集合外の変数における
-モニック多項式は非零因子である。BS 著者版 Cor 2.39（p.25）、Rem 7.15(1)（p.62）の準備。
+モニック多項式は非零因子である。BS 著者版 Corollary 2.39（p.25）、BS 著者版 Remark 7.15(1)（p.62）の準備。
 
 ## 方針
 
@@ -224,7 +225,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：多項式関係の評価は変数の再添字付けと可換。
 方針：環射による評価の自然性を適用する。
 規約：再添字写像の単射性もモニック性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の先行変数分離。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の先行変数分離。 -/
 theorem monicRelation_rename {R : Type u} [CommRing R] {σ : Type v} {τ : Type w}
     (ρ : σ → τ) (f : Polynomial R) (s : σ) :
     MvPolynomial.rename ρ (monicRelation f s) = monicRelation f (ρ s) := by
@@ -248,7 +249,7 @@ variable {R : Type u} [CommRing R] {σ : Type v}
 /-- 概要：先行集合の関係だけを生成元に持つイデアル。
 方針：添字を指定集合の部分型に制限して span を取る。
 規約：先行多項式は任意。
-使われ方：BS Cor 2.39（著者版 p.25）の有限先行関係の商。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の有限先行関係の商。 -/
 def polynomialSubsetRelationIdeal (T : Set σ) (f : σ → Polynomial R) :
     Ideal (MvPolynomial σ R) :=
   Ideal.span (Set.range fun s : T => monicRelation (f s) (s : σ))
@@ -256,7 +257,7 @@ def polynomialSubsetRelationIdeal (T : Set σ) (f : σ → Polynomial R) :
 /-- 概要：元の添字を残りの添字と先行添字に分ける同値。
 方針：集合と補集合の直和同値を反転して並べ替える。
 規約：古典論理による所属判定を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の独立変数分離。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の独立変数分離。 -/
 def polynomialSubsetIndexEquiv (T : Set σ) : σ ≃ (Tᶜ : Set σ) ⊕ T := by
   classical
   exact (Equiv.Set.sumCompl T).symm.trans (Equiv.sumComm _ _)
@@ -264,7 +265,7 @@ def polynomialSubsetIndexEquiv (T : Set σ) : σ ≃ (Tᶜ : Set σ) ⊕ T := by
 /-- 概要：先行変数は添字分割の右側に対応する。
 方針：集合の直和同値を簡約する。
 規約：集合の部分型で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の先行イデアルの同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の先行イデアルの同定。 -/
 theorem polynomialSubsetIndexEquiv_mem (T : Set σ) (s : T) :
     polynomialSubsetIndexEquiv T s = Sum.inr s := by
   classical
@@ -273,7 +274,7 @@ theorem polynomialSubsetIndexEquiv_mem (T : Set σ) (s : T) :
 /-- 概要：残りの変数は添字分割の左側に対応する。
 方針：集合の直和同値を簡約する。
 規約：補集合の部分型で述べる。
-使われ方：BS Cor 2.39（著者版 p.25）の後続関係の同定。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の後続関係の同定。 -/
 theorem polynomialSubsetIndexEquiv_notMem (T : Set σ) (s : (Tᶜ : Set σ)) :
     polynomialSubsetIndexEquiv T s = Sum.inl s := by
   classical
@@ -282,7 +283,7 @@ theorem polynomialSubsetIndexEquiv_notMem (T : Set σ) (s : (Tᶜ : Set σ)) :
 /-- 概要：添字分割は先行関係イデアルを直和右側の関係イデアルへ送る。
 方針：各評価関係の再添字公式と生成元の集合像を用いる。
 規約：先行集合の有限性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実商の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実商の比較。 -/
 theorem polynomialSubsetRelationIdeal_map_rename (T : Set σ) (f : σ → Polynomial R) :
     (polynomialSubsetRelationIdeal T f).map
       (MvPolynomial.renameEquiv R (polynomialSubsetIndexEquiv T)).toRingHom =
@@ -300,7 +301,7 @@ theorem polynomialSubsetRelationIdeal_map_rename (T : Set σ) (f : σ → Polyno
 /-- 概要：先行関係で割った環は先行関係商上の補集合の多項式環。
 方針：添字分割の商同型と直和版の商表示を合成する。
 規約：先行関係の正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の独立変数族の通常代数。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の独立変数族の通常代数。 -/
 def polynomialSubsetQuotientEquiv (T : Set σ) (f : σ → Polynomial R) :
     (MvPolynomial σ R ⧸ polynomialSubsetRelationIdeal T f) ≃+*
       MvPolynomial (Tᶜ : Set σ)
@@ -314,7 +315,7 @@ def polynomialSubsetQuotientEquiv (T : Set σ) (f : σ → Polynomial R) :
 /-- 概要：先行族に含まれない変数の任意モニック関係は先行商でも非零因子。
 方針：添字分割の商に移し、直和版の後続関係の正則性を適用する。
 規約：先行多項式 f と後続多項式 h を独立に取る。
-使われ方：BS Cor 2.39（著者版 p.25）のモニック族の p 乗先行商の正則性。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）のモニック族の p 乗先行商の正則性。 -/
 theorem polynomialSubsetQuotient_remaining_isSMulRegular
     (T : Set σ) (f : σ → Polynomial R) (h : Polynomial R) (hh : h.Monic)
     (s : σ) (hs : s ∉ T) :
@@ -347,7 +348,7 @@ end MonicFamilySubsetRegular
 ## 概要
 
 独立変数ごとの多項式関係の商における根方程式と、指定根を持つ任意の環への普遍射を構成する。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の通常モニック根添加の準備である。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の通常モニック根添加の準備である。
 
 ## 方針
 
@@ -375,14 +376,14 @@ variable {R : Type u} [CommRing R] {σ : Type v}
 /-- 概要：独立な多項式関係をすべて課した通常の根族商。
 方針：既存の関係イデアルで多変数多項式環を割る。
 規約：零商も許す。モニック性は定義に含めない。
-使われ方：BS Thm 7.14（著者版 p.61）の通常根添加環。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常根添加環。 -/
 abbrev PolynomialFamilyQuotient (f : σ → Polynomial R) :=
   MvPolynomial σ R ⧸ polynomialFamilyRelationIdeal f
 
 /-- 概要：各関係の指定根は変数の標準商像である。
 方針：対応する変数を関係商へ写す。
 規約：係数作用は通常の R 代数作用に固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の根方程式を明示する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根方程式を明示する。 -/
 def polynomialFamilyQuotientRoot (f : σ → Polynomial R) (s : σ) :
     PolynomialFamilyQuotient f :=
   Ideal.Quotient.mk _ (MvPolynomial.X s)
@@ -390,7 +391,7 @@ def polynomialFamilyQuotientRoot (f : σ → Polynomial R) (s : σ) :
 /-- 概要：通常の根族商の標準根は元の多項式の根となる。
 方針：評価の自然性と関係イデアルの生成元の消滅を使う。
 規約：元の係数環の代数作用に関して述べる。
-使われ方：BS Thm 7.14（著者版 p.61）の通常根族の構成。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常根族の構成。 -/
 theorem polynomialFamilyQuotient_eval (f : σ → Polynomial R) (s : σ) :
     (f s).eval₂ (algebraMap R (PolynomialFamilyQuotient f))
       (polynomialFamilyQuotientRoot f s) = 0 := by
@@ -402,7 +403,7 @@ theorem polynomialFamilyQuotient_eval (f : σ → Polynomial R) (s : σ) :
 /-- 概要：指定された根を持つ任意の環へ根族商からの実環射を構成する。
 方針：多変数評価射が関係生成元を消すことから商に降下する。
 規約：任意の係数環射と根族を指定する。
-使われ方：BS Rem 7.15（著者版 p.62）の一変数追加と商の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一変数追加と商の比較。 -/
 def polynomialFamilyQuotientLift {S : Type w} [CommRing S]
     (f : σ → Polynomial R) (φ : R →+* S) (a : σ → S)
     (ha : ∀ s, (f s).eval₂ φ (a s) = 0) : PolynomialFamilyQuotient f →+* S := by
@@ -418,7 +419,7 @@ def polynomialFamilyQuotientLift {S : Type w} [CommRing S]
 /-- 概要：普遍射は標準根を指定根へ送る。
 方針：商射の代表元公式と多変数評価の変数公式を使う。
 規約：指定された根方程式の証明は任意。
-使われ方：BS Thm 7.14（著者版 p.61）の根を保持する遷移。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の根を保持する遷移。 -/
 theorem polynomialFamilyQuotientLift_root {S : Type w} [CommRing S]
     (f : σ → Polynomial R) (φ : R →+* S) (a : σ → S)
     (ha : ∀ s, (f s).eval₂ φ (a s) = 0) (s : σ) :
@@ -428,7 +429,7 @@ theorem polynomialFamilyQuotientLift_root {S : Type w} [CommRing S]
 /-- 概要：普遍射は元の係数射を延長する。
 方針：商射の代表元公式と多変数評価の係数公式を使う。
 規約：通常の R 代数構造に対する公式。
-使われ方：BS Rem 7.15（著者版 p.62）の元の係数作用を保つ。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の係数作用を保つ。 -/
 theorem polynomialFamilyQuotientLift_coeff {S : Type w} [CommRing S]
     (f : σ → Polynomial R) (φ : R →+* S) (a : σ → S)
     (ha : ∀ s, (f s).eval₂ φ (a s) = 0) (x : R) :
@@ -439,7 +440,7 @@ theorem polynomialFamilyQuotientLift_coeff {S : Type w} [CommRing S]
 /-- 概要：根族商からの環射は係数と標準根上の値で一意に決まる。
 方針：商射と多変数多項式環の生成元に関する外延性を使う。
 規約：標的に通常の環構造だけを要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の商表示の相互逆性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の商表示の相互逆性。 -/
 theorem polynomialFamilyQuotientHom_ext {S : Type w} [CommRing S]
     (f : σ → Polynomial R) (F G : PolynomialFamilyQuotient f →+* S)
     (hc : ∀ x : R, F (algebraMap R _ x) = G (algebraMap R _ x))
@@ -459,7 +460,7 @@ end MonicFamilyQuotientUniversal
 ## 概要
 
 任意の多項式族の有限部分族の通常商と、包含に沿う根を保つ標準遷移射を構成する。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の任意族の通常根添加の準備。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の任意族の通常根添加の準備。
 
 ## 方針
 
@@ -485,7 +486,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：標準係数作用の根族商から指定根を持つ R 代数への普遍代数射。
 方針：既存の普遍環射に係数を保つ性質を付ける。
 規約：指定根方程式だけを要求する。
-使われ方：BS Thm 7.14（著者版 p.61）の通常有限商の遷移射。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常有限商の遷移射。 -/
 def polynomialFamilyQuotientLiftAlgHom {R : Type u} [CommRing R] {σ : Type v}
     {S : Type w} [CommRing S] [Algebra R S] (f : σ → Polynomial R) (a : σ → S)
     (ha : ∀ s, (f s).eval₂ (algebraMap R S) (a s) = 0) :
@@ -496,7 +497,7 @@ def polynomialFamilyQuotientLiftAlgHom {R : Type u} [CommRing R] {σ : Type v}
 /-- 概要：根族商からの代数射は標準根上の値で一意に決まる。
 方針：係数上の一致は代数射性から供給し、環射の外延性を適用する。
 規約：元の R 係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の遷移射の合成則の検証。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の遷移射の合成則の検証。 -/
 theorem polynomialFamilyQuotientAlgHom_ext {R : Type u} [CommRing R] {σ : Type v}
     {S : Type w} [CommRing S] [Algebra R S] (f : σ → Polynomial R)
     (F G : PolynomialFamilyQuotient f →ₐ[R] S)
@@ -513,14 +514,14 @@ variable {R : Type u} [CommRing R] {σ : Type v} (f : σ → Polynomial R)
 /-- 概要：有限部分族に対応する通常の根族商。
 方針：元の族を有限集合の部分型に制限する。
 規約：同じ多項式族をすべての段で共有する。
-使われ方：BS Thm 7.14（著者版 p.61）の任意同時根添加の有限段。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の任意同時根添加の有限段。 -/
 abbrev PolynomialFamilyFiniteStage (T : Finset σ) :=
   PolynomialFamilyQuotient (fun s : T => f s)
 
 /-- 概要：有限部分族の包含は標準根を対応する標準根へ送る代数射を与える。
 方針：商の普遍代数射に終域の標準根を指定する。
 規約：係数作用を変えない。
-使われ方：BS Rem 7.15（著者版 p.62）の有限部分族有向系。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限部分族有向系。 -/
 def polynomialFamilyFiniteMap {S T : Finset σ} (h : S ⊆ T) :
     PolynomialFamilyFiniteStage f S →ₐ[R] PolynomialFamilyFiniteStage f T :=
   polynomialFamilyQuotientLiftAlgHom (fun s : S => f s)
@@ -530,7 +531,7 @@ def polynomialFamilyFiniteMap {S T : Finset σ} (h : S ⊆ T) :
 /-- 概要：有限部分族の遷移射は指定根を保持する。
 方針：商の普遍射の根上の公式を適用する。
 規約：包含の証明の違いは部分型の証明無関係性で吸収する。
-使われ方：BS Thm 7.14（著者版 p.61）の任意族の根の追跡。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の任意族の根の追跡。 -/
 theorem polynomialFamilyFiniteMap_root {S T : Finset σ} (h : S ⊆ T) (s : S) :
     polynomialFamilyFiniteMap f h (polynomialFamilyQuotientRoot (fun t : S => f t) s) =
       polynomialFamilyQuotientRoot (fun t : T => f t) ⟨s, h s.property⟩ :=
@@ -540,7 +541,7 @@ theorem polynomialFamilyFiniteMap_root {S T : Finset σ} (h : S ⊆ T) (s : S) :
 /-- 概要：同じ有限部分族への恒等包含の遷移射は恒等代数射。
 方針：標準根上の値を比較する。
 規約：係数上の一致は代数射性による。
-使われ方：BS Rem 7.15（著者版 p.62）の有向系の恒等則。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有向系の恒等則。 -/
 theorem polynomialFamilyFiniteMap_self (T : Finset σ) :
     polynomialFamilyFiniteMap f (Finset.Subset.refl T) =
       AlgHom.id R (PolynomialFamilyFiniteStage f T) := by
@@ -552,7 +553,7 @@ theorem polynomialFamilyFiniteMap_self (T : Finset σ) :
 /-- 概要：有限部分族の包含の合成は遷移代数射の合成に対応する。
 方針：各標準根の行先が同じであることを示す。
 規約：遷移射の単射性は使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の有向系の合成則。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有向系の合成則。 -/
 theorem polynomialFamilyFiniteMap_comp {S T U : Finset σ} (h : S ⊆ T) (k : T ⊆ U) :
     (polynomialFamilyFiniteMap f k).comp (polynomialFamilyFiniteMap f h) =
       polynomialFamilyFiniteMap f (h.trans k) := by
@@ -566,7 +567,7 @@ theorem polynomialFamilyFiniteMap_comp {S T U : Finset σ} (h : S ⊆ T) (k : T 
 /-- 概要：通常の有限部分族商と標準包含射は Mathlib の有向系をなす。
 方針：恒等則と合成則を既存の有向系構造のフィールドへ渡す。
 規約：全族の有限性を要求しない。
-使われ方：BS Thm 7.14（著者版 p.61）の任意族の通常商の余極限。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の任意族の通常商の余極限。 -/
 instance polynomialFamilyFiniteDirectedSystem :
     DirectedSystem (fun T : Finset σ => PolynomialFamilyFiniteStage f T)
       (fun _ _ h => polynomialFamilyFiniteMap f h) where
@@ -579,7 +580,7 @@ instance polynomialFamilyFiniteDirectedSystem :
 /-- 概要：有限部分族の通常商から全族の通常商への標準代数射。
 方針：全族の商の対応する標準根を普遍射に指定する。
 規約：有限段と全族で同じ係数環を使う。
-使われ方：BS Thm 7.14（著者版 p.61）の全族商と余極限の比較。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の全族商と余極限の比較。 -/
 def polynomialFamilyFiniteToFull (T : Finset σ) :
     PolynomialFamilyFiniteStage f T →ₐ[R] PolynomialFamilyQuotient f :=
   polynomialFamilyQuotientLiftAlgHom (fun t : T => f t)
@@ -588,7 +589,7 @@ def polynomialFamilyFiniteToFull (T : Finset σ) :
 /-- 概要：有限段から全族商への標準射は根を保持する。
 方針：商の普遍射の根公式を適用する。
 規約：標準根の添字は元の添字への包含で比較する。
-使われ方：BS Rem 7.15（著者版 p.62）の全族の根の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全族の根の追跡。 -/
 theorem polynomialFamilyFiniteToFull_root (T : Finset σ) (t : T) :
     polynomialFamilyFiniteToFull f T (polynomialFamilyQuotientRoot (fun s : T => f s) t) =
       polynomialFamilyQuotientRoot f t :=
@@ -597,7 +598,7 @@ theorem polynomialFamilyFiniteToFull_root (T : Finset σ) (t : T) :
 /-- 概要：全族商への標準射は有限部分族の全遷移と両立する。
 方針：標準根の値で両辺を比較する。
 規約：有限部分族の包含は任意。
-使われ方：BS Rem 7.15（著者版 p.62）の余極限から全族商への標準射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の余極限から全族商への標準射。 -/
 theorem polynomialFamilyFiniteToFull_compatible {S T : Finset σ} (h : S ⊆ T) :
     (polynomialFamilyFiniteToFull f T).comp (polynomialFamilyFiniteMap f h) =
       polynomialFamilyFiniteToFull f S := by
@@ -617,7 +618,7 @@ end MonicFamilyFiniteSystem
 ## 概要
 
 任意多項式族の通常根商を有限部分族の通常商の R 代数余極限と同定する。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の任意同時根添加の通常代数部分である。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の任意同時根添加の通常代数部分である。
 
 ## 方針
 
@@ -649,13 +650,13 @@ local notation "d" => (fun (i : Finset σ) (j : Finset σ) (h : i ≤ j) =>
 /-- 概要：有限部分族の通常商の標準 R 代数余極限。
 方針：前工程で構成した有向系に Mathlib の DirectLimit を適用する。
 規約：元の係数作用を保持する。
-使われ方：BS Thm 7.14（著者版 p.61）の任意族の通常根添加。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の任意族の通常根添加。 -/
 abbrev PolynomialFamilyColimit := _root_.DirectLimit S d
 
 /-- 概要：各有限商から通常根族余極限への標準代数射。
 方針：Mathlib の標準構造射を使う。
 規約：遷移射と同じ R 係数作用。
-使われ方：BS Rem 7.15（著者版 p.62）の有限段からの根の像。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限段からの根の像。 -/
 def polynomialFamilyColimitOf (T : Finset σ) :
     PolynomialFamilyFiniteStage f T →ₐ[R] PolynomialFamilyColimit f :=
   DirectLimit.Algebra.of S d T
@@ -663,7 +664,7 @@ def polynomialFamilyColimitOf (T : Finset σ) :
 /-- 概要：余極限への構造射は有限段の遷移射と両立する。
 方針：DirectLimit の構造射の関係式を使う。
 規約：包含の単射性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の根の段への依存を除く。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根の段への依存を除く。 -/
 theorem polynomialFamilyColimitOf_compatible {T U : Finset σ} (h : T ⊆ U)
     (x : PolynomialFamilyFiniteStage f T) :
     polynomialFamilyColimitOf f U (polynomialFamilyFiniteMap f h x) =
@@ -673,7 +674,7 @@ theorem polynomialFamilyColimitOf_compatible {T U : Finset σ} (h : T ⊆ U)
 /-- 概要：全族の各根をその一元部分族から余極限に入れる。
 方針：対応する一元集合の有限商の標準根を写す。
 規約：古典的な有限集合の所属判定を使用する。
-使われ方：BS Thm 7.14（著者版 p.61）の全族商から余極限への逆射。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の全族商から余極限への逆射。 -/
 def polynomialFamilyColimitRoot (s : σ) : PolynomialFamilyColimit f := by
   classical
   exact polynomialFamilyColimitOf f {s}
@@ -683,7 +684,7 @@ def polynomialFamilyColimitRoot (s : σ) : PolynomialFamilyColimit f := by
 /-- 概要：有限段の標準根の余極限像は一元段で選んだ同じ根と一致する。
 方針：一元集合の元の有限段への包含と遷移射の根公式を使う。
 規約：任意の根を含む有限段で計算できる。
-使われ方：BS Rem 7.15（著者版 p.62）の全族商と余極限の相互逆性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全族商と余極限の相互逆性。 -/
 theorem polynomialFamilyColimitOf_root (T : Finset σ) (s : T) :
     polynomialFamilyColimitOf f T (polynomialFamilyQuotientRoot (fun t : T => f t) s) =
       polynomialFamilyColimitRoot f s := by
@@ -698,7 +699,7 @@ theorem polynomialFamilyColimitOf_root (T : Finset σ) (s : T) :
 /-- 概要：余極限の選択根は元の多項式の根となる。
 方針：一元段の根方程式を標準代数射で写し、元の係数作用を照合する。
 規約：多項式は任意であり、モニック性は不要。
-使われ方：BS Thm 7.14（著者版 p.61）の全族商からの普遍射を作る。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の全族商からの普遍射を作る。 -/
 theorem polynomialFamilyColimit_eval (s : σ) :
     (f s).eval₂ (algebraMap R (PolynomialFamilyColimit f))
       (polynomialFamilyColimitRoot f s) = 0 := by
@@ -716,7 +717,7 @@ theorem polynomialFamilyColimit_eval (s : σ) :
 /-- 概要：有限商から全族商への標準射を余極限からの代数射に延長する。
 方針：前工程の両立性と DirectLimit の普遍性を使う。
 規約：係数環と根の行先を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の通常余極限の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常余極限の比較。 -/
 def polynomialFamilyColimitToFull : PolynomialFamilyColimit f →ₐ[R] PolynomialFamilyQuotient f :=
   DirectLimit.Algebra.lift S d (PolynomialFamilyQuotient f)
     (polynomialFamilyFiniteToFull f)
@@ -725,7 +726,7 @@ def polynomialFamilyColimitToFull : PolynomialFamilyColimit f →ₐ[R] Polynomi
 /-- 概要：余極限から全族商への射は各有限段の標準射を延長する。
 方針：DirectLimit の持ち上げの構造射上の公式。
 規約：代数射の等式として述べる。
-使われ方：BS Thm 7.14（著者版 p.61）の全族商比較の相互逆性。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の全族商比較の相互逆性。 -/
 theorem polynomialFamilyColimitToFull_comp_of (T : Finset σ) :
     (polynomialFamilyColimitToFull f).comp (polynomialFamilyColimitOf f T) =
       polynomialFamilyFiniteToFull f T := rfl
@@ -733,7 +734,7 @@ theorem polynomialFamilyColimitToFull_comp_of (T : Finset σ) :
 /-- 概要：全族の通常関係商から有限商余極限への代数射。
 方針：余極限の根方程式を根族商の普遍射に渡す。
 規約：元の係数作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の標準余極限比較の逆射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準余極限比較の逆射。 -/
 def polynomialFamilyFullToColimit : PolynomialFamilyQuotient f →ₐ[R] PolynomialFamilyColimit f :=
   polynomialFamilyQuotientLiftAlgHom f (polynomialFamilyColimitRoot f)
     (polynomialFamilyColimit_eval f)
@@ -741,7 +742,7 @@ def polynomialFamilyFullToColimit : PolynomialFamilyQuotient f →ₐ[R] Polynom
 /-- 概要：全族商から余極限への射は各標準根を余極限の対応する根へ送る。
 方針：根族商の普遍射の根公式を使う。
 規約：指定根の証明を明示する。
-使われ方：BS Thm 7.14（著者版 p.61）の全族商比較の生成元計算。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の全族商比較の生成元計算。 -/
 theorem polynomialFamilyFullToColimit_root (s : σ) :
     polynomialFamilyFullToColimit f (polynomialFamilyQuotientRoot f s) =
       polynomialFamilyColimitRoot f s :=
@@ -750,7 +751,7 @@ theorem polynomialFamilyFullToColimit_root (s : σ) :
 /-- 概要：全族商を経由する余極限への有限段の射は標準構造射と一致する。
 方針：有限商の各標準根の像を比較する。
 規約：有限段からの代数射の等式。
-使われ方：BS Rem 7.15（著者版 p.62）の余極限側の相互逆性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の余極限側の相互逆性。 -/
 theorem polynomialFamilyFullToColimit_comp_toFull (T : Finset σ) :
     (polynomialFamilyFullToColimit f).comp (polynomialFamilyFiniteToFull f T) =
       polynomialFamilyColimitOf f T := by
@@ -764,7 +765,7 @@ theorem polynomialFamilyFullToColimit_comp_toFull (T : Finset σ) :
 /-- 概要：有限部分族の通常商の代数余極限は全族の実通常関係商と R 代数同型。
 方針：普遍性で作った両方向の射を、余極限の各段と全族の標準根で比較する。
 規約：モニック性・正次数・遷移射の単射性を要求しない。
-使われ方：BS Thm 7.14（著者版 p.61）の通常忠実平坦性を任意族の実商へ移す。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常忠実平坦性を任意族の実商へ移す。 -/
 def polynomialFamilyColimitEquiv : PolynomialFamilyColimit f ≃ₐ[R] PolynomialFamilyQuotient f := by
   let F := polynomialFamilyColimitToFull f
   let G := polynomialFamilyFullToColimit f
@@ -806,7 +807,7 @@ end MonicFamilyColimit
 ## 概要
 
 Option で一変数を加えた多項式関係族の商を、先行族の商の上の一元 AdjoinRoot と同定する。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の通常モニック根添加の有限族への準備。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の通常モニック根添加の有限族への準備。
 
 ## 方針
 
@@ -832,7 +833,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：一変数追加した通常関係商は先行関係商上の一元根添加と代数同型。
 方針：指定根への普遍射を両方向に作り、係数と全標準根で相互逆性を検証する。
 規約：元の R 係数作用を保ち、モニック性を要求しない。
-使われ方：BS Thm 7.14（著者版 p.61）の有限モニック族の通常商の自由性。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の有限モニック族の通常商の自由性。 -/
 def polynomialFamilyOptionEquiv {R : Type u} [CommRing R] {σ : Type v}
     (f : Option σ → Polynomial R) :
     PolynomialFamilyQuotient f ≃ₐ[R]
@@ -931,7 +932,7 @@ end MonicFamilyOptionQuotient
 ## 概要
 
 添字集合の同値で多項式族を移しても通常の根族商は元の係数環上で代数同型となる。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の有限族から任意族への準備。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の有限族から任意族への準備。
 
 ## 方針
 
@@ -955,7 +956,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：同値で再添字付けした多項式族の通常商は元の係数環上で代数同型。
 方針：普遍射を両方向に作り、生成元の値から相互逆性を確認する。
 規約：多項式族は任意。
-使われ方：BS Rem 7.15（著者版 p.62）の有限族の帰納と遷移射の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限族の帰納と遷移射の比較。 -/
 def polynomialFamilyReindexEquiv {R : Type u} [CommRing R] {σ : Type v} {τ : Type w}
     (e : σ ≃ τ) (f : σ → Polynomial R) :
     PolynomialFamilyQuotient f ≃ₐ[R] PolynomialFamilyQuotient (fun t : τ => f (e.symm t)) := by
@@ -1013,7 +1014,7 @@ end MonicFamilyQuotientReindex
 ## 概要
 
 有限な正次数モニック多項式族に独立な根を添加した通常商は、係数環上自由かつ忠実平坦。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の有限族の通常代数部分である。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の有限族の通常代数部分である。
 
 ## 方針
 
@@ -1024,7 +1025,7 @@ BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の有限族の通常代数�
 ## 規約
 
 零係数環を許す。通常の商の結果であり、完備化や perfectoid 化後の忠実平坦性は含まない。
-原典の Prop 7.11 の経路と異なる、明示的な通常根添加の計算である。
+原典の BS 著者版 Proposition 7.11 の経路と異なる、明示的な通常根添加の計算である。
 
 ## 使われ方
 
@@ -1040,7 +1041,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：非零係数環上の有限な正次数モニック族の通常商は自由かつ非零。
 方針：有限型の空集合・Option 帰納で自由基底と非零性を同時に保持する。
 規約：各多項式に正次数を要求し、定数 1 による零商を除外する。
-使われ方：BS Rem 7.15（著者版 p.62）の有限族の通常商の忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限族の通常商の忠実平坦性。 -/
 theorem monicFiniteFamilyQuotient_free_nontrivial
     {R : Type u} [CommRing R] [Nontrivial R] {σ : Type v} [Finite σ]
     (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
@@ -1091,7 +1092,7 @@ theorem monicFiniteFamilyQuotient_free_nontrivial
 /-- 概要：任意可換環上の有限正次数モニック族の通常商は自由かつ忠実平坦。
 方針：非零係数環では前定理の自由性と非零性を使い、零係数環は加群の自明性で処理する。
 規約：標準商の元の係数作用を保つ。
-使われ方：BS Thm 7.14（著者版 p.61）の通常の有限同時根添加。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常の有限同時根添加。 -/
 theorem monicFiniteFamilyQuotient_free_faithfullyFlat
     {R : Type u} [CommRing R] {σ : Type v} [Finite σ]
     (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
@@ -1114,7 +1115,7 @@ theorem monicFiniteFamilyQuotient_free_faithfullyFlat
 /-- 概要：有限正次数モニック族の根を同時に持つ自由忠実平坦な通常拡大が存在する。
 方針：標準の根族商とその係数射・変数像を取る。
 規約：R と添字を同じ宇宙に置き、拡大も同じ宇宙に取る。perfectoid 性は結論しない。
-使われ方：BS Thm 7.14（著者版 p.61）の通常同時根添加の有限段。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常同時根添加の有限段。 -/
 theorem exists_finiteMonicRootedFaithfullyFlat
     {R : Type u} [CommRing R] {σ : Type u} [Finite σ]
     (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
@@ -1135,7 +1136,7 @@ end MonicFiniteFamilyFlat
 ## 概要
 
 任意個の正次数モニック多項式に独立な根を添加した通常の関係商は、元の係数環上忠実平坦。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の通常代数部分を扱う。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15（p.62）の通常代数部分を扱う。
 
 ## 方針
 
@@ -1146,7 +1147,7 @@ BS 著者版 Thm 7.14（p.61）、Rem 7.15（p.62）の通常代数部分を扱�
 
 零係数環と任意濃度の族を許す。自由加群の余極限の自由性は推論しない。
 完備化・perfectoid 化後の忠実平坦性はこの通常代数の結果には含めない。
-原典の Prop 7.11 の経路と異なる、明示的商と有限部分族の余極限による計算である。
+原典の BS 著者版 Proposition 7.11 の経路と異なる、明示的商と有限部分族の余極限による計算である。
 
 ## 使われ方
 
@@ -1164,7 +1165,7 @@ variable {R σ : Type u} [CommRing R]
 /-- 概要：正次数モニック族の有限商余極限は元の係数環上忠実平坦。
 方針：各有限商の忠実平坦性と、R 代数の有向余極限の忠実平坦性を適用する。
 規約：遷移射の単射性は不要であり、全族の有限性は要求しない。
-使われ方：BS Thm 7.14（著者版 p.61）の任意同時根添加の通常忠実平坦性。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の任意同時根添加の通常忠実平坦性。 -/
 theorem monicFamilyColimit_faithfullyFlat (f : σ → Polynomial R)
     (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
     Module.FaithfullyFlat R (PolynomialFamilyColimit f) := by
@@ -1178,7 +1179,7 @@ theorem monicFamilyColimit_faithfullyFlat (f : σ → Polynomial R)
 /-- 概要：任意正次数モニック族の全関係を課した実通常商は元の係数環上忠実平坦。
 方針：有限商余極限との R 代数同型で忠実平坦性を移す。
 規約：元の標準係数射に関して述べ、零係数環を排除しない。
-使われ方：BS Rem 7.15（著者版 p.62）の通常モニック係数商の忠実平坦性入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常モニック係数商の忠実平坦性入力。 -/
 theorem polynomialFamilyQuotient_faithfullyFlat (f : σ → Polynomial R)
     (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
     Module.FaithfullyFlat R (PolynomialFamilyQuotient f) := by
@@ -1189,7 +1190,7 @@ theorem polynomialFamilyQuotient_faithfullyFlat (f : σ → Polynomial R)
 /-- 概要：任意正次数モニック族の根を同時に持つ通常忠実平坦拡大が同じ宇宙に存在する。
 方針：全族の標準関係商と標準根を取る。
 規約：perfectoid 性・完備性・p 完全忠実平坦性は結論しない。
-使われ方：BS Thm 7.14（著者版 p.61）の通常同時根添加部分の公開結果。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の通常同時根添加部分の公開結果。 -/
 theorem exists_familyMonicRootedFaithfullyFlat (f : σ → Polynomial R)
     (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree) :
     ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
@@ -1209,7 +1210,7 @@ end MonicFamilyFaithfullyFlat
 ## 概要
 
 任意多項式族の通常商を係数イデアルでさらに割る操作を、係数変更した多項式族の通常商と同定する。
-BS 著者版 Cor 2.39（p.25）、Rem 7.15（p.62）の raw 除算包の実剰余計算に使う。
+BS 著者版 Corollary 2.39（p.25）、BS 著者版 Remark 7.15（p.62）の raw 除算包の実剰余計算に使う。
 
 ## 方針
 
@@ -1242,7 +1243,7 @@ local notation "Jbar" => polynomialFamilyRelationIdeal
 /-- 概要：係数商で全族の関係イデアルは係数変更した関係イデアルへ写る。
 方針：係数商の可換公式と多項式評価の自然性を生成元に適用する。
 規約：元の全族の添字を保持する。
-使われ方：BS Cor 2.39（著者版 p.25）の実係数商の同定。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の実係数商の同定。 -/
 theorem polynomialFamilyIdeal_map_coefficientQuotient :
     ((J).map (Ideal.Quotient.mk IB)).map
       (MvPolynomial.quotientEquivQuotientMvPolynomial (σ := σ) I).symm.toRingHom = Jbar := by
@@ -1256,7 +1257,7 @@ theorem polynomialFamilyIdeal_map_coefficientQuotient :
 /-- 概要：係数イデアルと全族の関係を同時に課す商は、係数変更後の全族商と同型。
 方針：二重商と多変数係数商の交換同型を合成する。
 規約：モニック性を必要としない。
-使われ方：BS Rem 7.15（著者版 p.62）の通常剰余環を固定する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常剰余環を固定する。 -/
 def polynomialFamilyBaseQuotientEquiv :
     (MvPolynomial σ R ⧸ (IB ⊔ J)) ≃+*
       PolynomialFamilyQuotient (fun s => (f s).map (Ideal.Quotient.mk I)) :=
@@ -1268,7 +1269,7 @@ def polynomialFamilyBaseQuotientEquiv :
 /-- 概要：係数商の同型は任意代表元の係数を商へ写す。
 方針：二重商と係数商の代表元公式を使う。
 規約：全族の変数は変えない。
-使われ方：BS Cor 2.39（著者版 p.25）の元の係数射の追跡。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の元の係数射の追跡。 -/
 theorem polynomialFamilyBaseQuotientEquiv_mk (x : MvPolynomial σ R) :
     polynomialFamilyBaseQuotientEquiv I f (Ideal.Quotient.mk (IB ⊔ J) x) =
       Ideal.Quotient.mk Jbar (MvPolynomial.map (Ideal.Quotient.mk I) x) := by

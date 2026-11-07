@@ -14,6 +14,7 @@ public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 ## 概要
 
 主イデアル商の選んだ perfectoid 化への写像が全射であること（`perfectoidIdeal_quotientMap_surjective`）、perfectoid イデアルによる商の完備化した積の写像が同型であること（`perfectoidIdeal_completedQuotientMul_map_isIso`）、完備な almost 零加群が拡大で閉じることを示す。perfectoid イデアルの Tor の入力が、almost 比較のどちらの向きでも変わらないこと、像のイデアルでの言い換えも与える。
+BS 著者版 Lemma 10.3 の積の計算を、単項商の完備テンソルと Tor の入力に使う。
 
 ## 方針
 

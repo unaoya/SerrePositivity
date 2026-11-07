@@ -18,7 +18,7 @@ KL の標準 excision の四角（`KLCanonicalExcisionSquare`）と、有限比�
 
 ## 方針
 
-有限表示性から導来 p 完備性を、核・余核の台の条件から主局所化の全単射性を得て、整写像の標準 excision（BS Cor 8.12 の環版の系、`Perfectoidization/Excision`）へ渡す。André 拡大は試験加群・指数・次数より前に一つ選ぶ。
+有限表示性から導来 p 完備性を、核・余核の台の条件から主局所化の全単射性を得て、整写像の標準 excision（BS 著者版 Corollary 8.12 の環版の系、`Perfectoidization/Excision`）へ渡す。André 拡大は試験加群・指数・次数より前に一つ選ぶ。
 
 ## 規約
 

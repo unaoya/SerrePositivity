@@ -8,7 +8,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 public import Mathlib.Algebra.MvPolynomial.Equiv
 
 /-!
-# 多項式環上の δ 構造と相対自由 δ 環（BS 著者版 Not 2.8、Lemma 2.11、Ex 2.10）
+# 多項式環上の δ 構造と相対自由 δ 環（BS 著者版 Notation 2.8、BS 著者版 Lemma 2.11、BS 著者版 Example 2.10）
 
 ## 概要
 多項式環に係数の δ と変数の δ の値を指定した δ 構造（変数を rank 1 にする補助構造を含む）、
@@ -216,7 +216,7 @@ end PolynomialRankOneDelta
 /-! ## 基底δ環上の相対自由δ環（旧 Delta/Free/RelativeFreeDelta.lean）
 
 基底のW₂切断を係数に用い、x_(s,n)を(x_(s,n),x_(s,n+1))へ送る切断を構成する。
-pねじれを持つ基底にも適用できる、BS著者版Notation 2.8・Lemma 2.11の相対構成。
+pねじれを持つ基底にも適用できる、BS 著者版 Notation 2.8・BS 著者版 Lemma 2.11の相対構成。
 -/
 
 section RelativeFreeDelta
@@ -224,7 +224,8 @@ section RelativeFreeDelta
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R] (σ : Type v)
 
-/-- 相対自由δ環の台環。変数x_(s,n)はδ^n(x_s)を表す。 -/
+/-- 相対自由δ環の台環（BS 著者版 Notation 2.8 の任意の族を添加する記法の実装）。
+  変数x_(s,n)はδ^n(x_s)を表す。 -/
 abbrev RelativeFreeDeltaRing := MvPolynomial (σ × ℕ) R
 
 /-- 相対自由δ環の切断。係数には基底の切断を、変数には次のδ座標を用いる。 -/
@@ -267,7 +268,7 @@ end RelativeFreeDelta
 /-! ## 相対自由δ環の普遍性（旧 Delta/Free/RelativeFreeUniversal.lean）
 
 任意の基底δ射と生成元像の指定から、基底と両立する一意なδ射を構成する。
-基底・終域のpねじれを許す。BS著者版Notation 2.8のδ元の添加に用いる。
+基底・終域のpねじれを許す。BS 著者版 Notation 2.8のδ元の添加に用いる。
 -/
 
 section RelativeFreeUniversal
@@ -314,7 +315,7 @@ theorem relativeFreeDeltaHom_X_iterates (D : DeltaStructure p R) (E : DeltaStruc
   | succ n ih =>
       rw [← relativeFreeDeltaStructure_delta_X σ D s n, hg, ih, Function.iterate_succ_apply']
 
-/-- 任意の基底δ射f:R→Aと元族a_sに対し、基底上f、初期生成元上a_sとなるδ射が一意に存在。
+/-- 任意の基底δ射f:R→Aと元族a_sに対し、基底上f、初期生成元上a_sとなるδ射が一意に存在（BS 著者版 Notation 2.8 の添加の普遍性）。
 基底射との両立条件を具体的な環準同型の等式で述べ、完備性・p正則性を要求しない。 -/
 theorem existsUnique_relativeFreeDeltaHom (D : DeltaStructure p R) (E : DeltaStructure p A)
     (f : R →+* A) (hf : D.IsDeltaHom E f) (a : σ → A) :
@@ -340,7 +341,7 @@ end RelativeFreeUniversal
 /-! ## 基底δ環上の生成元と関係式（旧 Delta/Free/RelativeFreePresentation.lean）
 
 相対自由δ環のイデアルのδ閉包で割り、指定した関係式と基底δ射を満たす
-普遍δ射を構成する。BS著者版Notation 2.8・Example 2.10の相対構成。
+普遍δ射を構成する。BS 著者版 Notation 2.8・BS 著者版 Example 2.10の相対構成。
 -/
 
 section RelativeFreePresentation
@@ -350,7 +351,7 @@ variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
     {σ : Type v} {A : Type w} [CommRing A]
 
 /-- 基底δ射fと元族a_sへの評価がIを零に送れば、相対自由δ環のδ閉包商から
-基底上f、初期生成元上a_sとなるδ射が一意に存在する。
+基底上f、初期生成元上a_sとなるδ射が一意に存在する（BS 著者版 Notation 2.8 の添加と関係式の δ 商の普遍性）。
 具体的な商・商δ構造・基底の標準射との両立を公開型に含める。 -/
 theorem existsUnique_relativeFreePresentationHom (D : DeltaStructure p R)
     (E : DeltaStructure p A) (f : R →+* A) (hf : D.IsDeltaHom E f) (a : σ → A)

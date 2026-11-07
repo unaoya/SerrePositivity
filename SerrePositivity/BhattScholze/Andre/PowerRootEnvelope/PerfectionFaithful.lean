@@ -15,6 +15,7 @@ public import SerrePositivity.BhattScholze.Andre.Variants.Auxiliary
 
 ## 概要
 Hodge–Tate 商の完備性と完全忠実平坦性、完備化の二元完全平坦性と剰余 H⁰ の忠実平坦性、完全 δ 化後の剰余、無限根候補の完全 δ 化と perfectoid 商・その p 完全忠実平坦性。
+BS 著者版 Remark 7.15 の被覆性に関わる、完全化と完全忠実平坦性の比較を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -33,7 +34,7 @@ universe u
 ## 概要
 
 元の正次数モニック源の Hodge–Tate 商の完全忠実平坦性は、hpR を要求しない証明を使う。
-BS Rem 7.15（著者版 p.62）の元の候補を変更しない。
+BS 著者版 Remark 7.15（著者版 p.62）の元の候補を変更しない。
 
 ## 方針
 
@@ -55,7 +56,7 @@ BS Rem 7.15（著者版 p.62）の元の候補を変更しない。
 ## 概要
 
 元の実完備化 H は、元の完全 prism の係数作用について (p,d) 完全平坦。
-BS Rem 7.15（著者版 p.62）の δ 完全化に渡す導来剰余の計算。
+BS 著者版 Remark 7.15（著者版 p.62）の δ 完全化に渡す導来剰余の計算。
 
 ## 方針
 
@@ -107,7 +108,7 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 /-- 概要：元の係数環 A に関する実完備化の自然な代数構造。
 方針：検証済みの標準係数射から構成する。
 規約：モニック性と p 正則性は作用の定義自体に不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の A 作用での導来剰余。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の A 作用での導来剰余。 -/
 @[instance_reducible] def powerRootPrismMonicCompletionAlgebra :
     let := pdCompletionCommRing L p (jL dP)
     Algebra A H := by
@@ -117,7 +118,7 @@ local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 /-- 概要：H/d の自然な基底商作用は標準主環商の作用と一致する。
 方針：商基底の元を A の代表元へ戻して標準係数射を照合する。
 規約：同じ実完備化の同じ分母商を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の正則主剰余判定の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則主剰余判定の係数作用。 -/
 theorem powerRootPrismMonicHodgeTateAlgebra_eq_principal :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -134,7 +135,7 @@ include hf hdeg in
 /-- 概要：元の無限根モニック実完備化は (p,d) 完全平坦。
 方針：分母正則性と標準作用に移した H/d の p 完全平坦性を一般判定へ渡す。
 規約：元の A 係数作用と実 H⁰ を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の完全 δ 化の導来剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全 δ 化の導来剰余入力。 -/
 theorem powerRootPrismMonicCompletion_pair_completelyFlat :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -156,7 +157,7 @@ theorem powerRootPrismMonicCompletion_pair_completelyFlat :
 /-- 概要：標準係数射で制限した加群は元の自然な A 代数と線形同型。
 方針：制限スカラー加群と代数作用の標準比較を使う。
 規約：元の実完備化の係数射を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の導来底変換への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来底変換への入力。 -/
 def powerRootPrismMonicCompletionScalarEquiv :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -169,7 +170,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の (p,d) 標準底変換の高次 Tor は零。
 方針：二元完全平坦性を標準剰余係数加群へ適用する。
 規約：標準係数作用を持つ加群そのものを使う。
-使われ方：BS Rem 7.15（著者版 p.62）の導来剰余の離散性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来剰余の離散性。 -/
 theorem powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -186,7 +187,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の導来 (p,d) 剰余は非零次数で消える。
 方針：高次 Tor の消滅から標準増大同型を作り、単項複体のホモロジーを使う。
 規約：標準係数射で制限した実加群の導来底変換を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の δ 完全化の剰余計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の δ 完全化の剰余計算。 -/
 theorem powerRootPrismMonicCompletion_pair_reduction_homology_isZero
     (i : ℤ) (hi : i ≠ 0) :
     let := pdCompletionCommRing L p (jL dP)
@@ -214,7 +215,7 @@ end PowerRootPrismMonicCompletionPairFlat
 ## 概要
 
 元の実完備化 H の標準 (p,d) 剰余と導来剰余 H⁰ は忠実平坦。
-BS Rem 7.15（著者版 p.62）の δ 完全化への入力をそろえる。
+BS 著者版 Remark 7.15（著者版 p.62）の δ 完全化への入力をそろえる。
 
 ## 方針
 
@@ -267,7 +268,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の標準二元剰余は忠実平坦。
 方針：自然な主環商作用を照合し、二段剰余の一般判定を適用する。
 規約：元の標準係数射で制限した実加群を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の導来二元剰余 H⁰。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来二元剰余 H⁰。 -/
 theorem powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
     Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), W.generator})
@@ -294,7 +295,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の導来二元剰余 H⁰ は忠実平坦。
 方針：標準スカラー拡大と実導来底変換 H⁰ の自然な同型で移す。
 規約：同じ基底商と標準係数射を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の完全 δ 化の剰余判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全 δ 化の剰余判定。 -/
 theorem powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
     Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), W.generator})
@@ -321,7 +322,7 @@ end PowerRootPrismMonicCompletionPairFaithful
 
 元の raw 包の実完備化を δ 完全化し再完備化した生成元商は整 perfectoid。
 元の Hodge–Tate 候補から自然に写り、元の多項式の根を標準射で送る。
-BS Cor 7.3（著者版 p.56）、Rem 7.15（p.62）の構成比較。
+BS 著者版 Corollary 7.3（著者版 p.56）、BS 著者版 Remark 7.15（p.62）の構成比較。
 
 ## 方針
 
@@ -348,7 +349,7 @@ open SerrePositivity.DerivedCompletion
 /-- 概要：係数射で評価して零となる根は、任意の環射で送っても根。
 方針：多項式評価と環射の可換性を使う。
 規約：可換環を任意に扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の標準比較による根の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準比較による根の移送。 -/
 theorem polynomialRoot_mapRingHom {R S U : Type u} [CommRing R] [CommRing S] [CommRing U]
     (f : Polynomial R) (φ : R →+* S) (g : S →+* U) (r : S) (hr : f.eval₂ φ r = 0) :
     f.eval₂ (g.comp φ) (g r) = 0 := by
@@ -387,7 +388,7 @@ local notation "hdP" => powerRootPrismGenerator_isDistinguished W hW
 /-- 概要：元の実候補の完全 δ 化後の商は既存の perfectoid 候補と環同型。
 方針：任意 raw 包の実完備化先行比較を同じ入力へ適用する。
 規約：モニック性・正次数・prism 商の p 正則性は不要。
-使われ方：BS Cor 7.3（著者版 p.56）、Rem 7.15（p.62）の最終候補の固定。 -/
+使われ方：BS 著者版 Corollary 7.3（著者版 p.56）、BS 著者版 Remark 7.15（p.62）の最終候補の固定。 -/
 def powerRootPrismMonicCompletedPerfectionQuotientEquiv :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -401,7 +402,7 @@ def powerRootPrismMonicCompletedPerfectionQuotientEquiv :
 /-- 概要：完全 δ 化後の同じ標準生成元商は整 perfectoid。
 方針：一般の raw 比較から整 perfectoid 性を受け取る。
 規約：平坦性をこの主張に含めない。
-使われ方：BS Cor 7.3（著者版 p.56）、Rem 7.15（p.62）の根付き候補の環性質。 -/
+使われ方：BS 著者版 Corollary 7.3（著者版 p.56）、BS 著者版 Remark 7.15（p.62）の根付き候補の環性質。 -/
 theorem powerRootPrismMonicCompletedPerfection_isIntegralPerfectoid :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -415,7 +416,7 @@ set_option maxHeartbeats 2000000 in
 /-- 概要：元の Hodge–Tate 候補から完全 δ 化後の perfectoid 商への自然射。
 方針：実 H⁰ の完全化標準射が元の分母像を殺すことから商へ降ろす。
 規約：元の raw 包・実 H⁰ と標準射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の根と基底作用の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根と基底作用の追跡。 -/
 def powerRootPrismMonicHodgeTateToCompletedPerfection :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -441,7 +442,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：完全 δ 化後の商への基底射は元の自然基底射の合成。
 方針：二つの標準射を合成する。
 規約：基底は元の prism 商 R。
-使われ方：BS Rem 7.15（著者版 p.62）の平坦性を定式化する係数射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の平坦性を定式化する係数射。 -/
 def powerRootPrismMonicCompletedPerfectionBaseMap :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -456,7 +457,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：完全 δ 化後の根は元の実候補の指定根の標準像。
 方針：検証済みの根を自然比較射で送る。
 規約：別の根を選択し直さない。
-使われ方：BS Rem 7.15（著者版 p.62）の同じ候補の根方程式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の同じ候補の根方程式。 -/
 def powerRootPrismMonicCompletedPerfectionRoot :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -469,7 +470,7 @@ def powerRootPrismMonicCompletedPerfectionRoot :
 /-- 概要：完全 δ 化後の指定根も元の多項式の係数商の根。
 方針：評価と環射の可換性で元の実候補の根方程式を送る。
 規約：モニック性・正次数・prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の根付き perfectoid 候補。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根付き perfectoid 候補。 -/
 theorem powerRootPrismMonicCompletedPerfectionRoot_eval :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -486,7 +487,7 @@ theorem powerRootPrismMonicCompletedPerfectionRoot_eval :
 /-- 概要：完全化後の商比較は全ての無限根入力係数の標準像を保つ。
 方針：一般 raw 比較の係数射公式を入力環の元で評価する。
 規約：全ての入力環元 r を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の既存候補との基底作用の一致。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の既存候補との基底作用の一致。 -/
 theorem powerRootPrismMonicCompletedPerfectionQuotientEquiv_coeff (r : P) :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing C p x
@@ -508,7 +509,7 @@ end PowerRootPrismMonicCompletedPerfection
 ## 概要
 
 元の実完備化 H の標準分母商は、次数零を含む全モニック入力について p 完備。
-BS Rem 7.15（著者版 p.62）の prismatic 源の商の完備性を述べる。
+BS 著者版 Remark 7.15（著者版 p.62）の prismatic 源の商の完備性を述べる。
 
 ## 方針
 
@@ -546,7 +547,7 @@ include hf in
 /-- 概要：無限根モニック実完備化の分母商は通常の意味でも p 完備。
 方針：正次数では有界ねじれによる比較、次数零では零環の完備性を使う。
 規約：標準分母像による元の通常商を使い、hpR と正次数を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の prismatic 源の完備商。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の prismatic 源の完備商。 -/
 theorem powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete :
     let := pdCompletionCommRing Raw p dL
     let T := H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL}
@@ -568,7 +569,7 @@ end PowerRootPrismMonicHodgeTateComplete
 ## 概要
 
 元の無限根モニック実完備化を完全 δ 化し再完備化しても、標準二元導来剰余は離散で H⁰ は忠実平坦。
-BS Rem 7.15（著者版 p.62）の完全化後への平坦性の保存。
+BS 著者版 Remark 7.15（著者版 p.62）の完全化後への平坦性の保存。
 
 ## 方針
 
@@ -633,7 +634,7 @@ include hf hdeg
 /-- 概要：完全 δ 化後の同じ実完備化の導来二元剰余の非零次数は消える。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
 規約：同じ標準係数射と明示仮定を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
 theorem powerRootPrismMonicCompletedPerfection_pair_homology_isZero (i : ℤ) (hi : i ≠ 0) :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p (κ W.generator)
@@ -648,7 +649,7 @@ theorem powerRootPrismMonicCompletedPerfection_pair_homology_isZero (i : ℤ) (h
 /-- 概要：完全 δ 化後の同じ実完備化の導来二元剰余 H⁰ は忠実平坦。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
 規約：同じ標準係数射と明示仮定を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
 theorem powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p (κ W.generator)
@@ -663,7 +664,7 @@ theorem powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat :
 /-- 概要：完全 δ 化後の同じ実完備化の標準係数加群は二元完全忠実平坦。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
 規約：同じ標準係数射と明示仮定を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の最終商の完全忠実平坦性。 -/
 theorem powerRootPrismMonicCompletedPerfection_pair_completelyFaithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p (κ W.generator)
@@ -684,7 +685,7 @@ end PowerRootPrismMonicPerfectionPairFaithful
 ## 概要
 
 完全 δ 化・再完備化後の生成元商は、元の自然な基底射について p 完全忠実平坦。
-BS Rem 7.15（著者版 p.62）の一元根付き候補の平坦性。
+BS 著者版 Remark 7.15（著者版 p.62）の一元根付き候補の平坦性。
 
 ## 方針
 
@@ -750,7 +751,7 @@ local notation "T∞" => PDCompletionH0 Cp p x ⧸ Ideal.span {sC x}
 /-- 概要：完全化後の実完備化の元の A 係数作用。
 方針：標準完全化係数射から代数構造を取る。
 規約：作用自体にモニック性・正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の正則主商への下降。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則主商への下降。 -/
 @[instance_reducible] def powerRootPrismMonicPerfectionAlgebra :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p x
@@ -762,7 +763,7 @@ local notation "T∞" => PDCompletionH0 Cp p x ⧸ Ideal.span {sC x}
 /-- 概要：完全化後の実完備化では指定分母が正則。
 方針：完全 δ 環の distinguished 元の実完備化の prism 性を使う。
 規約：分母は元の標準係数射による像。
-使われ方：BS Rem 7.15（著者版 p.62）の生成元商の導来比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の生成元商の導来比較。 -/
 theorem powerRootPrismMonicPerfection_generator_regular :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p x
@@ -779,7 +780,7 @@ include hf hdeg in
 /-- 概要：同じ完全化後 perfectoid 商の自然な基底射は p 完全忠実平坦。
 方針：一般の δ 代数商判定に実剰余入力を渡し、標準係数射を代表元上で照合する。
 規約：モニック性・正次数を仮定し、prism 商の p 正則性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の具体的根付き perfectoid 候補。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の具体的根付き perfectoid 候補。 -/
 theorem powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
     let := pdCompletionCommRing Cp p x

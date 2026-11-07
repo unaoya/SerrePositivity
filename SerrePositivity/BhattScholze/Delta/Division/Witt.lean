@@ -16,6 +16,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 
 ## 概要
 Witt 除算の下位剰余多項式と零定数係数の Witt 除数の三角形表示、δ 除算関係式と切り詰め Witt 積方程式・全段 Witt モニック方程式の対応、Witt 根関係元とその自然性、下位関係イデアル上での Witt 根関係元への置換と正則性、逆 Witt 座標による有限関係イデアルの正規化と正規化モニック商との同型、正規化関係イデアルの初期有限変数による表示と後続式。
+BS 著者版 Remark 2.14 の Witt 座標を、Remark 7.15 の包に使う δ 除算関係式に適用する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。

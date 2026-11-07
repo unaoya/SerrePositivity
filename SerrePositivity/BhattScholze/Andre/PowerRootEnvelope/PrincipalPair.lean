@@ -10,6 +10,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 ## 概要
 三元正則性の関係追加による保存、正則対の主冪商と第一完備化、二座標完備化での各元の正則性、主完備化の第一剰余。
+BS 著者版 Remark 7.15 の包の完備化に使う、正則な主元対の完備化を扱う。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -29,7 +30,7 @@ universe u v
 
 a が正則で、mod a の c と g、および mod(a,c) の g が正則なら、
 g を課した後も a と mod a の c は正則。
-BS Rem 7.15（著者版 p.62）の有限 δ 関係商の同時帰納法に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の有限 δ 関係商の同時帰納法に使う。
 
 ## 方針
 
@@ -54,7 +55,7 @@ variable {R : Type u} [CommRing R] {S : Type v} [CommRing S]
 /-- 概要：環同型は指定元の正則性を保存・反映する。
 方針：積の等式を順射と逆射で移して消去する。
 規約：両側の自然な自己加群作用を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の実商同型による正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実商同型による正則性の移送。 -/
 theorem ringEquiv_isSMulRegular (e : R ≃+* S) (r : R) :
     IsSMulRegular R r ↔ IsSMulRegular S (e r) := by
   constructor
@@ -70,7 +71,7 @@ theorem ringEquiv_isSMulRegular (e : R ≃+* S) (r : R) :
 /-- 概要：環同型は p 正則性と mod p の指定係数の正則性を同時に移す。
 方針：自然数保存で mod p 商同型を作り、通常の正則性の移送を使う。
 規約：p は任意の自然数でよい。
-使われ方：BS Rem 7.15（著者版 p.62）の初期段と次有限段の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の初期段と次有限段の照合。 -/
 theorem ringEquiv_prime_pair_regular (e : R ≃+* S) (p : ℕ) (c : R)
     (hp : IsSMulRegular R (p : R))
     (hc : IsSMulRegular (R ⧸ Ideal.span {(p : R)})
@@ -91,7 +92,7 @@ theorem ringEquiv_prime_pair_regular (e : R ≃+* S) (p : ℕ) (c : R)
 /-- 概要：二つの主イデアルを順に課す順序を交換する環同型。
 方針：一重二元商へ移し、生成元の順序を交換して戻す。
 規約：代表元をそのまま保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の正則対の順序交換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の正則対の順序交換。 -/
 def principalDoubleQuotSwapEquiv (a b : R) :
     ((R ⧸ Ideal.span {a}) ⧸ Ideal.span {Ideal.Quotient.mk (Ideal.span {a}) b}) ≃+*
       ((R ⧸ Ideal.span {b}) ⧸ Ideal.span {Ideal.Quotient.mk (Ideal.span {b}) a}) :=
@@ -101,7 +102,7 @@ def principalDoubleQuotSwapEquiv (a b : R) :
 /-- 概要：二重主イデアル商の交換は元の代表元を保持する。
 方針：一重二元商比較の代表元公式と逆合成を使う。
 規約：全ての r∈R を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の商後の係数正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の商後の係数正則性。 -/
 theorem principalDoubleQuotSwapEquiv_mk (a b r : R) :
     principalDoubleQuotSwapEquiv a b (Ideal.Quotient.mk _ (Ideal.Quotient.mk _ r)) =
       Ideal.Quotient.mk _ (Ideal.Quotient.mk _ r) := by
@@ -112,7 +113,7 @@ theorem principalDoubleQuotSwapEquiv_mk (a b r : R) :
 /-- 概要：関係 g の追加後も a と mod a の c の正則性を保つ。
 方針：a,g と mod a の c,g の二つの正則対を交換する。
 規約：g は mod a と mod(a,c) の双方で正則とする。
-使われ方：BS Rem 7.15（著者版 p.62）の有限 δ 関係商の同時帰納法。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限 δ 関係商の同時帰納法。 -/
 theorem regularTripleQuotientStep (a c g : R)
     (ha : IsSMulRegular R a)
     (hc : IsSMulRegular (R ⧸ Ideal.span {a}) (Ideal.Quotient.mk (Ideal.span {a}) c))
@@ -143,7 +144,7 @@ end RegularTripleQuotientStep
 ## 概要
 
 b が正則で c が mod b で正則なら、c は全ての mod bⁿ と b 完備化で正則。
-BS Rem 7.15（著者版 p.62）の正則対を完備化へ移すための一般環計算。
+BS 著者版 Remark 7.15（著者版 p.62）の正則対を完備化へ移すための一般環計算。
 
 ## 方針
 
@@ -170,7 +171,7 @@ include hb hc
 /-- 概要：正則対の第一元の冪イデアルは第二元で飽和している。
 方針：mod b で一度消去し、第一元の正則性で b を消して帰納する。
 規約：零乗も含める。
-使われ方：BS Rem 7.15（著者版 p.62）の全主冪商での分母正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全主冪商での分母正則性。 -/
 theorem principalPairPower_saturated (n : ℕ) (x : R)
     (hx : c * x ∈ Ideal.span {b ^ n}) : x ∈ Ideal.span {b ^ n} := by
   induction n generalizing x with
@@ -203,7 +204,7 @@ theorem principalPairPower_saturated (n : ℕ) (x : R)
 /-- 概要：正則対の第二元は第一元の任意の主冪商で正則。
 方針：第一元の冪イデアルの飽和性を代表元に適用する。
 規約：商上の第二元の像をスカラーとする。
-使われ方：BS Rem 7.15（著者版 p.62）の古典的主完備化の座標計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の古典的主完備化の座標計算。 -/
 theorem principalPairPower_quotient_regular (n : ℕ) :
     IsSMulRegular (R ⧸ Ideal.span {b ^ n}) (Ideal.Quotient.mk (Ideal.span {b ^ n}) c) := by
   apply isSMulRegular_iff_right_eq_zero_of_smul.mpr
@@ -217,7 +218,7 @@ theorem principalPairPower_quotient_regular (n : ℕ) :
 /-- 概要：正則対の第二元は第一元の古典的完備化でも正則。
 方針：全ての主冪商で消去し、完備化の座標の単射性を使う。
 規約：元の環の完備性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の反復完備化の第一段。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の反復完備化の第一段。 -/
 theorem principalPair_adicCompletion_second_regular :
     IsSMulRegular (AdicCompletion (Ideal.span {b}) R)
       (algebraMap R (AdicCompletion (Ideal.span {b}) R) c) := by
@@ -245,7 +246,7 @@ end PrincipalPairPowerRegular
 ## 概要
 
 正則対 b,c の第二元は、実二座標導来完備化の H⁰ でも正則。
-BS Rem 7.15（著者版 p.62）の分母の新しいねじれの排除。
+BS 著者版 Remark 7.15（著者版 p.62）の分母の新しいねじれの排除。
 
 ## 方針
 
@@ -274,7 +275,7 @@ include hb hc
 /-- 概要：第二元は第一元の実主完備化 H⁰ で正則。
 方針：標準射を保つ古典的完備化比較で主冪商の計算を移す。
 規約：元の実 H⁰ を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の反復完備化の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の反復完備化の入力。 -/
 theorem principalPair_principalCompletion_second_regular :
     let := principalCompletionCommRing R b
     IsSMulRegular (PrincipalCompletionH0 R b) (principalCompletionUnitRingHom R b c) := by
@@ -290,7 +291,7 @@ theorem principalPair_principalCompletion_second_regular :
 /-- 概要：第二元は実二座標導来完備化 H⁰ で正則。
 方針：第一主完備化での正則性から第二主完備化で消去し、実反復同型で戻す。
 規約：標準射の第二元の像を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の分母正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の分母正則性。 -/
 theorem principalPair_pairCompletion_second_regular :
     let := pairCompletionCommRing R b c
     IsSMulRegular (PairCompletionH0 R b c) (pairCompletionUnitRingHom R b c c) := by
@@ -329,7 +330,7 @@ end PrincipalPairCompletionRegular
 ## 概要
 
 実主完備化の H⁰ を標準像の主イデアルで割ると、元の主剰余環と同型になる。
-BS Rem 7.15（著者版 p.62）の正則対を完備化へ移す比較。
+BS 著者版 Remark 7.15（著者版 p.62）の正則対を完備化へ移す比較。
 
 ## 方針
 
@@ -354,7 +355,7 @@ open SerrePositivity.DerivedCompletion
 /-- 概要：座標の像が零の環は制限スカラー作用でその座標について導来完備。
 方針：一乗のスカラー作用が零であることを使う。
 規約：零環も含める。
-使われ方：BS Rem 7.15（著者版 p.62）の実主完備化の剰余普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実主完備化の剰余普遍性。 -/
 theorem moduleComplete_of_ringHom_scalar_zero {R S : Type u} [CommRing R] [CommRing S]
     (g : R →+* S) (b : R) (hb : g b = 0) :
     let := g.toAlgebra
@@ -370,7 +371,7 @@ variable {R : Type u} [CommRing R] (b : R)
 /-- 概要：実主完備化 H⁰ の標準座標の主剰余は元の主剰余と環同型。
 方針：両剰余で座標が零となることを一意延長へ渡して逆合成を確認する。
 規約：正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の第一完備化の正則対。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の第一完備化の正則対。 -/
 def principalCompletionResidueEquiv :
     letI := principalCompletionCommRing R b
     (PrincipalCompletionH0 R b ⧸ Ideal.span {principalCompletionUnitRingHom R b b}) ≃+*
@@ -422,7 +423,7 @@ def principalCompletionResidueEquiv :
 /-- 概要：実主完備化の剰余比較は係数の標準像を元の代表元へ送る。
 方針：選択した一意延長の合成仕様を評価する。
 規約：任意の元 r を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の第二元正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の第二元正則性の移送。 -/
 theorem principalCompletionResidueEquiv_unit (r : R) :
     letI := principalCompletionCommRing R b
     principalCompletionResidueEquiv b
@@ -444,7 +445,7 @@ end PrincipalCompletionResidue
 ## 概要
 
 正則対 b,c に対し、実二座標完備化 H⁰ およびその c 商で b は正則。
-BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の完備化計算。
+BS 著者版 Remark 7.15（著者版 p.62）の p ねじれなしの場合の完備化計算。
 
 ## 方針
 
@@ -473,7 +474,7 @@ include hb hc
 /-- 概要：第一主完備化でも元の正則対は正則対。
 方針：第一元の正則性を古典的比較で、第二元の mod 第一元正則性を剰余比較で移す。
 規約：主完備化の元の標準射を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の反復完備化前の順序交換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の反復完備化前の順序交換。 -/
 theorem principalPair_principalCompletion_pair_regular :
     let := principalCompletionCommRing R b
     let j := principalCompletionUnitRingHom R b
@@ -496,7 +497,7 @@ theorem principalPair_principalCompletion_pair_regular :
 /-- 概要：第一元は実二座標完備化 H⁰ で正則。
 方針：第一主完備化で正則対を交換し、第二主完備化での第二元正則性を使う。
 規約：元の二座標 H⁰ と標準射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の p 正則性。 -/
 theorem principalPair_pairCompletion_first_regular :
     let := pairCompletionCommRing R b c
     IsSMulRegular (PairCompletionH0 R b c) (pairCompletionUnitRingHom R b c b) := by
@@ -516,7 +517,7 @@ theorem principalPair_pairCompletion_first_regular :
 /-- 概要：第二元で割った実二座標完備化でも第一元は正則。
 方針：第一主完備化で正則対を交換し、第二主完備化の主剰余比較で戻す。
 規約：両方の元は元の環の標準完備化像。
-使われ方：BS Rem 7.15（著者版 p.62）の Hodge–Tate 商の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Hodge–Tate 商の p 正則性。 -/
 theorem principalPair_pairCompletion_mod_second_first_regular :
     let := pairCompletionCommRing R b c
     let j := pairCompletionUnitRingHom R b c

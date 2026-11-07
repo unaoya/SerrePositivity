@@ -73,3 +73,14 @@ BS-W11 の後、⑤a は次の順で進む（指示書は調整役が順に出�
 これで、論文の §10 の目標に必要な項目は Thm 10.11（E3 の integral の欄。導来の perfectoid 化と Cor 8.12 を待つ）以外が埋まる。
 
 作業 A〜D の中で、後の BS-W12・BS-W13 で使う形（付値環の補題、有限エタールの perfectoid 性）は、使う側を意識した一般性で置く。
+
+## 8. 追記（2026-11-07 15 時、調整役）：濃度の評価と忠実平坦性の扱い
+
+drafts の `exists_perfectoid_arcCover`（drafts/A6/ArcSite.lean、BS 著者版 Lemma 8.8）は、arc site を κ-small に保つため、主張に濃度の上界 #T ≤ (#S + ℵ₀)^ℵ₀ を含む。§1 の「濃度評価は後回し可」で drafts に残した次の二つは、**作業 D で Lemma 8.8 を閉じる前に閉じる**（作業 D の最初の段として扱う）：
+
+1. `rootClosure_cardinal_le`（作業 A）
+2. `baseExtension_cardinal_le`（作業 B）
+
+`baseExtensionUnit_pCompletelyFaithfullyFlat`（一般の S での忠実平坦性、作業 B）は、Lemma 8.8 の証明（arc 被覆であること）が使うかを作業 D の型の停止点 D-1 で確かめる。使うなら作業 D で閉じ、使わないなら drafts に残して理由を報告に書く。
+
+濃度の評価が予想以上に重い場合（基数の算術で詰まる場合）は、止めて報告する。

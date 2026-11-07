@@ -13,6 +13,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 
 ## 概要
 原典係数上の分冪値、正次数モニック入力に対する源 prism の初期性と基底射を指定しない普遍性、固定完全基底上の向きなし入力圏とそこでの源の初期性、初期源と原典の係数計算の合流、ϖ 還元した無限根 pd 包の普遍性。
+BS 著者版 Remark 7.15 の包の記述に向けて、向きなし入力圏での始性と φ 引き戻しに関わる分冪包の普遍性を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -31,7 +32,7 @@ universe u v
 ## 概要
 
 無限根モニック pd 包の p 冪次分冪は、切断表示の対応する変数へ写る。
-BS Rem 7.15(1)（著者版 p.62）の gᵢ の明示的な同定。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の gᵢ の明示的な同定。
 
 ## 方針
 
@@ -67,7 +68,7 @@ local notation "Dv" f => PrincipalDPPresentation Nv (zv f)
 /-- 概要：実 pd 包の素数冪分冪は切断表示の対応する変数へ写る。
 方針：実分冪の標準値を使い、素数冪標準生成元の表示公式を適用する。
 規約：g₁ を添字零の変数とし、次数は p^(i+1)。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の gᵢ と分冪値の具体的な対応。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の gᵢ と分冪値の具体的な対応。 -/
 theorem perfectPrismVarpiNativePDEnvelope_truncated_dpow
     (f : Polynomial A) (hf : f.Monic)
     (i : ℕ) :
@@ -92,7 +93,7 @@ end PerfectPrismVarpiNativePDFormula
 
 完全 prism 上のモニック入力について、ϖ の持上げによる無限根 pd 包の還元は、
 その係数元を零にし入力元を分冪イデアルへ送る任意の標的への一意な分冪射を持つ。
-BS Rem 7.15(1)（著者版 p.62）の係数還元後の pd 普遍性。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の係数還元後の pd 普遍性。
 
 ## 方針
 
@@ -121,11 +122,11 @@ local notation "N" => PowerRootPolynomial R₀ p (Nat.Prime.pos (Fact.out : p.Pr
 local notation "D" f => PowerRootCoefficientPDEnvelope p f
 local notation "z" f => powerRootCoefficientPDInput p f
 
-/-- 概要：ϖ の持上げで還元した実 pd 包から分冪標的への射は一意に存在する。
+/-- 概要：ϖ の持上げで還元した実 pd 包から分冪標的への射は一意に存在する（BS 著者版 Remark 7.15 の証明中の PD 比較でモニック根の包の普遍性）。
 方針：標的の係数消滅条件を主イデアル全体へ拡張し、商の実 pd 普遍性を使う。
 原典とは異なる射影的係数商からの分冪構造を使う。
 規約：係数射は無限根環 N からの指定代数構造。正次数仮定は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の R/ϖ 係数上の実 pd 包の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の R/ϖ 係数上の実 pd 包の比較。 -/
 theorem existsUnique_perfectPrismVarpiPDMorphism_of_unconditional
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic)
@@ -161,7 +162,7 @@ end PerfectPrismVarpiPDUniversalUnconditional
 
 ## 概要
 
-BS Rem 7.15(1)（著者版 p.62）の元の係数消滅条件を持つ普遍性を無条件版へ移す。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の元の係数消滅条件を持つ普遍性を無条件版へ移す。
 
 ## 方針
 
@@ -182,7 +183,7 @@ BS Rem 7.15(1)（著者版 p.62）の元の係数消滅条件を持つ普遍性�
 ## 概要
 
 元の H の prism 性と原典の完備入力作用を持つ有界 prism 圏での初期性を証明する。
-BS Rem 7.15（著者版 p.62）の源の構成と普遍性の合流。
+BS 著者版 Remark 7.15（著者版 p.62）の源の構成と普遍性の合流。
 
 ## 方針
 
@@ -252,7 +253,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：正次数モニック入力から元の H に prism 構造を与える。
 方針：A1-b の同じ標準分母像の正則性を既存の prism 構成へ渡す。
 規約：prism 商の p 正則性や源の正則性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の prismatic 源。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の prismatic 源。 -/
 def powerRootPrismMonicCompletionPrismOfMonicPositive :
     let := pdCompletionCommRing L p (jL dP)
     OrientedPrism p H := by
@@ -265,7 +266,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：正次数モニック源 prism の生成元は元の標準分母像。
 方針：正則性から作った prism の計算規則を使う。
 規約：同じ H と同じ生成元を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の元の H/dH の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の H/dH の同定。 -/
 theorem powerRootPrismMonicCompletionPrismOfMonicPositive_generator :
     let := pdCompletionCommRing L p (jL dP)
     (powerRootPrismMonicCompletionPrismOfMonicPositive W hW f hf hdeg).generator =
@@ -277,7 +278,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：正次数モニック入力から元の H を有界入力 prism の対象とする。
 方針：A1-b の生成元正則性と同じ通常商 T の有界性を既存の構成へ渡す。
 規約：hpR・hreg・hBound を引数に残さず、原典の順序の完備入力環を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の標準源の初期性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準源の初期性。 -/
 def powerRootPrismMonicSourceInputObjectOfMonicPositive : BoundedPrismInput W cS := by
   let := pdCompletionCommRing L p (jL dP)
   exact powerRootPrismMonicSourceInputObject W hW f hf
@@ -289,7 +290,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：元の正次数モニック源は有界入力 prism の圏で初期。
 方針：A1-b の同じ H と T の結果により初期性の二つの補助仮定を解消する。
 規約：固定完全基底・向き付き対象の圏での結果であり、絶対 site 比較は別工程。
-使われ方：BS Rem 7.15（著者版 p.62）の envelope 比較の合流点。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の envelope 比較の合流点。 -/
 def powerRootPrismMonicSourceInput_isInitialOfMonicPositive :
     IsInitial (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg) := by
   let := pdCompletionCommRing L p (jL dP)
@@ -302,7 +303,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：同じ入力圏の任意の初期対象と元の正次数モニック源 H は環同型。
 方針：補助仮定を A1-b から供給して既存の初期対象比較を適用する。
 規約：比較先の初期性だけはその普遍性として明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の同じ圏での envelope の一意性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の同じ圏での envelope の一意性。 -/
 def powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive
     (Z : BoundedPrismInput W cS) (hZ : IsInitial Z) :
     let := pdCompletionCommRing L p (jL dP)
@@ -317,7 +318,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：正次数モニック源と任意の初期対象の環同型は元の A の係数像を保つ。
 方針：既存の基底保存公式に A1-b の正則性・有界性を代入する。
 規約：元の標準係数射を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の原典との係数作用の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典との係数作用の比較。 -/
 theorem powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff
     (Z : BoundedPrismInput W cS) (hZ : IsInitial Z) (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
@@ -337,11 +338,11 @@ end PowerRootPrismMonicSourceInitiality
 ## 概要
 
 元の正次数モニック源は、完備入力作用だけを持つ任意の有界な向き付き prism へ一意に写る。
-BS Rem 7.15（著者版 p.62）の絶対 envelope の普遍性の向き付き対象での形。
+BS 著者版 Remark 7.15（著者版 p.62）の絶対 envelope の普遍性の向き付き対象での形。
 
 ## 方針
 
-入力作用の係数制限から、Lemma 4.8（著者版 pp.38–39）の証明済みの持上げで基底射を作る。
+入力作用の係数制限から、BS 著者版 Lemma 4.8（著者版 pp.38–39）の証明済みの持上げで基底射を作る。
 固定基底上での源の普遍性を適用し、完全基底からの剛性で任意の入力保存射の基底保存性を回復する。
 原典の変形理論とは異なる tilt 比較・Fontaine 写像・実完備化による経路。
 
@@ -409,7 +410,7 @@ set_option maxHeartbeats 800000 in
 /-- 概要：完備入力作用だけを持つ任意の有界 prism への源からの射は一意に存在。
 方針：完全基底の商射を一意に持ち上げ、固定基底の普遍性と基底射の剛性を使う。
 規約：源の正則性・有界性、標的の基底射を仮定に残さず、入力圏と同じ宇宙で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の絶対 envelope の向き付き対象での普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の絶対 envelope の向き付き対象での普遍性。 -/
 theorem existsUnique_powerRootPrismMonicPrismHom_of_absolute_input
     (Q : OrientedPrism p B)
     (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
@@ -447,7 +448,7 @@ A1-a の正次数モニック源の初期性を向きなし入力圏へ移す。
 ## 規約
 固定完全基底と同じ宇宙の対象に限る。元の H と完備入力の作用を変更しない。
 ## 使われ方
-BS Rem 7.15（著者版 p.62）の向きに依存しない普遍性を公開する。
+BS 著者版 Remark 7.15（著者版 p.62）の向きに依存しない普遍性を公開する。
 -/
 
 @[expose] public noncomputable section Initial
@@ -472,7 +473,7 @@ def BoundedPrismInput.initial_unoriented (hW : W.deltaStructure.IsPerfect)
 /-- 概要：元の正次数モニック源は向きなし有界入力 prism の圏で初期。
 方針：A1-a の証明済みの初期性を、向きを忘れる関手に沿って移す。
 規約：正則性・有界性の追加仮定はなく、元の台環・δ・基底・入力を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の固定完全基底での向きなし envelope。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の固定完全基底での向きなし envelope。 -/
 def powerRootPrismMonicSourceInput_initial_unoriented
     (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
@@ -488,7 +489,7 @@ end Initial
 /-! ## 元の André 源の向きなし入力圏での初期性（旧 Andre/Remark715/Unoriented/SourceInitiality.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の源 H の初期性を固定完全基底上の向きなし入力圏へ移す。
+BS 著者版 Remark 7.15（著者版 p.62）の元の源 H の初期性を固定完全基底上の向きなし入力圏へ移す。
 
 ## 方針
 向き付き入力圏との証明済みの同値に初期性を沿わせる。
@@ -537,7 +538,7 @@ variable (hdeg : 0 < f.natDegree)
 /-- 概要：元の正次数モニック源を向きなし入力対象とする。
 方針：既存の源に忘却関手を適用する。
 規約：台環・δ 構造・基底・入力作用を保持する。
-使われ方：BS Rem 7.15（p.62）の向きなしの標準源。 -/
+使われ方：BS 著者版 Remark 7.15（p.62）の向きなしの標準源。 -/
 def powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented :
     BoundedPrismInputUnoriented W cS :=
   (BoundedPrismInputUnoriented.forgetFunctor (W := W) (c := cS)).obj
@@ -546,7 +547,7 @@ def powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented :
 /-- 概要：元の正次数モニック源は向きなし入力圏で初期。
 方針：圏同値による初期性の保存を使う。
 規約：既存の hdeg を保持し、追加条件を置かない。
-使われ方：BS Rem 7.15（p.62）の固定基底上の向きなし普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（p.62）の固定基底上の向きなし普遍性。 -/
 def powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented :
     IsInitial (powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg) :=
   powerRootPrismMonicSourceInput_initial_unoriented W hW f hf hdeg
@@ -554,7 +555,7 @@ def powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented :
 /-- 概要：向きなし入力圏の任意の初期対象と元の H は環同型。
 方針：初期対象の一意な同型を標準 orientation 関手で実環の同型へ戻す。
 規約：比較先にはその初期性だけを要求する。
-使われ方：BS Rem 7.15（p.62）の向きなし envelope の一意性。 -/
+使われ方：BS 著者版 Remark 7.15（p.62）の向きなし envelope の一意性。 -/
 def powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented
     (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) :
     let := pdCompletionCommRing L p (jL dP)
@@ -568,7 +569,7 @@ def powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented
 /-- 概要：向きなし初期対象との環同型は全ての基底係数像を保つ。
 方針：比較同型の射の基底保存等式を各元に適用する。
 規約：元の標準係数射と比較先の基底環射を保持する。
-使われ方：BS Rem 7.15（p.62）の入力作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（p.62）の入力作用の照合。 -/
 theorem powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_unoriented
     (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
@@ -582,7 +583,7 @@ theorem powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_uno
 /-- 概要：向きなし標的の任意の完備入力作用を保つ源からの prism 射は一意に存在。
 方針：標的の基底生成元像による標準 orientation と商同型を既存の絶対普遍性へ渡す。
 規約：η に標的の既存基底射との可換性を要求せず、基底保存条件を結論に追加しない。
-使われ方：BS Rem 7.15（p.62）の基底射を指定しない入力作用の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（p.62）の基底射を指定しない入力作用の普遍性。 -/
 theorem existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented
     (Q : BoundedPrismInputUnoriented W cS) (η : SI →+* Q.ring ⧸ Q.ideal) :
     let X := powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg
@@ -598,7 +599,7 @@ end SourceInitiality
 /-! ## André：固定完全基底上の向きなし入力圏（旧 Andre/Remark715/Unoriented.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の向きなし入力圏と元の源の初期性を集約する。
+BS 著者版 Remark 7.15（著者版 p.62）の向きなし入力圏と元の源の初期性を集約する。
 
 ## 方針
 基底生成元像による標準 orientation と既存の向き付き入力圏の同値を用いる。
@@ -616,7 +617,7 @@ BS Rem 7.15（著者版 p.62）の向きなし入力圏と元の源の初期性�
 
 完全 prism 上の正次数モニック入力について、元の源の向きなし初期性と、
 自然な Hodge–Tate 商の p 完全忠実平坦性・ϖ 剰余の pd 表示と自由性を同時に得る。
-BS Rem 7.15(1)（著者版 p.62）の同じ源の係数計算。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の同じ源の係数計算。
 
 ## 方針
 
@@ -675,7 +676,7 @@ local notation "hpv" => perfectPrismVarpiRootRing_prime_eq_zero W hW
 /-- 概要：元の向きなし初期源について、同じ商の pd 係数比較と忠実平坦性が成立する。
 方針：既存の初期性の実証人と無条件な候補比較を同じ H のまま合流する。
 規約：固定基底上の入力圏と正次数モニック性を保持し、追加仮定を要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の初期源と係数計算の一括参照。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の初期源と係数計算の一括参照。 -/
 theorem powerRootPrismMonicSource_initial_and_coefficient_comparison
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := pdCompletionCommRing L p (jL dP)

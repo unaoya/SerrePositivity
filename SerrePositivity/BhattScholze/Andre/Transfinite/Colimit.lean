@@ -33,7 +33,7 @@ public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 
 /-!
-# 完全平坦性・完備化と有向余極限（BS Thm 7.14 の極限段の一般補題）
+# 完全平坦性・完備化と有向余極限（BS 著者版 Theorem 7.14 の極限段の一般補題）
 
 ## 概要
 p 完全平坦・完全忠実平坦な射の合成と有向余極限での保存、剰余テンソルの余極限比較、非可算共終性をもつ余極限の p 進完備性と可算データの降下、有界ねじれ環の完備化、perfectoid 塔の非可算極限の完備性、distinguished 商の p 進完備化の perfectoid 性、有向余極限の mod p Frobenius と Frobenius 核。
@@ -52,7 +52,7 @@ universe u v
 
 /-! ## 通常の忠実平坦性の環余極限による保存（旧 Andre/Transfinite/FaithfullyFlatColimit.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段の忠実性に使う一般論。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の忠実性に使う一般論。
 固定基底の代数の有向系を扱い、単位元を保つ遷移射であることを利用する。
 -/
 
@@ -65,7 +65,7 @@ variable {A ι : Type u} [CommRing A] [Preorder ι] [Nonempty ι] [IsDirectedOrd
     (f : ∀ i j, i ≤ j → S i →ₐ[A] S j) [DirectedSystem S (fun i j h ↦ f i j h)]
 /-- ## 概要
 線形写像は I 倍の部分加群を I 倍の部分加群へ送る。
-BS Thm 7.14（著者版 p.61）の極限段の補助計算。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助計算。
 
 ## 方針
 生成元と加法に関する帰納法を使う。
@@ -89,7 +89,7 @@ private lemma map_ideal_smul {P Q : Type u} [AddCommGroup P] [Module A P]
 
 /-- ## 概要
 代数の有向余極限で基底イデアルの倍として表される元は、一段でも同じイデアルの倍として表せる。
-BS Thm 7.14（著者版 p.61）の極限段で忠実性を反映するための補題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で忠実性を反映するための補題。
 
 ## 方針
 部分加群の生成に関する帰納法を用い、加法の場合には二段の共通上界を取る。
@@ -124,7 +124,7 @@ theorem directLimit_mem_ideal_smul (I : Ideal A) (x : _root_.DirectLimit S f)
 
 /-- ## 概要
 固定基底 A 上忠実平坦な代数の有向余極限は A 上忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の剰余環に用いる一般論。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の剰余環に用いる一般論。
 
 ## 方針
 通常平坦性は既存の余極限定理による。基底イデアルの拡張に単位元が入れば、
@@ -182,7 +182,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable (R : Type u) [CommRing R] (a : R) (n : ℕ) (b : R)
 /-- ## 概要
 主元 b のイデアルが a の冪を含めば、a に沿う導来完備化の単位は R/(b) への導来底変換で同型になる。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 R/(b) の導来対象が a の冪で消えることを使い、元の完備化単位をその対象とテンソルする。
@@ -237,7 +237,7 @@ theorem derivedCompletion_quotient_unit_isIso_of_power_mem
 
 /-- ## 概要
 係数環 R 自身の導来 a 進完備化を R/(a) に導来底変換すると、元の剰余環の離散対象と同型になる。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 前補題を n=1 に適用し、R 自身の射影性から通常の剰余対象へ移す。
@@ -274,7 +274,7 @@ variable (hbound : ∃ N : ℕ, ∀ n : ℕ, ∀ r : R, a ^ n * r = 0 → a ^ N 
 include hbound in
 /-- ## 概要
 a 冪ねじれが有界な環では、R 自身の導来 a 進完備化は次数 0 に集中し、その零次ホモロジーの a 冪ねじれも有界である。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 実際の剰余への導来底変換が離散かつ平坦であることを示し、既存の有界ねじれ純性定理を適用する。
@@ -322,7 +322,7 @@ theorem completedUnit_pure_bounded_torsion :
 include hbound in
 /-- ## 概要
 有界 a 冪ねじれの下で、実際の導来主イデアル完備化の零次ホモロジーは古典的に a 進完備である。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 前補題のねじれ境界を既存の主イデアル Koszul ホモロジーへ移し、導来完備性と有界ねじれから古典的完備性を得る。
@@ -354,7 +354,7 @@ theorem principalCompletionH0_isAdicComplete_of_bounded_torsion :
 
 /-- ## 概要
 有界 a 冪ねじれの下で、実際の導来完備化を既存の主イデアル完備化 H0 の離散対象と同定する。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 次数 0 集中から規格化されたホモロジー同型を使い、既存の H0 比較を合成する。
@@ -380,7 +380,7 @@ def completedUnitPrincipalH0Iso :
 
 /-- ## 概要
 有界 a 冪ねじれの下で、主イデアル完備化 H0 の実導来剰余は元の環の通常剰余となる。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 H0 の離散対象を実導来完備化へ戻し、元の完備化単位に沿う導来剰余同型を合成する。
@@ -402,7 +402,7 @@ def principalCompletionH0DerivedReductionIso :
 
 /-- ## 概要
 主イデアル完備化 H0 の通常剰余を元の通常剰余と、R/(a) 線形に比較する。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 実導来剰余比較の零次ホモロジーを取り、通常の係数拡大との標準比較を両端で使う。
@@ -429,7 +429,7 @@ def principalCompletionH0ReductionEquiv :
 include hbound in
 /-- ## 概要
 有界 a 冪ねじれの下で、主イデアル完備化 H0 と R/(a) のすべての正次数 Tor は零となる。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 実際の導来剰余の離散性を、標準の負次数ホモロジーと Tor の比較で移す。
@@ -459,7 +459,7 @@ theorem principalCompletionH0_scalarExtensionTorVanishing :
 include hbound in
 /-- ## 概要
 有界 a 冪ねじれの下で、主イデアル完備化 H0 は元の環上 a 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 剰余 Tor の消滅と、R/(a) 線形な通常剰余同型による忠実平坦性を、
@@ -493,7 +493,7 @@ theorem principalCompletionH0_isCompletelyFaithfullyFlat :
 
 /-- ## 概要
 有界 a 冪ねじれの下で、実主イデアル完備化の H0 と通常の a 進完備化は、元の R 作用を保つ代数同型を持つ。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 古典的完備性を得た H0 へ通常完備化の普遍性を使う。逆射は実 H0 の普遍性から得て、
@@ -528,7 +528,7 @@ def boundedPrincipalCompletionAdicAlgEquiv :
 include hbound in
 /-- ## 概要
 有界 a 冪ねじれを持つ環 R の通常 a 進完備化は、元の標準 R 作用に関して a 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の完備化を補足する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の完備化を補足する。
 
 ## 方針
 実主イデアル完備化 H0 の完全忠実平坦性を、通常完備化との R 代数同型で移す。
@@ -553,7 +553,7 @@ end BoundedCompletion
 
 /-! ## 完全平坦・完全忠実平坦な環準同型の合成（旧 Andre/Transfinite/Composition.lean）
 
-BS Thm 7.14（著者版 p.61）の超限塔で、各後続段から初期環までの性質を保つための一般論。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限塔で、各後続段から初期環までの性質を保つための一般論。
 イデアルで消える任意の試験加群をスカラー拡大し、Tor と忠実性を二段階で検査する。
 -/
 
@@ -567,7 +567,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 /-- ## 概要
 スカラー制限で記述した二つの完全平坦写像の合成は完全平坦。
-BS Thm 7.14（著者版 p.61）の塔の後続段に用いる補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の塔の後続段に用いる補助命題。
 
 ## 方針
 試験加群の Tor 非輪状性から実際の底変換 Tor 比較を適用し、拡大後の試験加群には
@@ -615,7 +615,7 @@ private theorem completelyFlat_comp_restricted {R B C : Type u}
 
 /-- ## 概要
 I 完全平坦な R → B と IB 完全平坦な B → C の合成は I 完全平坦。
-BS Thm 7.14（著者版 p.61）の超限塔の後続段で使用する。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限塔の後続段で使用する。
 
 ## 方針
 試験加群の底変換と Tor 比較による補助命題を、元の環準同型の toAlgebra 作用で適用する。
@@ -635,7 +635,7 @@ theorem isCompletelyFlat_comp {R B C : Type u} [CommRing R] [CommRing B] [CommRi
 
 /-- ## 概要
 通常剰余テンソルが忠実平坦なら、I で消える試験加群の零性は元のテンソルで検出できる。
-BS Thm 7.14（著者版 p.61）の合成の忠実性に用いる一般補題。
+BS 著者版 Theorem 7.14（著者版 p.61）の合成の忠実性に用いる一般補題。
 
 ## 方針
 試験加群に R/I 作用を与え、通常テンソルの底変換消去同型を通して忠実平坦性を適用する。
@@ -662,7 +662,7 @@ theorem subsingleton_of_annihilated_of_residueTensor {R : Type u} [CommRing R] (
 
 /-- ## 概要
 I 完全忠実平坦な R → B と IB 完全忠実平坦な B → C の合成は I 完全忠実平坦。
-BS Thm 7.14（著者版 p.61）の塔の後続段で使う。
+BS 著者版 Theorem 7.14（著者版 p.61）の塔の後続段で使う。
 
 ## 方針
 完全平坦性を Tor の底変換で合成し、通常剰余テンソルの平坦性を得る。
@@ -720,7 +720,7 @@ theorem isCompletelyFaithfullyFlat_comp {R B C : Type u} [CommRing R] [CommRing 
 
 /-- ## 概要
 自然数 p に関する完全忠実平坦な二つの環準同型の合成は p 完全忠実平坦。
-BS Thm 7.14（著者版 p.61）の後続段で step の出力を合成する入口。
+BS 著者版 Theorem 7.14（著者版 p.61）の後続段で step の出力を合成する入口。
 
 ## 方針
 主イデアル (p) の環準同型による像が再び (p) であることから、一般の合成定理に帰着する。
@@ -746,7 +746,7 @@ end Composition
 
 /-! ## 完全平坦性の余極限による保存（旧 Andre/Transfinite/CompleteFlatColimit.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段に使う、固定基底上の完全平坦性の保存。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に使う、固定基底上の完全平坦性の保存。
 Tor の対称性と正確な余極限との交換を使い、通常平坦性への置き換えは行わない。
 忠実性は別の環論的課題として扱う。
 -/
@@ -759,7 +759,7 @@ open SerrePositivity
 set_option backward.isDefEq.respectTransparency false
 /-- ## 概要
 固定基底上の I 完全平坦加群の正確な余極限は I 完全平坦。
-BS Thm 7.14（著者版 p.61）の極限段に必要な、Tor 消滅の保存を与える。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に必要な、Tor 消滅の保存を与える。
 
 ## 方針
 I で消える任意の試験加群 N を固定し、Tor の対称性で余極限を第二変数へ移す。
@@ -800,7 +800,7 @@ theorem isCompletelyFlat_colimit {R : Type u} [CommRing R] (I : Ideal R)
 
 /-- ## 概要
 I 完全平坦加群の有向余極限は、標準 Module.DirectLimit モデルでも I 完全平坦。
-BS Thm 7.14（著者版 p.61）の極限段に用いる。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に用いる。
 
 ## 方針
 ModuleCat の有向余極限の正確性と標準モデルの普遍性から、一般の保存定理を移送する。
@@ -826,7 +826,7 @@ theorem isCompletelyFlat_moduleDirectLimit {R ι : Type u} [CommRing R] [Preorde
 
 /-- ## 概要
 I 完全平坦加群の有向余極限は、非交和を同一視する DirectLimit モデルでも I 完全平坦。
-BS Thm 7.14（著者版 p.61）の極限段のモデル間の互換入口。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段のモデル間の互換入口。
 
 ## 方針
 Module.DirectLimit と非交和モデルの標準線形同型で移送する。
@@ -848,7 +848,7 @@ theorem isCompletelyFlat_directLimit {R ι : Type u} [CommRing R] [Preorder ι]
 
 /-- ## 概要
 代数の非交和余極限と標準加群余極限の、元の係数作用を保つ比較。
-BS Thm 7.14（著者版 p.61）の極限段の補助同型。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助同型。
 
 ## 方針
 双方の普遍写像から互いに逆な線形写像を構成する。
@@ -893,7 +893,7 @@ private def moduleDirectLimitEquivAlgebraDirectLimit {R ι : Type u} [CommRing R
 
 /-- ## 概要
 I 完全平坦な R 代数の有向余極限は I 完全平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の通常環の余極限に適用する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の通常環の余極限に適用する。
 
 ## 方針
 代数準同型の同じ台写像を R 線形写像として扱い、加群余極限の保存定理を適用する。
@@ -921,7 +921,7 @@ end CompleteFlatColimit
 
 /-! ## 剰余テンソルの余極限比較と完全忠実平坦性の保存（旧 Andre/Transfinite/ResidueTensorColimit.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段に用いる。固定基底の I 完全忠実平坦な代数の
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に用いる。固定基底の I 完全忠実平坦な代数の
 有向余極限が I 完全忠実平坦であることを、元の R/I 作用のまま証明する。
 -/
 
@@ -937,7 +937,7 @@ variable {A ι : Type u} [CommRing A] [Preorder ι] [Nonempty ι] [IsDirectedOrd
     (S : ι → Type u) [∀ i, CommRing (S i)] [∀ i, Algebra A (S i)]
     (f : ∀ i j, i ≤ j → S i →ₐ[A] S j) [DirectedSystem S (fun i j h ↦ f i j h)]
 /-- ## 概要
-代数の有向系の、元の基底上の加群図式。BS Thm 7.14（著者版 p.61）の極限段の補助対象。
+代数の有向系の、元の基底上の加群図式。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助対象。
 
 ## 方針
 遷移代数準同型をそのまま線形写像とし、DirectedSystem の法則から函手の法則を示す。
@@ -959,7 +959,7 @@ def algebraModuleDiagram : ι ⥤ ModuleCat.{u} A where
     exact (DirectedSystem.map_map (f := fun i j h ↦ f i j h) hij.le hjk.le x).symm
 
 /-- ## 概要
-非交和モデルの代数余極限を頂点とする加群余錐。BS Thm 7.14（著者版 p.61）の補助対象。
+非交和モデルの代数余極限を頂点とする加群余錐。BS 著者版 Theorem 7.14（著者版 p.61）の補助対象。
 
 ## 方針
 標準包含の両立性から余錐を構成する。
@@ -980,7 +980,7 @@ def algebraModuleCocone : Cocone (algebraModuleDiagram S f) where
       exact DirectLimit.Module.of_f }
 
 /-- ## 概要
-代数余極限の標準加群余錐は余極限である。BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+代数余極限の標準加群余錐は余極限である。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 非交和モデルの線形な普遍写像を使い、包含との合成で一意性を検査する。
@@ -1011,7 +1011,7 @@ attribute [local instance] adicQuotientAlgebra
 variable (I : Ideal A)
 /-- ## 概要
 基底イデアル I による各段の剰余環を結ぶ R/I 代数準同型。
-BS Thm 7.14（著者版 p.61）の極限段の剰余図式を構成する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の剰余図式を構成する。
 
 ## 方針
 元の代数準同型の基底との両立性から、拡張イデアルを剰余する。
@@ -1037,7 +1037,7 @@ def residueTransition (i j : ι) (h : i ≤ j) :
         Ideal.Quotient.mk _ (algebraMap A (S j) r)
       rw [(f i j h).commutes] }
 /-- ## 概要
-剰余環の遷移写像は有向系を成す。BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+剰余環の遷移写像は有向系を成す。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 剰余代表元上で元の有向系の恒等・合成法則を適用する。
@@ -1065,7 +1065,7 @@ instance residueDirectedSystem :
 
 /-- ## 概要
 加群図式の剰余スカラー拡大と、通常の剰余環図式は自然同型。
-BS Thm 7.14（著者版 p.61）の極限段の比較。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の比較。
 
 ## 方針
 既存の quotientAlgebraScalarExtensionEquiv の自然性を、実際の剰余遷移写像と照合する。
@@ -1097,7 +1097,7 @@ def residueDiagramIso : algebraModuleDiagram S f ⋙ ModuleCat.extendScalars (Id
 
 /-- ## 概要
 有向余極限の通常剰余テンソルは、各段の通常剰余環の有向余極限と R/I 上線形同型。
-BS Thm 7.14（著者版 p.61）の極限段の忠実性に用いる。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の忠実性に用いる。
 
 ## 方針
 加群余錐の普遍性をスカラー拡大で保存し、既存の剰余自然同型と組み合わせる。
@@ -1132,7 +1132,7 @@ def residueTensorDirectLimitEquiv :
 
 /-- ## 概要
 固定基底上の I 完全忠実平坦な代数の有向余極限は I 完全忠実平坦。
-BS Thm 7.14（著者版 p.61）の極限段の通常余極限について、完全忠実平坦性を保存する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の通常余極限について、完全忠実平坦性を保存する。
 
 ## 方針
 完全平坦性の余極限保存と、通常剰余代数の忠実平坦性の余極限保存を、
@@ -1166,7 +1166,7 @@ end ResidueTensorColimit
 
 /-! ## 非可算共終性の極限での可算データの降下（旧 Andre/Transfinite/CountableDescent.lean）
 
-BS Thm 7.14（著者版 p.61）の超限反復で使う。原典の一文を補うため、
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復で使う。原典の一文を補うため、
 可算集合の上界という具体的な仮定を明示する。
 -/
 
@@ -1178,7 +1178,7 @@ variable {ι : Type u} [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
     (f : ∀ i j, i ≤ j → R i →+* R j)
 /-- ## 概要
 添字の任意の可算集合が上界を持てば、余極限の可算族を一つの段へ同時に降ろせる。
-BS Thm 7.14（著者版 p.61）の非可算共終性の極限段に用いる補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段に用いる補助命題。
 
 ## 方針
 各元の代表段を選び、それらの段全体の可算性から共通上界を取る。
@@ -1207,7 +1207,7 @@ end CountableDescent
 
 /-! ## 非可算共終性をもつ有向余極限の p 進完備性（旧 Andre/Transfinite/CountableCompletion.lean）
 
-BS Thm 7.14（著者版 p.61）の超限反復の極限段に必要な一般論。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の極限段に必要な一般論。
 可算集合の上界と単射な遷移写像から、完備化を挟まず余極限の完備性を示す。
 -/
 
@@ -1216,7 +1216,7 @@ BS Thm 7.14（著者版 p.61）の超限反復の極限段に必要な一般論�
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 
 /-- ## 概要
-主イデアル進合同は差の冪倍表示と同値。BS Thm 7.14（著者版 p.61）の極限段の補助計算。
+主イデアル進合同は差の冪倍表示と同値。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助計算。
 
 ## 方針
 主イデアルの冪と単項生成イデアルの所属条件を書き換える。
@@ -1243,7 +1243,7 @@ local notation "L" => Ring.DirectLimit R (fun i j h ↦ f i j h)
 local notation "ofL" => Ring.DirectLimit.of R (fun i j h ↦ f i j h)
 /-- ## 概要
 任意の可算添字集合が上界を持つ有向系で、遷移写像が単射かつ各段が p 進完備なら、
-有向余極限も p 進完備である。BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+有向余極限も p 進完備である。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 分離性では全ての p 冪の割り算の証人を、前完備性では Cauchy 列と差の割り算の証人を、
@@ -1322,7 +1322,7 @@ end CountableCompletion
 
 /-! ## 完全忠実平坦な perfectoid 塔の非可算極限の完備性（旧 Andre/Transfinite/PerfectoidLimitCompleteness.lean）
 
-BS Thm 7.14（著者版 p.61）。p ねじれを許す既存の単射性定理と
+BS 著者版 Theorem 7.14（著者版 p.61）。p ねじれを許す既存の単射性定理と
 可算データの降下を結び、極限環が自動的に p 進完備であることを示す。
 -/
 
@@ -1331,7 +1331,7 @@ BS Thm 7.14（著者版 p.61）。p ねじれを許す既存の単射性定理�
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 /-- ## 概要
 perfectoid 環からの p 完全忠実平坦な環準同型は単射である。
-BS Thm 7.14（著者版 p.61）の塔を単射な系として扱うための入口。
+BS 著者版 Theorem 7.14（著者版 p.61）の塔を単射な系として扱うための入口。
 
 ## 方針
 非零の場合は p 進分離性と各冪剰余の忠実平坦性による既存の単射性定理を適用する。
@@ -1356,7 +1356,7 @@ theorem injective_of_perfectoid_completelyFaithfullyFlat {R S : Type u} [CommRin
 
 /-- ## 概要
 perfectoid 環の p 完全忠実平坦な有向系で、可算添字集合がすべて上界を持つなら、
-余極限は p 進完備である。BS Thm 7.14（著者版 p.61）の非可算共終性の極限段。
+余極限は p 進完備である。BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段。
 
 ## 方針
 各段の完備性を定義から取り出し、完全忠実平坦性から遷移射の単射性を導いて、
@@ -1396,7 +1396,7 @@ end PerfectoidLimitCompleteness
 
 /-! ## Distinguished 商の通常 p 進完備化の perfectoid 性（旧 Andre/Transfinite/PrismaticCompletion.lean）
 
-BS Thm 3.10（著者版 p.32）と Thm 7.14（p.61）の極限段に用いる補助命題。
+BS 著者版 Theorem 3.10（著者版 p.32）と BS 著者版 Theorem 7.14（p.61）の極限段に用いる補助命題。
 完全 δ 環の distinguished 商を通常に p 進完備化したものを、既存の実 PD 完備化の
 完全 prism の商と、二つの普遍性から同一視する。
 -/
@@ -1410,7 +1410,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 /-- ## 概要
 完全 δ 環 A の distinguished 元 d を核の生成元とする全射 A → T に対し、
-T の通常の p 進完備化は perfectoid。BS Thm 3.10（著者版 p.32）、Thm 7.14（p.61）の補助命題。
+T の通常の p 進完備化は perfectoid。BS 著者版 Theorem 3.10（著者版 p.32）、BS 著者版 Theorem 7.14（p.61）の補助命題。
 
 ## 方針
 既存の実 PD 完備化から得る完全 prism の商 Q を使う。T の通常完備化 C と Q の間に、
@@ -1542,7 +1542,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable {R S : Type u} [CommRing R] [CommRing S] (p : ℕ)
 /-- ## 概要
 p 進完備な環 S への任意の環射 R→S を、R の通常 p 進完備化からの環射へ延長する。
-BS Thm 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
 
 ## 方針
 R の作用を元の環射から定め、p 主イデアルの写像を計算して、既存の代数完備化の普遍性を使う。
@@ -1563,7 +1563,7 @@ def natAdicCompletionLift (q : R →+* S) (hc : IsAdicComplete (Ideal.span {(p :
     (Submodule.fg_span (Set.toFinite _)) S).toRingHom
 /-- ## 概要
 p 進完備化からの標準延長は、元の R の各標準像上で与えられた環射と一致する。
-BS Thm 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
 
 ## 方針
 元の環射が定める代数構造を局所導入し、既存の標準延長の係数像の公式を使う。
@@ -1584,7 +1584,7 @@ theorem natAdicCompletionLift_of (q : R →+* S) (hc : IsAdicComplete (Ideal.spa
   exact adicCompletionToCompleteAlgebra_of R (Ideal.span {(p : R)}) _ S r
 /-- ## 概要
 p 進完備な環への二つの環射が、完備化前の元の環の標準像上で一致すれば、両環射は一致する。
-BS Thm 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で用いる普遍性の補助命題。
 
 ## 方針
 共通の元の環射により終域の代数構造を定め、両射をその上の代数射にして既存の一意性を使う。
@@ -1616,7 +1616,7 @@ end CompletionUniversal
 
 /-! ## 有向余極限の mod p Frobenius（旧 Andre/Transfinite/ResidueFrobenius.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段に必要な、剰余 Frobenius 全射性の保存。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に必要な、剰余 Frobenius 全射性の保存。
 Fontaine 核の単項性や完備化による保存とは区別する。
 -/
 
@@ -1630,7 +1630,7 @@ variable {ι : Type u} [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
 omit [Fact p.Prime] in
 /-- ## 概要
 各段で mod p の p 乗写像が全射なら、有向余極限でも全射である。
-BS Thm 7.14（著者版 p.61）の極限段で perfectoid の一条件を保存する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で perfectoid の一条件を保存する。
 
 ## 方針
 余極限の元を一段に降ろし、その段で根を選ぶ。誤差の p 倍表示を環準同型で移送する。
@@ -1665,7 +1665,7 @@ theorem directLimit_mod_p_pow_surjective (hF : ∀ i, Function.Surjective
 
 /-- ## 概要
 perfectoid 環の有向余極限では mod p Frobenius が全射である。
-BS Thm 7.14（著者版 p.61）の極限段の一条件。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の一条件。
 
 ## 方針
 非零の場合は perfectoid の定義から全射性を取り出し、零環の場合は自明な根を選ぶ。
@@ -1695,7 +1695,7 @@ end ResidueFrobenius
 
 /-! ## Perfectoid 塔の未完備余極限の Frobenius 核（旧 Andre/Transfinite/FrobeniusKernelColimit.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段に必要な代数的条件を保存する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段に必要な代数的条件を保存する。
 原典で省略された極限操作の補助命題であり、Fontaine 核の単項性の判定を代用しない。
 -/
 
@@ -1710,7 +1710,7 @@ local notation "L" => Ring.DirectLimit R (fun i j h ↦ f i j h)
 local notation "ofL" => Ring.DirectLimit.of R (fun i j h ↦ f i j h)
 /-- ## 概要
 perfectoid 塔の一段で p=u*π^p を満たす π の像は、余極限でも p 乗がその像の p 乗で
-割り切れる元を割り切る。BS Thm 7.14（著者版 p.61）の極限段の Frobenius 核計算。
+割り切れる元を割り切る。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の Frobenius 核計算。
 
 ## 方針
 元と割り算の証人を共通の段へ降ろし、その等式が成立する後の段で
@@ -1766,7 +1766,7 @@ theorem ringDirectLimit_frobenius_kernel_of_stage_root (p : ℕ) [Fact p.Prime]
 
 /-- ## 概要
 perfectoid 塔の一段の π の像について、余極限で x^p が (π^p) に入ることと
-x が (π) に入ることは同値。BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+x が (π) に入ることは同値。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 一方向は有限段の Frobenius 核の移送、逆方向は π 倍表示を p 乗する。
@@ -1790,7 +1790,7 @@ theorem ringDirectLimit_pow_mem_span_iff_of_stage_root (p : ℕ) [Fact p.Prime]
 /-- ## 概要
 perfectoid 塔の未完備余極限には p=u*π^p を満たす π と単元 u が存在し、
 mod p Frobenius は全射、かつ x^p∈(π^p) と x∈(π) は同値。
-BS Thm 7.14（著者版 p.61）の極限段の代数的条件。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の代数的条件。
 
 ## 方針
 任意の一段から π と単元を移し、剰余 Frobenius と核計算の余極限保存を合成する。

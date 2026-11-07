@@ -10,6 +10,7 @@ public import Mathlib.RingTheory.Ideal.Quotient.Nilpotent
 
 ## 概要
 p = 0 の完全環は perfectoid、その任意の商の普遍 perfectoid 化は根基商 R/√J で、全射。
+BS 著者版 Corollary 7.3 と Theorem 7.4 の標数 p の場合を、完全環の商で計算する。
 
 ## 方針
 根基商の完全性を直接示す。

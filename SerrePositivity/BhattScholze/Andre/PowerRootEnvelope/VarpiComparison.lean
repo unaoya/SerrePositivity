@@ -14,7 +14,7 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Source
 
 /-!
-# p と ϖ の照合（Rem 7.15）
+# p と ϖ の照合（BS 著者版 Remark 7.15）
 
 ## 概要
 p と ϖ の完全平坦性、pd 表示環の係数テンソル底変換とそれが分冪射であること、R/p から R/ϖ への pd 底変換、正則性を足さない係数テンソルの分冪構造、二元完全平坦性、具体的候補・Hodge–Tate 係数の照合。
@@ -36,7 +36,7 @@ universe u
 ## 概要
 
 元の実完備化 H は、元の完全 prism の係数作用について (p,d) 完全平坦。
-BS Rem 7.15（著者版 p.62）の δ 完全化に渡す導来剰余の計算。
+BS 著者版 Remark 7.15（著者版 p.62）の δ 完全化に渡す導来剰余の計算。
 
 ## 方針
 
@@ -87,7 +87,7 @@ include hf hdeg in
 /-- 概要：元の無限根モニック実完備化は (p,d) 完全平坦。
 方針：分母正則性と標準作用に移した H/d の p 完全平坦性を一般判定へ渡す。
 規約：元の A 係数作用と実 H⁰ を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の完全 δ 化の導来剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全 δ 化の導来剰余入力。 -/
 theorem powerRootPrismMonicCompletion_pair_completelyFlat_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -109,7 +109,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の (p,d) 標準底変換の高次 Tor は零。
 方針：二元完全平坦性を標準剰余係数加群へ適用する。
 規約：標準係数作用を持つ加群そのものを使う。
-使われ方：BS Rem 7.15（著者版 p.62）の導来剰余の離散性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来剰余の離散性。 -/
 theorem powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicCompletionAlgebra W hW f
@@ -126,7 +126,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の導来 (p,d) 剰余は非零次数で消える。
 方針：高次 Tor の消滅から標準増大同型を作り、単項複体のホモロジーを使う。
 規約：標準係数射で制限した実加群の導来底変換を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の δ 完全化の剰余計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の δ 完全化の剰余計算。 -/
 theorem powerRootPrismMonicCompletion_pair_reduction_homology_isZero_of_unconditional
     (i : ℤ) (hi : i ≠ 0) :
     let := pdCompletionCommRing L p (jL dP)
@@ -149,7 +149,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の標準二元剰余は忠実平坦。
 方針：自然な主環商作用を照合し、二段剰余の一般判定を適用する。
 規約：元の標準係数射で制限した実加群を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の導来二元剰余 H⁰。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来二元剰余 H⁰。 -/
 theorem powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), W.generator})
@@ -175,7 +175,7 @@ include hf hdeg in
 /-- 概要：元の実完備化の導来二元剰余 H⁰ は忠実平坦。
 方針：標準スカラー拡大と実導来底変換 H⁰ の自然な同型で移す。
 規約：同じ基底商と標準係数射を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の完全 δ 化の剰余判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全 δ 化の剰余判定。 -/
 theorem powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), W.generator})
@@ -196,7 +196,7 @@ end SerrePositivity.BhattScholze.Andre
 
 end PowerRootCompletionPairFlat
 
-/-! ## BS Rem 7.15（著者版 p.62）：p と ϖ の完全平坦性の照合（旧 Andre/Remark715/VarpiComparison/Flatness.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：p と ϖ の完全平坦性の照合（旧 Andre/Remark715/VarpiComparison/Flatness.lean）
 
 ## 概要
 主イデアル (ϖ^n)=(c) の下で c 完全平坦性と ϖ 完全平坦性を比較する。
@@ -225,7 +225,7 @@ variable {R : Type u} [CommRing R]
 /-- 概要：ϖ の正冪が c と単元の積なら、同じ主イデアルを生成する。
 方針：単元倍で主イデアルが不変であることを使う。
 規約：任意の環と指数に成立する。
-使われ方：BS Rem 7.15（著者版 p.62）の ϖ^p=u·p から一般比較への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の ϖ^p=u·p から一般比較への入力。 -/
 theorem span_power_eq_of_unit (v c : R) (n : ℕ) (u : Rˣ)
     (hpow : v ^ n = (u : R) * c) : Ideal.span {v ^ n} = Ideal.span {c} := by
   rw [hpow, mul_comm]
@@ -233,7 +233,7 @@ theorem span_power_eq_of_unit (v c : R) (n : ℕ) (u : Rˣ)
 
 /-- 概要：試験イデアルを大きくすると完全平坦性は保存される。
 方針：消滅条件を包含で制限する。規約：正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の p から ϖ への方向。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p から ϖ への方向。 -/
 theorem completelyFlat_of_le (I J : Ideal R) (hIJ : I ≤ J)
     (M : Type u) [AddCommGroup M] [Module R M] (hM : IsCompletelyFlat I M) :
     IsCompletelyFlat J M := by
@@ -243,7 +243,7 @@ theorem completelyFlat_of_le (I J : Ideal R) (hIJ : I ≤ J)
 /-- 概要：同じ主イデアルを生成する正冪は完全平坦性を変えない。
 方針：試験イデアルの包含と既存の有限冪デヴィサージュを使う。
 規約：基底・加群の正則性も完備性も不要。
-使われ方：BS Rem 7.15（著者版 p.62）の (ϖ^p)=(p)。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の (ϖ^p)=(p)。 -/
 theorem completelyFlat_iff (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c})
     (M : Type u) [AddCommGroup M] [Module R M] :
@@ -259,7 +259,7 @@ theorem completelyFlat_iff (v c : R) (n : ℕ) (hn : 0 < n)
 /-- 概要：c 完全忠実平坦な加群の通常の ϖ 還元は忠実平坦。
 方針：c で消える試験加群の零性検出を ϖ 剰余テンソルへ移す。
 規約：(ϖ^n)=(c)、n>0 のみを要し、加群の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の通常忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の通常忠実平坦性。 -/
 theorem residueTensor_faithfullyFlat (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c})
     (M : Type u) [AddCommGroup M] [Module R M]
@@ -290,7 +290,7 @@ theorem residueTensor_faithfullyFlat (v c : R) (n : ℕ) (hn : 0 < n)
 /-- 概要：同じ主イデアルを生成する正冪は完全忠実平坦性を変えない。
 方針：ϖ 還元の忠実性と各正冪の忠実性を既存 API から得る。
 規約：任意の加群に成立し、正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の p と ϖ の係数表記の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p と ϖ の係数表記の照合。 -/
 theorem completelyFaithfullyFlat_iff (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c})
     (M : Type u) [AddCommGroup M] [Module R M] :
@@ -308,7 +308,7 @@ theorem completelyFaithfullyFlat_iff (v c : R) (n : ℕ) (hn : 0 < n)
 /-- 概要：基底と M 上で ϖ が正則なら、c 完全平坦性は通常商の平坦性と同値。
 方針：主元の正則性判定と冪による完全平坦性の不変性を組み合わせる。
 規約：M 上の正則性を落とすと M=R/(ϖ) が反例となる。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 計算による判定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 計算による判定。 -/
 theorem completelyFlat_iff_flat_reduction (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c}) (hv : IsSMulRegular R v)
     (M : Type u) [AddCommGroup M] [Module R M] (hMv : IsSMulRegular M v) :
@@ -327,7 +327,7 @@ theorem completelyFlat_iff_flat_reduction (v c : R) (n : ℕ) (hn : 0 < n)
 /-- 概要：基底と M 上で ϖ が正則なら、c 完全忠実平坦性は通常商の忠実平坦性と同値。
 方針：正則主元の忠実平坦判定を完全忠実平坦性の冪不変性で移す。
 規約：通常商と導来商を正則性なしに同一視しない。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の忠実平坦性の説明。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の忠実平坦性の説明。 -/
 theorem completelyFaithfullyFlat_iff_faithfullyFlat_reduction
     (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c}) (hv : IsSMulRegular R v)
@@ -350,7 +350,7 @@ attribute [local instance] adicQuotientAlgebra
 /-- 概要：c 完全忠実平坦な R 代数の ϖ 商は R/ϖ 上忠実平坦。
 方針：通常剰余テンソルと像イデアル商の標準同型を使う。
 規約：代数の正則性を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の候補 T の通常剰余。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の候補 T の通常剰余。 -/
 theorem algebraQuotient_faithfullyFlat (v c : R) (n : ℕ) (hn : 0 < n)
     (hspan : Ideal.span {v ^ n} = Ideal.span {c})
     (T : Type u) [CommRing T] [Algebra R T]
@@ -365,7 +365,8 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end Flatness
 
-/-! ## BS Rem 7.15（著者版 p.62）：pd 表示環の係数テンソル底変換（旧 Andre/Remark715/VarpiComparison/PDBaseChange.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）の pd 表示環の係数テンソル底変換
+旧ファイルは `Andre/Remark715/VarpiComparison/PDBaseChange.lean`。
 
 ## 概要
 無限根環上の主 pd 表示は係数の主イデアル商による底変換と可換である。
@@ -404,7 +405,7 @@ local notation "zQ" => powerRootPolynomialBaseMap Q p hp (f.map (Ideal.Quotient.
 /-- 概要：無限根環の pd 表示を係数商へテンソルすると、同じ入力の pd 表示となる。
 方針：通常テンソル商の同型と既存の二重商交換を合成する。
 規約：任意の係数環・入力で成立する台環同型である。
-使われ方：BS Rem 7.15（著者版 p.62）の R/p から R/ϖ への底変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の R/p から R/ϖ への底変換。 -/
 def powerRootPDTensorQuotientEquiv : Q ⊗[S] D ≃+* PrincipalDPPresentation NQ zQ :=
   ((Algebra.TensorProduct.quotIdealMapEquivQuotTensor D (Ideal.span {c})).symm.toRingEquiv.trans
     (Ideal.quotEquivOfEq (by rw [Ideal.map_span, Set.image_singleton]))).trans
@@ -416,7 +417,7 @@ def powerRootPDTensorQuotientEquiv : Q ⊗[S] D ≃+* PrincipalDPPresentation NQ
 /-- 概要：係数テンソル比較はすべての標準分冪生成元を保つ。
 方針：商テンソルの代表元公式と既存の生成元公式を使う。
 規約：次数零も含む。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 構造の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 構造の係数変更。 -/
 theorem powerRootPDTensorQuotientEquiv_generator (i : ℕ) :
     powerRootPDTensorQuotientEquiv S p hp c f (1 ⊗ₜ[S] principalDPGenerator z i) =
       principalDPGenerator zQ i := by
@@ -429,7 +430,7 @@ end General
 /-- 概要：R/p の ϖ 還元は R/ϖ と標準的に同型。
 方針：(ϖ^n)=(c) から (c)⊆(ϖ) を得て第三同型定理を使う。
 規約：c=p とすると R/p から原典係数への商が得られる。
-使われ方：BS Rem 7.15（著者版 p.62）の一般テンソル比較を R/p へ適用する係数同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一般テンソル比較を R/p へ適用する係数同定。 -/
 def primeVarpiDoubleQuotientEquiv {R : Type u} [CommRing R]
     (v c : R) (n : ℕ) (hn : 0 < n) (hspan : Ideal.span {v ^ n} = Ideal.span {c}) :
     ((R ⧸ Ideal.span {c}) ⧸ Ideal.span {Ideal.Quotient.mk (Ideal.span {c}) v}) ≃+*
@@ -457,7 +458,7 @@ local notation "Dv" => PrincipalDPPresentation Nv zv
 /-- 概要：原典の R/ϖ に A/p の自然な係数作用を入れる。
 方針：(A/p)/(x)≃R/ϖ と標準商射を合成する。
 規約：x=φ⁻¹(d) mod p であり、R/p と A/p を混同しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実係数テンソル。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実係数テンソル。 -/
 @[instance_reducible] def varpiCoefficientAlgebra : Algebra R₀ Rv :=
   (((perfectPrismVarpiQuotientEquiv W hW).symm.toRingHom).comp
     (Ideal.Quotient.mk (Ideal.span {x}))).toAlgebra
@@ -465,7 +466,7 @@ local notation "Dv" => PrincipalDPPresentation Nv zv
 /-- 概要：既存の係数商同型は A/p 代数同型である。
 方針：自然な係数作用の定義を使う。
 規約：順方向は (A/p)/(x) から R/ϖ。
-使われ方：BS Rem 7.15（著者版 p.62）のテンソル因子の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のテンソル因子の比較。 -/
 def varpiCoefficientAlgEquiv :
     let := varpiCoefficientAlgebra W hW
     Q ≃ₐ[R₀] Rv := by
@@ -475,7 +476,7 @@ def varpiCoefficientAlgEquiv :
 /-- 概要：実装の A/p 係数 pd 包を R/ϖ へ底変換すると原典の同じ pd 表示環となる。
 方針：係数商代数同型でテンソル因子を移し、既存の pd 係数商比較へ合成する。
 規約：ϖ^p=p·単元による R/ϖ の係数作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の二つの係数表記の実同型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの係数表記の実同型。 -/
 def perfectPrismPDTensorVarpiEquiv :
     let := varpiCoefficientAlgebra W hW
     Rv ⊗[R₀] D ≃+* Dv := by
@@ -489,7 +490,7 @@ def perfectPrismPDTensorVarpiEquiv :
 /-- 概要：原典係数へのテンソル比較は元の pd 包の全ての元で既存の係数商比較に一致する。
 方針：テンソル因子変更と商テンソル同型の代表元公式を使う。
 規約：生成元だけでなく環の全ての元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な pd 底変換射の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な pd 底変換射の照合。 -/
 theorem perfectPrismPDTensorVarpiEquiv_one_tmul (t : D) :
     let := varpiCoefficientAlgebra W hW
     perfectPrismPDTensorVarpiEquiv W hW f (1 ⊗ₜ[R₀] t) =
@@ -505,7 +506,7 @@ theorem perfectPrismPDTensorVarpiEquiv_one_tmul (t : D) :
 /-- 概要：原典係数へのテンソル底変換は全標準分冪生成元を保つ。
 方針：テンソル写像と商代表元の公式を順に用いる。
 規約：モニック性も正則性も必要としない。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包としての構造照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包としての構造照合。 -/
 theorem perfectPrismPDTensorVarpiEquiv_generator (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
     perfectPrismPDTensorVarpiEquiv W hW f
@@ -518,7 +519,7 @@ theorem perfectPrismPDTensorVarpiEquiv_generator (i : ℕ) :
 /-- 概要：底変換した実テンソル環に原典側と同じ分冪構造を与える。
 方針：全生成元を保つ同型で既存の実分冪構造を戻す。
 規約：正次数イデアルは同型の逆像で固定し、モニック性のみを要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包の係数底変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包の係数底変換。 -/
 def perfectPrismPDTensorVarpiDividedPowers
     (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
@@ -531,7 +532,7 @@ def perfectPrismPDTensorVarpiDividedPowers
 /-- 概要：底変換した実分冪構造で、入力の分冪は還元前の標準生成元の像になる。
 方針：環同型の移送公式と全標準生成元の一致を使う。
 規約：モニック性のみを要求し、元の入力と生成元を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包としての底変換の具体的計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包としての底変換の具体的計算。 -/
 theorem perfectPrismPDTensorVarpiDividedPowers_generator
     (hf : f.Monic) (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
@@ -556,7 +557,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end PDBaseChange
 
-/-! ## BS Rem 7.15（著者版 p.62）：具体的候補の係数表記の照合（旧 Andre/Remark715/VarpiComparison/Candidate.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：具体的候補の係数表記の照合（旧 Andre/Remark715/VarpiComparison/Candidate.lean）
 
 ## 概要
 元の自然な Hodge–Tate 候補 T について、p 完全忠実平坦性と R/ϖ 上の
@@ -611,7 +612,7 @@ local notation "hpv" => perfectPrismVarpiRootRing_prime_eq_zero W hW
 /-- 概要：自然な候補の ϖ 商は同じ R/ϖ 上の pd 表示環と代数同型。
 方針：既存の自然二重商比較と pd 剰余比較を合成する。
 規約：入力は明示的な逆 Frobenius 係数変更 f'。
-使われ方：BS Rem 7.15（著者版 p.62）の自由性と忠実平坦性の同じ候補への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自由性と忠実平坦性の同じ候補への移送。 -/
 def hodgeTateVarpiPDAlgEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateAlgebra W hW f
@@ -628,7 +629,7 @@ def hodgeTateVarpiPDAlgEquiv (hf : f.Monic) :
 /-- 概要：候補の ϖ 商に入力の p 乗商の係数作用を与える。
 方針：pd 表示環の標準作用を自然剰余との同型で戻す。
 規約：R/ϖ 作用は既存の自然な作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の fᵖ 商上の自由性の型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の fᵖ 商上の自由性の型。 -/
 @[instance_reducible] def hodgeTateVarpiPowerQuotientAlgebra (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateAlgebra W hW f
@@ -645,7 +646,7 @@ set_option maxHeartbeats 2000000 in
 /-- 概要：実際の T/ϖ は原典型の無限根入力の p 乗商上自由。
 方針：切断分冪表示による既存の基底を係数作用と共に戻す。
 規約：モニック性は候補比較に必要で、正次数と hpR はこの自由性には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の自由性の文と同じ実対象の対応。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自由性の文と同じ実対象の対応。 -/
 theorem hodgeTateVarpi_free_over_powerQuotient (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateAlgebra W hW f
@@ -663,10 +664,10 @@ theorem hodgeTateVarpi_free_over_powerQuotient (hf : f.Monic) :
   let := perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient W hW f'
   exact Module.Free.of_equiv e.symm.toLinearEquiv
 
-/-- 概要：候補の p 完全忠実平坦性は、自然な通常 ϖ 商の忠実平坦性と同値。
+/-- 概要：候補の p 完全忠実平坦性は、自然な通常 ϖ 商の忠実平坦性と同値（BS 著者版 Remark 7.15 の証明中の被覆判定の比較）。
 方針：基底・候補の ϖ 正則性を供給して一般の判定を使う。
 規約：元の候補・基底射を固定し、hpR を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の p 係数と ϖ 係数の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 係数と ϖ 係数の照合。 -/
 theorem hodgeTate_completelyFaithfullyFlat_iff
     (hpR : IsSMulRegular R (p : R)) (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
@@ -692,7 +693,7 @@ theorem hodgeTate_completelyFaithfullyFlat_iff
 実装の係数 pd 包の R/ϖ 底変換との同型を一つに集約する。
 方針：pd 基底計算を自然商へ移し、正則性付き同値の逆方向で p 完全忠実平坦性を得る。
 規約：f'=φ_A⁻¹(f) を保持し、原典の Frobenius 引戻しを省略しない。
-使われ方：BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の公開照合定理。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の公開照合定理。 -/
 theorem hodgeTate_coefficient_comparison
     (hpR : IsSMulRegular R (p : R)) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := pdCompletionCommRing L p (jL dP)
@@ -719,7 +720,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end Candidate
 
-/-! ## BS Rem 7.15（著者版 p.62）：正則性を追加しない係数テンソルの分冪構造（旧 Andre/Remark715/VarpiComparison/UnconditionalPD.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：正則性を追加しない係数テンソルの分冪構造（旧 Andre/Remark715/VarpiComparison/UnconditionalPD.lean）
 
 ## 概要
 R/ϖ への通常テンソル底変換に分冪構造と自然な分冪射を与える。
@@ -746,7 +747,7 @@ set_option backward.defeqAttrib.useBackward true
 /-- 概要：分冪構造の環同型による移送は分冪射を与える。
 方針：移送された分冪演算の計算公式を用いる。
 規約：任意の環同型と分冪イデアルについて成立する。
-使われ方：BS Rem 7.15（著者版 p.62）の二つの構造移送を合成する補助。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの構造移送を合成する補助。 -/
 private theorem unconditional_transport_isDPMorphism {B C : Type u} [CommRing B] [CommRing C]
     {I : Ideal B} {J : Ideal C} (e : B ≃+* C) (h : I.map e.toRingHom = J)
     (H : DividedPowers I) : H.IsDPMorphism (DividedPowers.ofRingEquiv h H) e.toRingHom := by
@@ -773,7 +774,7 @@ local notation "K" => Ideal.span {algebraMap R₀ D x}
 /-- 概要：係数テンソルに追加正則性なしの分冪構造を与える。
 方針：無条件の native 分冪構造を環同型で戻す。
 規約：正次数イデアルは同型による像として固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の実 pd 底変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 pd 底変換。 -/
 def perfectPrismPDTensorVarpiDividedPowers_of_unconditional
     (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
@@ -786,7 +787,7 @@ def perfectPrismPDTensorVarpiDividedPowers_of_unconditional
 /-- 概要：底変換した実分冪構造で、入力の分冪は還元前の標準生成元の像になる。
 方針：環同型の移送公式と全標準生成元の一致を使う。
 規約：モニック性のみを使い、prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包としての底変換の具体的計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包としての底変換の具体的計算。 -/
 theorem perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional
     (hf : f.Monic) (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
@@ -809,7 +810,7 @@ theorem perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional
 /-- 概要：元の実 pd 包から係数テンソルへの標準射は分冪を保つ。
 方針：無条件の係数還元の分冪射と二つの構造移送を合成する。
 規約：全ての元で includeRight と照合し、hpR を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 底変換の構造射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 底変換の構造射。 -/
 theorem perfectPrismPDTensorVarpi_isDPMorphism_of_unconditional
     (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
@@ -844,7 +845,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end UnconditionalPD
 
-/-! ## BS Rem 7.15（著者版 p.62）：無条件の Hodge–Tate 係数比較（旧 Andre/Remark715/VarpiComparison/UnconditionalCandidate.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：無条件の Hodge–Tate 係数比較（旧 Andre/Remark715/VarpiComparison/UnconditionalCandidate.lean）
 
 ## 概要
 元の候補 T の p 完全忠実平坦性と自然な ϖ 商の忠実平坦性を照合する。
@@ -899,7 +900,7 @@ local notation "hpv" => perfectPrismVarpiRootRing_prime_eq_zero W hW
 /-- 概要：元の候補の p 完全忠実平坦性は自然な ϖ 商の忠実平坦性と同値。
 方針：正次数では無条件の導来還元を使い、次数零では源の零環性から平坦性を得る。
 規約：モニック性のみを仮定し、hpR と余分な正次数仮定を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の二つの係数表記の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの係数表記の照合。 -/
 theorem hodgeTate_completelyFaithfullyFlat_iff_of_unconditional (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateAlgebra W hW f
@@ -933,7 +934,7 @@ theorem hodgeTate_completelyFaithfullyFlat_iff_of_unconditional (hf : f.Monic) :
 実装の係数 pd 包の R/ϖ 底変換との同型を一つに集約する。
 方針：pd 基底計算を自然商へ移し、無条件版の同値で p 完全忠実平坦性を得る。
 規約：f'=φ_A⁻¹(f) を保持し、原典の Frobenius 引戻しを省略しない。
-使われ方：BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の公開照合定理。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の公開照合定理。 -/
 theorem hodgeTate_coefficient_comparison_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     let := pdCompletionCommRing L p (jL dP)
@@ -960,7 +961,8 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end UnconditionalCandidate
 
-/-! ## BS Rem 7.15（著者版 p.62）：自然な係数テンソル射は分冪射（旧 Andre/Remark715/VarpiComparison/PDCompatibility.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）の自然な係数テンソル射は分冪射
+旧ファイルは `Andre/Remark715/VarpiComparison/PDCompatibility.lean`。
 
 ## 概要
 実装の A/p 上の実 pd 包から R/ϖ への通常テンソル底変換は分冪演算を保つ。
@@ -984,7 +986,7 @@ set_option maxRecDepth 2048
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 
-/-- 分冪構造の環同型による移送は分冪射を与える。BS Rem 7.15（著者版 p.62）への補助。 -/
+/-- 分冪構造の環同型による移送は分冪射を与える。BS 著者版 Remark 7.15（著者版 p.62）への補助。 -/
 private theorem transport_isDPMorphism {B C : Type u} [CommRing B] [CommRing C]
     {I : Ideal B} {J : Ideal C} (e : B ≃+* C) (h : I.map e.toRingHom = J)
     (H : DividedPowers I) : H.IsDPMorphism (DividedPowers.ofRingEquiv h H) e.toRingHom := by
@@ -1000,10 +1002,10 @@ local notation "D" => PowerRootCoefficientPDEnvelope p f
 local notation "K" => Ideal.span {algebraMap R₀ D x}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
 
-/-- 概要：元の実 pd 包から係数テンソル底変換への標準射は分冪を保つ。
+/-- 概要：元の実 pd 包から係数テンソル底変換への標準射は分冪を保つ（BS 著者版 Remark 7.15 の証明中の φ 引き戻しの PD 比較の一方向）。
 方針：射影的係数商の分冪射を構造移送と合成し、全元で includeRight と同一視する。
 規約：元の環と係数作用を保持し、hpR と正次数を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包の底変換を実分冪射として供給する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包の底変換を実分冪射として供給する。 -/
 theorem perfectPrismPDTensorVarpi_isDPMorphism
     (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
@@ -1038,7 +1040,7 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end PDCompatibility
 
-/-! ## BS Rem 7.15（著者版 p.62）：R/p から R/ϖ への pd 底変換（旧 Andre/Remark715/VarpiComparison/PrimeReduction.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）：R/p から R/ϖ への pd 底変換（旧 Andre/Remark715/VarpiComparison/PrimeReduction.lean）
 
 ## 概要
 実装の A/p 表示との比較とは別に、R/p 上の無限根 pd 表示を R/ϖ へ底変換する。
@@ -1063,7 +1065,7 @@ set_option backward.defeqAttrib.useBackward true
 /-- 概要：係数環同型は無限根環での多項式評価と可換。
 方針：係数単項式と標準変数の像を照合する。
 規約：指数モノイドは変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の二重商係数の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二重商係数の移送。 -/
 theorem rootCoefficientChange_baseMap {S B : Type u} [CommRing S] [CommRing B]
     (p : ℕ) (hp : 0 < p) (e : S ≃+* B) (f : Polynomial S) :
     AddMonoidAlgebra.mapRingEquiv (powerRootExponentMonoid p hp) e
@@ -1095,13 +1097,13 @@ variable (e : (S ⧸ Ideal.span {c}) ≃+* B)
 
 /-- 概要：指定係数商同型による自然な係数代数構造。
 方針：標準商射と同型を合成する。規約：作用を明示的に固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の原典係数でのテンソル型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典係数でのテンソル型。 -/
 @[instance_reducible] def quotientCoefficientAlgebra : Algebra S B :=
   (e.toRingHom.comp (Ideal.Quotient.mk (Ideal.span {c}))).toAlgebra
 
 /-- 概要：係数商同型を指定作用上の代数同型として扱う。
 方針：係数作用の定義を展開する。規約：同型は元の環同型と同じ。
-使われ方：BS Rem 7.15（著者版 p.62）のテンソル因子の変更。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のテンソル因子の変更。 -/
 def quotientCoefficientAlgEquiv :
     let := quotientCoefficientAlgebra S B c e
     (S ⧸ Ideal.span {c}) ≃ₐ[S] B := by
@@ -1111,7 +1113,7 @@ def quotientCoefficientAlgEquiv :
 /-- 概要：係数商と係数同型の合成に沿う無限根 pd 表示の実テンソル同型。
 方針：一般の係数商底変換と、入力評価を保つ係数環同型を合成する。
 規約：入力多項式は元の S から指定した係数射で移す。
-使われ方：BS Rem 7.15（著者版 p.62）の R/p と R/ϖ の直接比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の R/p と R/ϖ の直接比較。 -/
 def powerRootPDTensorChangeEquiv (p : ℕ) (hp : 0 < p) (f : Polynomial S) :
     let := quotientCoefficientAlgebra S B c e
     B ⊗[S] PrincipalDPPresentation (PowerRootPolynomial S p hp)
@@ -1133,7 +1135,7 @@ end Change
 /-- 概要：R/p の pd 表示を原典の R/ϖ へテンソルすると、同じ f の R/ϖ pd 表示となる。
 方針：(ϖ^p)=(p) による二重商同型を一般の係数テンソル比較へ渡す。
 規約：R は任意の可換環でよく、入力 f のモニック性は環同型には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の R/ϖ⊗_{R/p} による係数表記の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の R/ϖ⊗_{R/p} による係数表記の照合。 -/
 def primePDTensorVarpiEquiv {R : Type u} [CommRing R] (p : ℕ) (hp : 0 < p)
     (v : R) (hspan : Ideal.span {v ^ p} = Ideal.span {(p : R)}) (f : Polynomial R) :
     let e := primeVarpiDoubleQuotientEquiv v (p : R) p hp hspan

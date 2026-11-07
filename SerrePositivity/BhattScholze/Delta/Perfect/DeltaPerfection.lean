@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!
-# δ 環の完全化と、完全 δ 環が余極限・完備化で閉じること（BS 著者版 Rem 2.27）
+# δ 環の完全化と、完全 δ 環が余極限・完備化で閉じること（BS 著者版 Remark 2.27）
 
 ## 概要
 Frobenius に沿う余極限による完全化 A_perf とその普遍性、完全 δ 環の有向余極限・古典的 p 進完備化・導来 (p,d) 完備化 H⁰ が
@@ -20,7 +20,7 @@ Frobenius に沿う余極限による完全化 A_perf とその普遍性、完�
 逆極限側の完全化 lim_φ はない（A3 で要る）。
 
 ## 使われ方
-prism の完全化（Lemma 3.9、Prism/Perfection）、André の ω₁ 反復。
+prism の完全化（BS 著者版 Lemma 3.9、Prism/Perfection）、André の ω₁ 反復。
 -/
 
 @[expose] public noncomputable section
@@ -38,7 +38,7 @@ section DeltaPerfection
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- Frobenius持上げの反復に沿った環の余極限。 -/
+/-- Frobenius持上げの反復に沿った環の余極限（BS 著者版 Remark 2.27 の左側の完全化の台）。 -/
 abbrev DeltaPerfection (D : DeltaStructure p A) :=
   Ring.DirectLimit (fun _ : ℕ ↦ A)
     (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i])
@@ -127,7 +127,7 @@ theorem deltaPerfectionShift_rightInverse (D : DeltaStructure p A) :
     (deltaPerfectionShift D (deltaPerfectionOf D n a)) = deltaPerfectionOf D n a
   rw [deltaPerfectionShift_of, deltaPerfection_frobenius_of, deltaPerfectionOf_succ_frobenius]
 
-/-- Frobenius余極限は完全δ環。 -/
+/-- Frobenius余極限は完全δ環（BS 著者版 Remark 2.27 の左側の完全化の完全性）。 -/
 theorem deltaPerfection_isPerfect (D : DeltaStructure p A) :
     (deltaPerfectionStructure D).IsPerfect :=
   ⟨(deltaPerfectionShift_leftInverse D).injective,
@@ -188,7 +188,7 @@ theorem deltaPerfectionStage_compatible {D : DeltaStructure p A} {E : DeltaStruc
     rw [Nat.add_succ, Function.iterate_succ_apply', deltaPerfectionStage_step hE hf]
     exact ih
 
-/-- 任意のδ基底射fから完全δ終域への一意な射が、具体的なδ完全化から存在する。 -/
+/-- 任意のδ基底射fから完全δ終域への一意な射が、具体的なδ完全化から存在する（BS 著者版 Remark 2.27 の左随伴の普遍性）。 -/
 theorem existsUnique_deltaPerfectionHom (D : DeltaStructure p A) (E : DeltaStructure p B)
     (hE : E.IsPerfect) (f : A →+* B) (hf : D.IsDeltaHom E f) :
     ∃! g : DeltaPerfection D →+* B,
@@ -240,7 +240,7 @@ end DeltaPerfectionUniversal
 
 /-! ## 完全 δ 環の余極限の完全性（旧 Andre/Transfinite/PerfectDeltaColimit.lean）
 
-BS Lemma 3.9（著者版 pp.31–32）および Thm 7.14（p.61）の極限操作に用いる。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）および BS 著者版 Theorem 7.14（p.61）の極限操作に用いる。
 既存の任意図式の δ 余極限構造について、各段の Frobenius 同型を余極限へ移す。
 -/
 
@@ -255,7 +255,7 @@ variable {p : ℕ} [Fact p.Prime] {ι : Type u} [Preorder ι]
     (hδ : ∀ i j h, (D i).IsDeltaHom (D j) (f i j h))
 /-- ## 概要
 完全 δ 環と δ 遷移射からなる図式の環余極限上の標準 δ 構造は完全である。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限段に用いる補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限段に用いる補助命題。
 
 ## 方針
 各段の Frobenius 環同型の両立性から余極限上の環同型を作り、
@@ -296,7 +296,7 @@ end PerfectDeltaColimit
 
 /-! ## 完全δ環の古典的p進完備化（旧 Prism/Perfection/PerfectDeltaPCompletion.lean）
 
-著者公開版Lemma 3.9のp進完備化段階に使うδ環の定理。
+BS 著者版 Lemma 3.9のp進完備化段階に使うδ環の定理。
 逆Frobeniusを古典的完備化に延長し、射の外延性で両逆の等式を証明する。
 導来完備化との比較やprismのイデアルの処理は含めない。
 -/
@@ -360,7 +360,7 @@ end PerfectDeltaPCompletion
 
 /-! ## 完全δ環の実導来(p,d)完備化の完全性（旧 Prism/Perfection/PerfectDeltaPDCompletion.lean）
 
-著者公開版Lemma 3.9の完全化後の計算。
+BS 著者版 Lemma 3.9の完全化後の計算。
 逆Frobeniusを実H⁰へ延長し、両合成を環普遍性から恒等射と判定する。
 -/
 

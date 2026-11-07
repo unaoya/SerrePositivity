@@ -18,7 +18,7 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.Tor
 
 /-!
-# 通常のモニック根の添加と冪根の添加（BS 著者版 Thm 7.14 の証明の R̃ の有限版）
+# 通常のモニック根の添加と冪根の添加（BS 著者版 Theorem 7.14 の証明の R̃ の有限版）
 
 ## 概要
 独立変数ごとのモニック関係式 fᵢ(Xᵢ) と係数商での正則性、通常のモニック根添加 R[X]/(f) の自由性、任意元族の冪根添加環 R[X_s]/(X_sⁿ − c_s) の普遍性・商表示・自由性・完全忠実平坦性。
@@ -40,7 +40,7 @@ universe u v w
 ## 概要
 
 任意のモニック多項式を多変数多項式環の指定変数で評価すると非零因子になる。
-BS 著者版 Rem 7.15(1)（p.62）の pd 包の計算に必要な正則性の通常代数部分である。
+BS 著者版 Remark 7.15(1)（p.62）の pd 包の計算に必要な正則性の通常代数部分である。
 
 ## 方針
 
@@ -64,7 +64,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：指定変数に課す通常の多項式関係式。
 方針：係数を定数多項式へ写して評価する。
 規約：δ 構造を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の一元関係の多変数版。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一元関係の多変数版。 -/
 def monicRelation {R : Type u} [CommRing R] {σ : Type v}
     (f : Polynomial R) (s : σ) : MvPolynomial σ R :=
   f.eval₂ MvPolynomial.C (MvPolynomial.X s)
@@ -72,7 +72,7 @@ def monicRelation {R : Type u} [CommRing R] {σ : Type v}
 /-- 概要：指定変数のモニック関係式は多変数多項式環で非零因子。
 方針：指定変数の分離同型でモニックの一変数多項式に移す。
 規約：正次数・素数・δ 構造を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の pd 包の正則性入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の正則性入力。 -/
 theorem monicRelation_isSMulRegular {R : Type u} [CommRing R] {σ : Type v}
     (f : Polynomial R) (hf : f.Monic) (s : σ) :
     IsSMulRegular (MvPolynomial σ R) (monicRelation f s) := by
@@ -569,7 +569,7 @@ end MonicPowerFamilyBaseQuotient
 ## 概要
 
 任意の係数イデアルで割った後も、指定変数のモニック関係式は非零因子である。
-BS 著者版 Cor 2.39（p.25）、Rem 7.15(1)（p.62）の正則性入力を供給する。
+BS 著者版 Corollary 2.39（p.25）、BS 著者版 Remark 7.15(1)（p.62）の正則性入力を供給する。
 
 ## 方針
 
@@ -595,7 +595,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：モニック関係式の評価は係数変更と可換である。
 方針：多項式評価の環射に関する自然性を使う。
 規約：モニック性自体はこの恒等式には不要である。
-使われ方：BS Rem 7.15（著者版 p.62）の残余関係式を同定する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の残余関係式を同定する。 -/
 theorem monicRelation_map {R : Type u} {B : Type w} [CommRing R] [CommRing B]
     {σ : Type v} (φ : R →+* B) (f : Polynomial R) (s : σ) :
     MvPolynomial.map φ (monicRelation f s) = monicRelation (f.map φ) s := by
@@ -608,7 +608,7 @@ theorem monicRelation_map {R : Type u} {B : Type w} [CommRing R] [CommRing B]
 /-- 概要：係数商に沿う拡張イデアルで割っても、モニック関係式の像は非零因子。
 方針：多変数多項式環と係数商の交換同型を通じて既知の正則性へ帰着する。
 規約：零環と任意イデアルを許す。
-使われ方：BS Cor 2.39（著者版 p.25）の mod p 正則性をモニック性から供給する。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の mod p 正則性をモニック性から供給する。 -/
 theorem monicRelation_coefficientQuotient_isSMulRegular
     {R : Type u} [CommRing R] {σ : Type v}
     (I : Ideal R) (f : Polynomial R) (hf : f.Monic) (s : σ) :
@@ -630,7 +630,7 @@ theorem monicRelation_coefficientQuotient_isSMulRegular
 /-- 概要：モニック関係式は実際の p 主イデアル商でも非零因子。
 方針：係数の p 主イデアルの多項式環への像を照合する。
 規約：p の素数性・係数環の p 正則性は不要。
-使われ方：BS Cor 2.39（著者版 p.25）の raw δ 除算の正則性入力。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）の raw δ 除算の正則性入力。 -/
 theorem monicRelation_modP_isSMulRegular
     {R : Type u} [CommRing R] {σ : Type v}
     (p : ℕ) (f : Polynomial R) (hf : f.Monic) (s : σ) :
@@ -654,13 +654,13 @@ end MonicRelationResidue
 
 正次数のモニック多項式の通常根添加環は自由かつ忠実平坦である。
 有限段の変数置換 `Y = Z^n` と関係式の冪にも同じ結論を与える。
-BS 著者版 Thm 7.14（p.61）、Rem 7.15(1)（p.62）の通常代数の準備である。
+BS 著者版 Theorem 7.14（p.61）、BS 著者版 Remark 7.15(1)（p.62）の通常代数の準備である。
 
 ## 方針
 
 Mathlib のモニック剰余の冪基底を使う。非零係数環では正次数から係数射の単射性を得て、
 自由加群の忠実平坦性を適用する。零係数環は加群の自明性で処理する。
-原典の Prop 7.11 を使う証明とは異なる経路の準備で、pd 包との同定は含まない。
+原典の BS 著者版 Proposition 7.11 を使う証明とは異なる経路の準備で、pd 包との同定は含まない。
 
 ## 規約
 
@@ -683,7 +683,7 @@ open Polynomial
 /-- 概要：正次数モニックの根添加環は係数環上忠実平坦。
 方針：モニック剰余の自由性と係数射の単射性を使い、零環は別に処理する。
 規約：次数の仮定は定数 `1` を除外する。
-使われ方：BS Rem 7.15（著者版 p.62）のモニック商の有限段の準備。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のモニック商の有限段の準備。 -/
 theorem adjoinRoot_faithfullyFlat {R : Type u} [CommRing R]
     (f : R[X]) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat R (AdjoinRoot f) := by
@@ -703,7 +703,7 @@ theorem adjoinRoot_faithfullyFlat {R : Type u} [CommRing R]
 /-- 概要：正次数モニックに根を添加した通常の自由忠実平坦拡大が存在する。
 方針：`AdjoinRoot f` とその標準根を取る。
 規約：完備性・perfectoid 性は結論に含まない。
-使われ方：BS Thm 7.14（著者版 p.61）の一段の通常代数部分。 -/
+使われ方：BS 著者版 Theorem 7.14（著者版 p.61）の一段の通常代数部分。 -/
 theorem exists_monicRootedFaithfullyFlat {R : Type u} [CommRing R]
     (f : R[X]) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (r : T),
@@ -718,7 +718,7 @@ theorem exists_monicRootedFaithfullyFlat {R : Type u} [CommRing R]
 /-- 概要：モニック f の変数を n 乗に置換した後の m 乗関係式も、自由忠実平坦な商を与える。
 方針：expand と冪のモニック性・次数公式を通常根添加の結果に適用する。
 規約：`n,m` は正であり、有限段の商だけを扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の `P/(f^p)` の有限段。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の `P/(f^p)` の有限段。 -/
 theorem expandedPower_quotient_free_faithfullyFlat {R : Type u} [CommRing R]
     (f : R[X]) (hf : f.Monic) (hdeg : 0 < f.natDegree)
     (n m : ℕ) (hn : 0 < n) (hm : 0 < m) :

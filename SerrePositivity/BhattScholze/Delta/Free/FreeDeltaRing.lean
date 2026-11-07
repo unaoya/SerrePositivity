@@ -14,9 +14,10 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaQuotient
 ## 概要
 ℤ[x_(s,n)] に φ(x_(s,n)) = x_(s,n)^p + p·x_(s,n+1) を与えて δ 構造を入れ、普遍性・表示・相対版との比較を示す。
 系として任意の δ 環で φ と δ が可換、すなわち φ は δ 射（勉強ノート第 2 章の命題 2.1.5 (4)、命題 2.1.11 (1)）。
+整数上の標準 δ 構造を係数とする相対自由構成との比較を、BS 著者版 Example 2.6 と Lemma 2.11 に関わる係数計算として扱う。
 
 ## 方針
-原典どおり、p ねじれなしと Rem 2.2 の対応で δ 構造を作る。φ が δ 射であることは自由 δ 環で確かめて普遍性で送る。
+原典どおり、p ねじれなしと BS 著者版 Remark 2.2 の対応で δ 構造を作る。φ が δ 射であることは自由 δ 環で確かめて普遍性で送る。
 
 ## 規約
 終域の p ねじれを許す。
@@ -31,7 +32,7 @@ universe u v
 /-! ## 整数係数の自由δ環（旧 Delta/Free/FreeDeltaRing.lean）
 
 変数x_(s,n)を持つ整数多項式環にφ(x_(s,n))=x_(s,n)^p+p*x_(s,n+1)を与える。
-BS著者版Lemma 2.11の整数係数の構成。原典のZ_(p)係数への局所化と
+BS 著者版 Lemma 2.11の整数係数の構成。原典のZ_(p)係数への局所化と
 Frobeniusの忠実平坦性は、このモジュールで完成したとはしない。
 -/
 
@@ -40,7 +41,8 @@ section FreeDeltaRing
 namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (σ : Type u)
 
-/-- 変数x_(s,n)の整数多項式環。δ^n(x_s)をx_(s,n)として実現する。 -/
+/-- 変数x_(s,n)の整数多項式環（BS 著者版 Lemma 2.11 の多項式表示の整数係数・任意変数族の場合）。
+  δ^n(x_s)をx_(s,n)として実現する。 -/
 abbrev FreeDeltaRing := MvPolynomial (σ × ℕ) ℤ
 
 /-- 自由δ環のFrobenius持上げ候補。整数は固定し、各変数をx^p+p*次の変数へ送る。 -/
@@ -117,7 +119,7 @@ end FreeDeltaRing
 /-! ## 自由整数δ環の普遍性（旧 Delta/Free/FreeDeltaUniversal.lean）
 
 任意のδ環と生成元の指定から、δの反復像を座標へ評価する一意なδ射を構成する。
-BS著者版Lemma 2.11の整数係数の普遍性。pねじれを持つ終域も許す。
+BS 著者版 Lemma 2.11の整数係数の普遍性。pねじれを持つ終域も許す。
 -/
 
 section FreeDeltaUniversal
@@ -153,8 +155,8 @@ theorem freeDeltaHom_X_iterates (D : DeltaStructure p A) (f : FreeDeltaRing σ �
   | succ n ih =>
       rw [← freeDeltaStructure_delta_X p σ s n, hf, ih, Function.iterate_succ_apply']
 
-/-- 任意のδ環と元族a_sについて、x_(s,0)をa_sへ送るδ射が一意に存在する。
-整数係数の自由δ環の普遍性（BS Lemma 2.11の整数係数部分）。 -/
+/-- 任意のδ環と元族a_sについて、x_(s,0)をa_sへ送るδ射が一意に存在する（BS 著者版 Lemma 2.11 の自由性の整数係数・任意変数族の場合）。
+整数係数の自由δ環の普遍性。 -/
 theorem existsUnique_freeDeltaHom (D : DeltaStructure p A) (a : σ → A) :
     ∃! f : FreeDeltaRing σ →+* A,
       (freeDeltaStructure p σ).IsDeltaHom D f ∧
@@ -174,7 +176,7 @@ end FreeDeltaUniversal
 /-! ## 自由δ環に関係式を課す普遍性（旧 Delta/Free/FreeDeltaPresentation.lean）
 
 自由整数δ環のイデアルIのδ閉包による商は、Iを零に送るδ射の普遍対象である。
-BS著者版Notation 2.8・Example 2.10の生成元と関係式の代数的構成。
+BS 著者版 Notation 2.8・BS 著者版 Example 2.10の生成元と関係式の代数的構成。
 完備化やprismatic envelopeそのものはこのモジュールには含まない。
 -/
 

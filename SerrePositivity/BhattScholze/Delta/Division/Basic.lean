@@ -10,13 +10,14 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 /-!
-# d で割る δ 包 A{a_s/d}（Not 2.8 の添加の一般形）
+# d で割る δ 包 A{a_s/d}（BS 著者版 Notation 2.8 の添加の一般形）
 
 ## 概要
 δ 環に a_s/d を添加した生の包 `DeltaAdjoinDivision` とその普遍性、d が正則な標的への普遍性、mod d への商射、d 冪・p 冪ねじれの δ 閉包による除去と除去商の p 正則性、古典的 (p,d) 完備化と、δ 除算・ねじれ除去・導来 (p,d) 完備化の一段操作。
+δ 除算の添加、ねじれ除去、それらを合わせた普遍性は、BS 著者版 Proposition 7.2 の証明に関わる代数的な補助である。
 
 ## 方針
-原典では §2 に対応する項目はなく、§3 の Prop 3.13（prismatic envelope）と §7 の Prop 7.2 で使う構成。
+この構成は BS 著者版 Proposition 3.13 の prismatic envelope と Proposition 7.2 の証明で使う。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。
@@ -29,8 +30,8 @@ universe u v w
 
 /-! ## δ環でのa_s/dの添加（旧 Delta/Division/DeltaAdjoinDivision.lean）
 
-相対自由δ環へd*x_s=a_sの関係式を課す。BS著者版Notation 2.8、
-Proposition 7.2のJ/dのδ添加の代数的部分。d冪ねじれの除去、導来完備化、
+相対自由δ環へd*x_s=a_sの関係式を課す。BS 著者版 Notation 2.8、
+BS 著者版 Proposition 7.2のJ/dのδ添加の代数的部分。d冪ねじれの除去、導来完備化、
 反復構成、perfectoid化の存在はこのモジュールには含めない。
 -/
 
@@ -117,7 +118,7 @@ end DeltaAdjoinDivision
 
 /-! ## d冪ねじれのδ閉包による商（旧 Delta/Division/DeltaTorsionReduction.lean）
 
-BS著者公開版Proposition 7.2のB/B[d^∞]_δの代数的部分。
+BS 著者版 Proposition 7.2のB/B[d^∞]_δの代数的部分。
 通常のd冪ねじれはMathlibの局所化射の核として扱い、新しいねじれイデアルを重複定義しない。
 商の新しいdねじれの不存在や導来完備化はここでは結論しない。
 -/
@@ -128,7 +129,7 @@ namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
 
 /-- dの冪で消える元は、局所化射の核のδ閉包に属する。
-Prop 7.2で旧d冪ねじれを商で消す際の具体的な包含。 -/
+BS 著者版 Proposition 7.2で旧d冪ねじれを商で消す際の具体的な包含。 -/
 theorem pow_torsion_mem_deltaClosure_ker_away (D : DeltaStructure p R) (d : R)
     (N : ℕ) (x : R) (hx : d ^ N * x = 0) :
     x ∈ D.deltaClosure (RingHom.ker (algebraMap R (Localization.Away d))) := by
@@ -155,7 +156,7 @@ theorem IsDeltaHom.deltaClosure_ker_away_le_ker {A : Type v} [CommRing A]
   exact (IsLeftRegular.pow N hreg) (h.trans (mul_zero _).symm)
 
 /-- δ射fがdを非零因子へ送るなら、d冪ねじれのδ閉包商から一意なδ射に降下する。
-環・標準商写像・δ構造を明示したProp 7.2のねじれ除去段階の普遍性。 -/
+環・標準商写像・δ 構造を明示したねじれ除去段階の普遍性。 -/
 theorem existsUnique_torsionReductionHom (D : DeltaStructure p R) (d : R)
     {A : Type v} [CommRing A] (E : DeltaStructure p A) (f : R →+* A)
     (hf : D.IsDeltaHom E f) (hd : Function.Injective (fun x : A ↦ f d * x)) :
@@ -173,7 +174,7 @@ end DeltaTorsionReduction
 
 /-! ## 正則なdの像へのδ除算の普遍性（旧 Delta/Division/DeltaDivisionUniversal.lean）
 
-著者公開版Prop 7.2の代数的な二段階。指定解族を公開定理の結論から除き、
+BS 著者版 Proposition 7.2の代数的な二段階。指定解族を公開定理の結論から除き、
 基底射・可除性・dの像の正則性から一意なδ射を得る。
 導来完備化後のねじれ除去やprismの存在は結論しない。
 -/
@@ -235,7 +236,7 @@ def deltaDivisionTorsionStructure (D : DeltaStructure p R) (d : R) (a : σ → R
     ((deltaAdjoinDivisionStructure D d a).isStable_deltaClosure _)
 
 /-- 正則なdの像と可除性を持つδ基底射は、除算・旧ねじれ除去の二段階商から
-一意なδ射へ延長される。Prop 7.2の完備化前の具体的な普遍性。 -/
+一意なδ射へ延長される。完備化前の具体的な普遍性。 -/
 theorem existsUnique_deltaDivisionTorsionHom {A : Type w} [CommRing A]
     (D : DeltaStructure p R) (E : DeltaStructure p A) (d : R) (a : σ → R)
     (f : R →+* A) (hf : D.IsDeltaHom E f)
@@ -347,7 +348,7 @@ end DeltaPTorsionReduction
 
 /-! ## δ除算商の古典的(p,d)完備化（旧 Delta/Division/DeltaDivisionClassicalCompletion.lean）
 
-著者公開版Prop 7.2の代数的商に古典的完備化を適用する具体的な工程。
+BS 著者版 Proposition 7.2の代数的商に古典的完備化を適用する具体的な工程。
 導来完備化との比較、新dねじれの不存在、prismの存在は主張しない。
 -/
 
@@ -446,7 +447,7 @@ end DeltaDivisionClassicalCompletion
 
 /-! ## δ除算・旧ねじれ商・実導来(p,d)完備化の一段操作（旧 Delta/Division/DeltaDivisionPDCompletion.lean）
 
-著者公開版Prop 7.2の一段を、F3の実Koszul H⁰と証明済みδ延長に接続する。
+BS 著者版 Proposition 7.2の一段を、F3の実Koszul H⁰と証明済みδ延長に接続する。
 完備化後の新dねじれの不存在やprismの存在は結論しない。
 -/
 
@@ -577,7 +578,7 @@ end DeltaDivisionPDCompletion
 
 /-! ## 除算添加後のmod dへの商射（旧 Delta/Division/DeltaDivisionQuotient.lean）
 
-著者公開版Prop 7.2のR→Δ/dがSを経由する代数的な計算。
+BS 著者版 Proposition 7.2のR→Δ/dがSを経由する代数的な計算。
 Rの任意のイデアルJの全元をdで割る添加環と旧ねじれ除去商に対し、
 R/Jからmod dへの標準環射を構成する。完備性は仮定せず、prismとは呼ばない。
 -/

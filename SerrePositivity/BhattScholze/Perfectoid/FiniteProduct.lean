@@ -14,6 +14,7 @@ public import Mathlib.RingTheory.Perfectoid.FontaineTheta
 
 ## 概要
 R・S が perfectoid（`IsIntegralPerfectoid`）なら R × S も perfectoid。帰納で `Fin r → R`（r = 0 は零環）を得る。
+BS 著者版 Theorem 3.10 の prism 表示に関わる perfectoid 環の有限直積の補題。完備テンソルと有限図式の計算で使う。
 
 ## 方針
 p 進完備性・p = aϖ^p・mod p の Frobenius 全射を成分ごとに示す。

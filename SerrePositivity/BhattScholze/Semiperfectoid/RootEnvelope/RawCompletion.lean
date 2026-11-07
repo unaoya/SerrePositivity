@@ -12,6 +12,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 ## 概要
 raw r/d 包の A 作用と prism 候補への導来源射、raw 根環の逐次完備化と元の A 上の対象の比較、H⁰ の二座標反射と PD 完備化環。
+BS 著者版 Theorem 7.4 の根の包による別証明に使う、raw 根環の逐次完備化を扱う。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

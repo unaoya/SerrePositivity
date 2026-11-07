@@ -10,6 +10,7 @@ public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 ## 概要
 
 主開集合の被覆の各成分で perfectoid イデアルが Tor の係数を零化すれば、元の環でも零化されることを示し、絶対整閉な被覆（主被覆を含む）から perfectoid イデアルの冪ねじれ Tor の入力を得る。
+BS 著者版 Proposition 10.2 と Proposition 10.4 の零化に関わる、CLMST の Tor への移送を扱う。
 
 ## 方針
 

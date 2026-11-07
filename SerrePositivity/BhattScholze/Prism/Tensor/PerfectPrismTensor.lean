@@ -23,7 +23,7 @@ public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 圏の余積としての普遍性は述べない。
 
 ## 使われ方
-perfectoid 環の完備テンソル積（Perfectoidization/CompletedTensor）、Prop 8.13 の環版。
+perfectoid 環の完備テンソル積（Perfectoidization/CompletedTensor）、BS 著者版 Proposition 8.13 の環版。
 -/
 
 universe u

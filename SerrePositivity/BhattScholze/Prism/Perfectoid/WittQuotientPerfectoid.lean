@@ -11,7 +11,7 @@ public import Mathlib.RingTheory.AdicCompletion.Topology
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 
 /-!
-# 完備な distinguished Witt 商は perfectoid（BS 著者版 Thm 3.10 の計算）
+# 完備な distinguished Witt 商は perfectoid（BS 著者版 Theorem 3.10 の計算）
 
 ## 概要
 W(k)/(d) の標準 Fontaine 比較写像、その単射性と同型条件、tilt 同型、完備な distinguished Witt 商の perfectoid 性と Fontaine 核の生成元。
@@ -30,7 +30,7 @@ universe u
 
 /-! ## Witt商の標準Fontaine比較写像（旧 Prism/Perfectoid/WittQuotientFontaineComparison.lean）
 
-著者公開版Theorem 3.10の比較に使う具体的なδ射と商上の同型。
+BS 著者版 Theorem 3.10の比較に使う具体的なδ射と商上の同型。
 商の古典的p進完備性は仮定し、台Witt環の同型とは区別する。
 -/
 
@@ -268,7 +268,7 @@ end WittRegularQuotientPerfectoid
 /-! ## 正則Witt商の標準比較射によるFontaine核の生成（旧 Prism/Perfectoid/WittRegularQuotientFontaineKernel.lean）
 
 存在だけでなく、元のdistinguished元dの標準Fontaine像が核を生成すると特定する。
-商の古典的p完備性とd₀の正則性を明示したTheorem 3.10の部分定理。
+商の古典的p完備性とd₀の正則性を明示したBS 著者版 Theorem 3.10の部分定理。
 -/
 
 @[expose] public noncomputable section WittRegularQuotientFontaineKernel
@@ -311,7 +311,7 @@ end WittRegularQuotientFontaineKernel
 
 /-! ## Witt商の標準Fontaine比較射の単射性と同型条件（旧 Prism/Perfectoid/WittQuotientFontaineIso.lean）
 
-著者公開版Theorem 3.10の台環比較に向けた具体的な定理。
+BS 著者版 Theorem 3.10の台環比較に向けた具体的な定理。
 源のd進分離性で単射性を証明し、全射性には標的の核進分離性を明示する。
 その分離性自体や一般Witt復元を未証明入力で置き換えない。
 -/

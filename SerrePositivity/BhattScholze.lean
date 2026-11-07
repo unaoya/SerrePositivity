@@ -10,6 +10,9 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Excision
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness

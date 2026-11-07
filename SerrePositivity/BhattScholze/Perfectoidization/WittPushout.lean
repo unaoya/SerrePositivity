@@ -10,6 +10,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 
 ## 概要
 共通の Fontaine 生成元による Witt 商表示、Witt 係数テンソルから完備環への普遍射、Witt 商の余積とその mod p。
+BS 著者版 Theorem 3.10 の Witt 表示を使って、perfectoid 環の余積を計算する。
 
 ## 方針
 Witt 係数の余積を Witt 商で割って perfectoid 環の余積の候補を作る。

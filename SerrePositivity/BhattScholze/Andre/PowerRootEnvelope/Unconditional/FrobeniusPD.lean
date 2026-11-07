@@ -13,6 +13,7 @@ public import SerrePositivity.BhattScholze.Andre.Variants.Auxiliary
 
 ## 概要
 Hodge–Tate 商への導来還元、Frobenius テンソル上の pd 包、追加の正則性なしの Frobenius 引戻しの pd 普遍性。
+BS 著者版 Remark 7.15 の φ 引き戻しの計算に関わる、Frobenius テンソル上の分冪構造を構成する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -29,7 +30,7 @@ universe u w
 /-! ## 元の Hodge–Tate 商への実導来還元（旧 Andre/Remark715/Unconditional/PowerRootHodgeTateReduction.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の H/dH と、その自然な係数作用を保つ還元比較。
+BS 著者版 Remark 7.15（著者版 p.62）の元の H/dH と、その自然な係数作用を保つ還元比較。
 
 ## 方針
 分母正則性による実導来主商と通常の商を比較する。
@@ -53,7 +54,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：指定した自然な主商射の作用で、通常係数拡大を同じ環商へ同定する。
 方針：拡張イデアルの等式と代表元の公式で商環同型の線形性を示す。
 規約：全係数の像を hφ で保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の H/dH の標準作用との照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の H/dH の標準作用との照合。 -/
 def unconditionalPrincipalScalarExtensionEquiv
     {A S : Type u} [CommRing A] [CommRing S] [Algebra A S]
     (d : A) (s : S) (hs : algebraMap A S d = s)
@@ -85,7 +86,7 @@ def unconditionalPrincipalScalarExtensionEquiv
 /-- 概要：生成元冪商の標準 mod p 還元の H⁰ は忠実平坦性を保つ。
 方針：実ホモロジー比較と商環同型による係数制限で忠実平坦性を移す。
 規約：実二生成剰余の同じ作用を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の元の Hodge–Tate 商の忠実性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の Hodge–Tate 商の忠実性。 -/
 theorem unconditionalGeneratorModPrimeH0_faithfullyFlat
     {A : Type u} [CommRing A] (p : ℕ) (d : A) (n : ℕ)
     (X : DerivedCategory.Minus (ModuleCat.{u} A))
@@ -140,7 +141,7 @@ local notation "M" => CategoryTheory.Functor.obj (ModuleCat.restrictScalars c) (
 /-- 概要：元の実源の生成元商は、同じ H/dH の自然な R 作用の single と同型。
 方針：実 H⁰ 比較、分母の正則性、通常主商の係数拡大比較を合成する。
 規約：モニック正次数のみを要求し、元の H・分母像・係数射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の Hodge–Tate 商の完全平坦性への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Hodge–Tate 商の完全平坦性への移送。 -/
 def powerRootPrismMonicHodgeTateDerivedReductionIso_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -190,7 +191,7 @@ local notation "YT" => CategoryTheory.Functor.obj (boundedAboveDerivedBaseChange
 /-- 概要：元の H/dH の実 mod p 還元の非零次数は消える。
 方針：元の源の二生成剰余を標準 mod p 還元へ比較し、作用を保つ分母商同型で移す。
 規約：元の自然な R 作用を用い、hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の p 完全平坦性の Tor 入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 完全平坦性の Tor 入力。 -/
 theorem powerRootPrismMonicHodgeTateReduction_homology_isZero_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) (i : ℤ) (hi : i ≠ 0) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -218,7 +219,7 @@ theorem powerRootPrismMonicHodgeTateReduction_homology_isZero_of_unconditional
 /-- 概要：元の H/dH の実 mod p 還元の H⁰ は忠実平坦。
 方針：A1-d の実剰余忠実平坦性を標準 mod p 比較と元の分母商比較へ渡す。
 規約：追加の忠実平坦性仮定を残さない。
-使われ方：BS Rem 7.15（著者版 p.62）の p 完全忠実平坦性の剰余入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の p 完全忠実平坦性の剰余入力。 -/
 theorem powerRootPrismMonicHodgeTateReductionH0_faithfullyFlat_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -252,7 +253,7 @@ theorem powerRootPrismMonicHodgeTateReductionH0_faithfullyFlat_of_unconditional
 /-- 概要：元の自然な Hodge–Tate 商は p 完全忠実平坦。
 方針：実 mod p 還元の離散性と忠実平坦性を標準 Tor・通常係数拡大へ移す。
 規約：hpR・候補の p 正則性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の完全平坦性の無条件入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の完全平坦性の無条件入力。 -/
 theorem powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -286,7 +287,7 @@ theorem powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditi
 /-- 概要：元の H/dH の p 冪ねじれは有界。
 方針：実生成元商の H⁰ の有界ねじれを、自然な R 線形比較で同じ通常商へ移す。
 規約：p 正則性へ強めず、元の H/dH を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の通常 p 完備性の無条件入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常 p 完備性の無条件入力。 -/
 theorem powerRootPrismMonicHodgeTate_bounded_prime_torsion_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -316,7 +317,7 @@ theorem powerRootPrismMonicHodgeTate_bounded_prime_torsion_of_unconditional
 /-- 概要：元の H/dH は通常の意味でも p 完備。
 方針：同じ通常商の有界 p ねじれと導来完備性の既存比較を使う。
 規約：候補の p 正則性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の prism 源の初期性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の prism 源の初期性への入力。 -/
 theorem powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     letI := pdCompletionCommRing L p (jL dP)
@@ -334,7 +335,7 @@ end PowerRootHodgeTateReduction
 ## 概要
 
 根変数上で自然性を確認した実テンソルに、元の mod p 入力の実分冪構造と pd 普遍性を与える。
-BS Rem 7.15(1)（著者版 p.62）の入力環上の構造比較。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の入力環上の構造比較。
 
 ## 方針
 
@@ -398,7 +399,7 @@ local notation "Ein" => powerRootPrismMonicFrobeniusTensorInputAlgEquiv W hW f h
 /-- 概要：自然な実テンソル上に元の mod p 入力の実分冪構造を与える。
 方針：係数を保つ実同型に沿って比較先の構造を戻す。
 規約：射影的商を使い、prism 商の p 正則性を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
 def powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional
     :
     let := pdCompletionCommRing L p (jL dP)
@@ -416,7 +417,7 @@ def powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional
 /-- 概要：実テンソル比較は元の実分冪構造を比較先へ保つ。
 方針：同型の源へ戻した構造の分冪射性を使う。
 規約：同じ入力環作用と同じイデアルを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 比較。 -/
 theorem powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_unconditional
     :
     let := pdCompletionCommRing L p (jL dP)
@@ -435,7 +436,7 @@ theorem powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_uncondit
 /-- 概要：自然な入力元の全分冪は標準分冪生成元の実同型による逆像。
 方針：比較先の標準分冪値を係数を保つ同型で戻す。
 規約：零次数を含む全次数 n を指定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
 theorem powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditional
     (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -456,7 +457,7 @@ theorem powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditi
 方針：同じ入力環上の代数同型で標準主分冪包の普遍性を移す。
 原典とは異なる半線形比較・通常テンソル・実分冪構造の移送による証明。
 規約：標的の宇宙・ねじれ・完備性は制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
 theorem existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism_of_unconditional
     {B : Type w} [CommRing B] [Algebra Np B] {I : Ideal B}
     (Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :
@@ -484,7 +485,7 @@ end FrobeniusTensorPD
 ## 概要
 
 A 全体の自然な実 Frobenius 引戻しは、モニック性のみの下で元の mod p 入力の実 pd 包となる。
-BS Rem 7.15(1)（著者版 p.62）の φ_A 引戻しの pd 比較から prism 商の p 正則性を除く。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の φ_A 引戻しの pd 比較から prism 商の p 正則性を除く。
 
 ## 方針
 
@@ -557,7 +558,7 @@ local notation "Ein" => powerRootPrismMonicFullFrobeniusInputAlgEquiv W hW f hf
 /-- 概要：自然な A 全体の実引戻し上に元の mod p 入力の実分冪構造を与える。
 方針：係数を保つ実同型に沿って比較先の構造を戻す。
 規約：prism 商の p 正則性・正次数を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
 def powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -576,7 +577,7 @@ def powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional :
 /-- 概要：A 全体の実引戻し比較は元の実分冪構造を比較先へ保つ。
 方針：同型の源へ戻した構造の分冪射性を使う。
 規約：同じ入力環作用と同じイデアルを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 比較。 -/
 theorem powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -596,7 +597,7 @@ theorem powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditio
 /-- 概要：自然な入力元の全分冪は標準分冪生成元の実同型による逆像。
 方針：比較先の標準分冪値を係数を保つ同型で戻す。
 規約：零次数を含む全次数 n を指定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
 theorem powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_unconditional
     (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -619,7 +620,7 @@ theorem powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_uncondition
 方針：同じ入力環上の代数同型で標準主分冪包の普遍性を移す。
 原典とは異なる半線形比較・通常テンソル・実分冪構造の移送による証明。
 規約：標的の宇宙・ねじれ・完備性は制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
 theorem existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism_of_unconditional
     {B : Type w} [CommRing B] [Algebra Np B] {I : Ideal B}
     (Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :

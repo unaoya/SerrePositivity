@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPoly
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP
 
 /-!
-# ϖ 還元した pd 表示（Rem 7.15 の φ*(T/ϖ) の計算）
+# ϖ 還元した pd 表示（BS 著者版 Remark 7.15 の φ*(T/ϖ) の計算）
 
 ## 概要
 ϖ の持ち上げの mod p 正則性、ϖ 還元した無限根入力環と原典の係数環、ϖ 還元した pd 表示環と原典の標準表示、R/ϖ[Y^{1/p^∞}] 上の pd 包の比較・切断表示・忠実平坦性。
@@ -29,7 +29,7 @@ universe u
 ## 概要
 
 完全 prism (A,(d)) の商 R が p 正則なら、x=φ⁻¹(d) の mod p 像は正則。
-BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の係数還元を具体化する。
+BS 著者版 Remark 7.15（著者版 p.62）の p ねじれなしの場合の係数還元を具体化する。
 
 ## 方針
 
@@ -58,7 +58,7 @@ variable {A : Type u} [CommRing A]
 /-- 概要：a が正則で、b が A/(a) で正則なら、a は A/(b) で正則。
 方針：ac=be を mod a で調べ e=at とし、a を消去する。
 規約：完備性や局所性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の d と p の順序交換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の d と p の順序交換。 -/
 theorem principal_regular_swap (a b : A) (ha : IsSMulRegular A a)
     (hb : IsSMulRegular (A ⧸ Ideal.span {a}) (Ideal.Quotient.mk (Ideal.span {a}) b)) :
     IsSMulRegular (A ⧸ Ideal.span {b}) (Ideal.Quotient.mk (Ideal.span {b}) a) := by
@@ -84,7 +84,7 @@ variable {p : ℕ} [Fact p.Prime]
 /-- 概要：p 正則な prism 商を持つ完全 prism の生成元は mod p でも正則。
 方針：prism 生成元の正則性と商の p 正則性の順序を交換する。
 規約：仮定は R=A/(d) 上の p の単射性。
-使われ方：BS Rem 7.15（著者版 p.62）の ϖ の mod p 正則性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の ϖ の mod p 正則性への入力。 -/
 theorem perfectPrism_generator_modPrime_regular (W : OrientedPrism p A)
     (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
     IsSMulRegular (A ⧸ Ideal.span {(p : A)})
@@ -95,7 +95,7 @@ theorem perfectPrism_generator_modPrime_regular (W : OrientedPrism p A)
 /-- 概要：選んだ ϖ の持上げは mod p で正則。
 方針：mod p の x^p=d と正の冪の正則性判定を使う。
 規約：p 正則性は prism 商に要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の係数還元における分冪安定性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数還元における分冪安定性。 -/
 theorem perfectPrismVarpiLift_modPrime_regular (W : OrientedPrism p A)
     (hW : W.deltaStructure.IsPerfect)
     (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
@@ -120,7 +120,7 @@ end PerfectPrismVarpiRegular
 
 完全 prism (A,(d)) で x=φ⁻¹(d)、ϖ=x mod d とする。
 A/p 上の無限根環を x の係数像で割ると、R/ϖ 上の同じ無限根環と環同型。
-BS Rem 7.15（著者版 p.62）の入力台環を具体的な商から得る。
+BS 著者版 Remark 7.15（著者版 p.62）の入力台環を具体的な商から得る。
 
 ## 方針
 
@@ -159,7 +159,7 @@ local notation "barr" =>
 /-- 概要：係数商同型の逆も A の代表元を保つ。
 方針：順方向の代表元公式と逆合成を使う。
 規約：逆の向きは (A/p)/(x) から R/ϖ。
-使われ方：BS Rem 7.15（著者版 p.62）の単項式係数の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の単項式係数の照合。 -/
 theorem perfectPrismVarpiQuotientEquiv_symm_mk (b : A) :
     (perfectPrismVarpiQuotientEquiv W hW).symm
       (Ideal.Quotient.mk _ (barp b)) = barr b := by
@@ -170,7 +170,7 @@ theorem perfectPrismVarpiQuotientEquiv_symm_mk (b : A) :
 /-- 概要：x mod p で係数還元した無限根環と R/ϖ 上の無限根環は環同型。
 方針：係数商の交換と係数環同型のモノイド環への持上げを合成する。
 規約：実際の係数主イデアル K による商を取る。
-使われ方：BS Rem 7.15（著者版 p.62）の入力台環の具体化。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力台環の具体化。 -/
 def perfectPrismVarpiRootInputEquiv : (N ⧸ K) ≃+* Nv :=
   (powerRootCoefficientQuotientEquiv R₀ p hp a).trans
     (AddMonoidAlgebra.mapRingEquiv G (perfectPrismVarpiQuotientEquiv W hW).symm)
@@ -178,7 +178,7 @@ def perfectPrismVarpiRootInputEquiv : (N ⧸ K) ≃+* Nv :=
 /-- 概要：入力環同型は A 由来の単項式の係数を同じ R/ϖ 係数へ送る。
 方針：商比較と係数同型の単項式公式を合成する。
 規約：指数は変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の入力元の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力元の同定。 -/
 theorem perfectPrismVarpiRootInputEquiv_single (q : G) (b : A) :
     perfectPrismVarpiRootInputEquiv W hW
       (Ideal.Quotient.mk K (AddMonoidAlgebra.single q (barp b))) =
@@ -190,7 +190,7 @@ theorem perfectPrismVarpiRootInputEquiv_single (q : G) (b : A) :
 /-- 概要：入力環同型は元の係数環 A の像を保つ。
 方針：係数を零指数の単項式として計算する。
 規約：両側で標準係数射を用いる。
-使われ方：BS Rem 7.15（著者版 p.62）の多項式係数の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の多項式係数の照合。 -/
 theorem perfectPrismVarpiRootInputEquiv_coeff (b : A) :
     perfectPrismVarpiRootInputEquiv W hW
       (Ideal.Quotient.mk K (algebraMap R₀ N (barp b))) =
@@ -201,7 +201,7 @@ theorem perfectPrismVarpiRootInputEquiv_coeff (b : A) :
 /-- 概要：入力環同型は全ての根変数を同じ番号の根変数へ送る。
 方針：係数 1 の単項式の比較を使う。
 規約：任意の段 n を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の通常変数での評価の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常変数での評価の比較。 -/
 theorem perfectPrismVarpiRootInputEquiv_variable (n : ℕ) :
     perfectPrismVarpiRootInputEquiv W hW
       (Ideal.Quotient.mk K (powerRootPolynomialVariable R₀ p hp n)) =
@@ -212,7 +212,7 @@ theorem perfectPrismVarpiRootInputEquiv_variable (n : ℕ) :
 /-- 概要：名前付きモニック入力の係数還元は R/ϖ 上の同じ多項式の評価。
 方針：評価の環射に関する自然性と係数・変数の照合を使う。
 規約：等式にはモニック性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の原典の f との同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典の f との同定。 -/
 theorem perfectPrismVarpiRootInputEquiv_input (f : Polynomial A) :
     perfectPrismVarpiRootInputEquiv W hW
       (Ideal.Quotient.mk K (powerRootCoefficientPDInput p f)) =
@@ -235,7 +235,7 @@ theorem perfectPrismVarpiRootInputEquiv_input (f : Polynomial A) :
 /-- 概要：係数還元後のモニック入力は元の実商台環でも正則。
 方針：原典の係数環上のモニック入力の正則性を比較同型で戻す。
 規約：prism 商の p 正則性や f の正次数は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の還元後の pd 入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の還元後の pd 入力。 -/
 theorem perfectPrismVarpiRootInput_monic_regular (f : Polynomial A) (hf : f.Monic) :
     IsSMulRegular (N ⧸ K) (Ideal.Quotient.mk K (powerRootCoefficientPDInput p f)) := by
   let e := perfectPrismVarpiRootInputEquiv W hW
@@ -255,7 +255,7 @@ end PerfectPrismVarpiRootInput
 ## 概要
 
 無限根環上の pd 表示環を x=φ⁻¹(d) の係数像で割った実商は、R/ϖ 上の無限根環の
-同じ多項式入力の標準 pd 表示と環同型。BS Rem 7.15(1)（著者版 p.62）の台環比較。
+同じ多項式入力の標準 pd 表示と環同型。BS 著者版 Remark 7.15(1)（著者版 p.62）の台環比較。
 
 ## 方針
 
@@ -298,7 +298,7 @@ local notation "Dv" => PrincipalDPPresentation Nv zv
 /-- 概要：ϖ の持上げで還元した pd 表示環は原典の係数環上の標準表示と環同型。
 方針：係数主イデアル商の交換と入力環の同型による表示環の移送を合成する。
 規約：実商 D/(x mod p) と標準表示そのものを対象にする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の還元後の pd 包の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の還元後の pd 包の同定。 -/
 def perfectPrismVarpiPDEnvelopeEquiv : (D ⧸ K) ≃+* Dv :=
   principalDPReducedCoefficientEquiv (algebraMap R₀ N a) z (algebraMap R₀ D a)
     (IsScalarTower.algebraMap_apply R₀ N D a) (perfectPrismVarpiRootInputEquiv W hW)
@@ -307,7 +307,7 @@ def perfectPrismVarpiPDEnvelopeEquiv : (D ⧸ K) ≃+* Dv :=
 /-- 概要：表示環比較は全標準分冪生成元の次数を保つ。
 方針：二つの比較同型の生成元公式を合成する。
 規約：次数零も含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
 theorem perfectPrismVarpiPDEnvelopeEquiv_generator (n : ℕ) :
     perfectPrismVarpiPDEnvelopeEquiv W hW f (Ideal.Quotient.mk K (principalDPGenerator z n)) =
       principalDPGenerator zv n := by
@@ -321,7 +321,7 @@ theorem perfectPrismVarpiPDEnvelopeEquiv_generator (n : ℕ) :
 /-- 概要：表示環比較は元の係数環 A の像を保つ。
 方針：係数作用の塔を展開し、係数商比較と入力環比較の係数公式を使う。
 規約：R/ϖ 上の標準係数射で値を述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数代数としての比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数代数としての比較。 -/
 theorem perfectPrismVarpiPDEnvelopeEquiv_coeff (b : A) :
     perfectPrismVarpiPDEnvelopeEquiv W hW f
       (Ideal.Quotient.mk K (algebraMap R₀ D (barp b))) =
@@ -338,7 +338,7 @@ theorem perfectPrismVarpiPDEnvelopeEquiv_coeff (b : A) :
 /-- 概要：表示環比較は pd 入力元を原典の係数環上の同じ入力元へ送る。
 方針：次数一の標準分冪生成元と入力係数の関係を使う。
 規約：等式にモニック性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造比較。 -/
 theorem perfectPrismVarpiPDEnvelopeEquiv_input :
     perfectPrismVarpiPDEnvelopeEquiv W hW f
       (Ideal.Quotient.mk K (algebraMap N D z)) = algebraMap Nv Dv zv := by
@@ -348,7 +348,7 @@ theorem perfectPrismVarpiPDEnvelopeEquiv_input :
 /-- 概要：還元した正次数分冪イデアルは原典の入力の正次数イデアルに対応する。
 方針：像の合成と生成集合の像を計算し、全標準生成元の対応を使う。
 規約：イデアルの等式は実表示環同型の像として述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の移送の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の移送の入力。 -/
 theorem perfectPrismVarpiPDEnvelopeEquiv_positiveIdeal :
     ((principalDPPositiveIdeal z).map (Ideal.Quotient.mk K)).map
       (perfectPrismVarpiPDEnvelopeEquiv W hW f).toRingHom = principalDPPositiveIdeal zv := by
@@ -366,7 +366,7 @@ end PerfectPrismVarpiPDComparison
 ## 概要
 
 R/ϖ 上のモニック入力の実分冪構造と入力公式には、prism 商の p 正則性を要しない版を使う。
-BS Rem 7.15(1)（著者版 p.62）の台環・標準入力を保つ比較を読み込む。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の台環・標準入力を保つ比較を読み込む。
 
 ## 方針
 
@@ -390,7 +390,7 @@ BS Rem 7.15(1)（著者版 p.62）の台環・標準入力を保つ比較を読�
 
 R/ϖ 上の無限根環のモニック入力の同じ pd 表示環は、入力の p 乗商上の可算切断表示を
 持ち、係数環上自由、入力が正次数なら忠実平坦となる。
-BS Rem 7.15(1)（著者版 p.62）の通常代数計算を原典の係数環に接続する。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の通常代数計算を原典の係数環に接続する。
 
 ## 方針
 
@@ -427,7 +427,7 @@ local notation "Dv" f => PrincipalDPPresentation Nv (zv f)
 /-- 概要：原典の R/ϖ 係数環で p は零。
 方針：(A/p)/(x) との環同型で p の消滅を移す。
 規約：p ねじれなしの仮定は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の標数 p の切断表示への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の標数 p の切断表示への入力。 -/
 theorem perfectPrismVarpiCoefficient_prime_eq_zero : (p : Rv) = 0 := by
   apply (perfectPrismVarpiQuotientEquiv W hW).injective
   rw [map_natCast, map_zero]
@@ -439,7 +439,7 @@ theorem perfectPrismVarpiCoefficient_prime_eq_zero : (p : Rv) = 0 := by
 /-- 概要：原典係数上の無限根環でも p は零。
 方針：係数環の等式を標準係数射で送る。
 規約：無限根環の台環は既存の単項式環。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の同じ表示環の切断表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の同じ表示環の切断表示。 -/
 theorem perfectPrismVarpiRootRing_prime_eq_zero : (p : Nv) = 0 := by
   simpa only [map_natCast, map_zero] using
     congrArg (algebraMap Rv Nv) (perfectPrismVarpiCoefficient_prime_eq_zero W hW)
@@ -447,7 +447,7 @@ theorem perfectPrismVarpiRootRing_prime_eq_zero : (p : Nv) = 0 := by
 /-- 概要：原典係数上のモニック入力の pd 表示環は可算切断表示と代数同型。
 方針：標数 p の標準表示同型を同じ入力台環へ適用する。
 規約：入力の p 乗商の作用は既存の principalDPQuotientAlgebra を固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の P/(f^p)[gᵢ]/(gᵢ^p) の表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の P/(f^p)[gᵢ]/(gᵢ^p) の表示。 -/
 def perfectPrismVarpiNativePDEnvelope_truncatedEquiv (f : Polynomial A) :
     letI := principalDPQuotientAlgebra hp (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f)
     (Dv f) ≃ₐ[Nv ⧸ Ideal.span {(zv f) ^ p}] PrincipalDPTruncatedPresentation p (zv f) :=
@@ -456,7 +456,7 @@ def perfectPrismVarpiNativePDEnvelope_truncatedEquiv (f : Polynomial A) :
 /-- 概要：原典係数上の pd 包は入力の p 乗商上自由。
 方針：切断表示の基底を係数商上の同型で戻す。
 規約：モニック性も正次数もこの係数商上の自由性には不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示切断表示の自由性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示切断表示の自由性。 -/
 theorem perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient (f : Polynomial A) :
     letI := principalDPQuotientAlgebra hp (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f)
     Module.Free (Nv ⧸ Ideal.span {(zv f) ^ p}) (Dv f) :=
@@ -465,7 +465,7 @@ theorem perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient (f : Polynomia
 /-- 概要：原典係数上の同じモニック pd 包の台環は R/ϖ 上自由。
 方針：通常モニック冪商と切断表示の自由性をスカラー塔で合成する既存の定理を使う。
 規約：零係数環と定数モニック入力を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の通常平坦性計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常平坦性計算。 -/
 theorem perfectPrismVarpiNativePDEnvelope_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free Rv (Dv f) :=
   powerRootMonicDPPresentation_free Rv p hp (Fact.out : p.Prime)
@@ -474,7 +474,7 @@ theorem perfectPrismVarpiNativePDEnvelope_free (f : Polynomial A) (hf : f.Monic)
 /-- 概要：原典係数上の正次数モニック pd 包の台環は R/ϖ 上忠実平坦。
 方針：非零係数環ではモニック次数保存、零係数環では加群の自明性を使う。
 規約：正次数は元の多項式 f に要求する。
-使われ方：BS Rem 7.15（著者版 p.62）の原典係数での忠実平坦性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の原典係数での忠実平坦性。 -/
 theorem perfectPrismVarpiNativePDEnvelope_faithfullyFlat
     (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Module.FaithfullyFlat Rv (Dv f) := by
@@ -493,14 +493,14 @@ theorem perfectPrismVarpiNativePDEnvelope_faithfullyFlat
 /-- 概要：原典の無限根入力環自体も R/ϖ 上自由。
 方針：同じ指数モノイドの単項式基底を使う。
 規約：係数環の非零性や入力多項式は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の通常代数計算の最初の自由性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常代数計算の最初の自由性。 -/
 theorem perfectPrismVarpiRootInput_free : Module.Free Rv Nv :=
   powerRootPolynomial_free Rv p hp
 
 /-- 概要：原典のモニック入力の p 乗による実商は R/ϖ 上自由。
 方針：モニック冪商の既存の基底を評価された入力の主イデアル商へ移す。
 規約：正次数や prism 商の p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の P/(f^p) の自由性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の P/(f^p) の自由性。 -/
 theorem perfectPrismVarpiRootPowerQuotient_free (f : Polynomial A) (hf : f.Monic) :
     Module.Free Rv (Nv ⧸ Ideal.span {(zv f) ^ p}) := by
   let := powerRootPolynomialBaseAlgebra Rv p hp

@@ -7,7 +7,7 @@ public import Mathlib.Algebra.MvPolynomial.Supported
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 
 /-!
-# 相対自由 δ 環の Witt 座標（BS 著者版 Rem 2.13・2.14 の相対版）
+# 相対自由 δ 環の Witt 座標（BS 著者版 Remark 2.13・Remark 2.14 の相対版）
 
 ## 概要
 Frobenius 反復の最高線形項、生成元の第 n Witt 係数（Joyal の δ_n）＝ x_(s,n) ＋ 下位の多項式という三角形表示、
@@ -453,7 +453,7 @@ theorem relativeFreeWittCoordinateMap_comp_inverseMap (D : DeltaStructure p A)
   simp only [AlgHom.comp_apply, relativeFreeWittInverseMap, MvPolynomial.aeval_X,
     relativeFreeWittCoordinateMap_inverseVariable, AlgHom.id_apply]
 
-/-- 全Witt座標への三角形置換は、任意添字族での実際のA代数同型。 -/
+/-- 全Witt座標への三角形置換は、任意添字族での実際のA代数同型（BS 著者版 Remark 2.14 の p 正則な δ 基底上の相対版）。 -/
 def relativeFreeWittCoordinateEquiv (D : DeltaStructure p A)
     (hp : Function.Injective (fun a : A => (p : A) * a)) :
     RelativeFreeDeltaRing (R := A) σ ≃ₐ[A] RelativeFreeDeltaRing (R := A) σ :=
@@ -628,7 +628,7 @@ theorem relativeFreeFiniteSupportedEquiv_coe (N : ℕ) (f : MvPolynomial (σ × 
     rfl
   exact AlgHom.congr_fun he f
 
-/-- 初期N段の通常多項式環上の実際のWitt座標代数同型。 -/
+/-- 初期N段の通常多項式環上の実際のWitt座標代数同型（BS 著者版 Remark 2.14 の p 正則な δ 基底上の相対版で有限段の座標）。 -/
 def relativeFreeFiniteWittCoordinateEquiv (D : DeltaStructure p A)
     (hp : Function.Injective (fun a : A => (p : A) * a)) (N : ℕ) :
     MvPolynomial (σ × Fin N) A ≃ₐ[A] MvPolynomial (σ × Fin N) A :=

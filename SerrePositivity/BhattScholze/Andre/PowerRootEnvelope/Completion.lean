@@ -17,6 +17,7 @@ public import Mathlib.RingTheory.Regular.IsSMulRegular
 
 ## 概要
 正則主剰余・正則主環商から二元完全平坦性を戻すこと、二段の主剰余の忠実平坦性、座標を保つ同型による導来完備化の比較、両座標を殺す商と H⁰、二元係数剰余、p 完備化の普遍性・主商・交換。
+BS 著者版 Remark 7.15 の被覆の計算に使う、完備化の比較と完全平坦性の判定を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -35,7 +36,7 @@ universe u v
 ## 概要
 
 d が基底環と係数加群で正則なら、mod d の a 完全平坦性から元の (a,d) 完全平坦性が従う。
-BS Rem 7.15（著者版 p.62）の実候補の導来剰余を δ 完全化へ渡す一般計算。
+BS 著者版 Remark 7.15（著者版 p.62）の実候補の導来剰余を δ 完全化へ渡す一般計算。
 
 ## 方針
 
@@ -61,7 +62,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：完全平坦な加群の定義イデアルによる標準底変換は高次 Tor を持たない。
 方針：イデアルで消える標準係数加群を試験加群に取って Tor の対称性を使う。
 規約：イデアルは任意。
-使われ方：BS Rem 7.15（著者版 p.62）の実導来還元の離散性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実導来還元の離散性。 -/
 theorem scalarExtensionTorVanishing_of_completelyFlat
     {R : Type u} [CommRing R] (I : Ideal R) (M : ModuleCat.{u} R)
     (hM : IsCompletelyFlat I M) : scalarExtensionTorVanishing (Ideal.Quotient.mk I) M := by
@@ -89,7 +90,7 @@ theorem scalarExtensionTorVanishing_of_completelyFlat
 /-- 概要：正則主剰余の a 完全平坦性は元の (a,d) 完全平坦性を与える。
 方針：d で消える試験加群に商作用を入れ、Tor 非輪状底変換で剰余の Tor 消滅を戻す。
 規約：基底と係数加群の d 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の完全化前後の導来剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完全化前後の導来剰余比較。 -/
 theorem completelyFlat_pair_of_regular_principal_reduction
     {R : Type u} [CommRing R] (a d : R) (hd : IsSMulRegular R d)
     (M : ModuleCat.{u} R) (hMd : IsSMulRegular M d)
@@ -146,7 +147,7 @@ end CompletelyFlatRegularReduction
 ## 概要
 
 可換代数の正則主環商の完全平坦性を、元の係数作用に関する二元完全平坦性へ移す。
-BS Rem 7.15（著者版 p.62）の自然な実候補の導来剰余への接続。
+BS 著者版 Remark 7.15（著者版 p.62）の自然な実候補の導来剰余への接続。
 
 ## 方針
 
@@ -172,7 +173,7 @@ attribute [local instance] principalAdicQuotientAlgebra
 /-- 概要：標準主剰余スカラー拡大は代数の通常主環商と剰余基底上線形同型。
 方針：標準加群商への比較と通常主環商への比較を合成する。
 規約：正則性を必要としない。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な剰余作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な剰余作用の照合。 -/
 def principalScalarExtensionAlgebraQuotientEquiv
     {R : Type u} [CommRing R] (d : R) (S : Type u) [CommRing S] [Algebra R S] :
     ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {d}))).obj (ModuleCat.of R S)) ≃ₗ[
@@ -183,7 +184,7 @@ def principalScalarExtensionAlgebraQuotientEquiv
 /-- 概要：正則な主環商の a 完全平坦性は元の代数の (a,d) 完全平坦性を与える。
 方針：通常主商を標準剰余スカラー拡大へ移して一般判定へ渡す。
 規約：通常主商の係数作用は標準商代数構造。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の導来剰余の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の導来剰余の入力。 -/
 theorem completelyFlat_pair_algebra_of_regular_reduction
     {R : Type u} [CommRing R] (a d : R) (hd : IsSMulRegular R d)
     (S : Type u) [CommRing S] [Algebra R S] (hSd : IsSMulRegular S (algebraMap R S d))
@@ -207,7 +208,7 @@ end CompletelyFlatRegularAlgebraReduction
 ## 概要
 
 主剰余の完全忠実平坦性から元の二元剰余の忠実平坦性を得る。
-BS Rem 7.15（著者版 p.62）の導来剰余 H⁰ の準備。
+BS 著者版 Remark 7.15（著者版 p.62）の導来剰余 H⁰ の準備。
 
 ## 方針
 
@@ -233,7 +234,7 @@ open scoped TensorProduct
 /-- 概要：完全忠実平坦性は標準スカラー拡大の忠実平坦性を与える。
 方針：定義中の通常テンソルと標準剰余加群の線形同型を使う。
 規約：イデアルは任意。
-使われ方：BS Rem 7.15（著者版 p.62）の実 H⁰ への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 H⁰ への移送。 -/
 theorem scalarExtension_faithfullyFlat_of_completelyFaithfullyFlat
     {R : Type u} [CommRing R] (I : Ideal R) (M : ModuleCat.{u} R)
     (hM : IsCompletelyFaithfullyFlat I M) :
@@ -246,7 +247,7 @@ theorem scalarExtension_faithfullyFlat_of_completelyFaithfullyFlat
 /-- 概要：mod d の a 完全忠実平坦性から元の二元剰余は忠実平坦。
 方針：二重主商の同型に沿う底変換とスカラー拡大の合成同型を使う。
 規約：元の加群の正則性・完備性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の導来二元剰余 H⁰ の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の導来二元剰余 H⁰ の係数作用。 -/
 theorem pairScalarExtension_faithfullyFlat_of_principal_reduction
     {R : Type u} [CommRing R] (a d : R) (M : ModuleCat.{u} R)
     (hred : IsCompletelyFaithfullyFlat
@@ -293,7 +294,7 @@ end CompletelyFaithfulPairReduction
 
 環射が d を d' に送れば、実導来 (p,d) 完備化の H⁰ から (p,d') 完備化の H⁰ へ
 標準係数射を保つ一意な環射がある。元の射が環同型なら延長も環同型。
-BS Rem 7.15（著者版 p.62）の raw 比較を完備化へ通すための一般計算。
+BS 著者版 Remark 7.15（著者版 p.62）の raw 比較を完備化へ通すための一般計算。
 
 ## 方針
 
@@ -320,7 +321,7 @@ variable {A B : Type u} [CommRing A] [CommRing B] (p : ℕ)
 /-- 概要：座標を保つ環射は実完備化 H⁰ 間の環射へ一意に延長する。
 方針：標的自身の p,d' 導来完備性を実 H⁰ の環普遍性へ渡す。
 規約：係数射の合成を固定し、d の正則性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化比較の構成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化比較の構成。 -/
 theorem existsUnique_pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B)
     (hd : g d = d') :
     letI := pdCompletionCommRing A p d
@@ -336,7 +337,7 @@ theorem existsUnique_pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B)
 /-- 概要：指定座標を保つ環射から実完備化間の標準環射を選ぶ。
 方針：一意延長の存在から選択する。
 規約：既存の実 H⁰ の環構造を局所導入する。
-使われ方：BS Rem 7.15（著者版 p.62）の標準完備化比較射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の標準完備化比較射。 -/
 def pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B) (hd : g d = d') :
     letI := pdCompletionCommRing A p d
     letI := pdCompletionCommRing B p d'
@@ -348,7 +349,7 @@ def pdCompletionCoordinateMap (g : A →+* B) (d : A) (d' : B) (hd : g d = d') :
 /-- 概要：完備化間の標準射は元の標準係数射と可換。
 方針：選んだ一意延長の仕様を使う。
 規約：環射の合成の等式として述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用の保存。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の保存。 -/
 theorem pdCompletionCoordinateMap_comp_unit
     (g : A →+* B) (d : A) (d' : B) (hd : g d = d') :
     letI := pdCompletionCommRing A p d
@@ -362,7 +363,7 @@ theorem pdCompletionCoordinateMap_comp_unit
 /-- 概要：座標を保つ環同型は実導来完備化 H⁰ の環同型を誘導する。
 方針：順逆の一意延長を作り、逆合成を標準単位上の一意性で検証する。
 規約：古典的完備化や Noether 性に置き換えない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 同型の実完備化への延長。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 同型の実完備化への延長。 -/
 def pdCompletionCoordinateEquiv (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d') :
     letI := pdCompletionCommRing A p d
     letI := pdCompletionCommRing B p d'
@@ -395,7 +396,7 @@ def pdCompletionCoordinateEquiv (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d')
 /-- 概要：完備化比較同型は任意の元の標準完備化像を対応させる。
 方針：順射の標準単位との可換性を各元で評価する。
 規約：座標元だけでなく全ての係数元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余係数の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余係数の追跡。 -/
 theorem pdCompletionCoordinateEquiv_unit
     (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d') (b : A) :
     letI := pdCompletionCommRing A p d
@@ -411,7 +412,7 @@ variable [Fact p.Prime]
 /-- 概要：座標を保つ δ 射の標準完備化延長は実 δ 射。
 方針：既存の実完備化の δ 普遍性に元の δ 射と座標の等式を供給する。
 規約：両側で既存の deltaPDCompletionStructure を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の raw δ 比較の延長。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw δ 比較の延長。 -/
 theorem pdCompletionCoordinateMap_isDeltaHom
     (D : DeltaStructure p A) (E : DeltaStructure p B) (g : A →+* B)
     (hg : D.IsDeltaHom E g) (d : A) (d' : B) (hd : g d = d') :
@@ -433,7 +434,7 @@ theorem pdCompletionCoordinateMap_isDeltaHom
 /-- 概要：座標を保つ δ 環同型の標準完備化同型は実 δ 射。
 方針：順射が標準完備化延長であることとその δ 互換性を使う。
 規約：環同型と座標の等式以外の正則性仮定を置かない。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 比較の実完備化への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の実完備化への移送。 -/
 theorem pdCompletionCoordinateEquiv_isDeltaHom
     (D : DeltaStructure p A) (E : DeltaStructure p B) (e : A ≃+* B)
     (he : D.IsDeltaHom E e.toRingHom) (d : A) (d' : B) (hd : e d = d') :
@@ -454,7 +455,7 @@ end PDCompletionCoordinateEquiv
 ## 概要
 
 p,d を含むイデアル I に対し、実導来 (p,d) 完備化 H⁰ の I の像による商は A/I と環同型。
-BS Rem 7.15（著者版 p.62）の完備化後の剰余を具体的な未完備の剰余へ戻す比較。
+BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余を具体的な未完備の剰余へ戻す比較。
 
 ## 方針
 
@@ -491,7 +492,7 @@ include hpI hdI in
 /-- 概要：両座標を殺す商への標準係数射は実 H⁰ から一意に延長する。
 方針：商での p,d の消滅による導来完備性を環普遍性へ渡す。
 規約：I は p と d を含む任意のイデアル。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余比較の逆射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余比較の逆射。 -/
 theorem existsUnique_pdCompletionKilledCoordinateMap :
     letI := pdCompletionCommRing A p d
     ∃! F : H →+* A ⧸ I, F.comp uA = Ideal.Quotient.mk I := by
@@ -505,7 +506,7 @@ theorem existsUnique_pdCompletionKilledCoordinateMap :
 /-- 概要：実完備化から両座標を殺す商への標準延長を選ぶ。
 方針：一意延長の存在から選択する。
 規約：指定した元の商射を延長する。
-使われ方：BS Rem 7.15（著者版 p.62）の商比較の構成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の商比較の構成。 -/
 def pdCompletionKilledCoordinateMap :
     letI := pdCompletionCommRing A p d
     H →+* A ⧸ I := by
@@ -515,7 +516,7 @@ def pdCompletionKilledCoordinateMap :
 /-- 概要：選択した延長は標準完備化単位との合成で元の商射になる。
 方針：選択した射の仕様を使う。
 規約：環射の合成の等式。
-使われ方：BS Rem 7.15（著者版 p.62）の係数上の逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数上の逆合成。 -/
 theorem pdCompletionKilledCoordinateMap_comp_unit :
     letI := pdCompletionCommRing A p d
     (pdCompletionKilledCoordinateMap p d I hpI hdI).comp uA = Ideal.Quotient.mk I := by
@@ -525,7 +526,7 @@ theorem pdCompletionKilledCoordinateMap_comp_unit :
 /-- 概要：標準延長は各係数元の完備化像を同じ商代表元へ送る。
 方針：標準単位との合成公式を各元で評価する。
 規約：元の商射の値を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の代表元での剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の代表元での剰余比較。 -/
 theorem pdCompletionKilledCoordinateMap_unit (b : A) :
     letI := pdCompletionCommRing A p d
     pdCompletionKilledCoordinateMap p d I hpI hdI (uA b) = Ideal.Quotient.mk I b := by
@@ -535,7 +536,7 @@ theorem pdCompletionKilledCoordinateMap_unit (b : A) :
 /-- 概要：元の係数商から実完備化の像イデアル商への標準環射。
 方針：I の係数像がその像イデアルに属することから商へ降ろす。
 規約：p,d を含むことは順射自体には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余比較の順射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余比較の順射。 -/
 def pdCompletionQuotientFromRaw :
     letI := pdCompletionCommRing A p d
     (A ⧸ I) →+* H ⧸ J := by
@@ -547,7 +548,7 @@ def pdCompletionQuotientFromRaw :
 /-- 概要：標準順射は元の代表元をその標準完備化像の商へ送る。
 方針：商射の定義を使う。
 規約：全ての b:A を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の実係数射の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実係数射の照合。 -/
 theorem pdCompletionQuotientFromRaw_mk (b : A) :
     letI := pdCompletionCommRing A p d
     pdCompletionQuotientFromRaw p d I (Ideal.Quotient.mk I b) =
@@ -556,7 +557,7 @@ theorem pdCompletionQuotientFromRaw_mk (b : A) :
 /-- 概要：実完備化の像イデアル商から元の商への逆射。
 方針：標準延長が I の全ての像を殺すことを使う。
 規約：像イデアル全体を殺すことを商の普遍性へ渡す。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余比較。 -/
 def pdCompletionQuotientToRaw :
     letI := pdCompletionCommRing A p d
     (H ⧸ J) →+* A ⧸ I := by
@@ -573,7 +574,7 @@ def pdCompletionQuotientToRaw :
 /-- 概要：逆射は完備化の代表元を標準延長で送る。
 方針：商に降ろした射の定義を使う。
 規約：元の実 H⁰ の全ての元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の一意性による逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の一意性による逆合成。 -/
 theorem pdCompletionQuotientToRaw_mk (t : H) :
     letI := pdCompletionCommRing A p d
     pdCompletionQuotientToRaw p d I hpI hdI (Ideal.Quotient.mk J t) =
@@ -582,7 +583,7 @@ theorem pdCompletionQuotientToRaw_mk (t : H) :
 /-- 概要：元の商から完備化の商へ送り戻す合成は恒等射。
 方針：元の環の代表元で標準延長の係数公式を使う。
 規約：商射の全射性による外延性を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余環同型の片側逆。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余環同型の片側逆。 -/
 theorem pdCompletionQuotientToRaw_comp_fromRaw :
     letI := pdCompletionCommRing A p d
     (pdCompletionQuotientToRaw p d I hpI hdI).comp (pdCompletionQuotientFromRaw p d I) =
@@ -598,7 +599,7 @@ theorem pdCompletionQuotientToRaw_comp_fromRaw :
 /-- 概要：完備化の商から元の商へ送り戻す合成も恒等射。
 方針：像イデアル商では両座標が零なので実完備化の一意性を適用する。
 規約：単なる係数一致を全射性なしに一意延長の等式へ移す。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余環同型のもう片側逆。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余環同型のもう片側逆。 -/
 theorem pdCompletionQuotientFromRaw_comp_toRaw :
     letI := pdCompletionCommRing A p d
     (pdCompletionQuotientFromRaw p d I).comp (pdCompletionQuotientToRaw p d I hpI hdI) =
@@ -624,7 +625,7 @@ theorem pdCompletionQuotientFromRaw_comp_toRaw :
 /-- 概要：両座標を殺す商は実導来完備化 H⁰ の前後で環同型。
 方針：標準順射と逆射の二つの逆合成を束ねる。
 規約：正則性の追加仮定を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余を raw 剰余へ戻す同型。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余を raw 剰余へ戻す同型。 -/
 def pdCompletionQuotientEquivOfKilledCoordinates :
     letI := pdCompletionCommRing A p d
     (H ⧸ J) ≃+* A ⧸ I := by
@@ -637,7 +638,7 @@ def pdCompletionQuotientEquivOfKilledCoordinates :
 /-- 概要：剰余比較同型は元の係数の標準完備化像を同じ商代表元へ送る。
 方針：逆射の代表元公式と標準延長の仕様を使う。
 規約：元の商射との可換性を全 b:A で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包への係数を保つ接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包への係数を保つ接続。 -/
 theorem pdCompletionQuotientEquivOfKilledCoordinates_unit (b : A) :
     letI := pdCompletionCommRing A p d
     pdCompletionQuotientEquivOfKilledCoordinates p d I hpI hdI
@@ -654,7 +655,7 @@ end PDCompletionKilledCoordinates
 ## 概要
 
 c が (p,d) に属すれば、実導来 (p,c) 完備化 H⁰ の (p,d) 商は元の環の (p,d) 商と環同型。
-BS Rem 7.15（著者版 p.62）の Frobenius 側の完備化剰余へ使う。
+BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 側の完備化剰余へ使う。
 
 ## 方針
 
@@ -682,7 +683,7 @@ local notation "uA" => pdCompletionUnit A p c
 /-- 概要：二元イデアル (p,d) の完備化像は同じ二つの標準像で生成される。
 方針：span の像と環射の自然数保存性を使う。
 規約：右辺の p は実 H⁰ 内の自然数。
-使われ方：BS Rem 7.15（著者版 p.62）の二元商の係数像の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二元商の係数像の同定。 -/
 theorem pdCompletionPairIdeal_map :
     letI := pdCompletionCommRing A p c
     (Ideal.span {(p : A), d}).map uA = Ideal.span {(p : H), uA d} := by
@@ -692,7 +693,7 @@ theorem pdCompletionPairIdeal_map :
 /-- 概要：c が (p,d) に属せば実完備化の (p,d) 商は元の二元商と環同型。
 方針：像イデアルの等式と両座標を殺す商の一般同型を合成する。
 規約：正則性・非零性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化剰余を未完備の剰余へ戻す。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化剰余を未完備の剰余へ戻す。 -/
 def pdCompletionPairResidueEquiv (hc : c ∈ Ideal.span {(p : A), d}) :
     letI := pdCompletionCommRing A p c
     (H ⧸ Ideal.span {(p : H), uA d}) ≃+* (A ⧸ Ideal.span {(p : A), d}) := by
@@ -704,7 +705,7 @@ def pdCompletionPairResidueEquiv (hc : c ∈ Ideal.span {(p : A), d}) :
 /-- 概要：二元剰余比較同型は標準完備化像を元の代表元へ送る。
 方針：像イデアルの商同型と一般商比較の単位公式を使う。
 規約：全ての b:A を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 係数を保つ比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 係数を保つ比較。 -/
 theorem pdCompletionPairResidueEquiv_unit
     (hc : c ∈ Ideal.span {(p : A), d}) (b : A) :
     letI := pdCompletionCommRing A p c
@@ -723,7 +724,7 @@ end PDCompletionPairResidue
 ## 概要
 
 通常の p 完備化から p 完備環への環射は、元の環からの射に一意に対応する。
-BS Rem 7.15（著者版 p.62）の完備入力環の試験射に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の完備入力環の試験射に使う。
 
 ## 方針
 
@@ -749,7 +750,7 @@ local notation "C" => AdicCompletion (Ideal.span {(p : R)}) R
 /-- 概要：元の環射は p 完備化から p 完備環への一意な環射に延長する。
 方針：環射で指定した代数作用のもとで、完備代数への一意な代数射を環射に戻す。
 規約：p 正則性や Noether 性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力環からの射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力環からの射。 -/
 theorem existsUnique_primeAdicCompletionHom (k : R →+* B) :
     ∃! F : C →+* B, F.comp (algebraMap R C) = k := by
   let := k.toAlgebra
@@ -768,7 +769,7 @@ theorem existsUnique_primeAdicCompletionHom (k : R →+* B) :
 /-- 概要：p 完備化から p 完備環への環射は元の環上の値で決まる。
 方針：同じ元の環射を延長する二つの射の一意性を使う。
 規約：環射に連続性を追加指定する必要はない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力射の一意性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力射の一意性。 -/
 theorem primeAdicCompletion_ringHom_ext (F G : C →+* B)
     (h : F.comp (algebraMap R C) = G.comp (algebraMap R C)) : F = G := by
   obtain ⟨K, _, hu⟩ := existsUnique_primeAdicCompletionHom R p (G.comp (algebraMap R C))
@@ -783,7 +784,7 @@ end PrimeAdicCompletionUniversal
 ## 概要
 
 各 p 冪商で正則な入力を使うと、p 完備化をその入力で割った環も p 完備となる。
-BS Rem 7.15（著者版 p.62）のモニック商と完備化の交換への準備。
+BS 著者版 Remark 7.15（著者版 p.62）のモニック商と完備化の交換への準備。
 
 ## 方針
 
@@ -807,7 +808,7 @@ variable (R : Type u) [CommRing R]
 /-- 概要：全ての a 冪商で正則な元による商は a 完備。
 方針：各冪商の正則性で乗法写像の逆像のフィルトレーションを比較する。
 規約：a 自体の正則性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）のモニック商の完備性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のモニック商の完備性。 -/
 theorem isAdicComplete_principal_quotient_of_regular_powers (a g : R)
     [IsAdicComplete (Ideal.span {a}) R]
     (hg : ∀ n : ℕ, IsSMulRegular (R ⧸ Ideal.span {a ^ n})
@@ -853,7 +854,7 @@ local notation "j" => algebraMap R C
 /-- 概要：p 完備化はその環上の p 主イデアルに関して完備。
 方針：有限生成性による完備性をイデアルの拡張で移す。
 規約：係数環上の加群完備性と環自身の完備性を明示的に比較する。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力環。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力環。 -/
 theorem primeAdicCompletion_isAdicComplete : IsAdicComplete (Ideal.span {(p : C)}) C := by
   have h := (IsAdicComplete.map_algebraMap_iff (I := Jp) (S := C) (M := C)).mpr
     (AdicCompletion.isAdicComplete (M := R) (Submodule.fg_span_singleton (p : R)))
@@ -862,7 +863,7 @@ theorem primeAdicCompletion_isAdicComplete : IsAdicComplete (Ideal.span {(p : C)
 /-- 概要：入力の p 冪商での正則性は p 完備化の同じ冪商で保存される。
 方針：完備化の冪商同型と代表元公式で正則性を移す。
 規約：p 自体の正則性は使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後のモニック入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後のモニック入力。 -/
 theorem primeAdicCompletion_regular_mod_power (g : R) (n : ℕ)
     (hg : IsSMulRegular (R ⧸ Ideal.span {(p : R) ^ n})
       (Ideal.Quotient.mk (Ideal.span {(p : R) ^ n}) g)) :
@@ -888,7 +889,7 @@ theorem primeAdicCompletion_regular_mod_power (g : R) (n : ℕ)
 /-- 概要：全 p 冪商で正則な入力を p 完備化で割ると p 完備環を得る。
 方針：冪商の正則性を完備化へ移し、一様なフィルトレーション比較を適用する。
 規約：源の p 正則性や有界 p ねじれを追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化と入力商の交換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化と入力商の交換。 -/
 theorem primeAdicCompletion_principal_quotient_isAdicComplete (g : R)
     (hg : ∀ n : ℕ, IsSMulRegular (R ⧸ Ideal.span {(p : R) ^ n})
       (Ideal.Quotient.mk (Ideal.span {(p : R) ^ n}) g)) :
@@ -908,7 +909,7 @@ end PrimeAdicCompletionPrincipalQuotient
 ## 概要
 
 入力 g が全 p 冪商で正則なら、p 完備化を g で割る操作と g 商を p 完備化する操作は
-元の係数射を保つ環同型で結ばれる。BS Rem 7.15（著者版 p.62）の完備入力環。
+元の係数射を保つ環同型で結ばれる。BS 著者版 Remark 7.15（著者版 p.62）の完備入力環。
 
 ## 方針
 
@@ -944,7 +945,7 @@ include hg in
 /-- 概要：全冪商で正則な主関係は p 完備化と係数射を保って交換する。
 方針：両側の完備性と二つの普遍性で往復射を作り、その合成を元の環上で確認する。
 規約：元の主商と通常の p 完備化を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力環の同定。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力環の同定。 -/
 theorem exists_primeAdicCompletionQuotientEquiv :
     ∃ e : Z ≃+* CS, e.toRingHom.comp ((qC).comp j) = (jS).comp q := by
   let := primeAdicCompletion_isAdicComplete S p
@@ -993,14 +994,14 @@ theorem exists_primeAdicCompletionQuotientEquiv :
 /-- 概要：全冪商で正則な主関係と p 完備化を交換する具体的な環同型。
 方針：係数射を保つ同型の存在定理から一つ選ぶ。
 規約：後続の係数公式で選択に依存しない入力作用を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の完備入力の比較射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備入力の比較射。 -/
 def primeAdicCompletionQuotientEquiv : Z ≃+* CS :=
   (exists_primeAdicCompletionQuotientEquiv R p g hg).choose
 
 /-- 概要：完備化と主商の交換同型は元の全係数元を保つ。
 方針：選んだ同型が満たす環射の合成等式を各元に適用する。
 規約：根変数の像を含め、元の環全体で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の入力根の作用を追跡する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力根の作用を追跡する。 -/
 theorem primeAdicCompletionQuotientEquiv_coeff (x : R) :
     primeAdicCompletionQuotientEquiv R p g hg (qC (j x)) = jS (q x) :=
   RingHom.congr_fun (exists_primeAdicCompletionQuotientEquiv R p g hg).choose_spec x

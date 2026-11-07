@@ -4,7 +4,7 @@ import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
 import Mathlib.Util.AssertNoSorry
 
 /-!
-# BS Rem 7.15（著者版 p.62）：A1-c2 の専用監査
+# BS 著者版 Remark 7.15（著者版 p.62）：A1-c2 の専用監査
 
 ## 概要
 公開五宣言と生成宣言の公理を検査し、旧 hpR 付き宣言への逆依存も拒否する。
@@ -57,7 +57,7 @@ open SerrePositivity.BhattScholze.Andre
 /-- 概要：旧 hpR 付き宣言を経由していないことを型と値で検査する。
 方針：公開宣言から依存を辿り、数学的公理は Lean 標準の収集器で検査する。
 規約：既定タクティクの構文値は証明項と区別する。
-使われ方：BS Rem 7.15（著者版 p.62）の無条件版の依存監査。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の無条件版の依存監査。 -/
 private partial def checkUnconditional (todo : List (Name × List Name))
     (seen : NameSet) : CoreM NameSet := do
   match todo with

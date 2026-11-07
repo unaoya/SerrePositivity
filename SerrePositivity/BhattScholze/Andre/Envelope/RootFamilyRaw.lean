@@ -16,6 +16,7 @@ public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 
 ## 概要
 独立根関係の有限族・任意族の raw p 除算包の p 正則性、Frobenius 根関係の係数商、raw 包の mod p 商の忠実平坦性・係数射に沿う底変換・Koszul 比較・高次 Tor の消滅・導来完備化と mod p の比較。
+BS 著者版 Corollary 2.39 と Remark 7.15 の包を根の族に沿って扱うため、raw 包の正則性と剰余を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

@@ -10,10 +10,11 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 
 /-!
-# perfectoid 化の核の Lemma 10.3（BS 著者版 Lemma 10.3）
+# perfectoid 化の核の BS 著者版 Lemma 10.3（BS 著者版 Lemma 10.3）
 
 ## 概要
-perfectoid 環の完備導来テンソル積は離散で perfectoid、核と商の完備導来テンソルは零、単項商の perfectoid 化の核についての Lemma 10.3。
+perfectoid 環の完備導来テンソル積は離散で perfectoid、核と商の完備導来テンソルは零、単項商の perfectoid 化の核についての BS 著者版 Lemma 10.3。
+商の自己積の証明に、perfectoid 環どうしの完備導来テンソルの離散性と perfectoid 性を使う。
 
 ## 方針
 Tor 独立性を平坦な全射表示で示す（原典の単体的証明の代わり、ノート D13）。
@@ -22,12 +23,12 @@ Tor 独立性を平坦な全射表示で示す（原典の単体的証明の代�
 —
 
 ## 使われ方
-Prop 10.2・Rem 10.7、CLMST。
+BS 著者版 Proposition 10.2・BS 著者版 Remark 10.7、CLMST。
 -/
 
 universe u
 
-/-! ## Lemma 10.3 の核と商の混合積（旧 Almost/Lemma103KernelTensor.lean）
+/-! ## BS 著者版 Lemma 10.3 の核と商の混合積（旧 Almost/Lemma103KernelTensor.lean）
 
 ## 概要
 perfectoid 環の perfectoid 商について、核と商の完備導来テンソルは零である。
@@ -74,8 +75,7 @@ private lemma quotient_tensor_map_mul (I : Ideal R) :
 
 /--
 ## 概要
-perfectoid 環 R の perfectoid 商 R/I と核 I の完備導来テンソルは零である
-（BS 著者版 Lemma 10.3、印刷 pp.78–79）。
+perfectoid 環 R の perfectoid 商 R/I と核 I の完備導来テンソルは零である（BS 著者版 Lemma 10.3 の混合積消滅で任意の perfectoid 商の場合）。
 ## 方針
 商の実自己積が同型であることと標準単位則により、I→R→R/I の完備テンソル三角形の
 第二射が同型になるため、第一対象は零となる。
@@ -185,7 +185,7 @@ I→R→R/I に I を完備導来テンソルした三角形の第三対象の�
 ## 規約
 結論は定義した元の積への完備化関手の適用であり、抽象的な同型の存在ではない。
 ## 使われ方
-perfectoid 化の核に特殊化して Lemma 10.3 の第一主張を与える。
+perfectoid 化の核に特殊化して BS 著者版 Lemma 10.3 の第一主張を与える。
 -/
 theorem integralPerfectoid_completedIdealMul_isIso
     (p : ℕ) [Fact p.Prime] (I : Ideal R)
@@ -266,7 +266,7 @@ end SerrePositivity.BhattScholze
 
 end Lemma103KernelTensor
 
-/-! ## Lemma 10.3 の一般の perfectoid テンソル（旧 Almost/Lemma103PerfectoidTensor.lean）
+/-! ## BS 著者版 Lemma 10.3 の一般の perfectoid テンソル（旧 Almost/Lemma103PerfectoidTensor.lean）
 
 ## 概要
 BS 著者版 Lemma 10.3 の証明中の主張（印刷 pp.78–79）を、実際の完備導来テンソルの
@@ -280,7 +280,7 @@ BS 著者版 Lemma 10.3 の証明中の主張（印刷 pp.78–79）を、実際
 G2 の元の完備導来テンソルと `derivedH0CommRing` を使う。零環と p ねじれを許す。
 
 ## 使われ方
-Lemma 10.3 の商環の自己テンソルと、B5 の依存監査の入口である。
+BS 著者版 Lemma 10.3 の商環の自己テンソルと、B5 の依存監査の入口である。
 -/
 
 @[expose] public noncomputable section Lemma103PerfectoidTensor
@@ -292,8 +292,7 @@ attribute [local instance] HasDerivedCategory.standard
 /--
 ## 概要
 perfectoid 環 R 上の perfectoid 代数 S,T の完備導来テンソルは全非零次数で
-ホモロジーが零であり、同じ対象の実 H⁰ 環は perfectoid である
-（BS 著者版 Lemma 10.3、印刷 pp.78–79）。
+ホモロジーが零であり、同じ対象の実 H⁰ 環は perfectoid である。
 
 ## 方針
 既存の完全 prism による次数零集中と perfectoid 性を使い、標準 t 構造の
@@ -303,7 +302,7 @@ perfectoid 環 R 上の perfectoid 代数 S,T の完備導来テンソルは全�
 有限性・平坦性・p 正則性・非零性を仮定しない。H⁰ の環構造を明示する。
 
 ## 使われ方
-S=T=R/K に特殊化して Lemma 10.3 の商環の自己積に用いる。
+S=T=R/K に特殊化して 商環の自己積に用いる。
 -/
 theorem lemma103_perfectoidTensor
     (p : ℕ) [Fact p.Prime] (R S T : Type u)
@@ -327,7 +326,7 @@ end SerrePositivity.BhattScholze
 
 end Lemma103PerfectoidTensor
 
-/-! ## 単項商の perfectoid 化の核に対する Lemma 10.3（旧 Almost/PerfectoidIdealLemma103.lean）
+/-! ## 単項商の perfectoid 化の核に対する BS 著者版 Lemma 10.3（旧 Almost/PerfectoidIdealLemma103.lean）
 
 ## 概要
 B3 の選ばれた perfectoid 化の核について、BS 著者版 Lemma 10.3（印刷 pp.78–79）を述べる。
@@ -336,7 +335,7 @@ B4 の一般全射性により商を元の perfectoid 化へ同定し、一般 p
 ## 規約
 既存の perfectoidIdeal と IsPerfectoidization を使い、p ねじれなしを仮定しない。
 ## 使われ方
-Remark 10.7 の mod p 冪冪等性と Prop 10.2 の拡大閉性の入口である。
+BS 著者版 Remark 10.7 の mod p 冪冪等性と BS 著者版 Proposition 10.2 の拡大閉性の入口である。
 -/
 
 @[expose] public noncomputable section PerfectoidIdealLemma103
@@ -390,15 +389,14 @@ theorem perfectoidIdeal_isModuleComplete :
 /--
 ## 概要
 K を単項商の perfectoid 化の核とすると、実積 K⊗̂ᴸK→K と
-(R/K)⊗̂ᴸ(R/K)→(R/K) の完備化は同型であり、K⊗̂ᴸ(R/K) は零である
-（BS 著者版 Lemma 10.3、印刷 pp.78–79）。
+(R/K)⊗̂ᴸ(R/K)→(R/K) の完備化は同型であり、K⊗̂ᴸ(R/K) は零である（BS 著者版 Lemma 10.3 の三つの主張で単項 J の場合）。
 ## 方針
 B4 による同じ核の perfectoid 商表示に、一般商の三角形による三主張を適用する。
 ## 規約
 第一射は元の K[0] を標的とする標準積。第二射の標的の完備化は
 perfectoid 商の導来完備性で元の商に標準同定される。p 正則性は追加しない。
 ## 使われ方
-Remark 10.7 と Prop 10.2 の核イデアルに関する結果を供給する。
+BS 著者版 Remark 10.7 と BS 著者版 Proposition 10.2 の核イデアルに関する結果を供給する。
 -/
 theorem perfectoidIdeal_lemma103 :
     let K := perfectoidIdeal R p hR g
@@ -436,9 +434,9 @@ def perfectoidIdeal_completedQuotientMul :
 
 /--
 ## 概要
-元の商を標的とする実積 (R/K)⊗̂ᴸ(R/K)→(R/K)[0] は同型である。
+元の商を標的とする実積 (R/K)⊗̂ᴸ(R/K)→(R/K)[0] は同型である（BS 著者版 Lemma 10.3 の第二の積射で単項 J の場合）。
 ## 方針
-Lemma 10.3 の第二主張と、標的の perfectoid 性による標準単位同型を合成する。
+BS 著者版 Lemma 10.3 の第二主張と、標的の perfectoid 性による標準単位同型を合成する。
 ## 規約
 完備化単位によって定義した同じ積について主張する。
 ## 使われ方

@@ -15,6 +15,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 
 ## 概要
 係数 δ 自己同型による raw 包の比較と導来完備化への延長、有限 δ 関係商の mod p と最高変数、Witt 解からの環射と二元剰余の Witt 普遍性、distinguished 分母の正規化と自然性、Frobenius 分母の剰余と p 除算剰余、raw 包の完備化の普遍性とねじれ除去後との比較、raw p 除算包の係数商と主 pd 表示。
+BS 著者版 Remark 7.15 のモニック根の包に使う、δ 除算包の係数比較と Witt 座標での普遍性を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -33,7 +34,7 @@ universe u v
 ## 概要
 
 係数環の δ 自己同型 e は、raw δ 除算包 A{a/d} と A{e(a)/e(d)} の環同型を誘導する。
-BS Rem 7.15（著者版 p.62）、Cor 2.39（p.25）の Frobenius による係数変更への準備。
+BS 著者版 Remark 7.15（著者版 p.62）、BS 著者版 Corollary 2.39（p.25）の Frobenius による係数変更への準備。
 
 ## 方針
 
@@ -68,7 +69,7 @@ local notation "vM" => deltaAdjoinDivisionVariable D (e d) (fun s => e (a s))
 /-- 概要：係数自己同型と同じ除算変数を延長する順射。
 方針：δ 除算の普遍性に標準関係式を供給する。
 規約：分母も入力族も e で送る。
-使われ方：BS Rem 7.15（著者版 p.62）の raw Frobenius 係数変更。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw Frobenius 係数変更。 -/
 def deltaDivisionCoefficientAutMap : L →+* M :=
   (existsUnique_deltaAdjoinDivisionHom D DM d a ((jM).comp e.toRingHom)
     ((deltaAdjoinDivisionMap_isDeltaHom D (e d) (fun s => e (a s))).comp he) vM
@@ -77,7 +78,7 @@ def deltaDivisionCoefficientAutMap : L →+* M :=
 /-- 概要：順射は δ、係数射、全初期除算変数と両立する。
 方針：普遍性の選択した射の仕様を使う。
 規約：係数射の合成に e を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用と逆合成の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用と逆合成の照合。 -/
 theorem deltaDivisionCoefficientAutMap_spec :
     (DL).IsDeltaHom DM (deltaDivisionCoefficientAutMap D e he d a) ∧
     (deltaDivisionCoefficientAutMap D e he d a).comp jL = (jM).comp e.toRingHom ∧
@@ -89,7 +90,7 @@ theorem deltaDivisionCoefficientAutMap_spec :
 /-- 概要：逆係数自己同型と同じ除算変数を延長する逆射。
 方針：元の標準関係式を e の逆合成で書き直して普遍性を使う。
 規約：始域は e で送った関係族の包。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 係数変更の可逆性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 係数変更の可逆性。 -/
 def deltaDivisionCoefficientAutInverse : M →+* L :=
   (existsUnique_deltaAdjoinDivisionHom D DL (e d) (fun s => e (a s))
     ((jL).comp e.symm.toRingHom) ((deltaAdjoinDivisionMap_isDeltaHom D d a).comp he.symm)
@@ -100,7 +101,7 @@ def deltaDivisionCoefficientAutInverse : M →+* L :=
 /-- 概要：逆射は δ、逆係数射、全初期除算変数と両立する。
 方針：逆射を選んだ普遍性の仕様を使う。
 規約：係数には e⁻¹ を適用する。
-使われ方：BS Rem 7.15（著者版 p.62）の逆合成の計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の逆合成の計算。 -/
 theorem deltaDivisionCoefficientAutInverse_spec :
     (DM).IsDeltaHom DL (deltaDivisionCoefficientAutInverse D e he d a) ∧
     (deltaDivisionCoefficientAutInverse D e he d a).comp jM = (jL).comp e.symm.toRingHom ∧
@@ -114,7 +115,7 @@ theorem deltaDivisionCoefficientAutInverse_spec :
 /-- 概要：係数 δ 自己同型は raw δ 除算包の環同型を誘導する。
 方針：順射と逆射の合成を係数・初期変数で検証する。
 規約：d の正則性は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw Frobenius 引戻し比較の代数的入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw Frobenius 引戻し比較の代数的入力。 -/
 def deltaDivisionCoefficientAutEquiv : L ≃+* M := by
   have hF := deltaDivisionCoefficientAutMap_spec D e he d a
   have hG := deltaDivisionCoefficientAutInverse_spec D e he d a
@@ -143,7 +144,7 @@ def deltaDivisionCoefficientAutEquiv : L ≃+* M := by
 /-- 概要：raw 包の比較同型は元の係数を e で送る。
 方針：順射の係数合成の等式を各元で評価する。
 規約：同型は係数に関して e 半線形。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用の記録。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の記録。 -/
 theorem deltaDivisionCoefficientAutEquiv_coeff (b : A) :
     deltaDivisionCoefficientAutEquiv D e he d a (jL b) = jM (e b) :=
   DFunLike.congr_fun (deltaDivisionCoefficientAutMap_spec D e he d a).2.1 b
@@ -151,7 +152,7 @@ theorem deltaDivisionCoefficientAutEquiv_coeff (b : A) :
 /-- 概要：raw 包の比較同型は全初期除算変数の添字を保つ。
 方針：順射の標準変数公式を使う。
 規約：δ 反復前の初期変数について述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の根方程式の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根方程式の比較。 -/
 theorem deltaDivisionCoefficientAutEquiv_variable (s : σ) :
     deltaDivisionCoefficientAutEquiv D e he d a (vL s) = vM s :=
   (deltaDivisionCoefficientAutMap_spec D e he d a).2.2 s
@@ -159,7 +160,7 @@ theorem deltaDivisionCoefficientAutEquiv_variable (s : σ) :
 /-- 概要：raw 包の比較同型は実 δ 射。
 方針：順射の δ 互換性を使う。
 規約：両側の既存の商 δ 構造を固定する。
-使われ方：BS Rem 7.15（著者版 p.62）の δ 完備化に進む入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の δ 完備化に進む入力。 -/
 theorem deltaDivisionCoefficientAutEquiv_isDeltaHom :
     (DL).IsDeltaHom DM (deltaDivisionCoefficientAutEquiv D e he d a).toRingHom :=
   (deltaDivisionCoefficientAutMap_spec D e he d a).1
@@ -174,7 +175,7 @@ end DeltaDivisionCoefficientAut
 
 係数 δ 自己同型による raw 除算包の比較は、同じ標準係数射を保って
 実導来 (p,d) 完備化の H⁰ の δ 環同型へ延長する。
-BS Rem 7.15（著者版 p.62）の Frobenius 比較の完備化段階。
+BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の完備化段階。
 
 ## 方針
 
@@ -209,7 +210,7 @@ local notation "F" => deltaDivisionCoefficientAutEquiv D e he d a
 /-- 概要：係数自己同型による raw 比較は実完備化 H⁰ の環同型へ延長する。
 方針：分母の係数像を保つ raw 環同型を座標付き完備化の一般比較へ渡す。
 規約：両側の完備化の座標を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の Frobenius 比較の実完備化。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 比較の実完備化。 -/
 def deltaDivisionCoefficientPDCompletionEquiv :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -220,7 +221,7 @@ def deltaDivisionCoefficientPDCompletionEquiv :
 /-- 概要：実完備化同型は raw の全ての元の標準像を対応させる。
 方針：座標付き完備化比較の単位公式を使う。
 規約：raw 比較そのものを同じ元の像に適用する。
-使われ方：BS Rem 7.15（著者版 p.62）の完備化後の剰余比較の係数。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の完備化後の剰余比較の係数。 -/
 theorem deltaDivisionCoefficientPDCompletionEquiv_unit (t : L) :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -232,7 +233,7 @@ theorem deltaDivisionCoefficientPDCompletionEquiv_unit (t : L) :
 /-- 概要：実完備化同型は元の係数 b を e(b) の標準完備化像へ送る。
 方針：raw 単位の公式と raw 比較の係数公式を合成する。
 規約：同じ標準係数射を使い続ける。
-使われ方：BS Rem 7.15（著者版 p.62）の係数半線形性の記録。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数半線形性の記録。 -/
 theorem deltaDivisionCoefficientPDCompletionEquiv_coeff (b : A) :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -245,7 +246,7 @@ theorem deltaDivisionCoefficientPDCompletionEquiv_coeff (b : A) :
 /-- 概要：raw 係数比較の実完備化同型は既存の完備化 δ 構造を保つ。
 方針：raw 比較の δ 互換性を座標付き完備化比較の δ 互換性へ渡す。
 規約：係数の正則性は追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の実 δ 完備化後の比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 δ 完備化後の比較。 -/
 theorem deltaDivisionCoefficientPDCompletionEquiv_isDeltaHom :
     letI := pdCompletionCommRing L p (jL d)
     letI := pdCompletionCommRing M p (jM (e d))
@@ -265,7 +266,7 @@ end DeltaDivisionCoefficientPDCompletion
 ## 概要
 
 W(d)w_s=W(a_s) を満たす任意の Witt 点から A{a/d} への通常評価を作る。
-BS Rem 7.15（著者版 p.62）の分母正規化に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の分母正規化に使う。
 
 ## 方針
 
@@ -295,7 +296,7 @@ local notation "F₀" => relativeFreeDeltaStructure σ D
 /-- 概要：任意の Witt 点の全係数を自由 δ 環の逆 Witt 座標へ代入する。
 方針：逆 Witt 座標の通常多項式評価を合成する。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 def deltaDivisionWittEval : L₀ →+* B :=
   (MvPolynomial.eval₂Hom q (fun z : σ × ℕ ↦
     (w z.1).coeff z.2)).comp
@@ -304,7 +305,7 @@ def deltaDivisionWittEval : L₀ →+* B :=
 /-- 概要：Witt 点による通常評価は元の係数射を保つ。
 方針：逆座標の係数公式を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_C (r : A) :
     deltaDivisionWittEval D hpA q w (MvPolynomial.C r) = q r := by
   change MvPolynomial.eval₂Hom q _
@@ -315,7 +316,7 @@ theorem deltaDivisionWittEval_C (r : A) :
 /-- 概要：自由変数の各 Witt 係数は指定した点の同じ係数へ送られる。
 方針：逆座標の変数公式を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_coefficient (s : σ) (n : ℕ) :
     deltaDivisionWittEval D hpA q w (relativeFreeWittGhostCoefficient D s n) =
       (w s).coeff n := by
@@ -326,7 +327,7 @@ theorem deltaDivisionWittEval_coefficient (s : σ) (n : ℕ) :
 /-- 概要：自由初期変数の全 Witt 元は指定した点へ送られる。
 方針：各係数で評価の公式を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_witt_X (s : σ) :
     WittVector.map (deltaDivisionWittEval D hpA q w)
       (deltaWittGhostVector F₀ (MvPolynomial.X (s, 0))) =
@@ -338,7 +339,7 @@ theorem deltaDivisionWittEval_witt_X (s : σ) :
 /-- 概要：基底の全 Witt 元は元の通常係数射で送られる。
 方針：自由 δ 構造の係数自然性を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_witt_C
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀)) (r : A) :
     WittVector.map (deltaDivisionWittEval D hpA q w)
@@ -351,7 +352,7 @@ theorem deltaDivisionWittEval_witt_C
 /-- 概要：Witt 除算方程式を満たす点は初期関係の全 Witt 元を殺す。
 方針：Witt 環射の乗法性と指定した方程式を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_kills_witt_relation (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -376,7 +377,7 @@ theorem deltaDivisionWittEval_kills_witt_relation (d : A) (a : σ → A)
 /-- 概要：Witt 解の通常評価は実除算関係の全 δ 反復を殺す。
 方針：Witt 係数の消滅を既存の jet 比較で移す。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittEval_kills_iterated_relation (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -405,7 +406,7 @@ theorem deltaDivisionWittEval_kills_iterated_relation (d : A) (a : σ → A)
 /-- 概要：任意の Witt 解から raw δ 除算包への通常環射を構成する。
 方針：全 δ 反復関係を殺す通常評価を商へ降ろす。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 def deltaDivisionWittMap (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -416,7 +417,7 @@ def deltaDivisionWittMap (d : A) (a : σ → A)
 /-- 概要：構成した射は自由環上の指定した評価を延長する。
 方針：商射の定義を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittMap_comp_mk (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -428,7 +429,7 @@ theorem deltaDivisionWittMap_comp_mk (d : A) (a : σ → A)
 /-- 概要：構成した raw 包の射は元の係数射を保つ。
 方針：自由環上の係数公式を使う。
 規約：終域の δ 構造は要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母正規化と pd 包比較。 -/
 theorem deltaDivisionWittMap_coeff (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -441,7 +442,7 @@ theorem deltaDivisionWittMap_coeff (d : A) (a : σ → A)
 /-- 概要：raw 包の各自由変数の全 Witt 座標を通常商射で送った点。
 方針：自由 δ 環上の Witt 元をそのまま raw 商へ送る。
 規約：raw 包の δ 構造や終域の正則性を使わない定義。
-使われ方：BS Rem 7.15（著者版 p.62）の通常比較射の生成元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常比較射の生成元。 -/
 def deltaDivisionRawWittPoint (d : A) (a : σ → A) (s : σ) :
     WittVector p (DeltaAdjoinDivision D d a) :=
   WittVector.map (Ideal.Quotient.mk _)
@@ -450,7 +451,7 @@ def deltaDivisionRawWittPoint (d : A) (a : σ → A) (s : σ) :
 /-- 概要：Witt 解から作った通常射は raw Witt 点を指定した解へ送る。
 方針：各係数で自由環の評価公式を使う。
 規約：全ての添字 s の全 Witt 係数を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の単元変換で作る射の逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の単元変換で作る射の逆合成。 -/
 theorem deltaDivisionWittMap_point (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -465,7 +466,7 @@ include hpA in
 /-- 概要：raw 包の通常環射は元の係数と全 raw Witt 点で決まる。
 方針：商射の全射性と可逆な Witt 座標変換で多項式の外延性へ帰着する。
 規約：比較する射には δ 互換性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較の両逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較の両逆合成。 -/
 theorem deltaDivisionRingHom_ext_of_wittPoint (d : A) (a : σ → A)
     (f g : DeltaAdjoinDivision D d a →+* B)
     (hc : ∀ r, f (deltaAdjoinDivisionMap D d a r) =
@@ -503,7 +504,7 @@ include hpA in
 /-- 概要：raw Witt 点は元の全 Witt 除算方程式を満たす。
 方針：通常商での全 δ 反復関係の消滅を Witt 係数の消滅へ戻す。
 規約：raw 包の p 正則性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 包同士の変数変換の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 包同士の変数変換の入力。 -/
 theorem deltaDivisionRawWittPoint_relation (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀)) (s : σ) :
     WittVector.map (deltaAdjoinDivisionMap D d a) (deltaWittGhostVector D d) *
@@ -543,7 +544,7 @@ include hpA in
 /-- 概要：係数射と全 Witt 解を指定すると raw 包からの通常環射が一意に存在する。
 方針：Witt 解による通常評価で存在を、Witt 点の外延性で一意性を示す。
 規約：終域の δ 構造・p 正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余比較に使う具体的普遍性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余比較に使う具体的普遍性。 -/
 theorem existsUnique_deltaDivisionWittMap (d : A) (a : σ → A)
     (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (hw : ∀ s, WittVector.map q (deltaWittGhostVector D d) * w s =
@@ -570,7 +571,7 @@ end DeltaDivisionWittEvaluation
 ## 概要
 
 A{b/c}/(p,d) の係数射と Witt 点、その通常環射への普遍性を明示する。
-BS Rem 7.15（著者版 p.62）の分母の違う raw 剰余を比較するための入口。
+BS 著者版 Remark 7.15（著者版 p.62）の分母の違う raw 剰余を比較するための入口。
 
 ## 方針
 
@@ -599,20 +600,20 @@ local notation "j" => deltaAdjoinDivisionMap D c b
 /-- 概要：raw 除算包を係数の p,d で割る通常商環。
 方針：二元生成イデアルの商を取る。
 規約：c と d は一致しなくてもよい。
-使われ方：BS Rem 7.15（著者版 p.62）の未完備二元剰余。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の未完備二元剰余。 -/
 abbrev DeltaDivisionPairResidue := Raw ⧸ Ideal.span {(p : Raw), j d}
 
 /-- 概要：二元剰余への標準係数射。
 方針：raw の係数射と商射を合成する。
 規約：元の A 係数を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の剰余比較の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の剰余比較の係数作用。 -/
 def deltaDivisionPairResidueBase : A →+* DeltaDivisionPairResidue D c b d :=
   (Ideal.Quotient.mk _).comp j
 
 /-- 概要：raw 二元剰余では p が零。
 方針：p の生成イデアルへの所属を使う。
 規約：零環も許す。
-使われ方：BS Rem 7.15（著者版 p.62）の Witt 分母正規化の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Witt 分母正規化の入力。 -/
 theorem deltaDivisionPairResidue_prime_zero : (p : DeltaDivisionPairResidue D c b d) = 0 := by
   have h : (Ideal.Quotient.mk (Ideal.span {(p : Raw), j d})) (p : Raw) = 0 :=
     Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (by simp))
@@ -621,21 +622,21 @@ theorem deltaDivisionPairResidue_prime_zero : (p : DeltaDivisionPairResidue D c 
 /-- 概要：二元剰余の標準係数射は d を殺す。
 方針：d の像が生成イデアルに属すことを使う。
 規約：除算分母 c とは別に指定した d の消滅。
-使われ方：BS Rem 7.15（著者版 p.62）の単元倍分母公式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の単元倍分母公式。 -/
 theorem deltaDivisionPairResidueBase_d : deltaDivisionPairResidueBase D c b d d = 0 :=
   Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (by simp))
 
 /-- 概要：二元剰余の標準 Witt 点。
 方針：raw Witt 点を通常商射で送る。
 規約：全ての Witt 座標を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の比較射の生成元。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の比較射の生成元。 -/
 def deltaDivisionPairResiduePoint (s : σ) : WittVector p (DeltaDivisionPairResidue D c b d) :=
   WittVector.map (Ideal.Quotient.mk _) (deltaDivisionRawWittPoint D c b s)
 
 /-- 概要：Witt ベクトルの通常環射での像は環射の合成と可換。
 方針：各係数で定義を確認する。
 規約：δ 構造を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の Witt 点の逆合成の計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の Witt 点の逆合成の計算。 -/
 theorem witt_map_comp_apply (F : B →+* C) (G : A →+* B) (v : WittVector p A) :
     WittVector.map F (WittVector.map G v) = WittVector.map (F.comp G) v := by
   ext n
@@ -649,7 +650,7 @@ include hpA hgL in
 /-- 概要：二元剰余の Witt 点は元の全除算方程式を満たす。
 方針：raw Witt 点の方程式を商射で送る。
 規約：源の p 正則性だけを仮定する。
-使われ方：BS Rem 7.15（著者版 p.62）の分母変換に供給する具体的解。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母変換に供給する具体的解。 -/
 theorem deltaDivisionPairResiduePoint_relation (s : σ) :
     WittVector.map (deltaDivisionPairResidueBase D c b d) (deltaWittGhostVector D c) *
         deltaDivisionPairResiduePoint D c b d s =
@@ -667,7 +668,7 @@ variable (hw : ∀ s, WittVector.map q (deltaWittGhostVector D c) * w s =
 /-- 概要：p,d を殺す係数射と Witt 解から二元剰余への通常環射を作る。
 方針：Witt 解の raw 評価が二元イデアルを殺すことを確認する。
 規約：終域に δ 構造や非零性を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較の両方向の射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較の両方向の射。 -/
 def deltaDivisionPairResidueLift : DeltaDivisionPairResidue D c b d →+* B := by
   let F := deltaDivisionWittMap D hpA q w c b hgL hw
   apply Ideal.Quotient.lift _ F
@@ -689,7 +690,7 @@ def deltaDivisionPairResidueLift : DeltaDivisionPairResidue D c b d →+* B := b
 /-- 概要：二元剰余からの射は元の係数射を保つ。
 方針：商に降ろす前の raw 評価の係数公式を使う。
 規約：全ての A の元に対して述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の係数を保つ比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数を保つ比較。 -/
 theorem deltaDivisionPairResidueLift_base (r : A) :
     deltaDivisionPairResidueLift D c b d hpA hgL q w hpB hqd hw
       (deltaDivisionPairResidueBase D c b d r) = q r :=
@@ -698,7 +699,7 @@ theorem deltaDivisionPairResidueLift_base (r : A) :
 /-- 概要：二元剰余からの射は指定した全 Witt 解を保つ。
 方針：各係数で raw 評価の Witt 点公式を使う。
 規約：通常環射の Witt ベクトル写像で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の変数変換を確認する公式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数変換を確認する公式。 -/
 theorem deltaDivisionPairResidueLift_point (s : σ) :
     WittVector.map (deltaDivisionPairResidueLift D c b d hpA hgL q w hpB hqd hw)
       (deltaDivisionPairResiduePoint D c b d s) = w s := by
@@ -710,7 +711,7 @@ include hpA in
 /-- 概要：二元剰余の通常環射は係数と全 Witt 点で決まる。
 方針：商射の全射性と raw 包の Witt 外延性を使う。
 規約：二つの通常環射に δ 互換性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の二つの剰余比較射の両逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二つの剰余比較射の両逆合成。 -/
 theorem deltaDivisionPairResidueRingHom_ext (f g : DeltaDivisionPairResidue D c b d →+* B)
     (hc : ∀ r, f (deltaDivisionPairResidueBase D c b d r) =
       g (deltaDivisionPairResidueBase D c b d r))
@@ -731,7 +732,7 @@ end DeltaDivisionPairResidueWitt
 ## 概要
 
 標数 p の環 B への係数射 q が d を殺すとき、qW(φ(d)) は p の単元倍。
-BS Rem 7.15（著者版 p.62）の raw 剰余と pd 包の比較に使う。
+BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余と pd 包の比較に使う。
 
 ## 方針
 
@@ -760,7 +761,7 @@ include hpA hd in
 /-- 概要：d の Witt 除算解の定数係数は単元。
 方針：定数係数を q(δd) と計算し distinguished 性を送る。
 規約：源の p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の分母の単元倍への正規化。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母の単元倍への正規化。 -/
 theorem distinguishedWittDenominator_coeff_zero_isUnit :
     IsUnit ((deltaPDivisionWittResidueSolution D q d).coeff 0) := by
   rw [deltaPDivisionWittResidueSolution_coeff_zero D q d hpA]
@@ -769,7 +770,7 @@ theorem distinguishedWittDenominator_coeff_zero_isUnit :
 /-- 概要：係数をずらした Witt 元をそのまま値に持つ単元。
 方針：定数係数の単元性を Witt ベクトルの再帰的逆元へ渡す。
 規約：単元の値を具体的な Witt 解のまま保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の除算変数の可逆な変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の除算変数の可逆な変換。 -/
 def distinguishedWittDenominatorUnit : (WittVector p B)ˣ :=
   WittVector.mkUnit
     (distinguishedWittDenominator_coeff_zero_isUnit D hpA q d hd).unit_spec.symm
@@ -777,7 +778,7 @@ def distinguishedWittDenominatorUnit : (WittVector p B)ˣ :=
 /-- 概要：選んだ単元の値は既存の具体的 Witt 除算解。
 方針：Witt 単元の定義を使う。
 規約：選択に依存しない値の等式。
-使われ方：BS Rem 7.15（著者版 p.62）の係数公式との接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数公式との接続。 -/
 theorem distinguishedWittDenominatorUnit_val :
     (distinguishedWittDenominatorUnit D hpA q d hd : WittVector p B) =
       deltaPDivisionWittResidueSolution D q d := rfl
@@ -785,7 +786,7 @@ theorem distinguishedWittDenominatorUnit_val :
 /-- 概要：d を殺す係数射の下で φ(d) の全 Witt 像は p の単元倍。
 方針：具体的 Witt 解の除算方程式を使う。
 規約：ghost 射の単射性と q(d)=0 を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 分母を p に変換する計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 分母を p に変換する計算。 -/
 theorem distinguishedWittDenominatorUnit_mul
     (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
     (hqd : q d = 0) :
@@ -796,7 +797,7 @@ theorem distinguishedWittDenominatorUnit_mul
 /-- 概要：φ(d) による Witt 除算解と p による除算解は同値。
 方針：単元 v による乗法と v⁻¹ による乗法を逆にする。
 規約：右辺 z は任意の Witt 元で、終域の δ 構造を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 包比較に供給する Witt 解の変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 包比較に供給する Witt 解の変換。 -/
 def distinguishedWittDivisionSolutionEquiv
     (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
     (hqd : q d = 0) (z : WittVector p B) :
@@ -833,7 +834,7 @@ end DistinguishedWittDenominator
 ## 概要
 
 p=0 の任意の係数商で分母正規化単元を作り、通常環射での自然性を示す。
-BS Rem 7.15（著者版 p.62）の二つの raw 剰余の逆比較に用いる。
+BS 著者版 Remark 7.15（著者版 p.62）の二つの raw 剰余の逆比較に用いる。
 
 ## 方針
 
@@ -862,7 +863,7 @@ include hpA hd in
 /-- 概要：p が零の係数環では分母の具体的 Witt 解は単元。
 方針：非零環で標数 p の単元構成を使い、零環の場合を別に処理する。
 規約：商が零環であってもよい。
-使われ方：BS Rem 7.15（著者版 p.62）の任意の raw 剰余での分母変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の任意の raw 剰余での分母変換。 -/
 theorem distinguishedWittDenominator_isUnit_of_prime_zero (hpB : (p : B) = 0) :
     IsUnit (deltaPDivisionWittResidueSolution D q d) := by
   classical
@@ -880,14 +881,14 @@ theorem distinguishedWittDenominator_isUnit_of_prime_zero (hpB : (p : B) = 0) :
 /-- 概要：p が零の任意の係数商における分母正規化単元。
 方針：具体的 Witt 解の単元性から選ぶ。
 規約：値はその具体的 Witt 解を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余の変数変換。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余の変数変換。 -/
 def distinguishedWittResidueUnit (hpB : (p : B) = 0) : (WittVector p B)ˣ :=
   (distinguishedWittDenominator_isUnit_of_prime_zero D hpA q d hd hpB).unit
 
 /-- 概要：零環を含む正規化単元の値は具体的な係数ずらし。
 方針：選んだ単元の仕様を使う。
 規約：非零性の分岐に依存しない値の等式。
-使われ方：BS Rem 7.15（著者版 p.62）の通常環射での自然性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常環射での自然性。 -/
 theorem distinguishedWittResidueUnit_val (hpB : (p : B) = 0) :
     (distinguishedWittResidueUnit D hpA q d hd hpB : WittVector p B) =
       deltaPDivisionWittResidueSolution D q d :=
@@ -896,7 +897,7 @@ theorem distinguishedWittResidueUnit_val (hpB : (p : B) = 0) :
 /-- 概要：p が零の任意の係数商で φ(d) の Witt 像は p の単元倍。
 方針：単元の値を具体的 Witt 解へ戻して除算公式を使う。
 規約：q(d)=0 と源 ghost 射の単射性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 分母の置き換え。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 分母の置き換え。 -/
 theorem distinguishedWittResidueUnit_mul (hpB : (p : B) = 0)
     (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
     (hqd : q d = 0) :
@@ -908,7 +909,7 @@ theorem distinguishedWittResidueUnit_mul (hpB : (p : B) = 0)
 /-- 概要：正規化単元の値は係数射を保つ任意の通常環射で保たれる。
 方針：具体的な全係数の式で確認する。
 規約：二つの終域は p が零の可換環。
-使われ方：BS Rem 7.15（著者版 p.62）の比較射の逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の比較射の逆合成。 -/
 theorem distinguishedWittResidueUnit_map (hpB : (p : B) = 0)
     (q' : A →+* C) (hpC : (p : C) = 0) (F : B →+* C) (hF : F.comp q = q') :
     WittVector.map F (distinguishedWittResidueUnit D hpA q d hd hpB : WittVector p B) =
@@ -922,7 +923,7 @@ theorem distinguishedWittResidueUnit_map (hpB : (p : B) = 0)
 /-- 概要：正規化単元そのものも通常環射で保たれる。
 方針：単元の値の外延性を使う。
 規約：単元群への写像で述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の逆元の自然性への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の逆元の自然性への入力。 -/
 theorem distinguishedWittResidueUnit_map_units (hpB : (p : B) = 0)
     (q' : A →+* C) (hpC : (p : C) = 0) (F : B →+* C) (hF : F.comp q = q') :
     Units.map (WittVector.map F).toMonoidHom (distinguishedWittResidueUnit D hpA q d hd hpB) =
@@ -933,7 +934,7 @@ theorem distinguishedWittResidueUnit_map_units (hpB : (p : B) = 0)
 /-- 概要：正規化単元の逆元の値も通常環射で保たれる。
 方針：単元群の写像が逆元を保つことを使う。
 規約：逆元は単元群で取り、その値を Witt 環へ送る。
-使われ方：BS Rem 7.15（著者版 p.62）の変数変換の両逆合成。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の変数変換の両逆合成。 -/
 theorem distinguishedWittResidueUnit_inv_map (hpB : (p : B) = 0)
     (q' : A →+* C) (hpC : (p : C) = 0) (F : B →+* C) (hF : F.comp q = q') :
     WittVector.map F (↑((distinguishedWittResidueUnit D hpA q d hd hpB)⁻¹) : WittVector p B) =
@@ -960,7 +961,7 @@ end DistinguishedWittDenominatorNaturality
 ## 概要
 
 distinguished d に対し A{b/φ(d)}/(p,d) と A{b/p}/(p,d) は A 係数を保って環同型。
-BS Rem 7.15（著者版 p.62）の具体的 pd 包比較のための分母変換。
+BS 著者版 Remark 7.15（著者版 p.62）の具体的 pd 包比較のための分母変換。
 
 ## 方針
 
@@ -1003,7 +1004,7 @@ include hgA in
 /-- 概要：通常係数射で自然数 p の全 Witt 像は Witt 環の p。
 方針：Witt 環射の自然数保存を使う。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaWitt_prime_image {B : Type u} [CommRing B] (q : A →+* B) :
     WittVector.map q (deltaWittGhostVector D (p : A)) = (p : WittVector p B) := by
   change WittVector.map q (deltaWittGhostRingHom D hgA (p : A)) = _
@@ -1013,7 +1014,7 @@ include hpA hgA hgL in
 /-- 概要：p 分母の二元剰余の Witt 点は p 除算方程式を満たす。
 方針：標準 raw 方程式の分母像を p と計算する。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaDivisionPResiduePoint_relation (s : σ) :
     (p : WittVector p Qp) * wp s = WittVector.map qp (deltaWittGhostVector D (b s)) := by
   have h := deltaDivisionPairResiduePoint_relation D (p : A) b d hpA hgL s
@@ -1024,7 +1025,7 @@ include hgA hgL in
 /-- 概要：p 側の Witt 点を単元の逆元で変換すると Frobenius 分母の解になる。
 方針：Frobenius 分母の p 単元倍表示を使う。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaDivisionFrobeniusToPResiduePoint_relation (s : σ) :
     WittVector.map qp (deltaWittGhostVector D (D.frobeniusLift d)) *
         ((↑(vp⁻¹) : WittVector p Qp) * wp s) =
@@ -1039,7 +1040,7 @@ include hgA hgL in
 /-- 概要：Frobenius 側の Witt 点を単元倍すると p 分母の解になる。
 方針：分母の単元倍公式と元の方程式を使う。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaDivisionPToFrobeniusResiduePoint_relation (s : σ) :
     WittVector.map qφ (deltaWittGhostVector D (p : A)) *
         ((vφ : WittVector p Qφ) * wφ s) =
@@ -1052,7 +1053,7 @@ theorem deltaDivisionPToFrobeniusResiduePoint_relation (s : σ) :
 /-- 概要：Frobenius 分母の二元剰余から p 分母の二元剰余への通常環射。
 方針：p 側の Witt 点を正規化単元の逆元で変換する。
 規約：元の係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較の順射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較の順射。 -/
 def deltaDivisionFrobeniusToPResidueMap : Qφ →+* Qp := by
   exact deltaDivisionPairResidueLift D (D.frobeniusLift d) b d hpA hgL qp
     (fun s => (↑(vp⁻¹) : WittVector p Qp) * wp s) hpp
@@ -1062,7 +1063,7 @@ def deltaDivisionFrobeniusToPResidueMap : Qφ →+* Qp := by
 /-- 概要：p 分母の二元剰余から Frobenius 分母の二元剰余への通常環射。
 方針：Frobenius 側の Witt 点を正規化単元で変換する。
 規約：元の係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較の逆射。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較の逆射。 -/
 def deltaDivisionPToFrobeniusResidueMap : Qp →+* Qφ := by
   exact deltaDivisionPairResidueLift D (p : A) b d hpA hgL qφ
     (fun s => (vφ : WittVector p Qφ) * wφ s) hpφ
@@ -1075,21 +1076,21 @@ local notation "G" => deltaDivisionPToFrobeniusResidueMap D hpA hgA hgL d hd b
 /-- 概要：順比較射は元の全係数を保つ。
 方針：二元商への Witt 評価の係数公式を使う。
 規約：全ての r∈A に対して述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の確認。 -/
 theorem deltaDivisionFrobeniusToPResidueMap_base (r : A) : F (qφ r) = qp r :=
   deltaDivisionPairResidueLift_base _ _ _ _ _ _ _ _ _ _ _ _
 
 /-- 概要：逆比較射も元の全係数を保つ。
 方針：二元商への Witt 評価の係数公式を使う。
 規約：全ての r∈A に対して述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の逆比較の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の逆比較の係数作用。 -/
 theorem deltaDivisionPToFrobeniusResidueMap_base (r : A) : G (qp r) = qφ r :=
   deltaDivisionPairResidueLift_base _ _ _ _ _ _ _ _ _ _ _ _
 
 /-- 概要：順比較射は全 Witt 点を正規化単元の逆元倍へ送る。
 方針：二元商への Witt 評価の点公式を使う。
 規約：全 Witt 係数を同時に追う。
-使われ方：BS Rem 7.15（著者版 p.62）の逆合成の計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の逆合成の計算。 -/
 theorem deltaDivisionFrobeniusToPResidueMap_point (s : σ) :
     WittVector.map F (wφ s) = (↑(vp⁻¹) : WittVector p Qp) * wp s :=
   deltaDivisionPairResidueLift_point _ _ _ _ _ _ _ _ _ _ _ _
@@ -1097,7 +1098,7 @@ theorem deltaDivisionFrobeniusToPResidueMap_point (s : σ) :
 /-- 概要：逆比較射は全 Witt 点を正規化単元倍へ送る。
 方針：二元商への Witt 評価の点公式を使う。
 規約：全 Witt 係数を同時に追う。
-使われ方：BS Rem 7.15（著者版 p.62）のもう一方の逆合成の計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のもう一方の逆合成の計算。 -/
 theorem deltaDivisionPToFrobeniusResidueMap_point (s : σ) :
     WittVector.map G (wp s) = (vφ : WittVector p Qφ) * wφ s :=
   deltaDivisionPairResidueLift_point _ _ _ _ _ _ _ _ _ _ _ _
@@ -1105,7 +1106,7 @@ theorem deltaDivisionPToFrobeniusResidueMap_point (s : σ) :
 /-- 概要：順射と元の係数射の合成は p 側の係数射。
 方針：全係数上の公式で外延性を使う。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaDivisionFrobeniusToPResidueMap_comp_base : (F).comp qφ = qp := by
   ext r
   exact deltaDivisionFrobeniusToPResidueMap_base D hpA hgA hgL d hd b r
@@ -1113,7 +1114,7 @@ theorem deltaDivisionFrobeniusToPResidueMap_comp_base : (F).comp qφ = qp := by
 /-- 概要：逆射と元の係数射の合成は Frobenius 側の係数射。
 方針：全係数上の公式で外延性を使う。
 規約：元の通常係数射を保つ。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余比較。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余比較。 -/
 theorem deltaDivisionPToFrobeniusResidueMap_comp_base : (G).comp qp = qφ := by
   ext r
   exact deltaDivisionPToFrobeniusResidueMap_base D hpA hgA hgL d hd b r
@@ -1121,7 +1122,7 @@ theorem deltaDivisionPToFrobeniusResidueMap_comp_base : (G).comp qp = qφ := by
 /-- 概要：逆射の後に順射を適用する合成は p 側の恒等射。
 方針：係数と全 Witt 点で単元の自然性と逆元による相殺を使う。
 規約：零環の場合も含める。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余同型の片側逆。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余同型の片側逆。 -/
 theorem deltaDivisionFrobeniusPResidue_comp : (F).comp G = RingHom.id Qp := by
   apply deltaDivisionPairResidueRingHom_ext D (p : A) b d hpA
   · intro r
@@ -1138,7 +1139,7 @@ theorem deltaDivisionFrobeniusPResidue_comp : (F).comp G = RingHom.id Qp := by
 /-- 概要：順射の後に逆射を適用する合成は Frobenius 側の恒等射。
 方針：全 Witt 点で逆単元の自然性と相殺を使う。
 規約：通常環射の外延性に帰着する。
-使われ方：BS Rem 7.15（著者版 p.62）の raw 剰余同型のもう片側逆。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の raw 剰余同型のもう片側逆。 -/
 theorem deltaDivisionPFrobeniusResidue_comp : (G).comp F = RingHom.id Qφ := by
   apply deltaDivisionPairResidueRingHom_ext D (D.frobeniusLift d) b d hpA
   · intro r
@@ -1155,7 +1156,7 @@ theorem deltaDivisionPFrobeniusResidue_comp : (G).comp F = RingHom.id Qφ := by
 /-- 概要：distinguished 元の Frobenius 分母の raw 剰余は p 分母の raw 剰余と環同型。
 方針：Witt 単元変換で構成した二つの通常環射と両逆合成を束ねる。
 規約：分子族の形・モニック性・有限性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的 pd 表示への分母の接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的 pd 表示への分母の接続。 -/
 def deltaDivisionFrobeniusPResidueEquiv : Qφ ≃+* Qp :=
   RingEquiv.ofRingHom F G
     (deltaDivisionFrobeniusPResidue_comp D hpA hgA hgL d hd b)
@@ -1164,7 +1165,7 @@ def deltaDivisionFrobeniusPResidueEquiv : Qφ ≃+* Qp :=
 /-- 概要：分母変換の環同型は元の全係数を保つ。
 方針：順比較射の係数公式を使う。
 規約：元の A 係数作用に関する同型。
-使われ方：BS Rem 7.15（著者版 p.62）の pd 包比較へ係数を保って合成する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の pd 包比較へ係数を保って合成する。 -/
 theorem deltaDivisionFrobeniusPResidueEquiv_base (r : A) :
     deltaDivisionFrobeniusPResidueEquiv D hpA hgA hgL d hd b (qφ r) = qp r :=
   deltaDivisionFrobeniusToPResidueMap_base D hpA hgA hgL d hd b r
@@ -1178,7 +1179,7 @@ end DeltaDivisionFrobeniusPResidueEquiv
 ## 概要
 
 正則な一元入力について、raw φ(y)/p 包の任意の係数商は係数商上の主分冪表示と環同型。
-BS Cor 2.39（著者版 p.25）と Rem 7.15（p.62）の具体的剰余比較。
+BS 著者版 Corollary 2.39（著者版 p.25）と BS 著者版 Remark 7.15（p.62）の具体的剰余比較。
 
 ## 方針
 
@@ -1217,7 +1218,7 @@ local notation "E" => deltaPDivisionRawPrincipalEquiv hA hpA D y hgL v hv hy
 /-- 概要：raw p 除算と主分冪表示の同型は任意の係数イデアルの像を保つ。
 方針：元の A 上の全係数公式から環射の合成を照合する。
 規約：係数イデアル K は任意。
-使われ方：BS Rem 7.15（著者版 p.62）の二元商への同型の降下。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の二元商への同型の降下。 -/
 theorem deltaPDivisionIdealPD_map (K : Ideal A) :
     (K.map j).map (E).toRingHom = K.map (algebraMap A PD) := by
   rw [Ideal.map_map]
@@ -1228,7 +1229,7 @@ theorem deltaPDivisionIdealPD_map (K : Ideal A) :
 /-- 概要：raw p 除算包の係数イデアル商は係数商上の主分冪表示と環同型。
 方針：raw 同型を商へ降ろし、主分冪表示と係数商の交換を合成する。
 規約：モニック性ではなく y mod p の正則性を入力とする。
-使われ方：BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の具体的 pd 台環比較。 -/
+使われ方：BS 著者版 Corollary 2.39（著者版 p.25）、BS 著者版 Remark 7.15（p.62）の具体的 pd 台環比較。 -/
 def deltaPDivisionIdealPDEquiv (K : Ideal A) :
     (Raw ⧸ K.map j) ≃+*
       PrincipalDPPresentation (A ⧸ K) (Ideal.Quotient.mk K y) :=
@@ -1238,7 +1239,7 @@ def deltaPDivisionIdealPDEquiv (K : Ideal A) :
 /-- 概要：係数商を通る raw-pd 同型は元の全係数を保つ。
 方針：商の代表元公式と両同型の係数公式を合成する。
 規約：全ての r∈A を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の係数の Frobenius 作用の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数の Frobenius 作用の追跡。 -/
 theorem deltaPDivisionIdealPDEquiv_coeff (K : Ideal A) (r : A) :
     deltaPDivisionIdealPDEquiv hA hpA D y hgL v hv hy K (Ideal.Quotient.mk _ (j r)) =
       algebraMap (A ⧸ K) _ (Ideal.Quotient.mk K r) := by
@@ -1248,7 +1249,7 @@ theorem deltaPDivisionIdealPDEquiv_coeff (K : Ideal A) (r : A) :
 /-- 概要：raw-pd 係数商同型は具体的な階乗生成元を標準分冪へ送る。
 方針：raw 同型と主分冪係数商の生成元公式を使う。
 規約：全ての次数 n を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の実分冪構造を移送するための公式。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実分冪構造を移送するための公式。 -/
 theorem deltaPDivisionIdealPDEquiv_factorial (K : Ideal A) (n : ℕ) :
     deltaPDivisionIdealPDEquiv hA hpA D y hgL v hv hy K
       (Ideal.Quotient.mk _
@@ -1260,7 +1261,7 @@ theorem deltaPDivisionIdealPDEquiv_factorial (K : Ideal A) (n : ℕ) :
 /-- 概要：raw p 除算の二元剰余は A/(p,d) 上の主分冪表示と環同型。
 方針：二元生成イデアルを元の係数イデアルの像と同定し、一般比較を適用する。
 規約：d の distinguished 性はこの比較には不要。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化剰余との接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化剰余との接続。 -/
 def deltaPDivisionPairPDEquiv (d : A) :
     DeltaDivisionPairResidue D (p : A) a d ≃+*
       PrincipalDPPresentation (A ⧸ Ideal.span {(p : A), d})
@@ -1273,7 +1274,7 @@ def deltaPDivisionPairPDEquiv (d : A) :
 /-- 概要：二元剰余の raw-pd 同型は元の全係数を保つ。
 方針：像イデアルの書換えと一般係数商の係数公式を使う。
 規約：元の自然な係数射について述べる。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化の係数作用の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実完備化の係数作用の移送。 -/
 theorem deltaPDivisionPairPDEquiv_coeff (d r : A) :
     deltaPDivisionPairPDEquiv hA hpA D y hgL v hv hy d
         (deltaDivisionPairResidueBase D (p : A) a d r) =
@@ -1294,7 +1295,7 @@ end DeltaPDivisionIdealPDComparison
 
 有限 raw δ 関係商を mod p で初期係数商と後続変数へ分離する。
 そこで d が正則なら次の δ 関係も正則となる。
-BS Rem 7.15（著者版 p.62）の源の p 正則性に向けた有限段の計算。
+BS 著者版 Remark 7.15（著者版 p.62）の源の p 正則性に向けた有限段の計算。
 
 ## 方針
 
@@ -1328,7 +1329,7 @@ local notation "Ip" => Ideal.span {(p : L₀)} ⊔ I₀
 /-- 概要：初期有限関係と p のイデアルの拡張は全自由環の同じイデアル。
 方針：既存の初期関係の像と環射の自然数保存を使う。
 規約：添字型の有限性は仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の有限 mod p 商の分離。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の有限 mod p 商の分離。 -/
 theorem deltaDivisionFiniteModPrimeInitialIdeal_map :
     (Jp).map (relativeFreeFiniteInitialPolynomialMap (N + 1) σ A).toRingHom = Ip := by
   rw [Ideal.map_sup, deltaDivisionFiniteStageInitialIdeal_map,
@@ -1337,7 +1338,7 @@ theorem deltaDivisionFiniteModPrimeInitialIdeal_map :
 /-- 概要：有限関係商の mod p は初期 mod p 商上の後続多項式環と環同型。
 方針：初期イデアルの像を照合して既存の任意初期商比較を適用する。
 規約：一重イデアル商として mod p を表す。
-使われ方：BS Rem 7.15（著者版 p.62）の次関係の先頭係数計算。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次関係の先頭係数計算。 -/
 def deltaDivisionFiniteModPrimeTailEquiv :
     (L₀ ⧸ Ip) ≃+* MvPolynomial (σ × ℕ) (B₀ ⧸ Jp) :=
   (Ideal.quotEquivOfEq (deltaDivisionFiniteModPrimeInitialIdeal_map D d a N).symm).trans
@@ -1346,7 +1347,7 @@ def deltaDivisionFiniteModPrimeTailEquiv :
 /-- 概要：有限 mod p 分離同型の代表元公式。
 方針：初期商比較の代表元公式を使う。
 規約：全自由環の全ての元を含める。
-使われ方：BS Rem 7.15（著者版 p.62）の係数と次関係の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数と次関係の照合。 -/
 theorem deltaDivisionFiniteModPrimeTailEquiv_mk (f : L₀) :
     deltaDivisionFiniteModPrimeTailEquiv D d a N (Ideal.Quotient.mk Ip f) =
       MvPolynomial.map (Ideal.Quotient.mk Jp)
@@ -1357,7 +1358,7 @@ theorem deltaDivisionFiniteModPrimeTailEquiv_mk (f : L₀) :
 /-- 概要：有限 mod p 分離同型は元の A 係数を初期係数商へ送る。
 方針：変数分離と多項式写像の係数公式を使う。
 規約：元の標準係数射を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）の d 正則性の降下。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の d 正則性の降下。 -/
 theorem deltaDivisionFiniteModPrimeTailEquiv_coeff (r : A) :
     deltaDivisionFiniteModPrimeTailEquiv D d a N (Ideal.Quotient.mk Ip (MvPolynomial.C r)) =
       MvPolynomial.C (Ideal.Quotient.mk Jp (MvPolynomial.C r)) := by
@@ -1367,7 +1368,7 @@ theorem deltaDivisionFiniteModPrimeTailEquiv_coeff (r : A) :
 /-- 概要：次の δ 関係は有限 mod p 分離後も最高変数の一次式。
 方針：既存の先頭項と下位項の分解を通常商へ送る。
 規約：最高係数を φ^(N+1)(d) の像のまま表示する。
-使われ方：BS Rem 7.15（著者版 p.62）の次関係の正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の次関係の正則性。 -/
 theorem deltaDivisionFiniteModPrimeTailEquiv_next (s : σ) :
     deltaDivisionFiniteModPrimeTailEquiv D d a N
       (Ideal.Quotient.mk Ip (deltaDivisionIteratedRelation D d a s (N + 1))) =
@@ -1392,7 +1393,7 @@ end DeltaDivisionFiniteModPrimeTail
 ## 概要
 
 分母の像が正則で分子族がその像で割り切れる δ 射は、元の raw 包の実完備化から
-一意に延長する。BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の envelope 比較への入口。
+一意に延長する。BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の envelope 比較への入口。
 
 ## 方針
 
@@ -1417,7 +1418,7 @@ variable {p : ℕ} [Fact p.Prime] {R σ T : Type u} [CommRing R] [CommRing T]
 /-- 概要：正則な分母像と分子の可除性を持つ完備 δ 試験環へ、raw 実完備化から一意に延長する。
 方針：raw δ 割り算と実完備化の二つの一意延長を結ぶ。
 規約：試験環の p ねじれを制限せず、分母の正則性を明示する。
-使われ方：BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の元の envelope の比較。 -/
+使われ方：BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の元の envelope の比較。 -/
 theorem existsUnique_rawDeltaDivisionPDHom
     (D : DeltaStructure p R) (E : DeltaStructure p T) (d : R) (a : σ → R)
     (f : R →+* T) (hf : D.IsDeltaHom E f)
@@ -1461,7 +1462,7 @@ end RawDeltaDivisionPDUniversal
 
 元の raw 包の実完備化で分母像が正則なら、旧分母ねじれの δ 閉包商を先に挟んだ
 実完備化と標準 raw 射を保つ環同型となる。
-BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の二つの具体的構成の比較。
+BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の二つの具体的構成の比較。
 
 ## 方針
 
@@ -1474,7 +1475,7 @@ BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の二つの具体的構成�
 
 ## 使われ方
 
-無限根モニックの元の実候補を既存の Prop 7.2 の一段構成へ同定する。
+無限根モニックの元の実候補を既存の BS 著者版 Proposition 7.2 の一段構成へ同定する。
 -/
 
 @[expose] public noncomputable section RawDeltaDivisionPDTorsionComparison
@@ -1501,7 +1502,7 @@ local notation "uU" => pdCompletionUnit U p (jU d)
 /-- 概要：元の実 raw 完備化の分母が正則なら旧ねじれ除去を挟む実完備化と環同型。
 方針：旧ねじれ商を通る標準射を延長し、係数上の逆合成から完備化の一意性を使う。
 規約：新しい正則性は元の実 H⁰ の分母像だけに仮定する。
-使われ方：BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の一段構成比較。 -/
+使われ方：BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の一段構成比較。 -/
 def rawDeltaDivisionPDTorsionEquiv
     (hreg : let := pdCompletionCommRing B p (j d)
       Function.Injective (fun x : H => uB (j d) * x)) :
@@ -1551,7 +1552,7 @@ def rawDeltaDivisionPDTorsionEquiv
 /-- 概要：標準比較は元の raw 包の完備化像を旧ねじれ商の標準完備化像へ送る。
 方針：順射の実完備化一意延長の合成仕様を評価する。
 規約：全ての元の raw 包の元を扱う。
-使われ方：BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の係数を保つ比較。 -/
+使われ方：BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の係数を保つ比較。 -/
 theorem rawDeltaDivisionPDTorsionEquiv_unit
     (hreg : let := pdCompletionCommRing B p (j d)
       Function.Injective (fun x : H => uB (j d) * x)) (r : B) :
@@ -1566,7 +1567,7 @@ theorem rawDeltaDivisionPDTorsionEquiv_unit
 /-- 概要：標準比較は実完備化の指定 δ 構造を保つ。
 方針：raw 包からの標準合成が δ 射であることと実完備化の δ 延長性を使う。
 規約：環同型の順射について述べる。
-使われ方：BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の δ 完全化への比較。 -/
+使われ方：BS 著者版 Proposition 7.2（著者版 p.55）、BS 著者版 Remark 7.15（p.62）の δ 完全化への比較。 -/
 theorem rawDeltaDivisionPDTorsionEquiv_isDeltaHom
     (hreg : let := pdCompletionCommRing B p (j d)
       Function.Injective (fun x : H => uB (j d) * x)) :
