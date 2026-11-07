@@ -177,3 +177,11 @@ B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward し�
 - `drafts/A8/IntegralDiscreteness.lean` から G-A8-6 の宣言 1 件を一時ファイルに写し、`lake env lean -DrelaxedAutoImplicit=false` で型検査した。16.77 秒、終了コード 0。任意の整 perfectoid 環とその有限エタール代数を取る下書きの型を維持する。p の正則性や局所性の仮定は加えない。
 - 相対 Frobenius の比較と平坦性を用い、Fontaine 核の生成元を移す方針。標数 p、混標数、p ねじれのある基底を含めて扱う。Mathlib の既存の有限エタール API と、リポジトリの Fontaine 核・tilt の補題を使う。
 - この停止点の新規本体モジュールは 0 本。作業 C の対象パスと⑤b の差分・作業木に重複は 0。型が同じなので C-2 に進む。
+
+## BS-W11 停止点 C-2（2026-11-07）
+
+- G-A8-6 `isIntegralPerfectoid_of_finiteEtale` を `drafts/A8/IntegralDiscreteness.lean` から移し、下書きの型と引数順で証明した。零環・標数 p・混標数・p ねじれの場合を含む。同じ下書きの後続の宣言は残した。
+- mod p で相対 Frobenius の全単射性を示す（[Stacks Project, Tag 0EBS](https://stacks.math.columbia.edu/tag/0EBS) に対応する半完全環上の形）。有限個の生成元の両立する p 乗根を選び、剰余 Frobenius の核から tilt の第 0 射影の核を移す。有限射影性で p 進完備性と p ねじれの持ち上げを得て、既存の distinguished Witt 商の完備性から Fontaine 核を計算する。
+- 対象 1 モジュールのロック付きビルドは 12 秒（対象コンパイル 8.5 秒）。対象モジュール自身の警告は 0。単独監査は 25 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 73 モジュールで E3 入口へ到達しない。`git diff --check` を通過し、対象パスの⑤b との重複は 0。
+- B-3 の未使用セクション引数は、一時ファイルで名前を付けて `include` しても警告が残った。警告対象の引数を `omit` すると型から外れるので、`completionInverseFrobenius_pow` と `arcValuation_extendField` の型を維持した。素数性インスタンスの重複もそのまま。
+- 入口と段階 II 監査への登録は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid`。
