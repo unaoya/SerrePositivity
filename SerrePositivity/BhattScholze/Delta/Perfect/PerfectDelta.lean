@@ -17,7 +17,8 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 
 ## 概要
 Frobenius は p ねじれを消す（BS 著者版 Lemma 2.28。p が冪零な δ 環は零環、BS 著者版 Example 2.6）、完全 δ 環は p ねじれなしで A/p は完全、
-Frobenius 同型は δ 射、p 冪の元は rank 1（BS 著者版 Lemma 2.32）、完全な標数 p の環の Witt 環の δ 構造と復元 A ≅ W(A/p)（BS 著者版 Corollary 2.31）、
+Frobenius 同型は δ 射、p 冪の元は rank 1（BS 著者版 Lemma 2.32）、
+完全な標数 p の環の Witt 環の δ 構造と復元 A ≅ W(A/p)（BS 著者版 Corollary 2.31）、
 Teichmüller 係数による distinguished 判定（BS 著者版 Lemma 2.33）。
 
 ## 方針

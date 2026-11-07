@@ -19,7 +19,8 @@ d で割る包（Delta/Division）を p 進完備に完全化する。原典の�
 perfectoid 性・IsPerfectoidization はここでは結論しない。
 
 ## 使われ方
-BS 著者版 Corollary 7.3（Semiperfectoid/Perfectoidization）、André の perfectoid 候補。旧 Prism/Perfection から移した。
+BS 著者版 Corollary 7.3（`Semiperfectoid/Perfectoidization`）、André の perfectoid 候補。
+旧 `Prism/Perfection` から移した。
 -/
 
 universe u v w t

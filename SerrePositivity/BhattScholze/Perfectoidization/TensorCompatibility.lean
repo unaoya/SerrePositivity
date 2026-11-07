@@ -25,7 +25,8 @@ universe u
 
 /-! ## Ring-perfectoidization of a general tensor diagram（旧 Perfectoidization/PerfectoidizationTensorCompatibility.lean）
 
-This is the ring-valued pushout statement underlying author-version BS 著者版 Proposition 8.13. The three specified perfectoidizations form a compatible diagram. Its
+This is the ring-valued pushout statement underlying BS 著者版 Proposition 8.13.
+The three specified perfectoidizations form a compatible diagram. Its
 completed tensor is supplied by the existing perfectoid tensor theorem, rather
 than by rebuilding prismatic cohomology or its symmetric monoidal structure.
 -/
@@ -242,7 +243,8 @@ lemma prop813CompletedTensorMap_unit_tmul (x : S) (y : T) :
     (perfectoidizationTensorDiagramMap r s t hs ht (x ⊗ₜ[R] y)) at h
   simpa only [RingHom.comp_apply, perfectoidizationTensorDiagramMap_tmul] using h
 
-/-- 指定した普遍 perfectoid 化の完備テンソルの H⁰ は、元の完備テンソルの H⁰ の普遍 perfectoid 化を与える（BS 著者版 Proposition 8.13 の環としての完備テンソル版）。 -/
+/-- 指定した普遍 perfectoid 化の完備テンソルの H⁰ は、元の完備テンソルの H⁰ の
+普遍 perfectoid 化を与える（BS 著者版 Proposition 8.13 の環としての完備テンソル版）。 -/
 lemma prop813CompletedTensorMap_isPerfectoidization :
     letI := derivedH0CommRing X
     letI := derivedH0CommRing Y
@@ -498,7 +500,8 @@ lemma prop813BaseChange_exists_linearEquiv (E : Type u) [CommRing E] [Algebra S 
   rw [map_natCast] at eH
   exact ⟨eH.trans e.toLinearEquiv⟩
 
-/-- perfectoid 環の全射商に対する普遍 perfectoid 化を取り、その完備底変換も普遍 perfectoid 化になることを示す（BS 著者版 Proposition 8.13 の環版で片方が perfectoid 環の全射商の場合）。
+/-- perfectoid 環の全射商の普遍 perfectoid 化を取り、その完備底変換も普遍 perfectoid 化になる
+（BS 著者版 Proposition 8.13 の環版で片方が perfectoid 環の全射商の場合）。
 方針：全射商の普遍 perfectoid 化の存在から指定の写像を取り、環の完備底変換の比較を適用する。 -/
 theorem exists_prop813BaseChange_of_perfectoid_quotient
     (hq : Function.Surjective (algebraMap R A)) :

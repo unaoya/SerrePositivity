@@ -21,7 +21,8 @@ public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 # semiperfectoid 環の perfectoid 化は全射（BS 著者版 Theorem 7.4）
 
 ## 概要
-導来 p 完備な perfectoid 環の全射商の任意の perfectoid 化は全射。原典どおり André の補題（BS 著者版 Theorem 7.14）で絶対整閉な perfectoid 環へ
+導来 p 完備な perfectoid 環の全射商の任意の perfectoid 化は全射。
+André の補題（BS 著者版 Theorem 7.14）で絶対整閉な perfectoid 環へ
 p 完全忠実平坦に拡大し、根付き拡大での全射性を降下する。旧い適用形（p ねじれのない商）と全射の保存も含む。
 BS 著者版 Theorem 7.4 の全射性を述べる。原文の証明中の GR への引用は別文献の結果を指す。
 
@@ -511,7 +512,8 @@ theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient
     (f : S →+* C) (hf : IsPerfectoidization p f) : Function.Surjective f :=
   surjective_of_isPerfectoidization_of_andre R S C p hR q hq hS f hf
 
-/-- B3の一般存在・普遍性とB4により、一般の導来p完備商は全射perfectoid化を持つ（BS 著者版 Theorem 7.4 と Corollary 7.3 の第一文、序論の Theorem 1.12 (2)）。 -/
+/-- 導来 p 完備な半 perfectoid 商は全射な perfectoid 化を持つ
+（BS 著者版 Theorem 7.4 と Corollary 7.3 の第一文、序論の Theorem 1.12 (2)）。 -/
 theorem exists_surjective_perfectoidization_of_semiperfectoid_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
     (hS : DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :

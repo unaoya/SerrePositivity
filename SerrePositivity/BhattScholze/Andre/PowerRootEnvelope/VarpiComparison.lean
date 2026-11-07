@@ -365,7 +365,8 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end Flatness
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：pd 表示環の係数テンソル底変換（旧 Andre/Remark715/VarpiComparison/PDBaseChange.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）の pd 表示環の係数テンソル底変換
+旧ファイルは `Andre/Remark715/VarpiComparison/PDBaseChange.lean`。
 
 ## 概要
 無限根環上の主 pd 表示は係数の主イデアル商による底変換と可換である。
@@ -960,7 +961,8 @@ end SerrePositivity.BhattScholze.Andre.VarpiComparison
 
 end UnconditionalCandidate
 
-/-! ## BS 著者版 Remark 7.15（著者版 p.62）：自然な係数テンソル射は分冪射（旧 Andre/Remark715/VarpiComparison/PDCompatibility.lean）
+/-! ## BS 著者版 Remark 7.15（著者版 p.62）の自然な係数テンソル射は分冪射
+旧ファイルは `Andre/Remark715/VarpiComparison/PDCompatibility.lean`。
 
 ## 概要
 実装の A/p 上の実 pd 包から R/ϖ への通常テンソル底変換は分冪演算を保つ。

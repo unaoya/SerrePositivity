@@ -8,7 +8,8 @@ public import Mathlib.Tactic.FinCases
 # δ 環の定義と基本操作（BS 著者版 §2.1：BS 著者版 Definition 2.1、BS 著者版 Remark 2.2・Remark 2.4）
 
 ## 概要
-δ 構造を W₂ への環準同型切断として定義し（BS 著者版 Remark 2.4）、BS 著者版 Definition 2.1 の恒等式との同値、Frobenius 持ち上げとの対応（BS 著者版 Remark 2.2）、
+δ 構造を W₂ への環準同型切断として定義し（BS 著者版 Remark 2.4）、
+BS 著者版 Definition 2.1 の恒等式との同値、Frobenius 持ち上げとの対応（BS 著者版 Remark 2.2）、
 δ 射とその言い換えを与える。W₂ の関手性と単元判定、環同型による δ 構造の移送、δ 安定部分環への制限も含む。
 勉強ノート第 2 章の定義 2.1.1〜命題 2.1.5。
 W₂ 切断での δ 射の判定と、Frobenius と可換な射の判定を、BS 著者版 Remark 2.4 と Remark 2.2 の構造の対応に付随する補題として扱う。

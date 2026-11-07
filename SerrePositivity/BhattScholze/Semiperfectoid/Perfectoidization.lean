@@ -229,7 +229,8 @@ def perfectPrismQuotientPerfectoidizationMap
 set_option maxHeartbeats 2000000 in
 -- 除算 prism の担体（PD 完備化の H⁰）上の単一化は、反復した完備化の環構造（反映から
 -- 選択で定まる積）に何度も当たって探索をやり直すので、この証明に限って上限を増やす（B4、11-04）。
-/-- 非零完全prismの商から来る全射について、具体的な標準射はperfectoid化を与える（BS 著者版 Corollary 7.3 の第一文の完全 prism の商に対する構成、序論の Theorem 1.12 (2)）。 -/
+/-- 非零完全 prism の商から来る全射に対して、標準射は perfectoid 化を与える
+（BS 著者版 Corollary 7.3 第一文の完全 prism の商の場合、序論の Theorem 1.12 (2)）。 -/
 theorem perfectPrismQuotientPerfectoidizationMap_isPerfectoidization
     (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
     [Fact (¬ IsUnit (p : A ⧸ P.ideal))]

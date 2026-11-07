@@ -283,7 +283,7 @@ section DeltaWittGhostRingHom
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- ghost射が単射なら、構成済み点ごとのWitt写像は環射（BS 著者版 Remark 2.13 の w_R の ghost 写像が単射の場合、Remark 2.7 の随伴単位の環準同型の部分）。 -/
+/-- ghost 写像が単射なら、Witt 写像 w_R は環準同型（BS 著者版 Remark 2.13 と Remark 2.7 の随伴単位の環準同型の部分）。 -/
 def deltaWittGhostRingHom (D : DeltaStructure p A)
     (hg : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A)) :
     A →+* WittVector p A where

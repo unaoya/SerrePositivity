@@ -27,7 +27,8 @@ public import Mathlib.RingTheory.Valuation.ValuationRing
 添字圏、導来対象・辺・自然変換、導来完備化 H⁰ の包装、単位付き導来極限錐のデータ、excision 図式、界面 E3 の構造体。
 
 ## 方針
-D(R) 上の導来 perfectoid 化の性質（BS 著者版 Definition 8.2、BS 著者版 Proposition 8.5、BS 著者版 Corollary 8.14、BS 著者版 Theorem 10.11、BS 著者版 Corollary 8.12）を欄として束ねる。
+D(R) 上の導来 perfectoid 化の性質を欄として束ねる（BS 著者版 Definition 8.2、
+Proposition 8.5、Corollary 8.14、Theorem 10.11、Corollary 8.12）。
 
 ## 規約
 E3 の存在そのものは Inputs の唯一の sorry。
@@ -669,7 +670,7 @@ open scoped Simplicial
 /-- 原典と照合した E3 の型。界面の存在を追加の公理として宣言しない。 -/
 structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) where
-  /-- 通常の Type u の代数を底の導来対象に送る関手（BS 著者版 Definition 8.2 の perfectoid 化を、通常の R 代数について底の導来対象として受け取る E3 の欄。Lemma 8.4 とあわせて引用）。 -/
+  /-- 通常の R 代数の perfectoid 化を底の導来対象として受け取る（BS 著者版 Definition 8.2 に対応する E3 の欄。Lemma 8.4 とあわせて引用）。 -/
   perfd : algebraNerve R ⟶ derivedInfinityCategory R
   /-- 元の離散代数からのホモトピー整合的な単位。 -/
   unit : NatInfinity R (J R) perfd
@@ -678,11 +679,11 @@ structure PerfectoidizationInterfaceE3 (R : Type u) [CommRing R]
   /-- 離散な場合だけ、指定した環の単位が perfectoid 化になる（BS 著者版 Corollary 8.14 の普遍性を、離散入力で値も離散の場合に受け取る E3 の欄）。 -/
   universal : ∀ S, Disc R (vertex R perfd S) →
     IsPerfectoidization p (h0.unit.app S).right.hom
-  /-- Type u の標的を添字とする、元の単位付きの指定錐（BS 著者版 Proposition 8.5 の極限表示に使う指定錐を、離散入力と Type u の標的について受け取る E3 の欄）。 -/
+  /-- Type u の標的を添字とする元の単位付きの指定錐を受け取る（BS 著者版 Proposition 8.5 の極限表示に使う E3 の欄）。 -/
   limitCone : ∀ S, BSLimitConeData R p perfd unit h0 S
   /-- 指定した錐の極限性。一般の巨大極限の存在は要求しない。 -/
   limit_isLimit : ∀ S, IsLimitCone (limitCone S).cone
-  /-- 任意の整代数の離散性と perfectoid 性（BS 著者版 Theorem 10.11 の perfectoid 化の離散性と perfectoid 性を受け取る E3 の欄。未完備の整代数には導来 p 完備化の H⁰ を介して適用）。
+  /-- 整代数の perfectoid 化の離散性と perfectoid 性を受け取る（BS 著者版 Theorem 10.11 の結論に対応する E3 の欄）。
   非完備な始域も含む。 -/
   integral : ∀ (S : A_R R),
     (letI : Algebra R S.right := S.hom.hom.toAlgebra; Algebra.IsIntegral R S.right) →

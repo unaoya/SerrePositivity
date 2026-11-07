@@ -17,7 +17,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 δ 除算の添加、ねじれ除去、それらを合わせた普遍性は、BS 著者版 Proposition 7.2 の証明に関わる代数的な補助である。
 
 ## 方針
-原典では §2 に対応する項目はなく、§3 の BS 著者版 Proposition 3.13（prismatic envelope）と §7 の BS 著者版 Proposition 7.2 で使う構成。
+この構成は BS 著者版 Proposition 3.13 の prismatic envelope と Proposition 7.2 の証明で使う。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。

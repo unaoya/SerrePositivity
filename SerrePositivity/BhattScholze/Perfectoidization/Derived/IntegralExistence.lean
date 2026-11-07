@@ -417,7 +417,8 @@ end InitialBridge
 
 namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
 
-/-- 任意の整代数の普遍 perfectoid 化は、界面の integral と universal の欄から従う（BS 著者版 Theorem 10.11 と Corollary 8.14 の環としての帰結を E3 から導出、序論の Theorem 1.17 (1)）。 -/
+/-- 整代数の普遍 perfectoid 化は、E3 の integral と universal の欄から従う
+（BS 著者版 Theorem 10.11 と Corollary 8.14 の環としての帰結、序論の Theorem 1.17 (1)）。 -/
 theorem exists_perfectoidization_of_integral
     (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Algebra.IsIntegral R S]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)

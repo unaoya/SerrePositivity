@@ -36,7 +36,7 @@ open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} {B : Type v} [CommRing A] [CommRing B]
 variable {P : OrientedPrism p A} {Q : OrientedPrism p B}
 
-/-- prism射は、源の生成元を終域の生成元の一意な単元倍へ送る（BS 著者版 Lemma 3.5 の像イデアルの等式を向き付きの場合に生成元で表した形、序論の Proposition 1.5）。 -/
+/-- prism 射は源の生成元を終域の生成元の一意な単元倍へ送る（BS 著者版 Lemma 3.5 の像イデアルの等式を向き付きの場合に表した形、序論の Proposition 1.5）。 -/
 theorem existsUnique_generator_unit (f : Hom P Q) :
     ∃! u : Bˣ, f.toRingHom P.generator = Q.generator * u := by
   obtain ⟨r, hru, hr⟩ := f.map_delta.exists_isUnit_of_distinguished_of_mem_span

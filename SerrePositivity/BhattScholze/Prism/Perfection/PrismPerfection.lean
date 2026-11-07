@@ -22,7 +22,8 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 原典の形（prism の完全化が普遍な完全 prism）の一つの定理にはまとめていない（ノート BR28）。
 
 ## 使われ方
-BS 著者版 Corollary 7.3 の構成、BS 著者版 Theorem 3.10（perfectoid 環の prism 表示）、André。PD 完備化の比較は旧 Andre/RootedExtension から移した。
+BS 著者版 Corollary 7.3 の構成、Theorem 3.10 の perfectoid 環の prism 表示、André。
+PD 完備化の比較は旧 `Andre/RootedExtension` から移した。
 -/
 
 universe u
@@ -107,7 +108,8 @@ namespace SerrePositivity.BhattScholze
 open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A T : Type u} [CommRing A] [CommRing T]
 
-/-- 完全試験prismへdをそのイデアルに送る基底δ射は、実完備化prismへ一意延長する（BS 著者版 Lemma 3.9 の完全 δ 環と distinguished な元からの完備化の延長）。 -/
+/-- d を完全試験 prism のイデアルに送る基底 δ 射は、実完備化 prism へ一意に延長する
+（BS 著者版 Lemma 3.9 の完全 δ 環と distinguished 元からの完備化の延長）。 -/
 theorem existsUnique_perfectDeltaPDPrismHom
     (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (hd : D.IsDistinguished d)
     (Q : OrientedPrism p T) (hQ : Q.deltaStructure.IsPerfect)

@@ -114,7 +114,8 @@ Cartier イデアルは (d) とし、導来 (p,d) 完備性は p と d それぞ
 namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A]
 
-/-- oriented prism：δ環、正則な生成元、導来(p,d)完備性、prismのイデアル条件（BS 著者版 Definition 3.2 (1) の向き付きの場合、序論の Definition 1.1）。
+/-- δ 環、正則な生成元、導来 (p,d) 完備性とイデアル条件を持つ向き付き prism
+（BS 著者版 Definition 3.2 (1) の向き付きの場合、序論の Definition 1.1）。
 生成元以外のCartierイデアルはこの型の対象外。 -/
 structure OrientedPrism where
   deltaStructure : DeltaStructure p A
@@ -140,7 +141,8 @@ theorem p_mem_sup_map (P : OrientedPrism p A) :
   simpa only [ideal, Ideal.map_span, Set.image_singleton, ← Ideal.span_union,
     Set.singleton_union] using P.p_mem
 
-/-- distinguishedな正則元と実導来完備性からoriented prismを構成する（BS 著者版 Definition 3.2 (1) の向き付きの場合の構成、Lemma 3.1 の主イデアルの場合、序論の Definition 1.1）。 -/
+/-- distinguished な正則元と導来完備性から向き付き prism を構成する
+（BS 著者版 Definition 3.2 (1) と Lemma 3.1 の主イデアルの場合、序論の Definition 1.1）。 -/
 def ofDistinguished (D : DeltaStructure p A) (d : A)
     (hd : D.IsDistinguished d) (hreg : Function.Injective (fun x : A ↦ d * x))
     (hp : DerivedCompletion.IsModuleComplete A (p : A) (ModuleCat.of A A))

@@ -511,7 +511,7 @@ def pCompletedPrismMap : OrientedPrism.Hom P
   apply (Ideal.span_singleton_le_iff_mem _).mpr
   exact Ideal.subset_span (Set.mem_singleton _)
 
-/-- 任意の完全oriented prismへのprism射は、標準prism射を通じ一意に延長する（BS 著者版 Lemma 3.9 の向き付き prism の普遍性で完全化後に追加の d 進完備性を仮定）。 -/
+/-- 完全な向き付き prism への射は、標準 prism 射を通じて一意に延長する（BS 著者版 Lemma 3.9 の普遍性で、完全化後に d 進完備性を仮定）。 -/
 theorem existsUnique_pCompletedPrismHom
     {B : Type v} [CommRing B] (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
     (f : OrientedPrism.Hom P Q) :

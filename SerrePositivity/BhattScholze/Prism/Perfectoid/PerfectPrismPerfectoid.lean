@@ -335,7 +335,7 @@ BS 著者版 Theorem 3.10の商の向き。商のpねじれを許し、F7を要�
 namespace SerrePositivity.BhattScholze.OrientedPrism
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 任意の完全oriented prismの標準商は整perfectoid（BS 著者版 Theorem 3.10 の向き付き完全 prism から商を取る方向、序論の Example 1.3 (2)）。
+/-- 向き付き完全 prism の標準商は整 perfectoid（BS 著者版 Theorem 3.10 の商を取る方向、序論の Example 1.3 (2)）。
   零環も含む。 -/
 theorem quotient_isIntegralPerfectoid (P : OrientedPrism p A)
     (hP : P.deltaStructure.IsPerfect) : IsIntegralPerfectoid (A ⧸ P.ideal) p := by
@@ -378,7 +378,8 @@ open SerrePositivity.DerivedCompletion
 variable (T : Type u) [CommRing T] (p : ℕ) [Fact p.Prime]
 variable [Fact (¬ IsUnit (p : T))] [IsAdicComplete (Ideal.span {(p : T)}) T]
 
-/-- 四条件の非零枝から、具体的な実H⁰上の完全prismと試験環への商同型を得る（BS 著者版 Theorem 3.10 の perfectoid 環から完全 prism を作る方向の非自明な枝）。 -/
+/-- 整 perfectoid 環の四条件の非零枝から、完全 prism と試験環への商同型を得る
+（BS 著者版 Theorem 3.10 の perfectoid 環から完全 prism を作る方向の非零枝）。 -/
 theorem exists_perfectoidTrialPrism
     (hF : Function.Surjective (fun x : ModP T p ↦ x ^ p))
     (hker : (RingHom.ker (WittVector.fontaineTheta T p)).IsPrincipal)

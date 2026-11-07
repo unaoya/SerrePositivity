@@ -7,7 +7,9 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 perfectoid 側の文献入力は本ファイルの界面の存在に集約する。
 整代数の普遍環の存在と環の excision は、この界面から証明した定理である。
 
-BS 著者版 Definition 8.2、Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、Corollary 8.11、Corollary 8.12（p.69）、Corollary 8.14（p.70）、Theorem 10.11（p.82）を、導来 perfectoid 化の E3 界面の存在にまとめて引用する。
+導来 perfectoid 化の E3 界面の存在をまとめて引用する。
+根拠は BS 著者版 Definition 8.2、Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、
+Corollary 8.11、Corollary 8.12（p.69）、Corollary 8.14（p.70）、Theorem 10.11（p.82）。
 -/
 
 public section

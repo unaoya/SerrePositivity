@@ -542,8 +542,10 @@ arc 条件を満たす商の四角形について、指定した普遍 perfectoi
 
 ## 規約
 この公開入口は以前 BS 著者版 Corollary 8.12 の文献入力であったが、現在は直接の未証明箇所を持たない。
-根拠の照合は BS 著者版 Lemma 8.4（pp.63–64）、BS 著者版 Proposition 8.5（pp.64–65）、BS 著者版 Corollary 8.11・Corollary 8.12、
-BS 著者版 Corollary 8.14（p.70）と `formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3・§6 に記録する。
+根拠は BS 著者版 Lemma 8.4（pp.63–64）、Proposition 8.5（pp.64–65）、
+Corollary 8.11、Corollary 8.12、
+Corollary 8.14（p.70）。照合は
+`formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3・§6 に記録する。
 原典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf 。
 差写像の全射性は Π2 の定理として公開し、この Inputs の公開型には追加しない。
 

@@ -435,7 +435,8 @@ theorem perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
 
 /--
 ## 概要
-導来 p 完備加群 M について、K⊗̂ᴸM が零なら perfectoid 化の核 K は M を零化する（BS 著者版 Proposition 10.4 の同値の逆方向で単項 J と導来 p 完備加群の場合）。
+導来 p 完備加群 M について、K⊗̂ᴸM が零なら
+perfectoid 化の核 K は M を零化する（BS 著者版 Proposition 10.4 の逆方向の単項 J の場合）。
 ## 方針
 K→R→R/K の tensor 三角形から M≅(R/K)⊗̂ᴸM を得て、実 H⁰ の商環作用を移す。
 ## 規約
