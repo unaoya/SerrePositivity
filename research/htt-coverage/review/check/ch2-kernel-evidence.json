@@ -1,0 +1,409 @@
+{
+  "base": "5933bde0c3b8a975fff34c19304f985ec0cd565f",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "2.0.0.1": {
+      "page": 53,
+      "declarations": [
+        "SSet.modelCategoryQuillen.fibration_iff",
+        "SSet.anodyneExtensions"
+      ]
+    },
+    "2.0.0.3": {
+      "page": 53,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.LeftFibration",
+        "SerrePositivity.InfinityCategories.RightFibration",
+        "SSet.InnerFibration",
+        "SerrePositivity.InfinityCategories.leftAnodyneExtensions",
+        "SerrePositivity.InfinityCategories.rightAnodyneExtensions",
+        "SSet.innerAnodyneExtensions"
+      ]
+    },
+    "2.1.1.1": {
+      "page": 56,
+      "declarations": [
+        "CategoryTheory.Functor.IsStronglyCocartesian"
+      ]
+    },
+    "2.1.1.5": {
+      "page": 59,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_reflects_invertibleEdge"
+      ]
+    },
+    "2.1.1.6": {
+      "page": 59,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target"
+      ]
+    },
+    "2.1.2.1": {
+      "page": 60,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration"
+      ]
+    },
+    "2.1.2.2": {
+      "page": 61,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration",
+        "SerrePositivity.InfinityCategories.sliceUnder_quasicategory"
+      ]
+    },
+    "2.1.2.3": {
+      "page": 62,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_rightAnodyne",
+        "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne"
+      ]
+    },
+    "2.1.2.5": {
+      "page": 62,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_rightAnodyne"
+      ]
+    },
+    "2.1.2.7": {
+      "page": 64,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftAnodyneExtensions_pushoutObjObj_left"
+      ]
+    },
+    "2.1.2.8": {
+      "page": 65,
+      "declarations": [
+        "SSet.anodyneExtensions_pushoutObjObjι",
+        "SSet.anodyneExtensions_pushoutObjObjι'"
+      ]
+    },
+    "2.1.2.9": {
+      "page": 65,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_pullbackObjObjπ",
+        "SerrePositivity.InfinityCategories.trivialKanFibration_relativeHom_of_leftAnodyne"
+      ]
+    },
+    "2.1.2.10": {
+      "page": 65,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeEdgeSource_trivialKanFibration"
+      ]
+    },
+    "2.1.3.1": {
+      "page": 66,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex"
+      ]
+    },
+    "2.1.3.3": {
+      "page": 66,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex"
+      ]
+    },
+    "2.1.3.4": {
+      "page": 66,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_contractible_fibers"
+      ]
+    },
+    "2.1.4.6": {
+      "page": 69,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.trivialKanFibration_relativeHom_of_leftAnodyne"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.Functor.IsStronglyCocartesian": {
+      "declaration": "CategoryTheory.Functor.IsStronglyCocartesian",
+      "source": "Mathlib/CategoryTheory/FiberedCategory/Cocartesian.lean",
+      "type": "@CategoryTheory.Functor.IsStronglyCocartesian.{u_1, u_2, u_3,\n    u_4} : {𝒮 : Type u_3} →\n  {𝒳 : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} 𝒳] →\n        CategoryTheory.Functor.{u_2, u_1, u_4, u_3} 𝒳 𝒮 →\n          {R S : 𝒮} → {a b : 𝒳} → Quiver.Hom.{u_1, u_3} R S → Quiver.Hom.{u_2, u_4} a b → Prop",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch4-kernel-evidence.json",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SSet.InnerFibration": {
+      "declaration": "SSet.InnerFibration",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+      "type": "@SSet.InnerFibration.{u_1} : {X Y : SSet.{u_1}} →\n  @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y →\n    Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SSet.anodyneExtensions": {
+      "declaration": "SSet.anodyneExtensions",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Basic.lean",
+      "type": "SSet.anodyneExtensions.{u_1} : CategoryTheory.MorphismProperty.{u_1, u_1 + 1} SSet.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SSet.anodyneExtensions_pushoutObjObjι": {
+      "declaration": "SSet.anodyneExtensions_pushoutObjObjι",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+      "type": "@SSet.anodyneExtensions_pushoutObjObjι.{u_1} : ∀ {X₁ X₂ Y₁ Y₂ : SSet.{u_1}} {i : Quiver.Hom.{u_1, u_1 + 1} X₁ Y₁}\n  {j : Quiver.Hom.{u_1, u_1 + 1} X₂ Y₂}\n  (sq₁₂ :\n    CategoryTheory.Functor.PushoutObjObj.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1}\n      (CategoryTheory.MonoidalCategory.curriedTensor.{u_1, u_1 + 1} SSet.{u_1}) i j)\n  [CategoryTheory.Mono.{u_1, u_1 + 1} i],\n  SSet.anodyneExtensions.{u_1} j →\n    SSet.anodyneExtensions.{u_1}\n      (CategoryTheory.Functor.PushoutObjObj.ι.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1} sq₁₂)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SSet.anodyneExtensions_pushoutObjObjι'": {
+      "declaration": "SSet.anodyneExtensions_pushoutObjObjι'",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+      "type": "@SSet.anodyneExtensions_pushoutObjObjι'.{u_1} : ∀ {X₁ X₂ Y₁ Y₂ : SSet.{u_1}} {i : Quiver.Hom.{u_1, u_1 + 1} X₁ Y₁}\n  {j : Quiver.Hom.{u_1, u_1 + 1} X₂ Y₂}\n  (sq₁₂ :\n    CategoryTheory.Functor.PushoutObjObj.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1}\n      (CategoryTheory.MonoidalCategory.curriedTensor.{u_1, u_1 + 1} SSet.{u_1}) i j)\n  [CategoryTheory.Mono.{u_1, u_1 + 1} j],\n  SSet.anodyneExtensions.{u_1} i →\n    SSet.anodyneExtensions.{u_1}\n      (CategoryTheory.Functor.PushoutObjObj.ι.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1} sq₁₂)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SSet.innerAnodyneExtensions": {
+      "declaration": "SSet.innerAnodyneExtensions",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+      "type": "SSet.innerAnodyneExtensions.{u_1} : @CategoryTheory.MorphismProperty.{u_1, u_1 + 1} SSet.{u_1}\n  (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1}))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SSet.modelCategoryQuillen.fibration_iff": {
+      "declaration": "SSet.modelCategoryQuillen.fibration_iff",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+      "type": "@SSet.modelCategoryQuillen.fibration_iff.{u_1} : ∀ {X Y : SSet.{u_1}} (f : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} f ↔\n    CategoryTheory.MorphismProperty.rlp.{u_1, u_1 + 1} SSet.modelCategoryQuillen.J.{u_1} f",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch3-kernel-evidence.json",
+      "checked_at": "245e5b1ccc977677ac7798719aa2571a7830588b"
+    },
+    "SerrePositivity.InfinityCategories.LeftFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.LeftFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.LeftFibration.{u_1} : {X Y : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} X Y → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.RightFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.RightFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.RightFibration.{u_1} : {X Y : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} X Y → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne",
+      "source": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+      "type": "@SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne.{u_1} : ∀ {A B : SSet.{u_1}}\n  (A₀ : SSet.Subcomplex.{u_1} A) (B₀ : SSet.Subcomplex.{u_1} B),\n  SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1} (SSet.Subcomplex.ι.{u_1} B₀) →\n    SSet.innerAnodyneExtensions.{u_1}\n      (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.joinUnion.{u_1} A₀ B₀))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_rightAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_rightAnodyne",
+      "source": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+      "type": "@SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_rightAnodyne.{u_1} : ∀ {A B : SSet.{u_1}}\n  (A₀ : SSet.Subcomplex.{u_1} A) (B₀ : SSet.Subcomplex.{u_1} B),\n  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} (SSet.Subcomplex.ι.{u_1} A₀) →\n    SSet.innerAnodyneExtensions.{u_1}\n      (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.joinUnion.{u_1} A₀ B₀))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftAnodyneExtensions": {
+      "declaration": "SerrePositivity.InfinityCategories.leftAnodyneExtensions",
+      "source": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+      "type": "SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1} : CategoryTheory.MorphismProperty.{u_1, u_1 + 1}\n  SSet.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftAnodyneExtensions_pushoutObjObj_left": {
+      "declaration": "SerrePositivity.InfinityCategories.leftAnodyneExtensions_pushoutObjObj_left",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftAnodyneExtensions_pushoutObjObj_left.{u_1} : ∀ {A D K L : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} D A),\n  SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1} i →\n    ∀ (j : Quiver.Hom.{u_1, u_1 + 1} K L) [CategoryTheory.Mono.{u_1, u_1 + 1} j]\n      (sq :\n        CategoryTheory.Functor.PushoutObjObj.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1}\n          (CategoryTheory.MonoidalCategory.curriedTensor.{u_1, u_1 + 1} SSet.{u_1}) i j),\n      SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1}\n        (CategoryTheory.Functor.PushoutObjObj.ι.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1} sq)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftKanFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.KanComplex.{u_1} X] [SSet.KanComplex.{u_1} Y] (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q], HomotopicalAlgebra.Fibration.{u_1, u_1 + 1} q",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target",
+      "source": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y] (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q]\n  {a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} Y (Opposite.op.{1} { len := 0 })}\n  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))\n  (e :\n    SSet.Truncated.Edge.{u_1} a\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))\n        b)),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e →\n    ∃ F,\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) F)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F q)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch4-kernel-evidence.json",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_pullbackObjObjπ": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_pullbackObjObjπ",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_pullbackObjObjπ.{u_1} : ∀ {A D E B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} D A) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]\n  (sq' :\n    CategoryTheory.Functor.PullbackObjObj.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1}\n      CategoryTheory.MonoidalClosed.internalHom.{u_1, u_1 + 1} i p),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (CategoryTheory.Functor.PullbackObjObj.π.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1} sq')",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_reflects_invertibleEdge": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_reflects_invertibleEdge",
+      "source": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_reflects_invertibleEdge.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q]\n  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}\n      (SSet.Truncated.Edge.map.{u_1} e\n        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) q)) →\n    SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+      "type": "@SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration.{u_1} : ∀ {K X Y : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [SSet.InnerFibration.{u_1} q]\n  (K₀ : SSet.Subcomplex.{u_1} K),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.relativeCosliceMap.{u_1} p q K₀)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_rightAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_rightAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceRightAnodyne.lean",
+      "type": "@SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_rightAnodyne.{u_1} : ∀\n  {K X Y : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K X) (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SSet.InnerFibration.{u_1} q] (K₀ : SSet.Subcomplex.{u_1} K),\n  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} (SSet.Subcomplex.ι.{u_1} K₀) →\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n      (SerrePositivity.InfinityCategories.relativeCosliceMap.{u_1} p q K₀)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.relativeEdgeSource_trivialKanFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.relativeEdgeSource_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftPath.lean",
+      "type": "@SerrePositivity.InfinityCategories.relativeEdgeSource_trivialKanFibration.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} X B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n    (SerrePositivity.InfinityCategories.relativeEdgeSource.{u_1} p)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.rightAnodyneExtensions": {
+      "declaration": "SerrePositivity.InfinityCategories.rightAnodyneExtensions",
+      "source": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+      "type": "SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} : CategoryTheory.MorphismProperty.{u_1, u_1 + 1}\n  SSet.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_contractible_fibers": {
+      "declaration": "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_contractible_fibers",
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibrationContractible.lean",
+      "type": "@SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_contractible_fibers.{u_1} : ∀\n  {E B : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} E B) [SerrePositivity.InfinityCategories.RightFibration.{u_1} p],\n  (∀ (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.IsContractibleKan.{u_1}\n        (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)) →\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration.{u_1} : ∀ {K X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.sliceUnder_quasicategory": {
+      "declaration": "SerrePositivity.InfinityCategories.sliceUnder_quasicategory",
+      "source": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnder_quasicategory.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X), SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch5-kernel-evidence.json",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.InfinityCategories.trivialKanFibration_relativeHom_of_leftAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.trivialKanFibration_relativeHom_of_leftAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftAnodynePushoutProduct.lean",
+      "type": "@SerrePositivity.InfinityCategories.trivialKanFibration_relativeHom_of_leftAnodyne.{u_1} : ∀ {A D E B : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} D A),\n  SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1} i →\n    ∀ (p : Quiver.Hom.{u_1, u_1 + 1} E B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]\n      (sq' :\n        CategoryTheory.Functor.PullbackObjObj.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1}\n          CategoryTheory.MonoidalClosed.internalHom.{u_1, u_1 + 1} i p),\n      SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n        (CategoryTheory.Functor.PullbackObjObj.π.{u_1, u_1, u_1, u_1 + 1, u_1 + 1, u_1 + 1} sq')",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    }
+  }
+}
