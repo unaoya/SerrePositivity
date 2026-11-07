@@ -72,3 +72,19 @@ BS（目標 A）と K（目標 B）の両方が使う代数幾何の土台を作
 - 段 2b・2d（平坦化）は、**BS17 Lemma 2.6 に要る形**（固有な全射をブローアップと fppf で細分する [RG71, 5.2.2] の形、Noether 近似、generic flatness）に絞る。K の L7 の残りのうち、それに要らないものは後回し。
 - 段 2e〜2h はそのまま。
 - 開始：今すぐ始めてよい（KL-W1 とは触る場所が重ならない：`KST/SchemeLemmas/` の続きと新設の `AlgebraicGeometry/`）。
+
+## 7. 追記（2026-11-07、調整役）：停止点 2a の承認と、KST/SchemeLemmas の移動（案 (a)、ユーザー承認）
+
+**承認**：段 2a の照合と紙の筋（平坦化の不足、非 Noether の v 被覆の細分案、第一象限の二重複体による全次数の判定、BST13 Lemma 3.9 の H⁰ で Stein 分解を省く案）。
+
+**置き場所の決定（案 (a)）**：`KST/SchemeLemmas/`（345 本）は KST のほかの部分にも K 理論にも依存しない（import は自身・Mathlib・CommutativeAlgebra だけ。外の importer は KST/Descent の 7 本と KST/DerivedBlowup の 1 本）。これを丸ごと `AlgebraicGeometry/` の下へ移す。
+
+1. **移動の束（段 2a′）**：段 2b の新しい数学とは別のコミットにする。
+   - 行き先：`SerrePositivity/AlgebraicGeometry/` の下。中の下位ディレクトリの構成は今のまま保つか、内容に合わせた名前にするかを、移動の前に表で示す（`scripts/refactor/targets/sc-namespace-map.json` に旧モジュール名 → 新モジュール名、旧名前空間 → 新名前空間の表）。
+   - 名前空間はディレクトリに合わせて付け替え（F-2 の規約）、旧名は deprecated alias で残す（F-2 と同じ仕組み、`scripts/refactor/` の道具を使う）。
+   - import 行の書き換え：外の importer 8 本、ルート `SerrePositivity.lean`、監査 `scripts/audit_kst_scheme_lemmas.lean`（名前を `audit_algebraic_geometry.lean` に変えて統合してよい）。
+   - 保存比較 v3b で、移動の前後で宣言の型と本文が一致することを示す（未説明 0）。
+   - ビルド：移したモジュールと直接の importer の小さなビルド。ルートと下流の全ビルドは調整役の合図で一回。
+   - **停止点 2a′**：表と保存比較の結果、対象のビルド。ここで止まり、調整役が下流ビルドの合図を出してから取り込む。
+2. **段 2b は並行して始めてよい**：新しいファイルのうち、`KST.SchemeLemmas` を import しないものは `AlgebraicGeometry/` に置く。import するものは、ひとまず `KST/SchemeLemmas/` に置く（移動の束で一緒に移る）。移動の束と 2b のコミットは分ける。
+3. 以後、BS17 の経路の新しいファイルは `AlgebraicGeometry/` に置く。`AlgebraicGeometry/` は KST・BhattScholze・InfinityCategories を import しない。
