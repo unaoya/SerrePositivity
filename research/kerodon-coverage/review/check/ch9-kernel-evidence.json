@@ -4683,16 +4683,45 @@
       "adopted": []
     },
     "9.7.1.11": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension_with_recovery",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanUnitRecovery.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_preservesSmallKappaFilteredColimits",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.7.1.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.indLeftKanExtension_preservesSmallKappaFilteredColimits",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.7.1.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.presheafIdentity_isLeftKanExtension",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafNativeDensityKan.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.7.1.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isFullyFaithful",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.7.1.15": {
       "adopted": []
@@ -4713,7 +4742,23 @@
       ]
     },
     "9.7.2.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteDiagonal_isRightCofinal",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.isLeftCofinal_iff_isRightCofinal_op",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalOpposite.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.7.2.5": {
       "adopted": [
@@ -6490,6 +6535,78 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory_isPresentable' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 50
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanUnitRecovery.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension_with_recovery": {
+        "type": "SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension_with_recovery : ∀ (κ : Cardinal.{u_1}) {C : SSet}\n  [inst : C.Quasicategory] {D : SSet} [D.Quasicategory] [Fact κ.IsRegular],\n  SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits κ D →\n    ∀ (F₀ : SSet.uliftFunctor.obj C ⟶ D),\n      ∃ G β,\n        SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.F2.Ind.indYoneda κ C)\n            F₀ G β ∧\n          Nonempty\n            (SerrePositivity.InfinityCategories.FunctorIso\n              (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.F2.Ind.indYoneda κ C) G) F₀)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.ind_exists_leftKanExtension_with_recovery' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 40
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/PresheafNativeDensityKan.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.presheafIdentity_isLeftKanExtension": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.presheafIdentity_isLeftKanExtension : ∀ {C : SSet}\n  [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsLeftKanExtension (SerrePositivity.InfinityCategories.yonedaInfinityMap C)\n    (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap C)\n      (CategoryTheory.CategoryStruct.id (SerrePositivity.InfinityCategories.PresheafInfinity C)))\n    (CategoryTheory.CategoryStruct.id (SerrePositivity.InfinityCategories.PresheafInfinity C))\n    (SerrePositivity.InfinityCategories.functorHomotopyRefl\n      (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap C)\n        (CategoryTheory.CategoryStruct.id (SerrePositivity.InfinityCategories.PresheafInfinity C))))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.presheafIdentity_isLeftKanExtension' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 53
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isFullyFaithful": {
+        "type": "SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isFullyFaithful : ∀ (κ : Cardinal.{u_1}) (C : SSet)\n  [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsFullyFaithful (SerrePositivity.InfinityCategories.F2.Ind.indYoneda κ C)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.indYoneda_isFullyFaithful' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 56
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/SiftedInfinity.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity": {
+        "type": "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity : SSet → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 20
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteDiagonal.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteDiagonal_isRightCofinal": {
+        "type": "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteDiagonal_isRightCofinal : ∀ (B : SSet)\n  [SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity B] (n : ℕ),\n  SerrePositivity.InfinityCategories.IsRightCofinal\n    (SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteDiagonal B n)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteDiagonal_isRightCofinal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 26
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalOpposite.lean": {
+      "SerrePositivity.InfinityCategories.isLeftCofinal_iff_isRightCofinal_op": {
+        "type": "@SerrePositivity.InfinityCategories.isLeftCofinal_iff_isRightCofinal_op : ∀ {A B : SSet} (f : A ⟶ B),\n  SerrePositivity.InfinityCategories.IsLeftCofinal f ↔\n    SerrePositivity.InfinityCategories.IsRightCofinal (SSet.opFunctor.map f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.isLeftCofinal_iff_isRightCofinal_op' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 100
       }
     }
   },
