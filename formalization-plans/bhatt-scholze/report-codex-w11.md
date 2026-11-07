@@ -169,3 +169,41 @@ B-3 の対象宣言はすべて本体へ移した。§8 に従い、`rootClosure
 - `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt`
 
 共通入口と `scripts/audit_bhatt_scholze_stage2.lean` の登録は調整役が行う。
+
+## BS-W11 停止点 C-1（2026-11-07）
+
+B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward した。
+
+- `drafts/A8/IntegralDiscreteness.lean` から G-A8-6 の宣言 1 件を一時ファイルに写し、`lake env lean -DrelaxedAutoImplicit=false` で型検査した。16.77 秒、終了コード 0。任意の整 perfectoid 環とその有限エタール代数を取る下書きの型を維持する。p の正則性や局所性の仮定は加えない。
+- 相対 Frobenius の比較と平坦性を用い、Fontaine 核の生成元を移す方針。標数 p、混標数、p ねじれのある基底を含めて扱う。Mathlib の既存の有限エタール API と、リポジトリの Fontaine 核・tilt の補題を使う。
+- この停止点の新規本体モジュールは 0 本。作業 C の対象パスと⑤b の差分・作業木に重複は 0。型が同じなので C-2 に進む。
+
+## BS-W11 停止点 C-2（2026-11-07）
+
+- G-A8-6 `isIntegralPerfectoid_of_finiteEtale` を `drafts/A8/IntegralDiscreteness.lean` から移し、下書きの型と引数順で証明した。零環・標数 p・混標数・p ねじれの場合を含む。同じ下書きの後続の宣言は残した。
+- mod p で相対 Frobenius の全単射性を示す（[Stacks Project, Tag 0EBS](https://stacks.math.columbia.edu/tag/0EBS) に対応する半完全環上の形）。有限個の生成元の両立する p 乗根を選び、剰余 Frobenius の核から tilt の第 0 射影の核を移す。有限射影性で p 進完備性と p ねじれの持ち上げを得て、既存の distinguished Witt 商の完備性から Fontaine 核を計算する。
+- 対象 1 モジュールのロック付きビルドは 12 秒（対象コンパイル 8.5 秒）。対象モジュール自身の警告は 0。単独監査は 25 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 73 モジュールで E3 入口へ到達しない。`git diff --check` を通過し、対象パスの⑤b との重複は 0。
+- B-3 の未使用セクション引数は、一時ファイルで名前を付けて `include` しても警告が残った。警告対象の引数を `omit` すると型から外れるので、`completionInverseFrobenius_pow` と `arcValuation_extendField` の型を維持した。素数性インスタンスの重複もそのまま。
+- 入口と段階 II 監査への登録は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid`。
+
+## BS-W11 停止点 D-1（2026-11-07）
+
+- §8 の前段として `rootClosure_cardinal_le` と `baseExtension_cardinal_le` を下書きと同じ型で証明した。導来完備化の H⁰ は既存の可算列の商表示を使う。根添加では各段の多項式環と可算余極限、底変換では ℤₚ の有理 Cauchy 列表示とテンソルの有限和表示を評価した。
+- `ArcCardinality` の対象ビルドは 9 秒（対象コンパイル 3.8 秒）。対象自身の警告は 0。単独監査は 11 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 647 モジュールで E3 入口へ到達しない。
+- `AffCompl`・`AffPerfd`、有限 arc 被覆族と位相、coverage の底変換・合成・有限積、`exists_perfectoid_arcCover`・`affPerfdInclusion_isCoverDense` を下書きの型のまま一時ファイルで検査した。12.22 秒、終了コード 0。未証明 6 件は型検査用の一時ファイルに置いた。
+- Lemma 8.8 の affine 版で必要な忠実平坦性は、各試験付値環の拡大 `V → W`。既存の `exists_baseExtension_lift` で、同じ `W` への `S₀ → W` と元の `S → V` との両立が得られる。この射を根添加と普遍 perfectoid 化に沿って延長するので、一般の `baseExtensionUnit_pCompletelyFaithfullyFlat` は drafts に残す。
+- D-2 の証明に進む。半 perfectoid 商を与える箇所は、標数 p の剰余 Frobenius と、整 perfectoid 基底から来る distinguished 元を用いる。∞ 圏の Čech 比較は別工程。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
+- 入口と段階 II 監査への追加候補は 1 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`（D-2 取り込み時）。
+
+## BS-W11 停止点 D-2（2026-11-07）
+
+- `ArcSite` に、`AffCompl`・`AffPerfd`、有限 arc 被覆族、生成される位相と誘導位相、底変換・合成・有限積の比較、`exists_perfectoid_arcCover` と `affPerfdInclusion_isCoverDense` を移した。完備性の仮定は下書きどおり。底変換の証明で使わない三引数には、型を保って名前の先頭に `_` を付けた。
+- Lemma 8.8 の affine 版では、導来根添加の mod p Frobenius の全射性を示し、古典的 p 完備化に移した。基底の Fontaine 核の distinguished 元を使って完全 prism の商からの全射を得て、既存の全射な普遍 perfectoid 化を適用した。対象の濃度には D-1 の両方の評価を使う。持ち上げの忠実平坦性は試験付値環 `V → W` のもの。
+- `ArcSite` の対象ビルドは 19 秒（対象コンパイル 12 秒）。対象自身の警告は 0。`ArcCardinality` と `ArcSite` の単独監査は 37 宣言、標準三公理のみ。本体の sorry・追加公理は 0。推移的なローカル import は 679 モジュールで E3 入口へ到達しない。⑤b との対象パスの重複は 0。`git diff --check` を通過した。
+- 残る下書きは、A5 根添加の filtered 余極限との可換性と完備忠実平坦性（2 件）、A6 の相対 Čech 比較と生成系からの層条件、および一般の `baseExtensionUnit_pCompletelyFaithfullyFlat`（計 12 件）。A6 の後者はこの被覆の証明で使わない。A8 の G-A8-6 より後の項目は引き続き drafts にある（20 件）。
+- 入口と段階 II 監査への登録は、D-1・D-2 の計 2 本。 `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality`、`SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite`。C-2 の登録は C-2 の欄を参照。
+
+### B-3 の警告整理
+
+- `completionInverseFrobenius_pow` と `arcValuation_extendField` では、従来セクションから入っていた引数を同じ順序で明示し、未使用セクション引数の警告を解消した。変更前後の型は `#check @...` で照合した。素数性インスタンスの重複は従来の型に含まれるため残した。
+- `ArcValuationCompletion`・`ArcValuationExtension`・`ArcSite` の再ビルドは 25 秒。前二者の単独監査は 41 宣言、標準三公理のみ。追加の登録は 0 本。

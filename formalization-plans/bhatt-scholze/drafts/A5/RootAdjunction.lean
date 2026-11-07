@@ -1,6 +1,7 @@
 -- 移行先：SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 
@@ -34,13 +35,6 @@ open SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 variable (S : Type u) [CommRing S] [Algebra R S]
-
-/-- 概要：(iii) #S̃ ≤ (#S + ℵ₀)^{ℵ₀}（各段は #S_k + ℵ₀ 個の変数の多項式環の商、可算余極限、完備化は可算列の逆極限）。
-方針：各段の濃度評価と完備化の濃度（A0 `cardinal_envelope_le` と同型の議論）。
-規約：κ = `cutoff` 以上の κ（`IsAdmissibleCutoff`、κ^{ℵ₀} = κ）なら ≤ κ。
-使われ方：κ 側の site の対象になること（D47）。 -/
-theorem rootClosure_cardinal_le : Cardinal.mk (rootClosure p R S) ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
-  sorry -- 可算個の段と可算完備化の濃度評価
 
 /-- 概要：E(−) は通常の環の filtered 余極限と可換（各元と各等式が有限個の変数と関係だけを使うので）。
 方針：`MvPolynomial` の余極限との交換。filtered 図式の標準射 `colimit.post` の可逆性で述べる。

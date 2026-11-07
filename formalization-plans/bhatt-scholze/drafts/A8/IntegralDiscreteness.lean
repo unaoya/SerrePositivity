@@ -5,6 +5,7 @@ module
 public import Mathlib.RingTheory.AdicCompletion.Algebra
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid
 -- 本ファイルは drafts/A8/{AlmostConnectivity,AlmostPurityConnectivity,Stratification}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean、
 -- drafts/A5/{PerfectSiteComparison,WeaklyInitialAndDescent}.lean、drafts/A4/{InterfaceFields,AfterComparison}.lean（`e3Perfd_eq_direct` は AfterComparison。W9-III-14）を import する。
 
@@ -63,14 +64,6 @@ abbrev completedInput (U : A_R R) :=
 
 abbrev completedPerfd (U : A_R R) :=
   (perfectoidizationAnimated p R hR).app _ (completedInput p R U)
-
-/-- 概要：G-A8-6：perfectoid R 上の有限エタール代数 T は perfectoid。
-方針：T は p 完備（有限射影）、T/p は R/p 上エタールで相対 Frobenius が同型なので φ_T 全射、W(T^♭) は W(R^♭) のエタール持ち上げで ker θ_T = d·W(T^♭)。
-規約：`IsIntegralPerfectoid`。
-使われ方：n = 1。 -/
-include hR in
-theorem isIntegralPerfectoid_of_finiteEtale (T : Type u) [CommRing T] [Algebra R T] [Module.Finite R T] [Algebra.Etale R T] :
-    IsIntegralPerfectoid T p := by sorry -- 有限射影なので導来 p 完備。相対 Frobenius とエタール持ち上げで Fontaine 核を移す
 
 /-- 概要：D64：perfectoid 環は被約なので Perfd_{S/} = Perfd_{S_red/}、よって S_perfd ≃ (S_red)_perfd（Prop 8.5 の極限の形）。
 方針：A5-1 `perfectoidization_isLimit_u` と添字圏の同一視。
