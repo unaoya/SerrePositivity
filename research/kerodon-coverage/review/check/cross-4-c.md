@@ -345,3 +345,46 @@ IsWellOrder.{u_1} : (α : Type u_1) → (α → α → Prop) → Prop
 @Ordinal.enum.{u_1} : {α : Type u_1} → (r : α → α → Prop) → [inst : IsWellOrder.{u_1} α r] → @RelIso.{u_1 + 1, u_1} (@Set.Elem.{u_1 + 1} Ordinal.{u_1} (@Set.Iio.{u_1 + 1} Ordinal.{u_1} (@PartialOrder.toPreorder.{u_1 + 1} Ordinal.{u_1} Ordinal.partialOrder.{u_1}) (@Ordinal.type.{u_1} α r inst))) α (fun x1 x2 => @LT.lt.{u_1 + 1} (@Set.Elem.{u_1 + 1} Ordinal.{u_1} (@Set.Iio.{u_1 + 1} Ordinal.{u_1} (@PartialOrder.toPreorder.{u_1 + 1} Ordinal.{u_1} Ordinal.partialOrder.{u_1}) (@Ordinal.type.{u_1} α r inst))) (@Subtype.instLT.{u_1 + 1} Ordinal.{u_1} (@Preorder.toLT.{u_1 + 1} Ordinal.{u_1} (@PartialOrder.toPreorder.{u_1 + 1} Ordinal.{u_1} Ordinal.partialOrder.{u_1})) fun x => @Membership.mem.{u_1 + 1, u_1 + 1} Ordinal.{u_1} (Set.{u_1 + 1} Ordinal.{u_1}) (@Set.instMembership.{u_1 + 1} Ordinal.{u_1}) (@Set.Iio.{u_1 + 1} Ordinal.{u_1} (@PartialOrder.toPreorder.{u_1 + 1} Ordinal.{u_1} Ordinal.partialOrder.{u_1}) (@Ordinal.type.{u_1} α r inst)) x) x1 x2) r
 @Ordinal.typein.{u_1} : {α : Type u_1} → (r : α → α → Prop) → [IsWellOrder.{u_1} α r] → @PrincipalSeg.{u_1, u_1 + 1} α Ordinal.{u_1} r fun x1 x2 => @LT.lt.{u_1 + 1} Ordinal.{u_1} (@Preorder.toLT.{u_1 + 1} Ordinal.{u_1} (@PartialOrder.toPreorder.{u_1 + 1} Ordinal.{u_1} Ordinal.partialOrder.{u_1})) x1 x2
 ```
+
+## 追加の型確認
+
+指定の共有ビルドロックを通し、該当モジュールの import と `#check` を実行した。
+
+### 4.5.7.22
+
+```lean
+@F2.corePullbackIso : {E F B : SSet} →
+  [E.Quasicategory] →
+    [F.Quasicategory] →
+      [B.Quasicategory] →
+        (p : E ⟶ B) →
+          (q : F ⟶ B) →
+            [SSet.InnerFibration p] →
+              (quasicategoryCore (Limits.pullback p q)).toSSet ≅
+                Limits.pullback (quasicategoryCoreMap p) (quasicategoryCoreMap q)
+@quasicategoryCoreMap_isPullback_of_isPullback : ∀ {A B C D : SSet} [B.Quasicategory] [C.Quasicategory]
+  [D.Quasicategory] {p : A ⟶ B} {q : A ⟶ C} {f : B ⟶ D} {g : C ⟶ D} [SSet.InnerFibration f],
+  IsPullback p q f g →
+    IsPullback (quasicategoryCoreMap p) (quasicategoryCoreMap q) (quasicategoryCoreMap f) (quasicategoryCoreMap g)
+```
+
+### 4.7.4.8
+
+```lean
+@isTerminalVertex_iff_trivialKanFibration : ∀ {X : SSet} (x : X.obj (Opposite.op { len := 0 })),
+  IsTerminalVertex x ↔ TrivialKanFibration (sliceOverProjection (SSet.yonedaEquiv.symm x))
+```
+
+### 4.8.2.27
+
+```lean
+@IsFullyFaithful.pullback_snd : ∀ {X Y B : SSet} [X.Quasicategory] [B.Quasicategory] [Y.Quasicategory] {p : X ⟶ B}
+  [SSet.InnerFibration p], IsFullyFaithful p → ∀ (q : Y ⟶ B), IsFullyFaithful (Limits.pullback.snd p q)
+```
+
+### 4.9.7.9
+
+```lean
+@instLocallySmallFunctor : ∀ {A : Type u_3} [inst : Category.{u_2, u_3} A] [LocallySmall.{u_1, u_2, u_3} A]
+  (C : Type u_1) [inst_2 : SmallCategory C], LocallySmall.{u_1, max u_2 u_1, max (max (max u_3 u_1) u_2) u_1} (C ⥤ A)
+```
