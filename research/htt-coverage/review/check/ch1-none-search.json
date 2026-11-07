@@ -1,0 +1,2882 @@
+{
+  "1.1.1.5": {
+    "page": 5,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.1",
+        "1.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Quasicategory|KanComplex|CatEnriched|Bicategory",
+          "SerrePositivity"
+        ],
+        "file_count": 6178,
+        "line_count": 17395
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Quasicategory|KanComplex|CatEnriched|Bicategory",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 92,
+        "line_count": 769
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Bicategory/CatEnriched.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "def CatEnriched (C : Type*) := C"
+          },
+          {
+            "line": 50,
+            "head": "instance : EnrichedCategory Cat (CatEnriched C) := inferInstanceAs (EnrichedCategory Cat C)"
+          },
+          {
+            "line": 55,
+            "head": "instance : CategoryStruct (CatEnriched C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class Quasicategory (S : SSet) : Prop where"
+          },
+          {
+            "line": 46,
+            "head": "lemma Quasicategory.hornFilling {S : SSet} [Quasicategory S] ⦃n : ℕ⦄ ⦃i : Fin (n + 1)⦄"
+          },
+          {
+            "line": 56,
+            "head": "instance (S : SSet) [KanComplex S] : Quasicategory S where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "abbrev KanComplex (S : SSet.{u}) : Prop := HomotopicalAlgebra.IsFibrant S"
+          },
+          {
+            "line": 45,
+            "head": "lemma KanComplex.hornFilling {S : SSet.{u}} [KanComplex S]"
+          },
+          {
+            "line": 56,
+            "head": "lemma exists_lift_of_kanComplex [KanComplex X]"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏・Kan 複体・Cat 豊穣二圏の各型はあるが、三つの (∞,n) の呼称をまとめた原典の規約は Lean の宣言として見つからなかった。"
+  },
+  "1.1.1.7": {
+    "page": 7,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.1",
+        "1.1.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CompactlyGenerated|weaklyHausdorff|CGWH|sSetTopAdj",
+          "SerrePositivity"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CompactlyGenerated|weaklyHausdorff|CGWH|sSetTopAdj",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 180
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/CompactlyGenerated.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "structure CompactlyGenerated where"
+          },
+          {
+            "line": 40,
+            "head": "instance : Inhabited CompactlyGenerated.{u, w} :="
+          },
+          {
+            "line": 43,
+            "head": "instance : CoeSort CompactlyGenerated Type* :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SingularSet.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "noncomputable def sSetTopAdj : SSet.toTop.{u} ⊣ TopCat.toSSet.{u} :="
+          },
+          {
+            "line": 78,
+            "head": "instance : SSet.toTop.{u}.IsLeftAdjoint := sSetTopAdj.isLeftAdjoint"
+          },
+          {
+            "line": 79,
+            "head": "instance : TopCat.toSSet.{u}.IsRightAdjoint := sSetTopAdj.isRightAdjoint"
+          }
+        ]
+      }
+    ],
+    "decision": "一般の TopCat と特異単体集合の随伴は見つかったが、弱 Hausdorff な CG で積と両立する豊穣圏の比較を与える宣言は見つからなかった。"
+  },
+  "1.1.2.7": {
+    "page": 14,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.1",
+        "1.1.2",
+        "1.1.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Quasicategory|KanComplex|notation.*SSet",
+          "SerrePositivity"
+        ],
+        "file_count": 6233,
+        "line_count": 17304
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Quasicategory|KanComplex|notation.*SSet",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 108
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "class Quasicategory (S : SSet) : Prop where"
+          },
+          {
+            "line": 46,
+            "head": "lemma Quasicategory.hornFilling {S : SSet} [Quasicategory S] ⦃n : ℕ⦄ ⦃i : Fin (n + 1)⦄"
+          },
+          {
+            "line": 56,
+            "head": "instance (S : SSet) [KanComplex S] : Quasicategory S where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "abbrev KanComplex (S : SSet.{u}) : Prop := HomotopicalAlgebra.IsFibrant S"
+          },
+          {
+            "line": 45,
+            "head": "lemma KanComplex.hornFilling {S : SSet.{u}} [KanComplex S]"
+          },
+          {
+            "line": 56,
+            "head": "lemma exists_lift_of_kanComplex [KanComplex X]"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏と Kan 複体の両方が単体集合を台にする宣言を読んだが、用途ごとに筆記体と大文字を分ける原典の表記規約に当たる宣言は見つからなかった。"
+  },
+  "1.1.3.3": {
+    "page": 16,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.2",
+        "1.1.3",
+        "1.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CWComplex|TopCat.*[Hh]omotop|[Hh]omotop.*TopCat",
+          "SerrePositivity"
+        ],
+        "file_count": 2,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CWComplex|TopCat.*[Hh]omotop|[Hh]omotop.*TopCat",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 395
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/CWComplex/Classical/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "the instance `CWComplex.instRelCWComplex`."
+          },
+          {
+            "line": 99,
+            "head": "class RelCWComplex.{u} {X : Type u} [TopologicalSpace X] (C : Set X) (D : outParam (Set X)) where"
+          },
+          {
+            "line": 135,
+            "head": "class CWComplex.{u} {X : Type u} [TopologicalSpace X] (C : Set X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Homotopy/Basic.lean",
+        "signatures": [
+          {
+            "line": 76,
+            "head": "structure Homotopy (f₀ f₁ : C(X, Y)) extends C(I × X, Y) where"
+          },
+          {
+            "line": 87,
+            "head": "You should extend this class when you extend `ContinuousMap.Homotopy`. -/"
+          }
+        ]
+      }
+    ],
+    "decision": "CWComplex のセル構造と ContinuousMap.Homotopy の端点付き写像を読んだが、CW 複体を対象として連続写像をホモトピーで割った Hom とその合成を備える圏を見つけなかった。"
+  },
+  "1.1.3.5": {
+    "page": 17,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.2",
+        "1.1.3",
+        "1.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "ForgetEnrichment|ZerothHomotopy|TopCat.*[Ll]ocaliz|enriched.*[Pp]iZero",
+          "SerrePositivity"
+        ],
+        "file_count": 1557,
+        "line_count": 9226
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "ForgetEnrichment|ZerothHomotopy|TopCat.*[Ll]ocaliz|enriched.*[Pp]iZero",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 12,
+        "line_count": 146
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 209,
+            "head": "def ForgetEnrichment (W : Type v) [Category.{w} W] [MonoidalCategory W] (C : Type u₁)"
+          },
+          {
+            "line": 217,
+            "head": "def ForgetEnrichment.of (X : C) : ForgetEnrichment W C :="
+          },
+          {
+            "line": 222,
+            "head": "def ForgetEnrichment.to (X : ForgetEnrichment W C) : C :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Topological/WeakEquivalence.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def componentMap (f : X ⟶ Y) : ZerothHomotopy X → ZerothHomotopy Y :="
+          }
+        ]
+      }
+    ],
+    "decision": "豊穣圏の ForgetEnrichment と π₀ の型を読んだが、弱同値で局所化した位相 Hom を持つ圏からの忘却が π₀-Hom 圏を返す比較は見つからなかった。"
+  },
+  "1.1.3.8": {
+    "page": 18,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.2",
+        "1.1.3",
+        "1.1.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "weakHomotopyEquivalences|[Ee]nriched.*[Ee]quivalence|IsQCatEquivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 945,
+        "line_count": 1838
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "weakHomotopyEquivalences|[Ee]nriched.*[Ee]quivalence|IsQCatEquivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Topological/WeakEquivalence.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def weakHomotopyEquivalences : MorphismProperty TopCat.{u} := fun X _ f ↦"
+          },
+          {
+            "line": 64,
+            "head": "lemma weakHomotopyEquivalences_id (X : TopCat.{u}) : weakHomotopyEquivalences (𝟙 X) := by"
+          },
+          {
+            "line": 70,
+            "head": "lemma weakHomotopyEquivalences_comp {f : X ⟶ Y} {g : Y ⟶ Z}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def IsQCatEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : Prop :="
+          },
+          {
+            "line": 86,
+            "head": "noncomputable def IsQCatEquivalence.choose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]"
+          }
+        ]
+      }
+    ],
+    "decision": "位相空間の弱同値述語と準圏の同値述語を読んだ。位相 Hom を空間のホモトピー圏に移す関手がなく、豊穣 hF が同値かを検出する主張は見つからなかった。"
+  },
+  "1.1.4.2": {
+    "page": 18,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.3",
+        "1.1.4",
+        "1.1.5"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedCat|SimplicialObject.*Cat|constant.*[Oo]bject",
+          "SerrePositivity"
+        ],
+        "file_count": 536,
+        "line_count": 1099
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedCat|SimplicialObject.*Cat|constant.*[Oo]bject",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 29,
+        "line_count": 134
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) :="
+          },
+          {
+            "line": 41,
+            "head": "instance str (C : EnrichedCat.{w, v, u} V) : EnrichedCategory.{w, v, u} V C :="
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 53,
+            "head": "abbrev SimplicialCategory := EnrichedOrdinaryCategory SSet.{v} C"
+          },
+          {
+            "line": 62,
+            "head": "abbrev sHom (K L : C) : SSet.{v} := K ⟶[SSet] L"
+          }
+        ]
+      }
+    ],
+    "decision": "EnrichedCat SSet と SimplicialObject Cat の両方の型を読んだが、対象集合が定値の単体的 Cat 図式から豊穣 Hom を復元する比較は見つからなかった。"
+  },
+  "1.1.4.4": {
+    "page": 19,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.1.3",
+        "1.1.4",
+        "1.1.5"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]implicialCategory.*[Ee]quiv|[Ee]nriched.*[Ww]eak|[Dd]wyer[Kk]an|SimplicialNerve",
+          "SerrePositivity"
+        ],
+        "file_count": 1368,
+        "line_count": 3692
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]implicialCategory.*[Ee]quiv|[Ee]nriched.*[Ww]eak|[Dd]wyer[Kk]an|SimplicialNerve",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 6
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/WeakEquivalence.lean",
+        "signatures": [
+          {
+            "line": 8,
+            "head": "The class is defined by the existing geometric realization functor and"
+          },
+          {
+            "line": 19,
+            "head": "def weakEquivalences : MorphismProperty SSet.{u} :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentUnderlyingHo.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def coherentUnderlyingHoFunctor (C : Type v) [Category.{u} C] [SimplicialCategory C] :"
+          },
+          {
+            "line": 37,
+            "head": "lemma enrichedUnderlying_eHom_map"
+          }
+        ]
+      }
+    ],
+    "decision": "局所 Kan 圏の nerve の同値述語と単体集合の幾何学的弱同値を読んだが、一般の単体豊穣関手の hF を H-豊穣同値として定義し比較する宣言は見つからなかった。"
+  },
+  "1.1.5.6": {
+    "page": 22,
+    "citations": {
+      "item": 0,
+      "subsection": 272,
+      "neighboring_subsections": [
+        "1.1.4",
+        "1.1.5",
+        "1.2.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "SimplicialNerve|topologicalNerve|nerveFunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 503,
+        "line_count": 1442
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "SimplicialNerve|topologicalNerve|nerveFunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 7,
+        "line_count": 50
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+        "signatures": [
+          {
+            "line": 190,
+            "head": "def SimplicialNerve (C : Type u) [Category.{v} C] [SimplicialCategory C] :"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 326,
+            "head": "def nerve₂Adj : hoFunctor₂.{u} ⊣ nerveFunctor₂ :="
+          },
+          {
+            "line": 346,
+            "head": "def functorOfNerveMap (φ : nerveFunctor₂.obj ↧C ⟶ nerveFunctor₂.obj ↧D) :"
+          },
+          {
+            "line": 357,
+            "head": "lemma nerveFunctor₂_map_functorOfNerveMap"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 nerve と豊穣 SimplicialNerve の型を読んだが、原典で双方を N(C) と略記する編集上の規約に当たる宣言は見つからなかった。"
+  },
+  "1.1.5.13": {
+    "page": 25,
+    "citations": {
+      "item": 0,
+      "subsection": 272,
+      "neighboring_subsections": [
+        "1.1.4",
+        "1.1.5",
+        "1.2.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]igidification|topologicalNerve|coherentResolutionAdjunction|weakHomotopyEquivalences",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 130
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]igidification|topologicalNerve|coherentResolutionAdjunction|weakHomotopyEquivalences",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "noncomputable def coherentResolutionAdjunction :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Topological/WeakEquivalence.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def weakHomotopyEquivalences : MorphismProperty TopCat.{u} := fun X _ f ↦"
+          },
+          {
+            "line": 64,
+            "head": "lemma weakHomotopyEquivalences_id (X : TopCat.{u}) : weakHomotopyEquivalences (𝟙 X) := by"
+          },
+          {
+            "line": 70,
+            "head": "lemma weakHomotopyEquivalences_comp {f : X ⟶ Y} {g : Y ⟶ Z}"
+          }
+        ]
+      }
+    ],
+    "decision": "位相弱同値述語、SimplicialNerve、および coherentResolutionAdjunction の余単位を読んだ。後者は単体集合の解像と単体集合の随伴であり、C[N(C)] の Hom を実現した位相豊穣余単位には当たらない。"
+  },
+  "1.1.5.15": {
+    "page": 25,
+    "citations": {
+      "item": 0,
+      "subsection": 272,
+      "neighboring_subsections": [
+        "1.1.4",
+        "1.1.5",
+        "1.2.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "weakCategoricalEquivalence|IsPrecompositionEquivalence|IsQCatEquivalence|[Jj]oyal",
+          "SerrePositivity"
+        ],
+        "file_count": 1131,
+        "line_count": 2406
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "weakCategoricalEquivalence|IsPrecompositionEquivalence|IsQCatEquivalence|[Jj]oyal",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 8
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop :="
+          },
+          {
+            "line": 31,
+            "head": "lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A) := by"
+          },
+          {
+            "line": 40,
+            "head": "lemma IsPrecompositionEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "def IsQCatEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : Prop :="
+          },
+          {
+            "line": 86,
+            "head": "noncomputable def IsQCatEquivalence.choose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]"
+          }
+        ]
+      }
+    ],
+    "decision": "IsPrecompositionEquivalence と IsQCatEquivalence の定義と相互比較を読んだが、Joyal の旧用語の弱圏同値と強い方の圏同値を区分して比較する宣言は見つからなかった。"
+  },
+  "1.1.5.17": {
+    "page": 25,
+    "citations": {
+      "item": 0,
+      "subsection": 272,
+      "neighboring_subsections": [
+        "1.1.4",
+        "1.1.5",
+        "1.2.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/Spectra/CoherentNerve.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent.lean": 1,
+        "SerrePositivity/KST/Spectra/SpectrumSimplicialCategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalClamp.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCompatibilityEndpoints.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaceIntersections.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalRecovery.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCover.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/HornData.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRestriction.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/HornFunctor.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FullFaceCompatibility.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathNerve.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FaceIntervalRestriction.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/ZeroFaceCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/FilledFunctor.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionRecovery.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Cube.lean": 13,
+        "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/HornCells.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/FaceCellCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalChoice.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/FaceRetraction.lean": 10,
+        "SerrePositivity/InfinityCategories/Coherent/PathMixedFaces.lean": 11,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCylinder.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FunctorReindex.lean": 5,
+        "SerrePositivity/InfinityCategories/Coherent/Path.lean": 1,
+        "SerrePositivity/InfinityCategories/Coherent/FilledHom.lean": 6,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalHom.lean": 12,
+        "SerrePositivity/InfinityCategories/Coherent/FaceHom.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/IntervalFunctor.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/UnitComposition.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/SubcomplexIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/PathHollow.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/MixedCompatibility.lean": 2,
+        "SerrePositivity/InfinityCategories/Coherent/DoubleCompositionFace.lean": 8,
+        "SerrePositivity/InfinityCategories/Coherent/HornHollow.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/FilledRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Coherent/PathFaces.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionCompatibility.lean": 3,
+        "SerrePositivity/InfinityCategories/Coherent/PathDegeneracy.lean": 7,
+        "SerrePositivity/InfinityCategories/Coherent/HollowCube.lean": 9,
+        "SerrePositivity/InfinityCategories/Coherent/CompositionFace.lean": 16,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean": 2,
+        "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/Nerve.lean": 4,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveMap.lean": 2,
+        "SerrePositivity/EInfinity/SimplicialLocalization/NerveFunctor.lean": 2
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]igidification|[Ee]nriched.*[Ww]eak|sSetTopAdj|nerveAdjunction",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 110
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]igidification|[Ee]nriched.*[Ww]eak|sSetTopAdj|nerveAdjunction",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 5,
+        "line_count": 28
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SingularSet.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "noncomputable def sSetTopAdj : SSet.toTop.{u} ⊣ TopCat.toSSet.{u} :="
+          },
+          {
+            "line": 78,
+            "head": "instance : SSet.toTop.{u}.IsLeftAdjoint := sSetTopAdj.isLeftAdjoint"
+          },
+          {
+            "line": 79,
+            "head": "instance : TopCat.toSSet.{u}.IsRightAdjoint := sSetTopAdj.isRightAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 389,
+            "head": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor :="
+          },
+          {
+            "line": 405,
+            "head": "instance nerveAdjunction.isIso_counit : IsIso nerveAdjunction.counit :="
+          },
+          {
+            "line": 430,
+            "head": "instance : hoFunctor.IsLeftAdjoint := nerveAdjunction.isLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Coherent/Quasicategory.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 nerve の左随伴と単体集合の幾何学的実現の随伴を読んだが、C[S] とその位相豊穣実現の間で弱同値を比較する豊穣関手は見つからなかった。"
+  },
+  "1.2.3.2": {
+    "page": 29,
+    "citations": {
+      "item": 0,
+      "subsection": 34,
+      "neighboring_subsections": [
+        "1.2.2",
+        "1.2.3",
+        "1.2.4"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/TerminalEdgeIso.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean": 10,
+        "SerrePositivity/InfinityCategories/Core/OuterHornJoin.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/Equivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/OuterHornDuality.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/MappingSpaceRightKan.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/HomotopyNatTrans.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/HomotopyCategoryBridge.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/MappingSpacePiZero.lean": 9,
+        "SerrePositivity/InfinityCategories/Core/RelativeOuterHornOp.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/HornPointJoin.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/MappingSpaceKan.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/Opposite.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/MappingSpaceLeft.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/Checks.lean": 3
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "π₀Functor|[Ss]implicialCategory.*[Aa]dj|[Ee]nriched.*[Pp]iZero|nerveAdjunction",
+          "SerrePositivity"
+        ],
+        "file_count": 55,
+        "line_count": 107
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "π₀Functor|[Ss]implicialCategory.*[Aa]dj|[Ee]nriched.*[Pp]iZero|nerveAdjunction",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 3,
+        "line_count": 15
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+        "signatures": [
+          {
+            "line": 114,
+            "head": "def π₀Functor : SSet.{u} ⥤ Type u where"
+          },
+          {
+            "line": 120,
+            "head": "def toπ₀NatTrans : SSet.evaluation.obj (op ⦋0⦌) ⟶ π₀Functor.{u} where"
+          },
+          {
+            "line": 145,
+            "head": "abbrev coforkπ₀Functor :"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+        "signatures": [
+          {
+            "line": 389,
+            "head": "noncomputable def nerveAdjunction : hoFunctor ⊣ nerveFunctor :="
+          },
+          {
+            "line": 405,
+            "head": "instance nerveAdjunction.isIso_counit : IsIso nerveAdjunction.counit :="
+          },
+          {
+            "line": 430,
+            "head": "instance : hoFunctor.IsLeftAdjoint := nerveAdjunction.isLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/HomotopyCategoryBridge.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "noncomputable def pathToEdgeHomotopyCategory : A.HomotopyCategory ⥤ HomotopyCategory₂ A :="
+          },
+          {
+            "line": 39,
+            "head": "lemma homotopic_path_eq {x y : A _⦋0⦌₂} {f g : Edge x y}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/MappingSpacePiZero.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pinchedConstant_zero {X : SSet.{u}} (x : X _⦋0⦌) : PinchedHom.constant x 0 = x := by"
+          },
+          {
+            "line": 34,
+            "head": "lemma pinchedConstant_one {X : SSet.{u}} (x : X _⦋0⦌) :"
+          }
+        ]
+      }
+    ],
+    "decision": "単体集合の π₀Functor と通常 nerve の随伴は見つかったが、単体豊穣圏の Hom ごとに π₀ を取る関手が、定値豊穣化 Cat → Cat∆ の左随伴となる宣言は見つからなかった。"
+  },
+  "1.2.5.2": {
+    "page": 35,
+    "citations": {
+      "item": 0,
+      "subsection": 7,
+      "neighboring_subsections": [
+        "1.2.4",
+        "1.2.5",
+        "1.2.6"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean": 10,
+        "SerrePositivity/InfinityCategories/Core/OuterHornJoin.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Equivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/OuterHornDuality.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/MappingSpaceRightKan.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/RelativeOuterHornOp.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/HornPointJoin.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Opposite.lean": 4
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Gg]rouplike|[Cc]lassifying[Ss]pace|[Ss]ingleObj|[Ll]oop[Ss]pace",
+          "SerrePositivity"
+        ],
+        "file_count": 414,
+        "line_count": 1608
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Gg]rouplike|[Cc]lassifying[Ss]pace|[Ss]ingleObj|[Ll]oop[Ss]pace",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 39,
+        "line_count": 419
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/SingleObj.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev SingleObj :="
+          },
+          {
+            "line": 60,
+            "head": "instance categoryStruct [One M] [Mul M] : CategoryStruct (SingleObj M) where"
+          },
+          {
+            "line": 68,
+            "head": "instance category : Category (SingleObj M) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Topological/WeakEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def loopMap (f : X ⟶ Y) (x : X) (n : ℕ) :"
+          },
+          {
+            "line": 25,
+            "head": "def homotopyMap (f : X ⟶ Y) (x : X) (n : ℕ) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma kanComplex_of_isGroupoid (X : SSet.{u}) [Quasicategory X]"
+          },
+          {
+            "line": 73,
+            "head": "lemma kanComplex_iff_isGroupoid (X : SSet.{u}) [Quasicategory X] :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "abbrev IsInvertibleEdge {X : SSet.{u}} {x y : X _⦋0⦌}"
+          },
+          {
+            "line": 36,
+            "head": "def edgeOfSimplex {X : SSet.{u}} (s : X _⦋1⦌) :"
+          }
+        ]
+      }
+    ],
+    "decision": "単一対象圏の nerve、位相弱同値述語、ループの連結成分を調べたが、π₀ が群である位相モノイド M に対する M → ΩBM の弱同値は見つからなかった。"
+  },
+  "1.2.6.2": {
+    "page": 38,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.5",
+        "1.2.6",
+        "1.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/MappingSpaceRightKan.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean": 3
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ectif|strictCoherentDiagram|coherentResolutionAdjunction|coherentStraighteningCounit",
+          "SerrePositivity"
+        ],
+        "file_count": 837,
+        "line_count": 2576
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ectif|strictCoherentDiagram|coherentResolutionAdjunction|coherentStraighteningCounit",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StrictNerveMaps.lean",
+        "signatures": [
+          {
+            "line": 107,
+            "head": "noncomputable def strictCoherentDiagram {C : Type v} [Category.{u} C]"
+          },
+          {
+            "line": 116,
+            "head": "lemma strictCoherentDiagram_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C]"
+          },
+          {
+            "line": 127,
+            "head": "lemma strictCoherentDiagram_precomp {J : Type u} [SmallCategory J]"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "noncomputable def coherentResolutionAdjunction :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/StraighteningFamilyCounit.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def coherentFamilyCurryIso {A B X : SSet.{u}} {f g : A ⊗ B ⟶ X}"
+          },
+          {
+            "line": 32,
+            "head": "def coherentStraighteningFamilyCounit {B K : SSet.{u + 1}}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma kanComplex_of_isGroupoid (X : SSet.{u}) [Quasicategory X]"
+          },
+          {
+            "line": 73,
+            "head": "lemma kanComplex_iff_isGroupoid (X : SSet.{u}) [Quasicategory X] :"
+          }
+        ]
+      }
+    ],
+    "decision": "strictCoherentDiagram は厳密図式から整合図式への向きだけを与える。Kan 値の切断模型と余単位も読んだが、単体モデル圏で任意の整合図式を厳密図式と比較する一般の宣言は見つからなかった。"
+  },
+  "1.2.7.1": {
+    "page": 39,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.6",
+        "1.2.7",
+        "1.2.8"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/Core/JoinFunctor.lean": 9,
+        "SerrePositivity/InfinityCategories/Core/Slice.lean": 16,
+        "SerrePositivity/InfinityCategories/Core/Coslice.lean": 14,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanJoinCells.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/JoinLastTriangle.lean": 2,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinIso.lean": 6,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinTripleCoordinates.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 10,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinAssociatorMaps.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/RightFibration.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/JoinSimplexFaces.lean": 4,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinSumNaturality.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/Join.lean": 66,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinAssociativityCuts.lean": 2,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialNerveCut.lean": 11,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/AugmentedNerve.lean": 7,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinAssociator.lean": 3,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinNaturality.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/JoinVertexSurjectivity.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinSimplexInclusions.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/PinchedSlice.lean": 4,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinFaces.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinTripleMaps.lean": 4,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialNerveOldPart.lean": 10,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialNerveTail.lean": 8,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinChain.lean": 11,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/JoinAssociatorInclusions.lean": 3,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinRetraction.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/InitialJoinFunctor.lean": 6,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/AssociativeJoinSimplex.lean": 3,
+        "SerrePositivity/KST/SConstruction/ArCofiberSpanShape.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofibrant.*(TopCat|Enriched)|coherentResolutionAdjunction|nerveToCoherent",
+          "SerrePositivity"
+        ],
+        "file_count": 65,
+        "line_count": 247
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofibrant.*(TopCat|Enriched)|coherentResolutionAdjunction|nerveToCoherent",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/ResolutionExtension.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "noncomputable def coherentResolutionAdjunction :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/OrderDiagrams.lean",
+        "signatures": [
+          {
+            "line": 126,
+            "head": "noncomputable def nerveToCoherent (C : Type v) [Category.{u} C] [SimplicialCategory C] :"
+          },
+          {
+            "line": 145,
+            "head": "lemma nerveToCoherent_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C] (X : C) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def augObj (K : SSet.{u}) : ℕ → Type u"
+          },
+          {
+            "line": 36,
+            "head": "def augMap (K : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) : augObj K n → augObj K m :="
+          }
+        ]
+      }
+    ],
+    "decision": "モデル圏の Cofibrant、通常図式からの nerve 比較、単体集合の整合解像随伴を調べたが、余ファイブラントな位相豊穣圏からの関手による代表の存在や積についての反例は見つからなかった。"
+  },
+  "1.2.12.8": {
+    "page": 45,
+    "citations": {
+      "item": 0,
+      "subsection": 155,
+      "neighboring_subsections": [
+        "1.2.11",
+        "1.2.12",
+        "1.2.13"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryZeroData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/FullFiberSquare.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackFiberComparison.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroTerminal.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFacesGluing.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroExtension.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/TerminalEdgeIso.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryUnknownZero.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/JoinFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixObjects.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/BoundaryEvaluation.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroObject.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanUnknownIndex.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailContributions.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceAssembly.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroInitial.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/BoundaryLastTriangles.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberSquare.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/DGNerve/LastTriangleIndex.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonIndex.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangleCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeVertex.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixIndex.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceExtensionality.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryLastCone.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/Slice.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/TerminalVertices.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryLastTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/TerminalMap.lean": 10,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberProjection.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomCoordinates.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroInitialExtension.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BiproductHomCoordinates.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/RebaseCone.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FullPullbackReflection.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanJoinCells.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryUnknowns.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexCospanPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomCoordinates.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanIndexGeometry.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroFunctor.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/ZeroExtensionality.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/ConeHomCoordinates.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceLifts.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomLift.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FullLimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangles.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryComponents.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/JoinLastTriangle.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangleComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomProjection.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackResidualMatrix.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/InitialTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanSharedRhs.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackBoundaryEquations.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySolution.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryData.lean": 11,
+        "SerrePositivity/InfinityCategories/DGNerve/FullZeroObject.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/Pullback.lean": 12,
+        "SerrePositivity/InfinityCategories/Core/LimitExamples.lean": 25,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceTerminal.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/RelativeInitialEndpoint.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Square.lean": 17,
+        "SerrePositivity/InfinityCategories/Core/InitialBoundaryTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/TerminalTransport.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/TerminalUniqueness.lean": 14,
+        "SerrePositivity/InfinityCategories/Core/VertexFiber.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinVertexSurjectivity.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/InitialUniqueness.lean": 12,
+        "SerrePositivity/InfinityCategories/Core/Terminal.lean": 8,
+        "SerrePositivity/InfinityCategories/Core/ContractibleKan.lean": 9,
+        "SerrePositivity/InfinityCategories/Core/InitialEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/PinchedSlice.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/EmptyCone.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/JoinBoundary.lean": 13,
+        "SerrePositivity/InfinityCategories/Core/RelativeInitialCosliceComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/TerminalMappingSpace.lean": 5,
+        "SerrePositivity/InfinityCategories/Core/HornPointJoin.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceLimits.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/SliceExtension.lean": 7,
+        "SerrePositivity/InfinityCategories/Core/Limit.lean": 9,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberPushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CosliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/FullColimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean": 4,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/KST/SConstruction/DegeneratePushouts.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryFirstTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanSuffixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanResidualCoordinates.lean": 1,
+        "SerrePositivity/KST/SConstruction/IdentityCocones.lean": 1,
+        "SerrePositivity/KST/SConstruction/FullSubcomplexUniversalVertices.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/RebaseCocone.lean": 4,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/KST/SConstruction/FrameCofiberShapes.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/FullCofiberSquare.lean": 5,
+        "SerrePositivity/KST/SConstruction/EdgeTargetColimit.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsTerminalVertex|isTerminalVertex_iff_trivialKanFibration|terminal.*[Cc]ounterexample",
+          "SerrePositivity"
+        ],
+        "file_count": 231,
+        "line_count": 518
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsTerminalVertex|isTerminalVertex_iff_trivialKanFibration|terminal.*[Cc]ounterexample",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+        "signatures": [
+          {
+            "line": 80,
+            "head": "def IsTerminalVertex {X : SSet.{u}} (x : X _⦋0⦌) : Prop :="
+          },
+          {
+            "line": 134,
+            "head": "lemma isTerminalVertex_iff_trivialKanFibration {X : SSet.{u}} (x : X _⦋0⦌) :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceTerminal.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma QCatEquivalence.map_isTerminalVertex {X Y : SSet.{u}}"
+          },
+          {
+            "line": 47,
+            "head": "lemma QCatEquivalence.isTerminalVertex_iff {X Y : SSet.{u}}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/TerminalVertices.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def fullSubcomplexOnVertices (X : SSet.{u}) (P : X _⦋0⦌ → Prop) : X.Subcomplex where"
+          },
+          {
+            "line": 33,
+            "head": "lemma fullSubcomplexOnVertices_vertex {X : SSet.{u}} {P : X _⦋0⦌ → Prop}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "abbrev JoinCocone {K X : SSet.{u}} (p : K ⟶ X) :="
+          },
+          {
+            "line": 26,
+            "head": "def JoinCocone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) : X _⦋0⦌ :="
+          }
+        ]
+      }
+    ],
+    "decision": "任意の単体集合の強終頂点述語と、準圏の同値に関する保存・反映を読んだが、準圏でない単体集合における強終頂点の非不変性を示す反例は見つからなかった。"
+  },
+  "1.2.14.1": {
+    "page": 49,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.13",
+        "1.2.14",
+        "1.2.15"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryZeroData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/FullFiberSquare.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackFiberComparison.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFacesGluing.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryUnknownZero.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/JoinFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixObjects.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanUnknownIndex.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailContributions.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceAssembly.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BoundaryLastTriangles.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberSquare.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/DGNerve/LastTriangleIndex.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonIndex.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangleCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeVertex.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixIndex.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceExtensionality.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryLastCone.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryLastTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/TerminalMap.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberProjection.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomCoordinates.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BiproductHomCoordinates.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/RebaseCone.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FullPullbackReflection.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanJoinCells.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryUnknowns.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexCospanPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomCoordinates.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanIndexGeometry.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ConeHomCoordinates.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceLifts.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomLift.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FullLimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangles.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryComponents.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/JoinLastTriangle.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangleComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomProjection.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackResidualMatrix.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanSharedRhs.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackBoundaryEquations.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySolution.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryData.lean": 11,
+        "SerrePositivity/InfinityCategories/Core/Pullback.lean": 12,
+        "SerrePositivity/InfinityCategories/Core/LimitExamples.lean": 24,
+        "SerrePositivity/InfinityCategories/Core/Square.lean": 17,
+        "SerrePositivity/InfinityCategories/Core/TerminalTransport.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinVertexSurjectivity.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/EmptyCone.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceLimits.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/Limit.lean": 8,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberPushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CosliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/FullColimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryFirstTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanSuffixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/RebaseCocone.lean": 4,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/FullCofiberSquare.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "FreeMonoid|[Ss]ingleObj|[Ff]initelyPresented.*[Qq]uasi|[Cc]ompact.*[Ff]ree",
+          "SerrePositivity"
+        ],
+        "file_count": 234,
+        "line_count": 946
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "FreeMonoid|[Ss]ingleObj|[Ff]initelyPresented.*[Qq]uasi|[Cc]ompact.*[Ff]ree",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 62,
+        "line_count": 752
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/SingleObj.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev SingleObj :="
+          },
+          {
+            "line": 60,
+            "head": "instance categoryStruct [One M] [Mul M] : CategoryStruct (SingleObj M) where"
+          },
+          {
+            "line": 68,
+            "head": "instance category : Category (SingleObj M) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Limit.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "abbrev JoinCone {K X : SSet.{u}} (p : K ⟶ X) :="
+          },
+          {
+            "line": 32,
+            "head": "def JoinCone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : X _⦋0⦌ :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "abbrev JoinCocone {K X : SSet.{u}} (p : K ⟶ X) :="
+          },
+          {
+            "line": 26,
+            "head": "def JoinCocone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) : X _⦋0⦌ :="
+          }
+        ]
+      }
+    ],
+    "decision": "FreeMonoid、単一対象圏、有限単体集合とコンパクト準圏の宣言を調べたが、一つの自己射で生成される自由準圏と離散無限 Hom を同定する宣言は見つからなかった。"
+  },
+  "1.2.14.2": {
+    "page": 49,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.13",
+        "1.2.14",
+        "1.2.15"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryZeroData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/FullFiberSquare.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackFiberComparison.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFacesGluing.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryUnknownZero.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/JoinFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixObjects.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanUnknownIndex.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailContributions.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceAssembly.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BoundaryLastTriangles.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberSquare.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/DGNerve/LastTriangleIndex.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonIndex.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangleCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeVertex.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixIndex.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceExtensionality.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryLastCone.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryLastTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/TerminalMap.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberProjection.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomCoordinates.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BiproductHomCoordinates.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/RebaseCone.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FullPullbackReflection.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanJoinCells.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryUnknowns.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexCospanPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomCoordinates.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanIndexGeometry.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ConeHomCoordinates.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceLifts.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomLift.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FullLimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangles.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryComponents.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/JoinLastTriangle.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangleComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomProjection.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackResidualMatrix.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanSharedRhs.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackBoundaryEquations.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySolution.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryData.lean": 11,
+        "SerrePositivity/InfinityCategories/Core/Pullback.lean": 12,
+        "SerrePositivity/InfinityCategories/Core/LimitExamples.lean": 24,
+        "SerrePositivity/InfinityCategories/Core/Square.lean": 17,
+        "SerrePositivity/InfinityCategories/Core/TerminalTransport.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinVertexSurjectivity.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/EmptyCone.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceLimits.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/Limit.lean": 8,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberPushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CosliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/FullColimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryFirstTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanSuffixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/RebaseCocone.lean": 4,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/FullCofiberSquare.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "finite.*[Cc][Ww]|[Cc][Ww].*[Ff]inite|[Ff]initeKan|[Ff]inite.*[Cc]ell",
+          "SerrePositivity"
+        ],
+        "file_count": 123,
+        "line_count": 1479
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "finite.*[Cc][Ww]|[Cc][Ww].*[Ff]inite|[Ff]initeKan|[Ff]inite.*[Cc]ell",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 140
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/CWComplex/Classical/Finite.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class RelCWComplex.FiniteDimensional.{u} {X : Type u} [TopologicalSpace X] (C : Set X) {D : Set X}"
+          },
+          {
+            "line": 49,
+            "head": "class RelCWComplex.FiniteType.{u} {X : Type u} [TopologicalSpace X] (C : Set X) {D : Set X}"
+          },
+          {
+            "line": 57,
+            "head": "class RelCWComplex.Finite {X : Type*} [TopologicalSpace X] (C : Set X) {D : Set X}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpacePresentation.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          },
+          {
+            "line": 29,
+            "head": "abbrev FiniteSpacePieces (X : SSet.{u}) :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Limit.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "abbrev JoinCone {K X : SSet.{u}} (p : K ⟶ X) :="
+          },
+          {
+            "line": 32,
+            "head": "def JoinCone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : X _⦋0⦌ :="
+          }
+        ]
+      }
+    ],
+    "decision": "CWComplex の有限型と有限空間の Kan 置換を読んだが、高次亜群の有限表示と有限胞体型を相互に与える比較は見つからなかった。"
+  },
+  "1.2.14.3": {
+    "page": 49,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.13",
+        "1.2.14",
+        "1.2.15"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryZeroData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/FullFiberSquare.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackFiberComparison.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFacesGluing.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryUnknownZero.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/JoinFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixObjects.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanUnknownIndex.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailContributions.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceAssembly.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BoundaryLastTriangles.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberSquare.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/DGNerve/LastTriangleIndex.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonIndex.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryTriangleCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeVertex.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixIndex.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceExtensionality.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryLastCone.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailTransport.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryLastTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/TerminalMap.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberProjection.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomCoordinates.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceData.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/BiproductHomCoordinates.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/RebaseCone.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FullPullbackReflection.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanJoinCells.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryUnknowns.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexCospanPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomCoordinates.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberConeComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanOneTailIndex.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanIndexGeometry.lean": 6,
+        "SerrePositivity/InfinityCategories/DGNerve/ConeHomCoordinates.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanTwoTailResidual.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/SelectedFaceLifts.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackHomLift.lean": 4,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FullLimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangles.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryComponents.lean": 15,
+        "SerrePositivity/InfinityCategories/DGNerve/JoinLastTriangle.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/ComplexTriangleComponents.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberHomProjection.lean": 5,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackResidualMatrix.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryLegCompatibility.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanSharedRhs.lean": 3,
+        "SerrePositivity/InfinityCategories/DGNerve/PullbackBoundaryEquations.lean": 8,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundarySolution.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/DGNerve/FiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/DGNerve/CospanBoundaryData.lean": 11,
+        "SerrePositivity/InfinityCategories/Core/Pullback.lean": 12,
+        "SerrePositivity/InfinityCategories/Core/LimitExamples.lean": 24,
+        "SerrePositivity/InfinityCategories/Core/Square.lean": 17,
+        "SerrePositivity/InfinityCategories/Core/TerminalTransport.lean": 2,
+        "SerrePositivity/InfinityCategories/Core/JoinVertexSurjectivity.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean": 5,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/EmptyCone.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/EquivalenceLimits.lean": 6,
+        "SerrePositivity/InfinityCategories/Core/Limit.lean": 8,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberPushout.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CosliceBoundaryTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonRhs.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidate.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCommonFace.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySharedResiduals.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryAssembly.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberPullback.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/FullColimitReflection.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/SemifreeLimits.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryPrefixEquation.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryRawComparison.lean": 7,
+        "SerrePositivity/InfinityCategories/Derived/SpanBoundaryFirstTriangleData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFaces.lean": 2,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryLegEquations.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryCandidateKnown.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonData.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundarySimplices.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanSuffixBianchi.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/SpanCommonBoundaryFaces.lean": 3,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleConeBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/SpanResidualCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/Derived/RebaseCocone.lean": 4,
+        "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangles.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryResiduals.lean": 12,
+        "SerrePositivity/InfinityCategories/Derived/DGModuleFiberBoundaryJoinFiller.lean": 5,
+        "SerrePositivity/InfinityCategories/Derived/FullCofiberSquare.lean": 5
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Tt]wo[Oo]bject|[Cc]ompact.*[Qq]uasi|[Ii]ntervalMappingSpace|[Ff]initelyPresented.*[Qq]uasi",
+          "SerrePositivity"
+        ],
+        "file_count": 679,
+        "line_count": 1872
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Tt]wo[Oo]bject|[Cc]ompact.*[Qq]uasi|[Ii]ntervalMappingSpace|[Ff]initelyPresented.*[Qq]uasi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 32,
+        "line_count": 132
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/MappingSpaces/IntervalMappingSpace.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "def intervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Join.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def augObj (K : SSet.{u}) : ℕ → Type u"
+          },
+          {
+            "line": 36,
+            "head": "def augMap (K : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) : augObj K n → augObj K m :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Cocone.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "abbrev JoinCocone {K X : SSet.{u}} (p : K ⟶ X) :="
+          },
+          {
+            "line": 26,
+            "head": "def JoinCocone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) : X _⦋0⦌ :="
+          }
+        ]
+      }
+    ],
+    "decision": "区間の写像空間と join での二対象図式、コンパクト対象の判定を調べたが、一方向の Hom の有限胞体型から二対象準圏の有限表示を判定する宣言は見つからなかった。"
+  },
+  "1.2.15.1": {
+    "page": 51,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.14",
+        "1.2.15",
+        "1.2.16"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsInaccessible|[Ii]ndependence.*[Cc]ardinal|[Uu]niverse.*[Ii]naccessible|spaceUniverseDiagram",
+          "SerrePositivity"
+        ],
+        "file_count": 61,
+        "line_count": 157
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsInaccessible|[Ii]ndependence.*[Cc]ardinal|[Uu]niverse.*[Ii]naccessible|spaceUniverseDiagram",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 26
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/SetTheory/Cardinal/Regular.lean",
+        "signatures": [
+          {
+            "line": 370,
+            "head": "structure IsInaccessible (c : Cardinal) : Prop where"
+          },
+          {
+            "line": 378,
+            "head": "theorem IsInaccessible.nat_lt (h : IsInaccessible c) (n : ℕ) : n < c :="
+          },
+          {
+            "line": 381,
+            "head": "theorem IsInaccessible.pos (h : IsInaccessible c) : 0 < c :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}"
+          },
+          {
+            "line": 30,
+            "head": "instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} :="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/UniverseConservativity.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma spaceUniverseDiagram_reflects_invertibleEdge"
+          },
+          {
+            "line": 63,
+            "head": "lemma spaceUniverseDiagram_reflects_invertibleEdge_native"
+          }
+        ]
+      }
+    ],
+    "decision": "Cardinal.IsInaccessible と universe lift の型を調べたが、強非可到達基数の存在の独立性や、本の各定理でその仮定を除去する比較を述べる宣言は見つからなかった。"
+  },
+  "1.2.16.3": {
+    "page": 52,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "1.2.15",
+        "1.2.16"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CWComplex|SpaceInfinity|sSetTopAdj|[Tt]opologicalNerve",
+          "SerrePositivity"
+        ],
+        "file_count": 1125,
+        "line_count": 3058
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "CWComplex|SpaceInfinity|sSetTopAdj|[Tt]opologicalNerve",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 9,
+        "line_count": 374
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/CWComplex/Classical/Basic.lean",
+        "signatures": [
+          {
+            "line": 77,
+            "head": "the instance `CWComplex.instRelCWComplex`."
+          },
+          {
+            "line": 99,
+            "head": "class RelCWComplex.{u} {X : Type u} [TopologicalSpace X] (C : Set X) (D : outParam (Set X)) where"
+          },
+          {
+            "line": 135,
+            "head": "class CWComplex.{u} {X : Type u} [TopologicalSpace X] (C : Set X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SingularSet.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "noncomputable def sSetTopAdj : SSet.toTop.{u} ⊣ TopCat.toSSet.{u} :="
+          },
+          {
+            "line": 78,
+            "head": "instance : SSet.toTop.{u}.IsLeftAdjoint := sSetTopAdj.isLeftAdjoint"
+          },
+          {
+            "line": 79,
+            "head": "instance : TopCat.toSSet.{u}.IsRightAdjoint := sSetTopAdj.isRightAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def SpaceInfinity : SSet.{u + 1} := SimplicialNerve KanObject.{u}"
+          },
+          {
+            "line": 109,
+            "head": "instance spaceInfinity_quasicategory : Quasicategory SpaceInfinity.{u} :="
+          },
+          {
+            "line": 116,
+            "head": "def SpaceInfinityFunctor (C : SSet.{u + 1}) : SSet.{u + 1} := (ihom C).obj SpaceInfinity.{u}"
+          }
+        ]
+      }
+    ],
+    "decision": "CWComplex、通常の実現と特異複体の随伴、SpaceInfinity を読んだが、CW の位相豊穣 nerve と SpaceInfinity の圏同値は見つからなかった。"
+  }
+}
