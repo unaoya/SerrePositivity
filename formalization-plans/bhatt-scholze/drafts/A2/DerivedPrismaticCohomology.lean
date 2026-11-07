@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
+public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
@@ -136,9 +136,6 @@ def polySectionsProjection (hP : IsBoundedPrism P) (n : ℕ)
 方針：Cor 3.12 の CAlg 版（`isSheaf_iff_forget`）、脚注 10 の CAlg 版（`derivedGlobalSectionsCAlg_eq_totEInfinity`）。
 規約：Rem 4.19 の小さい模型でも大きい模型でもよい。
 使われ方：A1 の模型の環構造との一致（D27）、Δ_0 の関手性の具体形。 -/
-def polyCosimplicialAlgebra (hP : IsBoundedPrism P) (n : ℕ) : Cosimplicial.CosimplicialAlgebra A :=
-  cechAlexanderAffine P hP n (polyCutoff P n) le_rfl ⋙ prismSiteAlgebras P _ _
-
 theorem prismaticCohomologyCAlg_eq_totEInfinity (hP : IsBoundedPrism P) (n : ℕ) :
     Nonempty (VertexIso (polySections P n) (Cosimplicial.totEInfinity A (polyCosimplicialAlgebra P hP n))) := by
   sorry -- 要確認：Shared/CosimplicialEInfinity の totEInfinity_isLimitCone 待ち。
