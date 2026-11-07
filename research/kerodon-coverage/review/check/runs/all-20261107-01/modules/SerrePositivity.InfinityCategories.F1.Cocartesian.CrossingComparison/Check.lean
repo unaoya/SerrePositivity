@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.CrossingComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 4ea1a5614604a2d34047
+#check @isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+#print axioms isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+
+-- reference 3f99f0f10a2795d88ed6
+#check @isFullyFaithful_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+#print axioms isFullyFaithful_over_interval_of_endpoint_fibers_of_cocartesian_lifts
+
+-- reference 7d6a10091a8ea98f6011
+#check @cocartesian_crossing_mapping_equivalence_of_target
+#print axioms cocartesian_crossing_mapping_equivalence_of_target

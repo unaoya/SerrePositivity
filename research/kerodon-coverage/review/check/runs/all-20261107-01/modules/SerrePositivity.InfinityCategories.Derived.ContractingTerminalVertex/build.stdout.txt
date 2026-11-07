@@ -1,0 +1,38 @@
+⚠ [3260/3351] Replayed SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:20:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:28:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [3305/3351] Replayed SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Shuffle.lean:9:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Shuffle.lean:17:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [3361/3702] Replayed SerrePositivity.HomologicalAlgebra.Complex.ConeLES
+warning: SerrePositivity/HomologicalAlgebra/Complex/ConeLES.lean:15:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [3677/3702] Replayed SerrePositivity.InfinityCategories.Core.VertexFiber
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:14: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:16: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:19: Variable name `α` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _α
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (3702 jobs).

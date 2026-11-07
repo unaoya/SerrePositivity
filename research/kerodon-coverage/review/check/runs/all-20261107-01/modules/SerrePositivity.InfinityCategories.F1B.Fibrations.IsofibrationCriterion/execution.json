@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion",
+  "state": "checked",
+  "started": "2026-11-06T21:58:17.567710+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1abbb184cc10869b66b09ad94f48f697469bb8fe704bb4247fdb6096d9f4fb09",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T21:58:26.532770+00:00"
+}

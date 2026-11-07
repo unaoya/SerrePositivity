@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompactPullback
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference d93d1541531f5c8168fc
+#check @Presentable.componentCompactObjects_vertex_isKappaCompact
+#print axioms Presentable.componentCompactObjects_vertex_isKappaCompact

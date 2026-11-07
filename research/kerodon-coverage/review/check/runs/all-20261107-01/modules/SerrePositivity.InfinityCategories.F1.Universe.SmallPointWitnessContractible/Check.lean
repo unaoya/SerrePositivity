@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Universe.SmallPointWitnessContractible
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 34e78f2f9a0c15e19ec5
+#check @pointTransportWitnessSpace_isContractibleKan
+#print axioms pointTransportWitnessSpace_isContractibleKan

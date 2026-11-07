@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Presentable.SharplyLT.Lemmas",
+  "state": "checked",
+  "started": "2026-11-06T20:51:59.446019+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "64a346fb7978a7da8cb789d3ce72678744fe3152aa581cbfa5900fba0c49160e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Presentable.SharplyLT.Lemmas"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Presentable.SharplyLT.Lemmas/Check.lean"
+  ],
+  "finished": "2026-11-06T20:52:08.721141+00:00"
+}

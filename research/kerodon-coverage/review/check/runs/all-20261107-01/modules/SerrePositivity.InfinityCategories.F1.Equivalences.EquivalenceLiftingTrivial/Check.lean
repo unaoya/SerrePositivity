@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLiftingTrivial
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9dc3db347e784951a7ac
+#check @IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting
+#print axioms IsQCatEquivalence.trivialKanFibration_of_kanEquivalenceLifting

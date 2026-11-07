@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T20:57:14.154785+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "79b2aa80bd73ac2afb941f4a808304f3b076fa942582bce5b62c8677bb035649",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:57:25.040679+00:00"
+}

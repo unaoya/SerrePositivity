@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits",
+  "state": "checked",
+  "started": "2026-11-06T22:32:22.296187+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "49c3c5b5f5997304f32231fd74d05c46809d395f27780087df49208eb3dd1819",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits/Check.lean"
+  ],
+  "finished": "2026-11-06T22:32:31.816024+00:00"
+}

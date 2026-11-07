@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInitialEvaluation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference efc622cc332db9f2210f
+#check @relativeFunctorEvaluate_initial_trivialKanFibration
+#print axioms relativeFunctorEvaluate_initial_trivialKanFibration

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyRecovery
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 48e52ed8ada4a20a9072
+#check @transportRepresentationFamilyWitness_nonempty
+#print axioms transportRepresentationFamilyWitness_nonempty

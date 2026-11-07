@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SiftedTerminalComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference c31d1f0e4239dd920b83
+#check @continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted
+#print axioms continuousKanTerminalComparison_isWeakHomotopyEquivalence_of_sifted

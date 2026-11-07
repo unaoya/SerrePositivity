@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.WitnessSpace",
+  "state": "checked",
+  "started": "2026-11-06T21:48:50.966092+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ef3f9db084c38a804e23f7c29211520250740963b6a0ba6d92e7991b6242d977",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.WitnessSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.WitnessSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T21:49:00.564670+00:00"
+}

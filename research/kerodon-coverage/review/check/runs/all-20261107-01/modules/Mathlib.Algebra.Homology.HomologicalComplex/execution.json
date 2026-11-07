@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.HomologicalComplex",
+  "state": "checked",
+  "started": "2026-11-06T20:34:58.151615+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "2b4a51622b98dad1df5e8030fb94e05e44ec642c976bf0ac65db293f2fac1fda",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.HomologicalComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.HomologicalComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:35:07.777733+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting",
+  "state": "checked",
+  "started": "2026-11-06T22:41:29.427546+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f7605657f9d57b6f32e2f347c6ef4a093ef44adb50e994ddac6e4285b7b1efd3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.PointedConeHornLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T22:41:38.275091+00:00"
+}

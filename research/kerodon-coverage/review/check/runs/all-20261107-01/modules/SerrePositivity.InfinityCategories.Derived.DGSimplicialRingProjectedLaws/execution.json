@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws",
+  "state": "checked",
+  "started": "2026-11-06T21:23:05.411559+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c9202663d5f1ce84ed3cf7e566caff77204ee86096b50b10a8e2c39558170fcc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.DGSimplicialRingProjectedLaws/Check.lean"
+  ],
+  "finished": "2026-11-06T21:23:17.316469+00:00"
+}

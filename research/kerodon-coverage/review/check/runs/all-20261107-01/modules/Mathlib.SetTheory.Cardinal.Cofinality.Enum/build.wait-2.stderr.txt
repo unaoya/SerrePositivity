@@ -1,0 +1,6 @@
+warning: existing lake build (possibly unguarded):
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.SetTheory.Cardinal.Cofinality.Enum
+waiting for build lock: {"pid": 20333, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:34:35.791509+00:00", "command": ["lake", "build", "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton"], "token": "2099060b5d0941c8bac62ea12dc8abed"}

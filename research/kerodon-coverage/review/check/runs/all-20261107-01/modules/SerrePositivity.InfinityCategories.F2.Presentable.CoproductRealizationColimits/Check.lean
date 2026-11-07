@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.CoproductRealizationColimits
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 08fbcfd887543684d7a0
+#check @Presentable.hasSmallColimits_of_coproducts_geometricRealizations
+#print axioms Presentable.hasSmallColimits_of_coproducts_geometricRealizations

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7b1eb1aeede670cc0cc6
+#check @nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso
+#print axioms nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso

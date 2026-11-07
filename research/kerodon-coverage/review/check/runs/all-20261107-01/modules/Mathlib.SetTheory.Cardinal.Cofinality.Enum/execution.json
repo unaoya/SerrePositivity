@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.SetTheory.Cardinal.Cofinality.Enum",
+  "state": "checked",
+  "started": "2026-11-06T19:34:27.329702+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "390387a5175ff90c82982188deb9e0b7f98e7b55639b6e1121a0cc4efbdf82bc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.SetTheory.Cardinal.Cofinality.Enum"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.SetTheory.Cardinal.Cofinality.Enum/Check.lean"
+  ],
+  "finished": "2026-11-06T19:35:54.726907+00:00"
+}

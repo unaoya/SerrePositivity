@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle",
+  "state": "checked",
+  "started": "2026-11-06T22:15:58.411072+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "103c260da1fa0983db928c2010e8c703bd0fb0d30fd8179adcecab143611194b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle/Check.lean"
+  ],
+  "finished": "2026-11-06T22:16:07.045189+00:00"
+}

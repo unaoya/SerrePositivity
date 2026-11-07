@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanComparison",
+  "state": "checked",
+  "started": "2026-11-06T22:32:59.788980+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "46055f59dcc5a7067bf5b1799d51921ac0e70b3cf1c8c0d74f73923f203c467b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:33:08.639512+00:00"
+}

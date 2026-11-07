@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.HomotopyPullbackThreeInputs",
+  "state": "checked",
+  "started": "2026-11-06T22:44:34.811232+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "12c4de78c7c7bcd6737b693743ba5bd80447c89aaae98e9165de496106f6fbd1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.HomotopyPullbackThreeInputs"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.HomotopyPullbackThreeInputs/Check.lean"
+  ],
+  "finished": "2026-11-06T22:44:43.736706+00:00"
+}

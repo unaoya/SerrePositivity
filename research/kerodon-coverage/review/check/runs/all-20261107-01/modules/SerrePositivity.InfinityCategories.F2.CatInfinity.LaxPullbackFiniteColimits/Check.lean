@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackFiniteColimits
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ed6636af7153b1ca8c78
+#check @hasFiniteColimits_laxPullback_of_preservation
+#print axioms hasFiniteColimits_laxPullback_of_preservation
+
+-- reference 05c55698df37137859ac
+#check @isColimitCone_laxPullback_iff_finite_components
+#print axioms isColimitCone_laxPullback_iff_finite_components

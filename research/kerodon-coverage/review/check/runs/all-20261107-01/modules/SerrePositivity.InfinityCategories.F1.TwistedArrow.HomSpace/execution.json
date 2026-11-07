@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.TwistedArrow.HomSpace",
+  "state": "checked",
+  "started": "2026-11-06T20:00:51.070177+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ceb3a96f07817297766e16dfd85c8021b8b039c40bacc108e79feabeacfa8360",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrow.HomSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.TwistedArrow.HomSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T20:01:01.082612+00:00"
+}

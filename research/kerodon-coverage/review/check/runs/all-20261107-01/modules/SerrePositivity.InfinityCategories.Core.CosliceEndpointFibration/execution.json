@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:06:11.359928+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c1fe2ce70da1f9843a6e637dc1b64b3ed8386df9bbdef2c257e4796238815541",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:06:21.255037+00:00"
+}

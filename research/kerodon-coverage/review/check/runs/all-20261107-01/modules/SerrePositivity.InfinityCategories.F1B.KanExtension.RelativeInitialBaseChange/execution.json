@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBaseChange",
+  "state": "checked",
+  "started": "2026-11-06T20:07:38.722133+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e0cacbc6035e6cd1314b26f9ea334a82d658978137412ffabf4ef69bb71892cd",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBaseChange"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBaseChange/Check.lean"
+  ],
+  "finished": "2026-11-06T20:07:49.524028+00:00"
+}

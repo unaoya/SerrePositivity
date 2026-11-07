@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionUnitInvertible
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 906740d94bb309421c27
+#check @bicategory_whiskerLeft_unit_isIso_of_counit
+#print axioms bicategory_whiskerLeft_unit_isIso_of_counit
+
+-- reference 0276d95eeb3d0d5227f5
+#check @bicategory_whiskerRight_unit_isIso_of_counit
+#print axioms bicategory_whiskerRight_unit_isIso_of_counit

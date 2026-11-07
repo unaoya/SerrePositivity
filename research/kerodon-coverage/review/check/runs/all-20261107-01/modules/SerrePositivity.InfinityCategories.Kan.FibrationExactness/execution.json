@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.FibrationExactness",
+  "state": "checked",
+  "started": "2026-11-06T20:26:58.309281+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9be1298d0bc8ccd39ecd97e4009b6912af961ca702c7c90830ad805a3b1a2892",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.FibrationExactness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.FibrationExactness/Check.lean"
+  ],
+  "finished": "2026-11-06T20:27:08.530370+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation",
+  "state": "checked",
+  "started": "2026-11-06T21:57:24.209156+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "20f6ef23dbe0d8e4c8d1bbf5bc422119d2f1e538fa984c574b3f991d22ab0ff4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation/Check.lean"
+  ],
+  "finished": "2026-11-06T21:57:33.069309+00:00"
+}

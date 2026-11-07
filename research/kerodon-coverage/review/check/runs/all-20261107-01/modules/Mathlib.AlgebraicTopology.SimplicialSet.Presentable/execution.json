@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Presentable",
+  "state": "checked",
+  "started": "2026-11-06T20:41:03.372501+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "05745fd2e8e41799c78a3fdb20b2906e5f0ae2c546b804f778f0007218281d7b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Presentable"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Presentable/Check.lean"
+  ],
+  "finished": "2026-11-06T20:41:13.041446+00:00"
+}

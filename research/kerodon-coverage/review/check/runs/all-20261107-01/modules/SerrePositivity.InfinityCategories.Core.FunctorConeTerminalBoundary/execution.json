@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary",
+  "state": "checked",
+  "started": "2026-11-06T19:43:47.361259+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "86b6bcc42e7b2f199a633423ea1bdb88795202496cfda6d03468312272f1a740",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T19:43:58.547676+00:00"
+}

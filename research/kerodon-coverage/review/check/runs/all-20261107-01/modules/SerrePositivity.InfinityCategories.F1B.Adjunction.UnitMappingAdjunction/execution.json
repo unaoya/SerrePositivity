@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T21:53:44.628763+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d6538b7529086c80b5eaaa78da22682dbcc4ad5263a8c941e6263e400d6c7d72",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T21:53:54.235559+00:00"
+}

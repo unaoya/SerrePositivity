@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SigmaGeometricRealizations",
+  "state": "checked",
+  "started": "2026-11-06T22:29:46.095582+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4880ce8215d0b1a6ae458a4c5701a4cf24af5774e2833a9d53a0091f2a63b9cf",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SigmaGeometricRealizations"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SigmaGeometricRealizations/Check.lean"
+  ],
+  "finished": "2026-11-06T22:29:59.839217+00:00"
+}

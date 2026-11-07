@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.SmallCodiscreteConeRange",
+  "state": "checked",
+  "started": "2026-11-06T22:19:53.467078+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "371c55115ee592fffe8235b073b13e03f63448a361d8042f470402abe20dd236",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.SmallCodiscreteConeRange"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.SmallCodiscreteConeRange/Check.lean"
+  ],
+  "finished": "2026-11-06T22:20:02.086096+00:00"
+}

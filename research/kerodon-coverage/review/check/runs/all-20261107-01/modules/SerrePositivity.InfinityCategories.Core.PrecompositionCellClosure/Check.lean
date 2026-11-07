@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.PrecompositionCellClosure
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7ca80893f100057ad5ab
+#check @isPrecompositionEquivalence_iff_llp_boundaryTests
+#print axioms isPrecompositionEquivalence_iff_llp_boundaryTests

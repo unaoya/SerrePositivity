@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.StrictCocones",
+  "state": "checked",
+  "started": "2026-11-06T20:26:15.404558+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fb347d8ad61ba954190b2364a41438e0a112ac16572f6626da9c6f75186258c7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.StrictCocones"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.StrictCocones/Check.lean"
+  ],
+  "finished": "2026-11-06T20:26:26.456178+00:00"
+}

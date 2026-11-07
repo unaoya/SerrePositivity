@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference dd2714561c5156843a65
+#check @simplicialReplacementMap_isPrecompositionEquivalence
+#print axioms simplicialReplacementMap_isPrecompositionEquivalence

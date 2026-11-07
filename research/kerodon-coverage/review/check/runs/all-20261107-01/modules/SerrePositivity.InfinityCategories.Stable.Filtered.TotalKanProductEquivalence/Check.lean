@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.Filtered.TotalKanProductEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 538dd63ebfb5f035059f
+#check @totalKanProductComparison_isWeakHomotopyEquivalence
+#print axioms totalKanProductComparison_isWeakHomotopyEquivalence

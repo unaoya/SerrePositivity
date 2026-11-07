@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.SquareRepresentationRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6eb918541664f45a5d8c
+#check @LeftTransportSquare.isRepresentation_iff_restrict_of_vertexSurjective
+#print axioms LeftTransportSquare.isRepresentation_iff_restrict_of_vertexSurjective

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Coherent.Edges",
+  "state": "checked",
+  "started": "2026-11-06T19:52:10.323629+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "350175ea7712c1f2493e8093c0a392b861feab9e0137339a945d2c32e529f34d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Coherent.Edges"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Coherent.Edges/Check.lean"
+  ],
+  "finished": "2026-11-06T19:52:21.135452+00:00"
+}

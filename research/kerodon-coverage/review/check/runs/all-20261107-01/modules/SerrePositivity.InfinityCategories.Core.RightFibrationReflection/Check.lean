@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference dd06e705a8a8569f6909
+#check @derived_rightFibration_reflects_invertibleEdge
+#print axioms derived_rightFibration_reflects_invertibleEdge

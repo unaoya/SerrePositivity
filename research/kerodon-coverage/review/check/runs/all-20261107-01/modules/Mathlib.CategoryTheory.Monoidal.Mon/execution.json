@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Monoidal.Mon",
+  "state": "checked",
+  "started": "2026-11-06T20:50:20.225644+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "9aa0a7fc1f65b706e81f4bad36d24a4bb2c5717da5468dac552919c237983483",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Monoidal.Mon"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Monoidal.Mon/Check.lean"
+  ],
+  "finished": "2026-11-06T20:50:29.104041+00:00"
+}

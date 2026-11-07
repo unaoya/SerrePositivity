@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestrictionLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 97b46657d4afdadc44f9
+#check @kanEquivalenceLifting_relativeFunctorOverPre_of_cocartesian
+#print axioms kanEquivalenceLifting_relativeFunctorOverPre_of_cocartesian

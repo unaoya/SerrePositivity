@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Yoneda",
+  "state": "checked",
+  "started": "2026-11-06T20:53:10.560950+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "63ba5635e23700bf978c0f86e7392c04b42b309d9aaafb33026154c612231c0f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Yoneda"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Yoneda/Check.lean"
+  ],
+  "finished": "2026-11-06T20:53:19.213887+00:00"
+}

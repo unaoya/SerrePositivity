@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Diagrams.KanWeightedUnstraighteningUnit
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6f59294183d40d2f3bc0
+#check @exists_kanWeightedUnstraighteningUnit
+#print axioms exists_kanWeightedUnstraighteningUnit
+
+-- reference bd62d8b54b4ab9fd3542
+#check @smallReversedWeightedKanUnstraighteningComparison
+#print axioms smallReversedWeightedKanUnstraighteningComparison

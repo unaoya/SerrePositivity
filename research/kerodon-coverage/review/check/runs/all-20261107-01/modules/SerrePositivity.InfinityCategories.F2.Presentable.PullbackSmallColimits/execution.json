@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.PullbackSmallColimits",
+  "state": "checked",
+  "started": "2026-11-06T20:19:34.572089+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "41ccab17e5b8d9b6f9c4e3cb1f618f6e9b42bf121c6dc748b230578a9a79c324",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.PullbackSmallColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.PullbackSmallColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T20:19:50.169803+00:00"
+}

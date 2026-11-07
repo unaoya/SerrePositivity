@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInfinityEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 5a3037f02a91bf6093ef
+#check @cocartesianStrictTransportInfinityMap_isQCatEquivalence
+#print axioms cocartesianStrictTransportInfinityMap_isQCatEquivalence

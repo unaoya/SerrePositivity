@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackMapComponentEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T22:10:32.098171+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f0c1bf2c87ffd4482f4ada79d98d07ea3e3a09e5d7ba666e4894843bf84fd86f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackMapComponentEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackMapComponentEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:10:41.553525+00:00"
+}

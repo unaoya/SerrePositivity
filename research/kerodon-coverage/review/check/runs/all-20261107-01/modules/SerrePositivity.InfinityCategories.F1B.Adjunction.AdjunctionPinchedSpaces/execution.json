@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces",
+  "state": "checked",
+  "started": "2026-11-06T21:52:59.370387+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c9660d05884792816c4b652e50aca378f47dbf0fd1cb50e660f196da019abcfc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces/Check.lean"
+  ],
+  "finished": "2026-11-06T21:53:08.565711+00:00"
+}

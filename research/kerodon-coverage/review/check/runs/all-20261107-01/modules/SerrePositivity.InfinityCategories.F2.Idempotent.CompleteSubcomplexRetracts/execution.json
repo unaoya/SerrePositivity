@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.CompleteSubcomplexRetracts",
+  "state": "checked",
+  "started": "2026-11-06T22:13:27.320346+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "860d1b4d1225b789f62c5ae9440a1d50dec89b9d1eb4c3a0ee10ece7ae2ebfff",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.CompleteSubcomplexRetracts"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.CompleteSubcomplexRetracts/Check.lean"
+  ],
+  "finished": "2026-11-06T22:13:36.644279+00:00"
+}

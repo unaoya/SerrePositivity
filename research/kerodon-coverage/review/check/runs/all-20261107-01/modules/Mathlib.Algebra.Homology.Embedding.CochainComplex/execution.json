@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.Embedding.CochainComplex",
+  "state": "checked",
+  "started": "2026-11-06T20:34:47.503872+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "5e54592cd6040c2da539af25d285316df5326c922b310b4ea89e8c030a335bcc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.Embedding.CochainComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.Embedding.CochainComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:34:58.150655+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces",
+  "state": "checked",
+  "started": "2026-11-06T19:50:25.143609+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ad98ddfd1eaa8d30e3084cae8243791559bf9060d9a25021426315bfd61c09be",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces/Check.lean"
+  ],
+  "finished": "2026-11-06T19:50:36.715142+00:00"
+}

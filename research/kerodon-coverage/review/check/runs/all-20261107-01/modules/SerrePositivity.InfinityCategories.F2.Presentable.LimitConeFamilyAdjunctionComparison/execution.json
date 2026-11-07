@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.LimitConeFamilyAdjunctionComparison",
+  "state": "checked",
+  "started": "2026-11-06T22:25:25.668389+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "54f6e8f1799ece33a5dec529a58e59056e8b38108de685ffc98c277bcad179b0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.LimitConeFamilyAdjunctionComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.LimitConeFamilyAdjunctionComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:25:36.913413+00:00"
+}

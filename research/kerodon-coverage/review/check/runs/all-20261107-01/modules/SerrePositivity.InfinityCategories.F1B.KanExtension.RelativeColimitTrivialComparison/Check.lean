@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitTrivialComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0492cb3f453a67780820
+#check @kanIsRelativeColimitCone_congr
+#print axioms kanIsRelativeColimitCone_congr
+
+-- reference 0d835b16d9fb10e51623
+#check @kanRelativeInitialVertex_comp_iff_of_fullyFaithful
+#print axioms kanRelativeInitialVertex_comp_iff_of_fullyFaithful
+
+-- reference 8364bb24cffae0042485
+#check @kanIsRelativeColimitCone_comp_iff_of_trivialKanFibration
+#print axioms kanIsRelativeColimitCone_comp_iff_of_trivialKanFibration

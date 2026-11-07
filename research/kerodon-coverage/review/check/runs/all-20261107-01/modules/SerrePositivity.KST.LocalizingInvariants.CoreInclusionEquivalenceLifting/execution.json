@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting",
+  "state": "checked",
+  "started": "2026-11-06T22:46:33.485425+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "dc78c389c0c1da192fa435c715a8b65da56f4b41a026c11e7b55d38d1b8016c3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.LocalizingInvariants.CoreInclusionEquivalenceLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T22:46:42.421910+00:00"
+}

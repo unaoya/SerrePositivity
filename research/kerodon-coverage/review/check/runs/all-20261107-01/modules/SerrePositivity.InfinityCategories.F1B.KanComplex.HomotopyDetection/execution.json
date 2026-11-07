@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyDetection",
+  "state": "checked",
+  "started": "2026-11-06T22:00:40.026185+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0e75d02ca4bef369f8ef1a5d69f861632a09381a3fa082d569cd04190e6ec650",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyDetection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyDetection/Check.lean"
+  ],
+  "finished": "2026-11-06T22:00:48.851169+00:00"
+}

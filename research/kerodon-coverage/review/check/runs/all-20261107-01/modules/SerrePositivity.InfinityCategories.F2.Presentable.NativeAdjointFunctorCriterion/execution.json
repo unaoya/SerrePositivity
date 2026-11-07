@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:26:39.573910+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "57427f3e0b98c47899cc02f4ce4c7cc1640232ca04d809a4136096bbbbfdf757",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:26:53.939202+00:00"
+}

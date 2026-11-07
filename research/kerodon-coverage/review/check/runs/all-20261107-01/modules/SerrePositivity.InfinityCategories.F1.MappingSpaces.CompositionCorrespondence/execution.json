@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondence",
+  "state": "checked",
+  "started": "2026-11-06T19:58:36.962675+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5e15fbbb8219baa41c6e1c24d8abbfecf2a14149c989e9e2ed2d7d7eaf45800b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.CompositionCorrespondence/Check.lean"
+  ],
+  "finished": "2026-11-06T19:58:48.047680+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFunctor",
+  "state": "checked",
+  "started": "2026-11-06T21:51:11.183220+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2cf682e818b7c88ab14ebc400da7cedb63fa5e0c64dfded0148fe9fd03d57b8d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T21:51:20.101474+00:00"
+}

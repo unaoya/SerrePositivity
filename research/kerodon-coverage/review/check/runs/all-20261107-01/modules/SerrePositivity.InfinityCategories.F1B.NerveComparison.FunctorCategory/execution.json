@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory",
+  "state": "checked",
+  "started": "2026-11-06T22:08:28.062631+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "c8fd9c54f1eb286f61ffc0d46788ec1634bb6eba10846e1e33dda7dd45434f3e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory/Check.lean"
+  ],
+  "finished": "2026-11-06T22:08:36.684247+00:00"
+}

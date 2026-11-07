@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomEquivalenceRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference fb2138863609d21e1cf9
+#check @relativeFunctorPre_trivialKanFibration_of_precompositionEquivalence
+#print axioms relativeFunctorPre_trivialKanFibration_of_precompositionEquivalence

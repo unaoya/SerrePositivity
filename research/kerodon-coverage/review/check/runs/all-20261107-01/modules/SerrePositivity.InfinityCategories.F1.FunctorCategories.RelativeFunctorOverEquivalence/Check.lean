@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference aea6e3e500c775436cd1
+#check @relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalence
+#print axioms relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalence
+
+-- reference e9d878e285f9695454c6
+#check @relativeFunctorOverPre_isQCatEquivalence
+#print axioms relativeFunctorOverPre_isQCatEquivalence

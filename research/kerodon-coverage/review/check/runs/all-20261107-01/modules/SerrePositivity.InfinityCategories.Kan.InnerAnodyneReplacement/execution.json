@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement",
+  "state": "checked",
+  "started": "2026-11-06T22:39:49.035995+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9cbace689e05e0a5188a6576528aa4566e54e1b500742018986193b2955838a4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement/Check.lean"
+  ],
+  "finished": "2026-11-06T22:39:57.933561+00:00"
+}

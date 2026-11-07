@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ca88e83b16fa602b5f7a
+#check @kanRelativeCoconeLifting_iff_isRelativeColimitCone
+#print axioms kanRelativeCoconeLifting_iff_isRelativeColimitCone

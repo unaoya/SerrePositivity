@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Coherent.Quasicategory",
+  "state": "checked",
+  "started": "2026-11-06T19:39:26.839800+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b3082d3e364b86de1f78afa38d9cc0f42f99f9e78c9310e56eae33e871de5d9b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Coherent.Quasicategory"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Coherent.Quasicategory/Check.lean"
+  ],
+  "finished": "2026-11-06T19:39:37.657992+00:00"
+}

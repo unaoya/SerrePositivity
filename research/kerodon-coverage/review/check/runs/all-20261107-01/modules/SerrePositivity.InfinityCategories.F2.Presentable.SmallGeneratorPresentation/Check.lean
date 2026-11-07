@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPresentation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 49b5299b8bb5d54545fc
+#check @IsKappaCompactGenerating.exists_smallFamilyPresentation
+#print axioms IsKappaCompactGenerating.exists_smallFamilyPresentation

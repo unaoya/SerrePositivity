@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.DoldKanComparison.AWAssociativity",
+  "state": "checked",
+  "started": "2026-11-06T21:24:21.478160+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "29ae112834482163863a5e1203b2d41b757ac95b19c7fbff93ac2a7a095f15ed",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.DoldKanComparison.AWAssociativity"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.DoldKanComparison.AWAssociativity/Check.lean"
+  ],
+  "finished": "2026-11-06T21:24:34.312236+00:00"
+}

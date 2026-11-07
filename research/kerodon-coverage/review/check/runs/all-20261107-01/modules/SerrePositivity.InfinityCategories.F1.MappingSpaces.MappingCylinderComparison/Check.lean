@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a2dbccc2e3301cad7b66
+#check @mappingCylinderMap_isPrecompositionEquivalence
+#print axioms mappingCylinderMap_isPrecompositionEquivalence

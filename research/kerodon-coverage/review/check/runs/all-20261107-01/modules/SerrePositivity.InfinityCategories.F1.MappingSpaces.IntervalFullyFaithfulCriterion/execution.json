@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFullyFaithfulCriterion",
+  "state": "checked",
+  "started": "2026-11-06T19:59:11.909512+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "dcf45d5ea0b369ec3765f38632853f6d560ad8d50a6018618c5ee3d649426de1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFullyFaithfulCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFullyFaithfulCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T19:59:22.931986+00:00"
+}

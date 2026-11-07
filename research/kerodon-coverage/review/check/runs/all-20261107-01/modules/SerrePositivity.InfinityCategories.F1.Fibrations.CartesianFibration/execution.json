@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:34:40.958241+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:34:50.122467+00:00"
+}

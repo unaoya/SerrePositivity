@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.ProExcision.ShuffleChainMap",
+  "state": "checked",
+  "started": "2026-11-06T22:48:21.856701+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1668051ae2f5ad921b08e448c722d5b0548046f17de2717df2e5e52fd004bab9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.ProExcision.ShuffleChainMap"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.ProExcision.ShuffleChainMap/Check.lean"
+  ],
+  "finished": "2026-11-06T22:48:30.836691+00:00"
+}

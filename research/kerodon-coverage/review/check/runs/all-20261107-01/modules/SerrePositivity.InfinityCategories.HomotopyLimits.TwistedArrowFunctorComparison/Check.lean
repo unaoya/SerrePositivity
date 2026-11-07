@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.TwistedArrowFunctorComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference de0b2e54d5294eb4c233
+#check @twistedArrowFunctorComparison_isPrecompositionEquivalence
+#print axioms twistedArrowFunctorComparison_isPrecompositionEquivalence

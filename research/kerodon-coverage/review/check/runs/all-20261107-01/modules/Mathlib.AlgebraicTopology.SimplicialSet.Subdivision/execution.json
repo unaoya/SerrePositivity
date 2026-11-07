@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+  "state": "checked",
+  "started": "2026-11-06T20:41:31.733189+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "da8225a57057726ece6872186bed384f40a33330eb89e06c2248280ac4ba8637",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Subdivision/Check.lean"
+  ],
+  "finished": "2026-11-06T20:41:41.177777+00:00"
+}

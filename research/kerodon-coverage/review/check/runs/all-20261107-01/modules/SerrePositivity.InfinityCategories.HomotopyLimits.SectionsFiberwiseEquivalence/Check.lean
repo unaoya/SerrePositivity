@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.SectionsFiberwiseEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9aa65b54c0c150b39f18
+#check @simplicialSectionsMap_homotopyEquivalence_of_fibers
+#print axioms simplicialSectionsMap_homotopyEquivalence_of_fibers

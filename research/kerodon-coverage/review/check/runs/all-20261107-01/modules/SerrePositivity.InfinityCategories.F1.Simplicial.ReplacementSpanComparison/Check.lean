@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementSpanComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 63ec8e885910043e86b5
+#check @isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting
+#print axioms isPrecompositionEquivalence_spanPullbackMap_of_equivalenceLifting

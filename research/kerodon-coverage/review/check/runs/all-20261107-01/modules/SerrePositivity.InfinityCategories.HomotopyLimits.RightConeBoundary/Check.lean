@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.RightConeBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f4da86eee7a7b2082ac5
+#check @sliceOverPostcomp_trivialKanFibration_of_rightFibration
+#print axioms sliceOverPostcomp_trivialKanFibration_of_rightFibration

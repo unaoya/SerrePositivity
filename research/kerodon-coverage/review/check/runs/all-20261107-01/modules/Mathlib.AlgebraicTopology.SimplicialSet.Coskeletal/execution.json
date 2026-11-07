@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal",
+  "state": "checked",
+  "started": "2026-11-06T19:26:00.386529+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d85596539d7417156c4d4d11776a632edd3f5847beda00de3399be2f3e885aa6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal/Check.lean"
+  ],
+  "finished": "2026-11-06T19:26:10.407864+00:00"
+}

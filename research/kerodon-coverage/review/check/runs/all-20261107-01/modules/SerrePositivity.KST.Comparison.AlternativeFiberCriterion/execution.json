@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.AlternativeFiberCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:42:15.685088+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e926dee282e4459cfc1926e4b74999e6cab4e610f09b70d643da5730d16bb499",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.AlternativeFiberCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.AlternativeFiberCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:42:24.903943+00:00"
+}

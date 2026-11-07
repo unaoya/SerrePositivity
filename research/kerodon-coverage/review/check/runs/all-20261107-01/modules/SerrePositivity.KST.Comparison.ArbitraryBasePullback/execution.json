@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.ArbitraryBasePullback",
+  "state": "checked",
+  "started": "2026-11-06T20:29:24.493620+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fad97ee4809517c7e9153151b2b6b356f708e73f42b0cfc9ba544ad7245ddc1f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.ArbitraryBasePullback"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.ArbitraryBasePullback/Check.lean"
+  ],
+  "finished": "2026-11-06T20:29:35.382825+00:00"
+}

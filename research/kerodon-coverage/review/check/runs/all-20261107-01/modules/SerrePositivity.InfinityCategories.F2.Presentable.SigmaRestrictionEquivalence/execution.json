@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T20:21:11.442323+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e54b4a35fa2d625c4ce81eed701fb3b2d0c7345534d265a6f1a40184390bbe02",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:21:27.124479+00:00"
+}

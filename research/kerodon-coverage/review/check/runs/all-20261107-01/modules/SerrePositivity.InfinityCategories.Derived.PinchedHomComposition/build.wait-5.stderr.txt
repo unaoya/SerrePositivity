@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
+waiting for build lock: {"pid": 32797, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:48:54.605239+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy"], "token": "842e9578e7714d609a8ad42b65a1278c"}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinDiagramExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:05:06.942451+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "bfdfb336b2c97812aadfc2a6839ce28ada7b3825f21aa3021cf32e4e49c96b84",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinDiagramExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinDiagramExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:05:16.378221+00:00"
+}

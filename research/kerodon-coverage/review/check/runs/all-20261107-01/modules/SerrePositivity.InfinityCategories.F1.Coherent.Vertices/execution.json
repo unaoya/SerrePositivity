@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Coherent.Vertices",
+  "state": "checked",
+  "started": "2026-11-06T21:31:59.476464+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c2236f3cf07a06fc4a8fefd65e3dc52ea2b5a5d6e4f33b4069bed8ef1ccca1a4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Coherent.Vertices"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Coherent.Vertices/Check.lean"
+  ],
+  "finished": "2026-11-06T21:32:08.714017+00:00"
+}

@@ -1,0 +1,6 @@
+warning: existing lake build (possibly unguarded):
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.Bicategory.Span.Basic
+waiting for build lock: {"pid": 9089, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:28:56.236471+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence"], "token": "90f419100bfa4877b8f220c6ddbaab9f"}

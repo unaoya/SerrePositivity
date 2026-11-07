@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate",
+  "state": "checked",
+  "started": "2026-11-06T19:27:56.687030+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "64a9d9e47854f0d40e735ef8cb9f70705710203ba654d48b1c44afc436ac9259",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Bicategory.Adjunction.Mate/Check.lean"
+  ],
+  "finished": "2026-11-06T19:28:09.084551+00:00"
+}

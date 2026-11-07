@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom",
+  "state": "checked",
+  "started": "2026-11-06T21:45:15.894527+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "de7f2afaa2e805e46804fc8f5764e9b84954c974bbef4930c97314e2980f793b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom/Check.lean"
+  ],
+  "finished": "2026-11-06T21:45:25.458863+00:00"
+}

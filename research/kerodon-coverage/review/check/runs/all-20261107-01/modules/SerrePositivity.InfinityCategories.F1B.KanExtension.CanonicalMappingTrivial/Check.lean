@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.CanonicalMappingTrivial
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0ceb9994533230ed1893
+#check @kanLeftCanonical_pinchedHomMap_trivialKanFibration
+#print axioms kanLeftCanonical_pinchedHomMap_trivialKanFibration
+
+-- reference 174ce383394fb014ed84
+#check @kanRightCanonical_pinchedHomMap_trivialKanFibration
+#print axioms kanRightCanonical_pinchedHomMap_trivialKanFibration

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.SetTheory.Cardinal.Order",
+  "state": "checked",
+  "started": "2026-11-06T19:35:54.728433+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "2c991d8063ed3e7af3d47cf0d1067a86b6f69978b73eb84343fc225e12052806",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.SetTheory.Cardinal.Order"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.SetTheory.Cardinal.Order/Check.lean"
+  ],
+  "finished": "2026-11-06T19:36:05.559942+00:00"
+}

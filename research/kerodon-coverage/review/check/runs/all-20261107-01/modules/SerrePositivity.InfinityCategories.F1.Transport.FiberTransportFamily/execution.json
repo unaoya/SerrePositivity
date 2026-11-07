@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily",
+  "state": "checked",
+  "started": "2026-11-06T21:45:25.459637+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "90e7f8e027cc7e06b7752cf6d9204f31d2015863395971c1e1140c1669ba3b44",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily/Check.lean"
+  ],
+  "finished": "2026-11-06T21:45:34.769517+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit",
+  "state": "checked",
+  "started": "2026-11-06T22:20:10.537567+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "19acad17ea5ca5e21064b93f8250b49872c8caf2a8a9139be7807785c838a836",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamilyColimit/Check.lean"
+  ],
+  "finished": "2026-11-06T22:20:18.981054+00:00"
+}

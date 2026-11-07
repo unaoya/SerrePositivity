@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9affe8a1f8e487b8faa5
+#check @isPrecompositionEquivalence_of_pushout_gluing
+#print axioms isPrecompositionEquivalence_of_pushout_gluing

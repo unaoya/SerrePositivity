@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift",
+  "state": "checked",
+  "started": "2026-11-06T21:46:03.297076+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4619b131b311b2d23fbf3d26f39e66d5178541deeeefd322e1588a35917185bd",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift/Check.lean"
+  ],
+  "finished": "2026-11-06T21:46:13.325410+00:00"
+}

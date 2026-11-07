@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitPointwise
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7395816799e5ed01bf91
+#check @kanRelativeCoconeLifting_functor_of_pointwise
+#print axioms kanRelativeCoconeLifting_functor_of_pointwise
+
+-- reference 38fc948d6eb3c5536749
+#check @kanIsRelativeColimitCone_functor_of_pointwise
+#print axioms kanIsRelativeColimitCone_functor_of_pointwise
+
+-- reference 1337f1673324344e743a
+#check @F1B.kanIsRelativeColimitCone_functor_of_pointwise
+#print axioms F1B.kanIsRelativeColimitCone_functor_of_pointwise

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackMapComponentEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6995e14df59d03dadd1a
+#check @pullbackMap_isQCatEquivalence_of_components
+#print axioms pullbackMap_isQCatEquivalence_of_components

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3cba3389e66a8fb18b33
+#check @strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison
+#print axioms strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison

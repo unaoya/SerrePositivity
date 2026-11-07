@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport",
+  "state": "checked",
+  "started": "2026-11-06T21:35:54.617420+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "09179e264db39b9376834adcf4b149443146a445e90c1b6ececf571e5069a781",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T21:36:03.799155+00:00"
+}

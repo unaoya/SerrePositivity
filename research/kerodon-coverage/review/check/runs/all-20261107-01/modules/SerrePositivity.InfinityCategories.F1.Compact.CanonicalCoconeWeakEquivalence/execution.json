@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:32:08.715503+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1e31aaacb8391fda471828d86cbf8cf69b93165a995009321fa2c9c558a5c3b9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:32:20.236070+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T22:47:27.590948+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f0e96ae030261d79eaff7a95e128359847bd076375ee251c76d471f274a3853f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:47:37.003613+00:00"
+}

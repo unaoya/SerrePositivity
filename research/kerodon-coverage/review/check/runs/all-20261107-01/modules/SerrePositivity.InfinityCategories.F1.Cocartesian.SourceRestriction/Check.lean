@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.SourceRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2aaa9f10f731e8122b77
+#check @relativeCosliceRestriction_source_of_isCocartesianEdge
+#print axioms relativeCosliceRestriction_source_of_isCocartesianEdge
+
+-- reference 30ea1641e67c3c63463d
+#check @isCocartesianEdge_of_relativeCosliceRestriction_source
+#print axioms isCocartesianEdge_of_relativeCosliceRestriction_source

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.CommSq",
+  "state": "checked",
+  "started": "2026-11-06T20:43:11.632695+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "7e6fa6e898c9c2dea59dcc127eccedde19534463c7291817cf54e0980a9ecd46",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.CommSq"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.CommSq/Check.lean"
+  ],
+  "finished": "2026-11-06T20:43:20.296713+00:00"
+}

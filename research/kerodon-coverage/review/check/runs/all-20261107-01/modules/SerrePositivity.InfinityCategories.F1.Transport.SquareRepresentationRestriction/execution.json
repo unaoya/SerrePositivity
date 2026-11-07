@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.SquareRepresentationRestriction",
+  "state": "checked",
+  "started": "2026-11-06T21:47:52.812876+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "539e18175a0afa8f86c0053166826bbaac91e8943de17e39e750ad221f59e33d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.SquareRepresentationRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.SquareRepresentationRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T21:48:02.685051+00:00"
+}

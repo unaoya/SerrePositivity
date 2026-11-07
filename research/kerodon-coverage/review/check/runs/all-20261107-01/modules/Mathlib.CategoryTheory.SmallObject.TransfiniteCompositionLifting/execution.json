@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting",
+  "state": "checked",
+  "started": "2026-11-06T20:52:53.044416+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "da31e7b485ce44236de54853e920b4bb4797534238b9ab3ce9ce7e946842617d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T20:53:02.018107+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+  "state": "checked",
+  "started": "2026-11-06T20:50:38.106770+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d0c56843134e6364b84c09988d53304705d4f455d29df50e17a18c20968e28de",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.MorphismProperty.LiftingProperty/Check.lean"
+  ],
+  "finished": "2026-11-06T20:50:47.157800+00:00"
+}

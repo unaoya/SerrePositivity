@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.CechNerve",
+  "state": "checked",
+  "started": "2026-11-06T19:23:36.171577+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "28ef0584cf723bccba11fe786c2b1e88a74306ddcd6444a1b62a640c0b20885d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.CechNerve"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.CechNerve/Check.lean"
+  ],
+  "finished": "2026-11-06T19:23:45.102249+00:00"
+}

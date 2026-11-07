@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceHomotopyPushouts
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 48598f8068e95f0ac2c4
+#check @underlyingPushoutHomCospanComparison_homotopyEquivalence
+#print axioms underlyingPushoutHomCospanComparison_homotopyEquivalence

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftTerminalRestrictionExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 27b66d6d80f44d19722d
+#check @kanRelativeLeftKanRestriction_terminal_trivialKanFibration
+#print axioms kanRelativeLeftKanRestriction_terminal_trivialKanFibration

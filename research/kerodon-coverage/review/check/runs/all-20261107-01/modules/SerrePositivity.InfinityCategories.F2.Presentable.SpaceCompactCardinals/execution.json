@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals",
+  "state": "checked",
+  "started": "2026-11-06T22:31:43.032010+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d28c0e11a586617f509d87c02f48b4b7c5b1a703e7ba99e1e4399d3086a61332",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SpaceCompactCardinals/Check.lean"
+  ],
+  "finished": "2026-11-06T22:31:55.019967+00:00"
+}

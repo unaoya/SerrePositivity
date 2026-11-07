@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.HomotopyCategory.HomComplex",
+  "state": "checked",
+  "started": "2026-11-06T20:35:27.875846+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "61898518f752699e64e4125c1146f16fea676c9e73bbcb5c2a927ebd476d302c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.HomotopyCategory.HomComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.HomotopyCategory.HomComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:35:38.534771+00:00"
+}

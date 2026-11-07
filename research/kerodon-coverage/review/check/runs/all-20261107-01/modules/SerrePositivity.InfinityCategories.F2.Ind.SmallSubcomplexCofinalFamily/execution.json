@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexCofinalFamily",
+  "state": "checked",
+  "started": "2026-11-06T22:20:02.087973+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "19c47afcde9cc69c51c3120f87fee4565a4543c217da39a20b61a490550a875b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexCofinalFamily"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexCofinalFamily/Check.lean"
+  ],
+  "finished": "2026-11-06T22:20:10.535870+00:00"
+}

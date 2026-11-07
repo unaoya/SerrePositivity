@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SmallQuasicategoryColimitCompact",
+  "state": "checked",
+  "started": "2026-11-06T20:22:29.148283+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1ce9c078b95520bcdb4b1f217b5ce421990f96cb13fb43fca7618a02f28c6861",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SmallQuasicategoryColimitCompact"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SmallQuasicategoryColimitCompact/Check.lean"
+  ],
+  "finished": "2026-11-06T20:22:51.901855+00:00"
+}

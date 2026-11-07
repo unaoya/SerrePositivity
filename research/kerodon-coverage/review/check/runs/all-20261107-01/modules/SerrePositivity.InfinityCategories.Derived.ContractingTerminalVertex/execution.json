@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex",
+  "state": "checked",
+  "started": "2026-11-06T21:22:51.230366+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1e5ba3c5ad13d21c0c4117ea3007f0fc8730aeb4b97d498a8b54b9187c8c7e69",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex/Check.lean"
+  ],
+  "finished": "2026-11-06T21:23:05.409948+00:00"
+}

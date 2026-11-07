@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceInnerAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T22:15:49.722008+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "01c73cc92b4cf45811487e89528ce1d663b4697b254c6a2b2f8594878a5b7587",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceInnerAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceInnerAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T22:15:58.410279+00:00"
+}

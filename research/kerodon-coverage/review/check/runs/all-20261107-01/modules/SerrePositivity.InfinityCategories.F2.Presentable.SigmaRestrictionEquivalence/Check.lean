@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b156b0d57c074627cd63
+#check @sigmaSiftedContinuousRestriction_isQCatEquivalence
+#print axioms sigmaSiftedContinuousRestriction_isQCatEquivalence

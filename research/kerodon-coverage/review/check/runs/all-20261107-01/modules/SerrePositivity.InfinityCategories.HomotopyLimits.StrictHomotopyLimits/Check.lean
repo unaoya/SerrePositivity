@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.StrictHomotopyLimits
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0f7d4677f739bc987f51
+#check @strictCoherentCone_isLimit_of_cospan_homLimit
+#print axioms strictCoherentCone_isLimit_of_cospan_homLimit

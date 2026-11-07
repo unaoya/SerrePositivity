@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.FreeDegeneracies",
+  "state": "checked",
+  "started": "2026-11-06T20:31:06.337734+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7b195b483e433aa091efe2e6804df121b58f5e3e6f27fd53621890b05678c814",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.FreeDegeneracies"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.FreeDegeneracies/Check.lean"
+  ],
+  "finished": "2026-11-06T20:31:16.707043+00:00"
+}

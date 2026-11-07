@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberRelativeCocone
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 45e2d8c22151db9cbef5
+#check @kanRelativeJoinFiberCocone_relative_of_initialBoundary
+#print axioms kanRelativeJoinFiberCocone_relative_of_initialBoundary

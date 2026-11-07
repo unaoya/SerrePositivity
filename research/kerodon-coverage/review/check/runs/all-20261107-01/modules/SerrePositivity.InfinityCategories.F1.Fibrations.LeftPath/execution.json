@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath",
+  "state": "checked",
+  "started": "2026-11-06T21:35:26.760555+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "57f151d82e5859adc4282cef04d6b4c42b156c59038a04e6d6610dc096caec5d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.LeftPath/Check.lean"
+  ],
+  "finished": "2026-11-06T21:35:36.029495+00:00"
+}

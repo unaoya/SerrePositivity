@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 108ddb067c55e7072a10
+#check @qCatEquivalenceOfFullyFaithfulEssentiallySurjective
+#print axioms qCatEquivalenceOfFullyFaithfulEssentiallySurjective

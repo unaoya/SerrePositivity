@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:37:05.980947+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "5b881660341ad4b07d47a3ed65fccd1ba2310457de8db9488a8f185987273c28",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:37:14.823793+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SliceLaxMap",
+  "state": "checked",
+  "started": "2026-11-06T21:19:09.069798+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4f7240577d31937ff713a4efdd073f7bfa0a9ad12c0bb41d8e4e6ff9b96ee818",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SliceLaxMap"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SliceLaxMap/Check.lean"
+  ],
+  "finished": "2026-11-06T21:19:19.061150+00:00"
+}

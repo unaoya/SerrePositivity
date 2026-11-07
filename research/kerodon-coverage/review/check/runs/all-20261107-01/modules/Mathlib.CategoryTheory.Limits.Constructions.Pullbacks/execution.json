@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Constructions.Pullbacks",
+  "state": "checked",
+  "started": "2026-11-06T20:46:55.239637+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "952843c9a7f75c5319726cd91bd116af4a6aaa35657d81c86cbe5ff45a5677c1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Constructions.Pullbacks"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Constructions.Pullbacks/Check.lean"
+  ],
+  "finished": "2026-11-06T20:47:04.094542+00:00"
+}

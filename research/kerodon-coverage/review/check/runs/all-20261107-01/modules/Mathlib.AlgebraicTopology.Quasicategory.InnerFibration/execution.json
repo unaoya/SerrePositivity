@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+  "state": "checked",
+  "started": "2026-11-06T20:36:20.537126+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d58edaf599d2f428f9168fa2534a2001434f826a084764218eb96b770d194244",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.Quasicategory.InnerFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T20:36:30.444436+00:00"
+}

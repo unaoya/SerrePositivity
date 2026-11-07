@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.SpanGluing",
+  "state": "checked",
+  "started": "2026-11-06T20:31:48.268208+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0e397cc04c8ea76b974103e65afb6b5a4377a3573a1a2a839897f25431b20d18",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.SpanGluing"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.SpanGluing/Check.lean"
+  ],
+  "finished": "2026-11-06T20:31:59.134595+00:00"
+}

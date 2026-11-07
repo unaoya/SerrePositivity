@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9856326c77e5a1db708c
+#check @isQCatEquivalence_fatJoinComparison_fixedDiagram
+#print axioms isQCatEquivalence_fatJoinComparison_fixedDiagram

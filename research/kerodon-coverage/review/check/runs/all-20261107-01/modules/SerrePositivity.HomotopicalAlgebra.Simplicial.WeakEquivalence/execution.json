@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:02:21.259702+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f60c4bc7a4a755c56bc05706827c81fc63835c06b9f3ba61603a0dd1a563351f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:02:32.319769+00:00"
+}

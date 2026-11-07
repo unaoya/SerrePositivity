@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffold",
+  "state": "checked",
+  "started": "2026-11-06T21:42:48.754954+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4c580c605186eba4acb3c98b25912b5a49d704e08b42b1c3409db94394438b11",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffold"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Scaffold.LeftScaffold/Check.lean"
+  ],
+  "finished": "2026-11-06T21:42:57.967916+00:00"
+}

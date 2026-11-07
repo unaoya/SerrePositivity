@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ac778db7e631b258c3b8
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_isPrecompositionEquivalence
+#print axioms SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_isPrecompositionEquivalence
+
+-- reference ebb849ed9047d45f0eed
+#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_innerAnodyne
+#print axioms SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_innerAnodyne

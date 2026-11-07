@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T19:47:07.281316+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "91ce845c82349d2dee25b97678183996b680b679c3ae69fc6e1b25929fe9b9ec",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T19:47:17.802012+00:00"
+}

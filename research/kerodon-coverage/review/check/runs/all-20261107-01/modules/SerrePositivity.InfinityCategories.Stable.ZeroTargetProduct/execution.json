@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct",
+  "state": "checked",
+  "started": "2026-11-06T20:29:13.247028+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2838b2a1521a63d02d7b0eb6f2c852ebda914237edfb7a3760a5e0809bfb9797",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct/Check.lean"
+  ],
+  "finished": "2026-11-06T20:29:24.492333+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.FiberResolutionAugmentation",
+  "state": "checked",
+  "started": "2026-11-06T20:32:48.752853+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d8b6c8a83e9271e5dd14eda1f6f423dfb4e5e83056dc1b6fd6ba8efbeba7cfb6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.FiberResolutionAugmentation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.FiberResolutionAugmentation/Check.lean"
+  ],
+  "finished": "2026-11-06T20:33:01.590807+00:00"
+}

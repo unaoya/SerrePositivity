@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.DoldKan.Equivalence",
+  "state": "checked",
+  "started": "2026-11-06T19:23:45.103362+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8c547a376b99227a1296fc4e62f0b4b043fb5860c90ac1f3e8bcf1e860002c29",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.DoldKan.Equivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.DoldKan.Equivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T19:23:55.060529+00:00"
+}

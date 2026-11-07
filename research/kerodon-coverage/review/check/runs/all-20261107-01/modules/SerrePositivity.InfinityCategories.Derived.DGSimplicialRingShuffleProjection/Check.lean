@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7eade18fe18855aa16de
+#check @projectedRingShuffleProduct_degenerate_left
+#print axioms projectedRingShuffleProduct_degenerate_left

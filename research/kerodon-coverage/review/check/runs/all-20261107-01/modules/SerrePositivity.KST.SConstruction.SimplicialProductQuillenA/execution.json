@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.SimplicialProductQuillenA",
+  "state": "checked",
+  "started": "2026-11-06T20:33:59.192627+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "588c291d79a9b926f6d14ef71749ec1134ef6218cf73911da9379f696099498c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.SimplicialProductQuillenA"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.SimplicialProductQuillenA/Check.lean"
+  ],
+  "finished": "2026-11-06T20:34:11.496198+00:00"
+}

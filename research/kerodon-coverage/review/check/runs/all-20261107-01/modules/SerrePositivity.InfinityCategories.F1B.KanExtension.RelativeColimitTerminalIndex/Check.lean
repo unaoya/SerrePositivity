@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitTerminalIndex
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3fa304ebc4b940df44c6
+#check @kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne
+#print axioms kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne
+
+-- reference 32e0b00d7beb69cc46be
+#check @kanIsRelativeColimitCone_iff_restrict_terminal
+#print axioms kanIsRelativeColimitCone_iff_restrict_terminal

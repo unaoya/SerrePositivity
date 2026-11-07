@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+  "state": "checked",
+  "started": "2026-11-06T22:39:40.511558+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2f16d8de31e7a59dd5769a5be544bdb9df10847d00883d28749261d1834e95fb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations/Check.lean"
+  ],
+  "finished": "2026-11-06T22:39:49.034416+00:00"
+}

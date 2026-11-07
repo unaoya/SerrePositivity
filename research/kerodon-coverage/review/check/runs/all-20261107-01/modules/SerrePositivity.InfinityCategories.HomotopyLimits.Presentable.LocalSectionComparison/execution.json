@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison",
+  "state": "checked",
+  "started": "2026-11-06T22:35:11.337061+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c546324d9f570b2fd0561a517bd917b64544ce86c89296579717292f7b514f55",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:35:21.120003+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:03:17.609632+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a25395e6dc9fe58d58a60bcb84155d9976f4aa09cf452307d5f5c947917d3533",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:03:26.873041+00:00"
+}

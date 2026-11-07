@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SimplicialCardinalBounds",
+  "state": "checked",
+  "started": "2026-11-06T21:18:30.036352+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5456b95116759a8ff93c5f8628a590c685a66679bcdaf733dd5646d8ce916d89",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SimplicialCardinalBounds"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SimplicialCardinalBounds/Check.lean"
+  ],
+  "finished": "2026-11-06T21:18:39.913453+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.SimplicialRingKan",
+  "state": "checked",
+  "started": "2026-11-06T22:45:09.192401+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "648203a24bf235a8b2874592c370bbaa7d688682cbc8da72ca243af1d50236b4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.SimplicialRingKan"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.SimplicialRingKan/Check.lean"
+  ],
+  "finished": "2026-11-06T22:45:17.939974+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference d2573b8bd1a49c9d40f3
+#check @dgNerve_contractingElement_isTerminalVertex
+#print axioms dgNerve_contractingElement_isTerminalVertex

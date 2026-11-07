@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitLeftMap",
+  "state": "checked",
+  "started": "2026-11-06T22:22:44.130591+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "015cceb3631847ea499bfb1838ef4164ca343e9a8d73f83eaea743c02b0d91da",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitLeftMap"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitLeftMap/Check.lean"
+  ],
+  "finished": "2026-11-06T22:22:59.534970+00:00"
+}

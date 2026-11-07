@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:16:44.994124+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "310517a446c706ab2d9eaee364253ddea0d6b071366bf3f3a2f89628e6abfc73",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:16:54.741093+00:00"
+}

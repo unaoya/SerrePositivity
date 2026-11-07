@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Profunctor.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:52:08.721925+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7e6e77094175dcc9626d05abed4a5d904d81e7e0e39f2dea0783da3b51a87459",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Profunctor.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Profunctor.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:52:17.274919+00:00"
+}

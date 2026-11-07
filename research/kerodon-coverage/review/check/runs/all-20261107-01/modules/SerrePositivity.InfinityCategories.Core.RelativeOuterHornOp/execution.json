@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp",
+  "state": "checked",
+  "started": "2026-11-06T21:17:27.492781+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "48188f645655cb60b35cf363374543de4c7830afccd0065acfedc6a55d4fd523",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp/Check.lean"
+  ],
+  "finished": "2026-11-06T21:17:37.721241+00:00"
+}

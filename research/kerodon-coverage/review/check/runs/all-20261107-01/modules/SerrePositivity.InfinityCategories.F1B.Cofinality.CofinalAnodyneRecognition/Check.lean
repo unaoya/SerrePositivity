@@ -1,0 +1,20 @@
+import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3eada6dc0e497bd276f8
+#check @leftAnodyneExtensions_iff_mono_and_isLeftCofinal
+#print axioms leftAnodyneExtensions_iff_mono_and_isLeftCofinal
+
+-- reference 7978c80c950fe64af5aa
+#check @isLeftCofinal_iff_leftAnodyne_of_mono
+#print axioms isLeftCofinal_iff_leftAnodyne_of_mono
+
+-- reference 6cb419986ddab2782e12
+#check @rightAnodyneExtensions_iff_mono_and_isRightCofinal
+#print axioms rightAnodyneExtensions_iff_mono_and_isRightCofinal
+
+-- reference 2099e6c6916262ccb69f
+#check @IsLeftCofinal.exists_anodyne_trivialKan_factorization
+#print axioms IsLeftCofinal.exists_anodyne_trivialKan_factorization

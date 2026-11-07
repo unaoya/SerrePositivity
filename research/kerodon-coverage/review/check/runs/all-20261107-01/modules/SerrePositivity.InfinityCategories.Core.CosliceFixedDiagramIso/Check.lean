@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.CosliceFixedDiagramIso
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference bbde85e8853df8aec1e1
+#check @nonempty_functorIso_iff_sliceUnderFixedDiagramVertexIso
+#print axioms nonempty_functorIso_iff_sliceUnderFixedDiagramVertexIso

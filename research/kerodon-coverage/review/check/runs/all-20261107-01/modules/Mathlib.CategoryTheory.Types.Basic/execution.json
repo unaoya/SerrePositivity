@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Types.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:53:02.018885+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "43eb7bb183b7f1659d2c0564a4e24bd932849c1c444ec8b7e5900c01f5e6d573",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Types.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Types.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:53:10.559949+00:00"
+}

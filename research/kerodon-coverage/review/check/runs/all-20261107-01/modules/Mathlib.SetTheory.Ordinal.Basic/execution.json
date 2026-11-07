@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.SetTheory.Ordinal.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:55:48.395287+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "9a5d94ee39910fb24cb0a3868d4b2d3d1b242189f01f832346b020a01406ef64",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.SetTheory.Ordinal.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.SetTheory.Ordinal.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:55:58.825087+00:00"
+}

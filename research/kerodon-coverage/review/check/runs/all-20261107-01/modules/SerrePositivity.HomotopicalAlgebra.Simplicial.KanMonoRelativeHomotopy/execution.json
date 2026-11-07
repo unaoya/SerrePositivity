@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy",
+  "state": "checked",
+  "started": "2026-11-06T21:01:31.047675+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0cb410e3e98f4dadb2bf90c6e1f9fa44c138ec7e2edd93bf6b32e78e8c3b23f3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy/Check.lean"
+  ],
+  "finished": "2026-11-06T21:01:41.150615+00:00"
+}

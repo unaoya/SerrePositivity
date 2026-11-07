@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.CospanComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6b56e1503e646550244c
+#check @weightedSectionsPre_cospan_trivialKanFibration
+#print axioms weightedSectionsPre_cospan_trivialKanFibration
+
+-- reference 46df5b6aeae43f0383e8
+#check @weightedSections_cospan_kanComplex
+#print axioms weightedSections_cospan_kanComplex
+
+-- reference 5a1314c58534f23177eb
+#check @bousfieldKanConeComparison_cospan_homotopyEquivalence
+#print axioms bousfieldKanConeComparison_cospan_homotopyEquivalence

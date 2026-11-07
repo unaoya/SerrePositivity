@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T22:47:18.233025+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "eabaf02d2fdff35daf106ae44304678e7949ab71eb49b61341454d297463b012",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:47:27.589595+00:00"
+}

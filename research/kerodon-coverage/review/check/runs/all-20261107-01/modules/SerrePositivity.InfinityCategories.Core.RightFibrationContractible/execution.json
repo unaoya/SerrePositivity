@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.RightFibrationContractible",
+  "state": "checked",
+  "started": "2026-11-06T21:18:08.516211+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3bd0ac0e81ae9ca6176c459f2196ab25769fa74b3935b31cb055d031095e24c9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.RightFibrationContractible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.RightFibrationContractible/Check.lean"
+  ],
+  "finished": "2026-11-06T21:18:19.568631+00:00"
+}

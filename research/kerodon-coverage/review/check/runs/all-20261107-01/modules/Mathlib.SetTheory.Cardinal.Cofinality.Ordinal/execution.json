@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.SetTheory.Cardinal.Cofinality.Ordinal",
+  "state": "checked",
+  "started": "2026-11-06T20:55:19.085947+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "0cfdab1d2c91deb6281234732f1b6c1a846713facb4717c147d4c1b882c5327d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.SetTheory.Cardinal.Cofinality.Ordinal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.SetTheory.Cardinal.Cofinality.Ordinal/Check.lean"
+  ],
+  "finished": "2026-11-06T20:55:28.892628+00:00"
+}

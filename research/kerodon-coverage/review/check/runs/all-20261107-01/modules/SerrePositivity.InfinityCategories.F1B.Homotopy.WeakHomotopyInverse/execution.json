@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse",
+  "state": "checked",
+  "started": "2026-11-06T21:59:36.863784+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e2fa1b5303ea7058bd8dcad9917b863be27e091d97bcdfd51ded500f9aba7891",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse/Check.lean"
+  ],
+  "finished": "2026-11-06T21:59:45.623335+00:00"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "pid": "28181",
+    "command": "/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main",
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/arxiv_formalization"
+  },
+  {
+    "pid": "28537",
+    "command": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+    "cwd": ""
+  },
+  {
+    "pid": "28539",
+    "command": "/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+    "cwd": ""
+  }
+]

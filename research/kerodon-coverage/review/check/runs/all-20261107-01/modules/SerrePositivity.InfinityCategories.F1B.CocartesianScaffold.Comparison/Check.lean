@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 1cf11bb16c1eb2888bc8
+#check @cocartesianUniversalScaffold_isPrecompositionEquivalence
+#print axioms cocartesianUniversalScaffold_isPrecompositionEquivalence
+
+-- reference 1b0f67b3df393f25a3cd
+#check @CocartesianScaffold.isPrecompositionEquivalence
+#print axioms CocartesianScaffold.isPrecompositionEquivalence

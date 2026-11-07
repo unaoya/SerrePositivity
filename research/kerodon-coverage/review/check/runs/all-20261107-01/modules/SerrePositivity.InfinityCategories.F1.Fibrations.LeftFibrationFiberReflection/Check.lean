@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3620c3663cadde3d6ff0
+#check @leftFibration_isQCatEquivalence_iff_fibers
+#print axioms leftFibration_isQCatEquivalence_iff_fibers
+
+-- reference f7876f4215c64bd279e8
+#check @vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence
+#print axioms vertexFiberMap_isQCatEquivalence_of_precompositionEquivalence
+
+-- reference a2ae1a6fe3019bcb40a6
+#check @leftFibration_precompositionEquivalence_iff_fibers
+#print axioms leftFibration_precompositionEquivalence_iff_fibers

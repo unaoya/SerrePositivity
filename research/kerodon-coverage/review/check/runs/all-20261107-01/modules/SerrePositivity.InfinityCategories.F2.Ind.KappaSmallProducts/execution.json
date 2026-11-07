@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.KappaSmallProducts",
+  "state": "checked",
+  "started": "2026-11-06T22:19:23.837794+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f061760177b81e9e48f0ce7ee8b2d18fbeab1724a3039796f76c4001a84be20a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.KappaSmallProducts"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.KappaSmallProducts/Check.lean"
+  ],
+  "finished": "2026-11-06T22:19:32.084238+00:00"
+}

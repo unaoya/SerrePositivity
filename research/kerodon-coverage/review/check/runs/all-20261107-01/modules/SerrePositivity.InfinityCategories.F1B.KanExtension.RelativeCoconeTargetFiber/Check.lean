@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeTargetFiber
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 024312ac0c53bc241939
+#check @kanRelativeCoconeRestriction_fiber_comparison
+#print axioms kanRelativeCoconeRestriction_fiber_comparison

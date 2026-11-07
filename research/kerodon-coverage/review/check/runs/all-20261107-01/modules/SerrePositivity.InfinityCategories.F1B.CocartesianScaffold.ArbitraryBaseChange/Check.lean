@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.ArbitraryBaseChange
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2651d60022e27185dab0
+#check @CocartesianScaffold.overPullback_isPrecompositionEquivalence
+#print axioms CocartesianScaffold.overPullback_isPrecompositionEquivalence
+
+-- reference 4ce404572851acd18de2
+#check @cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence
+#print axioms cocartesianUniversalScaffold_overPullback_isPrecompositionEquivalence

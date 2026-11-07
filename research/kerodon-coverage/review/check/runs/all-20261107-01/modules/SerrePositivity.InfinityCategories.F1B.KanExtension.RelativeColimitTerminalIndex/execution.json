@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitTerminalIndex",
+  "state": "checked",
+  "started": "2026-11-06T20:07:28.349301+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0f2f4dd7c25af3e31b4510b49b13b54aa473faaf0df6b9f604eb5df2af646221",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitTerminalIndex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitTerminalIndex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:07:38.721281+00:00"
+}

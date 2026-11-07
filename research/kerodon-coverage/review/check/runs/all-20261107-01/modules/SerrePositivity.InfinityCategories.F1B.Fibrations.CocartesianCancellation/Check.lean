@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference bb2896f86fbc095ae8df
+#check @isCocartesianEdge_triangle_second_of_first_long
+#print axioms isCocartesianEdge_triangle_second_of_first_long

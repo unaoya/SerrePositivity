@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Simplicial.PrismCellPushout",
+  "state": "checked",
+  "started": "2026-11-06T21:43:34.257940+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "770c59749332a3e86e48f6c092d73f91cc184f0ac520fe4b1e1ae3773d8aea87",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Simplicial.PrismCellPushout"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Simplicial.PrismCellPushout/Check.lean"
+  ],
+  "finished": "2026-11-06T21:43:43.221398+00:00"
+}

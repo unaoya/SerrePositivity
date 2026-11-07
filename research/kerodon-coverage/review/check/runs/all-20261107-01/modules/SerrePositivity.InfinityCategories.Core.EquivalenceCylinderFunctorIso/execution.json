@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso",
+  "state": "checked",
+  "started": "2026-11-06T19:40:47.877602+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "11b79b7c6f2c2a852c71d89530206dfdd5cae89c583f98dc2cf7b1a9d1f9971b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso/Check.lean"
+  ],
+  "finished": "2026-11-06T19:41:42.424892+00:00"
+}

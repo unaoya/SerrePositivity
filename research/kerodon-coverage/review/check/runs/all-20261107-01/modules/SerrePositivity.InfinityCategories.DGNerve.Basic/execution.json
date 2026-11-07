@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.DGNerve.Basic",
+  "state": "checked",
+  "started": "2026-11-06T21:21:06.295612+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "11c532546cb5341d77490909e6ce7b373688490df10e6078803245ad59496310",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.DGNerve.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.DGNerve.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T21:21:22.207127+00:00"
+}

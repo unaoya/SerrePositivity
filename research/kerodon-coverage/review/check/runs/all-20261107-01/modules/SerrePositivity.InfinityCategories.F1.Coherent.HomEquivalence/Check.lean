@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b149d99225a5b231517e
+#check @coherentHomComparison_isSimplicialHomotopyEquivalence
+#print axioms coherentHomComparison_isSimplicialHomotopyEquivalence
+
+-- reference 7c94ebd4c4df6704c731
+#check @coherentHomComparison_isQCatEquivalence
+#print axioms coherentHomComparison_isQCatEquivalence

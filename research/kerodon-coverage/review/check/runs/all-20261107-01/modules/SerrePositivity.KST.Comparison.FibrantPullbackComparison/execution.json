@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.FibrantPullbackComparison",
+  "state": "checked",
+  "started": "2026-11-06T22:43:33.280909+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0f3e36e2a8b2151c5915c5e6b3b6fbe2b9cccb710efee96f52fe8e0f42f7915c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.FibrantPullbackComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.FibrantPullbackComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:43:41.986868+00:00"
+}

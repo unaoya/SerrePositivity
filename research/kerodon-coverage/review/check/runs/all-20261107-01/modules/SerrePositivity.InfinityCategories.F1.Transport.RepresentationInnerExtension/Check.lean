@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.RepresentationInnerExtension
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3340252b57d79328af67
+#check @transportRepresentationInnerExtension_isContractibleKan
+#print axioms transportRepresentationInnerExtension_isContractibleKan

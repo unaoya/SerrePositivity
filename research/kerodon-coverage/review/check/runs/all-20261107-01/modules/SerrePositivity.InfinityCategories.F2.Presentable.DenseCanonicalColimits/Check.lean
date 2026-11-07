@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.DenseCanonicalColimits
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9c2d806602680f7e2a35
+#check @canonicalColimits_of_identityRestriction_bijective
+#print axioms canonicalColimits_of_identityRestriction_bijective

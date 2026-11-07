@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+  "state": "checked",
+  "started": "2026-11-06T20:38:36.704750+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "41832f78aefb3a919f1d128a592239f5b3fccf2a01fe69a7d3be7e0bc0887de1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd/Check.lean"
+  ],
+  "finished": "2026-11-06T20:38:45.455059+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Compact.ConservativeLimitReflection",
+  "state": "checked",
+  "started": "2026-11-06T22:12:23.731941+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8a6537bfe3b561368c328ef9cac4efc37d3e07aa1e7796f65d0dd438f9a33019",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Compact.ConservativeLimitReflection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Compact.ConservativeLimitReflection/Check.lean"
+  ],
+  "finished": "2026-11-06T22:12:32.414601+00:00"
+}

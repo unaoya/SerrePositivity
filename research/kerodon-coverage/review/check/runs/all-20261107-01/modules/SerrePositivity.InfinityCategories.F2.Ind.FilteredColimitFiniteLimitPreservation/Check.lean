@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Ind.FilteredColimitFiniteLimitPreservation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 8e85f5cbfc1586966ee9
+#check @smallSpaceFilteredColimit_map_isLimit_finite
+#print axioms smallSpaceFilteredColimit_map_isLimit_finite

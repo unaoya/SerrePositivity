@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 803efa26d26dcf7f95f2
+#check @pinchedHomToIntervalMappingSpace_isQCatEquivalence
+#print axioms pinchedHomToIntervalMappingSpace_isQCatEquivalence

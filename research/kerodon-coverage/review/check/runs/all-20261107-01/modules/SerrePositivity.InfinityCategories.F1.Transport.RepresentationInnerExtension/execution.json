@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.RepresentationInnerExtension",
+  "state": "checked",
+  "started": "2026-11-06T21:47:12.411534+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d853ca0bd159a4244c25a0a138c02978122d04496c7d48231a1b4572cc6075f1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.RepresentationInnerExtension"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.RepresentationInnerExtension/Check.lean"
+  ],
+  "finished": "2026-11-06T21:47:22.341162+00:00"
+}

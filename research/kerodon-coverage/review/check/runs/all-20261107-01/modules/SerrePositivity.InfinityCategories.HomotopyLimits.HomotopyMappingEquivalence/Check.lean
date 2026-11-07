@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyMappingEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b449aa0f269950efd741
+#check @intervalPrecompose_equivalence_of_cocartesianHomotopy
+#print axioms intervalPrecompose_equivalence_of_cocartesianHomotopy

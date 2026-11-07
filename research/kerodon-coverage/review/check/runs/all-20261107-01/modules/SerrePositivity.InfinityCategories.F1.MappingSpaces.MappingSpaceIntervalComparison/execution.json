@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison",
+  "state": "checked",
+  "started": "2026-11-06T21:41:26.732780+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fe73f73a21b235b932465acf6f71933ce625f0187844c4fcc974bd7506e594b8",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T21:41:35.701909+00:00"
+}

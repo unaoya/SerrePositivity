@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLeftCriterion",
+  "state": "checked",
+  "started": "2026-11-06T20:08:31.887154+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "69a44b1b9cb0ec1d688bb60d29130256f162bfca96cca6b58407643035717cc6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLeftCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLeftCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:42.931147+00:00"
+}

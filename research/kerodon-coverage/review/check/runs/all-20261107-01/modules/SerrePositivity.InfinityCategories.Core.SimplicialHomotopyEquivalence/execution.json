@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:18:39.914679+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e30e2651b95e3fc3618a3596419912885de987b1b849d4d08981b327167f4d97",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:18:50.098806+00:00"
+}

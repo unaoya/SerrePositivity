@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f4cb22990af395f242b4
+#check @SerrePositivity.InfinityCategories.F1.compositionTriangleSpace_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.F1.compositionTriangleSpace_isContractibleKan

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:07:17.227451+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6aa52ece740187849674f41588293c950d4e5b774c9590e05a5242acaf218db0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:07:25.864401+00:00"
+}

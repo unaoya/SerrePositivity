@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality",
+  "state": "checked",
+  "started": "2026-11-06T22:34:13.209622+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "cdd40a2663fd7b8170de7b054e4e9d60db699ebd0240d89db3d2aeb9f063d83d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality/Check.lean"
+  ],
+  "finished": "2026-11-06T22:34:22.187545+00:00"
+}

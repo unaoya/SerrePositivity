@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible",
+  "state": "checked",
+  "started": "2026-11-06T21:48:31.213879+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "95a73e597a2183881041031f53ba564915c72d46d9f44c5d1116748453732f34",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible/Check.lean"
+  ],
+  "finished": "2026-11-06T21:48:41.121963+00:00"
+}

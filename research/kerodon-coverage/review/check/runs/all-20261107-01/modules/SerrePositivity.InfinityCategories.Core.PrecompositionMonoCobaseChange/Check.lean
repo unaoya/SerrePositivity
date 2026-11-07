@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 1ebd721570090f0fd826
+#check @IsPrecompositionEquivalence.of_isPushout_of_mono_other
+#print axioms IsPrecompositionEquivalence.of_isPushout_of_mono_other

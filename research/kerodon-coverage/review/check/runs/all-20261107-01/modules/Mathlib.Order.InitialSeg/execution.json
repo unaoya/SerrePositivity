@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.InitialSeg",
+  "state": "checked",
+  "started": "2026-11-06T19:33:27.992414+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "e765f976720d9353f550b5fb2d1bb869d5677b01948e50a61212d7f44d53440b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.InitialSeg"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.InitialSeg/Check.lean"
+  ],
+  "finished": "2026-11-06T19:33:41.702664+00:00"
+}

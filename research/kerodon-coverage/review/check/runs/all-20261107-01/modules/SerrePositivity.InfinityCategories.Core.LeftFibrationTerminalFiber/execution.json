@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber",
+  "state": "checked",
+  "started": "2026-11-06T19:45:31.926903+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3e7268ed26e9edfd484c20a0bd7e75e87e32b9196e30d7654245bd921093d1ac",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber/Check.lean"
+  ],
+  "finished": "2026-11-06T19:45:42.665179+00:00"
+}

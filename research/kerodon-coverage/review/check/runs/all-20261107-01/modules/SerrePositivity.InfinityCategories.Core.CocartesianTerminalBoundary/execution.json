@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary",
+  "state": "checked",
+  "started": "2026-11-06T21:05:00.836417+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "708fa34aa94335b5f2cc52f584ab7b4d923c97ea494354b0edfaa8cfc6d7c353",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T21:05:11.513263+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.LocallyCartesianClosed.ExponentiableMorphism",
+  "state": "checked",
+  "started": "2026-11-06T20:49:44.329172+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "f04114d9072a91f8600dcd4424370526035d006846c74e8c9581948be33ffa33",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.LocallyCartesianClosed.ExponentiableMorphism"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.LocallyCartesianClosed.ExponentiableMorphism/Check.lean"
+  ],
+  "finished": "2026-11-06T20:49:53.616540+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference dd4051179dab39b54f72
+#check @relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting
+#print axioms relativeCosliceMap_trivialKanFibration_of_initialBoundaryLifting

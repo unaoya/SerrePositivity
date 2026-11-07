@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Homotopy.WeakMappingSpaces",
+  "state": "checked",
+  "started": "2026-11-06T21:59:45.625143+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "617c66f7efd35ad450047fbda9467570ebef72519a78725c4dc5d0f0f0df8ae8",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Homotopy.WeakMappingSpaces"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Homotopy.WeakMappingSpaces/Check.lean"
+  ],
+  "finished": "2026-11-06T21:59:54.359892+00:00"
+}

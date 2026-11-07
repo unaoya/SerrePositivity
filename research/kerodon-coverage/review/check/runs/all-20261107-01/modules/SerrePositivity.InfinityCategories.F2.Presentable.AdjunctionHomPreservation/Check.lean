@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 57c31c36658388dffcd6
+#check @adjunction_hom_preservesKappaFilteredColimits_iff
+#print axioms adjunction_hom_preservesKappaFilteredColimits_iff

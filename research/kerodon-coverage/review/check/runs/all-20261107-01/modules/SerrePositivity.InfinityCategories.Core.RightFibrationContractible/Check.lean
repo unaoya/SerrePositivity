@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 20120fab6a9ee050126e
+#check @rightFibration_trivialKanFibration_of_contractible_fibers
+#print axioms rightFibration_trivialKanFibration_of_contractible_fibers
+
+-- reference 29614931e76bc727ba98
+#check @rightFibration_fillBoundary_over_stdSimplex
+#print axioms rightFibration_fillBoundary_over_stdSimplex

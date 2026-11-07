@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.ExInfinity",
+  "state": "checked",
+  "started": "2026-11-06T20:29:35.383691+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1cd6437306f79ff441796ea2f631c53fd427e6b749ce0cc63ebe0f65d434eb4d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.ExInfinity"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.ExInfinity/Check.lean"
+  ],
+  "finished": "2026-11-06T20:29:45.461968+00:00"
+}

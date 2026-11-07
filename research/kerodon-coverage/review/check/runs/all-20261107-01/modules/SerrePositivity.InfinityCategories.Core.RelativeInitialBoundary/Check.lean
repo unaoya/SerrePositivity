@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9f003076327d77c3790e
+#check @InitialBoundaryLifting.isInitialVertex_fiber
+#print axioms InitialBoundaryLifting.isInitialVertex_fiber
+
+-- reference 16c3828a1851320f45d7
+#check @isColimitCone_of_initialBoundaryLifting_coconeRestriction
+#print axioms isColimitCone_of_initialBoundaryLifting_coconeRestriction

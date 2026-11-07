@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b2c26a7da0be2957e124
+#check @posetSubtypeInclusion_nerveMap_innerFibration
+#print axioms posetSubtypeInclusion_nerveMap_innerFibration

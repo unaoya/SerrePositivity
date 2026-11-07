@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation",
+  "state": "checked",
+  "started": "2026-11-06T22:18:50.828206+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4d14fb5bf8b43b0cbb49d77b8cbb9c6189de0e8ab41c4224e5dcb239c5d190eb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation/Check.lean"
+  ],
+  "finished": "2026-11-06T22:19:03.525301+00:00"
+}

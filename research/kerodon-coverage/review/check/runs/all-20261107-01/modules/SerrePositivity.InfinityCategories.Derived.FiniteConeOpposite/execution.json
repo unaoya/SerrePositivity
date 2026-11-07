@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite",
+  "state": "checked",
+  "started": "2026-11-06T21:23:27.227697+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "08db3942524d5ae92910595f79986cc7ba0cea4a484d5610b5ab45eea5ab81c5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite/Check.lean"
+  ],
+  "finished": "2026-11-06T21:23:36.399137+00:00"
+}

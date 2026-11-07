@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SlicePostcompEquivalenceLifting",
+  "state": "checked",
+  "started": "2026-11-06T20:21:43.465176+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "dc4d78b21b2e394390a6e5e4a0c722ee7412f150e7c61d147f59b25b44fd9421",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SlicePostcompEquivalenceLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SlicePostcompEquivalenceLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T20:21:55.641327+00:00"
+}

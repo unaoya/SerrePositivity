@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitMappingAdjunction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a80432fa1dc92264d37c
+#check @qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition
+#print axioms qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition

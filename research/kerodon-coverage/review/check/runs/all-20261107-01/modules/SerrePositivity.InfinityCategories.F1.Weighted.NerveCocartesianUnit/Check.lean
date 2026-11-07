@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianUnit
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e07238e4d8ac576c79e7
+#check @weightedNerveCocartesianTransportUnit_isQCatEquivalence
+#print axioms weightedNerveCocartesianTransportUnit_isQCatEquivalence

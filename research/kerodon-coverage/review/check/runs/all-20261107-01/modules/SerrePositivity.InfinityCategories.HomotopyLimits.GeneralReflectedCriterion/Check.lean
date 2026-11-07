@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralReflectedCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 25539a66fb7e04e5a63a
+#check @strictCoherentCone_isLimit_iff_reflectedRepresentableComparison
+#print axioms strictCoherentCone_isLimit_iff_reflectedRepresentableComparison
+
+-- reference e86c2d1032fb29a61f2d
+#check @strictNativeCocone_isColimit_iff_reflectedRepresentableComparison
+#print axioms strictNativeCocone_isColimit_iff_reflectedRepresentableComparison

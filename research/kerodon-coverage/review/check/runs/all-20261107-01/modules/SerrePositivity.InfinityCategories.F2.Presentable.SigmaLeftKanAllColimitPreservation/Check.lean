@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLeftKanAllColimitPreservation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 493f38d87157453c6631
+#check @sigmaLeftKanExtension_preservesSmallColimits_iff
+#print axioms sigmaLeftKanExtension_preservesSmallColimits_iff

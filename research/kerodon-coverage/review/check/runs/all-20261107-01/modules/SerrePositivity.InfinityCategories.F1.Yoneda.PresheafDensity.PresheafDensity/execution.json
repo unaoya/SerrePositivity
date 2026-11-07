@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity",
+  "state": "checked",
+  "started": "2026-11-06T20:02:29.872927+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3bb6e6418eb24ca2eeb18caa171d98753e6cf6cad9e595bbd3ba5e886eda0b82",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity/Check.lean"
+  ],
+  "finished": "2026-11-06T20:02:42.311221+00:00"
+}

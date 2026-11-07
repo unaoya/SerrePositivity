@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.EssentialImage",
+  "state": "checked",
+  "started": "2026-11-06T19:29:49.233272+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "a72ca2e0427028cf8ab5256b008727458aa002d52b8ca0d962eb4ef808b81691",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.EssentialImage"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.EssentialImage/Check.lean"
+  ],
+  "finished": "2026-11-06T19:30:11.131594+00:00"
+}

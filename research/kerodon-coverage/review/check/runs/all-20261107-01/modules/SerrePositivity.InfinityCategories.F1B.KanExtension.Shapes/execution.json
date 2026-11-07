@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes",
+  "state": "checked",
+  "started": "2026-11-06T20:09:59.238747+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b0e84f512fa2dfcb74e354ebac2ec5a2569f4d7ad414381f69e3ab2cdf0d55a7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes/Check.lean"
+  ],
+  "finished": "2026-11-06T20:10:08.996453+00:00"
+}

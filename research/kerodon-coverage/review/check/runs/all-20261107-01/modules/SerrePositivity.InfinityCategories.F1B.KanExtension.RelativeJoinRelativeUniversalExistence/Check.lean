@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinRelativeUniversalExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 39eeb06af48e47c20bce
+#check @kanRelativeJoinRelativeColimitRestriction_trivialKanFibration
+#print axioms kanRelativeJoinRelativeColimitRestriction_trivialKanFibration
+
+-- reference 0c5e7e974952f42e2fe3
+#check @kanRelativeJoinRelativeColimitRestriction_surjective
+#print axioms kanRelativeJoinRelativeColimitRestriction_surjective

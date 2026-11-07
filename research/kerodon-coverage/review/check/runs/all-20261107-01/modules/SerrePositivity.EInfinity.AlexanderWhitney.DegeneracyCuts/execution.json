@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.AlexanderWhitney.DegeneracyCuts",
+  "state": "checked",
+  "started": "2026-11-06T20:57:57.916611+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4290d7925c94d4c2ea84a4c0758359f95f053bbe6f1bdba71933840be7fd97aa",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.AlexanderWhitney.DegeneracyCuts"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.AlexanderWhitney.DegeneracyCuts/Check.lean"
+  ],
+  "finished": "2026-11-06T20:58:06.854054+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.FiberComponents",
+  "state": "checked",
+  "started": "2026-11-06T20:26:48.193950+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3ca5066b24ad11d202f7b963471c860f4c388dc578964872c2033b9289c959d9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.FiberComponents"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.FiberComponents/Check.lean"
+  ],
+  "finished": "2026-11-06T20:26:58.308481+00:00"
+}

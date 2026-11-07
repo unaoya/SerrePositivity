@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit",
+  "state": "checked",
+  "started": "2026-11-06T19:36:54.705812+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "aa7207d3cd9e91a0b9f8539dbcce0ebf0ae29946a6ef322876a1abb74446e3db",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit/Check.lean"
+  ],
+  "finished": "2026-11-06T19:38:53.983003+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 06542ce2816aeff0112d
+#check @terminalBoundaryLifting_coneRestriction_of_pointwise
+#print axioms terminalBoundaryLifting_coneRestriction_of_pointwise

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.Isofibration",
+  "state": "checked",
+  "started": "2026-11-06T21:29:21.133494+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2bcfb35b4af00f68db041e0035c6c73ab9693319accc6a065383ca638dcfdede",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Cocartesian.Isofibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Cocartesian.Isofibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:29:30.948080+00:00"
+}

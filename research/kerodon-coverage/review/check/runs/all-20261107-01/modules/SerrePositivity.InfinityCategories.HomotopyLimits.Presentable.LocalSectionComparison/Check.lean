@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference da728de80ba1d2a7ebd5
+#check @relativeFunctorPost_isQCatEquivalence_on_base
+#print axioms relativeFunctorPost_isQCatEquivalence_on_base

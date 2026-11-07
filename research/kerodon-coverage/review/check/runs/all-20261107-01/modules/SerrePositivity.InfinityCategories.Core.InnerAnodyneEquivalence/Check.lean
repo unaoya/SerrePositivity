@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference cfd31ad46ab3965bddd1
+#check @SerrePositivity.InfinityCategories.trivialKanFibration_pre_of_innerAnodyne
+#print axioms SerrePositivity.InfinityCategories.trivialKanFibration_pre_of_innerAnodyne
+
+-- reference 71edb01b0a412229b5d4
+#check @trivialKanFibration_pre_of_innerAnodyne
+#print axioms trivialKanFibration_pre_of_innerAnodyne

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T19:47:37.998829+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "856e351e9f611cb420feaab2297a38b167d0199fe36e6305928fd30a4555fc03",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T19:47:48.307086+00:00"
+}

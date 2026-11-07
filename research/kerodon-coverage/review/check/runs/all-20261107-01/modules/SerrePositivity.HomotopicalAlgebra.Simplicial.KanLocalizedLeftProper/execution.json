@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper",
+  "state": "checked",
+  "started": "2026-11-06T21:01:20.746004+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4b44eee3c7245861fe61e260651062eb948e1d3191af9ff04add5e5afe43b684",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper/Check.lean"
+  ],
+  "finished": "2026-11-06T21:01:31.046860+00:00"
+}

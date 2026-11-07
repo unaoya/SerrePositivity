@@ -1,0 +1,5 @@
+⚠ [1791/1792] Replayed SerrePositivity.KST.ProExcision.ChainTensorVanishing
+warning: SerrePositivity/KST/ProExcision/ChainTensorVanishing.lean:108:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1792 jobs).

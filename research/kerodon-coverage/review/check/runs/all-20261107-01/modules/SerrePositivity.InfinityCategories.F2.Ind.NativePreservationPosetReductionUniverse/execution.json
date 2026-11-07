@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReductionUniverse",
+  "state": "checked",
+  "started": "2026-11-06T22:19:32.085692+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9642a03934983b8cbac027e387bce1e81b9ceb5d31e34963a29cf8f3e320a9f0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReductionUniverse"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReductionUniverse/Check.lean"
+  ],
+  "finished": "2026-11-06T22:19:43.541045+00:00"
+}

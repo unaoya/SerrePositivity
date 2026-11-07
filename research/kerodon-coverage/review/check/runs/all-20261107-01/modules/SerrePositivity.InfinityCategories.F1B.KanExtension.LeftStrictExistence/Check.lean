@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftStrictExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7d56f08011ca470f7cb3
+#check @exists_kanLeftCanonical_strict_extension_of_local_colimits
+#print axioms exists_kanLeftCanonical_strict_extension_of_local_colimits

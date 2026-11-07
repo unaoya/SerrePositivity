@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaElementsConeRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 4054a232cb5a32f5c580
+#check @HomotopyLimits.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit
+#print axioms HomotopyLimits.smallLeftConeRestriction_isQCatEquivalence_of_map_isLimit

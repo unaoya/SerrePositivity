@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.DoldKan.FunctorGamma",
+  "state": "checked",
+  "started": "2026-11-06T19:23:55.061369+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "4414c27f93e29ee8a929bfa2ebc00ee53baca5192e6139e91f0337414685ad58",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.DoldKan.FunctorGamma"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.DoldKan.FunctorGamma/Check.lean"
+  ],
+  "finished": "2026-11-06T19:24:04.884523+00:00"
+}

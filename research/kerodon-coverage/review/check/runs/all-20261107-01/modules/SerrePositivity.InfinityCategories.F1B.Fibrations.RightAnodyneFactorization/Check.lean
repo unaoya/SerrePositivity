@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneFactorization
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b7f211ea667ae9120cbe
+#check @exists_rightAnodyne_rightFibration_factorization
+#print axioms exists_rightAnodyne_rightFibration_factorization

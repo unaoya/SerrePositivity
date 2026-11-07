@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.TransportPostcomparison",
+  "state": "checked",
+  "started": "2026-11-06T22:37:36.223144+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4c2d160b8c0d381587175e15743d19105984749e54f39966cc31eeef8b358d5b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.TransportPostcomparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.TransportPostcomparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:37:45.679095+00:00"
+}

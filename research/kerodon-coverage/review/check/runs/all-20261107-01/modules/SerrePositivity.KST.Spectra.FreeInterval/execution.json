@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Spectra.FreeInterval",
+  "state": "checked",
+  "started": "2026-11-06T22:49:52.795566+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "81c4cbc82bcfe758ade9d99a2365cb6adbd003bbae221dcf4cae09c63029ad28",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Spectra.FreeInterval"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Spectra.FreeInterval/Check.lean"
+  ],
+  "finished": "2026-11-06T22:50:01.472743+00:00"
+}

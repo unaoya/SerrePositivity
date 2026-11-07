@@ -1,0 +1,20 @@
+⚠ [1675/1685] Replayed SerrePositivity.InfinityCategories.Core.VertexFiber
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:14: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:16: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:19: Variable name `α` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _α
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Build completed successfully (1685 jobs).

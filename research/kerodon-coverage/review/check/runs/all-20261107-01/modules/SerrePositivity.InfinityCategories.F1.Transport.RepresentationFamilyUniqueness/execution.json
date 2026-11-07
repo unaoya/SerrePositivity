@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyUniqueness",
+  "state": "checked",
+  "started": "2026-11-06T21:46:52.228365+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "43259c036a1a7b773399cbc10deb79d5c76f291105a7a141d25e3e3a3075a79c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyUniqueness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyUniqueness/Check.lean"
+  ],
+  "finished": "2026-11-06T21:47:02.542866+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary",
+  "state": "checked",
+  "started": "2026-11-06T21:57:14.799244+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a23b5b25a0c80117e25a5ebd69fcff03d0cf1f827e118734d8c64b22dbe10d8f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T21:57:24.203518+00:00"
+}

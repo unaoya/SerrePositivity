@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F1B.Adjunction.UnitHomCriterion
+waiting for build lock: {"pid": 43408, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T20:04:09.875773+00:00", "command": ["lake", "build", "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct"], "token": "34c185a1f6fe460c9e4babbcdf444350"}

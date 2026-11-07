@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits",
+  "state": "checked",
+  "started": "2026-11-06T19:54:01.788762+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "379c3ae05149bdbccd391cd78aa48a0177d0449c449637d21abe1e6edbe9dfad",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits/Check.lean"
+  ],
+  "finished": "2026-11-06T19:54:15.047575+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise",
+  "state": "checked",
+  "started": "2026-11-06T19:43:58.548472+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ff6bbf6eb01858f083018c0cbbf20a34f902ce18a4d4a9e6758ffb10230c10ed",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise/Check.lean"
+  ],
+  "finished": "2026-11-06T19:44:08.790262+00:00"
+}

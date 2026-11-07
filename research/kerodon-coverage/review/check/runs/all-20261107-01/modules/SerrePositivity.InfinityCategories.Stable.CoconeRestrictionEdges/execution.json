@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges",
+  "state": "checked",
+  "started": "2026-11-06T22:40:23.516667+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c67b5f0f3d53c79cee4c6829f10364f02c5914af67d9e0dcb42e3e3dea6848a7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges/Check.lean"
+  ],
+  "finished": "2026-11-06T22:40:32.447817+00:00"
+}

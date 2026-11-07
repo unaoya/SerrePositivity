@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace",
+  "state": "checked",
+  "started": "2026-11-06T20:04:53.495651+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "12234837e80ccbafbf98316961e344b428ec6083d63b3f7fe66671ce0ee2f55f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T20:05:04.095738+00:00"
+}

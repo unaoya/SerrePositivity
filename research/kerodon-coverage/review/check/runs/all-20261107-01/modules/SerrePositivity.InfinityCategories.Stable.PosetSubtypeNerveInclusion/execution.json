@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion",
+  "state": "checked",
+  "started": "2026-11-06T22:41:57.216067+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "569ceca99c015a1e81301d71bd339381c5989c4a99cca566593c352850eaaf6c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerveInclusion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:42:06.881210+00:00"
+}

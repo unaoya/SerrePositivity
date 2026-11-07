@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialObject.Split",
+  "state": "checked",
+  "started": "2026-11-06T19:25:11.989929+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "323c1fbdac14f7b74c3000c56a5170584700637d8c2e02378e5a7076eebab9a3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialObject.Split"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialObject.Split/Check.lean"
+  ],
+  "finished": "2026-11-06T19:25:21.318412+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity",
+  "state": "checked",
+  "started": "2026-11-06T22:19:03.527237+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "627bc9208705545a0f548117499d8cf57177caf6348bcf8c375ec14ef44f4f8a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.IndVertexDensity/Check.lean"
+  ],
+  "finished": "2026-11-06T22:19:15.346112+00:00"
+}

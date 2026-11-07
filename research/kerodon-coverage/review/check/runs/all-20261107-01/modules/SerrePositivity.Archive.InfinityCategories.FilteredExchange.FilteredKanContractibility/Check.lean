@@ -1,0 +1,8 @@
+import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredKanContractibility
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference cea4d038af8eecf2541c
+#check @isFilteredInfinity_iff_isContractibleKan
+#print axioms isFilteredInfinity_iff_isContractibleKan

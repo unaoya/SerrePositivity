@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitInvertible",
+  "state": "checked",
+  "started": "2026-11-06T22:02:50.655646+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b7d4d37b3629eb52e46e95fdd7580990247d0d9d2c9860632830ff51bedba91c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitInvertible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitInvertible/Check.lean"
+  ],
+  "finished": "2026-11-06T22:02:59.903908+00:00"
+}

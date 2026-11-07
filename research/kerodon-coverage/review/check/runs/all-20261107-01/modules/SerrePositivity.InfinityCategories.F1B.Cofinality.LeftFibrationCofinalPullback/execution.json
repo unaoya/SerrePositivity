@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback",
+  "state": "checked",
+  "started": "2026-11-06T21:56:11.320402+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a9bfbfcb42fc9c82382e7b2814b06d9a918a6b2e41cc5f4b398f84115d95e95e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback/Check.lean"
+  ],
+  "finished": "2026-11-06T21:56:20.385614+00:00"
+}

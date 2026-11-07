@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.CorepresentabilityEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T22:22:14.457798+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "eccd223e81ad8a4a87ace7fda0953817a8576c8cfd3efd43b7dcef846e877f69",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.CorepresentabilityEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.CorepresentabilityEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:22:25.913685+00:00"
+}

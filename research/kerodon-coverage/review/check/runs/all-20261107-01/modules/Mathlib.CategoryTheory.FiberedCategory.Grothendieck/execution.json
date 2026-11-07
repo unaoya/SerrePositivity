@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.FiberedCategory.Grothendieck",
+  "state": "checked",
+  "started": "2026-11-06T20:44:50.031954+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4ee331f0672a3fcbf0fa853cc9c24c297d1d9cacf704b63edefd1488a1c65a61",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.FiberedCategory.Grothendieck"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.FiberedCategory.Grothendieck/Check.lean"
+  ],
+  "finished": "2026-11-06T20:44:58.996476+00:00"
+}

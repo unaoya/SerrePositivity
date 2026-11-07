@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnrichedComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ade79296a740c3e87bf0
+#check @edgewiseEnrichedInfinityMap_isQCatEquivalence
+#print axioms edgewiseEnrichedInfinityMap_isQCatEquivalence

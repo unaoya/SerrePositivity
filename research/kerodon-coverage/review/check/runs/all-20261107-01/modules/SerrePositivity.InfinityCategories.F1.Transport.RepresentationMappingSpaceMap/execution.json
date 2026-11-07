@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.RepresentationMappingSpaceMap",
+  "state": "checked",
+  "started": "2026-11-06T21:47:32.686934+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "de26ab69d9607e6a0201383b709e3a49e4ddd8693d007c677e47ae9701cf5b47",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.RepresentationMappingSpaceMap"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.RepresentationMappingSpaceMap/Check.lean"
+  ],
+  "finished": "2026-11-06T21:47:43.032263+00:00"
+}

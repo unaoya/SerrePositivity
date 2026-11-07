@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.RoofTerminalFiberCofinality",
+  "state": "checked",
+  "started": "2026-11-06T21:24:11.030198+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "97a3c8715c932dc1c6fe0a12497ad5c466f77031dd21d71ba607b4cad48e5558",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.RoofTerminalFiberCofinality"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.RoofTerminalFiberCofinality/Check.lean"
+  ],
+  "finished": "2026-11-06T21:24:21.477385+00:00"
+}

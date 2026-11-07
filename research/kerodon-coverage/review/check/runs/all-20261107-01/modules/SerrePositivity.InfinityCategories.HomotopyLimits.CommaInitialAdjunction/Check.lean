@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.CommaInitialAdjunction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 932cce598a31ea8ca1ab
+#check @exists_qcatAdjunction_of_commaFiberInitial
+#print axioms exists_qcatAdjunction_of_commaFiberInitial
+
+-- reference 2d044c18bf0dbe670d65
+#check @qcat_exists_adjunction_unitHom_iff_commaInitial
+#print axioms qcat_exists_adjunction_unitHom_iff_commaInitial

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction",
+  "state": "checked",
+  "started": "2026-11-06T19:57:21.559447+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6ee36cddb14efc957dff22e970e69a6edc1790cdcaed6b5f0fa7d9e431b89de2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T19:57:33.714426+00:00"
+}

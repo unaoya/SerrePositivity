@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.NonemptyFiniteChains",
+  "state": "checked",
+  "started": "2026-11-06T20:55:01.119259+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "834f4333a058a688bb05aa077fb5af5b13d8e038d629f15a73c85c725e7f8dd1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.NonemptyFiniteChains"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.NonemptyFiniteChains/Check.lean"
+  ],
+  "finished": "2026-11-06T20:55:10.396798+00:00"
+}

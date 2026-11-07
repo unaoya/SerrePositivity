@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit",
+  "state": "checked",
+  "started": "2026-11-06T19:26:38.276264+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "e65eabd9218ff8065ca53823a2f7782c2879a189b3f8bb227c6cb49fbfb583a0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit/Check.lean"
+  ],
+  "finished": "2026-11-06T19:26:48.209442+00:00"
+}

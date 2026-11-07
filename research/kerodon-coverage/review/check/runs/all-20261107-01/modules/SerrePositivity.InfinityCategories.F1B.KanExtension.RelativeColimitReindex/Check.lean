@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitReindex
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 4d1157218d24d4441b1b
+#check @kanIsRelativeColimitCone_iff_restrict_of_precompositionEquivalence
+#print axioms kanIsRelativeColimitCone_iff_restrict_of_precompositionEquivalence

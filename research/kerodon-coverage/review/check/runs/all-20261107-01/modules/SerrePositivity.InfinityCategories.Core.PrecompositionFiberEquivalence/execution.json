@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.PrecompositionFiberEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:15:43.153442+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fda05d8cfecb7776115abbc9e5d575a583f8f64d05947bd277d44e06f448ae1d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.PrecompositionFiberEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.PrecompositionFiberEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:15:52.585192+00:00"
+}

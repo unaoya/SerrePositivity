@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInitialSubcomplex",
+  "state": "checked",
+  "started": "2026-11-06T21:43:43.222198+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a67335ab2c2aacb99f50ffda3d57183aca07f7b15e86c9076fd7d05acdb73534",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInitialSubcomplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInitialSubcomplex/Check.lean"
+  ],
+  "finished": "2026-11-06T21:43:52.200096+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:41:35.702735+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b1b62e4116bf15039af7c55bbee05ff1810b17eb6d9f7da55eefe3d74347fac3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceModelEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:41:45.124412+00:00"
+}

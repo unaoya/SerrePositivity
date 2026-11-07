@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary",
+  "state": "checked",
+  "started": "2026-11-06T19:46:35.516754+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "71bd64c44a9b69970fe0847fbfad3dc983036e591c4f279670dba7067738b3d6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T19:46:45.987614+00:00"
+}

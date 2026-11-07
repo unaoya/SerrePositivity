@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 5797e51ec57ae211c3dc
+#check @fibration_of_kanEquivalenceLifting_of_kanComplex
+#print axioms fibration_of_kanEquivalenceLifting_of_kanComplex

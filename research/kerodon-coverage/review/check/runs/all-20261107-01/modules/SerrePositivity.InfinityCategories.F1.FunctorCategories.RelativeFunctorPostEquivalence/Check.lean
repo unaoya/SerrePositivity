@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference d3d97d96623f1db37e2a
+#check @relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence
+#print axioms relativeFunctorPost_isQCatEquivalence_of_precompositionEquivalence

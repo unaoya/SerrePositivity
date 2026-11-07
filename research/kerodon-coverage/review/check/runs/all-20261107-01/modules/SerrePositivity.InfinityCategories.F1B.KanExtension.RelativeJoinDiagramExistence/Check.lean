@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinDiagramExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ccea8401f18ce1c589a6
+#check @exists_kanRelativeJoin_diagram_of_colimits
+#print axioms exists_kanRelativeJoin_diagram_of_colimits

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.TensorLimitConeExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:11:37.533414+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "739cac59b1fb9f5e0ba8a86dc5543e7217e81e9586058fb5770c198608e672de",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.TensorLimitConeExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.TensorLimitConeExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:11:46.463775+00:00"
+}

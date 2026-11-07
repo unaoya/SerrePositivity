@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+  "state": "checked",
+  "started": "2026-11-06T20:38:09.499666+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "bf91f38345943497cd9a1d88516957bba5ea76b8bef1b8e97fff0a7026800715",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations/Check.lean"
+  ],
+  "finished": "2026-11-06T20:38:18.575011+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular",
+  "state": "checked",
+  "started": "2026-11-06T20:40:35.589266+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "1edd67d9d5fad1bfc4de80440e1bb8d4667d51797536b1c8479315af2e3aa049",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular/Check.lean"
+  ],
+  "finished": "2026-11-06T20:40:44.638731+00:00"
+}

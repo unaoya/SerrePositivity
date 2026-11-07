@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a81453c09102996746cf
+#check @HomotopyLimits.isReflectiveSubcategory_of_localReplacements
+#print axioms HomotopyLimits.isReflectiveSubcategory_of_localReplacements

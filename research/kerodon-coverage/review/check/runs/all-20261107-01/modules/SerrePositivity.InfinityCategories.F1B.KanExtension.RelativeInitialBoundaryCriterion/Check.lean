@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6dba022f85845350570a
+#check @kanRelativeInitialVertex_iff_initialBoundary
+#print axioms kanRelativeInitialVertex_iff_initialBoundary

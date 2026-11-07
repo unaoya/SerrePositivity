@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFullyFaithfulCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3de65bc32fc8464deab8
+#check @isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing
+#print axioms isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing

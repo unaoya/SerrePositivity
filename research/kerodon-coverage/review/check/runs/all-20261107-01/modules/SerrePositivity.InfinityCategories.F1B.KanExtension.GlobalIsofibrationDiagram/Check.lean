@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalIsofibrationDiagram
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b5c17b173b6515c482ae
+#check @exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration
+#print axioms exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration

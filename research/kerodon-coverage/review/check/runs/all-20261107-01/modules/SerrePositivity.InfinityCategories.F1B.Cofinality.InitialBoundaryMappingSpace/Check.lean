@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 048651eff0e2f91c9dba
+#check @pinchedHomMap_equivalence_of_initialBoundary
+#print axioms pinchedHomMap_equivalence_of_initialBoundary

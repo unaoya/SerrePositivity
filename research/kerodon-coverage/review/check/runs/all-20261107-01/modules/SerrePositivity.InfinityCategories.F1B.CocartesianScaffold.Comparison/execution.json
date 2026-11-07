@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison",
+  "state": "checked",
+  "started": "2026-11-06T20:04:32.776252+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0c0735e983b467fa9cef57c88da749e283426e927020795fffaffc4c745a28c5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison/Check.lean"
+  ],
+  "finished": "2026-11-06T20:04:43.430501+00:00"
+}

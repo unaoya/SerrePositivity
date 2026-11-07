@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.LocalizationUlift
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 4b90bf7644d5a1ca1c8e
+#check @transportSimplexFirstVertexMap_ulift_isLocalization
+#print axioms transportSimplexFirstVertexMap_ulift_isLocalization

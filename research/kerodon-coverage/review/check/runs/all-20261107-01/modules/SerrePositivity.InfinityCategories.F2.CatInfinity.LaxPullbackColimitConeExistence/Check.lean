@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b914d7c298982725e0c2
+#check @exists_colimitCone_laxPullback_with_components
+#print axioms exists_colimitCone_laxPullback_with_components

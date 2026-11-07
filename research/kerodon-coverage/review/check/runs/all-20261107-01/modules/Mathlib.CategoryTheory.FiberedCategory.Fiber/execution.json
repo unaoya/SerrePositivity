@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.FiberedCategory.Fiber",
+  "state": "checked",
+  "started": "2026-11-06T20:44:31.989176+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "57d12c648e2802b9476a154e92e922aa92fbd5a9a65245126fa30d034c2b45bb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.FiberedCategory.Fiber"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.FiberedCategory.Fiber/Check.lean"
+  ],
+  "finished": "2026-11-06T20:44:40.969276+00:00"
+}

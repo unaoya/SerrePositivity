@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.KanFibrationTools",
+  "state": "checked",
+  "started": "2026-11-06T21:13:42.714605+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7e343a27a276ee19d1df438e17816b62192ce10edec43ed47e3907382585e609",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.KanFibrationTools"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.KanFibrationTools/Check.lean"
+  ],
+  "finished": "2026-11-06T21:13:51.908800+00:00"
+}

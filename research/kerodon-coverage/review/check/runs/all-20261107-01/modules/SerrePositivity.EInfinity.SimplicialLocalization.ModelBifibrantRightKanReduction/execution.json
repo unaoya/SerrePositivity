@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction",
+  "state": "checked",
+  "started": "2026-11-06T20:59:34.403307+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "96238bc94c5d450515d7d9c30c60e7aec2560e1f730f7b55af42efd832243cf5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction/Check.lean"
+  ],
+  "finished": "2026-11-06T21:00:06.617657+00:00"
+}

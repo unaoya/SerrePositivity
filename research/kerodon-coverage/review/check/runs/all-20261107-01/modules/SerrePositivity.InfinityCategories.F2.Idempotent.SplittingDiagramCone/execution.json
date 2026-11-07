@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone",
+  "state": "checked",
+  "started": "2026-11-06T22:16:25.682139+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d83600a760d331e33fe3c4720e1dac8637b04319a13a26d824432037a002cb9e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone/Check.lean"
+  ],
+  "finished": "2026-11-06T22:16:34.987612+00:00"
+}

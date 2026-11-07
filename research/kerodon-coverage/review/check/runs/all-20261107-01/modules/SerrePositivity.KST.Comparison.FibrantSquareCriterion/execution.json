@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.FibrantSquareCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:43:41.988446+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5fac550213f2990dc77171386fc967933527876a90aadd8f2630e3c792ea1974",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.FibrantSquareCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.FibrantSquareCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:43:50.887450+00:00"
+}

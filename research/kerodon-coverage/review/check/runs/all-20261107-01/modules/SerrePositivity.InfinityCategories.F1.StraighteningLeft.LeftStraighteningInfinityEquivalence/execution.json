@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T19:59:56.860185+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2fc14eeb337ef4ab421ab71b35c2023f4f2be93ef0fce03158b21966d049591e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:00:10.763860+00:00"
+}

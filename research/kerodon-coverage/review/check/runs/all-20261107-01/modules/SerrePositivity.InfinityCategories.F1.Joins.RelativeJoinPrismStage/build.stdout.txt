@@ -1,0 +1,47 @@
+⚠ [1226/1393] Replayed SerrePositivity.InfinityCategories.Core.JoinTensorRight
+warning: SerrePositivity/InfinityCategories/Core/JoinTensorRight.lean:125:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1499/1606] Replayed SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex
+warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:82:65: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: SerrePositivity/InfinityCategories/Core/JoinCylinderSimplex.lean:91:65: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [1586/1606] Replayed SerrePositivity.InfinityCategories.Core.VertexFiber
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:14: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:16: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:19: Variable name `α` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _α
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1602/1606] Replayed SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverFunctor
+warning: SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingCylinderOverFunctor.lean:133:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Build completed successfully (1606 jobs).

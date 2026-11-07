@@ -1,0 +1,19 @@
+⚠ [1954/2222] Replayed SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:20:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:28:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [2102/2222] Replayed SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Shuffle.lean:9:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Shuffle.lean:17:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [2195/2222] Replayed SerrePositivity.HomologicalAlgebra.Complex.ConeLES
+warning: SerrePositivity/HomologicalAlgebra/Complex/ConeLES.lean:15:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (2222 jobs).

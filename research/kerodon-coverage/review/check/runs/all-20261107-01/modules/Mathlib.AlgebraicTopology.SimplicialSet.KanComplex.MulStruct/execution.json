@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct",
+  "state": "checked",
+  "started": "2026-11-06T19:26:19.623481+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "020bf29526daa770ae10c05195f6a85d05e71d215c1ff05f76d346c918cefc23",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct/Check.lean"
+  ],
+  "finished": "2026-11-06T19:26:29.090400+00:00"
+}

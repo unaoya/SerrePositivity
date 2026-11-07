@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PushoutInternalHomPullback",
+  "state": "checked",
+  "started": "2026-11-06T21:02:11.500455+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d900cc43f592225b8fe25701af36c786f857ff025083a00d7ef8607dd15e07f6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.PushoutInternalHomPullback"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.PushoutInternalHomPullback/Check.lean"
+  ],
+  "finished": "2026-11-06T21:02:21.258751+00:00"
+}

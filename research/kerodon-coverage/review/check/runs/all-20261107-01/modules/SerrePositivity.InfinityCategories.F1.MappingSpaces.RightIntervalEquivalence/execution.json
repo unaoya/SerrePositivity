@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:41:54.255426+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "56af9f6412df34a40575133bfd4f201123bf4a0fb6fe4d5b5514312138baaaa0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:42:03.610180+00:00"
+}

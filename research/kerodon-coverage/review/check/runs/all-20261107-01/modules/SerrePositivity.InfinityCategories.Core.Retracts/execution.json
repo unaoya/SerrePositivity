@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+  "state": "checked",
+  "started": "2026-11-06T21:17:48.068392+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "da475d29bc6c8a9118b4c0e219691851472a2b28d7819c47c252cea7f086ab74",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.Retracts"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.Retracts/Check.lean"
+  ],
+  "finished": "2026-11-06T21:17:58.159143+00:00"
+}

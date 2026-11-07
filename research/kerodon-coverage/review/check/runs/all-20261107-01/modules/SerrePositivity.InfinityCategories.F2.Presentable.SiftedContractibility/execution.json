@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedContractibility",
+  "state": "checked",
+  "started": "2026-11-06T20:20:08.835090+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "593079f5d1e23874e3e6205292ebcacb8bbb5026a0c453f9d634488f9e74b5df",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SiftedContractibility"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SiftedContractibility/Check.lean"
+  ],
+  "finished": "2026-11-06T20:20:20.685202+00:00"
+}

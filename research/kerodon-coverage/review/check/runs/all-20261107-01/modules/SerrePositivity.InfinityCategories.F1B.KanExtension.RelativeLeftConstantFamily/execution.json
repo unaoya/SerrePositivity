@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLeftConstantFamily",
+  "state": "checked",
+  "started": "2026-11-06T20:09:26.037938+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c53370dfbc12743b5f1a97db62ce83d0b4569f2e5729d9af5e3b716eb21a6c4b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLeftConstantFamily"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLeftConstantFamily/Check.lean"
+  ],
+  "finished": "2026-11-06T20:09:36.589244+00:00"
+}

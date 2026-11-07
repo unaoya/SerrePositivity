@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.PinchedHomCompositionHomotopy",
+  "state": "checked",
+  "started": "2026-11-06T19:49:31.780125+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c2a51955ec21b170270669fdc68c564c47c93a308ea59aca704d481980829fd4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.PinchedHomCompositionHomotopy"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.PinchedHomCompositionHomotopy/Check.lean"
+  ],
+  "finished": "2026-11-06T19:49:47.401486+00:00"
+}

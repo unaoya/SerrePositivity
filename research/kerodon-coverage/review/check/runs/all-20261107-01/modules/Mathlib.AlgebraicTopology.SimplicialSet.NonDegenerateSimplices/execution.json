@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplices",
+  "state": "checked",
+  "started": "2026-11-06T20:40:17.567076+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "6e14b5cd4d2e33dc55eb29b088c3d76d88e040fe9555be61a0455d44012f37ed",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplices"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplices/Check.lean"
+  ],
+  "finished": "2026-11-06T20:40:26.637365+00:00"
+}

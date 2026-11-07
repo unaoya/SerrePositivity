@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition",
+  "state": "checked",
+  "started": "2026-11-06T21:54:40.205282+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "47df9785b31f5914e97216c05e3cf6c2bef6f063ca8456ae495790e3d67e7a50",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition/Check.lean"
+  ],
+  "finished": "2026-11-06T21:54:49.123362+00:00"
+}

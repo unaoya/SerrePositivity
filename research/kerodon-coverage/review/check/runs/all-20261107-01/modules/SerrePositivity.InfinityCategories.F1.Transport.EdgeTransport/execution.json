@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport",
+  "state": "checked",
+  "started": "2026-11-06T20:00:20.945353+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "58f9f2834e9bbdd1d90e5fc152446baf6ab6beb013ad934b80fcf4d94f85b709",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T20:00:31.034235+00:00"
+}

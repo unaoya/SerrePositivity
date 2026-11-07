@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer",
+  "state": "checked",
+  "started": "2026-11-06T21:22:33.354502+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8e0f3d00978762ef66ba3f1d2b295ff8c35ca4e9156abed4058b95b1beb6011a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer/Check.lean"
+  ],
+  "finished": "2026-11-06T21:22:51.228733+00:00"
+}

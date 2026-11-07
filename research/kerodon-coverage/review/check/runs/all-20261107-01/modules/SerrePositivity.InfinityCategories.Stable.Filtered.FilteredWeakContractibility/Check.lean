@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6a128246b296b73ab8ca
+#check @isWeaklyContractible_of_isFilteredInfinity
+#print axioms isWeaklyContractible_of_isFilteredInfinity
+
+-- reference 1a0a78f29277550e0953
+#check @isWeaklyContractible_of_isFilteredInfinity
+#print axioms isWeaklyContractible_of_isFilteredInfinity

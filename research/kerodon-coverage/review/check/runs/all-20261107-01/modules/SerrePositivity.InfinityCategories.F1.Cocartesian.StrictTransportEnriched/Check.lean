@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportEnriched
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 8a567b1e4b347ace57e3
+#check @cocartesianStrictTransportInfinityMap_isFullyFaithful
+#print axioms cocartesianStrictTransportInfinityMap_isFullyFaithful

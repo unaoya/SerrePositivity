@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing",
+  "state": "checked",
+  "started": "2026-11-06T19:46:04.247506+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "136431d5baa89c52ffc8d84b5945f8edc2bfdc1e127ee984c6577fee638e12c7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing/Check.lean"
+  ],
+  "finished": "2026-11-06T19:46:14.717628+00:00"
+}

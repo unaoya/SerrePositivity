@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.JoinLeftColimits",
+  "state": "checked",
+  "started": "2026-11-06T21:12:54.785804+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6dae50db887a64c8bd6ff2e62df4f73aedd82651ccfbaa6428e51ffcc165ddcb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.JoinLeftColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.JoinLeftColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T21:13:04.694266+00:00"
+}

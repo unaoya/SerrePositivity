@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Shapes.DisjointCoproduct",
+  "state": "checked",
+  "started": "2026-11-06T20:48:32.285138+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "6bd3fc63426b0a425e7f83e9633ba125553606cab7c5e3b0aae986d64049eba3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Shapes.DisjointCoproduct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Shapes.DisjointCoproduct/Check.lean"
+  ],
+  "finished": "2026-11-06T20:48:41.214325+00:00"
+}

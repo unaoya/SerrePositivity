@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e8869d50d3665e38514e
+#check @cocartesianSectionsEvaluate_trivialKanFibration
+#print axioms cocartesianSectionsEvaluate_trivialKanFibration

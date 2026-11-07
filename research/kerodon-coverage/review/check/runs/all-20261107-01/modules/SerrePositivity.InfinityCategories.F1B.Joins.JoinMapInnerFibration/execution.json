@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Joins.JoinMapInnerFibration",
+  "state": "checked",
+  "started": "2026-11-06T22:00:22.414884+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6077ea8ba04cb6fa47ff675324b1874b801b833db7c03cb41e44e33c9d457a90",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Joins.JoinMapInnerFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Joins.JoinMapInnerFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T22:00:31.223377+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations",
+  "state": "checked",
+  "started": "2026-11-06T20:33:36.886857+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e401e22e1e35dcb0e38ebef604b43e58195288465e70cf71edd330b87a89bff7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations/Check.lean"
+  ],
+  "finished": "2026-11-06T20:33:47.784329+00:00"
+}

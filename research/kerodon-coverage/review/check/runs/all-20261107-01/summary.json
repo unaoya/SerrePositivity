@@ -1,0 +1,14 @@
+{
+  "references": {
+    "unresolved_reference": 111,
+    "found": 394,
+    "not_found": 1602,
+    "check_failed": 1
+  },
+  "items": {
+    "needs_review": 1371,
+    "found": 301,
+    "no_declarations": 1881
+  },
+  "nonstandard_axiom_references": 0
+}

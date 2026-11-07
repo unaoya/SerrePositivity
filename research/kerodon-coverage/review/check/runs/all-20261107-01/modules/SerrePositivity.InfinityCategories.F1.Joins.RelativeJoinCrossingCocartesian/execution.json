@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCrossingCocartesian",
+  "state": "checked",
+  "started": "2026-11-06T21:39:18.858202+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c69dd3c0a615e7a4200f2930dcf39f26a78b854314fc8b22595ad0b617d7b504",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCrossingCocartesian"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCrossingCocartesian/Check.lean"
+  ],
+  "finished": "2026-11-06T21:39:27.997122+00:00"
+}

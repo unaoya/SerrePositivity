@@ -1,0 +1,8 @@
+import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanReduction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference c63a5ab850982235fbe2
+#check @modelBifibrantSourceRightKanExtension_refl_of_frameCofinality
+#print axioms modelBifibrantSourceRightKanExtension_refl_of_frameCofinality

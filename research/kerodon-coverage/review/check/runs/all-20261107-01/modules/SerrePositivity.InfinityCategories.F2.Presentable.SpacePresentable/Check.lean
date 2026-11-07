@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0b16fe49b5a7ca38261a
+#check @Presentable.spaceCompactGeneratorInclusion_isCompactGenerating
+#print axioms Presentable.spaceCompactGeneratorInclusion_isCompactGenerating
+
+-- reference c9627ab2fb7b0b788664
+#check @space_isKappaAccessible_aleph0
+#print axioms space_isKappaAccessible_aleph0
+
+-- reference 4114ba50e26a41a1b303
+#check @spaceCompactGeneratorInclusion_isCompactGenerating
+#print axioms spaceCompactGeneratorInclusion_isCompactGenerating

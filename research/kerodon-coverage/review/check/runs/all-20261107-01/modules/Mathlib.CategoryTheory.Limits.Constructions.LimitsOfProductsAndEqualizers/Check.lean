@@ -1,0 +1,16 @@
+import Mathlib.CategoryTheory.Limits.Constructions.LimitsOfProductsAndEqualizers
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b696e352abea014aa7ee
+#check @hasFiniteLimits_of_hasEqualizers_and_finite_products
+#print axioms hasFiniteLimits_of_hasEqualizers_and_finite_products
+
+-- reference 081cc02115d881a36999
+#check @preservesFiniteLimits_of_preservesEqualizers_and_finiteProducts
+#print axioms preservesFiniteLimits_of_preservesEqualizers_and_finiteProducts
+
+-- reference b8870de194ccb3936d84
+#check @has_limits_of_hasEqualizers_and_products
+#print axioms has_limits_of_hasEqualizers_and_products

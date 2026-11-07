@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary",
+  "state": "checked",
+  "started": "2026-11-06T20:42:45.214364+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "35b4ecacb2a2d5d9a99d840b546d736a533f0809fac41b86dce801d465843591",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary/Check.lean"
+  ],
+  "finished": "2026-11-06T20:42:54.055695+00:00"
+}

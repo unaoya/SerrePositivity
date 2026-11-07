@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+  "state": "checked",
+  "started": "2026-11-06T21:00:59.842230+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b49dd49058dae0dd5cb44d2fc80b7cfe2f5defad0278087d8b515a7d7bc14f84",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.Generators/Check.lean"
+  ],
+  "finished": "2026-11-06T21:01:10.177728+00:00"
+}

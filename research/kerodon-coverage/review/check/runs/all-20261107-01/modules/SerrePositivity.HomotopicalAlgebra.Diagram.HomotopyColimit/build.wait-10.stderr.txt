@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit
+waiting for build lock: {"pid": 23935, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:38:29.125710+00:00", "command": ["lake", "build", "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits"], "token": "265be3617c8e40daad1bf32940837c6b"}

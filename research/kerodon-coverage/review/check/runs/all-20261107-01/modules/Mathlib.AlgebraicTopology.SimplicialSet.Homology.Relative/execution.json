@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Relative",
+  "state": "checked",
+  "started": "2026-11-06T20:39:05.126607+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "e5df69dea36bf477140be68cd3c330eeb1964540c2b38b93e9a283a794e3aa4c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Relative"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Homology.Relative/Check.lean"
+  ],
+  "finished": "2026-11-06T20:39:15.444746+00:00"
+}

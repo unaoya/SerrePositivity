@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Coherent.ResolutionRightQuasicategory
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 087e4f5774a5083658fc
+#check @coherentResolutionRightAdjoint_quasicategory
+#print axioms coherentResolutionRightAdjoint_quasicategory
+
+-- reference 2e7b18e47805cd0efd9a
+#check @coherentResolution_map_isPrecompositionEquivalence
+#print axioms coherentResolution_map_isPrecompositionEquivalence

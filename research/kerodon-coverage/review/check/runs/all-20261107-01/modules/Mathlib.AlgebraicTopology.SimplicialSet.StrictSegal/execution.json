@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+  "state": "checked",
+  "started": "2026-11-06T20:41:22.365031+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "10aeb98ebfe7ddfefb44e94dccaf4b0de691ffb121929adb3233b0a7baedc274",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal/Check.lean"
+  ],
+  "finished": "2026-11-06T20:41:31.732368+00:00"
+}

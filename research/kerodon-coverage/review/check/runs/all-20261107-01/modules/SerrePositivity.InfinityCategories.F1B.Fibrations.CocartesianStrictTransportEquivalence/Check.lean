@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransportEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 4fd277c10246179f4219
+#check @cocartesianStrictTransportEvaluate_isQCatEquivalence
+#print axioms cocartesianStrictTransportEvaluate_isQCatEquivalence
+
+-- reference 8319c37d584c34db377e
+#check @cocartesianStrictTransportEvaluate_trivialKanFibration
+#print axioms cocartesianStrictTransportEvaluate_trivialKanFibration

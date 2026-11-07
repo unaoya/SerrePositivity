@@ -1,0 +1,12 @@
+import Mathlib.CategoryTheory.Limits.Constructions.Pullbacks
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e428e356d1a18dd4bfb4
+#check @hasLimit_cospan_of_hasLimit_pair_of_hasLimit_parallelPair
+#print axioms hasLimit_cospan_of_hasLimit_pair_of_hasLimit_parallelPair
+
+-- reference 807f6b0335bd824c4add
+#check @hasPullbacks_of_hasBinaryProducts_of_hasEqualizers
+#print axioms hasPullbacks_of_hasBinaryProducts_of_hasEqualizers

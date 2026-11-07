@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreRightFibration
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6245641ec1e810da1111
+#check @coreMap_rightFibration_of_invertibleTargetLifting
+#print axioms coreMap_rightFibration_of_invertibleTargetLifting

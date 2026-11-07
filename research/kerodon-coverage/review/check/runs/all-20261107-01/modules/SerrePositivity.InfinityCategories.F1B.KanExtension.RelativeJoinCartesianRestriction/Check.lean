@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinCartesianRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 391293cf4377d7eba00a
+#check @kanRelativeJoinRestriction_preservesCartesianEdges
+#print axioms kanRelativeJoinRestriction_preservesCartesianEdges

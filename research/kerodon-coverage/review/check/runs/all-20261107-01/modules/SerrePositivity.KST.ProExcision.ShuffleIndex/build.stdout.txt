@@ -1,0 +1,28 @@
+⚠ [1791/1802] Replayed SerrePositivity.KST.ProExcision.ChainTensorVanishing
+warning: SerrePositivity/KST/ProExcision/ChainTensorVanishing.lean:108:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1795/1802] Replayed SerrePositivity.KST.ProExcision.AWTensorDifferential
+warning: SerrePositivity/KST/ProExcision/AWTensorDifferential.lean:164:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1798/1802] Replayed SerrePositivity.KST.ProExcision.AWBoundaryExpansion
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:68:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:69:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:70:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:73:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:94:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1802 jobs).

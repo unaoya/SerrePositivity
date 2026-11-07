@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Shapes.Pullback.Equifibered",
+  "state": "checked",
+  "started": "2026-11-06T20:48:58.945511+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "c9096e736f3037576ec6ed2886ebf9cc0e9182d90215aa66f3b60263623f74ce",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Shapes.Pullback.Equifibered"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Shapes.Pullback.Equifibered/Check.lean"
+  ],
+  "finished": "2026-11-06T20:49:07.934357+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.RelClasses",
+  "state": "checked",
+  "started": "2026-11-06T19:33:41.704806+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "db8122b9431b3f70c572a2434363bd416ef37bfb1738ed65b906f77b1f61f74e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.RelClasses"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.RelClasses/Check.lean"
+  ],
+  "finished": "2026-11-06T19:34:04.638779+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve",
+  "state": "checked",
+  "started": "2026-11-06T21:28:04.018386+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "061c96cd58ee036fbcff72e5717f1b0a91bded4c898ce09fae6eb8073924b53e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve/Check.lean"
+  ],
+  "finished": "2026-11-06T21:28:13.744828+00:00"
+}

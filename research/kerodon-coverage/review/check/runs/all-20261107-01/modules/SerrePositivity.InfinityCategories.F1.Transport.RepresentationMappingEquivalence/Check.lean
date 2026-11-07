@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.RepresentationMappingEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6ac4b5c2fdb1a922cd7d
+#check @transportRepresentationMappingSpaceMap_isQCatEquivalence
+#print axioms transportRepresentationMappingSpaceMap_isQCatEquivalence

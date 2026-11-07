@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:40:50.400879+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7886bbc7808425f904052aa3e8418de71aeb7d3314a678aece2b507f63a63ed6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:40:59.619800+00:00"
+}

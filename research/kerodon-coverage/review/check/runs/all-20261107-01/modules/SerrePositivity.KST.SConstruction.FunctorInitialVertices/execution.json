@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.FunctorInitialVertices",
+  "state": "checked",
+  "started": "2026-11-06T22:48:58.297672+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8470359bd38f853f7f3ac3f5cc82dc5b977556f5157c882ba5b16d1445c26e85",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.FunctorInitialVertices"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.FunctorInitialVertices/Check.lean"
+  ],
+  "finished": "2026-11-06T22:49:07.252680+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinColimitProjection",
+  "state": "checked",
+  "started": "2026-11-06T20:07:49.525368+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "90b8f3f28deb01f664c5fce568ee6754bc7ad51173f98748f6ece81e9f8f7d76",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinColimitProjection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinColimitProjection/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:00.344089+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T21:56:48.124415+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "89980fcb57e3ef5c98d9641ab3ee63be34dba1659112a698c2faa8648b5f7119",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T21:56:57.121173+00:00"
+}

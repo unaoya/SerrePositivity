@@ -1,0 +1,6 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
+waiting for build lock: {"pid": 32297, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:48:12.251692+00:00", "command": ["lake", "build", "Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting"], "token": "3b5e6e84e13a4a409405117147300718"}

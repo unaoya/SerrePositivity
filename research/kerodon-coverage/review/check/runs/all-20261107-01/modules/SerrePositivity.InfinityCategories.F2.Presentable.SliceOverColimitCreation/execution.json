@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SliceOverColimitCreation",
+  "state": "checked",
+  "started": "2026-11-06T22:30:23.243771+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f7007fc48f71aa72a793607d52d46adebf2d67eaf1542109d664217d05fcc36a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SliceOverColimitCreation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SliceOverColimitCreation/Check.lean"
+  ],
+  "finished": "2026-11-06T22:30:32.881470+00:00"
+}

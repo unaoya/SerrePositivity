@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Monoidal.CoherenceLemmas",
+  "state": "checked",
+  "started": "2026-11-06T20:50:11.458512+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "c4c17b3ff89ed97e6e1ba5f0391e151d52533cea6fc89144fa0bf9edf77f8780",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Monoidal.CoherenceLemmas"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Monoidal.CoherenceLemmas/Check.lean"
+  ],
+  "finished": "2026-11-06T20:50:20.224813+00:00"
+}

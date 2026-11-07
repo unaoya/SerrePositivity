@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit",
+  "state": "checked",
+  "started": "2026-11-06T22:01:44.999214+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7b06939777cb5484b5873805a113125e1b0601df71e7cc5636c5c2f01cfa46ad",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit/Check.lean"
+  ],
+  "finished": "2026-11-06T22:01:54.498870+00:00"
+}

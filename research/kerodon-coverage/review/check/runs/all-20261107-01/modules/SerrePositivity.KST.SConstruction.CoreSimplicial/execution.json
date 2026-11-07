@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.CoreSimplicial",
+  "state": "checked",
+  "started": "2026-11-06T22:48:49.072990+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "552d0c59c653512707351b3285c0af45ffa250743123af7fb0698cc7c3fc8821",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.CoreSimplicial"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.CoreSimplicial/Check.lean"
+  ],
+  "finished": "2026-11-06T22:48:58.296229+00:00"
+}

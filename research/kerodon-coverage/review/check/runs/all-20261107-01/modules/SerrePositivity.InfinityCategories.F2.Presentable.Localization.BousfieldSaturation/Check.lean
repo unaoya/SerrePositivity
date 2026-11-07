@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9aa944a0300f963bfb19
+#check @bousfieldLocalizationFunctor_isLocalization_generatedEdges
+#print axioms bousfieldLocalizationFunctor_isLocalization_generatedEdges
+
+-- reference cc2bd783ee8a82c7d6b7
+#check @bousfield_generatedEdges_eq_localEquivalences
+#print axioms bousfield_generatedEdges_eq_localEquivalences

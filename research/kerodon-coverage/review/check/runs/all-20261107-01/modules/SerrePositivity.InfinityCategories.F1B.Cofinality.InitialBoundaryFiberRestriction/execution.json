@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryFiberRestriction",
+  "state": "checked",
+  "started": "2026-11-06T21:55:43.727949+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0812a637c8b3904c213ec81bcff3ad5026fb2b96d13ad6d8fb0385dc0b8514ee",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryFiberRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryFiberRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T21:55:53.136688+00:00"
+}

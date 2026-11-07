@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Presentable.SharplyLT.Basic",
+  "state": "checked",
+  "started": "2026-11-06T19:32:31.370419+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "ae30ad357dcd57042ee3383da379bb7cbe004664ba7031b56803dc222d8a1aad",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Presentable.SharplyLT.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Presentable.SharplyLT.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:33:27.986444+00:00"
+}

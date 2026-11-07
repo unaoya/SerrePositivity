@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.LeftKanColimitExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:25:14.608229+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3c489e7bbffe54d3927138a3f6fa6c9a039ee98caf55bcda2efc56070598e6d0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.LeftKanColimitExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.LeftKanColimitExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:25:25.666959+00:00"
+}

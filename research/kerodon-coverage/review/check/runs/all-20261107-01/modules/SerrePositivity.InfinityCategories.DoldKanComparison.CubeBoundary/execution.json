@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.DoldKanComparison.CubeBoundary",
+  "state": "checked",
+  "started": "2026-11-06T21:25:36.985832+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "67d87fc5ce0d7b3ccd5396c5b1d2af075c96aebaf0d3dbdc9c170abeb263beb4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.DoldKanComparison.CubeBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.DoldKanComparison.CubeBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T21:25:50.053264+00:00"
+}

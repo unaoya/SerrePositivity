@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T19:57:44.438978+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "dd23277a0cbea85c5b69c056dfa14f63650f17479a4a3ef88ff1969a6cae8513",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T19:57:54.415594+00:00"
+}

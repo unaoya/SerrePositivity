@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber",
+  "state": "checked",
+  "started": "2026-11-06T21:51:20.102237+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8a0a200078a24e596e9698becda5f6304f59fff2e53d8874778c7a4ae521dc0a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber/Check.lean"
+  ],
+  "finished": "2026-11-06T21:51:28.901079+00:00"
+}

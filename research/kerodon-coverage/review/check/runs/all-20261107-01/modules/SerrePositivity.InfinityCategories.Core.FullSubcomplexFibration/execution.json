@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:09:42.628331+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "13971dc2a3e915fc118fdd580814211873c66d8efa8a43ec02c158077851628f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:09:52.795888+00:00"
+}

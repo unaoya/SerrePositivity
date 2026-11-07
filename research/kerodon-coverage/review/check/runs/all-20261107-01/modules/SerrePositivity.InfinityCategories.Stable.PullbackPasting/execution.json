@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.PullbackPasting",
+  "state": "checked",
+  "started": "2026-11-06T22:42:06.882728+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5a0a397970a4fc660b9431027f6c716f85e0eee9744c732e9a03132a0e705422",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.PullbackPasting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.PullbackPasting/Check.lean"
+  ],
+  "finished": "2026-11-06T22:42:15.683372+00:00"
+}

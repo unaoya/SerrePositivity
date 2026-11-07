@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCocartesianCriterion",
+  "state": "checked",
+  "started": "2026-11-06T21:40:59.620672+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "540cbca6aa05496f9f781baaa7e4ac2e0485b0ea9a1d82bdcbca6fbfc2e792b9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCocartesianCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCocartesianCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T21:41:08.536942+00:00"
+}

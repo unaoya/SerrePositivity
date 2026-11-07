@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionUnitInvertible",
+  "state": "checked",
+  "started": "2026-11-06T21:53:08.566998+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "54909c51a1a78964c46777d3db5db029d1ce5bfc785759ad49d7e785f6ce0fe1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionUnitInvertible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionUnitInvertible/Check.lean"
+  ],
+  "finished": "2026-11-06T21:53:17.589237+00:00"
+}

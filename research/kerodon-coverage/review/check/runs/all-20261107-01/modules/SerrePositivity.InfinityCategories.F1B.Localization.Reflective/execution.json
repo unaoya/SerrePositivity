@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Localization.Reflective",
+  "state": "checked",
+  "started": "2026-11-06T20:10:08.997268+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b2aa2e9cea608111135ec446735fe8ba5a773674b44424125318749bd0bdfd21",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Localization.Reflective"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Localization.Reflective/Check.lean"
+  ],
+  "finished": "2026-11-06T20:10:19.355045+00:00"
+}

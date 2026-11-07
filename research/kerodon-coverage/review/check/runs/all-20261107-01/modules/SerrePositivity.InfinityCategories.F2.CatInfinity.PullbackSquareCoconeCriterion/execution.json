@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:10:41.554322+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8d9a51c3e3f1230a4ad830c09f56d1af4e7dff1e4739ae93340174d5f64d07e2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:10:51.431769+00:00"
+}

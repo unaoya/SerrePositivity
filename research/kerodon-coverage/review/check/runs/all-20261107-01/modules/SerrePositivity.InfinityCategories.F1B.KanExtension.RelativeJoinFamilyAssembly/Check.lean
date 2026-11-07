@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFamilyAssembly
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7e0cf00d796ce460ebd8
+#check @exists_kanRelativeJoin_family_extension_of_colimits
+#print axioms exists_kanRelativeJoin_family_extension_of_colimits

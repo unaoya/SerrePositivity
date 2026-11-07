@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal",
+  "state": "checked",
+  "started": "2026-11-06T22:47:00.364217+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "92a8ddfaab5ec318b3c326d10dbf2ec5aee07216f7f3ec96d1866903348f3ff1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal/Check.lean"
+  ],
+  "finished": "2026-11-06T22:47:09.271625+00:00"
+}

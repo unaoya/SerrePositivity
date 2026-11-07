@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.PrescribedCartesianTransport
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 12da8fb835953b5b1a85
+#check @exists_cartesianPrism_prescribed_vertices
+#print axioms exists_cartesianPrism_prescribed_vertices

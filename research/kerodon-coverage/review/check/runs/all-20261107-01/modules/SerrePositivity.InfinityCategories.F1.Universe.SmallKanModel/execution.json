@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Universe.SmallKanModel",
+  "state": "checked",
+  "started": "2026-11-06T21:50:33.147604+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4ec532bd51bbeace405b7b71fcfc9db08ed538232b1a87526db67380add22fd0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Universe.SmallKanModel"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Universe.SmallKanModel/Check.lean"
+  ],
+  "finished": "2026-11-06T21:50:43.655777+00:00"
+}

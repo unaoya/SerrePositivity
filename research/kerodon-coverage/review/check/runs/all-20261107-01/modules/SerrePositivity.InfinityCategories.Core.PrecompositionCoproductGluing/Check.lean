@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.PrecompositionCoproductGluing
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 79dcb4e97c158906b989
+#check @isPrecompositionEquivalence_of_coproduct_colimit
+#print axioms isPrecompositionEquivalence_of_coproduct_colimit

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.FunctorPointwiseColimits",
+  "state": "checked",
+  "started": "2026-11-06T20:33:13.438862+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ac5d4cfb078eca77195dd9e295751bc22e4726ed17684bdad115d4d73e8dec87",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.FunctorPointwiseColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.FunctorPointwiseColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T20:33:25.327123+00:00"
+}

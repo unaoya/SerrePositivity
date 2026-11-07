@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.SquareEdgeInvariance",
+  "state": "checked",
+  "started": "2026-11-06T21:47:43.033054+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a26b83cbb78009f923c82d66b885c547cd876810c8f4919e9049eef82ec41184",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.SquareEdgeInvariance"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.SquareEdgeInvariance/Check.lean"
+  ],
+  "finished": "2026-11-06T21:47:52.810851+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.NerveUnderMap",
+  "state": "checked",
+  "started": "2026-11-06T21:14:56.595487+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "79da5efa95f468a360d2baa99677c4e075d2865beb53863f1875fea9e55759db",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.NerveUnderMap"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.NerveUnderMap/Check.lean"
+  ],
+  "finished": "2026-11-06T21:15:05.321106+00:00"
+}

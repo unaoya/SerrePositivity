@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:06:32.312759+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "40ded7d9c9ab1d70b68036d88ab26aba5d67fe4b76f4f7e87d5f4b23d9846bb5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RightExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:06:41.803907+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.Category.NonemptyFinLinOrd",
+  "state": "checked",
+  "started": "2026-11-06T20:54:24.431257+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "39b8656f45f8e0f1f39e03fb52938a33f833b8be1cc6d12803111789ad35631e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.Category.NonemptyFinLinOrd"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.Category.NonemptyFinLinOrd/Check.lean"
+  ],
+  "finished": "2026-11-06T20:54:33.813071+00:00"
+}

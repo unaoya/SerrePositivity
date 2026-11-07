@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.FunctorCategories.HomCorrespondence",
+  "state": "checked",
+  "started": "2026-11-06T21:59:19.435661+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "439fd7ddc11e6ec47a7edc43b772b64c84c4b0e0e6bc6ec9a1b8480db3b82e67",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.FunctorCategories.HomCorrespondence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.FunctorCategories.HomCorrespondence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:59:28.122822+00:00"
+}

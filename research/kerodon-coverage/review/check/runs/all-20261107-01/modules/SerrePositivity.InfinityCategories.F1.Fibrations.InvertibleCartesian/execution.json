@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian",
+  "state": "checked",
+  "started": "2026-11-06T21:34:59.255383+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "edda4616cd709568f5b5e9479be42810f3a34d6dc861ebad38db7f1f9864c73f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian/Check.lean"
+  ],
+  "finished": "2026-11-06T21:35:08.403919+00:00"
+}

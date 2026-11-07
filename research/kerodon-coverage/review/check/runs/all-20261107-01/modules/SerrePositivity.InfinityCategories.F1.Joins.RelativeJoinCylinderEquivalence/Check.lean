@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a0f5da2153ea70c8a97a
+#check @isPrecompositionEquivalence_relativeJoinCylinderComparison
+#print axioms isPrecompositionEquivalence_relativeJoinCylinderComparison

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso",
+  "state": "checked",
+  "started": "2026-11-06T21:18:59.311585+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0c631116d4c3a5b9c26e27a319a930d75c0d26a35a222a9316bdd3d1f890f5f2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SliceFixedDiagramIso/Check.lean"
+  ],
+  "finished": "2026-11-06T21:19:09.067618+00:00"
+}

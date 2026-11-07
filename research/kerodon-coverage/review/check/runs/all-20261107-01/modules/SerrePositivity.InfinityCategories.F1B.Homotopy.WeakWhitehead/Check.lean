@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2990f9391a7911c791b4
+#check @IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
+#print axioms IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
+
+-- reference 41743773352f99c98345
+#check @isWeakHomotopyEquivalence_iff_isSimplicialHomotopyEquivalence
+#print axioms isWeakHomotopyEquivalence_iff_isSimplicialHomotopyEquivalence
+
+-- reference 7d0b558fd58a1886d3dc
+#check @isWeakHomotopyEquivalence_iff_isQCatEquivalence
+#print axioms isWeakHomotopyEquivalence_iff_isQCatEquivalence

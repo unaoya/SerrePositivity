@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationYoneda
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6bc112abb7fd3b872c6e
+#check @relativeFunctorSpace_kanComplex_of_rightFibration
+#print axioms relativeFunctorSpace_kanComplex_of_rightFibration

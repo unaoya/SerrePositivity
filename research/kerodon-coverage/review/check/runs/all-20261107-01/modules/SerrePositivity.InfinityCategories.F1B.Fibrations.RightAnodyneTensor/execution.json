@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor",
+  "state": "checked",
+  "started": "2026-11-06T20:05:46.019230+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9191ff1bd179f5d6be03822866a1532e8560bea1be1838db3431d46f991c7b76",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor/Check.lean"
+  ],
+  "finished": "2026-11-06T20:05:55.461265+00:00"
+}

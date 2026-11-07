@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpaceGenerators",
+  "state": "checked",
+  "started": "2026-11-06T22:23:38.598085+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6466ff49e18d0c241f5d463a72f72a843490b4a994c15a2e46879339ad84afa4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpaceGenerators"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpaceGenerators/Check.lean"
+  ],
+  "finished": "2026-11-06T22:23:50.677171+00:00"
+}

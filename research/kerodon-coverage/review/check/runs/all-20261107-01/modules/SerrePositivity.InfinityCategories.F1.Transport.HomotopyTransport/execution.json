@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.HomotopyTransport",
+  "state": "checked",
+  "started": "2026-11-06T21:45:34.770824+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "140d76bf09f7df9976cb69a23048adf19c91b397c4e94bd843c6b328f0b3f9be",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.HomotopyTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.HomotopyTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T21:45:44.124563+00:00"
+}

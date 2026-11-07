@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 43b0efd3ba6f6d952501
+#check @strongSplittingRestriction_isFullyFaithful
+#print axioms strongSplittingRestriction_isFullyFaithful
+
+-- reference 248bb0dd9a0cdd25a179
+#check @strongSplittingRestriction_trivialKanFibration_of_complete
+#print axioms strongSplittingRestriction_trivialKanFibration_of_complete

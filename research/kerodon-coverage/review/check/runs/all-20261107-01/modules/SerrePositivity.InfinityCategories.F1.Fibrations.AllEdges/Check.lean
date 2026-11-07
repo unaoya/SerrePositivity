@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Fibrations.AllEdges
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e5a29105b4fd9a0f1953
+#check @rightFibration_iff_cartesianFibration_all_edges
+#print axioms rightFibration_iff_cartesianFibration_all_edges
+
+-- reference 0d5ee5a212b941c9cfb1
+#check @leftFibration_iff_cocartesianFibration_all_edges
+#print axioms leftFibration_iff_cocartesianFibration_all_edges

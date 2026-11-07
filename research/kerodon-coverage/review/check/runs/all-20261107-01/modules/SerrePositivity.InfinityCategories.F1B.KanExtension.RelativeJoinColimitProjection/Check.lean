@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinColimitProjection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 67994cbe63f4c4fc4cef
+#check @kanRelativeJoinColimitProjection_trivialKanFibration
+#print axioms kanRelativeJoinColimitProjection_trivialKanFibration

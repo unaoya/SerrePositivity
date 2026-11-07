@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.WitnessRestrictionFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:48:41.122838+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6d1351bc47fc0a89cdd40254def4c817c5a88b7c973d7716a897b54a8993800d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.WitnessRestrictionFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.WitnessRestrictionFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:48:50.964627+00:00"
+}

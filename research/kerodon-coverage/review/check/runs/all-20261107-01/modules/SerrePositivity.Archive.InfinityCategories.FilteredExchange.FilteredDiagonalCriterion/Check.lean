@@ -1,0 +1,12 @@
+import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredDiagonalCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b2ddef2c15cf5111e32b
+#check @isKappaFiltered_iff_weaklyContractible_coslices
+#print axioms isKappaFiltered_iff_weaklyContractible_coslices
+
+-- reference b2e0083813aba14977cd
+#check @isFilteredInfinity_iff_constantDiagram_rightCofinal
+#print axioms isFilteredInfinity_iff_constantDiagram_rightCofinal

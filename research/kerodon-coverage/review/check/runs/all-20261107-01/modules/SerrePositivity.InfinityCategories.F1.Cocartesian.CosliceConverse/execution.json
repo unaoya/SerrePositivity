@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse",
+  "state": "checked",
+  "started": "2026-11-06T21:29:01.918595+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a66bc2c26d056ceaf5a23e08126bbac44bb3a923d1d85dd0e8af5dcc42797923",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Cocartesian.CosliceConverse/Check.lean"
+  ],
+  "finished": "2026-11-06T21:29:11.450286+00:00"
+}

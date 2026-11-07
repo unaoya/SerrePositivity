@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T22:30:09.202058+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ea2c53e46c440f90d5518065230e953d816b3d2e9d2b1f189b2fe8684a4c9d61",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:30:23.241685+00:00"
+}

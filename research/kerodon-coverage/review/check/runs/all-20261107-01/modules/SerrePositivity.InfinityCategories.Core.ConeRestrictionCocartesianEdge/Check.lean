@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianEdge
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e0debced5106f1acb2e4
+#check @hasCocartesianHornLifting_coneRestriction_of_apex
+#print axioms hasCocartesianHornLifting_coneRestriction_of_apex

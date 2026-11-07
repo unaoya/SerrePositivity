@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Localization.Predicate",
+  "state": "checked",
+  "started": "2026-11-06T20:49:35.216242+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b9546dac89b335905bbaa67afad11de2ea2ae3c413ca747ddf1e1a67d5c7157d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Localization.Predicate"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Localization.Predicate/Check.lean"
+  ],
+  "finished": "2026-11-06T20:49:44.327414+00:00"
+}

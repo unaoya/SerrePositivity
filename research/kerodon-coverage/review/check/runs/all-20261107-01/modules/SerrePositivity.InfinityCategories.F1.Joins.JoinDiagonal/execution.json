@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Joins.JoinDiagonal",
+  "state": "checked",
+  "started": "2026-11-06T21:38:32.791688+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3a6ee3149c82567ad34ff7e9bd44fc2c4ff64af57959a098bfa6c9b6f7b9e005",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Joins.JoinDiagonal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Joins.JoinDiagonal/Check.lean"
+  ],
+  "finished": "2026-11-06T21:38:41.817505+00:00"
+}

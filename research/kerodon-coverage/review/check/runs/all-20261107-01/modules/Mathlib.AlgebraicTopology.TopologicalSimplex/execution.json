@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.TopologicalSimplex",
+  "state": "checked",
+  "started": "2026-11-06T20:41:41.178544+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "8bb15669acaf67e60e3b95a3b1b59593693d26aa4da6cfeaafa8c7d69f73d376",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.TopologicalSimplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.TopologicalSimplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:41:51.111432+00:00"
+}

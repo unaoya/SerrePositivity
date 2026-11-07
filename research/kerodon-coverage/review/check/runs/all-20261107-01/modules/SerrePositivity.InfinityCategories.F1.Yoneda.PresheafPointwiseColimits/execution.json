@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits",
+  "state": "checked",
+  "started": "2026-11-06T20:03:01.330620+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "bf5fc9505fafadc4d6c9d05d28d34392e3ba781182f467ca600dbd56d463c4ae",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T20:03:12.979896+00:00"
+}

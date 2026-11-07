@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace",
+  "state": "checked",
+  "started": "2026-11-06T21:36:43.935778+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5b77082aa4fc1c1d60b44059e5d0e16443321cd409561985506b0b8532c477df",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T21:36:53.016625+00:00"
+}

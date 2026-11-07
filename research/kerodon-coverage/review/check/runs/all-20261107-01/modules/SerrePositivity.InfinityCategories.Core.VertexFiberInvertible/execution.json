@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.VertexFiberInvertible",
+  "state": "checked",
+  "started": "2026-11-06T21:20:56.505049+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "49b2f2deb9df69d805b78eaf2e5c3a97fca5b631064c7de4284385d1d2a7c081",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.VertexFiberInvertible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.VertexFiberInvertible/Check.lean"
+  ],
+  "finished": "2026-11-06T21:21:06.294480+00:00"
+}

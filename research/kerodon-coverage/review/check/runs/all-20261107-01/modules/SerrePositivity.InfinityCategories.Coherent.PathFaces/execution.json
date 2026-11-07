@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Coherent.PathFaces",
+  "state": "checked",
+  "started": "2026-11-06T21:04:02.528522+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8ddd913e4ef763cebb556972bd385d376a9f5e1c607788710c889cb64b3a72b2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Coherent.PathFaces"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Coherent.PathFaces/Check.lean"
+  ],
+  "finished": "2026-11-06T21:04:12.246632+00:00"
+}

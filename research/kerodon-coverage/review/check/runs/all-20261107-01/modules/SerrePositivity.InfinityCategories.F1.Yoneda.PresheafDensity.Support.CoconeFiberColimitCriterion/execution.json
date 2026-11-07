@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberColimitCriterion",
+  "state": "checked",
+  "started": "2026-11-06T21:51:57.647558+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3ed78c95f75b4b0648f7a0041efa20bed91325e1bbaeecf9b3a26a78e4ff0938",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberColimitCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberColimitCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T21:52:08.288514+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SmallInnerHornClosure",
+  "state": "checked",
+  "started": "2026-11-06T21:19:38.237523+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "625a54fa21398b5ece2fbbd03fba6a5edde7f1f5225e04a5aafbf165068c5cc3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SmallInnerHornClosure"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SmallInnerHornClosure/Check.lean"
+  ],
+  "finished": "2026-11-06T21:19:47.707074+00:00"
+}

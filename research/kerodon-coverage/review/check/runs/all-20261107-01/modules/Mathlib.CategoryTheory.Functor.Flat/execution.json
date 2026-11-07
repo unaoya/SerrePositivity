@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Functor.Flat",
+  "state": "checked",
+  "started": "2026-11-06T19:30:23.319106+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b6dd7c3d7aba6dbda6a2d89c2953c16eef1d573b41008a2bfcef623b73304f98",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Functor.Flat"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Functor.Flat/Check.lean"
+  ],
+  "finished": "2026-11-06T19:30:46.330898+00:00"
+}

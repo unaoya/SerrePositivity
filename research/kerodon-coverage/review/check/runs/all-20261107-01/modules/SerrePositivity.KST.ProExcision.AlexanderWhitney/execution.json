@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.ProExcision.AlexanderWhitney",
+  "state": "checked",
+  "started": "2026-11-06T22:47:45.968183+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "76b231e137b1a3e2bb1a30011fd0c17a541475b9a9249105ceb31396a28eceda",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.ProExcision.AlexanderWhitney"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.ProExcision.AlexanderWhitney/Check.lean"
+  ],
+  "finished": "2026-11-06T22:47:54.900792+00:00"
+}

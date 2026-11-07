@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.AlexanderWhitney.ChainCounit",
+  "state": "checked",
+  "started": "2026-11-06T20:57:36.231362+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0788422a4caf3beb7c9d7926d0f79d7530b7d6c2c5fcffe4bd9a80aead977868",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.AlexanderWhitney.ChainCounit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.AlexanderWhitney.ChainCounit/Check.lean"
+  ],
+  "finished": "2026-11-06T20:57:47.218129+00:00"
+}

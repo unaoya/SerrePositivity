@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.LocalizedPushoutCube",
+  "state": "checked",
+  "started": "2026-11-06T22:45:00.399368+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0af3ea1d963d8cf9fafb45b0fdbbc8b141e3664bd209c7dbc68582868f7be804",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.LocalizedPushoutCube"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.LocalizedPushoutCube/Check.lean"
+  ],
+  "finished": "2026-11-06T22:45:09.191612+00:00"
+}

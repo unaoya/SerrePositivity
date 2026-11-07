@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeMappingPullback
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 01b6bdfb233fd29e0285
+#check @kanRelativeLeftMappingPullbackComparison_equivalence
+#print axioms kanRelativeLeftMappingPullbackComparison_equivalence
+
+-- reference 5f1404c13caba961c08c
+#check @kanRelativeRightMappingPullbackComparison_equivalence
+#print axioms kanRelativeRightMappingPullbackComparison_equivalence

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.FiberedCategory.Cartesian",
+  "state": "checked",
+  "started": "2026-11-06T20:44:22.895066+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "44c9f3aa6ca4495baa5f15ef99d82606ab79b32b4fe94e24b3056266f3989a38",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.FiberedCategory.Cartesian"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.FiberedCategory.Cartesian/Check.lean"
+  ],
+  "finished": "2026-11-06T20:44:31.988012+00:00"
+}

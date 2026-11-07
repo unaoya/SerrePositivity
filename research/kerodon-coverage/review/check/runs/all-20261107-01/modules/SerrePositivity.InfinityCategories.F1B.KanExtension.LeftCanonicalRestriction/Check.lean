@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f68691cb81204397ae3d
+#check @kanIsRelativeColimitCone_iff_isColimit_of_terminal
+#print axioms kanIsRelativeColimitCone_iff_isColimit_of_terminal

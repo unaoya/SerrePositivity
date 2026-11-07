@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction",
+  "state": "checked",
+  "started": "2026-11-06T22:41:47.124801+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fc7ec15273aa7f26da49d19f98df7016eae9fb697530f60518e3e3b85c34ce63",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:41:57.214572+00:00"
+}

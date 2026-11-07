@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.PointWitnessIntervalBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a233c64ec08eb4bf0004
+#check @pointWitnessIntervalBoundary_trivialKanFibration
+#print axioms pointWitnessIntervalBoundary_trivialKanFibration

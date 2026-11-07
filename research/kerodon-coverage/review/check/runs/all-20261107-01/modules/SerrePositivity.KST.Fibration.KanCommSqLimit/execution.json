@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Fibration.KanCommSqLimit",
+  "state": "checked",
+  "started": "2026-11-06T22:46:04.232586+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "49a9e0e0f321d0fc0d70d3cbb88fdb1403463865ad47ca1cef104b331996d863",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Fibration.KanCommSqLimit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Fibration.KanCommSqLimit/Check.lean"
+  ],
+  "finished": "2026-11-06T22:46:14.474346+00:00"
+}

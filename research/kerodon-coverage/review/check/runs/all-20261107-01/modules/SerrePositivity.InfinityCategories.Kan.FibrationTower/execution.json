@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.FibrationTower",
+  "state": "checked",
+  "started": "2026-11-06T20:27:28.523574+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "cc291543d8271ae008f6b7367aa774ba21141b17e102228e66b143eece4df475",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.FibrationTower"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.FibrationTower/Check.lean"
+  ],
+  "finished": "2026-11-06T20:27:38.376633+00:00"
+}

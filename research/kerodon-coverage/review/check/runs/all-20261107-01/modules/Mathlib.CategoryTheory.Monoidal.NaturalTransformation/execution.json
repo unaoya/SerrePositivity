@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Monoidal.NaturalTransformation",
+  "state": "checked",
+  "started": "2026-11-06T20:50:29.105871+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d645c795f61fe6ba3d9a2e9da7f665d5e9dd08112be4753a751ef054baaeb13f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Monoidal.NaturalTransformation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Monoidal.NaturalTransformation/Check.lean"
+  ],
+  "finished": "2026-11-06T20:50:38.105771+00:00"
+}

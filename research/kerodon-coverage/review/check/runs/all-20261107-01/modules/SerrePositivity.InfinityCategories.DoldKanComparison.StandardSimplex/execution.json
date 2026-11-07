@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex",
+  "state": "checked",
+  "started": "2026-11-06T21:26:38.444626+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "efb4141c0f6f01856f8aa18ce18831f50f6fa8a04bd0e61e6fe7bdfdd90a25b6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex/Check.lean"
+  ],
+  "finished": "2026-11-06T21:26:51.149970+00:00"
+}

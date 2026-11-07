@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldIntervalPushout",
+  "state": "checked",
+  "started": "2026-11-06T21:43:16.723519+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0adfc80153f145def6e33890bfc42c6c23f614569394553e0c17518c2aa258b5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldIntervalPushout"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldIntervalPushout/Check.lean"
+  ],
+  "finished": "2026-11-06T21:43:25.738287+00:00"
+}

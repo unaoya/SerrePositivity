@@ -1,0 +1,8 @@
+⚠ [1522/1572] Replayed SerrePositivity.KST.Comparison.NerveChainsLastVertex
+warning: SerrePositivity/KST/Comparison/NerveChainsLastVertex.lean:61:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/Comparison/NerveChainsLastVertex.lean:64:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1572 jobs).

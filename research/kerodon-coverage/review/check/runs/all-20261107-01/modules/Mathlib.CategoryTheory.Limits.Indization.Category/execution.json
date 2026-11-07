@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Indization.Category",
+  "state": "checked",
+  "started": "2026-11-06T20:47:39.546712+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "28a4090d618ebeb5bd7fe463b2d3cdc37dd830155c04ce44480bfa07a0af6016",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Indization.Category"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Indization.Category/Check.lean"
+  ],
+  "finished": "2026-11-06T20:47:48.412014+00:00"
+}

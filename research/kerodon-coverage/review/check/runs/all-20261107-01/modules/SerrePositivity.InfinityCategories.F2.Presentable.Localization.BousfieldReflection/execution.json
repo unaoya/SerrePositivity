@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection",
+  "state": "checked",
+  "started": "2026-11-06T20:18:15.893200+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "702c4fb550f370c5c7986296f5d697c56a560b9eefd395b35474bb6d7adbfafb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection/Check.lean"
+  ],
+  "finished": "2026-11-06T20:18:43.154290+00:00"
+}

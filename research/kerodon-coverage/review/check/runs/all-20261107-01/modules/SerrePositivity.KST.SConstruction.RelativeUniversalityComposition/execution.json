@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.RelativeUniversalityComposition",
+  "state": "checked",
+  "started": "2026-11-06T22:49:25.186942+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "142754cb1d66246cb18d7edf731f280c0bee6c4487aa1fe8b16f568514a6994c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.RelativeUniversalityComposition"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.RelativeUniversalityComposition/Check.lean"
+  ],
+  "finished": "2026-11-06T22:49:34.122291+00:00"
+}

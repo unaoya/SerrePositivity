@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness",
+  "state": "checked",
+  "started": "2026-11-06T22:17:54.380754+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1f0eb71a0d2a4e45e00b036a6984417eee7d258ce4048e3ef645d0084ef1fe25",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness/Check.lean"
+  ],
+  "finished": "2026-11-06T22:18:05.088909+00:00"
+}

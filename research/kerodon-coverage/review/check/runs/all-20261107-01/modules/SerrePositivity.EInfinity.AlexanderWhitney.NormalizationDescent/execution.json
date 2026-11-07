@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.AlexanderWhitney.NormalizationDescent",
+  "state": "checked",
+  "started": "2026-11-06T20:58:06.857250+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4f61f3ace2ec827f45da6e8cff08629e2089793196748c4e4dcd94aca57c51f1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.AlexanderWhitney.NormalizationDescent"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.AlexanderWhitney.NormalizationDescent/Check.lean"
+  ],
+  "finished": "2026-11-06T20:58:16.601717+00:00"
+}

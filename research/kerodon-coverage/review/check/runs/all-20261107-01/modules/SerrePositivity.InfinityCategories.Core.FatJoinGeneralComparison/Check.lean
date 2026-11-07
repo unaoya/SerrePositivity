@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 54bbd40f17f2ef53cb5f
+#check @isPrecompositionEquivalence_fatJoinComparison
+#print axioms isPrecompositionEquivalence_fatJoinComparison

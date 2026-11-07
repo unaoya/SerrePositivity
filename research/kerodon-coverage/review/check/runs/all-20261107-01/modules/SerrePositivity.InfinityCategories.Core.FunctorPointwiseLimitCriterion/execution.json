@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion",
+  "state": "checked",
+  "started": "2026-11-06T19:44:08.791073+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f0f3adae7ef3b94f0f044f9f8e892ea734615c285d129ee7b5c66fa9226b8c68",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T19:44:19.411799+00:00"
+}

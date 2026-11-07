@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration",
+  "state": "checked",
+  "started": "2026-11-06T22:32:08.293699+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f13c2002d19f5f29286332d5ad434cdef683461c6f302af53e3c46e9861a3791",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration/Check.lean"
+  ],
+  "finished": "2026-11-06T22:32:22.294353+00:00"
+}

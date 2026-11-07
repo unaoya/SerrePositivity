@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFactorizationCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 41abccacab9542358d76
+#check @trivialKanFibration_iff_leftFibration_and_isLeftCofinal
+#print axioms trivialKanFibration_iff_leftFibration_and_isLeftCofinal
+
+-- reference 8f917749c090c04f22cc
+#check @trivialKanFibration_iff_rightFibration_and_isRightCofinal
+#print axioms trivialKanFibration_iff_rightFibration_and_isRightCofinal
+
+-- reference dab15d5abee45ac06450
+#check @isLeftCofinal_iff_exists_anodyne_trivialKan_factorization
+#print axioms isLeftCofinal_iff_exists_anodyne_trivialKan_factorization

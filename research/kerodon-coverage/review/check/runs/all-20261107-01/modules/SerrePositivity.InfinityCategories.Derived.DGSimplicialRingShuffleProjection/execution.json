@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection",
+  "state": "checked",
+  "started": "2026-11-06T21:23:17.317944+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "394eb0bc4ec948c4db766be4f7bdddc4a8d5051792db95e409b6ab582bcb401f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Derived.DGSimplicialRingShuffleProjection/Check.lean"
+  ],
+  "finished": "2026-11-06T21:23:27.226400+00:00"
+}

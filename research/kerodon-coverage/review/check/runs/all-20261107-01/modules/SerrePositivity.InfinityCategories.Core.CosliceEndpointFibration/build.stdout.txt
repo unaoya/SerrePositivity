@@ -1,0 +1,17 @@
+⚠ [1492/1492] Replayed SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration
+warning: SerrePositivity/InfinityCategories/Core/CosliceEndpointFibration.lean:34:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/Core/CosliceEndpointFibration.lean:42:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/Core/CosliceEndpointFibration.lean:88:0: Please, write a comment here or remove this line, but do not place empty lines within commands!
+Context:
+                                                                  ↓
+  ⏎      (b ≫ pullback.snd p (sliceUnderProjection (a ≫ p)))).symm⏎⏎  have hT : CommSq T (joinUnion (⊥ : K.Subcomplex) A₀).ι p F := by⏎
+
+Note: This linter can be disabled with `set_option linter.style.emptyLine false`
+warning: SerrePositivity/InfinityCategories/Core/CosliceEndpointFibration.lean:131:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1492 jobs).

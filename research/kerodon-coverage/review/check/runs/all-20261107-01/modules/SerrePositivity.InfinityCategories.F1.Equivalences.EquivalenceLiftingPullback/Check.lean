@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLiftingPullback
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2b1d22ff03ef9cc449ec
+#check @IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting
+#print axioms IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.Extension.Well",
+  "state": "checked",
+  "started": "2026-11-06T20:54:51.581031+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "61bf9931eecd55ed0e69859e33ef7bd179cbe918f51165518737d3ee206aa8e6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.Extension.Well"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.Extension.Well/Check.lean"
+  ],
+  "finished": "2026-11-06T20:55:01.118444+00:00"
+}

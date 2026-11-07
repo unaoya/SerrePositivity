@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue",
+  "state": "checked",
+  "started": "2026-11-06T21:44:29.741883+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a085172132b254f93de7a1accdeda3f3daeeeccf850ae8c09be3230c971b9bdb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberValue/Check.lean"
+  ],
+  "finished": "2026-11-06T21:44:39.203040+00:00"
+}

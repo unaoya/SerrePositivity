@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.GroupTheory.Coxeter.Matrix",
+  "state": "checked",
+  "started": "2026-11-06T20:54:14.589714+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "34f2bce63f03110815088bb44bb59fe6815a8e6c3e1b582c7f430dadc426bd84",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.GroupTheory.Coxeter.Matrix"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.GroupTheory.Coxeter.Matrix/Check.lean"
+  ],
+  "finished": "2026-11-06T20:54:24.428260+00:00"
+}

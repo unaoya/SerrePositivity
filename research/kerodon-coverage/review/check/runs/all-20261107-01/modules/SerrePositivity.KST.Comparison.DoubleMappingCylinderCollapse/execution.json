@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse",
+  "state": "checked",
+  "started": "2026-11-06T22:42:58.143130+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "58b06aa9a10d6487a7cc8247730cb8af769297dd1982eef542925ac02f6452eb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse/Check.lean"
+  ],
+  "finished": "2026-11-06T22:43:06.906291+00:00"
+}

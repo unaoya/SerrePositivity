@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFunctorInitialBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 579aad44b78348a51124
+#check @kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers
+#print axioms kanRelativeJoinFunctor_initialBoundary_of_colimit_fibers

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 11076bcd36a39316266f
+#check @leftStraighteningInfinityMap_isQCatEquivalence
+#print axioms leftStraighteningInfinityMap_isQCatEquivalence

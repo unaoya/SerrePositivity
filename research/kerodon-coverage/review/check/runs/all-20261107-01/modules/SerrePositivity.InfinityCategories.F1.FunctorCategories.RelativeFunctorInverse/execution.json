@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInverse",
+  "state": "checked",
+  "started": "2026-11-06T21:36:53.017470+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a454fa55ace7819bdc9ade878ae70058ae6f530e7faee454a9f938d96c92ce15",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInverse"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInverse/Check.lean"
+  ],
+  "finished": "2026-11-06T21:37:02.665415+00:00"
+}

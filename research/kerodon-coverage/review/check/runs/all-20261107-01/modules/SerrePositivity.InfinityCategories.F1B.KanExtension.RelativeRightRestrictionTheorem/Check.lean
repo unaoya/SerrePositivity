@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeRightRestrictionTheorem
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0688a7121abebcd46b20
+#check @kanRelativeRightKanRestriction_trivialKanFibration
+#print axioms kanRelativeRightKanRestriction_trivialKanFibration

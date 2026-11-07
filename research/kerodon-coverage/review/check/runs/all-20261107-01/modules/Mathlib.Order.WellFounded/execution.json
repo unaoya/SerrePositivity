@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Order.WellFounded",
+  "state": "checked",
+  "started": "2026-11-06T20:55:10.397636+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "2d640a650ee1e5fb6ca0ce845760e7ac822fde33bbe92ec3988bccd53cec589c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Order.WellFounded"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Order.WellFounded/Check.lean"
+  ],
+  "finished": "2026-11-06T20:55:19.085026+00:00"
+}

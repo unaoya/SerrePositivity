@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyDetection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 141418bb179011990476
+#check @isSimplicialHomotopyEquivalence_of_postcomposition_piZero_bijective
+#print axioms isSimplicialHomotopyEquivalence_of_postcomposition_piZero_bijective

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Coherent.HollowCylinder",
+  "state": "checked",
+  "started": "2026-11-06T19:39:15.926254+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a8a9f20967ccae97c29b45227a66efaf2a9c41660cd36550790fbf76ba09d4b2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Coherent.HollowCylinder"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Coherent.HollowCylinder/Check.lean"
+  ],
+  "finished": "2026-11-06T19:39:26.838375+00:00"
+}

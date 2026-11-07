@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.ModelBridge.QuillenCfBifibration
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 425da2310e941c309ecb
+#check @quillenCfCollageProjection_cartesianFibration
+#print axioms quillenCfCollageProjection_cartesianFibration

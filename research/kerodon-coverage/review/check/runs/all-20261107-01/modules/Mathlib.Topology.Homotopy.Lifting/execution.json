@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Topology.Homotopy.Lifting",
+  "state": "checked",
+  "started": "2026-11-06T19:36:27.019618+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "37abbaa4cb73c9b24db739c36aca81944d26eda431ca439d5d8c52da64638edb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Topology.Homotopy.Lifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Topology.Homotopy.Lifting/Check.lean"
+  ],
+  "finished": "2026-11-06T19:36:39.045170+00:00"
+}

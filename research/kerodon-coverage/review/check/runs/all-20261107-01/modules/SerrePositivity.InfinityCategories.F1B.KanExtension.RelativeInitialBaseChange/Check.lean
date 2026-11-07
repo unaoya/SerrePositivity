@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBaseChange
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f3d0ace5d2c864dfdc93
+#check @KanRelativeInitialVertex.pullback_snd
+#print axioms KanRelativeInitialVertex.pullback_snd
+
+-- reference 2fa693eeead577b2d3a0
+#check @kanRelativeInitial_pinchedHom_pullback_trivialKanFibration
+#print axioms kanRelativeInitial_pinchedHom_pullback_trivialKanFibration

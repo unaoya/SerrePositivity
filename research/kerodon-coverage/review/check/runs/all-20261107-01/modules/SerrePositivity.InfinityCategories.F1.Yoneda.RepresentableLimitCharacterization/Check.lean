@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2d507ea569b5034ac13f
+#check @isLimitCone_iff_covariantRepresentableInfinity
+#print axioms isLimitCone_iff_covariantRepresentableInfinity

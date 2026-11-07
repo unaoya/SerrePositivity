@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Preserves.Finite",
+  "state": "checked",
+  "started": "2026-11-06T20:48:14.596773+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b1089a0b81f0f9c3ac0ae66c089db0b34c8d60f5fa23a077bd0754588e719cee",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Preserves.Finite"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Preserves.Finite/Check.lean"
+  ],
+  "finished": "2026-11-06T20:48:23.424008+00:00"
+}

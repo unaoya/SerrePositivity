@@ -1,0 +1,69 @@
+⚠ [1666/1739] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseFaceImages
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseFaceImages.lean:39:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1669/1739] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseFacePullbacks
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseFacePullbacks.lean:69:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1671/1739] Replayed SerrePositivity.InfinityCategories.Core.JoinTensorRight
+warning: SerrePositivity/InfinityCategories/Core/JoinTensorRight.lean:125:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1684/1739] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSupportEquivalence
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSupportEquivalence.lean:28:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSupportEquivalence.lean:35:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSupportEquivalence.lean:116:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1688/1739] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSimplexPairing
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSimplexPairing.lean:57:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1693/1739] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewisePairingRegular
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewisePairingRegular.lean:50:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1729/1739] Replayed SerrePositivity.InfinityCategories.Core.VertexFiber
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:14: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:16: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:19: Variable name `α` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _α
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1734/1739] Replayed SerrePositivity.InfinityCategories.Core.LeftFiberKan
+warning: SerrePositivity/InfinityCategories/Core/LeftFiberKan.lean:34:6: Unused tactic linter: `change i.rev.val < n + 1` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Build completed successfully (1739 jobs).

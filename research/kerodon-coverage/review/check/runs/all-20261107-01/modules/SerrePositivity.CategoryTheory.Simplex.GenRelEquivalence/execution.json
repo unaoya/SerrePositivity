@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T20:56:41.811452+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "a598caf516bcf2d43b50112c608e3aaecd9191fbbe0060d4aa4a3889f9bd068d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:56:51.531003+00:00"
+}

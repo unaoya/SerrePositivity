@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FatJoinComparisonGluing
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 384c8b48aa6332838090
+#check @isPrecompositionEquivalence_fatJoinComparison_of_pushout_left
+#print axioms isPrecompositionEquivalence_fatJoinComparison_of_pushout_left

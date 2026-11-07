@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 099cc81cc9dbff60fa21
+#check @coslicePostcompFiberMap_source_equivalence_of_target
+#print axioms coslicePostcompFiberMap_source_equivalence_of_target

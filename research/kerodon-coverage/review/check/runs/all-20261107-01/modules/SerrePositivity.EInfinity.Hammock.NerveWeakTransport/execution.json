@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.Hammock.NerveWeakTransport",
+  "state": "checked",
+  "started": "2026-11-06T20:59:11.487136+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1d1c9b853d7c3bdb40be341dea9d2c71ab6b42169236a877dda8a82116dfd006",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.Hammock.NerveWeakTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.Hammock.NerveWeakTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T20:59:22.752173+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Coherent.ResolutionMonomorphisms",
+  "state": "checked",
+  "started": "2026-11-06T21:31:30.422074+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3a5a5e201c02076eab3ac6f59b8a65e12c7fec6917d8ecedf48f1ed181a09912",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Coherent.ResolutionMonomorphisms"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Coherent.ResolutionMonomorphisms/Check.lean"
+  ],
+  "finished": "2026-11-06T21:31:40.202295+00:00"
+}

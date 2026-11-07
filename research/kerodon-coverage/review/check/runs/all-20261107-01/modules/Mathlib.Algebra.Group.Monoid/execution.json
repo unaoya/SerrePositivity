@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Group.Monoid",
+  "state": "checked",
+  "started": "2026-11-06T20:34:30.108363+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "20508b506beff9b559f941de9cc44b1e263fc01bf70ec138ed1a5a6e3404f379",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Group.Monoid"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Group.Monoid/Check.lean"
+  ],
+  "finished": "2026-11-06T20:34:38.847939+00:00"
+}

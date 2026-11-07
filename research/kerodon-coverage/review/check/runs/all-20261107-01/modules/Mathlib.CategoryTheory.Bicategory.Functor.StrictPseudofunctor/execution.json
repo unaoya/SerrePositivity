@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor",
+  "state": "checked",
+  "started": "2026-11-06T20:42:36.368340+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b64f7477e4afd7c67978730e13c56a78c538b8f37f7de9d0919b278ed4827349",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T20:42:45.213503+00:00"
+}

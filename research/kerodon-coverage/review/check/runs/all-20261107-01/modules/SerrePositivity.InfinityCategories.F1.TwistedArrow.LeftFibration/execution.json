@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:50:04.543400+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5324032391eca49179c35d7ff1ad1f86f91b2a2b6e9bf640cf29d217d1f9fa09",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:50:13.526659+00:00"
+}

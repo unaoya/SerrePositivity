@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.CoherentFilteredPosetExchange
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f0178ce4361404d63a9d
+#check @coherentCardinalFilteredLimitExchange_poset
+#print axioms coherentCardinalFilteredLimitExchange_poset

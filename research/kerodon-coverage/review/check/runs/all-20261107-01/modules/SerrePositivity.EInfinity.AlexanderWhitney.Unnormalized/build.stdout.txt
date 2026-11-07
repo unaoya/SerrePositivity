@@ -1,0 +1,8 @@
+⚠ [1955/1970] Replayed SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:20:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/HomologicalAlgebra/CochainTensor/Basic.lean:28:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1970 jobs).

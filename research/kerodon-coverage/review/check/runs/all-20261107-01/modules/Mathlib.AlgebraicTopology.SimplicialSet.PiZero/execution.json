@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+  "state": "checked",
+  "started": "2026-11-06T20:40:53.953061+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "21ebd5d24d881b2d3481bff4b8dca1339ea3e2fa0b804a58537a974a85074af0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.PiZero"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.PiZero/Check.lean"
+  ],
+  "finished": "2026-11-06T20:41:03.371168+00:00"
+}

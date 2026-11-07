@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackFiniteColimits",
+  "state": "checked",
+  "started": "2026-11-06T22:09:44.263514+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d1f84ad6679d56688d53b88ce5a21bd8953799cd9bcc0011439d33071bfa547a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackFiniteColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackFiniteColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T22:09:54.156198+00:00"
+}

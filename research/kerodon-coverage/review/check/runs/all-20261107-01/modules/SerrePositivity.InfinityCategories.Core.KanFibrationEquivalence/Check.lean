@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 55d3922f1e153927c00c
+#check @trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence
+#print axioms trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence

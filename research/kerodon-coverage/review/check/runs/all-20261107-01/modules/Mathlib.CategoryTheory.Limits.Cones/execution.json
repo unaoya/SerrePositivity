@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Cones",
+  "state": "checked",
+  "started": "2026-11-06T20:46:27.967200+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "c5a4c134453048f93427e933d8a23e45eaffcf44cd0341b5b5e5f9ee01fb3fef",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Cones"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Cones/Check.lean"
+  ],
+  "finished": "2026-11-06T20:46:36.853663+00:00"
+}

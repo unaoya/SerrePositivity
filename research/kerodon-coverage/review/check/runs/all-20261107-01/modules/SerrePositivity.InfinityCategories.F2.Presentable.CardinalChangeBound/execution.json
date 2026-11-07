@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.CardinalChangeBound",
+  "state": "checked",
+  "started": "2026-11-06T22:21:07.536686+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "42ff471bd1624ac998ae83677626128420939a5bce98532870fcb3a5097018f5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.CardinalChangeBound"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.CardinalChangeBound/Check.lean"
+  ],
+  "finished": "2026-11-06T22:21:15.764183+00:00"
+}

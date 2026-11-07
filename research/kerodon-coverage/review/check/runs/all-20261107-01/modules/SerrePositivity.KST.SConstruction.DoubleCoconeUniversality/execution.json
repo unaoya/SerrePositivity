@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.DoubleCoconeUniversality",
+  "state": "checked",
+  "started": "2026-11-06T20:32:37.173040+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "4d8e6522007c4d1283772f4648ca8bdf20788deb22595b8ce446faa93ec8b289",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.DoubleCoconeUniversality"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.DoubleCoconeUniversality/Check.lean"
+  ],
+  "finished": "2026-11-06T20:32:48.751518+00:00"
+}

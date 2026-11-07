@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoproductCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:28:50.739175+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6b258829988f4ba9833caed7ca964b4b6fe60dcf43ac8b859f5685697d91e86e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoproductCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoproductCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:29:00.733953+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:37:41.745200+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b9334ec674dea632edc7604a4c4f941bb7c0e45a3101538e9a38eb7f73ee7e16",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:37:51.137230+00:00"
+}

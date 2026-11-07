@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalUnitCollageComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7136ecbdac8525daa066
+#check @unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage
+#print axioms unitIntervalMap_isSimplicialHomotopyEquivalence_of_collage

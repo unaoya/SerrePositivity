@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor",
+  "state": "checked",
+  "started": "2026-11-06T21:51:28.901894+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2251c9166cf6724a1759f606186e7d11d10a5b082c7865e4fed8bae325882c46",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T21:51:37.343560+00:00"
+}

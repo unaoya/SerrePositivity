@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionFromHomRepresentation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a5480a7f0c14f62aaacd
+#check @exists_leftAdjoint_iff_covariantHom_representable
+#print axioms exists_leftAdjoint_iff_covariantHom_representable
+
+-- reference cfe66c775299301c06dc
+#check @leftFibration_exists_initial_of_covariantRepresentation
+#print axioms leftFibration_exists_initial_of_covariantRepresentation

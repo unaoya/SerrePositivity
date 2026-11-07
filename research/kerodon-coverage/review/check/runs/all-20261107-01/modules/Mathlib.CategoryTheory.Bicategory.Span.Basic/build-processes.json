@@ -1,0 +1,7 @@
+[
+  {
+    "pid": "1645",
+    "command": "/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main",
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/arxiv_formalization"
+  }
+]

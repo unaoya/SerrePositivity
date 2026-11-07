@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.FunctorInitialBoundary",
+  "state": "checked",
+  "started": "2026-11-06T20:33:01.592622+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7ea0f73fa7e27d8b065acdab5e1c4d3cc547cf79d14e7aa7d1e6dd1d1734bda6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.FunctorInitialBoundary"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.FunctorInitialBoundary/Check.lean"
+  ],
+  "finished": "2026-11-06T20:33:13.437942+00:00"
+}

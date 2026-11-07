@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.DifferentialGraded.Complexes.HomComplex",
+  "state": "checked",
+  "started": "2026-11-06T20:57:03.236708+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b77b927c954cebce8e21841415961809afb50e3db85b8da20256789c95ae281c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.DifferentialGraded.Complexes.HomComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.DifferentialGraded.Complexes.HomComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:57:14.153108+00:00"
+}

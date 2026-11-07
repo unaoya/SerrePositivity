@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:05:51.768996+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "1dc3d1c27b91cc82b35d3dcb58d328fb98972d4e045d89c34c036f32070e62a4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:06:01.695929+00:00"
+}

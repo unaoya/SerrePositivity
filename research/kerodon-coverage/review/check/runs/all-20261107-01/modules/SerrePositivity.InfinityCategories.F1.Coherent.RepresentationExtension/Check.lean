@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Coherent.RepresentationExtension
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 00862c874aee80820ea6
+#check @exists_coherentUnstraighteningRepresentation_extension
+#print axioms exists_coherentUnstraighteningRepresentation_extension
+
+-- reference 0e1cd0f29649c7b92e3c
+#check @coherentUnstraighteningWitnessRestriction_trivialKanFibration
+#print axioms coherentUnstraighteningWitnessRestriction_trivialKanFibration

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport",
+  "state": "checked",
+  "started": "2026-11-06T21:57:51.180988+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3e9895ae8625bbaf940309a96545f0bc4890b9752d460ab2354aac3388766a46",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T21:57:59.955916+00:00"
+}

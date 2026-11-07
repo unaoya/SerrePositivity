@@ -1,0 +1,6 @@
+warning: existing lake build (possibly unguarded):
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.Monoidal.Closed.Basic
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build Mathlib.CategoryTheory.Monoidal.Closed.Basic
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
+waiting for build lock: {"pid": 28400, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:43:11.649138+00:00", "command": ["lake", "build", "Mathlib.CategoryTheory.Monoidal.Closed.Basic"], "token": "726882bffacc4df4ab6935e55525990a"}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLeftCanonicalExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0f57adf22233b0f72ff0
+#check @exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits
+#print axioms exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits

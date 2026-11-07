@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.FullSubcomplexCosliceFaithful
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7f9e292c6448ef5c8679
+#check @fullSubcomplex_coslicePostcomp_isFullyFaithful
+#print axioms fullSubcomplex_coslicePostcomp_isFullyFaithful

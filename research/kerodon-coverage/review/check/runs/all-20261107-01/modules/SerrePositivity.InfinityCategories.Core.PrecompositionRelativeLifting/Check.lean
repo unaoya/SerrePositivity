@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.PrecompositionRelativeLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 5b6d34aaf30356061130
+#check @IsPrecompositionEquivalence.trivialKanFibration_relative_pre
+#print axioms IsPrecompositionEquivalence.trivialKanFibration_relative_pre

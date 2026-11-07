@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.FiniteSimplexEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b8085643c5cc77d31565
+#check @cocartesianStraighteningCoherentMap_finite_isQCatEquivalence
+#print axioms cocartesianStraighteningCoherentMap_finite_isQCatEquivalence

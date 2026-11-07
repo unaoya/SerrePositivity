@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 3095991a62d8c4a5e8e3
+#check @cocartesianHornFibration_coneRestriction
+#print axioms cocartesianHornFibration_coneRestriction

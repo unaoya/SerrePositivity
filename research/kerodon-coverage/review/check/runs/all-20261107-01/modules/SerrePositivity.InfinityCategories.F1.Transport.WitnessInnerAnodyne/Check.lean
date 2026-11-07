@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Transport.WitnessInnerAnodyne
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference c1c747181dc4add9cbc5
+#check @transportWitnessRestriction_trivialKanFibration_of_innerAnodyne
+#print axioms transportWitnessRestriction_trivialKanFibration_of_innerAnodyne

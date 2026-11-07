@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+  "state": "checked",
+  "started": "2026-11-06T22:40:06.740269+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b36485109e31a7fe09560cb206b3e2fd5c9dd42001caa2db25e36b35c40370b2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Kan.PiZeroConstant"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Kan.PiZeroConstant/Check.lean"
+  ],
+  "finished": "2026-11-06T22:40:15.243572+00:00"
+}

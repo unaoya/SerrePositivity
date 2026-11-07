@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinPointwiseExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference d996c69d3903544ccd95
+#check @exists_kanRelativeJoin_diagram_of_pointwise_colimits
+#print axioms exists_kanRelativeJoin_diagram_of_pointwise_colimits

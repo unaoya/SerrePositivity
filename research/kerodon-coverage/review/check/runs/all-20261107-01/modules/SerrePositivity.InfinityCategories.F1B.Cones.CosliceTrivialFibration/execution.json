@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cones.CosliceTrivialFibration",
+  "state": "checked",
+  "started": "2026-11-06T21:56:57.122779+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0e37532dd514e547f24d68ea22f7286436c696beed8ec4e04e12d5667e82a22b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cones.CosliceTrivialFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cones.CosliceTrivialFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T21:57:06.019869+00:00"
+}

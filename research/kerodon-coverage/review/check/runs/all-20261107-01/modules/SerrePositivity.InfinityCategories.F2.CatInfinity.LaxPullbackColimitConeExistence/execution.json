@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence",
+  "state": "checked",
+  "started": "2026-11-06T22:09:24.532874+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8edf02e12a4b9f36d6465c5ea70d5f03542a197d668518e9a3a5f84fdeb7a146",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:09:34.422893+00:00"
+}

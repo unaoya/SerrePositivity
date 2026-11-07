@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:11:10.449125+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "447b208ef02d7e3bb5a75048506dd8199ee0d081ad3e392af056987e36ab634f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:11:19.422388+00:00"
+}

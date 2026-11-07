@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality",
+  "state": "checked",
+  "started": "2026-11-06T20:58:50.424444+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a634532004aa62ef0fab7d0c172ea75511253f517e749b042b1d0562ba7ecf66",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.FrameHom.FrameArrowCofinality/Check.lean"
+  ],
+  "finished": "2026-11-06T20:59:01.073431+00:00"
+}

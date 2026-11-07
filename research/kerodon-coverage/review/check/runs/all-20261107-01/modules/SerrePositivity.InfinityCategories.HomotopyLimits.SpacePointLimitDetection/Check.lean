@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePointLimitDetection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 189e1a43d4162bb59100
+#check @HomotopyLimits.spaceCone_isLimit_iff_pointRestriction_of_hasLimit
+#print axioms HomotopyLimits.spaceCone_isLimit_iff_pointRestriction_of_hasLimit

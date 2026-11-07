@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 619adf49d44faff247df
+#check @SerrePositivity.InfinityCategories.kanComplex_of_trivialKanFibration_target
+#print axioms SerrePositivity.InfinityCategories.kanComplex_of_trivialKanFibration_target

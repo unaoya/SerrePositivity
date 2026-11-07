@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization",
+  "state": "checked",
+  "started": "2026-11-06T21:00:48.995049+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7a238ea3d19cc756b9ee5b399962bd160329e97bb936cab36e2c12d0cc5ed9f9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization/Check.lean"
+  ],
+  "finished": "2026-11-06T21:00:59.840540+00:00"
+}

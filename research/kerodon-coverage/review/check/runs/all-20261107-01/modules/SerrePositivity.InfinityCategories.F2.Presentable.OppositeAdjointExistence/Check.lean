@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference b70146ae5042d29c945a
+#check @exists_rightAdjoint_of_contravariantHom_representable
+#print axioms exists_rightAdjoint_of_contravariantHom_representable

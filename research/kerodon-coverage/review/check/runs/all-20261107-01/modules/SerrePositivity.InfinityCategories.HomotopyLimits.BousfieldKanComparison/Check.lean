@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 8ad0e156a1f925306bb5
+#check @bousfieldKanLimitComparison_homotopyEquivalence_of_extensions
+#print axioms bousfieldKanLimitComparison_homotopyEquivalence_of_extensions

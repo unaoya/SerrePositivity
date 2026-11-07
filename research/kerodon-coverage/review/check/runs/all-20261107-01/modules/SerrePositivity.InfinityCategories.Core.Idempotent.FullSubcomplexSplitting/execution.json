@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting",
+  "state": "checked",
+  "started": "2026-11-06T21:10:54.000802+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f660ee269a0d945b10c4a930074074f2f534d0bffad82694805e8cff5b58e101",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting/Check.lean"
+  ],
+  "finished": "2026-11-06T21:11:04.148116+00:00"
+}

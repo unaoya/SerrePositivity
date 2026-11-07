@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SiftedProductComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 189d8de0adc191093c1a
+#check @totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted
+#print axioms totalKanProductComparison_isWeakHomotopyEquivalence_of_sifted

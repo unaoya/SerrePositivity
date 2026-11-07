@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.PrecompositionHomotopy",
+  "state": "checked",
+  "started": "2026-11-06T21:15:52.586082+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ea41072a27f7b2d22a1dc031b58ec087ce5a4aa03ea7698c8baa0163a6b4d9b2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.PrecompositionHomotopy"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.PrecompositionHomotopy/Check.lean"
+  ],
+  "finished": "2026-11-06T21:16:01.852202+00:00"
+}

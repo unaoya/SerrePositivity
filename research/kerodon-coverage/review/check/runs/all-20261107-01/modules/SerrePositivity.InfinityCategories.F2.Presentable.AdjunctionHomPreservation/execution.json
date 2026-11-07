@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation",
+  "state": "checked",
+  "started": "2026-11-06T22:20:54.294963+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5741cc40a429f8e73d2e8b6443c5d61c85674c4da8f0b1f3f03e2e5b44183368",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation/Check.lean"
+  ],
+  "finished": "2026-11-06T22:21:07.534923+00:00"
+}

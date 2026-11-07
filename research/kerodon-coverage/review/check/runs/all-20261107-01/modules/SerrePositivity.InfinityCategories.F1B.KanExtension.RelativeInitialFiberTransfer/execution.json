@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialFiberTransfer",
+  "state": "checked",
+  "started": "2026-11-06T22:04:39.849824+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b07e7a77b3ca643b7fe2a2e072b151bc6d9ed8ab33139e9e5534a32efca39997",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialFiberTransfer"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialFiberTransfer/Check.lean"
+  ],
+  "finished": "2026-11-06T22:04:48.799600+00:00"
+}

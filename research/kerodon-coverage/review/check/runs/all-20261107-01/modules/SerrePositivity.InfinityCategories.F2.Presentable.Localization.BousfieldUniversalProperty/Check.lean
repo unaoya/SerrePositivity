@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldUniversalProperty
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6190d1687c247fd47b57
+#check @bousfieldLocalizationFunctor_preservesSmallColimits
+#print axioms bousfieldLocalizationFunctor_preservesSmallColimits
+
+-- reference 75005492d98bf1aff330
+#check @bousfieldLocalizationFunctor_isLocalization_invertedEdges
+#print axioms bousfieldLocalizationFunctor_isLocalization_invertedEdges

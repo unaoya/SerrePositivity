@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.WeakContractibleContractionSpan
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 85fe9434d471399270d4
+#check @nerve_isWeaklyContractible_of_contractionSpan
+#print axioms nerve_isWeaklyContractible_of_contractionSpan

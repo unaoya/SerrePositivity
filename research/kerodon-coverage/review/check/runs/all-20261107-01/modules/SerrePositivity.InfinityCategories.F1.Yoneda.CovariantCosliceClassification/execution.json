@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Yoneda.CovariantCosliceClassification",
+  "state": "checked",
+  "started": "2026-11-06T20:02:05.924196+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "141caa95254537d174a72b04b03cb60830bafcceacb440f2599ffd14fb83ac4f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Yoneda.CovariantCosliceClassification"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Yoneda.CovariantCosliceClassification/Check.lean"
+  ],
+  "finished": "2026-11-06T20:02:17.549090+00:00"
+}

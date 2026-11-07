@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.ConeSpanLimitCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ca36c319a83892054fa1
+#check @isLimitCone_iff_mappingEvaluation_homotopyEquivalence
+#print axioms isLimitCone_iff_mappingEvaluation_homotopyEquivalence

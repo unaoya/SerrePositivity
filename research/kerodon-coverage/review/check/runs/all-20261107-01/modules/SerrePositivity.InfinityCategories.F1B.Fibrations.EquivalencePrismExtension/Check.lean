@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalencePrismExtension
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9b7970e7fb7ecc622622
+#check @exists_kanPrism_extension_of_precompositionEquivalence
+#print axioms exists_kanPrism_extension_of_precompositionEquivalence

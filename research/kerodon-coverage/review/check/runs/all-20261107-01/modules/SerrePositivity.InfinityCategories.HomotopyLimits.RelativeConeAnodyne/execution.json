@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativeConeAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T20:25:43.492321+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e11cfb2cfd5e5f0928bcde5fd2b457b0abd7268824c25d5560ca430bf8cc43f6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.RelativeConeAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.RelativeConeAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T20:25:54.306616+00:00"
+}

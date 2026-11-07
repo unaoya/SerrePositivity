@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredWeakEquivalences
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2ae96a11c321b7832111
+#check @filteredColimitMap_isWeakHomotopyEquivalence
+#print axioms filteredColimitMap_isWeakHomotopyEquivalence

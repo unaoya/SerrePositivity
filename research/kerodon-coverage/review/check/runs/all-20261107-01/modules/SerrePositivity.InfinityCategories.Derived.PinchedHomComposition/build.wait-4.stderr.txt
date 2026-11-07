@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.Derived.PinchedHomComposition
+waiting for build lock: {"pid": 32646, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:48:44.427137+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration"], "token": "c7331d3746d24e00b9c2e60aceb381bc"}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLiftingCartesian
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 968d3c335b1018bd63f0
+#check @kanRelativeJoinRelative_initialBoundary_of_relativeColimit
+#print axioms kanRelativeJoinRelative_initialBoundary_of_relativeColimit

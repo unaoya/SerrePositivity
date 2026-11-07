@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory",
+  "state": "checked",
+  "started": "2026-11-06T20:13:26.740989+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b878f6b446517de9a72579801308774a134191a44e03f486e847ab7a980b5e96",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory/Check.lean"
+  ],
+  "finished": "2026-11-06T20:13:38.670838+00:00"
+}

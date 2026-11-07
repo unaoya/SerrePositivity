@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting",
+  "state": "checked",
+  "started": "2026-11-06T21:42:03.610972+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6f206b6ce2f146a8e10569546af71ac5aafdaca59f2ebbab10b62847d297667d",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T21:42:12.575801+00:00"
+}

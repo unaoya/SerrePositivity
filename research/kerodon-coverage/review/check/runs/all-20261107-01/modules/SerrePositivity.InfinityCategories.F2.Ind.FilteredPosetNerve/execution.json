@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve",
+  "state": "checked",
+  "started": "2026-11-06T20:12:24.331462+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8cc2769bbcadcfe7aef38f3543861bc889cb6a5bbf199b2c004aebb7a68f0e8c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve/Check.lean"
+  ],
+  "finished": "2026-11-06T20:12:35.968595+00:00"
+}

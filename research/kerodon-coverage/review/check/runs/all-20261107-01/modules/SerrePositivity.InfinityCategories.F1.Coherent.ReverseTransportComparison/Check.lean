@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Coherent.ReverseTransportComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 64858fdf19d7aebbfd1b
+#check @coherentCompositionReverseTransport_parametrizedIso
+#print axioms coherentCompositionReverseTransport_parametrizedIso

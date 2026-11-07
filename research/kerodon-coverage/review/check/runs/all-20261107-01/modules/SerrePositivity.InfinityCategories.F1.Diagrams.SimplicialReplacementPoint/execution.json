@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementPoint",
+  "state": "checked",
+  "started": "2026-11-06T21:33:25.862122+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2d347d1f0bc79688e28e753b1dfadc0845cc9ae30e5861776af9da68cdac109b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementPoint"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementPoint/Check.lean"
+  ],
+  "finished": "2026-11-06T21:33:34.992957+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Adjunction.Unique",
+  "state": "checked",
+  "started": "2026-11-06T20:42:27.326657+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "f11fbb6a129a1b43acd345255faf667f48ed1049e794040a044d2310e81d2516",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Adjunction.Unique"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Adjunction.Unique/Check.lean"
+  ],
+  "finished": "2026-11-06T20:42:36.367525+00:00"
+}

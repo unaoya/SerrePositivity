@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLiftingCartesian",
+  "state": "checked",
+  "started": "2026-11-06T20:08:42.932064+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "57ca966aeadad981d52be439233fc50f624d25849026eb9826f3b649cf325034",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLiftingCartesian"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLiftingCartesian/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:53.617072+00:00"
+}

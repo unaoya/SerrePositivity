@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorInverse
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9bfbc829ce3c6c29957d
+#check @exists_relativeFunctorInverse_of_precompositionEquivalence
+#print axioms exists_relativeFunctorInverse_of_precompositionEquivalence

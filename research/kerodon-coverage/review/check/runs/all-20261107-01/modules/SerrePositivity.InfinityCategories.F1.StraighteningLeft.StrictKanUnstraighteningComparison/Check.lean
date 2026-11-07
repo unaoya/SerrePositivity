@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1.StraighteningLeft.StrictKanUnstraighteningComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 60b8b4ed517a5929f149
+#check @strictKanUnstraighteningComparison
+#print axioms strictKanUnstraighteningComparison
+
+-- reference d4549753f96d6bf38dc9
+#check @strictKanUnstraighteningComparison_isPrecompositionEquivalence
+#print axioms strictKanUnstraighteningComparison_isPrecompositionEquivalence
+
+-- reference b8bde5881c2e94d8a674
+#check @strictKanUnstraighteningComparison_projection
+#print axioms strictKanUnstraighteningComparison_projection

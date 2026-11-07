@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T22:13:36.645906+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0161d2c303a1477f671a92c369560b948857b53e4315470e73d55cc0ea188682",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:13:46.396689+00:00"
+}

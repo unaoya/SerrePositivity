@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.MooreComplex",
+  "state": "checked",
+  "started": "2026-11-06T20:36:09.942590+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "4a058a76b031ff366914a23bd52d9cc11f8d0c8ddee3ee928c8280901f9f1b8e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.MooreComplex"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.MooreComplex/Check.lean"
+  ],
+  "finished": "2026-11-06T20:36:20.536198+00:00"
+}

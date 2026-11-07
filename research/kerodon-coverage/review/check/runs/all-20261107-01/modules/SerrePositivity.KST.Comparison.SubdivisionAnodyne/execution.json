@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.SubdivisionAnodyne",
+  "state": "checked",
+  "started": "2026-11-06T22:45:17.940753+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "604b7d32c72406673b2263d928c9f6f5100271ce64dc67578628ad9be0483ccc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.SubdivisionAnodyne"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.SubdivisionAnodyne/Check.lean"
+  ],
+  "finished": "2026-11-06T22:45:26.833132+00:00"
+}

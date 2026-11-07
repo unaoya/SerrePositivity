@@ -1,0 +1,6 @@
+warning: existing lake build (possibly unguarded):
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lake build ArxivFormalization.LocalFieldBasics.Artin.Main
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.CategoryTheory.Functor.Flat
+waiting for build lock: {"pid": 10120, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:30:23.358351+00:00", "command": ["lake", "build", "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne"], "token": "c6a3997cba474182ad655c538055ae3f"}

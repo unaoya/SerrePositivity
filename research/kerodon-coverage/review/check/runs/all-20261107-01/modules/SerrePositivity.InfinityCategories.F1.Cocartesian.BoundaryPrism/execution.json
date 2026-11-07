@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.BoundaryPrism",
+  "state": "checked",
+  "started": "2026-11-06T21:28:33.028278+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "66df6dc2d562e1a45fe42f814cb94e05ac8e2e90e1c7d05c525170b53a60134e",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Cocartesian.BoundaryPrism"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Cocartesian.BoundaryPrism/Check.lean"
+  ],
+  "finished": "2026-11-06T21:28:42.681244+00:00"
+}

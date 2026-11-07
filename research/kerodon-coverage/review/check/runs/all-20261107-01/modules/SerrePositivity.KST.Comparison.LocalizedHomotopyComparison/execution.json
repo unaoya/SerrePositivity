@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.LocalizedHomotopyComparison",
+  "state": "checked",
+  "started": "2026-11-06T20:31:16.707951+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ec78eaf992b2142b01ec26555b8d96145c563151e853bd985fa2bc49283256c5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.LocalizedHomotopyComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.LocalizedHomotopyComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T20:31:27.677880+00:00"
+}

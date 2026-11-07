@@ -1,0 +1,5 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
+/Users/sugakubunka/.elan/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lake build SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build Mathlib.SetTheory.Cardinal.Cofinality.Enum
+waiting for build lock: {"pid": 20947, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:35:09.614620+00:00", "command": ["lake", "build", "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization"], "token": "5644e66da5544347abc9995deaab974d"}

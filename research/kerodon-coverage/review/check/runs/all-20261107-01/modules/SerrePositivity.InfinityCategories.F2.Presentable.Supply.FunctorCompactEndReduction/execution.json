@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorCompactEndReduction",
+  "state": "checked",
+  "started": "2026-11-06T20:22:51.903271+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "55eafada0841a55a9d76a29ac30fc4cfd067c84f2b2ae5425bd07dd12fdd6985",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorCompactEndReduction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.Supply.FunctorCompactEndReduction/Check.lean"
+  ],
+  "finished": "2026-11-06T20:23:13.330074+00:00"
+}

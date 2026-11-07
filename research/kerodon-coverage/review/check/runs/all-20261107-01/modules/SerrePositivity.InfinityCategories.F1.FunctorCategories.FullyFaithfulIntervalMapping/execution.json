@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIntervalMapping",
+  "state": "checked",
+  "started": "2026-11-06T21:36:23.996160+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8a48de6c1be26932b80b20a94d8935b9d12e62b9476c2e9654f076a505a9c558",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIntervalMapping"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIntervalMapping/Check.lean"
+  ],
+  "finished": "2026-11-06T21:36:34.909815+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointExistence",
+  "state": "checked",
+  "started": "2026-11-06T20:18:43.155764+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7b5c1d78fe9623925f74888bd913bbf9582004b1ec26fb2f3600ee329ffa6ead",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.OppositeAdjointExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:19:02.251327+00:00"
+}

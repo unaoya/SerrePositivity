@@ -1,0 +1,21 @@
+⚠ [1496/1498] Replayed SerrePositivity.InfinityCategories.Core.TerminalExtension
+warning: SerrePositivity/InfinityCategories/Core/TerminalExtension.lean:57:17: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [skeletonBase, Subcomplex.lift_ι, SSet.yonedaEquiv_symm_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [1497/1498] Replayed SerrePositivity.InfinityCategories.Core.SkeletalLifting
+warning: SerrePositivity/InfinityCategories/Core/SkeletalLifting.lean:51:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1498/1498] Replayed SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
+warning: SerrePositivity/InfinityCategories/Core/RelativeTerminalExtension.lean:62:17: This simp argument is unused:
+  Category.assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [skeletonBase, Subcomplex.lift_ι, SSet.yonedaEquiv_symm_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (1498 jobs).

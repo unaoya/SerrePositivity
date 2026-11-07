@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 2b83cf347eb39d601e15
+#check @isLimitCone_iff_pointwise_of_hasPointwiseLimits
+#print axioms isLimitCone_iff_pointwise_of_hasPointwiseLimits
+
+-- reference 5d73c4a39b5446c0b247
+#check @isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits
+#print axioms isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits
+
+-- reference 04950f3cba8fd106e432
+#check @exists_pointwiseLimitCone
+#print axioms exists_pointwiseLimitCone

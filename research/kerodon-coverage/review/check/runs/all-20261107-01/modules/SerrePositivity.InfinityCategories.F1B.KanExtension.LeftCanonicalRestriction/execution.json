@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestriction",
+  "state": "checked",
+  "started": "2026-11-06T22:01:35.161971+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "71999096efec95c3e2830adf3c762df32c24e537b4989f6c84bc3916739d2c1b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:01:44.998377+00:00"
+}

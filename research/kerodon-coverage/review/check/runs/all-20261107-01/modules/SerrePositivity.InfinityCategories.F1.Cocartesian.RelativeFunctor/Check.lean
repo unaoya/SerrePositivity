@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 78a76f771b82528cb270
+#check @relativeFunctorSpace_quasicategory_of_innerFibration
+#print axioms relativeFunctorSpace_quasicategory_of_innerFibration

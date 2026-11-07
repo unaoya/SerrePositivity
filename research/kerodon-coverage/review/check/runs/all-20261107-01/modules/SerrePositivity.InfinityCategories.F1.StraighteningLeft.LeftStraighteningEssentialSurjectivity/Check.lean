@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningEssentialSurjectivity
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 23fe6f8e89ae8881a1cc
+#check @leftStraighteningInfinityMap_isEssentiallySurjective
+#print axioms leftStraighteningInfinityMap_isEssentiallySurjective
+
+-- reference 64a97c59439f7dc83151
+#check @leftStraighteningInfinityCounit
+#print axioms leftStraighteningInfinityCounit

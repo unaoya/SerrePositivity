@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.StronglySaturatedClosure",
+  "state": "checked",
+  "started": "2026-11-06T22:37:17.108816+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "cfb66e76ba971c6f2f9e2bbfbe57e4052b7fb8d29078d23a1ecdee246ea94b45",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.StronglySaturatedClosure"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.StronglySaturatedClosure/Check.lean"
+  ],
+  "finished": "2026-11-06T22:37:27.331639+00:00"
+}

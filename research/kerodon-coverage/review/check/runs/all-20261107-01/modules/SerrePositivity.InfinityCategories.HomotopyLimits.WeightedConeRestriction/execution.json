@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeRestriction",
+  "state": "checked",
+  "started": "2026-11-06T22:38:04.772033+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e9c36b81ad80061e65c936e76272756327c02feadfbe81cb3ac4aba03592a466",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:38:14.349102+00:00"
+}

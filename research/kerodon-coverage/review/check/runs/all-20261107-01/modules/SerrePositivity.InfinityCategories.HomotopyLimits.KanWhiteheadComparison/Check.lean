@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 460d2ee029fcda948eb8
+#check @kanPiIsomorphism_of_homotopyEquivalence
+#print axioms kanPiIsomorphism_of_homotopyEquivalence
+
+-- reference 92cfe1bff81c9b1351a9
+#check @homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective
+#print axioms homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective

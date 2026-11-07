@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 20d0e9010921a5b38ed7
+#check @equivalenceLifting_iff_inner_and_invertibleTargetLifting
+#print axioms equivalenceLifting_iff_inner_and_invertibleTargetLifting
+
+-- reference cbebd41caf9125505b8d
+#check @equivalenceLifting_of_innerFibration_of_targetLifting
+#print axioms equivalenceLifting_of_innerFibration_of_targetLifting

@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.SetTheory.Cardinal.Arithmetic",
+  "state": "checked",
+  "started": "2026-11-06T19:34:04.639753+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "5454523b3317d327a108da80afa65ad53f7d968e02915805455ff2b8d0385adf",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.SetTheory.Cardinal.Arithmetic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.SetTheory.Cardinal.Arithmetic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:34:15.804236+00:00"
+}

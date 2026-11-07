@@ -1,0 +1,198 @@
+⚠ [1560/1839] Replayed SerrePositivity.InfinityCategories.Core.VertexFiber
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:14: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:16: Variable name `m` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _m
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SerrePositivity/InfinityCategories/Core/VertexFiber.lean:48:19: Variable name `α` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _α
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1607/1839] Replayed SerrePositivity.InfinityCategories.Core.RelativeOuterHorn
+warning: SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean:78:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean:115:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1633/1839] Replayed SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
+warning: SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryCore.lean:110:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1638/1839] Replayed SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLifting
+warning: SerrePositivity/InfinityCategories/Core/EquivalencePathFinalLifting.lean:31:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1639/1839] Replayed SerrePositivity.InfinityCategories.Core.PinchedUniversal
+warning: SerrePositivity/InfinityCategories/Core/PinchedUniversal.lean:88:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1640/1839] Replayed SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
+warning: SerrePositivity/InfinityCategories/Core/MappingSpaceTrivialFibration.lean:58:4: The following tactic starts with 2 goals and ends with 1 goal, 1 of which is not operated on.
+  change joinUnionLeft A₀ B₀ ≫ ((joinUnion A₀ B₀).ι ≫ L) = G
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: SerrePositivity/InfinityCategories/Core/MappingSpaceTrivialFibration.lean:62:4: The following tactic starts with 2 goals and ends with 1 goal, 1 of which is not operated on.
+  change joinUnionRight A₀ B₀ ≫ ((joinUnion A₀ B₀).ι ≫ L) = H
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+warning: SerrePositivity/InfinityCategories/Core/MappingSpaceTrivialFibration.lean:97:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1643/1839] Replayed SerrePositivity.InfinityCategories.Core.MappingSpaceFibration
+warning: SerrePositivity/InfinityCategories/Core/MappingSpaceFibration.lean:133:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [1647/1839] Replayed SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
+warning: SerrePositivity/InfinityCategories/Core/KanFibrationEquivalence.lean:53:4: Unused tactic linter: `change (boundary n).ι ≫ b ≫ s = a ≫ p ≫ s` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [1650/1839] Replayed SerrePositivity.InfinityCategories.Core.MappingSpacePullback
+warning: SerrePositivity/InfinityCategories/Core/MappingSpacePullback.lean:113:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1660/1839] Replayed SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
+warning: SerrePositivity/InfinityCategories/Core/EquivalenceAllLimits.lean:65:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1662/1839] Replayed SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+warning: SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:28:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:29:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:30:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:49:4: Unused tactic linter: `change
+  SSet.ι₀ ≫ (β_ (equivalencePath Y) (Δ[1] : SSet.{u})).hom ≫ uncurry (equivalencePathι Y) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: SerrePositivity/InfinityCategories/Core/FunctorEdgePointwise.lean:56:4: Unused tactic linter: `change
+  SSet.ι₁ ≫ (β_ (equivalencePath Y) (Δ[1] : SSet.{u})).hom ≫ uncurry (equivalencePathι Y) = _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [1669/1839] Replayed SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+warning: SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean:102:2: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1673/1839] Replayed SerrePositivity.InfinityCategories.Core.CodiscreteNerve
+warning: SerrePositivity/InfinityCategories/Core/CodiscreteNerve.lean:32:4: This central dot `·` is isolated; please merge it with the next line.
+
+Note: This linter can be disabled with `set_option linter.style.cdot false`
+warning: SerrePositivity/InfinityCategories/Core/CodiscreteNerve.lean:65:2: This central dot `·` is isolated; please merge it with the next line.
+
+Note: This linter can be disabled with `set_option linter.style.cdot false`
+⚠ [1794/1839] Replayed SerrePositivity.InfinityCategories.Core.RelativeCylinderDisjoint
+warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:37:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:41:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: SerrePositivity/InfinityCategories/Core/RelativeCylinderDisjoint.lean:47:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+⚠ [1799/1839] Replayed SerrePositivity.InfinityCategories.Core.PrecompositionCellClosure
+warning: SerrePositivity/InfinityCategories/Core/PrecompositionCellClosure.lean:39:52: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [1804/1839] Replayed SerrePositivity.InfinityCategories.Core.JoinTensorRight
+warning: SerrePositivity/InfinityCategories/Core/JoinTensorRight.lean:125:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1812/1839] Replayed SerrePositivity.InfinityCategories.F1B.Fibrations.InvertibleEdgeIntervalExtension
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:45:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:55:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:66:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:67:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/InvertibleEdgeIntervalExtension.lean:81:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1816/1839] Replayed SerrePositivity.InfinityCategories.Core.RelativeEquivalencePath
+warning: SerrePositivity/InfinityCategories/Core/RelativeEquivalencePath.lean:71:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1817/1839] Replayed SerrePositivity.InfinityCategories.Core.RelativeEquivalencePathAt
+warning: SerrePositivity/InfinityCategories/Core/RelativeEquivalencePathAt.lean:23:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/Core/RelativeEquivalencePathAt.lean:76:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1820/1839] Replayed SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
+warning: SerrePositivity/InfinityCategories/F1B/Fibrations/EquivalenceLiftingInvertible.lean:29:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1823/1839] Replayed SerrePositivity.InfinityCategories.F1B.KanExtension.PathReplacementLifting
+warning: SerrePositivity/InfinityCategories/F1B/KanExtension/PathReplacementLifting.lean:67:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1839 jobs).

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfDerivedAdjunction",
+  "state": "checked",
+  "started": "2026-11-06T20:28:13.646262+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "149416bf1990bc09f4945e17a757cd0d5acf30a1c361e004ba58d31997c34d53",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfDerivedAdjunction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.ModelBridge.QuillenCfDerivedAdjunction/Check.lean"
+  ],
+  "finished": "2026-11-06T20:28:26.987666+00:00"
+}

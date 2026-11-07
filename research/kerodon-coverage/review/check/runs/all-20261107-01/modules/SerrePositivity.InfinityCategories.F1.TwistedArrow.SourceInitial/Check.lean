@@ -1,0 +1,16 @@
+import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9ff181f6a753d9c514c2
+#check @twistedArrowSourceIdentity_isInitialVertex
+#print axioms twistedArrowSourceIdentity_isInitialVertex
+
+-- reference ea00aadc4f0b812fa54f
+#check @cosliceToTwistedArrowSource_isQCatEquivalence
+#print axioms cosliceToTwistedArrowSource_isQCatEquivalence
+
+-- reference dab307c5bc7f74b0b3fa
+#check @twistedArrowIdentityHomTransport_isQCatEquivalence
+#print axioms twistedArrowIdentityHomTransport_isQCatEquivalence

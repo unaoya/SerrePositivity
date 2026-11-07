@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Joins.FatJoinPointCylinder",
+  "state": "checked",
+  "started": "2026-11-06T21:38:13.804113+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a4e0ca449954772014ac366472a1a6d82334a5079108bb5a7e6747911af5e743",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Joins.FatJoinPointCylinder"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Joins.FatJoinPointCylinder/Check.lean"
+  ],
+  "finished": "2026-11-06T21:38:22.791609+00:00"
+}

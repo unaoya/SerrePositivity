@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveModelLimitDetection",
+  "state": "checked",
+  "started": "2026-11-06T22:28:25.061650+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f36ccf9b95ec25d950423ce3f5b335f30cc35bfee4aeec2cab5261c9862e0be4",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveModelLimitDetection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.ReflectiveModelLimitDetection/Check.lean"
+  ],
+  "finished": "2026-11-06T22:28:39.144480+00:00"
+}

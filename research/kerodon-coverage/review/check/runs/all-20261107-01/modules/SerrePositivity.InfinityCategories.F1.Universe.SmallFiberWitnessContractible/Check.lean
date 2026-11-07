@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Universe.SmallFiberWitnessContractible
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 9d6764605f46dd85db8f
+#check @exists_smallFiber_leftTransportRepresentation_extension
+#print axioms exists_smallFiber_leftTransportRepresentation_extension

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorSpace",
+  "state": "checked",
+  "started": "2026-11-06T21:55:07.142225+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "50ab188789c60c3edc40ba5b09e10dc44a24e157b69462d02a360de494751076",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorSpace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorSpace/Check.lean"
+  ],
+  "finished": "2026-11-06T21:55:16.065005+00:00"
+}

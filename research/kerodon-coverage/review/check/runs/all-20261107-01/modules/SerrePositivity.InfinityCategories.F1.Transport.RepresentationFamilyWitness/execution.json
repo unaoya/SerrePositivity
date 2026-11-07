@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyWitness",
+  "state": "checked",
+  "started": "2026-11-06T21:47:02.545268+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "175912de027ecd6ed67cd3623d574df5bdec84499ab927851c5783d9914578a7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyWitness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Transport.RepresentationFamilyWitness/Check.lean"
+  ],
+  "finished": "2026-11-06T21:47:12.409749+00:00"
+}

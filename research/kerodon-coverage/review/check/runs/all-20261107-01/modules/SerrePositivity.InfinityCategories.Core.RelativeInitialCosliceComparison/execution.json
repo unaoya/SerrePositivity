@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison",
+  "state": "checked",
+  "started": "2026-11-06T21:17:07.697067+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "23831e132d3ad4e9f7afc3a6763d1fffd4030b3fec1162499e12e91b7a45ae31",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T21:17:17.666853+00:00"
+}

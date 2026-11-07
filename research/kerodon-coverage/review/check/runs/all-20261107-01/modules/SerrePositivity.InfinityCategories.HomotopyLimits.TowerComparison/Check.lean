@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.TowerComparison
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference fa447d99c3b56552ea76
+#check @bousfieldKanLimitComparison_tower_homotopyEquivalence
+#print axioms bousfieldKanLimitComparison_tower_homotopyEquivalence

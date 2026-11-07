@@ -1,0 +1,21 @@
+⚠ [1534/1556] Replayed SerrePositivity.InfinityCategories.Core.JoinTensorRight
+warning: SerrePositivity/InfinityCategories/Core/JoinTensorRight.lean:125:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [1554/1556] Replayed SerrePositivity.InfinityCategories.F1.Joins.JoinSelfOpposite
+warning: SerrePositivity/InfinityCategories/F1/Joins/JoinSelfOpposite.lean:35:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1556/1556] Replayed SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseDuality
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseDuality.lean:22:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseDuality.lean:59:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+Build completed successfully (1556 jobs).

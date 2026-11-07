@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Combinatorics.Quiver.Covering",
+  "state": "checked",
+  "started": "2026-11-06T20:53:27.201215+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "cdf4b966db3d2d32166c535aee47d62b6b9838750208d2d434d6345d1d04565b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Combinatorics.Quiver.Covering"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Combinatorics.Quiver.Covering/Check.lean"
+  ],
+  "finished": "2026-11-06T20:53:35.911882+00:00"
+}

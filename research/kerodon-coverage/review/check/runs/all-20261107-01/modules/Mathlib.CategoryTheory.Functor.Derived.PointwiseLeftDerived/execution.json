@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Functor.Derived.PointwiseLeftDerived",
+  "state": "checked",
+  "started": "2026-11-06T20:45:16.546751+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "f0646c940a2b714550706493abcc55ba0159b99593b4d6ad0dbd16f861617d43",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Functor.Derived.PointwiseLeftDerived"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Functor.Derived.PointwiseLeftDerived/Check.lean"
+  ],
+  "finished": "2026-11-06T20:45:25.466003+00:00"
+}

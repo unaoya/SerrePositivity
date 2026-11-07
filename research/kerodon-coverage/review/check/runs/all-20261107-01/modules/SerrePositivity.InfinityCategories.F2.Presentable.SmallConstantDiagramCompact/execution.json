@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SmallConstantDiagramCompact",
+  "state": "checked",
+  "started": "2026-11-06T20:21:55.642720+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2cddea35528d4ea1a6e2b799d89c09f569727e9dd0dff80227337800254baaaa",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SmallConstantDiagramCompact"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SmallConstantDiagramCompact/Check.lean"
+  ],
+  "finished": "2026-11-06T20:22:12.595514+00:00"
+}

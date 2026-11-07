@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberRelativeCocone",
+  "state": "checked",
+  "started": "2026-11-06T20:08:21.365007+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "33da7a1cb3a12d9f54881b8446cdbf0105ed6600a7fd909e9286f678447caf64",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberRelativeCocone"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberRelativeCocone/Check.lean"
+  ],
+  "finished": "2026-11-06T20:08:31.886257+00:00"
+}

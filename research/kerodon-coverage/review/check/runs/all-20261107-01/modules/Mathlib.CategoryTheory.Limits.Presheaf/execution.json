@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Presheaf",
+  "state": "checked",
+  "started": "2026-11-06T20:48:23.424857+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d4dc905bf7bb27a04f88513bf73f11201239adde2fe932ddafd342128afb40d6",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Presheaf"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Presheaf/Check.lean"
+  ],
+  "finished": "2026-11-06T20:48:32.283734+00:00"
+}

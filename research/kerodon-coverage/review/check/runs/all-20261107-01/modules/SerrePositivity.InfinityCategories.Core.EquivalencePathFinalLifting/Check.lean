@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 080dfb783be72f45dfd7
+#check @trivialKanFibration_equivalencePathEndpoint_one
+#print axioms trivialKanFibration_equivalencePathEndpoint_one

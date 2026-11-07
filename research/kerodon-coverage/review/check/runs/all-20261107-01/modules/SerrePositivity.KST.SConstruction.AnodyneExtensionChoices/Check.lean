@@ -1,0 +1,8 @@
+import SerrePositivity.KST.SConstruction.AnodyneExtensionChoices
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference dac04c0b549a72c14e99
+#check @anodyneExtensionChoices_projection_trivialKanFibration
+#print axioms anodyneExtensionChoices_projection_trivialKanFibration

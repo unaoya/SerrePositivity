@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+  "state": "checked",
+  "started": "2026-11-06T19:38:53.984614+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "aac76a0cc3816d8478a682a7441dfb22f2e58d1731f04107ffc440160eb67a69",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement/Check.lean"
+  ],
+  "finished": "2026-11-06T19:39:05.076867+00:00"
+}

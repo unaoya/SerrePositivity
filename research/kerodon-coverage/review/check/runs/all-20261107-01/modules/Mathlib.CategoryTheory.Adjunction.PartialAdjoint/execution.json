@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Adjunction.PartialAdjoint",
+  "state": "checked",
+  "started": "2026-11-06T20:42:18.167791+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "41630d182f558a2d89ac25b10891aaffeed11d7bfb0f4e3bfa6a2d9c910444b8",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Adjunction.PartialAdjoint"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Adjunction.PartialAdjoint/Check.lean"
+  ],
+  "finished": "2026-11-06T20:42:27.325857+00:00"
+}

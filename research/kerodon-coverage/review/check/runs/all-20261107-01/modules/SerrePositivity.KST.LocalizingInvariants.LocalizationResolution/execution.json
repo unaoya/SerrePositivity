@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution",
+  "state": "checked",
+  "started": "2026-11-06T22:47:09.273266+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "292a8cd8f26ee448d0bfe68f8019f7a9815d771ad9a81e64a03e13a704411ef3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.LocalizingInvariants.LocalizationResolution/Check.lean"
+  ],
+  "finished": "2026-11-06T22:47:18.231439+00:00"
+}

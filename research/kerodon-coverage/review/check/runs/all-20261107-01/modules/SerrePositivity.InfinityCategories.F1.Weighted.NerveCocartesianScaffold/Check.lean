@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianScaffold
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 35b6b95558dd57851dc0
+#check @tautScaffold_isCocartesianScaffold
+#print axioms tautScaffold_isCocartesianScaffold
+
+-- reference b1a8ff4c6c5f89915e35
+#check @tautScaffold_isPrecompositionEquivalence_of_quasicategory
+#print axioms tautScaffold_isPrecompositionEquivalence_of_quasicategory

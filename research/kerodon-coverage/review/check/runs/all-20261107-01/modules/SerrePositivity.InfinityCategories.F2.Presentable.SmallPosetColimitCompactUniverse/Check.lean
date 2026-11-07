@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetColimitCompactUniverse
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference f7a96449a04167c99202
+#check @Presentable.isKappaCompact_smallPosetColimit_universe
+#print axioms Presentable.isKappaCompact_smallPosetColimit_universe

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct",
+  "state": "checked",
+  "started": "2026-11-06T19:55:38.550592+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fa052e25fe6b6c45cdc90501a8a40cc4cffa7c2ea107793581079774768539ae",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct/Check.lean"
+  ],
+  "finished": "2026-11-06T19:55:48.489192+00:00"
+}

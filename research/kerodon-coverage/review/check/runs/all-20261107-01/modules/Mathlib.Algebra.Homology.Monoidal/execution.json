@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.Monoidal",
+  "state": "checked",
+  "started": "2026-11-06T19:23:05.983182+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "3c6e0e3c4961c1200cdd4286a4e1f91fa6c0f6209d4a55fcddea44438df696ca",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.Monoidal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.Monoidal/Check.lean"
+  ],
+  "finished": "2026-11-06T19:23:26.833867+00:00"
+}

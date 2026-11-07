@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianUnit",
+  "state": "checked",
+  "started": "2026-11-06T20:01:45.553428+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0a46eefa09b0ff3231fbd97ed869e5e76aa65c57429be1d7071a21cc6a1600c5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianUnit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianUnit/Check.lean"
+  ],
+  "finished": "2026-11-06T20:01:56.044802+00:00"
+}

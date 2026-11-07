@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianInnerAnodynePullback
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7c241d3c5e0db842bb50
+#check @cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence
+#print axioms cocartesianFibration_pullback_innerAnodyne_isPrecompositionEquivalence

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.Supply.FiniteCoproductColimitGeneration
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a084b0352df4c08edab5
+#check @Presentable.preservesSmallColimits_of_coproducts_finite
+#print axioms Presentable.preservesSmallColimits_of_coproducts_finite

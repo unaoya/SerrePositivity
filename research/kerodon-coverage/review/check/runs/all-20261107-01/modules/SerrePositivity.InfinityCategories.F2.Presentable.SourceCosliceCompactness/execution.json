@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.SourceCosliceCompactness",
+  "state": "checked",
+  "started": "2026-11-06T22:31:29.606510+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "72bcfac97c1415dcf9050da6d7058e5e1fa542f774ebcbf19ce2dd40dae301c2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.SourceCosliceCompactness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.SourceCosliceCompactness/Check.lean"
+  ],
+  "finished": "2026-11-06T22:31:43.030610+00:00"
+}

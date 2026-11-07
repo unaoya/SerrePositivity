@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeInterchange
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference cbd0ccc889ff9b04aa53
+#check @kanRelativeCoconeLifting_relativeFunctor_of_first_vertices
+#print axioms kanRelativeCoconeLifting_relativeFunctor_of_first_vertices

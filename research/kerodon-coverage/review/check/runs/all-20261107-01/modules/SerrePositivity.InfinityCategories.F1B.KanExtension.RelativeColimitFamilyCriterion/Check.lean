@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitFamilyCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 94884d8983f7a35fb872
+#check @kanIsRelativeColimitCone_iff_family_relativeInitial
+#print axioms kanIsRelativeColimitCone_iff_family_relativeInitial

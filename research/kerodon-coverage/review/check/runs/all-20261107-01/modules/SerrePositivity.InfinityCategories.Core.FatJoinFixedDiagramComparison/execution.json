@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison",
+  "state": "checked",
+  "started": "2026-11-06T19:42:28.019211+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "de2d323494fc92c2ea85d4a3665857c350ebda0cfcf1d59f9e30040995268600",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T19:42:39.636903+00:00"
+}

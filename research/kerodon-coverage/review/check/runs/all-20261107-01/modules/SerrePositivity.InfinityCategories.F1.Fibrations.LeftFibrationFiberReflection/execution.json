@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection",
+  "state": "checked",
+  "started": "2026-11-06T19:55:59.220725+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7a0b9e8dd0340267835d64f287714edb378ace3be1c7395cf8d62ee289e832ed",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection/Check.lean"
+  ],
+  "finished": "2026-11-06T19:56:10.219961+00:00"
+}

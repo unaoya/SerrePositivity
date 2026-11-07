@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Shapes.RegularMono",
+  "state": "checked",
+  "started": "2026-11-06T20:49:07.936024+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "97444da56255c296d2b0967184cb1dd56732393178d29a7b759197699220b212",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Shapes.RegularMono"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Shapes.RegularMono/Check.lean"
+  ],
+  "finished": "2026-11-06T20:49:17.051555+00:00"
+}

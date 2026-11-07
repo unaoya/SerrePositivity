@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightAnodyne
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 5389cb90ab82b4579064
+#check @relativeCosliceMap_trivialKanFibration_of_rightAnodyne
+#print axioms relativeCosliceMap_trivialKanFibration_of_rightAnodyne

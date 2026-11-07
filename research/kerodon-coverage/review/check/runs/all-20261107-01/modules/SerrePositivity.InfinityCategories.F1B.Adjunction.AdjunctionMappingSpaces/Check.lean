@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionMappingSpaces
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6874b41f987487e5b3db
+#check @QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence
+#print axioms QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence",
+  "state": "checked",
+  "started": "2026-11-06T21:56:20.386388+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6c882db15800127f941c5b925c6cf95533d657dffff3298cf95ca4b9054758b7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.LimitExistence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:56:29.715308+00:00"
+}

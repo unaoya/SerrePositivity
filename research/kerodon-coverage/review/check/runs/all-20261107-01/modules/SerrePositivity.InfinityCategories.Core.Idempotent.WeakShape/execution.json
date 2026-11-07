@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape",
+  "state": "checked",
+  "started": "2026-11-06T21:11:14.406269+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "919eab42df8d7253cd4f517311b5c5103902951492721f8e4cd3e27c694bc4f1",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape/Check.lean"
+  ],
+  "finished": "2026-11-06T21:11:23.954079+00:00"
+}

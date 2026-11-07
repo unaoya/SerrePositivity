@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration",
+  "state": "checked",
+  "started": "2026-11-06T22:46:23.327206+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "00fd12386a36e1934979dc2b6ba07e80ffcc873783233ff9a6cf8ad43274d2de",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Fibration.StrictTransportPostToLeftFibration/Check.lean"
+  ],
+  "finished": "2026-11-06T22:46:33.483819+00:00"
+}

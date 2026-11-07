@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange",
+  "state": "checked",
+  "started": "2026-11-06T21:16:11.189079+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ddc952aba2f03d3e34b8b07e44507faf1bd2adcbd810dfc2c3433a79510542d7",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange/Check.lean"
+  ],
+  "finished": "2026-11-06T21:16:20.637774+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfBifibration",
+  "state": "checked",
+  "started": "2026-11-06T20:27:58.332538+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7117fe6b57a8cc09963a2a4f8196ee72399a5b758971d38d81fba2b74037f89b",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfBifibration"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.ModelBridge.QuillenCfBifibration/Check.lean"
+  ],
+  "finished": "2026-11-06T20:28:13.645481+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Coherent.CompositionFace",
+  "state": "checked",
+  "started": "2026-11-06T21:02:52.974634+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "69b9c69075be67c876b0ff24a31526f904dc95abd818b4bb9df1b0b8ea533a96",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Coherent.CompositionFace"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Coherent.CompositionFace/Check.lean"
+  ],
+  "finished": "2026-11-06T21:03:02.733560+00:00"
+}

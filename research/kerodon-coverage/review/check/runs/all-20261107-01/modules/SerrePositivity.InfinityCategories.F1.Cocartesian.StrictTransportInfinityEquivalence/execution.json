@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInfinityEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T19:51:29.329578+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "44d7a6564a27750cf85abf571b54aab3493418b1ed6af099124f1f45f651ad46",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInfinityEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportInfinityEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T19:51:42.949424+00:00"
+}

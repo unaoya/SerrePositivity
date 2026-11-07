@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.ExactFunctor",
+  "state": "checked",
+  "started": "2026-11-06T22:40:41.331411+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b5d3aab240fc05c0a18447ac4cb6505521758f4b1e80e4d0baba92c98667a8f5",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.ExactFunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.ExactFunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T22:40:51.016052+00:00"
+}

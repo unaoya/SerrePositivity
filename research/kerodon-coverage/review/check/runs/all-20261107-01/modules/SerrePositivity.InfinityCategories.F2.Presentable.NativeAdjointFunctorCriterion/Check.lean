@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 397b757c99aa6592718a
+#check @isKappaAccessibleFunctor_of_indHomTests_native
+#print axioms isKappaAccessibleFunctor_of_indHomTests_native
+
+-- reference 150300708753a7d64f4e
+#check @exists_leftAdjoint_iff_accessible_preservesLimits
+#print axioms exists_leftAdjoint_iff_accessible_preservesLimits

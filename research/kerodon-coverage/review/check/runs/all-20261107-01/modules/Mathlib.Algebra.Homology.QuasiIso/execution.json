@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.QuasiIso",
+  "state": "checked",
+  "started": "2026-11-06T19:23:26.835072+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "00a789da2f012520e75a01a4ea5d152958b620a3ba0bc30d50f346dd2ad32c11",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.QuasiIso"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.QuasiIso/Check.lean"
+  ],
+  "finished": "2026-11-06T19:23:36.170679+00:00"
+}

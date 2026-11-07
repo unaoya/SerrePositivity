@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.TensorHomotopyEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T20:26:26.457048+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3a0ad0ad9b5fdbd059947027a92659f8a459cc0df49bd783eb1ee82f75d3ef65",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.TensorHomotopyEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.TensorHomotopyEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:26:37.814654+00:00"
+}

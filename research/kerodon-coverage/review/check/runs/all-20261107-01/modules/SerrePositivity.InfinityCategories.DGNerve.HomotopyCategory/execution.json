@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory",
+  "state": "checked",
+  "started": "2026-11-06T21:21:36.710996+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0e6a6e952395a58d59043ec914495f66b47d8285af166bda754f8bdcf45006d3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory/Check.lean"
+  ],
+  "finished": "2026-11-06T21:21:49.324726+00:00"
+}

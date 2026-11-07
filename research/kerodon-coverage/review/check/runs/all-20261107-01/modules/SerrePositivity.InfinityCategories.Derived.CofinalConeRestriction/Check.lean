@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.CofinalConeRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 8f514073f7cdef2e0a3f
+#check @sliceOverRestrict_isQCatEquivalence_of_leftCofinal
+#print axioms sliceOverRestrict_isQCatEquivalence_of_leftCofinal

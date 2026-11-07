@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitFamilyCriterion",
+  "state": "checked",
+  "started": "2026-11-06T22:03:54.160229+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "7f403ce198b8d93d4d24c317f742106eae26a75604c76726f3e2988ccec918f0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitFamilyCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitFamilyCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T22:04:03.272730+00:00"
+}

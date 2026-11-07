@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Bicategory.LocallyGroupoid",
+  "state": "checked",
+  "started": "2026-11-06T19:28:46.519759+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "883da5b7db048250e2b3515723f280d761781cb4f45cf0f6bb7448f652c2e89a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Bicategory.LocallyGroupoid"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Bicategory.LocallyGroupoid/Check.lean"
+  ],
+  "finished": "2026-11-06T19:29:01.364815+00:00"
+}

@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Stable.PosetNestedCanonicalRestriction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference df10ab5280aeb078b9c0
+#check @isColimitCone_iff_restrict_of_poset_nested_canonical
+#print axioms isColimitCone_iff_restrict_of_poset_nested_canonical
+
+-- reference c7ffc39453a466f70dd7
+#check @posetSubtype_canonicalColimit_nested
+#print axioms posetSubtype_canonicalColimit_nested

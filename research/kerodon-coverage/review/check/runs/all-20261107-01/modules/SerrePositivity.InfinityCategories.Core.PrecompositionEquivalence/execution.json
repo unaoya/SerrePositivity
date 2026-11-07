@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T21:15:33.518123+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "32acb9499414f5c5a10c6223a9b61632dd8c2c418e55b15ee6ac87600abc9395",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T21:15:43.152631+00:00"
+}

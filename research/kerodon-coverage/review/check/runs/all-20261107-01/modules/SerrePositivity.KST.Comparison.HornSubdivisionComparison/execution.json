@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+  "state": "checked",
+  "started": "2026-11-06T22:44:43.739605+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3b3da655634590cd5e3a8305e6c8da4610769ad90a40c2db0925917508891635",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Comparison.HornSubdivisionComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Comparison.HornSubdivisionComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T22:44:52.052614+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 31c61367fea8a86a9109
+#check @initialBoundaryLifting_of_isInitialVertex_fiber
+#print axioms initialBoundaryLifting_of_isInitialVertex_fiber

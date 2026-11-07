@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Category.MonCat.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:34:11.497095+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "b12e0bfe3dce65281e56902897b22a01d3a628dcd3c7092e8a11aaf1fc18ccbe",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Category.MonCat.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Category.MonCat.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:34:21.241496+00:00"
+}

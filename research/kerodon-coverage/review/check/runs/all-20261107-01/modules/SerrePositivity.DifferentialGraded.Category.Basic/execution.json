@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.DifferentialGraded.Category.Basic",
+  "state": "checked",
+  "started": "2026-11-06T20:56:51.531855+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b5326650516030a83e24d6095b72008ae8628601482c62ec1b41c6e580c7542c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.DifferentialGraded.Category.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.DifferentialGraded.Category.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T20:57:03.235220+00:00"
+}

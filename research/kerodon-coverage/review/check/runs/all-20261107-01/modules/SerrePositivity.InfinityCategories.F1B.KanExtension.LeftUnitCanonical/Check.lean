@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitCanonical
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 575b37a2da4ca8887986
+#check @kanLeftKanExtension_canonicalColimits_of_unit_isIso
+#print axioms kanLeftKanExtension_canonicalColimits_of_unit_isIso

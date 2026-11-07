@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a0a915c406efe90c4ab9
+#check @strictCoherentCone_isLimit_iff_cospan_representableComparison
+#print axioms strictCoherentCone_isLimit_iff_cospan_representableComparison

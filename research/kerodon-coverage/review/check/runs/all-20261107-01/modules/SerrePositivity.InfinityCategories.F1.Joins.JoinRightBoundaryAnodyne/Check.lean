@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Joins.JoinRightBoundaryAnodyne
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e4d315dde245a8e812be
+#check @joinRightBoundaryMap_innerAnodyne_of_leftAnodyne
+#print axioms joinRightBoundaryMap_innerAnodyne_of_leftAnodyne

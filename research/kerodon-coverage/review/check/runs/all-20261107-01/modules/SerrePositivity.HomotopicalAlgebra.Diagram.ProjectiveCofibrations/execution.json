@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations",
+  "state": "checked",
+  "started": "2026-11-06T21:00:26.156868+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fe62692342ca6a6a4faf8b3bc154c4387275190e67f9e979a0946f4aead393b0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations/Check.lean"
+  ],
+  "finished": "2026-11-06T21:00:37.710495+00:00"
+}

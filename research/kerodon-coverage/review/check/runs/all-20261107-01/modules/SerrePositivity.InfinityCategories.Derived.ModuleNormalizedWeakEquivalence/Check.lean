@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedWeakEquivalence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 94860c1df62111882191
+#check @moduleNormalizedMap_quasiIso_iff_isWeakHomotopyEquivalence
+#print axioms moduleNormalizedMap_quasiIso_iff_isWeakHomotopyEquivalence

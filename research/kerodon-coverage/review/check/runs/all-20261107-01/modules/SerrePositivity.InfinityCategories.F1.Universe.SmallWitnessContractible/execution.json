@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Universe.SmallWitnessContractible",
+  "state": "checked",
+  "started": "2026-11-06T20:01:24.213936+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "580a230a05aeb574d2152cab75fbbeec84444184c8cc32c77f3a074105b77225",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Universe.SmallWitnessContractible"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Universe.SmallWitnessContractible/Check.lean"
+  ],
+  "finished": "2026-11-06T20:01:35.279123+00:00"
+}

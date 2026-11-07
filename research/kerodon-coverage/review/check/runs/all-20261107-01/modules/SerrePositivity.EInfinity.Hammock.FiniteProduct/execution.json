@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.Hammock.FiniteProduct",
+  "state": "checked",
+  "started": "2026-11-06T19:36:39.046332+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "c7ace3865d14f9fd011d3b61bbb978b7d3bb1fe1db12c5322a231545ede57ed2",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.Hammock.FiniteProduct"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.Hammock.FiniteProduct/Check.lean"
+  ],
+  "finished": "2026-11-06T19:36:54.704211+00:00"
+}

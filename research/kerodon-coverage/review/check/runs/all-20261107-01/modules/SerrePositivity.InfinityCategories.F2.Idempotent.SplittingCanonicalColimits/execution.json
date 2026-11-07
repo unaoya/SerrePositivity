@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Idempotent.SplittingCanonicalColimits",
+  "state": "checked",
+  "started": "2026-11-06T22:16:16.310631+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "298d1e50ebab5988ee3f13da412ae54c4cdaf2cef9be4c2bc03dd987a4624efc",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Idempotent.SplittingCanonicalColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Idempotent.SplittingCanonicalColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T22:16:25.681343+00:00"
+}

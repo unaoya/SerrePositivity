@@ -1,0 +1,12 @@
+import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference cd1a3a8aff6c6c41b6d6
+#check @exists_equivalenceCylinder_extension_of_functorIso
+#print axioms exists_equivalenceCylinder_extension_of_functorIso
+
+-- reference 8e074ed3848d62b0514c
+#check @nonempty_functorIso_of_equivalenceCylinder_extension
+#print axioms nonempty_functorIso_of_equivalenceCylinder_extension

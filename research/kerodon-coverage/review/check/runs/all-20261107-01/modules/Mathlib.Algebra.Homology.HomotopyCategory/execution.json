@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Homology.HomotopyCategory",
+  "state": "checked",
+  "started": "2026-11-06T20:35:17.913512+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "f371b8f563a4ec7e7ada9125addfbf8c48f25ff993bda29200a2fd77f072ba60",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Homology.HomotopyCategory"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Homology.HomotopyCategory/Check.lean"
+  ],
+  "finished": "2026-11-06T20:35:27.875034+00:00"
+}

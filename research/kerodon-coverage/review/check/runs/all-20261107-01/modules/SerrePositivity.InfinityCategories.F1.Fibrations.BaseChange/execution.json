@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange",
+  "state": "checked",
+  "started": "2026-11-06T21:34:22.811996+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange/Check.lean"
+  ],
+  "finished": "2026-11-06T21:34:31.912628+00:00"
+}

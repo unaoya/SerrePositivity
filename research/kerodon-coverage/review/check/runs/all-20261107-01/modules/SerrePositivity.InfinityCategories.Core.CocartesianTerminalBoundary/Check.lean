@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e3bc39633d3d0e4f8a22
+#check @isTerminalVertex_fiber_iff_terminalBoundaryLifting
+#print axioms isTerminalVertex_fiber_iff_terminalBoundaryLifting

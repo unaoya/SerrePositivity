@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA",
+  "state": "checked",
+  "started": "2026-11-06T20:05:14.607525+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "472c94331f2dd5f985427f18515b045235fdb36bc13bbee5ac9d08ae9900ea91",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA/Check.lean"
+  ],
+  "finished": "2026-11-06T20:05:25.361673+00:00"
+}

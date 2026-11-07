@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+  "state": "checked",
+  "started": "2026-11-06T20:39:15.445642+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "eb11024d1f7ee02c592688e53dac5c4ce8a88ff150efc6a958f133f4057c06ce",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialSet.Homotopy/Check.lean"
+  ],
+  "finished": "2026-11-06T20:39:26.018571+00:00"
+}

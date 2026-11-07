@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Cocartesian.Coslice
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference e99e284310f12c1066ae
+#check @relativeCosliceMap_trivialKanFibration_of_isCocartesianEdge
+#print axioms relativeCosliceMap_trivialKanFibration_of_isCocartesianEdge

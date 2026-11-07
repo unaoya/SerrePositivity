@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Coherent.ReverseTransportComparison",
+  "state": "checked",
+  "started": "2026-11-06T21:31:49.543227+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "cddefc2acd6ee84fc49d8301dab226cca02a33752cde8311e3686c5871790221",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Coherent.ReverseTransportComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Coherent.ReverseTransportComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T21:31:59.474878+00:00"
+}

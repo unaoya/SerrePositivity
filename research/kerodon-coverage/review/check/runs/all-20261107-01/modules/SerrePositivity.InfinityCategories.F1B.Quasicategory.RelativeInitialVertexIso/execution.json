@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso",
+  "state": "checked",
+  "started": "2026-11-06T22:08:36.685044+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "246e89eacf89173ea057358ab8028677d7efed729902d556a60bbf49da660c43",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso/Check.lean"
+  ],
+  "finished": "2026-11-06T22:08:45.770456+00:00"
+}

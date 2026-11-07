@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleReflectiveImage",
+  "state": "checked",
+  "started": "2026-11-06T22:20:40.771068+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8f727116798deee02637346808c1cfb8ce0d069fba10b9bed61f69ea56310134",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleReflectiveImage"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F2.Presentable.AccessibleReflectiveImage/Check.lean"
+  ],
+  "finished": "2026-11-06T22:20:54.292974+00:00"
+}

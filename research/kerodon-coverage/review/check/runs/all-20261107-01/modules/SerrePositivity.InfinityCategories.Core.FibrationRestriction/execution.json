@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.FibrationRestriction",
+  "state": "checked",
+  "started": "2026-11-06T21:08:22.142521+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "34ba8df4c7b74b097a5101fabc458404f36f702df49699eb817fab49802eb600",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.FibrationRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.FibrationRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T21:08:32.224683+00:00"
+}

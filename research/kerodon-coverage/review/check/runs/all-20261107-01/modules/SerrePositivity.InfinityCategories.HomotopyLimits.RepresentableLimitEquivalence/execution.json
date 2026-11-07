@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence",
+  "state": "checked",
+  "started": "2026-11-06T22:35:42.335494+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d7b4add2aea4b5641e9e6b4673b436b699e348810a529a40eda8fe4ab75a1867",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence/Check.lean"
+  ],
+  "finished": "2026-11-06T22:35:51.883911+00:00"
+}

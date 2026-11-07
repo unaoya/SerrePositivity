@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection",
+  "state": "checked",
+  "started": "2026-11-06T21:52:08.289772+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "8f74a5d2ca1dfe6dae49294062b8a298c86e0d4e8a30250fdab6f7e9e85bded9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection/Check.lean"
+  ],
+  "finished": "2026-11-06T21:52:19.599627+00:00"
+}

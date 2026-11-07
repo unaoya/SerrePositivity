@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.PathReplacementLifting
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 976f9db80dd854a5124b
+#check @kanEquivalenceLifting_equivalencePathReplacementMap
+#print axioms kanEquivalenceLifting_equivalencePathReplacementMap

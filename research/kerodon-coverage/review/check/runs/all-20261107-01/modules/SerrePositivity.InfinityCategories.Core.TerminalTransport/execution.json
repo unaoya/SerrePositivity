@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.TerminalTransport",
+  "state": "checked",
+  "started": "2026-11-06T19:47:27.784032+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "db976d128681eabbd9b9be361fd91ef486b72950be140b08c5bf7e7252b600d9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.TerminalTransport"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.TerminalTransport/Check.lean"
+  ],
+  "finished": "2026-11-06T19:47:37.997289+00:00"
+}

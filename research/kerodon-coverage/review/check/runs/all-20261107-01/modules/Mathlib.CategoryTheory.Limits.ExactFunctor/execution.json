@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.ExactFunctor",
+  "state": "checked",
+  "started": "2026-11-06T20:47:04.095446+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "eb05a5f91d01ea9067dc3e9c0947e4401ede4f084e98ce59a3e8a37cfeeea3e0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.ExactFunctor"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.ExactFunctor/Check.lean"
+  ],
+  "finished": "2026-11-06T20:47:13.093525+00:00"
+}

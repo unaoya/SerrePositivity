@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.TerminalUniqueness",
+  "state": "checked",
+  "started": "2026-11-06T21:20:17.179941+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "41214dcbc237ad963803578c164d2b629d77d9d6a8a2fed55861c6ba6f3a2e16",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.TerminalUniqueness"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.TerminalUniqueness/Check.lean"
+  ],
+  "finished": "2026-11-06T21:20:27.030716+00:00"
+}

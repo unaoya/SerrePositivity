@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Spectra.WeightedEndReedyKan",
+  "state": "checked",
+  "started": "2026-11-06T22:50:10.278565+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "d2ea6afd18007297018410297d1fa6517717e80b4efded5fb1ee0e876a767ed3",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Spectra.WeightedEndReedyKan"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Spectra.WeightedEndReedyKan/Check.lean"
+  ],
+  "finished": "2026-11-06T22:50:19.116323+00:00"
+}

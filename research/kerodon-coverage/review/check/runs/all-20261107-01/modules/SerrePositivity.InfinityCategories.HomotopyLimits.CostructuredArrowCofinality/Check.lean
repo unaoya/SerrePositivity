@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 1580a0e9f4cbbd9e0ac9
+#check @costructuredArrowProjection_rightFibration
+#print axioms costructuredArrowProjection_rightFibration

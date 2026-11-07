@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalIsofibrationDiagram",
+  "state": "checked",
+  "started": "2026-11-06T22:01:16.714920+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "2409d916ee29f815370bd4765c0595c1bb52b72e485ac09073001d8cf0409f9c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalIsofibrationDiagram"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalIsofibrationDiagram/Check.lean"
+  ],
+  "finished": "2026-11-06T22:01:26.163065+00:00"
+}

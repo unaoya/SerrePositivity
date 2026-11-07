@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleIdempotence
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference db3256846d6784b29eee
+#check @bicategory_leftZigzag_idempotent_of_right_triangle
+#print axioms bicategory_leftZigzag_idempotent_of_right_triangle

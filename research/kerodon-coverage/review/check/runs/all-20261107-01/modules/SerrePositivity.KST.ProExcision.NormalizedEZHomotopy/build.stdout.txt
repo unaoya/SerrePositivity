@@ -1,0 +1,212 @@
+⚠ [1781/1846] Replayed SerrePositivity.KST.ProExcision.SimplexPairOperation
+warning: SerrePositivity/KST/ProExcision/SimplexPairOperation.lean:79:2: This central dot `·` is isolated; please merge it with the next line.
+
+Note: This linter can be disabled with `set_option linter.style.cdot false`
+⚠ [1801/1846] Replayed SerrePositivity.KST.ProExcision.ChainTensorVanishing
+warning: SerrePositivity/KST/ProExcision/ChainTensorVanishing.lean:108:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1805/1846] Replayed SerrePositivity.KST.ProExcision.AWTensorDifferential
+warning: SerrePositivity/KST/ProExcision/AWTensorDifferential.lean:164:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1808/1846] Replayed SerrePositivity.KST.ProExcision.AWBoundaryExpansion
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:68:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:69:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:70:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:73:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/AWBoundaryExpansion.lean:94:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1816/1846] Replayed SerrePositivity.KST.ProExcision.ShufflePureFace
+warning: SerrePositivity/KST/ProExcision/ShufflePureFace.lean:110:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.
+  have ht := s.right_threshold h a ha x
+Please focus on the current goal, for instance using `·` (typed as "\.").
+
+Note: This linter can be disabled with `set_option linter.style.multiGoal false`
+⚠ [1817/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleEndFace
+warning: SerrePositivity/KST/ProExcision/ShuffleEndFace.lean:136:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1818/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleHorizontalFaceIndex
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:51:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:53:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:64:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:68:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:73:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:88:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:92:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalFaceIndex.lean:97:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1819/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleDelete
+warning: SerrePositivity/KST/ProExcision/ShuffleDelete.lean:24:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1820/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleHorizontalBoundary
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:77:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:116:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:177:61: This simp argument is unused:
+  ite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, dite_eq_left rfl, ite_true, dite_true,
+    shuffleBoundaryRemovalPosition_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:177:78: This simp argument is unused:
+  dite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, ite_eq_left rfl, ite_true, dite_true,
+    shuffleBoundaryRemovalPosition_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:182:8: This simp argument is unused:
+  ite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, ite_eq_right h₀, dite_eq_right h₀, dite_eq_left rfl,
+    ite_true, dite_true, shuffleBoundaryRemovalPosition_last]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:182:25: This simp argument is unused:
+  dite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, ite_eq_right h₀, dite_eq_right h₀, ite_eq_left rfl,
+    ite_true, dite_true, shuffleBoundaryRemovalPosition_last]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:183:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:208:22: This simp argument is unused:
+  ite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFacePosition, horizontalFaceVertex, ite_eq_right h₀, dite_eq_right h₀, dite_eq_left rfl,
+    ite_true, dite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:208:39: This simp argument is unused:
+  dite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFacePosition, horizontalFaceVertex, ite_eq_right h₀, dite_eq_right h₀, ite_eq_left rfl,
+    ite_true, dite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleHorizontalBoundary.lean:216:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1824/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleBoundaryPartition
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryPartition.lean:243:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1825/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleInsertSign
+warning: SerrePositivity/KST/ProExcision/ShuffleInsertSign.lean:70:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleInsertSign.lean:93:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleInsertSign.lean:162:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1826/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleTranspose
+warning: SerrePositivity/KST/ProExcision/ShuffleTranspose.lean:85:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1827/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleVerticalBoundary
+warning: SerrePositivity/KST/ProExcision/ShuffleVerticalBoundary.lean:87:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1828/1846] Replayed SerrePositivity.KST.ProExcision.ShuffleBoundaryMap
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:72:61: This simp argument is unused:
+  ite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, dite_eq_left rfl, ite_true, dite_true, Fin.val_zero,
+    hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:72:78: This simp argument is unused:
+  dite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [horizontalFaceVertex, horizontalFacePosition, ite_eq_left rfl, ite_true, dite_true, Fin.val_zero,
+    hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:101:6: This simp argument is unused:
+  ite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [verticalFaceVertex, verticalFacePosition, horizontalFaceVertex, horizontalFacePosition,
+    dite_eq_left rfl, ite_true, dite_true, Fin.val_zero, hi, pow_zero, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:101:23: This simp argument is unused:
+  dite_eq_left rfl
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [verticalFaceVertex, verticalFacePosition, horizontalFaceVertex, horizontalFacePosition,
+    ite_eq_left rfl, ite_true, dite_true, Fin.val_zero, hi, pow_zero, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:100:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:106:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+warning: SerrePositivity/KST/ProExcision/ShuffleBoundaryMap.lean:115:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1834/1846] Replayed SerrePositivity.KST.ProExcision.SimplexPairFaceSum
+warning: SerrePositivity/KST/ProExcision/SimplexPairFaceSum.lean:80:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [1835/1846] Replayed SerrePositivity.KST.ProExcision.EZUniversalBoundary
+warning: SerrePositivity/KST/ProExcision/EZUniversalBoundary.lean:49:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Build completed successfully (1846 jobs).

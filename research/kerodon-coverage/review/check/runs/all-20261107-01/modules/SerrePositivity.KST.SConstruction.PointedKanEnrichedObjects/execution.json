@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects",
+  "state": "checked",
+  "started": "2026-11-06T22:49:16.293117+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "b4fd9f220abeff27a733f8ba699d8a5681bcc84707bfdfd7beb42bcc7ee1d75f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects/Check.lean"
+  ],
+  "finished": "2026-11-06T22:49:25.186114+00:00"
+}

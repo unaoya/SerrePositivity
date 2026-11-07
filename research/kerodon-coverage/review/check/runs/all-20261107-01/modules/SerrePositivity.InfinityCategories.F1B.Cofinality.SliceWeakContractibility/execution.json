@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.Cofinality.SliceWeakContractibility",
+  "state": "checked",
+  "started": "2026-11-06T21:56:29.716163+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "efa58983d0c801b6ba63a53efe5d756ed61b655eaee2b09c08b7332de2276e34",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.Cofinality.SliceWeakContractibility"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.Cofinality.SliceWeakContractibility/Check.lean"
+  ],
+  "finished": "2026-11-06T21:56:39.071546+00:00"
+}

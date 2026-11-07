@@ -1,0 +1,8 @@
+import SerrePositivity.HomotopicalAlgebra.Diagram.FilteredHomotopyColimit
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 83b930a61a02bb1887e5
+#check @DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_filtered
+#print axioms DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_filtered

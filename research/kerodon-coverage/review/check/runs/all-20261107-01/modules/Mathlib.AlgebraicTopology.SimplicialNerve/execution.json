@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.AlgebraicTopology.SimplicialNerve",
+  "state": "checked",
+  "started": "2026-11-06T20:37:32.684969+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ccac642eb29c93dfac5f3788e99e47f73c377d3f149498e659125475afccc7ee",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.AlgebraicTopology.SimplicialNerve"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.AlgebraicTopology.SimplicialNerve/Check.lean"
+  ],
+  "finished": "2026-11-06T20:37:41.744334+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 5dbbd58dafeaa0f2445a
+#check @coconeRestriction_hasLiftingProperty_finalVertex
+#print axioms coconeRestriction_hasLiftingProperty_finalVertex

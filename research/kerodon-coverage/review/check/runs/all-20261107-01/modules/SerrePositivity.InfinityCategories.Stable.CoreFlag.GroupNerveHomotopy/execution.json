@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+  "state": "checked",
+  "started": "2026-11-06T22:40:32.448606+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "3981820a2dcfdc45ef43892e6cd33401cddae0a0a8898f194fe6451d70a12c31",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy/Check.lean"
+  ],
+  "finished": "2026-11-06T22:40:41.330630+00:00"
+}

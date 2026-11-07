@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Idempotents.Basic",
+  "state": "checked",
+  "started": "2026-11-06T19:30:46.332032+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "70c0041b30cb2110dee1d4f3287a1db147df40f8bfa08956bd86c7a4379bdc3c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Idempotents.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Idempotents.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T19:30:59.350739+00:00"
+}

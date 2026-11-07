@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 15cfeba940c34e221bc2
+#check @isLimitCone_iff_representablePresheafInfinity
+#print axioms isLimitCone_iff_representablePresheafInfinity

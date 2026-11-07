@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleIdempotence",
+  "state": "checked",
+  "started": "2026-11-06T20:06:05.499068+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "512ac2ca240b45fb7b91ef0a1a1b2a370dffcebde4eb379df0d185d1a336f795",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleIdempotence"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.FunctorCategories.TriangleIdempotence/Check.lean"
+  ],
+  "finished": "2026-11-06T20:06:13.930445+00:00"
+}

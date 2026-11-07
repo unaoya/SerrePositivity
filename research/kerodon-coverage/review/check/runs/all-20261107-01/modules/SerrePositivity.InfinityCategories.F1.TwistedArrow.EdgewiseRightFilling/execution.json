@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightFilling",
+  "state": "checked",
+  "started": "2026-11-06T21:49:37.317986+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9a30dedffdd5bbf5c24bdf2671f59a316fc48f6af8ef438689b30db296d36776",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightFilling"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightFilling/Check.lean"
+  ],
+  "finished": "2026-11-06T21:49:46.581996+00:00"
+}

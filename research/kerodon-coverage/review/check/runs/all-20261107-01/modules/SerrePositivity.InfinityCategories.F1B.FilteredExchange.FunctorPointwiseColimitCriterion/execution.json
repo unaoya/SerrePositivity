@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion",
+  "state": "checked",
+  "started": "2026-11-06T20:05:55.462702+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ae80ffe8e61179ca9d347a4a71c90da8b0a202066ed77b3d40da07a590ed89c0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion/Check.lean"
+  ],
+  "finished": "2026-11-06T20:06:05.492610+00:00"
+}

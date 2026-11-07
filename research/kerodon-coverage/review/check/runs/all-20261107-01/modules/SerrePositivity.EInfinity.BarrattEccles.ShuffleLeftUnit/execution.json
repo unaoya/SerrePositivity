@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.BarrattEccles.ShuffleLeftUnit",
+  "state": "checked",
+  "started": "2026-11-06T20:58:27.358323+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "fbbe3261955d74b778f524f47299d4a5768ca7c1146143c5ef3ca1d9c1ca3359",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.BarrattEccles.ShuffleLeftUnit"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.BarrattEccles.ShuffleLeftUnit/Check.lean"
+  ],
+  "finished": "2026-11-06T20:58:38.756359+00:00"
+}

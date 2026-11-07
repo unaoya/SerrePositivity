@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.CanonicalMappingTrivial",
+  "state": "checked",
+  "started": "2026-11-06T22:00:48.851994+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a398c4403ee81ca338d946fd0e90ba869a4734246eae2e6c43f72b64af3b6fbf",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.CanonicalMappingTrivial"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.CanonicalMappingTrivial/Check.lean"
+  ],
+  "finished": "2026-11-06T22:00:58.790526+00:00"
+}

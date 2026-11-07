@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SmallQuasicategoryColimitCompact
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 324ee71a1842f5526581
+#check @Presentable.isKappaCompact_smallQuasicategoryColimit_universe
+#print axioms Presentable.isKappaCompact_smallQuasicategoryColimit_universe

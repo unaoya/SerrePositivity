@@ -1,0 +1,12 @@
+import SerrePositivity.KST.Comparison.FibrantSquareCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference be64e99667d78690a5af
+#check @isHomotopyPullback_iff_strict_of_left_fibration
+#print axioms isHomotopyPullback_iff_strict_of_left_fibration
+
+-- reference a6d2af699c0de8546cab
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_strict_of_left_fibration
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_strict_of_left_fibration

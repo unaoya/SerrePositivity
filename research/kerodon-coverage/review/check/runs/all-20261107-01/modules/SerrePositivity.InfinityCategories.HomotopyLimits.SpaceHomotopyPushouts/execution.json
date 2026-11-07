@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceHomotopyPushouts",
+  "state": "checked",
+  "started": "2026-11-06T22:36:28.736015+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "cc8ce0244d95ee26aadec4ba26840328a2e75240bb0f8b56eebc556700e3748f",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceHomotopyPushouts"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.SpaceHomotopyPushouts/Check.lean"
+  ],
+  "finished": "2026-11-06T22:36:38.492388+00:00"
+}

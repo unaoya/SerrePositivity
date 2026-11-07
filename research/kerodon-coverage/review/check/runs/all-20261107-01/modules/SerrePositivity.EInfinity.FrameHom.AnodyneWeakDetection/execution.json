@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection",
+  "state": "checked",
+  "started": "2026-11-06T20:58:38.757992+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "aa4321ea2e2ebd5272b0c93ed957eda2f6a1c3d05224e3a6201b536dc2d887d9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection/Check.lean"
+  ],
+  "finished": "2026-11-06T20:58:50.423382+00:00"
+}

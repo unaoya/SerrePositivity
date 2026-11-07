@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.Algebra.Group.Semigroup",
+  "state": "checked",
+  "started": "2026-11-06T20:34:38.848703+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 0,
+  "source_sha256": "ac2e1911ceadf82a644717871a4b44fab460064199dee3124f05106c6d50994a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.Algebra.Group.Semigroup"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.Algebra.Group.Semigroup/Check.lean"
+  ],
+  "finished": "2026-11-06T20:34:47.502998+00:00"
+}

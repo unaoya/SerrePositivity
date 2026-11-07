@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold",
+  "state": "checked",
+  "started": "2026-11-06T21:43:25.739181+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "e192161ba017e3a2966797bc95495ebdbfe5193054903bb8c9a49534e49cd9ca",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold/Check.lean"
+  ],
+  "finished": "2026-11-06T21:43:34.256549+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLeftJoinCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference ea56c0a26a9330b99de8
+#check @kanIsRelativeLeftKanExtension_relativeJoin_iff_local_relativeColimits
+#print axioms kanIsRelativeLeftKanExtension_relativeJoin_iff_local_relativeColimits

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanPreservation
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 0dae9afc2b6172d1445a
+#check @indLeftKanExtension_preservesSmallKappaFilteredColimits
+#print axioms indLeftKanExtension_preservesSmallKappaFilteredColimits

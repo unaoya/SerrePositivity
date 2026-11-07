@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaColimitPreservationCriterion
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 7e2829546959ce1a8ea8
+#check @sigma_preservesSmallColimits_iff_yoneda_of_cocomplete
+#print axioms sigma_preservesSmallColimits_iff_yoneda_of_cocomplete

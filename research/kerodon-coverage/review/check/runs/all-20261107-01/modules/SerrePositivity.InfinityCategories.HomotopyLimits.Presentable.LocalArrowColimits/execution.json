@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalArrowColimits",
+  "state": "checked",
+  "started": "2026-11-06T22:35:01.248718+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "6ed4a94bf3ed48dc24fe78c5f4fb2d24998826b6c8511ad13db95ef73738fb0a",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalArrowColimits"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalArrowColimits/Check.lean"
+  ],
+  "finished": "2026-11-06T22:35:11.335452+00:00"
+}

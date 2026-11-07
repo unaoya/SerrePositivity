@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.KST.Fibration.PullbackCancellation",
+  "state": "checked",
+  "started": "2026-11-06T22:46:14.475151+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "9e936f0ca4b72f563e533cc0ef18e00390c64139887dff19955dffe0dc5aa731",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.KST.Fibration.PullbackCancellation"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.KST.Fibration.PullbackCancellation/Check.lean"
+  ],
+  "finished": "2026-11-06T22:46:23.325514+00:00"
+}

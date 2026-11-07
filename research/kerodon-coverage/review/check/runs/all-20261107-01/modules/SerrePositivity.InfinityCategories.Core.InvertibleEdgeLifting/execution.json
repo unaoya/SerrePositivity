@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+  "state": "checked",
+  "started": "2026-11-06T19:45:00.479535+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "364f2be8c004fccccaca83cd44032b25c66dc890c958c3c50e3aa5b453461885",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting/Check.lean"
+  ],
+  "finished": "2026-11-06T19:45:11.143603+00:00"
+}

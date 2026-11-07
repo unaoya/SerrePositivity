@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.Spectra.PointedSimplicialSet.Basic",
+  "state": "checked",
+  "started": "2026-11-06T22:50:19.117673+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "ff785f603d44617cdcfa06cb3feae24e5486372b8010a1ede165bf17620208e0",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.Spectra.PointedSimplicialSet.Basic"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.Spectra.PointedSimplicialSet.Basic/Check.lean"
+  ],
+  "finished": "2026-11-06T22:50:27.367147+00:00"
+}

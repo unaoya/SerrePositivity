@@ -1,0 +1,4 @@
+warning: existing lake build (possibly unguarded):
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.KST.Comparison.ComponentSubcomplex
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- lake build SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldIdentities
+waiting for build lock: {"pid": 37670, "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-review-a", "started": "2026-11-06T19:54:46.612430+00:00", "command": ["lake", "build", "SerrePositivity.KST.Comparison.ComponentSubcomplex"], "token": "00a8973a08884ece9bed351cadbce29b"}

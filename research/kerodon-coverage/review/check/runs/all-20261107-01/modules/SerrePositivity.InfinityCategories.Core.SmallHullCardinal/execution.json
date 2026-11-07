@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Core.SmallHullCardinal",
+  "state": "checked",
+  "started": "2026-11-06T21:19:28.681075+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "72b2be6e947a62bb9a02ef9d0e7aa67b4cdb7bc9cf37610857bfde0476293f89",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.Core.SmallHullCardinal"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.Core.SmallHullCardinal/Check.lean"
+  ],
+  "finished": "2026-11-06T21:19:38.236713+00:00"
+}

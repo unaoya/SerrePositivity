@@ -1,0 +1,26 @@
+{
+  "module": "Mathlib.CategoryTheory.Limits.Constructions.Equalizers",
+  "state": "checked",
+  "started": "2026-11-06T20:46:36.854517+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "a40a8d8c30bf2277603e3c9021b942ece75c80e3c5d233d5c0e8e5704c9e5f47",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "Mathlib.CategoryTheory.Limits.Constructions.Equalizers"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/Mathlib.CategoryTheory.Limits.Constructions.Equalizers/Check.lean"
+  ],
+  "finished": "2026-11-06T20:46:46.010392+00:00"
+}

@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 6c15261c90f45af228e1
+#check @finiteInternalHom_preservesFilteredColimits
+#print axioms finiteInternalHom_preservesFilteredColimits

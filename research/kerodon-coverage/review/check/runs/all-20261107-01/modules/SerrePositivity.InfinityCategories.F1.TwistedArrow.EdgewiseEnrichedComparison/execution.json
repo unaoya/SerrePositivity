@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnrichedComparison",
+  "state": "checked",
+  "started": "2026-11-06T21:49:18.290242+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "d89b6bacfdf0b0780a6072a6d8af7596917a76d172dd2a12696d9bbab47e2da9",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnrichedComparison"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnrichedComparison/Check.lean"
+  ],
+  "finished": "2026-11-06T21:49:28.083583+00:00"
+}

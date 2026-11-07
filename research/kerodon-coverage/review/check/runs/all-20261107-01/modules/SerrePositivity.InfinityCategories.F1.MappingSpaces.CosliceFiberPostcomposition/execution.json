@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition",
+  "state": "checked",
+  "started": "2026-11-06T19:58:48.048504+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "5dba36729f9aa649d2774dbd91c3cc912350d97aad48f3a56e5603b20a32c2cb",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberPostcomposition/Check.lean"
+  ],
+  "finished": "2026-11-06T19:58:58.907913+00:00"
+}

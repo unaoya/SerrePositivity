@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCosliceCofinality
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference a2cd46bf626cd3f4d6e5
+#check @isRightCofinal_sliceUnderProjection_of_filtered
+#print axioms isRightCofinal_sliceUnderProjection_of_filtered

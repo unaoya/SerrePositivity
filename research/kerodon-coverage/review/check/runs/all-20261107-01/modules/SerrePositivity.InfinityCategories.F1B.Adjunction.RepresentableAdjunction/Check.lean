@@ -1,0 +1,8 @@
+import SerrePositivity.InfinityCategories.F1B.Adjunction.RepresentableAdjunction
+
+set_option pp.universes true
+set_option pp.explicit true
+
+-- reference 800140e6e1ed2fee369e
+#check @bicategory_counit_isIso_of_postcomp_fullyFaithful
+#print axioms bicategory_counit_isIso_of_postcomp_fullyFaithful

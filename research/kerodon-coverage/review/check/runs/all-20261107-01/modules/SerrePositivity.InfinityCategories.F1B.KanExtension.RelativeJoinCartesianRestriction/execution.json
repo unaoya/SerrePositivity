@@ -1,0 +1,26 @@
+{
+  "module": "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinCartesianRestriction",
+  "state": "checked",
+  "started": "2026-11-06T22:04:57.615169+00:00",
+  "build_returncode": 0,
+  "lean_returncode": 1,
+  "source_sha256": "20005655e0ddd9b7b4b695813de1873a25e30b01e08a5684b3bdd4e0945b3c1c",
+  "build_command": [
+    "zsh",
+    "scripts/refactor/with_build_lock.sh",
+    "--wait",
+    "0",
+    "--",
+    "lake",
+    "build",
+    "SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinCartesianRestriction"
+  ],
+  "lean_command": [
+    "lake",
+    "env",
+    "lean",
+    "--json",
+    "research/kerodon-coverage/review/check/runs/all-20261107-01/modules/SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinCartesianRestriction/Check.lean"
+  ],
+  "finished": "2026-11-06T22:05:06.941619+00:00"
+}
