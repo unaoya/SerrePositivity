@@ -106,3 +106,39 @@ main の `6dd825028` を `math/bs-impl` に取り込み、指示書 §4 の承�
 ### 取り込み時の登録
 
 - 新規登録モジュールは `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction` の 1 本。共通入口 `SerrePositivity/BhattScholze.lean` と BS 監査スクリプトへの登録、および登録後の単独監査は調整役が行う。A-2 で検収を待つ。
+
+## BS-W11 停止点 B-1（2026-11-07）
+
+A-2 取り込みと監査の登録を含む main `2d79d1de2` まで `math/bs-impl` を fast-forward した。
+
+- `drafts/A6/ArcSite.lean` の G-A6-11・G-A6-3 と、`ArcSheafProperty.lean` の 1c・G-A6-6 を一時ファイルに写し、`lake env lean -DrelaxedAutoImplicit=false` で型検査した。28 宣言（構造体とインスタンスを含む）、壁時計 10.12 秒、終了コード 0。対象の仮定、結論、根添加の表示、Milnor 列の脚を下書きと揃えた。完備化・体拡大の 2 宣言には下書きどおり重複する素数性のインスタンスがあり、型検査では警告が出る。
+- tilt の二つの定理が参照する `tiltRing` と `tiltRingEquivPreTilt` も同じ下書きにあるので、比較のため同じ型で定義した。原典の逆極限に沿い、mod p が零環なら零環、そうでなければ `PreTilt`。対象の p 完備環では、この分岐は下書きの零環の場合分けに一致する。
+- 一時ファイルに未証明箇所 14 件。B-2 の根の塔、テンソルと延長、Milnor 短完全列から進め、B-3 では付値環の拡大と tilt・untilt を扱う。W12 から使う 1c は任意の付値環と素イデアルを取る形を維持する。忠実平坦な拡大は p 完備かつ階数 1 のまま扱う。
+- 一時ファイルの import から本体 470 モジュールをたどり、E3 への経路は 0。⑤b の差分・作業パスと予定する対象の重複は 0。新規本体モジュールはこの停止点では 0 本。移行先は A6 の配置規則に従い `BhattScholze/Perfectoidization/Derived/`。型が揃ったので証明に進む。
+
+## BS-W11 停止点 B-2（2026-11-07）
+
+実装は `0367d6bc4` と `d73baf34b`。両モジュールとも既存の宣言を変更せず、drafts から証明済みの宣言を移した。
+
+- G-A6-11 の `perfectoidBaseRing_isPerfectoid` を証明した。下書きの多項式商を一変数の根の塔の直極限と同定し、係数の mod p を `ZMod p` と比較して既存の完備塔の定理を適用した。p の正則性で古典的完備化から導来 H⁰ の表示へ移した。
+- 導来 p 完備な離散環への標準 ℤ_p 射とその一意性を、整数の完備化の各剰余環を通して示した。`baseExtension` とその導来完備性、`perfectoidBaseRing_toValuationExtension` と `exists_baseExtension_lift_of_map` を実装した。両脚の ℤ_p 上の一致により、与えられた拡大に沿って底変換を延長する。
+- 1c の `valuationRing_milnorSquare` と完全付値環への特殊化を証明した。任意の素イデアルで局所化し、剰余が零となる分数は分母で割り切れるので元の素イデアルから来ることを使った。B-1 の加法群の短完全列の型を保った。
+
+### ビルドと依存
+
+- 共有ロックで Milnor の単体ビルドは 6 秒、既存の `RootTower.Perfectoid` の成果物復元は 4 秒。R₀ と底変換の単体ビルドは初回 17 秒、行長調整後 11 秒で成功した。Milnor の完全環への特殊化には、下書きと同じ素数性引数に関する未使用引数警告が残る。
+- 調整役の段階 II 監査を一時ファイルに写し、新規 2 モジュールを対象として共有ロックで単独実行した。生成宣言を含む 99 件が標準三公理のみ。sorry・admit・独自公理は 0。新規モジュールを含む本体 587 モジュールの import を確認し、E3 に到達する経路は 0。
+- ⑤b の `2846f2a1a` と作業木、および基準から進んだ main `cf3f9e3b7` と変更パスの重複は 0。差分の空白検査を通過した。
+
+### drafts に残した主張
+
+- `baseExtension_cardinal_le` はテンソルの有限和と導来完備化の可算データの濃度評価が残る。
+- `baseExtensionUnit_pCompletelyFaithfullyFlat` は一般の導来 p 完備な S について、完備底変換と Tor・忠実性の比較が残る。
+- `exists_baseExtension_lift` は同じ W を先に選ぶ G-A6-3 を使うため、B-3 の付値環の拡大の後に扱う。tilt・untilt も B-3。
+
+### 取り込み時の登録
+
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor`
+
+共通入口と `scripts/audit_bhatt_scholze_stage2.lean` の登録は調整役が行う。対象のビルドと単独監査が通ったので B-3 に進む。
