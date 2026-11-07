@@ -2604,7 +2604,18 @@
       ]
     },
     "7.4.1.2": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/Coherent/SmallConstantSource.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit",
+          "source": "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.1.4": {
       "adopted": []
@@ -2661,10 +2672,27 @@
       ]
     },
     "7.4.1.20": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.exists_classifiedLimitCone",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ClassifiedConeLimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.1.21": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.hasLimit_smallLeftUnstraightening_of_finiteProducts",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ClassifiedConeLimit.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.exists_classifiedLimitCone",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ClassifiedConeLimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.1.22": {
       "adopted": [
@@ -2728,7 +2756,13 @@
       "adopted": []
     },
     "7.4.2.17": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.transportRepresentationMappingSpaceMap_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/Transport/RepresentationMappingEquivalence.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.3.1": {
       "adopted": [
@@ -2779,10 +2813,22 @@
       ]
     },
     "7.4.3.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.3.10": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.3.11": {
       "adopted": [
@@ -2797,7 +2843,13 @@
       ]
     },
     "7.4.3.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.isLimitCone_iff_restrict_of_leftCofinal",
+          "source": "SerrePositivity/InfinityCategories/Derived/CofinalLimitTransfer.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.3.13": {
       "adopted": [
@@ -2812,7 +2864,13 @@
       ]
     },
     "7.4.3.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.IsLeftCofinal.isWeakHomotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.3.15": {
       "adopted": []
@@ -2846,10 +2904,27 @@
       ]
     },
     "7.4.4.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Cat.instHasLimits",
+          "source": "Mathlib/CategoryTheory/Category/Cat/Limit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.4.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.exists_kanCocartesianSectionsEvaluate_section",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionEvaluation.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.4.12": {
       "adopted": []
@@ -2911,7 +2986,13 @@
       "adopted": []
     },
     "7.4.5.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Cat.instHasColimits",
+          "source": "Mathlib/CategoryTheory/Category/Cat/Colimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.4.5.5": {
       "adopted": []
@@ -2941,7 +3022,13 @@
       "adopted": []
     },
     "7.4.6.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne",
+          "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeOverAnodyneRestriction.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.5.1.1": {
       "adopted": [
@@ -4259,6 +4346,16 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 52
+      },
+      "SerrePositivity.InfinityCategories.IsLeftCofinal.isWeakHomotopyEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.IsLeftCofinal.isWeakHomotopyEquivalence : ∀ {A B : SSet} {i : A ⟶ B},\n  SerrePositivity.InfinityCategories.IsLeftCofinal i → SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence i",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsLeftCofinal.isWeakHomotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 42
       }
     },
     "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean": {
@@ -4475,6 +4572,136 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.cocartesianFibration_lift_prism' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 24
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Coherent/SmallConstantSource.lean": {
+      "SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap_isQCatEquivalence : ∀ {B : SSet}\n  (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)\n  (z : SerrePositivity.InfinityCategories.SpaceInfinity.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap F z)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.coherentSmallConstantSourceMap_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 42
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Coherent/SpaceSmallLimits.lean": {
+      "SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit": {
+        "type": "@SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit : ∀ {B : SSet}\n  (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.IsLimitCone (SerrePositivity.InfinityCategories.coherentDiagramSectionsCone F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.coherentDiagramSectionsCone_isLimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 36
+      }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/ClassifiedConeLimit.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.exists_classifiedLimitCone": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.exists_classifiedLimitCone : ∀ {K B : SSet} [B.Quasicategory]\n  (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)\n  (d : K ⟶ SerrePositivity.InfinityCategories.smallLeftUnstraightening F)\n  (c :\n    SerrePositivity.InfinityCategories.JoinCone\n      (CategoryTheory.CategoryStruct.comp d (SerrePositivity.InfinityCategories.smallLeftUnstraighteningProjection F))),\n  SerrePositivity.InfinityCategories.IsLimitCone c →\n    SerrePositivity.InfinityCategories.IsLimitCone (SerrePositivity.InfinityCategories.mapJoinCone F c.ulift) →\n      ∃ a,\n        SerrePositivity.InfinityCategories.IsLimitCone a ∧\n          SerrePositivity.InfinityCategories.mapJoinCone\n              (SerrePositivity.InfinityCategories.smallLeftUnstraighteningProjection F) a =\n            c",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.exists_classifiedLimitCone' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 35
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.hasLimit_smallLeftUnstraightening_of_finiteProducts": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.hasLimit_smallLeftUnstraightening_of_finiteProducts : ∀ {B : SSet}\n  [B.Quasicategory] (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.HomotopyLimits.PreservesFiniteProductsFromSmallSource F →\n    ∀ {J : Type u_1} [Finite J]\n      (d :\n        CategoryTheory.nerve (CategoryTheory.Discrete J) ⟶\n          SerrePositivity.InfinityCategories.smallLeftUnstraightening F),\n      SerrePositivity.InfinityCategories.HasLimit\n          (CategoryTheory.CategoryStruct.comp d\n            (SerrePositivity.InfinityCategories.smallLeftUnstraighteningProjection F)) →\n        SerrePositivity.InfinityCategories.HasLimit d",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.hasLimit_smallLeftUnstraightening_of_finiteProducts' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 51
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Transport/RepresentationMappingEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.transportRepresentationMappingSpaceMap_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.transportRepresentationMappingSpaceMap_isQCatEquivalence : ∀ {E F B : SSet}\n  [B.Quasicategory] {p : E ⟶ B} {q : F ⟶ B} [inst : SerrePositivity.InfinityCategories.LeftFibration p]\n  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration q]\n  (hp : SerrePositivity.InfinityCategories.HasSmallSimplexFibers p)\n  (hq : SerrePositivity.InfinityCategories.HasSmallSimplexFibers q)\n  (R : SerrePositivity.InfinityCategories.LeftTransportRepresentation p)\n  (S : SerrePositivity.InfinityCategories.LeftTransportRepresentation q),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.transportRepresentationMappingSpaceMap hp hq R S)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.transportRepresentationMappingSpaceMap_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 25
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits": {
+        "type": "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits : SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits\n  SerrePositivity.InfinityCategories.SpaceInfinity",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 72
+      }
+    },
+    "Mathlib/CategoryTheory/Category/Cat/Limit.lean": {
+      "CategoryTheory.Cat.instHasLimits": {
+        "type": "CategoryTheory.Cat.instHasLimits : CategoryTheory.Limits.HasLimits CategoryTheory.Cat",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Cat.instHasLimits' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 160
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionEvaluation.lean": {
+      "SerrePositivity.InfinityCategories.exists_kanCocartesianSectionsEvaluate_section": {
+        "type": "@SerrePositivity.InfinityCategories.exists_kanCocartesianSectionsEvaluate_section : ∀ {A E B : SSet} [B.Quasicategory]\n  (p : E ⟶ B) [SerrePositivity.InfinityCategories.CocartesianFibration p] (a : A ⟶ B)\n  (v : A.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex v →\n    ∃ s,\n      CategoryTheory.CategoryStruct.comp s (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v) =\n        CategoryTheory.CategoryStruct.id\n          (SerrePositivity.InfinityCategories.vertexFiber p\n            ((CategoryTheory.ConcreteCategory.hom (a.app (Opposite.op { len := 0 }))) v))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.exists_kanCocartesianSectionsEvaluate_section' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 26
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean": {
+      "SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration": {
+        "type": "@SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration : ∀ {A E B : SSet} [B.Quasicategory]\n  (p : E ⟶ B) [SerrePositivity.InfinityCategories.CocartesianFibration p] (a : A ⟶ B)\n  (v : A.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex v →\n    SerrePositivity.InfinityCategories.TrivialKanFibration\n      (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate_trivialKanFibration' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 100
+      }
+    },
+    "Mathlib/CategoryTheory/Category/Cat/Colimit.lean": {
+      "CategoryTheory.Cat.instHasColimits": {
+        "type": "CategoryTheory.Cat.instHasColimits : CategoryTheory.Limits.HasColimits CategoryTheory.Cat",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Cat.instHasColimits' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 38
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeOverAnodyneRestriction.lean": {
+      "SerrePositivity.InfinityCategories.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne": {
+        "type": "@SerrePositivity.InfinityCategories.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne : ∀\n  {E A B : SSet} (p : E ⟶ B) [SerrePositivity.InfinityCategories.CocartesianFibration p] (i : A ⟶ B),\n  SSet.innerAnodyneExtensions i →\n    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence (CategoryTheory.Limits.pullback.snd i p)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.cocartesianPullback_snd_isPrecompositionEquivalence_of_innerAnodyne' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 36
       }
     }
   },
