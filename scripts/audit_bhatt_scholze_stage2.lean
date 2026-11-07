@@ -45,6 +45,8 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
+import SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
+import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 import Lean.Util.CollectAxioms
 
 /-!
@@ -57,6 +59,8 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech,
+    `SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite,

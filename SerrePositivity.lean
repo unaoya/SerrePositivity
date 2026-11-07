@@ -33,6 +33,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExc
 public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.ParameterPowerLength
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
+public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedCoefficient
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
