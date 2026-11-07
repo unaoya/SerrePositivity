@@ -853,13 +853,30 @@
       "adopted": []
     },
     "9.1.4.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "Monotone.final_functor_iff",
+          "source": "Mathlib/CategoryTheory/Filtered/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.4.13": {
       "adopted": []
     },
     "9.1.4.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity",
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.4.15": {
       "adopted": [
@@ -917,13 +934,31 @@
       ]
     },
     "9.1.5.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_le",
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.5.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.IsCardinalFiltered.of_final",
+          "source": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.5.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.IsFiltered.of_final",
+          "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.5.15": {
       "adopted": []
@@ -937,10 +972,32 @@
       ]
     },
     "9.1.5.17": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.IsCardinalFiltered.of_final",
+          "source": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.5.18": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.6.1": {
       "adopted": [
@@ -1115,7 +1172,13 @@
       ]
     },
     "9.1.7.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "Cardinal.SharplyLT.of_pow_lt",
+          "source": "Mathlib/CategoryTheory/Presentable/SharplyLT/Lemmas.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.7.13": {
       "adopted": [
@@ -1209,7 +1272,18 @@
       ]
     },
     "9.1.8.5": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.8.8": {
       "adopted": [
@@ -1224,7 +1298,18 @@
       ]
     },
     "9.1.8.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ordinalNerve_isKappaFiltered",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallPieceChains.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.8.10": {
       "adopted": []
@@ -1262,7 +1347,13 @@
       "adopted": []
     },
     "9.1.9.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Ind.quasicategory_of_filtered_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.9.8": {
       "adopted": []
@@ -4455,6 +4546,16 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 59
+      },
+      "SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_le": {
+        "type": "@SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_le : ∀ {κ μ : Cardinal.{u_1}} {C : SSet}\n  [inst : C.Quasicategory],\n  κ ≤ μ →\n    ∀ [SerrePositivity.InfinityCategories.F2.IsKappaFiltered μ C],\n      SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.isKappaFiltered_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 39
       }
     },
     "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean": {
@@ -4505,6 +4606,110 @@
         "line": 46
       }
     },
+    "Mathlib/CategoryTheory/Filtered/Final.lean": {
+      "Monotone.final_functor_iff": {
+        "type": "@Monotone.final_functor_iff : ∀ {J₁ : Type u_1} {J₂ : Type u_2} [inst : Preorder J₁] [inst_1 : Preorder J₂]\n  [IsDirectedOrder J₁] {f : J₁ → J₂} (hf : Monotone f), hf.functor.Final ↔ ∀ (j₂ : J₂), ∃ j₁, j₂ ≤ f j₁",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'Monotone.final_functor_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 476
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence : ∀ {A B : SSet} {i : A ⟶ B},\n  SerrePositivity.InfinityCategories.IsRightCofinal i → SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence i",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 52
+      }
+    },
+    "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean": {
+      "CategoryTheory.IsCardinalFiltered.of_final": {
+        "type": "@CategoryTheory.IsCardinalFiltered.of_final : ∀ {J₁ : Type u_5} [inst : CategoryTheory.Category.{u_3, u_5} J₁]\n  {J₂ : Type u_4} [inst_1 : CategoryTheory.Category.{u_2, u_4} J₂] (F : CategoryTheory.Functor J₁ J₂) [F.Final]\n  (κ : Cardinal.{u_1}) [inst_3 : Fact κ.IsRegular] [CategoryTheory.IsCardinalFiltered J₁ κ],\n  CategoryTheory.IsCardinalFiltered J₂ κ",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsCardinalFiltered.of_final' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 350
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Final.lean": {
+      "CategoryTheory.IsFiltered.of_final": {
+        "type": "@CategoryTheory.IsFiltered.of_final : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_2, u_4} D] (F : CategoryTheory.Functor C D) [F.Final]\n  [CategoryTheory.IsFiltered C], CategoryTheory.IsFiltered D",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsFiltered.of_final' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 1017
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/TerminalSubcomplexCover.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit : {κ : Cardinal.{u_1}} →\n  [Fact κ.IsRegular] →\n    {C : SSet} →\n      [inst : C.Quasicategory] →\n        [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C] →\n          {T : Type u_1} →\n            κ ≤ Cardinal.mk T →\n              CategoryTheory.Limits.IsColimit\n                (SerrePositivity.InfinityCategories.F2.Ind.smallSubcomplexFamilyCocone κ\n                  (CategoryTheory.MonoidalCategoryStruct.tensorObj C\n                    (CategoryTheory.nerve (CategoryTheory.Codiscrete T)))\n                  (SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexPredicate\n                    (CategoryTheory.MonoidalCategoryStruct.tensorObj C\n                      (CategoryTheory.nerve (CategoryTheory.Codiscrete T)))))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamilyCocone_isColimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 42
+      },
+      "SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] {C : SSet} [inst_1 : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C] {T : Type u_1},\n  κ ≤ Cardinal.mk T →\n    CategoryTheory.IsCardinalFiltered\n      (SerrePositivity.InfinityCategories.F2.Ind.SmallSubcomplexFamily κ\n        (CategoryTheory.MonoidalCategoryStruct.tensorObj C (CategoryTheory.nerve (CategoryTheory.Codiscrete T)))\n        (SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexPredicate\n          (CategoryTheory.MonoidalCategoryStruct.tensorObj C (CategoryTheory.nerve (CategoryTheory.Codiscrete T)))))\n      κ",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.terminalSubcomplexFamily_isCardinalFiltered' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 30
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] {I : Type u_1} [inst_1 : CategoryTheory.SmallCategory I]\n  [CategoryTheory.IsCardinalFiltered I κ] {F : CategoryTheory.Functor I SSet}\n  [inst : ∀ (i : I), (F.obj i).Quasicategory]\n  [∀ (i : I), SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (F.obj i)] {c : CategoryTheory.Limits.Cocone F}\n  [inst : c.pt.Quasicategory] (hc : CategoryTheory.Limits.IsColimit c),\n  SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ c.pt",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.isKappaFiltered_of_strict_isColimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 32
+      },
+      "SerrePositivity.InfinityCategories.F2.Ind.quasicategory_of_filtered_isColimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.quasicategory_of_filtered_isColimit : ∀ {I : Type u_1}\n  [inst : CategoryTheory.SmallCategory I] [CategoryTheory.IsFiltered I] {F : CategoryTheory.Functor I SSet}\n  [∀ (i : I), (F.obj i).Quasicategory] {c : CategoryTheory.Limits.Cocone F} (hc : CategoryTheory.Limits.IsColimit c),\n  c.pt.Quasicategory",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.quasicategory_of_filtered_isColimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 22
+      }
+    },
+    "Mathlib/CategoryTheory/Presentable/SharplyLT/Lemmas.lean": {
+      "Cardinal.SharplyLT.of_pow_lt": {
+        "type": "@Cardinal.SharplyLT.of_pow_lt : ∀ {κ₁ κ₂ : Cardinal.{u_1}} [inst : Fact κ₁.IsRegular] [inst_1 : Fact κ₂.IsRegular],\n  κ₁ < κ₂ → (∀ (α β : Cardinal.{u_1}), α < κ₁ → β < κ₂ → β ^ α < κ₂) → κ₁.SharplyLT κ₂",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'Cardinal.SharplyLT.of_pow_lt' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 62
+      }
+    },
     "SerrePositivity/InfinityCategories/F2/Presentable/SmallFilteredNerveColimit.lean": {
       "SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone_isColimit": {
         "type": "@SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone_isColimit : {κ μ : Cardinal.{u_1}} →\n  [inst : Fact κ.IsRegular] →\n    {I : Type u_1} →\n      [inst_1 : PartialOrder I] →\n        [Fact μ.IsRegular] →\n          [CategoryTheory.IsCardinalFiltered I κ] →\n            SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound κ μ →\n              CategoryTheory.Limits.IsColimit\n                (SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone κ μ I)",
@@ -4539,6 +4744,30 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPiece_nerve_properties' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 52
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean": {
+      "SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset : ∀ {κ : Cardinal.{u_1}}\n  [inst : Fact κ.IsRegular] (C : SSet) [inst_1 : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C],\n  ∃ I o f,\n    CategoryTheory.IsCardinalFiltered I κ ∧\n      SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (CategoryTheory.nerve I) ∧\n        SerrePositivity.InfinityCategories.IsRightCofinal f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Ind.exists_cofinal_kappaFiltered_poset' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 31
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallPieceChains.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ordinalNerve_isKappaFiltered": {
+        "type": "SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ordinalNerve_isKappaFiltered : ∀\n  (κ : Cardinal.{u_1}) [Fact κ.IsRegular],\n  SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ (CategoryTheory.nerve κ.ord.ToType)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ordinalNerve_isKappaFiltered' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 53
       }
     },
     "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean": {
