@@ -29,53 +29,53 @@ number,verdict,status_new,declarations_new,reason,axioms,check
 8.1.2.21,fix,partial,SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean:56,"K が点の場合、頂点 x の coslice から始点を x に固定した twisted arrow への比較が同値。一般の図式 f の Fun_{/Cᵒᵖ}(Kᵒᵖ,Tw(C)) での比較は残る。",,found
 8.1.2.22,ok,none,,相対始頂点の Hom 比較条件と終点固定側のファイバー同型を確認した。与えた f が U-(co)cartesian であることを誘導ファイバー写像に関する相対始性で判定する iff は見つからない。,,not_found
 8.1.2.23,fix,partial,SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex @ SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean:74,恒等辺に当たる頂点は始点固定の twisted arrow で始対象になる。任意の辺での iff と終点固定側の同じ判定は残る。,,found
-8.1.3.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
-8.1.3.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.3.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.3.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.3.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.3.11,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.1,ok,none,,Tw 自体は Δ[n]ᵒᵖ ⋆ Δ[n] からの射で定義される。重みをさらに Tw(Δ[n]) に替えて各次数を組む Cospan(C) と、面・退化での前合成を与える宣言は見つからない。,,not_found
+8.1.3.5,ok,none,,Tw の写像上の作用と一般の右 Kan 延長随伴の単位はある。σ を Tw(σ) に移して Cospan(Tw(D)) の単体にする写像は確認できない。,,not_found
+8.1.3.7,fix,partial,CategoryTheory.Functor.ranAdjunction @ Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean:337,前合成と右 Kan 延長の Hom 全単射は通常圏の随伴から得られる。Tw の単体ごとの表示はあるが、この全単射が Tw(D) からの写像を Cospan で移し指定の単位と合成する写像だという同定は見つからない。,,found
+8.1.3.8,fix,partial,CategoryTheory.Functor.ranAdjunction @ Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean:337,小圏に沿った前合成に対する一般の右 Kan 延長随伴と、単体集合の自己関手 Tw はある。Tw をその前合成として関手レベルで同定し、右随伴を次数ごとの Cospan と比較する型は見つからない。,,found
+8.1.3.10,ok,none,,Tw(C)→Cᵒᵖ×C のホーン持ち上げを調べる型と前合成の一般の随伴はある。任意の Kan ファイブレーションを Cospan に適用した射で、Tw を施したホーンの持ち上げを解く型は見つからない。,,not_found
+8.1.3.11,ok,none,,Tw(K) が Kan になるインスタンスはある。K が Kan のとき、右側の Cospan(K) のホーンを埋める型は見つからない。,,not_found
 8.1.3.12,fix,partial,CategoryTheory.Span.SpanBicat @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151 | CategoryTheory.Span.SpanBicat.instBicategory @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,Mathlib の SpanBicat の双対で標的の1圏由来の cospan 双圏を表せる。Tw(D) 上の F から原文の strictly unital lax functor と合成制約を作る宣言は未確認。,,renamed
-8.1.3.14,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）（SerrePositivity の Bicategory は Mathlib の Cat 双圏の利用のみ）。,,not_found
-8.1.3.15,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
-8.1.4.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.3,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.4.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.5.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.5.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.6.1,ok,none,,"確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（KST の markedSpans は Fun(Λ²₀,X) の span 図式の ∞ 圏で、Tw(Δⁿ) 型の Cospan(C) ではない）。",,not_found
+8.1.3.14,ok,none,,Mathlib の双対の通常 span 双圏には pullback 合成がある。Tw(D)→C の関手と pushout 合成の cospan への strictly unital lax 関手を対応づける全単射は見つからない。,,not_found
+8.1.3.15,ok,none,,通常の span 双圏と単体豊穣圏の coherent nerve を確認した。pushout を持つ C の Cospan(N(C)) と cospan 双圏の Duskin nerve を全次数で結ぶ同型は見つからない。,,not_found
+8.1.4.1,fix,partial,CategoryTheory.Span.SpanBicat.instBicategory @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,通常圏の双対では脚の引き戻し条件から span 双圏を作る。任意の準圏の Cospan に対する高次の双圏条件と pushout の存在の両方向は見つからない。,,found
+8.1.4.2,fix,partial,SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex @ SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean:28,四角形の関手頂点を普遍余錐で判定する述語はある。Tw(Δ²) 図式の内側の四角形を取り出し、その pushout 性を Cospan の薄さとする比較は見つからない。,,found
+8.1.4.3,ok,none,,通常 span の単位子は退化した合成の候補になる。任意の準圏の Cospan で s₀ または s₁ の像の内側の四角形を pushout と判定する型は見つからない。,,not_found
+8.1.4.4,fix,partial,SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily @ SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean:96,指定の span の族に対する相対的な pushout 図式の構成はある。与えた任意の可換四角形から Tw(Δ²) への延長を復元し、pushout を選べば薄い充填になるという比較は見つからない。,,found
+8.1.4.6,ok,none,,Tw の射影のホーン条件とその標準拡張領域の内 anodyne 性を調べた。任意の U で指定した二辺が U-cocartesian と U-cartesian のとき、Tw(Λⁿ₀) 上の相対延長を与える型は見つからない。,,not_found
+8.1.4.7,ok,none,,一つの可逆辺の cocartesian ホーン条件と Tw 射影の充填はある。Tw(Λⁿ₀) 図式の二つの指定辺の可逆性から、Tw(Δⁿ) まで図式を延長する型は見つからない。,,not_found
+8.1.4.8,ok,none,,押し出し頂点の述語と全小余極限保存の定義はある。Cospan(F) の薄い単体保存と元の F の pushout 保存を往復する型は見つからない。,,not_found
+8.1.5.1,fix,partial,SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso @ SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean:57,押し出しの正方形と span の普遍余錐を同定する型はある。Tw(Δ²) 全体の図式で、内側の pushout から残りの二頂点も含む余極限性を導く型は見つからない。,,found
+8.1.5.2,fix,partial,SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso @ SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean:57,四角形と三頂点の span からの余錐の比較はある。Tw(Δ²) 全体の余極限から指定の内側の四角形の pushout 性へ戻す制限の型は見つからない。,,found
+8.1.6.1,ok,none,,通常の span の両脚には個別の射の性質を課せる。すべての 0≤i≤j≤n の二脚を検査して Cospan の n 単体を切り出す部分単体集合は見つからない。,,not_found
 8.1.6.5,fix,partial,CategoryTheory.Span.SpanBicat @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151,Mathlib の SpanBicat の仮定（引き戻しの存在と W の底変換安定性）が 1 圏での双対版。∞ 圏版はない。,,renamed
-8.1.6.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.6.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.6.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
-8.1.6.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.6.7,fix,partial,CategoryTheory.Span.SpanBicat.instBicategory @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,二つの射の性質を持つ通常 span は、両脚の pullback の閉性などで双圏になる。準圏における pushout-compatible な両脚で切った単体集合の高次の双圏条件は見つからない。,,found
+8.1.6.8,ok,none,,押し出し頂点と脚を制限した通常 span の宣言はある。Cospan の部分単体集合と全体で同じ指定 2 単体の薄さを比較する iff は見つからない。,,not_found
+8.1.6.10,ok,none,,Mathlib で apexIso を作る入力は同じ二端点の span 間の可逆な 2 射。準圏の cospan 自体が可逆な 1 射であることを両脚の可逆性で判定する型は見つからない。,,not_found
+8.1.6.12,ok,none,,通常 span の固定両端点での 2 同型の構成はある。制限付き Cospan の二対象の同型を元の準圏内の同型に反映し、逆に同型から両脚の条件を得る型は見つからない。,,not_found
+8.1.7.1,fix,partial,SerrePositivity.InfinityCategories.edgewiseRight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean:40,Tw(C) の標的射影 λ₊ を各次数で作る型はある。転置 ρ₊ を C→Cospan(C) として構成し、各次数で単射とする型は見つからない。,,found
+8.1.7.2,ok,none,,片脚の射の性質を指定する通常 span と頂点で絞る部分複体はある。各次数で全左向き辺が可逆である cospan 図式だけを取る部分単体集合は見つからない。,,not_found
+8.1.7.4,ok,none,,"通常 span の二脚にはそれぞれ制約を付けられる。単体集合の二つの片側制限 Cospan^{L,all} と Cospan^{all,R} の共通部分が両側制限と等しい型は見つからない。",,not_found
+8.1.7.5,ok,none,,通常 span の脚を射の性質で制限した双圏はある。右脚に可逆性を課した Cospan の内ホーンを埋める型は見つからない。,,not_found
+8.1.7.6,ok,none,,標的射影と Tw の Kan 性はある。右脚が可逆な Cospan へ移した ρ₊ の充満忠実性と本質的全射性は確認できない。,,not_found
 8.1.7.8,fix,partial,CategoryTheory.MorphismProperty.HasOfPostcompProperty @ Mathlib/CategoryTheory/MorphismProperty/Composition.lean:370,Mathlib の HasOfPostcompProperty が 1 圏の MorphismProperty での類似（単体的集合の辺の集まりとしてはない）。,,renamed
-8.1.7.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.13,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.7.14,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.8.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
-8.1.8.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
-8.1.8.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
-8.1.9.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.9,ok,none,,通常圏の後合成での消去性と Tw の二射影はある。二射影の各ファイバーで F が指定の辺の族を保つ条件を、転置 f の制限付き Cospan 経由と結ぶ iff は見つからない。,,not_found
+8.1.7.12,ok,none,,通常圏での前合成の随伴と相対関手空間を調べた。内部 Hom の比較同型を L'・R' の射の条件と両脚制限の両側に制限する型は見つからない。,,not_found
+8.1.7.13,ok,none,,元の Tw の関手性と標的射影はある。右脚可逆の Cospan への二図式が関手圏で同型であることを、それぞれの Tw(D) 上の転置の同型に移す iff は見つからない。,,not_found
+8.1.7.14,fix,partial,SerrePositivity.InfinityCategories.edgewiseLeft @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean:55,Tw(C) から Cᵒᵖ への始域射影 λ₋ はある。転置 ρ₋ と、左脚可逆の Cospan への準圏同値までは確認できない。,,found
+8.1.8.2,ok,none,,"通常双圏の lax 関手のデータはある。Tw(A)→Hom_C(X,Y) から、両端で定値となる [1]×A 上の lax 関手を、Tw の射から合成制約も含めて作る型は見つからない。",,not_found
+8.1.8.4,ok,none,,lax 関手と通常の随伴による Hom 全単射はある。F↦U_F の単射性と、その像が両端定値の strictly unital lax 関手からなるという型は見つからない。,,not_found
+8.1.8.6,ok,none,,"単体豊穣圏の nerve と lax 関手の構造はある。双圏の Duskin nerve の Hom と Cospan(N(Hom_C(X,Y))) の同型を全次数で与える型は見つからない。",,not_found
+8.1.9.1,ok,none,,E 内の一辺の cocartesian ホーン条件と Tw 射影の持ち上げはある。U-cocartesian な右脚で制限した Cospan(E)→Cospan(C) が内ファイブレーションである型は見つからない。,,not_found
 8.1.9.5,fix,partial,SerrePositivity.InfinityCategories.CocartesianEdgeLift @ SerrePositivity/InfinityCategories/F1/Transport/Objects.lean:24 | SerrePositivity.InfinityCategories.cartesianFibrations @ SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean:24,辺ごとの「U-cocartesian lift を持つ」は、指定始点からの lift のデータ CocartesianEdgeLift p e x（その Nonempty が条件）で表せる。cartesian 側は cartesianFibrations の定義の中に全辺について内蔵されるだけで、辺ごとの述語・構造はない。名前の付いた述語「admits lifts」もない。,,renamed
-8.1.9.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.9.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.3,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
-8.1.10.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.9.9,ok,none,,一つの辺の cocartesian 持ち上げのデータはある。R に属する辺だけへの持ち上げを仮定し、二つの Cospan 部分単体集合間で全内ホーンを解く型は見つからない。,,not_found
+8.1.9.10,ok,none,,相対的な押し出し図式の構成と、基底変更での cocartesian 辺の扱いはある。L の逆像と R の cocartesian 持ち上げが全空間で pushout-compatible になる型は見つからない。,,not_found
+8.1.10.1,ok,none,,個別の (co)cartesian 辺の判定と pushout 述語はある。基底の pushout に乗る四角形について、指定の二辺を仮定し残り二辺の (co)cartesian 性を同値にする公理を含むファイブレーションの型は見つからない。,,not_found
+8.1.10.3,ok,none,,Mathlib の Pith は通常双圏の 2 射を可逆なものに絞る。準圏の Cospan の Pith 間の射が cartesian で、指定した二脚の性質で cartesian 辺を判定する型は見つからない。,,not_found
+8.1.10.5,ok,none,,通常双圏の Pith と cocartesian 辺の個別判定はある。両脚を U-(co)cartesian に制限した Cospan の ∞-双圏性と、その Pith の右ファイブレーションは見つからない。,,not_found
+8.1.10.6,ok,none,,辺ごとの cocartesian 持ち上げと pushout 述語はある。L と R だけへの別々の持ち上げを要求し、その二クラスに属する辺の pushout に混合条件を課す相対述語は見つからない。,,not_found
+8.1.10.9,ok,none,,通常双圏の Pith と一辺の持ち上げはある。持ち上げた L・R による Cospan の Pith 間で、cartesian ファイブレーションの構成と cartesian 辺の両脚判定は見つからない。,,not_found
+8.1.10.12,ok,none,,通常双圏の Pith と span 双圏はある。両脚を (co)cartesian に制限した全空間の高次双圏性、Pith 上の右ファイブレーション、底が準圏の場合の Cospan 自体の右ファイブレーションの三結論は見つからない。,,not_found
 8.2.0.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61 | SerrePositivity.InfinityCategories.twistedArrowProjection @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:23,一般の coupling（left fibration C→C₋^op×C₊）の名前付き定義はない。典型例 Tw(C)→C^op×C が left fibration であること（twisted arrow coupling）だけがある。LeftFibration と ⊗ で書けば表せる。,,renamed
 8.2.0.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
 8.2.0.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found

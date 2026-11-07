@@ -538,10 +538,22 @@
       "adopted": []
     },
     "8.1.3.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Functor.ranAdjunction",
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.3.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Functor.ranAdjunction",
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.3.10": {
       "adopted": []
@@ -569,16 +581,34 @@
       "adopted": []
     },
     "8.1.4.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Span.SpanBicat.instBicategory",
+          "source": "Mathlib/CategoryTheory/Bicategory/Span/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.4.2": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex",
+          "source": "SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.4.3": {
       "adopted": []
     },
     "8.1.4.4": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily",
+          "source": "SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.4.6": {
       "adopted": []
@@ -590,16 +620,34 @@
       "adopted": []
     },
     "8.1.5.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso",
+          "source": "SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.5.2": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso",
+          "source": "SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.6.1": {
       "adopted": []
     },
     "8.1.6.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Span.SpanBicat.instBicategory",
+          "source": "Mathlib/CategoryTheory/Bicategory/Span/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.6.8": {
       "adopted": []
@@ -611,7 +659,13 @@
       "adopted": []
     },
     "8.1.7.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.edgewiseRight",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.7.2": {
       "adopted": []
@@ -635,7 +689,13 @@
       "adopted": []
     },
     "8.1.7.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.edgewiseLeft",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.8.2": {
       "adopted": []
@@ -2641,6 +2701,72 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 74
+      }
+    },
+    "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean": {
+      "CategoryTheory.Functor.ranAdjunction": {
+        "type": "@CategoryTheory.Functor.ranAdjunction : {C : Type u_2} →\n  {D : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} C] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n        (L : CategoryTheory.Functor C D) →\n          (H : Type u_6) →\n            [inst_2 : CategoryTheory.Category.{u_5, u_6} H] →\n              [inst_3 : ∀ (F : CategoryTheory.Functor C H), L.HasRightKanExtension F] →\n                (CategoryTheory.Functor.whiskeringLeft C D H).obj L ⊣ L.ran",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Functor.ranAdjunction' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 337
+      }
+    },
+    "SerrePositivity/InfinityCategories/Stable/PushoutCompletion.lean": {
+      "SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex": {
+        "type": "@SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex : {C : SSet} →\n  (CategoryTheory.MonoidalCategoryStruct.tensorObj (SSet.stdSimplex.obj { len := 1 })\n            (SSet.stdSimplex.obj { len := 1 }) ⟹\n          C).obj\n      (Opposite.op { len := 0 }) →\n    Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 28
+      },
+      "SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily": {
+        "type": "@SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily : ∀ {A B C : SSet} [C.Quasicategory]\n  (i : A ⟶ B) [CategoryTheory.Mono i] (d : B ⟶ (SSet.horn 2 0).toSSet ⟹ C)\n  (a : A ⟶ SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C),\n  CategoryTheory.CategoryStruct.comp a (SerrePositivity.InfinityCategories.Stable.pushoutProjection C) =\n      CategoryTheory.CategoryStruct.comp i d →\n    (∀ (b : B.obj (Opposite.op { len := 0 })),\n        SerrePositivity.InfinityCategories.HasColimit\n          ((SerrePositivity.InfinityCategories.functorVertexEquiv (SSet.horn 2 0).toSSet C).symm\n            ((CategoryTheory.ConcreteCategory.hom (d.app (Opposite.op { len := 0 }))) b))) →\n      ∃ F,\n        CategoryTheory.CategoryStruct.comp i F = a ∧\n          CategoryTheory.CategoryStruct.comp F (SerrePositivity.InfinityCategories.Stable.pushoutProjection C) = d",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Stable.exists_relative_pushoutFamily' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 96
+      },
+      "SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso": {
+        "type": "SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso : (C : SSet) →\n  [C.Quasicategory] →\n    SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C ≅\n      SerrePositivity.InfinityCategories.colimitCocones (SSet.horn 2 0).toSSet C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.Stable.pushoutDiagramsCoconesIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 57
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean": {
+      "SerrePositivity.InfinityCategories.edgewiseRight": {
+        "type": "SerrePositivity.InfinityCategories.edgewiseRight : (X : SSet) →\n  SerrePositivity.InfinityCategories.edgewiseSubdivision X ⟶ X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.edgewiseRight' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 40
+      },
+      "SerrePositivity.InfinityCategories.edgewiseLeft": {
+        "type": "SerrePositivity.InfinityCategories.edgewiseLeft : (X : SSet) →\n  SerrePositivity.InfinityCategories.edgewiseSubdivision X ⟶ X.op",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.edgewiseLeft' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 55
       }
     },
     "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean": {
