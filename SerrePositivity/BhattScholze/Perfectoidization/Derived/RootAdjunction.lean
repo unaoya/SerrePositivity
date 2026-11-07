@@ -194,6 +194,251 @@ abbrev algebraicRootClosure (C : Type u) [CommRing C] :=
 def algebraicRootClosureUnit (C : Type u) [CommRing C] : C →+* algebraicRootClosure p C :=
   (Limits.colimit.ι (algebraicTower p (CommRingCat.of C)) 0).hom
 
+/-- 完備化前の一段の根添加の環。 -/
+abbrev AlgebraicRootStep (p : ℕ) (C : CommRingCat.{u}) :=
+  MvPolynomial (C ⊕ C) C ⧸ algebraicStepIdeal p C
+
+/-- 係数と変数を同じ環射で送る、一段の根添加の写像。 -/
+def algebraicStepMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    AlgebraicRootStep p C →+* AlgebraicRootStep p C' := by
+  let rename : MvPolynomial (C ⊕ C) C →+* MvPolynomial (C' ⊕ C') C' :=
+    MvPolynomial.eval₂Hom (MvPolynomial.C.comp f.hom)
+      (fun j => MvPolynomial.X (Sum.map f.hom f.hom j))
+  refine Ideal.quotientMap (algebraicStepIdeal p C') rename ?_
+  apply Ideal.span_le.mpr
+  rintro _ ⟨a, rfl⟩
+  change rename (MvPolynomial.C a - MvPolynomial.X (Sum.inl a) ^ p -
+      (p : MvPolynomial (C ⊕ C) C) * MvPolynomial.X (Sum.inr a)) ∈ algebraicStepIdeal p C'
+  rw [map_sub, map_sub, map_pow, map_mul, map_natCast]
+  dsimp only [rename]
+  rw [MvPolynomial.eval₂Hom_C, MvPolynomial.eval₂Hom_X', MvPolynomial.eval₂Hom_X']
+  exact Ideal.subset_span ⟨f.hom a, rfl⟩
+
+@[simp] private theorem algebraicStepMap_coeff {C C' : CommRingCat.{u}} (f : C ⟶ C') (a : C) :
+    algebraicStepMap p f (Ideal.Quotient.mk (algebraicStepIdeal p C) (MvPolynomial.C a)) =
+      Ideal.Quotient.mk (algebraicStepIdeal p C') (MvPolynomial.C (f.hom a)) := by
+  unfold algebraicStepMap
+  erw [Ideal.quotientMap_mk]
+  rw [MvPolynomial.eval₂Hom_C]
+  rfl
+
+@[simp] private theorem algebraicStepMap_var {C C' : CommRingCat.{u}} (f : C ⟶ C') (j : C ⊕ C) :
+    algebraicStepMap p f (Ideal.Quotient.mk (algebraicStepIdeal p C) (MvPolynomial.X j)) =
+      Ideal.Quotient.mk (algebraicStepIdeal p C')
+        (MvPolynomial.X (Sum.map f.hom f.hom j)) := by
+  unfold algebraicStepMap
+  erw [Ideal.quotientMap_mk]
+  rw [MvPolynomial.eval₂Hom_X']
+
+@[simp] private theorem algebraicStepMap_id (C : CommRingCat.{u}) :
+    algebraicStepMap p (𝟙 C) = RingHom.id (AlgebraicRootStep p C) := by
+  apply Ideal.Quotient.ringHom_ext
+  apply MvPolynomial.ringHom_ext
+  · intro a
+    simp
+  · intro j
+    cases j <;> simp
+
+private theorem algebraicStepMap_comp {C C' C'' : CommRingCat.{u}} (f : C ⟶ C') (g : C' ⟶ C'') :
+    algebraicStepMap p (f ≫ g) = (algebraicStepMap p g).comp (algebraicStepMap p f) := by
+  apply Ideal.Quotient.ringHom_ext
+  apply MvPolynomial.ringHom_ext
+  · intro a
+    simp
+  · intro j
+    cases j <;> simp
+
+/-- 係数と変数の添字を同じ環射で送り、各段の関係を保つ。 -/
+def algebraicStageMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    ∀ n, algebraicStages p C n ⟶ algebraicStages p C' n
+  | 0 => f
+  | n + 1 => CommRingCat.ofHom (algebraicStepMap p (algebraicStageMap f n))
+
+private theorem algebraicStageMap_id (C : CommRingCat.{u}) (n : ℕ) :
+    algebraicStageMap p (𝟙 C) n = 𝟙 _ := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [algebraicStageMap]
+    apply CommRingCat.hom_ext
+    change algebraicStepMap p (algebraicStageMap p (𝟙 C) n) = RingHom.id _
+    rw [ih, algebraicStepMap_id]
+
+private theorem algebraicStageMap_comp {C C' C'' : CommRingCat.{u}}
+    (f : C ⟶ C') (g : C' ⟶ C'') (n : ℕ) :
+    algebraicStageMap p (f ≫ g) n = algebraicStageMap p f n ≫ algebraicStageMap p g n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    simp only [algebraicStageMap]
+    apply CommRingCat.hom_ext
+    change algebraicStepMap p (algebraicStageMap p (f ≫ g) n) =
+      (algebraicStepMap p (algebraicStageMap p g n)).comp
+        (algebraicStepMap p (algebraicStageMap p f n))
+    rw [ih, algebraicStepMap_comp]
+
+private theorem algebraicTower_succ (C : CommRingCat.{u}) (n : ℕ) :
+    (algebraicTower p C).map (homOfLE (Nat.le_add_right n 1)) =
+      CommRingCat.ofHom
+        ((Ideal.Quotient.mk (algebraicStepIdeal p (algebraicStages p C n))).comp
+          MvPolynomial.C) :=
+  Functor.ofSequence_map_homOfLE_succ _ n
+
+private theorem algebraicStageMap_succ {C C' : CommRingCat.{u}} (f : C ⟶ C') (n : ℕ) :
+    algebraicStageMap p f (n + 1) =
+      CommRingCat.ofHom (algebraicStepMap p (algebraicStageMap p f n)) := by
+  rw [algebraicStageMap]
+
+private theorem algebraicStageMap_naturality {C C' : CommRingCat.{u}} (f : C ⟶ C') (n : ℕ) :
+    (algebraicTower p C).map (homOfLE (Nat.le_add_right n 1)) ≫
+      algebraicStageMap p f (n + 1) =
+    algebraicStageMap p f n ≫ (algebraicTower p C').map (homOfLE (Nat.le_add_right n 1)) := by
+  rw [algebraicTower_succ p C n, algebraicTower_succ p C' n, algebraicStageMap_succ]
+  apply CommRingCat.hom_ext
+  exact RingHom.ext (algebraicStepMap_coeff p (algebraicStageMap p f n))
+
+/-- 段ごとの再添字付けは、係数の包含に沿う後続射と可換。 -/
+def algebraicTowerMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    algebraicTower p C ⟶ algebraicTower p C' :=
+  NatTrans.ofSequence (F := algebraicTower p C) (G := algebraicTower p C')
+    (algebraicStageMap p f) (by exact algebraicStageMap_naturality p f)
+
+/-- 代数的根添加の余極限へ段ごとの射を送る。 -/
+def algebraicRootClosureMap {C C' : Type u} [CommRing C] [CommRing C'] (f : C →+* C') :
+    algebraicRootClosure p C →+* algebraicRootClosure p C' :=
+  (Limits.colim.map (algebraicTowerMap p (CommRingCat.ofHom f))).hom
+
+/-- 完備化前の代数的根添加は可換環の関手をなす。 -/
+def algebraicRootFunctor : CommRingCat.{u} ⥤ CommRingCat.{u} where
+  obj C := Limits.colimit (algebraicTower p C)
+  map f := Limits.colim.map (algebraicTowerMap p f)
+  map_id C := by
+    have h : algebraicTowerMap p (𝟙 C) = 𝟙 _ := by
+      apply NatTrans.ext
+      funext n
+      change algebraicStageMap p (𝟙 C) n = 𝟙 _
+      exact algebraicStageMap_id p C n
+    rw [h, CategoryTheory.Functor.map_id]
+    rfl
+  map_comp f g := by
+    have h : algebraicTowerMap p (f ≫ g) = algebraicTowerMap p f ≫ algebraicTowerMap p g := by
+      apply NatTrans.ext
+      funext n
+      change algebraicStageMap p (f ≫ g) n = algebraicStageMap p f n ≫ algebraicStageMap p g n
+      exact algebraicStageMap_comp p f g n
+    rw [h, CategoryTheory.Functor.map_comp]
+
+/-- 一段の代数的な根添加の写像を導来 p 完備化に送る。 -/
+def completedStepMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    completionRing p (CommRingCat.of (AlgebraicRootStep p C)) ⟶
+      completionRing p (CommRingCat.of (AlgebraicRootStep p C')) :=
+  completionMap p (CommRingCat.ofHom (algebraicStepMap p f))
+
+private theorem completedStepMap_id (C : CommRingCat.{u}) :
+    completedStepMap p (𝟙 C) = 𝟙 _ := by
+  have h : CommRingCat.ofHom (algebraicStepMap p (𝟙 C)) =
+      𝟙 (CommRingCat.of (AlgebraicRootStep p C)) :=
+    CommRingCat.hom_ext (algebraicStepMap_id p C)
+  rw [completedStepMap, h, completionMap_id]
+
+private theorem completedStepMap_comp {C C' C'' : CommRingCat.{u}} (f : C ⟶ C') (g : C' ⟶ C'') :
+    completedStepMap p (f ≫ g) = completedStepMap p f ≫ completedStepMap p g := by
+  have h : CommRingCat.ofHom (algebraicStepMap p (f ≫ g)) =
+      CommRingCat.ofHom (algebraicStepMap p f) ≫ CommRingCat.ofHom (algebraicStepMap p g) :=
+    CommRingCat.hom_ext (algebraicStepMap_comp p f g)
+  simp only [completedStepMap, h, completionMap_comp_map]
+
+private theorem completedStepMap_comp_unit {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    CommRingCat.ofHom (rootAdjunctionStepUnit p R C) ≫ completedStepMap p f =
+      f ≫ CommRingCat.ofHom (rootAdjunctionStepUnit p R C') := by
+  let j (A : CommRingCat.{u}) : A ⟶ CommRingCat.of (AlgebraicRootStep p A) :=
+    CommRingCat.ofHom ((Ideal.Quotient.mk (algebraicStepIdeal p A)).comp MvPolynomial.C)
+  let k := CommRingCat.ofHom (algebraicStepMap p f)
+  have hj : j C ≫ k = f ≫ j C' :=
+    CommRingCat.hom_ext (RingHom.ext (algebraicStepMap_coeff p f))
+  change (j C ≫ completionUnit p _) ≫ completionMap p k =
+    f ≫ j C' ≫ completionUnit p _
+  rw [Category.assoc, completionMap_comp, ← Category.assoc, hj, Category.assoc]
+
+/-- 各完備段で変数を再添字付けし、導来完備化の写像を取る。 -/
+def completedStageMap {S' : Type u} [CommRing S'] (f : S →+* S') :
+    ∀ n, completedStages p R S n ⟶ completedStages p R S' n
+  | 0 => CommRingCat.ofHom f
+  | n + 1 => completedStepMap p (completedStageMap f n)
+
+private theorem completedStageMap_id (n : ℕ) :
+    completedStageMap p R S (RingHom.id S) n = 𝟙 _ := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    rw [completedStageMap, ih, completedStepMap_id] <;> rfl
+
+private theorem completedStageMap_comp {S' S'' : Type u} [CommRing S'] [CommRing S'']
+    (f : S →+* S') (g : S' →+* S'') (n : ℕ) :
+    completedStageMap p R S (g.comp f) n =
+      completedStageMap p R S f n ≫ completedStageMap p R S' g n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    simp only [completedStageMap, ih, completedStepMap_comp] <;> rfl
+
+omit [Fact p.Prime] [Algebra R S] in
+private theorem completedRootTower_succ (n : ℕ) :
+    (completedRootTower p R S).map (homOfLE (Nat.le_add_right n 1)) =
+      CommRingCat.ofHom (rootAdjunctionStepUnit p R (completedStages p R S n)) :=
+  Functor.ofSequence_map_homOfLE_succ _ n
+
+/-- 完備な根添加の各段の写像は後続射と可換。 -/
+def completedRootTowerMap {S' : Type u} [CommRing S'] (f : S →+* S') :
+    completedRootTower p R S ⟶ completedRootTower p R S' :=
+  NatTrans.ofSequence (F := completedRootTower p R S) (G := completedRootTower p R S')
+    (completedStageMap p R S f) (by
+      intro n
+      rw [completedRootTower_succ p R S n, completedRootTower_succ p R S' n, completedStageMap]
+      exact completedStepMap_comp_unit p R (completedStageMap p R S f n))
+
+/-- 完備根添加の余極限の写像を、さらに導来完備化へ送る。 -/
+def rootClosureMap {S' : Type u} [CommRing S'] [Algebra R S'] (f : S →+* S') :
+    rootClosure p R S →+* rootClosure p R S' :=
+  (completionMap p (Limits.colim.map (completedRootTowerMap p R S f))).hom
+
+/-- 完備根添加の写像は第零段の単位と可換。 -/
+theorem rootClosureMap_comp_unit {S' : Type u} [CommRing S'] [Algebra R S'] (f : S →+* S') :
+    (rootClosureMap p R S f).comp (rootClosureUnit p R S) =
+      (rootClosureUnit p R S').comp f := by
+  let k := completedRootTowerMap p R S f
+  have h : Limits.colimit.ι (completedRootTower p R S) 0 ≫ completionUnit p _ ≫
+      completionMap p (Limits.colim.map k) =
+      CommRingCat.ofHom f ≫ Limits.colimit.ι (completedRootTower p R S') 0 ≫
+        completionUnit p _ := by
+    have hι : Limits.colimit.ι (completedRootTower p R S) 0 ≫ Limits.colim.map k =
+        CommRingCat.ofHom f ≫ Limits.colimit.ι (completedRootTower p R S') 0 :=
+      Limits.ι_colimMap k 0
+    rw [completionMap_comp, ← Category.assoc, hι]
+    exact Category.assoc _ _ _
+  exact congrArg (fun g : CommRingCat.of S ⟶ _ => g.hom) h
+
+/-- 完備根添加の写像は恒等射を保つ。 -/
+theorem rootClosureMap_id : rootClosureMap p R S (RingHom.id S) = RingHom.id _ := by
+  have h : completedRootTowerMap p R S (RingHom.id S) = 𝟙 _ := by
+    apply NatTrans.ext
+    funext n
+    exact completedStageMap_id p R S n
+  rw [rootClosureMap, h, CategoryTheory.Functor.map_id, completionMap_id]
+  rfl
+
+/-- 完備根添加の写像は環射の合成を保つ。 -/
+theorem rootClosureMap_comp {S' S'' : Type u} [CommRing S'] [Algebra R S']
+    [CommRing S''] [Algebra R S''] (f : S →+* S') (g : S' →+* S'') :
+    rootClosureMap p R S (g.comp f) = (rootClosureMap p R S' g).comp (rootClosureMap p R S f) := by
+  have h : completedRootTowerMap p R S (g.comp f) =
+      completedRootTowerMap p R S f ≫ completedRootTowerMap p R S' g := by
+    apply NatTrans.ext
+    funext n
+    exact completedStageMap_comp p R S f g n
+  simp only [rootClosureMap, h, CategoryTheory.Functor.map_comp, completionMap_comp_map]
+  rfl
+
 /-- 概要：代数的な根添加の余極限を mod p に移した環の Frobenius は全射。
 方針：元を有限段から取り、次の段で添加した根を余極限と商へ送る。
 使われ方：A5-4 の semiperfectoid 被覆への入力。 -/
