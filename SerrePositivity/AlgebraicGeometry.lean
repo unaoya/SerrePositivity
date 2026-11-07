@@ -338,3 +338,4 @@ public import SerrePositivity.AlgebraicGeometry.FiberSupportDimension
 public import SerrePositivity.AlgebraicGeometry.RelativeNoetherDimension
 public import SerrePositivity.AlgebraicGeometry.PureTransformExactPowers
 public import SerrePositivity.AlgebraicGeometry.FiberPrimeDimension
+public import SerrePositivity.AlgebraicGeometry.ResidueTensorUniversalInjectivity
