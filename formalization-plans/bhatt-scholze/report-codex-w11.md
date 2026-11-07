@@ -169,3 +169,11 @@ B-3 の対象宣言はすべて本体へ移した。§8 に従い、`rootClosure
 - `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt`
 
 共通入口と `scripts/audit_bhatt_scholze_stage2.lean` の登録は調整役が行う。
+
+## BS-W11 停止点 C-1（2026-11-07）
+
+B-3 の登録を含む main `3113117cd` へ `math/bs-impl` を fast-forward した。
+
+- `drafts/A8/IntegralDiscreteness.lean` から G-A8-6 の宣言 1 件を一時ファイルに写し、`lake env lean -DrelaxedAutoImplicit=false` で型検査した。16.77 秒、終了コード 0。任意の整 perfectoid 環とその有限エタール代数を取る下書きの型を維持する。p の正則性や局所性の仮定は加えない。
+- 相対 Frobenius の比較と平坦性を用い、Fontaine 核の生成元を移す方針。標数 p、混標数、p ねじれのある基底を含めて扱う。Mathlib の既存の有限エタール API と、リポジトリの Fontaine 核・tilt の補題を使う。
+- この停止点の新規本体モジュールは 0 本。作業 C の対象パスと⑤b の差分・作業木に重複は 0。型が同じなので C-2 に進む。
