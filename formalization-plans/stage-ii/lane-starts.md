@@ -8,7 +8,7 @@ BS 設計のチャットは置かない（11-05 夜、ユーザー）。BS の�
 ```
 SerrePositivity の段階 II、Bhatt–Scholze 実装の一本目のレーン（⑤a）の Codex として作業してください（目標 A：E3 を消す）。もう一本（⑤b、枝 math/bs-d68）と並行するので、触るファイルが重なりそうなら止めて報告してください。
 最初の仕事は formalization-plans/bhatt-scholze/bhatt-scholze-codex-doc1.md（BS-DOC1：docstring に論文の番号を書く）です。停止点 1 で報告して待ってください。BS-DOC1 が main に入ったら、次の指示書 formalization-plans/bhatt-scholze/bhatt-scholze-codex-w11.md に進みます。W11 は、まず §6 の追記（段階 II の規則、11-05 夜）を読み、次に §0〜§5 を読んでください。前提の規則は BS-W10（bhatt-scholze-codex-w10.md）§0・§3 で、完了例は report-codex-w10.md です。
-§6 の 1 のとおり、main（9f591b5a5 以降）から worktree ../SerrePositivity-bs-impl と枝 math/bs-impl を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
+§6 の 1 のとおり、main の最新（2c5d7e414 以降）から worktree ../SerrePositivity-bs-impl と枝 math/bs-impl を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
 drafts（formalization-plans/bhatt-scholze/drafts/）を新規ファイルとして本体へ移しながら、sorry を証明に置き換えます。置き場所は drafts/README.md です。本体に sorry は残さず、閉じられない宣言は drafts に残します。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
 停止点ごとに report-codex-w11.md に書いて報告してください。
@@ -18,7 +18,7 @@ drafts（formalization-plans/bhatt-scholze/drafts/）を新規ファイルとし
 
 ```
 SerrePositivity の段階 II、Bhatt–Scholze 実装の二本目のレーン（⑤b）の Codex として作業してください（目標 A：E3 を消す）。
-指示書は formalization-plans/bhatt-scholze/bhatt-scholze-codex-d68.md です。§3 の 1 のとおり、main から worktree ../SerrePositivity-bs-d68 と枝 math/bs-d68 を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
+指示書は formalization-plans/bhatt-scholze/bhatt-scholze-codex-d68.md です。§3 の 1 のとおり、main の最新（2c5d7e414 以降）から worktree ../SerrePositivity-bs-d68 と枝 math/bs-d68 を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
 最初の仕事は段 0（紙の筋と順序、Bockstein の照合の確認）で、停止点 0 で報告して待ってください。
 もう一本の BS のレーン（⑤a、枝 math/bs-impl）と並行するので、触るファイルが重なりそうなら止めて報告してください。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
@@ -46,8 +46,8 @@ SerrePositivity の段階 II、∞ 中核レーンの Codex として作業し�
 ## ⑥ スキーム論（Codex、新しいチャット）
 
 ```
-SerrePositivity の段階 II、スキーム論レーンの Codex として作業してください（BS と K の両方が使う代数幾何の土台）。
-指示書は formalization-plans/stage-ii/scheme-w1.md です。§1 の準備（main f3fcefe8e 以降から worktree ../SerrePositivity-scheme と枝 math/scheme を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
+SerrePositivity の段階 II、スキーム論レーン（⑥）の Codex として作業してください（BS17 Thm 4.1 (i) に要る代数幾何の土台。K 用の部分は後回し）。
+指示書は formalization-plans/stage-ii/scheme-w1.md です。§1 の準備（main の最新（2c5d7e414 以降）から worktree ../SerrePositivity-scheme と枝 math/scheme を切る、F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使う）から始めてください。
 指示書の §6 の追記（11-07）のとおり、BS17 Thm 4.1 (i) の経路だけを進めます。段 1（公理 (3) の調査）と段 2c は行いません。最初の仕事は段 2a（BS17 の経路に要る範囲の照合と紙の筋）です。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
 ```
