@@ -3902,6 +3902,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+          "phase": "2"
         }
       ]
     },
@@ -3922,6 +3927,16 @@
         {
           "id": "cc41abd0655cb10d149c",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.transfiniteCompositions",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
         }
       ]
     },
@@ -3930,6 +3945,11 @@
         {
           "id": "cc41abd0655cb10d149c",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.transfiniteCompositionsOfShape",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
         }
       ]
     },
@@ -3938,6 +3958,16 @@
         {
           "id": "cc41abd0655cb10d149c",
           "phase": "1prime"
+        },
+        {
+          "name": "Ordinal.enum",
+          "source": "Mathlib/SetTheory/Ordinal/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso",
+          "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/TerminalJoinNerveIso.lean",
+          "phase": "2"
         }
       ]
     },
@@ -3946,6 +3976,11 @@
         {
           "id": "cc41abd0655cb10d149c",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
         }
       ]
     },
@@ -3954,6 +3989,11 @@
         {
           "id": "970bfd8f34e4cdf4031c",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape.isIso",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4026,6 +4066,16 @@
         {
           "id": "6c0424e8113128257af6",
           "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.isLocalForHom_pushout_right_of_left",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalPushoutEquivalences.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.pushouts_le_llp_rlp",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4050,6 +4100,16 @@
         {
           "id": "4636a97744077eea3c29",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.pushouts",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.transfiniteCompositionsOfShape",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4058,6 +4118,11 @@
         {
           "id": "4636a97744077eea3c29",
           "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.exists_bousfieldLocalReplacement",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourcePresentable.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4098,6 +4163,16 @@
         {
           "id": "4636a97744077eea3c29",
           "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_isReflectiveSubcategory",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_localEquivalences",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4106,6 +4181,21 @@
         {
           "id": "4636a97744077eea3c29",
           "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsLocalization.precomposition_isFullyFaithful",
+          "source": "SerrePositivity/InfinityCategories/F1B/Localization/UniversalConsequences.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsLocalization.exists_extension",
+          "source": "SerrePositivity/InfinityCategories/F1B/Localization/UniversalConsequences.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4114,6 +4204,16 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.CommSq",
+          "source": "Mathlib/CategoryTheory/CommSq.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.CommSq.LiftStruct",
+          "source": "Mathlib/CategoryTheory/CommSq.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4122,6 +4222,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.CommSq.LiftStruct",
+          "source": "Mathlib/CategoryTheory/CommSq.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4130,6 +4235,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.HasLiftingProperty",
+          "source": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4138,6 +4248,16 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.llp",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.rlp",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4146,6 +4266,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.llp_isStableUnderRetracts",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4154,6 +4279,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4162,6 +4292,11 @@
         {
           "id": "624d7970e65e8ded0a90",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp",
+          "source": "Mathlib/CategoryTheory/SmallObject/TransfiniteCompositionLifting.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4202,6 +4337,16 @@
         {
           "id": "35fb7a8bf7c18403376b",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem.mk'",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4210,6 +4355,16 @@
         {
           "id": "35fb7a8bf7c18403376b",
           "phase": "1prime"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.rlp_eq_of_wfs",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.MorphismProperty.llp_eq_of_wfs",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4294,6 +4449,11 @@
         {
           "id": "17cf631d7007bd131a2a",
           "phase": "1prime"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.isLocalForHom_pushout_right_of_left",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalPushoutEquivalences.lean",
+          "phase": "2"
         }
       ]
     },
@@ -4409,7 +4569,13 @@
       "adopted": []
     },
     "9.6.8.16": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.MorphismProperty.FunctorialFactorizationData.functorCategory",
+          "source": "Mathlib/CategoryTheory/MorphismProperty/Factorization.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.6.8.17": {
       "adopted": []
@@ -4435,7 +4601,13 @@
       "adopted": []
     },
     "9.6.9.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory_isPresentable",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedArrowsPresentable.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.6.9.14": {
       "adopted": []
@@ -6030,6 +6202,294 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.IsLocalization.precomposition_isFullyFaithful' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 21
+      },
+      "SerrePositivity.InfinityCategories.IsLocalization.exists_extension": {
+        "type": "@SerrePositivity.InfinityCategories.IsLocalization.exists_extension : ∀ {X D E : SSet} [E.Quasicategory] {F : X ⟶ D}\n  {W : Set (X.obj (Opposite.op { len := 1 }))},\n  SerrePositivity.InfinityCategories.IsLocalization F W →\n    ∀ (L : X ⟶ E),\n      SerrePositivity.InfinityCategories.InvertsEdges L W →\n        ∃ G, Nonempty (SerrePositivity.InfinityCategories.FunctorIso (CategoryTheory.CategoryStruct.comp F G) L)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsLocalization.exists_extension' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 31
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/WeakFactorizationSystem.lean": {
+      "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem": {
+        "type": "@CategoryTheory.MorphismProperty.IsWeakFactorizationSystem : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C → Prop",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.MorphismProperty.IsWeakFactorizationSystem' does not depend on any axioms",
+        "line": 35
+      },
+      "CategoryTheory.MorphismProperty.IsWeakFactorizationSystem.mk'": {
+        "type": "@CategoryTheory.MorphismProperty.IsWeakFactorizationSystem.mk' : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] (W₁ W₂ : CategoryTheory.MorphismProperty C) [W₁.HasFactorization W₂]\n  [W₁.IsStableUnderRetracts] [W₂.IsStableUnderRetracts],\n  (∀ {A B X Y : C} (i : A ⟶ B) (p : X ⟶ Y), W₁ i → W₂ p → CategoryTheory.HasLiftingProperty i p) →\n    W₁.IsWeakFactorizationSystem W₂",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.IsWeakFactorizationSystem.mk'' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 44
+      },
+      "CategoryTheory.MorphismProperty.rlp_eq_of_wfs": {
+        "type": "@CategoryTheory.MorphismProperty.rlp_eq_of_wfs : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (W₁ W₂ : CategoryTheory.MorphismProperty C) [W₁.IsWeakFactorizationSystem W₂], W₁.rlp = W₂",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.MorphismProperty.rlp_eq_of_wfs' does not depend on any axioms",
+        "line": 60
+      },
+      "CategoryTheory.MorphismProperty.llp_eq_of_wfs": {
+        "type": "@CategoryTheory.MorphismProperty.llp_eq_of_wfs : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (W₁ W₂ : CategoryTheory.MorphismProperty C) [W₁.IsWeakFactorizationSystem W₂], W₂.llp = W₁",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.MorphismProperty.llp_eq_of_wfs' does not depend on any axioms",
+        "line": 62
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean": {
+      "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape": {
+        "type": "@CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    CategoryTheory.MorphismProperty C →\n      (J : Type u_1) →\n        [inst_1 : LinearOrder J] →\n          [SuccOrder J] → [OrderBot J] → [WellFoundedLT J] → {X Y : C} → (X ⟶ Y) → Type (max (max u_3 u_2) u_1)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 53
+      },
+      "CategoryTheory.MorphismProperty.transfiniteCompositions": {
+        "type": "@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] → CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.transfiniteCompositions' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 340
+      },
+      "CategoryTheory.MorphismProperty.transfiniteCompositionsOfShape": {
+        "type": "@CategoryTheory.MorphismProperty.transfiniteCompositionsOfShape : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    CategoryTheory.MorphismProperty C →\n      (J : Type u_1) →\n        [inst_1 : LinearOrder J] → [SuccOrder J] → [OrderBot J] → [WellFoundedLT J] → CategoryTheory.MorphismProperty C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.transfiniteCompositionsOfShape' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 183
+      },
+      "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape": {
+        "type": "@CategoryTheory.MorphismProperty.IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape : ∀\n  {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C] {W : CategoryTheory.MorphismProperty C} {J : Type u_1}\n  [inst_1 : LinearOrder J] [inst_2 : SuccOrder J] [inst_3 : OrderBot J] [inst_4 : WellFoundedLT J] [W.IsMultiplicative]\n  [W.RespectsIso],\n  (∀ (J : Type u_1) [inst_7 : LinearOrder J] [SuccOrder J] [OrderBot J] [WellFoundedLT J],\n      W.IsStableUnderColimitsOfShape J) →\n    W.IsStableUnderTransfiniteCompositionOfShape J",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.IsStableUnderTransfiniteCompositionOfShape.of_isStableUnderColimitsOfShape' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 276
+      },
+      "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape.isIso": {
+        "type": "@CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape.isIso : ∀ {C : Type u_3}\n  [inst : CategoryTheory.Category.{u_2, u_3} C] {J : Type u_1} [inst_1 : LinearOrder J] [inst_2 : SuccOrder J]\n  [inst_3 : OrderBot J] [inst_4 : WellFoundedLT J] {X Y : C} {f : X ⟶ Y}\n  (h : (CategoryTheory.MorphismProperty.isomorphisms C).TransfiniteCompositionOfShape J f), CategoryTheory.IsIso f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape.isIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 414
+      }
+    },
+    "Mathlib/SetTheory/Ordinal/Basic.lean": {
+      "Ordinal.enum": {
+        "type": "@Ordinal.enum : {α : Type u_1} → (r : α → α → Prop) → [inst : IsWellOrder α r] → (fun x1 x2 => x1 < x2) ≃r r",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'Ordinal.enum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 405
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/NerveComparison/TerminalJoinNerveIso.lean": {
+      "SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso": {
+        "type": "SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso : (I : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} I] →\n    SerrePositivity.InfinityCategories.join (CategoryTheory.nerve I) (SSet.stdSimplex.obj { len := 0 }) ≅\n      CategoryTheory.nerve (CategoryTheory.WithTerminal I)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F1B.terminalJoinNerveIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 77
+      }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/Presentable/LocalPushoutEquivalences.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.isLocalForHom_pushout_right_of_left": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.isLocalForHom_pushout_right_of_left : ∀ {X : SSet}\n  [inst : X.Quasicategory]\n  (R :\n    CategoryTheory.MonoidalCategoryStruct.tensorObj (SSet.stdSimplex.obj { len := 1 })\n        (SSet.stdSimplex.obj { len := 1 }) ⟶\n      X),\n  SerrePositivity.InfinityCategories.IsPushoutSquare R →\n    ∀ (z : X.obj (Opposite.op { len := 0 })),\n      SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom\n          (SSet.Truncated.HomotopyCategory.homMk\n            (SerrePositivity.InfinityCategories.HomotopyLimits.edgeCosliceEdge\n              (CategoryTheory.CategoryStruct.comp SerrePositivity.InfinityCategories.squareLeftEdge R)))\n          z →\n        SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalForHom\n          (SSet.Truncated.HomotopyCategory.homMk\n            (SerrePositivity.InfinityCategories.HomotopyLimits.edgeCosliceEdge\n              (CategoryTheory.CategoryStruct.comp SerrePositivity.InfinityCategories.squareRightEdge R)))\n          z",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.isLocalForHom_pushout_right_of_left' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 69
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean": {
+      "CategoryTheory.MorphismProperty.pushouts_le_llp_rlp": {
+        "type": "@CategoryTheory.MorphismProperty.pushouts_le_llp_rlp : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (T : CategoryTheory.MorphismProperty C), T.pushouts ≤ T.rlp.llp",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.pushouts_le_llp_rlp' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 129
+      },
+      "CategoryTheory.MorphismProperty.llp": {
+        "type": "@CategoryTheory.MorphismProperty.llp : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.MorphismProperty.llp' does not depend on any axioms",
+        "line": 35
+      },
+      "CategoryTheory.MorphismProperty.rlp": {
+        "type": "@CategoryTheory.MorphismProperty.rlp : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.MorphismProperty.rlp' does not depend on any axioms",
+        "line": 40
+      },
+      "CategoryTheory.MorphismProperty.llp_isStableUnderRetracts": {
+        "type": "@CategoryTheory.MorphismProperty.llp_isStableUnderRetracts : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] (T : CategoryTheory.MorphismProperty C), T.llp.IsStableUnderRetracts",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.llp_isStableUnderRetracts' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 51
+      },
+      "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange": {
+        "type": "@CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] (T : CategoryTheory.MorphismProperty C), T.llp.IsStableUnderCobaseChange",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 61
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/Limits.lean": {
+      "CategoryTheory.MorphismProperty.pushouts": {
+        "type": "@CategoryTheory.MorphismProperty.pushouts : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.pushouts' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 66
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourcePresentable.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.exists_bousfieldLocalReplacement": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.exists_bousfieldLocalReplacement : ∀ {C : SSet}\n  [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable C →\n    ∀ {I : Type u_1} (edges : I → C.obj (Opposite.op { len := 1 })) (x : C.obj (Opposite.op { len := 0 })),\n      ∃ y e,\n        e.edge ∈ SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedEdges edges ∧\n          SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject (Set.range edges) y",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.exists_bousfieldLocalReplacement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 51
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldReflection.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_isReflectiveSubcategory": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_isReflectiveSubcategory : ∀ {C : SSet}\n  [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable C →\n    ∀ {I : Type u_1} (edges : I → C.obj (Opposite.op { len := 1 })),\n      SerrePositivity.InfinityCategories.IsReflectiveSubcategory C\n        (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject (Set.range edges))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_isReflectiveSubcategory' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 36
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_localEquivalences": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_localEquivalences : ∀\n  {C : SSet} [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable C →\n    ∀ {I : Type u_1} (edges : I → C.obj (Opposite.op { len := 1 })),\n      SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedEdges edges =\n        SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences (Set.range edges)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_localEquivalences' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 58
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges : ∀\n  {C : SSet} [inst : C.Quasicategory] (hC : SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable C)\n  {I : Type u_1} (edges : I → C.obj (Opposite.op { len := 1 })),\n  SerrePositivity.InfinityCategories.IsLocalization\n    (SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor hC edges)\n    (SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedEdges edges)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 76
+      }
+    },
+    "Mathlib/CategoryTheory/CommSq.lean": {
+      "CategoryTheory.CommSq": {
+        "type": "@CategoryTheory.CommSq : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {W X Y Z : C} → (W ⟶ X) → (W ⟶ Y) → (X ⟶ Z) → (Y ⟶ Z) → Prop",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.CommSq' does not depend on any axioms",
+        "line": 49
+      },
+      "CategoryTheory.CommSq.LiftStruct": {
+        "type": "@CategoryTheory.CommSq.LiftStruct : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {A B X Y : C} → {f : A ⟶ X} → {i : A ⟶ B} → {p : X ⟶ Y} → {g : B ⟶ Y} → CategoryTheory.CommSq f i p g → Type u_1",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.CommSq.LiftStruct' does not depend on any axioms",
+        "line": 180
+      }
+    },
+    "Mathlib/CategoryTheory/LiftingProperties/Basic.lean": {
+      "CategoryTheory.HasLiftingProperty": {
+        "type": "@CategoryTheory.HasLiftingProperty : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {A B X Y : C} → (A ⟶ B) → (X ⟶ Y) → Prop",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.HasLiftingProperty' does not depend on any axioms",
+        "line": 45
+      }
+    },
+    "Mathlib/CategoryTheory/SmallObject/TransfiniteCompositionLifting.lean": {
+      "CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp": {
+        "type": "@CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp : ∀ {C : Type u_3}\n  [inst : CategoryTheory.Category.{u_2, u_3} C] (W : CategoryTheory.MorphismProperty C) (J : Type u_1)\n  [inst_1 : LinearOrder J] [inst_2 : SuccOrder J] [inst_3 : OrderBot J] [inst_4 : WellFoundedLT J],\n  W.llp.IsStableUnderTransfiniteCompositionOfShape J",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 261
+      }
+    },
+    "Mathlib/CategoryTheory/MorphismProperty/Factorization.lean": {
+      "CategoryTheory.MorphismProperty.FunctorialFactorizationData.functorCategory": {
+        "type": "@CategoryTheory.MorphismProperty.FunctorialFactorizationData.functorCategory : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {W₁ W₂ : CategoryTheory.MorphismProperty C} →\n      W₁.FunctorialFactorizationData W₂ →\n        (J : Type u_4) →\n          [inst_1 : CategoryTheory.Category.{u_3, u_4} J] →\n            (W₁.functorCategory J).FunctorialFactorizationData (W₂.functorCategory J)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.MorphismProperty.FunctorialFactorizationData.functorCategory' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 243
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedArrowsPresentable.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory_isPresentable": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory_isPresentable : ∀ {C : SSet}\n  [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable C →\n    ∀ {I : Type u_1} (edges : I → C.obj (Opposite.op { len := 1 })),\n      SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable\n        (SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory edges)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedArrowCategory_isPresentable' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 50
       }
     }
   },
