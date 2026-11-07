@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
+
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
@@ -84,23 +86,9 @@ theorem completeCAlg_siftedColimits : HasSmallSiftedColimits (CompleteCAlg P) :=
 
 /-! ## 多項式代数上の Δ_0（CAlg 値） -/
 
-/-- 概要：多項式 k 代数 P = k[X_1,…,X_n] の p 完備化 P^∧（A0 の `affineAlgebra`／`cechAlexanderAffine` の R）。
-方針：design-status (B) の決定：一変数 p 進完備化の H⁰。
-規約：Poly k の対象 ⟨n⟩ に対して。
-使われ方：Δ_0。 -/
-abbrev polyCompletion (n : ℕ) := prismPolynomialCompletion P (Fin n)
-abbrev polyCutoff (n : ℕ) := cutoff A (polyCompletion P n)
-
 instance polySiteSmall (n : ℕ) : EssentiallySmall.{u} (PrismOver P (polyCompletion P n) (polyCutoff P n)) :=
   PrismOver.essentiallySmall (P := P) (R := polyCompletion P n) (by
     sorry) -- cutoff は #A+#R 以上
-
-def prismSiteAlgebras (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u}) :
-    PrismOver P S κ ⥤ A_R A where
-  obj X := Under.mk (CommRingCat.ofHom X.toHom.toRingHom)
-  map f := Under.homMk (CommRingCat.ofHom f.toHom.toRingHom) (by sorry) -- f.comm_base
-  map_id := by sorry -- 基底上の恒等射
-  map_comp := by sorry -- 基底上の合成
 
 def testSiteRings (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
     [EssentiallySmall.{u} (PrismOver P S κ)] : (PrismaticSite P S κ)ᵒᵖ ⥤ A_R A :=
@@ -148,9 +136,6 @@ def polySectionsProjection (hP : IsBoundedPrism P) (n : ℕ)
 方針：Cor 3.12 の CAlg 版（`isSheaf_iff_forget`）、脚注 10 の CAlg 版（`derivedGlobalSectionsCAlg_eq_totEInfinity`）。
 規約：Rem 4.19 の小さい模型でも大きい模型でもよい。
 使われ方：A1 の模型の環構造との一致（D27）、Δ_0 の関手性の具体形。 -/
-def polyCosimplicialAlgebra (hP : IsBoundedPrism P) (n : ℕ) : Cosimplicial.CosimplicialAlgebra A :=
-  cechAlexanderAffine P hP n (polyCutoff P n) le_rfl ⋙ prismSiteAlgebras P _ _
-
 theorem prismaticCohomologyCAlg_eq_totEInfinity (hP : IsBoundedPrism P) (n : ℕ) :
     Nonempty (VertexIso (polySections P n) (Cosimplicial.totEInfinity A (polyCosimplicialAlgebra P hP n))) := by
   sorry -- 要確認：Shared/CosimplicialEInfinity の totEInfinity_isLimitCone 待ち。
