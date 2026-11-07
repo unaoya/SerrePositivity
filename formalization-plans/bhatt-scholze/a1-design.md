@@ -506,12 +506,12 @@ drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Cry
 | RΓ_crys(R̄/k) := RΓ(site, O_crys) | そのまま定義 | `crystallineCohomology`（Sheaves の `derivedGlobalSectionsCAlg`、A2 の Δ と同じ入力） | 値は CAlg_k（D(k) 値は忘却） |
 | (a) Čech–Alexander（pro 対象 {D/p^n} が弱終、余積、[Ber06] の計算） | 定理（全射な枠 S → R̄） | `pdCechTower`・`pdCechTower_proWeaklyTerminal`・`totEInfinity_isLimit_truncations`・`crystallineCechIso`；一般論 `exists_limitCone_of_proCech` | 対象は p 冪零なので弱終なのは pro 対象（BS p.45–46、Stacks Tag 07HP・07JL・07JN） |
 | (b) 多項式の場合の Poincaré 補題（RΓ_crys は持ち上げの de Rham 複体） | 定理（R̄ = (k/J)[X]） | `crystallineCohomology_polynomial_deRham`（Stacks Tag 07LG の F = O） | — |
-| (c) Thm 5.2（I ∋ p、多項式の場合） | 定理 | `frobeniusPdBridge`（X ↦ X^p）、`crystallineComparison_polynomial` | 比較写像は X ↦ X^p で δ 変数なしの D^• へ（§11.6 の 3） |
+| (c) Thm 5.2（I ∋ p、多項式の場合） | 定理 | `pdDeltaCechNerve`（δ 変数つきの D^• = B^•{φ(J₀)/p}^∧）、`etaBridge`（原典の η、b ↦ φ(b)）、`pdDeltaRetraction`（δ 変数の収縮、`_quasiIso`）、`crystallineComparison_polynomial`；`crystallineBridge_eq_eta`（D68 の η はその (ℤ_p,(p)) の場合）；`frobeniusPdBridge`（= η ≫ ρ、X ↦ X^p）・`frobeniusPdBridge_tot` | 比較写像は原典の η（§11.6 の 3、11-07 決定）。Frobenius との両立は述べない |
 | (d) R̄ についての関手性 | 辺の定義と定理 | `crysPullback`・`crysPullbackSite`・`crystallineCohomology_map`・`crystallineCohomology_map_comp`・`crystallineCohomology_map_frame` | ∞ 関手としての RΓ_crys は置かない（§11.4、§11.6 の 4） |
 | (d′) 基底についての関手性（W(C) → C） | 辺の定義 | `crysBaseRestriction`・`crystallineCohomology_baseChangeEdge`；多項式での可逆性は既存の `pdModelBaseChange_isInvertible` | — |
 | crystal、一般の O_{X/S} 加群、Frobenius の RΓ_crys への作用、Thm 5.2 の一般の smooth R・Frobenius との両立 | 不要 | — | E3 で使わない |
 
-### 11.2 置いた宣言（drafts/A1/CrystallineSite.lean、40 宣言・sorry 35）
+### 11.2 置いた宣言（drafts/A1/CrystallineSite.lean、48 宣言・sorry のある宣言 40。11-07 の η への書き直しで +8 宣言・+5）
 
 - S3 の pro 版（名前空間 `InfinityCategories.Sheaves`）：`IsProWeaklyTerminal`、`ProCechNerveData`、`proCechIndexFunctor`（＋`_obj`）、`proCechShape`、`exists_limitCone_of_proCech`。
 - site：`IsCrystallineCutoff`、`CrysOver`（＋`Hom`・圏・`IsZariskiFamily`・`essentiallySmall`）、`CrysOverSmall`、`CrystallineSite`、`zariskiTopology`、`crysAlgebras`、
@@ -519,7 +519,9 @@ drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Cry
 - 関手性：`crysPullback`、`crysPullbackSite`、`crystallineCohomology_map`、`crystallineCohomology_map_comp`、`crysBaseRestriction`、`crystallineCohomology_baseChangeEdge`。
 - (a)：`crysResidueAlgebra`、`crysResidue_kernel`、`pdCechNerveIdeal`・`pdCechNerveDP`・`pdCechNerve_isDPMorphism`（`pdCechNerve` の選択の pd 構造を取り出す）、
   `pdCechTower`、`pdCechTower_proWeaklyTerminal`、`totEInfinity_isLimit_truncations`、`crystallineCechIso`、(d) の `crystallineCohomology_map_frame`。
-- (b)：`crystallineCohomology_polynomial_deRham`。(c)：`crysPolynomial`、`frobeniusPdBridge`、`crystallineComparison_polynomial`。
+- (b)：`crystallineCohomology_polynomial_deRham`。(c)：`crysPolynomial`、`polyPdCech`、`deltaCechVariable`、`pdDeltaCechNerve`、`etaBridge`、
+  `pdDeltaRetraction`、`pdDeltaRetraction_quasiIso`、`frobeniusPdBridge`（合成で定義、sorry なし）、`frobeniusPdBridge_tot`、`crystallineComparison_polynomial`、
+  `crystallineBridge_eq_eta`。
 - 結論が `True` の仮置き・仮定の `True` はない。既存ファイルは編集していない（CrystallineInput も）。
 
 ### 11.3 D69（Thm 6.4）の筋の書き直し：原典の文と §10.5 の段
@@ -532,7 +534,7 @@ drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Cry
 | --- | --- | --- | --- |
 | 0 | q ∘ φ = w₀ ∘ ψ | `completeChange_comp`・`wZero_psi` | 変更なし |
 | 1 | Δ_0 の関手性（prismatic site） | `polyUnderlying_iso_bigCech`（A2 の `PolyDeltaData` の欄） | 変更なし |
-| 2 | Δ_{Q^∧/A₀} ⊗̂_ψ W ≃ RΓ_crys(R̄_Q/W) | `wittBigBridge`：C_big(Q)^• → ψ_* D_W(Q)^•、D_W(Q)^• = `wittBigPdModel`（大きい枠 Q^∧ → R̄_Q の pd Čech 脈体） | (a)：Tot D_W(Q)^• ≃ RΓ_crys(R̄_Q/W)（`crystallineCechIso`、枠 S = Q^∧）。`wittSmallFrame_isInvertible` は (d) で f = id（二つの枠がどちらも RΓ_crys を計算し、枠の射が site の射と一致）。`wittSmallBridge_isInvertible` は `psiBaseChange`（Cor 4.12）と (c) を (A, I) = (W, J) で |
+| 2 | Δ_{Q^∧/A₀} ⊗̂_ψ W ≃ RΓ_crys(R̄_Q/W) | `wittBigBridge`：C_big(Q)^• → ψ_* D_W(Q)^•、D_W(Q)^• = `wittBigPdModel`（大きい枠 Q^∧ → R̄_Q の pd Čech 脈体） | (a)：Tot D_W(Q)^• ≃ RΓ_crys(R̄_Q/W)（`crystallineCechIso`、枠 S = Q^∧）。`wittSmallFrame_isInvertible` は (d) で f = id（二つの枠がどちらも RΓ_crys を計算し、枠の射が site の射と一致）。`wittSmallBridge_isInvertible` は `psiBaseChange`（Cor 4.12）と (c) を (A, I) = (W, J) で（η の形の (c) を `frobeniusPdBridge_tot` で X ↦ X^p の `wittSmallBridge` に読む） |
 | 3 | RΓ_crys(R̄_Q/W) ⊗̂_{W,w₀} C ≃ RΓ_crys(R̄_Q/C)（基底 (W,J) → (C,(p)) の pd 射に沿う底変換） | `wittToSmall`：D_W(Q)^• → (w₀)_* D_0(C,Q)^• | 辺は `crystallineCohomology_baseChangeEdge`（g = w₀）の転置。D_0(C,Q)^• = `pdModel C n` は小さい枠の pd Čech 脈体（`pdModel_iso_pdCechNerve`）なので (a) で RΓ_crys(R̄_Q/C) を計算。可逆性は `pdModelBaseChange_isInvertible`（模型の定理）と (d) |
 | 4 | RΓ_crys(R̄_Q/C) ≃ Ω̂^•_{Q^∧/C}（Poincaré 補題） | `pdDeRhamFunctorIso`（k = C） | 各成分は (b)（`crystallineCohomology_polynomial_deRham`、k = C、J = (p)） |
 
@@ -541,12 +543,29 @@ drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Cry
 `wittComposite`、`deRham_iso_polynomial_universal`（型は変えない）、各対象の `cechAlexanderFrame`・`wittSmallFrame`・`wittSmallBridge`・`pdModelBaseChange` と四角形。
 **要らなくなるもの・軽くなるもの**：
 1. `pdCechNerveMap_quasiIso`（表示によらない、積の枠と pd 多項式の Čech 因子の extra degeneracy・mod p^a ごとの収縮と Rlim）：(a)＋(d) の系になる（BS 著者版 Thm 5.2 の
-   「this recipe is independent of the choice of (B₀ → R)」の原典どおりの理由）。主張は残し、証明の筋を site に差し替える（推奨、§11.6 の 5）。変数変換
+   「this recipe is independent of the choice of (B₀ → R)」の原典どおりの理由）。主張は残し、証明の筋を site に差し替える（11-07 決定、§11.6 の 5）。変数変換
    D_{S⊔S′} ≅ D_S⟨t⟩^∧ は `wittBigCrystalline` の p ねじれなしに残る。
 2. §10.5.6 の要相談 2（「大きい枠の J つき pd Čech 模型は原典にない」）：解消。模型は原典の定義 RΓ_crys を計算する定理 (a) の担い手になった。
 3. §10.4 の代案・§10.5.4 の決定は変わらない（`wittComposite` は zigzag の成分のまま）。
 4. `extraCech_comparison`（G-A1-16）：D_0^• と δ 変数つきの D^• がどちらも RΓ_crys を計算する（big site の対象 (D/p^e → R′ ← R)）ので site の系にもできるが、
-   既存の extra degeneracy の証明は短いのでそのまま（どちらでもよい）。
+   既存の extra degeneracy の証明は短いのでそのまま（どちらでもよい）。一般の基底の版が (c) の `pdDeltaRetraction_quasiIso`。
+
+**(c) の形（11-07 決定、§11.6 の 3）**：比較写像は原典の η。一般の基底 (A, I, γ_I)（A は結晶 prism で生成元 p、有界）について
+`etaBridge` : C^• = `polyCosimplicialAlgebra P hP r`（Rem 4.19）→ D_δ^• = `pdDeltaCechNerve`（B^• = A{X^{(0..•)}}^∧ の J₀ = I B + (X^{(i)} − X^{(0)}) の
+γ_I と両立する p 完備な pd 包、Cor 2.39 の形 B^•{φ(J₀)/p}^∧）、b ↦ φ(b)。`crystallineComparison_polynomial` の結論は
+Δ ≃ Tot C^• →(Tot η) Tot D_δ^• →(Tot ρ) Tot D^• ≃(a) RΓ_crys の合成が同型。D68 の `crystallineBridge` は (A, I) = (ℤ_p, (p)) の場合
+（`crystallineBridge_eq_eta`：`pdDeltaModel` ≅ `pdDeltaCechNerve` のもとで一致。一般の η が本体で crystallineBridge はその特殊化だが、
+CrystallineInput は CrystallineSite より前なので crystallineBridge は独立の定義のまま、関係を CrystallineSite の補題で述べる）。
+
+**(a) とのつなぎ方**：D_δ^• は big site の対象 (D_δ^0/p^e, R̄ → R′ = B/J₀B ≠ R̄) の Čech 脈体だが、(a) は全射な枠 k[S] → R̄ の pd Čech 脈体についての定理。
+二案：(i) δ 変数つきの {D_δ^0/p^e} を弱終な pro 対象として (a) をもう一つ置く（塔・各段の pd 構造・弱終性・同型の 4〜5 宣言）、
+(ii) δ 変数なしの枠と比較する補題を置く。**(ii) を採った**：δ 変数の収縮 ρ = `pdDeltaRetraction` : D_δ^• → D^•（δ^a(X) ↦ 0、a ≥ 1）と
+その擬同型 `pdDeltaRetraction_quasiIso`（G-A1-16 の一般の基底の版：D_δ^n ≅ D^n ⊗̂ E^n、E^• の extra degeneracy）の 2 宣言で済み、証明は
+ℤ_p の `extraCech_comparison`・D68 の段 3 と同じ型で既にある。(a) は全射な枠の版だけでよい。
+
+**X ↦ X^p の写像**：旧 `frobeniusPdBridge` は A1-5 の `wittSmallBridge`（δ 変数なしの `pdModel W n` へ、X ↦ X^p）と `wittBridge_frame_comm` が使うので、
+η からの計算として残した：`frobeniusPdBridge := etaBridge ≫ pdDeltaRetraction`（ρ(φ(X)) = X^p）、`frobeniusPdBridge_tot`（Tot の類は Tot η ≫ Tot ρ）。
+`wittSmallBridge` の型は変えない。
 
 ### 11.4 自然性：site の関手性が与えるもの・与えないもの
 
@@ -563,21 +582,22 @@ drafts/Sheaves/CechConerveLimit.lean へ移す。参照：Stacks Project の Cry
 `withExtraCoords`・`pdDeRhamFunctorIso` など）は変更せず、CrystallineSite はそれを import して使うだけ。共有するのは Lemma 5.4（`frobeniusTwist_cech_quasiIso_infinite`）で、
 (c) の証明でも使う（重複しない）。段 2〜4 は (c)・(a)・(b) の (Z_p,(p)) の場合の mod p の読み替えにもなるが、§10 の証明は書き換えない。
 
-### 11.6 要相談（原典との差・設計の未決、D 番号なし）
+### 11.6 要相談（原典との差・設計の未決、D 番号なし）→ 11-07 に 1〜6 とも決定（design-status §0.3.1 の末尾）
 
-1. **affine な対象に限る**（Berthelot の (U, T, δ) は一般の T）。推奨：限る。理由：BS 自身が affine で議論し（「enough to solve the problem in the affine case」）、
+1. **affine な対象に限る**（Berthelot の (U, T, δ) は一般の T）。**決定（11-07）：限る**。理由：BS 自身が affine で議論し（「enough to solve the problem in the affine case」）、
    prismatic site（Def 4.1 の扱い）と同じ。全体の site との比較（Stacks Tag 07JK の special cocontinuous の議論）は E3 で使わないので証明しない。
-2. **位相**：Zariski（原典どおり）／indiscrete（chaotic）。推奨：Zariski で定義し、O_crys が層であること（`crystallineStructure_isSheaf`）を定理にする。理由：定義が原典どおりで、
+2. **位相**：Zariski（原典どおり）／indiscrete（chaotic）。**決定（11-07）：Zariski**。Zariski で定義し、O_crys が層であること（`crystallineStructure_isSheaf`）を定理にする。理由：定義が原典どおりで、
    RΓ は層なので chaotic と同じ（`crystallineCohomology_isLimit`）。費用は有限個の局所化の族の Amitsur 複体（A0 の `structurePresheafDerived_isLimit_singleton` と同じ型）
    一件。この一件が重ければ chaotic に替える（その場合は Stacks Tag 07JK を根拠として定義の差を記録）。
-3. **(c) の比較写像**：原典の η（b ↦ φ(b)、δ 変数つきの D^• = B{φ(J₀)/p}^∧、R′ = B/J₀B ≠ R の対象を通る）／X ↦ X^p で δ 変数なしの pd Čech 脈体へ（`frobeniusPdBridge`）。
-   推奨：X ↦ X^p。理由：どちらも Δ の弱終対象から RΓ_crys を計算する site の対象への射で、Tot の上では同じ類（(d) と S3 の制限の自然性）。原典の η を定義するには
-   一般の基底の δ 変数つき模型（今は Z_p の `pdDeltaModel` だけ）が要る。
-4. **∞ 関手としての RΓ_crys**：置かない（推奨）／`PolyDeltaData` と同じ形の `PolyCrystallineData`（val・obj_eq・map_eq と模型との `FunctorIso` の欄）を W と C について置き、
-   `bigZigzagIso` が文字どおり RΓ_crys を通るようにする。推奨の理由：§11.4 のとおり ∞ の整合性は模型から来るので、欄を足しても zigzag の中で打ち消し合うだけ。
-5. **`pdCechNerveMap_quasiIso`**：主張を残して証明の筋を (a)＋(d) に差し替える（推奨）／削除して `wittSmallFrame_isInvertible` などを (d) から直接。推奨の理由：使う側の
+3. **(c) の比較写像**：**決定（11-07、ユーザー）：Thm 5.2 は原典の η（b ↦ φ(b)、δ 変数つきの D^• = B^•{φ(J₀)/p}^∧、R′ = B/J₀B ≠ R の対象を通る）の写像が
+   同型であるという形で述べる**（`etaBridge`・`crystallineComparison_polynomial`）。理由：X ↦ X^p で δ 変数なしの D^• に入れる形だと、D68 の `crystallineBridge`
+   （(ℤ_p,(p)) の原典の η）と二つの比較写像が並び、Frobenius との両立やほかでの使い回しで困る。η の形なら crystallineBridge はその特殊化（`crystallineBridge_eq_eta`）。
+   (a) とのつなぎは δ 変数の収縮 `pdDeltaRetraction`（Tot で可逆）で、X ↦ X^p の写像は `frobeniusPdBridge := etaBridge ≫ pdDeltaRetraction` として残る（§11.3）。
+4. **∞ 関手としての RΓ_crys**：置かない／`PolyDeltaData` と同じ形の `PolyCrystallineData`（val・obj_eq・map_eq と模型との `FunctorIso` の欄）を W と C について置き、
+   `bigZigzagIso` が文字どおり RΓ_crys を通るようにする。**決定（11-07）：置かない**。理由：§11.4 のとおり ∞ の整合性は模型から来るので、欄を足しても zigzag の中で打ち消し合うだけ。
+5. **`pdCechNerveMap_quasiIso`**：主張を残して証明の筋を (a)＋(d) に差し替える／削除して `wittSmallFrame_isInvertible` などを (d) から直接。**決定（11-07）：主張を残し証明を site 経由に**。理由：使う側の
    docstring・sorry の理由を変えずに済み、sorry は増減しない。差し替えは CrystallineInput・DeRhamComparisonPoly の sorry の理由の行だけ（本体へ移す Codex の作業と合わせる）。
-6. **対象は p 冪零**（Berthelot どおり）／p 進完備な対象（Stacks Remark 07KH の Cris^∧、D が弱終で pro 版の S3 が要らない）。推奨：p 冪零。理由：原典の定義のまま。
+6. **対象は p 冪零**（Berthelot どおり）／p 進完備な対象（Stacks Remark 07KH の Cris^∧、D が弱終で pro 版の S3 が要らない）。**決定（11-07）：p 冪零**。理由：原典の定義のまま。
    費用は一般論 `exists_limitCone_of_proCech` 一件と `totEInfinity_isLimit_truncations`（Mittag-Leffler）。cutoff は κ := cutoff W W に固定し κ 不変性は置かない。
 
 ### 11.7 紙で確かめる項目
