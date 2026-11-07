@@ -3,6 +3,7 @@
 -- 引用 3 件の `sorry` 定理（G-A6-1a・1b・1c）は drafts/ の間は問題なし。SerrePositivity/ に入れるときは scripts/make_area_audits.py の許可一覧の更新を調整役に依頼する（main 7b8b96286）。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
@@ -178,31 +179,6 @@ theorem arcSheaf_of_vSheaf_of_valuationSquares
           [IsAlgClosed (FractionRing V.right)] (P : Ideal V.right) [P.IsPrime],
           IsPullbackSquare (fpValuationSquare p V P ≫ F) := by
   sorry -- [BM18, Thm 1.7]
-
-/-- 加法群としての付値環の Milnor 短完全列。最後の射は二つの剰余の差。 -/
-def MilnorShortExact {V : Type u} [CommRing V] (P : Ideal V) [P.IsPrime] : Prop :=
-  let L := Localization.AtPrime P
-  let i := fun x : V => (algebraMap V L x, Ideal.Quotient.mk P x)
-  let d := fun z : L × (V ⧸ P) => IsLocalRing.residue L z.1 - algebraMap (V ⧸ P) P.ResidueField z.2
-  Function.Injective i ∧ Function.Exact i d ∧ Function.Surjective d
-
-/-- 概要：初等補題（引用ではない、W9-II-18）：任意の付値環 V と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全、すなわち
-V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian。
-方針：𝔭V_𝔭 = 𝔭（a ∈ 𝔭、s ∉ 𝔭 で a/s ∉ V なら付値環性で s/a ∈ V、s = a·(s/a) ∈ 𝔭 で矛盾；a/s ∈ V なら素性で a/s ∈ 𝔭）。よって V_𝔭/𝔭V_𝔭 = κ(𝔭) で
-V_𝔭 → κ(𝔭) の核が V の 𝔭 の像に一致するので短完全列、右の射は差で V_𝔭 → κ(𝔭) は全射。cocartesian は局所化と商の可換性。加群の導来圏でも cartesian。
-規約：—
-使われ方：`valuationRing_milnorSquare_perfect`。 -/
-theorem valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭 := by
-  sorry -- 初等的。中身の段階で証明
-
-/-- 概要：**G-A6-1c**［引用、`sorry`、上の初等補題の特殊化として後で証明］[BS17, Lemma 6.3]（Lemma 6.2 は付値環による v 被覆の主張で、この四角形
-ではない。W9-II-18）：**完全**付値環 V（標数 p）と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全。
-方針：原典の形で引用。適用先（分数体が代数閉な標数 p の付値環）は完全なのでこの特殊化で足りる。
-規約：「完全」の仮定を落とした一般版を引用そのものとは記さない。
-使われ方：G-A6-1（F = O_perf の四角形）。 -/
-theorem valuationRing_milnorSquare_perfect {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CharP V p] [PerfectRing V p]
-    (𝔭 : Ideal V) [𝔭.IsPrime] : MilnorShortExact 𝔭 := by
-  sorry -- [BS17, Lemma 6.3]
 
 /-- 概要：G-A6-1：完全 F_p 代数の有限族の arc 被覆 {A → B_i} について 0 → A → ∏B_i → ∏B_i ⊗_A B_j → ⋯ が完全。
 方針：F := (A ↦ A_perf) は F_p 代数上の finitary な関手。1a を完全化に当てて v 層（完全化は v 被覆を保つ）。分数体が代数閉な付値環は完全なので
