@@ -52,3 +52,11 @@ Kerodon の対応表（`research/kerodon-coverage/`）と同じものを HTT に
 - ビルドは小さなものだけ（`lake build <module>` と `lake env lean`、`source ~/.zshenv`）。全体のビルドや verify はしない。`scripts/refactor/with_build_lock.sh --wait 0 -- …` を通し、鍵が取れなければ少し待って取り直す。別プロジェクトのビルドや、他の worktree の小さなビルドは待たない。
 - コミットは自分のファイルを明示して行う（`git add -A`・`git add research/` は使わない）。
 - 終わったら枝にコミットして報告する。main への取り込みは調整役が行う。
+
+## 6. 追記（2026-11-07 夜、調整役）：停止点 0 の承認
+
+**承認**：段 0（2ac9ea229、main に取り込み済み）。2017-04-09 版、1,730 項目。`plan-citations.csv` の「3.0」は計画側の誤記なので無視してよい。段 1（第 1・2 章の照合）に進んでよい。
+
+1. **`kerodon` 列**：docstring の併記だけでは 16 行にとどまる（Lean が引く HTT の番号は 64 種類しかない）。照合で対応する宣言が決まった行は、同じ宣言が Kerodon の確認の行（`research/kerodon-coverage/review/ch<N>.csv` の `declarations_new`）に現れるかを機械的に突き合わせ、現れればその Kerodon の番号を候補として書く（主張が同じかは HTT の本文で確かめ、違えば書かない）。埋めた件数を停止点ごとに報告する。
+2. **付録 A（モデル圏）**：§4 の 4（モデル圏の仮定）をそのまま当てる。主経路はモデル圏を使わないので、`goal` は計画が引くものを除いて `-`。
+3. 段 1 からは、報告してそのまま次の段へ進んでよい。
