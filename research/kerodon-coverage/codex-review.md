@@ -71,3 +71,16 @@
 - **待たないもの**：別プロジェクト（`arxiv_formalization` など）のビルドと、SerrePositivity の他の worktree の小さなビルド（`lake build <module>`・`lake env lean`）。CPU は取り合うが、正しさには影響しない。
 - 段 1 のスクリプトは main に入った（538f3a835）。HEAD が変わったので、README の手順どおり新しい run-dir を prepare してから全件を流す。
 - 古い worktree `SerrePositivity-kerodon-review`（枝 `research/kerodon-review`）は使われていなかったので消した。以後は `-a`（と、並行にするときの `-b`・`-c`）を使う。
+
+## 5. 追記（2026-11-07、調整役）：名前の自動補正、生の出力の扱い、並行の分担
+
+段 1 の全件の結果（found 394、not_found 1,602、手動 111）と Ch 1 の結果（ok 121・fix 54・unsure 5）を main に取り込んだ（3c46c2efd）。not_found の大半は、表の名前に名前空間が欠けていたため（例：`PiZeroConstant.homEquiv` → `SerrePositivity.SimplicialModel.PiZeroConstant.homEquiv`）。Ch 1 で手で直したやり方を機械化する。
+
+1. **名前の自動補正（段 1′）**：not_found と unresolved の記載について、記載の `path:line` のファイルを読み、その行での `namespace`・`section`・`open`（`open … in` を含む）の入れ子から完全な名前の候補を作る。候補を `#check` で試し、一つに決まれば `renamed` として記録する。決まらない・候補がないものだけを段 2 の手作業に回す。補正の規則と、補正前後の件数を報告する。
+2. **生の出力は main に入れない**：`review/check/runs/*/modules/`（モジュールごとの検査用 Lean と生の出力）は、以後コミットしない（`.gitignore` に加える）。枝に既にある分はそのままでよい。main には、スクリプト・報告・`review/ch<N>.csv`・run ごとの集計の CSV と JSON だけを取り込む。
+3. **並行の分担**：段 1′ が main に入ったら、調整役の指示で Codex を三本にする。
+   - `-a`（このチャット）：Ch 2〜3
+   - `-b`：Ch 4〜6
+   - `-c`：Ch 7〜10
+   
+   `-b`・`-c` は main から `../SerrePositivity-kerodon-review-b`・`-c`（枝 `research/kerodon-review-b`・`-c`）を切る。どのチャットも、書くのは自分の章の `review/ch<N>.csv` と `review/check/ch<N>-*` の証拠ファイルだけ。Ch 1 の `ch1-review-report.md` と同じ形で、章ごとの報告を書く。
