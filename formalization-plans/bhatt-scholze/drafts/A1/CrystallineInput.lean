@@ -1,5 +1,5 @@
--- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.CrystallineInput（仮。原典 Thm 5.2 β の de Rham 形＝結晶側の唯一の黒箱、D68）
--- 設計書：formalization-plans/bhatt-scholze/a1-design.md §9・決定 D68、単位 A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
+-- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.CrystallineInput（仮。原典 Thm 5.2・Lemma 5.4・Cor 5.5 の (Z_p,(p))・多項式・mod p の場合）
+-- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
@@ -7,38 +7,53 @@ public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
 public import Mathlib.Algebra.Homology.Embedding.Extend
+public import Mathlib.Algebra.Homology.HomologicalBicomplex
+public import Mathlib.Algebra.Homology.QuasiIso
+public import Mathlib.Algebra.Category.Ring.Colimits
 public import Mathlib.RingTheory.DividedPowerAlgebra.Init
 public import Mathlib.RingTheory.DividedPowers.DPMorphism
--- 小さい Čech 模型と η⁰・η¹ は HodgeTateMap、Ω̂ は Shared/DeRhamPolynomial を使う（A1/HodgeTateComparison と A1/DeRhamComparisonPoly の両方がこれを import する。W9-III-09）。
+-- 本ファイルは drafts/A1/HodgeTateMap.lean（小さい Čech 模型 `htRings`・`reducedModel`、η⁰・η¹、`HodgeTateIsoStatement`、`formVars`）、
+-- drafts/A0/PrismaticEnvelope.lean（`completedFreeDelta`）、drafts/Shared/{DeRhamPolynomial,CosimplicialCupProduct,CosimplicialBockstein}.lean を import する。
+-- A1/HodgeTateComparison と A1/DeRhamComparisonPoly の両方がこれを import する（W9-III-09）。
 
 /-!
-# 結晶側の入力（BS 著者版 Thm 5.2 β の de Rham 形、D68）
+# 結晶側の計算（BS 著者版 Thm 5.2・Lemma 5.4・Cor 5.5 の (Z_p,(p))・R = F_p[X_1,…,X_r]・mod p の場合）
 
 ## 概要
-仕様つきの黒箱一件 `crystalline_deRham_polynomial_Zp`（自然性・乗法・Bockstein・根の遷移との整合を含む）と、そこから Cartier 同型で HT 比較
-（Cor 5.5 の (Z_p,(p)) の場合、A1-3 の `hodgeTate_iso_polynomial_Zp`）を導く補題。
+**D68 改訂（2026-11-05 夜、ユーザー）**：以前の黒箱 `crystalline_deRham_polynomial_Zp`（関手 ∞ 圏の同型 Δ ≃ Ω̂、恒久の引用）は外した。
+使う側が実際に要るのは対象ごとの命題 `HodgeTateIsoStatement`（Čech–Alexander 模型 Tot(C^•/p) の H^i で η^i が全単射）だけなので、
+それを mod p で直接証明する（`hodgeTate_of_deRham_cartier`）。段は六つ（a1-design §10）：
+1. Lemma 5.4（`frobeniusTwist_cech_quasiIso`、無限変数は `frobeniusTwist_cech_quasiIso_infinite`、G-A1-15）。
+2. C^•/p → D^•/p が cohomology 同型（`crystallineBridgeModP_isCohomologyIso`。D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p）。
+3. D_0^•/p → D^•/p が cohomology 同型（`pdInclusionModP_isCohomologyIso`、G-A1-16）。
+4. H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})（`pdDeRhamCohomologyIso`。双複体 Ω^j_pd(D_0^n)：列は pd Poincaré G-A1-7、j ≥ 1 の行は BdJ の収縮 G-A1-14）、cup 積と両立。
+5. n 変数の Cartier 同型（`finitePolynomialCartier`）。
+6. 生成元での照合（`crystallineChain_generators`）。
+後半（`pdModel` 以下の J つき模型・`pdPolynomialComparison`・`formsCAlg`）は A1-5（D69、A1/DeRhamComparisonPoly）用で、上の経路では
+`pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・`insertPdFactor` だけを使う。
 
 ## 方針
-W9-III-09 で A1/DeRhamComparisonPoly.lean から切り出した：HodgeTateComparison の `hodgeTate_iso_polynomial_Zp` がこの黒箱と Cartier を使い、
-DeRhamComparisonPoly は HodgeTateComparison を使うので、黒箱は両者より先に置く。
+mod p なので導来 Nakayama（G-A1-4）は使わない。比較はすべて余単体的可換環の厳密な射（または整係数の厳密な射の mod p）で与え、
+cohomology の cup 積は `cohomologyMap_cup` で、Bockstein は `bockstein_natural` で自動的に移る。∞ 圏の部品は使わない。
 
 ## 規約
-恒久的な文献入力はこの一件（結晶側。監査の許可一覧へ）。ほかの証明穴は実装予定。
+恒久の引用はない（段階 II は sorry 0）。基底は ℤ_p（`crystallineBase`、ULift）、F_p は `cartierBase`。
+「cohomology 同型」は `Cosimplicial.IsCohomologyIso`（全次数で `cohomologyMap` が全単射）。
 
 ## 使われ方
-A1-3（HT 比較）、A1-5（Thm 6.4 の多項式・mod p）。
+A1-3：`hodgeTate_iso_polynomial_Zp`（A1/HodgeTateComparison）。A1-5：後半の模型と `pdPolynomialComparison`（A1/DeRhamComparisonPoly）。
 -/
 
 @[expose] public section
 noncomputable section
 universe u
-open CategoryTheory SSet MonoidalCategory
+open CategoryTheory CategoryTheory.Limits SSet MonoidalCategory
 open scoped Simplicial TensorProduct
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
-open SerrePositivity.DifferentialGraded SerrePositivity.DerivedCompletion
+open SerrePositivity.DifferentialGraded SerrePositivity.DerivedCompletion SerrePositivity.Cosimplicial
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 attribute [local instance] HasDerivedCategory.standard
 variable (p : ℕ) [Fact p.Prime]
@@ -67,6 +82,8 @@ def changePoly {k l : Type u} [CommRing k] [CommRing l] (f : k →+* l) : Poly k
   map_comp := by sorry -- 代入と係数変換が可換
 abbrev changePolyNerve {k l : Type u} [CommRing k] [CommRing l] (f : k →+* l) :=
   (SSet.uliftFunctor.{u+1,u}).map (nerveMap (changePoly f))
+
+/-! ## 連続 de Rham 複体の CAlg 値（A1-5・D69 用。D68 改訂後の経路では使わない） -/
 
 /-- 連続 de Rham 複体に単位・外積を入れた通常の可換モノイド複体。 -/
 abbrev formComplex (k : Type u) [CommRing k] (n : ℕ) :=
@@ -105,53 +122,11 @@ def formsCAlg (k : Type u) [CommRing k] := formsNerve p k ≫ algebraCAlgSource 
 abbrev formsVertex (k : Type u) [CommRing k] (n : ℕ) :=
   (formsCAlg p k).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k)))
 
-/-- 左辺は lift の係数を A/d に落として Δ を取り、φ_A に沿って係数拡大する。 -/
-def liftedDelta (A : Type u) [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P) :=
-  changePolyNerve (Ideal.Quotient.mk P.ideal) ≫ polyUnderlying P hP ≫ cAlgBaseChange P.deltaStructure.frobeniusLift
-abbrev zpDelta := liftedDelta p (crystallineBase.{u} p) (crystallineBasePrism p) (crystallineBaseBounded p)
-abbrev zpForms := formsCAlg p (crystallineBase.{u} p)
-
 abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
   ULift.up (nerveVertex (⟨n⟩ : Poly k))
-def rootTransition (k : Type u) [CommRing k] (n : ℕ) : (⟨n⟩ : Poly k) ⟶ ⟨n⟩ :=
-  MvPolynomial.aeval (fun j => MvPolynomial.X j ^ p)
 
-def hModP (k : Type u) [CommRing k] (i : ℕ) :=
-  (hoFunctor.map (cAlgBaseChange (Ideal.Quotient.mk (Ideal.span {(p : k)})) ≫ cAlgForgetDerived _)).toFunctor ⋙
-    (derivedInfinityHomotopyEquivalence _).functor ⋙ DerivedCategory.homologyFunctor _ (i : ℤ)
-
-/-- mod p²→mod p の係数三角形の連結射（p 正則な底 k）。 -/
-def reductionBeta (k : Type u) [CommRing k] (hp : Function.Injective (fun x : k => (p : k)*x))
-    (X : (CAlg_R k) _⦋0⦌) (i : ℕ) :
-    (hModP p k i).obj (HomotopyCategory.mk X) ⟶ (hModP p k (i+1)).obj (HomotopyCategory.mk X) := by
-  sorry -- 0→k/p→k/p²→k/p→0 を U(X) と導来テンソルした三角形で δ を取る
-
-def isPrimeCompleteCAlg (k : Type u) [CommRing k] (x : (CAlg_R k) _⦋0⦌) : Prop :=
-  completeAt (p : k) ((cAlgForgetDerived k).app _ x)
-
-structure CrystallineComparison where
-  comparison : FunctorIso (zpDelta.{u} p) (zpForms p)
-  source_complete (n : ℕ) : isPrimeCompleteCAlg p _ ((zpDelta p).app _ (polyPoint (crystallineBase.{u} p) n))
-  target_complete (n : ℕ) : isPrimeCompleteCAlg p _ ((zpForms p).app _ (polyPoint (crystallineBase.{u} p) n))
-  bockstein (n i : ℕ) :
-    let k := crystallineBase.{u} p
-    let v := polyPoint k n
-    let hp : Function.Injective (fun x : k => (p : k)*x) := by sorry -- ℤ_p で p は正則
-    reductionBeta p k hp ((zpDelta p).app _ v) i ≫ (hModP p k (i+1)).map (comparison.app v).hom =
-      (hModP p k i).map (comparison.app v).hom ≫ reductionBeta p k hp ((zpForms p).app _ v) i
-  roots (n : ℕ) :
-    let k := crystallineBase.{u} p
-    let a := uliftEdge (nerve.edgeMk (rootTransition p k n)).toTruncated
-    let e := (comparison.app (polyPoint k n)).hom
-    Truncated.HomotopyCategory.homMk (a.map ((truncation 2).map (zpDelta p))) ≫ e =
-      e ≫ Truncated.HomotopyCategory.homMk (a.map ((truncation 2).map (zpForms p)))
-
-/-- D68。全変数を一つの自然同型に含める。CAlg の射が乗法と単位を保つ。
-任意の F_p 多項式射の係数を ℤ_p に持ち上げると左辺はその還元にのみ依存する。 -/
-theorem crystalline_deRham_polynomial_Zp : Nonempty (CrystallineComparison.{u} p) := by
-  sorry -- 結晶側の黒箱（恒久的な引用）。Thm 5.2 β と結晶多項式持ち上げの de Rham 計算
-
-/-! ## 結晶の多項式模型（G-A1-14・16・17）。以下は証明予定で、恒久的な引用は上の一件。 -/
+/-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・
+`insertPdFactor` を使い、J つきの比較 `pdPolynomialComparison` は A1-5 用。 -/
 
 /-- 第 0 copy の座標と残りの copy との差の自由 pd 代数。 -/
 abbrev pdRaw (k : Type u) [CommRing k] (r n : ℕ) :=
@@ -161,6 +136,10 @@ abbrev pdTerm (k : Type u) [CommRing k] (r n : ℕ) := completionRing p (CommRin
 instance pdTermAlgebra (k : Type u) [CommRing k] (r n : ℕ) : Algebra k (pdTerm p k r n) :=
   ((completionUnit p _).hom.comp (algebraMap k (pdRaw k r n))).toAlgebra
 
+/-- 概要：δ 座標なしの pd Čech 脈体 D_0^•（D_0^n = k⟨X^{(0)}⟩⟨X^{(i)} − X^{(0)}⟩_pd の p 完備化）。
+方針：`pdRaw` の p 完備化。余面・余退化は copy の添字の写像と差の pd 射。
+規約：k = F_p では完備化は恒等。
+使われ方：段 3・4（D68 改訂後）、A1-5 の `pdPolynomialComparison`。 -/
 def pdModel (k : Type u) [CommRing k] (r : ℕ) : Cosimplicial.CosimplicialAlgebra k where
   obj n := Under.mk (CommRingCat.ofHom ((completionUnit p _).hom.comp (algebraMap k (pdRaw k r n.len))))
   map θ := by sorry -- X^(a)↦X^(θa)。差を差に送り γ_m を保つ pd 射を完備化
@@ -175,8 +154,12 @@ def pdRow (k : Type u) [CommRing k] (r j : ℕ) : CosimplicialObject (ModuleCat.
   map_id := by sorry -- 外冪基底上で恒等
   map_comp := by sorry -- 代入は pd 微分と可換
 
-theorem pdRow_contractible (r j : ℕ) (hj : 0 < j) :
-    let K := CosimplicialObject.alternatingCofaceMapComplex.obj (pdRow p (crystallineBase.{u} p) r j)
+/-- 概要：G-A1-14：j ≥ 1 の行 Ω^j_pd(D_0^•) は余単体的加群として収縮可能（[BdJ11, Lemma 2.15–2.17]）。
+方針：Ω^1 に copy の基底ごとのホモトピーを作り、外冪・テンソル・p 完備化へ延ばす。j = 0 の行 D_0^• は収縮しない（W9-I-13）。
+規約：11-07：基底 k を一般にした（以前は ℤ_p に固定）。段 4 は k = F_p で使う。
+使われ方：段 4（`pdDeRhamCohomologyIso`）、A1-5 の `pdPolynomialComparison`。 -/
+theorem pdRow_contractible (k : Type u) [CommRing k] (r j : ℕ) (hj : 0 < j) :
+    let K := (AlgebraicTopology.alternatingCofaceMapComplex _).obj (pdRow p k r j)
     Nonempty (Homotopy (𝟙 K) 0) := by
   sorry -- G-A1-14。Bhatt–de Jong の Ω¹ の収縮を copy の基底で作り、外冪・p 完備化へ延長
 
@@ -214,6 +197,10 @@ def pdDeltaTerm (r n : ℕ) : CommRingCat.{u} := by
     (deltaCopyX p r n (a.1,a.2.succ) - deltaCopyX p r n (a.1,0))
   exact completionRing p (CommRingCat.of (DeltaDivisionTorsionQuotient D (p : B) ys))
 
+/-- 概要：Thm 5.2 の D^•（J_0^•B^• の pd 包の p 完備化 = B^•{φ(z)/p}^∧、Cor 2.39、a1-design §2.3）。
+方針：自由 δ 環の各 copy の差 z の φ(z)/p を δ 除算で添加し、p ねじれを除いて完備化。
+規約：D^n は p ねじれなし。
+使われ方：段 2・3。 -/
 def pdDeltaModel (r : ℕ) : Cosimplicial.CosimplicialAlgebra (crystallineBase.{u} p) where
   obj n := by
     let q : crystallineBase.{u} p →+* pdDeltaTerm p r n.len := by
@@ -231,10 +218,15 @@ def splitDeltaCoordinates (r : ℕ) :
 def insertPdFactor (k : Type u) [CommRing k] (r : ℕ) : pdModel p k r ⟶ withExtraCoords p k r := by
   sorry -- 各項で x↦x⊗1 を完備化、全余面・余退化と両立
 def pdComplex (k : Type u) [CommRing k] (D : Cosimplicial.CosimplicialAlgebra k) :=
-  CosimplicialObject.alternatingCofaceMapComplex.obj (D ⋙ discreteAlgebraModule k)
+  (AlgebraicTopology.alternatingCofaceMapComplex _).obj (D ⋙ discreteAlgebraModule k)
+
+/-- 概要：G-A1-16 の整係数版：D_0^• → D^•（追加の δ 座標の Čech 因子の挿入）は交代余面複体の擬同型。
+方針：E^• = Q^{⊗(•+1)} の extra degeneracy（U_k ↦ 0）、D_0^• とのテンソル、各 mod p^a の収縮の Rlim。
+規約：D68 改訂後の経路は mod p 版 `pdInclusionModP_isCohomologyIso` を使う。
+使われ方：A1-5 の `wittPdBridge`（W(A_0/d_0) 上の Thm 5.2 β）。 -/
 theorem extraCech_comparison (r : ℕ) :
     let k := crystallineBase.{u} p
-    QuasiIso (CosimplicialObject.alternatingCofaceMapComplex.map
+    QuasiIso ((AlgebraicTopology.alternatingCofaceMapComplex _).map
       (Functor.whiskerRight (insertPdFactor p k r) (discreteAlgebraModule k))) := by
   sorry -- G-A1-16。k→Q は正の δ 座標を 0 に送る切断をもち、E^• は増大付きで収縮する。
         -- D₀^• とテンソルし各 mod p^a の収縮を Rlim。j=0 の pd 行そのものは収縮させない
@@ -262,7 +254,9 @@ structure PDPolynomialComparison (k : Type u) [CommRing k] (J : Ideal k) where
     pdTotMap p f = pdTotMap p g
 
 /-- G-A1-17。p 正則な完備基底と標準 pd を延長する J。持ち上げの射が
-mod J で一致すれば共通の pd 脈体で同じ射になる。 -/
+mod J で一致すれば共通の pd 脈体で同じ射になる。
+TODO（11-07、a1-design §10.4）：`natural`・`changeLift` はホモトピー圏の等式（1 単体まで）で、A1-5 の
+`deRham_iso_polynomial_universal` の `FunctorIso` を貼るには足りない（高次の整合性）。 -/
 def pdPolynomialComparison (k : Type u) [CommRing k] (J : Ideal k) (γ : DividedPowers J)
     (hp : (p : k) ∈ J) (hγ : ∀ n : ℕ, (n.factorial : k) * γ.dpow n (p : k) = (p : k)^n)
     (hk : IsModuleComplete k (p : k) (ModuleCat.of k k))
@@ -270,31 +264,305 @@ def pdPolynomialComparison (k : Type u) [CommRing k] (J : Ideal k) (γ : Divided
   sorry -- pd-Poincaré の列、正次数の行の収縮、extraCech_comparison。
         -- 共通の J つき pd 厚化を経由して natural と changeLift を得る
 
+/-! ## D68 改訂後の経路：(Z_p,(p))・F_p[X_1,…,X_r] の HT 比較を mod p で直接（a1-design §10） -/
+
+/-- 概要：余単体的可換環の mod p（各項の p による商）。
+方針：Shared の `quotPow` を d = p（自然数の像、環射で保たれる）で。
+規約：素朴な商。段 2・3 では各項が p ねじれなしなので導来 mod p と一致。
+使われ方：段 2〜4。 -/
+abbrev modPrimeCosimplicial (X : CosimplicialObject CommRingCat.{u}) : CosimplicialObject CommRingCat.{u} :=
+  quotPow X (fun n => (p : X.obj n)) (fun θ => map_natCast (X.map θ).hom p) 1
+
+/-- 概要：余単体的可換環の射の mod p。
+方針：`quotPowMap`（環射は p を p に送る）。
+規約：—
+使われ方：段 3。 -/
+abbrev modPrimeMap {X Y : CosimplicialObject CommRingCat.{u}} (f : X ⟶ Y) :
+    modPrimeCosimplicial p X ⟶ modPrimeCosimplicial p Y :=
+  quotPowMap X (fun n => (p : X.obj n)) (fun θ => map_natCast (X.map θ).hom p)
+    (fun n => (p : Y.obj n)) (fun θ => map_natCast (Y.map θ).hom p) f (fun n => map_natCast (f.app n).hom p) 1
+
 abbrev cartierBase := crystallineBase.{u} p ⧸ (crystallineBasePrism p).ideal
 abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (formVars.{u} n)
+
+/-! ### 段 1：Lemma 5.4（Frobenius ひねりの Čech 脈体） -/
+
+/-- 概要：多項式代数 B = k[X_s]_{s∈σ} の k 上の Čech 脈体 B^•：[n] ↦ B^{⊗(n+1)} = k[σ × {0,…,n}]。
+方針：`MvPolynomial (σ × Fin (n+1)) k` と copy 添字の `rename`。
+規約：σ は Type（変数の集合）。原典 Lemma 5.4 の k[EM]（M = ℕ^{⊕σ}）。
+使われ方：段 1・2（σ = Fin r × ℕ が B = ℤ_p{X}^∧ の mod p の変数 δ^a(X_j)）。 -/
+def polynomialCech (k : Type u) [CommRing k] (σ : Type) : CosimplicialObject CommRingCat.{u} where
+  obj n := CommRingCat.of (MvPolynomial (σ × Fin (n.len+1)) k)
+  map θ := CommRingCat.ofHom (MvPolynomial.rename (fun x => (x.1, θ.toOrderHom x.2))).toRingHom
+  map_id := by sorry -- copy 添字の恒等
+  map_comp := by sorry -- copy 添字の合成
+
+/-- 概要：相対 Frobenius B^{•,(1)} → B^•（各 copy で X ↦ X^p）。
+方針：B^{(1)} = B ⊗_{k,φ} k は k 上の多項式代数 k[X] と同一視でき、相対 Frobenius は k 線形な X ↦ X^p（原典 Not 5.1）。
+規約：k = F_p では絶対 Frobenius と一致。
+使われ方：段 1 の押し出し、段 2。 -/
+def relativeFrobeniusCech (k : Type u) [CommRing k] (σ : Type) : polynomialCech k σ ⟶ polynomialCech k σ where
+  app n := CommRingCat.ofHom (MvPolynomial.aeval (R := k) (fun x => (MvPolynomial.X x : MvPolynomial _ k) ^ p)).toRingHom
+  naturality := by sorry -- rename と p 乗の代入は可換
+
+/-- 概要：Lemma 5.4（有限変数）：標数 p の環 k、有限集合 σ、B^{•,(1)} 代数 N^•（余単体的可換環の射 ι : B^{•,(1)} → N^•）について、
+N^• → N^• ⊗_{B^{•,(1)}} B^•（相対 Frobenius に沿う項ごとの押し出し）は交代余面複体の cohomology 同型。
+方針：原典どおり。S = {0,…,p−1}^σ の剰余類代表で k[EM] ≅ k[E(pM)] ⊗_k k[ES]（半余単体的加群として）、k[ES] は切断をもつ
+Čech 脈体と同じで余単体的ホモトピー同値（G-A1-3）、テンソルで保たれ、非正規化複体は半余単体的構造だけで決まる。
+規約：原典は任意の余単体的 B^{•,(1)} 加群 N。ここでは使う形（N が余単体的可換環）に限る（定理の特別な場合）。
+使われ方：G-A1-15 を経て段 2。 -/
+theorem frobeniusTwist_cech_quasiIso (k : Type u) [CommRing k] (hk : (p : k) = 0) (σ : Type) [Finite σ]
+    (N : CosimplicialObject CommRingCat.{u}) (ι : polynomialCech k σ ⟶ N) :
+    IsCohomologyIso (pushout.inl ι (relativeFrobeniusCech p k σ)) := by
+  sorry -- 剰余類代表による半余単体的な分解と、切断つき Čech 脈体の extra degeneracy（G-A1-3）
+
+/-- 概要：G-A1-15：Lemma 5.4 の任意個の変数の版。
+方針：σ の有限部分集合 F について polynomialCech k F の filtered 余極限。押し出しと交代余面複体の cohomology は filtered 余極限と可換
+（原典 p.48、W9-I-16）。ι を F ごとに制限し、有限版を使う。
+規約：—
+使われ方：段 2（B = ℤ_p{X}^∧ の mod p は変数 δ^a(X_j)、a ∈ ℕ で無限個）。 -/
+theorem frobeniusTwist_cech_quasiIso_infinite (k : Type u) [CommRing k] (hk : (p : k) = 0) (σ : Type)
+    (N : CosimplicialObject CommRingCat.{u}) (ι : polynomialCech k σ ⟶ N) :
+    IsCohomologyIso (pushout.inl ι (relativeFrobeniusCech p k σ)) := by
+  sorry -- 有限部分集合の filtered 余極限と frobeniusTwist_cech_quasiIso
+
+/-! ### 段 2：C^•/p → D^•/p -/
+
+abbrev zpCech (r : ℕ) := htRings (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r
+abbrev pdDeltaRings (r : ℕ) := pdDeltaModel.{u} p r ⋙ Under.forget (CommRingCat.of (crystallineBase.{u} p))
+
+/-- 概要：Thm 5.2 の橋 η : C^• → D^•（C^n = B^n{z/p}^∧ → D^n = B^n{φ(z)/p}^∧、b ↦ φ(b)、z/p ↦ φ(z)/p。a1-design §2.3）。
+方針：envelope の普遍性（A0 の `IsPrismaticEnvelope.lift`。D^n は (Z_p,(p)) 上の prism）。余単体的射は普遍性の一意性から。
+規約：A = Z_p なので φ_A = id。
+使われ方：段 2。 -/
+def crystallineBridge (r : ℕ) : zpCech.{u} p r ⟶ pdDeltaRings p r := by
+  sorry -- 各項で φ_{B^n} を envelope の普遍性で延長。一意性で余面・余退化と可換
+
+theorem crystallineBridge_generator (r : ℕ) (n : SimplexCategory) :
+    (crystallineBridge p r).app n
+      (htGenerator (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r n) = (p : (pdDeltaRings p r).obj n) := by
+  sorry -- htGenerator は基底の p の像、橋は環射
+
+/-- 概要：橋の mod p：C^•/p → D^•/p（左辺は HT の模型 `reducedModel` そのもの）。
+方針：`quotPowMap` に `crystallineBridge_generator`。
+規約：—
+使われ方：段 2・6。 -/
+abbrev crystallineBridgeModP (r : ℕ) :
+    reducedModel (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r ⟶ modPrimeCosimplicial p (pdDeltaRings p r) :=
+  quotPowMap (zpCech p r) (htGenerator _ _ r) (htGenerator_nat _ _ r)
+    (fun n => (p : (pdDeltaRings p r).obj n)) (fun θ => map_natCast ((pdDeltaRings p r).map θ).hom p)
+    (crystallineBridge p r) (crystallineBridge_generator p r) 1
+
+/-- 概要：B^•/p → C^•/p（B^n = ℤ_p{X^{(0)},…,X^{(n)}}^∧ の構造射の mod p。変数 ((j,a),i) ↦ δ^a(X_j^{(i)})）。
+方針：B^n/p = F_p[δ^a(X_j^{(i)})] は多項式環（自由 δ 環の mod p）。
+規約：係数は F_p = `cartierBase`。
+使われ方：段 2 の押し出しの ι。 -/
+def deltaCoordinatesModP (r : ℕ) :
+    polynomialCech (cartierBase.{u} p) (Fin r × ℕ) ⟶ reducedModel (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r := by
+  sorry -- 各項で X_{(j,a),i} ↦ δ^a(X_j^{(i)}) mod p。copy 添字の写像と可換
+
+/-- 概要：D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p（項ごと、余単体的に）で、C^•/p からの脚が橋の mod p。
+方針：D^n ≅ C^n ⊗̂_{B^n, φ} B^n（a1-design §2.3、§8 の 2：C^n = Z_p{X^{(0)}, Y}^∧、z = pY の φ 底変換は z ↦ φ(z)）、p 完備化は mod p で消える
+（有限生成イデアルの完備化 M^∧/p ≅ M/p）。D^n は p ねじれなしなので素朴な商で導来 mod p。
+規約：B^n/p の φ は絶対 Frobenius ＝ `relativeFrobeniusCech`（k = F_p）。
+使われ方：段 2。 -/
+theorem pdDelta_modP_frobeniusPushout (r : ℕ) :
+    ∃ e : pushout (deltaCoordinatesModP.{u} p r) (relativeFrobeniusCech p (cartierBase.{u} p) (Fin r × ℕ)) ≅
+        modPrimeCosimplicial p (pdDeltaRings p r),
+      pushout.inl _ _ ≫ e.hom = crystallineBridgeModP p r := by
+  sorry -- 紙の確認 §8 の 2。項ごとの完備テンソルの mod p と押し出しの普遍性
+
+/-- 概要：段 2：C^•/p → D^•/p は cohomology 同型（原典 Thm 5.2 の証明の mod p の部分。導来 Nakayama は不要）。
+方針：`pdDelta_modP_frobeniusPushout` と Lemma 5.4（N = C^•/p、G-A1-15）。
+規約：—
+使われ方：段 6 の `crystallineChain`。 -/
+theorem crystallineBridgeModP_isCohomologyIso (r : ℕ) : IsCohomologyIso (crystallineBridgeModP.{u} p r) := by
+  obtain ⟨e, he⟩ := pdDelta_modP_frobeniusPushout.{u} p r
+  have h := frobeniusTwist_cech_quasiIso_infinite.{u} p (cartierBase p) (by sorry) (Fin r × ℕ) _ (deltaCoordinatesModP p r)
+  sorry -- he で h と同型 e.hom（isCohomologyIso_of_isIso）を合成。F_p では p=0
+
+/-! ### 段 3：D_0^•/p → D^•/p（G-A1-16） -/
+
+abbrev pdRings (r : ℕ) := pdModel.{u} p (crystallineBase.{u} p) r ⋙ Under.forget (CommRingCat.of (crystallineBase.{u} p))
+
+/-- 概要：D_0^• → D^•（δ 座標なしの pd 脈体を、追加座標を 0 次で挿入して D^• に）。
+方針：`insertPdFactor` の後に `splitDeltaCoordinates` の逆。
+規約：余単体的 ℤ_p 代数の厳密な射。
+使われ方：段 3・6。 -/
+abbrev pdInclusion (r : ℕ) : pdModel.{u} p (crystallineBase.{u} p) r ⟶ pdDeltaModel p r :=
+  insertPdFactor p _ r ≫ (splitDeltaCoordinates p r).inv
+
+abbrev pdInclusionModP (r : ℕ) : modPrimeCosimplicial p (pdRings.{u} p r) ⟶ modPrimeCosimplicial p (pdDeltaRings p r) :=
+  modPrimeMap p (Functor.whiskerRight (pdInclusion p r) (Under.forget _))
+
+/-- 概要：段 3：D_0^•/p → D^•/p は cohomology 同型（G-A1-16 の mod p 版）。
+方針：mod p で D^n/p ≅ D_0^n/p ⊗_{F_p} Q^{⊗(n+1)}/p、E^• = Q^{⊗(•+1)} は retraction U ↦ 0 の extra degeneracy で増大付き収縮、テンソルで保たれる
+（G-A1-3）。mod p なので Rlim は要らない。
+規約：—
+使われ方：段 6 の `crystallineChain`。 -/
+theorem pdInclusionModP_isCohomologyIso (r : ℕ) : IsCohomologyIso (pdInclusionModP.{u} p r) := by
+  sorry -- G-A1-16 の mod p。追加座標の Čech 因子の extra degeneracy
+
+/-! ### 段 4：H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]}) -/
+
+/-- 概要：D_0^•(ℤ_p)/p ≅ D_0^•(F_p)（分冪代数の底変換、F_p では p 完備化は恒等）。
+方針：`DividedPowerAlgebra` と多項式環の底変換、完備化の mod p。
+規約：余単体的可換環の同型。
+使われ方：段 4・6。 -/
+def pdModel_modP (r : ℕ) :
+    modPrimeCosimplicial p (pdRings.{u} p r) ≅ pdModel p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p)) := by
+  sorry -- 項ごとに pdRaw の ℤ_p → F_p 底変換。copy 写像と可換
+
+/-- 概要：G-A1-7：pd de Rham 微分 Ω^j_pd(D_0^•) → Ω^{j+1}_pd(D_0^•)（dγ_m(z) = γ_{m−1}(z)dz、余単体的射）。
+方針：pd 代数の微分を copy の dX の基底で。余面・余退化は pd 射なので可換。
+規約：通常の Kähler 微分ではない（標数 p で余分な形式が出る、W9-I-14）。
+使われ方：双複体の縦の微分。 -/
+def pdDeRhamDifferential (k : Type u) [CommRing k] (r j : ℕ) : pdRow p k r j ⟶ pdRow p k r (j+1) := by
+  sorry -- f ⊗ ω ↦ Σ ∂_a f ⊗ (dX^(a) ∧ ω)。差の γ_m は γ_{m−1}(z)dz
+
+/-- 概要：双複体 K^{n,j} = Ω^j_pd(D_0^n)：第一の添字は余単体の次数 n（交代余面）、第二の添字は形式の次数 j（pd de Rham）。
+方針：`HomologicalComplex₂`。行 j は `pdRow p k r j` の交代余面複体、列は `pdDeRhamDifferential`。
+規約：符号は総複体の標準のもの。
+使われ方：段 4。 -/
+def pdDeRhamDoubleComplex (k : Type u) [CommRing k] (r : ℕ) :
+    HomologicalComplex₂ (ModuleCat.{u} k) (ComplexShape.up ℕ) (ComplexShape.up ℕ) := by
+  sorry -- 行の交代余面微分と列の pd 微分は可換（pdDeRhamDifferential は余単体的射）
+
+/-- 概要：列 n への Ω^•_{F_p[X]} の包含（copy 0 の座標 X^{(0)} と dX^{(0)}）。
+方針：多項式 ↦ copy 0 の多項式、dX ↦ dX^{(0)}。
+規約：どの copy を使っても余単体的に同じクラス。
+使われ方：`pdPoincare_column`。 -/
+def pdColumnInclusion (r n : ℕ) :
+    cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n := by
+  sorry -- copy 0 への代入。外積と微分を保つ
+
+/-- 概要：G-A1-7：pd Poincaré 補題：列 n（Ω^•_pd(B_0⟨z_1,…⟩_pd)、B_0 = F_p[X^{(0)}]）は Ω^•_{F_p[X]} に擬同型。
+方針：一変数の Ω^•_pd(B⟨z⟩/B) ≃ B（dγ_m(z) = γ_{m−1}(z)dz で γ_m(z) の項が消える）をテンソルで。
+規約：標数 p でも成り立つのは pd 微分を使うから。
+使われ方：段 4。 -/
+theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) := by
+  sorry -- G-A1-7。一変数の pd Poincaré の Künneth
+
+/-- 概要：段 4：H^i(D_0^•(F_p)) ≅ H^i(Ω^•_{F_p[X]/F_p})。
+方針：双複体 `pdDeRhamDoubleComplex` の総複体 T を経由する zigzag：行 0（= D_0^•）→ T は j ≥ 1 の行の収縮（`pdRow_contractible`）で擬同型、
+Ω^• → T は列の擬同型（`pdPoincare_column`）を総複体に。Bockstein との両立（段 6）のため、同じ zigzag を ℤ_p 上の厳密な写像
+Tot D_0^• → T_{ℤ_p} ← Ω^•_{ℤ_p⟨X⟩} として作り、各項 p ねじれなしの mod p として得る。
+規約：加法群の同型。積との両立は `pdDeRhamCohomologyIso_cup`。
+使われ方：段 6 の `crystallineChain`。 -/
+def pdDeRhamCohomologyIso (r i : ℕ) :
+    cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i ≃+
+      (cartierComplex p r).homology i := by
+  sorry -- 行 0 → 総複体 ← Ω^• の二つの擬同型。行 0 の項 pdRow 0 = pdTerm
+
+/-- 概要：段 4 の同型は cup 積と外積に両立する。
+方針：総複体 T に、余単体の方向は厳密な Alexander–Whitney（`cup`）、形式の方向は外積、Koszul 符号の積を入れ、行 0 → T と Ω^• → T が
+dg 環の射であることを示す（a1-design §10.3。T の積の結合律は鎖のレベルで、可換性は cohomology で）。
+規約：右辺の積は `DeRham.deRhamCohomologyWedge`。
+使われ方：段 6 の `crystallineChain_cup`。 -/
+theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
+    (a : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i)
+    (b : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) j) :
+    pdDeRhamCohomologyIso p r (i+j) (cohomologyCup _ a b) =
+      DeRham.deRhamCohomologyWedge _ _ (pdDeRhamCohomologyIso p r i a) (pdDeRhamCohomologyIso p r j b) := by
+  sorry -- 総複体の AW × 外積の積で二つの包含が dg 環の射
+
+/-! ### 段 5：n 変数の Cartier 同型 -/
 
 def cartierTerm (n i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃ₗ[cartierBase p]
     (cartierComplex.{u} p n).X i := by
   sorry -- Shared の deRhamComplex の i 次項は通常の Ω^i
+
+/-- [f^p] ∈ H^0(Ω^•_{F_p[X]})（d(f^p) = p f^{p−1}df = 0）。 -/
+def cartierZeroClass (n : ℕ) (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) : (cartierComplex p n).homology 0 := by
+  let K := cartierComplex p n
+  let x : K.X 0 := cartierTerm p n 0 (DeRham.formsZeroEquiv _ _ (f ^ p))
+  exact K.homologyπ 0 (K.cyclesMk x 1 rfl (by sorry)) -- d(f^p)=0（標数 p）
+
 def cartierOneClass (n : ℕ) (j : formVars.{u} n) : (cartierComplex p n).homology 1 := by
   let K := cartierComplex p n
   let x : K.X 1 := cartierTerm p n 1
     ((MvPolynomial.X j ^ (p-1)) • DeRham.dX (cartierBase p) (formVars n) j)
   exact K.homologyπ 1 (K.cyclesMk x 2 rfl (by sorry)) -- d(X^(p−1)dX)=0
 
-/-- n 変数の inverse Cartier。j 番目の dX は [X_j^(p−1)dX_j]。 -/
-def finitePolynomialCartier (n : ℕ) :
-    { c : ∀ i : ℕ, DeRham.forms (cartierBase p) (formVars.{u} n) i ≃+ (cartierComplex p n).homology i //
-      ∀ j : formVars n, c 1 (DeRham.dX (cartierBase p) _ j) = cartierOneClass p n j } := by
-  sorry -- k=F_p で f dX_I を [f^p ∏_{j∈I} X_j^(p−1) dX_I] へ送る。
-        -- 一変数 Cartier の mod p 指数分解を n 回テンソル（G-A5-12 の n 変数版）
+/-- 概要：n 変数の inverse Cartier C^{-1} : Ω^i_{F_p[X]} → H^i(Ω^•_{F_p[X]})（F_p[X]^{(1)} ≅ F_p[X] と同一視）。
+方針：次数 0 は f ↦ [f^p]、次数 1 は dX_j ↦ [X_j^{p−1}dX_j]、外積に乗法的。
+規約：加法群の同型（F_p[X] 上では Frobenius 半線形）。
+使われ方：段 6。 -/
+structure PolynomialCartier (n : ℕ) where
+  app (i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃+ (cartierComplex p n).homology i
+  on_zero (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) :
+    app 0 (DeRham.formsZeroEquiv _ _ f) = cartierZeroClass p n f
+  on_one (j : formVars.{u} n) : app 1 (DeRham.dX (cartierBase p) _ j) = cartierOneClass p n j
+  mul {i j : ℕ} (ω : DeRham.forms (cartierBase p) (formVars.{u} n) i) (η : DeRham.forms (cartierBase p) (formVars.{u} n) j) :
+    app (i+j) (DeRham.wedge _ _ ω η) = DeRham.deRhamCohomologyWedge _ _ (app i ω) (app j η)
 
-/-- ζ は Cartier を通じ η⁰(X)=X^p、η¹(dX)=[X^(p−1)dX] を与える。 -/
+/-- 概要：段 5：n 変数の Cartier 同型（G-A1-8）。
+方針：k = F_p で f dX_I を [f^p ∏_{j∈I} X_j^(p−1) dX_I] へ送る。一変数 Cartier の mod p 指数分解を n 回テンソル（G-A5-12 の n 変数版、Künneth）。
+規約：—
+使われ方：`hodgeTate_of_deRham_cartier`。 -/
+def finitePolynomialCartier (n : ℕ) : PolynomialCartier.{u} p n := by
+  sorry -- 一変数の直接計算（G-A5-12）と de Rham 複体の Künneth
+
+/-! ### 段 6：生成元での照合と組み立て -/
+
+/-- 概要：affineForms（F_p⟨X⟩ の完備形式）と通常の形式の同一視（p = 0 なので完備化は恒等）。
+方針：`completedFormsUnit` が同型。
+規約：—
+使われ方：`hodgeTate_of_deRham_cartier`。 -/
+def cartierFormsIso (r i : ℕ) :
+    affineForms (crystallineBasePrism.{u} p) r i ≃+ DeRham.forms (cartierBase.{u} p) (formVars.{u} r) i := by
+  sorry -- p=0 の環では p 進完備化は恒等。completedFormsUnit の逆
+
+/-- 概要：段 2〜4 の合成 Ψ^i : H^i(C^•/p) ≅ H^i(Ω^•_{F_p[X]})。
+方針：段 2 の同型、段 3 の同型の逆、`pdModel_modP`、段 4。
+規約：加法群の同型。
+使われ方：段 6。 -/
+def crystallineChain (r i : ℕ) :
+    hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i ≃+ (cartierComplex.{u} p r).homology i :=
+  ((crystallineBridgeModP_isCohomologyIso p r).addEquiv i).trans
+    ((((pdInclusionModP_isCohomologyIso p r).addEquiv i).symm.trans
+      ((isCohomologyIso_of_isIso (pdModel_modP p r).hom).addEquiv i)).trans
+      (pdDeRhamCohomologyIso p r i))
+
+/-- 概要：Ψ は cup 積を外積に送る。
+方針：段 2・3 と `pdModel_modP` は余単体的可換環の射なので `cohomologyMap_cup`、段 4 は `pdDeRhamCohomologyIso_cup`。
+規約：—
+使われ方：`hodgeTate_of_deRham_cartier`。 -/
+theorem crystallineChain_cup (r : ℕ) {i j : ℕ}
+    (a : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i)
+    (b : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r j) :
+    crystallineChain p r (i+j) (cohomologyCup _ a b) =
+      DeRham.deRhamCohomologyWedge _ _ (crystallineChain p r i a) (crystallineChain p r j b) := by
+  sorry -- cohomologyMap_cup を三回（逆写像も環の射）、pdDeRhamCohomologyIso_cup
+
+/-- 概要：段 6：生成元での照合：Ψ^0(η^0 X_j) = C^{-1}(X_j) = [X_j^p]、Ψ^1(η^1 dX_j) = C^{-1}(dX_j) = [X_j^{p−1}dX_j]。
+方針：次数 0：橋は X ↦ φ(X) ≡ X^p mod p、`pdInclusion` は X ↦ X、段 4 の次数 0 は copy 0 の包含。次数 1：η^1(dX_j) = β(η^0 X_j) で、
+橋と `pdInclusion` は整係数の厳密な余単体的射なので Bockstein と可換（`bockstein_natural`）。段 4 の zigzag も整係数の厳密な写像の mod p なので
+β_{D_0}[X^p] は de Rham 側の Bockstein [d(X^p)/p] = [X^{p−1}dX] に写る。
+規約：**TODO（a1-design §8 の 3、紙の確認は未）**：Bockstein の符号（Mathlib の連結準同型の規約）と cup 積の規約を固定して、
+β_{D_0}[X^p] = [Σ_{0<m<p} (binom(p,m)/p) X^{p−m} z^m + (p−1)! γ_p(z)] の段 4 での像が [X^{p−1}dX] であることを確かめる。
+使われ方：`hodgeTate_of_deRham_cartier`。 -/
+theorem crystallineChain_generators (r : ℕ) (j : Fin r) :
+    let Z := crystallineBasePrism.{u} p
+    let hZ := crystallineBaseBounded.{u} p
+    let c := finitePolynomialCartier.{u} p r
+    crystallineChain p r 0 (hodgeTateMapZero Z hZ r (prismPolynomialUnit Z (Fin r) (MvPolynomial.X j))) =
+        c.app 0 (DeRham.formsZeroEquiv _ _ (MvPolynomial.X (ULift.up j))) ∧
+      crystallineChain p r 1 (hodgeTateMapOne Z hZ r
+        (DeRham.completedFormsUnit _ _ p 1 (DeRham.dX _ _ (ULift.up j)))) = c.app 1 (DeRham.dX _ _ (ULift.up j)) := by
+  sorry -- 次数 0 は橋の φ と copy 0。次数 1 は bockstein_natural（橋・pdInclusion）と段 4 の整係数 zigzag。TODO §8 の 3
+
+/-- 概要：Cor 5.5 の (Z_p,(p))・F_p[X_1,…,X_n] の場合の本体：η^i は全単射（D68 改訂後、恒久の引用なし）。
+方針：Φ^i := (c.app i) ∘ `cartierFormsIso` と Ψ^i ∘ η^i が全次数で一致することを示す：両方とも加法的で、外積を cup／外積に送り
+（`HTAlgebraMap.product`・`crystallineChain_cup`・`PolynomialCartier.mul`）、次数 0 では環の射として X_j で一致（F_p[X] からの環の射）、
+次数 1 では dX_j で一致（`crystallineChain_generators`）。Ω^i は f·dX_{j_1}∧⋯∧dX_{j_i} で生成されるので一致。Φ^i・Ψ^i は同型なので η^i は全単射。
+規約：名前は D68 改訂前と同じ（「de Rham 比較と Cartier から」の意味は保つ）。
+使われ方：A1/HodgeTateComparison の `hodgeTate_iso_polynomial_Zp`。 -/
 theorem hodgeTate_of_deRham_cartier (n : ℕ) :
     HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) n := by
   have c := finitePolynomialCartier.{u} p n
-  obtain ⟨e⟩ := crystalline_deRham_polynomial_Zp.{u} p
-  sorry -- e を mod p とし η⁰(X_j) を [X_j^p]、その Bockstein を c の次数 1 のクラスに送る。
-        -- 有限 n 変数の外積と Bockstein の式で、この同型が η^i であることを基底で判定
+  have hcup := crystallineChain_cup.{u} p n
+  have hgen := crystallineChain_generators.{u} p n
+  sorry -- Ψ ∘ η^i = c.app i ∘ cartierFormsIso を外積の生成元で示し、η^i = Ψ⁻¹ ∘ c.app i ∘ cartierFormsIso
 
 end SerrePositivity.BhattScholze.Prismatic

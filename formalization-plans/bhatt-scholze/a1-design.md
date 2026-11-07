@@ -36,10 +36,10 @@
 | Thm 4.11 ＝ Thm 6.3 | 定理。多項式代数、基底は §0 の範囲 | `hodgeTate_iso` | Prop 6.2 | A1-4 |
 | Cor 4.12 | 定理。同じ範囲 | `prismaticCohomology_baseChange'` | Thm 6.3、導来 Nakayama | A1-4 |
 | Not 5.1 | 定義そのまま（結晶 prism と pd イデアル I ∋ p、R^{(1)}） | `crystallinePrism`、`frobeniusTwist` | `OrientedPrism.crystalline` あり | A1-2 |
-| Thm 5.2 | 定理。**特別な場合**：A = Z_p、I = (p)、R = F_p[X_1,…,X_r]。結晶コホモロジーの扱いは D25（決定待ち） | `crystallineComparison_polynomial` | pd 包の Čech 脈体、Lemma 5.4、導来 Nakayama | A1-3 |
+| Thm 5.2 | 定理。**特別な場合**：A = Z_p、I = (p)、R = F_p[X_1,…,X_r]。結晶コホモロジーの扱いは D25。**11-07：使う形は mod p の cohomology 同型だけ（§10）** | `crystallineBridgeModP_isCohomologyIso`（§10 の段 2） | pd 包の Čech 脈体、Lemma 5.4（mod p なので導来 Nakayama は不要） | A1-3 |
 | Rem 5.3 | 不要 | — | — | — |
-| Lemma 5.4 | 定理。有限変数 | `frobeniusTwist_cech_quasiIso` | 余単体的ホモトピーの一般論（§4） | A1-3 |
-| Cor 5.5 | 定理。多項式代数、結晶 prism | `hodgeTate_iso_crystalline` | Thm 5.2、Cartier 同型、Lemma 4.20 | A1-3 |
+| Lemma 5.4 | 定理。有限変数、N は余単体的可換環（§10 の段 1）。無限変数は G-A1-15 | `frobeniusTwist_cech_quasiIso`、`frobeniusTwist_cech_quasiIso_infinite` | 余単体的ホモトピーの一般論（§4） | A1-3 |
+| Cor 5.5 | 定理。多項式代数、結晶 prism。(Z_p,(p)) の場合は `hodgeTate_iso_polynomial_Zp` ＝ `hodgeTate_of_deRham_cartier`（§10） | `hodgeTate_iso_crystalline` | Thm 5.2、Cartier 同型、Lemma 4.20 | A1-3 |
 | Constr 6.1 | 定義そのまま（B = A{φ(d)/p}^∧、α、性質 (1)(2)(3)） | `crystallineCover`、`crystallineCoverMap` | Cor 2.39 の r = 1（済）、Lemma 2.24（済）、導来 Nakayama、Tor 振幅 | A1-4 |
 | Prop 6.2 | 定理。一般の r、基底は §0 の範囲 | `hodgeTate_iso_of_crystallineCover` | Constr 6.1、Cor 5.5、Lemma 4.20 | A1-4 |
 | Thm 6.4 | 不要 | — | — | — |
@@ -47,8 +47,8 @@
 | Lemma 2.38・Cor 2.39 | 変数の場合は Lemma 2.36 多変数と自由 δ 環の平坦底変換で済む | — | — | A1-2 |
 | Ex 2.21・Ex 3.4 | 定義そのまま（普遍 distinguished δ 環 Z_(p){d, δ(d)^{-1}} と、その (p,d) 完備化 A_0。有界 prism、(p,d) 正則、A_0/p の Frobenius が d 完全平坦、向き付き prism への普遍性） | `universalOrientedPrism` | 未（T2-4）。自由 δ 環・δ 環の局所化（`DeltaLocalization`）・完備化の δ 構造は済。Frobenius の mod p 自由性は `FreeDeltaFrobeniusFlat` | A1-4 |
 | de Rham 複体 | 定義（p 完備多項式代数について、dX 上の自由加群と d。D26） | `deRhamComplex` | Mathlib に de Rham 複体はない（Kähler 微分・外冪はある） | A1-1 |
-| Cartier 同型 | 定理。F_p 上の多項式代数 | `cartierIso` | なし。直接計算 | A1-3 |
-| pd 包の Čech 脈体と de Rham 複体の比較 | 定理。Z_p⟨X⟩ について（D25 の β 形） | `pdCechNerve_deRham` | なし。古典（Berthelot、Bhatt–de Jong） | A1-3 |
+| Cartier 同型 | 定理。F_p 上の多項式代数（乗法的、§10 の段 5） | `finitePolynomialCartier`（`PolynomialCartier`） | なし。直接計算 | A1-3 |
+| pd 包の Čech 脈体と de Rham 複体の比較 | 定理。D68 改訂後の経路では F_p[X] の mod p だけ（§10 の段 4）。Z_p⟨X⟩ の整係数版は A1-5（G-A1-17） | `pdDeRhamCohomologyIso`、`pdDeRhamCohomologyIso_cup` | なし。古典（Berthelot、Bhatt–de Jong） | A1-3 |
 
 ## 2. 定義の形
 
@@ -220,7 +220,8 @@ A5 の Lemma 8.6 が使う標数 p の de Rham 比較は (2) の W(k) への平�
    「Z_p{x, φ(x)/p} の生の pushout が p ねじれなし」（Lemma 2.11 の Frobenius の忠実平坦性、`FreeDeltaFrobeniusFlat`）。
 2. §2.3：η : C^n → D^n が余単体的射で、D^n ≅ C^n ⊗_{B^n, φ} B^n（自由 δ 環の模型 C^n = Z_p{X^{(0)}, Y}^∧、z = pY の φ 底変換）。
 3. §3 の 3：η^* と Cartier の一致（η^1(dX_j) = β(η^0(X_j)) が、Thm 5.2 と de Rham 比較を通して [X_j^{p−1}dX_j] に写ること）。Bockstein の
-   符号と cup 積の規約を固定する。
+   符号と cup 積の規約を固定する。**未（11-07）**：§10 の段 6 `crystallineChain_generators` の TODO。Bockstein の両立そのものは比較写像が整係数の厳密な
+   写像なので自動（`bockstein_natural`、段 4 は整係数の zigzag の mod p）。残るのは β_{D_0}[X^p] の段 4 での像が [X^{p−1}dX] であることの符号つきの計算。
 4. §3 の 6：pd Čech 脈体と de Rham 複体の比較の、行の非輪状性（Tot_n Ω^j_{D_0^•} = 0、j ≥ 1）の証明の形（Bhatt–de Jong 2011 Lemma 2.15–2.17 の
    Ω^1 の収縮を有限変数・mod p で、外冪へ延ばす）。j = 0 の行は収縮しない（W9-I-13）。
 8. §3 の 6 (ii)：D^n ≅ (D_0^n ⊗ Q^{⊗(n+1)})^∧_p の表示と余面・余退化の両立、E^• の extra degeneracy、G-A1-3 のテンソルでの保存（W9-I-18 の代案）。
@@ -257,7 +258,8 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
    RΓ_crys の記号は原典との照合のためで、D25 β では J つき pd Čech 模型とその de Rham 計算（G-A1-17）で埋める。
 3. 結晶 prism (W(A_0/d_0),(p)) と多項式：Thm 5.2 β の使う形（Δ ≃ Tot D^•、D^• の Tot ≃ 持ち上げの de Rham 複体＝§3 の 6）を、Lemma 4.20
    （(p)-prism の Δ は任意の p 完備底変換と可換、A0-4）で Z_p に帰着。
-4. Z_p と F_p[X]：**結晶の黒箱**（A1-3）を de Rham の形で：φ^*Δ_{F_p[X]/Z_p} ≃ Ω^*_{Z_p⟨X⟩/Z_p}（Thm 5.2 β の使う形、可換代数として、多項式代数の
+4. （**11-07 注：D68 改訂で以下の黒箱は削除。HT は §10 の六段で直接、A1-5 の Thm 5.2 β は `wittPdBridge` の中で Lemma 5.4 と導来 Nakayama から**）
+   Z_p と F_p[X]：~~結晶の黒箱~~（A1-3）を de Rham の形で：φ^*Δ_{F_p[X]/Z_p} ≃ Ω^*_{Z_p⟨X⟩/Z_p}（Thm 5.2 β の使う形、可換代数として、多項式代数の
    射について自然、乗法的、Bockstein と両立——W9 の仕様）。mod p で Ω^*_{F_p[X]/F_p}。HT 比較（Cor 5.5、A1-3 の `hodgeTate_iso_polynomial_Zp`）は
    同じ黒箱と Cartier 同型（一変数は G-A5-12、n 変数は Künneth）から。**結晶の黒箱は一つのまま**（D68）。
    注（W9-I-19 で確定）：2 の pd イデアル J つきの比較は Z_p の黒箱と Lemma 4.20 だけでは出ない（Lemma 4.20 は Δ の基底の底変換で、結晶側の J の
@@ -267,10 +269,10 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
 
 | 項目 | Lean の形 | 既存・不足 |
 | --- | --- | --- |
-| 黒箱（de Rham 形） | `crystalline_deRham_polynomial_Zp : φ^*Δ_{F_p[X_1..X_n]/Z_p} ≃ Ω^*（CAlg(D(Z_p))）` | A1-3（A1-2 の対象の上） |
-| Cor 5.5（HT）を黒箱から | `hodgeTate_iso_polynomial_Zp` の証明：黒箱 mod p と Cartier | G-A5-12 の n 変数版 |
+| ~~黒箱（de Rham 形）~~ | **11-05 夜の D68 改訂で削除**（`crystalline_deRham_polynomial_Zp`・`CrystallineComparison`）。§10 | — |
+| Cor 5.5（HT） | `hodgeTate_iso_polynomial_Zp` の証明：§10 の六段（mod p の直接証明） | G-A5-12 の n 変数版 |
 | Lemma 4.20 | (p)-prism の Δ の底変換 | A0-4（D、2b 後） |
-| 結晶 prism の多項式 | `deRham_iso_polynomial_crystalline` | 3 |
+| ~~結晶 prism の多項式~~ | `deRham_iso_polynomial_crystalline`：**11-07 削除**（どこからも参照されていない、黒箱にだけ依存） | — |
 | A_0 上の比較同型 | `deRham_iso_polynomial_universal`（原典 Thm 6.4 の証明：ψ : A_0 → W(A_0/d_0)、底変換 (4)、Thm 5.2 β、持ち上げの de Rham） | W(A_0/d_0) の p ねじれなし（Ex 3.4）、A1-3 |
 | 完全 prism | `deRham_iso_polynomial_modP`（A1-5 の主張） | 1 |
 | T_∞ | `deRham_iso_rootAlgebra_modP`：φ^*Δ_{T_∞} ⊗ A/(p,d) ≃ T_∞/p | A5-4 の filtered 余極限、Ω の遷移の消滅 |
@@ -280,7 +282,7 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
 
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
-| D68 | 結晶の入力は Thm 5.2（結晶 site）と Cor 5.5 | 黒箱を Thm 5.2 β の de Rham 形一つにし、HT（Cor 5.5）と de Rham mod p の両方をそこから出す | 黒箱は増えない（A5 の決定 3 の「結晶の範囲は増えない」を満たす） |
+| D68 | 結晶の入力は Thm 5.2（結晶 site）と Cor 5.5 | ~~黒箱を Thm 5.2 β の de Rham 形一つにし、HT（Cor 5.5）と de Rham mod p の両方をそこから出す~~ **改訂（11-05 夜、ユーザー）**：黒箱を外し、使う側が要る対象ごとの `HodgeTateIsoStatement` を mod p で直接証明（§10）。A1-5 の Thm 5.2 β は W 上で Lemma 5.4 と導来 Nakayama から | 恒久の引用なし（段階 II は sorry 0） |
 | D69 | Thm 6.4 の証明は ψ : A → W(A/I) と pd イデアル、仮定「W(A/I) p ねじれなし」 | 原典の証明を**普遍向き付き prism A_0 上だけ**で行い（A_0/d_0 は p ねじれなしなので仮定が成り立つ）、完全 prism へは底変換 (4) で移す（W9-I-15 で訂正：以前の「保存性で帰着」は比較射を欠いていた） | 原典の証明そのもの。perfectoid R について W(R) の p ねじれを確かめる必要はない |
 
 ### 9.4 決定事項（相談）
@@ -302,3 +304,68 @@ J つきの比較は黒箱に入れず A1-3 の独立補題 G-A1-17 に。2（D6
 5. 9.1 の 2・3：pd イデアル J つきの Thm 5.2 が Z_p の黒箱と Lemma 4.20 から出るか（出なければ黒箱の仕様に含める）。
 3. T_∞ の段：colim_m Ω^*_{T_m/p} = T_∞/p（Ω^{≥1} の遷移が零）、Δ の完備化した filtered 余極限との整合。
 4. Cartier の n 変数版（Künneth）で Cor 5.5 を黒箱から出せること。
+
+## 10. D68 改訂後の経路：(Z_p,(p))・F_p[X_1,…,X_r] の HT 比較を mod p で直接（2026-11-07）
+
+概要：11-05 夜のユーザー決定（段階 II は sorry 0、D68 改訂）に従い、結晶の黒箱 `crystalline_deRham_polynomial_Zp`（関手 ∞ 圏の同型
+`FunctorIso zpDelta zpForms`、仕様 4 欄の構造体 `CrystallineComparison`）を drafts から外した。使う側が要るのは対象ごとの命題
+`HodgeTateIsoStatement`（Čech–Alexander 模型 Tot(C^•/p) の H^i で η^i が全単射）だけなので、これを mod p で直接示す。∞ 圏の部品は使わない。
+調査は citations-survey-2026-11-05.md §1。
+方針：比較はすべて余単体的可換環の厳密な射（または整係数の厳密な写像の mod p）で与える。cup 積は `cohomologyMap_cup` で、Bockstein は
+`bockstein_natural` で自動的に移る。mod p なので導来 Nakayama（G-A1-4）は使わない。
+規約：骨組みは drafts/A1/CrystallineInput.lean の後半。「cohomology 同型」は Shared の `Cosimplicial.IsCohomologyIso`（全次数で `cohomologyMap` が全単射）。
+使われ方：`hodgeTate_iso_polynomial_Zp`（A1/HodgeTateComparison）＝ `hodgeTate_of_deRham_cartier`。
+
+### 10.1 六段と宣言の対応
+
+記号：k = ℤ_p（`crystallineBase`）、F_p（`cartierBase`）、C^• = `zpCech`（= `htRings`、Rem 4.19 の小さい模型）、C^•/p = `reducedModel`、
+D^• = `pdDeltaRings`（`pdDeltaModel`、B^•{φ(z)/p}^∧）、D_0^• = `pdRings`（`pdModel`、δ 座標なし）、B^•/p = F_p[δ^a(X_j^{(i)})]。
+
+| 段 | 内容 | 宣言（drafts/A1/CrystallineInput） | 一般論・紙 |
+| --- | --- | --- | --- |
+| 0 | mod p と cohomology 同型の道具 | `modPrimeCosimplicial`、`modPrimeMap`；Shared の `IsCohomologyIso`・`IsCohomologyIso.addEquiv`・`isCohomologyIso_of_isIso` | — |
+| 1 | Lemma 5.4：標数 p の k、B = k[X_σ] の Čech 脈体 B^•（`polynomialCech`）と相対 Frobenius（`relativeFrobeniusCech`、X ↦ X^p）、余単体的可換環 N^• と ι : B^{•,(1)} → N^• について N^• → N^• ⊔_{B^{•,(1)}} B^•（項ごとの押し出し＝テンソル）は cohomology 同型 | `frobeniusTwist_cech_quasiIso`（σ 有限）、`frobeniusTwist_cech_quasiIso_infinite`（G-A1-15、filtered 余極限） | G-A1-3 |
+| 2 | 橋 η : C^• → D^•（b ↦ φ(b)、z/p ↦ φ(z)/p）の mod p が cohomology 同型。D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p（D^n ≅ C^n ⊗̂_{B^n,φ} B^n、p ねじれなし、完備化は mod p で消える）と段 1（N = C^•/p、σ = Fin r × ℕ） | `crystallineBridge`、`crystallineBridge_generator`、`crystallineBridgeModP`、`deltaCoordinatesModP`、`pdDelta_modP_frobeniusPushout`、`crystallineBridgeModP_isCohomologyIso` | §8 の 1・2 |
+| 3 | D_0^•/p → D^•/p が cohomology 同型（追加の δ 座標の Čech 因子 E^• の extra degeneracy、mod p なので Rlim 不要） | `pdInclusion`（= `insertPdFactor` ≫ `splitDeltaCoordinates`⁻¹）、`pdInclusionModP`、`pdInclusionModP_isCohomologyIso` | G-A1-16、§8 の 8 |
+| 4 | H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})：D_0^•(ℤ_p)/p ≅ D_0^•(F_p)、双複体 K^{n,j} = Ω^j_pd(D_0^n)、列は pd Poincaré、j ≥ 1 の行は収縮、cup 積と外積が両立 | `pdModel_modP`、`pdDeRhamDifferential`（G-A1-7）、`pdDeRhamDoubleComplex`、`pdColumnInclusion`、`pdPoincare_column`（G-A1-7）、`pdRow_contractible`（G-A1-14、基底 k を一般に）、`pdDeRhamCohomologyIso`、`pdDeRhamCohomologyIso_cup` | G-A1-7・14、§8 の 4、§10.3 |
+| 5 | n 変数の Cartier 同型（次数 0 は f ↦ [f^p]、次数 1 は dX ↦ [X^{p−1}dX]、乗法的） | `PolynomialCartier`、`cartierZeroClass`、`cartierOneClass`、`finitePolynomialCartier`；Shared の `DeRham.formsZeroEquiv`・`DeRham.deRhamCohomologyWedge` | G-A1-8、G-A5-12 の n 変数版 |
+| 6 | 生成元での照合 Ψ^0(η^0 X_j) = C^{-1}(X_j)、Ψ^1(η^1 dX_j) = C^{-1}(dX_j)（Ψ は段 2〜4 の合成）と組み立て | `cartierFormsIso`、`crystallineChain`、`crystallineChain_cup`、`crystallineChain_generators`、`hodgeTate_of_deRham_cartier` | §8 の 3（**TODO：未**） |
+
+組み立て（`hodgeTate_of_deRham_cartier`）：Φ^i := C^{-1} ∘ `cartierFormsIso` と Ψ^i ∘ η^i は加法的で外積を cup／外積に送り、次数 0（環の射、X_j で一致）と
+次数 1（dX_j で一致）で一致するので全次数で一致。Φ^i・Ψ^i は同型なので η^i は全単射。
+
+### 10.2 削除・変更した宣言
+
+- 削除（CrystallineInput）：`crystalline_deRham_polynomial_Zp`、`CrystallineComparison`、`zpDelta`、`zpForms`、`liftedDelta`、`hModP`、`reductionBeta`、
+  `isPrimeCompleteCAlg`、`rootTransition`。削除（DeRhamComparisonPoly）：`deRham_iso_polynomial_crystalline`（参照なし、黒箱にだけ依存）。
+- 変更：`finitePolynomialCartier` の型を部分型（次数 1 の条件だけ）から構造体 `PolynomialCartier`（次数 0・1 と乗法性）に。`pdRow_contractible` の基底を
+  ℤ_p から一般の k に（段 4 は F_p で使う）。`hodgeTate_of_deRham_cartier` は名前を保ち、黒箱ではなく段 1〜6 から。
+- 残したもの：`formsCAlg` 系・`pdPolynomialComparison`（G-A1-17）・`extraCech_comparison`（整係数）・`polyPoint`・`changePolyNerve` は A1-5（D69）用。
+  A1-5 の `wittPdBridge`（W = W(A_0/d_0) 上の Thm 5.2 β）は整係数で要る（C = A_0/d_0 は p ねじれなし）ので、段 1 の無限変数版（k = W/p）と
+  導来 Nakayama（G-A1-4）をそこで使う。
+
+### 10.3 段 4 の積（厳密な Alexander–Whitney）
+
+段 4 の zigzag 行 0 → Tot K ← Ω^• を cup 積と両立させるには、総複体 Tot K に積を入れる：(x ⊗ ω) · (y ⊗ η) := ±(x ∪ y) ⊗ (ω ∧ η)。余単体の方向は
+厳密な Alexander–Whitney（Shared の `cup`：前面・後面の引き戻しの積、鎖のレベルで結合的）、形式の方向は外積、符号は Koszul。Leibniz 則は
+`cochainDifferential_cup` と pd 微分の Leibniz から。行 0 の包含と Ω^•（定数の余単体的対象を copy 0 に）の包含はどちらもこの積を保つ（鎖のレベル）。
+可換性は cohomology でだけ要る（`cohomologyCup_comm`）。Bockstein の両立のため、同じ積と zigzag を ℤ_p 上の厳密な写像として作り mod p を取る。
+
+### 10.4 D69 の貼り合わせ（`deRham_iso_polynomial_universal`）の高次の整合性
+
+調べた結果：**今回の D68 改訂ではこの貼り合わせは不要にならない**（D69 側は黒箱を使っていなかった）。現在の型
+`{ e : FunctorIso universalTwist (formsCAlg p residueU) // ∀ n, e.app (polyPoint _ n) = wittComposite p n }` は Fun(N(Poly(C)), CAlg_C) の
+ホモトピー圏の同型で、成分の同型（`wittComposite`）と G-A1-17 の自然性（`natural`・`changeLift`、ホモトピー圏の等式＝ 1 単体まで）からは作れない。
+自然変換は N(Poly(C)) × Δ¹ → CAlg_C の写像で、2 単体以上の整合性が要る。しかも J つき pd 模型は持ち上げ W[X] → W[Y] の選択に依存し
+（C → W(C) に環の切断はない）、Poly(C) 上の厳密な関手になっていない。
+要る ∞ 側の部品（貼り合わせを残す場合）：
+1. 選択なしで厳密に関手的な模型：Poly(C) の各対象 Q に、Q の台集合を変数とする W 上の多項式環の Čech 脈体の J つき pd 包（A0 の大きい模型
+   Constr 4.18 と同じ考え方）。比較写像は Q について厳密に自然な zigzag（Tot D_big(Q)^• → Tot Ω^•_pd(D_big(Q)^•) → Ω^•_{(Q/p)/(C/p)} など）。
+2. `Cosimplicial.totEInfinityFunctor`（Shared、sorry）と、CommMon(Complex) 値の関手の厳密な自然変換から関手単体集合の辺を作る部品
+   （脈体 N(𝒞 × [1]) ≅ N𝒞 × Δ¹ と `algebraCAlgSource` の後合成）。未作成。
+3. 成分ごとに可逆な辺は可逆：本体 `functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise`（InfinityCategories/Core/FunctorEdgePointwise）。既存。
+代案（要相談、未実施）：使う側は `transferWittComparison` → `deRham_iso_polynomial_modP` → `deRham_iso_rootAlgebra_modP`（→ A5 `rootMap_modP_eq_deRham`）で、
+どれも `.app (polyPoint _ n)` の成分と根の遷移 X ↦ X^p の可換な四角形しか使わない。型を「各 n の `VertexIso` ＋ X ↦ X^p についてのホモトピー圏の自然性」に
+弱めれば 1〜2 は要らない（filtered 余極限 T_∞ = colim T_m の比較には N(ℕ) 上の自然変換が要るが、N(ℕ) の背骨の包含は内側 anodyne なので
+成分と四角形から作れる）。A1-5 の主張 `deRham_iso_polynomial_modP` の型が変わる（原典 Thm 6.4 の「自然な同型」の特別な場合）。
+drafts では型を変えず、`deRham_iso_polynomial_universal`・`pdPolynomialComparison` に TODO の docstring を付けた。

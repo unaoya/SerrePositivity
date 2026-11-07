@@ -74,7 +74,7 @@ theorem one_cup {n : ℕ} (y : X.obj ⦋n⦌) : cast (by simp) (cup X (1 : X.obj
   sorry
 
 /-- 概要：交代余面複体の微分 d_n : X^n → X^{n+1}（Σ (−1)^i δ^i）。
-方針：Mathlib の `CosimplicialObject.alternatingCofaceMapComplex` の微分（加群として読む）。
+方針：Mathlib の `AlgebraicTopology.alternatingCofaceMapComplex` の微分（加群として読む）。
 規約：ModuleCat ℤ、または係数環 k の上。
 使われ方：Leibniz 則の主張。
 要確認：CommRingCat の余単体的対象を加群の余単体的対象へ送る忘却関手の名前。 -/
@@ -131,5 +131,24 @@ def cohomologyMap (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) (n : �
 theorem cohomologyMap_cup (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) {m n : ℕ} (a : cohomology X m) (b : cohomology X n) :
     cohomologyMap X Y f (m + n) (cohomologyCup X a b) = cohomologyCup Y (cohomologyMap X Y f m a) (cohomologyMap X Y f n b) := by
   sorry -- 面写像と環射の可換性（(B) の決定：環の射で cup を保つ）
+
+/-- 概要：余単体的可換環の射が cohomology 同型であること（全次数で `cohomologyMap` が全単射。交代余面複体の擬同型と同じ）。
+方針：述語。
+規約：11-07 追加（D68 改訂後の A1 の段 1〜3）。
+使われ方：A1/CrystallineInput の Lemma 5.4・段 2・段 3。 -/
+def IsCohomologyIso {X Y : CosimplicialObject CommRingCat.{u}} (f : X ⟶ Y) : Prop :=
+  ∀ n, Function.Bijective (cohomologyMap X Y f n)
+
+/-- cohomology 同型から各次数の加法群の同型。 -/
+def IsCohomologyIso.addEquiv {X Y : CosimplicialObject CommRingCat.{u}} {f : X ⟶ Y} (h : IsCohomologyIso f) (n : ℕ) :
+    cohomology X n ≃+ cohomology Y n :=
+  AddEquiv.ofBijective (cohomologyMap X Y f n) (h n)
+
+/-- 概要：余単体的可換環の同型は cohomology 同型。
+方針：`cohomologyMap` の関手性（恒等・合成）。
+規約：—
+使われ方：A1/CrystallineInput の `crystallineChain`（`pdModel_modP`）。 -/
+theorem isCohomologyIso_of_isIso {X Y : CosimplicialObject CommRingCat.{u}} (f : X ⟶ Y) [IsIso f] : IsCohomologyIso f := by
+  sorry -- cohomologyMap は恒等と合成を保つので inv f の像が逆
 
 end SerrePositivity.Cosimplicial

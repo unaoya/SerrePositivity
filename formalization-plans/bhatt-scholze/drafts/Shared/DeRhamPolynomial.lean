@@ -89,6 +89,20 @@ theorem deRhamD_wedge {i j : ℕ} (ω : forms k T i) (η : forms k T j) :
 def deRhamComplex (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] : CochainComplex (ModuleCat.{u} k) ℕ :=
   sorry -- CochainComplex.of (fun i => ModuleCat.of k (forms k T i)) (deRhamD k T) (deRhamD_comp k T)。11-03（D4-05）：k・T を明示引数に
 
+/-- 概要：Ω^0_{P/k} = P。
+方針：Λ^0 = k の基底 1。
+規約：k 線形同型。11-07 追加（A1 の Cartier の次数 0）。
+使われ方：A1/CrystallineInput の `cartierZeroClass`・`PolynomialCartier.on_zero`。 -/
+def formsZeroEquiv : Poly k T ≃ₗ[k] forms k T 0 := sorry -- P ⊗_k Λ^0(k^T) ≅ P
+
+/-- 概要：de Rham cohomology の積 H^i × H^j → H^{i+j}（外積から）。
+方針：`deRhamD_wedge` により外積は余輪体 × 余輪体を余輪体へ、余境界 × 余輪体を余境界へ送る。
+規約：11-07 追加。
+使われ方：A1/CrystallineInput の Cartier 同型の乗法性、段 4・6。 -/
+def deRhamCohomologyWedge {i j : ℕ} :
+    (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i + j) :=
+  sorry -- 外積を余輪体の代表で取り、deRhamD_wedge で well-defined
+
 /-! ## 普遍性（Constr 4.9 の「universal property of the de Rham complex」） -/
 
 /-- 概要：次数付き可換 dg k 代数（次数ごとの k 加群、結合的な積、次数付き可換性、微分と Leibniz）。H^*(Ō) の模型の型。

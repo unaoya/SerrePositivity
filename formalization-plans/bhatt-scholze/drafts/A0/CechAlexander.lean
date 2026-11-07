@@ -5,7 +5,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
--- 本ファイルは drafts/A0/PrismaticSite.lean・PrismaticEnvelope.lean と drafts/Sheaves/CechConerveLimit.lean を import する。
+-- 本ファイルは drafts/A0/PrismaticSite.lean・PrismaticEnvelope.lean・FlatDescent.lean と drafts/Sheaves/CechConerveLimit.lean を import する。
 
 /-!
 # Čech–Alexander 複体（BS 著者版 Construction 4.17・4.18、Remark 4.19）
@@ -224,7 +224,7 @@ theorem cechAlexander_isLimitCone_iff (c : JoinCone (structurePresheafDerived P 
     (cechNerveData P R h κ hκ) (structurePresheafDerived P R κ) c
 
 /-- 概要：Δ_{R/A} は Tot O_Δ(C^•) に等しい（Constr 4.18 の主張）。
-方針：Cor 3.12(d)（O_Δ は層）で RΓ = Γ(O_Δ)、`derivedGlobalSections_of_isSheaf`、`cechAlexander_isLimitCone_iff`、`exists_limitCone_of_cech`。
+方針：Cor 3.12(d)(e)（O_Δ は層、FlatDescent の `prismaticCohomology_isLimit`）で RΓ = Γ(O_Δ)、`derivedGlobalSections_of_isSheaf`、`cechAlexander_isLimitCone_iff`、`exists_limitCone_of_cech`。
 規約：等しさは「同じ頂点をもつ極限錐の存在」（E3 の規約）。
 使われ方：A1 の計算を Tot で行う根拠。 -/
 theorem prismaticCohomology_eq_cechAlexanderTot (hP : IsBoundedPrism P)
@@ -237,7 +237,7 @@ theorem prismaticCohomology_eq_cechAlexanderTot (hP : IsBoundedPrism P)
     ∃ e : SSet.Edge (prismaticCohomology P R κ hJ hE) t.vertex, IsInvertibleEdge e.toTruncated := by
   refine ⟨exists_limitCone_of_cech (cechSmall_weaklyTerminal P R h κ hκ)
     (cechNerveData P R h κ hκ) (structurePresheafDerived P R κ) t ht, ?_⟩
-  sorry -- Cor 3.12(d) と derivedGlobalSections_of_isSheaf の錐を上の極限錐と比較する
+  sorry -- prismaticCohomology_isLimit（Cor 3.12(d)(e)）の錐を上の極限錐と比較する
 
 /-- 大きい site の O を制限して RΓ を比較する。HasEnvelopes の各項は両 cutoff に入る。 -/
 theorem prismaticCohomology_cutoff_invariant (hP : IsBoundedPrism P)
@@ -256,7 +256,7 @@ theorem prismaticCohomology_cutoff_invariant (hP : IsBoundedPrism P)
         -- 両側の prismaticCohomology_eq_cechAlexanderTot で同じ Tot と比較する
 
 /-- 概要：Tot を余鎖複体で表す：余単体的 A 加群 [n] ↦ C^n の交代余面複体（非正規化、Mathlib）。
-方針：`CosimplicialObject.alternatingCofaceMapComplex`。
+方針：`AlgebraicTopology.alternatingCofaceMapComplex`。
 規約：次数 n に C^n。D(A) の Δ 上の極限との一致は G10（別ファイル）。
 使われ方：A1 の計算（Thm 5.2、Lemma 5.4、Prop 6.2）。 -/
 def cechAlexanderComplex : CochainComplex (ModuleCat.{u} A) ℕ :=

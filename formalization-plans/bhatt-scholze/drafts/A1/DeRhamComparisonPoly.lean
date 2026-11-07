@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 -- 本ファイルは drafts/A1/{CrystallineInput,HodgeTateComparison,HodgeTateMap}.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A2/BaseChangeAndTensor.lean、
 -- drafts/A3/LciAndQuasiregular.lean（D4-02 の特殊化だけ）、drafts/A5/RootAdjunction.lean（`polyRootAlgebra`。W9-III-09：WeaklyInitialAndDescent ではなく先行ファイル）を import する。
--- 結晶の黒箱 `crystalline_deRham_polynomial_Zp` と Cartier は drafts/A1/CrystallineInput.lean に切り出した（W9-III-09：HodgeTateComparison がそれを使うため）。
+-- J つき pd 模型（`pdModel`・`pdPolynomialComparison`）と `formsCAlg` は drafts/A1/CrystallineInput.lean（W9-III-09）。D68 改訂（11-05 夜）で結晶の黒箱は外した。
 
 /-!
 # de Rham 比較の多項式・mod p の場合（BS 著者版 Thm 6.4 の特別な場合、A1-5）
@@ -16,8 +16,9 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaWitt
 T_∞ = R⟨X_i^{1/p^∞}⟩ では ≃ T_∞/p。Lemma 8.6（A5-3）の入力。
 
 ## 方針
-Prop 6.2 と同じ帰着（D69）：完全 prism → 普遍向き付き prism A_0（(4)）→ 結晶 prism D_0（Construction 6.1 の α、保存性と (3)）→ Z_p（Lemma 4.20）
-→ 結晶の黒箱（Thm 5.2 β の de Rham 形、D68）。可換代数構造は各段で保つ。
+D69（a1-design §9.1、W9-I-15 の訂正後）：完全 prism ← 普遍向き付き prism A_0（Cor 4.12 の底変換）、A_0 上では原典 Thm 6.4 の証明
+（ψ : A_0 → W(A_0/d_0)、Thm 5.2 β の J つき模型 `wittPdBridge`、J つき pd 比較 G-A1-17、w_0 に沿う底変換）。D68 改訂（11-05 夜）で
+結晶の黒箱はなくなった：Thm 5.2 β は Lemma 5.4（A1/CrystallineInput）と導来 Nakayama で `wittPdBridge` の中で示す。可換代数構造は各段で保つ。
 
 ## 規約
 Frobenius 捻り φ^*Δ ⊗ A/(p,d) = Δ ⊗_A A/(p, φ^{-1}(d))（完全 prism）。de Rham 複体は Shared/DeRhamPolynomial の cdga を CAlg に。
@@ -50,13 +51,6 @@ def primeAlgReflection (k : Type u) [CommRing k] :
 abbrev primeAlgCompletion (k : Type u) [CommRing k] := (primeAlgReflection p k).1 ≫ (primeCompleteAlg p k).ι
 abbrev completeChange {k l : Type u} [CommRing k] [CommRing l] (g : k →+* l) :=
   cAlgBaseChange g ≫ primeAlgCompletion p l
-
-/-- 結晶 prism 上の自然同型。多項式射の係数は B で持ち上げ、左辺では B/p に落とす。 -/
-def deRham_iso_polynomial_crystalline {B : Type u} [CommRing B] (P : OrientedPrism p B) (hp : P.generator = p) :
-    FunctorIso (liftedDelta p B P (crystallineBounded p P hp) ≫ primeAlgCompletion p B) (formsCAlg p B) := by
-  let e := (crystalline_deRham_polynomial_Zp.{u} p).some
-  sorry -- Z_p→B は p 正則性により平坦。Lemma 4.20 と完備自由形式の底変換で
-        -- crystalline_deRham_polynomial_Zp の自然同型を移す。係数の Frobenius と両立
 
 abbrev U := universalOrientedPrism.{u} p
 abbrev residueU := universalOrientedPrismRing.{u} p ⧸ (U p).ideal
@@ -103,7 +97,9 @@ def psiBaseChange (n : ℕ) : VertexIso
 def wittPdBridge (n : ℕ) : VertexIso (wittPolynomial.{u} p n)
     (Cosimplicial.totEInfinity (WU p) (pdModel p (WU p) n)) := by
   sorry -- ψ̄ による多項式入力と Thm 5.2 β の相対 Frobenius の模型を同定し、
-        -- J つき pd 脈体に移す。splitDeltaCoordinates の追加座標と extraCech_comparison を係数拡大
+        -- J つき pd 脈体に移す。splitDeltaCoordinates の追加座標と extraCech_comparison を係数拡大。
+        -- 11-07：W 上の Thm 5.2 β は整係数で要る（C = A₀/d₀ は p ねじれなし）。mod p は Lemma 5.4
+        -- （frobeniusTwist_cech_quasiIso_infinite、k = W/p）、持ち上げは導来 Nakayama（G-A1-4）
 
 /-- 三つの矢印の合成で D69 の比較射を固定する。最後の係数射は w₀。 -/
 structure WittComparisonLegs (n : ℕ) where
@@ -129,10 +125,20 @@ def wittComposite (n : ℕ) :=
   L.regroup ≪≫ (L.crystalline.map (completeChange p (wZero p))) ≪≫
     (L.pd.map (completeChange p (wZero p))) ≪≫ L.liftChange
 
+/-- 概要：A_0 上の比較同型（原典 Thm 6.4 の証明を A_0 で、D69）。成分は `wittComposite`。
+方針：成分ごとの同型を関手 ∞ 圏の同型に貼る。
+規約：**TODO（11-07、a1-design §10.4）**：貼り合わせの高次の整合性が未設計。`FunctorIso` は Fun(N(Poly), CAlg) のホモトピー圏の同型で、
+成分の同型とホモトピー圏での自然性（G-A1-17 の `natural`・`changeLift`、1 単体まで）からは作れない（自然変換は N(Poly) × Δ¹ → CAlg の写像）。
+要る ∞ 側の部品：(i) 両辺を選択なしで厳密に関手的な模型（Poly(C) 上の大きい J つき pd Čech 模型、持ち上げの選択を使わない）の
+厳密な自然変換の zigzag として与えること、(ii) `Cosimplicial.totEInfinityFunctor` と、厳密な自然変換の脈体 N(𝒞 × [1]) ≅ N𝒞 × Δ¹ から
+関手単体集合の辺を作る部品、(iii) 成分ごとに可逆な辺は可逆（本体 `functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise`）。
+代案（要相談）：使う側（`deRham_iso_rootAlgebra_modP` → A5 `rootMap_modP_eq_deRham`）は成分ごとの同型と根の遷移 X ↦ X^p の可換な四角形しか使わないので、
+型を「各 n の `VertexIso` ＋ X ↦ X^p についての自然性」に弱めれば貼り合わせは要らない（N(ℕ) の背骨は内側 anodyne）。
+使われ方：`transferWittComparison`。 -/
 def deRham_iso_polynomial_universal :
     { e : FunctorIso (universalTwist.{u} p) (formsCAlg p (residueU p)) //
       ∀ n, e.app (polyPoint _ n) = wittComposite p n } := by
-  sorry -- pd 持ち上げの自然性 G-A1-17 で上の合成を全多項式射について貼る。
+  sorry -- TODO（a1-design §10.4）：高次の整合性。G-A1-17 の 1 単体までの自然性だけでは貼れない。
         -- 保存性から同型を選ぶ手順は使わない
 
 variable {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)

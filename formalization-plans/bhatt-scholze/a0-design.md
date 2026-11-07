@@ -29,9 +29,9 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 | 原典 | 扱い | Lean の形（§2） | 既存 | 単位 |
 | --- | --- | --- | --- | --- |
 | Def 2.42 | 定義そのまま（A に相対的な (p,d) 完全正則列） | `IsCompletelyRegularRel` | なし。Koszul 複体の平坦性は HA/Koszul* | A0-3a |
-| Lemma 3.7(2) | 定理。一般の形 | `isDiscrete_of_completelyFlat_boundedPrism` ほか | HA/DerivedCompletion の CompletedFlat*（docstring なし、要読解） | A0-3b |
-| Lemma 3.7(3) | 定理。一般の形 | 平坦な prism の射 ⇔ 完全平坦 δ 代数 | `OrientedPrism.Hom`、`IsCompletelyFlat` | A0-3b |
-| Cor 3.12 | 定理。一般の形（site の公理、O_Δ が層、導来降下） | §2.6 | 押し出し＝完備テンソル（BS/Perfectoidization/CompletedTensor）。Amitsur の完全性はなし | A0-3d |
+| Lemma 3.7(2) | 定理。一般の形（向き付き基底、導来完備な M） | `isDiscrete_of_completelyFlat_boundedPrism`（drafts/A0/FlatDescent、11-07） | HA の CompletedFlat{BoundedTorsion,BoundedComparison,RegularModule}（加群の版のみ） | A0-3b |
+| Lemma 3.7(3) | 定理。一般の形（対象の対応） | `exists_boundedPrism_of_completelyFlat`（FlatDescent） | `OrientedPrism.Hom`、`ofDistinguished`、`IsCompletelyFlat`、剛性 `map_ideal_eq` | A0-3b |
+| Cor 3.12 | 定理。**固定基底 (A,(d)) 上の site (R/A)_Δ の場合**（site の公理、O_Δ・Ō_Δ が層、導来降下） | §2.6（FlatDescent ＋ PrismaticSite の `flatTopology_refine`） | 押し出し＝完備テンソル（BS/Perfectoidization/CompletedTensor）。Amitsur の完全性はなし | A0-3d |
 | Prop 3.13 | **定義**：普遍性。**定理**：Ex 3.14 の場合の存在と (1)(2)(3) | `IsPrismaticEnvelope`、`prismaticEnvelope_exists_of_variables` | `DeltaAdjoinDivision` と `existsUnique_deltaAdjoinDivisionHom_of_regular`、`RelativeFreeDeltaRing`、`deltaPDCompletionStructure` | A0-3c |
 | Def 4.1 | 定義そのまま | `PrismOver`、`PrismaticSite`、`flatTopology`、`structurePresheaf` | `OrientedPrism`、`IsCompletelyFaithfullyFlat`、Mathlib `GrothendieckTopology`・`Sieve.generate` | A0-1 |
 | Rem 4.6 | 定義そのまま（完全 prism の充満部分圏）。perfectoid 代数の圏との同値は定理 | `PerfectPrismaticSite` | Thm 3.10（`Prism/Perfectoid/*`）、E3 の `PerfUnder_u` | A0-1（同値は A5） |
@@ -42,8 +42,8 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 | Constr 4.18 | 定義そのまま（Čech 脈体）。Δ を計算することは定理 | `cechAlexander`、`cechAlexander_isLimitCone`、`prismaticCohomology_iso_cechAlexanderTot` | Mathlib `Arrow.cechConerve`、`alternatingCofaceMapComplex`、S3 | A0-2 |
 | 脚注 10 | 一般論（S3） | — | — | S3 |
 | Rem 4.19 | 定理（affine 空間の小さい模型と底変換） | `cechAlexanderAffine`、`cechAlexanderAffine_baseChange` | Prop 3.13(2) | A0-2 |
-| Lemma 4.22 | 定理。一般の形 | `completedBaseChange_tot_comm` | HA/DerivedCompletion（CompletedBaseChange*、Truncation） | A0-4 |
-| Lemma 4.20 | 定理。一般の形 | `prismaticCohomology_baseChange` | Lemma 4.22、Prop 3.13(2) | A0-4 |
+| Lemma 4.22 | 定理。一般の形 | `Derived.completedBaseChange_tot_comm`（drafts/A0/BaseChange、11-07） | HA/DerivedCompletion（CompletedBaseChange*、Truncation） | A0-4 |
+| Lemma 4.20 | 定理。**多項式代数 (A/d)⟨X_1,…,X_r⟩ の場合**（11-07 に一般形から絞った） | `prismaticCohomology_baseChange`・`hodgeTateCohomology_baseChange`（BaseChange） | Lemma 4.22、Rem 4.19 の `cechAlexanderAffine_baseChange` | A0-4 |
 | Rem 4.2〜4.4・4.7、Lemma 4.21 | 不要 | — | — | — |
 | Rem 4.5 | 一般論の部分だけ（S2） | `derivedGlobalSections_of_le`（drafts/Sheaves/GlobalSections） | — | 原典の位相の比較そのものは不要（11-07） |
 
@@ -66,8 +66,8 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 ### 2.2 位相と構造層（Def 4.1）
 
 - 忠実平坦な prism の射：`f : B → C` が (p, d) 完全忠実平坦（`IsCompletelyFaithfullyFlat (Ideal.span {p, d}) C`、C を B 加群として）。
-  原典の「(p, IB) 完全忠実平坦」。Lemma 3.7(3) によりこれが「忠実平坦な prism の射」の定義（原典の定義は Lemma 3.5 を経由するので、
-  Lemma 3.7(3) を定理として記録する）。
+  原典の「(p, IB) 完全忠実平坦」。これは原典 Def 3.2(3) の「(忠実) 平坦な prism の射」の定義そのもの（11-07 訂正：以前の「Lemma 3.7(3) により」は
+  不要。Lemma 3.7(3) は逆向きの構成、FlatDescent の `exists_boundedPrism_of_completelyFlat`）。
 - 位相：`flatTopology P R : GrothendieckTopology (PrismaticSite P R)` := 忠実平坦な射 f について篩 `Sieve.generate (Presieve.singleton f.op)` を
   被覆篩に含む**最小の**位相（`GrothendieckTopology` は完備束）。これで site の公理を定義の段階で証明しなくてよい。
   Cor 3.12 前半（忠実平坦な射の押し出しが存在し忠実平坦）は、「この位相の被覆篩は忠実平坦な射の篩で refine できる」という定理として入れる。
@@ -118,6 +118,22 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 - Lemma 3.7(2)：有界 prism 上の (p,d) 完全平坦な複体 M は離散で古典的 (p,d) 完備、M[d^n] = 0、M/d^n M の p 冪ねじれは有界。
   一般の形で証明する（Cor 3.12 の押し出しと Prop 3.13(1) の両方で使う）。HA/DerivedCompletion の CompletedFlat* に部品がある見込み（要読解）。
 - Lemma 3.7(3)：prism の射 (A,(d)) → (B, J) が（忠実）平坦 ⇔ B が (p,d) 完全（忠実）平坦な δ-A 代数で J = dB。
+- **置いた宣言（11-07、drafts/A0/FlatDescent.lean。2b 後に HA の名前を確かめて区分 D を解いた）**：
+  - D(A) の対象の完全平坦性 `Derived.IsCompletelyFlatObject I M`：原典 §1.2 の定義そのまま（I 冪ねじれの任意の加群 N について
+    M ⊗^L_A N が次数 0 に集中。∞ 関手 `tensorWith M` と drafts/DerivedGeneral の `discreteModuleEmbedding`・`IsConnectiveAt`・`IsCoconnectiveAt`）。
+    本体の `IsCompletelyFlat` は加群（Tor の消滅）の版で、離散な M で一致する（比較の補題は中身の段階）。
+  - Lemma 3.7(2) `isDiscrete_of_completelyFlat_boundedPrism`：**一般形**。M は導来 (p,d) 完備（`Derived.IsDerivedComplete`）を仮定
+    （原典の証明が使い、直後の注意も「derived complete」の圏で述べる）。結論：H^i(M) = 0（i ≠ 0）、H⁰ が古典的 (p,d) 完備（`IsAdicComplete`）、
+    dⁿ ねじれなし、H⁰/dⁿ の p 冪ねじれが有界。
+  - Lemma 3.7(3) `exists_boundedPrism_of_completelyFlat`：導来 (p,d) 完備で (p,d) 完全平坦な δ-A 代数 B について、(B, f(d)) が有界な向き付き
+    prism で f が prism の射。原典の「圏の同一視」のうち対象の対応（射は δ-A 射そのもの、逆向き J = dB は剛性 `map_ideal_eq`）。
+    `PrismOver.IsFaithfullyFlat` は原典 Def 3.2(3) の定義そのもの（(p,I) 完全忠実平坦）で、Lemma 3.7(3) を経由しない（§2.2 の記述を訂正）。
+  - Cor 3.12（**固定基底 (A,(d)) 上の site の場合**。原典は全有界 prism の圏）：(a) `PrismOver.isFaithfullyFlat_of_isIso`・`PrismOver.IsFaithfullyFlat.comp`・
+    `PrismOver.exists_isPushout_isFaithfullyFlat`（`IsAdmissibleCutoff` の下、Mathlib の `IsPushout`）。PrismaticSite の `flatTopology_refine` はこれらから。
+    (b) `structurePresheaf_isSheaf`・`reducedStructurePresheaf_isSheaf`（1 圏の層、`Presheaf.IsSheaf`）。(c) `structurePresheafDerived_isLimit_singleton`
+    （忠実平坦な単一射の篩での `restrictionCone` が極限錐）。(d) `structurePresheafDerived_isSheaf`、Ō 版 `reducedStructurePresheafDerived_isSheaf`
+    （Ō_Δ の D(A) 値は `reducedStructurePresheafDerived` := O_Δ ≫ `tensorWith (A/d)`、新しい sorry の定義は置かない）。(e) `prismaticCohomology_isLimit`
+    （Δ_{R/A} は O_Δ 自身の極限錐の頂点。`derivedGlobalSections_of_isSheaf` で証明済みの形）。古典的 RΓ・hypersheaf との一致（旧 (e)）は述べない（D17）。
 - Cor 3.12：
   (a) 忠実平坦な prism の射 B → C と任意の射 B → B′ について、押し出し (B′ ⊗̂^L_B C)^∧ が有界 prism で B′ 上忠実平坦。既存の完備テンソル
   （BS/Perfectoidization/CompletedTensor、HA/DerivedCompletion/CompletedBaseChange*）と Lemma 3.7(2)。
@@ -173,6 +189,15 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 - Lemma 4.22：J 完備底変換 (−) ⊗̂^L_C C′ は D^{≥0} の余単体的対象の Tot と可換。原典の証明（n 骨格で示し、fiber が D^{≥ n+1−c} に
   あることから各次数で一致）をそのまま。各項が離散な余単体的対象なら Tot は余鎖複体で、底変換後は各列が [−c, 0] に有界な双複体なので
   全複体は各次数で有限和（HA の BoundedAbove*・Truncation の部品）。
+- **置いた宣言（11-07、drafts/A0/BaseChange.lean）**：Tor 振幅 `Derived.HasFiniteCompleteTorAmplitude f x c`（一般の可換環 C → C′。A1 の
+  HodgeTateComparison の同名の定義と同じ式を A0 の正本として置き直した。A1 の書き直しで A1 側を削除してこちらを参照する）、
+  Lemma 4.22 `Derived.completedBaseChange_tot_comm`（**一般形**：D^{≥0}(C) 値の余単体的対象 Δ → D(C) の極限錐を drafts/DerivedGeneral の
+  `completedBaseChange f (x の像)` で写すと極限錐）、Lemma 4.20 `prismaticCohomology_baseChange`・`hodgeTateCohomology_baseChange`
+  （**R = (A/d)⟨X_1,…,X_r⟩ の場合**、R′ = (A′/d′)⟨X_1,…,X_r⟩ = `prismPolynomialCompletion P' (Fin r)`。結論は D(A′) の可逆な辺の存在）。
+  **特別な場合に絞る理由**：E3 の経路で Lemma 4.20 を使うのは Construction 6.1(3)（α）、Prop 6.2（b・c、Rem 4.19 の模型）、Thm 6.4 の帰着
+  （a1-design §9.1 の 3、結晶 prism から Z_p へ）で、どれも有限変数の多項式代数。Lemma 4.21 の étale 局所化は使わない（D24）。
+  **残る点**：自然な射の指定（原典の「the natural map」）は主張に入れていない。Prop 6.2 (b) で η との両立に使うなら、Rem 4.19 の項ごとの射から
+  誘導される辺を定義して主張に含める必要がある（A1 の `polynomialChangeEdge` は CAlg 値で同じことをしている。どちらに置くかは A1 の書き直しと調整）。
 - Lemma 4.20：(A,d) → (A′,d′) が有限 (p,d) 完全 Tor 振幅なら Δ_{R/A} ⊗̂^L_A A′ ≃ Δ_{R′/A′}（R′ = R ⊗̂ A′）。
   `cechAlexanderAffine_baseChange`（項ごと）と Lemma 4.22。Ō も同様（mod d）。
   原典の注意どおり、HT 比較の後は Tor 振幅の仮定を外せる（Cor 4.12、A1）。
@@ -285,3 +310,5 @@ Hom(C^0, D) ≠ ∅（選択）。R に smooth 性は不要。
   述べる（∞ 層の設計書 §1 に反映）。
 3. HA の部品（CompletedFlat*、CompletedBaseChange*）の読解は、論文の層の区切り 2b（DerivedCompletion 第二層）が main に入り
   改名表が届いてから。それまで A0-3b・A0-3d・A0-4 は設計書 §2.6・§2.9 の数学の形で止め、S1・S2・S6・A0-1・A0-2 の骨組みを先に書く。
+  **11-07**：2b が main に入ったので A0-3b・A0-3d・A0-4 の主張の型を drafts/A0/FlatDescent.lean・BaseChange.lean に置いた（§2.6・§2.9 の「置いた宣言」）。
+  HA の部品は加群の版（CompletedFlat*）で、D(A) の対象の版・Amitsur の完全性・完備底変換の ∞ 関手は未（入口は drafts/DerivedGeneral）。

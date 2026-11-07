@@ -34,7 +34,7 @@ p 完備 A/d 代数について、定理は多項式代数について）。RΓ 
 値はまず D(A)（`derivedInfinityCategory A`）。CAlg 値は A2・A4。
 
 ## 使われ方
-Constr 4.17・4.18（Čech–Alexander 複体、`drafts/A0/CechAlexander.lean`）、Cor 3.12（`drafts/A0/FlatDescent.lean`）、A1 の Thm 4.11 の定式化、
+Constr 4.17・4.18（Čech–Alexander 複体、`drafts/A0/CechAlexander.lean`）、Cor 3.12・Lemma 3.7(2)(3)（`drafts/A0/FlatDescent.lean`）、A1 の Thm 4.11 の定式化、
 A5 の Prop 8.5（完全 site）。
 -/
 
@@ -186,7 +186,8 @@ theorem flatTopology_refine (hκ : IsAdmissibleCutoff P R κ) :
       ∀ {U : PrismaticSite P R κ} (Rp : Presieve U), Rp ∈ K.covering U →
         ∃ (Y : PrismOverSmall P R κ) (f : U.unop ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f ∧
           Rp = Presieve.singleton f.op := by
-  sorry -- A0-3d（Cor 3.12 (a)）。押し出しの存在は完備テンソルと Lemma 3.7(2)
+  sorry -- A0-3d（Cor 3.12 (a)）。FlatDescent の PrismOver.exists_isPushout_isFaithfullyFlat・isFaithfullyFlat_of_isIso・
+        -- IsFaithfullyFlat.comp から（中身の段階で FlatDescent の後へ移す）
 
 /-- 概要：構造層 O_Δ：B ↦ B（環の前層。site の前層 (PrismaticSite)ᵒᵖ ⥤ CommRingCat は PrismOverSmall ⥤ CommRingCat）。
 方針：小さい模型から `equivSmallModel.inverse` で大きい圏へ送り、台の環を取る。
@@ -257,9 +258,9 @@ def prismaticCohomology
 要確認：D(A) の A/d とのテンソルを与える基盤の名前。 -/
 def hodgeTateCohomology
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
     (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
-  sorry -- prismaticCohomology ⊗^L_A A/d
+  sorry -- prismaticCohomology ⊗^L_A A/d（`tensorWith`、FlatDescent の `reducedStructurePresheafDerived` と同じ A/d の頂点）
 
 /-- 概要：Δ_{R/A} の Frobenius：Δ → φ_{A*}Δ。
 方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。

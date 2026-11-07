@@ -41,6 +41,19 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 - **段 1（基盤を待たない古典的単位）**：BS-W10 は**終了**（作業 A：CompletedTensor から E3 依存を外し有限直積を直接証明、main cc67ea88e。作業 B：Lemma 10.12、main 4019014a1）。**次は BS-W11**（`bhatt-scholze-codex-w11.md`：根添加、Lemma 8.8 の前段と試験付値環、有限エタールの perfectoid 性、arc site の 1 圏部分）。**開始は ∞ F-2（名前空間の付け替え）の取り込みと改名表の配布の後**（調整役が知らせる）。開始時に改名表で W11 と drafts の名前を追従してから出す。
 - **段 2 への橋**：IF-G1 第一区切り（G7・Core・G13・⊗ᴸ・G3・G8）は main に入り、drafts の仮名は本名にした（入口表 §6）。S4 は `drafts/Sheaves/SheafGenerators.lean` で型にし、残る穴は G14 と G8 の自然性の二つ。S3 の経路は (c) Quillen A に決定（入口表 §4.1）。論文の層の B4（Pair を Principal の反復に）は main に入り、BS は `pairCompletionH0Unit` への置き換えと heartbeat の引き上げ 2 件で対応済み。
 
+### 0.3.1 11-07 の drafts の書き直し（調整役）
+
+- **A1：D68 の改訂を反映**。黒箱 `crystalline_deRham_polynomial_Zp` と `CrystallineComparison` 系を削除し、`hodgeTate_of_deRham_cartier` を六段（Lemma 5.4 → 結晶の橋 → pd 包含 → pd de Rham の双複体 → Cartier → 生成元の照合）から示す骨組みにした（a1-design §10）。未使用の `deRham_iso_polynomial_crystalline` も削除。**恒久の引用は 0 件**。sorry の行は 180 → 203。
+- **A0：型がなかった四つを追加**。新しいファイル `A0/FlatDescent.lean`（Lemma 3.7(2)(3)、固定基底の Cor 3.12 (a)〜(e)）と `A0/BaseChange.lean`（Lemma 4.22 の一般形、Lemma 4.20 の多項式代数の場合）。sorry +13。
+- **要相談（ユーザーに尋ねる）**：
+  1. D69 の代案：`deRham_iso_polynomial_modP` の型を「各 n の VertexIso と X ↦ X^p の自然性」に弱めると、関手同型の貼り合わせ（∞ 側の部品 (i)(ii)、a1-design §10.4）が要らなくなる。使う側（A5 `rootMap_modP_eq_deRham`）はそれで足りる。A1-5 の主張の型が変わる。
+  2. Lemma 5.4 は、N が余単体的可換環の場合に限った（原典は任意の加群。定理の特別な場合）。
+  3. 無限変数版 G-A1-15 が主経路に入る（B = ℤ_p{X}^∧ の mod p は変数が無限個）。
+  4. A1-5 の `wittPdBridge` に導来 Nakayama（G-A1-4）が残る。
+  5. Lemma 3.7(2) で M に導来 (p,d) 完備を仮定した（原典の証明と直後の注意の読み方）。
+  6. Lemma 4.20 は比較の写像を存在の形で述べた。Prop 6.2 (b) が η との両立を使うなら、指定した辺の形に直す。
+- 後始末：Tor 振幅の定義が A1（HodgeTateComparison）と A0（BaseChange の `Derived.` 版）に重複。中身の段階で A0 の版に一本化する。
+
 ### 0.4 ∞ に頼んでいて未着の項目
 
 | 項目 | 内容 | 使う場所 | 依頼の所在 |

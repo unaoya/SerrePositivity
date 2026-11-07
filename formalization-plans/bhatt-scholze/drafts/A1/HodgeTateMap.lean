@@ -71,7 +71,7 @@ abbrev htSequence := regularShortExact (htRings P hP r) (htGenerator P hP r) (ht
 
 def moduleCohomologyBridge (k : Type u) [CommRing k] (X : CosimplicialObject CommRingCat.{u})
     (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ X) (i : ℕ) :
-    cohomology X i ≃+ (CosimplicialObject.alternatingCofaceMapComplex.obj (toModules k X ι)).homology i := by
+    cohomology X i ≃+ ((AlgebraicTopology.alternatingCofaceMapComplex _).obj (toModules k X ι)).homology i := by
   refine (cohomologyEquivHomology X i).trans ?_
   sorry -- 加群から加法群への忘却はホモロジーを保つ
 

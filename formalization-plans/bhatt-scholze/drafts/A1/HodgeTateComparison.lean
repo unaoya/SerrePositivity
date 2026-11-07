@@ -8,7 +8,7 @@ public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
 -- 本ファイルは drafts/A0/{PrismaticSite,PrismaticEnvelope,CechAlexander}.lean、drafts/A1/{HodgeTateMap,CrystallineInput}.lean、drafts/Shared/DeRhamPolynomial.lean を import する。
--- 結晶の黒箱は drafts/A1/CrystallineInput.lean（W9-III-09：本ファイルより先）。DeRhamComparisonPoly は本ファイルより後。
+-- 結晶側の計算（D68 改訂後：Lemma 5.4・pd Poincaré・BdJ・Cartier の mod p の直接証明）は drafts/A1/CrystallineInput.lean（本ファイルより先）。DeRhamComparisonPoly は本ファイルより後。
 
 /-!
 # Hodge–Tate 比較の証明の骨組み（BS 著者版 Construction 6.1、Prop 6.2、Thm 6.3、Cor 4.12、Lemma 4.10）
@@ -17,8 +17,8 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 一般の有界向き付き prism (A,(d)) と R = (A/d)⟨X_1,…,X_r⟩ について、HT 比較の写像 η^*（`HodgeTateMap`）が同型であることを、原典 §6 の帰着で示す：
 (a) 結晶 prism は Cor 5.5、(b) 普遍向き付き prism (A_0,(d)) は Construction 6.1 の α : (A_0,(d)) → (D_0,(p)) で (a) へ、
 (c) 一般の (A,(d)) は d の選択による A_0 → A と、底変換関手 b̂^*・ĉ^* の保存性・Rem 4.19 の複体の項ごとの一致・Lemma 4.22 で (Z_p,(p)) へ。
-**結晶側の入力は一つの定理 `hodgeTate_iso_polynomial_Zp`（(Z_p,(p))、R = F_p[X_1,…,X_r] の Cor 5.5）に閉じ込める**。その証明（Thm 5.2 の β 形、
-Lemma 5.4、pd 包の Čech 脈体と de Rham 複体の比較、Cartier 同型）は A1-2・A1-3。
+**結晶側の入力は一つの定理 `hodgeTate_iso_polynomial_Zp`（(Z_p,(p))、R = F_p[X_1,…,X_r] の Cor 5.5）に閉じ込める**。その証明（D68 改訂後：
+Lemma 5.4、C^•/p → D^•/p ← D_0^•/p、pd 包の Čech 脈体と de Rham 複体の比較、Cartier 同型、すべて mod p）は A1/CrystallineInput（A1-2・A1-3、a1-design §10）。
 
 ## 方針
 原典の単体的可換環 E = A ⊗̂^L_{A_0} D_0 は作らない（D30）：b̂^* := â^* ∘ Res_{A_0}、ĉ^* := â^* ∘ Res_{A_0} ∘ (− ⊗^L_{Z_p} A)。
@@ -43,10 +43,11 @@ open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories SerreP
 
 variable {p : ℕ} [Fact p.Prime]
 
-/-! ## 結晶側の入力から導く HT 比較（黒箱 `crystalline_deRham_polynomial_Zp` は A1/CrystallineInput、D68。本定理はその系） -/
+/-! ## 結晶側の計算から導く HT 比較（D68 改訂 11-05 夜：黒箱を外し、A1/CrystallineInput の六段で mod p に直接証明。恒久の引用なし） -/
 
 /-- 概要：Cor 5.5 の (Z_p,(p)) の場合：R = F_p[X_1,…,X_r] について、η^* : Ω^*_{R/F_p} → H^*(Tot(C^•/p)) は同型。
-方針：Thm 5.2 の β 形（Tot C^• ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}、Lemma 5.4 と導来 Nakayama）、mod p、Cartier 同型、η^* との一致。
+方針：A1/CrystallineInput の `hodgeTate_of_deRham_cartier`：Lemma 5.4 で C^•/p → D^•/p、G-A1-16 で D_0^•/p → D^•/p、pd Poincaré と BdJ の行の収縮で
+H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})、Cartier 同型、生成元での照合（a1-design §10）。mod p なので導来 Nakayama は使わない。
 規約：結晶の話はこの定理の証明にだけ現れる。
 使われ方：Cor 5.5（一般の結晶 prism）、Prop 6.2。 -/
 theorem hodgeTate_iso_polynomial_Zp (r : ℕ) :
@@ -241,7 +242,9 @@ theorem crystallineCoverMap_conservative (h : Construction61Hypotheses P) :
   sorry -- cofiber を mod p に落とし、(6) の d 完備 Nakayama と忠実平坦な Frobenius・pd 包を順に使う
 
 /-- A0 §2.9。任意の K∈D^{≥m}(A) を底変換したあと、標的の Koszul 複体を掛ける。
-有限自由な Koszul 複体なので semifree 代表上で計算できる。 -/
+有限自由な Koszul 複体なので semifree 代表上で計算できる。
+**重複（11-07）**：同じ式の一般の可換環版 `Derived.HasFiniteCompleteTorAmplitude` が `drafts/A0/BaseChange.lean` にある。
+中身の段階では A0 の版に一本化し、この定義は消す（Lemma 4.20・4.22 も A0 の版で述べている）。 -/
 def HasFiniteCompleteTorAmplitude {B : Type u} [CommRing B] (f : A →+* B)
     {r : ℕ} (x : Fin r → A) (c : ℕ) : Prop :=
   ∀ (m : ℤ) (K : (derivedInfinityCategory A) _⦋0⦌), Derived.IsCoconnectiveAt A m K →
