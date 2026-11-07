@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.SchemeLemmas.PureTransformScalarRestriction
+public import SerrePositivity.AlgebraicGeometry.PureTransformScalarRestriction
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.RingTheory.Localization.Away.Basic
 
@@ -24,7 +24,7 @@ public import Mathlib.RingTheory.Localization.Away.Basic
 
 universe u v
 
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 

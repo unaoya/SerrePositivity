@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Descent.SchemeFacts
-public import SerrePositivity.KST.SchemeLemmas.StrictTransform
+public import SerrePositivity.AlgebraicGeometry.StrictTransform
 public import Mathlib.AlgebraicGeometry.Morphisms.Flat
 
 /-!
@@ -25,7 +25,7 @@ public import Mathlib.AlgebraicGeometry.Morphisms.Flat
 universe u
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 
