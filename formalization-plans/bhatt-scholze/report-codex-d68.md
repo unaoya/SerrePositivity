@@ -84,3 +84,23 @@ SerrePositivity.HomologicalAlgebra.Cosimplicial.ShortExact
 SerrePositivity.HomologicalAlgebra.Cosimplicial.SplitCechConerve
 SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue
 ```
+
+## BS-D68 停止点 1（2026-11-07）
+
+### 実装
+
+- main `faad868f1` を fast-forward で取り込み、調整役による段 1 の 37 モジュールの登録を反映した。その後 main `5697b7aa3` を `c7189ac10` で取り込んだ。
+- `c21600ff1` で `SerrePositivity.Cosimplicial.cohomologyCup_comm` を草稿と同じ型で証明した。非正規化余鎖の cup 積は、コホモロジー上で `(-1)^(m*n)` を伴って可換になる。
+- KST の正規化 EZ で shuffle 積を経由する場合、現在の非正規化余鎖への正規化比較と双対化が要る。今回は KST の非正規化 Alexander–Whitney 鎖写像と標準単体の収縮を再利用した。AW 対角と符号付き交換後の対角の差を標準単体上で帰納的に埋め、余輪体に評価して余境界とした。これで正規化比較と明示的な cup₁ の面演算子の計算を省ける。KST の参照は完全修飾とし、KL-W1 の移動後は改名表で追従する。
+
+### 検収
+
+- 段 1 の全 38 モジュールの対象ビルドが、`with_build_lock.sh --wait 1800` で成功した。
+- 一時ファイルで段 1 の 188 宣言を監査した。使用公理は `propext`、`Classical.choice`、`Quot.sound` のみ。追加公理と `sorryAx` は 0 件。
+- 追加の本体宣言は上記の定理。既存の本体宣言の変更なし。対象の推移的 import に `InfinityCategories` と `PerfectoidizationInterface` はなく、⑤a との変更ファイルの重複もない。
+
+### 取り込み時の追加登録対象
+
+```text
+SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
+```
