@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- W9-III-08（致命・配置）：現行の CompletedTensor は IntegralExistence 経由で消去対象の Inputs/PerfectoidizationInterface を import する。2a の取り込み後に
@@ -345,27 +345,6 @@ theorem baseExtensionUnit_pCompletelyFaithfullyFlat (S : Type u) [CommRing S]
     letI := (baseExtensionUnit p S hS).toAlgebra
     IsCompletelyFaithfullyFlat (Ideal.span {(p : S)}) (baseExtension p S hS) := by
   sorry -- ℤ_p → R₀ の p 完全忠実平坦性を S へ完備底変換し、上の単位射による S 加群として読む
-
-/-- 概要：G-A6-3：p 完備な階数 1 の付値環 V は、perfectoid な p 完備階数 1 の付値環 W に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長）。
-W には p の両立する p 冪根の列がある（絶対整閉包から来る）ので、環準同型 R₀ → W が取れる。
-方針：Mathlib の付値の整拡大への延長（要確認）、絶対整閉な p 完備付値環は perfectoid（p 乗根の存在で Frobenius 全射、ker θ は主イデアル）。
-規約：—
-使われ方：下（W を**先に**取る）、Prop 8.10 の §3.1 の 2。 -/
-theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
-    (hV : IsRankOneCompleteValuationRing p V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W), IsRankOneCompleteValuationRing p W ∧
-      IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
-      ∃ ρ : ℕ → W, ρ 0 = (p : W) ∧ ∀ n, ρ (n + 1) ^ p = ρ n := by
-  sorry -- 絶対整閉包で両立根を選んで p 完備化する。付値環の局所拡大は忠実平坦
-
-/-- W と b を G-A6-3 で選んだ後、同じ e に沿って S → V を延長する。 -/
-theorem exists_baseExtension_lift (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
-    (V : CommRingCat.{u}) (hV : IsRankOneCompleteValuationRing p V) (k : S →+* V) :
-    ∃ (W : CommRingCat.{u}) (e : V →+* W) (l : baseExtension p S hS →+* W),
-      IsRankOneCompleteValuationRing p W ∧ IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
-      l.comp (baseExtensionUnit p S hS) = e.comp k := by
-  sorry -- exists_perfectoid_valuation_extension の根を b に移し、exists_baseExtension_lift_of_map を同じ W に適用
 
 /-- 概要：Lemma 8.8（affine 版）：任意の p 完備環 S は perfectoid による arc 被覆 S → S₀ → S̃₀ → (S̃₀)_perfd をもつ
 （S̃₀ は S₀ の R₀ 上の A5-4 `rootClosure`、(S̃₀)_perfd は A5-2 の普遍 perfectoid 環）。

@@ -142,3 +142,30 @@ A-2 取り込みと監査の登録を含む main `2d79d1de2` まで `math/bs-imp
 - `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor`
 
 共通入口と `scripts/audit_bhatt_scholze_stage2.lean` の登録は調整役が行う。対象のビルドと単独監査が通ったので B-3 に進む。
+
+## BS-W11 停止点 B-3（2026-11-07）
+
+実装は `721574dcc` と `9ffa38a4e`。間の `056a487c2` で、B-2 の登録 `978cc71ea` と指示書 §8 を含む main `f48441f89` を `math/bs-impl` に取り込んだ。
+
+- G-A6-3 の `exists_perfectoid_valuation_extension` を証明した。分数体の代数閉包の付値部分環へ局所的に延長する。非零素イデアルの縮約は非零で、剰余への代数関係式は係数の一つを 1 に正規化して得られるため、拡大は階数 1。標数 p ではそのまま、混標数では p 進完備化して、Frobenius の全射性と p の両立根から perfectoid 性を示した。両方で忠実平坦性を証明し、同じ拡大を使って `exists_baseExtension_lift` を閉じた。
+- `rankOneValuation_completion` は任意の階数 1 の付値環と任意の非零非単元に適用できる。完備化の元を元の付値環の元の単元倍で表し、階数と忠実平坦性を示した。完全な標数 p の場合は剰余環の逆 Frobenius で完全性を保つので、`arcValuation_completeAt` が従う。`arcValuation_extendField` は一変数の冪級数付値環を経由して G-A6-3 を適用した。下書きの主張の型は同じ。
+- G-A6-6 の `tilt_rankOneValuationRing` と `untilt_rankOneValuationRing` を証明した。tilt では sharp の両立根の各成分で割って可除性を比較した。untilt では distinguished Witt 商の元を sharp の単元倍に書き、第零係数が零なら Witt 商を元の環と同定した。標準の tilt 写像との同型も得た。untilt の付値環性の計算は [Česnavičius–Scholze, Proposition 2.1.9](https://www.math.u-psud.fr/~cesnavicius/flat-purity.pdf) に沿う。
+
+### ビルドと監査
+
+- 共有ロックで `ArcValuationCompletion`・`ArcValuationTilt` の 2 対象を 10 秒、行長調整後に 9 秒でビルドした。`ArcValuationExtension`・`ArcValuationUntilt` の 2 対象は 18 秒で成功。下書きの型を維持した 2 宣言に素数性インスタンスの重複警告があり、未使用のセクション引数の警告もある。
+- 段階 II 監査を一時ファイルに写し、共有ロック下で B-3 の新規 4 モジュールに対して単独実行した。生成宣言を含む 93 件が標準三公理のみ。sorry・admit・独自公理は 0。新規モジュールを含む本体 591 モジュールの import をたどり、E3 への経路は 0。
+- 本体の作業差分は新規 4 モジュール。既存の本体宣言の変更は 0。⑤b の差分・作業木および取り込み後の main の変更との対象パスの重複は 0。差分の空白検査を通過した。
+
+### 残る下書きと D の順序
+
+B-3 の対象宣言はすべて本体へ移した。§8 に従い、`rootClosure_cardinal_le` と `baseExtension_cardinal_le` は D の最初に閉じてから Lemma 8.8 へ進む。`baseExtensionUnit_pCompletelyFaithfullyFlat` が Lemma 8.8 の証明に必要かは D-1 で確認する。
+
+### 取り込み時の登録
+
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension`
+- `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt`
+
+共通入口と `scripts/audit_bhatt_scholze_stage2.lean` の登録は調整役が行う。
