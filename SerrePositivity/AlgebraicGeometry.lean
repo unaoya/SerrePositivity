@@ -337,3 +337,4 @@ public import SerrePositivity.AlgebraicGeometry.FiberDimensionBound
 public import SerrePositivity.AlgebraicGeometry.FiberSupportDimension
 public import SerrePositivity.AlgebraicGeometry.RelativeNoetherDimension
 public import SerrePositivity.AlgebraicGeometry.PureTransformExactPowers
+public import SerrePositivity.AlgebraicGeometry.FiberPrimeDimension
