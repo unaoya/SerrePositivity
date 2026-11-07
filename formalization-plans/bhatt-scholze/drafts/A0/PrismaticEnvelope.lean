@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.5、単位 A0-3a・A0-3c（定義と、変数の場合の存在の主張）。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaBounds
 public import SerrePositivity.BhattScholze.Prismatic.Envelope
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
@@ -125,13 +126,5 @@ theorem prismaticEnvelope_baseChange_of_variables {A' : Type u} [CommRing A']
       η'.comp u = v.comp η ∧ η'.comp b = c ∧ IsBoundedPrism Q' ∧
       IsPrismaticEnvelope P' D' b hb J' hd Q' η' := by
   sorry -- 自由変数模型と dY による模型を A′ 上に移す。二脚と完備化単位で誘導射を指定し、剛性で dA′ = (d′)
-
-/-- 概要：envelope の濃度は (#A + #S + ℵ₀)^{ℵ₀} 以下（κ の切り落としに入る）。
-方針：模型は多項式環の完備化で、完備化は Cauchy 列の商。
-規約：κ = λ^{ℵ₀} なら λ ≥ #A + #S で閉じる。
-使われ方：Čech–Alexander の対象が `PrismOver P R κ` に入ること。 -/
-theorem cardinal_envelope_le (S : Type u) :
-    Cardinal.mk (completedFreeDelta P S) ≤ (Cardinal.mk A + Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
-  sorry -- 多項式環の濃度と完備化の評価
 
 end SerrePositivity.BhattScholze.Prismatic
