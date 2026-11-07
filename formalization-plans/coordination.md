@@ -7,13 +7,16 @@
 
 段階 II のレーンは計画の §5.1 で確定した（11-05 夜）。開始文は調整役が書き、どれにも「F-2 の改名表 `scripts/refactor/targets/f-namespace-map.json`」「main を取り込んでから始める」「本書 §2 の規則」を入れる。
 
-| レーン | 道具 | 担当 | worktree・枝 | 入口 | 検収 |
+| レーン | 道具 | 担当 | worktree・枝 | 入口 | 状態（11-07） |
 | --- | --- | --- | --- | --- | --- |
-| 調整役 | Claude Code | 暦・合図・取り込み、∞・K・BS の検収、BS の設計（drafts・指示書・design-status。BS 設計のチャットは置かない、11-05 夜） | main | 計画・本書・`bhatt-scholze/design-status.md` §0 | — |
-| ① ∞ 中核 | Codex | M1・M2・M7・M8、L4 | `SerrePositivity-inf-core`・`math/inf-core` | [stage-ii/inf-core-w1.md](stage-ii/inf-core-w1.md) | 調整役 |
-| ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10・G8 の一般形 | `SerrePositivity-inf-supply`・`math/inf-supply` | [stage-ii/inf-supply-w1.md](stage-ii/inf-supply-w1.md) | 調整役 |
-| ⑤ BS 実装 | Codex | BS-W11 → drafts の移植 | `SerrePositivity-bs-impl`・`math/bs-impl`（一度に一つ） | `bhatt-scholze/bhatt-scholze-codex-w11.md` | 調整役 |
-| ⑥ スキーム論 | Codex | 公理 (3) の再確認 → スキーム論の土台（A・B 共通、計画 §1.5）、BS17 Thm 4.1 (i) まで | `SerrePositivity-scheme`・`math/scheme` | [stage-ii/scheme-w1.md](stage-ii/scheme-w1.md) | 調整役 |
+| 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design-status.md` | — |
+| Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`・`research/kerodon-review-a`（並行するときは -b・-c） | `research/kerodon-coverage/codex-review.md` | 進行中（段 1′） |
+| KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | 未定 | `stage-ii/kerodon-layout-w1.md` | Kerodon の確認の後 |
+| ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
+| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BM18 の経路 B | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-doc1.md` | 開始してよい |
+| ⑤b BS 実装 | Codex | D68 の直接証明（A1-3） | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d68.md` | 開始してよい |
+| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 開始してよい |
+| ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
 

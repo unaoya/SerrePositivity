@@ -115,6 +115,14 @@ BS17 Thm 4.1 (i)（完全環の v 降下）を原典どおり証明するのに�
 
 触る場所の重なり：⑤と⑥はどちらも `CommutativeAlgebra/` に新規ファイルを置きうる。ディレクトリを分け（⑥は KST §5 用の新しい下位ディレクトリ）、入口ファイル・監査の登録の衝突は取り込みのときに調整役が main 側を正にして解く。
 
+### 5.1.2 追記（11-07、ユーザー）：K を後回しにし、Kerodon・∞・BS に集中
+
+- **K 理論（目標 B）は後回し**。① ∞ 中核（Verdier 商 M1・M2・M7、K 基盤の入口）は止める。K の計画は、対応表 `research/k-coverage/`（問題 10 件）をもとに、改めて相談して見直す。
+- **⑥ スキーム論は BS17 Thm 4.1 (i) の経路に絞る**（`stage-ii/scheme-w1.md` §6）。
+- **KL-W1 を先に**（(a)）。③ ∞ 供給は KL-W1 が main に入ってから始める。
+- **⑤ BS 実装は二本**：⑤a（BS-DOC1 → BS-W11 → BM18 の経路 B、枝 `math/bs-impl`）、⑤b（D68 の直接証明、`bhatt-scholze/bhatt-scholze-codex-d68.md`、枝 `math/bs-d68`）。
+- 今すぐ始めるもの：⑤a・⑤b・⑥。Kerodon の確認は続け、終わったら KL-W1、その後に ③。
+
 ### 5.1.1 追記（11-07、ユーザー）：∞ の配置を Kerodon の構成に合わせる束を先に
 
 Kerodon の対応表の確認（`research/kerodon-coverage/`）が終わったら、`InfinityCategories/` の配置を Kerodon の章・節に合わせ、宣言に `@[kerodon TAG]` を付ける束を出す（指示書 [stage-ii/kerodon-layout-w1.md](stage-ii/kerodon-layout-w1.md)、KL-W1）。**③ ∞ 供給と① ∞ 中核は、この束が main に入ってから始める**（新しいファイルを積む前の方が安い）。⑤ BS 実装と⑥ スキーム論は並行してよく、束が入ったら改名表で追従する。
