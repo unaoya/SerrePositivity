@@ -104,3 +104,35 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletionResidue
 ```text
 SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 ```
+
+## BS-D68 段 2 途中報告（2026-11-07）
+
+### Lemma 5.4 の基底分解
+
+`8041cbd6b` で `PolynomialFrobeniusCech` を追加した。既存の `polynomialExpandBasis` は任意の変数集合に対して有限台指数の余りを添字に持つ。この基底を項ごとに底変換し、頂点別に並べ替えた。有限変数と無限変数に同じ分解が使える。
+
+| 宣言 | 内容 |
+| --- | --- |
+| `polynomialCech` | 多項式の Čech 余脈体。各頂点に変数の copy を置く。 |
+| `relativeFrobeniusCech` | 係数を保ち変数を p 乗する `MvPolynomial.expand` の自然変換。 |
+| `vertexRemainderEquiv` | 指数の余りを頂点ごとの有限台指数と同一視する。 |
+| `vertexRemainderEquiv_apply` | 頂点別表示での指数の評価式。 |
+| `vertexRemainderEmbed` | 頂点の単射に沿って指数を移す。 |
+| `vertexRemainderEmbed_apply_image` | 単射の像では元の指数を保つ。 |
+| `vertexRemainderEmbed_apply_of_notMem` | 単射の像の外では指数は零。 |
+| `rename_monomial_vertexRemainderEmbed` | 単射に沿う多項式の `rename` を余り指数で計算する。 |
+| `vertexRemainderEquiv_succAbove` | 余面で新しい頂点に零指数を挿入する。 |
+| `frobeniusPushoutRepr` | 相対 Frobenius に沿う押し出しの各項を、頂点別の余り指数を添字とする自由和に分解する。 |
+| `frobeniusPushoutRepr_inl` | 左からの包含は全頂点の指数が零の成分に入る。 |
+| `frobeniusPushoutRepr_coface_single` | 余面は係数に N の余面を施し、添字に零指数を挿入する。 |
+
+### 検収と残り
+
+- 新規モジュールの鍵付き対象ビルドが成功した。一時監査の 12 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存と⑤a との変更ファイルの重複はない。
+- Lemma 5.4 の次の作業は全零添字の成分を分離し、それ以外を収縮すること。非零の添字では、最初の非零頂点の直前の零頂点を削り、係数には隣接頂点を併合する余退化を使うと、対応する余面の項が符号つきで打ち消し合う。ここから有限・無限変数の両宣言を閉じる。結晶の橋と余分な δ 座標の収縮はその後。
+
+### 段 2 の取り込み時の登録対象（現時点）
+
+```text
+SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
+```
