@@ -17,6 +17,9 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuatio
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
 public import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDP
 public import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBaseChange
 public import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPBasis

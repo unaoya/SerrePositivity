@@ -232,8 +232,15 @@ private theorem completionInverseFrobenius_eval (n : ℕ) (x : T) :
   exact AdicCompletion.evalₐ_liftRingHom I
     (completionRootMap a p) (completionRootMap_compat a p) n x
 
-private theorem completionInverseFrobenius_pow (x : T) :
+end PerfectCompletion
+
+end
+
+private theorem completionInverseFrobenius_pow {V : Type*} [CommRing V] [IsDomain V]
+    [ValuationRing V] (a : V) (p : ℕ) [Fact p.Prime] [CharP V p] [PerfectRing V p]
+    (x : AdicCompletion (Ideal.span {a}) V) :
     completionInverseFrobenius a p x ^ p = x := by
+  let I := Ideal.span {a}
   apply AdicCompletion.ext_evalₐ
   intro n
   rw [map_pow]
@@ -248,10 +255,6 @@ private theorem completionInverseFrobenius_pow (x : T) :
     AdicCompletion.evalₐ I n x
   rw [RingEquiv.apply_symm_apply]
   exact (congrArg (Ideal.Quotient.factorPow I hn) hr).trans (completion_evalₐ_factor a hn x)
-
-end PerfectCompletion
-
-end
 
 universe u
 
