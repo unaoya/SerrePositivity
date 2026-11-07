@@ -70,3 +70,13 @@ main の `6dd825028` を `math/bs-impl` に取り込み、指示書 §4 の承�
 - `math/bs-impl` は調整役の取り込み待ち。W11 の開始条件は BS-DOC1 の main 取り込み。
 
 停止点 3 の後、⑥ の移動を含む main `4fbd8c0b7` を `eb30f187d` で取り込んだ。151 ファイルのコメント外差分は引き続き 0 で、⑤b の作業パスとの重複も 0。取り込み後に共有ロックで `SerrePositivity.BhattScholze` と `SerrePositivity.Paper.Section2.LengthAlgebra.MixedChar` を再確認し、成功した。
+
+## BS-W11 停止点 A-1（2026-11-07）
+
+基準は開始時 main `f40c91f43`（BS-DOC1 の取り込み `7032f9c59` を含む）。`math/bs-impl` の W11 最初のコミット `41f07e792` で、`RootTower/PerfectBaseChange.lean` の 25 行目を module docstring の改行だけで短くした。
+
+- `drafts/A5/RootAdjunction.lean` の内容を独立した一時ファイルに写し、43 宣言（インスタンスを含む）を `lake env lean -DrelaxedAutoImplicit=false` で型検査した。1 ファイル、壁時計 10.08 秒、終了コード 0。現行の名前空間を使い、環の余極限の import を明示し、関係式の `p` の型注釈と `include` の位置を補った。定義の内容、引数順、定理の仮定と結論は下書きの意図どおり。F-2 の deprecated alias は使っていない。
+- `algebraicRootClosure_filteredColimit` は通常の可換環の filtered 図式に対して `Limits.colimit.post D (algebraicRootFunctor p)` が同型という形。完備化を挟む `rootClosure` については、射の関手性までを扱う。
+- 予定する import の到達先をソースから探索した（本体 461 モジュール）。`BhattScholze.Inputs.PerfectoidizationInterface` への経路は 0。環の完備化には `Perfectoidization.Derived.Interface` の既存 `completionRing` とその普遍性を使う。⑤b の差分とのパスの重複は 0。
+- 未証明箇所は下書きから写した 17 か所。延長性・関手性・濃度、代数的根添加の filtered 余極限と mod p Frobenius、有限変数の根の関係・perfectoid 性・完全忠実平坦性が残る。A-2 では延長性と完備性から着手し、多変数環の perfectoid 性には完全 δ 環での根変数の Frobenius と完備化の比較を調べる。濃度と、閉じられなかった宣言は drafts に置く。
+- 取り込み時の登録候補は `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction`。この停止点の新規本体モジュールは 0 本。型が同じことを確認したため、A-2 の証明へ進む。
