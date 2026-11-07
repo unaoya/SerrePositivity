@@ -7,6 +7,7 @@ public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral
 import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
 import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
@@ -44,7 +45,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 5. n 変数の Cartier 同型（`finitePolynomialCartier`）。
 6. 生成元での照合（`crystallineChain_generators`）。
 後半（`pdModel` 以下の J つき模型・`formsCAlg`）は A1-5（D69、A1/DeRhamComparisonPoly）用で、上の経路では
-`pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・`insertPdFactor` だけを使う。
+`pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinatesModP`・`insertPdFactor` を使う。
 
 ## 方針
 mod p なので導来 Nakayama（G-A1-4）は使わない。比較はすべて余単体的可換環の厳密な射（または整係数の厳密な射の mod p）で与え、
@@ -127,7 +128,7 @@ abbrev formsVertex (k : Type u) [CommRing k] (n : ℕ) :=
 abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
   ULift.up (nerveVertex (⟨n⟩ : Poly k))
 
-/-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinates`・
+/-! ## 結晶の多項式模型（G-A1-14・16・17）。D68 改訂後の経路は `pdModel`・`pdRow`・`withExtraCoords`・`splitDeltaCoordinatesModP`・
 `insertPdFactor` を使う。 -/
 
 -- 未完備 pd 模型は本体の PDPolynomialCech に置く。
@@ -415,25 +416,8 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 3：D_0^•/p → D^•/p（G-A1-16） -/
 
-abbrev pdRings (r : ℕ) := pdModel.{u} p (crystallineBase.{u} p) r ⋙ Under.forget (CommRingCat.of (crystallineBase.{u} p))
-
-/-- 概要：D_0^• → D^•（δ 座標なしの pd 脈体を、追加座標を 0 次で挿入して D^• に）。
-方針：`insertPdFactor` の後に `splitDeltaCoordinates` の逆。
-規約：余単体的 ℤ_p 代数の厳密な射。
-使われ方：段 3・6。 -/
-abbrev pdInclusion (r : ℕ) : pdModel.{u} p (crystallineBase.{u} p) r ⟶ pdDeltaModel p r :=
-  insertPdFactor p _ r ≫ (splitDeltaCoordinates p r).inv
-
-abbrev pdInclusionModP (r : ℕ) : modPrimeCosimplicial p (pdRings.{u} p r) ⟶ modPrimeCosimplicial p (pdDeltaRings p r) :=
-  modPrimeMap p (Functor.whiskerRight (pdInclusion p r) (Under.forget _))
-
-/-- 概要：段 3：D_0^•/p → D^•/p は cohomology 同型（G-A1-16 の mod p 版）。
-方針：mod p で D^n/p ≅ D_0^n/p ⊗_{F_p} Q^{⊗(n+1)}/p、E^• = Q^{⊗(•+1)} は retraction U ↦ 0 の extra degeneracy で増大付き収縮、テンソルで保たれる
-（G-A1-3）。mod p なので Rlim は要らない。
-規約：—
-使われ方：段 6 の `crystallineChain`。 -/
-theorem pdInclusionModP_isCohomologyIso (r : ℕ) : IsCohomologyIso (pdInclusionModP.{u} p r) := by
-  sorry -- G-A1-16 の mod p。追加座標の Čech 因子の extra degeneracy
+-- pdRings と mod p の包含は本体の CrystallinePDInclusion に置く。
+-- 整係数の包含とその還元との一致は CrystallinePDIntegral に置く。
 
 /-! ### 段 4：H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]}) -/
 
