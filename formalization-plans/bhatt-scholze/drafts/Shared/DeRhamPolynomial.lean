@@ -4,7 +4,7 @@ module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Core.NerveCone
-public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
+public import SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
@@ -49,24 +49,6 @@ variable (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T]
 def deRhamCohomologyWedge {i j : ℕ} :
     (deRhamComplex k T).homology i → (deRhamComplex k T).homology j → (deRhamComplex k T).homology (i + j) :=
   sorry -- 外積を余輪体の代表で取り、deRhamD_wedge で well-defined
-
-/-! ## 普遍性（Constr 4.9 の「universal property of the de Rham complex」） -/
-
-/-- 概要：普遍性：環の射 η^0 : P → H^0 と、P 線形（H^0 を経由）な η^1 : Ω^1 → H^1 で、η^1(df) = d(η^0 f) かつ η^1(ω)·η^1(ω) = 0 となるものから、
-dg 代数の射 Ω^* → H^* が一意に延びる。
-方針：Ω^* = Λ^*_P(Ω^1) の外積代数の普遍性（`ExteriorAlgebra.lift`：平方零の線形写像から代数射）と、微分との両立を生成元で。
-規約：平方零の条件は原典の Lemma 4.10（β(f)² = 0）に対応。
-使われ方：Constr 4.9 の η^*。 -/
-theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
-    (η0 : Poly k T →+* H.carrier 0) (η1 : forms k T 1 →+ H.carrier 1)
-    (hlin : ∀ (f : Poly k T) (ω : forms k T 1), η1 (f • ω) = η0 f • η1 ω)
-    (hd : ∀ f : Poly k T, η1 (deRhamD k T 0 (formsZeroEquiv k T f)) = H.d 0 (η0 f))
-    (hsq : ∀ ω : forms k T 1, H.mul (η1 ω) (η1 ω) = 0) :
-    ∃! Φ : ∀ i, forms k T i →+ H.carrier i,
-      (∀ f, Φ 0 (formsZeroEquiv k T f) = η0 f) ∧ (∀ ω, Φ 1 ω = η1 ω) ∧
-      (∀ {i j} (ω : forms k T i) (η : forms k T j), Φ (i + j) (wedge k T ω η) = H.mul (Φ i ω) (Φ j η)) ∧
-      (∀ i ω, Φ (i + 1) (deRhamD k T i ω) = H.d i (Φ i ω)) := by
-  sorry -- 外積代数の普遍性と生成元での検算
 
 /-! ## p 完備化 -/
 
