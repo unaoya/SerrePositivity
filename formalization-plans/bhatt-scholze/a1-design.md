@@ -258,7 +258,7 @@ RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体�
    RΓ_crys の記号は原典との照合のためで、D25 β では J つき pd Čech 模型とその de Rham 計算（G-A1-17）で埋める。
 3. 結晶 prism (W(A_0/d_0),(p)) と多項式：Thm 5.2 β の使う形（Δ ≃ Tot D^•、D^• の Tot ≃ 持ち上げの de Rham 複体＝§3 の 6）を、Lemma 4.20
    （(p)-prism の Δ は任意の p 完備底変換と可換、A0-4）で Z_p に帰着。
-4. （**11-07 注：D68 改訂で以下の黒箱は削除。HT は §10 の六段で直接、A1-5 の Thm 5.2 β は `wittPdBridge` の中で Lemma 5.4 と導来 Nakayama から**）
+4. （**11-07 注：D68 改訂で以下の黒箱は削除。HT は §10 の六段で直接、A1-5 の Thm 5.2 β は `wittSmallBridge_isInvertible`（旧 `wittPdBridge`）の中で Lemma 5.4 と導来 Nakayama から**）
    Z_p と F_p[X]：~~結晶の黒箱~~（A1-3）を de Rham の形で：φ^*Δ_{F_p[X]/Z_p} ≃ Ω^*_{Z_p⟨X⟩/Z_p}（Thm 5.2 β の使う形、可換代数として、多項式代数の
    射について自然、乗法的、Bockstein と両立——W9 の仕様）。mod p で Ω^*_{F_p[X]/F_p}。HT 比較（Cor 5.5、A1-3 の `hodgeTate_iso_polynomial_Zp`）は
    同じ黒箱と Cartier 同型（一変数は G-A5-12、n 変数は Künneth）から。**結晶の黒箱は一つのまま**（D68）。
@@ -341,7 +341,7 @@ D^• = `pdDeltaRings`（`pdDeltaModel`、B^•{φ(z)/p}^∧）、D_0^• = `pdR
 - 変更：`finitePolynomialCartier` の型を部分型（次数 1 の条件だけ）から構造体 `PolynomialCartier`（次数 0・1 と乗法性）に。`pdRow_contractible` の基底を
   ℤ_p から一般の k に（段 4 は F_p で使う）。`hodgeTate_of_deRham_cartier` は名前を保ち、黒箱ではなく段 1〜6 から。
 - 残したもの：`formsCAlg` 系・`pdPolynomialComparison`（G-A1-17）・`extraCech_comparison`（整係数）・`polyPoint`・`changePolyNerve` は A1-5（D69）用。
-  A1-5 の `wittPdBridge`（W = W(A_0/d_0) 上の Thm 5.2 β）は整係数で要る（C = A_0/d_0 は p ねじれなし）ので、段 1 の無限変数版（k = W/p）と
+  A1-5 の `wittSmallBridge_isInvertible`（旧 `wittPdBridge`、W = W(A_0/d_0) 上の Thm 5.2 β）は整係数で要る（C = A_0/d_0 は p ねじれなし）ので、段 1 の無限変数版（k = W/p）と
   導来 Nakayama（G-A1-4）をそこで使う。
 
 ### 10.3 段 4 の積（厳密な Alexander–Whitney）
@@ -350,6 +350,11 @@ D^• = `pdDeltaRings`（`pdDeltaModel`、B^•{φ(z)/p}^∧）、D_0^• = `pdR
 厳密な Alexander–Whitney（Shared の `cup`：前面・後面の引き戻しの積、鎖のレベルで結合的）、形式の方向は外積、符号は Koszul。Leibniz 則は
 `cochainDifferential_cup` と pd 微分の Leibniz から。行 0 の包含と Ω^•（定数の余単体的対象を copy 0 に）の包含はどちらもこの積を保つ（鎖のレベル）。
 可換性は cohomology でだけ要る（`cohomologyCup_comm`）。Bockstein の両立のため、同じ積と zigzag を ℤ_p 上の厳密な写像として作り mod p を取る。
+**訂正（11-07、§10.5 の設計で気づいた）**：行 0 の包含 D_0^• → Tot K と、列への包含 Ω^• → Tot K は**鎖写像ではない**（前者は縦の pd 微分、後者は
+横の交代余面の微分が消えない）。鎖写像になるのは逆向きの射影：Tot K → 行 0（j = 0 成分。縦の微分は j を上げるので鎖写像）と
+Tot K → 列 0 = Ω^•_pd(D_0^0) = Ω^•（n = 0 成分。横の微分は n を上げるので鎖写像）。前者は核が j ≥ 1 の行の有限 filtration で擬同型
+（`pdRow_contractible`）、後者は列がホモトピー的に定数（`pdPoincare_column`、全ての余面が H で同じ同型）なので擬同型。どちらも AW × 外積の積を保つ。
+段 4 の zigzag は span D_0^• ← Tot K → Ω^•（`pdDeRhamCohomologyIso`・`pdDeRhamCohomologyIso_cup` の docstring を直した）。
 
 ### 10.4 D69 の貼り合わせ（`deRham_iso_polynomial_universal`）の高次の整合性
 
@@ -369,3 +374,100 @@ D^• = `pdDeltaRings`（`pdDeltaModel`、B^•{φ(z)/p}^∧）、D_0^• = `pdR
 弱めれば 1〜2 は要らない（filtered 余極限 T_∞ = colim T_m の比較には N(ℕ) 上の自然変換が要るが、N(ℕ) の背骨の包含は内側 anodyne なので
 成分と四角形から作れる）。A1-5 の主張 `deRham_iso_polynomial_modP` の型が変わる（原典 Thm 6.4 の「自然な同型」の特別な場合）。
 drafts では型を変えず、`deRham_iso_polynomial_universal`・`pdPolynomialComparison` に TODO の docstring を付けた。
+**11-07 決定（ユーザー）：代案は採らず、関手としての同型のまま。部品 (i)〜(iii) の設計は §10.5。**
+
+### 10.5 D69 の部品 (i)：選択なしで厳密に関手的な模型と zigzag（2026-11-07）
+
+概要：11-07 のユーザー決定（D69 は `FunctorIso` のまま）に従い、`deRham_iso_polynomial_universal` を Poly(C) 上の**厳密な関手と厳密な自然変換**の
+zigzag から作る。C = A_0/d_0（`residueU`）、W = W(C)（`WU`）、J = ker(W → C/p)（`wittPdIdeal`、γ = `wittPdStructure`）、Q ∈ Poly(C)、
+Q^∧ = C⟨X_1,…,X_n⟩（A2 の `polyCompletion`）。
+方針：**対象は選択してよい、射は普遍性の lift で一意**なら厳密に関手的（map_comp は lift の一意性から等式で出る）。今の `pdPolynomialFunctor` が
+W 上で関手にならないのは、射 f の持ち上げ f̃ : W[X] → W[Y]（係数の持ち上げ）を選ぶからで、対象の選択のせいではない。したがって
+(1) W・A_0 の上では Q^∧ の元すべてを変数にする**大きい枠**（x_q ↦ x_{f(q)}、BS 著者版 Construction 4.18 の考え方）を使い、
+(2) C の上では Poly(C) の射を C 係数のまま代入できるので、**小さい模型 `pdModel C n` が厳密に関手的**（`pdPolynomialFunctor C`）。
+de Rham 比較は (2) の上で行い、大きい枠の pd 形式（無限変数）は使わない。
+規約：骨組みは drafts/A1/DeRhamComparisonPoly の「D69 の厳密に関手的な模型と zigzag」、一般の pd 部品は drafts/A1/CrystallineInput の
+「A1-5（D69）用」、∞ 側の部品は drafts/Shared/CosimplicialEInfinity の末尾 3 節。
+使われ方：`deRham_iso_polynomial_universal` → `transferWittComparison` → `deRham_iso_polynomial_modP`。
+
+#### 10.5.1 一般の部品
+
+| 部品 | 主張 | 宣言 |
+| --- | --- | --- |
+| J つき pd 包 | 基底 (k, J, γ)、J B ⊆ K のとき p 完備な J つき pd 包の普遍性と存在（Berthelot I.2.3.1 の p 完備化） | `IsCompletedPDEnvelope`、`exists_completedPDEnvelope` |
+| 枠の pd Čech 脈体 | 枠 s : S → R̄ について D_S^n = ker(k[S × [n]] → R̄) の pd 包。対象は選択、θ は lift | `pdFrame`、`pdFrameEval`、`pdCechNerve`、`pdCechAugmentation` |
+| 枠の射 | φ : S → D_{S′}^0（増大で s に移る）から D_S^• → D_{S′}^• | `pdCechNerveMap` |
+| **表示によらない** | 二つの枠がどちらも R̄ を覆えば、枠の射は交代余面複体の擬同型。積の枠 S ⊔ S′ を通し、S ⊆ S ⊔ S′ では D_{S⊔S′}^• ≅ D_S^• ⊗̂ Γ_k(t)^{⊗(•+1)}（t = y − ℓ）の pd 多項式の Čech 因子の extra degeneracy（mod p^a ごと、Rlim）、(φ, id) と 2-out-of-3 | `pdCechNerveMap_quasiIso` |
+| 小さい模型 | `pdModel k r` は枠 Fin r → (k/J)[X] の pd Čech 脈体（k 上自由なので γ は JD に延びる） | `pdModel_iso_pdCechNerve` |
+| 厳密な自然変換 → 辺（(ii)） | F : 𝒞 ⥤ 𝒟 を持ち上げた形状からの射に、α : F ⟶ G を単体的ホモトピー（N(𝒞 × [1]) ≅ N𝒞 × Δ¹、本体の `NerveHomotopy.homotopy`）に、∞ 関手 T を後合成し、成分が可逆なら本体の `functorIsoOfPointwiseInvertibleHomotopy`（(iii)、`functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise` の系） | Shared：`strictShapeNerve`、`strictShapeNerve_comp`、`strictNatTransHomotopy`、`homotopyPostcomp`、`strictNatTransFunctorIso` |
+| Tot と可逆性 | 交代余面複体の擬同型 ⇒ Tot_{E∞} の可逆な辺 | Shared：`totEInfinity_map_isInvertible` |
+| 余単体的 cdga の Tot | n ↦ cdga の Tot_{E∞}、次数 0 では余単体的可換環の Tot と一致、[0] への射影（極限錐の脚）とホモトピー的に定数なら可逆 | Shared：`CosimplicialCDGA`、`cdgaCAlg`、`discreteCDGA`、`totCDGAFunctor`、`totCDGA_discrete`、`totCDGA_evalZero`、`totCDGA_evalZero_isInvertible` |
+| Tot と係数 | Tot は係数制限と可換、厳密な α : F ⟶ G ⋙ g_* の随伴の転置（G の Tot は p 完備）、頂点での辺、厳密な射についての自然性 | Shared：`restrictCosimplicial`、`totEInfinity_restrict`；A1：`completeChange_comp`、`baseChangeTotHomotopy`、`baseChangeTotEdge`、`baseChangeTotHomotopy_vertex`、`baseChangeTotEdge_natural` |
+
+#### 10.5.2 zigzag の段（すべて Poly(C) 上で厳密に自然）
+
+| 段 | 主張 | 厳密な関手性の理由 | 宣言 |
+| --- | --- | --- | --- |
+| 0 | universalTwist = Δ_0 ≫ completeChange(q ∘ φ) ≅ Δ_0 ≫ completeChange ψ ≫ completeChange w_0 | `wZero_psi`（w_0 ∘ ψ = q ∘ φ）と係数変換の合成 | `completeChange_comp` |
+| 1 | Δ_0 ≅ Tot_{E∞} C_big(−)^•（大きい Čech–Alexander 模型） | C_big(Q)^n は A0 の `cechAlexander`（R = Q^∧）。f は x_{(q,i)} ↦ x_{(f̂q,i)} の envelope の lift | `bigCechAlexander`、`polyUnderlying_iso_bigCech` |
+| 2 | 結晶の橋 β：C_big(Q)^• → ψ_* D_W(Q)^•（x ↦ φ(x) = x^p）、転置して completeChange ψ ∘ Tot C_big ⟹ Tot D_W | D_W(Q)^• は大きい枠 W[x_q] → Q^∧/p（係数は w_0）の J つき pd Čech 脈体。D_W(Q)^n は結晶 prism（p ねじれなし、δ は BS Lemma 2.38 の議論）、β は envelope の lift | `wittBigPdModel`、`wittBigCrystalline`、`wittBigBridge`、`baseChangeTotHomotopy` |
+| 3 | D_W(Q)^• → (w_0)_* D_0(C, Q)^•（x_{(q,i)} ↦ copy i の q）、転置して completeChange w_0 ∘ Tot D_W ⟹ Tot D_0(C) | w_0 は pd 射 (J, γ) → (pC, 標準)、枠の射は Q^∧/p 上で両立、右辺 `pdPolynomialFunctor C` は C 係数のまま代入 | `residuePdStructure`、`wZero_isDPMorphism`、`wittToSmall` |
+| 4 | Tot_{E∞} D_0(C, −)^• ≅ Ω̂^•_{(−)/C}（`formsCAlg`） | C 上の小さい模型と余単体的 cdga K(Q)^n = Ω^•_pd(D_0^n) は Poly(C) について厳密に関手的 | CrystallineInput：`pdDeRhamCDGA`、`pdDeRhamProjection`、`pdDeRhamZeroIso`、`formsCAlg_eq`、`pdDeRhamFunctorIso` |
+
+組み立て：`bigZigzagIso` = 段 0 ≪≫ 段 1 ≪≫ 段 2 ≪≫ 段 3 ≪≫ 段 4（段 2・3 は `functorIsoOfPointwiseInvertibleHomotopy`、結合は `functorIsoOfEq`）。
+段 4 の中身：Tot D_0 ≅ Tot(D_0 を次数 0 の cdga に)（`totCDGA_discrete`）← Tot K（行 0 への射影 `pdDeRhamProjection`、`strictNatTransFunctorIso`）→
+K^0（`totCDGA_evalZero` の前合成）≅ Ω̂（`pdDeRhamZeroIso`）。
+
+#### 10.5.3 Ω^*_{Q/C} へつなぐ写像（決定）
+
+候補「pd 包 D(Q) → Q（C の (p) の標準 divided powers）と Ω^*_{D(Q)} → Ω^*_{Q/C}」は、段 3 の `wittToSmall` の第 0 項 D_W(Q)^0 → D_0(C,Q)^0 = C⟨X⟩ = Q^∧
+としてそのまま入る（C は p ねじれなしなので γ_n(px) = p^n x^n/n! ∈ pC が pd、w_0 は pd 射）。ただし**形式は大きい枠の上では作らない**：
+段 3 で C 上の小さい模型へ移ってから、有限変数の pd 形式で de Rham 比較（段 4）を行う。理由：(a) 大きい枠の Ω_pd は無限変数で、pd Poincaré・
+行の収縮を無限変数でやり直す必要がある、(b) C 上では小さい模型が厳密に関手的なので大きい枠は要らない、(c) 既存の `pdRow_contractible`（一般の k）・
+`pdPoincare_column`（一般の k へ）がそのまま使える。de Rham 側は W を経由しない（W 上の持ち上げ W⟨X⟩ の de Rham 複体は関手的でない）。
+段 4 の span の向き：行 0・列 0 の**包含**は鎖写像でないので、総複体からの**射影**二つを使う（§10.3 の訂正）。列 0 への射影は Tot_{E∞} では
+極限錐の [0] の脚で、K がホモトピー的に定数（pd Poincaré）なら可逆。
+
+#### 10.5.4 `wittComposite` の扱い（決定：大きい模型を通る形に定義し直す）
+
+`wittComposite n := (bigZigzagIso p).app (polyPoint _ n)`、`deRham_iso_polynomial_universal := ⟨bigZigzagIso p, fun _ => rfl⟩`。
+理由：旧定義（小さい模型の四本の脚 `WittComparisonLegs`：regroup・crystalline・pd・liftChange）は psiBaseChange（Cor 4.12 の抽象的な同型）と
+`wittPdBridge`（VertexIso の存在）を含み、zigzag の成分と一致することを示すには抽象的な同型の中身を開く必要がある。一方、成分の可逆性は
+いずれにせよ小さい模型との四角形（10.5.5）で示すので、成分を zigzag で定義すれば一致の証明は要らない。型の条件は文書としての役割
+（成分がどの構成かを固定する）だけになる。旧 `WittComparisonLegs`・`wittComparisonLegs`・`wittPdBridge` は削除（`psiBaseChange` は残し、
+`wittSmallBridge_isInvertible` の証明に使う）。
+
+#### 10.5.5 各対象での可逆性（小さい模型の結果を移す）
+
+各 Q = ⟨n⟩ で選択なしに取れる枠の射（Q について自然ではない、各対象でだけ使う）：
+- 段 2：`cechAlexanderFrame`（Rem 4.19 の小さい模型 `polyCosimplicialAlgebra` → C_big(Q)、X_j ↦ x_{X_j}、両方とも Δ の Čech 脈体なので Tot で可逆）、
+  `wittSmallFrame`（pdModel W n → D_W(Q)、`pdCechNerveMap_quasiIso`）、小さい橋 `wittSmallBridge`（X ↦ X^p、基底 ψ）と四角形 `wittBridge_frame_comm`
+  （envelope の一意性：両辺とも X^{(i)} ↦ x_{(X,i)}^p）。小さい橋の可逆性 `wittSmallBridge_isInvertible` が数学の中身（psiBaseChange、
+  `cechAlexanderAffine_baseChange`、W 上の Thm 5.2 β：Lemma 5.4 の無限変数版 k = W/p、G-A1-16、導来 Nakayama G-A1-4）。→ `wittBigBridge_isInvertible`。
+- 段 3：`wittToSmall_frame`（wittSmallFrame ≫ wittToSmall = `pdModelBaseChange`、X ↦ x_X ↦ X）、`pdModelBaseChange_isInvertible`
+  （W 上と C 上の段 4 の span は係数変換と厳密に可換、Ω̂_{W⟨X⟩} ⊗̂ C = Ω̂_{C⟨X⟩} は各次数有限自由で有界）→ `wittToSmall_isInvertible`。
+- 段 4：`pdDeRhamProjection_isInvertible`（j ≥ 1 の行の収縮）、`pdDeRham_homotopicallyConstant`（pd Poincaré）。
+小さい橋の写し方（X ↦ X^p で、原典の b ↦ φ(b) = X^p + pδ(X) ではない）は問題ない：どちらも (T′/W)_Δ の余単体的対象の射なので、Tot の上では
+site の RΓ からの制限として同じ類（S3 の制限の自然性）。
+
+#### 10.5.6 要相談（原典との差・設計の未決、D 番号なし）
+
+1. A2 の `PolyDeltaData` に「大きい Čech–Alexander 模型の Tot との FunctorIso」の欄を持たせるか。A2 の docstring は「∞ 関手としての整合性は
+   大きい模型の厳密な関手性から」と書くが、今の欄（val・obj_eq・map_eval）からは段 1 の同型が出ない。構成は大きい模型の Tot の頂点を RΓ に
+   差し替える（Joyal の isofibration Fun(K,X) → Fun(sk_0 K, X)、本体の名前は未確認）。
+2. 大きい枠 W[x_q | q ∈ Q^∧] の J つき pd Čech 模型は原典にない（原典 Thm 6.4 は結晶 site の RΓ_crys で、関手性は site から来る）。
+   D25 β（結晶 site を pd Čech 模型で代える）の延長で、Construction 4.18 の考え方を結晶側に転用したもの。
+3. 一般の J つき pd 包（`IsCompletedPDEnvelope`・存在）と「表示によらない」補題は Mathlib にない古典（Berthelot）。BS は当然として使う。
+4. 旧 `pdPolynomialComparison`・`PDPolynomialComparison`・`pdTotMap`（1 単体までの自然性）は D69 の経路から使われなくなった。削除するか。
+5. 宇宙と cutoff：`bigCechAlexander` は Q ごとの `polyCutoff` を使う（値は A_0 代数なので関手は作れる）。Q^∧ の濃度は n によらないので共通の
+   cutoff にしてもよい。
+6. 基盤待ち：`totEInfinityFunctor`・`totCDGAFunctor`（McClure–Smith／Berger–Fresse の E∞ 構造）、`cAlgBaseChange` とその随伴の関手 ∞ 圏への延長。
+
+#### 10.5.7 紙で確かめる項目
+
+1. D_W(Q)^n の p ねじれなしと δ 構造（Lemma 2.38 の議論、J = VW + pW は単項でない）。
+2. β の存在：J_0（`cechKernel`）の像が pD に入る（z ∈ K̄ ⇒ φ(z) ∈ pD、δ 閉包も）。Q^∧ → D/p（q ↦ x_q^p）が環の射。
+3. 表示によらない補題の無限変数・p 完備化（mod p^a ごとの収縮と Rlim）。D_{S⊔S′} ≅ D_S⟨t⟩ の変数変換が余単体的構造と両立すること。
+4. w_0 が pd 射：γ_n(Vx) = (p^{n−1}/n!) V(x^n) ↦ 0、γ_n(p) ↦ p^n/n!（p = 2 も）。
+5. 列 0 への射影の擬同型（ホモトピー的に定数な余単体的複体の Tot）、射影が AW × 外積の積を保つこと。
+6. `pdModelBaseChange_isInvertible`：Tot と完備底変換の交換を de Rham の span で示せること（両辺の span が係数変換と厳密に可換）。
