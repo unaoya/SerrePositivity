@@ -7,7 +7,7 @@ BS 設計のチャットは置かない（11-05 夜、ユーザー）。BS の�
 
 ```
 SerrePositivity の段階 II、Bhatt–Scholze 実装レーンの Codex として作業してください（目標 A：E3 を消す）。
-指示書は formalization-plans/bhatt-scholze/bhatt-scholze-codex-w11.md です。まず §6 の追記（段階 II の規則、11-05 夜）を読み、次に §0〜§5 を読んでください。前提の規則は BS-W10（bhatt-scholze-codex-w10.md）§0・§3 で、完了例は report-codex-w10.md です。
+最初の仕事は formalization-plans/bhatt-scholze/bhatt-scholze-codex-doc1.md（BS-DOC1：docstring に論文の番号を書く）です。停止点 1 で報告して待ってください。BS-DOC1 が main に入ったら、次の指示書 formalization-plans/bhatt-scholze/bhatt-scholze-codex-w11.md に進みます。W11 は、まず §6 の追記（段階 II の規則、11-05 夜）を読み、次に §0〜§5 を読んでください。前提の規則は BS-W10（bhatt-scholze-codex-w10.md）§0・§3 で、完了例は report-codex-w10.md です。
 §6 の 1 のとおり、main（9f591b5a5 以降）から worktree ../SerrePositivity-bs-impl と枝 math/bs-impl を切ってください。F-2 の改名表 scripts/refactor/targets/f-namespace-map.json の新しい名前を使います。
 drafts（formalization-plans/bhatt-scholze/drafts/）を新規ファイルとして本体へ移しながら、sorry を証明に置き換えます。置き場所は drafts/README.md です。本体に sorry は残さず、閉じられない宣言は drafts に残します。
 規則は formalization-plans/coordination.md §2 です。小さなビルドだけにし、main の作業木では作業しません。main への取り込みは調整役が行います。
