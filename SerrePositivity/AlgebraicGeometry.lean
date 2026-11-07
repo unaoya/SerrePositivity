@@ -319,3 +319,4 @@ public import SerrePositivity.AlgebraicGeometry.GenericFreeReducedAlgebra
 public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralProjectivity
 public import SerrePositivity.AlgebraicGeometry.GeometricallyIntegralFreeOpenBlowup
 public import SerrePositivity.AlgebraicGeometry.ProperFlatBlowupRefinement
+public import SerrePositivity.AlgebraicGeometry.GenericFlatness
