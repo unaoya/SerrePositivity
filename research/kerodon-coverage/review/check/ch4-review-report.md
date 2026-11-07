@@ -41,3 +41,24 @@ fix は名前空間・出典・引用の訂正も含む。主張の範囲の変�
 ## 未確定
 
 - 4.9.1.27 — 引用は最小濃度の共終部分集合と、整列性を仮定した順序型の式。任意の線形順序で整列な共終部分集合を作る宣言は未確定。
+
+## やり直し（11-07）
+
+§7 の対象として、前回の own・both・mathlib 157 件と、none 287 件、unsure 1 件を再照合した。
+採用した宣言の型は [kernel の記録](ch4-kernel-evidence.json) の `depth_review`、none の番号・タグ、対語を含む型検索、同小節の近接宣言は [行ごとの検索記録](ch4-none-search.json) に置いた。
+`citations.csv` が作業木にないため、引用は `citations-summary.md` とソースのコメントから再抽出した。小節内に own・both の採用先がない行は、近傍を選ぶ代替の起点を検索記録に明記した。
+
+| status | 件数 |
+| --- | ---: |
+| own | 96 |
+| both | 0 |
+| mathlib | 35 |
+| partial | 172 |
+| none | 285 |
+
+ok 314 件、fix 274 件、unsure 0 件。
+
+- 4.4.1.8 は own。仮定：∞ 圏間の F（Lean が弱い：EquivalenceLifting.op 自体は任意の単体集合間で成り立つ）。結論：EquivalenceLifting は ∞ 圏上では内ファイブレーションと同値辺持ち上げの組。反転で保たれ、二重反転が恒等なので反対方向にも保たれる（一致）。
+- 4.8.4.5 は partial。仮定：∞ 圏間の内ファイブレーション（Lean が強い：正次元の一方向は F の充満忠実性を仮定）。結論：全ての正次元の境界充填と充満忠実性の対応を確認。単一の n での n-full との同値や n=0 の isofibration 版は未確認（Lean が弱い）。
+
+前回からの status の変更は mathlib → partial が 6 件、none → own が 1 件、none → partial が 1 件、own → partial が 21 件。
