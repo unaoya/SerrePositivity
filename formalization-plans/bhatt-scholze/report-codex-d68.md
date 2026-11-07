@@ -180,7 +180,34 @@ SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 - `crystallineExtraCechPolynomialIso` は切断付き Čech 余脈体を、各頂点の高次 δ 座標の多項式環と同一視する。`withExtraCoords` はこの余脈体を pd 模型に加えた完備模型。`insertPdFactorModP_isCohomologyIso` は、その包含の mod p のコホモロジー同型を与える。
 - `crystallinePDRawToTarget_isIso_modPrime` と `crystallinePrincipalCompletionUnit_isIso_modPrime` は、未完備模型から結晶側の完備模型への射と主完備化の単位が剰余で同型であることを示す。追加の鍵付き対象ビルドと 15 宣言の一時監査が通り、標準三公理のみを使用した。
 
-### 今回の登録対象
+## BS-D68 停止点 2（2026-11-08）
+
+### 実装
+
+| 宣言 | 内容 |
+| --- | --- |
+| `frobeniusTwist_cech_quasiIso_infinite`、`frobeniusTwist_cech_quasiIso` | 全零添字を分離し、残りを符号付き余退化で収縮する。任意変数の証明から有限変数版を得る。 |
+| `pdDelta_modP_frobeniusPushout` | 結晶模型の mod p を相対 Frobenius に沿う押し出しと同一視し、左脚を橋と照合する。 |
+| `crystallineBridgeModP_isCohomologyIso` | 無限変数の Lemma 5.4 を押し出し表示に適用する。 |
+| `crystallineRawPDFactor`、`crystallineRawPDSplit` | 未完備結晶模型を階乗部分環で表し、自由分冪因子と高次 δ 座標の多項式因子に分離する。 |
+| `crystallineExtraTermIso` | 高次座標の Čech 因子との余積を、通常のテンソル積と同一視する。 |
+| `splitDeltaCoordinatesModP` | 基底、通常の頂点座標、高次座標で自然性を確認し、結晶模型の剰余を分離する。 |
+| `pdInclusionModP_isCohomologyIso` | 高次座標を零に評価する切断から、pd 因子の包含が mod p のコホモロジー同型を誘導することを示す。 |
+| `pdInclusion`、`pdInclusionModP_eq_modPrime` | 比較を整係数の完備模型へ延長し、その還元が mod p の包含に一致することを示す。Bockstein 照合に使える。 |
+
+- D68 の分離同型は mod p で構成した。整係数では比較射とその還元との一致を閉じた。整係数の分離同型 `splitDeltaCoordinates` と整係数の擬同型 `extraCech_comparison` は D69 向けの草稿に残る。
+- 実装の最終コミットは `bb7ca252c`。Lemma 5.4 は `deedbbd11`、結晶の橋の同型は `a8eb0a7a3`、完備 pd 模型は `4388fc197`、切断付き高次座標模型は `480cf572f`。
+
+### 検収
+
+- `with_build_lock.sh --wait 1800` で新規 33 モジュールの対象ビルドが成功。整係数の比較射と main に登録済みの `PolynomialFrobeniusCech` も対象に加えてビルドし、段 2 の検収対象は計 35 モジュール。
+- 鍵付きビルドの成果物で一時監査を実行した。150 宣言は `propext`、`Classical.choice`、`Quot.sound` のみを使用。追加公理と `sorryAx` は 0 件。
+- 推移的 import を調べ、`InfinityCategories` と `PerfectoidizationInterface` への依存がないことを確認した。既存の本体宣言の変更はなく、⑤a との変更ファイルの重複もない。
+- 段 3 は pd de Rham 双複体の二つの射影、有限多項式 Cartier 同型、生成元と Bockstein の照合。
+
+### 取り込み時の登録対象
+
+main に登録済みの `PolynomialFrobeniusCech` に加え、次の 34 モジュールを登録する。
 
 ```text
 SerrePositivity.BhattScholze.Delta.Division.BaseChange
@@ -201,10 +228,15 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
 SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
 SerrePositivity.BhattScholze.Prismatic.CrystallineExtraPolynomial
 SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDInclusion
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDTensorPresentation
 SerrePositivity.BhattScholze.Prismatic.CrystallinePrincipalResidue
 SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDFactor
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDSplit
 SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
 SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
