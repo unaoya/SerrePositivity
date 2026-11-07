@@ -76,7 +76,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_finite_lower_cover := _root_.SerrePositivity.AlgebraicGeometry.exists_finite_lower_cover
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finite_lower_cover := _root_.SerrePositivity.AlgebraicGeometry.exists_finite_lower_cover
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_finite_leading_degree_cover := _root_.SerrePositivity.AlgebraicGeometry.exists_finite_leading_degree_cover
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finite_leading_degree_cover := _root_.SerrePositivity.AlgebraicGeometry.exists_finite_leading_degree_cover

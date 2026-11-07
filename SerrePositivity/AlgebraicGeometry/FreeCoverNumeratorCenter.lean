@@ -96,19 +96,19 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal_fg
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal_fg
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal_map_eq_top := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal_map_eq_top
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal_map_eq_top := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal_map_eq_top
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_mem_of_away_map_eq_top := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_mem_of_away_map_eq_top
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_mem_of_away_map_eq_top := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_mem_of_away_map_eq_top
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_freeCoverNumeratorCenter := _root_.SerrePositivity.AlgebraicGeometry.exists_freeCoverNumeratorCenter
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_freeCoverNumeratorCenter := _root_.SerrePositivity.AlgebraicGeometry.exists_freeCoverNumeratorCenter
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorIdeal._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorIdeal._proof_1

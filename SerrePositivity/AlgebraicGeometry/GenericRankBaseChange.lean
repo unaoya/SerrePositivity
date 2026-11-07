@@ -91,7 +91,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.generic_rankAtStalk_baseChange := _root_.SerrePositivity.AlgebraicGeometry.generic_rankAtStalk_baseChange
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.generic_rankAtStalk_baseChange := _root_.SerrePositivity.AlgebraicGeometry.generic_rankAtStalk_baseChange
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.generic_finrank_tensor_baseChange := _root_.SerrePositivity.AlgebraicGeometry.generic_finrank_tensor_baseChange
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.generic_finrank_tensor_baseChange := _root_.SerrePositivity.AlgebraicGeometry.generic_finrank_tensor_baseChange

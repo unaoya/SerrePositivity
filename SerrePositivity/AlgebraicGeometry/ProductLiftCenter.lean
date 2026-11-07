@@ -77,16 +77,16 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap_base := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap_base := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap_regular_center := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap_regular_center
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap_regular_center := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap_regular_center
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.productLeftChartRingMap._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.productLeftChartRingMap._proof_2

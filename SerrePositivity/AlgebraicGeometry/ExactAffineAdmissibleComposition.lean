@@ -64,7 +64,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineCenterComplement_span_singleton := _root_.SerrePositivity.AlgebraicGeometry.affineCenterComplement_span_singleton
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineCenterComplement_span_singleton := _root_.SerrePositivity.AlgebraicGeometry.affineCenterComplement_span_singleton
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_affine_exact_admissible_composition_domination := _root_.SerrePositivity.AlgebraicGeometry.exists_affine_exact_admissible_composition_domination
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_affine_exact_admissible_composition_domination := _root_.SerrePositivity.AlgebraicGeometry.exists_affine_exact_admissible_composition_domination

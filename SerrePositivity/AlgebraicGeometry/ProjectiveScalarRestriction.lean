@@ -55,7 +55,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.projective_finsupp_of_projective := _root_.SerrePositivity.AlgebraicGeometry.projective_finsupp_of_projective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_finsupp_of_projective := _root_.SerrePositivity.AlgebraicGeometry.projective_finsupp_of_projective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.projective_restrictScalars_of_projective_algebra := _root_.SerrePositivity.AlgebraicGeometry.projective_restrictScalars_of_projective_algebra
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_restrictScalars_of_projective_algebra := _root_.SerrePositivity.AlgebraicGeometry.projective_restrictScalars_of_projective_algebra

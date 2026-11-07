@@ -92,13 +92,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_mul_coeff_mem := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_mul_coeff_mem
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebra_mul_coeff_mem := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebra_mul_coeff_mem
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal_span := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal_span
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal_span := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal_span
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal_fg
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraCoefficientIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraCoefficientIdeal_fg

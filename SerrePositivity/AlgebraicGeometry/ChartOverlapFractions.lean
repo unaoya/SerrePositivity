@@ -81,10 +81,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_left_regular := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_left_regular
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_left_regular := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_left_regular
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_left_ratio_isUnit := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_left_ratio_isUnit
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_left_ratio_isUnit := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_left_ratio_isUnit
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_fraction := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_fraction
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartOverlap_fraction := _root_.SerrePositivity.AlgebraicGeometry.chartOverlap_fraction

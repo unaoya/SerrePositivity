@@ -201,31 +201,31 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra_isScalarTower := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra_isScalarTower
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra_isScalarTower := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra_isScalarTower
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localizedBaseGenericPrime_comap := _root_.SerrePositivity.AlgebraicGeometry.localizedBaseGenericPrime_comap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localizedBaseGenericPrime_comap := _root_.SerrePositivity.AlgebraicGeometry.localizedBaseGenericPrime_comap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra_isLocalization := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra_isLocalization
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericAlgebra_isLocalization := _root_.SerrePositivity.AlgebraicGeometry.localGenericAlgebra_isLocalization
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison_map := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison_map
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison_map := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison_map
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.genericPrimeMap_family_injective := _root_.SerrePositivity.AlgebraicGeometry.genericPrimeMap_family_injective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericPrimeMap_family_injective := _root_.SerrePositivity.AlgebraicGeometry.genericPrimeMap_family_injective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.ideal_eq_bot_of_genericPrime_maps_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.ideal_eq_bot_of_genericPrime_maps_eq_bot
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ideal_eq_bot_of_genericPrime_maps_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.ideal_eq_bot_of_genericPrime_maps_eq_bot
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.localGenericComparison._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.localGenericComparison._proof_2

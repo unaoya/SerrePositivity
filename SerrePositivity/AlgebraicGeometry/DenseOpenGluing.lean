@@ -75,19 +75,19 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpen_localMaps_compatible := _root_.SerrePositivity.AlgebraicGeometry.denseOpen_localMaps_compatible
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpen_localMaps_compatible := _root_.SerrePositivity.AlgebraicGeometry.denseOpen_localMaps_compatible
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue_base := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue_base := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue.congr_simp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue.congr_simp
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.denseOpenGlue.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.denseOpenGlue.eq_1

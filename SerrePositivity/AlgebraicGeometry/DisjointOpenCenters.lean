@@ -86,10 +86,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_of_openImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_of_openImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_map_eq_top_of_disjoint_closed_image := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_map_eq_top_of_disjoint_closed_image
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_map_eq_top_of_disjoint_closed_image := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_map_eq_top_of_disjoint_closed_image
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_map_of_disjoint_closed_images := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_map_of_disjoint_closed_images
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealSheaf_comap_iInf_map_of_disjoint_closed_images := _root_.SerrePositivity.AlgebraicGeometry.idealSheaf_comap_iInf_map_of_disjoint_closed_images

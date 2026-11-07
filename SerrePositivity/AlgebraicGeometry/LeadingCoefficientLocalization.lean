@@ -56,7 +56,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.prod_leadingCoeff_ne_zero := _root_.SerrePositivity.AlgebraicGeometry.prod_leadingCoeff_ne_zero
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.prod_leadingCoeff_ne_zero := _root_.SerrePositivity.AlgebraicGeometry.prod_leadingCoeff_ne_zero
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.isUnit_leadingCoeff_in_prod_localization := _root_.SerrePositivity.AlgebraicGeometry.isUnit_leadingCoeff_in_prod_localization
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isUnit_leadingCoeff_in_prod_localization := _root_.SerrePositivity.AlgebraicGeometry.isUnit_leadingCoeff_in_prod_localization

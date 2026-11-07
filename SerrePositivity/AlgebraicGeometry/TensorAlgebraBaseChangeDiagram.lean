@@ -129,25 +129,25 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap_left
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap_left
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap_right := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap_right
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap_right := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap_right
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_left
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_left
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_right := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_right
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_right := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_right
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_left_algebra := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_left_algebra
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChange_isScalarTower_left_algebra := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isScalarTower_left_algebra
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraBaseChangeMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChangeMap.eq_1

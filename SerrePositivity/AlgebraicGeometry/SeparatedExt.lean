@@ -134,13 +134,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.specMap_ker_eq_bot_of_injective := _root_.SerrePositivity.AlgebraicGeometry.specMap_ker_eq_bot_of_injective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.specMap_ker_eq_bot_of_injective := _root_.SerrePositivity.AlgebraicGeometry.specMap_ker_eq_bot_of_injective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.hom_ext_of_ker_eq_bot_of_separated := _root_.SerrePositivity.AlgebraicGeometry.hom_ext_of_ker_eq_bot_of_separated
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hom_ext_of_ker_eq_bot_of_separated := _root_.SerrePositivity.AlgebraicGeometry.hom_ext_of_ker_eq_bot_of_separated
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pullback_snd_ker_eq_bot_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.pullback_snd_ker_eq_bot_of_openImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pullback_snd_ker_eq_bot_of_openImmersion := _root_.SerrePositivity.AlgebraicGeometry.pullback_snd_ker_eq_bot_of_openImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.hom_ext_of_isIso_restrict := _root_.SerrePositivity.AlgebraicGeometry.hom_ext_of_isIso_restrict
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hom_ext_of_isIso_restrict := _root_.SerrePositivity.AlgebraicGeometry.hom_ext_of_isIso_restrict

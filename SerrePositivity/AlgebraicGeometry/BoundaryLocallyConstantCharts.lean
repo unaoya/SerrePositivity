@@ -64,4 +64,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_fg_center_constant_on_boundary_charts := _root_.SerrePositivity.AlgebraicGeometry.exists_fg_center_constant_on_boundary_charts
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_fg_center_constant_on_boundary_charts := _root_.SerrePositivity.AlgebraicGeometry.exists_fg_center_constant_on_boundary_charts

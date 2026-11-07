@@ -95,7 +95,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.genericPrime_mem_freeLocus_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.genericPrime_mem_freeLocus_of_boundary_flat
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericPrime_mem_freeLocus_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.genericPrime_mem_freeLocus_of_boundary_flat
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryGenericRank_eq_original_rankAtStalk := _root_.SerrePositivity.AlgebraicGeometry.boundaryGenericRank_eq_original_rankAtStalk
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryGenericRank_eq_original_rankAtStalk := _root_.SerrePositivity.AlgebraicGeometry.boundaryGenericRank_eq_original_rankAtStalk

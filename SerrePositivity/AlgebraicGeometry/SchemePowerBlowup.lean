@@ -92,28 +92,28 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerNatIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerNatIso
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerNatIso := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerNatIso
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupPowerIso_hom := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupPowerIso_hom
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupPowerIso_hom := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupPowerIso_hom
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupPowerIso_hom_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupPowerIso_hom_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupPowerIso_hom_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupPowerIso_hom_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso_hom_base := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso_hom_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso_hom_base := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso_hom_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso_hom_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso_hom_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso_hom_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso_hom_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerNatIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerNatIso._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerNatIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerNatIso._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso.congr_simp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupPowerIso.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupPowerIso.congr_simp

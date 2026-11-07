@@ -76,7 +76,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flat_tensor_away_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.flat_tensor_away_of_boundary_flat
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_tensor_away_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.flat_tensor_away_of_boundary_flat
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flat_tensorAlgebra_away_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.flat_tensorAlgebra_away_of_boundary_flat
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_tensorAlgebra_away_of_boundary_flat := _root_.SerrePositivity.AlgebraicGeometry.flat_tensorAlgebra_away_of_boundary_flat

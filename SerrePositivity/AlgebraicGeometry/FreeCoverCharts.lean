@@ -79,16 +79,16 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.iSup_freeCoverNumerator_charts := _root_.SerrePositivity.AlgebraicGeometry.iSup_freeCoverNumerator_charts
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_freeCoverNumerator_charts := _root_.SerrePositivity.AlgebraicGeometry.iSup_freeCoverNumerator_charts
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_initialFreeBoundary_center := _root_.SerrePositivity.AlgebraicGeometry.exists_initialFreeBoundary_center
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_initialFreeBoundary_center := _root_.SerrePositivity.AlgebraicGeometry.exists_initialFreeBoundary_center
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.freeCoverNumeratorGenerator._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.freeCoverNumeratorGenerator._proof_2

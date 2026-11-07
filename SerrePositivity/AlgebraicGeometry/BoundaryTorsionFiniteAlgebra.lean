@@ -55,7 +55,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_annihilates_boundaryTorsion_of_finite_algebra := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_annihilates_boundaryTorsion_of_finite_algebra
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_annihilates_boundaryTorsion_of_finite_algebra := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_annihilates_boundaryTorsion_of_finite_algebra
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_annihilates_boundaryTorsion_of_finiteType := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_annihilates_boundaryTorsion_of_finiteType
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_pow_annihilates_boundaryTorsion_of_finiteType := _root_.SerrePositivity.AlgebraicGeometry.exists_pow_annihilates_boundaryTorsion_of_finiteType

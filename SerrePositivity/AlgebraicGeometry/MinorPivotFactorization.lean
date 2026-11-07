@@ -79,10 +79,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.minorPivotColumnCoefficients := _root_.SerrePositivity.AlgebraicGeometry.minorPivotColumnCoefficients
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.minorPivotColumnCoefficients := _root_.SerrePositivity.AlgebraicGeometry.minorPivotColumnCoefficients
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.eq_selectedColumns_mul_of_succ_minorIdeal_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.eq_selectedColumns_mul_of_succ_minorIdeal_eq_bot
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.eq_selectedColumns_mul_of_succ_minorIdeal_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.eq_selectedColumns_mul_of_succ_minorIdeal_eq_bot
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.columnSpan_eq_selectedColumns_of_succ_minorIdeal_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.columnSpan_eq_selectedColumns_of_succ_minorIdeal_eq_bot
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.columnSpan_eq_selectedColumns_of_succ_minorIdeal_eq_bot := _root_.SerrePositivity.AlgebraicGeometry.columnSpan_eq_selectedColumns_of_succ_minorIdeal_eq_bot

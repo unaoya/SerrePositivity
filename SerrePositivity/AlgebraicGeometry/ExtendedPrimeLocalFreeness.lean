@@ -65,7 +65,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.free_at_extended_prime := _root_.SerrePositivity.AlgebraicGeometry.free_at_extended_prime
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.free_at_extended_prime := _root_.SerrePositivity.AlgebraicGeometry.free_at_extended_prime
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.free_at_extended_prime_of_finite := _root_.SerrePositivity.AlgebraicGeometry.free_at_extended_prime_of_finite
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.free_at_extended_prime_of_finite := _root_.SerrePositivity.AlgebraicGeometry.free_at_extended_prime_of_finite

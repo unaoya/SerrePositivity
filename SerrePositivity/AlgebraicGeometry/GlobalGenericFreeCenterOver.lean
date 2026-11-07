@@ -68,4 +68,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_global_twoStage_boundaryFreeNeighborhood_center_over := _root_.SerrePositivity.AlgebraicGeometry.exists_global_twoStage_boundaryFreeNeighborhood_center_over
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_global_twoStage_boundaryFreeNeighborhood_center_over := _root_.SerrePositivity.AlgebraicGeometry.exists_global_twoStage_boundaryFreeNeighborhood_center_over

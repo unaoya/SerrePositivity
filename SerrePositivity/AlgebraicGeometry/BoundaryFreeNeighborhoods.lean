@@ -60,13 +60,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryPureFreeNeighborhoods_of_genericBoundaryPureFree := _root_.SerrePositivity.AlgebraicGeometry.boundaryPureFreeNeighborhoods_of_genericBoundaryPureFree
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPureFreeNeighborhoods_of_genericBoundaryPureFree := _root_.SerrePositivity.AlgebraicGeometry.boundaryPureFreeNeighborhoods_of_genericBoundaryPureFree
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods._proof_2

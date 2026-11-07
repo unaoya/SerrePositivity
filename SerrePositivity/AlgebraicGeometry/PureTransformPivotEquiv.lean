@@ -74,25 +74,25 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplement_injective := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplement_injective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplement_injective := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplement_injective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_6
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.pureTransformPivotComplementEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.pureTransformPivotComplementEquiv._proof_6

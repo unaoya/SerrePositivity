@@ -168,46 +168,46 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformAmbient := _root_.SerrePositivity.AlgebraicGeometry.strictTransformAmbient
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformAmbient := _root_.SerrePositivity.AlgebraicGeometry.strictTransformAmbient
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformOpen := _root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformOpen := _root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransform := _root_.SerrePositivity.AlgebraicGeometry.strictTransform
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransform := _root_.SerrePositivity.AlgebraicGeometry.strictTransform
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι_isClosedImmersion := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι_isClosedImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι_isClosedImmersion := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι_isClosedImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformToOriginal := _root_.SerrePositivity.AlgebraicGeometry.strictTransformToOriginal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformToOriginal := _root_.SerrePositivity.AlgebraicGeometry.strictTransformToOriginal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_square := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_square
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_square := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_square
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_square_assoc := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_square_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_square_assoc := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_square_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ_isProper := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ_isProper
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ_isProper := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ_isProper
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformOpen_eq := _root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen_eq
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformOpen_eq := _root_.SerrePositivity.AlgebraicGeometry.strictTransformOpen_eq
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι_restrict_isIso
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformι_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.strictTransformι_restrict_isIso
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ_restrict_isIso
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformπ_restrict_isIso := _root_.SerrePositivity.AlgebraicGeometry.strictTransformπ_restrict_isIso
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_isNoetherian := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_isNoetherian
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransform_isNoetherian := _root_.SerrePositivity.AlgebraicGeometry.strictTransform_isNoetherian
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.strictTransformAmbient._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.strictTransformAmbient._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.strictTransformAmbient._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.strictTransformAmbient._proof_1

@@ -69,4 +69,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.leading_degree_cover_localization := _root_.SerrePositivity.AlgebraicGeometry.leading_degree_cover_localization
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.leading_degree_cover_localization := _root_.SerrePositivity.AlgebraicGeometry.leading_degree_cover_localization

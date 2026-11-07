@@ -79,7 +79,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.smul_top_comap_eq_of_lTensor_quotient_injective := _root_.SerrePositivity.AlgebraicGeometry.smul_top_comap_eq_of_lTensor_quotient_injective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.smul_top_comap_eq_of_lTensor_quotient_injective := _root_.SerrePositivity.AlgebraicGeometry.smul_top_comap_eq_of_lTensor_quotient_injective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.smul_top_comap_kernel_subtype_of_flat := _root_.SerrePositivity.AlgebraicGeometry.smul_top_comap_kernel_subtype_of_flat
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.smul_top_comap_kernel_subtype_of_flat := _root_.SerrePositivity.AlgebraicGeometry.smul_top_comap_kernel_subtype_of_flat

@@ -85,31 +85,31 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorRetraction := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorRetraction
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorRetraction := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorRetraction
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding_tmul := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding_tmul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding_tmul := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding_tmul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorRetraction_comp_embedding := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorRetraction_comp_embedding
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorRetraction_comp_embedding := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorRetraction_comp_embedding
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.splitAlgebraTensorEmbedding.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.splitAlgebraTensorEmbedding.eq_1

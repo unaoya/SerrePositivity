@@ -102,10 +102,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartLocalizationι_denseRange := _root_.SerrePositivity.AlgebraicGeometry.chartLocalizationι_denseRange
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartLocalizationι_denseRange := _root_.SerrePositivity.AlgebraicGeometry.chartLocalizationι_denseRange
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupChartLocalization_range := _root_.SerrePositivity.AlgebraicGeometry.blowupChartLocalization_range
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupChartLocalization_range := _root_.SerrePositivity.AlgebraicGeometry.blowupChartLocalization_range
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowup_centerComplement_dense := _root_.SerrePositivity.AlgebraicGeometry.blowup_centerComplement_dense
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup_centerComplement_dense := _root_.SerrePositivity.AlgebraicGeometry.blowup_centerComplement_dense

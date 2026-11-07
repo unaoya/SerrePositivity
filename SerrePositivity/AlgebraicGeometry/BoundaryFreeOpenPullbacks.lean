@@ -123,22 +123,22 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods.freeOpens := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods.freeOpens
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeNeighborhoods.freeOpens := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeNeighborhoods.freeOpens
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeOpenPullbacks := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeOpenPullbacks
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeOpenPullbacks := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeOpenPullbacks
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeOpenPullbacks.comp := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeOpenPullbacks.comp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasBoundaryFreeOpenPullbacks.comp := _root_.SerrePositivity.AlgebraicGeometry.HasBoundaryFreeOpenPullbacks.comp
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.hasBoundaryFreeOpenPullbacks_spec_of_neighborhoods := _root_.SerrePositivity.AlgebraicGeometry.hasBoundaryFreeOpenPullbacks_spec_of_neighborhoods
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasBoundaryFreeOpenPullbacks_spec_of_neighborhoods := _root_.SerrePositivity.AlgebraicGeometry.hasBoundaryFreeOpenPullbacks_spec_of_neighborhoods
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.BoundaryPureFreeOpens._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.BoundaryPureFreeOpens._proof_2

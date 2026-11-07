@@ -134,13 +134,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flat_binaryProduct := _root_.SerrePositivity.AlgebraicGeometry.flat_binaryProduct
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flat_binaryProduct := _root_.SerrePositivity.AlgebraicGeometry.flat_binaryProduct
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_free := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_free
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_free := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_free
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_retract := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_retract
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_retract := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_retract
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_projective := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_projective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.injective_of_residueTensor_injective_of_projective := _root_.SerrePositivity.AlgebraicGeometry.injective_of_residueTensor_injective_of_projective

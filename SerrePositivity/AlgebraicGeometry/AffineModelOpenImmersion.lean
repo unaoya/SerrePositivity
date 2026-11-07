@@ -126,13 +126,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelToBase_mem := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelToBase_mem
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelToBase_mem := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelToBase_mem
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_common_basic := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_common_basic
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_common_basic := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_common_basic
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_injective := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_injective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_injective := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_injective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_isOpenImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_isOpenImmersion

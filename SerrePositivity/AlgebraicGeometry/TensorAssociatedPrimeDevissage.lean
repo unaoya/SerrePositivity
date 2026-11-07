@@ -58,4 +58,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.associatedPrimes_tensorProduct_subset_of_prime_quotients := _root_.SerrePositivity.AlgebraicGeometry.associatedPrimes_tensorProduct_subset_of_prime_quotients
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.associatedPrimes_tensorProduct_subset_of_prime_quotients := _root_.SerrePositivity.AlgebraicGeometry.associatedPrimes_tensorProduct_subset_of_prime_quotients

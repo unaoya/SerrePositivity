@@ -101,19 +101,19 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_det := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_det
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_det := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_det
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_residual_eq_zero := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_residual_eq_zero
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_residual_eq_zero := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_residual_eq_zero
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.det_submatrix_mem_matrixMinorIdeal_fintype := _root_.SerrePositivity.AlgebraicGeometry.det_submatrix_mem_matrixMinorIdeal_fintype
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.det_submatrix_mem_matrixMinorIdeal_fintype := _root_.SerrePositivity.AlgebraicGeometry.det_submatrix_mem_matrixMinorIdeal_fintype
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_mem_succ_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_mem_succ_minorIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix_mem_succ_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix_mem_succ_minorIdeal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.borderedPivotMatrix.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.borderedPivotMatrix.eq_1

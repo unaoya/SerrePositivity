@@ -43,4 +43,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_rankOne_isogeny := _root_.SerrePositivity.AlgebraicGeometry.exists_rankOne_isogeny
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_rankOne_isogeny := _root_.SerrePositivity.AlgebraicGeometry.exists_rankOne_isogeny

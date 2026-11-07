@@ -383,7 +383,10 @@
   ],
   "alias_tool": {
     "implementation": "SerrePositivity.Util.DeprecatedAlias",
-    "reexport": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias",
+    "command": "deprecated_alias_util",
+    "namespace": "SerrePositivity.Util.DeprecatedAlias",
+    "f2_module": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias",
+    "f2_module_source_blob": "0b815d22b6b2061255aa9a84835568681ae9cb6b",
     "since": "2026-11-07"
   },
   "verification": {
@@ -424,8 +427,8 @@
       ]
     },
     "compatibility_smoke_tests": [
-      "F-2 deprecated_alias suite via old import",
-      "legacy SchemeLemmas names, field notation and constructor pattern"
+      "deprecated_alias と deprecated_alias_util を同時に import し、両方で生成した alias の型と deprecated target を検査",
+      "旧 SchemeLemmas 名の field notation と constructor pattern"
     ]
   }
 }

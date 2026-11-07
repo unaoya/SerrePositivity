@@ -55,4 +55,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.ker_eq_bot_of_affineOpenCover_pullbacks := _root_.SerrePositivity.AlgebraicGeometry.ker_eq_bot_of_affineOpenCover_pullbacks
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.ker_eq_bot_of_affineOpenCover_pullbacks := _root_.SerrePositivity.AlgebraicGeometry.ker_eq_bot_of_affineOpenCover_pullbacks

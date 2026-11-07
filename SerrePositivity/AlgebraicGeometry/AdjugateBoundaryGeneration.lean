@@ -63,7 +63,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.adjugate_boundary_complement_surjective := _root_.SerrePositivity.AlgebraicGeometry.adjugate_boundary_complement_surjective
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adjugate_boundary_complement_surjective := _root_.SerrePositivity.AlgebraicGeometry.adjugate_boundary_complement_surjective
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_fin_surjection_boundaryPureTransform_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_fin_surjection_boundaryPureTransform_of_regular_minorIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_fin_surjection_boundaryPureTransform_of_regular_minorIdeal := _root_.SerrePositivity.AlgebraicGeometry.exists_fin_surjection_boundaryPureTransform_of_regular_minorIdeal

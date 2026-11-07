@@ -172,49 +172,49 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupDiagram_map_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupDiagram_map_isOpenImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupDiagram_map_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupDiagram_map_isOpenImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupDiagram_isLocallyDirected := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupDiagram_isLocallyDirected
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupDiagram_isLocallyDirected := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupDiagram_isLocallyDirected
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowup := _root_.SerrePositivity.AlgebraicGeometry.blowup
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup := _root_.SerrePositivity.AlgebraicGeometry.blowup
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_isOpenImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_isOpenImmersion := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_isOpenImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupπ := _root_.SerrePositivity.AlgebraicGeometry.blowupπ
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ := _root_.SerrePositivity.AlgebraicGeometry.blowupπ
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_π := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_π
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_π := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_π
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_π_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_π_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_π_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_π_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_blowupAffineι
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_blowupAffineι
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_blowupAffineι_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_blowupAffineι_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupModelMap_blowupAffineι_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupModelMap_blowupAffineι_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.exists_blowupAffineι
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_blowupAffineι := _root_.SerrePositivity.AlgebraicGeometry.exists_blowupAffineι
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowup._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowup._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowup._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupOpenCover._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.blowupOpenCover._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupπ._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupπ._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupπ._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupπ._proof_1

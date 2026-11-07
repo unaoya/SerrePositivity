@@ -62,16 +62,16 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift_comp_mkQ := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift_comp_mkQ
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift_comp_mkQ := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift_comp_mkQ
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.mkQ_comp_boundaryPowerLift := _root_.SerrePositivity.AlgebraicGeometry.mkQ_comp_boundaryPowerLift
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.mkQ_comp_boundaryPowerLift := _root_.SerrePositivity.AlgebraicGeometry.mkQ_comp_boundaryPowerLift
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundaryPowerLift._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.boundaryPowerLift._proof_2

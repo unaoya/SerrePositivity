@@ -100,58 +100,58 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional_isEffectiveCartier := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional_isEffectiveCartier
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineExceptional_isEffectiveCartier := _root_.SerrePositivity.AlgebraicGeometry.affineExceptional_isEffectiveCartier
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.IsEffectiveCartierImmersion._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.IsEffectiveCartierImmersion._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartExceptionalIdealEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.chartExceptionalIdealEquiv._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_6
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_6
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_7
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_7
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_8 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_8
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_8 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_8
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_9 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_9
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.regularPrincipalIdealEquiv._proof_9 := _root_.SerrePositivity.AlgebraicGeometry.regularPrincipalIdealEquiv._proof_9

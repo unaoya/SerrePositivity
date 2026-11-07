@@ -57,7 +57,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flatFiniteFreeDirectLimitEquiv := _root_.SerrePositivity.AlgebraicGeometry.flatFiniteFreeDirectLimitEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flatFiniteFreeDirectLimitEquiv := _root_.SerrePositivity.AlgebraicGeometry.flatFiniteFreeDirectLimitEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_finiteFree_sequence_directLimit_equiv := _root_.SerrePositivity.AlgebraicGeometry.exists_finiteFree_sequence_directLimit_equiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_finiteFree_sequence_directLimit_equiv := _root_.SerrePositivity.AlgebraicGeometry.exists_finiteFree_sequence_directLimit_equiv

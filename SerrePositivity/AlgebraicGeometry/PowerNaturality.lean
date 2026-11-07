@@ -49,10 +49,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupPowerIso_naturality._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupPowerIso_naturality._proof_1

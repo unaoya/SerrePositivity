@@ -71,7 +71,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBase_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBase_hom_ext
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBase_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBase_hom_ext
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenter_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenter_hom_ext
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupCenter_hom_ext := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupCenter_hom_ext

@@ -82,7 +82,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_adicCompletion_section_of_compatible_sections := _root_.SerrePositivity.AlgebraicGeometry.exists_adicCompletion_section_of_compatible_sections
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_adicCompletion_section_of_compatible_sections := _root_.SerrePositivity.AlgebraicGeometry.exists_adicCompletion_section_of_compatible_sections
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.exists_adicCompletion_section_of_flat_of_projective_reduction := _root_.SerrePositivity.AlgebraicGeometry.exists_adicCompletion_section_of_flat_of_projective_reduction
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.exists_adicCompletion_section_of_flat_of_projective_reduction := _root_.SerrePositivity.AlgebraicGeometry.exists_adicCompletion_section_of_flat_of_projective_reduction

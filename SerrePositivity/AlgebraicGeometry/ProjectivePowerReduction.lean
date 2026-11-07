@@ -87,58 +87,58 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.projective_nestedQuotientModule := _root_.SerrePositivity.AlgebraicGeometry.projective_nestedQuotientModule
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_nestedQuotientModule := _root_.SerrePositivity.AlgebraicGeometry.projective_nestedQuotientModule
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.projective_powerQuotientModule := _root_.SerrePositivity.AlgebraicGeometry.projective_powerQuotientModule
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.projective_powerQuotientModule := _root_.SerrePositivity.AlgebraicGeometry.projective_powerQuotientModule
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_10 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_10
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_10 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_10
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_11 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_11
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_11 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_11
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_12 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_12
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_12 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_12
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_13 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_13
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_13 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_13
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_14 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_14
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_14 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_14
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_15 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_15
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_15 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_15
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_16 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_16
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_16 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_16
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_6
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_6
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_7
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_7
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_8 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_8
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_8 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_8
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_9 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_9
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.nestedQuotientModuleSemilinearEquiv._proof_9 := _root_.SerrePositivity.AlgebraicGeometry.nestedQuotientModuleSemilinearEquiv._proof_9

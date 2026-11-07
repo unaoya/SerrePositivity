@@ -57,10 +57,10 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransformBaseChangeEquiv := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransformBaseChangeEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransformBaseChangeEquiv := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransformBaseChangeEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransform_baseChange := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransform_baseChange
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransform_baseChange := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransform_baseChange
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransformBaseChangeEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransformBaseChangeEquiv._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.flatPureTransformBaseChangeEquiv._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.flatPureTransformBaseChangeEquiv._proof_1

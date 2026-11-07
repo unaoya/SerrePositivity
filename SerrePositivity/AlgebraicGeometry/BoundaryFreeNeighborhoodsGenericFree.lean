@@ -59,4 +59,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.genericPureTransformFree_of_boundaryPureFreeNeighborhoods := _root_.SerrePositivity.AlgebraicGeometry.genericPureTransformFree_of_boundaryPureFreeNeighborhoods
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.genericPureTransformFree_of_boundaryPureFreeNeighborhoods := _root_.SerrePositivity.AlgebraicGeometry.genericPureTransformFree_of_boundaryPureFreeNeighborhoods

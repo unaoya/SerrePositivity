@@ -125,43 +125,43 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftNatTrans := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftNatTrans
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftNatTrans := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftNatTrans
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupProductLeftMap := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupProductLeftMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupProductLeftMap := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupProductLeftMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupProductLeftMap_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupProductLeftMap_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineι_blowupProductLeftMap_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineι_blowupProductLeftMap_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowup_eqToHom_base := _root_.SerrePositivity.AlgebraicGeometry.blowup_eqToHom_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup_eqToHom_base := _root_.SerrePositivity.AlgebraicGeometry.blowup_eqToHom_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowup_eqToHom_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowup_eqToHom_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowup_eqToHom_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowup_eqToHom_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftNatTrans._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftNatTrans._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupProductLeftNatTrans._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupProductLeftNatTrans._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductLeftMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupProductLeftMap._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupProductRightMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.blowupProductRightMap._proof_1

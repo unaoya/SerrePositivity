@@ -159,34 +159,34 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.det_submatrix_mem_matrixMinorIdeal := _root_.SerrePositivity.AlgebraicGeometry.det_submatrix_mem_matrixMinorIdeal
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.det_submatrix_mem_matrixMinorIdeal := _root_.SerrePositivity.AlgebraicGeometry.det_submatrix_mem_matrixMinorIdeal
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_fg
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_fg := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_fg
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_zero := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_zero
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_zero := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_zero
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_map := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_map
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_map := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_map
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_succ_le := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_succ_le
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_succ_le := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_succ_le
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_bot_of_rows_lt := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_bot_of_rows_lt
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_bot_of_rows_lt := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_bot_of_rows_lt
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_transpose_le := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_transpose_le
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_transpose_le := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_transpose_le
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_transpose := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_transpose
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_transpose := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_transpose
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_bot_of_cols_lt := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_bot_of_cols_lt
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal_eq_bot_of_cols_lt := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal_eq_bot_of_cols_lt
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.matrixMinorIdeal.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.matrixMinorIdeal.eq_1

@@ -13,11 +13,12 @@ public meta import Lean.Compiler.LCNF.PhaseExt
 概要：宇宙・束縛子を保つ deprecated な略記と定理 alias を生成する。
 方針：型では登録済みの旧名を使い、旧型の field notation を保つ。
 規約：本体は新名の定数そのもの。生成宣言は kernel が検査する。
-使われ方：IF-F F-2。instance・simp は新名側にのみ登録する。
+使われ方：SC-W1。instance・simp は新名側にのみ登録する。
+F-2 のコマンドと併用できるよう、構文名と登録先を分ける。
 -/
 
 public meta section
-namespace SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+namespace SerrePositivity.Util.DeprecatedAlias
 open Lean Elab Parser.Command Batteries.Tactic.Alias
 
 private def insertAlias (s : NameMap Name) (e : Name × Name) : NameMap Name :=
@@ -30,12 +31,12 @@ initialize typeAliases : SimplePersistentEnvExtension (Name × Name) (NameMap Na
   }
 
 /-- A deprecated abbreviation (or theorem alias) with exact binders and legacy type names. -/
-elab mods:declModifiers "deprecated_alias " oldStx:ident " := " newStx:ident : command => do
+elab mods:declModifiers "deprecated_alias_util " oldStx:ident " := " newStx:ident : command => do
   Lean.withExporting (isExporting := (← Command.getScope).isPublic) do
   Command.liftTermElabM do
     let name ← withoutExporting <| realizeGlobalConstNoOverloadWithInfo newStx
     let ci ← withoutExporting <| getConstInfo name
-    if isPrivateName name then throwError "deprecated_alias cannot publish a private declaration"
+    if isPrivateName name then throwError "deprecated_alias_util cannot publish a private declaration"
     let dm ← elabModifiers mods
     Lean.withExporting (isExporting := dm.isInferredPublic (← getEnv)) do
     let env ← getEnv
@@ -49,7 +50,7 @@ elab mods:declModifiers "deprecated_alias " oldStx:ident " := " newStx:ident : c
         else if isMarkedMeta env name then .meta
         else dm.computeKind
       isUnsafe := dm.isUnsafe || ci.isUnsafe || ci.isPartial }
-    unless dm.isInferredPublic env do throwError "deprecated_alias requires public visibility"
+    unless dm.isInferredPublic env do throwError "deprecated_alias_util requires public visibility"
     let currentNamespace ← getCurrNamespace
     let written := oldStx.getId
     let old := if (`_root_).isPrefixOf written then written.replacePrefix `_root_ Name.anonymous
@@ -102,4 +103,4 @@ elab mods:declModifiers "deprecated_alias " oldStx:ident " := " newStx:ident : c
     if machineApplicable then modifyEnv (Batteries.machineApplicableDeprecated.tag · old)
     addAliasDocstring old info
     modifyEnv (typeAliases.addEntry · (name, old))
-end SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+end SerrePositivity.Util.DeprecatedAlias

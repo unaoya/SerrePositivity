@@ -100,34 +100,34 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_tmul := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_tmul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_tmul := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_tmul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_range := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_range
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_range := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_range
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_smul := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_smul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_smul := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_smul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_ker_annihilated := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_ker_annihilated
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap_ker_annihilated := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap_ker_annihilated
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.idealTensorMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.idealTensorMap.eq_1

@@ -112,31 +112,31 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenter
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenter
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenterGenerator := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenterGenerator
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenterGenerator := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenterGenerator
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix_update := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix_update
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix_update := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix_update
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.updateCol_det_mem_determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.updateCol_det_mem_determinantalCenter
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.updateCol_det_mem_determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.updateCol_det_mem_determinantalCenter
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.boundary_pow_mem_determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.boundary_pow_mem_determinantalCenter
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.boundary_pow_mem_determinantalCenter := _root_.SerrePositivity.AlgebraicGeometry.boundary_pow_mem_determinantalCenter
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.iSup_determinantalCenter_charts := _root_.SerrePositivity.AlgebraicGeometry.iSup_determinantalCenter_charts
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.iSup_determinantalCenter_charts := _root_.SerrePositivity.AlgebraicGeometry.iSup_determinantalCenter_charts
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenter.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenter.congr_simp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenter.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenter.congr_simp
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenterGenerator._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenterGenerator._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.determinantalCenterGenerator._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.determinantalCenterGenerator._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.imageColumnMatrix.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.imageColumnMatrix.eq_1

@@ -50,4 +50,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.adicCompletion_of_rTensor_injective_of_fibre_associatedPrimes := _root_.SerrePositivity.AlgebraicGeometry.adicCompletion_of_rTensor_injective_of_fibre_associatedPrimes
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.adicCompletion_of_rTensor_injective_of_fibre_associatedPrimes := _root_.SerrePositivity.AlgebraicGeometry.adicCompletion_of_rTensor_injective_of_fibre_associatedPrimes

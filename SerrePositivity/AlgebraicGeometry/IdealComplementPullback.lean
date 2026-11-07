@@ -88,13 +88,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.preimage_centerComplement_comap := _root_.SerrePositivity.AlgebraicGeometry.preimage_centerComplement_comap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.preimage_centerComplement_comap := _root_.SerrePositivity.AlgebraicGeometry.preimage_centerComplement_comap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.centerComplement_specIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.centerComplement_specIdealEquiv
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.centerComplement_specIdealEquiv := _root_.SerrePositivity.AlgebraicGeometry.centerComplement_specIdealEquiv
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affine_preimage_centerComplement := _root_.SerrePositivity.AlgebraicGeometry.affine_preimage_centerComplement
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affine_preimage_centerComplement := _root_.SerrePositivity.AlgebraicGeometry.affine_preimage_centerComplement
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.local_principalDetector_range := _root_.SerrePositivity.AlgebraicGeometry.local_principalDetector_range
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.local_principalDetector_range := _root_.SerrePositivity.AlgebraicGeometry.local_principalDetector_range

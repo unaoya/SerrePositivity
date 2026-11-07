@@ -138,43 +138,43 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget_base := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget_base := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget_mem_range := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget_mem_range
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget_mem_range := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget_mem_range
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift_localize := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift_localize
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift_localize := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift_localize
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift_base := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift_base := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chart_hom_ext_of_regular := _root_.SerrePositivity.AlgebraicGeometry.chart_hom_ext_of_regular
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chart_hom_ext_of_regular := _root_.SerrePositivity.AlgebraicGeometry.chart_hom_ext_of_regular
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartRegularLift._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.chartRegularLift._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.chartToLocalizedTarget.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.chartToLocalizedTarget.eq_1

@@ -114,46 +114,46 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImage := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImage
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImage := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImage
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_spec_base := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_spec_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_spec_base := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_spec_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_spec_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_spec_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_spec_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_spec_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_center := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_center
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap_center := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap_center
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_base
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_base := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_base
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_base_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap_base_assoc := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap_base_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImage._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImage._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImage._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImage._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap.eq_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageRingMap.eq_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageRingMap.eq_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineOpenImageSpecIso._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.affineOpenImageSpecIso._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap.congr_simp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.blowupAffineOpenMap.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.blowupAffineOpenMap.congr_simp

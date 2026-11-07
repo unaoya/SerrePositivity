@@ -84,7 +84,7 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.hasFlatPurePullbacks_affineBlowup := _root_.SerrePositivity.AlgebraicGeometry.hasFlatPurePullbacks_affineBlowup
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.hasFlatPurePullbacks_affineBlowup := _root_.SerrePositivity.AlgebraicGeometry.hasFlatPurePullbacks_affineBlowup
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.HasFlatPurePullbacks.affineBlowup_charts := _root_.SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks.affineBlowup_charts
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.HasFlatPurePullbacks.affineBlowup_charts := _root_.SerrePositivity.AlgebraicGeometry.HasFlatPurePullbacks.affineBlowup_charts

@@ -81,13 +81,13 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_chart := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_chart
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_chart := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_chart
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_chart_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_chart_assoc
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_chart_assoc := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_chart_assoc
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_preimage_chart := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_preimage_chart
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.affineBlowupBaseMap_preimage_chart := _root_.SerrePositivity.AlgebraicGeometry.affineBlowupBaseMap_preimage_chart
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.isOpenImmersion_restrict_of_chart := _root_.SerrePositivity.AlgebraicGeometry.isOpenImmersion_restrict_of_chart
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.isOpenImmersion_restrict_of_chart := _root_.SerrePositivity.AlgebraicGeometry.isOpenImmersion_restrict_of_chart

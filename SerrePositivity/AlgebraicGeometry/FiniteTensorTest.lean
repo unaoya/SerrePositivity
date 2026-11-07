@@ -62,4 +62,4 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.lTensor_injective_of_finite_tests := _root_.SerrePositivity.AlgebraicGeometry.lTensor_injective_of_finite_tests
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.lTensor_injective_of_finite_tests := _root_.SerrePositivity.AlgebraicGeometry.lTensor_injective_of_finite_tests

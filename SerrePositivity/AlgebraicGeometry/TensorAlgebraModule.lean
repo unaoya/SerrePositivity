@@ -146,55 +146,55 @@ namespace SerrePositivity.KST.SchemeLemmas
 end SerrePositivity.KST.SchemeLemmas
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_smul_tmul := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_smul_tmul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_smul_tmul := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_smul_tmul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_algebraMap_smul := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_algebraMap_smul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_algebraMap_smul := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_algebraMap_smul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_isScalarTower := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_isScalarTower
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_isScalarTower := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_isScalarTower
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_smulCommClass := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_smulCommClass
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightModule_smulCommClass := _root_.SerrePositivity.AlgebraicGeometry.tensorRightModule_smulCommClass
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_tmul_smul := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_tmul_smul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_tmul_smul := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_tmul_smul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_tmul_smul_tmul := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_tmul_smul_tmul
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_tmul_smul_tmul := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_tmul_smul_tmul
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_isScalarTower_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_isScalarTower_left
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorAlgebraModule_isScalarTower_left := _root_.SerrePositivity.AlgebraicGeometry.tensorAlgebraModule_isScalarTower_left
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_1
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_1 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_1
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_2
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_2 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_2
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_3
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_3 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_3
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_4
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_4 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_4
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_5
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_5 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_5
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_6
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_6 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_6
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_7
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation._proof_7 := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation._proof_7
 
 @[deprecated (since := "2026-11-07")]
-deprecated_alias _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation.congr_simp
+deprecated_alias_util _root_.SerrePositivity.KST.SchemeLemmas.tensorRightRepresentation.congr_simp := _root_.SerrePositivity.AlgebraicGeometry.tensorRightRepresentation.congr_simp
