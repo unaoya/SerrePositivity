@@ -976,13 +976,31 @@
       ]
     },
     "8.3.1.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.1.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.1.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.2.1": {
       "adopted": [
@@ -997,7 +1015,13 @@
       ]
     },
     "8.3.2.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.2.7": {
       "adopted": []
@@ -1059,7 +1083,18 @@
       ]
     },
     "8.3.3.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.representablePresheafInfinity",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.covariantRepresentableInfinity",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.3.9": {
       "adopted": [
@@ -1094,7 +1129,18 @@
       ]
     },
     "8.3.4.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful",
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose",
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/FullyFaithfulPostcomposition.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.4.2": {
       "adopted": [
@@ -1121,7 +1167,18 @@
       ]
     },
     "8.3.4.10": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.4.11": {
       "adopted": [
@@ -1150,7 +1207,18 @@
       "adopted": []
     },
     "8.3.5.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.5.5": {
       "adopted": []
@@ -1162,7 +1230,13 @@
       "adopted": []
     },
     "8.3.5.8": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.6.1": {
       "adopted": [
@@ -1185,25 +1259,75 @@
       ]
     },
     "8.3.6.5": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.6.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.7.1": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit",
+          "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.7.3": {
       "adopted": []
     },
     "8.3.7.4": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso",
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.leftFibration_pullback_snd",
+          "source": "SerrePositivity/InfinityCategories/F1/Fibrations/PullbackTransport.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.3.7.6": {
       "adopted": []
     },
     "8.3.7.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackClassification.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso",
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.4.0.1": {
       "adopted": []
@@ -2984,6 +3108,204 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 80
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Presheaf.lean": {
+      "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap": {
+        "type": "@CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] {D : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} D]\n  (F : CategoryTheory.Functor C D) (X : C),\n  (CategoryTheory.yoneda.obj (F.obj X)).IsLeftKanExtension (CategoryTheory.yonedaMap F X)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 416
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean": {
+      "SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence": {
+        "type": "SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence : (B : SSet) →\n  [B.Quasicategory] →\n    SerrePositivity.InfinityCategories.QCatEquivalence (SerrePositivity.InfinityCategories.LeftFibrationInfinity B)\n      (SerrePositivity.InfinityCategories.SpaceInfinityFunctor (SSet.uliftFunctor.obj B))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 56
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean": {
+      "SerrePositivity.InfinityCategories.representablePresheafInfinity": {
+        "type": "@SerrePositivity.InfinityCategories.representablePresheafInfinity : {C : SSet} →\n  [C.Quasicategory] →\n    C.obj (Opposite.op { len := 0 }) → (SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.representablePresheafInfinity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 49
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean": {
+      "SerrePositivity.InfinityCategories.covariantRepresentableInfinity": {
+        "type": "@SerrePositivity.InfinityCategories.covariantRepresentableInfinity : {C : SSet} →\n  [C.Quasicategory] →\n    C.obj (Opposite.op { len := 0 }) → (SSet.uliftFunctor.obj C ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.covariantRepresentableInfinity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 24
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean": {
+      "SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful": {
+        "type": "SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful : ∀ (C : SSet) [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsFullyFaithful (SerrePositivity.InfinityCategories.yonedaInfinityMap C)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 72
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/FunctorCategories/FullyFaithfulPostcomposition.lean": {
+      "SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose": {
+        "type": "@SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose : ∀ {X Y : SSet} [X.Quasicategory] [Y.Quasicategory]\n  {f : X ⟶ Y},\n  SerrePositivity.InfinityCategories.IsFullyFaithful f →\n    ∀ (K : SSet), SerrePositivity.InfinityCategories.IsFullyFaithful ((CategoryTheory.ihom K).map f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 56
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence": {
+        "type": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence : (C D :\n    SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject) →\n  SerrePositivity.InfinityCategories.QCatEquivalence\n    (SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace C D)\n    (SerrePositivity.InfinityCategories.F2.Presentable.PrRFunctorSpace D C).op",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 53
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction : {C D :\n    SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject} →\n  (v : (SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace C D).obj (Opposite.op { len := 0 })) →\n    SerrePositivity.InfinityCategories.QCatAdjunction\n      (SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftVertexFunctor v)\n      (SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightVertexFunctor\n        (SSet.opObjEquiv\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence C\n                      D).hom.app\n                (Opposite.op { len := 0 })))\n            v)))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 68
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean": {
+      "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber": {
+        "type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber : (C : SSet) →\n  [inst : C.Quasicategory] →\n    (b : (CategoryTheory.MonoidalCategoryStruct.tensorObj C.op C).obj (Opposite.op { len := 0 })) →\n      SerrePositivity.InfinityCategories.vertexFiber\n          (SSet.uliftFunctor.map (SerrePositivity.InfinityCategories.twistedArrowProjection C)) { down := b } ⟶\n        SerrePositivity.InfinityCategories.vertexFiber SerrePositivity.InfinityCategories.pointedSpaceProjection\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.InfinityCategories.twistedArrowHomInfinity C).app (Opposite.op { len := 0 })))\n            { down := b })",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 29
+      },
+      "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence": {
+        "type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence : ∀ (C : SSet)\n  [inst : C.Quasicategory]\n  (b : (CategoryTheory.MonoidalCategoryStruct.tensorObj C.op C).obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber C b)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 67
+      }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso : {C D : SSet} →\n  [inst : C.Quasicategory] →\n    [inst_1 : D.Quasicategory] →\n      (f : C ⟶ D) →\n        SerrePositivity.InfinityCategories.IsFullyFaithful f →\n          SerrePositivity.InfinityCategories.FunctorIso (SerrePositivity.InfinityCategories.yonedaInfinityMap C)\n            (CategoryTheory.CategoryStruct.comp (SSet.uliftFunctor.map f)\n              (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap D)\n                (SerrePositivity.InfinityCategories.presheafInfinityRestriction f)))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 69
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean": {
+      "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay": {
+        "type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay : (C : SSet) →\n  [C.Quasicategory] →\n    SSet.uliftFunctor.obj (SerrePositivity.InfinityCategories.TwistedArrow C) ⟶\n      SerrePositivity.InfinityCategories.PointedSpaceInfinity",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowPointedDisplay' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 28
+      },
+      "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection": {
+        "type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection : ∀ (C : SSet) [inst : C.Quasicategory],\n  CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.twistedArrowPointedDisplay C)\n      SerrePositivity.InfinityCategories.pointedSpaceProjection =\n    CategoryTheory.CategoryStruct.comp\n      (SSet.uliftFunctor.map (SerrePositivity.InfinityCategories.twistedArrowProjection C))\n      (SerrePositivity.InfinityCategories.twistedArrowHomInfinity C)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 36
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean": {
+      "SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence : ∀ {E B : SSet}\n  [inst : B.Quasicategory] (p : E ⟶ B) [inst_1 : SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence\n    (SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction p)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 69
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean": {
+      "SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit : ∀ {A B C : SSet} (p : A ⟶ C) (q : B ⟶ C)\n  (x y : (SerrePositivity.InfinityCategories.F2.laxPullback p q).obj (Opposite.op { len := 0 }))\n  [inst : A.Quasicategory] [inst_1 : B.Quasicategory] [inst_2 : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsLimitCone\n    (SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone p q x y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 40
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean": {
+      "SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso": {
+        "type": "@SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso : {E B D : SSet} →\n  (p : E ⟶ B) →\n    [inst : SerrePositivity.InfinityCategories.LeftFibration p] →\n      (k : D ⟶ B) →\n        SerrePositivity.InfinityCategories.FunctorIso\n          (CategoryTheory.CategoryStruct.comp (SSet.uliftFunctor.map k)\n            (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram p))\n          (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram (CategoryTheory.Limits.pullback.snd p k))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 69
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackClassification.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit : ∀ {E D B X : SSet}\n  [X.Quasicategory] (p : E ⟶ B) (q : D ⟶ B) (e : E ⟶ X) (d : D ⟶ X) (b : B ⟶ X)\n  (hp : CategoryTheory.CategoryStruct.comp p b = e) (hq : CategoryTheory.CategoryStruct.comp q b = d)\n  [inst : SerrePositivity.InfinityCategories.LeftFibration e]\n  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration d]\n  [inst_2 : SerrePositivity.InfinityCategories.LeftFibration b]\n  [inst_3 : SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.IsLimitCone\n    (SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone p q e d b hp hq)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 45
       }
     },
     "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean": {

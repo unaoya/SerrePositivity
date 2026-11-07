@@ -22743,6 +22743,4989 @@
       "reason": "随伴を追加し h Fun での後合成を充満忠実と仮定すると余単位の可逆性が得られる。λ が表現可能という仮定だけで、全普遍対象の余普遍性と G の充満忠実性を往復する型は見つからない。",
       "decision": "none"
     },
+    "8.3.1.7": {
+      "number": "8.3.1.7",
+      "tag": "03M9",
+      "query": [
+        "corepresentable vertex",
+        "left Kan from point",
+        "singleton",
+        "essentially kappa small"
+      ],
+      "a": {
+        "terms": [
+          "8.3.1.7",
+          "8.3.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "corepresentable",
+            "essentially",
+            "kan",
+            "kappa",
+            "left",
+            "point",
+            "singleton",
+            "small",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/EssentiallySmallPointWitness.lean",
+              "line": 60,
+              "declaration": "essentiallySmallPointTransportWitnessSpace_isContractibleKan"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+              "line": 46,
+              "declaration": "indLeftKanExtension_preservesSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "corepresentable",
+            "essentially",
+            "kan",
+            "kappa",
+            "point",
+            "right",
+            "singleton",
+            "small",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Universe/EssentiallySmallPointWitness.lean",
+              "line": 60,
+              "declaration": "essentiallySmallPointTransportWitnessSpace_isContractibleKan"
+            },
+            {
+              "source": "SerrePositivity/KST/Fibration/KanPointSurjectivity.lean",
+              "line": 48,
+              "declaration": "kanMap_isEssentiallySurjective_of_point_surjective"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coyoneda",
+            "essentially",
+            "kan",
+            "kappa",
+            "left",
+            "point",
+            "singleton",
+            "small",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+              "line": 154,
+              "declaration": "yonedaEquiv"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Subcanonical.lean",
+              "line": 33,
+              "declaration": "yonedaEquiv"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories",
+          "SerrePositivity/InfinityCategories/F1/Yoneda"
+        ],
+        "terms": [
+          "corepresentable",
+          "essentially",
+          "kan",
+          "kappa",
+          "left",
+          "point",
+          "singleton",
+          "small",
+          "vertex"
+        ],
+        "declaration_count": 520,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramNativePointHomAction.lean",
+            "line": 30,
+            "declaration": "kanDiagramNativePointHomAction_coefficient"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+            "line": 54,
+            "declaration": "pointSpaceVertex"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "line": 416,
+          "declaration": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "kernel_type": "@CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] {D : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} D]\n  (F : CategoryTheory.Functor C D) (X : C),\n  (CategoryTheory.yoneda.obj (F.obj X)).IsLeftKanExtension (CategoryTheory.yonedaMap F X)",
+          "assessment": "通常圏の一点上の representable は singleton で、Yoneda の前層を左 Kan 延長する型がある。双対の準圏で指定 η の余表現性と一点からの左 Kan 延長を往復し、各写像空間の本質的 κ-small 性を得る型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+          "line": 154,
+          "declaration": "yonedaEquiv",
+          "source_signature": "def yonedaEquiv {X : SSet.{u}} {n : SimplexCategory} : (stdSimplex.obj n ⟶ X) ≃ X.obj (op n) ",
+          "assessment": "通常圏の一点上の representable は singleton で、Yoneda の前層を左 Kan 延長する型がある。双対の準圏で指定 η の余表現性と一点からの左 Kan 延長を往復し、各写像空間の本質的 κ-small 性を得る型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の一点上の representable は singleton で、Yoneda の前層を左 Kan 延長する型がある。双対の準圏で指定 η の余表現性と一点からの左 Kan 延長を往復し、各写像空間の本質的 κ-small 性を得る型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.1.8": {
+      "number": "8.3.1.8",
+      "tag": "04B5",
+      "query": [
+        "corepresentable left Kan extension",
+        "specified vertex beta",
+        "Yoneda map",
+        "ordinary dual"
+      ],
+      "a": {
+        "terms": [
+          "8.3.1.8",
+          "8.3.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "beta",
+            "corepresentable",
+            "dual",
+            "extension",
+            "kan",
+            "left",
+            "map",
+            "ordinary",
+            "specified",
+            "vertex",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeLeftTriangleExtension.lean",
+              "line": 98,
+              "declaration": "specifiedCoconeLeftActualTriangleExtensionVertex"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 334,
+              "declaration": "isLeftKanExtension_along_uliftYoneda_iff"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "beta",
+            "corepresentable",
+            "dual",
+            "extension",
+            "kan",
+            "map",
+            "ordinary",
+            "right",
+            "specified",
+            "vertex",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRightPrefixTriangleExtension.lean",
+              "line": 68,
+              "declaration": "specifiedCoconeRightPrefixActualTriangleExtensionVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpecifiedCoconeRightCorrectionHomotopy.lean",
+              "line": 114,
+              "declaration": "specifiedCoconeRightRootExtensionSpace_isContractibleKan"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "beta",
+            "coyoneda",
+            "dual",
+            "extension",
+            "kan",
+            "left",
+            "map",
+            "ordinary",
+            "specified",
+            "vertex",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 334,
+              "declaration": "isLeftKanExtension_along_uliftYoneda_iff"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 99,
+              "declaration": "leftKanExtensionUnit_leftKanExtension_map_leftKanExtensionObjIsoColimit_hom"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories",
+          "SerrePositivity/InfinityCategories/F1/Yoneda"
+        ],
+        "terms": [
+          "beta",
+          "corepresentable",
+          "dual",
+          "extension",
+          "kan",
+          "left",
+          "map",
+          "ordinary",
+          "specified",
+          "vertex",
+          "yoneda"
+        ],
+        "declaration_count": 520,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaEvaluatedTransportEquivalence.lean",
+            "line": 27,
+            "declaration": "yonedaInfinityMap_evaluate_vertex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+            "line": 55,
+            "declaration": "yonedaInfinityMap_vertex"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "line": 416,
+          "declaration": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "kernel_type": "@CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] {D : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} D]\n  (F : CategoryTheory.Functor C D) (X : C),\n  (CategoryTheory.yoneda.obj (F.obj X)).IsLeftKanExtension (CategoryTheory.yonedaMap F X)",
+          "assessment": "通常圏で指定された YonedaMap が、表現可能前層の押し出し先を左 Kan 延長とする。準圏の一般の β に対し、η の像が余表現する条件との iff を与える型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏で指定された YonedaMap が、表現可能前層の押し出し先を左 Kan 延長とする。準圏の一般の β に対し、η の像が余表現する条件との iff を与える型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.1.9": {
+      "number": "8.3.1.9",
+      "tag": "04B6",
+      "query": [
+        "left Kan of corepresentable",
+        "essential image",
+        "ordinary representable",
+        "locally small"
+      ],
+      "a": {
+        "terms": [
+          "8.3.1.9",
+          "8.3.1",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "corepresentable",
+            "essential",
+            "image",
+            "kan",
+            "left",
+            "locally",
+            "ordinary",
+            "representable",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/RepresentabilityEquivalence.lean",
+              "line": 69,
+              "declaration": "isRepresentable_restriction_of_essentialImage"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaSmallRepresentableKan.lean",
+              "line": 29,
+              "declaration": "sigmaSmallRepresentable_leftKanDiagram_hasColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "corepresentable",
+            "essential",
+            "image",
+            "kan",
+            "locally",
+            "ordinary",
+            "representable",
+            "right",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/RepresentabilityEquivalence.lean",
+              "line": 69,
+              "declaration": "isRepresentable_restriction_of_essentialImage"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CovariantRepresentableRetract.lean",
+              "line": 40,
+              "declaration": "covariantRepresentable_retract_corepresentable"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coyoneda",
+            "essential",
+            "image",
+            "kan",
+            "left",
+            "locally",
+            "ordinary",
+            "small",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Comma/StructuredArrow/Small.lean",
+              "line": 37,
+              "declaration": "small_inverseImage_proj_of_locallySmall"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+              "line": 483,
+              "declaration": "ofArrows_mem_iff_isLocallySurjective_sigmaDesc_shrinkYoneda_map"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories",
+          "SerrePositivity/InfinityCategories/F1/Yoneda"
+        ],
+        "terms": [
+          "corepresentable",
+          "essential",
+          "image",
+          "kan",
+          "left",
+          "locally",
+          "ordinary",
+          "representable",
+          "small"
+        ],
+        "declaration_count": 520,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/EnrichedOrdinaryFunctorWhisker.lean",
+            "line": 34,
+            "declaration": "enrichedOrdinaryFunctor_whiskerLeft"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableUnstraighteningComparison.lean",
+            "line": 25,
+            "declaration": "representableLeftUnstraighteningComparison"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+          "line": 416,
+          "declaration": "CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap",
+          "kernel_type": "@CategoryTheory.Presheaf.instIsLeftKanExtensionOppositeObjFunctorTypeYonedaYonedaMap : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] {D : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} D]\n  (F : CategoryTheory.Functor C D) (X : C),\n  (CategoryTheory.yoneda.obj (F.obj X)).IsLeftKanExtension (CategoryTheory.yonedaMap F X)",
+          "assessment": "通常圏の表現可能前層を Fᵒᵖ で左 Kan 延長すると F(X) の表現可能前層になる。任意の空間値 G に対する余表現可能性の iff と濃度上限を備える準圏版は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の表現可能前層を Fᵒᵖ で左 Kan 延長すると F(X) の表現可能前層になる。任意の空間値 G に対する余表現可能性の iff と濃度上限を備える準圏版は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.2.6": {
+      "number": "8.3.2.6",
+      "tag": "0465",
+      "query": [
+        "profunctor coupling classification",
+        "essentially kappa small fibers",
+        "left straightening",
+        "isomorphism classes"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.6",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "classes",
+            "classification",
+            "coupling",
+            "essentially",
+            "fibers",
+            "isomorphism",
+            "kappa",
+            "left",
+            "profunctor",
+            "small",
+            "straightening"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/EssentiallySmallStraightening.lean",
+              "line": 59,
+              "declaration": "essentiallySmallLeftStraighteningComparison_isPrecompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean",
+              "line": 56,
+              "declaration": "leftStraighteningInfinityEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "classes",
+            "classification",
+            "coupling",
+            "essentially",
+            "fibers",
+            "isomorphism",
+            "kappa",
+            "profunctor",
+            "right",
+            "small",
+            "straightening"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/EssentiallySmallStraightening.lean",
+              "line": 59,
+              "declaration": "essentiallySmallLeftStraighteningComparison_isPrecompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean",
+              "line": 56,
+              "declaration": "leftStraighteningInfinityEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "classes",
+            "classification",
+            "coupling",
+            "essentially",
+            "fibers",
+            "isomorphism",
+            "kappa",
+            "left",
+            "profunctor",
+            "small",
+            "straightening"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/IsomorphismClasses.lean",
+              "line": 43,
+              "declaration": "isomorphismClasses"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/CommAlgCat/FiniteType.lean",
+              "line": 115,
+              "declaration": "essentiallySmall_of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "classes",
+          "classification",
+          "coupling",
+          "essentially",
+          "fibers",
+          "isomorphism",
+          "kappa",
+          "left",
+          "profunctor",
+          "small",
+          "straightening"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftClassificationComparisonIso.lean",
+            "line": 23,
+            "declaration": "leftClassificationHom_isIso_of_fibers"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackAccessibility.lean",
+            "line": 28,
+            "declaration": "leftFibrationPullbackClassification_isKappaAccessibleFunctor"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityEquivalence.lean",
+          "line": 56,
+          "declaration": "SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence",
+          "kernel_type": "SerrePositivity.InfinityCategories.leftStraighteningInfinityEquivalence : (B : SSet) →\n  [B.Quasicategory] →\n    SerrePositivity.InfinityCategories.QCatEquivalence (SerrePositivity.InfinityCategories.LeftFibrationInfinity B)\n      (SerrePositivity.InfinityCategories.SpaceInfinityFunctor (SSet.uliftFunctor.obj B))",
+          "assessment": "宇宙小の底と全空間の左ファイブレーションには空間値分類の準圏同値がある。任意の非可算 κ に対し、profunctor の同型類の像を本質的 κ-small なファイバーを持つ coupling の同値類で特徴づける型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/EssentiallySmallStraightening.lean",
+          "line": 59,
+          "declaration": "essentiallySmallLeftStraighteningComparison_isPrecompositionEquivalence",
+          "source_signature": "lemma essentiallySmallLeftStraighteningComparison_isPrecompositionEquivalence {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (hp : HasEssentiallySmallFibers p) : IsPrecompositionEquivalence (essentiallySmallLeftStraighteningComparison p hp) ",
+          "assessment": "宇宙小の底と全空間の左ファイブレーションには空間値分類の準圏同値がある。任意の非可算 κ に対し、profunctor の同型類の像を本質的 κ-small なファイバーを持つ coupling の同値類で特徴づける型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "宇宙小の底と全空間の左ファイブレーションには空間値分類の準圏同値がある。任意の非可算 κ に対し、profunctor の同型類の像を本質的 κ-small なファイバーを持つ coupling の同値類で特徴づける型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.2.7": {
+      "number": "8.3.2.7",
+      "tag": "0466",
+      "query": [
+        "profunctor universal vertex",
+        "couniversal vertex",
+        "partial evaluation",
+        "represented by point"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.7",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "couniversal",
+            "evaluation",
+            "partial",
+            "point",
+            "profunctor",
+            "represented",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean",
+              "line": 32,
+              "declaration": "leftFibration_exists_initial_of_covariantRepresentation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+              "line": 28,
+              "declaration": "IsCorepresentableSmallSpaceFunctor"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "couniversal",
+            "evaluation",
+            "partial",
+            "point",
+            "profunctor",
+            "represented",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean",
+              "line": 32,
+              "declaration": "leftFibration_exists_initial_of_covariantRepresentation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+              "line": 28,
+              "declaration": "IsCorepresentableSmallSpaceFunctor"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "couniversal",
+            "evaluation",
+            "partial",
+            "point",
+            "profunctor",
+            "represented",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/RepresentedBy.lean",
+              "line": 50,
+              "declaration": "IsRepresentedBy"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+              "line": 40,
+              "declaration": "ProfunctorCore"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "couniversal",
+          "evaluation",
+          "partial",
+          "point",
+          "profunctor",
+          "represented",
+          "universal",
+          "vertex"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean",
+            "line": 32,
+            "declaration": "leftFibration_exists_initial_of_covariantRepresentation"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+            "line": 28,
+            "declaration": "IsCorepresentableSmallSpaceFunctor"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+          "line": 28,
+          "declaration": "IsCorepresentableSmallSpaceFunctor",
+          "source_signature": "def IsCorepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "ある頂点による余表現の存在述語と、余表現があるときの全空間の初期頂点の存在はある。K(X,Y) の指定 η が二つの部分評価のいずれを表現するかを定める一対の述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean",
+          "line": 32,
+          "declaration": "leftFibration_exists_initial_of_covariantRepresentation",
+          "source_signature": "lemma leftFibration_exists_initial_of_covariantRepresentation {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p] (y : B _⦋0⦌) (h : FunctorIso (covariantRepresentableInfinity y) (leftStraighteningInfinityDiagram p)) : ∃ v : E _⦋0⦌, IsInitialVertex v ",
+          "assessment": "ある頂点による余表現の存在述語と、余表現があるときの全空間の初期頂点の存在はある。K(X,Y) の指定 η が二つの部分評価のいずれを表現するかを定める一対の述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "ある頂点による余表現の存在述語と、余表現があるときの全空間の初期頂点の存在はある。K(X,Y) の指定 η が二つの部分評価のいずれを表現するかを定める一対の述語は見つからない。",
+      "decision": "none"
+    },
+    "8.3.2.17": {
+      "number": "8.3.2.17",
+      "tag": "03ML",
+      "query": [
+        "corepresentable profunctor fully faithful",
+        "couniversal universal",
+        "partial evaluation",
+        "covariant Yoneda"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.17",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "corepresentable",
+            "couniversal",
+            "covariant",
+            "evaluation",
+            "faithful",
+            "fully",
+            "partial",
+            "profunctor",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+              "line": 74,
+              "declaration": "coyonedaInfinityMap_isFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairCovariantYoneda.lean",
+              "line": 38,
+              "declaration": "pairCovariantYoneda_isFullyFaithful"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "contravariant",
+            "corepresentable",
+            "couniversal",
+            "evaluation",
+            "faithful",
+            "fully",
+            "partial",
+            "profunctor",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+              "line": 74,
+              "declaration": "coyonedaInfinityMap_isFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+              "line": 28,
+              "declaration": "IsCorepresentableSmallSpaceFunctor"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "couniversal",
+            "covariant",
+            "coyoneda",
+            "evaluation",
+            "faithful",
+            "fully",
+            "partial",
+            "profunctor",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/ShrinkYoneda.lean",
+              "line": 378,
+              "declaration": "fullyFaithfulShrinkCoyoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean",
+              "line": 131,
+              "declaration": "IsDense.of_fullyFaithful_restrictedULiftYoneda"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "corepresentable",
+          "couniversal",
+          "covariant",
+          "evaluation",
+          "faithful",
+          "fully",
+          "partial",
+          "profunctor",
+          "universal",
+          "yoneda"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+            "line": 74,
+            "declaration": "coyonedaInfinityMap_isFullyFaithful"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+            "line": 28,
+            "declaration": "IsCorepresentableSmallSpaceFunctor"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+          "line": 74,
+          "declaration": "coyonedaInfinityMap_isFullyFaithful",
+          "source_signature": "lemma coyonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] : IsFullyFaithful (coyonedaInfinityMap C) ",
+          "assessment": "標準の co-Yoneda の充満忠実性と個別関手の余表現可能性はある。任意の余表現可能 profunctor のカリー化した関手の充満忠実性を、全余普遍頂点の普遍性で判定する iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+          "line": 28,
+          "declaration": "IsCorepresentableSmallSpaceFunctor",
+          "source_signature": "def IsCorepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "標準の co-Yoneda の充満忠実性と個別関手の余表現可能性はある。任意の余表現可能 profunctor のカリー化した関手の充満忠実性を、全余普遍頂点の普遍性で判定する iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "標準の co-Yoneda の充満忠実性と個別関手の余表現可能性はある。任意の余表現可能 profunctor のカリー化した関手の充満忠実性を、全余普遍頂点の普遍性で判定する iff は見つからない。",
+      "decision": "none"
+    },
+    "8.3.2.18": {
+      "number": "8.3.2.18",
+      "tag": "03MM",
+      "query": [
+        "balanced profunctor",
+        "both representable",
+        "universal iff couniversal",
+        "mapping spaces"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.18",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "balanced",
+            "both",
+            "couniversal",
+            "mapping",
+            "profunctor",
+            "representable",
+            "spaces",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+              "line": 37,
+              "declaration": "IsRepresentableSmallSpaceFunctor"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+              "line": 28,
+              "declaration": "IsCorepresentableSmallSpaceFunctor"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "balanced",
+            "both",
+            "couniversal",
+            "mapping",
+            "profunctor",
+            "representable",
+            "spaces",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+              "line": 37,
+              "declaration": "IsRepresentableSmallSpaceFunctor"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+              "line": 28,
+              "declaration": "IsCorepresentableSmallSpaceFunctor"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "balanced",
+            "both",
+            "couniversal",
+            "mapping",
+            "profunctor",
+            "spaces",
+            "universal",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Analysis/LocallyConvex/Separation.lean",
+              "line": 246,
+              "declaration": "iInter_halfSpaces_eq"
+            },
+            {
+              "source": "Mathlib/Geometry/RingedSpace/PresheafedSpace.lean",
+              "line": 119,
+              "declaration": "categoryOfPresheafedSpaces"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "balanced",
+          "both",
+          "couniversal",
+          "mapping",
+          "profunctor",
+          "representable",
+          "spaces",
+          "universal"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+            "line": 37,
+            "declaration": "IsRepresentableSmallSpaceFunctor"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+            "line": 28,
+            "declaration": "IsCorepresentableSmallSpaceFunctor"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+          "line": 28,
+          "declaration": "IsCorepresentableSmallSpaceFunctor",
+          "source_signature": "def IsCorepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "個々の空間値関手の表現可能・余表現可能の述語はある。二変数 K の各側の部分評価への存在条件と、同じ指定頂点での二つの普遍性の一致をまとめる述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "line": 37,
+          "declaration": "IsRepresentableSmallSpaceFunctor",
+          "source_signature": "def IsRepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C.op ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "個々の空間値関手の表現可能・余表現可能の述語はある。二変数 K の各側の部分評価への存在条件と、同じ指定頂点での二つの普遍性の一致をまとめる述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "個々の空間値関手の表現可能・余表現可能の述語はある。二変数 K の各側の部分評価への存在条件と、同じ指定頂点での二つの普遍性の一致をまとめる述語は見つからない。",
+      "decision": "none"
+    },
+    "8.3.2.20": {
+      "number": "8.3.2.20",
+      "tag": "03MN",
+      "query": [
+        "balanced profunctor iff",
+        "fully faithful currying",
+        "essential image representables",
+        "local smallness"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.20",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "balanced",
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "profunctor",
+            "representables",
+            "smallness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+              "line": 74,
+              "declaration": "coyonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "balanced",
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "profunctor",
+            "representables",
+            "smallness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+              "line": 74,
+              "declaration": "coyonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "balanced",
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "profunctor",
+            "representables",
+            "smallness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Equivalence.lean",
+              "line": 696,
+              "declaration": "fullyFaithfulToEssImage"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/CommAlgCat/Basic.lean",
+              "line": 198,
+              "declaration": "fullyFaithfulUliftFunctor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "balanced",
+          "currying",
+          "essential",
+          "faithful",
+          "fully",
+          "image",
+          "profunctor",
+          "representables",
+          "smallness"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+            "line": 72,
+            "declaration": "yonedaInfinityMap_isFullyFaithful"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+            "line": 74,
+            "declaration": "coyonedaInfinityMap_isFullyFaithful"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+          "line": 72,
+          "declaration": "yonedaInfinityMap_isFullyFaithful",
+          "source_signature": "lemma yonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] : IsFullyFaithful (yonedaInfinityMap C) ",
+          "assessment": "標準の二つの Yoneda 写像は充満忠実で、個別の表現可能性も定義される。任意の K に対して balanced、二つの currying の充満忠実性とそれぞれの本質像を結ぶ三条件の同値は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+          "line": 74,
+          "declaration": "coyonedaInfinityMap_isFullyFaithful",
+          "source_signature": "lemma coyonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] : IsFullyFaithful (coyonedaInfinityMap C) ",
+          "assessment": "標準の二つの Yoneda 写像は充満忠実で、個別の表現可能性も定義される。任意の K に対して balanced、二つの currying の充満忠実性とそれぞれの本質像を結ぶ三条件の同値は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "line": 37,
+          "declaration": "IsRepresentableSmallSpaceFunctor",
+          "source_signature": "def IsRepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C.op ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "標準の二つの Yoneda 写像は充満忠実で、個別の表現可能性も定義される。任意の K に対して balanced、二つの currying の充満忠実性とそれぞれの本質像を結ぶ三条件の同値は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "標準の二つの Yoneda 写像は充満忠実で、個別の表現可能性も定義される。任意の K に対して balanced、二つの currying の充満忠実性とそれぞれの本質像を結ぶ三条件の同値は見つからない。",
+      "decision": "none"
+    },
+    "8.3.2.21": {
+      "number": "8.3.2.21",
+      "tag": "03MP",
+      "query": [
+        "evaluation balanced profunctor",
+        "corepresentable full subcategory",
+        "local smallness",
+        "covariant evaluation"
+      ],
+      "a": {
+        "terms": [
+          "8.3.2.21",
+          "8.3.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "balanced",
+            "corepresentable",
+            "covariant",
+            "evaluation",
+            "full",
+            "profunctor",
+            "smallness",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 33,
+              "declaration": "homInfinityJointEvaluation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CovariantRepresentableRetract.lean",
+              "line": 40,
+              "declaration": "covariantRepresentable_retract_corepresentable"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "balanced",
+            "contravariant",
+            "corepresentable",
+            "evaluation",
+            "full",
+            "profunctor",
+            "smallness",
+            "subcategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 33,
+              "declaration": "homInfinityJointEvaluation"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+              "line": 74,
+              "declaration": "coyonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "balanced",
+            "covariant",
+            "coyoneda",
+            "evaluation",
+            "full",
+            "profunctor",
+            "smallness",
+            "subcategory"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/Yoneda.lean",
+              "line": 64,
+              "declaration": "full_comp_preadditiveCoyonedaObj"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Linear/Yoneda.lean",
+              "line": 90,
+              "declaration": "full_linearCoyoneda"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean"
+        ],
+        "locations": [
+          "Mathlib/CategoryTheory/Profunctor",
+          "SerrePositivity/InfinityCategories/F1/Yoneda",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "balanced",
+          "corepresentable",
+          "covariant",
+          "evaluation",
+          "full",
+          "profunctor",
+          "smallness",
+          "subcategory"
+        ],
+        "declaration_count": 2437,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+            "line": 33,
+            "declaration": "homInfinityJointEvaluation"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CovariantRepresentableRetract.lean",
+            "line": 40,
+            "declaration": "covariantRepresentable_retract_corepresentable"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "line": 33,
+          "declaration": "homInfinityJointEvaluation",
+          "source_signature": "def homInfinityJointEvaluation (C : SSet.{u}) [Quasicategory C] : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⊗ (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ SpaceInfinity.{u} ",
+          "assessment": "元の C の二変数 Hom の評価と co-Yoneda の充満忠実性はある。余表現可能なすべての空間値関手の全部分圏との評価写像について balanced 条件を証明する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean",
+          "line": 74,
+          "declaration": "coyonedaInfinityMap_isFullyFaithful",
+          "source_signature": "lemma coyonedaInfinityMap_isFullyFaithful (C : SSet.{u}) [Quasicategory C] : IsFullyFaithful (coyonedaInfinityMap C) ",
+          "assessment": "元の C の二変数 Hom の評価と co-Yoneda の充満忠実性はある。余表現可能なすべての空間値関手の全部分圏との評価写像について balanced 条件を証明する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "元の C の二変数 Hom の評価と co-Yoneda の充満忠実性はある。余表現可能なすべての空間値関手の全部分圏との評価写像について balanced 条件を証明する型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.3.8": {
+      "number": "8.3.3.8",
+      "tag": "046C",
+      "query": [
+        "Hom functor balanced profunctor",
+        "twisted arrow classification",
+        "representable both sides",
+        "universal vertices"
+      ],
+      "a": {
+        "terms": [
+          "8.3.3.8",
+          "8.3.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "both",
+            "classification",
+            "functor",
+            "hom",
+            "profunctor",
+            "representable",
+            "sides",
+            "twisted",
+            "universal",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean",
+              "line": 24,
+              "declaration": "covariantRepresentableInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 49,
+              "declaration": "representablePresheafInfinity"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "both",
+            "classification",
+            "functor",
+            "hom",
+            "profunctor",
+            "representable",
+            "sides",
+            "twisted",
+            "universal",
+            "vertices"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean",
+              "line": 24,
+              "declaration": "covariantRepresentableInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 49,
+              "declaration": "representablePresheafInfinity"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "balanced",
+            "both",
+            "classification",
+            "functor",
+            "hom",
+            "profunctor",
+            "sides",
+            "twisted",
+            "universal",
+            "vertices",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Comma/Presheaf/Basic.lean",
+              "line": 646,
+              "declaration": "CostructuredArrow.overEquivPresheafCostructuredArrow_functor_map_toOverCompYoneda"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Elements.lean",
+              "line": 220,
+              "declaration": "costructuredArrowYonedaEquivalenceFunctorProj"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Yoneda"
+        ],
+        "terms": [
+          "arrow",
+          "balanced",
+          "both",
+          "classification",
+          "functor",
+          "hom",
+          "profunctor",
+          "representable",
+          "sides",
+          "twisted",
+          "universal",
+          "vertices"
+        ],
+        "declaration_count": 148,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean",
+            "line": 24,
+            "declaration": "covariantRepresentableInfinity"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+            "line": 49,
+            "declaration": "representablePresheafInfinity"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "line": 49,
+          "declaration": "SerrePositivity.InfinityCategories.representablePresheafInfinity",
+          "kernel_type": "@SerrePositivity.InfinityCategories.representablePresheafInfinity : {C : SSet} →\n  [C.Quasicategory] →\n    C.obj (Opposite.op { len := 0 }) → (SSet.uliftFunctor.obj C.op ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)",
+          "assessment": "標準の共同 Hom を二方向で制限した表現可能・余表現可能な図式はある。任意の Hom 関手について、同じ指定頂点の普遍性と余普遍性が一致する型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean",
+          "line": 24,
+          "declaration": "SerrePositivity.InfinityCategories.covariantRepresentableInfinity",
+          "kernel_type": "@SerrePositivity.InfinityCategories.covariantRepresentableInfinity : {C : SSet} →\n  [C.Quasicategory] →\n    C.obj (Opposite.op { len := 0 }) → (SSet.uliftFunctor.obj C ⟶ SerrePositivity.InfinityCategories.SpaceInfinity)",
+          "assessment": "標準の共同 Hom を二方向で制限した表現可能・余表現可能な図式はある。任意の Hom 関手について、同じ指定頂点の普遍性と余普遍性が一致する型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "line": 33,
+          "declaration": "homInfinityJointEvaluation",
+          "source_signature": "def homInfinityJointEvaluation (C : SSet.{u}) [Quasicategory C] : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⊗ (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ SpaceInfinity.{u} ",
+          "assessment": "標準の共同 Hom を二方向で制限した表現可能・余表現可能な図式はある。任意の Hom 関手について、同じ指定頂点の普遍性と余普遍性が一致する型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "標準の共同 Hom を二方向で制限した表現可能・余表現可能な図式はある。任意の Hom 関手について、同じ指定頂点の普遍性と余普遍性が一致する型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.4.1": {
+      "number": "8.3.4.1",
+      "tag": "03NR",
+      "query": [
+        "representable profunctors essential image",
+        "postcompose Yoneda",
+        "currying",
+        "fully faithful"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.1",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "postcompose",
+            "profunctors",
+            "representable",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/FullyFaithfulPostcomposition.lean",
+              "line": 56,
+              "declaration": "IsFullyFaithful.postcompose"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "postcompose",
+            "profunctors",
+            "representable",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/FullyFaithfulPostcomposition.lean",
+              "line": 56,
+              "declaration": "IsFullyFaithful.postcompose"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+              "line": 72,
+              "declaration": "yonedaInfinityMap_isFullyFaithful"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "currying",
+            "essential",
+            "faithful",
+            "fully",
+            "image",
+            "postcompose",
+            "profunctors",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+              "line": 92,
+              "declaration": "LeftExtension.IsPointwiseLeftKanExtensionAt.postcompose"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Cones.lean",
+              "line": 379,
+              "declaration": "postcompose"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "currying",
+          "essential",
+          "faithful",
+          "fully",
+          "image",
+          "postcompose",
+          "profunctors",
+          "representable",
+          "yoneda"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+            "line": 288,
+            "declaration": "discreteSpaceInclusion_isFullyFaithful"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/OppositeSimplexYoneda.lean",
+            "line": 22,
+            "declaration": "oppositeSimplex_yoneda"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean",
+          "line": 72,
+          "declaration": "SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful",
+          "kernel_type": "SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful : ∀ (C : SSet) [inst : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsFullyFaithful (SerrePositivity.InfinityCategories.yonedaInfinityMap C)",
+          "assessment": "宇宙小の C の Yoneda の充満忠実性を任意の同宇宙の関手空間で後合成へ移せる。局所 κ-small な C と任意の D に対し、指定 Hom 関手を使う像が全表現可能 profunctor で尽きる型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/FullyFaithfulPostcomposition.lean",
+          "line": 56,
+          "declaration": "SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose",
+          "kernel_type": "@SerrePositivity.InfinityCategories.IsFullyFaithful.postcompose : ∀ {X Y : SSet} [X.Quasicategory] [Y.Quasicategory]\n  {f : X ⟶ Y},\n  SerrePositivity.InfinityCategories.IsFullyFaithful f →\n    ∀ (K : SSet), SerrePositivity.InfinityCategories.IsFullyFaithful ((CategoryTheory.ihom K).map f)",
+          "assessment": "宇宙小の C の Yoneda の充満忠実性を任意の同宇宙の関手空間で後合成へ移せる。局所 κ-small な C と任意の D に対し、指定 Hom 関手を使う像が全表現可能 profunctor で尽きる型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "宇宙小の C の Yoneda の充満忠実性を任意の同宇宙の関手空間で後合成へ移せる。局所 κ-small な C と任意の D に対し、指定 Hom 関手を使う像が全表現可能 profunctor で尽きる型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.4.10": {
+      "number": "8.3.4.10",
+      "tag": "04B7",
+      "query": [
+        "LFun RFun opposite equivalence",
+        "birepresentable profunctors",
+        "Yoneda",
+        "homotopy category"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.10",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "birepresentable",
+            "category",
+            "equivalence",
+            "fun",
+            "homotopy",
+            "opposite",
+            "profunctors",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+              "line": 53,
+              "declaration": "presentableAdjointFunctorEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/YonedaSliceOppositeComparison.lean",
+              "line": 71,
+              "declaration": "oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "birepresentable",
+            "category",
+            "equivalence",
+            "fun",
+            "homotopy",
+            "opposite",
+            "profunctors",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+              "line": 53,
+              "declaration": "presentableAdjointFunctorEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/Ind/YonedaSliceOppositeComparison.lean",
+              "line": 71,
+              "declaration": "oppositeElementsYonedaSliceComparison_isPrecompositionEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "birepresentable",
+            "category",
+            "equivalence",
+            "fun",
+            "homotopy",
+            "opposite",
+            "profunctors",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/CodiscreteCategory.lean",
+              "line": 122,
+              "declaration": "oppositeEquivalence"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Enriched/Opposite.lean",
+              "line": 89,
+              "declaration": "forgetEnrichmentOppositeEquivalence.functor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "birepresentable",
+          "category",
+          "equivalence",
+          "fun",
+          "homotopy",
+          "opposite",
+          "profunctors",
+          "yoneda"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/OppositeSimplexYoneda.lean",
+            "line": 22,
+            "declaration": "oppositeSimplex_yoneda"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/OppositeKanUnstraightening.lean",
+            "line": 71,
+            "declaration": "oppositeKanUnstraighteningComparison_isPrecompositionEquivalence"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+          "line": 53,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence",
+          "kernel_type": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence : (C D :\n    SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject) →\n  SerrePositivity.InfinityCategories.QCatEquivalence\n    (SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace C D)\n    (SerrePositivity.InfinityCategories.F2.Presentable.PrRFunctorSpace D C).op",
+          "assessment": "presentable な C,D に対する小余極限保存関手と accessible な小極限保存関手の空間の反転同値があり、対応する左右の関手に随伴を与える。一般の局所 κ-small 圏で両表現可能な profunctor の部分圏を経由する二つの同値は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+          "line": 68,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence_adjunction : {C D :\n    SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject} →\n  (v : (SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace C D).obj (Opposite.op { len := 0 })) →\n    SerrePositivity.InfinityCategories.QCatAdjunction\n      (SerrePositivity.InfinityCategories.F2.Presentable.Duality.leftVertexFunctor v)\n      (SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightVertexFunctor\n        (SSet.opObjEquiv\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence C\n                      D).hom.app\n                (Opposite.op { len := 0 })))\n            v)))",
+          "assessment": "presentable な C,D に対する小余極限保存関手と accessible な小極限保存関手の空間の反転同値があり、対応する左右の関手に随伴を与える。一般の局所 κ-small 圏で両表現可能な profunctor の部分圏を経由する二つの同値は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "presentable な C,D に対する小余極限保存関手と accessible な小極限保存関手の空間の反転同値があり、対応する左右の関手に随伴を与える。一般の局所 κ-small 圏で両表現可能な profunctor の部分圏を経由する二つの同値は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.4.12": {
+      "number": "8.3.4.12",
+      "tag": "03NX",
+      "query": [
+        "twisted restriction universal natural transformation",
+        "representing vertex",
+        "constant point",
+        "identity edge"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.12",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "constant",
+            "edge",
+            "identity",
+            "natural",
+            "point",
+            "representing",
+            "restriction",
+            "transformation",
+            "twisted",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 62,
+              "declaration": "twistedArrowSourceIdentity"
+            },
+            {
+              "source": "SerrePositivity/KST/SConstruction/ZeroNaturalTransformations.lean",
+              "line": 138,
+              "declaration": "zeroNaturalTransformation_constant"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "constant",
+            "edge",
+            "identity",
+            "natural",
+            "point",
+            "representing",
+            "restriction",
+            "transformation",
+            "twisted",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 62,
+              "declaration": "twistedArrowSourceIdentity"
+            },
+            {
+              "source": "SerrePositivity/KST/SConstruction/ZeroNaturalTransformations.lean",
+              "line": 138,
+              "declaration": "zeroNaturalTransformation_constant"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "constant",
+            "edge",
+            "identity",
+            "natural",
+            "point",
+            "representing",
+            "restriction",
+            "transformation",
+            "twisted",
+            "universal",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Combinatorics/Graph/Connected/EdgeCut.lean",
+              "line": 58,
+              "declaration": "edgeCut_vertexSet_diff"
+            },
+            {
+              "source": "Mathlib/Combinatorics/Graph/Simple.lean",
+              "line": 55,
+              "declaration": "vertexSet_nontrivial_of_edgeSet_nonempty_of_loopless"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "constant",
+          "edge",
+          "identity",
+          "natural",
+          "point",
+          "representing",
+          "restriction",
+          "transformation",
+          "twisted",
+          "universal",
+          "vertex"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramNaturalTransformation.lean",
+            "line": 53,
+            "declaration": "kanDiagramNaturalTransformationEdge"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatDiagramArrowCurryEdge.lean",
+            "line": 39,
+            "declaration": "qCatDiagramArrowCurry_naturalTransformation_edge"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 62,
+          "declaration": "twistedArrowSourceIdentity",
+          "source_signature": "def twistedArrowSourceIdentity {C : SSet.{u}} (x : C _⦋0⦌) : (twistedArrowSource x) _⦋0⦌ ",
+          "assessment": "Tw の始域固定の恒等頂点と個別前層の表現可能述語はある。任意の G と K について定値一点からの β を Tw(D) の各恒等射で評価し、指定された G(D) による表現を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+          "line": 37,
+          "declaration": "IsRepresentableSmallSpaceFunctor",
+          "source_signature": "def IsRepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C.op ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "Tw の始域固定の恒等頂点と個別前層の表現可能述語はある。任意の G と K について定値一点からの β を Tw(D) の各恒等射で評価し、指定された G(D) による表現を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "Tw の始域固定の恒等頂点と個別前層の表現可能述語はある。任意の G と K について定値一点からの β を Tw(D) の各恒等射で評価し、指定された G(D) による表現を要求する述語は見つからない。",
+      "decision": "none"
+    },
+    "8.3.4.15": {
+      "number": "8.3.4.15",
+      "tag": "03P5",
+      "query": [
+        "representable profunctor iff twisted witness",
+        "natural transformation",
+        "Yoneda",
+        "local smallness"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.15",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "natural",
+            "profunctor",
+            "representable",
+            "smallness",
+            "transformation",
+            "twisted",
+            "witness",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/RepresentabilityEquivalence.lean",
+              "line": 53,
+              "declaration": "fullyFaithfulRepresentableRestrictionIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "natural",
+            "profunctor",
+            "representable",
+            "smallness",
+            "transformation",
+            "twisted",
+            "witness",
+            "yoneda"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/RepresentabilityEquivalence.lean",
+              "line": 53,
+              "declaration": "fullyFaithfulRepresentableRestrictionIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+              "line": 73,
+              "declaration": "adjunctionCovariantHomIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "natural",
+            "profunctor",
+            "smallness",
+            "transformation",
+            "twisted",
+            "witness",
+            "yoneda"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+              "line": 40,
+              "declaration": "ProfunctorCore"
+            },
+            {
+              "source": "Mathlib/Control/Traversable/Basic.lean",
+              "line": 77,
+              "declaration": "ApplicativeTransformation"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "natural",
+          "profunctor",
+          "representable",
+          "smallness",
+          "transformation",
+          "twisted",
+          "witness",
+          "yoneda"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramNaturalTransformation.lean",
+            "line": 53,
+            "declaration": "kanDiagramNaturalTransformationEdge"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/QCatDiagramArrowCurryEdge.lean",
+            "line": 39,
+            "declaration": "qCatDiagramArrowCurry_naturalTransformation_edge"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/RepresentabilityEquivalence.lean",
+          "line": 53,
+          "declaration": "fullyFaithfulRepresentableRestrictionIso",
+          "source_signature": "def fullyFaithfulRepresentableRestrictionIso {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : IsFullyFaithful f) (x : C _⦋0⦌) : FunctorIso (representablePresheafInfinity x) ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f) ≫ representablePresheafInfinity (f.app (Opposite.op ⦋0⦌) x)) ",
+          "assessment": "充満忠実な関手による前層の制限比較と随伴の Hom 比較はある。G を固定した profunctor の表現可能性を Tw(D) 上で条件を満たす β の存在へ移す iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean",
+          "line": 73,
+          "declaration": "adjunctionCovariantHomIso",
+          "source_signature": "def adjunctionCovariantHomIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) : FunctorIso (covariantRepresentableInfinity (F.app (Opposite.op ⦋0⦌) x)) ((SSet.uliftFunctor.{u + 1, u}).map G ≫ covariantRepresentableInfinity x) ",
+          "assessment": "充満忠実な関手による前層の制限比較と随伴の Hom 比較はある。G を固定した profunctor の表現可能性を Tw(D) 上で条件を満たす β の存在へ移す iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "充満忠実な関手による前層の制限比較と随伴の Hom 比較はある。G を固定した profunctor の表現可能性を Tw(D) 上で条件を満たす β の存在へ移す iff は見つからない。",
+      "decision": "none"
+    },
+    "8.3.4.16": {
+      "number": "8.3.4.16",
+      "tag": "03P8",
+      "query": [
+        "corepresented profunctor",
+        "twisted restriction",
+        "opposite functor",
+        "couniversal vertex"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.16",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "corepresented",
+            "couniversal",
+            "functor",
+            "opposite",
+            "profunctor",
+            "restriction",
+            "twisted",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSwap.lean",
+              "line": 34,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 40,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "corepresented",
+            "couniversal",
+            "functor",
+            "opposite",
+            "profunctor",
+            "restriction",
+            "twisted",
+            "vertex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSwap.lean",
+              "line": 34,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+              "line": 40,
+              "declaration": "twistedArrowOppositeSwap_projection"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "corepresented",
+            "couniversal",
+            "functor",
+            "opposite",
+            "profunctor",
+            "restriction",
+            "twisted",
+            "vertex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+              "line": 58,
+              "declaration": "Functor.profunctor"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Enriched/Opposite.lean",
+              "line": 89,
+              "declaration": "forgetEnrichmentOppositeEquivalence.functor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "corepresented",
+          "couniversal",
+          "functor",
+          "opposite",
+          "profunctor",
+          "restriction",
+          "twisted",
+          "vertex"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/OppositeFunctorIso.lean",
+            "line": 36,
+            "declaration": "oppositeInternalHomIso_vertex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramNativeLeftIntervalEvaluation.lean",
+            "line": 24,
+            "declaration": "kanDiagramOppositeLeftHomInterval_evaluate_action"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/TwistedOppositeHomComparison.lean",
+          "line": 40,
+          "declaration": "twistedArrowOppositeSwap_projection",
+          "source_signature": "lemma twistedArrowOppositeSwap_projection (C : SSet.{u}) : twistedArrowOppositeSwap C ≫ twistedArrowProjection C = twistedArrowProjection C.op ≫ (oppositeHomBaseIso C).hom ",
+          "assessment": "Tw の両端交換の式と個別関手の余表現可能性はある。Tw(C) の各恒等射で β を評価して F(X) の余表現性を要求し、反対圏での表現条件と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean",
+          "line": 28,
+          "declaration": "IsCorepresentableSmallSpaceFunctor",
+          "source_signature": "def IsCorepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) : Prop ",
+          "assessment": "Tw の両端交換の式と個別関手の余表現可能性はある。Tw(C) の各恒等射で β を評価して F(X) の余表現性を要求し、反対圏での表現条件と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "Tw の両端交換の式と個別関手の余表現可能性はある。Tw(C) の各恒等射で β を評価して F(X) の余表現性を要求し、反対圏での表現条件と同定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.4.19": {
+      "number": "8.3.4.19",
+      "tag": "03P2",
+      "query": [
+        "twisted representative iff left cofinal",
+        "lax pullback",
+        "space elements",
+        "Quillen A"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.19",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cofinal",
+            "elements",
+            "lax",
+            "left",
+            "pullback",
+            "quillen",
+            "representative",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+              "line": 23,
+              "declaration": "isLeftCofinal_iff_weaklyContractible_slices"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+              "line": 26,
+              "declaration": "relativeFunctorIsPullbackIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cofinal",
+            "elements",
+            "lax",
+            "pushout",
+            "quillen",
+            "representative",
+            "right",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+              "line": 23,
+              "declaration": "isLeftCofinal_iff_weaklyContractible_slices"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+              "line": 26,
+              "declaration": "relativeFunctorIsPullbackIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "elements",
+            "final",
+            "initial",
+            "lax",
+            "left",
+            "pullback",
+            "quillen",
+            "representative",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Final.lean",
+              "line": 104,
+              "declaration": "final_op_of_initial"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+              "line": 828,
+              "declaration": "isInitialElementsMkShrinkYonedaObjObjEquivId"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "cofinal",
+          "elements",
+          "lax",
+          "left",
+          "pullback",
+          "quillen",
+          "representative",
+          "space",
+          "twisted"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/PointedSpaces.lean",
+            "line": 74,
+            "declaration": "pointedSpaceProjection_leftFibration"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/CoreProduct.lean",
+            "line": 70,
+            "declaration": "quasicategoryCoreFunctor_laxMonoidal"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean",
+          "line": 23,
+          "declaration": "isLeftCofinal_iff_weaklyContractible_slices",
+          "source_signature": "lemma isLeftCofinal_iff_weaklyContractible_slices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsLeftCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceOverProjection (SSet.yonedaEquiv.symm b))) ",
+          "assessment": "任意の写像の左余終性の slice 判定と固定底の関手空間の引き戻し比較はある。β が誘導する Tw(D)→{Δ⁰}×⃗_S(Cᵒᵖ×D) の左余終性を β の表現性と結ぶ型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorIsPullbackIso.lean",
+          "line": 26,
+          "declaration": "relativeFunctorIsPullbackIso",
+          "source_signature": "def relativeFunctorIsPullbackIso : relativeFunctorSpace r a ≅ relativeFunctorSpace p b",
+          "assessment": "任意の写像の左余終性の slice 判定と固定底の関手空間の引き戻し比較はある。β が誘導する Tw(D)→{Δ⁰}×⃗_S(Cᵒᵖ×D) の左余終性を β の表現性と結ぶ型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "任意の写像の左余終性の slice 判定と固定底の関手空間の引き戻し比較はある。β が誘導する Tw(D)→{Δ⁰}×⃗_S(Cᵒᵖ×D) の左余終性を β の表現性と結ぶ型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.4.20": {
+      "number": "8.3.4.20",
+      "tag": "03P3",
+      "query": [
+        "represented profunctor as left Kan extension",
+        "twisted arrow",
+        "constant point",
+        "composite base"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.20",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "as",
+            "base",
+            "composite",
+            "constant",
+            "extension",
+            "kan",
+            "left",
+            "point",
+            "profunctor",
+            "represented",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean",
+              "line": 152,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "as",
+            "base",
+            "composite",
+            "constant",
+            "extension",
+            "kan",
+            "point",
+            "profunctor",
+            "represented",
+            "right",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 23,
+              "declaration": "twistedArrowProjection"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "as",
+            "base",
+            "composite",
+            "constant",
+            "extension",
+            "kan",
+            "left",
+            "point",
+            "profunctor",
+            "represented",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 92,
+              "declaration": "ι_leftKanExtensionObjIsoColimit_hom"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "arrow",
+          "as",
+          "base",
+          "composite",
+          "constant",
+          "extension",
+          "kan",
+          "left",
+          "point",
+          "profunctor",
+          "represented",
+          "twisted"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramEvaluation.lean",
+            "line": 54,
+            "declaration": "diagonalKanDiagramEvaluation_constant_base"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryDiagramRealizationEvaluation.lean",
+            "line": 26,
+            "declaration": "diagonalQuasicategoryDiagramEvaluation_constant_base"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 171,
+          "declaration": "IsLeftKanExtension",
+          "source_signature": "class IsLeftKanExtension : Prop",
+          "assessment": "一般の左 Kan 延長述語と、別の Yoneda 重みの左 Kan 延長はある。表現を与える β により、Tw(D) の定値一点から Gᵒᵖ×id を介して K を左 Kan 延長する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+          "line": 23,
+          "declaration": "twistedArrowProjection",
+          "source_signature": "def twistedArrowProjection (C : SSet.{u}) : TwistedArrow C ⟶ C.op ⊗ C ",
+          "assessment": "一般の左 Kan 延長述語と、別の Yoneda 重みの左 Kan 延長はある。表現を与える β により、Tw(D) の定値一点から Gᵒᵖ×id を介して K を左 Kan 延長する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/YonedaWeightLeftKan.lean",
+          "line": 45,
+          "declaration": "yonedaHomWeightDiagram_isLeftKanExtension",
+          "source_signature": "lemma yonedaHomWeightDiagram_isLeftKanExtension : IsLeftKanExtension ((SSet.uliftFunctor.{u + 2, u + 1}).map (yonedaInfinityMap C)) ((SSet.uliftFunctor.{u + 2, u + 1}).map (yonedaInfinityMap C) ≫ presheafHomWeightDiagram (yonedaInfinityMap C)) (presheafHomWeightDiagram (yonedaInfinityMap C)) (functorHomotopyRefl ((SSet.uliftFunctor.{u + 2, u + 1}).map (yonedaInfinityMap C) ≫ presheafHomWeightDiagram (yonedaInfinityMap C))) ",
+          "assessment": "一般の左 Kan 延長述語と、別の Yoneda 重みの左 Kan 延長はある。表現を与える β により、Tw(D) の定値一点から Gᵒᵖ×id を介して K を左 Kan 延長する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "一般の左 Kan 延長述語と、別の Yoneda 重みの左 Kan 延長はある。表現を与える β により、Tw(D) の定値一点から Gᵒᵖ×id を介して K を左 Kan 延長する型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.4.21": {
+      "number": "8.3.4.21",
+      "tag": "046K",
+      "query": [
+        "twisted representative Hom homotopy equivalence",
+        "precompose beta",
+        "Kan mapping space",
+        "left Kan universal"
+      ],
+      "a": {
+        "terms": [
+          "8.3.4.21",
+          "8.3.4",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "beta",
+            "equivalence",
+            "hom",
+            "homotopy",
+            "kan",
+            "left",
+            "mapping",
+            "precompose",
+            "representative",
+            "space",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/UniversalProperty.lean",
+              "line": 92,
+              "declaration": "leftKanHomUniversalIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+              "line": 80,
+              "declaration": "relativeFunctorSpace_kanComplex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "beta",
+            "equivalence",
+            "hom",
+            "homotopy",
+            "kan",
+            "mapping",
+            "precompose",
+            "representative",
+            "right",
+            "space",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/UniversalProperty.lean",
+              "line": 92,
+              "declaration": "leftKanHomUniversalIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+              "line": 80,
+              "declaration": "relativeFunctorSpace_kanComplex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "beta",
+            "equivalence",
+            "hom",
+            "homotopy",
+            "kan",
+            "left",
+            "mapping",
+            "precompose",
+            "representative",
+            "space",
+            "twisted",
+            "universal"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+              "line": 127,
+              "declaration": "IsUniversalColimit.precompose_isIso"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 178,
+              "declaration": "isUniversalOfIsLeftKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_own_both",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Categories"
+        ],
+        "terms": [
+          "beta",
+          "equivalence",
+          "hom",
+          "homotopy",
+          "kan",
+          "left",
+          "mapping",
+          "precompose",
+          "representative",
+          "space",
+          "twisted",
+          "universal"
+        ],
+        "declaration_count": 372,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramOppositeHomParameter.lean",
+            "line": 44,
+            "declaration": "kanDiagramUniversalOpposite_mappingSpaceMap"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Categories/KanDiagramUniversalTransport.lean",
+            "line": 38,
+            "declaration": "kanDiagramUniversalFiberComparison_isQCatEquivalence"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/UniversalProperty.lean",
+          "line": 92,
+          "declaration": "leftKanHomUniversalIso",
+          "source_signature": "def leftKanHomUniversalIso {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ : K ⟶ D} {F G : C ⟶ D} (α : FunctorHom F₀ (δ ≫ F)) (β : FunctorHom F₀ (δ ≫ G)) (hF : LeftKanHomUniversal δ α) (hG : LeftKanHomUniversal δ β) : FunctorIso F G ",
+          "assessment": "左 Kan 延長の一般の Hom 比較は h Fun の Hom 集合を扱い、固定底の相対関手空間の Kan 性もある。表現を与える β に対し、指定された二つの Kan 写像空間の間でホモトピー同値となる型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "line": 80,
+          "declaration": "relativeFunctorSpace_kanComplex",
+          "source_signature": "instance relativeFunctorSpace_kanComplex {A E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) : KanComplex (relativeFunctorSpace p a) ",
+          "assessment": "左 Kan 延長の一般の Hom 比較は h Fun の Hom 集合を扱い、固定底の相対関手空間の Kan 性もある。表現を与える β に対し、指定された二つの Kan 写像空間の間でホモトピー同値となる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "左 Kan 延長の一般の Hom 比較は h Fun の Hom 集合を扱い、固定底の相対関手空間の Kan 性もある。表現を与える β に対し、指定された二つの Kan 写像空間の間でホモトピー同値となる型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.5.1": {
+      "number": "8.3.5.1",
+      "tag": "03MT",
+      "query": [
+        "Hom functor witness",
+        "twisted arrow fibers",
+        "pointed spaces",
+        "homotopy equivalence"
+      ],
+      "a": {
+        "terms": [
+          "8.3.5.1",
+          "8.3.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "equivalence",
+            "fibers",
+            "functor",
+            "hom",
+            "homotopy",
+            "pointed",
+            "spaces",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 81,
+              "declaration": "twistedArrowSourceIdentityHomFamily_homotopyEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "equivalence",
+            "fibers",
+            "functor",
+            "hom",
+            "homotopy",
+            "pointed",
+            "spaces",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 81,
+              "declaration": "twistedArrowSourceIdentityHomFamily_homotopyEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "equivalence",
+            "fibers",
+            "functor",
+            "hom",
+            "homotopy",
+            "pointed",
+            "spaces",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Comma/Over/Basic.lean",
+              "line": 1164,
+              "declaration": "ofStructuredArrowProjEquivalence.functor"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Comma/StructuredArrow/Basic.lean",
+              "line": 1099,
+              "declaration": "StructuredArrow.preEquivalenceFunctor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "equivalence",
+          "fibers",
+          "functor",
+          "hom",
+          "homotopy",
+          "pointed",
+          "spaces",
+          "twisted",
+          "witness"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "line": 29,
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber",
+          "kernel_type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber : (C : SSet) →\n  [inst : C.Quasicategory] →\n    (b : (CategoryTheory.MonoidalCategoryStruct.tensorObj C.op C).obj (Opposite.op { len := 0 })) →\n      SerrePositivity.InfinityCategories.vertexFiber\n          (SSet.uliftFunctor.map (SerrePositivity.InfinityCategories.twistedArrowProjection C)) { down := b } ⟶\n        SerrePositivity.InfinityCategories.vertexFiber SerrePositivity.InfinityCategories.pointedSpaceProjection\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.InfinityCategories.twistedArrowHomInfinity C).app (Opposite.op { len := 0 })))\n            { down := b })",
+          "assessment": "標準 Hom 図式の pointed 比較が両端のファイバーで準圏同値になる。任意の H と任意の α について、同じ写像を組み立てて全 (X,Y) での Kan ホモトピー同値を要求する述語は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "line": 67,
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "kernel_type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence : ∀ (C : SSet)\n  [inst : C.Quasicategory]\n  (b : (CategoryTheory.MonoidalCategoryStruct.tensorObj C.op C).obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber C b)",
+          "assessment": "標準 Hom 図式の pointed 比較が両端のファイバーで準圏同値になる。任意の H と任意の α について、同じ写像を組み立てて全 (X,Y) での Kan ホモトピー同値を要求する述語は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "標準 Hom 図式の pointed 比較が両端のファイバーで準圏同値になる。任意の H と任意の α について、同じ写像を組み立てて全 (X,Y) での Kan ホモトピー同値を要求する述語は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.5.5": {
+      "number": "8.3.5.5",
+      "tag": "03NK",
+      "query": [
+        "Hom functor iff represented by identity",
+        "corepresented identity",
+        "twisted diagonal witness"
+      ],
+      "a": {
+        "terms": [
+          "8.3.5.5",
+          "8.3.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "corepresented",
+            "diagonal",
+            "functor",
+            "hom",
+            "identity",
+            "represented",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "corepresented",
+            "diagonal",
+            "functor",
+            "hom",
+            "identity",
+            "represented",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+              "line": 74,
+              "declaration": "twistedArrowSourceIdentity_isInitialVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "corepresented",
+            "diagonal",
+            "functor",
+            "hom",
+            "identity",
+            "represented",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/RepresentedBy.lean",
+              "line": 81,
+              "declaration": "IsRepresentedBy.representableBy_homEquiv_apply"
+            },
+            {
+              "source": "Mathlib/AlgebraicGeometry/Scheme.lean",
+              "line": 605,
+              "declaration": "SpecΓIdentity_hom_app"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "corepresented",
+          "diagonal",
+          "functor",
+          "hom",
+          "identity",
+          "represented",
+          "twisted",
+          "witness"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "line": 67,
+          "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "source_signature": "lemma twistedArrowPointedDisplayFiber_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (b : (C.op ⊗ C) _⦋0⦌) : IsQCatEquivalence (twistedArrowPointedDisplayFiber C b) ",
+          "assessment": "標準 Hom の pointed 比較の各ファイバーでの同値と始域固定の恒等頂点の初期性はある。任意の α について、両端ファイバーでの同値を恒等関手による左右いずれかの表現性へ置き換える三条件は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "line": 74,
+          "declaration": "twistedArrowSourceIdentity_isInitialVertex",
+          "source_signature": "lemma twistedArrowSourceIdentity_isInitialVertex {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : IsInitialVertex (twistedArrowSourceIdentity x) ",
+          "assessment": "標準 Hom の pointed 比較の各ファイバーでの同値と始域固定の恒等頂点の初期性はある。任意の α について、両端ファイバーでの同値を恒等関手による左右いずれかの表現性へ置き換える三条件は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "標準 Hom の pointed 比較の各ファイバーでの同値と始域固定の恒等頂点の初期性はある。任意の α について、両端ファイバーでの同値を恒等関手による左右いずれかの表現性へ置き換える三条件は見つからない。",
+      "decision": "none"
+    },
+    "8.3.5.6": {
+      "number": "8.3.5.6",
+      "tag": "03N3",
+      "query": [
+        "Hom functor left Kan extension",
+        "constant point",
+        "twisted arrow projection",
+        "initial lax pullback"
+      ],
+      "a": {
+        "terms": [
+          "8.3.5.6",
+          "8.3.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "constant",
+            "extension",
+            "functor",
+            "hom",
+            "initial",
+            "kan",
+            "lax",
+            "left",
+            "point",
+            "projection",
+            "pullback",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Definition.lean",
+              "line": 152,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "constant",
+            "extension",
+            "final",
+            "functor",
+            "hom",
+            "kan",
+            "lax",
+            "point",
+            "projection",
+            "pushout",
+            "right",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "constant",
+            "extension",
+            "functor",
+            "hom",
+            "initial",
+            "kan",
+            "lax",
+            "left",
+            "point",
+            "projection",
+            "pullback",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 171,
+              "declaration": "IsLeftKanExtension"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 92,
+              "declaration": "ι_leftKanExtensionObjIsoColimit_hom"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "constant",
+          "extension",
+          "functor",
+          "hom",
+          "initial",
+          "kan",
+          "lax",
+          "left",
+          "point",
+          "projection",
+          "pullback",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+          "line": 171,
+          "declaration": "IsLeftKanExtension",
+          "source_signature": "class IsLeftKanExtension : Prop",
+          "assessment": "左 Kan 延長と h Fun の Hom 比較、および標準 Hom のファイバー比較はある。任意の H,α のファイバー条件を Tw 射影に沿う一点の左 Kan 延長および向き付き引き戻しの初期性と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/UniversalProperty.lean",
+          "line": 92,
+          "declaration": "leftKanHomUniversalIso",
+          "source_signature": "def leftKanHomUniversalIso {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ : K ⟶ D} {F G : C ⟶ D} (α : FunctorHom F₀ (δ ≫ F)) (β : FunctorHom F₀ (δ ≫ G)) (hF : LeftKanHomUniversal δ α) (hG : LeftKanHomUniversal δ β) : FunctorIso F G ",
+          "assessment": "左 Kan 延長と h Fun の Hom 比較、および標準 Hom のファイバー比較はある。任意の H,α のファイバー条件を Tw 射影に沿う一点の左 Kan 延長および向き付き引き戻しの初期性と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "line": 67,
+          "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "source_signature": "lemma twistedArrowPointedDisplayFiber_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (b : (C.op ⊗ C) _⦋0⦌) : IsQCatEquivalence (twistedArrowPointedDisplayFiber C b) ",
+          "assessment": "左 Kan 延長と h Fun の Hom 比較、および標準 Hom のファイバー比較はある。任意の H,α のファイバー条件を Tw 射影に沿う一点の左 Kan 延長および向き付き引き戻しの初期性と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "左 Kan 延長と h Fun の Hom 比較、および標準 Hom のファイバー比較はある。任意の H,α のファイバー条件を Tw 射影に沿う一点の左 Kan 延長および向き付き引き戻しの初期性と同定する型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.5.7": {
+      "number": "8.3.5.7",
+      "tag": "03V3",
+      "query": [
+        "locally kappa-small Hom functor",
+        "relative spaces",
+        "twisted arrow",
+        "left Kan extension"
+      ],
+      "a": {
+        "terms": [
+          "8.3.5.7",
+          "8.3.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "extension",
+            "functor",
+            "hom",
+            "kan",
+            "kappa",
+            "left",
+            "locally",
+            "relative",
+            "small",
+            "spaces",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 28,
+              "declaration": "twistedArrowHomInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+              "line": 46,
+              "declaration": "indLeftKanExtension_preservesSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "extension",
+            "functor",
+            "hom",
+            "kan",
+            "kappa",
+            "locally",
+            "relative",
+            "right",
+            "small",
+            "spaces",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+              "line": 28,
+              "declaration": "twistedArrowHomInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallTwistedArrowShapes.lean",
+              "line": 57,
+              "declaration": "isKappaSmall_twistedArrow"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "extension",
+            "functor",
+            "hom",
+            "kan",
+            "kappa",
+            "left",
+            "locally",
+            "relative",
+            "small",
+            "spaces",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 92,
+              "declaration": "ι_leftKanExtensionObjIsoColimit_hom"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/LeftDerived.lean",
+              "line": 55,
+              "declaration": "isLeftDerivedFunctor_iff_isRightKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "extension",
+          "functor",
+          "hom",
+          "kan",
+          "kappa",
+          "left",
+          "locally",
+          "relative",
+          "small",
+          "spaces",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+          "line": 28,
+          "declaration": "twistedArrowHomInfinity",
+          "source_signature": "def twistedArrowHomInfinity (C : SSet.{u}) [Quasicategory C] : (SSet.uliftFunctor.{u + 1, u}).obj (C.op ⊗ C) ⟶ SpaceInfinity.{u} ",
+          "assessment": "一つの宇宙での標準 Tw 分類と、小空間の余極限を宇宙変更から反映する型はある。局所 κ-small の条件で指定 H と α の三つの同値を S_{<κ} へ制限する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Compact/UniverseColimitReflection.lean",
+          "line": 25,
+          "declaration": "spaceUniverseDiagram_reflects_small_isColimit",
+          "source_signature": "lemma spaceUniverseDiagram_reflects_small_isColimit {I : SSet.{u}} [Quasicategory I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ SpaceInfinity.{u}) (c : JoinCocone D) (hc : IsColimitCone (coconeUniverseImage c)) : IsColimitCone c ",
+          "assessment": "一つの宇宙での標準 Tw 分類と、小空間の余極限を宇宙変更から反映する型はある。局所 κ-small の条件で指定 H と α の三つの同値を S_{<κ} へ制限する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "一つの宇宙での標準 Tw 分類と、小空間の余極限を宇宙変更から反映する型はある。局所 κ-small の条件で指定 H と α の三つの同値を S_{<κ} へ制限する型は見つからない。",
+      "decision": "none"
+    },
+    "8.3.5.8": {
+      "number": "8.3.5.8",
+      "tag": "046J",
+      "query": [
+        "Hom functor naturality",
+        "twisted arrow induced map",
+        "unique up to homotopy",
+        "fully faithful restriction"
+      ],
+      "a": {
+        "terms": [
+          "8.3.5.8",
+          "8.3.5",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "faithful",
+            "fully",
+            "functor",
+            "hom",
+            "homotopy",
+            "induced",
+            "map",
+            "naturality",
+            "restriction",
+            "twisted",
+            "unique",
+            "up"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean",
+              "line": 69,
+              "declaration": "yonedaInfinityMap_fullyFaithfulRestrictionIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "faithful",
+            "fully",
+            "functor",
+            "hom",
+            "homotopy",
+            "induced",
+            "map",
+            "naturality",
+            "restriction",
+            "twisted",
+            "unique",
+            "up"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean",
+              "line": 69,
+              "declaration": "yonedaInfinityMap_fullyFaithfulRestrictionIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "faithful",
+            "fully",
+            "functor",
+            "hom",
+            "homotopy",
+            "induced",
+            "map",
+            "naturality",
+            "restriction",
+            "twisted",
+            "unique",
+            "up"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/InducedCategory.lean",
+              "line": 106,
+              "declaration": "fullyFaithfulInducedFunctor"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/CommAlgCat/Basic.lean",
+              "line": 198,
+              "declaration": "fullyFaithfulUliftFunctor"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "faithful",
+          "fully",
+          "functor",
+          "hom",
+          "homotopy",
+          "induced",
+          "map",
+          "naturality",
+          "restriction",
+          "twisted",
+          "unique",
+          "up"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean",
+          "line": 69,
+          "declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso",
+          "kernel_type": "@SerrePositivity.InfinityCategories.HomotopyLimits.yonedaInfinityMap_fullyFaithfulRestrictionIso : {C D : SSet} →\n  [inst : C.Quasicategory] →\n    [inst_1 : D.Quasicategory] →\n      (f : C ⟶ D) →\n        SerrePositivity.InfinityCategories.IsFullyFaithful f →\n          SerrePositivity.InfinityCategories.FunctorIso (SerrePositivity.InfinityCategories.yonedaInfinityMap C)\n            (CategoryTheory.CategoryStruct.comp (SSet.uliftFunctor.map f)\n              (CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.yonedaInfinityMap D)\n                (SerrePositivity.InfinityCategories.presheafInfinityRestriction f)))",
+          "assessment": "充満忠実な f に沿う標準 Yoneda の制限は全関手同型で比較でき、Tw 射影には自然性がある。任意の F と選んだ二つの α,β について要求された三角形を満たす γ の存在とホモトピー一意性は確認できない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+          "line": 37,
+          "declaration": "twistedArrowProjection_naturality",
+          "source_signature": "lemma twistedArrowProjection_naturality {C D : SSet.{u}} (f : C ⟶ D) : edgewiseSubdivisionMap f ≫ twistedArrowProjection D = twistedArrowProjection C ≫ (SSet.opFunctor.map f ⊗ₘ f) ",
+          "assessment": "充満忠実な f に沿う標準 Yoneda の制限は全関手同型で比較でき、Tw 射影には自然性がある。任意の F と選んだ二つの α,β について要求された三角形を満たす γ の存在とホモトピー一意性は確認できない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "充満忠実な f に沿う標準 Yoneda の制限は全関手同型で比較でき、Tw 射影には自然性がある。任意の F と選んだ二つの α,β について要求された三角形を満たす γ の存在とホモトピー一意性は確認できない。",
+      "decision": "partial"
+    },
+    "8.3.6.5": {
+      "number": "8.3.6.5",
+      "tag": "03NA",
+      "query": [
+        "coherent nerve pointed Hom witness",
+        "path poset finite subsets",
+        "twisted arrow",
+        "comparison over Space"
+      ],
+      "a": {
+        "terms": [
+          "8.3.6.5",
+          "8.3.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "coherent",
+            "comparison",
+            "finite",
+            "hom",
+            "nerve",
+            "over",
+            "path",
+            "pointed",
+            "poset",
+            "space",
+            "subsets",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+              "line": 28,
+              "declaration": "twistedArrowPointedDisplay"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetCoherentExchange.lean",
+              "line": 25,
+              "declaration": "coherentFilteredLimitExchange_nerve_finite_poset"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "coherent",
+            "comparison",
+            "finite",
+            "hom",
+            "nerve",
+            "path",
+            "pointed",
+            "poset",
+            "space",
+            "subsets",
+            "twisted",
+            "under",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+              "line": 28,
+              "declaration": "twistedArrowPointedDisplay"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetCoherentExchange.lean",
+              "line": 25,
+              "declaration": "coherentFilteredLimitExchange_nerve_finite_poset"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "coherent",
+            "comparison",
+            "finite",
+            "hom",
+            "nerve",
+            "over",
+            "path",
+            "pointed",
+            "poset",
+            "space",
+            "subsets",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Analysis/Convex/Combination.lean",
+              "line": 429,
+              "declaration": "convexHull_eq_union_convexHull_finite_subsets"
+            },
+            {
+              "source": "Mathlib/Data/Set/Finite/Powerset.lean",
+              "line": 49,
+              "declaration": "Finite.finite_subsets"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean",
+          "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomInfinity.lean",
+          "SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedComparison.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Coherent",
+          "SerrePositivity/InfinityCategories/F1/TwistedArrow"
+        ],
+        "terms": [
+          "arrow",
+          "coherent",
+          "comparison",
+          "finite",
+          "hom",
+          "nerve",
+          "over",
+          "path",
+          "pointed",
+          "poset",
+          "space",
+          "subsets",
+          "twisted",
+          "witness"
+        ],
+        "declaration_count": 1315,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+            "line": 28,
+            "declaration": "twistedArrowPointedDisplay"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSpace.lean",
+            "line": 23,
+            "declaration": "twistedArrowHomSpace"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+          "line": 28,
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay",
+          "kernel_type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay : (C : SSet) →\n  [C.Quasicategory] →\n    SSet.uliftFunctor.obj (SerrePositivity.InfinityCategories.TwistedArrow C) ⟶\n      SerrePositivity.InfinityCategories.PointedSpaceInfinity",
+          "assessment": "任意の準圏 C の Tw から pointed spaces へ、標準分類を底とする可換比較を作る。局所 Kan 豊穣圏について Path の有限部分集合 I↦Ī∪I から作る指定の比較と同定する型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplay.lean",
+          "line": 36,
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection",
+          "kernel_type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplay_projection : ∀ (C : SSet) [inst : C.Quasicategory],\n  CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.twistedArrowPointedDisplay C)\n      SerrePositivity.InfinityCategories.pointedSpaceProjection =\n    CategoryTheory.CategoryStruct.comp\n      (SSet.uliftFunctor.map (SerrePositivity.InfinityCategories.twistedArrowProjection C))\n      (SerrePositivity.InfinityCategories.twistedArrowHomInfinity C)",
+          "assessment": "任意の準圏 C の Tw から pointed spaces へ、標準分類を底とする可換比較を作る。局所 Kan 豊穣圏について Path の有限部分集合 I↦Ī∪I から作る指定の比較と同定する型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "任意の準圏 C の Tw から pointed spaces へ、標準分類を底とする可換比較を作る。局所 Kan 豊穣圏について Path の有限部分集合 I↦Ī∪I から作る指定の比較と同定する型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.6.7": {
+      "number": "8.3.6.7",
+      "tag": "03ND",
+      "query": [
+        "strict Hom witness categorical pullback",
+        "twisted coherent nerve",
+        "pointed forgetful",
+        "fiber equivalence"
+      ],
+      "a": {
+        "terms": [
+          "8.3.6.7",
+          "8.3.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "coherent",
+            "equivalence",
+            "fiber",
+            "forgetful",
+            "hom",
+            "nerve",
+            "pointed",
+            "pullback",
+            "strict",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentConeLeftFibration.lean",
+              "line": 104,
+              "declaration": "strictCoherentConeFiberHomEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "coherent",
+            "equivalence",
+            "fiber",
+            "forgetful",
+            "hom",
+            "nerve",
+            "pointed",
+            "pushout",
+            "strict",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+              "line": 67,
+              "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentConeLeftFibration.lean",
+              "line": 104,
+              "declaration": "strictCoherentConeFiberHomEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "coherent",
+            "equivalence",
+            "fiber",
+            "fibre",
+            "forgetful",
+            "hom",
+            "nerve",
+            "pointed",
+            "pullback",
+            "strict",
+            "twisted",
+            "witness"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/FiberedCategory/BasedCategory.lean",
+              "line": 197,
+              "declaration": "forgetful"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean",
+          "SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomInfinity.lean",
+          "SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedComparison.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Coherent",
+          "SerrePositivity/InfinityCategories/F1/TwistedArrow"
+        ],
+        "terms": [
+          "categorical",
+          "coherent",
+          "equivalence",
+          "fiber",
+          "forgetful",
+          "hom",
+          "nerve",
+          "pointed",
+          "pullback",
+          "strict",
+          "twisted",
+          "witness"
+        ],
+        "declaration_count": 1315,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+            "line": 67,
+            "declaration": "twistedArrowPointedDisplayFiber_isQCatEquivalence"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourcePointedFiber.lean",
+            "line": 88,
+            "declaration": "twistedArrowSourcePointedDisplayFiber_isQCatEquivalence"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/PointedDisplayFiber.lean",
+          "line": 67,
+          "declaration": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence",
+          "kernel_type": "SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber_isQCatEquivalence : ∀ (C : SSet)\n  [inst : C.Quasicategory]\n  (b : (CategoryTheory.MonoidalCategoryStruct.tensorObj C.op C).obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.twistedArrowPointedDisplayFiber C b)",
+          "assessment": "標準 Hom の pointed 比較は全両端ファイバーで同値で、元の left straightening の復元も前合成同値になる。Path による指定の豊穣 Hom の比較正方形が categorical pullback とする型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningInfinityReconstruction.lean",
+          "line": 69,
+          "declaration": "SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence",
+          "kernel_type": "@SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction_isPrecompositionEquivalence : ∀ {E B : SSet}\n  [inst : B.Quasicategory] (p : E ⟶ B) [inst_1 : SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence\n    (SerrePositivity.InfinityCategories.leftStraighteningInfinityReconstruction p)",
+          "assessment": "標準 Hom の pointed 比較は全両端ファイバーで同値で、元の left straightening の復元も前合成同値になる。Path による指定の豊穣 Hom の比較正方形が categorical pullback とする型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "標準 Hom の pointed 比較は全両端ファイバーで同値で、元の left straightening の復元も前合成同値になる。Path による指定の豊穣 Hom の比較正方形が categorical pullback とする型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.7.1": {
+      "number": "8.3.7.1",
+      "tag": "06BZ",
+      "query": [
+        "Hom functors lax pullback",
+        "oriented fiber product",
+        "functor category pullback",
+        "mapping space square"
+      ],
+      "a": {
+        "terms": [
+          "8.3.7.1",
+          "8.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "fiber",
+            "functor",
+            "functors",
+            "hom",
+            "lax",
+            "mapping",
+            "oriented",
+            "product",
+            "pullback",
+            "space",
+            "square"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+              "line": 40,
+              "declaration": "laxPullbackMappingSpaceCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingProductSquare.lean",
+              "line": 29,
+              "declaration": "laxPullbackMappingProduct_isPullback"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "coproduct",
+            "fiber",
+            "functor",
+            "functors",
+            "hom",
+            "lax",
+            "mapping",
+            "oriented",
+            "pushout",
+            "space",
+            "square"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+              "line": 40,
+              "declaration": "laxPullbackMappingSpaceCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/PushoutTopMappingFiber.lean",
+              "line": 107,
+              "declaration": "pushoutMappingFiber_contractible_iff"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "fiber",
+            "fibre",
+            "functor",
+            "functors",
+            "hom",
+            "lax",
+            "mapping",
+            "oriented",
+            "product",
+            "pullback",
+            "space",
+            "square"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Bicategory/Functor/Prelax.lean",
+              "line": 154,
+              "declaration": "mkOfHomFunctors_mapFunctor"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Galois/Prorepresentability.lean",
+              "line": 383,
+              "declaration": "FibreFunctor.end_isIso"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "category",
+          "fiber",
+          "functor",
+          "functors",
+          "hom",
+          "lax",
+          "mapping",
+          "oriented",
+          "product",
+          "pullback",
+          "space",
+          "square"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+          "line": 40,
+          "declaration": "SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone_isLimit : ∀ {A B C : SSet} (p : A ⟶ C) (q : B ⟶ C)\n  (x y : (SerrePositivity.InfinityCategories.F2.laxPullback p q).obj (Opposite.op { len := 0 }))\n  [inst : A.Quasicategory] [inst_1 : B.Quasicategory] [inst_2 : C.Quasicategory],\n  SerrePositivity.InfinityCategories.IsLimitCone\n    (SerrePositivity.InfinityCategories.F2.laxPullbackMappingSpaceCone p q x y)",
+          "assessment": "任意の p,q と lax pullback 内の二頂点 x,y に対し、写像空間を両脚の射と端点評価による極限錐にする。全 (x,y) を自然にまとめた Fun(C_{±}ᵒᵖ×C_{±},S) 内の指定引き戻しは確認できない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "任意の p,q と lax pullback 内の二頂点 x,y に対し、写像空間を両脚の射と端点評価による極限錐にする。全 (x,y) を自然にまとめた Fun(C_{±}ᵒᵖ×C_{±},S) 内の指定引き戻しは確認できない。",
+      "decision": "partial"
+    },
+    "8.3.7.3": {
+      "number": "8.3.7.3",
+      "tag": "06C2",
+      "query": [
+        "twisted lax pullback auxiliary E minus E plus",
+        "Tw natural transformation",
+        "cospan",
+        "identity section"
+      ],
+      "a": {
+        "terms": [
+          "8.3.7.3",
+          "8.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "auxiliary",
+            "cospan",
+            "identity",
+            "lax",
+            "minus",
+            "natural",
+            "plus",
+            "pullback",
+            "section",
+            "transformation",
+            "tw",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceDiagram.lean",
+              "line": 47,
+              "declaration": "laxPullbackMappingSpaceDiagram"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "auxiliary",
+            "cospan",
+            "identity",
+            "lax",
+            "minus",
+            "natural",
+            "plus",
+            "pushout",
+            "section",
+            "transformation",
+            "tw",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+              "line": 37,
+              "declaration": "twistedArrowProjection_naturality"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceDiagram.lean",
+              "line": 47,
+              "declaration": "laxPullbackMappingSpaceDiagram"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "auxiliary",
+            "cospan",
+            "identity",
+            "lax",
+            "minus",
+            "natural",
+            "plus",
+            "pullback",
+            "section",
+            "transformation",
+            "tw",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/NumberTheory/ModularForms/ArithmeticSubgroups.lean",
+              "line": 37,
+              "declaration": "HasDetPlusMinusOne"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+              "line": 857,
+              "declaration": "IsPullback.preservesLimit_cospan_iff"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "auxiliary",
+          "cospan",
+          "identity",
+          "lax",
+          "minus",
+          "natural",
+          "plus",
+          "pullback",
+          "section",
+          "transformation",
+          "tw",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceDiagram.lean",
+          "line": 47,
+          "declaration": "laxPullbackMappingSpaceDiagram",
+          "source_signature": "def laxPullbackMappingSpaceDiagram [Quasicategory A] [Quasicategory B] [Quasicategory C] : AsSmall.{u} WalkingCospan ⥤ KanObject.{u} ",
+          "assessment": "元の lax pullback の固定二頂点の写像空間図式と Tw 射影の自然性はある。Tw(α) の三つの頂点を用いて E₋・E₊ と Q₋・Q₊ の指定の可換四角形を作る宣言は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean",
+          "line": 37,
+          "declaration": "twistedArrowProjection_naturality",
+          "source_signature": "lemma twistedArrowProjection_naturality {C D : SSet.{u}} (f : C ⟶ D) : edgewiseSubdivisionMap f ≫ twistedArrowProjection D = twistedArrowProjection C ≫ (SSet.opFunctor.map f ⊗ₘ f) ",
+          "assessment": "元の lax pullback の固定二頂点の写像空間図式と Tw 射影の自然性はある。Tw(α) の三つの頂点を用いて E₋・E₊ と Q₋・Q₊ の指定の可換四角形を作る宣言は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "元の lax pullback の固定二頂点の写像空間図式と Tw 射影の自然性はある。Tw(α) の三つの頂点を用いて E₋・E₊ と Q₋・Q₊ の指定の可換四角形を作る宣言は見つからない。",
+      "decision": "none"
+    },
+    "8.3.7.4": {
+      "number": "8.3.7.4",
+      "tag": "06C3",
+      "query": [
+        "lax pullback E plus E minus left fibration",
+        "transport restriction",
+        "base change",
+        "twisted Hom"
+      ],
+      "a": {
+        "terms": [
+          "8.3.7.4",
+          "8.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "base",
+            "change",
+            "fibration",
+            "hom",
+            "lax",
+            "left",
+            "minus",
+            "plus",
+            "pullback",
+            "restriction",
+            "transport",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Fibrations/PullbackTransport.lean",
+              "line": 29,
+              "declaration": "leftFibration_pullback_snd"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+              "line": 69,
+              "declaration": "leftStraighteningInfinityDiagram_baseChangeIso"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "base",
+            "change",
+            "fibration",
+            "hom",
+            "lax",
+            "minus",
+            "plus",
+            "pushout",
+            "restriction",
+            "right",
+            "transport",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+              "line": 69,
+              "declaration": "leftStraighteningInfinityDiagram_baseChangeIso"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeHomTransportRestriction.lean",
+              "line": 25,
+              "declaration": "cocartesianBaseChangeHomTransport_restrictionIso"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "base",
+            "change",
+            "hom",
+            "lax",
+            "left",
+            "lifting",
+            "minus",
+            "plus",
+            "pullback",
+            "restriction",
+            "transport",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/NumberTheory/ModularForms/ArithmeticSubgroups.lean",
+              "line": 37,
+              "declaration": "HasDetPlusMinusOne"
+            },
+            {
+              "source": "Mathlib/AlgebraicGeometry/Morphisms/Descent.lean",
+              "line": 112,
+              "declaration": "IsStableUnderBaseChange.of_pullback_fst_of_isAffine"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "base",
+          "change",
+          "fibration",
+          "hom",
+          "lax",
+          "left",
+          "minus",
+          "plus",
+          "pullback",
+          "restriction",
+          "transport",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+          "line": 69,
+          "declaration": "SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso",
+          "kernel_type": "@SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso : {E B D : SSet} →\n  (p : E ⟶ B) →\n    [inst : SerrePositivity.InfinityCategories.LeftFibration p] →\n      (k : D ⟶ B) →\n        SerrePositivity.InfinityCategories.FunctorIso\n          (CategoryTheory.CategoryStruct.comp (SSet.uliftFunctor.map k)\n            (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram p))\n          (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram (CategoryTheory.Limits.pullback.snd p k))",
+          "assessment": "任意の基底変更で左ファイブレーション性と分類図式の制限同型が得られる。E₋ と E₊ にこれを適用して、向き付き引き戻しからの指定射影を介する二つの輸送表現を与える型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Fibrations/PullbackTransport.lean",
+          "line": 29,
+          "declaration": "SerrePositivity.InfinityCategories.leftFibration_pullback_snd",
+          "kernel_type": "@SerrePositivity.InfinityCategories.leftFibration_pullback_snd : ∀ {E B C : SSet} (p : E ⟶ B) (k : C ⟶ B)\n  [SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.LeftFibration (CategoryTheory.Limits.pullback.snd p k)",
+          "assessment": "任意の基底変更で左ファイブレーション性と分類図式の制限同型が得られる。E₋ と E₊ にこれを適用して、向き付き引き戻しからの指定射影を介する二つの輸送表現を与える型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "任意の基底変更で左ファイブレーション性と分類図式の制限同型が得られる。E₋ と E₊ にこれを適用して、向き付き引き戻しからの指定射影を介する二つの輸送表現を与える型は見つからない。",
+      "decision": "partial"
+    },
+    "8.3.7.6": {
+      "number": "8.3.7.6",
+      "tag": "06C6",
+      "query": [
+        "twisted arrow categorical pullback",
+        "lax pullback auxiliary E",
+        "Q plus Q minus",
+        "mapping space pullback"
+      ],
+      "a": {
+        "terms": [
+          "8.3.7.6",
+          "8.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrow",
+            "auxiliary",
+            "categorical",
+            "lax",
+            "mapping",
+            "minus",
+            "plus",
+            "pullback",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+              "line": 40,
+              "declaration": "laxPullbackMappingSpaceCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceProjections.lean",
+              "line": 31,
+              "declaration": "laxPullbackMappingSpaceCone_arrow"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrow",
+            "auxiliary",
+            "categorical",
+            "lax",
+            "mapping",
+            "minus",
+            "plus",
+            "pushout",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+              "line": 40,
+              "declaration": "laxPullbackMappingSpaceCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceProjections.lean",
+              "line": 31,
+              "declaration": "laxPullbackMappingSpaceCone_arrow"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrow",
+            "auxiliary",
+            "categorical",
+            "lax",
+            "mapping",
+            "minus",
+            "plus",
+            "pullback",
+            "space",
+            "twisted"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/NumberTheory/ModularForms/ArithmeticSubgroups.lean",
+              "line": 37,
+              "declaration": "HasDetPlusMinusOne"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "arrow",
+          "auxiliary",
+          "categorical",
+          "lax",
+          "mapping",
+          "minus",
+          "plus",
+          "pullback",
+          "space",
+          "twisted"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingSpaceLimit.lean",
+          "line": 40,
+          "declaration": "laxPullbackMappingSpaceCone_isLimit",
+          "source_signature": "lemma laxPullbackMappingSpaceCone_isLimit : IsLimitCone (laxPullbackMappingSpaceCone p q x y) ",
+          "assessment": "固定二頂点の写像空間の極限と、一般の unstraightening の厳密な基底変換はある。Tw(C_{±}) を左上とし E₋・E₊ を用いる指定正方形自体の categorical pullback 性は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftUnstraightening.lean",
+          "line": 111,
+          "declaration": "leftUnstraighteningMap_isPullback",
+          "source_signature": "lemma leftUnstraighteningMap_isPullback {C D : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) (G : D ⟶ SpaceInfinity.{u}) (α : C ⟶ D) (h : α ≫ G = F) : IsPullback (leftUnstraighteningMap F G α h) (leftUnstraighteningProjection F) (leftUnstraighteningProjection G) α ",
+          "assessment": "固定二頂点の写像空間の極限と、一般の unstraightening の厳密な基底変換はある。Tw(C_{±}) を左上とし E₋・E₊ を用いる指定正方形自体の categorical pullback 性は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "固定二頂点の写像空間の極限と、一般の unstraightening の厳密な基底変換はある。Tw(C_{±}) を左上とし E₋・E₊ を用いる指定正方形自体の categorical pullback 性は見つからない。",
+      "decision": "none"
+    },
+    "8.3.7.7": {
+      "number": "8.3.7.7",
+      "tag": "06C8",
+      "query": [
+        "left fibration classification cube",
+        "categorical pullback",
+        "varying bases",
+        "pointwise limit"
+      ],
+      "a": {
+        "terms": [
+          "8.3.7.7",
+          "8.3.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "bases",
+            "categorical",
+            "classification",
+            "cube",
+            "fibration",
+            "left",
+            "limit",
+            "pointwise",
+            "pullback",
+            "varying"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackClassification.lean",
+              "line": 45,
+              "declaration": "leftFibrationPullbackClassifiedCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackAccessibility.lean",
+              "line": 28,
+              "declaration": "leftFibrationPullbackClassification_isKappaAccessibleFunctor"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "bases",
+            "categorical",
+            "classification",
+            "colimit",
+            "cube",
+            "fibration",
+            "pointwise",
+            "pushout",
+            "right",
+            "varying"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackClassification.lean",
+              "line": 45,
+              "declaration": "leftFibrationPullbackClassifiedCone_isLimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinPointwiseExistence.lean",
+              "line": 27,
+              "declaration": "kanRelativeJoinPointwiseColimitProjection_trivialKanFibration"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "bases",
+            "categorical",
+            "classification",
+            "cube",
+            "left",
+            "lifting",
+            "limit",
+            "pointwise",
+            "pullback",
+            "varying"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/Derived/PointwiseLeftDerived.lean",
+              "line": 63,
+              "declaration": "HasPointwiseLeftDerivedFunctorAt.hasLimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "bases",
+          "categorical",
+          "classification",
+          "cube",
+          "fibration",
+          "left",
+          "limit",
+          "pointwise",
+          "pullback",
+          "varying"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/LeftFibrationPullbackClassification.lean",
+          "line": 45,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone_isLimit : ∀ {E D B X : SSet}\n  [X.Quasicategory] (p : E ⟶ B) (q : D ⟶ B) (e : E ⟶ X) (d : D ⟶ X) (b : B ⟶ X)\n  (hp : CategoryTheory.CategoryStruct.comp p b = e) (hq : CategoryTheory.CategoryStruct.comp q b = d)\n  [inst : SerrePositivity.InfinityCategories.LeftFibration e]\n  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration d]\n  [inst_2 : SerrePositivity.InfinityCategories.LeftFibration b]\n  [inst_3 : SerrePositivity.InfinityCategories.LeftFibration p],\n  SerrePositivity.InfinityCategories.IsLimitCone\n    (SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassifiedCone p q e d b hp hq)",
+          "assessment": "共通底 X 上の左ファイブレーションの通常の引き戻しを分類すると関手圏内の極限になる型と、分類の基底変更はある。二面が categorical pullback の任意の可変底立方体に適用して、D₀₀ へ制限した指定正方形を得る型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/StraighteningLeft/LeftStraighteningBaseChange.lean",
+          "line": 69,
+          "declaration": "SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso",
+          "kernel_type": "@SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram_baseChangeIso : {E B D : SSet} →\n  (p : E ⟶ B) →\n    [inst : SerrePositivity.InfinityCategories.LeftFibration p] →\n      (k : D ⟶ B) →\n        SerrePositivity.InfinityCategories.FunctorIso\n          (CategoryTheory.CategoryStruct.comp (SSet.uliftFunctor.map k)\n            (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram p))\n          (SerrePositivity.InfinityCategories.leftStraighteningInfinityDiagram (CategoryTheory.Limits.pullback.snd p k))",
+          "assessment": "共通底 X 上の左ファイブレーションの通常の引き戻しを分類すると関手圏内の極限になる型と、分類の基底変更はある。二面が categorical pullback の任意の可変底立方体に適用して、D₀₀ へ制限した指定正方形を得る型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "共通底 X 上の左ファイブレーションの通常の引き戻しを分類すると関手圏内の極限になる型と、分類の基底変更はある。二面が categorical pullback の任意の可変底立方体に適用して、D₀₀ へ制限した指定正方形を得る型は見つからない。",
+      "decision": "partial"
+    },
     "8.4.1.23": {
       "number": "8.4.1.23",
       "tag": "03VZ",
