@@ -1,0 +1,342 @@
+{
+  "cache_from": "stage 1′ の検査を行った review-a の既存 .olean を LEAN_PATH で読み取り参照",
+  "declarations": {
+    "CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget": {
+      "source": "Mathlib/CategoryTheory/FiberedCategory/Grothendieck.lean:78",
+      "type": "@CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget.{u_1, u_2, u_3,\n    u_4} : ∀ {𝒮 : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} 𝒮]\n  {F :\n    CategoryTheory.Pseudofunctor.{u_1, max u_4 u_3, u_1, max u_4 u_3, u_2, max (u_4 + 1) (u_3 + 1)}\n      (CategoryTheory.LocallyDiscrete.{u_2} (Opposite.{u_2 + 1} 𝒮)) CategoryTheory.Cat.{u_3, u_4}},\n  CategoryTheory.Functor.IsFibered.{u_1, max u_1 u_3, u_2, max u_2 u_4}\n    (CategoryTheory.Pseudofunctor.CoGrothendieck.forget.{u_1, u_3, u_2, u_4} F)",
+      "axioms": [],
+      "evidence": "Mathlib.CategoryTheory.FiberedCategory.Grothendieck"
+    },
+    "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate": {
+      "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean:26",
+      "type": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate.{u_1} : {E F B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →\n    (q : Quiver.Hom.{u_1, u_1 + 1} F B) →\n      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}\n          (SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} q p) (Opposite.op.{1} { len := 0 }) →\n        Prop",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor"
+    },
+    "SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace": {
+      "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean:40",
+      "type": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace.{u_1} : {E F B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B → Quiver.Hom.{u_1, u_1 + 1} F B → SSet.{u_1}",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor"
+    },
+    "SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence": {
+      "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingCylinderGeneralComparison.lean:27",
+      "type": "@SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence.{u_1} : ∀ {X Y E : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} E] (f : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))\n  (H :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)\n      E)\n  (g : Quiver.Hom.{u_1, u_1 + 1} Y E)\n  (w :\n    Eq.{u_1 + 1}\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 X) H)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g)),\n  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X) →\n    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)\n        (SSet.const.{u_1} ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →\n      ∀\n        (z0 :\n          Quiver.Hom.{u_1, u_1 + 1} X\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n              ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))),\n        Eq.{u_1 + 1}\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z0\n              (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0 X) H) →\n          ∀\n            (z1 :\n              Quiver.Hom.{u_1, u_1 + 1} Y\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n                  ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))),\n            Eq.{u_1 + 1}\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z1\n                  (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                    ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)))\n                g →\n              SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z0 →\n                SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z1 →\n                  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n                      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p\n                        (SerrePositivity.InfinityCategories.prismVerticalSimplex.{u_1} H x)) →\n                    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n                      (CategoryTheory.Limits.pushout.desc.{u_1, u_1 + 1} H g w)",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderGeneralComparison"
+    },
+    "SerrePositivity.InfinityCategories.leftStrictTransportDiagram": {
+      "source": "SerrePositivity/InfinityCategories/F1/Transport/LeftStrictTransportWeightedNerve.lean:24",
+      "type": "@SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} →\n      Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C) →\n        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportWeightedNerve"
+    },
+    "SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport": {
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianEdgeTransport.lean:25",
+      "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport.{u_1} : {E B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →\n    [SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p] →\n      {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} →\n        SSet.Truncated.Edge.{u_1} a b →\n          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.CartesianEdgeTransport"
+    },
+    "SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness": {
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CartesianEdgeTransport.lean:37",
+      "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness.{u_1} : ∀ {E B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [inst : SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p]\n  {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} a b),\n  ∃ H,\n    Eq.{u_1 + 1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n          H)\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport.{u_1} p e)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p a)) ∧\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1\n              (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n            H)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))) ∧\n          ∀\n            (v :\n              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n                (Opposite.op.{1} { len := 0 })),\n            SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 1 })))\n                (Prod.mk.{u_1, u_1}\n                  (SSet.yonedaEquiv.{u_1}\n                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n                      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))\n                  (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1} v 1)))",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.CartesianEdgeTransport"
+    }
+  },
+  "probes": [
+    {
+      "module": "Mathlib.CategoryTheory.FiberedCategory.Grothendieck",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget",
+        "#print axioms CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget.{u_1, u_2, u_3,\n    u_4} : ∀ {𝒮 : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} 𝒮]\n  {F :\n    CategoryTheory.Pseudofunctor.{u_1, max u_4 u_3, u_1, max u_4 u_3, u_2, max (u_4 + 1) (u_3 + 1)}\n      (CategoryTheory.LocallyDiscrete.{u_2} (Opposite.{u_2 + 1} 𝒮)) CategoryTheory.Cat.{u_3, u_4}},\n  CategoryTheory.Functor.IsFibered.{u_1, max u_1 u_3, u_2, max u_2 u_4}\n    (CategoryTheory.Pseudofunctor.CoGrothendieck.forget.{u_1, u_3, u_2, u_4} F)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'CategoryTheory.Pseudofunctor.CoGrothendieck.instIsFiberedForget' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeFunctor",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate",
+        "#print axioms SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate",
+        "#check @SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace",
+        "#print axioms SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate.{u_1} : {E F B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →\n    (q : Quiver.Hom.{u_1, u_1 + 1} F B) →\n      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}\n          (SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} q p) (Opposite.op.{1} { len := 0 }) →\n        Prop",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.cocartesianRelativeFunctorPredicate' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace.{u_1} : {E F B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B → Quiver.Hom.{u_1, u_1 + 1} F B → SSet.{u_1}",
+          "endPos": {
+            "column": 6,
+            "line": 6
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 6
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.cocartesianRelativeFunctorSpace' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 7
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 7
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderGeneralComparison",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence",
+        "#print axioms SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence.{u_1} : ∀ {X Y E : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} E] (f : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  (p : Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))\n  (H :\n    Quiver.Hom.{u_1, u_1 + 1}\n      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)\n      E)\n  (g : Quiver.Hom.{u_1, u_1 + 1} Y E)\n  (w :\n    Eq.{u_1 + 1}\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1 X) H)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g)),\n  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X) →\n    Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g p)\n        (SSet.const.{u_1} ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →\n      ∀\n        (z0 :\n          Quiver.Hom.{u_1, u_1 + 1} X\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n              ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))),\n        Eq.{u_1 + 1}\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z0\n              (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0)))\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0 X) H) →\n          ∀\n            (z1 :\n              Quiver.Hom.{u_1, u_1 + 1} Y\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p\n                  ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))),\n            Eq.{u_1 + 1}\n                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} z1\n                  (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p\n                    ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)))\n                g →\n              SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z0 →\n                SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} z1 →\n                  (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n                      SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} p\n                        (SerrePositivity.InfinityCategories.prismVerticalSimplex.{u_1} H x)) →\n                    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n                      (CategoryTheory.Limits.pushout.desc.{u_1, u_1 + 1} H g w)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportWeightedNerve",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.leftStrictTransportDiagram",
+        "#print axioms SerrePositivity.InfinityCategories.leftStrictTransportDiagram"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.leftStrictTransportDiagram.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    {E : SSet.{u_1}} →\n      Quiver.Hom.{u_1, u_1 + 1} E (CategoryTheory.nerve.{u_1, u_1} C) →\n        CategoryTheory.Functor.{u_1, u_1, u_1, u_1 + 1} C SSet.{u_1}",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.leftStrictTransportDiagram' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.CartesianEdgeTransport",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport",
+        "#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport",
+        "#check @SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness",
+        "#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport.{u_1} : {E B : SSet.{u_1}} →\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →\n    [SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p] →\n      {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })} →\n        SSet.Truncated.Edge.{u_1} a b →\n          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p a)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness.{u_1} : ∀ {E B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [inst : SerrePositivity.InfinityCategories.CartesianFibration.{u_1} p]\n  {a b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} a b),\n  ∃ H,\n    Eq.{u_1 + 1}\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 0\n            (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n          H)\n        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n          (SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport.{u_1} p e)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p a)) ∧\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (SerrePositivity.InfinityCategories.prismEndpoint.{u_1} 1\n              (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n            H)\n          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1} p b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} H p)\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n              (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}\n                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })\n                (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b))\n              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))) ∧\n          ∀\n            (v :\n              CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p b)\n                (Opposite.op.{1} { len := 0 })),\n            SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1} p\n              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 1 })))\n                (Prod.mk.{u_1, u_1}\n                  (SSet.yonedaEquiv.{u_1}\n                    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n                      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))\n                  (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1} v 1)))",
+          "endPos": {
+            "column": 6,
+            "line": 6
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 6
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.HomotopyLimits.cartesianEdgeTransport_witness' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 7
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 7
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    }
+  ]
+}

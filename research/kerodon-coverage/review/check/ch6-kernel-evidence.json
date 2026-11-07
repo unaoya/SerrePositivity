@@ -1,0 +1,215 @@
+{
+  "cache_from": "stage 1′ の検査を行った review-a の既存 .olean を LEAN_PATH で読み取り参照",
+  "declarations": {
+    "SerrePositivity.KST.Comparison.subdivisionLastVertexMap": {
+      "source": "SerrePositivity/KST/Comparison/SubdivisionLastVertexMap.lean:29",
+      "type": "SerrePositivity.KST.Comparison.subdivisionLastVertexMap.{u_1} : Quiver.Hom.{u_1 + 1, u_1 + 1} SSet.sd.{u_1}\n  (CategoryTheory.Functor.id.{u_1, u_1 + 1} SSet.{u_1})",
+      "axioms": [],
+      "evidence": "3ac80a805d366cb30c80"
+    },
+    "SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Localization/AdjointLocalization.lean:114",
+      "type": "@SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.isLocalization.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {F : Quiver.Hom.{u_1, u_1 + 1} X Y}\n  {G : Quiver.Hom.{u_1, u_1 + 1} Y X} (a : SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G)\n  [CategoryTheory.IsIso.{u_1, u_1} (CategoryTheory.Bicategory.Adjunction.counit.{u_1, u_1, u_1 + 1} a)],\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1} F (SerrePositivity.InfinityCategories.invertedEdges.{u_1} F)",
+      "axioms": [],
+      "evidence": "64d39f0794f590a08072"
+    },
+    "SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean:85",
+      "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.toHoAdjunction.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            CategoryTheory.Adjunction.{u_1, u_1, u_1, u_1}\n              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))\n              (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}\n                (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} G))",
+      "axioms": [],
+      "evidence": "fba17ce6138db946465e"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Localization.localization_all_isKan": {
+      "source": "SerrePositivity/InfinityCategories/Derived/Localization/GroupoidCompletion.lean:41",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Localization.localization_all_isKan.{u_1} : ∀ {X Q : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Q] (F : Quiver.Hom.{u_1, u_1 + 1} X Q),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1} F Set.univ.{u_1} → SSet.KanComplex.{u_1} Q",
+      "axioms": [],
+      "evidence": "34e16bfe1a35c40d9431"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization": {
+      "source": "SerrePositivity/InfinityCategories/Derived/Localization/GroupoidCompletion.lean:57",
+      "type": "SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletion_isLocalization.{u_1} : ∀ (X : SSet.{u_1}),\n  SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n    (SerrePositivity.InfinityCategories.Derived.Localization.groupoidCompletionMap.{u_1} X) Set.univ.{u_1}",
+      "axioms": [],
+      "evidence": "63f8117bdd2389be8427"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan": {
+      "source": "SerrePositivity/InfinityCategories/Derived/Localization/GroupoidCompletion.lean:63",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Localization.invertsAllEdges_toKan.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.KanComplex.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.InvertsEdges.{u_1} F Set.univ.{u_1}",
+      "axioms": [],
+      "evidence": "fc08bc6813af48b30711"
+    },
+    "CategoryTheory.Bicategory.rightZigzag_idempotent_of_left_triangle": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:73",
+      "type": "@CategoryTheory.Bicategory.rightZigzag_idempotent_of_left_triangle.{u_1, u_2,\n    u_3} : ∀ {B : Type u_3} [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] {a b : B}\n  {f : Quiver.Hom.{u_2, u_3} a b} {g : Quiver.Hom.{u_2, u_3} b a}\n  (η :\n    Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.id.{u_2, u_3} a)\n      (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f g))\n  (ε :\n    Quiver.Hom.{u_1, u_2} (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g f)\n      (CategoryTheory.CategoryStruct.id.{u_2, u_3} b)),\n  Eq.{u_1 + 1} (CategoryTheory.Bicategory.leftZigzag.{u_1, u_2, u_3} η ε)\n      (CategoryTheory.CategoryStruct.comp.{u_1, u_2}\n        (CategoryTheory.Iso.hom.{u_1, u_2} (CategoryTheory.Bicategory.leftUnitor.{u_1, u_2, u_3} f))\n        (CategoryTheory.Iso.inv.{u_1, u_2} (CategoryTheory.Bicategory.rightUnitor.{u_1, u_2, u_3} f))) →\n    Eq.{u_1 + 1}\n      (CategoryTheory.bicategoricalComp.{u_1, u_2, u_3} (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε)\n        (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε))\n      (CategoryTheory.Bicategory.rightZigzag.{u_1, u_2, u_3} η ε)",
+      "axioms": [],
+      "evidence": "cec8a3876ce294076ee3"
+    },
+    "CategoryTheory.Bicategory.Adjunction": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:89",
+      "type": "@CategoryTheory.Bicategory.Adjunction.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b : B} → Quiver.Hom.{u_2, u_3} a b → Quiver.Hom.{u_2, u_3} b a → Type u_1",
+      "axioms": [],
+      "evidence": "f9ecbc721c4cde44ba08"
+    },
+    "CategoryTheory.Bicategory.Adjunction.comp": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:161",
+      "type": "@CategoryTheory.Bicategory.Adjunction.comp.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {a b c : B} →\n      {f₁ : Quiver.Hom.{u_2, u_3} a b} →\n        {g₁ : Quiver.Hom.{u_2, u_3} b a} →\n          {f₂ : Quiver.Hom.{u_2, u_3} b c} →\n            {g₂ : Quiver.Hom.{u_2, u_3} c b} →\n              CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₁ g₁ →\n                CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} f₂ g₂ →\n                  CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3}\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} f₁ f₂)\n                    (CategoryTheory.CategoryStruct.comp.{u_2, u_3} g₂ g₁)",
+      "axioms": [],
+      "evidence": "7c2afaef83cce064c10c"
+    },
+    "CategoryTheory.tensorLeftHomEquiv": {
+      "source": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:387",
+      "type": "@CategoryTheory.tensorLeftHomEquiv.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (X Y Y' Z : C) →\n        [@CategoryTheory.ExactPairing.{u_1, u_2} C inst inst_1 Y Y'] →\n          Equiv.{u_1 + 1, u_1 + 1}\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) Y' X)\n              Z)\n            (@Quiver.Hom.{u_1, u_2} C\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              X\n              (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_2} C inst\n                (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_2} C inst inst_1) Y Z))",
+      "axioms": [],
+      "evidence": "fd1d4b251458acd5a882"
+    },
+    "SSet.instNonsingularNerve": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean:74",
+      "type": "SSet.instNonsingularNerve.{u_1} : ∀ (T : Type u_1) [inst : PartialOrder.{u_1} T],\n  SSet.Nonsingular.{u_1} (CategoryTheory.nerve.{u_1, u_1} T)",
+      "axioms": [],
+      "evidence": "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular"
+    },
+    "CategoryTheory.Bicategory.conjugateEquiv": {
+      "source": "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean:394",
+      "type": "@CategoryTheory.Bicategory.conjugateEquiv.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {c d : B} →\n      {l₁ l₂ : Quiver.Hom.{u_2, u_3} c d} →\n        {r₁ r₂ : Quiver.Hom.{u_2, u_3} d c} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₁ r₁ →\n            CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₂ r₂ →\n              Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} l₂ l₁) (Quiver.Hom.{u_1, u_2} r₁ r₂)",
+      "axioms": [],
+      "evidence": "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+    }
+  },
+  "probes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfBifibration",
+      "commands": [
+        "open HomotopicalAlgebra",
+        "universe u",
+        "#synth ModelCategory SSet.{u}"
+      ],
+      "exit": 1,
+      "messages": [
+        {
+          "caption": "",
+          "data": "failed to synthesize\n  ModelCategory SSet\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+          "endPos": {
+            "column": 29,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "error"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SSet.instNonsingularNerve",
+        "#print axioms SSet.instNonsingularNerve"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "SSet.instNonsingularNerve.{u_1} : ∀ (T : Type u_1) [inst : PartialOrder.{u_1} T],\n  SSet.Nonsingular.{u_1} (CategoryTheory.nerve.{u_1, u_1} T)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SSet.instNonsingularNerve' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @CategoryTheory.Bicategory.conjugateEquiv",
+        "#print axioms CategoryTheory.Bicategory.conjugateEquiv"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@CategoryTheory.Bicategory.conjugateEquiv.{u_1, u_2,\n    u_3} : {B : Type u_3} →\n  [inst : CategoryTheory.Bicategory.{u_1, u_2, u_3} B] →\n    {c d : B} →\n      {l₁ l₂ : Quiver.Hom.{u_2, u_3} c d} →\n        {r₁ r₂ : Quiver.Hom.{u_2, u_3} d c} →\n          CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₁ r₁ →\n            CategoryTheory.Bicategory.Adjunction.{u_1, u_2, u_3} l₂ r₂ →\n              Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_2} l₂ l₁) (Quiver.Hom.{u_1, u_2} r₁ r₂)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'CategoryTheory.Bicategory.conjugateEquiv' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    }
+  ],
+  "model_category_source_review": {
+    "numbers": [
+      "6.2.5.4",
+      "6.2.5.7"
+    ],
+    "model_class": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean:43",
+    "model_assumption": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean:22",
+    "literature_input": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean:36",
+    "unregistered_def": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean:46",
+    "scope": "SSet の例として当該引用モジュールを import して型クラス探索し、本体と固定版 Mathlib の登録もソース検索した。kanQuillenModel を使用する側は let でモデルを導入している。",
+    "tag_mismatch": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nonsingular.lean:73",
+      "decl": "SSet.instNonsingularNerve",
+      "tag_on_decl": "02MT",
+      "number_for_tag": "6.3.6.16",
+      "actual_tag_of_reviewed_item": "02MU"
+    }
+  }
+}
