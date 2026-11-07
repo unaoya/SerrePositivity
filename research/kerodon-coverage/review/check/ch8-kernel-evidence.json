@@ -392,7 +392,18 @@
       "adopted": []
     },
     "8.1.1.15": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.1.16": {
       "adopted": []
@@ -447,7 +458,18 @@
       ]
     },
     "8.1.2.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq",
+          "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/EdgeRepresentativeLift.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.2.15": {
       "adopted": [
@@ -480,16 +502,34 @@
       "adopted": []
     },
     "8.1.2.19": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.2.21": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.2.22": {
       "adopted": []
     },
     "8.1.2.23": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex",
+          "source": "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean",
+          "phase": "2"
+        }
+      ]
     },
     "8.1.3.1": {
       "adopted": []
@@ -2492,7 +2532,74 @@
         "axioms_output": "'SerrePositivity.InfinityCategories.QCat' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 69
       }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison : {C D : SSet} →\n  (f : C ⟶ D) →\n    SerrePositivity.InfinityCategories.TwistedArrow C ⟶\n      CategoryTheory.Limits.pullback (SerrePositivity.InfinityCategories.twistedArrowProjection D)\n        (CategoryTheory.MonoidalCategoryStruct.tensorHom (SSet.opFunctor.map f) f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 25
+      },
+      "SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence : ∀\n  {C D : SSet} [C.Quasicategory] [D.Quasicategory] (f : C ⟶ D),\n  SerrePositivity.InfinityCategories.IsFullyFaithful f →\n    SerrePositivity.InfinityCategories.IsPrecompositionEquivalence\n      (SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 52
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1B/Fibrations/EdgeRepresentativeLift.lean": {
+      "SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq": {
+        "type": "@SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq : ∀ {X : SSet} [X.Quasicategory]\n  {x y : X.obj (Opposite.op { len := 0 })} (f g : SSet.Truncated.Edge x y),\n  SSet.Truncated.HomotopyCategory.homMk f = SSet.Truncated.HomotopyCategory.homMk g →\n    Nonempty\n      (SSet.Edge ((SerrePositivity.InfinityCategories.pinchedHomVertexEquiv x y).symm g)\n        ((SerrePositivity.InfinityCategories.pinchedHomVertexEquiv x y).symm f))",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F1B.exists_kanPinchedHomEdge_of_homMk_eq' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 26
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean": {
+      "SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence : ∀ {C : SSet}\n  [inst : C.Quasicategory] (x y : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport x y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowIdentityHomTransport_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 116
+      },
+      "SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence : ∀ {C : SSet}\n  [inst : C.Quasicategory] (x : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence\n    (SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource x)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 56
+      },
+      "SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex": {
+        "type": "@SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex : ∀ {C : SSet} [C.Quasicategory]\n  (x : C.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex (SerrePositivity.InfinityCategories.twistedArrowSourceIdentity x)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 74
+      }
     }
   },
-  "model_category_assumptions": {}
+  "model_category_assumptions": {},
+  "depth_review_base": "81e593fb9"
 }
