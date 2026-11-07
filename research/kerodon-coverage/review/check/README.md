@@ -89,3 +89,10 @@ python3 -B -m unittest discover -s research/kerodon-coverage/review/check -p 'te
 
 異常公理、名前不明、import 失敗、型推論失敗、欠落・不正出力、Unicode名とコマンド帰属を検査する。
 実際の Lean 出力形式との互換性は、小さい対象モジュールで別途 smoke run を行う。
+
+## §4の待機条件（2026-11-07）
+
+上記の旧待機条件に代えて、プロセスの作業ディレクトリと引数を確認する。
+別プロジェクトのビルドと SerrePositivity のモジュール単位のビルドは待たない。
+SerrePositivity の全ビルド・verify が稼働中の場合、またはビルドロック取得が
+終了コード75で失敗した場合は10秒後に再試行する。ロック競合時のログは試行ごとに残す。

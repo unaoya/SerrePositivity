@@ -1,0 +1,3986 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "items": [
+    {
+      "number": "1.1.0.1",
+      "status": "mathlib",
+      "references": [
+        "c86708fe8194d59101f2"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.1.0.2",
+      "status": "mathlib",
+      "references": [
+        "42b2e8507447507bf69c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.4",
+      "status": "mathlib",
+      "references": [
+        "b9ec650b108882ad6965",
+        "5065e56c798a754c62d3"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.5",
+      "status": "mathlib",
+      "references": [
+        "cd0719c2cfa22aac15f3"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.6",
+      "status": "mathlib",
+      "references": [
+        "962b070763db819ff210"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.7",
+      "status": "mathlib",
+      "references": [
+        "962b070763db819ff210"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.11",
+      "status": "mathlib",
+      "references": [
+        "d63380fe8be27c0e1599"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.12",
+      "status": "mathlib",
+      "references": [
+        "3f74baa979209f5cbd8d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.0.13",
+      "status": "mathlib",
+      "references": [
+        "b8967118fe951d4191f4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.1.1",
+      "status": "mathlib",
+      "references": [
+        "86ea0f1debe7205ac667"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.1.2",
+      "status": "partial",
+      "references": [
+        "86ea0f1debe7205ac667"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.1.4",
+      "status": "mathlib",
+      "references": [
+        "503ae7eb3c8875b9eeb2",
+        "84989a88142e97458009"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.1.9",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.1",
+      "status": "mathlib",
+      "references": [
+        "eefab92c0d84879aeeae",
+        "432d340271de82171995"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.2",
+      "status": "mathlib",
+      "references": [
+        "f0b3fedf5a4efdb77be7"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.3",
+      "status": "mathlib",
+      "references": [
+        "4cbf41ab126116b4628e",
+        "24f09c0a4130cfbd7375",
+        "7f98c087ee3586658351"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.10",
+      "status": "mathlib",
+      "references": [
+        "2587e5896b59b536f64d",
+        "8202e69032741faea4ed"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.12",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.13",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.2.14",
+      "status": "own",
+      "references": [
+        "62d6ca8e193ae0d13af6",
+        "2a93149d24a10dd10b5c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.1",
+      "status": "mathlib",
+      "references": [
+        "619ae97ebabd7ec4544f",
+        "8418573d2e0acd2d2ab3"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.6",
+      "status": "mathlib",
+      "references": [
+        "736b38fa234bbdaa07a1",
+        "00f44f5fd6421a8a0244"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.8",
+      "status": "mathlib",
+      "references": [
+        "90cc8ee2d1393bed8213",
+        "1ebef155602fc967b310",
+        "4525c7b871fc7d9e3b53"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.9",
+      "status": "mathlib",
+      "references": [
+        "1350f41704202aaddb5f",
+        "1ffdc2d5345219b85a86"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.11",
+      "status": "partial",
+      "references": [
+        "51286d93e3549633bc04",
+        "4d6463ee55660cc8b06d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.3.14",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.1",
+      "status": "mathlib",
+      "references": [
+        "a46f8d4e3fdf3149036f",
+        "deaee72678fcdab78d6c"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.1.4.6",
+      "status": "partial",
+      "references": [
+        "dbffd3d2b16ce49113ec",
+        "06c7c90d210765884f93"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.7",
+      "status": "partial",
+      "references": [
+        "dfa01125d74fa9fb66a5",
+        "c9b138c684e73e3c388b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.8",
+      "status": "partial",
+      "references": [
+        "3ef17833566dab4adc51"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.9",
+      "status": "partial",
+      "references": [
+        "deaee72678fcdab78d6c",
+        "6c70085b78e46f2735b0"
+      ],
+      "priority": "A"
+    },
+    {
+      "number": "1.1.4.10",
+      "status": "mathlib",
+      "references": [
+        "71b61095b665055fe22c",
+        "61c3da44092189f063a9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.12",
+      "status": "mathlib",
+      "references": [
+        "251722d47946af71bfa5",
+        "4014a62afaf8c528d133"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.4.13",
+      "status": "both",
+      "references": [
+        "07fad45670ebdc0867a3",
+        "15ba8e608d3d77af1ef9",
+        "8d63ba0ebc4b8c1b5574"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.1",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.2",
+      "status": "both",
+      "references": [
+        "a36820d8443eb15acb24",
+        "ec87591f42bac071d815"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.5",
+      "status": "partial",
+      "references": [
+        "94c31683eb9940191ab2"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.8",
+      "status": "partial",
+      "references": [
+        "94c31683eb9940191ab2",
+        "c8cdaed1aebf4db0872f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.9",
+      "status": "mathlib",
+      "references": [
+        "c947d0170f0aed3c01ea",
+        "207930ef1c98d11112ac"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.10",
+      "status": "partial",
+      "references": [
+        "ec87591f42bac071d815"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.11",
+      "status": "partial",
+      "references": [
+        "c947d0170f0aed3c01ea"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.12",
+      "status": "both",
+      "references": [
+        "a36820d8443eb15acb24",
+        "ec87591f42bac071d815"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.5.14",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.6.1",
+      "status": "mathlib",
+      "references": [
+        "7d2e6d3f593a3eb7ab95"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.6.5",
+      "status": "partial",
+      "references": [
+        "ec9948f8fc348fe5c99c",
+        "a5384a06451f03cc5e95"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.6.7",
+      "status": "mathlib",
+      "references": [
+        "5f6ffe1332c49e7b3f0c",
+        "c5e27a11c12ad92edfa1"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.1.6.8",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.1.6.9",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.1",
+      "status": "none",
+      "references": [],
+      "priority": "C"
+    },
+    {
+      "number": "1.2.1.6",
+      "status": "mathlib",
+      "references": [
+        "5c03c05c451ab3c003e8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.8",
+      "status": "partial",
+      "references": [
+        "7e47006410818b964d14"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.11",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.12",
+      "status": "partial",
+      "references": [
+        "244324dc18343dce50d5",
+        "55af8276667dc15478a4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.13",
+      "status": "partial",
+      "references": [
+        "c38202e130fe14586e91",
+        "d5bd1e49d4736626fc3c",
+        "244324dc18343dce50d5"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.14",
+      "status": "mathlib",
+      "references": [
+        "1321357adfbe0bd24020"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.15",
+      "status": "mathlib",
+      "references": [
+        "55af8276667dc15478a4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.18",
+      "status": "own",
+      "references": [
+        "c94870e73aa2cb4be56e",
+        "9e22172e3840feedadcf"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.19",
+      "status": "own",
+      "references": [
+        "244324dc18343dce50d5",
+        "032b89c517ae815dfbf7"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.21",
+      "status": "partial",
+      "references": [
+        "244324dc18343dce50d5"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.22",
+      "status": "mathlib",
+      "references": [
+        "9ccce38f4dbf8a1fa283"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.24",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.25",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.26",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.1.27",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.2.1",
+      "status": "mathlib",
+      "references": [
+        "5bdf19de0619c2b60792"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.2.2",
+      "status": "mathlib",
+      "references": [
+        "48a19a5040d50f04faa3",
+        "0983ea1f05202a7ea480"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.2.8",
+      "status": "mathlib",
+      "references": [
+        "572fd89dec3b23cdb2f8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.1",
+      "status": "partial",
+      "references": [
+        "2fa0ccd12989da0a34de",
+        "a4cc0c9943ad3a4e96f0"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.3",
+      "status": "mathlib",
+      "references": [
+        "5043477421f8fa6a53bf"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.4",
+      "status": "mathlib",
+      "references": [
+        "a4cc0c9943ad3a4e96f0"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.5",
+      "status": "mathlib",
+      "references": [
+        "a4cc0c9943ad3a4e96f0",
+        "a46b409ed73bd293c40d"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.2.3.6",
+      "status": "mathlib",
+      "references": [
+        "a46b409ed73bd293c40d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.7",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.10",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.13",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.15",
+      "status": "mathlib",
+      "references": [
+        "f15a938c7767094980fa"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.18",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.3.19",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.4.1",
+      "status": "mathlib",
+      "references": [
+        "dac87d976482b618124a"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.4.7",
+      "status": "mathlib",
+      "references": [
+        "c1ee5d5582dcd2c2c881",
+        "7548586fdaed2975cf5e",
+        "7cf6b0b52779c8f3fa1c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.1",
+      "status": "mathlib",
+      "references": [
+        "79006bbd9681e5936f55",
+        "7fec2710febded228695",
+        "5532adb624425a32a327"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.8",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.9",
+      "status": "partial",
+      "references": [
+        "79679a54af5015d3c180"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.10",
+      "status": "own",
+      "references": [
+        "858bb97235329e133ef2",
+        "d70d2741bdcb8ddf3e30",
+        "5a067507f630a77f1833"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.11",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.3.1.1",
+      "status": "mathlib",
+      "references": [
+        "3fb3dbabdf9c6a6525ae",
+        "7d993f1e60d85f52d7a7"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.1.6",
+      "status": "mathlib",
+      "references": [
+        "a46f8d4e3fdf3149036f",
+        "3fb3dbabdf9c6a6525ae"
+      ],
+      "priority": "A"
+    },
+    {
+      "number": "1.3.2.1",
+      "status": "mathlib",
+      "references": [
+        "ee4ef0364c6d367f8d1c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.3",
+      "status": "mathlib",
+      "references": [
+        "7ca80150ad0100ca662e",
+        "297d06dccc3f29dee9c1"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.5",
+      "status": "both",
+      "references": [
+        "a7b8f23b3d18ecaa263e",
+        "59b12ff3f31114bddb85"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.7",
+      "status": "partial",
+      "references": [
+        "bfabc31153a491324d1e",
+        "6699e2d7568af8d12c3a",
+        "3b06ef6d461b4a8ba78c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.8",
+      "status": "mathlib",
+      "references": [
+        "0fe0c92fdc9826bfa40f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.12",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.3.2.14",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.3.3.1",
+      "status": "mathlib",
+      "references": [
+        "d89c631738c0de1670e9",
+        "858550161dca9486fbaf",
+        "f49667e2f2f70a54c536"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.4.1",
+      "status": "partial",
+      "references": [
+        "f2a0fc66c8a534ab2c21",
+        "a5a895f88482be265e48"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.4.2",
+      "status": "partial",
+      "references": [
+        "f2a0fc66c8a534ab2c21",
+        "6cdde01e131c172c5aab",
+        "5a0e60ed4f1ca6a6b8da"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.4.3",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.3.5.1",
+      "status": "mathlib",
+      "references": [
+        "873bea49fc062c7a75d6",
+        "30adb32ef66a49c22455"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.5.2",
+      "status": "own",
+      "references": [
+        "dc1ad118c60844fc6fdc",
+        "e8c9da8d9b582cb80a82",
+        "e569b9a2898481e53fb0"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.5.4",
+      "status": "mathlib",
+      "references": [
+        "a912ccff62f3f4ae5e4d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.6.1",
+      "status": "partial",
+      "references": [
+        "a79d7e9ad83421c9bedd",
+        "40dce5e2106739938e9c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.6.3",
+      "status": "mathlib",
+      "references": [
+        "6ad80bd34ae0f6ad28e5",
+        "a79d7e9ad83421c9bedd"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.6.4",
+      "status": "mathlib",
+      "references": [
+        "40dce5e2106739938e9c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.6.5",
+      "status": "mathlib",
+      "references": [
+        "40dce5e2106739938e9c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.7.1",
+      "status": "mathlib",
+      "references": [
+        "a3748d150fa938c436b6"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.7.5",
+      "status": "partial",
+      "references": [
+        "310e8ad029b6d029d525"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.7.7",
+      "status": "partial",
+      "references": [
+        "a3748d150fa938c436b6"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.3.7.8",
+      "status": "none",
+      "references": [],
+      "priority": "C"
+    },
+    {
+      "number": "1.3.7.11",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.4.0.1",
+      "status": "mathlib",
+      "references": [
+        "7e1b1b051ddd6fabcedc"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.4.1.1",
+      "status": "mathlib",
+      "references": [
+        "3458260f82a8d5ff6b5b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.1.2",
+      "status": "mathlib",
+      "references": [
+        "3458260f82a8d5ff6b5b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.1.5",
+      "status": "mathlib",
+      "references": [
+        "3458260f82a8d5ff6b5b"
+      ],
+      "priority": "A"
+    },
+    {
+      "number": "1.4.2.1",
+      "status": "partial",
+      "references": [
+        "4426c82a332cafba6041",
+        "44c2b711df471678c06c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.2.2",
+      "status": "mathlib",
+      "references": [
+        "5ec66b6c4e37897457fe"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.2.6",
+      "status": "own",
+      "references": [
+        "48b89f6e27689a84812b",
+        "f4c90890fce69c68bae8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.2.8",
+      "status": "mathlib",
+      "references": [
+        "81f63860ff9b4b733ddd"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.3.1",
+      "status": "mathlib",
+      "references": [
+        "e702a31ba043f022adbb"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.3.5",
+      "status": "mathlib",
+      "references": [
+        "4155dc3d979a2cb179b3",
+        "1eb42bad1d963d1ca5a2"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.3.6",
+      "status": "mathlib",
+      "references": [
+        "bb3fc028c5740c5ab004"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.3.7",
+      "status": "partial",
+      "references": [
+        "1c5d2f23f6f41a4912f8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.4.1",
+      "status": "mathlib",
+      "references": [
+        "c2bc72d8fcb30c6b1a8a",
+        "b43554e25e6fefee4a55"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.4.2",
+      "status": "mathlib",
+      "references": [
+        "c328069dba17672017be",
+        "d6178652396836a4bf58",
+        "ea11ceca3ec55bc0c984"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.4.3",
+      "status": "mathlib",
+      "references": [
+        "db3b2baf65d03294646b",
+        "c63c0c319be71df26ace"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.4.7",
+      "status": "mathlib",
+      "references": [
+        "d6178652396836a4bf58"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.5.1",
+      "status": "mathlib",
+      "references": [
+        "848426ed77035b57c1ae",
+        "4c69101d9eb6dc533fda"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.5.2",
+      "status": "mathlib",
+      "references": [
+        "3bb93f452314578e433a"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.5.3",
+      "status": "both",
+      "references": [
+        "5e599bfc33fa3f11cc21",
+        "d43ada9d7c667f43bc69",
+        "18c13510a58fb3d9e35b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.5.4",
+      "status": "both",
+      "references": [
+        "6d2d4128cb6066cb1a6c",
+        "e569b9a2898481e53fb0"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.5.6",
+      "status": "partial",
+      "references": [
+        "58536d484b9fad263686",
+        "35139632064ab5573d92"
+      ],
+      "priority": "A"
+    },
+    {
+      "number": "1.4.5.7",
+      "status": "own",
+      "references": [
+        "d43ada9d7c667f43bc69",
+        "7c48e846e15dc2cbcdf7"
+      ],
+      "priority": "A"
+    },
+    {
+      "number": "1.4.6.1",
+      "status": "own",
+      "references": [
+        "a460e4e24309c2216bc4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.6.4",
+      "status": "both",
+      "references": [
+        "e9abaa1e3cffeae80d97",
+        "b840a8bc66b8c69e8f33"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.6.10",
+      "status": "own",
+      "references": [
+        "09c9bfbe849c76a31e65",
+        "9376fa374abfbdcb8490"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.4.6.12",
+      "status": "own",
+      "references": [
+        "09c9bfbe849c76a31e65",
+        "f2abc8d780580e05c650"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.5.0.1",
+      "status": "mathlib",
+      "references": [
+        "c1fbdc4670a2df2e3bea",
+        "7e1b1b051ddd6fabcedc"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.2.1",
+      "status": "mathlib",
+      "references": [
+        "7e1b1b051ddd6fabcedc"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.2.5",
+      "status": "none",
+      "references": [],
+      "priority": "C"
+    },
+    {
+      "number": "1.5.2.6",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.1",
+      "status": "mathlib",
+      "references": [
+        "bff2707c3ae26116336e"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.2",
+      "status": "mathlib",
+      "references": [
+        "ce9be6ca56d446a8c289",
+        "ee3cfe9e13b73cbb4211"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.3",
+      "status": "own",
+      "references": [
+        "770262bf822b744bc1c4",
+        "a4a883502e60589059db"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.4",
+      "status": "own",
+      "references": [
+        "770262bf822b744bc1c4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.5",
+      "status": "partial",
+      "references": [
+        "40dce5e2106739938e9c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.6",
+      "status": "mathlib",
+      "references": [
+        "b084494812bd14214e6c",
+        "acd3ef192a44bb11a7e7"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.3.7",
+      "status": "mathlib",
+      "references": [
+        "1409902993ac7e5174b0"
+      ],
+      "priority": "B"
+    },
+    {
+      "number": "1.5.3.8",
+      "status": "mathlib",
+      "references": [
+        "1409902993ac7e5174b0"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.1",
+      "status": "mathlib",
+      "references": [
+        "12189b3ce7282a7770f1",
+        "43822067e8fa41a31955"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.3",
+      "status": "mathlib",
+      "references": [
+        "e32190bf36b7cc407a8e",
+        "d3f4fedd54095df63009"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.4",
+      "status": "mathlib",
+      "references": [
+        "b9e536c7e7688a42ad88"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.5",
+      "status": "mathlib",
+      "references": [
+        "3fa20ebf8e7b78f05eb2"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.6",
+      "status": "mathlib",
+      "references": [
+        "d048b42bedf3c9aa7341"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.7",
+      "status": "mathlib",
+      "references": [
+        "edc8da4d88f5815c7f27",
+        "9306d262c83a5157382b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.9",
+      "status": "mathlib",
+      "references": [
+        "304e3c56dd341ad2e568"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.10",
+      "status": "mathlib",
+      "references": [
+        "72187892bcea5da40039",
+        "f930ecedf325561a9722"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.12",
+      "status": "mathlib",
+      "references": [
+        "1213a7918f8f46ef2aa9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.13",
+      "status": "partial",
+      "references": [
+        "b9e536c7e7688a42ad88",
+        "9306d262c83a5157382b",
+        "74c5875720bec9b34f52"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.4.14",
+      "status": "mathlib",
+      "references": [
+        "3fa20ebf8e7b78f05eb2",
+        "304e3c56dd341ad2e568",
+        "1213a7918f8f46ef2aa9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.1",
+      "status": "own",
+      "references": [
+        "e97aae2450bd02bc6c27",
+        "8f583a6f07f1517c9222",
+        "374ef9a1a2a3c9469304"
+      ],
+      "priority": "D"
+    },
+    {
+      "number": "1.5.5.4",
+      "status": "both",
+      "references": [
+        "374ef9a1a2a3c9469304",
+        "4d58947ca081a455aba9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.5",
+      "status": "own",
+      "references": [
+        "c7a84e9b70f483204be6",
+        "aea7c3583b285d9fb858"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.6",
+      "status": "partial",
+      "references": [
+        "1aecd37cf38df5276fcc"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.7",
+      "status": "own",
+      "references": [
+        "1aecd37cf38df5276fcc"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.8",
+      "status": "own",
+      "references": [
+        "81dc83bd416173843b4b",
+        "855593cfb56b0b3a8883"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.11",
+      "status": "partial",
+      "references": [
+        "76ec7d90ddbc7ecfdffa",
+        "619adf49d44faff247df"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.12",
+      "status": "own",
+      "references": [
+        "855593cfb56b0b3a8883",
+        "e97aae2450bd02bc6c27"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.13",
+      "status": "own",
+      "references": [
+        "1b86e5b3677519ba78ae"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.5.14",
+      "status": "both",
+      "references": [
+        "61161473149d9b6b67a6",
+        "4d58947ca081a455aba9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.6.1",
+      "status": "partial",
+      "references": [
+        "cfd31ad46ab3965bddd1",
+        "ba603b9a22ef9fda2603"
+      ],
+      "priority": "B"
+    },
+    {
+      "number": "1.5.6.2",
+      "status": "own",
+      "references": [
+        "f4cb22990af395f242b4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.6.4",
+      "status": "mathlib",
+      "references": [
+        "d4c9a871063d4f92ff73",
+        "b67cbf99397c22c07a81"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.6.7",
+      "status": "both",
+      "references": [
+        "e6932f8b68018c7b63a4",
+        "5dde6f287438a217bad8",
+        "702015db4509c8761c3e"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.6.8",
+      "status": "none",
+      "references": [],
+      "priority": ""
+    },
+    {
+      "number": "1.5.6.9",
+      "status": "partial",
+      "references": [
+        "dc879939309f0656f3e8",
+        "ba603b9a22ef9fda2603"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.7.1",
+      "status": "partial",
+      "references": [
+        "ac778db7e631b258c3b8"
+      ],
+      "priority": "B"
+    },
+    {
+      "number": "1.5.7.3",
+      "status": "partial",
+      "references": [
+        "ebb849ed9047d45f0eed"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.7.5",
+      "status": "mathlib",
+      "references": [
+        "760fc7090c9fb9688805",
+        "dc879939309f0656f3e8"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.7.6",
+      "status": "own",
+      "references": [
+        "cfd31ad46ab3965bddd1"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.5.7.9",
+      "status": "partial",
+      "references": [
+        "f2a0fc66c8a534ab2c21",
+        "b5f4835594b611bddd79"
+      ],
+      "priority": ""
+    }
+  ],
+  "references": [
+    {
+      "id": "c86708fe8194d59101f2",
+      "raw": "SimplexCategory.mk (⦋n⦌) @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean",
+      "source_line": "50",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "42b2e8507447507bf69c",
+      "raw": "SimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50",
+      "declaration": "SimplexCategory",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean",
+      "source_line": "50",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "preparation": "ready"
+    },
+    {
+      "id": "b9ec650b108882ad6965",
+      "raw": "SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48",
+      "declaration": "SimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "48",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "5065e56c798a754c62d3",
+      "raw": "CosimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:527",
+      "declaration": "CosimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "527",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "cd0719c2cfa22aac15f3",
+      "raw": "記法 X _⦋n⦌ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "962b070763db819ff210",
+      "raw": "SSet @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:33",
+      "declaration": "SSet",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "source_line": "33",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "d63380fe8be27c0e1599",
+      "raw": "X _⦋n⦌（単体）, X _⦋0⦌（頂点） @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:33",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "source_line": "33",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "3f74baa979209f5cbd8d",
+      "raw": "SSet.yonedaEquiv @ Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean:154",
+      "declaration": "SSet.yonedaEquiv",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+      "source_line": "154",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "b8967118fe951d4191f4",
+      "raw": "SSet.yonedaEquiv.symm @ Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean:154",
+      "declaration": "SSet.yonedaEquiv.symm",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+      "source_line": "154",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "86ea0f1debe7205ac667",
+      "raw": "SemiSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean:31",
+      "declaration": "SemiSimplexCategory",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+      "source_line": "31",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory",
+      "preparation": "ready"
+    },
+    {
+      "id": "503ae7eb3c8875b9eeb2",
+      "raw": "SimplexCategory.δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:233",
+      "declaration": "SimplexCategory.δ",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+      "source_line": "233",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "84989a88142e97458009",
+      "raw": "SimplicialObject.δ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:87",
+      "declaration": "SimplicialObject.δ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "87",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "eefab92c0d84879aeeae",
+      "raw": "SimplexCategory.σ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:237",
+      "declaration": "SimplexCategory.σ",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+      "source_line": "237",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "432d340271de82171995",
+      "raw": "SimplicialObject.σ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:93",
+      "declaration": "SimplicialObject.σ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "93",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "f0b3fedf5a4efdb77be7",
+      "raw": "SSet.Edge.id @ Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean:102",
+      "declaration": "SSet.Edge.id",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean",
+      "source_line": "102",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "preparation": "ready"
+    },
+    {
+      "id": "4cbf41ab126116b4628e",
+      "raw": "SSet.degenerate @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:38",
+      "declaration": "SSet.degenerate",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "38",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "24f09c0a4130cfbd7375",
+      "raw": "SSet.nonDegenerate @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:44",
+      "declaration": "SSet.nonDegenerate",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "44",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "7f98c087ee3586658351",
+      "raw": "SSet.degenerate_zero @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:47",
+      "declaration": "SSet.degenerate_zero",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "47",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "2587e5896b59b536f64d",
+      "raw": "SSet.mem_degenerate_iff @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:70",
+      "declaration": "SSet.mem_degenerate_iff",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "70",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "8202e69032741faea4ed",
+      "raw": "SSet.degenerate_eq_iUnion_range_σ @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:98",
+      "declaration": "SSet.degenerate_eq_iUnion_range_σ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "98",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "62d6ca8e193ae0d13af6",
+      "raw": "SerrePositivity.SimplexPresentation.equivalence @ SerrePositivity/CategoryTheory/Simplex/GenRelEquivalence.lean:486",
+      "declaration": "SerrePositivity.SimplexPresentation.equivalence",
+      "source": "SerrePositivity/CategoryTheory/Simplex/GenRelEquivalence.lean",
+      "source_line": "486",
+      "module": "SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence",
+      "preparation": "ready"
+    },
+    {
+      "id": "2a93149d24a10dd10b5c",
+      "raw": "SimplexCategoryGenRel @ Mathlib/AlgebraicTopology/SimplexCategory/GeneratorsRelations/Basic.lean:75",
+      "declaration": "SimplexCategoryGenRel",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/GeneratorsRelations/Basic.lean",
+      "source_line": "75",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "619ae97ebabd7ec4544f",
+      "raw": "SSet.HasDimensionLT @ Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean:32",
+      "declaration": "SSet.HasDimensionLT",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean",
+      "source_line": "32",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+      "preparation": "ready"
+    },
+    {
+      "id": "8418573d2e0acd2d2ab3",
+      "raw": "SSet.HasDimensionLE @ Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean:36",
+      "declaration": "SSet.HasDimensionLE",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean",
+      "source_line": "36",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+      "preparation": "ready"
+    },
+    {
+      "id": "736b38fa234bbdaa07a1",
+      "raw": "SSet.hasDimensionLE_prod @ Mathlib/AlgebraicTopology/SimplicialSet/FiniteProd.lean:66",
+      "declaration": "SSet.hasDimensionLE_prod",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteProd.lean",
+      "source_line": "66",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+      "preparation": "ready"
+    },
+    {
+      "id": "00f44f5fd6421a8a0244",
+      "raw": "SSet.hasDimensionLT_prod @ Mathlib/AlgebraicTopology/SimplicialSet/FiniteProd.lean:53",
+      "declaration": "SSet.hasDimensionLT_prod",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteProd.lean",
+      "source_line": "53",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+      "preparation": "ready"
+    },
+    {
+      "id": "90cc8ee2d1393bed8213",
+      "raw": "SSet.exists_nonDegenerate @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:115",
+      "declaration": "SSet.exists_nonDegenerate",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "115",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "1ebef155602fc967b310",
+      "raw": "SSet.unique_nonDegenerate_map @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:234",
+      "declaration": "SSet.unique_nonDegenerate_map",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "234",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "4525c7b871fc7d9e3b53",
+      "raw": "SSet.unique_nonDegenerate_simplex @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:226",
+      "declaration": "SSet.unique_nonDegenerate_simplex",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "226",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "1350f41704202aaddb5f",
+      "raw": "CategoryTheory.Functor.Elements @ Mathlib/CategoryTheory/Elements.lean:48",
+      "declaration": "CategoryTheory.Functor.Elements",
+      "source": "Mathlib/CategoryTheory/Elements.lean",
+      "source_line": "48",
+      "module": "Mathlib.CategoryTheory.Elements",
+      "preparation": "ready"
+    },
+    {
+      "id": "1ffdc2d5345219b85a86",
+      "raw": "SSet.S @ Mathlib/AlgebraicTopology/SimplicialSet/Simplices.lean:46",
+      "declaration": "SSet.S",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Simplices.lean",
+      "source_line": "46",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Simplices",
+      "preparation": "ready"
+    },
+    {
+      "id": "51286d93e3549633bc04",
+      "raw": "SSet.hasDimensionLT_iSup_iff @ Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean:124",
+      "declaration": "SSet.hasDimensionLT_iSup_iff",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean",
+      "source_line": "124",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+      "preparation": "ready"
+    },
+    {
+      "id": "4d6463ee55660cc8b06d",
+      "raw": "SSet.hasDimensionLT_of_epi @ Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean:107",
+      "declaration": "SSet.hasDimensionLT_of_epi",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Dimension.lean",
+      "source_line": "107",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+      "preparation": "ready"
+    },
+    {
+      "id": "a46f8d4e3fdf3149036f",
+      "raw": "SSet.skeleton @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:49",
+      "declaration": "SSet.skeleton",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "49",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "deaee72678fcdab78d6c",
+      "raw": "SSet.sk @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:132",
+      "declaration": "SSet.sk",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "source_line": "132",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "dbffd3d2b16ce49113ec",
+      "raw": "SSet.mem_skeleton_obj_iff_of_nonDegenerate @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:77",
+      "declaration": "SSet.mem_skeleton_obj_iff_of_nonDegenerate",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "77",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "06c7c90d210765884f93",
+      "raw": "SSet.skeleton_obj_eq_top @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:66",
+      "declaration": "SSet.skeleton_obj_eq_top",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "66",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "dfa01125d74fa9fb66a5",
+      "raw": "SSet.Subcomplex.le_iff_contains_nonDegenerate @ Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean:287",
+      "declaration": "SSet.Subcomplex.le_iff_contains_nonDegenerate",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Degenerate.lean",
+      "source_line": "287",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "preparation": "ready"
+    },
+    {
+      "id": "c9b138c684e73e3c388b",
+      "raw": "SSet.ofSimplex_le_skeleton @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:72",
+      "declaration": "SSet.ofSimplex_le_skeleton",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "72",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "3ef17833566dab4adc51",
+      "raw": "SSet.isColimitCoconeN @ Mathlib/AlgebraicTopology/SimplicialSet/NonDegenerateSimplicesColimit.lean:96",
+      "declaration": "SSet.isColimitCoconeN",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NonDegenerateSimplicesColimit.lean",
+      "source_line": "96",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit",
+      "preparation": "ready"
+    },
+    {
+      "id": "6c70085b78e46f2735b0",
+      "raw": "SSet.skAdj @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean:142",
+      "declaration": "SSet.skAdj",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "source_line": "142",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "71b61095b665055fe22c",
+      "raw": "SSet.boundary @ Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean:40",
+      "declaration": "SSet.boundary",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean",
+      "source_line": "40",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+      "preparation": "ready"
+    },
+    {
+      "id": "61c3da44092189f063a9",
+      "raw": "SSet.boundary_obj_eq_univ @ Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean:78",
+      "declaration": "SSet.boundary_obj_eq_univ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean",
+      "source_line": "78",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+      "preparation": "ready"
+    },
+    {
+      "id": "251722d47946af71bfa5",
+      "raw": "SSet.Subcomplex.Skeleton.isPushout @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:395",
+      "declaration": "SSet.Subcomplex.Skeleton.isPushout",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "395",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "4014a62afaf8c528d133",
+      "raw": "SSet.relativeCellComplexOfMono @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:428",
+      "declaration": "SSet.relativeCellComplexOfMono",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "428",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "07fad45670ebdc0867a3",
+      "raw": "SSet.boundary.hom_ext @ Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean:197",
+      "declaration": "SSet.boundary.hom_ext",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Boundary.lean",
+      "source_line": "197",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+      "preparation": "ready"
+    },
+    {
+      "id": "15ba8e608d3d77af1ef9",
+      "raw": "SerrePositivity.boundaryFaceGluing @ SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean:57",
+      "declaration": "SerrePositivity.boundaryFaceGluing",
+      "source": "SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean",
+      "source_line": "57",
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "preparation": "ready"
+    },
+    {
+      "id": "8d63ba0ebc4b8c1b5574",
+      "raw": "BoundaryFaceCompatible @ SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean:39",
+      "declaration": "BoundaryFaceCompatible",
+      "source": "SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean",
+      "source_line": "39",
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "preparation": "ready"
+    },
+    {
+      "id": "a36820d8443eb15acb24",
+      "raw": "Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean",
+      "declaration": "Functor.const",
+      "source": "Mathlib/CategoryTheory/Functor/Const.lean",
+      "source_line": "",
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "preparation": "ready"
+    },
+    {
+      "id": "ec87591f42bac071d815",
+      "raw": "PiZeroConstant.discrete @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:48",
+      "declaration": "PiZeroConstant.discrete",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "48",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "94c31683eb9940191ab2",
+      "raw": "CategoryTheory.evaluationAdjunctionRight @ Mathlib/CategoryTheory/Adjunction/Evaluation.lean:53",
+      "declaration": "CategoryTheory.evaluationAdjunctionRight",
+      "source": "Mathlib/CategoryTheory/Adjunction/Evaluation.lean",
+      "source_line": "53",
+      "module": "Mathlib.CategoryTheory.Adjunction.Evaluation",
+      "preparation": "ready"
+    },
+    {
+      "id": "c8cdaed1aebf4db0872f",
+      "raw": "CategoryTheory.Limits.constLimAdj @ Mathlib/CategoryTheory/Limits/HasLimits.lean:609",
+      "declaration": "CategoryTheory.Limits.constLimAdj",
+      "source": "Mathlib/CategoryTheory/Limits/HasLimits.lean",
+      "source_line": "609",
+      "module": "Mathlib.CategoryTheory.Limits.HasLimits",
+      "preparation": "ready"
+    },
+    {
+      "id": "c947d0170f0aed3c01ea",
+      "raw": "instance (Functor.const J).Full [IsConnected J] @ Mathlib/CategoryTheory/IsConnected.lean:488",
+      "declaration": "",
+      "source": "Mathlib/CategoryTheory/IsConnected.lean",
+      "source_line": "488",
+      "module": "Mathlib.CategoryTheory.IsConnected",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "207930ef1c98d11112ac",
+      "raw": "CategoryTheory.isConnected_of_isInitial @ Mathlib/CategoryTheory/Limits/IsConnected.lean:150",
+      "declaration": "CategoryTheory.isConnected_of_isInitial",
+      "source": "Mathlib/CategoryTheory/Limits/IsConnected.lean",
+      "source_line": "150",
+      "module": "Mathlib.CategoryTheory.Limits.IsConnected",
+      "preparation": "ready"
+    },
+    {
+      "id": "7d2e6d3f593a3eb7ab95",
+      "raw": "Quiver @ Mathlib/Combinatorics/Quiver/Basic.lean:37",
+      "declaration": "Quiver",
+      "source": "Mathlib/Combinatorics/Quiver/Basic.lean",
+      "source_line": "37",
+      "module": "Mathlib.Combinatorics.Quiver.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "ec9948f8fc348fe5c99c",
+      "raw": "Prefunctor @ Mathlib/Combinatorics/Quiver/Prefunctor.lean:20",
+      "declaration": "Prefunctor",
+      "source": "Mathlib/Combinatorics/Quiver/Prefunctor.lean",
+      "source_line": "20",
+      "module": "Mathlib.Combinatorics.Quiver.Prefunctor",
+      "preparation": "ready"
+    },
+    {
+      "id": "a5384a06451f03cc5e95",
+      "raw": "ReflQuiver @ Mathlib/Combinatorics/Quiver/ReflQuiver.lean:31",
+      "declaration": "ReflQuiver",
+      "source": "Mathlib/Combinatorics/Quiver/ReflQuiver.lean",
+      "source_line": "31",
+      "module": "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "preparation": "ready"
+    },
+    {
+      "id": "5f6ffe1332c49e7b3f0c",
+      "raw": "SSet.OneTruncation₂ @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:49",
+      "declaration": "SSet.OneTruncation₂",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "49",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "c5e27a11c12ad92edfa1",
+      "raw": "SSet.OneTruncation₂.map @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:69",
+      "declaration": "SSet.OneTruncation₂.map",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "69",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "5c03c05c451ab3c003e8",
+      "raw": "SSet.IsConnected @ Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean:168",
+      "declaration": "SSet.IsConnected",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+      "source_line": "168",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "7e47006410818b964d14",
+      "raw": "SSet.π₀ @ Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean:49",
+      "declaration": "SSet.π₀",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+      "source_line": "49",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "244324dc18343dce50d5",
+      "raw": "PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:121",
+      "declaration": "PiZeroConstant.homEquiv",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "121",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "55af8276667dc15478a4",
+      "raw": "SSet.isConnected_iff_nonempty_unique @ Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean:179",
+      "declaration": "SSet.isConnected_iff_nonempty_unique",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+      "source_line": "179",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "c38202e130fe14586e91",
+      "raw": "SerrePositivity.KST.Comparison.componentSubcomplex @ SerrePositivity/KST/Comparison/ComponentSubcomplex.lean:31",
+      "declaration": "SerrePositivity.KST.Comparison.componentSubcomplex",
+      "source": "SerrePositivity/KST/Comparison/ComponentSubcomplex.lean",
+      "source_line": "31",
+      "module": "SerrePositivity.KST.Comparison.ComponentSubcomplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "d5bd1e49d4736626fc3c",
+      "raw": "SerrePositivity.KST.Comparison.componentClassEquiv @ SerrePositivity/KST/Comparison/ComponentSubcomplex.lean:108",
+      "declaration": "SerrePositivity.KST.Comparison.componentClassEquiv",
+      "source": "SerrePositivity/KST/Comparison/ComponentSubcomplex.lean",
+      "source_line": "108",
+      "module": "SerrePositivity.KST.Comparison.ComponentSubcomplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "1321357adfbe0bd24020",
+      "raw": "SSet.π₀.nonempty_iff @ Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean:160",
+      "declaration": "SSet.π₀.nonempty_iff",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+      "source_line": "160",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "c94870e73aa2cb4be56e",
+      "raw": "PiZeroConstant.component @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:82",
+      "declaration": "PiZeroConstant.component",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "82",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "9e22172e3840feedadcf",
+      "raw": "PiZeroConstant.fromComponents @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:96",
+      "declaration": "PiZeroConstant.fromComponents",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "96",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "032b89c517ae815dfbf7",
+      "raw": "SimplicialModel.PiZeroLocalization.classEquiv @ SerrePositivity/HomotopicalAlgebra/Simplicial/PiZeroLocalization.lean:47",
+      "declaration": "SimplicialModel.PiZeroLocalization.classEquiv",
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/PiZeroLocalization.lean",
+      "source_line": "47",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+      "preparation": "ready"
+    },
+    {
+      "id": "9ccce38f4dbf8a1fa283",
+      "raw": "SSet.isColimitCoforkπ₀ @ Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean:130",
+      "declaration": "SSet.isColimitCoforkπ₀",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/PiZero.lean",
+      "source_line": "130",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "5bdf19de0619c2b60792",
+      "raw": "SimplexCategory.toTop @ Mathlib/AlgebraicTopology/TopologicalSimplex.lean:44",
+      "declaration": "SimplexCategory.toTop",
+      "source": "Mathlib/AlgebraicTopology/TopologicalSimplex.lean",
+      "source_line": "44",
+      "module": "Mathlib.AlgebraicTopology.TopologicalSimplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "48a19a5040d50f04faa3",
+      "raw": "TopCat.toSSet @ Mathlib/AlgebraicTopology/SingularSet.lean:50",
+      "declaration": "TopCat.toSSet",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "50",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "ready"
+    },
+    {
+      "id": "0983ea1f05202a7ea480",
+      "raw": "TopCat.toSSetObjEquiv @ Mathlib/AlgebraicTopology/SingularSet.lean:56",
+      "declaration": "TopCat.toSSetObjEquiv",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "56",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "ready"
+    },
+    {
+      "id": "572fd89dec3b23cdb2f8",
+      "raw": "CategoryTheory.Presheaf.restrictedULiftYoneda @ Mathlib/CategoryTheory/Limits/Presheaf.lean:77",
+      "declaration": "CategoryTheory.Presheaf.restrictedULiftYoneda",
+      "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+      "source_line": "77",
+      "module": "Mathlib.CategoryTheory.Limits.Presheaf",
+      "preparation": "ready"
+    },
+    {
+      "id": "2fa0ccd12989da0a34de",
+      "raw": "SSet.toTop @ Mathlib/AlgebraicTopology/SingularSet.lean:65",
+      "declaration": "SSet.toTop",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "65",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "ready"
+    },
+    {
+      "id": "a4cc0c9943ad3a4e96f0",
+      "raw": "sSetTopAdj @ Mathlib/AlgebraicTopology/SingularSet.lean:73",
+      "declaration": "sSetTopAdj",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "73",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "ready"
+    },
+    {
+      "id": "5043477421f8fa6a53bf",
+      "raw": "記法 |X| @ Mathlib/AlgebraicTopology/SingularSet.lean:68",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "68",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "a46b409ed73bd293c40d",
+      "raw": "instance SSet.toTop.IsLeftAdjoint @ Mathlib/AlgebraicTopology/SingularSet.lean:78",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SingularSet.lean",
+      "source_line": "78",
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "f15a938c7767094980fa",
+      "raw": "CategoryTheory.Presheaf.uliftYonedaAdjunction @ Mathlib/CategoryTheory/Limits/Presheaf.lean:171",
+      "declaration": "CategoryTheory.Presheaf.uliftYonedaAdjunction",
+      "source": "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+      "source_line": "171",
+      "module": "Mathlib.CategoryTheory.Limits.Presheaf",
+      "preparation": "ready"
+    },
+    {
+      "id": "dac87d976482b618124a",
+      "raw": "SSet.horn @ Mathlib/AlgebraicTopology/SimplicialSet/Horn.lean:33",
+      "declaration": "SSet.horn",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Horn.lean",
+      "source_line": "33",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+      "preparation": "ready"
+    },
+    {
+      "id": "c1ee5d5582dcd2c2c881",
+      "raw": "SSet.horn.IsCompatible @ Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean:169",
+      "declaration": "SSet.horn.IsCompatible",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean",
+      "source_line": "169",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+      "preparation": "ready"
+    },
+    {
+      "id": "7548586fdaed2975cf5e",
+      "raw": "SSet.horn.desc @ Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean:242",
+      "declaration": "SSet.horn.desc",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HornColimits.lean",
+      "source_line": "242",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+      "preparation": "ready"
+    },
+    {
+      "id": "7cf6b0b52779c8f3fa1c",
+      "raw": "SSet.horn.hom_ext @ Mathlib/AlgebraicTopology/SimplicialSet/Horn.lean:295",
+      "declaration": "SSet.horn.hom_ext",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Horn.lean",
+      "source_line": "295",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+      "preparation": "ready"
+    },
+    {
+      "id": "79006bbd9681e5936f55",
+      "raw": "SSet.KanComplex @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:40",
+      "declaration": "SSet.KanComplex",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "source_line": "40",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "7fec2710febded228695",
+      "raw": "SSet.KanComplex.hornFilling @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:45",
+      "declaration": "SSet.KanComplex.hornFilling",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "source_line": "45",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "5532adb624425a32a327",
+      "raw": "SSet.KanComplex.iff @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:84",
+      "declaration": "SSet.KanComplex.iff",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "source_line": "84",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "79679a54af5015d3c180",
+      "raw": "SerrePositivity.KST.Comparison.ringSpace_kanComplex @ SerrePositivity/KST/Comparison/SimplicialRingKan.lean:30",
+      "declaration": "SerrePositivity.KST.Comparison.ringSpace_kanComplex",
+      "source": "SerrePositivity/KST/Comparison/SimplicialRingKan.lean",
+      "source_line": "30",
+      "module": "SerrePositivity.KST.Comparison.SimplicialRingKan",
+      "preparation": "ready"
+    },
+    {
+      "id": "858bb97235329e133ef2",
+      "raw": "KanHomotopyZero.mk_eq_iff @ SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean:128",
+      "declaration": "KanHomotopyZero.mk_eq_iff",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean",
+      "source_line": "128",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "preparation": "ready"
+    },
+    {
+      "id": "d70d2741bdcb8ddf3e30",
+      "raw": "ZeroRelations.equivalence @ SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean:117",
+      "declaration": "ZeroRelations.equivalence",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean",
+      "source_line": "117",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "preparation": "ready"
+    },
+    {
+      "id": "5a067507f630a77f1833",
+      "raw": "KanHomotopyZero @ SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean:33",
+      "declaration": "KanHomotopyZero",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean",
+      "source_line": "33",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "3fb3dbabdf9c6a6525ae",
+      "raw": "CategoryTheory.nerve @ Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean:37",
+      "declaration": "CategoryTheory.nerve",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+      "source_line": "37",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+      "preparation": "ready"
+    },
+    {
+      "id": "7d993f1e60d85f52d7a7",
+      "raw": "CategoryTheory.nerveFunctor @ Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean:74",
+      "declaration": "CategoryTheory.nerveFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+      "source_line": "74",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+      "preparation": "ready"
+    },
+    {
+      "id": "ee4ef0364c6d367f8d1c",
+      "raw": "Monoid @ Mathlib/Algebra/Group/Monoid.lean:388",
+      "declaration": "Monoid",
+      "source": "Mathlib/Algebra/Group/Monoid.lean",
+      "source_line": "388",
+      "module": "Mathlib.Algebra.Group.Monoid",
+      "preparation": "ready"
+    },
+    {
+      "id": "7ca80150ad0100ca662e",
+      "raw": "MonoidHom @ Mathlib/Algebra/Group/Hom/Defs.lean:366",
+      "declaration": "MonoidHom",
+      "source": "Mathlib/Algebra/Group/Hom/Defs.lean",
+      "source_line": "366",
+      "module": "Mathlib.Algebra.Group.Hom.Defs",
+      "preparation": "ready"
+    },
+    {
+      "id": "297d06dccc3f29dee9c1",
+      "raw": "MonCat @ Mathlib/Algebra/Category/MonCat/Basic.lean:42",
+      "declaration": "MonCat",
+      "source": "Mathlib/Algebra/Category/MonCat/Basic.lean",
+      "source_line": "42",
+      "module": "Mathlib.Algebra.Category.MonCat.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "a7b8f23b3d18ecaa263e",
+      "raw": "CategoryTheory.SingleObj @ Mathlib/CategoryTheory/SingleObj.lean:52",
+      "declaration": "CategoryTheory.SingleObj",
+      "source": "Mathlib/CategoryTheory/SingleObj.lean",
+      "source_line": "52",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "preparation": "ready"
+    },
+    {
+      "id": "59b12ff3f31114bddb85",
+      "raw": "monoidWordSimplex @ SerrePositivity/KST/Comparison/BarSegal.lean:40",
+      "declaration": "monoidWordSimplex",
+      "source": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "source_line": "40",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "bfabc31153a491324d1e",
+      "raw": "MonCat.toCat (toCat_full, toCat_faithful) @ Mathlib/CategoryTheory/SingleObj.lean:233",
+      "declaration": "",
+      "source": "Mathlib/CategoryTheory/SingleObj.lean",
+      "source_line": "233",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "6699e2d7568af8d12c3a",
+      "raw": "CategoryTheory.nerveFunctor.fullyfaithful @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:402",
+      "declaration": "CategoryTheory.nerveFunctor.fullyfaithful",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "402",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "3b06ef6d461b4a8ba78c",
+      "raw": "SerrePositivity.KST.Comparison.monoidWordSimplex / monoidWordLabels @ SerrePositivity/KST/Comparison/BarSegal.lean:40",
+      "declaration": "",
+      "source": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "source_line": "40",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "0fe0c92fdc9826bfa40f",
+      "raw": "Semigroup @ Mathlib/Algebra/Group/Semigroup.lean:144",
+      "declaration": "Semigroup",
+      "source": "Mathlib/Algebra/Group/Semigroup.lean",
+      "source_line": "144",
+      "module": "Mathlib.Algebra.Group.Semigroup",
+      "preparation": "ready"
+    },
+    {
+      "id": "d89c631738c0de1670e9",
+      "raw": "nerveFunctor.full @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:398",
+      "declaration": "nerveFunctor.full",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "398",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "858550161dca9486fbaf",
+      "raw": "nerveFunctor.faithful @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:395",
+      "declaration": "nerveFunctor.faithful",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "395",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "f49667e2f2f70a54c536",
+      "raw": "nerveFunctor.fullyfaithful @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:402",
+      "declaration": "nerveFunctor.fullyfaithful",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "402",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "f2a0fc66c8a534ab2c21",
+      "raw": "CategoryTheory.Nerve.strictSegal @ Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean:522",
+      "declaration": "CategoryTheory.Nerve.strictSegal",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+      "source_line": "522",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "a5a895f88482be265e48",
+      "raw": "SSet.StrictSegal @ Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean:264",
+      "declaration": "SSet.StrictSegal",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+      "source_line": "264",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "6cdde01e131c172c5aab",
+      "raw": "SSet.StrictSegal.quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/StrictSegal.lean:36",
+      "declaration": "SSet.StrictSegal.quasicategory",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/StrictSegal.lean",
+      "source_line": "36",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "5a0e60ed4f1ca6a6b8da",
+      "raw": "thinNerve_hom_ext_horn @ SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean:46",
+      "declaration": "thinNerve_hom_ext_horn",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+      "source_line": "46",
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration",
+      "preparation": "ready"
+    },
+    {
+      "id": "873bea49fc062c7a75d6",
+      "raw": "CategoryTheory.Groupoid @ Mathlib/CategoryTheory/Groupoid.lean:40",
+      "declaration": "CategoryTheory.Groupoid",
+      "source": "Mathlib/CategoryTheory/Groupoid.lean",
+      "source_line": "40",
+      "module": "Mathlib.CategoryTheory.Groupoid",
+      "preparation": "ready"
+    },
+    {
+      "id": "30adb32ef66a49c22455",
+      "raw": "CategoryTheory.IsGroupoid @ Mathlib/CategoryTheory/Groupoid.lean:119",
+      "declaration": "CategoryTheory.IsGroupoid",
+      "source": "Mathlib/CategoryTheory/Groupoid.lean",
+      "source_line": "119",
+      "module": "Mathlib.CategoryTheory.Groupoid",
+      "preparation": "ready"
+    },
+    {
+      "id": "dc1ad118c60844fc6fdc",
+      "raw": "groupoidNerve_kanComplex @ SerrePositivity/InfinityCategories/Stable/CoreFlag/GroupNerveHomotopy.lean:48",
+      "declaration": "groupoidNerve_kanComplex",
+      "source": "SerrePositivity/InfinityCategories/Stable/CoreFlag/GroupNerveHomotopy.lean",
+      "source_line": "48",
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "preparation": "ready"
+    },
+    {
+      "id": "e8c9da8d9b582cb80a82",
+      "raw": "kanComplex_iff_isGroupoid @ SerrePositivity/InfinityCategories/Core/KanCharacterization.lean:73",
+      "declaration": "kanComplex_iff_isGroupoid",
+      "source": "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean",
+      "source_line": "73",
+      "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+      "preparation": "ready"
+    },
+    {
+      "id": "e569b9a2898481e53fb0",
+      "raw": "nerveFunctorCompHoFunctorIso @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:410",
+      "declaration": "nerveFunctorCompHoFunctorIso",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "410",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "a912ccff62f3f4ae5e4d",
+      "raw": "CategoryTheory.Core @ Mathlib/CategoryTheory/Core.lean:36",
+      "declaration": "CategoryTheory.Core",
+      "source": "Mathlib/CategoryTheory/Core.lean",
+      "source_line": "36",
+      "module": "Mathlib.CategoryTheory.Core",
+      "preparation": "ready"
+    },
+    {
+      "id": "a79d7e9ad83421c9bedd",
+      "raw": "SSet.hoFunctor @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:609",
+      "declaration": "SSet.hoFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "609",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "40dce5e2106739938e9c",
+      "raw": "nerveAdjunction @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:389",
+      "declaration": "nerveAdjunction",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "389",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "6ad80bd34ae0f6ad28e5",
+      "raw": "SSet.HomotopyCategory @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:534",
+      "declaration": "SSet.HomotopyCategory",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "534",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "a3748d150fa938c436b6",
+      "raw": "CategoryTheory.Paths @ Mathlib/CategoryTheory/PathCategory/Basic.lean:32",
+      "declaration": "CategoryTheory.Paths",
+      "source": "Mathlib/CategoryTheory/PathCategory/Basic.lean",
+      "source_line": "32",
+      "module": "Mathlib.CategoryTheory.PathCategory.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "310e8ad029b6d029d525",
+      "raw": "CategoryTheory.Paths.lift @ Mathlib/CategoryTheory/PathCategory/Basic.lean:111",
+      "declaration": "CategoryTheory.Paths.lift",
+      "source": "Mathlib/CategoryTheory/PathCategory/Basic.lean",
+      "source_line": "111",
+      "module": "Mathlib.CategoryTheory.PathCategory.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "7e1b1b051ddd6fabcedc",
+      "raw": "SSet.Quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Basic.lean:41",
+      "declaration": "SSet.Quasicategory",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/Basic.lean",
+      "source_line": "41",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "3458260f82a8d5ff6b5b",
+      "raw": "SSet.Edge @ Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean:47",
+      "declaration": "SSet.Edge",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean",
+      "source_line": "47",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "preparation": "ready"
+    },
+    {
+      "id": "4426c82a332cafba6041",
+      "raw": "NonemptyFinLinOrd @ Mathlib/Order/Category/NonemptyFinLinOrd.lean:31",
+      "declaration": "NonemptyFinLinOrd",
+      "source": "Mathlib/Order/Category/NonemptyFinLinOrd.lean",
+      "source_line": "31",
+      "module": "Mathlib.Order.Category.NonemptyFinLinOrd",
+      "preparation": "ready"
+    },
+    {
+      "id": "44c2b711df471678c06c",
+      "raw": "NonemptyFinLinOrd.dual @ Mathlib/Order/Category/NonemptyFinLinOrd.lean:116",
+      "declaration": "NonemptyFinLinOrd.dual",
+      "source": "Mathlib/Order/Category/NonemptyFinLinOrd.lean",
+      "source_line": "116",
+      "module": "Mathlib.Order.Category.NonemptyFinLinOrd",
+      "preparation": "ready"
+    },
+    {
+      "id": "5ec66b6c4e37897457fe",
+      "raw": "SSet.opFunctor @ Mathlib/AlgebraicTopology/SimplicialSet/Op.lean:44",
+      "declaration": "SSet.opFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+      "source_line": "44",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Op",
+      "preparation": "ready"
+    },
+    {
+      "id": "48b89f6e27689a84812b",
+      "raw": "quasicategory_op @ SerrePositivity/InfinityCategories/Core/Opposite.lean:79",
+      "declaration": "quasicategory_op",
+      "source": "SerrePositivity/InfinityCategories/Core/Opposite.lean",
+      "source_line": "79",
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "preparation": "ready"
+    },
+    {
+      "id": "f4c90890fce69c68bae8",
+      "raw": "hornReverseIso @ SerrePositivity/InfinityCategories/Core/Opposite.lean:38",
+      "declaration": "hornReverseIso",
+      "source": "SerrePositivity/InfinityCategories/Core/Opposite.lean",
+      "source_line": "38",
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "preparation": "ready"
+    },
+    {
+      "id": "81f63860ff9b4b733ddd",
+      "raw": "instance KanComplex X.op @ Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean:103",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/KanComplex.lean",
+      "source_line": "103",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "e702a31ba043f022adbb",
+      "raw": "SSet.Truncated.HomotopicL @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:77",
+      "declaration": "SSet.Truncated.HomotopicL",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "77",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "4155dc3d979a2cb179b3",
+      "raw": "HomotopicL.refl/symm/trans @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:94",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "94",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "1eb42bad1d963d1ca5a2",
+      "raw": "instance Quasicategory₂ (truncation 2 X) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean:27",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+      "source_line": "27",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "bb3fc028c5740c5ab004",
+      "raw": "SSet.Truncated.homotopicL_iff_homotopicR @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:154",
+      "declaration": "SSet.Truncated.homotopicL_iff_homotopicR",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "154",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "1c5d2f23f6f41a4912f8",
+      "raw": "exists_arrowHomotopy_of_homMk_comm @ SerrePositivity/InfinityCategories/Core/ArrowSquareHomotopy.lean:49",
+      "declaration": "exists_arrowHomotopy_of_homMk_comm",
+      "source": "SerrePositivity/InfinityCategories/Core/ArrowSquareHomotopy.lean",
+      "source_line": "49",
+      "module": "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy",
+      "preparation": "ready"
+    },
+    {
+      "id": "c2bc72d8fcb30c6b1a8a",
+      "raw": "SSet.Edge.CompStruct @ Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean:166",
+      "declaration": "SSet.Edge.CompStruct",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean",
+      "source_line": "166",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "preparation": "ready"
+    },
+    {
+      "id": "b43554e25e6fefee4a55",
+      "raw": "SSet.Truncated.Edge.CompStruct @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "declaration": "SSet.Truncated.Edge.CompStruct",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "c328069dba17672017be",
+      "raw": "SSet.Truncated.Quasicategory₂ (fill21) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:53",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "53",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "d6178652396836a4bf58",
+      "raw": "SSet.Truncated.Edge.CompStruct.comp_unique @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:168",
+      "declaration": "SSet.Truncated.Edge.CompStruct.comp_unique",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "168",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "ea11ceca3ec55bc0c984",
+      "raw": "instance Quasicategory₂ (truncation 2) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean:27",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncatedQuasicategory.lean",
+      "source_line": "27",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "db3b2baf65d03294646b",
+      "raw": "SSet.Truncated.Edge.comp @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:182",
+      "declaration": "SSet.Truncated.Edge.comp",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "182",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "c63c0c319be71df26ace",
+      "raw": "SSet.Truncated.Edge.compStruct @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:188",
+      "declaration": "SSet.Truncated.Edge.compStruct",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "188",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "848426ed77035b57c1ae",
+      "raw": "SSet.Truncated.HomotopyCategory₂.Hom @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:212",
+      "declaration": "SSet.Truncated.HomotopyCategory₂.Hom",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "212",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "4c69101d9eb6dc533fda",
+      "raw": "SSet.Truncated.instSetoidEdge @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:202",
+      "declaration": "SSet.Truncated.instSetoidEdge",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "202",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "3bb93f452314578e433a",
+      "raw": "instance Category (HomotopyCategory₂ A) @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:299",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "299",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "5e599bfc33fa3f11cc21",
+      "raw": "SSet.Truncated.HomotopyCategory₂ @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:194",
+      "declaration": "SSet.Truncated.HomotopyCategory₂",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "194",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "d43ada9d7c667f43bc69",
+      "raw": "SerrePositivity.InfinityCategories.homotopyCategoryBridge @ SerrePositivity/InfinityCategories/Core/HomotopyCategoryBridge.lean:88",
+      "declaration": "SerrePositivity.InfinityCategories.homotopyCategoryBridge",
+      "source": "SerrePositivity/InfinityCategories/Core/HomotopyCategoryBridge.lean",
+      "source_line": "88",
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge",
+      "preparation": "ready"
+    },
+    {
+      "id": "18c13510a58fb3d9e35b",
+      "raw": "hoFunctor @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:609",
+      "declaration": "hoFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "609",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "6d2d4128cb6066cb1a6c",
+      "raw": "SerrePositivity.InfinityCategories.nerveHomotopyCategoryEquivalence @ SerrePositivity/InfinityCategories/Core/Checks.lean:27",
+      "declaration": "SerrePositivity.InfinityCategories.nerveHomotopyCategoryEquivalence",
+      "source": "SerrePositivity/InfinityCategories/Core/Checks.lean",
+      "source_line": "27",
+      "module": "SerrePositivity.InfinityCategories.Core.Checks",
+      "preparation": "ready"
+    },
+    {
+      "id": "58536d484b9fad263686",
+      "raw": "SSet.Truncated.Edge.CompStruct.nonempty_iff @ Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean:294",
+      "declaration": "SSet.Truncated.Edge.CompStruct.nonempty_iff",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/TwoTruncated.lean",
+      "source_line": "294",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "preparation": "ready"
+    },
+    {
+      "id": "35139632064ab5573d92",
+      "raw": "SSet.stdSimplex.isoNerve @ Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean:440",
+      "declaration": "SSet.stdSimplex.isoNerve",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean",
+      "source_line": "440",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+      "preparation": "ready"
+    },
+    {
+      "id": "7c48e846e15dc2cbcdf7",
+      "raw": "SerrePositivity.InfinityCategories.HomotopyCategory.bridge_naturality @ SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean:64",
+      "declaration": "SerrePositivity.InfinityCategories.HomotopyCategory.bridge_naturality",
+      "source": "SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean",
+      "source_line": "64",
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap",
+      "preparation": "ready"
+    },
+    {
+      "id": "a460e4e24309c2216bc4",
+      "raw": "SerrePositivity.InfinityCategories.IsInvertibleEdge @ SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean:28",
+      "declaration": "SerrePositivity.InfinityCategories.IsInvertibleEdge",
+      "source": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+      "source_line": "28",
+      "module": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+      "preparation": "ready"
+    },
+    {
+      "id": "e9abaa1e3cffeae80d97",
+      "raw": "SSet.Edge.InvStruct @ Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean:305",
+      "declaration": "SSet.Edge.InvStruct",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CompStruct.lean",
+      "source_line": "305",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "preparation": "ready"
+    },
+    {
+      "id": "b840a8bc66b8c69e8f33",
+      "raw": "SerrePositivity.InfinityCategories.IsInvertibleEdge.nonempty_inverse @ SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean:168",
+      "declaration": "SerrePositivity.InfinityCategories.IsInvertibleEdge.nonempty_inverse",
+      "source": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean",
+      "source_line": "168",
+      "module": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+      "preparation": "ready"
+    },
+    {
+      "id": "09c9bfbe849c76a31e65",
+      "raw": "SerrePositivity.InfinityCategories.kanComplex_ho_isGroupoid @ SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean:206",
+      "declaration": "SerrePositivity.InfinityCategories.kanComplex_ho_isGroupoid",
+      "source": "SerrePositivity/InfinityCategories/Core/OuterHornConverse.lean",
+      "source_line": "206",
+      "module": "SerrePositivity.InfinityCategories.Core.OuterHornConverse",
+      "preparation": "ready"
+    },
+    {
+      "id": "9376fa374abfbdcb8490",
+      "raw": "SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid @ SerrePositivity/InfinityCategories/Core/KanCharacterization.lean:73",
+      "declaration": "SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid",
+      "source": "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean",
+      "source_line": "73",
+      "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+      "preparation": "ready"
+    },
+    {
+      "id": "f2abc8d780580e05c650",
+      "raw": "SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid @ SerrePositivity/InfinityCategories/Kan/FundamentalGroupoidComparison.lean:26",
+      "declaration": "SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid",
+      "source": "SerrePositivity/InfinityCategories/Kan/FundamentalGroupoidComparison.lean",
+      "source_line": "26",
+      "module": "SerrePositivity.InfinityCategories.Kan.FundamentalGroupoidComparison",
+      "preparation": "ready"
+    },
+    {
+      "id": "c1fbdc4670a2df2e3bea",
+      "raw": "SSet（射 X ⟶ Y） @ Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean",
+      "source_line": "",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "bff2707c3ae26116336e",
+      "raw": "CategoryTheory.ihom @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:76",
+      "declaration": "CategoryTheory.ihom",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "source_line": "76",
+      "module": "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "ce9be6ca56d446a8c289",
+      "raw": "CategoryTheory.ihom.adjunction @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:82",
+      "declaration": "CategoryTheory.ihom.adjunction",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "source_line": "82",
+      "module": "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "ee3cfe9e13b73cbb4211",
+      "raw": "CategoryTheory.MonoidalClosed.curry @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:146",
+      "declaration": "CategoryTheory.MonoidalClosed.curry",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "source_line": "146",
+      "module": "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "770262bf822b744bc1c4",
+      "raw": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso @ SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean:36",
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+      "source_line": "36",
+      "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory",
+      "preparation": "ready"
+    },
+    {
+      "id": "a4a883502e60589059db",
+      "raw": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso_uncurry @ SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean:54",
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso_uncurry",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+      "source_line": "54",
+      "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory",
+      "preparation": "ready"
+    },
+    {
+      "id": "b084494812bd14214e6c",
+      "raw": "hoFunctor.preservesFiniteProducts @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:479",
+      "declaration": "hoFunctor.preservesFiniteProducts",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "479",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "acd3ef192a44bb11a7e7",
+      "raw": "hoFunctor.isIso_prodComparison @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:458",
+      "declaration": "hoFunctor.isIso_prodComparison",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "458",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "1409902993ac7e5174b0",
+      "raw": "instance Quasicategory ((ihom A).obj X) @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:157",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "source_line": "157",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "12189b3ce7282a7770f1",
+      "raw": "CategoryTheory.CommSq @ Mathlib/CategoryTheory/CommSq.lean:49",
+      "declaration": "CategoryTheory.CommSq",
+      "source": "Mathlib/CategoryTheory/CommSq.lean",
+      "source_line": "49",
+      "module": "Mathlib.CategoryTheory.CommSq",
+      "preparation": "ready"
+    },
+    {
+      "id": "43822067e8fa41a31955",
+      "raw": "CategoryTheory.CommSq.LiftStruct @ Mathlib/CategoryTheory/CommSq.lean:180",
+      "declaration": "CategoryTheory.CommSq.LiftStruct",
+      "source": "Mathlib/CategoryTheory/CommSq.lean",
+      "source_line": "180",
+      "module": "Mathlib.CategoryTheory.CommSq",
+      "preparation": "ready"
+    },
+    {
+      "id": "e32190bf36b7cc407a8e",
+      "raw": "CategoryTheory.HasLiftingProperty @ Mathlib/CategoryTheory/LiftingProperties/Basic.lean:45",
+      "declaration": "CategoryTheory.HasLiftingProperty",
+      "source": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+      "source_line": "45",
+      "module": "Mathlib.CategoryTheory.LiftingProperties.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "d3f4fedd54095df63009",
+      "raw": "CategoryTheory.MorphismProperty.llp @ Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean:35",
+      "declaration": "CategoryTheory.MorphismProperty.llp",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "source_line": "35",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "preparation": "ready"
+    },
+    {
+      "id": "b9e536c7e7688a42ad88",
+      "raw": "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange @ Mathlib/CategoryTheory/MorphismProperty/Limits.lean:118",
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+      "source_line": "118",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.Limits",
+      "preparation": "ready"
+    },
+    {
+      "id": "3fa20ebf8e7b78f05eb2",
+      "raw": "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange @ Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean:61",
+      "declaration": "CategoryTheory.MorphismProperty.llp_isStableUnderCobaseChange",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "source_line": "61",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "preparation": "ready"
+    },
+    {
+      "id": "d048b42bedf3c9aa7341",
+      "raw": "CategoryTheory.Retract @ Mathlib/CategoryTheory/Retract.lean:27",
+      "declaration": "CategoryTheory.Retract",
+      "source": "Mathlib/CategoryTheory/Retract.lean",
+      "source_line": "27",
+      "module": "Mathlib.CategoryTheory.Retract",
+      "preparation": "ready"
+    },
+    {
+      "id": "edc8da4d88f5815c7f27",
+      "raw": "CategoryTheory.RetractArrow @ Mathlib/CategoryTheory/Retract.lean:110",
+      "declaration": "CategoryTheory.RetractArrow",
+      "source": "Mathlib/CategoryTheory/Retract.lean",
+      "source_line": "110",
+      "module": "Mathlib.CategoryTheory.Retract",
+      "preparation": "ready"
+    },
+    {
+      "id": "9306d262c83a5157382b",
+      "raw": "CategoryTheory.MorphismProperty.IsStableUnderRetracts @ Mathlib/CategoryTheory/MorphismProperty/Retract.lean:31",
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderRetracts",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Retract.lean",
+      "source_line": "31",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.Retract",
+      "preparation": "ready"
+    },
+    {
+      "id": "304e3c56dd341ad2e568",
+      "raw": "CategoryTheory.MorphismProperty.llp_isStableUnderRetracts @ Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean:51",
+      "declaration": "CategoryTheory.MorphismProperty.llp_isStableUnderRetracts",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "source_line": "51",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "preparation": "ready"
+    },
+    {
+      "id": "72187892bcea5da40039",
+      "raw": "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape @ Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean:53",
+      "declaration": "CategoryTheory.MorphismProperty.TransfiniteCompositionOfShape",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+      "source_line": "53",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+      "preparation": "ready"
+    },
+    {
+      "id": "f930ecedf325561a9722",
+      "raw": "CategoryTheory.MorphismProperty.transfiniteCompositions @ Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean:340",
+      "declaration": "CategoryTheory.MorphismProperty.transfiniteCompositions",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+      "source_line": "340",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+      "preparation": "ready"
+    },
+    {
+      "id": "1213a7918f8f46ef2aa9",
+      "raw": "CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp @ Mathlib/CategoryTheory/SmallObject/TransfiniteCompositionLifting.lean:261",
+      "declaration": "CategoryTheory.MorphismProperty.isStableUnderTransfiniteCompositionOfShape_llp",
+      "source": "Mathlib/CategoryTheory/SmallObject/TransfiniteCompositionLifting.lean",
+      "source_line": "261",
+      "module": "Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting",
+      "preparation": "ready"
+    },
+    {
+      "id": "74c5875720bec9b34f52",
+      "raw": "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition @ Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean:299",
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+      "source_line": "299",
+      "module": "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+      "preparation": "ready"
+    },
+    {
+      "id": "e97aae2450bd02bc6c27",
+      "raw": "SerrePositivity.InfinityCategories.trivialKanFibrations @ SerrePositivity/InfinityCategories/Core/Terminal.lean:27",
+      "declaration": "SerrePositivity.InfinityCategories.trivialKanFibrations",
+      "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+      "source_line": "27",
+      "module": "SerrePositivity.InfinityCategories.Core.Terminal",
+      "preparation": "ready"
+    },
+    {
+      "id": "8f583a6f07f1517c9222",
+      "raw": "SerrePositivity.InfinityCategories.TrivialKanFibration @ SerrePositivity/InfinityCategories/Core/Terminal.lean:34",
+      "declaration": "SerrePositivity.InfinityCategories.TrivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+      "source_line": "34",
+      "module": "SerrePositivity.InfinityCategories.Core.Terminal",
+      "preparation": "ready"
+    },
+    {
+      "id": "374ef9a1a2a3c9469304",
+      "raw": "SerrePositivity.InfinityCategories.trivialKanFibration_iff_boundary @ SerrePositivity/InfinityCategories/Core/Terminal.lean:41",
+      "declaration": "SerrePositivity.InfinityCategories.trivialKanFibration_iff_boundary",
+      "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+      "source_line": "41",
+      "module": "SerrePositivity.InfinityCategories.Core.Terminal",
+      "preparation": "ready"
+    },
+    {
+      "id": "4d58947ca081a455aba9",
+      "raw": "SSet.rlp_monomorphisms @ Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean:129",
+      "declaration": "SSet.rlp_monomorphisms",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/CategoryWithFibrations.lean",
+      "source_line": "129",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+      "preparation": "ready"
+    },
+    {
+      "id": "c7a84e9b70f483204be6",
+      "raw": "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section @ SerrePositivity/HomotopicalAlgebra/Simplicial/MonoRightLiftingContraction.lean:47",
+      "declaration": "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_section",
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/MonoRightLiftingContraction.lean",
+      "source_line": "47",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction",
+      "preparation": "ready"
+    },
+    {
+      "id": "aea7c3583b285d9fb858",
+      "raw": "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction @ SerrePositivity/HomotopicalAlgebra/Simplicial/MonoRightLiftingContraction.lean:59",
+      "declaration": "SerrePositivity.SimplicialModel.MonoRightLiftingContraction.exists_vertical_contraction",
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/MonoRightLiftingContraction.lean",
+      "source_line": "59",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction",
+      "preparation": "ready"
+    },
+    {
+      "id": "1aecd37cf38df5276fcc",
+      "raw": "SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration @ SerrePositivity/KST/SConstruction/STrivialFibration.lean:23",
+      "declaration": "SerrePositivity.KST.SConstruction.ihomMap_trivialKanFibration",
+      "source": "SerrePositivity/KST/SConstruction/STrivialFibration.lean",
+      "source_line": "23",
+      "module": "SerrePositivity.KST.SConstruction.STrivialFibration",
+      "preparation": "ready"
+    },
+    {
+      "id": "81dc83bd416173843b4b",
+      "raw": "SerrePositivity.InfinityCategories.IsContractibleKan @ SerrePositivity/InfinityCategories/Core/ContractibleKan.lean:24",
+      "declaration": "SerrePositivity.InfinityCategories.IsContractibleKan",
+      "source": "SerrePositivity/InfinityCategories/Core/ContractibleKan.lean",
+      "source_line": "24",
+      "module": "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+      "preparation": "ready"
+    },
+    {
+      "id": "855593cfb56b0b3a8883",
+      "raw": "SerrePositivity.InfinityCategories.isContractibleKan_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Core/ContractibleKan.lean:32",
+      "declaration": "SerrePositivity.InfinityCategories.isContractibleKan_iff_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/ContractibleKan.lean",
+      "source_line": "32",
+      "module": "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+      "preparation": "ready"
+    },
+    {
+      "id": "76ec7d90ddbc7ecfdffa",
+      "raw": "SerrePositivity.InfinityCategories.isContractibleKan_of_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/Transport/WitnessPushoutContractible.lean:27",
+      "declaration": "SerrePositivity.InfinityCategories.isContractibleKan_of_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Transport/WitnessPushoutContractible.lean",
+      "source_line": "27",
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible",
+      "preparation": "ready"
+    },
+    {
+      "id": "619adf49d44faff247df",
+      "raw": "SerrePositivity.InfinityCategories.kanComplex_of_trivialKanFibration_target @ SerrePositivity/InfinityCategories/HomotopyLimits/KanMonoArrowFactorization.lean:25",
+      "declaration": "SerrePositivity.InfinityCategories.kanComplex_of_trivialKanFibration_target",
+      "source": "SerrePositivity/InfinityCategories/HomotopyLimits/KanMonoArrowFactorization.lean",
+      "source_line": "25",
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+      "preparation": "ready"
+    },
+    {
+      "id": "1b86e5b3677519ba78ae",
+      "raw": "SerrePositivity.InfinityCategories.IsContractibleKan.kanComplex @ SerrePositivity/InfinityCategories/Core/ContractibleKan.lean:62",
+      "declaration": "SerrePositivity.InfinityCategories.IsContractibleKan.kanComplex",
+      "source": "SerrePositivity/InfinityCategories/Core/ContractibleKan.lean",
+      "source_line": "62",
+      "module": "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+      "preparation": "ready"
+    },
+    {
+      "id": "61161473149d9b6b67a6",
+      "raw": "SerrePositivity.SimplicialModel.boundaryGenerators_leftClass @ SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean:124",
+      "declaration": "SerrePositivity.SimplicialModel.boundaryGenerators_leftClass",
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean",
+      "source_line": "124",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+      "preparation": "ready"
+    },
+    {
+      "id": "cfd31ad46ab3965bddd1",
+      "raw": "SerrePositivity.InfinityCategories.trivialKanFibration_pre_of_innerAnodyne @ SerrePositivity/InfinityCategories/Core/InnerAnodyneEquivalence.lean:23",
+      "declaration": "SerrePositivity.InfinityCategories.trivialKanFibration_pre_of_innerAnodyne",
+      "source": "SerrePositivity/InfinityCategories/Core/InnerAnodyneEquivalence.lean",
+      "source_line": "23",
+      "module": "SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence",
+      "preparation": "ready"
+    },
+    {
+      "id": "ba603b9a22ef9fda2603",
+      "raw": "SSet.innerAnodyneExtensions.horn_ι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:58",
+      "declaration": "SSet.innerAnodyneExtensions.horn_ι",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+      "source_line": "58",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "f4cb22990af395f242b4",
+      "raw": "SerrePositivity.InfinityCategories.F1.compositionTriangleSpace_isContractibleKan @ SerrePositivity/InfinityCategories/F1/Diagrams/CompositionTriangleSpace.lean:63",
+      "declaration": "SerrePositivity.InfinityCategories.F1.compositionTriangleSpace_isContractibleKan",
+      "source": "SerrePositivity/InfinityCategories/F1/Diagrams/CompositionTriangleSpace.lean",
+      "source_line": "63",
+      "module": "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace",
+      "preparation": "ready"
+    },
+    {
+      "id": "d4c9a871063d4f92ff73",
+      "raw": "SSet.innerAnodyneExtensions @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:45",
+      "declaration": "SSet.innerAnodyneExtensions",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+      "source_line": "45",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "b67cbf99397c22c07a81",
+      "raw": "SSet.innerAnodyneExtensions_eq_retracts_transfiniteCompositions @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:91",
+      "declaration": "SSet.innerAnodyneExtensions_eq_retracts_transfiniteCompositions",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean",
+      "source_line": "91",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "e6932f8b68018c7b63a4",
+      "raw": "SSet.quasicategory_of_innerFibration @ Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:94",
+      "declaration": "SSet.quasicategory_of_innerFibration",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+      "source_line": "94",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+      "preparation": "ready"
+    },
+    {
+      "id": "5dde6f287438a217bad8",
+      "raw": "instance InnerFibration (terminal.from X) @ Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:101",
+      "declaration": "",
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+      "source_line": "101",
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+      "preparation": "unresolved_reference"
+    },
+    {
+      "id": "702015db4509c8761c3e",
+      "raw": "SerrePositivity.KST.Fibration.exists_extension_of_innerAnodyne @ SerrePositivity/KST/Fibration/CoreFactorization.lean:58",
+      "declaration": "SerrePositivity.KST.Fibration.exists_extension_of_innerAnodyne",
+      "source": "SerrePositivity/KST/Fibration/CoreFactorization.lean",
+      "source_line": "58",
+      "module": "SerrePositivity.KST.Fibration.CoreFactorization",
+      "preparation": "ready"
+    },
+    {
+      "id": "dc879939309f0656f3e8",
+      "raw": "SSet.innerAnodyneExtensions_pushoutObjObjι @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:97",
+      "declaration": "SSet.innerAnodyneExtensions_pushoutObjObjι",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "source_line": "97",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "preparation": "ready"
+    },
+    {
+      "id": "ac778db7e631b258c3b8",
+      "raw": "SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialSpineInnerAnodyne.lean:114",
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_isPrecompositionEquivalence",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialSpineInnerAnodyne.lean",
+      "source_line": "114",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne",
+      "preparation": "ready"
+    },
+    {
+      "id": "ebb849ed9047d45f0eed",
+      "raw": "SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_innerAnodyne @ SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialSpineInnerAnodyne.lean:107",
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.sequentialSpine_inclusion_innerAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialSpineInnerAnodyne.lean",
+      "source_line": "107",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne",
+      "preparation": "ready"
+    },
+    {
+      "id": "760fc7090c9fb9688805",
+      "raw": "SSet.innerAnodyneExtensions_pushoutObjObjι' @ Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:107",
+      "declaration": "SSet.innerAnodyneExtensions_pushoutObjObjι'",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+      "source_line": "107",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "preparation": "ready"
+    },
+    {
+      "id": "b5f4835594b611bddd79",
+      "raw": "CategoryTheory.Nerve.isStrictSegal @ Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean:532",
+      "declaration": "CategoryTheory.Nerve.isStrictSegal",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+      "source_line": "532",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+      "preparation": "ready"
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.Basic",
+      "references": [
+        "7e1b1b051ddd6fabcedc"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated",
+      "references": [
+        "e702a31ba043f022adbb",
+        "bb3fc028c5740c5ab004",
+        "d6178652396836a4bf58",
+        "db3b2baf65d03294646b",
+        "c63c0c319be71df26ace",
+        "848426ed77035b57c1ae",
+        "4c69101d9eb6dc533fda",
+        "5e599bfc33fa3f11cc21",
+        "58536d484b9fad263686"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+      "references": [
+        "ba603b9a22ef9fda2603",
+        "d4c9a871063d4f92ff73",
+        "b67cbf99397c22c07a81"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "references": [
+        "962b070763db819ff210",
+        "deaee72678fcdab78d6c",
+        "6c70085b78e46f2735b0"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "references": [
+        "f0b3fedf5a4efdb77be7",
+        "3458260f82a8d5ff6b5b",
+        "c2bc72d8fcb30c6b1a8a",
+        "e9abaa1e3cffeae80d97"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+      "references": [
+        "3fb3dbabdf9c6a6525ae",
+        "7d993f1e60d85f52d7a7"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "references": [
+        "a46f8d4e3fdf3149036f",
+        "dbffd3d2b16ce49113ec",
+        "06c7c90d210765884f93",
+        "c9b138c684e73e3c388b",
+        "251722d47946af71bfa5",
+        "4014a62afaf8c528d133"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+      "references": [
+        "3f74baa979209f5cbd8d",
+        "b8967118fe951d4191f4",
+        "35139632064ab5573d92"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SingularSet",
+      "references": [
+        "48a19a5040d50f04faa3",
+        "0983ea1f05202a7ea480",
+        "2fa0ccd12989da0a34de",
+        "a4cc0c9943ad3a4e96f0"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge",
+      "references": [
+        "d43ada9d7c667f43bc69"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap",
+      "references": [
+        "7c48e846e15dc2cbcdf7"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence",
+      "references": [
+        "cfd31ad46ab3965bddd1"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.OuterHornConverse",
+      "references": [
+        "09c9bfbe849c76a31e65"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Terminal",
+      "references": [
+        "e97aae2450bd02bc6c27",
+        "8f583a6f07f1517c9222",
+        "374ef9a1a2a3c9469304"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Supply.SequentialSpineInnerAnodyne",
+      "references": [
+        "ac778db7e631b258c3b8",
+        "ebb849ed9047d45f0eed"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.FundamentalGroupoidComparison",
+      "references": [
+        "f2abc8d780580e05c650"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Category.MonCat.Basic",
+      "references": [
+        "297d06dccc3f29dee9c1"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Hom.Defs",
+      "references": [
+        "7ca80150ad0100ca662e"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Monoid",
+      "references": [
+        "ee4ef0364c6d367f8d1c"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Semigroup",
+      "references": [
+        "0fe0c92fdc9826bfa40f"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+      "references": [
+        "e6932f8b68018c7b63a4"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal",
+      "references": [
+        "6cdde01e131c172c5aab"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+      "references": [
+        "503ae7eb3c8875b9eeb2",
+        "eefab92c0d84879aeeae"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "references": [
+        "42b2e8507447507bf69c"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic",
+      "references": [
+        "2a93149d24a10dd10b5c"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory",
+      "references": [
+        "86ea0f1debe7205ac667"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "references": [
+        "b9ec650b108882ad6965",
+        "5065e56c798a754c62d3",
+        "84989a88142e97458009",
+        "432d340271de82171995"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "references": [
+        "dc879939309f0656f3e8",
+        "760fc7090c9fb9688805"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+      "references": [
+        "71b61095b665055fe22c",
+        "61c3da44092189f063a9",
+        "07fad45670ebdc0867a3"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+      "references": [
+        "4d58947ca081a455aba9"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+      "references": [
+        "4cbf41ab126116b4628e",
+        "24f09c0a4130cfbd7375",
+        "7f98c087ee3586658351",
+        "2587e5896b59b536f64d",
+        "8202e69032741faea4ed",
+        "90cc8ee2d1393bed8213",
+        "1ebef155602fc967b310",
+        "4525c7b871fc7d9e3b53",
+        "dfa01125d74fa9fb66a5"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+      "references": [
+        "619ae97ebabd7ec4544f",
+        "8418573d2e0acd2d2ab3",
+        "51286d93e3549633bc04",
+        "4d6463ee55660cc8b06d"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+      "references": [
+        "736b38fa234bbdaa07a1",
+        "00f44f5fd6421a8a0244"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "references": [
+        "5f6ffe1332c49e7b3f0c",
+        "c5e27a11c12ad92edfa1",
+        "a79d7e9ad83421c9bedd",
+        "6ad80bd34ae0f6ad28e5",
+        "b43554e25e6fefee4a55",
+        "18c13510a58fb3d9e35b"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+      "references": [
+        "dac87d976482b618124a",
+        "7cf6b0b52779c8f3fa1c"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+      "references": [
+        "c1ee5d5582dcd2c2c881",
+        "7548586fdaed2975cf5e"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+      "references": [
+        "79006bbd9681e5936f55",
+        "7fec2710febded228695",
+        "5532adb624425a32a327"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "references": [
+        "6699e2d7568af8d12c3a",
+        "d89c631738c0de1670e9",
+        "858550161dca9486fbaf",
+        "f49667e2f2f70a54c536",
+        "e569b9a2898481e53fb0",
+        "40dce5e2106739938e9c",
+        "b084494812bd14214e6c",
+        "acd3ef192a44bb11a7e7"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit",
+      "references": [
+        "3ef17833566dab4adc51"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Op",
+      "references": [
+        "5ec66b6c4e37897457fe"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+      "references": [
+        "5c03c05c451ab3c003e8",
+        "7e47006410818b964d14",
+        "55af8276667dc15478a4",
+        "1321357adfbe0bd24020",
+        "9ccce38f4dbf8a1fa283"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Simplices",
+      "references": [
+        "1ffdc2d5345219b85a86"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+      "references": [
+        "f2a0fc66c8a534ab2c21",
+        "a5a895f88482be265e48",
+        "b5f4835594b611bddd79"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.TopologicalSimplex",
+      "references": [
+        "5bdf19de0619c2b60792"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Adjunction.Evaluation",
+      "references": [
+        "94c31683eb9940191ab2"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.CommSq",
+      "references": [
+        "12189b3ce7282a7770f1",
+        "43822067e8fa41a31955"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Core",
+      "references": [
+        "a912ccff62f3f4ae5e4d"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Elements",
+      "references": [
+        "1350f41704202aaddb5f"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "references": [
+        "a36820d8443eb15acb24"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Groupoid",
+      "references": [
+        "873bea49fc062c7a75d6",
+        "30adb32ef66a49c22455"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.LiftingProperties.Basic",
+      "references": [
+        "e32190bf36b7cc407a8e"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Limits.HasLimits",
+      "references": [
+        "c8cdaed1aebf4db0872f"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Limits.IsConnected",
+      "references": [
+        "207930ef1c98d11112ac"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Limits.Presheaf",
+      "references": [
+        "572fd89dec3b23cdb2f8",
+        "f15a938c7767094980fa"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+      "references": [
+        "bff2707c3ae26116336e",
+        "ce9be6ca56d446a8c289",
+        "ee3cfe9e13b73cbb4211"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "references": [
+        "d3f4fedd54095df63009",
+        "3fa20ebf8e7b78f05eb2",
+        "304e3c56dd341ad2e568"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.MorphismProperty.Limits",
+      "references": [
+        "b9e536c7e7688a42ad88"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.MorphismProperty.Retract",
+      "references": [
+        "9306d262c83a5157382b"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+      "references": [
+        "72187892bcea5da40039",
+        "f930ecedf325561a9722",
+        "74c5875720bec9b34f52"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.PathCategory.Basic",
+      "references": [
+        "a3748d150fa938c436b6",
+        "310e8ad029b6d029d525"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Retract",
+      "references": [
+        "d048b42bedf3c9aa7341",
+        "edc8da4d88f5815c7f27"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "references": [
+        "a7b8f23b3d18ecaa263e"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting",
+      "references": [
+        "1213a7918f8f46ef2aa9"
+      ]
+    },
+    {
+      "module": "Mathlib.Combinatorics.Quiver.Basic",
+      "references": [
+        "7d2e6d3f593a3eb7ab95"
+      ]
+    },
+    {
+      "module": "Mathlib.Combinatorics.Quiver.Prefunctor",
+      "references": [
+        "ec9948f8fc348fe5c99c"
+      ]
+    },
+    {
+      "module": "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "references": [
+        "a5384a06451f03cc5e95"
+      ]
+    },
+    {
+      "module": "Mathlib.Order.Category.NonemptyFinLinOrd",
+      "references": [
+        "4426c82a332cafba6041",
+        "44c2b711df471678c06c"
+      ]
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence",
+      "references": [
+        "62d6ca8e193ae0d13af6"
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+      "references": [
+        "61161473149d9b6b67a6"
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction",
+      "references": [
+        "c7a84e9b70f483204be6",
+        "aea7c3583b285d9fb858"
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+      "references": [
+        "032b89c517ae815dfbf7"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy",
+      "references": [
+        "1c5d2f23f6f41a4912f8"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Checks",
+      "references": [
+        "6d2d4128cb6066cb1a6c"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+      "references": [
+        "81dc83bd416173843b4b",
+        "855593cfb56b0b3a8883",
+        "1b86e5b3677519ba78ae"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+      "references": [
+        "a460e4e24309c2216bc4",
+        "b840a8bc66b8c69e8f33"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+      "references": [
+        "e8c9da8d9b582cb80a82",
+        "9376fa374abfbdcb8490"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "references": [
+        "48b89f6e27689a84812b",
+        "f4c90890fce69c68bae8"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "references": [
+        "15ba8e608d3d77af1ef9",
+        "8d63ba0ebc4b8c1b5574"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace",
+      "references": [
+        "f4cb22990af395f242b4"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration",
+      "references": [
+        "5a0e60ed4f1ca6a6b8da"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Transport.WitnessPushoutContractible",
+      "references": [
+        "76ec7d90ddbc7ecfdffa"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.FunctorCategory",
+      "references": [
+        "770262bf822b744bc1c4",
+        "a4a883502e60589059db"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+      "references": [
+        "619adf49d44faff247df"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "references": [
+        "5a067507f630a77f1833"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "references": [
+        "858bb97235329e133ef2",
+        "d70d2741bdcb8ddf3e30"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "references": [
+        "ec87591f42bac071d815",
+        "244324dc18343dce50d5",
+        "c94870e73aa2cb4be56e",
+        "9e22172e3840feedadcf"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "references": [
+        "dc1ad118c60844fc6fdc"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "references": [
+        "59b12ff3f31114bddb85"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Comparison.ComponentSubcomplex",
+      "references": [
+        "c38202e130fe14586e91",
+        "d5bd1e49d4736626fc3c"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Comparison.SimplicialRingKan",
+      "references": [
+        "79679a54af5015d3c180"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.CoreFactorization",
+      "references": [
+        "702015db4509c8761c3e"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.SConstruction.STrivialFibration",
+      "references": [
+        "1aecd37cf38df5276fcc"
+      ]
+    }
+  ]
+}

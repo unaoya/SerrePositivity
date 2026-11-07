@@ -1,0 +1,637 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "items": [
+    {
+      "number": "b9ec650b108882ad6965",
+      "status": "probe",
+      "references": [
+        "c6849ad60ee79e8a0c42"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "5065e56c798a754c62d3",
+      "status": "probe",
+      "references": [
+        "2d16a6c8ebcf9f09267f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "84989a88142e97458009",
+      "status": "probe",
+      "references": [
+        "d32bb9a1505965fa6c42"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "432d340271de82171995",
+      "status": "probe",
+      "references": [
+        "90c26af7f3a4ee234a1f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "251722d47946af71bfa5",
+      "status": "probe",
+      "references": [
+        "85419d5f670626b926d6"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "a36820d8443eb15acb24",
+      "status": "probe",
+      "references": [
+        "fb0d1567a963c44a3237"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "ec87591f42bac071d815",
+      "status": "probe",
+      "references": [
+        "a32f4344a2bdca2bb924"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "244324dc18343dce50d5",
+      "status": "probe",
+      "references": [
+        "f1a79ae9ec38f0dda351"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "c94870e73aa2cb4be56e",
+      "status": "probe",
+      "references": [
+        "31bd796a2a1fdc4154bb"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "9e22172e3840feedadcf",
+      "status": "probe",
+      "references": [
+        "d927778a8e1f110313b9"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "032b89c517ae815dfbf7",
+      "status": "probe",
+      "references": [
+        "deca0d392598695f6294"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "858bb97235329e133ef2",
+      "status": "probe",
+      "references": [
+        "98d9d91a8ec54e3be0b5"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "d70d2741bdcb8ddf3e30",
+      "status": "probe",
+      "references": [
+        "5dc754979e3bf4733e6c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "5a067507f630a77f1833",
+      "status": "probe",
+      "references": [
+        "8cc069f12c6f7dfe75cd"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "59b12ff3f31114bddb85",
+      "status": "probe",
+      "references": [
+        "6d48362649660e9a6bfb"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "d89c631738c0de1670e9",
+      "status": "probe",
+      "references": [
+        "0ba30644db330d10d5a2"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "858550161dca9486fbaf",
+      "status": "probe",
+      "references": [
+        "aab363289a3ceebc5f1c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "f49667e2f2f70a54c536",
+      "status": "probe",
+      "references": [
+        "6699e2d7568af8d12c3a"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "e8c9da8d9b582cb80a82",
+      "status": "probe",
+      "references": [
+        "9376fa374abfbdcb8490"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "e569b9a2898481e53fb0",
+      "status": "probe",
+      "references": [
+        "64e3a13ed1f4f60be9be"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "40dce5e2106739938e9c",
+      "status": "probe",
+      "references": [
+        "f26c6e33507fef0787cf"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "48b89f6e27689a84812b",
+      "status": "probe",
+      "references": [
+        "1c36e4f7adc520f5705d"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "f4c90890fce69c68bae8",
+      "status": "probe",
+      "references": [
+        "30fe4b1cb16f262acf3f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1c5d2f23f6f41a4912f8",
+      "status": "probe",
+      "references": [
+        "9e589c7106ca8476804c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "18c13510a58fb3d9e35b",
+      "status": "probe",
+      "references": [
+        "a79d7e9ad83421c9bedd"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "7c48e846e15dc2cbcdf7",
+      "status": "probe",
+      "references": [
+        "ebee7e506d7f68ab9b04"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "b084494812bd14214e6c",
+      "status": "probe",
+      "references": [
+        "c8b1834b1d37cf27388c"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "acd3ef192a44bb11a7e7",
+      "status": "probe",
+      "references": [
+        "65f0076f50e2baa668cb"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "f4cb22990af395f242b4",
+      "status": "probe",
+      "references": [
+        "9fc7823bb819686f4ec2"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1.2.5.10-extra",
+      "status": "probe",
+      "references": [
+        "26429182876d1d174bbd"
+      ],
+      "priority": ""
+    }
+  ],
+  "references": [
+    {
+      "id": "c6849ad60ee79e8a0c42",
+      "raw": "CategoryTheory.SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48",
+      "declaration": "CategoryTheory.SimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "48",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "2d16a6c8ebcf9f09267f",
+      "raw": "CategoryTheory.CosimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:527",
+      "declaration": "CategoryTheory.CosimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "527",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "d32bb9a1505965fa6c42",
+      "raw": "CategoryTheory.SimplicialObject.δ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:87",
+      "declaration": "CategoryTheory.SimplicialObject.δ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "87",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "90c26af7f3a4ee234a1f",
+      "raw": "CategoryTheory.SimplicialObject.σ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:93",
+      "declaration": "CategoryTheory.SimplicialObject.σ",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "source_line": "93",
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "preparation": "ready"
+    },
+    {
+      "id": "85419d5f670626b926d6",
+      "raw": "SSet.relativeCellComplexOfMono.isPushout @ Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean:395",
+      "declaration": "SSet.relativeCellComplexOfMono.isPushout",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean",
+      "source_line": "395",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "preparation": "ready"
+    },
+    {
+      "id": "fb0d1567a963c44a3237",
+      "raw": "CategoryTheory.Functor.const @ Mathlib/CategoryTheory/Functor/Const.lean",
+      "declaration": "CategoryTheory.Functor.const",
+      "source": "Mathlib/CategoryTheory/Functor/Const.lean",
+      "source_line": "",
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "preparation": "ready"
+    },
+    {
+      "id": "a32f4344a2bdca2bb924",
+      "raw": "SerrePositivity.SimplicialModel.PiZeroConstant.discrete @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:48",
+      "declaration": "SerrePositivity.SimplicialModel.PiZeroConstant.discrete",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "48",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "f1a79ae9ec38f0dda351",
+      "raw": "SerrePositivity.SimplicialModel.PiZeroConstant.homEquiv @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:121",
+      "declaration": "SerrePositivity.SimplicialModel.PiZeroConstant.homEquiv",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "121",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "31bd796a2a1fdc4154bb",
+      "raw": "SerrePositivity.SimplicialModel.PiZeroConstant.component @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:82",
+      "declaration": "SerrePositivity.SimplicialModel.PiZeroConstant.component",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "82",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "d927778a8e1f110313b9",
+      "raw": "SerrePositivity.SimplicialModel.PiZeroConstant.fromComponents @ SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean:96",
+      "declaration": "SerrePositivity.SimplicialModel.PiZeroConstant.fromComponents",
+      "source": "SerrePositivity/InfinityCategories/Kan/PiZeroConstant.lean",
+      "source_line": "96",
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "preparation": "ready"
+    },
+    {
+      "id": "deca0d392598695f6294",
+      "raw": "SerrePositivity.SimplicialModel.PiZeroLocalization.classEquiv @ SerrePositivity/HomotopicalAlgebra/Simplicial/PiZeroLocalization.lean:47",
+      "declaration": "SerrePositivity.SimplicialModel.PiZeroLocalization.classEquiv",
+      "source": "SerrePositivity/HomotopicalAlgebra/Simplicial/PiZeroLocalization.lean",
+      "source_line": "47",
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+      "preparation": "ready"
+    },
+    {
+      "id": "98d9d91a8ec54e3be0b5",
+      "raw": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk_eq_iff @ SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean:128",
+      "declaration": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk_eq_iff",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean",
+      "source_line": "128",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "preparation": "ready"
+    },
+    {
+      "id": "5dc754979e3bf4733e6c",
+      "raw": "SerrePositivity.InfinityCategories.Kan.ZeroRelations.equivalence @ SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean:117",
+      "declaration": "SerrePositivity.InfinityCategories.Kan.ZeroRelations.equivalence",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyZeroRelations.lean",
+      "source_line": "117",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "preparation": "ready"
+    },
+    {
+      "id": "8cc069f12c6f7dfe75cd",
+      "raw": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero @ SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean:33",
+      "declaration": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean",
+      "source_line": "33",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "preparation": "ready"
+    },
+    {
+      "id": "6d48362649660e9a6bfb",
+      "raw": "SerrePositivity.KST.Comparison.monoidWordSimplex @ SerrePositivity/KST/Comparison/BarSegal.lean:40",
+      "declaration": "SerrePositivity.KST.Comparison.monoidWordSimplex",
+      "source": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "source_line": "40",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "preparation": "ready"
+    },
+    {
+      "id": "0ba30644db330d10d5a2",
+      "raw": "CategoryTheory.nerveFunctor.full @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:398",
+      "declaration": "CategoryTheory.nerveFunctor.full",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "398",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "aab363289a3ceebc5f1c",
+      "raw": "CategoryTheory.nerveFunctor.faithful @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:395",
+      "declaration": "CategoryTheory.nerveFunctor.faithful",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "395",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "6699e2d7568af8d12c3a",
+      "raw": "CategoryTheory.nerveFunctor.fullyfaithful @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:402",
+      "declaration": "CategoryTheory.nerveFunctor.fullyfaithful",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "402",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "9376fa374abfbdcb8490",
+      "raw": "SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid @ SerrePositivity/InfinityCategories/Core/KanCharacterization.lean:73",
+      "declaration": "SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid",
+      "source": "SerrePositivity/InfinityCategories/Core/KanCharacterization.lean",
+      "source_line": "73",
+      "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+      "preparation": "ready"
+    },
+    {
+      "id": "64e3a13ed1f4f60be9be",
+      "raw": "CategoryTheory.nerveFunctorCompHoFunctorIso @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:410",
+      "declaration": "CategoryTheory.nerveFunctorCompHoFunctorIso",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "410",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "f26c6e33507fef0787cf",
+      "raw": "CategoryTheory.nerveAdjunction @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:389",
+      "declaration": "CategoryTheory.nerveAdjunction",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "389",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "1c36e4f7adc520f5705d",
+      "raw": "SerrePositivity.InfinityCategories.quasicategory_op @ SerrePositivity/InfinityCategories/Core/Opposite.lean:79",
+      "declaration": "SerrePositivity.InfinityCategories.quasicategory_op",
+      "source": "SerrePositivity/InfinityCategories/Core/Opposite.lean",
+      "source_line": "79",
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "preparation": "ready"
+    },
+    {
+      "id": "30fe4b1cb16f262acf3f",
+      "raw": "SerrePositivity.InfinityCategories.hornReverseIso @ SerrePositivity/InfinityCategories/Core/Opposite.lean:38",
+      "declaration": "SerrePositivity.InfinityCategories.hornReverseIso",
+      "source": "SerrePositivity/InfinityCategories/Core/Opposite.lean",
+      "source_line": "38",
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "preparation": "ready"
+    },
+    {
+      "id": "9e589c7106ca8476804c",
+      "raw": "SerrePositivity.InfinityCategories.exists_arrowHomotopy_of_homMk_comm @ SerrePositivity/InfinityCategories/Core/ArrowSquareHomotopy.lean:49",
+      "declaration": "SerrePositivity.InfinityCategories.exists_arrowHomotopy_of_homMk_comm",
+      "source": "SerrePositivity/InfinityCategories/Core/ArrowSquareHomotopy.lean",
+      "source_line": "49",
+      "module": "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy",
+      "preparation": "ready"
+    },
+    {
+      "id": "a79d7e9ad83421c9bedd",
+      "raw": "SSet.hoFunctor @ Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean:609",
+      "declaration": "SSet.hoFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/HomotopyCat.lean",
+      "source_line": "609",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "preparation": "ready"
+    },
+    {
+      "id": "ebee7e506d7f68ab9b04",
+      "raw": "SerrePositivity.InfinityCategories.HomotopyCategoryMap.bridge_naturality @ SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean:64",
+      "declaration": "SerrePositivity.InfinityCategories.HomotopyCategoryMap.bridge_naturality",
+      "source": "SerrePositivity/InfinityCategories/Core/HomotopyCategoryMap.lean",
+      "source_line": "64",
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap",
+      "preparation": "ready"
+    },
+    {
+      "id": "c8b1834b1d37cf27388c",
+      "raw": "SSet.hoFunctor.preservesFiniteProducts @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:479",
+      "declaration": "SSet.hoFunctor.preservesFiniteProducts",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "479",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "65f0076f50e2baa668cb",
+      "raw": "SSet.hoFunctor.isIso_prodComparison @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:458",
+      "declaration": "SSet.hoFunctor.isIso_prodComparison",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "458",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "9fc7823bb819686f4ec2",
+      "raw": "SerrePositivity.InfinityCategories.compositionTriangleSpace_isContractibleKan @ SerrePositivity/InfinityCategories/F1/Diagrams/CompositionTriangleSpace.lean:63",
+      "declaration": "SerrePositivity.InfinityCategories.compositionTriangleSpace_isContractibleKan",
+      "source": "SerrePositivity/InfinityCategories/F1/Diagrams/CompositionTriangleSpace.lean",
+      "source_line": "63",
+      "module": "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace",
+      "preparation": "ready"
+    },
+    {
+      "id": "26429182876d1d174bbd",
+      "raw": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero @ SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean:51",
+      "declaration": "SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero",
+      "source": "SerrePositivity/InfinityCategories/Kan/HomotopyDegreeZero.lean",
+      "source_line": "51",
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "preparation": "ready"
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialObject.Basic",
+      "references": [
+        "c6849ad60ee79e8a0c42",
+        "2d16a6c8ebcf9f09267f",
+        "d32bb9a1505965fa6c42",
+        "90c26af7f3a4ee234a1f"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+      "references": [
+        "85419d5f670626b926d6"
+      ]
+    },
+    {
+      "module": "Mathlib.CategoryTheory.Functor.Const",
+      "references": [
+        "fb0d1567a963c44a3237"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant",
+      "references": [
+        "a32f4344a2bdca2bb924",
+        "f1a79ae9ec38f0dda351",
+        "31bd796a2a1fdc4154bb",
+        "d927778a8e1f110313b9"
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+      "references": [
+        "deca0d392598695f6294"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations",
+      "references": [
+        "98d9d91a8ec54e3be0b5",
+        "5dc754979e3bf4733e6c"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero",
+      "references": [
+        "8cc069f12c6f7dfe75cd",
+        "26429182876d1d174bbd"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "references": [
+        "6d48362649660e9a6bfb"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "references": [
+        "0ba30644db330d10d5a2",
+        "aab363289a3ceebc5f1c",
+        "6699e2d7568af8d12c3a",
+        "64e3a13ed1f4f60be9be",
+        "f26c6e33507fef0787cf",
+        "c8b1834b1d37cf27388c",
+        "65f0076f50e2baa668cb"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.KanCharacterization",
+      "references": [
+        "9376fa374abfbdcb8490"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Opposite",
+      "references": [
+        "1c36e4f7adc520f5705d",
+        "30fe4b1cb16f262acf3f"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy",
+      "references": [
+        "9e589c7106ca8476804c"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+      "references": [
+        "a79d7e9ad83421c9bedd"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap",
+      "references": [
+        "ebee7e506d7f68ab9b04"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleSpace",
+      "references": [
+        "9fc7823bb819686f4ec2"
+      ]
+    }
+  ],
+  "purpose": "手動補正候補。元表と章CSVの判定とは別。"
+}

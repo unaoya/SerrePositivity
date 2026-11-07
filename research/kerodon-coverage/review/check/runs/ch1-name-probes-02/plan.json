@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "provenance": {
+    "commit": "81331dffe2771f549dcf6262741a8c7229e42b81",
+    "lean_source_changes": "",
+    "items_sha256": "e599f02cdb3ec5ace0bae89a7fb2dcc5cffb7f39b35764633391d10f2238d9bc",
+    "targets_sha256": "1c63ea5070aaac9b83643989e24776576975cad6581a606a60aa570e5531dfc8",
+    "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "script_sha256": "a102e42e867ed4266532c9f1d726f36a979cca9b311d6419f7d2ba01e6139b24"
+  },
+  "chapters": [
+    1
+  ],
+  "references": [
+    {
+      "id": "5f96c32c0cf2d465477b",
+      "raw": "CategoryTheory.hoFunctor.preservesFiniteProducts @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:479",
+      "declaration": "CategoryTheory.hoFunctor.preservesFiniteProducts",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "479",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "dd2760af520f48d07b16",
+      "raw": "CategoryTheory.hoFunctor.isIso_prodComparison @ Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean:458",
+      "declaration": "CategoryTheory.hoFunctor.isIso_prodComparison",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/NerveAdjunction.lean",
+      "source_line": "458",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "preparation": "ready"
+    },
+    {
+      "id": "21ff4fb7e4cc3459f3c4",
+      "raw": "SerrePositivity.InfinityCategories.BoundaryFaceCompatible @ SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean:39",
+      "declaration": "SerrePositivity.InfinityCategories.BoundaryFaceCompatible",
+      "source": "SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean",
+      "source_line": "39",
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "preparation": "ready"
+    },
+    {
+      "id": "89b31facff48885ab528",
+      "raw": "SerrePositivity.InfinityCategories.boundaryFaceGluing @ SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean:57",
+      "declaration": "SerrePositivity.InfinityCategories.boundaryFaceGluing",
+      "source": "SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean",
+      "source_line": "57",
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "preparation": "ready"
+    },
+    {
+      "id": "5a95b21c39add47efe1f",
+      "raw": "SerrePositivity.InfinityCategories.thinNerve_hom_ext_horn @ SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean:46",
+      "declaration": "SerrePositivity.InfinityCategories.thinNerve_hom_ext_horn",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/ThinNerveInnerFibration.lean",
+      "source_line": "46",
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration",
+      "preparation": "ready"
+    },
+    {
+      "id": "1c4900bd9bca1a60c9a4",
+      "raw": "SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex @ SerrePositivity/InfinityCategories/Stable/CoreFlag/GroupNerveHomotopy.lean:48",
+      "declaration": "SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.groupoidNerve_kanComplex",
+      "source": "SerrePositivity/InfinityCategories/Stable/CoreFlag/GroupNerveHomotopy.lean",
+      "source_line": "48",
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "preparation": "ready"
+    },
+    {
+      "id": "a46cca3855d5e116f6b2",
+      "raw": "SimplexCategory.mk @ Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean:50",
+      "declaration": "SimplexCategory.mk",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Defs.lean",
+      "source_line": "50",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "preparation": "ready"
+    }
+  ],
+  "items": [
+    {
+      "number": "5f96c32c0cf2d465477b",
+      "status": "probe",
+      "references": [
+        "5f96c32c0cf2d465477b"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "dd2760af520f48d07b16",
+      "status": "probe",
+      "references": [
+        "dd2760af520f48d07b16"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "21ff4fb7e4cc3459f3c4",
+      "status": "probe",
+      "references": [
+        "21ff4fb7e4cc3459f3c4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "89b31facff48885ab528",
+      "status": "probe",
+      "references": [
+        "89b31facff48885ab528"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "5a95b21c39add47efe1f",
+      "status": "probe",
+      "references": [
+        "5a95b21c39add47efe1f"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "1c4900bd9bca1a60c9a4",
+      "status": "probe",
+      "references": [
+        "1c4900bd9bca1a60c9a4"
+      ],
+      "priority": ""
+    },
+    {
+      "number": "a46cca3855d5e116f6b2",
+      "status": "probe",
+      "references": [
+        "a46cca3855d5e116f6b2"
+      ],
+      "priority": ""
+    }
+  ],
+  "jobs": [
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+      "references": [
+        "5f96c32c0cf2d465477b",
+        "dd2760af520f48d07b16"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.BoundaryFaceGluing",
+      "references": [
+        "21ff4fb7e4cc3459f3c4",
+        "89b31facff48885ab528"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.ThinNerveInnerFibration",
+      "references": [
+        "5a95b21c39add47efe1f"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "references": [
+        "1c4900bd9bca1a60c9a4"
+      ]
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "references": [
+        "a46cca3855d5e116f6b2"
+      ]
+    }
+  ],
+  "purpose": "ソースから確認した名前訂正の追加検査"
+}

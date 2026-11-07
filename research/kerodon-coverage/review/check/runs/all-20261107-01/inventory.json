@@ -1,0 +1,16 @@
+{
+  "items": 3553,
+  "items_with_references": 1672,
+  "occurrences": 2880,
+  "unique_references": 2108,
+  "ready_references": 1997,
+  "unresolved_references": 111,
+  "modules": 1144,
+  "status": {
+    "mathlib": 255,
+    "partial": 831,
+    "none": 1947,
+    "own": 499,
+    "both": 21
+  }
+}
