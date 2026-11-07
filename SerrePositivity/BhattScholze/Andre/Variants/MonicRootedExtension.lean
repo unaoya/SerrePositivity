@@ -41,13 +41,13 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparis
 
 ## 概要
 
-BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の正次数モニック族の根付き p 完全忠実平坦 perfectoid 拡大の証明を集約する。
+BS 著者版 Theorem 7.14（著者版 p.61）、BS 著者版 Remark 7.15（p.62）の正次数モニック族の根付き p 完全忠実平坦 perfectoid 拡大の証明を集約する。
 
 ## 方針
 
 通常のモニック商の自由性と独立変数の関係式の正則性から準備し、
 任意の関係族の δ 除算から perfectoid 根候補を構成する。
-原典の Prop 7.11 を使う経路とは異なる実 PD 計算と具体的係数比較による構成を使う。
+原典の BS 著者版 Proposition 7.11 を使う経路とは異なる実 PD 計算と具体的係数比較による構成を使う。
 
 ## 規約
 

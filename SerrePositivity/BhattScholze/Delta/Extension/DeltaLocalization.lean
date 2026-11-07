@@ -4,7 +4,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.RingTheory.Localization.Basic
 
 /-!
-# δ 構造の局所化への延長（BS 著者版 Lemma 2.15、Rem 2.16）
+# δ 構造の局所化への延長（BS 著者版 Lemma 2.15、BS 著者版 Remark 2.16）
 
 ## 概要
 Frobenius 安定な乗法集合での局所化に δ 構造が一意に延び、普遍性を持つ。任意の分母集合はその Frobenius 像で安定化する。
@@ -16,7 +16,7 @@ W₂ の元が単元 ⇔ 第 0 座標と第 1 ghost 成分が単元、を使っ�
 p ねじれを許す。
 
 ## 使われ方
-今は主定理の経路にない。Ex 2.21（A1）で使う予定。
+今は主定理の経路にない。BS 著者版 Example 2.21（A1）で使う予定。
 -/
 
 @[expose] public noncomputable section
@@ -24,7 +24,7 @@ universe u v w
 
 /-! ## Frobenius安定な乗法集合におけるδ局所化（旧 Delta/Extension/DeltaLocalization.lean）
 
-BS著者公開版Lemma 2.15。W₂切断と二成分の単元判定で、pねじれのある環も
+BS 著者版 Lemma 2.15。W₂切断と二成分の単元判定で、pねじれのある環も
 直接扱う。基底のp正則性を追加せず、Mathlibの局所化の普遍性を再利用する。
 -/
 
@@ -72,7 +72,7 @@ theorem localizationSection_projection :
     DFunLike.congr_fun (D.localizationSection_comp M B hφ) r]
   simp [D.coeff_zero]
 
-/-- Frobenius安定な分母集合による局所化のδ構造。 -/
+/-- Frobenius安定な分母集合による局所化のδ構造（BS 著者版 Lemma 2.15 の構造の構成）。 -/
 def localization : DeltaStructure p B where
   sectionHom := D.localizationSection M B hφ
   coeff_zero := by
@@ -95,13 +95,13 @@ theorem localization_unique (E : DeltaStructure p B)
   intro x
   exact congrArg (fun y : WittTwo p B ↦ y.coeff 1) (DFunLike.congr_fun hs x)
 
-/-- Frobenius安定な集合での局所化は一意な適合δ構造を持つ。 -/
+/-- Frobenius安定な集合での局所化は一意な適合δ構造を持つ（BS 著者版 Lemma 2.15 の第一文の存在一意性）。 -/
 theorem existsUnique_localization :
     ∃! E : DeltaStructure p B, D.IsDeltaHom E (algebraMap R B) :=
   ⟨D.localization M B hφ, D.isDeltaHom_localization M B hφ,
     fun E hE ↦ D.localization_unique M B hφ E hE⟩
 
-/-- Mの元を単元に送るδ射は、局所化から一意なδ射へ延長する。 -/
+/-- Mの元を単元に送るδ射は、局所化から一意なδ射へ延長する（BS 著者版 Lemma 2.15 の第二文の普遍性）。 -/
 theorem existsUnique_localization_lift {A : Type w} [CommRing A]
     (E : DeltaStructure p A) (f : R →+* A) (hf : D.IsDeltaHom E f)
     (hM : ∀ s : M, IsUnit (f s)) :
@@ -134,7 +134,7 @@ end DeltaLocalization
 
 /-! ## 任意の分母集合のFrobenius安定化（旧 Delta/Extension/DeltaLocalizationSaturation.lean）
 
-著者公開版Remark 2.16のT={S,φ(S),φ²(S),…}の代数的構成。
+BS 著者版 Remark 2.16のT={S,φ(S),φ²(S),…}の代数的構成。
 Tでの局所化はSを単元に送るδ基底射について普遍である。
 p局所化・p完備化との比較は主張しない。
 -/
@@ -144,7 +144,7 @@ section DeltaLocalizationSaturation
 namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
 
-/-- 分母集合のFrobenius反復像を含む乗法的閉包。 -/
+/-- 分母集合のFrobenius反復像を含む乗法的閉包（BS 著者版 Remark 2.16 の Frobenius 飽和の部分）。 -/
 def frobeniusDenominators (D : DeltaStructure p R) (M : Submonoid R) : Submonoid R :=
   Submonoid.closure (Set.range (fun t : M × ℕ ↦ (D.frobeniusLift : R → R)^[t.2] t.1))
 
@@ -195,7 +195,7 @@ theorem IsDeltaHom.isUnit_frobeniusDenominators {A : Type w} [CommRing A]
     (by simp)
     (fun x y _ _ hx hy ↦ by rw [map_mul]; exact hx.mul hy) s.property
 
-/-- 任意のMを反復像で安定化して局所化すると、Mを単元に送るδ射の普遍対象となる。
+/-- 任意のMを反復像で安定化して局所化すると、Mを単元に送るδ射の普遍対象となる（BS 著者版 Remark 2.16 の Frobenius 飽和での普遍性）。
 源・標準射・局所化δ構造を具体的に明示する。 -/
 theorem existsUnique_saturatedLocalization_lift (D : DeltaStructure p R) (M : Submonoid R)
     (B : Type v) [CommRing B] [Algebra R B] [IsLocalization (D.frobeniusDenominators M) B]

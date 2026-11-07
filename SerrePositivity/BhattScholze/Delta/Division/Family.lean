@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaColimit
 
 ## 概要
 空の族の raw 包は元の δ 環であること、有限部分族の raw 包の有向系とその環余極限が全族の raw 包と δ 同型であること、再添字付けとその恒等・合成公式、同時の族の除算と二段の除算の標準同型。
+BS 著者版 Proposition 3.13 と Proposition 7.2 の包の構成に使う、δ 除算の族と有限部分族を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W9 で統合）。

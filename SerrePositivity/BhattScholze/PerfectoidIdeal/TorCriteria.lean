@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 ## 概要
 
 perfectoid イデアルの冪ねじれ Tor の入力（正の次数の Tor の係数作用の零化）について、互換根による同値（`perfectoidIdeal_powerTorsionTorInput_iff_compatible_roots`）、有限自由な almost 比較からの導出、環の引き戻しの四角（excision）に沿った移送（`perfectoidIdeal_TorInput_iff_of_isPullback`）を与える。
+BS 著者版 §10.1 の perfectoid 核による零化を、CLMST の Tor の入力に移す判定法を与える。
 
 ## 方針
 

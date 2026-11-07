@@ -18,11 +18,12 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-!
-# semiperfectoid 環の perfectoid 化は全射（BS 著者版 Thm 7.4）
+# semiperfectoid 環の perfectoid 化は全射（BS 著者版 Theorem 7.4）
 
 ## 概要
-導来 p 完備な perfectoid 環の全射商の任意の perfectoid 化は全射。原典どおり André の補題（Thm 7.14）で絶対整閉な perfectoid 環へ
+導来 p 完備な perfectoid 環の全射商の任意の perfectoid 化は全射。原典どおり André の補題（BS 著者版 Theorem 7.14）で絶対整閉な perfectoid 環へ
 p 完全忠実平坦に拡大し、根付き拡大での全射性を降下する。旧い適用形（p ねじれのない商）と全射の保存も含む。
+BS 著者版 Theorem 7.4 の全射性を述べる。原文の証明中の GR への引用は別文献の結果を指す。
 
 ## 方針
 核の元が互換 p 冪根を持つ場合の全射性、底変換、p 完全忠実平坦な降下を組み合わせる。
@@ -31,7 +32,7 @@ p 完全忠実平坦に拡大し、根付き拡大での全射性を降下する
 André を使わない旧証明は Semiperfectoid/RootEnvelope。
 
 ## 使われ方
-CLMST、Lemma 10.3、Prop 8.13 の環版。
+CLMST、Lemma 10.3、BS 著者版 Proposition 8.13 の環版。
 -/
 
 universe u
@@ -443,8 +444,8 @@ end RootedPerfectoidSurjectivityDescent
 
 /-! ## B4の一般全射性：André の補題による原典の証明（旧 Semiperfectoid/AndreSurjectivity.lean）
 
-André の補題（Thm 7.14、`Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、
-証明済み）による、原典の Thm 7.4 の証明。
+André の補題（BS 著者版 Theorem 7.14、`Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、
+証明済み）による、原典の BS 著者版 Theorem 7.4 の証明。
 絶対整閉な perfectoid 環への p 完全忠実平坦な拡大で全射性を得て、元の基底へ降下する。
 -/
 
@@ -452,7 +453,8 @@ André の補題（Thm 7.14、`Inputs.exists_completelyFaithfullyFlat_absolutely
 
 namespace SerrePositivity.BhattScholze
 
-/-- André の補題（Thm 7.14、証明済み）による、原典の Thm 7.4 の証明。
+/-- 半 perfectoid 商の普遍 perfectoid 化の単位は全射（BS 著者版 Theorem 7.4 の André の補題による証明、序論の Theorem 1.12 (2)）。
+方針：André の補題（BS 著者版 Theorem 7.14）で完全忠実平坦な試験拡大を取る。
 導来p完備な全射商の任意perfectoid化は全射であり、一般pねじれ商を含む。 -/
 theorem surjective_of_isPerfectoidization_of_andre
     (R S C : Type u) [CommRing R] [CommRing S] [CommRing C]
@@ -477,10 +479,10 @@ end AndreSurjectivity
 /-! ## B4：導来p完備なperfectoid環の全射商の普遍perfectoid化は全射（旧 Semiperfectoid/SemiperfectoidSurjectivity.lean）
 
 ## 概要
-BS 著者版 Thm 7.4。perfectoid 環 R の導来 p 完備な全射商 S の任意の perfectoid 化は全射。
+BS 著者版 Theorem 7.4。perfectoid 環 R の導来 p 完備な全射商 S の任意の perfectoid 化は全射。
 
 ## 方針
-原典どおり、André の補題（Thm 7.14、証明済み）で絶対整閉な perfectoid 環 T へ
+原典どおり、André の補題（BS 著者版 Theorem 7.14、証明済み）で絶対整閉な perfectoid 環 T へ
 p 完全忠実平坦に拡大する。T では核の全元が両立する p 冪根を持つので全射性が出て、
 それを R へ降下する（`Semiperfectoid/AndreSurjectivity`）。
 
@@ -501,7 +503,7 @@ namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {R S C : Type u}
 variable [CommRing R] [CommRing S] [CommRing C]
 
-/-- 任意perfectoid環の導来p完備な全射商の、任意の普遍perfectoid化は全射。
+/-- 任意perfectoid環の導来p完備な全射商の、任意の普遍perfectoid化は全射（BS 著者版 Theorem 7.4、序論の Theorem 1.12 (2)）。
 pねじれのない商・有限性・古典的完備性は仮定しない。証明は André の補題経由。 -/
 theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
@@ -509,7 +511,7 @@ theorem surjective_of_isPerfectoidization_of_semiperfectoid_quotient
     (f : S →+* C) (hf : IsPerfectoidization p f) : Function.Surjective f :=
   surjective_of_isPerfectoidization_of_andre R S C p hR q hq hS f hf
 
-/-- B3の一般存在・普遍性とB4により、一般の導来p完備商は全射perfectoid化を持つ。 -/
+/-- B3の一般存在・普遍性とB4により、一般の導来p完備商は全射perfectoid化を持つ（BS 著者版 Theorem 7.4 と Corollary 7.3 の第一文、序論の Theorem 1.12 (2)）。 -/
 theorem exists_surjective_perfectoidization_of_semiperfectoid_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
     (hS : DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
@@ -534,7 +536,7 @@ end SemiperfectoidSurjectivity
 
 /-! ## semiperfectoid全射性の証明済み互換入口（旧 Semiperfectoid/TorsionFreeQuotientSurjectivity.lean）
 
-Bhatt–Scholze著者公開版Corollary 7.3 / Theorem 7.4の、pねじれのない古典的p進完備商への旧適用形。
+BS 著者版 Corollary 7.3 / BS 著者版 Theorem 7.4の、pねじれのない古典的p進完備商への旧適用形。
 任意perfectoid源の導来p完備全射商に対する一般全射性とB3の存在・普遍性から証明する。
 古典的/導来完備性の比較は既存共通APIを使用する。公開署名を維持し、文献入力のsorryは解消済み。
 
@@ -545,7 +547,7 @@ public section TorsionFreeQuotientSurjectivity
 
 namespace SerrePositivity.BhattScholze.Inputs
 
-/-- BS Cor 7.3 / Thm 7.4のpねじれのない完備商への適用形。 -/
+/-- BS 著者版 Corollary 7.3 / BS 著者版 Theorem 7.4のpねじれのない完備商への適用形。 -/
 theorem exists_surjective_perfectoidization_of_complete_torsionFree_quotient
     (R S : Type u) [CommRing R] [CommRing S] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)

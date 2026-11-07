@@ -17,6 +17,7 @@ public import Mathlib.SetTheory.Cardinal.Regular
 
 ## 概要
 perfectoid 塔の未完備余極限と完備化の一様ねじれ境界、完備化した写像、perfectoid 有向系の完備化の余極限、表示の余極限、Type u 内の ω₁ と終段の完備性・根の存在、終段の絶対整閉性。
+BS 著者版 Theorem 7.14 の証明の極限段に使う、perfectoid 塔の余極限と完備化を扱う。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -32,7 +33,7 @@ universe u
 
 /-! ## Perfectoid 塔の未完備余極限と完備化の一様ねじれ境界（旧 Andre/Transfinite/TorsionBound.lean）
 
-BS Thm 7.14（著者版 p.61）の極限段の補助命題を、被約性と逆極限の座標から証明する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題を、被約性と逆極限の座標から証明する。
 被約性・ねじれの境界と、完備化の perfectoid 性・完全忠実平坦性とは区別する。
 -/
 
@@ -46,7 +47,7 @@ variable {ι : Type u} [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
     (R : ι → Type u) [∀ i, CommRing (R i)]
     (f : ∀ i j, i ≤ j → R i →+* R j) [DirectedSystem R (fun i j h ↦ f i j h)]
 /-- ## 概要
-被約可換環の有向余極限は被約。BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+被約可換環の有向余極限は被約。BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 冪零元を一段へ降ろし、その冪が零になる関係を後の段に移して被約性を適用する。
@@ -69,7 +70,7 @@ theorem isReduced_ringDirectLimit [∀ i, IsReduced (R i)] :
 
 /-- ## 概要
 被約可換環で a の冪が x を消せば、a 自身が x を消す。
-BS Thm 7.14（著者版 p.61）の極限段における一様ねじれ境界の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段における一様ねじれ境界の補助命題。
 
 ## 方針
 a*x の冪が零となることを掛け算の等式から示し、被約性を適用する。
@@ -95,7 +96,7 @@ theorem mul_eq_zero_of_pow_mul_eq_zero_of_reduced {S : Type u}
 
 /-- ## 概要
 perfectoid 可換環の有向余極限は、完備化前の段階で被約。
-BS Thm 7.14（著者版 p.61）の極限段の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の補助命題。
 
 ## 方針
 各段の証明済みの perfectoid 被約性を、被約環の有向余極限定理へ渡す。
@@ -114,7 +115,7 @@ theorem isReduced_ringDirectLimit_of_perfectoid (p : ℕ) [Fact p.Prime]
 
 /-- ## 概要
 perfectoid 塔の未完備有向余極限の p 冪ねじれは p 自身で消える。
-BS Thm 7.14（著者版 p.61）の極限段で、共通指数 1 を供給する。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段で、共通指数 1 を供給する。
 
 ## 方針
 余極限の被約性から、一般の a 冪ねじれの境界を a=p に適用する。
@@ -134,7 +135,7 @@ theorem ringDirectLimit_p_power_torsion_bound_of_perfectoid (p : ℕ) [Fact p.Pr
 
 /-- ## 概要
 a 冪ねじれの共通境界 N は、主イデアル (a) による通常の完備化にも同じ N で保存される。
-BS Thm 7.14（著者版 p.61）の可算極限段の補助命題。
+BS 著者版 Theorem 7.14（著者版 p.61）の可算極限段の補助命題。
 
 ## 方針
 a^m で消える完備化の元を第 k+m 座標で調べる。元環のねじれ境界により、
@@ -182,7 +183,7 @@ theorem adicCompletion_power_torsion_bound (R : Type u) [CommRing R] (a : R) (N 
 
 /-- ## 概要
 perfectoid 塔の有向余極限を p 進完備化しても、p 冪ねじれは p 自身で消える。
-BS Thm 7.14（著者版 p.61）の可算極限段に必要な一様境界。
+BS 著者版 Theorem 7.14（著者版 p.61）の可算極限段に必要な一様境界。
 
 ## 方針
 未完備余極限の被約性から共通指数 1 を得て、通常の完備化による境界保存を適用する。
@@ -224,7 +225,7 @@ set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 /-- ## 概要
 p 完全忠実平坦な写像の終域の p 冪ねじれが有界なら、その終域の通常 p 進完備化への合成も p 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の標準射を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の標準射を扱う。
 
 ## 方針
 有界ねじれによる完備化の完全忠実平坦性を、元の写像の完全忠実平坦性と合成する。
@@ -251,7 +252,7 @@ theorem isCompletelyFaithfullyFlat_adicCompletion_comp {R T : Type u} [CommRing 
 
 /-- ## 概要
 最小段から各段への写像が p 完全忠実平坦なら、環余極限への標準写像も p 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の標準射を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の標準射を扱う。
 
 ## 方針
 最小段を共通係数環として各遷移射を代数射にする。非交和余極限との比較を
@@ -330,7 +331,7 @@ theorem isCompletelyFaithfullyFlat_ringDirectLimit_of_orderBot
 /-- ## 概要
 perfectoid 環の有向系で、最小段から各段への写像が p 完全忠実平坦なら、
 余極限の通常 p 進完備化への標準合成も p 完全忠実平坦である。
-BS Thm 7.14（著者版 p.61）の極限段の標準射を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の極限段の標準射を扱う。
 
 ## 方針
 環余極限への標準写像の完全忠実平坦性と、perfectoid 環の余極限の
@@ -387,7 +388,7 @@ local notation "ofA" => Ring.DirectLimit.of A (fun i j h ↦ fA i j h)
 local notation "ofR" => Ring.DirectLimit.of R (fun i j h ↦ fR i j h)
 /-- ## 概要
 両立する表示射の余極限射を作る。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限操作の補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限操作の補助命題。
 
 ## 方針
 各段の表示射を終域の標準段射と合成し、環余極限の普遍性を使う。
@@ -407,7 +408,7 @@ def presentationLimitMap : LA →+* LR :=
       exact Ring.DirectLimit.of_f h _)
 /-- ## 概要
 表示の余極限射は各標準段射上で元の表示射と一致する。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限操作の補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限操作の補助命題。
 
 ## 方針
 余極限の持上げの計算規則を使う。
@@ -424,7 +425,7 @@ perfectoid 塔の Fontaine 表示から極限段の perfectoid 性を導く。
 
 /-- ## 概要
 各段の表示射が全射なら、その余極限射も全射である。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限操作の補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限操作の補助命題。
 
 ## 方針
 余極限の元を一段で代表し、その段で原像を選ぶ。
@@ -445,7 +446,7 @@ theorem presentationLimitMap_surjective [Nonempty ι] [IsDirectedOrder ι]
 
 /-- ## 概要
 最小段の元の像が各段の核を生成すれば、その元は余極限射の核も生成する。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限操作の補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限操作の補助命題。
 
 ## 方針
 核の元と零になる等式を後の段に移し、そこでの単項核表示を使う。
@@ -489,7 +490,7 @@ theorem presentationLimitMap_ker [OrderBot ι] [IsDirectedOrder ι]
 include hθ in
 /-- ## 概要
 完全 δ 環による両立する全射表示と共通の distinguished 核生成元があれば、表示先の環余極限の p 進完備化は perfectoid である。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 7.14（p.61）の極限操作の補助命題。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 7.14（p.61）の極限操作の補助命題。
 
 ## 方針
 完全 δ 構造を余極限へ移し、全射と単項核を同定して通常完備化の既証定理を適用する。
@@ -532,7 +533,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable (p : ℕ) [Fact p.Prime]
 /-- ## 概要
 環準同型が誘導する Fontaine 環の標準写像を定める。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 mod p の写像を Perfection と WittVector に順に移す。
@@ -549,7 +550,7 @@ def ainfMap {R S : Type u} [CommRing R] [CommRing S]
   WittVector.map (Perfection.map p (modPMap p f))
 /-- ## 概要
 恒等環準同型が誘導する Fontaine 環の写像は恒等である。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 Witt 係数と Perfection の係数を順に比較する。
@@ -574,7 +575,7 @@ theorem ainfMap_id {R : Type u} [CommRing R] [Fact (¬ IsUnit (p : R))]
   rfl
 /-- ## 概要
 Fontaine 環の標準写像は環準同型の合成を保つ。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 各 Witt 係数の各 Perfection 成分を mod p の代表元で比較する。
@@ -603,7 +604,7 @@ theorem ainfMap_comp {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
 
 /-- ## 概要
 Fontaine 環の標準写像は標準 δ 構造を保つ。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 既存の完全係数環上の Witt 写像の δ 自然性を適用する。
@@ -626,7 +627,7 @@ variable {ι : Type u} [Preorder ι] (R : ι → Type u) [∀ i, CommRing (R i)]
     [DirectedSystem R (fun i j h ↦ f i j h)]
 /-- ## 概要
 環の有向系から Fontaine 環の有向系を得る。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 標準写像の恒等と合成の公式に元の有向系の公理を適用する。
@@ -694,7 +695,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 
 /-- ## 概要
 最小元を持つ有向添字上の perfectoid 環の有向系について、環余極限の p 進完備化は perfectoid である。
-BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、Thm 7.14（p.61）の極限操作を補足する。
+BS 著者版 Lemma 3.9（著者版 pp.31–32）、BS 著者版 Theorem 3.10（p.32）、BS 著者版 Theorem 7.14（p.61）の極限操作を補足する。
 
 ## 方針
 各段の Fontaine 全射を自然性により余極限へ移す。最小段の distinguished 核生成元の像が
@@ -734,7 +735,7 @@ theorem isIntegralPerfectoid_adicCompletion_ringDirectLimit {p : ℕ} [Fact p.Pr
   exact perfectoid_limit p R f hR
 /-- ## 概要
 perfectoid 環の p 完全忠実平坦な有向系で、添字の可算部分集合が上界を持つとき、
-環余極限自体が perfectoid となる。BS Thm 7.14（著者版 p.61）の非可算共終性の極限段。
+環余極限自体が perfectoid となる。BS 著者版 Theorem 7.14（著者版 p.61）の非可算共終性の極限段。
 
 ## 方針
 可算データの降下から余極限の p 進完備性を得て、標準完備化との環同型により
@@ -768,7 +769,7 @@ end PerfectoidCompletionColimit
 
 /-! ## 超限反復の終段における絶対整閉性（旧 Andre/Transfinite/RootClosure.lean）
 
-BS Thm 7.14（著者版 p.61）の超限反復に必要な根の移送を扱う。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復に必要な根の移送を扱う。
 極限環の完備性・perfectoid性・完全忠実平坦性はこのファイルでは主張しない。
 -/
 
@@ -782,7 +783,7 @@ variable {ι : Type u} [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
 
 /-- ## 概要
 各段の正次数モニック多項式が後の段で根を持てば、有向余極限は絶対整閉である。
-BS Thm 7.14（著者版 p.61）の超限反復の最後の根の存在を実現する。
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復の最後の根の存在を実現する。
 
 ## 方針
 Mathlib の有限係数の降下からモニックかつ同次数の多項式を選び、後の段の根を余極限へ送る。
@@ -817,7 +818,7 @@ end RootClosure
 
 /-! ## Type u 内の ω₁ と終段の完備性・根の存在（旧 Andre/Transfinite/OmegaOne.lean）
 
-BS Thm 7.14（著者版 p.61）の超限反復のため、ω₁ 未満の段を
+BS 著者版 Theorem 7.14（著者版 p.61）の超限反復のため、ω₁ 未満の段を
 `Ordinal.ToType` で同じ宇宙に表し、可算データの上界を実証明する。
 -/
 
@@ -827,7 +828,7 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 open Ordinal Cardinal
 
 /-- ## 概要
-ω₁ 未満の順序数の Type u 表現は空でない。BS Thm 7.14（著者版 p.61）の塔の添字。
+ω₁ 未満の順序数の Type u 表現は空でない。BS 著者版 Theorem 7.14（著者版 p.61）の塔の添字。
 
 ## 方針
 正の順序数の ToType が空でないことを使う。
@@ -842,7 +843,7 @@ instance omegaOneIndex_nonempty : Nonempty (Ordinal.ToType (ω₁ : Ordinal.{u})
   Ordinal.nonempty_toType_iff.mpr (Ordinal.omega_pos 1).ne'
 
 /-- ## 概要
-ω₁ 未満の段には最大段がない。BS Thm 7.14（著者版 p.61）の後続段の存在を表す。
+ω₁ 未満の段には最大段がない。BS 著者版 Theorem 7.14（著者版 p.61）の後続段の存在を表す。
 
 ## 方針
 ω₁ が極限順序数であることを ToType の順序へ移す。
@@ -860,7 +861,7 @@ instance omegaOneIndex_noMaxOrder : NoMaxOrder (Ordinal.ToType (ω₁ : Ordinal.
 
 /-- ## 概要
 Type u に表した ω₁ 未満の段の任意の可算集合には上界がある。
-BS Thm 7.14（著者版 p.61）の終段で、可算データを一段へ降ろす根拠となる。
+BS 著者版 Theorem 7.14（著者版 p.61）の終段で、可算データを一段へ降ろす根拠となる。
 
 ## 方針
 各段を ω₁ 未満の順序数に戻し、可算上限も ω₁ 未満であることを使う。
@@ -890,7 +891,7 @@ theorem omegaOneIndex_countable_upperBound
 
 /-- ## 概要
 ω₁ 添字の p 完全忠実平坦な perfectoid 塔で各後続段が前段の正次数モニックの根を持てば、
-終段は p 進完備かつ絶対整閉。BS Thm 7.14（著者版 p.61）の終段の二つの性質。
+終段は p 進完備かつ絶対整閉。BS 著者版 Theorem 7.14（著者版 p.61）の終段の二つの性質。
 
 ## 方針
 ω₁ の可算集合の上界を完備性定理に適用し、多項式は有限係数の降下と後続段の根から処理する。

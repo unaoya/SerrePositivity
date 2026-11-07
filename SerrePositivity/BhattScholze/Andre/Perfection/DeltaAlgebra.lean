@@ -29,7 +29,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 /-!
-# 完全 prism 上の δ 代数の完全化（Prop 7.11(2) の「余極限へ移る」部分）
+# 完全 prism 上の δ 代数の完全化（BS 著者版 Proposition 7.11(2) の「余極限へ移る」部分）
 
 ## 概要
 δ 環射から Frobenius 環段とその係数加群、既存の δ 完全化への余錐、Frobenius 各段の prism 還元の次数消滅と忠実平坦性、完全化の剰余テンソルの平坦性・忠実性、逐次導来完備化と係数制限、PD 完備化 H⁰ への一意延長と比較、完全 prism 上での離散性、完全化後の PD 環の完全忠実平坦性。

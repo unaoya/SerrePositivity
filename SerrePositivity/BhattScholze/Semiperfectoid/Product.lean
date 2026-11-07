@@ -10,6 +10,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 ## 概要
 
 perfectoid 環を冪等元で割った直因子は perfectoid である（`isIntegralPerfectoid_idempotent_quotient`）。指定した有限直積の perfectoid 化について、各射影の核の像による商で成分の普遍単位を作り（`productPerfectoidComponent`・`productComponentUnit`）、成分の単位の直積との同型を構成して直積の単位の普遍性を示す。
+BS 著者版 Corollary 7.3 の普遍性を、冪等元による直因子と有限直積に適用する。
 
 ## 方針
 

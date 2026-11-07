@@ -23,7 +23,7 @@ perfectoid 係数の完備スカラー拡大の離散性、新しい底での係
 —
 
 ## 使われ方
-Prop 8.13 の環版。
+BS 著者版 Proposition 8.13 の環版。
 -/
 
 universe u

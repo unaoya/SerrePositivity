@@ -20,7 +20,7 @@ public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 —
 
 ## 使われ方
-CLMST の perfectoid イデアル、Thm 7.4 の降下。
+CLMST の perfectoid イデアル、BS 著者版 Theorem 7.4 の降下。
 -/
 
 universe u
@@ -201,7 +201,7 @@ end CompatibleRootFamilyIdeal
 
 /-! ## 根イデアル商と完備化の制限付き普遍性（旧 Semiperfectoid/RootedExtension/CompatibleRoot/CompatibleRootQuotient.lean）
 
-著者公開版Theorem 7.4の単項・根を持つ場合に向けた部分定理。
+BS 著者版 Theorem 7.4の単項・根を持つ場合に向けた部分定理。
 試験環の被約性を明示し、候補のperfectoid性と完備化射の全射性は結論しない。
 -/
 

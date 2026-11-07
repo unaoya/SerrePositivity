@@ -21,13 +21,13 @@ public import Mathlib.Algebra.Category.ModuleCat.AB
 public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 
 /-!
-# p で割る δ 除算 A{φ(y)/p}：正則性・Koszul 分解・pd 包との同型（BS 著者版 Cor 2.39 の r = 1）
+# p で割る δ 除算 A{φ(y)/p}：正則性・Koszul 分解・pd 包との同型（BS 著者版 Corollary 2.39 の r = 1）
 
 ## 概要
 一元 p 除算の有限段の関係が非零因子で全有限 δ 関係商が p 正則であること、有限評価関係列の Koszul 分解と通常商との比較、生の包の p 正則性・A[1/p] への埋め込み・分冪構造（階乗の商と一致）・階乗生成部分環との同型・分冪表示環との A 代数同型 `deltaPDivisionRawPrincipalEquiv`、mod p と導来完備化の比較、逐次 Koszul 極限、二入力・二段の包の p 正則性。
 
 ## 方針
-原典の Cor 2.39 を r = 1 で、生の包そのものが p ねじれなしで pd 包と同型という原典の形で示す。二元の場合は r 元への一般化（ノート §2.5 の課題 T2-1・T2-2）の足がかり。
+原典の BS 著者版 Corollary 2.39 を r = 1 で、生の包そのものが p ねじれなしで pd 包と同型という原典の形で示す。二元の場合は r 元への一般化（ノート §2.5 の課題 T2-1・T2-2）の足がかり。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。
@@ -386,7 +386,7 @@ theorem deltaPDivisionRaw_relationIdeal_p_saturated (f : L₀) (hf : (p : L₀) 
     exact Ideal.Quotient.eq_zero_iff_mem.mpr hN
   exact (le_iSup I₀ N) (Ideal.Quotient.eq_zero_iff_mem.mp hz)
 
-/-- 一元rawδ添加環A{φ(y)/p}そのものはp正則。 -/
+/-- 一元rawδ添加環A{φ(y)/p}そのものはp正則（BS 著者版 Corollary 2.39 の一元の場合の p 正則性）。 -/
 theorem deltaPDivisionRaw_p_mul_injective :
     Function.Injective (fun x : B₀ ↦ (p : B₀) * x) := by
   let q := Ideal.Quotient.mk J₀
@@ -448,7 +448,7 @@ theorem deltaPDivisionRaw_torsion_deltaClosure_eq_bot : (E₀).deltaClosure K₀
     rw [hx, DeltaStructure.delta_zero]
   exact (congrArg (E₀).deltaClosure hK).trans ((E₀).deltaClosure_eq hstable)
 
-/-- 一元rawδ包と既存旧ねじれ除去商を標準商射で比較する具体的同型。 -/
+/-- 一元rawδ包と既存旧ねじれ除去商を標準商射で比較する具体的同型（BS 著者版 Corollary 2.39 の一元の場合の p 冪ねじれ除去との同定）。 -/
 def deltaPDivisionRawTorsionEquiv : B₀ ≃+* DeltaDivisionTorsionQuotient D (p : A) a₀ :=
   (RingEquiv.quotientBot B₀).symm.trans (Ideal.quotEquivOfEq
     (deltaPDivisionRaw_torsion_deltaClosure_eq_bot (σ := σ) D y hpA hg v hv hy).symm)
@@ -581,7 +581,7 @@ local notation "f₀" => deltaPDivisionToAway D a₀
 local notation "Aₚ" => Localization.Away (p : A)
 include hpA hg hv hy
 
-/-- 明示した中間入力の下で、一元rawδ包A{φ(y)/p}はA[1/p]へ単射に写る。 -/
+/-- 明示した中間入力の下で、一元rawδ包A{φ(y)/p}はA[1/p]へ単射に写る（BS 著者版 Corollary 2.39 の一元の場合の A[1/p] への比較の単射性）。 -/
 theorem deltaPDivisionRawToAway_injective : Function.Injective f₀ :=
   deltaPDivisionToAway_injective_of_p_mul_injective D a₀
     (deltaPDivisionRaw_p_mul_injective (σ := σ) D y hpA hg v hv hy)

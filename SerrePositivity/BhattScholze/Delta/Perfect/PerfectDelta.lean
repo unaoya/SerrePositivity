@@ -13,18 +13,18 @@ public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 
 /-!
-# 完全 δ 環の構造（BS 著者版 §2.4：Lemma 2.28・2.32・2.33、Cor 2.31、Ex 2.6）
+# 完全 δ 環の構造（BS 著者版 §2.4：BS 著者版 Lemma 2.28・Lemma 2.32・2.33、BS 著者版 Corollary 2.31、BS 著者版 Example 2.6）
 
 ## 概要
-Frobenius は p ねじれを消す（Lemma 2.28。p が冪零な δ 環は零環、Ex 2.6）、完全 δ 環は p ねじれなしで A/p は完全、
-Frobenius 同型は δ 射、p 冪の元は rank 1（Lemma 2.32）、完全な標数 p の環の Witt 環の δ 構造と復元 A ≅ W(A/p)（Cor 2.31）、
-Teichmüller 係数による distinguished 判定（Lemma 2.33）。
+Frobenius は p ねじれを消す（BS 著者版 Lemma 2.28。p が冪零な δ 環は零環、BS 著者版 Example 2.6）、完全 δ 環は p ねじれなしで A/p は完全、
+Frobenius 同型は δ 射、p 冪の元は rank 1（BS 著者版 Lemma 2.32）、完全な標数 p の環の Witt 環の δ 構造と復元 A ≅ W(A/p)（BS 著者版 Corollary 2.31）、
+Teichmüller 係数による distinguished 判定（BS 著者版 Lemma 2.33）。
 
 ## 方針
 px = 0 に δ を当て、δ(p) ≡ 1 mod p で消去する。rank 1 は pδ(x) ∣ δ(x^p) の反復。Witt 環の側は Mathlib の Witt Frobenius と共通基盤の復元から。
 
 ## 規約
-Z_(p) 代数や p ∈ rad を仮定しない。Cor 2.31 は圏同値ではなく対象ごと。
+Z_(p) 代数や p ∈ rad を仮定しない。BS 著者版 Corollary 2.31 は圏同値ではなく対象ごと。
 
 ## 使われ方
 完全 prism（Prism）、完全化、Witt 商の Fontaine 比較。
@@ -35,7 +35,7 @@ universe u v
 
 /-! ## Frobenius持上げによるpねじれの消去（旧 Delta/Perfect/DeltaTorsion.lean）
 
-BS著者版Lemma 2.28の代数的証明。δ(p)≡1 mod pを用いるので、
+BS 著者版 Lemma 2.28の代数的証明。δ(p)≡1 mod pを用いるので、
 Z_(p)代数やpのJacobson根基への所属を仮定せず、任意のδ構造で証明する。
 -/
 
@@ -44,8 +44,8 @@ section DeltaTorsion
 namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- px=0ならφ(x)=0かつp^pδ(x)=0。
-δ積公式とφの環準同型則を使い、最後はδ(p)≡1 mod pで消去する（BS Lemma 2.28）。 -/
+/-- px=0ならφ(x)=0かつp^pδ(x)=0（BS 著者版 Lemma 2.28 (1) の証明中の p ねじれの計算）。
+δ積公式とφの環準同型則を使い、最後はδ(p)≡1 mod pで消去する。 -/
 theorem torsion_calculation (D : DeltaStructure p A) {x : A} (hx : (p : A) * x = 0) :
     D.frobeniusLift x = 0 ∧ (p : A) ^ p * D.delta x = 0 := by
   have hpow (a : A) : a ^ (p - 1) * a = a ^ p := by
@@ -80,7 +80,8 @@ theorem torsion_calculation (D : DeltaStructure p A) {x : A} (hx : (p : A) * x =
     linear_combination hδφ - D.frobeniusLift x * hr - r * hφp
   exact ⟨hφ, hpd⟩
 
-/-- φが単射ならpの乗法は単射（BS Lemma 2.28(1)）。完備性は不要。 -/
+/-- φが単射ならpの乗法は単射（BS 著者版 Lemma 2.28 (1)）。
+  完備性は不要。 -/
 theorem p_mul_injective_of_frobeniusLift_injective (D : DeltaStructure p A)
     (hφ : Function.Injective D.frobeniusLift) : Function.Injective (fun x : A ↦ (p : A) * x) := by
   intro x y hxy
@@ -95,7 +96,7 @@ theorem IsPerfect.p_mul_injective {D : DeltaStructure p A} (hD : D.IsPerfect) :
     Function.Injective (fun x : A ↦ (p : A) * x) :=
   D.p_mul_injective_of_frobeniusLift_injective hD.1
 
-/-- 被約δ環ではpの乗法は単射（BS Lemma 2.28(2)）。
+/-- 被約δ環ではpの乗法は単射（BS 著者版 Lemma 2.28 (2)）。
 p^pδ(x)=0からpδ(x)の冪が零となり、被約性を二度使ってpx=0からx=0を導く。 -/
 theorem p_mul_injective_of_isReduced (D : DeltaStructure p A) [IsReduced A] :
     Function.Injective (fun x : A ↦ (p : A) * x) := by
@@ -119,7 +120,7 @@ theorem p_mul_injective_of_isReduced (D : DeltaStructure p A) [IsReduced A] :
   apply hker
   rw [mul_sub, hxy, sub_self]
 
-/-- δ環でpが冪零なら零環である（BS Example 2.6の最後の主張）。
+/-- δ環でpが冪零なら零環である（BS 著者版 Example 2.6 の末尾の結論）。
 φは自然数pを固定しpねじれを零に送るため、p^n=0から順に指数を下げる。 -/
 theorem subsingleton_of_isNilpotent_p (D : DeltaStructure p A)
     (hp : IsNilpotent (p : A)) : Subsingleton A := by
@@ -142,7 +143,7 @@ end DeltaTorsion
 
 /-! ## p冪根を持つ元のrank 1性（旧 Delta/Perfect/DeltaRankOne.lean）
 
-BS著者公開版Lemma 2.32。δの積公式を(pδ(x))で割った商で反復し、
+BS 著者版 Lemma 2.32。δの積公式を(pδ(x))で割った商で反復し、
 δ(x^p)がpδ(x)で割り切れることから一般δ環での可除性を証明する。
 p正則性・自由δ環への帰着を使わない代数的な証明。
 -/
@@ -201,13 +202,14 @@ theorem pow_mul_delta_dvd_delta_pow (D : DeltaStructure p A) (x : A) (n : ℕ) :
       have hdiv := (mul_dvd_mul_left (p : A) ih).trans h
       simpa only [pow_succ, ← pow_mul, mul_assoc, mul_comm, mul_left_comm] using hdiv
 
-/-- BS Lemma 2.32の可除性：δ(x^(p^n))∈(p^n)。p正則性は要求しない。 -/
+/-- δ(x^(p^n))∈(p^n)（BS 著者版 Lemma 2.32 の第一文）。
+  p正則性は要求しない。 -/
 theorem pow_p_dvd_delta_pow (D : DeltaStructure p A) (x : A) (n : ℕ) :
     (p : A) ^ n ∣ D.delta (x ^ p ^ n) :=
   (dvd_mul_right ((p : A) ^ n) (D.delta x)).trans (D.pow_mul_delta_dvd_delta_pow x n)
 
-/-- p進分離なδ環で、すべてのp^n乗根を持つ元はrank 1、すなわちδ(y)=0。
-根の両立性は要求しない（BS著者版Lemma 2.32の後半）。 -/
+/-- p進分離なδ環で、すべてのp^n乗根を持つ元はrank 1、すなわちδ(y)=0（BS 著者版 Lemma 2.32 の第二文）。
+根の両立性は要求しない。 -/
 theorem delta_eq_zero_of_has_pow_roots (D : DeltaStructure p A)
     [IsHausdorff (Ideal.span {(p : A)}) A] (y : A)
     (hy : ∀ n : ℕ, ∃ x : A, x ^ p ^ n = y) : D.delta y = 0 := by
@@ -225,7 +227,7 @@ end DeltaRankOne
 
 /-! ## 完全δ環のmod pの完全性（旧 Delta/Perfect/PerfectDeltaModP.lean）
 
-BS著者公開版Corollary 2.31の(1)から(2)の代数的部分。
+BS 著者版 Corollary 2.31の(1)から(2)の代数的部分。
 φが全単射ならA/(p)のp乗写像も全単射である。完備性はこの部分には不要。
 -/
 
@@ -234,8 +236,9 @@ section PerfectDeltaModP
 namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 完全δ構造のmod p商は完全環。φがpを固定するので、φによる(p)の逆像も(p)。
-零環を含み、古典的・導来完備性はいずれも仮定しない（BS Cor 2.31の一方向）。 -/
+/-- 完全δ構造のmod p商は完全環（BS 著者版 Corollary 2.31 (1) から (3) の対象上の部分）。
+  φがpを固定するので、φによる(p)の逆像も(p)。
+零環を含み、古典的・導来完備性はいずれも仮定しない。 -/
 theorem IsPerfect.perfectRing_mod_p {D : DeltaStructure p A} (hD : D.IsPerfect) :
     PerfectRing (A ⧸ Ideal.span {(p : A)}) p := by
   let I := Ideal.span {(p : A)}
@@ -331,7 +334,7 @@ end PerfectDeltaFrobenius
 
 /-! ## 完全な標数p環のWitt環のδ構造（旧 Delta/Perfect/WittDelta.lean）
 
-BS著者公開版Corollary 2.31の(3)から(1)。MathlibのWitt Frobenius、
+BS 著者版 Corollary 2.31の(3)から(1)。MathlibのWitt Frobenius、
 p正則性・完備性を再利用して一意なδ構造を与える。圏同値全体はまだ構成しない。
 -/
 
@@ -340,7 +343,7 @@ section WittDelta
 namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] [CharP k p] [PerfectRing k p]
 
-/-- Witt Frobeniusを持ち上げとするδ構造の存在・一意性。
+/-- Witt Frobeniusを持ち上げとするδ構造の存在・一意性（BS 著者版 Corollary 2.31 の W(k) 上の δ 構造の一意性の部分）。
 Witt環のp正則性とmod pの第0座標公式を既存Mathlibから供給する。 -/
 theorem existsUnique_wittDeltaStructure :
     ∃! D : DeltaStructure p (WittVector p k), D.frobeniusLift = WittVector.frobenius := by
@@ -411,7 +414,7 @@ section PerfectDeltaWittRecovery
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 完全p進完備δ環は、零環を含めてそのmod p環のWitt環と同型。 -/
+/-- 完全p進完備δ環は、零環を含めてそのmod p環のWitt環と同型（BS 著者版 Corollary 2.31 の対象上の Witt 復元）。 -/
 def perfectDeltaWittRecoveryEquiv (D : DeltaStructure p A) (hD : D.IsPerfect)
     [IsAdicComplete (Ideal.span {(p : A)}) A] : WittVector p (ModP A p) ≃+* A := by
   let := hD.perfectRing_mod_p
@@ -425,7 +428,7 @@ theorem perfectDeltaWittRecoveryEquiv_mod_p (D : DeltaStructure p A) (hD : D.IsP
   let := hD.perfectRing_mod_p
   exact strictPRecoveryEquiv_mod_p p A hD.p_mul_injective
 
-/-- 標準Witt環からp正則p進完備δ環への任意の環射はδ射。
+/-- 標準Witt環からp正則p進完備δ環への任意の環射はδ射（BS 著者版 Corollary 2.31 の射に関する帰結の一形態）。
 Witt持上げの一意性を使い、環射の連続性は仮定しない。 -/
 theorem wittDeltaStructure_ringHom_isDeltaHom_of_complete
     {k : Type u} [CommRing k] [CharP k p] [PerfectRing k p]
@@ -475,7 +478,7 @@ end PerfectDeltaWittRecovery
 
 /-! ## Witt環のdistinguished元の係数判定（旧 Delta/Perfect/WittDistinguished.lean）
 
-BS著者公開版Lemma 2.33の具体的なWitt環の場合。
+BS 著者版 Lemma 2.33の具体的なWitt環の場合。
 Teichmüller元はrank 1であり、標準δの第0係数は元の第1Witt係数に等しい。
 既存の共通Witt単元判定を用い、第1係数でdistinguished性を判定する。
 -/
@@ -497,7 +500,7 @@ variable (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] [CharP k p] [Perfect
   rw [← map_pow, hy]
 
 /-- 標準Witt δの第0係数は元の第1Witt係数。
-元を[x₀]+p*yと書き、δの加法・積公式を第0係数で比較する（BS Lemma 2.33）。 -/
+元を[x₀]+p*yと書き、δの加法・積公式を第0係数で比較する（BS 著者版 Lemma 2.33）。 -/
 theorem wittDeltaStructure_delta_coeff_zero (d : WittVector p k) :
     ((wittDeltaStructure p k).delta d).coeff 0 = d.coeff 1 := by
   let D := wittDeltaStructure p k
@@ -534,8 +537,8 @@ theorem wittDeltaStructure_delta_coeff_zero (d : WittVector p k) :
     rfl
   exact hδ.trans hd1.symm
 
-/-- 完全係数環のWitt元がdistinguishedであることと第1Witt係数の単元性は同値。
-δの第0係数の計算と既存共通Witt単元判定を使う（BS Lemma 2.33のWitt表示）。 -/
+/-- 完全係数環のWitt元がdistinguishedであることと第1Witt係数の単元性は同値（BS 著者版 Lemma 2.33 の第 1 Witt 座標で書いた判定）。
+δの第0係数の計算と既存共通Witt単元判定を使う。 -/
 theorem wittDeltaStructure_isDistinguished_iff (d : WittVector p k) :
     (wittDeltaStructure p k).IsDistinguished d ↔ IsUnit (d.coeff 1) := by
   constructor
@@ -547,7 +550,7 @@ theorem wittDeltaStructure_isDistinguished_iff (d : WittVector p k) :
     rw [wittDeltaStructure_delta_coeff_zero]
     exact hd
 
-/-- Teichmüller展開のpの係数でのdistinguished判定（BS Lemma 2.33）。
+/-- Teichmüller展開のpの係数でのdistinguished判定（BS 著者版 Lemma 2.33 の Teichmüller 係数で書いた判定）。
 Mathlibの展開ではこの係数は逆Frobeniusを第1Witt係数に適用した元。
 Frobeniusは単元性を保存・反映するので第1係数判定と同値になる。 -/
 theorem wittDeltaStructure_isDistinguished_iff_teichmuller_coefficient (d : WittVector p k) :

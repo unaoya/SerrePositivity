@@ -5,12 +5,13 @@ public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import Mathlib.Tactic.FinCases
 
 /-!
-# δ 環の定義と基本操作（BS 著者版 §2.1：Def 2.1、Rem 2.2・2.4）
+# δ 環の定義と基本操作（BS 著者版 §2.1：BS 著者版 Definition 2.1、BS 著者版 Remark 2.2・Remark 2.4）
 
 ## 概要
-δ 構造を W₂ への環準同型切断として定義し（Rem 2.4）、Def 2.1 の恒等式との同値、Frobenius 持ち上げとの対応（Rem 2.2）、
+δ 構造を W₂ への環準同型切断として定義し（BS 著者版 Remark 2.4）、BS 著者版 Definition 2.1 の恒等式との同値、Frobenius 持ち上げとの対応（BS 著者版 Remark 2.2）、
 δ 射とその言い換えを与える。W₂ の関手性と単元判定、環同型による δ 構造の移送、δ 安定部分環への制限も含む。
 勉強ノート第 2 章の定義 2.1.1〜命題 2.1.5。
+W₂ 切断での δ 射の判定と、Frobenius と可換な射の判定を、BS 著者版 Remark 2.4 と Remark 2.2 の構造の対応に付随する補題として扱う。
 
 ## 方針
 W₂ の和・積の第 1 座標の公式（共通基盤）を切断に当てて恒等式を読む。p で割る式は使わない。
@@ -27,7 +28,7 @@ universe u v w
 
 /-! ## δ環のW₂切断による表現（旧 Delta/Basic/DeltaRing.lean）
 
-BS著者公開版Remark 2.4の切断を採用する。pねじれの消去を仮定せず、
+BS 著者版 Remark 2.4の切断を採用する。pねじれの消去を仮定せず、
 MathlibのWitt環を使ってδ構造とFrobenius持上げを表す。
 -/
 
@@ -37,7 +38,8 @@ namespace SerrePositivity.BhattScholze
 
 variable (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A]
 
-/-- 長さ2のWitt環。δ構造を表す切断の行先として用いる。 -/
+/-- 長さ2のWitt環（BS 著者版 Remark 2.4 の長さ 2 の Witt 環）。
+  δ構造を表す切断の行先として用いる。 -/
 abbrev WittTwo := TruncatedWittVector p 2 A
 
 /-- W₂の第0成分射。切断の条件を環準同型で表すため、Mathlibの切断から降下する。 -/
@@ -72,7 +74,7 @@ def wittTwoFrobenius : WittTwo p A →+* A :=
   rw [witt_ghostComponent_one]
   simp [TruncatedWittVector.out, add_comm]
 
-/-- δ構造はW₂の第0成分射の環準同型切断（BS著者版Remark 2.4）。
+/-- δ構造はW₂の第0成分射の環準同型切断（BS 著者版 Remark 2.4 の切断による定義、Definition 2.1 の恒等式と同値、序論の Remark 1.2）。
 追加のp正則性を要求せず、零環も含む。prismのδ構造に用いる。 -/
 structure DeltaStructure where
   sectionHom : A →+* WittTwo p A
@@ -101,7 +103,8 @@ def delta (D : DeltaStructure p A) (x : A) : A := (D.sectionHom x).coeff 1
   change (1 : WittVector p A).coeff 1 = 0
   exact WittVector.one_coeff_eq_of_pos p A 1 (by decide)
 
-/-- δの積公式（BS著者版Def 2.1）。既存のWitt第1積係数公式を適用し、
+/-- δの積公式（BS 著者版 Definition 2.1 の積の恒等式）。
+  既存のWitt第1積係数公式を適用し、
 pねじれの消去を使わずに証明する。 -/
 theorem delta_mul (D : DeltaStructure p A) (x y : A) :
     D.delta (x * y) = x ^ p * D.delta y + D.delta x * y ^ p +
@@ -112,7 +115,8 @@ theorem delta_mul (D : DeltaStructure p A) (x y : A) :
   rw [witt_mul_coeff_one]
   simp [TruncatedWittVector.out, D.coeff_zero, delta]
 
-/-- δの加法公式（BS著者版Def 2.1）。共通Witt加法係数を再利用し、
+/-- δの加法公式（BS 著者版 Definition 2.1 の加法の恒等式）。
+  共通Witt加法係数を再利用し、
 pねじれのある環でも繰上りをTeichmüller和の第1座標として計算する。 -/
 theorem delta_add (D : DeltaStructure p A) (x y : A) :
     D.delta (x + y) = D.delta x + D.delta y +
@@ -131,7 +135,8 @@ theorem delta_add_polynomial (D : DeltaStructure p A) (x y : A) :
   rw [eval_wittAdditionCarry]
   exact D.delta_add x y
 
-/-- δ構造のFrobenius持上げ。第1ghost成分と切断を合成する（BS Remark 2.2）。 -/
+/-- δ構造のFrobenius持上げ（BS 著者版 Remark 2.2 の Frobenius 持ち上げの構成、序論の Remark 1.2）。
+  第1ghost成分と切断を合成する。 -/
 def frobeniusLift (D : DeltaStructure p A) : A →+* A :=
   (wittTwoFrobenius p A).comp D.sectionHom
 
@@ -152,10 +157,11 @@ def frobeniusLift (D : DeltaStructure p A) : A →+* A :=
   cases hs
   rfl
 
-/-- distinguished元はδ(d)が単元である元（BS著者版Definition 2.19）。 -/
+/-- distinguished元はδ(d)が単元である元（BS 著者版 Definition 2.19）。 -/
 def IsDistinguished (D : DeltaStructure p A) (d : A) : Prop := IsUnit (D.delta d)
 
-/-- 完全δ構造はFrobenius持上げが全単射である構造。完全prismの条件に用いる。 -/
+/-- 完全δ構造はFrobenius持上げが全単射である構造（BS 著者版 Definition 2.26）。
+  完全prismの条件に用いる。 -/
 def IsPerfect (D : DeltaStructure p A) : Prop := Function.Bijective D.frobeniusLift
 
 /-- 環準同型がδと可換であるという条件。pねじれを持つ環でもδの情報を保持する。 -/
@@ -168,7 +174,8 @@ theorem IsDeltaHom.map_frobeniusLift {B : Type v} [CommRing B]
     (hf : D.IsDeltaHom E f) (x : A) : f (D.frobeniusLift x) = E.frobeniusLift (f x) := by
   simp only [frobeniusLift_apply, map_add, map_mul, map_pow, map_natCast, hf x]
 
-/-- δ射はdistinguished元を保存する。δの可換性と単元の像を使う（BS Def 2.19）。 -/
+/-- δ射はdistinguished元を保存する（BS 著者版 Definition 2.19 の直後の保存性）。
+  δの可換性と単元の像を使う。 -/
 theorem IsDeltaHom.map_isDistinguished {B : Type v} [CommRing B]
     {D : DeltaStructure p A} {E : DeltaStructure p B} {f : A →+* B}
     (hf : D.IsDeltaHom E f) {d : A} (hd : D.IsDistinguished d) : E.IsDistinguished (f d) := by
@@ -201,14 +208,14 @@ theorem IsDeltaHom.symm {B : Type v} [CommRing B] {D : DeltaStructure p A}
   simpa only [e.apply_symm_apply] using h.symm
 
 /-- pを零に送る任意の環準同型上で、φはp乗と一致する。
-特にA/(p)上のFrobeniusを持ち上げるというBS Remark 2.2の主張を与える。 -/
+特にA/(p)上のFrobeniusを持ち上げるというBS BS 著者版 Remark 2.2の主張を与える。 -/
 theorem map_frobeniusLift_of_map_p_eq_zero {B : Type v} [CommRing B]
     (D : DeltaStructure p A) (f : A →+* B) (hp : f (p : A) = 0) (x : A) :
     f (D.frobeniusLift x) = f x ^ p := by
   rw [frobeniusLift_apply, map_add, map_mul, map_pow, hp, zero_mul, add_zero]
 
 /-- p正則な環では、Frobenius持上げが一致するδ構造は一致する。
-p倍を消去してδを復元し、切断の座標による外延性を使う（BS Remark 2.2の一意性）。 -/
+p倍を消去してδを復元し、切断の座標による外延性を使う（BS 著者版 Remark 2.2の一意性）。 -/
 theorem eq_of_frobeniusLift_eq
     (hp : Function.Injective (fun x : A ↦ (p : A) * x))
     {D E : DeltaStructure p A} (h : D.frobeniusLift = E.frobeniusLift) : D = E := by
@@ -229,7 +236,7 @@ theorem isDeltaHom_of_map_frobeniusLift {B : Type v} [CommRing B]
   apply add_left_cancel (a := f x ^ p)
   simpa only [frobeniusLift_apply, map_add, map_mul, map_pow, map_natCast] using hf x
 
-/-- δで安定なイデアル。商δ環とδ閉包の構成（BS Lemma 2.9）の入力に使う。 -/
+/-- δで安定なイデアル。商δ環とδ閉包の構成（BS 著者版 Lemma 2.9）の入力に使う。 -/
 def IsStable (D : DeltaStructure p A) (I : Ideal A) : Prop :=
   ∀ x ∈ I, D.delta x ∈ I
 
@@ -326,7 +333,7 @@ end WittTwoUnits
 
 /-! ## δの恒等式とW₂切断の対応（旧 Delta/Basic/DeltaIdentities.lean）
 
-BS著者版Definition 2.1の恒等式を満たす写像からRemark 2.4の切断を構成する。
+BS 著者版 Definition 2.1の恒等式を満たす写像からBS 著者版 Remark 2.4の切断を構成する。
 加法補正項は共通Witt APIの整数係数多項式として扱い、pの正則性を要求しない。
 -/
 
@@ -336,8 +343,8 @@ namespace SerrePositivity.BhattScholze.DeltaStructure
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- δの零・単位・加法・積の恒等式からW₂切断を構成する。
-座標ごとに環準同型則を確認する（BS Definition 2.1とRemark 2.4の逆向き）。 -/
+/-- δの零・単位・加法・積の恒等式からW₂切断を構成する（BS 著者版 Definition 2.1 の恒等式からの構成）。
+座標ごとに環準同型則を確認する（BS 著者版 Definition 2.1とBS 著者版 Remark 2.4の逆向き）。 -/
 def ofFunction (δ : A → A) (h0 : δ 0 = 0) (h1 : δ 1 = 0)
     (hadd : ∀ x y, δ (x + y) = δ x + δ y +
       (WittVector.teichmuller p x + WittVector.teichmuller p y).coeff 1)
@@ -413,7 +420,7 @@ namespace SerrePositivity.BhattScholze.DeltaStructure
 variable {p : ℕ} [Fact p.Prime] {A : Type u} {B : Type v} [CommRing A] [CommRing B]
 
 /-- 環準同型がδ射であることと、W₂切断の図式が可換であることは同値。
-二つのWitt座標で比較し、p正則性は要求しない（BS Remark 2.4）。 -/
+二つのWitt座標で比較し、p正則性は要求しない。 -/
 theorem isDeltaHom_iff_sectionHom_comp (D : DeltaStructure p A) (E : DeltaStructure p B)
     (f : A →+* B) : D.IsDeltaHom E f ↔
       (wittTwoMap (p := p) f).comp D.sectionHom = E.sectionHom.comp f := by
@@ -440,7 +447,7 @@ end DeltaSectionNaturality
 
 /-! ## p正則な環のFrobenius持上げとδ構造（旧 Delta/Basic/DeltaFrobenius.lean）
 
-BS著者版Remark 2.2。mod pでFrobeniusと一致する環自己準同型から
+BS 著者版 Remark 2.2。mod pでFrobeniusと一致する環自己準同型から
 δ構造を構成し、一意性を証明する。pねじれのある環への逆向きは主張しない。
 -/
 
@@ -450,8 +457,8 @@ namespace SerrePositivity.BhattScholze.DeltaStructure
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- p正則な環では、φ(x)-x^pがpで割り切れる自己準同型φは一意なδ構造を定める。
-p倍の消去でδの恒等式を証明し、W₂切断を再構成する（BS Remark 2.2）。 -/
+/-- p正則な環では、φ(x)-x^pがpで割り切れる自己準同型φは一意なδ構造を定める（BS 著者版 Remark 2.2 の p 正則環での逆構成）。
+p倍の消去でδの恒等式を証明し、W₂切断を再構成する。 -/
 theorem existsUnique_of_frobeniusLift
     (hp : Function.Injective (fun x : A ↦ (p : A) * x)) (φ : A →+* A)
     (hφ : ∀ x, (p : A) ∣ φ x - x ^ p) :
@@ -494,7 +501,7 @@ theorem existsUnique_of_frobeniusLift
     exact (D.frobeniusLift_apply x).trans (hδ x).symm
   exact ⟨D, hD, fun E hE ↦ eq_of_frobeniusLift_eq hp (hE.trans hD.symm)⟩
 
-/-- mod pでFrobeniusとなる自己準同型は、p正則な環に一意なδ構造を与える。
+/-- mod pでFrobeniusとなる自己準同型は、p正則な環に一意なδ構造を与える（BS 著者版 Remark 2.2 の p 正則環での逆構成）。
 商上の一致をpによる可除性へ移し、存在定理を適用する。 -/
 theorem existsUnique_of_mod_p
     (hp : Function.Injective (fun x : A ↦ (p : A) * x)) (φ : A →+* A)

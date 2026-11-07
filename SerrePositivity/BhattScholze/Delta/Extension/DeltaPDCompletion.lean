@@ -12,15 +12,16 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 ## 概要
 W₂ の第 0 成分の核は φ で捻った第 1 座標、(p,d) 完備なら (p,φ(d)) 完備、したがって W₂ も導来完備で、
 導来 (p,d) 完備化 H⁰ に δ 構造が一意に延び、p,d 導来完備な δ 環への普遍性を持つ。
+BS 著者版 Lemma 2.18 の完備化への構造の延長に加え、完備な標的への δ 射を延長する補助を与える。
 
 ## 方針
 原典の証明の短完全列 0 → φ_*B → W₂(B) → B → 0 と完備化の比較を形式化し、切断を完備化の普遍性で延ばす。
 
 ## 規約
-エタールの部分（Lemma 4.21 用）はない。古典的完備性・p 正則性・有界ねじれを仮定しない。
+エタールの部分（BS 著者版 Lemma 4.21 用）はない。古典的完備性・p 正則性・有界ねじれを仮定しない。
 
 ## 使われ方
-Cor 7.3、prism の完全化、d で割る包の完備化。
+BS 著者版 Corollary 7.3、prism の完全化、d で割る包の完備化。
 -/
 
 @[expose] public noncomputable section
@@ -28,7 +29,7 @@ universe u
 
 /-! ## W₂の第0成分の核とFrobeniusでねじれた作用（旧 Delta/Extension/WittTwoModuleSequence.lean）
 
-著者版Lemma 2.18の短完全列の具体的な加群部分。
+BS 著者版 Lemma 2.18の短完全列の具体的な加群部分。
 核を第1座標の加法群と同定し、基底作用がφによる作用になることを証明する。
 -/
 
@@ -443,7 +444,7 @@ end PDCompletionInterface
 
 /-! ## 実際の導来(p,d)完備化H⁰へのδ構造の一意延長（旧 Delta/Extension/DeltaPDCompletion.lean）
 
-著者公開版Lemma 2.18の完備化への適用部分。
+BS 著者版 Lemma 2.18の完備化への適用部分。
 受領F3の環普遍性とW₂の実導来完備性から切断を延長する。
 p正則性・古典的完備性・有界ねじれを仮定しない。
 -/
@@ -455,7 +456,7 @@ namespace SerrePositivity.BhattScholze
 open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 実際のH⁰に、標準射をδ射とするδ構造が一意に存在する。 -/
+/-- 実際のH⁰に、標準射をδ射とするδ構造が一意に存在する（BS 著者版 Lemma 2.18 の末尾の導来完備化の帰結で (p,d)・H⁰ の場合）。 -/
 theorem existsUnique_deltaPDCompletionStructure (D : DeltaStructure p A) (d : A) :
     letI := pdCompletionCommRing A p d
     ∃! E : DeltaStructure p (PDCompletionH0 A p d), D.IsDeltaHom E (pdCompletionUnit A p d) := by
@@ -489,7 +490,7 @@ theorem existsUnique_deltaPDCompletionStructure (D : DeltaStructure p A) (d : A)
   intro x
   exact congrArg (fun z : WittTwo p H ↦ z.coeff 1) (RingHom.congr_fun he x)
 
-/-- 実際の(p,d)完備化H⁰に選んだ唯一のδ構造。 -/
+/-- 実際の(p,d)完備化H⁰に選んだ唯一のδ構造（BS 著者版 Lemma 2.18 の末尾の導来完備化の帰結で (p,d)・H⁰ の構成）。 -/
 def deltaPDCompletionStructure (D : DeltaStructure p A) (d : A) :
     letI := pdCompletionCommRing A p d
     DeltaStructure p (PDCompletionH0 A p d) :=

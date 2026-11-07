@@ -14,7 +14,7 @@ public import Mathlib.RingTheory.AdicCompletion.Topology
 任意の δ 環の完全化の古典的 p 進完備化とその普遍性・関手性・冪等性・正則性、生成元像の d 進完備性を仮定した prism への普遍性。
 
 ## 方針
-Lemma 2.28・2.34 を完全化に当てる。
+BS 著者版 Lemma 2.28・Lemma 2.34 を完全化に当てる。
 
 ## 規約
 d 進完備性の仮定を外す部分は未。
@@ -111,7 +111,7 @@ end PCompletedDeltaPerfection
 
 /-! ## p進完備なδ完全化の正則性とdistinguished商（旧 Prism/Perfection/PCompletedDeltaRegularity.lean）
 
-具体的な完全化環と標準射に、既存Lemma 2.28・2.34の結果を適用する。
+具体的な完全化環と標準射に、既存BS 著者版 Lemma 2.28・2.34の結果を適用する。
 prismのイデアルの単項化や導来完備化との比較は結論しない。
 -/
 
@@ -157,7 +157,7 @@ end PCompletedDeltaRegularity
 
 /-! ## p進完備なδ完全化の具体的な延長射と関手性（旧 Prism/Perfection/PCompletedDeltaFunctor.lean）
 
-著者公開版Lemma 3.9のp進完備化段階。
+BS 著者版 Lemma 3.9のp進完備化段階。
 既存の存在・一意性から公開環射を取り出し、恒等射・合成との両立を証明する。
 (p,d)導来完備化やprismの完全化全体とは区別する。
 -/
@@ -280,7 +280,7 @@ end PCompletedDeltaFunctor
 
 /-! ## 完全p進完備δ環のp進完備δ完全化からの復元（旧 Prism/Perfection/PCompletedDeltaRecovery.lean）
 
-著者公開版Lemma 3.9のp進完備化段階の冪等性。
+BS 著者版 Lemma 3.9のp進完備化段階の冪等性。
 既に完全かつ古典的p進完備なδ環の標準射は同型で、逆射もδ射。
 一般Witt復元、prismの完全化、perfectoid化の存在とは別の具体的な定理。
 -/
@@ -393,7 +393,7 @@ end PCompletedDeltaRecovery
 
 /-! ## d進完備性を明示したp進完備δ完全化のprismと普遍性（旧 Prism/Perfection/PCompletedDistinguishedPrism.lean）
 
-著者公開版Lemma 3.9の主イデアル・distinguished生成元の場合の部分定理。
+BS 著者版 Lemma 3.9の主イデアル・distinguished生成元の場合の部分定理。
 p進完備δ完全化での生成元像のd進完備性を仮定し、実導来条件を持つ完全prismを
 具体的に構成する。この完備性自体や一般Cartierイデアルの単項化は結論しない。
 -/
@@ -511,7 +511,7 @@ def pCompletedPrismMap : OrientedPrism.Hom P
   apply (Ideal.span_singleton_le_iff_mem _).mpr
   exact Ideal.subset_span (Set.mem_singleton _)
 
-/-- 任意の完全oriented prismへのprism射は、標準prism射を通じ一意に延長する。 -/
+/-- 任意の完全oriented prismへのprism射は、標準prism射を通じ一意に延長する（BS 著者版 Lemma 3.9 の向き付き prism の普遍性で完全化後に追加の d 進完備性を仮定）。 -/
 theorem existsUnique_pCompletedPrismHom
     {B : Type v} [CommRing B] (Q : OrientedPrism p B) (hQ : Q.deltaStructure.IsPerfect)
     (f : OrientedPrism.Hom P Q) :

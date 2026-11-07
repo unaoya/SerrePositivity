@@ -13,6 +13,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 
 ## 概要
 一般の d 根添加の最初の有限評価関係、一元根添加の全有限 δ 深さの mod (p,d) Koszul 分解と源 Tor、最初の根 δ 関係の有限族の Koszul 分解、有限添字・二つの独立根関係の raw p 除算包の p 正則性。
+BS 著者版 Proposition 3.13 と Remark 7.15 の包の計算に使う、根関係の剰余の Koszul 分解を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

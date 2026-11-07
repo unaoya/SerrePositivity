@@ -9,6 +9,7 @@ public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 ## 概要
 
 選んだ主イデアル商の perfectoid 化を、互換根の完備化の商と元の普遍写像を通じて比べ、perfectoid イデアルが `p` の冪を法として互換根のイデアルに一致することを示す。根を持つ被覆の各成分で零化されれば元の perfectoid イデアルでも零化されること（被覆のイデアルに生成元の冪が入れば十分）、環の引き戻しの四角で左下の代数だけが perfectoid なら核・余核が perfectoid イデアルで零化されることを与える。
+BS 著者版 Theorem 7.14 の被覆と §10.1 の perfectoid 核を、両立する根を用いる比較に使う。
 
 ## 方針
 

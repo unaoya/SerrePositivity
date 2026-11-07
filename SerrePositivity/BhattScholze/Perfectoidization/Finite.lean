@@ -8,7 +8,7 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 
 ## 概要
 
-integral perfectoid な `R` 上の有限表示な有限代数 `S` について、perfectoid 化の存在定理（`Inputs.exists_perfectoidization_of_finite`、BS Thm 1.17(1)）で保証される普遍対象を選び、環 `Perfectoidization R S p hR`、標準写像 `toPerfectoidization`、`S`・`R` の代数構造とその両立を与える。
+integral perfectoid な `R` 上の有限表示な有限代数 `S` について、perfectoid 化の存在定理（`Inputs.exists_perfectoidization_of_finite`、BS 著者版 Theorem 1.17(1)）で保証される普遍対象を選び、環 `Perfectoidization R S p hR`、標準写像 `toPerfectoidization`、`S`・`R` の代数構造とその両立を与える。
 
 ## 方針
 

@@ -4,7 +4,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.Colimit.Ring
 
 /-!
-# δ 環の極限と余極限（BS 著者版 Rem 2.7）
+# δ 環の極限と余極限（BS 著者版 Remark 2.7）
 
 ## 概要
 δ 両立な遷移を持つ有向系の環余極限の δ 構造と普遍性。勉強ノート第 2 章の命題 2.1.6 の有向の場合。
@@ -72,7 +72,7 @@ theorem deltaDirectLimitSection_projection :
   simp only [RingHom.comp_apply, deltaDirectLimitSection_of,
     wittTwoProjection_apply, wittTwoMap_coeff, (D i).coeff_zero, RingHom.id_apply]
 
-/-- δと両立する遷移から得る、同じ環余極限上のδ構造。 -/
+/-- δと両立する遷移から得る、同じ環余極限上のδ構造（BS 著者版 Remark 2.7 の有向直系の余極限の δ 構造）。 -/
 def deltaDirectLimitStructure : DeltaStructure p (Ring.DirectLimit A f) where
   sectionHom := deltaDirectLimitSection A f D hδ
   coeff_zero := by
@@ -93,7 +93,7 @@ theorem deltaDirectLimitOf_isDeltaHom (i : ι) :
   intro x
   exact (deltaDirectLimitStructure_delta_of A f D hδ i x).symm
 
-/-- 適合するδ射族からの既存環余極限の普遍射もδ射。
+/-- 適合するδ射族からの既存環余極限の普遍射もδ射（BS 著者版 Remark 2.7 の有向直系の余極限の余錐射）。
 非空性・有向性や遷移の単射性を要求しない。 -/
 theorem deltaDirectLimitLift_isDeltaHom {B : Type w} [CommRing B]
     (E : DeltaStructure p B) (g : ∀ i, A i →+* B)

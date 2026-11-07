@@ -3,7 +3,7 @@ module
 import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
 import Mathlib.Util.AssertNoSorry
 
-/-! BS Rem 7.15（著者版 p.62）：A1-d の公開宣言・正確な受渡し型・標準三公理の専用監査。 -/
+/-! BS 著者版 Remark 7.15（著者版 p.62）：A1-d の公開宣言・正確な受渡し型・標準三公理の専用監査。 -/
 
 -- 専用監査だけのモジュールなので、受渡し型の検査用定義は非公開のまま保持する。
 set_option linter.privateModule false

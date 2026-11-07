@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair
 
 ## 概要
 無限根モニック raw 包・全モニック入力の raw 包と通常 p 完備化の p 正則性、第一完備化の分母正則性と H⁰、正則対からの hpR の除去。
+BS 著者版 Corollary 2.39 と Remark 7.15 の包の比較に向けて、raw 包と主完備化の p 正則性を示す。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -25,7 +26,7 @@ universe u
 /-! ## 元の無限根モニック raw 包の p 正則性（旧 Andre/Remark715/Unconditional/PowerRootRawPrimeRegular.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の正次数モニック入力について、元の raw 包は p 正則。
+BS 著者版 Remark 7.15（著者版 p.62）の正次数モニック入力について、元の raw 包は p 正則。
 
 ## 方針
 元の実源の p 錐の d 冪ねじれ性と、その d 完備化の純性を合流する。
@@ -67,7 +68,7 @@ set_option backward.isDefEq.respectTransparency true in
 /-- 概要：元の実 A 源の p 錐の非零次ホモロジーは、prism 生成元の冪ねじれ。
 方針：自由 δ 源の局所化計算を、元の標準 A 作用へ係数制限する。
 規約：モニック性・正次数・hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw p 正則性検出。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw p 正則性検出。 -/
 theorem powerRootPrismMonicSourcePrimeCone_power_torsion_of_unconditional
     (i : ℤ) (hi : i ≠ 0)
     (x : (DerivedCategory.homologyFunctor (ModuleCat A) i).obj
@@ -89,7 +90,7 @@ theorem powerRootPrismMonicSourcePrimeCone_power_torsion_of_unconditional
 /-- 概要：正次数モニック入力の元の実 A 源の p 錐は負次数を持たない。
 方針：元の p 錐の d 完備化純性と、同じ元の対象上の d 冪ねじれを合流する。
 規約：hpR と raw p 正則性を仮定しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の raw H⁰ の p 正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の raw H⁰ の p 正則性。 -/
 theorem powerRootPrismMonicSourcePrimeCone_isGE_of_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     ((derivedScalarConeFunctor A (p : A)).obj (X).obj).IsGE 0 := by
@@ -101,7 +102,7 @@ theorem powerRootPrismMonicSourcePrimeCone_isGE_of_unconditional
 /-- 概要：正次数モニック入力の元の raw δ 包には p ねじれがない。
 方針：元の実源の p 錐の負次数消滅を H⁰ 単射性へ移し、元の標準 raw 比較で運ぶ。
 規約：元の raw 包を用い、hpR・ねじれ除去を要求しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の通常 p 完備化への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の通常 p 完備化への入力。 -/
 theorem powerRootPrismMonicRaw_p_mul_injective_of_positive_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Function.Injective (fun r : Raw => (p : Raw) * r) := by
@@ -124,7 +125,7 @@ end PowerRootRawPrimeRegular
 /-! ## 全モニック入力の元の raw 包と通常 p 完備化の p 正則性（旧 Andre/Remark715/Unconditional/RawPrimeRegularAllMonic.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の raw p 正則性から hpR を除く。
+BS 著者版 Remark 7.15（著者版 p.62）の元の raw p 正則性から hpR を除く。
 
 ## 方針
 正次数入力では元の実源の純性を使う。次数零入力では f=1 と実安定局所化への単射性を使う。
@@ -153,7 +154,7 @@ local notation "Raw" => DeltaAdjoinDivision E dP a
 /-- 概要：次数零モニック入力でも元の raw 包は p 正則。
 方針：f=1 と元の除算関係から、安定局所化への実単射を使う。
 規約：元の raw 包を保持し、hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の全モニック入力の合流。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の全モニック入力の合流。 -/
 theorem powerRootPrismMonicRaw_p_mul_injective_of_natDegree_zero_unconditional
     (hf : f.Monic) (hz : f.natDegree = 0) :
     Function.Injective (fun r : Raw => (p : Raw) * r) := by
@@ -167,7 +168,7 @@ theorem powerRootPrismMonicRaw_p_mul_injective_of_natDegree_zero_unconditional
 /-- 概要：任意のモニック入力の元の raw δ 包には p ねじれがない。
 方針：正次数の実源純性と次数零の実安定局所化計算を合流する。
 規約：旧公開定理から hpR だけを除き、正次数・完備性・ねじれ除去を追加しない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の通常 p 完備化への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の通常 p 完備化への入力。 -/
 theorem powerRootPrismMonicRaw_p_mul_injective_of_unconditional (hf : f.Monic) :
     Function.Injective (fun r : Raw => (p : Raw) * r) := by
   by_cases hz : f.natDegree = 0
@@ -178,7 +179,7 @@ theorem powerRootPrismMonicRaw_p_mul_injective_of_unconditional (hf : f.Monic) :
 /-- 概要：任意モニック入力の元の古典的 p 完備化でも p は正則。
 方針：元の raw p 正則性を古典的主完備化の正則性保存に渡す。
 規約：元の AdicCompletion を保持し、hpR は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の通常 p 完備化の正則対の第一成分。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の通常 p 完備化の正則対の第一成分。 -/
 theorem powerRootPrismMonicRaw_pAdic_prime_regular_of_unconditional (hf : f.Monic) :
     let C := AdicCompletion (Ideal.span {(p : Raw)}) Raw
     IsSMulRegular C (p : C) := by
@@ -192,7 +193,7 @@ end RawPrimeRegularAllMonic
 /-! ## 元の第一完備化の分母正則性（旧 Andre/Remark715/Unconditional/PrincipalSourceRegularity.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実 p 完備化の H⁰ で分母は正則。
+BS 著者版 Remark 7.15（著者版 p.62）の元の実 p 完備化の H⁰ で分母は正則。
 
 ## 方針
 d 完備化単位の実 d 錐同値性から、既証明の逐次完備化の分母正則性を戻す。
@@ -215,7 +216,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：完備化が正則主元を持つ single なら、元の H⁰ 上でも同じ主元は単射。
 方針：元の完備化単位の Koszul 同値性と、加群上の正則主商の実錐比較を使う。
 規約：元の対象の純性・完備性・環の正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の第一完備化への分母正則性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の第一完備化への分母正則性の移送。 -/
 theorem unconditionalHomology_regular_of_completionSingleIso
     {R : Type u} [CommRing R] (a : R) (X : DerivedCategory.Minus (ModuleCat.{u} R))
     (M : ModuleCat.{u} R)
@@ -247,7 +248,7 @@ local notation "XC" => PowerRootPrismMonicSourceIteratedPDCompletion_of_uncondit
 /-- 概要：正次数モニック入力の元の実 p 完備化の H⁰ 上で分母は単射。
 方針：同じ実源の逐次完備化の single 比較と分母正則性を一般の Koszul 比較へ渡す。
 規約：hpR・raw mod p の分母正則性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の元の古典的 p 完備化の分母正則性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の古典的 p 完備化の分母正則性。 -/
 theorem powerRootPrismMonicSourcePCompletion_generator_injective_of_positive_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     Function.Injective
@@ -264,7 +265,7 @@ end PrincipalSourceRegularity
 /-! ## 元の第一完備化の H⁰ と raw の主完備化（旧 Andre/Remark715/Unconditional/RawPrincipalH0Comparison.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の元の実源の第一 p 完備化の H⁰ を、raw 主完備化へ比較する。
+BS 著者版 Remark 7.15（著者版 p.62）の元の実源の第一 p 完備化の H⁰ を、raw 主完備化へ比較する。
 
 ## 方針
 元の標準 augmentation、正確な係数制限と完備化の比較、実主 Koszul H⁰ 比較を合成する。
@@ -299,7 +300,7 @@ local notation "XP" => CategoryTheory.Functor.obj
 /-- 概要：元の実源の第一 p 完備化の H⁰ と、元の raw 主完備化の A 線形同型。
 方針：元の標準 augmentation の完備化後 H⁰ 同型と、元の主完備化の比較を合成する。
 規約：比較自体には raw p 正則性を使わない。
-使われ方：BS Rem 7.15（著者版 p.62）の分母作用の元の古典的 p 完備化への移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分母作用の元の古典的 p 完備化への移送。 -/
 def powerRootPrismMonicSourcePrincipalH0Iso_of_unconditional :
     (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj (XP).obj ≅
       (ModuleCat.restrictScalars c).obj
@@ -329,7 +330,7 @@ end RawPrincipalH0Comparison
 /-! ## 元の通常 p 完備化の正則対から hpR を除く（旧 Andre/Remark715/Unconditional/RawPAdicPairRegular.lean）
 
 ## 概要
-BS Rem 7.15（著者版 p.62）の任意モニック入力について、元の通常 p 完備化で p と分母は正則。
+BS 著者版 Remark 7.15（著者版 p.62）の任意モニック入力について、元の通常 p 完備化で p と分母は正則。
 
 ## 方針
 元の実第一完備化の H⁰ 比較で分母正則性を移し、次数零では元の分母の単元性を使う。
@@ -352,7 +353,7 @@ attribute [local instance] HasDerivedCategory.standard
 /-- 概要：係数制限を保つ線形同型は、元の基底元の正則性を標準代数像へ移す。
 方針：同じ線形同型の逆で単射性を運び、標準スカラー作用を乗法へ書き直す。
 規約：基底射の単射性・平坦性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の具体的な古典的完備化の作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の具体的な古典的完備化の作用の照合。 -/
 theorem unconditionalRegularity_of_restricted_linearEquiv
     {A R S : Type u} [CommRing A] [CommRing R] [CommRing S] [Algebra R S]
     (c : A →+* R) (M : ModuleCat.{u} A)
@@ -382,7 +383,7 @@ local notation "C" => AdicCompletion (Ideal.span {(p : Raw)}) Raw
 /-- 概要：正次数モニック入力では元の通常 p 完備化の分母像が正則。
 方針：元の実第一完備化 H⁰ の分母正則性を、標準 raw 主完備化比較で移す。
 規約：hpR と raw mod p の分母正則性は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の通常 p 完備化の正則対。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の通常 p 完備化の正則対。 -/
 theorem powerRootPrismMonicRaw_pAdic_generator_regular_of_positive_unconditional
     (hf : f.Monic) (hdeg : 0 < f.natDegree) :
     IsSMulRegular C (algebraMap Raw C (j dP)) := by
@@ -400,7 +401,7 @@ theorem powerRootPrismMonicRaw_pAdic_generator_regular_of_positive_unconditional
 /-- 概要：任意モニック入力では元の通常 p 完備化の分母像が正則。
 方針：正次数の実第一完備化計算と、f=1 の場合の元の分母の単元性を合流する。
 規約：旧主張のモニック性だけを保持し、hpR を除く。
-使われ方：BS Rem 7.15（著者版 p.62）の元の通常 p 完備化の正則対。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の通常 p 完備化の正則対。 -/
 theorem powerRootPrismMonicRaw_pAdic_generator_regular_of_unconditional (hf : f.Monic) :
     IsSMulRegular C (algebraMap Raw C (j dP)) := by
   by_cases hz : f.natDegree = 0
@@ -416,7 +417,7 @@ theorem powerRootPrismMonicRaw_pAdic_generator_regular_of_unconditional (hf : f.
 /-- 概要：元の通常 p 完備化で p と分母はともに正則。
 方針：元の raw p 正則性の完備化保存と、元の実源から移した分母正則性を合流する。
 規約：旧公開定理と同じ対象・標準射で hpR だけを除く。正次数は不要。
-使われ方：BS Rem 7.15（著者版 p.62）の元の実二座標完備化への入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の実二座標完備化への入力。 -/
 theorem powerRootPrismMonicRaw_pAdic_regular_pair_of_unconditional (hf : f.Monic) :
     let CP := AdicCompletion (Ideal.span {(p : Raw)}) Raw
     IsSMulRegular CP (p : CP) ∧ IsSMulRegular CP (algebraMap Raw CP (j dP)) := by

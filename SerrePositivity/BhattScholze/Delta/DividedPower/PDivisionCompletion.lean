@@ -8,13 +8,13 @@ public import Mathlib.RingTheory.AdicCompletion.LocalRing
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 
 /-!
-# 生の A{a/p} とその完備化（Cor 2.39 の導来側・Prop 3.13 の部品）
+# 生の A{a/p} とその完備化（BS 著者版 Corollary 2.39 の導来側・BS 著者版 Proposition 3.13 の部品）
 
 ## 概要
 φ(y)/p と y^p/p の δ 除算添加環の座標変換（Frobenius 平行移動）と、その p ねじれ除去商・導来完備化 H⁰ での比較、distinguished 元 a = p·u の単元係数（古典的・導来の p 除算候補）。
 
 ## 方針
-§2.5 の主張そのものではなく、生の包の p 完備化（Cor 2.44・Prop 3.13 の対象）の部品（ノート BR32）。
+§2.5 の主張そのものではなく、生の包の p 完備化（BS 著者版 Corollary 2.44・BS 著者版 Proposition 3.13 の対象）の部品（ノート BR32）。
 
 ## 規約
 宣言名・名前空間・型は統合前のまま。
@@ -516,7 +516,7 @@ end DeltaPDivisionFrobeniusShiftDerived
 
 /-! ## 古典的p除算候補におけるdistinguished元の単元係数（旧 Delta/DividedPower/DeltaPDivisionUnit.lean）
 
-既存Lemma 2.24を具体的な候補と標準射へ適用する。
+既存BS 著者版 Lemma 2.24を具体的な候補と標準射へ適用する。
 実導来完備化との比較や完全平坦性はこの計算の結論に含めない。
 -/
 
@@ -619,7 +619,7 @@ theorem classicalPDivisionVariable_isUnit (D : DeltaStructure p A) (a : σ → A
   rw [classicalPDivisionVariable_relation]
   exact (classicalDeltaDivisionMap_isDeltaHom D (p : A) a).map_isDistinguished ha
 
-/-- 原典Prop.3.13のφ(y)=p*u型の具体的な単元係数（古典的候補での結果）。 -/
+/-- 原典BS 著者版 Proposition 3.13のφ(y)=p*u型の具体的な単元係数（古典的候補での結果）。 -/
 theorem exists_classicalPDivision_unit_factor (D : DeltaStructure p A) (a : σ → A) (s : σ)
     (ha : D.IsDistinguished (a s)) :
     ∃ u : (ClassicalDeltaDivisionCompletion D (p : A) a)ˣ,

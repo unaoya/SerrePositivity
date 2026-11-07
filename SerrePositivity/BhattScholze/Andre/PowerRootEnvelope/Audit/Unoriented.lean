@@ -8,6 +8,8 @@ import Mathlib.Util.AssertNoSorry
 
 ## 概要
 向きなし対象・圏同値・初期性の公開宣言とモジュール全宣言を検査する。
+BS 著者版 Remark 7.15 の包を扱う、向きなし入力圏の宣言を監査する。
+
 ## 方針
 assert_no_sorry と推移的な公理の列挙を併用する。
 ## 規約

@@ -19,7 +19,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison
 
 ## 規約
 
-二つの引き戻しの主張は明示的な入力のまま残す。BS Cor 8.12 を供給したり導来模型を同定したりはしない。旧 `CLMST/PerfectoidizationImageTorComparison`・`PerfectoidFiniteProductTor`・`CanonicalExcisionTorInput`。
+二つの引き戻しの主張は明示的な入力のまま残す。BS 著者版 Corollary 8.12 を供給したり導来模型を同定したりはしない。旧 `CLMST/PerfectoidizationImageTorComparison`・`PerfectoidFiniteProductTor`・`CanonicalExcisionTorInput`。
 
 ## 使われ方
 

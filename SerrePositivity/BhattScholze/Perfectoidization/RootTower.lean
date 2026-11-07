@@ -14,7 +14,7 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 
 ## 方針
 
-対象は有限代数の選んだ perfectoid 化（`Perfectoidization/Finite`、BS Thm 1.17(1) の存在定理に相対的）で、作用の両立は普遍性から示す。
+対象は有限代数の選んだ perfectoid 化（`Perfectoidization/Finite`、BS 著者版 Theorem 1.17(1) の存在定理に相対的）で、作用の両立は普遍性から示す。
 
 ## 規約
 

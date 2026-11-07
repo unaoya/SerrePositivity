@@ -7,26 +7,26 @@ public import Mathlib.Algebra.Regular.Basic
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 
 /-!
-# 完全な標数 p 環の Witt 環の distinguished 商：mod p と tilt（BS 著者版 Thm 3.10 の計算）
+# 完全な標数 p 環の Witt 環の distinguished 商：mod p と tilt（BS 著者版 Theorem 3.10 の計算）
 
 ## 概要
 W(k)/(d) の mod p、Frobenius 核の生成元、tilt への係数射とその核・全射性、完全 δ 環の商の mod p Frobenius の全射性。
 
 ## 方針
-d = [a₀] + p·u（Lemma 2.33）から p 乗根を作り、Perfection の普遍性で tilt へ持ち上げる。
+d = [a₀] + p·u（BS 著者版 Lemma 2.33）から p 乗根を作り、Perfection の普遍性で tilt へ持ち上げる。
 
 ## 規約
 商の完備性は明示した仮定。
 
 ## 使われ方
-Thm 3.10（Prism/Perfectoid/WittQuotientPerfectoid）。
+BS 著者版 Theorem 3.10（Prism/Perfectoid/WittQuotientPerfectoid）。
 -/
 
 universe u v
 
 /-! ## 完全δ環の商におけるmod p Frobenius全射性（旧 Prism/Perfectoid/PerfectDeltaQuotientFrobenius.lean）
 
-著者公開版Theorem 3.10の逆向きの最初の計算。
+BS 著者版 Theorem 3.10の逆向きの最初の計算。
 完備性やFontaine核の単項性を仮定せず、perfectoid性全体は結論しない。
 -/
 
@@ -65,7 +65,7 @@ end PerfectDeltaQuotientFrobenius
 
 /-! ## distinguished Witt商のp乗根と単元係数（旧 Prism/Perfectoid/WittDistinguishedQuotient.lean）
 
-著者公開版Lemma 2.33・Theorem 3.10の具体的なWitt商の計算。
+BS 著者版 Lemma 2.33・BS 著者版 Theorem 3.10の具体的なWitt商の計算。
 商の完備性とFontaine核の単項性はまだ結論しない。
 -/
 
@@ -75,7 +75,7 @@ namespace SerrePositivity.BhattScholze
 variable (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] [CharP k p] [PerfectRing k p]
 
 /-- distinguished Witt元は[x₀]+p*u（u単元）と書ける。
-任意の完全係数環でのLemma 2.33の具体的な展開。 -/
+任意の完全係数環でのBS 著者版 Lemma 2.33の具体的な展開。 -/
 theorem exists_teichmuller_add_p_mul_unit_of_distinguished (d : WittVector p k)
     (hd : (wittDeltaStructure p k).IsDistinguished d) :
     ∃ u : (WittVector p k)ˣ,

@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 ## 概要
 
 全射な商を一度古典的に p 完備化してから BS の B4 へ渡し、指定した perfectoid 化への写像が全射であることを示す（`surjective_perfectoidization_of_quotient`）。
+BS 著者版 Corollary 7.3 の普遍 perfectoid 化を、指定した全射商について構成する。
 
 ## 規約
 

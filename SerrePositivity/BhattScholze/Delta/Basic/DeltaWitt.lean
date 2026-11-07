@@ -8,7 +8,7 @@ public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.WittVector.Frobenius
 
 /-!
-# δ 環から Witt 環への写像（BS 著者版 Rem 2.7 の w_R、Rem 2.13 の δ_n）
+# δ 環から Witt 環への写像（BS 著者版 Remark 2.7 の w_R、BS 著者版 Remark 2.13 の δ_n）
 
 ## 概要
 ghost 座標が Frobenius 持ち上げの反復 φⁿ(a) になる Witt 係数の列を構成し、ghost 写像が単射のとき
@@ -21,7 +21,7 @@ ghost 座標が Frobenius 持ち上げの反復 φⁿ(a) になる Witt 係数�
 環準同型性・一意性は ghost 写像の単射性を仮定する。Joyal の右随伴としての普遍性は述べない。
 
 ## 使われ方
-相対自由 δ 環の Witt 座標（Free/Finite、Rem 2.14 の相対版）と、André の一段の拡大の Witt 方程式（Division/Relations）。
+相対自由 δ 環の Witt 座標（Free/Finite、BS 著者版 Remark 2.14 の相対版）と、André の一段の拡大の Witt 方程式（Division/Relations）。
 -/
 
 @[expose] public noncomputable section
@@ -283,7 +283,7 @@ section DeltaWittGhostRingHom
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- ghost射が単射なら、構成済み点ごとのWitt写像は環射。 -/
+/-- ghost射が単射なら、構成済み点ごとのWitt写像は環射（BS 著者版 Remark 2.13 の w_R の ghost 写像が単射の場合、Remark 2.7 の随伴単位の環準同型の部分）。 -/
 def deltaWittGhostRingHom (D : DeltaStructure p A)
     (hg : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A)) :
     A →+* WittVector p A where
@@ -334,7 +334,7 @@ theorem deltaWittGhostRingHom_truncate_two_comp (D : DeltaStructure p A)
   intro a
   exact deltaWittGhostVector_truncate_two D hp a
 
-/-- 全ghost成分を指定したWitt環射は、ghost射単射下で一意。 -/
+/-- 全ghost成分を指定したWitt環射は、ghost射単射下で一意（BS 著者版 Remark 2.13 の ghost 写像が単射の場合の特徴づけ）。 -/
 theorem deltaWittGhostRingHom_unique (D : DeltaStructure p A)
     (hg : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
     (f : A →+* WittVector p A)
@@ -436,7 +436,8 @@ theorem deltaWittGhostRingHom_frobenius_comp (D : DeltaStructure p A)
   intro a
   exact deltaWittGhostVector_frobenius D hg a
 
-/-- 基底δを使うFrobenius方程式。全Witt係数を追うための具体的な式。 -/
+/-- 基底δを使うFrobenius方程式（BS 著者版 Remark 2.13 の ghost 写像が単射の場合の φ と δ の関係）。
+  全Witt係数を追うための具体的な式。 -/
 theorem deltaWittGhostVector_frobenius_formula (D : DeltaStructure p A)
     (hg : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A)) (a : A) :
     WittVector.frobenius (deltaWittGhostVector D a) =

@@ -19,7 +19,7 @@ Witt 余積の普遍性を IsPerfectoidization へ移す。
 —
 
 ## 使われ方
-perfectoid 環の完備テンソル積、Thm 7.4 の底変換。
+perfectoid 環の完備テンソル積、BS 著者版 Theorem 7.4 の底変換。
 -/
 
 universe u

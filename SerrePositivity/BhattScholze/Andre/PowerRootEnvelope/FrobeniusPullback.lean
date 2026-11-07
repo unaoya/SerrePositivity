@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.Andre.Variants.Auxiliary
 public import SerrePositivity.BhattScholze.Andre.Variants.RootedExtension
 
 /-!
-# Frobenius 底変換と引戻しの pd 構造（Rem 7.15）
+# Frobenius 底変換と引戻しの pd 構造（BS 著者版 Remark 7.15）
 
 ## 概要
 Hodge–Tate ϖ 剰余の係数 Frobenius 底変換と無限根作用、Frobenius テンソル上の代数作用と PD 入力、A 全体の Frobenius 引戻しの pd 表示と普遍性。
@@ -29,7 +29,7 @@ universe u w
 
 元の実 Hodge–Tate 候補の自然な ϖ 商を R/ϖ → R/p の係数 Frobenius で
 通常テンソル底変換すると、元の f の mod p 入力の主分冪表示と R/p 代数同型。
-BS Rem 7.15（著者版 p.62）の Frobenius 引戻しの具体的係数比較。
+BS 著者版 Remark 7.15（著者版 p.62）の Frobenius 引戻しの具体的係数比較。
 
 ## 方針
 
@@ -86,7 +86,7 @@ local notation "Mv" => T ⧸ Ideal.map φ Iv
 /-- 概要：元の自然な ϖ 商は元の mod p 入力の pd 表示と半線形環同型。
 方針：二重商・逆係数表示・Frobenius 係数表示を合成する。
 規約：環同型の係数 Frobenius は次の公式で明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の実テンソル比較の入力。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実テンソル比較の入力。 -/
 def powerRootPrismMonicVarpiFrobeniusResidueEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     Mv ≃+* Dp := by
@@ -100,7 +100,7 @@ def powerRootPrismMonicVarpiFrobeniusResidueEquiv (hf : f.Monic) :
 /-- 概要：実剰余比較は自然な R/ϖ 係数に指定 Frobenius を作用させる。
 方針：二つの代数同型の可換性と pd 係数同型の公式を使う。
 規約：元の ϖ 商の自然な係数作用を保持する。
-使われ方：BS Rem 7.15（著者版 p.62）のテンソル普遍射の半線形性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）のテンソル普遍射の半線形性。 -/
 theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_coeff (hf : f.Monic) (r : Rv) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -117,7 +117,7 @@ theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_coeff (hf : f.Monic) (r : 
 /-- 概要：自然な実 ϖ 商の Frobenius テンソル底変換は元の mod p 入力の pd 表示。
 方針：半線形環同型を通常テンソル底変換の代数同型へ直す。
 規約：モニック性以外の次数・p 正則性仮定を加えない。
-使われ方：BS Rem 7.15（著者版 p.62）の実引戻しと正確な入力の接続。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実引戻しと正確な入力の接続。 -/
 def powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -133,7 +133,7 @@ def powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv (hf : f.Monic) :
 /-- 概要：実引戻し比較は単純テンソルを標準係数と実剰余像の積へ送る。
 方針：半線形テンソル同型の単純テンソル公式を適用する。
 規約：全ての実 ϖ 剰余元を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の根変数と元の係数の追跡。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根変数と元の係数の追跡。 -/
 theorem powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_tmul (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -157,7 +157,7 @@ end PowerRootPrismMonicFrobeniusBaseChange
 ## 概要
 
 実 ϖ 剰余の Frobenius テンソル比較は、元の第 n+1 根変数を第 n 根変数に送る。
-BS Rem 7.15（著者版 p.62）の pd 包の自然な入力環作用を確認する。
+BS 著者版 Remark 7.15（著者版 p.62）の pd 包の自然な入力環作用を確認する。
 
 ## 方針
 
@@ -220,7 +220,7 @@ local notation "Et" => powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv W hW 
 /-- 概要：元の無限根環から自然な実 ϖ 剰余への標準係数射。
 方針：raw 射・実完備化単位・二段の通常商射を合成する。
 規約：入力のモニック性は環射の定義自体に不要。
-使われ方：BS Rem 7.15（著者版 p.62）の根変数の標準像。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の根変数の標準像。 -/
 def powerRootPrismMonicVarpiInputMap :
     let := pdCompletionCommRing L p (jL dP)
     P →+* Mv := by
@@ -230,7 +230,7 @@ def powerRootPrismMonicVarpiInputMap :
 /-- 概要：半線形実剰余比較は元の第 n 根変数を比較先の第 n 根変数の p 乗へ送る。
 方針：実完備化比較の全係数公式と係数・変数 Frobenius の公式を合成する。
 規約：全ての段 n を含み、根を選び直さない。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な無限根環作用の確認。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な無限根環作用の確認。 -/
 theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
     U hf (powerRootPrismMonicVarpiInputMap W hW f (powerRootPolynomialVariable A p hp n)) =
@@ -251,7 +251,7 @@ theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable (hf : f.Monic) (n
 /-- 概要：半線形比較は元の第 n+1 根変数を比較先の第 n 根変数へ送る。
 方針：p 乗像の公式と無限根変数の隣接関係を使う。
 規約：全ての段 n を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の底変換後の入力環の根変数。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の底変換後の入力環の根変数。 -/
 theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable_succ
     (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -265,7 +265,7 @@ theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable_succ
 /-- 概要：実底変換比較は 1 と元の第 n+1 根変数のテンソルを第 n 根変数へ送る。
 方針：単純テンソル公式と半線形比較の隣接段公式を使う。
 規約：自然な実 ϖ 商の元をそのままテンソルに入れる。
-使われ方：BS Rem 7.15（著者版 p.62）の実引戻しの自然な入力環作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実引戻しの自然な入力環作用。 -/
 theorem powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_variable
     (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -298,7 +298,7 @@ end PowerRootPrismMonicFrobeniusRootAction
 ## 概要
 
 実テンソルの無限根環作用は、元の次段の根変数の像と自然な係数作用で記述できる。
-BS Rem 7.15（著者版 p.62）の pd 包の入力環との比較。
+BS 著者版 Remark 7.15（著者版 p.62）の pd 包の入力環との比較。
 
 ## 方針
 
@@ -358,7 +358,7 @@ local notation "Et" => powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv W hW 
 /-- 概要：実テンソルに元の mod p 無限根環の代数作用を与える。
 方針：実テンソル同型の逆で標準入力係数射を戻す。
 規約：次の係数・根変数公式で自然性を確認する。
-使われ方：BS Rem 7.15（著者版 p.62）の実 pd 源の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 pd 源の係数作用。 -/
 @[instance_reducible] def powerRootPrismMonicFrobeniusTensorInputAlgebra (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -372,7 +372,7 @@ local notation "Et" => powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv W hW 
 /-- 概要：実テンソル比較は同じ無限根環上の代数同型。
 方針：逆同型で戻した作用と順逆の合成を照合する。
 規約：元の Rp 代数同型と同じ環同型を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の分冪包の普遍性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分冪包の普遍性の移送。 -/
 def powerRootPrismMonicFrobeniusTensorInputAlgEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -390,7 +390,7 @@ def powerRootPrismMonicFrobeniusTensorInputAlgEquiv (hf : f.Monic) :
 /-- 概要：実テンソルの入力環作用は元の Rp 係数作用と一致する。
 方針：実テンソル同型の単射性と係数作用の塔を使う。
 規約：Rp の任意の元を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の自然な底環作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の自然な底環作用。 -/
 theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_coeff
     (hf : f.Monic) (r : Rp) :
     let := pdCompletionCommRing L p (jL dP)
@@ -413,7 +413,7 @@ theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_coeff
 /-- 概要：第 n 入力根変数は元の第 n+1 根変数の標準像とのテンソル。
 方針：実比較の単射性と検証済みの根変数公式を使う。
 規約：全段 n で同じ自然な根の族を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の入力環作用の自然性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の入力環作用の自然性。 -/
 theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_variable
     (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -440,7 +440,7 @@ theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_variable
 /-- 概要：通常多項式の入力像は元の第一根変数のテンソルで評価した値。
 方針：評価と環射の可換性に、自然な係数作用と第零入力変数の公式を使う。
 規約：任意の Rp 係数多項式を含む。
-使われ方：BS Rem 7.15（著者版 p.62）の元の f の入力を実テンソルで明示する。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の元の f の入力を実テンソルで明示する。 -/
 theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_polynomial
     (hf : f.Monic) (g : Polynomial Rp) :
     let := pdCompletionCommRing L p (jL dP)
@@ -469,7 +469,7 @@ theorem powerRootPrismMonicFrobeniusTensorInputAlgebra_polynomial
 /-- 概要：元の Rp 係数作用・無限根作用・実テンソル作用は作用の塔をなす。
 方針：全係数での代数射の一致を使う。
 規約：元の二つの作用を変更しない。
-使われ方：BS Rem 7.15（著者版 p.62）の係数作用の整合性。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の係数作用の整合性。 -/
 theorem powerRootPrismMonicFrobeniusTensorInputScalarTower (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -494,7 +494,7 @@ end PowerRootPrismMonicFrobeniusTensorAlgebra
 ## 概要
 
 自然な Frobenius テンソルにおける標準入力環作用、比較同型、分冪イデアルを保持する。
-BS Rem 7.15(1)（著者版 p.62）の元の入力と同じ台環を使う。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の元の入力と同じ台環を使う。
 
 ## 方針
 
@@ -559,7 +559,7 @@ local notation "Ein" => powerRootPrismMonicFrobeniusTensorInputAlgEquiv W hW f h
 /-- 概要：実テンソルの分冪イデアルは標準正次数イデアルの逆像。
 方針：自然な入力環上の代数同型の逆で像イデアルを取る。
 規約：元の実テンソル環を維持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の台イデアル。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の台イデアル。 -/
 def powerRootPrismMonicFrobeniusTensorPDIdeal :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -575,7 +575,7 @@ def powerRootPrismMonicFrobeniusTensorPDIdeal :
 /-- 概要：自然な実テンソルの分冪イデアルは元の入力の像を含む。
 方針：係数を保つ同型の源への入力所属の一般公式を使う。
 規約：モニック性のみを仮定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪包の入力条件。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪包の入力条件。 -/
 theorem powerRootPrismMonicFrobeniusTensorPDIdeal_input_mem :
     let := pdCompletionCommRing L p (jL dP)
     let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
@@ -598,7 +598,7 @@ end PowerRootPrismMonicFrobeniusTensorPD
 
 自然な実 Hodge–Tate ϖ 商を A 全体の Frobenius に沿って引き戻すと、
 元の f の mod p 入力の主分冪表示と左 A 代数同型になる。
-BS Rem 7.15(1)（著者版 p.62）の φ_A 引戻しの通常テンソルによる比較。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の φ_A 引戻しの通常テンソルによる比較。
 
 ## 方針
 
@@ -665,7 +665,7 @@ local notation "U" => powerRootPrismMonicVarpiFrobeniusResidueEquiv W hW f
 /-- 概要：実 ϖ 商の A 係数射は元の自然な R/ϖ 作用の合成。
 方針：二段商係数射と既存の自然な商代数作用を合成する。
 規約：Frobenius でねじる前の元の係数作用を固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の A 上の実引戻しの右因子。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の A 上の実引戻しの右因子。 -/
 def powerRootPrismMonicVarpiBaseMap :
     let := pdCompletionCommRing L p (jL dP)
     A →+* Mv := by
@@ -676,7 +676,7 @@ def powerRootPrismMonicVarpiBaseMap :
 /-- 概要：実 ϖ 商の A 係数射は元の無限根入力射の係数制限と一致する。
 方針：自然な基底射の代表元公式と商代数の定義を使う。
 規約：元の完備化単位と商射を保持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の元の A 作用の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の元の A 作用の照合。 -/
 theorem powerRootPrismMonicVarpiBaseMap_coeff (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicVarpiBaseMap W hW f a₀ =
@@ -688,7 +688,7 @@ theorem powerRootPrismMonicVarpiBaseMap_coeff (a₀ : A) :
 /-- 概要：実剰余の半線形比較は A 係数に A 自身の Frobenius を作用させる。
 方針：R/ϖ 係数公式と係数商同型の代表元公式を合成する。
 規約：モニック性以外の次数・p 正則性仮定は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の A 全体の引戻しに必要な半線形性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の A 全体の引戻しに必要な半線形性。 -/
 theorem powerRootPrismMonicVarpiFrobeniusResidueEquiv_base_coeff
     (hf : f.Monic) (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
@@ -706,7 +706,7 @@ local notation "At" => Ac ⊗[A] Mv
 /-- 概要：A 上の実 Frobenius 引戻しは元の mod p 入力の主分冪表示と左 A 線形同型。
 方針：A 係数の半線形性に自己同型に沿うテンソル比較を適用する。
 規約：左 A は型の写し、右因子は自然な実 ϖ 商で、A 作用は明示したものを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の φ_A 引戻し全体の実比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の φ_A 引戻し全体の実比較。 -/
 def powerRootPrismMonicFullFrobeniusPullbackAlgEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -720,7 +720,7 @@ def powerRootPrismMonicFullFrobeniusPullbackAlgEquiv (hf : f.Monic) :
 /-- 概要：A 全体の引戻し比較の単純テンソル公式。
 方針：自己同型テンソル比較の公式を実剰余へ適用する。
 規約：左の係数は元の A の元で指定し、全ての実 ϖ 商元を含む。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の標準係数と自然な根変数の追跡。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の標準係数と自然な根変数の追跡。 -/
 theorem powerRootPrismMonicFullFrobeniusPullbackAlgEquiv_tmul (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -741,7 +741,7 @@ theorem powerRootPrismMonicFullFrobeniusPullbackAlgEquiv_tmul (hf : f.Monic) :
 /-- 概要：A 全体の引戻し比較は元の第 n+1 根変数を第 n 根変数へ送る。
 方針：単純テンソル公式で係数 1 を消し、実剰余比較の根変数公式を使う。
 規約：元の自然な入力射と全ての段 n を保持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の入力環作用を A 引戻し上で照合する。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の入力環作用を A 引戻し上で照合する。 -/
 theorem powerRootPrismMonicFullFrobeniusPullbackAlgEquiv_variable
     (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -778,7 +778,7 @@ end PowerRootPrismMonicFullFrobeniusPullback
 ## 概要
 
 A 全体の Frobenius 引戻しにおける標準入力環作用、比較同型、分冪イデアルを保持する。
-BS Rem 7.15(1)（著者版 p.62）の元の入力と同じ台環を使う。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の元の入力と同じ台環を使う。
 
 ## 方針
 
@@ -849,7 +849,7 @@ local notation "Ef" => powerRootPrismMonicFullFrobeniusPullbackAlgEquiv W hW f
 /-- 概要：A 全体の実引戻しに元の mod p 無限根環の代数作用を与える。
 方針：A 全体の実引戻し同型の逆で標準入力係数射を戻す。
 規約：次の係数・根変数公式で自然性を確認する。
-使われ方：BS Rem 7.15（著者版 p.62）の実 pd 源の係数作用。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の実 pd 源の係数作用。 -/
 @[instance_reducible] def powerRootPrismMonicFullFrobeniusInputAlgebra (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -865,7 +865,7 @@ local notation "Ef" => powerRootPrismMonicFullFrobeniusPullbackAlgEquiv W hW f
 /-- 概要：A 全体の実引戻し比較は同じ無限根環上の代数同型。
 方針：逆同型で戻した作用と順逆の合成を照合する。
 規約：元の左 A 代数同型と同じ環同型を使う。
-使われ方：BS Rem 7.15（著者版 p.62）の分冪包の普遍性の移送。 -/
+使われ方：BS 著者版 Remark 7.15（著者版 p.62）の分冪包の普遍性の移送。 -/
 def powerRootPrismMonicFullFrobeniusInputAlgEquiv (hf : f.Monic) :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -885,7 +885,7 @@ def powerRootPrismMonicFullFrobeniusInputAlgEquiv (hf : f.Monic) :
 /-- 概要：入力環作用の元の A 係数像は左 A の標準係数像と一致する。
 方針：比較の単射性・入力係数の可換性・左 A 線形性を使う。
 規約：A の全係数元について二つの作用の一致を述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の元の多項式の係数を保持する。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の元の多項式の係数を保持する。 -/
 theorem powerRootPrismMonicFullFrobeniusInputAlgebra_base_coeff
     (hf : f.Monic) (a₀ : A) :
     let := pdCompletionCommRing L p (jL dP)
@@ -911,7 +911,7 @@ theorem powerRootPrismMonicFullFrobeniusInputAlgebra_base_coeff
 /-- 概要：第 n 入力根変数は元の第 n+1 根変数の標準像とのテンソル。
 方針：入力環同型の単射性と A 全体の引戻しの根変数公式を使う。
 規約：選び直した根ではなく元の入力射の像を使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の自然な無限根入力環作用。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の自然な無限根入力環作用。 -/
 theorem powerRootPrismMonicFullFrobeniusInputAlgebra_variable
     (hf : f.Monic) (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -943,7 +943,7 @@ local notation "Ein" => powerRootPrismMonicFullFrobeniusInputAlgEquiv W hW f hf
 /-- 概要：A 全体の実引戻しの分冪イデアルは標準正次数イデアルの逆像。
 方針：自然な入力環上の代数同型の逆で像イデアルを取る。
 規約：元の A 全体の実引戻し環を維持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の台イデアル。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の台イデアル。 -/
 def powerRootPrismMonicFullFrobeniusPDIdeal :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -961,7 +961,7 @@ def powerRootPrismMonicFullFrobeniusPDIdeal :
 /-- 概要：自然な A 全体の実引戻しの分冪イデアルは元の入力の像を含む。
 方針：係数を保つ同型の源への入力所属の一般公式を使う。
 規約：モニック性のみを仮定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪包の入力条件。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪包の入力条件。 -/
 theorem powerRootPrismMonicFullFrobeniusPDIdeal_input_mem :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -985,7 +985,7 @@ end PowerRootPrismMonicFullFrobeniusPD
 ## 概要
 
 A 全体の自然な実 Frobenius 引戻しは、モニック性のみの下で元の mod p 入力の実 pd 包となる。
-BS Rem 7.15(1)（著者版 p.62）の φ_A 引戻しの pd 比較から prism 商の p 正則性を除く。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の φ_A 引戻しの pd 比較から prism 商の p 正則性を除く。
 
 ## 方針
 
@@ -1058,7 +1058,7 @@ local notation "Ein" => powerRootPrismMonicFullFrobeniusInputAlgEquiv W hW f hf
 /-- 概要：自然な A 全体の実引戻し上に元の mod p 入力の実分冪構造を与える。
 方針：係数を保つ実同型に沿って比較先の構造を戻す。
 規約：prism 商の p 正則性・正次数を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
 def powerRootPrismMonicFullFrobeniusDividedPowersOfMonic :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -1077,7 +1077,7 @@ def powerRootPrismMonicFullFrobeniusDividedPowersOfMonic :
 /-- 概要：A 全体の実引戻し比較は元の実分冪構造を比較先へ保つ。
 方針：同型の源へ戻した構造の分冪射性を使う。
 規約：同じ入力環作用と同じイデアルを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 比較。 -/
 theorem powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphismOfMonic :
     let := pdCompletionCommRing L p (jL dP)
     let := (qA).toAlgebra
@@ -1097,7 +1097,7 @@ theorem powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphismOfMonic :
 /-- 概要：自然な入力元の全分冪は標準分冪生成元の実同型による逆像。
 方針：比較先の標準分冪値を係数を保つ同型で戻す。
 規約：零次数を含む全次数 n を指定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
 theorem powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply
     (n : ℕ) :
     let := pdCompletionCommRing L p (jL dP)
@@ -1120,7 +1120,7 @@ theorem powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply
 方針：同じ入力環上の代数同型で標準主分冪包の普遍性を移す。
 原典とは異なる半線形比較・通常テンソル・実分冪構造の移送による証明。
 規約：標的の宇宙・ねじれ・完備性は制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
 theorem existsUnique_powerRootPrismMonicFullFrobeniusPDMorphismOfMonic
     {B : Type w} [CommRing B] [Algebra Np B] {I : Ideal B}
     (Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :

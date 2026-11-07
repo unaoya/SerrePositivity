@@ -9,19 +9,20 @@ public import Mathlib.RingTheory.AdicCompletion.Functoriality
 
 ## 概要
 prism の射 f : (A, (d)) → (B, (e)) で f(d) = e·u となる単元 u が一意にあること、f(d) は非零因子で
-(f(d)) = (e)、B は f(d) に沿って導来完備であること、I ⊗_A B ≅ J（Lemma 3.5 の主張）、
-商の射 A/I → B/J が同型なら f も同型であること（Thm 3.10 の比較で使う）。
+(f(d)) = (e)、B は f(d) に沿って導来完備であること、I ⊗_A B ≅ J（BS 著者版 Lemma 3.5 の主張）、
+商の射 A/I → B/J が同型なら f も同型であること（BS 著者版 Theorem 3.10 の比較で使う）。
+商の射の全単射性から元の射を判定する帰結も、BS 著者版 Lemma 3.5 のイデアル比較を使う。
 
 ## 方針
 prism の p と生成元は導来完備性から Jacobson 根基に属し、生成元は distinguished
-（`OrientedPrism.isDistinguished_generator`）。f(d) = e·r に Lemma 2.24 を当てて r が単元であることを得る。
+（`OrientedPrism.isDistinguished_generator`）。f(d) = e·r に BS 著者版 Lemma 2.24 を当てて r が単元であることを得る。
 どの主張も p 正則性・完全性・有界性を仮定しない。
 
 ## 規約
-Lemma 3.5 の後半（B[I] = 0 なら (B, IB) は prism）は扱わない（ノート課題 T3-5）。
+BS 著者版 Lemma 3.5 の後半（B[I] = 0 なら (B, IB) は prism）は扱わない（ノート課題 T3-5）。
 
 ## 使われ方
-完全 prism の比較、Thm 3.10、Lemma 4.8、André の有界試験 prism への射。
+完全 prism の比較、BS 著者版 Theorem 3.10、BS 著者版 Lemma 4.8、André の有界試験 prism への射。
 -/
 
 universe u v
@@ -35,7 +36,7 @@ open SerrePositivity.DerivedCompletion
 variable {p : ℕ} [Fact p.Prime] {A : Type u} {B : Type v} [CommRing A] [CommRing B]
 variable {P : OrientedPrism p A} {Q : OrientedPrism p B}
 
-/-- prism射は、源の生成元を終域の生成元の一意な単元倍へ送る。 -/
+/-- prism射は、源の生成元を終域の生成元の一意な単元倍へ送る（BS 著者版 Lemma 3.5 の像イデアルの等式を向き付きの場合に生成元で表した形、序論の Proposition 1.5）。 -/
 theorem existsUnique_generator_unit (f : Hom P Q) :
     ∃! u : Bˣ, f.toRingHom P.generator = Q.generator * u := by
   obtain ⟨r, hru, hr⟩ := f.map_delta.exists_isUnit_of_distinguished_of_mem_span
@@ -151,7 +152,7 @@ theorem idealTensorMap_bijective (f : Hom P Q) (hf : f.toRingHom = algebraMap A 
   rw [he]
   exact (e₁.trans e₂).bijective
 
-/-- 標準イデアル基底変換写像そのものを台写像とする具体的なB線形同型。 -/
+/-- 標準イデアル基底変換写像そのものを台写像とする具体的なB線形同型（BS 著者版 Lemma 3.5 の順方向の指定代数構造の場合）。 -/
 def idealTensorEquiv (f : Hom P Q) (hf : f.toRingHom = algebraMap A B) :
     B ⊗[A] P.ideal ≃ₗ[B] Q.ideal :=
   LinearEquiv.ofBijective (f.idealTensorMap hf) (f.idealTensorMap_bijective hf)
@@ -177,7 +178,7 @@ theorem idealTensorMap_subtype_range (f : Hom P Q)
 
 end Compatible
 
-/-- 任意のprism射に、その射自身のA代数構造を使う基底変換同型。
+/-- 任意のprism射に、その射自身のA代数構造を使う基底変換同型（BS 著者版 Lemma 3.5 のテンソル同型の向き付きの場合）。
 別のAlgebraインスタンスや適合性の仮定を外から要求しない。 -/
 def idealBaseChangeEquiv (f : Hom P Q) :
     letI := f.toRingHom.toAlgebra
@@ -195,7 +196,7 @@ end SerrePositivity.BhattScholze.OrientedPrism
 
 end OrientedPrismIdealTensor
 
-/-! ## 商による同型判定（Thm 3.10 の最後の比較で使う）
+/-! ## 商による同型判定（BS 著者版 Theorem 3.10 の最後の比較で使う）
 
 台の同型から商の同型を作り、逆に商の射が全単射なら台の射も全単射であることを示す。
 単射性は核の元を生成元の像で繰り返し割って d 進分離性で、全射性は主イデアル進完備性による全射判定で得る。

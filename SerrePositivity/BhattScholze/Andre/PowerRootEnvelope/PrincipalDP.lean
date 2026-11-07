@@ -8,6 +8,7 @@ public import SerrePositivity.BhattScholze.Delta.DividedPower.PrincipalDP
 
 ## 概要
 切断表示、自由一元分冪代数・一次関係の分冪表示と係数主イデアル・係数イデアルの商の交換、正則一元入力の mod p 一次関係商の分冪構造と pd 包の普遍性、正次数分冪イデアルによる商と普遍性、係数同型による移送。
+BS 著者版 Lemma 2.38 と Remark 7.15 の一元分冪包の計算に使う、一次関係と係数商を比較する。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。
@@ -26,7 +27,7 @@ universe u v w
 ## 概要
 
 自由一元分冪代数を係数元 c で割ると、A/(c) 上の自由一元分冪代数と環同型。
-BS Rem 7.15(1)（著者版 p.62）の実分冪表示の係数変更。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪表示の係数変更。
 
 ## 方針
 
@@ -51,7 +52,7 @@ variable {A : Type u} [CommRing A] {B : Type v} [CommRing B]
 /-- 概要：自由分冪の係数変更は標準基底座標を係数環射で送る。
 方針：両座標射を係数線形写像として束ね、標準基底上で比較する。
 規約：任意の係数環射を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数商射の核の計算。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数商射の核の計算。 -/
 theorem rankOneDPRingMap_repr (φ : A →+* B) (t : DividedPowerAlgebra A A) (n : ℕ) :
     (rankOneDPAnyBasis B).repr (rankOneDPRingMap φ t) n =
       φ ((rankOneDPAnyBasis A).repr t n) := by
@@ -76,7 +77,7 @@ theorem rankOneDPRingMap_repr (φ : A →+* B) (t : DividedPowerAlgebra A A) (n 
 /-- 概要：全射な係数環射は自由分冪代数の全射を誘導する。
 方針：標準基底展開の各係数を持ち上げ、像部分環で有限和を取る。
 規約：係数環の非零性を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更後の環同型。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更後の環同型。 -/
 theorem rankOneDPRingMap_surjective (φ : A →+* B) (hφ : Function.Surjective φ) :
     Function.Surjective (rankOneDPRingMap φ) := by
   classical
@@ -99,7 +100,7 @@ local notation "bar" => Ideal.Quotient.mk (Ideal.span {(c : A)})
 /-- 概要：係数商へ送る自由分冪環射の核は係数元 c の主イデアル。
 方針：標準基底座標の c 可除性から各基底項を主イデアル内に足し戻す。
 規約：c が零因子でもよい。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実台環の係数商比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実台環の係数商比較。 -/
 theorem rankOneDPCoefficientQuotient_ker :
     RingHom.ker (rankOneDPRingMap bar) = Ideal.span {algebraMap A DA c} := by
   classical
@@ -127,7 +128,7 @@ theorem rankOneDPCoefficientQuotient_ker :
 /-- 概要：自由分冪代数の係数主イデアル商は係数商上の自由分冪代数と環同型。
 方針：核の同定と全射性に第一同型定理を適用する。
 規約：標準係数射と全次数の標準分冪を保つ同型。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の一次関係商の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の一次関係商の係数変更。 -/
 def rankOneDPCoefficientQuotientEquiv :
     (DA ⧸ Ideal.span {algebraMap A DA c}) ≃+* DividedPowerAlgebra R R :=
   (Ideal.quotEquivOfEq (rankOneDPCoefficientQuotient_ker c).symm).trans
@@ -137,7 +138,7 @@ def rankOneDPCoefficientQuotientEquiv :
 /-- 概要：係数商同型は代表元を元の係数変更射で送る。
 方針：第一同型定理の代表元公式を使う。
 規約：自由分冪代数の全ての元を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の関係元の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の関係元の照合。 -/
 theorem rankOneDPCoefficientQuotientEquiv_mk (t : DA) :
     rankOneDPCoefficientQuotientEquiv c (Ideal.Quotient.mk _ t) =
       rankOneDPRingMap bar t := rfl
@@ -151,7 +152,7 @@ end RankOneDPCoefficientQuotient
 ## 概要
 
 一次関係 γ₁=y を持つ分冪表示環を係数元 c で割ることと、A/(c) 上で同じ表示を
-作ることは可換。BS Rem 7.15(1)（著者版 p.62）の実 pd 包の係数変更の台環比較。
+作ることは可換。BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の係数変更の台環比較。
 
 ## 方針
 
@@ -182,7 +183,7 @@ local notation "I" => principalDPRelationIdeal y
 /-- 概要：自由分冪代数の係数商同型は一次関係イデアルの像を保つ。
 方針：両イデアルの一つの生成元を係数と標準分冪の公式で照合する。
 規約：係数商の元 y mod c を新しい入力とする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の台環比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の台環比較。 -/
 theorem principalDPRelationIdeal_map_coefficientQuotient :
     principalDPRelationIdeal (bar y) =
       ((I).map (Ideal.Quotient.mk C)).map (rankOneDPCoefficientQuotientEquiv c).toRingHom := by
@@ -199,7 +200,7 @@ theorem principalDPRelationIdeal_map_coefficientQuotient :
 /-- 概要：一次関係分冪表示の係数主イデアル商は係数商上の同じ表示と環同型。
 方針：二重商の順序交換と自由分冪の係数商同型を合成する。
 規約：実際の二つの主イデアル商を用いる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の係数変更。 -/
 def principalDPCoefficientQuotientEquiv :
     ((PrincipalDPPresentation A y) ⧸
       Ideal.span {algebraMap A (PrincipalDPPresentation A y) c}) ≃+*
@@ -215,7 +216,7 @@ def principalDPCoefficientQuotientEquiv :
 /-- 概要：二重商の比較同型は自由分冪代数の代表元を係数変更射で送る。
 方針：二重商順序交換と商同型の代表元公式を使う。
 規約：自由分冪代数の全ての元で述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数と全分冪生成元の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数と全分冪生成元の照合。 -/
 theorem principalDPCoefficientQuotientEquiv_mk_mk (t : DA) :
     principalDPCoefficientQuotientEquiv c y
       (Ideal.Quotient.mk _ (Ideal.Quotient.mk I t)) =
@@ -232,7 +233,7 @@ theorem principalDPCoefficientQuotientEquiv_mk_mk (t : DA) :
 /-- 概要：一次関係表示の係数商比較は標準係数を保つ。
 方針：自由分冪代表元公式と係数変更射の公式を使う。
 規約：元の係数環 A の全ての元を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の入力元の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の入力元の係数変更。 -/
 theorem principalDPCoefficientQuotientEquiv_coeff (b : A) :
     principalDPCoefficientQuotientEquiv c y
       (Ideal.Quotient.mk _ (algebraMap A (PrincipalDPPresentation A y) b)) =
@@ -245,7 +246,7 @@ theorem principalDPCoefficientQuotientEquiv_coeff (b : A) :
 /-- 概要：一次関係表示の係数商比較は標準分冪生成元の次数を保つ。
 方針：自由分冪代表元公式と標準分冪の係数変更を使う。
 規約：全ての次数 n を含める。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
 theorem principalDPCoefficientQuotientEquiv_generator (n : ℕ) :
     principalDPCoefficientQuotientEquiv c y
       (Ideal.Quotient.mk _ (principalDPGenerator y n)) = principalDPGenerator (bar y) n := by
@@ -259,7 +260,7 @@ variable {B : Type v} [CommRing B]
 /-- 概要：指定した係数元の商を、入力を保つ係数商同型に沿って標準表示へ移す。
 方針：等しい主イデアルの商同型、係数商の交換、表示環同型を合成する。
 規約：係数像との等式 hc を明示し、特殊な係数作用の塔にも適用する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の無限根実 pd 包の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の無限根実 pd 包の比較。 -/
 def principalDPReducedCoefficientEquiv
     (cD : PrincipalDPPresentation A y) (hc : cD = algebraMap A _ c)
     (e : (A ⧸ Ideal.span {c}) ≃+* B) (zB : B) (hy : e (bar y) = zB) :
@@ -271,7 +272,7 @@ def principalDPReducedCoefficientEquiv
 /-- 概要：係数還元と入力同型の合成は標準分冪生成元を保つ。
 方針：三つの商比較の生成元公式を順に適用する。
 規約：全次数を含む一般係数の計算として述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の具体的係数環での計算規則。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の具体的係数環での計算規則。 -/
 theorem principalDPReducedCoefficientEquiv_generator
     (cD : PrincipalDPPresentation A y) (hc : cD = algebraMap A _ c)
     (e : (A ⧸ Ideal.span {c}) ≃+* B) (zB : B) (hy : e (bar y) = zB) (n : ℕ) :
@@ -284,7 +285,7 @@ theorem principalDPReducedCoefficientEquiv_generator
 /-- 概要：係数還元と入力同型の合成は標準係数を対応する係数へ送る。
 方針：三つの商比較の係数公式を合成する。
 規約：元の係数環 A の任意の元で述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の具体的係数作用の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の具体的係数作用の比較。 -/
 theorem principalDPReducedCoefficientEquiv_coeff
     (cD : PrincipalDPPresentation A y) (hc : cD = algebraMap A _ c)
     (e : (A ⧸ Ideal.span {c}) ≃+* B) (zB : B) (hy : e (bar y) = zB) (b : A) :
@@ -304,7 +305,7 @@ end PrincipalDPCoefficientQuotient
 ## 概要
 
 主分冪表示を係数イデアルで割ることと、係数商上で同じ表示を作ることは可換。
-BS Rem 7.15(1)（著者版 p.62）の二元係数商での pd 包比較に用いる。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の二元係数商での pd 包比較に用いる。
 
 ## 方針
 
@@ -335,7 +336,7 @@ local notation "J" => I.map (algebraMap A DA)
 /-- 概要：係数商へ送る自由分冪環射の核は係数イデアル I の像イデアル。
 方針：標準基底座標の I への所属から各基底項を像イデアル内に足し戻す。
 規約：I は任意のイデアル。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実台環の係数商比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実台環の係数商比較。 -/
 theorem rankOneDPIdealQuotient_ker :
     RingHom.ker (rankOneDPRingMap bar) = J := by
   classical
@@ -359,7 +360,7 @@ theorem rankOneDPIdealQuotient_ker :
 /-- 概要：自由分冪代数の係数イデアル商は係数商上の自由分冪代数と環同型。
 方針：核の同定と全射性に第一同型定理を適用する。
 規約：標準係数射と全次数の標準分冪を保つ同型。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の一次関係商の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の一次関係商の係数変更。 -/
 def rankOneDPIdealQuotientEquiv :
     (DA ⧸ J) ≃+* DividedPowerAlgebra R R :=
   (Ideal.quotEquivOfEq (rankOneDPIdealQuotient_ker I).symm).trans
@@ -369,7 +370,7 @@ def rankOneDPIdealQuotientEquiv :
 /-- 概要：係数商同型は代表元を元の係数変更射で送る。
 方針：第一同型定理の代表元公式を使う。
 規約：自由分冪代数の全ての元を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の関係元の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の関係元の照合。 -/
 theorem rankOneDPIdealQuotientEquiv_mk (t : DA) :
     rankOneDPIdealQuotientEquiv I (Ideal.Quotient.mk _ t) =
       rankOneDPRingMap bar t := rfl
@@ -386,7 +387,7 @@ local notation "I" => principalDPRelationIdeal y
 /-- 概要：自由分冪代数の係数商同型は一次関係イデアルの像を保つ。
 方針：両イデアルの一つの生成元を係数と標準分冪の公式で照合する。
 規約：係数商の元 y mod K を新しい入力とする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の台環比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の台環比較。 -/
 theorem principalDPRelationIdeal_map_idealQuotient :
     principalDPRelationIdeal (bar y) =
       ((I).map (Ideal.Quotient.mk C)).map (rankOneDPIdealQuotientEquiv K).toRingHom := by
@@ -403,7 +404,7 @@ theorem principalDPRelationIdeal_map_idealQuotient :
 /-- 概要：一次関係分冪表示の係数イデアル商は係数商上の同じ表示と環同型。
 方針：二重商の順序交換と自由分冪の係数商同型を合成する。
 規約：実際の二つのイデアル商を用いる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の係数変更。 -/
 def principalDPIdealQuotientEquiv :
     ((PrincipalDPPresentation A y) ⧸
       K.map (algebraMap A (PrincipalDPPresentation A y))) ≃+*
@@ -419,7 +420,7 @@ def principalDPIdealQuotientEquiv :
 /-- 概要：二重商の比較同型は自由分冪代数の代表元を係数変更射で送る。
 方針：二重商順序交換と商同型の代表元公式を使う。
 規約：自由分冪代数の全ての元で述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数と全分冪生成元の照合。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数と全分冪生成元の照合。 -/
 theorem principalDPIdealQuotientEquiv_mk_mk (t : DA) :
     principalDPIdealQuotientEquiv K y
       (Ideal.Quotient.mk _ (Ideal.Quotient.mk I t)) =
@@ -436,7 +437,7 @@ theorem principalDPIdealQuotientEquiv_mk_mk (t : DA) :
 /-- 概要：一次関係表示の係数商比較は標準係数を保つ。
 方針：自由分冪代表元公式と係数変更射の公式を使う。
 規約：元の係数環 A の全ての元を扱う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の入力元の係数変更。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の入力元の係数変更。 -/
 theorem principalDPIdealQuotientEquiv_coeff (b : A) :
     principalDPIdealQuotientEquiv K y
       (Ideal.Quotient.mk _ (algebraMap A (PrincipalDPPresentation A y) b)) =
@@ -449,7 +450,7 @@ theorem principalDPIdealQuotientEquiv_coeff (b : A) :
 /-- 概要：一次関係表示の係数商比較は標準分冪生成元の次数を保つ。
 方針：自由分冪代表元公式と標準分冪の係数変更を使う。
 規約：全ての次数 n を含める。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の移送。 -/
 theorem principalDPIdealQuotientEquiv_generator (n : ℕ) :
     principalDPIdealQuotientEquiv K y
       (Ideal.Quotient.mk _ (principalDPGenerator y n)) = principalDPGenerator (bar y) n := by
@@ -469,7 +470,7 @@ end PrincipalDPIdealQuotient
 
 p 正則・p 局所 δ 環の元 y が mod p で非零因子なら、mod p 一次関係商の
 正次数生成元イデアルに実際の分冪構造を構成する。
-BS Rem 7.15(1)（著者版 p.62）の pd 包の明示計算の分冪構造側。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の明示計算の分冪構造側。
 
 ## 方針
 
@@ -496,7 +497,7 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 /-- 概要：一次関係商内の正次数分冪生成元で生成されるイデアル。
 方針：次数 n+1 の標準生成元全体の span を取る。
 規約：係数環と入力元を固定し、分冪構造の存在は定義に含めない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包のイデアルの指定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包のイデアルの指定。 -/
 def principalDPPositiveIdeal (y : A) : Ideal (PrincipalDPPresentation A y) :=
   Ideal.span (Set.range fun n : ℕ => principalDPGenerator y (n + 1))
 
@@ -505,7 +506,7 @@ omit [Fact p.Prime] in
 /-- 概要：入力元 y の係数像は一次関係商の正次数生成元イデアルに属する。
 方針：一次関係 γ₁=y と零番目の正次数生成元の所属を使う。
 規約：この所属自体に正則性や標数は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪値を入力元で評価する。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪値を入力元で評価する。 -/
 theorem principalDPPositiveIdeal_base_mem (y : A) :
     algebraMap A (PrincipalDPPresentation A y) y ∈ principalDPPositiveIdeal y := by
   rw [← principalDPGenerator_one]
@@ -525,7 +526,7 @@ local notation "e" => regularPrincipalDPFactorialModPEquiv hlocal hpA D y hy
 /-- 概要：mod p 正次数階乗イデアルの像は一次関係商の正次数生成元イデアル。
 方針：既存比較同型の全階乗生成元上の値を使って span の生成集合を比較する。
 規約：実商射と既存の環同型の合成を使用する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の分冪構造の移送。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の分冪構造の移送。 -/
 theorem regularPrincipalModPrime_positiveIdeal_map :
     ((pDivisionFactorialIdeal p ys).map q).map (e).toRingHom =
       principalDPPositiveIdeal (bar y) := by
@@ -546,7 +547,7 @@ theorem regularPrincipalModPrime_positiveIdeal_map :
 /-- 概要：正則な持ち上げを持つ mod p 一次関係商の正次数イデアルには実分冪構造がある。
 方針：階乗部分環の mod p 分冪構造を正次数イデアルの具体的な比較同型で移す。
 規約：p 正則な δ 持ち上げと mod p 正則性を前提に残す。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の正則入力の実 pd 包の構成。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の正則入力の実 pd 包の構成。 -/
 def regularPrincipalModPrimeDividedPowers : DividedPowers (principalDPPositiveIdeal (bar y)) :=
   DividedPowers.ofRingEquiv (regularPrincipalModPrime_positiveIdeal_map hlocal hpA D y hy)
     (factorialModPrimeDividedPowers hlocal D ys)
@@ -555,7 +556,7 @@ def regularPrincipalModPrimeDividedPowers : DividedPowers (principalDPPositiveId
 /-- 概要：実 mod p 分冪構造による入力元の n 次分冪は標準の n 次生成元。
 方針：階乗部分環の係数と生成元を保つ比較公式を使い、mod p 分冪値を移す。
 規約：全ての n を含み、入力の持ち上げと正則性の仮定は明示したまま。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の普遍射の標準値。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の普遍射の標準値。 -/
 theorem regularPrincipalModPrimeDividedPowers_base_apply (n : ℕ) :
     (regularPrincipalModPrimeDividedPowers hlocal hpA D y hy).dpow n
       (algebraMap (A ⧸ Ideal.span {(p : A)}) _ (bar y)) = principalDPGenerator (bar y) n := by
@@ -573,7 +574,7 @@ end RegularPrincipalModPrimeDividedPowers
 ## 概要
 
 一次関係商の入力元の分冪が全標準生成元と一致するなら、任意の分冪標的へ
-係数を保つ分冪射が一意に存在する。BS Rem 7.15(1)（著者版 p.62）の pd 包の普遍性。
+係数を保つ分冪射が一意に存在する。BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の普遍性。
 
 ## 方針
 
@@ -605,7 +606,7 @@ include hγ hyB
 /-- 概要：一次関係商の標準評価は実際の分冪射である。
 方針：正次数生成元上で分冪の合成則と入力元の値の公式を比較する。
 規約：標的には任意の p ねじれを許し、素数も指定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の pd 包の存在側の普遍射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の pd 包の存在側の普遍射。 -/
 theorem principalDPEval_positive_isDPMorphism :
     Hs.IsDPMorphism Ht (principalDPEval Ht y hyB).toRingHom := by
   have hbase := principalDPPositiveIdeal_base_mem y
@@ -625,7 +626,7 @@ theorem principalDPEval_positive_isDPMorphism :
 /-- 概要：一次関係商から任意の分冪標的への係数を保つ分冪射は一意に存在する。
 方針：標準評価を存在証人とし、入力元の分冪値から全標準生成元上の一致を得る。
 規約：構造と値の公式を前提にし、標的には追加の正則性を要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の普遍性。 -/
 theorem existsUnique_principalDPPositiveMorphism :
     ∃! F : PrincipalDPPresentation A y →ₐ[A] B, Hs.IsDPMorphism Ht F.toRingHom := by
   refine ⟨principalDPEval Ht y hyB, principalDPEval_positive_isDPMorphism y Hs hγ Ht hyB, ?_⟩
@@ -650,7 +651,7 @@ end PrincipalDPPositiveUniversal
 
 一次関係商の正次数イデアルの実分冪構造を、入力を保つ係数環同型に沿って移す。
 標準分冪値が生成元に一致する公式と pd 普遍性も移る。
-BS Rem 7.15(1)（著者版 p.62）の実係数比較のための一般補題。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の実係数比較のための一般補題。
 
 ## 方針
 
@@ -678,7 +679,7 @@ local notation "F" => principalDPRingEquivOfEq e y z hy
 /-- 概要：入力を保つ係数同型は正次数生成元イデアルを保つ。
 方針：各正次数標準生成元の像を計算して生成集合を比較する。
 規約：対象イデアルは全正次数生成元の span そのもの。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪構造の移送の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実分冪構造の移送の入力。 -/
 theorem principalDPPositiveIdeal_map_equiv :
     (principalDPPositiveIdeal y).map (F).toRingHom = principalDPPositiveIdeal z := by
   rw [principalDPPositiveIdeal, Ideal.map_span, ← Set.range_comp']
@@ -688,7 +689,7 @@ theorem principalDPPositiveIdeal_map_equiv :
 /-- 概要：入力を保つ係数同型で一次関係商の実分冪構造を移せる。
 方針：正次数イデアルの像の同定と環同型による既存の分冪移送を使う。
 規約：元の環上の分冪構造を明示する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の具体的な係数表示での実 pd 構造。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の具体的な係数表示での実 pd 構造。 -/
 def principalDPTransportDividedPowers (Hs : DividedPowers (principalDPPositiveIdeal y)) :
     DividedPowers (principalDPPositiveIdeal z) :=
   DividedPowers.ofRingEquiv (principalDPPositiveIdeal_map_equiv e y z hy) Hs
@@ -696,7 +697,7 @@ def principalDPTransportDividedPowers (Hs : DividedPowers (principalDPPositiveId
 /-- 概要：移送した構造でも入力元の n 次分冪は n 次標準生成元。
 方針：入力係数の比較と環同型による分冪作用の公式を使う。
 規約：元の構造についての標準値公式を明示する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の移送後の実 pd 普遍性への入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の移送後の実 pd 普遍性への入力。 -/
 theorem principalDPTransportDividedPowers_base_apply
     (Hs : DividedPowers (principalDPPositiveIdeal y))
     (hγ : ∀ n, Hs.dpow n (algebraMap A _ y) = principalDPGenerator y n) (n : ℕ) :
@@ -710,7 +711,7 @@ theorem principalDPTransportDividedPowers_base_apply
 /-- 概要：移送した実分冪構造を持つ一次関係商から分冪標的への射は一意に存在。
 方針：移送後の標準値公式を一次関係商の一般普遍性へ渡す。
 規約：標的にねじれ・正則性・δ 構造の条件を置かない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数同型後の実 pd 包。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数同型後の実 pd 包。 -/
 theorem existsUnique_principalDPTransportMorphism
     (Hs : DividedPowers (principalDPPositiveIdeal y))
     (hγ : ∀ n, Hs.dpow n (algebraMap A _ y) = principalDPGenerator y n)
@@ -731,7 +732,7 @@ end PrincipalDPTransport
 
 正則な δ 持ち上げから構成した実分冪構造を持つ一次関係商は、
 任意の分冪標的への係数を保つ分冪射の一意存在を満たす。
-BS Rem 7.15(1)（著者版 p.62）の実 pd 包の普遍性。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の普遍性。
 
 ## 方針
 
@@ -757,7 +758,7 @@ namespace SerrePositivity.BhattScholze.Andre
 /-- 概要：正則な δ 持ち上げの mod p 一次関係商から、任意の分冪標的への分冪射は一意。
 方針：既に構成した実分冪構造と標準生成元公式を一般の一次関係商の普遍性へ渡す。
 規約：標的の正則性・δ 構造・完備性は要求しない。持ち上げの仮定は明示したまま。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の通常の普遍性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の実 pd 包の通常の普遍性。 -/
 theorem existsUnique_regularPrincipalModPrimeDPMorphism
     {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
     (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
@@ -785,7 +786,7 @@ end RegularPrincipalModPrimeUniversal
 ## 概要
 
 一元分冪代数に γ₁=y を課した表示環を、A/(yᵖ) 上の可算切断多項式商と比較する。
-BS Rem 7.15(1)（著者版 p.62）の明示的な通常環表示。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の明示的な通常環表示。
 
 ## 方針
 
@@ -813,14 +814,14 @@ local notation "hprime" => (Fact.out : p.Prime)
 /-- 概要：係数 y の p 乗商上の可算切断多項式表示環。
 方針：既存の切断多項式商の係数環を実商 A/(yᵖ) にする。
 規約：変数 i は元の分冪の次数 p^(i+1) に対応する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示表示の右辺。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示表示の右辺。 -/
 abbrev PrincipalDPTruncatedPresentation (y : A) :=
   DividedPowerPrimeTruncatedAlgebra (A := A ⧸ Ideal.span {y ^ p}) p
 
 /-- 概要：係数 y と後続の切断変数からなる可算元族。
 方針：零番目に係数 y の像、後続に通常の切断変数を置く。
 規約：番号を一つずらして一次分冪の関係を取り出す。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の一次関係を満たす評価。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の一次関係を満たす評価。 -/
 def principalDPTruncatedRoot (y : A) : ℕ → PrincipalDPTruncatedPresentation p y
   | 0 => algebraMap A _ y
   | i + 1 => Ideal.Quotient.mk _ (MvPolynomial.X i)
@@ -829,7 +830,7 @@ omit [Fact p.Prime] in
 /-- 概要：係数 y と後続の切断変数はいずれも p 乗が零。
 方針：零番目には係数商の関係、後続には切断変数の関係を使う。
 規約：係数環の非零性を要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の普遍評価射の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の普遍評価射の入力。 -/
 theorem principalDPTruncatedRoot_pow (y : A) (i : ℕ) :
     principalDPTruncatedRoot p y i ^ p = 0 := by
   cases i with
@@ -846,7 +847,7 @@ theorem principalDPTruncatedRoot_pow (y : A) (i : ℕ) :
 /-- 概要：自由分冪代数から係数 p 乗商上の切断表示への標準射。
 方針：可算切断表示の逆同型と、指定した p 乗零元族への普遍評価を合成する。
 規約：最初の素数冪分冪は係数 y へ送る。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の一次関係商の順射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の一次関係商の順射。 -/
 def principalDPToTruncatedRaw (hp : (p : A) = 0) (y : A) :
     DividedPowerAlgebra A A →ₐ[A] PrincipalDPTruncatedPresentation p y :=
   (dividedPowerPrimeTruncatedLift (A := A) p (principalDPTruncatedRoot p y)
@@ -855,7 +856,7 @@ def principalDPToTruncatedRaw (hp : (p : A) = 0) (y : A) :
 /-- 概要：自由分冪からの射は素数冪分冪を指定した係数・変数族へ送る。
 方針：切断表示同型の逆と変数上の普遍評価を使う。
 規約：次数は p の自然数冪。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の二射の比較。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の二射の比較。 -/
 theorem principalDPToTruncatedRaw_dp (hp : (p : A) = 0) (y : A) (i : ℕ) :
     principalDPToTruncatedRaw p hp y (DividedPowerAlgebra.dp A (p ^ i) (1 : A)) =
       principalDPTruncatedRoot p y i := by
@@ -870,7 +871,7 @@ theorem principalDPToTruncatedRaw_dp (hp : (p : A) = 0) (y : A) (i : ℕ) :
 /-- 概要：一次関係商から係数 p 乗商上の切断表示への標準射。
 方針：一次分冪を y に送ることを使い、自由分冪代数からの射を商に降ろす。
 規約：係数環 A の作用を保持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の表示同型の順射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の表示同型の順射。 -/
 def principalDPToTruncated (hp : (p : A) = 0) (y : A) :
     PrincipalDPPresentation A y →ₐ[A] PrincipalDPTruncatedPresentation p y := by
   apply Ideal.Quotient.liftₐ _ (principalDPToTruncatedRaw p hp y)
@@ -886,7 +887,7 @@ def principalDPToTruncated (hp : (p : A) = 0) (y : A) :
 /-- 概要：一次関係商の素数冪分冪の標準像を指定した元族へ送る。
 方針：商への降下前の評価公式を使う。
 規約：零番目の値は係数 y である。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の逆合成の確認。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の逆合成の確認。 -/
 theorem principalDPToTruncated_generator (hp : (p : A) = 0) (y : A) (i : ℕ) :
     principalDPToTruncated p hp y (principalDPGenerator y (p ^ i)) =
       principalDPTruncatedRoot p y i :=
@@ -895,7 +896,7 @@ theorem principalDPToTruncated_generator (hp : (p : A) = 0) (y : A) (i : ℕ) :
 /-- 概要：一次関係商の全素数冪分冪生成元は p 乗が零。
 方針：自由分冪代数の消滅式を商射で移す。
 規約：入力 y の正則性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の切断商の普遍射の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の切断商の普遍射の入力。 -/
 theorem principalDPPrimeGenerator_pow_zero (hp : (p : A) = 0) (y : A) (i : ℕ) :
     principalDPGenerator y (p ^ i) ^ p = 0 := by
   change (Ideal.Quotient.mk (principalDPRelationIdeal y)
@@ -905,7 +906,7 @@ theorem principalDPPrimeGenerator_pow_zero (hp : (p : A) = 0) (y : A) (i : ℕ) 
 /-- 概要：係数 p 乗商上の切断表示から一次関係商への標準射。
 方針：既存の係数商作用を使い、変数 i を次数 p^(i+1) の分冪の像に送る。
 規約：元の A 作用とのスカラー塔を明示してから制限する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の表示同型の逆射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の表示同型の逆射。 -/
 def principalDPTruncatedToPresentation (hp : (p : A) = 0) (y : A) :
     PrincipalDPTruncatedPresentation p y →ₐ[A] PrincipalDPPresentation A y := by
   letI := principalDPQuotientAlgebra (hprime).pos hp y
@@ -917,7 +918,7 @@ def principalDPTruncatedToPresentation (hp : (p : A) = 0) (y : A) :
 /-- 概要：逆向きの標準射は変数 i を次数 p^(i+1) の分冪の像へ送る。
 方針：切断商の普遍射の変数公式を使う。
 規約：最初の変数は次数 p の分冪を表す。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の逆合成の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の逆合成の検証。 -/
 theorem principalDPTruncatedToPresentation_X (hp : (p : A) = 0) (y : A) (i : ℕ) :
     principalDPTruncatedToPresentation p hp y (Ideal.Quotient.mk _ (MvPolynomial.X i)) =
       principalDPGenerator y (p ^ (i + 1)) := by
@@ -932,7 +933,7 @@ omit [Fact p.Prime] in
 /-- 概要：係数 p 乗商上の切断表示からの A 代数射は変数の値で決まる。
 方針：係数商の各元を A から持ち上げ、係数上は代数射の可換性を使う。
 規約：終域に係数商上の代数構造は要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の二射の逆合成の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の二射の逆合成の検証。 -/
 theorem principalDPTruncatedHom_ext {B : Type u} [CommRing B] [Algebra A B] (y : A)
     (f g : PrincipalDPTruncatedPresentation p y →ₐ[A] B)
     (h : ∀ i, f (Ideal.Quotient.mk _ (MvPolynomial.X i)) =
@@ -949,7 +950,7 @@ theorem principalDPTruncatedHom_ext {B : Type u} [CommRing B] [Algebra A B] (y :
 /-- 概要：一次関係商から切断表示へ移して戻すと恒等射になる。
 方針：素数冪分冪の像で比較し、次数一では一次関係、後続では変数公式を使う。
 規約：係数環の非零性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示表示同型の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示表示同型の検証。 -/
 theorem principalDPTruncatedToPresentation_comp_toTruncated (hp : (p : A) = 0) (y : A) :
     (principalDPTruncatedToPresentation p hp y).comp (principalDPToTruncated p hp y) =
       AlgHom.id A _ := by
@@ -966,7 +967,7 @@ theorem principalDPTruncatedToPresentation_comp_toTruncated (hp : (p : A) = 0) (
 /-- 概要：切断表示から一次関係商へ移して戻しても恒等射になる。
 方針：切断変数上の外延性と両方向の生成元の公式を使う。
 規約：元の A 係数作用を保つ射として述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示表示同型の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示表示同型の検証。 -/
 theorem principalDPToTruncated_comp_truncatedToPresentation (hp : (p : A) = 0) (y : A) :
     (principalDPToTruncated p hp y).comp (principalDPTruncatedToPresentation p hp y) =
       AlgHom.id A _ := by
@@ -980,7 +981,7 @@ theorem principalDPToTruncated_comp_truncatedToPresentation (hp : (p : A) = 0) (
 /-- 概要：γ₁=y の一元分冪表示環は係数商 A/(yᵖ) 上の可算切断表示と A 代数同型。
 方針：素数冪分冪と切断変数で照合した互いに逆な二射を束ねる。
 規約：実 pd 包との同定はこの通常代数同型に含まない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示的な自由表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示的な自由表示。 -/
 def principalDPTruncatedEquiv (hp : (p : A) = 0) (y : A) :
     PrincipalDPPresentation A y ≃ₐ[A] PrincipalDPTruncatedPresentation p y :=
   AlgEquiv.ofAlgHom (principalDPToTruncated p hp y) (principalDPTruncatedToPresentation p hp y)
@@ -990,7 +991,7 @@ def principalDPTruncatedEquiv (hp : (p : A) = 0) (y : A) :
 /-- 概要：表示同型は次数 p^(i+1) の分冪の標準像を i 番目の切断変数へ送る。
 方針：同型の順射の生成元公式を使う。
 規約：一次分冪は係数に移り、変数は次の素数冪から始まる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の原典の g₁,g₂,… との対応。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の原典の g₁,g₂,… との対応。 -/
 theorem principalDPTruncatedEquiv_generator_succ (hp : (p : A) = 0) (y : A) (i : ℕ) :
     principalDPTruncatedEquiv p hp y (principalDPGenerator y (p ^ (i + 1))) =
       Ideal.Quotient.mk _ (MvPolynomial.X i) :=
@@ -1000,7 +1001,7 @@ theorem principalDPTruncatedEquiv_generator_succ (hp : (p : A) = 0) (y : A) (i :
 /-- 概要：一次関係商と切断表示の同型は既存の係数商 A/(yᵖ) 作用を保つ。
 方針：係数商の代表元を A から持ち上げ、標準係数商射の値と A 代数同型の可換性を使う。
 規約：一次関係商側の作用は既存の principalDPQuotientAlgebra をそのまま使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数商からの自由拡大の表示。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数商からの自由拡大の表示。 -/
 def principalDPTruncatedQuotientAlgEquiv (hp : (p : A) = 0) (y : A) :
     letI := principalDPQuotientAlgebra (hprime).pos hp y
     PrincipalDPPresentation A y ≃ₐ[A ⧸ Ideal.span {y ^ p}]
@@ -1018,7 +1019,7 @@ def principalDPTruncatedQuotientAlgEquiv (hp : (p : A) = 0) (y : A) :
 /-- 概要：係数 p 乗商上の可算切断表示はその係数環上自由。
 方針：既存のモニック冪関係商と通常根添加環の同型で自由性を移す。
 規約：零係数商を含み、y の正則性は不要。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示表示の自由性。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示表示の自由性。 -/
 theorem principalDPTruncatedPresentation_free (y : A) :
     Module.Free (A ⧸ Ideal.span {y ^ p}) (PrincipalDPTruncatedPresentation p y) := by
   let B := A ⧸ Ideal.span {y ^ p}
@@ -1029,7 +1030,7 @@ theorem principalDPTruncatedPresentation_free (y : A) :
 /-- 概要：一次関係商は既存の係数商 A/(yᵖ) 作用について自由。
 方針：具体的切断表示の自由性を係数商上の代数同型で戻す。
 規約：作用は既存の principalDPQuotientAlgebra を固定し、補助平坦性を仮定しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の明示表示による自由性の証明。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の明示表示による自由性の証明。 -/
 theorem principalDPPresentation_free_via_truncated (hp : (p : A) = 0) (y : A) :
     letI := principalDPQuotientAlgebra (hprime).pos hp y
     Module.Free (A ⧸ Ideal.span {y ^ p}) (PrincipalDPPresentation A y) := by
@@ -1046,7 +1047,7 @@ end PrincipalDPTruncatedPresentation
 ## 概要
 
 γ₁=y の一元分冪表示環を全正次数生成元のイデアルで割ると A/(y) に A 代数同型。
-BS Rem 7.15(1)（著者版 p.62）の係数変更で実分冪構造を降ろすための計算。
+BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更で実分冪構造を降ろすための計算。
 
 ## 方針
 
@@ -1075,14 +1076,14 @@ local notation "R" => A ⧸ Ideal.span {(y : A)}
 /-- 概要：入力 y の係数像は実入力商 A/(y) で零。
 方針：入力元が定義の主イデアルに属することを使う。
 規約：標準の係数商射を使用する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の augmentation の入力。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の augmentation の入力。 -/
 theorem principalDPInputQuotient_input_eq_zero : algebraMap A R y = 0 :=
   Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
 
 /-- 概要：一次関係商から元の入力商への augmentation。
 方針：標的の零イデアルの分冪構造へ標準評価する。
 規約：係数環 A の作用を保持する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の正次数商の同定。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の正次数商の同定。 -/
 def principalDPAugmentation : D →ₐ[A] R :=
   principalDPEval (dividedPowersBot R) y
     (Ideal.mem_bot.mpr (principalDPInputQuotient_input_eq_zero y))
@@ -1090,7 +1091,7 @@ def principalDPAugmentation : D →ₐ[A] R :=
 /-- 概要：augmentation は全正次数標準生成元を零へ送る。
 方針：零イデアル内の正次数分冪は零であることを使う。
 規約：次数は n+1 とする。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の正次数商への降下。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の正次数商への降下。 -/
 theorem principalDPAugmentation_generator_succ (n : ℕ) :
     principalDPAugmentation y (principalDPGenerator y (n + 1)) = 0 := by
   rw [principalDPAugmentation, principalDPEval_generator]
@@ -1100,7 +1101,7 @@ theorem principalDPAugmentation_generator_succ (n : ℕ) :
 /-- 概要：augmentation は正次数イデアルによる商から入力商へ降りる。
 方針：正次数生成元を全て零に送るので商の普遍射を使う。
 規約：実際の正次数イデアル J の商を取る。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の商同型の順射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の商同型の順射。 -/
 def principalDPPositiveQuotientToInput : (D ⧸ J) →ₐ[A] R := by
   apply Ideal.Quotient.liftₐ _ (principalDPAugmentation y)
   have hker : J ≤ RingHom.ker (principalDPAugmentation y).toRingHom := by
@@ -1112,7 +1113,7 @@ def principalDPPositiveQuotientToInput : (D ⧸ J) →ₐ[A] R := by
 /-- 概要：正次数商からの augmentation は代表元で元の augmentation と一致。
 方針：商の普遍射の代表元公式を使う。
 規約：全ての表示環の元で述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の逆合成の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の逆合成の検証。 -/
 theorem principalDPPositiveQuotientToInput_mk (x : D) :
     principalDPPositiveQuotientToInput y (Ideal.Quotient.mk J x) =
       principalDPAugmentation y x := rfl
@@ -1120,7 +1121,7 @@ theorem principalDPPositiveQuotientToInput_mk (x : D) :
 /-- 概要：入力商 A/(y) から正次数分冪商への標準係数射。
 方針：入力 y が正次数イデアルに属すので係数射を入力商へ降ろす。
 規約：元の A 係数作用を固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の商同型の逆射。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の商同型の逆射。 -/
 def principalDPInputToPositiveQuotient : R →ₐ[A] D ⧸ J := by
   apply Ideal.Quotient.liftₐ _ (Algebra.ofId A (D ⧸ J))
   have hker : Ideal.span {y} ≤ RingHom.ker (Algebra.ofId A (D ⧸ J)).toRingHom := by
@@ -1135,14 +1136,14 @@ def principalDPInputToPositiveQuotient : R →ₐ[A] D ⧸ J := by
 /-- 概要：入力商からの標準射は元の係数を同じ正次数商の係数へ送る。
 方針：商への降下の定義を使う。
 規約：任意の元 a の商代表元で述べる。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数上の逆合成。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数上の逆合成。 -/
 theorem principalDPInputToPositiveQuotient_mk (a : A) :
     principalDPInputToPositiveQuotient y (Ideal.Quotient.mk _ a) = algebraMap A (D ⧸ J) a := rfl
 
 /-- 概要：入力商から正次数商へ移して戻すと恒等射。
 方針：入力商の係数代表元上で代数射の可換性を使う。
 規約：係数環 A を固定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の商同型の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の商同型の検証。 -/
 theorem principalDPPositiveQuotientToInput_comp_inputToPositive :
     (principalDPPositiveQuotientToInput y).comp (principalDPInputToPositiveQuotient y) =
       AlgHom.id A R := by
@@ -1157,7 +1158,7 @@ theorem principalDPPositiveQuotientToInput_comp_inputToPositive :
 /-- 概要：正次数商から入力商へ移して戻しても恒等射。
 方針：零次生成元は単位、正次数生成元は両側とも零であることを使う。
 規約：表示環の全標準生成元上で確認する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の商同型の検証。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の商同型の検証。 -/
 theorem principalDPInputToPositiveQuotient_comp_positiveToInput :
     (principalDPInputToPositiveQuotient y).comp (principalDPPositiveQuotientToInput y) =
       AlgHom.id A (D ⧸ J) := by
@@ -1178,7 +1179,7 @@ theorem principalDPInputToPositiveQuotient_comp_positiveToInput :
 /-- 概要：一次関係商を正次数分冪イデアルで割ると元の入力商 A/(y) と A 代数同型。
 方針：互いに逆と確認した augmentation と係数射を束ねる。
 規約：係数環の標数や正則性は要求しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の係数変更での平坦性とイデアル交わりの制御。 -/
+使われ方：BS 著者版 Remark 7.15(1)（著者版 p.62）の係数変更での平坦性とイデアル交わりの制御。 -/
 def principalDPPositiveQuotientEquiv : (D ⧸ J) ≃ₐ[A] R :=
   AlgEquiv.ofAlgHom (principalDPPositiveQuotientToInput y) (principalDPInputToPositiveQuotient y)
     (principalDPPositiveQuotientToInput_comp_inputToPositive y)

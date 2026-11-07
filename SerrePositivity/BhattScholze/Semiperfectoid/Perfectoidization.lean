@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-!
-# semiperfectoid 環の perfectoid 化（BS 著者版 Cor 7.3）
+# semiperfectoid 環の perfectoid 化（BS 著者版 Corollary 7.3）
 
 ## 概要
 完全 prism の商の任意の商の普遍 perfectoid 化、perfectoid 環の任意の商（semiperfectoid 環）の perfectoid 化の存在と普遍性。
@@ -16,10 +16,10 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 J/d を割る完全 prism を導来 (p,d) 完備化し、商の普遍性を IsPerfectoidization へ移す。
 
 ## 規約
-全射性は Thm 7.4（Semiperfectoid/Surjectivity）。
+全射性は BS 著者版 Theorem 7.4（Semiperfectoid/Surjectivity）。
 
 ## 使われ方
-CLMST の perfectoid イデアル、Thm 7.4、§8 の環の結果。
+CLMST の perfectoid イデアル、BS 著者版 Theorem 7.4、§8 の環の結果。
 -/
 
 universe u
@@ -229,7 +229,7 @@ def perfectPrismQuotientPerfectoidizationMap
 set_option maxHeartbeats 2000000 in
 -- 除算 prism の担体（PD 完備化の H⁰）上の単一化は、反復した完備化の環構造（反映から
 -- 選択で定まる積）に何度も当たって探索をやり直すので、この証明に限って上限を増やす（B4、11-04）。
-/-- 非零完全prismの商から来る全射について、具体的な標準射はperfectoid化を与える。 -/
+/-- 非零完全prismの商から来る全射について、具体的な標準射はperfectoid化を与える（BS 著者版 Corollary 7.3 の第一文の完全 prism の商に対する構成、序論の Theorem 1.12 (2)）。 -/
 theorem perfectPrismQuotientPerfectoidizationMap_isPerfectoidization
     (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
     [Fact (¬ IsUnit (p : A ⧸ P.ideal))]
@@ -351,7 +351,7 @@ theorem perfectPrismQuotientPerfectoidizationMap_isPerfectoidization
       change k x = et (K.quotientMap x)
       rw [hh, et.apply_symm_apply]
 
-/-- 完全prismの商の任意の全射商には、環として普遍なperfectoid化が存在する。 -/
+/-- 完全prismの商の任意の全射商には、環として普遍なperfectoid化が存在する（BS 著者版 Corollary 7.3 の第一文の完全 prism の剰余環からの全射商の場合）。 -/
 theorem exists_perfectoidization_of_perfectPrism_quotient
     (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
     [Fact (¬ IsUnit (p : A ⧸ P.ideal))]
@@ -367,8 +367,8 @@ end PerfectPrismQuotientPerfectoidization
 
 /-! ## B3：perfectoid環の商の普遍perfectoid化（旧 Semiperfectoid/SemiperfectoidPerfectoidization.lean）
 
-著者公開版Corollary 7.3の存在・普遍性。
-δ除算→完全化→実PD完備化の完全試験prismへの普遍性とTheorem 3.10の対応を合成する。
+BS 著者版 Corollary 7.3の存在・普遍性。
+δ除算→完全化→実PD完備化の完全試験prismへの普遍性とBS 著者版 Theorem 3.10の対応を合成する。
 商の導来p完備性を課した原典入力を公開し、より一般の全射商の入口も分ける。
 全射性・B-I・Andréの引用を使わない。
 -/
@@ -379,7 +379,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {R S : Type u} [CommRing R] [CommRing S]
 
-/-- 任意のperfectoid環の全射商には、環として普遍なperfectoid化が存在する。
+/-- 任意のperfectoid環の全射商には、環として普遍なperfectoid化が存在する（BS 著者版 Corollary 7.3 の第一文の perfectoid 環の全射商の場合）。
 導来完備化を構成に組み込むため、源の商の完備性はこの強い入口には不要。 -/
 theorem exists_perfectoidization_of_perfectoid_surjective_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q) :
@@ -411,7 +411,7 @@ theorem exists_perfectoidization_of_perfectoid_surjective_quotient
       rw [hz, map_zero, map_zero]
     exact exists_perfectoidization_of_perfectPrism_quotient P hP r hr hrd
 
-/-- B3の原典入力：任意perfectoid環の導来p完備な全射商の存在と普遍性。
+/-- B3の原典入力：任意perfectoid環の導来p完備な全射商の存在と普遍性（BS 著者版 Corollary 7.3 の第一文、序論の Theorem 1.12 (2)）。
 一般のpねじれ商を含む。全射性は別のB4工程。 -/
 theorem exists_perfectoidization_of_semiperfectoid_quotient
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)

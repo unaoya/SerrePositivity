@@ -13,7 +13,8 @@ public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 
 ## 概要
 
-p 冪ねじれの係数の零化と、完備な almost 零加群の拡大閉性から、perfectoid イデアルが全ての加群の正の次数の Tor を零化することへ帰着する（`allModule_tor_annihilated_of_powerTorsion_and_extension`）。拡大閉性に BS 著者版 Prop 10.2（p.78）を供給し、完備化した根の塔の上で具体化して、Cor 4.0.4 の二つの消滅へ条件つきで接続する。
+p 冪ねじれの係数の零化と、完備な almost 零加群の拡大閉性から、perfectoid イデアルが全ての加群の正の次数の Tor を零化することへ帰着する（`allModule_tor_annihilated_of_powerTorsion_and_extension`）。拡大閉性に BS 著者版 Proposition 10.2（p.78）を供給し、完備化した根の塔の上で具体化して、Cor 4.0.4 の二つの消滅へ条件つきで接続する。
+BS 著者版 Proposition 10.2 の拡大閉性を、CLMST の高次 Tor の零化へ渡す。
 
 ## 方針
 
@@ -58,7 +59,7 @@ theorem allModule_tor_annihilated_of_powerTorsion_and_extension
   exact tor_eq_zero_of_power_torsion_and_complete_extensions p C R ψ I hC
     hExt (fun N k _hk hN => hTor N k hN)
 
-/-- 概要：perfectoid 係数環について、指定された Prop 10.2 型の仮定とねじれ試験から
+/-- 概要：perfectoid 係数環について、指定された BS 著者版 Proposition 10.2 型の仮定とねじれ試験から
 全 A 加群版の almost Tor 零化を得る（CLMST Thm 4.0.3(a), pp.27–28）。
 方針：係数環の perfectoid 性から導来 p 完備性を供給し、前定理へ適用する。
 規約：hExt はレーン B の公開予定型そのものであり、成立はここでは証明しない。
@@ -153,7 +154,7 @@ include hC
 
 /-- 概要：指定した完備根の塔の ideal の全元が任意 A 加群の高次 Tor を消す。
 方針：Thm 4.0.3(a), pp.27–28 の全加群帰着へ R=CompletedTower と元の作用を代入する。
-規約：p 冪ねじれ試験と Prop 10.2 型の拡大閉性の型を変えない。
+規約：p 冪ねじれ試験と BS 著者版 Proposition 10.2 型の拡大閉性の型を変えない。
 使われ方：実際の塔上で KL-Q に渡す hTor。二仮定の実供給は主張しない。 -/
 theorem completedTower_allModule_tor_annihilated
     (hExt : ∀ (X : ShortComplex (ModuleCat.{u} (CompletedTower A t p))), X.ShortExact →
@@ -241,7 +242,7 @@ namespace SerrePositivity.CLMST
 open CategoryTheory Section2 IsLocalRing
 
 /-- 概要：p 冪ねじれ版だけから全 A 加群の高次 Tor 零化へ帰着する。
-方針：CLMST Thm 4.0.3(a), pp.27–28 の Milnor 証明に BS Prop 10.2, p.78 の実証明を渡す。
+方針：CLMST Thm 4.0.3(a), pp.27–28 の Milnor 証明に 導来完備 almost 零加群の拡大閉性の証明を渡す。
 規約：有限生成性・完備性を任意 N に追加せず、全自然数 k の試験を保つ。
 使われ方：KL-Q へ渡す全加群 hTor。ねじれ版自体は未供給の明示入力である。 -/
 theorem perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
@@ -260,7 +261,7 @@ theorem perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
     (BhattScholze.perfectoidIdeal_isAlmostZero_extension R p hR g) hTor
 
 /-- 概要：ねじれ版 Tor 零化から局所コホモロジー・全段 Koszul の条件付き両消滅を得る。
-方針：BS Prop 10.2, p.78 を受領して拡大閉性を解消し、CLMST Cor 4.0.4, p.28 へ合流する。
+方針：BS 著者版 Proposition 10.2, p.78 を受領して拡大閉性を解消し、CLMST Cor 4.0.4, p.28 へ合流する。
 規約：hI、元の φ・ψ と全有限段・全パラメータ系の量化を保つ。
 使われ方：KL-Q の条件付き入口。Cor 4.0.4 の既存引用は置換しない。 -/
 theorem conditional_corollary_4_0_4_of_powerTorsion
@@ -304,7 +305,7 @@ include hC
 
 /-- 概要：元の CompletedTower で、ねじれ試験から KL-Q の両結論へ渡す。
 方針：原典 CLMST Thm 4.0.3(a), pp.27–28・Cor 4.0.4, p.28 の適用に
-証明済み BS Prop 10.2, p.78 を供給する。
+証明済み BS 著者版 Proposition 10.2, p.78 を供給する。
 規約：元の塔作用、パラメータ、全段写像を保ち、hI とねじれ試験のみを残す。
 使われ方：拡大閉性の仮定解消済みの実塔の入口。KL-Q 全体の完成とは数えない。 -/
 theorem completedTower_cohomology_vanishing_of_powerTorsion

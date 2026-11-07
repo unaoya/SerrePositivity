@@ -51,7 +51,7 @@ R_i → T_i は有限エタール、T_i → S_i は普遍同相（さらに T_i[
 普遍同相は「整・Spec 全射・radicial」で定義（G-A8-4）。剰余体の代数構造は各点の標準射から取る。
 
 ## 使われ方
-Thm 10.11（A8-4）。
+BS 著者版 Theorem 10.11（A8-4）。
 -/
 
 @[expose] public section
@@ -325,7 +325,8 @@ theorem exists_factorization_stratum_not_mem
     rw [hg]
     exact hfac
 
-/-- Noetherian 基底上の有限エタール層別。各段で p 可逆な部分を先に選び、
+/-- Noetherian 基底上の有限エタール層別（BS 著者版 Lemma 10.12 の基底が Noetherian の場合）。
+  各段で p 可逆な部分を先に選び、
 それが空なら p = 0 の部分を選ぶ。 -/
 theorem exists_noetherian_finiteEtaleStratification
     (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
@@ -363,13 +364,13 @@ theorem isUnit_prime_of_strataBaseAlgebra (p : ℕ) [Fact p.Prime]
       (IsLocalization.map_units (StrataBase p) (⟨(q : ℤ), hmem⟩ : (strataPrimeIdeal p).primeCompl))
   simpa only [map_natCast] using hu.map (algebraMap (StrataBase p) A)
 
-/-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
+/-- 概要：有限表示有限射 R → S を、有限エタール射と普遍同相に分解できる層に分ける（BS 著者版 Lemma 10.12）。
 方針：noetherian 近似、一般点での分解、その広げ、R_0/(g_1) への noetherian 帰納、
 (pg_i, g_i) での細分（紙 5）。
-規約：原典の Lemma 10.12。Z_(p) の仮定を保つ（W9-III-07）。
+規約：原典の BS 著者版 Lemma 10.12。Z_(p) の仮定を保つ（W9-III-07）。
 q ≠ p、K = F_q(t) → K(t^{1/q}) は有限表示有限な純非分離拡大で、非空の層では p が可逆
 なので (2) が有限エタールを要求し矛盾する。E3 の perfectoid 基底は Z_(p) 代数なので下流の一般性は失われない。
-使われ方：Thm 10.11。 -/
+使われ方：BS 著者版 Theorem 10.11。 -/
 theorem exists_finiteEtaleStratification {R S : Type u} [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] [Algebra.FinitePresentation R S] (p : ℕ) [Fact p.Prime]
     (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) :

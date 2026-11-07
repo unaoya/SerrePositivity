@@ -3,7 +3,7 @@ module
 import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiComparison
 import Mathlib.Util.AssertNoSorry
 
-/-! BS Rem 7.15（著者版 p.62）：A1-c の全公開宣言と生成宣言の専用監査。 -/
+/-! BS 著者版 Remark 7.15（著者版 p.62）：A1-c の全公開宣言と生成宣言の専用監査。 -/
 
 open SerrePositivity.BhattScholze.Andre.VarpiComparison
 

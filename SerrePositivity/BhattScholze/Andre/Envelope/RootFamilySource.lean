@@ -18,6 +18,7 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 ## 概要
 有限根族の全源評価環への Tor 消滅の移送、導来 β 拡大と raw 残余商、係数側の導来還元、商環上の還元、(p,d) 還元、逐次主元完備化後の還元、ghost 仮定の解消、任意根族の raw p 除算包の p 完全忠実平坦性、完全 prism から源への入力。
+BS 著者版 Remark 7.15 の根付き拡大に使う、有限根族の包の係数還元と完全忠実平坦性を与える。
 
 ## 方針
 統合前のファイルの宣言・証明はそのまま並べ、各節の見出しに旧ファイルのパスを残す（BS-W8 で統合）。

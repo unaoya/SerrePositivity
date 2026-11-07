@@ -15,6 +15,7 @@ public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 
 ## 概要
 多項式環 R[x] は expand 写像 x ↦ xⁿ に沿って自由加群で、基底は各指数が n 未満の単項式。忠実平坦性も。
+BS 著者版 Lemma 2.11 の Frobenius の平坦性に使う、多項式の指数拡大を調べる。
 
 ## 方針
 指数を n で割った商と余りへの分解で単項式を付け替える。

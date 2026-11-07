@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Delta.Division.Basic
 
 ## 概要
 既に割れる場合の復元、同じ関係の再添加、段階的添加と一括添加、d 冪ねじれの除去を先に行う場合との同型。
+BS 著者版 Proposition 7.2 の除算構成と Corollary 7.3 の普遍性に関わる、完全試験 prism への比較を与える。
 
 ## 方針
 普遍性から比較射を作り、両合成が恒等射であることを示す。
@@ -187,7 +188,7 @@ end PCompletedDeltaDivisionRepeat
 
 /-! ## 異なる二つの除算元族の段階的添加と一括添加（旧 Prism/Perfection/PCompletedDeltaDivisionSequential.lean）
 
-著者公開版Prop 7.2のδ除算普遍性を、具体的な完全p進完備δ候補について使う。
+BS 著者版 Proposition 7.2のδ除算普遍性を、具体的な完全p進完備δ候補について使う。
 aを添加した候補にbの像を添加する二段構成と、a,bを一括添加する候補を比較する。
 導来(p,d)完備化の超限反復やperfectoid化とは同定しない。
 -/
@@ -386,7 +387,7 @@ end PCompletedDeltaDivisionSequentialEquiv
 
 /-! ## 旧dねじれ除去とp進完備δ除算完全化の比較（旧 Prism/Perfection/PCompletedDeltaDivisionTorsion.lean）
 
-著者公開版Prop 7.2の旧ねじれ除去商と、具体的なp進完備δ完全化を比較する。
+BS 著者版 Proposition 7.2の旧ねじれ除去商と、具体的なp進完備δ完全化を比較する。
 dがdistinguishedなら、除算添加環のp進完備δ完全化と、旧dねじれのδ閉包商を
 先に取ってから同じ完全化を施した環は、標準射と両立するδ環同型を持つ。
 一般の導来(p,d)完備化や超限反復とは同定しない。

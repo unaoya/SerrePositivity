@@ -18,7 +18,8 @@ public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
 
 ## 概要
 
-零の係数の完備化と完備テンソルが零であること、代数の作用の retract を使って `K ⊗̂ᴸ A = 0` から `K ⊗̂ᴸ M = 0` を導くこと（BS 著者版 Prop 10.4 の商加群の向き）、完備導来基底変更の完全三角形、加群の短完全列の完備導来基底変更、短完全列に固定加群を完備テンソルした射の零判定（BS 著者版 Lemma 10.3 の混合積）を与える。加群の写像の錐の完備基底変更の完全三角形と錐の比較（`completedModuleConeIso`、旧 CLMST の Prop 2.4.7 の証明の一般部分）も与える。
+零の係数の完備化と完備テンソルが零であること、代数の作用の retract を使って `K ⊗̂ᴸ A = 0` から `K ⊗̂ᴸ M = 0` を導くこと（BS 著者版 Proposition 10.4 の商加群の向き）、完備導来基底変更の完全三角形、加群の短完全列の完備導来基底変更、短完全列に固定加群を完備テンソルした射の零判定（BS 著者版 Lemma 10.3 の混合積）を与える。加群の写像の錐の完備基底変更の完全三角形と錐の比較（`completedModuleConeIso`、旧 CLMST の Prop 2.4.7 の証明の一般部分）も与える。
+完備導来テンソルによる消滅の拡大閉性は、BS 著者版 Proposition 10.2 の証明に使う一般補題である。
 
 ## 方針
 
@@ -104,7 +105,7 @@ local notation "D" => DerivedCategory.Minus (ModuleCat R)
 ## 規約
 元の導来テンソルと完備化を使う。
 ## 使われ方
-BS 著者版 Prop 10.4（印刷 p.79）の商加群の消滅に使う。
+BS 著者版 Proposition 10.4（印刷 p.79）の商加群の消滅に使う。
 -/
 theorem completedTensor_isZero_whiskerRight (X Y : D)
     (hX : IsZero ((derivedComplexCompletionFunctor R a).obj X.obj)) :
@@ -130,7 +131,7 @@ M が A⊗ᴸM の retract であり K⊗̂ᴸA が零なら、K⊗̂ᴸM も零
 ## 規約
 retract の射と恒等式を明示的に受け取る。
 ## 使われ方
-BS 著者版 Prop 10.4（印刷 p.79）の代数作用による消滅判定に使う。
+BS 著者版 Proposition 10.4（印刷 p.79）の代数作用による消滅判定に使う。
 -/
 theorem completedTensor_isZero_of_action_retract (K A M : D)
     (hKA : IsZero ((derivedComplexCompletionFunctor R a).obj (K ⊗ A).obj))
@@ -158,7 +159,7 @@ R 代数 A 上の加群 M は、元の導来テンソル A⊗ᴸ_R M の retract
 ## 規約
 加群構造のスカラー塔を明示し、導来単位則と元の作用を照合する。
 ## 使われ方
-BS 著者版 Prop 10.4（印刷 p.79）の商環上の加群に適用する。
+BS 著者版 Proposition 10.4（印刷 p.79）の商環上の加群に適用する。
 -/
 theorem derivedTensor_module_action_retract :
     ∃ (i : boundedAboveDerivedSingleFunctor.obj M ⟶
@@ -205,7 +206,7 @@ K⊗̂ᴸA が零なら、任意の A 加群 M に対して K⊗̂ᴸM は零で
 ## 規約
 M の完備性・平坦性・有限性は必要ない。
 ## 使われ方
-BS 著者版 Prop 10.4（印刷 p.79）の商加群からの消滅を与える。
+BS 著者版 Proposition 10.4（印刷 p.79）の商加群からの消滅を与える。
 -/
 theorem completedTensor_isZero_of_algebraModule (K : D)
     (hKA : IsZero ((derivedComplexCompletionFunctor R a).obj
@@ -322,7 +323,7 @@ variable {R : Type u} [CommRing R] (a : R) (C : ModuleCat.{u} R)
 ## 規約
 仮定の射は元の導来テンソル関手による実射である。
 ## 使われ方
-BS Lemma 10.3（著者版 pp.78–79）の核と商の混合積の消滅を導く。
+BS 著者版 Lemma 10.3（著者版 pp.78–79）の核と商の混合積の消滅を導く。
 -/
 theorem completedTensor_isZero_of_shortExact_rightMap_isIso
     (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
@@ -356,7 +357,7 @@ theorem completedTensor_isZero_of_shortExact_rightMap_isIso
 ## 規約
 第三対象の消滅をホモロジーの一部の消滅で代用しない。
 ## 使われ方
-BS Lemma 10.3（著者版 pp.78–79）の核の自己積に使う。
+BS 著者版 Lemma 10.3（著者版 pp.78–79）の核の自己積に使う。
 -/
 theorem completedTensor_shortExact_leftMap_isIso_of_isZero
     (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
@@ -393,7 +394,7 @@ theorem completedTensor_shortExact_leftMap_isIso_of_isZero
 ## 規約
 完備性・平坦性の追加仮定は置かない。
 ## 使われ方
-BS 著者版 Prop 10.4（印刷 p.79）の商作用を復元する方向に使う。
+BS 著者版 Proposition 10.4（印刷 p.79）の商作用を復元する方向に使う。
 -/
 theorem completedTensor_shortExact_rightMap_isIso_of_isZero
     (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
@@ -428,7 +429,7 @@ theorem completedTensor_shortExact_rightMap_isIso_of_isZero
 ## 規約
 元の短完全列に適用し、加群の通常の tensor 完全性は仮定しない。
 ## 使われ方
-BS 著者版 Prop 10.2・10.4（印刷 pp.78–79）の拡大閉性に使う。
+完備 almost 零加群の拡大閉性に使う。
 -/
 theorem completedTensor_isZero_of_shortExact
     (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)

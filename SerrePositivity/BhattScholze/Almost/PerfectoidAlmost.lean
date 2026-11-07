@@ -9,16 +9,17 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTens
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
 
 /-!
-# perfectoid 化の核に関する almost 数学（BS 著者版 Prop 10.2、Rem 10.7）
+# perfectoid 化の核に関する almost 数学（BS 著者版 Proposition 10.2、BS 著者版 Remark 10.7）
 
 ## 概要
 核の conormal の導来完備化は零、核の mod pⁿ 像は冪等、核で零化される導来完備加群は拡大で閉じる。
+核の conormal の完備化の消滅と核の冪に関する等式は、BS 著者版 Lemma 10.3 から Remark 10.7 の mod pⁿ の冪等性を導く中間結果である。
 
 ## 方針
-Lemma 10.3 から conormal を消し、冪等性と拡大閉性を出す。
+BS 著者版 Lemma 10.3 から conormal を消し、冪等性と拡大閉性を出す。
 
 ## 規約
-Prop 10.4 の全体は A8。
+BS 著者版 Proposition 10.4 の全体は A8。
 
 ## 使われ方
 CLMST の almost Tor。
@@ -28,7 +29,7 @@ universe u
 
 /-! ## perfectoid イデアルの mod pᴺ の像（旧 CLMST/Almost.lean）
 
-perfectoid イデアルを核の定義のまま `p^N` を法とした環へ写し（`perfectoidIdealMod`）、その零化条件と元の環の条件を商環の作用で比べる。局所化での零・同型の判定と、共通の p 冪の零化も与える。像イデアルの冪等性は下の Remark 10.7 の節で示す。
+perfectoid イデアルを核の定義のまま `p^N` を法とした環へ写し（`perfectoidIdealMod`）、その零化条件と元の環の条件を商環の作用で比べる。局所化での零・同型の判定と、共通の p 冪の零化も与える。像イデアルの冪等性は下の BS 著者版 Remark 10.7 の節で示す。
 -/
 
 @[expose] public noncomputable section PerfectoidIdealModPart
@@ -112,7 +113,7 @@ end PerfectoidIdealModPart
 ## 概要
 核 K の通常の conormal 加群 K/K² は p 作用が可逆であり、その導来 p 完備化は零である。
 ## 方針
-Lemma 10.3 の商自己積を Koszul 錐へ移し、H⁻² の消滅から Tor₁ 上の p 単射性を得る。
+BS 著者版 Lemma 10.3 の商自己積を Koszul 錐へ移し、H⁻² の消滅から Tor₁ 上の p 単射性を得る。
 ## 規約
 conormal の完備化と、導来自己テンソルの完備化を区別する。
 ## 使われ方
@@ -188,7 +189,7 @@ p 作用の全単射性を実完備化へ移す。その各ホモロジーは導
 ## 規約
 G2 の元の完備化関手を degree zero の conormal 加群へ適用する。
 ## 使われ方
-BS 著者版 Remark 10.7（印刷 p.80）の冪等性を導く中間結果を公開する。
+mod pⁿ の像の冪等性を導く中間結果を公開する。
 -/
 theorem perfectoidIdeal_conormal_completion_isZero :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
@@ -247,12 +248,12 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidIdealConormalCompletion
 
-/-! ## Remark 10.7 の mod p 冪の冪等性（旧 Almost/PerfectoidIdealIdempotent.lean）
+/-! ## BS 著者版 Remark 10.7 の mod p 冪の冪等性（旧 Almost/PerfectoidIdealIdempotent.lean）
 
 ## 概要
 perfectoid 化の核 K の mod pⁿ 像は冪等である（BS 著者版 Remark 10.7、印刷 p.80）。
 ## 方針
-Lemma 10.3 の実自己積から既存の Tor₁・conormal 比較を通じて K/K² の p 可除性を得る。
+BS 著者版 Lemma 10.3 の実自己積から既存の Tor₁・conormal 比較を通じて K/K² の p 可除性を得る。
 それを反復し K=K²+pⁿK を証明して、既存の像イデアルの冪等性判定を使う。
 ## 規約
 CLMST.Almost の既存の像イデアルの略記だけを利用し、入力引用は使わない。
@@ -274,7 +275,7 @@ variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 ## 概要
 perfectoid 化の核 K の conormal 加群 K/K² は全 pⁿ で可除である。
 ## 方針
-Lemma 10.3 の商自己積から実 Tor₁ の p 可除性を得て既存の conormal 比較で移し、反復する。
+BS 著者版 Lemma 10.3 の商自己積から実 Tor₁ の p 可除性を得て既存の conormal 比較で移し、反復する。
 ## 規約
 通常の conormal 加群を使い、p ねじれの有無を仮定しない。
 ## 使われ方
@@ -306,7 +307,7 @@ conormal 加群の pⁿ 可除性の原像を K に持ち上げ、差が K² に
 ## 規約
 pⁿK は span{pⁿ} と K のイデアル積で明示する。
 ## 使われ方
-BS 著者版 Remark 10.7（印刷 p.80）の mod pⁿ 冪等性の中間等式である。
+mod pⁿ の像の冪等性の中間等式である。
 -/
 theorem perfectoidIdeal_eq_square_sup_pow_mul (n : ℕ) :
     let K := perfectoidIdeal R p hR g
@@ -331,8 +332,7 @@ theorem perfectoidIdeal_eq_square_sup_pow_mul (n : ℕ) :
 
 /--
 ## 概要
-単項商の perfectoid 化の核の mod pᴺ 像は冪等である
-（BS 著者版 Remark 10.7、印刷 p.80）。
+単項商の perfectoid 化の核の mod pᴺ 像は冪等である（BS 著者版 Remark 10.7 の mod pⁿ 像の冪等性の単項 J の場合）。
 ## 方針
 実商自己積の同型性から、既存の Tor₁・conormal・像イデアルの冪等性判定を適用する。
 ## 規約
@@ -350,12 +350,12 @@ end SerrePositivity.BhattScholze
 
 end PerfectoidIdealIdempotent
 
-/-! ## Prop 10.2 の導来完備 almost 零加群の拡大閉性（旧 Almost/PerfectoidAlmostExtension.lean）
+/-! ## BS 著者版 Proposition 10.2 の導来完備 almost 零加群の拡大閉性（旧 Almost/PerfectoidAlmostExtension.lean）
 
 ## 概要
-perfectoid 化の核で零化される導来完備加群は拡大で閉じる（BS 著者版 Prop 10.2、印刷 p.78）。
+perfectoid 化の核で零化される導来完備加群は拡大で閉じる（BS 著者版 Proposition 10.2、印刷 p.78）。
 ## 方針
-Prop 10.4（印刷 p.79）の環版を使う。商加群の作用から完備テンソルの消滅を得て、
+BS 著者版 Proposition 10.4（印刷 p.79）の環版を使う。商加群の作用から完備テンソルの消滅を得て、
 短完全列の三角形で中央へ移し、その H⁰ の商加群構造を復元する。
 ## 規約
 既存の perfectoidIdeal、IsAlmostZero、G2 の実完備導来 tensor を使う。
@@ -411,14 +411,13 @@ private lemma annihilates_of_completedTensor_zero (a : R) (I : Ideal R)
 
 /--
 ## 概要
-perfectoid 化の核 K が M を零化すれば、K⊗̂ᴸM は零である
-（BS 著者版 Prop 10.4、印刷 p.79 の加群に関する方向）。
+perfectoid 化の核 K が M を零化すれば、K⊗̂ᴸM は零である（BS 著者版 Proposition 10.4 の同値の順方向で単項 J と加群の場合）。
 ## 方針
-既存の商環作用で M を R/K 加群とし、Lemma 10.3 の混合積消滅と作用 retract を使う。
+既存の商環作用で M を R/K 加群とし、BS 著者版 Lemma 10.3 の混合積消滅と作用 retract を使う。
 ## 規約
 この方向には M の完備性・平坦性・有限性は必要ない。
 ## 使われ方
-短完全列の両端を完備テンソルで消し、Prop 10.2 の拡大閉性に使う。
+短完全列の両端を完備テンソルで消し、BS 著者版 Proposition 10.2 の拡大閉性に使う。
 -/
 theorem perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
@@ -436,14 +435,13 @@ theorem perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
 
 /--
 ## 概要
-導来 p 完備加群 M について、K⊗̂ᴸM が零なら perfectoid 化の核 K は M を零化する
-（BS 著者版 Prop 10.4、印刷 p.79 の逆方向）。
+導来 p 完備加群 M について、K⊗̂ᴸM が零なら perfectoid 化の核 K は M を零化する（BS 著者版 Proposition 10.4 の同値の逆方向で単項 J と導来 p 完備加群の場合）。
 ## 方針
 K→R→R/K の tensor 三角形から M≅(R/K)⊗̂ᴸM を得て、実 H⁰ の商環作用を移す。
 ## 規約
 導来完備性を標準完備化単位で使い、古典的完備化で代用しない。
 ## 使われ方
-Prop 10.2 の中央加群のテンソル消滅から、元の零化条件を復元する。
+BS 著者版 Proposition 10.2 の中央加群のテンソル消滅から、元の零化条件を復元する。
 -/
 theorem perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
@@ -459,11 +457,10 @@ theorem perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
 set_option linter.unusedVariables false in
 /--
 ## 概要
-perfectoid 化の核で零化される導来 p 完備加群は、導来完備加群の短完全拡大で閉じる
-（BS 著者版 Prop 10.2、印刷 p.78）。
+perfectoid 化の核で零化される導来 p 完備加群は、導来完備加群の短完全拡大で閉じる（BS 著者版 Proposition 10.2 の拡大閉性で単項 J の場合）。
 ## 方針
 商加群の作用から両端の K⊗̂ᴸ− を消し、完全三角形で中央も消えることを示す。
-Prop 10.4 の逆方向により、その実 H⁰ の R/K 作用から中央の零化条件を復元する。
+BS 著者版 Proposition 10.4 の逆方向により、その実 H⁰ の R/K 作用から中央の零化条件を復元する。
 ## 規約
 指定の三つの完備性引数を保持する。両端からの消滅の方向は完備性なしにも成立する。
 ## 使われ方
@@ -491,8 +488,8 @@ end PerfectoidAlmostExtension
 /-! ## B5 の公開入口（旧 Almost/PerfectoidAlmost.lean）
 
 ## 概要
-BS 著者版 Lemma 10.3（印刷 pp.78–79）、Remark 10.7（印刷 p.80）の冪等性、
-Prop 10.2（印刷 p.78）の導来完備 almost 零加群の拡大閉性をまとめる。
+BS 著者版 Lemma 10.3（印刷 pp.78–79）、BS 著者版 Remark 10.7（印刷 p.80）の冪等性、
+BS 著者版 Proposition 10.2（印刷 p.78）の導来完備 almost 零加群の拡大閉性をまとめる。
 ## 方針
 既存 B3・B4 と、完全 prism による実完備導来 tensor の一般定理を再利用する。
 ## 規約
