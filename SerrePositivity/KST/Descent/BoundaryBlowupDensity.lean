@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.SchemeLemmas.ChartBoundaryRegular
-public import SerrePositivity.KST.SchemeLemmas.ChartGluing
-public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAffine
+public import SerrePositivity.AlgebraicGeometry.ChartBoundaryRegular
+public import SerrePositivity.AlgebraicGeometry.ChartGluing
+public import SerrePositivity.AlgebraicGeometry.SchemeBlowupAffine
 
 /-!
 # 非零因子の境界基本開の blowup 上の稠密性
@@ -25,7 +25,7 @@ public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAffine
 universe u
 
 open AlgebraicGeometry CategoryTheory TopologicalSpace
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 

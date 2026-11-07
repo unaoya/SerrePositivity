@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.UniversalPresentationEquiv
-public import SerrePositivity.KST.SchemeLemmas.ChartRegularLift
+public import SerrePositivity.AlgebraicGeometry.ChartRegularLift
 
 /-!
 概要：KST Def3.1 の普遍中心を L7 の古典 Rees–Proj blowup の入力に接続する。
@@ -60,13 +60,13 @@ theorem universalCenter_pivot_regular (i : I) :
 方針：普遍中心の pivot を L7 の BlowupChartRing に渡す。
 規約：KST Def3.1。使われ方：普遍自由多項式チャートとの比較の始域。 -/
 abbrev UniversalClassicalChart (i : I) :=
-  SchemeLemmas.BlowupChartRing (universalCenter (I := I)) (universalCenterGenerator i)
+  SerrePositivity.AlgebraicGeometry.BlowupChartRing (universalCenter (I := I)) (universalCenterGenerator i)
 
 /-- 概要：Rees–Proj の普遍チャートから自由多項式チャートへの環射。
 方針：中心像の正則単項性から L7 の実際の chartRegularLift を構成する。
 規約：KST Def3.1。使われ方：普遍チャートの古典模型との同型。 -/
 def universalClassicalToChart (i : I) : UniversalClassicalChart i →+* UniversalChart i :=
-  SchemeLemmas.chartRegularLift _ (universalBaseMap i).toRingHom _
+  SerrePositivity.AlgebraicGeometry.chartRegularLift _ (universalBaseMap i).toRingHom _
     (universalCenter_pivot_regular i)
     (by simpa [universalCenterGenerator] using universalCenter_image i)
 
@@ -75,7 +75,7 @@ def universalClassicalToChart (i : I) : UniversalClassicalChart i →+* Universa
 規約：KST Def3.1。使われ方：逆写像の生成元計算。 -/
 @[simp] theorem universalClassicalToChart_base (i : I) (p : UniversalBase I) :
     universalClassicalToChart i
-      (SchemeLemmas.chartBaseMap _ (universalCenterGenerator i) p) = universalBaseMap i p :=
-  SchemeLemmas.chartRegularLift_base _ _ _ _ _ p
+      (SerrePositivity.AlgebraicGeometry.chartBaseMap _ (universalCenterGenerator i) p) = universalBaseMap i p :=
+  SerrePositivity.AlgebraicGeometry.chartRegularLift_base _ _ _ _ _ p
 
 end SerrePositivity.KST.DerivedBlowup

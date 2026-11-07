@@ -432,7 +432,7 @@ public import SerrePositivity.KST.DerivedGeometry
 public import SerrePositivity.KST.Descent
 public import SerrePositivity.KST.ProExcision
 public import SerrePositivity.KST.SConstruction
-public import SerrePositivity.KST.SchemeLemmas
+public import SerrePositivity.AlgebraicGeometry
 public import SerrePositivity.KST.Spectra
 public import SerrePositivity.KTheory.Adams.CyclicTwo
 public import SerrePositivity.KTheory.Adams.PureWeight

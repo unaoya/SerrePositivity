@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Descent.AffinePresentation
-public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupCharts
+public import SerrePositivity.AlgebraicGeometry.SchemeBlowupCharts
 
 /-!
 # アフィン基底の実際の全標準チャートによる strict transform の平坦性
@@ -25,7 +25,7 @@ universe u
 
 open CategoryTheory AlgebraicGeometry
 open scoped TensorProduct
-open SerrePositivity.KST.SchemeLemmas
+open SerrePositivity.AlgebraicGeometry
 
 namespace SerrePositivity.KST.Descent
 
