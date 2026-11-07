@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
+public import SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
@@ -473,23 +474,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 1：Lemma 5.4（Frobenius ひねりの Čech 脈体） -/
 
-/-- 概要：多項式代数 B = k[X_s]_{s∈σ} の k 上の Čech 脈体 B^•：[n] ↦ B^{⊗(n+1)} = k[σ × {0,…,n}]。
-方針：`MvPolynomial (σ × Fin (n+1)) k` と copy 添字の `rename`。
-規約：σ は Type（変数の集合）。原典 Lemma 5.4 の k[EM]（M = ℕ^{⊕σ}）。
-使われ方：段 1・2（σ = Fin r × ℕ が B = ℤ_p{X}^∧ の mod p の変数 δ^a(X_j)）。 -/
-def polynomialCech (k : Type u) [CommRing k] (σ : Type) : CosimplicialObject CommRingCat.{u} where
-  obj n := CommRingCat.of (MvPolynomial (σ × Fin (n.len+1)) k)
-  map θ := CommRingCat.ofHom (MvPolynomial.rename (fun x => (x.1, θ.toOrderHom x.2))).toRingHom
-  map_id := by sorry -- copy 添字の恒等
-  map_comp := by sorry -- copy 添字の合成
-
-/-- 概要：相対 Frobenius B^{•,(1)} → B^•（各 copy で X ↦ X^p）。
-方針：B^{(1)} = B ⊗_{k,φ} k は k 上の多項式代数 k[X] と同一視でき、相対 Frobenius は k 線形な X ↦ X^p（原典 Not 5.1）。
-規約：k = F_p では絶対 Frobenius と一致。
-使われ方：段 1 の押し出し、段 2。 -/
-def relativeFrobeniusCech (k : Type u) [CommRing k] (σ : Type) : polynomialCech k σ ⟶ polynomialCech k σ where
-  app n := CommRingCat.ofHom (MvPolynomial.aeval (R := k) (fun x => (MvPolynomial.X x : MvPolynomial _ k) ^ p)).toRingHom
-  naturality := by sorry -- rename と p 乗の代入は可換
+-- 多項式 Čech 余脈体と相対 Frobenius は本体の PolynomialFrobeniusCech に置く。
 
 /-- 概要：Lemma 5.4（有限変数）：標数 p の環 k、有限集合 σ、B^{•,(1)} 代数 N^•（余単体的可換環の射 ι : B^{•,(1)} → N^•）について、
 N^• → N^• ⊗_{B^{•,(1)}} B^•（相対 Frobenius に沿う項ごとの押し出し）は交代余面複体の cohomology 同型。
