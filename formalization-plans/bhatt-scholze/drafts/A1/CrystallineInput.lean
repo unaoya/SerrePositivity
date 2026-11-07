@@ -5,6 +5,8 @@ module
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
+public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
+public import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
@@ -184,26 +186,7 @@ def deltaCopyX (r n : ℕ) (a : deltaCopies.{u} r n) :=
   pdCompletionUnit (RelativeFreeDeltaRing (R := crystallineBase p) (deltaCopies r n)) p
     (algebraMap (crystallineBase p) _ Z.generator) (MvPolynomial.X (a,0))
 
-def pdDeltaTerm (r n : ℕ) : CommRingCat.{u} := by
-  let Z := crystallineBasePrism.{u} p
-  let B := completedFreeDelta Z (deltaCopies r n)
-  let D := completedFreeDeltaStructure Z (deltaCopies r n)
-  let ys (a : formVars.{u} r × Fin n) := D.frobeniusLift
-    (deltaCopyX p r n (a.1,a.2.succ) - deltaCopyX p r n (a.1,0))
-  exact completionRing p (CommRingCat.of (DeltaDivisionTorsionQuotient D (p : B) ys))
-
-/-- 概要：Thm 5.2 の D^•（J_0^•B^• の pd 包の p 完備化 = B^•{φ(z)/p}^∧、Cor 2.39、a1-design §2.3）。
-方針：自由 δ 環の各 copy の差 z の φ(z)/p を δ 除算で添加し、p ねじれを除いて完備化。
-規約：D^n は p ねじれなし。
-使われ方：段 2・3。 -/
-def pdDeltaModel (r : ℕ) : Cosimplicial.CosimplicialAlgebra (crystallineBase.{u} p) where
-  obj n := by
-    let q : crystallineBase.{u} p →+* pdDeltaTerm p r n.len := by
-      sorry -- 係数の包含、δ 除算の単位、p 完備化の単位を合成
-    exact Under.mk (CommRingCat.ofHom q)
-  map θ := by sorry -- copy i↦θ(i) と差の pd 射。基点の copy の変更も差で表す
-  map_id := by sorry -- 各座標の像で判定
-  map_comp := by sorry -- copy の合成
+-- 結晶側の完備 p 除算模型は本体の CrystallinePDModel に置く。
 
 def splitDeltaCoordinates (r : ℕ) :
     pdDeltaModel.{u} p r ≅ withExtraCoords p (crystallineBase.{u} p) r := by
@@ -452,7 +435,6 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 /-! ### 段 2：C^•/p → D^•/p -/
 
 abbrev zpCech (r : ℕ) := htRings (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r
-abbrev pdDeltaRings (r : ℕ) := pdDeltaModel.{u} p r ⋙ Under.forget (CommRingCat.of (crystallineBase.{u} p))
 
 /-- 概要：Thm 5.2 の橋 η : C^• → D^•（C^n = B^n{z/p}^∧ → D^n = B^n{φ(z)/p}^∧、b ↦ φ(b)、z/p ↦ φ(z)/p。a1-design §2.3）。
 方針：envelope の普遍性（A0 の `IsPrismaticEnvelope.lift`。D^n は (Z_p,(p)) 上の prism）。余単体的射は普遍性の一意性から。
@@ -475,14 +457,6 @@ abbrev crystallineBridgeModP (r : ℕ) :
   quotPowMap (zpCech p r) (htGenerator _ _ r) (htGenerator_nat _ _ r)
     (fun n => (p : (pdDeltaRings p r).obj n)) (fun θ => map_natCast ((pdDeltaRings p r).map θ).hom p)
     (crystallineBridge p r) (crystallineBridge_generator p r) 1
-
-/-- 概要：B^•/p → C^•/p（B^n = ℤ_p{X^{(0)},…,X^{(n)}}^∧ の構造射の mod p。変数 ((j,a),i) ↦ δ^a(X_j^{(i)})）。
-方針：B^n/p = F_p[δ^a(X_j^{(i)})] は多項式環（自由 δ 環の mod p）。
-規約：係数は F_p = `cartierBase`。
-使われ方：段 2 の押し出しの ι。 -/
-def deltaCoordinatesModP (r : ℕ) :
-    polynomialCech (cartierBase.{u} p) (Fin r × ℕ) ⟶ reducedModel (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r := by
-  sorry -- 各項で X_{(j,a),i} ↦ δ^a(X_j^{(i)}) mod p。copy 添字の写像と可換
 
 /-- 概要：D^n/p ≅ C^n/p ⊗_{B^n/p, φ} B^n/p（項ごと、余単体的に）で、C^•/p からの脚が橋の mod p。
 方針：D^n ≅ C^n ⊗̂_{B^n, φ} B^n（a1-design §2.3、§8 の 2：C^n = Z_p{X^{(0)}, Y}^∧、z = pY の φ 底変換は z ↦ φ(z)）、p 完備化は mod p で消える
