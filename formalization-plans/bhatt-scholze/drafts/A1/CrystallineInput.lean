@@ -4,6 +4,8 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
+public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 public import SerrePositivity.EInfinity.BarrattEccles.DiscreteAlgebra
 public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
@@ -62,18 +64,6 @@ open SerrePositivity.DifferentialGraded SerrePositivity.DerivedCompletion SerreP
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 attribute [local instance] HasDerivedCategory.standard
 variable (p : ℕ) [Fact p.Prime]
-
-abbrev crystallineBase := ULift.{u} (PadicInt p)
-def crystallineBaseDelta : DeltaStructure p (crystallineBase.{u} p) :=
-  (DeltaStructure.existsUnique_of_mod_p (A := crystallineBase.{u} p)
-    (by sorry) (RingHom.id _) (by sorry)).exists.choose -- p 正則、剰余体 F_p で id=F
-def crystallineBasePrism : OrientedPrism p (crystallineBase.{u} p) := by
-  letI : IsAdicComplete (Ideal.span {(p : crystallineBase.{u} p)}) _ := by sorry -- ℤ_p の p 進完備性
-  exact OrientedPrism.crystalline (crystallineBaseDelta p) (by sorry) -- p は正則
-theorem crystallineBase_generator : (crystallineBasePrism.{u} p).generator = p := rfl
-theorem crystallineBounded {A : Type u} [CommRing A] (P : OrientedPrism p A) (h : P.generator = p) : IsBoundedPrism P := by
-  sorry -- 商では p=0
-abbrev crystallineBaseBounded := crystallineBounded p (crystallineBasePrism.{u} p) (crystallineBase_generator p)
 
 /-- 有界基底 A は p 完備。ℤ_(p)→A を ℤ_p へ延長する標準係数射。 -/
 def padicCoefficientMap {A : Type u} [CommRing A] (P : OrientedPrism p A) : crystallineBase.{u} p →+* A := by
@@ -453,23 +443,6 @@ def pdDeRhamFunctorIso (k : Type u) [CommRing k] :
 
 /-! ## D68 改訂後の経路：(Z_p,(p))・F_p[X_1,…,X_r] の HT 比較を mod p で直接（a1-design §10） -/
 
-/-- 概要：余単体的可換環の mod p（各項の p による商）。
-方針：Shared の `quotPow` を d = p（自然数の像、環射で保たれる）で。
-規約：素朴な商。段 2・3 では各項が p ねじれなしなので導来 mod p と一致。
-使われ方：段 2〜4。 -/
-abbrev modPrimeCosimplicial (X : CosimplicialObject CommRingCat.{u}) : CosimplicialObject CommRingCat.{u} :=
-  quotPow X (fun n => (p : X.obj n)) (fun θ => map_natCast (X.map θ).hom p) 1
-
-/-- 概要：余単体的可換環の射の mod p。
-方針：`quotPowMap`（環射は p を p に送る）。
-規約：—
-使われ方：段 3。 -/
-abbrev modPrimeMap {X Y : CosimplicialObject CommRingCat.{u}} (f : X ⟶ Y) :
-    modPrimeCosimplicial p X ⟶ modPrimeCosimplicial p Y :=
-  quotPowMap X (fun n => (p : X.obj n)) (fun θ => map_natCast (X.map θ).hom p)
-    (fun n => (p : Y.obj n)) (fun θ => map_natCast (Y.map θ).hom p) f (fun n => map_natCast (f.app n).hom p) 1
-
-abbrev cartierBase := crystallineBase.{u} p ⧸ (crystallineBasePrism p).ideal
 abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (formVars.{u} n)
 
 /-! ### 段 1：Lemma 5.4（Frobenius ひねりの Čech 脈体） -/
