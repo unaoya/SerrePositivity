@@ -1,0 +1,63 @@
+{
+  "head": "245e5b1ccc977677ac7798719aa2571a7830588b",
+  "imports": [
+    "import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility",
+    "import SerrePositivity.HomotopicalAlgebra.Diagram.SpanHomotopyColimit"
+  ],
+  "context": [
+    "open HomotopicalAlgebra",
+    "open scoped SSet.modelCategoryQuillen",
+    "universe u"
+  ],
+  "diagnostics": [
+    {
+      "command": "#synth CategoryWithCofibrations SSet.{u}",
+      "severity": "information",
+      "result": "SSet.modelCategoryQuillen.instCategoryWithCofibrations"
+    },
+    {
+      "command": "#synth CategoryWithFibrations SSet.{u}",
+      "severity": "information",
+      "result": "SSet.modelCategoryQuillen.instCategoryWithFibrations"
+    },
+    {
+      "command": "#synth ModelCategory SSet.{u}",
+      "severity": "error",
+      "result": "failed to synthesize\n  ModelCategory SSet\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command."
+    },
+    {
+      "command": "#check @SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations",
+      "severity": "information",
+      "result": "@SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations : ∀ [inst : ModelCategory SSet],\n  fibrations SSet = SSet.modelCategoryQuillen.J.rlp → SSet.anodyneExtensions = trivialCofibrations SSet"
+    },
+    {
+      "command": "#print axioms SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations",
+      "severity": "information",
+      "result": "'SerrePositivity.SimplicialModel.simplicial_anodyne_eq_trivialCofibrations' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    {
+      "command": "#check @SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_span",
+      "severity": "information",
+      "result": "SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_span : ∀ (K : Type u_1)\n  [inst : CategoryTheory.SmallCategory K] (e : K ≌ CategoryTheory.Limits.WalkingSpan) {C : Type u_3}\n  [inst_1 : CategoryTheory.Category.{u_2, u_3} C] [inst_2 : ModelCategory C]\n  [inst_3 : CategoryTheory.IsLocallyPresentable.{u_1, u_2, u_3} C] (I J : CategoryTheory.MorphismProperty C)\n  [inst_4 : SerrePositivity.ModelGeneration.CofibrantlyGenerated I J]\n  [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)] (D : CategoryTheory.Functor K C),\n  cofibrations C (D.map (e.inverse.map CategoryTheory.Limits.WalkingSpan.Hom.fst)) →\n    weakEquivalences C ((SerrePositivity.DiagramModel.HomotopyColimit.comparison K I J).app D)"
+    },
+    {
+      "command": "#print axioms SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_span",
+      "severity": "information",
+      "result": "'SerrePositivity.DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_span' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    }
+  ],
+  "sources": [
+    {
+      "source": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean:36",
+      "observation": "kanQuillen_model_exists は sorry を含み、kanQuillenModel は def で型クラス instance として登録されていない。"
+    },
+    {
+      "source": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/SimplicialLevel.lean:25",
+      "observation": "ModelCategory SSet は定義の内部で let によって与えられる。"
+    }
+  ],
+  "items": {
+    "3.3.7.7": "[ModelCategory SSet] の instance なし。verdict は unsure、status_new は partial。",
+    "3.4.2.11": "一般の [ModelCategory C] を C = SSet で使う instance なし。status_new は partial。"
+  }
+}
