@@ -16,7 +16,7 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 
 - 含む：§4.1（Def 4.1、Rem 4.6、Lemma 4.8 は済）、§4.3（Not 4.16、Constr 4.17・4.18 と脚注 10、Rem 4.19、Lemma 4.20・4.22）、
   §3 の前提（Def 2.42、Lemma 3.7(2)(3)、Cor 3.12、Prop 3.13、Ex 3.14）、O_Δ と Δ の Frobenius（§4 には明示されないが Construction 7.6 が使う）。
-- 含まない：§4.2（Constr 4.9、Lemma 4.10、Thm 4.11、Cor 4.12）は A1。Rem 4.2〜4.5・4.7、Lemma 4.21 は不要（ノート第 4 章の判定）。
+- 含まない：§4.2（Constr 4.9、Lemma 4.10、Thm 4.11、Cor 4.12）は A1。Rem 4.2〜4.4・4.7、Lemma 4.21 は不要（ノート第 4 章の判定）。Rem 4.5 は、原典の位相の比較（Zariski・Nisnevich・étale）そのものは不要だが、裏の一般論「位相を粗くしても層の RΓ は変わらない」（drafts/Sheaves/GlobalSections の `derivedGlobalSections_of_le`）を S2 で使う（A5 の Prop 8.5 が位相によらないことに使う。11-07 追記）。
 - 前提にする一般論：∞ 層の設計書の S1（層条件）、S2（Γ・RΓ の型）、S3（弱終対象の Čech 脈体の補題）、S6（κ の切り落とし）。
   S4（層化の存在）は Not 4.16 の定義の存在部分に要るが、A0 の骨組みは S2 の型（反射が与えられたとして）で書ける。
 - 基底：向き付き有界 prism (A, (d))。既存の `OrientedPrism p A` と、有界性は既存の形（A/d の p 冪ねじれが一様な冪で消える）。
@@ -44,7 +44,8 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 | Rem 4.19 | 定理（affine 空間の小さい模型と底変換） | `cechAlexanderAffine`、`cechAlexanderAffine_baseChange` | Prop 3.13(2) | A0-2 |
 | Lemma 4.22 | 定理。一般の形 | `completedBaseChange_tot_comm` | HA/DerivedCompletion（CompletedBaseChange*、Truncation） | A0-4 |
 | Lemma 4.20 | 定理。一般の形 | `prismaticCohomology_baseChange` | Lemma 4.22、Prop 3.13(2) | A0-4 |
-| Rem 4.2〜4.5・4.7、Lemma 4.21 | 不要 | — | — | — |
+| Rem 4.2〜4.4・4.7、Lemma 4.21 | 不要 | — | — | — |
+| Rem 4.5 | 一般論の部分だけ（S2） | `derivedGlobalSections_of_le`（drafts/Sheaves/GlobalSections） | — | 原典の位相の比較そのものは不要（11-07） |
 
 ## 2. 定義の形
 

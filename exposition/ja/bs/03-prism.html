@@ -94,7 +94,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 (b) perfectoid 環は完全 prism の商：Fontaine 核の distinguished 生成元 <code>exists_distinguished_fontaine_kernel_generator</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:120</a>） と、\(W(R^\flat)\) の導来 \((p,d)\) 完備化による表示 <code>exists_perfectoidTrialPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:380</a>）（原典の \(A_{\inf}(R)\) そのものではなく PD 完備化を一段挟む）。<br>
 (c) 商の射は prism の射に一意に持ち上がる（充満忠実性。Lemma 4.8 の標的が完全な場合）：<code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>）。<b>標的が一般の有界 prism の版</b>は <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>）（André の下、主経路外。第 4 章の Lemma 4.8 を参照）。</p>
 </div>
-<p>原典 Rem 3.11（正則局所環の perfectoid 被覆）・Cor 3.12（有界 prism の site）は E3 に不要（Cor 3.12 は A0 で固定基底の site を作るときに参考にする）。</p>
+<p>原典 Rem 3.11（正則局所環の perfectoid 被覆）は E3 に不要。Cor 3.12（有界 prism の site）は、<b>固定基底の site に限った形で E3 に要る</b>（A0-3d）。Δ を原典どおり site の RΓ として定義し（Not 4.16）、それを Čech–Alexander 複体で計算するには、O_Δ と O̅_Δ が高次コホモロジーの消える層であること（Cor 3.12 の後半）が要るため。11-02 の方針（定義は原典どおり、site を作らない案は採らない）による改訂（11-07）。</p>
 
 <h2>3.5 prismatic envelope（原典 Prop 3.13）</h2>
 
@@ -149,7 +149,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Lemma 3.9</td><td>prism の完全化</td><td class="ok">済</td><td><code>PCompletedDelta*</code>・<code>PerfectDeltaPDPrism</code> ほか（Prism/Perfection）</td></tr>
 <tr><td>Thm 3.10</td><td>perfectoid 環 ＝ 完全 prism</td><td class="ok">済</td><td><code>PerfectPrismQuotientPerfectoid</code>・<code>WittQuotientFontaineIso</code> ほか（Prism/Perfectoid）</td></tr>
 <tr><td>Rem 3.11</td><td>正則局所環の perfectoid 被覆</td><td class="no">不要</td><td></td></tr>
-<tr><td>Cor 3.12</td><td>全 prism の site</td><td class="no">不要</td><td>固定基底の affine な site で進める</td></tr>
+<tr><td>Cor 3.12</td><td>全 prism の site</td><td>固定基底の場合だけ要る（A0-3d）</td><td>固定基底 (A,(d)) 上の site に限る。site の公理と、O_Δ・O̅_Δ が高次コホモロジーの消える層であること（11-07 改訂。以前の判定「不要」は 11-02 の方針変更の前のもの）</td></tr>
 <tr><td>Prop 3.13</td><td>正則イデアルの prismatic envelope</td><td class="part">一部</td><td>特殊形が二系統ある：根の関係式 \(f_i(X_i)/d\) の δ 除算包が Koszul 正則性から平坦であること（主経路、<code>Andre/Envelope/</code>）と、原典どおりの一元拡大の envelope が入力作用つきの圏の始対象であること（<code>Andre/PowerRootEnvelope/InputUniversal</code>）。一般形は A0</td></tr>
 <tr><td>Ex 3.14</td><td>Prop 3.13 の典型的な適用</td><td class="todo">未</td><td>A0 の Čech 計算の各項がこの形</td></tr>
 </table></div>
