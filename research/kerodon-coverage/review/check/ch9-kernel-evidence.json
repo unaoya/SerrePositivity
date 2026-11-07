@@ -744,7 +744,13 @@
       "adopted": []
     },
     "9.1.2.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty",
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.2.14": {
       "adopted": []
@@ -762,22 +768,71 @@
       ]
     },
     "9.1.3.3": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_isWeakHomotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity",
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.3.4": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit",
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_isWeakHomotopyEquivalence",
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity",
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.3.5": {
       "adopted": []
     },
     "9.1.3.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered",
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity",
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.3.8": {
       "adopted": []
     },
     "9.1.3.11": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.instIsFilteredGrothendieckOfαCategoryObjCat",
+          "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.1.3.12": {
       "adopted": []
@@ -4158,6 +4213,76 @@
         "axioms_output": "'CategoryTheory.IsSifted.instIsConnected' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 88
       }
+    },
+    "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean": {
+      "SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty": {
+        "type": "@SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty : ∀ {C : SSet} {inst : C.Quasicategory}\n  [self : SerrePositivity.InfinityCategories.F2.IsFilteredInfinity C] {K : SSet} [K.Finite] (f : K ⟶ C),\n  Nonempty (SerrePositivity.InfinityCategories.JoinCocone f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.IsFilteredInfinity.cocone_nonempty' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 26
+      },
+      "SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered": {
+        "type": "@SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered : ∀ {κ : Cardinal.{u_1}},\n  Cardinal.aleph0 ≤ κ →\n    ∀ (C : SSet) [inst : C.Quasicategory] [SerrePositivity.InfinityCategories.F2.IsKappaFiltered κ C],\n      SerrePositivity.InfinityCategories.F2.IsFilteredInfinity C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.isFilteredInfinity_of_isKappaFiltered' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 59
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean": {
+      "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit": {
+        "type": "@SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit : ∀ {B : SSet}\n  (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.IsColimitCone (SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 28
+      }
+    },
+    "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean": {
+      "SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_isWeakHomotopyEquivalence": {
+        "type": "@SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_isWeakHomotopyEquivalence : ∀ {B : SSet}\n  (F : SSet.uliftFunctor.obj B ⟶ SerrePositivity.InfinityCategories.SpaceInfinity),\n  SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence\n    (SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_isWeakHomotopyEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 75
+      }
+    },
+    "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean": {
+      "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity": {
+        "type": "SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity : ∀ (C : SSet) [inst : C.Quasicategory]\n  [SerrePositivity.InfinityCategories.F2.IsFilteredInfinity C],\n  SerrePositivity.InfinityCategories.IsWeaklyContractible C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.isWeaklyContractible_of_isFilteredInfinity' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 59
+      }
+    },
+    "Mathlib/CategoryTheory/Filtered/Grothendieck.lean": {
+      "CategoryTheory.instIsFilteredGrothendieckOfαCategoryObjCat": {
+        "type": "@CategoryTheory.instIsFilteredGrothendieckOfαCategoryObjCat : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] (F : CategoryTheory.Functor C CategoryTheory.Cat)\n  [CategoryTheory.IsFiltered C] [∀ (c : C), CategoryTheory.IsFiltered ↑(F.obj c)],\n  CategoryTheory.IsFiltered (CategoryTheory.Grothendieck F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.instIsFilteredGrothendieckOfαCategoryObjCat' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 46
+      }
     }
   },
   "model_category_assumptions": {
@@ -4211,5 +4336,6 @@
         "assumption": "ModelCategory C"
       }
     ]
-  }
+  },
+  "depth_review_base": "81e593fb9"
 }

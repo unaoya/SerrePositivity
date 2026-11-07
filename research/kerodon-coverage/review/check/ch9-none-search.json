@@ -1,0 +1,2401 @@
+{
+  "source_base": "81e593fb9",
+  "citation_scan": "Original 9711-reference citations.csv inventory and direct Lean docstring/module-doc scan. Same-subsection item ranges are expanded.",
+  "mathlib_rev": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "items": {
+    "9.1.2.1": {
+      "number": "9.1.2.1",
+      "tag": "02PN",
+      "query": [
+        "homotopy filtered",
+        "hKan enriched",
+        "postcomposition",
+        "boundary",
+        "nullhomotopy"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.1",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "boundary",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "nullhomotopy",
+            "postcomposition"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+              "line": 26,
+              "declaration": "exists_nullHomotopy_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 25,
+              "declaration": "IsFilteredInfinity"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "boundary",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "nullhomotopy",
+            "precomposition"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+              "line": 26,
+              "declaration": "exists_nullHomotopy_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 25,
+              "declaration": "IsFilteredInfinity"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "boundary",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "nullhomotopy",
+            "postcomposition"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Homotopy/HomotopyGroup.lean",
+              "line": 337,
+              "declaration": "homotopyTo"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/AlgCat/FilteredColimits.lean",
+              "line": 41,
+              "declaration": "AlgCat.algebraOfIsFiltered"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "boundary",
+          "enriched",
+          "filtered",
+          "homotopy",
+          "kan",
+          "nullhomotopy",
+          "postcomposition"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaHomotopyFactorization.lean",
+            "line": 24,
+            "declaration": "exists_homotopy_at_stage_of_kappaFiltered_isColimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FiniteBousfieldKanContinuity.lean",
+            "line": 37,
+            "declaration": "bousfieldKanHolimFunctor_finite_poset_preservesFilteredColimits"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 25,
+          "declaration": "IsFilteredInfinity",
+          "source_signature": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop",
+          "assessment": "本体の filtered 性は準圏への有限図式に余錐を課す。有限図式の零ホモトピーも全体 C を標的とする。h Kan 豊穣圏で各 Hom 内の境界写像をある射で後合成して零ホモトピーにする述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+          "line": 26,
+          "declaration": "exists_nullHomotopy_of_isFilteredInfinity",
+          "source_signature": "lemma exists_nullHomotopy_of_isFilteredInfinity {K C : SSet.{u}} [Quasicategory C] [IsFilteredInfinity C] [K.Finite] (p : K ⟶ C) : ∃ x : C _⦋0⦌, Nonempty (SSet.Homotopy p (SSet.const x)) ",
+          "assessment": "本体の filtered 性は準圏への有限図式に余錐を課す。有限図式の零ホモトピーも全体 C を標的とする。h Kan 豊穣圏で各 Hom 内の境界写像をある射で後合成して零ホモトピーにする述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "本体の filtered 性は準圏への有限図式に余錐を課す。有限図式の零ホモトピーも全体 C を標的とする。h Kan 豊穣圏で各 Hom 内の境界写像をある射で後合成して零ホモトピーにする述語は見つからない。",
+      "decision": "none"
+    },
+    "9.1.2.5": {
+      "number": "9.1.2.5",
+      "tag": "02PS",
+      "query": [
+        "filtered quasicategory",
+        "hKan-enriched homotopy category",
+        "homotopy filtered",
+        "iff"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.5",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "quasicategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+              "line": 26,
+              "declaration": "exists_nullHomotopy_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 25,
+              "declaration": "IsFilteredInfinity"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "quasicategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+              "line": 26,
+              "declaration": "exists_nullHomotopy_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 25,
+              "declaration": "IsFilteredInfinity"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "quasicategory"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Types/Filtered.lean",
+              "line": 15,
+              "declaration": "`CategoryTheory.Limits.Types.FilteredColimit.colimit_eq_iff`"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "category",
+          "enriched",
+          "filtered",
+          "homotopy",
+          "kan",
+          "quasicategory"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean",
+            "line": 22,
+            "declaration": "quasicategory_of_filtered_isColimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaHomotopyFactorization.lean",
+            "line": 24,
+            "declaration": "exists_homotopy_at_stage_of_kappaFiltered_isColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 25,
+          "declaration": "IsFilteredInfinity",
+          "source_signature": "class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop",
+          "assessment": "全有限図式の余錐から C 内の定値図式へのホモトピーを得る型はある。hC の豊穣 Hom での後合成による消去と比較する iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+          "line": 26,
+          "declaration": "exists_nullHomotopy_of_isFilteredInfinity",
+          "source_signature": "lemma exists_nullHomotopy_of_isFilteredInfinity {K C : SSet.{u}} [Quasicategory C] [IsFilteredInfinity C] [K.Finite] (p : K ⟶ C) : ∃ x : C _⦋0⦌, Nonempty (SSet.Homotopy p (SSet.const x)) ",
+          "assessment": "全有限図式の余錐から C 内の定値図式へのホモトピーを得る型はある。hC の豊穣 Hom での後合成による消去と比較する iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全有限図式の余錐から C 内の定値図式へのホモトピーを得る型はある。hC の豊穣 Hom での後合成による消去と比較する iff は見つからない。",
+      "decision": "none"
+    },
+    "9.1.2.6": {
+      "number": "9.1.2.6",
+      "tag": "02PT",
+      "query": [
+        "homotopy category",
+        "IsFiltered",
+        "parallel arrows",
+        "nonempty",
+        "coequalizer"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.6",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "arrows",
+            "category",
+            "coequalizer",
+            "filtered",
+            "homotopy",
+            "nonempty",
+            "parallel"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 68,
+              "declaration": "nonempty_vertices_of_isFilteredInfinity"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 95,
+              "declaration": "IsFiltered"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "arrows",
+            "category",
+            "equalizer",
+            "filtered",
+            "homotopy",
+            "nonempty",
+            "parallel"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 68,
+              "declaration": "nonempty_vertices_of_isFilteredInfinity"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 95,
+              "declaration": "IsFiltered"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "arrows",
+            "category",
+            "coequalizer",
+            "filtered",
+            "homotopy",
+            "nonempty",
+            "parallel"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 95,
+              "declaration": "IsFiltered"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+              "line": 164,
+              "declaration": "IsCardinalFiltered.nonempty"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "arrows",
+          "category",
+          "coequalizer",
+          "filtered",
+          "homotopy",
+          "nonempty",
+          "parallel"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaHomotopyFactorization.lean",
+            "line": 24,
+            "declaration": "exists_homotopy_at_stage_of_kappaFiltered_isColimit"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/ClassifiedFilteredElements.lean",
+            "line": 26,
+            "declaration": "hasKappaFilteredElements_rightStraightening_iff"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 68,
+          "declaration": "nonempty_vertices_of_isFilteredInfinity",
+          "source_signature": "lemma nonempty_vertices_of_isFilteredInfinity (C : SSet.{u}) [Quasicategory C] [IsFilteredInfinity C] : Nonempty (C _⦋0⦌) ",
+          "assessment": "準圏に頂点が存在することと、通常圏での IsFiltered の定義を確認した。hC に対して頂点の非空性に加え二対象・平行射の条件をまとめた型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+          "line": 95,
+          "declaration": "IsFiltered",
+          "source_signature": "class IsFiltered : Prop extends IsFilteredOrEmpty C",
+          "assessment": "準圏に頂点が存在することと、通常圏での IsFiltered の定義を確認した。hC に対して頂点の非空性に加え二対象・平行射の条件をまとめた型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏に頂点が存在することと、通常圏での IsFiltered の定義を確認した。hC に対して頂点の非空性に加え二対象・平行射の条件をまとめた型は見つからない。",
+      "decision": "none"
+    },
+    "9.1.2.9": {
+      "number": "9.1.2.9",
+      "tag": "02PX",
+      "query": [
+        "coherent nerve",
+        "locally Kan",
+        "simplicially enriched category",
+        "homotopy filtered"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.9",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "coherent",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "locally",
+            "nerve",
+            "simplicially"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 20,
+              "declaration": "isKappaFiltered_nerve_of_cardinalFiltered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTerminal.lean",
+              "line": 47,
+              "declaration": "coherentNerve_isTerminalVertex_of_enrichedTerminal"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "coherent",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "locally",
+            "nerve",
+            "simplicially"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+              "line": 20,
+              "declaration": "isKappaFiltered_nerve_of_cardinalFiltered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentTerminal.lean",
+              "line": 47,
+              "declaration": "coherentNerve_isTerminalVertex_of_enrichedTerminal"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "coherent",
+            "enriched",
+            "filtered",
+            "homotopy",
+            "kan",
+            "locally",
+            "nerve",
+            "simplicially"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Types/Filtered.lean",
+              "line": 15,
+              "declaration": "`CategoryTheory.Limits.Types.FilteredColimit.colimit_eq_iff`"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "category",
+          "coherent",
+          "enriched",
+          "filtered",
+          "homotopy",
+          "kan",
+          "locally",
+          "nerve",
+          "simplicially"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+            "line": 20,
+            "declaration": "isKappaFiltered_nerve_of_cardinalFiltered"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FinitePosetCoherentExchange.lean",
+            "line": 25,
+            "declaration": "coherentFilteredLimitExchange_nerve_finite_poset"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean",
+          "line": 20,
+          "declaration": "isKappaFiltered_nerve_of_cardinalFiltered",
+          "source_signature": "lemma isKappaFiltered_nerve_of_cardinalFiltered {κ : Cardinal.{u}} [Fact κ.IsRegular] (I : Type u) [Preorder I] [IsCardinalFiltered I κ] : IsKappaFiltered κ (nerve I)",
+          "assessment": "通常の順序集合の nerve に κ-filtered 性を移す一方向はある。局所 Kan 豊穣圏の coherent nerve と h Kan 豊穣側の条件との iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常の順序集合の nerve に κ-filtered 性を移す一方向はある。局所 Kan 豊穣圏の coherent nerve と h Kan 豊穣側の条件との iff は見つからない。",
+      "decision": "none"
+    },
+    "9.1.2.11": {
+      "number": "9.1.2.11",
+      "tag": "02PZ",
+      "query": [
+        "kappa-filtered",
+        "mapping space",
+        "nullhomotopy",
+        "postcomposition",
+        "small shape"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.11",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "filtered",
+            "kappa",
+            "mapping",
+            "nullhomotopy",
+            "postcomposition",
+            "shape",
+            "small",
+            "space"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 33,
+              "declaration": "IsKappaFiltered.cocone_nonempty"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/EmptyDiagramPresentation.lean",
+              "line": 26,
+              "declaration": "smallDiagramComma_isKappaFiltered_of_empty_shape"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "filtered",
+            "kappa",
+            "mapping",
+            "nullhomotopy",
+            "precomposition",
+            "shape",
+            "small",
+            "space"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 33,
+              "declaration": "IsKappaFiltered.cocone_nonempty"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/EmptyDiagramPresentation.lean",
+              "line": 26,
+              "declaration": "smallDiagramComma_isKappaFiltered_of_empty_shape"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "filtered",
+            "kappa",
+            "mapping",
+            "nullhomotopy",
+            "postcomposition",
+            "shape",
+            "small",
+            "space"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/FinallySmall.lean",
+              "line": 106,
+              "declaration": "preservesColimitsOfShape_of_isFiltered"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "filtered",
+          "kappa",
+          "mapping",
+          "nullhomotopy",
+          "postcomposition",
+          "shape",
+          "small",
+          "space"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/EmptyDiagramPresentation.lean",
+            "line": 26,
+            "declaration": "smallDiagramComma_isKappaFiltered_of_empty_shape"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/DiagramCommaConePushoutFiltered.lean",
+            "line": 44,
+            "declaration": "smallDiagramComma_cone_pushout_isKappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 33,
+          "declaration": "IsKappaFiltered.cocone_nonempty",
+          "source_signature": "cocone_nonempty {K : SSet.{u}} (hK : IsKappaSmall κ K) (f : K ⟶ C) : Nonempty (JoinCocone f)",
+          "assessment": "κ-small 図式の余錐と有限図式を C 内で収縮する型はある。固定 Hom(X,Y) への任意の κ-small 図式を Y→Z の後合成で Hom(X,Z) 内で収縮する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredNullHomotopy.lean",
+          "line": 26,
+          "declaration": "exists_nullHomotopy_of_isFilteredInfinity",
+          "source_signature": "lemma exists_nullHomotopy_of_isFilteredInfinity {K C : SSet.{u}} [Quasicategory C] [IsFilteredInfinity C] [K.Finite] (p : K ⟶ C) : ∃ x : C _⦋0⦌, Nonempty (SSet.Homotopy p (SSet.const x)) ",
+          "assessment": "κ-small 図式の余錐と有限図式を C 内で収縮する型はある。固定 Hom(X,Y) への任意の κ-small 図式を Y→Z の後合成で Hom(X,Z) 内で収縮する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "κ-small 図式の余錐と有限図式を C 内で収縮する型はある。固定 Hom(X,Y) への任意の κ-small 図式を Y→Z の後合成で Hom(X,Z) 内で収縮する型は見つからない。",
+      "decision": "none"
+    },
+    "9.1.2.12": {
+      "number": "9.1.2.12",
+      "tag": "02Q0",
+      "query": [
+        "filtered quasicategory",
+        "boundary cone",
+        "all dimensions",
+        "finite cocone",
+        "boundary criterion"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.12",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "boundary",
+            "cocone",
+            "cone",
+            "criterion",
+            "dimensions",
+            "filtered",
+            "finite",
+            "quasicategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 26,
+              "declaration": "IsFilteredInfinity.cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "boundary",
+            "cocone",
+            "cone",
+            "criterion",
+            "dimensions",
+            "filtered",
+            "finite",
+            "quasicategory"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 26,
+              "declaration": "IsFilteredInfinity.cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "boundary",
+            "cocone",
+            "cone",
+            "criterion",
+            "dimensions",
+            "filtered",
+            "finite",
+            "quasicategory"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/AlgCat/FilteredColimits.lean",
+              "line": 50,
+              "declaration": "AlgCat.coconeOfIsFiltered"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "boundary",
+          "cocone",
+          "cone",
+          "criterion",
+          "dimensions",
+          "filtered",
+          "finite",
+          "quasicategory"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/FixedCoconeBoundarySliceReflection.lean",
+            "line": 31,
+            "declaration": "nonempty_sliceFunctorIso_of_fixedCoconeBoundaryIso"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/StrictKappaFilteredColimit.lean",
+            "line": 22,
+            "declaration": "quasicategory_of_filtered_isColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 26,
+          "declaration": "IsFilteredInfinity.cocone_nonempty",
+          "source_signature": "cocone_nonempty {K : SSet.{u}} [K.Finite] (f : K ⟶ C) : Nonempty (JoinCocone f)",
+          "assessment": "全有限形状に余錐を与えるフィールドを有限な単体境界に制限すると一方向に当たる。境界形状の余錐の存在だけから全有限形状へ拡張する逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "全有限形状に余錐を与えるフィールドを有限な単体境界に制限すると一方向に当たる。境界形状の余錐の存在だけから全有限形状へ拡張する逆向きは残る。",
+      "decision": "partial"
+    },
+    "9.1.2.14": {
+      "number": "9.1.2.14",
+      "tag": "02Q2",
+      "query": [
+        "boundary cone",
+        "constant face",
+        "finite simplicial set",
+        "reduce condition"
+      ],
+      "a": {
+        "terms": [
+          "9.1.2.14",
+          "9.1.2",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "boundary",
+            "condition",
+            "cone",
+            "constant",
+            "face",
+            "finite",
+            "reduce",
+            "set",
+            "simplicial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 26,
+              "declaration": "IsFilteredInfinity.cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "boundary",
+            "condition",
+            "cone",
+            "constant",
+            "degeneracy",
+            "finite",
+            "reduce",
+            "set",
+            "simplicial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 26,
+              "declaration": "IsFilteredInfinity.cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "boundary",
+            "condition",
+            "cone",
+            "constant",
+            "face",
+            "finite",
+            "reduce",
+            "set",
+            "simplicial"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+              "line": 292,
+              "declaration": "cocone_nonempty"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FormalCoproducts/Basic.lean",
+              "line": 309,
+              "declaration": "pullbackCone_condition"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Ind/FilteredPosetNerve.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Ind"
+        ],
+        "terms": [
+          "boundary",
+          "condition",
+          "cone",
+          "constant",
+          "face",
+          "finite",
+          "reduce",
+          "set",
+          "simplicial"
+        ],
+        "declaration_count": 2010,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/TerminalCarrierBoundary.lean",
+            "line": 31,
+            "declaration": "terminalCarrierCondition_of_boundary"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Ind/ConeFoldApexConstant.lean",
+            "line": 22,
+            "declaration": "arrowInterpolationConeFold_apex_constant"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 26,
+          "declaration": "IsFilteredInfinity.cocone_nonempty",
+          "source_signature": "cocone_nonempty {K : SSet.{u}} [K.Finite] (f : K ⟶ C) : Nonempty (JoinCocone f)",
+          "assessment": "全有限形状の余錐は定値面を持つ境界も含む。指定次元で一面が定値な境界の余錐存在だけから一般の境界に移す型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "全有限形状の余錐は定値面を持つ境界も含む。指定次元で一面が定値な境界の余錐存在だけから一般の境界に移す型は見つからない。",
+      "decision": "none"
+    },
+    "9.1.3.3": {
+      "number": "9.1.3.3",
+      "tag": "05X7",
+      "query": [
+        "filtered left fibration",
+        "transport representation",
+        "contractible colimit",
+        "total Kan"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.3",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimit",
+            "contractible",
+            "fibration",
+            "filtered",
+            "kan",
+            "left",
+            "representation",
+            "total",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+              "line": 28,
+              "declaration": "coherentDiagramTotalCocone_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "contractible",
+            "fibration",
+            "filtered",
+            "kan",
+            "limit",
+            "representation",
+            "right",
+            "total",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+              "line": 58,
+              "declaration": "coherentFilteredTotalKan_isContractibleKan"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimit",
+            "contractible",
+            "filtered",
+            "kan",
+            "left",
+            "lifting",
+            "representation",
+            "total",
+            "transport"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+              "line": 78,
+              "declaration": "leftKanExtensionObjIsoColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+              "line": 845,
+              "declaration": "isColimitCoconeOfIsLeftKanExtension"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "colimit",
+          "contractible",
+          "fibration",
+          "filtered",
+          "kan",
+          "left",
+          "representation",
+          "total",
+          "transport"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+            "line": 59,
+            "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+            "line": 58,
+            "declaration": "coherentFilteredTotalKan_isContractibleKan"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+          "line": 28,
+          "declaration": "coherentDiagramTotalCocone_isColimit",
+          "source_signature": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) ",
+          "assessment": "小さい底の空間値図式では標準の unstraightening 全空間が余極限頂点と弱同値で、全空間の filtered 性は弱可縮性を与える。任意の κ-small 輸送表現への比較と、余極限の可縮性から全空間が filtered になる逆向きは残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+          "line": 75,
+          "declaration": "coherentDiagramTotalUnit_isWeakHomotopyEquivalence",
+          "source_signature": "lemma coherentDiagramTotalUnit_isWeakHomotopyEquivalence (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsWeakHomotopyEquivalence (coherentDiagramTotalUnit F) ",
+          "assessment": "小さい底の空間値図式では標準の unstraightening 全空間が余極限頂点と弱同値で、全空間の filtered 性は弱可縮性を与える。任意の κ-small 輸送表現への比較と、余極限の可縮性から全空間が filtered になる逆向きは残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "line": 59,
+          "declaration": "isWeaklyContractible_of_isFilteredInfinity",
+          "source_signature": "lemma isWeaklyContractible_of_isFilteredInfinity (C : SSet.{u}) [Quasicategory C] [IsFilteredInfinity C] : IsWeaklyContractible C ",
+          "assessment": "小さい底の空間値図式では標準の unstraightening 全空間が余極限頂点と弱同値で、全空間の filtered 性は弱可縮性を与える。任意の κ-small 輸送表現への比較と、余極限の可縮性から全空間が filtered になる逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "小さい底の空間値図式では標準の unstraightening 全空間が余極限頂点と弱同値で、全空間の filtered 性は弱可縮性を与える。任意の κ-small 輸送表現への比較と、余極限の可縮性から全空間が filtered になる逆向きは残る。",
+      "decision": "partial"
+    },
+    "9.1.3.4": {
+      "number": "9.1.3.4",
+      "tag": "05X8",
+      "query": [
+        "category of elements",
+        "filtered",
+        "space diagram",
+        "colimit contractible",
+        "total space"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.4",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "colimit",
+            "contractible",
+            "diagram",
+            "elements",
+            "filtered",
+            "space",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+              "line": 28,
+              "declaration": "coherentDiagramTotalCocone_isColimit"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "contractible",
+            "diagram",
+            "elements",
+            "filtered",
+            "limit",
+            "space",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+              "line": 28,
+              "declaration": "coherentDiagramTotalCocone_isColimit"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "colimit",
+            "contractible",
+            "diagram",
+            "elements",
+            "filtered",
+            "space",
+            "total"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Types/Filtered.lean",
+              "line": 15,
+              "declaration": "`CategoryTheory.Limits.Types.FilteredColimit.colimit_eq_iff`"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/AlgCat/FilteredColimits.lean",
+              "line": 65,
+              "declaration": "AlgCat.isColimitCoconeOfIsFiltered"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "category",
+          "colimit",
+          "contractible",
+          "diagram",
+          "elements",
+          "filtered",
+          "space",
+          "total"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+            "line": 59,
+            "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+            "line": 58,
+            "declaration": "coherentFilteredTotalKan_isContractibleKan"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+          "line": 28,
+          "declaration": "coherentDiagramTotalCocone_isColimit",
+          "source_signature": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) ",
+          "assessment": "小さい底の空間値図式の標準全空間から余極限頂点への弱同値があり、全空間の filtered 性から可縮な余極限を得る側を支える。余極限頂点の可縮性から category of elements の filtered 性を得る逆向きは残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalObject.lean",
+          "line": 75,
+          "declaration": "coherentDiagramTotalUnit_isWeakHomotopyEquivalence",
+          "source_signature": "lemma coherentDiagramTotalUnit_isWeakHomotopyEquivalence (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsWeakHomotopyEquivalence (coherentDiagramTotalUnit F) ",
+          "assessment": "小さい底の空間値図式の標準全空間から余極限頂点への弱同値があり、全空間の filtered 性から可縮な余極限を得る側を支える。余極限頂点の可縮性から category of elements の filtered 性を得る逆向きは残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "line": 59,
+          "declaration": "isWeaklyContractible_of_isFilteredInfinity",
+          "source_signature": "lemma isWeaklyContractible_of_isFilteredInfinity (C : SSet.{u}) [Quasicategory C] [IsFilteredInfinity C] : IsWeaklyContractible C ",
+          "assessment": "小さい底の空間値図式の標準全空間から余極限頂点への弱同値があり、全空間の filtered 性から可縮な余極限を得る側を支える。余極限頂点の可縮性から category of elements の filtered 性を得る逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "小さい底の空間値図式の標準全空間から余極限頂点への弱同値があり、全空間の filtered 性から可縮な余極限を得る側を支える。余極限頂点の可縮性から category of elements の filtered 性を得る逆向きは残る。",
+      "decision": "partial"
+    },
+    "9.1.3.5": {
+      "number": "9.1.3.5",
+      "tag": "05X9",
+      "query": [
+        "kappa-small",
+        "weakly contractible subcomplex",
+        "factor map",
+        "range closure"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.5",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "closure",
+            "contractible",
+            "factor",
+            "kappa",
+            "map",
+            "range",
+            "small",
+            "subcomplex",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallRange.lean",
+              "line": 26,
+              "declaration": "isKappaSmall_range_of_mono"
+            },
+            {
+              "source": "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean",
+              "line": 36,
+              "declaration": "isKappaFiltered_iff_weaklyContractible_coslices"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "closure",
+            "contractible",
+            "factor",
+            "kappa",
+            "map",
+            "range",
+            "small",
+            "subcomplex",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallRange.lean",
+              "line": 26,
+              "declaration": "isKappaSmall_range_of_mono"
+            },
+            {
+              "source": "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean",
+              "line": 36,
+              "declaration": "isKappaFiltered_iff_weaklyContractible_coslices"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "closure",
+            "contractible",
+            "factor",
+            "kappa",
+            "map",
+            "range",
+            "small",
+            "subcomplex",
+            "weakly"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+              "line": 173,
+              "declaration": "FinallySmall.exists_small_weakly_terminal_set"
+            },
+            {
+              "source": "Mathlib/RingTheory/Localization/FractionRing.lean",
+              "line": 317,
+              "declaration": "closure_range_algebraMap"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "closure",
+          "contractible",
+          "factor",
+          "kappa",
+          "map",
+          "range",
+          "small",
+          "subcomplex",
+          "weakly"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+            "line": 54,
+            "declaration": "isWeaklyContractible_sliceUnder_of_kappaFiltered"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredCosliceCofinality.lean",
+            "line": 32,
+            "declaration": "isWeaklyContractible_pullback_cosliceProjections"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallRange.lean",
+          "line": 26,
+          "declaration": "isKappaSmall_range_of_mono",
+          "source_signature": "lemma isKappaSmall_range_of_mono {κ : Cardinal.{u}} {K L : SSet.{u}} (f : K ⟶ L) [Mono f] (hK : IsKappaSmall κ K) : IsKappaSmall κ (Subcomplex.range f).toSSet ",
+          "assessment": "単射の像の κ-small 性はある。任意の小さい K→X の像を含み、なお弱可縮で小さい部分複体 Y を構成する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "単射の像の κ-small 性はある。任意の小さい K→X の像を含み、なお弱可縮で小さい部分複体 Y を構成する型は見つからない。",
+      "decision": "none"
+    },
+    "9.1.3.6": {
+      "number": "9.1.3.6",
+      "tag": "05XA",
+      "query": [
+        "left fibration",
+        "kappa-filtered",
+        "weakly contractible",
+        "contractible total",
+        "iff"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.6",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "contractible",
+            "fibration",
+            "filtered",
+            "kappa",
+            "left",
+            "total",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 59,
+              "declaration": "isFilteredInfinity_of_isKappaFiltered"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "contractible",
+            "fibration",
+            "filtered",
+            "kappa",
+            "right",
+            "total",
+            "weakly"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+              "line": 59,
+              "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+              "line": 59,
+              "declaration": "isFilteredInfinity_of_isKappaFiltered"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "contractible",
+            "filtered",
+            "kappa",
+            "left",
+            "lifting",
+            "total",
+            "weakly"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FinallySmall.lean",
+              "line": 180,
+              "declaration": "finallySmall_of_small_weakly_terminal_set"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/MorphismProperty/RetractArgument.lean",
+              "line": 35,
+              "declaration": "RetractArrow.ofLeftLiftingProperty"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "contractible",
+          "fibration",
+          "filtered",
+          "kappa",
+          "left",
+          "total",
+          "weakly"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+            "line": 59,
+            "declaration": "isWeaklyContractible_of_isFilteredInfinity"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/KappaFilteredCoslices.lean",
+            "line": 54,
+            "declaration": "isWeaklyContractible_sliceUnder_of_kappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Filtered/FilteredInfinity.lean",
+          "line": 59,
+          "declaration": "isFilteredInfinity_of_isKappaFiltered",
+          "source_signature": "lemma isFilteredInfinity_of_isKappaFiltered {κ : Cardinal.{u}} (hκ : Cardinal.aleph0 ≤ κ) (C : SSet.{u}) [Quasicategory C] [IsKappaFiltered κ C] : IsFilteredInfinity C",
+          "assessment": "κ が無限なら κ-filtered から filtered へ忘れ、filtered から弱可縮へ移る。左ファイブレーションかつ κ-filtered な底で、弱可縮な全空間が κ-filtered になる逆向きは残る。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean",
+          "line": 59,
+          "declaration": "isWeaklyContractible_of_isFilteredInfinity",
+          "source_signature": "lemma isWeaklyContractible_of_isFilteredInfinity (C : SSet.{u}) [Quasicategory C] [IsFilteredInfinity C] : IsWeaklyContractible C ",
+          "assessment": "κ が無限なら κ-filtered から filtered へ忘れ、filtered から弱可縮へ移る。左ファイブレーションかつ κ-filtered な底で、弱可縮な全空間が κ-filtered になる逆向きは残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "κ が無限なら κ-filtered から filtered へ忘れ、filtered から弱可縮へ移る。左ファイブレーションかつ κ-filtered な底で、弱可縮な全空間が κ-filtered になる逆向きは残る。",
+      "decision": "partial"
+    },
+    "9.1.3.8": {
+      "number": "9.1.3.8",
+      "tag": "05XC",
+      "query": [
+        "cocartesian fibration",
+        "kappa-filtered",
+        "fiber diagram",
+        "transport",
+        "constant cocone"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.8",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "cocone",
+            "constant",
+            "diagram",
+            "fiber",
+            "fibration",
+            "filtered",
+            "kappa",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+              "line": 31,
+              "declaration": "leftFibration_transport_to_cocone_fiber"
+            },
+            {
+              "source": "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredDiagonalCriterion.lean",
+              "line": 62,
+              "declaration": "isKappaFiltered_iff_constantDiagram_rightCofinal"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "cocone",
+            "constant",
+            "diagram",
+            "fiber",
+            "fibration",
+            "filtered",
+            "kappa",
+            "transport"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+              "line": 31,
+              "declaration": "leftFibration_transport_to_cocone_fiber"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeCartesianFibrationPreservation.lean",
+              "line": 27,
+              "declaration": "cartesianFibrationClassification_preservesKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "cocone",
+            "constant",
+            "diagram",
+            "fiber",
+            "fibre",
+            "filtered",
+            "kappa",
+            "lifting",
+            "transport"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/AlgCat/FilteredColimits.lean",
+              "line": 50,
+              "declaration": "AlgCat.coconeOfIsFiltered"
+            },
+            {
+              "source": "Mathlib/Condensed/Discrete/Characterization.lean",
+              "line": 55,
+              "declaration": "mem_locallyConstant_essImage_of_isColimit_mapCocone"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "cocartesian",
+          "cocone",
+          "constant",
+          "diagram",
+          "fiber",
+          "fibration",
+          "filtered",
+          "kappa",
+          "transport"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+            "line": 31,
+            "declaration": "leftFibration_transport_to_cocone_fiber"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredDiagonalCofinality.lean",
+            "line": 58,
+            "declaration": "isRightCofinal_constantDiagram_of_kappaFiltered"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "line": 31,
+          "declaration": "leftFibration_transport_to_cocone_fiber",
+          "source_signature": "lemma leftFibration_transport_to_cocone_fiber {K E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : K ⟶ E) (c : JoinCocone (f ≫ p)) : ∃ g : K ⟶ vertexFiber p c.vertex, ∃ H : SSet.Homotopy f (g ≫ vertexFiberι p c.vertex), H.h ≫ p = (coconeNullHomotopy c).h ",
+          "assessment": "左ファイブレーションで底の指定余錐に沿って図式を一つのファイバーへ輸送する型はある。一般の cocartesian fibration で指定ファイバーの図式を定値図式に送る条件と、全空間の κ-filtered 性を比較する三条件の iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "左ファイブレーションで底の指定余錐に沿って図式を一つのファイバーへ輸送する型はある。一般の cocartesian fibration で指定ファイバーの図式を定値図式に送る条件と、全空間の κ-filtered 性を比較する三条件の iff は見つからない。",
+      "decision": "none"
+    },
+    "9.1.3.11": {
+      "number": "9.1.3.11",
+      "tag": "05XF",
+      "query": [
+        "cocartesian fibration",
+        "kappa-filtered fibers",
+        "Grothendieck construction",
+        "filtered total"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.11",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "construction",
+            "fibers",
+            "fibration",
+            "filtered",
+            "grothendieck",
+            "kappa",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/StrictClassifiedIndCocone.lean",
+              "line": 41,
+              "declaration": "strictClassifiedIndDiagram_total_isKappaFiltered"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "construction",
+            "fibers",
+            "fibration",
+            "filtered",
+            "grothendieck",
+            "kappa",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeCartesianFibrationPreservation.lean",
+              "line": 27,
+              "declaration": "cartesianFibrationClassification_preservesKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "construction",
+            "fibers",
+            "filtered",
+            "grothendieck",
+            "kappa",
+            "lifting",
+            "total"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+              "line": 317,
+              "declaration": "liftingConstructionLift"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "cocartesian",
+          "construction",
+          "fibers",
+          "fibration",
+          "filtered",
+          "grothendieck",
+          "kappa",
+          "total"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/CoherentFilteredTerminal.lean",
+            "line": 37,
+            "declaration": "coherentFilteredTotalVertex_isTerminal"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/CoherentFilteredTotalDetection.lean",
+            "line": 51,
+            "declaration": "coherentFilteredTotalKan_finite_value_detection"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+          "line": 46,
+          "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat",
+          "source_signature": "instance [IsFiltered C] [∀ c, IsFiltered (F.obj c)] : IsFiltered (Grothendieck F) ",
+          "assessment": "通常圏の Grothendieck 構成では filtered な底と全ファイバーから filtered な全圏を得る。任意の κ と∞圏の cocartesian fibration への一般化は残る。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "通常圏の Grothendieck 構成では filtered な底と全ファイバーから filtered な全圏を得る。任意の κ と∞圏の cocartesian fibration への一般化は残る。",
+      "decision": "partial"
+    },
+    "9.1.3.12": {
+      "number": "9.1.3.12",
+      "tag": "06CG",
+      "query": [
+        "product of cocartesian fibrations",
+        "filtered",
+        "common factor",
+        "pullback",
+        "set indexed"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.12",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocartesian",
+            "common",
+            "factor",
+            "fibrations",
+            "filtered",
+            "indexed",
+            "product",
+            "pullback",
+            "set"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/ScaffoldSourceFactorization.lean",
+              "line": 40,
+              "declaration": "cocartesianScaffoldCorrectedGlobalPullbackMap_factor"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cartesian",
+            "common",
+            "coproduct",
+            "factor",
+            "fibrations",
+            "filtered",
+            "indexed",
+            "pushout",
+            "set"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+              "line": 24,
+              "declaration": "cartesianFibrations"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cocartesian",
+            "common",
+            "factor",
+            "fibrations",
+            "filtered",
+            "indexed",
+            "product",
+            "pullback",
+            "set"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "Mathlib/Order/Setoid/Partition.lean",
+              "line": 320,
+              "declaration": "IndexedPartition"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "cocartesian",
+          "common",
+          "factor",
+          "fibrations",
+          "filtered",
+          "indexed",
+          "product",
+          "pullback",
+          "set"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/CoherentFilteredLimitExchange.lean",
+            "line": 27,
+            "declaration": "CoherentFilteredLimitExchangeShape"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationContractibility.lean",
+            "line": 58,
+            "declaration": "coherentFilteredTotalKan_isContractibleKan"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+          "line": 46,
+          "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat",
+          "source_signature": "instance [IsFiltered C] [∀ c, IsFiltered (F.obj c)] : IsFiltered (Grothendieck F) ",
+          "assessment": "通常圏の Grothendieck 構成は各ファイバーの filtered 性を仮定する。原文の全空間ごとの filtered 性と底の I 個の射の共通因子条件で同じ底上の積を扱う型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常圏の Grothendieck 構成は各ファイバーの filtered 性を仮定する。原文の全空間ごとの filtered 性と底の I 個の射の共通因子条件で同じ底上の積を扱う型は見つからない。",
+      "decision": "none"
+    },
+    "9.1.3.14": {
+      "number": "9.1.3.14",
+      "tag": "06CH",
+      "query": [
+        "pullback",
+        "cocartesian fibration",
+        "filtered total",
+        "common base",
+        "binary product"
+      ],
+      "a": {
+        "terms": [
+          "9.1.3.14",
+          "9.1.3",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "base",
+            "binary",
+            "cocartesian",
+            "common",
+            "fibration",
+            "filtered",
+            "product",
+            "pullback",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/HomotopyLimits/FiniteCoherentTotalEquivalence.lean",
+              "line": 25,
+              "declaration": "finiteCommonFiberProductBase_leftFibration"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "base",
+            "binary",
+            "cartesian",
+            "common",
+            "coproduct",
+            "fibration",
+            "filtered",
+            "pushout",
+            "total"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/NativeCartesianFibrationPreservation.lean",
+              "line": 27,
+              "declaration": "cartesianFibrationClassification_preservesKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "base",
+            "binary",
+            "cocartesian",
+            "common",
+            "filtered",
+            "lifting",
+            "product",
+            "pullback",
+            "total"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+              "line": 46,
+              "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Constructions/BinaryProducts.lean",
+              "line": 30,
+              "declaration": "isBinaryProductOfIsTerminalIsPullback"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F1/Filtered/FilteredLeftFibrationTransport.lean",
+          "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredWeakContractibility.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F1/Filtered",
+          "SerrePositivity/InfinityCategories/Stable/Filtered"
+        ],
+        "terms": [
+          "base",
+          "binary",
+          "cocartesian",
+          "common",
+          "fibration",
+          "filtered",
+          "product",
+          "pullback",
+          "total"
+        ],
+        "declaration_count": 50,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredCosliceCofinality.lean",
+            "line": 32,
+            "declaration": "isWeaklyContractible_pullback_cosliceProjections"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F1/Filtered/CoherentFilteredTerminal.lean",
+            "line": 37,
+            "declaration": "coherentFilteredTotalVertex_isTerminal"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Filtered/Grothendieck.lean",
+          "line": 46,
+          "declaration": "instIsFilteredGrothendieckOfαCategoryObjCat",
+          "source_signature": "instance [IsFiltered C] [∀ c, IsFiltered (F.obj c)] : IsFiltered (Grothendieck F) ",
+          "assessment": "通常圏の Grothendieck 構成では各ファイバーの filtered 性を課す。準圏の二 coslice 射影の引き戻しには弱可縮性の補題がある。任意の二 cocartesian fibration で両全空間と底の filtered 性から引き戻しの filtered 性を得る型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Stable/Filtered/FilteredCosliceCofinality.lean",
+          "line": 32,
+          "declaration": "isWeaklyContractible_pullback_cosliceProjections",
+          "source_signature": "lemma isWeaklyContractible_pullback_cosliceProjections {K L C : SSet.{u}} [K.Finite] [L.Finite] [Quasicategory C] [IsFilteredInfinity C] (p : K ⟶ C) (q : L ⟶ C) : IsWeaklyContractible (pullback (sliceUnderProjection p) (sliceUnderProjection q)) ",
+          "assessment": "通常圏の Grothendieck 構成では各ファイバーの filtered 性を課す。準圏の二 coslice 射影の引き戻しには弱可縮性の補題がある。任意の二 cocartesian fibration で両全空間と底の filtered 性から引き戻しの filtered 性を得る型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常圏の Grothendieck 構成では各ファイバーの filtered 性を課す。準圏の二 coslice 射影の引き戻しには弱可縮性の補題がある。任意の二 cocartesian fibration で両全空間と底の filtered 性から引き戻しの filtered 性を得る型は見つからない。",
+      "decision": "none"
+    }
+  }
+}
