@@ -5,7 +5,7 @@ module
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
-public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCompletion
+public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedWedge
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplex
@@ -97,17 +97,6 @@ def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
   sorry -- 多項式形式は多項式環上有限自由。係数のねじれの一様な上界により導来完備化は次数零
 
 /-! ## 完備形式上の連続微分と外積（D4-05、11-03。A1 の Ω̂ の dg 構造） -/
-
-/-- 概要：Ω̂ 上の外積 Ω̂^i × Ω̂^j → Ω̂^{i+j}（P^∧ 双線形、次数付き可換）。
-方針：Ω̂^i = P^∧ ⊗_P Ω^i の有限自由性で `wedge` を係数拡大。
-規約：`completedFormsUnit` と両立。
-使われ方：dg 代数構造、Cartier、A1 の η^*。 -/
-def completedWedge (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) {i j : ℕ} :
-    completedForms k T p i → completedForms k T p j → completedForms k T p (i + j) := sorry
-theorem completedWedge_unit (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) {i j : ℕ}
-    (ω : forms k T i) (η : forms k T j) :
-    completedWedge k T p (completedFormsUnit k T p i ω) (completedFormsUnit k T p j η) = completedFormsUnit k T p (i + j) (wedge k T ω η) := by
-  sorry
 
 /-- 概要：**k 線形な連続微分** d̂ : Ω̂^i → Ω̂^{i+1}（W9-I-22：P^∧ 線形ではない。d(X) = dX ≠ X·d(1)）。偏微分 ∂_t の p 進連続性で P → P^∧ の稠密な像から延びる。
 方針：Ω̂^i = P^∧ ⊗_P Ω^i の元 f ⊗ ω（f ∈ P^∧）に d̂(f ⊗ ω) = Σ_t ∂_t f ⊗ (dX_t ∧ ω) + f ⊗ dω で定める（∂_t は P^∧ の連続微分、Cauchy 列ごと）。
