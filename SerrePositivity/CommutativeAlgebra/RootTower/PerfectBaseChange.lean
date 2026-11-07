@@ -22,7 +22,8 @@ public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 ## 使われ方
 
-論文の定理 2.5 の等標数の場合（Paper/Section2 の PerfectApproximationLength・PerfectKoszulLength）、`RootTower/PerfectConductor`。
+論文の定理 2.5 の等標数の場合（Paper/Section2 の PerfectApproximationLength・PerfectKoszulLength）、
+`RootTower/PerfectConductor`。
 -/
 
 public section
