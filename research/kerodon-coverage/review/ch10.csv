@@ -1,0 +1,145 @@
+number,verdict,status_new,declarations_new,reason,axioms,check
+10.1.0.1,fix,partial,CategoryTheory.SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48 | CategoryTheory.CosimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:527 | SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations @ SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean:31,Mathlib の単体・余単体対象は1圏版。自前の HasSmallGeometricRealizations は nerve Δᵒᵖ からの写像を直接量化するが、単体・余単体対象の定義は与えない。,,renamed
+10.1.0.2,fix,partial,CategoryTheory.SimplicialObject @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:48,記法。Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.0.4,fix,partial,CategoryTheory.SimplicialObject.δ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:87 | CategoryTheory.SimplicialObject.σ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:93,面・退化作用素。Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.1.1,ok,none,,確認済み・なし（探索範囲内）。|S| を Δ^op→Set⊂N^hc(Top) の余極限とする主張は見つからない。Mathlib の SSet.toTop は単体の圏上の左 Kan 拡張で、∞ 圏的な余極限としての主張ではない（SSet.toTop・HomotopicalAlgebra/Topological も確認、ホモトピー余極限としての主張はない）。,,not_found
+10.1.1.2,ok,none,,確認済み・なし（探索範囲内）。Sing|S| が離散空間の図式の 𝒮 での余極限という主張は見つからない。,,not_found
+10.1.1.3,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.HasSmallGeometricRealizations @ SerrePositivity/InfinityCategories/F2/Presentable/CoproductRealizationConditions.lean:31 | SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallGeometricRealizations @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaFilteredGeometricDetection.lean:31 | SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasSmallGeometricRealizations @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaGeometricRealizations.lean:24,幾何学的実現は「nerve Δ^op 形の余極限」として存在・保存の述語のみ（P_Σ の文脈）。対象が実現であるという名前付き定義はない。,,renamed
+10.1.1.5,ok,none,,確認済み・なし（探索範囲内）。|X_•| の記法・一意性の注記。対応なし。,,not_found
+10.1.1.9,fix,partial,SerrePositivity.KST.Spectra.KanSequence.ordinaryTotalization @ SerrePositivity/KST/Spectra/StandardEndKanSequence.lean:41,余単体 Kan 列の Reedy 条件下で、標準単体で重み付けした end を各段に持つ Tot がある。原文の任意の∞圏での余単体対象の極限という定義は未確認。,,found
+10.1.1.10,fix,mathlib,AugmentedSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33,AugmentedSimplexCategory は単体圏に始対象を付加したもの。原文の空順序集合 [−1] から各有限順序集合への一意な射に対応する。,,renamed
+10.1.1.12,fix,partial,CategoryTheory.SimplicialObject.Augmented @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:391 | AugmentedSimplexCategory.equivAugmentedSimplicialObject @ Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:95,Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.1.13,fix,partial,CategoryTheory.SimplicialObject.Augmented @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:391,記法。Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.1.16,ok,none,,確認済み・なし（探索範囲内）。増強単体的対象が実現を与えるという ∞ 圏の定義は見つからない（F2/Presentable の HasSmallGeometricRealizations・sigmaInclusion_geometricRealization_isColimit は nerve Δ^op 形の余極限を直接扱い、増強単体的対象による定義はない）。,,not_found
+10.1.2.1,fix,partial,SemiSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean:31,Mathlib に Δ_inj（SemiSimplexCategory）のみ。半単体的対象の定義・API は自前・Mathlib ともなし。,,renamed
+10.1.2.2,ok,none,,確認済み・なし（探索範囲内）。記法。,,not_found
+10.1.2.6,ok,none,,確認済み・なし（探索範囲内）。Δ_inj ⊂ Δ の left cofinal 性は見つからない（Mathlib の SemiSimplexCategory.toSimplexCategory はあるが cofinal 性はない。自前の cofinal 判定にも Δ_inj の例はない）。,,not_found
+10.1.2.7,unsure,none,,moore・augmented・degeneracy・alternating を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.2.9,ok,none,,確認済み・なし（探索範囲内）。半単体的対象の実現の定義なし（Mathlib に SemiSimplexCategory はあるが半単体的対象は TODO）。,,not_found
+10.1.2.11,ok,none,,確認済み・なし（探索範囲内）。1 圏の主張だが Mathlib にも半単体的対象の API なし（Mathlib に SemiSimplexCategory はあるが半単体的対象は TODO）。,,not_found
+10.1.2.12,ok,none,,"確認済み・なし（探索範囲内）。1 圏の主張（実現 = d0,d1 の余等化子）。Mathlib にも見つからない。",,not_found
+10.1.2.13,ok,none,,"確認済み・なし（探索範囲内）。Δ_{inj,+} の記法。Mathlib にもなし。",,not_found
+10.1.2.14,ok,none,,"確認済み・なし（探索範囲内）。（Δ_{inj,+} は Mathlib にもない）。",,not_found
+10.1.2.15,ok,none,,"確認済み・なし（探索範囲内）。増強半単体的対象なし（Δ_{inj,+} は Mathlib にもない）。",,not_found
+10.1.2.16,ok,none,,確認済み・なし（探索範囲内）。記法。,,not_found
+10.1.2.22,fix,partial,AlgebraicTopology.DoldKan.PInftyToNormalizedMooreComplex @ Mathlib/AlgebraicTopology/DoldKan/Normalized.lean:68 | AlgebraicTopology.normalizedMooreComplex @ Mathlib/AlgebraicTopology/MooreComplex.lean:158,正規化 Moore 複体と P∞ の因子化は非増強の単体的対象について。原文の次数 −1 を含む増強複体の退化部分複体による商は未確認。,,renamed
+10.1.2.23,ok,none,,"確認済み・なし（探索範囲内）。（Δ_{inj,+} は Mathlib にもない）。",,not_found
+10.1.2.25,ok,none,,確認済み・なし（探索範囲内）。1 圏の主張（半単体的対象の増強の記述）。Mathlib に半単体版なし（Mathlib に SemiSimplexCategory はあるが半単体的対象は TODO）。,,not_found
+10.1.2.27,ok,none,,確認済み・なし（探索範囲内）。1 圏の主張（面作用素の関係式による増強半単体的対象の記述）。見つからない。,,not_found
+10.1.2.28,fix,partial,AugmentedSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33 | CategoryTheory.SimplicialObject.δ_comp_δ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:111 | CategoryTheory.SimplicialObject.σ_comp_σ @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:191 | CategoryTheory.SimplicialObject.δ_comp_σ_of_le @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:145 | CategoryTheory.SimplicialObject.δ_comp_σ_of_gt @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:176,Mathlib の面と退化の合成恒等式は通常の単体的対象で確認。増強を含む作用素の族から単体的対象を再構成する逆向きは未確認。,,renamed
+10.1.2.29,ok,none,,確認済み・なし（探索範囲内）。半単体的対象の左 Kan 拡張（自由な退化の付加）は見つからない（Mathlib に SemiSimplexCategory はあるが半単体的対象は TODO）。,,not_found
+10.1.3.1,fix,partial,CategoryTheory.SimplicialObject.Augmented.const @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:481,定数単体的対象は Mathlib に 1 圏版のみ。∞ 圏の essentially constant の定義なし。,,renamed
+10.1.3.2,ok,none,,確認済み・なし（探索範囲内）。（Δ^op の sifted 性 smallSimplexOpposite_isSiftedInfinity、弱可縮な定数図式の極限 constantDiagramCone_isLimit はあるが、essentially constant の特徴づけはない）。,,not_found
+10.1.3.3,fix,partial,SimplexCategory.Truncated @ Mathlib/AlgebraicTopology/SimplexCategory/Truncated.lean,SimplexCategory.Truncated n は次数が n 以下の対象が張る充満部分圏で、非負の n に対応する。原文は n が負の場合の空圏も含む。,,renamed
+10.1.3.4,fix,partial,CategoryTheory.SimplicialObject.sk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297 | CategoryTheory.SimplicialObject.skAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:320,Mathlib に 1 圏の n-skeleton（truncation の左 Kan 拡張）のみ。IsSkeletal 述語もなし。∞ 圏版なし。,,renamed
+10.1.3.10,ok,none,,確認済み・なし（探索範囲内）。退化立方体の構成なし。,,not_found
+10.1.3.12,unsure,none,,skeletal・truncation・latching・skeleton を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.3.13,unsure,none,,skeletal・truncation・latching・skeleton を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.3.14,unsure,none,,skeletal・truncation・latching・skeleton を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.3.16,unsure,none,,skeletal・truncation・latching・skeleton を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.3.17,unsure,none,,skeletal・truncation・latching・skeleton を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.3.18,fix,partial,CategoryTheory.SimplicialObject.sk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297 | CategoryTheory.SimplicialObject.skAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:320,Mathlib の 1 圏の sk n のみ。,,renamed
+10.1.3.23,fix,partial,CategoryTheory.SimplicialObject.sk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:297 | CategoryTheory.SimplicialObject.skAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:320,Mathlib は 1 圏で左 Kan 拡張の存在を仮定して sk を定義。∞ 圏の存在定理なし。,,renamed
+10.1.4.1,ok,none,,確認済み・なし（探索範囲内）。単体的対象が Čech nerve であるという条件（∞ 圏）は見つからない（KST/Descent の AugmentedCechDiagram・HasCechSpaceDescent は増強余単体的空間の降下条件で [ModelCategory SSet] を仮定し、∞ 圏の Čech nerve の定義ではない）。,,not_found
+10.1.4.3,fix,partial,CategoryTheory.cechNerveTerminalFrom @ Mathlib/AlgebraicTopology/CechNerve.lean:327,Mathlib に有限積をもつ 1 圏の対象の Čech nerve（cechNerveTerminalFrom）のみ。,,renamed
+10.1.4.4,fix,partial,CategoryTheory.cechNerveTerminalFrom @ Mathlib/AlgebraicTopology/CechNerve.lean:327,記法。Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.4.5,ok,none,,確認済み・なし（探索範囲内）。存在の iff は見つからない（KST/Descent の Čech 系も確認、∞ 圏の存在定理はない）。,,not_found
+10.1.4.6,fix,partial,CategoryTheory.cechNerveTerminalFrom @ Mathlib/AlgebraicTopology/CechNerve.lean:327,Mathlib は HasFiniteProducts な 1 圏で構成。,,renamed
+10.1.4.8,fix,partial,CategoryTheory.SimplicialObject.cechNerveAdjunction @ Mathlib/AlgebraicTopology/CechNerve.lean:162,Mathlib は 1 圏で Arrow 版の随伴（Augmented.toArrow ⊣ augmentedCechNerve）。X_0 評価の右随伴の形は未確認。,,renamed
+10.1.4.9,fix,partial,CategoryTheory.SimplicialObject.IsCoskeletal @ Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean:58 | CategoryTheory.SimplicialObject.cosk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302 | CategoryTheory.SimplicialObject.coskAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:324,Mathlib に 1 圏の IsCoskeletal（右 Kan 拡張）のみ。,,renamed
+10.1.4.14,ok,none,,確認済み・なし（探索範囲内）。半単体的 n-coskeletal なし。,,not_found
+10.1.4.15,fix,partial,CategoryTheory.SimplicialObject.isCoskeletal_iff_isIso @ Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean:74,1圏の単体的対象で余骨格性と単位の同型性に関する判定がある。半単体への制限で余骨格性が変わらないという原文の iff は未確認。,,renamed
+10.1.4.16,unsure,none,,coskeletal・matching・cech・corollary を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.4.17,fix,partial,CategoryTheory.SimplicialObject.cosk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302 | CategoryTheory.SimplicialObject.coskAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:324,Mathlib の 1 圏の cosk のみ。,,renamed
+10.1.4.21,fix,partial,CategoryTheory.SimplicialObject.cosk @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:302 | CategoryTheory.SimplicialObject.coskAdj @ Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean:324,Mathlib は 1 圏で右 Kan 拡張の存在を仮定して cosk を定義。∞ 圏の存在定理なし。,,renamed
+10.1.5.1,ok,none,,確認済み・なし（探索範囲内）。増強単体的対象が Čech nerve である条件（∞ 圏）は見つからない（KST/Descent の AugmentedCechDiagram・HasCechSpaceDescent は増強余単体的空間の降下条件で [ModelCategory SSet] を仮定し、∞ 圏の Čech nerve の定義ではない）。,,not_found
+10.1.5.4,fix,partial,CategoryTheory.Arrow.augmentedCechNerve @ Mathlib/AlgebraicTopology/CechNerve.lean:72 | CategoryTheory.Arrow.cechNerve @ Mathlib/AlgebraicTopology/CechNerve.lean:54,Mathlib に 1 圏の射の Čech nerve（wide pullback で構成）のみ。,,renamed
+10.1.5.5,fix,partial,CategoryTheory.Arrow.augmentedCechNerve @ Mathlib/AlgebraicTopology/CechNerve.lean:72,記法。Mathlib には 1 圏の版のみ（∞ 圏版なし）。,,renamed
+10.1.5.6,fix,partial,CategoryTheory.Arrow.augmentedCechNerve @ Mathlib/AlgebraicTopology/CechNerve.lean:72,Mathlib は wide pullback の存在を仮定した 1 圏版。,,renamed
+10.1.5.8,fix,partial,CategoryTheory.SimplicialObject.cechNerveAdjunction @ Mathlib/AlgebraicTopology/CechNerve.lean:162,Mathlib に 1 圏の随伴 Augmented.toArrow ⊣ augmentedCechNerve。,,renamed
+10.1.5.9,fix,partial,AugmentedSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean:33,Δ_+ の切り捨ての記法。Mathlib に Δ_+ のみ。,,renamed
+10.1.5.10,ok,none,,確認済み・なし（探索範囲内）。増強単体的対象の coskeletal 性は見つからない（Mathlib の IsCoskeletal は単体的対象のみで増強版なし）。,,not_found
+10.1.5.14,unsure,none,,effective・augmented・cech・epi を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.5.18,ok,none,,確認済み・なし（探索範囲内）。面立方体の構成なし。,,not_found
+10.1.5.20,ok,none,,確認済み・なし（探索範囲内）。（Mathlib の IsCoskeletal は単体的対象のみで増強半単体版なし）。,,not_found
+10.1.5.21,unsure,none,,effective・augmented・cech・epi を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.5.22,unsure,none,,effective・augmented・cech・epi を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.6.1,ok,none,,確認済み・なし（探索範囲内）。Δ_min（α(0)=0 の圏）は見つからない。,,not_found
+10.1.6.3,fix,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,Mathlib の 1 圏の ExtraDegeneracy が split 増強単体的対象に相当（Δ_min^op への延長としての定義ではない）。Mathlib の Splitting は Dold–Kan 型の分解で別概念。,,renamed
+10.1.6.7,fix,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,原文は追加退化からの鎖ホモトピーが退化部分複体を保ち、増強された正規化複体に降りる主張。ExtraDegeneracy は1圏での元の追加退化のデータ。,,renamed
+10.1.6.9,fix,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.homotopyEquiv @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:413,Mathlib は 1 圏で、加法圏ではホモトピー同値・SSet では可縮性など。∞ 圏の余極限としての主張はない。,,renamed
+10.1.6.11,fix,partial,CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:74,1 圏の ExtraDegeneracy のみ。,,renamed
+10.1.6.13,ok,none,,確認済み・なし（探索範囲内）。split 単体的対象の実現の存在・普遍的保存は見つからない。,,not_found
+10.1.6.14,fix,partial,CategoryTheory.Arrow.AugmentedCechNerve.extraDegeneracy @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:367 | CategoryTheory.SimplicialObject.Augmented.ExtraDegeneracy.splitEpi @ Mathlib/AlgebraicTopology/ExtraDegeneracy.lean:147,Mathlib に 1 圏で両向き（split epi ⇒ Čech nerve に extra degeneracy、extra degeneracy ⇒ split epi）。∞ 圏版なし。,,renamed
+10.1.6.15,ok,none,,確認済み・なし（探索範囲内）。∞ 圏での Čech nerve の余極限性は見つからない。,,not_found
+10.1.6.16,unsure,none,,extra・augmented・degeneracy・split を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.6.19,unsure,none,,extra・augmented・degeneracy・split を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.6.20,unsure,none,,extra・augmented・degeneracy・split を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+10.1.6.21,ok,none,,確認済み・なし（探索範囲内）。（Mathlib の IsCoskeletal は単体的対象のみで増強版なし）。,,not_found
+10.1.6.22,ok,none,,確認済み・なし（探索範囲内）。décalage は自前・Mathlib とも見つからない。,,not_found
+10.2.0.2,fix,mathlib,CategoryTheory.RegularEpi @ Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean:307 | CategoryTheory.regularEpiOfKernelPair @ Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean:451 | CategoryTheory.regularEpiOfEffectiveEpi @ Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean:509 | CategoryTheory.isRegularEpi_iff_effectiveEpi @ Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean:521,原文は核対の余等化子で定義。Mathlib の IsRegularEpi と EffectiveEpi の同値、および核対の余等化子から RegularEpi を作る補題が比較を与える。,,renamed
+10.2.0.6,fix,mathlib,CategoryTheory.Regular @ Mathlib/CategoryTheory/RegularCategory/Basic.lean:52 | CategoryTheory.Regular.hasStrongEpiMonoFactorisations @ Mathlib/CategoryTheory/RegularCategory/Basic.lean:152,通常の正則圏。Mathlib は核対の余等化子を要求し、そこから正則 epi と mono の分解を構成する。原文はその分解の存在を定義に置く。,,renamed
+10.2.1.1,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.5,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.6,ok,none,,確認済み・なし（探索範囲内）。∞ 圏・単体的集合の sieve の宣言なし。SerrePositivity の F2/Tensor の sieve と Mathlib Sieve は 1 圏の篩。,,not_found
+10.2.1.8,ok,none,,確認済み・なし（探索範囲内）。∞ 圏・単体的集合の sieve の宣言なし。SerrePositivity の F2/Tensor の sieve と Mathlib Sieve は 1 圏の篩。,,not_found
+10.2.1.12,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.13,ok,none,,確認済み・なし（探索範囲内）。∞ 圏・単体的集合の sieve の宣言なし。SerrePositivity の F2/Tensor の sieve と Mathlib Sieve は 1 圏の篩（1 圏の側の CategoryTheory.Sieve のみ Mathlib にある）。,,not_found
+10.2.1.18,fix,partial,CategoryTheory.Sieve @ Mathlib/CategoryTheory/Sites/Sieves/Basic.lean:50,Mathlib の Sieve X は通常の圏で X に入る射のうち前合成で閉じた族。原文は∞圏のスライスへの右ファイブレーションとして定義する。,,found
+10.2.1.22,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.24,ok,none,,確認済み・なし（探索範囲内）。∞ 圏・単体的集合の sieve の宣言なし。SerrePositivity の F2/Tensor の sieve と Mathlib Sieve は 1 圏の篩。,,not_found
+10.2.1.26,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.29,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.33,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.1.34,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.2.1,fix,partial,CategoryTheory.Sieve.EffectiveEpimorphic @ Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean:36 | CategoryTheory.Sieve.generateSingleton @ Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean:49,Mathlib では一射の生成する sieve と、対応する余錐の余極限性による effective epimorphic の定義がある。原文の∞圏で生成された sieve の余錐による定義は未確認。,,found
+10.2.2.2,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。,,not_found
+10.2.2.4,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.2.5,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。,,not_found
+10.2.2.6,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。,,not_found
+10.2.2.7,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。1 圏の側で RegularEpi ↔ 核対の余等化子は Mathlib にあるが、神経での quotient との比較はない。,,not_found
+10.2.2.9,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。,,not_found
+10.2.2.11,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.2.12,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）。,,not_found
+10.2.2.14,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.2.17,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の quotient morphism（Čech 神経の幾何実現）の宣言なし。Mathlib にあるのは 1 圏の EffectiveEpi・RegularEpi と Čech 神経（AlgebraicTopology/CechNerve）（text が欠けている）。,,not_found
+10.2.3.1,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.6,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.9,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.3.10,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.3.11,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.12,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.3.13,fix,partial,CategoryTheory.isIso_of_mono_of_strongEpi @ Mathlib/CategoryTheory/Limits/Shapes/StrongEpi.lean:128,通常の圏では mono かつ strong epi から同型を得る補題がある。原文は∞圏で quotient morphism を用いる両方向の判定。,,found
+10.2.3.14,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.17,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.18,fix,partial,CategoryTheory.Limits.HasImages @ Mathlib/CategoryTheory/Limits/Shapes/Images.lean:451,Mathlib の HasImages は通常の圏の全ての射が像を持つことを表す。原文は∞圏の subobject における像の存在。,,found
+10.2.3.21,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.3.22,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.3.23,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.3.24,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の像・単射（monomorphism）の宣言なし（4.7 の空白）。Mathlib は 1 圏の像（Limits/Shapes/Images）。,,not_found
+10.2.4.1,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.4.6,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.4.7,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.8,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.9,fix,partial,CategoryTheory.epi_iff_surjective @ Mathlib/CategoryTheory/Types/Basic.lean:365 | CategoryTheory.RegularEpi.ofSplitEpi @ Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean:539,Mathlib：Type で epi ↔ 全射、epi は split なので正則 epi。「universal quotient morphism」（基底変換で保たれる）としての明示的な同値はない。,,renamed
+10.2.4.10,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.12,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.4.13,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.14,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.15,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.4.16,ok,none,,確認済み・なし（探索範囲内）。universal quotient morphism の宣言なし。,,not_found
+10.2.4.17,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.1,fix,partial,CategoryTheory.Regular @ Mathlib/CategoryTheory/RegularCategory/Basic.lean:52,通常の圏の Regular は有限極限、核対の余等化子、正則エピの引き戻し安定性を要求する。原文の∞圏の像・普遍商射に関する定義は未確認。,,found
+10.2.5.3,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.5,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。,,not_found
+10.2.5.6,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。Kan 複体・𝒮 についての主張も見当たらない（π₀ 全射の補題 fiberInclusion_piZero_surjective は別の主張）。,,not_found
+10.2.5.9,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。,,not_found
+10.2.5.10,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.11,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.13,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.15,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。,,not_found
+10.2.5.17,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.18,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.19,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。,,not_found
+10.2.5.20,ok,none,,探索範囲で対応宣言は未確認。原文の∞圏での述語・比較を検索した。通常圏の sieve・effective epi・正則圏や、単体集合の別の持ち上げ条件が候補。,,not_found
+10.2.5.21,ok,none,,確認済み・なし（探索範囲内）。正則 ∞ 圏の宣言なし。Mathlib は 1 圏の Regular のみ。,,not_found

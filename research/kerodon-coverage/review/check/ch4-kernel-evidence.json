@@ -1,0 +1,958 @@
+{
+  "cache_from": "stage 1′ の検査を行った review-a の既存 .olean を LEAN_PATH で読み取り参照",
+  "declarations": {
+    "Order.cof": {
+      "source": "Mathlib/SetTheory/Cardinal/Cofinality/Basic.lean:35",
+      "type": "Order.cof.{u_1} : (α : Type u_1) → [Preorder.{u_1} α] → Cardinal.{u_1}",
+      "axioms": [],
+      "evidence": "4d983a4f166b6f509f2d"
+    },
+    "SSet.quasicategory_of_innerFibration": {
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:94",
+      "type": "@SSet.quasicategory_of_innerFibration.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y)\n  [@SSet.InnerFibration.{u_1} X Y p] [hY : Y.Quasicategory], X.Quasicategory",
+      "axioms": [],
+      "evidence": "848f123df5f821fb8eff"
+    },
+    "SerrePositivity.InfinityCategories.quasicategoryCore": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/QuasicategoryCore.lean:23",
+      "type": "SerrePositivity.InfinityCategories.quasicategoryCore.{u_1} : (X : SSet.{u_1}) → SSet.Subcomplex.{u_1} X",
+      "axioms": [],
+      "evidence": "84e39d0ea3d797276273"
+    },
+    "SerrePositivity.InfinityCategories.quasicategoryCoreMap_isPullback_of_isPullback": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/CorePullbackRestriction.lean:21",
+      "type": "@SerrePositivity.InfinityCategories.quasicategoryCoreMap_isPullback_of_isPullback.{u_1} : ∀ {A B C D : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] [SSet.Quasicategory.{u_1} C] [SSet.Quasicategory.{u_1} D]\n  {p : Quiver.Hom.{u_1, u_1 + 1} A B} {q : Quiver.Hom.{u_1, u_1 + 1} A C} {f : Quiver.Hom.{u_1, u_1 + 1} B D}\n  {g : Quiver.Hom.{u_1, u_1 + 1} C D} [SSet.InnerFibration.{u_1} f],\n  CategoryTheory.IsPullback.{u_1, u_1 + 1} p q f g →\n    CategoryTheory.IsPullback.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} p)\n      (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} q)\n      (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} f)\n      (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} g)",
+      "axioms": [],
+      "evidence": "3e0f6634c72b0c7ec371"
+    },
+    "SerrePositivity.InfinityCategories.Kan.kanMappingComposition": {
+      "source": "SerrePositivity/InfinityCategories/Kan/KanMappingComposition.lean:34",
+      "type": "@SerrePositivity.InfinityCategories.Kan.kanMappingComposition.{u_1} : {E : SSet.{u_1}} →\n  [SSet.Quasicategory.{u_1} E] →\n    {x y z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })} →\n      (a : SSet.Edge.{u_1} x y) →\n        (b : SSet.Edge.{u_1} y z) → SerrePositivity.InfinityCategories.Kan.KanMappingComposition.{u_1} a b",
+      "axioms": [],
+      "evidence": "46f180ab58bce58a1579"
+    },
+    "SerrePositivity.InfinityCategories.F1B.sliceUnderPostcomp_trivialKanFibration": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Cones/CosliceTrivialFibration.lean:25",
+      "type": "@SerrePositivity.InfinityCategories.F1B.sliceUnderPostcomp_trivialKanFibration.{u_1} : ∀ {K X Y : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} q],\n  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n    (SerrePositivity.InfinityCategories.sliceUnderPostcomp.{u_1} p q)",
+      "axioms": [],
+      "evidence": "d5fc6bec9647ed41b3fc"
+    },
+    "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices": {
+      "source": "SerrePositivity/InfinityCategories/Core/TerminalVertices.lean:23",
+      "type": "SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u_1} : (X : SSet.{u_1}) →\n  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop) → SSet.Subcomplex.{u_1} X",
+      "axioms": [],
+      "evidence": "94c281e1bcaa33b32207"
+    },
+    "SerrePositivity.InfinityCategories.IsEssentiallySurjective": {
+      "source": "SerrePositivity/InfinityCategories/Core/FullyFaithful.lean:31",
+      "type": "@SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1} : {X Y : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} X Y → Prop",
+      "axioms": [],
+      "evidence": "569e1ac6a6aac8970049"
+    },
+    "SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion": {
+      "source": "SerrePositivity/InfinityCategories/F1/KanModels/StrictKanCompletion.lean:26",
+      "type": "SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion.{u_1} : CategoryTheory.Functor.{u_1, u_1, u_1 + 1,\n    u_1 + 1}\n  SSet.{u_1} SerrePositivity.InfinityCategories.KanObject.{u_1}",
+      "axioms": [],
+      "evidence": "092c69afedbc123c2b8f"
+    },
+    "SSet.instHasSmallObjectArgumentInnerHornInclusions": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/Basic.lean:88",
+      "type": "SSet.instHasSmallObjectArgumentInnerHornInclusions.{u_1} : CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1,\n    u_1, u_1 + 1}\n  SSet.innerHornInclusions.{u_1}",
+      "axioms": [],
+      "evidence": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic"
+    },
+    "SSet.instInnerFibrationMapIhom": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:141",
+      "type": "@SSet.instInnerFibrationMapIhom.{u_1} : ∀ {E B X : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SSet.InnerFibration.{u_1} p],\n  SSet.InnerFibration.{u_1}\n    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.ihom.{u_1, u_1 + 1} X) p)",
+      "axioms": [],
+      "evidence": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct"
+    },
+    "SSet.instInnerFibrationAppPreOfMonoOfQuasicategory": {
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean:146",
+      "type": "@SSet.instInnerFibrationAppPreOfMonoOfQuasicategory.{u_1} : ∀ {A B : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A B)\n  [CategoryTheory.Mono.{u_1, u_1 + 1} i] (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],\n  SSet.InnerFibration.{u_1}\n    (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} i) X)",
+      "axioms": [],
+      "evidence": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct"
+    },
+    "CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1": {
+      "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean:215",
+      "type": "@CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  (P : CategoryTheory.ObjectProperty.{u_2, u_3} C) [CategoryTheory.LocallySmall.{u_1, u_2, u_3} C]\n  [CategoryTheory.ObjectProperty.EssentiallySmall.{u_1, u_2, u_3} P],\n  CategoryTheory.EssentiallySmall.{u_1, u_2, u_3} (CategoryTheory.ObjectProperty.FullSubcategory.{u_2, u_3} P)",
+      "axioms": [],
+      "evidence": "Mathlib.CategoryTheory.ObjectProperty.Small"
+    },
+    "CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall": {
+      "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean:223",
+      "type": "@CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  [CategoryTheory.EssentiallySmall.{u_1, u_2, u_3} C],\n  CategoryTheory.ObjectProperty.EssentiallySmall.{u_1, u_2, u_3} Top.top.{u_3}",
+      "axioms": [],
+      "evidence": "Mathlib.CategoryTheory.ObjectProperty.Small"
+    },
+    "IsLowerSet": {
+      "source": "Mathlib/Order/Defs/Unbundled.lean:280",
+      "type": "@IsLowerSet.{u_1} : {α : Type u_1} → [LE.{u_1} α] → Set.{u_1} α → Prop",
+      "axioms": [],
+      "evidence": "Mathlib.Order.Defs.Unbundled"
+    },
+    "OrderIso.subsingleton_of_wellFoundedLT": {
+      "source": "Mathlib/Order/Hom/Set.lean:205",
+      "type": "@OrderIso.subsingleton_of_wellFoundedLT.{u_1,\n    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : LinearOrder.{u_1} α] [WellFoundedLT.{u_1} α]\n  [inst_2 : Preorder.{u_2} β], Subsingleton.{max (u_2 + 1) (u_1 + 1)} (OrderIso.{u_1, u_2} α β)",
+      "axioms": [],
+      "evidence": "Mathlib.Order.Hom.Set"
+    },
+    "WellFoundedLT": {
+      "source": "Mathlib/Order/RelClasses.lean:298",
+      "type": "WellFoundedLT.{u_1} : (α : Type u_1) → [LT.{u_1} α] → Prop",
+      "axioms": [],
+      "evidence": "Mathlib.Order.RelClasses"
+    },
+    "Ordinal.exists_ord_cof_eq": {
+      "source": "Mathlib/SetTheory/Cardinal/Cofinality/Ordinal.lean:141",
+      "type": "Ordinal.exists_ord_cof_eq.{u_1} : ∀ (α : Type u_1) [inst : LinearOrder.{u_1} α] [inst_1 : WellFoundedLT.{u_1} α],\n  ∃ s,\n    IsCofinal.{u_1} s ∧\n      Eq.{u_1 + 2} (Ordinal.type.{u_1} fun x1 x2 => LT.lt.{u_1} x1 x2) (Cardinal.ord.{u_1} (Order.cof.{u_1} α))",
+      "axioms": [],
+      "evidence": "Mathlib.SetTheory.Cardinal.Cofinality.Ordinal"
+    },
+    "Cardinal.iSup_lt_of_lt_cof_ord": {
+      "source": "Mathlib/SetTheory/Cardinal/Cofinality/Ordinal.lean:306",
+      "type": "@Cardinal.iSup_lt_of_lt_cof_ord.{u_1} : ∀ {α : Type u_1} {f : α → Cardinal.{u_1}} {a : Cardinal.{u_1}},\n  LT.lt.{u_1 + 1} (Cardinal.mk.{u_1} α) (Ordinal.cof.{u_1} (Cardinal.ord.{u_1} a)) →\n    (∀ (i : α), LT.lt.{u_1 + 1} (f i) a) → LT.lt.{u_1 + 1} (⨆ i, f i) a",
+      "axioms": [],
+      "evidence": "Mathlib.SetTheory.Cardinal.Cofinality.Ordinal"
+    },
+    "Ordinal.instLinearOrder": {
+      "source": "Mathlib/SetTheory/Ordinal/Basic.lean:283",
+      "type": "Ordinal.instLinearOrder.{u_1} : LinearOrder.{u_1 + 1} Ordinal.{u_1}",
+      "axioms": [],
+      "evidence": "Mathlib.SetTheory.Ordinal.Basic"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target": {
+      "source": "SerrePositivity/InfinityCategories/Core/InvertibleEdgeLifting.lean:341",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y] (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q]\n  {a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} Y (Opposite.op.{1} { len := 0 })}\n  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))\n  (e :\n    SSet.Truncated.Edge.{u_1} a\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))\n        b)),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e →\n    ∃ F,\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) F)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F q)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting"
+    },
+    "SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers": {
+      "source": "SerrePositivity/InfinityCategories/Core/OuterHornDuality.lean:220",
+      "type": "@SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers.{u_1} : ∀ {X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e ↔\n    SerrePositivity.InfinityCategories.HasInitialHornFillers.{u_1} e",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.Core.OuterHornDuality"
+    },
+    "SerrePositivity.InfinityCategories.IsQCatEquivalence.core": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/CoreEquivalence.lean:42",
+      "type": "@SerrePositivity.InfinityCategories.IsQCatEquivalence.core.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {f : Quiver.Hom.{u_1, u_1 + 1} X Y},\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f →\n    SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n      (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} f)",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence"
+    },
+    "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex": {
+      "source": "SerrePositivity/InfinityCategories/F1/Categories/CoreKan.lean:61",
+      "type": "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex.{u_1} : ∀ (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],\n  SSet.KanComplex.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.quasicategoryCore.{u_1} X))",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Categories.CoreKan"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting": {
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationEquivalenceLifting.lean:22",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] (p : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting.{u_1} p",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveOverIso": {
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/OverIso.lean:37",
+      "type": "@SerrePositivity.InfinityCategories.F1B.nerveOverIso.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (c : C) →\n      CategoryTheory.Iso.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Over.{u_1, u_1} c))\n        (SerrePositivity.InfinityCategories.sliceOver.{u_1}\n          (SerrePositivity.InfinityCategories.nervePoint.{u_1, u_1} c))",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1B.NerveComparison.OverIso"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveUnderIso": {
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/UnderIso.lean:81",
+      "type": "@SerrePositivity.InfinityCategories.F1B.nerveUnderIso.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (c : C) →\n      CategoryTheory.Iso.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Under.{u_1, u_1} c))\n        (SerrePositivity.InfinityCategories.sliceUnder.{u_1}\n          (SerrePositivity.InfinityCategories.nervePoint.{u_1, u_1} c))",
+      "axioms": [],
+      "evidence": "SerrePositivity.InfinityCategories.F1B.NerveComparison.UnderIso"
+    },
+    "SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration": {
+      "source": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean:122",
+      "type": "@SerrePositivity.InfinityCategories.relativeCosliceMap_leftFibration.{u_1} : ∀ {K X Y : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [SSet.InnerFibration.{u_1} q]\n  (K₀ : SSet.Subcomplex.{u_1} K),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (SerrePositivity.InfinityCategories.relativeCosliceMap.{u_1} p q K₀)",
+      "axioms": [],
+      "evidence": "9627b81fcbc9ac2b615a"
+    },
+    "SerrePositivity.InfinityCategories.relativeSliceOverMap_rightFibration": {
+      "source": "SerrePositivity/InfinityCategories/Derived/RelativeSliceRightFibration.lean:14",
+      "type": "@SerrePositivity.InfinityCategories.relativeSliceOverMap_rightFibration.{u_1} : ∀ {K E B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} K E) (r : Quiver.Hom.{u_1, u_1 + 1} E B) [SSet.InnerFibration.{u_1} r]\n  (K₀ : SSet.Subcomplex.{u_1} K),\n  SerrePositivity.InfinityCategories.RightFibration.{u_1}\n    (SerrePositivity.InfinityCategories.relativeSliceOverMap.{u_1} p (SSet.Subcomplex.ι.{u_1} K₀) r)",
+      "axioms": [],
+      "evidence": "cee013c7cdda11803102"
+    }
+  },
+  "probes": [
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SSet.instHasSmallObjectArgumentInnerHornInclusions",
+        "#print axioms SSet.instHasSmallObjectArgumentInnerHornInclusions"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "SSet.instHasSmallObjectArgumentInnerHornInclusions.{u_1} : CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1,\n    u_1, u_1 + 1}\n  SSet.innerHornInclusions.{u_1}",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SSet.instHasSmallObjectArgumentInnerHornInclusions' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SSet.instInnerFibrationMapIhom",
+        "#print axioms SSet.instInnerFibrationMapIhom",
+        "#check @SSet.instInnerFibrationAppPreOfMonoOfQuasicategory",
+        "#print axioms SSet.instInnerFibrationAppPreOfMonoOfQuasicategory"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SSet.instInnerFibrationMapIhom.{u_1} : ∀ {E B X : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SSet.InnerFibration.{u_1} p],\n  SSet.InnerFibration.{u_1}\n    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.ihom.{u_1, u_1 + 1} X) p)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SSet.instInnerFibrationMapIhom' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "@SSet.instInnerFibrationAppPreOfMonoOfQuasicategory.{u_1} : ∀ {A B : SSet.{u_1}} (i : Quiver.Hom.{u_1, u_1 + 1} A B)\n  [CategoryTheory.Mono.{u_1, u_1 + 1} i] (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],\n  SSet.InnerFibration.{u_1}\n    (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1} i) X)",
+          "endPos": {
+            "column": 6,
+            "line": 6
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 6
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SSet.instInnerFibrationAppPreOfMonoOfQuasicategory' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 7
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 7
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.CategoryTheory.ObjectProperty.Small",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1",
+        "#print axioms CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1",
+        "#check @CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall",
+        "#print axioms CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  (P : CategoryTheory.ObjectProperty.{u_2, u_3} C) [CategoryTheory.LocallySmall.{u_1, u_2, u_3} C]\n  [CategoryTheory.ObjectProperty.EssentiallySmall.{u_1, u_2, u_3} P],\n  CategoryTheory.EssentiallySmall.{u_1, u_2, u_3} (CategoryTheory.ObjectProperty.FullSubcategory.{u_2, u_3} P)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'CategoryTheory.ObjectProperty.instEssentiallySmallFullSubcategoryOfLocallySmallOfEssentiallySmall_1' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "@CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  [CategoryTheory.EssentiallySmall.{u_1, u_2, u_3} C],\n  CategoryTheory.ObjectProperty.EssentiallySmall.{u_1, u_2, u_3} Top.top.{u_3}",
+          "endPos": {
+            "column": 6,
+            "line": 6
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 6
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'CategoryTheory.ObjectProperty.instEssentiallySmallTopOfEssentiallySmall' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 7
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 7
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.Order.Defs.Unbundled",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @IsLowerSet",
+        "#print axioms IsLowerSet"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@IsLowerSet.{u_1} : {α : Type u_1} → [LE.{u_1} α] → Set.{u_1} α → Prop",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'IsLowerSet' does not depend on any axioms",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.Order.Hom.Set",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @OrderIso.subsingleton_of_wellFoundedLT",
+        "#print axioms OrderIso.subsingleton_of_wellFoundedLT"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@OrderIso.subsingleton_of_wellFoundedLT.{u_1,\n    u_2} : ∀ {α : Type u_1} {β : Type u_2} [inst : LinearOrder.{u_1} α] [WellFoundedLT.{u_1} α]\n  [inst_2 : Preorder.{u_2} β], Subsingleton.{max (u_2 + 1) (u_1 + 1)} (OrderIso.{u_1, u_2} α β)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'OrderIso.subsingleton_of_wellFoundedLT' depends on axioms: [propext, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.Order.RelClasses",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @WellFoundedLT",
+        "#print axioms WellFoundedLT"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "WellFoundedLT.{u_1} : (α : Type u_1) → [LT.{u_1} α] → Prop",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'WellFoundedLT' does not depend on any axioms",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.SetTheory.Cardinal.Cofinality.Ordinal",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @Ordinal.exists_ord_cof_eq",
+        "#print axioms Ordinal.exists_ord_cof_eq",
+        "#check @Cardinal.iSup_lt_of_lt_cof_ord",
+        "#print axioms Cardinal.iSup_lt_of_lt_cof_ord"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "Ordinal.exists_ord_cof_eq.{u_1} : ∀ (α : Type u_1) [inst : LinearOrder.{u_1} α] [inst_1 : WellFoundedLT.{u_1} α],\n  ∃ s,\n    IsCofinal.{u_1} s ∧\n      Eq.{u_1 + 2} (Ordinal.type.{u_1} fun x1 x2 => LT.lt.{u_1} x1 x2) (Cardinal.ord.{u_1} (Order.cof.{u_1} α))",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'Ordinal.exists_ord_cof_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "@Cardinal.iSup_lt_of_lt_cof_ord.{u_1} : ∀ {α : Type u_1} {f : α → Cardinal.{u_1}} {a : Cardinal.{u_1}},\n  LT.lt.{u_1 + 1} (Cardinal.mk.{u_1} α) (Ordinal.cof.{u_1} (Cardinal.ord.{u_1} a)) →\n    (∀ (i : α), LT.lt.{u_1 + 1} (f i) a) → LT.lt.{u_1 + 1} (⨆ i, f i) a",
+          "endPos": {
+            "column": 6,
+            "line": 6
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 6
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'Cardinal.iSup_lt_of_lt_cof_ord' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 7
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 7
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "Mathlib.SetTheory.Ordinal.Basic",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @Ordinal.instLinearOrder",
+        "#print axioms Ordinal.instLinearOrder"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "Ordinal.instLinearOrder.{u_1} : LinearOrder.{u_1 + 1} Ordinal.{u_1}",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'Ordinal.instLinearOrder' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target",
+        "#print axioms SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} Y] (q : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} q]\n  {a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} Y (Opposite.op.{1} { len := 0 })}\n  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))\n  (e :\n    SSet.Truncated.Edge.{u_1} a\n      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} q (Opposite.op.{1} { len := 0 })))\n        b)),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e →\n    ∃ F,\n      Eq.{u_1 + 1}\n          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}\n            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) F)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) b) ∧\n        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F q)\n          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.leftFibration_liftInvertibleEdge_target' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.OuterHornDuality",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers",
+        "#print axioms SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers.{u_1} : ∀ {X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}\n  (e : SSet.Truncated.Edge.{u_1} x y),\n  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1} e ↔\n    SerrePositivity.InfinityCategories.HasInitialHornFillers.{u_1} e",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.isInvertibleEdge_iff_hasInitialHornFillers' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.IsQCatEquivalence.core",
+        "#print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.core"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.IsQCatEquivalence.core.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {f : Quiver.Hom.{u_1, u_1 + 1} X Y},\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f →\n    SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n      (SerrePositivity.InfinityCategories.quasicategoryCoreMap.{u_1} f)",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.IsQCatEquivalence.core' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Categories.CoreKan",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex",
+        "#print axioms SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex.{u_1} : ∀ (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],\n  SSet.KanComplex.{u_1} (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.quasicategoryCore.{u_1} X))",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting",
+        "#print axioms SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] [SSet.Quasicategory.{u_1} Y] (p : Quiver.Hom.{u_1, u_1 + 1} X Y)\n  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting.{u_1} p",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.leftFibration_invertibleTargetLifting' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.OverIso",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.F1B.nerveOverIso",
+        "#print axioms SerrePositivity.InfinityCategories.F1B.nerveOverIso"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.F1B.nerveOverIso.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (c : C) →\n      CategoryTheory.Iso.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Over.{u_1, u_1} c))\n        (SerrePositivity.InfinityCategories.sliceOver.{u_1}\n          (SerrePositivity.InfinityCategories.nervePoint.{u_1, u_1} c))",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.F1B.nerveOverIso' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1B.NerveComparison.UnderIso",
+      "commands": [
+        "set_option pp.universes true",
+        "set_option pp.fullNames true",
+        "#check @SerrePositivity.InfinityCategories.F1B.nerveUnderIso",
+        "#print axioms SerrePositivity.InfinityCategories.F1B.nerveUnderIso"
+      ],
+      "exit": 0,
+      "messages": [
+        {
+          "caption": "",
+          "data": "@SerrePositivity.InfinityCategories.F1B.nerveUnderIso.{u_1} : {C : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    (c : C) →\n      CategoryTheory.Iso.{u_1, u_1 + 1} (CategoryTheory.nerve.{u_1, u_1} (CategoryTheory.Under.{u_1, u_1} c))\n        (SerrePositivity.InfinityCategories.sliceUnder.{u_1}\n          (SerrePositivity.InfinityCategories.nervePoint.{u_1, u_1} c))",
+          "endPos": {
+            "column": 6,
+            "line": 4
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 4
+          },
+          "severity": "information"
+        },
+        {
+          "caption": "",
+          "data": "'SerrePositivity.InfinityCategories.F1B.nerveUnderIso' depends on axioms: [propext,\n Classical.choice.{u},\n Quot.sound.{u}]",
+          "endPos": {
+            "column": 6,
+            "line": 5
+          },
+          "isSilent": false,
+          "keepFullRange": false,
+          "kind": "[anonymous]",
+          "pos": {
+            "column": 0,
+            "line": 5
+          },
+          "severity": "information"
+        }
+      ],
+      "stderr": ""
+    }
+  ]
+}
