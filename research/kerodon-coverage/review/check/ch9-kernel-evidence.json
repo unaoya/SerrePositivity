@@ -1882,7 +1882,13 @@
       ]
     },
     "9.2.6.10": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.2.7.1": {
       "adopted": []
@@ -1908,7 +1914,18 @@
       ]
     },
     "9.2.7.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.finite_pushout",
+          "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+          "phase": "2"
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other",
+          "source": "SerrePositivity/InfinityCategories/Core/PrecompositionMonoCobaseChange.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.2.7.7": {
       "adopted": []
@@ -1966,7 +1983,13 @@
       ]
     },
     "9.2.8.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.2.8.7": {
       "adopted": []
@@ -1990,7 +2013,13 @@
       ]
     },
     "9.2.9.2": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.2.9.4": {
       "adopted": []
@@ -2002,7 +2031,13 @@
       "adopted": []
     },
     "9.2.9.14": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily",
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean",
+          "phase": "2"
+        }
+      ]
     },
     "9.3.1.1": {
       "adopted": [
@@ -5194,6 +5229,18 @@
         "line": 26
       }
     },
+    "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact : ∀ {μ : Cardinal.{u_1}}\n  [Fact μ.IsRegular],\n  Cardinal.aleph0 < μ →\n    ∀ (K : SerrePositivity.InfinityCategories.KanObject),\n      SerrePositivity.InfinityCategories.F2.IsKappaSmall μ K.obj →\n        SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n          (SerrePositivity.InfinityCategories.coherentNerveVertex K)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 45
+      }
+    },
     "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean": {
       "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.isWeakHomotopyEquivalence": {
         "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.isWeakHomotopyEquivalence : ∀ {A B : SSet} {f : A ⟶ B},\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence f →\n    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence f",
@@ -5218,6 +5265,30 @@
         "line": 46
       }
     },
+    "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean": {
+      "SerrePositivity.InfinityCategories.F2.finite_pushout": {
+        "type": "@SerrePositivity.InfinityCategories.F2.finite_pushout : ∀ {A K L : SSet} [A.Finite] [K.Finite] [L.Finite] (i : A ⟶ K)\n  (j : A ⟶ L), (CategoryTheory.Limits.pushout i j).Finite",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.finite_pushout' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 30
+      }
+    },
+    "SerrePositivity/InfinityCategories/Core/PrecompositionMonoCobaseChange.lean": {
+      "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other": {
+        "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other : ∀ {A B C D : SSet}\n  {i : A ⟶ B} {g : A ⟶ C} [CategoryTheory.Mono g] {k : B ⟶ D} {j : C ⟶ D},\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence i →\n    CategoryTheory.IsPushout i g k j → SerrePositivity.InfinityCategories.IsPrecompositionEquivalence j",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 23
+      }
+    },
     "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean": {
       "SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.isKappaCompact_smallSourceCosliceVertex": {
         "type": "@SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.isKappaCompact_smallSourceCosliceVertex : ∀\n  {μ : Cardinal.{u_1}} [Fact μ.IsRegular],\n  Cardinal.aleph0 < μ →\n    ∀ {A : SSet} [A.Quasicategory],\n      SerrePositivity.InfinityCategories.F2.IsKappaSmall μ A →\n        ∀ {C : SSet} [inst : C.Quasicategory],\n          SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits C →\n            ∀ (q : SSet.uliftFunctor.obj A ⟶ C),\n              (∀ (a : (fun X => X) ((SSet.uliftFunctor.obj A).obj (Opposite.op { len := 0 }))),\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                    ((CategoryTheory.ConcreteCategory.hom (q.app (Opposite.op { len := 0 }))) a)) →\n                ∀ (c : SerrePositivity.InfinityCategories.JoinCocone q),\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ c.vertex →\n                    SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ c",
@@ -5228,6 +5299,18 @@
         ],
         "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.isKappaCompact_smallSourceCosliceVertex' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
         "line": 51
+      }
+    },
+    "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily": {
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily : ∀ {κ : Cardinal.{u_1}}\n  [Fact κ.IsRegular],\n  Cardinal.aleph0 < κ →\n    ∀ {K : SSet} [K.Quasicategory],\n      SerrePositivity.InfinityCategories.F2.IsKappaSmall κ K →\n        ∀ {C : SSet} [inst : C.Quasicategory],\n          SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits C →\n            ∀ (F : SSet.uliftFunctor.obj K ⟶ C),\n              (∀ (k : (fun X => X) ((SSet.uliftFunctor.obj K).obj (Opposite.op { len := 0 }))),\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact κ\n                    ((CategoryTheory.ConcreteCategory.hom (F.app (Opposite.op { len := 0 }))) k)) →\n                ∀\n                  (E :\n                    SSet.uliftFunctor.obj (SSet.uliftFunctor.obj K ⟹ C) ⟶\n                      SerrePositivity.InfinityCategories.join (SSet.stdSimplex.obj { len := 0 })\n                          (SSet.uliftFunctor.obj\n                            (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K))) ⟹\n                        SerrePositivity.InfinityCategories.SpaceInfinity),\n                  (∀\n                      (g :\n                        (fun X => X)\n                          ((SSet.uliftFunctor.obj (SSet.uliftFunctor.obj K ⟹ C)).obj (Opposite.op { len := 0 }))),\n                      SerrePositivity.InfinityCategories.IsLimitCone\n                        (SerrePositivity.InfinityCategories.F2.functorVertexCone\n                          ((CategoryTheory.ConcreteCategory.hom (E.app (Opposite.op { len := 0 }))) g))) →\n                    ∀\n                      (hr :\n                        SerrePositivity.InfinityCategories.FunctorIso\n                          (CategoryTheory.CategoryStruct.comp E\n                            (SerrePositivity.InfinityCategories.coneRestriction\n                              (SSet.uliftFunctor.obj\n                                (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K)))\n                              SerrePositivity.InfinityCategories.SpaceInfinity))\n                          (SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient F))\n                      (ha :\n                        SerrePositivity.InfinityCategories.FunctorIso\n                          (CategoryTheory.CategoryStruct.comp E\n                            (SerrePositivity.InfinityCategories.evaluateFunctorAt\n                              (SSet.yonedaEquiv\n                                (SerrePositivity.InfinityCategories.joinInl (SSet.stdSimplex.obj { len := 0 })\n                                  (SSet.uliftFunctor.obj\n                                    (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K)))))))\n                          (SerrePositivity.InfinityCategories.covariantRepresentableInfinity\n                            (SerrePositivity.InfinityCategories.functorVertex F))),\n                      SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact κ\n                        (SerrePositivity.InfinityCategories.functorVertex F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 26
       }
     },
     "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": {

@@ -13610,6 +13610,1310 @@
       "reason": "κ=ℵ₀ における filtered 余極限での compact 判定と λ-compact 性への単調性はある。ℵ₀ と λ の相対 compact 性を加えて逆向きを与える型は見つからない。",
       "decision": "partial"
     },
+    "9.2.6.1": {
+      "number": "9.2.6.1",
+      "tag": "067P",
+      "query": [
+        "essentially finite Kan complex",
+        "finite simplicial source",
+        "weak homotopy equivalence",
+        "fibrant replacement"
+      ],
+      "a": {
+        "terms": [
+          "9.2.6.1",
+          "9.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "complex",
+            "equivalence",
+            "essentially",
+            "fibrant",
+            "finite",
+            "homotopy",
+            "kan",
+            "replacement",
+            "simplicial",
+            "source",
+            "weak"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+              "line": 38,
+              "declaration": "IsWeakHomotopyEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/IntervalReplacementSection.lean",
+              "line": 52,
+              "declaration": "intervalReplacementSection_isWeakHomotopyEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "complex",
+            "equivalence",
+            "essentially",
+            "fibrant",
+            "finite",
+            "homotopy",
+            "kan",
+            "replacement",
+            "simplicial",
+            "source",
+            "weak"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+              "line": 38,
+              "declaration": "IsWeakHomotopyEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/IntervalReplacementSection.lean",
+              "line": 52,
+              "declaration": "intervalReplacementSection_isWeakHomotopyEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "complex",
+            "equivalence",
+            "essentially",
+            "fibrant",
+            "finite",
+            "homotopy",
+            "kan",
+            "replacement",
+            "simplicial",
+            "source",
+            "weak"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/ModelCategory/FibrantObjectHomotopy.lean",
+              "line": 89,
+              "declaration": "weakEquivalence_toHoCat_map_iff"
+            },
+            {
+              "source": "Mathlib/Algebra/Homology/DerivedCategory/DerivabilityStructureInjectives.lean",
+              "line": 135,
+              "declaration": "fibrantObjectEquivalence"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpaceCompactCardinals.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "complex",
+          "equivalence",
+          "essentially",
+          "fibrant",
+          "finite",
+          "homotopy",
+          "kan",
+          "replacement",
+          "simplicial",
+          "source",
+          "weak"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoherentProductKanComparison.lean",
+            "line": 71,
+            "declaration": "finiteCoherentProductTotalKanComparison_isWeakHomotopyEquivalence"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+            "line": 25,
+            "declaration": "finiteSpaceGeneratorVertex"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+          "line": 38,
+          "declaration": "IsWeakHomotopyEquivalence",
+          "source_signature": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop ",
+          "assessment": "弱ホモトピー同値の述語と有限単体集合コードの Kan 置換による生成対象はある。任意の Kan 複体 X への有限 K からの弱ホモトピー同値の存在を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "line": 25,
+          "declaration": "finiteSpaceGeneratorVertex",
+          "source_signature": "def finiteSpaceGeneratorVertex (q : FiniteSimplicialCode.{u}) : SpaceInfinity.{u} _⦋0⦌ ",
+          "assessment": "弱ホモトピー同値の述語と有限単体集合コードの Kan 置換による生成対象はある。任意の Kan 複体 X への有限 K からの弱ホモトピー同値の存在を要求する述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "弱ホモトピー同値の述語と有限単体集合コードの Kan 置換による生成対象はある。任意の Kan 複体 X への有限 K からの弱ホモトピー同値の存在を要求する述語は見つからない。",
+      "decision": "none"
+    },
+    "9.2.6.3": {
+      "number": "9.2.6.3",
+      "tag": "067R",
+      "query": [
+        "finite spaces generated by point",
+        "finite colimit closure",
+        "finite simplicial model",
+        "Kan replacement"
+      ],
+      "a": {
+        "terms": [
+          "9.2.6.3",
+          "9.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "closure",
+            "colimit",
+            "finite",
+            "generated",
+            "kan",
+            "model",
+            "point",
+            "replacement",
+            "simplicial",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+              "line": 25,
+              "declaration": "finiteSpaceGeneratorVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffoldPoint.lean",
+              "line": 23,
+              "declaration": "simplicialReplacementPoint_kanComplex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "closure",
+            "finite",
+            "generated",
+            "kan",
+            "limit",
+            "model",
+            "point",
+            "replacement",
+            "simplicial",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+              "line": 25,
+              "declaration": "finiteSpaceGeneratorVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/Scaffold/LeftScaffoldPoint.lean",
+              "line": 23,
+              "declaration": "simplicialReplacementPoint_kanComplex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "closure",
+            "colimit",
+            "finite",
+            "generated",
+            "kan",
+            "model",
+            "point",
+            "replacement",
+            "simplicial",
+            "spaces"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Subfunctor/Finite.lean",
+              "line": 101,
+              "declaration": "isGeneratedBy_of_isFinite"
+            },
+            {
+              "source": "Mathlib/Analysis/LocallyConvex/Separation.lean",
+              "line": 246,
+              "declaration": "iInter_halfSpaces_eq"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpaceCompactCardinals.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "closure",
+          "colimit",
+          "finite",
+          "generated",
+          "kan",
+          "model",
+          "point",
+          "replacement",
+          "simplicial",
+          "spaces"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+            "line": 25,
+            "declaration": "finiteSpaceGeneratorVertex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteOverPresentation.lean",
+            "line": 72,
+            "declaration": "finiteOverReplacementCocone_isColimit"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "line": 25,
+          "declaration": "finiteSpaceGeneratorVertex",
+          "source_signature": "def finiteSpaceGeneratorVertex (q : FiniteSimplicialCode.{u}) : SpaceInfinity.{u} _⦋0⦌ ",
+          "assessment": "有限単体集合の Kan 置換の族と単体集合の有限形状を押し出しで組む帰納法はある。空間圏内で一点の有限余極限閉包に入ることと本質的有限性の iff は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+          "line": 25,
+          "declaration": "finiteShape_induction_of_pushouts",
+          "source_signature": "lemma finiteShape_induction_of_pushouts (P : SSet.{u} → Prop) (hIso : ∀ {A B : SSet.{u}}, (A ≅ B) → P A → P B) (hEmpty : ∀ X : SSet.{u}, P (⊥ : X.Subcomplex)) (hSimplex : ∀ n : ℕ, P (Δ[n] : SSet.{u})) (hPushout : ∀ {A B C D : SSet.{u}} {f : A ⟶ B} {g : A ⟶ C} {i : B ⟶ D} {j : C ⟶ D} [Mono g], IsPushout f g i j → P A → P B → P C → P D) (X : SSet.{u}) [X.Finite] : P X ",
+          "assessment": "有限単体集合の Kan 置換の族と単体集合の有限形状を押し出しで組む帰納法はある。空間圏内で一点の有限余極限閉包に入ることと本質的有限性の iff は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "有限単体集合の Kan 置換の族と単体集合の有限形状を押し出しで組む帰納法はある。空間圏内で一点の有限余極限閉包に入ることと本質的有限性の iff は見つからない。",
+      "decision": "none"
+    },
+    "9.2.6.4": {
+      "number": "9.2.6.4",
+      "tag": "067T",
+      "query": [
+        "finite CW complex",
+        "singular simplicial set",
+        "essentially finite",
+        "geometric realization"
+      ],
+      "a": {
+        "terms": [
+          "9.2.6.4",
+          "9.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "complex",
+            "cw",
+            "essentially",
+            "finite",
+            "geometric",
+            "realization",
+            "set",
+            "simplicial",
+            "singular"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/CWComplex/Classical/Finite.lean",
+              "line": 358,
+              "declaration": "RelCWComplex.finite_iff_finite_cells"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+              "line": 25,
+              "declaration": "finiteSpaceGeneratorVertex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "complex",
+            "cw",
+            "essentially",
+            "finite",
+            "geometric",
+            "realization",
+            "set",
+            "simplicial",
+            "singular"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/CWComplex/Classical/Finite.lean",
+              "line": 358,
+              "declaration": "RelCWComplex.finite_iff_finite_cells"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+              "line": 25,
+              "declaration": "finiteSpaceGeneratorVertex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "complex",
+            "cw",
+            "essentially",
+            "finite",
+            "geometric",
+            "realisation",
+            "set",
+            "simplicial",
+            "singular",
+            "to",
+            "tot"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/CWComplex/Classical/Finite.lean",
+              "line": 358,
+              "declaration": "RelCWComplex.finite_iff_finite_cells"
+            },
+            {
+              "source": "Mathlib/Topology/CWComplex/Classical/Basic.lean",
+              "line": 242,
+              "declaration": "RelCWComplex.cellFrontier_subset_base_union_finite_closedCell"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpaceCompactCardinals.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "complex",
+          "cw",
+          "essentially",
+          "finite",
+          "geometric",
+          "realization",
+          "set",
+          "simplicial",
+          "singular"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+            "line": 25,
+            "declaration": "finiteSpaceGeneratorVertex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
+            "line": 31,
+            "declaration": "FiniteSimplicialCode.realization"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "Mathlib/Topology/CWComplex/Classical/Finite.lean",
+          "line": 358,
+          "declaration": "RelCWComplex.finite_iff_finite_cells",
+          "source_signature": "lemma RelCWComplex.finite_iff_finite_cells : Finite C ↔ _root_.Finite (Σ n, cell C n) ",
+          "assessment": "有限 CW 複体の細胞数による判定と有限単体集合の Kan 置換はある。Sing(Y) とのホモトピー同値があることを任意の Kan 複体の本質的有限性と往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "line": 25,
+          "declaration": "finiteSpaceGeneratorVertex",
+          "source_signature": "def finiteSpaceGeneratorVertex (q : FiniteSimplicialCode.{u}) : SpaceInfinity.{u} _⦋0⦌ ",
+          "assessment": "有限 CW 複体の細胞数による判定と有限単体集合の Kan 置換はある。Sing(Y) とのホモトピー同値があることを任意の Kan 複体の本質的有限性と往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "有限 CW 複体の細胞数による判定と有限単体集合の Kan 置換はある。Sing(Y) とのホモトピー同値があることを任意の Kan 複体の本質的有限性と往復する型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.6.6": {
+      "number": "9.2.6.6",
+      "tag": "067W",
+      "query": [
+        "finitely dominated Kan complex",
+        "retract in homotopy category",
+        "finite Kan replacement",
+        "compact generators"
+      ],
+      "a": {
+        "terms": [
+          "9.2.6.6",
+          "9.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "compact",
+            "complex",
+            "dominated",
+            "finite",
+            "finitely",
+            "generators",
+            "homotopy",
+            "kan",
+            "replacement",
+            "retract"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+              "line": 45,
+              "declaration": "IsKappaCompactGenerating.compact_iff_retract"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+              "line": 50,
+              "declaration": "IsVertexRetractOf"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "compact",
+            "complex",
+            "dominated",
+            "finite",
+            "finitely",
+            "generators",
+            "homotopy",
+            "kan",
+            "replacement",
+            "retract"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+              "line": 45,
+              "declaration": "IsKappaCompactGenerating.compact_iff_retract"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+              "line": 50,
+              "declaration": "IsVertexRetractOf"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "complex",
+            "dominated",
+            "finite",
+            "finitely",
+            "generators",
+            "homotopy",
+            "kan",
+            "presentable",
+            "replacement",
+            "retract"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/FinitePresentation.lean",
+              "line": 172,
+              "declaration": "CommRingCat.isFinitelyPresentable_under"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/MorphismProperty/Ind.lean",
+              "line": 66,
+              "declaration": "exists_hom_of_isFinitelyPresentable"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpaceCompactCardinals.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "category",
+          "compact",
+          "complex",
+          "dominated",
+          "finite",
+          "finitely",
+          "generators",
+          "homotopy",
+          "kan",
+          "replacement",
+          "retract"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+            "line": 45,
+            "declaration": "IsKappaCompactGenerating.compact_iff_retract"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+            "line": 38,
+            "declaration": "spaceCompactGeneratorInclusion_isCompactGenerating"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+          "line": 50,
+          "declaration": "IsVertexRetractOf",
+          "source_signature": "def IsVertexRetractOf {X : SSet.{u}} (x y : X _⦋0⦌) : Prop ",
+          "assessment": "指定の生成族の像の頂点 retract と空間の有限単体集合由来の生成族はある。任意の本質的有限な Kan 複体から h Kan 内で retract となることを一つにした述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "line": 45,
+          "declaration": "IsKappaCompactGenerating.compact_iff_retract",
+          "source_signature": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a)) ",
+          "assessment": "指定の生成族の像の頂点 retract と空間の有限単体集合由来の生成族はある。任意の本質的有限な Kan 複体から h Kan 内で retract となることを一つにした述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+          "line": 38,
+          "declaration": "spaceCompactGeneratorInclusion_isCompactGenerating",
+          "source_signature": "lemma spaceCompactGeneratorInclusion_isCompactGenerating : IsKappaCompactGenerating Cardinal.aleph0 spaceCompactGeneratorInclusion.{u} ",
+          "assessment": "指定の生成族の像の頂点 retract と空間の有限単体集合由来の生成族はある。任意の本質的有限な Kan 複体から h Kan 内で retract となることを一つにした述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "指定の生成族の像の頂点 retract と空間の有限単体集合由来の生成族はある。任意の本質的有限な Kan 複体から h Kan 内で retract となることを一つにした述語は見つからない。",
+      "decision": "none"
+    },
+    "9.2.6.10": {
+      "number": "9.2.6.10",
+      "tag": "0681",
+      "query": [
+        "essentially kappa small spaces",
+        "kappa colimit closure of point",
+        "relative compactness",
+        "lambda small"
+      ],
+      "a": {
+        "terms": [
+          "9.2.6.10",
+          "9.2.6",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "closure",
+            "colimit",
+            "compactness",
+            "essentially",
+            "kappa",
+            "lambda",
+            "point",
+            "relative",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaRelativeFactorization.lean",
+              "line": 31,
+              "declaration": "kappaSmall_relative_factorization_of_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "closure",
+            "compactness",
+            "essentially",
+            "kappa",
+            "lambda",
+            "limit",
+            "point",
+            "relative",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsClosure.lean",
+              "line": 230,
+              "declaration": "isEssentiallySmall_limitsClosure"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "closure",
+            "colimit",
+            "compactness",
+            "essentially",
+            "kappa",
+            "lambda",
+            "point",
+            "relative",
+            "small",
+            "spaces"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/LimitsClosure.lean",
+              "line": 230,
+              "declaration": "isEssentiallySmall_limitsClosure"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+              "line": 155,
+              "declaration": "EssentiallySmall.exists_eq_isoClosure_ofObj"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpaceGenerators.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpaceCompactCardinals.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "closure",
+          "colimit",
+          "compactness",
+          "essentially",
+          "kappa",
+          "lambda",
+          "point",
+          "relative",
+          "small",
+          "spaces"
+        ],
+        "declaration_count": 2233,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+            "line": 45,
+            "declaration": "smallKanObject_isKappaCompact"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallConstantDiagramCompact.lean",
+            "line": 77,
+            "declaration": "smallConstantPointDiagram_isKappaCompact"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "line": 45,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact : ∀ {μ : Cardinal.{u_1}}\n  [Fact μ.IsRegular],\n  Cardinal.aleph0 < μ →\n    ∀ (K : SerrePositivity.InfinityCategories.KanObject),\n      SerrePositivity.InfinityCategories.F2.IsKappaSmall μ K.obj →\n        SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n          (SerrePositivity.InfinityCategories.coherentNerveVertex K)",
+          "assessment": "実際に κ-small な Kan 対象は、非可算正則 κ で固定宇宙の空間圏内の κ-compact 対象となる。本質的小ささと一点の κ-small 余極限閉包、S_{<λ} 内の相対 compact 性を往復する型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "実際に κ-small な Kan 対象は、非可算正則 κ で固定宇宙の空間圏内の κ-compact 対象となる。本質的小ささと一点の κ-small 余極限閉包、S_{<λ} 内の相対 compact 性を往復する型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.7.1": {
+      "number": "9.2.7.1",
+      "tag": "0686",
+      "query": [
+        "essentially finite infinity category",
+        "finite simplicial source",
+        "categorical equivalence"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.1",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "category",
+            "equivalence",
+            "essentially",
+            "finite",
+            "infinity",
+            "simplicial",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+              "line": 24,
+              "declaration": "IsPrecompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+              "line": 25,
+              "declaration": "finiteShape_induction_of_pushouts"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "category",
+            "equivalence",
+            "essentially",
+            "finite",
+            "infinity",
+            "simplicial",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+              "line": 24,
+              "declaration": "IsPrecompositionEquivalence"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+              "line": 25,
+              "declaration": "finiteShape_induction_of_pushouts"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "category",
+            "equivalence",
+            "essentially",
+            "finite",
+            "infinity",
+            "simplicial",
+            "source"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Small.lean",
+              "line": 23,
+              "declaration": "essentiallySmall_of_finiteType"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "categorical",
+          "category",
+          "equivalence",
+          "essentially",
+          "finite",
+          "infinity",
+          "simplicial",
+          "source"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+          "line": 24,
+          "declaration": "IsPrecompositionEquivalence",
+          "source_signature": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop ",
+          "assessment": "すべての標的への前合成同値を要求する射の述語と、有限単体集合の形状帰納法はある。有限 K から C への categorical equivalence の存在を要求する準圏の述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+          "line": 25,
+          "declaration": "finiteShape_induction_of_pushouts",
+          "source_signature": "lemma finiteShape_induction_of_pushouts (P : SSet.{u} → Prop) (hIso : ∀ {A B : SSet.{u}}, (A ≅ B) → P A → P B) (hEmpty : ∀ X : SSet.{u}, P (⊥ : X.Subcomplex)) (hSimplex : ∀ n : ℕ, P (Δ[n] : SSet.{u})) (hPushout : ∀ {A B C D : SSet.{u}} {f : A ⟶ B} {g : A ⟶ C} {i : B ⟶ D} {j : C ⟶ D} [Mono g], IsPushout f g i j → P A → P B → P C → P D) (X : SSet.{u}) [X.Finite] : P X ",
+          "assessment": "すべての標的への前合成同値を要求する射の述語と、有限単体集合の形状帰納法はある。有限 K から C への categorical equivalence の存在を要求する準圏の述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "すべての標的への前合成同値を要求する射の述語と、有限単体集合の形状帰納法はある。有限 K から C への categorical equivalence の存在を要求する準圏の述語は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.2": {
+      "number": "9.2.7.2",
+      "tag": "0687",
+      "query": [
+        "finite categorical model",
+        "factorization monomorphism",
+        "relative finite approximation",
+        "mapping cylinder"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.2",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "approximation",
+            "categorical",
+            "cylinder",
+            "factorization",
+            "finite",
+            "mapping",
+            "model",
+            "monomorphism",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/MonicAnchoredFiniteApproximation.lean",
+              "line": 28,
+              "declaration": "continuousKanReplacement_monic_anchored_finite_approximation"
+            },
+            {
+              "source": "SerrePositivity/KST/LocalizingInvariants/VerdierRecoveredCoreCylinder.lean",
+              "line": 51,
+              "declaration": "VerdierFiniteMappingCoconeRecovery.relativeCylinder"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "approximation",
+            "categorical",
+            "cylinder",
+            "factorization",
+            "finite",
+            "mapping",
+            "model",
+            "monomorphism",
+            "relative"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/MonicAnchoredFiniteApproximation.lean",
+              "line": 28,
+              "declaration": "continuousKanReplacement_monic_anchored_finite_approximation"
+            },
+            {
+              "source": "SerrePositivity/KST/LocalizingInvariants/VerdierRecoveredCoreCylinder.lean",
+              "line": 51,
+              "declaration": "VerdierFiniteMappingCoconeRecovery.relativeCylinder"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "approximation",
+            "categorical",
+            "cylinder",
+            "factorization",
+            "finite",
+            "mapping",
+            "model",
+            "monomorphism",
+            "relative"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Separation/DisjointCover.lean",
+              "line": 141,
+              "declaration": "exists_finite_approximation_of_mem_nhds_diagonal"
+            },
+            {
+              "source": "Mathlib/Topology/UniformSpace/ProdApproximation.lean",
+              "line": 40,
+              "declaration": "exists_finite_sum_smul_approximation_of_mem_uniformity"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "approximation",
+          "categorical",
+          "cylinder",
+          "factorization",
+          "finite",
+          "mapping",
+          "model",
+          "monomorphism",
+          "relative"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FilteredExchange/MonicAnchoredFiniteApproximation.lean",
+          "line": 28,
+          "declaration": "continuousKanReplacement_monic_anchored_finite_approximation",
+          "source_signature": "lemma continuousKanReplacement_monic_anchored_finite_approximation {A K E : SSet.{u}} [A.Finite] [K.Finite] (i : A ⟶ K) [Mono i] (a : A ⟶ E) (f : K ⟶ continuousKanReplacement.obj E) (h : a ≫ continuousKanReplacementUnit.app E = i ≫ f) : ∃ (M : SSet.{u}) (m : A ⟶ M) (q : M ⟶ E) (v : K ⟶ continuousKanReplacement.obj M), M.Finite ∧ Mono m ∧ m ≫ q = a ∧ i ≫ v = m ≫ continuousKanReplacementUnit.app M ∧ ∃ H : SSet.Homotopy f (v ≫ continuousKanReplacement.map q), (i ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A (Δ[1] : SSet.{u}) ≫ a ≫ continuousKanReplacementUnit.app E ",
+          "assessment": "Kan 置換への有限な相対図式を、境界単射を備える有限模型とホモトピーで近似する型はある。本質的有限な任意の準圏 C に対して有限 K₀→K→C の厳密因数分解を作り、K→C を categorical equivalence とする型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "Kan 置換への有限な相対図式を、境界単射を備える有限模型とホモトピーで近似する型はある。本質的有限な任意の準圏 C に対して有限 K₀→K→C の厳密因数分解を作り、K→C を categorical equivalence とする型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.3": {
+      "number": "9.2.7.3",
+      "tag": "0688",
+      "query": [
+        "finite localization of essentially finite infinity category",
+        "invert finite edges",
+        "finite categorical model"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.3",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "category",
+            "edges",
+            "essentially",
+            "finite",
+            "infinity",
+            "invert",
+            "localization",
+            "model"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+              "line": 52,
+              "declaration": "IsLocalization"
+            },
+            {
+              "source": "Mathlib/RingTheory/Localization/Defs.lean",
+              "line": 102,
+              "declaration": "IsLocalization"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "category",
+            "edges",
+            "essentially",
+            "finite",
+            "infinity",
+            "invert",
+            "localization",
+            "model"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+              "line": 52,
+              "declaration": "IsLocalization"
+            },
+            {
+              "source": "Mathlib/RingTheory/Localization/Defs.lean",
+              "line": 102,
+              "declaration": "IsLocalization"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "category",
+            "edges",
+            "essentially",
+            "finite",
+            "infinity",
+            "invert",
+            "localization",
+            "model"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+              "line": 52,
+              "declaration": "IsLocalization"
+            },
+            {
+              "source": "Mathlib/RingTheory/Localization/Defs.lean",
+              "line": 102,
+              "declaration": "IsLocalization"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "categorical",
+          "category",
+          "edges",
+          "essentially",
+          "finite",
+          "infinity",
+          "invert",
+          "localization",
+          "model"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "Mathlib/CategoryTheory/Localization/Predicate.lean",
+          "line": 52,
+          "declaration": "IsLocalization",
+          "source_signature": "class IsLocalization : Prop",
+          "assessment": "辺の族の局所化の述語と有限写像円柱の始域射はある。有限の反転指定を付けた後も局所化が有限単体集合からの categorical equivalence を持つ型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Derived/FiniteMappingCylinder.lean",
+          "line": 25,
+          "declaration": "finiteMappingCylinderSource",
+          "source_signature": "def finiteMappingCylinderSource : A ⟶ finiteMappingCylinder f ",
+          "assessment": "辺の族の局所化の述語と有限写像円柱の始域射はある。有限の反転指定を付けた後も局所化が有限単体集合からの categorical equivalence を持つ型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "辺の族の局所化の述語と有限写像円柱の始域射はある。有限の反転指定を付けた後も局所化が有限単体集合からの categorical equivalence を持つ型は見つからない。",
+      "decision": "none"
+    },
     "9.2.7.4": {
       "number": "9.2.7.4",
       "tag": "0689",
@@ -13762,6 +15066,1699 @@
         }
       ],
       "reason": "任意の前合成同値な単体写像は弱ホモトピー同値なので、有限 K を使う categorical equivalence から弱同値の証人が得られる。Kan 同士の Whitehead 型には K の Kan 性も必要で、任意の有限な弱同値模型から有限 categorical 模型を得る逆向きは残る。",
+      "decision": "partial"
+    },
+    "9.2.7.6": {
+      "number": "9.2.7.6",
+      "tag": "068B",
+      "query": [
+        "categorical pushout essentially finite",
+        "finite simplicial pushout",
+        "categorical equivalence stability"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.6",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "equivalence",
+            "essentially",
+            "finite",
+            "pushout",
+            "simplicial",
+            "stability"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionMonoCobaseChange.lean",
+              "line": 23,
+              "declaration": "IsPrecompositionEquivalence.of_isPushout_of_mono_other"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+              "line": 30,
+              "declaration": "finite_pushout"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "equivalence",
+            "essentially",
+            "finite",
+            "pullback",
+            "simplicial",
+            "stability"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionMonoCobaseChange.lean",
+              "line": 23,
+              "declaration": "IsPrecompositionEquivalence.of_isPushout_of_mono_other"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+              "line": 30,
+              "declaration": "finite_pushout"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "equivalence",
+            "essentially",
+            "finite",
+            "pushout",
+            "simplicial",
+            "stability"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Small.lean",
+              "line": 23,
+              "declaration": "essentiallySmall_of_finiteType"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "categorical",
+          "equivalence",
+          "essentially",
+          "finite",
+          "pushout",
+          "simplicial",
+          "stability"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+          "line": 30,
+          "declaration": "SerrePositivity.InfinityCategories.F2.finite_pushout",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.finite_pushout : ∀ {A K L : SSet} [A.Finite] [K.Finite] [L.Finite] (i : A ⟶ K)\n  (j : A ⟶ L), (CategoryTheory.Limits.pushout i j).Finite",
+          "assessment": "厳密な単体集合の pushout では三対象が有限なら頂点も有限で、相手側が単射なら前合成同値を押し出せる。一般の categorical pushout をその有限模型で同定する型は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/PrecompositionMonoCobaseChange.lean",
+          "line": 23,
+          "declaration": "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other",
+          "kernel_type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.of_isPushout_of_mono_other : ∀ {A B C D : SSet}\n  {i : A ⟶ B} {g : A ⟶ C} [CategoryTheory.Mono g] {k : B ⟶ D} {j : C ⟶ D},\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence i →\n    CategoryTheory.IsPushout i g k j → SerrePositivity.InfinityCategories.IsPrecompositionEquivalence j",
+          "assessment": "厳密な単体集合の pushout では三対象が有限なら頂点も有限で、相手側が単射なら前合成同値を押し出せる。一般の categorical pushout をその有限模型で同定する型は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "厳密な単体集合の pushout では三対象が有限なら頂点も有限で、相手側が単射なら前合成同値を押し出せる。一般の categorical pushout をその有限模型で同定する型は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.7.7": {
+      "number": "9.2.7.7",
+      "tag": "068D",
+      "query": [
+        "essentially finite quasicategories finite colimit closure",
+        "QC",
+        "finite simplicial colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.7",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "closure",
+            "colimit",
+            "colimits",
+            "essentially",
+            "finite",
+            "qc",
+            "quasicategories",
+            "simplicial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteColimits.lean",
+              "line": 51,
+              "declaration": "finite_of_isColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FintypeCat.lean",
+              "line": 106,
+              "declaration": "finite_of_isColimit"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "closure",
+            "essentially",
+            "finite",
+            "limit",
+            "limits",
+            "qc",
+            "quasicategories",
+            "simplicial"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteColimits.lean",
+              "line": 51,
+              "declaration": "finite_of_isColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FintypeCat.lean",
+              "line": 106,
+              "declaration": "finite_of_isColimit"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "closure",
+            "colimit",
+            "colimits",
+            "essentially",
+            "finite",
+            "qc",
+            "quasicategories",
+            "simplicial"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteColimits.lean",
+              "line": 51,
+              "declaration": "finite_of_isColimit"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FintypeCat.lean",
+              "line": 106,
+              "declaration": "finite_of_isColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "closure",
+          "colimit",
+          "colimits",
+          "essentially",
+          "finite",
+          "qc",
+          "quasicategories",
+          "simplicial"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+          "line": 30,
+          "declaration": "finite_pushout",
+          "source_signature": "lemma finite_pushout {A K L : SSet.{u}} [A.Finite] [K.Finite] [L.Finite] (i : A ⟶ K) (j : A ⟶ L) : (pushout i j).Finite ",
+          "assessment": "通常の単体集合の圏で有限個の有限単体集合を余極限すると有限になる。QC 内の有限図式で各準圏の本質的有限性がその余極限へ移る型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "Mathlib/AlgebraicTopology/SimplicialSet/FiniteColimits.lean",
+          "line": 51,
+          "declaration": "finite_of_isColimit",
+          "source_signature": "lemma finite_of_isColimit [Finite J] (h : ∀ (j : J), (F.obj j).Finite) : c.pt.Finite ",
+          "assessment": "通常の単体集合の圏で有限個の有限単体集合を余極限すると有限になる。QC 内の有限図式で各準圏の本質的有限性がその余極限へ移る型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "通常の単体集合の圏で有限個の有限単体集合を余極限すると有限になる。QC 内の有限図式で各準圏の本質的有限性がその余極限へ移る型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.8": {
+      "number": "9.2.7.8",
+      "tag": "068E",
+      "query": [
+        "QC finite generated by interval",
+        "Delta one",
+        "finite colimits",
+        "categorical finite model"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.8",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "colimits",
+            "delta",
+            "finite",
+            "generated",
+            "interval",
+            "model",
+            "one",
+            "qc"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+              "line": 30,
+              "declaration": "finite_pushout"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+              "line": 25,
+              "declaration": "finiteShape_induction_of_pushouts"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "delta",
+            "finite",
+            "generated",
+            "interval",
+            "limits",
+            "model",
+            "one",
+            "qc"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+              "line": 30,
+              "declaration": "finite_pushout"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+              "line": 25,
+              "declaration": "finiteShape_induction_of_pushouts"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "colimits",
+            "delta",
+            "finite",
+            "generated",
+            "interval",
+            "model",
+            "one",
+            "qc"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Topology/Category/DeltaGenerated.lean",
+              "line": 35,
+              "declaration": "DeltaGenerated"
+            },
+            {
+              "source": "Mathlib/Topology/Compactness/DeltaGeneratedSpace.lean",
+              "line": 40,
+              "declaration": "DeltaGeneratedSpace"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "categorical",
+          "colimits",
+          "delta",
+          "finite",
+          "generated",
+          "interval",
+          "model",
+          "one",
+          "qc"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FiniteShapeInduction.lean",
+          "line": 25,
+          "declaration": "finiteShape_induction_of_pushouts",
+          "source_signature": "lemma finiteShape_induction_of_pushouts (P : SSet.{u} → Prop) (hIso : ∀ {A B : SSet.{u}}, (A ≅ B) → P A → P B) (hEmpty : ∀ X : SSet.{u}, P (⊥ : X.Subcomplex)) (hSimplex : ∀ n : ℕ, P (Δ[n] : SSet.{u})) (hPushout : ∀ {A B C D : SSet.{u}} {f : A ⟶ B} {g : A ⟶ C} {i : B ⟶ D} {j : C ⟶ D} [Mono g], IsPushout f g i j → P A → P B → P C → P D) (X : SSet.{u}) [X.Finite] : P X ",
+          "assessment": "有限な単体集合の形状を境界の pushout で組む型はある。QC 内の Δ¹ の有限余極限閉包を本質的有限な準圏全体と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/FilteredExchange/GluedFiberDetection.lean",
+          "line": 30,
+          "declaration": "finite_pushout",
+          "source_signature": "lemma finite_pushout {A K L : SSet.{u}} [A.Finite] [K.Finite] [L.Finite] (i : A ⟶ K) (j : A ⟶ L) : (pushout i j).Finite ",
+          "assessment": "有限な単体集合の形状を境界の pushout で組む型はある。QC 内の Δ¹ の有限余極限閉包を本質的有限な準圏全体と同定する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "有限な単体集合の形状を境界の pushout で組む型はある。QC 内の Δ¹ の有限余極限閉包を本質的有限な準圏全体と同定する型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.9": {
+      "number": "9.2.7.9",
+      "tag": "068G",
+      "query": [
+        "essentially finite quasicategory compact in QC",
+        "finite source",
+        "preserves filtered colimits"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.9",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "colimits",
+            "compact",
+            "essentially",
+            "filtered",
+            "finite",
+            "preserves",
+            "qc",
+            "quasicategory",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+              "line": 33,
+              "declaration": "compactSourceClassification_preservesKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+              "line": 36,
+              "declaration": "finiteKanReplacement_isCompact"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compact",
+            "essentially",
+            "filtered",
+            "finite",
+            "limits",
+            "preserves",
+            "qc",
+            "quasicategory",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+              "line": 36,
+              "declaration": "finiteKanReplacement_isCompact"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+              "line": 334,
+              "declaration": "filtered_colim_preservesFiniteLimits_of_types"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimits",
+            "essentially",
+            "filtered",
+            "finite",
+            "presentable",
+            "preserves",
+            "qc",
+            "quasicategory",
+            "source"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 174,
+              "declaration": "preservesColimitsOfShape_of_isCardinalPresentable_of_essentiallySmall"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 65,
+              "declaration": "isFinitelyPresentable_iff_preservesFilteredColimitsOfSize"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "colimits",
+          "compact",
+          "essentially",
+          "filtered",
+          "finite",
+          "preserves",
+          "qc",
+          "quasicategory",
+          "source"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean",
+          "line": 46,
+          "declaration": "isCardinalPresentable_of_isKappaSmall",
+          "source_signature": "lemma isCardinalPresentable_of_isKappaSmall {κ : Cardinal.{u}} [Fact κ.IsRegular] {K : SSet.{u}} (hK : IsKappaSmall κ K) : IsCardinalPresentable K κ ",
+          "assessment": "有限単体集合の通常圏での presentability と有限 Kan 置換の空間圏での compact 性はある。有限の categorical 模型を持つ準圏が QC の対象として compact になる型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteKanReplacementCompact.lean",
+          "line": 36,
+          "declaration": "finiteKanReplacement_isCompact",
+          "source_signature": "lemma finiteKanReplacement_isCompact (A : SSet.{u}) [A.Finite] : Compact.IsKappaCompact.{u, u + 1} Cardinal.aleph0 (coherentNerveVertex (continuousReplacementKanObject A)) ",
+          "assessment": "有限単体集合の通常圏での presentability と有限 Kan 置換の空間圏での compact 性はある。有限の categorical 模型を持つ準圏が QC の対象として compact になる型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "有限単体集合の通常圏での presentability と有限 Kan 置換の空間圏での compact 性はある。有限の categorical 模型を持つ準圏が QC の対象として compact になる型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.10": {
+      "number": "9.2.7.10",
+      "tag": "068J",
+      "query": [
+        "finitely dominated quasicategory",
+        "h QCat retract",
+        "essentially finite source"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.10",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cat",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "quasicategory",
+            "retract",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+              "line": 50,
+              "declaration": "IsVertexRetractOf"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+              "line": 24,
+              "declaration": "IsPrecompositionEquivalence"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cat",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "quasicategory",
+            "retract",
+            "source"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+              "line": 50,
+              "declaration": "IsVertexRetractOf"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+              "line": 24,
+              "declaration": "IsPrecompositionEquivalence"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "cat",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "quasicategory",
+            "retract",
+            "source"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/FinitePresentation.lean",
+              "line": 172,
+              "declaration": "CommRingCat.isFinitelyPresentable_under"
+            },
+            {
+              "source": "Mathlib/GroupTheory/Presentation.lean",
+              "line": 97,
+              "declaration": "isFinitelyPresented_iff_exists_finite_presentation"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "cat",
+          "dominated",
+          "essentially",
+          "finite",
+          "finitely",
+          "quasicategory",
+          "retract",
+          "source"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/Retracts.lean",
+          "line": 50,
+          "declaration": "IsVertexRetractOf",
+          "source_signature": "def IsVertexRetractOf {X : SSet.{u}} (x y : X _⦋0⦌) : Prop ",
+          "assessment": "準圏の頂点 retract と、写像の categorical equivalence の候補述語はある。QC の対象が本質的有限な準圏の h QCat 内の retract であることをまとめる述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+          "line": 24,
+          "declaration": "IsPrecompositionEquivalence",
+          "source_signature": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop ",
+          "assessment": "準圏の頂点 retract と、写像の categorical equivalence の候補述語はある。QC の対象が本質的有限な準圏の h QCat 内の retract であることをまとめる述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "準圏の頂点 retract と、写像の categorical equivalence の候補述語はある。QC の対象が本質的有限な準圏の h QCat 内の retract であることをまとめる述語は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.12": {
+      "number": "9.2.7.12",
+      "tag": "068L",
+      "query": [
+        "finitely dominated iff compact in QC",
+        "small quasicategory",
+        "finite retract",
+        "compact generator"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.12",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "compact",
+            "dominated",
+            "finite",
+            "finitely",
+            "generator",
+            "qc",
+            "quasicategory",
+            "retract",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+              "line": 45,
+              "declaration": "IsKappaCompactGenerating.compact_iff_retract"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+              "line": 38,
+              "declaration": "spaceCompactGeneratorInclusion_isCompactGenerating"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compact",
+            "dominated",
+            "finite",
+            "finitely",
+            "generator",
+            "qc",
+            "quasicategory",
+            "retract",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+              "line": 45,
+              "declaration": "IsKappaCompactGenerating.compact_iff_retract"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+              "line": 38,
+              "declaration": "spaceCompactGeneratorInclusion_isCompactGenerating"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "dominated",
+            "finite",
+            "finitely",
+            "generator",
+            "presentable",
+            "qc",
+            "quasicategory",
+            "retract",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/MorphismProperty/Ind.lean",
+              "line": 66,
+              "declaration": "exists_hom_of_isFinitelyPresentable"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 82,
+              "declaration": "IsFinitelyPresentable.exists_hom_of_isColimit"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "compact",
+          "dominated",
+          "finite",
+          "finitely",
+          "generator",
+          "qc",
+          "quasicategory",
+          "retract",
+          "small"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CompactGenerators.lean",
+          "line": 45,
+          "declaration": "IsKappaCompactGenerating.compact_iff_retract",
+          "source_signature": "lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i) (x : C _⦋0⦌) : Compact.IsKappaCompact.{u, u + 1} κ x ↔ ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x (i.app (Opposite.op ⦋0⦌) (ULift.up a)) ",
+          "assessment": "一般の compact 生成族の像の retract 判定と、その空間圏での適用はある。小さい準圏を QC の対象とし、本質的有限な準圏からの retract で判定する適用は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+          "line": 38,
+          "declaration": "spaceCompactGeneratorInclusion_isCompactGenerating",
+          "source_signature": "lemma spaceCompactGeneratorInclusion_isCompactGenerating : IsKappaCompactGenerating Cardinal.aleph0 spaceCompactGeneratorInclusion.{u} ",
+          "assessment": "一般の compact 生成族の像の retract 判定と、その空間圏での適用はある。小さい準圏を QC の対象とし、本質的有限な準圏からの retract で判定する適用は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "一般の compact 生成族の像の retract 判定と、その空間圏での適用はある。小さい準圏を QC の対象とし、本質的有限な準圏からの retract で判定する適用は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.13": {
+      "number": "9.2.7.13",
+      "tag": "06ET",
+      "query": [
+        "finitely dominated QC",
+        "essentially aleph1 small",
+        "countably many simplices",
+        "finite generators"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.13",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "aleph1",
+            "countably",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "generators",
+            "many",
+            "qc",
+            "simplices",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpacePresentation.lean",
+              "line": 102,
+              "declaration": "exists_finiteSpacePresentation"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Small.lean",
+              "line": 23,
+              "declaration": "essentiallySmall_of_finiteType"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "aleph1",
+            "countably",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "generators",
+            "many",
+            "qc",
+            "simplices",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpacePresentation.lean",
+              "line": 102,
+              "declaration": "exists_finiteSpacePresentation"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Small.lean",
+              "line": 23,
+              "declaration": "essentiallySmall_of_finiteType"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "aleph1",
+            "countably",
+            "dominated",
+            "essentially",
+            "finite",
+            "finitely",
+            "generators",
+            "many",
+            "qc",
+            "simplices",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/Algebra/Category/Ring/Small.lean",
+              "line": 23,
+              "declaration": "essentiallySmall_of_finiteType"
+            },
+            {
+              "source": "Mathlib/Algebra/Category/CommAlgCat/FiniteType.lean",
+              "line": 115,
+              "declaration": "essentiallySmall_of_le"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "aleph1",
+          "countably",
+          "dominated",
+          "essentially",
+          "finite",
+          "finitely",
+          "generators",
+          "many",
+          "qc",
+          "simplices",
+          "small"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+          "line": 24,
+          "declaration": "spaceCompactGeneratorCategory",
+          "source_signature": "def spaceCompactGeneratorCategory : SSet.{u} ",
+          "assessment": "有限単体集合由来の空間の小さい生成圏はある。QC の有限支配対象全体の小さい模型は見つからない。取得本文は ℵ₁-small の直後に有限個の単体と記しており、濃度の文言に差がある。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSpacePresentation.lean",
+          "line": 102,
+          "declaration": "exists_finiteSpacePresentation",
+          "source_signature": "lemma exists_finiteSpacePresentation (K : KanObject.{u}) : ∃ d : JoinCocone (strictCoherentDiagram (finiteSpaceReplacementDiagram K.obj)), IsColimitCone d ∧ d.vertex = coherentNerveVertex K ",
+          "assessment": "有限単体集合由来の空間の小さい生成圏はある。QC の有限支配対象全体の小さい模型は見つからない。取得本文は ℵ₁-small の直後に有限個の単体と記しており、濃度の文言に差がある。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "有限単体集合由来の空間の小さい生成圏はある。QC の有限支配対象全体の小さい模型は見つからない。取得本文は ℵ₁-small の直後に有限個の単体と記しており、濃度の文言に差がある。",
+      "decision": "none"
+    },
+    "9.2.7.14": {
+      "number": "9.2.7.14",
+      "tag": "068N",
+      "query": [
+        "essentially kappa small quasicategories",
+        "generated by Delta one",
+        "kappa compact in QC",
+        "uncountable regular"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.14",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "compact",
+            "delta",
+            "essentially",
+            "generated",
+            "kappa",
+            "one",
+            "qc",
+            "quasicategories",
+            "regular",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean",
+              "line": 46,
+              "declaration": "isCardinalPresentable_of_isKappaSmall"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compact",
+            "delta",
+            "effective",
+            "essentially",
+            "generated",
+            "kappa",
+            "one",
+            "qc",
+            "quasicategories",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean",
+              "line": 46,
+              "declaration": "isCardinalPresentable_of_isKappaSmall"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "delta",
+            "essentially",
+            "generated",
+            "kappa",
+            "one",
+            "presentable",
+            "qc",
+            "quasicategories",
+            "regular",
+            "small",
+            "uncountable"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 174,
+              "declaration": "preservesColimitsOfShape_of_isCardinalPresentable_of_essentiallySmall"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/CardinalFilteredPresentation.lean",
+              "line": 157,
+              "declaration": "essentiallySmall_isPresentable"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "compact",
+          "delta",
+          "essentially",
+          "generated",
+          "kappa",
+          "one",
+          "qc",
+          "quasicategories",
+          "regular",
+          "small",
+          "uncountable"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/KappaSmallPresentable.lean",
+          "line": 46,
+          "declaration": "isCardinalPresentable_of_isKappaSmall",
+          "source_signature": "lemma isCardinalPresentable_of_isKappaSmall {κ : Cardinal.{u}} [Fact κ.IsRegular] {K : SSet.{u}} (hK : IsKappaSmall κ K) : IsCardinalPresentable K κ ",
+          "assessment": "κ-small な通常の単体集合の presentability と空間圏の κ-small Kan 対象の compact 性はある。QC 内の Δ¹ の κ-small 余極限閉包、準圏の本質的小ささ、QC 内の κ-compact 性を結ぶ型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "line": 45,
+          "declaration": "smallKanObject_isKappaCompact",
+          "source_signature": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K) ",
+          "assessment": "κ-small な通常の単体集合の presentability と空間圏の κ-small Kan 対象の compact 性はある。QC 内の Δ¹ の κ-small 余極限閉包、準圏の本質的小ささ、QC 内の κ-compact 性を結ぶ型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "κ-small な通常の単体集合の presentability と空間圏の κ-small Kan 対象の compact 性はある。QC 内の Δ¹ の κ-small 余極限閉包、準圏の本質的小ささ、QC 内の κ-compact 性を結ぶ型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.7.15": {
+      "number": "9.2.7.15",
+      "tag": "068P",
+      "query": [
+        "relative QC kappa lambda compact",
+        "essential size",
+        "Delta one colimit closure",
+        "sharply below"
+      ],
+      "a": {
+        "terms": [
+          "9.2.7.15",
+          "9.2.7",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "below",
+            "closure",
+            "colimit",
+            "compact",
+            "delta",
+            "essential",
+            "kappa",
+            "lambda",
+            "one",
+            "qc",
+            "relative",
+            "sharply",
+            "size"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureComparison.lean",
+              "line": 67,
+              "declaration": "dgKappaSphereClosureObjects_isKappaCompact"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "below",
+            "closure",
+            "compact",
+            "delta",
+            "essential",
+            "kappa",
+            "lambda",
+            "limit",
+            "one",
+            "qc",
+            "relative",
+            "sharply",
+            "size"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+              "line": 45,
+              "declaration": "smallKanObject_isKappaCompact"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaSphereClosureComparison.lean",
+              "line": 67,
+              "declaration": "dgKappaSphereClosureObjects_isKappaCompact"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "below",
+            "closure",
+            "colimit",
+            "delta",
+            "essential",
+            "kappa",
+            "lambda",
+            "one",
+            "presentable",
+            "qc",
+            "relative",
+            "sharply",
+            "size"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Uniformization.lean",
+              "line": 32,
+              "declaration": "Cardinal.SharplyLT.exists_retract_of_isCardinalPresentable"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Finite.lean",
+              "line": 65,
+              "declaration": "isFinitelyPresentable_iff_preservesFilteredColimitsOfSize"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "no_same_subsection_anchor",
+        "files": [],
+        "locations": [],
+        "terms": [
+          "below",
+          "closure",
+          "colimit",
+          "compact",
+          "delta",
+          "essential",
+          "kappa",
+          "lambda",
+          "one",
+          "qc",
+          "relative",
+          "sharply",
+          "size"
+        ],
+        "declaration_count": 0,
+        "lead_locations": []
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SmallSpaceCompact.lean",
+          "line": 45,
+          "declaration": "smallKanObject_isKappaCompact",
+          "source_signature": "lemma smallKanObject_isKappaCompact {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) : Compact.IsKappaCompact.{u, u + 1} μ (coherentNerveVertex K) ",
+          "assessment": "固定宇宙の空間圏で κ-small な Kan 対象を compact とする型と濃度変更の条件はある。λ-small 準圏の QC_{<λ} での (κ,λ)-compact 性と Δ¹ の生成閉包を往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalChangeBound.lean",
+          "line": 18,
+          "declaration": "IsCardinalChangeBound",
+          "source_signature": "def IsCardinalChangeBound (κ μ : Cardinal.{u}) : Prop ",
+          "assessment": "固定宇宙の空間圏で κ-small な Kan 対象を compact とする型と濃度変更の条件はある。λ-small 準圏の QC_{<λ} での (κ,λ)-compact 性と Δ¹ の生成閉包を往復する型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "固定宇宙の空間圏で κ-small な Kan 対象を compact とする型と濃度変更の条件はある。λ-small 準圏の QC_{<λ} での (κ,λ)-compact 性と Δ¹ の生成閉包を往復する型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.8.1": {
+      "number": "9.2.8.1",
+      "tag": "06N0",
+      "query": [
+        "right fibration lifts compact objects",
+        "relative finitary",
+        "dual slice",
+        "compactness transfer"
+      ],
+      "a": {
+        "terms": [
+          "9.2.8.1",
+          "9.2.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "compact",
+            "compactness",
+            "dual",
+            "fibration",
+            "finitary",
+            "lifts",
+            "objects",
+            "relative",
+            "right",
+            "slice",
+            "transfer"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+              "line": 25,
+              "declaration": "isKappaCompact_pointCosliceVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+              "line": 73,
+              "declaration": "isKappaCompact_edgeCosliceVertex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compact",
+            "compactness",
+            "coslice",
+            "dual",
+            "fibration",
+            "finitary",
+            "left",
+            "lifts",
+            "objects",
+            "relative",
+            "transfer"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+              "line": 25,
+              "declaration": "isKappaCompact_pointCosliceVertex"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+              "line": 73,
+              "declaration": "isKappaCompact_edgeCosliceVertex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "compactness",
+            "dual",
+            "finitary",
+            "lifting",
+            "lifts",
+            "objects",
+            "presentable",
+            "relative",
+            "right",
+            "slice",
+            "transfer"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/AlgebraicTopology/ModelCategory/JoyalTrick.lean",
+              "line": 70,
+              "declaration": "hasLiftingProperty_of_joyalTrickDual"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+              "line": 121,
+              "declaration": "RetractArrow.rightLiftingProperty"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitCriterion.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactPullback.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallConstantDiagramCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "compact",
+          "compactness",
+          "dual",
+          "fibration",
+          "finitary",
+          "lifts",
+          "objects",
+          "relative",
+          "right",
+          "slice",
+          "transfer"
+        ],
+        "declaration_count": 2847,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+            "line": 25,
+            "declaration": "isKappaCompact_pointCosliceVertex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+            "line": 73,
+            "declaration": "isKappaCompact_edgeCosliceVertex"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+          "line": 25,
+          "declaration": "isKappaCompact_pointCosliceVertex",
+          "source_signature": "lemma isKappaCompact_pointCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (p : (Δ[0] : SSet.{u + 1}) ⟶ C) (c : JoinCocone p) (hp : Compact.IsKappaCompact.{u, u + 1} μ (SSet.yonedaEquiv p)) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C ",
+          "assessment": "点または辺からの coslice で compact 性を扱う補題はある。任意の (κ,λ)-finitary な右ファイブレーションで U(X) の相対 compact 性から X の相対 compact 性を導く型は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+          "line": 73,
+          "declaration": "isKappaCompact_edgeCosliceVertex",
+          "source_signature": "lemma isKappaCompact_edgeCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hx : Compact.IsKappaCompact.{u, u + 1} μ x) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.IsKappaCompact.{u, u + 1} μ (edgeCosliceVertex f.toTruncated) ",
+          "assessment": "点または辺からの coslice で compact 性を扱う補題はある。任意の (κ,λ)-finitary な右ファイブレーションで U(X) の相対 compact 性から X の相対 compact 性を導く型は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "点または辺からの coslice で compact 性を扱う補題はある。任意の (κ,λ)-finitary な右ファイブレーションで U(X) の相対 compact 性から X の相対 compact 性を導く型は見つからない。",
+      "decision": "none"
+    },
+    "9.2.8.6": {
+      "number": "9.2.8.6",
+      "tag": "06EZ",
+      "query": [
+        "compact in product iff components",
+        "kappa-small index",
+        "coordinate projections",
+        "compact pullback"
+      ],
+      "a": {
+        "terms": [
+          "9.2.8.6",
+          "9.2.8",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "compact",
+            "components",
+            "coordinate",
+            "index",
+            "kappa",
+            "product",
+            "projections",
+            "pullback",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+              "line": 32,
+              "declaration": "isKappaCompact_pullback_of_components"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackAccessibilityDetection.lean",
+              "line": 55,
+              "declaration": "pullback_isKappaAccessibleFunctor_of_components"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "compact",
+            "components",
+            "coordinate",
+            "coproduct",
+            "index",
+            "kappa",
+            "projections",
+            "pushout",
+            "small"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+              "line": 32,
+              "declaration": "isKappaCompact_pullback_of_components"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/Derived/DGKappaClosedCompactGeneratorCriterion.lean",
+              "line": 24,
+              "declaration": "dgModuleKappaCompact_smallCoproduct"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "components",
+            "coordinate",
+            "index",
+            "kappa",
+            "presentable",
+            "product",
+            "projections",
+            "pullback",
+            "small"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/Basic.lean",
+              "line": 174,
+              "declaration": "preservesColimitsOfShape_of_isCardinalPresentable_of_essentiallySmall"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/CardinalFilteredPresentation.lean",
+              "line": 157,
+              "declaration": "essentiallySmall_isPresentable"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitCriterion.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactPullback.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/PointCosliceCompactVertices.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SmallConstantDiagramCompact.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity",
+          "SerrePositivity/InfinityCategories/F2/Presentable"
+        ],
+        "terms": [
+          "compact",
+          "components",
+          "coordinate",
+          "index",
+          "kappa",
+          "product",
+          "projections",
+          "pullback",
+          "small"
+        ],
+        "declaration_count": 2847,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+            "line": 32,
+            "declaration": "isKappaCompact_pullback_of_components"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackAccessibilityDetection.lean",
+            "line": 55,
+            "declaration": "pullback_isKappaAccessibleFunctor_of_components"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "line": 32,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components : ∀ {κ μ : Cardinal.{u_1}}\n  [Fact κ.IsRegular] [Fact μ.IsRegular],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound κ μ →\n    ∀ {E D B : SSet} [inst : E.Quasicategory] [inst_1 : D.Quasicategory] [inst_2 : B.Quasicategory] (p : E ⟶ B)\n      (q : D ⟶ B) [inst_3 : SSet.InnerFibration p],\n      SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ\n          (CategoryTheory.Limits.pullback.fst p q) →\n        SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ\n            (CategoryTheory.Limits.pullback.snd p q) →\n          SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ p →\n            ∀ (v : (CategoryTheory.Limits.pullback p q).obj (Opposite.op { len := 0 })),\n              SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                  ((CategoryTheory.ConcreteCategory.hom\n                      ((CategoryTheory.Limits.pullback.fst p q).app (Opposite.op { len := 0 })))\n                    v) →\n                SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                    ((CategoryTheory.ConcreteCategory.hom\n                        ((CategoryTheory.Limits.pullback.snd p q).app (Opposite.op { len := 0 })))\n                      v) →\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                      ((CategoryTheory.ConcreteCategory.hom (p.app (Opposite.op { len := 0 })))\n                        ((CategoryTheory.ConcreteCategory.hom\n                            ((CategoryTheory.Limits.pullback.fst p q).app (Opposite.op { len := 0 })))\n                          v)) →\n                    SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ v",
+          "assessment": "二脚の引き戻しで両成分と共通像が compact かつ射影に保存性があれば全体も compact となる。任意の積から各成分への方向と κ-small な多因子積への逆方向は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "二脚の引き戻しで両成分と共通像が compact かつ射影に保存性があれば全体も compact となる。任意の積から各成分への方向と κ-small な多因子積への逆方向は見つからない。",
       "decision": "partial"
     },
     "9.2.8.7": {
@@ -14096,6 +17093,503 @@
       "reason": "非可算正則 μ と小余完備な周囲を仮定すると、小さい μ-compact 準圏図式の μ-compact 頂点余錐は coslice 内で μ-compact。二濃度 (κ,λ) だけの余完備性および一般の単体形状の版は残る。",
       "decision": "partial"
     },
+    "9.2.9.2": {
+      "number": "9.2.9.2",
+      "tag": "06F7",
+      "query": [
+        "compact in finite limit of categories",
+        "finitary transitions",
+        "component compact",
+        "categorical pullback"
+      ],
+      "a": {
+        "terms": [
+          "9.2.9.2",
+          "9.2.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "categorical",
+            "categories",
+            "compact",
+            "component",
+            "finitary",
+            "finite",
+            "limit",
+            "pullback",
+            "transitions"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+              "line": 32,
+              "declaration": "isKappaCompact_pullback_of_components"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "categorical",
+            "categories",
+            "colimit",
+            "compact",
+            "component",
+            "finitary",
+            "finite",
+            "pushout",
+            "transitions"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+              "line": 32,
+              "declaration": "isKappaCompact_pullback_of_components"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactColimits.lean",
+              "line": 27,
+              "declaration": "componentCompactVertex_smallPosetColimit"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "categorical",
+            "categories",
+            "component",
+            "finitary",
+            "finite",
+            "limit",
+            "presentable",
+            "pullback",
+            "transitions"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Categorical/Basic.lean",
+              "line": 81,
+              "declaration": "CategoricalPullback"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Extensive.lean",
+              "line": 533,
+              "declaration": "FinitaryExtensive.isPullback_initial_to_sigma_ι"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply"
+        ],
+        "terms": [
+          "categorical",
+          "categories",
+          "compact",
+          "component",
+          "finitary",
+          "finite",
+          "limit",
+          "pullback",
+          "transitions"
+        ],
+        "declaration_count": 2640,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+            "line": 32,
+            "declaration": "isKappaCompact_pullback_of_components"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactPullback.lean",
+            "line": 69,
+            "declaration": "componentCompactObjects_isPullback"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "line": 32,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components : ∀ {κ μ : Cardinal.{u_1}}\n  [Fact κ.IsRegular] [Fact μ.IsRegular],\n  SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound κ μ →\n    ∀ {E D B : SSet} [inst : E.Quasicategory] [inst_1 : D.Quasicategory] [inst_2 : B.Quasicategory] (p : E ⟶ B)\n      (q : D ⟶ B) [inst_3 : SSet.InnerFibration p],\n      SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ\n          (CategoryTheory.Limits.pullback.fst p q) →\n        SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ\n            (CategoryTheory.Limits.pullback.snd p q) →\n          SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor μ p →\n            ∀ (v : (CategoryTheory.Limits.pullback p q).obj (Opposite.op { len := 0 })),\n              SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                  ((CategoryTheory.ConcreteCategory.hom\n                      ((CategoryTheory.Limits.pullback.fst p q).app (Opposite.op { len := 0 })))\n                    v) →\n                SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                    ((CategoryTheory.ConcreteCategory.hom\n                        ((CategoryTheory.Limits.pullback.snd p q).app (Opposite.op { len := 0 })))\n                      v) →\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ\n                      ((CategoryTheory.ConcreteCategory.hom (p.app (Opposite.op { len := 0 })))\n                        ((CategoryTheory.ConcreteCategory.hom\n                            ((CategoryTheory.Limits.pullback.fst p q).app (Opposite.op { len := 0 })))\n                          v)) →\n                    SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact μ v",
+          "assessment": "一方の脚を内ファイブレーションとする厳密な引き戻しで、射影の保存性と両成分・共通像の compact 性を仮定した結論はある。任意の有限図式の QC_{<μ} 内の極限に対する同じ主張は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "一方の脚を内ファイブレーションとする厳密な引き戻しで、射影の保存性と両成分・共通像の compact 性を仮定した結論はある。任意の有限図式の QC_{<μ} 内の極限に対する同じ主張は見つからない。",
+      "decision": "partial"
+    },
+    "9.2.9.4": {
+      "number": "9.2.9.4",
+      "tag": "06F9",
+      "query": [
+        "relative cocomplete inner fibration",
+        "all simplex pullbacks",
+        "kappa lambda",
+        "edgewise"
+      ],
+      "a": {
+        "terms": [
+          "9.2.9.4",
+          "9.2.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocomplete",
+            "edgewise",
+            "fibration",
+            "inner",
+            "kappa",
+            "lambda",
+            "pullbacks",
+            "relative",
+            "simplex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+              "line": 33,
+              "declaration": "pullback_hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocomplete",
+            "edgewise",
+            "fibration",
+            "inner",
+            "kappa",
+            "lambda",
+            "pullbacks",
+            "relative",
+            "simplex"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+              "line": 28,
+              "declaration": "HasSmallKappaFilteredColimits"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+              "line": 33,
+              "declaration": "pullback_hasSmallKappaFilteredColimits"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "colimits",
+            "edgewise",
+            "has",
+            "inner",
+            "kappa",
+            "lambda",
+            "lifting",
+            "pullbacks",
+            "relative",
+            "simplex"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/LiftingProperties/PushoutProduct.lean",
+              "line": 41,
+              "declaration": "hasLiftingProperty_iff"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Connected.lean",
+              "line": 43,
+              "declaration": "IsColimit.pullbackOfHasExactColimitsOfShape"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply"
+        ],
+        "terms": [
+          "cocomplete",
+          "edgewise",
+          "fibration",
+          "inner",
+          "kappa",
+          "lambda",
+          "pullbacks",
+          "relative",
+          "simplex"
+        ],
+        "declaration_count": 2640,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+            "line": 33,
+            "declaration": "pullback_hasSmallKappaFilteredColimits"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiberAccessibility.lean",
+            "line": 29,
+            "declaration": "fiber_isAccessible_of_cocomplete_accessible"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Ind/NativeFilteredPreservation.lean",
+          "line": 28,
+          "declaration": "HasSmallKappaFilteredColimits",
+          "source_signature": "def HasSmallKappaFilteredColimits (κ : Cardinal.{u}) (Y : SSet.{u + 1}) : Prop ",
+          "assessment": "単独の準圏の小 κ-filtered 余極限と指定二脚の引き戻しでの存在はある。内ファイブレーションを任意の Δⁿ 上に引き戻し、全ての引き戻しに (κ,λ)-余完備性を課す述語は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+          "line": 33,
+          "declaration": "pullback_hasSmallKappaFilteredColimits",
+          "source_signature": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q) ",
+          "assessment": "単独の準圏の小 κ-filtered 余極限と指定二脚の引き戻しでの存在はある。内ファイブレーションを任意の Δⁿ 上に引き戻し、全ての引き戻しに (κ,λ)-余完備性を課す述語は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "単独の準圏の小 κ-filtered 余極限と指定二脚の引き戻しでの存在はある。内ファイブレーションを任意の Δⁿ 上に引き戻し、全ての引き戻しに (κ,λ)-余完備性を課す述語は見つからない。",
+      "decision": "none"
+    },
+    "9.2.9.5": {
+      "number": "9.2.9.5",
+      "tag": "06FA",
+      "query": [
+        "sequentially cocomplete inner fibration",
+        "ordinal nerve",
+        "all simplex pullbacks",
+        "kappa successor"
+      ],
+      "a": {
+        "terms": [
+          "9.2.9.5",
+          "9.2.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "cocomplete",
+            "fibration",
+            "inner",
+            "kappa",
+            "nerve",
+            "ordinal",
+            "pullbacks",
+            "sequentially",
+            "simplex",
+            "successor"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallPieceChains.lean",
+              "line": 53,
+              "declaration": "ordinalNerve_isKappaFiltered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SequentialEdgeDiagram.lean",
+              "line": 35,
+              "declaration": "sequentialNerveSuccessorEdge_simplex"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "cocomplete",
+            "fibration",
+            "inner",
+            "kappa",
+            "nerve",
+            "ordinal",
+            "pullbacks",
+            "sequentially",
+            "simplex",
+            "successor"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallPieceChains.lean",
+              "line": 53,
+              "declaration": "ordinalNerve_isKappaFiltered"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/SequentialEdgeDiagram.lean",
+              "line": 35,
+              "declaration": "sequentialNerveSuccessorEdge_simplex"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "coherent",
+            "colimits",
+            "has",
+            "inner",
+            "kappa",
+            "lifting",
+            "nerve",
+            "ordinal",
+            "pullbacks",
+            "sequentially",
+            "simplex",
+            "successor"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Sites/Coherent/SheafComparison.lean",
+              "line": 280,
+              "declaration": "isSheaf_coherent_of_hasPullbacks_comp"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/LiftingProperties/PushoutProduct.lean",
+              "line": 41,
+              "declaration": "hasLiftingProperty_iff"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply"
+        ],
+        "terms": [
+          "cocomplete",
+          "fibration",
+          "inner",
+          "kappa",
+          "nerve",
+          "ordinal",
+          "pullbacks",
+          "sequentially",
+          "simplex",
+          "successor"
+        ],
+        "declaration_count": 2640,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/SequentialEdgeDiagram.lean",
+            "line": 35,
+            "declaration": "sequentialNerveSuccessorEdge_simplex"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+            "line": 27,
+            "declaration": "hasPreservedColimit_countable_op_of_finite_sequential"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallPieceChains.lean",
+          "line": 53,
+          "declaration": "ordinalNerve_isKappaFiltered",
+          "source_signature": "lemma ordinalNerve_isKappaFiltered (κ : Cardinal.{u}) [Fact κ.IsRegular] : IsKappaFiltered κ (nerve κ.ord.ToType) ",
+          "assessment": "ordinal nerve の κ-filtered 性と自然数列から可算形状の保存余極限を得る型はある。任意の Δⁿ への引き戻しで κ-順次余極限を要求する定義、および (κ,κ⁺)-余完備性との同一視は見つからない。",
+          "role": "reviewed_non_match"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+          "line": 27,
+          "declaration": "hasPreservedColimit_countable_op_of_finite_sequential",
+          "source_signature": "lemma hasPreservedColimit_countable_op_of_finite_sequential {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (hseq : ∀ G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ X, Ind.HasPreservedColimit U G) (B : SSet.{u}) [Countable B.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ X) : Ind.HasPreservedColimit U F ",
+          "assessment": "ordinal nerve の κ-filtered 性と自然数列から可算形状の保存余極限を得る型はある。任意の Δⁿ への引き戻しで κ-順次余極限を要求する定義、および (κ,κ⁺)-余完備性との同一視は見つからない。",
+          "role": "reviewed_non_match"
+        }
+      ],
+      "reason": "ordinal nerve の κ-filtered 性と自然数列から可算形状の保存余極限を得る型はある。任意の Δⁿ への引き戻しで κ-順次余極限を要求する定義、および (κ,κ⁺)-余完備性との同一視は見つからない。",
+      "decision": "none"
+    },
     "9.2.9.7": {
       "number": "9.2.9.7",
       "tag": "06FC",
@@ -14275,6 +17769,188 @@
       ],
       "reason": "相対余極限性と小さい κ-filtered 余極限存在の述語はある。Δ¹ 上への引き戻しごとの二濃度余完備性と、頂点上の全余極限が edgewise となる条件との三条件の iff は見つからない。",
       "decision": "none"
+    },
+    "9.2.9.14": {
+      "number": "9.2.9.14",
+      "tag": "06FK",
+      "query": [
+        "compact edge in relative functor category over Delta one",
+        "compact endpoints",
+        "relative sequential colimit",
+        "end mapping"
+      ],
+      "a": {
+        "terms": [
+          "9.2.9.14",
+          "9.2.9",
+          "Kerodon"
+        ],
+        "locations": [
+          "SerrePositivity",
+          "Mathlib"
+        ],
+        "exact": [],
+        "subsection": []
+      },
+      "b": {
+        "direct": {
+          "terms": [
+            "category",
+            "colimit",
+            "compact",
+            "delta",
+            "edge",
+            "end",
+            "endpoints",
+            "functor",
+            "mapping",
+            "one",
+            "over",
+            "relative",
+            "sequential"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean",
+              "line": 26,
+              "declaration": "isKappaCompact_functorVertex_of_endFamily"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+              "line": 25,
+              "declaration": "relativeFunctorSpace"
+            }
+          ]
+        },
+        "dual": {
+          "terms": [
+            "category",
+            "compact",
+            "delta",
+            "edge",
+            "end",
+            "endpoints",
+            "functor",
+            "limit",
+            "mapping",
+            "one",
+            "relative",
+            "sequential",
+            "under"
+          ],
+          "locations": [
+            "SerrePositivity",
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean",
+              "line": 26,
+              "declaration": "isKappaCompact_functorVertex_of_endFamily"
+            },
+            {
+              "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+              "line": 25,
+              "declaration": "relativeFunctorSpace"
+            }
+          ]
+        },
+        "ordinary": {
+          "terms": [
+            "category",
+            "colimit",
+            "delta",
+            "edge",
+            "end",
+            "endpoints",
+            "functor",
+            "mapping",
+            "one",
+            "over",
+            "presentable",
+            "relative",
+            "sequential"
+          ],
+          "locations": [
+            "Mathlib"
+          ],
+          "lead_locations": [
+            {
+              "source": "Mathlib/CategoryTheory/Limits/Over.lean",
+              "line": 83,
+              "declaration": "_root_.CategoryTheory.Limits.colimit.isColimitToOver"
+            },
+            {
+              "source": "Mathlib/CategoryTheory/Presentable/CardinalFilteredPresentation.lean",
+              "line": 67,
+              "declaration": "ColimitOfShape.isCardinalPresentable"
+            }
+          ]
+        }
+      },
+      "c": {
+        "mode": "same_subsection_mathlib_partial",
+        "files": [
+          "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean"
+        ],
+        "locations": [
+          "SerrePositivity/InfinityCategories/F2/Presentable",
+          "SerrePositivity/InfinityCategories/F2/Presentable/Supply"
+        ],
+        "terms": [
+          "category",
+          "colimit",
+          "compact",
+          "delta",
+          "edge",
+          "end",
+          "endpoints",
+          "functor",
+          "mapping",
+          "one",
+          "over",
+          "relative",
+          "sequential"
+        ],
+        "declaration_count": 2640,
+        "lead_locations": [
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean",
+            "line": 26,
+            "declaration": "isKappaCompact_functorVertex_of_endFamily"
+          },
+          {
+            "source": "SerrePositivity/InfinityCategories/F2/Presentable/FiberSequentialCompactVertex.lean",
+            "line": 28,
+            "declaration": "exists_componentCompactFiberOverVertex_of_sequential_comparison"
+          }
+        ]
+      },
+      "examined": [
+        {
+          "source": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FunctorCompactEndReduction.lean",
+          "line": 26,
+          "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily",
+          "kernel_type": "@SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily : ∀ {κ : Cardinal.{u_1}}\n  [Fact κ.IsRegular],\n  Cardinal.aleph0 < κ →\n    ∀ {K : SSet} [K.Quasicategory],\n      SerrePositivity.InfinityCategories.F2.IsKappaSmall κ K →\n        ∀ {C : SSet} [inst : C.Quasicategory],\n          SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits C →\n            ∀ (F : SSet.uliftFunctor.obj K ⟶ C),\n              (∀ (k : (fun X => X) ((SSet.uliftFunctor.obj K).obj (Opposite.op { len := 0 }))),\n                  SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact κ\n                    ((CategoryTheory.ConcreteCategory.hom (F.app (Opposite.op { len := 0 }))) k)) →\n                ∀\n                  (E :\n                    SSet.uliftFunctor.obj (SSet.uliftFunctor.obj K ⟹ C) ⟶\n                      SerrePositivity.InfinityCategories.join (SSet.stdSimplex.obj { len := 0 })\n                          (SSet.uliftFunctor.obj\n                            (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K))) ⟹\n                        SerrePositivity.InfinityCategories.SpaceInfinity),\n                  (∀\n                      (g :\n                        (fun X => X)\n                          ((SSet.uliftFunctor.obj (SSet.uliftFunctor.obj K ⟹ C)).obj (Opposite.op { len := 0 }))),\n                      SerrePositivity.InfinityCategories.IsLimitCone\n                        (SerrePositivity.InfinityCategories.F2.functorVertexCone\n                          ((CategoryTheory.ConcreteCategory.hom (E.app (Opposite.op { len := 0 }))) g))) →\n                    ∀\n                      (hr :\n                        SerrePositivity.InfinityCategories.FunctorIso\n                          (CategoryTheory.CategoryStruct.comp E\n                            (SerrePositivity.InfinityCategories.coneRestriction\n                              (SSet.uliftFunctor.obj\n                                (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K)))\n                              SerrePositivity.InfinityCategories.SpaceInfinity))\n                          (SerrePositivity.InfinityCategories.F2.Presentable.functorEndCoefficient F))\n                      (ha :\n                        SerrePositivity.InfinityCategories.FunctorIso\n                          (CategoryTheory.CategoryStruct.comp E\n                            (SerrePositivity.InfinityCategories.evaluateFunctorAt\n                              (SSet.yonedaEquiv\n                                (SerrePositivity.InfinityCategories.joinInl (SSet.stdSimplex.obj { len := 0 })\n                                  (SSet.uliftFunctor.obj\n                                    (SerrePositivity.InfinityCategories.TwistedArrow (SSet.uliftFunctor.obj K)))))))\n                          (SerrePositivity.InfinityCategories.covariantRepresentableInfinity\n                            (SerrePositivity.InfinityCategories.functorVertex F))),\n                      SerrePositivity.InfinityCategories.F2.Compact.IsKappaCompact κ\n                        (SerrePositivity.InfinityCategories.functorVertex F)",
+          "assessment": "非可算 κ と Hom の end を表す族を追加すれば、通常の関手圏で頂点ごとの κ-compact 性から関手の κ-compact 性を得る。Δ¹ 上の相対関手圏に結論を制限する型と二濃度の版は見つからない。",
+          "role": "adopted_part"
+        },
+        {
+          "source": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "line": 25,
+          "declaration": "relativeFunctorSpace",
+          "source_signature": "def relativeFunctorSpace {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) : SSet.{u} ",
+          "assessment": "非可算 κ と Hom の end を表す族を追加すれば、通常の関手圏で頂点ごとの κ-compact 性から関手の κ-compact 性を得る。Δ¹ 上の相対関手圏に結論を制限する型と二濃度の版は見つからない。",
+          "role": "adopted_part"
+        }
+      ],
+      "reason": "非可算 κ と Hom の end を表す族を追加すれば、通常の関手圏で頂点ごとの κ-compact 性から関手の κ-compact 性を得る。Δ¹ 上の相対関手圏に結論を制限する型と二濃度の版は見つからない。",
+      "decision": "partial"
     },
     "9.3.2.18": {
       "number": "9.3.2.18",
