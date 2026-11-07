@@ -1,0 +1,113 @@
+import Lean
+
+open Lean Elab Server
+open Lean.Language.Lean (CommandParsedSnapshot)
+
+private def span (stx : Syntax) : List (String × Json) :=
+  match stx.getRange? with
+  | none => []
+  | some r => [("start", toJson r.start.byteIdx), ("stop", toJson r.stop.byteIdx)]
+
+private def refRow (ref : Reference) : Option Json := do
+  let kind := match ref.info with
+    | .ofFieldInfo _ => "field"
+    | .ofTermInfo _ =>
+      if ref.isBinder then "binder" else if ref.stx.isIdent then "term" else "syntax"
+    | _ => "syntax"
+  let (module, name, kind) := match ref.ident with
+    | .const module name => (module, name, kind)
+    | .fvar _ _ => ("", "", "local")
+  let fields := span ref.stx
+  if fields.isEmpty then none else
+    some <| Json.mkObj (fields ++ [("kind", toJson kind), ("module", toJson module),
+      ("name", toJson name), ("namespace", toJson ref.ci.currNamespace.toString)])
+
+private def scopeRow (kind : String) (stx : Syntax) (before after : Command.State) : Json :=
+  Json.mkObj <| span stx ++ [
+    ("kind", toJson kind), ("before", toJson before.scopes.length),
+    ("after", toJson after.scopes.length),
+    ("parent", toJson before.scopes.head!.currNamespace.toString),
+    ("name", toJson after.scopes.head!.currNamespace.toString)]
+
+private def resolveOpen (state : Command.State) (id : Name) : List Name :=
+  if rootNamespace.isPrefixOf id then
+    [removeRoot id]
+  else
+    let scope := state.scopes.head!
+    ResolveName.resolveNamespace state.env scope.currNamespace scope.openDecls id
+
+private def openRow (mode : String) (stx : Syntax) (id : Syntax) (state : Command.State) : Json :=
+  let names := (resolveOpen state id.getId).map Name.toString
+  Json.mkObj <| span id ++ [
+    ("kind", toJson "open"), ("mode", toJson mode), ("names", toJson names),
+    ("command", Json.mkObj (span stx))]
+
+/-- Capture actual parsed namespace operands. Nested opens use the outer command's
+    scope, so their spelling is emitted separately for conservative review. -/
+private partial def opens (stx : Syntax) (state : Command.State) (top : Bool := true) (nested : Bool := false) : Array Json := Id.run do
+  let kind := stx.getKind
+  let mode :=
+    if kind == ``Parser.Command.openSimple then "simple"
+    else if kind == ``Parser.Command.openScoped then "scoped"
+    else if kind == ``Parser.Command.openOnly then "only"
+    else if kind == ``Parser.Command.openHiding then "hiding"
+    else if kind == ``Parser.Command.openRenaming then "renaming"
+    else ""
+  if mode != "" then
+    let ids := if mode == "simple" then stx[0].getArgs else
+      if mode == "scoped" then stx[1].getArgs else #[stx[0]]
+    return ids.map fun id => openRow (if nested then "local-" ++ mode else mode) stx id state
+  if kind == ``Parser.Command.export then
+    return #[openRow "export" stx stx[1] state]
+  if kind == ``Parser.Command.«open» && top then
+    return opens stx[1] state false nested
+  -- For an open in a local term or macro, treat the entire construct as a guard.
+  if stx.getArgs.any (fun arg =>
+      [``Parser.Command.openSimple, ``Parser.Command.openScoped, ``Parser.Command.openOnly,
+       ``Parser.Command.openHiding, ``Parser.Command.openRenaming].contains arg.getKind) then
+    return stx.getArgs.flatMap fun arg =>
+      opens arg state false true
+  return stx.getArgs.flatMap fun arg => opens arg state false nested
+
+private partial def commandRows (state : Command.State) (cmd : CommandParsedSnapshot)
+    (acc : Array Json := #[]) : Array Json := Id.run do
+  let stx := cmd.stx
+  let after := cmd.elabSnap.resultSnap.get.cmdState
+  let mut acc := acc ++ opens stx state
+  if stx.getKind == ``Parser.Command.namespace then
+    acc := acc.push (scopeRow "namespace" stx[1] state after)
+  else if stx.getKind == ``Parser.Command.«end» then
+    acc := acc.push (scopeRow "end" stx[1] state after)
+  else if stx.getKind == ``Parser.Command.withWeakNamespace then
+    acc := acc.push (scopeRow "weak-namespace" stx state after)
+  if let some next := cmd.nextCmdSnap? then
+    commandRows after next.get acc
+  else acc
+
+unsafe def main (args : List String) : IO UInt32 := do
+  let [module, source, output] := args
+    | IO.eprintln "usage: lean --run klw1_collect_refs.lean MODULE SOURCE OUTPUT"; return 2
+  let name ← moduleNameOfFileName source none
+  if name.toString != module then
+    IO.eprintln s!"source module mismatch: expected {module}, inferred {name}"
+    return 2
+  let input ← IO.FS.readFile source
+  initSearchPath (← getBuildDir)
+  enableInitializersExecution
+  let ictx := Parser.mkInputContext input source
+  let setup stx := pure <| .ok {
+    imports := stx.imports, isModule := stx.isModule, mainModuleName := name,
+    opts := Elab.async.set {} false
+  }
+  let snap ← Language.Lean.process setup none { ictx with }
+  let snapshots := Language.toSnapshotTree snap
+  if ← snapshots.runAndReport {} false then return 1
+  let some header := snap.processedResult.get | return 1
+  let trees := snapshots.getAll.flatMap fun s => s.infoTree?.toArray
+  let refs := (findReferences ictx.fileMap trees).filterMap refRow
+  let commands := commandRows header.cmdState header.firstCmdSnap.get
+  IO.FS.writeFile output <| (Json.mkObj [
+    ("schema_version", toJson (1 : Nat)), ("module", toJson module), ("source", toJson input),
+    ("refs", toJson refs), ("commands", toJson commands)]).compress
+  Runtime.forget snapshots
+  return 0

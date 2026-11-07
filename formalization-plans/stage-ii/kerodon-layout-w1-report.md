@@ -218,3 +218,32 @@ InfinityCategories/
 追跡済みの Lean 31,479 本の import を、コメントと文字列をマスクして解析した。修飾付き import と改行された import を含む。プロジェクト内の解決済み辺 108,408 本を使い、直接辺・推移閉包・逆閉包を集計した。解決できないプロジェクト内のモジュール名 13 種は Archive/WIP と research/kt-devissage の 11 本に限られ、解決済みのグラフから除外した。 数値は静的なソースグラフ上の見積もり。ビルド、保存比較、Lean の型・公理の再監査は未実施。
 
 確認事項は、(b) の木と主題・出どころによる暫定配置、(c) で分割後にも残る節間の依存の扱い、(d) の KST 本体・大きな閉包・DG 基盤を含む候補の線引き。§6 の保留印と対応表の章確認を反映した上で段 2 へ進む。本コミットで停止点 1 に止まる。
+
+## 停止点 1.5 — 段 3 の道具
+
+作業枝に `a0e4c7d36` と `81e593fb9` を取り込んだ。指示書 §7 の決定を前提とする。段 2・3 の開始条件は、対応表のやり直しと独立した交差検査の完了。既存の割り当て表は停止点 1 の記録として保持した。
+
+| 道具 | 入出力と検査 |
+| --- | --- |
+| [参照収集器](../../scripts/refactor/klw1_collect_refs.lean) と [名前空間移行](../../scripts/refactor/klw1_namespace.py) の `collect`・`rewrite` | Lean が実際に解決した定数名、所有モジュール、UTF-8 バイト位置、名前空間・`open` の構文を収集する。ソースが収集時とバイト単位で一致することを確認してから、相対名と完全修飾名を移行先へ差し替え、`namespace`・`end`・`open`・import を更新したプレビューを出す。同じ綴りのローカル変数、コメント、文字列は保持する |
+| 同 `aliases` | main・drafts・作業中の枝を別々のマニフェストで収集し、移動後も ∞ 圏の外にある利用側から参照された旧名だけを採る。既存 alias への参照を別に記録し、重複生成を避ける。成果物は利用側のパスと位置を含む `aliases.json` と、F-2 の `deprecated_alias` を使った `Aliases.lean` |
+| [新しい層検査](../../scripts/refactor/klw1_layer_check.py) | 追跡済み Lean の import DAG を検査する。ファイルごとに 5 層を指定し、循環、未解決 import、層の順序、Portable・SharedFoundation から実装に届く経路を検出する。実装境界と Kerodon の逆向き辺は理由付きの個別辺で管理する |
+| [割り当て更新](../../scripts/refactor/klw1_review_assignment.py) | `items.csv`、章別 review、目次、停止点 1 の割り当てを読み、確認済みの宣言対応で `basis` と主節を更新する。配置・根拠の変更、撤回、新規の対応元、パス衝突を `changes.csv` に出す。モデル圏の印を引き継ぎ、外部移動は承認済みの 4 群の確定パスを別入力とする |
+
+### 割り当ての見直しと段 3 での使い方
+
+Python の道具はリポジトリ直下から `python3 scripts/refactor/<ファイル名>` で起動する。
+
+1. やり直しと交差検査を確認したら `klw1_review_assignment.py --assignment ASSIGNMENT.csv --coverage research/kerodon-coverage --approved-external APPROVED.txt --accept-cross-review --output-dir REFRESH` を実行する。承認済みの外部パスは 1 行 1 本。K 理論本体に届く 7 本と閉包の大きい 21 本には移動可の印を付けない。正式モードは章別の全項目、仮定・結論の記載、kernel・none 探索の資料、Ch 4–10 の交差報告の存在を検査する。交差報告の判定と必要な再確認の完了は人が確かめる。途中で使う `--allow-incomplete` はプレビュー用。
+2. 同じソースから作られた依存の Lean 成果物を使う。各 worktree の対象パスを JSON 配列で列挙し、`klw1_namespace.py collect --root ROOT --files FILES.json --output INDEX` で収集する。移動モジュールを推移的に import する外部ソースを対象にし、main・drafts と走っている枝をそれぞれ列挙する。範囲はマニフェスト単位で検算される。
+3. 保存比較用の改名表と揃えた `plan.json` を作る。`rows` の各行は `module`・`old`・`new` を持ち、分割時は `new_module` も指定する。モジュール改名は `modules`、旧モジュールごとの名前空間は `namespaces`、旧 `open` の解決先ごとの方針は `opens` に記す。旧名前空間を残す場合は同名を指定する。既存の互換名は `existing_aliases` に置く。
+4. `rewrite --root ROOT --files FILES.json --index INDEX --plan PLAN.json --output PREVIEW` で、移動先のディレクトリ構成にプレビューを出す。同じ構文に異なる定数解決がある、選択的 `open` のメンバーが別々に移る、名前空間を途中まで閉じる、引用やマクロで確かな編集位置が取れない場合は `review.json` に理由を出し、そのファイルのプレビューを保留する。集められるのは Lean が元のソース位置と関連付けた参照で、すべてのマクロや暗黙に生成される依存を網羅するわけではない。段 3 では残った箇所を解消し、再検査と保存比較 v3b を通す。
+5. `aliases --scope LABEL ROOT FILES.json INDEX --plan PLAN.json --helper MODULE --since YYYY-MM-DD --output COMPAT` で互換名を生成する。`--scope` は worktree ごとに繰り返せる。選ばれた別の旧名を型の中で使う場合は、改名表の `type_dependencies` に型の依存を旧名で指定する。同時に選ばれた型の alias を先に生成する。通常の main 側利用者も同じ束で `rewrite` の対象とする。
+6. 層検査は `klw1_layer_check.py --root ROOT --config FILE.json`。設定の `schema_version` は 1。`modules` は完全なモジュール名から層名への表で、∞ 圏の全モジュールを指定する。表外の追跡済みファイルは `Consumers`。`sections` は Kerodon の節パス接頭辞から `[章, 節]` への表。`external_prefixes` は Mathlib 等、`implementation_prefixes` は保持する KST・モデル圏等の実装境界。`implementation_edges` と `reverse_edges` の各行は `from`・`to`・`reason`。監査対象外の履歴は `exclude_prefixes` で明記する。最終的なファイル別設定は、承認済みの移動と分割を反映したグラフで作る。
+
+### 検証
+
+- Python の単体試験 10 件が通過。バイト位置とローカル変数の区別、曖昧な参照・未収集の完全修飾名・古い収集結果の拒否、外部利用だけの alias 選択、型の依存順、逆向きの節辺、実装への推移閉包、循環、章の更新と交差検査のゲートを確認した。
+- ビルド鍵を通した小規模 Lean 統合試験 2 件が通過。相対名・完全修飾名・選択的／局所／scoped `open` と投影記法を含むプレビューを再検査した。既存の F-2 実装を読み込んで略記と定理の alias を生成し、外部の試験ファイルから両方を非推奨警告付きで使えることを確かめた。
+- `81e593fb9` 時点の章表で途中プレビューを作り、3,001 項目から 14,966 行の表を再計算した。変更・要確認の記録は 809 件、うち既存行で行き先が変わったものは 32 件、新しい対応元は 5 件。正式モードは未提出の Ch 2 で停止し、正式出力は作らなかった。
+- 実ファイルでもビルド鍵を通した。既存の `PinchedHom/Index` と `PinchedHom/Basic` を §4.6 の候補パスに一時出力し、改名候補 23 件を使って 2 本を順に再検査した。外部の `EInfinity/ComplexLimits/ConeTriangleIndex` から旧名の利用 3 件を抽出した。
