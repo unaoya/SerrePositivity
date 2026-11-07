@@ -80,3 +80,29 @@ main の `6dd825028` を `math/bs-impl` に取り込み、指示書 §4 の承�
 - 予定する import の到達先をソースから探索した（本体 461 モジュール）。`BhattScholze.Inputs.PerfectoidizationInterface` への経路は 0。環の完備化には `Perfectoidization.Derived.Interface` の既存 `completionRing` とその普遍性を使う。⑤b の差分とのパスの重複は 0。
 - 未証明箇所は下書きから写した 17 か所。延長性・関手性・濃度、代数的根添加の filtered 余極限と mod p Frobenius、有限変数の根の関係・perfectoid 性・完全忠実平坦性が残る。A-2 では延長性と完備性から着手し、多変数環の perfectoid 性には完全 δ 環での根変数の Frobenius と完備化の比較を調べる。濃度と、閉じられなかった宣言は drafts に置く。
 - 取り込み時の登録候補は `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction`。この停止点の新規本体モジュールは 0 本。型が同じことを確認したため、A-2 の証明へ進む。
+
+## BS-W11 停止点 A-2（2026-11-07）
+
+実装コミットは `a611163b3`、`3a0a86f09`、`c65fdcd38`。作業 A の新規モジュールで、次を証明した。
+
+- 完備な一段と可算塔からなる根添加を構成した。perfectoid 環への環射は一段ごとに延長でき、逐次余極限と完備化の普遍性で `rootClosure` を通る。完備性と、単位との両立・恒等射・合成を含む根添加の関手性も確認した。
+- 完備化前の `algebraicRootFunctor` を構成した。mod p の任意の元は逐次余極限のある段から来るので、次段の関係式で p 乗根を取れる。
+- 有限変数の多項式環と根添加環の間の射、根の関係式、評価による完備な底変換 `rootCover` を構成した。多項式商を非負の p 冪分母指数の単項式代数と同一視し、完全 δ 環上の単項式代数からの distinguished 主イデアル商で `polyRootAlgebra_isIntegralPerfectoid` を証明した。係数の p ねじれは有界 p ねじれとして完備化の比較に取り込み、下書きの仮定を保った。
+
+### ビルドと依存
+
+- 共有ロックで `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction` の単体ビルドを 3 回実行し、順に 16 秒、16 秒、25 秒で成功した。最終の 25 秒のうち対象の再コンパイルは 18 秒。A の開始時には `PerfectBaseChange` と `SerrePositivity.BhattScholze` の 2 対象を同じロックでビルドし、13 秒で成功した。25 行目の行長警告は解消し、13 行目の既存の警告は残る。新規モジュールには未使用のセクション引数と tactic の書き方に関する警告がある。
+- 本体への追加は sorry・admit・独自公理が各 0。公開宣言 45 件（環代数のインスタンス 5 件を含む）の `#print axioms` は標準の `propext`、`Classical.choice`、`Quot.sound` の範囲内。新規モジュールを含む本体 631 モジュールの import をたどり、`BhattScholze.Inputs.PerfectoidizationInterface` に到達する経路は 0。
+- 本体の変更は新規 1 ファイルと `41f07e792` の docstring 改行のみ。既存の宣言は変更なし。ほかの差分は A5 の下書きとこの報告。⑤b の `5958651b6` と作業木、および基準から進んだ main `5c2fa9423` に対象パスの重複は 0。差分の空白検査も通った。
+
+### drafts に残る宣言
+
+| 宣言 | 残る証明 |
+| --- | --- |
+| `rootClosure_cardinal_le` | 各段の濃度評価と、可算余極限・完備化を通した上界。 |
+| `algebraicRootClosure_filteredColimit` | 一段が filtered 余極限を保つことと、逐次余極限との交換。 |
+| `polyAlgebraToRoot_pCompletelyFaithfullyFlat` | 通常の多項式環上の分数指数基底と、完備化後の忠実平坦性。 |
+
+### 取り込み時の登録
+
+- 新規登録モジュールは `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction` の 1 本。共通入口 `SerrePositivity/BhattScholze.lean` と BS 監査スクリプトへの登録、および登録後の単独監査は調整役が行う。A-2 で検収を待つ。
