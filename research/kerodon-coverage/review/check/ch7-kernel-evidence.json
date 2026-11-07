@@ -3494,16 +3494,54 @@
       ]
     },
     "7.6.1.13": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "SerrePositivity.InfinityCategories.HomotopyLimits.spaceProductCone_isLimitCone",
+          "source": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceProducts.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.1.15": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.prod.lift",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryProducts.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.prod.lift_fst",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryProducts.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.prod.lift_snd",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryProducts.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.prod.hom_ext",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryProducts.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.1.16": {
       "adopted": []
     },
     "7.6.1.17": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.forgetAdjStar",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Over.star",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.1.23": {
       "adopted": []
@@ -3512,7 +3550,13 @@
       "adopted": []
     },
     "7.6.1.26": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.hasFiniteProducts_of_has_binary_and_terminal",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/FiniteProductsOfBinaryProducts.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.1": {
       "adopted": [
@@ -3527,7 +3571,13 @@
       ]
     },
     "7.6.2.6": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.IsPullback.mono_snd_of_mono",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.8": {
       "adopted": [
@@ -3550,28 +3600,100 @@
       ]
     },
     "7.6.2.18": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.pullbackIsPullbackOfCompMono",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Mono.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.19": {
       "adopted": []
     },
     "7.6.2.20": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.preserves_mono_of_preservesLimit",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/EpiMono.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.22": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.pullback.diagonal",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.pullback.diagonal_fst",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.pullback.diagonal_snd",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.23": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.pushout.codiagonal",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.pushout.inl_codiagonal",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.pushout.inr_codiagonal",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.24": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.ConstructProducts.over_binaryProduct_of_pullback",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Over.over_hasTerminal",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.IsLimit.pullbackConeEquivBinaryFanInverse",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.27": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.pullback.isIso_diagonal_iff",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.29": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.preserves_mono_of_preservesLimit",
+          "source": "Mathlib/CategoryTheory/Limits/Constructions/EpiMono.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.30": {
       "adopted": [
@@ -3585,19 +3707,58 @@
       "adopted": []
     },
     "7.6.2.34": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.mapPullbackAdj",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.35": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.mapPullbackAdj",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.37": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Over.mapPullbackAdj",
+          "source": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.38": {
       "adopted": []
     },
     "7.6.2.39": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.IsPullback.of_horiz_isIso",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.IsPullback.isIso_fst_of_isIso",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.IsPushout.of_horiz_isIso",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.IsPushout.isIso_inr_of_isIso",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "7.6.2.40": {
       "adopted": [
@@ -4194,6 +4355,36 @@
         ],
         "axioms_output": "'CategoryTheory.Over.pullback' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 60
+      },
+      "CategoryTheory.Over.forgetAdjStar": {
+        "type": "@CategoryTheory.Over.forgetAdjStar : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (X : C) →\n      [inst_1 : CategoryTheory.Limits.HasBinaryProducts C] → CategoryTheory.Over.forget X ⊣ CategoryTheory.Over.star X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.forgetAdjStar' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 160
+      },
+      "CategoryTheory.Over.star": {
+        "type": "@CategoryTheory.Over.star : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (X : C) → [CategoryTheory.Limits.HasBinaryProducts C] → CategoryTheory.Functor C (CategoryTheory.Over X)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.star' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 153
+      },
+      "CategoryTheory.Over.mapPullbackAdj": {
+        "type": "@CategoryTheory.Over.mapPullbackAdj : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      (f : X ⟶ Y) →\n        [inst_1 : CategoryTheory.Limits.HasPullbacksAlong f] →\n          CategoryTheory.Over.map f ⊣ CategoryTheory.Over.pullback f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.mapPullbackAdj' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 71
       }
     },
     "SerrePositivity/InfinityCategories/Kan/FibrationTower.lean": {
@@ -4938,6 +5129,252 @@
         ],
         "axioms_output": "'CategoryTheory.Limits.hasColimitsOfShape_grothendieck' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 222
+      }
+    },
+    "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceProducts.lean": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.spaceProductCone_isLimitCone": {
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.spaceProductCone_isLimitCone : ∀ {J : Type u_1}\n  (F : CategoryTheory.Functor (CategoryTheory.Discrete J) SerrePositivity.InfinityCategories.KanObject),\n  SerrePositivity.InfinityCategories.IsLimitCone (SerrePositivity.InfinityCategories.HomotopyLimits.spaceProductCone F)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'SerrePositivity.InfinityCategories.HomotopyLimits.spaceProductCone_isLimitCone' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 75
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryProducts.lean": {
+      "CategoryTheory.Limits.prod.lift": {
+        "type": "@CategoryTheory.Limits.prod.lift : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {W X Y : C} → [inst_1 : CategoryTheory.Limits.HasBinaryProduct X Y] → (W ⟶ X) → (W ⟶ Y) → (W ⟶ X ⨯ Y)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.prod.lift' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 111
+      },
+      "CategoryTheory.Limits.prod.lift_fst": {
+        "type": "@CategoryTheory.Limits.prod.lift_fst : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {W X Y : C}\n  [inst_1 : CategoryTheory.Limits.HasBinaryProduct X Y] (f : W ⟶ X) (g : W ⟶ Y),\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.prod.lift f g) CategoryTheory.Limits.prod.fst = f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.prod.lift_fst' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 130
+      },
+      "CategoryTheory.Limits.prod.lift_snd": {
+        "type": "@CategoryTheory.Limits.prod.lift_snd : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {W X Y : C}\n  [inst_1 : CategoryTheory.Limits.HasBinaryProduct X Y] (f : W ⟶ X) (g : W ⟶ Y),\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.prod.lift f g) CategoryTheory.Limits.prod.snd = g",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.prod.lift_snd' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 135
+      },
+      "CategoryTheory.Limits.prod.hom_ext": {
+        "type": "@CategoryTheory.Limits.prod.hom_ext : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {W X Y : C}\n  [inst_1 : CategoryTheory.Limits.HasBinaryProduct X Y] {f g : W ⟶ X ⨯ Y},\n  CategoryTheory.CategoryStruct.comp f CategoryTheory.Limits.prod.fst =\n      CategoryTheory.CategoryStruct.comp g CategoryTheory.Limits.prod.fst →\n    CategoryTheory.CategoryStruct.comp f CategoryTheory.Limits.prod.snd =\n        CategoryTheory.CategoryStruct.comp g CategoryTheory.Limits.prod.snd →\n      f = g",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.prod.hom_ext' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 100
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Constructions/FiniteProductsOfBinaryProducts.lean": {
+      "CategoryTheory.hasFiniteProducts_of_has_binary_and_terminal": {
+        "type": "@CategoryTheory.hasFiniteProducts_of_has_binary_and_terminal : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] [CategoryTheory.Limits.HasBinaryProducts C]\n  [CategoryTheory.Limits.HasTerminal C], CategoryTheory.Limits.HasFiniteProducts C",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.hasFiniteProducts_of_has_binary_and_terminal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 106
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean": {
+      "CategoryTheory.IsPullback.mono_snd_of_mono": {
+        "type": "@CategoryTheory.IsPullback.mono_snd_of_mono : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {P X Y Z : C} {fst : P ⟶ X} {snd : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z},\n  CategoryTheory.IsPullback fst snd f g →\n    autoParam (CategoryTheory.Mono f) CategoryTheory.IsPullback.mono_snd_of_mono._auto_1 → CategoryTheory.Mono snd",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsPullback.mono_snd_of_mono' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 137
+      },
+      "CategoryTheory.IsPullback.of_horiz_isIso": {
+        "type": "@CategoryTheory.IsPullback.of_horiz_isIso : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {P X Y Z : C}\n  {fst : P ⟶ X} {snd : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z} [CategoryTheory.IsIso fst] [CategoryTheory.IsIso g],\n  CategoryTheory.CommSq fst snd f g → CategoryTheory.IsPullback fst snd f g",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsPullback.of_horiz_isIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 76
+      },
+      "CategoryTheory.IsPullback.isIso_fst_of_isIso": {
+        "type": "@CategoryTheory.IsPullback.isIso_fst_of_isIso : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {P X Y Z : C} {fst : P ⟶ X} {snd : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z},\n  CategoryTheory.IsPullback fst snd f g →\n    autoParam (CategoryTheory.IsIso g) CategoryTheory.IsPullback.isIso_fst_of_isIso._auto_1 → CategoryTheory.IsIso fst",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsPullback.isIso_fst_of_isIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 141
+      },
+      "CategoryTheory.IsPushout.of_horiz_isIso": {
+        "type": "@CategoryTheory.IsPushout.of_horiz_isIso : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {Z X Y P : C}\n  {f : Z ⟶ X} {g : Z ⟶ Y} {inl : X ⟶ P} {inr : Y ⟶ P} [CategoryTheory.IsIso f] [CategoryTheory.IsIso inr],\n  CategoryTheory.CommSq f g inl inr → CategoryTheory.IsPushout f g inl inr",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsPushout.of_horiz_isIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 668
+      },
+      "CategoryTheory.IsPushout.isIso_inr_of_isIso": {
+        "type": "@CategoryTheory.IsPushout.isIso_inr_of_isIso : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {Z X Y P : C} {f : Z ⟶ X} {g : Z ⟶ Y} {inl : X ⟶ P} {inr : Y ⟶ P},\n  CategoryTheory.IsPushout f g inl inr →\n    autoParam (CategoryTheory.IsIso f) CategoryTheory.IsPushout.isIso_inr_of_isIso._auto_1 → CategoryTheory.IsIso inr",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.IsPushout.isIso_inr_of_isIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 521
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Mono.lean": {
+      "CategoryTheory.Limits.pullbackIsPullbackOfCompMono": {
+        "type": "@CategoryTheory.Limits.pullbackIsPullbackOfCompMono : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {W X Y Z : C} →\n      (f : X ⟶ W) →\n        (g : Y ⟶ W) →\n          (i : W ⟶ Z) →\n            [inst_1 : CategoryTheory.Mono i] →\n              [inst_2 : CategoryTheory.Limits.HasPullback f g] →\n                CategoryTheory.Limits.IsLimit\n                  (CategoryTheory.Limits.PullbackCone.mk (CategoryTheory.Limits.pullback.fst f g)\n                    (CategoryTheory.Limits.pullback.snd f g) ⋯)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pullbackIsPullbackOfCompMono' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 143
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Constructions/EpiMono.lean": {
+      "CategoryTheory.preserves_mono_of_preservesLimit": {
+        "type": "@CategoryTheory.preserves_mono_of_preservesLimit : ∀ {C : Type u_3} {D : Type u_4}\n  [inst : CategoryTheory.Category.{u_1, u_3} C] [inst_1 : CategoryTheory.Category.{u_2, u_4} D]\n  (F : CategoryTheory.Functor C D) {X Y : C} (f : X ⟶ Y)\n  [CategoryTheory.Limits.PreservesLimit (CategoryTheory.Limits.cospan f f) F] [CategoryTheory.Mono f],\n  CategoryTheory.Mono (F.map f)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.preserves_mono_of_preservesLimit' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 32
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Shapes/Diagonal.lean": {
+      "CategoryTheory.Limits.pullback.diagonal": {
+        "type": "@CategoryTheory.Limits.pullback.diagonal : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      (f : X ⟶ Y) → [inst_1 : CategoryTheory.Limits.HasPullback f f] → X ⟶ CategoryTheory.Limits.pullback.diagonalObj f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pullback.diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 42
+      },
+      "CategoryTheory.Limits.pullback.diagonal_fst": {
+        "type": "@CategoryTheory.Limits.pullback.diagonal_fst : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : X ⟶ Y) [inst_1 : CategoryTheory.Limits.HasPullback f f],\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pullback.diagonal f)\n      (CategoryTheory.Limits.pullback.fst f f) =\n    CategoryTheory.CategoryStruct.id X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pullback.diagonal_fst' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 46
+      },
+      "CategoryTheory.Limits.pullback.diagonal_snd": {
+        "type": "@CategoryTheory.Limits.pullback.diagonal_snd : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : X ⟶ Y) [inst_1 : CategoryTheory.Limits.HasPullback f f],\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pullback.diagonal f)\n      (CategoryTheory.Limits.pullback.snd f f) =\n    CategoryTheory.CategoryStruct.id X",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pullback.diagonal_snd' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 50
+      },
+      "CategoryTheory.Limits.pushout.codiagonal": {
+        "type": "@CategoryTheory.Limits.pushout.codiagonal : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      (f : X ⟶ Y) → [inst_1 : CategoryTheory.Limits.HasPushout f f] → CategoryTheory.Limits.pushout.codiagonalObj f ⟶ Y",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pushout.codiagonal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 499
+      },
+      "CategoryTheory.Limits.pushout.inl_codiagonal": {
+        "type": "@CategoryTheory.Limits.pushout.inl_codiagonal : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : X ⟶ Y) [inst_1 : CategoryTheory.Limits.HasPushout f f],\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pushout.inl f f)\n      (CategoryTheory.Limits.pushout.codiagonal f) =\n    CategoryTheory.CategoryStruct.id Y",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pushout.inl_codiagonal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 503
+      },
+      "CategoryTheory.Limits.pushout.inr_codiagonal": {
+        "type": "@CategoryTheory.Limits.pushout.inr_codiagonal : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : X ⟶ Y) [inst_1 : CategoryTheory.Limits.HasPushout f f],\n  CategoryTheory.CategoryStruct.comp (CategoryTheory.Limits.pushout.inr f f)\n      (CategoryTheory.Limits.pushout.codiagonal f) =\n    CategoryTheory.CategoryStruct.id Y",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pushout.inr_codiagonal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 507
+      },
+      "CategoryTheory.Limits.pullback.isIso_diagonal_iff": {
+        "type": "@CategoryTheory.Limits.pullback.isIso_diagonal_iff : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {X Y : C} (f : X ⟶ Y) [inst_1 : CategoryTheory.Limits.HasPullback f f],\n  CategoryTheory.IsIso (CategoryTheory.Limits.pullback.diagonal f) ↔ CategoryTheory.Mono f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.pullback.isIso_diagonal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 66
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Constructions/Over/Products.lean": {
+      "CategoryTheory.Over.ConstructProducts.over_binaryProduct_of_pullback": {
+        "type": "@CategoryTheory.Over.ConstructProducts.over_binaryProduct_of_pullback : ∀ {C : Type u_2}\n  [inst : CategoryTheory.Category.{u_1, u_2} C] [CategoryTheory.Limits.HasPullbacks C] {B : C},\n  CategoryTheory.Limits.HasBinaryProducts (CategoryTheory.Over B)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.ConstructProducts.over_binaryProduct_of_pullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 332
+      },
+      "CategoryTheory.Over.over_hasTerminal": {
+        "type": "@CategoryTheory.Over.over_hasTerminal : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] (B : C),\n  CategoryTheory.Limits.HasTerminal (CategoryTheory.Over B)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Over.over_hasTerminal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 353
+      },
+      "CategoryTheory.Limits.IsLimit.pullbackConeEquivBinaryFanInverse": {
+        "type": "@CategoryTheory.Limits.IsLimit.pullbackConeEquivBinaryFanInverse : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y Z : C} →\n      {f : Y ⟶ X} →\n        {g : Z ⟶ X} →\n          {c : CategoryTheory.Limits.BinaryFan (CategoryTheory.Over.mk f) (CategoryTheory.Over.mk g)} →\n            CategoryTheory.Limits.IsLimit c →\n              CategoryTheory.Limits.IsLimit (CategoryTheory.Limits.pullbackConeEquivBinaryFan.inverse.obj c)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.IsLimit.pullbackConeEquivBinaryFanInverse' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]",
+        "line": 98
       }
     }
   },
