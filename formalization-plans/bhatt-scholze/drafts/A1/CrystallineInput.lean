@@ -16,7 +16,7 @@ public import Mathlib.RingTheory.DividedPowers.Basic
 public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 -- 本ファイルは drafts/A1/HodgeTateMap.lean（小さい Čech 模型 `htRings`・`reducedModel`、η⁰・η¹、`HodgeTateIsoStatement`、`formVars`）、
--- drafts/A0/PrismaticEnvelope.lean（`completedFreeDelta`）、drafts/Shared/{DeRhamPolynomial,CosimplicialCupProduct,CosimplicialBockstein,CosimplicialEInfinity}.lean を import する
+-- drafts/A0/PrismaticEnvelope.lean（`completedFreeDelta`）、drafts/Shared/{DeRhamPolynomial,CosimplicialCupProduct,CosimplicialEInfinity}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う
 -- （CosimplicialEInfinity は 11-07 の §10.5 の部品：`strictShapeNerve`・`strictNatTransFunctorIso`・`totCDGAFunctor`）。
 -- A1/HodgeTateComparison と A1/DeRhamComparisonPoly の両方がこれを import する（W9-III-09）。
 

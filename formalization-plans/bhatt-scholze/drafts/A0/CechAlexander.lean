@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.8、単位 A0-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
+
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
@@ -109,19 +111,6 @@ def HasEnvelopes : Prop :=
     IsPrismaticEnvelope P (completedFreeDeltaStructure P _) (completedFreeDeltaBase P _)
       (completedFreeDeltaBase_isDeltaHom P _) (cechKernel P R n) (generator_mem_cechKernel P R n) Q η ∧
     IsBoundedPrism Q ∧ Cardinal.mk C ≤ cutoff A R
-
-/-- (A/d)⟨X_T⟩。有限添字 Fin r にも同じ一変数の完備化を使う。 -/
-abbrev prismPolynomialCompletion (T : Type v) :=
-  PrincipalCompletionH0 (MvPolynomial T (A ⧸ P.ideal)) (p : MvPolynomial T (A ⧸ P.ideal))
-
-instance prismPolynomialRing (T : Type v) : CommRing (prismPolynomialCompletion P T) :=
-  principalCompletionCommRing _ _
-
-def prismPolynomialUnit (T : Type v) : MvPolynomial T (A ⧸ P.ideal) →+* prismPolynomialCompletion P T :=
-  principalCompletionUnitRingHom _ _
-
-instance prismPolynomialAlgebra (T : Type v) : Algebra (A ⧸ P.ideal) (prismPolynomialCompletion P T) :=
-  ((prismPolynomialUnit P T).comp MvPolynomial.C).toAlgebra
 
 /-- 概要：多項式代数 R = (A/d)⟨X_T⟩ では envelope が存在する（Ex 3.14 の場合）。
 方針：J₀B は、A/d → A の集合論的切断で係数を持ち上げた変数変換により「変数の部分集合 ＋ (d)」になる（a0-design §2.5、紙の検証 2）。

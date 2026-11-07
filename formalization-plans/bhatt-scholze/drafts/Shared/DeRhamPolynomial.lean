@@ -5,7 +5,7 @@ module
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
-public import SerrePositivity.CommutativeAlgebra.DeRham.Polynomial
+public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCompletion
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplex
@@ -74,7 +74,7 @@ theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
 
 /-! ## p 完備化 -/
 
-/-- 概要：p 完備化した多項式代数 P^∧ = k⟨X_T⟩ 上の微分形式 Ω^i_{P^∧} := P^∧ ⊗_P Ω^i_P（有限自由）。
+/-! 概要：p 完備化した多項式代数 P^∧ = k⟨X_T⟩ 上の微分形式 Ω^i_{P^∧} := P^∧ ⊗_P Ω^i_P（有限自由）。
 方針：係数拡大。d は **k 線形な連続微分**として完備化へ延びる（偏微分の連続性）。P^∧ 線形ではない（d(X) = dX ≠ X·d(1) = 0、W9-I-22）。外積は P^∧ 線形。
 規約：原典の Ω^i_{R/(A/I)}（R = A/I⟨X⟩）はこれ（D26）。
 使われ方：A1 の HT 比較の対象 R = (A/d)⟨X⟩。
@@ -82,14 +82,6 @@ theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
 A2 の HT filtration（一般の k、D(k)_{p-comp} 内）では H⁰ を取ると導来完備化の負次数を失う（k の p 冪ねじれが有界でないと LΛ_p(自由加群) は離散でない）ので、
 A2 は通常の `forms` を `discreteModuleEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施した対象を使い、有界 p 冪ねじれの下でだけ `completedForms` と同定する
 （`completedForms_eq_derivedCompletion_of_boundedTorsion`）。k⟨X_T⟩ は `PrincipalCompletionH0 (Poly k T) p`（E3 の `completionRing` と同じ道具）。 -/
-abbrev completedPoly (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) : Type u :=
-  SerrePositivity.DerivedCompletion.PrincipalCompletionH0 (Poly k T) (p : Poly k T)
-def completedForms (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) (i : ℕ) : Type u :=
-  sorry -- completedPoly k T p ⊗_{Poly k T} forms k T i（有限自由なので = PrincipalCompletionH0 (forms k T i) p）
-instance (p i : ℕ) : AddCommGroup (completedForms k T p i) := sorry
-instance (p i : ℕ) : Module (completedPoly k T p) (completedForms k T p i) := sorry
-instance (p i : ℕ) : Module k (completedForms k T p i) := sorry
-
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Derived
 
 /-- 概要：k の p 冪ねじれが有界（例：有界 prism の A/d）なら、`forms k T i` の導来 p 完備化（DerivedGeneral `completion`、D(k) の対象）は離散で、
@@ -105,13 +97,6 @@ def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
   sorry -- 多項式形式は多項式環上有限自由。係数のねじれの一様な上界により導来完備化は次数零
 
 /-! ## 完備形式上の連続微分と外積（D4-05、11-03。A1 の Ω̂ の dg 構造） -/
-
-/-- 概要：完備化単位 Ω^i → Ω̂^i（`forms k T i → completedForms k T p i`）。
-方針：係数拡大 P → P^∧ に沿う。
-規約：k 線形。
-使われ方：連続微分の定義（稠密な像からの延長）。 -/
-def completedFormsUnit (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p i : ℕ) :
-    forms k T i →+ completedForms k T p i := sorry
 
 /-- 概要：Ω̂ 上の外積 Ω̂^i × Ω̂^j → Ω̂^{i+j}（P^∧ 双線形、次数付き可換）。
 方針：Ω̂^i = P^∧ ⊗_P Ω^i の有限自由性で `wedge` を係数拡大。

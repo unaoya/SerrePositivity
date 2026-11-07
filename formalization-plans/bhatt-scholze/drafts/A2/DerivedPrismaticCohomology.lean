@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
+
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
@@ -84,23 +86,9 @@ theorem completeCAlg_siftedColimits : HasSmallSiftedColimits (CompleteCAlg P) :=
 
 /-! ## 多項式代数上の Δ_0（CAlg 値） -/
 
-/-- 概要：多項式 k 代数 P = k[X_1,…,X_n] の p 完備化 P^∧（A0 の `affineAlgebra`／`cechAlexanderAffine` の R）。
-方針：design-status (B) の決定：一変数 p 進完備化の H⁰。
-規約：Poly k の対象 ⟨n⟩ に対して。
-使われ方：Δ_0。 -/
-abbrev polyCompletion (n : ℕ) := prismPolynomialCompletion P (Fin n)
-abbrev polyCutoff (n : ℕ) := cutoff A (polyCompletion P n)
-
 instance polySiteSmall (n : ℕ) : EssentiallySmall.{u} (PrismOver P (polyCompletion P n) (polyCutoff P n)) :=
   PrismOver.essentiallySmall (P := P) (R := polyCompletion P n) (by
     sorry) -- cutoff は #A+#R 以上
-
-def prismSiteAlgebras (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u}) :
-    PrismOver P S κ ⥤ A_R A where
-  obj X := Under.mk (CommRingCat.ofHom X.toHom.toRingHom)
-  map f := Under.homMk (CommRingCat.ofHom f.toHom.toRingHom) (by sorry) -- f.comm_base
-  map_id := by sorry -- 基底上の恒等射
-  map_comp := by sorry -- 基底上の合成
 
 def testSiteRings (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
     [EssentiallySmall.{u} (PrismOver P S κ)] : (PrismaticSite P S κ)ᵒᵖ ⥤ A_R A :=

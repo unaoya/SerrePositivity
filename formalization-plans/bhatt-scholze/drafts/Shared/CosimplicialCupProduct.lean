@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupProduct
+public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.Algebra.Category.ModuleCat.Basic
 public import Mathlib.Algebra.Category.Ring.Basic
@@ -37,23 +37,6 @@ namespace SerrePositivity.Cosimplicial
 
 variable (X : CosimplicialObject CommRingCat.{u})
 
-/-- 概要：Leibniz 則 d(x ∪ y) = dx ∪ y + (−1)^m x ∪ dy。
-方針：δ^i と前面・後面の可換関係：i ≤ m では δ^i ∘ frontFace = frontFace ∘ δ^i、backFace との合成は i による。中間の項が相殺する。
-規約：符号は非正規化複体の標準のもの。
-使われ方：非正規化複体が dg 環であること。 -/
-theorem cochainDifferential_cup {m n : ℕ} (x : X.obj ⦋m⦌) (y : X.obj ⦋n⦌) :
-    cast (by omega) (cochainDifferential X (m + n) (cup X x y)) =
-      cast (by omega) (cup X (cochainDifferential X m x) y) +
-        (-1 : ℤ) ^ m • cup X x (cochainDifferential X n y) := by
-  sorry -- Alexander–Whitney の標準計算
-
-/-- 概要：cup 積はコホモロジーに降りる（Leibniz 則から、余輪体 × 余輪体 ⊆ 余輪体、余境界 × 余輪体 ⊆ 余境界）。
-方針：`cochainDifferential_cup`。
-規約：—
-使われ方：コホモロジー環。 -/
-def cohomologyCup {m n : ℕ} : cohomology X m → cohomology X n → cohomology X (m + n) :=
-  sorry
-
 /-- 概要：コホモロジー環は次数付き可換：a ∪ b = (−1)^{mn} b ∪ a。
 方針：鎖のレベルの cup₁ ホモトピー（Steenrod）、または余単体的可換環の cup 積が E∞ の H^* であること。
 規約：鎖のレベルでは主張しない。
@@ -61,13 +44,5 @@ def cohomologyCup {m n : ℕ} : cohomology X m → cohomology X n → cohomology
 theorem cohomologyCup_comm {m n : ℕ} (a : cohomology X m) (b : cohomology X n) :
     cast (by rw [Nat.add_comm]) (cohomologyCup X a b) = (-1 : ℤ) ^ (m * n) • cohomologyCup X b a := by
   sorry -- cup₁ 積のホモトピー
-
-/-- 概要：余単体的環の射 X → Y は cup 積を保ち、コホモロジー環の射を誘導する。
-方針：面写像と環射の可換性。
-規約：—
-使われ方：模型の取り替え（大小の Čech–Alexander 模型、底変換）で環構造が移ること。 -/
-theorem cohomologyMap_cup (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) {m n : ℕ} (a : cohomology X m) (b : cohomology X n) :
-    cohomologyMap X Y f (m + n) (cohomologyCup X a b) = cohomologyCup Y (cohomologyMap X Y f m a) (cohomologyMap X Y f n b) := by
-  sorry -- 面写像と環射の可換性（(B) の決定：環の射で cup を保つ）
 
 end SerrePositivity.Cosimplicial

@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
--- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,CosimplicialBockstein,DeRhamPolynomial}.lean を import する。
+-- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,DeRhamPolynomial}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う。
 
 /-!
 # Hodge–Tate 比較の写像（BS 著者版 Construction 4.9、Lemma 4.10、Thm 4.11 の主張）
