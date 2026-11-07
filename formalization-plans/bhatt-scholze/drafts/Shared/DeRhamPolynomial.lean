@@ -6,6 +6,8 @@ module
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.Graded
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedWedge
+public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedDifferential
+public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplex
@@ -40,11 +42,6 @@ open scoped DirectSum
 namespace SerrePositivity.DeRham
 
 variable (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T]
-
-theorem deRhamD_wedge {i j : ℕ} (ω : forms k T i) (η : forms k T j) :
-    cast (by omega) (deRhamD k T (i + j) (wedge k T ω η)) =
-      cast (by omega) (wedge k T (deRhamD k T i ω) η) + (-1 : ℤ) ^ i • wedge k T ω (deRhamD k T j η) := by
-  sorry
 
 /-- 概要：de Rham cohomology の積 H^i × H^j → H^{i+j}（外積から）。
 方針：`deRhamD_wedge` により外積は余輪体 × 余輪体を余輪体へ、余境界 × 余輪体を余境界へ送る。
@@ -98,28 +95,10 @@ def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
 
 /-! ## 完備形式上の連続微分と外積（D4-05、11-03。A1 の Ω̂ の dg 構造） -/
 
-/-- 概要：**k 線形な連続微分** d̂ : Ω̂^i → Ω̂^{i+1}（W9-I-22：P^∧ 線形ではない。d(X) = dX ≠ X·d(1)）。偏微分 ∂_t の p 進連続性で P → P^∧ の稠密な像から延びる。
-方針：Ω̂^i = P^∧ ⊗_P Ω^i の元 f ⊗ ω（f ∈ P^∧）に d̂(f ⊗ ω) = Σ_t ∂_t f ⊗ (dX_t ∧ ω) + f ⊗ dω で定める（∂_t は P^∧ の連続微分、Cauchy 列ごと）。
-規約：d̂² = 0、Leibniz、`completedFormsUnit` と両立（d̂ ∘ unit = unit ∘ d）。
-使われ方：完備 de Rham 複体 Ω̂^•、A1 の HT 比較の標的側、A5 の G-A5-12。 -/
-def completedDeRhamD (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p i : ℕ) :
-    completedForms k T p i →+ completedForms k T p (i + 1) := sorry
-theorem completedDeRhamD_unit (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p i : ℕ) (ω : forms k T i) :
-    completedDeRhamD k T p i (completedFormsUnit k T p i ω) = completedFormsUnit k T p (i + 1) (deRhamD k T i ω) := by sorry
-theorem completedDeRhamD_comp (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p i : ℕ) (ω : completedForms k T p i) :
-    completedDeRhamD k T p (i + 1) (completedDeRhamD k T p i ω) = 0 := by sorry
 theorem completedDeRhamD_wedge (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) {i j : ℕ}
     (ω : completedForms k T p i) (η : completedForms k T p j) :
     cast (by omega) (completedDeRhamD k T p (i + j) (completedWedge k T p ω η)) =
       cast (by omega) (completedWedge k T p (completedDeRhamD k T p i ω) η) + (-1 : ℤ) ^ i • completedWedge k T p ω (completedDeRhamD k T p j η) := by
   sorry
-
-/-- 概要：完備 de Rham 複体 Ω̂^•_{P^∧/k}（k 加群の余鎖複体。次数 i に Ω̂^i、微分は d̂）。A1 では CommMon (Complex k) にまとめて Barratt–Eccles の augmentation と
-`cAlgVertex` で E∞ 代数に実現する（A1 側）。
-方針：`CochainComplex.of`。
-規約：k 線形複体（P^∧ 線形ではない）。
-使われ方：A1 の HT 比較（Ω̂ = 原典の Ω_{R/(A/I)}、D26）、A1-5、G-A5-12。 -/
-def completedDeRhamComplex (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) : CochainComplex (ModuleCat.{u} k) ℕ :=
-  sorry -- CochainComplex.of (fun i => ModuleCat.of k (completedForms k T p i)) (completedDeRhamD k T p) (completedDeRhamD_comp k T p)
 
 end SerrePositivity.DeRham
