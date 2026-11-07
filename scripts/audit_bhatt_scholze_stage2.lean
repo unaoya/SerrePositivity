@@ -1,4 +1,6 @@
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 import Lean.Util.CollectAxioms
 
 /-!
@@ -11,7 +13,9 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
-    `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction]
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
