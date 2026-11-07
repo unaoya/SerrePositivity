@@ -528,6 +528,11 @@
           "name": "CategoryTheory.isRegularEpi_iff_effectiveEpi",
           "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
           "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.isColimitCoforkOfEffectiveEpi",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+          "phase": "2"
         }
       ]
     },
@@ -574,7 +579,13 @@
       "adopted": []
     },
     "10.2.1.24": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Sieve.pullback",
+          "source": "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.1.26": {
       "adopted": []
@@ -615,16 +626,44 @@
       "adopted": []
     },
     "10.2.2.7": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Sieve.effectiveEpimorphic_singleton",
+          "source": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.isRegularEpi_iff_effectiveEpi",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.2.9": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Sieve.effectiveEpimorphic_singleton",
+          "source": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.epi_of_effectiveEpi",
+          "source": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.2.11": {
       "adopted": []
     },
     "10.2.2.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.RegularEpi.ofArrowIso",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.2.14": {
       "adopted": []
@@ -642,13 +681,36 @@
       "adopted": []
     },
     "10.2.3.10": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.strongEpi_of_effectiveEpi",
+          "source": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.3.11": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.image.isoStrongEpiMono",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Images.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.image.lift",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Images.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.3.12": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Limits.image",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/Images.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.3.13": {
       "adopted": [
@@ -678,7 +740,13 @@
       "adopted": []
     },
     "10.2.3.22": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.strongEpi_of_strongEpi",
+          "source": "Mathlib/CategoryTheory/Limits/Shapes/StrongEpi.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.3.23": {
       "adopted": []
@@ -756,7 +824,18 @@
       "adopted": []
     },
     "10.2.5.11": {
-      "adopted": []
+      "adopted": [
+        {
+          "name": "CategoryTheory.Functor.PreservesEffectiveEpis",
+          "source": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+          "phase": "2"
+        },
+        {
+          "name": "CategoryTheory.Limits.PreservesFiniteLimits",
+          "source": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+          "phase": "2"
+        }
+      ]
     },
     "10.2.5.13": {
       "adopted": []
@@ -921,6 +1000,26 @@
         ],
         "axioms_output": "'CategoryTheory.isRegularEpi_iff_effectiveEpi' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 521
+      },
+      "CategoryTheory.isColimitCoforkOfEffectiveEpi": {
+        "type": "@CategoryTheory.isColimitCoforkOfEffectiveEpi : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {B X : C} →\n      (f : X ⟶ B) →\n        [CategoryTheory.EffectiveEpi f] →\n          (c : CategoryTheory.Limits.PullbackCone f f) →\n            CategoryTheory.Limits.IsLimit c → CategoryTheory.Limits.IsColimit (CategoryTheory.Limits.Cofork.ofπ f ⋯)",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.isColimitCoforkOfEffectiveEpi' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 490
+      },
+      "CategoryTheory.RegularEpi.ofArrowIso": {
+        "type": "@CategoryTheory.RegularEpi.ofArrowIso : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y X' Y' : C} →\n      {f : X ⟶ Y} →\n        {g : X' ⟶ Y'} →\n          (CategoryTheory.Arrow.mk f ≅ CategoryTheory.Arrow.mk g) →\n            CategoryTheory.RegularEpi f → CategoryTheory.RegularEpi g",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.RegularEpi.ofArrowIso' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 332
       }
     },
     "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean": {
@@ -929,6 +1028,15 @@
         "axioms": [],
         "axioms_output": "'CategoryTheory.Sieve' does not depend on any axioms",
         "line": 50
+      },
+      "CategoryTheory.Sieve.pullback": {
+        "type": "@CategoryTheory.Sieve.pullback : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {X Y : C} → (Y ⟶ X) → CategoryTheory.Sieve X → CategoryTheory.Sieve Y",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Sieve.pullback' depends on axioms: [propext, Quot.sound]",
+        "line": 364
       }
     },
     "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean": {
@@ -949,6 +1057,16 @@
         ],
         "axioms_output": "'CategoryTheory.Sieve.generateSingleton' depends on axioms: [propext]",
         "line": 49
+      },
+      "CategoryTheory.Sieve.effectiveEpimorphic_singleton": {
+        "type": "@CategoryTheory.Sieve.effectiveEpimorphic_singleton : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {X Y : C} (f : Y ⟶ X), (CategoryTheory.Presieve.singleton f).EffectiveEpimorphic ↔ CategoryTheory.EffectiveEpi f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Sieve.effectiveEpimorphic_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 160
       }
     },
     "Mathlib/CategoryTheory/Limits/Shapes/StrongEpi.lean": {
@@ -960,6 +1078,15 @@
         ],
         "axioms_output": "'CategoryTheory.isIso_of_mono_of_strongEpi' depends on axioms: [propext, Classical.choice]",
         "line": 128
+      },
+      "CategoryTheory.strongEpi_of_strongEpi": {
+        "type": "@CategoryTheory.strongEpi_of_strongEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {P Q R : C}\n  (f : P ⟶ Q) (g : Q ⟶ R) [CategoryTheory.StrongEpi (CategoryTheory.CategoryStruct.comp f g)],\n  CategoryTheory.StrongEpi g",
+        "axioms": [
+          "propext",
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.strongEpi_of_strongEpi' depends on axioms: [propext, Classical.choice]",
+        "line": 91
       }
     },
     "Mathlib/CategoryTheory/Limits/Shapes/Images.lean": {
@@ -968,6 +1095,31 @@
         "axioms": [],
         "axioms_output": "'CategoryTheory.Limits.HasImages' does not depend on any axioms",
         "line": 451
+      },
+      "CategoryTheory.Limits.image.isoStrongEpiMono": {
+        "type": "@CategoryTheory.Limits.image.isoStrongEpiMono : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : CategoryTheory.Limits.HasStrongEpiMonoFactorisations C] →\n      {X Y : C} →\n        {f : X ⟶ Y} →\n          {I' : C} →\n            (e : X ⟶ I') →\n              (m : I' ⟶ Y) →\n                CategoryTheory.CategoryStruct.comp e m = f →\n                  [CategoryTheory.StrongEpi e] → [CategoryTheory.Mono m] → I' ≅ CategoryTheory.Limits.image f",
+        "axioms": [
+          "propext",
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.image.isoStrongEpiMono' depends on axioms: [propext, Classical.choice]",
+        "line": 986
+      },
+      "CategoryTheory.Limits.image.lift": {
+        "type": "@CategoryTheory.Limits.image.lift : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      {f : X ⟶ Y} →\n        [inst_1 : CategoryTheory.Limits.HasImage f] →\n          (F' : CategoryTheory.Limits.MonoFactorisation f) → CategoryTheory.Limits.image f ⟶ F'.I",
+        "axioms": [
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.image.lift' depends on axioms: [Classical.choice]",
+        "line": 386
+      },
+      "CategoryTheory.Limits.image": {
+        "type": "@CategoryTheory.Limits.image : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {X Y : C} → (f : X ⟶ Y) → [CategoryTheory.Limits.HasImage f] → C",
+        "axioms": [
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.image' depends on axioms: [Classical.choice]",
+        "line": 356
       }
     },
     "Mathlib/CategoryTheory/RegularCategory/Basic.lean": {
@@ -981,7 +1133,49 @@
         "axioms_output": "'CategoryTheory.Regular' depends on axioms: [propext, Classical.choice, Quot.sound]",
         "line": 52
       }
+    },
+    "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean": {
+      "CategoryTheory.epi_of_effectiveEpi": {
+        "type": "@CategoryTheory.epi_of_effectiveEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : Y ⟶ X) [CategoryTheory.EffectiveEpi f], CategoryTheory.Epi f",
+        "axioms": [
+          "propext",
+          "Classical.choice"
+        ],
+        "axioms_output": "'CategoryTheory.epi_of_effectiveEpi' depends on axioms: [propext, Classical.choice]",
+        "line": 100
+      },
+      "CategoryTheory.strongEpi_of_effectiveEpi": {
+        "type": "@CategoryTheory.strongEpi_of_effectiveEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : X ⟶ Y) [CategoryTheory.EffectiveEpi f], CategoryTheory.StrongEpi f",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.strongEpi_of_effectiveEpi' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 105
+      }
+    },
+    "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean": {
+      "CategoryTheory.Functor.PreservesEffectiveEpis": {
+        "type": "@CategoryTheory.Functor.PreservesEffectiveEpis : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {D : Type u_4} → [inst_1 : CategoryTheory.Category.{u_3, u_4} D] → CategoryTheory.Functor C D → Prop",
+        "axioms": [],
+        "axioms_output": "'CategoryTheory.Functor.PreservesEffectiveEpis' does not depend on any axioms",
+        "line": 96
+      }
+    },
+    "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean": {
+      "CategoryTheory.Limits.PreservesFiniteLimits": {
+        "type": "@CategoryTheory.Limits.PreservesFiniteLimits : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} → [inst_1 : CategoryTheory.Category.{u_2, u_4} D] → CategoryTheory.Functor C D → Prop",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "axioms_output": "'CategoryTheory.Limits.PreservesFiniteLimits' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "line": 44
+      }
     }
   },
-  "model_category_assumptions": {}
+  "model_category_assumptions": {},
+  "depth_review_base": "81e593fb9"
 }
