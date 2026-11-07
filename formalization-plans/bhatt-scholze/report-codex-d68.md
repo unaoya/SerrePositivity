@@ -177,6 +177,9 @@ SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 - `crystallinePDRawComparison` は未完備自由 δ 環で先に p 除算しても完備結晶模型の剰余が変わらないことを示す。`crystallineRawCoordinateEquiv` は未完備自由 δ 環を基点の座標、頂点差、正の反復 δ 座標に分ける。
 - 鍵付き対象ビルドは成功。一時監査の 16 宣言は標準三公理のみ。余分な座標を分離する同型とその自然性は引き続き証明中。
 
+- `crystallineExtraCechPolynomialIso` は切断付き Čech 余脈体を、各頂点の高次 δ 座標の多項式環と同一視する。`withExtraCoords` はこの余脈体を pd 模型に加えた完備模型。`insertPdFactorModP_isCohomologyIso` は、その包含の mod p のコホモロジー同型を与える。
+- `crystallinePDRawToTarget_isIso_modPrime` と `crystallinePrincipalCompletionUnit_isIso_modPrime` は、未完備模型から結晶側の完備模型への射と主完備化の単位が剰余で同型であることを示す。追加の鍵付き対象ビルドと 15 宣言の一時監査が通り、標準三公理のみを使用した。
+
 ### 今回の登録対象
 
 ```text
@@ -195,9 +198,12 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
 SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion
 SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
 SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraPolynomial
 SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison
+SerrePositivity.BhattScholze.Prismatic.CrystallinePrincipalResidue
 SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates
 SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
 SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity

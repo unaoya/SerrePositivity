@@ -7,6 +7,7 @@ public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
 import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
 import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
@@ -150,23 +151,7 @@ theorem pdRow_contractible (k : Type u) [CommRing k] (r j : ℕ) (hj : 0 < j) :
     Nonempty (Homotopy (𝟙 K) 0) := by
   sorry -- G-A1-14。Bhatt–de Jong の Ω¹ の収縮を copy の基底で作り、外冪・p 完備化へ延長
 
-abbrev extraVariables (k : Type u) [CommRing k] (r n : ℕ) :=
-  MvPolynomial ((Fin r × ℕ) × Fin (n+1)) k
-
-def extraCech (k : Type u) [CommRing k] (r : ℕ) : CosimplicialObject CommRingCat.{u} where
-  obj n := CommRingCat.of (extraVariables k r n.len)
-  map θ := CommRingCat.ofHom (MvPolynomial.rename (fun x => (x.1, θ.toOrderHom x.2))).toRingHom
-  map_id := by sorry -- copy 添字の恒等
-  map_comp := by sorry -- copy 添字の合成
-
-/-- mod p^a の各段で余分な変数を 0 に評価する切断を使う。 -/
-def withExtraCoords (k : Type u) [CommRing k] (r : ℕ) : Cosimplicial.CosimplicialAlgebra k where
-  obj n := by
-    let B := pdRaw k r n.len ⊗[k] extraVariables k r n.len
-    exact Under.mk (CommRingCat.ofHom ((completionUnit p _).hom.comp (algebraMap k B)))
-  map θ := by sorry -- pd 座標は pdModel、δ の高次座標は extraCech の θ による挿入・同一視
-  map_id := by sorry -- 各因子の恒等
-  map_comp := by sorry -- 因子ごとの代入
+-- 高次座標の Čech 模型は本体の CrystallineExtraModel に置く。
 
 /-- δ^a(X) の a≥1 の座標を独立に残した pd envelope。
 自由 δ 環で各 z=X^(i)−X^(0) の φ(z)/p を添加する Cor 2.39 の模型。 -/
@@ -183,8 +168,8 @@ def splitDeltaCoordinates (r : ℕ) :
   sorry -- G-A1-16。差の divided powers は δ⁰ 座標だけ。δ^(a+1)(X) は各 copy の
         -- 通常の多項式変数。これらの像は余面・余退化に自然
 
-def insertPdFactor (k : Type u) [CommRing k] (r : ℕ) : pdModel p k r ⟶ withExtraCoords p k r := by
-  sorry -- 各項で x↦x⊗1 を完備化、全余面・余退化と両立
+-- pd 因子の包含は本体の CrystallineExtraModel に置く。
+
 def pdComplex (k : Type u) [CommRing k] (D : Cosimplicial.CosimplicialAlgebra k) :=
   (AlgebraicTopology.alternatingCofaceMapComplex _).obj (D ⋙ discreteAlgebraModule k)
 
