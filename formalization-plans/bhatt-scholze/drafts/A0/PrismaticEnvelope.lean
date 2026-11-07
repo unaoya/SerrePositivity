@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.5、単位 A0-3a・A0-3c（定義と、変数の場合の存在の主張）。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaBounds
+public import SerrePositivity.BhattScholze.Prismatic.CompletedFreeDeltaFlat
 public import SerrePositivity.BhattScholze.Prismatic.Envelope
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
@@ -58,23 +58,6 @@ H_i(Kos(A; p,d)) ⊗_{A/(p,d)} B/(p,d,x) → H_i(Kos(B; p,d,x)) が同型（設�
 要確認：Koszul 複体のホモロジーの基盤の名前（HA/Koszul*）。 -/
 def IsCompletelyRegularRel {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) : Prop :=
   sorry -- B/(p,d,x) が A/(p,d) 上平坦 ∧ ∀ i, H_i(Kos(A;p,d)) ⊗_{A/(p,d)} B/(p,d,x) ≅ H_i(Kos(B;p,d,x))（自然な射が同型）
-
-/-! ## 存在：変数の場合（Ex 3.14） -/
-
-/-- 概要：Prop 3.13 の存在（Ex 3.14 の場合）：(A{X_S}^∧, (d, Z)) の envelope が存在し、(1) (p,d) 完全平坦、(2) 底変換と可換。
-方針：候補は Z = d·Y とおいた A{(S∖Z) ⊔ Z}^∧（Y の添字は Z）。普遍性は d の正則性と自由 δ 環・完備化の普遍性、平坦性は Lemma 3.7(2)。
-規約：(3)（平坦局所化との両立）は A0 で使わないので主張しない。κ の濃度の評価は別の補題（`cardinal_envelope_le`）。
-使われ方：Constr 4.17（多項式代数の R）、Rem 4.19。 -/
-theorem exists_prismaticEnvelope_of_variables (hP : IsBoundedPrism P) (S : Type u) (Z : Set S) :
-    ∃ (C : Type u) (rc : CommRing C),
-      letI := rc
-      ∃ (Q : OrientedPrism p C) (η : completedFreeDelta P S →+* C),
-      IsPrismaticEnvelope P (completedFreeDeltaStructure P S) (completedFreeDeltaBase P S)
-        (completedFreeDeltaBase_isDeltaHom P S) (variableIdeal P S Z) (Ideal.subset_span (Set.mem_insert _ _)) Q η ∧
-      IsBoundedPrism Q ∧
-      (letI : Algebra A C := (η.comp (completedFreeDeltaBase P S)).toAlgebra
-        IsCompletelyFlat (Ideal.span {(p : A), P.generator}) C) := by
-  sorry -- 模型 A{(S∖Z) ⊔ Z}^∧（Z = dY）。普遍性：existsUnique_deltaAdjoinDivisionHom_of_regular・existsUnique_deltaPDCompletionHom。平坦：Lemma 3.7(2)
 
 /-- A′⊗_A T を A′ の (p,d′) で完備化した H⁰。 -/
 def envelopeBaseChangeRing {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]

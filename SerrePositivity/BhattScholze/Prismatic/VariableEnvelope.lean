@@ -77,11 +77,22 @@ private theorem variableEnvelopeSubstitution_spec :
     (DC).IsDeltaHom DC η ∧ η.comp ι = ι ∧ ∀ s, η (X s) = scaleCoordinate S Z c s (X s) :=
   (exists_variableEnvelopeSubstitution P S Z).choose_spec.1
 
+/-- 変数の置換は基底射を保つ。 -/
+theorem variableEnvelopeSubstitution_base :
+    (variableEnvelopeSubstitution P S Z).comp ι = ι :=
+  (variableEnvelopeSubstitution_spec P S Z).2.1
+
 /-- 基底生成元の像が正則なら、完備自由 δ 環は向き付き prism。 -/
 def completedFreeDeltaPrism (hreg : Function.Injective (c * ·)) : OrientedPrism p C :=
   OrientedPrism.ofDistinguished DC c
     ((completedFreeDeltaBase_isDeltaHom P S).map_isDistinguished P.isDistinguished_generator)
     hreg (completedFreeDelta_complete_p P S) (completedFreeDelta_complete_generator P S)
+
+/-- 候補 prism のイデアルは基底生成元の像で生成される。 -/
+theorem completedFreeDeltaPrism_ideal (hreg : Function.Injective (c * ·)) :
+    (completedFreeDeltaPrism P S hreg).ideal = Ideal.span {c} := by
+  unfold completedFreeDeltaPrism
+  rfl
 
 private theorem variableEnvelopeSubstitution_lift
     {D : Type u} [CommRing D] (QD : OrientedPrism p D) (f : OrientedPrism.Hom P QD)
