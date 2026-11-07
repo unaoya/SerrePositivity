@@ -1,0 +1,484 @@
+number,verdict,status_new,declarations_new,reason,axioms,check
+8.1.0.1,ok,none,,確認済み・なし（探索範囲内）。通常の圏の射を対象とする twisted arrow 圏とその合成を探した。自前の edgewise subdivision は単体的集合上の構成。,,not_found
+8.1.1.1,fix,own,SerrePositivity.InfinityCategories.edgewiseSubdivision @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:35 | SerrePositivity.InfinityCategories.edgewiseWeight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:23 | SerrePositivity.InfinityCategories.TwistedArrow @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:20,edgewise subdivision として定義し TwistedArrow はその略記。,,renamed
+8.1.1.2,fix,own,SerrePositivity.InfinityCategories.edgewiseSimplexEquiv @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseStandardSimplex.lean:32 | SerrePositivity.InfinityCategories.edgewiseWeight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:23,n 単体と (2n+1) 単体の対応。,,renamed
+8.1.1.4,fix,partial,SerrePositivity.InfinityCategories.edgewiseSubdivisionFunctor @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseSubdivision.lean:68,関手性はある。極限・余極限の保存は見つからない。,,renamed
+8.1.1.6,fix,own,SerrePositivity.InfinityCategories.edgewiseLeft @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean:55 | SerrePositivity.InfinityCategories.edgewiseRight @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEndpoints.lean:40 | SerrePositivity.InfinityCategories.twistedArrowProjection @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:23,"λ−・λ+ と (λ−, λ+)。",,renamed
+8.1.1.7,fix,own,SerrePositivity.InfinityCategories.edgewiseDualityIso @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseDuality.lean:59,Tw(C) ≅ Tw(C^op)。,,renamed
+8.1.1.10,ok,none,,確認済み・なし（探索範囲内）。N(Tw C) ≅ Tw(N C) はない（通常の Tw 圏がない）。Mathlib に通常の圏の twisted arrow 圏がなく、SerrePositivity の TwistedArrow は単体集合版のみ。,,not_found
+8.1.1.11,fix,own,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61,"C が ∞ 圏のとき (λ−, λ+) が左 fibration。",,renamed
+8.1.1.12,fix,own,SerrePositivity.InfinityCategories.twistedArrow_quasicategory @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:73,元の単体集合 C が quasicategory なら edgewise subdivision で定義した Tw(C) も quasicategory。,,renamed
+8.1.1.13,fix,own,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61 | SerrePositivity.InfinityCategories.leftFibration_fibration_of_kanComplex @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftKanFibration.lean:52 | SerrePositivity.InfinityCategories.edgewiseSubdivision_kanComplex @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseRightFilling.lean:104,"(λ−,λ+) の Kan fibration 性は左 fibration と leftFibration_fibration_of_kanComplex の組み合わせ（一つの宣言にはなっていない）。Tw(C) の Kan 性は直接ある。",,renamed
+8.1.1.14,ok,none,,確認済み・なし（探索範囲内）。λ−・λ+ の cocartesian fibration 性はない。,,not_found
+8.1.1.15,ok,none,,確認済み・なし（探索範囲内）。inner fibration U に対する相対版はない。F1/TwistedArrow は絶対版（twistedArrowProjection）のみ。,,not_found
+8.1.1.16,ok,none,,確認済み・なし（探索範囲内）。Tw(U) の inner fibration・isofibration 性はない。,,not_found
+8.1.2.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowSourceIdentity_isInitialVertex @ SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean:74,恒等射が {X}×Tw(C) の始対象である場合だけ。一般の同型射の場合はない。,,renamed
+8.1.2.3,fix,own,SerrePositivity.InfinityCategories.edgewiseLeft_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseLeftFilling.lean:42 | SerrePositivity.InfinityCategories.edgewiseRight_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseRightFilling.lean:95,Kan 複体 C で λ−・λ+ が trivial Kan fibration。,,renamed
+8.1.2.4,ok,none,,確認済み・なし（探索範囲内）。λ+ の universally localizing 性はない。,,not_found
+8.1.2.5,ok,none,,確認済み・なし（探索範囲内）。λ+ の弱ホモトピー同値性（一般の単体集合）はない。,,not_found
+8.1.2.6,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.7,fix,partial,SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Source.lean:63,K = Δ0（f が一点）の場合の C_{X/} → {X}×Tw(C) だけ。,,renamed
+8.1.2.10,fix,own,SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/TwistedArrow/SourceInitial.lean:56 | SerrePositivity.InfinityCategories.twistedArrowSource @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Source.lean:27,各頂点 x の coslice から Tw(C) の source ファイバーへの比較 cosliceToTwistedArrowSource x が圏同値。,,renamed
+8.1.2.11,fix,own,SerrePositivity.InfinityCategories.twistedArrowHomSpace @ SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSpace.lean:23 | SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean:27 | SerrePositivity.InfinityCategories.cosliceTwistedHomMap_mono @ SerrePositivity/InfinityCategories/F1/Joins/CosliceTwistedHomComparison.lean:52 | SerrePositivity.InfinityCategories.isSimplicialHomotopyEquivalence_iff_isQCatEquivalence @ SerrePositivity/InfinityCategories/Core/KanHomotopyEquivalence.lean:62,原文の指定した coslice inclusion の両端のファイバーへの制限は cosliceTwistedHomMap。単射性と圏同値を引用し、Kan 複体間の圏同値とホモトピー同値の比較を加えた。,,renamed
+8.1.2.12,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.15,fix,own,SerrePositivity.InfinityCategories.twistedArrowHomSpace @ SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSpace.lean:23 | SerrePositivity.InfinityCategories.twistedArrowHomSpace_kanComplex @ SerrePositivity/InfinityCategories/F1/TwistedArrow/HomSpace.lean:27,"Tw(C) の (X,Y) 上の fiber を Hom 空間として定義。",,renamed
+8.1.2.16,fix,partial,SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowFunctorComparison_isPrecompositionEquivalence @ SerrePositivity/InfinityCategories/HomotopyLimits/TwistedArrowFunctorComparison.lean:52 | SerrePositivity.InfinityCategories.HomotopyLimits.twistedArrowHomInfinity_fullyFaithfulIso @ SerrePositivity/InfinityCategories/HomotopyLimits/FullyFaithfulJointHom.lean:30,充満忠実 ⟹ 比較射が同値、の向きだけ。逆向きはない。,,renamed
+8.1.2.17,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.18,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.19,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.21,unsure,none,,本文が途切れていて主張不明。 twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.22,unsure,none,,twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.2.23,unsure,none,,本文が途切れていて主張不明。 twisted・coslice・transport・arrow を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.1.3.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
+8.1.3.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.11,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.3.12,fix,partial,CategoryTheory.Span.SpanBicat @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151 | CategoryTheory.Span.SpanBicat.instBicategory @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:364,Mathlib の SpanBicat の双対で標的の1圏由来の cospan 双圏を表せる。Tw(D) 上の F から原文の strictly unital lax functor と合成制約を作る宣言は未確認。,,renamed
+8.1.3.14,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）（SerrePositivity の Bicategory は Mathlib の Cat 双圏の利用のみ）。,,not_found
+8.1.3.15,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
+8.1.4.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.3,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.4.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.5.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.5.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.6.1,ok,none,,"確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（KST の markedSpans は Fun(Λ²₀,X) の span 図式の ∞ 圏で、Tw(Δⁿ) 型の Cospan(C) ではない）。",,not_found
+8.1.6.5,fix,partial,CategoryTheory.Span.SpanBicat @ Mathlib/CategoryTheory/Bicategory/Span/Basic.lean:151,Mathlib の SpanBicat の仮定（引き戻しの存在と W の底変換安定性）が 1 圏での双対版。∞ 圏版はない。,,renamed
+8.1.6.7,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.6.8,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.6.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。∞-bicategory も方針で避けている。,,not_found
+8.1.6.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.8,fix,partial,CategoryTheory.MorphismProperty.HasOfPostcompProperty @ Mathlib/CategoryTheory/MorphismProperty/Composition.lean:370,Mathlib の HasOfPostcompProperty が 1 圏の MorphismProperty での類似（単体的集合の辺の集まりとしてはない）。,,renamed
+8.1.7.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.13,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.7.14,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.8.2,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
+8.1.8.4,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
+8.1.8.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない（Duskin nerve は Mathlib に TODO のみ）。,,not_found
+8.1.9.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.9.5,fix,partial,SerrePositivity.InfinityCategories.CocartesianEdgeLift @ SerrePositivity/InfinityCategories/F1/Transport/Objects.lean:24 | SerrePositivity.InfinityCategories.cartesianFibrations @ SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean:24,辺ごとの「U-cocartesian lift を持つ」は、指定始点からの lift のデータ CocartesianEdgeLift p e x（その Nonempty が条件）で表せる。cartesian 側は cartesianFibrations の定義の中に全辺について内蔵されるだけで、辺ごとの述語・構造はない。名前の付いた述語「admits lifts」もない。,,renamed
+8.1.9.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.9.10,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.1,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.3,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.5,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.6,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.9,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.1.10.12,ok,none,,確認済み・なし（探索範囲内）。Cospan 構成（Tw 経由の単体的集合）は SerrePositivity にも Mathlib にもない。,,not_found
+8.2.0.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowProjection_leftFibration @ SerrePositivity/InfinityCategories/F1/TwistedArrow/LeftFibration.lean:61 | SerrePositivity.InfinityCategories.twistedArrowProjection @ SerrePositivity/InfinityCategories/F1/TwistedArrow/Projection.lean:23,一般の coupling（left fibration C→C₋^op×C₊）の名前付き定義はない。典型例 Tw(C)→C^op×C が left fibration であること（twisted arrow coupling）だけがある。LeftFibration と ⊗ で書けば表せる。,,renamed
+8.2.0.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.0.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.1.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない（Tw の場合の類似：TwistedArrow/SourceInitial、leftFibration_exists_initial_of_covariantRepresentation）。,,not_found
+8.2.1.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.1.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.1.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.1.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.1.10,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.2,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.10,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.11,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.2.13,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.3.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.3,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.4,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.5,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.4.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.5.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean:73,"coupling の形ではない。G=λ_G の場合の「F が G の左随伴なら F は corepresent する」向きに当たる、随伴から対象ごとの Hom(Fx,−)≃Hom(x,G−)（FunctorIso）だけがある。逆向き（Hom の同型から随伴）を固定した F について述べる主張はない。",,renamed
+8.2.5.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69,"coupling は経由しない。λ=λ_G（Hom(−,G−) の twisted arrow による coupling）の場合の同値「各 x で Hom(x,G−) が余表現可能 ⇔ G が左随伴を持つ」が exists_leftAdjoint_iff_covariantHom_representable。一般の coupling の corepresentable 性の定義はない。",,renamed
+8.2.6.1,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない（F2/Presentable/Duality の Pair* は Pr^L≃(Pr^R)^op 用の随伴の対で、coupling 一般ではない）。,,not_found
+8.2.6.6,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.6.7,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.6.8,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.2.6.9,ok,none,,確認済み・なし（探索範囲内）。coupling（C→C₋^op×C₊）の概念がない。,,not_found
+8.3.0.1,fix,mathlib,CategoryTheory.Coyoneda.fullyFaithful @ Mathlib/CategoryTheory/Yoneda.lean:199,1 圏の coyoneda の充満忠実性。,,renamed
+8.3.1.1,fix,mathlib,CategoryTheory.coyonedaEquiv @ Mathlib/CategoryTheory/Yoneda.lean:999 | CategoryTheory.yonedaEquiv @ Mathlib/CategoryTheory/Yoneda.lean:722,強い形の米田（評価の全単射）。,,renamed
+8.3.1.2,fix,own,SerrePositivity.InfinityCategories.SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,𝒮 = Kan 複体の coherent nerve（宇宙 u の小さい空間）。,,renamed
+8.3.1.3,fix,own,SerrePositivity.InfinityCategories.yonedaPresheafEvaluation_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean:40 | SerrePositivity.InfinityCategories.representablePresheafInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:49,∞ 版の米田（表現可能前層からの写像空間 ≃ 値）。Kerodon の共変形でなく前層（C^op）側で、C は小さい quasicategory。,,renamed
+8.3.1.6,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_exists_initial_of_covariantRepresentation @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:32 | SerrePositivity.InfinityCategories.covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean:24,余表現可能なら unstraightening の全空間に始対象がある方向だけ。η が余表現を与える条件の同値は見当たらない。,,renamed
+8.3.1.7,ok,none,,確認済み・なし（探索範囲内）。本文が空で内容不明（補題）。,,not_found
+8.3.1.8,ok,none,,確認済み・なし（探索範囲内）。余表現可能関手の左 Kan 拡張が T(C) で余表現される、の形の主張は見当たらない。,,not_found
+8.3.1.9,ok,none,,確認済み・なし（探索範囲内）。同上（左 Kan 拡張と余表現可能性）。,,not_found
+8.3.2.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowHomInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:28 | CategoryTheory.Profunctor @ Mathlib/CategoryTheory/Profunctor/Basic.lean:53,一般の profunctor の名前付き定義はない（C^op×C→𝒮 の Hom 関手のみ）。Mathlib の Profunctor は 1 圏。,,renamed
+8.3.2.6,ok,none,,確認済み・なし（探索範囲内）。κ-小さい版の profunctor 構成なし。,,not_found
+8.3.2.7,ok,none,,確認済み・なし（探索範囲内）。普遍頂点（universal vertex）の定義なし。表現は FunctorIso で与える（Mathlib の 1 圏版は Functor.RepresentableBy）。,,not_found
+8.3.2.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.IsRepresentableSmallSpaceFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean:37 | SerrePositivity.InfinityCategories.F2.Presentable.IsCorepresentableSmallSpaceFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/CorepresentabilityEquivalence.lean:28,関手単体の表現可能性はあるが profunctor の（各変数ごとの）表現可能性の定義はない。,,renamed
+8.3.2.17,ok,none,,確認済み・なし（探索範囲内）。corepresentable profunctor から充満忠実性を判定する主張なし。,,not_found
+8.3.2.18,ok,none,,確認済み・なし（探索範囲内）。balanced profunctor の定義なし。,,not_found
+8.3.2.20,ok,none,,確認済み・なし（探索範囲内）。balanced profunctor の特徴づけなし。,,not_found
+8.3.2.21,ok,none,,"確認済み・なし（探索範囲内）。Fun^corep(C,𝒮)×C→𝒮 の評価の主張なし。",,not_found
+8.3.3.1,fix,partial,SerrePositivity.InfinityCategories.twistedArrowHomInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:28,Tw(C)→C^op×C の分類図式として Hom 関手を具体的に構成。「Hom-functor である」という抽象的な述語はない。,,renamed
+8.3.3.2,fix,partial,SerrePositivity.InfinityCategories.twistedArrowHomInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:28 | SerrePositivity.InfinityCategories.homInfinityJointEvaluation @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:33,小さい quasicategory での存在（具体構成）のみ。局所小との同値・一意性はない。,,renamed
+8.3.3.5,fix,partial,SerrePositivity.InfinityCategories.SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,κ-小さい空間の代わりに宇宙で大きさを扱う（SpaceInfinity.{u}）。,,renamed
+8.3.3.7,fix,own,SerrePositivity.InfinityCategories.twistedArrowHomInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:28 | SerrePositivity.InfinityCategories.homInfinityJointEvaluation @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:33,"Hom(−,−) の記法に当たる具体的な関手。",,renamed
+8.3.3.8,ok,none,,確認済み・なし（探索範囲内）。Hom 関手が balanced profunctor であること（balanced の概念なし）。,,not_found
+8.3.3.9,fix,partial,SerrePositivity.InfinityCategories.yonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:39 | SerrePositivity.InfinityCategories.coyonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/MappingSpaces/HomInfinityBifunctor.lean:77,具体的な米田写像（Hom 関手の curry）はあるが「covariant Yoneda embedding である」という述語はない。,,renamed
+8.3.3.12,fix,partial,SerrePositivity.InfinityCategories.SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,κ 版は宇宙の持ち上げで代用。,,renamed
+8.3.3.13,fix,partial,SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean:72 | SerrePositivity.InfinityCategories.F2.Presentable.coyonedaInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Presentable/CoYonedaFullyFaithful.lean:74 | SerrePositivity.InfinityCategories.yonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean:39 | SerrePositivity.InfinityCategories.coyonedaInfinityMap @ SerrePositivity/InfinityCategories/F1/MappingSpaces/HomInfinityBifunctor.lean:77,小さい quasicategory で構成された共変・反変の米田埋め込みは充満忠実。原文の局所小な任意の∞圏と指定された米田埋め込みの一般形は未確認。,,renamed
+8.3.3.14,fix,partial,SerrePositivity.InfinityCategories.isLimitCone_iff_covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableLimitCharacterization.lean:22 | SerrePositivity.InfinityCategories.yonedaInfinityMap_isLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaLimits.lean:22,小さい quasicategory で米田埋め込みは極限を保存。余米田の反映は逆圏側の別の主張。局所小一般の米田埋め込みについての両方向を直接は確認できない。,,renamed
+8.3.3.15,fix,partial,SerrePositivity.InfinityCategories.isLimitCone_iff_covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/RepresentableLimitCharacterization.lean:22 | SerrePositivity.InfinityCategories.yonedaInfinityMap_isLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaLimits.lean:22,κ-小さい空間版は宇宙で代用；主張の内容は 8.3.3.14 と同じ。,,renamed
+8.3.3.17,fix,partial,SerrePositivity.InfinityCategories.yonedaInfinityMap_isFullyFaithful @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityFullyFaithful.lean:72 | SerrePositivity.InfinityCategories.presheafInfinity_hasLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafAllSmallLimits.lean:30 | SerrePositivity.InfinityCategories.presheafInfinity_hasColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafPointwiseColimits.lean:34 | SerrePositivity.InfinityCategories.yonedaInfinityMap_isLimit @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaLimits.lean:22,小さい C を前層 ∞ 圏へ埋め込み、前層圏は小極限・小余極限を持ち、Yoneda は極限を保つ。κ を固定した一般の C の形の主張としてはない。,,renamed
+8.3.4.1,ok,none,,"確認済み・なし（探索範囲内）。表現可能 profunctor の分類（Fun(D,C) との同値）なし。",,not_found
+8.3.4.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69 | SerrePositivity.InfinityCategories.covariantRepresentableInfinity @ SerrePositivity/InfinityCategories/F1/Yoneda/CovariantRepresentableInfinity.lean:24,"Hom(x,G−) が余表現可能、という対象ごとの条件（FunctorIso）はあるが、profunctor が G で表現されるという定義はない。",,renamed
+8.3.4.4,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69 | SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_of_contravariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/OppositeAdjointExistence.lean:74,8.3.4.2 の双対；対象ごとの表現条件のみ。,,renamed
+8.3.4.9,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionFromHomRepresentation.lean:69 | SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso @ SerrePositivity/InfinityCategories/F2/Presentable/AdjunctionHomFamily.lean:73,"G の左随伴の存在 ⇔ 各 Hom(x,G−) が余表現可能（随伴から Hom の自然同型）。profunctor 版の形ではない。",,renamed
+8.3.4.10,ok,none,,確認済み・なし（探索範囲内）。profunctor の圏と Yoneda の合成に関する主張なし。,,not_found
+8.3.4.11,fix,own,SerrePositivity.InfinityCategories.SpaceInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:103,𝒮 の記法（8.3.1.2 と同じ）。,,renamed
+8.3.4.12,ok,none,,確認済み・なし（探索範囲内）。β が K を G で表現する、の定義（Tw 上の自然変換）なし（Mathlib の 1 圏版 Functor.toProfunctor は G が定める profunctor のみ）。,,not_found
+8.3.4.15,ok,none,,確認済み・なし（探索範囲内）。表現の同値条件なし。,,not_found
+8.3.4.16,ok,none,,確認済み・なし（探索範囲内）。corepresentable profunctor の β 版の定義なし。,,not_found
+8.3.4.19,ok,none,,確認済み・なし（探索範囲内）。なし。,,not_found
+8.3.4.20,ok,none,,確認済み・なし（探索範囲内）。表現可能 profunctor を Kan 拡張として捉える主張なし。,,not_found
+8.3.4.21,ok,none,,確認済み・なし（探索範囲内）。表現可能 profunctor の普遍性なし。,,not_found
+8.3.5.1,ok,none,,確認済み・なし（探索範囲内）。Hom 関手の認識（Tw 上の普遍元による特徴づけ）はなし。Hom 関手自体は twistedArrowHomInfinity（8.3.3）で構成のみ。,,not_found
+8.3.5.5,ok,none,,確認済み・なし（探索範囲内）。F1/TwistedArrow（SourceInitial・PointedDisplay）に Tw の恒等点が始対象であることはあるが、一般の profunctor の Hom 関手としての認識はない。Hom 関手の認識（Tw 上の普遍元による特徴づけ）はなし。Hom 関手自体は twistedArrowHomInfinity（8.3.3）で構成のみ。,,not_found
+8.3.5.6,ok,none,,確認済み・なし（探索範囲内）。Hom 関手の認識（Tw 上の普遍元による特徴づけ）はなし。Hom 関手自体は twistedArrowHomInfinity（8.3.3）で構成のみ。,,not_found
+8.3.5.7,ok,none,,確認済み・なし（探索範囲内）。Hom 関手の認識（Tw 上の普遍元による特徴づけ）はなし。Hom 関手自体は twistedArrowHomInfinity（8.3.3）で構成のみ。,,not_found
+8.3.5.8,ok,none,,確認済み・なし（探索範囲内）。Hom 関手の認識（Tw 上の普遍元による特徴づけ）はなし。Hom 関手自体は twistedArrowHomInfinity（8.3.3）で構成のみ。,,not_found
+8.3.6.1,fix,partial,SerrePositivity.InfinityCategories.representableHomCoherent @ SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomFunctor.lean:77,局所 Kan 単体圏の豊穣 Hom を一変数（x を固定）で coherent nerve 上の関手にする構成のみ。二変数 C^op×C→Kan の形はなし。,,renamed
+8.3.6.2,fix,partial,SerrePositivity.InfinityCategories.representableHomCoherentIso @ SerrePositivity/InfinityCategories/F1/Coherent/RepresentableHomInfinity.lean:47 | SerrePositivity.InfinityCategories.edgewiseEnrichedInfinityMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedComparison.lean:78,豊穣 Hom の coherent 実現と共変 Hom の同型（一変数版）。二変数の Hom 関手であることの述べはなし。,,renamed
+8.3.6.5,ok,none,,確認済み・なし（探索範囲内）。線形順序 J に添字づけた構成はなし。,,not_found
+8.3.6.7,ok,none,,確認済み・なし（探索範囲内）。(8.57) の圏的引き戻し正方形はなし。,,not_found
+8.3.7.1,ok,none,,確認済み・なし（探索範囲内）。oriented fiber product（comma）自体の定義が SerrePositivity にない。oriented fiber product の Hom 関手はなし。,,not_found
+8.3.7.3,ok,none,,確認済み・なし（探索範囲内）。oriented fiber product の Hom 関手はなし。,,not_found
+8.3.7.4,ok,none,,確認済み・なし（探索範囲内）。oriented fiber product の Hom 関手はなし。,,not_found
+8.3.7.6,ok,none,,確認済み・なし（探索範囲内）。oriented fiber product の Hom 関手はなし。,,not_found
+8.3.7.7,ok,none,,確認済み・なし（探索範囲内）。oriented fiber product の Hom 関手はなし。,,not_found
+8.4.0.1,ok,none,,確認済み・なし（探索範囲内）。一般の cocompletion の定義（普遍性）はなし。,,not_found
+8.4.0.3,fix,partial,SerrePositivity.InfinityCategories.presheafInfinity_hasColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafPointwiseColimits.lean:34 | SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:44 | SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_canonicalColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:71,小前層の余極限と米田に沿う左 Kan 拡張の存在はある。原文の前層圏について、余連続関手の∞圏の制限同値までは未確認。,,renamed
+8.4.1.1,fix,mathlib,CategoryTheory.Functor.IsDense @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:48 | CategoryTheory.Functor.isDense_iff_fullyFaithful_restrictedULiftYoneda @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:159,Mathlib は関手の稠密性を pointwise 左 Kan 延長で定義し、制限 Yoneda の充満忠実性と同値を示す（full 関手で）。,,renamed
+8.4.1.5,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.canonicalColimits_of_identityRestriction_bijective @ SerrePositivity/InfinityCategories/F2/Presentable/DenseCanonicalColimits.lean:26,∞ 圏の稠密部分圏の定義そのものはなし。恒等関手の標準余錐が余極限になる判定のみ。,,renamed
+8.4.1.8,fix,partial,CategoryTheory.Functor.isDense_iff_fullyFaithful_restrictedULiftYoneda @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:159 | CategoryTheory.Functor.IsDense.of_fullyFaithful_restrictedULiftYoneda @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:131,Mathlib に 1 圏版（F が full のとき F.IsDense ↔ 制限 Yoneda D ⥤ Cᵒᵖ ⥤ Type が充満忠実）。∞ 圏版（𝒮 値の制限 Yoneda）は SerrePositivity にもなし。一段目の注：稠密 ⇔ 制限 Yoneda 充満忠実（∞ 版）はなし。Mathlib に 1 圏版。,,renamed
+8.4.1.9,ok,none,,確認済み・なし（探索範囲内）。1 圏の稠密性と nerve の ∞ 稠密性の比較はなし（Mathlib の 1 圏側のみ）。,,not_found
+8.4.1.15,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.canonicalColimits_of_identityRestriction_bijective @ SerrePositivity/InfinityCategories/F2/Presentable/DenseCanonicalColimits.lean:26 | CategoryTheory.Functor.IsDense @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:48,∞ の dense 関手の定義はなし（自前は判定補題のみ、Mathlib は 1 圏の定義）。,,renamed
+8.4.1.22,fix,partial,CategoryTheory.Functor.isDense_iff_fullyFaithful_restrictedULiftYoneda @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:159 | CategoryTheory.Functor.IsDense.of_fullyFaithful_restrictedULiftYoneda @ Mathlib/CategoryTheory/Functor/KanExtension/Dense.lean:131,"Prop 8.4.1.22（一般の図式 F が dense ⇔ D → Fun(C^op,𝒮) が充満忠実）の 1 圏版が Mathlib にある（F が full の仮定つき）。∞ 圏版はなし。",,renamed
+8.4.1.23,unsure,none,,再確認済み。 dense・presentation・density・cocone を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.2.1,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:23 | SerrePositivity.InfinityCategories.F2.Ind.presheafDensityPresentation @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:28,各前層を表現可能前層の余極限として提示する密度定理がある。原文の dense functor の条件に使う指定スライス図式との比較は別途要確認。,,renamed
+8.4.2.2,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:23,表現可能前層の部分圏が dense であることの直接の述べはなし（元の圏の図式で表す形のみ）。,,renamed
+8.4.2.4,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.presheafDensityCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/PresheafDensity.lean:23,κ の代わりに宇宙 u の小さい空間で述べた版のみ。,,renamed
+8.4.2.5,fix,own,SerrePositivity.InfinityCategories.yonedaPresheafEvaluation_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Yoneda/YonedaPresheafEvaluation.lean:40,Yoneda の補題（評価が表現される）を対象ごとの写像空間の同値で述べる。profunctor としての述べはなし。,,renamed
+8.4.2.7,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Ind/ElementsYonedaSliceEquivalence.lean:43,前層の元の圏と Yoneda comma の同値はある。右 fibration 一般の同値条件の一覧はなし。,,renamed
+8.4.2.8,unsure,none,,presentation・density・presheaf・yoneda を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.3.1,ok,none,,確認済み・なし（探索範囲内）。κ-cocompletion の定義はなし。,,not_found
+8.4.3.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:44,κ 版はなし。全小余極限の版の左 Kan 延長存在のみ。,,renamed
+8.4.3.4,unsure,none,,presheaf・yoneda・kan・uncountable を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.3.5,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_canonicalColimits @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:71 | SerrePositivity.InfinityCategories.F2.Presentable.sigmaLeftKanExtension_preservesSmallColimits_iff @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean:26,余極限保存 ⇔ 表現可能から左 Kan 延長、の同値は前層では片側のみ。P_Σ 版の判定がある。,,renamed
+8.4.3.8,unsure,none,,presheaf・yoneda・kan・corollary を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.3.9,unsure,none,,presheaf・yoneda・kan・corollary を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.4.1,ok,none,,確認済み・なし（探索範囲内）。P(C) への Yoneda 左 Kan 延長の存在（presheaf_exists_yonedaLeftKan）はあるが、𝒮 の普遍性の同値としての述べはない。𝒮（および 𝒮^{≤n}）の余連続関手の普遍性はなし。,,not_found
+8.4.4.3,ok,none,,確認済み・なし（探索範囲内）。𝒮（および 𝒮^{≤n}）の余連続関手の普遍性はなし。,,not_found
+8.4.4.5,ok,none,,確認済み・なし（探索範囲内）。𝒮（および 𝒮^{≤n}）の余連続関手の普遍性はなし。,,not_found
+8.4.5.1,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:44 | SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso @ SerrePositivity/InfinityCategories/F2/Presentable/PresheafYonedaLeftKan.lean:63,Yoneda 左 Kan 延長の存在のみ。右随伴（制限 Yoneda）との随伴の述べはなし。,,renamed
+8.4.5.2,fix,partial,SerrePositivity.InfinityCategories.F2.Presentable.sigmaLeftKanExtension_preservesSmallColimits_iff @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaLeftKanAllColimitPreservation.lean:26,全前層版の同値（余極限保存 ⇔ 右随伴 ⇔ 左 Kan 延長）はなし。P_Σ 版の一部のみ。,,renamed
+8.4.5.3,unsure,none,,cocontinuous・adjoint・colimit・kan を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.5.4,unsure,none,,cocontinuous・adjoint・colimit・kan を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.4.5.6,ok,none,,確認済み・なし（探索範囲内）。反射的局所化の局所対象の判定（reflective_isLocal_iff_unit_local・reflective_isLocal_iff_invertedEdges・reflective_isLocal_iff_localObject）はあるが、一般の局所化 F による Hom の同値での判定はない。局所化と W-局所対象の Hom による判定の直接の述べは見当たらない（F2/Presentable/Localization に局所対象の理論はある）。,,not_found
+8.4.6.1,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の定義はなし。,,not_found
+8.4.6.3,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestrictionEquivalence @ SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean:60 | SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean:62 | SerrePositivity.InfinityCategories.F2.Idempotent.idemYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean:46,特定の 𝕂（κ-filtered=Ind、有限余積=P_Σ、冪等=冪等完備化）のみ。一般の 𝕂 はなし（HTT 5.3.6 相当なし）。,,renamed
+8.4.6.6,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.6.8,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean:52 | SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Presentable/SigmaRestrictionEquivalence.lean:62,"特定の 𝕂 の場合のみ。𝕂 = κ-filtered で Yoneda C → Ind_κ(C) の制限 Fun^κ(Ind_κ C, D) ≃ Fun(C,D)（HTT 5.3.5.10）、𝕂 = sifted で C が有限余積をもつとき P_Σ(C)（HTT 5.5.8.15）。一般の 𝕂 と Construction 8.4.6.6 の構成、𝕂-cocompletion の述語はなし。一段目の注：一般の 𝕂-cocompletion の構成と性質はなし。",,renamed
+8.4.6.9,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.6.10,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.6.11,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.6.12,ok,none,,確認済み・なし（探索範囲内）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.6.13,ok,none,,確認済み・なし（探索範囲内）。Ind・P_Σ にも C の 𝕂-余完備性 ⇔ h の左随伴の述べはない（IndReflector は P(C) → Ind(C) の反射）。一般の 𝕂-cocompletion の構成と性質はなし。,,not_found
+8.4.7.1,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.2,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.3,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.5,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.7,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.8,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.9,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.10,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.12,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.7.14,ok,none,,確認済み・なし（探索範囲内）。cocompletion の関手性（QC 上の関手）はなし。,,not_found
+8.4.8.1,ok,none,,確認済み・なし（探索範囲内）。tiny・completely compact などの別名でも SerrePositivity・Mathlib になし。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.3,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.6,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.7,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.8,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.9,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.8.10,ok,none,,確認済み・なし（探索範囲内）。atomic 対象・weakly dense・cocompletion の認識はなし。,,not_found
+8.4.9.1,fix,partial,SerrePositivity.InfinityCategories.F2.Ind.presheafElementsYonedaSliceComparison_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Ind/ElementsYonedaSliceEquivalence.lean:43,𝕂 = 全小単体集合、Ĉ = 前層圏の場合の引き戻しの部分だけ。前層 F の元の圏 → Yoneda comma C ×_{P(C)} P(C)_{/F} の比較が同値（名前空間は F2.Ind）。Ê の cocompletion 性と一般の 𝕂 はなし。一段目の注：cocompletion と右 fibration（前層圏の slice との同値）はなし。,,renamed
+8.4.9.6,ok,none,,確認済み・なし（探索範囲内）。cocompletion と右 fibration（前層圏の slice との同値）はなし。,,not_found
+8.4.9.7,ok,none,,確認済み・なし（探索範囲内）。cocompletion と右 fibration（前層圏の slice との同値）はなし。,,not_found
+8.5.0.2,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplit @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:45 | SerrePositivity.InfinityCategories.F2.Idempotent.walkingSection_retraction @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:66,Ret を Karoubi(WalkingIdem) として実現（2 対象、i・r で i∘r=e）。模型は同型だが定義の形は異なる。,,renamed
+8.5.1.1,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf @ SerrePositivity/InfinityCategories/Core/Retracts.lean:50 | SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction @ SerrePositivity/InfinityCategories/Core/Retracts.lean:21,Mathlib の CategoryTheory.Retract は 1 圏版。,,renamed
+8.5.1.3,ok,none,,"確認済み・なし（探索範囲内）。Fun(Δ¹,C) の retract とホモトピー圏の矢の retract の同値はなし（arrow_retract_lift は端点の retract から持ち上げる別の補題）。",,not_found
+8.5.1.7,fix,partial,CategoryTheory.MorphismProperty.IsStableUnderRetracts.isomorphisms @ Mathlib/CategoryTheory/MorphismProperty/Retract.lean:53,1 圏（Mathlib）の版のみ。∞ 圏の矢の retract の述べはなし。,,renamed
+8.5.1.8,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.canonicalCocones_isColimit @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCanonicalColimits.lean:34,冪等完備化の像から左 Kan 延長される場合のみ（任意の full subcategory 版・右 Kan 版なし）。,,renamed
+8.5.1.9,ok,none,,確認済み・なし（探索範囲内）。U-相対の点ごとの版はなし。,,not_found
+8.5.1.10,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.1.11,ok,none,,確認済み・なし（探索範囲内）。U-余極限（相対）版はなし。,,not_found
+8.5.1.12,fix,own,SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_functorRetraction @ SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean:24,余極限余錐の関手 ∞ 圏内の retract は余極限。,,renamed
+8.5.1.13,ok,none,,確認済み・なし（探索範囲内）。cocartesian 射の retract はなし。,,not_found
+8.5.1.14,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.PreservesKappaFilteredColimits.of_retract @ SerrePositivity/InfinityCategories/F2/Compact/ColimitRetractions.lean:33,κ-filtered 余極限の保存に限る（一般の K なし）。,,renamed
+8.5.1.15,ok,none,,確認済み・なし（探索範囲内）。n-truncated 対象の retract 閉性はなし。,,not_found
+8.5.1.18,unsure,none,,再確認済み。 splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.1.20,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.1.22,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle @ SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean:24 | SerrePositivity.InfinityCategories.F2.Idempotent.isVertexRetractOf_iff_retractionTriangle @ SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean:99 | SerrePositivity.InfinityCategories.F2.Idempotent.WeakRetractionDiagram @ SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:39,RetractionTriangle は i、r と長辺が恒等辺である合成二単体を保持する。原文の retract を与える三角形に一致。,,renamed
+8.5.1.27,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplit @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:45 | SerrePositivity.InfinityCategories.F2.Idempotent.SplitShape @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:79,Ret の nerve = SplitShape。,,renamed
+8.5.1.30,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.weakComparison_innerAnodyne @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakInnerAnodyne.lean:37 | SerrePositivity.InfinityCategories.F2.Idempotent.WeakShape @ SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:25,R（長辺を潰した Δ²）= WeakShape から SplitShape への包含が inner anodyne。,,renamed
+8.5.1.31,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.weakComparisonRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:22,WeakShape から Ret の nerve への三角形の比較に沿う制限が自明 Kan ファイブレーション。WeakShape は長辺を一点へ潰した模型。,,renamed
+8.5.1.33,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.weakComparisonRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:22 | SerrePositivity.InfinityCategories.F2.Idempotent.weakDiagram_extension_exists @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:37,retraction diagram への制限が trivial Kan fibration（8.5.1.31 と同じ宣言で述べる）。,,renamed
+8.5.1.35,ok,none,,"確認済み・なし（探索範囲内）。filtered 余極限と Fun(N(Ret),−) の可換性はなし。",,not_found
+8.5.1.36,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.missingFaceComplex_innerAnodyne @ SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean:22,疎な horn（指定面を除く面の合併）が inner anodyne。原典の条件の書き方と対応を細部まで照合していない。,,renamed
+8.5.2.1,ok,mathlib,CategoryTheory.IsIdempotentComplete @ Mathlib/CategoryTheory/Idempotents/Basic.lean:54,Mathlib は p ≫ p = p を条件として直接書く（独立の構造体はなし）。,,found
+8.5.2.4,fix,partial,CategoryTheory.Idempotents.isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent @ Mathlib/CategoryTheory/Idempotents/Basic.lean:64,Mathlib の定理は冪等完備性と等化子の存在の同値。証明は等化子側を使うが、原文は与えた個々の分裂の二本の射が等化子・余等化子を与える主張。,,renamed
+8.5.2.5,fix,partial,CategoryTheory.Idempotents.isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent @ Mathlib/CategoryTheory/Idempotents/Basic.lean:64,圏全体の版（全冪等が分裂 ⇔ 等化子が存在）のみ。個々の冪等についての同値・余等化子版はなし。,,renamed
+8.5.2.6,fix,mathlib,CategoryTheory.Idempotents.isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent @ Mathlib/CategoryTheory/Idempotents/Basic.lean:64 | CategoryTheory.Idempotents.isIdempotentComplete_iff_opposite @ Mathlib/CategoryTheory/Idempotents/Basic.lean:181,等化子の存在から冪等完備性が従う iff に、余等化子側のための反対圏との iff を加えた。,,renamed
+8.5.2.7,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.WalkingIdem @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:24 | SerrePositivity.InfinityCategories.F2.Idempotent.walkingIdempotent_idem @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:37,SingleObj (WithOne PUnit) による模型。,,renamed
+8.5.3.1,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.CoherentIdempotent @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:33 | SerrePositivity.InfinityCategories.F2.Idempotent.IdemShape @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:76,IdemShape は WalkingIdem の nerve。CoherentIdempotent はそこから C への単体写像。,,renamed
+8.5.3.5,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:36,制限が厳密に一致する延長として定義（原典と同じ）。,,renamed
+8.5.3.8,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.splittingCanonicalCocones_isColimit @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingCanonicalColimits.lean:44 | SerrePositivity.InfinityCategories.F2.Idempotent.splittingDiagramCone_isLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean:41,左 Kan 延長（標準余錐が余極限）を明示。右 Kan 延長の形の述べは見当たらない（極限錐の補題はある）。,,renamed
+8.5.3.10,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.strongSplittingRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingRestriction.lean:33 | SerrePositivity.InfinityCategories.F2.Idempotent.strongSplittingRestriction_trivialKanFibration_of_complete @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingRestriction.lean:42,本質的像の記述は冪等完備の場合の trivial Kan fibration として述べる。,,renamed
+8.5.3.11,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.nonemptyStrongSplitting_iff_hasLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean:30 | SerrePositivity.InfinityCategories.F2.Idempotent.nonemptyStrongSplitting_iff_hasColimit @ SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean:36,Ret の nerve 上への厳密な延長の存在と、元の Idem 図式の極限・余極限の存在の iff がそれぞれある。,,renamed
+8.5.3.12,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting.postcomposeCocone_isColimit @ SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:57 | SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting.postcomposeCone_isLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean:53,分裂を与えたときの形で述べる（8.5.3.11 と合わせて原典の主張）。,,renamed
+8.5.4.1,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:40,全ての coherent Idem 図式について StrongSplitting の存在を要求する。,,renamed
+8.5.4.3,ok,none,,確認済み・なし（探索範囲内）。局所 n-truncated かつ有限極限 ⇒ 冪等完備、はなし。,,not_found
+8.5.4.10,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.fullSubcomplex_isIdempotentComplete @ SerrePositivity/InfinityCategories/Core/Idempotent/FullSubcomplexSplitting.lean:57 | SerrePositivity.InfinityCategories.F2.Idempotent.retract_iso_in_complete_fullSubcomplex @ SerrePositivity/InfinityCategories/F2/Idempotent/CompleteSubcomplexRetracts.lean:26,仮定は「retract で閉じる」（原典は同型を除いて）。同型で閉じた部分圏なら同じ。,,renamed
+8.5.4.11,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_iff_hasLimits @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean:35 | SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_iff_hasColimits @ SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean:41,冪等完備性と全 Idem 図式の極限の存在、同じく余極限の存在の iff がそれぞれある。,,renamed
+8.5.4.13,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_iff_of_equivalence @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessEquivalence.lean:34,Mathlib に 1 圏版 isIdempotentComplete_iff_of_equivalence。,,renamed
+8.5.4.14,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.functor_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean:20,"任意の単体集合 K について、C の冪等完備性から内部 Hom Fun(K,C) の冪等完備性が従う。",,renamed
+8.5.4.15,ok,none,,確認済み・なし（探索範囲内）。Spine[Z] → N(Idem) はなし。,,not_found
+8.5.4.19,ok,none,,確認済み・なし（探索範囲内）。Spine[Z] → N(Idem) はない。近いのは Idem → 強い分裂添字の包含の cofinal 性（idemInclusion_isRightCofinal・idemInclusion_isLeftCofinal、F1B/Idempotent）。,,not_found
+8.5.4.20,ok,none,,確認済み・なし（探索範囲内）。列（余）完備 ⇒ 冪等完備、はなし。代わりに HasSmallLimits.isIdempotentComplete（小極限 ⇒ 冪等完備）がある。,,not_found
+8.5.4.25,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.functor_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Idempotent/FunctorComplete.lean:20 | SerrePositivity.InfinityCategories.F2.Idempotent.sliceOver_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Idempotent/SliceComplete.lean:19 | SerrePositivity.InfinityCategories.F2.Idempotent.sliceUnder_isIdempotentComplete @ SerrePositivity/InfinityCategories/F2/Idempotent/SliceComplete.lean:24,"「特に」の部分の特別な場合だけ。Fun(K,C)（K=Δ¹ で C →×_C C）と slice・coslice の冪等完備性。一般の oriented fiber product は定義がなく、冪等元の分裂の成分ごとの判定もなし。一段目の注：oriented fiber product の冪等完備性はなし。",,renamed
+8.5.4.26,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_leftFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean:31 | SerrePositivity.InfinityCategories.F2.Idempotent.isIdempotentComplete_of_rightFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/FibrationComplete.lean:21,証明は持ち上げ（原典は輸送表現経由）。,,renamed
+8.5.4.27,ok,none,,確認済み・なし（探索範囲内）。ホモトピー fiber product の版はなし。,,not_found
+8.5.4.28,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.4.29,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.5.1,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion @ SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean:29,標的の冪等完備性、関手の充満忠実性、標的の全頂点が像の retract であることの三条件。,,renamed
+8.5.5.3,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.pre_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean:32 | SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.equivalence_unique @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionUniqueness.lean:21,(a)⇒普遍性（制限が同値）の向きのみ。逆向きの同値の述べはなし。,,renamed
+8.5.5.4,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.idemYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean:46,完備化は一つ上の宇宙（Idem C : SSet.{u+1}）。,,renamed
+8.5.5.5,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.idemYoneda_isIdempotentCompletion @ SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean:46 | SerrePositivity.InfinityCategories.F2.Idempotent.Idem @ SerrePositivity/InfinityCategories/F1/Idempotent/PresheafClosure.lean:51,前層 ∞ 圏の中の表現可能前層の retract 全体として構成。,,renamed
+8.5.5.6,fix,partial,SerrePositivity.InfinityCategories.F2.Compact.idemPresheaf_isKappaCompact @ SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean:25 | SerrePositivity.InfinityCategories.F2.Compact.idemToCompactPresheaves_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean:54,κ-small 値の前層での版はなし。宇宙 u の版と κ-compact 性の関連補題のみ。,,renamed
+8.5.5.7,ok,none,,確認済み・なし（探索範囲内）。Idem C は宇宙 u+1 の模型で、κ-small 性の保存の述べはない（Mathlib の Karoubi にもなし）。局所/本質的 κ-small 性の保存はなし。,,not_found
+8.5.5.8,ok,none,,確認済み・なし（探索範囲内）。QC^ic ↪ QC の左随伴はなし。,,not_found
+8.5.5.9,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.5.10,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.6.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。SP 全体の Morita は DifferentialGraded/Morita・InfinityCategories/Derived/DG*Morita*（dg 加群の Morita）のみ。 Morita 同値の定義なし。冪等完備化（IsIdempotentCompletion）に沿う前合成が冪等完備な標的で同値になることは証明済み（Morita 同値の典型例）。DifferentialGraded/Morita は DG の別概念。,,not_found
+8.5.6.10,ok,none,,確認済み・なし（探索範囲内）。左 fibration の同値類の全単射なし。,,not_found
+8.5.6.11,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion @ SerrePositivity/InfinityCategories/F1/Idempotent/Completion.lean:29 | SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.pre_isQCatEquivalence @ SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean:32,IsIdempotentCompletion は「充満忠実＋全対象が像の retract＋標的冪等完備」の定義。標的が冪等完備のときの「(a)(b)⇒前合成同値」のみ。Morita 同値の定義・逆向きなし。,,renamed
+8.5.6.12,ok,none,,確認済み・なし（探索範囲内）。Morita 同値なし。圏同値との比較なし。,,not_found
+8.5.6.13,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.op @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionOpposite.lean:24 | SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.op_general @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionOppositeGeneral.lean:40,冪等完備化の反転のみ（(1)⇔(2) の特別な場合）。𝒮 値前層での判定 (3) なし。,,renamed
+8.5.6.14,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。cartesian fibration・Morita の組み合わせは grep で見当たらず。 cartesian fibration の Morita 同値判定なし。,,not_found
+8.5.6.15,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.pullback_rightFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionBaseChange.lean:25,冪等完備化（inner fibration 仮定付き）の右 fibration に沿う底変換のみ。一般の Morita 同値なし。,,renamed
+8.5.6.16,ok,none,,確認済み・なし（探索範囲内）。Morita 同値と right cofinal の関係なし。,,not_found
+8.5.6.17,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.isRightCofinal @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCofinal.lean:20 | SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.isLeftCofinal @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionLeftCofinal.lean:36,冪等完備化（inner fibration）の場合のみ right cofinal（HTT 5.1.4.6 として）。一般の Morita 同値なし。,,renamed
+8.5.6.18,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.pullback_rightFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionBaseChange.lean:25 | SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.sliceOver @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionSlice.lean:20,主張そのもの。ただし底の関手に inner fibration の仮定を追加（全部分複体の包含で使う形）。,,renamed
+8.5.6.20,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion.map_isTerminalVertex @ SerrePositivity/InfinityCategories/F2/Idempotent/CompletionTerminal.lean:23 | SerrePositivity.InfinityCategories.F2.Idempotent.idemInclusion_isRightCofinal @ SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean:55,冪等完備化が終対象を保つこと、Idem→Split の right cofinal 性のみ。「終対象 ⇔ right cofinal な N(Idem)→C」の同値なし。,,renamed
+8.5.7.1,ok,mathlib,SSet.S1 @ Mathlib/AlgebraicTopology/SimplicialSet/StdSimplex.lean:813,Mathlib の S1 は Δ¹ の両端を同一視した余等化子＝Δ¹/∂Δ¹。SP には基点付きの Spectra/PointedSimplicialSet/Spheres.lean の circle も。,,found
+8.5.7.3,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.CoherentIdempotent @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:33 | SerrePositivity.InfinityCategories.F2.Idempotent.CoherentIdempotent.endomorphism @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:53 | SerrePositivity.InfinityCategories.F2.Idempotent.WalkingIdem @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:24,"N(Idem)→C の図式（CoherentIdempotent）と自己射の取り出しはある。「e が冪等」という述語と End^idm（Fun(Δ¹/∂Δ¹,C) の部分圏）はなし。",,renamed
+8.5.7.4,ok,none,,"確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。End^idm（自己準同型の ∞ 圏）の定義なし。近いのは effectiveIdempotents（F2/Idempotent/EffectiveIdempotents、Fun(Idem,X) の有効図式の部分複体）だけ。 End^idm への制限の左ホモトピー逆なし（既存判定どおり）。",,not_found
+8.5.7.5,ok,none,,確認済み・なし（探索範囲内）。π₀ の全単射なし。,,not_found
+8.5.7.8,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.WeakRetractionDiagram @ SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean:39 | SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting @ SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean:36,ホモトピー圏での分裂を表す弱い retract 図式（Δ² の長辺をつぶした形）と、Split への強い分裂はある。自己射に対する「split idempotent」の述語はなし。,,renamed
+8.5.7.10,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.weakDiagram_strongSplitting_exists @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:46 | SerrePositivity.InfinityCategories.F2.Idempotent.weakDiagram_extension_exists @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:37,弱い retract 図式が Split 図式に延長されること（HTT 4.4.5.6 として）。自己射 e を固定した形・逆向きの言明はない。,,renamed
+8.5.7.11,ok,none,,確認済み・なし（探索範囲内）。Spine[ℤ] とその被覆写像なし。,,not_found
+8.5.7.12,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.nonemptyStrongSplitting_iff_hasLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean:30 | SerrePositivity.InfinityCategories.F2.Idempotent.nonemptyStrongSplitting_iff_hasColimit @ SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean:36,分裂 ⇔ N(Idem) 図式の極限（余極限）の存在。Spine[ℤ] 図式 T_e での判定ではない（HTT 4.4.5.14〜15 の形）。,,renamed
+8.5.7.14,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。weakly split に当たる定義なし（WeakRetractionDiagram・StrongSplitting は別概念）。 weakly split（T_e の極限・余極限条件）の定義なし。,,not_found
+8.5.7.15,fix,own,SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplit @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:45 | SerrePositivity.InfinityCategories.F2.Idempotent.SplitShape @ SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean:79,Ret を Karoubi(WalkingIdem) として実装（2 対象・r∘i=id の圏と同型）。,,renamed
+8.5.7.16,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.splittingDiagramCone_isLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean:41 | SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting.cone_isLimit @ SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean:30 | SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplitting.cocone_isColimit @ SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean:34,Split 図式の錐・余錐が極限・余極限であること。Spine[ℤ]^◁ 経由の形ではない。,,renamed
+8.5.7.17,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。weakly split の定義がないためなし。,,not_found
+8.5.7.19,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.weakComparisonRestriction_trivialKanFibration @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:22,"Fun(Split,C)→Fun(弱 retract 図式,C) が trivial Kan fibration であることは証明済み。End^w（weakly split 自己射）への制限の左ホモトピー逆ではない。",,renamed
+8.5.8.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。近いのは CoherentIdempotent.endomorphism_idem（Core/Idempotent/Coherent：coherent 図式から来る射が hC で冪等）だけで、任意の自己射の homotopy idempotent 性の定義はない。DifferentialGraded/Perfect の homotopyIdempotent は dg 加群の別物。 homotopy idempotent の定義なし（HTT 4.4.5.20 相当なし）。,,not_found
+8.5.8.4,fix,partial,SerrePositivity.InfinityCategories.F2.Idempotent.weakDiagram_strongSplitting_exists @ SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean:46,(1)⇒(2)（ホモトピー圏で分裂 ⇒ coherent に分裂）に当たる弱 retract 図式の延長のみ。(3) との同値なし。,,renamed
+8.5.8.5,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.8.6,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.8.7,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.8.9,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Mathlib Data/Dyadic・Tactic/Inclusion/Extension/IntervalDyadicReal は二進有理数のみ。 二進同相写像なし。Mathlib Data/Dyadic は二進有理数のみ。,,not_found
+8.5.8.12,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。thompson は SP・Mathlib とも grep で 0 件。 Thompson 群なし（SP・Mathlib とも）。,,not_found
+8.5.8.13,unsure,none,,splitting・karoubi・idempotent・retract を検索。該当宣言は見つからず、特殊例までの対応は未確定。,,not_found
+8.5.8.14,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。,,not_found
+8.5.8.15,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。,,not_found
+8.5.9.4,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。IdemShape（nerve WalkingIdem）の骨格 N_{≤n} 版は grep で見当たらず。 部分冪等 N_{≤n}(Idem) なし。,,not_found
+8.5.9.6,ok,none,,確認済み・なし（探索範囲内）。部分冪等 N_{≤n}(Idem) なし。,,not_found
+8.5.9.8,ok,none,,確認済み・なし（探索範囲内）。部分冪等 N_{≤n}(Idem) なし。,,not_found
+8.5.9.9,ok,none,,"確認済み・なし（探索範囲内）。Fun(N(Idem),−) とフィルター余極限の交換なし。",,not_found
+8.5.9.10,ok,none,,確認済み・なし（探索範囲内）。冪等完備 ∞ 圏のフィルター余極限の冪等完備性なし（同値での保存 isIdempotentComplete_iff_of_equivalence はある）。,,not_found
+8.5.9.11,ok,none,,確認済み・なし（探索範囲内）。部分冪等 N_{≤n}(Idem) なし。,,not_found
+8.5.9.13,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。IdemShape の骨格版なし。 部分冪等 N_{≤n}(Idem) なし。,,not_found
+8.5.10.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.3,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.4,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.5,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.6,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.7,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.9,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.11,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.12,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.15,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.16,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.5.10.18,ok,none,,確認済み・なし（探索範囲内）。Thompson 亜群 Dy なし。,,not_found
+8.6.1.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.5,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.6,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.7,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.8,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。近い写像は twistedArrowFunctorComparison（HomotopyLimits/TwistedArrowFunctorComparison：Tw(C)→Tw(D)×_{D^op×D}(C^op×C)、充満忠実のとき前合成同値）だが、E^op×_{C^op}Tw(C) への写像の自明 Kan 性はない。 共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.9,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.10,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。Mathlib の Grothendieck 構成はあるが、Tw との共役比較はない。 圏の要素の圏の共役なし。Mathlib の Grothendieck 構成はあるが共役比較なし。,,not_found
+8.6.1.11,ok,none,,確認済み・なし（探索範囲内）。重み付き神経の共役なし。,,not_found
+8.6.1.12,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.1.13,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.1,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.2,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.3,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.4,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.6,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.7,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.8,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.2.9,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.1,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.5,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.6,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.8,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.9,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.11,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.14,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.15,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.17,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.3.18,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.7,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.8,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.9,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.10,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.12,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.13,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.15,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.16,ok,none,,"確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。C×_{Fun(Δ1,C)}Fun(Δ1,E) の構成は見当たらず。 共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。",,not_found
+8.6.4.17,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.19,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.20,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.21,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.22,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.4.23,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.2,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.3,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.6,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.8,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.9,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.11,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.12,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.13,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.14,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.15,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.16,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.18,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.5.19,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.1,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.2,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.3,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.5,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.7,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。λ: Tw(E)→E^op×_{C^op}Tw(C)×_C E は twistedArrowFunctorComparison U と同じ写像だが、inner fibration での left fibration 性と本定義はない。 共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.12,ok,none,,確認済み・なし（探索範囲内）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.6.14,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。共役・双対 fibration なし（Tw はあるが Ch 8.6 の構成なし）。,,not_found
+8.6.7.1,ok,none,,確認済み・なし（探索範囲内）。E^≍（Hom を Tw で置き換えた単体的圏）なし。,,not_found
+8.6.7.2,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。E^≍ の構成は見当たらず。,,not_found
+8.6.7.4,fix,partial,SerrePositivity.InfinityCategories.CatInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:24 | SerrePositivity.InfinityCategories.QCat @ SerrePositivity/InfinityCategories/F1/Categories/QCatSimplicial.lean:69,通常の単体的圏 QCat とその coherent nerve は確認。原文の別の写像空間を使った QCat≍ とその nerve は未確認。,,renamed
+8.6.7.5,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。QCat^≍ は見当たらず（QCat・CatInfinity はある）。 QC^≍ なし。,,not_found
+8.6.7.6,ok,none,,確認済み・なし（探索範囲内）。QCat^≍ 上の反転自己同型なし（SSet.opFunctor は単体的集合の反転のみ）。,,not_found
+8.6.7.7,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。kanObjectOpFunctor（F1/KanModels/KanOppositeCoefficients）は Kan 対象の 1 圏的な反転関手で、QC 上の ∞ 関手 σ ではない。 ∞ 圏としての反転関手 σ: QC→QC なし。,,not_found
+8.6.7.9,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。kanObjectOpFunctor は 1 圏的なもので、QC 上の σ はない。 ∞ 圏としての反転関手 σ: QC→QC なし。,,not_found
+8.6.7.11,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。∞ 圏としての反転関手 σ: QC→QC なし。,,not_found
+8.6.7.12,ok,none,,確認済み・なし（探索範囲内）。再確認済み（KST・HomotopicalAlgebra・CategoryTheory・DifferentialGraded・Archive・Mathlib も検索）。∞ 圏としての反転関手 σ: QC→QC なし。,,not_found
+8.6.8.1,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.3,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし（right fibration と 𝒮 値前層の対応 smallRightUnstraightening（F1/Yoneda/PresheafUnstraightening）は 5.6 側の別の項目。Cat∞ 値の straightening は休止中で、QC 値の分類はなし）。,,not_found
+8.6.8.4,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし（本文の取り出しが切れている）。,,not_found
+8.6.8.5,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.11,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.12,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.13,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.15,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし（KST/LocalizingInvariants の cocartesian・分母付き span の亜群化 fiberTransport_groupoidCompletion_isEquivalence は別の主張）。,,not_found
+8.6.8.16,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.17,fix,partial,SerrePositivity.InfinityCategories.CatInfinity @ SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean:24,QC 自体は CatInfinity（QCat の単体的脈体）。LAdj・RAdj などの部分 ∞ 圏はなし。,,renamed
+8.6.8.19,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし。,,not_found
+8.6.8.22,ok,none,,確認済み・なし（探索範囲内）。cartesian fibration の反変輸送表現（QC 値）なし（Mathlib にも LAdj^op ≃ RAdj の形の圏同値はなし。通常の圏の mate（conjugateEquiv）があるのみ）。,,not_found
+8.6.9.1,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし。,,not_found
+8.6.9.2,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし（本文の取り出しが切れている）。,,not_found
+8.6.9.3,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし。,,not_found
+8.6.9.5,ok,partial,CategoryTheory.Limits.coend @ Mathlib/CategoryTheory/Limits/Shapes/End.lean:289,Mathlib は通常の圏の coend（multicoequalizer）のみ。Tw(C) 上の余極限としての ∞ 圏の coend はなし。,,found
+8.6.9.6,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし（本文の取り出しが切れている）。,,not_found
+8.6.9.9,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし。,,not_found
+8.6.9.11,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし。,,not_found
+8.6.9.12,ok,none,,確認済み・なし（探索範囲内）。∞ 圏の coend・輸送表現による公式なし。,,not_found
+8.7.0.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.0.2,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.4,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.5,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.11,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし（Mathlib の Karoubi・自前の Karoubi 関連は通常の圏・triangulated の idempotent completion で、fiberwise 版ではない）。,,not_found
+8.7.1.12,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし（本文の取り出しが切れている）。,,not_found
+8.7.1.13,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.14,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.17,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.18,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.19,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.20,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.1.21,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.2.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.2.2,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.2.3,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.2.5,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.3.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.3.2,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.3.3,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし（本文の取り出しが切れている）。,,not_found
+8.7.3.4,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.4.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.4.2,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.4.3,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.4.4,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.5.1,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.6,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.7,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.8,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.9,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.11,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.12,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.13,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.14,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.16,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.17,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.19,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.20,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.22,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.23,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.24,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.26,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.27,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.28,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.29,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.5.30,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.6.1,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.6.2,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.6.3,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.6.4,ok,none,,確認済み・なし（探索範囲内）。flat inner fibration・exponentiable なし。,,not_found
+8.7.7.1,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.2,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.3,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.4,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.6,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.7,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
+8.7.7.8,ok,none,,確認済み・なし（探索範囲内）。fiberwise cocompletion なし。,,not_found
