@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.1・§10、単位 A6-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectoidBase
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- W9-III-08（致命・配置）：現行の CompletedTensor は IntegralExistence 経由で消去対象の Inputs/PerfectoidizationInterface を import する。2a の取り込み後に
@@ -57,16 +58,6 @@ open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.Der
 variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
 
 /-! ## 台の圏 -/
-
-/-- 概要：p 完備な階数 1 の付値環（試験対象）：整域・付値環・Krull 次元 1・p 進完備。
-方針：界面の `ArcOutside` と同じ条件を構造にまとめる。
-規約：Type u。
-使われ方：arc 被覆の定義。 -/
-structure IsRankOneCompleteValuationRing (V : Type u) [CommRing V] : Prop where
-  isDomain : IsDomain V
-  valuationRing : @ValuationRing V _ isDomain
-  krullDim_eq_one : ringKrullDim V = 1
-  adicComplete : IsAdicComplete (Ideal.span {(p : V)}) V
 
 /-- 導来 p 完備性と濃度を併記する、環の圏上の対象条件。 -/
 def affComplProperty : ObjectProperty CommRingCat.{u} := fun S =>
@@ -339,68 +330,6 @@ W9-II-16：A5-4 の `rootClosure_isSemiperfectoid` は `hR : IsIntegralPerfectoi
 distinguished 元を使う）。全 p 完備環 S にそのまま当てることはできない（S = ℤ_p：基底なしの根添加 C_∞ は ℤ_p へ retraction をもち、perfectoid 環から
 ℤ_p への環準同型はないので semiperfectoid でない）。そこで前段 G-A6-11 を置く。 -/
 
-/-- R₀ の完備化前の表示。X₀ = p と X_{n+1}^p = X_n を課す。 -/
-abbrev arcRootPolynomial := MvPolynomial ℕ (ULift.{u} (PadicInt p))
-
-def arcRootIdeal : Ideal (arcRootPolynomial.{u} p) :=
-  Ideal.span (insert (MvPolynomial.X 0 - (p : arcRootPolynomial.{u} p))
-    (Set.range (fun n : ℕ => MvPolynomial.X (n + 1) ^ p - MvPolynomial.X n)))
-
-abbrev arcRootQuotient := arcRootPolynomial.{u} p ⧸ arcRootIdeal p
-
-/-- 概要：G-A6-11：perfectoid 基底 R₀ := ℤ_p[p^{1/p^∞}]^∧（Type u）。
-方針：ℤ_p[X_n : n]/(X_0 − p, X_{n+1}^p − X_n) の p 進完備化。perfectoid 性はこの表示の p 完備化について示す。
-規約：固定。E3 の R とは無関係（全 p 完備環を対象とするため）。
-使われ方：`baseExtension`。 -/
-abbrev perfectoidBaseRing : Type u :=
-  (completionRing p (CommRingCat.of (arcRootQuotient.{u} p)) : Type u)
-
-/-- R₀ の指定した根。X₀ の像は p。 -/
-def perfectoidBaseRoot (n : ℕ) : perfectoidBaseRing.{u} p :=
-  (completionUnit p (CommRingCat.of (arcRootQuotient.{u} p))).hom
-    (Ideal.Quotient.mk (arcRootIdeal p) (MvPolynomial.X n))
-
-instance : Algebra (PadicInt p) (perfectoidBaseRing.{u} p) :=
-  ((completionUnit p (CommRingCat.of (arcRootQuotient.{u} p))).hom.comp
-    ((Ideal.Quotient.mk (arcRootIdeal p)).comp
-      ((MvPolynomial.C : ULift.{u} (PadicInt p) →+* arcRootPolynomial.{u} p).comp
-        ULift.ringEquiv.symm.toRingHom))).toAlgebra
-
-theorem perfectoidBaseRing_isPerfectoid : IsIntegralPerfectoid (perfectoidBaseRing.{u} p) p := by
-  sorry -- 根の塔の p 完備化を a6-design §8.8 の完全 prism の商と同定する
-
-/-- 導来 p 完備な離散環の標準 ℤ_p 作用。完備性の証拠を明示して使う。 -/
-def arcPadicIntMap (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : PadicInt p →+* S := by
-  sorry -- 整数の単位射を completion_existsUnique で延ばす。ℤ の導来 p 完備化は ℤ_p
-
-/-- 完備化する直前の S ⊗_{ℤ_p} R₀。 -/
-def arcBaseTensor (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : CommRingCat.{u} := by
-  letI := (arcPadicIntMap p S hS).toAlgebra
-  exact CommRingCat.of (S ⊗[PadicInt p] perfectoidBaseRing.{u} p)
-
-/-- 概要：G-A6-11：前段 S₀ := completionRing(S ⊗_{ℤ_p} R₀)（p 完備な R₀ 代数）と単位 S → S₀。
-方針：`completionRing`（H⁰(LΛ_p)、既存）と `Algebra.TensorProduct`。
-規約：#S₀ ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ（`baseExtension_cardinal_le`）。
-使われ方：`exists_perfectoid_arcCover`。 -/
-abbrev baseExtension (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : Type u :=
-  (completionRing p (arcBaseTensor p S hS) : Type u)
-
-instance (S : Type u) [CommRing S] (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    Algebra (perfectoidBaseRing.{u} p) (baseExtension p S hS) := by
-  letI := (arcPadicIntMap p S hS).toAlgebra
-  exact ((completionUnit p (arcBaseTensor p S hS)).hom.comp
-    (Algebra.TensorProduct.includeRight : perfectoidBaseRing.{u} p →ₐ[PadicInt p]
-      S ⊗[PadicInt p] perfectoidBaseRing.{u} p).toRingHom).toAlgebra
-
-def baseExtensionUnit (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : S →+* baseExtension p S hS := by
-  letI := (arcPadicIntMap p S hS).toAlgebra
-  exact (completionUnit p (arcBaseTensor p S hS)).hom.comp
-    (Algebra.TensorProduct.includeLeftRingHom : S →+* S ⊗[PadicInt p] perfectoidBaseRing.{u} p)
-
 theorem baseExtension_cardinal_le (S : Type u) [CommRing S]
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     Cardinal.mk (baseExtension p S hS) ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
@@ -428,26 +357,6 @@ theorem exists_perfectoid_valuation_extension (V : CommRingCat.{u})
       IsIntegralPerfectoid W p ∧ e.FaithfullyFlat ∧
       ∃ ρ : ℕ → W, ρ 0 = (p : W) ∧ ∀ n, ρ (n + 1) ^ p = ρ n := by
   sorry -- 絶対整閉包で両立根を選んで p 完備化する。付値環の局所拡大は忠実平坦
-
-theorem perfectoidBaseRing_toValuationExtension (W : CommRingCat.{u})
-    (hW : IsRankOneCompleteValuationRing p W) (ρ : ℕ → W)
-    (hzero : ρ 0 = (p : W)) (hpow : ∀ n, ρ (n + 1) ^ p = ρ n) :
-    ∃ b : perfectoidBaseRing.{u} p →+* W, ∀ n, b (perfectoidBaseRoot p n) = ρ n := by
-  sorry -- X_n ↦ ρ n は表示の二種類の関係を殺し、W の p 完備性で R₀ に延びる
-
-/-- 概要：S → V（試験付値環）は S₀ → W に延びる：W を G-A6-3 で取り、R₀ → W と S → V → W から S ⊗_{ℤ_p} R₀ → W、W は p 完備なので S₀ → W。
-方針：`completionRing` の普遍性（p 完備な標的）。
-規約：—
-使われ方：`exists_perfectoid_arcCover`。 -/
-theorem exists_baseExtension_lift_of_map (S : Type u) [CommRing S]
-    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
-    (V W : CommRingCat.{u}) (hV : IsRankOneCompleteValuationRing p V)
-    (hW : IsRankOneCompleteValuationRing p W) (k : S →+* V) (e : V →+* W)
-    (he : e.FaithfullyFlat) (b : perfectoidBaseRing.{u} p →+* W) :
-    ∃ l : baseExtension p S hS →+* W,
-      l.comp (baseExtensionUnit p S hS) = e.comp k ∧
-      l.comp (algebraMap (perfectoidBaseRing.{u} p) (baseExtension p S hS)) = b := by
-  sorry -- 二つの脚は ℤ_p 上一致するのでテンソルから射を作り、completion_existsUnique で延ばす
 
 /-- W と b を G-A6-3 で選んだ後、同じ e に沿って S → V を延長する。 -/
 theorem exists_baseExtension_lift (S : Type u) [CommRing S]
