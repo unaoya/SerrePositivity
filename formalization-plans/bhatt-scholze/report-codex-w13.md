@@ -70,3 +70,17 @@ $S=R$、$g=(p^n)_n$、$B=R[1/g]$ とする。$R$ は被約、$g$ は非零因子
 - 段 4 は `drafts/A8/AlmostPurityConnectivity.lean` と `drafts/A8/IntegralDiscreteness.lean` で古典的な入力の接続を確認する。80–200 行程度を見込む。Cor 8.12、A7、完備 filtered 余極限の perfd による保存を使う組み立てと E3 の `integral` は drafts に置く。
 
 ⑤b と ⑥ の作業差分を照合し、この報告と上の配置候補に重複は見つからなかった。本体、入口、監査にこの段で登録するモジュールはない。停止点 0 で承認を待つ。
+
+## 段 1 の中断記録
+
+停止点 0 の承認を含む `main` `e0d04cb21` を `math/bs-impl` に取り込んだ（`a1b817442`）。⑤b・⑥ の作業差分に予定ファイルの重複は見つからなかった。
+
+### 比較の試行
+
+- draft の `moduleHeartVertex` の底は `moduleFreeCochainResolution`。この解像度は正次数が零で、各項は自由、標準の増大射は擬同型。したがって `BoundedAboveDerivedModel` に同じ解像度を指定し、`boundedAboveDerivedTensorModelIso` を適用する候補を作った。両側の完備化は同じ `derivedComplexCompletionFunctor`。導来同値の余単位を合成して、draft の `completedModuleTensor` の離散な二入力での値へ比較する。
+- 射の比較には `boundedAboveDerivedTensorModelIso_naturality` と `moduleFreeCochainAugmentationNat` を使う候補を作った。次に、環の標準因子写像をこの比較に通して、単位との両立を確認する。比較候補は `/tmp/bsw13-tensor-probe.lean` にある。
+- 根基不変性と、perfectoid 化の核が加群を零化するときの完備テンソル消滅の候補を `/tmp/bsw13-kernel-probe.lean` に置いた。後者は一般商の Lemma 10.3 と `completedTensor_isZero_of_algebraModule` を組み合わせる。
+
+### 検証の状態
+
+共有ビルド鍵を取得できず、いずれの試行も型検査開始前に終了コード 75 で待ち時間切れになった。確認中に Kerodon の確認レーンと K の地図レーンが鍵を使用しており、最後の待機終了時は Kerodon の確認レーンが使用中だった。比較の成否は未判定。段 1 は未検収で、次は鍵を取得して二つの比較候補を確認する。現時点のコミット対象はこの報告だけで、本体への登録対象はない。
