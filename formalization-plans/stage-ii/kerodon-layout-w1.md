@@ -1,6 +1,6 @@
 # Codex 指示書 KL-W1：∞ 圏のディレクトリを Kerodon の構成に合わせる（下書き）
 
-作成：2026-11-07（段階 II の調整役）。状態：**下書き**。開始は Kerodon の対応表の確認（`research/kerodon-coverage/codex-review.md`）が全章終わり、main に入ってから。宛先：Codex（新しいチャット）。検収：調整役。
+作成：2026-11-07（段階 II の調整役）。状態：**段 0・段 1 を開始（11-07 夜、ユーザー）**。段 2 以降は、Kerodon の対応表の確認（`research/kerodon-coverage/codex-review.md`）が全章終わり、main に入ってから（§5）。宛先：Codex（新しいチャット）。検収：調整役。
 決定（11-07、ユーザー。調整役の推奨どおり）：時期・層・名前空間・細かさ・Kerodon にないものの置き場・範囲の六点（§0）。追加の決定として、Kerodon の Tag を宣言に付ける（§3）。
 
 ## 0. 目的と決定
@@ -49,3 +49,14 @@
 3. 段 3 の移動は一つの枝で、こまめにコミットする。main の作業木では作業しない。取り込みは調整役。
 4. ビルドは、束の途中は触ったモジュールだけ（`with_build_lock.sh` を通す）。下流ビルドと verify は調整役の合図で一回。
 5. 報告は段ごとに：件数、ビルド・保存比較・監査の結果、判断が要る点。
+
+## 5. 追記（2026-11-07 夜、調整役）：段 0・段 1 を先に始める
+
+ユーザー決定：Kerodon の確認の完了を待たずに、**段 0 と段 1 を今から始める**（③ ∞ 供給と BS の ∞ 側を待たせる時間を縮めるため）。段 0・段 1 は報告だけの段で、Lean のファイルは動かさない。
+
+1. **worktree と枝**：main の最新から `../SerrePositivity-kerodon-layout`（`LEAN_Projects.nosync/` の下）、枝 `refactor/kerodon-layout`。書いてよいのは `research/kerodon-coverage/` の下（`item-tags.csv` など）と、`formalization-plans/stage-ii/` の下の計画と報告のファイル（`kerodon-layout-w1-report.md`、割り当て表 `kerodon-layout-assignment.csv` など）だけ。`SerrePositivity/` の Lean と `scripts/` は段 3 まで触らない。
+2. **段 0**：§2 のとおり。Kerodon の Subsection のページ（取得済みの目次 `research/kerodon-coverage/toc.md` の Tag）から、項目ごとの Tag を取り直す。抜き取りで 50 件ほど照合する。
+3. **段 1 の材料**：Kerodon の確認は進行中（Ch 1 は `research/kerodon-coverage/review/ch1.csv`、Ch 2 以降はまだ）。割り当て表は、確認済みの章は `review/ch<N>.csv` の宣言名を、まだの章は元の `items.csv` の宣言名と、ファイルの docstring の Kerodon の引用（9,711 件、`citations-summary.md`）を使って作る。**確認が済んでいない章の割り当てには印を付ける**（`basis` 列に `review` か `items`）。確認が全章終わったら、段 2 の前に割り当て表を一度だけ見直す。
+4. **段 1 の報告**：§2 の (a)〜(e) と (d′)。特に、層の順序より移動を優先する方針（§0 の層・範囲の行）で、逆向きの依存の解き方と、外から移す候補の依存の閉包を具体的に書く。依存の閉包が大きすぎるもの・K 理論の本体まで引きずるものは、候補として挙げて止まる。
+5. **ビルド**：段 0・段 1 ではビルドしない。依存の調べは import 行の静的な解析（`scripts/refactor/` の道具、または自前の Python）で行う。
+6. **停止点**：停止点 0 は報告して承認を待たずに段 1 に進んでよい。**停止点 1 で必ず止まる**（調整役とユーザーが木と割り当てを確かめる）。
