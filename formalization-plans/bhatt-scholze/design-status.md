@@ -35,7 +35,13 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 8. 調整：`../coordination.md`（暦・待ち条件）、`../infinity-codex-g1.md`・`g2.md`（∞ の段 G）。
 9. 勉強ノート：`exposition/ja/bs/`（章＝原典の節）。
 
-### 0.3 現在地（11-05）
+### 0.3 現在地（11-07 の更新。下の 11-05 の記述は経緯として残す）
+
+- **段階 II のレーン（11-07）**：⑤a BS 実装（BS-DOC1 完了 → BS-W11 進行中：A-2・B-2 は main に入った）、⑤b BS-D68（段 1 進行中）、⑥ スキーム論（BS17 の経路：2a′・2b・2d の一部は main に入った）。設計は調整役。
+- **終わりの条件は sorry 0**（恒久の引用は 0 件）。D68 は直接証明、D69 は大きい模型で関手同型、結晶 site は最小限で作る（a1-design §10・§10.5・§11）。
+- 本体に入った BS 段階 II のモジュールは `scripts/audit_bhatt_scholze_stage2.lean` で監査する。
+
+### 0.3′ 現在地（11-05）
 
 - **段 0（設計と骨組み）完了**：drafts 51 本・約 12,900 行。A0〜A9 に `True` の仮置きはない。Codex の drafts 作業 BS-D1〜D6 と S4 の篩比較（`report-codex-s4-sieve.md`）は終了、指摘 D1-01〜D5-07 は設計側で解決（§5）。
 - **段 1（基盤を待たない古典的単位）**：BS-W10 は**終了**（作業 A：CompletedTensor から E3 依存を外し有限直積を直接証明、main cc67ea88e。作業 B：Lemma 10.12、main 4019014a1）。**次は BS-W11**（`bhatt-scholze-codex-w11.md`：根添加、Lemma 8.8 の前段と試験付値環、有限エタールの perfectoid 性、arc site の 1 圏部分）。**開始は ∞ F-2（名前空間の付け替え）の取り込みと改名表の配布の後**（調整役が知らせる）。開始時に改名表で W11 と drafts の名前を追従してから出す。
@@ -78,7 +84,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 - `drafts/Sheaves/SpaceValued` の `is0Truncated_iff_pointwise`・`kanDiscretePresheafInclusion` は BS 側の証明（段 2）。
 - M14・M15 の担当（E2 レーンか BS か）は、A4・A5 の中身を書く段階で調整役と決める。
 - 中身の段階への持ち越し：A6/ArcSite の docstring の `FinitaryPreExtensive` → `FinitaryExtensive`（D5-06）、A0・A1 の旧 Mathlib 名 `CosimplicialObject.alternatingCofaceMapComplex`（D5-05）、A4 の `cAlgH0Algebra` → 基盤の `cAlgH0Ring`。
-- 監査の許可一覧（恒久の引用 3：D68 の結晶入力、G-A6-1a・1b の arc 降下の引用。暫定 2）は段 3 で。
+- ~~監査の許可一覧（恒久の引用 3：D68 の結晶入力、G-A6-1a・1b の arc 降下の引用。暫定 2）は段 3 で。~~ **11-05 夜に撤回**：段階 II の終わりの条件は sorry 0 で、許可一覧に sorry は入れない（三件とも証明する）。
 
 ## 1. 状態
 

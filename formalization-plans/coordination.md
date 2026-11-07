@@ -13,9 +13,9 @@
 | Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`・`research/kerodon-review-a`（並行するときは -b・-c） | `research/kerodon-coverage/codex-review.md` | 進行中（段 1′） |
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | 未定 | `stage-ii/kerodon-layout-w1.md` | Kerodon の確認の後 |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
-| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BM18 の経路 B | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-doc1.md` | 開始してよい |
-| ⑤b BS 実装 | Codex | D68 の直接証明（A1-3） | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d68.md` | 開始してよい |
-| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 開始してよい |
+| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BM18 の経路 B | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-doc1.md`・`bhatt-scholze-codex-w11.md` | BS-DOC1 完了（11-07）、BS-W11 進行中（A-2・B-2 は main） |
+| ⑤b BS 実装 | Codex | D68 の直接証明（A1-3） | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d68.md` | 段 1 進行中（11-07） |
+| ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
 後から足すもの（②④⑦、K 理論）と開く条件は計画の §5.1。
@@ -41,7 +41,7 @@
 
 | 時期 | 内容 |
 | --- | --- |
-| 11-07〜 | Kerodon の対応表の確認（Codex、`research/kerodon-coverage/codex-review.md`）。⑤⑥は開始してよい |
+| 11-07 | Kerodon の確認（段 1′）。⑤a・⑤b・⑥ 開始。取り込みのたびに調整役がルートのビルド（キャッシュで数分）と監査 |
 | 確認の完了後 | KL-W1（∞ の配置を Kerodon に合わせる、`stage-ii/kerodon-layout-w1.md`）。段 3 の後に下流ビルドと verify を一回（暦は段 1 の承認のときに書く）。①③は KL-W1 の取り込みの後に開始 |
 | ③の G8 の四角形の取り込み | BS に知らせる（S4 の生成辺）。④を開く |
 | 段 G の最初の区切り（目安 12 月上旬） | 保守の束：L1（F-2 の deprecated alias の一括削除）・L2（旧 G8 の削除）。BS・③・KST が新しい名前へ移ったのを確かめてから。担当は①か② |
@@ -59,7 +59,7 @@
 | ∞ 数学 G2 | 閉じた。IF-G2-finish の段 1 と段 2 の途中まで main に入った（408d87457、6f35a986f）。枝 `math/g2` と worktree は削除。残りは `infinity-g2-progress.md` の末尾の節から段階 II の ∞ 供給レーンが再開する |
 | BS 設計・BS 実装（段階 I） | 閉じた。段階 II では BS 実装は新しい Codex チャット、設計は調整役が持つ（入口 `bhatt-scholze/design-status.md` §0、drafts の扱いは計画 §1.0） |
 | DG・論文の層 | 閉じた |
-| 段階 II の新しいレーン（①③⑤⑥） | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥SC-W1）。⑤は W11（§6 の追記）|
+| 段階 II の新しいレーン（11-07）：⑤a・⑤b・⑥・Kerodon の確認が稼働。① は止めている。③ は KL-W1 の後 | 11-05 夜：計画の確定。開始文は [stage-ii/lane-starts.md](stage-ii/lane-starts.md)、指示書は `stage-ii/`（①IC-W1、③IS-W1、⑥SC-W1）。⑤は W11（§6 の追記）|
 
 ## 5. 段階 I から引き継ぐ要点
 
