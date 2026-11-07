@@ -61,4 +61,4 @@ Subsection 単位の調査の後に、項目（a.b.c.d）ごとの対応表を�
 
 - `toc.md`：Kerodon の目次（番号・Tag・見出し）。
 - `coverage-ch1-3.md`・`coverage-ch4.md`・`coverage-ch5-6.md`・`coverage-ch7.md`・`coverage-ch8-10.md`：Subsection ごとの表（判定・出どころ・主な宣言とファイル・注記）。
-- `citations-summary.md`：Lean の Kerodon の引用の集計。
+- `citations.csv`：Lean の Kerodon の引用の一覧（一引用一行、11-06 の main で採取）。`citations-summary.md`：その集計。
