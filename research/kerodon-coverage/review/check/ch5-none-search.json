@@ -13744,7 +13744,7 @@
         "directories": [
           "SerrePositivity"
         ],
-        "review": "番号・タグの直接引用はなし。小節内の引用は citation_hits_by_subsection に記録。判定の境界は次のとおり。Kan 底上で isofibration・cartesian・cocartesian の同値。ファイブレーションの op 反転は Kan 底を用いた isofibration からの含意を与えない。"
+        "review": "番号・タグの直接引用はなし。小節内の引用は citation_hits_by_subsection に記録。判定の境界は次のとおり。Kan 底では cocartesianFibration_kanEquivalenceLifting と isofibration の比較が適用できる。三条件の同値全体を結ぶ型は未確認。"
       },
       "b": {
         "terms": [
@@ -13831,7 +13831,7 @@
             "header": "instance isCartesian_of_isStronglyCartesian : p.IsCartesian f φ"
           }
         ],
-        "review": "Kan 底上で isofibration・cartesian・cocartesian の同値。ファイブレーションの op 反転は Kan 底を用いた isofibration からの含意を与えない。"
+        "review": "Kan 底では cocartesianFibration_kanEquivalenceLifting と isofibration の比較が適用できる。三条件の同値全体を結ぶ型は未確認。"
       },
       "c": {
         "peer_own_files": [
@@ -13899,9 +13899,10 @@
           "cartesian"
         ],
         "anchor": "同じ小節の前回 own・both の採用先を起点とし、そのファイルと直近のディレクトリの型を確認。",
-        "review": "Kan 底上で isofibration・cartesian・cocartesian の同値。ファイブレーションの op 反転は Kan 底を用いた isofibration からの含意を与えない。"
+        "review": "Kan 底では cocartesianFibration_kanEquivalenceLifting と isofibration の比較が適用できる。三条件の同値全体を結ぶ型は未確認。"
       },
-      "result": "none"
+      "result": "partial",
+      "accepted": "SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting @ SerrePositivity/InfinityCategories/F1/Cocartesian/Isofibration.lean:115 | SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting @ SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean:72 | SSet.quasicategory_of_innerFibration @ Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:94"
     },
     "5.1.4.16": {
       "a": {

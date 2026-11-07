@@ -150,6 +150,24 @@
       "type": "@SerrePositivity.InfinityCategories.isPrecompositionEquivalence_iff_isQCatEquivalence.{u_1} : ∀ {A B : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} A] [inst_1 : SSet.Quasicategory.{u_1} B] (f : Quiver.Hom.{u_1, u_1 + 1} A B),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f ↔\n    SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f",
       "evidence": "e74968297d51cb34b980",
       "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting": {
+      "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/Isofibration.lean:115",
+      "type": "@SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting.{u_1} : ∀ {E B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.{u_1} p",
+      "evidence": "6914367cb3889edc24c4",
+      "axioms": []
+    },
+    "SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting": {
+      "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean:72",
+      "type": "@SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting.{u_1} : ∀\n  {D E : SSet.{u_1}} [SSet.Quasicategory.{u_1} D] [SSet.Quasicategory.{u_1} E] (U : Quiver.Hom.{u_1, u_1 + 1} D E),\n  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.{u_1} U ↔\n    SSet.InnerFibration.{u_1} U ∧ SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting.{u_1} U",
+      "evidence": "20d0e9010921a5b38ed7",
+      "axioms": []
+    },
+    "SSet.quasicategory_of_innerFibration": {
+      "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:94",
+      "type": "@SSet.quasicategory_of_innerFibration.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y)\n  [@SSet.InnerFibration.{u_1} X Y p] [hY : Y.Quasicategory], X.Quasicategory",
+      "axioms": [],
+      "evidence": "848f123df5f821fb8eff"
     }
   },
   "probes": [
@@ -509,6 +527,16 @@
           "SerrePositivity.InfinityCategories.cartesianFibrations",
           "SerrePositivity.InfinityCategories.CocartesianFibration",
           "SerrePositivity.InfinityCategories.CocartesianHornFibration"
+        ]
+      },
+      "5.1.4.11": {
+        "tag": "023K",
+        "statement_sha256": "ff5b1a35e132e331e71a8f24bf40185b723d161209991fec0537b29a0fdb3354",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting",
+          "SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting",
+          "SSet.quasicategory_of_innerFibration"
         ]
       },
       "5.1.4.15": {
@@ -1174,6 +1202,24 @@
         "type": "@SerrePositivity.InfinityCategories.CocartesianHornFibration.{u_1} : {E B : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} E B → Prop",
         "evidence": "0c95727706a7fa352f42",
         "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting": {
+        "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/Isofibration.lean:115",
+        "type": "@SerrePositivity.InfinityCategories.cocartesianFibration_kanEquivalenceLifting.{u_1} : ∀ {E B : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)\n  [SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} p],\n  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.{u_1} p",
+        "evidence": "6914367cb3889edc24c4",
+        "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting": {
+        "source": "SerrePositivity/InfinityCategories/F1B/Fibrations/IsofibrationCriterion.lean:72",
+        "type": "@SerrePositivity.InfinityCategories.F1B.equivalenceLifting_iff_inner_and_invertibleTargetLifting.{u_1} : ∀\n  {D E : SSet.{u_1}} [SSet.Quasicategory.{u_1} D] [SSet.Quasicategory.{u_1} E] (U : Quiver.Hom.{u_1, u_1 + 1} D E),\n  SerrePositivity.InfinityCategories.F1B.EquivalenceLifting.{u_1} U ↔\n    SSet.InnerFibration.{u_1} U ∧ SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting.{u_1} U",
+        "evidence": "20d0e9010921a5b38ed7",
+        "axioms": []
+      },
+      "SSet.quasicategory_of_innerFibration": {
+        "source": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean:94",
+        "type": "@SSet.quasicategory_of_innerFibration.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y)\n  [@SSet.InnerFibration.{u_1} X Y p] [hY : Y.Quasicategory], X.Quasicategory",
+        "axioms": [],
+        "evidence": "848f123df5f821fb8eff"
       },
       "SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges": {
         "source": "SerrePositivity/InfinityCategories/F1/Fibrations/AllEdges.lean:67",
