@@ -166,9 +166,9 @@ C が Kan の場合、可逆辺は全辺なので短射の全体を選べる。c
 - (b) `contractible fibers cocartesian localization / vertical edges localization / transport simplex first vertex`。双対の語 `cartesian contractible edges fibers first localization simplex transport vertex vertical`。普通圏の語 `cocartesian contractible edges fibers first localization simplex transport vertex vertical`。確認した候補 `transportSimplexFirstVertexMap_isLocalization` (`SerrePositivity/InfinityCategories/F1/Transport/LocalizationAllBases.lean:23`), `cosliceFiberProjection_terminalFiber_isContractibleKan` (`SerrePositivity/InfinityCategories/Core/CosliceFiberProjection.lean:92`)。
 - (c) 候補を起点に (b) の語で `SerrePositivity/InfinityCategories/Core`, `SerrePositivity/InfinityCategories/F1/Transport` を検索。対象の宣言見出し 3278 件。
 
-### [6.3.4.6](https://kerodon.net/tag/02LV) · `none → partial`（partial_kind: `special`）
+### [6.3.4.6](https://kerodon.net/tag/02LV) · `none → partial`（partial_kind: `component`）
 
-普通圏で W が恒等射を含み、F が普通圏の局所化も与える場合、第二因子に F、第一因子に恒等射のクラスに関する恒等局所化を取れる。任意の単体集合 K と、K 成分が退化した辺だけを指定する高次の命題は確認できない。
+普通圏で W が恒等射を含み、F が普通圏の局所化も与える場合、第二因子に F、第一因子に恒等射のクラスに関する恒等局所化を取れる。第一因子を恒等射に絞った積の普遍性を、普通圏の nerve を試験終域とする場合に照合できる。任意の単体集合 K と任意の準圏の試験終域に対する普遍性は未確認。
 
 - (a) `6.3.4.6` と `6.3.4`、`Kerodon`。直接 0 件、同小節 0 件。
 - (b) `product localization with identities / tensor localization edge set / cartesian closed precomposition`。双対の語 `closed cocartesian coproduct edge identities localization postcomposition set tensor`。普通圏の語 `closed edge identities localization precomposition product pullback set tensor`。確認した候補 `SupClosed.prod` (`Mathlib/Order/SupClosed.lean:100`), `invertingFunctors` (`SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean:57`)。
@@ -335,4 +335,44 @@ SerrePositivity.InfinityCategories.invertingFunctors_quasicategory.{u_1} : ∀ (
 ```lean
 SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization.{u_1} : ∀ (X : SSet.{u_1}) (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))), ∃ Q F, SSet.Quasicategory.{u_1} Q ∧ SerrePositivity.InfinityCategories.IsLocalization.{u_1} F W
 SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization.{u_1} : ∀ (X : SSet.{u_1}) (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))), SerrePositivity.InfinityCategories.IsLocalization.{u_1} (SerrePositivity.KST.LocalizingInvariants.inverseAttachmentInclusion.{u_1} X W) W
+```
+
+## 追加の型確認
+
+指定の共有ビルドロックを通し、該当モジュールの import と `#check` を実行した。
+
+### 6.1.2.9
+
+```lean
+@Bicategory.Adjunction.homEquiv₂ : {B : Type u_3} →
+  [inst : Bicategory B] →
+    {a b c : B} →
+      {l : b ⟶ c} → {r : c ⟶ b} → Bicategory.Adjunction l r → {g : a ⟶ b} → {h : a ⟶ c} → (g ≫ l ⟶ h) ≃ (g ⟶ h ≫ r)
+```
+
+### 6.2.2.28
+
+```lean
+@QCatEquivalence.toAdjunction : {X Y : SSet} →
+  [inst : X.Quasicategory] → [inst_1 : Y.Quasicategory] → (e : QCatEquivalence X Y) → QCatAdjunction e.hom e.inv
+@QCatEquivalence.symm : {X Y : SSet} →
+  [inst : X.Quasicategory] → [inst_1 : Y.Quasicategory] → QCatEquivalence X Y → QCatEquivalence Y X
+@QCatEquivalence.isFullyFaithful : ∀ {X Y : SSet} [inst : X.Quasicategory] [inst_1 : Y.Quasicategory]
+  (e : QCatEquivalence X Y), IsFullyFaithful e.hom
+```
+
+### 6.2.7.6
+
+```lean
+quasicategoryCore : (X : SSet) → X.Subcomplex
+```
+
+### 6.3.4.6
+
+```lean
+@Functor.IsLocalization.prod : ∀ {C₁ : Type u_5} {C₂ : Type u_6} {D₁ : Type u_7} {D₂ : Type u_8}
+  [inst : Category.{u_1, u_5} C₁] [inst_1 : Category.{u_2, u_6} C₂] [inst_2 : Category.{u_3, u_7} D₁]
+  [inst_3 : Category.{u_4, u_8} D₂] (L₁ : C₁ ⥤ D₁) (W₁ : MorphismProperty C₁) (L₂ : C₂ ⥤ D₂) (W₂ : MorphismProperty C₂)
+  [W₁.ContainsIdentities] [W₂.ContainsIdentities] [L₁.IsLocalization W₁] [L₂.IsLocalization W₂],
+  (L₁.prod L₂).IsLocalization (W₁.prod W₂)
 ```
