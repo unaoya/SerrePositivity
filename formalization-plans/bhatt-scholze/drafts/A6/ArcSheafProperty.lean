@@ -3,7 +3,9 @@
 -- 引用 3 件の `sorry` 定理（G-A6-1a・1b・1c）は drafts/ の間は問題なし。SerrePositivity/ に入れるときは scripts/make_area_audits.py の許可一覧の更新を調整役に依頼する（main 7b8b96286）。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationCompletion
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationTilt
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
@@ -193,16 +195,8 @@ theorem cech_exact_of_arcCover_perfect {A : Type u} [CommRing A] [CharP A p] [Pe
 
 /-! ## tilt（零環を含む。BS-D1 の D1-03、2026-11-03 決定） -/
 
-/-- 概要：G-A6-14：零環を含む tilt。p 完備な O について、O が零環なら零環、そうでなければ Mathlib の `PreTilt O p`（p 完備で非零なら p は Jacobson 根基に入り
-非単元なので `Fact (¬IsUnit (p : O))` が立つ）。原典の tilt O^♭ = lim_φ O/p は零環で零環なので**定義の変更ではない**。Mathlib の `PreTilt` の環構造が
-`¬IsUnit p` を仮定することへの対処（D1-03：F_p × F_p の二つの射影による F_p 同士の相対完備テンソルは零環で、両因子が非零でも起こる）。
-方針：`Classical` で `Subsingleton O` により分岐し `CommRingCat.{u}` の対象を返す。
-規約：非零の場合の同一視は `tiltRingEquivPreTilt`。A6 の tilt を使う主張はすべてこの `tiltRing` で述べる。
-使われ方：G-A6-4〜6、Prop 8.10 の tilt の段。 -/
-def tiltRing (O : Type u) [CommRing O] : CommRingCat.{u} := sorry
 theorem tiltRing_subsingleton (O : Type u) [CommRing O] [Subsingleton O] : Subsingleton (tiltRing p O) := by
   sorry -- 分岐の左
-def tiltRingEquivPreTilt (O : Type u) [CommRing O] [Fact (¬ IsUnit (p : O))] : (tiltRing p O : Type u) ≃+* PreTilt O p := sorry
 
 /-- 概要：p 完備で非零な環では p は単元でない（p は Jacobson 根基に入る：1 − px は p 進級数で可逆）。
 方針：`IsModuleComplete` から p 進完備性、幾何級数。
@@ -330,23 +324,6 @@ theorem untilt_rankOneValuationRing (V : Type u) [CommRing V] [IsDomain V] [Valu
           (tiltRingEquivPreTilt p U).symm.toRingHom.comp (wittQuotientTiltMap p V d)) ∧
       (d.coeff 0 = 0 → Nonempty (U ≃+* V)) := by
   sorry -- a ≠ 0 は sharp による可除性と Witt 商の tilt 比較。a = 0 は d が p の単元倍
-
-theorem tilt_rankOneValuationRing (W : Type u) [CommRing W]
-    (hW : IsRankOneCompleteValuationRing p W) (hperf : IsIntegralPerfectoid W p) :
-    let V := (tiltRing p W : Type u)
-    ∃ hV : IsDomain V, @ValuationRing V _ hV ∧ ringKrullDim V = 1 ∧
-      CharP V p ∧ PerfectRing V p := by
-  sorry -- 非零付値環の tilt の値群の対応と Frobenius の逆極限表示
-
-/-- 階数 1 の非零非単元分岐で実際に用いる完備化とその単位。 -/
-theorem arcValuation_completeAt [Fact p.Prime] (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V]
-    [CharP V p] [PerfectRing V p] (hV : ringKrullDim V = 1)
-    (a : V) (ha : a ≠ 0) (hna : ¬ IsUnit a) :
-    let T := AdicCompletion (Ideal.span {a}) V
-    let e := algebraMap V T
-    ∃ hT : IsDomain T, @ValuationRing T _ hT ∧ ringKrullDim T = 1 ∧
-      CharP T p ∧ PerfectRing T p ∧ IsAdicComplete (Ideal.span {e a}) T ∧ e.FaithfullyFlat := by
-  sorry -- a 進位相は階数 1 の付値位相で、完備化への単位は局所単射
 
 /-- 階数 0 の非単元分岐で a = 0 の階数 1 の試験環に移る。 -/
 theorem arcValuation_extendField [Fact p.Prime] (k : Type u) [Field k] [CharP k p] [PerfectRing k p]
