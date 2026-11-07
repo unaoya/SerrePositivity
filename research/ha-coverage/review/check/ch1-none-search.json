@@ -1,8 +1,1886 @@
 {
-  "worktree_commit": "01d9d1b2fad3a7a0175b6c5b2f4269a71537757e",
+  "worktree_commit": "bef0f18387bbb5aa2c51a2c8a9a7d72d1619f96f",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
   "items": {
+    "1.1.0.1": {
+      "ha_page": 17,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.1.0.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.1.0",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.1",
+            "count": 6,
+            "distinct_files": 2,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:22 (1.1.1.1)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:69 (1.1.1.4)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:76 (1.1.1.9)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:82 (1.1.1.9)",
+              "SerrePositivity/InfinityCategories/Stable/Definition.lean:13 (1.1.1.9)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SegalCategory|StableModelCategory|stable model",
+          "files_with_matches": 6,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "SerrePositivity/Spectra/Stable/LocalizingHom.lean",
+            "SerrePositivity/Spectra/Stable/OmegaDetection.lean",
+            "SerrePositivity/Spectra/Stable/LocalizingMaps.lean",
+            "SerrePositivity/KST/SConstruction/StableModels.lean",
+            "SerrePositivity/KST/SConstruction/RelativeStableModels.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SegalCategory|StableModelCategory|stable model",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Definition.lean",
+        "SerrePositivity/InfinityCategories/ModelBridge/ModelRelative.lean"
+      ],
+      "reason": "この注記は安定モデル圏と Segal 圏の文献案内。モデル圏から準圏への比較と Segal 圏の模型を探し、安定準圏の定義と比較したが、文献案内に対応する数学的主張はない。"
+    },
+    "1.1.2.12": {
+      "ha_page": 26,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.1.2.12",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.1.2",
+          "count": 7,
+          "distinct_files": 7,
+          "examples": [
+            "SerrePositivity/InfinityCategories/F1/CoconeMappingGluing.lean:17 (1.1.2.10)",
+            "SerrePositivity/InfinityCategories/F1/CoconeMappingSpace.lean:16 (1.1.2.10)",
+            "SerrePositivity/InfinityCategories/Stable/CoconeMappingContractible.lean:41 (1.1.2.10)",
+            "SerrePositivity/InfinityCategories/F1/SpanCoconeMappingPullback.lean:16 (1.1.2.10)",
+            "SerrePositivity/InfinityCategories/Stable/SpanCoconeMappingSwap.lean:10 (1.1.2.10)"
+          ]
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.1",
+            "count": 6,
+            "distinct_files": 2,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:22 (1.1.1.1)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:69 (1.1.1.4)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:76 (1.1.1.9)",
+              "SerrePositivity/InfinityCategories/Core/Pointed.lean:82 (1.1.1.9)",
+              "SerrePositivity/InfinityCategories/Stable/Definition.lean:13 (1.1.1.9)"
+            ]
+          },
+          {
+            "prefix": "1.1.3",
+            "count": 20,
+            "distinct_files": 17,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:16 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:219 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:242 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:18 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:25 (1.1.3.4)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cofiberDistinguishedTriangles|distTriang|pretriangulated.*cofiber",
+          "files_with_matches": 122,
+          "total_matching_lines": 355,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Stable/StableHoTriangulated.lean",
+            "SerrePositivity/InfinityCategories/Stable/IdentityCofiber.lean",
+            "SerrePositivity/InfinityCategories/Stable/DistinguishedCoconeTriangle.lean",
+            "SerrePositivity/InfinityCategories/Stable/TriangleMorphismExtension.lean",
+            "SerrePositivity/InfinityCategories/Stable/IdempotentCompletionDensity.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorTriangulated.lean",
+            "SerrePositivity/InfinityCategories/Stable/ExactFunctorNaturalTransformation.lean",
+            "SerrePositivity/InfinityCategories/Stable/LongExactSequence.lean",
+            "SerrePositivity/InfinityCategories/Stable/OctahedronFromComparisons.lean",
+            "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
+            "SerrePositivity/InfinityCategories/Stable/Exact/ExactTransformationStableLocus.lean",
+            "SerrePositivity/InfinityCategories/Stable/CofiberOctahedronModel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cofiberDistinguishedTriangles|distTriang|pretriangulated.*cofiber",
+          "files_with_matches": 33,
+          "total_matching_lines": 368,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/HomotopyCategory/Pretriangulated.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/Triangulated.lean",
+            "Mathlib/Algebra/Homology/Factorizations/CM5a.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/HomologySequence.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/ShortExact.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExtClass.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/SingleTriangle.lean",
+            "Mathlib/CategoryTheory/Localization/Triangulated.lean",
+            "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean",
+            "Mathlib/CategoryTheory/Triangulated/WeakKernels.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Triangulated.lean",
+        "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean"
+      ],
+      "reason": "HA は安定性未証明の点付き圏でも完全三角形という用語を使うと注記する。前加法性・シフトのみを仮定する比較を探したが、cofiberDistinguishedTriangles は IsStable を必要とし、Mathlib の distTriang は三角形の族を既存の構造として取る。"
+    },
+    "1.1.4.5": {
+      "ha_page": 35,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.1.4.5",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.1.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.3",
+            "count": 20,
+            "distinct_files": 17,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:16 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:219 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:242 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:18 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:25 (1.1.3.4)"
+            ]
+          },
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "coCartesian.*[Ss]ection|[Ss]ection.*[Ss]table|stableFunctorCategory",
+          "files_with_matches": 168,
+          "total_matching_lines": 1177,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInitialEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian.lean",
+            "SerrePositivity/KST/Fibration/LeftCocartesianKanPointHom.lean",
+            "SerrePositivity/KST/Fibration/ComposableWeakMultiStepEquivalence.lean",
+            "SerrePositivity/KST/Fibration/StrictTransportEvaluationPrism.lean",
+            "SerrePositivity/InfinityCategories/F1/Categories/CoreEnrichedFunctor.lean",
+            "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeTerminalAdjunction.lean",
+            "SerrePositivity/InfinityCategories/Stable/Quasicategory/RelativeInitialAdjunction.lean",
+            "SerrePositivity/InfinityCategories/Stable/Semiorthogonal/SemiorthogonalDecomposition.lean",
+            "SerrePositivity/KST/Fibration/SectionPostToLeftFibration.lean",
+            "SerrePositivity/KST/Fibration/LeftCocartesianClassificationPoint.lean",
+            "SerrePositivity/KST/Fibration/StrictTransportPostToLeftFibration.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "coCartesian.*[Ss]ection|[Ss]ection.*[Ss]table|stableFunctorCategory",
+          "files_with_matches": 6,
+          "total_matching_lines": 7,
+          "sample_paths": [
+            "Mathlib/Algebra/Polynomial/AlgebraMap.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/Instances.lean",
+            "Mathlib/RingTheory/Spectrum/Prime/Topology.lean",
+            "Mathlib/RingTheory/RingHomProperties.lean",
+            "Mathlib/AlgebraicGeometry/Cover/Directed.lean",
+            "Mathlib/AlgebraicGeometry/Sites/Representability.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean",
+        "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean"
+      ],
+      "reason": "余カルテジアン族の切断の安定性と、指定辺を余カルテシアンに送る切断の安定部分圏を探した。stableFunctorCategory は定数族に相当する関手圏であり、遷移関手つきの切断を分類しない。"
+    },
+    "1.1.4.6": {
+      "ha_page": 35,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.1.4.6",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.1.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.3",
+            "count": 20,
+            "distinct_files": 17,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:16 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:219 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteShapes.lean:242 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:18 (1.1.3.4)",
+              "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean:25 (1.1.3.4)"
+            ]
+          },
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "[Ff]iltered.*[Ss]table",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/KST/NonConnective/DGKInputIndNativeFamily.lean",
+            "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "[Ff]iltered.*[Ss]table",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/MorphismProperty/Limits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Ind/UnconditionalStableCompactGeneration.lean",
+        "SerrePositivity/InfinityCategories/Stable/Infinity/StableInfinity.lean",
+        "SerrePositivity/InfinityCategories/Core/FilteredExchange/FilteredFiniteLimits.lean"
+      ],
+      "reason": "Ind の安定性と有限極限とのフィルター付き交換を確認したが、いずれも安定 ∞ 圏と完全関手の図式の Cat∞ における余極限および完全性の保存を表す型ではない。"
+    },
+    "1.2.1.6": {
+      "ha_page": 38,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.6",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "TStructure.*(Limit|Colimit)|Reflective.*(Limit|Colimit)|truncation.*preserve",
+          "files_with_matches": 14,
+          "total_matching_lines": 28,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/FiniteCohomologyBaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/BoundedAboveDerivedTruncation.lean",
+            "SerrePositivity/HomologicalAlgebra/CochainTensor/ShortExact.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectiveAccessibility.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/LocalObjects/ReflectionColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectiveModelLimitDetection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePresheafReflection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/IndPresheafReflection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ReflectionSmallLimits.lean",
+            "SerrePositivity/KST/DerivedGeometry/CoefficientExact.lean",
+            "SerrePositivity/KST/DerivedGeometry/RingedForgetExact.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "TStructure.*(Limit|Colimit)|Reflective.*(Limit|Colimit)|truncation.*preserve",
+          "files_with_matches": 7,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Adjunction/Reflective.lean",
+            "Mathlib/CategoryTheory/Monad/Limits.lean",
+            "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Ideal.lean",
+            "Mathlib/Topology/Category/UniformSpace.lean",
+            "Mathlib/Topology/LocallyFinsupp.lean",
+            "Mathlib/ModelTheory/DirectLimit.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+        "Mathlib/CategoryTheory/Adjunction/Reflective.lean"
+      ],
+      "reason": "通常圏では Reflective の包含が右随伴になる。両側の t 切断への所属判定と合わせて確認したが、安定 ∞ 圏の t 構造から全ての極限・余極限に対する閉性を返す型は確認できなかった。"
+    },
+    "1.2.1.9": {
+      "ha_page": 39,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.9",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "IsNTruncated|TruncatedObject|tStructure.*truncation",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "IsNTruncated|TruncatedObject|tStructure.*truncation",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+        "Mathlib/AlgebraicTopology/SimplicialSet/Basic.lean"
+      ],
+      "reason": "HA は写像空間の切断性と t 構造の切断の違いを注意する。SSet.truncation は単体次元を制限し、TStructure.truncGE はホモトピー圏の t 切断。安定 ∞ 圏の写像空間の切断性と両者の関係を与える型は確認できなかった。"
+    },
+    "1.2.1.13": {
+      "ha_page": 40,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.13",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "BBD|homological indexing|cohomological indexing|TStructure.*op",
+          "files_with_matches": 6,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/KST/Spectra/SpectrumTracedSourceUnitStep.lean",
+            "SerrePositivity/KST/Spectra/SpectrumKanAdjointStructureCounit.lean",
+            "SerrePositivity/KST/Spectra/TracedSignedLoopUnit.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "BBD|homological indexing|cohomological indexing|TStructure.*op",
+          "files_with_matches": 13,
+          "total_matching_lines": 38,
+          "sample_paths": [
+            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/AbelianSubcategory.lean",
+            "Mathlib/RingTheory/WittVector/MulP.lean",
+            "Mathlib/Order/Bounds/Basic.lean",
+            "Mathlib/RingTheory/WittVector/Frobenius.lean",
+            "Mathlib/RingTheory/WittVector/Basic.lean",
+            "Mathlib/RingTheory/WittVector/MulCoeff.lean",
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+        "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean"
+      ],
+      "reason": "BBD と HA の添字の違いは TStructure.isGE_shift_iff と isLE_shift_iff の型で追える。HA が述べる添字規約間の翻訳と C♥ の同定をまとめて表す宣言は確認できなかった。"
+    },
+    "1.2.1.17": {
+      "ha_page": 44,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.17",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LeftCompletion|Postnikov|TruncationTower|trunc.*[Tt]ower",
+          "files_with_matches": 783,
+          "total_matching_lines": 21451,
+          "sample_paths": [
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectFinalComparison.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightBaseGlue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraHomotopyPullbackConeEquiv.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSourceImageLayerFunctor.lean",
+            "SerrePositivity/KST/LocalizingInvariants/CochainTensorTruncationDesc.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightZeroDiagram.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorCandidateHomologyTriangles.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoSourceModelProjections.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonRightClass.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LeftCompletion|Postnikov|TruncationTower|trunc.*[Tt]ower",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+        "SerrePositivity/InfinityCategories/Stable/FunctorLoopEquivalence.lean",
+        "SerrePositivity/InfinityCategories/Stable/Definition.lean"
+      ],
+      "reason": "上下の切断関手と安定圏のループの塔を調べた。切断で定める塔のホモトピー極限に対し、安定性と t 構造、および元の圏からの完全関手を構成する型は確認できなかった。"
+    },
+    "1.2.1.18": {
+      "ha_page": 45,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.18",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LeftCompletion|bounded.*[Cc]ompletion|Postnikov|trunc.*[Tt]ower",
+          "files_with_matches": 829,
+          "total_matching_lines": 22174,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/BhattScholze/Andre/TorDescent.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Source.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/RawRegular.lean",
+            "SerrePositivity/BhattScholze/Andre/Variants/ArbitraryFamily.lean",
+            "SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/Source.lean",
+            "SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LeftCompletion|bounded.*[Cc]ompletion|Postnikov|trunc.*[Tt]ower",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Topology/MetricSpace/Completion.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/Basic.lean",
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean"
+      ],
+      "reason": "TStructure.plus と minus は有界対象の述語を表す。左完備化の関手に制限して有界部分圏の同値を示す型を探したが、切断塔との比較は確認できなかった。"
+    },
+    "1.2.1.19": {
+      "ha_page": 45,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.19",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LeftComplete|LeftSeparated|Postnikov|trunc.*[Tt]ower",
+          "files_with_matches": 783,
+          "total_matching_lines": 21451,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/RankOneDP.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LeftComplete|LeftSeparated|Postnikov|trunc.*[Tt]ower",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean",
+        "SerrePositivity/InfinityCategories/Stable/StableFiniteLimitsColimits.lean"
+      ],
+      "reason": "切断が零になる条件と可算積・塔の極限を調べた。t 構造が分離的である条件と左完備性を結び付ける型は確認できなかった。"
+    },
+    "1.2.1.20": {
+      "ha_page": 46,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.1.20",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.1.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RightComplete|RightCompletion|Postnikov|TStructure.*[Oo]p",
+          "files_with_matches": 786,
+          "total_matching_lines": 21724,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/TStructure/Bounded.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Localization.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/Asymptotic/LengthSequence.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightViaBZeroComposition.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovOneCellNativeValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraCellMappingKan.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightFixedGlueZeroMap.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreRightDenCompositeZero.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovPresentedSpaceLimit.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorClassTargetModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/BimoduleRestriction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RightComplete|RightCompletion|Postnikov|TStructure.*[Oo]p",
+          "files_with_matches": 8,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "Mathlib/Geometry/Manifold/StructureGroupoid.lean",
+            "Mathlib/RingTheory/WittVector/MulP.lean",
+            "Mathlib/RingTheory/WittVector/Frobenius.lean",
+            "Mathlib/RingTheory/WittVector/Basic.lean",
+            "Mathlib/RingTheory/WittVector/MulCoeff.lean",
+            "Mathlib/RingTheory/WittVector/StructurePolynomial.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/Induced.lean",
+            "Mathlib/CategoryTheory/Triangulated/TStructure/TExact.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLEGT.lean",
+        "SerrePositivity/InfinityCategories/Stable/StableOpposite.lean"
+      ],
+      "reason": "反対圏の安定性と、通常圏の上下の t 切断を確認した。余極限で定める右完備化または左完備化との双対比較の型は確認できなかった。"
+    },
+    "1.2.2.1": {
+      "ha_page": 47,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.2.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "filtered.*[Ss]pectral",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "filtered.*[Ss]pectral",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+        "Mathlib/Algebra/Homology/HomotopyCategory/SpectralObject.lean"
+      ],
+      "reason": "Mathlib はアーベル圏のスペクトル対象から系列を作る。通常のフィルター付き鎖複体の系列を HA の安定 ∞ 圏の構成に同定する比較を調べたが、この注記の特例を結ぶ型は確認できなかった。"
+    },
+    "1.2.2.11": {
+      "ha_page": 52,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.2.11",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "FilteredDerived|filtered.*[Dd]erivedCategory|FilteredComplex",
+          "files_with_matches": 7,
+          "total_matching_lines": 37,
+          "sample_paths": [
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Formula.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/Rees.lean",
+            "SerrePositivity/CommutativeAlgebra/KoszulMultiplicity/AdicEuler.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/StrictHomologyColimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/FilteredHomologyColimitLegs.lean",
+            "SerrePositivity/HomologicalAlgebra/AdicFilteredComplex.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "FilteredDerived|filtered.*[Dd]erivedCategory|FilteredComplex",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Derived/StableHomotopyComparison.lean",
+        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean"
+      ],
+      "reason": "加群の導来 ∞ 圏のホモトピー圏との同値はある。整数添字のフィルター付き図式のホモトピー圏を、古典的フィルター付き鎖複体の導来圏に同定する比較を探したが確認できなかった。"
+    },
+    "1.2.2.13": {
+      "ha_page": 52,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.2.13",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "[Hh]eart.*[Cc]olimit|TStructure.*[Cc]olimit|HasExactColimitsOfShape",
+          "files_with_matches": 29,
+          "total_matching_lines": 61,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/Transfinite/Colimit.lean",
+            "SerrePositivity/HomologicalAlgebra/TorSequentialColimits.lean",
+            "SerrePositivity/HomologicalAlgebra/SequentialChainHomologyColimits.lean",
+            "SerrePositivity/HomologicalAlgebra/SequentialComplexColimits.lean",
+            "SerrePositivity/HomologicalAlgebra/TorExactColimits.lean",
+            "SerrePositivity/HomologicalAlgebra/ComplexColimits.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean",
+            "SerrePositivity/DifferentialGraded/Checks/KFlatColimits.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "[Hh]eart.*[Cc]olimit|TStructure.*[Cc]olimit|HasExactColimitsOfShape",
+          "files_with_matches": 13,
+          "total_matching_lines": 87,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
+            "Mathlib/Algebra/Category/ModuleCat/AB.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/FunctorCategory/PreservesLimits.lean",
+            "Mathlib/CategoryTheory/Sites/Point/Basic.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/SheafOfModules.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Colim.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/FunctorCategory.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Connected.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Sheaf.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Indization.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/CategoryTheory/Triangulated/TStructure/Heart.lean",
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+        "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean"
+      ],
+      "reason": "アーベル圏で列の余極限の完全性を仮定する型と、導来圏の加群ハートの埋め込みを読んだ。任意の安定 ∞ 圏の t 構造との両立からハートの余極限や πₙ の保存、完全性を導く型は確認できなかった。"
+    },
+    "1.2.2.14": {
+      "ha_page": 52,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.2.14",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.1",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "[Cc]onvergen.*[Ss]pectral",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "[Cc]onvergen.*[Ss]pectral",
+          "files_with_matches": 1,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/SpectralObject/HasSpectralSequence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+        "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean"
+      ],
+      "reason": "Mathlib のスペクトル系列の頁と次頁同型を確認し、有界フィルトレーションの場合の収束定理も探した。安定 ∞ 圏の列の余極限の π と E∞ 頁を比較する型は確認できなかった。"
+    },
+    "1.2.3.6": {
+      "ha_page": 55,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.3.6",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "DoldKan.*boundary|Γ.*boundary|simplex.*single.*Dold",
+          "files_with_matches": 15,
+          "total_matching_lines": 19,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWErasure.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/StandardTopBoundary.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/CubeLowDimensional.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/CubeBoundary.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/CubeDifferential.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryReindex.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/CoherentCubeDifferential.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWBoundaryMatch.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWDifferential.lean",
+            "SerrePositivity/InfinityCategories/DoldKanComparison/AWPreservation.lean",
+            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberGroups.lean",
+            "SerrePositivity/KST/LocalizingInvariants/HomotopySquareFiberMap.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "DoldKan.*boundary|Γ.*boundary|simplex.*single.*Dold",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Geometry/Manifold/Riemannian/PathELength.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/AlgebraicTopology/DoldKan/Equivalence.lean",
+        "Mathlib/AlgebraicTopology/SimplicialSet/Homology/Basic.lean"
+      ],
+      "reason": "単体の自由鎖複体と、自然数次数の Γ を確認した。単体的アーベル群で、標準単体を境界で割ったものと一つの次数に集中した複体の Γ を比較する型は確認できなかった。"
+    },
+    "1.2.3.27": {
+      "ha_page": 64,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.3.27",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.2",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.2.4",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "lattice.*tensor|[Ll]at.*[Aa]dditive|[Ff]initeFree.*[Aa]dditive",
+          "files_with_matches": 20,
+          "total_matching_lines": 35,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Karoubi/Triangulated.lean",
+            "SerrePositivity/CategoryTheory/TStructure/Family.lean",
+            "SerrePositivity/CommutativeAlgebra/Localization/Lattice.lean",
+            "SerrePositivity/HomologicalAlgebra/TorCoefficientIdeal.lean",
+            "SerrePositivity/KST/SConstruction/TriangulatedKZeroEquiv.lean",
+            "SerrePositivity/KST/SConstruction/Cofinality/ZeroComparison.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Kernel.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean",
+            "SerrePositivity/DifferentialGraded/Category/Basic.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "lattice.*tensor|[Ll]at.*[Aa]dditive|[Ff]initeFree.*[Aa]dditive",
+          "files_with_matches": 58,
+          "total_matching_lines": 87,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/MonCat/Limits.lean",
+            "Mathlib/Algebra/MonoidAlgebra/PointwiseSMul.lean",
+            "Mathlib/NumberTheory/NumberField/Units/Regulator.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/ShortExact.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/DegreewiseSplit.lean",
+            "Mathlib/Algebra/Group/AddChar.lean",
+            "Mathlib/Algebra/Category/Grp/Limits.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/TStructure.lean",
+            "Mathlib/Algebra/Module/LinearMap/FiniteRange.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/ExactSequences.lean",
+            "Mathlib/Algebra/Group/Subsemigroup/Defs.lean",
+            "Mathlib/Data/Set/Pointwise/Support.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/KST/ProExcision/NormalizedAlexanderWhitney.lean",
+        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean"
+      ],
+      "reason": "整数加群のテンソルと二変数の Alexander–Whitney はある。有限自由アーベル群の圏から任意の加法圏への作用と、反復した作用との可換図式の型を調べたが確認できなかった。"
+    },
+    "1.2.4.1": {
+      "ha_page": 66,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.1",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Dold.?Kan.*(Infinity|Filtered)|filtered.*simplicial.*equiv",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Dold.?Kan.*(Infinity|Filtered)|filtered.*simplicial.*equiv",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+        "SerrePositivity/KST/LocalizingInvariants/StableFunctorMaps.lean"
+      ],
+      "reason": "Mathlib の Dold–Kan は単体的対象と非負鎖複体の通常圏の同値。安定 ∞ 圏に値を取る場合の、単体的対象と自然数で添字付けたフィルター付き対象の関手 ∞ 圏を比べる宣言は確認できなかった。"
+    },
+    "1.2.4.2": {
+      "ha_page": 67,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.2",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "skelet.*(realization|realisation)|realization.*(skeleton|filtration)",
+          "files_with_matches": 20,
+          "total_matching_lines": 62,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Kan/SkeletalSphericalRealization.lean",
+            "SerrePositivity/InfinityCategories/F1/Transport/CellAttachment.lean",
+            "SerrePositivity/KST/Spectra.lean",
+            "SerrePositivity/KST/Comparison/FatSkeletonRowRelations.lean",
+            "SerrePositivity/KST/Comparison/FatSkeleton.lean",
+            "SerrePositivity/KST/Comparison/FatSkeletonMaps.lean",
+            "SerrePositivity/KST/Comparison/FatSkeletonAttachment.lean",
+            "SerrePositivity/KST/Comparison/FatRealizationInvariance.lean",
+            "SerrePositivity/KST/Comparison/FatBoundaryCriterion.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean",
+            "SerrePositivity/KST/Spectra/SkeletalEdgeDoubleLoop.lean",
+            "SerrePositivity/KST/Spectra/CellCofiberProjections.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "skelet.*(realization|realisation)|realization.*(skeleton|filtration)",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean"
+      ],
+      "reason": "単体集合の骨格の列とその通常圏での余極限はある。値域が安定 ∞ 圏である単体的図式に対し、骨格ごとの幾何学的実現を対応するフィルトレーションと同定する型は確認できなかった。"
+    },
+    "1.2.4.3": {
+      "ha_page": 67,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.3",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "latching.*[Cc]ofib",
+          "files_with_matches": 12,
+          "total_matching_lines": 16,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/NerveCoherentExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/CofibrantBoundary.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/ComponentClasses.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/LatchingPreservation.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/ObjectwiseTrivial.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/BoundaryTensor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/EvaluatedFrame.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexReedy.lean",
+            "SerrePositivity/KST/Spectra/OriginalWeightEndComparison.lean",
+            "SerrePositivity/KST/Spectra/ReedyWeightCofibrancy.lean",
+            "SerrePositivity/KST/Spectra/TotalizationComparisonPi.lean",
+            "SerrePositivity/KST/Spectra/PartialTotalizationKan.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "latching.*[Cc]ofib",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "Mathlib/AlgebraicTopology/DoldKan/EquivalencePseudoabelian.lean",
+        "SerrePositivity/InfinityCategories/Stable/CofiberConnecting.lean"
+      ],
+      "reason": "前加法圏に値を取る通常の正規化関手を調べたが、安定 ∞ 圏に値を取る単体的対象の latching 射と骨格フィルトレーションの境界から得られる二つの hC の複体を同定する型は確認できなかった。"
+    },
+    "1.2.4.5": {
+      "ha_page": 68,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.5",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "simplicial.*spectral.*sequence|first.*quadrant|spectral.*converg",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "simplicial.*spectral.*sequence|first.*quadrant|spectral.*converg",
+          "files_with_matches": 6,
+          "total_matching_lines": 37,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean",
+            "Mathlib/Algebra/Homology/SpectralSequence/ComplexShape.lean",
+            "Mathlib/Algebra/Homology/SpectralObject/HasSpectralSequence.lean",
+            "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+            "Mathlib/Analysis/Complex/PhragmenLindelof.lean",
+            "Mathlib/CategoryTheory/Triangulated/SpectralObject.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "Mathlib/Algebra/Homology/SpectralObject/SpectralSequence.lean",
+        "Mathlib/Algebra/Homology/SpectralSequence/Basic.lean"
+      ],
+      "reason": "スペクトル系列の頁の零性判定はある。連結な単体的対象の実現について、第一象限と頁の安定、実現のホモトピーへの収束を同時に導く型は確認できなかった。"
+    },
+    "1.2.4.7": {
+      "ha_page": 70,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.7",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Dold.?Kan.*(filtr|splitt)|skelet.*cofiber",
+          "files_with_matches": 4,
+          "total_matching_lines": 5,
+          "sample_paths": [
+            "SerrePositivity/KST/Spectra/SkeletalCellCofiber.lean",
+            "SerrePositivity/KST/Spectra/FixedPoints.lean",
+            "SerrePositivity/KST/Spectra/SkeletalCellFiberNaturality.lean",
+            "SerrePositivity/KST/Spectra/SimplexCellCofiber.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Dold.?Kan.*(filtr|splitt)|skelet.*cofiber",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionStability.lean",
+        "Mathlib/AlgebraicTopology/DoldKan/FunctorGamma.lean"
+      ],
+      "reason": "冪等完備化の安定性と通常の Dold–Kan の余積分解を読んだ。安定 ∞ 圏に値を取る単体的図式の各項をフィルトレーションのシフトした余ファイバーで分解する宣言は確認できなかった。"
+    },
+    "1.2.4.8": {
+      "ha_page": 70,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.8",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "[Ii]dempotent.*[Ll]ift|coherentIdempotent.*endomorphism",
+          "files_with_matches": 25,
+          "total_matching_lines": 41,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Idempotent/EssentialImageDiagram.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent/RightFibrationRetracts.lean",
+            "SerrePositivity/InfinityCategories/F2/Compact/FilteredRetraction.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent/CompletionCofibers.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent/CartesianWeakRetraction.lean",
+            "SerrePositivity/InfinityCategories/F2/Compact/IdemPresheafCompact.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent/RelativeInitialComplete.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent/CompletenessUniverse.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/PieceSequenceKanValues.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/ComparisonPrefixFactor.lean",
+            "SerrePositivity/InfinityCategories/F2/Idempotent.lean",
+            "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "[Ii]dempotent.*[Ll]ift|coherentIdempotent.*endomorphism",
+          "files_with_matches": 3,
+          "total_matching_lines": 13,
+          "sample_paths": [
+            "Mathlib/RingTheory/Idempotents.lean",
+            "Mathlib/RingTheory/Etale/QuasiFinite.lean",
+            "Mathlib/CategoryTheory/Preadditive/Biproducts.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+        "SerrePositivity/InfinityCategories/Derived/DGIdempotentCompleteGeneral.lean"
+      ],
+      "reason": "CoherentIdempotent.endomorphism_idem は coherent 図式から hC の冪等射を得る向き。安定性を用いて hC の任意の冪等射から逆向きの coherent 図式を構成する型は確認できなかった。"
+    },
+    "1.2.4.9": {
+      "ha_page": 72,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.9",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "semisimplicial.*spectral|semi.?simplicial.*[Rr]ealization",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "semisimplicial.*spectral|semi.?simplicial.*[Rr]ealization",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/KST/Comparison/FreeDegeneracies.lean",
+        "Mathlib/Algebra/Homology/SpectralObject/FirstPage.lean"
+      ],
+      "reason": "集合値で退化を自由に付加する模型とアーベル圏の系列の第 1 頁を確認した。安定 ∞ 圏の半単体的図式から余極限とスペクトル系列を得る比較を探したが確認できなかった。"
+    },
+    "1.2.4.10": {
+      "ha_page": 72,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.10",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "semisimplicial.*homology|[Hh]eart.*realization|leftComplete",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "semisimplicial.*homology|[Hh]eart.*realization|leftComplete",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+        "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean"
+      ],
+      "reason": "加群ハートの埋め込みと交代面写像複体を読んだ。左完備な t 構造でハートの半単体的対象を実現し、そのホモトピー群を非正規化ホモロジーで計算する型は確認できなかった。"
+    },
+    "1.2.4.11": {
+      "ha_page": 72,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.11",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "semisimplicial.*acyclic|realization.*resolution|leftComplete",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "semisimplicial.*acyclic|realization.*resolution|leftComplete",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+        "Mathlib/AlgebraicTopology/AlternatingFaceMapComplex.lean"
+      ],
+      "reason": "鎖複体のアシクリック性および半単体的図式の実現の特例を探した。πq によるアシクリック分解から左完備な ∞ 圏での実現の存在と各ホモトピー対象の計算を得る型は確認できなかった。"
+    },
+    "1.2.4.12": {
+      "ha_page": 72,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.12",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "semisimplicial.*acyclic|realization.*resolution|rightComplete",
+          "files_with_matches": 53,
+          "total_matching_lines": 286,
+          "sample_paths": [
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightRestored.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCellPath.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectSourceWitness.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightGammaEndpoints.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWSource.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorRightWInitialPath.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedModel.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovCommonCoreClassFixedRightZeroSquare.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightDirectValue.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightImageRestore.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovSuccessorFixedRightImageRestore.lean",
+            "SerrePositivity/KST/LocalizingInvariants/DGAlgebraPostnikovTwoFixedRightCompletedOriginalModel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "semisimplicial.*acyclic|realization.*resolution|rightComplete",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Derived/HeartFullyFaithful.lean",
+        "Mathlib/CategoryTheory/Triangulated/TStructure/TruncLTGE.lean"
+      ],
+      "reason": "非負次数への切断と、鎖複体における分解を調べた。左右両完備な t 構造のもとで非負のホモトピー対象の分解から半単体的実現を構成する型は確認できなかった。"
+    },
+    "1.2.4.18": {
+      "ha_page": 75,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.18",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "truncated.*simplicial.*suspension|colimit.*(skeleton|trunc).*shift",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "truncated.*simplicial.*suspension|colimit.*(skeleton|trunc).*shift",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Shift.lean",
+        "SerrePositivity/InfinityCategories/F2/Presentable/FiniteSimplicialCodes.lean"
+      ],
+      "reason": "安定圏のシフトと切断単体集合の骨格を確認した。最高次数以外が零の切断単体的図式の余極限を最高項の n 重懸垂と同定する宣言は確認できなかった。"
+    },
+    "1.2.4.19": {
+      "ha_page": 76,
+      "citation_scan": {
+        "exact": {
+          "prefix": "1.2.4.19",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "subsection": {
+          "prefix": "1.2.4",
+          "count": 0,
+          "distinct_files": 0,
+          "examples": []
+        },
+        "neighbor_subsections": [
+          {
+            "prefix": "1.2.3",
+            "count": 0,
+            "distinct_files": 0,
+            "examples": []
+          },
+          {
+            "prefix": "1.3.1",
+            "count": 1578,
+            "distinct_files": 407,
+            "examples": [
+              "SerrePositivity/InfinityCategories/Derived/CofiberBoundaryTriangleEquations.lean:10 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:11 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Core/UniverseHomotopy.lean:60 (1.3.1.17)",
+              "SerrePositivity/InfinityCategories/Derived/DGModuleConePushout.lean:8 (1.3.1.10)",
+              "SerrePositivity/InfinityCategories/Derived/SpanTwoPrefixBianchi.lean:9 (1.3.1.10)"
+            ]
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "augmented.*KanExtension|KanExtension.*augmented|simplicial.*Kan.*extension",
+          "files_with_matches": 33,
+          "total_matching_lines": 53,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCompletedCylinder.lean",
+            "SerrePositivity/InfinityCategories/F1/Pointed/AcyclicFibrationLifting.lean",
+            "SerrePositivity/InfinityCategories/F1/Pointed/BoundaryNormalization.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/KanLocalizedComparisonResolution.lean",
+            "SerrePositivity/HomotopicalAlgebra/GeneralTools.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanPullbackDeformation.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryKanBarMappingClasses.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoPushoutEquivalence.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoStrictExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanLocalizedMonoLifting.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanHomotopyExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanFibrationEndpointExtension.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "augmented.*KanExtension|KanExtension.*augmented|simplicial.*Kan.*extension",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        "SerrePositivity/InfinityCategories/Stable/Bicartesian.lean",
+        "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderSkeletonColimit.lean"
+      ],
+      "reason": "左・右 Kan 拡張の判定と安定 ∞ 圏の押し出し・引き戻しの同値を調べた。最高次数と増大次数をそれぞれ切り落とす二つの制限に対し、この同じ F の Kan 拡張条件を比較する型は確認できなかった。"
+    },
     "1.3.1.7": {
       "ha_page": 82,
       "citation_scan": {
