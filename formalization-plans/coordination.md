@@ -10,11 +10,13 @@
 | レーン | 道具 | 担当 | worktree・枝 | 入口 | 状態（11-07） |
 | --- | --- | --- | --- | --- | --- |
 | 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design-status.md` | — |
-| Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`・`research/kerodon-review-a`（並行するときは -b・-c） | `research/kerodon-coverage/codex-review.md` | 進行中（段 1′） |
-| KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | 未定 | `stage-ii/kerodon-layout-w1.md` | Kerodon の確認の後 |
+| Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`（枝 `research/kerodon-review-a2`）・`-b`・`-c` | `research/kerodon-coverage/codex-review.md` | Ch 1〜6 は main（11-07）。-b が Ch 4・5 の none をやり直し中、-c が Ch 7〜10、その後 §7.3 の抜き取り |
+| HA の確認 | Codex | HA 第 1 章の全項目と第 2〜7 章の引用項目の対応表 | `SerrePositivity-ha-review`・`research/ha-review` | `research/ha-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
+| K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | `SerrePositivity-k-maps`・`research/k-maps` | `research/k-coverage/codex-maps.md` | 開始（11-07 夜）、段 0 |
+| KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 2・3 は Kerodon の確認と抜き取りの後 |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
-| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BM18 の経路 B | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-doc1.md`・`bhatt-scholze-codex-w11.md` | BS-DOC1 完了（11-07）、BS-W11 進行中（A-2・B-2 は main） |
-| ⑤b BS 実装 | Codex | D68 の直接証明（A1-3） | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d68.md` | 段 1 進行中（11-07） |
+| ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w12.md` | BS-W12 段 1（B1）は main（2553b6e93）、段 2 進行中 |
+| ⑤b BS 実装 | Codex | D68 の直接証明（A1-3） | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d68.md` | 停止点 1 と段 2 の途中は main（49d0ca4f1）、段 2 進行中 |
 | ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 

@@ -5,6 +5,7 @@
 - `items.csv` の列：`reference`、`item`、`kind`、`statement`、`status`（`proved`・`partial`・`interface`（仮定として置いている）・`sorry`・`frozen`（凍結コード）・`none`）、`goal`（目標 B に要るか：`required`・`not_required`・`unknown`）、`declarations`、`used_for`、`plan`、`note`、`confidence`。
 - 判定の方法：計画書・Lean の宣言名と docstring・原典（arXiv にあるもの）の照合。**Lean を動かしての確認はしていない**。KST/・InfinityCategories/・DifferentialGraded/ に sorry は 0 件なので、未完の部分は `none` か `interface` になる。
 - 一覧のページ（非公開の Artifact）：https://claude.ai/artifact/FXYE7BDWZeeXxswJxYRrke
+- 文献ごとの全項目の表（11-07 夜〜、Codex）：依頼は `codex-maps.md`、結果は `maps/`。この `items.csv` は書き換えない。
 
 ## 調査で見つかった、K の計画の問題（要検討）
 
