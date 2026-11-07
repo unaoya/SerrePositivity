@@ -27,21 +27,23 @@
 - `3c527f9d3` の `completedFreeDelta_completelyFlat` は剰余の完全平坦性を基底の二元イデアルについての完全平坦性へ持ち上げる。`exists_prismaticEnvelope_of_variables` は元の草稿の型どおり、指定変数に沿う有界で完全平坦な envelope の存在を与える。
 - `db972ebfb` の `affineEnvelopeTerm` は第 0 copy を固定した差座標変換で次数ごとの envelope を構成する。`cechAlexanderAffine` はこれらを小さい affine 模型に組み立てる。`polyCosimplicialAlgebra` はその基底上の余単体的可換代数で、既存の古典的な `prismSiteAlgebras` を使う。
 
+- `05e3a847a` の `exists_unique_dgHom` は、η⁰ を経由する係数作用と η¹ の平方零から外積への延長を作り、次数 0・1 の照合、微分との両立、一意性を示す。
+
 ### ビルドと監査
 
-- main `f48441f89` を `818923803` で取り込み、続いて main `a0e4c7d36` を `43bae15b0` で取り込んだ。作業パスを ⑤a の追跡差分・作業木と照合した。
-- `scripts/refactor/with_build_lock.sh --wait 1800 -- lake build …` で、新規 36 モジュールすべての対象ビルドが成功した（4,073 jobs）。警告は残る。
-- Lake の成果物を import する一時ファイルの `#print axioms` で 187 宣言を確認した。依存公理は `propext`、`Classical.choice`、`Quot.sound` のみ。新規本体の sorry・admit・独自公理は各 0。
-- 新規モジュールから本体の 310 モジュールをたどり、E3 界面と `InfinityCategories` に到達する経路は 0。既存の本体宣言の変更と、⑤a とのパスの重複も 0。
+- main `f48441f89` を `818923803` で取り込み、続いて main `a0e4c7d36` を `43bae15b0` で取り込んだ。de Rham の普遍性の実装後、main `81e593fb9` を `441b1d5fa` で取り込んだ。作業パスを ⑤a の追跡差分・作業木と照合した。
+- `scripts/refactor/with_build_lock.sh --wait 1800 -- lake build …` で、新規 37 モジュールすべての対象ビルドが成功した（4,074 jobs）。警告は残る。
+- Lake の成果物を import する一時ファイルの `#print axioms` で 188 宣言を確認した。依存公理は `propext`、`Classical.choice`、`Quot.sound` のみ。新規本体の sorry・admit・独自公理は各 0。
+- 新規モジュールから本体の 311 モジュールをたどり、E3 界面と `InfinityCategories` に到達する経路は 0。既存の本体宣言の変更と、⑤a とのパスの重複も 0。
 
 ### 残り
 
-- de Rham の dg 代数としての普遍性 `exists_unique_dgHom` と、コホモロジー上の cup 積の次数付き可換性。A0 の余積性と site の大域切断との比較は草稿に残る。
+- コホモロジー上の cup 積の次数付き可換性 `cohomologyCup_comm`。次数 0 の場合は頂点での値が一致することから示せる。正次数同士は cup₁ の余鎖ホモトピーと余境界への降下が残る。A0 の余積性と site の大域切断との比較は草稿に残る。
 - 段 1 の途中経過であり、停止点 1 の検収は残る宣言を閉じた後に行う。
 
 ### 取り込み時の登録対象
 
-以下の 36 本。うち 27 本は先に報告済み。
+以下の 37 本。うち 27 本は先に報告済み。
 
 ```text
 SerrePositivity.BhattScholze.Delta.DividedPower.FreeDP
@@ -66,6 +68,7 @@ SerrePositivity.CommutativeAlgebra.DeRham.Graded
 SerrePositivity.CommutativeAlgebra.DeRham.Polynomial
 SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCompletion
 SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
+SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
 SerrePositivity.HomologicalAlgebra.Cosimplicial.Algebra
 SerrePositivity.HomologicalAlgebra.Cosimplicial.Bockstein
 SerrePositivity.HomologicalAlgebra.Cosimplicial.BocksteinClass
