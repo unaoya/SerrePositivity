@@ -1,0 +1,2 @@
+# Per-module Lean probes and raw process/build/kernel output stay local.
+/runs/*/modules/
