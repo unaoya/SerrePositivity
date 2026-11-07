@@ -1,6 +1,6 @@
 {
   "source_base": "81e593fb9",
-  "citation_scan": "Lean docstrings and module documentation containing Kerodon, indexed by item/subsection number",
+  "citation_scan": "Original 9711-reference citations.csv inventory and direct Lean docstring/module-doc scan. Same-subsection item ranges are expanded.",
   "mathlib_rev": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "items": {
     "10.1.1.1": {
