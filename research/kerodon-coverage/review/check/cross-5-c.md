@@ -345,3 +345,29 @@ CategoryTheory.SimplicialNerve.{u_1, u_2} : (C : Type u_2) → [inst : CategoryT
 @CategoryTheory.Pseudofunctor.CoGrothendieck.{u_1, u_2, u_3, u_4} : {𝒮 : Type u_3} → [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] → @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)} (CategoryTheory.LocallyDiscrete.{u_3} (Opposite.{u_3 + 1} 𝒮)) (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} (Opposite.{u_3 + 1} 𝒮) (@CategoryTheory.Category.opposite.{u_1, u_3} 𝒮 inst)) CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4} → Type (max u_3 u_4)
 @CategoryTheory.Pseudofunctor.CoGrothendieck.category.{u_1, u_2, u_3, u_4} : {𝒮 : Type u_3} → [inst : CategoryTheory.Category.{u_1, u_3} 𝒮] → {F : @CategoryTheory.Pseudofunctor.{u_1, max u_4 u_2, u_1, max u_4 u_2, u_3, max (u_4 + 1) (u_2 + 1)} (CategoryTheory.LocallyDiscrete.{u_3} (Opposite.{u_3 + 1} 𝒮)) (@CategoryTheory.locallyDiscreteBicategory.{u_1, u_3} (Opposite.{u_3 + 1} 𝒮) (@CategoryTheory.Category.opposite.{u_1, u_3} 𝒮 inst)) CategoryTheory.Cat.{u_2, u_4} CategoryTheory.Cat.bicategory.{u_2, u_4}} → CategoryTheory.Category.{max u_1 u_2, max u_4 u_3} (@CategoryTheory.Pseudofunctor.CoGrothendieck.{u_1, u_2, u_3, u_4} 𝒮 inst F)
 ```
+
+## 追加の型確認
+
+指定の共有ビルドロックを通し、該当モジュールの import と `#check` を実行した。
+
+### 5.3.7.3
+
+```lean
+@isCartesianEdge_coconeRestriction_of_apex : ∀ {K X : SSet} [X.Quasicategory]
+  {f g : (join K (SSet.stdSimplex.obj { len := 0 }) ⟹ X).obj (Opposite.op { len := 0 })} (e : SSet.Truncated.Edge f g),
+  IsInvertibleEdge (e.map ((SSet.truncation 2).map (coconeApexEvaluation K X))) →
+    IsCartesianEdge (coconeRestriction K X) e.edge
+```
+
+### 5.4.4.1
+
+```lean
+@isCartesianEdge_of_rightFibration : ∀ {X B : SSet} (p : X ⟶ B) [RightFibration p]
+  (e : X.obj (Opposite.op { len := 1 })), IsCartesianEdge p e
+@isCocartesianEdge_of_leftFibration : ∀ {X B : SSet} (p : X ⟶ B) [LeftFibration p]
+  (e : X.obj (Opposite.op { len := 1 })), IsCocartesianEdge p e
+@sliceOverProjection_rightFibration : ∀ {K X : SSet} [X.Quasicategory] (p : K ⟶ X),
+  RightFibration (sliceOverProjection p)
+@sliceUnderProjection_leftFibration : ∀ {K X : SSet} [X.Quasicategory] (p : K ⟶ X),
+  LeftFibration (sliceUnderProjection p)
+```
