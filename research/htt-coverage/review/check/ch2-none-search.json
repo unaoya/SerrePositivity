@@ -288,104 +288,6 @@
     ],
     "decision": "内アノダインとなる左右の結合角と、片側が一点の場合の左アノダイン包含を読んだが、左因子が左アノダインで右因子が任意の包含である一般の結合角は見つからなかった。"
   },
-  "2.1.3.5": {
-    "page": 68,
-    "citations": {
-      "item": 0,
-      "subsection": 0,
-      "neighboring_subsections": [
-        "2.1.2",
-        "2.1.3",
-        "2.1.4"
-      ],
-      "files": {
-        "SerrePositivity/InfinityCategories/DGNerve/SliceBoundaryFromJoinFaces.lean": 2,
-        "SerrePositivity/InfinityCategories/Core/IntervalBoundary.lean": 1,
-        "SerrePositivity/InfinityCategories/Core/Slice.lean": 2,
-        "SerrePositivity/InfinityCategories/Core/SliceMap.lean": 23,
-        "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean": 3,
-        "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean": 2,
-        "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean": 2,
-        "SerrePositivity/InfinityCategories/Core/JoinCells.lean": 25,
-        "SerrePositivity/InfinityCategories/Core/RightFibration.lean": 15,
-        "SerrePositivity/InfinityCategories/Core/Join.lean": 7,
-        "SerrePositivity/InfinityCategories/Core/JoinLifting.lean": 21,
-        "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean": 5
-      }
-    },
-    "searches": [
-      {
-        "root": "SerrePositivity",
-        "argv": [
-          "rg",
-          "--count",
-          "--glob",
-          "*.lean",
-          "--glob",
-          "!**/Archive/**",
-          "-e",
-          "[Cc]ontractible.*[Ff]iber|[Ff]iber.*[Cc]ontractible|[Cc]ontractible.*[Hh]omotopyEquivalence|[Hh]omotopyEquivalence.*[Cc]ontractible|leftFibration_fibration_of_kanComplex",
-          "SerrePositivity"
-        ],
-        "file_count": 193,
-        "line_count": 431
-      },
-      {
-        "root": ".lake/packages/mathlib/Mathlib",
-        "argv": [
-          "rg",
-          "--count",
-          "--glob",
-          "*.lean",
-          "--glob",
-          "!**/Archive/**",
-          "-e",
-          "[Cc]ontractible.*[Ff]iber|[Ff]iber.*[Cc]ontractible|[Cc]ontractible.*[Hh]omotopyEquivalence|[Hh]omotopyEquivalence.*[Cc]ontractible|leftFibration_fibration_of_kanComplex",
-          ".lake/packages/mathlib/Mathlib"
-        ],
-        "file_count": 0,
-        "line_count": 0
-      }
-    ],
-    "examined": [
-      {
-        "file": "SerrePositivity/InfinityCategories/Core/ContractibleKan.lean",
-        "signatures": [
-          {
-            "line": 24,
-            "head": "def IsContractibleKan (K : SSet.{u}) : Prop :="
-          },
-          {
-            "line": 32,
-            "head": "lemma isContractibleKan_iff_trivialKanFibration (K : SSet.{u}) :"
-          }
-        ]
-      },
-      {
-        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftKanFibration.lean",
-        "signatures": [
-          {
-            "line": 52,
-            "head": "lemma leftFibration_fibration_of_kanComplex {X Y : SSet.{u}}"
-          }
-        ]
-      },
-      {
-        "file": "Mathlib/AlgebraicTopology/ModelCategory/Homotopy.lean",
-        "signatures": [
-          {
-            "line": 20,
-            "head": "Using the factorization lemma by K. S. Brown, we deduce versions of the Whitehead"
-          },
-          {
-            "line": 21,
-            "head": "theorem (`LeftHomotopyClass.whitehead` and `RightHomotopyClass.whitehead`)"
-          }
-        ]
-      }
-    ],
-    "decision": "左右のファイブレーションで可縮繊維を使う境界充填を確認したが、指定された輸送が可縮な両繊維間のホモトピー同値であることを使って 2.1.3.1 から導く形は見つからなかった。"
-  },
   "2.1.4.1": {
     "page": 68,
     "citations": {
@@ -2655,5 +2557,343 @@
       }
     ],
     "decision": "内部 Hom の準圏性と離散空間の述語を読んだが、写像空間が一様に n-切断なら任意の関手準圏の写像空間も n-切断となる宣言は見つからなかった。"
+  },
+  "2.4.2.11": {
+    "page": 125,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]ocally[Cc]artesian|locally Cartesian|[Cc]artesian.*[Ff]iber|[Ff]iber.*[Cc]artesian|cartesianEdges_preserved_of_target_lifts",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 613
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]ocally[Cc]artesian|locally Cartesian|[Cc]artesian.*[Ff]iber|[Ff]iber.*[Cc]artesian|cartesianEdges_preserved_of_target_lifts",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 12,
+        "line_count": 26
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isCartesianEdge_pullback {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)"
+          },
+          {
+            "line": 46,
+            "head": "lemma isCocartesianEdge_pullback {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma cartesianEdges_preserved_of_target_lifts {E F B C : SSet.{u}}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/FiberwiseEssentialSurjectivity.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isEssentiallySurjective_of_vertexFiberMap {E F B : SSet.{u}}"
+          },
+          {
+            "line": 43,
+            "head": "lemma isEssentiallySurjective_of_vertexFiberMap_equivalence {E F B : SSet.{u}}"
+          }
+        ]
+      }
+    ],
+    "decision": "引き戻しによる Cartesian 辺の保存と、指定した大域的持ち上げを保つ比較を読んだが、頂点繊維の局所性から比較射の局所性を導く判定は見つからなかった。"
+  },
+  "2.4.2.12": {
+    "page": 126,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.1",
+        "2.4.2",
+        "2.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]ocally[Cc]artesian|locally Cartesian|[Cc]artesian.*[Cc]ounterexample|cartesianFibration_comp|cartesianEdges_preserved_of_target_lifts",
+          "SerrePositivity"
+        ],
+        "file_count": 6,
+        "line_count": 7
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ll]ocally[Cc]artesian|locally Cartesian|[Cc]artesian.*[Cc]ounterexample|cartesianFibration_comp|cartesianEdges_preserved_of_target_lifts",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 6,
+        "line_count": 6
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 122,
+            "head": "instance cartesianFibration_comp {X Y B : SSet.{u}} (p : X ⟶ Y) (q : Y ⟶ B)"
+          },
+          {
+            "line": 141,
+            "head": "instance cocartesianFibration_comp {X Y B : SSet.{u}} (p : X ⟶ Y) (q : Y ⟶ B)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/CartesianPreservation.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma cartesianEdges_preserved_of_target_lifts {E F B C : SSet.{u}}"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/FiberedCategory/Fibered.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Functor.IsPreFibered (p : 𝒳 ⥤ 𝒮) : Prop where"
+          },
+          {
+            "line": 58,
+            "head": "protected lemma IsPreFibered.exists_isCartesian (p : 𝒳 ⥤ 𝒮) [p.IsPreFibered] {a : 𝒳} {R S : 𝒮}"
+          }
+        ]
+      }
+    ],
+    "decision": "大域的な Cartesian ファイブレーションの合成と大域的な辺の保存条件を調べたが、局所版の繊維判定が大域版では失敗する反例は見つからなかった。"
+  },
+  "2.4.7.1": {
+    "page": 139,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Tt]wo.sided.*[Ff]ibration|exists_cartesian_unitComma_lift|isCartesianEdge_unitCommaSource_of_target",
+          "SerrePositivity"
+        ],
+        "file_count": 5,
+        "line_count": 6
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Tt]wo.sided.*[Ff]ibration|exists_cartesian_unitComma_lift|isCartesianEdge_unitCommaSource_of_target",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitCommaTransport.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma exists_cartesian_unitComma_lift {X Y : SSet.{u}}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitCommaCartesianEdge.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isCartesianEdge_unitCommaSource_of_target {X Y : SSet.{u}}"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Profunctor/Basic.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "structure ProfunctorCore where"
+          },
+          {
+            "line": 53,
+            "head": "abbrev Profunctor := C ⥤ Dᵒᵖ ⥤ Type w"
+          }
+        ]
+      }
+    ],
+    "decision": "この注記は後続章で使う帰結を指定する。対応する comma 射影の型を確認したが、注記そのものに相当する数学的宣言はない。"
+  },
+  "2.4.7.2": {
+    "page": 139,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "2.4.6",
+        "2.4.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Tt]wo.sided.*[Ff]ibration|quillenCfCollageProjection_cartesianFibration|[Ll]eftFibration|[Rr]ightFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 1640,
+        "line_count": 7759
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Tt]wo.sided.*[Ff]ibration|quillenCfCollageProjection_cartesianFibration|[Ll]eftFibration|[Rr]ightFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration :"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RightFibration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def rightFibrations : MorphismProperty SSet.{u} := rightHornInclusions.rlp"
+          },
+          {
+            "line": 34,
+            "head": "def leftFibrations : MorphismProperty SSet.{u} := leftHornInclusions.rlp"
+          },
+          {
+            "line": 41,
+            "head": "class RightFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma horn_ι_mem_innerHornInclusions {n : ℕ} {i : Fin (n + 1)}"
+          },
+          {
+            "line": 44,
+            "head": "lemma innerHornInclusions_eq_iSup :"
+          }
+        ]
+      }
+    ],
+    "decision": "左右のホーン持ち上げと Quillen 対応圏の区間射影を読んだが、積の片側で退化する外ホーンを左右で要求する HTT の二変数の述語は見つからなかった。"
   }
 }
