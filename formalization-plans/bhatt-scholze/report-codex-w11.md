@@ -106,3 +106,12 @@ main の `6dd825028` を `math/bs-impl` に取り込み、指示書 §4 の承�
 ### 取り込み時の登録
 
 - 新規登録モジュールは `SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction` の 1 本。共通入口 `SerrePositivity/BhattScholze.lean` と BS 監査スクリプトへの登録、および登録後の単独監査は調整役が行う。A-2 で検収を待つ。
+
+## BS-W11 停止点 B-1（2026-11-07）
+
+A-2 取り込みと監査の登録を含む main `2d79d1de2` まで `math/bs-impl` を fast-forward した。
+
+- `drafts/A6/ArcSite.lean` の G-A6-11・G-A6-3 と、`ArcSheafProperty.lean` の 1c・G-A6-6 を一時ファイルに写し、`lake env lean -DrelaxedAutoImplicit=false` で型検査した。28 宣言（構造体とインスタンスを含む）、壁時計 10.12 秒、終了コード 0。対象の仮定、結論、根添加の表示、Milnor 列の脚を下書きと揃えた。完備化・体拡大の 2 宣言には下書きどおり重複する素数性のインスタンスがあり、型検査では警告が出る。
+- tilt の二つの定理が参照する `tiltRing` と `tiltRingEquivPreTilt` も同じ下書きにあるので、比較のため同じ型で定義した。原典の逆極限に沿い、mod p が零環なら零環、そうでなければ `PreTilt`。対象の p 完備環では、この分岐は下書きの零環の場合分けに一致する。
+- 一時ファイルに未証明箇所 14 件。B-2 の根の塔、テンソルと延長、Milnor 短完全列から進め、B-3 では付値環の拡大と tilt・untilt を扱う。W12 から使う 1c は任意の付値環と素イデアルを取る形を維持する。忠実平坦な拡大は p 完備かつ階数 1 のまま扱う。
+- 一時ファイルの import から本体 470 モジュールをたどり、E3 への経路は 0。⑤b の差分・作業パスと予定する対象の重複は 0。新規本体モジュールはこの停止点では 0 本。移行先は A6 の配置規則に従い `BhattScholze/Perfectoidization/Derived/`。型が揃ったので証明に進む。
