@@ -454,9 +454,9 @@
 [Kerodon Tag 02XD](https://kerodon.net/tag/02XD) corresponds to declaration 'SerrePositivity.InfinityCategories.isColimitCone_of_initialBoundaryLifting_coconeRestriction'.
 [Kerodon Tag 02XD](https://kerodon.net/tag/02XD) corresponds to declaration 'SerrePositivity.InfinityCategories.isLimitCone_iff_terminalBoundaryLifting_coneRestriction'.
 [Kerodon Tag 02XJ](https://kerodon.net/tag/02XJ) corresponds to declaration 'SerrePositivity.InfinityCategories.exists_pointwiseLimitCone'.
-[Kerodon Tag 02XJ](https://kerodon.net/tag/02XJ) corresponds to declaration 'SerrePositivity.KST.SConstruction.exists_pointwiseColimitCone'.
+[Kerodon Tag 02XJ](https://kerodon.net/tag/02XJ) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseColimitCone'.
 [Kerodon Tag 02XP](https://kerodon.net/tag/02XP) corresponds to declaration 'SerrePositivity.InfinityCategories.isLimitCone_of_pointwise'.
-[Kerodon Tag 02XP](https://kerodon.net/tag/02XP) corresponds to declaration 'SerrePositivity.KST.SConstruction.isColimitCone_of_pointwise'.
+[Kerodon Tag 02XP](https://kerodon.net/tag/02XP) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_pointwise'.
 [Kerodon Tag 02XP](https://kerodon.net/tag/02XP) corresponds to declaration 'SerrePositivity.KST.SConstruction.isInitialVertex_functorVertex_of_pointwise'.
 [Kerodon Tag 02Y9](https://kerodon.net/tag/02Y9) corresponds to declaration 'SerrePositivity.InfinityCategories.IsRightKanExtension'.
 [Kerodon Tag 02Y9](https://kerodon.net/tag/02Y9) corresponds to declaration 'SerrePositivity.InfinityCategories.RightKanConeTransport'.
@@ -612,10 +612,10 @@
 [Kerodon Tag 05HX](https://kerodon.net/tag/05HX) corresponds to declaration 'SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne'.
 [Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.IsPointwiseLimitCone'.
 [Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.evaluateFunctorCone'.
-[Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.KST.SConstruction.IsPointwiseColimitCone'.
+[Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone'.
 [Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits'.
-[Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.KST.SConstruction.hasColimit_of_hasPointwiseColimits'.
-[Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.KST.SConstruction.isColimitCone_iff_pointwise_of_hasPointwiseColimits'.
+[Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_hasPointwiseColimits'.
+[Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_pointwise_of_hasPointwiseColimits'.
 [Kerodon Tag 05QQ](https://kerodon.net/tag/05QQ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallLimits'.
 [Kerodon Tag 05QQ](https://kerodon.net/tag/05QQ) corresponds to declaration 'SerrePositivity.InfinityCategories.hasLimit_coherentSpaceDiagram'.
 [Kerodon Tag 05QT](https://kerodon.net/tag/05QT) corresponds to declaration 'SerrePositivity.InfinityCategories.LeftTransportRepresentation'.

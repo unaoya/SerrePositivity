@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.FunctorInitialBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorInitialBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.Pointed
 public import Mathlib.Tactic.CrossRefAttribute
@@ -49,7 +49,7 @@ lemma isInitialVertex_functorVertex_of_pointwise {K X : SSet.{u}} (f : K ⟶ X)
     intro m s hs
     have hs₂ : s.2 ∉ (boundary (n + 1)).obj (Opposite.op ⦋m + 1⦌) :=
       fun h ↦ hs ⟨by trivial, h⟩
-    have he₂ := simplexFirstVertex_stdSimplex_of_notMem_boundary s.2 hs₂
+    have he₂ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexFirstVertex_stdSimplex_of_notMem_boundary s.2 hs₂
     have ha : a.app (Opposite.op ⦋0⦌) ⟨simplexFirstVertex s, hA _⟩ =
         f.app (Opposite.op ⦋0⦌) (simplexFirstVertex s.1) := by
       change (uncurry b).app (Opposite.op ⦋0⦌)

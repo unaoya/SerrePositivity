@@ -24,7 +24,7 @@ open scoped Simplicial
 使われ方：零脚 span の場合に安定性から存在を供給する。 -/
 lemma colimitInterchange_initialBoundary {J K C : SSet.{u}} [Quasicategory C]
     (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj C)
-    (houter : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
+    (houter : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
     (hinner : ∀ j : J _⦋0⦌, InitialBoundaryLifting (coconeRestriction K C)
       ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j))
     (hex : ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
@@ -39,17 +39,17 @@ lemma colimitInterchange_initialBoundary {J K C : SSet.{u}} [Quasicategory C]
       InitialBoundaryLifting (coconeRestriction K C) (G.app (Opposite.op ⦋0⦌) j) :=
     fullSubcomplexOnVertices_vertex (H.app (Opposite.op ⦋0⦌) j)
   let cF : JoinCocone (joinInl J Δ[0] ≫ F) := ⟨F, rfl⟩
-  have hp : HasPointwiseColimits (joinInl J Δ[0] ≫ F) := fun k ↦
-    ⟨evaluateFunctorCocone cF k, houter k⟩
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasPointwiseColimits (joinInl J Δ[0] ≫ F) := fun k ↦
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorCocone cF k, houter k⟩
   have hFr := isColimitCone_reindex_of_hasPointwiseColimits hp cF
-    (isColimitCone_of_pointwise cF houter) (joinInl K (Δ[0] : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_pointwise cF houter) (joinInl K (Δ[0] : SSet.{u}))
   have hGo : IsColimitCone (⟨G ≫ coconeRestriction K C, rfl⟩ :
       JoinCocone (joinInl J Δ[0] ≫ G ≫ coconeRestriction K C)) := by
     let dG : JoinCocone (joinInl J Δ[0] ≫ G ≫ coconeRestriction K C) :=
       ⟨G ≫ coconeRestriction K C, rfl⟩
     have hval : (reindexFunctorCocone cF (joinInl K Δ[0])).val = dG.val := hG.symm
     exact (isColimitCone_iff_of_val_eq _ dG hval).1 hFr
-  have hFu := doubleCocone_initial_outer_inner F (isColimitCone_of_pointwise cF houter) hinner
+  have hFu := doubleCocone_initial_outer_inner F (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_pointwise cF houter) hinner
   have hGu := doubleCocone_initial_inner_outer G hGi hGo
   have he : (doubleCoconeRestriction J K C).app (Opposite.op ⦋0⦌) (functorVertex F) =
       (doubleCoconeRestriction J K C).app (Opposite.op ⦋0⦌) (functorVertex G) := by

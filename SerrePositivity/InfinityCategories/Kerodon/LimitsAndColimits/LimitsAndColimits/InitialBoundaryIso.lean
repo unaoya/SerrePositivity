@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -45,4 +45,4 @@ lemma initialBoundaryLifting_map_iso {E B E' B' : SSet.{u}}
       Category.comp_id]
 
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CofiberFamilies
 public import SerrePositivity.KST.SConstruction.ArCofiberFamily
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits
 public import SerrePositivity.KST.SConstruction.FunctorInitialVertices
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 
@@ -93,7 +93,7 @@ def cofiberFamilyTriangle {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) : ZeroT
 使われ方：Ar[n] 全体の cofiber 補完と押し出しの貼り合わせ。 -/
 lemma cofiberFamilyTriangle_isCofiber {A C : SSet.{u}} [Quasicategory C]
     (H : A ⟶ cofiberDiagrams C) : IsCofiberSequence (cofiberFamilyTriangle H) := by
-  apply isPushoutSquare_of_pointwise (cofiberFamilySquare H)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise (cofiberFamilySquare H)
   intro a
   rw [cofiberFamilySquare_evaluate]
   exact (fullSubcomplexOnVertices_vertex (H.app (Opposite.op ⦋0⦌) a)).2

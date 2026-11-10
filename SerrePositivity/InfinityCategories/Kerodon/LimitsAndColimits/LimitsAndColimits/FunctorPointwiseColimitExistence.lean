@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
@@ -14,7 +14,7 @@ public import Mathlib.Tactic.CrossRefAttribute
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -117,4 +117,4 @@ lemma isPushoutSquare_iff_pointwise_of_hasPointwiseColimits {K X : SSet.{u}}
     IsPushoutSquare F ↔ ∀ k : K _⦋0⦌, IsPushoutSquare (F ≫ evaluateFunctorAt k) :=
   isColimitCone_iff_pointwise_of_hasPointwiseColimits hp (pushoutCocone F)
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits

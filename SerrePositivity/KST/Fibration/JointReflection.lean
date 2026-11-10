@@ -55,7 +55,7 @@ lemma JointlyReflectsSData.ihom {P X A : StableModel.{u}} {p : P ⟶ X} {q : P �
     rw [ihom_postcomp_evaluate] at hp' hq'
     exact h.zero _ hp' hq'
   pushout F hp hq := by
-    apply isPushoutSquare_of_pointwise
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
     intro k
     apply h.pushout
     · have hp' := (evaluateFunctorAt_preservesSConstructionData (C := X.carrier) k).2 _ hp

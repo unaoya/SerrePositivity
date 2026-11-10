@@ -28,7 +28,7 @@ def gappedInclusionZeroTriangle {n : ℕ} {C : SSet.{u}} [Quasicategory C] [HasZ
 規約：点ごとの存在を追加仮定しない。使われ方：包含の cofiber 保存。 -/
 lemma gappedInclusion_zeroSpan_hasPointwiseColimits {n : ℕ} {C : SSet.{u}}
     [Quasicategory C] [IsStable C] (t : ZeroTriangle (sConstruction n C)) :
-    HasPointwiseColimits (pushoutSpan t.square ≫ (gappedSubcomplex n C).ι) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasPointwiseColimits (pushoutSpan t.square ≫ (gappedSubcomplex n C).ι) := by
   let T := gappedInclusionZeroTriangle t
   have hp : IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ pushoutSpan T.square)) := by
     unfold IsZeroTargetArrow

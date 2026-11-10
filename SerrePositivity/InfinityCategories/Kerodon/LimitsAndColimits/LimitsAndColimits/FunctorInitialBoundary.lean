@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.RelativeInitialExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KSTSConstructionRelativeInitialExtension
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
 
@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -106,4 +106,4 @@ lemma initialBoundaryLifting_ihom_of_pointwise {K X Y : SSet.{u}}
     exact hFp
 
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits

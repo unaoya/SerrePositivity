@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.FiberFromZeroCospans
 public import SerrePositivity.KST.SConstruction.FunctorCofibers
 public import SerrePositivity.KST.SConstruction.FunctorZeroEvaluation
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimitExistence
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimitExistence
 public import SerrePositivity.KST.SConstruction.ZeroSpanChoices
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 
@@ -67,7 +67,7 @@ lemma functor_zeroCospan_hasPointwiseLimits {A C : SSet.{u}} [Quasicategory C] [
 規約：A は任意。使われ方：関手圏の押し出し性の反映。 -/
 lemma functor_zeroSpan_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
     (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C)
-    (hp : IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p))) : HasPointwiseColimits p := by
+    (hp : IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p))) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasPointwiseColimits p := by
   intro a
   apply hasColimit_zeroSpan (p ≫ evaluateFunctorAt a)
   exact zeroTargetArrow_evaluate (horn₂₀.ι₀₂ ≫ p) hp a
@@ -112,7 +112,7 @@ lemma functor_zeroTriangle_pushout_iff {A C : SSet.{u}} [Quasicategory C] [IsSta
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
     rw [← Category.assoc, spanSquareBoundary_leftEdge]
     exact t.zero_corner
-  exact isPushoutSquare_iff_pointwise_of_hasPointwiseColimits t.square
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_iff_pointwise_of_hasPointwiseColimits t.square
     (functor_zeroSpan_hasPointwiseColimits _ hp)
 
 /-- 概要：安定な標的を持つ任意の関手 quasicategory は安定。

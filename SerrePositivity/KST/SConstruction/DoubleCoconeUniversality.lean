@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeUniversalityComposition
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits
 
 /-! # 二方向の余錐補完の普遍性
 概要：二つの余錐方向をどちらから補完しても、固定された二重図式上の相対始対象を得る。
@@ -73,7 +73,7 @@ lemma doubleCocone_initial_outer_inner {J K C : SSet.{u}} [Quasicategory C]
       ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j)) :
     InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex F) := by
   exact InitialBoundaryLifting.comp _ _ houter.initialBoundaryLifting
-    (initialBoundaryLifting_ihom_of_pointwise (coconeRestriction K C) (joinInl J Δ[0] ≫ F) hinner)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_ihom_of_pointwise (coconeRestriction K C) (joinInl J Δ[0] ≫ F) hinner)
 
 /-- 概要：内側を全点で普遍補完し、制限後の外側も普遍なら二重補完は相対始対象。
 方針：内側の点ごとの相対普遍性と外側余極限の相対普遍性を逆順に合成する。
@@ -88,7 +88,7 @@ lemma doubleCocone_initial_inner_outer {J K C : SSet.{u}} [Quasicategory C]
     InitialBoundaryLifting (doubleCoconeRestriction J K C) (functorVertex F) := by
   rw [doubleCoconeRestriction_otherOrder]
   exact InitialBoundaryLifting.comp _ _
-    (initialBoundaryLifting_ihom_of_pointwise (coconeRestriction K C) F hinner)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.initialBoundaryLifting_ihom_of_pointwise (coconeRestriction K C) F hinner)
     houter.initialBoundaryLifting
 
 /-- 概要：同じ二重図式の上の二つの普遍補完は関手として同型。

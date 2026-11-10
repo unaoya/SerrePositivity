@@ -28,7 +28,7 @@ lemma reindex_jointReflection {K L M : SSet.{u}} (i : L ⟶ K) (j : M ⟶ K)
       change IsZeroVertex (((pre j).app B.carrier ≫ evaluateFunctorAt a).app _ v) at h
       rwa [stable_pre_evaluateFunctorAt] at h
   pushout F hi hj := by
-    apply isPushoutSquare_of_pointwise
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
     intro k
     obtain (⟨a, rfl⟩ | ⟨a, rfl⟩) := hc k
     · have h := (evaluateFunctorAt_preservesSConstructionData (C := B.carrier) a).2 _ hi

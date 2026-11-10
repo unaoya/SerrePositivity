@@ -25,7 +25,7 @@ lemma ihom_map_preservesCofiberData {A C D : SSet.{u}}
   · intro z hz
     exact functor_postcomp_isZeroVertex f hf.1 hz
   · intro t ht
-    apply isPushoutSquare_of_pointwise
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
     intro a
     rw [Category.assoc, ihom_postcomp_evaluate, ← Category.assoc]
     let T : ZeroTriangle C := ⟨t.square ≫ evaluateFunctorAt a,

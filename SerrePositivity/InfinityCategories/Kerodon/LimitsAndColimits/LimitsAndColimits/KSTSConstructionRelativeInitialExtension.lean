@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open CategoryTheory Limits SSet SSet.relativeCellComplexOfMono
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -71,4 +71,4 @@ lemma exists_lift_of_initial_first_vertices {B X Y : SSet.{u}} (A : B.Subcomplex
     exact hterm n _ _ hend hs
 
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits

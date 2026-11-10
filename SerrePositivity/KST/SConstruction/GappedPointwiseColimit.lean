@@ -50,7 +50,7 @@ lemma functorVertexEquiv_symm_pre {A B C : SSet.{u}} (i : A ⟶ B)
 lemma gapped_pointwiseColimit_zero_diagonal {n : ℕ} {C : SSet.{u}}
     [Quasicategory C] [HasZeroVertex C]
     (F : join (horn 2 0 : SSet.{u}) Δ[0] ⟶ (ihom (arNerve n)).obj C)
-    (hF : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
       (joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F)))
     (hg : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsGapped
       ((functorVertexEquiv (arNerve n) C).symm
@@ -68,7 +68,7 @@ lemma gapped_pointwiseColimit_zero_diagonal {n : ℕ} {C : SSet.{u}}
       ((joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F).app (Opposite.op ⦋0⦌) b))
     rw [← functorVertexEquiv_symm_evaluate]
     exact (hg b).1 i
-  have hz := zeroSpanColimit_all_vertices_zero (evaluateFunctorCocone c a) hc hp j
+  have hz := zeroSpanColimit_all_vertices_zero (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorCocone c a) hc hp j
   rw [functorVertexEquiv_symm_evaluate]
   exact hz
 
@@ -78,7 +78,7 @@ lemma gapped_pointwiseColimit_zero_diagonal {n : ℕ} {C : SSet.{u}}
 使われ方：S_n における点ごとの cofiber の構成。 -/
 lemma gapped_pointwiseColimit {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
     (F : join (horn 2 0 : SSet.{u}) Δ[0] ⟶ (ihom (arNerve n)).obj C)
-    (hF : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone
       (joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ F)))
     (hg : ∀ a : (horn 2 0 : SSet.{u}) _⦋0⦌, IsGapped
       ((functorVertexEquiv (arNerve n) C).symm
@@ -92,7 +92,7 @@ lemma gapped_pointwiseColimit {n : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStab
   intro i k hik
   let q := arSquare 0 i i k (Fin.zero_le _) le_rfl hik
   let B := F ≫ (pre q).app C
-  have hBo : IsPointwiseColimitCone (⟨B, rfl⟩ : JoinCocone
+  have hBo : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨B, rfl⟩ : JoinCocone
       (joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ B)) := hF.reindex q
   have hBi (b : (horn 2 0 : SSet.{u}) _⦋0⦌) : IsPushoutSquare
       (squareDiagram ((joinInl (horn 2 0 : SSet.{u}) Δ[0] ≫ B).app (Opposite.op ⦋0⦌) b)) := by

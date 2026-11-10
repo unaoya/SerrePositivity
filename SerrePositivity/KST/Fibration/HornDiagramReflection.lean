@@ -42,7 +42,7 @@ lemma innerTwoHorn_isPushoutSquare_of_edges {B : SSet.{u}} [Quasicategory B] [Is
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom (Λ[2, 1] : SSet.{u})).obj B)
     (h₀ : IsPushoutSquare (F ≫ (pre horn₂₁.ι₀₁).app B))
     (h₁ : IsPushoutSquare (F ≫ (pre horn₂₁.ι₁₂).app B)) : IsPushoutSquare F := by
-  apply isPushoutSquare_of_pointwise
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
   intro k
   obtain (⟨a, rfl⟩ | ⟨a, rfl⟩) := innerTwoHorn_vertex_cover k
   · have h := (evaluateFunctorAt_preservesSConstructionData (C := B) a).2 _ h₀

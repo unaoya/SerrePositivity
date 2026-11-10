@@ -30,7 +30,7 @@ lemma preservesCofiberData_of_evaluations {A K : SSet.{u}} {B : _root_.SerrePosi
     intro k
     exact (hf k).1 z hz
   · intro t ht
-    apply isPushoutSquare_of_pointwise
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
     intro k
     simpa only [Category.assoc] using (hf k).2 t ht
 

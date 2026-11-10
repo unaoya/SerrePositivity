@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndEvaluation
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConePushout
 public import SerrePositivity.InfinityCategories.Stable.FunctorLoopSquareCriterion
 
@@ -43,7 +43,7 @@ lemma dgModuleNaturalConeFullSquare_evaluation (x : P) :
 規約：主経路の追加仮定なし。使われ方：同じ元実逆回転の普遍比較。 -/
 lemma dgModuleNaturalConeFullSquare_isPushout :
     IsPushoutSquare (dgModuleNaturalConeFullSquare R D P F G η) := by
-  apply isPushoutSquare_of_pointwise
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
   intro k
   obtain ⟨x, rfl⟩ := Simplex.vertexEquiv.symm.surjective k
   have he := dgModuleNaturalConeFullSquare_evaluation R D P F G η x

@@ -54,5 +54,10 @@
   "SerrePositivity.KST.ProExcision.SimplexPairFaithfulEvaluation": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexPairFaithfulEvaluation",
   "SerrePositivity.KST.ProExcision.SimplexPairModel": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexPairModel",
   "SerrePositivity.KST.ProExcision.SimplexPairOperation": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexPairOperation",
-  "SerrePositivity.KST.ProExcision.SimplexPairOperationNaturality": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexPairOperationNaturality"
+  "SerrePositivity.KST.ProExcision.SimplexPairOperationNaturality": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexPairOperationNaturality",
+  "SerrePositivity.KST.SConstruction.FunctorInitialBoundary": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorInitialBoundary",
+  "SerrePositivity.KST.SConstruction.FunctorPointwiseColimitExistence": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimitExistence",
+  "SerrePositivity.KST.SConstruction.FunctorPointwiseColimits": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits",
+  "SerrePositivity.KST.SConstruction.InitialBoundaryIso": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryIso",
+  "SerrePositivity.KST.SConstruction.RelativeInitialExtension": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KSTSConstructionRelativeInitialExtension"
 }

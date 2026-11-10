@@ -315,4 +315,8 @@ Python の単体試験 11 件が通過し、差分表から 22 行すべての�
 python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"
 ```
 
-[`kl-module-map.json`](../../scripts/refactor/targets/kl-module-map.json) は旧 import から新 import への対応表で、[`kl-namespace-map.json`](../../scripts/refactor/targets/kl-namespace-map.json) の `modules` にも同じ対応が入る。プレビューの `review.json` で保留箇所を確認し、検査したソースを枝に反映する。移動先と旧名の両方が必要な場合、旧名を公開する互換モジュールを明示的に import する。現時点の改名表と上記の検証は AW 群を対象とする。段 3 全体の停止条件は未達。
+[`kl-module-map.json`](../../scripts/refactor/targets/kl-module-map.json) は旧 import から新 import への対応表で、[`kl-namespace-map.json`](../../scripts/refactor/targets/kl-namespace-map.json) の `modules` にも同じ対応が入る。プレビューの `review.json` で保留箇所を確認し、検査したソースを枝に反映する。移動先と旧名の両方が必要な場合、旧名を公開する互換モジュールを明示的に import する。現時点の改名表は、この報告で移動済みとした群を対象とする。段 3 全体の停止条件は未達。
+
+### 関手圏の各点ごとの余極限
+
+`KST/SConstruction/FunctorPointwiseColimitExistence` と同じ群に属する依存 4 本を Kerodon §7.1 の `LimitsAndColimits/LimitsAndColimits/` に移した。利用側 19 本を更新し、∞ 圏の外で参照される 11 名を `Project/Compatibility/KSTPointwiseColimits.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 5 本、互換モジュール、利用側の `KST.SConstruction.FunctorInitialVertices` を検査した。保存比較 v3b は 18 宣言で PASS、未説明差分 0 件。

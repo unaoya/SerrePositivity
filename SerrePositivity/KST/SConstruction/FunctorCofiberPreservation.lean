@@ -55,7 +55,7 @@ lemma functor_postcomp_isZeroVertex {A C D : SSet.{u}} [Quasicategory C] [Quasic
 lemma functor_reindex_preserves_cofiber {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
     (i : A ⟶ B) (t : ZeroTriangle ((ihom B).obj C)) (ht : IsCofiberSequence t) :
     IsPushoutSquare (t.square ≫ (pre i).app C) := by
-  apply isPushoutSquare_of_pointwise
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
   intro a
   rw [Category.assoc, stable_pre_evaluateFunctorAt]
   exact (functor_zeroTriangle_pushout_iff t).1 ht _
@@ -69,7 +69,7 @@ lemma functor_postcomp_preserves_cofiber {A C D : SSet.{u}}
     (f : C ⟶ D) (hf : PreservesSConstructionData f)
     (t : ZeroTriangle ((ihom A).obj C)) (ht : IsCofiberSequence t) :
     IsPushoutSquare (t.square ≫ (ihom A).map f) := by
-  apply isPushoutSquare_of_pointwise
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
   intro a
   rw [Category.assoc, ihom_postcomp_evaluate, ← Category.assoc]
   exact hf.2 _ ((functor_zeroTriangle_pushout_iff t).1 ht a)

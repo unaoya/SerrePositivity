@@ -49,7 +49,7 @@ lemma squareDiagram_pushout_iff_initialBoundary {C : SSet.{u}} [Quasicategory C]
 使われ方：零脚の場合は安定性が存在を供給する。 -/
 lemma pushoutInterchange {J C : SSet.{u}} [Quasicategory C]
     (F : join J (Δ[0] : SSet.{u}) ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)
-    (houter : IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
+    (houter : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨F, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ F)))
     (hinner : ∀ j : J _⦋0⦌,
       IsPushoutSquare (squareDiagram ((joinInl J Δ[0] ≫ F).app (Opposite.op ⦋0⦌) j)))
     (hex : ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
@@ -57,7 +57,7 @@ lemma pushoutInterchange {J C : SSet.{u}} [Quasicategory C]
     ∀ j : (join J (Δ[0] : SSet.{u})) _⦋0⦌,
       IsPushoutSquare (squareDiagram (F.app (Opposite.op ⦋0⦌) j)) := by
   let B := F ≫ (pre spanCoconeSquareIso.hom).app C
-  have hBo : IsPointwiseColimitCone (⟨B, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ B)) :=
+  have hBo : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (⟨B, rfl⟩ : JoinCocone (joinInl J Δ[0] ≫ B)) :=
     houter.reindex spanCoconeSquareIso.hom
   have hBi (j : J _⦋0⦌) : InitialBoundaryLifting
       (coconeRestriction (horn 2 0 : SSet.{u}) C)

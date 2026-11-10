@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimitExistence
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimitExistence
 public import SerrePositivity.KST.SConstruction.IdentityCocones
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
@@ -28,11 +28,11 @@ def reindexFunctorCocone {J K L X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
 方針：前合成した余錐の評価を、元の余錐の像の頂点での評価と同定する。
 規約：X の quasicategory 性を要求しない。使われ方：cofiber 族の有限部分への制限。 -/
 lemma IsPointwiseColimitCone.reindex {J K L X : SSet.{u}}
-    {p : J ⟶ (ihom K).obj X} {c : JoinCocone p} (hc : IsPointwiseColimitCone c)
-    (f : L ⟶ K) : IsPointwiseColimitCone (reindexFunctorCocone c f) := by
+    {p : J ⟶ (ihom K).obj X} {c : JoinCocone p} (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone c)
+    (f : L ⟶ K) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone (reindexFunctorCocone c f) := by
   intro l
   apply (isColimitCone_iff_of_map_eq _
-    (evaluateFunctorCocone c (f.app (Opposite.op ⦋0⦌) l)) ?_).2
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.evaluateFunctorCocone c (f.app (Opposite.op ⦋0⦌) l)) ?_).2
       (hc (f.app (Opposite.op ⦋0⦌) l))
   change (c.val ≫ (pre f).app X) ≫ evaluateFunctorAt l =
     c.val ≫ evaluateFunctorAt (f.app (Opposite.op ⦋0⦌) l)
@@ -42,10 +42,10 @@ lemma IsPointwiseColimitCone.reindex {J K L X : SSet.{u}}
 方針：関手圏の余極限を点ごとの余極限に戻し、評価を制限して再び関手圏に移す。
 規約：X は quasicategory、f は任意。使われ方：構成した普遍四角形の添字の制限。 -/
 lemma isColimitCone_reindex_of_hasPointwiseColimits {J K L X : SSet.{u}}
-    [Quasicategory X] {p : J ⟶ (ihom K).obj X} (hp : HasPointwiseColimits p)
+    [Quasicategory X] {p : J ⟶ (ihom K).obj X} (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasPointwiseColimits p)
     (c : JoinCocone p) (hc : IsColimitCone c) (f : L ⟶ K) :
     IsColimitCone (reindexFunctorCocone c f) := by
-  apply isColimitCone_of_pointwise
-  exact (isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits hp c hc).reindex f
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_pointwise
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits hp c hc).reindex f
 
 end SerrePositivity.KST.SConstruction

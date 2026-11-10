@@ -21,7 +21,7 @@ open scoped Simplicial
 方針：各評価図式に全 span の余極限の存在を適用する。
 規約：パラメーター A は任意。使われ方：点ごとの押し出し判定の存在条件。 -/
 lemma functor_span_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsStable C]
-    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C) : HasPointwiseColimits p :=
+    (p : (horn 2 0 : SSet.{u}) ⟶ (ihom A).obj C) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasPointwiseColimits p :=
   fun a => _root_.SerrePositivity.InfinityCategories.Stable.stable_hasColimit_span (evaluateFunctorDiagram p a)
 
 /-- 概要：安定な標的の関手圏の全押し出しは点ごとに判定できる。
@@ -30,7 +30,7 @@ lemma functor_span_hasPointwiseColimits {A C : SSet.{u}} [Quasicategory C] [IsSt
 lemma functor_pushout_iff_pointwise {A C : SSet.{u}} [Quasicategory C] [IsStable C]
     (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ (ihom A).obj C) :
     IsPushoutSquare F ↔ ∀ a : A _⦋0⦌, IsPushoutSquare (F ≫ evaluateFunctorAt a) :=
-  isPushoutSquare_iff_pointwise_of_hasPointwiseColimits F
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_iff_pointwise_of_hasPointwiseColimits F
     (functor_span_hasPointwiseColimits (pushoutSpan F))
 
 /-- 概要：gapped 包含は任意の四角形の押し出し性を保ち反映する。

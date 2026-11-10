@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.FunctorInitialBoundary
-public import SerrePositivity.KST.SConstruction.InitialBoundaryIso
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorInitialBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryIso
 public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import SerrePositivity.InfinityCategories.Core.FunctorLimits
@@ -16,7 +16,7 @@ public import Mathlib.Tactic.CrossRefAttribute
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.KST.SConstruction
+namespace SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
@@ -108,4 +108,4 @@ lemma isPushoutSquare_of_pointwise {K X : SSet.{u}} [Quasicategory X]
   intro k
   exact hF k
 
-end SerrePositivity.KST.SConstruction
+end SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits
