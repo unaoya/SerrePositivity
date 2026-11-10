@@ -47,3 +47,11 @@ Prisms の地図（`research/bs-coverage/items.csv`、https://claude.ai/artifact
 2. **K2 の Frobenius の平坦性（D74）**：本体は**原典どおりの形**（U/p 上の Frobenius が d 完全平坦、`IsCompletelyFlat (Ideal.span {d̄}) …`）で置く。U は変数が無限個の非 Noether 環で、普通の平坦性（drafts の `FrobeniusFlatModP`）は原典より強く、成り立つかも自明でない。drafts の A1 の型（`universalOrientedPrism_frobenius_flat`）は ⑤c では変えない。Construction 6.1 が完全平坦性で足りるかは、A1 の drafts を界面に書き換える段（⑤b の停止点 3 の後、⑤a）で一緒に確かめ、要れば A1 の型を原典の形に直す。
 3. **K4**：Lemma 3.7 (2) の入力を Mathlib の通常の導来圏 `DerivedCategory (ModuleCat A)`（またはその鎖複体の模型）で述べる案、Cor 3.12 の層の性質を「完全忠実平坦な射の増大つき完備 Čech 余脈体の交代余面複体が全次数で完全」という古典的な形で示し、∞ 層と RΓ への接続を drafts に残す案、Ex 3.14 は変数版の型を保ち一般化を別の定理にする案、いずれもよい。Ex 3.14 の一般の存在が重いと分かったら、そこで止めて報告する（目標に要るのがどの場合かを調整役が確かめる）。
 4. **K5 の G-A3-7 の切り出し**：比較先を通常の p 完備なフィルター付き環 C に一般化した古典的な部分を本体に置き、実際の Δ̄ がそのフィルトレーションと評価を持つことは drafts に残す案でよい。`exists_lciEnvelope` の一般の型を Δ の離散性なしで閉じる経路も、それで進めてよい。
+
+## 4. 追記（2026-11-10 夜、調整役）：Ex 3.14 は変数の場合だけ（D21 のとおり）
+
+段 3 の中断の報告（c43e8f48d）を受けて。§0 の表の K4 の「Ex 3.14 の一般形」は調整役の誤りだった。設計の決定 **D21**（`a0-design.md` §4）は、Prop 3.13 の存在を Ex 3.14 の**変数の場合**（多項式代数からの全射の核で、変数の取り替えの後は変数の部分集合）に絞っており、それは本体（`exists_prismaticEnvelope_of_variables`）にある。
+
+1. Ex 3.14 の一般の存在（滑らかな全射の核の局所完全正則列による表示、δ 除算包の完全平坦性と貼り合わせ）は**作らない**。
+2. 段 3 は、残りの Lemma 3.7 (2)(3)、Cor 3.12、Prop 3.13 (2)（変数の場合の底変換、drafts `prismaticEnvelope_baseChange_of_variables` の型）へ進む。今回の共通部品（通常のテンソル積の δ 構造と δ 射の一意延長）はそのまま使ってよい。
+3. A3（Ex 7.9）で要る別の場合（f_1, …, f_r の正則列）は K5 で扱う（D21 の注記どおり）。

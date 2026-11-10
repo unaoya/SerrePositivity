@@ -1,0 +1,25 @@
+{
+  "module": "SerrePositivity.KST.Descent.ZariskiCechLaw",
+  "command": "#synth ModelCategory SSet.{0}",
+  "messages": [
+    {
+      "caption": "",
+      "data": "failed to synthesize\n  ModelCategory SSet\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "endPos": {
+        "column": 29,
+        "line": 3
+      },
+      "fileName": "<stdin>",
+      "isSilent": false,
+      "keepFullRange": false,
+      "kind": "[anonymous]",
+      "pos": {
+        "column": 0,
+        "line": 3
+      },
+      "severity": "error"
+    }
+  ],
+  "local_model": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean:36",
+  "note": "kanQuillenModel は sorry の存在入力から取る局所選択で、大域インスタンスではない。"
+}
