@@ -187,3 +187,15 @@ Tot 版はこの式の `frB` を `X ⟶ X ⋙ Under.map (CommRingCat.ofHom fr)` 
 - 段 1 の型と共用補助は約 **350–650 行**。モデル側の証明済み部分の実例と互換比較は **120–250 行**、未供給欄を型付きで束ねる draft は **80–180 行**。全ての G12・M14・M13-CAlg・Tot の証明はこの見積もりの外。とくに G12 と P⁰ の coherent な錐比較は、それぞれ独立した供給課題。
 - 段 2 の drafts は API 参照が多数あるので、まず `DerivedGeneral` と `Shared`、次に A2・A4 と Sheaves、最後に A1・A5〜A9 の利用順で進める。約 **30–40 ファイル・650–1,300 行の変更**を見込む。README §1 の模型参照箇所では `formsNerve` と `rootFormsAugmentation` の端点、H⁰ の自然性、Tot の係数制限が主な照合点。本体の CAlg 版 G1′ の一般化を含める場合は別に **180–350 行**を見込む。
 - 段 1 の前に、D71 の推移依存の解釈、実例の配置、G1′ の一般版を W14 で追加する範囲、および `coproduct_tensor` に求める自然性の強さを調整役と確定する。段 0 はこの報告で止める。
+
+## 停止点 1（D71–D72）
+
+`main` の a24fae02a を `math/bs-impl` に取り込んだ（df92616d8）。本体は新設 4 ファイル。既存の公開宣言と入口・監査スクリプトに差分なし。
+
+- `SerrePositivity.EInfinity.Interface.Core` は `EInfinityCore`。指定極限保存、離散埋め込み、忘却比較、離散対象の認識をまとめた。離散性は G1′ の universal と integral が逆向きに使うため、既存の `cAlgUnderlyingDisc_iff_discreteUnder` の両方向を欄にした。
+- `SerrePositivity.EInfinity.Interface.StrictInputs` は次数零の可換 dg 代数への関手。既存の `moduleAlgebraMonObj` と single 複体のモノイダル関手を使用。
+- `SerrePositivity.EInfinity.Interface.Theory` は `EInfinityTheory`。強い `coproduct_tensor`、π₀ と自然比較、係数変更、指定 Tot 錐、半線形 P⁰ を含む。Tot の極限性は指定錐ごとに、係数制限・離散 cdga との比較は全関手の同型として受け取る。cdga の [0] への自然な辺は、指定した同じ極限錐の [0] の脚と一致する欄を設けた。D 側の `restrictD` と `strictToD` は界面に供給する。
+- `SerrePositivity.EInfinity.BarrattEccles.Theory` は `barrattEcclesCore`。既存の `cAlgForgetDerived_mapJoinCone_isLimit`、`discreteCAlgUnderEmbedding_forgetIso`、`cAlgUnderlyingDisc_iff_discreteUnder` ほかを代入した。
+- 全欄の実例は `drafts/Shared/BarrattEcclesTheory.lean`。既存の中核と厳密入力の関手を使う実例案とし、未供給の欄はここに記した。drafts の運用に従い、このファイルはビルド対象外。
+
+`--wait 1800` で共有鍵を取得し、`Interface.Theory` と `BarrattEccles.Theory` を対象ビルド。上記 4 モジュールの限定監査は **125 宣言、標準三公理のみ**。本体の `sorry`・新規公理と、D71 が禁止する Interface 内の直接 import・模型 API・模型圏の仮定は各 0。入口と監査への登録候補は上記の本体 4 モジュール。
