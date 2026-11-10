@@ -108,3 +108,32 @@ Tot を除く E4 は約 400–1,000 行。Tot の追加は G10 側の証明を�
 - `SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction`
 
 `with_build_lock.sh --wait 1800` の下で `lake build SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction` に成功（追加の二本をコンパイル、警告 0）。両モジュールの宣言を段階 II と同じ方式で再帰監査し、52 宣言・標準三公理のみ。sorry・追加公理 0。既存の宣言と界面の型は維持。入口と共通監査への登録は調整役に渡す。
+
+## 7. 停止点 2　E2 の先行分と規模の判定
+
+### 検査済みの二欄
+
+- `forget_conservative` は `cAlgForgetDerived_conservative`。通常の局所化の射を cofibrant–fibrant な代数間の厳密射で代表する。自由 hammock の比較の両側で生成射の像を照合し、CAlg_R の同じ射の類を得る。忘却像の可逆性を E1 の全次数のホモロジー比較で擬同型に戻し、局所化で反転する。
+- `discrete_initial` は `discreteCAlgUnderEmbedding_initial`。導来自由・忘却随伴で D(S) の零対象を送り、始対象を得る。零複体の自由代数は Schur 図式の arity 0 だけを持ち、Barratt–Eccles の augmentation で離散基礎環への指定射が擬同型になる。同じ自由 probe の零での値を介して恒等構造射の離散像に移す。
+
+**入口と段階 II の監査に登録するモジュール**
+
+- `SerrePositivity.EInfinity.SimplicialLocalization.SourceHom`
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.Conservative`
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial`
+
+`SourceHom` は任意の相対圏で再利用できるが、現在の自由 hammock と DK の実装に依存する。独立な一般 ∞ 圏の新規補題はない。
+
+共有鍵の下で `Theory.Conservative` と `Theory.DiscreteInitial` の対象ビルドに成功。新規三本の宣言を段階 II と同じ方式で再帰監査し、39 宣言・標準三公理のみ。sorry・追加公理 0。既存の宣言と界面の型は維持。
+
+### 幾何学的実現と sifted 保存
+
+`forget_preservesSifted` の現在の経路は 1,500 行を超える見込みなので、指示書 §3 の 1 によりここで区切る。実現の保存は余積とテンソルの比較から独立に調べた。
+
+- `Operad.Algebra.forget_createsSiftedColimitsOfShape` は通常の sifted 図式の余極限を作る。これを使うには、指定された ∞ 図式を厳密な図式で表し、模型のホモトピー余極限と元の native 余錐を脚まで比較する必要がある。
+- まず Δᵒᵖ の場合に、忘却後の同じホモトピー余極限の比較が必要。`DiagramModel.QuillenColimitComparison` は左 Quillen 関手用で、右 Quillen の `Operad.Algebra.forget` には代入できない。必要なのは、代数の projective 置換を忘却した図式で複体のホモトピー余極限を計算できる証明、または独立な重み付き実現と複体の実現の比較。
+- `sigma_preservesSmallSiftedColimits_of_filtered_geometric` の始域は `SigmaPresheafInfinity`。今の CAlg_R に適用するための表示・降下は別途必要。任意の小 sifted 単体集合に対して直接示す場合も、図式と元の余錐の比較が残る。
+
+幾何学的実現に対する厳密図式・native 余錐の橋を 500–800 行、代数の実現と忘却後の複体の実現の比較を 600–1,000 行、filtered および全 sifted への拡張を 500–900 行と見積もる。既存の補題を再利用した場合の紙の見積もりで、合計約 1,600–2,700 行。比較の結果は二つの模型で同じ指定余錐まで要求される。
+
+`coprodWith`、`coprodWith_cocone`、`coproduct_tensor` はこの停止点に含めない。余積比較に sifted 保存を仮定として追加していない。E3 へ進むか、E2 の残りを ④ に分けるかは調整役の判断を待つ。
