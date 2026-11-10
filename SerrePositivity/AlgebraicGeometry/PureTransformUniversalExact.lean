@@ -16,7 +16,13 @@ namespace SerrePositivity.AlgebraicGeometry
 
 open scoped TensorProduct
 
-private theorem lTensor_baseChange_injective
+/--
+概要：係数環を拡大してからテンソルした写像は、元の係数環上でのテンソルが単射なら単射。
+方針：二段のテンソル積を一段にする標準同型と、写像との両立性を使う。
+規約：テンソルする加群の元の係数環の作用は、拡大係数環と整合するものとする。
+使われ方：普遍単射性を境界外の基底変換と純変換に渡す。
+-/
+theorem lTensor_baseChange_injective
     {R A M N Q : Type*} [CommRing R] [CommRing A] [Algebra R A]
     [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [AddCommGroup Q] [Module R Q] [Module A Q] [IsScalarTower R A Q]

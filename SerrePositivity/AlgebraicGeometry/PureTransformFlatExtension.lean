@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.AlgebraicGeometry.LocalUniversalInjectivity
 public import SerrePositivity.AlgebraicGeometry.PureTransformUniversalExact
 public import Mathlib.RingTheory.Flat.Equalizer
 
@@ -59,5 +60,53 @@ theorem modulePureTransform_baseChange_flat_of_flat_ends
   obtain ⟨hf', hex', hg'⟩ :=
     pureTransform_baseChange_shortExact_of_universal_injective a f g hex hg hf
   exact flat_middle_of_shortExact _ _ hf' hg' hex'
+
+
+/--
+概要：普遍単射の標的が係数拡大後に平坦なら、余核も係数拡大後に平坦。
+方針：普遍単射性と右完全性を係数拡大に移し、拡大後の余核と比較する。
+規約：余核は値域による商とする。
+使われ方：Stacks 0815 で、境界外の余核の平坦性を帰納の仮定に渡す。
+-/
+theorem flat_cokernel_baseChange_of_lTensor_injective
+    {R A M N : Type u} [CommRing R] [CommRing A] [Algebra R A]
+    [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
+    [Module.Flat A (A ⊗[R] N)] (f : M →ₗ[R] N)
+    (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q)) :
+    Module.Flat A (A ⊗[R] (N ⧸ LinearMap.range f)) := by
+  let q := (LinearMap.range f).mkQ
+  have hsurj : Surjective (q.baseChange A) :=
+    LinearMap.baseChange_surjective A (Submodule.mkQ_surjective _)
+  have hex := lTensor_exact A f.exact_map_mkQ_range (Submodule.mkQ_surjective _)
+  have hker : LinearMap.ker (q.baseChange A) = LinearMap.range (f.baseChange A) :=
+    LinearMap.exact_iff.mp hex
+  have hflat : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.range (f.baseChange A)) := by
+    apply flat_cokernel_of_lTensor_injective
+    intro Q _ _
+    let : Module R Q := Module.compHom Q (algebraMap R A)
+    let : IsScalarTower R A Q := IsScalarTower.of_algebraMap_smul fun _ _ => rfl
+    exact lTensor_baseChange_injective f (hf Q)
+  let : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.ker (q.baseChange A)) := hker.symm ▸ hflat
+  exact Module.Flat.of_linearEquiv ((q.baseChange A).quotKerEquivOfSurjective hsurj).symm
+
+/--
+概要：左端が平坦で普遍単射なら、正則な境界上で余核の純変換の平坦性から中央の平坦性が従う。
+方針：平坦な左端では境界ねじれが消えるので、純変換後の短完全列の両端が平坦になる。
+規約：境界元は追加の基底変更先で正則とする。
+使われ方：Stacks 0815 で、台の次元を下げた余核の帰納結果を元の加群へ戻す。
+-/
+theorem modulePureTransform_baseChange_flat_of_flat_source
+    {R A M N P : Type u} [CommRing R] [CommRing A] [Algebra R A]
+    [AddCommGroup M] [Module R M] [Module.Flat R M]
+    [AddCommGroup N] [Module R N] [AddCommGroup P] [Module R P]
+    (a : A) (ha : IsRegular a) (f : M →ₗ[R] N) (g : N →ₗ[R] P)
+    (hex : Exact f g) (hg : Surjective g)
+    (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q))
+    [Module.Flat A (modulePureTransform a (A ⊗[R] P))] :
+    Module.Flat A (modulePureTransform a (A ⊗[R] N)) := by
+  let : Module.Flat A (modulePureTransform a (A ⊗[R] M)) :=
+    Module.Flat.of_linearEquiv ((boundaryTorsion a (A ⊗[R] M)).quotEquivOfEqBot
+      (boundaryTorsion_eq_bot_of_flat a (A ⊗[R] M) ha))
+  exact modulePureTransform_baseChange_flat_of_flat_ends a f g hex hg hf
 
 end SerrePositivity.AlgebraicGeometry
