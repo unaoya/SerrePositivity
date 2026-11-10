@@ -1,0 +1,1079 @@
+{
+  "revision": "6e19c5a14cb16a704016efaf924b61d181239c46",
+  "queries": {
+    "417761823d": {
+      "pattern": "torUnital|dgMilnor|ringSpectrum.*pullback",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "4b0e62faa8": {
+      "pattern": "torUnital|dgOdot.*Pullback|excision",
+      "repository_count": 348,
+      "repository_examples": [
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:375",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:408",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:481",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:499",
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:510",
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback @ SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean:555",
+        "SerrePositivity.BhattScholze.klCanonicalExcisionSquare_of_excision @ SerrePositivity/BhattScholze/Perfectoidization/Excision.lean:194",
+        "SerrePositivity.BhattScholze.klCanonicalExcisionSquare_of_integral_away @ SerrePositivity/BhattScholze/Perfectoidization/Excision.lean:247"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "8dc65f76cf": {
+      "pattern": "torUnital|Milnor|ideal.*(pullback|isom)",
+      "repository_count": 1144,
+      "repository_examples": [
+        "SerrePositivity.perfectoidIdeal_ker_coker_annihilated_of_isPullback @ SerrePositivity/BhattScholze/PerfectoidIdeal/Cover.lean:292",
+        "SerrePositivity.perfectoidIdeal_ker_coker_annihilated_pullbackFst @ SerrePositivity/BhattScholze/PerfectoidIdeal/Cover.lean:308",
+        "SerrePositivity.BhattScholze.perfectoidIdeal_TorInput_iff_of_isPullback @ SerrePositivity/BhattScholze/PerfectoidIdeal/TorCriteria.lean:111",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_of_milnorTensor @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcCechMilnor.lean:66",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.acyclic_of_milnorTensor @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorDetection.lean:108",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorInclusion @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:64",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:68",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:75"
+      ],
+      "mathlib_count": 1,
+      "mathlib_examples": [
+        "AlgebraicGeometry/IdealSheaf/Basic.lean:823:lemma ker_ideal_of_isPullback_of_isOpenImmersion {X Y U V : Scheme.{u}}"
+      ]
+    },
+    "5830496fac": {
+      "pattern": "cyclicHomology|excision.*obstruction|torUnital",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "8dc739141f": {
+      "pattern": "torUnital|dgOdot.*PerfectSequence|lax.*Verdier",
+      "repository_count": 13,
+      "repository_examples": [
+        "SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier @ SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:48",
+        "SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence @ SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierInvariantFiber.lean:32",
+        "SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientVerdierSequence_reflective @ SerrePositivity/InfinityCategories/Derived/Lax/LaxVerdierReflectiveCompatibility.lean:30",
+        "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence @ SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:43",
+        "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence_inclusion @ SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:45",
+        "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence_projection @ SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:48",
+        "SerrePositivity.KST.SConstruction.DGOdotLaxVerdierInput @ SerrePositivity/KST/SConstruction/DGOdotLaxVerdierConnection.lean:50",
+        "SerrePositivity.KST.SConstruction.dgOdotMilnorCellPerfectSequence @ SerrePositivity/KST/SConstruction/DGOdotMilnorCellVerdier.lean:78"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "1266b5ea5a": {
+      "pattern": "laxPullback|excisiveSquare",
+      "repository_count": 116,
+      "repository_examples": [
+        "SerrePositivity.InfinityCategories.dgGluingCanonicalLaxPullback_isStable @ SerrePositivity/InfinityCategories/Derived/Gluing/CanonicalStableStructure.lean:22",
+        "SerrePositivity.InfinityCategories.dgGluingCanonicalLaxPullback_cofiber_iff @ SerrePositivity/InfinityCategories/Derived/Gluing/CanonicalStableStructure.lean:36",
+        "SerrePositivity.InfinityCategories.dgGluingUniverseDerivedLaxPullback_isStable @ SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonStability.lean:31",
+        "SerrePositivity.InfinityCategories.dgGluingUniverseDerivedLaxPullbackFst_isExactFunctor @ SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonStability.lean:37",
+        "SerrePositivity.InfinityCategories.dgGluingUniverseDerivedLaxPullbackSnd_isExactFunctor @ SerrePositivity/InfinityCategories/Derived/Gluing/LaxComparisonStability.lean:50",
+        "SerrePositivity.InfinityCategories.F2.laxPullback @ SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean:25",
+        "SerrePositivity.InfinityCategories.F2.laxPullback_quasicategory @ SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean:31",
+        "SerrePositivity.InfinityCategories.F2.laxPullbackObject @ SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean:40"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "2567159c62": {
+      "pattern": "IsStableVerdierSequence|IsVerdierSequence|perfectVerdier|verdier.*triangulat",
+      "repository_count": 51,
+      "repository_examples": [
+        "SerrePositivity.InfinityCategories.IsStableVerdierSequence @ SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean:15",
+        "SerrePositivity.karoubiVerdierOrderEquivalence_functor_isTriangulated @ SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean:224",
+        "SerrePositivity.karoubiVerdierOrderEquivalence_isTriangulated @ SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean:230",
+        "SerrePositivity.verdierLift_isTriangulated @ SerrePositivity/CategoryTheory/Triangulated/VerdierLift.lean:165",
+        "SerrePositivity.DifferentialGraded.moduleDerivedVerdierIsTriangulated @ SerrePositivity/DifferentialGraded/Derived/Basic.lean:923",
+        "SerrePositivity.DifferentialGraded.moduleDerivedVerdierInverseIsTriangulated @ SerrePositivity/DifferentialGraded/Derived/Basic.lean:937",
+        "SerrePositivity.DifferentialGraded.DGQuotient.quotientVerdierLocalEquivalenceFunctorIsTriangulated @ SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean:1455",
+        "SerrePositivity.DifferentialGraded.DGQuotient.quotientVerdierLocalEquivalenceIsTriangulated @ SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean:1459"
+      ],
+      "mathlib_count": 1,
+      "mathlib_examples": [
+        "CategoryTheory/Triangulated/LocalizingSubcategory.lean:102:lemma isVerdierRightLocalizing_iff [A.IsTriangulated] [B.IsTriangulated]"
+      ]
+    },
+    "bfc3cd9590": {
+      "pattern": "lax.*compact|compact.*lax|lax.*presentable",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "bfc174fb21": {
+      "pattern": "excisiveSquare|Ind.*(pullback|Localization)|pullback.*Ind",
+      "repository_count": 51,
+      "repository_examples": [
+        "SerrePositivity.InfinityCategories.isPullback_equivalenceCylinderEndpoint_naturality @ SerrePositivity/InfinityCategories/Core/EquivalenceCylinderPullback.lean:35",
+        "SerrePositivity.InfinityCategories.equivalenceMappingCylinderIn_map_isPullback @ SerrePositivity/InfinityCategories/Core/EquivalenceMappingCylinderMap.lean:80",
+        "SerrePositivity.InfinityCategories.pullbackCone_ulift_reindex_val @ SerrePositivity/InfinityCategories/Core/UniverseUniversalSquares.lean:55",
+        "SerrePositivity.InfinityCategories.dgGluingPullbackReindexIso @ SerrePositivity/InfinityCategories/Derived/Gluing/PullbackReindexIso.lean:17",
+        "SerrePositivity.InfinityCategories.dgGluingPullbackReindexIso_first @ SerrePositivity/InfinityCategories/Derived/Gluing/PullbackReindexIso.lean:22",
+        "SerrePositivity.InfinityCategories.dgGluingPullbackReindexIso_second @ SerrePositivity/InfinityCategories/Derived/Gluing/PullbackReindexIso.lean:27",
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery.cylinderSquare_isPullback @ SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierRecoveredCylinderSquare.lean:53",
+        "SerrePositivity.InfinityCategories.cocartesianPullbackDomainDiagram @ SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackDomainCocone.lean:21"
+      ],
+      "mathlib_count": 9,
+      "mathlib_examples": [
+        "CategoryTheory/Limits/Shapes/WidePullbacks.lean:375:def reindex {ι : Type*} {X : C} {Y : ι → C} {f : ∀ i, Y i ⟶ X} (s : WidePullbackCone f)",
+        "CategoryTheory/Sites/Hypercover/Homotopy.lean:152:lemma toPullback_cylinder {i j : (cylinder f g).I₀} (k : (cylinder f g).I₁ i j) :",
+        "CategoryTheory/Sites/Sieves/Basic.lean:471:theorem le_pullback_bind (S : Presieve X) (R : ∀ ⦃Y : C⦄ ⦃f : Y ⟶ X⦄, S f → Sieve Y) (f : Y ⟶ X)",
+        "GroupTheory/MonoidLocalization/Basic.lean:289:theorem ind {p : Localization S → Prop} (H : ∀ y : M × S, p (mk y.1 y.2)) (x) : p x :="
+      ]
+    },
+    "3ff24b8bb9": {
+      "pattern": "nonconnective.*localiz|topologicalHochschild|cyclotomic|dgNonconnectiveK",
+      "repository_count": 60,
+      "repository_examples": [
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:28",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:32",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_succ @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:36",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKStructureEdge @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:44",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKDiagram @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:51",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKStage @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:55",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveKDiagram_map_succ @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:58",
+        "SerrePositivity.KST.NonConnective.dgNonconnectiveK @ SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:67"
+      ],
+      "mathlib_count": 12,
+      "mathlib_examples": [
+        "NumberTheory/Cyclotomic/Basic.lean:74:class IsCyclotomicExtension",
+        "NumberTheory/Cyclotomic/CyclotomicCharacter.lean:94:noncomputable def modularCyclotomicCharacter.aux (g : L ≃+* L) (n : ℕ) [NeZero n] : ℤ :=",
+        "NumberTheory/Cyclotomic/Gal.lean:139:noncomputable def galCyclotomicEquivUnitsZMod : (cyclotomic n K).Gal ≃* (ZMod n)ˣ :=",
+        "NumberTheory/Cyclotomic/PrimitiveRoots.lean:218:theorem dvd_of_isCyclotomicExtension [IsCyclotomicExtension {n} ℚ K] {ζ : K}"
+      ]
+    },
+    "7c35d53be9": {
+      "pattern": "mayerVietoris|openCover|zariski.*descent",
+      "repository_count": 21,
+      "repository_examples": [
+        "SerrePositivity.AlgebraicGeometry.specBlowupOpenCover @ SerrePositivity/AlgebraicGeometry/AffineStrictTransformFlatness.lean:29",
+        "SerrePositivity.AlgebraicGeometry.hasBoundaryFreeOpenPullbacks_of_openCover @ SerrePositivity/AlgebraicGeometry/BoundaryFreeOpenLocality.lean:26",
+        "SerrePositivity.AlgebraicGeometry.exists_finite_affineOpenCover @ SerrePositivity/AlgebraicGeometry/FiniteAffineCover.lean:26",
+        "SerrePositivity.AlgebraicGeometry.idealSheaf_ext_of_affineOpenCover @ SerrePositivity/AlgebraicGeometry/IdealSheafLocality.lean:92",
+        "SerrePositivity.AlgebraicGeometry.ker_eq_bot_of_affineOpenCover_pullbacks @ SerrePositivity/AlgebraicGeometry/KernelLocality.lean:26",
+        "SerrePositivity.AlgebraicGeometry.hasFlatPurePullbacks_of_openCover @ SerrePositivity/AlgebraicGeometry/PureTransformOpenLocality.lean:28",
+        "SerrePositivity.AlgebraicGeometry.blowupOpenCover @ SerrePositivity/AlgebraicGeometry/SchemeBlowup.lean:158",
+        "SerrePositivity.AlgebraicGeometry.flat_openImage_comp_iff_of_openCover @ SerrePositivity/AlgebraicGeometry/StrictTransformLocality.lean:116"
+      ],
+      "mathlib_count": 33,
+      "mathlib_examples": [
+        "AlgebraicGeometry/AffineScheme.lean:966:def Scheme.AffineOpenCover.ofIsOpenCover {X : Scheme.{u}} {ι : Type*} (U : ι → X.Opens)",
+        "AlgebraicGeometry/AffineTransitionLimit.lean:1070:lemma Scheme.exists_isOpenCover_and_isAffine_of_finite [IsCofiltered I]",
+        "AlgebraicGeometry/Artinian.lean:122:theorem isLocallyArtinian_iff_openCover (𝒰 : X.OpenCover) :",
+        "AlgebraicGeometry/Birational/RationalMap.lean:588:def RationalMap.openCoverDomain (f : X ⤏ Y) : f.domain.toScheme.OpenCover where"
+      ]
+    },
+    "89ea5a19eb": {
+      "pattern": "(discrete|ordinary).*ringSpectrum|eilenbergMaclane|dgAlgebra",
+      "repository_count": 74,
+      "repository_examples": [
+        "SerrePositivity.BhattScholze.Prismatic.htGradedDGAlgebra @ SerrePositivity/BhattScholze/Prismatic/HodgeTateGradedDGAlgebra.lean:120",
+        "SerrePositivity.DeRham.GradedCommDGAlgebra @ SerrePositivity/CommutativeAlgebra/DeRham/Graded.lean:33",
+        "SerrePositivity.InfinityCategories.DGAlgebraPoint @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:20",
+        "SerrePositivity.InfinityCategories.dgAlgebraPointEnrichment @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:27",
+        "SerrePositivity.InfinityCategories.dgAlgebraCategory @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:35",
+        "SerrePositivity.InfinityCategories.SemifreeDGAlgebraModules @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:37",
+        "SerrePositivity.InfinityCategories.dgAlgebraDerivedInfinityCategory @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:40",
+        "SerrePositivity.InfinityCategories.dgAlgebraDerivedInfinityCategory_isStable @ SerrePositivity/InfinityCategories/Derived/DGAlgebraDerivedInfinity.lean:43"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "4c3f908434": {
+      "pattern": "torUnital|fullyFaithful.*restriction|restriction.*fullyFaithful",
+      "repository_count": 12,
+      "repository_examples": [
+        "SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_terminal_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalRestriction.lean:37",
+        "SerrePositivity.InfinityCategories.F1B.kanRelativeJoinRelativeColimitRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRelativeUniversalRestriction.lean:73",
+        "SerrePositivity.InfinityCategories.F1B.kanRelativeJoinColimitRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinUniversalRestriction.lean:66",
+        "SerrePositivity.InfinityCategories.F1B.kanRelativeLeftKanRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionTheorem.lean:27",
+        "SerrePositivity.InfinityCategories.F1B.kanRelativeRightKanRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightRestrictionTheorem.lean:69",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.effectiveSplittingRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean:49",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.strongSplittingRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Idempotent/SplittingRestriction.lean:33",
+        "SerrePositivity.InfinityCategories.F2.Ind.indKappaContinuousRestriction_isFullyFaithful @ SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean:26"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "b53b5e6d60": {
+      "pattern": "torUnital|derivedTensor.*pullback|dgMilnor",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "d28e8781c1": {
+      "pattern": "torUnital|isLocalization|localization.*flat",
+      "repository_count": 92,
+      "repository_examples": [
+        "SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization @ SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:41",
+        "SerrePositivity.AlgebraicGeometry.chartBaseChangeMap_isLocalizationMap @ SerrePositivity/AlgebraicGeometry/ChartBaseChange.lean:147",
+        "SerrePositivity.AlgebraicGeometry.chart_localization_isLocalizationMap @ SerrePositivity/AlgebraicGeometry/ChartLocalization.lean:114",
+        "SerrePositivity.AlgebraicGeometry.chartAwayBaseMap_isLocalizationMap @ SerrePositivity/AlgebraicGeometry/ChartLocalization.lean:166",
+        "SerrePositivity.AlgebraicGeometry.chartOverlap_isLocalizationLeft @ SerrePositivity/AlgebraicGeometry/ChartOverlap.lean:75",
+        "SerrePositivity.AlgebraicGeometry.chartOverlap_isLocalizationRight @ SerrePositivity/AlgebraicGeometry/ChartOverlap.lean:89",
+        "SerrePositivity.AlgebraicGeometry.mem_freeLocus_baseChange_iff_of_isLocalization @ SerrePositivity/AlgebraicGeometry/FreeLocusLocalizationBaseChange.lean:27",
+        "SerrePositivity.AlgebraicGeometry.freeLocus_baseChange_of_isLocalization @ SerrePositivity/AlgebraicGeometry/FreeLocusLocalizationBaseChange.lean:51"
+      ],
+      "mathlib_count": 88,
+      "mathlib_examples": [
+        "Algebra/Category/Ring/Constructions.lean:162:lemma isPushout_of_isLocalization {R S Rₘ Sₘ : Type u}",
+        "Algebra/Category/Ring/Instances.lean:31:theorem IsLocalization.epi {R : Type*} [CommRing R] (M : Submonoid R) (S : Type _) [CommRing S]",
+        "Algebra/GCDMonoid/IntegrallyClosed.lean:24:theorem IsLocalization.surj_of_gcd_domain [GCDMonoid R] (M : Submonoid R) [IsLocalization M A]",
+        "Algebra/Homology/Localization.lean:266:lemma ComplexShape.quotient_isLocalization :"
+      ]
+    },
+    "1352f4eed0": {
+      "pattern": "torUnital|patching|milnor|module.*gluing",
+      "repository_count": 1141,
+      "repository_examples": [
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.cechExact_of_milnorTensor @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcCechMilnor.lean:66",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.acyclic_of_milnorTensor @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorDetection.lean:108",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorInclusion @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:64",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorDifference @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:68",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:75",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex_shortExact @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:82",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.milnorModuleComplex_tensor_shortExact @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcMilnorTensor.lean:116",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.MilnorShortExact @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcValuationMilnor.lean:34"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "0f046cf9ed": {
+      "pattern": "torUnital|scalar.*extension|dgOdot|lax.*Perf",
+      "repository_count": 1394,
+      "repository_examples": [
+        "SerrePositivity.BhattScholze.deltaRootSourceCoefficientScalarExtensionNatIso @ SerrePositivity/BhattScholze/Andre/Envelope/RootSource.lean:830",
+        "SerrePositivity.BhattScholze.deltaAlgebraPerfectionResidue_scalarExtensionTorVanishing @ SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean:831",
+        "SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraPD_scalarExtension_faithfullyFlat @ SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean:1670",
+        "SerrePositivity.BhattScholze.Andre.perfectPrismMonicRawPD_scalarExtension_faithfullyFlat @ SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean:336",
+        "SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_scalarExtension_faithfullyFlat @ SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean:728",
+        "SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_scalarExtension_faithfullyFlat @ SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean:1019",
+        "SerrePositivity.BhattScholze.Andre.scalarExtensionTorVanishing_of_completelyFlat @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Completion.lean:66",
+        "SerrePositivity.BhattScholze.Andre.principalScalarExtensionAlgebraQuotientEquiv @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Completion.lean:177"
+      ],
+      "mathlib_count": 1,
+      "mathlib_examples": [
+        "RingTheory/Extension/ExtendScalars.lean:78:lemma cotangentExtendScalarsEquiv_symm_toLinearMap (P : Extension.{w} R S) :"
+      ]
+    }
+  },
+  "nearby_types": {
+    "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.PreservesZeroCategories",
+      "source_type": "def PreservesZeroCategories (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}) : Prop := ∀ A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory A → IsZeroVertex (E.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.Infin"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+      "source_type": "structure IsLocalizingInvariant (E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}) : Prop where preservesZero : PreservesZeroCategories E preservesVerdier (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) : IsPullbackSquare (d.square ≫ E)  /-- 局所化不変量は実際の Sp 値 ∞ 関手を保持する。 -/ structure"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.LocalizingInvariant",
+      "source_type": "structure LocalizingInvariant where hom : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u} isLocalizing : IsLocalizingInvariant hom  namespace IsLocalizingInvariant variable {E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Spectra.Sp.{u}} (hE : IsLocalizingInvariant E) include hE  /--"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction",
+      "source_type": "def laxDifferenceAdjunction : QCatAdjunction (laxDifference p q) (laxDifferenceRho p q v) := adjunctionOfReflectiveMapping (laxDifferenceRho_sectionIso p q v a hv) (laxDifferenceMapping_equivalence p q v a hv)  lemma laxDifferenceAdjunction_counitHom_isIso : IsIso (laxDifferenceAdjunction p q v a hv).counitHom := (laxDifferenceAdjunction p q v a hv).counitHom_isI"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction_counitHom_isIso",
+      "source_type": "lemma laxDifferenceAdjunction_counitHom_isIso : IsIso (laxDifferenceAdjunction p q v a hv).counitHom := (laxDifferenceAdjunction p q v a hv).counitHom_isIso_of_postcompFullyFaithful (laxDifferenceRho_postcomp_fullyFaithful p q v hv E.obj).toHoFullyFaithful  lemma laxDifferenceAdjunction_counit_isIso : IsIso (laxDifferenceAdjunction p q v a hv).counit "
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction_counit_isIso",
+      "source_type": "lemma laxDifferenceAdjunction_counit_isIso : IsIso (laxDifferenceAdjunction p q v a hv).counit "
+    },
+    "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.TammePullback.original",
+      "source_type": "def original : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := LaxQuotientPullback.square hΦ p q (pullbackInclusion p q) (exactLaxDifference p q) (laxDifference_isVerdier p q v adj hv)  def oldFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges (coherent"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.TammePullback.oldFrame",
+      "source_type": "def oldFrame : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{u} := _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges (coherentNerveEdge (LaxQuotientPullback.cSource (Φ := Φ) p q (pullbackInclusion p q))) (coherentNerveEdge (LaxQuotientPullback.dLeg (Φ := Φ) p q (exactLaxDifference p q))) (coherentNerveEd"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.TammePullback.oldFrame_eq",
+      "source_type": "lemma oldFrame_eq : oldFrame (Φ := Φ) p q = _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (original hΦ p q v adj hv) "
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:48": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier",
+      "source_type": "lemma laxDifference_isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence (pullbackInclusion p q) (exactLaxDifference p q) where fullyFaithful := pullbackInclusion_fullyFaithful p q kernel := exactLaxDifference_kernel p q quotient "
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:26": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSemiorthogonal",
+      "source_type": "def laxSemiorthogonal : _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition D C (laxCategory p q) where inclusion := LaxInclusion.exactFromD p q rightInclusion := LaxInclusion.exactFromC p q retraction := laxSnd p q projection := laxFst p q leftAdjunction := LaxInclusion.fromDAdjunction p q rightAdjunction := LaxInclusion.f"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:43": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence",
+      "source_type": "def laxVerdierSequence : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} := (laxSemiorthogonal p q).verdierSequence  lemma laxVerdierSequence_inclusion : (laxVerdierSequence p q).inclusion = LaxInclusion.exactFromD p q := rfl  lemma laxVerdierSequence_projection : (laxVerdierSequence p q).projection = laxFst p q := rfl  end SerrePosit"
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:45": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence_inclusion",
+      "source_type": "lemma laxVerdierSequence_inclusion : (laxVerdierSequence p q).inclusion = LaxInclusion.exactFromD p q := rfl  lemma laxVerdierSequence_projection : (laxVerdierSequence p q).projection = laxFst p q := rfl  end SerrePositivity.KST.LocalizingInvariants"
+    },
+    "SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean:15": {
+      "declaration": "SerrePositivity.InfinityCategories.IsStableVerdierSequence",
+      "source_type": "structure IsStableVerdierSequence {B X Q : SSet.{u}} [Quasicategory B] [IsStable B] [Quasicategory X] [IsStable X] [Quasicategory Q] [IsStable Q] (i : B ⟶ X) (q : X ⟶ Q) : Prop where fullyFaithful : IsFullyFaithful i inclusionExact : IsExactFunctor i quotientExact : IsExactFunctor q kills (z : B _⦋0⦌) : IsZeroVertex ((i ≫ q).app (Opposite.op ⦋0⦌) z) universal (Y "
+    },
+    "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean:27": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components",
+      "source_type": "lemma exists_colimitCone_laxPullback_with_components {J A B C : SSet.{u}} [Quasicategory A] [Quasicategory B] [Quasicategory C] (p : A ⟶ C) (q : B ⟶ C) (r : J ⟶ laxPullback p q) (ca : JoinCocone (r ≫ laxPullbackFst p q)) (cb : JoinCocone (r ≫ laxPullbackSnd p q)) (ha : IsColimitCone ca) (hb : IsColimitCone cb) (hpa : IsColimitCone (F1B.kanPostcomposeCocone p ca))"
+    },
+    "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:28": {
+      "declaration": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+      "source_type": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) :"
+    },
+    "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:32": {
+      "declaration": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+      "source_type": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKInput R (dgSuspensionUnconditionalIteration R κ hκ A n) (dgKappaSelectedConeI"
+    },
+    "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:36": {
+      "declaration": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_succ",
+      "source_type": "theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKInput R (dgSuspensionUnconditionalIteration R κ hκ A n) (dgKappaSelectedConeInput R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ)) := rfl  /-- 元の実構造辺 K(Σ^n A)→ΩK(Σ^{n+1} A)。全入力自然性は別工程。 -/ def dgNonconnectiveKStructureEdge"
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:58": {
+      "declaration": "SerrePositivity.KST.Descent.orbitProductComparison",
+      "source_type": "noncomputable def orbitProductComparison {Y Z U B : Type*} [AddCommGroup Y] [Module ℚ Y] [AddCommGroup Z] [Module ℚ Z] [AddCommGroup U] [Module ℚ U] [AddCommGroup B] [Module ℚ B] (ρU : Representation ℚ G U) (decomposition : B ≃ₗ[ℚ] (permutationRepresentation G I Y).invariants × ρU.invariants) (center : Z →ₗ[ℚ] ρU.invariants) : Y × Z →ₗ[ℚ] B := decomposition.symm."
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:70": {
+      "declaration": "SerrePositivity.KST.Descent.orbitIntersectionComparison",
+      "source_type": "noncomputable def orbitIntersectionComparison {Z C : Type*} [AddCommGroup Z] [Module ℚ Z] [AddCommGroup C] [Module ℚ C] (decomposition : C ≃ₗ[ℚ] (permutationRepresentation G I Z).invariants) : Z →ₗ[ℚ] C := decomposition.symm.toLinearMap.comp (permutationDiagonal G I Z)  /-- 概要：(3.8) と閉中心上の帰納仮定から元の指定軌道比較が全次数同型（定理 3.1）。 方針：対角比較の全単射性、積の比較、分裂長完全列の五項補題を組み合わせる。 規約：T は実"
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:80": {
+      "declaration": "SerrePositivity.KST.Descent.orbitStep_pi_bijective",
+      "source_type": "theorem orbitStep_pi_bijective [MulAction.IsPretransitive G I] [Nonempty I] (Y Z U : ℤ → ModuleCat.{u} ℚ) (r : ∀ n, Y n →ₗ[ℚ] Z n) (T : GradedMayerVietoris.{u}) (ρU : ∀ n, Representation ℚ G (U n)) (decompositionB : ∀ n, T.B n ≃ₗ[ℚ] (permutationRepresentation G I (Y n)).invariants × (ρU n).invariants) (decompositionC : ∀ n, T.C n ≃ₗ[ℚ] (permutationRepresentation "
+    },
+    "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:41": {
+      "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifference_isLocalization",
+      "source_type": "lemma laxDifference_isLocalization : IsLocalization (laxDifference p q) (invertedEdges (laxDifference p q)) "
+    }
+  },
+  "items": {
+    "(1)": {
+      "target": "環スペクトルの比較正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "417761823d",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "原典の図式は Tor 単位性を課した環スペクトルの引き戻し。dg Milnor の条件と、同じ環スペクトルの導来テンソル条件との比較がない。",
+      "pdf_page": 1
+    },
+    "(2)": {
+      "target": "不変量を適用した正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "4b0e62faa8",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32"
+      ],
+      "result": "Tor 単位的な環スペクトル正方形への K または弱局所化不変量の適用。dg の ⊙ 比較は右下を構成した商に置き、元の環の値に戻す Tor 単位性の定理が要る。",
+      "pdf_page": 1
+    },
+    "1": {
+      "target": "Tor 単位的環の K 理論の切除",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "4b0e62faa8",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32"
+      ],
+      "result": "Tor 単位的な環スペクトル正方形への K または弱局所化不変量の適用。dg の ⊙ 比較は右下を構成した商に置き、元の環の値に戻す Tor 単位性の定理が要る。",
+      "pdf_page": 2
+    },
+    "2": {
+      "target": "環スペクトルの引き戻しに対する局所化不変量の切除",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "4b0e62faa8",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32"
+      ],
+      "result": "Tor 単位的な環スペクトル正方形への K または弱局所化不変量の適用。dg の ⊙ 比較は右下を構成した商に置き、元の環の値に戻す Tor 単位性の定理が要る。",
+      "pdf_page": 2
+    },
+    "3": {
+      "target": "離散環の正方形における Tor 単位性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "8dc65f76cf",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "イデアルを同型に移す離散環の引き戻しでの Tor 単位性。通常の加群の貼り合わせからは導来テンソルの同定が得られない。",
+      "pdf_page": 2
+    },
+    "4": {
+      "target": "切除の障害の巡回ホモロジーによる測定",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "5830496fac",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "巡回ホモロジーで測る切除の障害の比較対象が見つからない。",
+      "pdf_page": 3
+    },
+    "(3)": {
+      "target": "完全加群から lax 引き戻しを経る完全列",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "8dc739141f",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:48",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "環スペクトルの完全加群の具体的な正方形から得る切除的完全列。dg ⊙ の右下項を原典の Perf に同定する定理が見つからない。",
+      "pdf_page": 3
+    },
+    "(4)": {
+      "target": "安定 ∞ 圏の二脚の図式",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "1266b5ea5a",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:43",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:45"
+      ],
+      "result": "原典の任意の入力の図式。lax 構成と切除性の帰結は番号 5、15 の行に記録し、入力の図式は主張に数えない。",
+      "pdf_page": 4
+    },
+    "9": {
+      "target": "安定 ∞ 圏の Verdier 商と完全列の復習",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "2567159c62",
+      "nearby": [
+        "SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean:15",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "小圏の冪等完備化までの完全性と三角圏上での判定の復習。実 Verdier 局所化の定義はあるが、原典の Ind による完全性と同値とする型を確認できない。",
+      "pdf_page": 6
+    },
+    "13": {
+      "target": "lax 引き戻しのコンパクト生成とコンパクト対象",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "bfc3cd9590",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:43",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:45",
+        "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean:27"
+      ],
+      "result": "二脚がコンパクト対象を保つ場合に、lax 引き戻しがコンパクト生成されてそのコンパクト対象が三圏のコンパクト対象の lax 引き戻しとなる比較が見つからない。",
+      "pdf_page": 8
+    },
+    "14": {
+      "target": "切除的正方形の定義",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "bfc174fb21",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "原典の条件は Ind を施した後の引き戻しと右脚の局所化。小圏の右随伴を直接仮定する型はこの述語を与えない。",
+      "pdf_page": 9
+    },
+    "17": {
+      "target": "弱局所化不変量の例",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "3ff24b8bb9",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32",
+        "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:28",
+        "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:32",
+        "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean:36"
+      ],
+      "result": "非連結 K、THH、TC を、すべての小安定圏に対する実弱局所化不変量として提示する型が見つからない。",
+      "pdf_page": 9
+    },
+    "(9)": {
+      "target": "切除性を仮定する小安定 ∞ 圏の正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "1266b5ea5a",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:43",
+        "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean:45"
+      ],
+      "result": "原典の任意の入力の図式。lax 構成と切除性の帰結は番号 5、15 の行に記録し、入力の図式は主張に数えない。",
+      "pdf_page": 9
+    },
+    "(10)": {
+      "target": "Ind を適用した正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "bfc174fb21",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "原典の条件は Ind を施した後の引き戻しと右脚の局所化。小圏の右随伴を直接仮定する型はこの述語を与えない。",
+      "pdf_page": 9
+    },
+    "19": {
+      "target": "開被覆の Mayer–Vietoris への応用",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "7c35d53be9",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80"
+      ],
+      "result": "開被覆に伴う完全加群の四角形に Tamme の弱局所化不変量を適用する主張。一般的な引き戻し比較からは開被覆の Perf の同定が要る。",
+      "pdf_page": 10
+    },
+    "20": {
+      "target": "離散環と環スペクトルの比較",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "89ea5a19eb",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32"
+      ],
+      "result": "離散環の射を環スペクトルの射へ送り同じ比較を作る関手が見つからない。",
+      "pdf_page": 11
+    },
+    "21": {
+      "target": "環スペクトルの射の Tor 単位性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "4c3f908434",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35",
+        "SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean:15"
+      ],
+      "result": "環スペクトルの相対テンソルの乗法同値と、制限の充満忠実性を結ぶ命題が見つからない。一般の右随伴の充満忠実性だけでは相対テンソルを扱わない。",
+      "pdf_page": 11
+    },
+    "22": {
+      "target": "Tor 単位性の制限関手の充満忠実性による判定",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "4c3f908434",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35",
+        "SerrePositivity/InfinityCategories/Stable/Verdier/StableVerdierSequence.lean:15"
+      ],
+      "result": "環スペクトルの相対テンソルの乗法同値と、制限の充満忠実性を結ぶ命題が見つからない。一般の右随伴の充満忠実性だけでは相対テンソルを扱わない。",
+      "pdf_page": 11
+    },
+    "23": {
+      "target": "Tor 単位性の引き戻しに伴うテンソル比較",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "b53b5e6d60",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "Tor 単位性が引き戻しで移り、混合相対テンソルが右下環に一致する主張が見つからない。",
+      "pdf_page": 11
+    },
+    "24": {
+      "target": "イデアルを同型に送る環準同型の例",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "8dc65f76cf",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "イデアルを同型に移す離散環の引き戻しでの Tor 単位性。通常の加群の貼り合わせからは導来テンソルの同定が得られない。",
+      "pdf_page": 11
+    },
+    "(16)": {
+      "target": "Tor 単位性を仮定する環スペクトルの正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "417761823d",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:22",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/Invariant.lean:32",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "原典の図式は Tor 単位性を課した環スペクトルの引き戻し。dg Milnor の条件と、同じ環スペクトルの導来テンソル条件との比較がない。",
+      "pdf_page": 11
+    },
+    "25": {
+      "target": "離散可換環の局所化の例",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "d28e8781c1",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:41"
+      ],
+      "result": "離散可換環の局所化から E₁ 環スペクトルの相対テンソルの同値を得る型が見つからない。通常の環の平坦局所化だけでは同じ型にならない。",
+      "pdf_page": 12
+    },
+    "26": {
+      "target": "Tor 単位的な引き戻し正方形の加群圏の貼り合わせ",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "1352f4eed0",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "環スペクトルの加群圏の貼り合わせは元の環での導来テンソルに関する主張。dg Milnor の模型や一般の lax 商から元の加群圏への同値が見つからない。",
+      "pdf_page": 12
+    },
+    "27": {
+      "target": "貼り合わせにおける Tor 単位性の必要性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "1352f4eed0",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "環スペクトルの加群圏の貼り合わせは元の環での導来テンソルに関する主張。dg Milnor の模型や一般の lax 商から元の加群圏への同値が見つからない。",
+      "pdf_page": 13
+    },
+    "28": {
+      "target": "完全加群圏の切除的正方形",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "8dc739141f",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:48",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37"
+      ],
+      "result": "環スペクトルの完全加群の具体的な正方形から得る切除的完全列。dg ⊙ の右下項を原典の Perf に同定する定理が見つからない。",
+      "pdf_page": 13
+    },
+    "(17)": {
+      "target": "貼り合わせ関手の保存性を示すための同値",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§1",
+        "section_count": 30,
+        "section_examples": [
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:10",
+          "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean:79"
+        ],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "0f046cf9ed",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "同じ環スペクトルの図式の係数拡大の比較。構成した dg 商や安定圏の一般枠組みからは、原典の相対テンソルおよび完全加群の四角形の同定が要る。",
+      "pdf_page": 13
+    },
+    "(18)": {
+      "target": "A′ へのスカラー拡大後の同値",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "0f046cf9ed",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "同じ環スペクトルの図式の係数拡大の比較。構成した dg 商や安定圏の一般枠組みからは、原典の相対テンソルおよび完全加群の四角形の同定が要る。",
+      "pdf_page": 13
+    },
+    "(19)": {
+      "target": "環スペクトルの正方形に付随する完全加群圏",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§2",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 112,
+        "unqualified_examples": [
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:28",
+          "SerrePositivity/InfinityCategories/Core/CatInfinity/ArrowBoundary.lean:34"
+        ]
+      },
+      "concept_query": "0f046cf9ed",
+      "nearby": [
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:27",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:31",
+        "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean:37",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:26",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:30",
+        "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean:35"
+      ],
+      "result": "同じ環スペクトルの図式の係数拡大の比較。構成した dg 商や安定圏の一般枠組みからは、原典の相対テンソルおよび完全加群の四角形の同定が要る。",
+      "pdf_page": 13
+    }
+  }
+}

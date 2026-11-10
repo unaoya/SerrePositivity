@@ -1,0 +1,1336 @@
+{
+  "revision": "6e19c5a14cb16a704016efaf924b61d181239c46",
+  "queries": {
+    "bd855adf34": {
+      "pattern": "rational.*(fixed|descent)|homotopyFixed|theorem_3_1_K0",
+      "repository_count": 24,
+      "repository_examples": [
+        "SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:25",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_vertex @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:30",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_isLimit @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:35",
+        "SerrePositivity.KST.Spectra.homotopyFixedLevel @ SerrePositivity/KST/Spectra/FixedPointLevels.lean:31",
+        "SerrePositivity.KST.Spectra.homotopyFixedLevel_kanComplex @ SerrePositivity/KST/Spectra/FixedPointLevels.lean:40",
+        "SerrePositivity.KST.Spectra.homotopyFixedLevelMap @ SerrePositivity/KST/Spectra/FixedPointLevels.lean:52",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsUnit_natural_component @ SerrePositivity/KST/Spectra/FixedPointNaturality.lean:41"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "9b04016f2d": {
+      "pattern": "infinitesimal|goodwillie|negativeCyclic|truncating",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 3,
+      "mathlib_examples": [
+        "RingTheory/Extension/Basic.lean:308:def infinitesimal (P : Extension R S) : Extension R S where",
+        "RingTheory/Smooth/Basic.lean:202:def homInfinitesimal (P₁ P₂ : Extension R A) [FormallySmooth R P₁.Ring] :",
+        "RingTheory/Smooth/Kaehler.lean:375:lemma CotangentSpace.map_toInfinitesimal_bijective (P : Extension.{u} R S) :"
+      ]
+    },
+    "687be33109": {
+      "pattern": "cdh|abstractBlowup|truncating",
+      "repository_count": 6,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.AbstractBlowupSquare @ SerrePositivity/KST/Descent/BlowupGeometry.lean:45",
+        "SerrePositivity.KST.Descent.abstractBlowupOfReducedCenter @ SerrePositivity/KST/Descent/ClosedCenterSquare.lean:109",
+        "SerrePositivity.KST.Descent.closedCoverAbstractBlowup @ SerrePositivity/KST/Descent/ClosedCoverGeometry.lean:54",
+        "SerrePositivity.KST.Descent.abstractBlowupOfClosedImmersion @ SerrePositivity/KST/Descent/ClosedImmersionSquare.lean:86",
+        "SerrePositivity.KST.Descent.orbitAbstractBlowupAction @ SerrePositivity/KST/Descent/EquivariantOrbitGeometry.lean:66",
+        "SerrePositivity.KST.Descent.orbitAbstractBlowup @ SerrePositivity/KST/Descent/OrbitGeometry.lean:98"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "cbd4407bb8": {
+      "pattern": "truncating|connective.*tensor|tensor.*localiz",
+      "repository_count": 24,
+      "repository_examples": [
+        "SerrePositivity.AlgebraicGeometry.mem_freeLocus_tensorPureTransform_iff_of_isLocalization @ SerrePositivity/AlgebraicGeometry/FreeLocusLocalizedModule.lean:43",
+        "SerrePositivity.AlgebraicGeometry.tensorAlgebraBaseChange_isLocalization @ SerrePositivity/AlgebraicGeometry/TensorAlgebraBaseLocalization.lean:24",
+        "SerrePositivity.AlgebraicGeometry.tensorCoefficientLocalizationMap @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:28",
+        "SerrePositivity.AlgebraicGeometry.tensorCoefficientLocalizationMap_tmul @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:37",
+        "SerrePositivity.AlgebraicGeometry.tensorCoefficientLocalizationMap_isLocalizedModule @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:46",
+        "SerrePositivity.AlgebraicGeometry.tensorPureTransformLocalizationMap @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:58",
+        "SerrePositivity.AlgebraicGeometry.tensorPureTransformLocalizationMap_isLocalizedModule @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:69",
+        "SerrePositivity.AlgebraicGeometry.tensorPureTransformLocalization_flat @ SerrePositivity/AlgebraicGeometry/TensorCoefficientLocalization.lean:81"
+      ],
+      "mathlib_count": 4,
+      "mathlib_examples": [
+        "CategoryTheory/Localization/Monoidal/Basic.lean:245:lemma id_tensorHom (X : LocalizedMonoidal L W ε) {Y₁ Y₂ : LocalizedMonoidal L W ε} (f : Y₁ ⟶ Y₂) :",
+        "RingTheory/Etale/Kaehler.lean:275:def tensorH1CotangentOfIsLocalization (M : Submonoid S) [IsLocalization M T] :",
+        "RingTheory/Localization/BaseChange.lean:256:lemma IsLocalizedModule.map_lTensor (g : M →ₗ[A] M') [h : IsLocalizedModule S g] :",
+        "RingTheory/Smooth/IntegralClosure.lean:72:lemma TensorProduct.toIntegralClosure_bijective_of_isLocalizationAway"
+      ]
+    },
+    "f83b41af5b": {
+      "pattern": "nilinvariant|nilpotent.*(KTheory|Descent)|truncating",
+      "repository_count": 1,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.Nilinvariant @ SerrePositivity/KST/Descent/Axioms.lean:134"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "b30c1b83a9": {
+      "pattern": "invert.*(Fiber|Rational)|rational.*(spectrum|KTheory)|infinitesimal",
+      "repository_count": 16,
+      "repository_examples": [
+        "SerrePositivity.InfinityCategories.isInvertibleEdge_vertexFiber_iff @ SerrePositivity/InfinityCategories/Core/VertexFiberInvertible.lean:25",
+        "SerrePositivity.InfinityCategories.dgInvertingRoofIdentityFiberIso @ SerrePositivity/InfinityCategories/Derived/DGInvertingRoof.lean:75",
+        "SerrePositivity.InfinityCategories.dgInvertingRoofIdentityFiberIso_hom_target @ SerrePositivity/InfinityCategories/Derived/DGInvertingRoof.lean:95",
+        "SerrePositivity.InfinityCategories.isInvertibleEdge_preFiber_of_vertexSurjective @ SerrePositivity/InfinityCategories/F1/MappingSpaces/PreFiberKan.lean:42",
+        "SerrePositivity.InfinityCategories.F1B.invertibleTargetLifting_kanFiberwiseHomPostcompFiber @ SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomFiberInvertibleLift.lean:41",
+        "SerrePositivity.InfinityCategories.F1B.kanInvertibleTargetLifting_fiberPostcomp_of_lifting @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLiftingCartesian.lean:28",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.coherentInvertiblePointedFiberMap_isQCatEquivalence @ SerrePositivity/InfinityCategories/HomotopyLimits/CoherentInvertibleTotalMap.lean:31",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.coherentInvertibleTotalMap_fiber_isQCatEquivalence @ SerrePositivity/InfinityCategories/HomotopyLimits/CoherentInvertibleTotalMap.lean:46"
+      ],
+      "mathlib_count": 5,
+      "mathlib_examples": [
+        "CategoryTheory/Sites/Point/Basic.lean:265:lemma W_isInvertedBy_presheafFiber'",
+        "CategoryTheory/Sites/Point/Skyscraper.lean:263:lemma W_isInvertedBy_presheafFiber :",
+        "RingTheory/Extension/Basic.lean:308:def infinitesimal (P : Extension R S) : Extension R S where",
+        "RingTheory/Smooth/Basic.lean:202:def homInfinitesimal (P₁ P₂ : Extension R A) [FormallySmooth R P₁.Ring] :"
+      ]
+    },
+    "897a4acc91": {
+      "pattern": "support.*(Presheaf|Spectrum)|presheaf.*support|central.*localization",
+      "repository_count": 5,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.centralLocalization_isZero_iff @ SerrePositivity/KST/Descent/CentralSupportCriterion.lean:42",
+        "SerrePositivity.KST.Descent.centralLocalizationKernel @ SerrePositivity/KST/Descent/CentralKernelIdentification.lean:41",
+        "SerrePositivity.KST.Descent.centralLocalizationKernel_iff_scalarSupported @ SerrePositivity/KST/Descent/CentralKernelIdentification.lean:51",
+        "SerrePositivity.KST.Descent.centralLocalizationKernel_eq_scalarSupported @ SerrePositivity/KST/Descent/CentralKernelIdentification.lean:64",
+        "SerrePositivity.KST.Descent.centralLocalizationKernel_map @ SerrePositivity/KST/Descent/CentralKernelNaturality.lean:45"
+      ],
+      "mathlib_count": 3,
+      "mathlib_examples": [
+        "RingTheory/DedekindDomain/FiniteAdeleRing.lean:45:def HeightOneSpectrum.Support (k : K) : Set (HeightOneSpectrum R) :=",
+        "RingTheory/Spectrum/Prime/FreeLocus.lean:288:lemma rankAtStalk_eq_zero_iff_notMem_support (p : PrimeSpectrum R) :",
+        "RingTheory/Support.lean:47:def Module.support : Set (PrimeSpectrum R) :="
+      ]
+    },
+    "1d214914c0": {
+      "pattern": "support.*(Presheaf|Spectrum)|rational.*K0|theorem_3_1_K0",
+      "repository_count": 1,
+      "repository_examples": [
+        "SerrePositivity.theorem_3_1_K0 @ SerrePositivity/Inputs/Descent.lean:50"
+      ],
+      "mathlib_count": 3,
+      "mathlib_examples": [
+        "RingTheory/DedekindDomain/FiniteAdeleRing.lean:45:def HeightOneSpectrum.Support (k : K) : Set (HeightOneSpectrum R) :=",
+        "RingTheory/Spectrum/Prime/FreeLocus.lean:288:lemma rankAtStalk_eq_zero_iff_notMem_support (p : PrimeSpectrum R) :",
+        "RingTheory/Support.lean:47:def Module.support : Set (PrimeSpectrum R) :="
+      ]
+    },
+    "ebb23e03a6": {
+      "pattern": "cech.*descent|descent.*cech|faithfullyFlat|transfer.*rank",
+      "repository_count": 256,
+      "repository_examples": [
+        "SerrePositivity.AlgebraicGeometry.projective_of_countable_flat_of_faithfullyFlat @ SerrePositivity/AlgebraicGeometry/CountableProjectiveFaithfullyFlatDescent.lean:25",
+        "SerrePositivity.AlgebraicGeometry.projective_of_finiteType_finite_flat_of_faithfullyFlat @ SerrePositivity/AlgebraicGeometry/CountableProjectiveFaithfullyFlatDescent.lean:41",
+        "SerrePositivity.AlgebraicGeometry.faithfullyFlat_of_residue_maps @ SerrePositivity/AlgebraicGeometry/LocalizationCompletionCover.lean:29",
+        "SerrePositivity.AlgebraicGeometry.faithfullyFlat_localization_completion_product @ SerrePositivity/AlgebraicGeometry/LocalizationCompletionCover.lean:89",
+        "SerrePositivity.AlgebraicGeometry.isModuleMittagLeffler_of_faithfullyFlat @ SerrePositivity/AlgebraicGeometry/MittagLefflerFaithfullyFlatDescent.lean:55",
+        "SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed @ SerrePositivity/BhattScholze/Andre/AndreFlatness.lean:58",
+        "SerrePositivity.BhattScholze.deltaAdjoinDivisionResidue_moduleFaithfullyFlat @ SerrePositivity/BhattScholze/Andre/Envelope/DivisionResidue.lean:154",
+        "SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficient_faithfullyFlat @ SerrePositivity/BhattScholze/Andre/Envelope/MonicSource.lean:163"
+      ],
+      "mathlib_count": 11,
+      "mathlib_examples": [
+        "Algebra/Category/ModuleCat/Descent.lean:49:lemma ModuleCat.reflectsIsomorphisms_extendScalars_of_faithfullyFlat",
+        "Algebra/Category/Ring/EqualizerPushout.lean:41:noncomputable def isLimitForkPushoutSelfOfFaithfullyFlat (hf : f.hom.FaithfullyFlat) :",
+        "AlgebraicGeometry/Morphisms/Flat.lean:168:lemma flat_and_surjective_iff_faithfullyFlat_of_isAffine [IsAffine X] [IsAffine Y] :",
+        "RingTheory/Etale/Descent.lean:47:lemma FormallyUnramified.of_formallyUnramified_tensorProduct_of_faithfullyFlat"
+      ]
+    },
+    "a5877fa25e": {
+      "pattern": "transfer.*rank|rank.*transfer|trace.*rank|connectedKMiddle_additivity",
+      "repository_count": 3,
+      "repository_examples": [
+        "SerrePositivity.KST.NonConnective.connectedKMiddle_additivity_nonnegative @ SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:23",
+        "SerrePositivity.KST.NonConnective.connectedKMiddle_additivity @ SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:34",
+        "SerrePositivity.KST.Descent.rankTransferRetract @ SerrePositivity/KST/Descent/DiagramTransfer.lean:42"
+      ],
+      "mathlib_count": 5,
+      "mathlib_examples": [
+        "Algebra/Lie/TraceForm.lean:438:lemma traceForm_eq_sum_finrank_nsmul_mul (x y : L) :",
+        "Analysis/InnerProductSpace/Trace.lean:48:lemma _root_.InnerProductSpace.trace_rankOne (x y : E) :",
+        "LinearAlgebra/Trace.lean:190:theorem trace_one : trace R M 1 = (finrank R M : R) := by",
+        "RingTheory/Trace/Basic.lean:138:theorem trace_eq_finrank_mul_minpoly_nextCoeff [FiniteDimensional K L] (x : L) :"
+      ]
+    },
+    "0da5dbb721": {
+      "pattern": "cech.*descent|finite.*surj.*descent|flattening|cdh",
+      "repository_count": 51,
+      "repository_examples": [
+        "SerrePositivity.AlgebraicGeometry.exists_chart_flattening_center @ SerrePositivity/AlgebraicGeometry/ChartLocalFlattening.lean:29",
+        "SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_local_flattening_centers @ SerrePositivity/AlgebraicGeometry/FiniteFlatLocalCenters.lean:31",
+        "SerrePositivity.AlgebraicGeometry.exists_finiteRank_flattening_center @ SerrePositivity/AlgebraicGeometry/FiniteModuleFreeLocusFlattening.lean:28",
+        "SerrePositivity.AlgebraicGeometry.exists_finiteRank_determinantal_flattening @ SerrePositivity/AlgebraicGeometry/FiniteRankFlattening.lean:29",
+        "SerrePositivity.AlgebraicGeometry.exists_freeBoundary_flattening_center @ SerrePositivity/AlgebraicGeometry/FreeBoundaryFlattening.lean:29",
+        "SerrePositivity.AlgebraicGeometry.exists_noetherian_finite_flattening_center @ SerrePositivity/AlgebraicGeometry/NoetherianFiniteModuleFlattening.lean:26",
+        "SerrePositivity.AlgebraicGeometry.exists_rankOne_flattening_center @ SerrePositivity/AlgebraicGeometry/RankOneFlattening.lean:78",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affineCechStage_piDescent @ SerrePositivity/KST/Descent/AffineCechDescent.lean:64"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "d30be8b0a6": {
+      "pattern": "homotopyFixed|orbitStep|sectioned.*descent|piDescent",
+      "repository_count": 61,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.orbitStep_pi_bijective @ SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_split_piDescent @ SerrePositivity/KST/Descent/AffineSplitDescent.lean:128",
+        "SerrePositivity.KST.Descent.GradedPresheaf.PiDescent @ SerrePositivity/KST/Descent/Axioms.lean:124",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_baseChange_piDescent @ SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:55",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_selfBaseChange_piDescent @ SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:72",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affineCechStage_piDescent @ SerrePositivity/KST/Descent/AffineCechDescent.lean:64",
+        "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_pullback_piDescent @ SerrePositivity/KST/Descent/AffinePullbackDescent.lean:86",
+        "SerrePositivity.KST.Descent.GradedPresheaf.piDescent_of_pullback_bijective @ SerrePositivity/KST/Descent/BasicDescent.lean:34"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "8507d17724": {
+      "pattern": "homotopyFixed|permutationInvariants|invariantMap_exact",
+      "repository_count": 28,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.invariantMap_exact @ SerrePositivity/KST/Descent/InvariantExactness.lean:118",
+        "SerrePositivity.KST.Descent.permutationInvariants @ SerrePositivity/KST/Descent/RationalFixedPoints.lean:34",
+        "SerrePositivity.KST.Descent.permutationInvariants_constant @ SerrePositivity/KST/Descent/RationalFixedPoints.lean:44",
+        "SerrePositivity.KST.Descent.permutationInvariantsEquiv @ SerrePositivity/KST/Descent/RationalFixedPoints.lean:53",
+        "SerrePositivity.KST.Descent.permutationInvariantsEquiv_apply_eq @ SerrePositivity/KST/Descent/RationalFixedPoints.lean:69",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:25",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_vertex @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:30",
+        "SerrePositivity.KST.Spectra.homotopyFixedPointsInfinityCone_isLimit @ SerrePositivity/KST/Spectra/FixedPointInfinityLimits.lean:35"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "07305ccddd": {
+      "pattern": "orbitStep|geometric.*fiber|abstractBlowup|equalizer",
+      "repository_count": 20,
+      "repository_examples": [
+        "SerrePositivity.KST.Descent.orbitStep_pi_bijective @ SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity.DifferentialGraded.ScalarExtension.coequalizerIso @ SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean:314",
+        "SerrePositivity.DifferentialGraded.ScalarExtension.map_π_coequalizerIso @ SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean:320",
+        "SerrePositivity.EInfinity.DGAlgebra.hasReflexiveCoequalizers @ SerrePositivity/EInfinity/DGAlgebra/AllColimits.lean:34",
+        "SerrePositivity.EInfinity.DGAlgebra.forgetPreservesReflexiveCoequalizers @ SerrePositivity/EInfinity/DGAlgebra/AllColimits.lean:41",
+        "SerrePositivity.EInfinity.DGAlgebra.forgetCreatesSplitCoequalizers @ SerrePositivity/EInfinity/DGAlgebra/Monadic.lean:74",
+        "SerrePositivity.EInfinity.Operad.Algebra.forget_createsSplitCoequalizers @ SerrePositivity/EInfinity/Operad/AlgebraMonadic.lean:50",
+        "SerrePositivity.EInfinity.Operad.Algebra.hasReflexiveCoequalizers @ SerrePositivity/EInfinity/Operad/AlgebraReflexiveCoequalizers.lean:32"
+      ],
+      "mathlib_count": 77,
+      "mathlib_examples": [
+        "Algebra/Algebra/NonUnitalSubalgebra.lean:508:def equalizer (ϕ ψ : A →ₙₐ[R] B) : NonUnitalSubalgebra R A where",
+        "Algebra/Algebra/Subalgebra/Basic.lean:1030:def equalizer (ϕ ψ : A →ₐ[R] B) : Subalgebra R A where",
+        "Algebra/Algebra/Subalgebra/Lattice.lean:377:theorem equalizer_eq_top {φ ψ : A →ₐ[R] B} : equalizer φ ψ = ⊤ ↔ φ = ψ := by",
+        "Algebra/Category/Ring/Constructions.lean:393:def equalizerFork : Fork f g :="
+      ]
+    },
+    "e7038c1661": {
+      "pattern": "koszul.*(length|finite)|LengthHypotheses|lemma_3_4",
+      "repository_count": 35,
+      "repository_examples": [
+        "SerrePositivity.lemma_3_4 @ SerrePositivity/Paper/Section3/LengthComputation.lean:51",
+        "SerrePositivity.Section4.koszulFinite_of_lengthAlgebra_values @ SerrePositivity/Paper/Section4/LengthHypotheses.lean:99",
+        "SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values @ SerrePositivity/Paper/Section4/LengthHypotheses.lean:115",
+        "SerrePositivity.Section4.koszulEuler_eq_of_lengthAlgebra_values @ SerrePositivity/Paper/Section4/LengthHypotheses.lean:158",
+        "SerrePositivity.koszulComplex_free_finite_X @ SerrePositivity/CommutativeAlgebra/Koszul/Basic.lean:331",
+        "SerrePositivity.CLMST.completedTensor_parameter_koszul_length_bounds @ SerrePositivity/CLMST/ParameterQuotientLength.lean:196",
+        "SerrePositivity.CLMST.completedTensor_koszulModuleHomology_finite @ SerrePositivity/CLMST/ParameterQuotientLength.lean:310",
+        "SerrePositivity.CLMST.completedTensor_koszul_length_ne_top @ SerrePositivity/CLMST/ParameterQuotientLength.lean:324"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "2be9f1d5eb": {
+      "pattern": "koszul.*(iso|split|directSum)|nullhomotop.*(split|cone)|cone.*zero.*iso",
+      "repository_count": 211,
+      "repository_examples": [
+        "SerrePositivity.Asymptotic.evaluateSequenceKoszulIso @ SerrePositivity/Asymptotic/SequenceKoszul.lean:131",
+        "SerrePositivity.BhattScholze.deltaDivisionFiniteNextJet_derivedKoszulNatIso @ SerrePositivity/BhattScholze/Andre/Envelope/JetKoszul.lean:102",
+        "SerrePositivity.BhattScholze.deltaDivisionFiniteJetStepKoszulTorIso @ SerrePositivity/BhattScholze/Andre/Envelope/JetKoszul.lean:1141",
+        "SerrePositivity.BhattScholze.Andre.monicPrismaticSourceGeneratorPowerReductionKoszulIso @ SerrePositivity/BhattScholze/Andre/Envelope/MonicSource.lean:807",
+        "SerrePositivity.BhattScholze.deltaDivisionNormalizedStepRelativeKoszulAugmentation_quasiIso @ SerrePositivity/BhattScholze/Andre/Envelope/NormalizedStep.lean:99",
+        "SerrePositivity.BhattScholze.deltaDivisionNormalizedStepKoszulTorIso @ SerrePositivity/BhattScholze/Andre/Envelope/NormalizedStep.lean:596",
+        "SerrePositivity.BhattScholze.deltaPDivisionSourceFiniteKoszulTorIso @ SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean:1207",
+        "SerrePositivity.BhattScholze.deltaPDivisionFiniteKoszulAugmentation_quasiIso @ SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean:1371"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "bf99b6f6e0": {
+      "pattern": "chiLam.*(twist|Invariant)|paper.*Euler.*conjSum",
+      "repository_count": 3,
+      "repository_examples": [
+        "SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq @ SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq_of_flat @ SerrePositivity/Paper/Section4/SymmetricComparison.lean:318",
+        "SerrePositivity.chiLam_twist_baseChange_resolution @ SerrePositivity/IntersectionMultiplicity/ResolutionEvaluation.lean:153"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "fa8c5b9e8f": {
+      "pattern": "RankSmall|raw.*length|dv[rR].*koszul",
+      "repository_count": 14,
+      "repository_examples": [
+        "SerrePositivity.Asymptotic.below_rankSmall @ SerrePositivity/Paper/Section4/RankQuotient.lean:239",
+        "SerrePositivity.Asymptotic.rankSmallComplex @ SerrePositivity/Asymptotic/RankQuotient.lean:79",
+        "SerrePositivity.Asymptotic.rankSmallHomotopy @ SerrePositivity/Asymptotic/RankQuotient.lean:84",
+        "SerrePositivity.Asymptotic.rankSmallComplex_mappingCone @ SerrePositivity/Asymptotic/RankQuotient.lean:115",
+        "SerrePositivity.Asymptotic.rankSmallBounded @ SerrePositivity/Asymptotic/RankQuotient.lean:136",
+        "SerrePositivity.Asymptotic.changeRing_rankSmallComplex @ SerrePositivity/Asymptotic/RankQuotient.lean:190",
+        "SerrePositivity.Asymptotic.changeRing_rankSmallBounded @ SerrePositivity/Asymptotic/RankQuotient.lean:204",
+        "SerrePositivity.Asymptotic.changeRing_inverts_rankSmall @ SerrePositivity/Asymptotic/RankQuotient.lean:213"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "e683c2b9df": {
+      "pattern": "spectralSequence|hyperTor|paperRankEulerK0_changeRing|alternating.*rank",
+      "repository_count": 3,
+      "repository_examples": [
+        "SerrePositivity.Asymptotic.paperRankEulerK0_changeRing @ SerrePositivity/Paper/Section4/RankQuotient.lean:455",
+        "SerrePositivity.resolution_alternating_finrank @ SerrePositivity/HomologicalAlgebra/Resolution.lean:415",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.alternatingCell_odd_rank_le @ SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingOddRank.lean:63"
+      ],
+      "mathlib_count": 5,
+      "mathlib_examples": [
+        "Algebra/Homology/SpectralObject/FirstPage.lean:78:noncomputable def spectralSequenceFirstPageXIso (pq : κ)",
+        "Algebra/Homology/SpectralObject/HasSpectralSequence.lean:67:structure SpectralSequenceDataCore where",
+        "Algebra/Homology/SpectralObject/SpectralSequence.lean:480:noncomputable def spectralSequence : SpectralSequence C c r₀ where",
+        "Algebra/Homology/SpectralSequence/Basic.lean:36:structure SpectralSequence where"
+      ]
+    },
+    "23bca41c2b": {
+      "pattern": "(perf|dg).*endomorphism|dgQuotient.*connective|supportedRankK0_descent",
+      "repository_count": 115,
+      "repository_examples": [
+        "SerrePositivity.Section4.supportedRankK0_descent @ SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity.DifferentialGraded.dgFunctor_endomorphismEvaluationComponent @ SerrePositivity/DifferentialGraded/Endomorphism/Derived/Adjunction.lean:102",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismDerivedHom @ SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean:109",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismTensorClosedInclusionIso @ SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean:52",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismHomClosedInclusionIso @ SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean:67",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismEnhancementAdjunction @ SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean:79",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismEnhancement_left_triangle @ SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean:101",
+        "SerrePositivity.DifferentialGraded.perfectEndomorphismEnhancement_right_triangle @ SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean:109"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "8731e64965": {
+      "pattern": "dgQuotient|homComplex.*flat|drinfeld",
+      "repository_count": 228,
+      "repository_examples": [
+        "SerrePositivity.DifferentialGraded.FreeDGCategory.homComplex_kFlat @ SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean:187",
+        "SerrePositivity.InfinityCategories.dgQuotientWordProjection @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:21",
+        "SerrePositivity.InfinityCategories.dgQuotientWordProjection_split @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:26",
+        "SerrePositivity.InfinityCategories.dgQuotientWordProjection_other @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:33",
+        "SerrePositivity.InfinityCategories.dgQuotientDegreeDesc @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:41",
+        "SerrePositivity.InfinityCategories.dgQuotientDegreeDesc_ι @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:49",
+        "SerrePositivity.InfinityCategories.dgQuotientDegreeHom_ext @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:57",
+        "SerrePositivity.InfinityCategories.dgQuotientWordInclusion_injective @ SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/QuotientWordSeparation.lean:66"
+      ],
+      "mathlib_count": 0,
+      "mathlib_examples": []
+    },
+    "ef9ae5ffed": {
+      "pattern": "matrix.*product|product.*matrix|freeSequence.*generator|perfect.*generator",
+      "repository_count": 41,
+      "repository_examples": [
+        "SerrePositivity.BhattScholze.deltaAlgebraPerfectionGeneratorPowerReductionKoszulIso @ SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean:1051",
+        "SerrePositivity.BhattScholze.deltaAlgebraPerfectionGeneratorPowerReduction_isComplete_over_quotient @ SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean:1059",
+        "SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_generator_smul_regular @ SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean:798",
+        "SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_generator_torVanishing @ SerrePositivity/BhattScholze/Andre/Perfection/PerfectPrismMonic.lean:811",
+        "SerrePositivity.BhattScholze.Andre.powerRootPrismMonicPerfection_generator_regular @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PerfectionFaithful.lean:767",
+        "SerrePositivity.BhattScholze.Andre.perfectPrism_generator_modPrime_regular_iff @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Residue.lean:1425",
+        "SerrePositivity.BhattScholze.Andre.perfectPrism_generator_power_bounded_torsion_of_unconditional @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Residue.lean:1461",
+        "SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiEquiv_generator @ SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean:510"
+      ],
+      "mathlib_count": 16,
+      "mathlib_examples": [
+        "Analysis/InnerProductSpace/PiL2.lean:1291:theorem InnerProductSpace.toMatrix_rankOne {𝕜 E F ι ι' : Type*} [RCLike 𝕜]",
+        "Analysis/Matrix/Order.lean:316:def toMatrixInnerProductSpace (M : Matrix n n 𝕜) (hM : M.PosSemidef) :",
+        "Analysis/Matrix/PosDef.lean:125:def toInnerProductSpace (M : Matrix n n 𝕜) (hM : M.PosSemidef) :",
+        "CategoryTheory/Limits/Shapes/Biproducts.lean:954:def biproduct.matrix (m : ∀ j k, f j ⟶ g k) : ⨁ f ⟶ ⨁ g :="
+      ]
+    },
+    "60f42d1a17": {
+      "pattern": "hyperTor|spectralSequence|dgQuotient.*tensor",
+      "repository_count": 0,
+      "repository_examples": [],
+      "mathlib_count": 5,
+      "mathlib_examples": [
+        "Algebra/Homology/SpectralObject/FirstPage.lean:78:noncomputable def spectralSequenceFirstPageXIso (pq : κ)",
+        "Algebra/Homology/SpectralObject/HasSpectralSequence.lean:67:structure SpectralSequenceDataCore where",
+        "Algebra/Homology/SpectralObject/SpectralSequence.lean:480:noncomputable def spectralSequence : SpectralSequence C c r₀ where",
+        "Algebra/Homology/SpectralSequence/Basic.lean:36:structure SpectralSequence where"
+      ]
+    },
+    "41c8f528fe": {
+      "pattern": "matrix.*product|product.*matrix|tensor.*product|derived.*baseChange",
+      "repository_count": 203,
+      "repository_examples": [
+        "SerrePositivity.AlgebraicGeometry.finite_tensorProduct_over_left_algebra @ SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean:27",
+        "SerrePositivity.AlgebraicGeometry.support_tensorProduct_eq_preimage @ SerrePositivity/AlgebraicGeometry/FiberSupportAnnihilator.lean:29",
+        "SerrePositivity.AlgebraicGeometry.support_tensorProduct_eq_zeroLocus_map_annihilator @ SerrePositivity/AlgebraicGeometry/FiberSupportAnnihilator.lean:58",
+        "SerrePositivity.AlgebraicGeometry.associatedPrimes_tensorProduct_subset_of_prime_quotients @ SerrePositivity/AlgebraicGeometry/TensorAssociatedPrimeDevissage.lean:26",
+        "SerrePositivity.AlgebraicGeometry.associatedPrimes_tensorProduct_subset_of_fibres @ SerrePositivity/AlgebraicGeometry/TensorFibreAssociatedPrimes.lean:25",
+        "SerrePositivity.BhattScholze.deltaRootFiniteQuotient_derivedTensor_baseChange_concentrated @ SerrePositivity/BhattScholze/Andre/Envelope/RootRelation.lean:623",
+        "SerrePositivity.BhattScholze.Perfectoidization.Derived.tensorProduct_cardinal_le @ SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcCardinality.lean:122",
+        "SerrePositivity.length_tensorProduct_ne_top_of_annihilator @ SerrePositivity/CommutativeAlgebra/Length/Basic.lean:127"
+      ],
+      "mathlib_count": 84,
+      "mathlib_examples": [
+        "Algebra/Algebra/Epi.lean:151:def _root_.TensorProduct.lid' : A ⊗[R] M ≃ₗ[A] M :=",
+        "Algebra/Algebra/Subalgebra/Centralizer.lean:66:lemma centralizer_coe_image_includeLeft_eq_center_tensorProduct",
+        "Algebra/Azumaya/Defs.lean:39:abbrev instModuleTensorProductMop : Module (A ⊗[R] Aᵐᵒᵖ) A := TensorProduct.Algebra.module",
+        "Algebra/Category/Ring/Constructions.lean:116:lemma isPushout_tensorProduct (R A B : Type u) [CommRing R] [CommRing A] [CommRing B]"
+      ]
+    }
+  },
+  "nearby_types": {
+    "SerrePositivity/Inputs/Descent.lean:50": {
+      "declaration": "SerrePositivity.theorem_3_1_K0",
+      "source_type": "theorem theorem_3_1_K0 (A T : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing T] [Algebra A T] [Module.Finite A T] (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p] {e : ℕ} (z : Fin e → A) (_hz : (Ideal.span (Set.range z)).radical = maximalIdeal A) (G : Type u) [Group G] [Finite G] [MulSemiringAction G T] [SMulCommClass G A T] (_hsurj : Functi"
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:58": {
+      "declaration": "SerrePositivity.KST.Descent.orbitProductComparison",
+      "source_type": "noncomputable def orbitProductComparison {Y Z U B : Type*} [AddCommGroup Y] [Module ℚ Y] [AddCommGroup Z] [Module ℚ Z] [AddCommGroup U] [Module ℚ U] [AddCommGroup B] [Module ℚ B] (ρU : Representation ℚ G U) (decomposition : B ≃ₗ[ℚ] (permutationRepresentation G I Y).invariants × ρU.invariants) (center : Z →ₗ[ℚ] ρU.invariants) : Y × Z →ₗ[ℚ] B := decomposition.symm."
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:70": {
+      "declaration": "SerrePositivity.KST.Descent.orbitIntersectionComparison",
+      "source_type": "noncomputable def orbitIntersectionComparison {Z C : Type*} [AddCommGroup Z] [Module ℚ Z] [AddCommGroup C] [Module ℚ C] (decomposition : C ≃ₗ[ℚ] (permutationRepresentation G I Z).invariants) : Z →ₗ[ℚ] C := decomposition.symm.toLinearMap.comp (permutationDiagonal G I Z)  /-- 概要：(3.8) と閉中心上の帰納仮定から元の指定軌道比較が全次数同型（定理 3.1）。 方針：対角比較の全単射性、積の比較、分裂長完全列の五項補題を組み合わせる。 規約：T は実"
+    },
+    "SerrePositivity/KST/Descent/Theorem31.lean:80": {
+      "declaration": "SerrePositivity.KST.Descent.orbitStep_pi_bijective",
+      "source_type": "theorem orbitStep_pi_bijective [MulAction.IsPretransitive G I] [Nonempty I] (Y Z U : ℤ → ModuleCat.{u} ℚ) (r : ∀ n, Y n →ₗ[ℚ] Z n) (T : GradedMayerVietoris.{u}) (ρU : ∀ n, Representation ℚ G (U n)) (decompositionB : ∀ n, T.B n ≃ₗ[ℚ] (permutationRepresentation G I (Y n)).invariants × (ρU n).invariants) (decompositionC : ∀ n, T.C n ≃ₗ[ℚ] (permutationRepresentation "
+    },
+    "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:26": {
+      "declaration": "SerrePositivity.KST.NonConnective.DGKappaCone",
+      "source_type": "abbrev DGKappaCone := DGFullSubcategory (ModuleCategory R D) I.objects  instance dgKappaConeSmall : Small.{u} (DGKappaCone R D I) := I.small instance dgKappaConePretriangulated : IsDGPretriangulated R (DGKappaCone R D I) := I.pretriangulated  /-- 元の dg cone 内の実可算直和関手。全次数の Hom 作用は既に構成したものを制限する。 -/ def dgKappaConeCountableSum : DGFunctor R (DGKappaCone R D I) (DGKa"
+    },
+    "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:28": {
+      "declaration": "SerrePositivity.KST.NonConnective.dgKappaConeSmall",
+      "source_type": "instance dgKappaConeSmall : Small.{u} (DGKappaCone R D I) := I.small instance dgKappaConePretriangulated : IsDGPretriangulated R (DGKappaCone R D I) := I.pretriangulated  /-- 元の dg cone 内の実可算直和関手。全次数の Hom 作用は既に構成したものを制限する。 -/ def dgKappaConeCountableSum : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I) := (dgCountableSumFunctor R D).restrict I.objects I.objec"
+    },
+    "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:29": {
+      "declaration": "SerrePositivity.KST.NonConnective.dgKappaConePretriangulated",
+      "source_type": "instance dgKappaConePretriangulated : IsDGPretriangulated R (DGKappaCone R D I) := I.pretriangulated  /-- 元の dg cone 内の実可算直和関手。全次数の Hom 作用は既に構成したものを制限する。 -/ def dgKappaConeCountableSum : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I) := (dgCountableSumFunctor R D).restrict I.objects I.objects (fun M hM ↦ I.countableClosed (fun _ : ℕ ↦ M) (fun _ ↦ hM))  /-- 同"
+    },
+    "SerrePositivity/KST/Descent/CentralSupportCriterion.lean:42": {
+      "declaration": "SerrePositivity.KST.Descent.centralLocalization_isZero_iff",
+      "source_type": "theorem centralLocalization_isZero_iff [IsLocalizedModule (Submonoid.powers s) (F.mapLinearMap R : (P ⟶ P) →ₗ[R] _)] : IsZero (F.obj P) ↔ ∃ n : ℕ, s ^ n • (𝟙 P) = 0 "
+    },
+    "SerrePositivity/KST/Descent/Axioms.lean:43": {
+      "declaration": "SerrePositivity.KST.Descent.FiniteTypeSchemes",
+      "source_type": "abbrev FiniteTypeSchemes (S : Scheme.{u}) := ObjectProperty.FullSubcategory (fun X : Over S ↦ LocallyOfFiniteType X.hom ∧ QuasiCompact X.hom)  /-- 概要：係数と整数次数を持つ有理加群値の前層（論文 (3.5) の π_* 側）。 方針：各 `H`、`n : ℤ` ごとに反変関手を与え、関手の法則を利用する。 規約：`Coefficient` は係数の添字型で、実際の dg 係数の実現は別の界面で供給する。 この型だけで Tot やホモトピー引き戻しを構成したとは主張しない。 使われ方：定理 3.1 の全次数比較と有限平坦 transfer の代数的基礎。 -/ abbrev G"
+    },
+    "SerrePositivity/KST/Descent/Axioms.lean:52": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf",
+      "source_type": "abbrev GradedPresheaf (C : Type u) [Category.{v} C] (Coefficient : Type w) := Coefficient → ℤ → Cᵒᵖ ⥤ ModuleCat.{t} ℚ  namespace GradedPresheaf  variable {C : Type u} [Category.{v} C] {Coefficient : Type w} variable (L : GradedPresheaf.{u, v, w, t} C Coefficient)  /-- 概要：指定した射による次数付き前層の引き戻し（論文 (3.7)）。 方針：反対圏の射に関手を適用する。"
+    },
+    "SerrePositivity/KST/Descent/Axioms.lean:64": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf.pullback",
+      "source_type": "abbrev pullback (H : Coefficient) (n : ℤ) {X Y : C} (f : X ⟶ Y) : (L H n).obj (op Y) →ₗ[ℚ] (L H n).obj (op X) := ((L H n).map f.op).hom  /-- 概要：恒等射の引き戻しは恒等写像（論文 (3.7) の自然性）。 方針：関手の恒等射保存を使う。 規約：係数と次数は固定。 使われ方：Čech の退化射と分裂の計算。 -/ @[simp] theorem pullback_id (H : Coefficient) (n : ℤ) (X : C) : L.pullback H n (𝟙 X) = LinearMap.id "
+    },
+    "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:25": {
+      "declaration": "SerrePositivity.InfinityCategories.perfectSupportK0Class",
+      "source_type": "def perfectSupportK0Class (X : perfectSupportHomotopyCategory S Z) : K0WithSupport Z := K0WithSupport.mk Z ((perfectSupportClosedEquivalence S Z).functor.obj X)  /-- 概要：台つき比較で同型な対象は同じ K₀ 類を持つ。 方針：比較関手で同型を送る。 規約：対象の選択に依存しない。使われ方：有限射影代表による計算。 -/ lemma perfectSupportK0Class_iso {X Y : perfectSupportHomotopyCategory S Z} (e : X ≅ Y) : perfectSupportK0Class S Z X = pe"
+    },
+    "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:31": {
+      "declaration": "SerrePositivity.InfinityCategories.perfectSupportK0Class_iso",
+      "source_type": "lemma perfectSupportK0Class_iso {X Y : perfectSupportHomotopyCategory S Z} (e : X ≅ Y) : perfectSupportK0Class S Z X = perfectSupportK0Class S Z Y := TriangulatedK0.mk_iso ((perfectSupportClosedEquivalence S Z).functor.mapIso e)  /-- 概要：既存の台つき有限射影対象の類は h Perf_Z の対象から得られる。 方針：比較同値の余単位を用いる。 規約：K₀ の生成元についての主張。使われ方：既存の局所化列の入力の同定。 -/ lemma perfectSupportK0Class_repres"
+    },
+    "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:38": {
+      "declaration": "SerrePositivity.InfinityCategories.perfectSupportK0Class_representative",
+      "source_type": "lemma perfectSupportK0Class_representative (Y : SupportedPerfectHomotopyOn Z) : perfectSupportK0Class S Z ((perfectSupportClosedEquivalence S Z).inverse.obj Y) = K0WithSupport.mk Z Y := TriangulatedK0.mk_iso ((perfectSupportClosedEquivalence S Z).counitIso.app Y)  variable {T : Type u} [CommRing T]  /-- 概要：既存 K₀ の底変更は h Perf_Z の代表に通常の底変更を施した類である。 方針：既存の map_mk を適"
+    },
+    "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:37": {
+      "declaration": "SerrePositivity.KST.Descent.tensorBaseChangeRetraction",
+      "source_type": "noncomputable def tensorBaseChangeRetraction (φ : T →ₐ[A] B) : B ⊗[A] T →ₐ[B] B := Algebra.TensorProduct.lift (AlgHom.id B B) φ (fun _ _ ↦ Commute.all _ _)  /-- 概要：底変換の分裂の純テンソル上の公式（論文 補題 3.2）。 方針：テンソル積の普遍性の評価公式を使う。 規約：左因子を掛け、右因子には指定代数射を適用する。 使われ方：Čech の対角切断との比較。 -/ @[simp] theorem tensorBaseChangeRetraction_tmul (φ : T →ₐ[A] B) (b : B) (t : T) : tensorBaseChangeR"
+    },
+    "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:55": {
+      "declaration": "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_baseChange_piDescent",
+      "source_type": "theorem NaturalBlowupSequences.affine_baseChange_piDescent [IsNoetherian S] {Coefficient : Type w} {L : GradedPresheaf.{u + 1, u, w, t} (FiniteTypeSchemes S) Coefficient} (data : NaturalBlowupSequences L) [Nilinvariant S L] [∀ H n, PreservesFiniteProducts (L H n)] [Finite G] (b : Spec (.of B) ⟶ S) [LocallyOfFiniteType b] [QuasiCompact b] [IsSeparated b] (φ : T →ₐ"
+    },
+    "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:72": {
+      "declaration": "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_selfBaseChange_piDescent",
+      "source_type": "theorem NaturalBlowupSequences.affine_selfBaseChange_piDescent [IsNoetherian S] {Coefficient : Type w} {L : GradedPresheaf.{u + 1, u, w, t} (FiniteTypeSchemes S) Coefficient} (data : NaturalBlowupSequences L) [Nilinvariant S L] [∀ H n, PreservesFiniteProducts (L H n)] [Finite G] (b : Spec (.of T) ⟶ S) [LocallyOfFiniteType b] [QuasiCompact b] [IsSeparated b] (tran"
+    },
+    "SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:23": {
+      "declaration": "SerrePositivity.KST.NonConnective.connectedKMiddle_additivity_nonnegative",
+      "source_type": "theorem connectedKMiddle_additivity_nonnegative (X : StableModel.{u}) (n : ℕ) (a : OmegaSpectrum.homotopyGroup (kOmegaSpectrum (cofiberStableModel X)) (n : ℤ)) : kHomotopyMap (cofiberStableMiddle X) (n : ℤ) a = kHomotopyMap (cofiberStableSubobject X) (n : ℤ) a * kHomotopyMap (cofiberStableQuotient X) (n : ℤ) a "
+    },
+    "SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:34": {
+      "declaration": "SerrePositivity.KST.NonConnective.connectedKMiddle_additivity",
+      "source_type": "theorem connectedKMiddle_additivity (X : StableModel.{u}) (j : ℤ) (a : OmegaSpectrum.homotopyGroup (kOmegaSpectrum (cofiberStableModel X)) j) : kHomotopyMap (cofiberStableMiddle X) j a = kHomotopyMap (cofiberStableSubobject X) j a * kHomotopyMap (cofiberStableQuotient X) j a "
+    },
+    "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:39": {
+      "declaration": "SerrePositivity.KST.Descent.blowupTopModel_surjective",
+      "source_type": "theorem blowupTopModel_surjective : Function.Surjective (blowupAffineι J ⟨⊤, isAffineOpen_top Y⟩) "
+    },
+    "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:48": {
+      "declaration": "SerrePositivity.KST.Descent.blowupTopChartCover",
+      "source_type": "noncomputable def blowupTopChartCover : (blowup J).AffineOpenCover where I₀ := J.ideal ⟨⊤, isAffineOpen_top Y⟩ X a := .of (BlowupChartRing (J.ideal ⟨⊤, isAffineOpen_top Y⟩) a) f a := blowupChartι J ⟨⊤, isAffineOpen_top Y⟩ a idx x := (affineBlowupChartCover (J.ideal ⟨⊤, isAffineOpen_top Y⟩)).idx ((blowupTopModel_surjective J x).choose) covers x "
+    },
+    "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:71": {
+      "declaration": "SerrePositivity.KST.Descent.strictTransform_flat_of_topChart_pureTransforms",
+      "source_type": "theorem strictTransform_flat_of_topChart_pureTransforms (r : Γ(Y, ⊤)) [QuasiCompact (strictTransformOpen f (Y.basicOpen r) J).ι] (hflat : ∀ a : J.ideal ⟨⊤, isAffineOpen_top Y⟩, letI : Algebra Γ(Y, ⊤) (BlowupChartRing (J.ideal ⟨⊤, isAffineOpen_top Y⟩) a) := (chartBaseMap (J.ideal ⟨⊤, isAffineOpen_top Y⟩) a).toAlgebra Module.Flat (BlowupChartRing (J.ideal ⟨⊤, isAff"
+    },
+    "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:37": {
+      "declaration": "SerrePositivity.KST.Descent.affineBaseObject",
+      "source_type": "noncomputable def affineBaseObject : FiniteTypeSchemes (Spec (.of A)) := ⟨Over.mk (𝟙 (Spec (.of A))), inferInstanceAs (LocallyOfFiniteType (𝟙 (Spec (.of A)))), inferInstanceAs (QuasiCompact (𝟙 (Spec (.of A))))⟩  /-- 概要：有限型 A 代数を Spec A 上の有限型対象とする（論文 §3）。 方針：algebraMap の Spec を構造射とする。 規約：代数の有限型性を仮定し、有限性は要求しない。 使われ方：環論的な幾何的推移性を幾何的な軌道構成へ入力する。 -/ noncomputable def af"
+    },
+    "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:46": {
+      "declaration": "SerrePositivity.KST.Descent.affineAlgebraObject",
+      "source_type": "noncomputable def affineAlgebraObject : FiniteTypeSchemes (Spec (.of A)) := ⟨Over.mk (Spec.map (CommRingCat.ofHom (algebraMap A T))), (HasRingHomProperty.Spec_iff (P := @LocallyOfFiniteType)).mpr (RingHom.finiteType_algebraMap.mpr inferInstance), inferInstanceAs (QuasiCompact (Spec.map (CommRingCat.ofHom (algebraMap A T))))⟩  /-- 概要：アフィン構造射を有限型の圏内の射にする（論文 §3）。 方針"
+    },
+    "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:56": {
+      "declaration": "SerrePositivity.KST.Descent.affineAlgebraProjection",
+      "source_type": "noncomputable def affineAlgebraProjection : affineAlgebraObject A T ⟶ affineBaseObject A := ObjectProperty.homMk (Over.homMk (Spec.map (CommRingCat.ofHom (algebraMap A T))))  variable {G : Type u} [Group G] [MulSemiringAction G T] [SMulCommClass G A T]  /-- 概要：環の作用を有限型アフィン対象の作用へ持ち上げる（論文 定理 3.1）。 方針：Spec の左作用が構造射を保つことを使う。 規約：元の Spec の各自己同型を変更しない。 使われ方：重複を除いた移動切断の添"
+    },
+    "SerrePositivity/KST/Descent/AffineSplitDescent.lean:128": {
+      "declaration": "SerrePositivity.KST.Descent.NaturalBlowupSequences.affine_split_piDescent",
+      "source_type": "theorem NaturalBlowupSequences.affine_split_piDescent [IsNoetherian S] {Coefficient : Type w} {L : GradedPresheaf.{u + 1, u, w, t} (FiniteTypeSchemes S) Coefficient} (data : NaturalBlowupSequences L) [Nilinvariant S L] [∀ H n, PreservesFiniteProducts (L H n)] [Finite G] (a : Spec (.of A) ⟶ S) [LocallyOfFiniteType a] [QuasiCompact a] [IsSeparated a] (r : T →ₐ[A] A"
+    },
+    "SerrePositivity/KST/Descent/Axioms.lean:124": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf.PiDescent",
+      "source_type": "def PiDescent {X Y : C} (f : X ⟶ Y) {G : Type*} [Group G] (action : G →* Aut X) (over_base : ∀ g, (action g).asIso.hom ≫ f = f) : Prop := ∀ (H : Coefficient) (n : ℤ), Function.Bijective (L.invariantComparison H n f action over_base)  end GradedPresheaf  /-- 概要：有限型スキーム上の係数つき前層の冪零不変性（論文 §3、公理 (3)）。 方針：核イデアル層が冪零な閉埋め込みによる引き戻しの全次数同型性を要求する。 規約：これは前層に要求する法則の型であり、任意の前層の不"
+    },
+    "SerrePositivity/KST/Descent/CopyComparison.lean:42": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf.copyEvaluation",
+      "source_type": "def copyEvaluation (H : Coefficient) (n : ℤ) (inclusions : I → (B ⟶ W)) : (L H n).obj (op W) →ₗ[ℚ] (I → (L H n).obj (op B)) := LinearMap.pi fun i ↦ L.pullback H n (inclusions i)  /-- 概要：コピーへの指定比較は置換表現への同変写像（論文 (3.8)）。 方針：包含と置換自己同型の合成へ反変前層を適用する。 規約：左作用は逆元の引き戻しと、逆元の添字置換。 使われ方：前層の非交和比較を不変部分へ制限する。 -/ def copyEvaluationIntertwining (H : Coefficient) (n : ℤ) (inclusion"
+    },
+    "SerrePositivity/KST/Descent/CopyComparison.lean:50": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf.copyEvaluationIntertwining",
+      "source_type": "def copyEvaluationIntertwining (H : Coefficient) (n : ℤ) (inclusions : I → (B ⟶ W)) {G : Type*} [Group G] [MulAction G I] (action : G →* Aut W) (permutation : ∀ g i, inclusions i ≫ (action g).asIso.hom = inclusions (g • i)) : IntertwiningMap (L.pullbackRepresentation H n action) (permutationRepresentation G I ((L H n).obj (op B))) where toLinearMap := L.copyEvalu"
+    },
+    "SerrePositivity/KST/Descent/CopyComparison.lean:69": {
+      "declaration": "SerrePositivity.KST.Descent.GradedPresheaf.copyEvaluation_fold",
+      "source_type": "theorem copyEvaluation_fold (H : Coefficient) (n : ℤ) (inclusions : I → (B ⟶ W)) (fold : W ⟶ B) (components : ∀ i, inclusions i ≫ fold = 𝟙 B) (x : (L H n).obj (op B)) : L.copyEvaluation H n inclusions (L.pullback H n fold x) = fun _ ↦ x "
+    },
+    "SerrePositivity/Paper/Section3/LengthComputation.lean:51": {
+      "declaration": "SerrePositivity.lemma_3_4",
+      "source_type": "theorem lemma_3_4 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing T] [IsLocalRing T] [Algebra A T] [Module.Finite A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C] {e : ℕ} (z : Fin e → A) (hz : Ideal.span (Set.range z) = maximalIdeal A) (hdim : ringKrullDim A = e) (lam : NormalizedLength C ((maximalIdeal T).map (algebraMap T C))) "
+    },
+    "SerrePositivity/Paper/Section4/LengthHypotheses.lean:99": {
+      "declaration": "SerrePositivity.Section4.koszulFinite_of_lengthAlgebra_values",
+      "source_type": "lemma koszulFinite_of_lengthAlgebra_values : LengthAlgebra.KoszulFinite lam w "
+    },
+    "SerrePositivity/Paper/Section4/LengthHypotheses.lean:115": {
+      "declaration": "SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values",
+      "source_type": "lemma koszulEuler_of_lengthAlgebra_values : LengthAlgebra.koszulEuler lam w = (r : ℝ) "
+    },
+    "SerrePositivity/Paper/Section4/LengthHypotheses.lean:158": {
+      "declaration": "SerrePositivity.Section4.koszulEuler_eq_of_lengthAlgebra_values",
+      "source_type": "lemma koszulEuler_eq_of_lengthAlgebra_values (hres : Function.Surjective ((residue T).comp (algebraMap A T))) (hχ : koszulEulerChar A T a = Module.finrank A T) (hz : ∀ v : ℕ, 0 < v → ∀ i : ℕ, 0 < i → nu.len (koszulHomologySelf (fun j ↦ (algebraMap T C (algebraMap A T (a j))) ^ v) i) = 0) : LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ "
+    },
+    "SerrePositivity/CommutativeAlgebra/Koszul/Basic.lean:331": {
+      "declaration": "SerrePositivity.koszulComplex_free_finite_X",
+      "source_type": "lemma koszulComplex_free_finite_X : ∀ {n : ℕ} (x : Fin n → R) (i : ℤ), Module.Free R ((koszulComplex x).X i) ∧ Module.Finite R ((koszulComplex x).X i) | 0, x, i => by rw [koszulComplex_zero] by_cases hi : i = 0 · subst hi let e := (HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) 0 (ModuleCat.of R R)).toLinearEquiv exact ⟨Module.Free.of_equiv e.symm, Module."
+    },
+    "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:69": {
+      "declaration": "SerrePositivity.IsKoszulResolution",
+      "source_type": "structure IsKoszulResolution {n : ℕ} (x : Fin n → R) : Prop where /-- `i ≠ 0` でホモロジーは零（`K(x)` は `0` 次以外で完全）。 -/ isZero : ∀ i : ℤ, i ≠ 0 → IsZero ((koszulComplex x).homology i) /-- `0` 次のホモロジーと `R/(x)` の線形同型の存在。 -/ equiv : Nonempty ((koszulComplex x).homology 0 ≃ₗ[R] R ⧸ Ideal.span (Set.range x))  /-- `n = 0`：空列の Koszul 複体 `K(∅) = R`（`0` 次に集中）は `R/(0) = R` の分解である。"
+    },
+    "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:77": {
+      "declaration": "SerrePositivity.isKoszulResolution_zero",
+      "source_type": "lemma isKoszulResolution_zero (x : Fin 0 → R) : IsKoszulResolution x where isZero i hi "
+    },
+    "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:91": {
+      "declaration": "SerrePositivity.isWeaklyRegular_init_and_isSMulRegular_last",
+      "source_type": "lemma isWeaklyRegular_init_and_isSMulRegular_last {n : ℕ} (x : Fin (n + 1) → R) (hx : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn x)) : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn (Fin.init x)) ∧ IsSMulRegular (R ⧸ Ideal.span (Set.range (Fin.init x))) (x (Fin.last n)) "
+    },
+    "SerrePositivity/Paper/Section3/NormComparison.lean:59": {
+      "declaration": "SerrePositivity.lemma_3_5a_lam_finite",
+      "source_type": "theorem lemma_3_5a_lam_finite (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A) (hfin : ∀ (v j : ℕ), lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) ≠ ⊤) (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ) : lam.len ((baseChange (algebraMap T C) P.1).homology i) ≠ ⊤ "
+    },
+    "SerrePositivity/Paper/Section3/NormComparison.lean:116": {
+      "declaration": "SerrePositivity.lemma_3_5b_lam_of_koszul",
+      "source_type": "theorem lemma_3_5b_lam_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal A) (hK : IsKoszulResolution z) (hkz : ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (algebraMap A C ∘ z) i) = 0) (hq : lam.len (C ⧸ Ideal.span (Set.range (algebraMap A C ∘ z))) = Module.finrank A T) (hfin : ∀ (v j : ℕ), lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) "
+    },
+    "SerrePositivity/Paper/Section3/NormComparison.lean:167": {
+      "declaration": "SerrePositivity.length_homology_ne_top_of_radical",
+      "source_type": "theorem length_homology_ne_top_of_radical (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ) : Module.length T (P.1.homology i) ≠ ⊤ "
+    },
+    "SerrePositivity/Paper/Section4/RankQuotient.lean:53": {
+      "declaration": "SerrePositivity.Asymptotic.paperRankHomology",
+      "source_type": "noncomputable abbrev paperRankHomology (q : ℤ) : (paperSupportedRank (s := s) z).FullSubcategory ⥤ LengthSerreQuotient lam s U hU hs := (paperSupportedRankEquivalence z).functor ⋙ completedRankHomology lam hfg z hJ hfin U hU hs q  instance paperRankHomology_isHomological (q : ℤ) : (paperRankHomology lam hfg z hJ hfin U hU hs q).IsHomological "
+    },
+    "SerrePositivity/Paper/Section4/RankQuotient.lean:57": {
+      "declaration": "SerrePositivity.Asymptotic.paperRankHomology_isHomological",
+      "source_type": "instance paperRankHomology_isHomological (q : ℤ) : (paperRankHomology lam hfg z hJ hfin U hU hs q).IsHomological "
+    },
+    "SerrePositivity/Paper/Section4/RankQuotient.lean:61": {
+      "declaration": "SerrePositivity.Asymptotic.paperRankBetti",
+      "source_type": "noncomputable abbrev paperRankBetti (X : (paperSupportedRank (s := s) z).FullSubcategory) (q : ℤ) : ℝ := completedRankBetti lam hfg z hJ hfin U hU hs ((paperSupportedRankEquivalence z).functor.obj X) q  lemma paperRankBetti_nonneg (X : (paperSupportedRank (s := s) z).FullSubcategory) (q : ℤ) : 0 ≤ paperRankBetti lam hfg z hJ hfin U hU hs X q := completedRankBetti"
+    },
+    "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80": {
+      "declaration": "SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq",
+      "source_type": "theorem symmetricPaperEuler_conjSum_eq {G : Type*} [Group G] [Fintype G] [DistribMulAction G (TriangulatedK0 (paperSupportedRank (s := s) (α ∘ z)).FullSubcategory)] (hc : LengthAlgebra.koszulEuler lam (φ ∘ α ∘ z) = LengthAlgebra.koszulEuler mu (ψ ∘ α ∘ z)) (hdesc : ∀ y : TriangulatedK0 (paperSupportedRank (s := s) (α ∘ z)).FullSubcategory, (∀ g : G, g • y = y) → "
+    },
+    "SerrePositivity/Paper/Section4/SymmetricComparison.lean:318": {
+      "declaration": "SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq_of_flat",
+      "source_type": "theorem symmetricPaperEuler_conjSum_eq_of_flat {G : Type*} [Group G] [Fintype G] [DistribMulAction G (TriangulatedK0 (paperSupportedRank (s := s) (α ∘ z)).FullSubcategory)] (hdesc : ∀ y : TriangulatedK0 (paperSupportedRank (s := s) (α ∘ z)).FullSubcategory, (∀ g : G, g • y = y) → ∃ (n : ℕ) (x : TriangulatedK0 (paperSupportedRank (s := s) z).FullSubcategory), 0 < "
+    },
+    "SerrePositivity/Paper/Section4/SymmetricComparison.lean:68": {
+      "declaration": "SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul",
+      "source_type": "theorem paperBaseChangeEulerK0_eq_koszulEuler_mul : (paperBaseChangeEulerK0 φ (α ∘ z) lam hfg hJ hfin U hU hs).comp (TriangulatedK0.map (paperSupportedChangeRing α z)) = LengthAlgebra.koszulEuler lam (φ ∘ α ∘ z) • ordinaryPaperEulerK0 z (isArtinianRing_quotient_span_of_eq hz) U hU hs "
+    },
+    "SerrePositivity/Paper/Section4/SymmetricComparison.lean:155": {
+      "declaration": "SerrePositivity.Section4.section4_nontrivial",
+      "source_type": "lemma section4_nontrivial : Nontrivial C "
+    },
+    "SerrePositivity/Paper/Section4/RankQuotient.lean:239": {
+      "declaration": "SerrePositivity.Asymptotic.below_rankSmall",
+      "source_type": "lemma below_rankSmall (K : CochainComplex (FreeSequence R s) ℤ) (hK : strictlyBoundedComplex _ K) (a : ℤ) (hsmall : ∀ q < a, (fun n ↦ ((K.X q).rank n : ℝ)) =o[atTop] (fun n ↦ (s n : ℝ))) : rankSmallComplex (below K (a - 1)) "
+    },
+    "SerrePositivity/Asymptotic/Completed.lean:50": {
+      "declaration": "SerrePositivity.Asymptotic.completedRankHomology_isHomological",
+      "source_type": "instance completedRankHomology_isHomological (q : ℤ) : (completedRankHomology lam hfg z hJ hfin U hU hs q).IsHomological "
+    },
+    "SerrePositivity/Asymptotic/Completed.lean:56": {
+      "declaration": "SerrePositivity.Asymptotic.completedRankHomologyShiftNatIso",
+      "source_type": "noncomputable def completedRankHomologyShiftNatIso (q : ℤ) : shiftFunctor _ q ⋙ completedRankHomology lam hfg z hJ hfin U hU hs 0 ≅ completedRankHomology lam hfg z hJ hfin U hU hs q "
+    },
+    "SerrePositivity/Asymptotic/Completed.lean:65": {
+      "declaration": "SerrePositivity.Asymptotic.completedRankHomology_shiftSequence",
+      "source_type": "noncomputable instance completedRankHomology_shiftSequence : (completedRankHomology lam hfg z hJ hfin U hU hs 0).ShiftSequence ℤ := Functor.ShiftSequence.tautological _ ℤ  /-- 既存の交代和は共通の Euler 評価に一致する。 -/ lemma completedRankEuler_eq_homologicalEuler (X : (supportedCompletedRankQuotient (s := s) z).FullSubcategory) : completedRankEuler lam hfg z hJ hfin U hU hs X "
+    },
+    "SerrePositivity/Paper/Section4/RankQuotient.lean:455": {
+      "declaration": "SerrePositivity.Asymptotic.paperRankEulerK0_changeRing",
+      "source_type": "theorem paperRankEulerK0_changeRing [IsIdempotentComplete (SupportedSequenceRankQuotient (s := s) z)] (mu : NormalizedLength S I) (hIfg : I.FG) (hI : I ≤ (Ideal.span (Set.range (φ ∘ z))).radical) (hfinS : ∀ v : ℕ, 0 < v → ∀ q, mu.len ((koszulComplex (fun j ↦ (φ (z j)) ^ v)).homology q) ≠ ⊤) (c : ℝ) (hc : ∀ (P : CochainComplex (ModuleCat.{u} R) ℤ), IsPerfectSuppor"
+    },
+    "SerrePositivity/Paper/Section4/SupportedDescent.lean:41": {
+      "declaration": "SerrePositivity.Section4.supportedRankK0_descent",
+      "source_type": "theorem supportedRankK0_descent (A T : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing T] [IsLocalRing T] [IsDomain T] [Algebra A T] [Module.Finite A T] (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p] {e : ℕ} (z : Fin e → A) (_hz : Ideal.span (Set.range z) = maximalIdeal A) (s : ℕ → ℕ) (_hs : ∀ n, 0 < s n) (G : Type u) [Group G] [Finite G] [MulSemiringAct"
+    }
+  },
+  "items": {
+    "(3.1)": {
+      "target": "閉台つき有理 K スペクトルとホモトピー固定点の同値",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "bd855adf34",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80"
+      ],
+      "result": "有理スペクトルの比較射の同値。K₀ の整数倍の存在は入力であり、ホモトピー固定点のスペクトルの構成・同定は見つからない。",
+      "pdf_page": 10
+    },
+    "§3.1 I": {
+      "target": "Goodwillie の比較で切断型となる有理無限小 K 理論 I",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3.1",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "9b04016f2d",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50"
+      ],
+      "result": "Goodwillie 比較を使った K→HC⁻ のファイバー I と切断型条件の証明が見つからない。"
+    },
+    "§3.1 cdh": {
+      "target": "切断型の局所化不変量の係数つき cdh 降下",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3.1",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "687be33109",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80"
+      ],
+      "result": "係数入りスペクトル前層に切断型 cdh 定理を適用して得る引き戻しが見つからない。一般の軌道補題は cdh 入力を供給しない。"
+    },
+    "§3.1 coefficients": {
+      "target": "固定係数とのテンソル後の局所化性と切断型条件",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3.1",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "cbd4407bb8",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:26",
+        "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:28",
+        "SerrePositivity/KST/NonConnective/DGKappaSuspension.lean:29"
+      ],
+      "result": "連結係数とのテンソル後も同じ不変量が局所化的かつ切断型であるという主張が見つからない。"
+    },
+    "§3.1/§3.3 nilinvariance": {
+      "target": "L の切断型条件から従う冪零不変性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3.1",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "f83b41af5b",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80"
+      ],
+      "result": "切断性から係数つき前層 L が被約化を反転する主張が見つからない。環の nilpotent 元の補題は L の値に作用しない。"
+    },
+    "(3.3)": {
+      "target": "p 反転前後の有理 K 理論のファイバー E",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "b30c1b83a9",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50"
+      ],
+      "result": "連結係数の K の有理化に p の反転を施した比較のファイバー E が見つからない。",
+      "pdf_page": 11
+    },
+    "(3.4)": {
+      "target": "無限小 K 理論のファイバーによる E の表示",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "9b04016f2d",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50"
+      ],
+      "result": "反転前後の K の有理ファイバーを無限小 K のファイバーと同定する宣言が見つからない。",
+      "pdf_page": 11
+    },
+    "(3.5)": {
+      "target": "閉台を課した係数つき前層 L",
+      "citations": {
+        "exact_count": 7,
+        "exact_examples": [
+          "SerrePositivity/KST/Descent/Axioms.lean:15",
+          "SerrePositivity/KST/Descent/Axioms.lean:39",
+          "SerrePositivity/KST/Descent/Axioms.lean:47"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "897a4acc91",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/CentralSupportCriterion.lean:42",
+        "SerrePositivity/KST/Descent/Axioms.lean:43",
+        "SerrePositivity/KST/Descent/Axioms.lean:52",
+        "SerrePositivity/KST/Descent/Axioms.lean:64"
+      ],
+      "result": "係数 E のスキーム前層を中央局所化のスペクトルのファイバーとして閉台つきにする構成が見つからない。",
+      "pdf_page": 11
+    },
+    "(3.6)": {
+      "target": "L と閉台つき有理 K 理論の同定",
+      "citations": {
+        "exact_count": 50,
+        "exact_examples": [
+          "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:10",
+          "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:94",
+          "SerrePositivity/KST/Descent.lean:13"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "1d214914c0",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:25",
+        "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:31",
+        "SerrePositivity/InfinityCategories/Derived/SupportK0.lean:38"
+      ],
+      "result": "本論文の前層 L の値と閉台つき有理 K スペクトルを同定する自然同値が見つからない。",
+      "pdf_page": 11
+    },
+    "3.2": {
+      "target": "有限忠実平坦被覆に対する普遍的な Čech 降下",
+      "citations": {
+        "exact_count": 714,
+        "exact_examples": [
+          "SerrePositivity/KST/Descent.lean:13",
+          "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:19",
+          "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:33"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "ebb23e03a6",
+      "nearby": [
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:37",
+        "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:55",
+        "SerrePositivity/KST/Descent/AffineBaseChangeDescent.lean:72"
+      ],
+      "result": "係数 L 自身への転送と Čech 比較が見つからない。転送と階数を別途仮定する一般枠組みから原典の L への適用には転送の構成が要る。",
+      "pdf_page": 12
+    },
+    "3.2 additivity": {
+      "target": "転送と引き戻しの合成を K の加法性で階数倍と同定",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "a5877fa25e",
+      "nearby": [
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:23",
+        "SerrePositivity/KST/NonConnective/ConnectedKMiddleAdditivity.lean:34"
+      ],
+      "result": "同じ L の転送と引き戻しの合成が階数倍になる宣言が見つからない。余ファイバー列での連結 K 群の加法性はこの合成を扱わない。"
+    },
+    "3.3": {
+      "target": "有限全射に対する Čech 降下",
+      "citations": {
+        "exact_count": 370,
+        "exact_examples": [
+          "SerrePositivity/KST/Descent.lean:13",
+          "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:19",
+          "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:35"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "0da5dbb721",
+      "nearby": [
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:39",
+        "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:48",
+        "SerrePositivity/KST/Descent/AffineBlowupFlatness.lean:71"
+      ],
+      "result": "本論文の L に対し cdh と有限忠実平坦から全有限全射の Čech 降下を組み立てる型が見つからない。",
+      "pdf_page": 12
+    },
+    "(3.7)": {
+      "target": "幾何学的軌道の議論で使う降下比較",
+      "citations": {
+        "exact_count": 37,
+        "exact_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:68",
+          "SerrePositivity/KST/Descent/AffineSplitDescent.lean:112",
+          "SerrePositivity/KST/Descent/Axioms.lean:15"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "d30be8b0a6",
+      "nearby": [
+        "SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:37",
+        "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:46",
+        "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:56",
+        "SerrePositivity/KST/Descent/AffineSplitDescent.lean:128",
+        "SerrePositivity/KST/Descent/Axioms.lean:124"
+      ],
+      "result": "有限型 Y 上の L からホモトピー固定点へのスペクトルの射が見つからない。比較候補は別の前層模型または次数別の比較。",
+      "pdf_page": 13
+    },
+    "(3.8)": {
+      "target": "軌道と閉中心の有理ホモトピー固定点の計算",
+      "citations": {
+        "exact_count": 112,
+        "exact_examples": [
+          "SerrePositivity/KST/Descent.lean:13",
+          "SerrePositivity/KST/Descent/Axioms.lean:85",
+          "SerrePositivity/KST/Descent/CopyComparison.lean:7"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "8507d17724",
+      "nearby": [
+        "SerrePositivity/KST/Descent/Theorem31.lean:58",
+        "SerrePositivity/KST/Descent/Theorem31.lean:70",
+        "SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity/Inputs/Descent.lean:50",
+        "SerrePositivity/KST/Descent/Axioms.lean:43",
+        "SerrePositivity/KST/Descent/Axioms.lean:52",
+        "SerrePositivity/KST/Descent/Axioms.lean:64",
+        "SerrePositivity/KST/Descent/CopyComparison.lean:42",
+        "SerrePositivity/KST/Descent/CopyComparison.lean:50",
+        "SerrePositivity/KST/Descent/CopyComparison.lean:69"
+      ],
+      "result": "係数つき L の二つのホモトピー固定点の自然同値が見つからない。置換作用の通常不変部分の同定からは対象と比較射を補う必要がある。",
+      "pdf_page": 13
+    },
+    "§3.3 orbit": {
+      "target": "切断の軌道と一致軌跡から抽象ブローアップを作る帰納",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3.3",
+        "section_count": 0,
+        "section_examples": [],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "07305ccddd",
+      "nearby": [
+        "SerrePositivity/KST/Descent/Theorem31.lean:80",
+        "SerrePositivity/Inputs/Descent.lean:50"
+      ],
+      "result": "軌道切断の互いに素な開補集合上で同型となる G 同変抽象ブローアップと、それを使う L の比較が見つからない。"
+    },
+    "(3.9)": {
+      "target": "パラメータ冪の Koszul ホモロジーに対する長さの仮定",
+      "citations": {
+        "exact_count": 13,
+        "exact_examples": [
+          "SerrePositivity/CommutativeAlgebra/Koszul/Basic.lean:31",
+          "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:26",
+          "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:336"
+        ],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "e7038c1661",
+      "nearby": [
+        "SerrePositivity/Paper/Section3/LengthComputation.lean:51",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:99",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:115",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:158",
+        "SerrePositivity/CommutativeAlgebra/Koszul/Basic.lean:331",
+        "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:69",
+        "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:77",
+        "SerrePositivity/CommutativeAlgebra/Koszul/Resolution.lean:91"
+      ],
+      "result": "原典はパラメータ冪の長さを入力として置く。Lean でも対応する長さは後続定理の引数であり、この行に独立の証明を割り当てない。",
+      "pdf_page": 14
+    },
+    "(3.12)": {
+      "target": "零ホモトピーから得る Koszul テンソルの直和分解",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "2be9f1d5eb",
+      "nearby": [
+        "SerrePositivity/Paper/Section3/NormComparison.lean:59",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:116",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:167",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:53",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:57",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:61"
+      ],
+      "result": "共通の零ホモトピーに沿う Koszul テンソルと全シフトの直和を結ぶ対象の同型を確認できない。長さの二項係数公式だけでは対象の同型にならない。",
+      "pdf_page": 15
+    },
+    "3.6": {
+      "target": "ノルム比較での長さ関数の非不変性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§3",
+        "section_count": 150,
+        "section_examples": [
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:33",
+          "SerrePositivity/KST/Descent/AffineOrbitCovering.lean:42"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "bf99b6f6e0",
+      "nearby": [
+        "SerrePositivity/Paper/Section3/NormComparison.lean:59",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:116",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:167",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:318"
+      ],
+      "result": "注記は長さの G 不変性を前提から外す。共役和の等式は 3.5 に記録し、非不変な具体例の宣言は見つからない。",
+      "pdf_page": 16
+    },
+    "(4.1)": {
+      "target": "漸近複体で用いるパラメータ冪の長さの仮定",
+      "citations": {
+        "exact_count": 1,
+        "exact_examples": [
+          "SerrePositivity/Paper/Section4/SymmetricComparison.lean:22"
+        ],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "e7038c1661",
+      "nearby": [
+        "SerrePositivity/Paper/Section3/LengthComputation.lean:51",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:99",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:115",
+        "SerrePositivity/Paper/Section4/LengthHypotheses.lean:158",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:68",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:155"
+      ],
+      "result": "原典はパラメータ冪の長さを入力として置く。Lean でも対応する長さは後続定理の引数であり、この行に独立の証明を割り当てない。",
+      "pdf_page": 16
+    },
+    "4.1": {
+      "target": "ランク商で生のホモロジー長が失われる例",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "fa8c5b9e8f",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:239",
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65"
+      ],
+      "result": "DVR の T/(z^n) の階数 1 の分解で生の長さが商を通らないという原典の反例が見つからない。",
+      "pdf_page": 17
+    },
+    "(4.3)": {
+      "target": "Koszul テンソルとシフトの直和分解",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "2be9f1d5eb",
+      "nearby": [
+        "SerrePositivity/Paper/Section3/NormComparison.lean:59",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:116",
+        "SerrePositivity/Paper/Section3/NormComparison.lean:167",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:53",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:57",
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:61"
+      ],
+      "result": "共通の零ホモトピーに沿う Koszul テンソルと全シフトの直和を結ぶ対象の同型を確認できない。長さの二項係数公式だけでは対象の同型にならない。",
+      "pdf_page": 18
+    },
+    "(4.4)": {
+      "target": "T の有限自由分解による通常評価側のスペクトル系列",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "e683c2b9df",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:455",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:68",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:155"
+      ],
+      "result": "有限自由分解から得たスペクトル系列の各ページとフィルターが支持つき Verdier roof を通り、商内の冪等元の像に制限される構成が見つからない。",
+      "pdf_page": 20
+    },
+    "(4.5)": {
+      "target": "通常評価の Euler 和の階数倍",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "e683c2b9df",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/RankQuotient.lean:455",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:68",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:155"
+      ],
+      "result": "有限自由分解から得たスペクトル系列の各ページとフィルターが支持つき Verdier roof を通り、商内の冪等元の像に制限される構成が見つからない。",
+      "pdf_page": 20
+    },
+    "4.6": {
+      "target": "ランク商の連結係数代数による表示とスカラー拡大",
+      "citations": {
+        "exact_count": 5,
+        "exact_examples": [
+          "SerrePositivity/Paper/Section4/SupportedDescent.lean:14",
+          "SerrePositivity/Paper/Section4/SupportedDescent.lean:20",
+          "SerrePositivity/Paper/Section4/SupportedDescent.lean:37"
+        ],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "23bca41c2b",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65"
+      ],
+      "result": "中央 A 線型な連結係数代数と、A および T の支持付き Perf の両同値を底変換に可換に構成する型が見つからない。K₀ の降下入力はその帰結の界面。",
+      "pdf_page": 21
+    },
+    "4.6 connective": {
+      "target": "商の生成元の連結自己準同型環と導来底変換",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "23bca41c2b",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65"
+      ],
+      "result": "中央 A 線型な連結係数代数と、A および T の支持付き Perf の両同値を底変換に可換に構成する型が見つからない。K₀ の降下入力はその帰結の界面。"
+    },
+    "4.6 dg quotient": {
+      "target": "明示的な dg 商と射複体の平坦性",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "8731e64965",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65"
+      ],
+      "result": "自由列の dg 圏の明示的な商の射複体を A 上平坦とする対象固有の比較が見つからない。"
+    },
+    "4.6 generator": {
+      "target": "自由列の生成元と行列積環による完全複体の表示",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "ef9ae5ffed",
+      "nearby": [
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65",
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41"
+      ],
+      "result": "行列積環 B_S の完全圏として自由列の圏を同定する生成元の計算が見つからない。抽象的な dg の完全生成と支持付きランク商をつなぐ橋が要る。"
+    },
+    "(4.6)": {
+      "target": "C とのテンソルに対する hyper-Tor スペクトル系列",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "60f42d1a17",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:68",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:80",
+        "SerrePositivity/Paper/Section4/SymmetricComparison.lean:155"
+      ],
+      "result": "対象固有の係数代数の写像複体と C をテンソルする hyper-Tor の項・収束・底変換同定が見つからない。",
+      "pdf_page": 21
+    },
+    "(4.7)": {
+      "target": "行列積代数 B の導来底変換と通常底変換の一致",
+      "citations": {
+        "exact_count": 0,
+        "exact_examples": [],
+        "section": "§4",
+        "section_count": 13,
+        "section_examples": [
+          "SerrePositivity/CommutativeAlgebra/RegularLocalRing/Basic.lean:39",
+          "SerrePositivity/KST/Descent/IntegralComparison.lean:19"
+        ],
+        "unqualified_count": 0,
+        "unqualified_examples": []
+      },
+      "concept_query": "41c8f528fe",
+      "nearby": [
+        "SerrePositivity/Paper/Section4/SupportedDescent.lean:41",
+        "SerrePositivity/Asymptotic/Completed.lean:50",
+        "SerrePositivity/Asymptotic/Completed.lean:56",
+        "SerrePositivity/Asymptotic/Completed.lean:65"
+      ],
+      "result": "行列積環 B と T の導来テンソルと通常テンソルを同定する宣言が見つからない。有限自由な成分ごとの比較から積上の同定が要る。",
+      "pdf_page": 21
+    }
+  }
+}

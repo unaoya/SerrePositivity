@@ -1,0 +1,210 @@
+{
+  "revision": "6e19c5a14cb16a704016efaf924b61d181239c46",
+  "toolchain": "Lean 4.35.0-rc4",
+  "source": "共有ロック下で既存 olean を読み #check と #print axioms",
+  "declarations": {
+    "SerrePositivity.theorem_3_1_K0": {
+      "file": "SerrePositivity/Inputs/Descent.lean",
+      "line": 50,
+      "kind": "theorem",
+      "type": "SerrePositivity.theorem_3_1_K0 : ∀ (A T : Type u_1) [inst : CommRing A] [inst_1 : IsLocalRing A] [IsNoetherianRing A]\n  [inst_3 : CommRing T] [inst_4 : Algebra A T] [Module.Finite A T] (p : ℕ) [Fact (Nat.Prime p)]\n  [CharP (IsLocalRing.ResidueField A) p] {e : ℕ} (z : Fin e → A),\n  (Ideal.span (Set.range z)).radical = IsLocalRing.maximalIdeal A →\n    ∀ (G : Type u_1) [inst_8 : Group G] [Finite G] [inst_10 : MulSemiringAction G T] [inst_11 : SMulCommClass G A T],\n      Function.Surjective (PrimeSpectrum.comap (algebraMap A T)) →\n        SerrePositivity.IsGeometricallyTransitive A T G →\n          ∀ (y : SerrePositivity.K0Supported T (⇑(algebraMap A T) ∘ z)),\n            (∀ (g : G), g • y = y) → ∃ n x, 0 < n ∧ n • y = (SerrePositivity.K0.map (algebraMap A T)) x",
+      "axioms": "'SerrePositivity.theorem_3_1_K0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation": {
+      "file": "SerrePositivity/KST/Descent/CentralSupportCriterion.lean",
+      "line": 87,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation : ∀ {R : Type u_5} [inst : CommRing R] {C : Type u_1}\n  [inst_1 : CategoryTheory.Category.{u_2, u_1} C] [inst_2 : CategoryTheory.Preadditive C]\n  [inst_3 : CategoryTheory.Linear R C] (P : C) {ι : Type u_6} [Finite ι] (z : ι → R) {E : ι → Type u_3}\n  [inst_5 : (i : ι) → CategoryTheory.Category.{u_4, u_3} (E i)] [inst_6 : (i : ι) → CategoryTheory.Preadditive (E i)]\n  [inst_7 : (i : ι) → CategoryTheory.Linear R (E i)] (loc : (i : ι) → CategoryTheory.Functor C (E i))\n  [inst_8 : ∀ (i : ι), (loc i).Additive] [inst_9 : ∀ (i : ι), CategoryTheory.Functor.Linear R (loc i)]\n  [∀ (i : ι), IsLocalizedModule (Submonoid.powers (z i)) (CategoryTheory.Functor.mapLinearMap R (loc i))],\n  (∀ (i : ι), CategoryTheory.Limits.IsZero ((loc i).obj P)) ↔\n    ∃ n, ∀ (i : ι), z i ^ n • CategoryTheory.CategoryStruct.id P = 0",
+      "axioms": "'SerrePositivity.KST.Descent.centralSupport_iff_power_annihilation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.closedImmersion_of_section": {
+      "file": "SerrePositivity/KST/Descent/SchemeFacts.lean",
+      "line": 62,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.Descent.closedImmersion_of_section : ∀ {X Y : AlgebraicGeometry.Scheme} (p : X ⟶ Y)\n  [AlgebraicGeometry.IsSeparated p] (s : Y ⟶ X),\n  CategoryTheory.CategoryStruct.comp s p = CategoryTheory.CategoryStruct.id Y → AlgebraicGeometry.IsClosedImmersion s",
+      "axioms": "'SerrePositivity.KST.Descent.closedImmersion_of_section' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.closedImmersion_equalizer": {
+      "file": "SerrePositivity/KST/Descent/SchemeFacts.lean",
+      "line": 71,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.Descent.closedImmersion_equalizer : ∀ {S : AlgebraicGeometry.Scheme} {X Y : CategoryTheory.Over S}\n  [AlgebraicGeometry.IsSeparated Y.hom] (f g : X ⟶ Y),\n  AlgebraicGeometry.IsClosedImmersion (CategoryTheory.Over.Hom.left (CategoryTheory.Limits.equalizer.ι f g))",
+      "axioms": "'SerrePositivity.KST.Descent.closedImmersion_equalizer' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.Descent.equalizer_range_ne_univ_of_ne": {
+      "file": "SerrePositivity/KST/Descent/SchemeFacts.lean",
+      "line": 79,
+      "kind": "theorem",
+      "type": "@SerrePositivity.KST.Descent.equalizer_range_ne_univ_of_ne : ∀ {S : AlgebraicGeometry.Scheme}\n  {X Y : CategoryTheory.Over S} [AlgebraicGeometry.IsReduced X.left] [AlgebraicGeometry.IsSeparated Y.hom]\n  (f g : X ⟶ Y), f ≠ g → Set.range ⇑(CategoryTheory.Over.Hom.left (CategoryTheory.Limits.equalizer.ι f g)) ≠ Set.univ",
+      "axioms": "'SerrePositivity.KST.Descent.equalizer_range_ne_univ_of_ne' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.normalizedLength_tor_of_isWeaklyRegular": {
+      "file": "SerrePositivity/LengthAlgebra/Flat.lean",
+      "line": 135,
+      "kind": "theorem",
+      "type": "@SerrePositivity.normalizedLength_tor_of_isWeaklyRegular : ∀ {A C : Type u_1} [inst : CommRing A] [inst_1 : CommRing C]\n  (φ : A →+* C) [inst_2 : IsLocalRing A] {e : ℕ} (z : Fin e → A),\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    RingTheory.Sequence.IsWeaklyRegular A (List.ofFn z) →\n      ∀ (lam : SerrePositivity.NormalizedLength C (Ideal.map φ (IsLocalRing.maximalIdeal A))) (r : ℕ),\n        (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.koszulHomologySelf (⇑φ ∘ z) i) = 0) →\n          lam.len (C ⧸ Ideal.span (Set.range (⇑φ ∘ z))) = ↑r →\n            ∀ (V : Type u_1) [inst_3 : AddCommGroup V] [inst_4 : Module A V],\n              IsFiniteLength A V →\n                (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.TorAlg φ i V) = 0) ∧\n                  lam.len (SerrePositivity.TorAlg φ 0 V) = ↑r * ↑(Module.length A V) ∧\n                    ∀ (i : ℕ), lam.len (SerrePositivity.TorAlg φ i V) ≠ ⊤",
+      "axioms": "'SerrePositivity.normalizedLength_tor_of_isWeaklyRegular' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_4": {
+      "file": "SerrePositivity/Paper/Section3/LengthComputation.lean",
+      "line": 51,
+      "kind": "theorem",
+      "type": "SerrePositivity.lemma_3_4 : ∀ (A T C : Type u_1) [inst : CommRing A] [inst_1 : IsRegularLocalRing A]\n  [inst_2 : CommRing T] [inst_3 : IsLocalRing T] [inst_4 : Algebra A T] [Module.Finite A T] [inst_6 : CommRing C]\n  [inst_7 : Algebra T C] [inst_8 : Algebra A C] [IsScalarTower A T C] {e : ℕ} (z : Fin e → A),\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ringKrullDim A = ↑e →\n      ∀ (lam : SerrePositivity.NormalizedLength C (Ideal.map (algebraMap T C) (IsLocalRing.maximalIdeal T))),\n        (∀ (v : ℕ),\n            0 < v →\n              ∀ (i : ℕ),\n                0 < i → lam.len (SerrePositivity.koszulHomologySelf (fun j => (algebraMap A C) (z j ^ v)) i) = 0) →\n          (∀ (v : ℕ),\n              0 < v →\n                lam.len (C ⧸ Ideal.span (Set.range fun j => (algebraMap A C) (z j ^ v))) =\n                  ↑(v ^ e * Module.finrank A T)) →\n            ∀ (V : Type u_1) [inst_10 : AddCommGroup V] [inst_11 : Module A V],\n              Module.length A V ≠ ⊤ →\n                (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.TorAlg (algebraMap A C) i V) = 0) ∧\n                  lam.len (SerrePositivity.TorAlg (algebraMap A C) 0 V) = ↑(Module.finrank A T) * ↑(Module.length A V) ∧\n                    ∀ (i : ℕ), lam.len (SerrePositivity.TorAlg (algebraMap A C) i V) ≠ ⊤",
+      "axioms": "'SerrePositivity.lemma_3_4' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_5c": {
+      "file": "SerrePositivity/Paper/Section3/NormComparison.lean",
+      "line": 380,
+      "kind": "theorem",
+      "type": "@SerrePositivity.lemma_3_5c : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : CommRing T] [inst_2 : Algebra A T]\n  [inst_3 : CommRing C] [inst_4 : Algebra T C] [inst_5 : Algebra A C] [IsScalarTower A T C] {e : ℕ} {z : Fin e → A}\n  [inst_7 : IsRegularLocalRing A] [Module.Finite A T]\n  {lam : SerrePositivity.NormalizedLength C (Ideal.map (algebraMap A C) (IsLocalRing.maximalIdeal A))},\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ringKrullDim A = ↑e →\n      (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.koszulHomologySelf (⇑(algebraMap A C) ∘ z) i) = 0) →\n        lam.len (C ⧸ Ideal.span (Set.range (⇑(algebraMap A C) ∘ z))) = ↑(Module.finrank A T) →\n          (∀ (v j : ℕ), lam.len (SerrePositivity.koszulHomologySelf (fun k => (algebraMap A C) (z k ^ v)) j) ≠ ⊤) →\n            ∀ [inst_9 : IsLocalRing T],\n              Function.Surjective ⇑((IsLocalRing.residue T).comp (algebraMap A T)) →\n                ∀ (p : ℕ) [Fact (Nat.Prime p)] [CharP (IsLocalRing.ResidueField A) p] (G : Type u_1) [inst_12 : Group G]\n                  [inst_13 : Fintype G] [inst_14 : MulSemiringAction G T] [inst_15 : SMulCommClass G A T],\n                  Function.Surjective (PrimeSpectrum.comap (algebraMap A T)) →\n                    SerrePositivity.IsGeometricallyTransitive A T G →\n                      ∀ (P : SerrePositivity.PerfSupp T (⇑(algebraMap A T) ∘ z)),\n                        ∑ g, SerrePositivity.chiOrd (SerrePositivity.twist g ↑P) =\n                          ∑ g, SerrePositivity.chiLam lam (algebraMap T C) (SerrePositivity.twist g ↑P)",
+      "axioms": "'SerrePositivity.lemma_3_5c' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_5a": {
+      "file": "SerrePositivity/Paper/Section3/NormComparison.lean",
+      "line": 291,
+      "kind": "theorem",
+      "type": "@SerrePositivity.lemma_3_5a : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : CommRing T] [inst_2 : Algebra A T]\n  [inst_3 : CommRing C] [inst_4 : Algebra T C] [inst_5 : Algebra A C] [IsScalarTower A T C] {e : ℕ} {z : Fin e → A}\n  [inst_7 : IsLocalRing A] [IsNoetherianRing A] [Module.Finite A T]\n  {lam : SerrePositivity.NormalizedLength C (Ideal.map (algebraMap A C) (IsLocalRing.maximalIdeal A))},\n  (Ideal.span (Set.range z)).radical = IsLocalRing.maximalIdeal A →\n    (∀ (v j : ℕ), lam.len (SerrePositivity.koszulHomologySelf (fun k => (algebraMap A C) (z k ^ v)) j) ≠ ⊤) →\n      (∀ (P : SerrePositivity.PerfSupp T (⇑(algebraMap A T) ∘ z)) (i : ℤ),\n          Module.length T ↑(HomologicalComplex.homology (↑P) i) ≠ ⊤) ∧\n        (∀ (P : SerrePositivity.PerfSupp T (⇑(algebraMap A T) ∘ z)) (i : ℤ),\n            lam.len ↑(HomologicalComplex.homology (SerrePositivity.baseChange (algebraMap T C) ↑P) i) ≠ ⊤) ∧\n          (∃ χ,\n              ∀ (P : SerrePositivity.PerfSupp T (⇑(algebraMap A T) ∘ z)),\n                χ (SerrePositivity.K0.mk P) = SerrePositivity.chiOrd ↑P) ∧\n            ∃ χ,\n              ∀ (P : SerrePositivity.PerfSupp T (⇑(algebraMap A T) ∘ z)),\n                χ (SerrePositivity.K0.mk P) = SerrePositivity.chiLam lam (algebraMap T C) ↑P",
+      "axioms": "'SerrePositivity.lemma_3_5a' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_5b": {
+      "file": "SerrePositivity/Paper/Section3/NormComparison.lean",
+      "line": 351,
+      "kind": "theorem",
+      "type": "@SerrePositivity.lemma_3_5b : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : CommRing T] [inst_2 : Algebra A T]\n  [inst_3 : CommRing C] [inst_4 : Algebra T C] [inst_5 : Algebra A C] [IsScalarTower A T C] {e : ℕ} {z : Fin e → A}\n  [inst_7 : IsRegularLocalRing A] [Module.Finite A T]\n  {lam : SerrePositivity.NormalizedLength C (Ideal.map (algebraMap A C) (IsLocalRing.maximalIdeal A))},\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ringKrullDim A = ↑e →\n      (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.koszulHomologySelf (⇑(algebraMap A C) ∘ z) i) = 0) →\n        lam.len (C ⧸ Ideal.span (Set.range (⇑(algebraMap A C) ∘ z))) = ↑(Module.finrank A T) →\n          (∀ (v j : ℕ), lam.len (SerrePositivity.koszulHomologySelf (fun k => (algebraMap A C) (z k ^ v)) j) ≠ ⊤) →\n            ∀ [inst_9 : IsLocalRing T],\n              Function.Surjective ⇑((IsLocalRing.residue T).comp (algebraMap A T)) →\n                ∀ (Q : CochainComplex (ModuleCat A) ℤ),\n                  SerrePositivity.IsPerfectSupported z Q →\n                    SerrePositivity.chiOrd (SerrePositivity.baseChange (algebraMap A T) Q) =\n                        ↑(Module.finrank A T) * SerrePositivity.chiOrd Q ∧\n                      SerrePositivity.chiLam lam (algebraMap T C) (SerrePositivity.baseChange (algebraMap A T) Q) =\n                        ↑(Module.finrank A T) * SerrePositivity.chiOrd Q",
+      "axioms": "'SerrePositivity.lemma_3_5b' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_5b_lam": {
+      "file": "SerrePositivity/Paper/Section3/NormComparison.lean",
+      "line": 343,
+      "kind": "theorem",
+      "type": "@SerrePositivity.lemma_3_5b_lam : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : CommRing T] [inst_2 : Algebra A T]\n  [inst_3 : CommRing C] [inst_4 : Algebra T C] [inst_5 : Algebra A C] [IsScalarTower A T C] {e : ℕ} {z : Fin e → A}\n  [inst_7 : IsRegularLocalRing A]\n  {lam : SerrePositivity.NormalizedLength C (Ideal.map (algebraMap A C) (IsLocalRing.maximalIdeal A))},\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ringKrullDim A = ↑e →\n      (∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.koszulHomologySelf (⇑(algebraMap A C) ∘ z) i) = 0) →\n        lam.len (C ⧸ Ideal.span (Set.range (⇑(algebraMap A C) ∘ z))) = ↑(Module.finrank A T) →\n          (∀ (v j : ℕ), lam.len (SerrePositivity.koszulHomologySelf (fun k => (algebraMap A C) (z k ^ v)) j) ≠ ⊤) →\n            ∀ (Q : CochainComplex (ModuleCat A) ℤ),\n              SerrePositivity.IsPerfectSupported z Q →\n                SerrePositivity.chiLam lam (algebraMap T C) (SerrePositivity.baseChange (algebraMap A T) Q) =\n                  ↑(Module.finrank A T) * SerrePositivity.chiOrd Q",
+      "axioms": "'SerrePositivity.lemma_3_5b_lam' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.lemma_3_5b_ord": {
+      "file": "SerrePositivity/Paper/Section3/NormComparison.lean",
+      "line": 330,
+      "kind": "theorem",
+      "type": "@SerrePositivity.lemma_3_5b_ord : ∀ {A T : Type u_1} [inst : CommRing A] [inst_1 : CommRing T] [inst_2 : Algebra A T]\n  {e : ℕ} {z : Fin e → A} [inst_3 : IsRegularLocalRing A] [Module.Finite A T],\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ringKrullDim A = ↑e →\n      ∀ [inst_5 : IsLocalRing T],\n        Function.Surjective ⇑((IsLocalRing.residue T).comp (algebraMap A T)) →\n          ∀ (Q : CochainComplex (ModuleCat A) ℤ),\n            SerrePositivity.IsPerfectSupported z Q →\n              SerrePositivity.chiOrd (SerrePositivity.baseChange (algebraMap A T) Q) =\n                ↑(Module.finrank A T) * SerrePositivity.chiOrd Q",
+      "axioms": "'SerrePositivity.lemma_3_5b_ord' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.supportedRankQuotientInclusion": {
+      "file": "SerrePositivity/Asymptotic/RankQuotient.lean",
+      "line": 497,
+      "kind": "def",
+      "type": "@SerrePositivity.Asymptotic.supportedRankQuotientInclusion : {R : Type u_1} →\n  [inst : CommRing R] →\n    [inst_1 : Nontrivial R] →\n      {s : ℕ → ℕ} →\n        {e : ℕ} →\n          (z : Fin e → R) →\n            CategoryTheory.Functor (SerrePositivity.Asymptotic.SupportedSequenceRankQuotient z)\n              (SerrePositivity.Asymptotic.SequenceRankQuotient R s)",
+      "axioms": "'SerrePositivity.Asymptotic.supportedRankQuotientInclusion' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperSupportedToKaroubi": {
+      "file": "SerrePositivity/Asymptotic/Completed.lean",
+      "line": 511,
+      "kind": "def",
+      "type": "@SerrePositivity.Asymptotic.paperSupportedToKaroubi : {R : Type u_1} →\n  [inst : CommRing R] →\n    [inst_1 : Nontrivial R] →\n      {s : ℕ → ℕ} →\n        {e : ℕ} →\n          (z : Fin e → R) →\n            (SerrePositivity.Asymptotic.paperSupportedRank z).FullSubcategory ≌\n              CategoryTheory.Idempotents.Karoubi (SerrePositivity.Asymptotic.SupportedSequenceRankQuotient z)",
+      "axioms": "'SerrePositivity.Asymptotic.paperSupportedToKaroubi' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperSupportedToKaroubi_functor_isTriangulated": {
+      "file": "SerrePositivity/Asymptotic/Completed.lean",
+      "line": 526,
+      "kind": "instance",
+      "type": "@SerrePositivity.Asymptotic.paperSupportedToKaroubi_functor_isTriangulated : ∀ {R : Type u_1} [inst : CommRing R]\n  [inst_1 : Nontrivial R] {s : ℕ → ℕ} {e : ℕ} (z : Fin e → R),\n  (SerrePositivity.Asymptotic.paperSupportedToKaroubi z).functor.IsTriangulated",
+      "axioms": "'SerrePositivity.Asymptotic.paperSupportedToKaroubi_functor_isTriangulated' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperRankBetti_nonneg": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 65,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperRankBetti_nonneg : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Nontrivial R]\n  {s : ℕ → ℕ} {J : Ideal R} (lam : SerrePositivity.NormalizedLength R J) (hfg : J.FG) {e : ℕ} (z : Fin e → R)\n  (hJ : J ≤ (Ideal.span (Set.range z)).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v → ∀ (i : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => z j ^ v) i) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (X : (SerrePositivity.Asymptotic.paperSupportedRank z).FullSubcategory) (q : ℤ),\n  0 ≤ SerrePositivity.Asymptotic.paperRankBetti lam hfg z hJ hfin U hU hs X q",
+      "axioms": "'SerrePositivity.Asymptotic.paperRankBetti_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 729,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg : ∀ {R S : Type u_1} [inst : CommRing R] [inst_1 : Nontrivial R]\n  [inst_2 : CommRing S] [inst_3 : Nontrivial S] {s : ℕ → ℕ} (φ : R →+* S) {e : ℕ} (z : Fin e → R) {I : Ideal S}\n  (lam : SerrePositivity.NormalizedLength S I) (hfg : I.FG) (hI : I ≤ (Ideal.span (Set.range (⇑φ ∘ z))).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v →\n        ∀ (q : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => φ (z j) ^ v) q) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (X : (SerrePositivity.Asymptotic.paperSupportedRank z).FullSubcategory) (q : ℤ),\n  0 ≤ SerrePositivity.Asymptotic.paperBaseChangeBetti φ z lam hfg hI hfin U hU hs X q",
+      "axioms": "'SerrePositivity.Asymptotic.paperBaseChangeBetti_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperRankEulerK0_mk": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 78,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperRankEulerK0_mk : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Nontrivial R]\n  {s : ℕ → ℕ} {J : Ideal R} (lam : SerrePositivity.NormalizedLength R J) (hfg : J.FG) {e : ℕ} (z : Fin e → R)\n  (hJ : J ≤ (Ideal.span (Set.range z)).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v → ∀ (i : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => z j ^ v) i) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (X : (SerrePositivity.Asymptotic.paperSupportedRank z).FullSubcategory),\n  (SerrePositivity.Asymptotic.paperRankEulerK0 lam hfg z hJ hfin U hU hs) (SerrePositivity.TriangulatedK0.mk X) =\n    ∑ᶠ (q : ℤ), ↑↑q.negOnePow * SerrePositivity.Asymptotic.paperRankBetti lam hfg z hJ hfin U hU hs X q",
+      "axioms": "'SerrePositivity.Asymptotic.paperRankEulerK0_mk' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperBaseChangeEulerK0_mk": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 752,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperBaseChangeEulerK0_mk : ∀ {R S : Type u_1} [inst : CommRing R] [inst_1 : Nontrivial R]\n  [inst_2 : CommRing S] [inst_3 : Nontrivial S] {s : ℕ → ℕ} (φ : R →+* S) {e : ℕ} (z : Fin e → R) {I : Ideal S}\n  (lam : SerrePositivity.NormalizedLength S I) (hfg : I.FG) (hI : I ≤ (Ideal.span (Set.range (⇑φ ∘ z))).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v →\n        ∀ (q : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => φ (z j) ^ v) q) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (X : (SerrePositivity.Asymptotic.paperSupportedRank z).FullSubcategory),\n  (SerrePositivity.Asymptotic.paperBaseChangeEulerK0 φ z lam hfg hI hfin U hU hs)\n      (SerrePositivity.TriangulatedK0.mk X) =\n    ∑ᶠ (q : ℤ), ↑↑q.negOnePow * SerrePositivity.Asymptotic.paperBaseChangeBetti φ z lam hfg hI hfin U hU hs X q",
+      "axioms": "'SerrePositivity.Asymptotic.paperBaseChangeEulerK0_mk' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperRankBetti_koszul_formula": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 99,
+      "kind": "theorem",
+      "type": "@SerrePositivity.Asymptotic.paperRankBetti_koszul_formula : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Nontrivial R]\n  {s : ℕ → ℕ} {J : Ideal R} (lam : SerrePositivity.NormalizedLength R J) (hfg : J.FG) {e : ℕ} (z : Fin e → R)\n  (hJ : J ≤ (Ideal.span (Set.range z)).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v → ∀ (i : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => z j ^ v) i) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (K : CochainComplex (SerrePositivity.Asymptotic.FreeSequence R s) ℤ)\n  (hK : SerrePositivity.strictlyBoundedComplex (SerrePositivity.Asymptotic.FreeSequence R s) K)\n  (h :\n    SerrePositivity.Asymptotic.paperSupportedRank z\n      ((SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK)))\n  (v : ℕ),\n  0 < v →\n    (∀ (j : Fin e),\n        z j ^ v •\n            CategoryTheory.CategoryStruct.id\n              ((SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj\n                (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK)) =\n          0) →\n      ∀ (i : ℤ),\n        (SerrePositivity.Asymptotic.normalizedLimit U s fun n =>\n            (lam.len\n                ↑(HomologicalComplex.homology\n                    (SerrePositivity.koszulComplexOn (fun j => z j ^ v)\n                      ((SerrePositivity.Asymptotic.evaluateComplex n).obj K))\n                    (-i))).toReal) =\n          ∑ j ∈ Finset.range (e + 1),\n            ↑(e.choose j) *\n              SerrePositivity.Asymptotic.paperRankBetti lam hfg z hJ hfin U hU hs\n                {\n                  obj :=\n                    (SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj\n                      (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK),\n                  property := h }\n                (-(i - ↑j))",
+      "axioms": "'SerrePositivity.Asymptotic.paperRankBetti_koszul_formula' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 762,
+      "kind": "theorem",
+      "type": "@SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula : ∀ {R S : Type u_1} [inst : CommRing R]\n  [inst_1 : Nontrivial R] [inst_2 : CommRing S] [inst_3 : Nontrivial S] {s : ℕ → ℕ} (φ : R →+* S) {e : ℕ}\n  (z : Fin e → R) {I : Ideal S} (lam : SerrePositivity.NormalizedLength S I) (hfg : I.FG)\n  (hI : I ≤ (Ideal.span (Set.range (⇑φ ∘ z))).radical)\n  (hfin :\n    ∀ (v : ℕ),\n      0 < v →\n        ∀ (q : ℤ), lam.len ↑(HomologicalComplex.homology (SerrePositivity.koszulComplex fun j => φ (z j) ^ v) q) ≠ ⊤)\n  (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n)\n  (K : CochainComplex (SerrePositivity.Asymptotic.FreeSequence R s) ℤ)\n  (hK : SerrePositivity.strictlyBoundedComplex (SerrePositivity.Asymptotic.FreeSequence R s) K)\n  (h :\n    SerrePositivity.Asymptotic.paperSupportedRank z\n      ((SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK)))\n  (v : ℕ),\n  0 < v →\n    (∀ (j : Fin e),\n        z j ^ v •\n            CategoryTheory.CategoryStruct.id\n              ((SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj\n                (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK)) =\n          0) →\n      ∀ (i : ℤ),\n        (SerrePositivity.Asymptotic.normalizedLimit U s fun n =>\n            (lam.len\n                ↑(HomologicalComplex.homology\n                    (SerrePositivity.koszulComplexOn (fun j => φ (z j) ^ v)\n                      (SerrePositivity.baseChange φ ((SerrePositivity.Asymptotic.evaluateComplex n).obj K)))\n                    (-i))).toReal) =\n          ∑ j ∈ Finset.range (e + 1),\n            ↑(e.choose j) *\n              SerrePositivity.Asymptotic.paperBaseChangeBetti φ z lam hfg hI hfin U hU hs\n                {\n                  obj :=\n                    (SerrePositivity.Asymptotic.paperSequenceFunctor R s).obj\n                      (SerrePositivity.Asymptotic.sequenceHomotopyObj K hK),\n                  property := h }\n                (-(i - ↑j))",
+      "axioms": "'SerrePositivity.Asymptotic.paperBaseChangeBetti_koszul_formula' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.torAlg_isPowTorsion": {
+      "file": "SerrePositivity/HomologicalAlgebra/TorFiniteLength.lean",
+      "line": 92,
+      "kind": "lemma",
+      "type": "@SerrePositivity.torAlg_isPowTorsion : ∀ {A C : Type u_1} [inst : CommRing A] [inst_1 : CommRing C] (φ : A →+* C)\n  [inst_2 : IsLocalRing A] (i : ℕ) (V : Type u_1) [inst_3 : AddCommGroup V] [inst_4 : Module A V],\n  IsFiniteLength A V →\n    SerrePositivity.IsPowTorsion (Ideal.map φ (IsLocalRing.maximalIdeal A)) (SerrePositivity.TorAlg φ i V)",
+      "axioms": "'SerrePositivity.torAlg_isPowTorsion' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul": {
+      "file": "SerrePositivity/Paper/Section4/SymmetricComparison.lean",
+      "line": 68,
+      "kind": "theorem",
+      "type": "@SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul : ∀ {A S C : Type u_1} [inst : CommRing A]\n  [inst_1 : IsLocalRing A] [inst_2 : IsNoetherianRing A] [HasDerivedCategory (ModuleCat A)] [inst_4 : CommRing S]\n  [inst_5 : Nontrivial S] [inst_6 : CommRing C] [inst_7 : Nontrivial C] (α : A →+* S) (φ : S →+* C) {J : Ideal C}\n  (lam : SerrePositivity.NormalizedLength C J) (hfg : J.FG) {e : ℕ} (z : Fin e → A)\n  (hJ : J ≤ (Ideal.span (Set.range (⇑φ ∘ ⇑α ∘ z))).radical)\n  (hfin : SerrePositivity.LengthAlgebra.KoszulFinite lam (⇑φ ∘ ⇑α ∘ z))\n  (hz : Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A),\n  SerrePositivity.IsKoszulResolution z →\n    ∀ {s : ℕ → ℕ} (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n),\n      (SerrePositivity.Asymptotic.paperBaseChangeEulerK0 φ (⇑α ∘ z) lam hfg hJ hfin U hU hs).comp\n          (SerrePositivity.TriangulatedK0.map (SerrePositivity.Asymptotic.paperSupportedChangeRing α z)) =\n        SerrePositivity.LengthAlgebra.koszulEuler lam (⇑φ ∘ ⇑α ∘ z) •\n          SerrePositivity.Section4.ordinaryPaperEulerK0 z ⋯ U hU hs",
+      "axioms": "'SerrePositivity.Section4.paperBaseChangeEulerK0_eq_koszulEuler_mul' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values": {
+      "file": "SerrePositivity/Paper/Section4/LengthHypotheses.lean",
+      "line": 115,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values : ∀ {C : Type u_1} [inst : CommRing C] {J : Ideal C}\n  (lam : SerrePositivity.NormalizedLength C J) {e : ℕ} (w : Fin e → C) (r : ℕ),\n  (∀ (v : ℕ), 0 < v → ∀ (i : ℕ), 0 < i → lam.len (SerrePositivity.koszulHomologySelf (fun j => w j ^ v) i) = 0) →\n    (∀ (v : ℕ), 0 < v → lam.len (C ⧸ Ideal.span (Set.range fun j => w j ^ v)) = ↑(v ^ e * r)) →\n      SerrePositivity.LengthAlgebra.koszulEuler lam w = ↑r",
+      "axioms": "'SerrePositivity.Section4.koszulEuler_of_lengthAlgebra_values' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperTwistK0_mul": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 922,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperTwistK0_mul : ∀ {s : ℕ → ℕ} {e : ℕ} {A T : Type u_1} [inst : CommRing A]\n  [inst_1 : CommRing T] [inst_2 : Nontrivial T] [inst_3 : Algebra A T] (z : Fin e → A) {G : Type u_1} [inst_4 : Group G]\n  [inst_5 : MulSemiringAction G T] [inst_6 : SMulCommClass G A T] (g h : G),\n  SerrePositivity.Asymptotic.paperTwistK0 z (g * h) =\n    (SerrePositivity.Asymptotic.paperTwistK0 z g).comp (SerrePositivity.Asymptotic.paperTwistK0 z h)",
+      "axioms": "'SerrePositivity.Asymptotic.paperTwistK0_mul' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Asymptotic.paperK0_smul_mk": {
+      "file": "SerrePositivity/Paper/Section4/RankQuotient.lean",
+      "line": 956,
+      "kind": "lemma",
+      "type": "@SerrePositivity.Asymptotic.paperK0_smul_mk : ∀ {s : ℕ → ℕ} {e : ℕ} {A T : Type u_1} [inst : CommRing A]\n  [inst_1 : CommRing T] [inst_2 : Nontrivial T] [inst_3 : Algebra A T] (z : Fin e → A) {G : Type u_1} [inst_4 : Group G]\n  [inst_5 : MulSemiringAction G T] [inst_6 : SMulCommClass G A T] (g : G)\n  (X : (SerrePositivity.Asymptotic.paperSupportedRank (⇑(algebraMap A T) ∘ z)).FullSubcategory),\n  g • SerrePositivity.TriangulatedK0.mk X =\n    SerrePositivity.TriangulatedK0.mk ((SerrePositivity.Asymptotic.paperTwist z g).obj X)",
+      "axioms": "'SerrePositivity.Asymptotic.paperK0_smul_mk' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Section4.theorem_4_7": {
+      "file": "SerrePositivity/Paper/Section4/SymmetricComparison.lean",
+      "line": 203,
+      "kind": "theorem",
+      "type": "@SerrePositivity.Section4.theorem_4_7 : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : IsRegularLocalRing A]\n  [hderived : HasDerivedCategory (ModuleCat A)] [inst_2 : CommRing T] [inst_3 : IsLocalRing T] [inst_4 : IsDomain T]\n  [inst_5 : Algebra A T] [inst_6 : Module.Finite A T] [inst_7 : CommRing C] [inst_8 : Algebra T C] {e : ℕ}\n  (z : Fin e → A)\n  (lam :\n    SerrePositivity.NormalizedLength C\n      (Ideal.map ((algebraMap T C).comp (algebraMap A T)) (IsLocalRing.maximalIdeal A)))\n  (hz : Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A),\n  ringKrullDim A = ↑e →\n    Function.Surjective ⇑((IsLocalRing.residue T).comp (algebraMap A T)) →\n      ∀\n        (hzero :\n          ∀ (v : ℕ),\n            0 < v →\n              ∀ (j : ℕ),\n                0 < j →\n                  lam.len\n                      (SerrePositivity.koszulHomologySelf (fun k => (algebraMap T C) ((algebraMap A T) (z k)) ^ v) j) =\n                    0)\n        (hquot :\n          ∀ (v : ℕ),\n            0 < v →\n              lam.len (C ⧸ Ideal.span (Set.range fun k => (algebraMap T C) ((algebraMap A T) (z k)) ^ v)) =\n                ↑(v ^ e * Module.finrank A T))\n        {s : ℕ → ℕ} (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n) (p : ℕ) [Fact (Nat.Prime p)]\n        [CharP (IsLocalRing.ResidueField A) p] (G : Type u_1) [inst_11 : Group G] [inst_12 : Fintype G]\n        [inst_13 : MulSemiringAction G T] [inst_14 : SMulCommClass G A T]\n        (hsurj : Function.Surjective (PrimeSpectrum.comap (algebraMap A T))),\n        SerrePositivity.IsGeometricallyTransitive A T G →\n          ∀ (X : (SerrePositivity.Asymptotic.paperSupportedRank (⇑(algebraMap A T) ∘ z)).FullSubcategory),\n            have this := ⋯;\n            have this_1 := ⋯;\n            have hfin := ⋯;\n            ∑ g,\n                (SerrePositivity.Section4.ordinaryPaperEulerK0 (⇑(algebraMap A T) ∘ z) ⋯ U hU hs)\n                  (SerrePositivity.TriangulatedK0.mk ((SerrePositivity.Asymptotic.paperTwist z g).obj X)) =\n              ∑ g,\n                (SerrePositivity.Asymptotic.paperBaseChangeEulerK0 (algebraMap T C) (⇑(algebraMap A T) ∘ z) lam ⋯ ⋯ hfin\n                    U hU hs)\n                  (SerrePositivity.TriangulatedK0.mk ((SerrePositivity.Asymptotic.paperTwist z g).obj X))",
+      "axioms": "'SerrePositivity.Section4.theorem_4_7' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Section4.theorem_4_7_K0": {
+      "file": "SerrePositivity/Paper/Section4/SymmetricComparison.lean",
+      "line": 165,
+      "kind": "theorem",
+      "type": "@SerrePositivity.Section4.theorem_4_7_K0 : ∀ {A T C : Type u_1} [inst : CommRing A] [inst_1 : IsRegularLocalRing A]\n  [hderived : HasDerivedCategory (ModuleCat A)] [inst_2 : CommRing T] [inst_3 : IsLocalRing T] [inst_4 : IsDomain T]\n  [inst_5 : Algebra A T] [inst_6 : Module.Finite A T] [inst_7 : CommRing C] [inst_8 : Algebra T C] {e : ℕ}\n  (z : Fin e → A)\n  (lam :\n    SerrePositivity.NormalizedLength C\n      (Ideal.map ((algebraMap T C).comp (algebraMap A T)) (IsLocalRing.maximalIdeal A)))\n  (hz : Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A),\n  ringKrullDim A = ↑e →\n    Function.Surjective ⇑((IsLocalRing.residue T).comp (algebraMap A T)) →\n      ∀\n        (hzero :\n          ∀ (v : ℕ),\n            0 < v →\n              ∀ (j : ℕ),\n                0 < j →\n                  lam.len\n                      (SerrePositivity.koszulHomologySelf (fun k => (algebraMap T C) ((algebraMap A T) (z k)) ^ v) j) =\n                    0)\n        (hquot :\n          ∀ (v : ℕ),\n            0 < v →\n              lam.len (C ⧸ Ideal.span (Set.range fun k => (algebraMap T C) ((algebraMap A T) (z k)) ^ v)) =\n                ↑(v ^ e * Module.finrank A T))\n        {s : ℕ → ℕ} (U : Ultrafilter ℕ) (hU : ↑U ≤ Filter.atTop) (hs : ∀ (n : ℕ), 0 < s n) (p : ℕ) [Fact (Nat.Prime p)]\n        [CharP (IsLocalRing.ResidueField A) p] (G : Type u_1) [inst_11 : Group G] [inst_12 : Fintype G]\n        [inst_13 : MulSemiringAction G T] [inst_14 : SMulCommClass G A T]\n        (hsurj : Function.Surjective (PrimeSpectrum.comap (algebraMap A T))),\n        SerrePositivity.IsGeometricallyTransitive A T G →\n          ∀\n            (y :\n              SerrePositivity.TriangulatedK0\n                (SerrePositivity.Asymptotic.paperSupportedRank (⇑(algebraMap A T) ∘ z)).FullSubcategory),\n            have this := ⋯;\n            have this_1 := ⋯;\n            have hfin := ⋯;\n            ∑ g, (SerrePositivity.Section4.ordinaryPaperEulerK0 (⇑(algebraMap A T) ∘ z) ⋯ U hU hs) (g • y) =\n              ∑ g,\n                (SerrePositivity.Asymptotic.paperBaseChangeEulerK0 (algebraMap T C) (⇑(algebraMap A T) ∘ z) lam ⋯ ⋯ hfin\n                    U hU hs)\n                  (g • y)",
+      "axioms": "'SerrePositivity.Section4.theorem_4_7_K0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.Section4.supportedRankK0_descent": {
+      "file": "SerrePositivity/Paper/Section4/SupportedDescent.lean",
+      "line": 41,
+      "kind": "theorem",
+      "type": "SerrePositivity.Section4.supportedRankK0_descent : ∀ (A T : Type u_1) [inst : CommRing A]\n  [inst_1 : IsRegularLocalRing A] [inst_2 : CommRing T] [inst_3 : IsLocalRing T] [IsDomain T] [inst_5 : Algebra A T]\n  [Module.Finite A T] (p : ℕ) [Fact (Nat.Prime p)] [CharP (IsLocalRing.ResidueField A) p] {e : ℕ} (z : Fin e → A),\n  Ideal.span (Set.range z) = IsLocalRing.maximalIdeal A →\n    ∀ (s : ℕ → ℕ),\n      (∀ (n : ℕ), 0 < s n) →\n        ∀ (G : Type u_1) [inst_9 : Group G] [Finite G] [inst_11 : MulSemiringAction G T]\n          [inst_12 : SMulCommClass G A T],\n          Function.Surjective (PrimeSpectrum.comap (algebraMap A T)) →\n            SerrePositivity.IsGeometricallyTransitive A T G →\n              ∀\n                (y :\n                  SerrePositivity.TriangulatedK0\n                    (SerrePositivity.Asymptotic.paperSupportedRank (⇑(algebraMap A T) ∘ z)).FullSubcategory),\n                (∀ (g : G), g • y = y) →\n                  ∃ n x,\n                    0 < n ∧\n                      n • y =\n                        (SerrePositivity.TriangulatedK0.map\n                            (SerrePositivity.Asymptotic.paperSupportedChangeRing (algebraMap A T) z))\n                          x",
+      "axioms": "'SerrePositivity.Section4.supportedRankK0_descent' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    }
+  }
+}
