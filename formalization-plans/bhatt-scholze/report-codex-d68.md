@@ -245,3 +245,28 @@ SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
 SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
 ```
+
+## BS-D68 段 3 の途中（2026-11-10）
+
+main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した。
+
+| 宣言 | 内容 |
+| --- | --- |
+| `pdRawCoefficients`、`pdRawChange`、`pdRawBasis`、`pdRawCoefficients_repr` | 未完備 pd Čech 模型の係数変換を作り、余面・余退化との可換性と単項式基底での係数ごとの表示を示す。 |
+| `pdModel_modP` | 完備 pd Čech 模型の剰余と、標数 p の係数上の完備 pd 模型を自然に同一視する。 |
+| `freeDPDerivation`、`freeDPDerivation_dp_succ`、`freeDPDerivation_ext`、`freeDPPartial`、`freeDPPartial_dp_succ`、`freeDPPartial_comm` | 平方零拡大で分冪導分を作り、分冪での値と偏微分の可換性を示す。 |
+| `pdCoordinates`、`pdRawPartial`、`pdRawPartial_comm`、`pdRawPartial_dp_succ` | 第 0 頂点と差座標での偏微分を二つのテンソル因子から作る。 |
+| `CompletedRing`、`principalCompletionLinearMap`、`principalCompletionLinearMap_unit`、`principalCompletionLinearMap_comp` | 係数線形写像を主完備化に延長し、単位と合成との両立を示す。 |
+| `pdRow`、`pdRow_contractible` | 頂点の微分形式による余単体的な行を定義し、正次数の行を切断付き Čech 余脈体のホモトピーで収縮する。 |
+| `pdVerticalD`、`pdVerticalD_sq`、`pdDeRhamColumn` | 完備偏微分と左外積から列微分を作り、その平方が零であることを示す。 |
+| `cochainNatTensorSigns`、`bicomplexRow`、`totalToRowZero`、`totalToColumnZero` | 横微分の符号を正、縦微分を横次数で符号付けし、総複体から両軸への余鎖写像を作る。 |
+| `deRhamTerm`、`deRhamTerm_d`、`deRhamClass`、`cartierZero_closed`、`cartierOne_closed`、`cartierZeroClass`、`cartierOneClass` | 通常の多項式 de Rham 複体で `f^p` と `X^(p−1)dX` の閉形式とコホモロジー類を作る。 |
+| `formVars`、`affineForms`、`affineCoordinateIso`、`affineCoordinateIso_X`、`affineFormsModule`、`degreeZeroForm`、`affineD`、`affineWedge` | affine 模型の完備形式と次数零の係数環を、変数の宇宙をそろえて定義する。 |
+| `cartierCompletedFormsIso`、`cartierCompletedFormsIso_unit`、`cartierCompletedFormsIso_wedge`、`cartierFormsIso` | 標数 p の完備形式と通常の形式を同一視し、完備化単位および外積との両立を示す。 |
+| `zeroCocycleRing`、`cohomologyZeroAddEquiv`、`cohomologyZeroAddEquiv_mul`、`cohomologyZeroCommRing`、`cohomologyZeroRingEquiv` | 零次コホモロジーを二つの余面の等化部分環で表し、その積を cup 積と照合する。 |
+| `hodgeTateCohomology'`、`bockstein`、`htSecZero`、`hodgeTateMapZero` | affine 模型の mod d コホモロジーと Bockstein、次数零の Hodge–Tate 写像を定義する。 |
+| `delta_cochainDifferential_eq_cup_sq`、`cupBockstein_cup_sq_two` | 素数 2 では一次余輪体 `b` の cup 平方は `δ(b)` の余境界。Bockstein の零次からの像へ適用する。 |
+
+- 実装コミットは `44cf577fc`。新規 14 モジュールは `with_build_lock.sh --wait 1800` で対象ビルドに成功し、一時監査は 369 宣言で標準三公理のみ。追加公理と `sorryAx` は 0 件。新規モジュールから E3 と E∞ への推移的 import がなく、⑤a との変更ファイルの重複がないことを確認した。
+- 残りは列微分と余単体構造射の可換性、列の pd Poincaré 補題と両射影の擬同型、総複体の積と Bockstein の比較、有限変数の Cartier 同型、η¹ と外積への延長、生成元での照合。目標の二定理は草稿に残っている。
+- 停止点 3 の取り込み対象はこの段の完了時にまとめる。この時点の登録候補は `git diff --name-only --diff-filter=A ba84f342e..44cf577fc -- SerrePositivity` の 14 本。
