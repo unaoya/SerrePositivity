@@ -186,3 +186,49 @@ cofibrant 代数 X に対し、`SmallObject.relativeCellComplexιObj` で始対�
 3. セルの準自由表示、重みの商、`baseChange_forget` を順に対象ビルドする。続いて §4 の順に二項余積とテンソルの比較、Δᵒᵖ の橋と実現比較、filtered と全 sifted を別々に検査する。
 
 共有鍵の取得は KL-W1 の完了ファイル以降、または 8 時以降。取得には `--wait 1800` を使い、夜間に再開する場合も一回 30 分以内とする。
+
+## 9. 朝の進捗（停止点 3 の前）
+
+main の `898ab07c4` を `5527355d9` で取り込んだ。⑤b・⑤c・⑥ と、この段で編集するファイルの重複はない。
+
+### 証明済みの欄
+
+- E3 は `restrict`、`baseChange`、`baseChange_adjunction`、`restrict_forget`、`restrict_id`、`restrict_comp`、`discrete_restrict` の七欄。導来随伴の単位・余単位と三角等式も既存の局所化源で比較した。
+- Tot 以外の E4 は `ofCdga`、`ofCdga_forget`、`ofCdga_discrete`、`pi0`、`pi0_forget`、`pi0_discrete`、`pi0_restrict`。最後の比較は厳密な H⁰ の比較が積・単位・構造射を保つことから、通常の局所化を通して得た。
+- `CAlgPiZeroRestriction` の対象ビルド成功。夜にビルド済みの `HomologyRestrictionOperations` と合わせて 50 宣言を再帰監査し、標準三公理のみ。π₀ の最後の比較は `1ac469436`。この二本より前の 41 本では 585 宣言を監査済み。
+
+### K 平坦性から全関手比較まで
+
+`CellularGenerators` で実際の `AttachCells` の生成元と境界を取り出し、`attachedGenerator_d`、`attachedGenerator_hom_ext`、`exists_attachedGenerator_map` を証明した。`DerivedExtensionNerve` と `DerivedExtensionSource` は、複体の元の全 semifree augmentation を係数拡大した円柱を使う。K 平坦な源の全頂点で増大を反転し、同じ半自由部分圏の retract 比較を合成した。
+
+`CAlgExtensionForget` の `barrattEcclesBaseChange_forget_of_cofibrantCarrierKFlat`は、この自然同型を cofibrant 代数の局所化源から降ろす。これで界面と同じ向きの `FunctorIso` が、cofibrant 代数の台の K 平坦性から従う。四本とも対象ビルド成功。35 宣言の再帰監査で標準三公理のみ（`b45afe9f5`）。
+
+### 停止点 3 に残る証明
+
+夜間の四本は対象ビルドを通り、11 宣言の再帰監査で標準三公理のみだった（`e16e9628b`）。セルの境界を取り出せても、台が次数付き自由代数になる証明には、Schur の余不変の関係と付加の pushout の関係を照合する必要がある。具体的には、sphere と disk の次数ごとの分裂を自由代数側へ移し、境界 cycle によって新生成元の微分を指定した自由な次数付き台を構成する。先行段との比較を pushout の普遍性で示し、極限段では忘却が作る filtered 余極限へ移す。今の `Operad` は複体に特化しており、次数付きオペラッド代数への忘却の余極限保存は既存の補題から直接使えない。
+
+重みの商を計算する際、Mathlib の `Rep.coinvariantsTensorFreeLEquiv` により正則作用の因子の余不変を加群の直和で記述できる。Barratt–Eccles 側の `equivariantBasis_rightAction` と Schur 図式の diagonal action、次数付きテンソルの符号との照合が要る。 演算側の先頭置換を単位に正規化すれば、語の置換軌道を別に選ばず、基点つき非退化単体と順序つきの語で基底を添字づけられる。微分の後に正規化で語が置換されても総重みは変わらない。付加生成元の総重みと演算の単体次数の辞書式順序を使うと、生成元の微分は重みを下げ、演算の微分は単体次数を下げる。自由基底との照合が取れれば、この順序でも K 平坦性を示せる。
+
+残る入力は `cofibrantCarrierKFlat_of_cellStages` の `hstage`。始段・実際の小対象分解・retract と、K 平坦性を得た後の自然比較は証明済み。ここでは停止点 3 前の進捗を記録する。E2 の余積と sifted 保存は停止点 3 の後の作業。
+
+### 証明済み 51 本の登録候補
+
+すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。個別の対象ビルドと再帰監査で計 681 宣言、標準三公理のみ。入口と段階 II 監査への登録は取り込み時に調整役が行う。
+
+- `AlgebraCoefficientExtension`, `AlgebraCoefficientRestriction`, `AlgebraRestrictionCoherence`, `AlgebraTransport`
+- `CAlgAdjunctionComparison`, `CAlgCdga`, `CAlgCoefficientExtension`, `CAlgCoefficientRestriction`
+- `CAlgCoefficientSourceComparison`, `CAlgDerivedAdjunction`, `CAlgDiscreteRestriction`, `CAlgExtensionSourceComparison`
+- `CAlgFullLocalizationSource`, `CAlgHoLocalization`, `CAlgPiZero`, `CAlgPiZeroDiscrete`
+- `CAlgPiZeroForget`, `CAlgPiZeroRestriction`, `CAlgRestrictionCoherence`, `CAlgRestrictionForget`
+- `CoefficientAugmentation`, `CoefficientBraiding`, `CoefficientChains`, `CoefficientExtension`
+- `CoefficientExtensionOperad`, `CoefficientMonoidAction`, `CoefficientOperad`, `CoefficientRestrictionCoherence`
+- `DerivedRestrictionSource`, `DiscreteCoefficientCarrier`, `DiscreteCoefficientOperations`, `HomologyAlgebraFunctor`
+- `HomologyRestrictionClasses`, `HomologyRestrictionOperations`, `LaxTensorComparison`, `LaxTensorPower`
+- `LocalizedAdjunctionAssembly`, `LocalizedAdjunctionTriangles`, `LocalizedAdjunctionWhiskering`, `LocalizedNerveNatTrans`
+- `OperadTensorComparison`, `OrdinaryHoComposition`, `TensorAdjunctionMate`
+
+- `ArityKFlat`、`CarrierScalarExtensionKFlat`、`CellularCarrierKFlat`、`CellularWeights`
+
+- `CAlgExtensionForget`、`CellularGenerators`、`DerivedExtensionNerve`、`DerivedExtensionSource`
+
+［一般∞］移動候補は `LocalizedAdjunctionWhiskering`、`LocalizedAdjunctionTriangles`、`LocalizedAdjunctionAssembly`、`LocalizedNerveNatTrans`、`OrdinaryHoComposition`。
