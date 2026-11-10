@@ -120,6 +120,18 @@
       "type": "@SerrePositivity.InfinityCategories.isLocalization_of_deformation.{u_1} : ∀ {X D : SSet.{u_1}}\n  (L : Quiver.Hom.{u_1, u_1 + 1} X D) (I : Quiver.Hom.{u_1, u_1 + 1} D X)\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 1 }))),\n  SerrePositivity.InfinityCategories.InvertsEdges.{u_1} L W →\n    ∀\n      (e :\n        SerrePositivity.InfinityCategories.FunctorIso.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} I L)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} D))\n      (H :\n        SSet.Homotopy.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} L I)\n          (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} X)),\n      (∀ (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n          Membership.mem.{u_1, u_1} W\n            (SSet.Edge.edge.{u_1} (SerrePositivity.InfinityCategories.simplicialHomotopyVertexEdge.{u_1} H x))) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1} L W",
       "axioms": [],
       "evidence": "depth:SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject": {
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject.{u_1} : ∀\n  {C : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} C]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 1 })))\n  (r :\n    SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} C\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W))\n  (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z ↔\n    SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W z",
+      "axioms": [],
+      "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation"
+    },
+    "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout": {
+      "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20",
+      "type": "@SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout.{u_1} : ∀\n  {A B C D : SSet.{u_1}} {i : Quiver.Hom.{u_1, u_1 + 1} A B} [CategoryTheory.Mono.{u_1, u_1 + 1} i]\n  {g : Quiver.Hom.{u_1, u_1 + 1} A C} {k : Quiver.Hom.{u_1, u_1 + 1} B D} {j : Quiver.Hom.{u_1, u_1 + 1} C D},\n  CategoryTheory.IsPushout.{u_1, u_1 + 1} i g k j →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n        (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} A)\n        (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} A) →\n      SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n          (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} B)\n          (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} B) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} C)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} C) →\n          SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} D)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} D)",
+      "axioms": [],
+      "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F1.Transport.LocalizationPushout"
     }
   },
   "probes": [
@@ -657,6 +669,23 @@
         "declarations": [
           "SSet.Nonsingular"
         ]
+      },
+      "6.2.3.15": {
+        "tag": "02G8",
+        "statement_sha256": "ab76a7bcd859b62b1ab704561df5bba751093446fe46235feeb99ed49cdb6ee4",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject"
+        ]
+      },
+      "6.3.5.3": {
+        "tag": "01N7",
+        "statement_sha256": "50e4294dc5786d37a471c92204c9fab56a2d20c5dae8e84a665ffca8c2795925",
+        "status": "partial",
+        "declarations": [
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout"
+        ]
       }
     },
     "declarations": {
@@ -1049,6 +1078,63 @@
         "type": "SSet.Nonsingular.{u_1} : SSet.{u_1} → Prop",
         "evidence": "61bb82deb5968b2e56cd",
         "axioms": []
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject": {
+        "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25",
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject.{u_1} : ∀\n  {C : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} C]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 1 })))\n  (r :\n    SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} C\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W))\n  (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z ↔\n    SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W z",
+        "axioms": [],
+        "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation"
+      },
+      "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20",
+        "type": "@SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout.{u_1} : ∀\n  {A B C D : SSet.{u_1}} {i : Quiver.Hom.{u_1, u_1 + 1} A B} [CategoryTheory.Mono.{u_1, u_1 + 1} i]\n  {g : Quiver.Hom.{u_1, u_1 + 1} A C} {k : Quiver.Hom.{u_1, u_1 + 1} B D} {j : Quiver.Hom.{u_1, u_1 + 1} C D},\n  CategoryTheory.IsPushout.{u_1, u_1 + 1} i g k j →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n        (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} A)\n        (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} A) →\n      SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n          (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} B)\n          (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} B) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} C)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} C) →\n          SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} D)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} D)",
+        "axioms": [],
+        "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F1.Transport.LocalizationPushout"
+      }
+    }
+  },
+  "cross_recheck": {
+    "base": "9b689a7185f71fb0cf9cd5243859436b2de9e6db",
+    "method": "段 1・段 1′の確認済みの出力を再利用。追加候補はビルドロックの中で既存 .olean を使い #check と #print axioms。",
+    "declarations": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq": {
+        "source": "SerrePositivity/InfinityCategories/HomotopyLimits/ReflectiveInvertedHom.lean:124",
+        "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  {P : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }) → Prop}\n  (r : SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} X P),\n  Eq.{u_1 + 1}\n    (SerrePositivity.InfinityCategories.HomotopyLimits.localEquivalences.{u_1}\n      (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n        (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r)))\n    (SerrePositivity.InfinityCategories.invertedEdges.{u_1}\n      (SerrePositivity.InfinityCategories.ReflectiveSubcategory.reflector.{u_1} r))",
+        "axioms": [],
+        "evidence": "cross-recheck:SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveInvertedHom"
+      },
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject": {
+        "source": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldSaturation.lean:25",
+        "type": "@SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject.{u_1} : ∀\n  {C : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} C]\n  (W : Set.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 1 })))\n  (r :\n    SerrePositivity.InfinityCategories.ReflectiveSubcategory.{u_1} C\n      (SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W))\n  (z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.ReflectiveSubcategory.IsLocal.{u_1} r z ↔\n    SerrePositivity.InfinityCategories.HomotopyLimits.IsLocalObject.{u_1} W z",
+        "axioms": [],
+        "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation"
+      },
+      "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout": {
+        "source": "SerrePositivity/InfinityCategories/F1/Transport/LocalizationPushout.lean:20",
+        "type": "@SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout.{u_1} : ∀\n  {A B C D : SSet.{u_1}} {i : Quiver.Hom.{u_1, u_1 + 1} A B} [CategoryTheory.Mono.{u_1, u_1 + 1} i]\n  {g : Quiver.Hom.{u_1, u_1 + 1} A C} {k : Quiver.Hom.{u_1, u_1 + 1} B D} {j : Quiver.Hom.{u_1, u_1 + 1} C D},\n  CategoryTheory.IsPushout.{u_1, u_1 + 1} i g k j →\n    SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n        (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} A)\n        (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} A) →\n      SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n          (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} B)\n          (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} B) →\n        SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} C)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} C) →\n          SerrePositivity.InfinityCategories.IsLocalization.{u_1}\n            (SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap.{u_1} D)\n            (SerrePositivity.InfinityCategories.transportSimplexInitialEdges.{u_1} D)",
+        "axioms": [],
+        "evidence": "cross-recheck:SerrePositivity.InfinityCategories.F1.Transport.LocalizationPushout"
+      }
+    },
+    "items": {
+      "6.2.3.15": {
+        "status": "partial",
+        "tag": "02G8",
+        "assumptions": "∞ 圏 X の反射的充満部分圏、または Bousfield 反射のデータ",
+        "conclusion": "反射から局所同値と局所対象を同定する方向を確認。任意の localizing collection からの逆と充満反射部分圏との全単射は未確認",
+        "retained_evidence": {
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reflective_localEquivalences_eq": "cross-recheck:SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveInvertedHom",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.reflective_isLocal_iff_localObject": "cross-recheck:SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation"
+        }
+      },
+      "6.3.5.3": {
+        "status": "partial",
+        "tag": "01N7",
+        "assumptions": "単射に沿う厳密 pushout と各頂点の初頂点写像",
+        "conclusion": "三頂点での局所化から第四頂点での局所化を得る。一般の二つの四角形での圏論的押し出しと局所化との同値は未確認",
+        "retained_evidence": {
+          "SerrePositivity.InfinityCategories.transportSimplexFirstVertexMap_isLocalization_of_isPushout": "cross-recheck:SerrePositivity.InfinityCategories.F1.Transport.LocalizationPushout"
+        }
       }
     }
   }

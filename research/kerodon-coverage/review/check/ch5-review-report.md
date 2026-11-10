@@ -64,3 +64,22 @@ ok 183 件、fix 162 件、unsure 0 件。
 - 5.6.7.8 は partial。仮定：共通の底上の cocartesian fibration の比較 F（Lean が強い：相対逆の補題は ∞ 圏の底上の left fibration に限定）。結論：全空間での圏同値を前合成同値に読み替え、left fibration の場合に底上の逆と相対単位・余単位を取る（Lean が弱い：任意の cocartesian fibration の相対逆は未確認）。
 
 前回からの status の変更は none → own が 3 件、none → partial が 5 件、own → partial が 18 件。
+
+## 交差検査後の再確認（11-07）
+
+[抜き取り結果](cross-5.md) の seed は `0xf261f37c`。none の誤りは 3/20 件だったため、`9b689a718` を取り込んでから none の 173 行を再確認した。
+
+[行ごとの検索記録](ch5-none-search.json) の `cross_recheck` に、同じ小節と前後の小節の引用先の型、特例・片方向・双対を別々に調べた語、Mathlib の概念名、候補の型見出しと判定理由を記録した。型は参照 ID で引ける。採用した型と公理は [kernel の記録](ch5-kernel-evidence.json) の同名の節にある。
+
+| 判定 | 再確認した行の件数 | 章全体の件数 |
+| --- | ---: | ---: |
+| own | 1 | 42 |
+| both | 0 | 0 |
+| mathlib | 0 | 6 |
+| partial | 54 | 179 |
+| none | 118 | 118 |
+
+ok 130 件、fix 215 件、unsure 0 件。今回採用した宣言が依存する公理は標準三公理の範囲内。
+
+- 5.3.4.19 は own。重み付き nerve の cocartesian strict transport への自然変換があり、各成分は圏同値。
+- 5.3.6.9 は partial。関手圏の射影の cartesian fibration 性と、cocartesian 辺の可逆化から cartesian 辺を得る方向を確認した。
