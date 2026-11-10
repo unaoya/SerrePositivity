@@ -308,3 +308,10 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - 草稿の `pdColumnInclusion`、`pdPoincare_column`、`pdDeRhamCohomologyIso` を本体の証明へ接続し、この三宣言の結晶基底での特殊化を独立した一時ファイルで検査した。
 - ⑤a の変更と重複のない main `2c1222de2` を専用枝へ取り込んだ（`4c2344651`）。実装済み 38 モジュールの鍵付き対象ビルドは成功。一時監査の 1,053 宣言は標準三公理のみ。Barratt–Eccles、operad、hammock、`PerfectoidizationInterface` への依存はない。平方零で使う `CupCommutativity` は既存の Alexander–Whitney の鎖テンソル補題を経由する。
 - 段 4 は総複体の積と射影の乗法性、および整係数の Bockstein 照合が残る。段 5 の有限多変数 Cartier 同型、段 6 の生成元の照合と Hodge–Tate 写像の外積への延長、対象二定理も未完。
+
+### 有限多変数 Cartier の加法同型と積の基礎
+
+- `62f88ef30` で `finiteCartierHomotopyEquiv` と `finiteCartierLinearEquiv` を構成した。各座標の積分と内部積から得た射影を合成し、指数と一次形式の出現を合わせた重みが全て p の倍数の単項式だけを残す。`cartierMonomialEquiv` でそれらを元の単項式基底と対応させた。生成元での値と乗法性は引き続き照合する。
+- `pdCompletedPartial_mul`、`pdVerticalD_wedge`、`pdWedge_natural` は完備 pd 偏微分の積公式、列の外積の Leibniz 則、余単体構造射に関する自然性。`moduleCofaceDifferential_awBilinear` は自然な双線形対の Alexander–Whitney 積の横方向の Leibniz 則。
+- `CochainProduct.onHomology` は Leibniz 則を満たす積を余輪体の商に降ろす。`deRhamCohomologyWedge` はその多項式 de Rham 外積への適用。
+- 実装済み 47 モジュールの鍵付き対象ビルドは成功。一時監査の 1,278 宣言は標準三公理のみ。main の D71〜D73 の設計と ⑤a の停止点 0 承認（`a24fae02a`）を取り込み、CAlg_R の模型の中身への参照は追加していない。
