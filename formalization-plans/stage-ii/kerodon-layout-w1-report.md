@@ -464,29 +464,65 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 
 ### レーン別の追従表
 
-11-10 20:15 JST に、7 レーンの追跡済みと未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と `main` の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決されている旧名も書き換えられる。継承した旧 import は取り込み側の改名に含まれる。[対象ファイル、HEAD、merge base、旧 import の行と行き先](kerodon-layout-stop-3/lane-imports.json)
+11-10 23:11 JST に、7 レーンの追跡済みと未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と `main` の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決されている旧名も書き換えられる。継承した旧 import は取り込み側の改名に含まれる。[対象ファイル、HEAD、merge base、旧 import の行と行き先](kerodon-layout-stop-3/lane-imports.json)
 
 `$handoff` は配布した `kerodon-layout-stop-3` ディレクトリ。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。`$klw1` は KL-W1 の作業木。収集時とソースのバイト列を揃え、改名表を取り込んだ後で次を実行する。新しい出力先を `$preview` に渡し、`review.json` とソース差分を確認してから反映する。
 
 | レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
 | --- | ---: | ---: | ---: | --- |
-| ⑤a `math/bs-impl` | 17,488 | 2（6 行） | [2](kerodon-layout-stop-3/bs-impl-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑤b `math/bs-d68` | 17,486 | 0（0 行） | [5](kerodon-layout-stop-3/bs-d68-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑤c `math/bs-classical` | 17,486 | 0（0 行） | [15](kerodon-layout-stop-3/bs-classical-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑥ `math/scheme` | 17,479 | 0（0 行） | [91](kerodon-layout-stop-3/scheme-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| HA `research/ha-review` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| HTT `research/htt-review` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| K の地図 `research/k-maps` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑤a `math/bs-impl` | 17,500 | 9（17 行） | [43](kerodon-layout-stop-3/bs-impl-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑤b `math/bs-d68` | 17,491 | 0（0 行） | [42](kerodon-layout-stop-3/bs-d68-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,491 | 0（0 行） | [20](kerodon-layout-stop-3/bs-classical-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑥ `math/scheme` | 17,479 | 0（0 行） | [134](kerodon-layout-stop-3/scheme-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| HA `research/ha-review` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| HTT `research/htt-review` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| K の地図 `research/k-maps` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
 
 
 `kl-module-map.json` は import の改名、`kl-namespace-map.json` は宣言の改名と分割先の定義元を収める。旧名の互換モジュールを使う場合も import は改名表で更新する。ファイルが追加された場合はレーン側でそのパスを収集対象の JSON 配列に加え、改名前の成果物とソースで収集し直す。
 
 ### 夜間の検証結果
 
-| 確認項目 | 停止点 3 で記入する結果 |
+11-10〜11-11 の夜間枠。集計は 11-11 08:00:20 JST。main の `f68a0abea` を `9bbc07615` に取り込み、草稿 5 本の衝突を解消した。新旧の依存をたどって 28 本を Lean で採取し、7 本の構文を採取結果と照合して補正した。追加 13 本を含む 38 本、旧 import 872 行を配置プレビューで更新した。追加ファイルで外部から使う 16 名を確認して互換名の対象に加えた。
+
+| 確認項目 | 夜間の結果 |
 | --- | --- |
-| 対象モジュールと互換名 | ビルド成功数、対象総数、外部利用の alias 数 |
-| 保存比較 v3b | 比較したモジュールと宣言の数、未説明差分の数 |
-| Lean の Kerodon 属性 | 672 組の再照合と欠落・余分 |
-| 監査・層 | 対象監査の実行結果、最終配置の Python 検査 |
-| 最終の確認ビルド | 調整役への事前連絡、鍵の取得と返却、対象と終了結果 |
+| 移動先のビルド | 14,436 / 14,606 本。残り 170 本。 |
+| 前提ファイルと互換名 | 2,848 / 2,980 本。互換モジュール 19 / 51 本、対象 alias 5,972 名。 |
+| 保存比較 v3b | 14,233 本を比較し、14,217 本で未説明差分なし。未比較 373 本、現行比較の未説明差分 34 行。 |
+| Lean の Kerodon 属性 | 367 / 367 モジュール、672 / 672 組が完全一致。 |
+| 5 層の Python 検査 | 現役 29,492 モジュール。旧 import 0 件、未解決 import 0 件、層違反 0 件。 |
+| root `lake build SerrePositivity` | 未着手。 |
+| 全監査と verify | 未着手。予定対象は 103 本。段階 II の BS は `audit_bhatt_scholze_stage2.lean`、AlgebraicGeometry は `audit_kst_scheme_lemmas.lean`。 |
+| 共有鍵 | 11-10 23:00:46 JST〜11-11 01:08:43 JST、11-11 06:07:30 JST〜11-11 07:05:37 JST、11-11 07:41:56 JST〜11-11 07:59:39 JST。 |
+
+停止点 3 の条件を満たすまで、一括移動は作業枝に反映しない。夜間の完了通知は 1〜5 が完了したときに発行する。
+
+保存されたビルドエラーのある起点は 7 本。未ビルドの集計には各起点に依存するファイルも含む。
+
+- `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.LinearHomCohomology`
+- `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactCoproduct`
+- `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.CompactStage`
+- `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.PaddedBackwardInsertionComparison`
+- `SerrePositivity.KST.LocalizingInvariants.SpectrumZeroClass`
+- `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs`
+- `SerrePositivity.KST.SConstruction.PerfectStableHoArrow`
+
+現行の保存比較で差が残るモジュール。
+
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceColimitIso`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePiecePresentations`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeSmallPresentationPiece`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialConditions`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialPieces`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedRefinementPresentation`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeAttachmentOriginalSquares`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeInverseNativeHomSquares`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeNativeHomCoherence`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeNativeHomSquare`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomFamily`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomParameters`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleInitialHom`

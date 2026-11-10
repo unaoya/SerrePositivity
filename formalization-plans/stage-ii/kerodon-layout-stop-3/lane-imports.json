@@ -1,52 +1,121 @@
 {
-  "scanned_at_jst": "2026-11-10T20:15:00+09:00",
+  "scanned_at_jst": "2026-11-10T23:11:51+09:00",
   "lanes": [
     {
       "label": "⑤a",
       "branch": "math/bs-impl",
-      "head": "a93aeb0fe35920fa9f73a25f076a7f9cfd1d938c",
-      "merge_base": "ea5d613886361865c9484866d237dc267bcb7768",
+      "head": "af458c4c4e48a870d82bf4210a8ae5846ce1d81e",
+      "merge_base": "0f1df49baf3a1d432d51199856f165d15949e80b",
       "short": "bs-impl",
-      "file_count": 31689,
-      "files_with_old_import": 17488,
-      "local_files": 2,
-      "new_local_files": 2,
-      "local_files_with_old_import": 2,
-      "new_files_with_old_import": 2,
-      "old_import_lines_in_local_files": 6,
+      "file_count": 31750,
+      "files_with_old_import": 17500,
+      "local_files": 43,
+      "new_local_files": 43,
+      "local_files_with_old_import": 9,
+      "new_files_with_old_import": 9,
+      "old_import_lines_in_local_files": 17,
       "local_imports": {
-        "SerrePositivity/EInfinity/BarrattEccles/Theory/DerivedRestriction.lean": [
-          {
-            "line": 4,
-            "old": "SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise",
-            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise"
-          },
-          {
-            "line": 5,
-            "old": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransport",
-            "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport"
-          },
-          {
-            "line": 8,
-            "old": "SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve",
-            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.ScalarRestrictionNerve"
-          }
-        ],
-        "SerrePositivity/EInfinity/ComplexLimits/StrictHomology.lean": [
-          {
-            "line": 5,
-            "old": "SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality",
-            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyNaturality"
-          },
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgAdjunctionComparison.lean": [
           {
             "line": 6,
-            "old": "SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges",
-            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges"
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.Adjunction",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.Adjunction"
           },
           {
             "line": 7,
-            "old": "SerrePositivity.InfinityCategories.F1B.HomotopyEdgeNaturality",
-            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.HomotopyEdgeNaturality"
+            "old": "SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.QCatEquivalenceAdjunction"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCdga.lean": [
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransport",
+            "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientRestriction.lean": [
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransport",
+            "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgCoefficientSourceComparison.lean": [
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UniversalConsequences"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CAlgHoLocalization.lean": [
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.HomotopyRecovery",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.HomotopyRecovery"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.EdgeHom",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.EdgeHom"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/LocalizedAdjunctionTriangles.lean": [
+          {
+            "line": 3,
+            "old": "SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.AdjunctionHomTriangles"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/LocalizedAdjunctionWhiskering.lean": [
+          {
+            "line": 3,
+            "old": "SerrePositivity.InfinityCategories.F1B.FunctorCategories.EnrichedPrecomposition",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.EnrichedPrecomposition"
+          },
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful"
+          },
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/LocalizedNerveNatTrans.lean": [
+          {
+            "line": 3,
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransWhiskering",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransWhiskering"
+          },
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopyComponent"
+          },
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Derived.FunctorHomPostcompPointwiseInvertible",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomPostcompPointwiseInvertible"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/OrdinaryHoComposition.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.F1B.NerveComparison.EdgeHom",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.EdgeHom"
           }
         ]
       },
@@ -55,13 +124,13 @@
     {
       "label": "⑤b",
       "branch": "math/bs-d68",
-      "head": "d61e1fa37b0f032f9f25dcb99bb98b7b1691bbee",
-      "merge_base": "07d9d2117d7528d174c2526cd7e5e2ae0f1a2df0",
+      "head": "b34d4955ffb19a951d2fe06f653306448569e951",
+      "merge_base": "f68a0abea454fd5b214f8236f0a240bb6b5df1a2",
       "short": "bs-d68",
-      "file_count": 31692,
-      "files_with_old_import": 17486,
-      "local_files": 5,
-      "new_local_files": 5,
+      "file_count": 31755,
+      "files_with_old_import": 17491,
+      "local_files": 42,
+      "new_local_files": 42,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,
@@ -71,13 +140,13 @@
     {
       "label": "⑤c",
       "branch": "math/bs-classical",
-      "head": "55242190c2666cb8010b04d33c27aad2503b1a3b",
-      "merge_base": "09047a87e071ce808aa32399847185b8910c1c74",
+      "head": "74f5032f5d7f7ccfcce4d5cb7e732e6f1fb74314",
+      "merge_base": "dd046d9f86da5deda4fba57dc625ddeae53f945f",
       "short": "bs-classical",
-      "file_count": 31702,
-      "files_with_old_import": 17486,
-      "local_files": 15,
-      "new_local_files": 15,
+      "file_count": 31733,
+      "files_with_old_import": 17491,
+      "local_files": 20,
+      "new_local_files": 20,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,
@@ -87,13 +156,13 @@
     {
       "label": "⑥",
       "branch": "math/scheme",
-      "head": "8c15ae51a27694f468b1e0ab449517037e17fee6",
+      "head": "4abad98bf8678b758ad29c737d539c24a49691c2",
       "merge_base": "e3c1c6c0ef27bb5d3a5e352d35e231a1f3830c7e",
       "short": "scheme",
-      "file_count": 31673,
+      "file_count": 31715,
       "files_with_old_import": 17479,
-      "local_files": 91,
-      "new_local_files": 90,
+      "local_files": 134,
+      "new_local_files": 132,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,
@@ -103,11 +172,11 @@
     {
       "label": "HA",
       "branch": "research/ha-review",
-      "head": "40152e8b033154deda5c32d059336afa4a1f8e6c",
-      "merge_base": "6503860663ef692775df04b6e7fdabaf749d32f4",
+      "head": "6e19c5a14cb16a704016efaf924b61d181239c46",
+      "merge_base": "6e19c5a14cb16a704016efaf924b61d181239c46",
       "short": "ha-review",
-      "file_count": 31549,
-      "files_with_old_import": 17479,
+      "file_count": 31713,
+      "files_with_old_import": 17491,
       "local_files": 0,
       "new_local_files": 0,
       "local_files_with_old_import": 0,
@@ -119,11 +188,11 @@
     {
       "label": "HTT",
       "branch": "research/htt-review",
-      "head": "b63a0e170fc27a6ec770fbf1130c4c3520280a8b",
-      "merge_base": "5933bde0c3b8a975fff34c19304f985ec0cd565f",
+      "head": "6ca50b3a3cd1ee157bdf284d36f7482e33502344",
+      "merge_base": "6ca50b3a3cd1ee157bdf284d36f7482e33502344",
       "short": "htt-review",
-      "file_count": 31549,
-      "files_with_old_import": 17479,
+      "file_count": 31713,
+      "files_with_old_import": 17491,
       "local_files": 0,
       "new_local_files": 0,
       "local_files_with_old_import": 0,
@@ -135,11 +204,11 @@
     {
       "label": "K の地図",
       "branch": "research/k-maps",
-      "head": "11e2e7be20251a4feea936c25ebdf24060993c3d",
-      "merge_base": "86fb5ab0c42066e65ae8ebcc105a817d8c3db3ea",
+      "head": "6e19c5a14cb16a704016efaf924b61d181239c46",
+      "merge_base": "6e19c5a14cb16a704016efaf924b61d181239c46",
       "short": "k-maps",
-      "file_count": 31549,
-      "files_with_old_import": 17479,
+      "file_count": 31713,
+      "files_with_old_import": 17491,
       "local_files": 0,
       "new_local_files": 0,
       "local_files_with_old_import": 0,
