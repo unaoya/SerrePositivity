@@ -167,9 +167,9 @@ theorem verdierNullContractionCoreKanEvaluation_fixed (d : _root_.SerrePositivit
 /-- 同じ比較の始点は、元の指定包含・商に対する商核零化円柱の Ex∞ 像。 -/
 theorem verdierNullContractionCoreKanEvaluation_original_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
     (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence d.inclusion d.projection) :
-    HEq (coaugmentedTensorRightStrength Comparison.exInfinity Comparison.exInfinityUnit
+    HEq (coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         (coreSingleRealizationObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)).obj (Δ[1] : SSet.{u}) ≫
-      Comparison.exInfinity.map (quotientSKernelNullCylinder h))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (quotientSKernelNullCylinder h))
       (uncurry (verdierNullContractionFamily d ≫
         stableCoreSingleKanEnrichedFunctor.map
           ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.SimplicialMonoidInternal
-public import SerrePositivity.KST.Comparison.ExInfinityMonoidal
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal
 
 /-!
 # 単体的モノイドの Ex∞ 置換
@@ -44,7 +44,7 @@ def simplicialMonoidInternalUnit : 𝟭 (SimplicialObject MonCat.{u}) ⟶
 使われ方：群状モノイドの bar の Kan 模型。
 -/
 def exInfinitySimplicialMonoidFunctor : SimplicialObject MonCat.{u} ⥤ SimplicialObject MonCat.{u} :=
-  simplicialMonoidToInternal ⋙ exInfinityMonoidFunctor ⋙ internalMonoidToSimplicial
+  simplicialMonoidToInternal ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidFunctor ⋙ internalMonoidToSimplicial
 
 /--
 概要：単体的モノイドから Ex∞ による置換への自然なモノイド射。
@@ -55,7 +55,7 @@ def exInfinitySimplicialMonoidFunctor : SimplicialObject MonCat.{u} ⥤ Simplici
 def exInfinitySimplicialMonoidUnit : 𝟭 (SimplicialObject MonCat.{u}) ⟶
     exInfinitySimplicialMonoidFunctor :=
   simplicialMonoidInternalUnit ≫ Functor.whiskerLeft simplicialMonoidToInternal
-    (Functor.whiskerRight exInfinityMonoidUnit internalMonoidToSimplicial)
+    (Functor.whiskerRight _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit internalMonoidToSimplicial)
 
 /--
 概要：置換した単体的モノイドの基礎単体集合は元の基礎単体集合の Ex∞ である。
@@ -64,7 +64,7 @@ def exInfinitySimplicialMonoidUnit : 𝟭 (SimplicialObject MonCat.{u}) ⟶
 使われ方：bar の各行を Kan 複体の積として扱う。
 -/
 theorem exInfinitySimplicialMonoid_space (M : SimplicialObject MonCat.{u}) :
-    monoidSpace (exInfinitySimplicialMonoidFunctor.obj M) = exInfinity.obj (monoidSpace M) := rfl
+    monoidSpace (exInfinitySimplicialMonoidFunctor.obj M) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (monoidSpace M) := rfl
 
 /--
 概要：置換した単体的モノイドの基礎単体集合は Kan 複体である。
@@ -74,7 +74,7 @@ theorem exInfinitySimplicialMonoid_space (M : SimplicialObject MonCat.{u}) :
 -/
 instance exInfinitySimplicialMonoid_kanComplex (M : SimplicialObject MonCat.{u}) :
     SSet.KanComplex (monoidSpace (exInfinitySimplicialMonoidFunctor.obj M)) :=
-  exInfinity_kanComplex (monoidSpace M)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex (monoidSpace M)
 
 /--
 概要：単体的モノイドの置換への射の基礎写像は Ex∞ の単位である。
@@ -84,7 +84,7 @@ instance exInfinitySimplicialMonoid_kanComplex (M : SimplicialObject MonCat.{u})
 -/
 theorem exInfinitySimplicialMonoidUnit_space (M : SimplicialObject MonCat.{u}) :
     Functor.whiskerRight (exInfinitySimplicialMonoidUnit.app M) (forget MonCat) =
-      exInfinityUnit.app (monoidSpace M) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (monoidSpace M) := by
   apply NatTrans.ext
   funext d
   apply ConcreteCategory.hom_ext

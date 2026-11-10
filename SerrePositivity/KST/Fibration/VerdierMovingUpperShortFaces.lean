@@ -56,12 +56,12 @@ theorem verdierMovingUpperFamily_last :
 theorem verdierMovingUpperFirstFamily_point (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
     (verdierMovingUpperFirstFamily d).app (Opposite.op ⦋0⦌) k =
       ULift.up (SimplicialCategory.homEquiv' _ _
-        (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))) := by
   change PinchedHom.constant (X := (SSet.uliftFunctor.{u + 1, u}).obj
     (SimplicialCategory.sHom (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
       (fullSRealizationKanObject d.left)))
     (ULift.up (SimplicialCategory.homEquiv' _ _
-      (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))))) 0 = _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))))) 0 = _
   exact pinchedConstant_zero _
 
 /-- 概要：同じ上側族の全有限パラメータで第一短辺は元の実 core 包含の標準区間像。
@@ -71,7 +71,7 @@ theorem verdierMovingUpperFamily_atVertex_firstFace (k : (Δ[1] : SSet.{u + 1}) 
     stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierMovingUpperFamily d ℓ) k =
       lift (𝟙 (Δ[1] : SSet.{u + 1}))
         (SSet.const (ULift.up (SimplicialCategory.homEquiv' _ _
-          (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))) ≫
         intervalMappingUncurry (coherentHomIntervalComparison
           (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
           (fullSRealizationKanObject d.left)) := by

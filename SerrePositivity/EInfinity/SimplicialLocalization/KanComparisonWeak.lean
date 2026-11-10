@@ -34,13 +34,13 @@ lemma kanFreeHammockComparisonEnriched_map_weak :
 
 lemma kanFreeHammockAugmentationEnriched_map_equivalence :
     IsQCatEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y) := by
-  change IsQCatEquivalence (exInfinity.map (freeHammockDiagonalAugmentation C X Y))
+  change IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalAugmentation C X Y))
   exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
     (kanFreeHammockAugmentationEnriched_map_weak C X Y)
 
 lemma kanFreeHammockComparisonEnriched_map_equivalence :
     IsQCatEquivalence ((kanFreeHammockComparisonEnriched C).map X Y) := by
-  change IsQCatEquivalence (exInfinity.map (freeHammockDiagonalComparison C X Y))
+  change IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalComparison C X Y))
   exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
     (kanFreeHammockComparisonEnriched_map_weak C X Y)
 

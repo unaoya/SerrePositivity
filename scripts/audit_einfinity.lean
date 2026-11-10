@@ -14414,7 +14414,7 @@ example (C : RelativeCategory) (X Y Z : C.category) :
         SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Z) =
       (SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
         SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C Y Z)) ≫
-          Functor.LaxMonoidal.μ SerrePositivity.KST.Comparison.exInfinity _ _ ≫
+          Functor.LaxMonoidal.μ SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
             SerrePositivity.KST.Comparison.exInfinity.map (localizationComposition C X Y Z) := by
   exact (kanLocalizationUnit C).map_comp X Y Z
 

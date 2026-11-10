@@ -54,7 +54,7 @@ theorem zeroMiddleNativeUpperFamily_first :
         SSet.yonedaEquiv.symm (coherentNerveEdge
           (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
             fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-              SerrePositivity.KST.Comparison.exInfinity.map
+              _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
                 (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))).edge := by
   have hid : (stdSimplex.δ (2 : Fin 3) : (Δ[1] : SSet.{u + 1}) ⟶ Δ[2]) ≫
       stdSimplex.δ (2 : Fin 4) = stdSimplex.δ (2 : Fin 3) ≫ stdSimplex.δ (3 : Fin 4) :=

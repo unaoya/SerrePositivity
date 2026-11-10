@@ -29,15 +29,15 @@ theorem completionRelativeKanSquare (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     CommSq
-      (exInfinity.map (coreSRealizationFunctor.map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map
         (closedStableInclusion (completionImageClosedPredicate r ι f hf))))
-      (exInfinity.map (Fibration.Relative.closedKernelConstant
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelConstant
         (completionImageClosedPredicate r ι f hf)))
-      (exInfinity.map (Fibration.Relative.closedRelativeConstant
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedRelativeConstant
         (completionImageClosedPredicate r ι f hf)))
-      (exInfinity.map (Fibration.Relative.closedKernelRealizationPost
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost
         (completionImageClosedPredicate r ι f hf))) :=
-  exInfinity.map_commSq
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq
     (Fibration.Relative.closedRelativeSquare (completionImageClosedPredicate r ι f hf)).flip
 
 /-- 概要：全旗自然性の入力下で元の Kan 四角形はホモトピー引き戻し。
@@ -71,7 +71,7 @@ lemma completionRelativeKanComparison_projection (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     completionRelativeKanComparison r ι f hf ≫
-      pullback.fst _ _ = exInfinity.map (coreSRealizationFunctor.map
+      pullback.fst _ _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map
         (closedStableInclusion (completionImageClosedPredicate r ι f hf))) :=
   homotopyPullbackComparison_fst (completionRelativeKanSquare r ι f hf)
 
@@ -86,11 +86,11 @@ lemma completionRelativeKanComparison_piIsomorphism_of_input (r : ℕ)
       (completionImageClosedPredicate r ι f hf)) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (completionRelativeKanComparison r ι f hf) := by
   let P := completionImageClosedPredicate r ι f hf
-  let : KanComplex (exInfinity.obj (coreSRealizationFunctor.obj (closedStableModel P))) :=
-    exInfinity_kanComplex _
-  let : KanComplex (exInfinity.obj
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj (closedStableModel P))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
       (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y))) :=
-    exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact kanPiIsomorphism_of_localized_isIso _
     (completionRelativeKanSquare_homotopyPullback_of_input r ι f hf h)
 

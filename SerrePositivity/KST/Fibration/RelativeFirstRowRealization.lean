@@ -72,7 +72,7 @@ theorem relativeSQuotientRealization_localized_isIso_of_firstRows
 theorem relativeSQuotientKanMap_isQCatEquivalence_of_firstRows
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeFirstRowQuotient q (n + 1)))) :
-    IsQCatEquivalence (exInfinity.map
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q))) :=
   relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages q
     ((relativeSQuotient_positive_stages_iff_firstRows q).mpr hq)

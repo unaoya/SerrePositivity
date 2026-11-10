@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A]
 lemma presentedPerfectDGKanAssemblyCylinderCompletion_kanComplex (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGKanAssemblyCylinderCompletionFunctor A r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ Kan 候補への単位は、基礎単体集合上で単射。 -/
 lemma presentedPerfectDGKanAssemblyCylinderCompletionUnit_mono (r : ℕ)

@@ -27,7 +27,7 @@ def zeroMiddleFullSKanFirstTriangle :=
   coherentNerveCompStruct (C := KanObject.{u})
     (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-        exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))
     (zeroMiddleFullSKanComparison s hZ)
 
 /-- 元の第二短辺と同じ全 S• 比較の厳密合成を保持する実二胞体。 -/
@@ -48,7 +48,7 @@ def zeroMiddleFullSKanHorn : (Λ[3, 2] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} := 
     apply congrArg SSet.yonedaEquiv.symm
     have he : (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
         fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-        exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))) ≫
           zeroMiddleFullSKanComparison s hZ =
             stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)) :=
       zeroMiddleFullSKanComparison_first s hZ

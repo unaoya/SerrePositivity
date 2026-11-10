@@ -31,9 +31,9 @@ private theorem nativeKanEdge_coordinate {A B A' B' : KanObject.{u}}
 
 private theorem nativeCoreFullInclusion_heq {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (h : A = B) :
     HEq (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) ⟶ fullSRealizationKanObject A from
-      exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)))
       (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B) ⟶ fullSRealizationKanObject B from
-        exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))) := by
   cases h
   rfl
 
@@ -48,7 +48,7 @@ theorem verdierUpperControlled_firstEdge_coordinate (d : _root_.SerrePositivity.
       (coherentNerveEdge
         (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
           fullSRealizationKanObject d.left from
-            exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
   have hA := (verdierUpperTriangle_source d).trans (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject d.left_eq)
   exact nativeKanEdge_coordinate
     (congrArg (fun A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} => stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) hA)

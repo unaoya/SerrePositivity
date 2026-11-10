@@ -48,7 +48,7 @@ theorem zeroMiddleFullSKanTransportedTriangle_first :
       SSet.yonedaEquiv.symm (coherentNerveEdge
         (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
           fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-          SerrePositivity.KST.Comparison.exInfinity.map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
             (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))).edge := by
   unfold zeroMiddleFullSKanTransportedTriangle
   erw [← Category.assoc, ← stdSimplex.δ_comp_δ (by decide : (2 : Fin 3) ≤ 2), Category.assoc,

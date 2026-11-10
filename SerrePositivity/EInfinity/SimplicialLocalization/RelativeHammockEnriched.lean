@@ -67,7 +67,7 @@ def relativeKanHammockNerve : kanHammockNerve C ⟶ kanHammockNerve D :=
 方針：定義を読む。
 規約：全 Hom で定義上の一致。使われ方：同じ比較射の弱同値判定。 -/
 lemma relativeKanHammockEnriched_map (X Y : KanHammockCategory C) :
-    (relativeKanHammockEnriched F).map X Y = exInfinity.map (Relative.colimitMap F X Y) := rfl
+    (relativeKanHammockEnriched F).map X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y) := rfl
 
 /-- 概要：全 Hom の弱同値性は元の coherent nerve 比較の充満忠実性を与える。
 方針：同じ Ex∞ の弱同値保存と Kan Whitehead を適用する。
@@ -77,7 +77,7 @@ lemma relativeKanHammockNerve_fullyFaithful
     IsFullyFaithful (relativeKanHammockNerve F) := by
   apply (coherentNerveMap_isFullyFaithful_iff (relativeKanHammockFunctor F)).mpr
   intro X Y
-  change IsQCatEquivalence (exInfinity.map (Relative.colimitMap F X Y))
+  change IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y))
   exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
     (exInfinity_map_weak _ (hF X Y))
 

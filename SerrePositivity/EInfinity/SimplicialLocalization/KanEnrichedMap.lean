@@ -33,32 +33,32 @@ open SerrePositivity.KST.Comparison
 def kanLocalizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
     EnrichedFunctor SSet.{u} (KanLocalizationObjects C) (KanLocalizationObjects D) where
   obj := F.functor.obj
-  map X Y := exInfinity.map (localizationHomMap F X Y)
+  map X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y)
   map_id X := by
-    change (Functor.LaxMonoidal.ε exInfinity ≫ exInfinity.map (localizationIdentity C X)) ≫
-      exInfinity.map (localizationHomMap F X X) =
-        Functor.LaxMonoidal.ε exInfinity ≫
-          exInfinity.map (localizationIdentity D (F.functor.obj X))
+    change (Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity C X)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X X) =
+        Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity D (F.functor.obj X))
     have hi : localizationIdentity C X ≫ localizationHomMap F X X =
         localizationIdentity D (F.functor.obj X) :=
       (localizationEnrichedMap F).map_id (show LocalizationObjects C from X)
-    rw [Category.assoc, ← exInfinity.map_comp, hi]
+    rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, hi]
   map_comp X Y Z := by
-    change (Functor.LaxMonoidal.μ exInfinity _ _ ≫
-        exInfinity.map (localizationComposition C X Y Z)) ≫
-          exInfinity.map (localizationHomMap F X Z) =
-      (exInfinity.map (localizationHomMap F X Y) ⊗ₘ
-        exInfinity.map (localizationHomMap F Y Z)) ≫
-          Functor.LaxMonoidal.μ exInfinity _ _ ≫
-            exInfinity.map (localizationComposition D (F.functor.obj X)
+    change (Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z)) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F Y Z)) ≫
+          Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition D (F.functor.obj X)
               (F.functor.obj Y) (F.functor.obj Z))
     have hc : localizationComposition C X Y Z ≫ localizationHomMap F X Z =
         (localizationHomMap F X Y ⊗ₘ localizationHomMap F Y Z) ≫
           localizationComposition D (F.functor.obj X) (F.functor.obj Y) (F.functor.obj Z) :=
       (localizationEnrichedMap F).map_comp (show LocalizationObjects C from X)
         (show LocalizationObjects C from Y) (show LocalizationObjects C from Z)
-    rw [Category.assoc, ← exInfinity.map_comp, hc,
-      exInfinity.map_comp, ← Category.assoc, ← Functor.LaxMonoidal.μ_natural,
+    rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, hc,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, ← Category.assoc, ← Functor.LaxMonoidal.μ_natural,
       Category.assoc]
 
 /-- 概要：Kan 化した同じ豊穣係数射の基礎関手（Dwyer–Kan）。

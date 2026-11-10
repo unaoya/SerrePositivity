@@ -21,7 +21,7 @@ variable (A : Type u) [CommRing A]
 local instance presentedPerfectDGBFMapBoundary_kanComplex
     (r : ℕ) (X : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj X).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 元の全境界 Kan 射の全基点 π 同型性は、同じ実 BF 射の全段へ移る。 -/
 lemma presentedPerfectDGBFMap_levelwise_of_boundary

@@ -49,8 +49,8 @@ lemma rightFrameHammockKanEdgeEquivalence_hom (i : Fin 6) (Y : AsSmall.{max u v}
 規約：全図式の同じ六辺を使う。使われ方：実 frame→pinched 成分の入力。 -/
 def rightFrameHammockKanComponentEquivalence (Y : C) :
     QCatEquivalence
-      (exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y)))
-      (exInfinity.obj (colimitGraph (weakEquivalences C) X Y)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (weakEquivalences C) X Y)) :=
   (rightFrameHammockKanEdgeEquivalence q r cof 0 (AsSmall.up.obj Y)).trans
     ((rightFrameHammockKanEdgeEquivalence q r cof 1 (AsSmall.up.obj Y)).trans
       ((rightFrameHammockKanEdgeEquivalence q r cof 2 (AsSmall.up.obj Y)).symm.trans
@@ -63,15 +63,15 @@ def rightFrameHammockKanComponentEquivalence (Y : C) :
 規約：元の標的の fibrancy は不要。使われ方：元の Hom への復帰。 -/
 def rightFrameHomExUnitEquivalence (Y : C) :
     QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-      (exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) := by
   have := rightFrameHom_kanComplex r X Y
-  have h : IsWeakHomotopyEquivalence (exInfinityUnit.app
+  have h : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) :=
     AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   have hx := IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
     (A := SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-    (B := exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) h
+    (B := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) h
   exact hx.isQCatEquivalence.choose
 
 /-- 概要：元の right Hom と同じ全モデル圏の hammock pinched Hom の実 QCat 同値。
@@ -88,7 +88,7 @@ def rightFrameHammockPinchedEquivalence (Y : C) :
   let e := (rightFrameHomExUnitEquivalence r Y).trans
     (rightFrameHammockKanComponentEquivalence q r cof Y)
   let b := qCatEquivalenceOfIso
-    (exInfinity.mapIso (AsSmallComparison.colimitIso (weakEquivalences C) X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso (AsSmallComparison.colimitIso (weakEquivalences C) X Y))
   have hp := kanHammockHomPinchedMap_weak (modelRelativeCategory C)
     (modelRelativeObject C X) (modelRelativeObject C Y)
   exact e.trans (b.trans hp.isSimplicialHomotopyEquivalence.isQCatEquivalence.choose)
@@ -98,8 +98,8 @@ def rightFrameHammockPinchedEquivalence (Y : C) :
 規約：元の射と元の局所化頂点。使われ方：全二胞体と零単体の追跡。 -/
 lemma rightFrameHammockPinchedEquivalence_factor (Y : C) :
     (rightFrameHammockPinchedEquivalence q r cof Y).hom =
-      exInfinityUnit.app _ ≫ (rightFrameHammockKanComponentEquivalence q r cof Y).hom ≫
-        exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ (rightFrameHammockKanComponentEquivalence q r cof Y).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
           kanHammockHomPinchedMap (modelRelativeCategory C)
             (modelRelativeObject C X) (modelRelativeObject C Y) := by
   change (_ ≫ _) ≫ (_ ≫ _) = _

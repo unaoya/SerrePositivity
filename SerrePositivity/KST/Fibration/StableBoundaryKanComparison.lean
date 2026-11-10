@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Fibration.StableBoundaryQuotientTransformation
 public import SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity
 public import SerrePositivity.KST.Fibration.CoreEnrichedPrecompose
 public import SerrePositivity.KST.SConstruction.ReducedMultiRealization
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedComparisonIso
 
@@ -46,7 +46,7 @@ theorem stableBoundaryQuotientKanTransformation_app (r : ℕ) (C : _root_.SerreP
     (stableBoundaryQuotientKanTransformation r).app C =
       eHomEquiv SSet (show (stableMultiKanEnrichedFunctor r).obj C ⟶
         (stableBoundaryClosedKanEnrichedFunctor r).obj C from
-          exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C))) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C))) :=
   exInfinityClosedKanEnrichedFunctor_hom
     (boundaryReductionQuotient r (stableCategoryModel C))
 
@@ -62,7 +62,7 @@ theorem stableBoundaryQuotientKanHomotopy_component (r : ℕ) (C : _root_.SerreP
       (coherentNerveVertex C)).edge =
       (coherentNerveEdge (show (stableMultiKanEnrichedFunctor r).obj C ⟶
         (stableBoundaryClosedKanEnrichedFunctor r).obj C from
-          exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C)))).edge := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C)))).edge := by
   rw [stableBoundaryQuotientKanHomotopy, Spectra.StrictEnrichedTransformation.homotopy_component]
   rw [strictSimplicialTransformation_componentHom _ _ _ C _
     (stableBoundaryQuotientKanTransformation_app r C)]
@@ -70,17 +70,17 @@ theorem stableBoundaryQuotientKanHomotopy_component (r : ℕ) (C : _root_.SerreP
 /-- 同じ元の Ex∞ 境界商射は Kan 複体間の実ホモトピー同値である。 -/
 theorem stableBoundaryQuotientKan_isHomotopyEquivalence (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     IsSimplicialHomotopyEquivalence
-      (exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C))) := by
   have hq := boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) r (stableCategoryModel C)
   have hp := kanPiIsomorphism_of_localized_isIso
-    (exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C)))
-    ((exInfinity_map_localized_isIso_iff _).mpr hq)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (boundaryReductionQuotient r (stableCategoryModel C)))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr hq)
   let x : (multiDiagonalCoreSConstruction (r + 1) (stableCategoryModel C)) _⦋0⦌ :=
     Classical.choice
       (multiDiagonalDiagram_zero_isContractibleKan r (stableCategoryModel C)).nonempty
   exact homotopyEquivalence_of_kanPiIsomorphism_of_vertex _ hp
-    ((exInfinityUnit.app _).app (Opposite.op ⦋0⦌) x)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _).app (Opposite.op ⦋0⦌) x)
 
 /-- 同じ元の商射を全成分に持つ、関手 ∞ 圏内の自然同型。 -/
 def stableBoundaryQuotientKanIso (r : ℕ) :

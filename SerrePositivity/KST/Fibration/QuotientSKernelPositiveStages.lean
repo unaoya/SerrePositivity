@@ -26,10 +26,10 @@ variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Stabl
 /-- 正の各段の元の商比較に条件付きで、同じ全実現商射の Ex∞ 像は全写像空間の同値。 -/
 theorem relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
-    IsQCatEquivalence (exInfinity.map
+    IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q))) := by
   apply isQCatEquivalence_of_anodyneQ_isIso
-  exact (exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
 
 /-- 正の各段の元の商比較に条件付きで、同じ全 Ex∞ coherent 核四角形が引き戻し。 -/

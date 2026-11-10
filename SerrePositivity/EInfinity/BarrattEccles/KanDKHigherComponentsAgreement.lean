@@ -34,7 +34,7 @@ lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_unit
     (z : SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-        (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) z) =
       cofibrantAlgebraDKHigherPiZeroEquiv A X Y z := by
   have h := ConcreteCategory.congr_hom (cAlgMappingSpaceComponentsIso_unit A
@@ -49,7 +49,7 @@ lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_eq :
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)
   obtain ⟨t, rfl⟩ := e.surjective z
   change cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-      (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+      (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) t) = _
   rw [cofibrantAlgebraKanDKHigherPiZeroEquiv_unit, cofibrantAlgebraDKHigherPiZeroEquiv_eq]
   change cofibrantAlgebraDKPiZeroEquiv A X Y t =
@@ -65,7 +65,7 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : 
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-        (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
           (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
             ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f))) =

@@ -42,11 +42,11 @@ lemma kanHammock_source_homotopy :
       (eHomEquiv SSet (U.map (𝟙 ((hammockSourceFunctor C).obj X))))
       (eHomEquiv SSet (U.map (a ≫ b))) := by
     change SSet.Homotopy (colimitUnit C.weakEquivalences X ≫
-      exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
       (((λ_ (𝟙_ SSet.{u})).inv ≫
         (arrowMap C.weakEquivalences f ⊗ₘ Hammock.backwardMap f hf) ≫
           colimitComposition C.weakEquivalences X Y X) ≫
-            exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
     exact HomotopyClasses.postHomotopy _ (WeakArrow.sourceCompositeHomotopy f hf)
   have hi : U.map (𝟙 ((hammockSourceFunctor C).obj X)) =
       𝟙 ((kanHammockSourceFunctor C).obj X) := U.map_id _
@@ -69,9 +69,9 @@ lemma kanHammock_target_homotopy :
       (((λ_ (𝟙_ SSet.{u})).inv ≫
         (Hammock.backwardMap f hf ⊗ₘ arrowMap C.weakEquivalences f) ≫
           colimitComposition C.weakEquivalences Y X Y) ≫
-            exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
       (colimitUnit C.weakEquivalences Y ≫
-        exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
     exact HomotopyClasses.postHomotopy _ (WeakArrow.targetCompositeHomotopy f hf)
   have hi : U.map (𝟙 ((hammockSourceFunctor C).obj Y)) =
       𝟙 ((kanHammockSourceFunctor C).obj Y) := U.map_id _

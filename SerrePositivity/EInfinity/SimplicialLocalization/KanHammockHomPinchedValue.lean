@@ -23,7 +23,7 @@ open scoped Simplicial
 variable (C : RelativeCategory.{u}) (X Y : C.category)
 
 lemma kanHammockHomPinchedMap_app_val {n : ℕ}
-    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
     ((kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
       coherentHomComparisonSimplex (show (SimplicialCategory.sHom
         ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)) _⦋n⦌ from s) := by

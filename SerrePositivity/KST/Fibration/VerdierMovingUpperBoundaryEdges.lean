@@ -29,7 +29,7 @@ theorem verdierMovingUpperFamily_firstEdge (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
       SSet.yonedaEquiv.symm (coherentNerveEdge
         (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
           fullSRealizationKanObject d.left from
-            exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
   rw [← familyAtVertex_precomp, verdierMovingUpperFamily_first,
     coherentHomIntervalFamily_vertex, verdierMovingUpperFirstFamily_point]
   change SSet.yonedaEquiv.symm (coherentNerveEdge
@@ -38,7 +38,7 @@ theorem verdierMovingUpperFamily_firstEdge (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
         ((SimplicialCategory.homEquiv' _ _)
           (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
             fullSRealizationKanObject d.left from
-              exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))).edge = _
+              _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))).edge = _
   rw [Equiv.symm_apply_apply]
 
 /-- 概要：始端の第二短辺は元の上側実完全射の全 S• 作用の coherent 辺そのもの。

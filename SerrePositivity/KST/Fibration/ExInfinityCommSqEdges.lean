@@ -18,7 +18,7 @@ namespace SerrePositivity.KST.Fibration
 /-- 元の通常射の Ex∞ 像を、同じ実 Kan 値間の射として読む。 -/
 def exInfinityKanMap {A B : SSet.{u}} (f : A ⟶ B) :
     exInfinityClosedKanEnrichedFunctor.obj ⟨A⟩ ⟶
-      exInfinityClosedKanEnrichedFunctor.obj ⟨B⟩ := exInfinity.map f
+      exInfinityClosedKanEnrichedFunctor.obj ⟨B⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f
 
 variable {P X Y Z : SSet.{u}} {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z}
   (sq : CommSq a b f g)
@@ -27,25 +27,25 @@ variable {P X Y Z : SSet.{u}} {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y �
 theorem exInfinityCommSqInfinitySquare_right :
     squareRightEdge ≫ exInfinityCommSqInfinitySquare sq =
       SSet.yonedaEquiv.symm (coherentNerveEdge (exInfinityKanMap g)).edge :=
-  kanCommSqInfinitySquare_right (exInfinity.map_commSq sq)
+  kanCommSqInfinitySquare_right (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
 
 /-- 元の上辺 f を同じ Ex∞ 射として厳密に回収する。 -/
 theorem exInfinityCommSqInfinitySquare_top :
     squareTopEdge ≫ exInfinityCommSqInfinitySquare sq =
       SSet.yonedaEquiv.symm (coherentNerveEdge (exInfinityKanMap f)).edge :=
-  kanCommSqInfinitySquare_top (exInfinity.map_commSq sq)
+  kanCommSqInfinitySquare_top (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
 
 /-- 元の下辺 b を同じ Ex∞ 射として厳密に回収する。 -/
 theorem exInfinityCommSqInfinitySquare_bottom :
     squareBottomEdge ≫ exInfinityCommSqInfinitySquare sq =
       SSet.yonedaEquiv.symm (coherentNerveEdge (exInfinityKanMap b)).edge :=
-  kanCommSqInfinitySquare_bottom (exInfinity.map_commSq sq)
+  kanCommSqInfinitySquare_bottom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
 
 /-- 元の左辺 a を同じ Ex∞ 射として厳密に回収する。 -/
 theorem exInfinityCommSqInfinitySquare_left :
     squareLeftEdge ≫ exInfinityCommSqInfinitySquare sq =
       SSet.yonedaEquiv.symm (coherentNerveEdge (exInfinityKanMap a)).edge :=
-  kanCommSqInfinitySquare_left (exInfinity.map_commSq sq)
+  kanCommSqInfinitySquare_left (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
 
 /-- 同じ元の四角形の頂点を、元の Ex∞ Kan 値として回収する。 -/
 theorem exInfinityCommSqInfinitySquare_apex :

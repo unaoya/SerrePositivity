@@ -30,7 +30,7 @@ def kanHammockSourceFunctor : C.category ⥤ KanHammockCategory C :=
 lemma kanHammockSourceFunctor_homTo {X Y : C.category} (f : X ⟶ Y) :
     ForgetEnrichment.homTo SSet.{u} ((kanHammockSourceFunctor C).map f) =
       arrowMap C.weakEquivalences f ≫
-        exInfinityUnit.app (colimitGraph C.weakEquivalences X Y) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences X Y) := by
   change ForgetEnrichment.homTo SSet.{u}
     (ForgetEnrichment.homOf SSet.{u} (ForgetEnrichment.homTo SSet.{u}
       ((hammockSourceFunctor C).map f) ≫

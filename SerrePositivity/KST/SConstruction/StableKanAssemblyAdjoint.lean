@@ -20,7 +20,7 @@ open Spectra
 規約：追加 instance 仮定なし。使われ方：元の右随伴の Ω 条件。 -/
 instance stableKanAssemblyTarget_kanComplex (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     KanComplex (((stableKanAssemblyTargetFunctor r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 概要：同じ元の右脚を同じ実 Kan 対象間の随伴にする。
 方針：元の suspension-loop 随伴を適用する。

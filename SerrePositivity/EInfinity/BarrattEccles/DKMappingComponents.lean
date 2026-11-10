@@ -86,7 +86,7 @@ def cofibrantAlgebraKanDKPiZeroEquiv (X Y : CofibrantAlgebra A) :
 使われ方：実際の CAlg_R の Kan Hom の零次の正規化。 -/
 lemma cofibrantAlgebraKanDKPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKPiZeroEquiv A X Y
-        (SSet.mapπ₀ (SerrePositivity.KST.Comparison.exInfinityUnit.app
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
           (localizationHom (cofibrantAlgebraRelativeCategory A)
             (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
           (localizationArrowClass (cofibrantAlgebraRelativeCategory A)

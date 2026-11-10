@@ -71,7 +71,7 @@ def modelBifibrantSourceRoofProductPinchedReferenceMap :
     nerve (modelBifibrantSourceRoofProductElements X Y q b) ⟶
       pinchedHom (modelBifibrantHammockVertex
         (modelBifibrantSourceRoofDegreeObject X Y q b)) (modelBifibrantHammockVertex Y) :=
-  modelBifibrantSourceRoofProductDegreeHammockMap X Y q b ≫ exInfinityUnit.app _ ≫
+  modelBifibrantSourceRoofProductDegreeHammockMap X Y q b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
     kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
       (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
       (modelBifibrantObject C Y)
@@ -109,12 +109,12 @@ include r in
 規約：元の全基準族を保持。使われ方：実 roof の全 slice の弱可縮性。 -/
 lemma modelBifibrantSourceRoofProductPinchedReferenceMap_weak :
     IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductPinchedReferenceMap X Y q b) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
+  have hu : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
         (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
         (modelBifibrantObject C Y))) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (modelBifibrantSourceRoofProductDegreeHammockMap_weak X Y q b r).comp
     (hu.comp (kanHammockHomPinchedMap_weak (modelBifibrantRelativeCategory C)
       (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))

@@ -32,7 +32,7 @@ theorem verdierMovingUpperFamily_source :
       (coherentNerveEdge
         (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
           fullSRealizationKanObject d.left from
-            exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
     apply SSet.yonedaEquiv.symm.injective
     rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
     exact verdierMovingUpperFamily_firstEdge d ℓ k

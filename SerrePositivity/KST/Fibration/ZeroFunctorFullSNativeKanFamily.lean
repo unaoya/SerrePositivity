@@ -42,7 +42,7 @@ theorem zeroFunctorFullSNativeKanFamily_core (A C : _root_.SerrePositivity.Infin
     (fullSRealizationKanObject A).obj from fullSNativeCoreInclusion A) ▷ _) ≫
     (uncurry (zeroFunctorFullSKanFamily A C) ≫ (coreSingleKanIso C).hom) = _
   erw [fullSNativeCoreInclusion, comp_whiskerRight, Category.assoc,
-    ← Category.assoc (exInfinity.map (coreSFullRealizationInclusion A) ▷ _), hc]
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion A) ▷ _), hc]
   conv_lhs => erw [stableCoreSingleKanFamily_coordinates (zeroFunctorLocusToStableHom A C)]
   have hA : (show ((stableMultiKanEnrichedFunctor 0).obj A).obj ⟶
       (stableCoreSingleKanObject A).obj from (coreSingleKanIso A).inv) ≫
@@ -61,7 +61,7 @@ theorem zeroFunctorFullSNativeKanFamily_core (A C : _root_.SerrePositivity.Infin
 theorem zeroFunctorFullSNativeKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSNativeKanFamily A C =
-      curry' (exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
+      curry' (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
         (show (stableCoreSingleKanObject C).obj ⟶ ((stableMultiKanEnrichedFunctor 0).obj C).obj from
           (coreSingleKanIso C).hom)) := by
   rw [zeroFunctorFullSNativeKanFamily, ← Category.assoc, zeroFunctorFullSKanFamily_fixed]

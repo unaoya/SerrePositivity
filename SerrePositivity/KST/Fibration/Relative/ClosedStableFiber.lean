@@ -102,12 +102,12 @@ theorem closedRelativeFiberIso_projection {B : StableModel.{u}} (P : ClosedStabl
 def closedRelativeNullhomotopy {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     SSet.Homotopy
       (stdSimplex.isTerminalObj₀.from (coreSRealizationFunctor.obj (closedStableModel P)) ≫
-        closedRelativeBasepoint P ≫ exInfinityUnit.app (closedRelativeRealization P))
+        closedRelativeBasepoint P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedRelativeRealization P))
       (coreSRealizationFunctor.map (closedStableInclusion P) ≫ closedRelativeConstant P ≫
-        exInfinityUnit.app (closedRelativeRealization P)) := by
-  let : KanComplex (exInfinity.obj (closedRelativeRealization P)) := exInfinity_kanComplex _
-  let g : closedKernelRealization P ⟶ exInfinity.obj (closedRelativeRealization P) :=
-    closedKernelRealizationPost P ≫ exInfinityUnit.app (closedRelativeRealization P)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedRelativeRealization P)) := by
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (closedRelativeRealization P)) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
+  let g : closedKernelRealization P ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (closedRelativeRealization P) :=
+    closedKernelRealizationPost P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedRelativeRealization P)
   let H : SSet.Homotopy
       (stdSimplex.isTerminalObj₀.from (closedKernelRealization P) ≫ closedKernelZeroFlag P ≫ g)
       g := Classical.choice (specifiedPoint_map_homotopy (closedKernelZeroFlag P) g

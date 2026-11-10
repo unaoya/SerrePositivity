@@ -35,8 +35,8 @@ lemma kanLocalizationEnrichedMap_id (C : RelativeCategory.{u}) :
   refine EnrichedFunctor.ext SSet (F := kanLocalizationEnrichedMap (𝟙 C))
     (G := EnrichedFunctor.id SSet (KanLocalizationObjects C)) (fun _ => rfl) ?_
   intro X Y
-  change exInfinity.map (localizationHomMap (𝟙 C) X Y) ≫ 𝟙 _ = 𝟙 _
-  rw [Category.comp_id, localizationHomMap_id, exInfinity.map_id]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap (𝟙 C) X Y) ≫ 𝟙 _ = 𝟙 _
+  rw [Category.comp_id, localizationHomMap_id, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_id]
 
 /-- 概要：相対関手の合成は Kan 化した豊穣係数射の合成を誘導する（Dwyer–Kan）。
 方針：元の Hom の合成則と Ex∞ の合成則を使う。
@@ -50,10 +50,10 @@ lemma kanLocalizationEnrichedMap_comp {C D E : RelativeCategory.{u}}
     (G := (kanLocalizationEnrichedMap F).comp SSet (kanLocalizationEnrichedMap G))
     (fun _ => rfl) ?_
   intro X Y
-  change exInfinity.map (localizationHomMap (F ≫ G) X Y) ≫ 𝟙 _ =
-    exInfinity.map (localizationHomMap F X Y) ≫
-      exInfinity.map (localizationHomMap G (F.functor.obj X) (F.functor.obj Y))
-  rw [Category.comp_id, localizationHomMap_comp, exInfinity.map_comp]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap (F ≫ G) X Y) ≫ 𝟙 _ =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap G (F.functor.obj X) (F.functor.obj Y))
+  rw [Category.comp_id, localizationHomMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp]
 
 /-- 概要：Kan 化の同じ Hom 単位は相対係数射に自然（Dwyer–Kan）。
 方針：実際の Ex∞ の単位の自然性を同じ固定 Hom 写像へ適用する。
@@ -62,9 +62,9 @@ lemma kanLocalizationEnrichedMap_comp {C D E : RelativeCategory.{u}}
 lemma localizationHomKanUnit_naturality {C D : RelativeCategory.{u}} (F : C ⟶ D)
     (X Y : C.category) :
     localizationHomMap F X Y ≫
-        exInfinityUnit.app (localizationHom D (F.functor.obj X) (F.functor.obj Y)) =
-      exInfinityUnit.app (localizationHom C X Y) ≫
-        exInfinity.map (localizationHomMap F X Y) :=
-  exInfinityUnit.naturality (localizationHomMap F X Y)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom D (F.functor.obj X) (F.functor.obj Y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (localizationHomMap F X Y)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

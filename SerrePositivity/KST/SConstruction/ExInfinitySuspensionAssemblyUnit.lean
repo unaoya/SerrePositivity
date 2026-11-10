@@ -21,6 +21,6 @@ lemma exInfinitySuspensionAssembly_unit {X Y : PointedSSetObject.{u}}
     (show (pointedSSetSuspensionObject X).obj ⟶ Y.obj from f) ≫
       exInfinityPointedUnit Y := by
   rw [← Category.assoc, exInfinitySuspensionComparison_unit]
-  exact coaugmentedPointedUnit_naturality Comparison.exInfinity Comparison.exInfinityUnit f
+  exact coaugmentedPointedUnit_naturality _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit f
 
 end SerrePositivity.KST.SConstruction

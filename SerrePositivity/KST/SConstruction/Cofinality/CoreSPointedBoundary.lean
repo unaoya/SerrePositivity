@@ -69,7 +69,7 @@ lemma coreSExInfinityBoundary_piIsomorphism (X : StableModel.{u})
       (Y := ⟨(boundaryReducedRealizationFunctor 0).obj X⟩)
       (coreSVertexBoundary X x)).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  exact (exInfinity_map_localized_isIso_iff (boundaryReductionQuotient 0 X)).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff (boundaryReductionQuotient 0 X)).mpr
     (boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
       (Localization.inverts _ anodyneExtensions) 0 X)
 

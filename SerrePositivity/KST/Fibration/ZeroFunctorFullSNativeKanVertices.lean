@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 def zeroFunctorFullSNativeKanMap {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
     (hF : IsZeroVertex (functorVertex F.hom)) :
     fullSRealizationKanObject A ⟶ (stableMultiKanEnrichedFunctor 0).obj C :=
-  exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)) ≫
     (coreSingleKanIso C).hom
 
 /-- 全 native 族の指定実点は、同じ完全関手の全 S• 実射を表す。 -/

@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComponent
 public import SerrePositivity.KST.SConstruction.OneDirectionWeakComparison
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 
 /-!
 概要：元の S₁ 商比較を同じ Ex∞ に移し、全図式の点つき同型を得る。
@@ -56,9 +56,9 @@ lemma stableOneDirectionKanComparison_app (r : ℕ) (C : _root_.SerrePositivity.
 lemma stableOneDirectionKanComparisonMap_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (stableOneDirectionKanComparisonMap r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map
+  change IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
     (oneDirectionReducedComparison r (stableCategoryModel C)).right))
-  exact (Comparison.exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (oneDirectionReducedComparison_localized_isIso r (stableCategoryModel C))
 
 /-- 概要：同じ S₁ 比較は全図式を保つ点つき Kan 関手同型。

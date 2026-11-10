@@ -38,24 +38,24 @@ lemma rightFrameHammockPinchedEquivalence_unit_arrow_Q :
         (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
       (arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
           (modelRelativeObject C X) (modelRelativeObject C Y)) := by
   have h := congrArg (arrowMap (weakEquivalences C) f ≫ ·)
-    (exInfinityUnit.naturality (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom)
   simp only [Functor.id_map] at h
-  have ha : arrowMap (weakEquivalences C) f ≫ exInfinityUnit.app _ ≫
-      exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
+  have ha : arrowMap (weakEquivalences C) f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
       arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := by
     change arrowMap (weakEquivalences C) f ≫
-      exInfinityUnit.app (colimitGraph (weakEquivalences C) X Y) ≫
-        exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph (weakEquivalences C) X Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
       arrowMap (AsSmallComparison.weak (weakEquivalences C)) (AsSmall.up.map f) ≫
-        exInfinityUnit.app (colimitGraph (AsSmallComparison.weak (weakEquivalences C))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph (AsSmallComparison.weak (weakEquivalences C))
           (AsSmall.up.obj X) (AsSmall.up.obj Y))
     exact h.symm.trans (by
       simpa only [Category.assoc] using congrArg
-        (fun a => a ≫ exInfinityUnit.app
+        (fun a => a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
           (colimitGraph (AsSmallComparison.weak (weakEquivalences C))
             (AsSmall.up.obj X) (AsSmall.up.obj Y)))
         (AsSmallComparison.arrowMap_colimitIso (weakEquivalences C) f))
@@ -83,7 +83,7 @@ lemma rightFrameSpecifiedPinchedEquivalence_unit_Q :
         (rightFrameSpecifiedPinchedEquivalence q r cof G hG hH K e Y).hom) =
     AnodyneHomotopy.anodyneQ.map
       (arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
           (modelRelativeObject C X) (modelRelativeObject C Y) ≫
             ((rightFrameSpecifiedLocalizationData G hG hH K e).pinchedEquivalence
               (nerveVertex (modelRelativeObject C X))

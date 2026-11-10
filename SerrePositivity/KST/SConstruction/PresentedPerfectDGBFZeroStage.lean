@@ -26,7 +26,7 @@ def presentedPerfectDGBFBaseFunctor :
 /-- 同じ元の B₀ の基礎単体集合は Ex∞ Kan 複体。 -/
 instance presentedPerfectDGBFBase_kanComplex (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBaseFunctor A).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- BF の零段は、同じ元の B₀ の loop 対象 ΩB₀。 -/
 def presentedPerfectDGBFZeroFunctor :
@@ -76,7 +76,7 @@ def presentedPerfectDGBFZeroEvaluationTransformation :
 lemma presentedPerfectDGBFZero_kanComplex (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFZeroFunctor A).obj C).obj).right := by
   let _ : KanComplex (((presentedPerfectDGBFBaseFunctor A).obj C).obj).right :=
-    Comparison.exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact loopSpace_kanComplex _
 
 end SerrePositivity.KST.SConstruction

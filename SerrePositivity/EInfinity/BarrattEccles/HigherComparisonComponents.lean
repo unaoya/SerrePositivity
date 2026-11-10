@@ -61,7 +61,7 @@ def cAlgMappingSpaceComponentsIso (X Y : CAlgSimplicialCategory A) :
   AnodyneComponents.iso (cAlgMappingSpaceComparisonIso A X Y)
 
 lemma cAlgMappingSpaceComponentsIso_unit (X Y : CAlgSimplicialCategory A) :
-    SSet.π₀Functor.map (exInfinityUnit.app
+    SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
         (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom := by

@@ -27,7 +27,7 @@ local instance nativeFiniteStepKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I)
 
 local instance nativeFiniteBoundaryKan (n : ℕ) (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex (((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I n).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 local instance nativeFiniteStepLoopKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex ((ihom PointedSimplicialSet.circle.{max (u + 1) v}).obj
@@ -35,10 +35,10 @@ local instance nativeFiniteStepLoopKan (C : DGKappaNativeBFFiniteInput.{u, v} R 
   loopSpace_kanComplex _
 
 local instance nativeFiniteAssemblySourceKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    KanComplex (((coaugmentedPointedEnrichedFunctor Comparison.exInfinity
-      Comparison.exInfinityUnit).obj ((stableOneDirectionPointedEnrichedFunctor r).obj
+    KanComplex (((coaugmentedPointedEnrichedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj ((stableOneDirectionPointedEnrichedFunctor r).obj
         ((dgKappaNativeBFFiniteInclusion.{u, v} R D I).obj C))).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 local instance nativeFiniteBoundaryLoopKan (n : ℕ)
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :

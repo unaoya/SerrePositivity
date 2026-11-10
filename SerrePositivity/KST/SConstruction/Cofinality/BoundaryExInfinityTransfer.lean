@@ -22,11 +22,11 @@ open scoped Simplicial
 規約：入力は元の実現射の全基点条件で、出力も同じ元の境界射。
 使われ方：元の境界 Kan 射の零次 K・正次数 K の条件。 -/
 lemma boundaryExInfinity_groupConditions_of_coreS {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (h : ∀ a : (exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
-      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (exInfinity.map (coreSRealizationFunctor.map f))
+    (h : ∀ a : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
+      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f))
         (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
+        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
     Function.Injective (pointedHomotopyMap 1 (exInfinityPointedKanMap
       (X := ⟨(boundaryReducedRealizationFunctor 0).obj X⟩)
       (Y := ⟨(boundaryReducedRealizationFunctor 0).obj Y⟩)
@@ -71,9 +71,9 @@ lemma boundaryExInfinity_groupConditions_of_coreS {X Y : StableModel.{u}} (f : X
       rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint α) ((h A.basepoint).2 n hn)
   have hs : α ≫ j = i ≫ β := by
     apply Under.UnderMorphism.ext
-    exact (exInfinity.map_comp _ _).symm.trans
-      ((congrArg exInfinity.map (congrArg Under.Hom.right
-        (coreSVertexBoundary_naturality f x))).trans (exInfinity.map_comp _ _))
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp _ _).symm.trans
+      ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (congrArg Under.Hom.right
+        (coreSVertexBoundary_naturality f x))).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp _ _))
   have hm (n : ℕ) : (pointedHomotopyMap n β) ∘ (pointedHomotopyMap n i) =
       (pointedHomotopyMap n j) ∘ (pointedHomotopyMap n α) := by
     funext a

@@ -44,11 +44,11 @@ lemma freeProbeRelativeElementRoofMap_weak :
 規約：元の全族と両頂点を保持。使われ方：標準単位比較の全族判定。 -/
 lemma freeProbeRelativeElementPinchedMap_weak :
     IsWeakHomotopyEquivalence (freeProbeRelativeElementPinchedMap A X B) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
+  have hu : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B))) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (freeProbeRelativeElementRoofMap_weak A X B).comp
     (hu.comp ((kanHammockHomPinchedMap_weak _ _ _).comp
       (((kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).isFullyFaithful

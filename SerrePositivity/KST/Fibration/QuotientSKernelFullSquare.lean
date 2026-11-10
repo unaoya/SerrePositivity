@@ -46,27 +46,27 @@ def quotientSKernelFullInfinitySquare :
 def quotientSKernelCornerFullSKanIso :
     exInfinityClosedKanEnrichedFunctor.obj ⟨simplicialDiagonalFunctor.obj
       (relativeSimplicialSConstruction (i.hom ≫ q.hom))⟩ ≅ fullSRealizationKanObject A where
-  hom := exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom)
-  inv := exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).inv)
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom)
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).inv)
   hom_inv_id := by
-    change exInfinity.map _ ≫ exInfinity.map _ = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = 𝟙 _
     rw [← Functor.map_comp, ← Functor.map_comp, Iso.hom_inv_id]
     simp only [CategoryTheory.Functor.map_id]
   inv_hom_id := by
-    change exInfinity.map _ ≫ exInfinity.map _ = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = 𝟙 _
     rw [← Functor.map_comp, ← Functor.map_comp, Iso.inv_hom_id]
-    change exInfinity.map (simplicialDiagonalFunctor.map (𝟙 (simplicialSConstruction A.obj))) =
-      𝟙 (exInfinity.obj (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)))
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (𝟙 (simplicialSConstruction A.obj))) =
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)))
     rw [CategoryTheory.Functor.map_id simplicialDiagonalFunctor]
-    exact CategoryTheory.Functor.map_id exInfinity _
+    exact CategoryTheory.Functor.map_id _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _
 
 /-- 同じ零角同型と元の商核左辺の合成は、同じ元の full S• core 包含に厳密一致。 -/
 theorem quotientSKernelCornerFullSKanIso_left :
     exInfinityKanMap (simplicialDiagonalFunctor.map
       (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom))) ≫
         (quotientSKernelCornerFullSKanIso h).hom =
-      exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _
   rw [← Functor.map_comp, relativeSKernelSimplicialIso_realization_core]
 
 /-- 同じ零角同型と元の全 S• 零値作用の合成は、元の商核上辺に厳密一致。 -/
@@ -77,7 +77,7 @@ theorem quotientSKernelCornerFullSKanIso_top :
         (verdierSequenceComposite_zero h))) =
       exInfinityKanMap (simplicialDiagonalFunctor.map
         (relativeSimplicialFunctorMap i q.hom ≫ relativeSimplicialQuotientMap q)) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _
   rw [← Functor.map_comp, ← Functor.map_comp, ← quotientSKernelTop_zeroFunctorFullSMap]
   rfl
 

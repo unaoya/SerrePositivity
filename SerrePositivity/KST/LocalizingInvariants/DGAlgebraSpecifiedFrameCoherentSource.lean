@@ -33,9 +33,9 @@ def nativeCellFrameInitialKanFunctor : InfinityPresentation R ⥤ KanObject.{u +
 def nativeCellFrameInitialUnit :
     nativeCellChosenRightInfinityKanFunctor R A ⋙ kanObjectForget ⟶
       nativeCellFrameInitialKanFunctor R A ⋙ kanObjectForget where
-  app B := SerrePositivity.KST.Comparison.exInfinityUnit.app
+  app B := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
     (((nativeCellChosenRightInfinityKanFunctor R A).obj B).obj)
-  naturality _ _ f := SerrePositivity.KST.Comparison.exInfinityUnit.naturality
+  naturality _ _ f := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality
     ((nativeCellChosenRightInfinityKanFunctor R A).map f)
 
 /-- 同じ全自然な単位の各成分は実 right Hom の Kan 性による同値。 -/

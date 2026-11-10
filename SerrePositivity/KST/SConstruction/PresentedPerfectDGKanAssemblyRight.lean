@@ -59,7 +59,7 @@ lemma presentedPerfectDGKanAssemblyRightMap_right (r : ℕ) (C : PerfDGInput.{u,
         presentedPerfectDGKanAssemblyRightMap A r C).right =
     (exInfinitySuspensionComparison
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C)).right ≫
-      Comparison.exInfinity.map
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
         (oneDirectionSuspensionAssembly r
           (stableCategoryModel (presentedPerfectDGStableCategory A C))).right := rfl
 

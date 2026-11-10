@@ -26,7 +26,7 @@ local instance presentedPerfectDGBFSOAComparisonLevel_kanComplex
 local instance presentedPerfectDGBFSOAComparisonBoundary_kanComplex
     (r : ℕ) (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ元の境界商の SOA Kan 値から、その Ex∞ Kan 値への比較。 -/
 def presentedPerfectDGBFBoundarySOAComparison (r : ℕ) (C : PerfDGInput.{u, v} A) :

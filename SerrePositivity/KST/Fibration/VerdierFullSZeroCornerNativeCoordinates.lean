@@ -25,7 +25,7 @@ namespace SerrePositivity.KST.Fibration
 /-- 元の native core S(A) 座標から、同じ全 S(A) の実 Kan 値への実包含。 -/
 def fullSNativeCoreInclusion (A : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableMultiKanEnrichedFunctor 0).obj A ⟶ fullSRealizationKanObject A :=
-  (coreSingleKanIso A).inv ≫ exInfinity.map (coreSFullRealizationInclusion A)
+  (coreSingleKanIso A).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion A)
 
 /-- 元の native 零角座標を標的にする、同じ指定左辺の全 S• 比較。 -/
 def verdierFullSZeroCornerNativeKanMap (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
@@ -44,11 +44,11 @@ theorem verdierFullSZeroCornerNativeKanMap_left (d : _root_.SerrePositivity.Infi
       (show (stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
         (stableMultiKanEnrichedFunctor 0).obj
           (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) from
-        exInfinity.map ((multiRealizationFunctor 1).map
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map
           (stableExactInputMap (verdierLeftExactMap d)))) := by
   rw [fullSNativeCoreInclusion, verdierFullSZeroCornerNativeKanMap]
   simp only [Category.assoc]
-  erw [← Category.assoc (exInfinity.map (coreSFullRealizationInclusion
+  erw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion
       (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))),
     verdierFullSZeroCornerKanMap_left]
   erw [coreSingleKanIso_naturality (verdierLeftExactMap d)]
@@ -60,11 +60,11 @@ theorem verdierFullSZeroCornerNativeKanMap_top (d : _root_.SerrePositivity.Infin
         (show (stableMultiKanEnrichedFunctor 0).obj
           (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) ⟶
             (stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
-          exInfinity.map ((multiRealizationFunctor 1).map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map
             (stableExactInputMap (verdierTopExactMap d)))) =
       (show fullSRealizationKanObject d.left ⟶
         (stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
-          exInfinity.map (simplicialDiagonalFunctor.map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
             (zeroFunctorFullSMap (verdierNullCompositeOriginalMap d 0)
               (verdierUpperComposite_zero d))) ≫
               (coreSingleKanIso (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).hom) := by
@@ -84,7 +84,7 @@ theorem verdierFullSZeroCornerNativeKanMap_isInvertible (d : _root_.SerrePositiv
       inv_hom_id := (coreSingleKanIso Z).inv_hom_id }
   have he : IsQCatEquivalence (verdierFullSZeroCornerKanMap d) := by
     apply isQCatEquivalence_of_anodyneQ_isIso
-    exact (exInfinity_map_localized_isIso_iff _).mpr
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
       (zeroFunctorFullSMap_localized_isIso _ _ d.zero_corner)
   exact coherentKanEdge_isInvertible_of_isQCatEquivalence
     (he.comp (qCatEquivalenceOfIso E).isQCatEquivalence)

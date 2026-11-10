@@ -29,7 +29,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaNativeFamilyMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-      exInfinity.obj (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
         (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
         (modelBifibrantObject C Y)) :=
   RoofPrefix.familyMap (modelBifibrantRelativeCategory C)
@@ -44,7 +44,7 @@ def modelBifibrantSourceRoofProductCommaNativeFamilyMap :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativeFamilyMap_eq :
     modelBifibrantSourceRoofProductCommaNativeFamilyMap X Y q b =
-    modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ exInfinityUnit.app _ := rfl
+    modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := rfl
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。

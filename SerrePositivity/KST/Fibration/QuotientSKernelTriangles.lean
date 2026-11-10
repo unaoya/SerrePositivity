@@ -28,7 +28,7 @@ theorem quotientSKernelInfinitySquare_lower :
       SSet.yonedaEquiv.symm (coherentNerveCompStruct
         (exInfinityKanMap (simplicialDiagonalFunctor.map (coreSExactMap i)))
         (exInfinityKanMap (simplicialDiagonalFunctor.map (coreSExactMap q)))).simplex :=
-  kanCommSqInfinitySquare_lower_compStruct (exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
+  kanCommSqInfinitySquare_lower_compStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
 
 /-- 元の商核の上側全二胞体は、同じ相対核包含と元の零合成像の標準合成二胞体。 -/
 theorem quotientSKernelInfinitySquare_upper :
@@ -38,7 +38,7 @@ theorem quotientSKernelInfinitySquare_upper :
           (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom))))
         (exInfinityKanMap (simplicialDiagonalFunctor.map
           (relativeSimplicialFunctorMap i q.hom ≫ relativeSimplicialQuotientMap q)))).simplex :=
-  kanCommSqInfinitySquare_upper_compStruct (exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
+  kanCommSqInfinitySquare_upper_compStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
 
 /-- 元の商核の共有対角は、同じ元の包含・商の Ex∞ 射の実合成の全一単体。 -/
 theorem quotientSKernelInfinitySquare_diagonal :

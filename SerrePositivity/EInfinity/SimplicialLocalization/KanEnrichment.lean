@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
-public import SerrePositivity.KST.Comparison.ExInfinityMonoidal
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal
 
 /-!
 # Ex∞ による単体的局所化の Hom の Kan 化
@@ -31,7 +31,7 @@ open SerrePositivity.KST.Comparison
 規約：対象を変更せず、Hom だけを同じ functor で移す。
 使われ方：Kan な単体的局所化の構成。 -/
 abbrev KanLocalizationObjects (C : RelativeCategory.{u}) :=
-  TransportEnrichment exInfinity.{u} (LocalizationObjects C)
+  TransportEnrichment _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.{u} (LocalizationObjects C)
 
 /-- 概要：Kan 化した Hom を持つ標準的な基礎の単体的圏（Dwyer–Kan）。
 方針：移した豊穣構造へ ForgetEnrichment を適用する。
@@ -45,7 +45,7 @@ abbrev KanLocalizationCategory (C : RelativeCategory.{u}) :=
 規約：元の Hom の全単体を Ex∞ の単位で比較する。
 使われ方：Kan 性と Hom の比較の照合。 -/
 lemma kanLocalizationCategory_sHom (C : RelativeCategory.{u}) (X Y : KanLocalizationCategory C) :
-    SimplicialCategory.sHom X Y = exInfinity.obj (localizationHom C X Y) := rfl
+    SimplicialCategory.sHom X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (localizationHom C X Y) := rfl
 
 /-- 概要：Kan 化した単体的局所化の全 Hom は Kan 複体（Dwyer–Kan）。
 方針：実際の Ex∞ の Kan 性を使う。
@@ -53,7 +53,7 @@ lemma kanLocalizationCategory_sHom (C : RelativeCategory.{u}) (X Y : KanLocaliza
 使われ方：coherent nerve の quasicategory 性。 -/
 instance kanLocalizationHom_kanComplex (C : RelativeCategory.{u})
     (X Y : KanLocalizationCategory C) : SSet.KanComplex (SimplicialCategory.sHom X Y) := by
-  change SSet.KanComplex (exInfinity.obj (localizationHom C X Y))
+  change SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (localizationHom C X Y))
   infer_instance
 
 /-- 概要：元の局所化 Hom から Kan 化した Hom への同じ anodyne 比較（Dwyer–Kan）。
@@ -61,8 +61,8 @@ instance kanLocalizationHom_kanComplex (C : RelativeCategory.{u})
 規約：新しい弱同値や写像空間を選ばない。
 使われ方：単体的局所化と元の Hom のホモトピー型の比較。 -/
 lemma localizationHomKanUnit_anodyne (C : RelativeCategory.{u}) (X Y : C.category) :
-    SSet.anodyneExtensions (exInfinityUnit.app (localizationHom C X Y)) :=
-  exInfinityUnit_anodyne _
+    SSet.anodyneExtensions (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _
 
 /-- 概要：Ex∞ の同じ単位は厳密な豊穣関手を与える（Dwyer–Kan）。
 方針：元の単位の自然性・monoidal な単位則と合成則を使う。
@@ -71,29 +71,29 @@ lemma localizationHomKanUnit_anodyne (C : RelativeCategory.{u}) (X Y : C.categor
 def kanLocalizationUnit (C : RelativeCategory.{u}) :
     EnrichedFunctor SSet.{u} (LocalizationObjects C) (KanLocalizationObjects C) where
   obj X := X
-  map X Y := exInfinityUnit.app (localizationHom C X Y)
+  map X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y)
   map_id X := by
-    change localizationIdentity C X ≫ exInfinityUnit.app (localizationHom C X X) =
-      Functor.LaxMonoidal.ε exInfinity ≫ exInfinity.map (localizationIdentity C X)
-    have h := exInfinityUnit.naturality (localizationIdentity C X)
-    have hu : exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε exInfinity := by
-      simpa using (NatTrans.IsMonoidal.unit (τ := exInfinityUnit.{u}))
-    exact h.trans (congrArg (fun z => z ≫ exInfinity.map (localizationIdentity C X)) hu)
+    change localizationIdentity C X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X X) =
+      Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity C X)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (localizationIdentity C X)
+    have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity := by
+      simpa using (NatTrans.IsMonoidal.unit (τ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.{u}))
+    exact h.trans (congrArg (fun z => z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity C X)) hu)
   map_comp X Y Z := by
-    change localizationComposition C X Y Z ≫ exInfinityUnit.app (localizationHom C X Z) =
-      (exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
-        exInfinityUnit.app (localizationHom C Y Z)) ≫
-          Functor.LaxMonoidal.μ exInfinity _ _ ≫
-            exInfinity.map (localizationComposition C X Y Z)
-    have h := exInfinityUnit.naturality (localizationComposition C X Y Z)
-    have hμ : exInfinityUnit.app (localizationHom C X Y ⊗ localizationHom C Y Z) =
-        (exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
-          exInfinityUnit.app (localizationHom C Y Z)) ≫
-            Functor.LaxMonoidal.μ exInfinity _ _ := by
-      simpa using (NatTrans.IsMonoidal.tensor (τ := exInfinityUnit.{u})
+    change localizationComposition C X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)) ≫
+          Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (localizationComposition C X Y Z)
+    have hμ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y ⊗ localizationHom C Y Z) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)) ≫
+            Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ := by
+      simpa using (NatTrans.IsMonoidal.tensor (τ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.{u})
         (X := localizationHom C X Y) (Y := localizationHom C Y Z))
     exact h.trans ((congrArg (fun z => z ≫
-      exInfinity.map (localizationComposition C X Y Z)) hμ).trans (Category.assoc _ _ _))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z)) hμ).trans (Category.assoc _ _ _))
 
 /-- 概要：同じ豊穣単位は基礎の単体的圏の関手を与える（Dwyer–Kan）。
 方針：構成済みの豊穣関手を ForgetEnrichment で送る。

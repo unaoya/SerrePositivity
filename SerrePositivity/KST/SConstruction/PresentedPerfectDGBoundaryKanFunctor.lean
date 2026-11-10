@@ -29,7 +29,7 @@ lemma presentedPerfectDGBoundaryKanEnrichedFunctor_obj (r : ℕ)
     ((presentedPerfectDGBoundaryKanEnrichedFunctor A r).obj C).obj =
       Under.mk ((boundaryReducedRealization r
         (stableCategoryModel (presentedPerfectDGStableCategory A C))).hom ≫
-          Comparison.exInfinityUnit.app (boundaryReducedRealization r
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (boundaryReducedRealization r
             (stableCategoryModel (presentedPerfectDGStableCategory A C))).right) := rfl
 
 /-- 同じ元の通常 dg 射による基点固定の境界商射。 -/

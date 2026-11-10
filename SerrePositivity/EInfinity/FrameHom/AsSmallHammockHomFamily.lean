@@ -37,14 +37,14 @@ def asSmallKanHammockHomFamilyMap :
     AsSmall.down ⋙ kanHomFamily (hammockHomFamily W X) ⋙ kanObjectForget ⟶
       kanHomFamily (hammockHomFamily (AsSmallComparison.weak W) (AsSmall.up.obj X)) ⋙
         kanObjectForget :=
-  Functor.whiskerRight (asSmallHammockHomFamilyIso W X).hom exInfinity
+  Functor.whiskerRight (asSmallHammockHomFamilyIso W X).hom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
 
 /-- 概要：同じ Kan 自然変換の全成分は実際の同型。
 方針：同じ余極限の実同型を Ex∞ に写す。
 規約：元の射を保持。使われ方：全図式の反転。 -/
 lemma asSmallKanHammockHomFamilyMap_isIso (Y : AsSmall.{max u v} C) :
     IsIso ((asSmallKanHammockHomFamilyMap W X).app Y) := by
-  change IsIso (exInfinity.map ((asSmallHammockHomFamilyIso W X).hom.app Y))
+  change IsIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((asSmallHammockHomFamilyIso W X).hom.app Y))
   infer_instance
 
 attribute [local instance] kanHomFamily_kanComplex
@@ -65,7 +65,7 @@ def asSmallHammockHomCoherentIso :
       (AsSmall.up.obj X)), trivial⟩)
     (asSmallKanHammockHomFamilyMap W X) (fun Y => by
       let e := qCatEquivalenceOfIso
-        (exInfinity.mapIso ((asSmallHammockHomFamilyIso W X).app Y))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso ((asSmallHammockHomFamilyIso W X).app Y))
       exact e.isQCatEquivalence)
 
 end SerrePositivity.EInfinity.FrameHom

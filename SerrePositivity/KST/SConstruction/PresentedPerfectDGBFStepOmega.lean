@@ -26,7 +26,7 @@ local instance presentedPerfectDGBFStageOmega_kanComplex (r : ℕ)
 local instance presentedPerfectDGBFStepOmegaBoundary_kanComplex (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 元の一次方向 Kan 値の同じ Kan 性。 -/
 local instance presentedPerfectDGBFStepOmegaSource_kanComplex (r : ℕ)
@@ -37,10 +37,10 @@ local instance presentedPerfectDGBFStepOmegaSource_kanComplex (r : ℕ)
 /-- 同じ Ex∞ 源の Kan 性を標準点つき豊穣対象の型で保持する。 -/
 local instance presentedPerfectDGBFStepOmegaRawSource_kanComplex (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
-    KanComplex ((coaugmentedPointedEnrichedFunctor Comparison.exInfinity
-      Comparison.exInfinityUnit).obj
+    KanComplex ((coaugmentedPointedEnrichedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj
         ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C)).obj.right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 次段の同じ Kan 性を実段の型で保持する。 -/
 local instance presentedPerfectDGBFStepOmegaTarget_kanComplex (r : ℕ)
@@ -72,7 +72,7 @@ lemma presentedPerfectDGBFStageComparison_piIsomorphism (r : ℕ)
       (show ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
         (S.functor.obj C).obj from S.comparison C).right := by
   let _ : KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj).right :=
-    Comparison.exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact kanPiIsomorphism_of_localized_isIso _ (S.weak C)
 
 /-- 実左脚は、元の S₁ 比較と同じ前向き比較の合成の suspension。 -/

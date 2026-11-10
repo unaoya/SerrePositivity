@@ -118,7 +118,7 @@ lemma modelRightFramePinchedEquivalenceWithComparison_unit_Q {Y : C} (f : X ⟶ 
         r f 0 ≫ (modelRightFramePinchedEquivalenceWithComparison r G hG X K e Y).hom) =
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (Hammock.arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
           kanHammockHomPinchedMap (modelRelativeCategory C)
             (modelRelativeObject C X) (modelRelativeObject C Y) ≫
               ((FrameHom.rightFrameSpecifiedLocalizationData G hG

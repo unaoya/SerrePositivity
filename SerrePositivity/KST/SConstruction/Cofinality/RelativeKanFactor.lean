@@ -27,7 +27,7 @@ def completionRelativeKanFactor (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
   AnodyneKanReplacement.factorization.Z.obj (Arrow.mk
-    (exInfinity.map (Fibration.Relative.closedKernelRealizationPost
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost
       (completionImageClosedPredicate r ι f hf))))
 
 /-- 概要：元の右辺分解の全空間は Kan。
@@ -38,12 +38,12 @@ instance completionRelativeKanFactor_kanComplex (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     KanComplex (completionRelativeKanFactor r ι f hf) := by
-  let a := Arrow.mk (exInfinity.map (Fibration.Relative.closedKernelRealizationPost
+  let a := Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost
     (completionImageClosedPredicate r ι f hf)))
   let p := AnodyneKanReplacement.factorization.p.app a
   have hp : Fibration p := (SSet.modelCategoryQuillen.fibration_iff p).mpr
     (AnodyneKanReplacement.factorization.hp a)
-  exact @isFibrant_of_fibration SSet.{u} _ _ _ _ _ _ p hp (exInfinity_kanComplex _)
+  exact @isFibrant_of_fibration SSet.{u} _ _ _ _ _ _ p hp (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _)
 
 /-- 概要：元の右辺分解の全空間の一点射は局所化同型。
 方針：元の核の一点射から分解単位を消去する。
@@ -54,7 +54,7 @@ lemma completionRelativeKanFactor_toPoint_isIso (r : ℕ)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (toUnit (completionRelativeKanFactor r ι f hf))) := by
-  let a := Arrow.mk (exInfinity.map (Fibration.Relative.closedKernelRealizationPost
+  let a := Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost
     (completionImageClosedPredicate r ι f hf)))
   let i := AnodyneKanReplacement.factorization.i.app a
   let Q := AnodyneHomotopy.anodyneQ

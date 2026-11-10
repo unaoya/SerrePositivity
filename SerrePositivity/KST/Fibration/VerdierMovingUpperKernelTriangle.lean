@@ -35,7 +35,7 @@ theorem verdierOriginalFullSCompositeMap_last_kernel (d : _root_.SerrePositivity
     intro F G h hf hg
     subst G
     rfl
-  exact congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
+  exact congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map f))
     (hc _ _ (verdierNullCompositeOriginalMap_lower d) _ _)
 
 /-- 概要：同じ標準上側終端は元の全 S• 商核の上側全二胞体。

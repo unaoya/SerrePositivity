@@ -335,3 +335,9 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 | `Duality/RightUnitContractible` | `initialVertices_isContractibleKan` を Kerodon §4.7 の `InitialVerticesContractible` に分けた。随伴の右関手と実単位に関する残りの宣言は `HTT/PresentableInfinityCategories/RightUnitContractible`。分割した補題は移動前の 2 本のソースに現れる。 |
 
 二つの分割を `split_module.py` で検査した。どちらも HTT に残す宣言から Kerodon に切り出す補題への依存だけがあり、逆向きの依存はなかった。移動先 6 本、外部から参照される 1 名の互換モジュール、および利用側の `AccessibleFunctorEquivalence`、`Duality.LeftUnitContractible`、`ContravariantContinuity` をビルド鍵 `--wait 1800` で検査した。v3b は 30 宣言で PASS、未説明差分 0 件。書き換えた利用側は 313 本で、属性も Lean の出力で再照合した。
+
+### Ex∞
+
+Ex∞ の構成、Kan 性、anodyne・ファイブレーション・局所化・モノイダル性と、その専用の補助を Kerodon §3.3 の `KanComplexes/TheExInfinityFunctor/` に移した。割り当て済み 60 本と、Ex∞ 群の外からは集約入口を除いて直接使われない補助 12 本。共有補助の `FiberwiseAnodyne`、`HornRightColimit`、`IntervalBoundaryFamily`、`PairContractionAnodyne`、`PairHomotopyLifting`、`SubcomplexContraction` は `KST/Comparison` に置き、移動した側の参照で境界を明示した。モデル圏を使う引き戻し比較も同じ場所に置いた。
+
+利用側 153 本の import または参照を更新した。互換モジュール `Project/Compatibility/KSTExInfinity.lean` は ∞ 圏の外で参照される 8 名を公開する。ビルド鍵 `--wait 1800` で移動先 72 本、互換モジュール、残留 KST 側の 19 本を依存順に検査した。後者には `ArbitraryBasePullback`、`DiagramExInfinity`、`ExInfinityHomotopyPullback`、`ExInfinitySimplicialMonoid`、`SpanGluing` が含まれる。保存比較 v3b は 271 宣言で PASS、未説明差分 0 件。移動した属性 16 組も `#kerodon_tags` の出力と一致した。

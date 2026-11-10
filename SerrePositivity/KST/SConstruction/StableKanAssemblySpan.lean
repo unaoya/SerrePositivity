@@ -25,7 +25,7 @@ open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariant
 def stableKanAssemblySourceFunctor (r : ℕ) :
     EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
 
 /-- 概要：同じ境界 Kan 商の suspension。
 方針：同じ元の境界商関手へ同じ Ex∞ と suspension を合成する。
@@ -33,7 +33,7 @@ def stableKanAssemblySourceFunctor (r : ℕ) :
 def stableKanAssemblyLeftTargetFunctor (r : ℕ) :
     EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableBoundaryPointedEnrichedFunctor r).comp SSet
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
 
 /-- 概要：元の一次方向商の suspension の Ex∞ 像。
 方針：元の順の二関手を合成する。
@@ -41,7 +41,7 @@ def stableKanAssemblyLeftTargetFunctor (r : ℕ) :
 def stableKanAssemblyMiddleFunctor (r : ℕ) :
     EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedSSetObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet
-    (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+    (suspensionThenCoaugmentedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
 
 /-- 概要：同じ隣接境界商の Ex∞ 値。
 方針：同じ元の境界商へ Ex∞ を後合成する。
@@ -57,7 +57,7 @@ def stableKanAssemblyLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableKanAssemblySourceFunctor r) (stableKanAssemblyLeftTargetFunctor r) :=
   _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
     (stableOneDirectionPointedComparison r)
 
 /-- 概要：同じ元の Ex∞ suspension 比較の全族変換。
@@ -103,7 +103,7 @@ def stableKanAssemblyLeftMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCateg
 def stableKanAssemblyRightMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     (stableKanAssemblySourceFunctor r).obj C ⟶ (stableKanAssemblyTargetFunctor r).obj C :=
   exInfinitySuspensionComparison ((stableOneDirectionPointedEnrichedFunctor r).obj C) ≫
-    coaugmentedPointedMap Comparison.exInfinity Comparison.exInfinityUnit
+    coaugmentedPointedMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
       (stableSuspensionAssemblyMap r C)
 
 end SerrePositivity.KST.SConstruction

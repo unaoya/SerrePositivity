@@ -56,9 +56,9 @@ def closedRelativeNullhomotopy_unconditional
     {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     SSet.Homotopy
       (stdSimplex.isTerminalObj₀.from (coreSRealizationFunctor.obj (closedStableModel P)) ≫
-        closedRelativeBasepoint P ≫ exInfinityUnit.app (closedRelativeRealization P))
+        closedRelativeBasepoint P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedRelativeRealization P))
       (coreSRealizationFunctor.map (closedStableInclusion P) ≫ closedRelativeConstant P ≫
-        exInfinityUnit.app (closedRelativeRealization P)) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedRelativeRealization P)) :=
   closedRelativeNullhomotopy P
 
 end SerrePositivity.KST.Fibration.Relative

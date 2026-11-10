@@ -18,7 +18,7 @@ lemma exInfinityPointedKan_closed_inclusion (X Y : PointedSSetObject.{u}) :
       PointedObject.basedHomι (exInfinityPointedKanEnrichedFunctor.obj X).obj
         (exInfinityPointedKanEnrichedFunctor.obj Y).obj =
     PointedObject.basedHomι X.obj Y.obj ≫
-      coaugmentedClosedFamilyMap Comparison.exInfinity Comparison.exInfinityUnit
+      coaugmentedClosedFamilyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         X.obj.right Y.obj.right :=
   exInfinityPointedKanEnrichedFunctor_inclusion X Y
 
@@ -29,7 +29,7 @@ lemma exInfinityPointedFamily_inclusion {P : SSet.{u}}
       PointedObject.basedHomι (exInfinityPointedKanEnrichedFunctor.obj X).obj
         (exInfinityPointedKanEnrichedFunctor.obj Y).obj =
     (a ≫ PointedObject.basedHomι X.obj Y.obj) ≫
-      coaugmentedClosedFamilyMap Comparison.exInfinity Comparison.exInfinityUnit
+      coaugmentedClosedFamilyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         X.obj.right Y.obj.right := by
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun q => a ≫ q) (exInfinityPointedKan_closed_inclusion X Y)).trans
@@ -45,7 +45,7 @@ lemma exInfinityPointedFamily_unit_action {P : SSet.{u}}
       uncurry (a ≫ PointedObject.basedHomι X.obj Y.obj) ≫
         (exInfinityPointedUnit Y).right := by
   rw [exInfinityPointedFamily_inclusion]
-  exact coaugmentedClosedFamilyMap_action Comparison.exInfinity Comparison.exInfinityUnit
+  exact coaugmentedClosedFamilyMap_action _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
     (a ≫ PointedObject.basedHomι X.obj Y.obj)
 
 end SerrePositivity.KST.SConstruction

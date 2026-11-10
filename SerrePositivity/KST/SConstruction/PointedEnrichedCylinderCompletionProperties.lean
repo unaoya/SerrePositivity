@@ -26,7 +26,7 @@ open SerrePositivity.SimplicialModel
 /-- 同じ元の値は、元の実押し出しの Ex∞ Kan 複体。 -/
 lemma pointedEnrichedCylinderCompletion_kanComplex (X : C) :
     KanComplex (((pointedEnrichedCylinderCompletionFunctor F L R l r hl hr).obj X).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ実押し出しから Kan 値への元の単位は基礎 anodyne 射。 -/
 lemma pointedEnrichedCylinderCompletionUnit_anodyne (X : C) :

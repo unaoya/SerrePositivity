@@ -74,20 +74,20 @@ theorem coreSingleRealizationKan_map (A C : _root_.SerrePositivity.InfinityCateg
 theorem stableCoreSingleKanFamily_action {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C)) :
     uncurry (H ≫ stableCoreSingleKanEnrichedFunctor.map A C) =
-      coaugmentedTensorRightStrength exInfinity exInfinityUnit
+      coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
           (coreSingleRealizationObject A).obj P ≫
-        exInfinity.map (uncurry (H ≫ coreSingleRealizationEnrichedFunctor.map A C)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (uncurry (H ≫ coreSingleRealizationEnrichedFunctor.map A C)) := by
   rw [← coreSingleRealizationKan_map, ← Category.assoc]
-  exact coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit _
+  exact coaugmentedClosedFamilyMap_strength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit _
 
 /-- 元の商核円柱を Ex∞ に送った全族は、同じ零化族の全閉 Hom 作用である。 -/
 theorem quotientSKernelNullCylinder_exInfinity
     {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
     {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
     (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
-    coaugmentedTensorRightStrength exInfinity exInfinityUnit
+    coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         (coreSingleRealizationObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)).obj (Δ[1] : SSet.{u}) ≫
-      exInfinity.map (quotientSKernelNullCylinder h) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (quotientSKernelNullCylinder h) =
     uncurry ((zeroEndPostcompFamily
       (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
         (verdierSequenceComposite_zero h) ≫
@@ -95,15 +95,15 @@ theorem quotientSKernelNullCylinder_exInfinity
             (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) ≫
       exInfinityClosedKanEnrichedFunctor.map _ _) := by
   rw [quotientSKernelNullCylinder_coreRealization]
-  exact (coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit _).symm
+  exact (coaugmentedClosedFamilyMap_strength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit _).symm
 
 /-- 同じ零化円柱の Ex∞ 像を、元の core S の全 Kan Hom 評価として回収する。 -/
 theorem quotientSKernelNullCylinder_coreKan
     {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
     (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
-    coaugmentedTensorRightStrength exInfinity exInfinityUnit
+    coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         (coreSingleRealizationObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)).obj (Δ[1] : SSet.{u}) ≫
-      exInfinity.map (quotientSKernelNullCylinder h) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (quotientSKernelNullCylinder h) =
     uncurry (zeroEndPostcompFamily
       (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
         (verdierSequenceComposite_zero h) ≫

@@ -30,7 +30,7 @@ lemma kanHammockYonedaIdentity_zero :
       (ULift.up ((kanHammockSourceFunctor C).obj X)) =
     SSet.unitHomEquiv _
       (arrowMap C.weakEquivalences (𝟙 X) ≫
-        exInfinityUnit.app (colimitGraph C.weakEquivalences X X)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph C.weakEquivalences X X)) := by
   change SSet.unitHomEquiv _ (eId SSet ((kanHammockSourceFunctor C).obj X)) = _
   apply congrArg (SSet.unitHomEquiv _)
   have h := kanHammockSourceFunctor_homTo C (𝟙 X)

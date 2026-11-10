@@ -54,7 +54,7 @@ theorem verdierOriginalStableHomFamily_full (d : _root_.SerrePositivity.Infinity
 使われ方：動く上側第二短辺の元の指定両端。 -/
 def verdierOriginalFullSCompositeMap (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
     fullSRealizationKanObject d.left ⟶ stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) :=
-  exInfinity.map (simplicialDiagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (verdierNullCompositeOriginalMap d j)
       (isZeroVertex_functorVertex_of_pointwise _ (verdierNullCompositeOriginalMap_zero d j))))
 

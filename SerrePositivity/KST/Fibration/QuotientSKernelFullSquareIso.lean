@@ -51,13 +51,13 @@ def quotientSKernelFullSquareIso :
       (relativeSimplicialSConstruction (i.hom ≫ q.hom))⟩)
     (Y := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))
     (Z := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
-    (exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq (quotientSKernelRealizationSquare i q))
   let d := _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanCommSqCone
     (P := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
     (X := fullSRealizationKanObject A)
     (Y := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from B))
     (Z := stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
-    (exInfinity.map_commSq (quotientSKernelFullRealizationSquare h))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq (quotientSKernelFullRealizationSquare h))
   let α := (quotientSKernelFullCospanIso h).hom
   have hf : ∀ j, (𝟙 c.pt) ≫ d.π.app j = c.π.app j ≫ α.app j := by
     intro j
@@ -66,7 +66,7 @@ def quotientSKernelFullSquareIso :
       rfl
     · simp only [Category.id_comp, Category.comp_id]
       rfl
-    · change (𝟙 _) ≫ exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) =
+    · change (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A)) =
         exInfinityKanMap (simplicialDiagonalFunctor.map
           (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom))) ≫
           (quotientSKernelCornerFullSKanIso h).hom
@@ -79,7 +79,7 @@ def quotientSKernelFullSquareIso :
     · exact _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible _
     · change IsInvertibleEdge (coherentNerveEdge (quotientSKernelCornerFullSKanIso h).hom)
       apply coherentKanEdge_isInvertible_of_isQCatEquivalence
-      exact (qCatEquivalenceOfIso (exInfinity.mapIso
+      exact (qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso
         (simplicialDiagonalFunctor.mapIso (relativeSKernelSimplicialIso h)))).isQCatEquivalence
   have he := strictCoherentConeTransformationIso α c d (𝟙 c.pt) hf hα
     (_root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanIdentityEdge_isInvertible _)

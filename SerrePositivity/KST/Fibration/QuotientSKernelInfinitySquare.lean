@@ -25,9 +25,9 @@ def quotientSKernelInfinitySquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceIn
 /-- 元の core S(A) の実現の Kan 値を、同じ四角形の頂点として厳密に回収する。 -/
 theorem quotientSKernelInfinitySquare_apex :
     squareVertex (quotientSKernelInfinitySquare i q) 0 0 = coherentNerveVertex
-      (⟨exInfinity.obj (simplicialDiagonalFunctor.obj
+      (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (simplicialDiagonalFunctor.obj
         (simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor)),
-          exInfinity_kanComplex _⟩ : KanObject.{u}) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _⟩ : KanObject.{u}) :=
   kanCommSqInfinitySquare_apex _
 
 /-- 未証明の商実現比較を正確に入力したとき、同じ全 coherent 核四角形は引き戻し。 -/

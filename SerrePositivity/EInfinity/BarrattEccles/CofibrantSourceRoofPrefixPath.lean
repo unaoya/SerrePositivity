@@ -26,7 +26,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceRoofProductCommaNativeFamilyMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-      exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (show (cofibrantAlgebraRelativeCategory A).category from
           cofibrantSourceRoofDegreeAlgebra A X Y b)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)) :=
@@ -39,7 +39,7 @@ def cofibrantSourceRoofProductCommaNativeFamilyMap :
 
 lemma cofibrantSourceRoofProductCommaNativeFamilyMap_eq :
     cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b =
-    cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫ exInfinityUnit.app _ := rfl
+    cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := rfl
 
 lemma cofibrantSourceRoofProductCommaNativeFamilyMap_pinched :
     cofibrantSourceRoofProductCommaNativeFamilyMap A X Y b ≫

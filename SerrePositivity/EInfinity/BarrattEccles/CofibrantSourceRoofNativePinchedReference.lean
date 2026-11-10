@@ -31,7 +31,7 @@ def cofibrantSourceRoofProductCommaNativePinchedMap :
       pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
         (cofibrantHammockVertex A Y) :=
   cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫
-    exInfinityUnit.app (Hammock.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (Hammock.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from
         cofibrantSourceRoofDegreeAlgebra A X Y b)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) ≫
@@ -48,8 +48,8 @@ lemma cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q :
   have hi := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts (functorHomHomotopy
       (cofibrantHammockPinchedReferenceMap_inclusion A D Y).hom)
-  have hu : exInfinityUnit.app _ ≫ cofibrantKanHammockInclusionMap A D Y =
-      L ≫ exInfinityUnit.app _ := (exInfinityUnit.naturality L).symm
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ cofibrantKanHammockInclusionMap A D Y =
+      L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality L).symm
   have huQ := congrArg AnodyneHomotopy.anodyneQ.map hu
   have he := cofibrantSourceRoofProductCommaEvaluationRoofMap_image_Q A X Y b
   simp only [Functor.map_comp] at hi huQ he

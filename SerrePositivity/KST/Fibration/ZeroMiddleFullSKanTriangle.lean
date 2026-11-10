@@ -34,7 +34,7 @@ theorem zeroMiddleTriangle_first_zero :
 def zeroMiddleFullSKanComparison :
     fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       stableCoreSingleKanObject (s.obj ⟨ULift.up 1⟩) :=
-  exInfinity.map (simplicialDiagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s))
       (zeroMiddleTriangle_first_zero s hZ)))
 
@@ -43,17 +43,17 @@ theorem zeroMiddleFullSKanComparison_isInvertible :
     IsInvertibleEdge (coherentNerveEdge (zeroMiddleFullSKanComparison s hZ)) := by
   apply coherentKanEdge_isInvertible_of_isQCatEquivalence
   apply isQCatEquivalence_of_anodyneQ_isIso
-  exact (exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (zeroFunctorFullSMap_localized_isIso _ _ hZ)
 
 /-- 元の第一短辺の同じ core S Kan 射は、同じ実 core 包含と可逆比較の厳密合成。 -/
 theorem zeroMiddleFullSKanComparison_first :
-    exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)) ≫
         zeroMiddleFullSKanComparison s hZ =
       stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 2 s)) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← Functor.map_comp, coreSFullRealizationInclusion, ← Functor.map_comp]
-  exact congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
+  exact congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map f))
     (by
       simpa only [Category.assoc] using
         (zeroFunctorFullSMap_core (𝟙 (s.obj ⟨ULift.up 0⟩).obj)
@@ -91,7 +91,7 @@ def zeroMiddleFullSKanLongHom :
 /-- 全 S• 延長の実 core 制限は、元の指定二胞体の全長 Hom へ厳密に戻る。 -/
 theorem zeroMiddleFullSKanLongHom_core :
     zeroMiddleFullSKanLongHom s hZ ≫
-        (pre (exInfinity.map (coreSFullRealizationInclusion
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion
           (s.obj ⟨ULift.up 0⟩)))).app (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)).obj =
       coherentTriangleLongHom ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s) := by

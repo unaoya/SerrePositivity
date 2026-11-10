@@ -55,7 +55,7 @@ theorem zeroMiddleFactorizationTetra_exists (h9b : zeroMiddleFactorizationTetraS
     ∃ F, zeroMiddleFactorizationTetraCondition s hZ K F := by
   let f : stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) :=
-    exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
   let g := zeroMiddleFullSKanComparison s hZ
   let h := stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s))
   let T := fst (Δ[2] : SSet.{u + 1}) K ≫

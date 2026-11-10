@@ -29,7 +29,7 @@ variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 def zeroMiddleControlledFirstMap :
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
       (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩)).obj :=
-  exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
 
 /-- 概要：同じ固定二短辺の合成端を保持する元の長 Hom の実入力空間。
 方針：同じ全 path の合成頂点での評価の実 fiber を取る。

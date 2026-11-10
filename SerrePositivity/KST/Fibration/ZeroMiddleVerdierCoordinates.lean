@@ -25,9 +25,9 @@ private lemma zeroFullSKanMap_heq {A C A' C' : _root_.SerrePositivity.InfinityCa
     (hA : A = A') (hC : C = C') {F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C} {G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A' C'} (hFG : HEq F G)
     (hF : IsZeroVertex (functorVertex F.hom)) (hG : IsZeroVertex (functorVertex G.hom)) :
     HEq (show fullSRealizationKanObject A ⟶ stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C) from
-        exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF)))
       (show fullSRealizationKanObject A' ⟶ stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C') from
-        exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap G hG))) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap G hG))) := by
   cases hA
   cases hC
   cases eq_of_heq hFG
@@ -50,7 +50,7 @@ theorem zeroMiddleFullSKanComposite_verdier_original_heq (d : _root_.SerrePositi
         (verdierUpperTriangle_middle_isZero d))
       (show fullSRealizationKanObject d.left ⟶
         stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
-          exInfinity.map (simplicialDiagonalFunctor.map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
             (zeroFunctorFullSMap (verdierNullCompositeOriginalMap d 0) (verdierUpperComposite_zero d)))) := by
   have hf : HEq (verdierNullCompositeOriginalMap d 0)
       (stableTriangleCompositeMap (verdierUpperTriangle d)) :=
@@ -64,7 +64,7 @@ theorem zeroMiddleFullSKanComposite_verdier_original_heq (d : _root_.SerrePositi
 theorem zeroMiddleFullSKanLongHom_verdier_native_heq (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     HEq (zeroMiddleFullSKanLongHom (verdierUpperTriangle d)
         (verdierUpperTriangle_middle_isZero d) ≫
-        (pre (exInfinity.map (coreSFullRealizationInclusion
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion
           ((verdierUpperTriangle d).obj ⟨ULift.up 0⟩)))).app
           (stableCoreSingleKanObject ((verdierUpperTriangle d).obj ⟨ULift.up 2⟩)).obj)
       (coherentTriangleLongHom ((coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app

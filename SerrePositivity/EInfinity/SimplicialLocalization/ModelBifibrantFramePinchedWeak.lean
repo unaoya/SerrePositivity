@@ -74,7 +74,7 @@ def modelBifibrantSourceFrameColimitMap :
 def modelBifibrantSourceFramePinchedMap :
     nerve (modelBifibrantSourceFrameElementCategory X Y q) ⟶
       pinchedHom (modelBifibrantHammockVertex X) (modelBifibrantHammockVertex Y) :=
-  modelBifibrantSourceFrameColimitMap X Y q ≫ exInfinityUnit.app _ ≫
+  modelBifibrantSourceFrameColimitMap X Y q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
     kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
       (modelBifibrantObject C X) (modelBifibrantObject C Y)
 
@@ -105,11 +105,11 @@ include r in
 規約：同じ元の局所化頂点。使われ方：実屋根 cofinality の弱な基準族。 -/
 lemma modelBifibrantSourceFramePinchedMap_weak :
     IsWeakHomotopyEquivalence (modelBifibrantSourceFramePinchedMap X Y q) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
+  have hu : IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
         (modelBifibrantObject C X) (modelBifibrantObject C Y))) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (modelBifibrantSourceFrameColimitMap_weak X Y q r).comp
     (hu.comp (kanHammockHomPinchedMap_weak (modelBifibrantRelativeCategory C)
       (modelBifibrantObject C X) (modelBifibrantObject C Y)))

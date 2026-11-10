@@ -31,7 +31,7 @@ local instance dgKappaNativeBFSOAComparisonLevel_kanComplex
 local instance dgKappaNativeBFSOAComparisonBoundary_kanComplex
     (r : ℕ) (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex (((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 概要：同じ元の境界商の SOA Kan 値から、その Ex∞ Kan 値への比較。
 方針：同じ元境界商と実再帰段の比較を使う。

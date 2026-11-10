@@ -3268,6 +3268,1677 @@
       "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallLimits",
       "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
       "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.HornFaceSet",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceSet",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.PreservesFiniteChainUnion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.PreservesFiniteChainUnion.comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion.comp",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionAdjunction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionAdjunction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionAdjunction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionAdjunction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_naturality_left",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_naturality_left",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionAdjunction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionAdjunction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHornMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionHornMap",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionHornMap"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_boundary",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_boundary",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionHornBoundary",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionHornBoundary"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_ι",
+      "module": "SerrePositivity.KST.Comparison.DoubleSubdivisionHornMap",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionHornMap"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexityLevel",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexityLevel_le_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_le_iff",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexityLevel_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_mem",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_zero_iff",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_face",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity_front_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_front_face",
+      "module": "SerrePositivity.KST.Comparison.ExDegeneracyExpansion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDegeneracyExpansion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity_last",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_last",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity_mono",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_mono",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exComplexity_zero",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_zero",
+      "module": "SerrePositivity.KST.Comparison.ExComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleHornFiller",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller_boundary",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary_assoc",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller_boundary_assoc",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller_boundary",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary_assoc",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller_boundary_assoc",
+      "module": "SerrePositivity.KST.Comparison.ExDoubleHornFiller",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_complexity",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_complexity",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_degenerate_of_complexity_lt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_degenerate_of_complexity_lt",
+      "module": "SerrePositivity.KST.Comparison.ExExpansionSmallComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionSmallComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_eq_degeneracy_of_complexity_lt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_eq_degeneracy_of_complexity_lt",
+      "module": "SerrePositivity.KST.Comparison.ExExpansionSmallComplexity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionSmallComplexity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_face",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_front_complexity",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_complexity",
+      "module": "SerrePositivity.KST.Comparison.ExExpansionFaces",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionFaces"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_front_degeneracy",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_degeneracy",
+      "module": "SerrePositivity.KST.Comparison.ExDegeneracyExpansion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDegeneracyExpansion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_front_ne_source",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_ne_source",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceUniqueness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceUniqueness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_mem_degenerate",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_mem_degenerate",
+      "module": "SerrePositivity.KST.Comparison.ExPairingNondegenerate",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingNondegenerate"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_notMem_typeTwo",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_notMem_typeTwo",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceRank",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceRank"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_degeneracy",
+      "module": "SerrePositivity.KST.Comparison.ExDegeneracyExpansion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDegeneracyExpansion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_rear_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_face",
+      "module": "SerrePositivity.KST.Comparison.ExExpansionFaces",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionFaces"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exExpansion_rear_ne_source",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_ne_source",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceUniqueness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceUniqueness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityAnodyneSequence",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityAnodyneSequence",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityLocalizedUnitIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityLocalizedUnitIso",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityMonoidFunctor",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidFunctor",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityMonoidUnit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinityMonoidFunctor"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityMonoidUnit_hom",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_hom",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityMonoidUnit_localized_isIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_localized_isIso",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityMonoid_kanComplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoid_kanComplex",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityStage",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityStage_succ",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage_succ",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityStages",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityStages"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityUnit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinity"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityUnit_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityAnodyne",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinity",
+        "SerrePositivity.KST.Comparison.exInfinityUnit"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityUnit_isMonoidal",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_isMonoidal",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinityUnit_localized_isIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_localized_isIso",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_finite_factorization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityStages",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityStages"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_hornFilling",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_hornFilling",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityKan",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_kanComplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityKan",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinity"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_map_localized_isIso_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinity"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_map_rlp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityFibrations",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityFibrations",
+      "type_dependencies": [
+        "SerrePositivity.KST.Comparison.exInfinity"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_monoidal",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_monoidal",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityMonoidal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_preservesFiniteLimits",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exInfinity_preservesMonomorphisms",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesMonomorphisms",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exIterate",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exIterate_map_rlp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_map_rlp",
+      "module": "SerrePositivity.KST.Comparison.ExInfinityFibrations",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityFibrations"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exIterate_preservesFiniteLimits",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_preservesFiniteLimits",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairing",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing",
+      "module": "SerrePositivity.KST.Comparison.ExPairingCore",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingCore"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingCore",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore",
+      "module": "SerrePositivity.KST.Comparison.ExPairingCore",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingCore"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingCore_isProper",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isProper",
+      "module": "SerrePositivity.KST.Comparison.ExPairingCore",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingCore"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingCore_isRegular",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isRegular",
+      "module": "SerrePositivity.KST.Comparison.ExPairingRegular",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingRegular"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingEquiv",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv",
+      "module": "SerrePositivity.KST.Comparison.ExPairingBijection",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingEquiv_apply",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv_apply",
+      "module": "SerrePositivity.KST.Comparison.ExPairingBijection",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingImage",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingImage",
+      "module": "SerrePositivity.KST.Comparison.ExPairingProperness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_complexityLevel",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexityLevel",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_complexity_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexity_iff",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_double",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double",
+      "module": "SerrePositivity.KST.Comparison.ExDoublePairing",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoublePairing"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_double_degenerate",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double_degenerate",
+      "module": "SerrePositivity.KST.Comparison.ExDoublePairing",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoublePairing"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceRank",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceRank"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt_succ",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt_succ",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceRank",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceRank"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_face_unique",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique",
+      "module": "SerrePositivity.KST.Comparison.ExPairingProperness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_face_unique_succ",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique_succ",
+      "module": "SerrePositivity.KST.Comparison.ExPairingFaceUniqueness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceUniqueness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_injective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_injective",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_isUniquelyCodimOneFace",
+      "module": "SerrePositivity.KST.Comparison.ExPairingProperness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_mem_degenerate",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_degenerate",
+      "module": "SerrePositivity.KST.Comparison.ExPairingNondegenerate",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingNondegenerate"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_mem_image_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_image_iff",
+      "module": "SerrePositivity.KST.Comparison.ExPairingStep",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_mem_typeOne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeOne",
+      "module": "SerrePositivity.KST.Comparison.ExPairingBijection",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_mem_typeTwo_of_typeOne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeTwo_of_typeOne",
+      "module": "SerrePositivity.KST.Comparison.ExPairingBijection",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_source",
+      "module": "SerrePositivity.KST.Comparison.ExPairingNondegenerate",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingNondegenerate"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_target",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_target",
+      "module": "SerrePositivity.KST.Comparison.ExPairingProperness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingStep_notMem_range_of_nonDegenerate",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_notMem_range_of_nonDegenerate",
+      "module": "SerrePositivity.KST.Comparison.ExDoublePairing",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoublePairing"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairingWeakRank",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingWeakRank",
+      "module": "SerrePositivity.KST.Comparison.ExPairingRegular",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingRegular"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exPairing_isRegular",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing_isRegular",
+      "module": "SerrePositivity.KST.Comparison.ExPairingRegular",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingRegular"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exSequence",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exSequence_flip_preservesFiniteLimits",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence_flip_preservesFiniteLimits",
+      "module": "SerrePositivity.KST.Comparison.ExInfinity",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exTypeOne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeOne",
+      "module": "SerrePositivity.KST.Comparison.ExPairingBijection",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exTypeTwo",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeTwo",
+      "module": "SerrePositivity.KST.Comparison.ExPairingProperness",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnit",
+      "module": "SerrePositivity.KST.Comparison.ExUnit",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnitAt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt",
+      "module": "SerrePositivity.KST.Comparison.ExUnit",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnitAt_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_anodyne",
+      "module": "SerrePositivity.KST.Comparison.ExUnitAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnitAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnitAt_mono",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_mono",
+      "module": "SerrePositivity.KST.Comparison.ExUnit",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnitAt_naturality",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_naturality",
+      "module": "SerrePositivity.KST.Comparison.ExUnit",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.exUnitRange_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitRange_anodyne",
+      "module": "SerrePositivity.KST.Comparison.ExUnitAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnitAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.ex_map_rlp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ex_map_rlp",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCutDegeneracy_singleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCutDegeneracy_singleton",
+      "module": "SerrePositivity.KST.Comparison.CutDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.CutDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_comp",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_idempotent",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_idempotent",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_initialSegment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_initialSegment",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_last",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_last",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_map_absorb",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_map_absorb",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_maximum",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_maximum",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_mem_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_mem_iff",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionUnions",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_preservesUnion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_preservesUnion",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionUnions",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_singleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_singleton",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainCut_zero",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_zero",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommutation",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut_lt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut_lt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommutation",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_double",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_double",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDoubleDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDoubleDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_face_right",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face_right",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_front",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_front",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_initialSegment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_initialSegment",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_maximum",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_maximum",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionMaximum",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionMaximum"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_mem_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_mem_iff",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionUnions",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_preservesUnion",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionUnions",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_rear",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_rear",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionRearDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainDegeneracy_singleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_singleton",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainFrontImage",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainFrontImage_absorb",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_absorb",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainFrontImage_maximum",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_maximum",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainFrontImage_of_max_ge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_of_max_ge",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainFrontImage_singleton_ge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_singleton_ge",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainGreatest",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainGreatest_eq_maximum",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_eq_maximum",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainGreatest_map",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_map",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainGreatest_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_mem",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainInitialSegment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainInitialSegment_le_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_le_iff",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainInitialSegment_map",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_map",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMap_comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_comp",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionNerveChains",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_preservesUnion",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMap_singleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_singleton",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMaximum",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMaximum_initialSegment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_initialSegment",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMaximum_map",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_map",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainMaximum_singleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_singleton",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainOfFinset",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainOfFinset",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainSingleton",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainSingleton",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainUnion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChainUnion_ext",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion_ext",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainUnion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChain_exists_greatest",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_exists_greatest",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.finiteChain_le_initialSegment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_le_initialSegment",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainToHorn",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn",
+      "module": "SerrePositivity.KST.Comparison.HornChainNerve",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainNerve"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainToHorn_boundary",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn_boundary",
+      "module": "SerrePositivity.KST.Comparison.HornChainBoundary",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainBoundary"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainToSimplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex",
+      "module": "SerrePositivity.KST.Comparison.HornChainNerve",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainNerve"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainToSimplex_range_le",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex_range_le",
+      "module": "SerrePositivity.KST.Comparison.HornChainNerve",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainNerve"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainVertex_common_missing",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_common_missing",
+      "module": "SerrePositivity.KST.Comparison.HornChainMissingVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainMissingVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainVertex_exists_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_exists_face",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainVertex_map_hornFaces",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_map_hornFaces",
+      "module": "SerrePositivity.KST.Comparison.HornChainBoundary",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainBoundary"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornChainVertex_of_all_faces",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_of_all_faces",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceAddVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex",
+      "module": "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceInclusionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceAddVertex_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex_mem",
+      "module": "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceInclusionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceChoice",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceChoice",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceInclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceInclusion_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_anodyne",
+      "module": "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceInclusionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceInclusion_nerve_app_injective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_nerve_app_injective",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionSurjective",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceNerve_faceCover",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_faceCover",
+      "module": "SerrePositivity.KST.Comparison.HornFaceNerveCover",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceNerveCover"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceNerve_missingVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_missingVertex",
+      "module": "SerrePositivity.KST.Comparison.HornFaceNerveCover",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceNerveCover"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacePoset_partialOrder",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacePoset_partialOrder",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceSet_of_le",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSet_of_le",
+      "module": "SerrePositivity.KST.Comparison.HornChainVertices",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFaceSingleton_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSingleton_mem",
+      "module": "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceInclusionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacesExUnit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacesLastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesLastVertex",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacesToSimplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornFacesToSimplex_range_le",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex_range_le",
+      "module": "SerrePositivity.KST.Comparison.HornFacePoset",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSimplexFaceFactorization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceFactorization",
+      "module": "SerrePositivity.KST.Comparison.HornSimplexFaceFactorization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSimplexFaceFactorization"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSimplexFaceMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceMap",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSimplexOrderHom",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSimplexOrderHom_map_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom_map_mem",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplex_yoneda_inclusion",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionInclusion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionInclusion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionComparison",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_injective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_injective",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_surjective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_surjective",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionSurjective",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_epi",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_epi",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionSurjective",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_face",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionSurjective",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_inclusion",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionInclusion",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionInclusion"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_isIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_isIso",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionComparison_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionFaceCover",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceCover",
+      "module": "SerrePositivity.KST.Comparison.HornSimplexFaceFactorization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSimplexFaceFactorization"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionFaceMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionFaceMaps"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_ambient",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_ambient",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionFaceMaps"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_common",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_common",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionFaceMaps"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.hornSubdivisionNerveFaceCover",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionNerveFaceCover",
+      "module": "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionFaceMaps"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.le_finiteChainGreatest",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.le_finiteChainGreatest",
+      "module": "SerrePositivity.KST.Comparison.FiniteChainGreatest",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_castSucc",
+      "module": "SerrePositivity.KST.Comparison.DegeneracyFibers",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DegeneracyFibers"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_face_ge",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionMaximum",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionMaximum"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_le_castSucc_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_castSucc_iff",
+      "module": "SerrePositivity.KST.Comparison.CutDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.CutDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_iff_of_ne",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommutation",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_le_succ_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_succ_iff",
+      "module": "SerrePositivity.KST.Comparison.CutDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.CutDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_next_fiber",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_next_fiber",
+      "module": "SerrePositivity.KST.Comparison.DegeneracyFibers",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DegeneracyFibers"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_self_fiber",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_self_fiber",
+      "module": "SerrePositivity.KST.Comparison.DegeneracyFibers",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DegeneracyFibers"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_succ",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_succ",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_surjective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_surjective",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedDegeneracy_val",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_val",
+      "module": "SerrePositivity.KST.Comparison.DegeneracyFibers",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DegeneracyFibers"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_above",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_above",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_front_above",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_front_above",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_image_not_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_image_not_mem",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_initialSegment_of_below",
+      "module": "SerrePositivity.KST.Comparison.FaceIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FaceIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_injective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_injective",
+      "module": "SerrePositivity.KST.Comparison.FaceIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FaceIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_of_below",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_of_below",
+      "module": "SerrePositivity.KST.Comparison.FaceIntervals",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FaceIntervals"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.liftedFace_special",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_special",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.nerveChainsExUnit",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionNerveChains",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.NerveChainsLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.nerveChainsExUnit_naturality",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_naturality",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionNerveChains",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.nerveSimplexOrderHom",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveSimplexOrderHom",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionNerveChains",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.nonDegenerate_of_unique_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nonDegenerate_of_unique_face",
+      "module": "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.UniqueFaceNondegenerate"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderIntervalMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderIntervalMap",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveHomotopyMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveHomotopyMap_mem",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_mem",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveHomotopyMap_one",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_one",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveHomotopyMap_zero",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_zero",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveSubcomplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveSubcomplexIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveSubcomplexIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveSubcomplexIso_inclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso_inclusion",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveSubcomplexIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderNerveSubcomplex_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex_anodyne",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveContraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderSubtypeInclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeInclusion",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveSubcomplexIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeNerve_anodyne",
+      "module": "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveSubcomplexIso"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.simplexFaceRetraction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction",
+      "module": "SerrePositivity.KST.Comparison.SimplexFaceRetraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SimplexFaceRetraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.simplexFaceRetraction_chain",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_chain",
+      "module": "SerrePositivity.KST.Comparison.SimplexFaceRetraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SimplexFaceRetraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.simplexFaceRetraction_recover",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_recover",
+      "module": "SerrePositivity.KST.Comparison.SimplexFaceRetraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SimplexFaceRetraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.simplexFaceRetraction_section",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_section",
+      "module": "SerrePositivity.KST.Comparison.SimplexFaceRetraction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SimplexFaceRetraction"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.simplexHom_factor_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexHom_factor_face",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCommonFace",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCommonFace",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommonFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommonFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_comp",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_face_absorb",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_front_face_absorb",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_front_face_absorb",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_idempotent",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_idempotent",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_last",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_last",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionCutAt_zero",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_zero",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCut",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommutation",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut_lt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut_lt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionCommutation",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDoubleDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDoubleDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double_cut",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double_cut",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDoubleDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDoubleDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face_right",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front_absorb",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front_absorb",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFrontFace",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_rear",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_rear",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionRearDegeneracy"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionFace_app_injective",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_app_injective",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionFace_avoids",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_avoids",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionFace_lift",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_lift",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionFaceLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHomEquiv_app_down",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionAdjunctionSimplex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAdjunctionSimplex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionHorn_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHorn_anodyne",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertexAt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt_epi",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertexMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertexMap",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexMap"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertexMap_on_simplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_on_simplex",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertexSimplex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexSimplex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertexMap_stdSimplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_stdSimplex",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertexSimplex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexSimplex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionLastVertex_naturality",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex_naturality",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionNerveChains",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionNerveChains",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.NerveChainsLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex_assoc",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_lastVertex_assoc",
+      "module": "SerrePositivity.KST.Comparison.NerveChainsLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_naturality",
+      "module": "SerrePositivity.KST.Comparison.NerveChainsLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality_assoc",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_naturality_assoc",
+      "module": "SerrePositivity.KST.Comparison.NerveChainsLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionVertexSectionAt",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivisionVertexSectionAt_lastVertex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt_lastVertex",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionLastVertex",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex"
+    },
+    {
+      "old": "SerrePositivity.KST.Comparison.subdivision_map_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivision_map_anodyne",
+      "module": "SerrePositivity.KST.Comparison.SubdivisionAnodyne",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne"
     }
   ],
   "modules": {
@@ -3345,7 +5016,79 @@
     "SerrePositivity.InfinityCategories.F2.Presentable.Definition": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition",
     "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor",
     "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits",
-    "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible",
+    "SerrePositivity.KST.Comparison.CutDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.CutDegeneracy",
+    "SerrePositivity.KST.Comparison.DegeneracyFibers": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DegeneracyFibers",
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionAdjunction": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionAdjunction",
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionHornBoundary": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionHornBoundary",
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionHornMap": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.DoubleSubdivisionHornMap",
+    "SerrePositivity.KST.Comparison.ExComplexity": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExComplexity",
+    "SerrePositivity.KST.Comparison.ExDegeneracyExpansion": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDegeneracyExpansion",
+    "SerrePositivity.KST.Comparison.ExDoubleHornFiller": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoubleHornFiller",
+    "SerrePositivity.KST.Comparison.ExDoublePairing": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExDoublePairing",
+    "SerrePositivity.KST.Comparison.ExExpansionFaces": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionFaces",
+    "SerrePositivity.KST.Comparison.ExExpansionSmallComplexity": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExExpansionSmallComplexity",
+    "SerrePositivity.KST.Comparison.ExInfinity": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+    "SerrePositivity.KST.Comparison.ExInfinityAnodyne": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityAnodyne",
+    "SerrePositivity.KST.Comparison.ExInfinityFibrations": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityFibrations",
+    "SerrePositivity.KST.Comparison.ExInfinityKan": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan",
+    "SerrePositivity.KST.Comparison.ExInfinityLocalization": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization",
+    "SerrePositivity.KST.Comparison.ExInfinityMonoidal": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal",
+    "SerrePositivity.KST.Comparison.ExInfinityStages": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityStages",
+    "SerrePositivity.KST.Comparison.ExPairingBijection": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingBijection",
+    "SerrePositivity.KST.Comparison.ExPairingCore": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingCore",
+    "SerrePositivity.KST.Comparison.ExPairingFaceRank": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceRank",
+    "SerrePositivity.KST.Comparison.ExPairingFaceUniqueness": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingFaceUniqueness",
+    "SerrePositivity.KST.Comparison.ExPairingNondegenerate": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingNondegenerate",
+    "SerrePositivity.KST.Comparison.ExPairingProperness": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingProperness",
+    "SerrePositivity.KST.Comparison.ExPairingRegular": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingRegular",
+    "SerrePositivity.KST.Comparison.ExPairingStep": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExPairingStep",
+    "SerrePositivity.KST.Comparison.ExUnit": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnit",
+    "SerrePositivity.KST.Comparison.ExUnitAnodyne": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExUnitAnodyne",
+    "SerrePositivity.KST.Comparison.FaceIntervals": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FaceIntervals",
+    "SerrePositivity.KST.Comparison.FiniteChainGreatest": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainGreatest",
+    "SerrePositivity.KST.Comparison.FiniteChainIntervals": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainIntervals",
+    "SerrePositivity.KST.Comparison.FiniteChainUnion": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.FiniteChainUnion",
+    "SerrePositivity.KST.Comparison.HornChainBoundary": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainBoundary",
+    "SerrePositivity.KST.Comparison.HornChainMissingVertex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainMissingVertex",
+    "SerrePositivity.KST.Comparison.HornChainNerve": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainNerve",
+    "SerrePositivity.KST.Comparison.HornChainVertices": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornChainVertices",
+    "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceInclusionAnodyne",
+    "SerrePositivity.KST.Comparison.HornFaceNerveCover": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceNerveCover",
+    "SerrePositivity.KST.Comparison.HornFacePoset": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset",
+    "SerrePositivity.KST.Comparison.HornSimplexFaceFactorization": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSimplexFaceFactorization",
+    "SerrePositivity.KST.Comparison.HornSubdivisionComparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionComparison",
+    "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionFaceMaps",
+    "SerrePositivity.KST.Comparison.HornSubdivisionInclusion": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionInclusion",
+    "SerrePositivity.KST.Comparison.HornSubdivisionIso": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionIso",
+    "SerrePositivity.KST.Comparison.HornSubdivisionLastVertex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionLastVertex",
+    "SerrePositivity.KST.Comparison.HornSubdivisionSurjective": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornSubdivisionSurjective",
+    "SerrePositivity.KST.Comparison.NerveChainsLastVertex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.NerveChainsLastVertex",
+    "SerrePositivity.KST.Comparison.OrderNerveContraction": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveContraction",
+    "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.OrderNerveSubcomplexIso",
+    "SerrePositivity.KST.Comparison.SimplexFaceRetraction": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SimplexFaceRetraction",
+    "SerrePositivity.KST.Comparison.SubdivisionAdjunctionSimplex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAdjunctionSimplex",
+    "SerrePositivity.KST.Comparison.SubdivisionAnodyne": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne",
+    "SerrePositivity.KST.Comparison.SubdivisionCommonFace": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommonFace",
+    "SerrePositivity.KST.Comparison.SubdivisionCommutation": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCommutation",
+    "SerrePositivity.KST.Comparison.SubdivisionCut": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionCut",
+    "SerrePositivity.KST.Comparison.SubdivisionDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDegeneracy",
+    "SerrePositivity.KST.Comparison.SubdivisionDoubleDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionDoubleDegeneracy",
+    "SerrePositivity.KST.Comparison.SubdivisionFaceCut": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceCut",
+    "SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceDegeneracy",
+    "SerrePositivity.KST.Comparison.SubdivisionFaceLifting": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFaceLifting",
+    "SerrePositivity.KST.Comparison.SubdivisionFrontCut": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontCut",
+    "SerrePositivity.KST.Comparison.SubdivisionFrontDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontDegeneracy",
+    "SerrePositivity.KST.Comparison.SubdivisionFrontFace": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionFrontFace",
+    "SerrePositivity.KST.Comparison.SubdivisionIntervals": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionIntervals",
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertex",
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertexMap": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexMap",
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertexSimplex": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionLastVertexSimplex",
+    "SerrePositivity.KST.Comparison.SubdivisionMaximum": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionMaximum",
+    "SerrePositivity.KST.Comparison.SubdivisionNerveChains": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains",
+    "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionRearDegeneracy",
+    "SerrePositivity.KST.Comparison.SubdivisionUnions": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions",
+    "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.UniqueFaceNondegenerate"
   },
   "namespaces": {
     "SerrePositivity.KST.ProExcision.AWBoundaryCoordinates": {
@@ -3572,6 +5315,222 @@
     },
     "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": {
       "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories"
+    },
+    "SerrePositivity.KST.Comparison.CutDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.DegeneracyFibers": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionAdjunction": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionHornBoundary": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.DoubleSubdivisionHornMap": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExComplexity": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExDegeneracyExpansion": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExDoubleHornFiller": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExDoublePairing": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExExpansionFaces": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExExpansionSmallComplexity": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinity": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityAnodyne": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityFibrations": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityKan": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityLocalization": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityMonoidal": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExInfinityStages": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingBijection": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingCore": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingFaceRank": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingFaceUniqueness": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingNondegenerate": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingProperness": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingRegular": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExPairingStep": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExUnit": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.ExUnitAnodyne": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.FaceIntervals": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.FiniteChainGreatest": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.FiniteChainIntervals": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.FiniteChainUnion": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornChainBoundary": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornChainMissingVertex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornChainNerve": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornChainVertices": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornFaceNerveCover": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornFacePoset": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSimplexFaceFactorization": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionComparison": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionFaceMaps": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionInclusion": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionIso": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionLastVertex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.HornSubdivisionSurjective": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.NerveChainsLastVertex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.OrderNerveContraction": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.OrderNerveSubcomplexIso": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SimplexFaceRetraction": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionAdjunctionSimplex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionAnodyne": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionCommonFace": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionCommutation": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionCut": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionDoubleDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFaceCut": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFaceLifting": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFrontCut": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFrontDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionFrontFace": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionIntervals": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertexMap": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionLastVertexSimplex": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionMaximum": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionNerveChains": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.SubdivisionUnions": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": {
+      "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
     }
   },
   "opens": {
@@ -3579,6 +5538,7 @@
     "SerrePositivity.KST.SConstruction": "SerrePositivity.KST.SConstruction",
     "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.KST.LocalizingInvariants",
     "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.F2.Presentable",
-    "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality"
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality",
+    "SerrePositivity.KST.Comparison": "SerrePositivity.KST.Comparison"
   }
 }

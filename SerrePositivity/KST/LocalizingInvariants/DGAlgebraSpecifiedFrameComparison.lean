@@ -121,7 +121,7 @@ lemma nativeCellSpecifiedFramePinchedEquivalence_unit_Q (A B : Mon (Complex R))
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (EInfinity.Hammock.arrowMap
         (modelRelativeCategory (Mon (Complex R))).weakEquivalences (AsSmall.up.map f) ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
         kanHammockHomPinchedMap (modelRelativeCategory (Mon (Complex R)))
           (modelRelativeObject (Mon (Complex R)) (cellResolution R A))
           (modelRelativeObject (Mon (Complex R)) B) ≫

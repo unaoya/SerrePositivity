@@ -68,7 +68,7 @@ lemma dgKappaNativeBFFiniteBoundaryFunctor_hom
     ((stableBoundaryPointedEnrichedFunctor r).map C.obj E.obj ≫
       exInfinityPointedEnrichedFunctor.map _ _)) = _
   rw [Category.id_comp, ← Category.assoc, stableBoundaryPointedEnrichedFunctor_hom]
-  exact coaugmentedPointedEnrichedFunctor_hom Comparison.exInfinity
-    Comparison.exInfinityUnit _
+  exact coaugmentedPointedEnrichedFunctor_hom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit _
 
 end SerrePositivity.KST.SConstruction

@@ -32,7 +32,7 @@ lemma stableKanAssemblyRightTransformation_app (r : ℕ) (C : _root_.SerrePositi
       eHomEquiv SSet (stableKanAssemblyRightMap r C) :=
   _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom _ _ _ _ _ C _ _
     (exInfinitySuspensionTransformation_app ((stableOneDirectionPointedEnrichedFunctor r).obj C))
-    (coaugmentedPointedEnrichedFunctor_hom Comparison.exInfinity Comparison.exInfinityUnit
+    (coaugmentedPointedEnrichedFunctor_hom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
       (stableSuspensionAssemblyMap r C))
 
 /-- 概要：同じ実左脚は全高次 Hom の前後合成に自然。

@@ -52,10 +52,10 @@ lemma relativeKanHammockSourceFunctor :
   apply (eHomEquiv SSet).injective
   rw [HomotopyLimits.enrichedUnderlying_eHom_map]
   change (ForgetEnrichment.homTo SSet ((kanHammockSourceFunctor C).map f)) ≫
-    exInfinity.map (Relative.colimitMap F X Y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y) =
       ForgetEnrichment.homTo SSet ((kanHammockSourceFunctor D).map (F.functor.map f))
   rw [kanHammockSourceFunctor_homTo, kanHammockSourceFunctor_homTo,
-    Category.assoc, ← exInfinityUnit.naturality, Functor.id_map, ← Category.assoc,
+    Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality, Functor.id_map, ← Category.assoc,
     relativeHammockEnriched_arrowMap]
 
 /-- 概要：元の局所化源は同じ全 hammock coherent nerve 比較と可換。

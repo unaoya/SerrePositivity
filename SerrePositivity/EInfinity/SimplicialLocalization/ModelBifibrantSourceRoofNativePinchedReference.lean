@@ -66,7 +66,7 @@ def modelBifibrantSourceRoofProductCommaNativePinchedMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
       pinchedHom (modelBifibrantHammockVertex
         (modelBifibrantSourceRoofDegreeObject X Y q b)) (modelBifibrantHammockVertex Y) :=
-  modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ exInfinityUnit.app _ ≫
+  modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
     kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
       (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
       (modelBifibrantObject C Y)

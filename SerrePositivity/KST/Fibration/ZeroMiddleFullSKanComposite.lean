@@ -27,7 +27,7 @@ theorem zeroFunctorFullSKanFamily_vertex {A C : _root_.SerrePositivity.InfinityC
     (hF : IsZeroVertex (functorVertex F.hom)) :
     (zeroFunctorFullSKanFamily A C).app (Opposite.op ⦋0⦌)
         (fullSubcategoryVertex IsZeroVertex (functorVertex F.hom) hF) =
-      functorVertex (exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
+      functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
   have h := congrArg (SSet.unitHomEquiv _) (zeroFunctorFullSKanFamily_fixed F hF)
   exact h
 
@@ -42,7 +42,7 @@ theorem zeroMiddleTriangle_composite_zero :
 def zeroMiddleFullSKanComposite :
     fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩) :=
-  exInfinity.map (simplicialDiagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (stableTriangleCompositeMap s) (zeroMiddleTriangle_composite_zero s hZ)))
 
 /-- 同じ中間対象比較と元の第二短辺の合成は、元の合成 path の実射に厳密一致する。 -/
@@ -52,9 +52,9 @@ theorem zeroMiddleFullSKanComparison_last :
       zeroMiddleFullSKanComposite s hZ := by
   have hFG := zeroMiddleTriangle_composite_zero s hZ
   rw [stableTriangleCompositeMap_eq_comp s] at hFG
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← Functor.map_comp, ← Functor.map_comp]
-  apply congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
+  apply congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map f))
   have hc : ∀ (F G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩)) (h : F = G)
       (hf : IsZeroVertex (functorVertex F.hom)) (hg : IsZeroVertex (functorVertex G.hom)),
       zeroFunctorFullSMap F hf = zeroFunctorFullSMap G hg := by

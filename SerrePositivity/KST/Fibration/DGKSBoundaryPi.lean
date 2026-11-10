@@ -27,7 +27,7 @@ abbrev dgKSBoundaryKan (P : PerfDGInput.{u, v} A) : PointedSimplicialSet.{max (u
   ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj P).obj
 
 instance dgKSBoundaryKan_kanComplex (P : PerfDGInput.{u, v} A) :
-    KanComplex (dgKSBoundaryKan A P).right := Comparison.exInfinity_kanComplex _
+    KanComplex (dgKSBoundaryKan A P).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ元の境界 Kan 値から固定 K(P) の第一正段への実比較。 -/
 def dgKSBoundaryStageMap (P : PerfDGInput.{u, v} A) :

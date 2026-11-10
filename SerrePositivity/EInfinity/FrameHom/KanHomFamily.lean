@@ -22,26 +22,26 @@ variable {C : Type u} [Category.{v} C]
 方針：元の対象と射を同じ Ex∞ 関手で送る。
 規約：全標的で一つの関手。使われ方：coherent な全族比較。 -/
 def kanHomFamily (F : C ⥤ SSet.{w}) : C ⥤ KanObject.{w} where
-  obj X := ⟨exInfinity.obj (F.obj X), inferInstance⟩
-  map f := exInfinity.map (F.map f)
-  map_id X := by change exInfinity.map (F.map (𝟙 X)) = 𝟙 _; rw [F.map_id, exInfinity.map_id]
+  obj X := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (F.obj X), inferInstance⟩
+  map f := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (F.map f)
+  map_id X := by change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (F.map (𝟙 X)) = 𝟙 _; rw [F.map_id, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_id]
   map_comp f g := by
-    change exInfinity.map (F.map (f ≫ g)) = exInfinity.map (F.map f) ≫ exInfinity.map (F.map g)
-    rw [F.map_comp, exInfinity.map_comp]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (F.map (f ≫ g)) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (F.map f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (F.map g)
+    rw [F.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp]
 
 /-- 概要：元の全自然変換を同じ Kan 化の全自然変換として公開する。
 方針：同じ Ex∞ 関手を全成分に後合成する。
 規約：元の全図式の自然性。使われ方：全関手 ∞ 圏の比較辺。 -/
 def kanHomFamilyMap {F G : C ⥤ SSet.{w}} (η : F ⟶ G) :
     kanHomFamily F ⋙ kanObjectForget ⟶ kanHomFamily G ⋙ kanObjectForget :=
-  Functor.whiskerRight η exInfinity
+  Functor.whiskerRight η _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
 
 /-- 概要：元の全 Kan 化族は各標的で Kan 複体。
 方針：同じ Ex∞ の Kan 性を読む。
 規約：元の標的は任意。使われ方：同じ比較の QCat 同値判定。 -/
 lemma kanHomFamily_kanComplex (F : C ⥤ SSet.{w}) (X : C) :
     KanComplex ((kanHomFamily F ⋙ kanObjectForget).obj X) := by
-  change KanComplex (exInfinity.obj (F.obj X))
+  change KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (F.obj X))
   infer_instance
 attribute [local instance] kanHomFamily_kanComplex
 
@@ -51,7 +51,7 @@ attribute [local instance] kanHomFamily_kanComplex
 lemma kanHomFamilyMap_isQCatEquivalence {F G : C ⥤ SSet.{w}} (η : F ⟶ G)
     (hη : ∀ X, IsWeakHomotopyEquivalence (η.app X)) (X : C) :
     IsQCatEquivalence ((kanHomFamilyMap η).app X) := by
-  change IsQCatEquivalence (exInfinity.map (η.app X))
+  change IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (η.app X))
   exact (Hammock.exInfinity_map_weak _ (hη X)).isSimplicialHomotopyEquivalence.isQCatEquivalence
 
 /-- 概要：同じ全 Hom 族の coherent な空間値図式を回収する。

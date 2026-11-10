@@ -65,7 +65,7 @@ theorem zeroFunctorFullSMap_localized_isIso {A Z : _root_.SerrePositivity.Infini
 def verdierFullSZeroCornerKanMap (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
     fullSRealizationKanObject d.left ⟶
       stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) :=
-  exInfinity.map (simplicialDiagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
     (zeroFunctorFullSMap (verdierLeftExactMap d) (verdierLeftExactMap_zero d)))
 
 /-- 同じ元の全 S• 零角比較の coherent 辺は可逆。 -/
@@ -73,17 +73,17 @@ theorem verdierFullSZeroCornerKanMap_isInvertible (d : _root_.SerrePositivity.In
     IsInvertibleEdge (coherentNerveEdge (verdierFullSZeroCornerKanMap d)) := by
   apply coherentKanEdge_isInvertible_of_isQCatEquivalence
   apply isQCatEquivalence_of_anodyneQ_isIso
-  exact (exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (zeroFunctorFullSMap_localized_isIso _ _ d.zero_corner)
 
 /-- 元の実左辺は、元の core 包含と同じ実可逆零角比較の厳密合成。 -/
 theorem verdierFullSZeroCornerKanMap_left (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
-    exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)) ≫
         verdierFullSZeroCornerKanMap d =
-      exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierLeftExactMap d))) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierLeftExactMap d))) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← Functor.map_comp, coreSFullRealizationInclusion, ← Functor.map_comp]
-  exact congrArg (fun f => exInfinity.map (simplicialDiagonalFunctor.map f))
+  exact congrArg (fun f => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map f))
     (by simpa only [Category.assoc] using
       zeroFunctorFullSMap_core (𝟙 d.left.obj) (verdierLeftExactMap d) (verdierLeftExactMap_zero d))
 
@@ -93,12 +93,12 @@ theorem verdierFullSZeroCornerKanMap_top (d : _root_.SerrePositivity.InfinityCat
         (show stableCoreSingleKanObject
           (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex d.square 0 1)) ⟶
             stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
-          exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierTopExactMap d)))) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (coreSExactMap (verdierTopExactMap d)))) =
       (show fullSRealizationKanObject d.left ⟶
         stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) from
-          exInfinity.map (simplicialDiagonalFunctor.map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
             (zeroFunctorFullSMap (verdierNullCompositeOriginalMap d 0) (verdierUpperComposite_zero d)))) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← Functor.map_comp, ← Functor.map_comp, verdierUpperFullSMap_comp]
 
 end SerrePositivity.KST.Fibration

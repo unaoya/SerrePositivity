@@ -54,7 +54,7 @@ lemma exInfinityPointedUnit_naturality {X Y : PointedSSetObject.{u}} (f : X ⟶ 
     exInfinityPointedUnit X ≫ (exInfinityPointedKanMap f).hom =
       (show X.obj ⟶ Y.obj from f) ≫ exInfinityPointedUnit Y := by
   apply Under.UnderMorphism.ext
-  exact (Comparison.exInfinityUnit.naturality (show X.obj ⟶ Y.obj from f).right).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (show X.obj ⟶ Y.obj from f).right).symm
 
 /-- 同じ前向き Kan 比較は、通常の点つき射に関して基点固定成分で自然。 -/
 lemma pointedSOAExInfinityComparison_naturality_component

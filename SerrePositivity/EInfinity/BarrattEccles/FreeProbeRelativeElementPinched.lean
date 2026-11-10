@@ -28,7 +28,7 @@ def freeProbeRelativeElementPinchedMap : nerve (freeProbeRelativeElementIndex A 
       ((cAlgLocalizationSource A).app (op ⦋0⦌)
         (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) :=
   freeProbeRelativeElementRoofMap A X B ≫
-    exInfinityUnit.app _ ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
     kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) ≫
     pinchedHomMap (kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom

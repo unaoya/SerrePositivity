@@ -27,7 +27,7 @@ theorem stableMultiSingleKan_hom :
     eHomEquiv SSet f ≫ (stableMultiKanEnrichedFunctor 0).map C D =
       eHomEquiv SSet (show (stableMultiKanEnrichedFunctor 0).obj C ⟶
         (stableMultiKanEnrichedFunctor 0).obj D from
-          exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) := by
   change eHomEquiv SSet f ≫ ((stableMultiRealizationEnrichedFunctor 1).map C D ≫
     exInfinityClosedKanEnrichedFunctor.map _ _) = _
   rw [← Category.assoc, stableMultiRealizationEnrichedFunctor_hom]
@@ -46,7 +46,7 @@ theorem stableCoreSingleKan_hom :
   have he : eqToHom (stableCoreSingleKan_object_eq C).symm ≫
       (show (stableMultiKanEnrichedFunctor 0).obj C ⟶
         (stableMultiKanEnrichedFunctor 0).obj D from
-          exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) ≫
       eqToHom (stableCoreSingleKan_object_eq D) = stableCoreSingleKanMap f := by
     rw [← coreSingleKanIso_hom_eq, ← coreSingleKanIso_inv_eq]
     have hn := coreSingleKanIso_naturality (C := C) (D := D) f

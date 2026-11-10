@@ -24,10 +24,10 @@ open scoped Simplicial
 def completionRelativeKanInclusion (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    exInfinity.obj (coreSRealizationFunctor.obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
       (closedStableModel (completionImageClosedPredicate r ι f hf))) ⟶
-        exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
-  exInfinity.map (coreSRealizationFunctor.map
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map
     (closedStableInclusion (completionImageClosedPredicate r ι f hf)))
 
 /-- 概要：採用済みの二入力下で元の包含は π₁ 単射・二次以上で全単射。
@@ -40,7 +40,7 @@ lemma completionRelativeKanInclusion_groupConditions_of_inputs
     (hf : F2.Idempotent.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate r ι f hf))
-    (a : (exInfinity.obj (coreSRealizationFunctor.obj
+    (a : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
       (closedStableModel (completionImageClosedPredicate r ι f hf)))) _⦋0⦌) :
     Function.Injective
       (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (completionRelativeKanInclusion r ι f hf) (x := a) rfl) ∧
@@ -49,7 +49,7 @@ lemma completionRelativeKanInclusion_groupConditions_of_inputs
   let j := completionRelativeKanComparison r ι f hf
   let q := completionRelativeKanProjection r ι f hf
   have hj : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (j : exInfinity.obj (coreSRealizationFunctor.obj
+      (j : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
         (closedStableModel (completionImageClosedPredicate r ι f hf))) ⟶
           completionRelativeKanPullback r ι f hf) :=
     completionRelativeKanComparison_piIsomorphism_of_input r ι f hf h

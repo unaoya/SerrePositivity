@@ -34,7 +34,7 @@ theorem verdierOriginalFullSCoreHomotopy_direct_edge
         ((verdierOriginalNativeHomFamily d j).app (Opposite.op ⦋0⦌)
           (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge := by
   let E := verdierOriginalFullSHomComparison d j k
-  let p := (pre (exInfinity.map (coreSFullRealizationInclusion
+  let p := (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion
     (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
       (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj
   have hv : coherentTriangleDirectVertexMap.app (Opposite.op ⦋0⦌)

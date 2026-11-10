@@ -45,11 +45,11 @@ lemma pathMap_comp_one_of_target {n : ℕ} (Γ : Fin (n + 1) ⥤ I)
     eComp SSet (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
       ⟨ULift.up j.castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ ≫ pathMap C U p hp σ hU Γ t i =
     snd _ _ ≫ pathLastMaximumMap j ≫ SSet.yonedaEquiv.symm Γ ≫ familyMap C U p hp σ hU ≫
-      exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (precomposePointMap (arrowMap C.weakEquivalences (p.app (Γ.obj i))) Y) := by
   rw [pathMap_comp C U p hp σ hU Γ t i j hij,
     pathMap_one_of_source C U p hp σ hU Γ t j hj]
   simp only [Category.assoc]
-  rw [← exInfinity.map_comp, precomposePointMap_comp, composeUnitMaps_arrowMap]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, precomposePointMap_comp, composeUnitMaps_arrowMap]
   have h := (p.naturality (Γ.map (homOfLE hij))).trans (Category.comp_id _)
   rw [h]
 

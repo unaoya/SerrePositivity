@@ -25,15 +25,15 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
 規約：同じ全自然変換の実成分。
 使われ方：Yoneda 比較へ渡す元の射の零単体の同定。 -/
 lemma arrowMap_exInfinity_colimitIso (f : X ⟶ Y) :
-    arrowMap W f ≫ exInfinityUnit.app (colimitGraph W X Y) ≫
-      exInfinity.map (colimitIso W X Y).hom =
+    arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph W X Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (colimitIso W X Y).hom =
         arrowMap (weak W) (AsSmall.up.map f) ≫
-          exInfinityUnit.app (colimitGraph (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y)) := by
-  have h := congrArg (arrowMap W f ≫ ·) (exInfinityUnit.naturality (colimitIso W X Y).hom)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (colimitGraph (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y)) := by
+  have h := congrArg (arrowMap W f ≫ ·) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (colimitIso W X Y).hom)
   simp only [Functor.id_map] at h
   exact h.symm.trans (by
     simpa only [Category.assoc] using congrArg
-      (fun a => a ≫ exInfinityUnit.app
+      (fun a => a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
         (colimitGraph (weak W) (AsSmall.up.obj X) (AsSmall.up.obj Y)))
       (arrowMap_colimitIso W f))
 

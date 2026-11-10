@@ -121,7 +121,7 @@ lemma framePinchedEquivalence_unit_Q {Q : SSet.{u + 1}} [Quasicategory Q] :
             (rightFrameFamily R) f 0 ≫ (framePinchedEquivalence R G hG X hX Y).hom) =
         SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
           (Hammock.arrowMap (modelRelativeCategory (Mon (Complex R))).weakEquivalences
-            (AsSmall.up.map f) ≫ SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+            (AsSmall.up.map f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
             kanHammockHomPinchedMap (modelRelativeCategory (Mon (Complex R)))
               (modelRelativeObject (Mon (Complex R)) X)
               (modelRelativeObject (Mon (Complex R)) Y) ≫

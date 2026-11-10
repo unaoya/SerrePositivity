@@ -79,7 +79,7 @@ def verdierOriginalFullSHomFamily (d : _root_.SerrePositivity.InfinityCategories
 使われ方：同じ全 S• 比較と core 比較を整合させる。 -/
 theorem verdierOriginalFullSHomFamily_core (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
     verdierOriginalFullSHomFamily d j ≫
-      (pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
         (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj =
       verdierOriginalNativeHomFamily d j := by
   rw [verdierOriginalFullSHomFamily, Category.assoc, zeroFunctorFullSKanFamily_core,
@@ -103,7 +103,7 @@ def verdierOriginalFullSHomComparison (d : _root_.SerrePositivity.InfinityCatego
 def verdierOriginalFullSCoreHomotopy (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     SSet.Homotopy (verdierOriginalNativeHomFamily d j) (verdierOriginalNativeHomFamily d k) where
   h := (simplicialHomotopyOfFunctorEdge (verdierOriginalFullSHomComparison d j k).edge).h ≫
-    (pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+    (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
       (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj
   h₀ := by
     rw [← Category.assoc, (simplicialHomotopyOfFunctorEdge
@@ -140,7 +140,7 @@ theorem verdierOriginalFullSCoreHomotopy_direct (d : _root_.SerrePositivity.Infi
     rfl
   simpa only [Category.assoc, verdierOriginalFullSHomFamily_core] using!
     congrArg (fun f => f ≫
-      (pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
         (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj) hs
 
 /-- 概要：同じ全 S• 比較の全 path 合成端を読む実区間族。
@@ -160,7 +160,7 @@ theorem verdierOriginalFullSCoreHomotopy_composite (d : _root_.SerrePositivity.I
     lift (SSet.const (ComposableArrows.mk₀ coherentTriangleFullPath.{u}))
       (𝟙 (Δ[1] : SSet.{u})) ≫ (verdierOriginalFullSCoreHomotopy d j k).h =
       verdierOriginalFullSCompositePath d j k ≫
-        (pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
           (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj :=
   (Category.assoc _ _ _).symm
 

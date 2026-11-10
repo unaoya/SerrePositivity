@@ -109,7 +109,7 @@ omit [IsCofibrant X] in
 規約：全標的と全中間図式。使われ方：QCat 同値判定の型の照合。 -/
 lemma rightFrameHammockKanDiagram_kanComplex (i : Fin 7) (Y : AsSmall.{max u v} C) :
     KanComplex ((rightFrameHammockKanDiagram q r i ⋙ kanObjectForget).obj Y) := by
-  change KanComplex (SerrePositivity.KST.Comparison.exInfinity.obj
+  change KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
     ((rightFrameHammockFamilyDiagram q r i).obj (AsSmall.down.obj Y)))
   infer_instance
 attribute [local instance] rightFrameHammockKanDiagram_kanComplex

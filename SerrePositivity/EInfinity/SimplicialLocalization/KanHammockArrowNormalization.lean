@@ -24,7 +24,7 @@ variable (C : RelativeCategory.{u}) {X Y : C.category}
 方針：元の源関手の homTo 公式と原本の coherent Hom 零単体公式を使う。
 規約：辺の厳密な等式。使われ方：frame 単位点の正規化の終端。 -/
 lemma kanHammockHomPinchedMap_arrow_zero (f : X ⟶ Y) :
-    (((arrowMap C.weakEquivalences f ≫ exInfinityUnit.app _ ≫
+    (((arrowMap C.weakEquivalences f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
       kanHammockHomPinchedMap C X Y).app (op ⦋0⦌) PUnit.unit)).val =
       (hammockLocalizationNerveMap C).app (op ⦋1⦌) (ComposableArrows.mk₁ f) := by
   simp only [NatTrans.comp_app_apply, kanHammockHomPinchedMap,

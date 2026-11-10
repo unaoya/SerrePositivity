@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKa
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComponent
 public import SerrePositivity.KST.SConstruction.OneDirectionWeakComparison
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 
 /-! # 元の S₁ 比較の全基点同型と関手 ∞ 圏での可逆性
 概要：同じ Ex∞ 比較の全基点 π 同型と、全入力上の実際の関手同型を得る。
@@ -25,10 +25,10 @@ lemma presentedPerfectDGOneDirectionKanComparisonMap_piIsomorphism (r : ℕ)
     _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
       (presentedPerfectDGOneDirectionKanComparisonMap A r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map
+  change IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
     (oneDirectionReducedComparison r
       (stableCategoryModel (presentedPerfectDGStableCategory A C))).right))
-  exact (Comparison.exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (oneDirectionReducedComparison_localized_isIso r
       (stableCategoryModel (presentedPerfectDGStableCategory A C)))
 

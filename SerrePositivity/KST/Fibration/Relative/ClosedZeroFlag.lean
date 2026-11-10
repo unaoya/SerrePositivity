@@ -70,10 +70,10 @@ lemma specifiedPoint_map_homotopy {E K : SSet.{u}} [KanComplex K]
 def closedKernelZeroFlagContraction {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     SSet.Homotopy
       (stdSimplex.isTerminalObj₀.from (closedKernelRealization P) ≫
-        closedKernelZeroFlag P ≫ exInfinityUnit.app (closedKernelRealization P))
-      (exInfinityUnit.app (closedKernelRealization P)) := by
-  let : KanComplex (exInfinity.obj (closedKernelRealization P)) := exInfinity_kanComplex _
+        closedKernelZeroFlag P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedKernelRealization P))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (closedKernelRealization P)) := by
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (closedKernelRealization P)) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact Classical.choice (specifiedPoint_map_homotopy (closedKernelZeroFlag P)
-    (exInfinityUnit.app _) (closedKernelRealization_toPoint_isIso P))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) (closedKernelRealization_toPoint_isIso P))
 
 end SerrePositivity.KST.Fibration.Relative

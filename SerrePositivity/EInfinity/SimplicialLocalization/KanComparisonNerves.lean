@@ -33,11 +33,11 @@ instance kanFreeHammockSimplicialCategory : SimplicialCategory (KanFreeHammockCa
 
 instance kanHammockHom_kanComplex (X Y : KanHammockCategory C) :
     SSet.KanComplex (SimplicialCategory.sHom X Y) := by
-  change SSet.KanComplex (exInfinity.obj (colimitGraph C.weakEquivalences X Y))
+  change SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences X Y))
   infer_instance
 instance kanFreeHammockHom_kanComplex (X Y : KanFreeHammockCategory C) :
     SSet.KanComplex (SimplicialCategory.sHom X Y) := by
-  change SSet.KanComplex (exInfinity.obj (freeHammockDiagonal C X Y))
+  change SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (freeHammockDiagonal C X Y))
   infer_instance
 
 def kanFreeHammockAugmentationFunctor :

@@ -26,7 +26,7 @@ namespace SerrePositivity.KST.Fibration
 theorem verdierMovingUpperCompositeFamily_core (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
   verdierMovingUpperCompositeFamily d =
     verdierMovingUpperLastFamily d ≫ (SSet.uliftFunctor.{u+1,u}).map
-      ((pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
         (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj) := by
   apply SSet.hom_ext
   intro n
@@ -59,7 +59,7 @@ theorem verdierMovingUpperCompositeFamily_component (d : _root_.SerrePositivity.
   change (verdierOriginalFullSCoreHomotopy d 0 1).h.app (Opposite.op ⦋1⦌)
     ((Truncated.Edge.id (X := (truncation 2).obj (nerve TriangleNativePath.{u}))
       (ComposableArrows.mk₀ triangleFullPath.{u})).edge, homotopyIntervalEdge.edge) =
-      ((pre (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
+      ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).app
         (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)).obj).app
           (Opposite.op ⦋1⦌) ((verdierOriginalFullSCompositePath d 0 1).app
             (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u}))))

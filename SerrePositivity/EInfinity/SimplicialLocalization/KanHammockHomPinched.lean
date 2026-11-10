@@ -24,7 +24,7 @@ open SerrePositivity.KST.Comparison
 open scoped Simplicial
 variable (C : RelativeCategory.{u}) (X Y : C.category)
 
-def kanHammockHomLiftIso : exInfinity.obj (colimitGraph C.weakEquivalences X Y) ≅
+def kanHammockHomLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences X Y) ≅
     SSet.uliftFunctor.{u, u}.obj (SimplicialCategory.sHom
       ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)) where
   hom := { app _ := ↾ULift.up, naturality _ _ _ := rfl }
@@ -32,7 +32,7 @@ def kanHammockHomLiftIso : exInfinity.obj (colimitGraph C.weakEquivalences X Y) 
   hom_inv_id := rfl
   inv_hom_id := rfl
 
-def kanHammockHomPinchedMap : exInfinity.obj (colimitGraph C.weakEquivalences X Y) ⟶
+def kanHammockHomPinchedMap : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph C.weakEquivalences X Y) ⟶
     pinchedHom ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (nerveVertex X))
       ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (nerveVertex Y)) :=
   (kanHammockHomLiftIso C X Y).hom ≫

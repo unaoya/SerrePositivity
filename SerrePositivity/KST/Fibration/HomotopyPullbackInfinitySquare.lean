@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.KanCommSqLimit
 public import SerrePositivity.KST.Comparison.ExInfinityHomotopyPullback
-public import SerrePositivity.KST.Comparison.ExInfinityKan
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan
 public import SerrePositivity.KST.LocalizingInvariants.BFFiberSquare
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
@@ -58,10 +58,10 @@ def exInfinityCommSqInfinitySquare {P X Y Z : SSet.{u}}
     {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z} (sq : CommSq a b f g) :
     (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
   kanCommSqInfinitySquare
-    (P := ⟨exInfinity.obj P, exInfinity_kanComplex P⟩)
-    (X := ⟨exInfinity.obj X, exInfinity_kanComplex X⟩)
-    (Y := ⟨exInfinity.obj Y, exInfinity_kanComplex Y⟩)
-    (Z := ⟨exInfinity.obj Z, exInfinity_kanComplex Z⟩) (exInfinity.map_commSq sq)
+    (P := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj P, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex P⟩)
+    (X := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex X⟩)
+    (Y := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex Y⟩)
+    (Z := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj Z, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex Z⟩) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
 
 /-- 元の homotopy pullback 四角形は、同じ Ex∞ 後の全 coherent 引き戻しを与える。 -/
 theorem exInfinityCommSqInfinitySquare_isPullback {P X Y Z : SSet.{u}}

@@ -29,7 +29,7 @@ lemma presentedPerfectDGOneDirectionKanEnrichedFunctor_obj (r : ℕ)
     ((presentedPerfectDGOneDirectionKanEnrichedFunctor A r).obj C).obj =
       Under.mk ((oneDirectionReducedRealization r
         (stableCategoryModel (presentedPerfectDGStableCategory A C))).hom ≫
-          Comparison.exInfinityUnit.app (oneDirectionReducedRealization r
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (oneDirectionReducedRealization r
             (stableCategoryModel (presentedPerfectDGStableCategory A C))).right) := rfl
 
 /-- 元の同じ境界商射に同じ Ex∞ 関手を適用した実際の Kan 射。 -/

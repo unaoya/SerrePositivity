@@ -26,11 +26,11 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantKanHammockInclusionMap :
-    exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) ⟶
-        exInfinity.obj (algebraReducedHammock A X.obj Y.obj) :=
-  exInfinity.map ((reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (algebraReducedHammock A X.obj Y.obj) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((reducedColimitIso (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (show (cofibrantAlgebraRelativeCategory A).category from X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       cofibrantAlgebraHammockInclusionMap A _ _)
@@ -44,10 +44,10 @@ lemma cofibrantKanHammockInclusionMap_weak :
         (cofibrantAlgebraHammockInclusionMap_weak A _ _))
 
 def cofibrantKanHammockInclusionEquivalence : QCatEquivalence
-    (exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)))
-    (exInfinity.obj (algebraReducedHammock A X.obj Y.obj)) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (algebraReducedHammock A X.obj Y.obj)) :=
   by
     have h := (cofibrantKanHammockInclusionMap_weak A X Y).isSimplicialHomotopyEquivalence
     exact h.isQCatEquivalence.choose
@@ -57,7 +57,7 @@ lemma cofibrantKanHammockInclusionEquivalence_hom :
       cofibrantKanHammockInclusionMap A X Y := rfl
 
 def cofibrantHammockPinchedReferenceMap :
-    exInfinity.obj (algebraReducedHammock A X.obj Y.obj) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (algebraReducedHammock A X.obj Y.obj) ⟶
       pinchedHom (cofibrantHammockVertex A X) (cofibrantHammockVertex A Y) :=
   (cofibrantKanHammockInclusionEquivalence A X Y).inv ≫
     kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)

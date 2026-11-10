@@ -30,11 +30,11 @@ variable (C : RelativeCategory.{u}) (X : C.category)
 lemma kanHammock_sHomWhiskerLeft {Y Z : C.category} (f : Y ⟶ Z) :
     eHomWhiskerLeft SSet ((kanHammockSourceFunctor C).obj X)
       ((kanHammockSourceFunctor C).map f) =
-        exInfinity.map (postcomposePointMap X (arrowMap C.weakEquivalences f)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (postcomposePointMap X (arrowMap C.weakEquivalences f)) := by
   change (ρ_ _).inv ≫ _ ◁ ForgetEnrichment.homTo SSet
     ((kanHammockSourceFunctor C).map f) ≫
-      Functor.LaxMonoidal.μ exInfinity (colimitGraph C.weakEquivalences X Y)
-        (colimitGraph C.weakEquivalences Y Z) ≫ exInfinity.map
+      Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity (colimitGraph C.weakEquivalences X Y)
+        (colimitGraph C.weakEquivalences Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
         (colimitComposition C.weakEquivalences X Y Z) = _
   rw [kanHammockSourceFunctor_homTo]
   simpa only [postcomposePointMap, id_tensorHom] using

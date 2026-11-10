@@ -60,7 +60,7 @@ theorem quotientSKernelRealizationSquare_exInfinity_homotopyPullback
     (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
     (hq : IsIso (AnodyneHomotopy.anodyneQ.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q)))) :
-    IsHomotopyPullback (exInfinity.map_commSq (quotientSKernelRealizationSquare i q)) :=
+    IsHomotopyPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq (quotientSKernelRealizationSquare i q)) :=
   (isHomotopyPullback_exInfinity_iff _).mpr
     (quotientSKernelRealizationSquare_homotopyPullback i q h hq)
 

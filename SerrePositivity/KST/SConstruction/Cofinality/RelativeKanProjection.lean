@@ -27,9 +27,9 @@ def completionRelativeKanPullback (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
   homotopyPullbackObject
-    (exInfinity.map (Fibration.Relative.closedRelativeConstant
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedRelativeConstant
       (completionImageClosedPredicate r ι f hf)))
-    (exInfinity.map (Fibration.Relative.closedKernelRealizationPost
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost
       (completionImageClosedPredicate r ι f hf)))
 
 /-- 概要：元の相対実引き戻しは Kan。
@@ -40,9 +40,9 @@ instance completionRelativeKanPullback_kanComplex (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     KanComplex (completionRelativeKanPullback r ι f hf) := by
-  let : KanComplex (exInfinity.obj
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
       (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y))) :=
-    exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact homotopyPullbackObject_kan _ _
 
 /-- 概要：元の相対引き戻しの第一射影。
@@ -53,7 +53,7 @@ def completionRelativeKanProjection (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
     completionRelativeKanPullback r ι f hf ⟶
-      exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
   pullback.fst _ _
 
 /-- 概要：Sp-8 (3) 入力下で元の第一射影は π₁ 単射・二次以上で全単射。
@@ -70,16 +70,16 @@ lemma completionRelativeKanProjection_groupConditions_of_input
       ∀ n : ℕ, 1 < n → Function.Bijective
         (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (completionRelativeKanProjection r ι f hf) (x := a) rfl) := by
   let P := completionImageClosedPredicate r ι f hf
-  let c := exInfinity.map (Fibration.Relative.closedRelativeConstant P)
-  let b := Arrow.mk (exInfinity.map (Fibration.Relative.closedKernelRealizationPost P))
+  let c := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedRelativeConstant P)
+  let b := Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Fibration.Relative.closedKernelRealizationPost P))
   let p := AnodyneKanReplacement.factorization.p.app b
   let : KanComplex (AnodyneKanReplacement.factorization.Z.obj b) :=
     completionRelativeKanFactor_kanComplex r ι f hf
-  let : KanComplex (exInfinity.obj
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
       (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y))) :=
-    exInfinity_kanComplex _
-  let : KanComplex (exInfinity.obj (Fibration.Relative.closedRelativeRealization P)) :=
-    exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedRelativeRealization P)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact supply (completionRelativeKanProjection r ι f hf) (pullback.snd c p) c p
     (IsPullback.of_hasPullback c p) (AnodyneKanReplacement.factorization.hp b)
     (completionRelativeKanFactor_homotopy_subsingleton r ι f hf)

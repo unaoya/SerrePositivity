@@ -32,7 +32,7 @@ def verdierMovingUpperFirstFamily :
         (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
         (fullSRealizationKanObject d.left)) :=
   SSet.const (ULift.up (SimplicialCategory.homEquiv' _ _
-    (exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))))
 
 /-- 概要：同じ実全 S• 比較の動く合成端を第二短辺の全族として使う。
 方針：元の実区間写像を同じ標準単体同型で宇宙持ち上げする。

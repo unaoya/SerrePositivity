@@ -49,17 +49,17 @@ theorem verdierNullCompositeNativeKanMap_original_heq (d : _root_.SerrePositivit
 theorem quotientSKernelTop_fullSNativeKanMap
     {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
     (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
-    exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom) ≫
         (show (fullSRealizationKanObject A).obj ⟶
           ((stableMultiKanEnrichedFunctor 0).obj (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)).obj from
           zeroFunctorFullSNativeKanMap (A := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A))
             (C := (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C))
             (show A ⟶ C from (show A ⟶ B from i) ≫ (show B ⟶ C from q))
             (verdierSequenceComposite_zero h)) =
-      exInfinity.map (simplicialDiagonalFunctor.map
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map
         (relativeSimplicialFunctorMap i q.hom ≫ relativeSimplicialQuotientMap q)) ≫
           (coreSingleKanIso (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)).hom := by
-  change exInfinity.map _ ≫ (exInfinity.map _ ≫ _) = _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _) = _
   rw [← Category.assoc, ← Functor.map_comp, ← Functor.map_comp,
     ← quotientSKernelTop_zeroFunctorFullSMap h]
 

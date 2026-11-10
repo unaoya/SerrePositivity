@@ -28,7 +28,7 @@ lemma dgKappaNativeBFFiniteStepLeftMap_localized_isIso
   letI : KanComplex (S.functor.obj C).obj.right := S.kan C
   letI : KanComplex
       (((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj).right :=
-    Comparison.exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   let c : ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
       (S.functor.obj C).obj := S.comparison C
   have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right := kanPiIsomorphism_of_localized_isIso _ (S.weak C)

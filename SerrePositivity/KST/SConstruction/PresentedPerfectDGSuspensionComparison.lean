@@ -20,9 +20,9 @@ variable (A : Type u) [CommRing A]
 def presentedPerfectDGOneDirectionSuspensionComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).comp SSet
-        (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit))
+        (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit))
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).comp SSet
-        (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit)) :=
+        (suspensionThenCoaugmentedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)) :=
   _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose
     (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r) _ _
     exInfinitySuspensionTransformation

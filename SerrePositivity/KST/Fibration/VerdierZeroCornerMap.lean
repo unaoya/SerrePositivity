@@ -71,7 +71,7 @@ theorem verdierRelativeSZeroCornerKanMap_isInvertible (d : _root_.SerrePositivit
     IsInvertibleEdge (coherentNerveEdge (verdierRelativeSZeroCornerKanMap d)) := by
   apply coherentKanEdge_isInvertible_of_isQCatEquivalence
   apply isQCatEquivalence_of_anodyneQ_isIso
-  exact (exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (verdierRelativeSZeroCornerMap_localized_isIso d)
 
 /-- Kan 化後も、元の核包含と指定 Verdier 左辺との厳密可換性を保持する。 -/
@@ -81,7 +81,7 @@ theorem verdierRelativeSZeroCornerKanMap_left (d : _root_.SerrePositivity.Infini
           (d.inclusion.hom ≫ d.projection.hom))) ≫
         verdierRelativeSZeroCornerKanMap d =
       exInfinityKanMap (simplicialDiagonalFunctor.map (coreSExactMap (verdierLeftExactMap d))) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← Functor.map_comp, ← Functor.map_comp, verdierRelativeSZeroCornerMap_left]
 
 end SerrePositivity.KST.Fibration

@@ -92,7 +92,7 @@ lemma multiplicativeCellMappingPinchedEquivalence_point_Q (f : cellResolution R 
     SimplicialModel.AnodyneHomotopy.anodyneQ.map
       (EInfinity.Hammock.arrowMap
         (EInfinity.SimplicialLocalization.modelRelativeCategory (Mon (Complex R))).weakEquivalences
-        (AsSmall.up.map f) ≫ SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+        (AsSmall.up.map f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
         EInfinity.SimplicialLocalization.kanHammockHomPinchedMap
           (EInfinity.SimplicialLocalization.modelRelativeCategory (Mon (Complex R)))
           (EInfinity.SimplicialLocalization.modelRelativeObject (Mon (Complex R)) (cellResolution R A))

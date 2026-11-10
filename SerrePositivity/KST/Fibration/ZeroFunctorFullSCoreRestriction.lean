@@ -117,7 +117,7 @@ theorem zeroFunctorFullSCoreRestriction_diagonal (A C : _root_.SerrePositivity.I
 /-- Ex∞ の全 Hom でも、同じ全 S• 延長の core 制限は元の全 Kan Hom 作用そのもの。 -/
 theorem zeroFunctorFullSKanFamily_core (A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
     zeroFunctorFullSKanFamily A C ≫
-        (pre (exInfinity.map (coreSFullRealizationInclusion A))).app
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion A))).app
           (stableCoreSingleKanObject C).obj =
       zeroFunctorLocusToStableHom A C ≫ stableCoreSingleKanEnrichedFunctor.map A C := by
   apply uncurry_injective
@@ -130,7 +130,7 @@ theorem zeroFunctorFullSKanFamily_core (A C : _root_.SerrePositivity.InfinityCat
 theorem zeroStableHomFamilyLift_fullSKan_core {P : SSet.{u}} {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C))
     (hH : ∀ v, StableHomZeroVertex A C (H.app (Opposite.op ⦋0⦌) v)) :
-    (exInfinity.map (coreSFullRealizationInclusion A) ▷ P) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion A) ▷ P) ≫
         uncurry (zeroStableHomFamilyLift H hH ≫ zeroFunctorFullSKanFamily A C) =
       uncurry (H ≫ stableCoreSingleKanEnrichedFunctor.map A C) := by
   rw [← uncurry_pre_app, Category.assoc, zeroFunctorFullSKanFamily_core,
