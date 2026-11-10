@@ -105,3 +105,11 @@ $S=R$、$g=(p^n)_n$、$B=R[1/g]$ とする。$R$ は被約、$g$ は非零因子
 同モジュールの `isAlmostConnective_iff_completedTensor_connective` と `connective_iff_almost` で G-A8-1 の系と Lemma 10.5 を証明した。前者の順向きは正次数への切り捨てに上の消滅を適用し、逆向きは係数三角形の長完全列から商のコホモロジーへの単射を取る。後者は同じ係数三角形で連結性を移す。
 
 登録候補に `SerrePositivity.BhattScholze.Almost.AlmostTensorForward` を追加する。五モジュールの対象ビルド成功。段階 II と同じ方式の対象監査は 186 宣言、標準三公理のみ。C1′ の完備忠実平坦な底変換での反映と、任意の filtered 準圏の余極限での almost 連結性は引き続き drafts にある。
+
+### C1′ の底変換の残り
+
+`completeBaseChangeH0` を既存の有界上側の底変換と同じ自由解像度で比較し、基底環の零次単位同型 `completeBaseChangeUnitIso` を得た。古典的な商の完備底変換を零次の `(R′/JR′)_perfd` と比較する `quotientBaseChangeDerivedIso` も得た。両者は `/tmp/bsw13-basechange-coefficients.lean` で型検査・公理検査済み（標準三公理）。
+
+残る `perfectoidIdeal_baseChange` は、完備底変換した短完全列の零次の長完全列で核を同定する。指定射の像まで含めた候補は `/tmp/bsw13-basechange-probe.lean` にある。候補全体の検査は約 5 分で打ち切って共有鍵を解放したため、型検査済みなのは上記の二つの比較まで。正規化した射 `R′ → (R′/JR′)_perfd` の全射性が得られれば、標準商写像と同じ核を持つ。任意の完備複体での反映には、さらに完備底変換とテンソルの比較、および完備忠実平坦な底変換での零性の反映を接続する必要がある。
+
+Prop 10.4 と Lemma 10.5 の係数三角形は共通化した。最新の対象監査も 186 宣言、標準三公理のみ。C2 の既存宣言は再利用できる。この段の登録候補は上記の五モジュール。C1′ の底変換による反映は drafts に残し、ここまでを段 1 の報告とする。
