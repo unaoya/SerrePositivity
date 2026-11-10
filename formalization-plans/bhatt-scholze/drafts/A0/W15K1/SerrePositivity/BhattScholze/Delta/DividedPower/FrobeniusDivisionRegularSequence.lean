@@ -5,6 +5,7 @@ public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDF
 public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular
 public import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Completion
+import all SerrePositivity.BhattScholze.Delta.Division.Basic
 
 /-!
 # 正則列の Frobenius 除算
@@ -28,13 +29,16 @@ public noncomputable section
 open CategoryTheory CategoryTheory.Limits SerrePositivity.DerivedCompletion
 open scoped TensorProduct
 
-universe u
+set_option quotPrecheck false
+set_option backward.isDefEq.respectTransparency false
+
+universe u v
 
 namespace SerrePositivity.BhattScholze
 
 variable {p : ℕ} [Fact p.Prime]
 
-private theorem polynomial_primeRegular {R : Type u} [CommRing R] {σ : Type u}
+private theorem polynomial_primeRegular {R : Type u} [CommRing R] {σ : Type v}
     (hp : IsSMulRegular R (p : R)) :
     IsSMulRegular (MvPolynomial σ R) (p : MvPolynomial σ R) := by
   intro a b hab
@@ -47,7 +51,7 @@ private theorem polynomial_primeRegular {R : Type u} [CommRing R] {σ : Type u}
     MvPolynomial.coeff_C_mul, MvPolynomial.coeff_C_mul] at he
   exact he
 
-private theorem polynomial_primeIdeal_ker {R : Type u} [CommRing R] (σ : Type u) :
+private theorem polynomial_primeIdeal_ker {R : Type u} [CommRing R] (σ : Type v) :
     RingHom.ker (MvPolynomial.map (σ := σ) (Ideal.Quotient.mk (Ideal.span {(p : R)}))) =
       Ideal.span {(p : MvPolynomial σ R)} := by
   rw [← map_natCast (MvPolynomial.C : R →+* MvPolynomial σ R)]
@@ -64,38 +68,49 @@ private theorem polynomial_primeIdeal_ker {R : Type u} [CommRing R] (σ : Type u
     rw [MvPolynomial.coeff_map, AddMonoidAlgebra.coeff_zero]
     exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton.mpr (h m))
 
-private def polynomialModPrimeEquiv {R : Type u} [CommRing R] (σ : Type u) :
+private def polynomialModPrimeEquiv {R : Type u} [CommRing R] (σ : Type v) :
     (MvPolynomial σ R ⧸ Ideal.span {(p : MvPolynomial σ R)}) ≃+*
       MvPolynomial σ (R ⧸ Ideal.span {(p : R)}) :=
   (Ideal.quotEquivOfEq (polynomial_primeIdeal_ker (p := p) (R := R) σ).symm).trans
     (RingHom.quotientKerEquivOfSurjective (MvPolynomial.map_surjective _
       Ideal.Quotient.mk_surjective))
 
+/-- 概要：有限個の δ 座標の宇宙を係数環に合わせる。
+方針：有限添字を `ULift` で持ち上げる。
+規約：BS 著者版 Lemma 2.36 の自由座標の添字。
+使われ方：同一宇宙の可換環の押し出し。 -/
+abbrev DPDivisionIndex (_ : Type u) (r : ℕ) : Type u := ULift.{u} (Fin r)
+
 section Universal
 
 variable {R : Type u} [CommRing R] (D : DeltaStructure p R) (r : ℕ)
 
-local notation "U" => RelativeFreeDeltaRing (R := R) (Fin r)
-local notation "E" => relativeFreeDeltaStructure (Fin r) D
-local notation "x" => (fun i : Fin r => (MvPolynomial.X (i, 0) : U))
-local notation "b" => (fun i : Fin r => (E).frobeniusLift (x i))
-local notation "C" => DeltaAdjoinDivision E (p : U) b
-local notation "j" => deltaAdjoinDivisionMap E (p : U) b
+local notation "Idx" => DPDivisionIndex R r
+local notation "U" => RelativeFreeDeltaRing (R := R) Idx
+local notation "E" => relativeFreeDeltaStructure Idx D
+local notation "x" => (fun i : Fin r => (MvPolynomial.X (ULift.up i, 0) : U))
+local notation "b" => (fun i : Fin r => DeltaStructure.frobeniusLift E (x i))
+local notation "bUp" => (fun i : Idx => b i.down)
+local notation "C" => DeltaAdjoinDivision E (p : U) bUp
+local notation "j" => deltaAdjoinDivisionMap E (p : U) bUp
 
 private theorem freeCoordinate_primeRegular_mod (eR : (R ⧸ Ideal.span {(p : R)}) ≃+* ZMod p) :
     IsKoszulResolution (Ideal.Quotient.mk (Ideal.span {(p : U)}) ∘ x) := by
-  let e := (polynomialModPrimeEquiv (p := p) (R := R) (Fin r × ℕ)).trans
-    (MvPolynomial.mapEquiv (Fin r × ℕ) eR)
+  let e := (polynomialModPrimeEquiv (p := p) (R := R) (Idx × ℕ)).trans
+    (MvPolynomial.mapEquiv (Idx × ℕ) eR)
   have hx (i : Fin r) : e (Ideal.Quotient.mk (Ideal.span {(p : U)}) (x i)) =
-      MvPolynomial.X (i,0) := by
-    change (MvPolynomial.mapEquiv (Fin r × ℕ) eR)
+      MvPolynomial.X (ULift.up i, 0) := by
+    change (MvPolynomial.mapEquiv (Idx × ℕ) eR)
       (MvPolynomial.map (Ideal.Quotient.mk (Ideal.span {(p : R)})) (x i)) = _
     rw [MvPolynomial.map_X, MvPolynomial.mapEquiv_apply, MvPolynomial.map_X]
   apply isKoszulResolution_of_ringEquiv e
   have h := Andre.monicRelation_fin_isKoszulResolution
-    (fun _ : Fin r × ℕ => (Polynomial.X : Polynomial (ZMod p))) (fun _ => Polynomial.monic_X)
-    (fun i : Fin r => (i, (0 : ℕ))) (fun _ _ h => congrArg Prod.fst h)
-  simpa [hx, Andre.monicRelation] using h
+    (fun _ : Idx × ℕ => (Polynomial.X : Polynomial (ZMod p))) (fun _ => Polynomial.monic_X)
+    (fun i : Fin r => (ULift.up i, (0 : ℕ))) (fun _ _ h => congrArg (fun t => t.1.down) h)
+  have heq : e.toRingHom ∘ Ideal.Quotient.mk (Ideal.span {(p : U)}) ∘ x =
+      (fun i : Fin r => MvPolynomial.X (ULift.up i, 0)) := funext hx
+  rw [heq]
+  simpa [Andre.monicRelation] using h
 
 /-- 概要：自由 δ 座標で生の Frobenius 除算は分冪表示と係数上で同型。
 方針：両方の環を p を反転した環の階乗部分環と同定する。
@@ -104,25 +119,41 @@ private theorem freeCoordinate_primeRegular_mod (eR : (R ⧸ Ideal.span {(p : R)
 def freeCoordinateFrobeniusDivisionPDEquiv
     (hR : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : R)) (hpR : IsSMulRegular R (p : R))
     (eR : (R ⧸ Ideal.span {(p : R)}) ≃+* ZMod p) :
-    letI : Algebra U C := (j).toAlgebra
     C ≃ₐ[U] DPFamilyPresentation x := by
-  letI : Algebra U C := (j).toAlgebra
   have hlocal (m : ℕ) (hm : ¬p ∣ m) : IsUnit (m : U) := by
     simpa only [map_natCast] using (hR m hm).map (MvPolynomial.C : R →+* U)
   have hpU : IsSMulRegular U (p : U) := polynomial_primeRegular hpR
-  have hpC : IsSMulRegular C (p : C) := freeCoordinateFrobeniusDivision_primeRegular D (Fin r)
-    hpU ((polynomialModPrimeEquiv (Fin r × ℕ)).trans (MvPolynomial.mapEquiv _ eR))
+  have hpC : IsSMulRegular C (p : C) := freeCoordinateFrobeniusDivision_primeRegular D Idx
+    hpU ((polynomialModPrimeEquiv (Idx × ℕ)).trans (MvPolynomial.mapEquiv _ eR))
+  let t := deltaAdjoinDivisionReindexEquiv E (p : U) bUp b Equiv.ulift (fun _ => rfl)
+  have ht (y : U) : t (j y) = deltaAdjoinDivisionMap E (p : U) b y :=
+    DFunLike.congr_fun (deltaAdjoinDivisionReindexEquiv_comp E (p : U) bUp b
+      Equiv.ulift (fun _ => rfl)) y
+  have hpC' : IsSMulRegular (DeltaAdjoinDivision E (p : U) b) (p : DeltaAdjoinDivision E (p : U) b) := by
+    intro y z h
+    apply t.symm.injective
+    apply hpC
+    change (p : DeltaAdjoinDivision E (p : U) b) * y =
+      (p : DeltaAdjoinDivision E (p : U) b) * z at h
+    change (p : C) * t.symm y = (p : C) * t.symm z
+    simpa only [map_mul, map_natCast] using congrArg t.symm h
   have hpDP := dpFamilyPresentation_primeRegular x hpU (freeCoordinate_primeRegular_mod r eR)
-  have hpDP' : IsRegular (p : DPFamilyPresentation x) :=
-    ⟨hpDP, fun y z h => hpDP (by simpa only [mul_comm] using h)⟩
-  let l := frobeniusDivisionFactorialEquiv E x hlocal hpC
+  have hpDP' : IsRegular (p : DPFamilyPresentation x) := by
+    refine ⟨hpDP, ?_⟩
+    intro y z hyz
+    apply hpDP
+    change (p : DPFamilyPresentation x) * y = (p : DPFamilyPresentation x) * z
+    change y * (p : DPFamilyPresentation x) = z * (p : DPFamilyPresentation x) at hyz
+    exact (mul_comm _ _).trans (hyz.trans (mul_comm _ _))
+  let l := frobeniusDivisionFactorialEquiv E x hlocal hpC'
+  letI : Algebra U (pDivisionFactorialSubring p x) := (pDivisionFactorialBase p x).toAlgebra
   let q := dpFamilyFactorialEquiv x hlocal hpDP'
-  exact { __ := l.trans q.symm.toRingEquiv
+  exact { __ := t.trans (l.trans q.symm.toRingEquiv)
           commutes' := fun a => by
-            change q.symm (l (j a)) = algebraMap U (DPFamilyPresentation x) a
+            change q.symm (l (t (j a))) = algebraMap U (DPFamilyPresentation x) a
             apply q.injective
-            rw [AlgEquiv.apply_symm_apply, AlgEquiv.commutes]
-            exact frobeniusDivisionFactorialEquiv_base E x hlocal hpC a }
+            rw [AlgEquiv.apply_symm_apply, AlgEquiv.commutes, ht]
+            exact frobeniusDivisionFactorialEquiv_base E x hlocal hpC' a }
 
 end Universal
 
@@ -140,54 +171,75 @@ local notation "jA" => deltaAdjoinDivisionMap D (p : A) (fun i => D.frobeniusLif
 規約：表示環の同型には正則性を使わない（BS 著者版 Corollary 2.39 の通常の押し出し）。
 使われ方：剰余 Koszul 正則性から、生の包の p 正則性と分冪包としての普遍性を得る。 -/
 def frobeniusDivisionDPFamilyEquiv :
-    letI : Algebra A Adiv := (jA).toAlgebra
     Adiv ≃ₐ[A] DPFamilyPresentation a := by
-  let R := PrimeLocalInt p
-  let D₀ := primeLocalIntDelta p
-  let U := RelativeFreeDeltaRing (R := R) (Fin r)
-  let E := relativeFreeDeltaStructure (Fin r) D₀
-  let x : Fin r → U := fun i => MvPolynomial.X (i, 0)
-  let b : Fin r → U := fun i => E.frobeniusLift (x i)
+  let R := ULift.{u} (PrimeLocalInt p)
+  let eR : R ≃+* PrimeLocalInt p := ULift.ringEquiv
+  let D₀ := (primeLocalIntDelta p).comapEquiv eR
+  let Idx := ULift.{u} (Fin r)
+  let U := RelativeFreeDeltaRing (R := R) Idx
+  let E := relativeFreeDeltaStructure Idx D₀
+  let x : Fin r → U := fun i => MvPolynomial.X (ULift.up i, 0)
+  let xUp : Idx → U := fun i => x i.down
+  let b : Idx → U := fun i => E.frobeniusLift (xUp i)
   let C := DeltaAdjoinDivision E (p : U) b
   let j := deltaAdjoinDivisionMap E (p : U) b
   let hK := existsUnique_primeLocalIntDeltaHom p D hlocal
-  let f := relativeFreeDeltaEval D hK.choose a
+  let f := relativeFreeDeltaEval D (hK.choose.comp eR.toRingHom) (a ∘ ULift.down : Idx → A)
   have hf : E.IsDeltaHom D f :=
-    relativeFreeDeltaEval_isDeltaHom D₀ D hK.choose hK.choose_spec.1 _
+    relativeFreeDeltaEval_isDeltaHom D₀ D _ (hK.choose_spec.1.comp
+      ((primeLocalIntDelta p).comapEquiv_isDeltaHom eR)) _
   have hx (i : Fin r) : f (x i) = a i := by simp [f, x]
-  have hb : (fun i => f (b i)) = fun i => D.frobeniusLift (a i) := by
+  let c : Idx → A := fun i => D.frobeniusLift (a i.down)
+  let AdivUp := DeltaAdjoinDivision D (p : A) c
+  let jUp := deltaAdjoinDivisionMap D (p : A) c
+  have hb : (fun i => f (b i)) = c := by
     funext i
-    exact (hf.map_frobeniusLift (x i)).trans (congrArg D.frobeniusLift (hx i))
+    exact (hf.map_frobeniusLift (xUp i)).trans (congrArg D.frobeniusLift (hx i.down))
   have hfa : (f ∘ x) = a := funext hx
-  have hpush :
-      ∃ k : C →+* Adiv, IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom j)
-        (CommRingCat.ofHom jA) (CommRingCat.ofHom k) := by
-    have h := deltaAdjoinDivisionBaseChange_isPushout E D f hf (p : U) b
-    rw [map_natCast, hb] at h
-    exact ⟨_, h⟩
-  obtain ⟨k, hk⟩ := hpush
+  let Push (d' : A) (a' : Idx → A) : Prop :=
+    ∃ k : C →+* DeltaAdjoinDivision D d' a',
+      IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom j)
+        (CommRingCat.ofHom (deltaAdjoinDivisionMap D d' a')) (CommRingCat.ofHom k)
+  have hpush : Push (p : A) c := by
+    have hs : Push (f (p : U)) (fun i => f (b i)) :=
+      ⟨_, deltaAdjoinDivisionBaseChange_isPushout E D f hf (p : U) b⟩
+    exact (congrArg₂ Push (map_natCast f p) hb) ▸ hs
+  let k := hpush.choose
+  have hk : IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom j)
+      (CommRingCat.ofHom jUp) (CommRingCat.ofHom k) := hpush.choose_spec
   letI : Algebra U A := f.toAlgebra
-  letI : Algebra U C := j.toAlgebra
-  letI : Algebra A Adiv := (jA).toAlgebra
   have hpR : IsSMulRegular R (p : R) := by
-    have hp₀ : (p : R) ≠ 0 := by exact_mod_cast (Fact.out : p.Prime).ne_zero
+    have hp₀ : (p : PrimeLocalInt p) ≠ 0 := by
+      exact_mod_cast (Fact.out : p.Prime).ne_zero
     intro y z hyz
-    exact mul_left_cancel₀ hp₀ hyz
-  let d : C ≃ₐ[U] DPFamilyPresentation x :=
-    freeCoordinateFrobeniusDivisionPDEquiv D₀ r (primeLocalInt_isUnit p) hpR
+    apply eR.injective
+    apply mul_left_cancel₀ hp₀
+    change (p : R) * y = (p : R) * z at hyz
+    simpa only [map_mul, map_natCast] using congrArg eR hyz
+  have hlocalR (m : ℕ) (hm : ¬p ∣ m) : IsUnit (m : R) := by
+    simpa only [map_natCast] using (primeLocalInt_isUnit p m hm).map eR.symm.toRingHom
+  let eMod : (R ⧸ Ideal.span {(p : R)}) ≃+* ZMod p :=
+    (Ideal.quotientEquiv _ _ eR (by rw [Ideal.map_span, Set.image_singleton, map_natCast])).trans
       (primeLocalIntModPrimeEquiv p)
+  let d : C ≃ₐ[U] DPFamilyPresentation x :=
+    freeCoordinateFrobeniusDivisionPDEquiv D₀ r hlocalR hpR eMod
   let ht := CommRingCat.isPushout_tensorProduct U A C
-  let t : A ⊗[U] C ≃+* Adiv := (ht.isoPushout ≪≫ hk.isoPushout.symm).commRingCatIsoToRingEquiv
-  have htA (a₀ : A) : t (algebraMap A (A ⊗[U] C) a₀) = jA a₀ := by
-    have h₁ := congr($ht.inl_isoPushout_hom a₀)
-    have h₂ := congr($hk.inl_isoPushout_inv a₀)
-    simpa [t, Iso.commRingCatIsoToRingEquiv, h₁] using h₂
-  let t' : A ⊗[U] C ≃ₐ[A] Adiv := { __ := t, commutes' := htA }
+  let t : A ⊗[U] C ≃+* AdivUp := (ht.isoIsPushout _ _ hk).commRingCatIsoToRingEquiv
+  have htA (a₀ : A) : t (algebraMap A (A ⊗[U] C) a₀) = jUp a₀ := by
+    exact congr($(ht.inl_isoIsPushout_hom _ _ hk).hom a₀)
+  let t' : A ⊗[U] C ≃ₐ[A] AdivUp := { __ := t, commutes' := htA }
   let w := (Algebra.TensorProduct.congr (AlgEquiv.refl : A ≃ₐ[A] A) d)
+  let e := deltaAdjoinDivisionReindexEquiv D (p : A)
+    (fun i : Fin r => D.frobeniusLift (a i)) c Equiv.ulift.symm (fun _ => rfl)
+  have heA (y : A) : e (jA y) = jUp y :=
+    DFunLike.congr_fun (deltaAdjoinDivisionReindexEquiv_comp D (p : A)
+      (fun i : Fin r => D.frobeniusLift (a i)) c Equiv.ulift.symm (fun _ => rfl)) y
+  let e' : Adiv ≃ₐ[A] AdivUp := { __ := e, commutes' := heA }
   have hd : algebraMap U A ∘ x = a := hfa
-  exact t'.symm.trans (w.trans ((dpFamilyBaseChangeEquiv (B := A) x).trans
-    (by rw [hd]; exact AlgEquiv.refl)))
+  exact e'.trans (t'.symm.trans (w.trans ((dpFamilyBaseChangeEquiv (B := A) x).trans
+    (by rw [hd]; exact AlgEquiv.refl))))
 
+include hlocal in
 /-- 概要：剰余上 Koszul 正則な族の生の Frobenius 除算は p 正則。
 方針：正則列に沿う分冪表示環の p 正則性を標準同型で移す。
 規約：BS 著者版 Corollary 2.39 の有限族。
@@ -202,6 +254,25 @@ theorem frobeniusDivision_primeRegular
   apply dpFamilyPresentation_primeRegular a hp ha
   change (p : Adiv) * x = (p : Adiv) * y at h
   simpa only [map_mul, map_natCast] using congrArg e h
+
+/-- 概要：剰余上 Koszul 正則な列の Frobenius 除算は分冪包と標準同型。
+方針：生の除算を分冪表示へ移し、正則な表示を階乗部分環と同定する。
+規約：BS 著者版 Corollary 2.39 の未完備な有限族。
+使われ方：生の δ 除算を任意の分冪標的への普遍性と結びつける。 -/
+def frobeniusDivisionDPEnvelopeEquiv (hp : IsSMulRegular A (p : A))
+    (ha : IsKoszulResolution (Ideal.Quotient.mk (Ideal.span {(p : A)}) ∘ a)) :
+    letI : Algebra A (pDivisionFactorialSubring p a) := (pDivisionFactorialBase p a).toAlgebra
+    Adiv ≃ₐ[A] pDivisionFactorialSubring p a := by
+  letI : Algebra A (pDivisionFactorialSubring p a) := (pDivisionFactorialBase p a).toAlgebra
+  have h := dpFamilyPresentation_primeRegular a hp ha
+  have h' : IsRegular (p : DPFamilyPresentation a) := by
+    refine ⟨h, ?_⟩
+    intro y z hyz
+    apply h
+    change (p : DPFamilyPresentation a) * y = (p : DPFamilyPresentation a) * z
+    change y * (p : DPFamilyPresentation a) = z * (p : DPFamilyPresentation a) at hyz
+    exact (mul_comm _ _).trans (hyz.trans (mul_comm _ _))
+  exact (frobeniusDivisionDPFamilyEquiv D hlocal a).trans (dpFamilyFactorialEquiv a hlocal h')
 
 /-- 概要：分冪表示に移した Frobenius 除算の δ 構造。
 方針：生の δ 除算と表示環の標準同型に沿って移送する。
@@ -237,6 +308,24 @@ def frobeniusDivisionPDCompletionEquiv :
       PDCompletionH0 (DPFamilyPresentation a) p (p : DPFamilyPresentation a) :=
   Andre.pdCompletionCoordinateEquiv p (frobeniusDivisionDPFamilyEquiv D hlocal a).toRingEquiv
     _ _ (map_natCast _ _)
+
+/-- 概要：完備化の比較は元の係数環からの標準脚と可換。
+方針：完備化単位との可換性と未完備比較の係数線形性を合成する。
+規約：BS 著者版 Corollary 2.39 の完備化への適用。
+使われ方：結晶 Čech 模型の係数脚との比較。 -/
+theorem frobeniusDivisionPDCompletionEquiv_base (b : A) :
+    letI := pdCompletionCommRing Adiv p (p : Adiv)
+    letI := pdCompletionCommRing (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
+    frobeniusDivisionPDCompletionEquiv D hlocal a
+        (pdCompletionUnit Adiv p (p : Adiv) (jA b)) =
+      pdCompletionUnit (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
+        (algebraMap A (DPFamilyPresentation a) b) := by
+  letI := pdCompletionCommRing Adiv p (p : Adiv)
+  letI := pdCompletionCommRing (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
+  unfold frobeniusDivisionPDCompletionEquiv
+  rw [Andre.pdCompletionCoordinateEquiv_unit]
+  exact congrArg (pdCompletionUnit (DPFamilyPresentation a) p (p : DPFamilyPresentation a))
+    ((frobeniusDivisionDPFamilyEquiv D hlocal a).commutes b)
 
 end General
 

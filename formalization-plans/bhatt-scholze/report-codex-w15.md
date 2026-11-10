@@ -55,3 +55,4 @@
 
 - ⑤b の停止点 3 を含む main `09047a87e` を `4f729b6d7` で取り込んだ。D69 §3.4（main `07d9d2117`）に沿い、具体的な正則列の分冪包・Frobenius 除算を⑤cで扱い、任意の J つき分冪包・枠とサイトへの適用は⑤bの持ち分。自由分冪基底・底変換と結晶側の押し出しの p 正則性を既存宣言から使う。
 - `PrimeLocalFlat`、`RegularSequencePDFactorial`、`RegularSequencePDKoszul` の対象ビルドと公開 10 宣言の監査を通過。これらは局所整数上の平坦性、階乗部分環の分冪包としての普遍性、標数 p での関係列の Koszul 正則性を与える。評価商には既存の `Section2.stage0BaseEquiv` を使った。
+- `RegularSequencePDPrimeRegular` と `RegularSequencePDTor` の対象ビルドと公開 5 宣言の監査を通過。分冪表示の p 正則性、係数多項式環上の通常の押し出しと高次 Tor 消滅を得た。原典の多項式環への底変換と Frobenius 除算・完備化との同型は再検証中。

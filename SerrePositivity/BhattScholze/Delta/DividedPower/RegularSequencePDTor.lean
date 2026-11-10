@@ -56,7 +56,7 @@ def dpFamilyPresentation_polynomialTensorEquiv :
   let z (j : Fin r) : P := MvPolynomial.X j - MvPolynomial.C (f j)
   let I := Ideal.span (Set.range z)
   have he : I.map (algebraMap P G) = dpFamilyRelationIdeal f := by
-    simp only [I, Ideal.map_span, dpFamilyRelationIdeal, ← Set.range_comp', Function.comp_def]
+    simp only [I, Ideal.map_span, dpFamilyRelationIdeal, ← Set.range_comp']
     apply congrArg (fun y : Fin r → G => Ideal.span (Set.range y))
     funext j
     change MvPolynomial.aeval (fun k : Fin r => γ[k]) (z j) = x j
@@ -64,11 +64,12 @@ def dpFamilyPresentation_polynomialTensorEquiv :
   exact (Algebra.TensorProduct.congr (AlgEquiv.refl : G ≃ₐ[G] G)
       (evaluationRelationsQuotientAlgEquiv f).symm).trans
     ((Algebra.TensorProduct.quotIdealMapEquivTensorQuot G I).symm.trans
-      (Ideal.quotientEquivAlgOfEq he))
+      (Ideal.quotientEquivAlgOfEq G he))
 
 private theorem freeDPPolynomialEval_surjective (B : Type u) [CommRing B] [Algebra ℚ B] :
     Function.Surjective (freeDPPolynomialEval (Fin r) B B) := by
-  let η := MvPolynomial.aeval
+  let η : MvPolynomial (Fin r) B →ₐ[B] DividedPowerAlgebra B (Fin r →₀ B) :=
+    MvPolynomial.aeval
     (fun i : Fin r => DividedPowerAlgebra.dp B 1 (Finsupp.single i 1 : Fin r →₀ B))
   have h : (freeDPPolynomialEval (Fin r) B B).comp η = AlgHom.id B _ := by
     ext i
@@ -97,13 +98,18 @@ private theorem dpFamilyRelations_away_isKoszulResolution
   have hc (a : A) : e (algebraMap G T (algebraMap A G a)) =
       MvPolynomial.C (algebraMap A L a) := by
     change h₂ (h₁ (algebraMap A T a)) = _
-    rw [show h₁ (algebraMap A T a) = algebraMap A G₁ a by simp [h₁]]
-    rw [IsScalarTower.algebraMap_apply A L G₁, AlgEquiv.commutes, MvPolynomial.algebraMap_eq]
+    have hc₁ : h₁ (algebraMap A T a) = algebraMap L G₁ (algebraMap A L a) := by
+      change freeDPBaseChangeEquiv (Fin r) A L (1 ⊗ₜ[A] algebraMap A G a) = _
+      rw [← Algebra.TensorProduct.tmul_one_eq_one_tmul]
+      exact (freeDPBaseChangeEquiv (Fin r) A L).commutes (algebraMap A L a)
+    rw [hc₁, AlgEquiv.commutes, MvPolynomial.algebraMap_eq]
   apply isKoszulResolution_of_ringEquiv e
   have he : e.toRingHom ∘ algebraMap G T ∘ x =
       fun i => X i - MvPolynomial.C (algebraMap A L (f i)) := by
     funext i
-    simp only [Function.comp_apply, RingEquiv.toRingHom_eq_coe, map_sub, hγ, hc]
+    change e (algebraMap G T (γ[i] - algebraMap A G (f i))) = _
+    rw [map_sub, map_sub]
+    exact congrArg₂ (· - ·) (hγ i) (hc (f i))
   rw [he]
   exact evaluationRelations_regular (algebraMap A L ∘ f)
 
@@ -141,7 +147,7 @@ theorem dpFamilyPresentation_tor_subsingleton
   letI : Algebra P G := (MvPolynomial.aeval (fun j : Fin r => γ[j])).toRingHom.toAlgebra
   let z (j : Fin r) : P := MvPolynomial.X j - MvPolynomial.C (f j)
   have hz : IsKoszulResolution z := evaluationRelations_regular f
-  have e₀ := evaluationRelationsQuotientLinear f
+  let e₀ := (evaluationRelationsQuotientAlgEquiv f).toLinearEquiv
   have e₁ := algebraKoszulTorComparison (C := G) z hz (i+1)
   have he : algebraMap P G ∘ z = x := by
     funext j

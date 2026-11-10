@@ -78,21 +78,24 @@ theorem dpFamilyRelations_snoc_isKoszulResolution (a : Fin r → A)
     DividedPowerAlgebra.dp A 1 (Finsupp.single i 1) - algebraMap A G (a i)
   have hpG : IsSMulRegular G (p : G) := by
     have h := freeDP_isSMulRegular (Fin r) (p : A) hp
-    simpa only [Algebra.smul_def, map_natCast] using h
+    change Function.Injective (fun y : G => (p : G) * y)
+    simpa only [IsSMulRegular, Algebra.smul_def, map_natCast] using h
   have hpB : (p : B) = 0 := by
     rw [← map_natCast f₀]
     exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
-  have hx : IsKoszulResolution
-      ((freeDPModPrimeEquiv (p := p) (A := A) (r := r)).toRingHom ∘ Ideal.Quotient.mk I₀ ∘ x) := by
-    have he : (freeDPModPrimeEquiv (p := p) (A := A) (r := r)).toRingHom ∘
-        Ideal.Quotient.mk I₀ ∘ x = fun i =>
+  let e : (G ⧸ I₀) ≃+* G₀ := freeDPModPrimeEquiv
+  have hx : IsKoszulResolution (e.toRingHom ∘ Ideal.Quotient.mk I₀ ∘ x) := by
+    have he : e.toRingHom ∘ Ideal.Quotient.mk I₀ ∘ x = fun i =>
         DividedPowerAlgebra.dp B 1 (Finsupp.single i 1) - algebraMap B G₀ (f₀ (a i)) := by
       funext i
-      simp only [Function.comp_apply, RingEquiv.toRingHom_eq_coe, x, map_sub,
-        freeDPModPrimeEquiv_dp, freeDPModPrimeEquiv_coeff]
+      change e (Ideal.Quotient.mk I₀
+        (DividedPowerAlgebra.dp A 1 (Finsupp.single i 1) - algebraMap A G (a i))) = _
+      rw [map_sub, map_sub]
+      exact congrArg₂ (· - ·) (freeDPModPrimeEquiv_dp (p := p) (A := A) i 1)
+        (freeDPModPrimeEquiv_coeff (p := p) (r := r) (a i))
     rw [he]
     exact dpFamilyRelations_isKoszulResolution_of_prime_zero (f₀ ∘ a) hpB ha
-  exact isKoszulResolution_snoc_of_regular_mod x (p : G) hpG freeDPModPrimeEquiv hx
+  exact isKoszulResolution_snoc_of_regular_mod (R := G) (S := G₀) x (p : G) hpG e hx
 
 /-- 概要：剰余上で Koszul 正則な列の分冪表示環は p 正則。
 方針：関係列に p を加えた Koszul 複体の負一次ホモロジーが消えることを使う。
@@ -103,6 +106,9 @@ theorem dpFamilyPresentation_primeRegular (a : Fin r → A)
     IsSMulRegular (DPFamilyPresentation a) (p : DPFamilyPresentation a) := by
   have h := isSMulRegular_quotient_of_snoc _ (p : G)
     (dpFamilyRelations_snoc_isKoszulResolution a hp ha)
-  simpa only [IsSMulRegular, Algebra.smul_def, map_natCast, dpFamilyRelationIdeal] using h
+  change Function.Injective (fun y : DPFamilyPresentation a => (p : DPFamilyPresentation a) * y)
+  change Function.Injective (fun y : DPFamilyPresentation a =>
+    Ideal.Quotient.mk (dpFamilyRelationIdeal a) (p : G) * y) at h
+  simpa only [map_natCast] using h
 
 end SerrePositivity.BhattScholze
