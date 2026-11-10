@@ -66,13 +66,16 @@ def expression_value(row, field, mapping, use_hash):
 
 
 def declaration_source(source):
-    """Keep source positions while skipping the migration's single-name export commands."""
+    """Project resolution exports and alias declarations onto the source parser's syntax."""
     qual = r"\w[\w'.]*"
     command = re.compile(rf"(?m)^with_weak_namespace _root_\.{qual} export _root_\.{qual} \(\w[\w']*\)[ \t]*$")
+    alias = re.compile(r"(?m)^(?:(?:noncomputable|unsafe|meta|private|public|protected)[ \t]+)*"
+                       r"(deprecated_alias)(?=[ \t]+\S+[ \t]*:=)")
     mask = code_only(source)
-    for match in reversed(list(command.finditer(mask))):
-        start, end = match.span()
-        source = source[:start] + " " * (end - start) + source[end:]
+    edits = [(match.start(), match.end(), "") for match in command.finditer(mask)]
+    edits.extend((*match.span(1), "def") for match in alias.finditer(mask))
+    for start, end, replacement in sorted(edits, reverse=True):
+        source = source[:start] + replacement.ljust(end - start) + source[end:]
     return source
 
 
