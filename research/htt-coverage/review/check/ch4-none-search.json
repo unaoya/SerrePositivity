@@ -1895,5 +1895,218 @@
       }
     ],
     "decision": "左ファイブレーション間の準圏同値は頂点繊維ごとに判定できる。共変モデル構造での弱同値と準圏同値をこの切片で同定する宣言がなく、HTT の判定の片方向も確認できなかった。"
+  },
+  "4.2.1.4": {
+    "page": 240,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.3",
+        "4.2.1",
+        "4.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Cc]ategorification|[Rr]igidification|[Ss]implicialThickening|[Ss]implicialNerve|[Cc]oherent[Rr]ealization).*[Jj]oin|[Jj]oin.*([Cc]ategorification|[Rr]igidification|[Ss]implicialThickening|[Ss]implicialNerve)|[Ss]implicialNerve|isPrecompositionEquivalence_fatJoinComparison",
+          "SerrePositivity"
+        ],
+        "file_count": 394,
+        "line_count": 1153
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Cc]ategorification|[Rr]igidification|[Ss]implicialThickening|[Ss]implicialNerve|[Cc]oherent[Rr]ealization).*[Jj]oin|[Jj]oin.*([Cc]ategorification|[Rr]igidification|[Ss]implicialThickening|[Ss]implicialNerve)|[Ss]implicialNerve|isPrecompositionEquivalence_fatJoinComparison",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 6
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FatJoinGeneralComparison.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex_left (n : ℕ) (B : SSet.{u}) : IsPrecompositionEquivalence (fatJoinComparison (Δ[n] : SSet.{u}) B)"
+          },
+          {
+            "line": 41,
+            "head": "lemma isPrecompositionEquivalence_fatJoinComparison (A B : SSet.{u}) : IsPrecompositionEquivalence (fatJoinComparison A B)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma coherentHomComparison_isQCatEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsQCatEquivalence (coherentHomComparison X Y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsSimplicialHomotopyEquivalence (coherentHomComparison X Y) := (coherentHomComparison_isQCatEquivalence X Y).isSimplicialHomotopyEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+        "signatures": [
+          {
+            "line": 190,
+            "head": "def SimplicialNerve (C : Type u) [Category.{v} C] [SimplicialCategory C] : SSet.{max u v} where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の coherent nerve は単体圏から単体集合への構成。通常・太い結合の準圏的な比較はあるが、左随伴 C の結合を豊穣圏の結合と比較する単体関手の同値は見つからなかった。"
+  },
+  "4.2.1.6": {
+    "page": 241,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.3",
+        "4.2.1",
+        "4.2.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(fatJoin|laxCoslice|[Tt]hick[Ss]lice|[Ll]ax[Ss]lice).*(LeftFibration|[Cc]ategorical[Ff]ibration|[Rr]elative.*[Rr]estrict)|relativeCosliceMap_leftFibration|isQCatEquivalence_cosliceLaxMap",
+          "SerrePositivity"
+        ],
+        "file_count": 4,
+        "line_count": 4
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(fatJoin|laxCoslice|[Tt]hick[Ss]lice|[Ll]ax[Ss]lice).*(LeftFibration|[Cc]ategorical[Ff]ibration|[Rr]elative.*[Rr]estrict)|relativeCosliceMap_leftFibration|isQCatEquivalence_cosliceLaxMap",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": [
+          {
+            "line": 122,
+            "head": "instance relativeCosliceMap_leftFibration {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) [InnerFibration q] (K₀ : K.Subcomplex) : LeftFibration (relativeCosliceMap p q K₀) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/CosliceLaxEquivalence.lean",
+        "signatures": [
+          {
+            "line": 142,
+            "head": "lemma isQCatEquivalence_cosliceLaxMap {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) : IsQCatEquivalence (cosliceLaxMap p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/LaxCoslice.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "def laxCoslice {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} := vertexFiber ((pre (fatJoinInl K (Δ[0] : SSet.{u}))).app X) (functorVertex p)"
+          },
+          {
+            "line": 37,
+            "head": "instance laxCoslice_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) : Quasicategory (laxCoslice p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma innerAnodyneExtensions_unionProd_ι {m : ℕ} (k : Fin (m + 2)) (h0 : 0 < k) (hn : k < Fin.last (m + 1)) (n : ℕ) : innerAnodyneExtensions (Subcomplex.unionProd.{u} Λ[m + 1, k] ∂Δ[n]).ι"
+          },
+          {
+            "line": 74,
+            "head": "lemma innerFibration_pullbackObjObjπ [Mono i] [InnerFibration p] (sq₁₃ : MonoidalClosed.internalHom.PullbackObjObj i p) : InnerFibration sq₁₃.π"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の結合で定義する相対コスライスでは、同形の制限写像が左ファイブレーションとなる。太い結合で同じ制限写像の持ち上げ性を証明する宣言は見つからず、二つの全空間の圏同値からその持ち上げ性は直接移らない。"
   }
 }
