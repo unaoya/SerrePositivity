@@ -280,3 +280,10 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `polynomialCartierKernel` と `polynomialCartierCokernel` は一変数多項式の微分の核・余核の線形同型。`polynomialCartierRepresentative` と `polynomialCartierExtract` は余核の代表を作る写像とその係数抽出で、`polynomialCartierExtract_representative` と `polynomialCartierExtract_ker` で照合した。
 - 新規 19 モジュールの鍵付き対象ビルドが通り、一時監査の 591 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。新規モジュールの推移的 import に E3 と E∞ が入らないことを確認した。⑤a の段 1 を取り込んだ main `287fb6e70` を専用枝に取り込んだ。
 - 次は正次数の行の収縮から第 0 行への射影の擬同型を示し、分冪積分と外冪の内部積から各列の pd Poincaré 収縮を組む。第 0 列への射影の擬同型と積、有限多変数の Cartier 同型、η¹ と外積への延長、生成元の照合は引き続き必要。
+
+### 第 0 行への擬同型と Bockstein の平方零
+
+- `711312716` で `totalToRowZero_quasiIso` と `pdDeRhamRowZeroProjection_quasiIso` を閉じた。射影の核の余輪体を、縦次数の小さい成分から順に余境界で消す。全行が完全な場合の総複体の完全性も `bicomplexTotal_exactAt_of_rows` にまとめた。
+- `pdRawDeRhamColumnIso` は標数 p の完備列と未完備列の同型。`pdRawCoordinateHomotopy_zero` と `pdRawCoordinateHomotopy_succ` は、一つの差座標の分冪積分と外冪の内部積による収縮公式。外冪での座標評価は `exteriorPower_map_coordinateProjection` で内部積の公式と照合した。
+- `htModuleData` と `htModule` は affine 係数の作用を左 cup 積と照合し、`htModule_isModuleComplete` はコホモロジー加群の導来 p 完備性を示す。`bockstein_sq_zero` は素数 2 では δ による余境界、奇素数では次数付き可換性と完備係数環で 2 が単元であることから示した。草稿の `HodgeTateIsoStatement` の型はそのまま。
+- 実装済み 28 モジュールの `with_build_lock.sh --wait 1800` による対象ビルドは成功。一時監査の 761 宣言は標準三公理のみ。第 0 列への射影の擬同型、有限多変数 Cartier 同型、η¹ と外積への延長、総複体の積と Bockstein および生成元での照合が残る。停止点 3 の対象二定理は草稿に残る。
