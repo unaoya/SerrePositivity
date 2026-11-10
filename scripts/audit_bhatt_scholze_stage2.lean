@@ -114,6 +114,11 @@ import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralApproximat
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureApproximation
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureCompletion
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectoidFilteredColimit
+import SerrePositivity.EInfinity.Interface.Core
+import SerrePositivity.EInfinity.Interface.StrictInputs
+import SerrePositivity.EInfinity.Interface.Theory
+import SerrePositivity.EInfinity.BarrattEccles.Theory
+import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 import Lean.Util.CollectAxioms
 
 /-!
@@ -126,6 +131,11 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.EInfinity.Interface.Core,
+    `SerrePositivity.EInfinity.Interface.StrictInputs,
+    `SerrePositivity.EInfinity.Interface.Theory,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory,
+    `SerrePositivity.EInfinity.Perfectoidization.TheoryInterface,
     `SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralApproximation,
     `SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureApproximation,

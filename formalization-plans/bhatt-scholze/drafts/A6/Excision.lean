@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.3・§3.2 の 5・6、単位 A6-4。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.EInfinity.Perfectoidization.Interface
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
 -- 本ファイルは drafts/A6/{SheafOfSetsExcision,ArcSheafProperty}.lean、drafts/Sheaves/SpaceValued.lean（S8）、drafts/A4/InterfaceFields.lean、
@@ -34,6 +34,8 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EInfinity.Perfectoidization
@@ -55,23 +57,23 @@ def elementAlgebraNerve (κ : Cardinal.{u}) (U : A_R R) :
   naturality := by sorry -- nerve の射列への後合成
 
 abbrev elementStructure (κ : Cardinal.{u}) (U : A_R R) :=
-  elementAlgebraNerve p R κ U ≫ algebraEmbedding R
+  elementAlgebraNerve p R κ U ≫ E.discrete R
 
 /-- ℤ に沿って制限すると元の圏への O の引き戻しになる。 -/
 def elementStructure_forget (κ : Cardinal.{u}) (U : A_R R) :
     let z : ArcZ.{u} →+* R := (Int.castRingHom R).comp ULift.ringEquiv.toRingHom
-    FunctorIso (elementStructure p R κ U ≫ cAlgRestrictScalars z)
+    FunctorIso (elementStructure (E := E) p R κ U ≫ cAlgRestrictScalars (E := E) z)
       ((SSet.uliftFunctor.{u+1,u}).map (nerveMap (Functor.Elements.π (homPresheaf p κ U.right))) ≫
-        structurePresheaf p κ) := by
+        structurePresheaf (E := E) p κ) := by
   sorry -- cAlgRestrictScalars_algebraEmbedding で係数を戻すと arcIntegerAlgebras の構造射、
         -- 元の圏の全射について同じ環準同型なので自然
 
 /-- Γ を U に関して関手化する。R-構造を備えた κ 以下の試験環の包含に沿う
 右 Kan 拡張の U での図式は (P,l : U→P) 上の elementStructure。 -/
-def arcElementSections (κ : Cardinal.{u}) : algebraNerve R ⟶ CAlg_R R :=
+def arcElementSections (κ : Cardinal.{u}) : algebraNerve R ⟶ E.CAlg R :=
   let i := elementAlgebraNerve p R κ (ofAlgebra R R)
-  Classical.choose (show ∃ G, ∃ α : SSet.Homotopy (i ≫ G) (i ≫ algebraEmbedding R),
-    IsRightKanExtension i (i ≫ algebraEmbedding R) G α from by
+  Classical.choose (show ∃ G, ∃ α : SSet.Homotopy (i ≫ G) (i ≫ E.discrete R),
+    IsRightKanExtension i (i ≫ E.discrete R) G α from by
     sorry) -- 各 comma 圏は小さい元の圏と同値、CAlg_R での点ごとの極限から取る
 
 /-- 固定した κ で A5 と比較できる始域。必要な有限図式には共通の κ を取る。 -/
@@ -86,8 +88,8 @@ def markedAlgebras (κ : Cardinal.{u}) :
   unopUnop _ ⋙ elementAlgebras p R κ (ofAlgebra R R)
 
 def markedStructure (κ : Cardinal.{u}) :
-    Sheaves.Presheaf (markedTests p R κ)ᵒᵖ (CAlg_R R) :=
-  Sheaves.ringPresheafToCAlg R (markedAlgebras p R κ)
+    Sheaves.Presheaf (markedTests p R κ)ᵒᵖ (E.CAlg R) :=
+  Sheaves.ringPresheafToCAlg (E := E) R (markedAlgebras p R κ)
 
 abbrev markedHom (κ : Cardinal.{u}) (U : A_R R) :=
   markedAlgebras p R κ ⋙ coyoneda.obj (Opposite.op U)
@@ -116,10 +118,10 @@ def markedTargetEquiv (κ : Cardinal.{u}) (U : A_R R) :
   exact (markTarget p R κ U).asEquivalence
 
 abbrev sectionLimit (κ : Cardinal.{u}) (U : A_R R) :=
-  HasLimit (Sheaves.sectionsOfDiagram (markedHom p R κ U) (markedStructure p R κ))
+  HasLimit (Sheaves.sectionsOfDiagram (markedHom p R κ U) (markedStructure (E := E) p R κ))
 
-abbrev markedSections (κ : Cardinal.{u}) (U : A_R R) (h : sectionLimit p R κ U) :=
-  Sheaves.sectionsOf (markedHom p R κ U) (markedStructure p R κ) h
+abbrev markedSections (κ : Cardinal.{u}) (U : A_R R) (h : sectionLimit (E := E) p R κ U) :=
+  Sheaves.sectionsOf (markedHom p R κ U) (markedStructure (E := E) p R κ) h
 
 /-- 概要：S8 の 6：Γ(F_T, O) := lim_{el(F_T)} O = lim_{Perfd_{T/}} O（F_T の元の圏は Perfd_{T/}）、これは T_perfd（Prop 8.5 の極限の形、A5-1）。
 方針：`sectionsOf`（Sheaves/SpaceValued）と `perfectoidization_isLimit`。
@@ -129,13 +131,13 @@ def sectionsOf_homSheaf_eq_perfectoidization (κ : Cardinal.{u})
     [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
     (T : Type u) [CommRing T] [Algebra R T]
     (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
-    (hb : perfectSiteCutoff p R T ≤ κ) (h : sectionLimit p R κ (ofAlgebra R T)) :
-    VertexIso (markedSections p R κ (ofAlgebra R T) h) (perfectoidization p R hR T hT) := by
+    (hb : perfectSiteCutoff p R T ≤ κ) (h : sectionLimit (E := E) p R κ (ofAlgebra R T)) :
+    VertexIso (markedSections (E := E) p R κ (ofAlgebra R T) h) (perfectoidization (E := E) p R hR T hT) := by
   let U := ofAlgebra R T
   let F := markedHom p R κ U
-  let O := markedStructure p R κ
+  let O := markedStructure (E := E) p R κ
   let e := markedTargetEquiv p R κ U
-  let Γ := perfectoidization_isLimit p R hR T hT
+  let Γ := perfectoidization_isLimit (E := E) p R hR T hT
   let c := Γ.choose
   let D := (SSet.uliftFunctor.{u+1,u}).map (nerveMap (e.functor ⋙ Functor.Elements.π F)) ≫ O
   have hc : ∃ t : JoinCone D, IsLimitCone t ∧ t.vertex = c.vertex := by
@@ -202,11 +204,11 @@ theorem homPresheafPushout_localEquiv (κ : Cardinal.{u}) [Fact ((κ + Cardinal.
 theorem sections_homPushout_invertible (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
     {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (hφ : Sheaves.IsLocalEquivSet (arcTopologyPerfd p κ) (homPushoutComparison p R κ f I))
-    (hP : HasLimit (Sheaves.sectionsOfDiagram (homPushoutPresheaf p R κ f I) (structurePresheaf p κ)))
-    (hS : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ S.right) (structurePresheaf p κ))) :
+    (hP : HasLimit (Sheaves.sectionsOfDiagram (homPushoutPresheaf p R κ f I) (structurePresheaf (E := E) p κ)))
+    (hS : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ S.right) (structurePresheaf (E := E) p κ))) :
     SerrePositivity.InfinityCategories.IsInvertibleEdge
-      (Sheaves.sectionsOf_map (homPushoutComparison p R κ f I) (structurePresheaf p κ) hP hS).toTruncated := by
-  exact Sheaves.sections_localEquiv_iso (arcTopologyPerfd p κ) _ hφ _ (structurePresheaf_isArcSheaf p κ) hP hS
+      (Sheaves.sectionsOf_map (homPushoutComparison p R κ f I) (structurePresheaf (E := E) p κ) hP hS).toTruncated := by
+  exact Sheaves.sections_localEquiv_iso (arcTopologyPerfd p κ) _ hφ _ (structurePresheaf_isArcSheaf (E := E) p κ) hP hS
 
 /-- 概要：G-A6-10：S・I が導来 p 完備なら S/I も（cofiber）。**T/IT については成り立たない**（W9-II-15：S = R ⊕ c₀(R)、T = R⟨t⟩ ⊕ c₀(R⟨t⟩)、I = 0 ⊕ c₀(R) で
 S・T・I 完備かつ `ArcOutside` だが T/IT の直和因子が非零で p 可除）。旧「T と IT についても」は撤回。
@@ -237,23 +239,23 @@ def homPresheaf_completionRing_iso (κ : Cardinal.{u}) [Fact ((κ + Cardinal.ale
 /-- 同一の κ で覆う離散入力に制限した Γ の自然比較。 -/
 def sectionsFunctorIsoE3 (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
     let i := nerveMap (arcInputProperty p R κ).ι
-    FunctorIso (i ≫ arcElementSections p R κ) (i ≫ e3Perfd p R hR) := by
+    FunctorIso (i ≫ arcElementSections (E := E) p R κ) (i ≫ e3Perfd (E := E) p R hR) := by
   sorry -- 右 Kan 拡張の脚は U→P。homPresheaf_completionRing_iso の単位は U に自然なので、
         -- 完備化後の Prop 8.5 の比較錐が四角形の全射・二単体について可換
 
 def sectionsOf_homSheaf_eq_e3Perfd (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
-    (U : (arcInputProperty p R κ).FullSubcategory) (h : sectionLimit p R κ U.obj) :
-    VertexIso (markedSections p R κ U.obj h) ((e3Perfd p R hR).app _ (nerveVertex U.obj)) := by
-  let e : VertexIso (markedSections p R κ U.obj h) ((arcElementSections p R κ).app _ (nerveVertex U.obj)) := by
+    (U : (arcInputProperty p R κ).FullSubcategory) (h : sectionLimit (E := E) p R κ U.obj) :
+    VertexIso (markedSections (E := E) p R κ U.obj h) ((e3Perfd (E := E) p R hR).app _ (nerveVertex U.obj)) := by
+  let e : VertexIso (markedSections (E := E) p R κ U.obj h) ((arcElementSections (E := E) p R κ).app _ (nerveVertex U.obj)) := by
     sorry -- markedTargetEquiv で sectionsOf の極限を同じ U→P の右 Kan 拡張の値に比較
-  exact e ≪≫ (sectionsFunctorIsoE3 p R hR κ).app (nerveVertex U)
+  exact e ≪≫ (sectionsFunctorIsoE3 (E := E) p R hR κ).app (nerveVertex U)
 
 /-- R の構造射を忘れた切断は global な O の切断である。 -/
 def sections_forget_to_integers (κ : Cardinal.{u}) (U : A_R R)
-    (h : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ U.right) (structurePresheaf p κ))) :
+    (h : HasLimit (Sheaves.sectionsOfDiagram (homPresheaf p κ U.right) (structurePresheaf (E := E) p κ))) :
     let z : ArcZ.{u} →+* R := (Int.castRingHom R).comp ULift.ringEquiv.toRingHom
-    VertexIso ((arcElementSections p R κ ≫ cAlgRestrictScalars z).app _ (nerveVertex U))
-      (Sheaves.sectionsOf (homPresheaf p κ U.right) (structurePresheaf p κ) h) := by
+    VertexIso ((arcElementSections (E := E) p R κ ≫ cAlgRestrictScalars (E := E) z).app _ (nerveVertex U))
+      (Sheaves.sectionsOf (homPresheaf p κ U.right) (structurePresheaf (E := E) p κ) h) := by
   sorry -- elementStructure_forget は全脚を保つ。係数制限は右随伴なので元の圏の極限を保ち、
         -- 右 Kan 拡張の評価錐を sectionsOfCone に比較できる
 
@@ -265,7 +267,7 @@ theorem sections_excision_square (κ : Cardinal.{u}) [Fact ((κ + Cardinal.aleph
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) (b : ExcisionBounds p R κ f I) :
-    IsPullbackSquare (quotientExcisionSquare R f I ≫ arcElementSections p R κ) := by
+    IsPullbackSquare (quotientExcisionSquare R f I ≫ arcElementSections (E := E) p R κ) := by
   have hφ := (homPresheafPushout_localEquiv p R κ f I hS hT hI h b).2
   sorry -- sections_homPushout_invertible に hφ を渡し、Γ(F_S,O) を Γ(P,O) に移す。
         -- 商射の脚は Mono。sectionsOf_pushout（引き戻しの述語）待ち。
@@ -281,7 +283,7 @@ theorem perfectoidization_excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.righ
     (hT : IsModuleComplete T.right (p : T.right) (ModuleCat.of T.right T.right))
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) :
-    IsPullbackSquare (quotientExcisionSquare R f I ≫ e3Perfd p R hR) := by
+    IsPullbackSquare (quotientExcisionSquare R f I ≫ e3Perfd (E := E) p R hR) := by
   sorry -- 四隅の完備化・A_inf(R) を含む κ で sections_excision_square を使う。
         -- sectionsOf_pushout（引き戻しの述語）待ち。sectionsFunctorIsoE3 を商の四角形に
         -- 前合成し、Γ の極限錐を e3Perfd の指定四辺・二単体へまとめて移す
@@ -298,7 +300,7 @@ theorem e3Excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
     (h : ArcOutside R p f I) :
     IsPullbackSquare (ordinarySquare R f (quotientProjection R S I)
       (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I)
-      (quotientSquare_commutes R f I) ≫ e3Perfd p R hR) :=
-  perfectoidization_excision p R hR f I hS hT hI h
+      (quotientSquare_commutes R f I) ≫ e3Perfd (E := E) p R hR) :=
+  perfectoidization_excision (E := E) p R hR f I hS hT hI h
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

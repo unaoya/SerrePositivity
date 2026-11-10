@@ -51,6 +51,10 @@ abbrev cohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
   (homotopyCategoryBridge (derivedInfinityCategory S)).inverse ⋙
     derivedInfinityHomologyFunctor S i
 
+/-- 係数制限で比較するホモロジーの台の可換群。 -/
+abbrev additiveCohomologyOnHo (S : Type u) [CommRing S] (i : ℤ) :=
+  cohomologyOnHo S i ⋙ forget₂ (ModuleCat S) AddCommGrpCat
+
 /-- 通常の代数の係数制限。 -/
 abbrev restrictRingAlgebra {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     RingAlgebra T ⥤ RingAlgebra S :=
@@ -122,10 +126,10 @@ structure EInfinityTheory extends EInfinityCore.{u} where
   restrictD_comp {S T W : Type u} [CommRing S] [CommRing T] [CommRing W]
       (f : S →+* T) (g : T →+* W) :
     FunctorIso (restrictD (g.comp f)) (restrictD g ≫ restrictD f)
-  restrictD_homology {S T : Type u} [CommRing S] [CommRing T]
-      (f : S →+* T) (i : ℤ) (x : (derivedInfinityCategory T) _⦋0⦌) :
-    derivedInfinityHomology S i (atVertex (restrictD f) x) ≃+
-      derivedInfinityHomology T i x
+  /-- DAG XIII Construction 2.2.6 の半線形作用を読むための自然比較。 -/
+  restrictD_homologyIso {S T : Type u} [CommRing S] [CommRing T]
+      (f : S →+* T) (i : ℤ) :
+    hoMap (restrictD f) ⋙ additiveCohomologyOnHo S i ≅ additiveCohomologyOnHo T i
   restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     CAlg T ⟶ CAlg S
   baseChange {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
@@ -155,6 +159,10 @@ structure EInfinityTheory extends EInfinityCore.{u} where
     hoMap (restrict f) ⋙ pi0 S ≅ pi0 T ⋙ restrictRingAlgebra f
 
   strictToD (S : Type u) [CommRing S] : nerve (Complex S) ⟶ derivedInfinityCategory S
+  /-- BS 著者版 Theorem 6.2 の Tot で使う、厳密複体のホモロジーとの自然比較。 -/
+  strictToD_homologyIso (S : Type u) [CommRing S] (i : ℤ) :
+    ordinaryToHoNerve (Complex S) ⋙ hoMap (strictToD S) ⋙ cohomologyOnHo S i ≅
+      HomologicalComplex.homologyFunctor (ModuleCat S) (.up ℤ) i
   ofCosimplicial (S : Type u) [CommRing S] : nerve (CosimplicialRingAlgebra S) ⟶ CAlg S
   ofCosimplicial_forget (S : Type u) [CommRing S] :
     FunctorIso (ofCosimplicial S ≫ forget S)
@@ -195,7 +203,9 @@ structure EInfinityTheory extends EInfinityCore.{u} where
       (x : (CAlg k) _⦋0⦌) (a : ((pi0 k).obj (SSet.HomotopyCategory.mk x)).right) :
     let e := (pi0_forget k).app (SSet.HomotopyCategory.mk x)
     let α := (cohomologyOnHo k 0).map (functorHomEvaluate (powerOp0 k p) x)
-    restrictD_homology (frobenius k p) 0 (atVertex (forget k) x) (α (e.hom a)) =
+    let res := (restrictD_homologyIso (frobenius k p) 0).app
+      (SSet.HomotopyCategory.mk (atVertex (forget k) x))
+    res.hom (α (e.hom a)) =
       e.hom (a ^ p)
   powerOp0_pos (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (x : (CAlg k) _⦋0⦌) (n : ℤ) (hn : 0 < n) :
@@ -219,5 +229,13 @@ structure EInfinityTheory extends EInfinityCore.{u} where
       SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (ofCosimplicial k ≫ forget k)) ≫
         (((ofCosimplicial_restrict (frobenius k p)).app (nerveVertex X)).map (forget k)).hom ≫
         ((restrict_forget (frobenius k p)).app x).hom
+
+/-- 自然比較の成分を台の加法同型として読む。 -/
+def EInfinityTheory.restrictD_homology (E : EInfinityTheory.{u})
+    {S T : Type u} [CommRing S] [CommRing T]
+    (f : S →+* T) (i : ℤ) (x : (derivedInfinityCategory T) _⦋0⦌) :
+    derivedInfinityHomology S i (atVertex (E.restrictD f) x) ≃+
+      derivedInfinityHomology T i x :=
+  ((E.restrictD_homologyIso f i).app (SSet.HomotopyCategory.mk x)).addCommGroupIsoToAddEquiv
 
 end SerrePositivity.EInfinity

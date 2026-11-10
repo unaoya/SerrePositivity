@@ -38,3 +38,12 @@ Prisms の地図（`research/bs-coverage/items.csv`、https://claude.ai/artifact
 - KL-W1 の段 3 が近く main に入り、`InfinityCategories/` のモジュールの場所と名前空間が変わる。取り込まれたら調整役が改名表と書き換えの手順を知らせる。
 - ビルドの鍵は `zsh scripts/refactor/with_build_lock.sh --wait 1800 -- …`（`source ~/.zshenv`）。
 - 報告は `formalization-plans/bhatt-scholze/report-codex-w15.md`。
+
+## 3. 追記（2026-11-10、調整役）：停止点 0 の承認
+
+**承認**：段 0 の報告（`report-codex-w15.md`）。K1〜K5 の既存宣言の洗い出し、型案、置き場所、規模（合わせて約 5,000〜10,000 行）は報告のとおりでよい。段 1 に進んでよい。段 1〜4 は §1 の条件で、報告してそのまま次へ進んでよい。検収事項は次のとおりに決める。
+
+1. **K1**：⑤b の既存の特殊な場合（`crystallineAffineFrobeniusDivision_primeRegular` ほか）を再利用し、一般の r 元へ広げる案でよい。順序（自由変数の未完備版 → 一般の r 元 → 底変換・完備な模型への適用）も報告のとおり。停止点 1 で取り込み、⑤b に知らせる。
+2. **K2 の Frobenius の平坦性（D74）**：本体は**原典どおりの形**（U/p 上の Frobenius が d 完全平坦、`IsCompletelyFlat (Ideal.span {d̄}) …`）で置く。U は変数が無限個の非 Noether 環で、普通の平坦性（drafts の `FrobeniusFlatModP`）は原典より強く、成り立つかも自明でない。drafts の A1 の型（`universalOrientedPrism_frobenius_flat`）は ⑤c では変えない。Construction 6.1 が完全平坦性で足りるかは、A1 の drafts を界面に書き換える段（⑤b の停止点 3 の後、⑤a）で一緒に確かめ、要れば A1 の型を原典の形に直す。
+3. **K4**：Lemma 3.7 (2) の入力を Mathlib の通常の導来圏 `DerivedCategory (ModuleCat A)`（またはその鎖複体の模型）で述べる案、Cor 3.12 の層の性質を「完全忠実平坦な射の増大つき完備 Čech 余脈体の交代余面複体が全次数で完全」という古典的な形で示し、∞ 層と RΓ への接続を drafts に残す案、Ex 3.14 は変数版の型を保ち一般化を別の定理にする案、いずれもよい。Ex 3.14 の一般の存在が重いと分かったら、そこで止めて報告する（目標に要るのがどの場合かを調整役が確かめる）。
+4. **K5 の G-A3-7 の切り出し**：比較先を通常の p 完備なフィルター付き環 C に一般化した古典的な部分を本体に置き、実際の Δ̄ がそのフィルトレーションと評価を持つことは drafts に残す案でよい。`exists_lciEnvelope` の一般の型を Δ の離散性なしで閉じる経路も、それで進めてよい。

@@ -48,7 +48,7 @@ def barrattEcclesTheory : EInfinityTheory.{u} where
   restrictD := by sorry -- M13 の D 側
   restrictD_id := by sorry
   restrictD_comp := by sorry
-  restrictD_homology := by sorry -- 台の加法群の同定
+  restrictD_homologyIso := by sorry -- M13 の係数制限に対する自然比較
   restrict := by sorry -- M13 の CAlg 側
   baseChange := by sorry
   baseChange_adjunction := by sorry
@@ -62,6 +62,9 @@ def barrattEcclesTheory : EInfinityTheory.{u} where
   pi0_discrete := by sorry
   pi0_restrict := by sorry
   strictToD S _ := ComplexLimits.complexOrdinaryDerivedSource S
+  strictToD_homologyIso := by
+    sorry -- complexSemifreeResolutionAugmentationHomotopy をホモロジーに移す。
+          -- 成分を complexSemifreeResolutionValueAugmentation の Hⁱ と照合する
   ofCosimplicial := by sorry -- 交代余面複体上の E∞ 実現
   ofCosimplicial_forget := by sorry
   ofCosimplicial_cone := by sorry
