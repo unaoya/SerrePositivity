@@ -38,5 +38,5 @@ BS の証明を「E∞ 代数の ∞ 圏をどう作るか」から切り離す�
 ## 3. 置き場所
 
 - 構造の定義：`SerrePositivity/EInfinity/Interface/`（新設）。InfinityCategories と D(R)（`derivedInfinityCategory`）だけを import し、Barratt–Eccles を import しない。KL-W1 の移動の後は、改名表で import を直す。
-- 実例 `barrattEcclesTheory`：`SerrePositivity/EInfinity/Interface/BarrattEccles.lean`。証明済みの欄だけ本体、残りは drafts（`drafts/Shared/BarrattEcclesTheory.lean`）。
+- 実例 `barrattEcclesTheory`：`SerrePositivity/EInfinity/BarrattEccles/Theory.lean`（11-10、BS-W14 §3 の 2）。証明済みの欄だけ本体、残りは drafts（`drafts/Shared/BarrattEcclesTheory.lean`）。
 - BS の drafts：`(E : EInfinityTheory)` を引数に取る形へ書き換える。模型の中身に触れていた 8 本（README §1 の (a)(b)）は、`pi0`・`ofCosimplicial`・`ofCdga`・`powerOp0` の欄を通す形にする。
