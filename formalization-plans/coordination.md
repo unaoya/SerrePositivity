@@ -38,6 +38,8 @@
 5. 土台（HomologicalAlgebra・CategoryTheory・HomotopicalAlgebra・DG の Complexes/Category/Module/Functor）に触る変更は、下流ほぼ全部（約 9,000〜20,000 本、単独で 3〜8 時間）を再ビルドする。これを起こす変更は窓ごとに一束。
 6. 実測（[verify-build-costs の記録](dg-cleanup-plan.md#5a-再ビルドの費用と規則2026-10-30dg-w1-の実測から)）：DG-W1 の土台 6 本の import 書き換えで 11,250 本・6 時間 57 分（3 セッション同時）、verify 1 時間 49 分。
 
+- **鍵の取り合い（11-10）**：調査のレーン（Kerodon・HA・HTT・K の地図）の `#check` の一括実行も同じ鍵を使う。調査のレーンは一回の鍵を 10 分以内に収める（モジュールの塊を小さく分け、塊ごとに鍵を取り直す）。実装のレーン（⑤a・⑤b・⑥）は `--wait 0` で諦めず、`--wait 1800` で待つ。
+
 ## 3. 暦
 
 全ビルド（下流・verify）の予定はまだない。各レーンの最初の束が見えたところで書く。
