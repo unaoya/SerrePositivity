@@ -163,3 +163,10 @@
 
 - `pdModelBaseChange` は小さい完備分冪 Čech 模型の係数変更。未完備の多項式・自由分冪の係数変更を各項で完備化し、余単体構造との可換性を移した。`pdModelBaseChange_unit` で未完備模型との可換性を示した。
 - `SerrePositivity.BhattScholze.Prismatic.PDModelBaseChange` の鍵付き対象ビルドが通過。段 2 の累計26モジュールの一時監査で、非公開を含む904宣言は標準三公理のみ。追加公理と `sorry` は0。
+
+## 段 2（P2）途中 — 厳密な結晶の橋
+
+- `wittBigBridge` を大きい affine Čech–Alexander 模型から Witt 分冪模型への厳密な自然変換として構成した。係数の射は `psiPrism` で、各頂点の枠の変数は p 乗へ送る。
+- Frobenius 前の多項式評価は、prismatic 側の評価核を分冪イデアルへ送る。Frobenius 後はその像が (p) に入るため、完備自由 δ 環と prismatic envelope の普遍性を使った。単体の写像と多項式代入の両方との可換性は、係数と枠の変数で照合した。
+- `SerrePositivity.BhattScholze.Prismatic.WittBigBridge` の鍵付き対象ビルドが通過。段 2 の累計27モジュールを一時監査し、非公開を含む1,003宣言は標準三公理のみ。追加公理と `sorry` は0。
+- 停止点 2 までに、有限枠から大きい prismatic 枠への射の擬同型性、`wittBigBridge` と `wittToSmall` の導来 p 完備底変換後の擬同型性、完備 pd de Rham の cdga の代入と二射影の厳密な自然性を示す。段 3 の結晶サイトはこの検収の後に進める。
