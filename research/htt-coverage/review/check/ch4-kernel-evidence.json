@@ -1,5 +1,5 @@
 {
-  "base": "57d9f07633ae6903a903b0f56aa57110a41548cb",
+  "base": "38fea14bc6ce636de1c58335e08148b1c1ff8db4",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -186,9 +186,55 @@
       "declarations": [
         "SerrePositivity.InfinityCategories.TrivialKanFibration.mem"
       ]
+    },
+    "4.2.3.3": {
+      "page": 249,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration"
+      ]
+    },
+    "4.2.3.5": {
+      "page": 251,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne"
+      ]
+    },
+    "4.2.3.6": {
+      "page": 251,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.joinPoint_mono_rightAnodyne"
+      ]
+    },
+    "4.2.3.7": {
+      "page": 252,
+      "declarations": [
+        "CategoryTheory.Functor.Elements"
+      ]
+    },
+    "4.2.3.11": {
+      "page": 253,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits",
+        "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits"
+      ]
+    },
+    "4.2.3.12": {
+      "page": 253,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits",
+        "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor"
+      ]
     }
   },
   "declarations": {
+    "CategoryTheory.Functor.Elements": {
+      "declaration": "CategoryTheory.Functor.Elements",
+      "source": "Mathlib/CategoryTheory/Elements.lean",
+      "type": "@CategoryTheory.Functor.Elements.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1} → Type (max u_3 u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
     "CategoryTheory.MorphismProperty.of_isPushout": {
       "declaration": "CategoryTheory.MorphismProperty.of_isPushout",
       "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
@@ -224,6 +270,54 @@
       ],
       "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
       "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+      "type": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.{u_1} : SSet.{u_1 + 1} → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits : ∀ {C : SSet},\n  SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits C →\n    ∀ (κ : Cardinal.{u_1}), SerrePositivity.InfinityCategories.F2.Ind.HasSmallKappaFilteredColimits κ C",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch9-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.{u_1} : {C E : SSet.{u_1 + 1}} →\n  Quiver.Hom.{u_1 + 1, u_1 + 2} C E → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor : ∀ {C E : SSet}\n  {F : C ⟶ E},\n  SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits F →\n    ∀ (κ : Cardinal.{u_1}), SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor κ F",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch9-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
     },
     "SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma": {
       "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma",
@@ -429,6 +523,18 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
       "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
+    "SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+      "type": "@SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration.{u_1} : ∀ {X : SSet.{u_1}}\n  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x ↔\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}\n        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
     "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison": {
       "declaration": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison",
       "source": "SerrePositivity/InfinityCategories/Core/FatJoinGeneralComparison.lean",
@@ -512,6 +618,30 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.joinPoint_mono_rightAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.joinPoint_mono_rightAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F1/Joins/RightConeMonoAnodyne.lean",
+      "type": "@SerrePositivity.InfinityCategories.joinPoint_mono_rightAnodyne.{u_1} : ∀ {A T : SSet.{u_1}}\n  (i : Quiver.Hom.{u_1, u_1 + 1} A T) [CategoryTheory.Mono.{u_1, u_1 + 1} i],\n  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1}\n    (SerrePositivity.InfinityCategories.joinMap.{u_1} i\n      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}\n        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne",
+      "source": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+      "type": "@SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne.{u_1} : ∀ {A B : SSet.{u_1}}\n  (A₀ : SSet.Subcomplex.{u_1} A) (B₀ : SSet.Subcomplex.{u_1} B),\n  SerrePositivity.InfinityCategories.leftAnodyneExtensions.{u_1} (SSet.Subcomplex.ι.{u_1} B₀) →\n    SSet.innerAnodyneExtensions.{u_1}\n      (SSet.Subcomplex.ι.{u_1} (SerrePositivity.InfinityCategories.joinUnion.{u_1} A₀ B₀))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
     },
     "SerrePositivity.InfinityCategories.laxSliceHomEquiv": {
       "declaration": "SerrePositivity.InfinityCategories.laxSliceHomEquiv",

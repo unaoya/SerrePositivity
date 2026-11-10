@@ -49,3 +49,18 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.2.2.5,none,,左・右ファイブレーションの引き戻しや切断族の射影を読んだ。右辺 Y が底 S 自身であるときの太い相対余錐の射影をデカルトファイブレーションとする宣言は見つからなかった。,,not_found,
 4.2.2.6,none,,写像円筒を底変換した比較や、固定した添字で余錐を選ぶ宣言はある。積 S×K′ のときに太い相対余錐間の後合成がデカルトファイブレーションになる宣言は見つからなかった。,,not_found,
 4.2.2.7,none,,固定した添字と固定した準圏の族では通常の結合による普遍余錐の切断を選べる。HTT の変動する添字・値域を載せる太い相対円筒上の同じ写像や、その選択空間の比較は見つからなかった。,,not_found,
+4.2.3.1,none,,通常の圏の要素圏、相対結合、単体圏の神経を調べた。任意の F:I→SSet/K に対し、K の単体と N(I) の鎖を途中で分け、最初の添字に持ち上げる K_F の構成は見つからなかった。,,not_found,
+4.2.3.2,none,,相対結合の両端包含と単体圏の合成則はある。K_F の混合単体について最初の持ち上げ一つから残りを回収し、各 K_I の余錐を含める宣言は見つからなかった。,,not_found,
+4.2.3.3,partial,SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration @ SerrePositivity/InfinityCategories/Core/Terminal.lean:206,仮定：準圏 C の単体 σ の初頂点が始対象（Lean が強い：σ が零単体の場合に適用）。結論：零単体の境界は空なので、同じコスライスの頂点射影が自明 Kan ファイブレーションとなる（その場合に一致。正次元の境界制限は含まない）。,,found,special
+4.2.3.5,partial,SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne @ SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean:41,仮定：二つの部分複体包含と右因子の弱ホモトピー同値（Lean が強い：右因子の包含が左アノダイン）。結論：同じ結合の押し出し隅は内アノダインで、右ファイブレーションも内ファイブレーションなので右アノダイン（Lean が強い：内アノダイン性まで与える）。,,found,stronger-hyp
+4.2.3.6,partial,SerrePositivity.InfinityCategories.joinPoint_mono_rightAnodyne @ SerrePositivity/InfinityCategories/F1/Joins/RightConeMonoAnodyne.lean:40,仮定：単射と弱可縮な右因子 B（Lean が強い：B が一点）。結論：同じ結合写像は右アノダイン（一致する場合。一般の弱可縮な右因子は含まない）。,,found,special
+4.2.3.7,partial,CategoryTheory.Functor.Elements @ Mathlib/CategoryTheory/Elements.lean:48,仮定：K の n 単体 σ と K 上の図式族 F（Lean が弱い：任意の型値関手を受け取り、I 上の各 K_I の n 単体の σ 上の繊維に適用できる）。結論：対象と射が一致する要素圏 Iσ を与える（Lean が弱い：退化単体に限る充満部分圏 I′σ は指定しない）。,,found,component
+4.2.3.8,none,,コスライスの弱可縮性による Quillen A と、単点の右結合の右アノダイン性を調べた。退化単体の持ち上げ部分圏も使って N(I)⊆K_F の右アノダイン性を判定する宣言は見つからなかった。,,not_found,
+4.2.3.9,none,,フィルター付き半順序の神経やその弱可縮性は扱われる。包含で添字付けた部分複体族について Iσ と退化持ち上げの充満部分圏を比較し、K_F の仮定を判定する宣言は見つからなかった。,,not_found,
+4.2.3.10,none,,右アノダイン包含に沿う余錐の制限には自明 Kan ファイブレーション性がある。指定の K_F の両側の包含に適用して同じ二本の余錐制限を得る宣言は見つからなかった。,,not_found,
+4.2.3.11,partial,SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:21 | SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:44,仮定：κ 未満の図式に対する余極限の存在（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限が存在する（必要方向。τ≪κ に基づく分解による十分方向は含まない）。,,found,direction
+4.2.3.12,partial,SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:29 | SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor @ SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean:50,仮定：κ 未満の図式に対する余極限を保つ関手（Lean が強い：κ 未満だけでなく、指定宇宙内の全図式に要求）。結論：τ 未満の図式と小さい τ-フィルター付き半順序の神経について同じ余極限を保つ（必要方向。τ≪κ に基づく分解による十分方向は含まない）。,,found,direction
+4.2.3.13,none,,単体圏の神経から元の単体集合への初頂点写像はある。K の単体も含む K_F 全体から K への射で K の包含を収縮する宣言は見つからなかった。,,not_found,
+4.2.3.14,none,,反対向きの単体圏の神経からの初頂点写像と局所化性はある。任意の単体集合への通常圏の神経からの右共終写像を、この写像または終頂点写像で与える宣言は見つからなかった。,,not_found,
+4.2.3.15,none,,単体圏の初頂点写像の自然性と、特定の半順序からの共終写像はある。任意の単体集合について、半順序集合の神経からの右共終写像を関手的に選ぶ宣言は見つからなかった。,,not_found,
+4.2.3.16,none,,非特異単体集合を非退化単体から余極限として作る Mathlib の宣言を読んだ。任意の有限単体集合への有限半順序の神経からの右共終写像や、原典の非特異な有限置換は見つからなかった。,,not_found,
