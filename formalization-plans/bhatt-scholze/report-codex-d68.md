@@ -349,3 +349,5 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `crystallineBridge_coordinate` は affine の零次座標と整係数 pd 模型の第 0 頂点の p 乗が、橋と pd 包含を通して同じ剰余元になることを示す。自由 δ 座標で整係数の二つの射を計算し、剰余で Frobenius を p 乗にした。
 - この時点で鍵付きビルドを通した段 3 の新規 74 モジュールの一時監査は 1,898 宣言で標準三公理のみ。従来の cup 積で使う古典的な Alexander–Whitney の補題は監査対象に含まれる。CAlg_R の模型の内部への新しい参照はない。
 - 比較全体の乗法性 `crystallineChain_cup` と、完備 pd 形式の係数変換は別の対象ビルドで確認中。残りは総複体での還元と Bockstein の代表の照合、生成元から Cartier 同型との一致を導く部分、停止点 3 の対象二定理。
+
+- 続いて `crystallineChain_cup` と完備 pd 形式の係数変換を対象ビルドで検査した。係数変換は自由外冪と完備 pd 係数を半線形に写し、余面と偏微分の両方に可換。草稿の `pdDeRhamCohomologyIso_cup` は本体に接続し、該当箇所を独立に検査した。ここまでの 78 モジュールの一時監査は 1,956 宣言で標準三公理のみ。

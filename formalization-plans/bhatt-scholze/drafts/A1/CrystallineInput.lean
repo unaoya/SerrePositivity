@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
+public import SerrePositivity.BhattScholze.Prismatic.CrystallineChainProduct
 public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
 public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
 public import SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier
@@ -451,8 +452,8 @@ theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
     (a : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i)
     (b : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) j) :
     pdDeRhamCohomologyIso p r (i+j) (cohomologyCup _ a b) =
-      DeRham.deRhamCohomologyWedge _ _ (pdDeRhamCohomologyIso p r i a) (pdDeRhamCohomologyIso p r j b) := by
-  sorry -- 総複体の AW × 外積の積で二つの射影が dg 環の射
+      DeRham.deRhamCohomologyWedge _ _ (pdDeRhamCohomologyIso p r i a) (pdDeRhamCohomologyIso p r j b) :=
+  pdDeRhamCechToPolynomial_cup p (cartierBase.{u} p) r (cartierBase_natCast p) a b
 
 /-! ### 段 5：n 変数の Cartier 同型 -/
 
@@ -462,27 +463,7 @@ theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
 
 -- cartierFormsIso は本体の CartierCompletedForms に置く。
 
-/-- 概要：段 2〜4 の合成 Ψ^i : H^i(C^•/p) ≅ H^i(Ω^•_{F_p[X]})。
-方針：段 2 の同型、段 3 の同型の逆、`pdModel_modP`、段 4。
-規約：加法群の同型。
-使われ方：段 6。 -/
-def crystallineChain (r i : ℕ) :
-    hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i ≃+ (cartierComplex.{u} p r).homology i :=
-  ((crystallineBridgeModP_isCohomologyIso p r).addEquiv i).trans
-    ((((pdInclusionModP_isCohomologyIso p r).addEquiv i).symm.trans
-      ((isCohomologyIso_of_isIso (pdModel_modP p r).hom).addEquiv i)).trans
-      (pdDeRhamCohomologyIso p r i))
-
-/-- 概要：Ψ は cup 積を外積に送る。
-方針：段 2・3 と `pdModel_modP` は余単体的可換環の射なので `cohomologyMap_cup`、段 4 は `pdDeRhamCohomologyIso_cup`。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-theorem crystallineChain_cup (r : ℕ) {i j : ℕ}
-    (a : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i)
-    (b : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r j) :
-    crystallineChain p r (i+j) (cohomologyCup _ a b) =
-      DeRham.deRhamCohomologyWedge _ _ (crystallineChain p r i a) (crystallineChain p r j b) := by
-  sorry -- cohomologyMap_cup を三回（逆写像も環の射）、pdDeRhamCohomologyIso_cup
+-- crystallineChain と crystallineChain_cup は本体の CrystallineChainProduct から使う。
 
 /-- 概要：段 6：生成元での照合：Ψ^0(η^0 X_j) = C^{-1}(X_j) = [X_j^p]、Ψ^1(η^1 dX_j) = C^{-1}(dX_j) = [X_j^{p−1}dX_j]。
 方針：次数 0：橋は X ↦ φ(X) ≡ X^p mod p、`pdInclusion` は X ↦ X、段 4 の次数 0 は copy 0 の包含。次数 1：η^1(dX_j) = β(η^0 X_j) で、

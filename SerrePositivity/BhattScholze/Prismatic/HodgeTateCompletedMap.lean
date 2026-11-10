@@ -458,4 +458,3 @@ theorem hodgeTateMap_unique (f : HTAlgebraMap P hP r) : f = hodgeTateMap P hP r 
   rfl
 
 end SerrePositivity.BhattScholze.Prismatic
-
