@@ -1,5 +1,6 @@
 import Mathlib.Util.PrintSorries
 import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
+import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalFlat
 import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks
 import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionPD
 import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence
@@ -8,11 +9,16 @@ import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDFactoria
 import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDKoszul
 import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular
 import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTor
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDUniversalTor
 import SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis
 import SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers
 import SerrePositivity.CommutativeAlgebra.KoszulRegular.PrincipalReduction
 
 open SerrePositivity SerrePositivity.BhattScholze
+#print axioms primeLocalInt_moduleFlat
+#print sorries primeLocalInt_moduleFlat
+#print axioms dpFamilyUniversalTor_subsingleton
+#print sorries dpFamilyUniversalTor_subsingleton
 #print axioms PrimeLocalInt
 #print sorries PrimeLocalInt
 #print axioms primeLocalIntDelta
