@@ -135,3 +135,9 @@
   - `SerrePositivity.BhattScholze.Prismatic.PDCompletedColumnContraction`
   - `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedProjection`
   - `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedColumnZero`
+
+## 段 2（P2）途中 — 小さい分冪模型の関手性
+
+- `PDPolynomialFunctor.nerve` では各頂点で多項式を代入し、剰余への評価と両立することから分冪包へ延長した。恒等、合成、単体の射との可換性は、枠の変数上で照合した。
+- `pdPolynomialFunctor` は P1 の有限枠との同型を介して代入を D68 の小さい模型へ移した厳密な関手。有限枠との同型も多項式代入に関して自然。
+- `SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor` の鍵付き対象ビルドが通過。段 2 のここまでの20モジュールを一時監査し、非公開を含む668宣言は標準三公理のみ。追加公理と `sorry` は0。
