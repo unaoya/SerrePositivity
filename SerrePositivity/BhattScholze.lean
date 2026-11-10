@@ -29,6 +29,11 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtale
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcCardinality
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcSite
 public import SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
+public import SerrePositivity.BhattScholze.Almost.CompletedModuleTensor
+public import SerrePositivity.BhattScholze.Almost.AlmostTensor
+public import SerrePositivity.BhattScholze.Almost.AlmostTensorForward
+public import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
+public import SerrePositivity.BhattScholze.Almost.AlmostGenerators
 public import SerrePositivity.BhattScholze.Delta.Division.BaseChange
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope
