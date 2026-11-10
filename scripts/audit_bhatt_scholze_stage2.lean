@@ -104,6 +104,11 @@ import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
 import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
 import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
+import SerrePositivity.BhattScholze.Almost.CompletedModuleTensor
+import SerrePositivity.BhattScholze.Almost.AlmostTensor
+import SerrePositivity.BhattScholze.Almost.AlmostTensorForward
+import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
+import SerrePositivity.BhattScholze.Almost.AlmostGenerators
 import Lean.Util.CollectAxioms
 
 /-!
@@ -116,6 +121,11 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Almost.CompletedModuleTensor,
+    `SerrePositivity.BhattScholze.Almost.AlmostTensor,
+    `SerrePositivity.BhattScholze.Almost.AlmostTensorForward,
+    `SerrePositivity.BhattScholze.Almost.AlmostConnectivity,
+    `SerrePositivity.BhattScholze.Almost.AlmostGenerators,
     `SerrePositivity.BhattScholze.Delta.Division.BaseChange,
     `SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision,
     `SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope,
