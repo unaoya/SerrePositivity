@@ -39,9 +39,9 @@
 | (b) BGT 9.53 で K₀・K₁ の比較を出す | 非連結 K を BGT で定義する（決定 2 (a)）なら、9.53 の議論（Waldhausen の S• の低次の計算）が使える | BGT §9.3 の非連結 K の登録（§1.4）が先 |
 | (c) 1 連結性を仮定（界面）にして第 1 段を閉じる | `IsKConnective K` を K0 界面の一欄にする | 段階 II の終わり条件（sorry 0、引用なし）に反する。採れない |
 
-**訂正（11-11、BGT v4 の本文で確認）**：(b) は成り立たない。Thm 9.53 の主張は「connective な A∞ 環スペクトル R について、**i ≤ 0** で π_i IK(R) ≅ π_i IK(π₀R)」であり、i = 1 を含まない。しかもその証明は §9.5（EKMM の行列環 M_R・L_R、Prop 9.40 の BGL(R)⁺、Def 9.41）を経由する。つまり plus 構成そのものであり、L2 の凍結部分を避けられない。1 連結性に要るのは i = 1 の比較（K₁(R) ≅ K₁(π₀R)、KST Thm 2.16 の n ≤ 1）なので、BGT は根拠にならない。
+**訂正（11-11、BGT v4 と LT の本文で確認）**：(b) は成り立たない。BGT Thm 9.53 は「connective な R について **i ≤ 0** で π_i IK(R) ≅ π_i IK(π₀R)」であり、証明は §9.5（EKMM の行列環、Prop 9.40 の BGL(R)⁺）を経由する。LT Lemma 2.4 自身も、非正次数を 9.53 で済ませ、正次数は plus 構成（「Ω^∞₀ K(A) ≃ BGL(A)⁺、[BGT13, Lemma 9.39]」）と Serre 類の Whitehead で示す。しかも Def 2.5 の「Λ-1-connective 不変量」は全 n についての (n+1)-連結性なので、**次数 ≤ 1 の比較（KST 2.16）では足りない**。
 
-**推奨（訂正後）**：(a) L2 の切り出し（K₀・K₁ の比較に要る部分だけ）を本線にする。何が要るかは、Land–Tamme Lemma 2.4・Example 2.6 (i) の証明が K₀・K₁ の計算（KST 2.16）だけで済むか、plus 構成の全体を使うかで決まる。読み取りのエージェントに確かめさせる（§4 の 3）。§3 の ∞ 側への要求「S• 構成の低次の計算」は、その結果しだいで「∞-S• の K₁ の計算（Waldhausen 1.5.9 の ∞ 版）」に絞る。
+**結論（確定、11-11）**：1 連結性は **L2 の一部の凍結解除**でしか得られない。要るのは L2 の残り 1〜3（plus 構成の実体：セル添付・π₁ の商・ホモロジー同値）、5（Serre/Hurewicz 型スペクトル系列）、6（Prop 2.15 ＝ Ω^∞K ≃ K₀ × BGL⁺ の ∞-S• との接続、K-L1 待ち）。4・7（K₀/K₁ 比較、Bass）は不要。L2 の見積もり：240〜640 時間。§1.3 と同じ部品なので、まとめて一つの「L2 部分解凍」として扱う（§1.5）。
 
 ### 1.3 冪零不変性（公理 (3)、要約の問題 3）
 
@@ -56,7 +56,12 @@
 | (c) 有理化した K の冪零不変性を、Weibel の「K_ℚ(R) → K_ℚ(R/I) は I 冪零なら同型」（Goodwillie 1986 の有理版）の**代数的な証明**で | 原典は Goodwillie "Relative algebraic K-theory and cyclic homology" Main Theorem。有理の場合は Hochschild・巡回ホモロジーの比較で、位相的な入力が少ない | Goodwillie の定理そのもの。規模は (b) と同程度 |
 | (d) ⑥ の BS17 と同じ手で、Zariski 局所的に被約化と同型になるように E の定義を変える | 使う側（論文 Thm 3.1 の証明）が冪零不変性をどこで使うかによる。軌道の議論の V ↪ X ×_S Y（被約化）だけなら、E を「被約化で不変になるように定義し直す」ことで回避できる可能性 | 論文の主張の形が変わる。紙で確かめていない |
 
-**推奨**：(a) と (d) を紙で確かめ、(d) が通るなら採る。(a) は L2 の切り出しの規模しだい。
+**結論（確定、11-11、読み取りのエージェントが論文 §3 の本文と Lean を照合）**：
+
+1. **(d) は不成立**。論文 §3 で冪零不変性を使う箇所は六つあり（§3.1 末の宣言、Lemma 3.3 の被約化、Thm 3.1 の基底の被約化、V ↪ X ×_S Y、V ×_Y Z ↪ X ×_S Z、そして LT Thm A.2 の内部）、幾何の側は L_red(Y) := L(Y_red) で全部通る。壊れるのは**公理 (2) の供給**：計画 v2 は KST Thm A（pro-cartesian、E(Y_n) は実際の無限小 thickening の値）から「"lim" E(Y_n) が定数」で実降下を出すが、これは離散環 R と冪零イデアル I について E(R) ≃ E(R/I)、つまり D9 そのもの。L_red に替えても同じ主張が (2) の供給に残る。
+2. **副産物：Lean の公理 (3) は公理 (2) から導ける**。`AbstractBlowupSquare`（`KST/Descent/BlowupGeometry.lean`）は「中心が空や全体の場合も許す」ので、冪零 thickening i : Z ↪ Y の退化した正方形 (Z, Z, Z, Y) が抽象 blowup 正方形になり、`NaturalBlowupSequences` の Mayer–Vietoris 列から `pullback_bijective` が出る。K の再開時に `Nilinvariant` の class を (2) からの定理に落とす（Axioms.lean の公理を一つ減らす）。
+3. したがって残る選択肢は (a)（D9 のまま、L2 の plus・Serre SS・Prop 2.15 を解凍）か (b)/(c)（Goodwillie）。**(a) を採る**。§1.2 と同じ L2 の部品で済む。D9 は離散環なので ĜL の dg 部分は不要。
+4. Lean 側の使用（確認済み、主経路、sorry 0）：`Nilinvariant.piDescent_iff_reduction` は外側の次元帰納の一段で一回、`piDescent_iff_reducedSource` は軌道論法で三箇所。`piDescent_iff_thickening_baseChange`・`affineReduction_pullback_bijective` は主経路から未使用。
 
 ### 1.4 補足：非連結 K の登録（要約の問題 7）— 訂正（11-11）
 
@@ -71,7 +76,9 @@
 | L2（`KST/Comparison`、plus 構成との比較） | ĜL、群完備化、Prop 2.15 | §1.2 (a)・§1.3 (a) の切り出し部分だけ。全部は要らない |
 | L6（`KST/ProExcision`） | pro 形式（Tower、IsProEquivalence、IsProCartesian）、Koszul の 4.9・4.10、Claim 4.15・Lemma 4.16、Appendix A | **pro 形式と 4.9・4.10 は要る**（決定 D5、§1.1 (c)）。群ホモロジーの部分（4.14〜4.19、App. A）は要らない |
 
-**提案**：L6 のうち pro 形式と Koszul の塔を `KST/ProExcision/` から新しい場所（`KST/Pro/` または `HomologicalAlgebra/Pro/`）に移して凍結解除する。群ホモロジーの部分は Archive へ。L2 は §1.2・§1.3 の結論が出てから切り出す。
+**提案（11-11 更新）**：
+- L6：pro 形式と Koszul の塔を `KST/ProExcision/` から新しい場所（`KST/Pro/` または `HomologicalAlgebra/Pro/`）に移して凍結解除する。群ホモロジーの部分（4.14〜4.19、App. A）は Archive へ。
+- L2：§1.2・§1.3 の結論により、**残り 1〜3・5・6 を一つの束「L2 部分解凍」として K 基盤 1（B-3）の中で行う**（4・7 は不要）。L2 の現状：352 ファイル・32,981 行・sorry 0・`ModelCategory SSet` なし・主経路の外（確認済み）。済んでいるのは Γ・ĜL、群完備化、Lemma 2.13、局所係数ホモロジーの長完全列。見積もり 240〜640 時間（K-L1 の ∞-S• の供給を待つ部分 6 を含む）。
 
 ## 2. `[ModelCategory SSet]` を仮定する降下の作り直し
 
