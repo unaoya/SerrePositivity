@@ -126,3 +126,12 @@
   - `SerrePositivity.BhattScholze.Prismatic.UniversalWittComparison`
   - `SerrePositivity.BhattScholze.Prismatic.PDFrobeniusLift`
   - `SerrePositivity.BhattScholze.Prismatic.WittPDEnvelopeCrystalline`
+
+## 段 2（P2）途中 — 完備 de Rham の二射影
+
+- D68 の第 0 行への射影に加え、第 0 列への射影の擬同型を任意の係数環で示した。分冪座標ごとの積分と定数項の写像を p 完備化へ延ばし、鎖ホモトピーの等式を保ったまま全座標を収縮した。
+- 第 0 列を通常の完備 de Rham 複体と同定し、総複体からの合成 `pdDeRhamTotalToCompletedForms` の擬同型性を示した。ここでの比較は複体の写像であり、多項式代入との厳密な自然性と積の照合は残っている。
+- 以下の3モジュールの鍵付き対象ビルドが通過。段 2 のここまでの19モジュールを一時監査し、非公開を含む628宣言は標準三公理のみ。追加公理と `sorry` は0。既存の Lean 宣言の変更はない。
+  - `SerrePositivity.BhattScholze.Prismatic.PDCompletedColumnContraction`
+  - `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedProjection`
+  - `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedColumnZero`
