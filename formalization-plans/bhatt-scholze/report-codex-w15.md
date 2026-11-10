@@ -83,3 +83,5 @@
 - D21 を確認し、main `dd046d9f8` を `03f1d4310` で取り込んだ。Ex 3.14 の存在は本体の変数版を使う。
 - `CompleteFlatReduction` を追加。上に有界な導来対象が導来 p 完備で、(p,d) 剰余が離散かつ平坦なら、各 dⁿ による導来剰余は離散で H⁰ の p 冪ねじれは有界。係数の冪零フィルトレーションと既存の主元剰余の定理を使った。Lemma 3.7 (2) の中間結果。
 - 対象ビルドと公開 2 宣言の監査を通過。標準三公理のみ、`sorry` 0。停止点 3 の検収条件は未達。
+- Proposition 3.13 (2) の変数版を `prismaticEnvelope_completedBaseChange_of_variables` に実装。完備テンソル積の二脚を保ち、拡大イデアルに対する envelope の普遍性を示した。正則性・有界性は底変換後の完備自由 δ 環との同型に移した。草稿の型は維持した。
+- `CompletedTensor`・`VariableEnvelopeBaseChange` の対象ビルドと公開 16 宣言の監査を通過。標準三公理のみ、`sorry` 0。∞ 圏・E3 への推移的 import と KST への直接 import はない。
