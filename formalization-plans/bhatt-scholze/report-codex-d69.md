@@ -101,3 +101,14 @@
   - `SerrePositivity.BhattScholze.Prismatic.WittAdicCompleteness`
   - `SerrePositivity.BhattScholze.Prismatic.WittCrystallinePrism`
 - 残りは大きい prismatic Čech–Alexander 模型、有限枠と大きい枠の比較、`wittBigBridge` と `wittToSmall` の厳密な射および導来 p 完備底変換での擬同型、完備 pd de Rham の多項式代入と二射影。停止点 2 の検収はこれらを閉じた後に行う。
+
+## 段 2（P2）途中 — 有限枠との比較
+
+- `polynomialResidueEquiv` で、p 正則な剰余係数環上の完備多項式を p で割ると通常の多項式になることを、D68 の主完備化単位の mod p 同型から示した。
+- `wittSmallFrame` は小さい D68 の分冪模型から `wittBigPdModel` の各値への写像。`W/J ≃ C/p` と `polynomialResidueEquiv` で同じ剰余環上の二つの枠に直し、P1 の表示独立性から `wittSmallFrame_quasiIso` を得た。
+- `bigCechAlexanderOfTerms` は、評価核の prismatic envelope を項ごとに受け取り、`Poly(C)` と単体の積圏上で厳密に関手化する。導来 p 完備化で閉じる前のイデアルを使う。閉包を取る版には既存の `IsPrismaticEnvelope.of_closure` を適用できる。
+- 次の3モジュールの鍵付き対象ビルドが通過。段 2 のここまでの10モジュールを一時監査し、非公開宣言を含む321宣言が標準三公理のみであることを確認した。
+  - `SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionResidue`
+  - `SerrePositivity.BhattScholze.Prismatic.WittSmallFrame`
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechAlexander`
+- ⑤c の K2・K3 を含む main `14f8925ae` を取り込んだ。K2 の普遍 prism の p 正則性と剰余の p 正則性を `psiPrism` の入力に使える。⑤a・⑤c と編集ファイルの重複はない。
