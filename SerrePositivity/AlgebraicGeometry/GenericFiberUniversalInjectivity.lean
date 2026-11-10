@@ -33,6 +33,45 @@ private def fiberBaseChangeEquiv (R S k V : Type*) [CommRing R] [CommRing S] [Al
       (TensorProduct.comm S V (S ⊗[R] k))).restrictScalars R)
 
 /--
+概要：整な底変換ファイバーの生成点で単射なら、そのファイバー全体への底変換でも単射。
+方針：始域の平坦性で分数体への写像の単射性を得て、テンソル積を比較する。
+規約：ファイバーを与える係数環は代数として入力する。
+使われ方：各剰余体での単射性を大域の普遍単射性に渡す。
+-/
+theorem lTensor_injective_of_genericFiber_injective
+    {R S k M N : Type*} [CommRing R] [CommRing S] [CommRing k] [Algebra R S] [Algebra R k]
+    [AddCommGroup M] [Module R M] [Module S M] [IsScalarTower R S M]
+    [AddCommGroup N] [Module R N] [Module S N] [IsScalarTower R S N]
+    [Module.Flat S M] [IsDomain (S ⊗[R] k)] (f : M →ₗ[S] N)
+    (h : Function.Injective ((f.baseChange (S ⊗[R] k)).lTensor
+      ((⊥ : Ideal (S ⊗[R] k)).ResidueField))) :
+    Function.Injective ((f.restrictScalars R).lTensor k) := by
+  let A := S ⊗[R] k
+  let K := (⊥ : Ideal A).ResidueField
+  let α := f.baseChange A
+  have hj : Function.Injective (fractionTensorMap A (A ⊗[S] M)) :=
+    (Module.Flat.rTensor_preserves_injective_linearMap (Algebra.linearMap A K)
+      (IsFractionRing.injective A K)).comp (TensorProduct.lid A (A ⊗[S] M)).symm.injective
+  have hα : Function.Injective α := by
+    apply Function.Injective.of_comp (f := fractionTensorMap A (A ⊗[S] N))
+    have hcomp : (fractionTensorMap A (A ⊗[S] N)).comp α =
+        (α.lTensor K).comp (fractionTensorMap A (A ⊗[S] M)) := by
+      ext x
+      simp [fractionTensorMap]
+    rw [← LinearMap.coe_comp, hcomp]
+    exact h.comp hj
+  let eM := fiberBaseChangeEquiv R S k M
+  let eN := fiberBaseChangeEquiv R S k N
+  have hcomp : eN.toLinearMap.comp ((f.restrictScalars R).lTensor k) =
+      (α.restrictScalars R).comp eM.toLinearMap := by
+    ext a m
+    simp [fiberBaseChangeEquiv, eM, eN, α]
+  apply Function.Injective.of_comp (f := eN)
+  change Function.Injective ⇑(eN.toLinearMap.comp ((f.restrictScalars R).lTensor k))
+  rw [hcomp]
+  exact hα.comp eM.injective
+
+/--
 概要：局所基底上の写像が整な閉ファイバーの生成点で平坦な標的への単射を与えるなら、
 元の写像は基底上で普遍単射。
 方針：閉ファイバー上の始域が平坦なら分数体への写像が単射であり、
@@ -52,32 +91,7 @@ theorem lTensor_injective_of_genericFiber_composite_injective
       ((⊥ : Ideal (S ⊗[R] IsLocalRing.ResidueField R)).ResidueField)))
     (Q : Type*) [AddCommGroup Q] [Module R Q] :
     Function.Injective ((f.restrictScalars R).lTensor Q) := by
-  let k := IsLocalRing.ResidueField R
-  let A := S ⊗[R] k
-  let K := (⊥ : Ideal A).ResidueField
-  let α := (g.comp f).baseChange A
-  have hj : Function.Injective (fractionTensorMap A (A ⊗[S] M)) :=
-    (Module.Flat.rTensor_preserves_injective_linearMap (Algebra.linearMap A K)
-      (IsFractionRing.injective A K)).comp (TensorProduct.lid A (A ⊗[S] M)).symm.injective
-  have hα : Function.Injective α := by
-    apply Function.Injective.of_comp (f := fractionTensorMap A (A ⊗[S] P))
-    have hcomp : (fractionTensorMap A (A ⊗[S] P)).comp α =
-        (α.lTensor K).comp (fractionTensorMap A (A ⊗[S] M)) := by
-      ext x
-      simp [fractionTensorMap]
-    rw [← LinearMap.coe_comp, hcomp]
-    exact h.comp hj
-  let eM := fiberBaseChangeEquiv R S k M
-  let eP := fiberBaseChangeEquiv R S k P
-  have hcomp : eP.toLinearMap.comp (((g.comp f).restrictScalars R).lTensor k) =
-      (α.restrictScalars R).comp eM.toLinearMap := by
-    ext a m
-    simp [fiberBaseChangeEquiv, eM, eP, α]
-  have hk : Function.Injective (((g.comp f).restrictScalars R).lTensor k) := by
-    apply Function.Injective.of_comp (f := eP)
-    change Function.Injective ⇑(eP.toLinearMap.comp (((g.comp f).restrictScalars R).lTensor k))
-    rw [hcomp]
-    exact hα.comp eM.injective
+  have hk := lTensor_injective_of_genericFiber_injective (g.comp f) h
   have hQ := lTensor_injective_of_residueTensor_injective_of_projective
     ((g.comp f).restrictScalars R) hk Q
   rw [LinearMap.restrictScalars_comp, LinearMap.lTensor_comp] at hQ
