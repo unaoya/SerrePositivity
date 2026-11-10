@@ -40,3 +40,14 @@ BS が E∞ 代数の ∞ 圏を、構造 `EInfinityTheory` を通してだけ�
 ## 4. 追記（2026-11-10、調整役）：drafts の A0・A3 は ⑤c の持ち分
 
 新しいレーン ⑤c（BS-W15、`bhatt-scholze-codex-w15.md`）が、drafts の `A0/`（`CechAlexander.lean` を除く）と `A3/` を書き換える。W14 の段 2 では、この二つ（`A0/CechAlexander.lean` は触ってよい）を触らない。CAlg_R への参照（A0 で 3 か所、A3 で 8 か所）は ⑤c が界面を通す形に直す。段 2 の報告には「A0・A3 は ⑤c」と書く。
+
+## 5. 追記（2026-11-10、調整役）：停止点 1 の取り込みと、欄の追加二つ
+
+停止点 1（b84937905・38474ed61）を main に取り込んだ（8045586dd、登録 3f5bb7c85。`EInfinity.lean` の入口と段階 II の監査、3,678 宣言・標準三公理のみ）。D71 の確認：`EInfinity/Interface/` に模型のモジュールの import と `ModelCategory` は 0 件。
+
+**承認**：報告の欄の追加二つ。どちらも drafts の主張を保つのに要る自然性で、どの実例にも求めてよい性質。
+
+1. `restrictD_homologyIso`：係数の制限とホモロジーの比較を、関手の同型として持つ（頂点ごとの同型だけでは P⁰ の自然性 `powerOperationZero_natural` を述べられない）。
+2. `strictToD_homologyIso`：厳密な複体を D(S) に送ったときのホモロジーが元の複体のホモロジーと一致する比較（Tot の `totEInfinity_forget`・`totEInfinity_map_isInvertible` に要る）。今の模型では `ComplexLimits.complexOrdinaryDerivedSource_map_weak` などから供給する。
+
+二つとも D(S) の側の性質なので、将来 D(S) の一般論として証明が揃えば、実例の欄はそれで埋める。段 2 を再開してよい。
