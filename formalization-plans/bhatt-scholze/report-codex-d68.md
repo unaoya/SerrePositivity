@@ -315,3 +315,15 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `pdCompletedPartial_mul`、`pdVerticalD_wedge`、`pdWedge_natural` は完備 pd 偏微分の積公式、列の外積の Leibniz 則、余単体構造射に関する自然性。`moduleCofaceDifferential_awBilinear` は自然な双線形対の Alexander–Whitney 積の横方向の Leibniz 則。
 - `CochainProduct.onHomology` は Leibniz 則を満たす積を余輪体の商に降ろす。`deRhamCohomologyWedge` はその多項式 de Rham 外積への適用。
 - 実装済み 47 モジュールの鍵付き対象ビルドは成功。一時監査の 1,278 宣言は標準三公理のみ。main の D71〜D73 の設計と ⑤a の停止点 0 承認（`a24fae02a`）を取り込み、CAlg_R の模型の中身への参照は追加していない。
+
+### 総複体の積と ⑤c への引き継ぎ
+
+- `7792e3499` で `pdBigradedProduct` と `pdTotalProduct` を定義し、二つの成分を挿入したときの積の式を示した。符号は左の縦次数と右の横次数の積。有限 Cartier の単項式基底での値も `finiteCartierLinearEquiv_basis` で代表形式のコホモロジー類と照合した。
+- この時点の 49 モジュールの鍵付き対象ビルドは成功。一時監査の 1,304 宣言は `propext`、`Classical.choice`、`Quot.sound` のみ。
+- W15 の指示書を含む main `d39908253` を専用枝に取り込んだ。⑤b は自由多変数の分冪代数 `freeDPMonomial`・`freeDPBasis`・`freeDPFactorialEquiv` と、結晶 Čech 模型の差座標に特化した `crystallineAffineFrobeniusDivision_primeRegular` と包絡の比較を段 1・2 で実装済み。δ 除法の底変換には `deltaAdjoinDivisionBaseChange_isPushout` がある。W15 K1 の正則列一般に対する divided power 包絡の離散性・p ねじれなし・δ 構造・底変換をまとめる作業は ⑤b では着手していない。上記の特殊化と共通の部品は main に取り込み済み。
+
+### 有限 Cartier の完了と双次数の Leibniz 則
+
+- `82e43e9de` で結晶基底上の `finitePolynomialCartier` を閉じた。次数零では係数の Frobenius が恒等であることと単項式基底を使い、次数一では一元の外積基底を使った。外積の積は台が交わると零で、互いに素な台では Cartier 指数が加法的になる。これを `CochainProduct.onHomology_closedClass` でコホモロジーへ降ろした。
+- `pdBigradedProduct_horizontal` と `pdBigradedProduct_vertical` は、余面の Leibniz 則と列の外積の Leibniz 則を総微分の符号に合わせる。総次数での Leibniz 則と二つの射影の乗法性は引き続き必要。
+- 新規五本の鍵付き対象ビルドは成功。一時監査は段 3 の新規 54 モジュールの 1,394 宣言で標準三公理のみ。main `8045586dd` を専用枝に取り込んだ。⑤a の変更とファイルの重複はなく、CAlg_R の模型の中身への参照も追加していない。
