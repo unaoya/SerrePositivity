@@ -64,8 +64,33 @@ theorem modulePureTransform_baseChange_flat_of_flat_ends
 
 
 /--
-概要：普遍単射の標的が係数拡大後に平坦なら、余核も係数拡大後に平坦。
+概要：短完全列の左端が普遍単射で中央が係数拡大後に平坦なら、右端も係数拡大後に平坦。
 方針：普遍単射性と右完全性を係数拡大に移し、拡大後の余核と比較する。
+規約：右端は任意の余核表示で与える。
+使われ方：Stacks 0815 で、境界外の余核の平坦性を帰納の仮定に渡す。
+-/
+theorem flat_right_baseChange_of_lTensor_injective
+    {R A M N P : Type u} [CommRing R] [CommRing A] [Algebra R A]
+    [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N] [AddCommGroup P] [Module R P]
+    [Module.Flat A (A ⊗[R] N)] (f : M →ₗ[R] N) (g : N →ₗ[R] P)
+    (hex : Exact f g) (hg : Surjective g)
+    (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q)) :
+    Module.Flat A (A ⊗[R] P) := by
+  have hsurj : Surjective (g.baseChange A) := LinearMap.baseChange_surjective A hg
+  have hker : LinearMap.ker (g.baseChange A) = LinearMap.range (f.baseChange A) :=
+    LinearMap.exact_iff.mp (lTensor_exact A hex hg)
+  have hflat : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.range (f.baseChange A)) := by
+    apply flat_cokernel_of_lTensor_injective
+    intro Q _ _
+    let : Module R Q := Module.compHom Q (algebraMap R A)
+    let : IsScalarTower R A Q := IsScalarTower.of_algebraMap_smul fun _ _ => rfl
+    exact lTensor_baseChange_injective f (hf Q)
+  let : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.ker (g.baseChange A)) := hker.symm ▸ hflat
+  exact Module.Flat.of_linearEquiv ((g.baseChange A).quotKerEquivOfSurjective hsurj).symm
+
+/--
+概要：普遍単射の標的が係数拡大後に平坦なら、余核も係数拡大後に平坦。
+方針：係数拡大後の短完全列の右端の平坦性を適用する。
 規約：余核は値域による商とする。
 使われ方：Stacks 0815 で、境界外の余核の平坦性を帰納の仮定に渡す。
 -/
@@ -74,21 +99,9 @@ theorem flat_cokernel_baseChange_of_lTensor_injective
     [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [Module.Flat A (A ⊗[R] N)] (f : M →ₗ[R] N)
     (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q)) :
-    Module.Flat A (A ⊗[R] (N ⧸ LinearMap.range f)) := by
-  let q := (LinearMap.range f).mkQ
-  have hsurj : Surjective (q.baseChange A) :=
-    LinearMap.baseChange_surjective A (Submodule.mkQ_surjective _)
-  have hex := lTensor_exact A f.exact_map_mkQ_range (Submodule.mkQ_surjective _)
-  have hker : LinearMap.ker (q.baseChange A) = LinearMap.range (f.baseChange A) :=
-    LinearMap.exact_iff.mp hex
-  have hflat : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.range (f.baseChange A)) := by
-    apply flat_cokernel_of_lTensor_injective
-    intro Q _ _
-    let : Module R Q := Module.compHom Q (algebraMap R A)
-    let : IsScalarTower R A Q := IsScalarTower.of_algebraMap_smul fun _ _ => rfl
-    exact lTensor_baseChange_injective f (hf Q)
-  let : Module.Flat A ((A ⊗[R] N) ⧸ LinearMap.ker (q.baseChange A)) := hker.symm ▸ hflat
-  exact Module.Flat.of_linearEquiv ((q.baseChange A).quotKerEquivOfSurjective hsurj).symm
+    Module.Flat A (A ⊗[R] (N ⧸ LinearMap.range f)) :=
+  flat_right_baseChange_of_lTensor_injective f (LinearMap.range f).mkQ
+    f.exact_map_mkQ_range (Submodule.mkQ_surjective _) hf
 
 /--
 概要：左端が平坦で普遍単射なら、正則な境界上で余核の純変換の平坦性から中央の平坦性が従う。
@@ -112,8 +125,27 @@ theorem modulePureTransform_baseChange_flat_of_flat_source
 
 
 /--
-概要：余核の純変換がすべての試験対象で平坦なら、左端が平坦な普遍単射の標的も同じ性質を持つ。
+概要：短完全列の右端の純変換がすべての試験対象で平坦なら、中央も平坦。
 方針：各試験対象の係数写像と正則な境界元に、純変換の短完全性を適用する。
+規約：左端は平坦な普遍単射、右端は任意の余核表示とする。
+使われ方：余核を平坦化する許容中心を元の加群に対して使う。
+-/
+theorem HasFlatPurePullbacks.of_flat_source_exact
+    {R : CommRingCat.{u}} {X : Scheme.{u}} {M N P : Type u}
+    [AddCommGroup M] [Module R M] [Module.Flat R M] [AddCommGroup N] [Module R N]
+    [AddCommGroup P] [Module R P] {p : X ⟶ Spec R} {a : R}
+    (f : M →ₗ[R] N) (g : N →ₗ[R] P) (hex : Exact f g) (hg : Surjective g)
+    (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q))
+    (h : HasFlatPurePullbacks p a P) :
+    HasFlatPurePullbacks p a N := by
+  intro A j φ ha
+  let : Algebra R A := φ.toAlgebra
+  let : Module.Flat A (modulePureTransform (φ a) (A ⊗[R] P)) := h A j ha
+  exact modulePureTransform_baseChange_flat_of_flat_source (φ a) ha f g hex hg hf
+
+/--
+概要：余核の純変換がすべての試験対象で平坦なら、左端が平坦な普遍単射の標的も同じ性質を持つ。
+方針：値域による商の短完全列に純変換の平坦性の比較を適用する。
 規約：余核は元の基礎環上の値域による商とする。
 使われ方：余核を平坦化する許容中心を元の加群に対して使う。
 -/
@@ -123,11 +155,8 @@ theorem HasFlatPurePullbacks.of_flat_source_cokernel
     {p : X ⟶ Spec R} {a : R} (f : M →ₗ[R] N)
     (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q))
     (h : HasFlatPurePullbacks p a (N ⧸ LinearMap.range f)) :
-    HasFlatPurePullbacks p a N := by
-  intro A j φ ha
-  let : Algebra R A := φ.toAlgebra
-  let : Module.Flat A (modulePureTransform (φ a) (A ⊗[R] (N ⧸ LinearMap.range f))) := h A j ha
-  exact modulePureTransform_baseChange_flat_of_flat_source (φ a) ha f (LinearMap.range f).mkQ
-    f.exact_map_mkQ_range (Submodule.mkQ_surjective _) hf
+    HasFlatPurePullbacks p a N :=
+  HasFlatPurePullbacks.of_flat_source_exact f (LinearMap.range f).mkQ f.exact_map_mkQ_range
+    (Submodule.mkQ_surjective _) hf h
 
 end SerrePositivity.AlgebraicGeometry

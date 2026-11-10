@@ -1,5 +1,7 @@
 module
 
+public import Mathlib.LinearAlgebra.TensorProduct.Quotient
+public import Mathlib.RingTheory.Flat.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Fiber
 public import Mathlib.RingTheory.Spectrum.Prime.Topology
 
@@ -53,5 +55,26 @@ theorem exists_base_basicOpen_of_nonzero_in_fiber
   change ((1 : q.asIdeal.ResidueField) ⊗ₜ[R] b) ∈ w.asIdeal
   rw [hz]
   exact Ideal.zero_mem _
+
+
+/--
+概要：平坦代数で拡大素イデアルに属さない元は、剰余体ファイバーでも非零。
+方針：基底の素イデアルによる商から剰余体への単射を、平坦なテンソル積で保つ。
+規約：基底は局所環に限定しない。
+使われ方：ブローアップの標準チャート上で自由化元が指定ファイバーと交わることを確かめる。
+-/
+theorem fiber_tmul_ne_zero_of_not_mem_map
+    {R B : Type*} [CommRing R] [CommRing B] [Algebra R B] [Module.Flat R B]
+    (p : Ideal R) [p.IsPrime] (b : B) (hb : b ∉ p.map (algebraMap R B)) :
+    ((1 : p.ResidueField) ⊗ₜ[R] b) ≠ 0 := by
+  intro hz
+  let i := (IsScalarTower.toAlgHom R (R ⧸ p) p.ResidueField).toLinearMap
+  have hi : Function.Injective i := IsFractionRing.injective (R ⧸ p) p.ResidueField
+  have hzero : ((1 : R ⧸ p) ⊗ₜ[R] b) = 0 := by
+    apply Module.Flat.rTensor_preserves_injective_linearMap (M := B) i hi
+    simpa [i] using hz
+  have hmem : b ∈ LinearMap.ker (TensorProduct.mk R (R ⧸ p) B 1) := hzero
+  rw [LinearMap.ker_tensorProductMk, Ideal.smul_top_eq_map] at hmem
+  exact hb hmem
 
 end SerrePositivity.AlgebraicGeometry
