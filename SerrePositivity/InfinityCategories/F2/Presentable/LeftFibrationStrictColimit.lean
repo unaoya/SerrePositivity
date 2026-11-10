@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationPointEvaluation
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
@@ -31,7 +31,7 @@ lemma leftFibrationStrictCocone_isColimit {B : SSet.{u}} [Quasicategory B]
     {J : Type u} [SmallCategory J] [IsFiltered J] {F : J ⥤ LeftFibrationObject B}
     (c : Cocone F) (hc : IsColimit ((leftFibrationObjectForget B).mapCocone c)) :
     IsColimitCone (strictNativeCocone c) := by
-  apply (equivalence_isColimitCone_iff (leftStraighteningInfinityMap_isQCatEquivalence B)
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff (leftStraighteningInfinityMap_isQCatEquivalence B)
     (strictNativeCocone c)).mpr
   apply F2.isColimitCone_of_pointwise
   rintro ⟨b⟩

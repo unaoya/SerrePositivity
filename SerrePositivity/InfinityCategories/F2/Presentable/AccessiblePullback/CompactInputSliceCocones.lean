@@ -33,8 +33,8 @@ lemma exists_componentCompactSliceCocone_of_accessible_components
     (hEκ : Ind.HasSmallKappaFilteredColimits κ E)
     (hDκ : Ind.HasSmallKappaFilteredColimits κ D)
     (hBκ : Ind.HasSmallKappaFilteredColimits κ B)
-    (hpμ : IsKappaAccessibleFunctor μ p) (hqμ : IsKappaAccessibleFunctor μ q)
-    (hpκ : IsKappaAccessibleFunctor κ p) (hqκ : IsKappaAccessibleFunctor κ q)
+    (hpμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p) (hqμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q)
+    (hpκ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (hqκ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q)
     (hpCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) v))
     (hqCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
@@ -71,9 +71,9 @@ lemma exists_componentCompactSliceCocone_of_accessible_components
   have hC : ∀ c, IsKappaAccessible μ (C c) := by intro c; fin_cases c; exact hE; exact hD
   have hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c) := by
     intro c; fin_cases c; exact hEκ; exact hDκ
-  have hpc : ∀ c, IsKappaAccessibleFunctor μ (pc c) := by
+  have hpc : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pc c) := by
     intro c; fin_cases c; exact hpμ; exact hqμ
-  have hpcκ : ∀ c, IsKappaAccessibleFunctor κ (pc c) := by
+  have hpcκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (pc c) := by
     intro c; fin_cases c; exact hpκ; exact hqκ
   have hcpc : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((pc c).app (Opposite.op ⦋0⦌) v) := by

@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 規約：元の単体集合の射として等しい。
 使われ方：戻した実単位の左端点の照合。 -/
 lemma rightAdjointUnitRaw_leftFunctor (C D : PresentableInfinityObject.{u})
-    (w : PrRMappingSpace D C _⦋0⦌) (x : RightAdjointUnitSpace C D w.val _⦋0⦌) :
+    (w : PrRMappingSpace D C _⦋0⦌) (x : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val _⦋0⦌) :
     unitLeftFunctor ((rightAdjointUnitRaw C D w).app (Opposite.op ⦋0⦌) x) =
       rightUnitLeftFunctor x.val.val := by
   have hb := congrArg (fun f ↦ f.app (Opposite.op ⦋0⦌) x) (rightAdjointUnitRaw_base C D w)
@@ -37,11 +37,11 @@ lemma rightAdjointUnitRaw_leftFunctor (C D : PresentableInfinityObject.{u})
 規約：元の右関手の厳密な等式。
 使われ方：戻した実単位の右端点の照合。 -/
 lemma rightAdjointUnitRaw_rightFunctor (C D : PresentableInfinityObject.{u})
-    (w : PrRMappingSpace D C _⦋0⦌) (x : RightAdjointUnitSpace C D w.val _⦋0⦌) :
+    (w : PrRMappingSpace D C _⦋0⦌) (x : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val _⦋0⦌) :
     unitRightFunctor ((rightAdjointUnitRaw C D w).app (Opposite.op ⦋0⦌) x) =
       rightVertexFunctor w.val := by
   have hb := congrArg (fun f ↦ f.app (Opposite.op ⦋0⦌) x) (rightAdjointUnitRaw_base C D w)
-  have hw : (SSet.const w : RightAdjointUnitSpace C D w.val ⟶ PrRMappingSpace D C).app
+  have hw : (SSet.const w : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val ⟶ PrRMappingSpace D C).app
       (Opposite.op ⦋0⦌) x = w := pinchedConstant_zero w
   exact (congrArg (fun z : (PrLMappingSpace C D ⊗ PrRMappingSpace D C) _⦋0⦌ ↦
     rightVertexFunctor z.2.val) hb).trans
@@ -52,7 +52,7 @@ lemma rightAdjointUnitRaw_rightFunctor (C D : PresentableInfinityObject.{u})
 規約：元の一次単体を変更しない。
 使われ方：指定単位条件の同じ Hom 類を回収する。 -/
 lemma rightAdjointUnitRaw_unitEdge (C D : PresentableInfinityObject.{u})
-    (w : PrRMappingSpace D C _⦋0⦌) (x : RightAdjointUnitSpace C D w.val _⦋0⦌) :
+    (w : PrRMappingSpace D C _⦋0⦌) (x : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val _⦋0⦌) :
     (unitCorrespondenceEdge ((rightAdjointUnitRaw C D w).app (Opposite.op ⦋0⦌) x)).edge =
       (rightUnitEdge x.val.val).edge := by
   exact congrArg (fun s ↦ (sliceUnderVertexEdge (functorVertex (𝟙 C.obj)) s).edge)
@@ -63,7 +63,7 @@ lemma rightAdjointUnitRaw_unitEdge (C D : PresentableInfinityObject.{u})
 規約：新たな随伴の存在や単位の選択を仮定しない。
 使われ方：元の随伴単位の全部分空間への逆射の持ち上げ。 -/
 lemma rightAdjointUnitRaw_unitCondition (C D : PresentableInfinityObject.{u})
-    (w : PrRMappingSpace D C _⦋0⦌) (x : RightAdjointUnitSpace C D w.val _⦋0⦌) :
+    (w : PrRMappingSpace D C _⦋0⦌) (x : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val _⦋0⦌) :
     UnitMappingSpaceCondition
       (F := unitLeftFunctor ((rightAdjointUnitRaw C D w).app (Opposite.op ⦋0⦌) x))
       (G := unitRightFunctor ((rightAdjointUnitRaw C D w).app (Opposite.op ⦋0⦌) x))
@@ -80,7 +80,7 @@ lemma rightAdjointUnitRaw_unitCondition (C D : PresentableInfinityObject.{u})
 規約：元の単位の全単体を保持する。
 使われ方：元の随伴対応への逆射の構成。 -/
 def rightAdjointUnitToFullSpace (C D : PresentableInfinityObject.{u})
-    (w : PrRMappingSpace D C _⦋0⦌) : RightAdjointUnitSpace C D w.val ⟶
+    (w : PrRMappingSpace D C _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val ⟶
     (fullSubcomplexOnVertices (RawAdjointUnitSpace C D)
       (fun v ↦ UnitMappingSpaceCondition (unitCorrespondenceHom v)) : SSet.{u + 1}) :=
   fullSubcomplexLift _ (rightAdjointUnitRaw C D w) (rightAdjointUnitRaw_unitCondition C D w)
@@ -91,7 +91,7 @@ def rightAdjointUnitToFullSpace (C D : PresentableInfinityObject.{u})
 使われ方：元の右ファイバーへの逆射の構成。 -/
 def rightAdjointUnitReturn (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    RightAdjointUnitSpace C D w.val ⟶ AdjointUnitMappingSpace C D :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val ⟶ AdjointUnitMappingSpace C D :=
   kanCoreMap (rightAdjointUnitToFullSpace C D w)
 
 /-- 概要：元の対応へ戻した射を母空間へ含めると同じ実単位の母写像。

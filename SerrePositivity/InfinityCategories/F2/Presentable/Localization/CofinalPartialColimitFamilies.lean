@@ -25,7 +25,7 @@ local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0�
 lemma exists_cofinalSmallPartialColimitFamily
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {I : Type u} [PartialOrder I] [IsCardinalFiltered I Cardinal.aleph0.{u}]
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     {D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ C}
     (c : JoinCocone D) (hc : IsColimitCone c)
     {B : Type u} [Preorder B]

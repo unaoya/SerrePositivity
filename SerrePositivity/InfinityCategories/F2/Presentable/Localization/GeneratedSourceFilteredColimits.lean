@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.PointFiberFilteredColimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalVertexFiberPullback
 
 /-!
@@ -52,26 +52,26 @@ lemma generatedSourcePointPullbackEquivalence_fst (edges : I → C _⦋1⦌) (x 
 
 /-- 固定始域圏には、任意の正則濃度の元の小 filtered 余極限が存在する。 -/
 lemma generatedSource_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular)
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     Ind.HasSmallKappaFilteredColimits κ (generatedSourceCategory edges x) := by
   have h := fiber_hasSmallKappaFilteredColimits hκ
     (generatedArrowInclusion edges ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0))
     (SSet.yonedaEquiv.symm x) (generatedArrowEvaluation_equivalenceLifting edges _)
     ((generatedArrow_hasSmallColimits hC edges).hasSmallKappaFilteredColimits κ)
     ((generatedArrowEvaluation_preservesSmallColimits hC edges _).isKappaAccessibleFunctor κ)
-  exact hasSmallKappaFilteredColimits_of_equivalence
+  exact _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.hasSmallKappaFilteredColimits_of_equivalence
     (generatedSourcePointPullbackEquivalence edges x).symm h
 
 /-- 固定始域の元の全脚族は、同じ濃度の小 filtered 余極限を保存する。 -/
 lemma generatedSourceArrows_isKappaAccessibleFunctor {κ : Cardinal.{u}} (hκ : κ.IsRegular)
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
-    IsKappaAccessibleFunctor κ (generatedSourceArrows edges x) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (generatedSourceArrows edges x) := by
   have hf := fiber_fst_isKappaAccessibleFunctor hκ
     (generatedArrowInclusion edges ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0))
     (SSet.yonedaEquiv.symm x) (generatedArrowEvaluation_equivalenceLifting edges _)
     ((generatedArrow_hasSmallColimits hC edges).hasSmallKappaFilteredColimits κ)
     ((generatedArrowEvaluation_preservesSmallColimits hC edges _).isKappaAccessibleFunctor κ)
-  have he := equivalence_preservesSmallKappaFilteredColimits κ
+  have he := _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ
     (generatedSourcePointPullbackEquivalence edges x).isQCatEquivalence
   have h := he.comp hf
   rwa [generatedSourcePointPullbackEquivalence_fst] at h

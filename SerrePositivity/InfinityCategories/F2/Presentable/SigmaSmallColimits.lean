@@ -31,7 +31,7 @@ lemma sigma_hasSmallCoproducts {C : SSet.{u}} [Quasicategory C]
   obtain ⟨ε, hε⟩ := sigmaReflector_exists_counit β hβ
   have := sigmaReflector_counit_isIso β hβ ε hε
   intro I p
-  obtain ⟨c, hc⟩ := presheaf_hasSmallColimits C (nerve (Discrete I))
+  obtain ⟨c, hc⟩ := _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits C (nerve (Discrete I))
     (p ≫ sigmaPresheafInfinityInclusion C)
   have hLc := mapJoinCocone_isColimit_of_adjunction_of_quasicategoryShape
     (sigmaReflectorAdjunction β hβ) c hc
@@ -45,7 +45,7 @@ lemma sigma_hasSmallCoproducts {C : SSet.{u}} [Quasicategory C]
 使われ方：全余極限保存の有限余積判定。 -/
 lemma sigma_hasSmallColimits {C : SSet.{u}} [Quasicategory C]
     (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p) :
-    HasSmallColimits (SigmaPresheafInfinity C) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (SigmaPresheafInfinity C) :=
   hasSmallColimits_of_coproducts_geometricRealizations (sigma_hasSmallCoproducts hC)
     (sigma_hasSmallGeometricRealizations C)
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceCosliceProjectionColimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 
 /-!
@@ -101,7 +101,7 @@ lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u
 使われ方：固定段を保つ表示の元の圏への射影。 -/
 lemma sourceCosliceProjection_isKappaAccessibleFunctor {κ : Cardinal.{u}}
     (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) :
-    IsKappaAccessibleFunctor κ (sliceUnderProjection (SSet.yonedaEquiv.symm x)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (sliceUnderProjection (SSet.yonedaEquiv.symm x)) := by
   intro I hI hIf D c hc
   exact (sourceCoslice_isColimitCone_iff_projection_kappaFiltered hκ x D c).mp hc
 

@@ -22,7 +22,7 @@ variable (C : SSet.{u}) [Quasicategory C]
 規約：元の各前層を厳密な頂点とする filtered 全表示を用いる。
 使われ方：前層の presentable 性と Ind 表現。 -/
 lemma presheaf_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 (PresheafInfinity C) :=
-  ⟨Cardinal.isRegular_aleph0, (presheaf_hasSmallColimits C).hasSmallKappaFilteredColimits _,
+  ⟨Cardinal.isRegular_aleph0, (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits C).hasSmallKappaFilteredColimits _,
     presheafCompactGeneratorCategory C, inferInstance, presheafCompactGeneratorInclusion C,
     presheafCompactGeneratorInclusion_isCompactGenerating C⟩
 
@@ -30,8 +30,8 @@ lemma presheaf_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 (Pre
 方針：同じ宇宙の compact 生成による accessibility と全小余極限を合わせる。
 規約：モデル圏の instance や生成性の存在入力を追加しない。
 使われ方：presentable ∞ 圏の基本例。 -/
-lemma presheaf_isPresentable : IsPresentable (PresheafInfinity C) :=
-  ⟨(presheaf_isKappaAccessible_aleph0 C).isAccessible, presheaf_hasSmallColimits C⟩
+lemma presheaf_isPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (PresheafInfinity C) :=
+  ⟨(presheaf_isKappaAccessible_aleph0 C).isAccessible, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits C⟩
 
 /-- 概要：構成した前層の小さい compact 生成圏の Ind は、元の前層と全同値を持つ。
 方針：元の小さい生成関手に accessibility の Ind 比較定理を適用する。
@@ -43,7 +43,7 @@ lemma presheaf_exists_compactGeneratorIndEquivalence :
       (PresheafInfinity C)) := by
   have : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩
   obtain ⟨G, hG, ⟨e⟩⟩ := exists_indComparison
-    ((presheaf_hasSmallColimits C).hasSmallKappaFilteredColimits Cardinal.aleph0)
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits C).hasSmallKappaFilteredColimits Cardinal.aleph0)
     (presheafCompactGeneratorInclusion C)
   exact ⟨indComparisonEquivalence
     (presheafCompactGeneratorInclusion_isCompactGenerating C) hG e⟩

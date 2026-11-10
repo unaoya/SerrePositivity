@@ -36,7 +36,7 @@ lemma generatedSource_isAccessible_iff_pointPullback
 
 /-- 未解決の点 fiber の accessibility から、元の始点を保持する局所置換へ接続する。 -/
 lemma exists_generatedSource_localReplacement_of_accessiblePointPullback
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (ha : IsAccessible (generatedSourcePointPullback edges x)) :
     ∃ (y : C _⦋0⦌) (e : C.Edge x y),
       e.edge ∈ generatedEdges edges ∧ IsLocalObject (Set.range edges) y :=

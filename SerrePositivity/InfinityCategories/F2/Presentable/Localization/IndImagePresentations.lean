@@ -22,9 +22,9 @@ variable {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A
   {C : SSet.{u + 1}} [Quasicategory C] {I : Type u} (edges : I → C _⦋1⦌)
 
 /-- 実像の各頂点は、元の全包含を通る一つの小さい filtered 表示の指定頂点である。 -/
-lemma indArrowImageVertex_hasPresentation (hC : HasSmallColimits C)
+lemma indArrowImageVertex_hasPresentation (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity κ A ⟶ generatedArrowCategory edges)
-    (hG : IsKappaAccessibleFunctor κ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     {f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌}
     (hf : IndArrowImageVertex edges G f) :
     ∃ (K : SSet.{u}) (_hK : Quasicategory K) (_hκ : IsKappaFiltered κ K)
@@ -36,7 +36,7 @@ lemma indArrowImageVertex_hasPresentation (hC : HasSmallColimits C)
   have := hK
   have := hκ
   let H := G ≫ generatedArrowInclusion edges
-  have hp : IsKappaAccessibleFunctor κ H := hG.comp
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ H := hG.comp
     ((generatedArrowInclusion_preservesSmallColimits hC edges).isKappaAccessibleFunctor κ)
   have hd := hp K _ c hc
   have he : VertexIso (mapJoinCocone H c).vertex f :=
@@ -46,9 +46,9 @@ lemma indArrowImageVertex_hasPresentation (hC : HasSmallColimits C)
   exact ⟨K, hK, hκ, b, d, hvd, hd⟩
 
 /-- 周囲で compact な Yoneda 像を持つ実像の表示は、元の全項も周囲で compact。 -/
-lemma indArrowImageVertex_hasCompactPresentation (hC : HasSmallColimits C)
+lemma indArrowImageVertex_hasCompactPresentation (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity κ A ⟶ generatedArrowCategory edges)
-    (hG : IsKappaAccessibleFunctor κ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ
       ((Ind.indYoneda κ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     {f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌}

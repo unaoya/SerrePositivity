@@ -42,9 +42,9 @@ lemma pullbackSliceBaseMap_projection {E D B : SSet.{u}}
 lemma pullbackSliceBaseMap_isKappaAccessibleFunctor {κ : Cardinal.{u}}
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B)
-    (hD : Ind.HasSmallKappaFilteredColimits κ D) (hq : IsKappaAccessibleFunctor κ q)
+    (hD : Ind.HasSmallKappaFilteredColimits κ D) (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback p q) :
-    IsKappaAccessibleFunctor κ (pullbackSliceBaseMap p q x) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (pullbackSliceBaseMap p q x) := by
   intro K hK hκ a c hc
   apply sliceOver_isColimitCone_of_projection ((x ≫ pullback.fst p q) ≫ p)
   have h := hq K (a ≫ sliceOverProjection (x ≫ pullback.snd p q))

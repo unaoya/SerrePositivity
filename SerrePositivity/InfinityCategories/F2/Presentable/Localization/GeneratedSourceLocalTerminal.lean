@@ -38,7 +38,7 @@ private lemma sourceMapping_trivial_of_localObject
 /-- 局所的な終域を持つ閉包内射は、同じ固定始域圏の終対象である。 -/
 lemma generatedSource_isTerminal_of_target_isLocalObject
     {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌)
     (hs : IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s)) :
     IsTerminalVertex s := by
@@ -64,7 +64,7 @@ lemma generatedSource_isTerminal_of_target_isLocalObject
 /-- 終対象性と元の生成族に対する終域の局所性は、存在する各射について同値。 -/
 lemma generatedSource_isTerminal_iff_target_isLocalObject
     {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) :
     IsTerminalVertex s ↔
       IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s) :=

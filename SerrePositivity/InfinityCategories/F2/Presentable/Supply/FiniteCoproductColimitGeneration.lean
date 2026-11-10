@@ -85,7 +85,7 @@ lemma preservesSmallColimits_of_coproducts_finite
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y)
     (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U)
     (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) :
-    PreservesSmallColimits U := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits U := by
   intro K F c hc
   exact (hasPreservedColimit_of_coproducts_finite U hX hU hfin K F).map_isColimit c hc
 

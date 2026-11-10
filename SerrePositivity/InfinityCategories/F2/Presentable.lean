@@ -91,7 +91,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaIniti
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaNaturality
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaRelativeEvaluation
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndAccessible
 public import SerrePositivity.InfinityCategories.F2.Presentable.CompactGenerators
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndComparison

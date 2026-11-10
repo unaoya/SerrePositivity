@@ -26,7 +26,7 @@ open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 固定始域の閉包内射の任意の小余積は、元の全 coslice でも閉包内に留まる。 -/
-lemma generatedSource_coproduct_colimit_mem (hC : HasSmallColimits C)
+lemma generatedSource_coproduct_colimit_mem (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌) {B : Type u}
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶ generatedSourceCategory edges x)
     (c : JoinCocone (D ≫ generatedSourceInclusion edges x)) (hc : IsColimitCone c) :
@@ -35,7 +35,7 @@ lemma generatedSource_coproduct_colimit_mem (hC : HasSmallColimits C)
   let Y := sliceUnder (SSet.yonedaEquiv.symm x)
   let U := generatedSourceInclusion edges x
   let E := D ≫ U
-  have hY : HasSmallColimits Y := sourceCoslice_hasSmallColimits hC x
+  have hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := sourceCoslice_hasSmallColimits hC x
   let Z := finiteSubsetFamily B
   let q := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (finiteSubsetForget B))
   let δ := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (Functor.Elements.π Z))
@@ -80,7 +80,7 @@ lemma generatedSource_coproduct_colimit_mem (hC : HasSmallColimits C)
       simpa only [JoinCocone.vertex_restrict] using hi)).mp hm
 
 /-- 同じ周囲の全余錐から、包含に保存される元の小余積を内部に構成する。 -/
-lemma generatedSource_hasPreservedCoproduct (hC : HasSmallColimits C)
+lemma generatedSource_hasPreservedCoproduct (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌) (B : Type u)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶
       generatedSourceCategory edges x) :
@@ -96,14 +96,14 @@ lemma generatedSource_hasPreservedCoproduct (hC : HasSmallColimits C)
   exact hi.symm ▸ hc
 
 /-- 固定始域の閉包内射圏は全小余積を持つ。 -/
-lemma generatedSource_hasSmallCoproducts (hC : HasSmallColimits C)
+lemma generatedSource_hasSmallCoproducts (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌) : HasSmallCoproducts (generatedSourceCategory edges x) := by
   intro B D
   obtain ⟨c, hc, _⟩ := generatedSource_hasPreservedCoproduct hC edges x B D
   exact ⟨c, hc⟩
 
 /-- 元の全 coslice への包含は、任意の指定小余積余錐を保存する。 -/
-lemma generatedSourceInclusion_preservesSmallCoproducts (hC : HasSmallColimits C)
+lemma generatedSourceInclusion_preservesSmallCoproducts (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     PreservesSmallCoproducts (generatedSourceInclusion edges x) := by
   intro B D c hc

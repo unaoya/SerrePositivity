@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.CardinalExchangeReflection
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 
 /-!
 概要：全極限錐族の各脚の filtered 余極限保存から頂点の同じ保存性を導く。
@@ -30,9 +30,9 @@ lemma isKappaAccessibleFunctor_limitFamily_apex
     (hF : ∀ x : X _⦋0⦌, IsLimitCone (functorVertexCone (F.app (Opposite.op ⦋0⦌) x)))
     (hK : CardinalFilteredLimitExchangeShape μ K)
     (hleg : ∀ k : ((SSet.uliftFunctor.{u + 1, u}).obj K) _⦋0⦌,
-      IsKappaAccessibleFunctor μ (F ≫ evaluateFunctorAt
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (F ≫ evaluateFunctorAt
         ((joinInr (Δ[0] : SSet.{u + 1}) _).app (Opposite.op ⦋0⦌) k))) :
-    IsKappaAccessibleFunctor μ (F ≫ evaluateFunctorAt
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (F ≫ evaluateFunctorAt
       (yonedaEquiv (joinInl (Δ[0] : SSet.{u + 1}) _))) := by
   intro J hJ hμ D c hc
   let R := coneRestriction ((SSet.uliftFunctor.{u + 1, u}).obj K) SpaceInfinity.{u}

@@ -31,7 +31,7 @@ def leftIdentityVertex (C : PresentableInfinityObject.{u}) : PrLFunctorSpace C C
 使われ方：左随伴選択の単位比較。 -/
 def rightIdentityVertex (C : PresentableInfinityObject.{u}) : PrRFunctorSpace C C _⦋0⦌ :=
   rightFunctorVertex (𝟙 C.obj)
-    ⟨isAccessibleFunctor_id C.obj, adjunction_preservesSmallLimits (QCatAdjunction.refl C.obj)⟩
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessibleFunctor_id C.obj, adjunction_preservesSmallLimits (QCatAdjunction.refl C.obj)⟩
 
 /-- 概要：恒等左関手の選んだ右随伴は元の恒等関手と同型。
 方針：恒等随伴との右随伴の一意性。

@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 生成射・全候補の端点・全 compact 対象の恒等射を同じ正則濃度で compact にする。 -/
-lemma exists_operationsCompactArrowCardinal (hC : IsPresentable C)
+lemma exists_operationsCompactArrowCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧
       IsCardinalChangeBound κ μ ∧ IsKappaAccessible μ C ∧
@@ -50,14 +50,14 @@ lemma exists_operationsCompactArrowCardinal (hC : IsPresentable C)
   let gp := eA.hom ≫ p
   let gq := eA.hom ≫ q
   let gL := eC.hom ≫ L
-  have hp : IsKappaAccessibleFunctor κ gp :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gp :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
       ((evaluateFunctorAt_preservesSmallColimits hC.hasSmallColimits _).isKappaAccessibleFunctor κ)
-  have hq : IsKappaAccessibleFunctor κ gq :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gq :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
       ((evaluateFunctorAt_preservesSmallColimits hC.hasSmallColimits _).isKappaAccessibleFunctor κ)
-  have hL : IsKappaAccessibleFunctor κ gL :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
+  have hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gL :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
       ((constantFunctorMap_preservesSmallColimits _).isKappaAccessibleFunctor κ)
   let v : AA _⦋0⦌ ⊕ AA _⦋0⦌ → C _⦋0⦌ := Sum.elim
     (fun a ↦ gp.app _ (iA.app _ (ULift.up a)))

@@ -22,7 +22,7 @@ variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 周囲の全射圏の compact 射は、元の飽和射圏内でも compact。 -/
 lemma compactGeneratedArrowInclusion_compact {κ : Cardinal.{u}}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌)
     (f : (compactGeneratedArrows κ edges) _⦋0⦌) :
     Compact.IsKappaCompact.{u, u + 1} κ
       ((compactGeneratedArrowInclusion κ edges).app _ f) := by
@@ -31,7 +31,7 @@ lemma compactGeneratedArrowInclusion_compact {κ : Cardinal.{u}}
 
 /-- 小さい compact 全部分候補は、閉包内の全ての周囲で compact な射を代表する。 -/
 lemma exists_smallCompactArrowCandidates {κ : Cardinal.{u}}
-    (hC : HasSmallColimits C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hA : IsKappaAccessible κ ((ihom (Δ[1] : SSet.{u + 1})).obj C))
     (edges : I → C _⦋1⦌) :
     ∃ (A : SSet.{u}) (hA' : Quasicategory A),

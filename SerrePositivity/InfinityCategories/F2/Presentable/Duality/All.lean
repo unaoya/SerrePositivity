@@ -21,7 +21,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUni
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitPostcomposition
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitial
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitialCriterion
-public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightFiberUnitCondition
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitLeftMap
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitRawReturn

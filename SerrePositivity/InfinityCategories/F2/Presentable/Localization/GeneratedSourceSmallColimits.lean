@@ -21,7 +21,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-  (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+  (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
 include hC
 
 /-- 固定始域圏の任意の小図式には、周囲で保存される同じ普遍余錐がある。 -/
@@ -34,14 +34,14 @@ lemma generatedSource_hasPreservedSmallColimit
     (generatedSource_hasPreservedFiniteColimit hC edges x) K D
 
 /-- 固定始域圏は全ての小余極限を持つ。 -/
-lemma generatedSource_hasSmallColimits : HasSmallColimits (generatedSourceCategory edges x) := by
+lemma generatedSource_hasSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (generatedSourceCategory edges x) := by
   intro K D
   obtain ⟨c, hc, _⟩ := generatedSource_hasPreservedSmallColimit hC edges x K D
   exact ⟨c, hc⟩
 
 /-- 全 coslice 圏への包含は元の指定小余極限余錐を保つ。 -/
 lemma generatedSourceInclusion_preservesSmallColimits :
-    PreservesSmallColimits (generatedSourceInclusion edges x) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (generatedSourceInclusion edges x) := by
   intro K D c hc
   exact (generatedSource_hasPreservedSmallColimit hC edges x K D).map_isColimit c hc
 

@@ -31,7 +31,7 @@ lemma exists_relativeInputComparison_of_presentations
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ (Ind.IndInfinity μ A))
     (p : ∀ c, C c ⟶ Ind.IndInfinity μ A)
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, L c ⟶ C c) (z : ∀ c, JoinCocone (q c))

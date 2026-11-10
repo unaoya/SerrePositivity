@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SmallPieceChains
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPartialColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetColimitCompactUniverse
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 
 /-!
 概要：元の κ₀-filtered 表示添字の小部分には、像も μ-compact な余極限がある。
@@ -30,7 +30,7 @@ lemma exists_partialColimit_compact_image
     (h : IsCardinalChangeBound κ μ) {I : Type u} [PartialOrder I]
     {C B : SSet.{u + 1}} [Quasicategory C] [Quasicategory B]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
-    (p : C ⟶ B) (hpc : IsKappaAccessibleFunctor κ p)
+    (p : C ⟶ B) (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ C)
     (hF : ∀ i, Compact.IsKappaCompact.{u, u + 1} μ (F.app _ (ULift.up i)))
     (hFp : ∀ i, Compact.IsKappaCompact.{u, u + 1} μ (p.app _ (F.app _ (ULift.up i))))

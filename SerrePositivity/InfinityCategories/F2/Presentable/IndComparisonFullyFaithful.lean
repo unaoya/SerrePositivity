@@ -30,7 +30,7 @@ lemma indComparison_yoneda_pinchedHomMap_isEquivalence_of_compact
     (hff : IsFullyFaithful i)
     (hcompact : ∀ a : A _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} κ (i.app _ (ULift.up a)))
-    {G : Ind.IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G)
+    {G : Ind.IndInfinity κ A ⟶ C} (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (e : FunctorIso (Ind.indYoneda κ A ≫ G) i) (a : A _⦋0⦌)
     (y : Ind.IndInfinity κ A _⦋0⦌) :
     IsSimplicialHomotopyEquivalence (pinchedHomMap G
@@ -62,7 +62,7 @@ lemma indComparison_isFullyFaithful_of_compact
     (hff : IsFullyFaithful i)
     (hcompact : ∀ a : A _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} κ (i.app _ (ULift.up a)))
-    {G : Ind.IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G)
+    {G : Ind.IndInfinity κ A ⟶ C} (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (e : FunctorIso (Ind.indYoneda κ A ≫ G) i) : IsFullyFaithful G := by
   intro x y
   obtain ⟨I, hI, hκ, b, c, hv, hc⟩ := indYoneda_generatorPresentation κ A x

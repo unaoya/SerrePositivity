@@ -32,7 +32,7 @@ theorem dgSemifreeCoherent_barVertexComparison (N : SemifreeDGModules R D)
   let H := G ≫ q
   let c := dgProjectiveBarNativeCocone R D H
   have hc := dgProjectiveBarNativeCocone_isColimit R D H
-  have hqt := (F2.Presentable.equivalence_isColimitCone_iff
+  have hqt := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff
     (dgSemifreeToProjectiveNerve_isQCatEquivalence R D) t).mp ht
   let e₀ := colimitVertexIso (mapJoinCocone q t) c hqt hc
   let e₁ := dgProjectiveBarNativeCocone_vertexIso R D H (dgSemifreeToProjective R D |>.obj N) f hf

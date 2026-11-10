@@ -29,7 +29,7 @@ lemma exists_compactInputAlternatingDiagram
     (C : Fin 2 → SSet.{u + 1}) [∀ c, Quasicategory (C c)]
     (hC : ∀ c, IsKappaAccessible μ (C c))
     (p : ∀ c, C c ⟶ Ind.IndInfinity μ A)
-    (hp : ∀ c, IsKappaAccessibleFunctor μ (p c))
+    (hp : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C c)

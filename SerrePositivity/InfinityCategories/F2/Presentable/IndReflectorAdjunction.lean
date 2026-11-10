@@ -81,7 +81,7 @@ omit β hβ in
 使われ方：Indκ の小極限と反映による余極限計算。
 -/
 lemma ind_exists_presheafReflector
-    (hD : HasSmallColimits (IndInfinity κ C)) :
+    (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (IndInfinity κ C)) :
     ∃ L : PresheafInfinity C ⟶ IndInfinity κ C,
       Nonempty (QCatAdjunction L (indInclusionPresheaf κ C)) := by
   obtain ⟨L, β, hβ⟩ := presheaf_exists_yonedaLeftKan hD (indYoneda κ C)

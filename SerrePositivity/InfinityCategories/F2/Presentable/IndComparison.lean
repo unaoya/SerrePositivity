@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionEquivalence
 
 /-!
@@ -22,7 +22,7 @@ lemma exists_indComparison {κ : Cardinal.{u}} [Fact κ.IsRegular]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
     (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) :
     ∃ G : Ind.IndInfinity κ A ⟶ C,
-      IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G ∧ Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i) := by
   obtain ⟨G, β, hβ⟩ := Ind.ind_exists_leftKanExtension κ hC i
   exact ⟨G, Ind.indLeftKanExtension_preservesSmallKappaFilteredColimits κ β hβ,
     ⟨Ind.indLeftKanExtensionRecoveryIso κ β hβ⟩⟩
@@ -33,7 +33,7 @@ lemma IsKappaAccessible.exists_indComparison {κ : Cardinal.{u}}
     ∃ (A : SSet.{u}) (hA : Quasicategory A),
       letI := hA
       ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : Ind.IndInfinity κ A ⟶ C),
-        IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧
+        IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G ∧
           Nonempty (FunctorIso (Ind.indYoneda κ A ≫ G) i) := by
   obtain ⟨hκ, hC, A, hA, i, hi⟩ := h
   have := hA

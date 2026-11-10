@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafAllSmallLimits
 public import Mathlib.Tactic.CrossRefAttribute
@@ -16,7 +17,8 @@ public import Mathlib.Tactic.CrossRefAttribute
 noncomputable section
 universe u
 open CategoryTheory SSet
-namespace SerrePositivity.InfinityCategories.F2.Presentable
+namespace SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.F2 _root_.SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 宇宙 u の任意の全図式の native な余極限が、元の宇宙 u+1 の標的に存在する。 -/
 @[kerodon 06B7]
@@ -54,14 +56,14 @@ lemma HasSmallColimits.hasSmallKappaFilteredColimits {C : SSet.{u + 1}}
 /-- 全小余極限を保つ元の関手は、全ての濃度について filtered 余極限を保つ。 -/
 lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}}
     {F : C ⟶ E} (h : PreservesSmallColimits F) (κ : Cardinal.{u}) :
-    IsKappaAccessibleFunctor κ F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F := by
   intro K hK hκ D c hc
   exact h K D c hc
 
 /-- 小余極限を保つ元の関手は accessible。 -/
 @[kerodon 06LC]
 lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}}
-    {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F :=
+    {F : C ⟶ E} (h : PreservesSmallColimits F) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F :=
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩
 
 /-- 元の前層 ∞ 圏は、任意の小さい底に対して全ての小余極限を持つ。 -/
@@ -85,4 +87,4 @@ lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u} := by
   intro K D
   exact hasLimit_coherentSpaceDiagram D
 
-end SerrePositivity.InfinityCategories.F2.Presentable
+end SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories

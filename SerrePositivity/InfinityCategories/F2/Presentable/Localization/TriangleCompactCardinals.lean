@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C]
 
 /-- 元の圏・射圏・三角形圏が同じ濃度で accessible となり、三辺の制限は compact 保存。 -/
-lemma exists_triangleFacesCompactCardinal (hC : IsPresentable C) (σ : Cardinal.{u}) :
+lemma exists_triangleFacesCompactCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧
       IsCardinalChangeBound κ μ ∧ IsKappaAccessible μ C ∧
       IsKappaAccessible μ ((ihom (Δ[1] : SSet.{u + 1})).obj C) ∧
@@ -50,8 +50,8 @@ lemma exists_triangleFacesCompactCardinal (hC : IsPresentable C) (σ : Cardinal.
   have := hA
   let i := Ind.indYoneda κ A
   let g (j : Fin 3) := e.hom ≫ (pre (stdSimplex.δ j)).app C
-  have hg (j : Fin 3) : IsKappaAccessibleFunctor κ (g j) :=
-    (equivalence_preservesSmallKappaFilteredColimits κ e.isQCatEquivalence).comp
+  have hg (j : Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (g j) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ e.isQCatEquivalence).comp
       ((triangleFace_preservesSmallColimits hC.hasSmallColimits j).isKappaAccessibleFunctor κ)
   let v : Fin 3 × A _⦋0⦌ → Ar _⦋0⦌ :=
     fun a ↦ (g a.1).app _ (i.app _ (ULift.up a.2))

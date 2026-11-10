@@ -28,7 +28,7 @@ lemma rightFiberToAdjointUnitSpace_underlying (C D : PresentableInfinityObject.{
     rightFiberToAdjointUnitSpace C D w ≫ rightAdjointUnitUnderlying C D w.val =
       adjointUnitRightFiberToCoslice C D w := by
   change kanCoreMap (rightFiberToAdjointUnitSubspace C D w) ≫
-    (quasicategoryCore (RightAdjointUnitSubspace C D w.val)).ι ≫
+    (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSubspace C D w.val)).ι ≫
       (fullSubcomplexOnVertices (RightUnitCoslice C D w.val) _).ι = _
   rw [← Category.assoc, kanCoreMap_ι]
   exact fullSubcomplexLift_ι _ _ _
@@ -53,7 +53,7 @@ lemma unitComposition_pair_fixedRight {A : SSet.{u + 1}}
 使われ方：元の右ファイバーへの逆射の指定単位条件を検証する母写像。 -/
 def rightAdjointUnitRaw (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    RightAdjointUnitSpace C D w.val ⟶ RawAdjointUnitSpace C D :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val ⟶ RawAdjointUnitSpace C D :=
   pullback.lift
     (rightAdjointUnitUnderlying C D w.val ≫
       pullback.fst _ ((ihom C.obj).map (rightVertexFunctor w.val)))

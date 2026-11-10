@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PiColimitCones
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-!
@@ -46,7 +46,7 @@ lemma piJoinCocone_projection {ι : Type u} {C : ι → SSet.{u + 1}}
 規約：成分の accessibility を要求しない。
 使われ方：小さい積の presentable 性の余完備性。 -/
 lemma piSSet_hasSmallColimits {ι : Type u} {C : ι → SSet.{u + 1}}
-    (hC : ∀ i, HasSmallColimits (C i)) : HasSmallColimits (piSSet C) := by
+    (hC : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (C i)) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (piSSet C) := by
   intro K p
   choose c hc using fun i ↦ hC i K (p ≫ piSSetProjection C i)
   refine ⟨piJoinCocone c, piSSet_isColimitCone_of_components _ ?_⟩
@@ -59,7 +59,7 @@ lemma piSSet_hasSmallColimits {ι : Type u} {C : ι → SSet.{u + 1}}
 規約：元の指定余錐を保持する。
 使われ方：各射影と直積への関手の保存性。 -/
 lemma piSSet_isColimitCone_iff_components {ι : Type u} {C : ι → SSet.{u + 1}}
-    [∀ i, Quasicategory (C i)] (hC : ∀ i, HasSmallColimits (C i))
+    [∀ i, Quasicategory (C i)] (hC : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (C i))
     {K : SSet.{u}} {p : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ piSSet C}
     (c : JoinCocone p) :
     IsColimitCone c ↔ ∀ i, IsColimitCone (mapJoinCocone (piSSetProjection C i) c) := by
@@ -81,8 +81,8 @@ lemma piSSet_isColimitCone_iff_components {ι : Type u} {C : ι → SSet.{u + 1}
 方針：指定余錐の成分判定を使う。
 規約：同じ元の射影。使われ方：Pr^L の小さい積の射影。 -/
 lemma piSSetProjection_preservesSmallColimits {ι : Type u} {C : ι → SSet.{u + 1}}
-    [∀ i, Quasicategory (C i)] (hC : ∀ i, HasSmallColimits (C i)) (i : ι) :
-    PreservesSmallColimits (piSSetProjection C i) := by
+    [∀ i, Quasicategory (C i)] (hC : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (C i)) (i : ι) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (piSSetProjection C i) := by
   intro K p c hc
   exact ((piSSet_isColimitCone_iff_components hC c).mp hc) i
 
@@ -91,9 +91,9 @@ lemma piSSetProjection_preservesSmallColimits {ι : Type u} {C : ι → SSet.{u 
 規約：始域の余完備性を要求しない。
 使われ方：Pr^L の小さい積の普遍性。 -/
 lemma piSSet_preservesSmallColimits_iff_components {ι : Type u} {C : ι → SSet.{u + 1}}
-    [∀ i, Quasicategory (C i)] (hC : ∀ i, HasSmallColimits (C i))
+    [∀ i, Quasicategory (C i)] (hC : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (C i))
     {X : SSet.{u + 1}} (F : X ⟶ piSSet C) :
-    PreservesSmallColimits F ↔ ∀ i, PreservesSmallColimits (F ≫ piSSetProjection C i) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F ↔ ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ piSSetProjection C i) := by
   constructor
   · intro hF i K p c hc
     simpa only [mapJoinCocone, Category.assoc] using

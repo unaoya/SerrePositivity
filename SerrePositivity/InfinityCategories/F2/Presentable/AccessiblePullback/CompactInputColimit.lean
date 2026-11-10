@@ -27,7 +27,7 @@ lemma exists_compactInputOrdinalColimit
     (h : IsCardinalChangeBound κ μ)
     {K C B : SSet.{u + 1}} [Quasicategory K] [Quasicategory C] [Quasicategory B]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
-    (p : C ⟶ B) (hp : IsKappaAccessibleFunctor κ p)
+    (p : C ⟶ B) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p)
     (hpCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) v))
     {q : K ⟶ C} {z : JoinCocone q} (N : CompactInputPresentation μ q z)

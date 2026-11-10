@@ -41,7 +41,7 @@ def ComparisonRound.next
 lemma nonempty_comparisonRound (hμ : Cardinal.aleph0 < μ)
     [Quasicategory I₀] [IsKappaFiltered μ I₀]
     [Quasicategory I₁] [IsKappaFiltered μ I₁]
-    (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
     (hD₀ : ∀ i : I₀ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₀.app _ (ULift.up i)))
     (s : CompactPresentationComparison μ D₀ D₁ c₀ c₁) :
     Nonempty (ComparisonRound hD₀ s) := by
@@ -53,7 +53,7 @@ lemma nonempty_comparisonRound (hμ : Cardinal.aleph0 < μ)
 def comparisonRoundChoice (hμ : Cardinal.aleph0 < μ)
     [Quasicategory I₀] [IsKappaFiltered μ I₀]
     [Quasicategory I₁] [IsKappaFiltered μ I₁]
-    (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
     (hD₀ : ∀ i : I₀ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₀.app _ (ULift.up i)))
     (s : CompactPresentationComparison μ D₀ D₁ c₀ c₁) : ComparisonRound hD₀ s :=
   Classical.choice (nonempty_comparisonRound hμ hC hc₀ hc₁ hD₀ s)

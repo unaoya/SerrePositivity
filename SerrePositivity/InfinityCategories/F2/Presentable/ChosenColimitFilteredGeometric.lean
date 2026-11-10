@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ChosenColimitAdj
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointCoconePreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredGeometricFunctorOperations
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPostcompColimitPreservation
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：選んだ余極限関手と後合成関手の filtered 余極限・幾何学的実現保存。
@@ -49,7 +49,7 @@ lemma chosenColimitFunctor_preservesSmallGeometric {K X : SSet.{u + 1}} [Quasica
 規約：始域の小余極限存在を明示する。
 使われ方：有限余積比較の左側の保存条件。 -/
 lemma postcomposition_preservesSmallFiltered {A X Y : SSet.{u + 1}}
-    [Quasicategory X] [Quasicategory Y] (hX : HasSmallColimits X) (q : X ⟶ Y)
+    [Quasicategory X] [Quasicategory Y] (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) (q : X ⟶ Y)
     (hq : PreservesSmallKappaFilteredColimits Cardinal.aleph0 q) :
     PreservesSmallKappaFilteredColimits Cardinal.aleph0 ((ihom A).map q) := by
   intro I hI hκ p c hc
@@ -60,7 +60,7 @@ lemma postcomposition_preservesSmallFiltered {A X Y : SSet.{u + 1}}
 規約：始域の小余極限存在を明示する。
 使われ方：有限余積比較の左側の実現保存条件。 -/
 lemma postcomposition_preservesSmallGeometric {A X Y : SSet.{u + 1}}
-    [Quasicategory X] [Quasicategory Y] (hX : HasSmallColimits X) (q : X ⟶ Y)
+    [Quasicategory X] [Quasicategory Y] (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) (q : X ⟶ Y)
     (hq : PreservesSmallGeometricRealizations q) :
     PreservesSmallGeometricRealizations ((ihom A).map q) := by
   intro p c hc

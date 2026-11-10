@@ -64,7 +64,7 @@ lemma smallRelativeHom_preserves_nerveCocone
 lemma smallRelativeHom_isKappaAccessibleFunctor
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {B : SSet.{u}} [Quasicategory B] (A : Over B) (hA : IsKappaSmall μ A.left) :
-    IsKappaAccessibleFunctor μ (leftFibrationCoherentEvaluation A) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (leftFibrationCoherentEvaluation A) := by
   intro K hK hFiltered G c hc
   obtain ⟨J, o, f, hJ, _, hf⟩ := Ind.exists_cofinal_kappaFiltered_poset (κ := μ) K
   let := o

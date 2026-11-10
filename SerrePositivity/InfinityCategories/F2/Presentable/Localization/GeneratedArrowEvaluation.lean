@@ -35,9 +35,9 @@ lemma generatedArrowEvaluation_equivalenceLifting (edges : I → C _⦋1⦌)
   infer_instance
 
 /-- 強飽和射圏の各端点評価は、元の指定小余錐を保存する。 -/
-lemma generatedArrowEvaluation_preservesSmallColimits (hC : HasSmallColimits C)
+lemma generatedArrowEvaluation_preservesSmallColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (a : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    PreservesSmallColimits (generatedArrowInclusion edges ≫ evaluateFunctorAt a) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (generatedArrowInclusion edges ≫ evaluateFunctorAt a) := by
   intro K D c hc
   have h := evaluateFunctorAt_preservesSmallColimits hC a K
     (D ≫ generatedArrowInclusion edges) (mapJoinCocone (generatedArrowInclusion edges) c)

@@ -65,7 +65,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.representedRestriction_inverts_op_edge
 #check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveUnit_map_isIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.representedReflectiveUnit_inverts_op_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indComparison
@@ -89,7 +89,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.indComparisonEquivalence_hom
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indRepresentation
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff
 #check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparisonIso
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.of_equivalence
@@ -197,9 +197,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound
 #check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger
 #check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallLimits
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallLimits
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_equivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_cocompleteIndEquivalence
 #check @SerrePositivity.InfinityCategories.F2.Presentable.kanInternalHomEnriched

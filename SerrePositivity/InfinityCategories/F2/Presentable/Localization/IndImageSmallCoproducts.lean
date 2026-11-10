@@ -35,9 +35,9 @@ private lemma chosenColimitVertex {T Y : SSet.{u + 1}} [Quasicategory Y]
 
 /-- compact な行の余積閉性から、同期した全実像対象の余積閉性を組み立てる。 -/
 lemma indArrowImage_coproduct_colimit_mem_of_compactRows
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     {B : Type u}
@@ -73,7 +73,7 @@ lemma indArrowImage_coproduct_colimit_mem_of_compactRows
       ((functorVertexEquiv T Y) ((functorVertexEquiv T Y).symm r.vertex)) = _
     rw [Equiv.apply_symm_apply]
     exact he
-  have hY : HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
+  have hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
   let hT := hY (nerve (Discrete B))
   let L := chosenColimitFunctor T Y hT
   have hLr : IsColimitCone (mapJoinCocone L r) :=
@@ -134,9 +134,9 @@ lemma indArrowImage_coproduct_colimit_mem_of_compactRows
 
 /-- 同じ濃度で小さい離散形状の元の指定余極限は、実 Ind 像に属する。 -/
 lemma indArrowImage_smallCoproduct_colimit_mem
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (hμ : Cardinal.aleph0 < μ)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hμ : Cardinal.aleph0 < μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,

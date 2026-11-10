@@ -35,8 +35,8 @@ lemma exists_extendedInputComparison_of_accessible_components
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ B)
     (p : ∀ c, C c ⟶ B)
-    (hpμ : ∀ c, IsKappaAccessibleFunctor μ (p c))
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hpμ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj (L c) ⟶ C c)

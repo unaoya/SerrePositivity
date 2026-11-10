@@ -56,7 +56,7 @@ lemma compactDiagram_factorization_relative_terminalPrefix
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall μ K)
     {L C : SSet.{u + 1}} [Quasicategory L] [Quasicategory C]
-    (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
     (hQ : ∀ k, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ k))
     (i : L ⟶ (SSet.uliftFunctor.{u + 1, u}).obj K) [Mono i]
     (t : L _⦋0⦌) (ht : IsTerminalVertex t)

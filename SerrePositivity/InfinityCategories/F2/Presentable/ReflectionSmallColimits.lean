@@ -24,8 +24,8 @@ open HomotopyLimits
 規約：頂点条件に同型不変性は要求しない。
 使われ方：前層反映による余完備性。 -/
 lemma reflectiveSubcategory_hasSmallColimits {X : SSet.{u + 1}} [Quasicategory X]
-    {P : X _⦋0⦌ → Prop} (r : ReflectiveSubcategory X P) (hX : HasSmallColimits X) :
-    HasSmallColimits (fullSubcomplexOnVertices X P : SSet.{u + 1}) :=
+    {P : X _⦋0⦌ → Prop} (r : ReflectiveSubcategory X P) (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (fullSubcomplexOnVertices X P : SSet.{u + 1}) :=
   hasSmallColimits_of_reflection r.adjunction r.counitIso hX
 
 /-- 概要：P_Σ の指定反映は任意の小形状の全余極限を保存する。
@@ -36,7 +36,7 @@ lemma sigmaReflector_preservesSmallColimits {A : SSet.{u}} [Quasicategory A]
     {L : PresheafInfinity A ⟶ SigmaPresheafInfinity A}
     (β : SSet.Homotopy (sigmaYonedaInfinityMap A) (yonedaInfinityMap A ≫ L))
     (hβ : IsLeftKanExtension (yonedaInfinityMap A) (sigmaYonedaInfinityMap A) L β) :
-    PreservesSmallColimits L :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L :=
   adjunction_preservesSmallColimits (sigmaReflectorAdjunction β hβ)
 
 /-- 概要：P_Σ の任意の小図式の余極限を前層余極限の反映で構成する。
@@ -54,6 +54,6 @@ lemma sigma_hasColimit_of_reflector {A : SSet.{u}} [Quasicategory A]
     exact fullSubcomplexFunctorInclusionHoFullyFaithful _ _ _
   exact hasColimit_of_reflection (sigmaReflectorAdjunction β hβ)
     (asIso (sigmaReflectorAdjunction β hβ).counitHom) D
-    (presheaf_hasSmallColimits A K (D ≫ sigmaPresheafInfinityInclusion A))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits A K (D ≫ sigmaPresheafInfinityInclusion A))
 
 end SerrePositivity.InfinityCategories.F2.Presentable

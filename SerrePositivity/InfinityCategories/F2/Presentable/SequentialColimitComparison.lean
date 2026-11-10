@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SequentialCofinalSubsequences
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：一つの全可算列の二つの共終部分列の指定余極限頂点を比較する。
@@ -45,7 +45,7 @@ def sequentialSubsequenceColimitVertexIso (a : ℕ → ℕ) (ha : Monotone a)
 使われ方：偶数・奇数の両成分を同じ余極限で同一視する。 -/
 lemma nonempty_subsequenceColimitVertexIso (a b : ℕ → ℕ) (ha : Monotone a) (hb : Monotone b)
     (hca : ∀ k, ∃ n, k ≤ a n) (hcb : ∀ k, ∃ n, k ≤ b n)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     {F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ C}
     (d : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map
       (nerveMap (sequentialSubsequenceFunctor.{u} a ha)) ≫ F))

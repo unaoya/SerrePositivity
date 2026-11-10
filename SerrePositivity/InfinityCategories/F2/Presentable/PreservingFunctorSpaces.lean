@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceSmallLimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
 
@@ -27,7 +27,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 structure PresentableInfinityObject where
   obj : SSet.{u + 1}
   isQuasicategory : Quasicategory obj
-  isPresentable : @IsPresentable obj isQuasicategory
+  isPresentable : @_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable obj isQuasicategory
 
 attribute [instance] PresentableInfinityObject.isQuasicategory
 
@@ -37,7 +37,7 @@ attribute [instance] PresentableInfinityObject.isQuasicategory
 使われ方：Pr^L の Hom の core を作る。 -/
 def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} :=
   fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-    (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))
+    (fun v ↦ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))
 
 /-- 概要：accessible かつ小極限を保つ全関手の元の全部分 ∞ 圏。
 方針：二つの保存条件を同じ全関手に課す。
@@ -45,7 +45,7 @@ def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} :=
 使われ方：Pr^R の Hom の core を作る。 -/
 def PrRFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} :=
   fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-    (fun v ↦ IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
+    (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
       PreservesSmallLimits ((functorVertexEquiv C.obj D.obj).symm v))
 
 instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) :
@@ -87,8 +87,8 @@ instance prRMappingSpace_kanComplex (C D : PresentableInfinityObject.{u}) :
 規約：小さい形状と全余錐を保持する。
 使われ方：Pr^L の合成。 -/
 lemma PreservesSmallColimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E}
-    (hF : PreservesSmallColimits F) (hG : PreservesSmallColimits G) :
-    PreservesSmallColimits (F ≫ G) := by
+    (hF : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F) (hG : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ G) := by
   intro K a c hc
   exact (isColimitCone_iff_of_cocone_val_eq _ _ (Category.assoc c.val F G).symm).mpr
     (hG K _ _ (hF K a c hc))

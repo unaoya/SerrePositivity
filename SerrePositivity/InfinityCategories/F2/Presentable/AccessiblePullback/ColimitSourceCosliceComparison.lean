@@ -69,7 +69,7 @@ lemma colimitSourceCoslice_isColimitCone_iff_projection
     change (c.val ≫ H) ≫ sliceUnderProjection (joinInr K Δ[0] ≫ cq.val) =
       c.val ≫ sliceUnderProjection q
     rw [Category.assoc, hHp]
-  exact (equivalence_isColimitCone_iff hH c).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff hH c).trans
     (hp.trans (isColimitCone_iff_of_cocone_val_eq _ _ hval))
 
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

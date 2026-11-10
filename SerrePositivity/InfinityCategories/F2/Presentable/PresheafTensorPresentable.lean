@@ -72,7 +72,7 @@ def piBoolTensorIso (X Y : SSet.{u + 1}) :
 規約：交換定理や宇宙反映の追加入力を使わない。
 使われ方：presentable 圏の二項積の反映の始域。 -/
 lemma presheafTensor_isPresentable (A B : SSet.{u}) [Quasicategory A] [Quasicategory B] :
-    IsPresentable (PresheafInfinity A ⊗ PresheafInfinity B) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (PresheafInfinity A ⊗ PresheafInfinity B) := by
   let C : ULift.{u} Bool → SSet.{u} := fun i ↦ if i.down then A else B
   have : ∀ i, Quasicategory (C i) := by
     rintro ⟨_ | _⟩ <;> dsimp [C] <;> infer_instance

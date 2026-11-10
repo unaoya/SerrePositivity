@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 variable {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A]
   {C : SSet.{u + 1}} [Quasicategory C]
   {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C} (hi : IsKappaCompactGenerating κ i)
-  {G : Ind.IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G)
+  {G : Ind.IndInfinity κ A ⟶ C} (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
   (e : FunctorIso (Ind.indYoneda κ A ≫ G) i)
 include hi hG e
 

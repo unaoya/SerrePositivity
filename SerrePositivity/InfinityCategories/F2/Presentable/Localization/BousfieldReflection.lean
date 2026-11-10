@@ -25,7 +25,7 @@ open HomotopyLimits
 
 /-- 各元の対象は、元の局所同値の辺によって局所対象へ置換できる。 -/
 lemma exists_bousfieldLocalEquivalenceReplacement
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     ∃ (y : C _⦋0⦌) (e : Truncated.Edge (X := (truncation 2).obj C) x y),
       e.edge ∈ localEquivalences (Set.range edges) ∧ IsLocalObject (Set.range edges) y := by
@@ -36,7 +36,7 @@ lemma exists_bousfieldLocalEquivalenceReplacement
 /-- 任意の小さい辺族の局所対象全部分圏は、元の presentable 圏の反射的部分圏である。 -/
 @[kerodon 06VH]
 lemma bousfield_isReflectiveSubcategory
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     IsReflectiveSubcategory C (IsLocalObject (Set.range edges)) :=
   isReflectiveSubcategory_of_localReplacements (Set.range edges)
@@ -44,22 +44,22 @@ lemma bousfield_isReflectiveSubcategory
 
 /-- 公開された元の局所対象の定義を使う、coherent な Bousfield 反射の実データ。 -/
 def bousfieldReflection
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     ReflectiveSubcategory C (IsLocalObject (Set.range edges)) :=
   Classical.choice (bousfield_isReflectiveSubcategory hC edges)
 
 /-- 選んだ反射の全関手を、元の局所対象全部分圏への局所化関手として公開する。 -/
 def bousfieldLocalizationFunctor
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     C ⟶ LocalObjects.Category edges := (bousfieldReflection hC edges).reflector
 
 /-- 同じ元の局所対象全部分圏は、構成済みの反射を P-d の公開定理へ渡して presentable。 -/
 @[kerodon 06VH]
 lemma bousfieldLocalObjects_isPresentable
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
-    {I : Type u} (edges : I → C _⦋1⦌) : IsPresentable (LocalObjects.Category edges) :=
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
+    {I : Type u} (edges : I → C _⦋1⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (LocalObjects.Category edges) :=
   LocalObjects.isPresentable_of_reflection hC edges (bousfield_isReflectiveSubcategory hC edges)
 
 end SerrePositivity.InfinityCategories.F2.Presentable.Localization

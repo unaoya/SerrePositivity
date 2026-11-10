@@ -23,7 +23,7 @@ open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 元の presentable 圏と小さい生成族から、保存包含を持つ presentable な実像を選べる。 -/
-lemma exists_compactCoveringPresentableIndImage (hC : IsPresentable C)
+lemma exists_compactCoveringPresentableIndImage (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ (κ μ : Cardinal.{u}) (_ : κ.IsRegular) (hμ : μ.IsRegular),
       letI : Fact μ.IsRegular := ⟨hμ⟩
@@ -31,14 +31,14 @@ lemma exists_compactCoveringPresentableIndImage (hC : IsPresentable C)
       ∃ (A : SSet.{u}) (hA : Quasicategory A),
         letI := hA
         ∃ G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges,
-          IsFullyFaithful G ∧ IsKappaAccessibleFunctor μ G ∧
+          IsFullyFaithful G ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G ∧
           (∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
             ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a))) ∧
           (∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
             Compact.IsKappaCompact.{u, u + 1} μ f →
             arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f) ∧
-          IsPresentable (indArrowImageCategory edges G) ∧
-          PreservesSmallColimits (indArrowImageInclusion edges G) ∧
+          _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (indArrowImageCategory edges G) ∧
+          _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G) ∧
           ∀ j : I, IndArrowImageVertex edges G (generatorArrowVertex edges j) := by
   obtain ⟨κ, μ, hκ, hμ, hσ, hb, hCμ, hArμ, hgen, _⟩ :=
     exists_endpointCompactArrowCardinal hC edges σ

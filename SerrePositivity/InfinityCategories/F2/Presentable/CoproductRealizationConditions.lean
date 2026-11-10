@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-!
@@ -37,13 +37,13 @@ def HasSmallGeometricRealizations (X : SSet.{u + 1}) : Prop :=
 規約：同じ宇宙を保持する。
 使われ方：一般補題の必要条件。 -/
 lemma HasSmallColimits.hasSmallCoproducts {X : SSet.{u + 1}}
-    (hX : HasSmallColimits X) : HasSmallCoproducts X := fun I F ↦ hX (nerve (Discrete I)) F
+    (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) : HasSmallCoproducts X := fun I F ↦ hX (nerve (Discrete I)) F
 
 /-- 概要：全小余極限の存在は小さい幾何学的実現の存在を含む。
 方針：元の全図式条件を反対単体次数の形状に適用する。
 規約：元の全単体的図式を保持する。
 使われ方：一般補題の必要条件。 -/
 lemma HasSmallColimits.hasSmallGeometricRealizations {X : SSet.{u + 1}}
-    (hX : HasSmallColimits X) : HasSmallGeometricRealizations X := fun F ↦ hX _ F
+    (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) : HasSmallGeometricRealizations X := fun F ↦ hX _ F
 
 end SerrePositivity.InfinityCategories.F2.Presentable

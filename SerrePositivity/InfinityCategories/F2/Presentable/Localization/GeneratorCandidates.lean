@@ -22,7 +22,7 @@ open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 全生成辺は、元の飽和射圏内で compact な小さい全部分候補の像と射圏内で同型。 -/
-lemma exists_generatorContainingCompactArrowCandidates (hC : IsPresentable C)
+lemma exists_generatorContainingCompactArrowCandidates (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ IsKappaAccessible μ C ∧
       ∃ (A : SSet.{u}) (hA : Quasicategory A),

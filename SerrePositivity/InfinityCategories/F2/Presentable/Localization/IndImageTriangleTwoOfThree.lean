@@ -24,16 +24,16 @@ open HomotopyLimits Compact
 lemma indArrowImage_triangle_twoOfThree
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
-    {I : Type u} (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    {I : Type u} (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
       IsKappaCompact.{u, u + 1} μ f →
       arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f)
-    (hcol : HasSmallColimits (indArrowImageCategory edges G))
-    (hpres : PreservesSmallColimits (indArrowImageInclusion edges G))
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G))
+    (hpres : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G))
     (τ : (Δ[2] : SSet.{u + 1}) ⟶ C) (hτ : HasCompactTrianglePosetPresentation μ τ)
     (j₀ j₁ j₂ : Fin 3) (hrest : ∀ i : Fin 3, i ≠ j₂ → i = j₀ ∨ i = j₁)
     (hf₀ : IndArrowImageVertex edges G (functorVertex (stdSimplex.δ j₀ ≫ τ)))

@@ -21,16 +21,16 @@ open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 同じ選択で、presentable 性・全恒等射・指定 pushout と左消去を同時に得る。 -/
-lemma exists_operationsPresentableIndImage (hC : IsPresentable C)
+lemma exists_operationsPresentableIndImage (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ (μ : Cardinal.{u}) (hμ : μ.IsRegular),
       letI : Fact μ.IsRegular := ⟨hμ⟩
       σ < μ ∧ ∃ (A : SSet.{u}) (hA : Quasicategory A),
         letI := hA
         ∃ G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges,
-          IsFullyFaithful G ∧ IsKappaAccessibleFunctor μ G ∧
-          IsPresentable (indArrowImageCategory edges G) ∧
-          PreservesSmallColimits (indArrowImageInclusion edges G) ∧
+          IsFullyFaithful G ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G ∧
+          _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (indArrowImageCategory edges G) ∧
+          _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G) ∧
           (∀ j : I, IndArrowImageVertex edges G (generatorArrowVertex edges j)) ∧
           (∀ x : C _⦋0⦌, IndArrowImageVertex edges G
             ((constantFunctorMap (Δ[1] : SSet.{u + 1}) C).app _ x)) ∧

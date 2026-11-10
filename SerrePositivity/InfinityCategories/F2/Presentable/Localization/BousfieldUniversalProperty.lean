@@ -20,22 +20,22 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 
 /-- 同じ構成した局所化関手は、元の指定小余極限をすべて保存する。 -/
 lemma bousfieldLocalizationFunctor_preservesSmallColimits
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
-    PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) :=
   adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction
 
 /-- 同じ局所化関手は accessible であり、濃度は追加の入力ではない。 -/
 lemma bousfieldLocalizationFunctor_isAccessible
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
-    IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) :=
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0,
     (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩
 
 /-- 構成した同じ全関手は、自身の反転辺について全標的での局所化普遍性を持つ。 -/
 lemma bousfieldLocalizationFunctor_isLocalization_invertedEdges
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     IsLocalization (bousfieldLocalizationFunctor hC edges)
       (invertedEdges (bousfieldLocalizationFunctor hC edges)) :=

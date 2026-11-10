@@ -63,7 +63,7 @@ lemma smallContravariantHom_sendsSmallColimitsToLimits
 lemma smallContravariantHomComposite_sendsSmallColimitsToLimits
     {C D : SSet.{u + 1}} [Quasicategory D]
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u})
-    (L : C ⟶ D) (hL : PreservesSmallColimits L) (y : D _⦋0⦌)
+    (L : C ⟶ D) (hL : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L) (y : D _⦋0⦌)
     (H : D.op ⟶ SpaceInfinity.{u})
     (hH : FunctorIso (representablePresheafInfinity y)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram)) :

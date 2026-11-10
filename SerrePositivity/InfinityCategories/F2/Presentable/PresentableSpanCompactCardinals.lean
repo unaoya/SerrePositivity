@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.StrongCompactCardinals
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：presentable 圏の余極限保存 cospan に、三成分と関手像の共通 compact 濃度を与える。
@@ -25,9 +25,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：compact 全部分圏の実 cospan と小さい模型を作る。 -/
 lemma exists_presentableSpan_compactCardinal
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
-    (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
     (p : E ⟶ B) (q : D ⟶ B)
-    (hp : PreservesSmallColimits p) (hq : PreservesSmallColimits q) (σ : Cardinal.{u}) :
+    (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hq : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧ IsCardinalChangeBound κ μ ∧
       IsKappaAccessible μ E ∧ IsKappaAccessible μ D ∧ IsKappaAccessible μ B ∧
       (∀ x : E _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →

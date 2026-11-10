@@ -69,7 +69,7 @@ lemma preservesSmallCoproducts_of_finite_filtered
 lemma preservesSmallColimits_of_finiteCoproducts_sifted
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
     (hX : HasSmallCoproducts X) (U : X ⟶ Y) (hfin : PreservesFiniteCoproducts U)
-    (hsift : PreservesSmallSiftedColimits U) : PreservesSmallColimits U :=
+    (hsift : PreservesSmallSiftedColimits U) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits U :=
   preservesSmallColimits_of_coproducts_geometricRealizations hX U
     (preservesSmallCoproducts_of_finite_filtered hX U hfin
       (preservesSmallFiltered_of_sifted hsift)) (preservesSmallGeometric_of_sifted hsift)
@@ -81,7 +81,7 @@ lemma preservesSmallColimits_of_finiteCoproducts_sifted
 lemma preservesSmallColimits_iff_finiteCoproducts_sifted
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
     (hX : HasSmallCoproducts X) (U : X ⟶ Y) :
-    PreservesSmallColimits U ↔ PreservesFiniteCoproducts U ∧ PreservesSmallSiftedColimits U :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits U ↔ PreservesFiniteCoproducts U ∧ PreservesSmallSiftedColimits U :=
   ⟨fun h ↦ ⟨fun I _ p c hc ↦ h (nerve (Discrete I)) p c hc,
       fun I _ p c hc ↦ h I p c hc⟩,
     fun h ↦ preservesSmallColimits_of_finiteCoproducts_sifted hX U h.1 h.2⟩

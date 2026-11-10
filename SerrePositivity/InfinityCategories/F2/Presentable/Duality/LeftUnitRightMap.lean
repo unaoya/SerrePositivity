@@ -49,7 +49,7 @@ def leftAdjointUnitRightUnderlying (C D : PresentableInfinityObject.{u})
 使われ方：元の Pr^R 関手圏への持ち上げの頂点条件。 -/
 lemma leftAdjointUnitRight_condition {C D : PresentableInfinityObject.{u}}
     {w : PrLFunctorSpace C D _⦋0⦌} (x : LeftAdjointUnitSpace C D w _⦋0⦌) :
-    IsAccessibleFunctor (leftUnitRightFunctor x.val.val) ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor (leftUnitRightFunctor x.val.val) ∧
       PreservesSmallLimits (leftUnitRightFunctor x.val.val) := by
   exact (exists_leftAdjoint_iff_accessible_preservesLimits C.isPresentable D.isPresentable _).mp
     ⟨leftVertexFunctor w, ⟨qcatAdjunctionOfUnitMappingSpaceCondition

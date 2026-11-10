@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackColimitConeExistence
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
@@ -21,8 +21,8 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 variable {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : HasSmallColimits E) (hD : HasSmallColimits D)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
 
 include hp hE hD hpc hqc
 
@@ -30,7 +30,7 @@ include hp hE hD hpc hqc
 方針：元の両成分の余極限と像の保存性を公開された貼り合わせへ渡す。
 規約：元の任意小図式を結論に保持する。
 使われ方：Pr^L の引き戻しの余完備性。 -/
-lemma pullback_hasSmallColimits : HasSmallColimits (pullback p q) := by
+lemma pullback_hasSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (pullback p q) := by
   intro K r
   obtain ⟨ce, he⟩ := hE K (r ≫ pullback.fst p q)
   obtain ⟨cd, hd⟩ := hD K (r ≫ pullback.snd p q)
@@ -69,7 +69,7 @@ lemma pullback_isColimitCone_iff_components {K : SSet.{u}}
 方針：元の全余錐の成分判定を使う。
 規約：元の射影自身の保存性を結論する。
 使われ方：Pr^L の引き戻し錐。 -/
-lemma pullback_fst_preservesSmallColimits : PreservesSmallColimits (pullback.fst p q) := by
+lemma pullback_fst_preservesSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (pullback.fst p q) := by
   intro K r c hc
   exact ((pullback_isColimitCone_iff_components p q hp hE hD hpc hqc c).mp hc).1
 
@@ -77,7 +77,7 @@ lemma pullback_fst_preservesSmallColimits : PreservesSmallColimits (pullback.fst
 方針：元の全余錐の成分判定を使う。
 規約：元の射影自身の保存性を結論する。
 使われ方：Pr^L の引き戻し錐。 -/
-lemma pullback_snd_preservesSmallColimits : PreservesSmallColimits (pullback.snd p q) := by
+lemma pullback_snd_preservesSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (pullback.snd p q) := by
   intro K r c hc
   exact ((pullback_isColimitCone_iff_components p q hp hE hD hpc hqc c).mp hc).2
 
@@ -87,8 +87,8 @@ lemma pullback_snd_preservesSmallColimits : PreservesSmallColimits (pullback.snd
 使われ方：Pr^L 内の引き戻しの普遍性。 -/
 lemma pullback_preservesSmallColimits_iff_components {C : SSet.{u + 1}}
     (F : C ⟶ pullback p q) :
-    PreservesSmallColimits F ↔ PreservesSmallColimits (F ≫ pullback.fst p q) ∧
-      PreservesSmallColimits (F ≫ pullback.snd p q) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ pullback.fst p q) ∧
+      _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ pullback.snd p q) := by
   constructor
   · intro hF
     constructor

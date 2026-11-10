@@ -28,7 +28,7 @@ omit [Fact μ.IsRegular] in
 /-- 元の全射圏内の指定 retract は、同じ実像に戻る。 -/
 lemma indArrowImageVertex_of_retract (edges : I → C _⦋1⦌)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hI : IsPresentable (indArrowImageCategory edges G))
+    (hI : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (indArrowImageCategory edges G))
     {f g : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌}
     (hg : IndArrowImageVertex edges G g) (r : Idempotent.VertexRetraction f g) :
     IndArrowImageVertex edges G f := by

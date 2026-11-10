@@ -22,7 +22,7 @@ open HomotopyLimits
 
 /-- 元の強飽和閉包内の固定始域射圏は、無条件に accessible。 -/
 lemma generatedSource_isAccessible
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     IsAccessible (generatedSourceCategory edges x) := by
   apply (generatedSource_isAccessible_iff_pointPullback edges x).mpr
@@ -33,15 +33,15 @@ lemma generatedSource_isAccessible
 
 /-- 固定始域の閉包内射圏は、無条件に presentable。 -/
 lemma generatedSource_isPresentable
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
-    IsPresentable (generatedSourceCategory edges x) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (generatedSourceCategory edges x) :=
   generatedSource_isPresentable_of_isAccessible hC.hasSmallColimits edges x
     (generatedSource_isAccessible hC edges x)
 
 /-- 元の固定始域圏には、実際に終対象が存在する。 -/
 lemma exists_generatedSource_terminal
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     ∃ s : (generatedSourceCategory edges x) _⦋0⦌, IsTerminalVertex s :=
   exists_generatedSource_terminal_of_isAccessible hC.hasSmallColimits edges x
@@ -49,7 +49,7 @@ lemma exists_generatedSource_terminal
 
 /-- 元の各対象から、強飽和閉包内の辺による局所置換が実際に存在する。 -/
 lemma exists_bousfieldLocalReplacement
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (x : C _⦋0⦌) :
     ∃ (y : C _⦋0⦌) (e : C.Edge x y),
       e.edge ∈ generatedEdges edges ∧ IsLocalObject (Set.range edges) y :=

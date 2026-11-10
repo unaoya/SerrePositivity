@@ -95,8 +95,8 @@ lemma generatedArrow_colimit_mem (edges : I → C _⦋1⦌)
   exact fullSubcomplexOnVertices_vertex (D.app _ k)
 
 /-- 元の飽和射圏は小余極限を持つ。accessibility は別に構成する。 -/
-lemma generatedArrow_hasSmallColimits (hC : HasSmallColimits C)
-    (edges : I → C _⦋1⦌) : HasSmallColimits (generatedArrowCategory edges) := by
+lemma generatedArrow_hasSmallColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (edges : I → C _⦋1⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (generatedArrowCategory edges) := by
   intro K D
   obtain ⟨c, hc⟩ := functor_hasSmallColimits (Δ[1] : SSet.{u + 1}) hC K
     (D ≫ generatedArrowInclusion edges)

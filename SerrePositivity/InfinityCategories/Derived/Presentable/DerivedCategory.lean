@@ -71,8 +71,8 @@ private lemma generator_compact (t : Shrink.{u} (Reps A)) :
     F2.Compact.IsKappaCompact.{u, u + 1} κ (generator A t) :=
   dgBarCompactClosedProjective_isKappaCompact A B κ hκ _ ((equivShrink (Reps A)).symm t).property
 
-private lemma module_presentable : F2.Presentable.IsPresentable (ModNerve A) := by
-  have hc : HasSmallColimits (ModNerve A) := fun _ G => dgSemifreeCoherent_hasColimit A B G
+private lemma module_presentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (ModNerve A) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (ModNerve A) := fun _ G => dgSemifreeCoherent_hasColimit A B G
   let hsmall := smallFixedMaps A (SemifreeDGModules A B)
   refine ⟨⟨κ, Cardinal.isRegular_aleph_one, hc.hasSmallKappaFilteredColimits κ,
     smallFullModel hsmall (generator A), inferInstance,
@@ -128,7 +128,7 @@ private lemma ringInclusion_equivalence : IsQCatEquivalence (dgNerve.map (ringIn
 
 /-- 小さい A 加群の非有界導来 ∞ 圏は同じ宇宙で presentable。 -/
 lemma derivedInfinityCategory_isPresentable :
-    F2.Presentable.IsPresentable (derivedInfinityCategory A) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A) :=
   (module_presentable A).of_equivalence (ringInclusion_equivalence A).choose.symm
 
 end SerrePositivity.InfinityCategories

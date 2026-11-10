@@ -27,7 +27,7 @@ lemma relativeInputPostcomp_base_isColimitCone
     (a : K ⟶ C) (i : L ⟶ K) (a₀ : L ⟶ C) (hi : i ≫ a = a₀)
     (z : JoinCocone a) (z₀ : JoinCocone a₀)
     (hzi : joinMap i (𝟙 Δ[0]) ≫ z.val = z₀.val)
-    (p : C ⟶ B) (hp : IsKappaAccessibleFunctor μ p)
+    (p : C ⟶ B) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p)
     (r : L ⟶ B) (hpr : a₀ ≫ p = r) (t : JoinCocone r) (hzt : z₀.val ≫ p = t.val)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]
     (P : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶

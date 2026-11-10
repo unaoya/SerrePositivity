@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 元の小さい全 Hom の保存性から、同じ Kan 対象の大きい全共変 Hom による compact 性を得る。 -/
 lemma kanObject_isKappaCompact_of_homPreservation {κ : Cardinal.{u}} (K : KanObject.{u})
-    (h : IsKappaAccessibleFunctor κ (kanInternalHomInfinity K)) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (kanInternalHomInfinity K)) :
     Compact.IsKappaCompact.{u, u + 1} κ (coherentNerveVertex K) := by
   intro I hI hFiltered D c hc
   have hm : IsColimitCone (mapJoinCocone

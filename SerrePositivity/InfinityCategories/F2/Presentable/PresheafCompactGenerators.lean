@@ -91,7 +91,7 @@ lemma presheafCompactGeneratorInclusion_isCompactGenerating :
   obtain ⟨d, hd, hv⟩ := exists_finiteLeftFibrationPresentation X
   let G := strictCoherentDiagram (finiteLeftFibrationDiagram X.val) ≫ e.hom
   let c := mapJoinCocone e.hom d
-  have hc : IsColimitCone c := (equivalence_isColimitCone_iff e.isQCatEquivalence d).mp hd
+  have hc : IsColimitCone c := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence d).mp hd
   have hcv : c.vertex = e.hom.app (Opposite.op ⦋0⦌) y := by
     rw [Ind.mapJoinCocone_vertex, hv]
     exact congrArg (e.hom.app (Opposite.op ⦋0⦌)) (coherentNerveVertex_object y)

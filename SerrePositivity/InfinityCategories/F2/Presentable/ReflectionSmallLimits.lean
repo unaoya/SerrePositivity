@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexCo
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexLimitReflection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveInvertedHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjectLimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：反映された同型閉な全部分圏の小極限を周囲の元の極限から構成する。
@@ -71,7 +71,7 @@ lemma reflective_mem_limitCone {K X : SSet.{u}} [Quasicategory X]
 lemma reflectiveSubcategory_hasSmallLimits {X : SSet.{u + 1}} [Quasicategory X]
     {P : X _⦋0⦌ → Prop} (r : ReflectiveSubcategory X P)
     (hP : ∀ {x y : X _⦋0⦌}, VertexIso x y → P x → P y)
-    (hX : HasSmallLimits X) : HasSmallLimits (fullSubcomplexOnVertices X P : SSet.{u + 1}) := by
+    (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits X) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits (fullSubcomplexOnVertices X P : SSet.{u + 1}) := by
   intro K D
   obtain ⟨c, hc⟩ := hX K (D ≫ (fullSubcomplexOnVertices X P).ι)
   exact fullSubcomplex_hasLimit_of_apex P D c hc (reflective_mem_limitCone r hP D c hc)

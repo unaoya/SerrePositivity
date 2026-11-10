@@ -324,3 +324,14 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 ### 局所化の存在
 
 `KST/LocalizingInvariants/GeneralLocalization` と同群の依存 9 本を Kerodon §6.3 の `AdjointFunctors/Localization/` に移した。利用側 7 本を更新し、∞ 圏の外で参照される 5 名を `Project/Compatibility/KSTLocalization.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 10 本と互換モジュールをコンパイルし、`Derived.Localization.GroupoidCompletion` も新しい明示的な import で検査した。保存比較 v3b は 43 宣言で PASS、未説明差分 0 件。移動した Kerodon 属性も Lean で照合した。
+
+### §9 の主題による配置
+
+| 元の `F2/Presentable/` のファイル | 処理と根拠 |
+| --- | --- |
+| `Definition` | `HTT/PresentableInfinityCategories/Definition` に一体で置いた。HTT 5.5.1 の表現可能性が主題。小（余）極限とその保存は同じ API を成し、`HasSmallColimits` は移動前の 144 本のソースに現れる。Kerodon の対応に付けた 6 組の属性を維持した。 |
+| `AccessibleFunctor` | Kerodon §9.4 の `LargeInfinityCategories/CompactGenerationAndAccessibility` に一体で置いた。HTT 5.4.2 にも由来し、二つの中心定義がともに Kerodon §9.4.8.1（Tag 06KY）に当たる。残りはその恒等・合成・濃度変更などの補題。 |
+| `EquivalenceColimits` | `equivalence_isColimitCone_iff` を Kerodon §7.1 の `EquivalenceColimitCones` に分けた。残る二つの κ-filtered 余極限の輸送は `HTT/AccessibleInfinityCategories/EquivalenceColimits`。分割した補題は移動前の 15 本のソースに現れる。 |
+| `Duality/RightUnitContractible` | `initialVertices_isContractibleKan` を Kerodon §4.7 の `InitialVerticesContractible` に分けた。随伴の右関手と実単位に関する残りの宣言は `HTT/PresentableInfinityCategories/RightUnitContractible`。分割した補題は移動前の 2 本のソースに現れる。 |
+
+二つの分割を `split_module.py` で検査した。どちらも HTT に残す宣言から Kerodon に切り出す補題への依存だけがあり、逆向きの依存はなかった。移動先 6 本、外部から参照される 1 名の互換モジュール、および利用側の `AccessibleFunctorEquivalence`、`Duality.LeftUnitContractible`、`ContravariantContinuity` をビルド鍵 `--wait 1800` で検査した。v3b は 30 宣言で PASS、未説明差分 0 件。書き換えた利用側は 313 本で、属性も Lean の出力で再照合した。

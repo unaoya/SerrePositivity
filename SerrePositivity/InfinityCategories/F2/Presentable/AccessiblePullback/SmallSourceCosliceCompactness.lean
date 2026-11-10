@@ -42,7 +42,7 @@ lemma isKappaCompact_cosliceVertex_of_compactColimit
     · rw [hv]
       exact hc
   exact isKappaCompact_of_fullyFaithful_image H hH.isFullyFaithful
-    (equivalence_preservesSmallKappaFilteredColimits μ hH) c ht
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ hH) c ht
 
 /-- 概要：余完備な周囲では、小さい compact 全前置図式の compact 頂点余錐は compact。
 方針：前置図式の余極限の compact 性と二つの制限の比較を使う。
@@ -51,7 +51,7 @@ lemma isKappaCompact_cosliceVertex_of_compactColimit
 lemma isKappaCompact_smallSourceCosliceVertex
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C)
     (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a))
     (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) :

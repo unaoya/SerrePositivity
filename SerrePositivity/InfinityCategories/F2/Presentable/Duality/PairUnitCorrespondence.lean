@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 def leftFunctorInclusion (C D : PresentableInfinityObject.{u}) :
     PrLFunctorSpace C D ⟶ (ihom C.obj).obj D.obj :=
   (fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-    (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
+    (fun v ↦ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
 
 /-- 概要：元の右保存関手圏を全関手圏へ含める。
 方針：accessible な小極限保存関手の全部分複体の包含を使う。
@@ -33,7 +33,7 @@ def leftFunctorInclusion (C D : PresentableInfinityObject.{u}) :
 def rightFunctorInclusion (C D : PresentableInfinityObject.{u}) :
     PrRFunctorSpace C D ⟶ (ihom C.obj).obj D.obj :=
   (fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-    (fun v ↦ IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
+    (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
       PreservesSmallLimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
 
 /-- 概要：固定二対象の全保存関手圏上の LR の実合成。

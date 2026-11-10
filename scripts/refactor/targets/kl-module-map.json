@@ -1,4 +1,8 @@
 {
+  "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor",
+  "SerrePositivity.InfinityCategories.F2.Presentable.Definition": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition",
+  "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible",
+  "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits",
   "SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting",
   "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
   "SerrePositivity.KST.LocalizingInvariants.InverseAttachment": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment",

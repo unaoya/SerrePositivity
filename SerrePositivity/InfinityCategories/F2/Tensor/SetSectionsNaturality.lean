@@ -104,7 +104,7 @@ def sectionsEquivalenceNatural (P : I ⥤ Type u)
 /-- 集合値前層 P で重み付けたテンソルからの写像空間。
 右辺には、呼び出し側が指定した元の圏上の極限錐そのものを使う。 -/
 def tensorSpaceFunctor_setWeightHomNatural (P : I ⥤ Type u)
-    {E : SSet.{u + 1}} [Quasicategory E] (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌)
+    {E : SSet.{u + 1}} [Quasicategory E] (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ E)
     (c : JoinCone (diagram P F)) (hc : IsLimitCone c) :
     QCatEquivalence
@@ -166,7 +166,7 @@ def spaceDiagramEdge (φ : X ⟶ Y) :
 
 /-- 重みの射にテンソルを後合成した、前層の圏の辺。 -/
 def tensorWeightEdge {E : SSet.{u + 1}} [Quasicategory E]
-    (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) (φ : X ⟶ Y) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌) (φ : X ⟶ Y) :
     SSet.Edge (functorVertex (spaceDiagram X ≫ tensorSpaceFunctor hE M))
       (functorVertex (spaceDiagram Y ≫ tensorSpaceFunctor hE M)) :=
   (spaceDiagramEdge φ).map
@@ -174,7 +174,7 @@ def tensorWeightEdge {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- G8 の随伴比較は、重みの射による前合成に自然。 -/
 def tensorSpaceFunctor_diagramHom_weight_naturality
-    {E : SSet.{u + 1}} [Quasicategory E] (hE : F2.Presentable.IsPresentable E)
+    {E : SSet.{u + 1}} [Quasicategory E] (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E)
     (M : E _⦋0⦌) (φ : X ⟶ Y)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ E) :
     FunctorIso
@@ -258,7 +258,7 @@ def sieveSectionsMap {C : Type u} [SmallCategory C] {U : C} (S : Sieve U)
 
 /-- BS の S4 の生成辺に使う篩包含へのテンソル。 -/
 def sieveTensorEdge {C : Type u} [SmallCategory C] {U : C} (S : Sieve U)
-    [Quasicategory E] (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) :
+    [Quasicategory E] (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌) :
     SSet.Edge (functorVertex (spaceDiagram S.functor ≫ tensorSpaceFunctor hE M))
       (functorVertex (spaceDiagram (yoneda.obj U) ≫ tensorSpaceFunctor hE M)) :=
   tensorWeightEdge hE M S.functorInclusion

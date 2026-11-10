@@ -47,7 +47,7 @@ lemma compactDiagram_factorization_relative_ind
       (D ≫ sliceUnderProjection (i ≫ q)) (mapJoinCocone (sliceUnderProjection (i ≫ q)) c) hc
     exact (isColimitCone_iff_of_cocone_val_eq _ _ (Category.assoc _ _ _)).mp h
   exact compactDiagram_factorization_relative_fullSubcomplex hμ hJ hL
-    (Ind.IsIndVertex μ B) (presheaf_hasSmallColimits B) q
+    (Ind.IsIndVertex μ B) (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits B) q
     (fun a ↦ indInclusion_preservesCompact μ (q.app _ a) (hQ a)) i D c hc' z hz
 
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

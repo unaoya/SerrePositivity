@@ -102,6 +102,6 @@ lemma IsAccessible.isLocallySmall {C : SSet.{u + 1}} [Quasicategory C]
 規約：元の定義に局所小ささを追加仮定しない。
 使われ方：随伴関手定理の小さい解集合の準備。 -/
 lemma IsPresentable.isLocallySmall {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) : IsLocallySmall C := hC.isAccessible.isLocallySmall
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) : IsLocallySmall C := hC.isAccessible.isLocallySmall
 
 end SerrePositivity.InfinityCategories.F2.Presentable

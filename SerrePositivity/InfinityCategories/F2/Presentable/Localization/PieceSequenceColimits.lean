@@ -74,7 +74,7 @@ lemma pieceSequenceTotalDiagram_restrict_union
 /-- 各部分余極限を同じ全列の値に取り、その余極限を元の和の指定頂点として回収する。 -/
 lemma exists_pieceSequenceColimitPresentation
     (A : ℕ → SmallFilteredPieces Cardinal.aleph0 μ J) (hA : Monotone A)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ C)
     (c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map
       (nerveMap (subsetInclusion (filteredPieceSequenceUnion A))) ≫ D))

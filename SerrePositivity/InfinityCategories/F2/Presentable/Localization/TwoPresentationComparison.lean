@@ -43,7 +43,7 @@ lemma exists_twoPresentationComparison
     (D₀ : (SSet.uliftFunctor.{u + 1, u}).obj I₀ ⟶ C)
     (D₁ : (SSet.uliftFunctor.{u + 1, u}).obj I₁ ⟶ C)
     (c₀ : JoinCocone D₀) (c₁ : JoinCocone D₁)
-    (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
     (hD₀ : ∀ i : I₀ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₀.app _ (ULift.up i)))
     (hD₁ : ∀ i : I₁ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₁.app _ (ULift.up i)))
     (hv : c₀.vertex = c₁.vertex) (a : I₀ _⦋0⦌) (b : I₁ _⦋0⦌) :

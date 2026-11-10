@@ -23,8 +23,8 @@ lemma indArrowImage_ambientSmall_colimit_mem
     {μ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A]
     {C : SSet.{u + 1}} [Quasicategory C] {I : Type u} (edges : I → C _⦋1⦌)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hcol : HasSmallColimits (indArrowImageCategory edges G))
-    (hpres : PreservesSmallColimits (indArrowImageInclusion edges G))
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G))
+    (hpres : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G))
     (K : SSet.{u})
     (E : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj C)
     (hE : ∀ k, IndArrowImageVertex edges G (E.app _ k))

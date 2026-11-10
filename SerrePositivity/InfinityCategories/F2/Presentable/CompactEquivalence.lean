@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHomComparison
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 
@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 /-- κ-filtered 余極限を保つ充満忠実関手は、元の像の κ-compact 性を反映する。 -/
 lemma isKappaCompact_of_fullyFaithful_image {κ : Cardinal.{u}}
     {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E]
-    (G : C ⟶ E) (hG : IsFullyFaithful G) (hp : IsKappaAccessibleFunctor κ G)
+    (G : C ⟶ E) (hG : IsFullyFaithful G) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (x : C _⦋0⦌) (hx : Compact.IsKappaCompact.{u, u + 1} κ (G.app (Opposite.op ⦋0⦌) x)) :
     Compact.IsKappaCompact.{u, u + 1} κ x := by
   intro I hI hκ D c hc
@@ -43,7 +43,7 @@ lemma isKappaCompact_image_of_equivalence {κ : Cardinal.{u}}
     Compact.IsKappaCompact.{u, u + 1} κ (e.hom.app (Opposite.op ⦋0⦌) x) := by
   have h := (Compact.isKappaCompact_iff_of_iso (κ := κ) (e.homInvIso.app x)).mpr hx
   exact isKappaCompact_of_fullyFaithful_image e.inv e.symm.isQCatEquivalence.isFullyFaithful
-    (equivalence_preservesSmallKappaFilteredColimits κ e.symm.isQCatEquivalence) _ h
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ e.symm.isQCatEquivalence) _ h
 
 /-- 元の同値は、同じ指定対象の κ-compact 性を保存・反映する。 -/
 lemma isKappaCompact_iff_equivalence {κ : Cardinal.{u}}
@@ -53,6 +53,6 @@ lemma isKappaCompact_iff_equivalence {κ : Cardinal.{u}}
       Compact.IsKappaCompact.{u, u + 1} κ (e.hom.app (Opposite.op ⦋0⦌) x) :=
   ⟨isKappaCompact_image_of_equivalence e x,
     isKappaCompact_of_fullyFaithful_image e.hom e.isQCatEquivalence.isFullyFaithful
-      (equivalence_preservesSmallKappaFilteredColimits κ e.isQCatEquivalence) x⟩
+      (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ e.isQCatEquivalence) x⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable

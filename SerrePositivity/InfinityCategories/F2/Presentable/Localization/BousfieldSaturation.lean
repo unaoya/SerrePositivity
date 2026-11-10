@@ -38,7 +38,7 @@ lemma reflective_isLocal_iff_localObject
 
 /-- 元の局所同値は、構成した Bousfield 局所化関手が反転する元の辺と一致する。 -/
 lemma bousfield_localEquivalences_eq_invertedEdges
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     localEquivalences (Set.range edges) =
       invertedEdges (bousfieldLocalizationFunctor hC edges) := by
@@ -56,7 +56,7 @@ lemma bousfield_localEquivalences_eq_invertedEdges
 
 /-- 構成済みの実局所置換から、強飽和生成閉包は元の局所同値全体と一致する。 -/
 lemma bousfield_generatedEdges_eq_localEquivalences
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     generatedEdges edges = localEquivalences (Set.range edges) := by
   apply stronglySaturatedClosure_eq_localEquivalences_of_localReplacements _ hC.hasSmallColimits
@@ -66,7 +66,7 @@ lemma bousfield_generatedEdges_eq_localEquivalences
 
 /-- HTT 5.5.4.15(4)：強飽和生成閉包は、同じ反射が反転する辺全体である。 -/
 lemma bousfield_generatedEdges_eq_invertedEdges
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     generatedEdges edges = invertedEdges (bousfieldLocalizationFunctor hC edges) :=
   (bousfield_generatedEdges_eq_localEquivalences hC edges).trans
@@ -74,7 +74,7 @@ lemma bousfield_generatedEdges_eq_invertedEdges
 
 /-- 同じ構成した全関手は、強飽和生成閉包について全標的での局所化普遍性を持つ。 -/
 lemma bousfieldLocalizationFunctor_isLocalization_generatedEdges
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     IsLocalization (bousfieldLocalizationFunctor hC edges) (generatedEdges edges) := by
   rw [bousfield_generatedEdges_eq_invertedEdges hC edges]

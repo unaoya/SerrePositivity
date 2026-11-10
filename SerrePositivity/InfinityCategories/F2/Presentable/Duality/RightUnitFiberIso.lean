@@ -66,7 +66,7 @@ lemma rightUnitFiber_inv_hom_id (C D : PresentableInfinityObject.{u})
 使われ方：元の右射影の高次ファイバーの可縮性の移送。 -/
 def rightUnitFiberIso (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    vertexFiber (adjointUnitRight C D) w ≅ RightAdjointUnitSpace C D w.val where
+    vertexFiber (adjointUnitRight C D) w ≅ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val where
   hom := rightFiberToAdjointUnitSpace C D w
   inv := rightAdjointUnitToFiber C D w
   hom_inv_id := rightUnitFiber_hom_inv_id C D w
@@ -80,6 +80,6 @@ lemma adjointUnitRightFiber_isContractibleKan (C D : PresentableInfinityObject.{
     (w : PrRMappingSpace D C _⦋0⦌) :
     IsContractibleKan (vertexFiber (adjointUnitRight C D) w) :=
   isContractibleKan_of_iso (rightUnitFiberIso C D w).symm
-    (rightAdjointUnitSpace_isContractibleKan C D w.val)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSpace_isContractibleKan C D w.val)
 
 end SerrePositivity.InfinityCategories.F2.Presentable.Duality

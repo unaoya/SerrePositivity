@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：presentable 性と全小余極限の存在・保存を、元の全同値によって輸送する。
@@ -20,39 +20,39 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 /-- 元の全同値は、指定された全ての小余極限余錐を保存する。 -/
 lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}}
     [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) :
-    PreservesSmallColimits F := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F := by
   intro K D c hc
-  exact (equivalence_isColimitCone_iff hF c).mp hc
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff hF c).mp hc
 
 /-- 全ての小余極限の存在は、元の同じ全同値で輸送される。 -/
 lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}}
-    [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C)
-    (e : QCatEquivalence C E) : HasSmallColimits E := by
+    [Quasicategory C] [Quasicategory E] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (e : QCatEquivalence C E) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E := by
   intro K D
   obtain ⟨c, hc⟩ := hC K (D ≫ e.inv)
   have he : FunctorIso ((D ≫ e.inv) ≫ e.hom) D := by
     simpa only [Category.assoc, Category.comp_id] using e.invHomIso.precomp D
   exact (hasColimit_iff_of_functorIso he).mp
-    ⟨mapJoinCocone e.hom c, (equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc⟩
+    ⟨mapJoinCocone e.hom c, (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc⟩
 
 /-- 元の全同値は presentable 性を保存する。 -/
 lemma IsPresentable.of_equivalence {C E : SSet.{u + 1}}
-    [Quasicategory C] [Quasicategory E] (hC : IsPresentable C)
-    (e : QCatEquivalence C E) : IsPresentable E :=
+    [Quasicategory C] [Quasicategory E] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
+    (e : QCatEquivalence C E) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E :=
   ⟨(isAccessible_iff_equivalence e).mp hC.1, hC.2.of_equivalence e⟩
 
 /-- 元の全同値による presentable 性の保存・反映。 -/
 lemma isPresentable_iff_equivalence {C E : SSet.{u + 1}}
     [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) :
-    IsPresentable C ↔ IsPresentable E :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E :=
   ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩
 
 /-- presentable 圏は、小余極限を持つ同じ小さい Ind 模型との全同値を持つ。 -/
 lemma isPresentable_iff_cocompleteIndEquivalence (C : SSet.{u + 1}) [Quasicategory C] :
-    IsPresentable C ↔ ∃ (κ : Cardinal.{u}), κ.IsRegular ∧
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C ↔ ∃ (κ : Cardinal.{u}), κ.IsRegular ∧
       ∃ (A : SSet.{u}) (hA : Quasicategory A),
         letI := hA
-        HasSmallColimits (Ind.IndInfinity κ A) ∧
+        _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Ind.IndInfinity κ A) ∧
           Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C) := by
   constructor
   · intro hC
@@ -68,7 +68,7 @@ lemma isPresentable_iff_cocompleteIndEquivalence (C : SSet.{u + 1}) [Quasicatego
 
 /-- presentable 圏の accessibility は、同じ宇宙の任意の上限を超える濃度で実現できる。 -/
 lemma IsPresentable.exists_accessibilityCardinalAbove {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) (σ : Cardinal.{u}) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, σ < μ ∧ IsKappaAccessible μ C := hC.1.exists_larger σ
 
 end SerrePositivity.InfinityCategories.F2.Presentable

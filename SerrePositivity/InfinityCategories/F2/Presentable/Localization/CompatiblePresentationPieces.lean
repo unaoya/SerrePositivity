@@ -54,7 +54,7 @@ def SmallPresentationComparison.toCompatiblePiece
 variable [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     [IsCardinalFiltered A₀ μ] [IsCardinalFiltered A₁ μ]
     [IsKappaFiltered μ (nerve A₀)] [IsKappaFiltered μ (nerve A₁)]
-    (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
     (hD₀ : ∀ i, IsKappaCompact.{u, u + 1} μ (D₀.app _ (ULift.up i)))
     (hD₁ : ∀ i, IsKappaCompact.{u, u + 1} μ (D₁.app _ (ULift.up i)))
 

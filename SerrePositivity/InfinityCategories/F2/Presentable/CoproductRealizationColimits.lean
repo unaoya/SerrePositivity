@@ -29,7 +29,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma hasSmallColimits_of_coproducts_geometricRealizations
     {X : SSet.{u + 1}} [Quasicategory X]
     (hcop : HasSmallCoproducts X) (hgeom : HasSmallGeometricRealizations X) :
-    HasSmallColimits X := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X := by
   intro K F
   let Y := simplicialBarSimplexFamily K
   let j := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap K)
@@ -52,7 +52,7 @@ lemma hasSmallColimits_of_coproducts_geometricRealizations
 使われ方：小余極限存在の公開判定。 -/
 lemma hasSmallColimits_iff_coproducts_geometricRealizations
     {X : SSet.{u + 1}} [Quasicategory X] :
-    HasSmallColimits X ↔ HasSmallCoproducts X ∧ HasSmallGeometricRealizations X :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X ↔ HasSmallCoproducts X ∧ HasSmallGeometricRealizations X :=
   ⟨fun h ↦ ⟨h.hasSmallCoproducts, h.hasSmallGeometricRealizations⟩,
     fun h ↦ hasSmallColimits_of_coproducts_geometricRealizations h.1 h.2⟩
 

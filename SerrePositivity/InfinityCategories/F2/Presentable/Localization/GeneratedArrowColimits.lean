@@ -24,8 +24,8 @@ variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 飽和射圏の元の全小余極限は、周囲の射圏の同じ全余極限である。 -/
 lemma generatedArrowInclusion_preservesSmallColimits
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) :
-    PreservesSmallColimits (generatedArrowInclusion edges) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (generatedArrowInclusion edges) := by
   intro K D c hc
   obtain ⟨c₀, hc₀⟩ := functor_hasSmallColimits (Δ[1] : SSet.{u + 1}) hC K
     (D ≫ generatedArrowInclusion edges)
@@ -43,7 +43,7 @@ lemma generatedArrowInclusion_preservesSmallColimits
 
 /-- 周囲の射圏で compact な元の飽和射は、飽和射圏の中でも compact。 -/
 lemma generatedArrow_isKappaCompact_of_image {κ : Cardinal.{u}}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌)
     (f : (generatedArrowCategory edges) _⦋0⦌)
     (hf : Compact.IsKappaCompact.{u, u + 1} κ
       ((generatedArrowInclusion edges).app _ f)) :

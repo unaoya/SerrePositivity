@@ -37,7 +37,7 @@ private lemma homMap_bijective_of_composition
 lemma indEquivalenceImage_canonicalColimits
     {μ : Cardinal.{u}} [Fact μ.IsRegular] {A : SSet.{u}} [Quasicategory A]
     {C : SSet.{u + 1}} [Quasicategory C] (hC : IsLocallySmall C)
-    (hcol : HasSmallColimits C) (e : QCatEquivalence (Ind.IndInfinity μ A) C) :
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (e : QCatEquivalence (Ind.IndInfinity μ A) C) :
     ∀ y, IsColimitCone
       (leftKanCanonicalCocone (Ind.indYoneda μ A ≫ e.hom) (𝟙 C) y) := by
   let δ := Ind.indYoneda μ A
@@ -53,9 +53,9 @@ lemma indEquivalenceImage_canonicalColimits
     rw [← Cat.Hom.comp_toFunctor, ← CategoryTheory.Functor.map_comp,
       ← NatTrans.comp_app, ← pre_map]
   have hR := (e.isQCatEquivalence.isPrecompositionEquivalence C).choose.isFullyFaithful.toHoFullyFaithful
-  have hcontinuous : IsKappaAccessibleFunctor μ (e.hom ≫ 𝟙 C) := by
+  have hcontinuous : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (e.hom ≫ 𝟙 C) := by
     intro I hI hfiltered D c hc
-    exact (equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc
   have hT := F1B.kanLeftCanonicalHomMap_bijective δ (e.hom ≫ 𝟙 C)
     (fun y ↦ Ind.indContinuous_canonicalColimits μ (e.hom ≫ 𝟙 C) y hcontinuous) (e.hom ≫ G)
   exact homMap_bijective_of_composition R T S hS

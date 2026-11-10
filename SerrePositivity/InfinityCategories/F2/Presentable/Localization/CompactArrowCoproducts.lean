@@ -26,7 +26,7 @@ variable {μ : Cardinal.{u}} [Fact μ.IsRegular] {C : SSet.{u + 1}} [Quasicatego
 
 /-- compact な閉包内射の小さい余積を、有限部分余積の同じ全左 Kan 図式で表す。 -/
 lemma compactArrowCoproduct_finitePartialDiagram
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hbound : IsCardinalChangeBound Cardinal.aleph0 μ)
     {B : Type u}
     (E : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶
@@ -42,7 +42,7 @@ lemma compactArrowCoproduct_finitePartialDiagram
   classical
   have : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩
   let Y := (ihom (Δ[1] : SSet.{u + 1})).obj C
-  have hY : HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
+  have hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
   let Z := finiteSubsetFamily B
   let q := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (finiteSubsetForget B))
   let δ := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (Functor.Elements.π Z))

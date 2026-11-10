@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma leftClassification_baseChange_preservesKappaFilteredColimits
     {μ : Cardinal.{u}} {E B D : SSet.{u + 1}} [Quasicategory B] [Quasicategory D]
     (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B)
-    (hG : IsKappaAccessibleFunctor μ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hp : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
       (leftStraighteningInfinityDiagram p)) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
@@ -40,7 +40,7 @@ lemma leftClassification_baseChange_preservesKappaFilteredColimits
 lemma leftClassification_baseChange_fst_preservesKappaFilteredColimits
     {μ : Cardinal.{u}} {E B D : SSet.{u + 1}} [Quasicategory B] [Quasicategory D]
     (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B)
-    (hG : IsKappaAccessibleFunctor μ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hp : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
       (leftStraighteningInfinityDiagram p)) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} μ

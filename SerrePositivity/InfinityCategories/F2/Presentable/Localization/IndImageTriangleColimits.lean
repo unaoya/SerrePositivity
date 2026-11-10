@@ -22,9 +22,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 open HomotopyLimits
 variable {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A]
   {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-  (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+  (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
   (G : Ind.IndInfinity κ A ⟶ generatedArrowCategory edges)
-  (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor κ G)
+  (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
 include hC hff hG
 
 /-- 元の周囲の図式が全頂点で実像に属すれば、同じ filtered 余極限も実像に属する。 -/

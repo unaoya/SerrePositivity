@@ -30,7 +30,7 @@ open HomotopyLimits
 lemma exists_compactFiberCocone_with_firstComparison
     {μ : Cardinal.{u}} (hμ : Cardinal.aleph0 ≤ μ) {K : SSet.{u}}
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hB : HasSmallColimits B) (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
+    (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B) (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
     (hp : F1B.EquivalenceLifting p) (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback p q)
     (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ componentCompactOver μ p q x)
     (ce : JoinCocone (r ≫ componentCompactOverFst μ p q x))

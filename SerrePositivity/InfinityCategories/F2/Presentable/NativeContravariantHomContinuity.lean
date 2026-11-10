@@ -62,7 +62,7 @@ lemma smallContravariantHom_sendsSmallColimitsToLimits_native
 使われ方：表現可能性から L の右随伴を構成する。 -/
 lemma smallContravariantHomComposite_sendsSmallColimitsToLimits_native
     {C D : SSet.{u + 1}} [Quasicategory D]
-    (L : C ⟶ D) (hL : PreservesSmallColimits L) (y : D _⦋0⦌)
+    (L : C ⟶ D) (hL : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L) (y : D _⦋0⦌)
     (H : D.op ⟶ SpaceInfinity.{u})
     (hH : FunctorIso (representablePresheafInfinity y)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram)) :

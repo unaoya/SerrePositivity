@@ -25,13 +25,13 @@ lemma exists_relativeCardinals
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B)
     (p : E ⟶ B) (q : D ⟶ B)
-    (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) (σ : Cardinal.{u}) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p) (hqc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < κ ∧ κ < μ ∧
       IsCardinalChangeBound κ μ ∧
       IsKappaAccessible κ E ∧ IsKappaAccessible κ D ∧ IsKappaAccessible κ B ∧
-      IsKappaAccessibleFunctor κ p ∧ IsKappaAccessibleFunctor κ q ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q ∧
       IsKappaAccessible μ E ∧ IsKappaAccessible μ D ∧ IsKappaAccessible μ B ∧
-      IsKappaAccessibleFunctor μ p ∧ IsKappaAccessibleFunctor μ q ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q ∧
       (∀ x, Compact.IsKappaCompact.{u, u + 1} μ x →
         Compact.IsKappaCompact.{u, u + 1} μ (p.app _ x)) ∧
       (∀ y, Compact.IsKappaCompact.{u, u + 1} μ y →

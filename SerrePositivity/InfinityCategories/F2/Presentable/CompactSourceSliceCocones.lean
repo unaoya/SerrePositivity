@@ -28,7 +28,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma nonempty_compactSourceSlice_cocone_of_smallQuasicategory
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall μ K)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ C)
     (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) :
     Nonempty (JoinCocone r) := by
@@ -52,7 +52,7 @@ lemma nonempty_compactSourceSlice_cocone_of_smallQuasicategory
 lemma nonempty_compactSourceSlice_cocone_of_small
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {K : SSet.{u}} (hK : IsKappaSmall μ K)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ C)
     (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) :
     Nonempty (JoinCocone r) :=

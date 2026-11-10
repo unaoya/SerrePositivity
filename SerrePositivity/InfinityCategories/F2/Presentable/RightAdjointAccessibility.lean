@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndHomContinuityDetection
 public import SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 
 /-!
@@ -30,18 +30,18 @@ lemma rightAdjoint_isAccessible_of_spaceUniverseFullyFaithful
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u})
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsAccessible C) (hD : IsAccessible D)
-    {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R := by
+    {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor R := by
   obtain ⟨κ, hκ⟩ := hC
   obtain ⟨A, hA, ⟨e⟩⟩ := hκ.exists_indEquivalence
   have := hA
   let a' : QCatAdjunction (e.hom ≫ L) (R ≫ e.inv) := e.toAdjunction.comp a
   obtain ⟨μ, hμ, _, ht⟩ := adjunction_exists_common_hom_preservationCardinal a' hD
     (fun x : A _⦋0⦌ ↦ (Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up x)) κ
-  have hR' : IsKappaAccessibleFunctor μ (R ≫ e.inv) :=
+  have hR' : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (R ≫ e.inv) :=
     isKappaAccessibleFunctor_of_indHomTests hU κ μ A (R ≫ e.inv) ht
   have he : FunctorIso ((R ≫ e.inv) ≫ e.hom) R := by
     simpa only [Category.assoc, Category.comp_id] using FunctorIso.precomp e.invHomIso R
   exact ⟨μ, hμ, (hR'.comp
-    (equivalence_preservesSmallKappaFilteredColimits μ e.isQCatEquivalence)).of_functorIso he⟩
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ e.isQCatEquivalence)).of_functorIso he⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable

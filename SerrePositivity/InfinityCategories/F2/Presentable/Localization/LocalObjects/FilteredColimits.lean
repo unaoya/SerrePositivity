@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.FilteredClosure
 public import SerrePositivity.InfinityCategories.F2.Ind.FullCoconeLift
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
@@ -66,7 +66,7 @@ lemma inclusion_isKappaAccessibleFunctor {κ : Cardinal.{u}}
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
     (hends : ∀ i, Compact.IsKappaCompact.{u, u + 1} κ (C.δ 1 (edges i)) ∧
       Compact.IsKappaCompact.{u, u + 1} κ (C.δ 0 (edges i))) :
-    IsKappaAccessibleFunctor κ (localObjectsSubcomplex (Set.range edges)).ι := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (localObjectsSubcomplex (Set.range edges)).ι := by
   intro K hK hκK D c hc
   obtain ⟨d, hd⟩ := hC K (D ≫ (localObjectsSubcomplex (Set.range edges)).ι)
   obtain ⟨d', hd', hsame⟩ := hasColimit_of_compactEndpoints edges hends D d hd

@@ -89,7 +89,7 @@ private lemma extension_exists_of_edge_eq {C : SSet.{u}}
 /-- 小余完備性から元の二辺の pushout を作り、指定した元の辺の延長を得る。 -/
 lemma generatedSource_terminal_edge_extension
     {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s)
     {a b : C _⦋0⦌} (f : Truncated.Edge (X := (truncation 2).obj C) a b)
     (hf : f.edge ∈ generatedEdges edges)
@@ -126,7 +126,7 @@ lemma generatedSource_terminal_edge_extension
 /-- 終対象の終域への前合成写像は、元のホモトピー圏の全射である。 -/
 lemma generatedSource_terminal_precomp_surjective
     {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s)
     {a b : C _⦋0⦌} (f : Truncated.Edge (X := (truncation 2).obj C) a b)
     (hf : f.edge ∈ generatedEdges edges) :

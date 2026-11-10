@@ -110,7 +110,7 @@ lemma stableInputPostcomp_base_uncurry {K C B A : SSet.{u}} (q : K ⟶ C) (f : C
 使われ方：両成分表示を共通の底の相対交互塔へ渡す。 -/
 lemma stableInputPostcomp_base_isColimitCone
     {μ : Cardinal.{u}} {K C B : SSet.{u + 1}} [Quasicategory C] [Quasicategory B]
-    (q : K ⟶ C) (f : C ⟶ B) (hf : IsKappaAccessibleFunctor μ f)
+    (q : K ⟶ C) (f : C ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ f)
     (r : K ⟶ B) (hq : q ≫ f = r) (z : JoinCocone q) (t : JoinCocone r)
     (hz : z.val ≫ f = t.val)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]

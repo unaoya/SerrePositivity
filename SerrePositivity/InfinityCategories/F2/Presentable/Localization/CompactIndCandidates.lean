@@ -21,13 +21,13 @@ variable {κ : Cardinal.{u}} [Fact κ.IsRegular] {C : SSet.{u + 1}} [Quasicatego
   {I : Type u}
 
 /-- 同じ実比較の Yoneda 像は周囲でも compact で、閉包内の全 compact 射を被覆する。 -/
-lemma exists_ambientCompactIndComparison (hC : HasSmallColimits C)
+lemma exists_ambientCompactIndComparison (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hAr : IsKappaAccessible κ ((ihom (Δ[1] : SSet.{u + 1})).obj C))
     (edges : I → C _⦋1⦌) :
     ∃ (A : SSet.{u}) (hA : Quasicategory A),
       letI := hA
       ∃ G : Ind.IndInfinity κ A ⟶ generatedArrowCategory edges,
-        IsFullyFaithful G ∧ IsKappaAccessibleFunctor κ G ∧
+        IsFullyFaithful G ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G ∧
         (∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ
           ((Ind.indYoneda κ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a))) ∧
         ∀ f : (compactGeneratedArrows κ edges) _⦋0⦌,

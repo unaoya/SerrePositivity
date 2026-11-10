@@ -67,12 +67,12 @@ lemma solutionHom_isRetract (d : JoinCone (smallSolutionLift i F)) :
 方針：生成解を頂点とする全解錐を取り、同じ全分類 retract を適用する。
 規約：元の全関手圏の分裂を結論し、各点での分裂に弱めない。
 使われ方：余表現可能性のための冪等分裂と filtered 生成による延長。 -/
-lemma exists_accessibleGeneratorHomRetract (hCa : IsAccessible C) (hCl : HasSmallLimits C)
-    (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
+lemma exists_accessibleGeneratorHomRetract (hCa : IsAccessible C) (hCl : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C)
+    (hFa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
     ∃ (κ : Cardinal.{u}) (A : SSet.{u}) (hA : Quasicategory A),
       letI := hA
       ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (a : A _⦋0⦌),
-        κ.IsRegular ∧ IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ F ∧
+        κ.IsRegular ∧ IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F ∧
         Idempotent.IsVertexRetractOf
           (functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (i ≫ F) ≫
             Compact.spaceUniverseDiagram))

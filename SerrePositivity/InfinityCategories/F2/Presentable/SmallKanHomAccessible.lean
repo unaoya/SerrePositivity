@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomNative
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
@@ -45,7 +45,7 @@ lemma smallKanHomInfinity_preserves_nerveCocone {μ : Cardinal.{u}} [Fact μ.IsR
 /-- 元の空間 ∞ 圏の全内部 Hom は、任意の小さい μ-filtered ∞ 添字で余極限を保つ。 -/
 lemma smallKanHomInfinity_isKappaAccessibleFunctor {μ : Cardinal.{u}} [Fact μ.IsRegular]
     (hμ : Cardinal.aleph0 < μ) (K : KanObject.{u}) (hK : IsKappaSmall μ K.obj) :
-    IsKappaAccessibleFunctor μ (kanInternalHomInfinity K) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (kanInternalHomInfinity K) := by
   intro B hB hμB G c hc
   obtain ⟨J, o, f, hJ, _, hf⟩ := Ind.exists_cofinal_kappaFiltered_poset (κ := μ) B
   let := o

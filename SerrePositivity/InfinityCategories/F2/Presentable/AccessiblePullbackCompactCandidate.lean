@@ -28,7 +28,7 @@ lemma exists_accessiblePullback_compactCandidate
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B)
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) (σ : Cardinal.{u}) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p) (hqc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q) (σ : Cardinal.{u}) :
     letI := hp.innerFibration
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       ∃ (A : SSet.{u}) (hA : Quasicategory A),

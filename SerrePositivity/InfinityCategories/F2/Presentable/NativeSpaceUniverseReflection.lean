@@ -26,7 +26,7 @@ lemma isKappaAccessibleFunctor_of_spaceUniverse_image {κ : Cardinal.{u}}
     {C : SSet.{u + 1}} {F : C ⟶ SpaceInfinity.{u}}
     (hF : Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram)) :
-    IsKappaAccessibleFunctor κ F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F := by
   intro I hI hκ D c hc
   apply Compact.spaceUniverseDiagram_reflects_small_isColimit
   have h := hF I D c hc

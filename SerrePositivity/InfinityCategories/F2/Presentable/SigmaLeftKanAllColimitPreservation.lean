@@ -31,7 +31,7 @@ lemma sigmaLeftKanExtension_preservesSmallColimits_iff
     {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D}
     (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G))
     (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) :
-    PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ := by
   have hs := sigmaLeftKanExtension_preservesSmallSiftedColimits β hβ
   let e := sigmaLeftKanExtensionRecoveryIso β hβ
   exact (sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC hD G).trans
@@ -44,11 +44,11 @@ lemma sigmaLeftKanExtension_preservesSmallColimits_iff
 lemma sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete
     {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D]
     (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p)
-    (hD : HasSmallColimits D)
+    (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
     {F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D} {G : SigmaPresheafInfinity C ⟶ D}
     (β : SSet.Homotopy F₀ (sigmaYonedaInfinityMap C ≫ G))
     (hβ : IsLeftKanExtension (sigmaYonedaInfinityMap C) F₀ G β) :
-    PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔ PreservesFiniteCoproductsOnBase F₀ :=
   sigmaLeftKanExtension_preservesSmallColimits_iff hC
     (fun I _ ↦ hD (nerve (Discrete I))) β hβ
 

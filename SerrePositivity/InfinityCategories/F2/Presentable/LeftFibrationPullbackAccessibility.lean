@@ -32,10 +32,10 @@ lemma leftFibrationPullbackClassification_isKappaAccessibleFunctor
     (p : E ⟶ B) (q : D ⟶ B) (e : E ⟶ X) (d : D ⟶ X) (b : B ⟶ X)
     (hp : p ≫ b = e) (hq : q ≫ b = d)
     [LeftFibration e] [LeftFibration d] [LeftFibration b] [LeftFibration p]
-    (he : IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram e))
-    (hd : IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram d))
-    (hb : IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram b)) :
-    IsKappaAccessibleFunctor μ
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram e))
+    (hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram d))
+    (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (leftStraighteningInfinityDiagram b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ
       (@leftStraighteningInfinityDiagram _ _ (pullback.fst p q ≫ e)
         (relativePullbackProjection_leftFibration p q e d b hp hq)) := by
   have hfull := isKappaAccessibleFunctor_limitFamily_apex

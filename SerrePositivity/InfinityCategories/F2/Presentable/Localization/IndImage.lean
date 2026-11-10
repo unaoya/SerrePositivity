@@ -115,8 +115,8 @@ lemma indArrowImage_isKappaAccessible (hG : IsFullyFaithful G) :
 
 omit [Fact κ.IsRegular] in
 /-- Ind 像に値を持つ小さい κ-filtered 図式の、元の射圏の余極限も同じ像に属する。 -/
-lemma indArrowImage_colimit_mem (hC : HasSmallColimits C)
-    (hG : IsFullyFaithful G) (hp : IsKappaAccessibleFunctor κ G)
+lemma indArrowImage_colimit_mem (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (hG : IsFullyFaithful G) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K]
     (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ indArrowImageCategory edges G)
     (c : JoinCocone (D ≫ indArrowImageInclusion edges G)) (hc : IsColimitCone c) :
@@ -125,7 +125,7 @@ lemma indArrowImage_colimit_mem (hC : HasSmallColimits C)
   let H := G ≫ generatedArrowInclusion edges
   let L := D ≫ e.inv
   obtain ⟨d, hd⟩ := Ind.ind_hasSmallKappaFilteredColimits κ A K L
-  have hH : IsKappaAccessibleFunctor κ H := hp.comp
+  have hH : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ H := hp.comp
     ((generatedArrowInclusion_preservesSmallColimits hC edges).isKappaAccessibleFunctor κ)
   have hHd : IsColimitCone (mapJoinCocone H d) := hH K L d hd
   have he : FunctorIso (L ≫ H) (D ≫ indArrowImageInclusion edges G) := by
@@ -147,9 +147,9 @@ lemma indArrowImageInclusion_isFullyFaithful :
 
 omit [Fact κ.IsRegular] in
 /-- 実像の指定された全 κ-filtered 余錐を、元の射圏の余極限として保存する。 -/
-lemma indArrowImageInclusion_isKappaAccessible (hC : HasSmallColimits C)
-    (hG : IsFullyFaithful G) (hp : IsKappaAccessibleFunctor κ G) :
-    IsKappaAccessibleFunctor κ (indArrowImageInclusion edges G) := by
+lemma indArrowImageInclusion_isKappaAccessible (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (hG : IsFullyFaithful G) (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (indArrowImageInclusion edges G) := by
   intro K hK hκ D c hc
   obtain ⟨c₀, hc₀⟩ := functor_hasSmallColimits (Δ[1] : SSet.{u + 1}) hC K
     (D ≫ indArrowImageInclusion edges G)

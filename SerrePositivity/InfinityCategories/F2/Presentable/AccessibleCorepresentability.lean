@@ -27,17 +27,17 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：左随伴の存在に必要な空間値関手の余表現可能性。 -/
 lemma accessible_preservesLimits_isCorepresentable
     {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u})
-    (hCa : IsAccessible C) (hCl : HasSmallLimits C)
-    (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
+    (hCa : IsAccessible C) (hCl : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C)
+    (hFa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
     IsCorepresentableSmallSpaceFunctor F := by
   obtain ⟨μ, _, hμF⟩ := hFa
   obtain ⟨κ, hμκ, hκC⟩ := hCa.exists_larger μ
   have : Fact κ.IsRegular := ⟨hκC.1⟩
   obtain ⟨A, hA, i, e, _, he, _⟩ := hκC.exists_indRepresentation
   have := hA
-  have hκF : IsKappaAccessibleFunctor κ F := hμF.of_le hμκ.le
-  have hF' : IsKappaAccessibleFunctor κ (e.hom ≫ F) := he.comp hκF
-  have hC' : HasSmallLimits (Ind.IndInfinity κ A) := hCl.of_equivalence e.symm
+  have hκF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F := hμF.of_le hμκ.le
+  have hF' : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (e.hom ≫ F) := he.comp hκF
+  have hC' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits (Ind.IndInfinity κ A) := hCl.of_equivalence e.symm
   have hl' : PreservesSmallLimits (e.hom ≫ F) := by
     intro K D c hc
     have h := hFl K (D ≫ e.hom) (mapJoinCone e.hom c) ((e.isLimitCone_iff c).mp hc)

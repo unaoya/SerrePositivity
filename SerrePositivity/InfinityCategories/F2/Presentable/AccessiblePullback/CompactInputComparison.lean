@@ -32,8 +32,8 @@ lemma exists_compactInputColimitComparison
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ (Ind.IndInfinity μ A))
     (p : ∀ c, C c ⟶ Ind.IndInfinity μ A)
-    (hp : ∀ c, IsKappaAccessibleFunctor μ (p c))
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hp : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C c)

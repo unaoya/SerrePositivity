@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 規約：Ind の交換条件や反映の存在を入力に追加しない。
 使われ方：presentable 圏の完備性の公開入口。 -/
 lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) : HasSmallLimits C := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C := by
   obtain ⟨κ, hκ, A, hA, hcolim, ⟨e⟩⟩ := (isPresentable_iff_cocompleteIndEquivalence C).mp hC
   have := hA
   have : Fact κ.IsRegular := ⟨hκ⟩
@@ -34,7 +34,7 @@ lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C]
 規約：同値な別図式へ結論を変更しない。
 使われ方：指定図式の極限錐の選択。 -/
 lemma IsPresentable.hasLimit {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {K : SSet.{u}}
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {K : SSet.{u}}
     (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) : HasLimit D :=
   hC.hasSmallLimits K D
 
@@ -54,7 +54,7 @@ lemma presentable_isLimitCone_iff_representables {C : SSet.{u + 1}} [Quasicatego
 規約：元の圏の完備性を入力にしない。
 使われ方：表現可能性による極限構成の利用界面。 -/
 lemma IsPresentable.exists_limitCone_representables {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {K : SSet.{u}}
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {K : SSet.{u}}
     (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) :
     ∃ c : JoinCone D, IsLimitCone c ∧ ∀ x : C _⦋0⦌,
       IsLimitCone (mapJoinCone (covariantRepresentableInfinity x)

@@ -81,7 +81,7 @@ def spaceUniverseValueEquivalence (x : SpaceInfinity.{u} _⦋0⦌) :
     (h.choose.trans (smallLeftUnstraighteningFiberValueEquivalence G x))
 
 variable {E : SSet.{u + 1}} [Quasicategory E]
-variable (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌)
+variable (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌)
   (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ E)
 
 /-- 集合値前層 P で重み付けたテンソルからの写像空間。

@@ -86,9 +86,9 @@ lemma componentCompactObjects_isPullback
 lemma componentCompactObjects_vertex_isKappaCompact
     {κ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
     (h : IsCardinalChangeBound κ μ) [InnerFibration p]
-    (hf : IsKappaAccessibleFunctor μ (pullback.fst p q))
-    (hs : IsKappaAccessibleFunctor μ (pullback.snd p q))
-    (hp : IsKappaAccessibleFunctor μ p)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.fst p q))
+    (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.snd p q))
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p)
     (himage : ∀ x : E _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app _ x))
     (x : (componentCompactObjects μ p q) _⦋0⦌) :

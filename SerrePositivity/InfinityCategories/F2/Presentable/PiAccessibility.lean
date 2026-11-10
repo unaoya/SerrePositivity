@@ -46,9 +46,9 @@ lemma piSSet_hasSmallFixedVertexMaps {ι : Type u} {C : ι → SSet.{u + 1}}
 使われ方：直積反映の包含の accessibility。 -/
 lemma piSSetMap_isKappaAccessible {ι : Type u} {κ : Cardinal.{u}}
     {C D : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] [∀ i, Quasicategory (D i)]
-    (hC : ∀ i, HasSmallColimits (C i)) (hD : ∀ i, HasSmallColimits (D i))
-    {f : ∀ i, C i ⟶ D i} (hf : ∀ i, IsKappaAccessibleFunctor κ (f i)) :
-    IsKappaAccessibleFunctor κ (piSSetMap f) := by
+    (hC : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (C i)) (hD : ∀ i, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (D i))
+    {f : ∀ i, C i ⟶ D i} (hf : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (f i)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (piSSetMap f) := by
   intro I hI hκ H c hc
   have h := (piSSet_isColimitCone_iff_components hC c).mp hc
   apply (piSSet_isColimitCone_iff_components hD (mapJoinCocone (piSSetMap f) c)).mpr

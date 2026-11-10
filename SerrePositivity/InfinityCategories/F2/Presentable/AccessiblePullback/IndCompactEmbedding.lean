@@ -47,7 +47,7 @@ lemma indInclusion_preservesCompact (μ : Cardinal.{u}) [Fact μ.IsRegular]
 lemma exists_presheafEmbedding {μ : Cardinal.{u}}
     {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) :
     ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA
-      ∃ j : C ⟶ PresheafInfinity A, IsFullyFaithful j ∧ IsKappaAccessibleFunctor μ j ∧
+      ∃ j : C ⟶ PresheafInfinity A, IsFullyFaithful j ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ j ∧
         ∀ x, Compact.IsKappaCompact.{u, u + 1} μ x →
           Compact.IsKappaCompact.{u, u + 1} μ (j.app _ x) := by
   have : Fact μ.IsRegular := ⟨hC.1⟩
@@ -56,7 +56,7 @@ lemma exists_presheafEmbedding {μ : Cardinal.{u}}
   let j := e.inv ≫ Ind.indInclusionPresheaf μ A
   refine ⟨A, hA, j, e.symm.isQCatEquivalence.isFullyFaithful.comp
     (Ind.indInclusionPresheaf_isFullyFaithful μ A),
-    (equivalence_preservesSmallKappaFilteredColimits μ e.symm.isQCatEquivalence).comp
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ e.symm.isQCatEquivalence).comp
       (Ind.indInclusion_preservesSmallKappaFilteredColimits μ A), ?_⟩
   intro x hx
   exact indInclusion_preservesCompact μ (e.inv.app _ x)

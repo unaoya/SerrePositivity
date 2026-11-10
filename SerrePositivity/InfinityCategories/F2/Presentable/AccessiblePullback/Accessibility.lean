@@ -26,7 +26,7 @@ lemma pullback_isAccessible
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
     (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B)
-    (hpc : IsAccessibleFunctor p) (hqc : IsAccessibleFunctor q) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p) (hqc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q) :
     letI := hp.innerFibration
     IsAccessible (pullback p q) := by
   letI := hp.innerFibration
@@ -42,8 +42,8 @@ lemma pullback_isAccessible
   have hC : ∀ c, IsKappaAccessible μ (C c) := finitePairSection _ hEμ hDμ
   have hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c) := finitePairSection _
     hEκ.hasSmallKappaFilteredColimits hDκ.hasSmallKappaFilteredColimits
-  have hfμ : ∀ c, IsKappaAccessibleFunctor μ (f c) := finitePairSection _ hpμ hqμ
-  have hfκ : ∀ c, IsKappaAccessibleFunctor κ (f c) := finitePairSection _ hpκ hqκ
+  have hfμ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (f c) := finitePairSection _ hpμ hqμ
+  have hfκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (f c) := finitePairSection _ hpκ hqκ
   have hfCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((f c).app (Opposite.op ⦋0⦌) v) :=
     finitePairSection _ hpCompact hqCompact

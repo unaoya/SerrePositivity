@@ -25,8 +25,8 @@ lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces
     (hLocal : ∀ (A : SSet.{u}) [Quasicategory A],
       RepresentableInversionDetectsLocality (PresheafInfinity A))
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) :
-    (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L :=
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (L : C ⟶ D) :
+    (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L :=
   exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible
     (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L
 

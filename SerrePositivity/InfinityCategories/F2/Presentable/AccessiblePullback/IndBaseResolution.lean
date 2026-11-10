@@ -86,6 +86,6 @@ lemma IndBaseResolution.model_hasSmallKappaFilteredColimits
     {κ μ : Cardinal.{u}} {B : SSet.{u + 1}} [Quasicategory B]
     (R : IndBaseResolution μ B) (hB : Ind.HasSmallKappaFilteredColimits κ B) :
     Ind.HasSmallKappaFilteredColimits κ (Ind.IndInfinity μ R.generator) :=
-  hasSmallKappaFilteredColimits_of_equivalence R.comparison_isQCatEquivalence.choose hB
+  _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.hasSmallKappaFilteredColimits_of_equivalence R.comparison_isQCatEquivalence.choose hB
 
 end SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback

@@ -28,7 +28,7 @@ lemma compactDiagram_factorization_relative_fullSubcomplex
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {J L : SSet.{u}} [Quasicategory J] [Quasicategory L]
     (hJ : IsKappaSmall μ J) (hL : IsKappaSmall μ L)
-    {X : SSet.{u + 1}} [Quasicategory X] (P : X _⦋0⦌ → Prop) (hX : HasSmallColimits X)
+    {X : SSet.{u + 1}} [Quasicategory X] (P : X _⦋0⦌ → Prop) (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
     (q : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶
       (fullSubcomplexOnVertices X P : SSet.{u + 1}))
     (hQ : ∀ j, Compact.IsKappaCompact.{u, u + 1} μ

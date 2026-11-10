@@ -45,7 +45,7 @@ lemma cofinalDiagramCocone_isColimit {J K X : SSet.{u}} [Quasicategory K] [Quasi
 
 /-- 二つの部分表示が全比較の両共終部分列になれば、指定余極限の頂点は同型である。 -/
 lemma nonempty_twoCofinalPresentation_colimitIso
-    {X : SSet.{u + 1}} [Quasicategory X] (hX : HasSmallColimits X)
+    {X : SSet.{u + 1}} [Quasicategory X] (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
     {P₀ P₁ : SSet.{u}} [Quasicategory P₀] [Quasicategory P₁]
     (r₀ : nerve (ULift.{u} ℕ) ⟶ P₀) (hr₀ : IsRightCofinal r₀)
     (r₁ : nerve (ULift.{u} ℕ) ⟶ P₁) (hr₁ : IsRightCofinal r₁)

@@ -24,7 +24,7 @@ lemma sigma_preservesSmallColimits_iff_finiteCoproducts_sifted
     {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D]
     (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p)
     (G : SigmaPresheafInfinity C ⟶ D) :
-    PreservesSmallColimits G ↔ PreservesFiniteCoproducts G ∧ PreservesSmallSiftedColimits G :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔ PreservesFiniteCoproducts G ∧ PreservesSmallSiftedColimits G :=
   preservesSmallColimits_iff_finiteCoproducts_sifted (sigma_hasSmallCoproducts hC) G
 
 end SerrePositivity.InfinityCategories.F2.Presentable

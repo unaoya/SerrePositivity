@@ -44,7 +44,7 @@ lemma exists_common_compactPreservingCardinal
     [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsKappaAccessible κ E) (hD : IsKappaAccessible κ D) (hB : IsAccessible B)
     (p : E ⟶ B) (q : D ⟶ B)
-    (hp : IsKappaAccessibleFunctor κ p) (hq : IsKappaAccessibleFunctor κ q)
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q)
     (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ IsCardinalChangeBound κ μ ∧
       IsKappaAccessible μ E ∧ IsKappaAccessible μ D ∧
@@ -67,10 +67,10 @@ lemma exists_common_compactPreservingCardinal
   obtain ⟨ρ, _, hσρ, himage⟩ := hB.exists_common_compactCardinal v σ
   obtain ⟨μ, hμ, hρμ, hb⟩ := exists_regular_cardinalChangeBound κ ρ
   have : Fact μ.IsRegular := ⟨hμ⟩
-  have hgE : IsKappaAccessibleFunctor κ gE :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eE.isQCatEquivalence).comp hp
-  have hgD : IsKappaAccessibleFunctor κ gD :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eD.isQCatEquivalence).comp hq
+  have hgE : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gE :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eE.isQCatEquivalence).comp hp
+  have hgD : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gD :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eD.isQCatEquivalence).comp hq
   obtain ⟨_, _, _, _, he⟩ := exists_imageCompactGenerating_of_cardinalChangeBound hb
     (Ind.ind_hasSmallKappaFilteredColimits κ AE) (Ind.ind_hasSmallFixedVertexMaps κ AE)
     iE (indYoneda_isKappaCompactGenerating κ AE) gE hgE

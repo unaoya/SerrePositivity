@@ -26,7 +26,7 @@ lemma nonempty_compatiblePiece_colimitVertexIso
     {D₀ : (SSet.uliftFunctor.{u + 1, u}).obj (nerve A₀) ⟶ C}
     {D₁ : (SSet.uliftFunctor.{u + 1, u}).obj (nerve A₁) ⟶ C}
     {c₀ : JoinCocone D₀} {c₁ : JoinCocone D₁} {hv : c₀.vertex = c₁.vertex}
-    (hC : HasSmallColimits C) (P : CompatiblePresentationPieces μ c₀ c₁ hv)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (P : CompatiblePresentationPieces μ c₀ c₁ hv)
     (a₀ : JoinCocone (smallFilteredPartialDiagram D₀ (compatibleLeftPiece P)))
     (ha₀ : IsColimitCone a₀)
     (a₁ : JoinCocone (smallFilteredPartialDiagram D₁ (compatibleRightPiece P)))

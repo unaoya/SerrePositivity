@@ -100,7 +100,7 @@ def presheafSigmaBaseIso {ι : Type u} (C : ι → SSet.{u}) :
 規約：添字の有限性や交換定理の存在入力を課さない。
 使われ方：presentable 圏の積の反映模型の始域。 -/
 lemma piPresheaf_isPresentable {ι : Type u} (C : ι → SSet.{u})
-    [∀ i, Quasicategory (C i)] : IsPresentable (piSSet (fun i ↦ PresheafInfinity (C i))) :=
+    [∀ i, Quasicategory (C i)] : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (piSSet (fun i ↦ PresheafInfinity (C i))) :=
   (presheaf_isPresentable (sigmaSSet C)).of_equivalence
     (qCatEquivalenceOfIso (presheafSigmaBaseIso C))
 

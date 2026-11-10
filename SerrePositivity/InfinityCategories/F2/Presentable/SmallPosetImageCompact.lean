@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetColimitGenerators
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 
 /-!
 概要：小さい poset 余極限で得る生成候補の関手像も、共通濃度で compact にする。
@@ -30,7 +30,7 @@ lemma image_vertex_isMuCompact
     {C D : SSet.{u + 1}} [Quasicategory D]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
     (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C)
-    (G : C ⟶ D) (hG : IsKappaAccessibleFunctor κ G)
+    (G : C ⟶ D) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (hi : ∀ a : A _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} μ (G.app _ (i.app _ (ULift.up a))))
     (q : SmallPosetDiagramCode κ μ A) :

@@ -30,7 +30,7 @@ open HomotopyLimits
 lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}}
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R)
-    (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌}
+    (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌}
     (hx : Compact.IsKappaCompact.{u, u + 1} κ x) :
     Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) :=
   (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)
@@ -43,8 +43,8 @@ lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}}
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R)
     (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C)
-    (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D)
-    (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D := by
+    (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D)
+    (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D := by
   obtain ⟨hκ, _, A, hA, i, hi⟩ := hC
   have := hA
   let v : A _⦋0⦌ → D _⦋0⦌ := fun t ↦ L.app _ (i.app _ (ULift.up t))

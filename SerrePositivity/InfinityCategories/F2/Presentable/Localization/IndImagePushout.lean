@@ -28,10 +28,10 @@ variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
 
 /-- 元の pushout の下辺が実像に属すれば、元の指定上辺も同じ実像に属す。 -/
 lemma indArrowImage_pushout_bottom_top (edges : I → C _⦋1⦌)
-    (hC : HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
     (h : IsCardinalChangeBound κ μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hidentity : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →

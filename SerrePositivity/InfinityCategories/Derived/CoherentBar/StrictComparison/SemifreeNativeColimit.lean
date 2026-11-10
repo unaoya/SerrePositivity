@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ProjectiveBarNativeCocone
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEquivalence
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!
@@ -27,7 +27,7 @@ lemma dgSemifreeCoherent_hasColimit : HasColimit G := by
   let H := G ≫ e.hom
   let c := dgProjectiveBarNativeCocone R D H
   have hc := dgProjectiveBarNativeCocone_isColimit R D H
-  have hi := (F2.Presentable.equivalence_isColimitCone_iff e.symm.isQCatEquivalence c).mp hc
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.symm.isQCatEquivalence c).mp hc
   have he : FunctorIso ((G ≫ e.hom) ≫ e.inv) G := by
     simpa only [Category.assoc, Category.comp_id] using e.homInvIso.precomp G
   exact (hasColimit_iff_of_functorIso he).mp ⟨mapJoinCocone e.inv c, hi⟩

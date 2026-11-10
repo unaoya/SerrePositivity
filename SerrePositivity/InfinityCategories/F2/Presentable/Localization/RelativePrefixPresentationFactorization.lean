@@ -32,7 +32,7 @@ lemma compactDiagram_factorization_over_terminalPrefixPresentation
     {J K I : SSet.{u}} [Quasicategory J] [Quasicategory K] [Quasicategory I]
     [IsKappaFiltered μ I] (hJ : IsKappaSmall μ J) (hK : IsKappaSmall μ K)
     (t : K _⦋0⦌) (ht : IsTerminalVertex t) (a : K ⟶ I)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ C) (c : JoinCocone D) (hc : IsColimitCone c)
     (q : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶ C)
     (hQ : ∀ j, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ j))
@@ -61,7 +61,7 @@ lemma compactDiagram_factorization_over_terminalPrefixPresentation
   have hv₀ : IsColimitCone v₀ :=
     terminalPrefix_restrictedCocone_isColimit hK t ht a D c hc
   have hv : IsColimitCone v :=
-    (equivalence_isColimitCone_iff (qCatEquivalenceOfIso e).isQCatEquivalence v₀).mp hv₀
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff (qCatEquivalenceOfIso e).isQCatEquivalence v₀).mp hv₀
   have hzv : z.restrict i = v.vertex := by
     apply Subtype.ext
     have hvraw : v.vertex.val = (c.restrict b).val := by

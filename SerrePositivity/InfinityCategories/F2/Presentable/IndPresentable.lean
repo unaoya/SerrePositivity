@@ -20,8 +20,8 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 規約：余完備性は Indκ(A) 自体について要求し、A の小ささだけから推論しない。
 使われ方：余完備な Ind 模型からの presentable 圏の構成。 -/
 lemma indInfinity_isPresentable_of_hasSmallColimits (κ : Cardinal.{u}) [Fact κ.IsRegular]
-    (A : SSet.{u}) [Quasicategory A] (h : HasSmallColimits (Ind.IndInfinity κ A)) :
-    IsPresentable (Ind.IndInfinity κ A) :=
+    (A : SSet.{u}) [Quasicategory A] (h : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Ind.IndInfinity κ A)) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Ind.IndInfinity κ A) :=
   ⟨(indInfinity_isKappaAccessible κ A).isAccessible, h⟩
 
 /-- 概要：正則 κ の小さい Ind 模型の presentable 性は、全小余極限の存在と同値である。
@@ -30,7 +30,7 @@ lemma indInfinity_isPresentable_of_hasSmallColimits (κ : Cardinal.{u}) [Fact κ
 使われ方：Ind の presentable 性に残る条件の公開界面。 -/
 lemma indInfinity_isPresentable_iff_hasSmallColimits (κ : Cardinal.{u}) [Fact κ.IsRegular]
     (A : SSet.{u}) [Quasicategory A] :
-    IsPresentable (Ind.IndInfinity κ A) ↔ HasSmallColimits (Ind.IndInfinity κ A) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Ind.IndInfinity κ A) ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Ind.IndInfinity κ A) :=
   ⟨fun h ↦ h.hasSmallColimits, indInfinity_isPresentable_of_hasSmallColimits κ A⟩
 
 /-- 概要：presentable 圏を κ-compact 生成する小さい圏の Indκ は presentable である。
@@ -39,8 +39,8 @@ lemma indInfinity_isPresentable_iff_hasSmallColimits (κ : Cardinal.{u}) [Fact �
 使われ方：小さい compact 生成圏による余完備 Ind 模型の供給。 -/
 lemma indInfinity_isPresentable_of_compactGenerating {κ : Cardinal.{u}} [Fact κ.IsRegular]
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C}
-    (hi : IsKappaCompactGenerating κ i) : IsPresentable (Ind.IndInfinity κ A) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C}
+    (hi : IsKappaCompactGenerating κ i) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Ind.IndInfinity κ A) := by
   obtain ⟨G, hG, ⟨e⟩⟩ := exists_indComparison
     (hC.hasSmallColimits.hasSmallKappaFilteredColimits κ) i
   exact hC.of_equivalence (indComparisonEquivalence hi hG e).symm
@@ -50,16 +50,16 @@ lemma indInfinity_isPresentable_of_compactGenerating {κ : Cardinal.{u}} [Fact �
 規約：この具体的な Ind 模型の余完備性を追加入力にしない。
 使われ方：実際に余完備な Ind 模型の基本例。 -/
 lemma presheafCompactGeneratorInd_hasSmallColimits (C : SSet.{u}) [Quasicategory C] :
-    HasSmallColimits (Ind.IndInfinity Cardinal.aleph0 (presheafCompactGeneratorCategory C)) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Ind.IndInfinity Cardinal.aleph0 (presheafCompactGeneratorCategory C)) := by
   obtain ⟨e⟩ := presheaf_exists_compactGeneratorIndEquivalence C
-  exact (presheaf_hasSmallColimits C).of_equivalence e.symm
+  exact (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits C).of_equivalence e.symm
 
 /-- 概要：構成した前層の小さい compact 生成圏の Ind は presentable である。
 方針：同じ元の Ind と前層との全同値に、前層の presentable 性を渡す。
 規約：一般の Ind の余完備性の入力を、この具体的な例には残さない。
 使われ方：前層と小さい compact 生成 Ind 模型の presentable な比較。 -/
 lemma presheafCompactGeneratorInd_isPresentable (C : SSet.{u}) [Quasicategory C] :
-    IsPresentable (Ind.IndInfinity Cardinal.aleph0 (presheafCompactGeneratorCategory C)) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Ind.IndInfinity Cardinal.aleph0 (presheafCompactGeneratorCategory C)) := by
   obtain ⟨e⟩ := presheaf_exists_compactGeneratorIndEquivalence C
   exact (presheaf_isPresentable C).of_equivalence e.symm
 

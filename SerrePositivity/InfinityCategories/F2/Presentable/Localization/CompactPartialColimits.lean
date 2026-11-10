@@ -35,7 +35,7 @@ lemma compactGeneratedArrow_smallPosetColimit (h : IsCardinalChangeBound κ μ)
     generatedArrow_colimit_mem edges D c hc⟩
 
 /-- 周囲で compact な閉包内の射の全部分圏は、小さい poset 余極限を実際に持つ。 -/
-lemma compactGeneratedArrows_hasSmallPosetColimits (hC : HasSmallColimits C)
+lemma compactGeneratedArrows_hasSmallPosetColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (h : IsCardinalChangeBound κ μ)
     (J : Type u) [PartialOrder J] (hJ : HasCardinalLT J μ)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ compactGeneratedArrows μ edges) :

@@ -33,7 +33,7 @@ lemma property_pieceSequenceUnion_colimit
     (W : C _⦋0⦌ → Prop) (hiso : ∀ {x y}, VertexIso x y → (W x ↔ W y))
     (hclosed : ∀ (K : SSet.{u}) (E : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C),
       (∀ k, W (E.app _ k)) → ∀ a : JoinCocone E, IsColimitCone a → W a.vertex)
-    (hC : HasSmallColimits C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ C)
     (A : ℕ → SmallFilteredPieces Cardinal.aleph0 μ J) (hA : Monotone A)
     (hW : ∀ n, HasPropertyPartialColimit W D (A n))
@@ -58,7 +58,7 @@ lemma hasPropertyPartialColimit_sequenceUnion [Fact μ.IsRegular]
     (W : C _⦋0⦌ → Prop) (hiso : ∀ {x y}, VertexIso x y → (W x ↔ W y))
     (hclosed : ∀ (K : SSet.{u}) (E : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C),
       (∀ k, W (E.app _ k)) → ∀ a : JoinCocone E, IsColimitCone a → W a.vertex)
-    (hC : HasSmallColimits C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ C)
     (A : ℕ → SmallFilteredPieces Cardinal.aleph0 μ J) (hA : Monotone A)
     (hW : ∀ n, HasPropertyPartialColimit W D (A n)) :

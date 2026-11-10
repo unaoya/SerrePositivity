@@ -22,10 +22,10 @@ local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0�
 variable {μ : Cardinal.{u}} [Fact μ.IsRegular] {A : SSet.{u}} [Quasicategory A]
   {C : SSet.{u + 1}} [Quasicategory C] {I : Type u} (edges : I → C _⦋1⦌)
   (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-  (hcol : HasSmallColimits (indArrowImageCategory edges G))
-  (hpres : PreservesSmallColimits (indArrowImageInclusion edges G))
-  {T : SSet.{u + 1}} [Quasicategory T] (hT : HasSmallColimits T)
-  (H : T ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj C) (hH : PreservesSmallColimits H)
+  (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G))
+  (hpres : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G))
+  {T : SSet.{u + 1}} [Quasicategory T] (hT : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits T)
+  (H : T ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj C) (hH : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H)
   {J : Type u} [PartialOrder J]
   (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ T)
 
@@ -47,8 +47,8 @@ lemma mappedIndImagePartialCondition_sequenceUnion (hμ : Cardinal.aleph0 < μ)
 
 /-- 元の大域像が実像に属せば、任意の小部分表示をこの所属条件へ拡大できる。 -/
 lemma exists_mappedIndImagePartialCondition_extension
-    (hμ : Cardinal.aleph0 < μ) (hC : HasSmallColimits C)
-    (hG : IsKappaAccessibleFunctor μ G)
+    (hμ : Cardinal.aleph0 < μ) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     [IsCardinalFiltered J μ] [IsKappaFiltered μ (nerve J)]

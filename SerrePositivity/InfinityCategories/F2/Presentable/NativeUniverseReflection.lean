@@ -28,7 +28,7 @@ lemma isKappaAccessibleFunctor_of_spaceUniverse {κ : Cardinal.{u}}
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u})
     (hF : Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram)) :
-    IsKappaAccessibleFunctor κ F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F := by
   intro I hI hκ D c hc
   apply (isColimitCone_iff_ulift (mapJoinCocone F c)).mpr
   apply isColimitCone_of_fullyFaithful_image Compact.spaceUniverseDiagram hU

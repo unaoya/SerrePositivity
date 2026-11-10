@@ -28,7 +28,7 @@ lemma exists_fixedSourceOrdinalColimit_compact_image
     (h : IsCardinalChangeBound κ μ)
     {K C B : SSet.{u + 1}} [Quasicategory K] [Quasicategory C] [Quasicategory B]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
-    (p : C ⟶ B) (hpc : IsKappaAccessibleFunctor κ p) (a : K ⟶ C)
+    (p : C ⟶ B) (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (a : K ⟶ C)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve κ.ord.ToType) ⟶ sliceUnder a)
     (hD : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ
       ((D ≫ sliceUnderProjection a).app (Opposite.op ⦋0⦌) v))

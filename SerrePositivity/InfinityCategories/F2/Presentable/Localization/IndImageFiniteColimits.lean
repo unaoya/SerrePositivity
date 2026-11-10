@@ -20,9 +20,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 open HomotopyLimits
 variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
   {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-  (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
+  (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
   (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-  (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+  (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
   (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
     ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
   (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,

@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback
 使われ方：Ind 模型内の相対構成での μ-small 前置図式の固定。 -/
 lemma compactDiagram_factorization_of_fullSubcomplex
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
-    {X : SSet.{u + 1}} [Quasicategory X] (P : X _⦋0⦌ → Prop) (hX : HasSmallColimits X)
+    {X : SSet.{u + 1}} [Quasicategory X] (P : X _⦋0⦌ → Prop) (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
     {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A)
     (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶
       (fullSubcomplexOnVertices X P : SSet.{u + 1}))

@@ -43,14 +43,14 @@ def twoMappedPartialPieceProjection : Monotone
     (Subtype.val : TwoMappedPartialPieces edges G H₀ H₁ D →
       SmallFilteredPieces Cardinal.aleph0 μ J) := fun _ _ h ↦ h
 
-variable [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (hC : HasSmallColimits C)
-  (hG : IsKappaAccessibleFunctor μ G)
+variable [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
   (hcompact : ∀ a : A _⦋0⦌, IsKappaCompact.{u, u + 1} μ
     ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
-  (hcol : HasSmallColimits (indArrowImageCategory edges G))
-  (hpres : PreservesSmallColimits (indArrowImageInclusion edges G))
-  (hT : HasSmallColimits T)
-  (hH₀ : PreservesSmallColimits H₀) (hH₁ : PreservesSmallColimits H₁)
+  (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G))
+  (hpres : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G))
+  (hT : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits T)
+  (hH₀ : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H₀) (hH₁ : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H₁)
   [IsCardinalFiltered J μ] [IsKappaFiltered μ (nerve J)]
   (c : JoinCocone D) (hc : IsColimitCone c)
   (hD₀ : ∀ j, IsKappaCompact.{u, u + 1} μ ((D ≫ H₀).app _ (ULift.up j)))

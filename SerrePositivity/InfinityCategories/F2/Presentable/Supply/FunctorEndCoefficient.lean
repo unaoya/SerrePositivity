@@ -96,7 +96,7 @@ lemma functorEndCoefficient_evaluation {A C : SSet.{u}} [Quasicategory C] (F : A
 規約：元の κ を変更しない。使われ方：全 Hom の極限錐族の各脚の保存条件。 -/
 lemma functorEndCoefficient_evaluation_preservesKappaFilteredColimits
     {κ : Cardinal.{u}} {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (F : A ⟶ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (F : A ⟶ C)
     (hF : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ (F.app _ a))
     (t : (TwistedArrow A) _⦋0⦌) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
@@ -112,7 +112,7 @@ lemma functorEndCoefficient_evaluation_preservesKappaFilteredColimits
 使われ方：end の極限関手と合成する前の全図式の保存。 -/
 lemma functorEndCoefficient_preservesKappaFilteredColimits
     {κ : Cardinal.{u}} {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (F : A ⟶ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (F : A ⟶ C)
     (hF : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ (F.app _ a)) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ (functorEndCoefficient F) := by
   intro I hI hFiltered D c hc

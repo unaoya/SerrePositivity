@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 実像の演算と三角形表示を、全て同じ正則濃度に揃えられる。 -/
-lemma exists_triangleOperationsCompactCardinal (hC : IsPresentable C)
+lemma exists_triangleOperationsCompactCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧
       IsCardinalChangeBound κ μ ∧ IsKappaAccessible μ C ∧
@@ -67,14 +67,14 @@ lemma exists_triangleOperationsCompactCardinal (hC : IsPresentable C)
   let gL := eC.hom ≫ constantFunctorMap (Δ[1] : SSet.{u + 1}) C
   let gE (j : Fin 2) := eA.hom ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j)
   let gT (j : Fin 3) := eT.hom ≫ (pre (stdSimplex.δ j)).app C
-  have hL : IsKappaAccessibleFunctor κ gL :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
+  have hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ gL :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
       ((constantFunctorMap_preservesSmallColimits _).isKappaAccessibleFunctor κ)
-  have hE (j : Fin 2) : IsKappaAccessibleFunctor κ (gE j) :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
+  have hE (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (gE j) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eA.isQCatEquivalence).comp
       ((evaluateFunctorAt_preservesSmallColimits hC.hasSmallColimits _).isKappaAccessibleFunctor κ)
-  have hT (j : Fin 3) : IsKappaAccessibleFunctor κ (gT j) :=
-    (equivalence_preservesSmallKappaFilteredColimits κ eT.isQCatEquivalence).comp
+  have hT (j : Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (gT j) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eT.isQCatEquivalence).comp
       ((triangleFace_preservesSmallColimits hC.hasSmallColimits j).isKappaAccessibleFunctor κ)
   let vA : AC _⦋0⦌ ⊕ ((Fin 3 × AT _⦋0⦌) ⊕ I) → Ar _⦋0⦌ :=
     Sum.elim (fun a ↦ gL.app _ (iC.app _ (ULift.up a)))

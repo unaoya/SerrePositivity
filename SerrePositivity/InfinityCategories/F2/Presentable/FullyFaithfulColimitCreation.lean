@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F2.Ind.FullCoconeLift
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
@@ -58,7 +58,7 @@ lemma hasColimit_of_fullyFaithful_image_colimit_iso
   have hvertex' : P c'.vertex := hvertex
   let d := Ind.fullCoconeLift P (p ≫ q) c' hvertex'
   have hd := Ind.fullCoconeLift_isColimit P (p ≫ q) c' hvertex' hc'
-  have hi := (equivalence_isColimitCone_iff e.symm.isQCatEquivalence d).mp hd
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.symm.isQCatEquivalence d).mp hd
   have he : FunctorIso ((p ≫ q) ≫ e.inv) p := by
     have hh := e.homInvIso.precomp p
     change FunctorIso (p ≫ (e.hom ≫ e.inv)) (p ≫ 𝟙 A) at hh

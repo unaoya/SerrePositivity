@@ -18,7 +18,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 指定濃度からの交換境界を持つ、元の圏と射圏と全生成端点の共通正則濃度。 -/
-lemma exists_regular_refinementArrowCardinal (hC : IsPresentable C)
+lemma exists_regular_refinementArrowCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (ρ σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ IsCardinalChangeBound ρ μ ∧
       IsKappaAccessible μ C ∧

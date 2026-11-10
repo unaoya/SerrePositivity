@@ -32,8 +32,8 @@ lemma exists_compactInputColimitComparison_of_isKappaAccessible_base
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ (B))
     (p : ∀ c, C c ⟶ B)
-    (hp : ∀ c, IsKappaAccessibleFunctor μ (p c))
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hp : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C c)
@@ -57,10 +57,10 @@ lemma exists_compactInputColimitComparison_of_isKappaAccessible_base
   let β := R.comparison
   have heβ := R.comparison_isQCatEquivalence
   let p' := fun c ↦ p c ≫ β
-  have hp' : ∀ c, IsKappaAccessibleFunctor μ (p' c) := fun c ↦
-    (hp c).comp (equivalence_preservesSmallKappaFilteredColimits μ heβ)
-  have hpκ' : ∀ c, IsKappaAccessibleFunctor κ (p' c) := fun c ↦
-    (hpκ c).comp (equivalence_preservesSmallKappaFilteredColimits κ heβ)
+  have hp' : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p' c) := fun c ↦
+    (hp c).comp (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ heβ)
+  have hpκ' : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p' c) := fun c ↦
+    (hpκ c).comp (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ heβ)
   have hcompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p' c).app (Opposite.op ⦋0⦌) v) := by
     intro c v hv

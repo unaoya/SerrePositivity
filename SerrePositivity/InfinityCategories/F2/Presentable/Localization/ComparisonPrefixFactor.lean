@@ -54,7 +54,7 @@ structure ComparisonLeftFactor (s : CompactPresentationComparison μ D₀ D₁ c
 /-- 元の filtered 左表示から、同じ全前置比較の後続因子化が存在する。 -/
 lemma nonempty_comparisonLeftFactor [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     [Quasicategory I₀] [IsKappaFiltered μ I₀]
-    (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀)
     (s : CompactPresentationComparison μ D₀ D₁ c₀ c₁) : Nonempty (ComparisonLeftFactor s) := by
   have := s.shape_quasicategory
   have := s.left_quasicategory

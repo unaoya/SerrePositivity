@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPostcompColimitPreservation
 
 /-!
@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 規約：始域 A は大きくてもよい。
 使われ方：関手圏の presentable 性の余完備性。 -/
 lemma functor_hasSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) : HasSmallColimits ((ihom A).obj C) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits ((ihom A).obj C) := by
   intro K D
   obtain ⟨c, hc⟩ := exists_pointwiseColimitCocone (hC K) D
   exact ⟨c, isColimitCone_of_pointwise c hc⟩
@@ -33,7 +33,7 @@ lemma functor_hasSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicateg
 規約：元の指定全余錐を保持する。
 使われ方：関手圏からの評価と後合成の保存性。 -/
 lemma functor_isColimitCone_iff_pointwise (A : SSet.{u + 1})
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom A).obj C}
     (c : JoinCocone D) : IsColimitCone c ↔ IsPointwiseColimitCone c :=
   ⟨isPointwiseColimitCone_of_hasColimits (hC K) c, isColimitCone_of_pointwise c⟩
@@ -43,8 +43,8 @@ lemma functor_isColimitCone_iff_pointwise (A : SSet.{u + 1})
 規約：評価対象は元の始域 A の頂点。
 使われ方：関手圏の生成と評価による保存性判定。 -/
 lemma evaluateFunctorAt_preservesSmallColimits {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (a : A.obj (Opposite.op (SimplexCategory.mk 0))) :
-    PreservesSmallColimits (evaluateFunctorAt a : (ihom A).obj C ⟶ C) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (a : A.obj (Opposite.op (SimplexCategory.mk 0))) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (evaluateFunctorAt a : (ihom A).obj C ⟶ C) := by
   intro K D c hc
   exact (isPointwiseColimitCone_of_hasColimits (hC K) c hc) a
 
@@ -54,8 +54,8 @@ lemma evaluateFunctorAt_preservesSmallColimits {A C : SSet.{u + 1}} [Quasicatego
 使われ方：前層の反映を関手圏へ移す。 -/
 lemma functorPostcomp_preservesSmallColimits (A : SSet.{u + 1})
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : HasSmallColimits C) (F : C ⟶ D) (hF : PreservesSmallColimits F) :
-    PreservesSmallColimits ((ihom A).map F) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (F : C ⟶ D) (hF : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits ((ihom A).map F) := by
   intro K p c hc
   exact postcomposition_map_isColimit (hC K) F (hF K) c hc
 

@@ -33,8 +33,8 @@ lemma componentCompactOverFst_isRightCofinal_of_accessible_family
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ B)
     (p : ∀ c, C c ⟶ B) (hp : F1B.EquivalenceLifting (p 0))
-    (hpμ : ∀ c, IsKappaAccessibleFunctor μ (p c))
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hpμ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback (p 0) (p 1)) :
@@ -62,8 +62,8 @@ lemma componentCompactOverSnd_isRightCofinal_of_accessible_family
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ B)
     (p : ∀ c, C c ⟶ B) (hp : F1B.EquivalenceLifting (p 0))
-    (hpμ : ∀ c, IsKappaAccessibleFunctor μ (p c))
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hpμ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback (p 0) (p 1)) :

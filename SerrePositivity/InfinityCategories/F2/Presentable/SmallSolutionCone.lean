@@ -52,7 +52,7 @@ lemma smallSolutionLift_projection :
 方針：底の極限を取り、その F 像の極限性から元の unstraightening に錐を持ち上げる。
 規約：解対象の始対象性や余表現可能性はこの補題では主張しない。
 使われ方：後続の compact 表示への因子化と retract の構成。 -/
-lemma exists_smallSolutionCone (hC : HasSmallLimits C) (hF : PreservesSmallLimits F) :
+lemma exists_smallSolutionCone (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C) (hF : PreservesSmallLimits F) :
     ∃ c : JoinCone (smallSolutionDiagram i F), IsLimitCone c ∧
       ∃ d : JoinCone (smallSolutionLift i F),
         d.val ≫ leftUnstraighteningProjection F = c.val := by

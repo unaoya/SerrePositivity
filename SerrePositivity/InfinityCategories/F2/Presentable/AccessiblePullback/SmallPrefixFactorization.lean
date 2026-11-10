@@ -28,7 +28,7 @@ lemma compactDiagram_factorization_relative_smallPrefix
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {J L : SSet.{u}} [Quasicategory J] [Quasicategory L]
     (hJ : IsKappaSmall μ J) (hL : IsKappaSmall μ L)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (q : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶ C)
     (hQ : ∀ j, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ j))
     (i : (SSet.uliftFunctor.{u + 1, u}).obj L ⟶

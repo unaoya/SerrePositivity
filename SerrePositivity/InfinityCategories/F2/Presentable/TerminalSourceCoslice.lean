@@ -61,7 +61,7 @@ lemma terminalSourceCoslice_isColimitCone_iff_projection
   have : TrivialKanFibration q :=
     sliceUnderRestrict_trivialKanFibration p i (F1B.terminalPoint_rightAnodyne ht)
   have hq := (qCatEquivalenceOfTrivialKanFibration q).isQCatEquivalence
-  apply (equivalence_isColimitCone_iff hq c).trans
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff hq c).trans
   apply (pointSourceCoslice_isColimitCone_iff_projection hκ (i ≫ p)
     (D ≫ q) (mapJoinCocone q c)).trans
   apply isColimitCone_iff_of_cocone_val_eq

@@ -48,10 +48,10 @@ lemma pointMap_preservesKappaCompact {μ : Cardinal.{u}}
 lemma exists_smallKappaFilteredFiberCommaModel
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
     (hEμ : IsKappaAccessible μ E) (hBμ : IsKappaAccessible μ B)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p)
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (hpCompact : ∀ e, Compact.IsKappaCompact.{u, u + 1} μ e →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app _ e))
     (hq : Compact.IsKappaCompact.{u, u + 1} μ (SSet.yonedaEquiv q))

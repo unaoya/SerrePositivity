@@ -26,11 +26,11 @@ open HomotopyLimits
 規約：局所対象圏の accessibility や反射性は仮定しない。
 使われ方：反射した生成対象の compact 性の濃度調整。 -/
 lemma exists_regular_inclusion_accessibilityCardinal
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       Ind.HasSmallKappaFilteredColimits μ (Category edges) ∧
-      IsKappaAccessibleFunctor μ (localObjectsSubcomplex (Set.range edges)).ι := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (localObjectsSubcomplex (Set.range edges)).ι := by
   obtain ⟨μ, hμ, hσ, hends⟩ := exists_regular_compactEndpoints hC edges σ
   have hc := hC.hasSmallColimits.hasSmallKappaFilteredColimits μ
   exact ⟨μ, hμ, hσ, hasSmallKappaFilteredColimits edges hc hends,
@@ -41,7 +41,7 @@ lemma exists_regular_inclusion_accessibilityCardinal
 規約：小さい辺族と元の全部分圏を使用し、反射の存在は入力のままにする。
 使われ方：条件付き presentability の accessibility 成分。 -/
 lemma isAccessible_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
     (hr : IsReflectiveSubcategory C (IsLocalObject (Set.range edges))) :
     IsAccessible (Category edges) := by
   obtain ⟨μ, _hμ, _, hends⟩ := exists_regular_compactEndpoints hC edges Cardinal.aleph0
@@ -60,9 +60,9 @@ lemma isAccessible_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
 規約：元の局所対象の定義を使用する。
 使われ方：局所置換の構成からの presentability の主公開界面。 -/
 lemma isPresentable_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
     (hr : IsReflectiveSubcategory C (IsLocalObject (Set.range edges))) :
-    IsPresentable (Category edges) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Category edges) :=
   ⟨isAccessible_of_reflection hC edges hr,
     hasSmallColimits_of_reflection edges hC.hasSmallColimits hr⟩
 
@@ -71,11 +71,11 @@ lemma isPresentable_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
 規約：局所置換の存在以外の生成性や accessibility を追加入力にしない。
 使われ方：P-f の局所置換の存在からの直接の接続。 -/
 lemma isPresentable_of_localReplacements {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
     (hreplace : ∀ x : C _⦋0⦌, ∃ (y : C _⦋0⦌)
       (e : Truncated.Edge (X := (truncation 2).obj C) x y),
       e.edge ∈ localEquivalences (Set.range edges) ∧ IsLocalObject (Set.range edges) y) :
-    IsPresentable (Category edges) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Category edges) :=
   isPresentable_of_reflection hC edges
     (isReflectiveSubcategory_of_localReplacements (Set.range edges) hreplace)
 

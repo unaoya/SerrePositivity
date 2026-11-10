@@ -28,8 +28,8 @@ lemma exists_pullbackCandidate_nativeCompactCardinal
     {κ : Cardinal.{u}} [Fact κ.IsRegular]
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hp : F1B.EquivalenceLifting p)
-    (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
     {AE AD : Type u} (vE : AE → E _⦋0⦌) (vD : AD → D _⦋0⦌) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ IsCardinalChangeBound κ μ ∧
       ∀ t : PullbackCandidateIndex p q hB.isLocallySmall vE vD,

@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 元の全生成射を含む小さい compact 候補の、同じ飽和射圏への実 Ind 延長。 -/
-lemma exists_generatorContainingIndComparison (hC : IsPresentable C)
+lemma exists_generatorContainingIndComparison (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ (μ : Cardinal.{u}) (hμ : μ.IsRegular),
       letI : Fact μ.IsRegular := ⟨hμ⟩
@@ -30,7 +30,7 @@ lemma exists_generatorContainingIndComparison (hC : IsPresentable C)
           (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges),
           IsFullyFaithful i ∧
           (∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ (i.app _ (ULift.up a))) ∧
-          IsKappaAccessibleFunctor μ G ∧ Nonempty (FunctorIso (Ind.indYoneda μ A ≫ G) i) ∧
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G ∧ Nonempty (FunctorIso (Ind.indYoneda μ A ≫ G) i) ∧
           ∀ j : I, ∃ a : A _⦋0⦌, Nonempty (VertexIso
             ((i ≫ generatedArrowInclusion edges).app _ (ULift.up a))
             (generatorArrowVertex edges j)) := by

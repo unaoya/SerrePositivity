@@ -44,9 +44,9 @@ lemma identityArrow_mem_generatedEdges (edges : I → C _⦋1⦌) (x : C _⦋0�
 /-- 同じ実像は、元の全対象上の恒等射図式を含む。 -/
 lemma indArrowImage_identityArrow {μ : Cardinal.{u}} [Fact μ.IsRegular]
     {A : SSet.{u}} [Quasicategory A] (edges : I → C _⦋1⦌)
-    (hC : HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →
       Compact.IsKappaCompact.{u, u + 1} μ
         ((constantFunctorMap (Δ[1] : SSet.{u + 1}) C).app _ x))

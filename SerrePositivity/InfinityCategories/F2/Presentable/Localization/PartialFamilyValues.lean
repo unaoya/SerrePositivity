@@ -45,7 +45,7 @@ lemma partialFamily_mapped_values_compact
     {J : Type u} [PartialOrder J]
     {T C : SSet.{u + 1}} [Quasicategory T] [Quasicategory C]
     {D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ T}
-    (H : T ⟶ C) (hH : PreservesSmallColimits H)
+    (H : T ⟶ C) (hH : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H)
     (hD : ∀ k, IsKappaCompact.{u, u + 1} μ ((D ≫ H).app _ k))
     {B : Type u} [Preorder B] (p : B → SmallFilteredPieces Cardinal.aleph0 μ J)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve B) ⟶ T)

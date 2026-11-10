@@ -32,7 +32,7 @@ lemma exists_relativeInputComparison_of_isKappaAccessible_base
     (hCκ : ∀ c, Ind.HasSmallKappaFilteredColimits κ (C c))
     (hBκ : Ind.HasSmallKappaFilteredColimits κ (B))
     (p : ∀ c, C c ⟶ B)
-    (hpκ : ∀ c, IsKappaAccessibleFunctor κ (p c))
+    (hpκ : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p c))
     (hpCompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p c).app (Opposite.op ⦋0⦌) v))
     (q : ∀ c, L c ⟶ C c) (z : ∀ c, JoinCocone (q c))
@@ -61,8 +61,8 @@ lemma exists_relativeInputComparison_of_isKappaAccessible_base
   let β := R.comparison
   have heβ := R.comparison_isQCatEquivalence
   let p' := fun c ↦ p c ≫ β
-  have hpκ' : ∀ c, IsKappaAccessibleFunctor κ (p' c) := fun c ↦
-    (hpκ c).comp (equivalence_preservesSmallKappaFilteredColimits κ heβ)
+  have hpκ' : ∀ c, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (p' c) := fun c ↦
+    (hpκ c).comp (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ heβ)
   have hcompact : ∀ c, ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ ((p' c).app (Opposite.op ⦋0⦌) v) := by
     intro c v hv
@@ -85,7 +85,7 @@ lemma exists_relativeInputComparison_of_isKappaAccessible_base
   have hcol' (c : Fin 2) : IsColimitCone (mapJoinCocone (sliceUnderProjection (r ≫ β))
       (sliceDiagramCocone ((N c).diagram ≫ T' c))) := by
     exact stableInputPostcomp_base_isColimitCone r β
-      (equivalence_preservesSmallKappaFilteredColimits μ heβ)
+      (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ heβ)
       (r ≫ β) rfl t (mapJoinCocone β t) rfl ((N c).diagram ≫ T c) (hcol c)
   have hr' : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ ((r ≫ β).app (Opposite.op ⦋0⦌) v) := by
     intro v

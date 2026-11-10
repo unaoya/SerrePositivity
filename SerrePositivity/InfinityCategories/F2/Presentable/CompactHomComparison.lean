@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparisonColimitClass
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
 /-!
@@ -24,7 +24,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 /-- compact な始点とその像の同じ全 Hom 比較は、元の filtered 余極限頂点へ延長する。 -/
 lemma covariantHomComparison_component_colimit {κ : Cardinal.{u}}
     {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E]
-    (G : C ⟶ E) (hG : IsKappaAccessibleFunctor κ G) (x : C _⦋0⦌)
+    (G : C ⟶ E) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G) (x : C _⦋0⦌)
     (hx : Compact.IsKappaCompact.{u, u + 1} κ x)
     (hGx : Compact.IsKappaCompact.{u, u + 1} κ (G.app (Opposite.op ⦋0⦌) x))
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I]

@@ -24,9 +24,9 @@ open HomotopyLimits
 規約：元の全部分圏と元の任意小図式を使用する。
 使われ方：条件付き presentability の余完備性。 -/
 lemma hasSmallColimits_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
-    {I : Type u} (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    {I : Type u} (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (r : IsReflectiveSubcategory C (IsLocalObject (Set.range edges))) :
-    HasSmallColimits (Category edges) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Category edges) := by
   obtain ⟨r⟩ := r
   exact reflectiveSubcategory_hasSmallColimits r hC
 
@@ -35,11 +35,11 @@ lemma hasSmallColimits_of_reflection {C : SSet.{u + 1}} [Quasicategory C]
 規約：元の局所同値と指定局所対象を入力にする。
 使われ方：局所置換からの presentability の余完備性。 -/
 lemma hasSmallColimits_of_localReplacements {C : SSet.{u + 1}} [Quasicategory C]
-    {I : Type u} (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    {I : Type u} (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hreplace : ∀ x : C _⦋0⦌, ∃ (y : C _⦋0⦌)
       (e : Truncated.Edge (X := (truncation 2).obj C) x y),
       e.edge ∈ localEquivalences (Set.range edges) ∧ IsLocalObject (Set.range edges) y) :
-    HasSmallColimits (Category edges) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Category edges) :=
   hasSmallColimits_of_reflection edges hC
     (isReflectiveSubcategory_of_localReplacements (Set.range edges) hreplace)
 

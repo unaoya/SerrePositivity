@@ -30,9 +30,9 @@ lemma exists_componentCompactFiberOverVertex_of_sequential_comparison
     (a b : ℕ → ℕ) (ha : Monotone a) (hb : Monotone b)
     (hca : ∀ k, ∃ n, k ≤ a n) (hcb : ∀ k, ∃ n, k ≤ b n)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p)
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback p q)
     {FE : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶
       sliceOver (x ≫ pullback.fst p q)}

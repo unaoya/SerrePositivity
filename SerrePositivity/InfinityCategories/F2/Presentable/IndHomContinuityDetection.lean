@@ -31,7 +31,7 @@ lemma isKappaAccessibleFunctor_of_indHomTests
     (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity
         ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) :
-    IsKappaAccessibleFunctor μ G := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G := by
   intro I hI hμ F c hc
   apply isColimitCone_of_fullyFaithful_image (Ind.indInclusionPresheaf κ A)
     (Ind.indInclusionPresheaf_isFullyFaithful κ A) (mapJoinCocone G c)
@@ -41,7 +41,7 @@ lemma isKappaAccessibleFunctor_of_indHomTests
   have ht := (hG a).of_functorIso (smallHomCompositeIso G
     ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)) H
     (indYonedaHom_evaluationIso κ A a))
-  have hn : IsKappaAccessibleFunctor μ (G ≫ H) :=
+  have hn : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (G ≫ H) :=
     isKappaAccessibleFunctor_of_spaceUniverse hU ht
   exact (F2.isColimitCone_iff_of_cocone_val_eq _ _ (by
     simp only [H, mapJoinCocone, Category.assoc])).mpr (hn I F c hc)

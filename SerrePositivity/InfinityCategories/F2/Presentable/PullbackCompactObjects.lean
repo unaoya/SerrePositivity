@@ -34,9 +34,9 @@ lemma isKappaCompact_pullback_of_components
     (h : IsCardinalChangeBound κ μ)
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p]
-    (hf : IsKappaAccessibleFunctor μ (pullback.fst p q))
-    (hs : IsKappaAccessibleFunctor μ (pullback.snd p q))
-    (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.fst p q))
+    (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.snd p q))
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌)
     (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v))
     (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v))
     (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) :

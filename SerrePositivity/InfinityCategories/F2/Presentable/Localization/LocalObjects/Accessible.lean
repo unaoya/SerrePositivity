@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalOb
 規約：presentable C と Type u で添字付けた辺族だけを入力に取る。
 使われ方：元の全関手圏の局所性に基づく HTT 5.5.4.2 の消費。 -/
 lemma isAccessible {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) :
     IsAccessible (Category edges) :=
   (bousfieldLocalObjects_isPresentable hC edges).isAccessible
 

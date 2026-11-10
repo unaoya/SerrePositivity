@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.Presentable.ObjectCompactCardinals
 
 /-!
@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 
 /-- 小さい生成辺の始点・終点は、一つの正則濃度に関して全て compact。 -/
 lemma exists_regular_compactEndpoints {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌)
     (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       ∀ i, Compact.IsKappaCompact.{u, u + 1} μ (C.δ 1 (edges i)) ∧

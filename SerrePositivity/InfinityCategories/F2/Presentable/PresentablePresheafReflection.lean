@@ -23,10 +23,10 @@ open Ind
 規約：反映の存在や右随伴の充満忠実性を追加入力にしない。
 使われ方：元の presentable 圏での小余極限と小極限の計算。 -/
 lemma IsPresentable.exists_presheafReflection {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) :
     ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA
       ∃ (L : PresheafInfinity A ⟶ C) (R : C ⟶ PresheafInfinity A),
-        Nonempty (QCatAdjunction L R) ∧ IsFullyFaithful R ∧ PreservesSmallColimits L := by
+        Nonempty (QCatAdjunction L R) ∧ IsFullyFaithful R ∧ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L := by
   obtain ⟨κ, hκ, A, hA, ⟨r⟩, ⟨e⟩⟩ := hC.exists_reflectiveIndModel
   have := hA
   let a := r.adjunction.comp e.toAdjunction
@@ -41,8 +41,8 @@ lemma IsPresentable.exists_presheafReflection {C : SSet.{u + 1}} [Quasicategory 
 lemma reflectiveIndModel_hasSmallColimits {κ : Cardinal.{u}} {A : SSet.{u}}
     [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
     (r : ReflectiveSubcategory (PresheafInfinity A) (IsIndVertex κ A))
-    (e : QCatEquivalence (IndInfinity κ A) C) : HasSmallColimits C :=
-  (reflectiveSubcategory_hasSmallColimits r (presheaf_hasSmallColimits A)).of_equivalence e
+    (e : QCatEquivalence (IndInfinity κ A) C) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C :=
+  (reflectiveSubcategory_hasSmallColimits r (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits A)).of_equivalence e
 
 
 end SerrePositivity.InfinityCategories.F2.Presentable

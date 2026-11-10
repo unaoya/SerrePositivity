@@ -28,8 +28,8 @@ lemma nonempty_subsequenceImageColimitIso
     (a b : ℕ → ℕ) (ha : Monotone a) (hb : Monotone b)
     (hca : ∀ k, ∃ n, k ≤ a n) (hcb : ∀ k, ∃ n, k ≤ b n)
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
-    (hB : HasSmallColimits B) (p : E ⟶ B) (q : D ⟶ B)
-    (hp : PreservesSmallColimits p) (hq : PreservesSmallColimits q)
+    (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B) (p : E ⟶ B) (q : D ⟶ B)
+    (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hq : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
     {FE : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ E}
     {FD : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ D}
     {F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ B}

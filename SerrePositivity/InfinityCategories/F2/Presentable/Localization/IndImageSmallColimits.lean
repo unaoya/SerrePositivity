@@ -21,9 +21,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 open HomotopyLimits
 variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
   {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-  (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
+  (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
   (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-  (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+  (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
   (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
     ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
   (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
@@ -42,7 +42,7 @@ lemma indArrowImage_hasPreservedSmallColimit
     (indArrowImage_hasPreservedFiniteColimit edges hC h G hff hG hcompact hcover) K D
 
 /-- 実 Ind 像は全ての小余極限を持つ。 -/
-lemma indArrowImage_hasSmallColimits : HasSmallColimits (indArrowImageCategory edges G) := by
+lemma indArrowImage_hasSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G) := by
   intro K D
   obtain ⟨c, hc, _⟩ := indArrowImage_hasPreservedSmallColimit
     edges hC h G hff hG hcompact hcover K D
@@ -50,13 +50,13 @@ lemma indArrowImage_hasSmallColimits : HasSmallColimits (indArrowImageCategory e
 
 /-- 実 Ind 像の包含は元の任意の小図式の指定余極限を保つ。 -/
 lemma indArrowImageInclusion_preservesSmallColimits :
-    PreservesSmallColimits (indArrowImageInclusion edges G) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G) := by
   intro K D c hc
   exact (indArrowImage_hasPreservedSmallColimit
     edges hC h G hff hG hcompact hcover K D).map_isColimit c hc
 
 /-- 元の実 Ind 像は accessible かつ小余完備、従って presentable である。 -/
-lemma indArrowImage_isPresentable : IsPresentable (indArrowImageCategory edges G) :=
+lemma indArrowImage_isPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (indArrowImageCategory edges G) :=
   ⟨(indArrowImage_isKappaAccessible edges G hff).isAccessible,
     indArrowImage_hasSmallColimits edges hC h G hff hG hcompact hcover⟩
 

@@ -79,7 +79,7 @@ lemma rightAdjointUnitReturn_right (C D : PresentableInfinityObject.{u})
 使われ方：右ファイバーと可縮な固定右単位空間の同型の逆方向。 -/
 def rightAdjointUnitToFiber (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    RightAdjointUnitSpace C D w.val ⟶ vertexFiber (adjointUnitRight C D) w :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val ⟶ vertexFiber (adjointUnitRight C D) w :=
   vertexFiberLift (adjointUnitRight C D) w (rightAdjointUnitReturn C D w)
     (rightAdjointUnitReturn_right C D w)
 

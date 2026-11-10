@@ -23,16 +23,16 @@ local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0�
 lemma exists_twoMappedPartialConditions
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
-    {I : Type u} (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    {I : Type u} (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hG : IsKappaAccessibleFunctor μ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
-    (hcol : HasSmallColimits (indArrowImageCategory edges G))
-    (hpres : PreservesSmallColimits (indArrowImageInclusion edges G))
-    {T : SSet.{u + 1}} [Quasicategory T] (hT : HasSmallColimits T)
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (indArrowImageCategory edges G))
+    (hpres : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (indArrowImageInclusion edges G))
+    {T : SSet.{u + 1}} [Quasicategory T] (hT : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits T)
     (H₀ H₁ : T ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj C)
-    (hH₀ : PreservesSmallColimits H₀) (hH₁ : PreservesSmallColimits H₁)
+    (hH₀ : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H₀) (hH₁ : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits H₁)
     {J : Type u} [PartialOrder J] [IsCardinalFiltered J μ] [IsKappaFiltered μ (nerve J)]
     {D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ T}
     (c : JoinCocone D) (hc : IsColimitCone c)

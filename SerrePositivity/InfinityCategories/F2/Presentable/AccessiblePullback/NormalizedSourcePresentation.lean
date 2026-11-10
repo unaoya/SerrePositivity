@@ -43,7 +43,7 @@ lemma exists_normalizedSourcePresentation
     rw [← Category.assoc, d.property, c.property] at h
     exact h
   have hd' : IsColimitCone d :=
-    (equivalence_isColimitCone_iff (isQCatEquivalence_of_trivialKanFibration r) d).mpr
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff (isQCatEquivalence_of_trivialKanFibration r) d).mpr
       ((isColimitCone_iff_of_cocone_val_eq _ _ hd).mpr hc)
   refine ⟨L ≫ coneSourceForget w, ?_, mapJoinCocone (coneSourceForget w) d,
     coneSourceForget_isKappaAccessibleFunctor hμ w I L d hd', ?_, ?_⟩

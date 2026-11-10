@@ -65,7 +65,7 @@ lemma IsKappaAccessible.exists_compactModelIndRepresentation
     (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj A)
       (Compact.kappaCompactObjects.{u, u + 1} μ C)) :
     ∃ g : QCatEquivalence (Ind.IndInfinity μ A) C,
-      IsKappaAccessibleFunctor μ g.hom ∧ Nonempty (FunctorIso (Ind.indYoneda μ A ≫ g.hom)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ g.hom ∧ Nonempty (FunctorIso (Ind.indYoneda μ A ≫ g.hom)
         (e.hom ≫ Compact.kappaCompactInclusion.{u, u + 1} μ C)) := by
   have : Fact μ.IsRegular := ⟨hC.1⟩
   have hi := hC.compactModel_isKappaCompactGenerating e

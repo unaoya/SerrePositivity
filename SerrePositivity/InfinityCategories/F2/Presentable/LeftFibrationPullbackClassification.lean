@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationPul
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback
 
@@ -54,7 +54,7 @@ lemma leftFibrationPullbackClassifiedCone_isLimit :
 lemma leftFibrationPullbackClassifiedCone_isPointwiseLimit :
     IsPointwiseLimitCone (leftFibrationPullbackClassifiedCone p q e d b hp hq) := by
   apply isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits
-    (fun _ ↦ space_hasSmallLimits _ _) _
+    (fun _ ↦ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallLimits _ _) _
   exact leftFibrationPullbackClassifiedCone_isLimit p q e d b hp hq
 
 /-- 概要：元の底全体をパラメーターとする空間の全極限錐族。

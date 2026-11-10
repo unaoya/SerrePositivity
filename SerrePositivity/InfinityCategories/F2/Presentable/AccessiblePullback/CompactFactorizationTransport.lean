@@ -73,7 +73,7 @@ lemma CompactDiagramFactorization.of_trivialKan {μ : Cardinal.{u}}
     ⟨t', ht'.trans (pinchedConstant_zero _).symm⟩
   obtain ⟨i, w, k, hk⟩ := hB hsmall (q ≫ p)
     (fun a ↦ isKappaCompact_image_of_equivalence e (q.app _ a) (hq a))
-    (D ≫ p) c' (equivalence_preservesSmallKappaFilteredColimits μ
+    (D ≫ p) c' (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ
       (isQCatEquivalence_of_trivialKanFibration p) K D c hc) tf
   have hk' : (k.map (sliceUnderProjection (q ≫ p))).edge =
       ((Compact.coconeTransportLeg c (ULift.up i)).map p).edge :=
@@ -118,7 +118,7 @@ lemma CompactDiagramFactorization.of_trivialKan_section {μ : Cardinal.{u}}
     ⟨ts, hts.trans (pinchedConstant_zero _).symm⟩
   obtain ⟨i, w, k, hk⟩ := hE hsmall a
     (fun z ↦ isKappaCompact_image_of_equivalence se (q.app _ z) (hq z))
-    (D ≫ s) cs (equivalence_preservesSmallKappaFilteredColimits μ hseq K D c hc) tf
+    (D ≫ s) cs (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ hseq K D c hc) tf
   have hap : a ≫ p = q := by
     dsimp [a]
     rw [Category.assoc, hs, Category.comp_id]

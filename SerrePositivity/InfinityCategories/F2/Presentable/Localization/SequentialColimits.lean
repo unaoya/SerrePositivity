@@ -26,9 +26,9 @@ variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
 
 /-- Ind 実像の元の可算列には、元の射圏での余極限となる普遍余錐がある。 -/
 lemma indArrowImage_hasPreservedSequentialColimit
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
@@ -46,7 +46,7 @@ lemma indArrowImage_hasPreservedSequentialColimit
 
 /-- 固定始域の閉包内射の元の可算列にも、周囲で保存される普遍余錐がある。 -/
 lemma generatedSource_hasPreservedSequentialColimit
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶
       generatedSourceCategory edges x) :
     Ind.HasPreservedColimit (generatedSourceInclusion edges x) F :=
@@ -57,7 +57,7 @@ lemma generatedSource_hasPreservedSequentialColimit
 
 /-- 固定始域の閉包内射の可算列の、元の指定余極限も同じ閉包条件を満たす。 -/
 lemma generatedSource_sequential_colimit_mem
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶
       generatedSourceCategory edges x)
     (c : JoinCocone (F ≫ generatedSourceInclusion edges x)) (hc : IsColimitCone c) :

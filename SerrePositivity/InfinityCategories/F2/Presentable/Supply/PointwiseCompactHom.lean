@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorColimitCreation
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 
@@ -25,8 +25,8 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 方針：元の関手圏の余錐の点ごと計算を評価点に適用する。
 規約：関手の始域の小ささを要求しない。使われ方：end の各評価脚の保存。 -/
 lemma evaluateFunctorAt_preservesSmallColimits
-    {A C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
-    (a : A _⦋0⦌) : PreservesSmallColimits (evaluateFunctorAt (Y := C) a) := by
+    {A C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (a : A _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (evaluateFunctorAt (Y := C) a) := by
   intro J D c hc
   exact isPointwiseColimitCone_of_hasColimits (hC J) c hc a
 
@@ -35,8 +35,8 @@ lemma evaluateFunctorAt_preservesSmallColimits
 規約：元の κ は任意。使われ方：点ごとの compact Hom の合成。 -/
 lemma evaluateFunctorAt_isKappaAccessibleFunctor
     {κ : Cardinal.{u}} {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (a : A _⦋0⦌) :
-    IsKappaAccessibleFunctor κ (evaluateFunctorAt (Y := C) a) :=
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (a : A _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (evaluateFunctorAt (Y := C) a) :=
   (evaluateFunctorAt_preservesSmallColimits hC a).isKappaAccessibleFunctor κ
 
 /-- 概要：評価後の compact 対象からの Hom は元の κ-filtered 余極限を保つ。
@@ -45,7 +45,7 @@ lemma evaluateFunctorAt_isKappaAccessibleFunctor
 使われ方：Fun の写像空間の end 表示の各脚の保存。 -/
 lemma preservesKappaFilteredColimits_compactHom_evaluation
     {κ : Cardinal.{u}} {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (a : A _⦋0⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (a : A _⦋0⦌) (x : C _⦋0⦌)
     (hx : Compact.IsKappaCompact.{u, u + 1} κ x) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (evaluateFunctorAt (Y := C) a) ≫
@@ -66,7 +66,7 @@ lemma preservesKappaFilteredColimits_compactHom_evaluation
 規約：値ごとの同値では代用しない。使われ方：end の各脚の実際の係数関手。 -/
 lemma preservesKappaFilteredColimits_jointHom_evaluation
     {κ : Cardinal.{u}} {A C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (a : A _⦋0⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (a : A _⦋0⦌) (x : C _⦋0⦌)
     (hx : Compact.IsKappaCompact.{u, u + 1} κ x) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (evaluateFunctorAt (Y := C) a) ≫

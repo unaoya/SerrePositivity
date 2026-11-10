@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorColimitConeExistence
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
@@ -25,8 +25,8 @@ variable {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
 方針：両成分の元の余極限余錐を同じ直積余錐へ合わせる。
 規約：任意の小さい単体集合形状を扱う。
 使われ方：presentable の積の余完備性。 -/
-lemma tensor_hasSmallColimits (hX : HasSmallColimits X) (hY : HasSmallColimits Y) :
-    HasSmallColimits (X ⊗ Y) := by
+lemma tensor_hasSmallColimits (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) (hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (X ⊗ Y) := by
   intro K D
   obtain ⟨cx, hx⟩ := hX K (D ≫ fst X Y)
   obtain ⟨cy, hy⟩ := hY K (D ≫ snd X Y)
@@ -37,8 +37,8 @@ lemma tensor_hasSmallColimits (hX : HasSmallColimits X) (hY : HasSmallColimits Y
 方針：両成分から構成した余極限余錐との同型を射影で写す。
 規約：指定した元の全余錐を判定する。
 使われ方：射影と直積への関手の全小余極限保存。 -/
-lemma tensor_isColimitCone_iff_components (hX : HasSmallColimits X)
-    (hY : HasSmallColimits Y) {K : SSet.{u}}
+lemma tensor_isColimitCone_iff_components (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
+    (hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y) {K : SSet.{u}}
     {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ X ⊗ Y} (c : JoinCocone D) :
     IsColimitCone c ↔ IsColimitCone (mapJoinCocone (fst X Y) c) ∧
       IsColimitCone (mapJoinCocone (snd X Y) c) := by
@@ -60,8 +60,8 @@ lemma tensor_isColimitCone_iff_components (hX : HasSmallColimits X)
 方針：元の全余錐の成分判定の順方向を使う。
 規約：小余極限の存在を両成分について明示する。
 使われ方：Pr^L の積の射影。 -/
-lemma tensor_fst_preservesSmallColimits (hX : HasSmallColimits X)
-    (hY : HasSmallColimits Y) : PreservesSmallColimits (fst X Y) := by
+lemma tensor_fst_preservesSmallColimits (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
+    (hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (fst X Y) := by
   intro K D c hc
   exact ((tensor_isColimitCone_iff_components hX hY c).mp hc).1
 
@@ -69,8 +69,8 @@ lemma tensor_fst_preservesSmallColimits (hX : HasSmallColimits X)
 方針：元の全余錐の成分判定の順方向を使う。
 規約：小余極限の存在を両成分について明示する。
 使われ方：Pr^L の積の射影。 -/
-lemma tensor_snd_preservesSmallColimits (hX : HasSmallColimits X)
-    (hY : HasSmallColimits Y) : PreservesSmallColimits (snd X Y) := by
+lemma tensor_snd_preservesSmallColimits (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X)
+    (hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (snd X Y) := by
   intro K D c hc
   exact ((tensor_isColimitCone_iff_components hX hY c).mp hc).2
 
@@ -79,9 +79,9 @@ lemma tensor_snd_preservesSmallColimits (hX : HasSmallColimits X)
 規約：始域の余完備性は要求しない。
 使われ方：Pr^L 内の積の普遍性。 -/
 lemma tensor_preservesSmallColimits_iff_components {C : SSet.{u + 1}}
-    (hX : HasSmallColimits X) (hY : HasSmallColimits Y) (F : C ⟶ X ⊗ Y) :
-    PreservesSmallColimits F ↔ PreservesSmallColimits (F ≫ fst X Y) ∧
-      PreservesSmallColimits (F ≫ snd X Y) := by
+    (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) (hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y) (F : C ⟶ X ⊗ Y) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ fst X Y) ∧
+      _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (F ≫ snd X Y) := by
   constructor
   · intro hF
     constructor

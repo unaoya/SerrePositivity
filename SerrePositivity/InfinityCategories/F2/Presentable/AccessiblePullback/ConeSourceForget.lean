@@ -92,7 +92,7 @@ lemma coneSourceForget_projection {K C : SSet.{u}} {q : K ⟶ C} (w : JoinCocone
 使われ方：元の入力を固定する filtered 表示の余極限性。 -/
 lemma coneSourceForget_isKappaAccessibleFunctor {μ : Cardinal.{u}} (hμ : μ.IsRegular)
     {K C : SSet.{u + 1}} [Quasicategory C] {q : K ⟶ C} (w : JoinCocone q) :
-    IsKappaAccessibleFunctor μ (coneSourceForget w) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (coneSourceForget w) := by
   rw [coneSourceForget_eq]
   let e := eqToIso (congrArg sliceUnder (sliceUnderUncurry_yoneda 0 w).symm)
   let v : (Δ[0] : SSet.{u + 1}) ⟶ sliceUnder q := SSet.yonedaEquiv.symm w
@@ -101,13 +101,13 @@ lemma coneSourceForget_isKappaAccessibleFunctor {μ : Cardinal.{u}} (hμ : μ.Is
     rw [← iteratedSliceUnderIso_restriction v, ← Category.assoc,
       Iso.inv_hom_id, Category.id_comp]
   rw [h]
-  have hvp : IsKappaAccessibleFunctor μ (sliceUnderProjection v) := by
+  have hvp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (sliceUnderProjection v) := by
     dsimp only [v]
     exact sourceCosliceProjection_isKappaAccessibleFunctor (C := sliceUnder q) hμ
       (show (sliceUnder q) _⦋0⦌ from w)
-  exact (equivalence_preservesSmallKappaFilteredColimits μ
+  exact (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ
     (qCatEquivalenceOfIso e).isQCatEquivalence).comp
-      ((equivalence_preservesSmallKappaFilteredColimits μ
+      ((_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ
         (qCatEquivalenceOfIso (iteratedSliceUnderIso v).symm).isQCatEquivalence).comp
           hvp)
 

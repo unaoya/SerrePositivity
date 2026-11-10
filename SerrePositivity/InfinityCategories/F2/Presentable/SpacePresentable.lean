@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSpaceGenerators
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：元の空間 ∞ 圏の小さい compact 全部分生成圏を構成し、presentable 性を証明する。
@@ -51,12 +51,12 @@ lemma spaceCompactGeneratorInclusion_isCompactGenerating :
 
 /-- 元の空間 ∞ 圏は、構成した小さい compact 全部分生成圏により ℵ₀-accessible。 -/
 lemma space_isKappaAccessible_aleph0 : IsKappaAccessible Cardinal.aleph0 SpaceInfinity.{u} :=
-  ⟨Cardinal.isRegular_aleph0, space_hasSmallColimits.hasSmallKappaFilteredColimits _,
+  ⟨Cardinal.isRegular_aleph0, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits.hasSmallKappaFilteredColimits _,
     spaceCompactGeneratorCategory, inferInstance, spaceCompactGeneratorInclusion,
     spaceCompactGeneratorInclusion_isCompactGenerating⟩
 
 /-- 元の小さい空間の ∞ 圏は、同じ宇宙に関して presentable。 -/
-lemma space_isPresentable : IsPresentable SpaceInfinity.{u} :=
-  ⟨space_isKappaAccessible_aleph0.isAccessible, space_hasSmallColimits⟩
+lemma space_isPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable SpaceInfinity.{u} :=
+  ⟨space_isKappaAccessible_aleph0.isAccessible, _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable

@@ -29,7 +29,7 @@ lemma compactSliceDiagram_factorization
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall μ K)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]
-    {E : SSet.{u + 1}} [Quasicategory E] (hE : HasSmallColimits E)
+    {E : SSet.{u + 1}} [Quasicategory E] (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ E)
     (c : JoinCocone D) (hc : IsColimitCone c)
     (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ sliceOver (SSet.yonedaEquiv.symm c.vertex))

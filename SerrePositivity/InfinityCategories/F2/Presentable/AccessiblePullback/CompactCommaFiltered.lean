@@ -50,8 +50,8 @@ lemma hasCompactSliceCocones_of_accessible_components
     (hEκ : Ind.HasSmallKappaFilteredColimits κ E)
     (hDκ : Ind.HasSmallKappaFilteredColimits κ D)
     (hBκ : Ind.HasSmallKappaFilteredColimits κ B)
-    (hpμ : IsKappaAccessibleFunctor μ p) (hqμ : IsKappaAccessibleFunctor μ q)
-    (hpκ : IsKappaAccessibleFunctor κ p) (hqκ : IsKappaAccessibleFunctor κ q)
+    (hpμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p) (hqμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q)
+    (hpκ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (hqκ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q)
     (hpCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) v))
     (hqCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →

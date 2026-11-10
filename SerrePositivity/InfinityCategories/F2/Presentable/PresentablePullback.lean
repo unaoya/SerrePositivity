@@ -24,15 +24,15 @@ lemma pullback_isPresentable_of_accessiblePullback
       [Quasicategory E] [Quasicategory D] [Quasicategory B]
       (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p),
       IsAccessible E → IsAccessible D → IsAccessible B →
-      IsAccessibleFunctor p → IsAccessibleFunctor q →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p → _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q →
       letI := hp.innerFibration
       IsAccessible (pullback p q))
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) :
     letI := hp.innerFibration
-    IsPresentable (pullback p q) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (pullback p q) := by
   have := hp.innerFibration
   exact ⟨hAccessible p q hp hE.isAccessible hD.isAccessible hB.isAccessible
     hpc.isAccessibleFunctor hqc.isAccessibleFunctor,

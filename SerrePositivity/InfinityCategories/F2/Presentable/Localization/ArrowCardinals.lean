@@ -36,13 +36,13 @@ lemma generatorArrowVertex_edge (edges : I → C _⦋1⦌) (i : I) :
   rw [Equiv.symm_apply_apply, Equiv.apply_symm_apply]
 
 /-- 小さい一点単体の宇宙変更を戻すと、元の全射圏も presentable。 -/
-lemma arrow_isPresentable (hC : IsPresentable C) :
-    IsPresentable ((ihom (Δ[1] : SSet.{u + 1})).obj C) :=
+lemma arrow_isPresentable (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable ((ihom (Δ[1] : SSet.{u + 1})).obj C) :=
   (functor_isPresentable (Δ[1] : SSet.{u}) hC).of_equivalence
     ((qCatEquivalenceOfIso (uliftStdSimplexIso.{u, u + 1} 1)).precompose C).symm
 
 /-- 両方の accessibility と生成射・両端点の compact 性を一つの正則濃度で実証する。 -/
-lemma exists_regular_generatorArrowCardinal (hC : IsPresentable C)
+lemma exists_regular_generatorArrowCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ IsKappaAccessible μ C ∧
       IsKappaAccessible μ ((ihom (Δ[1] : SSet.{u + 1})).obj C) ∧

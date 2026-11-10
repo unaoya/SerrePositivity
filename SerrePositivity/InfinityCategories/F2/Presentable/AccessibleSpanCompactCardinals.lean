@@ -26,10 +26,10 @@ lemma exists_accessibleSpan_compactCardinal
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsAccessible E) (hD : IsAccessible D) (hB : IsAccessible B)
     (p : E ⟶ B) (q : D ⟶ B)
-    (hp : IsAccessibleFunctor p) (hq : IsAccessibleFunctor q) (σ : Cardinal.{u}) :
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p) (hq : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧ IsCardinalChangeBound κ μ ∧
       IsKappaAccessible μ E ∧ IsKappaAccessible μ D ∧ IsKappaAccessible μ B ∧
-      IsKappaAccessibleFunctor μ p ∧ IsKappaAccessibleFunctor μ q ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q ∧
       (∀ x : E _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →
         Compact.IsKappaCompact.{u, u + 1} μ (p.app _ x)) ∧
       (∀ y : D _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ y →

@@ -25,14 +25,14 @@ variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 未解決の accessibility を明示すると、固定始域圏の presentable 性が従う。 -/
 lemma generatedSource_isPresentable_of_isAccessible
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (ha : IsAccessible (generatedSourceCategory edges x)) :
-    IsPresentable (generatedSourceCategory edges x) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (generatedSourceCategory edges x) :=
   ⟨ha, generatedSource_hasSmallColimits hC edges x⟩
 
 /-- 固定始域圏の accessibility が得られれば、同じ圏に実際の終対象が存在する。 -/
 lemma exists_generatedSource_terminal_of_isAccessible
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (ha : IsAccessible (generatedSourceCategory edges x)) :
     ∃ s : (generatedSourceCategory edges x) _⦋0⦌, IsTerminalVertex s := by
   let K := (⊥ : (Δ[0] : SSet.{u}).Subcomplex).toSSet
@@ -47,7 +47,7 @@ lemma exists_generatedSource_terminal_of_isAccessible
 
 /-- 同じ accessibility の入口だけを残し、元の始点から閉包内の局所置換を得る。 -/
 lemma exists_generatedSource_localReplacement_of_isAccessible
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (ha : IsAccessible (generatedSourceCategory edges x)) :
     ∃ (y : C _⦋0⦌) (e : C.Edge x y),
       e.edge ∈ generatedEdges edges ∧ IsLocalObject (Set.range edges) y := by

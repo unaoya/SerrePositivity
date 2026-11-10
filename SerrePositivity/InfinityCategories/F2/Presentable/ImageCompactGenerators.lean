@@ -44,7 +44,7 @@ lemma exists_imageCompactGenerating_of_cardinalChangeBound
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : Ind.HasSmallKappaFilteredColimits κ C) (hX : Ind.HasSmallFixedVertexMaps C)
     (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hi : IsKappaCompactGenerating κ i)
-    (G : C ⟶ D) (hG : IsKappaAccessibleFunctor κ G)
+    (G : C ⟶ D) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (himage : ∀ a : A _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} μ (G.app _ (i.app _ (ULift.up a)))) :
     ∃ (A' : SSet.{u}) (hA' : Quasicategory A'),
@@ -76,7 +76,7 @@ lemma exists_imageCompactGenerating_of_cardinalChangeBound
 lemma exists_compactPreservingCardinal_of_smallFixedVertexMaps
     {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsKappaAccessible κ C) (hX : Ind.HasSmallFixedVertexMaps C)
-    (hD : IsAccessible D) (G : C ⟶ D) (hG : IsKappaAccessibleFunctor κ G)
+    (hD : IsAccessible D) (G : C ⟶ D) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ IsCardinalChangeBound κ μ ∧
       IsKappaAccessible μ C ∧

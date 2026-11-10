@@ -54,7 +54,7 @@ lemma reflectiveIndModel_isLimitCone_iff_evaluation
 規約：対象・図式ごとに生成圏や比較を選び直さない。
 使われ方：小さい生成圏での全小極限の一括判定。 -/
 lemma IsPresentable.exists_limitDetectingPresheafModel {C : SSet.{u + 1}}
-    [Quasicategory C] (hC : IsPresentable C) :
+    [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) :
     ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA
       ∃ R : C ⟶ PresheafInfinity A, ∀ (K : SSet.{u})
         (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) (c : JoinCone D),

@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback
 lemma inputFunctor_orderBot_isColimitCone_of_base_projection
     {κ : Cardinal.{u}} {K L C B : SSet.{u + 1}}
     [Quasicategory K] [Quasicategory L] [Quasicategory C] [Quasicategory B]
-    (q : K ⟶ C) (f : C ⟶ B) (hf : IsKappaAccessibleFunctor κ f)
+    (q : K ⟶ C) (f : C ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ f)
     (r : L ⟶ B) (z : JoinCocone q) (t : JoinCocone r)
     (T : sliceOver ((SSet.yonedaEquiv (X := sliceUnder q)).symm z) ⟶
       sliceOver ((SSet.yonedaEquiv (X := sliceUnder r)).symm t))

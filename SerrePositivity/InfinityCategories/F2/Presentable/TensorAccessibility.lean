@@ -47,11 +47,11 @@ lemma tensor_hasSmallFixedVertexMaps {X Y : SSet.{u + 1}}
 使われ方：反映の右随伴の二項積の accessibility。 -/
 lemma tensorHom_isKappaAccessible {κ : Cardinal.{u}} {C D E F : SSet.{u + 1}}
     [Quasicategory C] [Quasicategory D] [Quasicategory E] [Quasicategory F]
-    (hC : HasSmallColimits C) (hD : HasSmallColimits D)
-    (hE : HasSmallColimits E) (hF : HasSmallColimits F)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hF : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits F)
     {f : C ⟶ E} {g : D ⟶ F}
-    (hf : IsKappaAccessibleFunctor κ f) (hg : IsKappaAccessibleFunctor κ g) :
-    IsKappaAccessibleFunctor κ (f ⊗ₘ g) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ f) (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ g) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (f ⊗ₘ g) := by
   intro I hI hκ H c hc
   have h := (tensor_isColimitCone_iff_components hC hD c).mp hc
   apply (tensor_isColimitCone_iff_components hE hF (mapJoinCocone (f ⊗ₘ g) c)).mpr

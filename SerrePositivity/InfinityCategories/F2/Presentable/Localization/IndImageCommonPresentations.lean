@@ -25,9 +25,9 @@ variable {κ : Cardinal.{u}} [Fact κ.IsRegular] {A : SSet.{u}} [Quasicategory A
 
 /-- 小さい元の辺族は、共通 filtered 添字上の compact な全図式と元の普遍余錐を持つ。 -/
 lemma indArrowImageFamily_hasCommonCompactPresentation
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (G : Ind.IndInfinity κ A ⟶ generatedArrowCategory edges)
-    (hG : IsKappaAccessibleFunctor κ G)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} κ
       ((Ind.indYoneda κ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     {B : Type u} (f : B → ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌)

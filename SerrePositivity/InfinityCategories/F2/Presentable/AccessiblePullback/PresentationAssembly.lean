@@ -47,7 +47,7 @@ lemma isKappaAccessible_of_componentPresentations
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsKappaAccessible μ E) (hD : IsKappaAccessible μ D) (hB : IsKappaAccessible μ B)
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hpc : IsKappaAccessibleFunctor μ p) (hqc : IsKappaAccessibleFunctor μ q)
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p) (hqc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q)
     (hpCompact : ∀ x, Compact.IsKappaCompact.{u, u + 1} μ x →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app _ x))
     (hqCompact : ∀ y, Compact.IsKappaCompact.{u, u + 1} μ y →
@@ -92,11 +92,11 @@ lemma isKappaAccessible_of_componentPresentations
 使われ方：一般版の accessibility からの presentable 系の最終接続。 -/
 lemma isPresentable_of_isAccessible
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
-    (hE : HasSmallColimits E) (hD : HasSmallColimits D)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) :
     letI := hp.innerFibration
-    IsAccessible (pullback p q) → IsPresentable (pullback p q) := by
+    IsAccessible (pullback p q) → _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (pullback p q) := by
   have : InnerFibration p := hp.innerFibration
   intro ha
   exact ⟨ha, pullback_hasSmallColimits p q hp hE hD hpc hqc⟩

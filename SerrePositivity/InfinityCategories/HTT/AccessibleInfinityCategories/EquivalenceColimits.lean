@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
@@ -19,23 +20,15 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-namespace SerrePositivity.InfinityCategories.F2.Presentable
-
-/-- 同じ元の関手が同値なら、元の任意の全余錐の余極限性を保存・反映する。 -/
-@[kerodon 02JZ]
-lemma equivalence_isColimitCone_iff {K C E : SSet.{u}} [Quasicategory C] [Quasicategory E]
-    {G : C ⟶ E} (hG : IsQCatEquivalence G) {D : K ⟶ C} (c : JoinCocone D) :
-    IsColimitCone c ↔ IsColimitCone (mapJoinCocone G c) :=
-  (SerrePositivity.InfinityCategories.F1B.isColimitCone_iff_reverseCone c).trans
-    (((SerrePositivity.InfinityCategories.F1B.isQCatEquivalence_op hG).isLimitCone_iff (SerrePositivity.InfinityCategories.F1B.coconeReverseCone c)).trans
-      (isLimitCone_reverse_postcomp_iff c G))
+namespace SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.F2 _root_.SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 同値は宇宙 u の元の小さい κ-filtered 全余錐を保存する。 -/
 lemma equivalence_preservesSmallKappaFilteredColimits (κ : Cardinal.{u})
     {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E]
-    {G : C ⟶ E} (hG : IsQCatEquivalence G) : IsKappaAccessibleFunctor κ G := by
+    {G : C ⟶ E} (hG : IsQCatEquivalence G) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G := by
   intro I hI hκ D c hc
-  exact (equivalence_isColimitCone_iff hG c).mp hc
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff hG c).mp hc
 
 /-- 同じ小さい κ-filtered 余極限の存在は、元の同値で輸送される。 -/
 lemma hasSmallKappaFilteredColimits_of_equivalence {κ : Cardinal.{u}}
@@ -46,6 +39,6 @@ lemma hasSmallKappaFilteredColimits_of_equivalence {κ : Cardinal.{u}}
   have he : FunctorIso ((D ≫ e.inv) ≫ e.hom) D := by
     simpa only [Category.assoc, Category.comp_id] using e.invHomIso.precomp D
   exact (hasColimit_iff_of_functorIso he).mp
-    ⟨mapJoinCocone e.hom c, (equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc⟩
+    ⟨mapJoinCocone e.hom c, (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc⟩
 
-end SerrePositivity.InfinityCategories.F2.Presentable
+end SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories

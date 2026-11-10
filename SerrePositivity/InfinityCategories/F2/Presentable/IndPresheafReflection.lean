@@ -25,7 +25,7 @@ open Ind
 規約：一般 Bousfield 局所化の存在は使わない。
 使われ方：反映による余極限計算と極限の存在。 -/
 def indPresheafReflection {κ : Cardinal.{u}} [Fact κ.IsRegular]
-    {A : SSet.{u}} [Quasicategory A] (h : HasSmallColimits (IndInfinity κ A)) :
+    {A : SSet.{u}} [Quasicategory A] (h : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (IndInfinity κ A)) :
     ReflectiveSubcategory (PresheafInfinity A) (IsIndVertex κ A) := by
   let hex := ind_exists_presheafReflector h
   exact ⟨hex.choose, Classical.choice hex.choose_spec⟩
@@ -35,17 +35,17 @@ def indPresheafReflection {κ : Cardinal.{u}} [Fact κ.IsRegular]
 規約：Ind の交換定理を追加の入力にしない。
 使われ方：presentable の完備性。 -/
 lemma ind_hasSmallLimits_of_hasSmallColimits {κ : Cardinal.{u}} [Fact κ.IsRegular]
-    {A : SSet.{u}} [Quasicategory A] (h : HasSmallColimits (IndInfinity κ A)) :
-    HasSmallLimits (IndInfinity κ A) :=
+    {A : SSet.{u}} [Quasicategory A] (h : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (IndInfinity κ A)) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits (IndInfinity κ A) :=
   reflectiveSubcategory_hasSmallLimits (indPresheafReflection h)
-    (isIndVertex_isoClosed κ A) (presheaf_hasSmallLimits A)
+    (isIndVertex_isoClosed κ A) (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallLimits A)
 
 /-- 概要：presentable 圏は前層の反映された小さい Ind 模型と同値。
 方針：元の compact 生成圏の Ind 同値で余完備性を回収し、専用反映を作る。
 規約：反映の存在や Ind の余完備性を追加入力にしない。
 使われ方：元の presentable 圏の極限・余極限構成。 -/
 lemma IsPresentable.exists_reflectiveIndModel {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : IsPresentable C) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) :
     ∃ (κ : Cardinal.{u}), κ.IsRegular ∧ ∃ (A : SSet.{u}) (hA : Quasicategory A),
       have := hA
       Nonempty (ReflectiveSubcategory (PresheafInfinity A) (IsIndVertex κ A)) ∧

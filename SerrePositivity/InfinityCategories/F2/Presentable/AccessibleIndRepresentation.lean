@@ -22,7 +22,7 @@ lemma IsKappaAccessible.exists_indRepresentation {κ : Cardinal.{u}}
       letI := hA
       ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C)
         (e : QCatEquivalence (Ind.IndInfinity κ A) C),
-        IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ e.hom ∧
+        IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ e.hom ∧
           Nonempty (FunctorIso (Ind.indYoneda κ A ≫ e.hom) i) := by
   obtain ⟨A, hA, i, G, hi, hG, ⟨e⟩⟩ := h.exists_indComparison
   have := hA

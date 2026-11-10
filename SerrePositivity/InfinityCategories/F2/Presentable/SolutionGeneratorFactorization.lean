@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentationEdgeFactorization
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
 
@@ -28,7 +28,7 @@ lemma exists_generatorSolution_edge {κ : Cardinal.{u}}
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
     {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C}
     (hi : IsKappaCompactGenerating κ i) (F : C ⟶ SpaceInfinity.{u})
-    (hF : IsKappaAccessibleFunctor κ F) (x : C _⦋0⦌)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F) (x : C _⦋0⦌)
     (t : vertexFiber (leftUnstraighteningProjection F) x _⦋0⦌) :
     ∃ a : A _⦋0⦌,
       ∃ w : vertexFiber (leftUnstraighteningProjection F)

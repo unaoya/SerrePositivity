@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointCoconePreservation
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -71,7 +71,7 @@ lemma mapJoinCocone_isColimit_of_adjunction
 @[kerodon 06LC]
 lemma adjunction_preservesSmallColimits {X Y : SSet.{u + 1}}
     [Quasicategory X] [Quasicategory Y] {L : X ⟶ Y} {R : Y ⟶ X}
-    (a : QCatAdjunction L R) : PreservesSmallColimits L := by
+    (a : QCatAdjunction L R) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L := by
   intro K D c hc
   exact mapJoinCocone_isColimit_of_adjunction a c hc
 
@@ -97,7 +97,7 @@ lemma hasColimit_of_reflection {K X Y : SSet.{u}}
 lemma hasSmallColimits_of_reflection {X Y : SSet.{u + 1}}
     [Quasicategory X] [Quasicategory Y] {L : X ⟶ Y} {R : Y ⟶ X}
     (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 Y))
-    (hX : HasSmallColimits X) : HasSmallColimits Y := by
+    (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := by
   intro K D
   exact hasColimit_of_reflection a e D (hX K (D ≫ R))
 

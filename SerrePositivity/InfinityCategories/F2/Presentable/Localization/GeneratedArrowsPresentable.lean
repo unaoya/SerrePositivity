@@ -48,8 +48,8 @@ lemma indArrowImageCategory_eq_generatedArrowCategory
 
 /-- 元の presentable 圏の小さい辺族の強飽和射圏は、無条件に presentable。 -/
 lemma generatedArrowCategory_isPresentable
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
-    {I : Type u} (edges : I → C _⦋1⦌) : IsPresentable (generatedArrowCategory edges) := by
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
+    {I : Type u} (edges : I → C _⦋1⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (generatedArrowCategory edges) := by
   obtain ⟨κ, μ, _hκ, hμ, hlarge, _hb, _hCμ, _hend, A, hA, G,
     hff, hG, hcompact, hcover, hImage, hpres, hgen, hids, hpush, _hcancel, htri⟩ :=
     exists_triangleOperationsPresentableIndImage hC edges Cardinal.aleph0

@@ -30,8 +30,8 @@ lemma reflectiveSubcategory_isKappaAccessible {κ : Cardinal.{u}}
     {C : SSet.{u + 1}} [Quasicategory C] {P : C _⦋0⦌ → Prop}
     (hP : ∀ {x y}, VertexIso x y → (P x ↔ P y))
     (r : ReflectiveSubcategory C P) (hC : IsKappaAccessible κ C)
-    (hcol : HasSmallColimits C)
-    (hR : IsKappaAccessibleFunctor κ (fullSubcomplexOnVertices C P).ι) :
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (fullSubcomplexOnVertices C P).ι) :
     IsKappaAccessible κ (fullSubcomplexOnVertices C P : SSet.{u + 1}) := by
   let R := (fullSubcomplexOnVertices C P).ι
   let L := r.reflector

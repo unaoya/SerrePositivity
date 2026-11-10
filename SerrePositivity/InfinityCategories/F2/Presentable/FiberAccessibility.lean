@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiberCompactPresentations
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleSpanCompactCardinals
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanDiagramColimitTransport
 
@@ -29,15 +29,15 @@ open HomotopyLimits
 lemma fiber_isAccessible_of_cocomplete_accessible
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
     (hEa : IsAccessible E) (hBa : IsAccessible B)
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p) :
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) :
     letI := hp.innerFibration
     IsAccessible (pullback p q) := by
   have : InnerFibration p := hp.innerFibration
-  have hpa : IsAccessibleFunctor p :=
+  have hpa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p :=
     ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, hpc.isKappaAccessibleFunctor Cardinal.aleph0⟩
-  have hqa : IsAccessibleFunctor q :=
+  have hqa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor q :=
     ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0,
       pointMap_isKappaAccessibleFunctor Cardinal.isRegular_aleph0 q⟩
   obtain ⟨κ, μ, hκ, hμ, hbound, hκμ, he, hd, hb, hpμ, hqμ, hpCompact, hqCompact⟩ :=
@@ -89,9 +89,9 @@ lemma fiber_isAccessible_of_cocomplete_accessible
 使われ方：固定始域 fiber の局所置換と e5 の公開入口。 -/
 lemma fiber_isAccessible_of_presentable
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : IsPresentable E) (hB : IsPresentable B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p) :
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) :
     letI := hp.innerFibration
     IsAccessible (pullback p q) :=
   fiber_isAccessible_of_cocomplete_accessible hE.isAccessible hB.isAccessible

@@ -27,7 +27,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：有限底上模型の連続置換の compact 性の判定。 -/
 lemma leftFibrationObject_isKappaCompact_of_homPreservation {B : SSet.{u}}
     {κ : Cardinal.{u}} (X : LeftFibrationObject B)
-    (h : IsKappaAccessibleFunctor κ (leftFibrationCoherentEvaluation X.val)) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (leftFibrationCoherentEvaluation X.val)) :
     Compact.IsKappaCompact.{u, u + 1} κ (coherentNerveVertex X) := by
   intro I hI hFiltered D c hc
   have hm : IsColimitCone (mapJoinCocone

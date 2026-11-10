@@ -33,7 +33,7 @@ lemma isKappaAccessibleFunctor_of_indHomTests_native
     (hG : ∀ a : A _⦋0⦌, Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity
         ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)))) :
-    IsKappaAccessibleFunctor μ G := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G := by
   intro I hI hμ F c hc
   apply isColimitCone_of_fullyFaithful_image (Ind.indInclusionPresheaf κ A)
     (Ind.indInclusionPresheaf_isFullyFaithful κ A) (mapJoinCocone G c)
@@ -43,7 +43,7 @@ lemma isKappaAccessibleFunctor_of_indHomTests_native
   have ht := (hG a).of_functorIso (smallHomCompositeIso G
     ((Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up a)) H
     (indYonedaHom_evaluationIso κ A a))
-  have hn : IsKappaAccessibleFunctor μ (G ≫ H) :=
+  have hn : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (G ≫ H) :=
     isKappaAccessibleFunctor_of_spaceUniverse_image ht
   exact (F2.isColimitCone_iff_of_cocone_val_eq _ _ (by
     simp only [H, mapJoinCocone, Category.assoc])).mpr (hn I F c hc)
@@ -57,19 +57,19 @@ lemma isKappaAccessibleFunctor_of_indHomTests_native
 lemma rightAdjoint_isAccessible
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsAccessible C) (hD : IsAccessible D)
-    {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R := by
+    {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor R := by
   obtain ⟨κ, hκ⟩ := hC
   obtain ⟨A, hA, ⟨e⟩⟩ := hκ.exists_indEquivalence
   have := hA
   let a' : QCatAdjunction (e.hom ≫ L) (R ≫ e.inv) := e.toAdjunction.comp a
   obtain ⟨μ, hμ, _, ht⟩ := adjunction_exists_common_hom_preservationCardinal a' hD
     (fun x : A _⦋0⦌ ↦ (Ind.indYoneda κ A).app (Opposite.op ⦋0⦌) (ULift.up x)) κ
-  have hR' : IsKappaAccessibleFunctor μ (R ≫ e.inv) :=
+  have hR' : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (R ≫ e.inv) :=
     isKappaAccessibleFunctor_of_indHomTests_native κ μ A (R ≫ e.inv) ht
   have he : FunctorIso ((R ≫ e.inv) ≫ e.hom) R := by
     simpa only [Category.assoc, Category.comp_id] using FunctorIso.precomp e.invHomIso R
   exact ⟨μ, hμ, (hR'.comp
-    (equivalence_preservesSmallKappaFilteredColimits μ e.isQCatEquivalence)).of_functorIso he⟩
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits μ e.isQCatEquivalence)).of_functorIso he⟩
 
 
 /-- 概要：accessible な極限保存関手の各 Hom 合成の小さい連続模型を得る。
@@ -79,9 +79,9 @@ lemma rightAdjoint_isAccessible
 lemma accessible_limitPreservingHomModels
     {X Y : SSet.{u + 1}} [Quasicategory X]
     (hX : IsAccessible X)
-    (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) :
+    (G : Y ⟶ X) (hGa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) :
     ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u},
-      IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
         Nonempty (FunctorIso
           ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x)
           ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram)) := by
@@ -98,9 +98,9 @@ lemma accessible_limitPreservingHomModels
 @[kerodon 06Q5]
 lemma exists_leftAdjoint_iff_accessible_preservesLimits
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (R : D ⟶ C) :
     (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔
-      IsAccessibleFunctor R ∧ PreservesSmallLimits R := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor R ∧ PreservesSmallLimits R := by
   constructor
   · rintro ⟨L, ⟨a⟩⟩
     exact ⟨rightAdjoint_isAccessible
@@ -120,7 +120,7 @@ lemma exists_rightAdjoint_of_colimitPreserving_representability_native
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
     (hY : IsAccessible Y)
     (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H →
-      IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : PreservesSmallColimits L) :
+      IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L) :
     ∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R) := by
   apply exists_rightAdjoint_of_contravariantHom_representable L
   intro y
@@ -141,7 +141,7 @@ lemma exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native
     (hY : IsAccessible Y)
     (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H →
       IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) :
-    (∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := by
+    (∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)) ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L := by
   constructor
   · rintro ⟨R, ⟨a⟩⟩
     exact adjunction_preservesSmallColimits a
@@ -156,8 +156,8 @@ lemma exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality
     (hLocal : ∀ (A : SSet.{u}) [Quasicategory A],
       RepresentableInversionDetectsLocality (PresheafInfinity A))
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) :
-    (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L :=
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (L : C ⟶ D) :
+    (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L :=
   exists_rightAdjoint_iff_preservesSmallColimits_of_representability_native hD.isAccessible
     (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L
 

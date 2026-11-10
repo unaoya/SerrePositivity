@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.LeftUnitInitialCriterion
-public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
 
 /-!
 概要：固定した元の左関手に対する随伴実単位の全空間の可縮性。
@@ -41,7 +41,7 @@ lemma leftAdjointUnitSubspace_isContractibleKan (C D : PresentableInfinityObject
     funext (fun v ↦ propext (leftUnit_condition_iff_isInitial v))
   unfold LeftAdjointUnitSubspace
   rw [hP]
-  exact initialVertices_isContractibleKan (leftUnitCoslice_hasInitial C D w)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertices_isContractibleKan (leftUnitCoslice_hasInitial C D w)
 
 instance leftAdjointUnitSubspace_kanComplex (C D : PresentableInfinityObject.{u})
     (w : PrLFunctorSpace C D _⦋0⦌) : KanComplex (LeftAdjointUnitSubspace C D w) :=

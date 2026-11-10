@@ -24,9 +24,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：一般の極限保存関手の随伴の存在。 -/
 lemma exists_leftAdjoint_of_accessible_limitPreserving_HomModels
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
-    (G : Y ⟶ X) (hYa : IsAccessible Y) (hYl : HasSmallLimits Y)
+    (G : Y ⟶ X) (hYa : IsAccessible Y) (hYl : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits Y)
     (h : ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u},
-      IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
         Nonempty (FunctorIso
           ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x)
           ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram))) :
@@ -44,9 +44,9 @@ lemma exists_leftAdjoint_of_accessible_limitPreserving_HomModels
 lemma accessible_limitPreservingHomModels_of_spaceUniverseFullyFaithful
     {X Y : SSet.{u + 1}} [Quasicategory X]
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hX : IsAccessible X)
-    (G : Y ⟶ X) (hGa : IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) :
+    (G : Y ⟶ X) (hGa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor G) (hGl : PreservesSmallLimits G) :
     ∀ x : X _⦋0⦌, ∃ H : Y ⟶ SpaceInfinity.{u},
-      IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor H ∧ PreservesSmallLimits H ∧
         Nonempty (FunctorIso
           ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫ covariantRepresentableInfinity x)
           ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram)) := by

@@ -78,7 +78,7 @@ lemma generatedSource_nerve_colimit_mem (edges : I → C _⦋1⦌) (x : C _⦋0�
     (sourceJoinInr_ulift_nerve_isRightCofinal J hJ) D c hc
 
 /-- 同じ周囲の余錐を持ち上げ、弱可縮な通常圏形状の余極限を内部にも構成する。 -/
-lemma generatedSource_hasNerveColimit (hC : HasSmallColimits C)
+lemma generatedSource_hasNerveColimit (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (J : Type u) [SmallCategory J] (hJ : IsWeaklyContractible (nerve J))
     (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve J) ⟶ generatedSourceCategory edges x) :

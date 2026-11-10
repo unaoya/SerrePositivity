@@ -109,7 +109,7 @@ lemma indArrowImage_triangle_missing_of_compact
 
 /-- 同時細分された三角形表示から、元の同じ結論辺の実像所属が従う。 -/
 lemma indArrowImage_triangle_missing_of_refinedPresentation
-    (hC : HasSmallColimits C) (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered μ K]
     (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom (Δ[2] : SSet.{u + 1})).obj C)
     (c : JoinCocone D) (hc : IsColimitCone c) (τ : (Δ[2] : SSet.{u + 1}) ⟶ C)

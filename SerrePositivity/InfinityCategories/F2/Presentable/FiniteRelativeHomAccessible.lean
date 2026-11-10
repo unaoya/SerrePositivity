@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationDiagramStrictification
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationFilteredCocone
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
@@ -46,7 +46,7 @@ lemma finiteRelativeHom_preserves_nerveCocone {B : SSet.{u}} [Quasicategory B]
 使われ方：同じ連続 left fibration 置換を施した有限模型の compact 性。 -/
 lemma finiteRelativeHom_isKappaAccessibleFunctor {B : SSet.{u}} [Quasicategory B]
     (A : Over B) [A.left.Finite] :
-    IsKappaAccessibleFunctor Cardinal.aleph0 (leftFibrationCoherentEvaluation A) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor Cardinal.aleph0 (leftFibrationCoherentEvaluation A) := by
   intro K hK hFiltered G c hc
   have : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩
   obtain ⟨J, o, f, hJ, _, hf⟩ := Ind.exists_cofinal_kappaFiltered_poset (κ := Cardinal.aleph0) K

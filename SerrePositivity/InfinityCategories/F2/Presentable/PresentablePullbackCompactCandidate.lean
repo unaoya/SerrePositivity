@@ -26,9 +26,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：filtered 生成性を証明すれば accessibility へ直接接続できる候補。 -/
 lemma exists_presentablePullback_compactCandidate
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
-    (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) (σ : Cardinal.{u}) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) (σ : Cardinal.{u}) :
     letI := hp.innerFibration
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       ∃ (A : SSet.{u}) (hA : Quasicategory A),

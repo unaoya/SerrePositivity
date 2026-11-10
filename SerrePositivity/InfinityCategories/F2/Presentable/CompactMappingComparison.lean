@@ -22,7 +22,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 /-- 同じ元の κ-filtered 表示の各項での比較同値性は、compact 性により頂点へ延長。 -/
 lemma pinchedHomMap_equivalence_of_compact_colimit {κ : Cardinal.{u}}
     {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E]
-    (G : C ⟶ E) (hG : IsKappaAccessibleFunctor κ G) (x : C _⦋0⦌)
+    (G : C ⟶ E) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G) (x : C _⦋0⦌)
     (hx : Compact.IsKappaCompact.{u, u + 1} κ x)
     (hGx : Compact.IsKappaCompact.{u, u + 1} κ (G.app (Opposite.op ⦋0⦌) x))
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I]

@@ -50,9 +50,9 @@ lemma exists_smallNativeCompactPullbackFamily {κ μ : Cardinal.{u}}
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (hE : IsKappaAccessible μ E) (hD : IsKappaAccessible μ D) (hB : IsLocallySmall B)
     (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p]
-    (hf : IsKappaAccessibleFunctor μ (pullback.fst p q))
-    (hs : IsKappaAccessibleFunctor μ (pullback.snd p q))
-    (hp : IsKappaAccessibleFunctor μ p)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.fst p q))
+    (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (pullback.snd p q))
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p)
     (hpCompact : ∀ x, Compact.IsKappaCompact.{u, u + 1} μ x →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app _ x)) :
     ∃ (T : Type u) (v : T → (pullback p q) _⦋0⦌),

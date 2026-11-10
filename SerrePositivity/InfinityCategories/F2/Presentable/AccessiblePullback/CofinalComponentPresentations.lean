@@ -28,7 +28,7 @@ lemma hasComponentPresentations_of_cofinal_components
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hp : F1B.EquivalenceLifting p)
     (hE : IsKappaAccessible μ E) (hD : IsKappaAccessible μ D) (hB : IsKappaAccessible μ B)
-    (hpμ : IsKappaAccessibleFunctor μ p) (hqμ : IsKappaAccessibleFunctor μ q)
+    (hpμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ p) (hqμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ q)
     (hpCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) v))
     (hqCompact : ∀ v, Compact.IsKappaCompact.{u, u + 1} μ v →

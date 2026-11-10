@@ -386,7 +386,7 @@
 [Kerodon Tag 02H7](https://kerodon.net/tag/02H7) corresponds to declaration 'SerrePositivity.InfinityCategories.IsTerminalVertex'.
 [Kerodon Tag 02H7](https://kerodon.net/tag/02H7) corresponds to declaration 'SerrePositivity.InfinityCategories.isInitialVertex_iff_intervalMappingSpace_isContractibleKan'.
 [Kerodon Tag 02H7](https://kerodon.net/tag/02H7) corresponds to declaration 'SerrePositivity.InfinityCategories.isTerminalVertex_iff_pinchedHom_isContractibleKan'.
-[Kerodon Tag 02HM](https://kerodon.net/tag/02HM) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.Duality.initialVertices_isContractibleKan'.
+[Kerodon Tag 02HM](https://kerodon.net/tag/02HM) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertices_isContractibleKan'.
 [Kerodon Tag 02HM](https://kerodon.net/tag/02HM) corresponds to declaration 'SerrePositivity.InfinityCategories.terminalVertices'.
 [Kerodon Tag 02HM](https://kerodon.net/tag/02HM) corresponds to declaration 'SerrePositivity.InfinityCategories.terminalVertices_isContractibleKan'.
 [Kerodon Tag 02HQ](https://kerodon.net/tag/02HQ) corresponds to declaration 'SerrePositivity.InfinityCategories.IsTerminalVertex.isTerminalHo'.
@@ -397,7 +397,7 @@
 [Kerodon Tag 02JM](https://kerodon.net/tag/02JM) corresponds to declaration 'SerrePositivity.InfinityCategories.JoinCone'.
 [Kerodon Tag 02JN](https://kerodon.net/tag/02JN) corresponds to declaration 'SerrePositivity.InfinityCategories.IsColimitCone'.
 [Kerodon Tag 02JN](https://kerodon.net/tag/02JN) corresponds to declaration 'SerrePositivity.InfinityCategories.JoinCocone'.
-[Kerodon Tag 02JZ](https://kerodon.net/tag/02JZ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff'.
+[Kerodon Tag 02JZ](https://kerodon.net/tag/02JZ) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff'.
 [Kerodon Tag 02JZ](https://kerodon.net/tag/02JZ) corresponds to declaration 'SerrePositivity.InfinityCategories.IsQCatEquivalence.isLimitCone_iff'.
 [Kerodon Tag 02JZ](https://kerodon.net/tag/02JZ) corresponds to declaration 'SerrePositivity.InfinityCategories.QCatEquivalence.isLimitCone_iff'.
 [Kerodon Tag 02K2](https://kerodon.net/tag/02K2) corresponds to declaration 'SerrePositivity.InfinityCategories.hasColimit_iff_of_functorIso'.
@@ -616,7 +616,7 @@
 [Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits'.
 [Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_hasPointwiseColimits'.
 [Kerodon Tag 05QG](https://kerodon.net/tag/05QG) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_iff_pointwise_of_hasPointwiseColimits'.
-[Kerodon Tag 05QQ](https://kerodon.net/tag/05QQ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallLimits'.
+[Kerodon Tag 05QQ](https://kerodon.net/tag/05QQ) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallLimits'.
 [Kerodon Tag 05QQ](https://kerodon.net/tag/05QQ) corresponds to declaration 'SerrePositivity.InfinityCategories.hasLimit_coherentSpaceDiagram'.
 [Kerodon Tag 05QT](https://kerodon.net/tag/05QT) corresponds to declaration 'SerrePositivity.InfinityCategories.LeftTransportRepresentation'.
 [Kerodon Tag 05R7](https://kerodon.net/tag/05R7) corresponds to declaration 'SerrePositivity.InfinityCategories.TransportRepresentationFamilyWitness'.
@@ -634,9 +634,9 @@
 [Kerodon Tag 069C](https://kerodon.net/tag/069C) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.sliceUnderPostcomp_equivalenceLifting'.
 [Kerodon Tag 069Q](https://kerodon.net/tag/069Q) corresponds to declaration 'SerrePositivity.InfinityCategories.F1B.kanRelativeCoconeLifting_iff_isRelativeColimitCone'.
 [Kerodon Tag 069Q](https://kerodon.net/tag/069Q) corresponds to declaration 'SerrePositivity.InfinityCategories.F1B.kanRelativeCocone_lift_iff'.
-[Kerodon Tag 06B7](https://kerodon.net/tag/06B7) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits'.
-[Kerodon Tag 06B7](https://kerodon.net/tag/06B7) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits'.
-[Kerodon Tag 06BA](https://kerodon.net/tag/06BA) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits'.
+[Kerodon Tag 06B7](https://kerodon.net/tag/06B7) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits'.
+[Kerodon Tag 06B7](https://kerodon.net/tag/06B7) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits'.
+[Kerodon Tag 06BA](https://kerodon.net/tag/06BA) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits'.
 [Kerodon Tag 06BA](https://kerodon.net/tag/06BA) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits'.
 [Kerodon Tag 06D0](https://kerodon.net/tag/06D0) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.isRightCofinal_sliceUnderProjection_of_filtered'.
 [Kerodon Tag 06E0](https://kerodon.net/tag/06E0) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Ind.Compact.preservesKappaFilteredColimits_of_poset'.
@@ -646,12 +646,12 @@
 [Kerodon Tag 06KF](https://kerodon.net/tag/06KF) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible'.
 [Kerodon Tag 06KM](https://kerodon.net/tag/06KM) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger'.
 [Kerodon Tag 06KP](https://kerodon.net/tag/06KP) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal'.
-[Kerodon Tag 06KY](https://kerodon.net/tag/06KY) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor'.
-[Kerodon Tag 06KY](https://kerodon.net/tag/06KY) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor'.
-[Kerodon Tag 06LC](https://kerodon.net/tag/06LC) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isAccessibleFunctor'.
+[Kerodon Tag 06KY](https://kerodon.net/tag/06KY) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor'.
+[Kerodon Tag 06KY](https://kerodon.net/tag/06KY) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor'.
+[Kerodon Tag 06LC](https://kerodon.net/tag/06LC) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isAccessibleFunctor'.
 [Kerodon Tag 06LC](https://kerodon.net/tag/06LC) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.adjunction_preservesSmallColimits'.
 [Kerodon Tag 06LC](https://kerodon.net/tag/06LC) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible'.
-[Kerodon Tag 06ND](https://kerodon.net/tag/06ND) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable'.
+[Kerodon Tag 06ND](https://kerodon.net/tag/06ND) corresponds to declaration 'SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable'.
 [Kerodon Tag 06PF](https://kerodon.net/tag/06PF) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.PrL'.
 [Kerodon Tag 06Q5](https://kerodon.net/tag/06Q5) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits'.
 [Kerodon Tag 06Q5](https://kerodon.net/tag/06Q5) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits'.

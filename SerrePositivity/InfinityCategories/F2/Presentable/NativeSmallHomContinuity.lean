@@ -25,14 +25,14 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：余表現可能性に必要な小さい解関手の accessibility。 -/
 lemma smallHomComposite_isAccessible_native {X Y : SSet.{u + 1}} [Quasicategory X]
     (hX : IsAccessible X)
-    (G : Y ⟶ X) (hG : IsAccessibleFunctor G) (x : X _⦋0⦌)
+    (G : Y ⟶ X) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor G) (x : X _⦋0⦌)
     (H : X ⟶ SpaceInfinity.{u})
     (hH : FunctorIso (covariantRepresentableInfinity x)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map H ≫ Compact.spaceUniverseDiagram)) :
-    IsAccessibleFunctor (G ≫ H) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor (G ≫ H) := by
   obtain ⟨κ, _, hκG⟩ := hG
   obtain ⟨μ, hμ, hκμ, hx⟩ := hX.exists_compactCardinal x κ
-  have hGμ : IsKappaAccessibleFunctor μ G := hκG.of_le hκμ.le
+  have hGμ : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G := hκG.of_le hκμ.le
   have h := (hGμ.comp_universe hx).of_functorIso (smallHomCompositeIso G x H hH)
   exact ⟨μ, hμ, isKappaAccessibleFunctor_of_spaceUniverse_image h⟩
 

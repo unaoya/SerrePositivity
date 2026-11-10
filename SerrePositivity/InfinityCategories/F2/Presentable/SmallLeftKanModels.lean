@@ -51,7 +51,7 @@ lemma exists_smallLeftKanShapeModel {A : SSet.{u}} [Quasicategory A]
 lemma hasColimit_leftKanDiagram_of_locallySmall
     {A : SSet.{u}} [Quasicategory A]
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : IsLocallySmall C) (hD : HasSmallColimits D)
+    (hC : IsLocallySmall C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
     (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ D) (y : C _⦋0⦌) :
     HasColimit (leftKanDiagram i F y) := by

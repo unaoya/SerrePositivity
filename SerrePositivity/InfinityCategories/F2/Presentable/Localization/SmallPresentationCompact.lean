@@ -22,7 +22,7 @@ open HomotopyLimits Compact
 /-- 対象上の指定小 poset 余極限は、底の compact 頂点を保つ。 -/
 lemma smallSlicePresentation_projection_compact
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ C)
     (P : Type u) [PartialOrder P] (hP : HasCardinalLT P μ)
     (E : (SSet.uliftFunctor.{u + 1, u}).obj (nerve P) ⟶ sliceOver x)

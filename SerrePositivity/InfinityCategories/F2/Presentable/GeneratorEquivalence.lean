@@ -44,7 +44,7 @@ lemma HasKappaFilteredGeneratorPresentation.of_equivalence {κ : Cardinal.{u}}
   let d := coherentCoconeOfDiagramEq
     (Category.assoc ((SSet.uliftFunctor.{u + 1, u}).map a) i e.hom) (mapJoinCocone e.hom c)
   have hd : IsColimitCone d := (coherentCoconeOfDiagramEq_isColimit_iff _ _).mp
-    ((equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc)
   have hdv : d.vertex = e.hom.app (Opposite.op ⦋0⦌) x := by
     rw [coherentCoconeOfDiagramEq_vertex, Ind.mapJoinCocone_vertex, hv]
   obtain ⟨d', hd', hv'⟩ := exists_colimitCone_vertex_of_iso d hd

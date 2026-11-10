@@ -31,7 +31,7 @@ lemma exists_kappaContinuousTwistedArrowLimitFunctor
         SpaceInfinity.{u} ⟶ SpaceInfinity.{u},
       Nonempty (QCatAdjunction
         (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj (TwistedArrow K))
-          SpaceInfinity.{u}) R) ∧ IsKappaAccessibleFunctor κ R :=
+          SpaceInfinity.{u}) R) ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ R :=
   exists_kappaContinuousSpaceLimitFunctor hκ (TwistedArrow K) (isKappaSmall_twistedArrow hκ hK)
 
 /-- 概要：twisted arrow 上の全極限錐族の各脚の κ-filtered 保存は頂点の保存を与える。

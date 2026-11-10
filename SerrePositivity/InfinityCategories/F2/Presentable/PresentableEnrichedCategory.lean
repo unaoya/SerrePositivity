@@ -26,12 +26,12 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 規約：二条件の同値を仮定しない。
 使われ方：二つの豊穣圏の共通の構成。 -/
 def PresentableFunctorCondition (left : Bool) {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop :=
-  if left then PreservesSmallColimits F else IsAccessibleFunctor F ∧ PreservesSmallLimits F
+  if left then _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F else _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F ∧ PreservesSmallLimits F
 
 lemma presentableFunctorCondition_id (left : Bool) (C : SSet.{u + 1}) [Quasicategory C] :
     PresentableFunctorCondition left (𝟙 C) := by
   cases left
-  · exact ⟨isAccessibleFunctor_id C, adjunction_preservesSmallLimits (QCatAdjunction.refl C)⟩
+  · exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessibleFunctor_id C, adjunction_preservesSmallLimits (QCatAdjunction.refl C)⟩
   · exact adjunction_preservesSmallColimits (QCatAdjunction.refl C)
 
 lemma PresentableFunctorCondition.comp {left : Bool} {C D E : SSet.{u + 1}}
@@ -39,7 +39,7 @@ lemma PresentableFunctorCondition.comp {left : Bool} {C D E : SSet.{u + 1}}
     (hF : PresentableFunctorCondition left F) (hG : PresentableFunctorCondition left G) :
     PresentableFunctorCondition left (F ≫ G) := by
   cases left
-  · exact ⟨IsAccessibleFunctor.comp hF.1 hG.1, PreservesSmallLimits.comp hF.2 hG.2⟩
+  · exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor.comp hF.1 hG.1, PreservesSmallLimits.comp hF.2 hG.2⟩
   · exact PreservesSmallColimits.comp hF hG
 
 /-- 概要：保存する方向で区別した presentable 圏の対象型。

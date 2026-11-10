@@ -30,7 +30,7 @@ open HomotopyLimits
 lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1})
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D)
-    (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F) := by
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ ((ihom A).map F) := by
   intro I hI hκ p c hc
   exact postcomposition_map_isColimit (hC I) F (hF I) c hc
 
@@ -39,8 +39,8 @@ lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1})
 規約：元の Ind の余完備性は明示し、比較界面の未供給条件は使わない。
 使われ方：一般の presentable 圏値の関手圏への同値移送。 -/
 lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A]
-    (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) :
-    IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A)) := by
+    (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Ind.IndInfinity κ A)) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A)) := by
   let T := (SSet.uliftFunctor.{u + 1, u}).obj K
   let r := indPresheafReflection hI
   have hcol := functor_hasSmallColimits T hI
@@ -48,7 +48,7 @@ lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory
     have (n : SimplexCategoryᵒᵖ) : Small.{u} (T.obj n) :=
       inferInstanceAs (Small.{u} (ULift.{u + 1} (K.obj n)))
     exact (Ind.ind_hasSmallFixedVertexMaps κ A).functorSpace T
-  have hr : IsKappaAccessibleFunctor κ ((ihom T).map (Ind.indInclusionPresheaf κ A)) :=
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ ((ihom T).map (Ind.indInclusionPresheaf κ A)) :=
     functorPostcomp_isKappaAccessible T (Ind.ind_hasSmallKappaFilteredColimits κ A) _
       (Ind.indInclusion_preservesSmallKappaFilteredColimits κ A)
   obtain ⟨μ, hκμ, hμ⟩ := (functorPresheaf_isPresentable K A).isAccessible.exists_larger κ
@@ -65,8 +65,8 @@ lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory
 規約：K の単体は u、C の単体は u+1。
 使われ方：HTT 5.5.3.6、Pr^L の積と引き戻しの準備。 -/
 lemma functor_isPresentable (K : SSet.{u}) [Quasicategory K]
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) :
-    IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C) := by
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj C) := by
   obtain ⟨κ, hκ, A, hA, ⟨r⟩, ⟨e⟩⟩ := hC.exists_reflectiveIndModel
   have := hA
   have : Fact κ.IsRegular := ⟨hκ⟩

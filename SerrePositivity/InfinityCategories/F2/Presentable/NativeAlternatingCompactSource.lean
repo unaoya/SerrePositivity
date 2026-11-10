@@ -42,8 +42,8 @@ lemma exists_compactSliceSource_image_identity_initial_of_filteredPresentation
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
-    (p : E ⟶ B) (hp : PreservesSmallColimits p)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
+    (p : E ⟶ B) (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ E)
     (c : JoinCocone D) (hc : IsColimitCone c)
     (hD : ∀ j : I _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ (D.app _ (ULift.up j)))
@@ -81,7 +81,7 @@ lemma exists_compactSliceSource_image_identity_initial_of_filteredPresentation
   let cD := constantJoinCocone ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ))) t
   have hcD : IsColimitCone cD := constantJoinCocone_isColimit nativeSequential_isWeaklyContractible t
   have hPY := coconeSliceImageMap_preservesSmallColimits c hE p hp
-  have hId : PreservesSmallColimits (𝟙 Y) :=
+  have hId : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (𝟙 Y) :=
     equivalence_preservesSmallColimits (qCatEquivalenceOfIso (Iso.refl Y)).isQCatEquivalence
   obtain ⟨e⟩ := nonempty_subsequencePreservedImageColimitIso
     (fun n ↦ 2 * n) (fun n ↦ 2 * n + 1) alternatingEven_monotone alternatingOdd_monotone
@@ -139,8 +139,8 @@ lemma exists_compactSliceSource_image_identity_of_filteredPresentation
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
-    (p : E ⟶ B) (hp : PreservesSmallColimits p)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
+    (p : E ⟶ B) (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ E)
     (c : JoinCocone D) (hc : IsColimitCone c)
     (hD : ∀ j : I _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ (D.app _ (ULift.up j)))

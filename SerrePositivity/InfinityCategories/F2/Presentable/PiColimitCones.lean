@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.PiQuasicategory
 public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.Core.SliceMap
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 
 /-!
 概要：小さい全直積の余錐を成分ごとに組み立てる。

@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma isKappaCompact_functorVertex_of_endFamily
     {κ : Cardinal.{u}} [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ)
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall κ K)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
     (hF : ∀ k, Compact.IsKappaCompact.{u, u + 1} κ (F.app _ k))
     (E : (SSet.uliftFunctor.{u + 2, u + 1}).obj

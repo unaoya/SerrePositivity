@@ -40,16 +40,16 @@ lemma indArrowImageEvaluation_equivalenceLifting (a : (Δ[1] : SSet.{u + 1}) _�
   infer_instance
 
 /-- 実比較の保存性から、元の実像の各端点評価の同じ濃度での保存性を得る。 -/
-lemma indArrowImageEvaluation_isKappaAccessibleFunctor (hC : HasSmallColimits C)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor κ G)
+lemma indArrowImageEvaluation_isKappaAccessibleFunctor (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (a : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    IsKappaAccessibleFunctor κ (indArrowImageInclusion edges G ≫ evaluateFunctorAt a) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (indArrowImageInclusion edges G ≫ evaluateFunctorAt a) :=
   (indArrowImageInclusion_isKappaAccessible edges G hC hff hG).comp
     ((evaluateFunctorAt_preservesSmallColimits hC a).isKappaAccessibleFunctor κ)
 
 /-- 任意の指定始域の実像 fiber に、元の成分 compact 点を被覆する小さい候補がある。 -/
-lemma exists_indArrowImageSource_compactCandidate (hC : IsPresentable C)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor κ G)
+lemma exists_indArrowImageSource_compactCandidate (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (x : C _⦋0⦌) (σ : Cardinal.{u}) :
     let p := indArrowImageInclusion edges G ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0)
     let q := SSet.yonedaEquiv.symm x

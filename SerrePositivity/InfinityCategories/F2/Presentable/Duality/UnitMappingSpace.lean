@@ -29,7 +29,7 @@ def leftMappingInclusion (C D : PresentableInfinityObject.{u}) :
     PrLMappingSpace C D ⟶ (ihom C.obj).obj D.obj :=
   (quasicategoryCore (PrLFunctorSpace C D)).ι ≫
     (fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-      (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
+      (fun v ↦ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
 
 /-- 概要：右写像空間を元の全関手圏へ含める。
 方針：core と右保存条件の包含を合成する。
@@ -39,7 +39,7 @@ def rightMappingInclusion (C D : PresentableInfinityObject.{u}) :
     PrRMappingSpace C D ⟶ (ihom C.obj).obj D.obj :=
   (quasicategoryCore (PrRFunctorSpace C D)).ι ≫
     (fullSubcomplexOnVertices ((ihom C.obj).obj D.obj)
-      (fun v ↦ IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
+      (fun v ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor ((functorVertexEquiv C.obj D.obj).symm v) ∧
         PreservesSmallLimits ((functorVertexEquiv C.obj D.obj).symm v))).ι
 
 /-- 概要：左右の元の写像空間から LR の全関手圏への合成。

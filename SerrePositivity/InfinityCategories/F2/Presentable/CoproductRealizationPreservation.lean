@@ -59,7 +59,7 @@ lemma preservesSmallColimits_of_coproducts_geometricRealizations
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
     (hX : HasSmallCoproducts X) (U : X ⟶ Y)
     (hcop : PreservesSmallCoproducts U) (hgeom : PreservesSmallGeometricRealizations U) :
-    PreservesSmallColimits U := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits U := by
   intro K F c hc
   let Z := simplicialBarSimplexFamily K
   let j := (SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap K)

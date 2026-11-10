@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Localization
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 全 compact 候補の両端点を compact に保ち、全生成射を含む共通正則濃度がある。 -/
-lemma exists_endpointCompactArrowCardinal (hC : IsPresentable C)
+lemma exists_endpointCompactArrowCardinal (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ κ μ : Cardinal.{u}, κ.IsRegular ∧ μ.IsRegular ∧ σ < μ ∧
       IsCardinalChangeBound κ μ ∧ IsKappaAccessible μ C ∧

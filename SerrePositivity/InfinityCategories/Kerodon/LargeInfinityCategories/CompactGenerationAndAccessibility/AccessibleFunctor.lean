@@ -16,7 +16,8 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-namespace SerrePositivity.InfinityCategories.F2.Presentable
+namespace SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility
+open _root_.SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.F2 _root_.SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 宇宙 u の κ-filtered 余極限を保存する、元の宇宙 u+1 の関手。 -/
 @[kerodon 06KY]
@@ -66,4 +67,4 @@ lemma IsAccessibleFunctor.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D ⟶ E
 lemma isAccessibleFunctor_id (C : SSet.{u + 1}) : IsAccessibleFunctor (𝟙 C) :=
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, isKappaAccessibleFunctor_id _ C⟩
 
-end SerrePositivity.InfinityCategories.F2.Presentable
+end SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility

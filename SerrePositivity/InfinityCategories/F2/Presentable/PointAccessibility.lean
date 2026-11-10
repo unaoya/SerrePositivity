@@ -55,7 +55,7 @@ lemma point_cocone_isColimit {K : SSet.{u}} {F : K ⟶ (Δ[0] : SSet.{u})}
 方針：点への唯一の全余錐を使う。
 規約：元の宇宙 u+1 の点を標的とする。
 使われ方：点の presentable 性。 -/
-lemma point_hasSmallColimits : HasSmallColimits (Δ[0] : SSet.{u + 1}) := by
+lemma point_hasSmallColimits : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (Δ[0] : SSet.{u + 1}) := by
   intro K F
   exact ⟨⟨stdSimplex.isTerminalObj₀.from _, stdSimplex.isTerminalObj₀.hom_ext _ _⟩,
     point_cocone_isColimit _⟩
@@ -86,7 +86,7 @@ lemma point_isKappaAccessible (κ : Cardinal.{u}) (hκ : κ.IsRegular) :
 方針：ℵ₀-accessibility と点の全小余極限を合わせる。
 規約：局所化や引き戻しの定理を使わない。
 使われ方：点を含む presentable cospan。 -/
-lemma point_isPresentable : IsPresentable (Δ[0] : SSet.{u + 1}) :=
+lemma point_isPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (Δ[0] : SSet.{u + 1}) :=
   ⟨(point_isKappaAccessible Cardinal.aleph0 Cardinal.isRegular_aleph0).isAccessible,
     point_hasSmallColimits⟩
 
@@ -96,7 +96,7 @@ lemma point_isPresentable : IsPresentable (Δ[0] : SSet.{u + 1}) :=
 使われ方：固定標的の fiber の第二脚。 -/
 lemma constant_isKappaAccessibleFunctor {κ : Cardinal.{u}} (hκ : κ.IsRegular)
     {X Y : SSet.{u + 1}} [Quasicategory Y] (y : Y _⦋0⦌) :
-    IsKappaAccessibleFunctor κ (SSet.const y : X ⟶ Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (SSet.const y : X ⟶ Y) := by
   intro I hI hFiltered D c _
   have : IsFilteredInfinity I := isFilteredInfinity_of_isKappaFiltered hκ.aleph0_le I
   have hc := constantJoinCocone_isColimit_of_pointCofinal
@@ -109,7 +109,7 @@ lemma constant_isKappaAccessibleFunctor {κ : Cardinal.{u}} (hκ : κ.IsRegular)
 使われ方：固定標的 fiber を accessible 引き戻しへ渡す。 -/
 lemma pointMap_isKappaAccessibleFunctor {κ : Cardinal.{u}} (hκ : κ.IsRegular)
     {Y : SSet.{u + 1}} [Quasicategory Y] (x : (Δ[0] : SSet.{u + 1}) ⟶ Y) :
-    IsKappaAccessibleFunctor κ x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ x := by
   have hx : x = SSet.const (SSet.yonedaEquiv x) := by
     apply SSet.yonedaEquiv.injective
     simp only [SSet.yonedaEquiv_const]

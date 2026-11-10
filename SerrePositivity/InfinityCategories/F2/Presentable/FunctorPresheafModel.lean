@@ -50,7 +50,7 @@ def functorPresheafIso (K A : SSet.{u}) :
 規約：随伴関手定理や新しい局所化の存在は使わない。
 使われ方：一般の presentable 圏への関手圏の反映模型。 -/
 lemma functorPresheaf_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] :
-    IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (PresheafInfinity A)) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (PresheafInfinity A)) := by
   have : Quasicategory (A ⊗ K.op) := F2.quasicategory_tensor A K.op
   exact (presheaf_isPresentable (A ⊗ K.op)).of_equivalence
     (qCatEquivalenceOfIso (functorPresheafIso K A).symm)

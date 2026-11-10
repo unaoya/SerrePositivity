@@ -32,9 +32,9 @@ lemma nonempty_componentCompactFiberOver_cocone_of_smallQuasicategory_of_filtere
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall μ K)
     {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered μ I]
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p)
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback p q)
     (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ E)
     (c : JoinCocone D) (hc : IsColimitCone c)
@@ -71,9 +71,9 @@ lemma nonempty_componentCompactFiberOver_cocone_of_smallQuasicategory
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     {K : SSet.{u}} [Quasicategory K] (hK : IsKappaSmall μ K)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B) (hEμ : IsKappaAccessible μ E)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B) (hEμ : IsKappaAccessible μ E)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p)
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (hpCompact : ∀ e : E _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ e →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) e))
     (hq : Compact.IsKappaCompact.{u, u + 1} μ (SSet.yonedaEquiv q))
@@ -110,9 +110,9 @@ lemma nonempty_componentCompactFiberOver_cocone_of_small
     {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ)
     (K : SSet.{u}) (hK : IsKappaSmall μ K)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (hE : HasSmallColimits E) (hB : HasSmallColimits B) (hEμ : IsKappaAccessible μ E)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits B) (hEμ : IsKappaAccessible μ E)
     (p : E ⟶ B) (q : (Δ[0] : SSet.{u + 1}) ⟶ B)
-    (hp : F1B.EquivalenceLifting p) (hpc : PreservesSmallColimits p)
+    (hp : F1B.EquivalenceLifting p) (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (hpCompact : ∀ e : E _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ e →
       Compact.IsKappaCompact.{u, u + 1} μ (p.app (Opposite.op ⦋0⦌) e))
     (hq : Compact.IsKappaCompact.{u, u + 1} μ (SSet.yonedaEquiv q))

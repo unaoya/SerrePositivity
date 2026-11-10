@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
@@ -25,7 +25,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：小さい空間値関手を大きい Hom 族と比較する。 -/
 lemma IsKappaAccessibleFunctor.comp_universe {κ : Cardinal.{u}}
     {C D : SSet.{u + 1}} {Y : SSet.{u + 2}} {F : C ⟶ D}
-    (hF : IsKappaAccessibleFunctor κ F)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F)
     {G : (SSet.uliftFunctor.{u + 2, u + 1}).obj D ⟶ Y}
     (hG : Compact.PreservesKappaFilteredColimits.{u, u + 1} κ G) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
@@ -40,7 +40,7 @@ lemma IsKappaAccessibleFunctor.comp_universe {κ : Cardinal.{u}}
 使われ方：余表現可能性の全 Hom 比較を filtered 生成で延長する。 -/
 lemma IsKappaAccessibleFunctor.spaceUniverse {κ : Cardinal.{u}}
     {C : SSet.{u + 1}} {F : C ⟶ SpaceInfinity.{u}}
-    (hF : IsKappaAccessibleFunctor κ F) :
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram) :=
   hF.comp_universe (Compact.spaceUniverseDiagram_preservesKappaFilteredColimits κ)

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputIndExtension
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredGeometricFunctorOperations
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 
 /-!
 概要：固定 ν 値間の実同値を、元の同じ Indω 間の実同値へ延長する。
@@ -36,9 +36,9 @@ def dgKInputIndEquivalence : QCatEquivalence (dgKInputIndCompletion R A)
   have hG := dgKInputIndExtension_preservesFilteredColimits R B A (e.inv ≫ YA)
   have hFG := F2.Presentable.preservesSmallFilteredColimits_comp hF hG
   have hGF := F2.Presentable.preservesSmallFilteredColimits_comp hG hF
-  have hA := F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+  have hA := _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
     (qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R A))).isQCatEquivalence
-  have hB := F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+  have hB := _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
     (qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R B))).isQCatEquivalence
   have eF := dgKInputIndExtension_restrictionIso R A B (e.hom ≫ YB)
   have eG := dgKInputIndExtension_restrictionIso R B A (e.inv ≫ YA)

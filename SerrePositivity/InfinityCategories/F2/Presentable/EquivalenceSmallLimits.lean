@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits
@@ -43,8 +43,8 @@ lemma adjunction_preservesSmallLimits {C E : SSet.{u + 1}}
 規約：元の任意小図式を結論に保持する。
 使われ方：Ind 反映模型からの完備性。 -/
 lemma HasSmallLimits.of_equivalence {C E : SSet.{u + 1}}
-    [Quasicategory C] [Quasicategory E] (hC : HasSmallLimits C)
-    (e : QCatEquivalence C E) : HasSmallLimits E := by
+    [Quasicategory C] [Quasicategory E] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C)
+    (e : QCatEquivalence C E) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits E := by
   intro K D
   obtain ⟨c, hc⟩ := hC K (D ≫ e.inv)
   have ed : FunctorIso ((D ≫ e.inv) ≫ e.hom) D := by

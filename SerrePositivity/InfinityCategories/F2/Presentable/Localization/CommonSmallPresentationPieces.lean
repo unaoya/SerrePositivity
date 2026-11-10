@@ -28,7 +28,7 @@ lemma exists_commonSmallPresentation_colimits
     {D₁ : (SSet.uliftFunctor.{u + 1, u}).obj (nerve A₁) ⟶ C}
     {c₀ : JoinCocone D₀} {c₁ : JoinCocone D₁} {hv : c₀.vertex = c₁.vertex}
     {seed₀ : Set A₀} {seed₁ : Set A₁}
-    (hC : HasSmallColimits C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (s : SeedBoundedTwoPresentationComparison c₀ c₁ hv seed₀ seed₁) :
     let E₀ := (SSet.uliftFunctor.{u + 1, u}).map
       (nerveMap (sequentialPieceInclusionFunctor seed₀ (nerveIndexSequence s.leftIndex))) ≫
@@ -40,7 +40,7 @@ lemma exists_commonSmallPresentation_colimits
       IsColimitCone a₀ ∧ IsColimitCone a₁ ∧ Nonempty (VertexIso a₀.vertex a₁.vertex) := by
   dsimp only
   let X := sliceOver (SSet.yonedaEquiv.symm c₀.vertex)
-  have hX : HasSmallColimits X := sliceOver_hasSmallColimits hC _
+  have hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X := sliceOver_hasSmallColimits hC _
   let r₀ := nerveMap (nerveIndexPieceMonotone seed₀ s.leftIndex).functor
   let r₁ := nerveMap (nerveIndexPieceMonotone seed₁ s.rightIndex).functor
   let E₀ := (SSet.uliftFunctor.{u + 1, u}).map

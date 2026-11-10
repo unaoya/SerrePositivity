@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PullbackSmallColimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.FixedVertexMapSmallness
 
 /-!
@@ -55,12 +55,12 @@ lemma pullback_hasSmallFixedVertexMaps {E D B : SSet.{u + 1}}
 lemma pullback_isKappaAccessibleFunctor_of_components {κ : Cardinal.{u}}
     {E D B X : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : HasSmallColimits E) (hD : HasSmallColimits D)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
     (G : X ⟶ pullback p q)
-    (he : IsKappaAccessibleFunctor κ (G ≫ pullback.fst p q))
-    (hd : IsKappaAccessibleFunctor κ (G ≫ pullback.snd p q)) :
-    IsKappaAccessibleFunctor κ G := by
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (G ≫ pullback.fst p q))
+    (hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (G ≫ pullback.snd p q)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G := by
   intro I hI hκ H c hc
   apply (pullback_isColimitCone_iff_components p q hp hE hD hpc hqc
     (mapJoinCocone G c)).mpr

@@ -48,7 +48,7 @@ lemma exists_alternatingColimit_compact_image
     (h : IsCardinalChangeBound κ μ)
     {C B : SSet.{u + 1}} [Quasicategory C] [Quasicategory B]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
-    (p : C ⟶ B) (hpc : IsKappaAccessibleFunctor κ p)
+    (p : C ⟶ B) (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (AlternatingIndex κ)) ⟶ C)
     (hF : ∀ i, Compact.IsKappaCompact.{u, u + 1} μ (F.app _ (ULift.up i)))
     (hFp : ∀ i, Compact.IsKappaCompact.{u, u + 1} μ (p.app _ (F.app _ (ULift.up i)))) :

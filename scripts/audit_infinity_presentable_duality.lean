@@ -79,10 +79,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.postcompositionUnit_identity_component
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightUnitVertex_isInitial
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightUnit_condition_iff_isInitial
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightAdjointUnitSubspace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightAdjointUnitSpace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSubspace_isContractibleKan
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSubspace
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSubspace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSpace_isContractibleKan
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightFiberComparison_unitCondition
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightFiberToAdjointUnitSpace
 #check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitLeft_preservesSmallColimits

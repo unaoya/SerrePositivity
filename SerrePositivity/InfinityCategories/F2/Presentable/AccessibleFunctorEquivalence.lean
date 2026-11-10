@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 
 /-!
 概要：accessible 関手の性質は、全自然同型と両側の同値による共役で不変。
@@ -18,7 +18,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 元の全関手同型で比較される関手は、accessibility を共有する。 -/
 lemma IsAccessibleFunctor.of_functorIso {C E : SSet.{u + 1}} [Quasicategory E]
-    {F G : C ⟶ E} (h : IsAccessibleFunctor F) (e : FunctorIso F G) : IsAccessibleFunctor G := by
+    {F G : C ⟶ E} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F) (e : FunctorIso F G) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor G := by
   obtain ⟨κ, hκ, h⟩ := h
   exact ⟨κ, hκ, h.of_functorIso e⟩
 
@@ -27,17 +27,17 @@ lemma isKappaAccessibleFunctor_iff_equivalence_conjugate (κ : Cardinal.{u})
     {A B C D : SSet.{u + 1}} [Quasicategory A] [Quasicategory B]
     [Quasicategory C] [Quasicategory D] (eC : QCatEquivalence A C)
     (eD : QCatEquivalence D B) (F : C ⟶ D) :
-    IsKappaAccessibleFunctor κ F ↔
-      IsKappaAccessibleFunctor κ (eC.hom ≫ F ≫ eD.hom) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (eC.hom ≫ F ≫ eD.hom) := by
   constructor
   · intro h
-    exact (equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
-      (h.comp (equivalence_preservesSmallKappaFilteredColimits κ eD.isQCatEquivalence))
+    exact (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eC.isQCatEquivalence).comp
+      (h.comp (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eD.isQCatEquivalence))
   · intro h
-    have hCi : IsKappaAccessibleFunctor κ eC.inv :=
-      equivalence_preservesSmallKappaFilteredColimits κ eC.symm.isQCatEquivalence
-    have hDi : IsKappaAccessibleFunctor κ eD.inv :=
-      equivalence_preservesSmallKappaFilteredColimits κ eD.symm.isQCatEquivalence
+    have hCi : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ eC.inv :=
+      _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eC.symm.isQCatEquivalence
+    have hDi : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ eD.inv :=
+      _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits κ eD.symm.isQCatEquivalence
     have h' := (hCi.comp h).comp hDi
     have e₀ : FunctorIso (eC.inv ≫ (eC.hom ≫ F ≫ eD.hom) ≫ eD.inv)
         (F ≫ eD.hom ≫ eD.inv) := by
@@ -53,7 +53,7 @@ lemma isAccessibleFunctor_iff_equivalence_conjugate
     {A B C D : SSet.{u + 1}} [Quasicategory A] [Quasicategory B]
     [Quasicategory C] [Quasicategory D] (eC : QCatEquivalence A C)
     (eD : QCatEquivalence D B) (F : C ⟶ D) :
-    IsAccessibleFunctor F ↔ IsAccessibleFunctor (eC.hom ≫ F ≫ eD.hom) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor (eC.hom ≫ F ≫ eD.hom) := by
   constructor
   · rintro ⟨κ, hκ, h⟩
     exact ⟨κ, hκ, (isKappaAccessibleFunctor_iff_equivalence_conjugate κ eC eD F).mp h⟩

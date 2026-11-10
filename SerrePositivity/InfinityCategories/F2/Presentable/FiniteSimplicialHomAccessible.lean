@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteSimplicialHomNative
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification
-public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
@@ -42,7 +42,7 @@ lemma finiteSimplicialHomInfinity_preserves_nerveCocone (K : SSet.{u}) [K.Finite
 
 /-- 元の空間 ∞ 圏の全内部 Hom は、任意の小さい filtered ∞ 添字で余極限を保つ。 -/
 lemma finiteSimplicialHomInfinity_isKappaAccessibleFunctor (K : SSet.{u}) [K.Finite] :
-    IsKappaAccessibleFunctor Cardinal.aleph0 (simplicialInternalHomInfinity K) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor Cardinal.aleph0 (simplicialInternalHomInfinity K) := by
   intro B hB hμB G c hc
   have : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩
   obtain ⟨J, o, f, hJ, _, hf⟩ := Ind.exists_cofinal_kappaFiltered_poset (κ := Cardinal.aleph0) B

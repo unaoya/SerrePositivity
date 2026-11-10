@@ -111,7 +111,7 @@ def compactSourceSliceDensityCocone (μ : Cardinal.{u})
 使われ方：点 fiber の小さい標準生成余錐の余極限性。 -/
 lemma compactSourceSliceDensityCocone_isColimit {μ : Cardinal.{u}}
     {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C)
-    (hcol : HasSmallColimits C) (a : (Δ[0] : SSet.{u + 1}) ⟶ C) :
+    (hcol : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (a : (Δ[0] : SSet.{u + 1}) ⟶ C) :
     IsColimitCone (compactSourceSliceDensityCocone μ a) := by
   have : Fact μ.IsRegular := ⟨hC.1⟩
   obtain ⟨A, hA, ⟨a₀⟩⟩ := hC.exists_smallCompactModel

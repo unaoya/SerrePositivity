@@ -30,7 +30,7 @@ local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶
 使われ方：引き戻し候補の各成分の compact 性から全 Hom の保存性を供給する。 -/
 lemma cosliceBaseChangeClassification_preservesKappaFilteredColimits
     {μ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (G : C ⟶ D) (x : C _⦋0⦌) (hG : IsKappaAccessibleFunctor μ G)
+    (G : C ⟶ D) (x : C _⦋0⦌) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hx : Compact.IsKappaCompact.{u, u + 1} μ (G.app (Opposite.op ⦋0⦌) x)) :
     Compact.PreservesKappaFilteredColimits.{u, u + 1} μ
       (leftStraighteningInfinityDiagram

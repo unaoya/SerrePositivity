@@ -24,10 +24,10 @@ variable {μ : Cardinal.{u}} [Fact μ.IsRegular] {A : SSet.{u}} [Quasicategory A
 
 /-- 全項が compact な閉包内射なら、元の任意の小さい余積は実像に属する。 -/
 lemma indArrowImage_compactCoproduct_colimit_mem
-    (edges : I → C _⦋1⦌) (hC : HasSmallColimits C)
+    (edges : I → C _⦋1⦌) (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hbound : IsCardinalChangeBound Cardinal.aleph0 μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} μ f →
       arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f)
@@ -41,7 +41,7 @@ lemma indArrowImage_compactCoproduct_colimit_mem
   classical
   have : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩
   let Y := (ihom (Δ[1] : SSet.{u + 1})).obj C
-  have hY : HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
+  have hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
   obtain ⟨F, d, hd, ⟨hi⟩, hFc, hFs⟩ :=
     compactArrowCoproduct_finitePartialDiagram edges hC hbound E hcompact hmem c hc
   have : IsCardinalFiltered (Finset B) Cardinal.aleph0 :=

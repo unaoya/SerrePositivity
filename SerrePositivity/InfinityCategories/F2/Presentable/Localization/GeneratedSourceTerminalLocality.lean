@@ -57,7 +57,7 @@ private lemma terminal_edgeMappingFiber_of_pushout
 
 /-- 元の任意の閉包内辺の前合成は、終対象の終域への全ての指定基点で可縮 fiber を持つ。 -/
 lemma generatedSource_terminal_edgeMappingFiber_contractible
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s)
     {a b : C _⦋0⦌} (f : C.Edge a b) (hf : f.edge ∈ generatedEdges edges)
     (g : (coconeMappingSpace (SSet.yonedaEquiv.symm a)
@@ -87,7 +87,7 @@ lemma generatedSource_terminal_edgeMappingFiber_contractible
 
 /-- 元の閉包内辺への局所性は、零次元に限らず全写像空間について成立する。 -/
 lemma generatedSource_terminal_edge_isLocalForHom
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s)
     {a b : C _⦋0⦌} (f : C.Edge a b) (hf : f.edge ∈ generatedEdges edges) :
     IsLocalForHom (Truncated.HomotopyCategory.homMk f.toTruncated)
@@ -100,7 +100,7 @@ lemma generatedSource_terminal_edge_isLocalForHom
 
 /-- 終対象の終域は、元の強飽和生成閉包の全辺に対する局所対象である。 -/
 lemma generatedSource_terminal_target_isLocalObject_generated
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s) :
     IsLocalObject (generatedEdges edges) ((generatedSourceTarget edges x).app _ s) := by
   intro e he
@@ -109,7 +109,7 @@ lemma generatedSource_terminal_target_isLocalObject_generated
 
 /-- 終対象の終域は、最初に指定された小さい生成族に対する局所対象である。 -/
 lemma generatedSource_terminal_target_isLocalObject
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s) :
     IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s) :=
   isLocalObject_of_subset (subset_stronglySaturatedClosure _ _)

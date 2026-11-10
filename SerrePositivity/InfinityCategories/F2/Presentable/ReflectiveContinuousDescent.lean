@@ -59,7 +59,7 @@ lemma reflectiveContinuous_isRepresentable_of_inversionLocality
 lemma presentableContinuous_isRepresentable_of_inversionLocality
     (hLocal : ∀ (A : SSet.{u}) [Quasicategory A],
       RepresentableInversionDetectsLocality (PresheafInfinity A))
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) :
     IsRepresentableSmallSpaceFunctor F := by
   obtain ⟨κ, hκ, A, hA, ⟨r⟩, ⟨e⟩⟩ := hC.exists_reflectiveIndModel

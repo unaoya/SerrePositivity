@@ -39,7 +39,7 @@ lemma compactDiagram_factorization_ind
         (e.map (sliceUnderProjection q)).edge =
           (Compact.coconeTransportLeg c (ULift.up i)).edge := by
   exact compactDiagram_factorization_of_fullSubcomplex hμ
-    (Ind.IsIndVertex μ A) (presheaf_hasSmallColimits A) hJ q
+    (Ind.IsIndVertex μ A) (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits A) hJ q
     (fun a ↦ indInclusion_preservesCompact μ (q.app _ a) (hq a)) D c
     (Ind.indInclusion_preservesSmallKappaFilteredColimits μ A K D c hc) t
 

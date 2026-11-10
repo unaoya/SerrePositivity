@@ -25,9 +25,9 @@ variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
 
 /-- Ind の有限 poset 全図式の元の射圏での指定余極限は、同じ実像に入る。 -/
 lemma indArrowImage_finitePoset_colimit_mem (edges : I → C _⦋1⦌)
-    (hC : HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (h : IsCardinalChangeBound κ μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hcover : ∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
@@ -42,8 +42,8 @@ lemma indArrowImage_finitePoset_colimit_mem (edges : I → C _⦋1⦌)
   let Y := (ihom (Δ[1] : SSet.{u + 1})).obj C
   let T := (SSet.uliftFunctor.{u + 1, u}).obj (nerve P)
   let H := G ≫ generatedArrowInclusion edges
-  have hY : HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
-  have hH : IsKappaAccessibleFunctor μ H := hG.comp
+  have hY : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits Y := functor_hasSmallColimits Δ[1] hC
+  have hH : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ H := hG.comp
     ((generatedArrowInclusion_preservesSmallColimits hC edges).isKappaAccessibleFunctor μ)
   obtain ⟨J, hJ, hμJ, a, d, hdv, hd⟩ :=
     Ind.indFinitePoset_has_singleFilteredDiagramPresentation μ D

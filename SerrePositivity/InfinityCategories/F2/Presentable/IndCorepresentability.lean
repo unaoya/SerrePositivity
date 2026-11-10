@@ -31,8 +31,8 @@ open Ind
 使われ方：一般の accessible な極限保存関手の余表現可能性。 -/
 lemma ind_corepresentable_of_continuous_preservesLimits
     (κ : Cardinal.{u}) [Fact κ.IsRegular] (A : SSet.{u}) [Quasicategory A]
-    (hC : HasSmallLimits (IndInfinity κ A)) (F : IndInfinity κ A ⟶ SpaceInfinity.{u})
-    (hF : IsKappaAccessibleFunctor κ F) (hFl : PreservesSmallLimits F) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits (IndInfinity κ A)) (F : IndInfinity κ A ⟶ SpaceInfinity.{u})
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F) (hFl : PreservesSmallLimits F) :
     ∃ x : (IndInfinity κ A) _⦋0⦌,
       Nonempty (FunctorIso (covariantRepresentableInfinity x)
         ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram)) := by

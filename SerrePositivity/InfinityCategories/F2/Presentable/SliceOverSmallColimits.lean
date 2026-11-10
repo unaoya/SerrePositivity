@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SliceOverColimitCreation
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 
 /-!
@@ -25,8 +25,8 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 規約：同じ元の対象を固定する。
 使われ方：元の対象上での可算同期。 -/
 lemma sliceOver_hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
-    HasSmallColimits (sliceOver x) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (sliceOver x) := by
   intro K a
   exact sliceOver_hasColimit_of_projection x a (hC K (a ≫ sliceOverProjection x))
 
@@ -35,8 +35,8 @@ lemma sliceOver_hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C]
 規約：元の射影自身の保存性。
 使われ方：対象上の列を底の表示へ戻す。 -/
 lemma sliceOverProjection_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C]
-    (hC : HasSmallColimits C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
-    PreservesSmallColimits (sliceOverProjection x) := by
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (sliceOverProjection x) := by
   intro K a c hc
   exact (sliceOver_isColimitCone_iff_projection x (hC K (a ≫ sliceOverProjection x)) c).mp hc
 
@@ -60,7 +60,7 @@ lemma sliceOverProjection_isKappaAccessibleFunctor {κ : Cardinal.{u}}
     {C : SSet.{u + 1}} [Quasicategory C]
     (hC : Ind.HasSmallKappaFilteredColimits κ C)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
-    IsKappaAccessibleFunctor κ (sliceOverProjection x) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (sliceOverProjection x) := by
   intro K hK hκ a c hc
   exact (sliceOver_isColimitCone_iff_projection x (hC K (a ≫ sliceOverProjection x)) c).mp hc
 
@@ -70,9 +70,9 @@ lemma sliceOverProjection_isKappaAccessibleFunctor {κ : Cardinal.{u}}
 使われ方：presentable cospan の対象上の表示の比較。 -/
 lemma sliceOverPostcomp_preservesSmallColimits
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : HasSmallColimits C) (p : C ⟶ D) (hp : PreservesSmallColimits p)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (p : C ⟶ D) (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
-    PreservesSmallColimits (sliceOverPostcomp x p) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (sliceOverPostcomp x p) := by
   intro K a c hc
   apply sliceOver_isColimitCone_of_projection (x ≫ p)
   have h := hp K (a ≫ sliceOverProjection x) (mapJoinCocone (sliceOverProjection x) c)
@@ -89,8 +89,8 @@ lemma sliceOverPostcomp_preservesSmallColimits
 lemma sliceOverPostcomp_isKappaAccessibleFunctor {κ : Cardinal.{u}}
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : Ind.HasSmallKappaFilteredColimits κ C) (p : C ⟶ D)
-    (hp : IsKappaAccessibleFunctor κ p) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
-    IsKappaAccessibleFunctor κ (sliceOverPostcomp x p) := by
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (sliceOverPostcomp x p) := by
   intro K hK hκ a c hc
   apply sliceOver_isColimitCone_of_projection (x ≫ p)
   have h := hp K (a ≫ sliceOverProjection x) (mapJoinCocone (sliceOverProjection x) c)

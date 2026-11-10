@@ -29,8 +29,8 @@ lemma componentCompactVertex_smallPosetColimit {κ μ : Cardinal.{u}}
     (I : Type u) [PartialOrder I] (hI : HasCardinalLT I μ)
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p]
-    (hf : PreservesSmallColimits (pullback.fst p q))
-    (hs : PreservesSmallColimits (pullback.snd p q))
+    (hf : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (pullback.fst p q))
+    (hs : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (pullback.snd p q))
     {F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ pullback p q}
     (c : JoinCocone F) (hc : IsColimitCone c)
     (hF : ∀ i, ComponentCompactVertex μ p q (F.app (Opposite.op ⦋0⦌) i)) :
@@ -56,8 +56,8 @@ lemma componentCompactVertex_smallPosetColimit_of_span {κ μ : Cardinal.{u}}
     (I : Type u) [PartialOrder I] (hI : HasCardinalLT I μ)
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : HasSmallColimits E) (hD : HasSmallColimits D)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
     {F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) ⟶ pullback p q}
     (c : JoinCocone F) (hc : IsColimitCone c)
     (hF : ∀ i, ComponentCompactVertex μ p q (F.app (Opposite.op ⦋0⦌) i)) :

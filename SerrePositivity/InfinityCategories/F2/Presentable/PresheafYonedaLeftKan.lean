@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaReflectorLeftKan
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafNativeDensityKan
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：余完備な標的への全前層圏からの Yoneda 左 Kan 延長を構成する。
@@ -26,7 +26,7 @@ variable {A : SSet.{u}} [Quasicategory A] {D : SSet.{u + 1}} [Quasicategory D]
 方針：同じ小さい elements 比較で局所図式を制限する。
 規約：全前層の任意の頂点を扱う。
 使われ方：全前層圏からの左 Kan 延長の存在。 -/
-lemma presheafYonedaLeftKanDiagram_hasColimit (hD : HasSmallColimits D)
+lemma presheafYonedaLeftKanDiagram_hasColimit (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
     (F₀ : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ D)
     (v : (PresheafInfinity A) _⦋0⦌) :
     HasColimit (leftKanDiagram (yonedaInfinityMap A) F₀ v) := by
@@ -41,7 +41,7 @@ lemma presheafYonedaLeftKanDiagram_hasColimit (hD : HasSmallColimits D)
 方針：各小 elements 図式の余極限を元の存在定理へ渡す。
 規約：全関手と指定単位の coherent な延長を得る。
 使われ方：Ind 包含の左随伴候補。 -/
-lemma presheaf_exists_yonedaLeftKan (hD : HasSmallColimits D)
+lemma presheaf_exists_yonedaLeftKan (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
     (F₀ : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ D) :
     ∃ (L : PresheafInfinity A ⟶ D)
       (β : SSet.Homotopy F₀ (yonedaInfinityMap A ≫ L)),

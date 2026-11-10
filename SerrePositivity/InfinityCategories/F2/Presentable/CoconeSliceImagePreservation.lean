@@ -27,9 +27,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：fiber の可算交互比較の指定余錐像。 -/
 lemma coconeSliceImageMap_preservesSmallColimits {K : SSet.{u + 1}}
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    {D : K ⟶ E} (c : JoinCocone D) (hE : HasSmallColimits E)
-    (p : E ⟶ B) (hp : PreservesSmallColimits p) :
-    PreservesSmallColimits (coconeSliceImageMap c p) := by
+    {D : K ⟶ E} (c : JoinCocone D) (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E)
+    (p : E ⟶ B) (hp : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (coconeSliceImageMap c p) := by
   exact (sliceOverPostcomp_preservesSmallColimits hE p hp _).comp
     (equivalence_preservesSmallColimits
       (qCatEquivalenceOfIso (eqToIso (congrArg sliceOver (coconeSliceImagePoint_eq c p)))).isQCatEquivalence)

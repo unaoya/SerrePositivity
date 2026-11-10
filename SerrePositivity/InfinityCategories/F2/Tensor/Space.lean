@@ -28,15 +28,15 @@ structure SpaceTensorData (M : E _⦋0⦌) where
   tensor : SpaceInfinity.{u} ⟶ E
   adjunction : QCatAdjunction tensor hom
 
-def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M := by
+def spaceTensorData (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M := by
   classical
   let spec := hE.isAccessible.exists_smallCovariantHom M
   let H := spec.choose
   let cert := Classical.choice spec.choose_spec
-  have hHa : IsAccessibleFunctor H := by
+  have hHa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor H := by
     simpa only [Category.id_comp] using
       smallHomComposite_isAccessible_native hE.isAccessible (𝟙 E)
-        (isAccessibleFunctor_id E) M H cert
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessibleFunctor_id E) M H cert
   have hHl : PreservesSmallLimits H := by
     simpa only [Category.id_comp] using smallHomComposite_preservesSmallLimits_native
       (𝟙 E) (adjunction_preservesSmallLimits (QCatAdjunction.refl E)) M H cert
@@ -45,12 +45,12 @@ def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : Spa
   exact ⟨H, cert, adj.choose, Classical.choice adj.choose_spec⟩
 
 /-- X ↦ X ⊗ M。全単体で定まる ∞ 関手。 -/
-def tensorSpaceFunctor (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) :
+def tensorSpaceFunctor (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌) :
     SpaceInfinity.{u} ⟶ E :=
   (spaceTensorData hE M).tensor
 
 /-- テンソルと Hom の随伴を図式圏に移した写像空間の比較。 -/
-def tensorSpaceFunctor_diagramHom (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌)
+def tensorSpaceFunctor_diagramHom (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (M : E _⦋0⦌)
     {K : SSet.{u + 1}} (X : K ⟶ SpaceInfinity.{u}) (F : K ⟶ E) :
     QCatEquivalence (pinchedHom (functorVertex (X ≫ tensorSpaceFunctor hE M)) (functorVertex F))
       (pinchedHom (functorVertex X) (functorVertex (F ≫ (spaceTensorData hE M).hom))) :=

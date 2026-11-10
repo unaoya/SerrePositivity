@@ -22,7 +22,7 @@ open HomotopyLimits
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 全生成射を含み、元の射圏で κ-filtered 余極限に閉じた accessible な実 Ind 像。 -/
-lemma exists_generatorContainingAccessibleIndImage (hC : IsPresentable C)
+lemma exists_generatorContainingAccessibleIndImage (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ (μ : Cardinal.{u}) (hμ : μ.IsRegular),
       letI : Fact μ.IsRegular := ⟨hμ⟩
@@ -30,9 +30,9 @@ lemma exists_generatorContainingAccessibleIndImage (hC : IsPresentable C)
       ∃ (A : SSet.{u}) (hA : Quasicategory A),
         letI := hA
         ∃ G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges,
-          IsFullyFaithful G ∧ IsKappaAccessibleFunctor μ G ∧
+          IsFullyFaithful G ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G ∧
           IsKappaAccessible μ (indArrowImageCategory edges G) ∧
-          IsKappaAccessibleFunctor μ (indArrowImageInclusion edges G) ∧
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (indArrowImageInclusion edges G) ∧
           ∀ j : I, IndArrowImageVertex edges G (generatorArrowVertex edges j) := by
   obtain ⟨μ, hμ, hσ, hCμ, A, hA, i, G, hi, hcompact, hG, ⟨e⟩, hgen⟩ :=
     exists_generatorContainingIndComparison hC edges σ
@@ -48,7 +48,7 @@ lemma exists_generatorContainingAccessibleIndImage (hC : IsPresentable C)
     ⟨VertexIso.map (FunctorIso.app e (ULift.up a)) (generatedArrowInclusion edges) ≪≫ ha⟩⟩
 
 /-- 同じ正則濃度で compact な閉包内の全射を含む accessible な実像を選べる。 -/
-lemma exists_compactCoveringAccessibleIndImage (hC : IsPresentable C)
+lemma exists_compactCoveringAccessibleIndImage (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ (μ : Cardinal.{u}) (hμ : μ.IsRegular),
       letI : Fact μ.IsRegular := ⟨hμ⟩
@@ -57,9 +57,9 @@ lemma exists_compactCoveringAccessibleIndImage (hC : IsPresentable C)
       ∃ (A : SSet.{u}) (hA : Quasicategory A),
         letI := hA
         ∃ G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges,
-          IsFullyFaithful G ∧ IsKappaAccessibleFunctor μ G ∧
+          IsFullyFaithful G ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G ∧
           IsKappaAccessible μ (indArrowImageCategory edges G) ∧
-          IsKappaAccessibleFunctor μ (indArrowImageInclusion edges G) ∧
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ (indArrowImageInclusion edges G) ∧
           (∀ f : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌,
             Compact.IsKappaCompact.{u, u + 1} μ f →
             arrowVertexEdge f ∈ generatedEdges edges → IndArrowImageVertex edges G f) ∧

@@ -38,7 +38,7 @@ def dgKInputIndNativeMap_idIso (A : PerfDGInput.{u, v} R) :
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   apply dgKInputIndFunctorIso_of_restriction R A A _ _
     (dgKInputIndNativeMap_preservesFilteredColimits R A A (𝟙 A))
-    (F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
       (qCatEquivalenceOfIso (Iso.refl _)).isQCatEquivalence)
   simpa only [hν, Functor.map_id, Category.id_comp, Category.comp_id] using!
     dgKInputIndNativeMap_restrictionIso R (𝟙 A)

@@ -40,7 +40,7 @@ def HasCompactTrianglePosetPresentation (κ : Cardinal.{u}) [Fact κ.IsRegular]
 
 /-- 全三角形の accessibility と三辺の compact 保存から、元の各三角形の同時表示。 -/
 lemma triangle_hasCompactPosetPresentation {κ : Cardinal.{u}} [Fact κ.IsRegular]
-    (hC : HasSmallColimits C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (hT : IsKappaAccessible κ ((ihom (Δ[2] : SSet.{u + 1})).obj C))
     (hfaces : ∀ t : ((ihom (Δ[2] : SSet.{u + 1})).obj C) _⦋0⦌,
       Compact.IsKappaCompact.{u, u + 1} κ t → ∀ j : Fin 3,
@@ -71,7 +71,7 @@ lemma triangle_hasCompactPosetPresentation {κ : Cardinal.{u}} [Fact κ.IsRegula
     rfl
 
 /-- 元の presentable 圏だけから、全三角形を同じ濃度で同時に表示できる。 -/
-lemma exists_compactTrianglePosetPresentations (hC : IsPresentable C) (σ : Cardinal.{u}) :
+lemma exists_compactTrianglePosetPresentations (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (σ : Cardinal.{u}) :
     ∃ (κ : Cardinal.{u}) (hκ : κ.IsRegular),
       letI : Fact κ.IsRegular := ⟨hκ⟩
       σ < κ ∧ ∀ τ : (Δ[2] : SSet.{u + 1}) ⟶ C,

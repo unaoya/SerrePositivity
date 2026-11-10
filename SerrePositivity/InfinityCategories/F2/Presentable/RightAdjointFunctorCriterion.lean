@@ -24,9 +24,9 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u})
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
-    (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) :
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D) (R : D ⟶ C) :
     (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔
-      IsAccessibleFunctor R ∧ PreservesSmallLimits R := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor R ∧ PreservesSmallLimits R := by
   constructor
   · rintro ⟨L, ⟨a⟩⟩
     exact ⟨rightAdjoint_isAccessible_of_spaceUniverseFullyFaithful hU

@@ -32,7 +32,7 @@ lemma spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact
     {L : SpaceInfinity.{u} ⟶ C} {R : C ⟶ SpaceInfinity.{u}} (a : QCatAdjunction L R)
     (hL : Compact.IsKappaCompact.{u, u + 1} μ
       (L.app (Opposite.op ⦋0⦌) (coherentNerveVertex pointKanObject.{u}))) :
-    IsKappaAccessibleFunctor μ R := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ R := by
   have h := (adjunction_hom_preservesKappaFilteredColimits_iff a μ
     (coherentNerveVertex pointKanObject.{u})).mpr hL
   apply isKappaAccessibleFunctor_of_spaceUniverse_image
@@ -48,7 +48,7 @@ lemma constantFunctor_rightAdjoint_isKappaAccessibleFunctor
     (B : SSet.{u}) [Quasicategory B] (hB : IsKappaSmall μ B)
     {R : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u}}
     (a : QCatAdjunction (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B)
-      SpaceInfinity.{u}) R) : IsKappaAccessibleFunctor μ R := by
+      SpaceInfinity.{u}) R) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ R := by
   apply spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact a
   rw [constantFunctorMap_vertex]
   exact smallConstantPointDiagram_isKappaCompact hμ B hB

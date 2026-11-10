@@ -3087,6 +3087,187 @@
       "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalence_relative_extension",
       "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
       "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightAdjointUnitSpace",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightAdjointUnitSubspace",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSubspace",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.initialVertices_isContractibleKan",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.initialVertices_isContractibleKan",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSpace_isContractibleKan",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSpace_isContractibleKan",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSubspace_isContractibleKan",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSubspace_isContractibleKan",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.rightAdjointUnitSubspace_kanComplex",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSubspace_kanComplex",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits.hasSmallKappaFilteredColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits.hasSmallKappaFilteredColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor.comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor.comp",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.comp",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor.comp",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.of_functorIso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor.of_functorIso",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.of_le",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor.of_le",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.hasSmallColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.hasSmallColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.isAccessible",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable.isAccessible",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isAccessibleFunctor",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isAccessibleFunctor",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits.isKappaAccessibleFunctor",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.equivalence_preservesSmallKappaFilteredColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.hasSmallKappaFilteredColimits_of_equivalence",
+      "new": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.hasSmallKappaFilteredColimits_of_equivalence",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.isAccessibleFunctor_id",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessibleFunctor_id",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_id",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessibleFunctor_id",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallLimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallLimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallColimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallColimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Presentable.space_hasSmallLimits",
+      "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.space_hasSmallLimits",
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
     }
   ],
   "modules": {
@@ -3160,7 +3341,11 @@
     "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution",
     "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence",
     "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction",
-    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal"
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Definition": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition",
+    "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor",
+    "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible"
   },
   "namespaces": {
     "SerrePositivity.KST.ProExcision.AWBoundaryCoordinates": {
@@ -3375,11 +3560,25 @@
     },
     "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal": {
       "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.Definition": {
+      "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor": {
+      "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits": {
+      "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories"
     }
   },
   "opens": {
     "SerrePositivity.KST.ProExcision": "SerrePositivity.KST.ProExcision",
     "SerrePositivity.KST.SConstruction": "SerrePositivity.KST.SConstruction",
-    "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.KST.LocalizingInvariants"
+    "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.KST.LocalizingInvariants",
+    "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.F2.Presentable",
+    "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality"
   }
 }

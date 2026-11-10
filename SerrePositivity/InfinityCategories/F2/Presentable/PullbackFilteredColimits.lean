@@ -22,7 +22,7 @@ variable {κ : Cardinal.{u}} {E D B : SSet.{u + 1}}
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
     (hE : Ind.HasSmallKappaFilteredColimits κ E)
     (hD : Ind.HasSmallKappaFilteredColimits κ D)
-    (hpc : IsKappaAccessibleFunctor κ p) (hqc : IsKappaAccessibleFunctor κ q)
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) (hqc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ q)
 
 include hp hE hD hpc hqc
 
@@ -72,7 +72,7 @@ lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}}
 規約：同じ κ の保存性だけを結論する。
 使われ方：accessible 引き戻し内での compact 性。 -/
 lemma pullback_fst_isKappaAccessibleFunctor :
-    IsKappaAccessibleFunctor κ (pullback.fst p q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (pullback.fst p q) := by
   intro K hK hκ r c hc
   exact ((pullback_filtered_isColimitCone_iff_components p q hp hE hD hpc hqc c).mp hc).1
 
@@ -81,7 +81,7 @@ lemma pullback_fst_isKappaAccessibleFunctor :
 規約：全小余極限保存への強化を要求しない。
 使われ方：点を第二脚とする fiber の compact 性。 -/
 lemma pullback_snd_isKappaAccessibleFunctor :
-    IsKappaAccessibleFunctor κ (pullback.snd p q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (pullback.snd p q) := by
   intro K hK hκ r c hc
   exact ((pullback_filtered_isColimitCone_iff_components p q hp hE hD hpc hqc c).mp hc).2
 
@@ -91,9 +91,9 @@ lemma pullback_snd_isKappaAccessibleFunctor :
 使われ方：accessible 引き戻しの普遍性と生成模型の包含。 -/
 lemma pullback_isKappaAccessibleFunctor_iff_components {X : SSet.{u + 1}}
     (G : X ⟶ pullback p q) :
-    IsKappaAccessibleFunctor κ G ↔
-      IsKappaAccessibleFunctor κ (G ≫ pullback.fst p q) ∧
-      IsKappaAccessibleFunctor κ (G ≫ pullback.snd p q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (G ≫ pullback.fst p q) ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (G ≫ pullback.snd p q) := by
   constructor
   · intro hG
     exact ⟨hG.comp (pullback_fst_isKappaAccessibleFunctor p q hp hE hD hpc hqc),

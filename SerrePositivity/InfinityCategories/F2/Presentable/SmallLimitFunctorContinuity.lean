@@ -27,7 +27,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 使われ方：定値図式関手の右随伴の構成。 -/
 lemma constantFunctorMap_preservesSmallColimits (A : SSet.{u + 1})
     {C : SSet.{u + 1}} [Quasicategory C] :
-    PreservesSmallColimits (constantFunctorMap A C) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (constantFunctorMap A C) := by
   intro J D c hc
   apply isColimitCone_of_pointwise
   intro a
@@ -61,7 +61,7 @@ lemma exists_kappaContinuousSpaceLimitFunctor
         SpaceInfinity.{u},
       Nonempty (QCatAdjunction
         (constantFunctorMap ((SSet.uliftFunctor.{u + 1, u}).obj B) SpaceInfinity.{u}) R) ∧
-      IsKappaAccessibleFunctor μ R := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ R := by
   obtain ⟨R, ⟨a⟩⟩ := exists_spaceLimitFunctor B
   exact ⟨R, ⟨a⟩, constantFunctor_rightAdjoint_isKappaAccessibleFunctor hμ B hB a⟩
 

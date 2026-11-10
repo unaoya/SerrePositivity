@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafRepresentation
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
@@ -65,7 +65,7 @@ lemma SendsSmallColimitsToLimits.of_functorIso {C : SSet.{u + 1}}
 使われ方：前層反映による一般の presentable 圏の表現可能性。 -/
 lemma SendsSmallColimitsToLimits.precomp_op {C D : SSet.{u + 1}}
     {F : D.op ⟶ SpaceInfinity.{u}} (hF : SendsSmallColimitsToLimits F)
-    (L : C ⟶ D) (hL : PreservesSmallColimits L) :
+    (L : C ⟶ D) (hL : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L) :
     SendsSmallColimitsToLimits (SSet.opFunctor.map L ≫ F) := by
   intro K a c hc
   apply (F2.isLimitCone_iff_of_cone_val_eq

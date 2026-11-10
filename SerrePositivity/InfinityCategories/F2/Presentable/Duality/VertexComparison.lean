@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 規約：元の関手の頂点をそのまま使う。
 使われ方：選んだ左随伴の頂点への回収。 -/
 def leftFunctorVertex {C D : PresentableInfinityObject.{u}}
-    (F : C.obj ⟶ D.obj) (hF : PreservesSmallColimits F) : PrLFunctorSpace C D _⦋0⦌ :=
+    (F : C.obj ⟶ D.obj) (hF : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits F) : PrLFunctorSpace C D _⦋0⦌ :=
   ⟨(functorVertexEquiv C.obj D.obj) F, by
     intro f
     have hf : f = 𝟙 _ := Subsingleton.elim _ _
@@ -35,7 +35,7 @@ def leftFunctorVertex {C D : PresentableInfinityObject.{u}}
 規約：accessibility と小極限保存を同時に保持する。
 使われ方：選んだ右随伴の頂点への回収。 -/
 def rightFunctorVertex {C D : PresentableInfinityObject.{u}}
-    (F : C.obj ⟶ D.obj) (hF : IsAccessibleFunctor F ∧ PreservesSmallLimits F) :
+    (F : C.obj ⟶ D.obj) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F ∧ PreservesSmallLimits F) :
     PrRFunctorSpace C D _⦋0⦌ :=
   ⟨(functorVertexEquiv C.obj D.obj) F, by
     intro f

@@ -34,9 +34,9 @@ lemma sourceCoslice_hasColimit_iff {K L : SSet.{u + 1}} {p : K ⟶ C}
     exact ⟨e.inv.app _ c, e.symm.map_isInitialVertex hc⟩
 
 /-- 任意の元の小さい固定図式の全 coslice も、小余完備性を受け継ぐ。 -/
-lemma smallDiagramCoslice_hasSmallColimits (hC : HasSmallColimits C)
+lemma smallDiagramCoslice_hasSmallColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     {K : SSet.{u}} (p : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) :
-    HasSmallColimits (sliceUnder p) := by
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (sliceUnder p) := by
   intro L D
   apply (sourceCoslice_hasColimit_iff D).mpr
   let U := sliceUnderUncurry D
@@ -48,8 +48,8 @@ lemma smallDiagramCoslice_hasSmallColimits (hC : HasSmallColimits C)
   exact (hasColimit_iff_of_trivialRestriction U j).mpr (hC (join K L) (j ≫ U))
 
 /-- 元の圏が全小余極限を持てば、各元の始域の全 coslice も全小余極限を持つ。 -/
-lemma sourceCoslice_hasSmallColimits (hC : HasSmallColimits C) (x : C _⦋0⦌) :
-    HasSmallColimits (sliceUnder (SSet.yonedaEquiv.symm x)) := by
+lemma sourceCoslice_hasSmallColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (x : C _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits (sliceUnder (SSet.yonedaEquiv.symm x)) := by
   intro K D
   apply (sourceCoslice_hasColimit_iff D).mpr
   let U := sliceUnderUncurry D

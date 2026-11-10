@@ -28,7 +28,7 @@ lemma exists_rightAdjoint_of_colimitPreserving_representability
     {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y]
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hY : IsAccessible Y)
     (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H →
-      IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : PreservesSmallColimits L) :
+      IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L) :
     ∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R) := by
   apply exists_rightAdjoint_of_contravariantHom_representable L
   intro y
@@ -49,7 +49,7 @@ lemma exists_rightAdjoint_iff_preservesSmallColimits_of_representability
     (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hY : IsAccessible Y)
     (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H →
       IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) :
-    (∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := by
+    (∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)) ↔ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits L := by
   constructor
   · rintro ⟨R, ⟨a⟩⟩
     exact adjunction_preservesSmallColimits a

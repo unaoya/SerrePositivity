@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
 
 /-!
 概要：元の右射影の固定ファイバーの比較は指定単位の随伴条件を保つ。
@@ -77,7 +77,7 @@ lemma rightFiberComparison_unitCondition (C D : PresentableInfinityObject.{u})
 使われ方：固定右の可縮単位空間との同型の順方向。 -/
 def rightFiberToAdjointUnitSubspace (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    vertexFiber (adjointUnitRight C D) w ⟶ RightAdjointUnitSubspace C D w.val :=
+    vertexFiber (adjointUnitRight C D) w ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSubspace C D w.val :=
   fullSubcomplexLift _ (adjointUnitRightFiberToCoslice C D w)
     (rightFiberComparison_unitCondition C D w)
 
@@ -87,7 +87,7 @@ def rightFiberToAdjointUnitSubspace (C D : PresentableInfinityObject.{u})
 使われ方：固定右単位空間との同型の順方向。 -/
 def rightFiberToAdjointUnitSpace (C D : PresentableInfinityObject.{u})
     (w : PrRMappingSpace D C _⦋0⦌) :
-    vertexFiber (adjointUnitRight C D) w ⟶ RightAdjointUnitSpace C D w.val :=
+    vertexFiber (adjointUnitRight C D) w ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w.val :=
   (quasicategoryCoreIsoOfKan _).inv ≫ quasicategoryCoreMap (rightFiberToAdjointUnitSubspace C D w)
 
 end SerrePositivity.InfinityCategories.F2.Presentable.Duality

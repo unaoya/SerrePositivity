@@ -46,8 +46,8 @@ lemma nonempty_componentCompactOver_cocone_of_smallQuasicategory
     (K : SSet.{u}) [Quasicategory K] (hK : IsKappaSmall μ K)
     {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : HasSmallColimits E) (hD : HasSmallColimits D)
-    (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p) (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q)
     (x : (Δ[0] : SSet.{u + 1}) ⟶ pullback p q)
     (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ componentCompactOver μ p q x) :
     Nonempty (JoinCocone r) := by

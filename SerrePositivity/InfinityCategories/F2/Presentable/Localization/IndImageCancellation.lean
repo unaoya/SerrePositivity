@@ -24,10 +24,10 @@ variable {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular]
 
 /-- 元の最初の辺と合成辺の実像への所属から、元の最後の辺の所属を得る。 -/
 lemma indArrowImage_cancel_left (edges : I → C _⦋1⦌)
-    (hC : HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hCμ : IsKappaAccessible μ C)
     (h : IsCardinalChangeBound κ μ)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
-    (hff : IsFullyFaithful G) (hG : IsKappaAccessibleFunctor μ G)
+    (hff : IsFullyFaithful G) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor μ G)
     (hcompact : ∀ a : A _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ
       ((Ind.indYoneda μ A ≫ G ≫ generatedArrowInclusion edges).app _ (ULift.up a)))
     (hidentity : ∀ x : C _⦋0⦌, Compact.IsKappaCompact.{u, u + 1} μ x →

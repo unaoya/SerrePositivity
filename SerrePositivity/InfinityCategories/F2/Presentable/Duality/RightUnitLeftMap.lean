@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
 
 /-!
 概要：固定右の随伴単位空間の左関手を、元の Pr^L 写像空間へ回収する。
@@ -38,16 +38,16 @@ lemma kanCoreMap_ι {A X : SSet.{u}} [KanComplex A] (f : A ⟶ X) :
   rw [Iso.inv_hom_id, Category.id_comp]
 
 instance rightAdjointUnitSpace_kanComplex (C D : PresentableInfinityObject.{u})
-    (w : PrRFunctorSpace D C _⦋0⦌) : KanComplex (RightAdjointUnitSpace C D w) :=
-  (rightAdjointUnitSpace_isContractibleKan C D w).kanComplex
+    (w : PrRFunctorSpace D C _⦋0⦌) : KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w) :=
+  (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.rightAdjointUnitSpace_isContractibleKan C D w).kanComplex
 
 /-- 概要：固定右の随伴単位空間から元の実単位の coslice への包含。
 方針：core と指定単位条件の全部分複体の包含を合成する。
 規約：左右の関手と実単位を全次数で保持する。
 使われ方：元の随伴対応の右ファイバーへ戻す。 -/
 def rightAdjointUnitUnderlying (C D : PresentableInfinityObject.{u})
-    (w : PrRFunctorSpace D C _⦋0⦌) : RightAdjointUnitSpace C D w ⟶ RightUnitCoslice C D w :=
-  (quasicategoryCore (RightAdjointUnitSubspace C D w)).ι ≫
+    (w : PrRFunctorSpace D C _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w ⟶ RightUnitCoslice C D w :=
+  (quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSubspace C D w)).ι ≫
     (fullSubcomplexOnVertices (RightUnitCoslice C D w) (fun v ↦
       UnitMappingSpaceCondition (F := rightUnitLeftFunctor v)
         (G := rightVertexFunctor w) (rightUnitHom v))).ι
@@ -58,7 +58,7 @@ def rightAdjointUnitUnderlying (C D : PresentableInfinityObject.{u})
 使われ方：Pr^L の保存条件への持ち上げ。 -/
 def rightAdjointUnitLeftUnderlying (C D : PresentableInfinityObject.{u})
     (w : PrRFunctorSpace D C _⦋0⦌) :
-    RightAdjointUnitSpace C D w ⟶ (ihom C.obj).obj D.obj :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w ⟶ (ihom C.obj).obj D.obj :=
   rightAdjointUnitUnderlying C D w ≫ pullback.snd _ ((ihom C.obj).map (rightVertexFunctor w))
 
 /-- 概要：固定右の随伴単位の左関手は全小余極限を保つ。
@@ -66,8 +66,8 @@ def rightAdjointUnitLeftUnderlying (C D : PresentableInfinityObject.{u})
 規約：元の presentable 性と指定単位条件だけから導く。
 使われ方：元の Pr^L 関手圏への持ち上げの頂点条件。 -/
 lemma rightAdjointUnitLeft_preservesSmallColimits {C D : PresentableInfinityObject.{u}}
-    {w : PrRFunctorSpace D C _⦋0⦌} (x : RightAdjointUnitSpace C D w _⦋0⦌) :
-    PreservesSmallColimits (rightUnitLeftFunctor x.val.val) := by
+    {w : PrRFunctorSpace D C _⦋0⦌} (x : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits (rightUnitLeftFunctor x.val.val) := by
   exact (exists_rightAdjoint_iff_preservesSmallColimits C.isPresentable D.isPresentable _).mp
     ⟨rightVertexFunctor w, ⟨qcatAdjunctionOfUnitMappingSpaceCondition
       (rightUnitHom x.val.val) (fullSubcomplexOnVertices_vertex x.val)⟩⟩
@@ -77,7 +77,7 @@ lemma rightAdjointUnitLeft_preservesSmallColimits {C D : PresentableInfinityObje
 規約：元の全高次の関手自然変換を保持する。
 使われ方：元の Pr^L 写像空間への回収。 -/
 def rightAdjointUnitLeftFunctorMap (C D : PresentableInfinityObject.{u})
-    (w : PrRFunctorSpace D C _⦋0⦌) : RightAdjointUnitSpace C D w ⟶ PrLFunctorSpace C D :=
+    (w : PrRFunctorSpace D C _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w ⟶ PrLFunctorSpace C D :=
   fullSubcomplexLift _ (rightAdjointUnitLeftUnderlying C D w)
     (fun x ↦ rightAdjointUnitLeft_preservesSmallColimits x)
 
@@ -86,7 +86,7 @@ def rightAdjointUnitLeftFunctorMap (C D : PresentableInfinityObject.{u})
 規約：e1 の元の写像空間を標的とする単体集合の射。
 使われ方：元の右ファイバーとの同型の逆射の左成分。 -/
 def rightAdjointUnitLeft (C D : PresentableInfinityObject.{u})
-    (w : PrRFunctorSpace D C _⦋0⦌) : RightAdjointUnitSpace C D w ⟶ PrLMappingSpace C D :=
+    (w : PrRFunctorSpace D C _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightAdjointUnitSpace C D w ⟶ PrLMappingSpace C D :=
   kanCoreMap (rightAdjointUnitLeftFunctorMap C D w)
 
 /-- 概要：回収した左関手を全関手圏へ含めると元の左関手の族。

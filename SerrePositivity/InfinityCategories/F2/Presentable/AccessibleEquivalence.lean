@@ -23,7 +23,7 @@ lemma IsKappaAccessible.of_equivalence {κ : Cardinal.{u}}
     (h : IsKappaAccessible κ C) (e : QCatEquivalence C E) : IsKappaAccessible κ E := by
   obtain ⟨hκ, hC, A, hA, i, hi⟩ := h
   have := hA
-  exact ⟨hκ, hasSmallKappaFilteredColimits_of_equivalence e hC,
+  exact ⟨hκ, _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.hasSmallKappaFilteredColimits_of_equivalence e hC,
     A, hA, i ≫ e.hom, hi.of_equivalence e⟩
 
 /-- 元の同値は、同じ濃度についての κ-accessibility を保存・反映する。 -/

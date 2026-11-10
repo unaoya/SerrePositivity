@@ -56,7 +56,7 @@ private lemma hasPreservedEmptyColimit_of_initial {X Y : SSet.{u}}
 variable {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 
 /-- 固定始域圏の有限全図式には、全 coslice に保存される余極限がある。 -/
-lemma generatedSource_hasPreservedFiniteColimit (hC : HasSmallColimits C)
+lemma generatedSource_hasPreservedFiniteColimit (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ generatedSourceCategory edges x) :
     Ind.HasPreservedColimit (generatedSourceInclusion edges x) D := by
@@ -78,7 +78,7 @@ lemma generatedSource_hasPreservedFiniteColimit (hC : HasSmallColimits C)
     exact generatedSource_hasNerveColimit hC edges x FiniteSpanIndex hJ (e.hom ≫ p)
 
 /-- 同じ固定始域圏は、元の大宇宙の全有限余極限を持つ。 -/
-lemma generatedSource_hasFiniteColimits (hC : HasSmallColimits C)
+lemma generatedSource_hasFiniteColimits (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌) : HasFiniteColimits (generatedSourceCategory edges x) := by
   constructor
   intro K hK D
@@ -86,7 +86,7 @@ lemma generatedSource_hasFiniteColimits (hC : HasSmallColimits C)
   exact ⟨c, hc⟩
 
 /-- 元の全 coslice への包含は、任意の指定有限余極限余錐を保存する。 -/
-lemma generatedSourceInclusion_preservesFiniteColimit (hC : HasSmallColimits C)
+lemma generatedSourceInclusion_preservesFiniteColimit (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ generatedSourceCategory edges x)
     (c : JoinCocone D) (hc : IsColimitCone c) :
@@ -94,7 +94,7 @@ lemma generatedSourceInclusion_preservesFiniteColimit (hC : HasSmallColimits C)
   (generatedSource_hasPreservedFiniteColimit hC edges x K D).map_isColimit c hc
 
 /-- 周囲の全 coslice の任意の指定有限余極限も、同じ閉包内に留まる。 -/
-lemma generatedSource_finite_colimit_mem (hC : HasSmallColimits C)
+lemma generatedSource_finite_colimit_mem (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
     (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ generatedSourceCategory edges x)
     (c : JoinCocone (D ≫ generatedSourceInclusion edges x)) (hc : IsColimitCone c) :

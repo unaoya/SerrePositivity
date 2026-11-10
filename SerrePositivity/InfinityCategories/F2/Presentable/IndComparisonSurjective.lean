@@ -26,7 +26,7 @@ lemma indComparison_isEssentiallySurjective {κ : Cardinal.{u}}
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
     {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C}
     (hp : ∀ x, HasKappaFilteredGeneratorPresentation κ i x)
-    {G : IndInfinity κ A ⟶ C} (hG : IsKappaAccessibleFunctor κ G)
+    {G : IndInfinity κ A ⟶ C} (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G)
     (e : FunctorIso (indYoneda κ A ≫ G) i) : IsEssentiallySurjective G := by
   intro x
   obtain ⟨I, hI, hκ, a, c, hc, hcol⟩ := hp x
@@ -49,7 +49,7 @@ lemma IsKappaAccessible.exists_surjective_indComparison {κ : Cardinal.{u}}
     ∃ (A : SSet.{u}) (hA : Quasicategory A),
       letI := hA
       ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (G : IndInfinity κ A ⟶ C),
-        IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ G ∧
+        IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ G ∧
           Nonempty (FunctorIso (indYoneda κ A ≫ G) i) ∧ IsEssentiallySurjective G := by
   obtain ⟨A, hA, i, G, hi, hG, ⟨e⟩⟩ := h.exists_indComparison
   have := hA

@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 lemma fiber_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
     (p : E ⟶ B) (x : (Δ[0] : SSet.{u + 1}) ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : Ind.HasSmallKappaFilteredColimits κ E) (hpc : IsKappaAccessibleFunctor κ p) :
+    (hE : Ind.HasSmallKappaFilteredColimits κ E) (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) :
     Ind.HasSmallKappaFilteredColimits κ (pullback p x) :=
   pullback_hasSmallKappaFilteredColimits p x hp hE
     (point_hasSmallColimits.hasSmallKappaFilteredColimits κ) hpc
@@ -39,8 +39,8 @@ lemma fiber_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegula
 lemma fiber_fst_isKappaAccessibleFunctor {κ : Cardinal.{u}} (hκ : κ.IsRegular)
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
     (p : E ⟶ B) (x : (Δ[0] : SSet.{u + 1}) ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hE : Ind.HasSmallKappaFilteredColimits κ E) (hpc : IsKappaAccessibleFunctor κ p) :
-    IsKappaAccessibleFunctor κ (pullback.fst p x) :=
+    (hE : Ind.HasSmallKappaFilteredColimits κ E) (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ p) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ (pullback.fst p x) :=
   pullback_fst_isKappaAccessibleFunctor p x hp hE
     (point_hasSmallColimits.hasSmallKappaFilteredColimits κ) hpc
     (pointMap_isKappaAccessibleFunctor hκ x)
@@ -53,7 +53,7 @@ lemma exists_accessibleFiber_compactCandidate
     {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
     (hE : IsAccessible E) (hB : IsAccessible B)
     (p : E ⟶ B) (x : (Δ[0] : SSet.{u + 1}) ⟶ B) (hp : F1B.EquivalenceLifting p)
-    (hpc : IsAccessibleFunctor p) (σ : Cardinal.{u}) :
+    (hpc : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor p) (σ : Cardinal.{u}) :
     letI := hp.innerFibration
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       ∃ (A : SSet.{u}) (hA : Quasicategory A),

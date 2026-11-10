@@ -27,7 +27,7 @@ lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted
     (hD : ∀ (I : Type u) [Finite I]
       (p : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete I)) ⟶ D), HasColimit p)
     (G : SigmaPresheafInfinity C ⟶ D) :
-    PreservesSmallColimits G ↔
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔
       PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧
         PreservesSmallSiftedColimits G := by
   constructor
@@ -47,8 +47,8 @@ lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted
 lemma sigma_preservesSmallColimits_iff_yoneda_of_cocomplete
     {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D]
     (hC : ∀ (J : Type u) [Finite J] (p : nerve (Discrete J) ⟶ C.op), HasLimit p)
-    (hD : HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) :
-    PreservesSmallColimits G ↔
+    (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits D) (G : SigmaPresheafInfinity C ⟶ D) :
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔
       PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) ∧
         PreservesSmallSiftedColimits G :=
   sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC
@@ -67,7 +67,7 @@ lemma sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_of_filtered_geome
     (hDg : HasSmallGeometricRealizations D) (G : SigmaPresheafInfinity C ⟶ D)
     (hGf : PreservesSmallKappaFilteredColimits Cardinal.aleph0 G)
     (hGg : PreservesSmallGeometricRealizations G) :
-    PreservesSmallColimits G ↔
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits G ↔
       PreservesFiniteCoproductsOnBase (sigmaYonedaInfinityMap C ≫ G) := by
   have hs := sigma_preservesSmallSiftedColimits_of_filtered_geometric hC hDf hDg G hGf hGg
   exact (sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted hC hDcop G).trans

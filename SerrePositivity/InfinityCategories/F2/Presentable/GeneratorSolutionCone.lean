@@ -29,7 +29,7 @@ lemma exists_generatorSolutionCone {κ : Cardinal.{u}}
     {A : SSet.{u}} [Quasicategory A] {C : SSet.{u + 1}} [Quasicategory C]
     {i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C}
     (hi : IsKappaCompactGenerating κ i) (F : C ⟶ SpaceInfinity.{u})
-    (hC : HasSmallLimits C) (hFa : IsKappaAccessibleFunctor κ F)
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C) (hFa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F)
     (hFl : PreservesSmallLimits F) :
     ∃ a : A _⦋0⦌, ∃ d : JoinCone (smallSolutionLift i F),
       (leftUnstraighteningProjection F).app (Opposite.op ⦋0⦌) d.vertex =
@@ -50,12 +50,12 @@ lemma exists_generatorSolutionCone {κ : Cardinal.{u}}
 使われ方：余表現可能性に必要な小さい全解と生成解の同時選択。 -/
 lemma exists_accessibleGeneratorSolutionCone
     {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u})
-    (hCa : IsAccessible C) (hCl : HasSmallLimits C)
-    (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
+    (hCa : IsAccessible C) (hCl : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits C)
+    (hFa : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) :
     ∃ (κ : Cardinal.{u}) (A : SSet.{u}) (hA : Quasicategory A),
       letI := hA
       ∃ i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C,
-        κ.IsRegular ∧ IsKappaCompactGenerating κ i ∧ IsKappaAccessibleFunctor κ F ∧
+        κ.IsRegular ∧ IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F ∧
           ∃ a : A _⦋0⦌, ∃ d : JoinCone (smallSolutionLift i F),
             (leftUnstraighteningProjection F).app (Opposite.op ⦋0⦌) d.vertex =
               i.app (Opposite.op ⦋0⦌) (ULift.up a) := by
@@ -63,7 +63,7 @@ lemma exists_accessibleGeneratorSolutionCone
   obtain ⟨κ, hμκ, hκC⟩ := hCa.exists_larger μ
   obtain ⟨A, hA, i, hi⟩ := hκC.2.2
   have := hA
-  have hκF : IsKappaAccessibleFunctor κ F := hμF.of_le hμκ.le
+  have hκF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F := hμF.of_le hμκ.le
   exact ⟨κ, A, hA, i, hκC.1, hi, hκF, exists_generatorSolutionCone hi F hCl hκF hFl⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable

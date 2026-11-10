@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHomComparison
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 
@@ -53,7 +53,7 @@ lemma isKappaCompact_image_of_equivalence_universe {κ : Cardinal.{u}}
   have h := (Compact.isKappaCompact_iff_of_iso (κ := κ) (e.homInvIso.app x)).mpr hx
   exact isKappaCompact_of_fullyFaithful_image_universe e.inv
     e.symm.isQCatEquivalence.isFullyFaithful
-    (fun _ _ _ _ c hc ↦ (equivalence_isColimitCone_iff e.symm.isQCatEquivalence c).mp hc) _ h
+    (fun _ _ _ _ c hc ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.symm.isQCatEquivalence c).mp hc) _ h
 
 /-- 概要：元の同値は宇宙を分離した κ-compact 性を保存・反映する。
 方針：同じ像の保存と充満忠実な同値による反映を結合する。
@@ -66,6 +66,6 @@ lemma isKappaCompact_iff_equivalence_universe {κ : Cardinal.{u}}
       Compact.IsKappaCompact.{u, v} κ (e.hom.app (Opposite.op ⦋0⦌) x) :=
   ⟨isKappaCompact_image_of_equivalence_universe e x,
     isKappaCompact_of_fullyFaithful_image_universe e.hom e.isQCatEquivalence.isFullyFaithful
-      (fun _ _ _ _ c hc ↦ (equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc) x⟩
+      (fun _ _ _ _ c hc ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc) x⟩
 
 end SerrePositivity.InfinityCategories.F2.Presentable

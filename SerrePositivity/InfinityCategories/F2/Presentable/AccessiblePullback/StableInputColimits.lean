@@ -41,7 +41,7 @@ lemma stableInputPostcomp_base_projection {K C B : SSet.{u}} (q : K ⟶ C) (f : 
 lemma stableInputPostcomp_orderBot_isColimitCone
     {κ : Cardinal.{u}} {K C B : SSet.{u + 1}}
     [Quasicategory K] [Quasicategory C] [Quasicategory B]
-    (q : K ⟶ C) (f : C ⟶ B) (hf : IsKappaAccessibleFunctor κ f)
+    (q : K ⟶ C) (f : C ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ f)
     (r : K ⟶ B) (hq : q ≫ f = r) (z : JoinCocone q) (t : JoinCocone r)
     (hz : z.val ≫ f = t.val)
     (I : Type u) [Preorder I] [OrderBot I] [IsKappaFiltered κ (nerve I)]

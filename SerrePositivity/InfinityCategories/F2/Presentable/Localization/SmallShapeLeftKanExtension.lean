@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPieceLeftKanExtension
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 /-!
 概要：小さい全形状間の写像に沿う、余完備標的への native 左 Kan 拡張を構成する。
@@ -22,7 +22,7 @@ open HomotopyLimits
 /-- 小さい元の写像の持ち上げに沿う局所 Kan 図式は、同じ小余極限を持つ。 -/
 lemma smallShape_leftKanDiagram_hasColimit
     {K L : SSet.{u}} [Quasicategory K] [Quasicategory L] (δ : K ⟶ L)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
     (v : ((SSet.uliftFunctor.{u + 1, u}).obj L) _⦋0⦌) :
     HasColimit (leftKanDiagram ((SSet.uliftFunctor.{u + 1, u}).map δ) F v) := by
@@ -42,7 +42,7 @@ lemma smallShape_leftKanDiagram_hasColimit
 /-- 元の小さい写像に沿う coherent な全左 Kan 拡張が存在する。 -/
 lemma exists_smallShape_leftKanExtension
     {K L : SSet.{u}} [Quasicategory K] [Quasicategory L] (δ : K ⟶ L)
-    {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C)
+    {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C)
     (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) :
     ∃ (G : (SSet.uliftFunctor.{u + 1, u}).obj L ⟶ C)
       (β : SSet.Homotopy F ((SSet.uliftFunctor.{u + 1, u}).map δ ≫ G)),

@@ -26,7 +26,7 @@ variable {μ : Cardinal.{u}} [Fact μ.IsRegular] {C : SSet.{u + 1}} [Quasicatego
 variable (hμ : Cardinal.aleph0 < μ)
   [Quasicategory I₀] [IsKappaFiltered μ I₀]
   [Quasicategory I₁] [IsKappaFiltered μ I₁]
-  (hC : HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
+  (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (hc₀ : IsColimitCone c₀) (hc₁ : IsColimitCone c₁)
   (hD₀ : ∀ i : I₀ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₀.app _ (ULift.up i)))
   (hD₁ : ∀ i : I₁ _⦋0⦌, IsKappaCompact.{u, u + 1} μ (D₁.app _ (ULift.up i)))
   (s₀ : CompactPresentationComparison μ D₀ D₁ c₀ c₁)
