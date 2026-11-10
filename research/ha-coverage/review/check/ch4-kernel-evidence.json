@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
+  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -49,6 +49,33 @@
       "ha_page": 495,
       "declarations": [
         "SerrePositivity.Quillen.pushoutProduct_cofibration"
+      ]
+    },
+    "4.5.4.1": {
+      "ha_page": 606,
+      "declarations": [
+        "CategoryTheory.MonoidalCategory.Arrow.pushoutProduct",
+        "CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory"
+      ]
+    },
+    "4.5.4.2": {
+      "ha_page": 606,
+      "declarations": [
+        "SerrePositivity.Quillen.HasMonoidAxiom",
+        "SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences"
+      ]
+    },
+    "4.5.4.3": {
+      "ha_page": 607,
+      "declarations": [
+        "SerrePositivity.Quillen.pushoutProduct_cofibration"
+      ]
+    },
+    "4.5.4.10": {
+      "ha_page": 608,
+      "declarations": [
+        "SerrePositivity.Quillen.pushoutProduct_cofibration",
+        "SerrePositivity.Quillen.tensor_isCofibrant"
       ]
     }
   },

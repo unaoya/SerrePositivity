@@ -33,3 +33,15 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.8.13,none,,厳密な dg 代数のモデル構造と、通常圏の dg operad 代数の忘却が sifted 余極限を作る定理を確認した。局所化後の忘却が N(C) 型のホモトピー余極限を保存する型は見つからなかった。,,not_found,
 4.1.8.14,none,,通常圏のモノイド対象の忘却と右 Quillen の例を確認したが、対象が定める単体的モノイド図式への関手 G の左随伴、射影モデル構造に対する Quillen 随伴、右導来の本質像の判定は見つからなかった。,,not_found,
 4.1.8.15,none,,余ファイブラントな対象によるテンソルの左 Quillen 性を確認した。全対象が余ファイブラントな場合の左固有性・余ファイブラント対象間の射による生成と、Cartesian テンソルのモノイド公理をまとめる宣言は見つからなかった。,,not_found,
+4.5.4.1,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（Lean は二項構成に対称性も全余極限も要求しない。矢印圏の対称構造は始対象を持つ Cartesian 閉の場合）。結論：HA の二項押し出し積と、特殊な場合の矢印圏の対称構造に一致。Σₙ 同変反復と余不変量の写像 σⁿ は型に含まれない。,,found,component
+4.5.4.2,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。,,found,component
+4.5.4.3,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。,,found,special
+4.5.4.4,none,,余ファイブラントな固定対象によるテンソルの左 Quillen 性と射影モデルの左固有性を確認した。全対象の余ファイブラント性から F1 と F2 を導く宣言は見つからなかった。,,not_found,
+4.5.4.5,none,,底での二項押し出し積の余ファイブレーション性はある。power cofibration を入力とし、n=1 の評価から底の余ファイブレーション性を得る宣言は見つからなかった。,,not_found,
+4.5.4.6,none,,厳密な結合 dg 代数の右移送と、可換 dg operad の通常の代数圏を確認した。freely powered の仮定から厳密可換代数にモデル構造を右移送し、忘却を右 Quillen にする型は見つからなかった。,,not_found,
+4.5.4.7,none,,厳密な可換 dg モノイドを可換 dg operad 代数へ送る通常の関手と、結合 dg 代数の hammock 局所化を確認した。厳密可換代数の局所化から底のモノイダル ∞ 局所化の CAlg への標準写像と同値性は見つからなかった。,,not_found,
+4.5.4.8,none,,モデル圏の固定単体テンソル・余テンソルと、可換 dg 代数の通常の構成を確認した。単体的対称モノイダルモデル圏で A^K に可換代数構造を入れ、移送モデル構造と整合させる型は見つからなかった。,,not_found,
+4.5.4.9,none,,presentable ∞ 圏の関手圏の小余極限と、余ファイブラント対象でのテンソルの左 Quillen 性を確認した。指定のモデル表示から presentability と導来テンソルの変数別余極限保存を得る型は見つからなかった。,,not_found,
+4.5.4.10,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74 | SerrePositivity.Quillen.tensor_isCofibrant @ SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean:49,仮定：Quillen テンソルを持つモデル圏で底の二つの余ファイブレーションまたは余ファイブラント対象（Lean が強い：添字圏は両方とも一点、対象については組紐付き閉の場合）。結論：押し出し積が余ファイブレーション、テンソル積が余ファイブラント（その場合に二つの結論が一致）。一般の二つの射影図式の外部積は型に含まれない。,,found,special
+4.5.4.11,none,,射影余ファイブラントな通常図式では余極限とホモトピー余極限の比較が弱同値になる。Σₙ 上で power cofibration から必要な射影余ファイブラント性を得る比較と、σⁿ の余ファイブレーション性は見つからなかった。,,not_found,
+4.5.4.12,none,,dg operad 代数の通常の忘却が sifted 余極限を作る結果と、射影置換でホモトピー余極限を計算する結果を確認した。厳密可換代数の局所化後の忘却が N(C) 型の余極限を保つ比較は見つからなかった。,,not_found,

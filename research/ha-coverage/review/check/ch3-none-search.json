@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
+  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -1323,6 +1323,4076 @@
         }
       ],
       "reason": "通常の関手準圏の点ごとの余極限と、余デカルト辺を保つ写像の図式の貼り合わせを確認した。E₀ に射影する余デカルト・ファイブレーションで、色の仮定から任意の切断の余極限を作る型や、代数・モノイダル切断の閉性は見つからなかった。"
+    },
+    "3.1.1.1": {
+      "ha_page": 318,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "active.*operad|operad.*active|markedCocartesianFunctorSpace|FinPointed",
+          "files_with_matches": 25,
+          "total_matching_lines": 56,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneScaffoldTarget.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/EmptyCocartesianNativeHom.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/HigherHornTargetComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreVertexDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilies.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorFamilyLaws.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "active.*operad|operad.*active|markedCocartesianFunctorSpace|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        }
+      ],
+      "reason": "準圏の指定辺を保つ関手空間はある。Fin∗ の active 射の逆像だけを射にする operad の部分圏は確認できなかった。"
+    },
+    "3.1.1.2": {
+      "ha_page": 318,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "weakOperadicColimit|operadic.*colimit|IsRelativeColimitCone|relativeCosliceMap",
+          "files_with_matches": 67,
+          "total_matching_lines": 278,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialCosliceComparison.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialEndpoint.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/Coslice.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SourceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRightAnodyne.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cones/ColimitConstantFamily.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianCancellation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "weakOperadicColimit|operadic.*colimit|IsRelativeColimitCone|relativeCosliceMap",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+          "sha256": "eab43137ca8c0ddbfd6ad295b7d7722aa4b534f0c34f1f1c4495c3c4b2dabcdf"
+        }
+      ],
+      "reason": "IsRelativeColimitCone は普通の余スライスで相対始対象を判定する。active 余スライスの色への制限と、全ての補助対象との直和で検査する operadic 余極限の条件は見つからなかった。"
+    },
+    "3.1.1.3": {
+      "ha_page": 319,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*colimit|relative.*absolute.*colimit|kanIsColimitCone_of_relative",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeAbsolute.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftUnitInvertible.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*colimit|relative.*absolute.*colimit|kanIsColimitCone_of_relative",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeAbsolute.lean",
+          "sha256": "7230ca723e9630c0a48cbf53257cc41021d698d17a8f6fdeabe94cf6a46548f5"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "絶対余極限と相対余極限の比較はある。通常の q-余極限と operadic q-余極限がどちら向きにも含意しない例は確認できなかった。"
+    },
+    "3.1.1.4": {
+      "ha_page": 319,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cofinal.*colimit|colimit.*cofinal|operadic.*colimit|relative.*colimit.*precomp",
+          "files_with_matches": 92,
+          "total_matching_lines": 143,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Hammock/RelativeNaturalMapRecovery.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanLocalizedTransfinite.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeCriterion.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeLocalReindex.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeReindexExtension.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPathReplacement.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitReindex.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitTrivialComparison.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/CofinalCoconeRestriction.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/DiagramFilteredPresentation.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/DiagramStandardCoconeColimit.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cofinal.*colimit|colimit.*cofinal|operadic.*colimit|relative.*colimit.*precomp",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeReindexExtension.lean",
+          "sha256": "ce8f8fa112d8be8c31f6f894e4e4ddebe8f559d6922744aa93146745302e679b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+          "sha256": "d1b960acc569b903a7974202c8e9111fd7c934d27be45569cdeb440cd3bad575"
+        }
+      ],
+      "reason": "相対余極限を前合成で移す宣言は準圏同値に関するもので、左 cofinal 射による弱 operadic q-余極限の保存は見つからなかった。"
+    },
+    "3.1.1.6": {
+      "ha_page": 319,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "identity.*colimit|colimit.*equivalence|operadic.*colimit|active.*equivalence",
+          "files_with_matches": 270,
+          "total_matching_lines": 503,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientMap.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexRawBoundaryReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitIntervalModelUnitComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitLowerTransportVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTotalMapNativeHomComparison.lean",
+            "SerrePositivity/CategoryTheory/Limits.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Functor.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean",
+            "SerrePositivity/DifferentialGraded/Module/ActionLimits.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+            "SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "identity.*colimit|colimit.*equivalence|operadic.*colimit|active.*equivalence",
+          "files_with_matches": 68,
+          "total_matching_lines": 177,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/CommAlgCat/Basic.lean",
+            "Mathlib/Algebra/Category/MonCat/FilteredColimits.lean",
+            "Mathlib/Algebra/Colimit/DirectLimit.lean",
+            "Mathlib/Algebra/Homology/GrothendieckAbelian.lean",
+            "Mathlib/AlgebraicGeometry/AffineScheme.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/Transport.lean",
+            "Mathlib/AlgebraicTopology/RelativeCellComplex/AttachCells.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/FiniteColimits.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+            "Mathlib/CategoryTheory/Action/Basic.lean",
+            "Mathlib/CategoryTheory/Action/Limits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/IdentityCocone.lean",
+          "sha256": "7325780ae57182c99af5dab5eb2e96333ab86d88c2243b2a7ab115b5115f45f8"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "恒等辺の余錐は通常の余極限になる。任意の active 同値について全ての補助対象との直和の弱 operadic 余極限性を与える型は確認できなかった。"
+    },
+    "3.1.1.7": {
+      "ha_page": 319,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "kanRelativeCoconeLifting_iff|weakOperadicColimit|active.*anodyne|operadic.*lifting",
+          "files_with_matches": 7,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/Cones/ColimitConstantFamily.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeBoundary.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeBoundaryExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeTerminal.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "kanRelativeCoconeLifting_iff|weakOperadicColimit|active.*anodyne|operadic.*lifting",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeCriterion.lean",
+          "sha256": "a25395e6dc9fe58d58a60bcb84155d9976f4aa09cf452307d5f5c947917d3533"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/ColimitCosliceRestriction.lean",
+          "sha256": "62fa5fed14a3ae5958377d156fb545844602e90bdc17f24a5908f3cb26465676"
+        }
+      ],
+      "reason": "相対余錐の境界充填と通常の相対余極限の同値はある。active 条件と色の終点を課した弱 operadic 余極限の境界充填判定は見つからなかった。"
+    },
+    "3.1.1.8": {
+      "ha_page": 321,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "product.*colimit|operadic.*colimit|isColimitCone_of_pointwise|directSum.*operad",
+          "files_with_matches": 114,
+          "total_matching_lines": 243,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUniversalCocone.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentFamilyColimitCocone.lean",
+            "SerrePositivity/CategoryTheory/Limits.lean",
+            "SerrePositivity/DifferentialGraded/Checks/GradedCoproduct.lean",
+            "SerrePositivity/DifferentialGraded/Checks/InternalComposition.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorSource.lean",
+            "SerrePositivity/DifferentialGraded/Complexes/TensorCoproduct.lean",
+            "SerrePositivity/DifferentialGraded/Functor/ModuleValued.lean",
+            "SerrePositivity/DifferentialGraded/Module/Disk.lean",
+            "SerrePositivity/DifferentialGraded/Module/Hom/ColimitsAndRightHom.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Perfect.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "product.*colimit|operadic.*colimit|isColimitCone_of_pointwise|directSum.*operad",
+          "files_with_matches": 56,
+          "total_matching_lines": 213,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Colimits.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Generator.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Products.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Free.lean",
+            "Mathlib/Algebra/Category/Ring/Constructions.lean",
+            "Mathlib/Algebra/Colimit/TensorProduct.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/Basic.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/ExactFunctor.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/Monomorphisms.lean",
+            "Mathlib/CategoryTheory/Abelian/Basic.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/FilteredExchange/FunctorPointwiseColimitCriterion.lean",
+          "sha256": "ae80ffe8e61179ca9d347a4a71c90da8b0a202066ed77b3d40da07a590ed89c0"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "点ごとの余極限錐を関手準圏の余極限錐にまとめられる。形状の積から来る余錐を operadic な直和で合成して再び operadic 余極限になる結果は見つからなかった。"
+    },
+    "3.1.1.9": {
+      "ha_page": 321,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "kanIsRelativeColimitCone_functor_of_pointwise|operadic.*colimit|active.*coslice|relativeCosliceMap",
+          "files_with_matches": 19,
+          "total_matching_lines": 114,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialCosliceComparison.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialEndpoint.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/Coslice.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SourceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRightAnodyne.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianCancellation.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/TriangleConeGluing.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "kanIsRelativeColimitCone_functor_of_pointwise|operadic.*colimit|active.*coslice|relativeCosliceMap",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "sha256": "4d97e06789d75dd6b584d21959496ad39166007a7df3fbb636cd38c21805b828"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+          "sha256": "eab43137ca8c0ddbfd6ad295b7d7722aa4b534f0c34f1f1c4495c3c4b2dabcdf"
+        }
+      ],
+      "reason": "相対余錐の点ごとの普遍性から関手圏の普遍性を得る宣言を確認した。active 余スライスの指定の引き戻しへの写像が自明 Kan になる型は見つからなかった。"
+    },
+    "3.1.1.10": {
+      "ha_page": 322,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "weaklyContractible.*colimit|constantJoinCocone_isColimit|operadic.*colimit",
+          "files_with_matches": 15,
+          "total_matching_lines": 19,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Hammock/FiniteGridRootHull.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeQuiverCoverContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeQuiverCoverFiniteContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/QuiverTreeFiniteContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/QuiverTreeLeafContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/QuiverTreeRootContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/RootedFiniteContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/SubsingletonCategoryContractible.lean",
+            "SerrePositivity/EInfinity/Hammock/WeakFiniteSubsetColimit.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ContractibleConstantColimits.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedArrows.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourceContractibleColimits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "weaklyContractible.*colimit|constantJoinCocone_isColimit|operadic.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ContractibleConstantColimits.lean",
+          "sha256": "9eeafaaded0740569bf6bfe0ec1ff3960795526585eae6a78f08c1b44d011a7e"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "弱可縮な添字で定数図式の余極限を計算する候補を確認した。弱可縮な添字を持つ operadic 余極限の積が q-余極限になる比較は見つからなかった。"
+    },
+    "3.1.1.11": {
+      "ha_page": 323,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "inert.*limit|Segal.*limit|exists_pointwiseLimitCone|relative.*limit",
+          "files_with_matches": 234,
+          "total_matching_lines": 785,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstConstantComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexLastConstantComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexPointedEdgeComparisons.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitLowerCompositeValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitTotalComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FilteredHomotopyFactorization.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/LimitConeFamilyReplacement.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/Normalized.lean",
+            "SerrePositivity/DifferentialGraded/Checks/KFlatColimits.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Enriched.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Graded.lean",
+            "SerrePositivity/EInfinity.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "inert.*limit|Segal.*limit|exists_pointwiseLimitCone|relative.*limit",
+          "files_with_matches": 8,
+          "total_matching_lines": 11,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/RelativeGluing.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckCategory/Basic.lean",
+            "Mathlib/CategoryTheory/Comma/Presheaf/Colimit.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/BinaryProducts/BinaryFan.lean",
+            "Mathlib/CategoryTheory/MorphismProperty/Representable.lean",
+            "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+            "Mathlib/CategoryTheory/SmallObject/IsCardinalForSmallObjectArgument.lean",
+            "Mathlib/Topology/CWComplex/Abstract/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean",
+          "sha256": "17c3d894656f052d6a4215fc1ab339d1beb48736b2fc790c6061385c0ba30f09"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightCanonical.lean",
+          "sha256": "1a24999fde3f9430e579d906b4a26c0aca79afb1dd2e80a16b682c94a9ce0be8"
+        }
+      ],
+      "reason": "関手準圏の点ごとの極限の存在を確認した。Fin∗ の射影 ρᵢ 上の inert 辺が相対極限錐になる operadic Segal の主張は確認できなかった。"
+    },
+    "3.1.1.12": {
+      "ha_page": 323,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "isColimitCone_iff_colimitCosliceRestriction|relativeCosliceMap|operadic.*colimit|fiber.*relativeColimit",
+          "files_with_matches": 19,
+          "total_matching_lines": 115,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/ColimitCosliceRestriction.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialCosliceComparison.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialEndpoint.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeOuterHorn.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/Coslice.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SourceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestriction.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRestrictionIso.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/CosliceRightAnodyne.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianCancellation.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "isColimitCone_iff_colimitCosliceRestriction|relativeCosliceMap|operadic.*colimit|fiber.*relativeColimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/ColimitCosliceRestriction.lean",
+          "sha256": "62fa5fed14a3ae5958377d156fb545844602e90bdc17f24a5908f3cb26465676"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+          "sha256": "eab43137ca8c0ddbfd6ad295b7d7722aa4b534f0c34f1f1c4495c3c4b2dabcdf"
+        }
+      ],
+      "reason": "通常の余極限を余スライスの自明 Kan 制限で判定する宣言はある。色に制限した比較だけで全ての対象に対する相対余極限性が従う operadic 判定は見つからなかった。"
+    },
+    "3.1.1.13": {
+      "ha_page": 324,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "CocartesianFibration|operadic.*colimit|active.*cocartesian",
+          "files_with_matches": 621,
+          "total_matching_lines": 1732,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CartesianInitialBoundary.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianEdgePullback.lean",
+            "SerrePositivity/InfinityCategories/Core/ConeRestrictionCocartesianEdge.lean",
+            "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitCriterion.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeDenominatorGroupoidComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakSpanKanDiagram.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakSpanKanWeakInversion.lean",
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneHomComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneNativeHomEquivalence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "CocartesianFibration|operadic.*colimit|active.*cocartesian",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "余デカルト・ファイブレーションは各辺の余デカルト持ち上げを与える。色への active 辺の operadic 余極限持ち上げとその性質が同値になる型は見つからなかった。"
+    },
+    "3.1.1.14": {
+      "ha_page": 324,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cocartesian.*colimit|operadic.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 70,
+          "total_matching_lines": 319,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackDomainCocone.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackDomainMarks.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackEdgeCover.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackHomCoreDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackNativeCoreDescent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cocartesian.*colimit|operadic.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "余デカルト辺の相対普遍性と相対余極限を確認した。active な余デカルト辺の余錐が任意の補助対象を直和した後も普遍となる宣言は見つからなかった。"
+    },
+    "3.1.1.15": {
+      "ha_page": 325,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "kanIsRelativeColimitCone_of_functorIso|operadic.*colimit|cocartesian.*pointwise",
+          "files_with_matches": 3,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitImageIso.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftUnitCanonical.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "kanIsRelativeColimitCone_of_functorIso|operadic.*colimit|cocartesian.*pointwise",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+          "sha256": "55ac742e08bb64156329959f60ef532fafc5a4233cc0f0883a4a57b1bcc7d727"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "sha256": "4d97e06789d75dd6b584d21959496ad39166007a7df3fbb636cd38c21805b828"
+        }
+      ],
+      "reason": "相対余極限の普遍性を関手同型で移す宣言はある。各成分が余デカルトで錐頂点の底の辺が同値である場合の operadic な不変性は見つからなかった。"
+    },
+    "3.1.1.16": {
+      "ha_page": 327,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cocartesianStrictTransport|operadic.*colimit|tensor.*colimit|fiber.*colimit",
+          "files_with_matches": 434,
+          "total_matching_lines": 1541,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellResolutionExistence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCandidateLongValueCriterion.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientValues.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeValueLastFactors.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstAfterLastEvaluation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstEvaluationFactor.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstFixedValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstRatioAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstValueSquare.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstValueVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexLastActualEndpoint.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cocartesianStrictTransport|operadic.*colimit|tensor.*colimit|fiber.*colimit",
+          "files_with_matches": 15,
+          "total_matching_lines": 101,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+            "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+            "Mathlib/CategoryTheory/GradedObject/Monoidal.lean",
+            "Mathlib/CategoryTheory/Limits/Final.lean",
+            "Mathlib/CategoryTheory/Limits/Preserves/Grothendieck.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Grothendieck.lean",
+            "Mathlib/CategoryTheory/Monoidal/ExternalProduct/KanExtension.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Colimits.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Preserves.lean",
+            "Mathlib/CategoryTheory/Monoidal/Preadditive.lean",
+            "Mathlib/CategoryTheory/Preadditive/CommGrp_.lean",
+            "Mathlib/CategoryTheory/Sites/Point/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean",
+          "sha256": "3e9895ae8625bbaf940309a96545f0bc4890b9752d460ab2354aac3388766a46"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "通常圏の nerve 上で底の辺に沿う余デカルト移送を確認した。全ての補助入力と active 演算による移送先の絶対余極限で operadic 余極限を判定する型は見つからなかった。"
+    },
+    "3.1.1.17": {
+      "ha_page": 327,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "tensorRight_isLeftQuillen|tensor.*preserves.*colimit|operadic.*colimit",
+          "files_with_matches": 26,
+          "total_matching_lines": 44,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/LeftTensorColimits.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/AdjunctionKernelCoproductsChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/StageEight.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorHomAdjunction.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorSource.lean",
+            "SerrePositivity/DifferentialGraded/Module/Hom/ColimitsAndRightHom.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedCoproducts.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/Enriched.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/ColimitInput.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraMonadic.lean",
+            "SerrePositivity/EInfinity/Operad/TensorPowerColimits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "tensorRight_isLeftQuillen|tensor.*preserves.*colimit|operadic.*colimit",
+          "files_with_matches": 5,
+          "total_matching_lines": 12,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/GradedObject/Monoidal.lean",
+            "Mathlib/CategoryTheory/Monoidal/ExternalProduct/KanExtension.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Colimits.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Preserves.lean",
+            "Mathlib/CategoryTheory/Monoidal/Preadditive.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+          "sha256": "1ccb10cd770aba810c4a277de5fc251f1a2629efe60ce1f00fc14e0291c204f3"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        }
+      ],
+      "reason": "余ファイブラントな固定対象とのテンソルが左 Quillen になる結果を確認した。全てのテンソル後の余極限で operadic 余極限を判定する型は見つからなかった。"
+    },
+    "3.1.1.18": {
+      "ha_page": 328,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.18",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "PreservesColimit₂|PreservesSmallColimits|compatible.*colimit|operadic.*colimit",
+          "files_with_matches": 105,
+          "total_matching_lines": 274,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedColimits.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexLatching.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedSimplexReedy.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFiberCompactCoverage.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/PresentationAssembly.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleSliceTerminalCocones.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CoconeSliceImagePreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CompactActualSliceCocones.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CompactFiberProjectionCofinal.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CompactSliceCoconeRecovery.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/ComponentCompactColimits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "PreservesColimit₂|PreservesSmallColimits|compatible.*colimit|operadic.*colimit",
+          "files_with_matches": 3,
+          "total_matching_lines": 30,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Limits/Preserves/Bifunctor.lean",
+            "Mathlib/CategoryTheory/Limits/Sifted.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Colimits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Limits/Preserves/Bifunctor.lean",
+          "sha256": "070e1023a5e7da70252d13bdc837b8124e61f6a412542721fd118fc6ec6815c7"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        }
+      ],
+      "reason": "準圏の小余極限保存と、通常の二関手の余極限保存の型を確認した。各色での指定形状の余完備性と全ての多入力演算の変数別の保存を一つにする条件は見つからなかった。"
+    },
+    "3.1.1.19": {
+      "ha_page": 328,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "PreservesSmallSiftedColimits|PreservesSmallFilteredColimits|operadic.*colimit|compatible.*colimit",
+          "files_with_matches": 29,
+          "total_matching_lines": 64,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Interface/Theory.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/DiscreteFamilyUpdatePreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FilteredGeometricFunctorOperations.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FiniteCoproductSiftedPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/FullHomColimitDetection.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/CompatiblePieceColimitIso.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Localization/RelativeSmallPresentationPiece.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SiftedColimitPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SiftedConstantColimitPreservation.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFunctorOperations.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFunctorRestriction.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaColimitPreservationCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "PreservesSmallSiftedColimits|PreservesSmallFilteredColimits|operadic.*colimit|compatible.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaFilteredGeometricPreservation.lean",
+          "sha256": "f9aa403011793fe54100c6f9037cb101dc7bff9b8866b40591f8fb044de70dc9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        }
+      ],
+      "reason": "余極限保存の filtered・sifted 版は単一関手に対する条件。形状の族に対する O-モノイダル圏の適合性は見つからなかった。"
+    },
+    "3.1.1.20": {
+      "ha_page": 328,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.20",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|operadic.*colimit|active.*lift",
+          "files_with_matches": 6,
+          "total_matching_lines": 8,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeLocalReindex.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftBoundaryExtension.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightCanonicalExistence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|operadic.*colimit|active.*lift",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+          "sha256": "cf76135c711b54f85cb412c9bb026df1851df92935e282e8c85a021d6896ffa4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean",
+          "sha256": "3e9895ae8625bbaf940309a96545f0bc4890b9752d460ab2354aac3388766a46"
+        }
+      ],
+      "reason": "普通の相対左 Kan 拡張はコンマ圏の相対余極限から延長する。指定された active な底余錐上に operadic 余極限の持ち上げを作る型は見つからなかった。"
+    },
+    "3.1.1.21": {
+      "ha_page": 328,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.1.21",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "2.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cocartesian.*colimit|operadic.*colimit|kappa.*colimit|exists_colimitCone_functor_of_pointwise",
+          "files_with_matches": 245,
+          "total_matching_lines": 672,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/BridgePreservation.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ConeInput.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationGeneratorClosure.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/GeneratorClosure.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationPreservation.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationSpace.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeHomCriterion.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/ProjectiveHomCriterion.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/NativeColimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedBarComparisonReduction.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedBarVertexComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/DerivedStrictFilteredComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cocartesian.*colimit|operadic.*colimit|kappa.*colimit|exists_colimitCone_functor_of_pointwise",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/CatInfinity/FunctorColimitConeExistence.lean",
+          "sha256": "2f0bad1a7794fd55f615565c35494452c39d2470bb4e115dff781c3c89b2f56d"
+        }
+      ],
+      "reason": "余デカルト辺の持ち上げと普通の点ごとの余極限を確認した。κ-small の active 図式の持ち上げ条件から operadic ファイブレーションの余デカルト性と余極限の適合性を復元する型は見つからなかった。"
+    },
+    "3.1.2.1": {
+      "ha_page": 329,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operad.*correspondence|relativeFunctorFiber|QuillenCfCollage",
+          "files_with_matches": 64,
+          "total_matching_lines": 543,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FixedBaseHomotopyFiber.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeFiberRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberClass.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberRepresentative.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierSpanCoherentContraction.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakCosliceComparisonFiberSection.lean",
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/CocartesianKanWeightedFiberRecovery.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/KanWeightedUnitFiberRestriction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operad.*correspondence|relativeFunctorFiber|QuillenCfCollage",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorFiberHom.lean",
+          "sha256": "23e7ab21265d0c2fb524aab1cf43507ce13c166f7a345e07dee55747b4395956"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+          "sha256": "4b02c55ad47b2d168a5cd143927ad2b6ee964b5bce85077f6a24bc3395c59911"
+        }
+      ],
+      "reason": "底 Δ¹ 上の相対関手のファイバーと、端の準圏をつなぐ Quillen collage を確認した。Fin∗ と Δ¹ の積上の ∞ operad 族を対応として定義する宣言は見つからなかった。"
+    },
+    "3.1.2.2": {
+      "ha_page": 329,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.2.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*Kan|kanIsRelativeLeftKanExtension_relativeJoin|active.*comma",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*Kan|kanIsRelativeLeftKanExtension_relativeJoin|active.*comma",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean",
+          "sha256": "494f64c30f0f8d6b3f6d6fbcc86fe90d9ea89ffb2fe80affa9bba5a409f2b837"
+        }
+      ],
+      "reason": "準圏の相対左 Kan 拡張には局所余極限による判定がある。active なコンマ圏の図式に operadic 余極限を課す定義は見つからなかった。"
+    },
+    "3.1.2.3": {
+      "ha_page": 330,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.2.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|operadic.*Kan|horn.*operad",
+          "files_with_matches": 6,
+          "total_matching_lines": 8,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeLocalReindex.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftBoundaryExtension.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightCanonicalExistence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|operadic.*Kan|horn.*operad",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+          "sha256": "cf76135c711b54f85cb412c9bb026df1851df92935e282e8c85a021d6896ffa4"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/HornBoundaryExtensionKan.lean",
+          "sha256": "9debb5fde6fdcdf905928f3175891b3325048aa8530067b630707802bf735f96"
+        }
+      ],
+      "reason": "局所相対余極限を仮定した通常の左 Kan 延長の存在を確認した。Δⁿ の operad 族の左ホーンから、operadic な普遍性を保った族の延長を構成する宣言は見つからなかった。"
+    },
+    "3.1.2.4": {
+      "ha_page": 330,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.2.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "FinalHornPullbackExtension|innerFibration.*extension|horn.*pullback|cocartesian.*horn",
+          "files_with_matches": 216,
+          "total_matching_lines": 1193,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/CartesianInitialBoundary.lean",
+            "SerrePositivity/InfinityCategories/Core/CatInfinity/PullbackInvertibleEdges.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceFiber.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianEdge.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianEdgePullback.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianFibration.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianFixedVertexTransport.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "FinalHornPullbackExtension|innerFibration.*extension|horn.*pullback|cocartesian.*horn",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/FinalHornPullbackExtension.lean",
+          "sha256": "5e7b0845fd331077135942e1edd7fc3a24213dc172b1723d2155ec8ce9ce0d7c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/HornBoundaryExtensionKan.lean",
+          "sha256": "9debb5fde6fdcdf905928f3175891b3325048aa8530067b630707802bf735f96"
+        }
+      ],
+      "reason": "終ホーンに関する引き戻しの延長と余デカルト関手の境界充填を確認した。Λ³₂ 上の inner fibration に 1→2 上の持ち上げを仮定し、元の引き戻しを厳密に保つ Δ³ 上の inner fibration を作る宣言は見つからなかった。"
+    },
+    "3.1.2.5": {
+      "ha_page": 332,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.2.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "RightAnodyneJoinPrefix|ColimitAttachment|fullSubcomplex.*[Jj]oin|[Jj]oin.*[Aa]nodyne",
+          "files_with_matches": 164,
+          "total_matching_lines": 551,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/NativePointedConeLift.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/NativePointedConeSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/SliceRestrictionRightFibration.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/TriangleFirstEdgeLeftAnodyne.lean",
+            "SerrePositivity/EInfinity/FrameHom/PointSliceCornerFibration.lean",
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/ColimitAttachment.lean",
+            "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean",
+            "SerrePositivity/InfinityCategories/Core/CosliceEndpointFibration.lean",
+            "SerrePositivity/InfinityCategories/Core/FibrationRestriction.lean",
+            "SerrePositivity/InfinityCategories/Core/Fibrations.lean",
+            "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "RightAnodyneJoinPrefix|ColimitAttachment|fullSubcomplex.*[Jj]oin|[Jj]oin.*[Aa]nodyne",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/RightAnodyneJoinPrefix.lean",
+          "sha256": "57766ecd0303fbc11c9a8c92380af18441780a3e3166ef578fcf93b24f1cf0e1"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/ColimitAttachment.lean",
+          "sha256": "724f6d42df5e3354e675833fca0fe828eeb3cd6f3589c4f284cd13bd1d67051c"
+        }
+      ],
+      "reason": "右 anodyne の join 拡張と余極限から得る余スライス制限を確認した。非退化単体と充満部分圏の混合単体で作る指定の押し出し写像を Joyal 自明余ファイブレーションとする宣言は見つからなかった。"
+    },
+    "3.1.3.1": {
+      "ha_page": 342,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "qFree|operadic.*free|freeAlgebra|IsRelativeColimitCone",
+          "files_with_matches": 96,
+          "total_matching_lines": 346,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/FreeNeighborhoodStalk.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericFreeReducedAlgebra.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseChange.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramModel.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "qFree|operadic.*free|freeAlgebra|IsRelativeColimitCone",
+          "files_with_matches": 15,
+          "total_matching_lines": 240,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/AlgCat/Basic.lean",
+            "Mathlib/Algebra/CharP/Algebra.lean",
+            "Mathlib/Algebra/FreeAlgebra.lean",
+            "Mathlib/Algebra/FreeAlgebra/Cardinality.lean",
+            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
+            "Mathlib/Algebra/Lie/Free.lean",
+            "Mathlib/Algebra/Lie/SerreConstruction.lean",
+            "Mathlib/Algebra/Star/Free.lean",
+            "Mathlib/FieldTheory/CardinalEmb.lean",
+            "Mathlib/LinearAlgebra/Basis/Cardinality.lean",
+            "Mathlib/LinearAlgebra/FreeAlgebra.lean",
+            "Mathlib/LinearAlgebra/SymmetricAlgebra/Basis.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebra.lean",
+          "sha256": "aa182fa96cbdeb33d053d503b3ef968085cf59ad93a891f2bc4d57a447a1d6e2"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "dg の自由代数は生成元からの厳密な作用を持つ。制限への射に対し、各 active コンマ圏で operadic 相対余極限を課す q-free の定義は見つからなかった。"
+    },
+    "3.1.3.2": {
+      "ha_page": 342,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freeAlgebraHomEquiv|freeAlgebra.*mappingSpace|operadic.*mappingSpace|relative.*freeAlgebra",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraUniversal.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freeAlgebraHomEquiv|freeAlgebra.*mappingSpace|operadic.*mappingSpace|relative.*freeAlgebra",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraUniversal.lean",
+          "sha256": "0e70f0d44075312b48e73949fe4418954983a7cb2cd3f23490b7c68cf63fe2a1"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+          "sha256": "29d9b7fbc385a8708f00c8788c56eb17d6624db30bf78ef965bc2b1b89f12776"
+        }
+      ],
+      "reason": "dg の freeAlgebraHomEquiv は厳密な代数準同型と鎖写像の全単射。operad の変更に沿う q-free 射が指定の導来写像空間の同値を誘導する型は見つからなかった。"
+    },
+    "3.1.3.3": {
+      "ha_page": 343,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|qFree|freeAlgebra.*colimit|operadic.*Kan",
+          "files_with_matches": 11,
+          "total_matching_lines": 18,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/FreeNeighborhoodStalk.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseChange.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSmallObject.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraColimits.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaRelativeLocalReindex.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftBoundaryExtension.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftRestrictionExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftStrictExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeRightCanonicalExistence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "exists_kanRelativeLeftCanonical_strict_extension|qFree|freeAlgebra.*colimit|operadic.*Kan",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+          "sha256": "cf76135c711b54f85cb412c9bb026df1851df92935e282e8c85a021d6896ffa4"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebra.lean",
+          "sha256": "aa182fa96cbdeb33d053d503b3ef968085cf59ad93a891f2bc4d57a447a1d6e2"
+        }
+      ],
+      "reason": "通常の相対左 Kan 延長の存在は局所余極限を仮定できる。∞ operad の変更に沿う自由性の存在と各 active コンマ余極限の存在との同値は見つからなかった。"
+    },
+    "3.1.3.4": {
+      "ha_page": 343,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "restrictAlgebra|freeAlgebraAdjunction|operadic.*Kan|operadic.*adjoint",
+          "files_with_matches": 35,
+          "total_matching_lines": 79,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiscreteAlgebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomEquivalence.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomKan.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedHomFrames.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedHomUnit.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedProbeFrameProperties.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "restrictAlgebra|freeAlgebraAdjunction|operadic.*Kan|operadic.*adjoint",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Restrict.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+          "sha256": "29d9b7fbc385a8708f00c8788c56eb17d6624db30bf78ef965bc2b1b89f12776"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+          "sha256": "35e9aa858df1d75809c552bffa184f3aa09e76facf91a2f1073165630c085718"
+        }
+      ],
+      "reason": "dg の制限と台複体からの自由左随伴はある。各 active コンマ図式の operadic 余極限の存在を仮定して、指定の operad 制限の左随伴を与える宣言は見つからなかった。"
+    },
+    "3.1.3.6": {
+      "ha_page": 344,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freeAlgebraAdjunction|Triv.*operad|free.*evaluation|operadic.*adjoint",
+          "files_with_matches": 202,
+          "total_matching_lines": 593,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGEvaluation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGPaths.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGUniversal.lean",
+            "SerrePositivity/Asymptotic/Euler.lean",
+            "SerrePositivity/Asymptotic/RankBaseChange.lean",
+            "SerrePositivity/Asymptotic/RankQuotient.lean",
+            "SerrePositivity/Asymptotic/SequenceComplex.lean",
+            "SerrePositivity/Asymptotic/SequenceHomology.lean",
+            "SerrePositivity/Asymptotic/SequenceKoszul.lean",
+            "SerrePositivity/Asymptotic/UniformLift.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/FamilyEvaluation.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freeAlgebraAdjunction|Triv.*operad|free.*evaluation|operadic.*adjoint",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Free.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+          "sha256": "35e9aa858df1d75809c552bffa184f3aa09e76facf91a2f1073165630c085718"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorPullback.lean",
+          "sha256": "a479ca62fe902aed970e25845725092507377b984d8ece6b2ab14a5f2d608963"
+        }
+      ],
+      "reason": "dg の自由随伴の台は鎖複体圏。Triv⊗ を色ごとに引き戻して定める評価 Fun_O(O,C) の左随伴は見つからなかった。"
+    },
+    "3.1.3.7": {
+      "ha_page": 344,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freeAlgebraAdjunction|pointed.*freeAlgebra|E₀.*algebra|weaklyContractible.*colimit",
+          "files_with_matches": 44,
+          "total_matching_lines": 84,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/RelativePureFreeNeighborhoodsBasic.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/PrincipalDP.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDUniversalTor.lean",
+            "SerrePositivity/CommutativeAlgebra/EtaleStratification/GenericRadicial.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierRightFrames.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomEquivalence.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeForgetHomKan.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freeAlgebraAdjunction|pointed.*freeAlgebra|E₀.*algebra|weaklyContractible.*colimit",
+          "files_with_matches": 5,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "Mathlib/FieldTheory/NormalizedTrace.lean",
+            "Mathlib/LinearAlgebra/RootSystem/GeckConstruction/Basis.lean",
+            "Mathlib/RingTheory/DedekindDomain/Ideal/Lemmas.lean",
+            "Mathlib/RingTheory/Etale/QuasiFinite.lean",
+            "Mathlib/RingTheory/Smooth/IntegralClosure.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+          "sha256": "35e9aa858df1d75809c552bffa184f3aa09e76facf91a2f1073165630c085718"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/ContractibleConstantColimits.lean",
+          "sha256": "9eeafaaded0740569bf6bfe0ec1ff3960795526585eae6a78f08c1b44d011a7e"
+        }
+      ],
+      "reason": "dg の自由随伴は構造を持たない台複体を入力する。E₀ から来る単位の指定を入力し、弱可縮な κ-small 余極限の仮定で左随伴を構成する宣言は見つからなかった。"
+    },
+    "3.1.3.8": {
+      "ha_page": 345,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "schurι_naturality|freeAlgebra.*preserv|operadic.*colimit|monoidal.*freeAlgebra",
+          "files_with_matches": 7,
+          "total_matching_lines": 10,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/AlgebraEvaluation.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSmallObject.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraColimits.lean",
+            "SerrePositivity/EInfinity/Operad/Schur.lean",
+            "SerrePositivity/EInfinity/Operad/SchurCompositionNaturality.lean",
+            "SerrePositivity/EInfinity/Operad/SchurInputNaturality.lean",
+            "SerrePositivity/EInfinity/Operad/SchurPartialComposition.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "schurι_naturality|freeAlgebra.*preserv|operadic.*colimit|monoidal.*freeAlgebra",
+          "files_with_matches": 2,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "Mathlib/Algebra/FreeAlgebra.lean",
+            "Mathlib/LinearAlgebra/TensorAlgebra/Basis.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Schur.lean",
+          "sha256": "75948e925a99f4eebeb09bf8763cf15d4c5ed8748790ef5d73322898516974c6"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        }
+      ],
+      "reason": "Schur 関手の自然性は同じ鎖複体圏で生成元の射に関するもの。色ごとの余極限を保つモノイダル関手が E₀ 上の自由代数を移す宣言は見つからなかった。"
+    },
+    "3.1.3.9": {
+      "ha_page": 345,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "schurDiagram|symmetricPower|homotopyOrbit|operadic.*sym",
+          "files_with_matches": 9,
+          "total_matching_lines": 62,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+            "SerrePositivity/EInfinity/Operad/Schur.lean",
+            "SerrePositivity/EInfinity/Operad/SchurColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurOperations.lean",
+            "SerrePositivity/EInfinity/Operad/SchurOuterEquivariance.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorColimit.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorExt.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorGenerators.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorMorphisms.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "schurDiagram|symmetricPower|homotopyOrbit|operadic.*sym",
+          "files_with_matches": 1,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/LinearAlgebra/TensorPower/Symmetric.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Schur.lean",
+          "sha256": "75948e925a99f4eebeb09bf8763cf15d4c5ed8748790ef5d73322898516974c6"
+        }
+      ],
+      "reason": "dg Schur の arity 成分は係数とテンソル冪の対角作用の通常の余不変量。色 X,Y の演算の空間が作る Kan 複体 P(n) 上の ∞ 余極限は見つからなかった。"
+    },
+    "3.1.3.10": {
+      "ha_page": 345,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "schurι|symmetricPower|SymmetricPower.*operad|homotopyOrbit",
+          "files_with_matches": 25,
+          "total_matching_lines": 89,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraEvaluation.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraEvaluationCriterion.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraUniversal.lean",
+            "SerrePositivity/EInfinity/Operad/Schur.lean",
+            "SerrePositivity/EInfinity/Operad/SchurActionGenerators.lean",
+            "SerrePositivity/EInfinity/Operad/SchurActionUnit.lean",
+            "SerrePositivity/EInfinity/Operad/SchurComposition.lean",
+            "SerrePositivity/EInfinity/Operad/SchurCompositionEquivariance.lean",
+            "SerrePositivity/EInfinity/Operad/SchurCompositionNaturality.lean",
+            "SerrePositivity/EInfinity/Operad/SchurFirstBlockComposition.lean",
+            "SerrePositivity/EInfinity/Operad/SchurFirstBlockGenerator.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "schurι|symmetricPower|SymmetricPower.*operad|homotopyOrbit",
+          "files_with_matches": 1,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/LinearAlgebra/TensorPower/Symmetric.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Schur.lean",
+          "sha256": "75948e925a99f4eebeb09bf8763cf15d4c5ed8748790ef5d73322898516974c6"
+        }
+      ],
+      "reason": "dg Schur には数 n の成分がある。色 X=Y または可換 ∞ operad に特殊化した ∞ 対称冪を同じ構成の記法として与える宣言は見つからなかった。"
+    },
+    "3.1.3.11": {
+      "ha_page": 345,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "liftHom|schurι|SymmetricPower.*map|operadic.*free",
+          "files_with_matches": 249,
+          "total_matching_lines": 887,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNormalizedModelPathLift.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FunctorIsoUliftRecovery.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedValueTriangleIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/UliftHomotopyIsoDown.lean",
+            "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom/CoefficientClosure.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeCategory.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeComparisons.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraReplacementUnderlyingComponent.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantAlgebraRelativeInput.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantForgetSourceComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "liftHom|schurι|SymmetricPower.*map|operadic.*free",
+          "files_with_matches": 30,
+          "total_matching_lines": 341,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/Factorizations/CM5b.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/MappingCone.lean",
+            "Mathlib/Algebra/Homology/ShortComplex/Homology.lean",
+            "Mathlib/Algebra/Order/Archimedean/Class.lean",
+            "Mathlib/Algebra/QuaternionBasis.lean",
+            "Mathlib/AlgebraicGeometry/Cover/QuasiCompact.lean",
+            "Mathlib/AlgebraicGeometry/Sites/QuasiCompact.lean",
+            "Mathlib/CategoryTheory/Abelian/Projective/Resolution.lean",
+            "Mathlib/CategoryTheory/Bicategory/Free.lean",
+            "Mathlib/CategoryTheory/Category/ULift.lean",
+            "Mathlib/CategoryTheory/Countable.lean",
+            "Mathlib/CategoryTheory/Filtered/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraUniversal.lean",
+          "sha256": "0e70f0d44075312b48e73949fe4418954983a7cb2cd3f23490b7c68cf63fe2a1"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Schur.lean",
+          "sha256": "75948e925a99f4eebeb09bf8763cf15d4c5ed8748790ef5d73322898516974c6"
+        }
+      ],
+      "reason": "dg の liftHom は演算係数とテンソル冪から代数の台への射を作る。Triv-代数の射から P(n) 上の余極限 Symⁿ_{O,Y} を通る射を構成する宣言は見つからなかった。"
+    },
+    "3.1.3.12": {
+      "ha_page": 345,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freeAlgebraAdjunction_unit_app|Triv.*operad|qFree|operadic.*free",
+          "files_with_matches": 19,
+          "total_matching_lines": 42,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/FreeNeighborhoodStalk.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseChange.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CospanReplacement.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorLifting.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramMappingSpace.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramModel.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/MappingFactorizations.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionAsphericity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/MappingResolutionFixedRightComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/MappingSpaceSpanDiagram.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freeAlgebraAdjunction_unit_app|Triv.*operad|qFree|operadic.*free",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean",
+          "sha256": "35e9aa858df1d75809c552bffa184f3aa09e76facf91a2f1073165630c085718"
+        }
+      ],
+      "reason": "dg の自由性は台複体上の生成元の射を使う。色 X から Triv⊗ への拡張を経て q-free に帰着する自由性は見つからなかった。"
+    },
+    "3.1.3.14": {
+      "ha_page": 346,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "freeAlgebraFunctor_forget|schurFunctor|CAlg.*free|homotopyOrbit",
+          "files_with_matches": 43,
+          "total_matching_lines": 159,
+          "sample_paths": [
+            "SerrePositivity/CommutativeAlgebra/CubicCyclotomic/Algebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgForgetDerivedValue.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeCAlgSource.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedAdjunction.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedFreeForget.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedLimits.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedUnit.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedUnitEndpointRecovery.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeDerivedUnitVertex.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeSourceComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnderlyingReplacementComponent.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitComma.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "freeAlgebraFunctor_forget|schurFunctor|CAlg.*free|homotopyOrbit",
+          "files_with_matches": 3,
+          "total_matching_lines": 14,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/LocallyFree.lean",
+            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
+            "Mathlib/LinearAlgebra/SymmetricAlgebra/Basis.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/FreeAlgebra.lean",
+          "sha256": "aa182fa96cbdeb33d053d503b3ef968085cf59ad93a891f2bc4d57a447a1d6e2"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Schur.lean",
+          "sha256": "75948e925a99f4eebeb09bf8763cf15d4c5ed8748790ef5d73322898516974c6"
+        }
+      ],
+      "reason": "自由 dg 代数の台を Schur 関手で計算する宣言はある。対称モノイダル ∞ 圏で可換代数の忘却の左随伴がホモトピー対称冪の余積になる比較は見つからなかった。"
+    },
+    "3.1.3.15": {
+      "ha_page": 346,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*Kan|qFree|relativeJoin_iff_local|mappingCylinder.*operad",
+          "files_with_matches": 7,
+          "total_matching_lines": 12,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/FreeNeighborhoodStalk.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseChange.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinCoconeTransport.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinConeTransport.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRightCriterion.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*Kan|qFree|relativeJoin_iff_local|mappingCylinder.*operad",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean",
+          "sha256": "494f64c30f0f8d6b3f6d6fbcc86fe90d9ea89ffb2fe80affa9bba5a409f2b837"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+          "sha256": "29d9b7fbc385a8708f00c8788c56eb17d6624db30bf78ef965bc2b1b89f12776"
+        }
+      ],
+      "reason": "通常の相対左 Kan 拡張にはコンマ余極限判定がある。写像円柱を因子分解して作る operadic 対応上の延長と q-free 射との比較は見つからなかった。"
+    },
+    "3.1.3.16": {
+      "ha_page": 347,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*Kan|relativeFunctor.*restriction|HornBoundaryExtensionKan|operadic.*lifting",
+          "files_with_matches": 75,
+          "total_matching_lines": 145,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentRestrictedChoiceEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentRestrictedPrismEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentRestrictedPrismNormalization.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleExtensionRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismExtensionCurryWitnessRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismExtensionEndpointRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismExtensionPullbackComparisonRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismExtensionPullbackRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismExtensionWitnessRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PrismRestrictedEndpointVertex.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeCospanSectionFibrations.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeExtensionCurryPointComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*Kan|relativeFunctor.*restriction|HornBoundaryExtensionKan|operadic.*lifting",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorRestrictionLifting.lean",
+          "sha256": "c71980d5a5720b7cb131c6b6fffdd9a748429699108b678d9db54d289a421a9d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/HornBoundaryExtensionKan.lean",
+          "sha256": "9debb5fde6fdcdf905928f3175891b3325048aa8530067b630707802bf735f96"
+        }
+      ],
+      "reason": "相対関手空間の制限と余デカルト関手の境界充填を確認した。初端が operadic 左 Kan 延長であるときの指定の境界図式を一般化 ∞ operad の写像に延長する型は見つからなかった。"
+    },
+    "3.1.3.17": {
+      "ha_page": 347,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.3.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "markedCocartesianFunctorSpace|operad.*correspondence|generalized.*operad|relativeFunctorSpace",
+          "files_with_matches": 415,
+          "total_matching_lines": 972,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitNativeUnitValueComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitComparisonTarget.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueActionOverPre.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueActionTo.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueActionToOverPre.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanConeRelativePath.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFaceSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFiberEdgeSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFinalSourceMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeTargetEvaluationComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "markedCocartesianFunctorSpace|operad.*correspondence|generalized.*operad|relativeFunctorSpace",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        }
+      ],
+      "reason": "底上の関手の充満部分複体を辺条件で作る宣言はある。operadic 対応 M から C への一般化 ∞ operad 写像を頂点とする Alg_{M/O}(C) は見つからなかった。"
+    },
+    "3.1.4.1": {
+      "ha_page": 349,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.4.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*Kan|flatCategoricalFibration|KanRelativeInitialVertex.comp|KanExtension.*comp",
+          "files_with_matches": 57,
+          "total_matching_lines": 99,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRightKanCanonical.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorCarrier.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGVerdierRightKanCanonical.lean",
+            "SerrePositivity/InfinityCategories/Derived/RoofConePrism.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierFiniteSpanRecovery.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierSpanKanComparison.lean",
+            "SerrePositivity/InfinityCategories/F1B.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cones/RelativeInitialCoconeVertex.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*Kan|flatCategoricalFibration|KanRelativeInitialVertex.comp|KanExtension.*comp",
+          "files_with_matches": 9,
+          "total_matching_lines": 104,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Functor/Derived/LeftDerived.lean",
+            "Mathlib/CategoryTheory/Functor/Derived/RightDerived.lean",
+            "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+            "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+            "Mathlib/CategoryTheory/Functor/KanExtension/Preserves.lean",
+            "Mathlib/CategoryTheory/GuitartExact/KanExtension.lean",
+            "Mathlib/CategoryTheory/Limits/Presheaf.lean",
+            "Mathlib/CategoryTheory/Localization/DerivabilityStructure/PointwiseLeftDerived.lean",
+            "Mathlib/CategoryTheory/Localization/DerivabilityStructure/PointwiseRightDerived.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean",
+          "sha256": "494f64c30f0f8d6b3f6d6fbcc86fe90d9ea89ffb2fe80affa9bba5a409f2b837"
+        }
+      ],
+      "reason": "普通の相対左 Kan 延長の局所判定と、相対始対象性の合成を確認した。flat な Δ² 族に沿う二つの operadic 左 Kan 延長の合成は見つからなかった。"
+    },
+    "3.1.4.2": {
+      "ha_page": 349,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.4.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "restrictAlgebra|operadic.*Kan|freeAlgebra.*comp|flatCategoricalFibration",
+          "files_with_matches": 13,
+          "total_matching_lines": 26,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/DiscreteAlgebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedHomUnit.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeNormalizedProbeFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeFunctor.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/HomologyCommutativeComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeComAlgebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeHomologyIso.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSmallObject.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebra.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraAdjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "restrictAlgebra|operadic.*Kan|freeAlgebra.*comp|flatCategoricalFibration",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "Mathlib/Algebra/FreeAlgebra.lean",
+            "Mathlib/AlgebraicGeometry/Restrict.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraRestriction.lean",
+          "sha256": "29d9b7fbc385a8708f00c8788c56eb17d6624db30bf78ef965bc2b1b89f12776"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean",
+          "sha256": "494f64c30f0f8d6b3f6d6fbcc86fe90d9ea89ffb2fe80affa9bba5a409f2b837"
+        }
+      ],
+      "reason": "dg の作用の制限は operad の写像に沿って前合成する。Δ² 族の三つのファイバーで自由拡張を作り、二段の拡張と直接の拡張を関手同値で比較する型は見つからなかった。"
+    },
+    "3.1.4.3": {
+      "ha_page": 350,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.1.4.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*colimit|relative.*colimit.*pointwise|mappingCylinder.*operad|cocartesianSectionFamilyColimitLift",
+          "files_with_matches": 7,
+          "total_matching_lines": 17,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1B.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitConstantFamily.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*colimit|relative.*colimit.*pointwise|mappingCylinder.*operad|cocartesianSectionFamilyColimitLift",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitPointwise.lean",
+          "sha256": "4d97e06789d75dd6b584d21959496ad39166007a7df3fbb636cd38c21805b828"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionColimitLift.lean",
+          "sha256": "97333a4c07ed78dc92a447823a3a186e74caa14fde97b712b8c0da667af836ca"
+        }
+      ],
+      "reason": "相対余錐族の点ごとの判定と、余デカルト関手の族の貼り合わせを確認した。写像円柱の active 図式と inert 余錐に対する自明 Kan 制限、および operadic 余極限の比較は見つからなかった。"
+    },
+    "3.2.1.1": {
+      "ha_page": 354,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "unitObject|operadic.*unit|operadic.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 55,
+          "total_matching_lines": 181,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Basic.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Reconstruction.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/Koszul/Tower.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/QuotientEpsilonNative.lean",
+            "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeUnitRequirement.lean",
+            "SerrePositivity/InfinityCategories/F1B/Cones/ColimitConstantFamily.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/BoundaryRelativeColimitExistence.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalIsofibrationDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalLiftingDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalLiftingInitialFamily.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalPathReplacementDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1B/KanExtension/GlobalRelativeBoundaryExtension.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "unitObject|operadic.*unit|operadic.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "通常のモノイダル圏の単位対象と相対余極限の定義はある。零入力から色 X への辺が operadic 余極限であることによる単位の定義は見つからなかった。"
+    },
+    "3.2.1.2": {
+      "ha_page": 354,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*unit|relative.*unit|unitObject|IsRelativeColimitCone",
+          "files_with_matches": 243,
+          "total_matching_lines": 626,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DerivedBimoduleComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitTotalComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitValueProjectionEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanConeKanPathClass.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanConeRelativePathClass.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/PDivision.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/PDivisionSource.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilyRaw.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilySource.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/CompletionPD.lean",
+            "SerrePositivity/BhattScholze/Andre/Variants/RootedExtension.lean",
+            "SerrePositivity/BhattScholze/Delta/DividedPower/PrincipalDP.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*unit|relative.*unit|unitObject|IsRelativeColimitCone",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "Mathlib/Algebra/Divisibility/Units.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/Skeleton.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "通常の単位対象は圏に付随し、相対余極限は射を引数にする。零入力からの operadic 単位が相対射 p に依存することを表す型は見つからなかった。"
+    },
+    "3.2.1.3": {
+      "ha_page": 354,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*unit|unit.*cocartesian|cocartesian.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 73,
+          "total_matching_lines": 324,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitFamily.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackDomainCocone.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackDomainMarks.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackEdgeCover.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackHomCoreDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/PullbackNativeCoreDescent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*unit|unit.*cocartesian|cocartesian.*colimit|IsRelativeColimitCone",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "一般の余デカルト辺と相対余極限はある。operadic 単位を表す辺が余デカルトになる比較は見つからなかった。"
+    },
+    "3.2.1.4": {
+      "ha_page": 355,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "unit.*trivialKanFibration|operadic.*unit|trivialKanFibration_of_leftFibration|fullSubcomplexOnVertices",
+          "files_with_matches": 686,
+          "total_matching_lines": 2137,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitPointedZeroFaceFamily.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePath.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathFinalLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathInnerFibration.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathMap.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathReplacement.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "unit.*trivialKanFibration|operadic.*unit|trivialKanFibration_of_leftFibration|fullSubcomplexOnVertices",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean",
+          "sha256": "b557f09acf2e9a586d0dd93ccaaa31f59744b15d1faa7d242f1d66e3540bef1e"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationTrivialComparison.lean",
+          "sha256": "90fadc0a54de25b7a77987b9b6c983a6c016694e332dead631c22f71783b65b6"
+        }
+      ],
+      "reason": "準圏の充満部分複体と左ファイブレーションの自明 Kan 判定を確認した。零入力からの単位辺の空間の評価が底の充満部分圏上で自明 Kan となる比較は見つからなかった。"
+    },
+    "3.2.1.5": {
+      "ha_page": 355,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*unit|unit.*concatenation|ContainsUnit|fullMonoidalSubcategory",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "operadic.*unit|unit.*concatenation|ContainsUnit|fullMonoidalSubcategory",
+          "files_with_matches": 1,
+          "total_matching_lines": 5,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Subcategory.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Subcategory.lean",
+          "sha256": "d0290ab5b62996111792a7086ca0c839ed3d175de1bc5ddc97921a46d0b0505b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean",
+          "sha256": "b557f09acf2e9a586d0dd93ccaaa31f59744b15d1faa7d242f1d66e3540bef1e"
+        }
+      ],
+      "reason": "Mathlib では単位を含むテンソル閉の通常の部分圏を構成できる。単位辺の評価の本質像が operadic な連結で閉じ、色での単位の存在から全対象に広がる型は見つからなかった。"
+    },
+    "3.2.1.6": {
+      "ha_page": 355,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*unit|unit.*cocartesian|unitObject|coCartesian.*unital",
+          "files_with_matches": 8,
+          "total_matching_lines": 20,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Basic.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ComplexCompletion/Reconstruction.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/Koszul/Tower.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/QuotientEpsilonNative.lean",
+            "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeUnitRequirement.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SecondTrianglePureHom.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionsMixedUnit.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/CocartesianKanWeightedUnit.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*unit|unit.*cocartesian|unitObject|coCartesian.*unital",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "通常のモノイダル構造には単位がデータとして含まれる。unital operad への余デカルト射から各色の operadic 単位を作る宣言は見つからなかった。"
+    },
+    "3.2.1.7": {
+      "ha_page": 355,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "CommMon.*trivial|trivial.*algebra|operadic.*unit",
+          "files_with_matches": 33,
+          "total_matching_lines": 66,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Almost/FiniteEtaleComparison.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/TensorPerfectoidization.lean",
+            "SerrePositivity/CommutativeAlgebra/CubicCyclotomic/Algebra.lean",
+            "SerrePositivity/CommutativeAlgebra/MaximalRegularSequence.lean",
+            "SerrePositivity/CommutativeAlgebra/RegularLocalRing/FlatBaseChange.lean",
+            "SerrePositivity/CommutativeAlgebra/RootTower/BaseChange.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CospanReplacement.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorLifting.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramMappingSpace.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "CommMon.*trivial|trivial.*algebra|operadic.*unit",
+          "files_with_matches": 138,
+          "total_matching_lines": 213,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Prod.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Basic.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Quasispectrum.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/IsSimpleOrder.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Azumaya/Matrix.lean",
+            "Mathlib/Algebra/BigOperators/Associated.lean",
+            "Mathlib/Algebra/BigOperators/Finprod.lean",
+            "Mathlib/Algebra/BigOperators/Finsupp/Basic.lean",
+            "Mathlib/Algebra/BigOperators/WithTop.lean",
+            "Mathlib/Algebra/Central/Basic.lean",
+            "Mathlib/Algebra/Central/Defs.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimit.lean",
+          "sha256": "53b8f59592b6edd5c786636bcf45042a3460e6121e72f6ac2424b6e8baf3da39"
+        }
+      ],
+      "reason": "通常の可換モノイド圏では単位対象上に自明なモノイドを作れる。unital ∞ operad 上の全ての零入力辺が operadic 単位を表すという性質の定義は見つからなかった。"
+    },
+    "3.2.1.8": {
+      "ha_page": 355,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "uniqueHomFromTrivial|kanIsRelativeLeftKanExtension|trivial.*initial|operadic.*unit",
+          "files_with_matches": 50,
+          "total_matching_lines": 78,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/ContinuousProjectiveCofibrancy.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveBottomCofibrancy.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveSpan.lean",
+            "SerrePositivity/HomotopicalAlgebra/Generated/Replacement.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/Resolution.lean",
+            "SerrePositivity/InfinityCategories/Core/ColimitAttachment.lean",
+            "SerrePositivity/InfinityCategories/Core/ColimitExistenceTransfer.lean",
+            "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean",
+            "SerrePositivity/InfinityCategories/Core/InitialHomotopy.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialCosliceComparison.lean",
+            "SerrePositivity/InfinityCategories/Core/RelativeInitialEndpoint.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "uniqueHomFromTrivial|kanIsRelativeLeftKanExtension|trivial.*initial|operadic.*unit",
+          "files_with_matches": 7,
+          "total_matching_lines": 12,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Basic.lean",
+            "Mathlib/CategoryTheory/Galois/Decomposition.lean",
+            "Mathlib/CategoryTheory/Monoidal/CommComon_.lean",
+            "Mathlib/CategoryTheory/Monoidal/CommGrp_.lean",
+            "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+            "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftJoinCriterion.lean",
+          "sha256": "494f64c30f0f8d6b3f6d6fbcc86fe90d9ea89ffb2fe80affa9bba5a409f2b837"
+        }
+      ],
+      "reason": "通常の自明な可換モノイドからの射の一意性と通常の相対左 Kan 延長の局所判定を確認した。単位を持つ fibration 上で始対象性・零入力からの左 Kan 延長性・自明性を同値にする宣言は見つからなかった。"
+    },
+    "3.2.1.10": {
+      "ha_page": 356,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.1.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.1.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "trivial.*algebra|operadic.*unit|exists_kanRelativeLeftCanonical",
+          "files_with_matches": 42,
+          "total_matching_lines": 80,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Almost/FiniteEtaleComparison.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/TensorPerfectoidization.lean",
+            "SerrePositivity/CommutativeAlgebra/CubicCyclotomic/Algebra.lean",
+            "SerrePositivity/CommutativeAlgebra/MaximalRegularSequence.lean",
+            "SerrePositivity/CommutativeAlgebra/RegularLocalRing/FlatBaseChange.lean",
+            "SerrePositivity/CommutativeAlgebra/RootTower/BaseChange.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CospanReplacement.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorLifting.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramMappingSpace.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "trivial.*algebra|operadic.*unit|exists_kanRelativeLeftCanonical",
+          "files_with_matches": 124,
+          "total_matching_lines": 195,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Prod.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Basic.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Quasispectrum.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/IsSimpleOrder.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Azumaya/Matrix.lean",
+            "Mathlib/Algebra/Central/Basic.lean",
+            "Mathlib/Algebra/Central/Defs.lean",
+            "Mathlib/Algebra/Central/TensorProduct.lean",
+            "Mathlib/Algebra/CharP/Algebra.lean",
+            "Mathlib/Algebra/FreeAlgebra.lean",
+            "Mathlib/Algebra/FreeAlgebra/Cardinality.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean",
+          "sha256": "cf76135c711b54f85cb412c9bb026df1851df92935e282e8c85a021d6896ffa4"
+        }
+      ],
+      "reason": "普通の相対左 Kan 延長の構成と通常圏の自明可換モノイドを確認した。各色の operadic 単位の存在と、それらをまとめる自明 O-代数の存在を同値にする宣言は見つからなかった。"
+    },
+    "3.2.4.1": {
+      "ha_page": 369,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "markedCocartesianFunctorSpace|operadic.*bifunctor|relative.*algebra|inert.*bifunctor",
+          "files_with_matches": 79,
+          "total_matching_lines": 199,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/BoundaryFreeNeighborhoodsSingleBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreePushout.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativeFlatTensor.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativePureFreeNeighborhoods.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativePureFreeNeighborhoodsAlgEquiv.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativePureFreeNeighborhoodsBasic.lean",
+            "SerrePositivity/AlgebraicGeometry/RelativePureFreeNeighborhoodsPushout.lean",
+            "SerrePositivity/BhattScholze/Andre/Envelope/PDivisionSource.lean",
+            "SerrePositivity/BhattScholze/Delta/Division/Source.lean",
+            "SerrePositivity/BhattScholze/Delta/Free/RelativeFreeFiniteTopVariable.lean",
+            "SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeMaps.lean",
+            "SerrePositivity/BhattScholze/Prismatic/Envelope.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "markedCocartesianFunctorSpace|operadic.*bifunctor|relative.*algebra|inert.*bifunctor",
+          "files_with_matches": 16,
+          "total_matching_lines": 42,
+          "sample_paths": [
+            "Mathlib/Algebra/Lie/SemiDirect.lean",
+            "Mathlib/Algebra/Lie/Weights/Cartan.lean",
+            "Mathlib/Algebra/Lie/Weights/Chain.lean",
+            "Mathlib/Algebra/Lie/Weights/RootSystem.lean",
+            "Mathlib/Algebra/MvPolynomial/Counit.lean",
+            "Mathlib/AlgebraicGeometry/AffineSpace.lean",
+            "Mathlib/AlgebraicGeometry/Sites/SmallAffineZariski.lean",
+            "Mathlib/CategoryTheory/Sites/Descent/DescentDataAsCoalgebra.lean",
+            "Mathlib/FieldTheory/AlgebraicClosure.lean",
+            "Mathlib/FieldTheory/PurelyInseparable/PerfectClosure.lean",
+            "Mathlib/RingTheory/Kaehler/Polynomial.lean",
+            "Mathlib/RingTheory/PicardGroup.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorPullback.lean",
+          "sha256": "a479ca62fe902aed970e25845725092507377b984d8ece6b2ab14a5f2d608963"
+        }
+      ],
+      "reason": "指定辺を標的の余デカルト辺に送る底上の関手を充満部分複体にできる。二つの operad の積上で、全パラメーター頂点について第二変数の inert 保存を課す表現対象は見つからなかった。"
+    },
+    "3.2.4.2": {
+      "ha_page": 369,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "relativeFunctorFiberHom|algebra.*fiber|operadic.*bifunctor",
+          "files_with_matches": 48,
+          "total_matching_lines": 131,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/FibreAlgebraAssociatedPrime.lean",
+            "SerrePositivity/AlgebraicGeometry/GeometricallyIntegralFiberRegularity.lean",
+            "SerrePositivity/AlgebraicGeometry/LocalGenericDetection.lean",
+            "SerrePositivity/AlgebraicGeometry/SplitGenericPrimeContinuity.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FixedBaseHomotopyFiber.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeFiberRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberClass.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberRepresentative.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "relativeFunctorFiberHom|algebra.*fiber|operadic.*bifunctor",
+          "files_with_matches": 16,
+          "total_matching_lines": 34,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/HomotopyCategory/MappingCone.lean",
+            "Mathlib/Algebra/Homology/HomotopyFiber.lean",
+            "Mathlib/Algebra/Homology/Localization.lean",
+            "Mathlib/Algebra/Homology/Precylinder.lean",
+            "Mathlib/AlgebraicGeometry/Fiber.lean",
+            "Mathlib/AlgebraicGeometry/Geometrically/Basic.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/Finite.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/QuasiFinite.lean",
+            "Mathlib/AlgebraicGeometry/Morphisms/SmoothFiber.lean",
+            "Mathlib/AlgebraicGeometry/Sites/EtalePoint.lean",
+            "Mathlib/RingTheory/LocalRing/ResidueField/Fiber.lean",
+            "Mathlib/RingTheory/LocalRing/ResidueField/Polynomial.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorFiberHom.lean",
+          "sha256": "23e7ab21265d0c2fb524aab1cf43507ce13c166f7a345e07dee55747b4395956"
+        }
+      ],
+      "reason": "relativeFunctorFiberHom は両端を同じ底の頂点に制限した関手を与える。HA の表現対象のファイバーを第二変数の代数の ∞ 圏と同型にする宣言は見つからなかった。"
+    },
+    "3.2.4.3": {
+      "ha_page": 370,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cocartesian.*pointwise|relativeFunctorFiberHom|operadic.*fibration|inert.*pointwise",
+          "files_with_matches": 33,
+          "total_matching_lines": 113,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentTriangleFiberIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FixedBaseHomotopyFiber.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeFiberRestriction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberClass.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/RelativeIsoFiberRepresentative.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/VerdierSpanCoherentContraction.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakCosliceComparisonFiberSection.lean",
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/CocartesianKanWeightedFiberRecovery.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/KanWeightedUnitFiberRestriction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cocartesian.*pointwise|relativeFunctorFiberHom|operadic.*fibration|inert.*pointwise",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/RingTheory/Ideal/Pointwise.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorFiberHom.lean",
+          "sha256": "23e7ab21265d0c2fb524aab1cf43507ce13c166f7a345e07dee55747b4395956"
+        }
+      ],
+      "reason": "余デカルト・ファイブレーションの底変換と関手の各ファイバーへの制限を確認した。代数を表す ∞ operad の射のファイブレーション性、inert 性と余デカルト性の点ごとの判定は見つからなかった。"
+    },
+    "3.2.4.4": {
+      "ha_page": 370,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "mapCommMon|operad.*pointwise|pointwise.*tensor|algebra.*monoidal",
+          "files_with_matches": 281,
+          "total_matching_lines": 1397,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CurriedSwapAction.lean",
+            "SerrePositivity/BhattScholze/Almost/CompletedModuleTensor.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/VarpiComparison.lean",
+            "SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean",
+            "SerrePositivity/BhattScholze/Delta/Free/PolynomialExpand.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/IteratedTensor.lean",
+            "SerrePositivity/CategoryTheory/MonoidalUnitHom.lean",
+            "SerrePositivity/EInfinity.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "mapCommMon|operad.*pointwise|pointwise.*tensor|algebra.*monoidal",
+          "files_with_matches": 97,
+          "total_matching_lines": 284,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/AlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/AlgCat/Symmetric.lean",
+            "Mathlib/Algebra/Category/BialgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/CoalgCat/ComonEquivalence.lean",
+            "Mathlib/Algebra/Category/CoalgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/CommBialgCat.lean",
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/Algebra/Category/Grp/LeftExactFunctor.lean",
+            "Mathlib/Algebra/Category/HopfAlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Adjunctions.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/RelativeFunctor.lean",
+          "sha256": "b557f09acf2e9a586d0dd93ccaaa31f59744b15d1faa7d242f1d66e3540bef1e"
+        }
+      ],
+      "reason": "通常の可換モノイド対象を組紐付き関手で写せるが、任意の O の代数の ∞ operad を構成して点ごとのテンソルを入れ、各評価を対称モノイダルとする型は見つからなかった。"
+    },
+    "3.2.4.5": {
+      "ha_page": 370,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "FinPointed.*smash|commutativeOperad|CAlg.*CAlg|operad.*smash",
+          "files_with_matches": 53,
+          "total_matching_lines": 147,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/LocalGenericComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/LocalGenericDetection.lean",
+            "SerrePositivity/CommutativeAlgebra/CubicCyclotomic/Algebra.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AugmentationNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgAlgebraSource.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteDerivedComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteEmbedding.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteImage.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteRecognition.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgDiscreteUnderRecognition.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgForget.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "FinPointed.*smash|commutativeOperad|CAlg.*CAlg|operad.*smash",
+          "files_with_matches": 31,
+          "total_matching_lines": 85,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Generators.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/LocallyFree.lean",
+            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
+            "Mathlib/Algebra/Polynomial/AlgebraMap.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/AlgHom.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/BaseChange.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Basic.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Defs.lean",
+            "Mathlib/Algebra/QuadraticAlgebra/Discriminant.lean",
+            "Mathlib/Analysis/Complex/Circle.lean",
+            "Mathlib/Analysis/Normed/Group/Uniform.lean",
+            "Mathlib/Geometry/Manifold/Algebra/LieGroup.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Commutative.lean",
+          "sha256": "5d2045775116f037ca5b77a5a5784a16bc52d677e2e5534cc8803f178d87b7fc"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        }
+      ],
+      "reason": "dg 可換 operad とその代数を確認した。Fin∗ の smash が ∞ operad の二関手であることや、これが誘導する二重可換代数との同値は見つからなかった。"
+    },
+    "3.2.4.6": {
+      "ha_page": 370,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operadic.*localization|OpInfinity|reflector.*localization|CocartesianOperad",
+          "files_with_matches": 53,
+          "total_matching_lines": 176,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeBivariateHomInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeBivariateHomSourceComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeBivariateHomTargetComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeDerivedHomAugmentationInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeDerivedHomInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeDerivedHomValue.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomSpaceComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGSemifreeHomTensorComparison.lean",
+            "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+            "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveUnitInvertible.lean",
+            "SerrePositivity/KST/SConstruction.lean",
+            "SerrePositivity/KST/SConstruction/BoundaryAssemblyCollageTransport.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "operadic.*localization|OpInfinity|reflector.*localization|CocartesianOperad",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+          "sha256": "4ae4ddcd34f784fda9cedab3486c2c82453a3b526abab93fff5d19b11f8eabb5"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "準圏の反射的局所化はあるが、Comm⊗ とのテンソルで Op∞ を局所化し、本質像を余デカルト ∞ operad と同定する型は見つからなかった。"
+    },
+    "3.2.4.8": {
+      "ha_page": 371,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "hasColimits_commRingCat|CommMon.*coproduct|CAlg.*coproduct|operadic.*coproduct",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "hasColimits_commRingCat|CommMon.*coproduct|CAlg.*coproduct|operadic.*coproduct",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/Ring/Colimits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/Ring/Colimits.lean",
+          "sha256": "6b8c8ac0c6643e94d69076abe3527fb35ae38a0cae56ad2ec4b17331fd77da9a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        }
+      ],
+      "reason": "可換環の通常圏には全余極限がある。任意の対称モノイダル ∞ 圏の CAlg に有限余積を作る型や、可換環の余積を HA の operadic 構成に比較する宣言は見つからなかった。"
+    },
+    "3.2.4.9": {
+      "ha_page": 372,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Functor.Monoidal|preservesFiniteCoproducts|operad.*coproduct|CAlg.*coproduct",
+          "files_with_matches": 41,
+          "total_matching_lines": 92,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/OppositeHomPrecomposition.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Braided.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/DiagramAcyclicity.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/KanHammockPrecompose.lean",
+            "SerrePositivity/HomologicalAlgebra/CochainTensor/BaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/TorBaseChange.lean",
+            "SerrePositivity/InfinityCategories/Core/PairingHorns.lean",
+            "SerrePositivity/InfinityCategories/F1B/Fibrations/RightAnodyneTensor.lean",
+            "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+            "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorHomCategory.lean",
+            "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorVertex.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Functor.Monoidal|preservesFiniteCoproducts|operad.*coproduct|CAlg.*coproduct",
+          "files_with_matches": 64,
+          "total_matching_lines": 172,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/Grp/CartesianMonoidal.lean",
+            "Mathlib/Algebra/Category/Grp/LeftExactFunctor.lean",
+            "Mathlib/Algebra/Homology/Monoidal.lean",
+            "Mathlib/AlgebraicGeometry/Group/Abelian.lean",
+            "Mathlib/AlgebraicGeometry/Group/Affine.lean",
+            "Mathlib/AlgebraicGeometry/Limits.lean",
+            "Mathlib/AlgebraicTopology/SimplicialObject/Split.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/UnionProd.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/HoFunctorMonoidal.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/TopAdj.lean",
+            "Mathlib/CategoryTheory/Action/Monoidal.lean",
+            "Mathlib/CategoryTheory/EffectiveEpi/Extensive.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Functor.lean",
+          "sha256": "022b8e26cd9102f6f576d9a411d6f495c2b2a74d220caabe42b62b2d21242702"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Limits/Preserves/Finite.lean",
+          "sha256": "b1089a0b81f0f9c3ac0ae66c089db0b34c8d60f5fa23a077bd0754588e719cee"
+        }
+      ],
+      "reason": "通常のモノイダル関手はテンソル比較を同型とする。余デカルト operad からの写像が対称モノイダルであることと、対応する CAlg 値関手が有限余積を保つこととの同値は見つからなかった。"
+    },
+    "3.2.4.10": {
+      "ha_page": 372,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.4.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.4",
+          "lean": 0,
+          "plan": 2
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.3",
+            "lean": 0,
+            "plan": 9
+          },
+          {
+            "prefix": "3.3.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "CocartesianOperad|CAlg.*cocartesian|CommMon|operad.*coproduct",
+          "files_with_matches": 103,
+          "total_matching_lines": 462,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootPolynomial.lean",
+            "SerrePositivity/BhattScholze/Perfectoidization/Derived/RootAdjunction.lean",
+            "SerrePositivity/BhattScholze/Prism/Bounded/Tilt.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/IteratedTensor.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/PerfectPrismResidueTensor.lean",
+            "SerrePositivity/BhattScholze/Prism/Tensor/PerfectPrismTensor.lean",
+            "SerrePositivity/CategoryTheory/Abelian/SerreLength.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/FreeTensor.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Monoidal.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "CocartesianOperad|CAlg.*cocartesian|CommMon|operad.*coproduct",
+          "files_with_matches": 1069,
+          "total_matching_lines": 7079,
+          "sample_paths": [
+            "Mathlib/Algebra/AddConstMap/Basic.lean",
+            "Mathlib/Algebra/AffineMonoid/Basic.lean",
+            "Mathlib/Algebra/AffineMonoid/Embedding.lean",
+            "Mathlib/Algebra/AffineMonoid/Irreducible.lean",
+            "Mathlib/Algebra/AffineMonoid/UniqueSums.lean",
+            "Mathlib/Algebra/Algebra/Basic.lean",
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Equiv.lean",
+            "Mathlib/Algebra/Algebra/Operations.lean",
+            "Mathlib/Algebra/Algebra/RestrictScalars.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        }
+      ],
+      "reason": "余デカルト・ファイブレーションと可換モノイド対象の通常圏を確認した。任意の ∞ operad から得る CAlg(C)⊗ が余デカルト operad になる型は見つからなかった。"
     }
   }
 }

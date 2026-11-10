@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
+  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -1832,6 +1832,495 @@
         }
       ],
       "reason": "余ファイブラントな対象によるテンソルの左 Quillen 性を確認した。全対象が余ファイブラントな場合の左固有性・余ファイブラント対象間の射による生成と、Cartesian テンソルのモノイド公理をまとめる宣言は見つからなかった。"
+    },
+    "4.5.4.4": {
+      "ha_page": 607,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "allCofibrant|HasMonoidAxiom|leftProper|cofibrant.*leftProper",
+          "files_with_matches": 24,
+          "total_matching_lines": 62,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/PushoutComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/RelativeHomotopyColimit.lean",
+            "SerrePositivity/HomotopicalAlgebra/Foundations.lean",
+            "SerrePositivity/HomotopicalAlgebra/GeneralTools.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/ContinuousLocalEquivalences.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/IteratedExistence.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/LeftProperTransfinite.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/LocalBoundaryEquivalences.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/LocalLeftProper.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "allCofibrant|HasMonoidAxiom|leftProper|cofibrant.*leftProper",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+          "sha256": "1ccb10cd770aba810c4a277de5fc251f1a2629efe60ce1f00fc14e0291c204f3"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveLeftProper.lean",
+          "sha256": "fb367375228cd5fcf71759bd400708b7539f3e4e19b153bdf896c2f3443fffa7"
+        }
+      ],
+      "reason": "余ファイブラントな固定対象によるテンソルの左 Quillen 性と射影モデルの左固有性を確認した。全対象の余ファイブラント性から F1 と F2 を導く宣言は見つからなかった。"
+    },
+    "4.5.4.5": {
+      "ha_page": 607,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "powerCofibration|powerCofibrant|pushoutProduct_cofibration|freelyPowered",
+          "files_with_matches": 5,
+          "total_matching_lines": 10,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+            "SerrePositivity/HomotopicalAlgebra/Pointed/SmashModel.lean",
+            "SerrePositivity/Spectra/ModelCategory/FreePushoutProductModel.lean",
+            "SerrePositivity/Spectra/ModelCategory/GeneralLevelTensor.lean",
+            "SerrePositivity/Spectra/ModelCategory/SimplicialLevelTensor.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "powerCofibration|powerCofibrant|pushoutProduct_cofibration|freelyPowered",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+          "sha256": "62b6ff94fe2e178e6effe64f76108e9924968b05b29b8c7bb104701f79dece06"
+        }
+      ],
+      "reason": "底での二項押し出し積の余ファイブレーション性はある。power cofibration を入力とし、n=1 の評価から底の余ファイブレーション性を得る宣言は見つからなかった。"
+    },
+    "4.5.4.6": {
+      "ha_page": 607,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "commutative.*modelCategory|rightTransfer|commutativeOperad|freelyPowered",
+          "files_with_matches": 23,
+          "total_matching_lines": 61,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/AugmentationNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/OperadAugmentation.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeComAlgebra.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+            "SerrePositivity/EInfinity/Operad/CoalgebraInterval.lean",
+            "SerrePositivity/EInfinity/Operad/CoalgebraIntervalRestriction.lean",
+            "SerrePositivity/EInfinity/Operad/CoalgebraIntervalUnit.lean",
+            "SerrePositivity/EInfinity/Operad/Commutative.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeAlgebraFunctor.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeAlgebraGeneration.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeBinaryCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "commutative.*modelCategory|rightTransfer|commutativeOperad|freelyPowered",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Commutative.lean",
+          "sha256": "5d2045775116f037ca5b77a5a5784a16bc52d677e2e5534cc8803f178d87b7fc"
+        }
+      ],
+      "reason": "厳密な結合 dg 代数の右移送と、可換 dg operad の通常の代数圏を確認した。freely powered の仮定から厳密可換代数にモデル構造を右移送し、忘却を右 Quillen にする型は見つからなかった。"
+    },
+    "4.5.4.7": {
+      "ha_page": 608,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.7",
+          "lean": 0,
+          "plan": 3
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rectification|commutativeAlgebraFunctor|bifibrantHammock_isLocalization|CAlg.*localization",
+          "files_with_matches": 633,
+          "total_matching_lines": 1975,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/LocalGenericComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonCoordinates.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonLeftIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightImageMaps.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanCommonRightIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionHomotopy.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionImage.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rectification|commutativeAlgebraFunctor|bifibrantHammock_isLocalization|CAlg.*localization",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebraFunctor.lean",
+          "sha256": "fccb1de8ad6758bbfc9af5fb2566da4edc33d76e608b9c51cc3c26d934270388"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/FrameLocalizationInput.lean",
+          "sha256": "c7919b270f0ecdc74ea38f4fade557452359a2328c6bb765b2e36895935521d0"
+        }
+      ],
+      "reason": "厳密な可換 dg モノイドを可換 dg operad 代数へ送る通常の関手と、結合 dg 代数の hammock 局所化を確認した。厳密可換代数の局所化から底のモノイダル ∞ 局所化の CAlg への標準写像と同値性は見つからなかった。"
+    },
+    "4.5.4.8": {
+      "ha_page": 608,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "commutative.*cotensor|cotensor.*algebra|FixedSimplicialPushoutProduct|commutativeAlgebraOfMonoid",
+          "files_with_matches": 37,
+          "total_matching_lines": 75,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierFramedLimitForgetComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/Cotensor.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CotensorLifting.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FramedLimitComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/HomologyCommutativeComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensor.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorCarrier.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/WeightedCotensorLifting.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ZeroDegreeHomologyIso.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+            "SerrePositivity/EInfinity/Operad/CommutativeAlgebraFunctor.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "commutative.*cotensor|cotensor.*algebra|FixedSimplicialPushoutProduct|commutativeAlgebraOfMonoid",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/FixedSimplicialModelCompatibility.lean",
+          "sha256": "e0cebea3ea6b7c1445c96bc2f3bb2ce5744c93a913cd3f283ae961c6c29aafb5"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/CommutativeAlgebra.lean",
+          "sha256": "b6be7d13646a7080fb6f324c45bfd63728fc47c05520e285000c2aae5b06c103"
+        }
+      ],
+      "reason": "モデル圏の固定単体テンソル・余テンソルと、可換 dg 代数の通常の構成を確認した。単体的対称モノイダルモデル圏で A^K に可換代数構造を入れ、移送モデル構造と整合させる型は見つからなかった。"
+    },
+    "4.5.4.9": {
+      "ha_page": 608,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "presentable.*model|monoidal.*presentable|tensorLeft_isLeftQuillen|functor_hasSmallColimits",
+          "files_with_matches": 76,
+          "total_matching_lines": 109,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Diagram/HocolimWeightedComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/SmallHomFrameWeights.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/WeightComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/DerivedTensorInverse.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+            "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleLimits.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/ActionYoneda.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/AugmentationElements.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/ObjectOfModuleArrow.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "presentable.*model|monoidal.*presentable|tensorLeft_isLeftQuillen|functor_hasSmallColimits",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+          "sha256": "1ccb10cd770aba810c4a277de5fc251f1a2629efe60ce1f00fc14e0291c204f3"
+        }
+      ],
+      "reason": "presentable ∞ 圏の関手圏の小余極限と、余ファイブラント対象でのテンソルの左 Quillen 性を確認した。指定のモデル表示から presentability と導来テンソルの変数別余極限保存を得る型は見つからなかった。"
+    },
+    "4.5.4.11": {
+      "ha_page": 609,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "comparison_weakEquivalence_of_cofibrant|powerCofibrant|coinvariant.*cofibr|pushoutProduct.*power",
+          "files_with_matches": 3,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Diagram/ContinuousHomotopyColimit.lean",
+            "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/HocolimLocalEquivalences.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "comparison_weakEquivalence_of_cofibrant|powerCofibrant|coinvariant.*cofibr|pushoutProduct.*power",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+          "sha256": "aa7207d3cd9e91a0b9f8539dbcce0ebf0ae29946a6ef322876a1abb74446e3db"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+          "sha256": "1ccb10cd770aba810c4a277de5fc251f1a2629efe60ce1f00fc14e0291c204f3"
+        }
+      ],
+      "reason": "射影余ファイブラントな通常図式では余極限とホモトピー余極限の比較が弱同値になる。Σₙ 上で power cofibration から必要な射影余ファイブラント性を得る比較と、σⁿ の余ファイブレーション性は見つからなかった。"
+    },
+    "4.5.4.12": {
+      "ha_page": 611,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.4.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.4",
+          "lean": 0,
+          "plan": 3
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "forget_createsSiftedColimitsOfShape|forget.*homotopyColimit|CAlg.*sifted|derivedForget.*colimit",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "forget_createsSiftedColimitsOfShape|forget.*homotopyColimit|CAlg.*sifted|derivedForget.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+          "sha256": "9587031794877945e849fecc9304d1907398d6870cf4c4890242a3afdd1eaebe"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+          "sha256": "aa7207d3cd9e91a0b9f8539dbcce0ebf0ae29946a6ef322876a1abb74446e3db"
+        }
+      ],
+      "reason": "dg operad 代数の通常の忘却が sifted 余極限を作る結果と、射影置換でホモトピー余極限を計算する結果を確認した。厳密可換代数の局所化後の忘却が N(C) 型の余極限を保つ比較は見つからなかった。"
     }
   }
 }
