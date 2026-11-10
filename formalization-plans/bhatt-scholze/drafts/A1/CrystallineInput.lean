@@ -5,6 +5,7 @@ module
 public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
 public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
 public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
+public import SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
@@ -455,40 +456,7 @@ theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
 
 /-! ### 段 5：n 変数の Cartier 同型 -/
 
-def cartierTerm (n i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃ₗ[cartierBase p]
-    (cartierComplex.{u} p n).X i := by
-  sorry -- Shared の deRhamComplex の i 次項は通常の Ω^i
-
-/-- [f^p] ∈ H^0(Ω^•_{F_p[X]})（d(f^p) = p f^{p−1}df = 0）。 -/
-def cartierZeroClass (n : ℕ) (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) : (cartierComplex p n).homology 0 := by
-  let K := cartierComplex p n
-  let x : K.X 0 := cartierTerm p n 0 (DeRham.formsZeroEquiv _ _ (f ^ p))
-  exact K.homologyπ 0 (K.cyclesMk x 1 rfl (by sorry)) -- d(f^p)=0（標数 p）
-
-def cartierOneClass (n : ℕ) (j : formVars.{u} n) : (cartierComplex p n).homology 1 := by
-  let K := cartierComplex p n
-  let x : K.X 1 := cartierTerm p n 1
-    ((MvPolynomial.X j ^ (p-1)) • DeRham.dX (cartierBase p) (formVars n) j)
-  exact K.homologyπ 1 (K.cyclesMk x 2 rfl (by sorry)) -- d(X^(p−1)dX)=0
-
-/-- 概要：n 変数の inverse Cartier C^{-1} : Ω^i_{F_p[X]} → H^i(Ω^•_{F_p[X]})（F_p[X]^{(1)} ≅ F_p[X] と同一視）。
-方針：次数 0 は f ↦ [f^p]、次数 1 は dX_j ↦ [X_j^{p−1}dX_j]、外積に乗法的。
-規約：加法群の同型（F_p[X] 上では Frobenius 半線形）。
-使われ方：段 6。 -/
-structure PolynomialCartier (n : ℕ) where
-  app (i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃+ (cartierComplex p n).homology i
-  on_zero (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) :
-    app 0 (DeRham.formsZeroEquiv _ _ f) = cartierZeroClass p n f
-  on_one (j : formVars.{u} n) : app 1 (DeRham.dX (cartierBase p) _ j) = cartierOneClass p n j
-  mul {i j : ℕ} (ω : DeRham.forms (cartierBase p) (formVars.{u} n) i) (η : DeRham.forms (cartierBase p) (formVars.{u} n) j) :
-    app (i+j) (DeRham.wedge _ _ ω η) = DeRham.deRhamCohomologyWedge _ _ (app i ω) (app j η)
-
-/-- 概要：段 5：n 変数の Cartier 同型（G-A1-8）。
-方針：k = F_p で f dX_I を [f^p ∏_{j∈I} X_j^(p−1) dX_I] へ送る。一変数 Cartier の mod p 指数分解を n 回テンソル（G-A5-12 の n 変数版、Künneth）。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-def finitePolynomialCartier (n : ℕ) : PolynomialCartier.{u} p n := by
-  sorry -- 一変数の直接計算（G-A5-12）と de Rham 複体の Künneth
+-- 有限 Cartier と生成元の代表形式は本体の FinitePolynomialCartier に置く。
 
 /-! ### 段 6：生成元での照合と組み立て -/
 
