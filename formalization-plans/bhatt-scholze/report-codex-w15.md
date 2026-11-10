@@ -56,3 +56,10 @@
 - ⑤b の停止点 3 を含む main `09047a87e` を `4f729b6d7` で取り込んだ。D69 §3.4（main `07d9d2117`）に沿い、具体的な正則列の分冪包・Frobenius 除算を⑤cで扱い、任意の J つき分冪包・枠とサイトへの適用は⑤bの持ち分。自由分冪基底・底変換と結晶側の押し出しの p 正則性を既存宣言から使う。
 - `PrimeLocalFlat`、`RegularSequencePDFactorial`、`RegularSequencePDKoszul` の対象ビルドと公開 10 宣言の監査を通過。これらは局所整数上の平坦性、階乗部分環の分冪包としての普遍性、標数 p での関係列の Koszul 正則性を与える。評価商には既存の `Section2.stage0BaseEquiv` を使った。
 - `RegularSequencePDPrimeRegular` と `RegularSequencePDTor` の対象ビルドと公開 5 宣言の監査を通過。分冪表示の p 正則性、係数多項式環上の通常の押し出しと高次 Tor 消滅を得た。原典の多項式環への底変換と Frobenius 除算・完備化との同型は再検証中。
+
+## 停止点 1（K1、2026-11-10）
+
+- **Lemma 2.36**。 `freeCoordinateFrobeniusDivision_primeRegular` は自由多変数の生の Frobenius 除算の p 正則性を示す。`freeCoordinateFrobeniusDivisionPDEquiv` がその分冪表示との係数上の標準同型。既存の自由 δ 環と⑤bの結晶側の押し出しの正則性を使った。
+- **Lemma 2.38**。 `dpFamilyUniversalTensorEquiv` と `dpFamilyUniversalTor_subsingleton` は、原典の多項式環上の通常の押し出しと高次 Tor の消滅。Tor の係数には ℤ₍ₚ₎ の `ULift` を用いた。`dpFamilyPresentation_primeRegular`、`dpFamilyFactorialEquiv`、`existsUnique_dpFamilyFactorialDPMorphism` が p 正則性と分冪包の普遍性を与える。`dpFamilyBaseChangeEquiv_generator` が任意の係数への底変換で標準分冪を追跡する。
+- **Corollary 2.39**。 `frobeniusDivisionDPEnvelopeEquiv`、`frobeniusDivision_primeRegular`、`dpFamilyDelta_algebraMap` が正則列に沿う生の δ 除算、p 正則性、係数環の δ 射を与える。有限 δ 表示は既存の `DeltaAdjoinDivision` を使う。`frobeniusDivisionPDCompletionEquiv_base` が導来 p 完備化の H⁰ で係数脚との可換性を与える。D69 §3.4 の任意の J つき分冪包と枠・サイトへの適用は⑤bの持ち分。
+- **検収**。本体の新規 14 モジュールの対象ビルドに成功し、公開 65 宣言を監査した。標準三公理のみ、`sorry` 0。推移的 import 324 件を照合し、∞ 圏・E3 への依存はない。既存の Lean ファイル・宣言と A1 の型は維持した。監査案は `drafts/A0/W15K1/AuditK1.lean`。段 2 は未着手。

@@ -144,7 +144,10 @@ def freeCoordinateFrobeniusDivisionPDEquiv
     apply hpDP
     change (p : DPFamilyPresentation x) * y = (p : DPFamilyPresentation x) * z
     change y * (p : DPFamilyPresentation x) = z * (p : DPFamilyPresentation x) at hyz
-    exact (mul_comm _ _).trans (hyz.trans (mul_comm _ _))
+    have hc (w : DPFamilyPresentation x) : (p : DPFamilyPresentation x) * w =
+        w * (p : DPFamilyPresentation x) := mul_comm (p : DPFamilyPresentation x) w
+    rw [hc y, hc z]
+    exact hyz
   let l := frobeniusDivisionFactorialEquiv E x hlocal hpC'
   letI : Algebra U (pDivisionFactorialSubring p x) := (pDivisionFactorialBase p x).toAlgebra
   let q := dpFamilyFactorialEquiv x hlocal hpDP'
@@ -208,18 +211,30 @@ def frobeniusDivisionDPFamilyEquiv :
   have hk : IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom j)
       (CommRingCat.ofHom jUp) (CommRingCat.ofHom k) := hpush.choose_spec
   letI : Algebra U A := f.toAlgebra
+  have eR_nat (m : ℕ) : eR (m : R) = (m : PrimeLocalInt p) := rfl
   have hpR : IsSMulRegular R (p : R) := by
     have hp₀ : (p : PrimeLocalInt p) ≠ 0 := by
-      exact_mod_cast (Fact.out : p.Prime).ne_zero
+      intro h
+      have hi := IsLocalization.injective (PrimeLocalInt p)
+        (Ideal.span {(p : ℤ)}).primeCompl_le_nonZeroDivisors
+      have hpZ : (p : ℤ) ≠ 0 := by exact_mod_cast (Fact.out : p.Prime).ne_zero
+      apply hpZ
+      apply hi
+      simpa only [map_natCast, map_zero] using h
     intro y z hyz
     apply eR.injective
     apply mul_left_cancel₀ hp₀
     change (p : R) * y = (p : R) * z at hyz
-    simpa only [map_mul, map_natCast] using congrArg eR hyz
+    simpa only [eR.map_mul, eR_nat] using congrArg eR hyz
   have hlocalR (m : ℕ) (hm : ¬p ∣ m) : IsUnit (m : R) := by
-    simpa only [map_natCast] using (primeLocalInt_isUnit p m hm).map eR.symm.toRingHom
+    let up : PrimeLocalInt p →+* R := eR.symm.toRingHom
+    have hup : up (m : PrimeLocalInt p) = (m : R) := rfl
+    exact hup ▸ (primeLocalInt_isUnit p m hm).map up
   let eMod : (R ⧸ Ideal.span {(p : R)}) ≃+* ZMod p :=
-    (Ideal.quotientEquiv _ _ eR (by rw [Ideal.map_span, Set.image_singleton, map_natCast])).trans
+    (Ideal.quotientEquiv _ _ eR (by
+      rw [Ideal.map_span, Set.image_singleton]
+      change Ideal.span {(p : PrimeLocalInt p)} = Ideal.span {eR (p : R)}
+      rw [eR_nat])).trans
       (primeLocalIntModPrimeEquiv p)
   let d : C ≃ₐ[U] DPFamilyPresentation x :=
     freeCoordinateFrobeniusDivisionPDEquiv D₀ r hlocalR hpR eMod
@@ -228,6 +243,8 @@ def frobeniusDivisionDPFamilyEquiv :
   have htA (a₀ : A) : t (algebraMap A (A ⊗[U] C) a₀) = jUp a₀ := by
     exact congr($(ht.inl_isoIsPushout_hom _ _ hk).hom a₀)
   let t' : A ⊗[U] C ≃ₐ[A] AdivUp := { __ := t, commutes' := htA }
+  letI : CommRing (DividedPowerAlgebra U (Fin r →₀ U)) :=
+    RingCon.instCommRingQuotient (DividedPowerAlgebra.ringCon U (Fin r →₀ U))
   let w := (Algebra.TensorProduct.congr (AlgEquiv.refl : A ≃ₐ[A] A) d)
   let e := deltaAdjoinDivisionReindexEquiv D (p : A)
     (fun i : Fin r => D.frobeniusLift (a i)) c Equiv.ulift.symm (fun _ => rfl)
@@ -237,7 +254,7 @@ def frobeniusDivisionDPFamilyEquiv :
   let e' : Adiv ≃ₐ[A] AdivUp := { __ := e, commutes' := heA }
   have hd : algebraMap U A ∘ x = a := hfa
   exact e'.trans (t'.symm.trans (w.trans ((dpFamilyBaseChangeEquiv (B := A) x).trans
-    (by rw [hd]; exact AlgEquiv.refl))))
+    (by rw [hd]))))
 
 include hlocal in
 /-- 概要：剰余上 Koszul 正則な族の生の Frobenius 除算は p 正則。
@@ -253,6 +270,7 @@ theorem frobeniusDivision_primeRegular
   apply e.injective
   apply dpFamilyPresentation_primeRegular a hp ha
   change (p : Adiv) * x = (p : Adiv) * y at h
+  change (p : DPFamilyPresentation a) * e x = (p : DPFamilyPresentation a) * e y
   simpa only [map_mul, map_natCast] using congrArg e h
 
 /-- 概要：剰余上 Koszul 正則な列の Frobenius 除算は分冪包と標準同型。
@@ -271,7 +289,10 @@ def frobeniusDivisionDPEnvelopeEquiv (hp : IsSMulRegular A (p : A))
     apply h
     change (p : DPFamilyPresentation a) * y = (p : DPFamilyPresentation a) * z
     change y * (p : DPFamilyPresentation a) = z * (p : DPFamilyPresentation a) at hyz
-    exact (mul_comm _ _).trans (hyz.trans (mul_comm _ _))
+    have hc (w : DPFamilyPresentation a) : (p : DPFamilyPresentation a) * w =
+        w * (p : DPFamilyPresentation a) := mul_comm (p : DPFamilyPresentation a) w
+    rw [hc y, hc z]
+    exact hyz
   exact (frobeniusDivisionDPFamilyEquiv D hlocal a).trans (dpFamilyFactorialEquiv a hlocal h')
 
 /-- 概要：分冪表示に移した Frobenius 除算の δ 構造。
@@ -289,9 +310,9 @@ def dpFamilyDelta : DeltaStructure p (DPFamilyPresentation a) :=
 theorem dpFamilyDelta_algebraMap :
     D.IsDeltaHom (dpFamilyDelta D hlocal a) (algebraMap A (DPFamilyPresentation a)) := by
   let e := frobeniusDivisionDPFamilyEquiv D hlocal a
-  have h := ((deltaAdjoinDivisionStructure D (p : A) (fun i => D.frobeniusLift (a i))).
-    comapEquiv_symm_isDeltaHom e.symm.toRingEquiv).comp
-      (deltaAdjoinDivisionMap_isDeltaHom D (p : A) (fun i => D.frobeniusLift (a i)))
+  let E := deltaAdjoinDivisionStructure D (p : A) (fun i => D.frobeniusLift (a i))
+  have h := (E.comapEquiv_symm_isDeltaHom (A := DPFamilyPresentation a) e.symm.toRingEquiv).comp
+    (deltaAdjoinDivisionMap_isDeltaHom D (p : A) (fun i => D.frobeniusLift (a i)))
   have he : e.toRingEquiv.toRingHom.comp jA = algebraMap A (DPFamilyPresentation a) := by
     apply RingHom.ext
     exact e.commutes
@@ -305,9 +326,10 @@ def frobeniusDivisionPDCompletionEquiv :
     letI := pdCompletionCommRing Adiv p (p : Adiv)
     letI := pdCompletionCommRing (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
     PDCompletionH0 Adiv p (p : Adiv) ≃+*
-      PDCompletionH0 (DPFamilyPresentation a) p (p : DPFamilyPresentation a) :=
-  Andre.pdCompletionCoordinateEquiv p (frobeniusDivisionDPFamilyEquiv D hlocal a).toRingEquiv
-    _ _ (map_natCast _ _)
+      PDCompletionH0 (DPFamilyPresentation a) p (p : DPFamilyPresentation a) := by
+  let e : Adiv ≃+* DPFamilyPresentation a := (frobeniusDivisionDPFamilyEquiv D hlocal a).toRingEquiv
+  have he : e (p : Adiv) = (p : DPFamilyPresentation a) := map_natCast e p
+  exact Andre.pdCompletionCoordinateEquiv p e _ _ he
 
 /-- 概要：完備化の比較は元の係数環からの標準脚と可換。
 方針：完備化単位との可換性と未完備比較の係数線形性を合成する。
@@ -319,7 +341,8 @@ theorem frobeniusDivisionPDCompletionEquiv_base (b : A) :
     frobeniusDivisionPDCompletionEquiv D hlocal a
         (pdCompletionUnit Adiv p (p : Adiv) (jA b)) =
       pdCompletionUnit (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
-        (algebraMap A (DPFamilyPresentation a) b) := by
+        (Ideal.Quotient.mk (dpFamilyRelationIdeal a)
+          (algebraMap A (DividedPowerAlgebra A (Fin r →₀ A)) b)) := by
   letI := pdCompletionCommRing Adiv p (p : Adiv)
   letI := pdCompletionCommRing (DPFamilyPresentation a) p (p : DPFamilyPresentation a)
   unfold frobeniusDivisionPDCompletionEquiv

@@ -141,8 +141,7 @@ theorem dpFamilyUniversalTor_subsingleton {p : ℕ} [Fact p.Prime] [Algebra (Pri
     { __ := eR.toAddEquiv
       map_smul' := fun x y => eR.map_mul x y }
   haveI : Module.Flat R₀ (PrimeLocalInt p) := Module.Flat.of_linearEquiv eLin.symm
-  haveI : IsScalarTower R₀ (PrimeLocalInt p) A :=
-    IsScalarTower.of_algebraMap_eq' (R := R₀) (S := PrimeLocalInt p) (A := A) rfl
+  letI := IsScalarTower.of_algebraMap_eq' (R := R₀) (S := PrimeLocalInt p) (A := A) rfl
   haveI : Module.Flat R₀ A := Module.Flat.trans R₀ (PrimeLocalInt p) A
   haveI : Module.Flat Pbase P :=
     Module.Flat.of_linearEquiv (Algebra.IsPushout.equiv R₀ Pbase A P).symm.toLinearEquiv
@@ -158,7 +157,9 @@ theorem dpFamilyUniversalTor_subsingleton {p : ℕ} [Fact p.Prime] [Algebra (Pri
   let e₂ := U.mapIso (((Tor (ModuleCat P) (i+1)).obj N).mapIso e₁.toModuleIso)
   let e₃ := U.mapIso ((torComm (i+1) N (ModuleCat.of P Γ₁)).toModuleIso)
   let e₄ := U.mapIso (torAlgebraComparison (C := Γ₁) N (i+1))
-  haveI := dpFamilyPresentation_tor_subsingleton f hlocal hp hf i
+  letI : Subsingleton (U.obj ((ModuleCat.restrictScalars (algebraMap P Γ₁)).obj
+      (((ModuleCat.extendScalars (algebraMap P Γ₁)).leftDerived (i+1)).obj N))) :=
+    dpFamilyPresentation_tor_subsingleton f hlocal hp hf i
   exact (e₀ ≪≫ e₂ ≪≫ e₃ ≪≫ e₄).toLinearEquiv.injective.subsingleton
 
 end SerrePositivity.BhattScholze
