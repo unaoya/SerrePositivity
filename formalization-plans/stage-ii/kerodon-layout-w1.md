@@ -92,3 +92,14 @@ Kerodon の確認（全 10 章のやり直し）と抜き取りが main に入�
 2. **段 2（Tag）**：`@[kerodon TAG]` は own・both の SerrePositivity の宣言だけに付ける（§3、§6）。**partial の宣言への「の特別な場合」の注記は今は書かない**（一括見直しの後）。既存の docstring の「Kerodon a.b.c.d」に「（Tag XXXX）」を添える作業はしてよい（`item-tags.csv`）。
 3. **段 3（移動）**：§2 のとおり。段 2 と一つの束にし、下流ビルドと verify は段 3 の後に一回（調整役の暦）。
 4. **走っている枝（⑤a・⑤b・⑥、HA・HTT・K の地図）**：段 3 の取り込みの時に、モジュールの改名表（`kl-module-map.json`、旧モジュール → 新モジュール）と名前の改名表（`kl-namespace-map.json`）を main に置き、各レーンが自分の枝の新しいファイルの import と名前を書き換える。そのための書き換えの一行コマンド（`klw1_namespace.py rewrite` を枝の新しいファイルだけに当てる手順）を、停止点 3 の報告に書く。alias は名前だけなので、import の行は各レーンが直す必要がある。
+
+## 9. 追記（2026-11-10、調整役）：停止点 1.6 の承認
+
+**承認**：停止点 1.6（`kerodon-layout-w1-report.md` の「停止点 1.6」、`kerodon-layout-stop-1-6/changes.csv`）。行き先が変わる 22 行、根拠の撤回 172 行（行き先は変えない）、新しい対応元 4 本（表に足さない）、partial を根拠に維持した 437 行（印つき）の扱いは、報告のとおりでよい。段 2 に進んでよい。段 2・段 3 は一つの束で、停止点 3 まで止まらずに進めてよい（§2 の条件：保存比較の未説明 0、対象のビルド）。
+
+一つだけ規則を足す：**主な内容が Kerodon の外のファイル**。module docstring の主な主題が HTT・HA の項目（例：`F2/Presentable/Definition.lean` は表現可能な ∞ 圏の定義、HTT 5.5.1）で、Kerodon の項目に当たる宣言がその一部だけ（例：同じファイルの `HasSmallColimits`・`HasSmallLimits`、Kerodon 7.6.6.1）のときは、
+
+1. 分割が素直なら（その宣言を使う側が少なく、`split_module.py` で切れる）、Kerodon の項目の部分を `Kerodon/<章>/<節>/` へ、残りを `HTT/…`・`HA/…` へ分ける。
+2. 分割が素直でなければ、ファイルは `HTT/…`・`HA/…` に置き、Kerodon の宣言には `@[kerodon TAG]` だけを付ける。
+
+22 行のうち `F2/Presentable/` の 4 本（Definition、AccessibleFunctor、EquivalenceColimits、Duality/RightUnitContractible）はこの規則で確かめ、ほかにも当たるファイルがあれば同じにする。どれをどう扱ったかを停止点 3 の報告に書く。
