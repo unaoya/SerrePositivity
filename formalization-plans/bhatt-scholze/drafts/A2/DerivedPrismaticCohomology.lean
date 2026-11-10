@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
@@ -106,7 +107,7 @@ abbrev polyStructure (n : ℕ) := Sheaves.ringPresheafToCAlg A (polyStructureRin
 
 abbrev polyTopology (n : ℕ) := flatTopology P (polyCompletion P n) (polyCutoff P n)
 
-theorem coefficientPresentable : F2.Presentable.IsPresentable (CAlg_R A) := by
+theorem coefficientPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (CAlg_R A) := by
   sorry -- 要確認：G12 の CAlg_A の presentability
 
 abbrev polySections (n : ℕ) :=

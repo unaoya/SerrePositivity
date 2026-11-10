@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
@@ -45,7 +46,7 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 
 open CategoryTheory Limits SSet MonoidalCategory MonoidalClosed
 open scoped Simplicial
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 -- SpaceInfinity・spaceInfinity_quasicategory は F1/Categories/CatInfinity、setsToKan・discreteSpaceInclusion・
 -- Is0TruncatedSpace と前層の比較定理は F1/Categories/DiscreteSpace（IF-G1 G13、main 7bda72c3c）の実体。

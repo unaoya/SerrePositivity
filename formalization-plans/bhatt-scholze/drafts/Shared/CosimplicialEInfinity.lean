@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.Comparison
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Derived.Homology
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
@@ -141,7 +142,7 @@ theorem totEInfinity_map_isInvertible {X Y : CosimplicialAlgebra A} (f : X ⟶ Y
 規約：O は層（Cor 3.12 の CAlg 版、`isSheaf_iff_forget`）。
 使われ方：A2 の Δ_0 の CAlg 値 ＝ Čech–Alexander 模型の Tot_{E∞}。 -/
 def derivedGlobalSectionsCAlg_eq_totEInfinity {𝒟 : Type u} [SmallCategory 𝒟]
-    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (CAlg_R A)) (hA : IsPresentable (CAlg_R A))
+    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (CAlg_R A)) (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (CAlg_R A))
     (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : IsSheaf J (ringPresheafToCAlg A O))
     (U : 𝒟) (hU : IsWeaklyTerminal U) (d : CechNerveData U) :
     VertexIso (derivedGlobalSectionsCAlg J A hJ hA (ringPresheafToCAlg A O))

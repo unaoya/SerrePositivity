@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
-概要：同値による元の指定余錐の保存・反映と、小さい κ-filtered 余極限の輸送。
+概要：元の小さい κ-filtered 余極限の存在と保存性を同値に沿って輸送する。
 方針：同じ反転錐の既存の極限保存を使い、逆関手と全自然同型で存在を輸送する。
 規約：元の全余錐を保持。図式の小ささや濃度の宇宙を変更しない。
 使われ方：accessible 圏の同値不変性。

@@ -1,4 +1,10 @@
 import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible
 import Lean.Util.CollectAxioms
 
 /-!
@@ -14,6 +20,12 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.InfinityCategories.F2.Presentable |>.isPrefixOf mod) ||
+      mod == `SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits ||
+      mod == `SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition ||
+      mod == `SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits ||
       mod == `SerrePositivity.InfinityCategories.HomotopyLimits.PresheafSliceConeRestriction ||
@@ -1027,11 +1039,11 @@ open CategoryTheory Limits SSet SerrePositivity.InfinityCategories in
 example {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B)
     (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
-    (hE : F2.Presentable.IsPresentable E) (hD : F2.Presentable.IsPresentable D)
-    (hB : F2.Presentable.IsPresentable B)
-    (hpc : F2.Presentable.PreservesSmallColimits p)
-    (hqc : F2.Presentable.PreservesSmallColimits q) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D)
+    (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
+    (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) :
     letI := hp.innerFibration
-    F2.Presentable.IsPresentable (pullback p q) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (pullback p q) :=
   F2.Presentable.pullback_isPresentable_of_accessiblePullback
     F2.Presentable.AccessiblePullback.pullback_isAccessible p q hp hE hD hB hpc hqc

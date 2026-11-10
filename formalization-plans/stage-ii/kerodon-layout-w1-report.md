@@ -329,7 +329,7 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 
 | 元の `F2/Presentable/` のファイル | 処理と根拠 |
 | --- | --- |
-| `Definition` | `HTT/PresentableInfinityCategories/Definition` に一体で置いた。HTT 5.5.1 の表現可能性が主題。小（余）極限とその保存は同じ API を成し、`HasSmallColimits` は移動前の 144 本のソースに現れる。Kerodon の対応に付けた 6 組の属性を維持した。 |
+| `Definition` | `HTT/PresentableInfinityCategories/Definition` に一体で置いた。HTT 5.5.1 の presentable 性が主題。小（余）極限とその保存は同じ API を成し、`HasSmallColimits` は移動前の 144 本のソースに現れる。Kerodon の対応に付けた 6 組の属性を維持した。 |
 | `AccessibleFunctor` | Kerodon §9.4 の `LargeInfinityCategories/CompactGenerationAndAccessibility` に一体で置いた。HTT 5.4.2 にも由来し、二つの中心定義がともに Kerodon §9.4.8.1（Tag 06KY）に当たる。残りはその恒等・合成・濃度変更などの補題。 |
 | `EquivalenceColimits` | `equivalence_isColimitCone_iff` を Kerodon §7.1 の `EquivalenceColimitCones` に分けた。残る二つの κ-filtered 余極限の輸送は `HTT/AccessibleInfinityCategories/EquivalenceColimits`。分割した補題は移動前の 15 本のソースに現れる。 |
 | `Duality/RightUnitContractible` | `initialVertices_isContractibleKan` を Kerodon §4.7 の `InitialVerticesContractible` に分けた。随伴の右関手と実単位に関する残りの宣言は `HTT/PresentableInfinityCategories/RightUnitContractible`。分割した補題は移動前の 2 本のソースに現れる。 |
@@ -349,3 +349,7 @@ Ex∞ の構成、Kan 性、anodyne・ファイブレーション・局所化・
 ### 集約入口
 
 `public import` だけから成り、∞ 圏の宣言ファイルからは推移的にも import されない 47 本を `Project/Entrypoints/` に移した。利用側 31 本の import と README の入口リンクを更新した。宣言または実装側の利用を持つ候補 6 本は、入口に依存する定義側を調べる対象に残した。移動先 47 本がビルドを通過し、保存比較 v3b で 47 本すべての所有宣言数が前後とも 0 件であることを確かめた。
+
+### 監査とドラフトの参照
+
+Lean の宣言参照索引に載らない監査・ドラフトをソースから照合し、移動済みの旧名 790 箇所と、ドラフトの `IsPresentable` の選択的 `open`・相対参照を更新した。`audit_infinity_presentable.lean` の所有モジュールの検査には分割先を加えた。ドラフトの利用を根拠に `IsPresentable` の旧名も互換モジュールに加えた。書き換えた宣言の新名と公理一覧、追加した互換名は、ビルド鍵 `--wait 1800` で個別に照合した。

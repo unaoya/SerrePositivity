@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
@@ -43,7 +44,7 @@ open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories.Sheaves
 
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u + 1}} [Quasicategory E]
 

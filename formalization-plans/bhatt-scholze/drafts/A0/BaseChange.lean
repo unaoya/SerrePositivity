@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import Mathlib.AlgebraicTopology.SimplexCategory.Basic
@@ -109,8 +110,8 @@ theorem prismaticCohomology_baseChange (hP : IsBoundedPrism P) (hP' : IsBoundedP
     (hk' : IsAdmissibleCutoff P' (prismPolynomialCompletion P' (Fin r)) κ')
     (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
     (hJ' : Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (derivedInfinityCategory A'))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A))
-    (hE' : F2.Presentable.IsPresentable (derivedInfinityCategory A')) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A))
+    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A')) :
     ∃ e : SSet.Edge
         ((Derived.completedBaseChange f.toRingHom {(p : A), P.generator}).app _
           (prismaticCohomology P (prismPolynomialCompletion P (Fin r)) κ hJ hE))
@@ -134,8 +135,8 @@ theorem hodgeTateCohomology_baseChange (hP : IsBoundedPrism P) (hP' : IsBoundedP
     (hk' : IsAdmissibleCutoff P' (prismPolynomialCompletion P' (Fin r)) κ')
     (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
     (hJ' : Sheafification (flatTopology P' (prismPolynomialCompletion P' (Fin r)) κ') (derivedInfinityCategory A'))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A))
-    (hE' : F2.Presentable.IsPresentable (derivedInfinityCategory A')) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A))
+    (hE' : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A')) :
     ∃ e : SSet.Edge
         ((Derived.completedBaseChange f.toRingHom {(p : A), P.generator}).app _
           (hodgeTateCohomology P (prismPolynomialCompletion P (Fin r)) κ hJ hE))

@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
@@ -478,7 +479,7 @@ theorem perfectoidization_eq_arcCohomology
     (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (hsize : Cardinal.mk R ≤ κ)
     (S : AffCompl p κ) (r : CommRingCat.of R ⟶ (affComplForget p κ).obj S)
     (hJ : Sheafification (arcPerfdSliceTopology p κ S) (CAlg_R R))
-    (hE : F2.Presentable.IsPresentable (CAlg_R R)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (CAlg_R R)) :
     let O := ringPresheafToCAlg R
       (unopUnop (ArcPerfdUnder p κ S) ⋙ arcSliceAlgebras p κ R S r)
     ∃ e : SSet.Edge (perfectoidizationCone p R (Under.mk r)).vertex

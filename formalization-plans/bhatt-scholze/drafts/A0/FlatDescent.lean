@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
@@ -220,7 +221,7 @@ theorem reducedStructurePresheafDerived_isSheaf (hκ : IsAdmissibleCutoff P R κ
 使われ方：`prismaticCohomology_eq_cechAlexanderTot`（CechAlexander）。 -/
 theorem prismaticCohomology_isLimit (hκ : IsAdmissibleCutoff P R κ)
     (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A)) :
     ∃ c : JoinCone (structurePresheafDerived P R κ),
       IsLimitCone c ∧ c.vertex = prismaticCohomology P R κ hJ hE :=
   derivedGlobalSections_of_isSheaf (flatTopology P R κ) hJ hE (structurePresheafDerived_isSheaf P R κ hκ)

@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
 -- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,SheafGenerators,CechConerveLimit}.lean を E := CAlg_R A で使う。
@@ -38,7 +39,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Sheaves
 
 open SerrePositivity.EInfinity.BarrattEccles
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] (J : GrothendieckTopology 𝒞) (A : Type u) [CommRing A]
 

@@ -1,4 +1,5 @@
 import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 import Lean.Util.CollectAxioms
 
 /-!
@@ -42,7 +43,7 @@ example {X : SSet.{v}} [Quasicategory X] {I : Type u}
         (Truncated.HomotopyCategory.homMk (edgeOfSimplex (edges i))) ≫ α) :=
   (isLocalObject_range_iff_constantHom_bijective edges z).mp hz i A
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
       ∀ i, F2.Compact.IsKappaCompact.{u, u + 1} μ (C.δ 1 (edges i)) ∧
@@ -631,7 +632,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
 #print axioms bousfieldLocalObjects_isPresentable
 #print axioms bousfieldLocalizationFunctor_isLocalization_invertedEdges
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
     Nonempty (ReflectiveSubcategory C (IsLocalObject (Set.range edges))) :=
   ⟨bousfieldReflection hC edges⟩
@@ -645,7 +646,7 @@ example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable 
 #print axioms bousfield_generatedEdges_eq_invertedEdges
 #print axioms bousfieldLocalizationFunctor_isLocalization_generatedEdges
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (s : C _⦋1⦌) :
     s ∈ generatedEdges edges ↔ s ∈ invertedEdges (bousfieldLocalizationFunctor hC edges) := by
   rw [bousfield_generatedEdges_eq_invertedEdges hC edges]
