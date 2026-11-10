@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamBicomplex
+public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
 public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
 public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
 
@@ -419,15 +419,15 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 規約：どの copy を使っても余単体的に同じクラス。
 使われ方：`pdPoincare_column`。 -/
 def pdColumnInclusion (r n : ℕ) :
-    cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n := by
-  sorry -- copy 0 への代入。外積と微分を保つ
+    cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n :=
+  pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
 
 /-- 概要：G-A1-7：pd Poincaré 補題：列 n（Ω^•_pd(B_0⟨z_1,…⟩_pd)、B_0 = F_p[X^{(0)}]）は Ω^•_{F_p[X]} に擬同型。
 方針：一変数の Ω^•_pd(B⟨z⟩/B) ≃ B（dγ_m(z) = γ_{m−1}(z)dz で γ_m(z) の項が消える）をテンソルで。
 規約：標数 p でも成り立つのは pd 微分を使うから。
 使われ方：段 4。 -/
-theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) := by
-  sorry -- G-A1-7。一変数の pd Poincaré の Künneth
+theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) :=
+  pdDeRhamPolynomialInclusion_quasiIso p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
 
 /-- 概要：段 4：H^i(D_0^•(F_p)) ≅ H^i(Ω^•_{F_p[X]/F_p})。
 方針：双複体 `pdDeRhamDoubleComplex` の総複体 T を経由する span（**11-07 訂正**：行 0・列の包含は鎖写像でないので射影を使う、a1-design §10.3）：
@@ -438,8 +438,8 @@ Bockstein との両立（段 6）のため、同じ span を ℤ_p 上の厳密�
 使われ方：段 6 の `crystallineChain`。 -/
 def pdDeRhamCohomologyIso (r i : ℕ) :
     cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i ≃+
-      (cartierComplex p r).homology i := by
-  sorry -- 行 0 ← 総複体 → 列 0 = Ω^• の二つの射影（擬同型）。行 0 の項 pdRow 0 = pdTerm
+      (cartierComplex p r).homology i :=
+  pdDeRhamCechToPolynomial p (cartierBase.{u} p) r (cartierBase_natCast p) i
 
 /-- 概要：段 4 の同型は cup 積と外積に両立する。
 方針：総複体 T に、余単体の方向は厳密な Alexander–Whitney（`cup`）、形式の方向は外積、Koszul 符号の積を入れ、T → 行 0 と T → 列 0 = Ω^• の射影が
