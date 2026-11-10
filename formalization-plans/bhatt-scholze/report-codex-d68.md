@@ -351,3 +351,108 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - 比較全体の乗法性 `crystallineChain_cup` と、完備 pd 形式の係数変換は別の対象ビルドで確認中。残りは総複体での還元と Bockstein の代表の照合、生成元から Cartier 同型との一致を導く部分、停止点 3 の対象二定理。
 
 - 続いて `crystallineChain_cup` と完備 pd 形式の係数変換を対象ビルドで検査した。係数変換は自由外冪と完備 pd 係数を半線形に写し、余面と偏微分の両方に可換。草稿の `pdDeRhamCohomologyIso_cup` は本体に接続し、該当箇所を独立に検査した。ここまでの 78 モジュールの一時監査は 1,956 宣言で標準三公理のみ。
+
+## 停止点 3（段 3 完了）
+
+- 実装コミットは `a27316fb7`。専用枝 `math/bs-d68` に main `18350a5a7` を取り込んだ状態で検査した。
+- `pdTotalCoefficientMap` は各双次数での半線形な係数変換を総複体にまとめる。`pdTotalCoefficientMap_component` と `pdTotalCoefficientMap_insert` は成分への射影と挿入を保つことを示す。`pdTotalCoefficientMap_d` は総微分との可換性。
+- `pdTotal_eq_zero_of_p_smul` は整係数の総複体の各項に p ねじれがないことを示す。完備 pd 環の正則性を外冪の座標基底へ移し、総複体では双次数ごとに判定した。
+- `pdDeRhamCechToPolynomial_class` は、総複体の同じ余輪体の第 0 行と第 0 列への像を、pd Čech と多項式 de Rham の比較が対応させることを示す。
+- `crystallineChain_generators` は結晶比較の下で η⁰ の座標を `[X_j^p]`、η¹ の座標微分を `[X_j^(p−1)dX_j]` に送る。整係数の総次数 0 の余鎖 `X_j^p` を総微分し、横成分 `X_{j,1}^p−X_{j,0}^p` と縦成分 `p X_j^(p−1)dX_j` を p で割った。両成分を合わせた余鎖は p 正則性と総微分の平方零から閉じており、その mod p の二つの射影が Bockstein と Cartier の代表を与える。横は第 1 頂点から第 0 頂点を引き、総次数 0 の縦成分の符号は正。
+- `hodgeTate_of_deRham_cartier` は、零次と一次での一致を加法と外積で全次数へ延ばし、η の全単射性を二つの比較同型から導く。`hodgeTate_iso_polynomial_Zp` は結晶基底 `(ℤ_p,(p))` における Corollary 5.5 の多項式の場合。草稿の `HodgeTateIsoStatement` は同じ型で本体へ移した。
+- 新規 87 モジュールの `with_build_lock.sh --wait 1800` による対象ビルドが成功（4,223 jobs）。新規モジュールをすべて指定した一時監査は 2,093 宣言で、依存公理は `propext`、`Classical.choice`、`Quot.sound` のみ。追加公理と `sorryAx` は 0 件。長行や heartbeat 設定のコメントなどのスタイル警告が出ている。
+- main の既存の本体ファイルと宣言はそのまま。段 3 に残件はなく、CAlg_R の模型の内部への参照は追加していない。⑤a と ⑤c との変更ファイルの重複はない。⑤c の K1 に関する既存の自由分冪代数と差座標への特殊化は「総複体の積と ⑤c への引き継ぎ」に記録した。
+- 登録は調整役の取り込みに委ねる。以下の 58 本が BS の入口、29 本が共通入口の登録候補で、全 87 本が段階 II の監査対象。
+
+### BS の入口（58 本）
+
+- `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPDerivation`
+- `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPIntegral`
+- `SerrePositivity.BhattScholze.Prismatic.BocksteinCupSquare`
+- `SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineBockstein`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineChain`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineChainProduct`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinateReduction`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineGeneratorBridge`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineGeneratorClasses`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineTotalCoordinate`
+- `SerrePositivity.BhattScholze.Prismatic.CrystallineTotalRegular`
+- `SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateBocksteinSquare`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateCompletedMap`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateGradedDGAlgebra`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateModule`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateModuleComplete`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateOneGenerators`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateOneSquare`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateZero`
+- `SerrePositivity.BhattScholze.Prismatic.HodgeTateZeroLeibniz`
+- `SerrePositivity.BhattScholze.Prismatic.PDColumnContraction`
+- `SerrePositivity.BhattScholze.Prismatic.PDColumnCoordinateEvaluation`
+- `SerrePositivity.BhattScholze.Prismatic.PDCompletedDerivation`
+- `SerrePositivity.BhattScholze.Prismatic.PDCoordinateForms`
+- `SerrePositivity.BhattScholze.Prismatic.PDCrystallineReduction`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamAxisProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamBicomplex`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamBigradedLeibniz`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCech`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCoefficients`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomologyProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCollapse`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumn`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnComparison`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnPoincare`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnZero`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamColumnZeroProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamComparisonClass`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamProjectionProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamRow`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamRowComparison`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamRowZeroProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamTotalCoefficients`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamTotalLeibniz`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamTotalProduct`
+- `SerrePositivity.BhattScholze.Prismatic.PDDeRhamWedge`
+- `SerrePositivity.BhattScholze.Prismatic.PDModelReduction`
+- `SerrePositivity.BhattScholze.Prismatic.PDRawCoefficients`
+- `SerrePositivity.BhattScholze.Prismatic.PDRawDeRhamColumn`
+- `SerrePositivity.BhattScholze.Prismatic.PDRawDifferential`
+- `SerrePositivity.BhattScholze.Prismatic.PDRawFrobeniusCoordinate`
+- `SerrePositivity.BhattScholze.Prismatic.PDRawPartialCoefficients`
+
+### 共通入口（29 本）
+
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierCoordinateBasis`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierCoordinateHomotopy`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierCoordinateIntegral`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierFinite`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierFiniteGenerators`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierFiniteProduct`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierFiniteRepresentative`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierOneVariable`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierRepresentatives`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CartierWeight`
+- `SerrePositivity.CommutativeAlgebra.DeRham.CohomologyWedge`
+- `SerrePositivity.CommutativeAlgebra.DeRham.ExteriorCoefficientMap`
+- `SerrePositivity.CommutativeAlgebra.DeRham.ExteriorContraction`
+- `SerrePositivity.CommutativeAlgebra.DeRham.ExteriorCoordinateProjection`
+- `SerrePositivity.CommutativeAlgebra.DeRham.ExteriorTensorContraction`
+- `SerrePositivity.CommutativeAlgebra.DeRham.PolynomialCoordinatePower`
+- `SerrePositivity.HomologicalAlgebra.BicomplexColumnQuasiIso`
+- `SerrePositivity.HomologicalAlgebra.BicomplexComponents`
+- `SerrePositivity.HomologicalAlgebra.BicomplexProductLeibniz`
+- `SerrePositivity.HomologicalAlgebra.BicomplexProjection`
+- `SerrePositivity.HomologicalAlgebra.BicomplexRowQuasiIso`
+- `SerrePositivity.HomologicalAlgebra.CochainProduct`
+- `SerrePositivity.HomologicalAlgebra.CochainProductClass`
+- `SerrePositivity.HomologicalAlgebra.CochainProductNaturality`
+- `SerrePositivity.HomologicalAlgebra.Cosimplicial.AWBilinear`
+- `SerrePositivity.HomologicalAlgebra.Cosimplicial.CohomologyCupGradedRing`
+- `SerrePositivity.HomologicalAlgebra.Cosimplicial.CohomologyZero`
+- `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleCochainCup`
+- `SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionLinearMap`
