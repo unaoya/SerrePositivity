@@ -137,3 +137,52 @@ Tot を除く E4 は約 400–1,000 行。Tot の追加は G10 側の証明を�
 幾何学的実現に対する厳密図式・native 余錐の橋を 500–800 行、代数の実現と忘却後の複体の実現の比較を 600–1,000 行、filtered および全 sifted への拡張を 500–900 行と見積もる。既存の補題を再利用した場合の紙の見積もりで、合計約 1,600–2,700 行。比較の結果は二つの模型で同じ指定余錐まで要求される。
 
 `coprodWith`、`coprodWith_cocone`、`coproduct_tensor` はこの停止点に含めない。余積比較に sifted 保存を仮定として追加していない。E3 へ進むか、E2 の残りを ④ に分けるかは調整役の判断を待つ。
+
+## 8. 夜間作業メモ（停止点 3 の前）
+
+### 8.1 `baseChange_forget` と台の K 平坦性
+
+cofibrant 代数 X に対し、`SmallObject.relativeCellComplexιObj` で始対象から X への射を分解し、右の `πObj` に対する持ち上げで X を同じ始対象から作ったセル代数の retract にする。`modelCategory_cofibrantlyGenerated` と `ModelGeneration.cofibrations_eq_generated` からこの持ち上げを得る。セル代数の台の余極限には `Operad.Algebra.forget_createsFilteredColimitsOfShape` を使う。
+
+夜間に書いた Lean は次の四本。ビルドと監査は次の枠で行う。
+
+| モジュール | 書いた部分 |
+| --- | --- |
+| `Theory.ArityKFlat` | `complexBasis` と `complex_isZero_positive` から arity ごとの K 平坦性を示し、`schurι_zero_isIso` で始代数の台へ移す。 |
+| `Theory.CellularWeights` | 各付加セルの微分を有限個の先行セルの単項式で表したとき、各単項式の総重みより大きい自然数重みを整礎再帰で取る。 |
+| `Theory.CellularCarrierKFlat` | 次数ごと分裂した逐次フィルトレーションと K 平坦な各商から `complexKFlat_of_degreewiseSplit` と `complexKFlat_colimit` で全体へ移す。小対象分解のセルのラベルを整数次数に戻し、各段が K 平坦であれば、`complexKFlat_of_retract` で任意の cofibrant 代数へ戻す。 |
+| `Theory.CarrierScalarExtensionKFlat` | K 平坦な台を入力に取り、D(S) の実際の semifree 置換の augmentation を係数拡大しても擬同型となる成分を作る。`extension_quasiIso_of_kFlat_ends` を使う。 |
+
+残る構成は、生成射 `complexSphereToDisk` の自由像を付加したときの**次数付きの準自由表示**。始代数から出発し、台の次数付き代数をセル生成元の自由代数と同定する。新しい生成元の微分は付加前の代数への境界射で与える。極限段では `RelativeCellComplex` の連続性と忘却の filtered 余極限を用い、各境界の有限台を引き継ぐ。この表示から `CellularWeights` の入力を取り、差分の複体で生成元の微分が消えること、次数ごとの分裂、重み全体の余極限で元の台に戻ることを示す。
+
+重みの各商は、生成元の語の置換軌道ごとに arity の演算複体のシフトと stabilizer による余不変を取る。`orbitIndexEquiv` と `equivariantBasis_rightAction` で arity の基底を自由な右正則軌道として読める。stabilizer への制限と Koszul 符号を照合し、各次数の余不変の自由基底を作る。軌道ごとに上有界なので `complexKFlat_of_flat_boundedAbove` を適用し、直和には `complexKFlat_colimit` と AB4 を使う。基礎環上の arity の K 平坦性だけから余不変の K 平坦性を推論することはできない。
+
+この構成が閉じたら、`allAlgebraCoefficientExtension_sourceIso` の左側を cofibrant 源へ制限し、`algebraCAlgSource_underlyingDerivedIso` と同じ semifree augmentation で右側の複体底変更を比較する。全厳密射で自然な増大を使って可逆二胞体を作り、`cAlgLocalizationSource_descendIso` で元の界面の `FunctorIso` に降ろす。今ある四本はこの還元までで、セルの準自由表示と `baseChange_forget` 本体は残る。
+
+### 8.2 二項余積（§4 の 3、HA §3.2.4.7）
+
+1. **模型の余積と指定余錐。** `cAlgVertexRepresentative` と `cAlgVertexRepresentativeIso` で右因子 y の cofibrant 代表 B を固定する。厳密な余積は `Operad.AlgebraAllColimits` の `HasColimitsOfSize` から取れる。離散二点図式の projective cofibrancy は各入力の cofibrancy と一致し、`DiagramModel.Projective.colimit_isLeftQuillen` と Brown の補題で、固定 B の余積が cofibrant 入力の弱同値を保つことを示す。この関手を `cAlgLocalizationSource_isLocalization` で降ろし、`coprodWith` を得る。
+   余錐には同じ厳密な二つの包含を使う。`rightFrame` と `cotensorHomEquiv` の同一の対象 frame への Hom は、厳密な余積の普遍性から各単体次数で二つの Hom の積になる。この射を CAlg の native な写像空間で**指定された二つの脚による制限**と照合する。二点離散図式の余錐のファイバーをこの積として読み、`isColimitCone_of_coconeFiberMap_weakEquivalence` を適用する。右因子は代表から y への頂点同型で輸送する。要るのは共通 frame の積比較、二脚の native な照合、固定右因子の全関手への降下。一般の図式の strictification は二点の場合に不要。
+2. **Hopf 対角とテンソル。** `hopf A` の `diagonalComponent` と二つの代数作用から、Koszul 符号つきの台のテンソルに作用を入れる。余単位則と零入力の単位を使って二つの包含を代数射にし、余積からの自然な比較射を作る。自由代数二本では、`Operad.freeAlgebraAdjunction` による `Free(V ⊕ W)` の同定から、混合入力の `(m,n)` ごとに比較する。必要なのは E(m+n) の制限から E(m) ⊗ E(n) への二色比較。各色で他方の入力を零入力で消す操作と Hopf 対角から作り、augmentation との可換性を示す。`equivariantBasis` を部分群へ制限して、両側が置換群環上で上有界かつ次数ごと射影的な解像度であることを示す。そのうえで、比較を同変な鎖ホモトピー同値にし、語のテンソルと余不変に移す。
+   セル代数二本では §8.1 の重みを色ごとに取り、総重みの各商で自由の場合へ戻す。次数ごとの分裂、filtered 余極限のホモロジーとの可換性、retract を順に使い、任意の cofibrant 対で比較射が擬同型となることを示す。重みの選択はこの対象ごとの証明で使い、自然性は先に作った二変数の厳密な比較射から得る。
+3. **強い形。** B を固定した厳密な比較射を、左変数の全厳密射について自然変換にする。台の K 平坦性で両因子の semifree augmentation を外し、`tensorWith (atVertex (forget S) y)` と比較する。既存の `algebraCAlgSource_underlyingDerivedIso` で忘却を台の導来像にそろえ、同じ局所化源上で可逆二胞体にしてから `cAlgLocalizationSource_descendIso` で降ろす。これにより右因子 y ごとの指定された `FunctorIso` を得る。各頂点の同型だけではこの欄を埋められない。
+
+**規模の見込み。** 模型の余積と二脚の native な照合は約 350–600 行。Hopf の作用と包含は約 200–350 行、二色の自由比較とセルからの移送は約 500–800 行、強い形への降下は約 150–300 行。§8.1 の準自由表示と置換軌道の補題を共有できれば `coproduct_tensor` は約 850–1,450 行。共有部分をこの欄で新たに構成する場合は 1,500 行程度の上限を越える見込みなので、着手時にその切り分けを確かめる。経路に sifted 保存を仮定しない。
+
+### 8.3 `forget_preservesSifted` の三部品（§4 の 4、HA §3.2.3.1）
+
+| 部品 | 使う既存の宣言 | 足りない補題 |
+| --- | --- | --- |
+| Δᵒᵖ の図式と native な幾何学的実現の橋 | `HasSmallGeometricRealizations`、`PreservesSmallGeometricRealizations`、`DiagramModel.Projective.modelCategory`、`DiagramModel.HomotopyColimit.replacement` と `replacementComparison`、`DiagramModel.ColimitFrame.homIso` と `homIso_source_naturality`、`DiagramModel.WeightedHomotopyColimitFrame.homIso`、`cAlgLocalizationSource_isLocalization`。 | 任意の `nerve SmallSimplexOpposite ⟶ CAlg_R` の指定図式を厳密な projective 図式の像として比較する。既存の空間図式の strictification は標的が違う。次に模型の hocolim の余錐を native な余錐へ送り、指定脚を照合して余極限性を得る。単に各頂点を厳密な代数で代表させるだけでは足りない。 |
+| 代数の実現と忘却後の複体の実現の比較 | `Operad.Algebra.forget_createsSiftedColimitsOfShape`、`DiagramModel.Projective.free` と `generators`、`DiagramModel.HomotopyColimit.comparison`、`normalizedSimplexCochainContraction`、`cotensorCarrierIso` と `weightedCotensorCarrierIso`。後二者は右 frame の照合に使える。`DiagramModel.QuillenColimitComparison.map_homotopyColimit_comparison_weakEquivalence` の対象は左 Quillen 関手。 | projective 置換 Q の台について、複体の外側の単体次数を正規化し、内部余鎖次数との直和 Tot から通常の `colim UQ` への増大が擬同型であることを示す。代数の projective セルの生成元は評価の左随伴により `Δ[k]` で添字づけられる。付加ラベルごとに重みを取り、各商で現れる有限個の標準単体の積を、同じラベルの因子の置換と可換に初頂点へ収縮する。正規化、符号、余不変、次数ごとの分裂を照合してから増大を閉じる。最後に U が作る通常の sifted 余極限と native な指定余錐を比較する。U の右 Quillen 性だけではこの比較は得られない。 |
+| filtered と全 sifted への拡張 | `exists_cofinal_cardinalFiltered_poset`、`DiagramModel.HomotopyColimit.comparison_weakEquivalence_of_filtered`、`dgStrictFilteredColimit_quasiIso`、`dgKappaStrictFilteredColimitComparison_unconditional`、`Operad.Algebra.forget_createsFilteredColimitsOfShape`、`sigma_preservesSmallSiftedColimits_of_filtered_geometric`。 | filtered は cofinal poset に制限し、厳密な代数図式への比較と指定余錐の移送を作る。複体の filtered 比較は再利用でき、代数の弱同値は台の擬同型で判定する。全 sifted では、`SigmaPresheafInfinity` を始域とする既存の定理を使うなら、元の小図式を含む小さい有限余積閉包、その `PΣ` から CAlg への延長、元の図式と余錐への引き戻しが要る。延長の filtered と実現の保存を確認してから U との合成に適用する。別案は各 sifted 形から直接、同じ余錐を計算する比較。 |
+
+目安は順に 500–800 行、600–1,000 行、500–900 行で計 1,600–2,700 行。共有するセル表示は §8.1 で型を確定する。Δᵒᵖ の strictification や全 sifted の延長を新たに大きく作る必要が判明し、約 2,700 行を超える見込みならそこで報告する。幾何学的実現の保存には二項余積とテンソルの比較を使わない。
+
+### 8.4 朝に回すビルド順
+
+1. `Theory.CAlgPiZeroRestriction` を対象ビルドし、`HomologyRestrictionOperations` と合わせて再帰監査する。前者は最終比較の検査が残り、後者は前の対象ビルドで成功して `af458c4c4` に保存済み。停止点 3 の報告ではこの結果と E3 の残欄を区別する。
+2. `Theory.ArityKFlat` と `Theory.CellularWeights` を小さく検査し、次に `Theory.CellularCarrierKFlat` と `Theory.CarrierScalarExtensionKFlat` を検査する。新規四本は夜間作業の未コミット分。通った分の追加公理を監査する。
+3. セルの準自由表示、重みの商、`baseChange_forget` を順に対象ビルドする。続いて §4 の順に二項余積とテンソルの比較、Δᵒᵖ の橋と実現比較、filtered と全 sifted を別々に検査する。
+
+共有鍵の取得は KL-W1 の完了ファイル以降、または 8 時以降。取得には `--wait 1800` を使い、夜間に再開する場合も一回 30 分以内とする。
