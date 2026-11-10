@@ -74,6 +74,15 @@
 | [7.6.2.38](https://kerodon.net/tag/048E) | none | none | — | 一致 | 相対引き戻し／押し出しと四角形内の二辺の cartesian／cocartesian 性の iff を探索。FinalHornPullbackExtension は底変換の厳密な引き戻しで辺を持ち上げ、元の四角形の相対普遍性を判定しない。 番号の直接引用 0 件、同じ小節の引用 0 件。 | — |
 | [7.7.1.20](https://kerodon.net/tag/05T9) | none | none | — | 一致 | 全 K 余極限の普遍性の二条件を探索。Mathlib の IsUniversalColimit は一つの通常圏の余錐を扱い、任意の ∞ 圏での形状全体の iff は見つからなかった。 番号の直接引用 0 件、同じ小節の引用 0 件。 | — |
 
+## §8.4 比較後の判定
+
+完全対応群の独立照合の差は **2/20（10%）**、比較後の差は **0/20（0%）**。-c の宣言欄と理由を確認し、以下の2件はいずれも `own` と判定した。上の表は独立照合の記録。
+
+| 項目 | -c | 独立判定 | 比較後 | 根拠 |
+| --- | --- | --- | --- | --- |
+| [7.3.2.8](https://kerodon.net/tag/02YW) | own | none | own（-c の判定） | `exists_kanLeftExtension_iff_local_colimits` が (1) の存在から全頂点の局所余極限を取り出し、`exists_kanLeftCanonical_strict_extension_of_local_colimits` が充満包含について `δ ≫ G = F₀` と標準局所余錐の余極限性を同時に返す。これが (2)。逆向きの変換は、制限の等式の下での恒等変換で、同じ標準余錐が余極限になる。[LeftCommaCoconeColimit](../../../../SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCommaCoconeColimit.lean#L115)・[LeftStrictExistence](../../../../SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean#L44) |
+| [7.3.5.5](https://kerodon.net/tag/0302) | own | partial | own（-c の判定） | `exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits` の局所仮定は各頂点での (7.26) の持ち上げ。結論は二辺の厳密な等式と `IsRelativeLeftKanExtendedFrom U δ G`。逆向きはこの述語の定義にある `leftKanCanonicalCocone δ G c` が証人となる。二辺の等式で制限が元の上辺と下辺に一致する。[RelativeLeftCanonicalExistence](../../../../SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonicalExistence.lean#L54)・[RelativeLeftCanonical](../../../../SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean#L26) |
+
 ## kernel の確認
 
 <details>

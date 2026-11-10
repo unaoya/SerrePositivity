@@ -82,6 +82,14 @@
 - 8.6.7.2（`own → none`）は独立照合で KanObject 用の比較を調べたが、-c は任意の局所 Kan な豊穣圏に対する宣言を挙げていた。原文の Notation 8.6.7.1 は各豊穣 Hom に Tw を施す構成で、Lean の `EdgewiseEnrichedObject` もその Hom を `edgewiseSubdivision` とする。局所 Kan 性、右端射影とその Hom ごとの自明 Kan ファイブレーション性、右端射影の coherent nerve の同値が該当する。[EdgewiseEnrichedCategory](../../../../SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedCategory.lean#L153)・[EdgewiseEnrichedComparison](../../../../SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedComparison.lean#L78)・[EdgewiseRightFilling](../../../../SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseRightFilling.lean#L95)
 - 8.6.7.5（`own → none`）も、-c の引用は同じ一般比較を `QCat` に適用するものだった。指定射 `edgewiseEnrichedInfinityMap QCat` の値域は `SimplicialNerve QCat = CatInfinity`。独立照合ではこの一般比較を見落とした。[EdgewiseEnrichedComparison](../../../../SerrePositivity/InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedComparison.lean#L78)・[CatInfinity](../../../../SerrePositivity/InfinityCategories/F1/Categories/CatInfinity.lean#L23)
 
+## §8.4 比較後の集計
+
+| 抽出群 | 独立照合の差 | 比較後の差 |
+| --- | ---: | ---: |
+| own・both・mathlib | 3/20（15%） | 0/20（0%） |
+
+3件の比較後の判定は 8.1.0.1 が `mathlib`、8.6.7.2 と 8.6.7.5 が `own`。根拠は「停止基準にかかった3件」の各行にある。独立照合時点の停止は当時の §8.3 による。§8.4 の基準では第8章は停止対象外となる。
+
 ## kernel の確認
 
 <details>
