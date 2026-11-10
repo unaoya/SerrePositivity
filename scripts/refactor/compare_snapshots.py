@@ -9,6 +9,7 @@ import json
 import re
 from pathlib import Path
 import sys
+from layer_check import code_only
 from lean_source import transient_names, parse_source, declaration_owner, Unsupported
 from snapshot_identity import notation_auxiliary
 
@@ -64,6 +65,17 @@ def expression_value(row, field, mapping, use_hash):
     return value
 
 
+def declaration_source(source):
+    """Keep source positions while skipping the migration's single-name export commands."""
+    qual = r"\w[\w'.]*"
+    command = re.compile(rf"(?m)^with_weak_namespace _root_\.{qual} export _root_\.{qual} \(\w[\w']*\)[ \t]*$")
+    mask = code_only(source)
+    for match in reversed(list(command.finditer(mask))):
+        start, end = match.span()
+        source = source[:start] + " " * (end - start) + source[end:]
+    return source
+
+
 def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_parents=None):
     if snapshot['schema_version'] not in (1, 2):
         raise ValueError('unsupported snapshot version')
@@ -74,7 +86,8 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_
     report_proof_parents = report_proof_parents or set()
     proof_irrelevant = snapshot.get("proof_irrelevant", False)
     skipped = set()
-    sources = {s['module']: s for s in snapshot.get('sources', [])}
+    sources = {s['module']: {**s, 'source': declaration_source(s['source'])}
+               for s in snapshot.get('sources', [])}
     by_module = {}
     for row in snapshot['declarations']:
         by_module.setdefault(row.get('module', ''), []).append(row)
@@ -158,7 +171,7 @@ def auxiliary_groups(snapshot, mapping=None, module_map=None):
     as the group key, just as for declaration comparison and transient ownership.
     """
     mapping, module_map = mapping or {}, module_map or {}
-    sources = {s['module']: s['source'] for s in snapshot.get('sources', [])}
+    sources = {s['module']: declaration_source(s['source']) for s in snapshot.get('sources', [])}
     by_module = {}
     for row in snapshot['declarations']:
         by_module.setdefault(row.get('module', ''), []).append(row)
