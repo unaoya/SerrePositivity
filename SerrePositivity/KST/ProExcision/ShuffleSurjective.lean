@@ -70,6 +70,8 @@ lemma ShuffleIndex.left_surjective {p n : ℕ} (s : _root_.SerrePositivity.Infin
       split_ifs <;> omega) j (Nat.le_of_lt_succ j.isLt)
   exact ⟨x, Fin.ext hx⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex export _root_.SerrePositivity.KST.ProExcision.ShuffleIndex (left_surjective)
+
 /-- 概要：shuffle の第二写像は全射。
 方針：始点零、終点 q、一歩の増加が0または1であることを使う。
 規約：KST A.5、垂直ステップの座標。
@@ -82,5 +84,7 @@ lemma ShuffleIndex.right_surjective {p q n : ℕ} (s : _root_.SerrePositivity.In
       rw [s.right_step h]
       split_ifs <;> omega) j (Nat.le_of_lt_succ j.isLt)
   exact ⟨x, Fin.ext hx⟩
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex export _root_.SerrePositivity.KST.ProExcision.ShuffleIndex (right_surjective)
 
 end SerrePositivity.KST.ProExcision

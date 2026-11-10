@@ -65,7 +65,7 @@ def groupConjugationMHomotopy {T H : Type u} [Group T] [Group H]
   have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (SingleObj.mapHom _ _ f)) ≫
       _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (conjugationFunctor u)) =
       groupLinearizedMap ((inverseConjugation u).comp f) := groupLinearizedMap_comp f (inverseConjugation u)
-  refine { _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := h.h, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ := ?_, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ := ?_ }
+  refine { h := h.h, h₀ := ?_, h₁ := ?_ }
   · intro n hn
     exact (h.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hf)
   · intro n hn

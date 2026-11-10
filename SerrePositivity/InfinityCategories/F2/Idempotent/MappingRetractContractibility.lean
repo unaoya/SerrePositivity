@@ -30,6 +30,8 @@ lemma VertexRetraction.pinchedHom_source_isContractibleKan {X : SSet.{u}} [Quasi
   exact isContractibleKan_of_homotopy_retract (PinchedInterval.precompose z r.r)
     (PinchedInterval.precompose z r.i) (FunctorIso.simplicialHomotopy e.symm) hy
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (pinchedHom_source_isContractibleKan)
+
 /-- 元の終域が retract であるとき、元の全 pinched Hom の可縮性を戻す。 -/
 lemma VertexRetraction.pinchedHom_target_isContractibleKan {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y) (z : X _⦋0⦌)
@@ -39,5 +41,7 @@ lemma VertexRetraction.pinchedHom_target_isContractibleKan {X : SSet.{u}} [Quasi
   let e := h ≪≫ PinchedInterval.postcomposeIdIso z x
   exact isContractibleKan_of_homotopy_retract (PinchedInterval.postcompose z r.i)
     (PinchedInterval.postcompose z r.r) (FunctorIso.simplicialHomotopy e.symm) hy
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (pinchedHom_target_isContractibleKan)
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

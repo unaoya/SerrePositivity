@@ -42,4 +42,6 @@ lemma VertexRetraction.strongSplitting_exists {X : SSet.{u}} [Quasicategory X]
     simpa only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] using h
   exact ⟨d, s, hx, s.source_eq.symm.trans hy⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (strongSplitting_exists)
+
 end SerrePositivity.InfinityCategories.F2.Idempotent

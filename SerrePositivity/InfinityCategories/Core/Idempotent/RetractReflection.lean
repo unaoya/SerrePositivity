@@ -35,6 +35,8 @@ def VertexRetraction.ofFullyFaithful {X Y : SSet.{u}}
     ((congrArg₂ (· ≫ ·) hi hp).trans
       (r.retract.trans ((hoFunctor.map f).toFunctor.map_id (HomotopyCategory.mk x)).symm))
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (ofFullyFaithful)
+
 /-- 元の充満忠実な関手は、同じ二頂点の retract の存在を保存・反映する。 -/
 lemma isVertexRetractOf_iff_map_of_fullyFaithful {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (hf : IsFullyFaithful f)

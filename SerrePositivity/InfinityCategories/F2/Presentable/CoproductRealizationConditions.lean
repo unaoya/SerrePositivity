@@ -39,11 +39,15 @@ def HasSmallGeometricRealizations (X : SSet.{u + 1}) : Prop :=
 lemma HasSmallColimits.hasSmallCoproducts {X : SSet.{u + 1}}
     (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) : HasSmallCoproducts X := fun I F ↦ hX (nerve (Discrete I)) F
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits (hasSmallCoproducts)
+
 /-- 概要：全小余極限の存在は小さい幾何学的実現の存在を含む。
 方針：元の全図式条件を反対単体次数の形状に適用する。
 規約：元の全単体的図式を保持する。
 使われ方：一般補題の必要条件。 -/
 lemma HasSmallColimits.hasSmallGeometricRealizations {X : SSet.{u + 1}}
     (hX : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits X) : HasSmallGeometricRealizations X := fun F ↦ hX _ F
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits (hasSmallGeometricRealizations)
 
 end SerrePositivity.InfinityCategories.F2.Presentable

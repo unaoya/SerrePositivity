@@ -38,6 +38,8 @@ lemma IsPointwiseColimitCone.reindex {J K L X : SSet.{u}}
     c.val ≫ evaluateFunctorAt (f.app (Opposite.op ⦋0⦌) l)
   rw [Category.assoc, stable_pre_evaluateFunctorAt]
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone export _root_.SerrePositivity.KST.SConstruction.IsPointwiseColimitCone (reindex)
+
 /-- 概要：各点で余極限が存在すれば、関手圏の余極限余錐は任意の添字の前合成で保たれる。
 方針：関手圏の余極限を点ごとの余極限に戻し、評価を制限して再び関手圏に移す。
 規約：X は quasicategory、f は任意。使われ方：構成した普遍四角形の添字の制限。 -/

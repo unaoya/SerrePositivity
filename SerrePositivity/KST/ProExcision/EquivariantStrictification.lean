@@ -182,6 +182,8 @@ lemma LinearizedMHomotopy.strictifiedMap_equivariant
     LinearizedEquivariant A B H.strictifiedMap :=
   (hf.sub hh.endpoint₀).add hh.endpoint₁
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (strictifiedMap_equivariant)
+
 /-- 概要：厳密化への全次数ホモトピーも外部 G 同変。
 方針：同変な定数区間写像に入力の区間写像を加える。
 規約：KST A.5、因子内の入力を用いる。使われ方：μ を適用する前の同変な比較。 -/
@@ -191,6 +193,8 @@ lemma LinearizedMHomotopy.strictificationHomotopy_equivariant
     (hh : LinearizedCylinderEquivariant A B H.h) :
     LinearizedCylinderEquivariant A B H.strictificationHomotopy.h :=
   (hf.sub hh.endpoint₀).constant.add hh
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (strictificationHomotopy_equivariant)
 
 /-- 概要：augmentation 補正の相殺で得るホモトピーは外部 G 同変。
 方針：同変な定数区間写像と入力区間写像の差を取る。
@@ -203,6 +207,8 @@ lemma LinearizedMHomotopy.cancel_augmentation_equivariant
     (hh : LinearizedCylinderEquivariant A B H.h) :
     LinearizedCylinderEquivariant A B H.cancel_augmentation.h :=
   (hψ.add hφ).constant.sub hh
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (cancel_augmentation_equivariant)
 
 end SerrePositivity.KST.ProExcision
 

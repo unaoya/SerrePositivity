@@ -46,8 +46,8 @@ def diagonalGroupMHomotopy
         (h k).h ≫ groupLinearizedMap (N.map φ).hom) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap f))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap g)) m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := diagonalGroupCylinderMap h hnat
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := (h (op ⦋n⦌)).h₀ n hn
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := (h (op ⦋n⦌)).h₁ n hn
+  h := diagonalGroupCylinderMap h hnat
+  h₀ n hn := (h (op ⦋n⦌)).h₀ n hn
+  h₁ n hn := (h (op ⦋n⦌)).h₁ n hn
 
 end SerrePositivity.KST.ProExcision

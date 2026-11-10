@@ -35,11 +35,15 @@ lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}}
   exact (hasColimit_iff_of_functorIso he).mp
     ⟨mapJoinCocone e.hom c, (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff e.isQCatEquivalence c).mp hc⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.HasSmallColimits (of_equivalence)
+
 /-- 元の全同値は presentable 性を保存する。 -/
 lemma IsPresentable.of_equivalence {C E : SSet.{u + 1}}
     [Quasicategory C] [Quasicategory E] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     (e : QCatEquivalence C E) : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E :=
   ⟨(isAccessible_iff_equivalence e).mp hC.1, hC.2.of_equivalence e⟩
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (of_equivalence)
 
 /-- 元の全同値による presentable 性の保存・反映。 -/
 lemma isPresentable_iff_equivalence {C E : SSet.{u + 1}}
@@ -70,5 +74,7 @@ lemma isPresentable_iff_cocompleteIndEquivalence (C : SSet.{u + 1}) [Quasicatego
 lemma IsPresentable.exists_accessibilityCardinalAbove {C : SSet.{u + 1}} [Quasicategory C]
     (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, σ < μ ∧ IsKappaAccessible μ C := hC.1.exists_larger σ
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (exists_accessibilityCardinalAbove)
 
 end SerrePositivity.InfinityCategories.F2.Presentable

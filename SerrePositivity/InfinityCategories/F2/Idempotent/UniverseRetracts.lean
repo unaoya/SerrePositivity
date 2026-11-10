@@ -31,4 +31,6 @@ lemma IsVertexRetractOf.ulift {X : SSet.{u}} [Quasicategory X]
       SSet.Edge.CompStruct.ofTruncated (uliftTruncatedCompStruct t.2.2.toTruncated)⟩
   exact ⟨T.vertexRetraction⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf (ulift)
+
 end SerrePositivity.InfinityCategories.F2.Idempotent

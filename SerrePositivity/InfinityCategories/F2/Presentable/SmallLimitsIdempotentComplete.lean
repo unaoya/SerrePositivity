@@ -32,6 +32,8 @@ lemma HasSmallLimits.isIdempotentComplete {C : SSet.{u + 1}} [Quasicategory C]
     Idempotent.idemShapeUniverseIso.{u, u + 1}.hom).mpr
   exact hC Idempotent.IdemShape _
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits (isIdempotentComplete)
+
 /-- 概要：小極限を持つ底上の空間値関手の全空間は冪等完備。
 方針：元の底の冪等完備性を左ファイブレーションに沿って持ち上げる。
 規約：関手の極限保存性はこの分裂には要求しない。

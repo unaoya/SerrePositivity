@@ -65,7 +65,7 @@ def linearizedActionBarMHomotopy (f g : SimplicialSetActionHom A B)
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (setActionBarMap f))
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (setActionBarMap g)) m := by
   let C : EquivariantLinearizedCylinderMap A B := ⟨H.h, hH⟩
-  refine { _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := linearizedActionBarCylinderMap C, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ := ?_, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ := ?_ }
+  refine { h := linearizedActionBarCylinderMap C, h₀ := ?_, h₁ := ?_ }
   · intro q hq
     apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext (X := (setActionBar A).obj (op ⦋q⦌))
     intro p

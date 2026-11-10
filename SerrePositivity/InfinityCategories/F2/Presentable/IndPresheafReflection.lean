@@ -55,4 +55,6 @@ lemma IsPresentable.exists_reflectiveIndModel {C : SSet.{u + 1}} [Quasicategory 
   have : Fact κ.IsRegular := ⟨hκ⟩
   exact ⟨κ, hκ, A, hA, ⟨indPresheafReflection hcolim⟩, he⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (exists_reflectiveIndModel)
+
 end SerrePositivity.InfinityCategories.F2.Presentable

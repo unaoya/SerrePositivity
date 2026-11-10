@@ -31,6 +31,8 @@ def VertexRetraction.intervalPrecompose_retractIso {X : SSet.{u}} [Quasicategory
   exact functorIsoOfSimplicialHomotopy h.some ≪≫
     functorIsoOfSimplicialHomotopy (intervalPrecompose_id x z).some
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (intervalPrecompose_retractIso)
+
 /-- 元の相対始対象の指定 retract は、同じ元の射について相対始対象。 -/
 lemma relativeInitial_of_vertexRetraction {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (p : X ⟶ Y) {x y : X _⦋0⦌}

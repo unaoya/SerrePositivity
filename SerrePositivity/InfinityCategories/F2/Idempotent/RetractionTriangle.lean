@@ -51,6 +51,8 @@ lemma VertexRetraction.triangle_exists {X : SSet.{u}} [Quasicategory X]
     SSet.Edge.ofTruncated r, SSet.Edge.CompStruct.ofTruncated h⟩
   exact ⟨T, hi, hr⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction (triangle_exists)
+
 /-- 元の分裂三角形の同じ二単体全体。 -/
 def RetractionTriangle.diagram {X : SSet.{u}} {x y : X _⦋0⦌}
     (t : RetractionTriangle x y) : (Δ[2] : SSet.{u}) ⟶ X :=

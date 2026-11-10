@@ -27,9 +27,11 @@ def LinearizedMHomotopy.congr {X : SSet.{u}} {D : SimplicialObject (ModuleCat.{u
     {f g f' g' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D} {m : ℕ}
     (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (hf : f = f') (hg : g = g') :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f' g' m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := H.h
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := (H.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hf)
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := (H.h₁ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hg)
+  h := H.h
+  h₀ n hn := (H.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hf)
+  h₁ n hn := (H.h₁ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hg)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (congr)
 
 /-- 概要：Lemma 4.16 の非同変な実帰納段階。
 方針：因子内の m 次入力と Q の0次入力へ μ 版 A.5 を適用し、A.6 と連結して相殺する。

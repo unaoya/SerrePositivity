@@ -25,24 +25,28 @@ variable {f g k : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfIn
 規約：KST Definition A.3、零次を含む。使われ方：比較の恒等部分。 -/
 def LinearizedMHomotopy.refl (f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D) (m : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f f m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ f
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ _ _ := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc]
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ _ _ := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc]
+  h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ f
+  h₀ _ _ := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc]
+  h₁ _ _ := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc]
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (refl)
 
 /-- 概要：m 次ホモトピーの向きを逆転する。
 方針：f+g の定数区間写像から元の区間写像を引く。
 規約：KST Definition A.3 の線形区間。使われ方：A.5 の比較の逆向きの合成。 -/
 def LinearizedMHomotopy.symm (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy g f m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ (f + g) - H.h
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := by
+  h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ (f + g) - H.h
+  h₀ n hn := by
     simp only [Preadditive.comp_sub, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc,
       NatTrans.app_sub, NatTrans.app_add, H.h₀ n hn]
     abel
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := by
+  h₁ n hn := by
     simp only [Preadditive.comp_sub, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc,
       NatTrans.app_sub, NatTrans.app_add, H.h₁ n hn]
     abel
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (symm)
 
 /-- 概要：二つの m 次ホモトピーを連結する。
 方針：二つの区間写像の和から中間射の定数区間写像を引く。
@@ -50,24 +54,28 @@ def LinearizedMHomotopy.symm (H : _root_.SerrePositivity.InfinityCategories.Kero
 使われ方：厳密化と AW/shuffle の標準比較の合成。 -/
 def LinearizedMHomotopy.trans (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m)
     (K : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy g k m) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f k m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := H.h + K.h - _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ g
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := by
+  h := H.h + K.h - _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ g
+  h₀ n hn := by
     simp only [Preadditive.comp_sub, Preadditive.comp_add, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc,
       NatTrans.app_sub, NatTrans.app_add, H.h₀ n hn, K.h₀ n hn]
     abel
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := by
+  h₁ n hn := by
     simp only [Preadditive.comp_sub, Preadditive.comp_add, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc,
       NatTrans.app_sub, NatTrans.app_add, H.h₁ n hn, K.h₁ n hn]
     abel
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (trans)
 
 /-- 概要：m 次ホモトピーを小さい範囲へ制限する。
 方針：区間写像は保ち、両端条件の上限だけを弱める。
 規約：KST Definition A.3。使われ方：異なる上限の比較の合成。 -/
 def LinearizedMHomotopy.restrict (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) {n : ℕ} (hn : n ≤ m) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g n where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := H.h
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ i hi := H.h₀ i (hi.trans hn)
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ i hi := H.h₁ i (hi.trans hn)
+  h := H.h
+  h₀ i hi := H.h₀ i (hi.trans hn)
+  h₁ i hi := H.h₁ i (hi.trans hn)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (restrict)
 
 /-- 概要：m 次ホモトピーは終域の線形写像で移送できる。
 方針：区間写像に終域の写像を後合成する。
@@ -75,13 +83,15 @@ def LinearizedMHomotopy.restrict (H : _root_.SerrePositivity.InfinityCategories.
 使われ方：因子の積に値を持つ比較から C(H) の比較を得る。 -/
 def LinearizedMHomotopy.postcomp (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (p : D ⟶ E) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (f ≫ p) (g ≫ p) m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := H.h ≫ p
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := by
+  h := H.h ≫ p
+  h₀ n hn := by
     rw [← Category.assoc, NatTrans.comp_app, H.h₀ n hn]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := by
+  h₁ n hn := by
     rw [← Category.assoc, NatTrans.comp_app, H.h₁ n hn]
     rfl
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (postcomp)
 
 /-- 概要：幾何的な射がテンソル区間に誘導する射。
 方針：自由化した射に区間の恒等射をテンソルする。
@@ -136,14 +146,16 @@ lemma linearizedEndpoint₁_naturality (p : X ⟶ Y) :
 def LinearizedMHomotopy.precomp {f g : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y ⟶ D}
     (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (p : X ⟶ Y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p ≫ g) m where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := linearizedCylinderMap p ≫ H.h
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := by
+  h := linearizedCylinderMap p ≫ H.h
+  h₀ n hn := by
     rw [← Category.assoc, ← linearizedEndpoint₀_naturality, Category.assoc,
       NatTrans.comp_app, H.h₀ n hn]
     rfl
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := by
+  h₁ n hn := by
     rw [← Category.assoc, ← linearizedEndpoint₁_naturality, Category.assoc,
       NatTrans.comp_app, H.h₁ n hn]
     rfl
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (precomp)
 
 end SerrePositivity.KST.ProExcision

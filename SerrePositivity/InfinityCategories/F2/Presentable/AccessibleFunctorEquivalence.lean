@@ -22,6 +22,8 @@ lemma IsAccessibleFunctor.of_functorIso {C E : SSet.{u + 1}} [Quasicategory E]
   obtain ⟨κ, hκ, h⟩ := h
   exact ⟨κ, hκ, h.of_functorIso e⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessibleFunctor export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsAccessibleFunctor (of_functorIso)
+
 /-- 同じ濃度の filtered 保存性は、両側の同値による元の関手の共役で不変。 -/
 lemma isKappaAccessibleFunctor_iff_equivalence_conjugate (κ : Cardinal.{u})
     {A B C D : SSet.{u + 1}} [Quasicategory A] [Quasicategory B]

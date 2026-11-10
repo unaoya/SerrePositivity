@@ -93,6 +93,8 @@ lemma PreservesSmallColimits.comp {C D E : SSet.{u + 1}} {F : C ⟶ D} {G : D �
   exact (isColimitCone_iff_of_cocone_val_eq _ _ (Category.assoc c.val F G).symm).mpr
     (hG K _ _ (hF K a c hc))
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits (comp)
+
 /-- 概要：小極限保存は関手の合成で閉じる。
 方針：同じ全錐を順に写す。
 規約：図式の充填性を要求しない。

@@ -52,4 +52,6 @@ lemma HasSmallLimits.of_equivalence {C E : SSet.{u + 1}}
   exact (hasLimit_iff_of_functorIso ed).mp
     ⟨mapJoinCone e.hom c, (e.isLimitCone_iff c).mp hc⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallLimits export _root_.SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits (of_equivalence)
+
 end SerrePositivity.InfinityCategories.F2.Presentable

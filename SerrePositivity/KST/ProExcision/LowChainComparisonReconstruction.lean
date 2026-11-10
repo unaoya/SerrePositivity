@@ -62,7 +62,7 @@ def linearizedMHomotopyOfChainComparisons
   let hh := (chainComparisonDifferenceHomotopy H₁ H₂).trans
     (Homotopy.ofEq (normalizedMapReconstruct_map (R - S + (normalizedMooreComplex _).map g)).symm)
   let h := LinearizedHomotopy.ofNormalizedChainHomotopy hh
-  refine { _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := h.h, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ := ?_, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ := ?_ }
+  refine { h := h.h, h₀ := ?_, h₁ := ?_ }
   · intro n _
     exact congrArg (fun t ↦ t.app (op ⦋n⦌)) h.h₀
   · intro n hn

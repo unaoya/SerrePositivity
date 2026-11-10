@@ -295,8 +295,11 @@ def rewrite(data, migration):
             if ref["kind"] == "binder" and (target := migration.target(ref)):
                 binder_parents[ref["module"]].append(target)
 
+    record_labels = [check_span(r) for r in data["commands"]
+                     if r["kind"] == "record-label" and "start" in r]
     for (a, b), candidates in refs.items():
         old_text = source[a:b].decode()
+        record_label = any(lo <= a and b <= hi for lo, hi in record_labels)
         replacements = set()
         other_resolution = False
         field_binder = any(ref["kind"] == "binder" and
@@ -310,6 +313,14 @@ def rewrite(data, migration):
             row = migration.target(ref)
             old = private_user_name(ref["module"], ref["name"])
             name = row["new"] if row else old
+            if record_label:
+                if row and (ref["kind"] != "field" or name.rsplit(".", 1)[-1] != old.rsplit(".", 1)[-1]):
+                    block(ref, f"structure field label requires review for {old}")
+                continue
+            if ref["kind"] == "syntax" and old_text.startswith("@") and any(
+                    inner["kind"] == "term" and (inner["module"], inner["name"]) == (ref["module"], ref["name"])
+                    for inner in refs.get((a + 1, b), ())):
+                continue
             curr = ref["namespace"]
             new_curr = rename_prefix(curr, ns_map)
             parents = []

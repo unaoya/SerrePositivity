@@ -40,6 +40,8 @@ lemma LinearizedMHomotopy.precomp_equivariant
   simp only [Category.id_comp, Category.assoc]
   rw [hh n a]
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (precomp_equivariant)
+
 /-- 概要：同変な二つの実 m 次ホモトピーの連結は同変。
 方針：同変な二つの区間射の和から中間射の同変な定数区間を引く。
 規約：KST A.5・A.6・4.16、実連結は線形な加減法。
@@ -51,6 +53,8 @@ lemma LinearizedMHomotopy.trans_equivariant
     (hg : LinearizedEquivariant A B g) :
     LinearizedCylinderEquivariant A B (H.trans K).h :=
   (hh.add hk).sub hg.constant
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (trans_equivariant)
 
 /-- 概要：準同型を前合成した A.6 の共役比較は外部作用に同変。
 方針：u の固定性による A.6 の同変性を同変な f で引き戻す。

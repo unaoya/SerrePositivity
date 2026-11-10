@@ -39,12 +39,12 @@ lemma groupLinearizedMap_zero_eq (f g : T →* H) :
 使われ方：非可換な群 Q の恒等写像にも適用する。 -/
 def groupZeroMHomotopy (f : T →* H) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap f) (groupLinearizedMap (1 : T →* H)) 0 where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ n hn := by
+  h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f
+  h₀ n hn := by
     have h : n = 0 := Nat.eq_zero_of_le_zero hn
     subst n
     simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc]
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ n hn := by
+  h₁ n hn := by
     have h : n = 0 := Nat.eq_zero_of_le_zero hn
     subst n
     simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc] using groupLinearizedMap_zero_eq f (1 : T →* H)

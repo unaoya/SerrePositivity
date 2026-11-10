@@ -66,4 +66,6 @@ lemma IsPresentable.exists_limitDetectingPresheafModel {C : SSet.{u + 1}}
   intro K D c
   simpa only [mapJoinCone, Category.assoc] using reflectiveIndModel_isLimitCone_iff_evaluation r e c
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (exists_limitDetectingPresheafModel)
+
 end SerrePositivity.InfinityCategories.F2.Presentable

@@ -75,8 +75,10 @@ lemma chainHomotopyCylinderReconstruct_endpoint₁ :
 規約：KST Definition A.3、Construction A.5、復元の存在を追加仮定にしない。
 使われ方：正規化した差のテンソルの低次消滅を C(H) の実区間へ戻す。 -/
 def LinearizedHomotopy.ofNormalizedChainHomotopy : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy f g where
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy.h := chainHomotopyCylinderReconstruct H
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy.h₀ := chainHomotopyCylinderReconstruct_endpoint₀ H
-  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy.h₁ := chainHomotopyCylinderReconstruct_endpoint₁ H
+  h := chainHomotopyCylinderReconstruct H
+  h₀ := chainHomotopyCylinderReconstruct_endpoint₀ H
+  h₁ := chainHomotopyCylinderReconstruct_endpoint₁ H
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedHomotopy (ofNormalizedChainHomotopy)
 
 end SerrePositivity.KST.ProExcision

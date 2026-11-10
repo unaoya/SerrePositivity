@@ -104,4 +104,6 @@ lemma IsAccessible.isLocallySmall {C : SSet.{u + 1}} [Quasicategory C]
 lemma IsPresentable.isLocallySmall {C : SSet.{u + 1}} [Quasicategory C]
     (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) : IsLocallySmall C := hC.isAccessible.isLocallySmall
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (isLocallySmall)
+
 end SerrePositivity.InfinityCategories.F2.Presentable

@@ -34,6 +34,8 @@ lemma IsPresentable.exists_presheafReflection {C : SSet.{u + 1}} [Quasicategory 
     ⟨a⟩, ?_, adjunction_preservesSmallColimits a⟩
   exact e.symm.isQCatEquivalence.isFullyFaithful.comp (indInclusionPresheaf_isFullyFaithful κ A)
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (exists_presheafReflection)
+
 /-- 概要：反映 Ind 模型の同じ全同値によって元の圏の全小余極限を構成する。
 方針：前層余極限を反映してから元の圏へ輸送する。
 規約：元の圏の余完備性を入力に追加しない。

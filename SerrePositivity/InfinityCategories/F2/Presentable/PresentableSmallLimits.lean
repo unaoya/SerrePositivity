@@ -29,6 +29,8 @@ lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C]
   have : Fact κ.IsRegular := ⟨hκ⟩
   exact (ind_hasSmallLimits_of_hasSmallColimits hcolim).of_equivalence e
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (hasSmallLimits)
+
 /-- 概要：元の任意小図式の native な極限が存在する。
 方針：全小極限の存在を元の持ち上げ図式へ特殊化する。
 規約：同値な別図式へ結論を変更しない。
@@ -37,6 +39,8 @@ lemma IsPresentable.hasLimit {C : SSet.{u + 1}} [Quasicategory C]
     (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C) {K : SSet.{u}}
     (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) : HasLimit D :=
   hC.hasSmallLimits K D
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (hasLimit)
 
 /-- 概要：presentable 圏の元の小極限は全表現可能関手で検出される。
 方針：構成した極限存在に F1 の全共変表現可能関手による検出を合わせる。
@@ -61,5 +65,7 @@ lemma IsPresentable.exists_limitCone_representables {C : SSet.{u + 1}} [Quasicat
         (JoinCone.ulift.{u + 1, u + 2} c)) := by
   obtain ⟨c, hc⟩ := hC.hasLimit D
   exact ⟨c, hc, (presentable_isLimitCone_iff_representables c).mp hc⟩
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable (exists_limitCone_representables)
 
 end SerrePositivity.InfinityCategories.F2.Presentable

@@ -214,6 +214,9 @@ namespace Old
 def f (x : Nat) := x + 1
 structure Box where
   value : Nat
+def rebuild (b : Box) : Box where
+  value := b.value
+def updateBox (b : Box) : Box := { b with value := 4 }
 namespace Nested
 def result := f 0
 end Nested
@@ -227,6 +230,7 @@ open scoped Old
 def rel := f 3
 def rel2 := ofn 3
 def fully := Old.f 3
+def explicit := @Old.f 5
 def shadow (f : Nat) := f + 1
 def dot (x : Old.Box) := x.value
 def localOpen := open Old in f 4
@@ -241,7 +245,7 @@ def withNotation := kRef
             owner = module_name(path)
             subprocess.run([lean, "--run", str(helper), owner, path, capture.name], cwd=root, check=True)
             data = checked_capture(root, path, capture)
-            symbols = ["Old.f", "Old.Box", "Old.Box.value", "Old.Nested.result"]
+            symbols = ["Old.f", "Old.Box", "Old.Box.value", "Old.rebuild", "Old.updateBox", "Old.Nested.result"]
             plan = Migration({"rows": [{"module": owner, "old": n, "new": n.replace("Old.", "New.Home.", 1)} for n in symbols],
                               "namespaces": {owner: {"Old": "New.Home"}}, "opens": {"Old": "New.Home"}})
             result, issues = rewrite(data, plan)
@@ -249,6 +253,8 @@ def withNotation := kRef
             self.assertIn(b"namespace New.Home", result)
             self.assertIn(b"open _root_.New.Home renaming f -> ofn", result)
             self.assertIn(b"x.value", result)
+            self.assertIn(b"value := ", result)
+            self.assertIn(b"@_root_.New.Home.f", result)
             self.assertIn(b"def shadow (f : Nat) := f + 1", result)
             after.write_bytes(result + b"\nexample : fully = 4 := rfl\nexample : withNotation = 2 := rfl\n")
             subprocess.run([lean, after.name], cwd=root, check=True)

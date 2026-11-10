@@ -48,4 +48,6 @@ lemma IsVertexRetractOf.op {X : SSet.{u}} [Quasicategory X]
       SSet.Edge.CompStruct.ofTruncated ht⟩
   exact ⟨T.vertexRetraction⟩
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf export _root_.SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf (op)
+
 end SerrePositivity.InfinityCategories.F2.Idempotent

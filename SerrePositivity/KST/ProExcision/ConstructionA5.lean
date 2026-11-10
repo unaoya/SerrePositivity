@@ -47,7 +47,7 @@ def constructionA5 {T P Q H : Type u} [Group T] [Group P] [Group Q] [Group H]
     rw [linearizedGroupProduct_comp, linearizedGroupProduct_comp, linearizedGroupProduct_comp,
       groupProduct_trivial]
     rfl
-  refine { _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h := h.h, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₀ := ?_, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.h₁ := ?_ }
+  refine { h := h.h, h₀ := ?_, h₁ := ?_ }
   · intro n hn
     exact (h.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hl)
   · intro n hn

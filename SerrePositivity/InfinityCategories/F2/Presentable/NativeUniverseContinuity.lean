@@ -34,6 +34,8 @@ lemma IsKappaAccessibleFunctor.comp_universe {κ : Cardinal.{u}}
   rw [Compact.mapJoinCocone_universe_comp]
   exact hG I (a ≫ F) (mapJoinCocone F c) (hF I a c hc)
 
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor (comp_universe)
+
 /-- 概要：元の小さい空間値 κ-accessible 関手の指定宇宙変更も元の余極限を保つ。
 方針：小さい空間の同じ宇宙変更の保存性と合成する。
 規約：元の全関手を変えず、値の宇宙だけを上げる。
@@ -44,5 +46,7 @@ lemma IsKappaAccessibleFunctor.spaceUniverse {κ : Cardinal.{u}}
     Compact.PreservesKappaFilteredColimits.{u, u + 1} κ
       ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram) :=
   hF.comp_universe (Compact.spaceUniverseDiagram_preservesKappaFilteredColimits κ)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor export _root_.SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor (spaceUniverse)
 
 end SerrePositivity.InfinityCategories.F2.Presentable
