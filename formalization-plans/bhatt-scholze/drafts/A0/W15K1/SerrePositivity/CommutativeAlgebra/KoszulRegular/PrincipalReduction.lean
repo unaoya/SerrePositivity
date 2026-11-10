@@ -105,13 +105,13 @@ theorem isKoszulResolution_snoc_of_regular_mod {n : ℕ} (x : Fin n → R) (a : 
     rw [koszulComplex_cons_eq]
     let g := (koszulFunctor x).map (koszulAugmentation ht)
     haveI : QuasiIso g := koszulFunctor_preserves_quasiIso x (koszulAugmentation ht)
-    haveI : IsIso (HomologicalComplex.homologyMap g i) :=
+    have hg : IsIso (HomologicalComplex.homologyMap g i) :=
       (quasiIsoAt_iff_isIso_homologyMap g i).mp inferInstance
     let E := (HomologicalComplex.homologyFunctor _ _ i).mapIso
       ((koszulModuleFunctor x).mapIso e₀) ≪≫ koszulModuleHomologyIso β x i
     let Z := (ModuleCat.restrictScalars β).map_isZero (hβ.isZero i hi)
     exact (Z.of_iso E).of_iso
-      (asIso (HomologicalComplex.homologyMap g i))
+      (@asIso _ _ _ _ (HomologicalComplex.homologyMap g i) hg)
   rw [Fin.snoc_eq_cons_rotate]
   exact hcons.perm (finRotate (n+1))
 

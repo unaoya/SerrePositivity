@@ -48,7 +48,11 @@ private theorem freeDPGenerator_block (hp : (p : R) = 0) (s : σ) (k r : ℕ) :
     L, LinearMap.toSpanSingleton_apply_one] using h
 
 omit [Fintype σ] in
-private theorem freeDPGenerator_pow_eq_zero (hp : (p : R) = 0) (s : σ) : γ[s,1] ^ p = 0 := by
+/-- 概要：一次分冪の p 乗は標数 p で零。
+方針：一変数の恒等式を座標ごとの自由分冪代数への写像で移す。
+規約：BS 著者版 Lemma 2.38 の剰余模型。
+使われ方：切断多項式環からの標準射。 -/
+theorem freeDPGenerator_pow_eq_zero (hp : (p : R) = 0) (s : σ) : γ[s,1] ^ p = 0 := by
   let L : R →ₗ[R] (σ →₀ R) := LinearMap.toSpanSingleton R _ (Finsupp.single s 1)
   let f : DividedPowerAlgebra R R →ₐ[R] G := DividedPowerAlgebra.map R L
   have h := congrArg f (rankOneDPGenerator_pow_eq_zero (Fact.out : p.Prime).pos hp)
@@ -59,7 +63,7 @@ private theorem freeDPGenerator_pow_eq_zero (hp : (p : R) = 0) (s : σ) : γ[s,1
 方針：各変数を一次分冪に送り、その p 乗が零であることを使う。
 規約：BS 著者版 Lemma 2.38 の mod p 表示。
 使われ方：分冪代数の切断多項式環上の加群構造。 -/
-def freeDPTruncatedMap (hp : (p : R) = 0) : T →ₐ[R] G := by
+@[expose] def freeDPTruncatedMap (hp : (p : R) = 0) : T →ₐ[R] G := by
   let f : P →ₐ[R] G := MvPolynomial.aeval (fun s : σ => γ[s,1])
   refine Ideal.Quotient.liftₐ I f ?_
   have hI : I ≤ RingHom.ker f.toRingHom := by
@@ -71,6 +75,7 @@ def freeDPTruncatedMap (hp : (p : R) = 0) : T →ₐ[R] G := by
     exact freeDPGenerator_pow_eq_zero hp s
   exact fun _ h => hI h
 
+omit [Fintype σ] in
 /-- 概要：切断商の代表元を一次分冪で評価する。
 方針：切断イデアルからの商写像の計算式を使う。
 規約：BS 著者版 Lemma 2.38 の mod p 表示。

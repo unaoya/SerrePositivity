@@ -3,6 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
 public import Mathlib.RingTheory.Flat.TorsionFree
 import Mathlib.Data.Nat.Factorization.Basic
+import Mathlib.RingTheory.Flat.Localization
 
 /-!
 # p 局所整数上の平坦性
@@ -45,12 +46,15 @@ theorem primeLocalInt_moduleFlat (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m 
     | ofNat n =>
       by_cases hn : n = 0
       · exact Or.inl (by simp [hn])
-      · exact Or.inr (hnat n hn x (by simpa only [Int.cast_ofNat] using hx))
+      · change ((n : ℤ) : A) * x = 0 at hx
+        exact Or.inr (hnat n hn x (by simpa only [Int.cast_natCast] using hx))
     | negSucc n =>
       right
       apply hnat (n + 1) (Nat.succ_ne_zero n) x
       simpa only [Int.cast_negSucc, ← Nat.cast_succ, neg_mul, neg_eq_zero] using hx
+  haveI : IsScalarTower ℤ (PrimeLocalInt p) A :=
+    .of_algebraMap_eq' (Subsingleton.elim _ _)
   exact (Module.flat_iff_of_isLocalization (PrimeLocalInt p)
-    (Ideal.span {(p : ℤ)}).primeCompl).2 inferInstance
+    (Ideal.span {(p : ℤ)}).primeCompl A).2 inferInstance
 
 end SerrePositivity.BhattScholze

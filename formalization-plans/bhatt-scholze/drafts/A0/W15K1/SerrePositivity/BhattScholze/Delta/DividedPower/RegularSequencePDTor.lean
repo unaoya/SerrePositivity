@@ -56,7 +56,7 @@ def dpFamilyPresentation_polynomialTensorEquiv :
   let z (j : Fin r) : P := MvPolynomial.X j - MvPolynomial.C (f j)
   let I := Ideal.span (Set.range z)
   have he : I.map (algebraMap P G) = dpFamilyRelationIdeal f := by
-    simp only [I, Ideal.map_span, dpFamilyRelationIdeal, Set.image_range, Function.comp_def]
+    simp only [I, Ideal.map_span, dpFamilyRelationIdeal, ← Set.range_comp', Function.comp_def]
     apply congrArg (fun y : Fin r → G => Ideal.span (Set.range y))
     funext j
     change MvPolynomial.aeval (fun k : Fin r => γ[k]) (z j) = x j

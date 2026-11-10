@@ -48,13 +48,6 @@ local notation "γ[" s "," n "]" => DividedPowerAlgebra.dp A n (Finsupp.single s
 使われ方：分冪包、係数拡大、Frobenius 除算の比較。 -/
 abbrev DPFamilyPresentation := G ⧸ dpFamilyRelationIdeal a
 
-/-- 概要：分冪表示環の係数代数構造。
-方針：自由分冪代数の係数射を表示関係で割った商へ合成する。
-規約：BS 著者版 Lemma 2.38 の係数脚。
-使われ方：分冪表示の評価と底変換。 -/
-instance dpFamilyPresentationAlgebra : Algebra A (DPFamilyPresentation a) :=
-  Ideal.Quotient.algebra A (I := dpFamilyRelationIdeal a)
-
 /-- 概要：表示環内の各座標の分冪の像。
 方針：自由分冪代数の標準分冪を商に写す。
 規約：BS 著者版 Lemma 2.38 の標準生成元。
@@ -67,7 +60,7 @@ def dpFamilyGenerator (s : σ) (n : ℕ) : DPFamilyPresentation a :=
 規約：BS 著者版 Lemma 2.38 の表示。
 使われ方：高次分冪の階乗関係。 -/
 theorem dpFamilyGenerator_one (s : σ) :
-    dpFamilyGenerator a s 1 = algebraMap A (DPFamilyPresentation a) (a s) := by
+    dpFamilyGenerator a s 1 = Ideal.Quotient.mk (dpFamilyRelationIdeal a) (algebraMap A G (a s)) := by
   apply sub_eq_zero.mp
   change Ideal.Quotient.mk (dpFamilyRelationIdeal a) (γ[s, 1]) -
     Ideal.Quotient.mk (dpFamilyRelationIdeal a) (algebraMap A G (a s)) = 0
@@ -80,7 +73,7 @@ theorem dpFamilyGenerator_one (s : σ) :
 使われ方：p 反転後の係数環との比較。 -/
 theorem dpFamilyGenerator_factorial_mul (s : σ) (n : ℕ) :
     (n.factorial : DPFamilyPresentation a) * dpFamilyGenerator a s n =
-      (algebraMap A (DPFamilyPresentation a) (a s)) ^ n := by
+      (Ideal.Quotient.mk (dpFamilyRelationIdeal a) (algebraMap A G (a s))) ^ n := by
   have h := congrArg (Ideal.Quotient.mk (dpFamilyRelationIdeal a))
     (DividedPowerAlgebra.natFactorial_mul_dp_eq (R := A) n (Finsupp.single s 1 : σ →₀ A))
   simp only [map_mul, map_natCast, map_pow] at h
@@ -170,6 +163,12 @@ local notation "e" => freeDPBaseChangeEquiv σ A B
 local notation "j" => ((Algebra.TensorProduct.includeRight (R := A) (A := B) (B := G)).toRingHom)
 local notation "a'" => (algebraMap A B ∘ a)
 
+local instance : CommRing G :=
+  RingCon.instCommRingQuotient (DividedPowerAlgebra.ringCon A (σ →₀ A))
+
+local instance : CommRing G' :=
+  RingCon.instCommRingQuotient (DividedPowerAlgebra.ringCon B (σ →₀ B))
+
 /-- 概要：自由分冪の標準生成元は係数拡大で対応する生成元に写る。
 方針：一座標だけの分冪単項式に直して既存の係数拡大公式を適用する。
 規約：BS 著者版 Lemma 2.38 の標準生成元。
@@ -201,7 +200,7 @@ private theorem dpFamilyBaseChange_relation (s : σ) :
 
 private theorem dpFamilyBaseChange_ideal :
     dpFamilyRelationIdeal a' = ((dpFamilyRelationIdeal a).map j).map (e).toRingHom := by
-  simp only [dpFamilyRelationIdeal, Ideal.map_span, Set.image_range, Function.comp_def]
+  simp only [dpFamilyRelationIdeal, Ideal.map_span, ← Set.range_comp', Function.comp_def]
   exact congrArg (fun F : σ → G' => Ideal.span (Set.range F))
     (funext fun s => (dpFamilyBaseChange_relation a s).symm)
 
@@ -210,7 +209,7 @@ private theorem dpFamilyBaseChange_ideal :
 規約：正則性は表示環が分冪包になるために使う（BS 著者版 Lemma 2.38）。
 使われ方：正則列の分冪包の底変換。 -/
 def dpFamilyBaseChangeEquiv :
-    B ⊗[A] DPFamilyPresentation a ≃ₐ[B] DPFamilyPresentation a' :=
+    (B ⊗[A] (G ⧸ dpFamilyRelationIdeal a)) ≃ₐ[B] (G' ⧸ dpFamilyRelationIdeal a') :=
   (Algebra.TensorProduct.tensorQuotientEquiv (R := A) B G B
     (dpFamilyRelationIdeal a)).trans
     (Ideal.quotientEquivAlg _ _ e (dpFamilyBaseChange_ideal a))
