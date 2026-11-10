@@ -295,3 +295,9 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `cartierCoordinatePartial_integral` と `cartierCoordinateIntegral_partial` は、偏微分と座標積分の二通りの合成から、それぞれ一次と零次の Cartier 成分が残ることを示す。`cartierCoordinatePartial_integral_comm` は異なる座標での可換性。
 - `htOneOnGenerators` は完備一次形式の基底から定めた係数線形写像。`htOneOnGenerators_coordinate` で各座標の一次形式の像を Bockstein と照合した。一般の完備多項式の微分での公式は引き続き必要。
 - この時点の実装済み 33 モジュールの鍵付き対象ビルドは成功。一時監査の 885 宣言は標準三公理のみ。
+
+### pd Poincaré 補題と二つの射影
+
+- `9a5af7052` で `pdDeRhamColumnCollapseHomotopyEquiv` を閉じた。全差座標の評価を、一座標ごとの評価の合成と分冪単項式基底・一次形式の座標基底で照合した。標数 p の未完備表示から完備列に移している。
+- `pdDeRhamCollapse_total_quasiIso` は列のホモトピー同値を定数列への総複体の擬同型に移す。定数余単体の行は正次数で完全なので、第 0 列への射影も `pdDeRhamColumnZeroProjection_quasiIso` で擬同型になる。
+- この時点の実装済み 35 モジュールの対象ビルドは成功。一時監査の 989 宣言は標準三公理のみ。
