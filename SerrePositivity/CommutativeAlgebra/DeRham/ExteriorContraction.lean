@@ -96,4 +96,28 @@ theorem exteriorContract_wedgeOne (d : Module.Dual k M) (n : ℕ) (a : M)
     mul_one, Submodule.coe_sub, Submodule.coe_smul]
   exact CliffordAlgebra.contractLeft_ι_mul (Q := (0 : QuadraticForm k M)) _ _ _
 
+private theorem contraction_zero (d : Module.Dual k M) (x : ExteriorAlgebra k M)
+    (hx : x ∈ ⋀[k]^0 M) : contraction k M d x = 0 := by
+  rw [← exteriorPower.ιMulti_span_fixedDegree k 0 M] at hx
+  induction hx using Submodule.span_induction with
+  | mem y hy =>
+    obtain ⟨v, rfl⟩ := hy
+    simp [contraction, CliffordAlgebra.contractLeft_one]
+  | zero => simp
+  | add y z _ _ hy hz => rw [map_add, hy, hz, add_zero]
+  | smul a y _ hy => rw [map_smul, hy, smul_zero]
+
+/-- 零次の外冪に一次元を掛けて収縮すると、汎関数で評価した値の作用になる。 -/
+theorem exteriorContract_wedgeZero (d : Module.Dual k M) (a : M) (x : ⋀[k]^0 M) :
+    exteriorContract k M d 0 (wedgeOne k M 0 ((exteriorPower.oneEquiv k M).symm a) x) =
+      d a • x := by
+  apply Subtype.ext
+  simp only [exteriorContract_coe, wedgeOne_coe, exteriorPower.oneEquiv_symm_apply,
+    exteriorPower.ιMulti_apply_coe, ExteriorAlgebra.ιMulti_apply, List.ofFn_succ,
+    List.ofFn_zero, List.prod_cons, List.prod_nil, mul_one, Submodule.coe_smul]
+  rw [CliffordAlgebra.contractLeft_ι_mul]
+  have h := contraction_zero k M d x.1 x.2
+  change CliffordAlgebra.contractLeft (Q := (0 : QuadraticForm k M)) d x.1 = 0 at h
+  rw [h, mul_zero, sub_zero]
+
 end SerrePositivity.DeRham

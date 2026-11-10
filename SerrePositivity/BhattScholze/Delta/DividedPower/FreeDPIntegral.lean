@@ -101,4 +101,60 @@ theorem freeDPPartial_integral (s : S) (x : D) :
   have h : (m + Finsupp.single s (1 : ℕ)) s ≠ 0 := by simp
   rw [ite_eq_right h, add_tsub_cancel_right]
 
+/-- 指定座標で指数零の分冪単項式だけを残す射影。 -/
+def freeDPConstantTerm (s : S) : D →ₗ[R] D :=
+  (freeDPBasis S R).constr R fun m => if m s = 0 then freeDPMonomial S R m else 0
+
+@[simp]
+theorem freeDPConstantTerm_monomial (s : S) (m : S →₀ ℕ) :
+    freeDPConstantTerm s (freeDPMonomial S R m) =
+      if m s = 0 then freeDPMonomial S R m else 0 := by
+  unfold freeDPConstantTerm
+  conv_lhs => rw [← freeDPBasis_apply]
+  rw [Module.Basis.constr_basis]
+
+/-- 微分した後に積分すると、指定座標の定数項を除いた元を得る。 -/
+theorem freeDPIntegral_partial (s : S) (x : D) :
+    freeDPIntegral s (freeDPPartial s x) = x - freeDPConstantTerm s x := by
+  let f := (freeDPIntegral (R := R) s).comp (freeDPPartial s).toLinearMap
+  let g := LinearMap.id - freeDPConstantTerm (R := R) s
+  suffices h : f = g from DFunLike.congr_fun h x
+  apply (freeDPBasis S R).ext
+  intro m
+  change freeDPIntegral s (freeDPPartial s (freeDPBasis S R m)) =
+    freeDPBasis S R m - freeDPConstantTerm s (freeDPBasis S R m)
+  rw [freeDPBasis_apply, freeDPPartial_monomial, freeDPConstantTerm_monomial]
+  by_cases h : m s = 0
+  · simp [h]
+  · rw [ite_eq_right h, ite_eq_right h, sub_zero, freeDPIntegral_monomial]
+    congr 1
+    apply tsub_add_cancel_of_le
+    intro t
+    by_cases ht : s = t
+    · subst t
+      simpa only [Finsupp.single_eq_same] using Nat.one_le_iff_ne_zero.mpr h
+    · simp [Finsupp.single_eq_of_ne (Ne.symm ht)]
+
+/-- 異なる座標の積分と偏微分は可換。 -/
+theorem freeDPPartial_integral_comm {s t : S} (h : s ≠ t) (x : D) :
+    freeDPPartial s (freeDPIntegral t x) = freeDPIntegral t (freeDPPartial s x) := by
+  let f := (freeDPPartial (R := R) s).toLinearMap.comp (freeDPIntegral t)
+  let g := (freeDPIntegral (R := R) t).comp (freeDPPartial s).toLinearMap
+  suffices e : f = g from DFunLike.congr_fun e x
+  apply (freeDPBasis S R).ext
+  intro m
+  change freeDPPartial s (freeDPIntegral t (freeDPBasis S R m)) =
+    freeDPIntegral t (freeDPPartial s (freeDPBasis S R m))
+  rw [freeDPBasis_apply, freeDPIntegral_monomial, freeDPPartial_monomial, freeDPPartial_monomial,
+    Finsupp.add_apply, Finsupp.single_eq_of_ne h, add_zero]
+  split_ifs
+  · rw [map_zero]
+  · rw [freeDPIntegral_monomial]
+    congr 1
+    ext a
+    by_cases ha : a = s
+    · subst a
+      simp [Finsupp.single_eq_of_ne h]
+    · simp [Finsupp.single_eq_of_ne ha]
+
 end SerrePositivity.BhattScholze

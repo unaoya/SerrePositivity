@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateZero
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateBocksteinSquare
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms
 
 -- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,DeRhamPolynomial}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う。
@@ -41,13 +41,7 @@ variable (r : ℕ)
 
 -- η⁰ と Bockstein は本体の HodgeTateZero に置く。
 
-/-- R 作用は η⁰ の像との左 cup 積。 -/
-def htModuleData (i : ℕ) :
-    { M : Module (affineAlgebra P r) (hodgeTateCohomology' P hP r i) //
-      letI := M
-      ∀ (a : affineAlgebra P r) (z : hodgeTateCohomology' P hP r i), a • z = cast (by simp) (cohomologyCup (reducedModel P hP r) (hodgeTateMapZero P hP r a) z) } := by
-  sorry -- η⁰(a)∪z。cup の単位・結合・加法性と次数 0 の左単位律
-abbrev htModule (i : ℕ) := (htModuleData P hP r i).val
+-- R 作用は本体の HodgeTateModule に置く。
 
 local instance (i : ℕ) : Module (affineAlgebra P r) (hodgeTateCohomology' P hP r i) := htModule P hP r i
 
@@ -61,21 +55,12 @@ def htOneData :
 
 def hodgeTateMapOne := (htOneData P hP r).val
 
-/-- 概要：Lemma 4.10：β(η^0 f)² = 0（p = 2 でだけ非自明）。
-方針：Prop 6.2 の affine 直線（r = 1）で H^2 = 0 から、関手性（X ↦ f）で一般へ。A1-4 で証明。
-規約：次数付き可換性だけからは出ない（2β(f)² = 0 まで）。
-使われ方：η^* の存在（de Rham 複体の普遍性の平方零の条件）。 -/
-def BetaSquareZero : Prop := ∀ f : affineAlgebra P r,
-  let x := bockstein P hP r 0 (hodgeTateMapZero P hP r f)
-  cohomologyCup (reducedModel P hP r) x x = 0
+-- BetaSquareZero と bockstein_sq_zero は本体の HodgeTateBocksteinSquare に置く。
+-- p = 2 の場合は δ による余境界で直接証明する。
 
-theorem betaSquareZero_of_line (h₂ : Subsingleton (hodgeTateCohomology' P hP 1 2)) :
-    BetaSquareZero P hP r := by
-  sorry -- X↦f による H² の射で β(η⁰ X)∪β(η⁰ X)=0 を移す。
-        -- cohomologyMap_cup と bockstein_natural、両模型は共通の Čech 模型で比較
-
-theorem bockstein_sq_zero : BetaSquareZero P hP r := by
-  sorry -- r=1 の η⁰・η¹ だけで得る H²=0 と X↦f の自然性。A1-4 でこの順に証明
+theorem betaSquareZero_of_line (_h₂ : Subsingleton (hodgeTateCohomology' P hP 1 2)) :
+    BetaSquareZero P hP r :=
+  bockstein_sq_zero P hP r
 
 /-- 概要：Constr 4.9：dg 代数の射 η^* : Ω^*_{R/(A/d)} → H^*(Tot(C^•/d))。
 方針：`DeRham.exists_unique_dgHom` に η^0・η^1・`bockstein_sq_zero` を渡す。

@@ -73,18 +73,21 @@ def componentAt (n : ℕ) (ij : totalIndex n) :
     (K.total up).X n ⟶ (K.X ij.1.1).X ij.1.2 :=
   eqToHom (congrArg (K.total up).X ij.2.symm) ≫ totalComponent K ij.1.1 ij.1.2
 
-private def insertAt (n : ℕ) (ij : totalIndex n) :
+/-- 証明付きの総次数の添字で成分を挿入する。 -/
+def insertAt (n : ℕ) (ij : totalIndex n) :
     (K.X ij.1.1).X ij.1.2 ⟶ (K.total up).X n :=
   K.ιTotal up ij.1.1 ij.1.2 n ij.2
 
-private theorem insertAt_componentAt_eq {n : ℕ} (ij : totalIndex n) :
+@[simp, reassoc]
+theorem insertAt_componentAt_eq {n : ℕ} (ij : totalIndex n) :
     insertAt K n ij ≫ componentAt K n ij = 𝟙 _ := by
   obtain ⟨⟨i,j⟩, h⟩ := ij
   change i+j = n at h
   subst n
   simp [insertAt, componentAt]
 
-private theorem insertAt_componentAt_ne {n : ℕ} (ij st : totalIndex n) (h : ij ≠ st) :
+@[reassoc]
+theorem insertAt_componentAt_ne {n : ℕ} (ij st : totalIndex n) (h : ij ≠ st) :
     insertAt K n ij ≫ componentAt K n st = 0 := by
   obtain ⟨⟨i,j⟩, hij⟩ := ij
   obtain ⟨⟨a,b⟩, hab⟩ := st
@@ -227,5 +230,45 @@ theorem totalD_component_zeroRight (a : ℕ) :
     subst i
     simp
   · simp [hj]
+
+/-- 一成分を挿入して総微分を取ると、二つの隣接成分に分かれる。 -/
+theorem insertAt_total_d {n a b : ℕ} (h : a+b = n) :
+    insertAt K n ⟨(a,b), h⟩ ≫ (K.total up).d n (n+1) =
+      (K.d a (a+1)).f b ≫ insertAt K (n+1) ⟨(a+1,b), by omega⟩ +
+      (-1 : ℤ)^a • ((K.X a).d b (b+1) ≫ insertAt K (n+1) ⟨(a,b+1), by omega⟩) :=
+  total_d_summand K a b n h
+
+/-- 指定した成分の横微分を取り出す。 -/
+theorem insertAt_total_d_component_horizontal {n a b : ℕ} (h : a+b = n) :
+    insertAt K n ⟨(a,b), h⟩ ≫ (K.total up).d n (n+1) ≫
+      componentAt K (n+1) ⟨(a+1,b), by omega⟩ = (K.d a (a+1)).f b := by
+  rw [← Category.assoc, insertAt_total_d, Preadditive.add_comp, Preadditive.zsmul_comp,
+    Category.assoc, Category.assoc, insertAt_componentAt_eq, Category.comp_id]
+  have hne : (⟨(a,b+1), by omega⟩ : totalIndex (n+1)) ≠ ⟨(a+1,b), by omega⟩ := by
+    intro h'
+    have hh := congrArg (fun x : totalIndex (n+1) => x.1.1) h'
+    dsimp at hh
+    omega
+  rw [insertAt_componentAt_ne K _ _ hne, comp_zero, smul_zero, add_zero]
+
+/-- 挿入した成分より小さい縦次数の成分は、総微分の後も零。 -/
+theorem insertAt_total_d_component_lower {n a b i j : ℕ} (h : a+b = n)
+    (hij : i+j = n+1) (hj : j < b) :
+    insertAt K n ⟨(a,b), h⟩ ≫ (K.total up).d n (n+1) ≫
+      componentAt K (n+1) ⟨(i,j), hij⟩ = 0 := by
+  rw [← Category.assoc, insertAt_total_d, Preadditive.add_comp, Preadditive.zsmul_comp,
+    Category.assoc, Category.assoc]
+  have neq₁ : (⟨(a+1,b), by omega⟩ : totalIndex (n+1)) ≠ ⟨(i,j), hij⟩ := by
+    intro he
+    have := congrArg (fun x : totalIndex (n+1) => x.1.2) he
+    dsimp at this
+    omega
+  have neq₂ : (⟨(a,b+1), by omega⟩ : totalIndex (n+1)) ≠ ⟨(i,j), hij⟩ := by
+    intro he
+    have := congrArg (fun x : totalIndex (n+1) => x.1.2) he
+    dsimp at this
+    omega
+  rw [insertAt_componentAt_ne K _ _ neq₁, insertAt_componentAt_ne K _ _ neq₂]
+  simp
 
 end SerrePositivity.HomologicalAlgebra
