@@ -270,3 +270,13 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - 実装コミットは `44cf577fc`。新規 14 モジュールは `with_build_lock.sh --wait 1800` で対象ビルドに成功し、一時監査は 369 宣言で標準三公理のみ。追加公理と `sorryAx` は 0 件。新規モジュールから E3 と E∞ への推移的 import がなく、⑤a との変更ファイルの重複がないことを確認した。
 - 残りは列微分と余単体構造射の可換性、列の pd Poincaré 補題と両射影の擬同型、総複体の積と Bockstein の比較、有限変数の Cartier 同型、η¹ と外積への延長、生成元での照合。目標の二定理は草稿に残っている。
 - 停止点 3 の取り込み対象はこの段の完了時にまとめる。この時点の登録候補は `git diff --name-only --diff-filter=A ba84f342e..44cf577fc -- SerrePositivity` の 14 本。
+
+### 段 3 の続き
+
+- `d2eaea838` で `pdDeRhamDifferential` の自然性、`pdDeRhamDoubleComplex`、`pdDeRhamTotal`、`pdDeRhamRowZeroProjection`、`pdDeRhamColumnZeroProjection` を閉じた。連鎖律は、未完備模型の多項式座標と分冪座標で確認してから、主完備化単位上の値で完備模型へ移した。
+- `pdRawDerivation` は未完備偏微分の導分則、`pdCoordinateBasis` は第 0 頂点と差座標の微分形式の基底。`principalCompletionLinearMap_ext` と `completedRing_isModuleComplete` はその完備化に使う。
+- `totalComponent` と `componentAt` で総複体の成分を取り出し、`totalComponent_ext_zero` で全成分による判定を示した。`totalD_component_succ`、`totalD_component_zeroLeft`、`totalD_component_zeroRight` は二重次数での総微分の成分式。
+- `freeDPPartial_monomial`、`freeDPIntegral`、`freeDPPartial_integral` で分冪偏微分と指数を上げる積分を照合した。`exteriorContract` と `exteriorContract_wedgeOne` は外冪に制限した左内部積と、その一次外積に対する公式。
+- `polynomialCartierKernel` と `polynomialCartierCokernel` は一変数多項式の微分の核・余核の線形同型。`polynomialCartierRepresentative` と `polynomialCartierExtract` は余核の代表を作る写像とその係数抽出で、`polynomialCartierExtract_representative` と `polynomialCartierExtract_ker` で照合した。
+- 新規 19 モジュールの鍵付き対象ビルドが通り、一時監査の 591 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。新規モジュールの推移的 import に E3 と E∞ が入らないことを確認した。⑤a の段 1 を取り込んだ main `287fb6e70` を専用枝に取り込んだ。
+- 次は正次数の行の収縮から第 0 行への射影の擬同型を示し、分冪積分と外冪の内部積から各列の pd Poincaré 収縮を組む。第 0 列への射影の擬同型と積、有限多変数の Cartier 同型、η¹ と外積への延長、生成元の照合は引き続き必要。
