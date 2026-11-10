@@ -11,6 +11,8 @@ private のモジュール接頭辞を除き、補助宣言には親の名前を
 ## 使われ方
 lake env lean --run scripts/refactor/decl_snapshot.lean --modules A,B [--name-map names.json] --output before.json
 --proof-irrelevant は既定で有効。--no-proof-irrelevant は旧方式の診断用（両側で同じ指定が必要）。
+--stable-project は宣言の宇宙束縛を位置で正規化し、プロジェクトの公理依存をカーネル宣言から再計算する。
+移動前後で使う場合は両側に同じ指定を渡す。
 --namespace N は選択を名前空間でも絞る。モジュール省略時は SerrePositivity を読む。
 uses_modules は型・本体（定理の証明も含む）が使う定数の定義元。空の選択も count: 0 で保存する。
 environment_parent は環境に存在する最長の真の名前接頭辞、parent_module はその定義元。
@@ -201,8 +203,50 @@ private def definingModule (env : Environment) (name : Name) : Option Name := do
   let idx ← env.getModuleIdxFor? name
   return env.header.modules[idx.toNat]!.module
 
+-- Lean's imported axiom cache is computed with a shared cycle sentinel.
+-- An inductive and its constructor can reach the same axioms but export
+-- different sets depending on which one is visited first. Compute the least
+-- fixed point for project declarations, using unchanged dependencies as leaves.
+private def projectAxioms (roots : Array Name) : MetaM (Std.HashMap Name NameSet) := do
+  let env := (← getEnv).setExporting false
+  let mut pending := roots
+  let mut visited : Std.HashSet Name := {}
+  let mut users : Std.HashMap Name (Array Name) := {}
+  let mut propagate : Array (Name × Name) := #[]
+  while !pending.isEmpty do
+    let name := pending.back!
+    pending := pending.pop
+    if visited.contains name then continue
+    visited := visited.insert name
+    if (definingModule env name).any (fun m => !((`SerrePositivity).isPrefixOf m)) then
+      for ax in (← collectAxioms name) do
+        propagate := propagate.push (name, ax)
+      continue
+    let some info := env.checked.get.find? name | continue
+    if let .axiomInfo _ := info then
+      propagate := propagate.push (name, name)
+    if let .quotInfo _ := info then continue
+    let mut deps := info.type.getUsedConstantsAsSet
+    if let some value := info.value? (allowOpaque := true) then
+      deps := deps ++ value.getUsedConstantsAsSet
+    if let .inductInfo val := info then
+      deps := deps ++ NameSet.ofList val.ctors
+    for dep in deps do
+      users := users.insert dep ((users[dep]?.getD #[]).push name)
+      if !visited.contains dep then pending := pending.push dep
+  let mut result : Std.HashMap Name NameSet := {}
+  while !propagate.isEmpty do
+    let (name, ax) := propagate.back!
+    propagate := propagate.pop
+    let previous := result[name]?.getD {}
+    if previous.contains ax then continue
+    result := result.insert name (previous.insert ax)
+    for user in users[name]?.getD #[] do
+      propagate := propagate.push (user, ax)
+  return result
+
 private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
-    (rules : List (String × String)) (proofIrrelevant : Bool) : MetaM Json := do
+    (rules : List (String × String)) (proofIrrelevant stableProject : Bool) : MetaM Json := do
   let rename := indexedRename (Std.HashMap.ofList rules)
   let env ← getEnv
   let simp ← Meta.getSimpTheorems
@@ -215,6 +259,7 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       | some ns => ns.isPrefixOf (privateToUserName name)
       | none => selected.contains mod
     return if keep then acc.push (name, info, mod) else acc
+  let exactAxioms ← if stableProject then projectAxioms (constants.map (·.1)) else pure {}
   for (name, info, mod) in constants.qsort (fun a b => Name.quickLt a.1 b.1) do
     -- Private auxiliaries are retained and grouped with their public parent.
     -- Ordinary private declarations are not public API; their references still normalize.
@@ -232,7 +277,12 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       ("selection_start_line", toJson r.selectionRange.pos.line),
       ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
-    let fingerprint := fun e => termFingerprintWith rename e proofIrrelevant
+    -- Declaration universe parameters are binders. In particular, Lean's enum
+    -- noConfusion declarations use fresh user names for them.
+    let levelArgs := info.levelParams.zipIdx.map fun (_, i) =>
+      mkLevelParam (.num `_snapshotLevel i)
+    let fingerprint := fun e => termFingerprintWith rename
+      (if stableProject then e.instantiateLevelParams info.levelParams levelArgs else e) proofIrrelevant
     let ty ← fingerprint info.type
     let body ← if info.isTheorem then pure none else
       (info.value? (allowOpaque := true)).mapM fingerprint
@@ -242,7 +292,8 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
           huge := huge.push <| Json.mkObj [("module", toJson mod.toString),
             ("name", toJson name.toString), ("field", toJson field),
             ("distinct_subexpressions", toJson distinct), ("expanded_bytes", toJson bytes)]
-    let axs := (← collectAxioms name).toList.map canonicalName |>.mergeSort (· ≤ ·)
+    let axioms ← if stableProject then pure ((exactAxioms[name]?.getD {}).toArray) else collectAxioms name
+    let axs := axioms.toList.map canonicalName |>.mergeSort (· ≤ ·)
     let usedConstants := info.getUsedConstantsAsSet.toList
     let used := usedConstants.map canonicalName |>.mergeSort (· ≤ ·)
     let usedModules := (usedConstants.filterMap fun n => do
@@ -271,7 +322,8 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
     if ← System.FilePath.pathExists path then
       sources := sources.push <| Json.mkObj [("module", toJson mod.toString), ("source", toJson (← IO.FS.readFile path))]
   return Json.mkObj [("schema_version", toJson (2 : Nat)),
-    ("hash_algorithm", toJson (if proofIrrelevant then "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)" else "normalized Expr DAG mixHash v1")),
+    ("hash_algorithm", toJson ((if proofIrrelevant then "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)" else "normalized Expr DAG mixHash v1") ++
+      (if stableProject then " with bound universe parameters and project kernel axiom reachability" else ""))),
     ("proof_irrelevant", toJson proofIrrelevant),
     ("huge_terms", toJson huge), ("name_map", Json.mkObj (rules.map fun (k, v) => (k, toJson v))),
     ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources),
@@ -284,9 +336,11 @@ unsafe def main (args : List String) : IO UInt32 := do
   let mut ownerNames : Option (List String) := none
   let mut rules : List (String × String) := []
   let mut proofIrrelevant := true
+  let mut stableProject := false
   let mut rest := args
   while !rest.isEmpty do
     match rest with
+    | "--stable-project" :: tail => stableProject := true; rest := tail
     | "--proof-irrelevant" :: tail => proofIrrelevant := true; rest := tail
     | "--no-proof-irrelevant" :: tail => proofIrrelevant := false; rest := tail
     | "--modules" :: value :: tail => modules := (value.splitOn ",").toArray.map String.toName; rest := tail
@@ -302,7 +356,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       rules := rules.mergeSort (fun a b => a.1.length > b.1.length)
       rest := tail
     | "--output" :: value :: tail => output := some value; rest := tail
-    | _ => throw <| IO.userError "usage: --modules A,B [--namespace N] [--name-map names.json] --output file.json"
+    | _ => throw <| IO.userError "usage: --modules A,B [--namespace N] [--name-map names.json] [--stable-project] --output file.json"
   let some outputPath := output | throw <| IO.userError "--output is required"
   if modules.isEmpty then modules := #[`SerrePositivity]
   initSearchPath (← findSysroot)
@@ -327,7 +381,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       return (key, toJson aliases)
     IO.FS.writeFile outputPath ((Json.mkObj owners).pretty ++ "\n")
     return 0
-  let result ← (snapshot modules namespacePrefix rules proofIrrelevant).run'.toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
+  let result ← (snapshot modules namespacePrefix rules proofIrrelevant stableProject).run'.toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
   IO.FS.writeFile outputPath (result.pretty ++ "\n")
   IO.println s!"snapshot saved: {outputPath}"
   return 0
