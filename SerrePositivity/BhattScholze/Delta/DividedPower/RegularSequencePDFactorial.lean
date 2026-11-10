@@ -97,7 +97,10 @@ private theorem factorialDpow_closed :
         · exact (J).mul_mem_right _ (hu _ hk₁)
       · change (FSub).subtype _ = H.dpow n ((x : L) + (y : L))
         rw [map_sum, H.dpow_add Submodule.mem_top Submodule.mem_top]
-        exact Finset.sum_congr rfl fun k _ => by rw [map_mul, hu', hv']
+        exact Finset.sum_congr rfl fun k _ => by
+          rw [map_mul]
+          change (u k.1 : L) * (v k.2 : L) = _
+          rw [hu', hv']
   | smul b x _ hx =>
       intro n
       obtain ⟨y, hy, hy'⟩ := hx n

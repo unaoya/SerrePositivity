@@ -3,6 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePD
 public import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks
 public import SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers
+import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.HomologicalAlgebra.FlatBaseChange
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 
@@ -49,47 +50,19 @@ theorem evaluationRelations_regular : IsKoszulResolution g := by
       (fun i : Fin r => Polynomial.X - Polynomial.C (f i))
       (fun i => Polynomial.monic_X_sub_C (f i)) id Function.injective_id)
 
-private def evaluationRelationsQuotient : (P ⧸ J) ≃+* A := by
-  let q := Ideal.Quotient.mk J
-  have hker : J ≤ RingHom.ker φ := by
-    apply Ideal.span_le.mpr
-    rintro _ ⟨i, rfl⟩
-    change φ (g i) = 0
-    simp
-  have hk (x : P) (hx : x ∈ J) : φ x = 0 := hker hx
-  let e : (P ⧸ J) →+* A := Ideal.Quotient.lift J φ hk
-  let v := q.comp (MvPolynomial.C : A →+* P)
-  have he : e.comp q = φ := Ideal.Quotient.lift_comp_mk J φ hk
-  have hC (a : A) : φ (MvPolynomial.C a) = a := MvPolynomial.aeval_C f a
-  have hX (i : Fin r) : φ (MvPolynomial.X i) = f i := MvPolynomial.aeval_X f i
-  have hv : v.comp φ = q := by
-    apply MvPolynomial.ringHom_ext'
-    · apply RingHom.ext
-      intro a
-      change v (φ (MvPolynomial.C a)) = q (MvPolynomial.C a)
-      rw [hC]
-      rfl
-    · intro i
-      change v (φ (MvPolynomial.X i)) = q (MvPolynomial.X i)
-      rw [hX]
-      change q (MvPolynomial.C (f i)) = q (MvPolynomial.X i)
-      symm
-      apply sub_eq_zero.mp
-      rw [← map_sub]
-      exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_range_self i))
-  refine RingEquiv.ofRingHom e v ?_ ?_
-  · apply RingHom.ext
-    intro a
-    exact (DFunLike.congr_fun he (MvPolynomial.C a)).trans (hC a)
-  · apply RingHom.ext
-    intro b
-    obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective b
-    exact (congrArg v (DFunLike.congr_fun he x)).trans (DFunLike.congr_fun hv x)
+private theorem evaluationRelations_eq_towerRel :
+    J = Section2.towerRel A f 1 0 := by
+  simp [Section2.towerRel, Section2.relIdeal]
+
+private def evaluationRelationsQuotient : (P ⧸ J) ≃ₐ[A] A :=
+  (Ideal.quotientEquivAlgOfEq A (evaluationRelations_eq_towerRel f)).trans
+    (Section2.stage0BaseEquiv A f 1)
 
 private theorem evaluationRelationsQuotient_mk (x : P) :
     evaluationRelationsQuotient f (Ideal.Quotient.mk J x) = φ x := by
   unfold evaluationRelationsQuotient
-  rfl
+  rw [AlgEquiv.trans_apply, Ideal.quotientEquivAlgOfEq_mk]
+  exact Section2.stage0ToBase_mk A f 1 x
 
 /-- 概要：指定した係数への評価の商は、評価射で作用する係数環。
 方針：商と係数の標準射が互いに逆で、係数拡大と両立する。
@@ -99,7 +72,7 @@ def evaluationRelationsQuotientAlgEquiv :
     letI : Algebra P A := (φ).toAlgebra
     (P ⧸ J) ≃ₐ[P] A := by
   letI : Algebra P A := (φ).toAlgebra
-  exact { __ := evaluationRelationsQuotient f
+  exact { __ := (evaluationRelationsQuotient f).toRingEquiv
           commutes' := evaluationRelationsQuotient_mk f }
 
 

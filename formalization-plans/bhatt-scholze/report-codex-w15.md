@@ -50,3 +50,8 @@
 - 7 モジュールの鍵付き対象ビルドと公開 39 宣言の監査を通過。公理は標準三公理（`propext`、`Classical.choice`、`Quot.sound`）のみで、`#print sorries` は 0。⑤b の `math/bs-d68`（`1fda57035`）との枝差分に候補パスの重複はなく、本体と草稿の 14 モジュールの推移的 import 314 件に ∞ 圏・E3 への依存はない。
 - 一般列の分冪包との同定、高次 Tor の消滅、Frobenius 除算・完備化との照合が残る。証明候補 7 モジュールと監査案は `drafts/A0/W15K1/`。直近で `PrimeLocalFlat` の整数からのスカラー塔、`RegularSequencePDFactorial` の分冪写像の計算、`RegularSequencePDKoszul` の評価商の証明を修正し、次回の鍵付き検証でこの順に確認する。
 - 修正後の再検証は共有ビルドロックの 30 分待機が満了した。停止点 1 の検収条件は未達で、段 2 は未着手。
+
+## 段 1 の再開（2026-11-10）
+
+- ⑤b の停止点 3 を含む main `09047a87e` を `4f729b6d7` で取り込んだ。D69 §3.4（main `07d9d2117`）に沿い、具体的な正則列の分冪包・Frobenius 除算を⑤cで扱い、任意の J つき分冪包・枠とサイトへの適用は⑤bの持ち分。自由分冪基底・底変換と結晶側の押し出しの p 正則性を既存宣言から使う。
+- `PrimeLocalFlat`、`RegularSequencePDFactorial`、`RegularSequencePDKoszul` の対象ビルドと公開 10 宣言の監査を通過。これらは局所整数上の平坦性、階乗部分環の分冪包としての普遍性、標数 p での関係列の Koszul 正則性を与える。評価商には既存の `Section2.stage0BaseEquiv` を使った。

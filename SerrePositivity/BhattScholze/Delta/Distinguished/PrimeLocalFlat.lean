@@ -52,8 +52,9 @@ theorem primeLocalInt_moduleFlat (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m 
       right
       apply hnat (n + 1) (Nat.succ_ne_zero n) x
       simpa only [Int.cast_negSucc, ← Nat.cast_succ, neg_mul, neg_eq_zero] using hx
-  haveI : IsScalarTower ℤ (PrimeLocalInt p) A := ⟨fun z x y => by
-    simp only [zsmul_eq_mul, Algebra.smul_def, map_mul, map_intCast, mul_assoc]⟩
+  letI : Module ℤ A := Algebra.toModule
+  letI := IsScalarTower.of_algebraMap_eq' (R := ℤ) (S := PrimeLocalInt p) (A := A)
+    (Subsingleton.elim _ _)
   exact (Module.flat_iff_of_isLocalization (PrimeLocalInt p)
     (Ideal.span {(p : ℤ)}).primeCompl A).2 inferInstance
 
