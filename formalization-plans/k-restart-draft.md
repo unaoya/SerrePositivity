@@ -58,9 +58,11 @@
 
 **推奨**：(a) と (d) を紙で確かめ、(d) が通るなら採る。(a) は L2 の切り出しの規模しだい。
 
-### 1.4 補足：非連結 K の登録（要約の問題 7）
+### 1.4 補足：非連結 K の登録（要約の問題 7）— 訂正（11-11）
 
-BGT §9.3（小さい安定 ∞ 圏の非連結 K が完全列をファイバー列に送る）の Lean での登録がない。決定 2 は「(a) BGT を定義、(b) dg 側 Schlichting を暫定実装」。K-7 e・f（非連結 K の局所化不変量への登録）は未完。これは穴というより未着手で、K 基盤 1（B-3）の仕事。§1.2 (b) がこれに依る。
+**構成そのものは大部分できている**（最初の下書きの「未着手」は誤り）。`KST/NonConnective/`（約 250 ファイル、L10 の K-7）に BGT Def 9.6 の形 `dgNonconnectiveK = colim_n Ω^n K(Σ^n Perf A)` があり、実 Sp 余極限と `IsColimitCone`、全整数 π の余極限、連結比較（`DGNonconnectiveKConnectiveComparison`）、零の保存（`DGNonconnectiveKZero`）、段ごとの Morita 射の保存（`DGNonconnectiveKMorita`）、K-6 の連結版 fibration の末尾への代入（`DGNonconnectiveKFibrationTail`）まで、標準三公理で監査済み（10-28 停止時：266 モジュール・2,950 宣言）。`DGSwindleFixedK` は BGT Lem 9.4 を引く。
+
+**未完なのは L10 の d3〜f**：d3（Sp 安定性への接続、Sp-2 の B の後）、d4（大きい Ind／κ-compact・商／冪等完備化の ∞ 側比較）、e（非連結化の後の Verdier の fiber 性・Morita・filtered 保存）、f（固定 ν への局所化不変量の登録）。L10 は d4〜f を「**∞ 側再設計の後**」と明記している。つまり要約の問題 7 は、**③・① の部品（Ind・κ-compact の ∞ 圏としての扱い、Verdier 商 M1〜M8）を待っている**状態で、K 基盤 1（B-3）の中では最初に片付く。§3 の表の Ind・表現可能（◎）と Verdier 商（①）の行がこれに当たる。
 
 ### 1.5 凍結したコードの扱い
 
