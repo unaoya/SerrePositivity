@@ -225,6 +225,12 @@ import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
 import SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction
 import SerrePositivity.EInfinity.BarrattEccles.Theory.Conservative
 import SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial
+import SerrePositivity.BhattScholze.Delta.Distinguished.Universal
+import SerrePositivity.BhattScholze.Delta.Division.FrobeniusPushout
+import SerrePositivity.BhattScholze.Prism.Basic.UniversalOriented
+import SerrePositivity.BhattScholze.Prism.Basic.UniversalOrientedFrobenius
+import SerrePositivity.BhattScholze.Prismatic.RelativeCompleteRegularity
+import SerrePositivity.CommutativeAlgebra.CompletelyFlat.LocalizedTor
 import Lean.Util.CollectAxioms
 
 /-!
@@ -237,6 +243,12 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Delta.Distinguished.Universal,
+    `SerrePositivity.BhattScholze.Delta.Division.FrobeniusPushout,
+    `SerrePositivity.BhattScholze.Prism.Basic.UniversalOriented,
+    `SerrePositivity.BhattScholze.Prism.Basic.UniversalOrientedFrobenius,
+    `SerrePositivity.BhattScholze.Prismatic.RelativeCompleteRegularity,
+    `SerrePositivity.CommutativeAlgebra.CompletelyFlat.LocalizedTor,
     `SerrePositivity.EInfinity.ComplexLimits.StrictHomology,
     `SerrePositivity.EInfinity.SimplicialLocalization.SourceHom,
     `SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction,
