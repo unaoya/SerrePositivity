@@ -70,3 +70,10 @@
 - K2。BS 著者版 Example 2.21 の普遍 distinguished δ 環と、Example 3.4 の普遍向き付き prism を追加した。`existsUnique_universalOrientedPrismHom` は向きを保つ射の一意存在、`universalOrientedPrism_regular` は p と mod p の d の正則性、`universalOrientedPrism_bounded` は d 剰余の p 正則性から従う有界性。`universalOrientedPrism_frobenius_isCompletelyFlat` は D74 の mod p Frobenius に沿う加群の d 完全平坦性。自由環の剰余の平坦性を局所化と冪零剰余の比較で移した。
 - K3。`IsCompletelyRegularRel` は Definition 2.42 の古典環の場合で、有限列に関する導来完備性と、零次剰余の平坦性および全次数の標準 Koszul 比較を課す。`IsPrismCompletelyRegularRel` は (p,d) の場合。`frobeniusDivisionPushout_torAlg_subsingleton` は Remark 2.37 の自由多変数の二脚に対する高次 Tor の消滅。`existsUnique_frobeniusDivisionPushoutLift` は零次の通常の押し出しを生の δ 商として同定する。高次 Tor では p 反転後の同型と、局所化の余核を p 冪ねじれの逐次余極限として扱う証明を用いた。
 - 新規 6 モジュールの対象ビルドと公開 33 宣言の監査を通過。標準三公理のみ、`sorry` 0。推移的 import 328 件に ∞ 圏・E3 への依存はなく、BS から KST への直接 import の追加はない。既存の Lean 宣言および A1 の草稿の型を維持した。
+
+## 段 3 の中断（K4、2026-11-10）
+
+- 停止点 2 を含む main `14f8925ae` を作業枝に反映した。
+- BS 著者版 Example 3.14 の一般の存在には、完全 smooth な全射の核から局所的に `IsPrismCompletelyRegularRel` を得る比較と、局所正則列に対する Proposition 3.13 の δ 除算包の完全平坦性・貼り合わせが要る。原典の完全平坦性の証明が使う Lemma 2.43・Corollary 2.44 の一般の相対版も未形式化。本体で存在と完全平坦性が揃っているのは `exists_prismaticEnvelope_of_variables` の自由変数の場合。指示書 §3 の 3 に従い、一般の存在の実装に進む前に中断した。
+- 共通部品 `Delta/Basic/Tensor.lean` は、通常のテンソル積の δ 構造、二脚の δ 射性、両脚に合う δ 射の一意延長を与える。Witt 長さ二の切断の貼り合わせを用い、p 正則性の仮定は不要。対象ビルドと公開 5 宣言の監査に通過し、`sorry`・追加公理は 0。KST・∞ 圏・E3 への import はない。
+- Lemma 3.7 (2)(3)、Corollary 3.12 の平坦な押し出しと完備 Čech の完全性、Proposition 3.13 (2) の完備底変換は未完了。停止点 3 の検収条件は未達。
