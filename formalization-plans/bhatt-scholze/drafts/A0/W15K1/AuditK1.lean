@@ -1,0 +1,131 @@
+import Mathlib.Util.PrintSorries
+import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks
+import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionPD
+import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePD
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDFactorial
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDKoszul
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTor
+import SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis
+import SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers
+import SerrePositivity.CommutativeAlgebra.KoszulRegular.PrincipalReduction
+
+open SerrePositivity SerrePositivity.BhattScholze
+#print axioms PrimeLocalInt
+#print sorries PrimeLocalInt
+#print axioms primeLocalIntDelta
+#print sorries primeLocalIntDelta
+#print axioms primeLocalInt_isUnit
+#print sorries primeLocalInt_isUnit
+#print axioms primeLocalIntModPrimeEquiv
+#print sorries primeLocalIntModPrimeEquiv
+#print axioms existsUnique_primeLocalIntDeltaHom
+#print sorries existsUnique_primeLocalIntDeltaHom
+#print axioms freeDPTruncatedMap
+#print sorries freeDPTruncatedMap
+#print axioms freeDPTruncatedMap_mk
+#print sorries freeDPTruncatedMap_mk
+#print axioms freeDPTruncatedAlgebra
+#print sorries freeDPTruncatedAlgebra
+#print axioms freeDPTruncated_moduleFree
+#print sorries freeDPTruncated_moduleFree
+#print axioms freeCoordinatePDivisionEquiv
+#print sorries freeCoordinatePDivisionEquiv
+#print axioms freeCoordinateFrobeniusDivision_primeRegular
+#print sorries freeCoordinateFrobeniusDivision_primeRegular
+#print axioms frobeniusDivisionFactorialEquiv
+#print sorries frobeniusDivisionFactorialEquiv
+#print axioms frobeniusDivisionFactorialEquiv_base
+#print sorries frobeniusDivisionFactorialEquiv_base
+#print axioms freeCoordinateFrobeniusDivisionPDEquiv
+#print sorries freeCoordinateFrobeniusDivisionPDEquiv
+#print axioms frobeniusDivisionDPFamilyEquiv
+#print sorries frobeniusDivisionDPFamilyEquiv
+#print axioms frobeniusDivision_primeRegular
+#print sorries frobeniusDivision_primeRegular
+#print axioms dpFamilyDelta
+#print sorries dpFamilyDelta
+#print axioms dpFamilyDelta_algebraMap
+#print sorries dpFamilyDelta_algebraMap
+#print axioms frobeniusDivisionPDCompletionEquiv
+#print sorries frobeniusDivisionPDCompletionEquiv
+#print axioms dpFamilyRelationIdeal
+#print sorries dpFamilyRelationIdeal
+#print axioms DPFamilyPresentation
+#print sorries DPFamilyPresentation
+#print axioms dpFamilyGenerator
+#print sorries dpFamilyGenerator
+#print axioms dpFamilyGenerator_one
+#print sorries dpFamilyGenerator_one
+#print axioms dpFamilyGenerator_factorial_mul
+#print sorries dpFamilyGenerator_factorial_mul
+#print axioms dpFamilyHom_ext
+#print sorries dpFamilyHom_ext
+#print axioms dpFamilyEval
+#print sorries dpFamilyEval
+#print axioms dpFamilyEval_generator
+#print sorries dpFamilyEval_generator
+#print axioms existsUnique_dpFamilyEval
+#print sorries existsUnique_dpFamilyEval
+#print axioms freeDPBaseChangeEquiv_dp
+#print sorries freeDPBaseChangeEquiv_dp
+#print axioms dpFamilyBaseChangeEquiv
+#print sorries dpFamilyBaseChangeEquiv
+#print axioms dpFamilyBaseChangeEquiv_generator
+#print sorries dpFamilyBaseChangeEquiv_generator
+#print axioms dpFamilyFactorialDividedPowers
+#print sorries dpFamilyFactorialDividedPowers
+#print axioms dpFamilyToFactorial
+#print sorries dpFamilyToFactorial
+#print axioms dpFamilyToFactorial_generator
+#print sorries dpFamilyToFactorial_generator
+#print axioms dpFamilyToFactorial_surjective
+#print sorries dpFamilyToFactorial_surjective
+#print axioms dpFamilyFactorialEquiv
+#print sorries dpFamilyFactorialEquiv
+#print axioms existsUnique_dpFamilyFactorialDPMorphism
+#print sorries existsUnique_dpFamilyFactorialDPMorphism
+#print axioms evaluationRelations_regular
+#print sorries evaluationRelations_regular
+#print axioms evaluationRelationsQuotientAlgEquiv
+#print sorries evaluationRelationsQuotientAlgEquiv
+#print axioms dpFamilyRelations_isKoszulResolution_of_prime_zero
+#print sorries dpFamilyRelations_isKoszulResolution_of_prime_zero
+#print axioms dpFamilyRelations_snoc_isKoszulResolution
+#print sorries dpFamilyRelations_snoc_isKoszulResolution
+#print axioms dpFamilyPresentation_primeRegular
+#print sorries dpFamilyPresentation_primeRegular
+#print axioms dpFamilyPresentation_polynomialTensorEquiv
+#print sorries dpFamilyPresentation_polynomialTensorEquiv
+#print axioms dpFamilyRelations_isKoszulResolution
+#print sorries dpFamilyRelations_isKoszulResolution
+#print axioms dpFamilyPresentation_tor_subsingleton
+#print sorries dpFamilyPresentation_tor_subsingleton
+#print axioms truncatedPolynomialIdeal
+#print sorries truncatedPolynomialIdeal
+#print axioms TruncatedMonomial
+#print sorries TruncatedMonomial
+#print axioms truncatedPolynomialRepr
+#print sorries truncatedPolynomialRepr
+#print axioms truncatedPolynomialRepr_mk
+#print sorries truncatedPolynomialRepr_mk
+#print axioms truncatedPolynomialBasis
+#print sorries truncatedPolynomialBasis
+#print axioms truncatedPolynomialBasis_apply
+#print sorries truncatedPolynomialBasis_apply
+#print axioms isKoszulResolution_snoc_pow
+#print sorries isKoszulResolution_snoc_pow
+#print axioms isKoszulResolution_of_ringEquiv
+#print sorries isKoszulResolution_of_ringEquiv
+#print axioms IsKoszulResolution.perm
+#print sorries IsKoszulResolution.perm
+#print axioms IsKoszulResolution.pow
+#print sorries IsKoszulResolution.pow
+#print axioms isKoszulResolution_snoc_of_regular_mod
+#print sorries isKoszulResolution_snoc_of_regular_mod
+#print axioms isSMulRegular_quotient_of_snoc
+#print sorries isSMulRegular_quotient_of_snoc
+#print axioms isKoszulResolution_of_snoc_and_away
+#print sorries isKoszulResolution_of_snoc_and_away
