@@ -11,7 +11,10 @@ import sys
 
 IC = "SerrePositivity/InfinityCategories/"
 SOURCE = re.compile(r"(.+?) @ (SerrePositivity/[^:\s]+\.lean)(?::\d+)?")
-STATUSES = {"own", "both", "partial", "mathlib", "none"}
+PLACEMENT_STATUSES = {"own", "both", "mathlib"}
+STATUSES = PLACEMENT_STATUSES | {"partial", "none"}
+PARTIAL_PLACEMENTS = {"partial", "partial+topic"}
+RETAINED_PARTIAL = "previous partial-based placement retained"
 
 
 def numbers(text):
@@ -52,7 +55,9 @@ def check_review_gate(reviews, directory, accepted):
     if not accepted:
         raise ValueError("final refresh requires --accept-cross-review after reading the cross reports")
     check = directory / "check"
-    missing = [f"cross-{ch}.md" for ch in range(4, 11) if not (check / f"cross-{ch}.md").is_file()]
+    missing = [f"cross report for Ch {ch}" for ch in range(1, 11)
+               if not (check / f"cross-{ch}.md").is_file()
+               and not any(p.is_file() for p in check.glob(f"cross-{ch}-*.md"))]
     for chapter in range(2, 11):
         if not (check / f"ch{chapter}-kernel-evidence.json").is_file():
             missing.append(f"ch{chapter}-kernel-evidence.json")
@@ -60,7 +65,7 @@ def check_review_gate(reviews, directory, accepted):
             missing.append(f"ch{chapter}-none-search.json or .jsonl")
     if missing:
         raise ValueError("missing review evidence or cross reports: " + ", ".join(missing))
-    shallow = [n for n, row in reviews.items() if row["status_new"] in {"own", "both", "mathlib"}
+    shallow = [n for n, row in reviews.items() if row["status_new"] in PLACEMENT_STATUSES
                and row["verdict"] != "unsure" and not re.search(r"仮定[:：].+結論[:：].+", row["reason"], re.S)]
     if shallow:
         raise ValueError(f"hypothesis/conclusion evidence missing on {len(shallow)} rows: {shallow[:8]}")
@@ -83,7 +88,7 @@ def get_evidence(items, reviews):
                 if match := SOURCE.fullmatch(citation):
                     pending[match[2]].add(n)
             continue
-        if status not in {"own", "both", "partial"} or numbers(n)[1] == 0:
+        if status not in PLACEMENT_STATUSES or numbers(n)[1] == 0:
             continue
         for citation in sources.split(" | "):
             if match := SOURCE.fullmatch(citation):
@@ -119,6 +124,7 @@ def refresh(rows, items, reviews, sections, approved_external=()):
     approved_external = set(approved_external)
     for original in rows:
         row = original.copy()
+        row["partial_placement_retained"] = ""
         path = row["source"]
         if row["scope"] == "documentation":
             refreshed.append(row)
@@ -131,7 +137,11 @@ def refresh(rows, items, reviews, sections, approved_external=()):
         source_notes = []
         if pending.get(path):
             source_notes.append("unsure items " + " ".join(sorted(pending[path], key=numbers)))
-        if hits:
+        if row["evidence"] in PARTIAL_PLACEMENTS:
+            # Retain the Stage 1 row as historical evidence for this placement.
+            row["partial_placement_retained"] = "yes"
+            source_notes.append(RETAINED_PARTIAL)
+        elif hits:
             def score(s):
                 entries = hits[s]
                 strong = {n for n, _, status, _ in entries if status in {"own", "both"}}
@@ -142,8 +152,7 @@ def refresh(rows, items, reviews, sections, approved_external=()):
             selected = hits[best]
             confirmed = any(entry[-1] == "review" for entry in selected)
             row["basis"] = "review" if confirmed else "items"
-            row["evidence"] = ("declaration" if any(entry[2] in ("own", "both") for entry in selected)
-                               else "partial")
+            row["evidence"] = "declaration"
             if best != prior:
                 directory, tag = sections[best]
                 row["section"], row["section_tag"] = best, tag
@@ -237,7 +246,7 @@ def main():
                                      toc_sections((args.coverage / "toc.md").read_text()),
                                      () if args.allow_incomplete else approved)
         args.output_dir.mkdir()
-        write_rows(args.output_dir / "assignment.csv", refreshed, [*rows[0], "move_approved"])
+        write_rows(args.output_dir / "assignment.csv", refreshed, [*rows[0], "partial_placement_retained", "move_approved"])
         write_rows(args.output_dir / "changes.csv", changes, list(change("", {}, {}, "")))
         status = "interim preview" if args.allow_incomplete else "review gate acknowledged"
         print(f"{status}: {len(reviews)} reviewed items, {len(refreshed)} assignments, {len(changes)} changes")

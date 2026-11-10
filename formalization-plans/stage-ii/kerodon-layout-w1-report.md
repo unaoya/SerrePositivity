@@ -247,3 +247,50 @@ Python の道具はリポジトリ直下から `python3 scripts/refactor/<ファ
 - ビルド鍵を通した小規模 Lean 統合試験 2 件が通過。相対名・完全修飾名・選択的／局所／scoped `open` と投影記法を含むプレビューを再検査した。既存の F-2 実装を読み込んで略記と定理の alias を生成し、外部の試験ファイルから両方を非推奨警告付きで使えることを確かめた。
 - `81e593fb9` 時点の章表で途中プレビューを作り、3,001 項目から 14,966 行の表を再計算した。変更・要確認の記録は 809 件、うち既存行で行き先が変わったものは 32 件、新しい対応元は 5 件。正式モードは未提出の Ch 2 で停止し、正式出力は作らなかった。
 - 実ファイルでもビルド鍵を通した。既存の `PinchedHom/Index` と `PinchedHom/Basic` を §4.6 の候補パスに一時出力し、改名候補 23 件を使って 2 本を順に再検査した。外部の `EInfinity/ComplexLimits/ConeTriangleIndex` から旧名の利用 3 件を抽出した。
+
+## 停止点 1.6 — 章別レビュー後の割り当て差分
+
+2026-11-10。作業枝に main `d0149fd4a` を取り込み、`a12e53be8` の章表と `c29b7be1b` の手順を使用した。`klw1_review_assignment.py --accept-cross-review` の正式モードで、全 10 章 3,553 項目と停止点 1 の割り当て 14,966 行を照合した。出力は [changes.csv](kerodon-layout-stop-1-6/changes.csv)（953 行、見出しを除く）。
+
+| 集計 | 件数 |
+| --- | ---: |
+| 行き先が変わる既存行 | 22（∞ 圏内 21、外部候補 1） |
+| 旧来の宣言根拠を撤回した行 | 172（∞ 圏内 160、外部候補 12） |
+| 割り当て表にない新しい対応元 | 4 |
+| 出力上の行き先の衝突 | 0 |
+| 旧 partial 根拠のまま維持した行 | 437（∞ 圏内 380、外部候補 57） |
+
+新たな配置の根拠は `own`・`both`・`mathlib` の確定行に載る SerrePositivity 側のファイルに限った。Mathlib のファイルは移動候補に含めない。`unsure` は要確認として記録した。旧 partial による割り当ては行き先も従来の根拠欄も維持し、更新表の `partial_placement_retained=yes` と差分表の理由欄で区別した。撤回は、旧宣言根拠があり、今回採用できる宣言根拠がどの節にも残らなかった行を数えた。暫定パスは維持した。
+
+### 行き先が変わる 22 行
+
+パスは `SerrePositivity/` を起点とする。旧・新の数字は Kerodon の節番号。`Project` は旧案の出どころ別配置。
+
+| ソース | 旧 → 新 | 採用した項目 |
+| --- | --- | --- |
+| `EInfinity/FrameHom/AnodyneWeakDetection.lean` | 3.1 → 3.3 | 3.3.6.7、3.3.6.8、3.3.7.4 |
+| `InfinityCategories/Core/Equivalence.lean` | 4.5 → 3.1 | 3.1.5.1、3.1.5.9 |
+| `InfinityCategories/Core/EquivalencePathLifting.lean` | 4.5 → 4.4 | 4.4.5.10 |
+| `InfinityCategories/Core/InitialBoundaryTransport.lean` | 7.1 → 4.2 | 4.2.4.11 |
+| `InfinityCategories/Core/KanCharacterization.lean` | 4.4 → 1.3 | 1.3.5.2 |
+| `InfinityCategories/Core/KanHomotopyEquivalence.lean` | 4.8 → 3.1 | 3.1.5.4 |
+| `InfinityCategories/Core/OuterHornConverse.lean` | 4.4 → 1.4 | 1.4.6.10、1.4.6.12 |
+| `InfinityCategories/F1/FilteredExchange/FilteredPointwiseWeakEquivalences.lean` | Project → 3.2 | 3.2.8.3 |
+| `InfinityCategories/F1/Joins/CosliceTwistedHomComparison.lean` | 4.3 → 8.1 | 8.1.2.11 |
+| `InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean` | 4.3 → 8.1 | 8.1.2.11 |
+| `InfinityCategories/F1/Joins/RelativeJoinPrismCoverage.lean` | 5.2 → 3.1 | 3.1.2.12 |
+| `InfinityCategories/F1/Joins/RelativeJoinPrismInitialPushout.lean` | 5.2 → 3.1 | 3.1.2.12 |
+| `InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedCategory.lean` | 8.1 → 8.6 | 8.6.7.1、8.6.7.2、8.6.7.5 |
+| `InfinityCategories/F1B/Diagrams/OppositeInvolution.lean` | Project → 4.4 | 4.4.1.8 |
+| `InfinityCategories/F1B/Diagrams/OppositeLifting.lean` | Project → 4.4 | 4.4.1.8 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseFunctor.lean` | 7.3 → 4.5 | 4.5.8.1 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseFunctorComponents.lean` | 5.1 → 4.5 | 4.5.8.1 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseHom.lean` | 7.3 → 4.5 | 4.5.8.1、4.5.8.5 |
+| `InfinityCategories/F2/Presentable/AccessibleFunctor.lean` | 9.5 → 9.4 | 9.4.8.1 |
+| `InfinityCategories/F2/Presentable/Definition.lean` | 7.4 → 7.6 | 7.6.6.1、7.6.6.4 |
+| `InfinityCategories/F2/Presentable/Duality/RightUnitContractible.lean` | 9.5 → 4.7 | 4.7.3.14 |
+| `InfinityCategories/F2/Presentable/EquivalenceColimits.lean` | 9.5 → 7.1 | 7.1.4.12 |
+
+外部の `EInfinity/FrameHom/AnodyneWeakDetection.lean` は既存候補の対応節の差分で、§7 で承認された外部移動 4 群の対象外。新しい対応元 4 本は表に追加せず、`changes.csv` に記録した。外部移動の承認フラグは、この見直しでは付けていない。
+
+Python の単体試験 11 件が通過し、差分表から 22 行すべての新しい根拠・437 行の維持・パスの一意性を検算した。段 1.6 はビルドを要さない。調整役による確認のため、ここで停止した。

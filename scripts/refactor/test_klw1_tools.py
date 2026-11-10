@@ -136,6 +136,37 @@ class ReviewTests(unittest.TestCase):
         self.assertEqual(refreshed[1]["move_approved"], "no")
         self.assertIn("unsure items", changes[0]["reason"])
 
+    def test_stage_1_6_filters_evidence_and_retains_prior_partial_placements(self):
+        paths = {n: f"SerrePositivity/InfinityCategories/{n}.lean"
+                 for n in ("Partial", "Withdrawn", "Mathlib", "NewPartial", "NewNone")}
+
+        def assignment(name, evidence):
+            return {"source": paths[name], "scope": "inside", "action": "move",
+                    "basis": "items", "section": "1.1", "section_tag": "AAAA",
+                    "proposed_path": f"Old/{name}.lean", "evidence": evidence,
+                    "declarations": name, "declaration_items": "1.1.1.1",
+                    "other_declarations": "", "docstring_refs": "", "other_sections": ""}
+
+        items, reviews = [], {}
+        for i, (name, status) in enumerate(
+            (("Partial", "own"), ("Withdrawn", "partial"), ("Mathlib", "mathlib"),
+             ("NewPartial", "partial"), ("NewNone", "none")), 1
+        ):
+            number = f"2.2.1.{i}"
+            items.append({"number": number, "status": "none", "declarations": ""})
+            reviews[number] = {"status_new": status, "verdict": "fix",
+                               "declarations_new": f"{name} @ {paths[name]}:10"}
+        prior = [assignment("Partial", "partial+topic"), assignment("Withdrawn", "declaration")]
+        sections = toc_sections("- Chapter 2 [0002] Tests\n  - 2.2 [BBBB] Other Stuff\n")
+        refreshed, changes = refresh(prior, items, reviews, sections)
+        retained, withdrawn = refreshed
+        self.assertEqual(retained["proposed_path"], prior[0]["proposed_path"])
+        self.assertEqual(retained["partial_placement_retained"], "yes")
+        self.assertEqual(withdrawn["proposed_path"], prior[1]["proposed_path"])
+        self.assertEqual(withdrawn["evidence"], "review-no-correspondence")
+        self.assertEqual({r["source"] for r in changes if r["reason"] == "new source; assign manually"},
+                         {paths["Mathlib"]})
+
     def test_cross_gate_and_missing_chapter(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -145,7 +176,7 @@ class ReviewTests(unittest.TestCase):
                 load_reviews(items, root)
             with self.assertRaisesRegex(ValueError, "accept-cross-review"):
                 check_review_gate({}, root, False)
-            with self.assertRaisesRegex(ValueError, "cross-4.md"):
+            with self.assertRaisesRegex(ValueError, "cross report for Ch 4"):
                 check_review_gate({}, root, True)
 
 
