@@ -34,7 +34,7 @@ variable (R : Type u) [CommRing R] (σ : Type v) (p : ℕ)
 方針：純冪単項式の族の生成イデアル。
 規約：BS 著者版 Lemma 2.38 の剰余模型。
 使われ方：切断多項式環。 -/
-def truncatedPolynomialIdeal : Ideal (MvPolynomial σ R) :=
+@[expose] def truncatedPolynomialIdeal : Ideal (MvPolynomial σ R) :=
   Ideal.span (Set.range fun s : σ => (MvPolynomial.X s : MvPolynomial σ R) ^ p)
 
 /-- 概要：切断多項式環の基底添字。

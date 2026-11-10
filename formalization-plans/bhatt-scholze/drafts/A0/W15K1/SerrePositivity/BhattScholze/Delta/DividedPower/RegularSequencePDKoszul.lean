@@ -51,28 +51,27 @@ theorem evaluationRelations_regular : IsKoszulResolution g := by
 
 private def evaluationRelationsQuotient : (P ⧸ J) ≃+* A := by
   let q := Ideal.Quotient.mk J
-  let e : (P ⧸ J) →+* A := Ideal.Quotient.lift J φ (by
-    have h : J ≤ RingHom.ker φ := by
-      apply Ideal.span_le.mpr
-      rintro _ ⟨i, rfl⟩
-      change φ (g i) = 0
-      simp
-    exact fun _ x => h x)
+  have hker : J ≤ RingHom.ker φ := by
+    apply Ideal.span_le.mpr
+    rintro _ ⟨i, rfl⟩
+    change φ (g i) = 0
+    simp
+  have hk (x : P) (hx : x ∈ J) : φ x = 0 := hker hx
+  let e : (P ⧸ J) →+* A := Ideal.Quotient.lift J φ hk
   let v := q.comp (MvPolynomial.C : A →+* P)
-  have he : e.comp q = φ := by
-    apply RingHom.ext
-    intro x
-    exact Ideal.Quotient.lift_mk _ _ _
+  have he : e.comp q = φ := Ideal.Quotient.lift_comp_mk J φ hk
+  have hC (a : A) : φ (MvPolynomial.C a) = a := MvPolynomial.aeval_C f a
+  have hX (i : Fin r) : φ (MvPolynomial.X i) = f i := MvPolynomial.aeval_X f i
   have hv : v.comp φ = q := by
     apply MvPolynomial.ringHom_ext'
     · apply RingHom.ext
       intro a
       change v (φ (MvPolynomial.C a)) = q (MvPolynomial.C a)
-      rw [MvPolynomial.aeval_C]
+      rw [hC]
       rfl
     · intro i
       change v (φ (MvPolynomial.X i)) = q (MvPolynomial.X i)
-      rw [MvPolynomial.aeval_X]
+      rw [hX]
       change q (MvPolynomial.C (f i)) = q (MvPolynomial.X i)
       symm
       apply sub_eq_zero.mp
@@ -81,18 +80,16 @@ private def evaluationRelationsQuotient : (P ⧸ J) ≃+* A := by
   refine RingEquiv.ofRingHom e v ?_ ?_
   · apply RingHom.ext
     intro a
-    change e (q (MvPolynomial.C a)) = a
-    rw [← RingHom.comp_apply, he, MvPolynomial.aeval_C]
+    exact (DFunLike.congr_fun he (MvPolynomial.C a)).trans (hC a)
   · apply RingHom.ext
     intro b
     obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective b
-    change v (e (q x)) = q x
-    rw [← RingHom.comp_apply, he, ← RingHom.comp_apply, hv]
+    exact (congrArg v (DFunLike.congr_fun he x)).trans (DFunLike.congr_fun hv x)
 
 private theorem evaluationRelationsQuotient_mk (x : P) :
     evaluationRelationsQuotient f (Ideal.Quotient.mk J x) = φ x := by
   unfold evaluationRelationsQuotient
-  exact Ideal.Quotient.lift_mk _ _ _
+  rfl
 
 /-- 概要：指定した係数への評価の商は、評価射で作用する係数環。
 方針：商と係数の標準射が互いに逆で、係数拡大と両立する。
@@ -129,7 +126,8 @@ private theorem truncatedEvaluationRelations_regular (hf : IsKoszulResolution f)
   have hpow : algebraMap P A ∘ v = fun j => f j ^ p := by
     funext j
     change φ ((MvPolynomial.X j : P)^p) = _
-    rw [map_pow, MvPolynomial.aeval_X]
+    rw [map_pow]
+    exact congrArg (fun x : A => x ^ p) (MvPolynomial.aeval_X f j)
   have e₁ := algebraKoszulTorComparison (C := T) g (evaluationRelations_regular f) i.natAbs
   have e₂ := algebraKoszulTorComparison (C := A) v (variablePowers_regular (p := p)) i.natAbs
   rw [hpow, ← hn] at e₂

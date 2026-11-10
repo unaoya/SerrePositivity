@@ -29,6 +29,8 @@ open SerrePositivity SerrePositivity.BhattScholze
 #print sorries primeLocalIntModPrimeEquiv
 #print axioms existsUnique_primeLocalIntDeltaHom
 #print sorries existsUnique_primeLocalIntDeltaHom
+#print axioms freeDPGenerator_pow_eq_zero
+#print sorries freeDPGenerator_pow_eq_zero
 #print axioms freeDPTruncatedMap
 #print sorries freeDPTruncatedMap
 #print axioms freeDPTruncatedMap_mk
