@@ -38,6 +38,61 @@ private def pdCoordinateVector (n : SimplexCategory) : pdCoordinates r n.len →
   | .inl t => Finsupp.single (t, 0) 1
   | .inr (t, i) => Finsupp.single (t, i.succ) 1 - Finsupp.single (t, 0) 1
 
+private def coordinateToCopy (n : SimplexCategory) :
+    (pdCoordinates r n.len →₀ k) →ₗ[k] CopyModule k r n :=
+  Finsupp.linearCombination k (pdCoordinateVector k r n)
+
+private def copyToCoordinate (n : SimplexCategory) :
+    CopyModule k r n →ₗ[k] pdCoordinates r n.len →₀ k :=
+  Finsupp.linearCombination k fun ji =>
+    Finsupp.single (.inl ji.1) 1 +
+      Fin.cases 0 (fun i => Finsupp.single (.inr (ji.1, i)) 1) ji.2
+
+@[local simp] private theorem coordinateToCopy_single (n : SimplexCategory)
+    (a : pdCoordinates r n.len) :
+    coordinateToCopy k r n (Finsupp.single a 1) = pdCoordinateVector k r n a := by
+  rw [coordinateToCopy, Finsupp.linearCombination_single, one_smul]
+
+@[local simp] private theorem copyToCoordinate_zero (n : SimplexCategory) (t : Fin r) :
+    copyToCoordinate k r n (Finsupp.single (t, 0) 1) = Finsupp.single (.inl t) 1 := by
+  rw [copyToCoordinate, Finsupp.linearCombination_single, one_smul, Fin.cases_zero, add_zero]
+
+@[local simp] private theorem copyToCoordinate_succ (n : SimplexCategory) (t : Fin r) (i : Fin n.len) :
+    copyToCoordinate k r n (Finsupp.single (t, i.succ) 1) =
+      Finsupp.single (.inl t) 1 + Finsupp.single (.inr (t, i)) 1 := by
+  rw [copyToCoordinate, Finsupp.linearCombination_single, one_smul, Fin.cases_succ]
+
+private def pdCoordinateEquiv (n : SimplexCategory) :
+    (pdCoordinates r n.len →₀ k) ≃ₗ[k] CopyModule k r n :=
+  LinearEquiv.ofLinearMap (f := coordinateToCopy k r n) (g := copyToCoordinate k r n)
+    (by
+      apply (Finsupp.basisSingleOne (R := k)).ext
+      rintro ⟨t,i⟩
+      change coordinateToCopy k r n (copyToCoordinate k r n (Finsupp.single (t,i) 1)) =
+        Finsupp.single (t,i) 1
+      refine Fin.cases ?_ (fun i => ?_) i
+      · simp [pdCoordinateVector]
+      · simp [pdCoordinateVector])
+    (by
+      apply (Finsupp.basisSingleOne (R := k)).ext
+      intro a
+      change copyToCoordinate k r n (coordinateToCopy k r n (Finsupp.single a 1)) =
+        Finsupp.single a 1
+      rcases a with t | ⟨t,i⟩
+      · simp [pdCoordinateVector]
+      · simp [pdCoordinateVector])
+
+/-- 第 0 頂点と差座標の微分形式は、頂点の微分形式の加群の基底をなす。 -/
+def pdCoordinateBasis (n : SimplexCategory) :
+    Module.Basis (pdCoordinates r n.len) k ((Fin r × Fin (n.len+1)) →₀ k) :=
+  (Finsupp.basisSingleOne (R := k)).map (pdCoordinateEquiv k r n)
+
+private theorem pdCoordinateBasis_apply (n : SimplexCategory) (a : pdCoordinates r n.len) :
+    pdCoordinateBasis k r n a = pdCoordinateVector k r n a := by
+  rw [pdCoordinateBasis, Module.Basis.map_apply]
+  change coordinateToCopy k r n (Finsupp.single a 1) = _
+  exact coordinateToCopy_single k r n a
+
 private def pdCoordinateOne (n : SimplexCategory) (a : pdCoordinates r n.len) :
     ⋀[k]^1 (CopyModule k r n) :=
   (exteriorPower.oneEquiv k (CopyModule k r n)).symm (pdCoordinateVector k r n a)

@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamRow
+public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamBicomplex
 public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
 public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
 
@@ -412,20 +412,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 -- pdModel_modP は本体の PDModelReduction に置く。
 
-/-- 概要：G-A1-7：pd de Rham 微分 Ω^j_pd(D_0^•) → Ω^{j+1}_pd(D_0^•)（dγ_m(z) = γ_{m−1}(z)dz、余単体的射）。
-方針：pd 代数の微分を copy の dX の基底で。余面・余退化は pd 射なので可換。
-規約：通常の Kähler 微分ではない（標数 p で余分な形式が出る、W9-I-14）。
-使われ方：双複体の縦の微分。 -/
-def pdDeRhamDifferential (k : Type u) [CommRing k] (r j : ℕ) : pdRow p k r j ⟶ pdRow p k r (j+1) := by
-  sorry -- f ⊗ ω ↦ Σ ∂_a f ⊗ (dX^(a) ∧ ω)。差の γ_m は γ_{m−1}(z)dz
-
-/-- 概要：双複体 K^{n,j} = Ω^j_pd(D_0^n)：第一の添字は余単体の次数 n（交代余面）、第二の添字は形式の次数 j（pd de Rham）。
-方針：`HomologicalComplex₂`。行 j は `pdRow p k r j` の交代余面複体、列は `pdDeRhamDifferential`。
-規約：符号は総複体の標準のもの。
-使われ方：段 4。 -/
-def pdDeRhamDoubleComplex (k : Type u) [CommRing k] (r : ℕ) :
-    HomologicalComplex₂ (ModuleCat.{u} k) (ComplexShape.up ℕ) (ComplexShape.up ℕ) := by
-  sorry -- 行の交代余面微分と列の pd 微分は可換（pdDeRhamDifferential は余単体的射）
+-- pdDeRhamDifferential と pdDeRhamDoubleComplex は本体の PDDeRhamBicomplex に置く。
 
 /-- 概要：列 n への Ω^•_{F_p[X]} の包含（copy 0 の座標 X^{(0)} と dX^{(0)}）。
 方針：多項式 ↦ copy 0 の多項式、dX ↦ dX^{(0)}。

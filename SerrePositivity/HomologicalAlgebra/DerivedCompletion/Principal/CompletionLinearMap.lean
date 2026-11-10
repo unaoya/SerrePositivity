@@ -133,4 +133,68 @@ theorem principalCompletionLinearMap_comp (f : B →ₗ[k] C) (g : A →ₗ[k] B
     Function.comp_apply, e, LinearEquiv.apply_symm_apply, reflectionLinearMap_mk]
   rfl
 
+private def completedRepresentative (x : ℕ → A) : CompletedRing p A :=
+  (completionEquiv k p A).symm (principalReflectionMk A (p : A) x)
+
+private theorem completedRepresentative_step (x : ℕ → A) :
+    completedRepresentative k p x =
+      principalCompletionRingCatUnit p (CommRingCat.of A) (x 0) +
+        p • completedRepresentative k p (sequenceTail A x) := by
+  apply (completionEquiv k p A).injective
+  simp only [completedRepresentative, LinearEquiv.apply_symm_apply, map_add, map_nsmul]
+  rw [principalReflectionMk_decomposition, Nat.cast_smul_eq_nsmul]
+  congr 1
+  rw [completionEquiv_apply k p A]
+  change x 0 • principalReflectionUnit A (p : A) =
+    principalCompletionH0Equiv A (p : A) (principalCompletionUnitRingHom A (p : A) (x 0))
+  simp only [principalCompletionUnitRingHom_apply, principalCompletionH0Equiv_unit,
+    principalReflectionUnit, ← map_smul, ← map_smul, smul_eq_mul, mul_one]
+
+/-- 主完備加群への係数線形写像は完備化単位上の値で決まる。 -/
+theorem principalCompletionLinearMap_ext {M : Type u} [AddCommGroup M] [Module k M]
+    (hM : IsModuleComplete k (p : k) (ModuleCat.of k M)) {f g : CompletedRing p A →ₗ[k] M}
+    (h : ∀ x : A, f (principalCompletionRingCatUnit p (CommRingCat.of A) x) =
+      g (principalCompletionRingCatUnit p (CommRingCat.of A) x)) : f = g := by
+  apply sub_eq_zero.mp
+  let F := f - g
+  have hF (x : A) : F (principalCompletionRingCatUnit p (CommRingCat.of A) x) = 0 :=
+    sub_eq_zero.mpr (h x)
+  apply LinearMap.ext
+  intro z
+  let e := completionEquiv k p A
+  obtain ⟨x, hx⟩ := Submodule.mkQ_surjective (principalReflectionRelation A (p : A)).range (e z)
+  have hz : z = completedRepresentative k p x := by
+    apply e.injective
+    exact hx.symm.trans (e.apply_symm_apply _).symm
+  rw [hz]
+  let y : ℕ → M := fun n => F (completedRepresentative k p (fun j => x (n + j)))
+  have hy : adicRecurrenceMap (p : k) y = 0 := by
+    funext n
+    have ht : sequenceTail A (fun j => x (n + j)) = (fun j => x ((n + 1) + j)) := by
+      funext j
+      change x (n + (j + 1)) = x ((n + 1) + j)
+      congr 1
+      omega
+    have hs := congrArg F (completedRepresentative_step k p (fun j => x (n + j)))
+    rw [ht, map_add, map_nsmul, hF, zero_add] at hs
+    change y n - (p : k) • y (n + 1) = 0
+    rw [Nat.cast_smul_eq_nsmul]
+    exact sub_eq_zero.mpr hs
+  have he := ((isModuleComplete_iff_recurrence_bijective k (p : k) (ModuleCat.of k M)).mp hM).injective
+    (hy.trans (map_zero _).symm)
+  change F (completedRepresentative k p x) = 0
+  simpa [y] using congrFun he 0
+
+/-- 主完備化は元の係数環上の加群としても主完備。 -/
+theorem completedRing_isModuleComplete :
+    IsModuleComplete k (p : k) (ModuleCat.of k (CompletedRing p A)) := by
+  let x : Type u := CompletedRing p A
+  letI : Algebra A x := principalCompletionAlgebra A (p : A)
+  letI : IsScalarTower k A x := IsScalarTower.of_algebraMap_eq' rfl
+  exact (isModuleComplete_algebraMap_iff k A (p : k) x).mp (by
+    rw [map_natCast]
+    rw [isModuleComplete_iff_recurrence_bijective]
+    exact (isModuleComplete_iff_recurrence_bijective A (p : A)
+      (PrincipalCompletionH0 A (p : A))).mp (principalCompletionH0_isModuleComplete A (p : A)))
+
 end SerrePositivity.DerivedCompletion
