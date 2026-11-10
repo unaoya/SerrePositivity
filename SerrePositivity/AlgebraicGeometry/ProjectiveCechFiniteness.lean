@@ -56,7 +56,7 @@ omit [Fintype ι] in
 theorem exists_projectiveCech_commonMonomialDenominator [Finite ι] [DecidableEq ι]
     (T : Finset ι) (e : ι → ℤ) (he : ∀ i ∉ T, 0 ≤ e i) :
     ∃ n : ℕ, ∀ i, 0 ≤ e i + (if i ∈ T then (n : ℤ) else 0) := by
-  letI := Fintype.ofFinite ι
+  let : Fintype ι := Fintype.ofFinite ι
   let b : ℤ := ∑ i, max 0 (-e i)
   have hb : 0 ≤ b := Finset.sum_nonneg fun i _ ↦ le_max_left _ _
   refine ⟨b.toNat, fun i ↦ ?_⟩
