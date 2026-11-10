@@ -341,3 +341,11 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `htGradedDGAlgebra` は基底の剰余環上の Bockstein 微分代数。一次の像の平方零は `hodgeTateMapOne_square_zero` で示し、草稿の η¹ は本体に接続した。平方零の局所インスタンスを別名にして、微分代数と同時に import できることを検査した。
 - `crystallineChain` は結晶基底での加法同型。`pdRaw_frobeniusCoordinate_dvd` は (X_1^p-X_0^p) の p 可除性、`deRhamD_coordinate_pow` は (d(X^p)=p X^{p-1}dX) の整係数での公式。二つを還元して同じ総複体の余輪体にする照合は残る。
 - 段 3 の 69 モジュールの対象ビルドと一時監査が通った。1,697 宣言は標準三公理のみ。main `18350a5a7` を専用枝に取り込んだ。E∞ 模型への新しい参照はない。
+
+### 結晶比較の積と完備 Hodge–Tate 写像
+
+- 第 0 列の同一視が外積を保つことを `pdDeRhamColumnZeroIso_mul` で示し、二つの射影の乗法性を `pdDeRhamCechToPolynomial_cup` にまとめた。`crystallineBridgeModP_bockstein` と `pdInclusionModP_bockstein` は、結晶の橋と余分な座標への包含を p による Bockstein に照合する。
+- `HodgeTateCompletedMap` では、未完備形式に普遍性を適用してから、係数の完備化への基底変換で η を全次数に延長した。積と微分の等式は導来完備なコホモロジー加群への写像の一意性で延長した。`hodgeTateMap_unique` も証明し、草稿の `HodgeTateIsoStatement` の型は保った。
+- `crystallineBridge_coordinate` は affine の零次座標と整係数 pd 模型の第 0 頂点の p 乗が、橋と pd 包含を通して同じ剰余元になることを示す。自由 δ 座標で整係数の二つの射を計算し、剰余で Frobenius を p 乗にした。
+- この時点で鍵付きビルドを通した段 3 の新規 74 モジュールの一時監査は 1,898 宣言で標準三公理のみ。従来の cup 積で使う古典的な Alexander–Whitney の補題は監査対象に含まれる。CAlg_R の模型の内部への新しい参照はない。
+- 比較全体の乗法性 `crystallineChain_cup` と、完備 pd 形式の係数変換は別の対象ビルドで確認中。残りは総複体での還元と Bockstein の代表の照合、生成元から Cartier 同型との一致を導く部分、停止点 3 の対象二定理。

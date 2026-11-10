@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCompletedMap
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
 import all SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
 
@@ -65,24 +66,7 @@ theorem betaSquareZero_of_line (_h₂ : Subsingleton (hodgeTateCohomology' P hP 
     BetaSquareZero P hP r :=
   bockstein_sq_zero P hP r
 
-/-- 概要：Constr 4.9：dg 代数の射 η^* : Ω^*_{R/(A/d)} → H^*(Tot(C^•/d))。
-方針：`DeRham.exists_unique_dgHom` に η^0・η^1・`bockstein_sq_zero` を渡す。
-規約：一意。
-使われ方：Thm 4.11 の主張。 -/
-structure HTAlgebraMap where
-  app (i : ℕ) : affineForms P r i →ₗ[affineAlgebra P r] hodgeTateCohomology' P hP r i
-  on_zero (f) : app 0 (degreeZeroForm P r f) = hodgeTateMapZero P hP r f
-  on_one : app 1 = hodgeTateMapOne P hP r
-  product {i j} (x : affineForms P r i) (y : affineForms P r j) :
-    app (i+j) (affineWedge P r x y) = cohomologyCup (reducedModel P hP r) (app i x) (app j y)
-  differential (i) (x : affineForms P r i) :
-    app (i+1) (affineD P r i x) = bockstein P hP r i (app i x)
-
-def hodgeTateMap : HTAlgebraMap P hP r := by
-  sorry -- bockstein_sq_zero と cup の反交換性で η¹ の像の平方は零。
-        -- DeRham.exists_unique_dgHom の外積の普遍性を完備自由形式へ延長
-theorem hodgeTateMap_unique (f : HTAlgebraMap P hP r) : f = hodgeTateMap P hP r := by
-  sorry -- dX の外積基底で η⁰・η¹ と一致
+-- HTAlgebraMap と hodgeTateMap・hodgeTateMap_unique は本体の HodgeTateCompletedMap に置く。
 
 /-- 概要：Thm 4.11 ＝ Thm 6.3（多項式代数）：η^* は各次数で同型。特に H^i(Ō_{R/A}) ≅ Ω^i_{R/(A/d)}、i > r で零。
 方針：A1-4（Prop 6.2 の一般の r）。
