@@ -117,6 +117,8 @@ class Migration:
         self.opens = plan.get("opens", {})
         self.existing_aliases = plan.get("existing_aliases", {})
         self.symbols = {}
+        self.field_exports = defaultdict(list)
+        export_names = set()
         self.namespace_origins = {old for table in self.namespaces.values()
                                   for old, new in table.items() if old != new}
         public = set()
@@ -133,10 +135,22 @@ class Migration:
             if not private:
                 public.add(old)
             self.symbols[key] = row
+            if receiver := row.get("field_namespace"):
+                receiver = validate_name(receiver)
+                new_parent, _, leaf = new.rpartition(".")
+                exported = f"{receiver}.{leaf}"
+                if (private or not new_parent or leaf != old.rsplit(".", 1)[-1]
+                        or exported == new or exported in export_names):
+                    raise ValueError(f"invalid or ambiguous field export: {key} -> {exported}")
+                self.field_exports[owner].append((old, new_parent, receiver, leaf))
+                export_names.add(exported)
+        self.public_symbols = {old: row for (_, old), row in self.symbols.items() if old in public}
         self.old_public = public
         destinations = [row["new"] for row in self.symbols.values() if not row["old"].startswith("_private.")]
         if len(destinations) != len(set(destinations)):
             raise ValueError("duplicate public destination")
+        if export_names.intersection(destinations):
+            raise ValueError("field export shadows a canonical name")
         if public.intersection(destinations):
             raise ValueError("old public names overlap new public destinations")
         for old, new in self.modules.items():
@@ -285,7 +299,14 @@ def rewrite(data, migration):
         old_text = source[a:b].decode()
         replacements = set()
         other_resolution = False
+        field_binder = any(ref["kind"] == "binder" and
+                           (migration.target(ref) or {}).get("field_namespace")
+                           for ref in candidates)
         for ref in candidates:
+            # The command elaborator may also record a local at the position
+            # of a qualified declaration binder.
+            if field_binder and ref["kind"] == "local":
+                continue
             row = migration.target(ref)
             old = private_user_name(ref["module"], ref["name"])
             name = row["new"] if row else old
@@ -306,8 +327,11 @@ def rewrite(data, migration):
             if ref["kind"] == "field" or (dotted and ref["kind"] != "binder"):
                 old_parent, _, old_field = old.rpartition(".")
                 new_parent, _, new_field = name.rpartition(".")
-                parent = migration.symbols.get((ref["module"], old_parent))
-                if old_text == old_field and parent and parent["new"] == new_parent:
+                parent = (migration.public_symbols.get(old_parent)
+                          or migration.symbols.get((ref["module"], old_parent)))
+                exports_receiver = row is not None and bool(row.get("field_namespace"))
+                stays_with_type = parent is not None and parent["new"] == new_parent
+                if old_text == old_field and (stays_with_type or exports_receiver):
                     replacements.add(new_field)
                     continue
                 block(ref, f"field notation requires checking receiver for {old}")
@@ -319,7 +343,7 @@ def rewrite(data, migration):
                 if not row:
                     continue
                 normal = old_text.removeprefix("_root_.")
-                if normal == old:
+                if normal == old or (row.get("field_namespace") and old.endswith("." + normal)):
                     replacements.add("_root_." + name)
                 elif (normal == old.rsplit(".", 1)[-1] and
                       any(old.startswith(parent["old"] + ".") and name.rpartition(".")[0] ==
@@ -345,6 +369,27 @@ def rewrite(data, migration):
                 block(candidates[0], "span has more than one elaborated resolution")
             else:
                 edit(candidates[0], next(iter(replacements)))
+
+    # Register a new field spelling where the receiver's namespace differs from
+    # the method's storage namespace. Lean export adds a name-resolution entry,
+    # without adding a second kernel declaration.
+    if migration.field_exports.get(module):
+        declarations = [r for r in data["commands"]
+                        if r["kind"] == "declaration-command" and "start" in r]
+        insertions = defaultdict(list)
+        for old, target, receiver, leaf in migration.field_exports[module]:
+            binders = [r for candidates in refs.values() for r in candidates
+                       if r["kind"] == "binder" and r["module"] == module and r["name"] == old]
+            ranges = {check_span(r) for r in binders}
+            containing = [cmd for cmd in declarations
+                          if any(cmd["start"] <= a and b <= cmd["stop"] for a, b in ranges)]
+            if len(ranges) != 1 or len(containing) != 1:
+                diagnostics.append({"name": old, "reason": "field export requires one positioned declaration"})
+                continue
+            _, stop = check_span(containing[0])
+            insertions[stop].append(f"with_weak_namespace _root_.{receiver} export _root_.{target} ({leaf})")
+        for stop, commands in insertions.items():
+            edits[stop, stop] = "\n\n" + "\n".join(sorted(commands)) + "\n"
 
     text = source.decode()
     code = code_only(text)

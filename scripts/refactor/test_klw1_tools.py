@@ -70,6 +70,30 @@ class NamespaceTests(unittest.TestCase):
         self.assertIsNone(result)
         self.assertIn("no semantic source span", issues[0]["reason"])
 
+    def test_field_receiver_and_method_can_have_different_owners(self):
+        text = "x.step"
+        ref = occurrence(text, "step", "Old.Record.step", "Method", kind="field")
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+            {"module": "Method", "old": "Old.Record.step", "new": "New.Record.step"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref], "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"x.step")
+
+    def test_detached_method_adds_a_name_resolution_export(self):
+        text = "def Old.Record.step (n : Nat) := n + 1\n"
+        ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")
+        cmd = {"kind": "declaration-command", "start": 0, "stop": len(text.rstrip())}
+        plan = Migration({"rows": [{"module": "Old", "old": "Old.Record.step", "new": "Later.Record.step",
+                                    "field_namespace": "Earlier.Record"}]})
+        data = {"module": "Old", "source": text, "refs": [ref], "commands": [cmd]}
+        result, issues = rewrite(data, plan)
+        self.assertEqual(issues, [])
+        self.assertIn(b"def _root_.Later.Record.step", result)
+        self.assertIn(b"with_weak_namespace _root_.Earlier.Record export _root_.Later.Record (step)", result)
+        self.assertIsNone(rewrite({**data, "commands": []}, plan)[0])
+
     def test_stale_capture_rejected(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -228,6 +252,40 @@ def withNotation := kRef
             self.assertIn(b"def shadow (f : Nat) := f + 1", result)
             after.write_bytes(result + b"\nexample : fully = 4 := rfl\nexample : withNotation = 2 := rfl\n")
             subprocess.run([lean, after.name], cwd=root, check=True)
+
+    def test_detached_method_resolves_in_importing_module(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = root / "Original.lean"
+            original.write_text("""module
+@[expose] public section
+namespace Old
+structure Record where
+  val : Nat
+def Record.addOffset (n : Nat) (r : Record) := n + r.val
+example (r : Record) : r.addOffset 2 = 2 + r.val := rfl
+end Old
+""")
+            capture = root / "refs.json"
+            subprocess.run([lean, "--run", str(helper), "Original", original.name, capture.name],
+                           cwd=root, check=True)
+            data = checked_capture(root, original.name, capture)
+            plan = Migration({"rows": [
+                {"old": "Old.Record", "new": "Early.Record", "module": "Original"},
+                {"old": "Old.Record.val", "new": "Early.Record.val", "module": "Original"},
+                {"old": "Old.Record.addOffset", "new": "Later.Record.addOffset", "module": "Original",
+                 "field_namespace": "Early.Record"},
+            ], "namespaces": {"Original": {"Old": "Early"}}})
+            rendered, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            (root / "Moved.lean").write_bytes(rendered)
+            subprocess.run([lean, "-o", "Moved.olean", "Moved.lean"], cwd=root, check=True)
+            (root / "Uses.lean").write_text(
+                "import Moved\nexample (r : Early.Record) : r.addOffset 2 = Later.Record.addOffset 2 r := rfl\n")
+            subprocess.run([lean, "Uses.lean"], cwd=root, check=True,
+                           env=dict(os.environ, LEAN_PATH=directory))
 
     @unittest.skipUnless(os.getenv("KLW1_TEST_ALIAS_HELPER"), "set KLW1_TEST_ALIAS_HELPER and LEAN_PATH")
     def test_generated_aliases_elaborate_with_f2_helper(self):

@@ -80,6 +80,8 @@ private partial def commandRows (state : Command.State) (cmd : CommandParsedSnap
     acc := acc.push (scopeRow "end" stx[1] state after)
   else if stx.getKind == ``Parser.Command.withWeakNamespace then
     acc := acc.push (scopeRow "weak-namespace" stx state after)
+  else if stx.getKind == ``Parser.Command.declaration then
+    acc := acc.push <| Json.mkObj <| span stx ++ [("kind", toJson "declaration-command")]
   if let some next := cmd.nextCmdSnap? then
     commandRows after next.get acc
   else acc
