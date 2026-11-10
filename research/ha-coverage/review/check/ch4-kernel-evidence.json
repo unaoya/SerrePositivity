@@ -1,0 +1,52 @@
+{
+  "worktree_commit": "5db2dc51210dca6db1652baa6b395ce04b2a10c7",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "4.1.7.3": {
+      "ha_page": 486,
+      "declarations": [
+        "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization"
+      ]
+    },
+    "4.1.7.11": {
+      "ha_page": 488,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.cofibrantFibrantObjects_sHom_kanComplex"
+      ]
+    }
+  },
+  "declarations": {
+    "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization": {
+      "name": "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization",
+      "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization",
+      "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+      "line": 84,
+      "source_sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da",
+      "type": "@SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization.{u_1,\n    u_2} : ∀ {C : Type u_1} [inst : CategoryTheory.Category.{u_2, u_1} C]\n  [inst_1 : @HomotopicalAlgebra.ModelCategory.{u_2, u_1} C inst]\n  [@CategoryTheory.MorphismProperty.HasFunctorialFactorization.{u_2, u_1} C inst\n      (@HomotopicalAlgebra.cofibrations.{u_2, u_1} C inst\n        (@HomotopicalAlgebra.ModelCategory.categoryWithCofibrations.{u_2, u_1} C inst inst_1))\n      (@HomotopicalAlgebra.trivialFibrations.{u_2, u_1} C inst\n        (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_2, u_1} C inst inst_1)\n        (@HomotopicalAlgebra.ModelCategory.categoryWithWeakEquivalences.{u_2, u_1} C inst inst_1))]\n  (r :\n    @SerrePositivity.Reedy.CofibrantResolutionFamily.{0, 0, u_2, u_1} SimplexCategory SimplexCategory.smallCategory\n      SerrePositivity.Reedy.simplexInverse SerrePositivity.Reedy.simplexDirect ⋯ ⋯ SerrePositivity.Reedy.simplex\n      (Opposite.{u_1 + 1} C) (@CategoryTheory.Category.opposite.{u_2, u_1} C inst)\n      (@HomotopicalAlgebra.instModelCategoryOpposite.{u_2, u_1} C inst inst_1) ⋯ ⋯),\n  @SerrePositivity.InfinityCategories.IsLocalization.{max u_1 u_2}\n    (@CategoryTheory.nerve.{max u_2 u_1, max u_2 u_1}\n      (@CategoryTheory.Bundled.α.{max u_2 u_1, (max u_2 u_1) + 1} CategoryTheory.Category.{max u_2 u_1, max u_2 u_1}\n        (@SerrePositivity.EInfinity.SimplicialLocalization.modelRelativeCategory.{u_1, u_2} C inst inst_1).category)\n      (@SerrePositivity.EInfinity.SimplicialLocalization.modelRelativeCategory.{u_1, u_2} C inst inst_1).category.str)\n    (SerrePositivity.EInfinity.SimplicialLocalization.kanHammockNerve.{max u_2 u_1}\n      (@SerrePositivity.EInfinity.SimplicialLocalization.modelRelativeCategory.{u_1, u_2} C inst inst_1))\n    (SerrePositivity.EInfinity.SimplicialLocalization.hammockLocalizationNerveMap.{max u_2 u_1}\n      (@SerrePositivity.EInfinity.SimplicialLocalization.modelRelativeCategory.{u_1, u_2} C inst inst_1))\n    (SerrePositivity.EInfinity.SimplicialLocalization.weakNerveEdges.{max u_2 u_1}\n      (@SerrePositivity.EInfinity.SimplicialLocalization.modelRelativeCategory.{u_1, u_2} C inst inst_1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.HomotopyLimits.cofibrantFibrantObjects_sHom_kanComplex": {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits.cofibrantFibrantObjects_sHom_kanComplex",
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenCfCollageInclusions",
+      "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+      "line": 35,
+      "source_sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad",
+      "type": "@SerrePositivity.InfinityCategories.HomotopyLimits.cofibrantFibrantObjects_sHom_kanComplex.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : @HomotopicalAlgebra.ModelCategory.{u_1, u_2} C inst]\n  [inst_2 : @CategoryTheory.SimplicialCategory.{u_1, u_2} C inst]\n  (S :\n    @SerrePositivity.Enriched.TensorCotensor.{u_1 + 1, u_1, u_2, u_1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      (@CategoryTheory.Monoidal.functorCategoryMonoidal.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1}\n        (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n      C inst inst_2)\n  [@SerrePositivity.InfinityCategories.HomotopyLimits.FixedSimplicialPushoutProduct.{u_1, u_2} C inst inst_1\n      (@SerrePositivity.Enriched.TensorCotensor.tensor.{u_1 + 1, u_1, u_2, u_1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidal.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        C inst inst_2 S)]\n  (X Y : @SerrePositivity.InfinityCategories.HomotopyLimits.CofibrantFibrantObjects.{u_1, u_2} C inst inst_1),\n  (@CategoryTheory.SimplicialCategory.sHom.{u_1, u_2}\n      (@SerrePositivity.InfinityCategories.HomotopyLimits.CofibrantFibrantObjects.{u_1, u_2} C inst inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{u_1, u_2} C inst fun X =>\n        And\n          (@HomotopicalAlgebra.IsCofibrant.{u_1, u_2} C inst\n            (@HomotopicalAlgebra.ModelCategory.categoryWithCofibrations.{u_1, u_2} C inst inst_1) ⋯ X)\n          (@HomotopicalAlgebra.IsFibrant.{u_1, u_2} C inst\n            (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_1, u_2} C inst inst_1) ⋯ X))\n      (@CategoryTheory.instEnrichedOrdinaryCategoryFullSubcategory.{u_1, u_1, u_2, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.Monoidal.functorCategoryMonoidal.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n        C inst inst_2 fun X =>\n        And\n          (@HomotopicalAlgebra.IsCofibrant.{u_1, u_2} C inst\n            (@HomotopicalAlgebra.ModelCategory.categoryWithCofibrations.{u_1, u_2} C inst inst_1) ⋯ X)\n          (@HomotopicalAlgebra.IsFibrant.{u_1, u_2} C inst\n            (@HomotopicalAlgebra.ModelCategory.categoryWithFibrations.{u_1, u_2} C inst inst_1) ⋯ X))\n      X Y).KanComplex",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "kernel_commands": [
+    "#check @<declaration>",
+    "#print axioms <declaration>"
+  ]
+}

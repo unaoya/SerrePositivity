@@ -1,0 +1,1146 @@
+{
+  "worktree_commit": "5db2dc51210dca6db1652baa6b395ce04b2a10c7",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "4.1.7.4": {
+      "ha_page": 486,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.4",
+          "lean": 0,
+          "plan": 1
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LocalizedMonoidal|monoidal.*localization|localization.*monoidal|IsLocalization|monoidalInfinity",
+          "files_with_matches": 473,
+          "total_matching_lines": 1737,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AffineModelLocalization.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineRegularLift.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupAway.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupDensity.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupLocalization.lean",
+            "SerrePositivity/AlgebraicGeometry/BlowupUniversal.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryClopenSeparation.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFreeOpenLocality.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankLocalization.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LocalizedMonoidal|monoidal.*localization|localization.*monoidal|IsLocalization|monoidalInfinity",
+          "files_with_matches": 296,
+          "total_matching_lines": 3407,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/Localization.lean",
+            "Mathlib/Algebra/Category/Ring/Constructions.lean",
+            "Mathlib/Algebra/Category/Ring/Instances.lean",
+            "Mathlib/Algebra/GCDMonoid/IntegrallyClosed.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Basic.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/DerivabilityStructureInjectives.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Fractions.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/Localization.lean",
+            "Mathlib/Algebra/Module/FinitePresentation.lean",
+            "Mathlib/Algebra/Module/LocalizedModule/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+          "sha256": "e749cbbf0137ff1814cae3349d6f5521bd4edb919c05816aceadb6f527bdb82c"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean",
+          "sha256": "5afbf2d42f9969e9e7b5f10a12cef20f25d104bd59eeeb3e67c468271bc84646"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+          "sha256": "5072ffb6c07d31724da0a42fb0e2e050bd2b1c055a2add6745c18568036d5bcd"
+        }
+      ],
+      "reason": "Mathlib の LocalizedMonoidal は普通圏の局所化にモノイダル構造を入れ、IsLocalization は準圏で W を反転する一般の普遍性を述べる。両者を結び、モノイダル ∞ 関手の充満部分圏で普遍性を与える宣言は確認できなかった。"
+    },
+    "4.1.7.6": {
+      "ha_page": 487,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "tensor_isCofibrant|map_weakEquivalence_of_cofibrant|modelCofibrantHammock_isLocalization|monoidal.*localization|LocalizedMonoidal",
+          "files_with_matches": 50,
+          "total_matching_lines": 62,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrism.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismOne.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeFunctor.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementFamilyComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementForgetFamily.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementUnderlyingRoof.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/Theory/DiscreteInitial.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightWeak.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "tensor_isCofibrant|map_weakEquivalence_of_cofibrant|modelCofibrantHammock_isLocalization|monoidal.*localization|LocalizedMonoidal",
+          "files_with_matches": 4,
+          "total_matching_lines": 61,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean",
+            "Mathlib/CategoryTheory/Sites/Monoidal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean",
+          "sha256": "1ccb10cd770aba810c4a277de5fc251f1a2629efe60ce1f00fc14e0291c204f3"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Quillen/Brown.lean",
+          "sha256": "c8e02002bdd7a98cac676828c7a85ca7be66044051920e7eb13d8c2f2b750f3d"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        }
+      ],
+      "reason": "tensor_isCofibrant と Brown の補題は cofibrant 部分圏でのテンソルの振る舞いを示す。モデル圏の hammock 局所化を確認したが、その標的にモノイダル ∞ 構造を与える比較は見つからなかった。"
+    },
+    "4.1.7.1": {
+      "ha_page": 485,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "relativeCategory|LocalizerMorphism|WCatInfinity|system.*cartesian|marked.*cartesian",
+          "files_with_matches": 467,
+          "total_matching_lines": 1931,
+          "sample_paths": [
+            "SerrePositivity/Asymptotic/Completed.lean",
+            "SerrePositivity/Asymptotic/Karoubi.lean",
+            "SerrePositivity/Asymptotic/RankQuotient.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Kernel.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeCategory.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeComparisons.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/AlgebraRelativeHammockWeak.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlg.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CAlgAlgebraSource.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "relativeCategory|LocalizerMorphism|WCatInfinity|system.*cartesian|marked.*cartesian",
+          "files_with_matches": 31,
+          "total_matching_lines": 303,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/DerivedCategory/DerivabilityStructureInjectives.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/ExactFunctor.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Ext/Map.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/Plus.lean",
+            "Mathlib/Algebra/Homology/DerivedCategory/RightDerivedFunctorPlus.lean",
+            "Mathlib/Algebra/Homology/Localization.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/CofibrantObjectHomotopy.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/DerivabilityStructureCofibrant.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/DerivabilityStructureFibrant.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/FibrantObjectHomotopy.lean",
+            "Mathlib/CategoryTheory/Functor/Derived/LeftDerived.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/FreeResolutionFunctoriality.lean",
+          "sha256": "896a62d71afd0d6b414d7d4eb008dd4b7db8f557a451fb2fc369b8b09293b703"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+          "sha256": "5072ffb6c07d31724da0a42fb0e2e050bd2b1c055a2add6745c18568036d5bcd"
+        }
+      ],
+      "reason": "通常の相対圏と弱同値を保つ LocalizerMorphism を調べた。準圏上のホモトピーで閉じた systems の順序集合を分類する WCat∞ のデカルト・ファイブレーションは確認できなかった。"
+    },
+    "4.1.7.2": {
+      "ha_page": 486,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "WCatInfinity|localization.*preserves.*products|localization.*leftAdjoint|modelHammock_isLocalization",
+          "files_with_matches": 4,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/ModelRightFrameComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/Quillen/DerivedComposition.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "WCatInfinity|localization.*preserves.*products|localization.*leftAdjoint|modelHammock_isLocalization",
+          "files_with_matches": 4,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+            "Mathlib/CategoryTheory/Abelian/SerreClass/Bousfield.lean",
+            "Mathlib/CategoryTheory/Localization/CalculusOfFractions/OfAdjunction.lean",
+            "Mathlib/CategoryTheory/Localization/FiniteProducts.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+          "sha256": "5072ffb6c07d31724da0a42fb0e2e050bd2b1c055a2add6745c18568036d5bcd"
+        }
+      ],
+      "reason": "モデル圏から個別の hammock 局所化を作る宣言はある。WCat∞ 上でそのような局所化を関手化して G の左随伴とし、有限積保存を与える型は見つからなかった。"
+    },
+    "4.1.7.5": {
+      "ha_page": 486,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LocalizedMonoidal|monoidal.*localization|localization.*unique|monoidal.*QCatEquivalence",
+          "files_with_matches": 44,
+          "total_matching_lines": 49,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Delta/Extension/DeltaLocalization.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrism.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismOne.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementFamilyComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementForgetFamily.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementUnderlyingRoof.lean",
+            "SerrePositivity/EInfinity/FrameHom/LocalizationComparison.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightWeak.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LocalizedMonoidal|monoidal.*localization|localization.*unique|monoidal.*QCatEquivalence",
+          "files_with_matches": 17,
+          "total_matching_lines": 85,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Spec.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean",
+            "Mathlib/CategoryTheory/Sites/Monoidal.lean",
+            "Mathlib/GroupTheory/MonoidLocalization/Basic.lean",
+            "Mathlib/GroupTheory/MonoidLocalization/UniqueFactorization.lean",
+            "Mathlib/RingTheory/Ideal/MinimalPrime/Localization.lean",
+            "Mathlib/RingTheory/Ideal/UFD.lean",
+            "Mathlib/RingTheory/IntegralClosure/IntegralRestrict.lean",
+            "Mathlib/RingTheory/Localization/Basic.lean",
+            "Mathlib/RingTheory/Localization/Cardinality.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean",
+          "sha256": "5afbf2d42f9969e9e7b5f10a12cef20f25d104bd59eeeb3e67c468271bc84646"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+          "sha256": "5072ffb6c07d31724da0a42fb0e2e050bd2b1c055a2add6745c18568036d5bcd"
+        }
+      ],
+      "reason": "通常のモノイダル局所化からの持ち上げを調べた。下の ∞ 圏の局所化を同じくする二つのモノイダル ∞ 関手を同値まで比較する型は見つからなかった。"
+    },
+    "4.1.7.7": {
+      "ha_page": 487,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "simplicialMonoidal|enrichedMonoidal|MonoidalClosed|TensorCotensor|enriched.*evaluation",
+          "files_with_matches": 6018,
+          "total_matching_lines": 8160,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomEndpointTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalValueToEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeUnitFamilyConstant.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalActionReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalTransportAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeTransportActionNaturality.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeUniversalTransportComponent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "simplicialMonoidal|enrichedMonoidal|MonoidalClosed|TensorCotensor|enriched.*evaluation",
+          "files_with_matches": 36,
+          "total_matching_lines": 234,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Closed.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+            "Mathlib/CategoryTheory/Adjunction/Parametrized.lean",
+            "Mathlib/CategoryTheory/Category/Cat/CartesianClosed.lean",
+            "Mathlib/CategoryTheory/Distributive/Monoidal.lean",
+            "Mathlib/CategoryTheory/LiftingProperties/PushoutProduct.lean",
+            "Mathlib/CategoryTheory/LocallyCartesianClosed/Sections.lean",
+            "Mathlib/CategoryTheory/Monoidal/Arrow.lean",
+            "Mathlib/CategoryTheory/Monoidal/Braided/Reflection.lean",
+            "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+          "sha256": "62b6ff94fe2e178e6effe64f76108e9924968b05b29b8c7bb104701f79dece06"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        }
+      ],
+      "reason": "固定した豊穣テンソル・余テンソルと普通圏の MonoidalClosed を確認した。モノイダル積自体の単体豊穣性と、その内部 Hom の評価が写像単体集合を同型にする両側の条件は見つからなかった。"
+    },
+    "4.1.7.8": {
+      "ha_page": 487,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SimplicialMonoidalModelCategory|FixedSimplicialPushoutProduct|MonoidalModelCategory|enrichedMonoidal",
+          "files_with_matches": 37,
+          "total_matching_lines": 70,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/Localization/Monoidal.lean",
+            "SerrePositivity/HomotopicalAlgebra/Localization/MonoidalExistence.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+            "SerrePositivity/HomotopicalAlgebra/Pointed/SmashModel.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/FixedSimplicialModelCompatibility.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/Inputs/SimplicialLevel.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SimplicialMonoidalModelCategory|FixedSimplicialPushoutProduct|MonoidalModelCategory|enrichedMonoidal",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+          "sha256": "62b6ff94fe2e178e6effe64f76108e9924968b05b29b8c7bb104701f79dece06"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        }
+      ],
+      "reason": "普通圏の MonoidalModelCategory と固定 SM7 の条件を確認した。HA §4.1.7.7 の内部 Hom の整合条件を満たす単体モノイダルモデル圏の型は見つからなかった。"
+    },
+    "4.1.7.9": {
+      "ha_page": 487,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SimplicialMonoidalModelCategory|symmetric.*[Qq]uillen|normalizedTensorMonomorphism_cofibration|TensorCotensor",
+          "files_with_matches": 79,
+          "total_matching_lines": 308,
+          "sample_paths": [
+            "SerrePositivity/Archive/WIP/KST/Spectra/PointedParametricUncurryAction.lean",
+            "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/CofibrantTensorQuillen.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/UnitAxiom.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/UnitChangeModel.lean",
+            "SerrePositivity/HomotopicalAlgebra/Enriched/UnitFrame.lean",
+            "SerrePositivity/HomotopicalAlgebra/Foundations.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/ChosenMapComparison.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/EnrichedTensorFrameHom.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialMapComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SimplicialMonoidalModelCategory|symmetric.*[Qq]uillen|normalizedTensorMonomorphism_cofibration|TensorCotensor",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/ComplexLimits/CofibrantTensorQuillen.lean",
+          "sha256": "277c436e174fb4e931d2997193852c72776b35a639e7763261712aee2514b76e"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        }
+      ],
+      "reason": "豊穣テンソルのモデル圏条件と複体への正規化鎖関手を確認した。対称モノイダル左 Quillen 関手 SetΔ→A による互換性の分類と ψ(K)⊗A を用いる表現を一緒に与える型は見つからなかった。"
+    },
+    "4.1.7.10": {
+      "ha_page": 287,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cofibrantFibrantObjects_nerve_quasicategory|operadicNerve|simplicialMonoidal|monoidalInfinity",
+          "files_with_matches": 10,
+          "total_matching_lines": 25,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedLimits.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftOrdinaryComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftReplacement.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfRightOrdinaryComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfRightReplacement.lean",
+            "SerrePositivity/Spectra/General/SimplicialCylinder.lean",
+            "SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cofibrantFibrantObjects_nerve_quasicategory|operadicNerve|simplicialMonoidal|monoidalInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+          "sha256": "62b6ff94fe2e178e6effe64f76108e9924968b05b29b8c7bb104701f79dece06"
+        }
+      ],
+      "reason": "cofibrant-fibrant 部分圏の coherent nerve が準圏であることは確認した。任意の多入力テンソルから作る operadic nerve とそのモノイダル ∞ 構造の宣言は見つからなかった。"
+    },
+    "4.1.7.12": {
+      "ha_page": 488,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "QuillenCfCollage|monoidal.*collage|operadic.*collage|FinPointed",
+          "files_with_matches": 29,
+          "total_matching_lines": 407,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/ModelBridge.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedTransport.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointEquivalence.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointFiber.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfFinalHornBase.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfFinalHornFixedEdge.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "QuillenCfCollage|monoidal.*collage|operadic.*collage|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+          "sha256": "4b02c55ad47b2d168a5cd143927ad2b6ee964b5bce85077f6a24bc3395c59911"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+          "sha256": "be0dcc9eb65b1e717758491cb7e9ba00ad47eccab7526df6feb04be0d0ece96e"
+        }
+      ],
+      "reason": "QuillenCfCollage は二端を持つ単体豊穣圏。各端に有限列を置き、基点付き写像ごとにファイバーのテンソルからの写像空間を組み立てる M⊗ の構成は見つからなかった。"
+    },
+    "4.1.7.13": {
+      "ha_page": 488,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "collage.*fiber|QuillenCfCollage|FinPointed|operadic.*fiber",
+          "files_with_matches": 34,
+          "total_matching_lines": 418,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Coherent/SmallCoherentPrismUniqueness.lean",
+            "SerrePositivity/InfinityCategories/F1/Joins/JoinSmallSimplexFibers.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/RelativeArrowSmallFibers.lean",
+            "SerrePositivity/InfinityCategories/F1/StraighteningLeft/RelativeArrowSpecifiedRealization.lean",
+            "SerrePositivity/InfinityCategories/F1/Universe/SmallSimplexFiberOperations.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "collage.*fiber|QuillenCfCollage|FinPointed|operadic.*fiber",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointEquivalence.lean",
+          "sha256": "499b8d3fef826bfe6f6491c16a722bf4caefcc0a93c4e360bc6683de9151903a"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollage.lean",
+          "sha256": "4b02c55ad47b2d168a5cd143927ad2b6ee964b5bce85077f6a24bc3395c59911"
+        }
+      ],
+      "reason": "cf collage の端のファイバーの同型を確認した。M⊗ を h₁ で引き戻し §1.3.4.18 の M と比較する構成は見つからなかった。"
+    },
+    "4.1.7.14": {
+      "ha_page": 489,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "QuillenCfCollageProjection|monoidal.*collage|operadicNerve|FinPointed",
+          "files_with_matches": 21,
+          "total_matching_lines": 111,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/ModelBridge.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedTransport.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointEquivalence.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointFiber.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfFinalHornBase.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfFinalHornUnknownHom.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfInitialHornBase.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftCocartesian.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "QuillenCfCollageProjection|monoidal.*collage|operadicNerve|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+          "sha256": "be0dcc9eb65b1e717758491cb7e9ba00ad47eccab7526df6feb04be0d0ece96e"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfEndpointEquivalence.lean",
+          "sha256": "499b8d3fef826bfe6f6491c16a722bf4caefcc0a93c4e360bc6683de9151903a"
+        }
+      ],
+      "reason": "cf collage の Δ¹ への射影と端のファイバーを確認した。M⊗ の Δ¹×N(Fin∗) への射影、および端での二つの operadic nerve との同型は見つからなかった。"
+    },
+    "4.1.7.15": {
+      "ha_page": 489,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "quillenCfCollageProjection_cocartesianFibration|monoidal.*cocartesian|FinPointed|operadicNerve",
+          "files_with_matches": 7,
+          "total_matching_lines": 11,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionsEnrichedEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/SectionsNaturality.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedTransport.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftOrdinaryComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftReplacement.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "quillenCfCollageProjection_cocartesianFibration|monoidal.*cocartesian|FinPointed|operadicNerve",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+          "sha256": "7117fe6b57a8cc09963a2a4f8196ee72399a5b758971d38d81fba2b74037f89b"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageProjection.lean",
+          "sha256": "be0dcc9eb65b1e717758491cb7e9ba00ad47eccab7526df6feb04be0d0ece96e"
+        }
+      ],
+      "reason": "cf collage の Δ¹ への射影は余デカルト・ファイブレーションになる。N(Fin∗) 成分を加えた M⊗ の射影について、各入力列での持ち上げを与える型は見つからなかった。"
+    },
+    "4.1.7.16": {
+      "ha_page": 489,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "modelCofibrantHammock_isLocalization|operadicNerve|monoidal.*localization|cofibrant.*monoidal",
+          "files_with_matches": 26,
+          "total_matching_lines": 30,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrism.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismOne.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementFamilyComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementForgetFamily.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementUnderlyingRoof.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/FrameComparison.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightWeak.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnReverseLeftIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnReverseLeftWeak.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "modelCofibrantHammock_isLocalization|operadicNerve|monoidal.*localization|cofibrant.*monoidal",
+          "files_with_matches": 3,
+          "total_matching_lines": 11,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean",
+          "sha256": "d5f8b5693f9ae6481d98481dae74b3198c494d110653071b6a4a61deff0622da"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        }
+      ],
+      "reason": "cofibrant 対象の hammock 局所化を確認した。cf の operadic nerve を標的とする指定の対称モノイダル関手が、その局所化を実現する宣言は見つからなかった。"
+    },
+    "4.1.7.17": {
+      "ha_page": 490,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "AssocOperad|operadicNerve|linearOrder.*operad|LocalizedMonoidal",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "AssocOperad|operadicNerve|linearOrder.*operad|LocalizedMonoidal",
+          "files_with_matches": 3,
+          "total_matching_lines": 50,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean",
+            "Mathlib/CategoryTheory/Sites/Monoidal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+          "sha256": "e749cbbf0137ff1814cae3349d6f5521bd4edb919c05816aceadb6f527bdb82c"
+        }
+      ],
+      "reason": "通常の cf 単体豊穣圏の nerve と通常圏のモノイダル局所化を確認した。有限入力の線形順序を走る多入力 Hom から Assoc⊗ 上の nerve を作り、指定モノイダル局所化と比較する型は見つからなかった。"
+    },
+    "4.1.7.18": {
+      "ha_page": 490,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.18",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "preoperad|operadicModel|AssocOperad|operadic.*pullback",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "preoperad|operadicModel|AssocOperad|operadic.*pullback",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraModelClasses.lean",
+          "sha256": "cd112d0a596ad43976ebf58a7d660507f160dbe87840289babbfb32019e4b579"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/Quasicategory/InnerFibration.lean",
+          "sha256": "d58edaf599d2f428f9168fa2534a2001434f826a084764218eb96b770d194244"
+        }
+      ],
+      "reason": "単体集合のモデル構造と dg operad のモデル関連宣言を調べた。∞ 前オペラッドのモノイダルモデル構造と、Assoc⊗ 上の指定ホモトピー引き戻しは見つからなかった。"
+    },
+    "4.1.7.19": {
+      "ha_page": 491,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.7.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.7",
+          "lean": 0,
+          "plan": 1
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.6",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.8",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "preoperad|infinityOperad|operadicNerve|cofibrantFibrantObjects_nerve_quasicategory",
+          "files_with_matches": 8,
+          "total_matching_lines": 23,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedAdjunction.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfDerivedLimits.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftOrdinaryComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfLeftReplacement.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfRightOrdinaryComparison.lean",
+            "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfRightReplacement.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "preoperad|infinityOperad|operadicNerve|cofibrantFibrantObjects_nerve_quasicategory",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean",
+          "sha256": "1275643d8e5dbde24d299bd572e498b56479c00b7a6c01480b1c051953b9cbad"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraModelClasses.lean",
+          "sha256": "cd112d0a596ad43976ebf58a7d660507f160dbe87840289babbfb32019e4b579"
+        }
+      ],
+      "reason": "cf 単体豊穣圏の coherent nerve はある。∞ 前オペラッドの cf 模型の nerve を Op∞ と同定する比較は見つからなかった。"
+    }
+  }
+}

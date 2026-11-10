@@ -1,0 +1,20 @@
+number,status,declarations,reason,axioms,check,partial_kind
+4.1.7.1,none,,通常の相対圏と弱同値を保つ LocalizerMorphism を調べた。準圏上のホモトピーで閉じた systems の順序集合を分類する WCat∞ のデカルト・ファイブレーションは確認できなかった。,,not_found,
+4.1.7.2,none,,モデル圏から個別の hammock 局所化を作る宣言はある。WCat∞ 上でそのような局所化を関手化して G の左随伴とし、有限積保存を与える型は見つからなかった。,,not_found,
+4.1.7.3,partial,SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization @ SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean:84,仮定：C はモデル圏の通常の nerve で、W は弱同値。関手的分解と指定フレームを要求する（Lean が強い：一般の準圏と system を扱わない）。結論：指定された弱同値を反転する普遍的な C[W⁻¹] の模型（一致する特殊例。全 system に対する左随伴の構成は型にない）。,,found,special
+4.1.7.4,none,,Mathlib の LocalizedMonoidal は普通圏の局所化にモノイダル構造を入れ、IsLocalization は準圏で W を反転する一般の普遍性を述べる。両者を結び、モノイダル ∞ 関手の充満部分圏で普遍性を与える宣言は確認できなかった。,,not_found,
+4.1.7.5,none,,通常のモノイダル局所化からの持ち上げを調べた。下の ∞ 圏の局所化を同じくする二つのモノイダル ∞ 関手を同値まで比較する型は見つからなかった。,,not_found,
+4.1.7.6,none,,tensor_isCofibrant と Brown の補題は cofibrant 部分圏でのテンソルの振る舞いを示す。モデル圏の hammock 局所化を確認したが、その標的にモノイダル ∞ 構造を与える比較は見つからなかった。,,not_found,
+4.1.7.7,none,,固定した豊穣テンソル・余テンソルと普通圏の MonoidalClosed を確認した。モノイダル積自体の単体豊穣性と、その内部 Hom の評価が写像単体集合を同型にする両側の条件は見つからなかった。,,not_found,
+4.1.7.8,none,,普通圏の MonoidalModelCategory と固定 SM7 の条件を確認した。HA §4.1.7.7 の内部 Hom の整合条件を満たす単体モノイダルモデル圏の型は見つからなかった。,,not_found,
+4.1.7.9,none,,豊穣テンソルのモデル圏条件と複体への正規化鎖関手を確認した。対称モノイダル左 Quillen 関手 SetΔ→A による互換性の分類と ψ(K)⊗A を用いる表現を一緒に与える型は見つからなかった。,,not_found,
+4.1.7.10,none,,cofibrant-fibrant 部分圏の coherent nerve が準圏であることは確認した。任意の多入力テンソルから作る operadic nerve とそのモノイダル ∞ 構造の宣言は見つからなかった。,,not_found,
+4.1.7.11,partial,SerrePositivity.InfinityCategories.HomotopyLimits.cofibrantFibrantObjects_sHom_kanComplex @ SerrePositivity/InfinityCategories/ModelBridge/QuillenCfCollageInclusions.lean:35,仮定：固定 SM7 を持つ単体モデル圏の二つの cofibrant-fibrant 対象（Lean が強い：入力数 1 に限る）。結論：二対象間の単体豊穣 Hom は Kan（HA の一入力の場合と一致。多入力 operad 全体の fibrancy は型に含まれない）。,,found,special
+4.1.7.12,none,,QuillenCfCollage は二端を持つ単体豊穣圏。各端に有限列を置き、基点付き写像ごとにファイバーのテンソルからの写像空間を組み立てる M⊗ の構成は見つからなかった。,,not_found,
+4.1.7.13,none,,cf collage の端のファイバーの同型を確認した。M⊗ を h₁ で引き戻し §1.3.4.18 の M と比較する構成は見つからなかった。,,not_found,
+4.1.7.14,none,,cf collage の Δ¹ への射影と端のファイバーを確認した。M⊗ の Δ¹×N(Fin∗) への射影、および端での二つの operadic nerve との同型は見つからなかった。,,not_found,
+4.1.7.15,none,,cf collage の Δ¹ への射影は余デカルト・ファイブレーションになる。N(Fin∗) 成分を加えた M⊗ の射影について、各入力列での持ち上げを与える型は見つからなかった。,,not_found,
+4.1.7.16,none,,cofibrant 対象の hammock 局所化を確認した。cf の operadic nerve を標的とする指定の対称モノイダル関手が、その局所化を実現する宣言は見つからなかった。,,not_found,
+4.1.7.17,none,,通常の cf 単体豊穣圏の nerve と通常圏のモノイダル局所化を確認した。有限入力の線形順序を走る多入力 Hom から Assoc⊗ 上の nerve を作り、指定モノイダル局所化と比較する型は見つからなかった。,,not_found,
+4.1.7.18,none,,単体集合のモデル構造と dg operad のモデル関連宣言を調べた。∞ 前オペラッドのモノイダルモデル構造と、Assoc⊗ 上の指定ホモトピー引き戻しは見つからなかった。,,not_found,
+4.1.7.19,none,,cf 単体豊穣圏の coherent nerve はある。∞ 前オペラッドの cf 模型の nerve を Op∞ と同定する比較は見つからなかった。,,not_found,

@@ -1,0 +1,32 @@
+{
+  "worktree_commit": "5db2dc51210dca6db1652baa6b395ce04b2a10c7",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "2.0.0.2": {
+      "ha_page": 165,
+      "declarations": [
+        "typeToPointed"
+      ]
+    }
+  },
+  "declarations": {
+    "typeToPointed": {
+      "name": "typeToPointed",
+      "module": "Mathlib.CategoryTheory.Category.Pointed",
+      "path": "Mathlib/CategoryTheory/Category/Pointed.lean",
+      "line": 110,
+      "source_sha256": "606f91fcdc6f14d0a8f9e199bfaf5baa5ef4e818521db5392bbe5ce664a41a7d",
+      "type": "typeToPointed.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1}\n  Pointed.{u_1} Pointed.largeCategory.{u_1}",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  },
+  "kernel_commands": [
+    "#check @<declaration>",
+    "#print axioms <declaration>"
+  ]
+}
