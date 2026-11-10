@@ -327,3 +327,10 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `82e43e9de` で結晶基底上の `finitePolynomialCartier` を閉じた。次数零では係数の Frobenius が恒等であることと単項式基底を使い、次数一では一元の外積基底を使った。外積の積は台が交わると零で、互いに素な台では Cartier 指数が加法的になる。これを `CochainProduct.onHomology_closedClass` でコホモロジーへ降ろした。
 - `pdBigradedProduct_horizontal` と `pdBigradedProduct_vertical` は、余面の Leibniz 則と列の外積の Leibniz 則を総微分の符号に合わせる。総次数での Leibniz 則と二つの射影の乗法性は引き続き必要。
 - 新規五本の鍵付き対象ビルドは成功。一時監査は段 3 の新規 54 モジュールの 1,394 宣言で標準三公理のみ。main `8045586dd` を専用枝に取り込んだ。⑤a の変更とファイルの重複はなく、CAlg_R の模型の中身への参照も追加していない。
+
+### η¹ の完備係数での公式
+
+- `2cbfdbbf4` で `htBocksteinZero_mul` と `htBocksteinZero_algebraMap` を示した。零次の cup 積に対する Bockstein は導分で、基底の剰余から来る定数は整係数の定数余輪体に持ち上がる。
+- `htOneOnGenerators_d` と `hodgeTateMapOne_smul_d` で完備係数の微分に対する η¹ を閉じた。座標偏微分の和と Bockstein を通常の多項式で照合し、コホモロジー加群の導来 p 完備性を使って完備化単位上の等式を全体へ延ばした。
+- `cohomologyCupGradedRing` はコホモロジーの斉次 cup 積、`CochainProduct.onHomology_natural` は積を保つ余鎖写像のコホモロジーでの乗法性。新規四本の鍵付き対象ビルドは成功。段 3 の新規 58 モジュールの一時監査は 1,495 宣言で標準三公理のみ。
+- ⑤a の停止点 2 を含む main `16e33e24d` を専用枝に取り込んだ（`d3704cc2d`）。⑤a の変更とファイルの重複はなく、CAlg_R の模型への参照は追加していない。
