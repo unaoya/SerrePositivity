@@ -187,3 +187,9 @@
 - `wittToSmall_frame` を示した。有限 Witt 枠から大きい枠へ入れて `wittToSmall` を適用した射は、小さい模型に対する `pdModelBaseChange` と一致する。未完備の分冪包で各頂点の変数像を照合し、完備化の普遍性で等式を移した。
 - `SerrePositivity.BhattScholze.Prismatic.WittToSmallFrame` の鍵付き対象ビルドが通過。段 2 の累計32モジュールの一時監査で、非公開を含む1,145宣言は標準三公理のみ。追加公理と `sorry` は0。
 - 導来 p 完備底変換での擬同型性には、有界な完備 de Rham 複体を使う。まず未完備項の単項式基底でテンソル底変換を照合し、p の有限冪で割った各項を比較する。導来底変換を計算する箇所では有界な模型と平坦性を明示する。
+
+## 段 2（P2）途中 — 11 月 10 日の夜前の区切り
+
+- `pdRawCoefficients_isBaseChange` で、未完備の各項のテンソル底変換を単項式基底で計算した。これを p の有限冪での商と有界な完備 de Rham 模型の比較へつなぐ。
+- `SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeLinear` の鍵付き対象ビルドが通過。段 2 の累計33モジュールの一時監査は1,146宣言で標準三公理のみ。追加公理と `sorry` は0。
+- 次は有限枠と大きい prismatic 枠の二つの合成を、混合頂点で恒等射に結ぶ。Witt の二比較の導来 p 完備底変換後の擬同型性と、完備 pd de Rham の代入に関する二射影の厳密な自然性も残る。
