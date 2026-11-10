@@ -1,0 +1,100 @@
+{
+  "4.1.1.4": {
+    "page": 224,
+    "citations": {
+      "item": 0,
+      "subsection": 29,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*([Tt]wo[ -][Oo]ut|[Cc]ounterexample|cancel_left)|not.*[Rr]ightCofinal|final_of_final_comp|final_of_comp_full_faithful",
+          "SerrePositivity"
+        ],
+        "file_count": 7,
+        "line_count": 10
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*([Tt]wo[ -][Oo]ut|[Cc]ounterexample|cancel_left)|not.*[Rr]ightCofinal|final_of_final_comp|final_of_comp_full_faithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 4,
+        "line_count": 17
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalComposition.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma IsLeftCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}"
+          },
+          {
+            "line": 103,
+            "head": "lemma IsRightCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B]"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B]"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 799,
+            "head": "theorem final_of_comp_full_faithful [Full G] [Faithful G] [Final (F ⋙ G)] : Final F where"
+          },
+          {
+            "line": 871,
+            "head": "theorem final_of_final_comp [hF : Final F] [hFG : Final (F ⋙ G)] : Final G := by"
+          },
+          {
+            "line": 895,
+            "head": "theorem final_of_comp_full_faithful' [Full G] [Faithful G] [Final (F ⋙ G)] : Final G :="
+          }
+        ]
+      }
+    ],
+    "decision": "共終性の合成と左消去、通常圏の final 関手の合成を読んだが、後半と合成が共終でも前半が共終とは限らない具体的な反例を与える宣言は見つからなかった。"
+  }
+}
