@@ -101,3 +101,31 @@
 
 - この再開分は本体の新規 19 モジュール、公開 45 宣言。すべて対象ビルドと監査を通過し、標準三公理のみ、`sorry` 0。推移的 import 390 モジュールに ∞ 圏・E3 はなく、KST への直接 import はない。
 - 停止点 3 の残りは、site の完備押し出しから作る増大 Čech 余脈体の有限剰余を通常の余脈体と比較すること。二脚を追跡する完備化前後の剰余同型と通常のテンソル商同型を、余積の普遍性で各次数と余面へ移す。各項の古典的完備性から逆極限模型へ同定し、有限剰余で得た全次数の完全性を構造前層とその d 剰余の層条件へ接続する。
+
+### 夜間の段 3 作業（2026-11-10）
+
+- ビルド前の候補を作業木に置いた。 `CategoryTheory/FiniteWidePushout` で二項押し出しを反復し、`Prismatic/FlatCechConerve` で site の増大 Čech 余脈体を作る。 `Prismatic/FlatPushoutResidue` は通常の環押し出しを基底イデアルで剰余し、完備化の有限剰余同型を両脚とともに移す。 `Prismatic/FlatCechComparison` では基底の下の圏で有限剰余と遷移を関手化し、各次数の押し出し性から増大・余面・余退化に自然な比較を作る。
+- `Prismatic/FlatSiteSheaf` では site の環側の反対圏に平坦位相を生成し、環の元ごとの等化子から環値前層の層条件を得る。草稿の小圏模型に移す際は、その同値に沿って位相と前層を移送する。
+- 未接続は、具体的な完備テンソル積の剰余押し出し性を既存の site 押し出しの普遍性から各次数に運ぶこと、有限剰余の比較と塔の遷移との両立、および完備性から得る次数ごとの逆極限同定。構造環には `I^n`、d 剰余には `J_n=(d,p^n)` を使う。後者は `I^(n+1) ≤ J_n` による有限忠実平坦降下と d 剰余の p 進完備性を使う。次数 0 の単射性と次数 1 の完全性で層条件につなぐ。Lean 候補は未ビルド・未コミットで、停止点 3 は未達。
+
+## 段 4 の紙案（K5、2026-11-10 夜）
+
+| 原典 | 本体の型案 | 置き場所 |
+| --- | --- | --- |
+| Lemma 7.7 (1′)(1″) | `(D₀ : DeltaStructure p A) (η : A →+* C) (φ : C →+* C)` に対し、`IsRegular (p : C)`、`φ` が mod p の p 乗、`φ.comp η = η.comp D₀.frobeniusLift` なら `∃! D : DeltaStructure p C, D.frobeniusLift = φ ∧ D₀.IsDeltaHom D η`。環同型で移す版は `DeltaStructure.comapEquiv` で、Frobenius と基底脚を追う。 | `BhattScholze/Semiperfectoid/DiscreteDelta.lean` |
+| Lemma 7.7 (2)(3) | 通常の環 C の δ 構造、p と `η d` に沿う導来完備性、`IsRegular (η d)` を入力に、生成元が `η d` の `OrientedPrism` を返す。C/d の有界 p 冪ねじれを追加して `IsBoundedPrism` を得る。評価脚は基底・剰余・Frobenius に両立する自然な環射族を受け、D36 に従い標的 p 正則なら `isDeltaHom_of_map_frobeniusLift` を適用する。 | `BhattScholze/Semiperfectoid/DiscretePrism.lean` |
+| Lemma 7.8 | 草稿どおり `(F : C ⥤ Under X) (hF : F ⋙ Under.forget X = 𝟭 C)` に対し、冪等完備なら `∃ X' r s, s ≫ r = 𝟙 X' ∧ r ≫ s = e ∧ Nonempty (IsInitial X')`。prism 版は冪等 δ 射の像に基底脚と剰余の R の脚を降ろし、完備性・正則性・有界性・濃度を retract に移す。D36 の始性は p 正則な充満部分圏で述べる。 | `CategoryTheory/InitialOfRetraction.lean`、`BhattScholze/Semiperfectoid/PrismRetract.lean` |
+| Ex 7.9 | `J := P.ideal ⊔ Ideal.span (Set.range f)`、`U` を任意の有界分類基底上の完備自由 δ 環、`E` をその変数 envelope とする。分類射 `U → A` と通常の `N := E ⊗[U] A` を経て、`B := PDCompletionH0 N p (includeRight P.generator)` に δ 構造・A の脚を付ける。まず `IsRegular (η P.generator)` を入力にした `IsLciEnvelope P f Q η` を証明し、続いてその正則性を示す。有界版は `BoundedPTorsion p (A ⧸ J)` を追加し、濃度の仮定の下で `IsInitial` を得る。 | `BhattScholze/Semiperfectoid/LciEnvelope.lean`、`LciEnvelopeRegular.lean` |
+| G-A3-7 | 通常の p 完備なフィルター付き環 C と `q : E/d →+* C` を入力に、p 反転後の `q[1/p]` が連続な retraction をもち、その像が稠密なら `Function.Surjective q[1/p]`。Hausdorff な標的で像は `q[1/p] ∘ r` の固定点集合なので閉じる。稠密性は Fil₀ と gr¹ の差商類、gr の分冪生成、有限段の持ち上げから別の補題で出す。p 反転後の位相は元の p 進格子から取り、p が単元になった環のイデアル p で定義しない。 | `BhattScholze/Semiperfectoid/LciEnvelopeInvertP.lean`。環の位相だけの補題が必要なら `CommutativeAlgebra/` の新規ファイル |
+
+- **D21 と K1 の再利用。** Ex 7.9 の `f̄ : Fin r → A ⧸ P.ideal` には K1/K3 の `IsKoszulResolution` との照合と `RegularSequencePDKoszul` の関係列・切断基底の証明を再利用できる。比較が分冪表示に帰着した後は、`dpFamilyRelations_isKoszulResolution`、`dpFamilyUniversalTensorEquiv`、`dpFamilyBaseChangeEquiv_generator` を使って通常の押し出しと分冪の像を追う。p 正則な係数環の場面では `dpFamilyPresentation_primeRegular` と `dpFamilyFactorialEquiv` も適用できる。
+- **新たに要る比較。** K1 の `frobeniusDivisionDPEnvelopeEquiv` は φ(f)/p の生の除算であり、Ex 7.9 の f/d の除算へは直接適用できない。候補は、d 剰余の普遍変数 envelope の `δ^(k+1)(f_i) ↦ δ^(k+1)(dY_i)` を mod (p,d) で計算し、先頭の単元倍の p 乗と下位項を分離すること。K1 の切断多項式の自由基底を使えるのは、この三角表示とスカラーが確定した後。次に `U/d → U/(d,f)` の Koszul 分解と d 剰余での p 完全平坦性を合わせ、一般の分類射で d 剰余の完備テンソルの離散性を示す。p 冪ねじれ有界性はこの段で別に追う。K1 の p 正則性や高次 Tor 消滅を、一般の A/d や完備前の `E ⊗[U] A` にそのまま移さない。
+- **既存型の区別。** 草稿 `exists_lciEnvelope` は `IsKoszulRegularModGenerator P f` だけを取り、有界性を要求しない。上の有界版で使う `BoundedPTorsion` をその型に足さない。無有界の存在には、同じ候補の正則性を有界性なしで示すか、独立な δ 除算包の構成が要る。G-A3-7 の差商の計算は、自由分解で `D t̃ = f_i - d z_i` と `[z_i] ↦ f̄_i mod J̄²` を確認する。実際の Δ̄ の評価とフィルトレーション、Δ との同一視は草稿側。段 4 の Lean 編集はまだ行っていない。
+
+### 朝に回すビルド順
+
+1. `FiniteWidePushout` → `FlatCechConerve`。別の小束で `FlatPushoutResidue` と `FlatSiteSheaf`。
+2. `FlatCechComparison`。続けて site の二項・有限広押し出しの剰余保存、余脈体の比較と塔の遷移の可換性を検証する。
+3. 完備構造環と d 剰余の増大 Čech 完全性、等化子と層条件の順に検証する。新規対象と公開宣言の監査を回し、停止点 3 の条件を確認する。
+
+各束は `source ~/.zshenv` の後、共有ロックの `--wait 1800` を使う。夜間は `$TMPDIR/serre-night-klw1-done` が出た場合に限り開始し、保持は一回 30 分以内。合図がなければ 8 時以降（日本時間）。
