@@ -35,6 +35,12 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 8. 調整：`../coordination.md`（暦・待ち条件）、`../infinity-codex-g1.md`・`g2.md`（∞ の段 G）。
 9. 勉強ノート：`exposition/ja/bs/`（章＝原典の節）。
 
+### 0.2′ 11-10 の決定（ユーザー）：CAlg_R の界面（D71〜D73）
+
+- **D71〜D73**（`calg-interface-design.md`）：BS は E∞ 代数の ∞ 圏を構造 `EInfinityTheory` を通してだけ使う。今の Barratt–Eccles の模型は実例の一つ。HA の方向で作る場合は別の実例を作り、Hinich Thm 4.1.1 などで比べる。実装は BS-W14（⑤a）。
+- E∞ の作り方（HA の方向か今の模型か）は、HA の確認のレーンが第 2〜4 章の照合を終えた時点で規模を見積もって決める（`research/einfinity-route/README.md`）。
+- 11-10 の Prisms の地図の更新：目標に必要な 105 項目のうち、本体（証明済み・特別な場合）59、本体に部品 8、drafts 29、E3 の界面 6、設計だけ 2、なし 1（`research/bs-coverage/`）。
+
 ### 0.3 現在地（11-07 の更新。下の 11-05 の記述は経緯として残す）
 
 - **段階 II のレーン（11-07）**：⑤a BS 実装（BS-DOC1 完了 → BS-W11 進行中：A-2・B-2 は main に入った）、⑤b BS-D68（段 1 進行中）、⑥ スキーム論（BS17 の経路：2a′・2b・2d の一部は main に入った）。設計は調整役。
