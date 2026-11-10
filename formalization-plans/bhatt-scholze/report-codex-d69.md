@@ -170,3 +170,14 @@
 - Frobenius 前の多項式評価は、prismatic 側の評価核を分冪イデアルへ送る。Frobenius 後はその像が (p) に入るため、完備自由 δ 環と prismatic envelope の普遍性を使った。単体の写像と多項式代入の両方との可換性は、係数と枠の変数で照合した。
 - `SerrePositivity.BhattScholze.Prismatic.WittBigBridge` の鍵付き対象ビルドが通過。段 2 の累計27モジュールを一時監査し、非公開を含む1,003宣言は標準三公理のみ。追加公理と `sorry` は0。
 - 停止点 2 までに、有限枠から大きい prismatic 枠への射の擬同型性、`wittBigBridge` と `wittToSmall` の導来 p 完備底変換後の擬同型性、完備 pd de Rham の cdga の代入と二射影の厳密な自然性を示す。段 3 の結晶サイトはこの検収の後に進める。
+
+## 段 2（P2）途中 — 逆向きの枠の射と分冪係数変更
+
+- `BigCechTerm.existsUnique_liftVariables` は、剰余の構造射と両立する枠の変数像を完備自由 δ 環から包へ延長する。有限枠の第 0 項で選んだ持ち上げを各頂点へ送り、`bigCechToAffineFrame` として大きい枠から有限枠への余単体的代数の射を得た。
+- `affineToBig_residueSection` で、有限枠から大きい枠への射が完備多項式の剰余構造射を保つことを示した。この照合により、二つの合成と恒等射の変数像を剰余で比較できる。混合頂点による余鎖ホモトピーは残っている。
+- 未完備の小さい模型で、基底の分冪を保つ係数変更は分冪射になることを示した。これを使う `wittToSmall_frame` の完備化後の照合は進行中。
+- 以下の4モジュールは鍵付き対象ビルドを通過。段 2 の累計31モジュールの一時監査で、非公開を含む1,047宣言は標準三公理のみ。追加公理と `sorry` は0。段 2 の途中のため、停止点 2 の検収は保留。
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameLift`
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameRetraction`
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameResidue`
+  - `SerrePositivity.BhattScholze.Prismatic.PDRawCoefficientPD`
