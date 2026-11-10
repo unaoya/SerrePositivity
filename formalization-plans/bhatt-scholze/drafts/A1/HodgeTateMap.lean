@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+
 -- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,DeRhamPolynomial}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う。
 
 /-!
@@ -36,35 +38,6 @@ open SerrePositivity.InfinityCategories SerrePositivity.EInfinity SerrePositivit
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (r : ℕ)
 
-/-- 概要：R = (A/d)⟨X_1,…,X_r⟩（p 完備化した多項式代数）。
-方針：`Poly (A ⧸ P.ideal) (Fin r)` の p 完備化。
-規約：A0 の `cechAlexanderAffine` と同じ R。
-使われ方：以下の全て。
-決定（design-status.md (B)）：R := `MvPolynomial (Fin r) (A ⧸ P.ideal)` の一変数 p 進完備化の H⁰（E3 の `completionRing` と同じ道具）。
-A0 の `cechAlexanderAffine` と同じ定義にする。 -/
-abbrev affineAlgebra := prismPolynomialCompletion P (Fin r)
-
-/-- 概要：Ō_{R/A} の模型：余単体的環 C^•/dC^•（Rem 4.19 の小さい模型）。
-方針：A0 の `cechAlexanderAffine` に `reducedStructurePresheaf` を当てる。
-規約：各項は R 代数で、構造射は R 代数の射。
-使われ方：H^*、cup 積、Bockstein。 -/
-abbrev htCech := cechAlexanderAffine P hP r (cutoff A (affineAlgebra P r)) le_rfl
-abbrev htRings : CosimplicialObject CommRingCat.{u} :=
-  polyCosimplicialAlgebra P hP r ⋙ Under.forget (CommRingCat.of A)
-
-def htBase : (Functor.const SimplexCategory).obj (CommRingCat.of A) ⟶ htRings P hP r where
-  app n := CommRingCat.ofHom ((htCech P hP r).obj n).toHom.toRingHom
-  naturality := by sorry -- 各面・退化射は A 上の prism 射
-
-abbrev htGenerator (n : SimplexCategory) : (htRings P hP r).obj n := (htBase P hP r).app n P.generator
-theorem htGenerator_nat {m n : SimplexCategory} (θ : m ⟶ n) :
-    (htRings P hP r).map θ (htGenerator P hP r m) = htGenerator P hP r n := by
-  sorry -- htBase の自然性
-theorem htGenerator_regular (n : SimplexCategory) :
-    Function.Injective (fun x => htGenerator P hP r n * x) := by
-  sorry -- 基底の d は対象 prism の生成元の単元倍
-abbrev reducedModel := quotPow (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r) 1
-
 abbrev hodgeTateCohomology' (i : ℕ) := cohomology (reducedModel P hP r) i
 abbrev htSequence := regularShortExact (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r)
   (htGenerator_regular P hP r) A (htBase P hP r)
@@ -91,13 +64,6 @@ def htZeroCycles := ((reducedModel P hP r).map (SimplexCategory.δ (0 : Fin 2)))
   (((reducedModel P hP r).map (SimplexCategory.δ (1 : Fin 2))).hom)
 def htZeroIso : hodgeTateCohomology' P hP r 0 ≃+* htZeroCycles P hP r := by
   sorry -- cohomologyEquivHomology の次数 0 では境界は零、cup は同じ項での積
-def htResidueIso (n : SimplexCategory) :
-    let X := (htCech P hP r).obj n
-    (reducedModel P hP r).obj n ≃+* X.B ⧸ X.Q.ideal := by
-  sorry -- quotPow の次数 n は d¹ の商。X.toHom.map_ideal_eq で同じイデアルと同定
-def htSec (n : SimplexCategory) : affineAlgebra P r →+* (reducedModel P hP r).obj n :=
-  (htResidueIso P hP r n).symm.toRingHom.comp ((htCech P hP r).obj n).sec
-
 def hodgeTateMapZero : affineAlgebra P r →+* hodgeTateCohomology' P hP r 0 :=
   (htZeroIso P hP r).symm.toRingHom.comp
     ((htSec P hP r ⦋0⦌).codRestrict _ (by sorry)) -- sec は余面に自然

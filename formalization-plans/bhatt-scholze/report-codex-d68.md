@@ -136,3 +136,112 @@ SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
 ```text
 SerrePositivity.BhattScholze.Prismatic.PolynomialFrobeniusCech
 ```
+
+## BS-D68 段 2 継続（2026-11-07）
+
+作業開始前に、調整役による停止点 1 と `PolynomialFrobeniusCech` の登録（`49d0ca4f1`）を含む main `f261f37cf` を取り込んだ。
+
+### Lemma 5.4
+
+- `deedbbd11` で無限変数の `frobeniusTwist_cech_quasiIso_infinite` と有限変数の `frobeniusTwist_cech_quasiIso` を、草稿と同じ型で証明した。
+- 全零添字への射影は余鎖写像になる。残りの成分では、最初の非零頂点の直前の零頂点を削り、係数にはその位置の余退化を符号付きで施す。余面との合成で恒等項が一つ残り、ほかは対消滅する。有限変数版は任意の変数集合での証明の特殊化。
+- 鍵付き対象ビルドは成功。一時監査の 2 宣言は標準三公理のみ。
+
+### 結晶の橋の構成
+
+- `92012213f` で `crystallineBasePrism`（生成元 p の ℤₚ の prism）、`cartierBaseEquiv`（剰余と ℤ/p の同型）、`modPrimeCosimplicial` と `modPrimeMap`（各項の p による商）を追加した。`htCech` と `htRings` は affine 模型の余単体的代数と台環、`htBase` と `htGenerator` は基底射と選択生成元、`reducedModel`、`htResidueIso`、`htSec` は剰余模型とその座標を与える。
+- `8f1e35778` で `deltaAdjoinDivisionBaseChange_isPushout`（δ 除算関係式の商と通常の底変換）、`crystallineFreeDivisionEquiv`（差の p 除算と自由 δ 環の同型）、`crystallineModPrime_isPushout`（mod p が押し出しを保つこと）を追加した。
+- `crystallineTensor_isSMulRegular` は p 完全平坦な底変換での p 正則性を示す。`crystallineCompletelyFlat_frobenius` は剰余が多項式環の場合の Frobenius の p 完全平坦性を与える。`crystallineCompletedFreeDelta_primeRegular` と `crystallineCompletedFreeDeltaResidue` は完備自由 δ 環の正則性と剰余の多項式表示を与える。
+- `crystallineCechSource` は完備自由 δ Čech 余脈体。`deltaCoordinatesModP` は多項式 Čech 余脈体の変数を affine 模型の剰余の反復 δ 座標に送る。`crystallineDivision_isPrismaticEnvelope` は生成元 p の基底上の古典的完備 δ 除算の普遍性を示す。`pdDeltaTerm`、`pdDeltaModel`、`pdDeltaRings` は結晶側の完備 p 除算模型を与える。これらの型を保ち、実装には古典的 p 完備化を用いた。
+- 二つの束の鍵付き対象ビルドは成功。一時監査はそれぞれ 22 宣言、49 宣言で、標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
+
+
+### 橋の自然変換と剰余
+
+- `crystallineBridge` は、Frobenius で差が p で割り切れることから、affine envelope の普遍性で構成した自然変換。 `crystallineBridge_generator` は生成元の像が p であることを示し、`crystallineBridgeModP` はその剰余写像。
+- `crystallineCechResidueIso` は、完備自由 δ Čech 余脈体の剰余を多項式 Čech 余脈体と同一視する。`crystallineDivisionCompletionModPrimeEquiv` は、p 正則なときに完備 p 除算と未完備の関係式の商の剰余を同一視する。`deltaAdjoinDivisionBaseChange_isDeltaHom` は、係数の底変換が δ 構造を保つことを示す。
+- 鍵付き対象ビルドは成功。一時監査の 11 宣言は標準三公理のみ。そのうち 3 宣言は前回監査済み。
+
+### Frobenius の押し出しと分冪模型
+
+- `crystallineAffineDivision_primeRegular` と `crystallineAffineFrobeniusDivision_primeRegular` は、差とその Frobenius 像の p 除算で p 正則性を保つ。`crystallineCompletedDivision_modPrime_isPushout` は、これらの正則性の下で完備模型の剰余に押し出しを移す。
+- `crystallineAffineUnitModP` と `crystallineCechResidueIso_hom_deltaCoordinates` は affine への標準射を剰余の多項式座標と照合する。`crystallineCechResidueIso_frobenius_app` は剰余 Frobenius を相対 Frobenius と照合する。
+- `pdDelta_modP_frobeniusPushout` は結晶の橋の mod p を Frobenius 押し出しの左脚と同定する。`crystallineBridgeModP_isCohomologyIso` は無限変数の Lemma 5.4 から橋がコホモロジー同型であることを示す。
+- `pdRawModel` は頂点差の線形写像から未完備の pd Čech 模型を構成する。`crystallineAddSplitCech_equiv` は任意の余単体的代数に切断付き Čech 因子を加える余鎖ホモトピー同値を与える。
+- 鍵付き対象ビルドが成功。一時監査の 20 宣言は標準三公理のみ。追加公理と `sorryAx` は 0 件。禁止依存、既存の本体宣言の変更、⑤a との変更ファイルの重複はない。
+- 残りは、結晶模型を pd 模型と正の反復 δ 座標の多項式 Čech 因子に分離し、`pdInclusionModP_isCohomologyIso` に収縮を適用すること。
+
+### 余分な δ 座標の比較の準備（2026-11-08）
+
+- `principalCompletionRingFunctor` と `principalCompletionUnder` は主完備化の H⁰ を可換環と係数環つきの可換環に施す。`pdTerm` と `pdModel` は未完備 pd Čech 模型を項ごとに完備化した模型。
+- `crystallinePDRawComparison` は未完備自由 δ 環で先に p 除算しても完備結晶模型の剰余が変わらないことを示す。`crystallineRawCoordinateEquiv` は未完備自由 δ 環を基点の座標、頂点差、正の反復 δ 座標に分ける。
+- 鍵付き対象ビルドは成功。一時監査の 16 宣言は標準三公理のみ。余分な座標を分離する同型とその自然性は引き続き証明中。
+
+- `crystallineExtraCechPolynomialIso` は切断付き Čech 余脈体を、各頂点の高次 δ 座標の多項式環と同一視する。`withExtraCoords` はこの余脈体を pd 模型に加えた完備模型。`insertPdFactorModP_isCohomologyIso` は、その包含の mod p のコホモロジー同型を与える。
+- `crystallinePDRawToTarget_isIso_modPrime` と `crystallinePrincipalCompletionUnit_isIso_modPrime` は、未完備模型から結晶側の完備模型への射と主完備化の単位が剰余で同型であることを示す。追加の鍵付き対象ビルドと 15 宣言の一時監査が通り、標準三公理のみを使用した。
+
+## BS-D68 停止点 2（2026-11-08）
+
+### 実装
+
+| 宣言 | 内容 |
+| --- | --- |
+| `frobeniusTwist_cech_quasiIso_infinite`、`frobeniusTwist_cech_quasiIso` | 全零添字を分離し、残りを符号付き余退化で収縮する。任意変数の証明から有限変数版を得る。 |
+| `pdDelta_modP_frobeniusPushout` | 結晶模型の mod p を相対 Frobenius に沿う押し出しと同一視し、左脚を橋と照合する。 |
+| `crystallineBridgeModP_isCohomologyIso` | 無限変数の Lemma 5.4 を押し出し表示に適用する。 |
+| `crystallineRawPDFactor`、`crystallineRawPDSplit` | 未完備結晶模型を階乗部分環で表し、自由分冪因子と高次 δ 座標の多項式因子に分離する。 |
+| `crystallineExtraTermIso` | 高次座標の Čech 因子との余積を、通常のテンソル積と同一視する。 |
+| `splitDeltaCoordinatesModP` | 基底、通常の頂点座標、高次座標で自然性を確認し、結晶模型の剰余を分離する。 |
+| `pdInclusionModP_isCohomologyIso` | 高次座標を零に評価する切断から、pd 因子の包含が mod p のコホモロジー同型を誘導することを示す。 |
+| `pdInclusion`、`pdInclusionModP_eq_modPrime` | 比較を整係数の完備模型へ延長し、その還元が mod p の包含に一致することを示す。Bockstein 照合に使える。 |
+
+- D68 の分離同型は mod p で構成した。整係数では比較射とその還元との一致を閉じた。整係数の分離同型 `splitDeltaCoordinates` と整係数の擬同型 `extraCech_comparison` は D69 向けの草稿に残る。
+- 実装の最終コミットは `bb7ca252c`。Lemma 5.4 は `deedbbd11`、結晶の橋の同型は `a8eb0a7a3`、完備 pd 模型は `4388fc197`、切断付き高次座標模型は `480cf572f`。
+
+### 検収
+
+- `with_build_lock.sh --wait 1800` で新規 33 モジュールの対象ビルドが成功。整係数の比較射と main に登録済みの `PolynomialFrobeniusCech` も対象に加えてビルドし、段 2 の検収対象は計 35 モジュール。
+- 鍵付きビルドの成果物で一時監査を実行した。150 宣言は `propext`、`Classical.choice`、`Quot.sound` のみを使用。追加公理と `sorryAx` は 0 件。
+- 推移的 import を調べ、`InfinityCategories` と `PerfectoidizationInterface` への依存がないことを確認した。既存の本体宣言の変更はなく、⑤a との変更ファイルの重複もない。
+- 段 3 は pd de Rham 双複体の二つの射影、有限多項式 Cartier 同型、生成元と Bockstein の照合。
+
+### 取り込み時の登録対象
+
+main に登録済みの `PolynomialFrobeniusCech` に加え、次の 34 モジュールを登録する。
+
+```text
+SerrePositivity.BhattScholze.Delta.Division.BaseChange
+SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision
+SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope
+SerrePositivity.BhattScholze.Prismatic.CrystallineBase
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechSource
+SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedFreeDelta
+SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedPushout
+SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion
+SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
+SerrePositivity.BhattScholze.Prismatic.CrystallineExtraPolynomial
+SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDInclusion
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDTensorPresentation
+SerrePositivity.BhattScholze.Prismatic.CrystallinePrincipalResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDFactor
+SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDSplit
+SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
+SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
+SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
+SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
+SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
+SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
+```
