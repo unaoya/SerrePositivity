@@ -199,3 +199,32 @@ Tot 版はこの式の `frB` を `X ⟶ X ⋙ Under.map (CommRingCat.ofHom fr)` 
 - 全欄の実例は `drafts/Shared/BarrattEcclesTheory.lean`。既存の中核と厳密入力の関手を使う実例案とし、未供給の欄はここに記した。drafts の運用に従い、このファイルはビルド対象外。
 
 `--wait 1800` で共有鍵を取得し、`Interface.Theory` と `BarrattEccles.Theory` を対象ビルド。上記 4 モジュールの限定監査は **125 宣言、標準三公理のみ**。本体の `sorry`・新規公理と、D71 が禁止する Interface 内の直接 import・模型 API・模型圏の仮定は各 0。入口と監査への登録候補は上記の本体 4 モジュール。
+
+## 段 2 中断（D73）
+
+drafts の既存の主張を維持したまま、名前と引数だけを替えるために必要な比較が、段 1 の界面に二つ足りない。指示書 §1 の条件に従い、既存 drafts への移行はここで止めた。
+
+1. `Shared/EInfinityPowerOperation.lean` の `powerOperationZero_natural` は、任意の辺と全整数次数で P⁰ が可換であることを要求する。界面の `powerOp0` 自体は半線形な自然変換だが、それを加法的な自己写像に読む `restrictD_homology f i x` は、頂点ごとの加法同型。異なる頂点で選んだ同型が Hⁱ の射と可換である条件がない。例えば i ≠ 0 の各成分を加法自己同型で変えても、現界面の `powerOp0_zero` と `powerOp0_pos` の型はその変更を検出しない。
+2. `Shared/CosimplicialEInfinity.lean` の `totEInfinity_forget` は、交代余面複体そのもののホモロジーとの比較を要求する。`totEInfinity_map_isInvertible` は、その複体の擬同型が Tot の可逆な辺になることを使う。`ofCosimplicial_forget` の比較先にある `strictToD` は現界面では関手のみ。厳密複体の Hⁱ との比較、または擬同型の反転の仕様が必要。既存の実例側には `ComplexLimits.complexOrdinaryDerivedSource_map_weak` があり、反転の方はその定理を使える。
+
+欄の型の候補。第 1 の比較は成分を既存 `restrictD_homology` に合わせるか、現在の同型をこの比較の成分として定義する。第 2 の比較からは Tot のコホモロジーの同定を読み、擬同型の反転には D(S) の全次数 Hⁱ による検出を使う。
+
+```lean
+-- HAdd S i := cohomologyOnHo S i ⋙ forget₂ (ModuleCat S) AddCommGrpCat
+restrictD_homologyIso (f : S →+* T) (i : ℤ) :
+  hoMap (restrictD f) ⋙ HAdd S i ≅ HAdd T i
+
+strictToD_homologyIso (S : Type u) [CommRing S] (i : ℤ) :
+  ordinaryToHoNerve (Complex S) ⋙ hoMap (strictToD S) ⋙ cohomologyOnHo S i ≅
+    HomologicalComplex.homologyFunctor (ModuleCat S) (ComplexShape.up ℤ) i
+```
+
+A1 の二本は後回し（`CrystallineInput.lean`・`HodgeTateMap.lean`、⑤b）。`DeRhamComparisonPoly` の `rootFormsAugmentation` では、`ofCdga` で送った厳密な増大の後に `ofCdga_discrete` の成分を合成する経路まで確認した。始点の `formsVertex` と `bigZigzagIso` の最後の `pdDeRhamFunctorIso` は後回しの `CrystallineInput` で定義している。`totEInfinity_cohomologyRing : True` は元のまま。既存 drafts に差分がないので、模型参照 0 の検査は未達。
+
+A0・A3 は ⑤c（main d39908253 の BS-W14 §4。A0/CechAlexander.lean は例外）。これらのファイルにも差分なし。
+
+### 段 2 の完了分（G1′）
+
+`SerrePositivity.EInfinity.Perfectoidization.TheoryInterface` を新設した。`TheoryBSLimitConeData`・`TheoryPerfectoidizationInterface`・`TheoryPerfectoidizationInterface.toE3`・`nonempty_e3_of_theory` を `E : EInfinityTheory` で述べた。元の単位、H⁰ の環、指定錐の境界・頂点、excision の通常の商を保持している。必要な E の欄は段 1 の中核に収まり、上記の二つの比較には依存しない。従来の Barratt–Eccles 版の宣言は無変更。
+
+`--wait 1800` の共有鍵でこの 1 モジュールを対象ビルド。限定監査は **63 宣言、標準三公理のみ**。本体の新規 `sorry`・公理は各 0。この 1 モジュールを段 2 の完了分として入口・監査の登録候補にする。今回のビルドでは既存の `Perfectoid/Defs` と `Derived/Interface` の linter 警告が再表示された。
