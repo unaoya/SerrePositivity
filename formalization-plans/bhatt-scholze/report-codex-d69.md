@@ -147,3 +147,14 @@
 - `wittToSmall` は、第 0 Witt 成分に沿って係数を制限した小さい分冪模型への厳密な自然変換。大きい枠の変数 `(q, i)` を、頂点 `i` における完備多項式 `q` の評価へ送る。剰余での評価が一致することを確かめ、完備分冪包の普遍性を使った。
 - 単体の射と多項式代入との可換性は、完備化前の多項式と枠の変数で検査した。導来 p 完備な係数変更後の擬同型性は残っている。
 - `SerrePositivity.BhattScholze.Prismatic.WittToSmall` の鍵付き対象ビルドが通過。段 2 のここまでの21モジュールを一時監査し、非公開を含む774宣言は標準三公理のみ。追加公理と `sorry` は0。
+
+## 段 2（P2）途中 — 大きい Witt 枠の正則性
+
+- 第 0 頂点の通常の多項式変数を残し、余分な変数から剰余評価の多項式の持ち上げを引いた。座標変換後の完備分冪包は、残した座標の多項式環と余分な座標の自由分冪代数とのテンソル積の p 完備化で計算できる。
+- この模型の p 正則性を元の分冪包へ移して `wittBigCrystalline` を構成した。零環の剰余は別に扱い、座標の選択は正則性の証明だけに使った。
+- 変数を改名する Witt 係数の分冪射が結晶 δ 構造を保つことを示した。Frobenius との二つの合成は、標的の (p) 上の標準分冪への分冪射として係数と変数で一致する。
+- 以下の4モジュールは鍵付き対象ビルドを通過。段 2 の累計25モジュールの一時監査で、非公開を含む895宣言が標準三公理のみであることを確認した。追加公理と `sorry` は0。
+  - `SerrePositivity.BhattScholze.Prismatic.PDPolynomialSplitEnvelope`
+  - `SerrePositivity.BhattScholze.Prismatic.PDPolynomialGraph`
+  - `SerrePositivity.BhattScholze.Prismatic.WittBigCrystalline`
+  - `SerrePositivity.BhattScholze.Prismatic.WittPDPrismMaps`
