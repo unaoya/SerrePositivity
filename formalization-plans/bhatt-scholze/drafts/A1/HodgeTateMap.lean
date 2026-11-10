@@ -2,7 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateZero
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms
 
 -- 本ファイルは drafts/A2/DerivedPrismaticCohomology.lean（Poly 上の RΓ まで）、drafts/A0/CechAlexander.lean（C^•、`cechAlexanderAffine`）、drafts/Shared/{CosimplicialCupProduct,DeRhamPolynomial}.lean と本体の `HomologicalAlgebra/Cosimplicial/BocksteinClass` を使う。
 
@@ -38,35 +39,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.EInfinity SerrePositivit
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (r : ℕ)
 
-abbrev hodgeTateCohomology' (i : ℕ) := cohomology (reducedModel P hP r) i
-abbrev htSequence := regularShortExact (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r)
-  (htGenerator_regular P hP r) A (htBase P hP r)
-
-def moduleCohomologyBridge (k : Type u) [CommRing k] (X : CosimplicialObject CommRingCat.{u})
-    (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ X) (i : ℕ) :
-    cohomology X i ≃+ ((AlgebraicTopology.alternatingCofaceMapComplex _).obj (toModules k X ι)).homology i := by
-  refine (cohomologyEquivHomology X i).trans ?_
-  sorry -- 加群から加法群への忘却はホモロジーを保つ
-
-def bockstein (i : ℕ) : hodgeTateCohomology' P hP r i →+ hodgeTateCohomology' P hP r (i+1) := by
-  let β := regularBockstein (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r)
-    (htGenerator_regular P hP r) A (htBase P hP r) i
-  exact (moduleCohomologyBridge A (reducedModel P hP r) _ (i+1)).symm.toAddMonoidHom.comp
-    (β.hom.toAddMonoidHom.comp (moduleCohomologyBridge A (reducedModel P hP r) _ i).toAddMonoidHom)
-
-/-- 概要：η^0 : R → H^0（R → C^0/dC^0 の合成）。
-方針：R → C^0/dC^0 は A0 の `sec`。余輪体。
-規約：環の射。
-使われ方：H^* の R 代数構造、η^1。 -/
-instance : CommRing (hodgeTateCohomology' P hP r 0) := by
-  sorry -- 次数零の cohomology を二つの余面の等化部分環に移送。積は cohomologyCup
-def htZeroCycles := ((reducedModel P hP r).map (SimplexCategory.δ (0 : Fin 2))).hom.eqLocus
-  (((reducedModel P hP r).map (SimplexCategory.δ (1 : Fin 2))).hom)
-def htZeroIso : hodgeTateCohomology' P hP r 0 ≃+* htZeroCycles P hP r := by
-  sorry -- cohomologyEquivHomology の次数 0 では境界は零、cup は同じ項での積
-def hodgeTateMapZero : affineAlgebra P r →+* hodgeTateCohomology' P hP r 0 :=
-  (htZeroIso P hP r).symm.toRingHom.comp
-    ((htSec P hP r ⦋0⦌).codRestrict _ (by sorry)) -- sec は余面に自然
+-- η⁰ と Bockstein は本体の HodgeTateZero に置く。
 
 /-- R 作用は η⁰ の像との左 cup 積。 -/
 def htModuleData (i : ℕ) :
@@ -78,24 +51,7 @@ abbrev htModule (i : ℕ) := (htModuleData P hP r i).val
 
 local instance (i : ℕ) : Module (affineAlgebra P r) (hodgeTateCohomology' P hP r i) := htModule P hP r i
 
-/-- 概要：η^1 : Ω^1_{R/(A/d)} → H^1、dX_j ↦ β(η^0 X_j)、R 線形に延ばす（Ω^1 は dX_j 上自由）。
-方針：`DeRham.dX` の像を指定して線形に延ばす。
-規約：原典の f dg ↦ f β(g)。
-使われ方：η^*。 -/
-abbrev formVars (r : ℕ) := ULift.{u} (Fin r)
-local instance completedCoordinateRing (k : Type u) [CommRing k] (n : ℕ) :
-    CommRing (DeRham.completedPoly k (formVars.{u} n) p) :=
-  SerrePositivity.DerivedCompletion.principalCompletionCommRing _ _
-
-abbrev affineForms (i : ℕ) := DeRham.completedForms (A ⧸ P.ideal) (formVars.{u} r) p i
-def affineCoordinateIso : affineAlgebra P r ≃+* DeRham.completedPoly (A ⧸ P.ideal) (formVars.{u} r) p := by
-  sorry -- X_j↦X_(up j) と逆の rename を p 完備化単位から延長
-instance (i : ℕ) : Module (affineAlgebra P r) (affineForms P r i) :=
-  Module.compHom _ (affineCoordinateIso P r).toRingHom
-def degreeZeroForm : affineAlgebra P r ≃ₗ[affineAlgebra P r] affineForms P r 0 := by
-  sorry -- Ω̂⁰ の基底 1 に係数を掛ける
-abbrev affineD (i : ℕ) := DeRham.completedDeRhamD (A ⧸ P.ideal) (formVars.{u} r) p i
-abbrev affineWedge {i j : ℕ} := @DeRham.completedWedge (A ⧸ P.ideal) _ (formVars.{u} r) _ _ p i j
+-- affineForms、degreeZeroForm と完備微分・外積は本体の HodgeTateAffineForms に置く。
 
 def htOneData :
     { l : affineForms P r 1 →ₗ[affineAlgebra P r] hodgeTateCohomology' P hP r 1 //

@@ -2,6 +2,10 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamRow
+public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
+public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
+
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
@@ -135,22 +139,7 @@ abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
 
 -- 完備 pd 模型は本体の PDCompletedCech に置く。
 
-/-- Ω^j_pd(D₀^•) の基底は各 copy の dX。γ_m(z) の微分は γ_{m−1}(z) dz。 -/
-def pdRow (k : Type u) [CommRing k] (r j : ℕ) : CosimplicialObject (ModuleCat.{u} k) where
-  obj n := ModuleCat.of k ((pdTerm p k r n.len) ⊗[k]
-    (⋀[k]^j ((Fin r × Fin (n.len+1)) →₀ k)))
-  map θ := by sorry -- pdModel の係数射と dX^(a)↦dX^(θa) の j 次外冪
-  map_id := by sorry -- 外冪基底上で恒等
-  map_comp := by sorry -- 代入は pd 微分と可換
-
-/-- 概要：G-A1-14：j ≥ 1 の行 Ω^j_pd(D_0^•) は余単体的加群として収縮可能（[BdJ11, Lemma 2.15–2.17]）。
-方針：Ω^1 に copy の基底ごとのホモトピーを作り、外冪・テンソル・p 完備化へ延ばす。j = 0 の行 D_0^• は収縮しない（W9-I-13）。
-規約：11-07：基底 k を一般にした（以前は ℤ_p に固定）。段 4 は k = F_p で使う。
-使われ方：段 4（`pdDeRhamCohomologyIso`）、A1-5 の大きい模型（§10.5）。 -/
-theorem pdRow_contractible (k : Type u) [CommRing k] (r j : ℕ) (hj : 0 < j) :
-    let K := (AlgebraicTopology.alternatingCofaceMapComplex _).obj (pdRow p k r j)
-    Nonempty (Homotopy (𝟙 K) 0) := by
-  sorry -- G-A1-14。Bhatt–de Jong の Ω¹ の収縮を copy の基底で作り、外冪・p 完備化へ延長
+-- pdRow と正次数の行の収縮は本体の PDDeRhamRow に置く。
 
 -- 高次座標の Čech 模型は本体の CrystallineExtraModel に置く。
 
@@ -421,13 +410,7 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 4：H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]}) -/
 
-/-- 概要：D_0^•(ℤ_p)/p ≅ D_0^•(F_p)（分冪代数の底変換、F_p では p 完備化は恒等）。
-方針：`DividedPowerAlgebra` と多項式環の底変換、完備化の mod p。
-規約：余単体的可換環の同型。
-使われ方：段 4・6。 -/
-def pdModel_modP (r : ℕ) :
-    modPrimeCosimplicial p (pdRings.{u} p r) ≅ pdModel p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p)) := by
-  sorry -- 項ごとに pdRaw の ℤ_p → F_p 底変換。copy 写像と可換
+-- pdModel_modP は本体の PDModelReduction に置く。
 
 /-- 概要：G-A1-7：pd de Rham 微分 Ω^j_pd(D_0^•) → Ω^{j+1}_pd(D_0^•)（dγ_m(z) = γ_{m−1}(z)dz、余単体的射）。
 方針：pd 代数の微分を copy の dX の基底で。余面・余退化は pd 射なので可換。
@@ -522,13 +505,7 @@ def finitePolynomialCartier (n : ℕ) : PolynomialCartier.{u} p n := by
 
 /-! ### 段 6：生成元での照合と組み立て -/
 
-/-- 概要：affineForms（F_p⟨X⟩ の完備形式）と通常の形式の同一視（p = 0 なので完備化は恒等）。
-方針：`completedFormsUnit` が同型。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-def cartierFormsIso (r i : ℕ) :
-    affineForms (crystallineBasePrism.{u} p) r i ≃+ DeRham.forms (cartierBase.{u} p) (formVars.{u} r) i := by
-  sorry -- p=0 の環では p 進完備化は恒等。completedFormsUnit の逆
+-- cartierFormsIso は本体の CartierCompletedForms に置く。
 
 /-- 概要：段 2〜4 の合成 Ψ^i : H^i(C^•/p) ≅ H^i(Ω^•_{F_p[X]})。
 方針：段 2 の同型、段 3 の同型の逆、`pdModel_modP`、段 4。
