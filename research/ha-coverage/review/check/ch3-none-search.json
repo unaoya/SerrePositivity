@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "5db2dc51210dca6db1652baa6b395ce04b2a10c7",
+  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -943,6 +943,386 @@
         }
       ],
       "reason": "準圏の内部 Hom と局所化に沿う相対関手の比較を確認した。flat categorical fibration に沿う従属内部 Hom が categorical fibration を保ち、相対左 Kan 拡張を移す宣言は見つからなかった。"
+    },
+    "3.2.3.2": {
+      "ha_page": 365,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "forget_createsSiftedColimitsOfShape|CommMon.*[Cc]olimit|CAlg.*[Cc]olimit|[Ss]ifted.*commutative",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "forget_createsSiftedColimitsOfShape|CommMon.*[Cc]olimit|CAlg.*[Cc]olimit|[Ss]ifted.*commutative",
+          "files_with_matches": 3,
+          "total_matching_lines": 8,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/Grp/FilteredColimits.lean",
+            "Mathlib/Algebra/Category/MonCat/FilteredColimits.lean",
+            "Mathlib/Algebra/Category/Ring/FilteredColimits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+          "sha256": "9587031794877945e849fecc9304d1907398d6870cf4c4890242a3afdd1eaebe"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+          "sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec"
+        }
+      ],
+      "reason": "dg operad の sifted 余極限を作る忘却と通常圏の CommMon を確認した。対称モノイダル ∞ 圏で CAlg(C) が指定形状の余極限を持ち、忘却がその余錐を検出する比較は見つからなかった。"
+    },
+    "3.2.3.3": {
+      "ha_page": 365,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "forget_createsColimit|forget_createsSiftedColimitsOfShape|kappa.*algebra|operad.*colimit",
+          "files_with_matches": 16,
+          "total_matching_lines": 26,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Limits.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraColimits.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraMonadic.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraReflexiveCoequalizers.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSmallObject.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorColimit.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorGenerators.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorMorphisms.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "forget_createsColimit|forget_createsSiftedColimitsOfShape|kappa.*algebra|operad.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraColimits.lean",
+          "sha256": "f97b411cf973db1c48a0e7597e1b6082da40b2da2d8f5a14f9eac003edb14146"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+          "sha256": "9587031794877945e849fecc9304d1907398d6870cf4c4890242a3afdd1eaebe"
+        }
+      ],
+      "reason": "dg 代数の余極限構成は図式ごとの有限テンソル冪の保存を仮定し、sifted 形状ではこの仮定を外せる。κ-small な ∞ operad 上の代数に任意の κ-small 余極限を与える型は見つからなかった。"
+    },
+    "3.2.3.4": {
+      "ha_page": 366,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "IsAccessibleFunctor|IsKappaAccessible|cocartesianStrictTransport|operad.*accessible",
+          "files_with_matches": 415,
+          "total_matching_lines": 1697,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakIdentitySpanPoint.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakSpanKanFiberComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakSpanKanFiberUnit.lean",
+            "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/WeakSpanKanUnstraighteningUnit.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneHomComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/AnodyneScaffoldTarget.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityAction.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityDiagram.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityDiagramComparison.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityEdgeEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityEvaluation.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/BaseChangeAssociativityFamily.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "IsAccessibleFunctor|IsKappaAccessible|cocartesianStrictTransport|operad.*accessible",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleFunctor.lean",
+          "sha256": "5ae5e40f51f2c212a60d04fb29569c9b9b76dd3d1f728e78d2a2b14cb8e33731"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean",
+          "sha256": "3e9895ae8625bbaf940309a96545f0bc4890b9752d460ab2354aac3388766a46"
+        }
+      ],
+      "reason": "アクセス可能な関手の定義と合成則、通常圏の nerve 上の余デカルト移送を確認した。色における条件を全ファイバーと全移送のアクセス可能性へ広げる、operadic な積分解を含む型は見つからなかった。"
+    },
+    "3.2.3.6": {
+      "ha_page": 367,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "finiteCommonFiberProduct_isRightCofinal|colim_preservesFiniteProducts_of_isSifted|PreservesColimit₂|separately.*colimit",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteFiberProduct.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "finiteCommonFiberProduct_isRightCofinal|colim_preservesFiniteProducts_of_isSifted|PreservesColimit₂|separately.*colimit",
+          "files_with_matches": 4,
+          "total_matching_lines": 33,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Limits/HasLimits.lean",
+            "Mathlib/CategoryTheory/Limits/Preserves/Bifunctor.lean",
+            "Mathlib/CategoryTheory/Limits/Sifted.lean",
+            "Mathlib/CategoryTheory/Monoidal/Limits/Colimits.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedFiniteFiberProduct.lean",
+          "sha256": "1e4f0a7e578e6e40f67256e5e798da3744b8f6c0a70f66e99b6e12031cb51536"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Limits/Sifted.lean",
+          "sha256": "92379a0e7bc44d8604d2b9ee81117f5827ee033b45e8438c07414b4efc2a428e"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Limits/Preserves/Bifunctor.lean",
+          "sha256": "070e1023a5e7da70252d13bdc837b8124e61f6a412542721fd118fc6ec6815c7"
+        }
+      ],
+      "reason": "Mathlib の sifted colimit と集合値有限積の交換は特定の余極限関手について述べる。準圏での有限共通ファイバー積の cofinality も確認したが、各変数の保存から有限変数の関手全体の保存を与える型は見つからなかった。"
+    },
+    "3.2.3.7": {
+      "ha_page": 367,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cocartesianStrictTransport|operad.*colimit|pushforward.*preserves.*colimit|transport.*preserves.*colimit",
+          "files_with_matches": 232,
+          "total_matching_lines": 1043,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraColimits.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraMonadic.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraReflexiveCoequalizers.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSiftedColimits.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraSmallObject.lean",
+            "SerrePositivity/EInfinity/Operad/FreeAlgebraColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurColimits.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorColimit.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorGenerators.lean",
+            "SerrePositivity/EInfinity/Operad/SchurTensorMorphisms.lean",
+            "SerrePositivity/EInfinity/Operad/TensorColimitMorphisms.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cocartesianStrictTransport|operad.*colimit|pushforward.*preserves.*colimit|transport.*preserves.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1B/Fibrations/CocartesianStrictTransport.lean",
+          "sha256": "3e9895ae8625bbaf940309a96545f0bc4890b9752d460ab2354aac3388766a46"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+          "sha256": "b55bf7f56390bce90db3e384ea1a7912e0cc5f4a8bc481b16613c7f73d540fbd"
+        }
+      ],
+      "reason": "通常圏の nerve 上の余デカルト移送の定義と合成則を確認したが、余極限保存は含まれない。active な演算が各変数で保存することから、任意の f に沿う移送が保存する結論は見つからなかった。"
+    },
+    "3.2.3.8": {
+      "ha_page": 368,
+      "citation_scan": {
+        "exact": {
+          "prefix": "3.2.3.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "3.2.3",
+          "lean": 0,
+          "plan": 9
+        },
+        "neighbors": [
+          {
+            "prefix": "3.2.2",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "3.2.4",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "exists_colimitCone_functor_of_pointwise|markedCocartesianFamilyColimitLift|relative.*section.*colimit|operadic.*weaklyContractible",
+          "files_with_matches": 11,
+          "total_matching_lines": 21,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/ArrowColimitConeExistence.lean",
+            "SerrePositivity/InfinityCategories/F2/Compact/ExchangeCoconeCompletion.lean",
+            "SerrePositivity/InfinityCategories/F2/Ind/FunctorFilteredColimits.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/CatInfinity/FunctorColimitConeExistence.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/FunctorColimitEvaluation.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/PresheafCoherentColimitCones.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/SectionShapeOverDiagram.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "exists_colimitCone_functor_of_pointwise|markedCocartesianFamilyColimitLift|relative.*section.*colimit|operadic.*weaklyContractible",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/CatInfinity/FunctorColimitConeExistence.lean",
+          "sha256": "2f0bad1a7794fd55f615565c35494452c39d2470bb4e115dff781c3c89b2f56d"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+          "sha256": "6c7da5c2c66f19f1b3132e87d177794317a2751b6ff1115aa448064a2ddffeac"
+        }
+      ],
+      "reason": "通常の関手準圏の点ごとの余極限と、余デカルト辺を保つ写像の図式の貼り合わせを確認した。E₀ に射影する余デカルト・ファイブレーションで、色の仮定から任意の切断の余極限を作る型や、代数・モノイダル切断の閉性は見つからなかった。"
     }
   }
 }

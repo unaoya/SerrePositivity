@@ -1,10 +1,45 @@
 {
-  "worktree_commit": "5db2dc51210dca6db1652baa6b395ce04b2a10c7",
+  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
-  "items": {},
-  "declarations": {},
+  "items": {
+    "3.2.2.9": {
+      "ha_page": 362,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone",
+        "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits"
+      ]
+    }
+  },
+  "declarations": {
+    "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone": {
+      "name": "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone",
+      "module": "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
+      "path": "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean",
+      "line": 25,
+      "source_sha256": "17c3d894656f052d6a4215fc1ab339d1beb48736b2fc790c6061385c0ba30f09",
+      "type": "@SerrePositivity.InfinityCategories.exists_pointwiseLimitCone.{u_1} : ∀ {J K X : SSet.{u_1}} [X.Quasicategory]\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      J (K ⟹ X)),\n  @SerrePositivity.InfinityCategories.HasPointwiseLimits.{u_1} J K X p →\n    ∃ c, @SerrePositivity.InfinityCategories.IsPointwiseLimitCone.{u_1} J K X p c",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits": {
+      "name": "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits",
+      "module": "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
+      "path": "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean",
+      "line": 84,
+      "source_sha256": "17c3d894656f052d6a4215fc1ab339d1beb48736b2fc790c6061385c0ba30f09",
+      "type": "@SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits.{u_1} : ∀ {J K X : SSet.{u_1}}\n  [X.Quasicategory]\n  {p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      J (K ⟹ X)},\n  @SerrePositivity.InfinityCategories.HasPointwiseLimits.{u_1} J K X p →\n    ∀ (c : @SerrePositivity.InfinityCategories.JoinCone.{u_1} J (K ⟹ X) p),\n      Iff (@SerrePositivity.InfinityCategories.IsLimitCone.{u_1} J (K ⟹ X) p c)\n        (@SerrePositivity.InfinityCategories.IsPointwiseLimitCone.{u_1} J K X p c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
   "kernel_commands": [
     "#check @<declaration>",
     "#print axioms <declaration>"

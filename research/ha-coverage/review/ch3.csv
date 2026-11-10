@@ -9,6 +9,13 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.2.2.6,none,,dg operad の forget_reflectsIsomorphisms が反映するのは台複体の厳密な同型。指定の ∞ operad 上の代数間の同値を全ての色での評価で反映する宣言は見つからなかった。,,not_found,
 3.2.2.7,none,,右ファイブレーションの余スライスの比較と左 Kan 拡張を探した。右ファイブレーションに沿う前合成が、指定の充満包含に関する q-相対左 Kan 拡張を保つ型は確認できなかった。,,not_found,
 3.2.2.8,none,,準圏の内部 Hom と局所化に沿う相対関手の比較を確認した。flat categorical fibration に沿う従属内部 Hom が categorical fibration を保ち、相対左 Kan 拡張を移す宣言は見つからなかった。,,not_found,
+3.2.2.9,partial,SerrePositivity.InfinityCategories.exists_pointwiseLimitCone @ SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean:25 | SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits @ SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean:84,仮定：任意の二つの単体集合を図式・パラメーターとし、準圏 X で全評価図式が極限を持つ（Lean が強い：底 D が終準圏の場合に限る）。結論：点ごとの極限錐が自然な族に延長でき、関手 ∞ 圏の極限性が点ごとの極限性と同値（一致する絶対極限の特殊例）。,,found,special
 3.2.3.1,none,,dg operad の forget_createsSiftedColimitsOfShape と準圏の前層の sifted 余極限を確認した。任意の sifted 単体集合 K に対する代数切断の閉性と色ごとの余極限判定は見つからなかった。,,not_found,
+3.2.3.2,none,,dg operad の sifted 余極限を作る忘却と通常圏の CommMon を確認した。対称モノイダル ∞ 圏で CAlg(C) が指定形状の余極限を持ち、忘却がその余錐を検出する比較は見つからなかった。,,not_found,
+3.2.3.3,none,,dg 代数の余極限構成は図式ごとの有限テンソル冪の保存を仮定し、sifted 形状ではこの仮定を外せる。κ-small な ∞ operad 上の代数に任意の κ-small 余極限を与える型は見つからなかった。,,not_found,
+3.2.3.4,none,,アクセス可能な関手の定義と合成則、通常圏の nerve 上の余デカルト移送を確認した。色における条件を全ファイバーと全移送のアクセス可能性へ広げる、operadic な積分解を含む型は見つからなかった。,,not_found,
 3.2.3.5,none,,dg operad の代数の通常の余極限と、加群の導来 ∞ 圏の presentability を確認した。小さい ∞ operad 上の代数の可到達性・presentability へ移す型は見つからなかった。,,not_found,
+3.2.3.6,none,,Mathlib の sifted colimit と集合値有限積の交換は特定の余極限関手について述べる。準圏での有限共通ファイバー積の cofinality も確認したが、各変数の保存から有限変数の関手全体の保存を与える型は見つからなかった。,,not_found,
+3.2.3.7,none,,通常圏の nerve 上の余デカルト移送の定義と合成則を確認したが、余極限保存は含まれない。active な演算が各変数で保存することから、任意の f に沿う移送が保存する結論は見つからなかった。,,not_found,
+3.2.3.8,none,,通常の関手準圏の点ごとの余極限と、余デカルト辺を保つ写像の図式の貼り合わせを確認した。E₀ に射影する余デカルト・ファイブレーションで、色の仮定から任意の切断の余極限を作る型や、代数・モノイダル切断の閉性は見つからなかった。,,not_found,
 3.2.4.7,none,,普通圏の可換モノイド対象と dg の commutativeOperad を確認した。HA で指定される CAlg(C) の対称モノイダル ∞ 構造が余デカルトであるという判定は見つからなかった。,,not_found,

@@ -308,7 +308,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.0.0.4,Remark,∞-Operads (p. 166),2,,,,,0,0,,-
 2.0.0.5,Remark,∞-Operads (p. 166),2,,,,,0,0,,-
 2.0.0.6,Remark,∞-Operads (p. 167),2,,,,,0,0,,-
-2.0.0.7,Definition,∞-Operads (p. 169),2,,,,,0,0,,E∞
+2.0.0.7,Definition,対称モノイダル ∞ 圏の余デカルト・ファイブレーションによる定義,2,,,,,0,0,,E∞
 2.0.0.8,Remark,∞-Operads (p. 169),2,,,,,0,0,,-
 2.1.1.1,Definition,From Colored Operads to ∞-Operads (p. 171),2.1.1,,,,,0,0,,-
 2.1.1.2,Remark,From Colored Operads to ∞-Operads (p. 172),2.1.1,,,,,0,0,,-
@@ -319,7 +319,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.1.7,Construction,From Colored Operads to ∞-Operads (p. 173),2.1.1,,,,,0,0,,-
 2.1.1.8,Definition,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,-
 2.1.1.9,Remark,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,-
-2.1.1.10,Definition,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,E∞
+2.1.1.10,Definition,∞ オペラッドの inert 持ち上げと Segal 条件,2.1.1,,,,,0,0,,E∞
 2.1.1.11,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
 2.1.1.12,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
 2.1.1.13,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
@@ -332,7 +332,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.1.20,Example,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
 2.1.1.21,Example,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
 2.1.1.22,Notation,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
-2.1.1.23,Definition,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,E∞
+2.1.1.23,Definition,単体的色付きオペラッドのオペラッド nerve,2.1.1,,,,,0,0,,E∞
 2.1.1.24,Remark,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
 2.1.1.25,Remark,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
 2.1.1.26,Definition,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
@@ -343,7 +343,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.2.4,Proposition,Maps of ∞-Operads (p. 178),2.1.2,,,,,0,0,,-
 2.1.2.5,Proposition,Maps of ∞-Operads (p. 178),2.1.2,,,,,0,0,,-
 2.1.2.6,Remark,Maps of ∞-Operads (p. 179),2.1.2,,,,,0,0,,-
-2.1.2.7,Definition,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,E∞
+2.1.2.7,Definition,inert 射を保つ ∞ オペラッド写像と代数の ∞ 圏,2.1.2,,,,,0,0,,E∞
 2.1.2.8,Warning,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
 2.1.2.9,Remark,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
 2.1.2.10,Definition,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
@@ -359,7 +359,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.2.20,Remark,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
 2.1.2.21,Example,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
 2.1.2.22,Proposition,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
-2.1.3.1,Definition,Algebra Objects (p. 184),2.1.3,,,,,0,0,,E∞
+2.1.3.1,Definition,底を固定したオペラッド代数と可換代数の ∞ 圏,2.1.3,,,,,0,0,,E∞
 2.1.3.2,Remark,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
 2.1.3.3,Example,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
 2.1.3.4,Remark,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
@@ -613,7 +613,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.1.3.2,Proposition,Construction of Free Algebras (p. 342),3.1.3,,,,,0,0,,-
 3.1.3.3,Proposition,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,-
 3.1.3.4,Corollary,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,-
-3.1.3.5,Corollary,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,E∞
+3.1.3.5,Corollary,オペラッド代数の制限の左随伴,3.1.3,,,,,0,0,,E∞
 3.1.3.6,Example,Construction of Free Algebras (p. 344),3.1.3,,,,,0,0,,-
 3.1.3.7,Corollary,Construction of Free Algebras (p. 344),3.1.3,,,,,0,0,,-
 3.1.3.8,Remark,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
@@ -621,7 +621,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.1.3.10,Notation,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
 3.1.3.11,Remark,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
 3.1.3.12,Definition,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
-3.1.3.13,Proposition,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,E∞
+3.1.3.13,Proposition,自由オペラッド代数の存在と対称冪の余積による判定,3.1.3,,,,,0,0,,E∞
 3.1.3.14,Example,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,-
 3.1.3.15,Remark,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,-
 3.1.3.16,Lemma,Construction of Free Algebras (p. 347),3.1.3,,,,,0,0,,-
@@ -644,7 +644,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.2.2.3,Corollary,Limits of Algebras (p. 358),3.2.2,,,,,0,0,,-
 3.2.2.4,Corollary,Limits of Algebras (p. 358),3.2.2,,,,,0,0,,-
 3.2.2.5,Corollary,代数の極限の存在とファイバーごとの計算,3.2.2,,,,,0,2,,BS;E∞
-3.2.2.6,Lemma,Limits of Algebras (p. 359),3.2.2,,,,,0,0,,E∞
+3.2.2.6,Lemma,各色の評価による代数の同値判定,3.2.2,,,,,0,0,,E∞
 3.2.2.7,Lemma,Limits of Algebras (p. 359),3.2.2,,,,,0,0,,-
 3.2.2.8,Lemma,Limits of Algebras (p. 360),3.2.2,,,,,0,0,,-
 3.2.2.9,Lemma,Limits of Algebras (p. 362),3.2.2,,,,,0,0,,-
@@ -856,7 +856,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 4.1.7.3,Notation,Monoidal Model Categories (p. 486),4.1.7,,,,,0,0,,-
 4.1.7.4,Proposition,テンソル積と両立するモノイド ∞ 圏の局所化,4.1.7,,,,,0,1,,inf;E∞
 4.1.7.5,Remark,Monoidal Model Categories (p. 486),4.1.7,,,,,0,0,,-
-4.1.7.6,Example,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,E∞
+4.1.7.6,Example,余ファイブラント対象の局所化が受け継ぐモノイダル構造,4.1.7,,,,,0,0,,E∞
 4.1.7.7,Definition,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
 4.1.7.8,Definition,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
 4.1.7.9,Remark,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-

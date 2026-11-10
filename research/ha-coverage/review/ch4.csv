@@ -4,7 +4,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.7.3,partial,SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization @ SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean:84,仮定：C はモデル圏の通常の nerve で、W は弱同値。関手的分解と指定フレームを要求する（Lean が強い：一般の準圏と system を扱わない）。結論：指定された弱同値を反転する普遍的な C[W⁻¹] の模型（一致する特殊例。全 system に対する左随伴の構成は型にない）。,,found,special
 4.1.7.4,none,,Mathlib の LocalizedMonoidal は普通圏の局所化にモノイダル構造を入れ、IsLocalization は準圏で W を反転する一般の普遍性を述べる。両者を結び、モノイダル ∞ 関手の充満部分圏で普遍性を与える宣言は確認できなかった。,,not_found,
 4.1.7.5,none,,通常のモノイダル局所化からの持ち上げを調べた。下の ∞ 圏の局所化を同じくする二つのモノイダル ∞ 関手を同値まで比較する型は見つからなかった。,,not_found,
-4.1.7.6,none,,tensor_isCofibrant と Brown の補題は cofibrant 部分圏でのテンソルの振る舞いを示す。モデル圏の hammock 局所化を確認したが、その標的にモノイダル ∞ 構造を与える比較は見つからなかった。,,not_found,
+4.1.7.6,partial,SerrePositivity.Quillen.tensor_isCofibrant @ SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean:49,"仮定：余ファイブラントな X,Y と、組紐付き閉モノイダルモデル圏のテンソルの Quillen 条件（Lean が強い：組紐付き閉の場合）。結論：X⊗Y が余ファイブラントであること（HA の Aᶜ がテンソルで閉じる部分に一致）。弱同値の両側保存と、局所化上のモノイダル ∞ 構造はこの型に含まれない。",,found,component
 4.1.7.7,none,,固定した豊穣テンソル・余テンソルと普通圏の MonoidalClosed を確認した。モノイダル積自体の単体豊穣性と、その内部 Hom の評価が写像単体集合を同型にする両側の条件は見つからなかった。,,not_found,
 4.1.7.8,none,,普通圏の MonoidalModelCategory と固定 SM7 の条件を確認した。HA §4.1.7.7 の内部 Hom の整合条件を満たす単体モノイダルモデル圏の型は見つからなかった。,,not_found,
 4.1.7.9,none,,豊穣テンソルのモデル圏条件と複体への正規化鎖関手を確認した。対称モノイダル左 Quillen 関手 SetΔ→A による互換性の分類と ψ(K)⊗A を用いる表現を一緒に与える型は見つからなかった。,,not_found,
@@ -18,3 +18,18 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.7.17,none,,通常の cf 単体豊穣圏の nerve と通常圏のモノイダル局所化を確認した。有限入力の線形順序を走る多入力 Hom から Assoc⊗ 上の nerve を作り、指定モノイダル局所化と比較する型は見つからなかった。,,not_found,
 4.1.7.18,none,,単体集合のモデル構造と dg operad のモデル関連宣言を調べた。∞ 前オペラッドのモノイダルモデル構造と、Assoc⊗ 上の指定ホモトピー引き戻しは見つからなかった。,,not_found,
 4.1.7.19,none,,cf 単体豊穣圏の coherent nerve はある。∞ 前オペラッドの cf 模型の nerve を Op∞ と同定する比較は見つからなかった。,,not_found,
+4.1.8.1,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean が弱い：組合せ的・対称であることを仮定しない）。結論：自明余ファイブレーションを右から任意の対象でテンソルして作る、指定宇宙の余積・押し出し・超限合成とそのレトラクトの弱同値性（対称な場合に HA の生成射と同じ右テンソル側）。全宇宙の最小弱飽和類との比較は型に含まれない。,,found,component
+4.1.8.2,none,,CofibrantTensor は余ファイブラントな対象によるテンソルが左 Quillen であることを示す。全対象が余ファイブラントな場合に、生成された弱飽和類が自明余ファイブレーションに含まれるという包含や HasMonoidAxiom の帰結は見つからなかった。,,not_found,
+4.1.8.3,partial,SerrePositivity.EInfinity.DGAlgebra.modelCategory @ SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean:28 | SerrePositivity.EInfinity.DGAlgebra.modelCategory_weakEquivalences @ SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean:44 | SerrePositivity.EInfinity.DGAlgebra.modelCategory_fibrations @ SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean:51 | SerrePositivity.EInfinity.DGAlgebra.forget_isRightQuillen @ SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean:77,仮定：可換環 R 上の鎖複体に射影モデル構造を選ぶ（Lean は底をこの例に固定）。結論：厳密な結合 dg 代数にモデル構造があり、弱同値は底の擬同型、ファイブレーションは底の射影ファイブレーション、忘却は右 Quillen（(1) のモデル構造と右類の記述および (2) に一致）。組合せ性・単体モデル構造・左固有性はこの型に含まれない。,,found,special
+4.1.8.4,none,,厳密な dg 代数のモデル構造とその hammock 局所化は構成される。底のモノイダル ∞ 局所化における Assoc-代数との標準比較とその同値性は見つからなかった。,,not_found,
+4.1.8.5,none,,dg 代数の frame の写像空間は比較されるが、指定された単体モノイダル模型の豊穣 Hom の部分複体を、任意の K に対する単位と乗法の二つの図式で特徴づける型は見つからなかった。,,not_found,
+4.1.8.6,none,,点付き準圏に対するスペクトルの豊穣化を確認した。対称スペクトルのモデル構造から smash 付き Sp とその結合代数の ∞ 圏を同定する比較は見つからなかった。,,not_found,
+4.1.8.7,none,,Cat∞ の豊穣 nerve と通常圏のモノイド対象を確認した。marked 単体集合の厳密モノイドによるモノイダル ∞ 圏の strictification は見つからなかった。,,not_found,
+4.1.8.8,none,,余ファイブラントな対象による通常のテンソルが左右で左 Quillen であることは確認した。誘導された二変数の ∞ 局所化のテンソルが、左右各変数で小余極限を保存する型は見つからなかった。,,not_found,
+4.1.8.9,none,,presentable ∞ 圏の関手圏における小余極限と一般のモノイダルモデル圏の公理を確認した。与えられたモノイダル presentable ∞ 圏を組合せ的単体モノイダルモデル圏で提示する比較は見つからなかった。,,not_found,
+4.1.8.10,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（定義は HA と一致。矢印圏の構造には Lean が強い：始対象を持つ Cartesian 閉の場合）。結論：指定の押し出しからテンソル先への射を与える二関手（HA と一致）と、Cartesian 閉の場合の矢印圏の対称モノイダル構造（HA の構造の主張をこの場合に確認）。,,found,special
+4.1.8.11,none,,HasMonoidAxiom は生成類の写像が弱同値であることを与え、テンソルの Quillen 条件は余ファイブレーションの押し出し積に適用される。生成済みの類自体が任意の対象によるテンソルと二つの元の押し出し積で閉じる型は見つからなかった。,,not_found,
+4.1.8.12,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：テンソルが Quillen 二関手で二本の射が余ファイブレーション（横射について HA と一致、比較四角形や対象の余ファイブラント性は要求しない）。結論：上段・下段に適用すると横の押し出し積が余ファイブレーションとなる部分に一致。縦射の弱同値性は型に含まれない。,,found,component
+4.1.8.13,none,,厳密な dg 代数のモデル構造と、通常圏の dg operad 代数の忘却が sifted 余極限を作る定理を確認した。局所化後の忘却が N(C) 型のホモトピー余極限を保存する型は見つからなかった。,,not_found,
+4.1.8.14,none,,通常圏のモノイド対象の忘却と右 Quillen の例を確認したが、対象が定める単体的モノイド図式への関手 G の左随伴、射影モデル構造に対する Quillen 随伴、右導来の本質像の判定は見つからなかった。,,not_found,
+4.1.8.15,none,,余ファイブラントな対象によるテンソルの左 Quillen 性を確認した。全対象が余ファイブラントな場合の左固有性・余ファイブラント対象間の射による生成と、Cartesian テンソルのモノイド公理をまとめる宣言は見つからなかった。,,not_found,
