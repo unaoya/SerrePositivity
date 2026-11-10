@@ -2,6 +2,12 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §10（D68 改訂後の経路、11-07）・§9、単位 A1-2／A1-3／A1-5。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly
+public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
+public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
+public import SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier
+
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
 public import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
@@ -135,22 +141,7 @@ abbrev polyPoint (k : Type u) [CommRing k] (n : ℕ) :=
 
 -- 完備 pd 模型は本体の PDCompletedCech に置く。
 
-/-- Ω^j_pd(D₀^•) の基底は各 copy の dX。γ_m(z) の微分は γ_{m−1}(z) dz。 -/
-def pdRow (k : Type u) [CommRing k] (r j : ℕ) : CosimplicialObject (ModuleCat.{u} k) where
-  obj n := ModuleCat.of k ((pdTerm p k r n.len) ⊗[k]
-    (⋀[k]^j ((Fin r × Fin (n.len+1)) →₀ k)))
-  map θ := by sorry -- pdModel の係数射と dX^(a)↦dX^(θa) の j 次外冪
-  map_id := by sorry -- 外冪基底上で恒等
-  map_comp := by sorry -- 代入は pd 微分と可換
-
-/-- 概要：G-A1-14：j ≥ 1 の行 Ω^j_pd(D_0^•) は余単体的加群として収縮可能（[BdJ11, Lemma 2.15–2.17]）。
-方針：Ω^1 に copy の基底ごとのホモトピーを作り、外冪・テンソル・p 完備化へ延ばす。j = 0 の行 D_0^• は収縮しない（W9-I-13）。
-規約：11-07：基底 k を一般にした（以前は ℤ_p に固定）。段 4 は k = F_p で使う。
-使われ方：段 4（`pdDeRhamCohomologyIso`）、A1-5 の大きい模型（§10.5）。 -/
-theorem pdRow_contractible (k : Type u) [CommRing k] (r j : ℕ) (hj : 0 < j) :
-    let K := (AlgebraicTopology.alternatingCofaceMapComplex _).obj (pdRow p k r j)
-    Nonempty (Homotopy (𝟙 K) 0) := by
-  sorry -- G-A1-14。Bhatt–de Jong の Ω¹ の収縮を copy の基底で作り、外冪・p 完備化へ延長
+-- pdRow と正次数の行の収縮は本体の PDDeRhamRow に置く。
 
 -- 高次座標の Čech 模型は本体の CrystallineExtraModel に置く。
 
@@ -421,43 +412,24 @@ abbrev cartierComplex (n : ℕ) := DeRham.deRhamComplex (cartierBase.{u} p) (for
 
 /-! ### 段 4：H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]}) -/
 
-/-- 概要：D_0^•(ℤ_p)/p ≅ D_0^•(F_p)（分冪代数の底変換、F_p では p 完備化は恒等）。
-方針：`DividedPowerAlgebra` と多項式環の底変換、完備化の mod p。
-規約：余単体的可換環の同型。
-使われ方：段 4・6。 -/
-def pdModel_modP (r : ℕ) :
-    modPrimeCosimplicial p (pdRings.{u} p r) ≅ pdModel p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p)) := by
-  sorry -- 項ごとに pdRaw の ℤ_p → F_p 底変換。copy 写像と可換
+-- pdModel_modP は本体の PDModelReduction に置く。
 
-/-- 概要：G-A1-7：pd de Rham 微分 Ω^j_pd(D_0^•) → Ω^{j+1}_pd(D_0^•)（dγ_m(z) = γ_{m−1}(z)dz、余単体的射）。
-方針：pd 代数の微分を copy の dX の基底で。余面・余退化は pd 射なので可換。
-規約：通常の Kähler 微分ではない（標数 p で余分な形式が出る、W9-I-14）。
-使われ方：双複体の縦の微分。 -/
-def pdDeRhamDifferential (k : Type u) [CommRing k] (r j : ℕ) : pdRow p k r j ⟶ pdRow p k r (j+1) := by
-  sorry -- f ⊗ ω ↦ Σ ∂_a f ⊗ (dX^(a) ∧ ω)。差の γ_m は γ_{m−1}(z)dz
-
-/-- 概要：双複体 K^{n,j} = Ω^j_pd(D_0^n)：第一の添字は余単体の次数 n（交代余面）、第二の添字は形式の次数 j（pd de Rham）。
-方針：`HomologicalComplex₂`。行 j は `pdRow p k r j` の交代余面複体、列は `pdDeRhamDifferential`。
-規約：符号は総複体の標準のもの。
-使われ方：段 4。 -/
-def pdDeRhamDoubleComplex (k : Type u) [CommRing k] (r : ℕ) :
-    HomologicalComplex₂ (ModuleCat.{u} k) (ComplexShape.up ℕ) (ComplexShape.up ℕ) := by
-  sorry -- 行の交代余面微分と列の pd 微分は可換（pdDeRhamDifferential は余単体的射）
+-- pdDeRhamDifferential と pdDeRhamDoubleComplex は本体の PDDeRhamBicomplex に置く。
 
 /-- 概要：列 n への Ω^•_{F_p[X]} の包含（copy 0 の座標 X^{(0)} と dX^{(0)}）。
 方針：多項式 ↦ copy 0 の多項式、dX ↦ dX^{(0)}。
 規約：どの copy を使っても余単体的に同じクラス。
 使われ方：`pdPoincare_column`。 -/
 def pdColumnInclusion (r n : ℕ) :
-    cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n := by
-  sorry -- copy 0 への代入。外積と微分を保つ
+    cartierComplex.{u} p r ⟶ (pdDeRhamDoubleComplex p (cartierBase.{u} p) r).X n :=
+  pdDeRhamPolynomialInclusion p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
 
 /-- 概要：G-A1-7：pd Poincaré 補題：列 n（Ω^•_pd(B_0⟨z_1,…⟩_pd)、B_0 = F_p[X^{(0)}]）は Ω^•_{F_p[X]} に擬同型。
 方針：一変数の Ω^•_pd(B⟨z⟩/B) ≃ B（dγ_m(z) = γ_{m−1}(z)dz で γ_m(z) の項が消える）をテンソルで。
 規約：標数 p でも成り立つのは pd 微分を使うから。
 使われ方：段 4。 -/
-theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) := by
-  sorry -- G-A1-7。一変数の pd Poincaré の Künneth
+theorem pdPoincare_column (r n : ℕ) : QuasiIso (pdColumnInclusion.{u} p r n) :=
+  pdDeRhamPolynomialInclusion_quasiIso p (cartierBase.{u} p) r (cartierBase_natCast p) ⦋n⦌
 
 /-- 概要：段 4：H^i(D_0^•(F_p)) ≅ H^i(Ω^•_{F_p[X]/F_p})。
 方針：双複体 `pdDeRhamDoubleComplex` の総複体 T を経由する span（**11-07 訂正**：行 0・列の包含は鎖写像でないので射影を使う、a1-design §10.3）：
@@ -468,8 +440,8 @@ Bockstein との両立（段 6）のため、同じ span を ℤ_p 上の厳密�
 使われ方：段 6 の `crystallineChain`。 -/
 def pdDeRhamCohomologyIso (r i : ℕ) :
     cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i ≃+
-      (cartierComplex p r).homology i := by
-  sorry -- 行 0 ← 総複体 → 列 0 = Ω^• の二つの射影（擬同型）。行 0 の項 pdRow 0 = pdTerm
+      (cartierComplex p r).homology i :=
+  pdDeRhamCechToPolynomial p (cartierBase.{u} p) r (cartierBase_natCast p) i
 
 /-- 概要：段 4 の同型は cup 積と外積に両立する。
 方針：総複体 T に、余単体の方向は厳密な Alexander–Whitney（`cup`）、形式の方向は外積、Koszul 符号の積を入れ、T → 行 0 と T → 列 0 = Ω^• の射影が
@@ -480,106 +452,21 @@ theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
     (a : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) i)
     (b : cohomology (pdModel.{u} p (cartierBase.{u} p) r ⋙ Under.forget (CommRingCat.of (cartierBase p))) j) :
     pdDeRhamCohomologyIso p r (i+j) (cohomologyCup _ a b) =
-      DeRham.deRhamCohomologyWedge _ _ (pdDeRhamCohomologyIso p r i a) (pdDeRhamCohomologyIso p r j b) := by
-  sorry -- 総複体の AW × 外積の積で二つの射影が dg 環の射
+      DeRham.deRhamCohomologyWedge _ _ (pdDeRhamCohomologyIso p r i a) (pdDeRhamCohomologyIso p r j b) :=
+  pdDeRhamCechToPolynomial_cup p (cartierBase.{u} p) r (cartierBase_natCast p) a b
 
 /-! ### 段 5：n 変数の Cartier 同型 -/
 
-def cartierTerm (n i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃ₗ[cartierBase p]
-    (cartierComplex.{u} p n).X i := by
-  sorry -- Shared の deRhamComplex の i 次項は通常の Ω^i
-
-/-- [f^p] ∈ H^0(Ω^•_{F_p[X]})（d(f^p) = p f^{p−1}df = 0）。 -/
-def cartierZeroClass (n : ℕ) (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) : (cartierComplex p n).homology 0 := by
-  let K := cartierComplex p n
-  let x : K.X 0 := cartierTerm p n 0 (DeRham.formsZeroEquiv _ _ (f ^ p))
-  exact K.homologyπ 0 (K.cyclesMk x 1 rfl (by sorry)) -- d(f^p)=0（標数 p）
-
-def cartierOneClass (n : ℕ) (j : formVars.{u} n) : (cartierComplex p n).homology 1 := by
-  let K := cartierComplex p n
-  let x : K.X 1 := cartierTerm p n 1
-    ((MvPolynomial.X j ^ (p-1)) • DeRham.dX (cartierBase p) (formVars n) j)
-  exact K.homologyπ 1 (K.cyclesMk x 2 rfl (by sorry)) -- d(X^(p−1)dX)=0
-
-/-- 概要：n 変数の inverse Cartier C^{-1} : Ω^i_{F_p[X]} → H^i(Ω^•_{F_p[X]})（F_p[X]^{(1)} ≅ F_p[X] と同一視）。
-方針：次数 0 は f ↦ [f^p]、次数 1 は dX_j ↦ [X_j^{p−1}dX_j]、外積に乗法的。
-規約：加法群の同型（F_p[X] 上では Frobenius 半線形）。
-使われ方：段 6。 -/
-structure PolynomialCartier (n : ℕ) where
-  app (i : ℕ) : DeRham.forms (cartierBase p) (formVars.{u} n) i ≃+ (cartierComplex p n).homology i
-  on_zero (f : MvPolynomial (formVars.{u} n) (cartierBase.{u} p)) :
-    app 0 (DeRham.formsZeroEquiv _ _ f) = cartierZeroClass p n f
-  on_one (j : formVars.{u} n) : app 1 (DeRham.dX (cartierBase p) _ j) = cartierOneClass p n j
-  mul {i j : ℕ} (ω : DeRham.forms (cartierBase p) (formVars.{u} n) i) (η : DeRham.forms (cartierBase p) (formVars.{u} n) j) :
-    app (i+j) (DeRham.wedge _ _ ω η) = DeRham.deRhamCohomologyWedge _ _ (app i ω) (app j η)
-
-/-- 概要：段 5：n 変数の Cartier 同型（G-A1-8）。
-方針：k = F_p で f dX_I を [f^p ∏_{j∈I} X_j^(p−1) dX_I] へ送る。一変数 Cartier の mod p 指数分解を n 回テンソル（G-A5-12 の n 変数版、Künneth）。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-def finitePolynomialCartier (n : ℕ) : PolynomialCartier.{u} p n := by
-  sorry -- 一変数の直接計算（G-A5-12）と de Rham 複体の Künneth
+-- 有限 Cartier と生成元の代表形式は本体の FinitePolynomialCartier に置く。
 
 /-! ### 段 6：生成元での照合と組み立て -/
 
-/-- 概要：affineForms（F_p⟨X⟩ の完備形式）と通常の形式の同一視（p = 0 なので完備化は恒等）。
-方針：`completedFormsUnit` が同型。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-def cartierFormsIso (r i : ℕ) :
-    affineForms (crystallineBasePrism.{u} p) r i ≃+ DeRham.forms (cartierBase.{u} p) (formVars.{u} r) i := by
-  sorry -- p=0 の環では p 進完備化は恒等。completedFormsUnit の逆
+-- cartierFormsIso は本体の CartierCompletedForms に置く。
 
-/-- 概要：段 2〜4 の合成 Ψ^i : H^i(C^•/p) ≅ H^i(Ω^•_{F_p[X]})。
-方針：段 2 の同型、段 3 の同型の逆、`pdModel_modP`、段 4。
-規約：加法群の同型。
-使われ方：段 6。 -/
-def crystallineChain (r i : ℕ) :
-    hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i ≃+ (cartierComplex.{u} p r).homology i :=
-  ((crystallineBridgeModP_isCohomologyIso p r).addEquiv i).trans
-    ((((pdInclusionModP_isCohomologyIso p r).addEquiv i).symm.trans
-      ((isCohomologyIso_of_isIso (pdModel_modP p r).hom).addEquiv i)).trans
-      (pdDeRhamCohomologyIso p r i))
+-- crystallineChain と crystallineChain_cup は本体の CrystallineChainProduct から使う。
 
-/-- 概要：Ψ は cup 積を外積に送る。
-方針：段 2・3 と `pdModel_modP` は余単体的可換環の射なので `cohomologyMap_cup`、段 4 は `pdDeRhamCohomologyIso_cup`。
-規約：—
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-theorem crystallineChain_cup (r : ℕ) {i j : ℕ}
-    (a : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r i)
-    (b : hodgeTateCohomology' (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r j) :
-    crystallineChain p r (i+j) (cohomologyCup _ a b) =
-      DeRham.deRhamCohomologyWedge _ _ (crystallineChain p r i a) (crystallineChain p r j b) := by
-  sorry -- cohomologyMap_cup を三回（逆写像も環の射）、pdDeRhamCohomologyIso_cup
-
-/-- 概要：段 6：生成元での照合：Ψ^0(η^0 X_j) = C^{-1}(X_j) = [X_j^p]、Ψ^1(η^1 dX_j) = C^{-1}(dX_j) = [X_j^{p−1}dX_j]。
-方針：次数 0：橋は X ↦ φ(X) ≡ X^p mod p、`pdInclusion` は X ↦ X、段 4 の次数 0 は copy 0 の包含。次数 1：η^1(dX_j) = β(η^0 X_j) で、
-橋と `pdInclusion` は整係数の厳密な余単体的射なので Bockstein と可換（`bockstein_natural`）。段 4 の zigzag も整係数の厳密な写像の mod p なので
-β_{D_0}[X^p] は de Rham 側の Bockstein [d(X^p)/p] = [X^{p−1}dX] に写る。
-規約：**TODO（a1-design §8 の 3、紙の確認は未）**：Bockstein の符号（Mathlib の連結準同型の規約）と cup 積の規約を固定して、
-β_{D_0}[X^p] = [Σ_{0<m<p} (binom(p,m)/p) X^{p−m} z^m + (p−1)! γ_p(z)] の段 4 での像が [X^{p−1}dX] であることを確かめる。
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-theorem crystallineChain_generators (r : ℕ) (j : Fin r) :
-    let Z := crystallineBasePrism.{u} p
-    let hZ := crystallineBaseBounded.{u} p
-    let c := finitePolynomialCartier.{u} p r
-    crystallineChain p r 0 (hodgeTateMapZero Z hZ r (prismPolynomialUnit Z (Fin r) (MvPolynomial.X j))) =
-        c.app 0 (DeRham.formsZeroEquiv _ _ (MvPolynomial.X (ULift.up j))) ∧
-      crystallineChain p r 1 (hodgeTateMapOne Z hZ r
-        (DeRham.completedFormsUnit _ _ p 1 (DeRham.dX _ _ (ULift.up j)))) = c.app 1 (DeRham.dX _ _ (ULift.up j)) := by
-  sorry -- 次数 0 は橋の φ と copy 0。次数 1 は bockstein_natural（橋・pdInclusion）と段 4 の整係数 zigzag。TODO §8 の 3
-
-/-- 概要：Cor 5.5 の (Z_p,(p))・F_p[X_1,…,X_n] の場合の本体：η^i は全単射（D68 改訂後、恒久の引用なし）。
-方針：Φ^i := (c.app i) ∘ `cartierFormsIso` と Ψ^i ∘ η^i が全次数で一致することを示す：両方とも加法的で、外積を cup／外積に送り
-（`HTAlgebraMap.product`・`crystallineChain_cup`・`PolynomialCartier.mul`）、次数 0 では環の射として X_j で一致（F_p[X] からの環の射）、
-次数 1 では dX_j で一致（`crystallineChain_generators`）。Ω^i は f·dX_{j_1}∧⋯∧dX_{j_i} で生成されるので一致。Φ^i・Ψ^i は同型なので η^i は全単射。
-規約：名前は D68 改訂前と同じ（「de Rham 比較と Cartier から」の意味は保つ）。
-使われ方：A1/HodgeTateComparison の `hodgeTate_iso_polynomial_Zp`。 -/
-theorem hodgeTate_of_deRham_cartier (n : ℕ) :
-    HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) n := by
-  have c := finitePolynomialCartier.{u} p n
-  have hcup := crystallineChain_cup.{u} p n
-  have hgen := crystallineChain_generators.{u} p n
-  sorry -- Ψ ∘ η^i = c.app i ∘ cartierFormsIso を外積の生成元で示し、η^i = Ψ⁻¹ ∘ c.app i ∘ cartierFormsIso
+-- crystallineChain_generators は本体の CrystallineGeneratorClasses に置く。
+-- 総複体で p で割った整係数の微分を還元し、第 0 行では Bockstein、第 0 列では一次 Cartier 類を得る。
+-- hodgeTate_of_deRham_cartier は本体の HodgeTateCartierAssembly に置く。
 
 end SerrePositivity.BhattScholze.Prismatic
