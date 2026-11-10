@@ -25,8 +25,7 @@ private theorem tensor_repr_map
     (x : B ⊗[k] L) (i : ι) :
     (b.baseChange C).repr (Algebra.TensorProduct.map f (AlgHom.id k L) x) i =
       f ((b.baseChange B).repr x i) := by
-  induction x using TensorProduct.induction_on with
-  | zero => simp
+  induction x using TensorProduct.inductionOn with
   | tmul a l =>
     simp [Algebra.smul_def]
   | add x y hx hy => simp [hx, hy]
@@ -37,7 +36,8 @@ private theorem tensor_mem_mapped_ideal_iff
     x ∈ I.map (Algebra.TensorProduct.includeLeft : B →ₐ[k] B ⊗[k] L).toRingHom ↔
       ∀ i, (b.baseChange B).repr x i ∈ I := by
   let f := Ideal.Quotient.mkₐ k I
-  have he := Algebra.TensorProduct.rTensor_ker (R := k) (S := k) f (C := L) Ideal.Quotient.mk_surjective
+  have he := Algebra.TensorProduct.rTensor_ker (R := k) (S := k) f (C := L)
+    Ideal.Quotient.mk_surjective
   change RingHom.ker (Algebra.TensorProduct.map f (AlgHom.id k L)).toRingHom =
     (RingHom.ker f.toRingHom).map
       (Algebra.TensorProduct.includeLeft : B →ₐ[k] B ⊗[k] L).toRingHom at he
