@@ -228,3 +228,33 @@ A0・A3 は ⑤c（main d39908253 の BS-W14 §4。A0/CechAlexander.lean は例�
 `SerrePositivity.EInfinity.Perfectoidization.TheoryInterface` を新設した。`TheoryBSLimitConeData`・`TheoryPerfectoidizationInterface`・`TheoryPerfectoidizationInterface.toE3`・`nonempty_e3_of_theory` を `E : EInfinityTheory` で述べた。元の単位、H⁰ の環、指定錐の境界・頂点、excision の通常の商を保持している。必要な E の欄は段 1 の中核に収まり、上記の二つの比較には依存しない。従来の Barratt–Eccles 版の宣言は無変更。
 
 `--wait 1800` の共有鍵でこの 1 モジュールを対象ビルド。限定監査は **63 宣言、標準三公理のみ**。本体の新規 `sorry`・公理は各 0。この 1 モジュールを段 2 の完了分として入口・監査の登録候補にする。今回のビルドでは既存の `Perfectoid/Defs` と `Derived/Interface` の linter 警告が再表示された。
+
+## 停止点 2（D73、§5 の自然比較と drafts）
+
+main 903ec3a0e（§5 の 217f931f9 を含む）を `math/bs-impl` に fast-forward して作業した。G1′ は取り込み済みの `TheoryPerfectoidizationInterface`、`TheoryBSLimitConeData`、`nonempty_e3_of_theory` を使う。
+
+- `EInfinity.Interface.Theory` に `restrictD_homologyIso` と `strictToD_homologyIso` を追加した。従来の頂点ごとの `EInfinityTheory.restrictD_homology` は同じ呼び出し方で自然同型の成分を読む。P⁰ の零次の式も同じ成分を使う。
+- Barratt–Eccles の `restrictD_homologyIso` は、導来係数制限そのものが M13 の未供給欄なので drafts に残した。`strictToD` は既存の `complexOrdinaryDerivedSource` を使う。各頂点の `complexSemifreeResolutionValueAugmentation_quasiIso` と射の `complexOrdinaryDerivedSource_map_weak` は本体にある。全 augmentation とその成分をホモロジー上で照合する自然同型の証明は `drafts/Shared/BarrattEcclesTheory.lean` に残した。
+- P⁰ は半線形変換をホモロジーに送り、係数制限の自然比較を使う。π₀ の環、離散代数の Frobenius、余単体的可換環の Tot の Frobenius は同じ界面から読む。可換環の Tot は `strictToD_homologyIso` で零延長した交代余面複体の Hⁱ と比較する。
+- A1 の二本は後回し（`CrystallineInput.lean`・`HodgeTateMap.lean`）。厳密な `formsCDGAFunctor` からの形式の実現は `CrystallineSite` の `theoryFormsCAlg` と `theoryFormsVertex` を使う。増大は厳密 cdga の射を `ofCdga` で送り、`ofCdga_discrete` の成分を後合成した同じホモトピー類の辺を選ぶ。元の de Rham の span は `theoryPdDeRhamFunctorIso` に残し、行 0 への射影の可逆性は、余単体的 cdga の Tot の射の忘却像と総複体の射の比較待ち。ここで必要なのは各項の擬同型性ではなく、総複体の射の擬同型性。`totEInfinity_cohomologyRing : True` は元のまま。
+- A0・A3 は ⑤c。例外の `A0/CechAlexander.lean` にも変更なし。KL-W1 と重なる `IsPresentable` と import の 5 本（A2/DerivedPrismaticCohomology、A5/PerfectSiteComparison、A6/ArcSheafProperty、Shared/CosimplicialEInfinity、Sheaves/CAlgValued）は承認どおり現在の main の名前を使った。KL-W1 取り込み時に配布される `kl-module-map.json` と `kl-namespace-map.json` で合わせる。
+
+### 変更した BS の drafts（33 本）
+
+| 場所 | ファイル |
+| --- | --- |
+| A1 | CrystallineSite、DeRhamComparisonPoly、HodgeTateComparison |
+| A2 | AnimatedAlgebra、BaseChangeAndTensor、DerivedPrismaticCohomology、HodgeTateFiltration |
+| A4 | AfterComparison、InterfaceFields、Perfectoidization |
+| A5 | InterfaceLimitCone、PerfectSite、PerfectSiteComparison、SemiperfectoidCase、StrongDescent、WeaklyInitialAndDescent |
+| A6 | ArcSheafProperty、Excision、SheafOfSetsExcision |
+| A7 | AnimatedDomain、AnimatedPerfectoidization、DiscreteCore、UniversalProperty |
+| A8 | AlmostConnectivity、AlmostPurityConnectivity、IntegralDiscreteness |
+| A9 | Assembly |
+| DerivedGeneral | CompletionFunctor、ScalarRestriction |
+| Shared | CosimplicialEInfinity、Descendable、EInfinityPowerOperation |
+| Sheaves | CAlgValued |
+
+実例用の `Shared/BarrattEcclesTheory.lean` はこの表とは別。静的検査では、コメントと文字列、後回しの A1 二本、⑤c の担当範囲、実例用 draft を除いて、旧 `CAlg_R`・忘却・離散埋め込み・G1′、Barratt–Eccles・Operad の直接 API と import のヒットは **0**。変更したモジュールのリポジトリ内 import の解決と、担当外の差分 0 を確認。drafts の規約に従い、drafts 自体の Lean ビルド・監査は行っていない。
+
+`--wait 1800` で共有鍵を取り、`EInfinity.Interface.Theory` と `EInfinity.Perfectoidization.TheoryInterface` の対象ビルドに成功。限定監査は停止点 1 の 4 モジュールで **128 宣言**、G1′ で **63 宣言**。いずれも標準三公理のみで、本体の新規 `sorry`・公理は 0。新規の本体モジュールはないので、今回の追加登録候補はなし。

@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.4・§2.5・§3、単位 A1-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
@@ -37,6 +39,8 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial TensorProduct
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories SerrePositivity.EInfinity
@@ -45,14 +49,7 @@ variable {p : ℕ} [Fact p.Prime]
 
 /-! ## 結晶側の計算から導く HT 比較（D68 改訂 11-05 夜：黒箱を外し、A1/CrystallineInput の六段で mod p に直接証明。恒久の引用なし） -/
 
-/-- 概要：Cor 5.5 の (Z_p,(p)) の場合：R = F_p[X_1,…,X_r] について、η^* : Ω^*_{R/F_p} → H^*(Tot(C^•/p)) は同型。
-方針：A1/CrystallineInput の `hodgeTate_of_deRham_cartier`：Lemma 5.4 で C^•/p → D^•/p、G-A1-16 で D_0^•/p → D^•/p、pd Poincaré と BdJ の行の収縮で
-H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})、Cartier 同型、生成元での照合（a1-design §10）。mod p なので導来 Nakayama は使わない。
-規約：結晶の話はこの定理の証明にだけ現れる。
-使われ方：Cor 5.5（一般の結晶 prism）、Prop 6.2。 -/
-theorem hodgeTate_iso_polynomial_Zp (r : ℕ) :
-    HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r :=
-  hodgeTate_of_deRham_cartier p r
+-- hodgeTate_iso_polynomial_Zp は本体の HodgeTateCartierAssembly に置く。
 
 /-! ## Cor 5.5：結晶 prism -/
 
@@ -300,7 +297,7 @@ def universal61 (p : ℕ) [Fact p.Prime] : Construction61Hypotheses (universalOr
 abbrev universalCover (p : ℕ) [Fact p.Prime] := crystallineCover (universalOrientedPrism.{u} p) (universal61 p)
 
 def baseChangeB : (CompleteModules P : SSet) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
-  moduleInclusion P ≫ derivedInfinityRestrictScalars (orientationMap P).toRingHom ≫
+  moduleInclusion P ≫ derivedInfinityRestrictScalars (E := E) (orientationMap P).toRingHom ≫
     derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection (universalCover p)).1
 
 /-- 概要：底変換関手 ĉ^*（c : Z_p → E の読み替え）：(− ⊗^L_{Z_p} A) の後に Res_{A_0}、â^*。
@@ -308,14 +305,14 @@ def baseChangeB : (CompleteModules P : SSet) ⟶ (CompleteModules (universalCove
 規約：—
 使われ方：Prop 6.2 (c)。 -/
 def baseChangeC : derivedInfinityCategory (crystallineBase.{u} p) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
-  derivedInfinityBaseChange (padicCoefficientMap P) ≫ derivedInfinityRestrictScalars (orientationMap P).toRingHom ≫
+  derivedInfinityBaseChange (padicCoefficientMap P) ≫ derivedInfinityRestrictScalars (E := E) (orientationMap P).toRingHom ≫
     derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection _).1
 
 /-- 概要：b̂^* は (p,d) 完備な A 複体の上で保存的（Res は完備性と零を保ち、â^* は保存的）。
 方針：`crystallineCoverMap_conservative` を A_0 に。
 規約：—
 使われ方：Prop 6.2 (c)。 -/
-theorem baseChangeB_conservative : ReflectsEquivalences (baseChangeB P) := by
+theorem baseChangeB_conservative : ReflectsEquivalences (baseChangeB (E := E) P) := by
   sorry -- d を保つ分類射での制限は完備性と零を反映し、universal61 の α̂* は保存的
 
 /-- 概要：Rem 4.19 の複体の項ごとの一致 b̂^*C^n_{R/A} ≃ ĉ^*C^n_{F_p[X]/Z_p}、したがって b̂^*Δ_{R/A} ≃ ĉ^*Δ_{F_p[X]/Z_p}。
@@ -334,25 +331,25 @@ def affineModuleDiagram (hP : IsBoundedPrism P) (r : ℕ) : simplexShape.{u} ⟶
 def affineCompleteDiagram (hP : IsBoundedPrism P) (r : ℕ) : simplexShape.{u} ⟶ (CompleteModules P : SSet) :=
   fullSubcomplexLift _ (affineModuleDiagram P hP r) (by sorry) -- 各項の prism の (p,d) 完備性
 def affineCompleteTot (hP : IsBoundedPrism P) (r : ℕ) : (CompleteModules P : SSet) _⦋0⦌ := by
-  let x := prismaticCohomologyCAlg P hP r
-  exact ⟨(cAlgForgetDerived A).app _ x.val, by sorry⟩ -- x の完備性を忘却
+  let x := prismaticCohomologyCAlg (E := E) P hP r
+  exact ⟨(E.forget A).app _ x.val, by sorry⟩ -- x の完備性を忘却
 
 /-- D30 で使用する二つの Tot 交換。保存性の対象は指定した cosimplicial 模型の極限錐。 -/
 theorem baseChange_preserves_affineTot (hP : IsBoundedPrism P) (r : ℕ) :
     (∀ c : JoinCone (affineCompleteDiagram P hP r), IsLimitCone c →
-      IsLimitCone (c.postcomp (baseChangeB P))) ∧
+      IsLimitCone (c.postcomp (baseChangeB (E := E) P))) ∧
     (∀ c : JoinCone (affineModuleDiagram (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r),
-      IsLimitCone c → IsLimitCone (c.postcomp (baseChangeC P))) := by
+      IsLimitCone c → IsLimitCone (c.postcomp (baseChangeC (E := E) P))) := by
   sorry -- Z_p→A は通常の Tor 振幅 ≤1、Res は極限を保つ。
         -- 完備底変換には Lemma 4.22 と crystallineCoverMap_finiteTorAmplitude を使う
 
 theorem baseChange_cechAlexanderAffine_eq (hP : IsBoundedPrism P) (r : ℕ) :
     let Z := crystallineBasePrism.{u} p
     let hz := crystallineBaseBounded.{u} p
-    Nonempty (FunctorIso (affineCompleteDiagram P hP r ≫ baseChangeB P)
-      (affineModuleDiagram Z hz r ≫ baseChangeC P)) ∧
-      Nonempty (VertexIso ((baseChangeB P).app _ (affineCompleteTot P hP r))
-        ((baseChangeC P).app _ ((moduleInclusion Z).app _ (affineCompleteTot Z hz r)))) := by
+    Nonempty (FunctorIso (affineCompleteDiagram P hP r ≫ baseChangeB (E := E) P)
+      (affineModuleDiagram Z hz r ≫ baseChangeC (E := E) P)) ∧
+      Nonempty (VertexIso ((baseChangeB (E := E) P).app _ (affineCompleteTot (E := E) P hP r))
+        ((baseChangeC (E := E) P).app _ ((moduleInclusion Z).app _ (affineCompleteTot (E := E) Z hz r)))) := by
   sorry -- A0.cechAlexanderAffine_baseChange の二つの係数脚を copy ごとに比較。
         -- Lemma 4.22 と有限完全 Tor 振幅で同じ比較を Tot に移す
 

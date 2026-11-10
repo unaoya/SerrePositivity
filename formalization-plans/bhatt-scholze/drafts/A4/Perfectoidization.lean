@@ -2,8 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1・§2.2・§2.4、単位 A4-1・A4-2・A4-4。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.EInfinity.Perfectoidization.Comparison
-public import SerrePositivity.EInfinity.BarrattEccles.HomologyAlgebra
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
@@ -45,10 +44,12 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.Prismatic SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.BhattScholze.PerfectoidizationInterface
+open SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 
@@ -120,27 +121,27 @@ def restrictionSequence {E : SSet.{u+1}} [Quasicategory E] (F : E ⟶ E)
     sorry) -- 後続辺の列を ℕ の nerve に延長し、高次の合成を一貫して選ぶ
 
 def completeCAlgInclusion {A : Type u} [CommRing A] (P : OrientedPrism p A) :
-    CompleteCAlg P ⟶ CAlg_R A := by
+    CompleteCAlg (E := E) P ⟶ E.CAlg A := by
   sorry -- 要確認：BS-D4 で CompleteCAlg の prism 引数を明示し、充満部分圏の包含を使う
 
 /-- A2 の完備代数値の Δ を全 CAlg に含め、A/d≃R で係数を同定する。 -/
 def discreteDeltaFunctor (hR : IsIntegralPerfectoid R p) :
-    algebraNerve R ⟶ CAlg_R (perfectPrismRing p R) := by
+    algebraNerve R ⟶ E.CAlg (perfectPrismRing p R) := by
   let P := perfectPrism p R hR
   let change := Under.map (CommRingCat.ofHom (perfectPrism_quotientEquiv p R hR).toRingHom)
-  exact nerveMap change ≫ derivedPrismaticCohomologyDiscrete P ≫ completeCAlgInclusion P
+  exact nerveMap change ≫ derivedPrismaticCohomologyDiscrete (E := E) P ≫ completeCAlgInclusion (E := E) P
 
 /-- A2 の derivedPrismaticFrobenius（drafts/A2/DerivedPrismaticCohomology.lean）の離散 U 成分。
 A2 の結論がまだ True なので A4 に仮置きし、BS-D4 で本来の自然変換の成分に置き換える。 -/
 def discreteDeltaFrobenius (hR : IsIntegralPerfectoid R p) (U : A_R R) :
-    let x := (discreteDeltaFunctor p R hR).app _ (nerveVertex U)
-    SSet.Edge x ((cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift).app _ x) := by
+    let x := (discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex U)
+    SSet.Edge x ((cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift).app _ x) := by
   sorry -- A2 待ち：derivedPrismaticFrobenius を離散 U で評価し、完備部分圏の包含で送る
 
 def directTower (hR : IsIntegralPerfectoid R p) (U : A_R R) :
-    frobeniusTowerShape.{u} ⟶ CAlg_R (perfectPrismRing p R) :=
-  restrictionSequence (cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift)
-    (discreteDeltaFrobenius p R hR U)
+    frobeniusTowerShape.{u} ⟶ E.CAlg (perfectPrismRing p R) :=
+  restrictionSequence (cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift)
+    (discreteDeltaFrobenius (E := E) p R hR U)
 
 /-- 概要：Frobenius の sequential 図式 Δ_S → φ_{A*}Δ_S → φ_{A*}²Δ_S → ⋯（CAlg_A の ℕ 添字の図式、遷移射は φ_{A*}^n(φ)。原典 Def 8.2 (1) の形、W9-II-01）。
 方針：A2 の `derivedPrismaticFrobenius` φ : Δ → φ_{A*}Δ と、スカラー制限 φ_{A*} = Res_{φ_A} の反復（G-A4-3）。φ_{A*} の逆は使わない。
@@ -148,46 +149,46 @@ def directTower (hR : IsIntegralPerfectoid R p) (U : A_R R) :
 使われ方：Δ_perf の余極限。 -/
 def frobeniusTower (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    frobeniusTowerShape.{u} ⟶ CAlg_R (perfectPrismRing p R) :=
-  directTower p R hR (Under.mk (CommRingCat.ofHom (algebraMap R S)))
+    frobeniusTowerShape.{u} ⟶ E.CAlg (perfectPrismRing p R) :=
+  directTower (E := E) p R hR (Under.mk (CommRingCat.ofHom (algebraMap R S)))
 
 /-- (p,d) 完備 CAlg への反射の後に包含する関手（G-A2-3）。 -/
-def reflectCompleteCAlg {A : Type u} [CommRing A] (P : OrientedPrism p A) : CAlg_R A ⟶ CompleteCAlg P := by
+def reflectCompleteCAlg {A : Type u} [CommRing A] (P : OrientedPrism p A) : E.CAlg A ⟶ CompleteCAlg (E := E) P := by
   sorry -- 要確認：A2 の CAlg 完備化の実装名。完備な代数の充満部分圏への反射
 
-def prismCAlgCompletion {A : Type u} [CommRing A] (P : OrientedPrism p A) : CAlg_R A ⟶ CAlg_R A :=
-  reflectCompleteCAlg P ≫ completeCAlgInclusion P
+def prismCAlgCompletion {A : Type u} [CommRing A] (P : OrientedPrism p A) : E.CAlg A ⟶ E.CAlg A :=
+  reflectCompleteCAlg (E := E) P ≫ completeCAlgInclusion (E := E) P
 
 def prismCAlgCompletionUnit {A : Type u} [CommRing A] (P : OrientedPrism p A) :
-    FunctorHom (𝟙 (CAlg_R A)) (prismCAlgCompletion P) := by
+    FunctorHom (𝟙 (E.CAlg A)) (prismCAlgCompletion (E := E) P) := by
   sorry -- G-A2-3 の反射の単位
 
 /-- A→A/d≃R に沿う導来テンソル。係数制限の左随伴（G-A4-4）。 -/
-def modPrismFunctor (hR : IsIntegralPerfectoid R p) : CAlg_R (perfectPrismRing p R) ⟶ CAlg_R R := by
+def modPrismFunctor (hR : IsIntegralPerfectoid R p) : E.CAlg (perfectPrismRing p R) ⟶ E.CAlg R := by
   sorry -- 要確認：perfectPrismTheta 沿いの CAlg 底変換の実装名
 
 def modPrismAdjunction (hR : IsIntegralPerfectoid R p) :
-    QCatAdjunction (modPrismFunctor p R hR) (cAlgRestrictScalars (perfectPrismTheta p R hR)) := by
+    QCatAdjunction (modPrismFunctor (E := E) p R hR) (cAlgRestrictScalars (E := E) (perfectPrismTheta p R hR)) := by
   sorry -- A→A/d≃R に沿う係数拡大と制限の随伴
 
 def directTowerColimit (hR : IsIntegralPerfectoid R p) (U : A_R R) :
-    { c : JoinCocone (directTower p R hR U) // IsColimitCone c } := by
-  have hc : HasColimit (directTower p R hR U) := by
+    { c : JoinCocone (directTower (E := E) p R hR U) // IsColimitCone c } := by
+  have hc : HasColimit (directTower (E := E) p R hR U) := by
     sorry -- G-A4-2 の CAlg の sequential 余極限
   exact ⟨hc.choose, hc.choose_spec⟩
 
-def directPerfectionValue (hR : IsIntegralPerfectoid R p) (U : A_R R) : (CAlg_R (perfectPrismRing p R)) _⦋0⦌ :=
-  (prismCAlgCompletion (perfectPrism p R hR)).app _ (directTowerColimit p R hR U).val.vertex
+def directPerfectionValue (hR : IsIntegralPerfectoid R p) (U : A_R R) : (E.CAlg (perfectPrismRing p R)) _⦋0⦌ :=
+  (prismCAlgCompletion (E := E) (perfectPrism p R hR)).app _ (directTowerColimit (E := E) p R hR U).val.vertex
 
 /-- Δ_U から完備化した余極限への射を、第0脚と反射の単位で指定する。 -/
 def directPerfectionLeg (hR : IsIntegralPerfectoid R p) (U : A_R R) :
-    (HomotopyCategory.mk ((discreteDeltaFunctor p R hR).app _ (nerveVertex U)) :
-      hoFunctor.obj (CAlg_R (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (directPerfectionValue p R hR U) := by
-  let c := (directTowerColimit p R hR U).val
+    (HomotopyCategory.mk ((discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex U)) :
+      hoFunctor.obj (E.CAlg (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (directPerfectionValue (E := E) p R hR U) := by
+  let c := (directTowerColimit (E := E) p R hR U).val
   let l := HomotopyLimits.coconeVertexLeg c (ULift.up (nerveVertex (0 : ℕ)))
   exact eqToHom (by sorry) ≫ -- restrictionSequence の第0頂点は Δ_U
     SSet.Truncated.HomotopyCategory₂.homMk l.toTruncated ≫
-    functorHomEvaluate (prismCAlgCompletionUnit (perfectPrism p R hR)) c.vertex
+    functorHomEvaluate (prismCAlgCompletionUnit (E := E) (perfectPrism p R hR)) c.vertex
 
 /-- 概要：Def 8.2 (1)：Δ_{S/A,perf} := (colim_φ Δ_{S/A})^∧（CAlg_A の余極限の (p,d) 完備化）。
 方針：G-A4-2（CAlg_A の sequential 余極限）と G-A2-3（完備化の反射）。
@@ -195,19 +196,19 @@ def directPerfectionLeg (hR : IsIntegralPerfectoid R p) (U : A_R R) :
 使われ方：S_perfd、Lemma 8.4、Prop 8.5。 -/
 def prismaticPerfection (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    (CAlg_R (perfectPrismRing p R)) _⦋0⦌ :=
-  directPerfectionValue p R hR (Under.mk (CommRingCat.ofHom (algebraMap R S)))
+    (E.CAlg (perfectPrismRing p R)) _⦋0⦌ :=
+  directPerfectionValue (E := E) p R hR (Under.mk (CommRingCat.ofHom (algebraMap R S)))
 
 /-- 完全基底では φ_A が同型なので、制限は塔の余極限を保つ。 -/
 theorem restrictFrobeniusTowerColimit (hR : IsIntegralPerfectoid R p) (U : A_R R)
-    (c : JoinCocone (directTower p R hR U)) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift) c) := by
+    (c : JoinCocone (directTower (E := E) p R hR U)) (hc : IsColimitCone c) :
+    IsColimitCone (mapJoinCocone (cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift) c) := by
   sorry -- 要確認：ScalarRestriction へ。同型に沿う制限と逆の制限は comp・id で互いに逆
 
 def restrictFrobeniusCompletion (hR : IsIntegralPerfectoid R p) :
     let P := perfectPrism p R hR
-    let res := cAlgRestrictScalars P.deltaStructure.frobeniusLift
-    FunctorIso (prismCAlgCompletion P ≫ res) (res ≫ prismCAlgCompletion P) := by
+    let res := cAlgRestrictScalars (E := E) P.deltaStructure.frobeniusLift
+    FunctorIso (prismCAlgCompletion (E := E) P ≫ res) (res ≫ prismCAlgCompletion (E := E) P) := by
   sorry -- 要確認：ScalarRestriction へ。(p,d) と (p,φ(d)) は同じ完備性を定める
 
 /-- 概要：Δ_perf 上の φ_A 半線形な自己同型（余極限の shift）。
@@ -216,8 +217,8 @@ def restrictFrobeniusCompletion (hR : IsIntegralPerfectoid R p) :
 使われ方：Lemma 8.4 (b)、完全 δ 構造。 -/
 def prismaticPerfectionFrobenius (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let x := prismaticPerfection p R hR S hS
-    { e : SSet.Edge x ((cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift).app _ x) //
+    let x := prismaticPerfection (E := E) p R hR S hS
+    { e : SSet.Edge x ((cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift).app _ x) //
       IsInvertibleEdge e.toTruncated } := by
   sorry -- 塔の第0項を落とす shift は cofinal。φ_A が自己同型なので制限が余極限と完備化に両立
 
@@ -225,10 +226,10 @@ theorem prismaticPerfectionFrobenius_leg (hR : IsIntegralPerfectoid R p) (S : Ty
     [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     let U := ofAlgebra R S
-    let F := cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift
-    let l := directPerfectionLeg p R hR U
-    l ≫ SSet.Truncated.HomotopyCategory₂.homMk (prismaticPerfectionFrobenius p R hR S hS).val.toTruncated =
-      SSet.Truncated.HomotopyCategory₂.homMk (discreteDeltaFrobenius p R hR U).toTruncated ≫
+    let F := cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift
+    let l := directPerfectionLeg (E := E) p R hR U
+    l ≫ SSet.Truncated.HomotopyCategory₂.homMk (prismaticPerfectionFrobenius (E := E) p R hR S hS).val.toTruncated =
+      SSet.Truncated.HomotopyCategory₂.homMk (discreteDeltaFrobenius (E := E) p R hR U).toTruncated ≫
         (hoFunctor.map F).toFunctor.map l := by
   sorry -- 余錐の shift の第0脚の式と完備化単位の自然性
 
@@ -238,7 +239,7 @@ theorem prismaticPerfectionFrobenius_leg (hR : IsIntegralPerfectoid R p) (S : Ty
 使われ方：E3 の `perfd`。 -/
 def perfectoidization (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    (CAlg_R R) _⦋0⦌ := (modPrismFunctor p R hR).app _ (prismaticPerfection p R hR S hS)
+    (E.CAlg R) _⦋0⦌ := (modPrismFunctor (E := E) p R hR).app _ (prismaticPerfection (E := E) p R hR S hS)
 
 /-- 概要：D(R) 値の S_perfd（忘却）。
 方針：`cAlgForgetDerived R`。
@@ -246,37 +247,30 @@ def perfectoidization (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] 
 使われ方：`nonempty_e3_of_cAlg` 経由の D(R) 版。 -/
 def perfectoidizationDerived (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    (derivedInfinityCategory R) _⦋0⦌ := (cAlgForgetDerived R).app _ (perfectoidization p R hR S hS)
+    (derivedInfinityCategory R) _⦋0⦌ := (E.forget R).app _ (perfectoidization (E := E) p R hR S hS)
 
-/-- CAlg_A の頂点の実際の cofibrant 代表から H⁰ の環・構造射を取る。 -/
-def cAlgH0Algebra (A : Type u) [CommRing A] (x : (CAlg_R A) _⦋0⦌) : A_R A := by
-  let X := (cofibrantAlgebraDKInclusion A).obj ((cAlgVertexEquiv A).symm x)
-  letI := homologyCommRing X
-  letI := homologyAlgebra X
-  exact Under.mk (CommRingCat.ofHom (algebraMap A (X.carrier.homology 0)))
+/-- 界面の π₀ から H⁰ の環と構造射を取る。 -/
+def cAlgH0Algebra (A : Type u) [CommRing A] (x : (E.CAlg A) _⦋0⦌) : A_R A := (E.pi0 A).obj (SSet.HomotopyCategory.mk x)
 
 /-- H⁰ は代数の擬同型を同型に送り、CAlg のホモトピー圏を経由する。 -/
-def cAlgH0OnHomotopy (A : Type u) [CommRing A] : hoFunctor.obj (CAlg_R A) ⥤ A_R A where
-  obj x := cAlgH0Algebra A x.pt
-  map := by sorry -- 準同型の H⁰ を擬同型で局所化し、ホモトピー類に降ろす
-  map_id := by sorry -- identity の H⁰
-  map_comp := by sorry -- 合成の H⁰
+def cAlgH0OnHomotopy (A : Type u) [CommRing A] : (E.CAlg A).HomotopyCategory ⥤ A_R A :=
+  E.pi0 A
 
 /-- Res_f は H⁰ の環の台を保ち、その A 作用を f に沿って読む。 -/
-def restrictH0Equiv {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) (x : (CAlg_R B) _⦋0⦌) :
-    (cAlgH0Algebra A ((cAlgRestrictScalars f).app _ x)).right ≃+* (cAlgH0Algebra B x).right := by
-  sorry -- 要確認：ScalarRestriction へ。制限前後の同じ積と単位が誘導する標準同型
+def restrictH0Equiv {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) (x : (E.CAlg B) _⦋0⦌) :
+    (cAlgH0Algebra (E := E) A ((cAlgRestrictScalars (E := E) f).app _ x)).right ≃+* (cAlgH0Algebra (E := E) B x).right := by
+  exact cAlgRestrictScalars_h0 (E := E) f x
 
-theorem restrictH0Equiv_base {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) (x : (CAlg_R B) _⦋0⦌) :
-    (restrictH0Equiv f x).toRingHom.comp (cAlgH0Algebra A ((cAlgRestrictScalars f).app _ x)).hom.hom =
-      (cAlgH0Algebra B x).hom.hom.comp f := by
+theorem restrictH0Equiv_base {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) (x : (E.CAlg B) _⦋0⦌) :
+    (restrictH0Equiv (E := E) f x).toRingHom.comp (cAlgH0Algebra (E := E) A ((cAlgRestrictScalars (E := E) f).app _ x)).hom.hom =
+      (cAlgH0Algebra (E := E) B x).hom.hom.comp f := by
   sorry -- 忘却後の係数作用が f との合成であること
 
-def shiftOnH0 {A : Type u} [CommRing A] (f : A →+* A) (x : (CAlg_R A) _⦋0⦌)
-    (e : SSet.Edge x ((cAlgRestrictScalars f).app _ x)) :
-    (cAlgH0Algebra A x).right →+* (cAlgH0Algebra A x).right :=
-  (restrictH0Equiv f x).toRingHom.comp
-    ((cAlgH0OnHomotopy A).map (SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated)).right.hom
+def shiftOnH0 {A : Type u} [CommRing A] (f : A →+* A) (x : (E.CAlg A) _⦋0⦌)
+    (e : SSet.Edge x ((cAlgRestrictScalars (E := E) f).app _ x)) :
+    (cAlgH0Algebra (E := E) A x).right →+* (cAlgH0Algebra (E := E) A x).right :=
+  (restrictH0Equiv (E := E) f x).toRingHom.comp
+    ((cAlgH0OnHomotopy (E := E) A).map (SSet.HomotopyCategory.homMk e)).right.hom
 
 /-! ## Lemma 8.4 -/
 
@@ -289,8 +283,8 @@ theorem prismaticPerfection_coconnective (hR : IsIntegralPerfectoid R p) (S : Ty
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     let A := perfectPrismRing p R
     InfinityCategories.Derived.IsCoconnectiveAt A 0
-      ((cAlgForgetDerived A).app _ (prismaticPerfection p R hR S hS)) := by
-  have hforget := cAlgRestrictScalars_forget (perfectPrism p R hR).deltaStructure.frobeniusLift
+      ((E.forget A).app _ (prismaticPerfection (E := E) p R hR S hS)) := by
+  have hforget := cAlgRestrictScalars_forget (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift
   sorry -- hforget で D(A) に移す。shift は mod p で P⁰ の作用、正の π は消え、導来 Nakayama
 
 /-- 概要：Lemma 8.4 (b)：H⁰(Δ_perf) は p ねじれなしで、φ は mod p で Frobenius、よって p 完備な完全 δ 環（A → H⁰ は δ 射）。
@@ -302,9 +296,9 @@ theorem prismaticPerfection_coconnective (hR : IsIntegralPerfectoid R p) (S : Ty
 theorem prismaticPerfection_h0_perfectDelta (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     let P := perfectPrism p R hR
-    let x := prismaticPerfection p R hR S hS
-    let C := cAlgH0Algebra (perfectPrismRing p R) x
-    let F := shiftOnH0 P.deltaStructure.frobeniusLift x (prismaticPerfectionFrobenius p R hR S hS).val
+    let x := prismaticPerfection (E := E) p R hR S hS
+    let C := cAlgH0Algebra (E := E) (perfectPrismRing p R) x
+    let F := shiftOnH0 (E := E) P.deltaStructure.frobeniusLift x (prismaticPerfectionFrobenius (E := E) p R hR S hS).val
     Function.Injective (fun c : C.right => (p : C.right) * c) ∧
       IsAdicComplete (Ideal.span {(p : C.right)}) C.right ∧
       ∃ D : DeltaStructure p C.right, D.IsPerfect ∧ D.frobeniusLift = F ∧
@@ -319,9 +313,9 @@ theorem prismaticPerfection_h0_perfectDelta (hR : IsIntegralPerfectoid R p) (S :
 使われ方：Cor 8.14、Prop 8.5。 -/
 theorem perfectoidization_coconnective (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let C := cAlgH0Algebra (perfectPrismRing p R) (prismaticPerfection p R hR S hS)
+    let C := cAlgH0Algebra (E := E) (perfectPrismRing p R) (prismaticPerfection (E := E) p R hR S hS)
     IsLeftRegular (C.hom.hom (perfectPrism p R hR).generator) ∧
-      InfinityCategories.Derived.IsCoconnectiveAt R 0 (perfectoidizationDerived p R hR S hS) := by
+      InfinityCategories.Derived.IsCoconnectiveAt R 0 (perfectoidizationDerived (E := E) p R hR S hS) := by
   sorry -- Lemma 2.34 と (b) で d は正則。d の cofiber の H⁻¹ は C[d] = 0
 
 /-- 概要：(H⁰(Δ_perf), (d)) は完全 prism（(b)(c) から直接。A3 の (2) は Δ・Δ̄ の離散性を仮定するので使わない、W9-II-04）。
@@ -332,26 +326,26 @@ def prismaticPerfectionPrism (hR : IsIntegralPerfectoid R p) (S : Type u) [CommR
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
     let A := perfectPrismRing p R
     let P := perfectPrism p R hR
-    let x := prismaticPerfection p R hR S hS
-    let C := cAlgH0Algebra A x
+    let x := prismaticPerfection (E := E) p R hR S hS
+    let C := cAlgH0Algebra (E := E) A x
     { Q : OrientedPrism p C.right // Q.generator = C.hom.hom P.generator ∧ Q.deltaStructure.IsPerfect ∧
       P.deltaStructure.IsDeltaHom Q.deltaStructure C.hom.hom ∧
-      Q.deltaStructure.frobeniusLift = shiftOnH0 P.deltaStructure.frobeniusLift x
-        (prismaticPerfectionFrobenius p R hR S hS).val } := by
+      Q.deltaStructure.frobeniusLift = shiftOnH0 (E := E) P.deltaStructure.frobeniusLift x
+        (prismaticPerfectionFrobenius (E := E) p R hR S hS).val } := by
   sorry -- (b) の δ と (c) の正則性、C の導来 (p,d) 完備性、基底の p_mem
 
 /-! ## filtered 余極限との可換性（原典 Prop 8.5 の証明 (2) の左辺。W9-III-14 で A4 へ） -/
 
 /-- 全ての離散 S に塔・余極限・完備化を関手の段で施す（Def 8.2 の入力では S は p 完備）。 -/
 def completePerfectionFunctor (hR : IsIntegralPerfectoid R p) :
-    algebraNerve R ⟶ CompleteCAlg (perfectPrism p R hR) := by
+    algebraNerve R ⟶ CompleteCAlg (E := E) (perfectPrism p R hR) := by
   sorry -- A2 の Frobenius 自然変換の塔を関手圏で作り、点ごとの余極限に reflectCompleteCAlg を施す
 
-def directPerfectionFunctor (hR : IsIntegralPerfectoid R p) : algebraNerve R ⟶ CAlg_R (perfectPrismRing p R) :=
-  completePerfectionFunctor p R hR ≫ completeCAlgInclusion (perfectPrism p R hR)
+def directPerfectionFunctor (hR : IsIntegralPerfectoid R p) : algebraNerve R ⟶ E.CAlg (perfectPrismRing p R) :=
+  completePerfectionFunctor (E := E) p R hR ≫ completeCAlgInclusion (E := E) (perfectPrism p R hR)
 
 def directPerfectionVertex (hR : IsIntegralPerfectoid R p) (U : A_R R) :
-    VertexIso ((directPerfectionFunctor p R hR).app _ (nerveVertex U)) (directPerfectionValue p R hR U) := by
+    VertexIso ((directPerfectionFunctor (E := E) p R hR).app _ (nerveVertex U)) (directPerfectionValue (E := E) p R hR U) := by
   sorry -- 同じ塔を評価した余極限余錐の比較と完備化の関手性
 
 /-- 概要：左辺：S ↦ Δ_{S/A,perf} は（完備化した）filtered 余極限と可換（Δ は sifted 余極限を保つ、colim_φ と完備化も）。
@@ -362,7 +356,7 @@ site の Tot・StrongDescent は不要なので A4 に置く（W9-III-14 で A5/
 theorem prismaticPerfection_filteredColimit (hR : IsIntegralPerfectoid R p)
     {I : SSet.{u}} [Quasicategory I] [F2.IsFilteredInfinity I]
     (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ algebraNerve R) (c : JoinCocone D) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (completePerfectionFunctor p R hR) c) := by
+    IsColimitCone (mapJoinCocone (completePerfectionFunctor (E := E) p R hR) c) := by
   sorry -- 離散環の filtered 余極限を取ってからの animated p 完備化は D32 で Δ を変えない。
         -- sifted 保存と colim_φ の交換、(p,d) 完備化の反射により指定余錐は完備圏で余極限
 
