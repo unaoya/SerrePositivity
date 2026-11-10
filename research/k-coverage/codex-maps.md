@@ -64,3 +64,11 @@ HA の依頼 §5 と同じ（読み取りだけ、書いてよいのは `researc
 2. **Land–Tamme の引用が少ない**（番号つき 11 行）：K の計画 v2 は Land–Tamme を主な道具にしているので、照合では Lean の docstring の引用に頼らず、§4 の (b)・(c) の検索（概念名：`LocalizingInvariant`・`⊙`・`pullback`・`Milnor` など、`KST/LocalizingInvariants/` の宣言の型）を厚めにする。
 3. **goal の食い違い**（Land–Tamme 3.12・B.2 を `unknown` にした件）：その扱いでよい。要約（段 3）で、食い違いの元の文書と行を挙げる。
 4. 原典にない番号（KST §10-7、Land–Tamme §1.2）は、計画書の誤記として要約に挙げる（直すのは調整役）。
+
+## 追記（2026-11-10 夜、調整役）：partial の基準を Kerodon §8.1 に合わせる
+
+Kerodon の確認では partial の幅が確認する人ごとに違い、抜き取りの差が収まらなかったので、`research/kerodon-coverage/codex-review.md` §8.1 で基準を絞った。この照合もこれに合わせる。
+
+1. partial と数えるのは、Lean の宣言から原典の主張の一部が直接導ける場合だけ。表に列 `partial_kind` を足し、`special`（仮定を特殊化）・`direction`（片方向）・`stronger-hyp`（仮定が強い）・`component`（結論の一部）のどれかを書く。
+2. 証明の部品、似た構成、別の対象についての類似の主張、原典を導くのに追加の議論が要るものは none（候補として reason に書いてよい）。
+3. これからの照合はこの基準で行う。すでに partial にした行は、区切りのよい所でまとめて見直し、見直した件数を報告する。
