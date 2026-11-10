@@ -112,3 +112,17 @@
   - `SerrePositivity.BhattScholze.Prismatic.WittSmallFrame`
   - `SerrePositivity.BhattScholze.Prismatic.BigCechAlexander`
 - ⑤c の K2・K3 を含む main `14f8925ae` を取り込んだ。K2 の普遍 prism の p 正則性と剰余の p 正則性を `psiPrism` の入力に使える。⑤a・⑤c と編集ファイルの重複はない。
+
+## 段 2（P2）途中 — affine 包と結晶 prism 構造
+
+- `bigCechAlexander` を有界 prism 上で構成した。第 0 頂点の多項式変数は固定し、それ以外の枠の変数から評価値の持ち上げを引く。持ち上げには完備多項式環の係数商の全射性を使う。変数の部分集合に沿う既存の包の普遍性をこの座標変換で移し、各項の有界性も示した。
+- `affineCechAlexanderFrame` は D68 の有限 affine 模型から大きい模型への余単体的代数の射。指定した各頂点の変数像で作り、包の普遍性で単体の写像との可換性を示した。この比較の擬同型性は残っている。
+- K2 の普遍 prism と剰余環の p 正則性を使い、`universalOrientedResidue_complete`・`universalWittPrismMap`・`universalWittBigPDModel` を構成した。
+- p 正則な完備分冪包について `exists_deltaStructure_of_pdPolynomial` と `wittPDEnvelopeCrystalline` を示した。標的の (p) の標準分冪へ包の Frobenius を延長する。mod p では分冪イデアルの元の p 乗が零なので、通常の Frobenius と一致する。大きい Witt 模型の各項が p 正則であることは別途証明が必要。
+- 以下の6モジュールを追加した。ここまでの段 2 の16モジュールは鍵付き対象ビルドと一時監査を通過。非公開を含む536宣言は標準三公理のみで、追加公理と `sorry` は0。
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechCompletionLift`
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechAffineEnvelope`
+  - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameComparison`
+  - `SerrePositivity.BhattScholze.Prismatic.UniversalWittComparison`
+  - `SerrePositivity.BhattScholze.Prismatic.PDFrobeniusLift`
+  - `SerrePositivity.BhattScholze.Prismatic.WittPDEnvelopeCrystalline`
