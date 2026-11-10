@@ -2108,5 +2108,507 @@
       }
     ],
     "decision": "通常の結合で定義する相対コスライスでは、同形の制限写像が左ファイブレーションとなる。太い結合で同じ制限写像の持ち上げ性を証明する宣言は見つからず、二つの全空間の圏同値からその持ち上げ性は直接移らない。"
+  },
+  "4.2.2.2": {
+    "page": 243,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Rr]elative|[Ll]ax|[Ff]at).*[Cc]oslice.*([Bb]ase|[Pp]oint|[Ff]iber|[Hh]omEquiv)|relativeJoin.*([Tt]erminal|[Pp]oint)",
+          "SerrePositivity"
+        ],
+        "file_count": 50,
+        "line_count": 139
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Rr]elative|[Ll]ax|[Ff]at).*[Cc]oslice.*([Bb]ase|[Pp]oint|[Ff]iber|[Hh]omEquiv)|relativeJoin.*([Tt]erminal|[Pp]oint)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoin.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : SSet.{u} := pullback (joinMap f g) (joinDiagonal S)"
+          },
+          {
+            "line": 30,
+            "head": "noncomputable def relativeJoinProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : relativeJoin f g ⟶ (Δ[1] : SSet.{u}) := pullback.snd (joinMap f g) (joinDiagonal S) ≫ fst (Δ[1] : SSet.{u}) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/LaxCosliceUniversal.lean",
+        "signatures": [
+          {
+            "line": 127,
+            "head": "def laxCosliceHomEquiv {K X : SSet.{u}} (p : K ⟶ X) (A : SSet.{u}) : (A ⟶ laxCoslice p) ≃ {F : fatJoin K A ⟶ X // fatJoinInl K A ≫ F = p} where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeCosliceTarget {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : SSet.{u} := pullback (sliceUnderPostcomp (K₀.ι ≫ p) q) (sliceUnderRestrict (p ≫ q) K₀.ι)"
+          },
+          {
+            "line": 31,
+            "head": "noncomputable def relativeCosliceMap {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : sliceUnder p ⟶ relativeCosliceTarget p q K₀ := pullback.lift (sliceUnderRestrict p K₀.ι) (sliceUnderPostcomp p q) (sliceUnderRestrict_postcomp p K₀.ι q).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/FatJoinPointCylinder.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma fatJoinPoint_isPushout (X : SSet.{u}) : IsPushout (SSet.ι₁ (X := X) ▷ (Δ[0] : SSet.{u})) (snd X (Δ[0] : SSet.{u})) (fatJoinCylinder X Δ[0]) (fatJoinInr X Δ[0])"
+          },
+          {
+            "line": 43,
+            "head": "noncomputable def fatJoinPointCylinderIso (X : SSet.{u}) : (X ⊗ (Δ[1] : SSet.{u})) ⊗ (Δ[0] : SSet.{u}) ≅ (Δ[1] : SSet.{u}) ⊗ X := asIso (fst (X ⊗ (Δ[1] : SSet.{u})) (Δ[0] : SSet.{u})) ≪≫ (β_ X (Δ[1] : SSet.{u}))"
+          }
+        ]
+      }
+    ],
+    "decision": "絶対的な太いコスライスの普遍性はある。底 S に依存する太いコスライスを定義し、S が一点のときにその絶対構成と比較する宣言は見つからなかった。"
+  },
+  "4.2.2.4": {
+    "page": 244,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]artesian[Ff]ibration.*([Cc]oslice|[Rr]elativeJoin)|([Cc]oslice|[Rr]elativeJoin|[Cc]ocone).*[Cc]artesian[Ff]ibration|relativeCosliceMap_leftFibration",
+          "SerrePositivity"
+        ],
+        "file_count": 15,
+        "line_count": 29
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]artesian[Ff]ibration.*([Cc]oslice|[Rr]elativeJoin)|([Cc]oslice|[Rr]elativeJoin|[Cc]ocone).*[Cc]artesian[Ff]ibration|relativeCosliceMap_leftFibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": [
+          {
+            "line": 122,
+            "head": "instance relativeCosliceMap_leftFibration {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) [InnerFibration q] (K₀ : K.Subcomplex) : LeftFibration (relativeCosliceMap p q K₀) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/LaxCosliceUniversal.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma laxCosliceRightInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceRightInput A K ≫ laxCosliceCurryFamily F = fatJoinInr K A ≫ F"
+          },
+          {
+            "line": 41,
+            "head": "lemma laxCosliceCylinderInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceCylinderInput A K ≫ laxCosliceCurryFamily F = fatJoinCylinder K A ≫ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoin.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : SSet.{u} := pullback (joinMap f g) (joinDiagonal S)"
+          },
+          {
+            "line": 30,
+            "head": "noncomputable def relativeJoinProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : relativeJoin f g ⟶ (Δ[1] : SSet.{u}) := pullback.snd (joinMap f g) (joinDiagonal S) ≫ fst (Δ[1] : SSet.{u}) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の結合による相対コスライスの制限は左ファイブレーションとなる。底 S 上の太い余錐の後合成について、デカルトファイブレーション性や辺のデカルト性の判定は見つからなかった。"
+  },
+  "4.2.2.5": {
+    "page": 247,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oslice.*[Pp]rojection.*[Cc]artesian|[Cc]artesian.*[Cc]oslice.*[Pp]rojection|parametrizedSectionsProjection.*Fibration",
+          "SerrePositivity"
+        ],
+        "file_count": 9,
+        "line_count": 24
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]oslice.*[Pp]rojection.*[Cc]artesian|[Cc]artesian.*[Cc]oslice.*[Pp]rojection|parametrizedSectionsProjection.*Fibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeCosliceTarget {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : SSet.{u} := pullback (sliceUnderPostcomp (K₀.ι ≫ p) q) (sliceUnderRestrict (p ≫ q) K₀.ι)"
+          },
+          {
+            "line": 31,
+            "head": "noncomputable def relativeCosliceMap {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : sliceUnder p ⟶ relativeCosliceTarget p q K₀ := pullback.lift (sliceUnderRestrict p K₀.ι) (sliceUnderPostcomp p q) (sliceUnderRestrict_postcomp p K₀.ι q).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ParametrizedSections.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "instance parametrizedSectionsProjection_leftFibration {A E Y P : SSet.{u}} (p : E ⟶ Y) [LeftFibration p] (a : P ⟶ (ihom A).obj Y) : LeftFibration (parametrizedSectionsProjection p a) := ⟨leftFibrations.pullback_snd _ _ (LeftFibration.mem (p := (ihom A).map p))⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/LaxCosliceUniversal.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma laxCosliceRightInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceRightInput A K ≫ laxCosliceCurryFamily F = fatJoinInr K A ≫ F"
+          },
+          {
+            "line": 41,
+            "head": "lemma laxCosliceCylinderInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceCylinderInput A K ≫ laxCosliceCurryFamily F = fatJoinCylinder K A ≫ F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/CosliceFiberProjection.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cosliceFiberProjection {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) (s : (sliceUnder (a ≫ p)) _⦋0⦌) : vertexFiber (sliceUnderPostcomp a p) s ⟶ vertexFiber p ((sliceUnderProjection (a ≫ p)).app (Opposite.op ⦋0⦌) s) := vertexFiberLift p _ (vertexFiberι (sliceUnderPostcomp a p) s ≫ sliceUnderProjection a) (by have h : sliceUnderProjection a ≫ p = sliceUnderPostcomp a p ≫ sliceUnderProjection (a ≫ p) := rfl rw [Category.assoc, h, ← Category.assoc, vertexFiberι_comp, SSet.const_comp])"
+          },
+          {
+            "line": 37,
+            "head": "lemma cosliceFiberProjection_ι {E B : SSet.{u}} (a : (Δ[0] : SSet.{u}) ⟶ E) (p : E ⟶ B) (s : (sliceUnder (a ≫ p)) _⦋0⦌) : cosliceFiberProjection a p s ≫ vertexFiberι p ((sliceUnderProjection (a ≫ p)).app (Opposite.op ⦋0⦌) s) = vertexFiberι (sliceUnderPostcomp a p) s ≫ sliceUnderProjection a := rfl"
+          }
+        ]
+      }
+    ],
+    "decision": "左・右ファイブレーションの引き戻しや切断族の射影を読んだ。右辺 Y が底 S 自身であるときの太い相対余錐の射影をデカルトファイブレーションとする宣言は見つからなかった。"
+  },
+  "4.2.2.6": {
+    "page": 247,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Rr]elativeJoin|[Cc]oslice|[Cc]ocone).*[Cc]artesian[Ff]ibration|mappingCylinderPullbackLift|exists_colimitCoconeFamily",
+          "SerrePositivity"
+        ],
+        "file_count": 22,
+        "line_count": 40
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Rr]elativeJoin|[Cc]oslice|[Cc]ocone).*[Cc]artesian[Ff]ibration|mappingCylinderPullbackLift|exists_colimitCoconeFamily",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoin.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : SSet.{u} := pullback (joinMap f g) (joinDiagonal S)"
+          },
+          {
+            "line": 30,
+            "head": "noncomputable def relativeJoinProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : relativeJoin f g ⟶ (Δ[1] : SSet.{u}) := pullback.snd (joinMap f g) (joinDiagonal S) ≫ fst (Δ[1] : SSet.{u}) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/RelativeCoslice.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def relativeCosliceTarget {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : SSet.{u} := pullback (sliceUnderPostcomp (K₀.ι ≫ p) q) (sliceUnderRestrict (p ≫ q) K₀.ι)"
+          },
+          {
+            "line": 31,
+            "head": "noncomputable def relativeCosliceMap {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) : sliceUnder p ⟶ relativeCosliceTarget p q K₀ := pullback.lift (sliceUnderRestrict p K₀.ι) (sliceUnderPostcomp p q) (sliceUnderRestrict_postcomp p K₀.ι q).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderPullbackLift.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def mappingCylinderPullbackLift {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : pushout (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ⟶ pullback h (mappingCylinderBaseProjection f) := pullback.lift (mappingCylinderBaseProjection (pullback.snd f h)) (mappingCylinderPullbackMap f h) (mappingCylinderPullbackMap_baseProjection f h).symm"
+          },
+          {
+            "line": 33,
+            "head": "lemma mappingCylinderPullbackLift_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : mappingCylinderPullbackLift f h ≫ pullback.fst h (mappingCylinderBaseProjection f) = mappingCylinderBaseProjection (pullback.snd f h) := pullback.lift_fst _ _ _"
+          },
+          {
+            "line": 41,
+            "head": "lemma mappingCylinderPullbackLift_snd {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : mappingCylinderPullbackLift f h ≫ pullback.snd h (mappingCylinderBaseProjection f) = mappingCylinderPullbackMap f h := pullback.lift_snd _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "lemma exists_colimitCoconeFamily {A K X : SSet.{u}} [Quasicategory X] (d : A ⟶ (ihom K).obj X) (hd : ∀ a : A _⦋0⦌, HasColimit ((functorVertexEquiv K X).symm (d.app (Opposite.op ⦋0⦌) a))) : ∃ f : A ⟶ colimitCocones K X, f ≫ colimitCoconeProjection K X = d"
+          }
+        ]
+      }
+    ],
+    "decision": "写像円筒を底変換した比較や、固定した添字で余錐を選ぶ宣言はある。積 S×K′ のときに太い相対余錐間の後合成がデカルトファイブレーションになる宣言は見つからなかった。"
+  },
+  "4.2.2.7": {
+    "page": 247,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(fatJoin|[Rr]elativeJoin|[Pp]arametri[sz]ed).*[Cc]olimit|[Cc]olimit.*([Ff]at[Cc]one|[Cc]artesian[Ff]ibration|[Cc]ontractible|[Cc]oconeFamily)|[Cc]olimit[Cc]ocone[Pp]rojection.*[Tt]rivial",
+          "SerrePositivity"
+        ],
+        "file_count": 101,
+        "line_count": 268
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(fatJoin|[Rr]elativeJoin|[Pp]arametri[sz]ed).*[Cc]olimit|[Cc]olimit.*([Ff]at[Cc]one|[Cc]artesian[Ff]ibration|[Cc]ontractible|[Cc]oconeFamily)|[Cc]olimit[Cc]ocone[Pp]rojection.*[Tt]rivial",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/ColimitCoconeFamilies.lean",
+        "signatures": [
+          {
+            "line": 65,
+            "head": "lemma colimitCoconeProjection_pullback_trivialKanFibration {A K X : SSet.{u}} [Quasicategory X] (d : A ⟶ (ihom K).obj X) (hd : ∀ a : A _⦋0⦌, HasColimit ((functorVertexEquiv K X).symm (d.app (Opposite.op ⦋0⦌) a))) : TrivialKanFibration (pullback.snd (colimitCoconeProjection K X) d)"
+          },
+          {
+            "line": 106,
+            "head": "lemma exists_colimitCoconeFamily {A K X : SSet.{u}} [Quasicategory X] (d : A ⟶ (ihom K).obj X) (hd : ∀ a : A _⦋0⦌, HasColimit ((functorVertexEquiv K X).symm (d.app (Opposite.op ⦋0⦌) a))) : ∃ f : A ⟶ colimitCocones K X, f ≫ colimitCoconeProjection K X = d"
+          },
+          {
+            "line": 121,
+            "head": "noncomputable def colimitCoconeFamilyIso {A K X : SSet.{u}} [Quasicategory X] (d : A ⟶ (ihom K).obj X) (hd : ∀ a : A _⦋0⦌, HasColimit ((functorVertexEquiv K X).symm (d.app (Opposite.op ⦋0⦌) a))) (f g : A ⟶ colimitCocones K X) (hf : f ≫ colimitCoconeProjection K X = d) (hg : g ≫ colimitCoconeProjection K X = d) : FunctorIso f g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderPullbackLift.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "noncomputable def mappingCylinderPullbackLift {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : pushout (prismEndpoint 1 (pullback f h)) (pullback.snd f h) ⟶ pullback h (mappingCylinderBaseProjection f) := pullback.lift (mappingCylinderBaseProjection (pullback.snd f h)) (mappingCylinderPullbackMap f h) (mappingCylinderPullbackMap_baseProjection f h).symm"
+          },
+          {
+            "line": 33,
+            "head": "lemma mappingCylinderPullbackLift_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : mappingCylinderPullbackLift f h ≫ pullback.fst h (mappingCylinderBaseProjection f) = mappingCylinderBaseProjection (pullback.snd f h) := pullback.lift_fst _ _ _"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/RelativeColimitCompletion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma exists_relative_colimitCoconeFamily {A B K C : SSet.{u}} [Quasicategory C] (i : A ⟶ B) [Mono i] (d : B ⟶ (ihom K).obj C) (a : A ⟶ colimitCocones K C) (ha : a ≫ colimitCoconeProjection K C = i ≫ d) (hd : ∀ b : B _⦋0⦌, HasColimit ((functorVertexEquiv K C).symm (d.app (Opposite.op ⦋0⦌) b))) : ∃ F : B ⟶ colimitCocones K C, i ≫ F = a ∧ F ≫ colimitCoconeProjection K C = d"
+          },
+          {
+            "line": 47,
+            "head": "lemma colimitCoconeFamily_relative_lifting {A K C : SSet.{u}} [Quasicategory C] (d : A ⟶ (ihom K).obj C) (hd : ∀ a : A _⦋0⦌, HasColimit ((functorVertexEquiv K C).symm (d.app (Opposite.op ⦋0⦌) a))) {U V : SSet.{u}} (j : U ⟶ V) [Mono j] : HasLiftingProperty j (pullback.snd (colimitCoconeProjection K C) d) := (colimitCoconeProjection_pullback_trivialKanFibration d hd).mem j inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/LaxCosliceUniversal.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma laxCosliceRightInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceRightInput A K ≫ laxCosliceCurryFamily F = fatJoinInr K A ≫ F"
+          },
+          {
+            "line": 41,
+            "head": "lemma laxCosliceCylinderInput_curryFamily {A K X : SSet.{u}} (F : fatJoin K A ⟶ X) : laxCosliceCylinderInput A K ≫ laxCosliceCurryFamily F = fatJoinCylinder K A ≫ F"
+          }
+        ]
+      }
+    ],
+    "decision": "固定した添字と固定した準圏の族では通常の結合による普遍余錐の切断を選べる。HTT の変動する添字・値域を載せる太い相対円筒上の同じ写像や、その選択空間の比較は見つからなかった。"
   }
 }

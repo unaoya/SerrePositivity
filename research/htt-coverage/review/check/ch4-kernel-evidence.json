@@ -1,5 +1,5 @@
 {
-  "base": "78837a764d1559204686a59b92fca65ac24d9a34",
+  "base": "57d9f07633ae6903a903b0f56aa57110a41548cb",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -168,6 +168,24 @@
         "SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex",
         "SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence"
       ]
+    },
+    "4.2.1.9": {
+      "page": 242,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.laxSliceHomEquiv"
+      ]
+    },
+    "4.2.2.1": {
+      "page": 242,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.mappingCylinderBaseProjection"
+      ]
+    },
+    "4.2.2.3": {
+      "page": 243,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.TrivialKanFibration.mem"
+      ]
     }
   },
   "declarations": {
@@ -234,38 +252,38 @@
     "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left": {
       "declaration": "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left",
       "source": "SerrePositivity/InfinityCategories/Core/JoinEquivalenceFunctor.lean",
-      "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left.{u_1} : ∀ {A B : SSet.{u_1}}\n  {f : Quiver.Hom.{u_1, u_1 + 1} A B},\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f →\n    ∀ (K : SSet.{u_1}),\n      SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.joinMap.{u_1} f (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K))",
+      "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_left.{u_1} : ∀ {A B : SSet.{u_1}}\n  {f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B},\n  @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} A B f →\n    ∀ (K : SSet.{u_1}),\n      @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.join.{u_1} A K) (SerrePositivity.InfinityCategories.join.{u_1} B K)\n        (@SerrePositivity.InfinityCategories.joinMap.{u_1} A B K K f\n          (@CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1}))\n            K))",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right": {
       "declaration": "SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right",
       "source": "SerrePositivity/InfinityCategories/Core/JoinEquivalenceFunctor.lean",
-      "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right.{u_1} : ∀ {A B : SSet.{u_1}}\n  {f : Quiver.Hom.{u_1, u_1 + 1} A B},\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} f →\n    ∀ (K : SSet.{u_1}),\n      SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K) f)",
+      "type": "@SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.joinMap_right.{u_1} : ∀ {A B : SSet.{u_1}}\n  {f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B},\n  @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1} A B f →\n    ∀ (K : SSet.{u_1}),\n      @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n        (SerrePositivity.InfinityCategories.join.{u_1} K A) (SerrePositivity.InfinityCategories.join.{u_1} K B)\n        (@SerrePositivity.InfinityCategories.joinMap.{u_1} K K A B\n          (@CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1}))\n            K)\n          f)",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence",
       "source": "SerrePositivity/InfinityCategories/Core/FunctorHomotopy.lean",
-      "type": "@SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SSet.Quasicategory.{u_1} Y] {f : Quiver.Hom.{u_1, u_1 + 1} X Y},\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} f →\n    SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1} f",
+      "type": "@SerrePositivity.InfinityCategories.IsQCatEquivalence.isSimplicialHomotopyEquivalence.{u_1} : ∀ {X Y : SSet.{u_1}}\n  [inst : X.Quasicategory] [inst_1 : Y.Quasicategory]\n  {f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y},\n  @SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} X Y inst inst_1 f →\n    @SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1} X Y f",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.IsRightCofinal": {
       "declaration": "SerrePositivity.InfinityCategories.IsRightCofinal",
@@ -314,6 +332,18 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.TrivialKanFibration.mem": {
+      "declaration": "SerrePositivity.InfinityCategories.TrivialKanFibration.mem",
+      "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
+      "type": "@SerrePositivity.InfinityCategories.TrivialKanFibration.mem.{u_1} : ∀ {X Y : SSet.{u_1}}\n  {p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y}\n  [self : @SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} X Y p],\n  @SerrePositivity.InfinityCategories.trivialKanFibrations.{u_1} X Y p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-parametrized-colimits",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.cofinalFunctorSpace": {
       "declaration": "SerrePositivity.InfinityCategories.cofinalFunctorSpace",
@@ -372,8 +402,8 @@
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.fatJoinStage": {
       "declaration": "SerrePositivity.InfinityCategories.fatJoinStage",
@@ -384,44 +414,44 @@
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex": {
       "declaration": "SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/PreFiberKan.lean",
-      "type": "@SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex.{u_1} : ∀ {X : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} X] (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SSet.KanComplex.{u_1} (SerrePositivity.InfinityCategories.intervalMappingSpace.{u_1} x y)",
+      "type": "@SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex.{u_1} : ∀ {X : SSet.{u_1}} [X.Quasicategory]\n  (x y :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n  (@SerrePositivity.InfinityCategories.intervalMappingSpace.{u_1} X x y).KanComplex",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison": {
       "declaration": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison",
       "source": "SerrePositivity/InfinityCategories/Core/FatJoinGeneralComparison.lean",
-      "type": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison.{u_1} : ∀ (A B : SSet.{u_1}),\n  SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} A B)",
+      "type": "SerrePositivity.InfinityCategories.isPrecompositionEquivalence_fatJoinComparison.{u_1} : ∀ (A B : SSet.{u_1}),\n  @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.fatJoin.{u_1} A B) (SerrePositivity.InfinityCategories.join.{u_1} A B)\n    (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} A B)",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap": {
       "declaration": "SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap",
       "source": "SerrePositivity/InfinityCategories/Core/CosliceLaxEquivalence.lean",
-      "type": "@SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap.{u_1} : ∀ {K X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} (SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} p)",
+      "type": "@SerrePositivity.InfinityCategories.isQCatEquivalence_cosliceLaxMap.{u_1} : ∀ {K X : SSet.{u_1}}\n  [inst : X.Quasicategory]\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      K X),\n  @SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (@SerrePositivity.InfinityCategories.sliceUnder.{u_1} K X p)\n    (@SerrePositivity.InfinityCategories.laxCoslice.{u_1} K X p) ⋯ ⋯\n    (@SerrePositivity.InfinityCategories.cosliceLaxMap.{u_1} K X p)",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.isRightCofinal_iff_exists_anodyne_trivialKan_factorization": {
       "declaration": "SerrePositivity.InfinityCategories.isRightCofinal_iff_exists_anodyne_trivialKan_factorization",
@@ -483,6 +513,18 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
+    "SerrePositivity.InfinityCategories.laxSliceHomEquiv": {
+      "declaration": "SerrePositivity.InfinityCategories.laxSliceHomEquiv",
+      "source": "SerrePositivity/InfinityCategories/Core/LaxSliceUniversal.lean",
+      "type": "@SerrePositivity.InfinityCategories.laxSliceHomEquiv.{u_1} : {K X : SSet.{u_1}} →\n  (p :\n      @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})))\n        K X) →\n    (A : SSet.{u_1}) →\n      Equiv.{u_1 + 1, u_1 + 1}\n        (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})))\n          A (@SerrePositivity.InfinityCategories.laxSlice.{u_1} K X p))\n        (@Subtype.{u_1 + 1}\n          (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})))\n            (SerrePositivity.InfinityCategories.fatJoin.{u_1} A K) X)\n          fun F =>\n          @Eq.{u_1 + 1}\n            (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1})))\n              K X)\n            (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1}))\n              K (SerrePositivity.InfinityCategories.fatJoin.{u_1} A K) X\n              (SerrePositivity.InfinityCategories.fatJoinInr.{u_1} A K) F)\n            p)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
+    },
     "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration": {
       "declaration": "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration",
       "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
@@ -531,6 +573,18 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
+    "SerrePositivity.InfinityCategories.mappingCylinderBaseProjection": {
+      "declaration": "SerrePositivity.InfinityCategories.mappingCylinderBaseProjection",
+      "source": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinBaseProjection.lean",
+      "type": "@SerrePositivity.InfinityCategories.mappingCylinderBaseProjection.{u_1} : {X Y : SSet.{u_1}} →\n  (f :\n      @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})))\n        X Y) →\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@CategoryTheory.Limits.pushout.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        X\n        (@CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          (@CategoryTheory.Monoidal.functorCategoryMonoidalStruct.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1}\n            (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n              CategoryTheory.types.{u_1}\n              (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n                CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n          (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })\n          X)\n        Y\n        (SerrePositivity.InfinityCategories.prismEndpoint.{u_1}\n          (@OfNat.ofNat.{0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) (nat_lit 1)\n            (@Fin.instOfNat (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) ⋯ (nat_lit 1)))\n          X)\n        f ⋯)\n      Y",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-parametrized-colimits",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
+    },
     "SerrePositivity.InfinityCategories.pinchedHomLeftRightEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.pinchedHomLeftRightEquivalence",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingSpaceModelEquivalence.lean",
@@ -546,26 +600,26 @@
     "SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingSpaceModelEquivalence.lean",
-      "type": "@SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace.{u_1} x y)",
+      "type": "@SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : X.Quasicategory]\n  (x y :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n  @SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (@SerrePositivity.InfinityCategories.pinchedHomLeft.{u_1} X x y)\n    (@SerrePositivity.InfinityCategories.intervalMappingSpace.{u_1} X x y) ⋯ ⋯\n    (@SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace.{u_1} X x y)",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/RightIntervalEquivalence.lean",
-      "type": "@SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : SSet.Quasicategory.{u_1} X]\n  (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),\n  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace.{u_1} x y)",
+      "type": "@SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence.{u_1} : ∀ {X : SSet.{u_1}}\n  [inst : X.Quasicategory]\n  (x y :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n  @SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}\n    (@SerrePositivity.InfinityCategories.pinchedHom.{u_1} X x y)\n    (@SerrePositivity.InfinityCategories.intervalMappingSpace.{u_1} X x y) ⋯ ⋯\n    (@SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace.{u_1} X x y)",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
+      "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
     "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal": {
       "declaration": "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal",
