@@ -27,7 +27,7 @@ def perfectIdentityLaxSequence (Q : _root_.SerrePositivity.InfinityCategories.St
   completion := ⟨𝟙 Q.obj, isExactFunctor_id Q.obj⟩
   isCompletion := ⟨hQ, isFullyFaithful_id _, by
     intro x
-    exact ⟨x, IsVertexRetractOf.refl x⟩⟩
+    exact ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl x⟩⟩
 
 /-- 同じ提示列の射影は、元の恒等 lax 差を厳密に回収する。 -/
 lemma perfectIdentityLaxSequence_projection (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})

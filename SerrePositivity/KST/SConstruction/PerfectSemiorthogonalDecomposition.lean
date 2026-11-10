@@ -34,7 +34,7 @@ def perfectSemiorthogonalVerdierSequence
     isExactFunctor_id (perfectStableObject b).obj⟩
   isCompletion := ⟨perfectStableObject_isIdempotentComplete b, isFullyFaithful_id _, by
     intro x
-    exact ⟨x, IsVertexRetractOf.refl x⟩⟩
+    exact ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl x⟩⟩
 
 /-- 半直交分解の同じ元の右射は、Cat^perf の列の射影として厳密に回収される。 -/
 lemma perfectSemiorthogonalVerdierSequence_projection

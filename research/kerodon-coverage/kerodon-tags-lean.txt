@@ -551,8 +551,8 @@
 [Kerodon Tag 03X9](https://kerodon.net/tag/03X9) corresponds to declaration 'SerrePositivity.InfinityCategories.intervalMappingSpace'.
 [Kerodon Tag 03YB](https://kerodon.net/tag/03YB) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.WalkingSplit'.
 [Kerodon Tag 03YB](https://kerodon.net/tag/03YB) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.walkingSection_retraction'.
-[Kerodon Tag 03YJ](https://kerodon.net/tag/03YJ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf'.
-[Kerodon Tag 03YJ](https://kerodon.net/tag/03YJ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction'.
+[Kerodon Tag 03YJ](https://kerodon.net/tag/03YJ) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf'.
+[Kerodon Tag 03YJ](https://kerodon.net/tag/03YJ) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction'.
 [Kerodon Tag 03YZ](https://kerodon.net/tag/03YZ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle'.
 [Kerodon Tag 03YZ](https://kerodon.net/tag/03YZ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.WeakRetractionDiagram'.
 [Kerodon Tag 03YZ](https://kerodon.net/tag/03YZ) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Idempotent.isVertexRetractOf_iff_retractionTriangle'.

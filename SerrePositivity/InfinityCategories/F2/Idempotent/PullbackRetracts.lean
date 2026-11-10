@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 元の引き戻し四角形の全関手 ∞ 圏内の指定 retract は、同じ全四角形で引き戻し。 -/
 lemma isPullbackSquare_of_diagram_retract {X : SSet.{u}} [Quasicategory X]
     (F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
-    (r : VertexRetraction (functorVertex F) (functorVertex G)) (hG : IsPullbackSquare G) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex F) (functorVertex G)) (hG : IsPullbackSquare G) :
     IsPullbackSquare F := by
   let j : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ ((Δ[1] : SSet.{u}) ⊗ Δ[1]).op :=
     (((stdSimplex.opIso ⦋1⦌).inv ▷ Δ[1]) ≫
@@ -31,7 +31,7 @@ lemma isPullbackSquare_of_diagram_retract {X : SSet.{u}} [Quasicategory X]
         (opTensorIso Δ[1] Δ[1]).hom
   have ho := diagram_retract_op F G ⟨r⟩
   have hr := ho.map ((pre j).app X.op)
-  change IsVertexRetractOf (functorVertex (reverseGrid F)) (functorVertex (reverseGrid G)) at hr
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex (reverseGrid F)) (functorVertex (reverseGrid G)) at hr
   exact (isPullbackSquare_iff_reverseGrid F).mpr
     (isPushoutSquare_of_diagram_retract (reverseGrid F) (reverseGrid G) hr.some
       ((isPullbackSquare_iff_reverseGrid G).mp hG))

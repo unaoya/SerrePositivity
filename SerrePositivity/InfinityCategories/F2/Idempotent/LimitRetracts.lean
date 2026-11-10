@@ -19,7 +19,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 冪等完備な元の圏内で、極限を持つ全図式の元の retract も極限を持つ。 -/
 lemma hasLimit_of_diagram_retract {K X : SSet.{u}} [Quasicategory X]
     (hX : IsIdempotentComplete X) (a b : K ⟶ X)
-    (r : VertexRetraction (functorVertex a) (functorVertex b)) (hb : HasLimit b) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex a) (functorVertex b)) (hb : HasLimit b) :
     HasLimit a := by
   have hr := diagram_retract_op a b ⟨r⟩
   have hc := hasColimit_of_diagram_retract hX.op (SSet.opFunctor.map a)

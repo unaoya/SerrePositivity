@@ -30,7 +30,7 @@ lemma indArrowImageVertex_of_retract (edges : I → C _⦋1⦌)
     (G : Ind.IndInfinity μ A ⟶ generatedArrowCategory edges)
     (hI : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (indArrowImageCategory edges G))
     {f g : ((ihom (Δ[1] : SSet.{u + 1})).obj C) _⦋0⦌}
-    (hg : IndArrowImageVertex edges G g) (r : Idempotent.VertexRetraction f g) :
+    (hg : IndArrowImageVertex edges G g) (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction f g) :
     IndArrowImageVertex edges G f := by
   let z : (indArrowImageCategory edges G) _⦋0⦌ := ⟨g, by
     intro α

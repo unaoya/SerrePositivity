@@ -49,7 +49,7 @@ lemma dgModuleKappaCompact_iff_of_vertexIso {κ : Cardinal.{u}}
 /-- 元の h 圏内の retract により、同じ加群頂点の κ-compact 性を戻す。 -/
 lemma dgModuleKappaCompact_of_vertexRetract {κ : Cardinal.{u}}
     {M N : ModuleCategory R D}
-    (h : F2.Idempotent.IsVertexRetractOf
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       (dgConeModuleDerivedVertex R D M) (dgConeModuleDerivedVertex R D N))
     (hN : dgModuleKappaCompact R D κ N) : dgModuleKappaCompact R D κ M :=
   F2.Compact.IsKappaCompact.of_retract h hN

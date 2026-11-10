@@ -23,7 +23,7 @@ variable {C : SSet.{u}} [Quasicategory C]
 
 /-- 元の比較の各像は、同じ compact Ind 内で元の compact Yoneda 像の retract。 -/
 lemma idemToCompactInd_retract_yoneda (κ : Cardinal.{u}) (F : Idem C _⦋0⦌) :
-    ∃ x : C _⦋0⦌, IsVertexRetractOf ((idemToCompactInd κ C).app _ F)
+    ∃ x : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf ((idemToCompactInd κ C).app _ F)
       ((compactIndYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
   obtain ⟨x, hx⟩ := idemVertex_retract_idemYoneda F
   have h := hx.map (idemToCompactInd κ C)
@@ -35,13 +35,13 @@ lemma idemToCompactInd_retract_yoneda (κ : Cardinal.{u}) (F : Idem C _⦋0⦌) 
 lemma idemToCompactInd_isEssentiallySurjective_iff_retracts (κ : Cardinal.{u}) :
     IsEssentiallySurjective (idemToCompactInd κ C) ↔
       ∀ y : kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C) _⦋0⦌,
-        ∃ x : C _⦋0⦌, IsVertexRetractOf y
+        ∃ x : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf y
           ((compactIndYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
   constructor
   · intro h y
     obtain ⟨F, ⟨e⟩⟩ := h y
     obtain ⟨x, hx⟩ := idemToCompactInd_retract_yoneda κ F
-    exact ⟨x, (IsVertexRetractOf.of_iso e.symm).trans hx⟩
+    exact ⟨x, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm).trans hx⟩
   · intro h y
     obtain ⟨x, hx⟩ := h y
     let a := (idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up x)
@@ -57,7 +57,7 @@ lemma idemToCompactInd_isEssentiallySurjective_iff_retracts (κ : Cardinal.{u}) 
 /-- 元の compact Ind 対象の Yoneda retract 回収から、同じ実比較自身の全 ∞ 圏同値を得る。 -/
 lemma idemToCompactInd_isQCatEquivalence_of_retracts (κ : Cardinal.{u})
     (h : ∀ y : kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C) _⦋0⦌,
-      ∃ x : C _⦋0⦌, IsVertexRetractOf y
+      ∃ x : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf y
         ((compactIndYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up x))) :
     IsQCatEquivalence (idemToCompactInd κ C) :=
   isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _

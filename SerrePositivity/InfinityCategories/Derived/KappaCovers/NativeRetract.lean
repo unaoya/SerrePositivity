@@ -42,7 +42,7 @@ lemma dgKappaClosedProjectiveObjects_nativeRetractCovers {κ : Cardinal.{u}}
     (hκ : Cardinal.aleph0 < κ) (hreg : κ.IsRegular)
     {y : (dgModuleDerivedInfinityCategory R D) _⦋0⦌} {M : ModuleCategory R D}
     (hM : dgKappaClosedProjectiveObjects R D κ M)
-    (r : F2.Idempotent.VertexRetraction y (dgConeModuleDerivedVertex R D M)) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction y (dgConeModuleDerivedVertex R D M)) :
     ∃ N : ModuleCategory R D, dgKappaClosedProjectiveObjects R D κ N ∧
       Nonempty (VertexIso (dgConeModuleDerivedVertex R D N) y) := by
   obtain ⟨P, rfl⟩ := Simplex.vertexEquiv.symm.surjective y

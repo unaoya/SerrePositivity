@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 冪等完備な元の圏の Yoneda 対象の指定 retract は、元の表現可能前層と同型。 -/
 lemma yonedaRetract_iso_representable {C : SSet.{u}} [Quasicategory C]
     (hC : IsIdempotentComplete C) (c : C _⦋0⦌) (F : (PresheafInfinity C) _⦋0⦌)
-    (r : VertexRetraction F
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction F
       ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up c))) :
     ∃ c' : C _⦋0⦌, Nonempty (VertexIso F
       ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up c'))) := by
@@ -40,7 +40,7 @@ lemma isRetractPresheaf_iff_representable_of_complete {C : SSet.{u}} [Quasicateg
   · rintro ⟨G, ⟨c, rfl⟩, ⟨r⟩⟩
     exact yonedaRetract_iso_representable hC c F r
   · rintro ⟨c, ⟨e⟩⟩
-    exact isRetractPresheaf_of_retract (IsVertexRetractOf.of_iso e)
-      (mem_retractClosure ⟨c, rfl⟩)
+    exact isRetractPresheaf_of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e)
+      (_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure ⟨c, rfl⟩)
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

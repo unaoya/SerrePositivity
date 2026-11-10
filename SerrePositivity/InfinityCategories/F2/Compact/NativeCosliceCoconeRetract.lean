@@ -26,7 +26,7 @@ lemma nativeCosliceCocone_retract {I C : SSet.{u}} [Quasicategory C]
     (D : I ⟶ C) (c : JoinCocone D)
     (hc : IsColimitCone (mapJoinCocone (nativeCosliceRepresentation c.vertex).diagram
       (JoinCocone.ulift.{u, u + 1} c))) :
-    ∃ i : I _⦋0⦌, Idempotent.IsVertexRetractOf c.vertex (D.app (Opposite.op ⦋0⦌) i) := by
+    ∃ i : I _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf c.vertex (D.app (Opposite.op ⦋0⦌) i) := by
   let p := sliceUnderProjection (SSet.yonedaEquiv.symm c.vertex)
   let t := (uliftVertexFiberIso.{u, u + 1} p c.vertex).hom.app (Opposite.op ⦋0⦌)
     (ULift.up (cosliceIdentityFiberPoint c.vertex))

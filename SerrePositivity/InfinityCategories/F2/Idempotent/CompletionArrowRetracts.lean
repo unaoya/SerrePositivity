@@ -25,7 +25,7 @@ lemma IsIdempotentCompletion.arrow_retract {C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : IsIdempotentCompletion f)
     (a : (Δ[1] : SSet.{u}) ⟶ D) :
     ∃ b : (Δ[1] : SSet.{u}) ⟶ C,
-      IsVertexRetractOf (functorVertex a) (functorVertex (b ≫ f)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex a) (functorVertex (b ≫ f)) := by
   obtain ⟨x, ⟨rx⟩⟩ := hf.2.2 (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a))
   obtain ⟨y, ⟨ry⟩⟩ := hf.2.2 (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a))
   obtain ⟨b, hbx, hby, hab⟩ := arrow_retract_lift a
@@ -52,6 +52,6 @@ lemma IsIdempotentCompletion.arrow_retract {C D : SSet.{u}}
       rw [hby]
       exact ⟨Iso.refl _⟩
   obtain ⟨c, ⟨e⟩⟩ := exists_diagram_in_fullyFaithful_source f hf.2.1 b hg
-  exact ⟨c, hab.trans (IsVertexRetractOf.of_iso e.symm)⟩
+  exact ⟨c, hab.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm)⟩
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

@@ -38,17 +38,17 @@ lemma isBicartesianZeroVertex_functorVertex {X : SSet.{u}}
 /-- 元の全四角形の関手 ∞ 圏内の retract は、零角と双カルテジアン性を保つ。 -/
 lemma isBicartesianZeroVertex_of_retract {X : SSet.{u}} [Quasicategory X]
     {v w : ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) _⦋0⦌}
-    (r : IsVertexRetractOf v w) (hw : IsBicartesianZeroVertex w) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf v w) (hw : IsBicartesianZeroVertex w) :
     IsBicartesianZeroVertex v := by
   obtain ⟨F, rfl⟩ := (functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective v
   obtain ⟨G, rfl⟩ := (functorVertexEquiv ((Δ[1] : SSet.{u}) ⊗ Δ[1]) X).surjective w
   simp only [functorVertexEquiv_apply] at r hw ⊢
   rw [isBicartesianZeroVertex_functorVertex] at hw ⊢
   let z := (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
-  have rz : VertexRetraction (squareVertex F 0 1) (squareVertex G 0 1) := by
-    change VertexRetraction (F.app (Opposite.op ⦋0⦌) z) (G.app (Opposite.op ⦋0⦌) z)
+  have rz : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (squareVertex F 0 1) (squareVertex G 0 1) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (F.app (Opposite.op ⦋0⦌) z) (G.app (Opposite.op ⦋0⦌) z)
     have h := r.some.map (hoFunctor.map (evaluateFunctorAt (Y := X) z)).toFunctor
-    change VertexRetraction
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction
       ((evaluateFunctorAt (Y := X) z).app (Opposite.op ⦋0⦌) (functorVertex F))
       ((evaluateFunctorAt (Y := X) z).app (Opposite.op ⦋0⦌) (functorVertex G)) at h
     simpa only [evaluateFunctorAt_functorVertex] using h

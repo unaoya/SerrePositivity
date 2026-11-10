@@ -45,7 +45,7 @@ variable [Quasicategory A] [Quasicategory C]
 規約：指定された元の錐と頂点を保持する。
 使われ方：accessible な極限保存関手の表現可能 retract の存在。 -/
 lemma solutionHom_isRetract (d : JoinCone (smallSolutionLift i F)) :
-    Idempotent.IsVertexRetractOf
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       (functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (i ≫ F) ≫
         Compact.spaceUniverseDiagram))
       (functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map i ≫ covariantRepresentableInfinity
@@ -58,10 +58,10 @@ lemma solutionHom_isRetract (d : JoinCone (smallSolutionLift i F)) :
     (leftStraighteningInfinityDiagram_baseChangeIso q i).symm ≪≫
       FunctorIso.precomp (Compact.covariantRepresentableInfinity_cosliceIso _).symm
         ((SSet.uliftFunctor.{u + 2, u + 1}).map i)
-  exact (Idempotent.IsVertexRetractOf.of_iso (smallSolutionClassificationIso i F).symm).trans
-    ((show Idempotent.IsVertexRetractOf _ _ from
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso (smallSolutionClassificationIso i F).symm).trans
+    ((show _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf _ _ from
       ⟨conePullbackClassificationRetraction (smallSolutionLift_isPullback i F) d⟩).trans
-        (Idempotent.IsVertexRetractOf.of_iso ht))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso ht))
 
 /-- 概要：accessible な極限保存関手は、小さい compact 生成圏上で生成対象の Hom の retract。
 方針：生成解を頂点とする全解錐を取り、同じ全分類 retract を適用する。
@@ -73,7 +73,7 @@ lemma exists_accessibleGeneratorHomRetract (hCa : IsAccessible C) (hCl : _root_.
       letI := hA
       ∃ (i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (a : A _⦋0⦌),
         κ.IsRegular ∧ IsKappaCompactGenerating κ i ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor κ F ∧
-        Idempotent.IsVertexRetractOf
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
           (functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (i ≫ F) ≫
             Compact.spaceUniverseDiagram))
           (functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map i ≫ covariantRepresentableInfinity

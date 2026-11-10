@@ -48,7 +48,7 @@ lemma ind_corepresentable_of_continuous_preservesLimits
   have heq : δ ≫ H =
       (SSet.uliftFunctor.{u + 2, u + 1}).map (j ≫ F) ≫ Compact.spaceUniverseDiagram := by
     rw [CategoryTheory.Functor.map_comp, Category.assoc]
-  have r : Idempotent.VertexRetraction (functorVertex (δ ≫ H))
+  have r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (δ ≫ H))
       (functorVertex (δ ≫ R)) := by
     rw [heq]
     exact hr.some

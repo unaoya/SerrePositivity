@@ -25,7 +25,7 @@ lemma IsKappaCompact.retract_of_colimit {κ : Cardinal.{u}}
     (D : (SSet.uliftFunctor.{v, u}).obj I ⟶ C) (c : JoinCocone D)
     (hc : IsColimitCone c) (h : IsKappaCompact.{u, v} κ c.vertex) :
     ∃ i : I _⦋0⦌,
-      Idempotent.IsVertexRetractOf c.vertex (D.app (Opposite.op ⦋0⦌) (ULift.up i)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf c.vertex (D.app (Opposite.op ⦋0⦌) (ULift.up i)) := by
   have hR := h.nativeCoslice_preserves I D c hc
   obtain ⟨i, hi⟩ := nativeCosliceCocone_retract D c hR
   exact ⟨i.down, hi⟩

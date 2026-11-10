@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 
 /-!
 概要：充満忠実な元の関手は、指定した二頂点の retract を反映する。
@@ -22,9 +22,9 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 元の充満忠実な関手は、同じ指定二頂点の retract データを反映する。 -/
 def VertexRetraction.ofFullyFaithful {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (hf : IsFullyFaithful f)
-    {x y : X _⦋0⦌} (r : VertexRetraction
+    {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction
       (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)) :
-    VertexRetraction x y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y := by
   let i := Classical.choose ((hf.homotopyCategoryMap_bijective x y).surjective r.i)
   have hi := Classical.choose_spec ((hf.homotopyCategoryMap_bijective x y).surjective r.i)
   let p := Classical.choose ((hf.homotopyCategoryMap_bijective y x).surjective r.r)
@@ -38,7 +38,7 @@ def VertexRetraction.ofFullyFaithful {X Y : SSet.{u}}
 /-- 元の充満忠実な関手は、同じ二頂点の retract の存在を保存・反映する。 -/
 lemma isVertexRetractOf_iff_map_of_fullyFaithful {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) (hf : IsFullyFaithful f)
-    (x y : X _⦋0⦌) : IsVertexRetractOf x y ↔ IsVertexRetractOf
+    (x y : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y) :=
   ⟨fun h ↦ h.map f, fun ⟨r⟩ ↦ ⟨r.ofFullyFaithful f hf⟩⟩
 

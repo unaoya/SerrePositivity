@@ -37,7 +37,7 @@ lemma presheafCompletionExtension_values {K C E : SSet.{u}}
       H.app (Opposite.op ⦋0⦌) (ULift.up k)) hG
   have hm : IsRetractPresheaf
       (G.app (Opposite.op ⦋0⦌) (ULift.up (δ.app (Opposite.op ⦋0⦌) k))) :=
-    he.symm ▸ (mem_retractClosure ⟨F.app (Opposite.op ⦋0⦌) k, rfl⟩)
+    he.symm ▸ (_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure ⟨F.app (Opposite.op ⦋0⦌) k, rfl⟩)
   exact isRetractPresheaf_of_retract hk hm
 
 /-- 元の Yoneda 後合成の厳密な前層延長を構成し、全値の retract 条件も実際に証明する。 -/

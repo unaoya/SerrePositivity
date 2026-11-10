@@ -26,7 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 lemma retract_iso_in_complete_fullSubcomplex {X : SSet.{u}} [Quasicategory X]
     (P : X _⦋0⦌ → Prop) (hP : IsIdempotentComplete (fullSubcomplexOnVertices X P))
     (x : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) (y : X _⦋0⦌)
-    (r : VertexRetraction y x.val) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction y x.val) :
     ∃ z : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌, Nonempty (VertexIso y z.val) := by
   obtain ⟨t, _hi, _hr⟩ := r.triangle_exists
   obtain ⟨F, hF⟩ := weakDiagram_extension_exists t.weakDiagram

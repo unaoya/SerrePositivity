@@ -64,7 +64,7 @@ theorem dgKappaNativeProjection_zero_iff_kernelImage (b : (dgNerve R (B)) _⦋0�
       (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) x).mp hb
     obtain ⟨y, hy, ⟨r⟩⟩ := (dgThickClosureProperty_iff_nativeStableRetract R (B) (P) x).mp hx
     let a : C := ⟨y, hy⟩
-    have hr : F2.Idempotent.VertexRetraction (DGNerve.Simplex.vertex x)
+    have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (DGNerve.Simplex.vertex x)
         ((i).app (Opposite.op ⦋0⦌) (DGNerve.Simplex.vertex a)) := by
       rw [dgFunctorNerve_vertex]
       exact r

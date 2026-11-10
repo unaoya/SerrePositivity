@@ -21,8 +21,8 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の二頂点の retract の存在は、同じ二頂点の任意の宇宙持ち上げで保たれる。 -/
 lemma IsVertexRetractOf.ulift {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (h : IsVertexRetractOf x y) :
-    IsVertexRetractOf (X := (SSet.uliftFunctor.{v, u}).obj X) (ULift.up x) (ULift.up y) := by
+    {x y : X _⦋0⦌} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (X := (SSet.uliftFunctor.{v, u}).obj X) (ULift.up x) (ULift.up y) := by
   obtain ⟨r⟩ := h
   obtain ⟨t, _hi, _hr⟩ := r.triangle_exists
   let T : RetractionTriangle (X := (SSet.uliftFunctor.{v, u}).obj X) (ULift.up y) (ULift.up x) :=

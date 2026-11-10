@@ -30,7 +30,7 @@ def cosliceIdentityFiberPoint {X : SSet.{u}} (x : X _⦋0⦌) :
 lemma cosliceIdentityEdge_retract {X : SSet.{u}} {x y : X _⦋0⦌}
     (w : vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y _⦋0⦌)
     (k : (sliceUnder (SSet.yonedaEquiv.symm x)).Edge w.val (cosliceIdentityCone x)) :
-    Idempotent.IsVertexRetractOf x y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y := by
   let f := cosliceFiberVertexToEdge w
   let g := (k.map (sliceUnderProjection (SSet.yonedaEquiv.symm x))).ofEq
     (w.property.trans (pinchedConstant_zero y)) (cosliceIdentityCone_projection x)

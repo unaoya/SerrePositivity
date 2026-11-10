@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
@@ -30,12 +30,12 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 @[kerodon 040U]
 def IsIdempotentCompletion {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
   IsIdempotentComplete D ∧ IsFullyFaithful f ∧
-    ∀ d : D _⦋0⦌, ∃ c : C _⦋0⦌, IsVertexRetractOf d (f.app (Opposite.op ⦋0⦌) c)
+    ∀ d : D _⦋0⦌, ∃ c : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf d (f.app (Opposite.op ⦋0⦌) c)
 
 /-- 元の Idem(C) の各頂点は、同じ Idem(C) 自身の内部で元の Yoneda 像の retract。 -/
 lemma idemVertex_retract_idemYoneda {C : SSet.{u}} [Quasicategory C]
     (F : (Idem C) _⦋0⦌) : ∃ x : C _⦋0⦌,
-      IsVertexRetractOf F ((idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf F ((idemYoneda C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
   obtain ⟨x, hx⟩ := idemVertex_retract_yoneda F
   refine ⟨x, (isVertexRetractOf_iff_map_of_fullyFaithful (idemInclusionPresheaf C)
     (idemInclusionPresheaf_isFullyFaithful C) _ _).mpr ?_⟩

@@ -1,4 +1,5 @@
 {
+  "SerrePositivity.InfinityCategories.Core.Retracts": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure",
   "SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor",
   "SerrePositivity.InfinityCategories.F2.Presentable.Definition": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition",
   "SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitContractible": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible",

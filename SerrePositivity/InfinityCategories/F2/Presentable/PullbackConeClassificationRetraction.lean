@@ -120,7 +120,7 @@ def conePullbackRelativeRetraction :
 規約：元の全関手圏での一つの retract。
 使われ方：元の空間値関手の余表現可能性への接続。 -/
 def conePullbackClassificationRetraction :
-    Idempotent.VertexRetraction (functorVertex (leftStraighteningInfinityDiagram a))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (leftStraighteningInfinityDiagram a))
       (functorVertex (leftStraighteningInfinityDiagram (pullback.snd
         (sliceUnderProjection (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) c.vertex))) i))) := by
   have : LeftFibration (pullback.snd

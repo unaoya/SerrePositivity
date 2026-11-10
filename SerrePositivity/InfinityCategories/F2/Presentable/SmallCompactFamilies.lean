@@ -30,7 +30,7 @@ def SmallRetractIndex : Type u := by
   have (t : T) : Small.{u} (HomotopyCategory.mk (v t) ⟶ HomotopyCategory.mk (v t)) :=
     hC.hom_small _ _
   exact Σ t : T, {f : Shrink.{u} (HomotopyCategory.mk (v t) ⟶ HomotopyCategory.mk (v t)) //
-    ∃ x : C _⦋0⦌, ∃ s : Idempotent.VertexRetraction x (v t),
+    ∃ x : C _⦋0⦌, ∃ s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x (v t),
       s.r ≫ s.i = (equivShrink _).symm f}
 
 /-- 概要：小さい符号から元の生成対象の自己射を回収する。
@@ -54,7 +54,7 @@ def smallRetractFamily (t : SmallRetractIndex hC v) : C _⦋0⦌ := t.2.2.choose
 規約：同じ元の二頂点間の射を保持する。
 使われ方：代表族の compact 性。 -/
 def smallRetractFamilyRetraction (t : SmallRetractIndex hC v) :
-    Idempotent.VertexRetraction (smallRetractFamily hC v t) (v t.1) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (smallRetractFamily hC v t) (v t.1) :=
   t.2.2.choose_spec.choose
 
 /-- 概要：選んだ retract の冪等射は元の符号の自己射。
@@ -70,7 +70,7 @@ lemma smallRetractFamilyRetraction_endomorphism (t : SmallRetractIndex hC v) :
 規約：元の retract の射を使い、分裂の存在を追加しない。
 使われ方：全 compact 対象の小さい代表族への回収。 -/
 lemma exists_smallRetractFamily_iso (a : T) (x : C _⦋0⦌)
-    (hx : Idempotent.IsVertexRetractOf x (v a)) :
+    (hx : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x (v a)) :
     ∃ t : SmallRetractIndex hC v, Nonempty (VertexIso x (smallRetractFamily hC v t)) := by
   have (t : T) : Small.{u} (HomotopyCategory.mk (v t) ⟶ HomotopyCategory.mk (v t)) :=
     hC.hom_small _ _

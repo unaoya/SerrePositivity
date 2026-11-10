@@ -22,11 +22,11 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 始点の指定 retract は、終点を固定した全辺の関手 ∞ 圏内の retract に持ち上がる。 -/
 lemma arrow_source_retract_lift {X : SSet.{u}} [Quasicategory X]
     (a : (Δ[1] : SSet.{u}) ⟶ X) (x : X _⦋0⦌)
-    (r : VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a)) x) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a)) x) :
     ∃ b : (Δ[1] : SSet.{u}) ⟶ X,
       SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ b) = x ∧
       stdSimplex.δ (0 : Fin 2) ≫ b = stdSimplex.δ (0 : Fin 2) ≫ a ∧
-      IsVertexRetractOf (functorVertex a) (functorVertex b) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex a) (functorVertex b) := by
   let p := stdSimplex.δ (0 : Fin 2) ≫ a
   have hv : (arrowPointCone a).vertex =
       SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a) := by
@@ -34,7 +34,7 @@ lemma arrow_source_retract_lift {X : SSet.{u}} [Quasicategory X]
     rw [← Category.assoc, joinStdSimplexIso_zero_inl]
   obtain ⟨z, hz, hr⟩ := rightFibration_retract_lift (sliceOverProjection p)
     (arrowPointCone a) x (by
-      change VertexRetraction (arrowPointCone a).vertex x
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (arrowPointCone a).vertex x
       rw [hv]
       exact r)
   let b := (joinStdSimplexIso 0 0).inv ≫ z.val
@@ -49,11 +49,11 @@ lemma arrow_source_retract_lift {X : SSet.{u}} [Quasicategory X]
 /-- 終点の指定 retract は、始点を固定した全辺の関手 ∞ 圏内の retract に持ち上がる。 -/
 lemma arrow_target_retract_lift {X : SSet.{u}} [Quasicategory X]
     (a : (Δ[1] : SSet.{u}) ⟶ X) (y : X _⦋0⦌)
-    (r : VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a)) y) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a)) y) :
     ∃ b : (Δ[1] : SSet.{u}) ⟶ X,
       stdSimplex.δ (1 : Fin 2) ≫ b = stdSimplex.δ (1 : Fin 2) ≫ a ∧
       SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ b) = y ∧
-      IsVertexRetractOf (functorVertex a) (functorVertex b) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex a) (functorVertex b) := by
   let p := stdSimplex.δ (1 : Fin 2) ≫ a
   have hv : (arrowPointCocone a).vertex =
       SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a) := by
@@ -61,7 +61,7 @@ lemma arrow_target_retract_lift {X : SSet.{u}} [Quasicategory X]
     rw [← Category.assoc, joinStdSimplexIso_zero_inr]
   obtain ⟨z, hz, hr⟩ := leftFibration_retract_lift (sliceUnderProjection p)
     (arrowPointCocone a) y (by
-      change VertexRetraction (arrowPointCocone a).vertex y
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (arrowPointCocone a).vertex y
       rw [hv]
       exact r)
   let b := (joinStdSimplexIso 0 0).inv ≫ z.val
@@ -76,14 +76,14 @@ lemma arrow_target_retract_lift {X : SSet.{u}} [Quasicategory X]
 /-- 両端の指定 retract は、同じ全辺の関手 ∞ 圏内の一つの retract を与える。 -/
 lemma arrow_retract_lift {X : SSet.{u}} [Quasicategory X]
     (a : (Δ[1] : SSet.{u}) ⟶ X) (x y : X _⦋0⦌)
-    (rx : VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a)) x)
-    (ry : VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a)) y) :
+    (rx : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ a)) x)
+    (ry : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ a)) y) :
     ∃ b : (Δ[1] : SSet.{u}) ⟶ X,
       SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 2) ≫ b) = x ∧
       SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ b) = y ∧
-      IsVertexRetractOf (functorVertex a) (functorVertex b) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex a) (functorVertex b) := by
   obtain ⟨c, hcx, hcy, hac⟩ := arrow_source_retract_lift a x rx
-  have rcy : VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ c)) y := by
+  have rcy : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 2) ≫ c)) y := by
     rw [hcy]
     exact ry
   obtain ⟨b, hbc, hby, hcb⟩ := arrow_target_retract_lift c y rcy

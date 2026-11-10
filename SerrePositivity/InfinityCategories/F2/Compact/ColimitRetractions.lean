@@ -25,7 +25,7 @@ open Idempotent
 @[kerodon 05E6]
 lemma isColimitCone_of_functorRetraction {K X : SSet.{u}} [Quasicategory X]
     {p q : K ⟶ X} {c : JoinCocone p} {d : JoinCocone q}
-    (r : VertexRetraction (functorVertex c.val) (functorVertex d.val))
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex c.val) (functorVertex d.val))
     (hd : IsColimitCone d) : IsColimitCone c := by
   apply isColimitCone_of_initialBoundaryLifting_coconeRestriction c
   exact initialBoundaryLifting_of_vertexRetraction (coconeRestriction K X) r
@@ -35,16 +35,16 @@ lemma isColimitCone_of_functorRetraction {K X : SSet.{u}} [Quasicategory X]
 lemma PreservesKappaFilteredColimits.of_retract {κ : Cardinal.{u}}
     {C : SSet.{max u v}} {Y : SSet.{max u v + 1}} [Quasicategory Y]
     {F G : (SSet.uliftFunctor.{max u v + 1, max u v}).obj C ⟶ Y}
-    (r : VertexRetraction (functorVertex F) (functorVertex G))
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex F) (functorVertex G))
     (hG : PreservesKappaFilteredColimits.{u, v} κ G) :
     PreservesKappaFilteredColimits.{u, v} κ F := by
   intro I hI hFiltered D c hc
   let c' := JoinCocone.ulift.{max u v, max u v + 1} c
   let q := (pre c'.val).app Y
-  have hr : VertexRetraction (q.app (Opposite.op ⦋0⦌) (functorVertex F))
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (q.app (Opposite.op ⦋0⦌) (functorVertex F))
       (q.app (Opposite.op ⦋0⦌) (functorVertex G)) :=
     r.map (hoFunctor.map q).toFunctor
-  change VertexRetraction (functorVertex (c'.val ≫ F))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (c'.val ≫ F))
     (functorVertex (c'.val ≫ G)) at hr
   exact isColimitCone_of_functorRetraction
     (c := mapJoinCocone F c') (d := mapJoinCocone G c') hr (hG I D c hc)

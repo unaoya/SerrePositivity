@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.Core.TerminalVertices
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
@@ -35,17 +35,17 @@ def IsYonedaVertex {C : SSet.{u}} [Quasicategory C]
 
 /-- 元の前層圏内の、元の Yoneda 像の retract である頂点。 -/
 def IsRetractPresheaf {C : SSet.{u}} [Quasicategory C]
-    (F : (PresheafInfinity C) _⦋0⦌) : Prop := retractClosure IsYonedaVertex F
+    (F : (PresheafInfinity C) _⦋0⦌) : Prop := _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure IsYonedaVertex F
 
 /-- 元の Yoneda 像の retract は、さらに retract を取っても同じ条件を満たす。 -/
 lemma isRetractPresheaf_of_retract {C : SSet.{u}} [Quasicategory C]
-    {F G : (PresheafInfinity C) _⦋0⦌} (h : IsVertexRetractOf F G)
-    (hG : IsRetractPresheaf G) : IsRetractPresheaf F := retractClosure_of_retract h hG
+    {F G : (PresheafInfinity C) _⦋0⦌} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf F G)
+    (hG : IsRetractPresheaf G) : IsRetractPresheaf F := _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract h hG
 
 /-- 元の Yoneda 像の retract の条件は、元の前層の頂点同型で不変。 -/
 lemma isRetractPresheaf_iff_of_iso {C : SSet.{u}} [Quasicategory C]
     {F G : (PresheafInfinity C) _⦋0⦌} (e : VertexIso F G) :
-    IsRetractPresheaf F ↔ IsRetractPresheaf G := retractClosure_iff_of_iso IsYonedaVertex e
+    IsRetractPresheaf F ↔ IsRetractPresheaf G := _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_iff_of_iso IsYonedaVertex e
 
 /-- 元の前層圏内の Yoneda 像の retract 閉包としての Idem(C)。 -/
 def Idem (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} :=
@@ -69,7 +69,7 @@ def idemYoneda (C : SSet.{u}) [Quasicategory C] :
     (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ Idem C :=
   fullSubcomplexLift IsRetractPresheaf (yonedaInfinityMap C) (fun a ↦ by
     obtain ⟨x⟩ := a
-    exact mem_retractClosure ⟨x, rfl⟩)
+    exact _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure ⟨x, rfl⟩)
 
 /-- 元の包含後に、元の全 Yoneda 関手そのものを回収する。 -/
 lemma idemYoneda_inclusion (C : SSet.{u}) [Quasicategory C] :
@@ -85,7 +85,7 @@ lemma idemYoneda_isFullyFaithful (C : SSet.{u}) [Quasicategory C] :
 
 /-- 元の閉包の各対象は、元の前層圏内で指定された元の Yoneda 対象の retract。 -/
 lemma idemVertex_retract_yoneda {C : SSet.{u}} [Quasicategory C] (F : (Idem C) _⦋0⦌) :
-    ∃ x : C _⦋0⦌, IsVertexRetractOf
+    ∃ x : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       ((idemInclusionPresheaf C).app (Opposite.op ⦋0⦌) F)
       ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
   obtain ⟨G, ⟨x, rfl⟩, h⟩ := fullSubcomplexOnVertices_vertex F

@@ -41,10 +41,10 @@ lemma covariantRepresentable_retract_corepresentable {C : SSet.{u}} [Quasicatego
     (hC : Idempotent.IsIdempotentComplete C)
     (H : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ SpaceInfinity.{u})
     (y : C _⦋0⦌)
-    (r : Idempotent.VertexRetraction (functorVertex H)
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex H)
       (functorVertex (covariantRepresentableInfinity y))) :
     ∃ x : C _⦋0⦌, Nonempty (FunctorIso (covariantRepresentableInfinity x) H) := by
-  have hr : Idempotent.VertexRetraction (functorVertex H)
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex H)
       ((Compact.covariantRepresentableDiagram C).app (Opposite.op ⦋0⦌)
         (ULift.up (SSet.opObjEquiv.symm y))) := by
     rw [Compact.covariantRepresentableDiagram_vertex]

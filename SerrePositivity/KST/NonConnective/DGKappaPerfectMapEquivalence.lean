@@ -27,7 +27,7 @@ private theorem completionAfterEquivalence {X Y Z : SSet.{v}}
   intro y
   obtain ⟨x, hx⟩ := hδ.2.2 y
   obtain ⟨a, ⟨ea⟩⟩ := e.isEssentiallySurjective x
-  exact ⟨a, hx.trans (IsVertexRetractOf.of_iso (VertexIso.map ea δ).symm)⟩
+  exact ⟨a, hx.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso (VertexIso.map ea δ).symm)⟩
 
 private theorem completionMapEquivalence {X Y PX PY : SSet.{v}}
     [Quasicategory X] [Quasicategory Y] [Quasicategory PX] [Quasicategory PY]

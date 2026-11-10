@@ -4939,6 +4939,113 @@
       "new": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivision_map_anodyne",
       "module": "SerrePositivity.KST.Comparison.SubdivisionAnodyne",
       "new_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionAnodyne"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf.map",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.map",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf.of_iso",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf.refl",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.IsVertexRetractOf.trans",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.trans",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction.hom_unique",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.hom_unique",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction.idempotent",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.idempotent",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction.isoOfSameIdempotent",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction.isoOfSameIdempotent._proof_2",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent._proof_2",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.VertexRetraction.isoOfSameIdempotent._proof_3",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent._proof_3",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetractions"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.mem_retractClosure",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.retractClosure",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.retractClosure_idempotent",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_idempotent",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.retractClosure_iff_of_iso",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_iff_of_iso",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.retractClosure_mono",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_mono",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.F2.Idempotent.retractClosure_of_retract",
+      "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract",
+      "module": "SerrePositivity.InfinityCategories.Core.Retracts",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
     }
   ],
   "modules": {
@@ -5088,7 +5195,8 @@
     "SerrePositivity.KST.Comparison.SubdivisionNerveChains": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionNerveChains",
     "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionRearDegeneracy",
     "SerrePositivity.KST.Comparison.SubdivisionUnions": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions",
-    "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.UniqueFaceNondegenerate"
+    "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.UniqueFaceNondegenerate",
+    "SerrePositivity.InfinityCategories.Core.Retracts": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
   },
   "namespaces": {
     "SerrePositivity.KST.ProExcision.AWBoundaryCoordinates": {
@@ -5531,6 +5639,9 @@
     },
     "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": {
       "SerrePositivity.KST.Comparison": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor"
+    },
+    "SerrePositivity.InfinityCategories.Core.Retracts": {
+      "SerrePositivity.InfinityCategories.F2.Idempotent": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion"
     }
   },
   "opens": {
@@ -5539,6 +5650,7 @@
     "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.KST.LocalizingInvariants",
     "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.F2.Presentable",
     "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality",
-    "SerrePositivity.KST.Comparison": "SerrePositivity.KST.Comparison"
+    "SerrePositivity.KST.Comparison": "SerrePositivity.KST.Comparison",
+    "SerrePositivity.InfinityCategories.F2.Idempotent": "SerrePositivity.InfinityCategories.F2.Idempotent"
   }
 }

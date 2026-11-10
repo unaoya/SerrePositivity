@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 冪等完備な元の圏内で、余極限を持つ全図式の元の retract も余極限を持つ。 -/
 lemma hasColimit_of_diagram_retract {K X : SSet.{u}} [Quasicategory X]
     (hX : IsIdempotentComplete X) (a b : K ⟶ X)
-    (r : VertexRetraction (functorVertex a) (functorVertex b)) (hb : HasColimit b) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex a) (functorVertex b)) (hb : HasColimit b) :
     HasColimit a := by
   obtain ⟨c, hc⟩ := hb
   let v : (colimitCocones K X) _⦋0⦌ := ⟨functorVertex c.val, by

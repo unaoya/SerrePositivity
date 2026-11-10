@@ -23,10 +23,10 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 指定した元の頂点を持つ底の retract は、左 fibration の全体へ持ち上がる。 -/
 lemma leftFibration_retract_lift {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (p : X ⟶ Y) [LeftFibration p] (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (r : VertexRetraction (p.app (Opposite.op ⦋0⦌) x) y) :
-    ∃ z : X _⦋0⦌, p.app (Opposite.op ⦋0⦌) z = y ∧ IsVertexRetractOf x z := by
-  have hr := (show IsVertexRetractOf (p.app (Opposite.op ⦋0⦌) x) y from ⟨r⟩).op
-  have hro : IsVertexRetractOf
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (p.app (Opposite.op ⦋0⦌) x) y) :
+    ∃ z : X _⦋0⦌, p.app (Opposite.op ⦋0⦌) z = y ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x z := by
+  have hr := (show _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (p.app (Opposite.op ⦋0⦌) x) y from ⟨r⟩).op
+  have hro : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       ((SSet.opFunctor.map p).app (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm x))
       (SSet.opObjEquiv.symm y) := by
     simpa only [SSet.opFunctor_map, Equiv.apply_symm_apply] using hr
@@ -36,7 +36,7 @@ lemma leftFibration_retract_lift {X Y : SSet.{u}} [Quasicategory X] [Quasicatego
   · have h := congrArg (SSet.opObjEquiv (X := Y)) hz
     simpa only [SSet.opFunctor_map, Equiv.apply_symm_apply] using h
   · have h := hxz.op.map (SSet.opFunctorCompOpFunctorIso.app X).hom
-    change IsVertexRetractOf
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
       (SSet.opObjEquiv (SSet.opObjEquiv (SSet.opObjEquiv.symm (SSet.opObjEquiv.symm x))))
       (SSet.opObjEquiv (SSet.opObjEquiv (SSet.opObjEquiv.symm z))) at h
     simpa only [Equiv.apply_symm_apply] using h

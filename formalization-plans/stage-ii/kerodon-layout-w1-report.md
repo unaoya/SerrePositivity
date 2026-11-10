@@ -336,6 +336,8 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 
 二つの分割を `split_module.py` で検査した。どちらも HTT に残す宣言から Kerodon に切り出す補題への依存だけがあり、逆向きの依存はなかった。移動先 6 本、外部から参照される 1 名の互換モジュール、および利用側の `AccessibleFunctorEquivalence`、`Duality.LeftUnitContractible`、`ContravariantContinuity` をビルド鍵 `--wait 1800` で検査した。v3b は 30 宣言で PASS、未説明差分 0 件。書き換えた利用側は 313 本で、属性も Lean の出力で再照合した。
 
+`Core/Retracts` も §9 に当たる。頂点 retract の定義とその基本補題 9 宣言を Kerodon §8.5 の `VertexRetractions` に、HTT 5.1.4.2 の頂点条件の retract 閉包 6 宣言を `HTT/RetractsAndIdempotentCompletion/RetractClosure` に分けた。`split_module.py` で、閉包側から頂点 retract 側への依存だけであることを確認した。利用側 62 本を更新した。移動先 2 本、外部利用 5 名の互換モジュールと利用側の `Core.Idempotent.Coherent` を検査し、Kerodon 属性 2 組を再照合した。v3b は 15 宣言で PASS、未説明差分 0 件。
+
 ### Ex∞
 
 Ex∞ の構成、Kan 性、anodyne・ファイブレーション・局所化・モノイダル性と、その専用の補助を Kerodon §3.3 の `KanComplexes/TheExInfinityFunctor/` に移した。割り当て済み 60 本と、Ex∞ 群の外からは集約入口を除いて直接使われない補助 12 本。共有補助の `FiberwiseAnodyne`、`HornRightColimit`、`IntervalBoundaryFamily`、`PairContractionAnodyne`、`PairHomotopyLifting`、`SubcomplexContraction` は `KST/Comparison` に置き、移動した側の参照で境界を明示した。モデル圏を使う引き戻し比較も同じ場所に置いた。

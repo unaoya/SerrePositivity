@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Cocone
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting

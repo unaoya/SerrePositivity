@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の終対象の指定 retract は、元の同じ頂点で終対象。 -/
 lemma isTerminalVertex_of_vertexRetraction {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (r : VertexRetraction x y) (hy : IsTerminalVertex y) :
+    {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y) (hy : IsTerminalVertex y) :
     IsTerminalVertex x := by
   apply isTerminalVertex_of_pinchedHom_isContractibleKan
   intro z
@@ -28,7 +28,7 @@ lemma isTerminalVertex_of_vertexRetraction {X : SSet.{u}} [Quasicategory X]
 
 /-- 元の始対象の指定 retract は、元の同じ頂点で始対象。 -/
 lemma isInitialVertex_of_vertexRetraction {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (r : VertexRetraction x y) (hy : IsInitialVertex y) :
+    {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y) (hy : IsInitialVertex y) :
     IsInitialVertex x := by
   apply F1B.kanIsInitialVertex_of_pinchedHom_isContractibleKan
   intro z
@@ -37,7 +37,7 @@ lemma isInitialVertex_of_vertexRetraction {X : SSet.{u}} [Quasicategory X]
 
 /-- 元の零対象の指定 retract は、元の同じ頂点で零対象。 -/
 lemma isZeroVertex_of_vertexRetraction {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (r : VertexRetraction x y) (hy : IsZeroVertex y) : IsZeroVertex x :=
+    {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y) (hy : IsZeroVertex y) : IsZeroVertex x :=
   ⟨isInitialVertex_of_vertexRetraction r hy.1, isTerminalVertex_of_vertexRetraction r hy.2⟩
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

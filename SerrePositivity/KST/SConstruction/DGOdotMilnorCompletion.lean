@@ -88,8 +88,8 @@ theorem dgOdotMilnorCompletion_isIdempotentCompletion :
   intro z
   obtain ⟨x, hx⟩ := hY.2.2 (V.inv.app (Opposite.op ⦋0⦌) z)
   refine ⟨U.inv.app (Opposite.op ⦋0⦌) x, ?_⟩
-  exact (IsVertexRetractOf.of_iso (V.invHomIso.app z).symm).trans
-    ((hx.map V.hom).trans (IsVertexRetractOf.of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso (V.invHomIso.app z).symm).trans
+    ((hx.map V.hom).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso
       (((U.invHomIso.app x).map (dgPerfectYonedaInfinity R (Q))).map V.hom).symm))
 
 end SerrePositivity.KST.SConstruction

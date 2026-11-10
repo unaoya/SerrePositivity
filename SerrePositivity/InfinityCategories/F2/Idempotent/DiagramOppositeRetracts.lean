@@ -21,8 +21,8 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 同じ全図式の retract は、元の反転した全図式の関手 ∞ 圏内の retract となる。 -/
 lemma diagram_retract_op {K X : SSet.{u}} [Quasicategory X] (a b : K ⟶ X)
-    (r : IsVertexRetractOf (functorVertex a) (functorVertex b)) :
-    IsVertexRetractOf (functorVertex (SSet.opFunctor.map a))
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex a) (functorVertex b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex (SSet.opFunctor.map a))
       (functorVertex (SSet.opFunctor.map b)) := by
   have h := r.op.map (HomotopyLimits.oppositeInternalHomIso K X).hom
   rwa [SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex, SerrePositivity.InfinityCategories.F1B.oppositeInternalHom_vertex] at h

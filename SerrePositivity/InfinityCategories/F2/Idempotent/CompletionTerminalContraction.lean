@@ -27,7 +27,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 lemma terminalRetract_contraction_exists {C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : IsFullyFaithful f)
     (c : C _⦋0⦌) (b : D _⦋0⦌) (hb : IsTerminalVertex b)
-    (r : VertexRetraction b (f.app (Opposite.op ⦋0⦌) c)) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction b (f.app (Opposite.op ⦋0⦌) c)) :
     Nonempty (SSet.Homotopy (𝟙 C) (SSet.const c)) := by
   obtain ⟨H, h₀, h₁, _hfix⟩ := SerrePositivity.InfinityCategories.F1B.exists_fixed_terminal_prism hb
   let Hf := (Δ[1] ◁ f) ≫ H
@@ -56,7 +56,7 @@ lemma terminalRetract_contraction_exists {C D : SSet.{u}}
 lemma isWeaklyContractible_of_terminalRetract {C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (f : C ⟶ D) (hf : IsFullyFaithful f)
     (c : C _⦋0⦌) (b : D _⦋0⦌) (hb : IsTerminalVertex b)
-    (r : VertexRetraction b (f.app (Opposite.op ⦋0⦌) c)) : IsWeaklyContractible C := by
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction b (f.app (Opposite.op ⦋0⦌) c)) : IsWeaklyContractible C := by
   obtain ⟨H⟩ := terminalRetract_contraction_exists f hf c b hb r
   let g : (⊤_ SSet.{u}) ⟶ C := SSet.const c
   apply isWeakHomotopyEquivalence_of_reverseHomotopyInverse (terminal.from C) g

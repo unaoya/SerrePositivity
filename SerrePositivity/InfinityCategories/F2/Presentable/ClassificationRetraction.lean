@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomClassificationLaws
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 
 /-!
 概要：全空間の相対 Hom 内の分裂等式を、全分類関手の retract に送る。
@@ -26,7 +26,7 @@ def leftClassificationRetraction {E H B : SSet.{u}} [Quasicategory B]
     (h : VertexIso
       (relativeFunctorVertex p p (f ≫ g) (by rw [Category.assoc, hg, hf]))
       (relativeFunctorVertex p p (𝟙 E) (Category.id_comp p))) :
-    Idempotent.VertexRetraction (functorVertex (leftStraighteningInfinityDiagram p))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (leftStraighteningInfinityDiagram p))
       (functorVertex (leftStraighteningInfinityDiagram q)) where
   i := leftClassificationHom p q f hf
   r := leftClassificationHom q p g hg

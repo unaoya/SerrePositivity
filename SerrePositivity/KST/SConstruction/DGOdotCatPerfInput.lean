@@ -64,7 +64,7 @@ lemma dgOdotQuotientCompletion_isCompletion
   refine ⟨hO, (dgOdotQuotientNuEquivalence R d).symm.isFullyFaithful, ?_⟩
   intro a
   obtain ⟨b, ⟨e⟩⟩ := (dgOdotQuotientNuEquivalence R d).symm.isEssentiallySurjective a
-  exact ⟨b, IsVertexRetractOf.of_iso e.symm⟩
+  exact ⟨b, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm⟩
 
 /-- 概要：Cat^perf に必要な元の四対象の完備性を分離する。
 方針：全 coherent 冪等図式の条件を使う。規約：H⁰ 完備性との比較を自作しない。

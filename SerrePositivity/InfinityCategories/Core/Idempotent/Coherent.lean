@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -83,12 +83,12 @@ lemma StrongSplitting.source_eq {X : SSet.{u}} {d : CoherentIdempotent X}
 
 /-- 元の強い分裂は、同じ二頂点のホモトピー圏内の元の retract を与える。 -/
 def StrongSplitting.vertexRetraction {X : SSet.{u}} {d : CoherentIdempotent X}
-    (s : StrongSplitting d) : VertexRetraction s.vertex d.vertex := by
+    (s : StrongSplitting d) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction s.vertex d.vertex := by
   let r : Retract walkingImage.{u} walkingSource.{u} :=
     ⟨walkingSection, walkingRetraction, walkingSection_retraction⟩
   have t := (r.map (nerveHomotopyFunctor WalkingSplit.{u})).map
     (hoFunctor.map s.val).toFunctor
-  change VertexRetraction s.vertex
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction s.vertex
     (s.val.app (Opposite.op ⦋0⦌) (nerveEquiv.symm walkingSource)) at t
   rw [s.source_eq] at t
   exact t

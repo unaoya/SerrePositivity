@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -28,14 +28,14 @@ abbrev RetractionTriangle {X : SSet.{u}} (x y : X _⦋0⦌) :=
 
 /-- 元の分裂三角形は、元の二辺の射の類を持つ同じ二頂点の retract を与える。 -/
 def RetractionTriangle.vertexRetraction {X : SSet.{u}} {x y : X _⦋0⦌}
-    (t : RetractionTriangle x y) : VertexRetraction y x where
+    (t : RetractionTriangle x y) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction y x where
   i := HomotopyCategory.homMk t.1
   r := HomotopyCategory.homMk t.2.1
   retract := (HomotopyCategory.homMk_comp_homMk t.2.2).trans (HomotopyCategory.homMk_id y)
 
 /-- 元の retract の二射の類を同じまま保つ、実際の分裂三角形が存在する。 -/
 lemma VertexRetraction.triangle_exists {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (s : VertexRetraction y x) :
+    {x y : X _⦋0⦌} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction y x) :
     ∃ t : RetractionTriangle x y,
       HomotopyCategory.homMk t.1 = s.i ∧ HomotopyCategory.homMk t.2.1 = s.r := by
   obtain ⟨i, hi⟩ := homotopyCategory_homMk_surjective y x s.i
@@ -100,7 +100,7 @@ lemma RetractionTriangle.weakDiagram_retraction {X : SSet.{u}} {x y : X _⦋0⦌
 /-- 元の頂点の retract 条件は、同じ二頂点の実際の分裂三角形の存在と同値。 -/
 @[kerodon 03YZ]
 lemma isVertexRetractOf_iff_retractionTriangle {X : SSet.{u}} [Quasicategory X]
-    (x y : X _⦋0⦌) : IsVertexRetractOf y x ↔ Nonempty (RetractionTriangle x y) := by
+    (x y : X _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf y x ↔ Nonempty (RetractionTriangle x y) := by
   constructor
   · rintro ⟨s⟩
     obtain ⟨t, _, _⟩ := s.triangle_exists

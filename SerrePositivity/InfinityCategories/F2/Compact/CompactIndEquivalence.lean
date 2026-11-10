@@ -24,7 +24,7 @@ variable {C : SSet.{u}} [Quasicategory C]
 /-- 元の compact Ind 全部分圏の内部でも、元の全ての頂点は同じ Yoneda 像の retract。 -/
 lemma compactInd_retract_yoneda (κ : Cardinal.{u}) [Fact κ.IsRegular]
     (y : kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C) _⦋0⦌) :
-    ∃ x : C _⦋0⦌, Idempotent.IsVertexRetractOf y
+    ∃ x : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf y
       ((compactIndYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up x)) := by
   obtain ⟨x, hx⟩ := indCompact_retract_yoneda κ
     ((kappaCompactInclusion.{u, u + 1} κ (Ind.IndInfinity κ C)).app _ y)

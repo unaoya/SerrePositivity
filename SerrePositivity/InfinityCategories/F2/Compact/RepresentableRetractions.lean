@@ -23,8 +23,8 @@ open Idempotent
 
 /-- 同じ実際の分裂三角形を持ち上げると、同じ二頂点の retract が得られる。 -/
 lemma isVertexRetractOf_ulift {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
-    (h : IsVertexRetractOf x y) :
-    IsVertexRetractOf (X := (SSet.uliftFunctor.{v, u}).obj X) (ULift.up x) (ULift.up y) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (X := (SSet.uliftFunctor.{v, u}).obj X) (ULift.up x) (ULift.up y) := by
   obtain ⟨t, _hi, _hr⟩ := h.some.triangle_exists
   have ht := uliftTruncatedCompStruct.{u, v} t.2.2.toTruncated
   change SSet.Truncated.Edge.CompStruct _ _
@@ -55,15 +55,15 @@ lemma covariantRepresentableDiagram_vertex {C : SSet.{u}} [Quasicategory C] (x :
 
 /-- 元の対象の retract は、同じ元の全 Hom 関手の自然 retract を与える。 -/
 lemma covariantRepresentable_retract {C : SSet.{u}} [Quasicategory C] {x y : C _⦋0⦌}
-    (h : IsVertexRetractOf x y) :
-    IsVertexRetractOf (functorVertex (covariantRepresentableInfinity x))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (functorVertex (covariantRepresentableInfinity x))
       (functorVertex (covariantRepresentableInfinity y)) := by
   have hr := (isVertexRetractOf_ulift.{u, u + 1} h.op).map (covariantRepresentableDiagram C)
   rwa [covariantRepresentableDiagram_vertex, covariantRepresentableDiagram_vertex] at hr
 
 /-- κ-compact 対象の元のホモトピー圏内の retract も κ-compact。 -/
 lemma IsKappaCompact.of_retract {κ : Cardinal.{u}} {C : SSet.{max u v}} [Quasicategory C]
-    {x y : C _⦋0⦌} (h : IsVertexRetractOf x y) (hy : IsKappaCompact.{u, v} κ y) :
+    {x y : C _⦋0⦌} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y) (hy : IsKappaCompact.{u, v} κ y) :
     IsKappaCompact.{u, v} κ x :=
   PreservesKappaFilteredColimits.of_retract (covariantRepresentable_retract h).some hy
 
@@ -71,7 +71,7 @@ lemma IsKappaCompact.of_retract {κ : Cardinal.{u}} {C : SSet.{max u v}} [Quasic
 lemma isKappaCompact_iff_of_iso {κ : Cardinal.{u}} {C : SSet.{max u v}} [Quasicategory C]
     {x y : C _⦋0⦌} (e : VertexIso x y) :
     IsKappaCompact.{u, v} κ x ↔ IsKappaCompact.{u, v} κ y :=
-  ⟨IsKappaCompact.of_retract (IsVertexRetractOf.of_iso e.symm),
-    IsKappaCompact.of_retract (IsVertexRetractOf.of_iso e)⟩
+  ⟨IsKappaCompact.of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm),
+    IsKappaCompact.of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e)⟩
 
 end SerrePositivity.InfinityCategories.F2.Compact

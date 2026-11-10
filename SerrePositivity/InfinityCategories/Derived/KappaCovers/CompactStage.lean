@@ -29,11 +29,11 @@ lemma dgKappaCompact_retract_of_nativeCellPresentation
     (hM : ∀ i, F.app (Opposite.op ⦋0⦌) (ULift.up i) = dgConeModuleDerivedVertex R D (M i))
     {y : (dgModuleDerivedInfinityCategory R D) _⦋0⦌}
     (e : VertexIso c.vertex y) (hy : F2.Compact.IsKappaCompact.{u, max (u + 1) v} κ y) :
-    ∃ i, F2.Idempotent.IsVertexRetractOf y (dgConeModuleDerivedVertex R D (M i)) := by
+    ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf y (dgConeModuleDerivedVertex R D (M i)) := by
   have hcpt := (F2.Compact.isKappaCompact_iff_of_iso e).mpr hy
   obtain ⟨i, hi⟩ := hcpt.retract_of_colimit F c hc
   rw [hM i] at hi
-  exact ⟨i, (F2.Idempotent.IsVertexRetractOf.of_iso e.symm).trans hi⟩
+  exact ⟨i, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm).trans hi⟩
 
 /-- 主導来像も、上と同じ一段の retract である。 -/
 lemma dgKappaCompact_classicalRetract_of_nativeCellPresentation

@@ -23,8 +23,8 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 指定した元の分裂点を持つ底の retract は、右 fibration の全体へ持ち上がる。 -/
 lemma rightFibration_retract_lift {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (p : X ⟶ Y) [RightFibration p] (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (r : VertexRetraction (p.app (Opposite.op ⦋0⦌) x) y) :
-    ∃ z : X _⦋0⦌, p.app (Opposite.op ⦋0⦌) z = y ∧ IsVertexRetractOf x z := by
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (p.app (Opposite.op ⦋0⦌) x) y) :
+    ∃ z : X _⦋0⦌, p.app (Opposite.op ⦋0⦌) z = y ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x z := by
   obtain ⟨t, _hi, _hr⟩ := r.triangle_exists
   have h : SSet.yonedaEquiv.symm x ≫ p = weakImagePoint ≫ t.weakDiagram := by
     rw [t.weakDiagram_imagePoint, ← SSet.yonedaEquiv_symm_comp]
@@ -46,7 +46,7 @@ lemma rightFibration_retract_lift {X Y : SSet.{u}} [Quasicategory X] [Quasicateg
     have hh := congrArg SSet.yonedaEquiv ht
     simpa only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] using hh
   refine ⟨z, hy, ?_⟩
-  have hs : IsVertexRetractOf s.vertex z := ⟨s.vertexRetraction⟩
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf s.vertex z := ⟨s.vertexRetraction⟩
   exact hx ▸ hs
 
 end SerrePositivity.InfinityCategories.F2.Idempotent

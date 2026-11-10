@@ -26,7 +26,7 @@ variable {κ : Cardinal.{u}} {A : SSet.{u}} [Quasicategory A]
 /-- 元の任意の κ-compact 対象は、小さい生成圏の一つの対象の像の retract。 -/
 lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating κ i)
     {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) :
-    ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x
+    ∃ a : A _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x
       (i.app (Opposite.op ⦋0⦌) (ULift.up a)) := by
   obtain ⟨I, hI, hκ, a, c, hc, hcol⟩ := h.presentation x
   have := hI
@@ -45,7 +45,7 @@ lemma IsKappaCompactGenerating.retract_generator (h : IsKappaCompactGenerating �
 lemma IsKappaCompactGenerating.compact_iff_retract (h : IsKappaCompactGenerating κ i)
     (x : C _⦋0⦌) :
     Compact.IsKappaCompact.{u, u + 1} κ x ↔
-      ∃ a : A _⦋0⦌, Idempotent.IsVertexRetractOf x
+      ∃ a : A _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x
         (i.app (Opposite.op ⦋0⦌) (ULift.up a)) := by
   constructor
   · exact h.retract_generator

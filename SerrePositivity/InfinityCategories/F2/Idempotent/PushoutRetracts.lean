@@ -23,10 +23,10 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 /-- 元の押し出し四角形の全関手 ∞ 圏内の指定 retract は、同じ全四角形で押し出し。 -/
 lemma isPushoutSquare_of_diagram_retract {X : SSet.{u}} [Quasicategory X]
     (F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
-    (r : VertexRetraction (functorVertex F) (functorVertex G)) (hG : IsPushoutSquare G) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex F) (functorVertex G)) (hG : IsPushoutSquare G) :
     IsPushoutSquare F := by
   let p := (pre spanCoconeSquareIso.hom).app X
-  have rr : VertexRetraction (functorVertex (pushoutCocone F).val)
+  have rr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (pushoutCocone F).val)
       (functorVertex (pushoutCocone G).val) := r.map (hoFunctor.map p).toFunctor
   have hg : InitialBoundaryLifting (coconeRestriction (horn 2 0 : SSet.{u}) X)
       (functorVertex (pushoutCocone G).val) := hG.initialBoundaryLifting

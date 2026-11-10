@@ -23,7 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Compact
 lemma indCompact_retract_yoneda (κ : Cardinal.{u}) [Fact κ.IsRegular]
     {C : SSet.{u}} [Quasicategory C] (x : Ind.IndInfinity κ C _⦋0⦌)
     (hx : IsKappaCompact.{u, u + 1} κ x) :
-    ∃ a : C _⦋0⦌, Idempotent.IsVertexRetractOf x
+    ∃ a : C _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x
       ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up a)) := by
   have : IsKappaFiltered κ (smallRightUnstraightening (Ind.indVertexPresheaf κ x)) :=
     Ind.indVertexElements_isKappaFiltered κ x

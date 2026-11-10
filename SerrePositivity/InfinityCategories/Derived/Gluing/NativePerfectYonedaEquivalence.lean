@@ -32,8 +32,8 @@ lemma dgGluingNativePerfectYoneda_equivalence (hC : IsIdempotentComplete (dgNerv
     intro z
     obtain ⟨M, rfl⟩ := (Simplex.vertexEquiv (A := R) (D := PerfectDGModule R C)).symm.surjective z
     obtain ⟨x, ⟨r⟩⟩ := dgPerfectVertex_retract_yoneda R C M
-    have hr : VertexRetraction (Simplex.vertex M) (Y.app (Opposite.op ⦋0⦌) (Simplex.vertex x)) := by
-      change VertexRetraction (Simplex.vertex M)
+    have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (Simplex.vertex M) (Y.app (Opposite.op ⦋0⦌) (Simplex.vertex x)) := by
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (Simplex.vertex M)
         ((dgNerve.map (dgPerfectYoneda R C)).app (Opposite.op ⦋0⦌) (Simplex.vertex x))
       rw [dgFunctorNerve_vertex]
       exact r

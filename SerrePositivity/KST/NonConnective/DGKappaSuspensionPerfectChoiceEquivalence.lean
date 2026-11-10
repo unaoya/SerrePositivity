@@ -33,7 +33,7 @@ theorem dgKappaSuspensionChoiceYoneda_isIdempotentCompletion :
   intro y
   obtain ⟨x, hx⟩ := hδ.2.2 y
   obtain ⟨a, ⟨ea⟩⟩ := e.isEssentiallySurjective x
-  exact ⟨a, hx.trans (IsVertexRetractOf.of_iso (VertexIso.map ea δ).symm)⟩
+  exact ⟨a, hx.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso (VertexIso.map ea δ).symm)⟩
 
 /-- 同じ元の二つの dg Yoneda を保つ、実懸垂の Perf 同値の存在。 -/
 theorem dgKappaSuspensionPerfectChoice_exists :

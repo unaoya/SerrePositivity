@@ -53,7 +53,7 @@ lemma dgModuleKappaCompact_iff_of_derivedIso {κ : Cardinal.{u}}
 /-- 主導来圏の実 retract を、元の実導来頂点の h 圏内の retract へ戻す。 -/
 def dgConeModuleDerivedVertexRetractionOfDerivedRetract {M N : ModuleCategory R D}
     (r : Retract ((moduleToDerived R D).obj M) ((moduleToDerived R D).obj N)) :
-    F2.Idempotent.VertexRetraction
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction
       (dgConeModuleDerivedVertex R D M) (dgConeModuleDerivedVertex R D N) := by
   let H := dgModuleDerivedHoComparison R D
   let s := (Retract.ofIso (dgConeModuleDerivedVertex_classicalIso R D M)).trans

@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の同じ二頂点の retract は、元の両頂点を厳密に持つ全 coherent 分裂となる。 -/
 lemma VertexRetraction.strongSplitting_exists {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (r : VertexRetraction x y) :
+    {x y : X _⦋0⦌} (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction x y) :
     ∃ (d : CoherentIdempotent X) (s : StrongSplitting d), s.vertex = x ∧ d.vertex = y := by
   obtain ⟨t, _hi, _hr⟩ := r.triangle_exists
   obtain ⟨d, s, hs⟩ := weakDiagram_strongSplitting_exists t.weakDiagram

@@ -34,8 +34,8 @@ lemma IsIdempotentComplete.op {X : SSet.{u}} [Quasicategory X]
 
 /-- 元の二点の retract の存在は、反転した同じ二点でも保たれる。 -/
 lemma IsVertexRetractOf.op {X : SSet.{u}} [Quasicategory X]
-    {x y : X _⦋0⦌} (h : IsVertexRetractOf x y) :
-    IsVertexRetractOf (SSet.opObjEquiv.symm x) (SSet.opObjEquiv.symm y) := by
+    {x y : X _⦋0⦌} (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (SSet.opObjEquiv.symm x) (SSet.opObjEquiv.symm y) := by
   obtain ⟨r⟩ := h
   obtain ⟨t, _hi, _hr⟩ := r.triangle_exists
   have ht := compStructOp t.2.2.toTruncated

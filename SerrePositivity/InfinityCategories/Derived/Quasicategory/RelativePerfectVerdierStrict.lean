@@ -56,7 +56,7 @@ def ofStrict (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory
     middle_complete := hM
     right := d.image.right
     completion := ⟨𝟙 d.image.right.obj, inferInstance⟩
-    isCompletion := ⟨hR, isFullyFaithful_id _, fun x => ⟨x, IsVertexRetractOf.refl x⟩⟩ }
+    isCompletion := ⟨hR, isFullyFaithful_id _, fun x => ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl x⟩⟩ }
   have hp : p.projection = d.image.projection := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (Category.comp_id _)
   apply _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram.ofSquare ν p d.square
   · apply (cancel_mono perfectStableInfinityInclusion).mp

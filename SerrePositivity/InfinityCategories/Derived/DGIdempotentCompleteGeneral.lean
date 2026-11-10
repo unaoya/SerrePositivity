@@ -52,7 +52,7 @@ lemma fullyFaithful_retract_image_of_ho_complete {X Y : SSet.{a}}
     [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (hF : IsFullyFaithful F)
     [CategoryTheory.IsIdempotentComplete (hoFunctor.obj X)]
     (x : X _⦋0⦌) (y : Y _⦋0⦌)
-    (r : VertexRetraction y (F.app (Opposite.op ⦋0⦌) x)) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction y (F.app (Opposite.op ⦋0⦌) x)) :
     ∃ z : X _⦋0⦌, Nonempty (VertexIso y (F.app (Opposite.op ⦋0⦌) z)) := by
   have h := hF.toHoFullyFaithful
   let := h.full

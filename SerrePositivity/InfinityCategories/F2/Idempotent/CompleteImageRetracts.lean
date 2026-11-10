@@ -32,7 +32,7 @@ lemma IsIdempotentComplete.fullVertexImage {C D : SSet.{u}}
 lemma IsIdempotentComplete.retract_iso_in_image {C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (hC : IsIdempotentComplete C)
     (f : C ⟶ D) (hf : IsFullyFaithful f) (c : C _⦋0⦌) (d : D _⦋0⦌)
-    (r : VertexRetraction d (f.app (Opposite.op ⦋0⦌) c)) :
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction d (f.app (Opposite.op ⦋0⦌) c)) :
     ∃ c' : C _⦋0⦌, Nonempty (VertexIso d (f.app (Opposite.op ⦋0⦌) c')) := by
   let P := fun y ↦ ∃ x, f.app (Opposite.op ⦋0⦌) x = y
   let e := fullSubcomplexLift P f (fun x ↦ ⟨x, rfl⟩)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 
 /-!
 概要：標準左 Kan 関手の制限の retract を元の全関手圏へ戻す。
@@ -25,8 +25,8 @@ def leftCanonicalRestrictionRetraction {K C D : SSet.{u}}
     (δ : K ⟶ C) (F G : C ⟶ D)
     (hF : ∀ c, IsColimitCone (leftKanCanonicalCocone δ F c))
     (hG : ∀ c, IsColimitCone (leftKanCanonicalCocone δ G c))
-    (r : Idempotent.VertexRetraction (functorVertex (δ ≫ F)) (functorVertex (δ ≫ G))) :
-    Idempotent.VertexRetraction (functorVertex F) (functorVertex G) := by
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex (δ ≫ F)) (functorVertex (δ ≫ G))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction (functorVertex F) (functorVertex G) := by
   let h₁ := F1B.kanLeftCanonicalHomMap_bijective δ F hF G
   let h₂ := F1B.kanLeftCanonicalHomMap_bijective δ G hG F
   let s := Classical.choose (h₁.surjective r.i)

@@ -31,7 +31,7 @@ def dgPerfectVertex_classicalIso (M : PerfectDGModule R D) :
 
 lemma dgPerfectVertex_retract_yoneda [IsDGPretriangulated R D]
     (M : PerfectDGModule R D) : ∃ x : D,
-    F2.Idempotent.IsVertexRetractOf (X := dgModulePerfectInfinityCategory R D)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf (X := dgModulePerfectInfinityCategory R D)
       (Simplex.vertex M) (Simplex.vertex ((dgPerfectYoneda R D).obj x)) := by
   obtain ⟨N, hN, ⟨r⟩⟩ := (modulePerfectOver_iff R D Set.univ _).mp M.property.2
   let Z : TriaCategory R D := ⟨(moduleToDerived R D).obj N,
@@ -53,7 +53,7 @@ lemma dgPerfectYonedaInfinity_isIdempotentCompletion [IsDGPretriangulated R D] :
   obtain ⟨M, rfl⟩ := Simplex.vertexEquiv.symm.surjective z
   obtain ⟨x, hx⟩ := dgPerfectVertex_retract_yoneda R D M
   refine ⟨Simplex.vertex ((dgUniverseLiftUp.{u, v, max (u+1) v} R D).obj x), ?_⟩
-  change F2.Idempotent.IsVertexRetractOf _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf _
     ((dgNerve.map (dgPerfectYonedaCommonFunctor R D)).app _ (Simplex.vertex _))
   rw [dgFunctorNerve_vertex]
   exact hx

@@ -27,8 +27,8 @@ lemma bicartesianZeroBottomProjection_kanEquivalenceLifting (X : SSet.{u}) [Quas
       ((ihom ((Δ[1] : SSet.{u}) ⊗ Δ[1])).obj X) IsBicartesianZeroVertex).ι :=
     kanEquivalenceLifting_fullSubcomplexOnVertices_ι
     (IsBicartesianZeroVertex (X := X)) (fun e ↦
-      ⟨fun h ↦ isBicartesianZeroVertex_of_retract (IsVertexRetractOf.of_iso e.symm) h,
-        fun h ↦ isBicartesianZeroVertex_of_retract (IsVertexRetractOf.of_iso e) h⟩)
+      ⟨fun h ↦ isBicartesianZeroVertex_of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm) h,
+        fun h ↦ isBicartesianZeroVertex_of_retract (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e) h⟩)
   have : Mono (squareBottomEdge.{u}) := by
     apply mono_of_mono_fac (show squareBottomEdge.{u} ≫ fst Δ[1] Δ[1] = 𝟙 Δ[1] from
       lift_fst _ _)

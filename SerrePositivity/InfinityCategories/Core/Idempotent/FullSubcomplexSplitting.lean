@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification
 
-public import SerrePositivity.InfinityCategories.Core.Retracts
+public import SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure
 public import SerrePositivity.InfinityCategories.Core.TerminalVertices
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
@@ -34,7 +34,7 @@ lemma StrongSplitting.vertices_mem {X : SSet.{u}} {d : CoherentIdempotent X}
 
 /-- 元の全部分圏の図式の周囲での分裂は、retract 閉性により同じ全部分圏へ戻る。 -/
 def StrongSplitting.liftFullSubcomplex {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
-    (hP : ∀ {x y}, IsVertexRetractOf x y → P y → P x)
+    (hP : ∀ {x y}, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y → P y → P x)
     {d : CoherentIdempotent (fullSubcomplexOnVertices X P)}
     (s : StrongSplitting (d ≫ (fullSubcomplexOnVertices X P).ι)) : StrongSplitting d := by
   have hd : P (CoherentIdempotent.vertex (d ≫ (fullSubcomplexOnVertices X P).ι)) :=
@@ -48,14 +48,14 @@ def StrongSplitting.liftFullSubcomplex {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
 
 /-- 全部分圏へ戻した元の全分裂は、元の包含後に同じ周囲の全分裂を厳密に回収する。 -/
 lemma StrongSplitting.liftFullSubcomplex_inclusion {X : SSet.{u}}
-    (P : X _⦋0⦌ → Prop) (hP : ∀ {x y}, IsVertexRetractOf x y → P y → P x)
+    (P : X _⦋0⦌ → Prop) (hP : ∀ {x y}, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y → P y → P x)
     {d : CoherentIdempotent (fullSubcomplexOnVertices X P)}
     (s : StrongSplitting (d ≫ (fullSubcomplexOnVertices X P).ι)) :
     (s.liftFullSubcomplex P hP).val ≫ (fullSubcomplexOnVertices X P).ι = s.val := rfl
 
 /-- 冪等完備な周囲の ∞ 圏の retract に閉じた全部分圏も冪等完備。 -/
 lemma fullSubcomplex_isIdempotentComplete {X : SSet.{u}}
-    (P : X _⦋0⦌ → Prop) (hP : ∀ {x y}, IsVertexRetractOf x y → P y → P x)
+    (P : X _⦋0⦌ → Prop) (hP : ∀ {x y}, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf x y → P y → P x)
     (hX : IsIdempotentComplete X) :
     IsIdempotentComplete (fullSubcomplexOnVertices X P) := by
   intro d
@@ -65,8 +65,8 @@ lemma fullSubcomplex_isIdempotentComplete {X : SSet.{u}}
 /-- 冪等完備な周囲の ∞ 圏内の任意の頂点条件の retract 閉包は冪等完備。 -/
 lemma retractClosure_isIdempotentComplete {X : SSet.{u}}
     (P : X _⦋0⦌ → Prop) (hX : IsIdempotentComplete X) :
-    IsIdempotentComplete (fullSubcomplexOnVertices X (retractClosure P)) :=
-  fullSubcomplex_isIdempotentComplete (retractClosure P)
-    (fun h hy ↦ retractClosure_of_retract h hy) hX
+    IsIdempotentComplete (fullSubcomplexOnVertices X (_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure P)) :=
+  fullSubcomplex_isIdempotentComplete (_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure P)
+    (fun h hy ↦ _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract h hy) hX
 
 end SerrePositivity.InfinityCategories.F2.Idempotent
