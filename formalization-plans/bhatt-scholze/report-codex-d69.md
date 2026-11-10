@@ -85,3 +85,19 @@
   - `SerrePositivity.BhattScholze.Prismatic.PDSmallModelComparison`
 - 全 9 本の `--wait 1800` 付き対象ビルドと一時監査が通過。非公開宣言を含む 661 宣言の依存公理は標準三公理のみ。追加の公理と `sorry` は 0。既存の Lean 宣言の変更と A1 の CAlg_R 部分への編集はない。
 - 段 2 は多項式代数の圏と係数変更を古典的に切り出し、既存の affine 模型を大きい枠へ延ばすところから進める。
+
+## 段 2（P2）途中 — 多項式関手と Witt 基底
+
+- `Poly` と係数変更 `changePoly` を古典的なモジュールに切り出した。D68 の `polyCompletion` に対する `polyCompletionMap` は未完備多項式の単位と可換で、恒等と合成を保つ。草稿 A2 の `Poly` を本体のものへ差し替える際は、草稿の同名定義を新モジュールの import に置き換える。
+- 剰余環の代数射と枠の変数の改名から分冪 Čech 脈体の写像を作った。これを `Q̂ → Q̂′` と `Q̂/p → Q̂′/p` に適用し、`bigPDModel` とその Witt 係数版 `wittBigPdModel` を厳密な関手として構成した。
+- `wittPdStructure` は `J = (w₀)⁻¹(pC)` を Verschiebung の像と p で生成して構成した。p を反転した環での階乗表示を生成元ごとに降ろし、`wZero_isDPMorphism` は階乗を掛けて両辺を比較した。Witt 環の p 正則性は ghost 射で、p 進完備性は列の差分方程式を第 0 成分で解いて Verschiebung で残りを持ち上げることで示した。
+- `psiRing`・`wZero_psi`・`psiPrism` は任意の向き付き prism を引数にし、必要な p 正則性と剰余環の p 進完備性を明示した。Witt Frobenius の mod p の性質には既存の相対自由 δ 環の Witt 座標を用いた。この段階の実装には K2 の普遍 prism の具体化は不要。具体化が入ったときに `psiPrism` へ適用する。
+- 鍵付きの対象ビルドと一時監査は以下の 7 モジュールで通過。非公開宣言を含む 163 宣言は標準三公理のみで、追加公理と `sorry` は 0。既存の Lean 宣言と A0・A1・A3 の草稿は編集していない。以下は停止点 2 での登録候補。
+  - `SerrePositivity.BhattScholze.Prismatic.PolynomialCategory`
+  - `SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionFunctor`
+  - `SerrePositivity.BhattScholze.Prismatic.PDCechNerveNaturality`
+  - `SerrePositivity.BhattScholze.Prismatic.BigPDModel`
+  - `SerrePositivity.BhattScholze.Prismatic.WittPDBase`
+  - `SerrePositivity.BhattScholze.Prismatic.WittAdicCompleteness`
+  - `SerrePositivity.BhattScholze.Prismatic.WittCrystallinePrism`
+- 残りは大きい prismatic Čech–Alexander 模型、有限枠と大きい枠の比較、`wittBigBridge` と `wittToSmall` の厳密な射および導来 p 完備底変換での擬同型、完備 pd de Rham の多項式代入と二射影。停止点 2 の検収はこれらを閉じた後に行う。
