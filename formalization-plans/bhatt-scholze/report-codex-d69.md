@@ -193,3 +193,71 @@
 - `pdRawCoefficients_isBaseChange` で、未完備の各項のテンソル底変換を単項式基底で計算した。これを p の有限冪での商と有界な完備 de Rham 模型の比較へつなぐ。
 - `SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeLinear` の鍵付き対象ビルドが通過。段 2 の累計33モジュールの一時監査は1,146宣言で標準三公理のみ。追加公理と `sorry` は0。
 - 次は有限枠と大きい prismatic 枠の二つの合成を、混合頂点で恒等射に結ぶ。Witt の二比較の導来 p 完備底変換後の擬同型性と、完備 pd de Rham の代入に関する二射影の厳密な自然性も残る。
+
+## P3 の紙上整理（11 月 10 日夜）
+
+古典的なサイトの入口は `SerrePositivity.BhattScholze.Prismatic` に置く。以下の型は設計案。記号は `γ : DividedPowers J`、`hp : (p : k) ∈ J`、`R : Type u` とし、`R` は `k ⧸ J` 代数とする。
+
+| ファイル案 | 宣言の型の案と担当 |
+| --- | --- |
+| `CrystallineSiteBasic` | `IsCrystallineCutoff k R κ : Prop := cutoff k R ≤ κ`。 `CrysOver p γ R κ` は `B : Type u`、可換環と `k` 代数の構造、`I : Ideal B`、`δ : DividedPowers I`、係数の分冪射、`IsNilpotent (p : B)`、係数と両立する `sec : R →+* B ⧸ I`、`Cardinal.mk B ≤ κ`。 `CrysOver.Hom X Y` は `X.B →ₐ[k] Y.B` と分冪・剰余の可換性。 `CrysOver.essentiallySmall : EssentiallySmall.{u} (CrysOver p γ R κ)` を得て、`CrystallineSite := (SmallModel (CrysOver p γ R κ))ᵒᵖ` とする。小さい模型を使う手順は `PrismOver` と同じ。 |
+| `CrystallineSiteLocalization` | `crysAway (X : CrysOver p γ R κ) (f : X.B) : CrysOver p γ R κ` と `X ⟶ crysAway X f`。台環は `Localization.Away f`、イデアルは像、剰余構造射は商写像との合成。分冪の局所化と、局所化済みの標的への分冪射の一意性をここで示す。濃度評価は局所化の分子・分母の表示から従う。 |
+| `CrystallineSiteZariski` | `IsZariskiFamily (f : ι → X.B) (h : ∀ i, X ⟶ Y i) : Prop`（有限型 `ι`）は各脚が `Away (f i)` で `Ideal.span (Set.range f) = ⊤`。opposite で引き戻しと合成を示して `zariskiTopology : GrothendieckTopology (CrystallineSite p γ R κ)` を定める。 `crysAlgebras : CrysOver p γ R κ ⥤ Under (CommRingCat.of k)` を小さい模型に制限し、`crystallineStructure_isSheaf : Presheaf.IsSheaf zariskiTopology crystallineStructureRing` を有限主開の貼り合わせから示す。 |
+| `CrystallineSitePullback` | `crysPullback (f : R →ₐ[k ⧸ J] R') : CrysOver p γ R' κ ⥤ CrysOver p γ R κ` は `sec` の前合成。 `crysPullbackSite` は小さい模型を経た opposite の関手で、主開被覆を保つ。 `crysBaseRestriction` は分冪基底射と剰余代数の写像を引数にとる同様の関手。同じ `κ` を取り、係数制限された構造環との比較を通常の自然同型で記述する。 |
+| `CrystallineCechQuotient` | `crysResidueAlgebra` と `crysResidue_kernel` の後、`pdCechQuotient (s : S → R) (hs : Function.Surjective (pdFrameEval … s 0)) (e n : ℕ) : CrysOver p γ R κ`。台環は `D_s^n ⧸ (p^(e+2))`、分冪イデアルは包のイデアルの像。全射性から得る `D_s^n / I ≃ₐ[k] R` の逆向きで剰余構造射を定める。まず有限段の環側で定義し、cutoff に入ることを分けて示す。 |
+| `CrystallineCechTower` | `pdCechTower … : ℕᵒᵖ × SimplexCategory ⥤ CrysOver p γ R κ` を商の遷移と P1 の頂点射で作る。固定 `e` では次数 `n` の頂点射が `Fin (n+1)` 個の第 0 項の余積を表すことを `IsColimit` で示す。opposite で得た第 0 項の塔 `U : ℕ ⥤ CrystallineSite …` に対し `pdCechTower_proWeaklyTerminal : ∀ X, ∃ e, Nonempty (X ⟶ U.obj e)`。同じ cutoff の中で標的の p 冪零指数より大きい段を選ぶ。 |
+| `CrystallinePolynomialComparison` | `R := MvPolynomial (Fin r) (k ⧸ J)` に対し、P1 の有限枠の交代余面複体と連続 de Rham 複体を結ぶ span。中央は `pdDeRhamTotal p k r`、左脚は第 0 行、右脚は `pdDeRhamTotalToCompletedForms`。両脚の `QuasiIso` と、必要な場合に `pdCechTower` の有限段からの構造射との照合を別定理にする。 |
+
+**既存部品の接続。**
+
+- P1 の `PDCechNerve.term` から包・イデアル・分冪・標準脚を一緒に取る。 `PDAdicCompletion` の有限冪商と `IsCompletedPDEnvelope.quotientEquiv` が塔の入力。有限段の普遍性には、標的の p 冪零性から得る p 完備性と、`p^(e+2)` を消す条件の両方を使う。一般の基底では `p` 自体による商に分冪が降りるとは仮定しない。
+- P2 の `pdModel_iso_pdCechNerve` と二射影を多項式 Poincaré の複体比較に使う。係数と枠の自然性には `wittToSmall_frame` と P2 の射影の自然性を参照する。大きい枠の `WittBigCrystalline` の p 正則性は結晶の橋の入力で、一般の厚化の対象条件には入れない。
+- ⑤c の K1 は main にある `RegularSequencePD`、`FrobeniusDivisionPD`、`FreeDPModPBlocks`。正則列から作る η の具体的模型、mod p での座標、Frobenius 除算の同定に使う。任意のイデアルに対する塔の存在・弱終性は P1 の普遍性だけで示せる。
+- ⑤c の K4 は `math/bs-classical` の `74f5032f5` までを参照した。 `exists_isPushout_isFaithfullyFlat` の圏の向きと cutoff の扱いは Zariski の引き戻しの先例。主開の環計算は本体の `FiniteZariskiCover`・`FiniteZariskiBaseChange` を直接使う。 `idealPowerCompletedCech_acyclic` と逆塔の完全性は有限段から完備な構造環を比較する箇所で使える。 `prismaticEnvelope_completedBaseChange_of_variables` と `completelyFlatCochain_isDiscrete_of_boundedPrism` は P2 の ψ 側の底変換で候補になる。K4 の枝の宣言を import する作業は main への取り込み後に行う。
+- `RΓ_crys` と site の極限による計算は草稿に置く。ここでの層性は通常の環値前層、Poincaré は交代余面複体の定理。P3 の Lean 本体は P2 の停止点を経て着手する。
+
+## P2 の夜間作業（11 月 11 日朝の検査待ち）
+
+- 枠の比較は、有限 affine 枠の変数の持ち上げを `AffineCechFrameLift` に置いた。`CechVertexHomotopy` に混合頂点の余単体恒等式、`PrismaticFrameHomotopy` に包の普遍性から交代余面複体へ移す部分を置いた。`AffineCechVertexFrame` と `BigCechVertexFrame` で両方の枠に適用し、既存の比較射の二つの合成を恒等射に結ぶ余鎖ホモトピーの定義と証明を書いた。大きい枠の各項の有界性と共通の濃度上限を仮定に取り、標準の大きい枠への特殊化と擬同型の宣言は朝の検査後に続ける。
+- Witt の二比較では、`PDModelCompletionQuotient` に小さい分冪模型の完備項の有限冪商とその平坦性を書いた。`WittBigBridgeAffineFrame` で ψ 側の橋を有限枠に制限し、係数が ψ、各頂点の変数像が p 乗であることを照合した。残りは ψ に沿った有限冪商での押し出し、`wittToSmall_frame` の係数変更の有限冪商への移送、各項の完備テンソルが有界な模型で導来底変換を計算すること、および二つの擬同型への組み立て。
+- pd de Rham では `PDRawPolynomialSubstitution` に未完備分冪包への代入を書いた。`PDDeRhamSubstitutionJacobian` で多項式の微分と差座標の Jacobian を定め、`BicomplexProjectionNaturality` で双複体の射に対する二射影の可換性を書いた。残りは分冪偏微分の連鎖律、外積への延長と完備化、縦横の微分と可換な双複体の射、第 0 行・第 0 列の比較同型との照合。
+- 上の Lean 10 本は夜間ビルド前の作業木に置いた。P2 の停止点は、残りの証明と以下の検収の後。
+
+## 朝の対象ビルドの順番
+
+日本時間 8 時から。夜の終了の目印が先に現れたときはその時点から。⑤b の作業木で一組ずつ実行する。
+
+1. 枠の普遍性とホモトピーの共通部分。
+
+   ```sh
+   scripts/refactor/with_build_lock.sh --wait 1800 -- lake build \
+     SerrePositivity.BhattScholze.Prismatic.AffineCechFrameLift \
+     SerrePositivity.BhattScholze.Prismatic.CechVertexHomotopy
+   ```
+
+2. 二つの合成のホモトピー。順に `PrismaticFrameHomotopy`、`AffineCechVertexFrame`、`BigCechVertexFrame`。
+
+   ```sh
+   scripts/refactor/with_build_lock.sh --wait 1800 -- lake build \
+     SerrePositivity.BhattScholze.Prismatic.BigCechVertexFrame
+   ```
+
+3. 完備係数の有限冪商と Witt の比較の有限枠への制限。
+
+   ```sh
+   scripts/refactor/with_build_lock.sh --wait 1800 -- lake build \
+     SerrePositivity.BhattScholze.Prismatic.PDModelCompletionQuotient \
+     SerrePositivity.BhattScholze.Prismatic.WittBigBridgeAffineFrame
+   ```
+
+4. 分冪多項式代入、Jacobian と総複体の射影。代入を先に単独で確認する。
+
+   ```sh
+   scripts/refactor/with_build_lock.sh --wait 1800 -- lake build \
+     SerrePositivity.BhattScholze.Prismatic.PDRawPolynomialSubstitution
+   scripts/refactor/with_build_lock.sh --wait 1800 -- lake build \
+     SerrePositivity.BhattScholze.Prismatic.PDDeRhamSubstitutionJacobian \
+     SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality
+   ```
+
+5. 対象ビルドの後、`/private/tmp/AuditD69P2Night.lean` を `lake env lean` で一時監査する。夜前の33本と上の10本を対象に、非公開宣言も含めて標準三公理のみであることを確認する。続けて追加する証明はこの監査の対象に足す。
