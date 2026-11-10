@@ -287,3 +287,11 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `pdRawDeRhamColumnIso` は標数 p の完備列と未完備列の同型。`pdRawCoordinateHomotopy_zero` と `pdRawCoordinateHomotopy_succ` は、一つの差座標の分冪積分と外冪の内部積による収縮公式。外冪での座標評価は `exteriorPower_map_coordinateProjection` で内部積の公式と照合した。
 - `htModuleData` と `htModule` は affine 係数の作用を左 cup 積と照合し、`htModule_isModuleComplete` はコホモロジー加群の導来 p 完備性を示す。`bockstein_sq_zero` は素数 2 では δ による余境界、奇素数では次数付き可換性と完備係数環で 2 が単元であることから示した。草稿の `HodgeTateIsoStatement` の型はそのまま。
 - 実装済み 28 モジュールの `with_build_lock.sh --wait 1800` による対象ビルドは成功。一時監査の 761 宣言は標準三公理のみ。第 0 列への射影の擬同型、有限多変数 Cartier 同型、η¹ と外積への延長、総複体の積と Bockstein および生成元での照合が残る。停止点 3 の対象二定理は草稿に残る。
+
+### 列比較と Cartier の座標計算
+
+- `aa138e624` で、列ごとの全射擬同型を総複体に移す `bicomplexTotal_quasiIso_of_columns` を示した。核の列の完全性と双複体の転置を使う。
+- `pdDeRhamColumnCollapse` と `pdDeRhamCollapse` は、第 0 頂点への評価から列間の余鎖写像と定数列への双複体の写像を作る。`pdRawCoordinateEvaluationHomotopy` で、各差座標の評価と恒等写像とのホモトピーを得た。
+- `cartierCoordinatePartial_integral` と `cartierCoordinateIntegral_partial` は、偏微分と座標積分の二通りの合成から、それぞれ一次と零次の Cartier 成分が残ることを示す。`cartierCoordinatePartial_integral_comm` は異なる座標での可換性。
+- `htOneOnGenerators` は完備一次形式の基底から定めた係数線形写像。`htOneOnGenerators_coordinate` で各座標の一次形式の像を Bockstein と照合した。一般の完備多項式の微分での公式は引き続き必要。
+- この時点の実装済み 33 モジュールの鍵付き対象ビルドは成功。一時監査の 885 宣言は標準三公理のみ。
