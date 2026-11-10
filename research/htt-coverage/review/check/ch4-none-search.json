@@ -56,11 +56,11 @@
         "signatures": [
           {
             "line": 57,
-            "head": "lemma IsLeftCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}"
+            "head": "lemma IsLeftCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C} (hi : IsLeftCofinal i) (hij : IsLeftCofinal (i ≫ j)) : IsLeftCofinal j"
           },
           {
             "line": 103,
-            "head": "lemma IsRightCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}"
+            "head": "lemma IsRightCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C} (hi : IsRightCofinal i) (hij : IsRightCofinal (i ≫ j)) : IsRightCofinal j"
           }
         ]
       },
@@ -69,11 +69,11 @@
         "signatures": [
           {
             "line": 24,
-            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B]"
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
           },
           {
             "line": 48,
-            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B]"
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
           }
         ]
       },
@@ -86,15 +86,1814 @@
           },
           {
             "line": 871,
-            "head": "theorem final_of_final_comp [hF : Final F] [hFG : Final (F ⋙ G)] : Final G := by"
+            "head": "theorem final_of_final_comp [hF : Final F] [hFG : Final (F ⋙ G)] : Final G"
           },
           {
             "line": 895,
-            "head": "theorem final_of_comp_full_faithful' [Full G] [Faithful G] [Final (F ⋙ G)] : Final G :="
+            "head": "theorem final_of_comp_full_faithful' [Full G] [Faithful G] [Final (F ⋙ G)] : Final G := have := final_of_comp_full_faithful F G final_of_final_comp F G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sliceOverRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceOverRestrict p K₀.ι)"
+          },
+          {
+            "line": 72,
+            "head": "lemma sliceOverRestrict_subcomplex_trivialKanFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : TrivialKanFibration (sliceOverRestrict p K₀.ι)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
           }
         ]
       }
     ],
     "decision": "共終性の合成と左消去、通常圏の final 関手の合成を読んだが、後半と合成が共終でも前半が共終とは限らない具体的な反例を与える宣言は見つからなかった。"
+  },
+  "4.1.1.6": {
+    "page": 225,
+    "citations": {
+      "item": 0,
+      "subsection": 29,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentPinchedFlagIso|coherentHomComparison|[Tt]woSidedHom.*[Nn]atural|[Ww]eak.*[Zz]igzag|[Ss]implicialNerve",
+          "SerrePositivity"
+        ],
+        "file_count": 471,
+        "line_count": 1851
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "coherentPinchedFlagIso|coherentHomComparison|[Tt]woSidedHom.*[Nn]atural|[Ww]eak.*[Zz]igzag|[Ss]implicialNerve",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 7
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/FlagIso.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "noncomputable def coherentPinchedFlagIso {C : Type v} [Category.{u} C] [SimplicialCategory C] (X Y : C) : pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y) ≅ (SSet.uliftFunctor.{v, u}).obj (coherentResolutionRightAdjoint.obj (SimplicialCategory.sHom X Y)) := NatIso.ofComponents (fun d ↦ { hom := ↾fun τ ↦ ULift.up (ULift.up (coherentPinchedFlagMap τ)) inv := ↾fun φ ↦ coherentFlagPinchedSimplex φ.down.down hom_inv_id"
+          },
+          {
+            "line": 78,
+            "head": "lemma coherentHomComparison_flagIso {C : Type v} [Category.{u} C] [SimplicialCategory C] (X Y : C) : coherentHomComparison X Y ≫ (coherentPinchedFlagIso X Y).hom = (SSet.uliftFunctor.{v, u}).map (coherentResolutionComparison (SimplicialCategory.sHom X Y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma coherentHomComparison_isQCatEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsQCatEquivalence (coherentHomComparison X Y)"
+          },
+          {
+            "line": 37,
+            "head": "lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C] [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) : IsSimplicialHomotopyEquivalence (coherentHomComparison X Y) := (coherentHomComparison_isQCatEquivalence X Y).isSimplicialHomotopyEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Coherent/TwoSidedHomNaturality.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma coherentTwoSidedHom_naturality {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y : C} {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (σ : (edgewiseSubdivision (SimplicialCategory.sHom X Y)) _⦋n⦌) (t s : Fin (n + 1) →o Fin 2) (i j : Fin (m + 1)) : thickeningDirectHom α i j ≫ coherentTwoSidedHom σ t s (α.toOrderHom i) (α.toOrderHom j) = coherentTwoSidedHom ((edgewiseSubdivision (SimplicialCategory.sHom X Y)).map α.op σ) (t.comp α.toOrderHom) (s.comp α.toOrderHom) i j"
+          },
+          {
+            "line": 77,
+            "head": "lemma coherentTwoSidedHomSimplex_naturality {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y : C} {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (σ : (edgewiseSubdivision (SimplicialCategory.sHom X Y)) _⦋n⦌) (t s : Fin (n + 1) →o Fin 2) : (SimplicialNerve C).map α.op (coherentTwoSidedHomSimplex σ t s) = coherentTwoSidedHomSimplex ((edgewiseSubdivision (SimplicialCategory.sHom X Y)).map α.op σ) (t.comp α.toOrderHom) (s.comp α.toOrderHom)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialNerve.lean",
+        "signatures": [
+          {
+            "line": 190,
+            "head": "def SimplicialNerve (C : Type u) [Category.{v} C] [SimplicialCategory C] : SSet.{max u v} where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sliceOverRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceOverRestrict p K₀.ι)"
+          },
+          {
+            "line": 72,
+            "head": "lemma sliceOverRestrict_subcomplex_trivialKanFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : TrivialKanFibration (sliceOverRestrict p K₀.ι)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "局所 Kan 豊穣圏の coherent nerve には旗の同定と豊穣 Hom への比較がある。HTT が作る補助準圏 D の C[D] を経由し、両端の図式に自然な同じ弱同値の列は見つからなかった。"
+  },
+  "4.1.1.9": {
+    "page": 227,
+    "citations": {
+      "item": 0,
+      "subsection": 29,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*([Ii]sIso|[Cc]omp|[Ee]quivalence)|final_iff_comp_equivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 149,
+        "line_count": 302
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*([Ii]sIso|[Cc]omp|[Ee]quivalence)|final_iff_comp_equivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 7,
+        "line_count": 16
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalComposition.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "lemma IsLeftCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C} (hi : IsLeftCofinal i) (hj : IsLeftCofinal j) : IsLeftCofinal (i ≫ j)"
+          },
+          {
+            "line": 90,
+            "head": "lemma IsRightCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C} (hi : IsRightCofinal i) (hj : IsRightCofinal j) : IsRightCofinal (i ≫ j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/PrecompositionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IsPrecompositionEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (X : SSet.{u}) [Quasicategory X], IsQCatEquivalence ((pre f).app X)"
+          },
+          {
+            "line": 31,
+            "head": "lemma isPrecompositionEquivalence_id (A : SSet.{u}) : IsPrecompositionEquivalence (𝟙 A)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 835,
+            "head": "theorem final_iff_comp_equivalence [IsEquivalence G] : Final F ↔ Final (F ⋙ G) := ⟨fun _ => final_comp_equivalence _ _, fun _ => final_of_comp_full_faithful _ G⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sliceOverRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceOverRestrict p K₀.ι)"
+          },
+          {
+            "line": 72,
+            "head": "lemma sliceOverRestrict_subcomplex_trivialKanFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : TrivialKanFibration (sliceOverRestrict p K₀.ι)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "lemma cofinalFunctorPre_isSimplicialHomotopyEquivalence_of_leftAnodyne {A D E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A) (hi : leftAnodyneExtensions i) : IsSimplicialHomotopyEquivalence (cofinalFunctorPre p a i)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常圏の final_iff_comp_equivalence の final 性はコンマ圏の連結性を測る。HTT の神経の弱可縮性を測る共終性については、同型の共終性と合成・左消去までで、任意の圏同値との後合成を消去する宣言は見つからなかった。"
+  },
+  "4.1.1.10": {
+    "page": 227,
+    "citations": {
+      "item": 0,
+      "subsection": 29,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*[Hh]omotop|cofinalFunctorOverPreHomotopy|final_natIso_iff|[Cc]ategorical.*[Ll]ocalization",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 82
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ofinal.*[Hh]omotop|cofinalFunctorOverPreHomotopy|final_natIso_iff|[Cc]ategorical.*[Ll]ocalization",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 3,
+        "line_count": 5
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalFunctorPreHomotopy.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cofinalFunctorOverPreHomotopy {E B : SSet.{u}} (p : E ⟶ B) {a b : Over B} (i j : a ⟶ b) (H : SSet.Homotopy i.left j.left) (hH : H.h ≫ b.hom = fst a.left (Δ[1] : SSet.{u}) ≫ a.hom) : SSet.Homotopy (cofinalFunctorOverPre p i) (cofinalFunctorOverPre p j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalHomotopyRetract.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma CofinalSectionHomotopy.restriction_isSimplicialHomotopyEquivalence {A B E : SSet.{u}} {f : A ⟶ B} (d : CofinalSectionHomotopy f) (p : E ⟶ B) : IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) f)"
+          },
+          {
+            "line": 53,
+            "head": "lemma CofinalSectionHomotopy.isLeftCofinal {A B : SSet.{u}} {f : A ⟶ B} (d : CofinalSectionHomotopy f) : IsLeftCofinal f"
+          },
+          {
+            "line": 62,
+            "head": "lemma CofinalSectionHomotopy.isRightCofinal {A B : SSet.{u}} {f : A ⟶ B} (d : CofinalSectionHomotopy f) : IsRightCofinal f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalComposition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsLeftCofinal.restrictDiagram {A B C E : SSet.{u}} {i : A ⟶ B} (hi : IsLeftCofinal i) (p : E ⟶ C) [LeftFibration p] (a : B ⟶ C) : IsSimplicialHomotopyEquivalence (cofinalFunctorPre p a i)"
+          },
+          {
+            "line": 44,
+            "head": "lemma IsLeftCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C} (hi : IsLeftCofinal i) (hj : IsLeftCofinal j) : IsLeftCofinal (i ≫ j)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 160,
+            "head": "theorem final_natIso_iff {F F' : C ⥤ D} (i : F ≅ F') : Final F ↔ Final F' := ⟨fun _ => final_of_natIso i, fun _ => final_of_natIso i.symm⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sliceOverRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceOverRestrict p K₀.ι)"
+          },
+          {
+            "line": 72,
+            "head": "lemma sliceOverRestrict_subcomplex_trivialKanFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) : TrivialKanFibration (sliceOverRestrict p K₀.ι)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "lemma cofinalFunctorPre_isSimplicialHomotopyEquivalence_of_leftAnodyne {A D E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (i : D ⟶ A) (hi : leftAnodyneExtensions i) : IsSimplicialHomotopyEquivalence (cofinalFunctorPre p a i)"
+          }
+        ]
+      }
+    ],
+    "decision": "通常圏の final_natIso_iff はコンマ圏の連結性による final 性を扱う。単体集合の相対切断空間のホモトピーは調べたが、圏同値を反転した圏で等しい二写像の共終性を比較する宣言は見つからなかった。"
+  },
+  "4.1.2.1": {
+    "page": 228,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ontravariant.{0,35}([Mm]odel|[Cc]ofibration)|[Rr]ightAnodyne.*[Tt]rivialCofibration|rightAnodyneExtensions_iff",
+          "SerrePositivity"
+        ],
+        "file_count": 3,
+        "line_count": 3
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ontravariant.{0,35}([Mm]odel|[Cc]ofibration)|[Rr]ightAnodyne.*[Tt]rivialCofibration|rightAnodyneExtensions_iff",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp"
+          },
+          {
+            "line": 51,
+            "head": "def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalAnodyneRecognition.lean",
+        "signatures": [
+          {
+            "line": 136,
+            "head": "lemma rightAnodyneExtensions_iff_mono_and_isRightCofinal {X Y : SSet.{u}} (i : X ⟶ Y) : rightAnodyneExtensions i ↔ Mono i ∧ IsRightCofinal i"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "右ホーンに対する持ち上げと単射かつ共終という判定はある。切片上の反変モデル構造の自明余ファイブレーションを定めて同じ射を判定する宣言は見つからなかった。"
+  },
+  "4.1.2.3": {
+    "page": 229,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ight[Aa]nodyne.*([Pp]ushout|[Cc]obase|[Gg]luing)|[Pp]ushout.*[Rr]ight[Aa]nodyne|of_isPushout",
+          "SerrePositivity"
+        ],
+        "file_count": 131,
+        "line_count": 215
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ight[Aa]nodyne.*([Pp]ushout|[Cc]obase|[Gg]luing)|[Pp]ushout.*[Rr]ight[Aa]nodyne|of_isPushout",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 97
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp"
+          },
+          {
+            "line": 51,
+            "head": "def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/ConeSpanShape.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def coneSpanShape : SSet.{u} := pushout (i ≫ joinInl B Δ[0]) (j ≫ joinInl C Δ[0])"
+          },
+          {
+            "line": 27,
+            "head": "lemma coneSpanPoint_boundary : joinInl Δ[0] Δ[0] ≫ joinMap (a ≫ j) (𝟙 Δ[0]) = a ≫ (j ≫ joinInl C Δ[0])"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def pullbacks : MorphismProperty C := fun A B q ↦ ∃ (X Y : C) (p : X ⟶ Y) (f : A ⟶ X) (g : B ⟶ Y) (_ : P p), IsPullback f q p g"
+          },
+          {
+            "line": 51,
+            "head": "lemma pullbacks_mk {A B X Y : C} {f : A ⟶ X} {q : A ⟶ B} {p : X ⟶ Y} {g : B ⟶ Y} (sq : IsPullback f q p g) (hp : P p) : P.pullbacks q := ⟨_, _, _, _, _, hp, sq⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "右アノダイン射そのものの余基底変換はある。二つの単射を持つスパン間の三本の右アノダイン射から、二つの押し出しの比較射を扱う宣言は見つからなかった。"
+  },
+  "4.1.2.4": {
+    "page": 230,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ight[Aa]nodyne.*([Ff]iltered|[Cc]olimit|[Tt]ransfinite)|([Ff]iltered|[Cc]olimit).*[Rr]ight[Aa]nodyne|[Ii]sStableUnderTransfiniteComposition",
+          "SerrePositivity"
+        ],
+        "file_count": 32,
+        "line_count": 54
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Rr]ight[Aa]nodyne.*([Ff]iltered|[Cc]olimit|[Tt]ransfinite)|([Ff]iltered|[Cc]olimit).*[Rr]ight[Aa]nodyne|[Ii]sStableUnderTransfiniteComposition",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 8,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp"
+          },
+          {
+            "line": 51,
+            "head": "def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def pullbacks : MorphismProperty C := fun A B q ↦ ∃ (X Y : C) (p : X ⟶ Y) (f : A ⟶ X) (g : B ⟶ Y) (_ : P p), IsPullback f q p g"
+          },
+          {
+            "line": 51,
+            "head": "lemma pullbacks_mk {A B X Y : C} {f : A ⟶ X} {q : A ⟶ B} {p : X ⟶ Y} {g : B ⟶ Y} (sq : IsPullback f q p g) (hp : P p) : P.pullbacks q := ⟨_, _, _, _, _, hp, sq⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "右アノダイン性の超限合成と余積の閉性はある。単体集合の矢圏で任意のフィルター付き図式の余極限を取って右アノダイン性を保つ宣言は見つからなかった。"
+  },
+  "4.1.2.5": {
+    "page": 230,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ontravariant.{0,32}([Mm]odel|[Ee]quivalence)|[Cc]ofinal.*[Ff]actorization|[Cc]ofinal.*[Ww]eakEquivalence",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 29
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ontravariant.{0,32}([Mm]odel|[Ee]quivalence)|[Cc]ofinal.*[Ff]actorization|[Cc]ofinal.*[Ww]eakEquivalence",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 4,
+        "line_count": 4
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalFactorizationCriterion.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma isLeftCofinal_iff_exists_anodyne_trivialKan_factorization {A B : SSet.{u}} (f : A ⟶ B) : IsLeftCofinal f ↔ ∃ (Z : SSet.{u}) (i : A ⟶ Z) (p : Z ⟶ B), leftAnodyneExtensions i ∧ TrivialKanFibration p ∧ i ≫ p = f"
+          },
+          {
+            "line": 65,
+            "head": "lemma isRightCofinal_iff_exists_anodyne_trivialKan_factorization {A B : SSet.{u}} (f : A ⟶ B) : IsRightCofinal f ↔ ∃ (Z : SSet.{u}) (i : A ⟶ Z) (p : Z ⟶ B), rightAnodyneExtensions i ∧ TrivialKanFibration p ∧ i ≫ p = f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalAnodyneRecognition.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma cofinalLlp_of_mono_trivialKan_factorization (P : MorphismProperty SSet.{u}) {X Y Z : SSet.{u}} (i : X ⟶ Y) [Mono i] (j : X ⟶ Z) (p : Z ⟶ Y) [TrivialKanFibration p] (hj : P.rlp.llp j) (he : j ≫ p = i) : P.rlp.llp i"
+          },
+          {
+            "line": 44,
+            "head": "lemma IsLeftCofinal.exists_anodyne_trivialKan_factorization {X Y : SSet.{u}} {f : X ⟶ Y} (hf : IsLeftCofinal f) : ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y), Mono i ∧ leftAnodyneExtensions i ∧ TrivialKanFibration p ∧ i ≫ p = f"
+          },
+          {
+            "line": 56,
+            "head": "lemma IsRightCofinal.exists_anodyne_trivialKan_factorization {X Y : SSet.{u}} {f : X ⟶ Y} (hf : IsRightCofinal f) : ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y), Mono i ∧ rightAnodyneExtensions i ∧ TrivialKanFibration p ∧ i ≫ p = f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "共終射の右アノダイン・自明 Kan 因子分解はある。任意の切片の反変モデル構造での弱同値と共終性を比較する宣言は見つからなかった。"
+  },
+  "4.1.2.8": {
+    "page": 231,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Aa]nodyne|[Pp]ullback|[Qq]uillen)|[Cc]ontravariant.{0,35}([Mm]odel|[Ee]quivalence)|[Ll]eftFibration.*[Aa]nodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 23,
+        "line_count": 52
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Aa]nodyne|[Pp]ullback|[Qq]uillen)|[Cc]ontravariant.{0,35}([Mm]odel|[Ee]quivalence)|[Ll]eftFibration.*[Aa]nodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 8,
+        "line_count": 11
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/SSetPullbackAdjoint.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cofinalSSetPullback_isLeftAdjoint {E B : SSet.{u}} (p : E ⟶ B) : (Over.pullback p).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "左ファイブレーションに沿う右アノダイン射の引き戻しは条件 (1) の特殊例。反変同値の保存や Quillen 随伴との比較がなく、三条件の間の含意は見つからなかった。"
+  },
+  "4.1.2.11": {
+    "page": 232,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Bb]aseChange|[Dd]erived)|[Cc]ontravariant.{0,35}([Mm]odel|[Ee]quivalence)|[Pp]ullback_isLeftAdjoint|[Pp]ullback.*[Aa]nodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 41,
+        "line_count": 87
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Bb]aseChange|[Dd]erived)|[Cc]ontravariant.{0,35}([Mm]odel|[Ee]quivalence)|[Pp]ullback_isLeftAdjoint|[Pp]ullback.*[Aa]nodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 11,
+        "line_count": 27
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/SSetPullbackAdjoint.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cofinalSSetPullback_isLeftAdjoint {E B : SSet.{u}} (p : E ⟶ B) : (Over.pullback p).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "切片の引き戻しの通常の右随伴と左ファイブレーションに沿う右アノダイン性の保存はある。反変モデル構造での導来基底変換の比較射と、その同型性による判定は見つからなかった。"
+  },
+  "4.1.2.12": {
+    "page": 233,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Ee]tale|[Éé]tale).{0,40}([Bb]aseChange|[Cc]ohomology)|[Ee]tale.*[Ss]mooth|[Ss]mooth.*[Bb]aseChange|[Ii]sStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 38
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "([Ee]tale|[Éé]tale).{0,40}([Bb]aseChange|[Cc]ohomology)|[Ee]tale.*[Ss]mooth|[Ss]mooth.*[Bb]aseChange|[Ii]sStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 124,
+        "line_count": 475
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/SSetPullbackAdjoint.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma cofinalSSetPullback_isLeftAdjoint {E B : SSet.{u}} (p : E ⟶ B) : (Over.pullback p).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicGeometry/Morphisms/Etale.lean",
+        "signatures": [
+          {
+            "line": 70,
+            "head": "instance etale_isStableUnderBaseChange : MorphismProperty.IsStableUnderBaseChange @Etale := HasRingHomProperty.isStableUnderBaseChange RingHom.Etale.isStableUnderBaseChange"
+          },
+          {
+            "line": 95,
+            "head": "lemma eq_smoothOfRelativeDimension_zero : @Etale = @SmoothOfRelativeDimension 0"
+          },
+          {
+            "line": 104,
+            "head": "lemma iff_smoothOfRelativeDimension_zero : Etale f ↔ SmoothOfRelativeDimension 0 f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib のエタール射の基底変換はスキームの射についての定理。単体集合の反変導来基底変換とエタールコホモロジーの類比を定式化する宣言は見つからなかった。"
+  },
+  "4.1.2.13": {
+    "page": 233,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Pp]ushout|[Gg]luing|[Aa]nodyne)|[Rr]ight[Aa]nodyne.*[Pp]ushout|[Ll]eftFibration.*[Aa]nodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 36,
+        "line_count": 72
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Pp]ushout|[Gg]luing|[Aa]nodyne)|[Rr]ight[Aa]nodyne.*[Pp]ushout|[Ll]eftFibration.*[Aa]nodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp"
+          },
+          {
+            "line": 51,
+            "head": "def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def pullbacks : MorphismProperty C := fun A B q ↦ ∃ (X Y : C) (p : X ⟶ Y) (f : A ⟶ X) (g : B ⟶ Y) (_ : P p), IsPullback f q p g"
+          },
+          {
+            "line": 51,
+            "head": "lemma pullbacks_mk {A B X Y : C} {f : A ⟶ X} {q : A ⟶ B} {p : X ⟶ Y} {g : B ⟶ Y} (sq : IsPullback f q p g) (hp : P p) : P.pullbacks q := ⟨_, _, _, _, _, hp, sq⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "左ファイブレーションに沿う引き戻しと、右アノダイン射自体の押し出しはある。底への三つの滑らかな写像から押し出しの滑らかさを得る宣言は見つからなかった。"
+  },
+  "4.1.2.14": {
+    "page": 234,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Ff]iltered|[Cc]olimit)|[Rr]ight[Aa]nodyne.*([Ff]iltered|[Tt]ransfinite)|[Ll]eftFibration.*[Aa]nodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 21,
+        "line_count": 49
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Ss]mooth.*([Ff]iltered|[Cc]olimit)|[Rr]ight[Aa]nodyne.*([Ff]iltered|[Tt]ransfinite)|[Ll]eftFibration.*[Aa]nodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 0,
+        "line_count": 0
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinCells.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp"
+          },
+          {
+            "line": 51,
+            "head": "def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FilteredColimitCommutesFiniteLimit.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem colimitLimitToLimitColimit_injective : Function.Injective (colimitLimitToLimitColimit F)"
+          },
+          {
+            "line": 162,
+            "head": "theorem colimitLimitToLimitColimit_surjective : Function.Surjective (colimitLimitToLimitColimit F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "右アノダイン射の超限合成や単体集合のフィルター付き余極限はある。固定した底への射の余極限が右アノダイン射の引き戻しを保つ、という主張は見つからなかった。"
+  },
+  "4.1.2.16": {
+    "page": 234,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Ss]mooth.*([Pp]rojection|[Ff]ibration)|[Ll]eftFibration.*[Aa]nodyne",
+          "SerrePositivity"
+        ],
+        "file_count": 23,
+        "line_count": 51
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Bb]ifibration|[Ss]mooth.*([Pp]rojection|[Ff]ibration)|[Ll]eftFibration.*[Aa]nodyne",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 4,
+        "line_count": 4
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 0 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCartesianEdge p (SSet.yonedaEquiv f)"
+          },
+          {
+            "line": 35,
+            "head": "def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦ innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B), stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) → ∃ f : (Δ[1] : SSet.{u}) ⟶ X, stdSimplex.δ 1 ≫ f = SSet.yonedaEquiv.symm x ∧ f ≫ p = e ∧ IsCocartesianEdge p (SSet.yonedaEquiv f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationCofinalPullback.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma leftFibration_pullback_isRightCofinal {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : IsRightCofinal f) : IsRightCofinal (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "左右のファイブレーションを別々に引き戻す補題はある。積上の双ファイブレーションの射影が任意の右アノダイン射の引き戻しを保つ宣言は見つからなかった。"
+  },
+  "4.1.2.17": {
+    "page": 234,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ovariant.{0,35}([Mm]odel|[Ee]quivalence)|[Rr]ightFibration.*[Pp]ullback.*([Ll]eftCofinal|[Aa]nodyne)|[Ss]lice.*[Rr]ight[Ff]ibration",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 63
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ovariant.{0,35}([Mm]odel|[Ee]quivalence)|[Rr]ightFibration.*[Pp]ullback.*([Ll]eftCofinal|[Aa]nodyne)|[Ss]lice.*[Rr]ight[Ff]ibration",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1,
+        "line_count": 1
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightFibrationCofinalPullback.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma rightFibration_pullback_isLeftCofinal {E A B : SSet.{u}} (p : E ⟶ B) [RightFibration p] (f : A ⟶ B) (hf : IsLeftCofinal f) : IsLeftCofinal (pullback.fst p f)"
+          },
+          {
+            "line": 51,
+            "head": "lemma rightFibration_isPullback_isLeftCofinal {E' E A B : SSet.{u}} {i : E' ⟶ E} {q : E' ⟶ A} {p : E ⟶ B} {f : A ⟶ B} (sq : IsPullback i q p f) [RightFibration p] (hf : IsLeftCofinal f) : IsLeftCofinal i"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTriangleFiber.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma sliceUnderRestrict_projection {K L X : SSet.{u}} (e : K ⟶ X) (i : L ⟶ K) : sliceUnderRestrict e i ≫ sliceUnderProjection (i ≫ e) = sliceUnderProjection e"
+          },
+          {
+            "line": 38,
+            "head": "def cosliceRestrictionFiberMap {K L X : SSet.{u}} (e : K ⟶ X) (i : L ⟶ K) (y : X _⦋0⦌) : vertexFiber (sliceUnderProjection e) y ⟶ vertexFiber (sliceUnderProjection (i ≫ e)) y := vertexFiberMap _ _ (sliceUnderRestrict e i) (sliceUnderRestrict_projection e i) y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "右ファイブレーションに沿う左共終射や左アノダイン射の引き戻しを調べた。共変モデル構造での弱同値との比較がなく、同じ引き戻しの共変同値を得る宣言は見つからなかった。"
+  },
+  "4.1.2.18": {
+    "page": 235,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean": 2,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenANecessary.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenALeft.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/NerveCone.lean": 20,
+        "SerrePositivity/InfinityCategories/Core/InitialCofinality.lean": 3,
+        "SerrePositivity/InfinityCategories/Core/SliceRestriction.lean": 4,
+        "SerrePositivity/InfinityCategories/Core/ConeAnodyne.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ovariant.{0,35}([Mm]odel|[Ee]quivalence)|leftFibration_isQCatEquivalence_iff_fibers|[Ss]mooth.*[Ff]iber",
+          "SerrePositivity"
+        ],
+        "file_count": 25,
+        "line_count": 32
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]ovariant.{0,35}([Mm]odel|[Ee]quivalence)|leftFibration_isQCatEquivalence_iff_fibers|[Ss]mooth.*[Ff]iber",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 7,
+        "line_count": 28
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationFiberReflection.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma leftFibration_isQCatEquivalence_iff_fibers {E F B : SSet.{u}} [Quasicategory E] [Quasicategory F] [Quasicategory B] (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q] (f : E ⟶ F) (hf : f ≫ q = p) : IsQCatEquivalence f ↔ ∀ b : B _⦋0⦌, IsQCatEquivalence (vertexFiberMap p q f hf b)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma leftFibration_overPullback_rightAnodyne {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] {A D : Over B} (i : A ⟶ D) (hi : rightAnodyneExtensions i.left) : rightAnodyneExtensions ((Over.pullback p).map i).left"
+          },
+          {
+            "line": 33,
+            "head": "lemma leftFibration_pullback_rightAnodyne {E A B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (f : A ⟶ B) (hf : rightAnodyneExtensions f) : rightAnodyneExtensions (pullback.fst p f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/RightFibrationCofinalPullback.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma rightFibration_pullback_isLeftCofinal {E A B : SSet.{u}} (p : E ⟶ B) [RightFibration p] (f : A ⟶ B) (hf : IsLeftCofinal f) : IsLeftCofinal (pullback.fst p f)"
+          },
+          {
+            "line": 51,
+            "head": "lemma rightFibration_isPullback_isLeftCofinal {E' E A B : SSet.{u}} {i : E' ⟶ E} {q : E' ⟶ A} {p : E ⟶ B} {f : A ⟶ B} (sq : IsPullback i q p f) [RightFibration p] (hf : IsLeftCofinal f) : IsLeftCofinal i"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) (hc : ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b)))) : IsRightCofinal f"
+          },
+          {
+            "line": 48,
+            "head": "lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B] (f : A ⟶ B) : IsRightCofinal f ↔ ∀ b : B _⦋0⦌, IsWeaklyContractible (pullback f (sliceUnderProjection (SSet.yonedaEquiv.symm b))) := ⟨fun hf b ↦ hf.coslice_isWeaklyContractible b, isRightCofinal_of_weaklyContractible_coslices f⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/Cofinality.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          },
+          {
+            "line": 34,
+            "head": "def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop := ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p], IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)"
+          }
+        ]
+      }
+    ],
+    "decision": "左ファイブレーション間の準圏同値は頂点繊維ごとに判定できる。共変モデル構造での弱同値と準圏同値をこの切片で同定する宣言がなく、HTT の判定の片方向も確認できなかった。"
   }
 }

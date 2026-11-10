@@ -1,5 +1,5 @@
 {
-  "base": "40586de92205e7d2696a049325cf4400e21a67d3",
+  "base": "6ca50b3a3cd1ee157bdf284d36f7482e33502344",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -34,18 +34,12 @@
         "SerrePositivity.InfinityCategories.pinchedHomLeftRightEquivalence"
       ]
     },
-    "4.1.1.6": {
-      "page": 225,
-      "declarations": [
-        "SerrePositivity.InfinityCategories.coherentPinchedFlagIso",
-        "SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence"
-      ]
-    },
     "4.1.1.7": {
       "page": 226,
       "declarations": [
         "SerrePositivity.InfinityCategories.F2.Ind.sliceUnderRestrict_equivalence_of_rightCofinal",
-        "SerrePositivity.InfinityCategories.leftFibration_isQCatEquivalence_iff_fibers"
+        "SerrePositivity.InfinityCategories.leftFibration_isQCatEquivalence_iff_fibers",
+        "SerrePositivity.InfinityCategories.sliceUnderRestrict_projection"
       ]
     },
     "4.1.1.8": {
@@ -53,18 +47,6 @@
       "declarations": [
         "SerrePositivity.InfinityCategories.F2.Ind.sliceUnderRestrict_equivalence_of_rightCofinal",
         "SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal"
-      ]
-    },
-    "4.1.1.9": {
-      "page": 227,
-      "declarations": [
-        "CategoryTheory.Functor.final_iff_comp_equivalence"
-      ]
-    },
-    "4.1.1.10": {
-      "page": 227,
-      "declarations": [
-        "CategoryTheory.Functor.final_natIso_iff"
       ]
     },
     "4.1.1.11": {
@@ -84,32 +66,80 @@
       "declarations": [
         "SerrePositivity.InfinityCategories.HomotopyLimits.isRightCofinal_whiskerLeft"
       ]
+    },
+    "4.1.2.2": {
+      "page": 229,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal",
+        "SerrePositivity.InfinityCategories.IsRightCofinal.cancel_left"
+      ]
+    },
+    "4.1.2.6": {
+      "page": 230,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence"
+      ]
+    },
+    "4.1.2.7": {
+      "page": 230,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal",
+        "CategoryTheory.MorphismProperty.of_isPushout"
+      ]
+    },
+    "4.1.2.9": {
+      "page": 232,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_overPullback_rightAnodyne"
+      ]
+    },
+    "4.1.2.10": {
+      "page": 232,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal"
+      ]
+    },
+    "4.1.2.15": {
+      "page": 234,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftFibration_overPullback_rightAnodyne",
+        "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration"
+      ]
+    },
+    "4.1.3.1": {
+      "page": 236,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.isRightCofinal_iff_weaklyContractible_coslices"
+      ]
+    },
+    "4.1.3.2": {
+      "page": 236,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_weaklyContractible_fibers",
+        "SerrePositivity.InfinityCategories.isRightCofinal_of_trivialKanFibration",
+        "SerrePositivity.InfinityCategories.rightFibration_cartesianFibration"
+      ]
+    },
+    "4.1.3.3": {
+      "page": 238,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma",
+        "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence"
+      ]
     }
   },
   "declarations": {
-    "CategoryTheory.Functor.final_iff_comp_equivalence": {
-      "declaration": "CategoryTheory.Functor.final_iff_comp_equivalence",
-      "source": "Mathlib/CategoryTheory/Limits/Final.lean",
-      "type": "@CategoryTheory.Functor.final_iff_comp_equivalence.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : ∀ {C : Type u_4} [inst : CategoryTheory.Category.{u_1, u_4} C] {D : Type u_5}\n  [inst_1 : CategoryTheory.Category.{u_2, u_5} D] {E : Type u_6} [inst_2 : CategoryTheory.Category.{u_3, u_6} E]\n  (F : CategoryTheory.Functor.{u_1, u_2, u_4, u_5} C D) (G : CategoryTheory.Functor.{u_2, u_3, u_5, u_6} D E)\n  [CategoryTheory.Functor.IsEquivalence.{u_2, u_3, u_5, u_6} G],\n  CategoryTheory.Functor.Final.{u_1, u_2, u_4, u_5} F ↔\n    CategoryTheory.Functor.Final.{u_1, u_3, u_4, u_6} (CategoryTheory.Functor.comp.{u_1, u_2, u_3, u_4, u_5, u_6} F G)",
+    "CategoryTheory.MorphismProperty.of_isPushout": {
+      "declaration": "CategoryTheory.MorphismProperty.of_isPushout",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+      "type": "@CategoryTheory.MorphismProperty.of_isPushout.{u_1,\n    u_2} : ∀ {C : Type u_2} {inst : CategoryTheory.Category.{u_1, u_2} C}\n  {P : @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)}\n  [self : @CategoryTheory.MorphismProperty.IsStableUnderCobaseChange.{u_1, u_2} C inst P] {A A' B B' : C}\n  {f :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      A A'}\n  {g :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      A B}\n  {f' :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      B B'}\n  {g' :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      A' B'},\n  @CategoryTheory.IsPushout.{u_1, u_2} C inst A B A' B' g f f' g' → @P A A' f → @P B B' f'",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
-    },
-    "CategoryTheory.Functor.final_natIso_iff": {
-      "declaration": "CategoryTheory.Functor.final_natIso_iff",
-      "source": "Mathlib/CategoryTheory/Limits/Final.lean",
-      "type": "@CategoryTheory.Functor.final_natIso_iff.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C] {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_2, u_4} D] {F F' : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1}\n  (i :\n    @CategoryTheory.Iso.{max u_3 u_2, max (max (max u_3 u_4) u_1) u_2}\n      (@CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1)\n      (@CategoryTheory.Functor.category.{u_1, u_2, u_3, u_4} C inst D inst_1) F F'),\n  Iff (@CategoryTheory.Functor.Final.{u_1, u_2, u_3, u_4} C inst D inst_1 F)\n    (@CategoryTheory.Functor.Final.{u_1, u_2, u_3, u_4} C inst D inst_1 F')",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
-      "evidence": "research/htt-coverage/review/check/runs/ch4-cofinality",
-      "checked_at": "40586de92205e7d2696a049325cf4400e21a67d3"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth-more",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal": {
       "declaration": "SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal",
@@ -134,6 +164,18 @@
       ],
       "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
       "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/SiftedSimplexCategory.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma.{u_1} : ∀\n  {P Q : Type u_1} [inst : CategoryTheory.Category.{u_1, u_1} P] [inst_1 : CategoryTheory.Category.{u_1, u_1} Q]\n  (F : @CategoryTheory.Functor.{u_1, u_1, u_1, u_1} P inst Q inst_1),\n  (∀ (q : Q),\n      SerrePositivity.InfinityCategories.IsWeaklyContractible.{u_1}\n        (@CategoryTheory.nerve.{u_1, u_1} (@CategoryTheory.StructuredArrow.{u_1, u_1, u_1, u_1} P inst Q inst_1 q F)\n          (@CategoryTheory.instCategoryStructuredArrow.{u_1, u_1, u_1, u_1} P inst Q inst_1 q F))) →\n    @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} (@CategoryTheory.nerve.{u_1, u_1} P inst)\n      (@CategoryTheory.nerve.{u_1, u_1} Q inst_1) (@CategoryTheory.nerveMap.{u_1, u_1} P Q inst inst_1 F)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.HomotopyLimits.isRightCofinal_whiskerLeft": {
       "declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.isRightCofinal_whiskerLeft",
@@ -162,14 +204,14 @@
     "SerrePositivity.InfinityCategories.IsRightCofinal.cancel_left": {
       "declaration": "SerrePositivity.InfinityCategories.IsRightCofinal.cancel_left",
       "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalComposition.lean",
-      "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.cancel_left.{u_1} : ∀ {A B C : SSet.{u_1}}\n  {i : Quiver.Hom.{u_1, u_1 + 1} A B} {j : Quiver.Hom.{u_1, u_1 + 1} B C},\n  SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} i →\n    SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i j) →\n      SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} j",
+      "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.cancel_left.{u_1} : ∀ {A B C : SSet.{u_1}}\n  {i :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B}\n  {j :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      B C},\n  @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A B i →\n    @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A C\n        (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}))\n          A B C i j) →\n      @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} B C j",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.IsRightCofinal.comp": {
       "declaration": "SerrePositivity.InfinityCategories.IsRightCofinal.comp",
@@ -186,14 +228,14 @@
     "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence",
       "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalWeakEquivalence.lean",
-      "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence.{u_1} : ∀ {A B : SSet.{u_1}}\n  {i : Quiver.Hom.{u_1, u_1 + 1} A B},\n  SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} i →\n    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence.{u_1} i",
+      "type": "@SerrePositivity.InfinityCategories.IsRightCofinal.isWeakHomotopyEquivalence.{u_1} : ∀ {A B : SSet.{u_1}}\n  {i :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B},\n  @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A B i →\n    @SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence.{u_1} A B i",
       "axioms": [
         "propext",
         "Classical.choice",
         "Quot.sound"
       ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.cofinalFunctorSpace": {
       "declaration": "SerrePositivity.InfinityCategories.cofinalFunctorSpace",
@@ -218,30 +260,6 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-cofinality",
       "checked_at": "40586de92205e7d2696a049325cf4400e21a67d3"
-    },
-    "SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence": {
-      "declaration": "SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence",
-      "source": "SerrePositivity/InfinityCategories/F1/Coherent/HomEquivalence.lean",
-      "type": "@SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : CategoryTheory.SimplicialCategory.{u_1, u_2} C]\n  [∀ (X Y : C), SSet.KanComplex.{u_1} (CategoryTheory.SimplicialCategory.sHom.{u_1, u_2} X Y)] (X Y : C),\n  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{max u_1 u_2}\n    (SerrePositivity.InfinityCategories.coherentHomComparison.{u_1, u_2} X Y)",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
-    },
-    "SerrePositivity.InfinityCategories.coherentPinchedFlagIso": {
-      "declaration": "SerrePositivity.InfinityCategories.coherentPinchedFlagIso",
-      "source": "SerrePositivity/InfinityCategories/F1/Coherent/FlagIso.lean",
-      "type": "@SerrePositivity.InfinityCategories.coherentPinchedFlagIso.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : CategoryTheory.SimplicialCategory.{u_1, u_2} C] →\n      (X Y : C) →\n        CategoryTheory.Iso.{max u_1 u_2, (max u_2 u_1) + 1}\n          (SerrePositivity.InfinityCategories.pinchedHom.{max u_2 u_1}\n            (SerrePositivity.InfinityCategories.coherentNerveVertex.{u_1, u_2} X)\n            (SerrePositivity.InfinityCategories.coherentNerveVertex.{u_1, u_2} Y))\n          (CategoryTheory.Functor.obj.{u_1, max u_1 u_2, u_1 + 1, max (u_1 + 1) (u_2 + 1)} SSet.uliftFunctor.{u_2, u_1}\n            (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n              SerrePositivity.InfinityCategories.coherentResolutionRightAdjoint.{u_1}\n              (CategoryTheory.SimplicialCategory.sHom.{u_1, u_2} X Y)))",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
-      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
-      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
     },
     "SerrePositivity.InfinityCategories.cosliceFiberHomEquiv": {
       "declaration": "SerrePositivity.InfinityCategories.cosliceFiberHomEquiv",
@@ -291,6 +309,18 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-cofinality",
       "checked_at": "40586de92205e7d2696a049325cf4400e21a67d3"
     },
+    "SerrePositivity.InfinityCategories.isRightCofinal_iff_weaklyContractible_coslices": {
+      "declaration": "SerrePositivity.InfinityCategories.isRightCofinal_iff_weaklyContractible_coslices",
+      "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/QuillenA.lean",
+      "type": "@SerrePositivity.InfinityCategories.isRightCofinal_iff_weaklyContractible_coslices.{u_1} : ∀ {A B : SSet.{u_1}}\n  [B.Quasicategory]\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B),\n  Iff (@SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A B f)\n    (∀\n      (b :\n        @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1} B\n          (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n      SerrePositivity.InfinityCategories.IsWeaklyContractible.{u_1}\n        (@CategoryTheory.Limits.pullback.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          A\n          (@SerrePositivity.InfinityCategories.sliceUnder.{u_1}\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n            B\n            (@DFunLike.coe.{u_1 + 1, u_1 + 1, u_1 + 1}\n              (Equiv.{u_1 + 1, u_1 + 1}\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B))\n              (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1} B\n                (@Opposite.op.{1} SimplexCategory\n                  { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n              (fun x =>\n                @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n              (@EquivLike.toFunLike.{u_1 + 1, u_1 + 1, u_1 + 1}\n                (Equiv.{u_1 + 1, u_1 + 1}\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1} B\n                    (@Opposite.op.{1} SimplexCategory\n                      { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                  (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                          (Type u_1) CategoryTheory.types.{u_1})))\n                    (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                      SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                    B))\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n                (@Equiv.instEquivLike.{u_1 + 1, u_1 + 1}\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1} B\n                    (@Opposite.op.{1} SimplexCategory\n                      { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                  (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                          (Type u_1) CategoryTheory.types.{u_1})))\n                    (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                      SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                    B)))\n              (@Equiv.symm.{u_1 + 1, u_1 + 1}\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@SSet.yonedaEquiv.{u_1} B { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n              b))\n          B f\n          (@SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}\n            (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n            B\n            (@DFunLike.coe.{u_1 + 1, u_1 + 1, u_1 + 1}\n              (Equiv.{u_1 + 1, u_1 + 1}\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B))\n              (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1} B\n                (@Opposite.op.{1} SimplexCategory\n                  { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n              (fun x =>\n                @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n              (@EquivLike.toFunLike.{u_1 + 1, u_1 + 1, u_1 + 1}\n                (Equiv.{u_1 + 1, u_1 + 1}\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1} B\n                    (@Opposite.op.{1} SimplexCategory\n                      { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                  (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                          (Type u_1) CategoryTheory.types.{u_1})))\n                    (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                      SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                    B))\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n                (@Equiv.instEquivLike.{u_1 + 1, u_1 + 1}\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1} B\n                    (@Opposite.op.{1} SimplexCategory\n                      { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                  (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                          (Type u_1) CategoryTheory.types.{u_1})))\n                    (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                      SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})\n                      SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                    B)))\n              (@Equiv.symm.{u_1 + 1, u_1 + 1}\n                (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                    (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n                      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                        (Type u_1) CategoryTheory.types.{u_1})))\n                  (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n                    SSet.{u_1}\n                    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                      (Type u_1) CategoryTheory.types.{u_1})\n                    SSet.stdSimplex.{u_1} { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })\n                  B)\n                (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1} B\n                  (@Opposite.op.{1} SimplexCategory\n                    { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n                (@SSet.yonedaEquiv.{u_1} B { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) }))\n              b))\n          ⋯))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
     "SerrePositivity.InfinityCategories.isRightCofinal_of_isIso": {
       "declaration": "SerrePositivity.InfinityCategories.isRightCofinal_of_isIso",
       "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalOpposite.lean",
@@ -302,6 +332,30 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-cofinality",
       "checked_at": "40586de92205e7d2696a049325cf4400e21a67d3"
+    },
+    "SerrePositivity.InfinityCategories.isRightCofinal_of_trivialKanFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.isRightCofinal_of_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/TrivialFibrationCofinality.lean",
+      "type": "@SerrePositivity.InfinityCategories.isRightCofinal_of_trivialKanFibration.{u_1} : ∀ {A B : SSet.{u_1}}\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B)\n  [@SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} A B f],\n  @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A B f",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} X B p],\n  @SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} X B p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth-more",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.leftFibration_isQCatEquivalence_iff_fibers": {
       "declaration": "SerrePositivity.InfinityCategories.leftFibration_isQCatEquivalence_iff_fibers",
@@ -315,6 +369,30 @@
       "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
       "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
     },
+    "SerrePositivity.InfinityCategories.leftFibration_overPullback_rightAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_overPullback_rightAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationAnodynePullback.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_overPullback_rightAnodyne.{u_1} : ∀ {E B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} E B p]\n  {A D :\n    @CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      B}\n  (i :\n    @Quiver.Hom.{u_1, u_1 + 1}\n      (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        B)\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1}\n        (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          B)\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)))\n      A D),\n  @SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1}\n      (@CategoryTheory.Over.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        B A)\n      (@CategoryTheory.Over.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        B D)\n      (@CategoryTheory.Over.Hom.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        B A D i) →\n    @SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1}\n      (@CategoryTheory.Over.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        E\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.Over.pullback.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E B p ⋯)\n          A))\n      (@CategoryTheory.Over.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        E\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.Over.pullback.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E B p ⋯)\n          D))\n      (@CategoryTheory.Over.Hom.left.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        E\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.Over.pullback.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E B p ⋯)\n          A)\n        (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.Over.pullback.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E B p ⋯)\n          D)\n        (@CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1}\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            B)\n          (@CategoryTheory.Over.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.instCategoryOver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E)\n          (@CategoryTheory.Over.pullback.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            E B p ⋯)\n          A D i))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal",
+      "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/LeftFibrationCofinalPullback.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_pullback_isRightCofinal.{u_1} : ∀ {E A B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} E B p]\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B),\n  @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} A B f →\n    @SerrePositivity.InfinityCategories.IsRightCofinal.{u_1}\n      (@CategoryTheory.Limits.pullback.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        E A B p f ⋯)\n      E\n      (@CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        E A B p f ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
     "SerrePositivity.InfinityCategories.pinchedHomLeftRightEquivalence": {
       "declaration": "SerrePositivity.InfinityCategories.pinchedHomLeftRightEquivalence",
       "source": "SerrePositivity/InfinityCategories/F1/MappingSpaces/MappingSpaceModelEquivalence.lean",
@@ -326,6 +404,54 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-cofinality",
       "checked_at": "40586de92205e7d2696a049325cf4400e21a67d3"
+    },
+    "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal": {
+      "declaration": "SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal",
+      "source": "SerrePositivity/InfinityCategories/F1B/Cofinality/CofinalAnodyneRecognition.lean",
+      "type": "@SerrePositivity.InfinityCategories.rightAnodyneExtensions_iff_mono_and_isRightCofinal.{u_1} : ∀ {X Y : SSet.{u_1}}\n  (i :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X Y),\n  Iff (@SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} X Y i)\n    (And\n      (@CategoryTheory.Mono.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        X Y i)\n      (@SerrePositivity.InfinityCategories.IsRightCofinal.{u_1} X Y i))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.rightFibration_cartesianFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.rightFibration_cartesianFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.rightFibration_cartesianFibration.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  [@SerrePositivity.InfinityCategories.RightFibration.{u_1} X B p],\n  @SerrePositivity.InfinityCategories.CartesianFibration.{u_1} X B p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth-more",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_weaklyContractible_fibers": {
+      "declaration": "SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_weaklyContractible_fibers",
+      "source": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakContractibleKan.lean",
+      "type": "@SerrePositivity.InfinityCategories.rightFibration_trivialKanFibration_of_weaklyContractible_fibers.{u_1} : ∀\n  {E B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B)\n  [@SerrePositivity.InfinityCategories.RightFibration.{u_1} E B p],\n  (∀\n      (b :\n        @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1} B\n          (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)) })),\n      SerrePositivity.InfinityCategories.IsWeaklyContractible.{u_1}\n        (@SerrePositivity.InfinityCategories.vertexFiber.{u_1} E B p b)) →\n    @SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} E B p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.sliceUnderRestrict_projection": {
+      "declaration": "SerrePositivity.InfinityCategories.sliceUnderRestrict_projection",
+      "source": "SerrePositivity/InfinityCategories/F1/Joins/CosliceTriangleFiber.lean",
+      "type": "@SerrePositivity.InfinityCategories.sliceUnderRestrict_projection.{u_1} : ∀ {K L X : SSet.{u_1}}\n  (e :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      K X)\n  (i :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      L K),\n  @Eq.{u_1 + 1}\n    (@Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      (@SerrePositivity.InfinityCategories.sliceUnder.{u_1} K X e) X)\n    (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1}))\n      (@SerrePositivity.InfinityCategories.sliceUnder.{u_1} K X e)\n      (@SerrePositivity.InfinityCategories.sliceUnder.{u_1} L X\n        (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}))\n          L K X i e))\n      X (@SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} L K X e i)\n      (@SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} L X\n        (@CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1}))\n          L K X i e)))\n    (@SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} K X e)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch4-smooth-more",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
     },
     "SerrePositivity.InfinityCategories.trivialKanFibration_iff_rightFibration_and_isRightCofinal": {
       "declaration": "SerrePositivity.InfinityCategories.trivialKanFibration_iff_rightFibration_and_isRightCofinal",
