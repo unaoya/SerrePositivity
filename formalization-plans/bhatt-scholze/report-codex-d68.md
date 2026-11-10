@@ -334,3 +334,10 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `htOneOnGenerators_d` と `hodgeTateMapOne_smul_d` で完備係数の微分に対する η¹ を閉じた。座標偏微分の和と Bockstein を通常の多項式で照合し、コホモロジー加群の導来 p 完備性を使って完備化単位上の等式を全体へ延ばした。
 - `cohomologyCupGradedRing` はコホモロジーの斉次 cup 積、`CochainProduct.onHomology_natural` は積を保つ余鎖写像のコホモロジーでの乗法性。新規四本の鍵付き対象ビルドは成功。段 3 の新規 58 モジュールの一時監査は 1,495 宣言で標準三公理のみ。
 - ⑤a の停止点 2 を含む main `16e33e24d` を専用枝に取り込んだ（`d3704cc2d`）。⑤a の変更とファイルの重複はなく、CAlg_R の模型への参照は追加していない。
+
+### 総複体の積と一次の平方零
+
+- `0ed683fa3` で双次数の二つの Leibniz 則を総複体の Leibniz 則に移し、`pdTotalCochainProduct` を構成した。`pdRowZeroProjection_mul` と `pdColumnZeroProjection_mul` は挿入した成分で積を比較する。`pdDeRhamRowZeroIso_mul` と `cohomologyEquivModuleHomology_cup` は第 0 行から Čech の cup 積への照合。
+- `htGradedDGAlgebra` は基底の剰余環上の Bockstein 微分代数。一次の像の平方零は `hodgeTateMapOne_square_zero` で示し、草稿の η¹ は本体に接続した。平方零の局所インスタンスを別名にして、微分代数と同時に import できることを検査した。
+- `crystallineChain` は結晶基底での加法同型。`pdRaw_frobeniusCoordinate_dvd` は (X_1^p-X_0^p) の p 可除性、`deRhamD_coordinate_pow` は (d(X^p)=p X^{p-1}dX) の整係数での公式。二つを還元して同じ総複体の余輪体にする照合は残る。
+- 段 3 の 69 モジュールの対象ビルドと一時監査が通った。1,697 宣言は標準三公理のみ。main `18350a5a7` を専用枝に取り込んだ。E∞ 模型への新しい参照はない。
