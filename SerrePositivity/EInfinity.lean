@@ -2502,6 +2502,11 @@ public import SerrePositivity.EInfinity.Interface.StrictInputs
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
+public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+public import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.Conservative
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial
 
 public import SerrePositivity.EInfinity.AlexanderWhitney.CochainComonoid
 
