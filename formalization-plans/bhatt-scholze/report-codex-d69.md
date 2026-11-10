@@ -261,3 +261,9 @@
    ```
 
 5. 対象ビルドの後、`/private/tmp/AuditD69P2Night.lean` を `lake env lean` で一時監査する。夜前の33本と上の10本を対象に、非公開宣言も含めて標準三公理のみであることを確認する。続けて追加する証明はこの監査の対象に足す。
+
+## 段 2（P2）途中（11 月 11 日朝）
+
+- `main` の取り込みと登録を含む `6e6a3f9a7` へ早送りした。夜間の枠の持ち上げ、混合頂点、prism 上の余鎖ホモトピー、有限 affine 枠への適用の対象ビルドが通った。大小の枠の比較の二つの合成と、標準比較への移送は引き続き検査中。
+- Witt の結晶の橋を有限枠に制限した座標計算、未完備分冪模型の代入、Jacobian と分冪偏微分の連鎖律、双複体の第 0 行・第 0 列への射影の自然性が対象ビルドを通った。連鎖律は自由分冪の生成元に階乗を掛けて通常の冪に直し、標的の p 正則性と p 完備性で階乗を消去して示した。
+- 今回ビルドと監査が通った追加は `AffineCechFrameLift`、`CechVertexHomotopy`、`PrismaticFrameHomotopy`、`AffineCechVertexFrame`、`WittBigBridgeAffineFrame`、`PDRawPolynomialSubstitution`、`PDDeRhamSubstitutionJacobian`、`PDDeRhamSubstitutionChainRule`、`SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality` の9本。一時監査は夜前の33本を合わせた42本、1,352宣言で標準三公理のみ。
