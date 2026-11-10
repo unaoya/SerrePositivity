@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCo
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.InitialShapeLimitExchange
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 
 
 /-!
@@ -40,7 +40,7 @@ lemma coherentFilteredLimitExchangeShape_simplex (n : ℕ) :
   let a := f ≫ (HomotopyLimits.uliftStdSimplexIso.{u, u + 1} n).inv
   have : Mono a := by dsimp only [a]; infer_instance
   have ha : leftAnodyneExtensions a :=
-    leftAnodyneExtensions.comp_mem f _ (stdSimplex_firstVertex_leftAnodyne n)
+    leftAnodyneExtensions.comp_mem f _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne n)
       (MorphismProperty.of_isIso leftAnodyneExtensions _)
   apply pointwiseColimit_preserves_initialShapeLimits a ha c hc
   rintro ⟨b⟩

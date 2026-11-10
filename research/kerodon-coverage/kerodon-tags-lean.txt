@@ -609,7 +609,7 @@
 [Kerodon Tag 04JH](https://kerodon.net/tag/04JH) corresponds to declaration 'SerrePositivity.InfinityCategories.IsLocalization.saturate'.
 [Kerodon Tag 04JH](https://kerodon.net/tag/04JH) corresponds to declaration 'SerrePositivity.InfinityCategories.invertedEdges'.
 [Kerodon Tag 05E6](https://kerodon.net/tag/05E6) corresponds to declaration 'SerrePositivity.InfinityCategories.F2.Compact.isColimitCone_of_functorRetraction'.
-[Kerodon Tag 05HX](https://kerodon.net/tag/05HX) corresponds to declaration 'SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne'.
+[Kerodon Tag 05HX](https://kerodon.net/tag/05HX) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne'.
 [Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.IsPointwiseLimitCone'.
 [Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.evaluateFunctorCone'.
 [Kerodon Tag 05QF](https://kerodon.net/tag/05QF) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPointwiseColimitCone'.

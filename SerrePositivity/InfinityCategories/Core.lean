@@ -313,7 +313,7 @@ public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.Core.Ind.NerveProductSwapIso
 public import SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift
 public import SerrePositivity.InfinityCategories.Core.Ind.TerminalVertexCocone
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.InitialCofinality
 public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
 public import SerrePositivity.InfinityCategories.Core.InitialExtension

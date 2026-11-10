@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LocalRelativeJoinConeEndpoint
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 public import Mathlib.Tactic.CrossRefAttribute
@@ -31,7 +31,7 @@ lemma kanIsColimitCone_of_functorIso {A D : SSet.{u}} [Quasicategory D]
     {p q : A ⟶ D} {c : JoinCocone p} {d : JoinCocone q}
     (hc : IsColimitCone c) (e : FunctorIso c.val d.val) : IsColimitCone d := by
   apply isColimitCone_of_initialBoundaryLifting_coconeRestriction d
-  exact InitialBoundaryLifting.of_vertexIso (coconeRestriction A D) hc.initialBoundaryLifting e
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (coconeRestriction A D) hc.initialBoundaryLifting e
 
 /-- 概要：標準局所輸送の余錐と fiber の余錐の制限は全余錐の関手圏で同型。
 方針：局所比較の始端と終端を計算し、両因子を固定する円柱の同型判定を使う。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite
 public import SerrePositivity.InfinityCategories.Core.InitialOpposite
 public import SerrePositivity.InfinityCategories.Core.JoinBoundary
@@ -81,7 +81,7 @@ lemma TerminalBoundaryLifting.of_vertexIso {X Y : SSet.{u}}
       (@SSet.yonedaEquiv X.op ⦋0⦌ a) (SSet.opObjEquiv.symm y) :=
     ⟨g.edge, g.src_eq.trans ha.symm, g.tgt_eq⟩
   have hi : IsInvertibleEdge hg := (isInvertibleEdge_congr (e := hg) (f := g) rfl).2 hf
-  exact InitialBoundaryLifting.of_invertibleEdge (SSet.opFunctor.map p) a
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_invertibleEdge (SSet.opFunctor.map p) a
     (ha.symm ▸ (TerminalBoundaryLifting.op_initial hx)) hg hi
 
 end SerrePositivity.InfinityCategories

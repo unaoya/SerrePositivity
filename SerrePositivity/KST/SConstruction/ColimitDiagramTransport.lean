@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
@@ -26,7 +26,7 @@ lemma IsColimitCone.of_functorIso {K X : SSet.{u}} [Quasicategory X]
     {p q : K ⟶ X} {c : JoinCocone p} {d : JoinCocone q}
     (hc : IsColimitCone c) (e : FunctorIso c.val d.val) : IsColimitCone d := by
   apply isColimitCone_of_initialBoundaryLifting_coconeRestriction d
-  exact InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hc.initialBoundaryLifting e
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hc.initialBoundaryLifting e
 
 /-- 概要：同型な全余錐の余極限性は同値。
 方針：同型と逆同型の両方に輸送を適用する。

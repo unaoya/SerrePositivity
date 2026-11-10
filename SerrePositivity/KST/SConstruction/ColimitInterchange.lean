@@ -61,6 +61,6 @@ lemma colimitInterchange_initialBoundary {J K C : SSet.{u}} [Quasicategory C]
   intro j
   have ej := VertexIso.map e (evaluateFunctorAt j)
   rw [evaluateFunctorAt_functorVertex, evaluateFunctorAt_functorVertex] at ej
-  exact InitialBoundaryLifting.of_vertexIso (coconeRestriction K C) (hGi j) ej.symm
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (coconeRestriction K C) (hGi j) ej.symm
 
 end SerrePositivity.KST.SConstruction

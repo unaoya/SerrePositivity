@@ -30,7 +30,7 @@ lemma IsColimitCone.of_functorIso {K X : SSet.{u}} [Quasicategory X]
     {p q : K ⟶ X} {c : JoinCocone p} {d : JoinCocone q}
     (hc : IsColimitCone c) (e : FunctorIso c.val d.val) : IsColimitCone d := by
   apply isColimitCone_of_initialBoundaryLifting_coconeRestriction d
-  exact InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hc.initialBoundaryLifting e
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hc.initialBoundaryLifting e
 
 /-- 全錐の関手同型は極限性を保つ。 -/
 lemma IsLimitCone.of_functorIso {K X : SSet.{u}} [Quasicategory X]

@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 
 /-!
 概要：標準単体上の元の錐の極限性は最初の頂点への制限で判定できる。
@@ -57,6 +57,6 @@ lemma isLimitCone_stdSimplex_iff_firstVertex {X : SSet.{u}} [Quasicategory X]
     IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (SSet.yonedaEquiv.symm
       (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))) := by
   have := stdSimplex_firstVertex_mono.{u} n
-  exact (isLimitCone_restrict_iff_of_leftAnodyne c _ (stdSimplex_firstVertex_leftAnodyne n)).symm
+  exact (isLimitCone_restrict_iff_of_leftAnodyne c _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne n)).symm
 
 end SerrePositivity.InfinityCategories.F2

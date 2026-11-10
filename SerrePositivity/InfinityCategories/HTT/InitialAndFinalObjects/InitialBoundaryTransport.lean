@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.FirstVertexLeftAnodyne
 public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting
 public import SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint
 public import Mathlib.CategoryTheory.Limits.Preorder
@@ -17,27 +18,10 @@ public import Mathlib.Tactic.CrossRefAttribute
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
-namespace SerrePositivity.InfinityCategories
+namespace SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects
+open _root_.SerrePositivity.InfinityCategories
 open CategoryTheory Limits SSet
-open scoped Simplicial
-
-/-- 概要：標準単体の最初の頂点の包含は left anodyne。
-方針：有限順序圏の始対象の nerve 包含を標準単体の同型で移す。
-規約：次数 n は任意。使われ方：基底の余錐を最初の辺から選ぶ。 -/
-@[kerodon 05HX]
-lemma stdSimplex_firstVertex_leftAnodyne (n : ℕ) :
-    leftAnodyneExtensions (SSet.yonedaEquiv.symm
-      (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) : (Δ[0] : SSet.{u}) ⟶ Δ[n]) := by
-  have h := nervePoint_leftAnodyne (Preorder.isInitialBot (ULift.{u} (Fin (n + 1))))
-  have hh := leftAnodyneExtensions.comp_mem _ (stdSimplex.isoNerve n).inv h
-    (MorphismProperty.of_isIso leftAnodyneExtensions _)
-  have he : nervePoint (⊥ : ULift.{u} (Fin (n + 1))) ≫ (stdSimplex.isoNerve n).inv =
-      SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
-    apply (cancel_mono (stdSimplex.isoNerve n).hom).1
-    rw [Category.assoc, Iso.inv_hom_id, Category.comp_id]
-    apply SSet.yonedaEquiv.injective
-    rfl
-  exact he ▸ hh
+open scoped _root_.Simplicial
 
 /-- 概要：辺から作った点の coslice の頂点の射影は元の辺の終点。
 方針：辺の表示の逆律に終点の余面を適用する。
@@ -83,7 +67,7 @@ lemma InitialBoundaryLifting.of_invertibleEdge {X Y : SSet.{u}}
     rw [SSet.yonedaEquiv_symm_comp, hzB]
     exact hb₀.symm
   have : HasLiftingProperty j (sliceUnderProjection (a ≫ p)) :=
-    stdSimplex_firstVertex_leftAnodyne (n + 1) _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne (n + 1) _
       (LeftFibration.mem (p := sliceUnderProjection (a ≫ p)))
   let B := hsb.lift
   have hB₀ : j ≫ B = SSet.yonedaEquiv.symm zB := hsb.fac_left
@@ -129,4 +113,4 @@ lemma InitialBoundaryLifting.of_vertexIso {X Y : SSet.{u}}
     (SSet.yonedaEquiv.apply_symm_apply x).symm ▸ hx
   exact InitialBoundaryLifting.of_invertibleEdge p (SSet.yonedaEquiv.symm x) hx' f' hi'
 
-end SerrePositivity.InfinityCategories
+end SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects

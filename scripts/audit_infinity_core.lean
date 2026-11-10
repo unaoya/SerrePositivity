@@ -122,7 +122,7 @@ import SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality
 import SerrePositivity.InfinityCategories.Core.LaxCoslice
 import SerrePositivity.InfinityCategories.Core.LastJoinEvaluation
 import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
-import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 import SerrePositivity.InfinityCategories.Core.IdentityCocone
 import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility

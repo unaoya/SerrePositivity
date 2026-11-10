@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion
-public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport
 
 /-!
 概要：余錐全体の関手同型による標準 U 余極限の輸送。
@@ -29,7 +29,7 @@ lemma kanIsRelativeColimitCone_of_functorIso {A D E : SSet.{u}}
     (hc : IsRelativeColimitCone U c) (e : FunctorIso c.val d.val) :
     IsRelativeColimitCone U d := by
   apply kanIsRelativeColimitCone_of_lifting U d
-  exact InitialBoundaryLifting.of_vertexIso (kanRelativeCoconeRestriction A U)
+  exact _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (kanRelativeCoconeRestriction A U)
     (kanRelativeCoconeLifting_of_isRelativeColimitCone U c hc) e
 
 /-- 概要：同型な全余錐の標準 U 余極限性は同値。

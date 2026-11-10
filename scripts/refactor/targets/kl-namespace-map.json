@@ -5046,6 +5046,31 @@
       "new": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract",
       "module": "SerrePositivity.InfinityCategories.Core.Retracts",
       "new_module": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_invertibleEdge",
+      "new": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_invertibleEdge",
+      "module": "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.InitialBoundaryLifting.of_vertexIso",
+      "new": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso",
+      "module": "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.pointCosliceVertexOfEdge_projection",
+      "new": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.pointCosliceVertexOfEdge_projection",
+      "module": "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport",
+      "new_module": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport"
+    },
+    {
+      "old": "SerrePositivity.InfinityCategories.stdSimplex_firstVertex_leftAnodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.stdSimplex_firstVertex_leftAnodyne",
+      "module": "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.FirstVertexLeftAnodyne"
     }
   ],
   "modules": {
@@ -5196,7 +5221,8 @@
     "SerrePositivity.KST.Comparison.SubdivisionRearDegeneracy": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionRearDegeneracy",
     "SerrePositivity.KST.Comparison.SubdivisionUnions": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.SubdivisionUnions",
     "SerrePositivity.KST.Comparison.UniqueFaceNondegenerate": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.UniqueFaceNondegenerate",
-    "SerrePositivity.InfinityCategories.Core.Retracts": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure"
+    "SerrePositivity.InfinityCategories.Core.Retracts": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.RetractClosure",
+    "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryTransport"
   },
   "namespaces": {
     "SerrePositivity.KST.ProExcision.AWBoundaryCoordinates": {
@@ -5642,6 +5668,9 @@
     },
     "SerrePositivity.InfinityCategories.Core.Retracts": {
       "SerrePositivity.InfinityCategories.F2.Idempotent": "SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion"
+    },
+    "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport": {
+      "SerrePositivity.InfinityCategories": "SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects"
     }
   },
   "opens": {
@@ -5651,6 +5680,7 @@
     "SerrePositivity.InfinityCategories.F2.Presentable": "SerrePositivity.InfinityCategories.F2.Presentable",
     "SerrePositivity.InfinityCategories.F2.Presentable.Duality": "SerrePositivity.InfinityCategories.F2.Presentable.Duality",
     "SerrePositivity.KST.Comparison": "SerrePositivity.KST.Comparison",
-    "SerrePositivity.InfinityCategories.F2.Idempotent": "SerrePositivity.InfinityCategories.F2.Idempotent"
+    "SerrePositivity.InfinityCategories.F2.Idempotent": "SerrePositivity.InfinityCategories.F2.Idempotent",
+    "SerrePositivity.InfinityCategories": "SerrePositivity.InfinityCategories"
   }
 }

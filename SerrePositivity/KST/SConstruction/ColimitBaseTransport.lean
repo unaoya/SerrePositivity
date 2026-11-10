@@ -37,7 +37,7 @@ lemma exists_initialCoconeVertex_over_invertible_edge (K X : SSet.{u}) [Quasicat
     isInvertibleEdge_of_isCartesianEdge (coconeRestriction K X) f hcart hfm
   haveI : IsIso (SSet.Truncated.HomotopyCategory.homMk f) := hfi
   have hi : VertexIso w v := asIso (SSet.Truncated.HomotopyCategory.homMk f)
-  refine ⟨w, ?_, InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hv hi.symm⟩
+  refine ⟨w, ?_, _root_.SerrePositivity.InfinityCategories.HTT.InitialAndFinalObjects.InitialBoundaryLifting.of_vertexIso (coconeRestriction K X) hv hi.symm⟩
   have hs := (f.map ((truncation 2).map (coconeRestriction K X))).src_eq
   exact hs.symm.trans ((congrArg (((ihom K).obj X).δ 1) hf).trans e.src_eq)
 
