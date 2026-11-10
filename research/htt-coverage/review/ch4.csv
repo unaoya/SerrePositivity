@@ -64,3 +64,24 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.2.3.14,none,,反対向きの単体圏の神経からの初頂点写像と局所化性はある。任意の単体集合への通常圏の神経からの右共終写像を、この写像または終頂点写像で与える宣言は見つからなかった。,,not_found,
 4.2.3.15,none,,単体圏の初頂点写像の自然性と、特定の半順序からの共終写像はある。任意の単体集合について、半順序集合の神経からの右共終写像を関手的に選ぶ宣言は見つからなかった。,,not_found,
 4.2.3.16,none,,非特異単体集合を非退化単体から余極限として作る Mathlib の宣言を読んだ。任意の有限単体集合への有限半順序の神経からの右共終写像や、原典の非特異な有限置換は見つからなかった。,,not_found,
+4.2.4.2,none,,通常圏を添字とする豊穣 Hom の判定はある。文献 [39] で扱われる別設定との比較を定式化する宣言は見つからなかった。,,not_found,
+4.2.4.4,none,,通常の小圏からの豊穣余錐には coherent nerve への比較があり、モデル圏の余ファイブラント・ファイブラント対象の神経にも準圏性がある。C[S] と C の同値を入力とし、C-chunk の図式モデル圏から指定の関手準圏への比較を同値とする宣言は見つからなかった。,,not_found,
+4.2.4.5,none,,モデル圏の導来輸送と豊穣余錐の神経を調べた。射影モデルと入射モデルで C-chunk の同じ図式比較が成り立つことを両模型について示す宣言は見つからなかった。,,not_found,
+4.2.4.6,none,,通常圏の神経上の厳密な図式を扱う宣言はある。Hirschowitz–Simpson の結果との対応を与える宣言は見つからなかった。,,not_found,
+4.2.4.7,none,,既存の通常圏の厳密な図式を神経へ写す構成と、小さい coherent 図式の復元を調べた。任意の N(I)→S に対して S の圏同値な豊穣模型と同じ図式の豊穣関手を同時に与える宣言は見つからなかった。,,not_found,
+4.2.4.8,none,,Kan 複体を束ねた SpaceInfinity の小極限・余極限はある。任意の組合せ的単体モデル圏の余ファイブラント・ファイブラント対象の神経に対する主張や、Kan–Quillen のモデル圏側のその神経を SpaceInfinity と比較する宣言は見つからなかった。,,not_found,
+4.3.1.3,own,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalRestriction.lean:26,仮定：準圏から一点への射と指定余錐（Lean が弱い：標的を終対象として指定できる）。結論：同じ余錐の相対余極限性と絶対余極限性が同値（一致）。,,found,
+4.3.1.4,own,SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean:137,"仮定：内ファイブレーション上の辺（Lean が弱い：内ファイブレーション性を要求しない）。結論：余デカルト辺であることと、初頂点を Λ[1,0] で固定した同じ相対コスライス比較の自明 Kan 性が同値（一致）。",,found,
+4.3.1.5,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean:39,仮定：内ファイブレーションと関手準圏で同値な二つの余錐（HTT の (3) と一致）。結論：二つの余錐の相対余極限性が同値（結論 (3) が一致。他の安定性はこの宣言に含まれない）。,,found,component
+4.3.1.7,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitTerminalIndex.lean:28,仮定：内ファイブレーション上の余錐と共終な添字変更（Lean が強い：添字変更は右アノダインな単射）。結論：同じ余錐の制限前後で相対余極限性が同値（一致）。,,found,stronger-hyp
+4.3.1.9,partial,SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean:39,仮定：点ごとに余デカルトで頂点の底の像が退化する余錐間の変換（Lean が強い：変換が関手準圏の同型を与える場合に適用）。結論：同じ二余錐の相対余極限性が同値（一致する場合）。,,found,stronger-hyp
+4.3.1.10,none,,終対象上の相対・絶対余極限の同値と余デカルト辺による繊維間輸送を調べた。各底辺に沿う輸送先の余極限性を元の相対余極限性と同値にする宣言は見つからなかった。,,not_found,
+4.3.1.11,none,,固定値域の余錐族の延長と既にある相対余極限の添字変更に沿う延長はある。各繊維の余極限存在と輸送による保存から、指定の底の余錐上に相対余極限を作る宣言は見つからなかった。,,not_found,
+4.3.1.12,partial,SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration @ SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean:137,仮定：弱可縮な添字の全辺を余デカルト辺に送る余錐（Lean が強い：添字が一点の場合に適用）。結論：相対余極限であることと、余錐の唯一の非退化辺が余デカルトであることが同値（一致する場合）。,,found,special
+4.3.1.13,none,,相対始対象の写像空間による定義と向き付きコンマ圏の境界判定を読んだ。内ファイブレーションに対し恒等辺を添えた同じ頂点の、通常のコスライスとの引き戻しでの始対象性との同値は見つからなかった。,,not_found,
+4.3.1.14,none,,底変換で相対始対象を引き戻し側へ移す補題を読んだ。デカルト辺を保つ中間射を用いて、繊維上の相対始対象性から全空間の相対始対象性を得る宣言は見つからなかった。,,not_found,
+4.3.1.15,none,,単独の内ファイブレーションの相対始対象を底変換で保つ宣言はある。二つのデカルトファイブレーションと中間射を同時に底変換して、指定余錐の相対余極限性を保ち反映する宣言は見つからなかった。,,not_found,
+4.3.1.16,none,,終対象上の絶対化と局所の繊維余錐を扱う相対結合の宣言を読んだ。任意のデカルトファイブレーションで、同じ余錐の繊維内の絶対余極限性と全空間の相対余極限性を同値にする宣言は見つからなかった。,,not_found,
+4.3.2.1,own,SerrePositivity.InfinityCategories.leftKanShape @ SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean:34,仮定：準圏の充満部分圏と指定頂点（Lean が弱い：任意の単体集合の射と頂点）。結論：指定頂点のスライスを始点射影に沿って部分圏へ引き戻す（一致）。,,found,
+4.3.2.2,own,SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom @ SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean:26 | SerrePositivity.InfinityCategories.leftKanCanonicalCocone @ SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean:89,仮定：充満部分圏上の制限と値域の内ファイブレーション（Lean が弱い：定義は任意の添字写像と値域写像を取る）。結論：同じスライス引き戻しから作る標準余錐に、各頂点で値域写像に関する相対余極限性を課す（一致）。,,found,
+4.3.2.3,partial,SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image @ SerrePositivity/InfinityCategories/F1B/KanExtension/LeftIdentityLeg.lean:68,仮定：充満部分圏の像にある頂点（Lean が強い：値域の底が一点で相対条件が絶対化する場合に適用）。結論：同じ頂点での標準左 Kan 余錐が余極限（一致する場合）。,,found,special

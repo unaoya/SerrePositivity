@@ -1,5 +1,5 @@
 {
-  "base": "38fea14bc6ce636de1c58335e08148b1c1ff8db4",
+  "base": "8f8df07aaa1d90e7f27f09c98a9afd28f9ca343d",
   "toolchain": "leanprover/lean4:v4.35.0-rc4",
   "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
   "items": {
@@ -224,6 +224,61 @@
         "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits",
         "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.isKappaAccessibleFunctor"
       ]
+    },
+    "4.3.1.3": {
+      "page": 261,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal"
+      ]
+    },
+    "4.3.1.4": {
+      "page": 261,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration"
+      ]
+    },
+    "4.3.1.5": {
+      "page": 261,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso"
+      ]
+    },
+    "4.3.1.7": {
+      "page": 263,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne"
+      ]
+    },
+    "4.3.1.9": {
+      "page": 264,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso"
+      ]
+    },
+    "4.3.1.12": {
+      "page": 267,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration"
+      ]
+    },
+    "4.3.2.1": {
+      "page": 271,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.leftKanShape"
+      ]
+    },
+    "4.3.2.2": {
+      "page": 271,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom",
+        "SerrePositivity.InfinityCategories.leftKanCanonicalCocone"
+      ]
+    },
+    "4.3.2.3": {
+      "page": 272,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image"
+      ]
     }
   },
   "declarations": {
@@ -246,6 +301,66 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth-more",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeLeftCanonical.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.IsRelativeLeftKanExtendedFrom.{u_1} : {K C D E : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} D E → Quiver.Hom.{u_1, u_1 + 1} K C → Quiver.Hom.{u_1, u_1 + 1} C D → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftCanonicalRestriction.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_isColimit_of_terminal.{u_1} : ∀\n  {J D E : SSet.{u_1}} [SSet.Quasicategory.{u_1} D] [SSet.Quasicategory.{u_1} E] (U : Quiver.Hom.{u_1, u_1 + 1} D E)\n  (hE : CategoryTheory.Limits.IsTerminal.{u_1, u_1 + 1} E) {p : Quiver.Hom.{u_1, u_1 + 1} J D}\n  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),\n  SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone.{u_1} U c ↔\n    SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitFunctorIso.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_of_functorIso.{u_1} : ∀ {A D E : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} D] [SSet.Quasicategory.{u_1} E] (U : Quiver.Hom.{u_1, u_1 + 1} D E)\n  [SSet.InnerFibration.{u_1} U] {p q : Quiver.Hom.{u_1, u_1 + 1} A D}\n  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)\n  (d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} q)\n  (e : SerrePositivity.InfinityCategories.FunctorIso.{u_1} ↑c ↑d),\n  SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone.{u_1} U c ↔\n    SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone.{u_1} U d",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeColimitTerminalIndex.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.kanIsRelativeColimitCone_iff_restrict_of_rightAnodyne.{u_1} : ∀\n  {A J D E : SSet.{u_1}} [SSet.Quasicategory.{u_1} D] [SSet.Quasicategory.{u_1} E] (U : Quiver.Hom.{u_1, u_1 + 1} D E)\n  {p : Quiver.Hom.{u_1, u_1 + 1} J D} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)\n  (i : Quiver.Hom.{u_1, u_1 + 1} A J) [CategoryTheory.Mono.{u_1, u_1 + 1} i],\n  SerrePositivity.InfinityCategories.rightAnodyneExtensions.{u_1} i →\n    (SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone.{u_1} U c ↔\n      SerrePositivity.InfinityCategories.F1B.IsRelativeColimitCone.{u_1} U\n        (SerrePositivity.InfinityCategories.JoinCocone.restrict.{u_1} c i))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftIdentityLeg.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.kanLeftCanonical_isColimit_at_image.{u_1} : ∀ {K C D : SSet.{u_1}}\n  [SSet.Quasicategory.{u_1} K] [SSet.Quasicategory.{u_1} C] [SSet.Quasicategory.{u_1} D]\n  (δ : Quiver.Hom.{u_1, u_1 + 1} K C) [SSet.InnerFibration.{u_1} δ],\n  SerrePositivity.InfinityCategories.IsFullyFaithful.{u_1} δ →\n    ∀ (F : Quiver.Hom.{u_1, u_1 + 1} C D)\n      (k : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} K (Opposite.op.{1} { len := 0 })),\n      SerrePositivity.InfinityCategories.IsColimitCone.{u_1}\n        (SerrePositivity.InfinityCategories.leftKanCanonicalCocone.{u_1} δ F\n          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}\n              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} δ (Opposite.op.{1} { len := 0 })))\n            k))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
     },
     "SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal": {
       "declaration": "SerrePositivity.InfinityCategories.F2.Ind.isColimitCone_iff_restrict_rightCofinal",
@@ -523,6 +638,18 @@
       "evidence": "research/htt-coverage/review/check/runs/ch4-fat-join",
       "checked_at": "57d9f07633ae6903a903b0f56aa57110a41548cb"
     },
+    "SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Cocartesian/CosliceConverse.lean",
+      "type": "@SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration.{u_1} : ∀\n  {X Y : SSet.{u_1}}\n  (e : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)\n  (q : Quiver.Hom.{u_1, u_1 + 1} X Y),\n  SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} q (SSet.yonedaEquiv.{u_1} e) ↔\n    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}\n      (SerrePositivity.InfinityCategories.relativeCosliceMap.{u_1} e q (SSet.horn.{u_1} 1 0))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
     "SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration": {
       "declaration": "SerrePositivity.InfinityCategories.isInitialVertex_iff_trivialKanFibration",
       "source": "SerrePositivity/InfinityCategories/Core/Terminal.lean",
@@ -702,6 +829,30 @@
       ],
       "evidence": "research/htt-coverage/review/check/runs/ch4-smooth",
       "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    },
+    "SerrePositivity.InfinityCategories.leftKanCanonicalCocone": {
+      "declaration": "SerrePositivity.InfinityCategories.leftKanCanonicalCocone",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftKanCanonicalCocone.{u_1} : {K C D : SSet.{u_1}} →\n  (δ : Quiver.Hom.{u_1, u_1 + 1} K C) →\n    (F : Quiver.Hom.{u_1, u_1 + 1} C D) →\n      (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 })) →\n        SerrePositivity.InfinityCategories.JoinCocone.{u_1}\n          (SerrePositivity.InfinityCategories.leftKanDiagram.{u_1} δ\n            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} δ F) c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.leftKanShape": {
+      "declaration": "SerrePositivity.InfinityCategories.leftKanShape",
+      "source": "SerrePositivity/InfinityCategories/F1B/KanExtension/Shapes.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftKanShape.{u_1} : {K C : SSet.{u_1}} →\n  Quiver.Hom.{u_1, u_1 + 1} K C →\n    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} C (Opposite.op.{1} { len := 0 }) → SSet.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
     },
     "SerrePositivity.InfinityCategories.mappingCylinderBaseProjection": {
       "declaration": "SerrePositivity.InfinityCategories.mappingCylinderBaseProjection",
