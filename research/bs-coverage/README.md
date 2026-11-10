@@ -11,6 +11,7 @@
 - 集計（11-10 更新：BS-W11〜W13 と BS-D68 の段 2 が入った後。新しいファイル 113 本の docstring の原典番号から候補を出し、読むだけのエージェントが宣言の型を読んで判定、調整役が主な宣言の実在を確かめた。変わったのは 16 項目）：
   - status：none 99、proved_special 35、drafts 30、proved 28、parts_in_body 8、e3_input 7、design_only 4
   - 目標に必要な 105 項目の status：proved_special 31、drafts 29、proved 28、parts_in_body 8、e3_input 6、design_only 2、none 1
+- 11-10 の 2 回目の更新（BS-D68 停止点 3 の後）：4.9・4.10・5.5 を本体（特別な場合）に、4.11 を本体に部品に。目標に必要な 105 項目：proved_special 34、proved 28、drafts 26、parts_in_body 8、e3_input 6、design_only 2、none 1
 - 11-07 の集計：
   - status：none 97、drafts 40、proved_special 34、proved 27、e3_input 8、design_only 5
   - 目標：必要 73、一部だけ必要 32、不要 105、未確定 1（11-07 の訂正の後）
