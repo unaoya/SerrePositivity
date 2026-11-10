@@ -2,9 +2,9 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §3.2 の 1〜4、単位 A6-3。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.InducedTopology
-public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
 -- 本ファイルは drafts/A6/{ArcSite,ArcSheafProperty}.lean、drafts/A5/PerfectSiteComparison.lean を import する。
 
@@ -34,6 +34,8 @@ noncomputable section
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -151,8 +153,8 @@ def ringProductCone (S T : A_R R) :
 使われ方：Cor 8.12 で S′ を S′ × S/I に替えて戻す（D58）。 -/
 theorem perfectoidization_prod (S T : A_R R) :
     let c := (ringProductCone R S T).val
-    IsLimitCone (mapJoinCone (perfectoidizationFunctor p R hR) c) ∧
-      IsLimitCone (mapJoinCone (e3Perfd p R hR) c) := by
+    IsLimitCone (mapJoinCone (perfectoidizationFunctor (E := E) p R hR) c) ∧
+      IsLimitCone (mapJoinCone (e3Perfd (E := E) p R hR) c) := by
   sorry -- Prop 8.5 の κ 版・Type u 版と perfdUnderProdEquiv。両添字圏は零環を終対象にもつ。
         -- 非完備な始域では π₀ の完備化を通す（D41・系4）。忘却はこの積錐を保つ
 
@@ -164,12 +166,12 @@ def excisionPair {A B C : A_R R} (g : A ⟶ B) (h : A ⟶ C) : A ⟶ excisionPro
   Under.homMk (CommRingCat.ofHom (g.right.hom.prod h.right.hom)) (by
     sorry) -- 両成分とも R 上
 
-abbrev excisionCospan {B C D : A_R R} (g : B ⟶ D) (h : C ⟶ D) (F : algebraNerve R ⟶ CAlg_R R) :=
+abbrev excisionCospan {B C D : A_R R} (g : B ⟶ D) (h : C ⟶ D) (F : algebraNerve R ⟶ E.CAlg R) :=
   edgeCospan (((nerve.edgeMk g).map F).toTruncated) (((nerve.edgeMk h).map F).toTruncated)
 
-def excisionCospanLeg {B C D : A_R R} {g : B ⟶ D} {h : C ⟶ D} {F : algebraNerve R ⟶ CAlg_R R}
-    (t : JoinCone (excisionCospan R g h F)) (first : Bool) :
-    (HomotopyCategory.mk t.vertex : hoFunctor.obj (CAlg_R R)) ⟶
+def excisionCospanLeg {B C D : A_R R} {g : B ⟶ D} {h : C ⟶ D} {F : algebraNerve R ⟶ E.CAlg R}
+    (t : JoinCone (excisionCospan (E := E) R g h F)) (first : Bool) :
+    (HomotopyCategory.mk t.vertex : hoFunctor.obj (E.CAlg R)) ⟶
       HomotopyCategory.mk (F.app _ (nerveVertex (if first then B else C))) := by
   let j := if first then horn₂₂.ι₀₂ else horn₂₂.ι₁₂
   let k := j.app _ (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
@@ -178,15 +180,15 @@ def excisionCospanLeg {B C D : A_R R} {g : B ⟶ D} {h : C ⟶ D} {F : algebraNe
 
 /-- 二つの cospan の極限を、第一・第二射影を保存して比較する。 -/
 theorem excisionProductPullback {B C D : A_R R} (g : B ⟶ D) (h : C ⟶ D)
-    (F : algebraNerve R ⟶ CAlg_R R)
+    (F : algebraNerve R ⟶ E.CAlg R)
     (hprod : ∀ U V : A_R R, IsLimitCone (mapJoinCone F (ringProductCone R U V).val)) :
     let g' := excisionPair R (excisionProdFst R B C ≫ g) (excisionProdSnd R B C)
     let h' := excisionPair R h (𝟙 C)
-    ∀ (t : JoinCone (excisionCospan R g' h' F)) (v : JoinCone (excisionCospan R g h F)),
+    ∀ (t : JoinCone (excisionCospan (E := E) R g' h' F)) (v : JoinCone (excisionCospan (E := E) R g h F)),
       IsLimitCone t → IsLimitCone v → ∃ e : VertexIso t.vertex v.vertex,
-        e.hom ≫ excisionCospanLeg R v true = excisionCospanLeg R t true ≫
+        e.hom ≫ excisionCospanLeg (E := E) R v true = excisionCospanLeg (E := E) R t true ≫
           SSet.Truncated.HomotopyCategory₂.homMk (((nerve.edgeMk (excisionProdFst R B C)).map F).toTruncated) ∧
-        e.hom ≫ excisionCospanLeg R v false = excisionCospanLeg R t false := by
+        e.hom ≫ excisionCospanLeg (E := E) R v false = excisionCospanLeg (E := E) R t false := by
   sorry -- 拡大した錐から B×C の脚を B へ射影する。逆は B と C の脚を対にする。
         -- D×C の第二成分の整合性で両構成は互いに逆
 
@@ -197,7 +199,7 @@ S″ の四角形の引き戻しは (B × C) ×_{D × C} C（B × C → D × C �
 規約：—
 使われ方：Cor 8.12 の帰着。 -/
 theorem excision_of_excision_prod {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)
-    (F : algebraNerve R ⟶ CAlg_R R)
+    (F : algebraNerve R ⟶ E.CAlg R)
     (hprod : ∀ B C : A_R R, IsLimitCone (mapJoinCone F (ringProductCone R B C).val))
     (h : IsPullbackSquare (quotientExcisionSquare R (excisionProductMap R f I) I ≫ F)) :
     IsPullbackSquare (quotientExcisionSquare R f I ≫ F) := by

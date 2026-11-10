@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.3、単位 A2-3。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.Stability
 public import SerrePositivity.InfinityCategories.Stable.Loop
@@ -37,10 +38,12 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
-open SerrePositivity.EInfinity SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.EInfinity
 open SerrePositivity.BhattScholze.Perfectoidization.Derived
 attribute [local instance] HasDerivedCategory.standard
 
@@ -80,7 +83,7 @@ def completeModuleLan (p : ℕ) (k : Type u) [CommRing k]
 規約：D(k) の頂点。D(A) 値の版は `Res_A` を後合成。
 使われ方：Postnikov 切り捨ての入力。 -/
 def hodgeTatePoly (hP : IsBoundedPrism P) : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory (A ⧸ P.ideal) :=
-  polyUnderlying P hP ≫ prismModIdeal P ≫ cAlgForgetDerived _
+  polyUnderlying (E := E) P hP ≫ prismModIdeal (E := E) P ≫ E.forget _
 
 /-- 概要：Poly 上の τ^{≤i} Δ̄_0（i : ℕ）、関手的。
 方針：DerivedGeneral/Truncation の `truncationLE A i` を後合成。
@@ -88,7 +91,7 @@ def hodgeTatePoly (hP : IsBoundedPrism P) : (SSet.uliftFunctor.{u + 1, u}).obj (
 使われ方：Fil_i の Kan 延長の入力。 -/
 def hodgeTatePolyTruncated (hP : IsBoundedPrism P) (i : ℕ) :
     (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory (A ⧸ P.ideal) :=
-  hodgeTatePoly P hP ≫ Derived.truncationLE (A ⧸ P.ideal) i
+  hodgeTatePoly (E := E) P hP ≫ Derived.truncationLE (A ⧸ P.ideal) i
 
 /-- 概要：Poly 上で Δ̄_P ∈ D^{[0,n]}（n = 変数の個数）なので τ^{≤n} Δ̄_P ≃ Δ̄_P。
 方針：Thm 6.3（H^i = 0 for i > n）と `truncationLE_of_isConnective`（W9-III-11 で改名）。
@@ -96,7 +99,7 @@ def hodgeTatePolyTruncated (hP : IsBoundedPrism P) (i : ℕ) :
 使われ方：exhaustive 性。 -/
 theorem hodgeTatePoly_bounded (n : ℕ) :
     let k := A ⧸ P.ideal
-    let x := (hodgeTatePoly P hP).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k)))
+    let x := (hodgeTatePoly (E := E) P hP).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k)))
     Derived.IsCoconnectiveAt k 0 x ∧ Derived.IsConnectiveAt k n x ∧
       Nonempty (VertexIso ((Derived.truncationLE k n).app _ x) x) := by
   sorry -- Thm 6.3。i<0 および i>n のコホモロジーが零なので切り捨ての余単位が可逆
@@ -110,12 +113,12 @@ theorem hodgeTatePoly_bounded (n : ℕ) :
 使われ方：以下。 -/
 def hodgeTateFiltration (hP : IsBoundedPrism P) (i : ℕ) :
     AnimatedAlgebra (A ⧸ P.ideal) ⟶ CompleteD p (A ⧸ P.ideal) :=
-  completeModuleLan p _ (hodgeTatePolyTruncated P hP i)
+  completeModuleLan p _ (hodgeTatePolyTruncated (E := E) P hP i)
 
-abbrev reducedDelta (hP : IsBoundedPrism P) := deltaUnderlying P hP ≫ prismModIdeal P
+abbrev reducedDelta (hP : IsBoundedPrism P) := deltaUnderlying (E := E) P hP ≫ prismModIdeal (E := E) P
 def reducedDeltaComplete (hP : IsBoundedPrism P) :
     AnimatedAlgebra (A ⧸ P.ideal) ⟶ CompleteD p (A ⧸ P.ideal) :=
-  fullSubcomplexLift _ (reducedDelta P hP ≫ cAlgForgetDerived _) (by
+  fullSubcomplexLift _ (reducedDelta (E := E) P hP ≫ E.forget _) (by
     sorry) -- (p,d) 完備な Δ の導来 mod d は p 完備
 
 abbrev filtrationShape : SSet.{u+1} := (SSet.uliftFunctor.{u+1,0}).obj (nerve ℕ)
@@ -125,9 +128,9 @@ abbrev filtrationIndex (i : ℕ) : filtrationShape.{u} _⦋0⦌ := ULift.up (ner
 多項式上で第 i 脚は H^{≤i} の同型を与えるため、切り捨ての余単位を表す。 -/
 structure HTTower (hP : IsBoundedPrism P) where
   diagram : filtrationShape ⟶ (ihom (AnimatedAlgebra (A ⧸ P.ideal))).obj (CompleteD p (A ⧸ P.ideal))
-  level (i : ℕ) : diagram.app _ (filtrationIndex i) = functorVertex (hodgeTateFiltration P hP i)
+  level (i : ℕ) : diagram.app _ (filtrationIndex i) = functorVertex (hodgeTateFiltration (E := E) P hP i)
   augmentation : JoinCocone diagram
-  target : augmentation.vertex = functorVertex (reducedDeltaComplete P hP)
+  target : augmentation.vertex = functorVertex (reducedDeltaComplete (E := E) P hP)
   truncates (Q : Poly (A ⧸ P.ideal)) (i : ℕ) (j : ℤ) (hj : j ≤ i) :
     let x := (polyYoneda _).app _ (ULift.up (nerveVertex Q))
     let e := (mapJoinCocone (evaluateFunctorAt x ≫ completeDInclusion p _) augmentation).leg
@@ -135,21 +138,21 @@ structure HTTower (hP : IsBoundedPrism P) where
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ P.ideal)) j).map
       ((derivedInfinityHomotopyEquivalence _).functor.map (SSet.Truncated.HomotopyCategory.homMk e)))
 
-def hodgeTateTower (hP : IsBoundedPrism P) : HTTower P hP := by
+def hodgeTateTower (hP : IsBoundedPrism P) : HTTower (E := E) P hP := by
   sorry -- 要確認：DerivedGeneral/Truncation へ。τ≤i の増大列と余単位を Poly 上で取り、
         -- 完備圏の sifted 延長の関手圏同値で余錐ごと延長する
 
 /-- 第 i 段から次段への射。augmentation の i 番目の脚が Fil_i → Δ̄。 -/
 def hodgeTateFiltration_step (hP : IsBoundedPrism P) (i : ℕ) :
-    FunctorHom (hodgeTateFiltration P hP i) (hodgeTateFiltration P hP (i+1)) := by
-  let T := hodgeTateTower P hP
+    FunctorHom (hodgeTateFiltration (E := E) P hP i) (hodgeTateFiltration (E := E) P hP (i+1)) := by
+  let T := hodgeTateTower (E := E) P hP
   let e := (uliftEdge.{0,u+1} (nerve.edgeMk (homOfLE (Nat.le_succ i))).toTruncated).map ((truncation 2).map T.diagram)
   exact eqToHom (congrArg HomotopyCategory.mk (T.level i).symm) ≫
     SSet.Truncated.HomotopyCategory.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk (T.level (i+1)))
 
 def hodgeTateAugmentation (hP : IsBoundedPrism P) (i : ℕ) :
-    FunctorHom (hodgeTateFiltration P hP i) (reducedDeltaComplete P hP) := by
-  let T := hodgeTateTower P hP
+    FunctorHom (hodgeTateFiltration (E := E) P hP i) (reducedDeltaComplete (E := E) P hP) := by
+  let T := hodgeTateTower (E := E) P hP
   let e := T.augmentation.leg (SSet.yonedaEquiv.symm (filtrationIndex i))
   exact eqToHom (by simpa using congrArg HomotopyCategory.mk (T.level i).symm) ≫
     SSet.Truncated.HomotopyCategory.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk T.target)
@@ -180,7 +183,7 @@ def cotangentWedge (i : ℕ) := cotangentWedgeGeneral p (A ⧸ P.ideal) i
 /-- 離散 S での値は S 加群。k へ係数制限すると上の k 加群を回収する（W9-I-36）。 -/
 def cotangentWedgeAtAlgebra (p : ℕ) (k S : Type u) [CommRing k] [CommRing S] [Algebra k S] (i : ℕ) :
     Σ M : (CompleteD p S) _⦋0⦌, VertexIso
-      ((completeDInclusion p S ≫ derivedInfinityRestrictScalars (algebraMap k S)).app _ M)
+      ((completeDInclusion p S ≫ derivedInfinityRestrictScalars (E := E) (algebraMap k S)).app _ M)
       ((discreteToAnimated k ≫ cotangentWedgeGeneral p k i).app _
         (nerveVertex (PerfectoidizationInterface.ofAlgebra k S))) := by
   sorry -- 多項式分解の各段の Ω^i を S 上に引き戻し、その S 加群の実現を導来 p 完備化
@@ -211,23 +214,23 @@ def IsGradedTerm {K D : SSet.{u+1}} [Quasicategory D] (L : ℕ → (K ⟶ D))
         ∃ c : CofiberSquare e, Nonempty (VertexIso c.cofiber (functorVertex W))
 
 abbrev filtrationUnderlying (hP : IsBoundedPrism P) (i : ℕ) :=
-  hodgeTateFiltration P hP i ≫ completeDInclusion p _
+  hodgeTateFiltration (E := E) P hP i ≫ completeDInclusion p _
 
 def polyTruncationIso (hP : IsBoundedPrism P) (i : ℕ) :
-    FunctorIso (polyYoneda _ ≫ filtrationUnderlying P hP i) (hodgeTatePolyTruncated P hP i) := by
+    FunctorIso (polyYoneda _ ≫ filtrationUnderlying (E := E) P hP i) (hodgeTatePolyTruncated (E := E) P hP i) := by
   sorry -- siftedLanIso と、p 完備な切り捨てにおける反射の単位の同型
 
 def polyTruncationStep (hP : IsBoundedPrism P) (i : ℕ) :=
-  (polyTruncationIso P hP i).inv ≫ F2.Presentable.precomposeFunctorHom (polyYoneda _)
-    (F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step P hP i)) ≫
-    (polyTruncationIso P hP (i+1)).hom
+  (polyTruncationIso (E := E) P hP i).inv ≫ F2.Presentable.precomposeFunctorHom (polyYoneda _)
+    (F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step (E := E) P hP i)) ≫
+    (polyTruncationIso (E := E) P hP (i+1)).hom
 
 /-- 多項式上の gr は LΛ_p Ω^i[−i]。Thm 6.3 の Ω̂^i から D4-01 で移す。 -/
 theorem hodgeTatePoly_gr (i : ℕ) :
     let k := A ⧸ P.ideal
     let Ω := ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1 ≫ completeDInclusion p k
     Nonempty (FunctorIso (polyYoneda k ≫ cotangentWedge P i) Ω) ∧
-      IsGradedTerm (hodgeTatePolyTruncated P hP) (polyTruncationStep P hP) i (Ω ≫ formShift k i) := by
+      IsGradedTerm (hodgeTatePolyTruncated (E := E) P hP) (polyTruncationStep (E := E) P hP) i (Ω ≫ formShift k i) := by
   constructor
   · exact ⟨(siftedLanIso k (completeD_siftedColimits p k) (ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1)).postcomp
       (completeDInclusion p k)⟩
@@ -235,8 +238,8 @@ theorem hodgeTatePoly_gr (i : ℕ) :
 
 /-- 完備圏内で延長した gr^i Fil Δ̄ ≃ (∧^i L)^∧[−i]。 -/
 theorem hodgeTateFiltration_gr (i : ℕ) :
-    IsGradedTerm (filtrationUnderlying P hP)
-      (fun j => F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step P hP j)) i
+    IsGradedTerm (filtrationUnderlying (E := E) P hP)
+      (fun j => F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step (E := E) P hP j)) i
       (cotangentWedge P i ≫ formShift (A ⧸ P.ideal) i) := by
   sorry -- hodgeTatePoly_gr の回収同型と cofiber 四角形を完備圏内で延長。導来完備化は完全
 
@@ -245,7 +248,7 @@ theorem hodgeTateFiltration_gr (i : ℕ) :
 規約：Δ̄ = Δ ⊗ A/d は p 完備（Δ は (p,d) 完備）。
 使われ方：連結性・離散性の議論（A3・A5）。 -/
 theorem hodgeTateFiltration_exhaustive (X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌) :
-    IsColimitCone (mapJoinCocone (evaluateFunctorAt X) (hodgeTateTower P hP).augmentation) := by
+    IsColimitCone (mapJoinCocone (evaluateFunctorAt X) (hodgeTateTower (E := E) P hP).augmentation) := by
   sorry -- 各多項式で有限段以後の余単位が可逆。完備圏内で二つの余極限を交換
 
 /-- 概要：Fil_0 Δ̄_R ≃ LΛ_p R（animated な導来 p 完備化）、すなわち単位 R → Δ̄_R（E3 の `unit` の材料）。
@@ -253,11 +256,11 @@ theorem hodgeTateFiltration_exhaustive (X : (AnimatedAlgebra (A ⧸ P.ideal)) _�
 規約：離散 R では LΛ_p R は一般に離散でない（W9-I-29）。E3 の `completionRing R` = H⁰(LΛ_p R) との関係は perfd の段で（a5-design §7.1）。
 使われ方：A4（単位）、E3 の `unit`・`h0`。 -/
 abbrev completedRealization (k : Type u) [CommRing k] :=
-  animatedCompletion p k ≫ animatedCompleteInclusion p k ≫ animatedCAlgRealization k
+  animatedCompletion p k ≫ animatedCompleteInclusion p k ≫ animatedCAlgRealization (E := E) k
 
 def hodgeTateFiltration_zero :
-    FunctorIso (hodgeTateFiltration P hP 0 ≫ completeDInclusion p _)
-      (completedRealization (p := p) (A ⧸ P.ideal) ≫ cAlgForgetDerived _) := by
+    FunctorIso (hodgeTateFiltration (E := E) P hP 0 ≫ completeDInclusion p _)
+      (completedRealization (E := E) (p := p) (A ⧸ P.ideal) ≫ E.forget _) := by
   sorry -- 多項式で η⁰ は H⁰(Δ̄)=P^∧ を同定。両辺を完備圏内で延長
 
 /-- 概要：Fil_0 → Δ̄ を **CAlg_k の自然変換**として（W9-I-30）：Poly 上で H⁰(Δ̄_P) = P^∧ は coconnective な E∞ 代数 Δ̄_P の連結被覆で
@@ -266,17 +269,17 @@ H⁰(Δ̄_P) → Δ̄_P は E∞ 代数の射、LΛ_p は CAlg に持ち上が�
 規約：`FunctorHom`（CAlg_k 値の関手の圏の射）。E3 の `unit` は H⁰ の環準同型ではなくこれから作る。
 使われ方：A4-3 `e3Unit`。 -/
 def hodgeTateUnitData :
-    { η : FunctorHom (completedRealization (p := p) (A ⧸ P.ideal)) (reducedDelta P hP) //
-      (hodgeTateFiltration_zero P hP).hom ≫ F2.Presentable.postcomposeFunctorHom (cAlgForgetDerived _) η =
-        F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateAugmentation P hP 0) } := by
+    { η : FunctorHom (completedRealization (E := E) (p := p) (A ⧸ P.ideal)) (reducedDelta (E := E) P hP) //
+      (hodgeTateFiltration_zero (E := E) P hP).hom ≫ F2.Presentable.postcomposeFunctorHom (E.forget _) η =
+        F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateAugmentation (E := E) P hP 0) } := by
   sorry -- Poly 上で coconnective な Δ̄ の連結被覆の E∞ 射を完備圏内で延長。
         -- 忘却後は HTTower の第0脚（G-A2-9）
 
-def hodgeTateUnitCAlg := (hodgeTateUnitData P hP).val
+def hodgeTateUnitCAlg := (hodgeTateUnitData (E := E) P hP).val
 
 /-- 完備化前の R を始点とする単位。A4 は離散入力、A7 は完備入力へ制限して使う。 -/
-def hodgeTateUnitFromInput : FunctorHom (animatedCAlgRealization (A ⧸ P.ideal)) (reducedDelta P hP) :=
-  F2.Presentable.postcomposeFunctorHom (animatedCAlgRealization _) (animatedCompletionUnit p _) ≫
-    hodgeTateUnitCAlg P hP
+def hodgeTateUnitFromInput : FunctorHom (animatedCAlgRealization (E := E) (A ⧸ P.ideal)) (reducedDelta (E := E) P hP) :=
+  F2.Presentable.postcomposeFunctorHom (animatedCAlgRealization (E := E) _) (animatedCompletionUnit p _) ≫
+    hodgeTateUnitCAlg (E := E) P hP
 
 end SerrePositivity.BhattScholze.Prismatic

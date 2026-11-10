@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md G-A2-3。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.Homology
@@ -9,7 +10,6 @@ public import SerrePositivity.InfinityCategories.Derived.StableLimits
 public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
-public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-!
@@ -38,9 +38,11 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.InfinityCategories.Derived
 
-open MonoidalCategory SerrePositivity.DerivedCompletion SerrePositivity.EInfinity.BarrattEccles
+open MonoidalCategory SerrePositivity.DerivedCompletion
 attribute [local instance] HasDerivedCategory.standard
 
 /-- 一元 a での導来完備性を D(A) の頂点に引き戻す。 -/
@@ -73,19 +75,19 @@ def completionUnit (s : Finset A) : FunctorHom (𝟙 _) (completion A s) :=
   (completionReflection A s).2.unitHom
 
 /-- 台の D(A) の頂点が完備な E∞ 代数。 -/
-abbrev cAlgCompleteSubcomplex (s : Finset A) : (CAlg_R A).Subcomplex :=
-  fullSubcomplexOnVertices _ (fun x => IsDerivedComplete A s ((cAlgForgetDerived A).app _ x))
+abbrev cAlgCompleteSubcomplex (s : Finset A) : (E.CAlg A).Subcomplex :=
+  fullSubcomplexOnVertices _ (fun x => IsDerivedComplete A s ((E.forget A).app _ x))
 
 def cAlgCompletionReflection (s : Finset A) :
-    Σ L : CAlg_R A ⟶ (cAlgCompleteSubcomplex A s : SSet),
-      QCatAdjunction L (cAlgCompleteSubcomplex A s).ι := by
+    Σ L : E.CAlg A ⟶ (cAlgCompleteSubcomplex (E := E) A s : SSet),
+      QCatAdjunction L (cAlgCompleteSubcomplex (E := E) A s).ι := by
   sorry -- M13-CAlg：加群の完備反射を対称モノイダル局所化として代数へ移す
 
-def cAlgCompletion (s : Finset A) : CAlg_R A ⟶ CAlg_R A :=
-  (cAlgCompletionReflection A s).1 ≫ (cAlgCompleteSubcomplex A s).ι
+def cAlgCompletion (s : Finset A) : E.CAlg A ⟶ E.CAlg A :=
+  (cAlgCompletionReflection (E := E) A s).1 ≫ (cAlgCompleteSubcomplex (E := E) A s).ι
 
-def cAlgCompletionUnit (s : Finset A) : FunctorHom (𝟙 _) (cAlgCompletion A s) :=
-  (cAlgCompletionReflection A s).2.unitHom
+def cAlgCompletionUnit (s : Finset A) : FunctorHom (𝟙 _) (cAlgCompletion (E := E) A s) :=
+  (cAlgCompletionReflection (E := E) A s).2.unitHom
 
 /-- s を列 a として並べる。完備化単位を表す任意の辺に Kos(a₁^n,…,aᵣ^n;−) を
 適用した鎖写像は各次数のホモロジーに同型を誘導する。 -/
