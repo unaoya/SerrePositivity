@@ -167,7 +167,8 @@ class Migration:
                 validate_name(new)
         for old, new in self.opens.items():
             validate_name(old)
-            validate_name(new)
+            if new is not None:
+                validate_name(new)
         for old, new in self.existing_aliases.items():
             validate_name(old)
             validate_name(new)
@@ -217,7 +218,36 @@ def rewrite(data, migration):
     for ref in data["refs"]:
         refs[check_span(ref)].append(ref)
 
-    for row in sorted((r for r in data["commands"] if "start" in r), key=lambda r: r["start"]):
+    commands = sorted((r for r in data["commands"] if "start" in r), key=lambda r: r["start"])
+    simple_opens = defaultdict(list)
+    for row in commands:
+        if row["kind"] == "open" and row["mode"] == "simple" and "start" in row["command"]:
+            simple_opens[check_span(row["command"])].append(row)
+    removed_opens = set()
+    for (lo, hi), operands in simple_opens.items():
+        removed = [r for r in operands if len(r["names"]) == 1
+                   and migration.opens.get(r["names"][0], r["names"][0]) is None]
+        if not removed:
+            continue
+        spans = [check_span(r) for r in operands]
+        line = source.rfind(b"\n", 0, lo) + 1
+        if (spans[0][0] != lo or spans[-1][1] != hi
+                or not re.fullmatch(rb"[ \t]*open[ \t]+", source[line:lo])
+                or any(not re.fullmatch(rb"[ \t]+", source[a:b])
+                       for (_, a), (b, _) in zip(spans, spans[1:]))):
+            continue
+        if len(removed) == len(operands):
+            edit({"start": line, "stop": hi}, "")
+        else:
+            for row in removed:
+                start, stop = check_span(row)
+                while start > line and source[start - 1:start] in (b" ", b"\t"):
+                    start -= 1
+                edit({"start": start, "stop": stop}, "")
+        removed_opens.update(check_span(r) for r in removed)
+        changed_opens.update(r["names"][0] for r in removed)
+
+    for row in commands:
         kind = row["kind"]
         if kind == "namespace":
             new = rename_prefix(row["name"], ns_map)
@@ -248,9 +278,14 @@ def rewrite(data, migration):
             if ns_map:
                 block(row, "with_weak_namespace requires an explicit scope review")
         elif kind == "open":
+            if check_span(row) in removed_opens:
+                continue
             names = row["names"]
             written = spelling(row)
             new_names = [migration.opens.get(n, n) for n in names]
+            if None in new_names:
+                block(row, "obsolete namespace requires a plain top-level open")
+                continue
             policy_match = written.removeprefix("_root_.") in migration.opens
             if any(n not in migration.opens and any(under(n, old) for old in migration.namespace_origins)
                    for n in names):

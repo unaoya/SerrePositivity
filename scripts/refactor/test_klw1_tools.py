@@ -43,6 +43,31 @@ class NamespaceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "separate the scopes"):
             select_aliases(scopes, plan)
 
+    def test_removes_only_the_obsolete_plain_open(self):
+        plan = Migration({"rows": [{"module": "A", "old": "Old.f", "new": "New.f"}],
+                          "opens": {"Old": None}})
+        for args, prefix in (("Old", ""), ("Old Keep", "open Keep"), ("Keep Old", "open Keep")):
+            text = "open " + args + "\n#check f\n"
+            stop = text.index("\n")
+            commands = [
+                {"kind": "open", "start": text.index(arg), "stop": text.index(arg) + len(arg),
+                 "mode": "simple", "names": [arg], "command": {"start": 5, "stop": stop}}
+                for arg in args.split()
+            ]
+            ref = occurrence(text, "f", "Old.f", "A", start=stop)
+            result, issues = rewrite({"module": "Use", "source": text, "refs": [ref],
+                                      "commands": commands}, plan)
+            self.assertEqual(issues, [])
+            self.assertEqual(result, (prefix + "\n#check _root_.New.f\n").encode())
+
+        text = "open scoped Old"
+        command = {"kind": "open", "start": 12, "stop": 15, "mode": "scoped",
+                   "names": ["Old"], "command": {"start": 5, "stop": 15}}
+        result, issues = rewrite({"module": "Use", "source": text, "refs": [],
+                                  "commands": [command]}, plan)
+        self.assertIsNone(result)
+        self.assertIn("obsolete namespace", issues[0]["reason"])
+
     def test_competing_resolutions_block_the_entire_file(self):
         ref = occurrence("same", "same", "Old.same", "OldModule")
         local = {**ref, "kind": "local", "name": "", "module": ""}
