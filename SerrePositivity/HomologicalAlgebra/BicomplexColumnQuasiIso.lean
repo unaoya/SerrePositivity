@@ -167,10 +167,24 @@ private theorem totalShortExact (S : ShortComplex (HomologicalComplex₂ (Module
   · exact (ModuleCat.epi_iff_surjective _).mpr (total_map_surjective S.g n
       (fun a b => (ModuleCat.epi_iff_surjective _).mp (component_exact S hS a b).epi_g))
 
-/-- 列ごとの全射擬同型は総複体でも擬同型。 -/
-theorem bicomplexTotal_quasiIso_of_columns (hf : ∀ a, QuasiIso (f.f a))
-    (hs : ∀ a b, Function.Surjective ((f.f a).f b)) :
-    QuasiIso (HomologicalComplex₂.total.map f up) := by
+private theorem totalShortExact_quasiIso (S : ShortComplex
+    (HomologicalComplex₂ (ModuleCat.{u} R) up up)) (hS : S.ShortExact)
+    (hacyclic : ∀ i, IsZero ((S.X₁.total up).homology i)) :
+    QuasiIso (HomologicalComplex₂.total.map S.g up) := by
+  constructor
+  intro i
+  rw [quasiIsoAt_iff_isIso_homologyMap]
+  let hT := totalShortExact S hS
+  have hm := (hT.homology_exact₂ i).mono_g_iff.mpr ((hacyclic i).eq_zero_of_src _)
+  have he := (hT.homology_exact₃ i (i + 1) rfl).epi_f_iff.mpr
+    ((hacyclic (i + 1)).eq_zero_of_tgt _)
+  let : Mono (HomologicalComplex.homologyMap (HomologicalComplex₂.total.map S.g up) i) := hm
+  let : Epi (HomologicalComplex.homologyMap (HomologicalComplex₂.total.map S.g up) i) := he
+  exact isIso_of_mono_of_epi _
+
+
+private theorem kernelShortExact (hs : ∀ a b, Function.Surjective ((f.f a).f b)) :
+    (ShortComplex.mk (kernel.ι f) f (kernel.condition f)).ShortExact := by
   let S : ShortComplex (HomologicalComplex₂ (ModuleCat.{u} R) up up) :=
     ShortComplex.mk (kernel.ι f) f (kernel.condition f)
   let : Abelian (HomologicalComplex₂ (ModuleCat.{u} R) up up) :=
@@ -178,7 +192,39 @@ theorem bicomplexTotal_quasiIso_of_columns (hf : ∀ a, QuasiIso (f.f a))
   let : S.HasHomology := ShortComplex.HasHomology.mk' (ShortComplex.HomologyData.ofAbelian S)
   let : Epi f := HomologicalComplex.epi_of_epi_f f (fun a =>
     HomologicalComplex.epi_of_epi_f _ (fun b => (ModuleCat.epi_iff_surjective _).mpr (hs a b)))
-  have hS : S.ShortExact := { exact := ShortComplex.exact_of_f_is_kernel _ (kernelIsKernel f) }
+  exact { exact := ShortComplex.exact_of_f_is_kernel S (kernelIsKernel f) }
+
+/-- 双複体の横方向を固定した行への関手。 -/
+def bicomplexRowFunctor (b : ℕ) :
+    HomologicalComplex₂ (ModuleCat.{u} R) up up ⥤ CochainComplex (ModuleCat.{u} R) ℕ :=
+  (HomologicalComplex.eval (ModuleCat.{u} R) up b).mapHomologicalComplex up
+
+instance (b : ℕ) : (bicomplexRowFunctor (R := R) b).PreservesZeroMorphisms :=
+  inferInstanceAs (((HomologicalComplex.eval (ModuleCat.{u} R) up b).mapHomologicalComplex up).PreservesZeroMorphisms)
+
+/-- 行ごとの全射擬同型は総複体でも擬同型。 -/
+theorem bicomplexTotal_quasiIso_of_rows
+    (hf : ∀ b, QuasiIso ((bicomplexRowFunctor b).map f))
+    (hs : ∀ a b, Function.Surjective ((f.f a).f b)) :
+    QuasiIso (HomologicalComplex₂.total.map f up) := by
+  let S := ShortComplex.mk (kernel.ι f) f (kernel.condition f)
+  have hS : S.ShortExact := kernelShortExact f hs
+  have hc (b : ℕ) : (S.map (bicomplexRowFunctor b)).ShortExact := by
+    apply HomologicalComplex.shortExact_of_degreewise_shortExact
+    intro a
+    exact component_exact S hS a b
+  refine totalShortExact_quasiIso S hS fun i => ?_
+  apply HomologicalComplex.ExactAt.isZero_homology
+  apply bicomplexTotal_exactAt_of_rows
+  exact fun a b => (hc b).acyclic_X₁ (hf b) a
+
+/-- 列ごとの全射擬同型は総複体でも擬同型。 -/
+theorem bicomplexTotal_quasiIso_of_columns (hf : ∀ a, QuasiIso (f.f a))
+    (hs : ∀ a b, Function.Surjective ((f.f a).f b)) :
+    QuasiIso (HomologicalComplex₂.total.map f up) := by
+  let S : ShortComplex (HomologicalComplex₂ (ModuleCat.{u} R) up up) :=
+    ShortComplex.mk (kernel.ι f) f (kernel.condition f)
+  have hS : S.ShortExact := kernelShortExact f hs
   have hc (a : ℕ) : (S.X₁.X a).Acyclic :=
     ((HomologicalComplex.shortExact_iff_degreewise_shortExact S).mp hS a).acyclic_X₁ (hf a)
   have hacyclic (i : ℕ) : IsZero ((S.X₁.total up).homology i) := by
@@ -187,15 +233,6 @@ theorem bicomplexTotal_quasiIso_of_columns (hf : ∀ a, QuasiIso (f.f a))
     apply HomologicalComplex.ExactAt.isZero_homology
     apply bicomplexTotal_exactAt_of_rows
     exact fun a b => hc b a
-  constructor
-  intro i
-  rw [quasiIsoAt_iff_isIso_homologyMap]
-  let hT := totalShortExact S hS
-  have hm := (hT.homology_exact₂ i).mono_g_iff.mpr ((hacyclic i).eq_zero_of_src _)
-  have he := (hT.homology_exact₃ i (i + 1) rfl).epi_f_iff.mpr
-    ((hacyclic (i + 1)).eq_zero_of_tgt _)
-  let : Mono (HomologicalComplex.homologyMap (HomologicalComplex₂.total.map f up) i) := hm
-  let : Epi (HomologicalComplex.homologyMap (HomologicalComplex₂.total.map f up) i) := he
-  exact isIso_of_mono_of_epi _
+  exact totalShortExact_quasiIso S hS hacyclic
 
 end SerrePositivity.HomologicalAlgebra
