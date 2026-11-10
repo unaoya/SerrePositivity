@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.4・§2.5・§3、単位 A1-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
@@ -48,14 +49,7 @@ variable {p : ℕ} [Fact p.Prime]
 
 /-! ## 結晶側の計算から導く HT 比較（D68 改訂 11-05 夜：黒箱を外し、A1/CrystallineInput の六段で mod p に直接証明。恒久の引用なし） -/
 
-/-- 概要：Cor 5.5 の (Z_p,(p)) の場合：R = F_p[X_1,…,X_r] について、η^* : Ω^*_{R/F_p} → H^*(Tot(C^•/p)) は同型。
-方針：A1/CrystallineInput の `hodgeTate_of_deRham_cartier`：Lemma 5.4 で C^•/p → D^•/p、G-A1-16 で D_0^•/p → D^•/p、pd Poincaré と BdJ の行の収縮で
-H^*(D_0^•/p) ≅ H^*(Ω^•_{F_p[X]})、Cartier 同型、生成元での照合（a1-design §10）。mod p なので導来 Nakayama は使わない。
-規約：結晶の話はこの定理の証明にだけ現れる。
-使われ方：Cor 5.5（一般の結晶 prism）、Prop 6.2。 -/
-theorem hodgeTate_iso_polynomial_Zp (r : ℕ) :
-    HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r :=
-  hodgeTate_of_deRham_cartier p r
+-- hodgeTate_iso_polynomial_Zp は本体の HodgeTateCartierAssembly に置く。
 
 /-! ## Cor 5.5：結晶 prism -/
 

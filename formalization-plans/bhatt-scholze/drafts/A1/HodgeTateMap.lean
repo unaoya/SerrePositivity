@@ -68,11 +68,7 @@ theorem betaSquareZero_of_line (_h₂ : Subsingleton (hodgeTateCohomology' P hP 
 
 -- HTAlgebraMap と hodgeTateMap・hodgeTateMap_unique は本体の HodgeTateCompletedMap に置く。
 
-/-- 概要：Thm 4.11 ＝ Thm 6.3（多項式代数）：η^* は各次数で同型。特に H^i(Ō_{R/A}) ≅ Ω^i_{R/(A/d)}、i > r で零。
-方針：A1-4（Prop 6.2 の一般の r）。
-規約：基底は一般の有界向き付き prism（D30）。
-使われ方：Cor 4.12、A2、A5。 -/
-def HodgeTateIsoStatement : Prop := ∀ i, Function.Bijective ((hodgeTateMap P hP r).app i)
+-- HodgeTateIsoStatement は同じ型のまま本体の HodgeTateCompletedMap に置く。
 
 /-- 概要：Cor 4.12：Δ_{R/A} の形成は有界 prism の任意の底変換と可換（Tor 振幅の仮定なし）。
 方針：導来 Nakayama で mod d に帰着し、Thm 6.3 と微分形式の底変換から。

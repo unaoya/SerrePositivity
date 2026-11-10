@@ -457,4 +457,7 @@ theorem hodgeTateMap_unique (f : HTAlgebraMap P hP r) : f = hodgeTateMap P hP r 
   cases happ
   rfl
 
+/-- 多項式 Hodge–Tate 比較が全次数で同型であるという述語。 -/
+def HodgeTateIsoStatement : Prop := ∀ i, Function.Bijective ((hodgeTateMap P hP r).app i)
+
 end SerrePositivity.BhattScholze.Prismatic

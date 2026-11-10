@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCohomology
-public import SerrePositivity.BhattScholze.Prismatic.CrystallineChainProduct
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateCartierAssembly
 public import SerrePositivity.BhattScholze.Prismatic.PDModelReduction
 public import SerrePositivity.BhattScholze.Prismatic.CartierCompletedForms
 public import SerrePositivity.BhattScholze.Prismatic.FinitePolynomialCartier
@@ -465,34 +465,8 @@ theorem pdDeRhamCohomologyIso_cup (r : ℕ) {i j : ℕ}
 
 -- crystallineChain と crystallineChain_cup は本体の CrystallineChainProduct から使う。
 
-/-- 概要：段 6：生成元での照合：Ψ^0(η^0 X_j) = C^{-1}(X_j) = [X_j^p]、Ψ^1(η^1 dX_j) = C^{-1}(dX_j) = [X_j^{p−1}dX_j]。
-方針：次数 0：橋は X ↦ φ(X) ≡ X^p mod p、`pdInclusion` は X ↦ X、段 4 の次数 0 は copy 0 の包含。次数 1：η^1(dX_j) = β(η^0 X_j) で、
-橋と `pdInclusion` は整係数の厳密な余単体的射なので Bockstein と可換（`bockstein_natural`）。段 4 の zigzag も整係数の厳密な写像の mod p なので
-β_{D_0}[X^p] は de Rham 側の Bockstein [d(X^p)/p] = [X^{p−1}dX] に写る。
-規約：**TODO（a1-design §8 の 3、紙の確認は未）**：Bockstein の符号（Mathlib の連結準同型の規約）と cup 積の規約を固定して、
-β_{D_0}[X^p] = [Σ_{0<m<p} (binom(p,m)/p) X^{p−m} z^m + (p−1)! γ_p(z)] の段 4 での像が [X^{p−1}dX] であることを確かめる。
-使われ方：`hodgeTate_of_deRham_cartier`。 -/
-theorem crystallineChain_generators (r : ℕ) (j : Fin r) :
-    let Z := crystallineBasePrism.{u} p
-    let hZ := crystallineBaseBounded.{u} p
-    let c := finitePolynomialCartier.{u} p r
-    crystallineChain p r 0 (hodgeTateMapZero Z hZ r (prismPolynomialUnit Z (Fin r) (MvPolynomial.X j))) =
-        c.app 0 (DeRham.formsZeroEquiv _ _ (MvPolynomial.X (ULift.up j))) ∧
-      crystallineChain p r 1 (hodgeTateMapOne Z hZ r
-        (DeRham.completedFormsUnit _ _ p 1 (DeRham.dX _ _ (ULift.up j)))) = c.app 1 (DeRham.dX _ _ (ULift.up j)) := by
-  sorry -- 次数 0 は橋の φ と copy 0。次数 1 は bockstein_natural（橋・pdInclusion）と段 4 の整係数 zigzag。TODO §8 の 3
-
-/-- 概要：Cor 5.5 の (Z_p,(p))・F_p[X_1,…,X_n] の場合の本体：η^i は全単射（D68 改訂後、恒久の引用なし）。
-方針：Φ^i := (c.app i) ∘ `cartierFormsIso` と Ψ^i ∘ η^i が全次数で一致することを示す：両方とも加法的で、外積を cup／外積に送り
-（`HTAlgebraMap.product`・`crystallineChain_cup`・`PolynomialCartier.mul`）、次数 0 では環の射として X_j で一致（F_p[X] からの環の射）、
-次数 1 では dX_j で一致（`crystallineChain_generators`）。Ω^i は f·dX_{j_1}∧⋯∧dX_{j_i} で生成されるので一致。Φ^i・Ψ^i は同型なので η^i は全単射。
-規約：名前は D68 改訂前と同じ（「de Rham 比較と Cartier から」の意味は保つ）。
-使われ方：A1/HodgeTateComparison の `hodgeTate_iso_polynomial_Zp`。 -/
-theorem hodgeTate_of_deRham_cartier (n : ℕ) :
-    HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) n := by
-  have c := finitePolynomialCartier.{u} p n
-  have hcup := crystallineChain_cup.{u} p n
-  have hgen := crystallineChain_generators.{u} p n
-  sorry -- Ψ ∘ η^i = c.app i ∘ cartierFormsIso を外積の生成元で示し、η^i = Ψ⁻¹ ∘ c.app i ∘ cartierFormsIso
+-- crystallineChain_generators は本体の CrystallineGeneratorClasses に置く。
+-- 総複体で p で割った整係数の微分を還元し、第 0 行では Bockstein、第 0 列では一次 Cartier 類を得る。
+-- hodgeTate_of_deRham_cartier は本体の HodgeTateCartierAssembly に置く。
 
 end SerrePositivity.BhattScholze.Prismatic
