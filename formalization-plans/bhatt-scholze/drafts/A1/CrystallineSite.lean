@@ -2,6 +2,10 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §11（結晶 site（最小限）、2026-11-07）、単位 A1-6。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
+public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
@@ -117,15 +121,55 @@ theorem exists_limitCone_of_proCech {U : ℕ ⥤ 𝒟} (hU : IsProWeaklyTerminal
 
 end SerrePositivity.InfinityCategories.Sheaves
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves SerrePositivity.EInfinity
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.DerivedCompletion
+open SerrePositivity.DerivedCompletion SerrePositivity.DifferentialGraded
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 
 variable (p : ℕ) [Fact p.Prime]
 
 /-! ## 対象と射（[Ber06 §III.4] の big crystalline site の affine な対象、Stacks Tag 07HM の CRIS(C/A)） -/
+
+/-- BS 著者版 Theorem 6.4 の連続形式を厳密な cdga から実現する。 -/
+def theoryFormsCAlg (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] :=
+  Cosimplicial.strictShapeNerve (formsCDGAFunctor p k) ≫ E.ofCdga k
+
+/-- Theorem 6.4 の形式関手の多項式頂点。 -/
+abbrev theoryFormsVertex (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] (n : ℕ) :=
+  (theoryFormsCAlg (E := E) p k).app _ (polyPoint k n)
+
+/-- Theorem 6.4、D69 の段 6 の関手同型。厳密な二つの射影を同じ E で実現する。 -/
+def theoryPdDeRhamFunctorIso (p : ℕ) [Fact p.Prime] (k : Type u) [CommRing k] :
+    FunctorIso (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k) ≫ E.ofCosimplicial k)
+      (theoryFormsCAlg (E := E) p k) := by
+  let disc := (Functor.whiskeringRight SimplexCategory _ _).obj
+    (SerrePositivity.EInfinity.discreteCDGA k)
+  let ev0 := (evaluation SimplexCategory (CommMon (Complex k))).obj ⦋0⦌
+  let ea : FunctorIso
+      (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k ⋙ disc) ≫ E.ofCosimplicialCdga k)
+      (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k) ≫ E.ofCosimplicial k) :=
+    functorIsoOfEq
+      ((E.ofCosimplicialCdga_discrete k).precomp
+        (Cosimplicial.strictShapeNerve (pdPolynomialFunctor p k)))
+      (by rw [Cosimplicial.strictShapeNerve_comp]; rfl) rfl
+  let eb := Cosimplicial.strictNatTransFunctorIso (pdDeRhamProjection p k)
+    (E.ofCosimplicialCdga k) (by
+      sorry) -- 行 0 への射影の擬同型性は総複体で示す（pdRow_contractible）。
+             -- ofCosimplicialCdga の射の忘却像を総複体の射と比較する作業が残る
+  let ec : FunctorIso
+      (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k) ≫ E.ofCosimplicialCdga k)
+      (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k ⋙ ev0) ≫ E.ofCdga k) :=
+    functorIsoOfEq (functorIsoOfPointwiseInvertibleHomotopy
+      (stableHomotopyPrecomp (Cosimplicial.strictShapeNerve (pdDeRhamCDGA p k))
+        (E.ofCosimplicialCdga_evalZero k)) (by
+          sorry)) -- 同じ指定錐の [0] の脚。pdDeRham_homotopicallyConstant を使う
+      rfl (by rw [Cosimplicial.strictShapeNerve_comp]; rfl)
+  let ed := Cosimplicial.strictNatTransFunctorIso (pdDeRhamZeroIso p k).hom (E.ofCdga k) (by
+    sorry) -- 厳密な同型の成分なので nerve の辺は可逆
+  exact ea.symm ≪≫ eb.symm ≪≫ ec ≪≫ ed
 
 /-- 概要：結晶 site の濃度の上限の条件：κ ≥ (#k + #R̄ + ℵ₀)^{ℵ₀}（A0 の `cutoff`）。
 方針：pd 包・有限個の余積・局所化・p^e での商は濃度 ≤ max(#k, #R̄, #S, ℵ₀) なので、この κ で閉じる（枠の添字 S の濃度も ≤ κ を別に仮定）。
@@ -251,7 +295,7 @@ def crystallineStructureRing : (CrystallineSite p γ R̄ κ)ᵒᵖ ⥤ Under (Co
   unopUnop _ ⋙ (equivSmallModel (CrysOver p γ R̄ κ)).inverse ⋙ crysAlgebras p γ R̄ κ
 
 /-- 概要：O_crys を CAlg_k 値前層として（離散埋め込み）。 -/
-abbrev crystallineStructure := Sheaves.ringPresheafToCAlg k (crystallineStructureRing p γ R̄ κ)
+abbrev crystallineStructure := Sheaves.ringPresheafToCAlg (E := E) k (crystallineStructureRing p γ R̄ κ)
 
 /-- 概要：O_crys は Zariski 位相の ∞ 層（Stacks Tag 07JJ の O_{X/S} の場合：affine な T の Zariski 被覆の Čech 複体は完全）。
 方針：S1 の `isSheaf_toGrothendieck_iff` で被覆族に帰着。有限族 {B → B_{f_i}} は単一の忠実平坦な射 B → ∏ B_{f_i} と有限積で書け、
@@ -259,24 +303,24 @@ Amitsur 複体の完全性（有限段、A0 の `structurePresheafDerived_isLimi
 規約：Čech 層（ノート D17）。
 使われ方：`crystallineCohomology_isLimit`。 -/
 theorem crystallineStructure_isSheaf :
-    Sheaves.IsSheaf (zariskiTopology p γ R̄ κ) (crystallineStructure p γ R̄ κ) := by
+    Sheaves.IsSheaf (zariskiTopology p γ R̄ κ) (crystallineStructure (E := E) p γ R̄ κ) := by
   sorry -- Zariski の Amitsur 複体（有限族）と S1 の生成系への帰着、isSheaf_iff_forget
 
 /-- 概要：RΓ_crys(R̄/k) := RΓ((R̄/k)_CRYS, O_crys)（CAlg_k 値。BS 著者版 Theorem 5.2 の RΓ_crys(R/A)、Theorem 6.4 の RΓ_crys((R/p)/W(A/I))）。
 方針：Sheaves の `derivedGlobalSectionsCAlg`（層化と CAlg_k の presentable 性は A2 と同じ入力）。
 規約：値は選んだ極限錐の頂点。使う側は (a) の同型と `crystallineCohomology_isLimit` で扱う。
 使われ方：(a)〜(d)、A1/DeRhamComparisonPoly。 -/
-def crystallineCohomology : (CAlg_R k) _⦋0⦌ :=
-  Sheaves.derivedGlobalSectionsCAlg (zariskiTopology p γ R̄ κ) k
-    (Sheaves.sheafification_exists_cAlg (zariskiTopology p γ R̄ κ) k (coefficientPresentable (A := k)))
-    (coefficientPresentable (A := k)) (crystallineStructure p γ R̄ κ)
+def crystallineCohomology : (E.CAlg k) _⦋0⦌ :=
+  Sheaves.derivedGlobalSectionsCAlg (E := E) (zariskiTopology p γ R̄ κ) k
+    (Sheaves.sheafification_exists_cAlg (E := E) (zariskiTopology p γ R̄ κ) k (coefficientPresentable (E := E) (A := k)))
+    (coefficientPresentable (E := E) (A := k)) (crystallineStructure (E := E) p γ R̄ κ)
 
 /-- 概要：「高次コホモロジーは位相によらない」：RΓ_crys は O_crys 自身の極限錐の頂点（chaotic 位相の RΓ、Stacks Tag 07JK の C 上の RΓ と同じ）。
 方針：`crystallineStructure_isSheaf` と S2 の `derivedGlobalSections_of_isSheaf`。
 規約：頂点の等号。
 使われ方：(a)、`crystallineCohomology_map`。 -/
 theorem crystallineCohomology_isLimit :
-    ∃ c : JoinCone (crystallineStructure p γ R̄ κ), IsLimitCone c ∧ c.vertex = crystallineCohomology p γ R̄ κ := by
+    ∃ c : JoinCone (crystallineStructure (E := E) p γ R̄ κ), IsLimitCone c ∧ c.vertex = crystallineCohomology (E := E) p γ R̄ κ := by
   sorry -- derivedGlobalSections_of_isSheaf と crystallineStructure_isSheaf
 
 end Site
@@ -316,7 +360,7 @@ def crysPullbackSite (f : R̄ →ₐ[k ⧸ J] R̄') : CrystallineSite p γ R̄' 
 規約：辺は CAlg_k の 1 単体。ホモトピー圏で関手的（`crystallineCohomology_map_comp`）。
 使われ方：`crystallineCohomology_map_frame`、a1-design §11.4。 -/
 def crystallineCohomology_map (f : R̄ →ₐ[k ⧸ J] R̄') :
-    SSet.Edge (crystallineCohomology p γ R̄ κ) (crystallineCohomology p γ R̄' κ) := by
+    SSet.Edge (crystallineCohomology (E := E) p γ R̄ κ) (crystallineCohomology (E := E) p γ R̄' κ) := by
   sorry -- 制限した錐から極限錐への普遍性の辺（crystallineCohomology_isLimit を両側で）
 
 /-- 概要：(d) の関手則（ホモトピー圏）：f の後に f′ の辺は f′ ∘ f の辺。
@@ -325,8 +369,8 @@ def crystallineCohomology_map (f : R̄ →ₐ[k ⧸ J] R̄') :
 使われ方：a1-design §11.4。 -/
 theorem crystallineCohomology_map_comp {R̄'' : Type u} [CommRing R̄''] [Algebra (k ⧸ J) R̄'']
     [EssentiallySmall.{u} (CrysOver p γ R̄'' κ)] (f : R̄ →ₐ[k ⧸ J] R̄') (f' : R̄' →ₐ[k ⧸ J] R̄'') :
-    HomotopyCategory.homMk (crystallineCohomology_map p γ κ f) ≫ HomotopyCategory.homMk (crystallineCohomology_map p γ κ f') =
-      HomotopyCategory.homMk (crystallineCohomology_map p γ κ (f'.comp f)) := by
+    HomotopyCategory.homMk (crystallineCohomology_map (E := E) p γ κ f) ≫ HomotopyCategory.homMk (crystallineCohomology_map (E := E) p γ κ f') =
+      HomotopyCategory.homMk (crystallineCohomology_map (E := E) p γ κ (f'.comp f)) := by
   sorry -- 引き戻しの合成は厳密に引き戻し。極限の普遍性の一意性
 
 end Functoriality
@@ -357,8 +401,8 @@ W(A/I) → A/I に沿う結晶コホモロジーの底変換）。
 def crystallineCohomology_baseChangeEdge (g : k →+* l) (hg : DividedPowers.IsDPMorphism γ γ' g)
     (hR : (algebraMap (l ⧸ J') R̄).comp ((Ideal.Quotient.mk J').comp g) =
       (algebraMap (k ⧸ J) R̄).comp (Ideal.Quotient.mk J)) :
-    SSet.Edge (crystallineCohomology p γ R̄ κ)
-      ((cAlgRestrictScalars g).app _ (crystallineCohomology p γ' R̄ κ)) := by
+    SSet.Edge (crystallineCohomology (E := E) p γ R̄ κ)
+      ((cAlgRestrictScalars (E := E) g).app _ (crystallineCohomology (E := E) p γ' R̄ κ)) := by
   sorry -- 制限した錐と cAlgRestrictScalars の極限保存（右随伴）。crystallineCohomology_isLimit を両側で
 
 end BaseChange
@@ -430,11 +474,11 @@ theorem pdCechTower_proWeaklyTerminal {S : Type u} (s : S → R̄)
 使われ方：`crystallineCechIso`。 -/
 theorem totEInfinity_isLimit_truncations (X : Cosimplicial.CosimplicialAlgebra k)
     (hX : ∀ n : SimplexCategory, IsAdicComplete (Ideal.span {(p : (X.obj n).right)}) (X.obj n).right)
-    (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ℕᵒᵖ × SimplexCategory)) ⟶ CAlg_R k)
+    (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ℕᵒᵖ × SimplexCategory)) ⟶ E.CAlg k)
     (hD : ∀ (e : ℕ) (n : SimplexCategory), Nonempty (VertexIso (D.app _ (ULift.up (nerveVertex (Opposite.op e, n))))
-      ((algebraEmbedding k).app _ (nerveVertex (Under.mk (CommRingCat.ofHom
+      ((E.discrete k).app _ (nerveVertex (Under.mk (CommRingCat.ofHom
         ((Ideal.Quotient.mk (Ideal.span {(p : (X.obj n).right) ^ (e + 1)})).comp (X.obj n).hom.hom))))))) :
-    ∃ c : JoinCone D, IsLimitCone c ∧ c.vertex = Cosimplicial.totEInfinity k X := by
+    ∃ c : JoinCone D, IsLimitCone c ∧ c.vertex = Cosimplicial.totEInfinity (E := E) k X := by
   sorry -- Δ × ℕᵒᵖ の極限を Δ ごとに取り、各項の lim_e は Mittag-Leffler で X^n。totEInfinity_isLimitCone
 
 /-- 概要：**(a)** Čech–Alexander 型の計算：全射な枠 s : S → R̄ について RΓ_crys(R̄/k) ≃ Tot_{E∞} D_S^•（BS 著者版 Theorem 5.2 の証明の
@@ -448,8 +492,8 @@ def crystallineCechIso {S : Type u} (s : S → R̄)
     (hs : letI := crysResidueAlgebra (J := J) (R̄ := R̄); Function.Surjective (pdFrameEval (k := k) s 0))
     (hk : IsAdicComplete (Ideal.span {(p : k)}) k) (hκ : IsCrystallineCutoff k R̄ κ) (hS : Cardinal.mk S ≤ κ) :
     letI := crysResidueAlgebra (J := J) (R̄ := R̄)
-    VertexIso (crystallineCohomology p γ R̄ κ)
-      (Cosimplicial.totEInfinity k (pdCechNerve p γ hp (crysResidue_kernel (J := J) (R̄ := R̄)) s)) := by
+    VertexIso (crystallineCohomology (E := E) p γ R̄ κ)
+      (Cosimplicial.totEInfinity (E := E) k (pdCechNerve p γ hp (crysResidue_kernel (J := J) (R̄ := R̄)) s)) := by
   sorry -- crystallineCohomology_isLimit・exists_limitCone_of_proCech（pdCechTower）・totEInfinity_isLimit_truncations の三つの極限錐の比較
 
 /-- 概要：**(d)** site の関手性と模型の射の一致：f : R̄ → R̄′、全射な枠 s・s′ と、余単体的 k 代数の射 m : D_S^• → D_{S′}^• が各項で
@@ -472,8 +516,8 @@ theorem crystallineCohomology_map_frame {R̄' : Type u} [CommRing R̄'] [Algebra
     (hm_aug : ∀ x, (letI := crysResidueAlgebra (J := J) (R̄ := R̄'); pdCechAugmentation p γ hp (crysResidue_kernel (J := J) (R̄ := R̄')) s')
       ((m.app ⦋0⦌).right.hom x) =
         f ((letI := crysResidueAlgebra (J := J) (R̄ := R̄); pdCechAugmentation p γ hp (crysResidue_kernel (J := J) (R̄ := R̄)) s) x)) :
-    HomotopyCategory.homMk (crystallineCohomology_map p γ κ f) ≫ (crystallineCechIso p γ hp κ s' hs' hk hκ' hS').hom =
-      (crystallineCechIso p γ hp κ s hs hk hκ hS).hom ≫ HomotopyCategory.homMk (Cosimplicial.totEInfinity_map k m) := by
+    HomotopyCategory.homMk (crystallineCohomology_map (E := E) p γ κ f) ≫ (crystallineCechIso (E := E) p γ hp κ s' hs' hk hκ' hS').hom =
+      (crystallineCechIso (E := E) p γ hp κ s hs hk hκ hS).hom ≫ HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) k m) := by
   sorry -- m の mod p^{e+1} は pro 対象の site の射。O の極限の制限と pro Čech 図式の上の m の比較（S3 の制限の自然性）
 
 end Cech
@@ -497,8 +541,8 @@ def crystallineCohomology_polynomial_deRham (r : ℕ)
     (hk : IsAdicComplete (Ideal.span {(p : k)}) k) (hreg : Function.Injective (fun x : k => (p : k) * x))
     [EssentiallySmall.{u} (CrysOver p γ (MvPolynomial (Fin r) (k ⧸ J)) κ)]
     (hκ : IsCrystallineCutoff k (MvPolynomial (Fin r) (k ⧸ J)) κ) :
-    VertexIso (crystallineCohomology p γ (MvPolynomial (Fin r) (k ⧸ J)) κ) (formsVertex p k r) := by
-  sorry -- crystallineCechIso（枠 X_j、#Fin r ≤ κ）≪≫ Tot の pdModel_iso_pdCechNerve ≪≫ (pdDeRhamFunctorIso p k).app (polyPoint k r)
+    VertexIso (crystallineCohomology (E := E) p γ (MvPolynomial (Fin r) (k ⧸ J)) κ) (theoryFormsVertex (E := E) p k r) := by
+  sorry -- crystallineCechIso（枠 X_j、#Fin r ≤ κ）≪≫ Tot の pdModel_iso_pdCechNerve ≪≫ (theoryPdDeRhamFunctorIso E p k).app (polyPoint k r)
 
 end Polynomial
 
@@ -602,9 +646,9 @@ def frobeniusPdBridge : polyCosimplicialAlgebra P hP r ⟶ polyPdCech p γI hpI 
 使われ方：A1/DeRhamComparisonPoly の `wittSmallBridge_isInvertible`（(c) を X ↦ X^p の形で読む）。 -/
 include hgen in
 theorem frobeniusPdBridge_tot :
-    HomotopyCategory.homMk (Cosimplicial.totEInfinity_map A (frobeniusPdBridge p P hP hgen γI hpI r)) =
-      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map A (etaBridge p P hP hgen γI hpI r)) ≫
-        HomotopyCategory.homMk (Cosimplicial.totEInfinity_map A (pdDeltaRetraction p P γI hpI r)) := by
+    HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) A (frobeniusPdBridge p P hP hgen γI hpI r)) =
+      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) A (etaBridge p P hP hgen γI hpI r)) ≫
+        HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) A (pdDeltaRetraction p P γI hpI r)) := by
   sorry -- nerve の 2 単体 (η, ρ) の totEInfinityFunctor による像
 
 /-- 概要：**(c)** BS 著者版 Theorem 5.2（I ∋ p の pd イデアル、多項式の場合）：Δ_{R^{(1)}/A} ≃ RΓ_crys(R/A)、R = (A/I)[X_1,…,X_r]。
@@ -624,10 +668,10 @@ theorem crystallineComparison_polynomial (hk : IsAdicComplete (Ideal.span {(p : 
     [EssentiallySmall.{u} (CrysOver p γI (crysPolynomial r (I := I)) κ)]
     (hκ : IsCrystallineCutoff A (crysPolynomial r (I := I)) κ) :
     letI := crysResidueAlgebra (J := I) (R̄ := crysPolynomial r (I := I))
-    IsIso ((prismaticCohomologyCAlg_eq_totEInfinity P hP r).some.hom ≫
-      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map A (etaBridge p P hP hgen γI hpI r)) ≫
-      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map A (pdDeltaRetraction p P γI hpI r)) ≫
-      (crystallineCechIso p γI hpI κ (fun j : Fin r => (MvPolynomial.X j : crysPolynomial r (I := I)))
+    IsIso ((prismaticCohomologyCAlg_eq_totEInfinity (E := E) P hP r).some.hom ≫
+      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) A (etaBridge p P hP hgen γI hpI r)) ≫
+      HomotopyCategory.homMk (Cosimplicial.totEInfinity_map (E := E) A (pdDeltaRetraction p P γI hpI r)) ≫
+      (crystallineCechIso (E := E) p γI hpI κ (fun j : Fin r => (MvPolynomial.X j : crysPolynomial r (I := I)))
         (by sorry) hk hκ (by sorry)).inv) := by -- 枠 X_j は全射、#Fin r ≤ κ
   sorry -- Tot ρ は可逆（pdDeltaRetraction_quasiIso）。押し出し D_δ^• ≅ C^• ⊗_φ B^•、Lemma 5.4（無限変数、k = A/p）、導来 Nakayama（G-A1-4）
 

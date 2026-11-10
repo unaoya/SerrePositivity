@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.1〜§3.3、単位 A5-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import Mathlib.AlgebraicTopology.CechNerve
 -- 本ファイルは drafts/A5/{RootAdjunction,PerfectSite,SemiperfectoidCase,StrongDescent}.lean、drafts/Sheaves/CechConerveLimit.lean、drafts/Shared/Descendable.lean、
@@ -32,6 +33,8 @@ noncomputable section
 universe u
 open CategoryTheory SSet
 open scoped Simplicial TensorProduct
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -126,7 +129,7 @@ def largeCechShape (U : PerfUnder_u p (CommRingCat.of S)) :
   naturality := by sorry -- 各単体の列を同じ余積の関手で送る
 
 abbrev perfectResiduePresheaf :=
-  Sheaves.ringPresheafToCAlg R ((perfectResidueFunctor p R hR S) ⋙ (ObjectProperty.ι _) ⋙
+  Sheaves.ringPresheafToCAlg (E := E) R ((perfectResidueFunctor p R hR S) ⋙ (ObjectProperty.ι _) ⋙
     targetAlgebra R p (ofAlgebra R S))
 
 /-- 概要：lim_{PerfUnder_u p S} T ≃ Tot((S̃^•)_perfd)（S3 `exists_limitCone_of_cech`、Čech データは PerfectSite `perfUnder_cechNerveData`）。κ 側の完全 site でも同じ Tot（弱始対象は濃度 ≤ κ）。
@@ -136,8 +139,8 @@ abbrev perfectResiduePresheaf :=
 使われ方：A5-1 の `perfectoidization_isLimit_u`。 -/
 theorem limit_perfUnder_eq_tot
     (t : JoinCone (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S) ≫
-      targetCAlgDiagram R p (ofAlgebra R S))) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+      theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- 要確認：S3 の大きい版待ち（W9-I-04）。isLimitCone_iff_restrict_cech_large の錐の延長
 
 theorem limit_perfectSite_eq_tot {E : SSet.{u+1}} [Quasicategory E]
@@ -148,8 +151,8 @@ theorem limit_perfectSite_eq_tot {E : SSet.{u+1}} [Quasicategory E]
   Sheaves.exists_limitCone_of_cech (weakPerfectSiteObj_isWeaklyTerminal p R hR S) _ F t ht
 
 theorem limit_perfUnder_eq_limit_perfectSite
-    (t : JoinCone (perfectResiduePresheaf p R hR S)) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+    (t : JoinCone (perfectResiduePresheaf (E := E) p R hR S)) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- D47：小さい極限を弱始対象の Čech 項に制限し、同じ余積の Ō 値を大きい版へ移送
 
 /-- 図式に整合する E 被覆の弱始対象。基底は完備化した C、Q(U) の構造射は
@@ -175,8 +178,8 @@ theorem algebraicCoverWeakTarget (C : A_R R) :
 使われ方：`limit_perfectSite_filteredColimit`。 -/
 theorem cech_independent_of_flatSemiperfectoidCover
     (U : PerfUnder_u p (CommRingCat.of S)) (hU : Sheaves.IsWeaklyTerminalLarge (Opposite.op U))
-    (t : JoinCone (largeCechShape p R hR S U ≫ targetCAlgDiagram R p (ofAlgebra R S))) (ht : IsLimitCone t) :
-    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex ∧
+    (t : JoinCone (largeCechShape p R hR S U ≫ theoryTargetDiagram (E := E) R p (ofAlgebra R S))) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (theoryTargetDiagram (E := E) R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex ∧
       IsLimitCone (restrictJoinCone c (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S))) := by
   sorry -- U=Q(E(S_alg)^∧) では各段の延長と Cor 7.3 が hU を供給。U と S̃_perfd に S3 を順に適用
 
@@ -222,17 +225,17 @@ def testPrisms : perfectTests p R ⥤ A_R (perfectPrismRing p R) where
 
 /-- O の極限を S に関して関手化する。右 Kan 拡張の S での添字は S → B、B perfectoid。 -/
 def perfectSiteSections :
-    algebraNerve R ⟶ CompleteCAlg (perfectPrism p R hR) :=
+    algebraNerve R ⟶ CompleteCAlg (E := E) (perfectPrism p R hR) :=
   let i := nerveMap (perfectoidTargetInclusion p (CommRingCat.of R))
-  let O := nerveMap (testPrisms p R hR) ≫ algebraEmbedding _ ≫ reflectCompleteCAlg (perfectPrism p R hR)
+  let O := nerveMap (testPrisms p R hR) ≫ E.discrete _ ≫ reflectCompleteCAlg (E := E) (perfectPrism p R hR)
   Classical.choose (show ∃ F, ∃ α : SSet.Homotopy (i ≫ F) O, IsRightKanExtension i O F α from by
     sorry) -- D47 の弱始対象の小さい Čech 図式で各大きい comma 圏に極限がある
 
 /-- S を固定すると右 Kan 拡張は O の完全 site 上の極限を与える。 -/
 def perfectSiteSectionsVertex :
-    let F := perfectSiteSections p R hR ≫ completeCAlgInclusion (perfectPrism p R hR)
+    let F := perfectSiteSections (E := E) p R hR ≫ completeCAlgInclusion (E := E) (perfectPrism p R hR)
     VertexIso (F.app _ (nerveVertex (ofAlgebra R S)))
-      (Sheaves.globalSections (perfectStructurePresheaf p R hR S) (perfectStructure_hasLimit p R hR S)) := by
+      (Sheaves.globalSections (perfectStructurePresheaf (E := E) p R hR S) (perfectStructure_hasLimit (E := E) p R hR S)) := by
   sorry -- Ran の S での comma 圏は Perfd_{S/}。Lemma 4.8 と D47 の同じ Čech 項で O の極限を比較
 
 /-- 概要：右辺：S ↦ lim_{Perfd_{S/}} T は（完備化した）filtered 余極限と可換：図式に整合する被覆 E(S_alg)^∧_p の Tot で計算し
@@ -242,7 +245,7 @@ def perfectSiteSectionsVertex :
 使われ方：有限生成への帰着。 -/
 theorem limit_perfectSite_filteredColimit {I : SSet.{u}} [Quasicategory I] [F2.IsFilteredInfinity I]
     (D : (SSet.uliftFunctor.{u+1,u}).obj I ⟶ algebraNerve R) (c : JoinCocone D) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (perfectSiteSections p R hR) c) := by
+    IsColimitCone (mapJoinCocone (perfectSiteSections (E := E) p R hR) c) := by
   sorry -- E 被覆で各項の O は完全 prism、Ō はその mod d。G-A5-2 の後に Koszul 完備化を施す
 
 /-- 概要：π_0 S が位相的有限生成の S で比較写像が同値なら、すべての離散 S で同値。
@@ -252,9 +255,9 @@ theorem limit_perfectSite_filteredColimit {I : SSet.{u}} [Quasicategory I] [F2.I
 theorem perfectionComparison_isIso_of_finiteType_cases
     (H : ∀ (B : Type u) [CommRing B] [Algebra R B]
       (hB : IsModuleComplete B (p : B) (ModuleCat.of B B)) (r : ℕ) (x : Fin r → B),
-      Function.Surjective (polyEvaluation p R B r x hB) → IsIso (perfectionComparison p R hR B hB))
+      Function.Surjective (polyEvaluation p R B r x hB) → IsIso (perfectionComparison (E := E) p R hR B hB))
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    IsIso (perfectionComparison p R hR S hS) := by
+    IsIso (perfectionComparison (E := E) p R hR S hS) := by
   sorry -- 通常の有限型部分代数の filtered 系に左右の完備余極限保存
         -- prismaticPerfection_filteredColimit と limit_perfectSite_filteredColimit を適用
 
@@ -298,8 +301,8 @@ theorem rootCover_isSemiperfectoid (r : ℕ) (f : Fin r → S)
 使われ方：`perfectionComparison_isIso_of_finiteType`。 -/
 theorem prismaticPerfection_rootCover_descent (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let c := mapJoinCone (directPerfectionFunctor p R hR) (rootCoverAugmentedCone p R S r f).val
-    IsLimitCone c ∧ Nonempty (VertexIso (prismaticPerfection p R hR S hS) c.vertex) := by
+    let c := mapJoinCone (directPerfectionFunctor (E := E) p R hR) (rootCoverAugmentedCone p R S r f).val
+    IsLimitCone c ∧ Nonempty (VertexIso (prismaticPerfection (E := E) p R hR S hS) c.vertex) := by
   sorry -- prismaticPerfection_rootMap_descendable' と (5) で完備押し出しに移す。
         -- Shared の isDescendableOver_pushout、isDescendableOver_tot_equiv
 
@@ -327,7 +330,7 @@ lim_{Perfd_{S/}} B_{R′} ≃ Tot_n lim_{Perfd_{S̃^n/}} O。
 使われ方：`perfectionComparison_isIso_of_finiteType`。 -/
 theorem limit_perfectSite_rootCover_descent (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    let F := perfectSiteSections p R hR ≫ completeCAlgInclusion (perfectPrism p R hR)
+    let F := perfectSiteSections (E := E) p R hR ≫ completeCAlgInclusion (E := E) (perfectPrism p R hR)
     let c := mapJoinCone F (rootCoverAugmentedCone p R S r f).val
     IsLimitCone c ∧ c.vertex = F.app _ (nerveVertex (ofAlgebra R S)) := by
   sorry -- 各 perfectoid 標的で左辺の降下を使い、L_n の始性で二つの極限を交換
@@ -340,7 +343,7 @@ prism 版 Δ_{S̃^n,perf} ≃ B_{(S̃^n)_perfd}）で同値。
 theorem perfectionComparison_isIso_of_finiteType (r : ℕ) (f : Fin r → S)
     (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
     (hf : Function.Surjective (polyEvaluation p R S r f hS)) :
-    IsIso (perfectionComparison p R hR S hS) := by
+    IsIso (perfectionComparison (E := E) p R hR S hS) := by
   sorry -- 両側の降下錐の項は semiperfectoid の場合に同値、指定比較射の Tot も同型
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

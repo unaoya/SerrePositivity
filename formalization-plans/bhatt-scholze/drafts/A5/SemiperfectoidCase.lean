@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.4、単位 A5-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.RingTheory.Extension.Cotangent.Basic
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
@@ -39,10 +40,12 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial TensorProduct
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.DerivedCompletion SerrePositivity.EInfinity.Perfectoidization
-open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.BhattScholze.PerfectoidizationInterface
 open SerrePositivity.BhattScholze.Prismatic SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
@@ -73,26 +76,26 @@ def completedCotangentUnderlying :
 使われ方：`derivedPrismaticCohomology_baseIndep`。 -/
 def baseComparison (R₁ : Type u) [CommRing R₁] [Algebra R R₁] [Algebra R₁ S] [IsScalarTower R R₁ S]
     (h₁ : IsIntegralPerfectoid R₁ p) :
-    let res := cAlgRestrictScalars (perfectBaseHom p R hR R₁ h₁).toRingHom
-    (CAlg_R (perfectPrismRing p R)).Edge
-      ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S)))
-      ((discreteDeltaFunctor p R₁ h₁ ≫ res).app _ (nerveVertex (ofAlgebra R₁ S))) := by
+    let res := cAlgRestrictScalars (E := E) (perfectBaseHom p R hR R₁ h₁).toRingHom
+    (E.CAlg (perfectPrismRing p R)).Edge
+      ((discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex (ofAlgebra R S)))
+      ((discreteDeltaFunctor (E := E) p R₁ h₁ ≫ res).app _ (nerveVertex (ofAlgebra R₁ S))) := by
   let P := perfectPrism p R hR
   let P₁ := perfectPrism p R₁ h₁
   let a := perfectBaseHom p R hR R₁ h₁
-  let res := cAlgRestrictScalars a.toRingHom
+  let res := cAlgRestrictScalars (E := E) a.toRingHom
   let x := (nerveMap (Under.map (CommRingCat.ofHom (perfectPrism_quotientEquiv p R hR).toRingHom)) ≫
     discreteToAnimated _).app _ (nerveVertex (ofAlgebra R S))
   let y := (nerveMap (Under.map (CommRingCat.ofHom (perfectPrism_quotientEquiv p R₁ h₁).toRingHom)) ≫
     discreteToAnimated _).app _ (nerveVertex (ofAlgebra R₁ S))
   let xy := (animatedBaseChange P P₁ a).app _ x
-  let H := derivedPrismaticCohomology P₁ ≫ completeCAlgInclusion (p := p) P₁ ≫ res
+  let H := derivedPrismaticCohomology (E := E) P₁ ≫ completeCAlgInclusion (E := E) (p := p) P₁ ≫ res
   let m : SSet.Edge xy y := by
     sorry -- S⊗^L_R R₁→S は二つの指定された代数構造からの乗法。完備化は D32
-  let first : SSet.Edge ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S))) (H.app _ xy) := by
+  let first : SSet.Edge ((discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex (ofAlgebra R S))) (H.app _ xy) := by
     sorry -- A2 の derivedPrismaticCohomology_baseChange (4) で完備底変換の単位を移す
   let second := m.map H
-  exact Classical.choose (show ∃ e : SSet.Edge ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S)))
+  exact Classical.choose (show ∃ e : SSet.Edge ((discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex (ofAlgebra R S)))
       (H.app _ y), Nonempty (first.toTruncated.CompStruct second.toTruncated e.toTruncated) from by
     sorry) -- 二辺の合成を表す三角形を選ぶ
 
@@ -114,7 +117,7 @@ d 進 Nakayama（両者は導来 (p,d) 完備）で Δ で同型。完全化・m
 使われ方：§3.4 (β)、Prop 7.10 の基底の移送（(ε)）。 -/
 theorem derivedPrismaticCohomology_baseIndep (R₁ : Type u) [CommRing R₁] [Algebra R R₁]
     [Algebra R₁ S] [IsScalarTower R R₁ S] (h₁ : IsIntegralPerfectoid R₁ p) :
-    IsInvertibleEdge (baseComparison p R hR S R₁ h₁).toTruncated := by
+    IsInvertibleEdge (baseComparison (E := E) p R hR S R₁ h₁).toTruncated := by
   sorry -- 完備余接複体の遷移三角形から HT の各 gr が同値。d 完備性で指定比較辺に戻す
 
 /-! ## 連結性と離散性 -/
@@ -142,7 +145,7 @@ theorem cotangent_shift_connective_of_semiperfectoid (hS : IsSemiperfectoid p R 
 規約：—
 使われ方：`prismaticPerfection_connective_of_semiperfectoid`。 -/
 theorem hodgeTate_connective_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
-    Derived.IsConnectiveAt R 0 ((directHodgeTateFunctor p R hR ≫ cAlgForgetDerived R).app _
+    Derived.IsConnectiveAt R 0 ((directHodgeTateFunctor (E := E) p R hR ≫ E.forget R).app _
       (nerveVertex (ofAlgebra R S))) := by
   sorry -- ∧ⁱ L^∧[-i] の連結性を HT filtration の各段から完備 filtered 余極限へ移す
 
@@ -152,9 +155,9 @@ theorem hodgeTate_connective_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
 使われ方：離散性。 -/
 theorem prismaticPerfection_connective_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
     let A := perfectPrismRing p R
-    Derived.IsConnectiveAt A 0 ((discreteDeltaFunctor p R hR ≫ cAlgForgetDerived A).app _
+    Derived.IsConnectiveAt A 0 ((discreteDeltaFunctor (E := E) p R hR ≫ E.forget A).app _
       (nerveVertex (ofAlgebra R S))) ∧
-      Derived.IsConnectiveAt A 0 ((cAlgForgetDerived A).app _ (prismaticPerfection p R hR S hS.1)) := by
+      Derived.IsConnectiveAt A 0 ((E.forget A).app _ (prismaticPerfection (E := E) p R hR S hS.1)) := by
   sorry -- d 進 Nakayama の後、正の係数制限の塔の余極限と (p,d) 完備化を取る
 
 /-- 概要：Δ_{S/A,perf} は離散（連結かつ coconnective、Lemma 8.4 (a)）で、A4 の `prismaticPerfectionPrism` により完全 prism。
@@ -164,18 +167,18 @@ S_perfd = Δ_{S/A,perf}/d は離散な perfectoid 環（完全 prism の商、Th
 規約：`IsDiscrete`（EInfinity/Perfectoidization/Comparison）。
 使われ方：以下、Cor 8.14。 -/
 theorem perfectoidization_discrete_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
-    IsDiscrete R (perfectoidization p R hR S hS.1) := by
+    IsTheoryDiscrete (E := E) R (perfectoidization (E := E) p R hR S hS.1) := by
   sorry -- Δ_perf の連結性から mod d は連結。A4 Lemma 8.4(c) の coconnective 性と合わせる
 
 theorem prismaticPerfection_discrete_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
-    IsDiscrete (perfectPrismRing p R) (prismaticPerfection p R hR S hS.1) :=
-  prismaticPerfection_discrete_of_perfectoidization_discrete p R hR S hS.1
-    (perfectoidization_discrete_of_semiperfectoid p R hR S hS)
+    IsTheoryDiscrete (E := E) (perfectPrismRing p R) (prismaticPerfection (E := E) p R hR S hS.1) :=
+  prismaticPerfection_discrete_of_perfectoidization_discrete (E := E) p R hR S hS.1
+    (perfectoidization_discrete_of_semiperfectoid (E := E) p R hR S hS)
 
 theorem perfectoidization_isIntegralPerfectoid_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
-    IsIntegralPerfectoid (cAlgH0Algebra R (perfectoidization p R hR S hS.1)).right p :=
-  perfectoidization_isIntegralPerfectoid_of_discrete p R hR S hS.1
-    (perfectoidization_discrete_of_semiperfectoid p R hR S hS)
+    IsIntegralPerfectoid (cAlgH0Algebra (E := E) R (perfectoidization (E := E) p R hR S hS.1)).right p :=
+  perfectoidization_isIntegralPerfectoid_of_discrete (E := E) p R hR S hS.1
+    (perfectoidization_discrete_of_semiperfectoid (E := E) p R hR S hS)
 
 /-! ## Cor 7.3 の普遍 perfectoid 環との比較 -/
 
@@ -203,15 +206,15 @@ theorem universalPerfectoidUnit_isPerfectoidization (hS : IsSemiperfectoid p R S
 
 /-- A4 の直接の単位を H⁰ に取る。A7 の普遍性には依存しない。 -/
 abbrev directPerfdRing (U : A_R R) :=
-  cAlgH0Algebra R ((perfectoidizationFunctor p R hR).app _ (nerveVertex U))
+  cAlgH0Algebra (E := E) R ((perfectoidizationFunctor (E := E) p R hR).app _ (nerveVertex U))
 
-def directPerfdRingUnit (U : A_R R) : U ⟶ directPerfdRing p R hR U :=
-  (discreteToH0 R U).hom ≫ (cAlgH0OnHomotopy R).map
-    (functorHomEvaluate (directHodgeTateUnit p R hR ≫ directToPerfection p R hR) (nerveVertex U))
+def directPerfdRingUnit (U : A_R R) : U ⟶ directPerfdRing (E := E) p R hR U :=
+  (discreteToH0 (E := E) R U).hom ≫ (cAlgH0OnHomotopy (E := E) R).map
+    (functorHomEvaluate (directHodgeTateUnit (E := E) p R hR ≫ directToPerfection (E := E) p R hR) (nerveVertex U))
 
-def directPerfdRingMap {U V : A_R R} (f : U ⟶ V) : directPerfdRing p R hR U ⟶ directPerfdRing p R hR V :=
-  (cAlgH0OnHomotopy R).map (SSet.Truncated.HomotopyCategory₂.homMk
-    (((nerve.edgeMk f).map (perfectoidizationFunctor p R hR)).toTruncated))
+def directPerfdRingMap {U V : A_R R} (f : U ⟶ V) : directPerfdRing (E := E) p R hR U ⟶ directPerfdRing (E := E) p R hR V :=
+  (cAlgH0OnHomotopy (E := E) R).map (SSet.Truncated.HomotopyCategory₂.homMk
+    (((nerve.edgeMk f).map (perfectoidizationFunctor (E := E) p R hR)).toTruncated))
 
 /-- Cor 7.3 で選んだ普遍標的を、S からの指定単位とともに切り落とし内に置く。 -/
 def universalTarget (hS : IsSemiperfectoid p R S) :
@@ -231,32 +234,32 @@ def universalTargetAlgebra (hS : IsSemiperfectoid p R S) : A_R R :=
 
 /-- 完全試験 prism の d は正則。derived mod d を離散商 B/J として読む。 -/
 def testModDResidueIso (U : (perfectSite p R S hR)ᵒᵖ) :
-    VertexIso ((modPrismFunctor p R hR).app _ (testValue p R hR S U))
-      ((algebraEmbedding R).app _ (nerveVertex ((targetAlgebra R p (ofAlgebra R S)).obj
+    VertexIso ((modPrismFunctor (E := E) p R hR).app _ (testValue (E := E) p R hR S U))
+      ((E.discrete R).app _ (nerveVertex ((targetAlgebra R p (ofAlgebra R S)).obj
         ((perfectResidueFunctor p R hR S).obj U).obj))) := by
   sorry -- B⊗^L_A A/d→B/J は d の正則性による商の標準同型。A/d≃R を通す
 
 /-- mod d の標的を R′ に運ぶ射は、普遍標的における圏同値の counit。 -/
 def universalTestModD (hS : IsSemiperfectoid p R S) :
-    VertexIso ((modPrismFunctor p R hR).app _ (testValue p R hR S (universalTest p R hR S hS)))
-      ((algebraEmbedding R).app _ (nerveVertex (universalTargetAlgebra p R S hS))) := by
+    VertexIso ((modPrismFunctor (E := E) p R hR).app _ (testValue (E := E) p R hR S (universalTest p R hR S hS)))
+      ((E.discrete R).app _ (nerveVertex (universalTargetAlgebra p R S hS))) := by
   let ε := (perfectSiteEquivPerfectoidUnder p R hR S).counitIso.app (universalTarget p R S hS)
   let forget : PerfUnderBounded p S (perfectSiteCutoff p R S) ⥤ A_R R :=
     (ObjectProperty.ι _) ⋙ targetAlgebra R p (ofAlgebra R S)
-  exact testModDResidueIso p R hR S (universalTest p R hR S hS) ≪≫
-    (algebraNerveIso R (forget.mapIso ε)).map (algebraEmbedding R)
+  exact testModDResidueIso (E := E) p R hR S (universalTest p R hR S hS) ≪≫
+    (algebraNerveIso R (forget.mapIso ε)).map (E.discrete R)
 
 /-- 概要：S_perfd → R′：比較写像の脚 Δ_{S/A,perf} → B_{R′}（A5-1 `perfectionComparisonLeg`（PerfectSite）、R′ の完全 prism）の mod d。S → S_perfd → R′ は単位。
 方針：定義の展開。
 規約：環準同型（両者は離散）。
 使われ方：分裂全射。 -/
 def perfectoidizationToUniversal (hS : IsSemiperfectoid p R S) :
-    (directPerfdRing p R hR (ofAlgebra R S)).right →+* universalPerfectoidRing p R S hS := by
+    (directPerfdRing (E := E) p R hR (ofAlgebra R S)).right →+* universalPerfectoidRing p R S hS := by
   let B := universalTest p R hR S hS
-  let leg := (perfectionComparisonLeg p R hR S hS.1 B).1.map (modPrismFunctor p R hR)
-  let f := (perfectoidizationFunctor_vertex p R hR S hS.1).hom ≫
-    SSet.Truncated.HomotopyCategory₂.homMk leg.toTruncated ≫ (universalTestModD p R hR S hS).hom
-  exact ((cAlgH0OnHomotopy R).map f ≫ (discreteToH0 R (universalTargetAlgebra p R S hS)).inv).right.hom
+  let leg := (perfectionComparisonLeg (E := E) p R hR S hS.1 B).1.map (modPrismFunctor (E := E) p R hR)
+  let f := (perfectoidizationFunctor_vertex (E := E) p R hR S hS.1).hom ≫
+    SSet.Truncated.HomotopyCategory₂.homMk leg.toTruncated ≫ (universalTestModD (E := E) p R hR S hS).hom
+  exact ((cAlgH0OnHomotopy (E := E) R).map f ≫ (discreteToH0 (E := E) R (universalTargetAlgebra p R S hS)).inv).right.hom
 
 /-- 概要：合成 S → S_perfd → R′ は全射（Thm 7.4、既存 `surjective_of_isPerfectoidization_of_semiperfectoid_quotient`）。R′ の普遍性で R′ → S_perfd があり
 R′ → S_perfd → R′ = id、よって S_perfd → R′ は分裂全射。
@@ -264,11 +267,11 @@ R′ → S_perfd → R′ = id、よって S_perfd → R′ は分裂全射。
 規約：—
 使われ方：`perfectoidization_semiperfectoid_iso`。 -/
 theorem perfectoidizationToUniversal_splitSurjective (hS : IsSemiperfectoid p R S) :
-    let η := (directPerfdRingUnit p R hR (ofAlgebra R S)).right.hom
+    let η := (directPerfdRingUnit (E := E) p R hR (ofAlgebra R S)).right.hom
     let q := universalPerfectoidUnit p R S hS
-    let f := perfectoidizationToUniversal p R hR S hS
+    let f := perfectoidizationToUniversal (E := E) p R hR S hS
     f.comp η = q ∧ Function.Surjective q ∧
-      ∃ t : universalPerfectoidRing p R S hS →+* (directPerfdRing p R hR (ofAlgebra R S)).right,
+      ∃ t : universalPerfectoidRing p R S hS →+* (directPerfdRing (E := E) p R hR (ofAlgebra R S)).right,
         t.comp q = η ∧ f.comp t = RingHom.id _ := by
   sorry -- 第0脚と HT 単位は S 上で両立。Thm 7.4 で q は全射。
         -- DiscreteCore で H⁰(S_perfd) は perfectoid。q の普遍性で t を得て f∘t=id
@@ -346,9 +349,9 @@ theorem rootQuotient_to_perfectoidization_surjective
     ∃ q : rootQuotientObj p R J ⟶ T,
       (∀ j n, q.right.hom (rootClass p R j n) = T.hom.hom (ρ j n)) ∧
       Function.Surjective q.right.hom ∧ surjectiveCotangentPiOneModP p q.right.hom ∧
-      Function.Surjective ((cAlgH0OnHomotopy R).map (SSet.Truncated.HomotopyCategory₂.homMk
-        (((nerve.edgeMk q).map (directHodgeTateFunctor p R hR)).toTruncated))).right.hom ∧
-      Function.Surjective (directPerfdRingMap p R hR q).right.hom := by
+      Function.Surjective ((cAlgH0OnHomotopy (E := E) R).map (SSet.Truncated.HomotopyCategory₂.homMk
+        (((nerve.edgeMk q).map (directHodgeTateFunctor (E := E) p R hR)).toTruncated))).right.hom ∧
+      Function.Surjective (directPerfdRingMap (E := E) p R hR q).right.hom := by
   sorry -- 根の評価は π₀ と π₁(L/ p) で全射。HT filtration、Frobenius 余極限と完備化で移す
 
 /-- 概要：(δ) J を有限に帰着（S′ は有限部分集合の filtered 余極限、S′_perfd も、§3.2 の可換性）。
@@ -390,17 +393,17 @@ def finiteRootJoinCocone (J : Type u) : JoinCocone (finiteRootNerve p R J) := by
 
 /-- 完備 R 代数の圏で mod d を取る。値の台は A4 の modPrismFunctor。 -/
 def rootPerfdFunctor :
-    algebraNerve R ⟶ (fullSubcomplexOnVertices (CAlg_R R) (fun x =>
-      isPCompleteVertex p R ((cAlgForgetDerived R).app _ x)) : SSet.{u+1}) :=
-  fullSubcomplexLift _ (perfectoidizationFunctor p R hR) (by
+    algebraNerve R ⟶ (fullSubcomplexOnVertices (E.CAlg R) (fun x =>
+      isPCompleteVertex p R ((E.forget R).app _ x)) : SSet.{u+1}) :=
+  fullSubcomplexLift _ (perfectoidizationFunctor (E := E) p R hR) (by
     sorry) -- (p,d) 完備な Δ_perf の mod d は p 完備
 
 theorem rootQuotient_finite_reduction (J : Type u) :
     Nonempty (Limits.IsColimit (finiteRootCocone p R J)) ∧
-      IsColimitCone (mapJoinCocone (rootPerfdFunctor p R hR) (finiteRootJoinCocone p R J)) ∧
+      IsColimitCone (mapJoinCocone (rootPerfdFunctor (E := E) p R hR) (finiteRootJoinCocone p R J)) ∧
       ((∀ I : Finset J, Function.Surjective
-        (directPerfdRingUnit p R hR (rootQuotientObj p R I)).right.hom) →
-        Function.Surjective (directPerfdRingUnit p R hR (rootQuotientObj p R J)).right.hom) := by
+        (directPerfdRingUnit (E := E) p R hR (rootQuotientObj p R I)).right.hom) →
+        Function.Surjective (directPerfdRingUnit (E := E) p R hR (rootQuotientObj p R J)).right.hom) := by
   sorry -- 単項式・関係は有限個の変数を使う。A4 の prismaticPerfection_filteredColimit と
         -- mod d で完備余極限を取り、連結性のもとで完備化単位に沿って H⁰ の全射を移す
 
@@ -413,9 +416,9 @@ theorem rootQuotient_unit_surjective (J : Type u) [Finite J] :
     let U := rootQuotientObj p R J
     let Q := (completionFunctor p R).obj (ofAlgebra R
       (rootPolynomialFamily p R J ⧸ compatibleRootFamilyIdeal (rootVariable p R (J := J))))
-    Function.Surjective (directPerfdRingUnit p R hR U).right.hom ∧
-      ∃ e : directPerfdRing p R hR U ≅ Q, ∀ j n,
-        (directPerfdRingUnit p R hR U ≫ e.hom).right.hom (rootClass p R j n) = 0 := by
+    Function.Surjective (directPerfdRingUnit (E := E) p R hR U).right.hom ∧
+      ∃ e : directPerfdRing (E := E) p R hR U ≅ Q, ∀ j n,
+        (directPerfdRingUnit (E := E) p R hR U ≫ e.hom).right.hom (rootClass p R j n) = 0 := by
   sorry -- Prop 7.10 の有限変数模型を G-A5-17 で基底移送し、全段の根を殺す指定商と比較
 
 /-- 概要：S → S_perfd は全射（(α)〜(ζ)、忠実平坦な R_1 → R_1′ で全射性を反映）。
@@ -423,7 +426,7 @@ theorem rootQuotient_unit_surjective (J : Type u) [Finite J] :
 規約：—
 使われ方：`perfectoidization_semiperfectoid_iso`。 -/
 theorem surjective_unit_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
-    Function.Surjective (directPerfdRingUnit p R hR (ofAlgebra R S)).right.hom := by
+    Function.Surjective (directPerfdRingUnit (E := E) p R hR (ofAlgebra R S)).right.hom := by
   sorry -- (α) の R 上の表示、G-A5-17、Thm 7.14、根の評価、有限近似、Prop 7.10。
         -- p 完備忠実平坦な底変換で元の単位の全射性を反映する
 
@@ -433,13 +436,13 @@ theorem surjective_unit_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
 使われ方：A5-4（S̃_perfd と Δ_{S̃,perf}/d の同一視）、Cor 8.14。 -/
 theorem perfectoidization_semiperfectoid_iso (hS : IsSemiperfectoid p R S) :
     let U := ofAlgebra R S
-    ∃ e : (directPerfdRing p R hR U).right ≃+* universalPerfectoidRing p R S hS,
-      e.toRingHom = perfectoidizationToUniversal p R hR S hS ∧
-      e.toRingHom.comp (directPerfdRingUnit p R hR U).right.hom = universalPerfectoidUnit p R S hS ∧
-      ∃ v : VertexIso (perfectoidization p R hR S hS.1)
-          ((algebraEmbedding R).app _ (nerveVertex (universalTargetAlgebra p R S hS))),
-        ((cAlgH0OnHomotopy R).map ((perfectoidizationFunctor_vertex p R hR S hS.1).hom ≫ v.hom) ≫
-          (discreteToH0 R (universalTargetAlgebra p R S hS)).inv).right.hom = e.toRingHom := by
+    ∃ e : (directPerfdRing (E := E) p R hR U).right ≃+* universalPerfectoidRing p R S hS,
+      e.toRingHom = perfectoidizationToUniversal (E := E) p R hR S hS ∧
+      e.toRingHom.comp (directPerfdRingUnit (E := E) p R hR U).right.hom = universalPerfectoidUnit p R S hS ∧
+      ∃ v : VertexIso (perfectoidization (E := E) p R hR S hS.1)
+          ((E.discrete R).app _ (nerveVertex (universalTargetAlgebra p R S hS))),
+        ((cAlgH0OnHomotopy (E := E) R).map ((perfectoidizationFunctor_vertex (E := E) p R hR S hS.1).hom ≫ v.hom) ≫
+          (discreteToH0 (E := E) R (universalTargetAlgebra p R S hS)).inv).right.hom = e.toRingHom := by
   sorry -- 分裂の t は S→H⁰(S_perfd) の全射性で全射、かつ分裂単射。
         -- 逆同型の指定単位との等式を保ち、離散な両環を CAlg_R に移す
 

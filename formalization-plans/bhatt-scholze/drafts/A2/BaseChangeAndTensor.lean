@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.4、単位 A2-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
 
@@ -33,6 +34,8 @@ noncomputable section
 universe u
 open CategoryTheory SSet
 open scoped Simplicial
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
@@ -69,8 +72,8 @@ def completePiZeroReflection (k : Type u) [CommRing k] :
   sorry -- animatedPiZeroAdjunction の制限。導来 p 完備な複体の各ホモロジー加群は導来 p 完備
 /-- 完備 R 代数から、P/d≃R で底を読み替えた Δ。A7 の animatedDelta の入口。 -/
 def deltaOverQuotientIso {R : Type u} [CommRing R] (e : A ⧸ P.ideal ≃+* R) :
-    CompleteAnimatedAlgebra p R ⟶ CompleteCAlg P :=
-  animatedCompleteInclusion p R ≫ animatedScalarExtension e.symm.toRingHom ≫ derivedPrismaticCohomology P hP
+    CompleteAnimatedAlgebra p R ⟶ CompleteCAlg (E := E) P :=
+  animatedCompleteInclusion p R ≫ animatedScalarExtension e.symm.toRingHom ≫ derivedPrismaticCohomology (E := E) P hP
 
 /-- 概要：prism の射 f : (A,(d)) → (A′,(d′)) に沿う始域の底変換 R ↦ R ⊗^L_k k′（P_Σ の関手。Poly 上は多項式代数の底変換で、sifted 余極限保存な延長）。
 方針：Poly k → Poly k′（同じ添字 n）の nerve を P_Σ へ延長。
@@ -81,8 +84,8 @@ def animatedBaseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A') (f 
   animatedScalarExtension f.quotientMap
 
 def completedPrismBaseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
-    (f : OrientedPrism.Hom P P') : CompleteCAlg P ⟶ CompleteCAlg P' :=
-  prismCompleteInclusion P ≫ cAlgBaseChange f.toRingHom ≫ prismCompletion P'
+    (f : OrientedPrism.Hom P P') : CompleteCAlg (E := E) P ⟶ CompleteCAlg (E := E) P' :=
+  prismCompleteInclusion (E := E) P ≫ cAlgBaseChange (E := E) f.toRingHom ≫ prismCompletion (E := E) P'
 
 /-- 概要：(4)：Δ_{R_{A′}/A′} ≃ Δ_{R/A} ⊗̂^L_A A′（完備底変換、E∞ 代数として）。
 方針：Poly 上は Cor 4.12（`prismaticCohomology_baseChange'`、Tor 振幅の仮定なし）。両辺とも sifted 余極限保存（完備底変換は左随伴の合成）。
@@ -90,15 +93,15 @@ def completedPrismBaseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A
 使われ方：A5、A7、A8。 -/
 def derivedPrismaticCohomology_baseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') :
-    FunctorIso (derivedPrismaticCohomology P hP ≫ completedPrismBaseChange P P' f)
-      (animatedBaseChange P P' f ≫ derivedPrismaticCohomology P' hP') := by
+    FunctorIso (derivedPrismaticCohomology (E := E) P hP ≫ completedPrismBaseChange (E := E) P P' f)
+      (animatedBaseChange P P' f ≫ derivedPrismaticCohomology (E := E) P' hP') := by
   sorry -- Cor 4.12 の多項式上の標準比較を siftedRestriction_equivalence に沿って延長
 
 /-- G-A2-10 の比較。完備底変換の単位、(4)、T ⊗_k k′ → T の乗法の順。 -/
 def perfectBaseComparison {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') :
-    FunctorHom (animatedScalarRestriction f.quotientMap ≫ deltaUnderlying P hP)
-      (deltaUnderlying P' hP' ≫ cAlgRestrictScalars f.toRingHom) := by
+    FunctorHom (animatedScalarRestriction f.quotientMap ≫ deltaUnderlying (E := E) P hP)
+      (deltaUnderlying (E := E) P' hP' ≫ cAlgRestrictScalars (E := E) f.toRingHom) := by
   sorry -- 要確認：ScalarRestriction へ。cAlgBaseChange_restrictScalars_adjunction の単位、
         -- derivedPrismaticCohomology_baseChange と animated な底変換の余単位の合成
 
@@ -106,7 +109,7 @@ theorem perfectBaseComparison_isIso {A' : Type u} [CommRing A'] (P' : OrientedPr
     (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P')
     (_ : P.deltaStructure.IsPerfect) (_ : P'.deltaStructure.IsPerfect)
     (T : PerfectoidizationInterface.A_R (A' ⧸ P'.ideal)) :
-    IsIso (functorHomEvaluate (perfectBaseComparison P hP P' hP' f)
+    IsIso (functorHomEvaluate (perfectBaseComparison (E := E) P hP P' hP' f)
       ((discreteToAnimated _).app _ (nerveVertex T))) := by
   sorry -- 完全 prism の商間では相対完備余接複体が零。HT の gr、exhaustive 性、導来 Nakayama
 
@@ -117,8 +120,8 @@ theorem perfectBaseComparison_isIso {A' : Type u} [CommRing A'] (P' : OrientedPr
 規約：𝒱 の sifted 余極限 ＝ CAlg_A の sifted 余極限の完備化。
 使われ方：(5)。 -/
 theorem derivedPrismaticCohomology_siftedColimit :
-    PreservesSmallSiftedColimits (derivedPrismaticCohomology P hP) :=
-  derivedPrismaticCohomology_preservesSifted P hP
+    PreservesSmallSiftedColimits (derivedPrismaticCohomology (E := E) P hP) :=
+  derivedPrismaticCohomology_preservesSifted (E := E) P hP
 
 /-- 概要：多項式代数の Künneth（Poly 上の (5)）：Δ_{P ⊗ P′} ≃ Δ_P ⊗̂ Δ_{P′}。
 方針：比較射は E∞ 代数の余積の普遍性（Δ_P → Δ_{P⊗P′} ← Δ_{P′}、関手性）。gr で Ω^•_{P⊗P′} = Ω^•_P ⊗ Ω^•_{P′}（Shared/DeRhamPolynomial）、
@@ -133,7 +136,7 @@ def polyTensorCocone {k : Type u} [CommRing k] (n m : ℕ) :=
     (by simpa [D, binaryPointDiagram, binaryPointRight] using (nerve.edgeMk c.inr).toTruncated)
 
 theorem prismaticCohomologyPoly_tensor (n m : ℕ) :
-    IsColimitCone (mapJoinCocone (prismaticCohomologyPolyFunctor P hP)
+    IsColimitCone (mapJoinCocone (prismaticCohomologyPolyFunctor (E := E) P hP)
       (JoinCocone.ulift.{u,u+1} (polyTensorCocone (k := A ⧸ P.ideal) n m))) := by
   sorry -- 標準の二つの変数包含を脚とする比較を HT の gr で検出。微分形式の Künneth と有限 filtration
 
@@ -143,12 +146,12 @@ theorem prismaticCohomologyPoly_tensor (n m : ℕ) :
 使われ方：Prop 8.13（A7）、Thm 10.11。 -/
 theorem derivedPrismaticCohomology_tensor (X Y : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌)
     (c : JoinCocone (binaryPointDiagram X Y)) (hc : IsColimitCone c) :
-    IsColimitCone (mapJoinCocone (derivedPrismaticCohomology P hP) c) := by
+    IsColimitCone (mapJoinCocone (derivedPrismaticCohomology (E := E) P hP) c) := by
   sorry -- 各変数の多項式 sifted 表示に prismaticCohomologyPoly_tensor を適用して余極限を交換
 
 /-- 空の余積も保つ。二項テンソルと合わせて有限余積の保存になる。 -/
 theorem derivedPrismaticCohomology_initial {X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌}
-    (hX : IsInitialVertex X) : IsInitialVertex ((derivedPrismaticCohomology P hP).app _ X) := by
+    (hX : IsInitialVertex X) : IsInitialVertex ((derivedPrismaticCohomology (E := E) P hP).app _ X) := by
   sorry -- 始対象は変数 0 の多項式。基底 prism がその site の始対象なので Δ_k=A
 
 /-! ## D32：導来 p 完備化不変性 -/
@@ -159,7 +162,7 @@ theorem derivedPrismaticCohomology_initial {X : (AnimatedAlgebra (A ⧸ P.ideal)
 perfd の段で Prop 8.5 の系 4（a5-design §7.1）。
 使われ方：A7（Prop 8.13 の完備化）、A8（Thm 10.11 の filtered 余極限）。 -/
 theorem derivedPrismaticCohomology_completion_animated (X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌) :
-    IsIso ((hoFunctor.map (derivedPrismaticCohomology P hP)).toFunctor.map
+    IsIso ((hoFunctor.map (derivedPrismaticCohomology (E := E) P hP)).toFunctor.map
       (functorHomEvaluate (animatedCompletionUnit p (A ⧸ P.ideal)) X)) := by
   sorry -- X→LΛ_p X は導来 mod p^n で同値。完備相対余接複体の消滅から各 gr を比較し、
         -- 完備余極限と導来 Nakayama で同じ単位の Δ による像が可逆

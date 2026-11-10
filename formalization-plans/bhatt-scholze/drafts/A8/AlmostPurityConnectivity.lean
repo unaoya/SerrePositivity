@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.2・§3.2、単位 A8-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
 public import SerrePositivity.InfinityCategories.Derived.FiberTriangle
@@ -37,10 +38,12 @@ open CategoryTheory SSet
 open scoped Simplicial TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Almost
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.Perfectoidization
+open SerrePositivity.EInfinity.Perfectoidization
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 open SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -48,11 +51,11 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 variable (S : Type u) [CommRing S] [Algebra R S]
 
 abbrev perfdModule (U : A_R R) : DVertex R :=
-  (perfectoidizationFunctor p R hR ≫ cAlgForgetDerived R).app _ (nerveVertex U)
+  (perfectoidizationFunctor (E := E) p R hR ≫ E.forget R).app _ (nerveVertex U)
 
 /-- 指定された離散代数の射の perfd の fibre。Cor 8.12 の比較を D(R) で読む。 -/
 def perfdMapFiber {U V : A_R R} (f : U ⟶ V) : DVertex R := by
-  let e := ((nerve.edgeMk f).map (perfectoidizationFunctor p R hR ≫ cAlgForgetDerived R)).toTruncated
+  let e := ((nerve.edgeMk f).map (perfectoidizationFunctor (E := E) p R hR ≫ E.forget R)).toTruncated
   let k := DGNerve.edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion))
   exact ((derivedInfinityHomotopyEquivalence R).inverse.obj (standardFiberDerivedTriangle k).obj₁).pt
 
@@ -92,8 +95,8 @@ theorem almostConnective_of_aic_baseChange [Module.Finite R S] [Algebra.FinitePr
     (h : ∀ (R' : Type u) [CommRing R'] [Algebra R R'] (hR' : IsIntegralPerfectoid R' p),
       IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) R' → IsAbsolutelyIntegrallyClosed R' →
         IsAlmostConnective p R' hR' (Ideal.span {algebraMap R R' g})
-          (perfdModule p R' hR' (ofAlgebra R' (R' ⊗[R] S)))) :
-    IsAlmostConnective p R hR (Ideal.span {g}) (perfdModule p R hR (ofAlgebra R S)) := by
+          (perfdModule (E := E) p R' hR' (ofAlgebra R' (R' ⊗[R] S)))) :
+    IsAlmostConnective p R hR (Ideal.span {g}) (perfdModule (E := E) p R hR (ofAlgebra R S)) := by
   sorry -- exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed と Prop 8.13、
         -- 完備平坦な底変換で K⊗̂M の連結性を反映する。π₀ の有限表示有限代数へは Prop 8.5 系4
 
@@ -194,13 +197,13 @@ theorem perfectoidization_almostIso_of_localization_iso {U V : A_R R} (f : U ⟶
     (hU : IsModuleComplete U.right (p : U.right) (ModuleCat.of U.right U.right))
     (hV : IsModuleComplete V.right (p : V.right) (ModuleCat.of V.right V.right))
     (hI : IsModuleComplete U.right (p : U.right) (ModuleCat.of U.right (Ideal.span {U.hom.hom g}))) :
-    IsJAlmostZero p R hR (Ideal.span {g}) (perfdMapFiber p R hR f) := by
+    IsJAlmostZero p R hR (Ideal.span {g}) (perfdMapFiber (E := E) p R hR f) := by
   sorry -- ArcOutside を上で得て Cor 8.12。商の fibre は (R/g)_perfd 加群
 
 /-- 概要：(R^r)_perfd = R^r（G-A6-12 の有限積と `perfectoidization_of_perfectoid`）、離散。 -/
 def perfectoidization_pow_eq (r : ℕ) :
-    VertexIso (perfdValue p R hR (ofAlgebra R (Fin r → R)))
-      ((algebraEmbedding R).app _ (nerveVertex (ofAlgebra R (Fin r → R)))) := by
+    VertexIso (perfdValue (E := E) p R hR (ofAlgebra R (Fin r → R)))
+      ((E.discrete R).app _ (nerveVertex (ofAlgebra R (Fin r → R)))) := by
   sorry -- G-A6-12 と perfectoidization_of_perfectoid。積環の単位同型の逆（r=0 も含む）
 
 /-- 概要：Thm 10.9 の J-almost 連結性（D63）：S 有限表示有限 R 代数（原典どおり、W9-III-01）、各 i で S[1/f_i] が R[1/f_i] 上有限エタール ⇒ S_perfd は (f_1,…,f_r)-almost 連結。
@@ -210,7 +213,7 @@ def perfectoidization_pow_eq (r : ℕ) :
 使われ方：Thm 10.11（A8-4 の 5）。 -/
 theorem perfectoidization_almostConnective_of_finiteEtaleAway [Module.Finite R S] [Algebra.FinitePresentation R S]
     {r : ℕ} (f : Fin r → R) (hf : ∀ i, FiniteEtaleAway R S (f i)) :
-    IsAlmostConnective p R hR (Ideal.span (Set.range f)) (perfdModule p R hR (ofAlgebra R S)) := by
+    IsAlmostConnective p R hR (Ideal.span (Set.range f)) (perfdModule (E := E) p R hR (ofAlgebra R S)) := by
   sorry -- 根基不変性・生成元判定で主開に帰着し、AIC 上で二つの Cor 8.12 と積の離散性を使う
 
 end SerrePositivity.BhattScholze.Almost

@@ -3,8 +3,8 @@
 -- 引用 3 件の `sorry` 定理（G-A6-1a・1b・1c）は drafts/ の間は問題なし。SerrePositivity/ に入れるときは scripts/make_area_audits.py の許可一覧の更新を調整役に依頼する（main 7b8b96286）。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationExtension
-public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationUntilt
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
@@ -22,6 +22,7 @@ public import Mathlib.RingTheory.WittVector.Truncated
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 -- Cor 8.11 は drafts/A5/{PerfectSiteComparison,InterfaceLimitCone}.lean と drafts/Sheaves/GlobalSections.lean を使う。
 -- 本ファイルは drafts/DerivedGeneral/Truncation.lean の IsCoconnectiveAt も使う。
 -- W9-III-08：2a 後は E3 非依存の芯（仮称 CompletedTensorCore）だけを import する（a9-design §7）。
@@ -55,6 +56,8 @@ noncomputable section
 universe u
 open CategoryTheory Limits SSet MonoidalCategory
 open scoped Simplicial TensorProduct
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -394,8 +397,8 @@ def arcIntegerAlgebras : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ Under (CommRingCat.of
   map_id := by sorry -- 環への忘却は忠実
   map_comp := by sorry -- 同じく環の射の合成で判定
 
-def structurePresheaf : Sheaves.Presheaf (AffPerfd p κ)ᵒᵖ (CAlg_R ArcZ.{u}) :=
-  ringPresheafToCAlg ArcZ.{u} (arcIntegerAlgebras p κ)
+def structurePresheaf : Sheaves.Presheaf (AffPerfd p κ)ᵒᵖ (E.CAlg ArcZ.{u}) :=
+  ringPresheafToCAlg (E := E) ArcZ.{u} (arcIntegerAlgebras p κ)
 
 def homPresheaf (T : Type u) [CommRing T] : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ Type u where
   obj D := T →+* (arcPerfdRingFunctor p κ).obj D
@@ -421,7 +424,7 @@ def PreservesFiniteRingProductsOnPerfd {E : SSet.{u + 1}} [Quasicategory E]
 
 theorem structurePresheaf_preservesFiniteRingProducts
     [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
-    PreservesFiniteRingProductsOnPerfd p κ (structurePresheaf p κ) := by
+    PreservesFiniteRingProductsOnPerfd p κ (structurePresheaf (E := E) p κ) := by
   sorry -- G-A6-12 と離散環の有限積は CAlg_ℤ の積であること（零環は終対象）
 
 theorem homPresheaf_preservesFiniteRingProducts
@@ -434,7 +437,7 @@ theorem homPresheaf_preservesFiniteRingProducts
 規約：`IsSheaf (arcTopologyPerfd p κ) (structurePresheaf …)`。
 使われ方：Cor 8.11 の affine 版、Cor 8.12。 -/
 theorem structurePresheaf_isArcSheaf [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
-    Sheaves.IsSheaf (arcTopologyPerfd p κ) (structurePresheaf p κ) := by
+    Sheaves.IsSheaf (arcTopologyPerfd p κ) (structurePresheaf (E := E) p κ) := by
   have hbound := hκ.out
   sorry -- isSheaf_arc_iff_cech の二つの生成系を cover-dense な包含に沿い制限する。
         -- G-A6-12 と G-A6-4 で積・相対 Čech 項は Perfd にある。積は上の補題、
@@ -478,11 +481,11 @@ theorem perfectoidization_eq_arcCohomology
     [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
     (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (hsize : Cardinal.mk R ≤ κ)
     (S : AffCompl p κ) (r : CommRingCat.of R ⟶ (affComplForget p κ).obj S)
-    (hJ : Sheafification (arcPerfdSliceTopology p κ S) (CAlg_R R))
-    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (CAlg_R R)) :
-    let O := ringPresheafToCAlg R
+    (hJ : Sheafification (arcPerfdSliceTopology p κ S) (E.CAlg R))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg R)) :
+    let O := ringPresheafToCAlg (E := E) R
       (unopUnop (ArcPerfdUnder p κ S) ⋙ arcSliceAlgebras p κ R S r)
-    ∃ e : SSet.Edge (perfectoidizationCone p R (Under.mk r)).vertex
+    ∃ e : SSet.Edge (perfectoidizationCone (E := E) p R (Under.mk r)).vertex
       (derivedGlobalSections (arcPerfdSliceTopology p κ S) hJ hE O),
       IsInvertibleEdge e.toTruncated := by
   sorry -- S は p 完備なので A5 の指定錐の頂点は S_perfd。perfectoidization_isLimit の κ 版と
