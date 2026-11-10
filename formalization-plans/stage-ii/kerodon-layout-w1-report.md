@@ -526,3 +526,20 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 - `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomFamily`
 - `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomParameters`
 - `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleInitialHom`
+
+### 11-11 昼の修正と再検査の対象
+
+朝の 302 本の内訳を、保存されたビルド結果と依存グラフから求めた。移動先 170 本のうち 164 本、前提 100 本のうち 94 本、互換 32 本の全本に未完了の前提がある。エラーログが残った起点は 7 本。互換モジュールに固有の型エラーは朝のログに残っていなかった。
+
+| 原因 | ソースでの修正 |
+| --- | --- |
+| 移動後に解決できなくなった `open` | `LinearHomCohomology` と `DGModuleKappaCompactCoproduct` の `DoldKanComparison`、`KappaCovers.CompactStage` の `F2`、`PerfectStableHoArrow` の `F2.Idempotent` を外した。必要な移動済み参照は新しい名前で指定されている。 |
+| 利用側で省略していた名前 | `PaddedBackwardInsertionComparison` の `FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence`、`SpectrumZeroClass` の `spectrumPoint`、`StrictCospanConeLegs` の `spectrumPullbackDiagram` を定義元の名前で明示した。旧 `.ilean` の参照と移動後の import 閉包を照合した。 |
+
+7 本を配置プレビューで修正し、対象モジュールの再ビルドは夜に回した。前夜に修正した `GeneratorWord.erase` の非計算可能な互換名の指定も、互換モジュールを再生成するときに保持する。
+
+保存比較の 34 行のうち 18 行は、`local instance : Fact Cardinal.aleph0.IsRegular` 9 宣言の追加・削除の対だった。前後で定義元、ソース範囲、型ハッシュ、属性、公理が対応することを確認し、定義元ごとに改名表を修正した。残る 16 行は局所記法から Lean が生成した 8 宣言の本文と親の差分だった。共有鍵の下で既存の成果物から前後の式を採取し、名前空間と hygiene の識別子、および既存の改名表で同じ定義を指す 2 種の識別子の綴りを対応させた。8 宣言の式が一致し、親の差は記法を定義した名前空間の移動と一致した。この照合結果を該当するビルドと差分行のハッシュに結び付けて保存した。
+
+改名表を更新した時点で、現在の規則で有効な比較は 14,121 本で、未説明差分は 0 行。夜は、朝の未比較 373 本を優先し、改名表の更新で有効期限が切れた 112 本も再比較する。対象は付表に保存した。[朝の未比較 373 本](kerodon-layout-stop-3/overnight-uncompared-373.json)、[改名表更新後に再比較する 112 本](kerodon-layout-stop-3/overnight-recompare-112.json)
+
+08:24 JST 時点の `main`（`6e6a3f9a7`）まで、⑤b・⑥の取り込みを含む差分の import を静的に確認した。前夜に書き換えた差分を保持し、23 時の `main` を取り込んでから、その時点の BS・EInfinity の追加分を再確認する。残りの対象ビルド、保存比較、root ビルド、全監査、verify の順で進める。
