@@ -452,3 +452,41 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 | `Consumers` | 1 | 利用側に置く ∞ 圏内の集約。層を明示していない外部の利用側もこの層に属する。 |
 
 互換名の残りを加える前の集計。最終配置プレビューの現役 29,314 モジュールを Python だけで検査し、未解決 import、循環、層順違反、理由のない実装境界と逆向きの辺はすべて 0 件。設定は `layers.json` の `klw1` にまとめた。移動を反映した作業木での再現コマンドは `python3 scripts/refactor/layer_check.py --enforce KLW1 --root "$PWD"`。
+
+
+### Tag の文章と README
+
+既存の項目参照 6,246 件と節・小節参照 3,637 件に Tag を添えた。Kerodon 配下の 7,685 ファイルを照合し、対応節が書かれていなかった 7,672 本に追記した。番号・参照先 198 件と、見出し語 148 件を修正した。番号に対応する Tag の欠落や既存 Tag の不一致は 0 件。編集対象は 7,763 本で、うち 1 本は Archive。docstring を除いたバイト列は前後一致した。
+
+元素 ∞ 圏の旧引用は、底変換、ファイバー、空間値の構成、小節全体の文脈に分けた。Kan fibration の塔の既存引用は付録で項目 Tag を確認した。README の番号照合表を修正し、∞ 圏の README は Kerodon の 51 節の番号・Tag・パス、HTT・HA・Project の役割、5 層の規則を説明する形に整えた。配置プレビュー上で両 README のローカルリンクを照合した。[底変換の Remark 5.6.2.18](https://kerodon.net/tag/0271)、[ファイバーの Example 5.6.2.19](https://kerodon.net/tag/0272)、[空間値の Example 5.6.2.9](https://kerodon.net/tag/026S)、[塔の Corollary 11.9.7.2](https://kerodon.net/tag/01C7)
+
+文書の編集は同じ Lean コードの保存比較を再利用できるよう別のプレビューに保管した。型と本文の比較後に、照合したコードと docstring を合成し、全対象の確認ビルドでは文書も含む最終ソースを使う。
+
+### レーン別の追従表
+
+11-10 20:15 JST に、7 レーンの追跡済みと未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と `main` の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決されている旧名も書き換えられる。継承した旧 import は取り込み側の改名に含まれる。[対象ファイル、HEAD、merge base、旧 import の行と行き先](kerodon-layout-stop-3/lane-imports.json)
+
+`$handoff` は配布した `kerodon-layout-stop-3` ディレクトリ。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。`$klw1` は KL-W1 の作業木。収集時とソースのバイト列を揃え、改名表を取り込んだ後で次を実行する。新しい出力先を `$preview` に渡し、`review.json` とソース差分を確認してから反映する。
+
+| レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
+| --- | ---: | ---: | ---: | --- |
+| ⑤a `math/bs-impl` | 17,488 | 2（6 行） | [2](kerodon-layout-stop-3/bs-impl-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑤b `math/bs-d68` | 17,486 | 0（0 行） | [5](kerodon-layout-stop-3/bs-d68-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,486 | 0（0 行） | [15](kerodon-layout-stop-3/bs-classical-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| ⑥ `math/scheme` | 17,479 | 0（0 行） | [91](kerodon-layout-stop-3/scheme-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| HA `research/ha-review` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| HTT `research/htt-review` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+| K の地図 `research/k-maps` | 17,479 | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
+
+
+`kl-module-map.json` は import の改名、`kl-namespace-map.json` は宣言の改名と分割先の定義元を収める。旧名の互換モジュールを使う場合も import は改名表で更新する。ファイルが追加された場合はレーン側でそのパスを収集対象の JSON 配列に加え、改名前の成果物とソースで収集し直す。
+
+### 夜間の検証結果
+
+| 確認項目 | 停止点 3 で記入する結果 |
+| --- | --- |
+| 対象モジュールと互換名 | ビルド成功数、対象総数、外部利用の alias 数 |
+| 保存比較 v3b | 比較したモジュールと宣言の数、未説明差分の数 |
+| Lean の Kerodon 属性 | 672 組の再照合と欠落・余分 |
+| 監査・層 | 対象監査の実行結果、最終配置の Python 検査 |
+| 最終の確認ビルド | 調整役への事前連絡、鍵の取得と返却、対象と終了結果 |

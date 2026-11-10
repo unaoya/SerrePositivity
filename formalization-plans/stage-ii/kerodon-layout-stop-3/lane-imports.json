@@ -1,0 +1,152 @@
+{
+  "scanned_at_jst": "2026-11-10T20:15:00+09:00",
+  "lanes": [
+    {
+      "label": "⑤a",
+      "branch": "math/bs-impl",
+      "head": "a93aeb0fe35920fa9f73a25f076a7f9cfd1d938c",
+      "merge_base": "ea5d613886361865c9484866d237dc267bcb7768",
+      "short": "bs-impl",
+      "file_count": 31689,
+      "files_with_old_import": 17488,
+      "local_files": 2,
+      "new_local_files": 2,
+      "local_files_with_old_import": 2,
+      "new_files_with_old_import": 2,
+      "old_import_lines_in_local_files": 6,
+      "local_imports": {
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/DerivedRestriction.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise"
+          },
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransport",
+            "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport"
+          },
+          {
+            "line": 8,
+            "old": "SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.ScalarRestrictionNerve"
+          }
+        ],
+        "SerrePositivity/EInfinity/ComplexLimits/StrictHomology.lean": [
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyNaturality"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEdges"
+          },
+          {
+            "line": 7,
+            "old": "SerrePositivity.InfinityCategories.F1B.HomotopyEdgeNaturality",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.HomotopyEdgeNaturality"
+          }
+        ]
+      },
+      "vanished_during_scan": []
+    },
+    {
+      "label": "⑤b",
+      "branch": "math/bs-d68",
+      "head": "d61e1fa37b0f032f9f25dcb99bb98b7b1691bbee",
+      "merge_base": "07d9d2117d7528d174c2526cd7e5e2ae0f1a2df0",
+      "short": "bs-d68",
+      "file_count": 31692,
+      "files_with_old_import": 17486,
+      "local_files": 5,
+      "new_local_files": 5,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    },
+    {
+      "label": "⑤c",
+      "branch": "math/bs-classical",
+      "head": "55242190c2666cb8010b04d33c27aad2503b1a3b",
+      "merge_base": "09047a87e071ce808aa32399847185b8910c1c74",
+      "short": "bs-classical",
+      "file_count": 31702,
+      "files_with_old_import": 17486,
+      "local_files": 15,
+      "new_local_files": 15,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    },
+    {
+      "label": "⑥",
+      "branch": "math/scheme",
+      "head": "8c15ae51a27694f468b1e0ab449517037e17fee6",
+      "merge_base": "e3c1c6c0ef27bb5d3a5e352d35e231a1f3830c7e",
+      "short": "scheme",
+      "file_count": 31673,
+      "files_with_old_import": 17479,
+      "local_files": 91,
+      "new_local_files": 90,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    },
+    {
+      "label": "HA",
+      "branch": "research/ha-review",
+      "head": "40152e8b033154deda5c32d059336afa4a1f8e6c",
+      "merge_base": "6503860663ef692775df04b6e7fdabaf749d32f4",
+      "short": "ha-review",
+      "file_count": 31549,
+      "files_with_old_import": 17479,
+      "local_files": 0,
+      "new_local_files": 0,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    },
+    {
+      "label": "HTT",
+      "branch": "research/htt-review",
+      "head": "b63a0e170fc27a6ec770fbf1130c4c3520280a8b",
+      "merge_base": "5933bde0c3b8a975fff34c19304f985ec0cd565f",
+      "short": "htt-review",
+      "file_count": 31549,
+      "files_with_old_import": 17479,
+      "local_files": 0,
+      "new_local_files": 0,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    },
+    {
+      "label": "K の地図",
+      "branch": "research/k-maps",
+      "head": "11e2e7be20251a4feea936c25ebdf24060993c3d",
+      "merge_base": "86fb5ab0c42066e65ae8ebcc105a817d8c3db3ea",
+      "short": "k-maps",
+      "file_count": 31549,
+      "files_with_old_import": 17479,
+      "local_files": 0,
+      "new_local_files": 0,
+      "local_files_with_old_import": 0,
+      "new_files_with_old_import": 0,
+      "old_import_lines_in_local_files": 0,
+      "local_imports": {},
+      "vanished_during_scan": []
+    }
+  ]
+}

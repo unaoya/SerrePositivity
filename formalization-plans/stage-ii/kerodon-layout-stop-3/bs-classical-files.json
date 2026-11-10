@@ -1,0 +1,17 @@
+[
+  "SerrePositivity/BhattScholze/Delta/Distinguished/PrimeLocalFlat.lean",
+  "SerrePositivity/BhattScholze/Delta/Distinguished/PrimeLocalIntegers.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/FreeDPModPBlocks.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/FrobeniusDivisionPD.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePD.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDFactorial.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDKoszul.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDPrimeRegular.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDTor.lean",
+  "SerrePositivity/BhattScholze/Delta/DividedPower/TruncatedPolynomialBasis.lean",
+  "SerrePositivity/CommutativeAlgebra/KoszulRegular/Powers.lean",
+  "SerrePositivity/CommutativeAlgebra/KoszulRegular/PrincipalReduction.lean",
+  "formalization-plans/bhatt-scholze/drafts/A0/W15K1/AuditK1.lean",
+  "formalization-plans/bhatt-scholze/drafts/A0/W15K1/SerrePositivity/BhattScholze/Delta/DividedPower/FrobeniusDivisionRegularSequence.lean",
+  "formalization-plans/bhatt-scholze/drafts/A0/W15K1/SerrePositivity/BhattScholze/Delta/DividedPower/RegularSequencePDUniversalTor.lean"
+]
