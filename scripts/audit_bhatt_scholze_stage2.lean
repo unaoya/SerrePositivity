@@ -206,6 +206,20 @@ import SerrePositivity.HomologicalAlgebra.Cosimplicial.CohomologyCupGradedRing
 import SerrePositivity.HomologicalAlgebra.Cosimplicial.CohomologyZero
 import SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleCochainCup
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionLinearMap
+import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalFlat
+import SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers
+import SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks
+import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionPD
+import SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePD
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDFactorial
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDKoszul
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTor
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDUniversalTor
+import SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis
+import SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers
+import SerrePositivity.CommutativeAlgebra.KoszulRegular.PrincipalReduction
 import Lean.Util.CollectAxioms
 
 /-!
@@ -218,6 +232,20 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalFlat,
+    `SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionPD,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.FrobeniusDivisionRegularSequence,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePD,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDFactorial,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDKoszul,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDPrimeRegular,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTor,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDUniversalTor,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis,
+    `SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers,
+    `SerrePositivity.CommutativeAlgebra.KoszulRegular.PrincipalReduction,
     `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPDerivation,
     `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPIntegral,
     `SerrePositivity.BhattScholze.Prismatic.BocksteinCupSquare,
