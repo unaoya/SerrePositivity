@@ -87,3 +87,24 @@ Tot を除く E4 は約 400–1,000 行。Tot の追加は G10 側の証明を�
 **置き場所の案。** 各群の実例は `EInfinity/BarrattEccles/Theory/`。D 側だけの比較は `EInfinity/ComplexLimits/` か同じ `Theory/` 内の別ファイル。表中の **［一般∞］** は模型に固有でない補題候補で、KL-W1 の取り込みまでは `EInfinity/` 配下の専用補助ファイルに置き、移動候補として報告する。実例の証明で使う模型構造は既に構成したものを明示し、`[ModelCategory SSet]` は使わない。
 
 停止点 0 ではこの報告だけを追加し、段 1 は承認待ち。
+
+## 6. 停止点 1　E1（D の側）
+
+`main` の承認 154faf181 を含む ea5d61388 を `math/bs-impl` に取り込んだ（7507b59e8）。
+
+| 欄 | 本体の宣言と証明 |
+| --- | --- |
+| `restrictD` | `barrattEcclesRestrictD`。全複体の dg nerve で、既存の `dgNerveRestrictScalarsIso` と `restrictionComplexDGFunctor` による項別制限を行い、半自由解像を取る。 |
+| `restrictD_id` | `barrattEcclesRestrictD_id`。全複体での厳密な恒等則と既存の半自由 retract を使う。 |
+| `restrictD_comp` | `barrattEcclesRestrictD_comp`。全複体での厳密な合成則を使い、中間の半自由解像の augmentation を、項別制限後に反転する。各頂点で同じ augmentation の辺を評価する。 |
+| `restrictD_homologyIso` | `barrattEcclesRestrictD_homologyIso`。任意の辺で項別制限した複体射を回収し、`exactCochainHomologyIso` を適用する。半自由解像と比較してから、係数制限が台の可換群を保つことを使う。 |
+| `strictToD_homologyIso` | `complexOrdinaryDerivedSourceHomologyIso`。既存の `complexOrdinaryDerivedSource` に対し、同じ半自由解像の全 augmentation からホモロジーの自然同型を作る。厳密複体の各射は閉零辺として元の複体射に一致する。 |
+
+任意の可換環準同型と全余鎖次数を扱う。新設の二モジュールは複体に固有で、［一般∞］の移動候補はない。
+
+**入口と段階 II の監査に登録するモジュール**
+
+- `SerrePositivity.EInfinity.ComplexLimits.StrictHomology`
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction`
+
+`with_build_lock.sh --wait 1800` の下で `lake build SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction` に成功（追加の二本をコンパイル、警告 0）。両モジュールの宣言を段階 II と同じ方式で再帰監査し、52 宣言・標準三公理のみ。sorry・追加公理 0。既存の宣言と界面の型は維持。入口と共通監査への登録は調整役に渡す。
