@@ -85,3 +85,6 @@
 - 対象ビルドと公開 2 宣言の監査を通過。標準三公理のみ、`sorry` 0。停止点 3 の検収条件は未達。
 - Proposition 3.13 (2) の変数版を `prismaticEnvelope_completedBaseChange_of_variables` に実装。完備テンソル積の二脚を保ち、拡大イデアルに対する envelope の普遍性を示した。正則性・有界性は底変換後の完備自由 δ 環との同型に移した。草稿の型は維持した。
 - `CompletedTensor`・`VariableEnvelopeBaseChange` の対象ビルドと公開 16 宣言の監査を通過。標準三公理のみ、`sorry` 0。∞ 圏・E3 への推移的 import と KST への直接 import はない。
+- Lemma 3.7 (3) を `exists_boundedPrism_of_completelyFlat_deltaAlgebra` に実装。指定の δ 構造・基底射を保ち、基底生成元の像を向きとする有界 prism を得た。Lemma 3.7 (2) の上に有界な版も、古典的完備性と生成元冪商のねじれの有界性まで証明した。次数に上界を置かない鎖複体版は検証中。
+- Corollary 3.12 の部品として `PrismOver.IsFaithfullyFlat`、同型と合成での保存、有限剰余の忠実平坦性と通常の増大 Čech 完全性、完備化前後の有限剰余の標準同型を追加。完備テンソル積の完全忠実平坦性・濃度と完備 Čech の比較は残る。
+- この束の新規 7 モジュールの対象ビルドと公開 11 宣言の監査を通過。標準三公理のみ、`sorry` 0。
