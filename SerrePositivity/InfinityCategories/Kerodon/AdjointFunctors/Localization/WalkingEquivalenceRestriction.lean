@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.FinalHornFamily
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 
@@ -18,7 +18,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 def walkingEquivalenceRestriction (X : SSet.{u}) :
     (ihom walkingEquivalence).obj X ⟶ equivalencePath X :=
@@ -51,4 +51,4 @@ lemma equivalencePath_flip_invertible {B X : SSet.{u}} [Quasicategory X]
   rw [intervalFunctorVertexEdge_functorVertex, SSet.yonedaEquiv_comp] at hh
   exact (isInvertibleEdge_congr hh).mp hb
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

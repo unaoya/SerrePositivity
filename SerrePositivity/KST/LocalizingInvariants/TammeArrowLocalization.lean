@@ -23,19 +23,19 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
 
 def tammeArrowQuotient : SSet.{u} :=
-  edgeLocalization (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj (tammeArrowLocalizingEdges p q)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj (tammeArrowLocalizingEdges p q)
 
 instance tammeArrowQuotient_quasicategory : Quasicategory (tammeArrowQuotient p q) :=
-  edgeLocalization_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
 instance tammeArrowQuotient_hasZeroVertex : HasZeroVertex (tammeArrowQuotient p q) :=
   edgeLocalization_hasZeroVertex _ _
 
 def tammeArrowQuotientMap : (_root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.stableArrowCategory (laxCategory p q)).obj ⟶
-    tammeArrowQuotient p q := edgeLocalizationMap _ _
+    tammeArrowQuotient p q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap _ _
 
 lemma tammeArrowQuotient_isLocalization : IsLocalization (tammeArrowQuotientMap p q)
-    (tammeArrowLocalizingEdges p q) := edgeLocalization_isLocalization _ _
+    (tammeArrowLocalizingEdges p q) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization _ _
 
 lemma tammeArrowProjection_inverts :
     InvertsEdges ((ihom (Δ[1] : SSet.{u})).map (tammeQuotientMap p q))

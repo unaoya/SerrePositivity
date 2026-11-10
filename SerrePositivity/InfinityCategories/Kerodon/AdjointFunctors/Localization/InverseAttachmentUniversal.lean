@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentLifting
 public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
@@ -17,7 +17,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (X : SSet.{u}) (W : Set (X _⦋1⦌))
 
 instance inverseAttachmentRestriction_trivialKanFibration (Y : SSet.{u}) [Quasicategory Y] :
@@ -32,4 +32,4 @@ lemma inverseAttachment_isLocalization : IsLocalization (inverseAttachmentInclus
   change IsQCatEquivalence (inverseAttachmentRestriction X W Y)
   exact isQCatEquivalence_of_trivialKanFibration _
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

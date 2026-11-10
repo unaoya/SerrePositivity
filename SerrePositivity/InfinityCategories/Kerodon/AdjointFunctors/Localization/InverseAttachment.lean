@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal
 public import SerrePositivity.InfinityCategories.F1B.Localization.ParametricDiagramGluing
 public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
 
@@ -19,7 +19,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 variable (X : SSet.{u}) (W : Set (X _⦋1⦌))
 
@@ -72,4 +72,4 @@ lemma inverseAttachment_inverts : InvertsEdges (inverseAttachmentInclusion X W) 
     ((truncation 2).map (inverseAttachmentInclusion X W)))
   exact (isInvertibleEdge_congr h).mpr he
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

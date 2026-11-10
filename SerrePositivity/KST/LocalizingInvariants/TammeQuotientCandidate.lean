@@ -29,15 +29,15 @@ lemma tammeLocalizingEdges_eq : tammeLocalizingEdges p q = invertedEdges (laxDif
   (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q) (exactLaxDifference p q)
     (exactLaxDifference_kernel p q)).symm
 
-def tammeQuotient : SSet.{u} := edgeLocalization (laxCategory p q).obj (tammeLocalizingEdges p q)
+def tammeQuotient : SSet.{u} := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization (laxCategory p q).obj (tammeLocalizingEdges p q)
 
 instance tammeQuotient_quasicategory : Quasicategory (tammeQuotient p q) :=
-  edgeLocalization_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
-def tammeQuotientMap : (laxCategory p q).obj ⟶ tammeQuotient p q := edgeLocalizationMap _ _
+def tammeQuotientMap : (laxCategory p q).obj ⟶ tammeQuotient p q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap _ _
 
 lemma tammeQuotient_isLocalization : IsLocalization (tammeQuotientMap p q)
-    (tammeLocalizingEdges p q) := edgeLocalization_isLocalization _ _
+    (tammeLocalizingEdges p q) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization _ _
 
 lemma tammeDifference_inverts : InvertsEdges (laxDifference p q) (tammeLocalizingEdges p q) := by
   rw [tammeLocalizingEdges_eq]

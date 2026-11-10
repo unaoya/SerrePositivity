@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction
 
 /-!
 概要：自由な可逆区間の図式の制限は、可逆辺の関手圏への trivial Kan fibration。
@@ -16,7 +16,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 lemma walkingEquivalenceRestriction_lifting {A B X : SSet.{u}} [Quasicategory X]
     (i : A ⟶ B) [Mono i] : HasLiftingProperty i (walkingEquivalenceRestriction X) := by
@@ -59,4 +59,4 @@ lemma walkingEquivalenceRestriction_isQCatEquivalence (X : SSet.{u}) [Quasicateg
     IsQCatEquivalence (walkingEquivalenceRestriction X) :=
   isQCatEquivalence_of_trivialKanFibration _
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

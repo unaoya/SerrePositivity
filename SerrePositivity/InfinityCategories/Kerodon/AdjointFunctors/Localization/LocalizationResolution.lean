@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentUniversal
 public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import Mathlib.Tactic.CrossRefAttribute
 
@@ -19,7 +19,7 @@ universe u
 open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 lemma localization_postcomp_precompositionEquivalence {X P Q : SSet.{u}}
     (F : X ⟶ P) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
@@ -45,4 +45,4 @@ theorem exists_quasicategory_localization (X : SSet.{u}) (W : Set (X _⦋1⦌)) 
     localization_postcomp_precompositionEquivalence _ W (inverseAttachment_isLocalization X W)
       j (isPrecompositionEquivalence_of_innerAnodyne j hj)⟩
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

@@ -40,9 +40,9 @@ lemma localization_preservesZero {X Q : SSet.{u}} [Quasicategory X] [Quasicatego
   ⟨localization_preservesInitial F W hF x hx.1, localization_preservesTerminal F W hF x hx.2⟩
 
 instance edgeLocalization_hasZeroVertex (X : SSet.{u}) [Quasicategory X] [HasZeroVertex X]
-    (W : Set (X _⦋1⦌)) : HasZeroVertex (edgeLocalization X W) :=
-  ⟨⟨(edgeLocalizationMap X W).app (Opposite.op ⦋0⦌) (chosenZeroVertex X).vertex,
-    localization_preservesZero _ W (edgeLocalization_isLocalization X W) _
+    (W : Set (X _⦋1⦌)) : HasZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization X W) :=
+  ⟨⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap X W).app (Opposite.op ⦋0⦌) (chosenZeroVertex X).vertex,
+    localization_preservesZero _ W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization X W) _
       (chosenZeroVertex X).isZero⟩⟩
 
 end SerrePositivity.KST.LocalizingInvariants

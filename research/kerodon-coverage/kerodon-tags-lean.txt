@@ -293,8 +293,8 @@
 [Kerodon Tag 01MF](https://kerodon.net/tag/01MF) corresponds to declaration 'SerrePositivity.InfinityCategories.invertingFunctors_quasicategory'.
 [Kerodon Tag 01MP](https://kerodon.net/tag/01MP) corresponds to declaration 'SerrePositivity.InfinityCategories.IsLocalization'.
 [Kerodon Tag 01MP](https://kerodon.net/tag/01MP) corresponds to declaration 'SerrePositivity.InfinityCategories.localizationPrecomposition'.
-[Kerodon Tag 01N0](https://kerodon.net/tag/01N0) corresponds to declaration 'SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization'.
-[Kerodon Tag 01N0](https://kerodon.net/tag/01N0) corresponds to declaration 'SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization'.
+[Kerodon Tag 01N0](https://kerodon.net/tag/01N0) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_quasicategory_localization'.
+[Kerodon Tag 01N0](https://kerodon.net/tag/01N0) corresponds to declaration 'SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment_isLocalization'.
 [Kerodon Tag 01NT](https://kerodon.net/tag/01NT) corresponds to declaration 'SerrePositivity.InfinityCategories.trivialKanFibration_sliceOverPostcomp'.
 [Kerodon Tag 01NT](https://kerodon.net/tag/01NT) corresponds to declaration 'SerrePositivity.InfinityCategories.trivialKanFibration_sliceUnderPostcomp'.
 [Kerodon Tag 01NW](https://kerodon.net/tag/01NW) corresponds to declaration 'SerrePositivity.InfinityCategories.fibration_of_kanEquivalenceLifting_of_kanComplex'.

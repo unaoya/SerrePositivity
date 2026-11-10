@@ -17,7 +17,7 @@ open CategoryTheory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 lemma exists_coreAnodyne_lift {A B X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (p : X ⟶ Y) (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) (j : A ⟶ B)
@@ -48,4 +48,4 @@ lemma kanSource_map_invertible {A X : SSet.{u}} [KanComplex A] (f : A ⟶ X)
   exact (isInvertibleEdge_congr (e := (edgeOfSimplex s).map ((truncation 2).map f))
     (f := edgeOfSimplex (f.app (Opposite.op ⦋1⦌) s)) rfl).mp (hs.map f)
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

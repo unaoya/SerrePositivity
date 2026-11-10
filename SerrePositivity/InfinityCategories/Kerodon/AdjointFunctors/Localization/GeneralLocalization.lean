@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LocalizationResolution
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution
 
 /-!
 概要：実際に構成した任意辺集合の局所化を、元の quasicategory と射として公開する。
@@ -17,7 +17,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (X : SSet.{u}) (W : Set (X _⦋1⦌))
 
 def edgeLocalization : SSet.{u} := Classical.choose (exists_quasicategory_localization X W)
@@ -39,4 +39,4 @@ lemma edgeLocalization_universal (Y : SSet.{u}) [Quasicategory Y] :
       (edgeLocalization_inverts X W) Y) :=
   (edgeLocalization_isLocalization X W).choose_spec Y
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

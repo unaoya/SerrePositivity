@@ -320,3 +320,7 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 ### 関手圏の各点ごとの余極限
 
 `KST/SConstruction/FunctorPointwiseColimitExistence` と同じ群に属する依存 4 本を Kerodon §7.1 の `LimitsAndColimits/LimitsAndColimits/` に移した。利用側 19 本を更新し、∞ 圏の外で参照される 11 名を `Project/Compatibility/KSTPointwiseColimits.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 5 本、互換モジュール、利用側の `KST.SConstruction.FunctorInitialVertices` を検査した。保存比較 v3b は 18 宣言で PASS、未説明差分 0 件。
+
+### 局所化の存在
+
+`KST/LocalizingInvariants/GeneralLocalization` と同群の依存 9 本を Kerodon §6.3 の `AdjointFunctors/Localization/` に移した。利用側 7 本を更新し、∞ 圏の外で参照される 5 名を `Project/Compatibility/KSTLocalization.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 10 本と互換モジュールをコンパイルし、`Derived.Localization.GroupoidCompletion` も新しい明示的な import で検査した。保存比較 v3b は 43 宣言で PASS、未説明差分 0 件。移動した Kerodon 属性も Lean で照合した。

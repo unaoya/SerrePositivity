@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 
 /-!
@@ -18,7 +18,7 @@ open CategoryTheory Limits MonoidalClosed SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 def walkingEquivalence : SSet.{u} :=
   SimplicialModel.AnodyneKanReplacement.functor.obj (Δ[1] : SSet.{u})
@@ -63,4 +63,4 @@ lemma walkingEquivalence_relative_extension {X Y : SSet.{u}}
   exists_coreAnodyne_lift p hp walkingEquivalenceEdge walkingEquivalenceEdge_anodyne e g
     (invertibleInterval_allEdges e he) (kanSource_map_invertible g) h
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GeneralLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomology
 
 /-!
@@ -30,22 +30,22 @@ def quasiIsoInfinityEdges : Set ((nerve (InfinityPresentation R)) _⦋1⦌) :=
   {e | QuasiIso e.hom.down.hom}
 
 def quasiIsoInfinity : SSet.{u+1} :=
-  edgeLocalization (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)
 
 def quasiIsoInfinityMap : nerve (InfinityPresentation R) ⟶ quasiIsoInfinity R :=
-  edgeLocalizationMap (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)
 
 instance quasiIsoInfinity_quasicategory : Quasicategory (quasiIsoInfinity R) :=
-  edgeLocalization_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
 lemma quasiIsoInfinity_isLocalization :
     IsLocalization (quasiIsoInfinityMap R) (quasiIsoInfinityEdges R) :=
-  edgeLocalization_isLocalization _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization _ _
 
 lemma quasiIsoInfinityMap_inverts {A B : Mon (Complex R)} (f : A ⟶ B) (hf : QuasiIso f.hom) :
     IsInvertibleEdge ((nerve.edgeMk ((infinityPresentationFunctor R).map f)).map (quasiIsoInfinityMap R)).toTruncated := by
   have he : (nerve.edgeMk ((infinityPresentationFunctor R).map f)).edge ∈ quasiIsoInfinityEdges R := hf
-  have hi := (edgeLocalization_inverts (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)) he
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_inverts (nerve (InfinityPresentation R)) (quasiIsoInfinityEdges R)) he
   exact (isInvertibleEdge_congr
     (e := (edgeOfSimplex (nerve.edgeMk ((infinityPresentationFunctor R).map f)).edge).map
       ((truncation 2).map (quasiIsoInfinityMap R)))

@@ -2814,6 +2814,279 @@
       "module": "SerrePositivity.KST.SConstruction.FunctorInitialBoundary",
       "new_module": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorInitialBoundary",
       "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+      "type_dependencies": []
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalizationMap",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+      "type_dependencies": [
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalization"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalization_inverts",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_inverts",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+      "type_dependencies": [
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalization",
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalizationMap"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalization_isLocalization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+      "type_dependencies": [
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalization",
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalizationMap"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalization_quasicategory",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+      "type_dependencies": [
+        "SerrePositivity.KST.LocalizingInvariants.edgeLocalization"
+      ]
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.edgeLocalization_universal",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_universal",
+      "module": "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.equivalencePath_flip_invertible",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.equivalencePath_flip_invertible",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.exists_coreAnodyne_lift",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_coreAnodyne_lift",
+      "module": "SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.exists_quasicategory_localization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_quasicategory_localization",
+      "module": "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentInclusion",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentInclusion",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentInterval",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentInterval",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentRestriction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentRestriction",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentRestriction_interval",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentRestriction_interval",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentRestriction_lifting",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentRestriction_lifting",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentRestriction_trivialKanFibration",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentRestriction_trivialKanFibration",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentUniversal"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachmentRestriction_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachmentRestriction_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_edge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment_edge",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_inverts",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment_inverts",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseAttachment_isLocalization",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseAttachment_isLocalization",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentUniversal"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseIntervalAttachment",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseIntervalAttachment",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseIntervalAttachment_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseIntervalAttachment_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.inverseIntervalFamily",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.inverseIntervalFamily",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.invertibleIntervalCoreLift",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertibleIntervalCoreLift",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.invertibleIntervalCoreLift_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertibleIntervalCoreLift_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.invertibleInterval_allEdges",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertibleInterval_allEdges",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.invertingEdgeRestriction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertingEdgeRestriction",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.invertingEdgeRestriction_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertingEdgeRestriction_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.kanSource_map_invertible",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.kanSource_map_invertible",
+      "module": "SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.localization_postcomp_precompositionEquivalence",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localization_postcomp_precompositionEquivalence",
+      "module": "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.markedEdgeEvaluation",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedEdgeEvaluation",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.markedEdgeEvaluation_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedEdgeEvaluation_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.markedEdgeFamily",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedEdgeFamily",
+      "module": "SerrePositivity.KST.LocalizingInvariants.InverseAttachment",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalence",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalence",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceEdge",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceEdge",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceEdge_anodyne",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceEdge_anodyne",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceRestriction",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceRestriction",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceRestriction_isQCatEquivalence",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceRestriction_isQCatEquivalence",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceRestriction_lifting",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceRestriction_lifting",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceRestriction_trivialKanFibration",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceRestriction_trivialKanFibration",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalenceRestriction_ι",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalenceRestriction_ι",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalence_kanComplex",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalence_kanComplex",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
+    },
+    {
+      "old": "SerrePositivity.KST.LocalizingInvariants.walkingEquivalence_relative_extension",
+      "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.walkingEquivalence_relative_extension",
+      "module": "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence",
+      "new_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence"
     }
   ],
   "modules": {
@@ -2877,7 +3150,17 @@
     "SerrePositivity.KST.SConstruction.FunctorPointwiseColimitExistence": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimitExistence",
     "SerrePositivity.KST.SConstruction.FunctorPointwiseColimits": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorPointwiseColimits",
     "SerrePositivity.KST.SConstruction.InitialBoundaryIso": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryIso",
-    "SerrePositivity.KST.SConstruction.RelativeInitialExtension": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KSTSConstructionRelativeInitialExtension"
+    "SerrePositivity.KST.SConstruction.RelativeInitialExtension": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.KSTSConstructionRelativeInitialExtension",
+    "SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoreAnodyneLifting",
+    "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneralLocalization",
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachment": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment",
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentLifting",
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction",
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentUniversal",
+    "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationResolution",
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalence",
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceRestriction",
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WalkingEquivalenceUniversal"
   },
   "namespaces": {
     "SerrePositivity.KST.ProExcision.AWBoundaryCoordinates": {
@@ -3062,10 +3345,41 @@
     },
     "SerrePositivity.KST.SConstruction.RelativeInitialExtension": {
       "SerrePositivity.KST.SConstruction": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.CoreAnodyneLifting": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.GeneralLocalization": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachment": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.LocalizationResolution": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal": {
+      "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization"
     }
   },
   "opens": {
     "SerrePositivity.KST.ProExcision": "SerrePositivity.KST.ProExcision",
-    "SerrePositivity.KST.SConstruction": "SerrePositivity.KST.SConstruction"
+    "SerrePositivity.KST.SConstruction": "SerrePositivity.KST.SConstruction",
+    "SerrePositivity.KST.LocalizingInvariants": "SerrePositivity.KST.LocalizingInvariants"
   }
 }

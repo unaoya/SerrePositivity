@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachmentRestriction
 
 /-!
 概要：辺反転の貼合せからの元の制限は、任意の単射の相対図式を充填する。
@@ -16,7 +16,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 
 lemma inverseAttachmentRestriction_lifting {A B X Y : SSet.{u}} [Quasicategory Y]
     (W : Set (X _⦋1⦌)) (i : A ⟶ B) [Mono i] :
@@ -74,4 +74,4 @@ lemma inverseAttachmentRestriction_lifting {A B X Y : SSet.{u}} [Quasicategory Y
     exact _root_.SerrePositivity.InfinityCategories.F1B.Localization.pushoutFamilyGlue_inl _ _ f g hfg
   exact CommSq.HasLift.mk' { l := r, fac_left := hl, fac_right := hr }
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.InverseAttachment
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InverseAttachment
 
 /-!
 概要：辺反転の貼合せからの制限と、元の各指定辺への制限を厳密に照合する。
@@ -16,7 +16,7 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-namespace SerrePositivity.KST.LocalizingInvariants
+namespace SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
 variable (X : SSet.{u}) (W : Set (X _⦋1⦌)) (Y : SSet.{u})
 
 def invertingEdgeRestriction (w : W) :
@@ -62,4 +62,4 @@ lemma inverseAttachmentRestriction_interval (w : W) :
   rw [← NatTrans.comp_app, ← pre_map, ← NatTrans.comp_app, ← pre_map,
     inverseAttachment_edge]
 
-end SerrePositivity.KST.LocalizingInvariants
+end SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
