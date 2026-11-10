@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：随伴から右 pinched 写像空間のホモトピー同値を構成する。
@@ -32,6 +33,7 @@ noncomputable def intervalMappingEquivalence {X Y : SSet.{u}}
 方針：右模型→区間模型→adjunct 比較→右模型の三つの同値を合成する。
 規約：各点での同値のデータ。対象変数の射に関する自然性はここでは主張しない。
 使われ方：Kerodon Prop 6.2.1.17 の順方向の pinched 模型版。 -/
+@[kerodon 02F1]
 noncomputable def pinchedHomEquivalence {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
     (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) :

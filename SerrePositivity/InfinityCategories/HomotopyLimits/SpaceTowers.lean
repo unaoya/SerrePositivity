@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan fibration の可算塔の実際の極限を 𝒮 の極限錐として公開する。
@@ -87,6 +88,7 @@ noncomputable def spaceTowerCone : JoinCone (kanDiagramCoherentNerve F) :=
 方針：全 Hom の極限性と遷移の fibration 性を検証して塔の移送定理を適用する。
 規約：Hom 条件や追加の比較同値を仮定しない。
 使われ方：HTT 4.2.4.1 の双対、Kerodon 7.5.3.12、7.5.4.6、γ3c の具体的な塔の極限。 -/
+@[kerodon 03HU]
 lemma spaceTowerCone_isLimitCone : IsLimitCone (spaceTowerCone F) := by
   have : ∀ (X : KanObject.{u}) (n : ℕ), Fibration
       ((simplicialHomDiagram F X).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op)) :=

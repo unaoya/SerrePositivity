@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitHomCriterion
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：h Fun の指定単位が誘導する Hom 全単射による quasicategory 随伴の判定。
@@ -83,6 +84,7 @@ lemma qcatAdjunctionOfUnitHomBijective_unitHom {X Y : SSet.{u}}
 方針：順方向は随伴の adjunct、逆方向は単位からの構成と単位の回収を使う。
 規約：点ごとの写像空間条件からこの全パラメータ条件への橋は別に要する。
 使われ方：Kerodon Cor 6.2.6.5 の逆方向の代数的な終点。 -/
+@[kerodon 02FX]
 lemma qcat_exists_adjunction_unitHom_iff {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
     (η : FunctorHom (𝟙 X) (F ≫ G)) :

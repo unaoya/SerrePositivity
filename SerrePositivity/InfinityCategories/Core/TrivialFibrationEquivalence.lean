@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：trivial Kan fibration から明示的な quasicategory の同値を構成する。
@@ -56,6 +57,7 @@ lemma trivialKanFibration_exists_section {E B : SSet.{u}} (p : E ⟶ B)
 方針：切断を逆射とし、内部 Hom の可縮な fiber で単位の可逆二胞体を作る。
 規約：順方向の射は与えられた p そのもの。
 使われ方：Kerodon Proposition 4.5.4.11、Theorem 4.8.4.1。 -/
+@[kerodon 01EH]
 noncomputable def qCatEquivalenceOfTrivialKanFibration {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p] :
     QCatEquivalence E B := by
@@ -84,6 +86,7 @@ noncomputable def qCatEquivalenceOfTrivialKanFibration {E B : SSet.{u}}
 方針：明示的な同値のデータを存在量化する。
 規約：射 p を固定した同値性。
 使われ方：Kerodon Theorem 4.8.4.1 のファイブレーションへの還元。 -/
+@[kerodon 01EH, kerodon 04FA]
 lemma isQCatEquivalence_of_trivialKanFibration {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [TrivialKanFibration p] :
     IsQCatEquivalence p := (qCatEquivalenceOfTrivialKanFibration p).isQCatEquivalence

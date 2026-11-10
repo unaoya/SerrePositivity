@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：小さい κ-compact な全部分生成圏によって κ-accessible ∞ 圏を定義する。
@@ -38,6 +39,7 @@ structure IsKappaCompactGenerating (κ : Cardinal.{u})
   presentation : ∀ x, HasKappaFilteredGeneratorPresentation κ i x
 
 /-- 正則 κ、κ-filtered 余極限の存在、小さい κ-compact 生成圏による accessibility。 -/
+@[kerodon 06K6]
 def IsKappaAccessible (κ : Cardinal.{u}) (C : SSet.{u + 1}) [Quasicategory C] : Prop :=
   κ.IsRegular ∧ Ind.HasSmallKappaFilteredColimits κ C ∧
     ∃ (A : SSet.{u}) (hA : Quasicategory A),
@@ -45,6 +47,7 @@ def IsKappaAccessible (κ : Cardinal.{u}) (C : SSet.{u + 1}) [Quasicategory C] :
       ∃ i : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C, IsKappaCompactGenerating κ i
 
 /-- ある宇宙 u の正則濃度について κ-accessible な宇宙 u+1 の ∞ 圏。 -/
+@[kerodon 06KF]
 def IsAccessible (C : SSet.{u + 1}) [Quasicategory C] : Prop :=
   ∃ κ : Cardinal.{u}, IsKappaAccessible κ C
 

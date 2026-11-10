@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左 pinched 写像空間と左右のホモトピー圏の射の反転の比較。
@@ -169,6 +170,7 @@ def piZeroOpEquiv (X : SSet.{u}) : SSet.π₀ X.op ≃ SSet.π₀ X where
 方針：反転した X の右模型をパラメータでも反転する。
 規約：最初の頂点は x、残りの面は y に定値となる向き。
 使われ方：Kerodon Construction 4.6.5.1 の左模型。 -/
+@[kerodon 01KX]
 def pinchedHomLeft {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :=
   (pinchedHom (X := X.op) (SSet.opObjEquiv.symm y) (SSet.opObjEquiv.symm x)).op
 
@@ -176,6 +178,7 @@ def pinchedHomLeft {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :=
 方針：右模型の Kan 性を二つの反転に沿って移す。
 規約：仮定は元の X の quasicategory 性だけ。
 使われ方：Kerodon Proposition 4.6.5.5 の左模型。 -/
+@[kerodon 01L0]
 instance pinchedHomLeft_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
     KanComplex (pinchedHomLeft x y) := by
   change KanComplex ((pinchedHom (X := X.op)

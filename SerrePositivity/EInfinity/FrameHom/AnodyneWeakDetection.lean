@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 元の anodyne 局所化の同型から Kan 標的による弱同値への判定
@@ -64,6 +65,7 @@ lemma homComponents_inverts (Z : SSet.{v}) [KanComplex Z] :
 方針：元の局所化の普遍性を全 Kan 標的の反変 π₀ へ適用する。
 規約：元の射の両端に Kan 性を要求しない。
 使われ方：Quillen A の弱可縮な slice 条件への接続。 -/
+@[kerodon 00UP, kerodon 00ZH, kerodon 00ZJ, kerodon 0104]
 lemma isWeakHomotopyEquivalence {A B : SSet.{v}} (f : A ⟶ B)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : IsWeakHomotopyEquivalence f := by
   intro Z hZ

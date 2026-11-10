@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同値の合成と二つから三つ目を得る性質。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：同じ逆射を使い、単位と余単位に同型を前後合成する。
 規約：単なる頂点ごとの同型の族は仮定しない。
 使われ方：Kerodon §4.5.1 の同値の同型不変性。 -/
+@[kerodon 033Z]
 lemma IsQCatEquivalence.ofFunctorIso {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {f g : X ⟶ Y}
     (hf : IsQCatEquivalence f) (e : FunctorIso f g) : IsQCatEquivalence g := by

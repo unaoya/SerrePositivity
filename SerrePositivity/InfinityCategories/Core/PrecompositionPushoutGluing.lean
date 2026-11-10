@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionMonoCobaseChange
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単射を含む二つの pushout の間の比較による前合成の同値条件。
@@ -19,6 +20,7 @@ namespace SerrePositivity.InfinityCategories
 方針：基底の変更を B 側へ pushout した中間図式を挟み、固定基底と単射に沿う比較を使う。
 規約：i、i' は単射。比較射 a、b、c と残りの貼り合わせ射に単射性は不要。
 使われ方：Kerodon Proposition 4.5.5.9、Lemma 4.6.2.10 の貼り合わせ。 -/
+@[kerodon 0345]
 lemma isPrecompositionEquivalence_of_pushout_gluing
     {A B C D A' B' C' D' : SSet.{u}}
     {i : A ⟶ B} {i' : A' ⟶ B'} [Mono i] [Mono i']

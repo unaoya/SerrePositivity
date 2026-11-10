@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportEquivalence
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left fibration の strict transport の weighted nerve と、その fiber の比較。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：相対関手空間と undercategory による前合成の恒等・合成則を使う。
 規約：Kan 性を忘れた図式の定義には p の left fibration 性を要求しない。
 使われ方：Kerodon §§5.3.1–5.3.3、weighted nerve に入れる係数図式。 -/
+@[kerodon 035E]
 def leftStrictTransportDiagram {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) : C ⥤ SSet.{u} where
   obj c := leftStrictTransport p c

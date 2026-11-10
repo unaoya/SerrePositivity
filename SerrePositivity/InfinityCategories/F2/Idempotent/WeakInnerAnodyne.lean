@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStageColimit
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionStagePushout
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の弱い retract の商から元の強い分裂添字への標準比較は inner anodyne。
@@ -34,6 +35,7 @@ lemma retractionStageOne_innerAnodyne : innerAnodyneExtensions (retractionStage.
     ⟨retractionStageOne_transfiniteComposition⟩
 
 /-- 元の弱い retract の商から元の強い分裂添字への同じ標準比較は inner anodyne。 -/
+@[kerodon 03Z6]
 lemma weakComparison_innerAnodyne : innerAnodyneExtensions weakComparison.{u} := by
   rw [← weakShapeStageOneIso_ι]
   exact innerAnodyneExtensions.comp_mem _ _

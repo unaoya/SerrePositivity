@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPrismCell
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：prism の有限段階の全体の被覆と最後のセルの分離。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：非退化な最大次元の単体を列挙し、それぞれが生成部分に入ることを示す。
 規約：区間を左因子とする表示に列挙を移す。
 使われ方：Kerodon Lemma 3.1.2.12、prism の有限分解の終点。 -/
+@[kerodon 00TH]
 lemma relativeJoinPrismStage_top (m : ℕ) :
     relativeJoinPrismStage.{u} m (m + 1) = ⊤ := by
   rw [prodStdSimplex.subcomplex_eq_top_iff _ (by omega : 1 + m = m + 1)]

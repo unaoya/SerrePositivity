@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 public import Mathlib.CategoryTheory.Monoidal.Closed.Functor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の関手圏の nerve を nerve 間の関手単体集合と同型にする。
@@ -33,6 +34,7 @@ attribute [local instance] nerveFunctor_monoidalClosed
 方針：nerve の指数比較の指定成分を取る。
 規約：指定した通常の圏 C と D をそのまま使う。
 使われ方：通常の自然変換を元の関手圏内の射として扱う。 -/
+@[kerodon 0062, kerodon 0063]
 def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] :
     nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) :=
   asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))
@@ -51,6 +53,7 @@ lemma nerveFunctorCategoryIso_postcomp {C D E : Type u}
 方針：指数比較の uncurry 公式の積比較の逆を消去する。
 規約：nerve の積比較を明示して始域を揃える。
 使われ方：通常の関手頂点と自然変換の単体ごとの計算。 -/
+@[kerodon 0062]
 lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] :
     CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫
       uncurry (nerveFunctorCategoryIso C D).hom =

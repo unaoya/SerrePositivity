@@ -13,6 +13,7 @@ public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：filtered ∞ 圏の有限形状への対角関手と、κ 版の対角関手は right cofinal。
@@ -32,6 +33,7 @@ namespace SerrePositivity.InfinityCategories.F2
 /-- 概要：対角関手の right cofinality は全ての形状 K の coslice の弱可縮性と同値。
 方針：標準 comma の比較と Quillen A を双方向に使う。
 規約：K の有限性はこの判定自体には不要。使われ方：filtered 性の対角判定。 -/
+@[kerodon 02P4]
 lemma isRightCofinal_constantDiagram_iff (K C : SSet.{u}) [Quasicategory C] :
     IsRightCofinal (constantDiagram K C) ↔
       ∀ p : K ⟶ C, IsWeaklyContractible (sliceUnder p) := by

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.OuterHornDuality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory が Kan 複体であることとホモトピー圏が亜群であることの同値。
@@ -70,6 +71,7 @@ lemma kanComplex_of_isGroupoid (X : SSet.{u}) [Quasicategory X]
 方針：Kan 複体の可逆性と外側ホーンの可逆辺による充填を組み合わせる。
 規約：亜群性は通常の命題値クラス IsGroupoid。
 使われ方：HTT Proposition 1.2.5.1、Kerodon Proposition 4.4.2.1。 -/
+@[kerodon 0037, kerodon 0052]
 lemma kanComplex_iff_isGroupoid (X : SSet.{u}) [Quasicategory X] :
     KanComplex X ↔ IsGroupoid (hoFunctor.obj X) := by
   constructor

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightConeBoundary
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の単射に同じ右余錐点を付けた包含は right anodyne。
@@ -37,6 +38,7 @@ lemma rightConeTip_rightAnodyne (A : SSet.{u}) :
     exact h.trans (sliceOverUncurry_curry v sq.w.symm)
 
 /-- 同じ右余錐点を保つ任意の単射の拡大は、right fibration に対して持ち上がる。 -/
+@[kerodon 0196]
 lemma joinPoint_mono_rightAnodyne {A T : SSet.{u}} (i : A ⟶ T) [Mono i] :
     rightAnodyneExtensions (joinMap i (𝟙 (Δ[0] : SSet.{u}))) := by
   intro E B p hp

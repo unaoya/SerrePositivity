@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Spectra.Pointed.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 基点へ潰す商の普遍性
@@ -32,13 +33,15 @@ variable {C : Type u} [Category.{v} C] [CartesianMonoidalCategory C]
   {X Y : C} (f : X ⟶ Y) [HasPushout f (toUnit X)]
 
 /-- f の像を一つの基点へ潰す通常の商。 -/
+@[kerodon 00VK]
 noncomputable def cofiber : PointedObject C := Under.mk (pushout.inr f (toUnit X))
 
 /-- 元の対象から商の基礎対象への射。 -/
+@[kerodon 00VK]
 noncomputable def cofiberQuotient : Y ⟶ (cofiber f).right := pushout.inl f (toUnit X)
 
 /-- f の像は商の基点へ送られる。 -/
-@[reassoc (attr := simp)] lemma cofiberQuotient_condition :
+@[kerodon 00VK, reassoc (attr := simp)] lemma cofiberQuotient_condition :
     f ≫ cofiberQuotient f = toUnit X ≫ (cofiber f).hom := pushout.condition
 
 /-- f の像を基点へ送る射は、基点付きの商からの射へ降りる。 -/

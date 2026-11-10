@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativePathBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同値を右に持ち上げる射に沿って、同じ同値写像を厳密に引き戻す。
@@ -20,6 +21,7 @@ open CategoryTheory Limits SSet
 namespace SerrePositivity.InfinityCategories
 
 /-- 同値を右に持ち上げる射に沿う、元の同値の厳密な引き戻しは同値。 -/
+@[kerodon 01HJ]
 lemma IsQCatEquivalence.pullback_snd_isPrecompositionEquivalence_of_kanEquivalenceLifting
     {E B F : SSet.{u}} [Quasicategory E] [Quasicategory B] [Quasicategory F]
     {e : E ⟶ B} (he : IsQCatEquivalence e) (p : F ⟶ B)

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorAnodyneRestriction
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：底と部分図式を固定する相対関手の延長の選択空間。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：相対制限の v の相対頂点上の fiber を取る。
 規約：射影 p の充填性は定義には不要。
 使われ方：Kerodon Corollary 5.6.5.15、境界付きの相対表現の延長の選択空間。 -/
+@[kerodon 01AB]
 def relativeFunctorExtensionSpace {A D E B : SSet.{u}}
     (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A)
     (v : D ⟶ E) (hv : v ≫ p = i ≫ b) : SSet.{u} :=

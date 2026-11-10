@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.ProExcision.ShuffleIndex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Eilenberg–Zilber の shuffle の成分写像
@@ -20,6 +21,7 @@ open scoped Simplicial
 方針：全ての格子路の退化写像のテンソルを逆転数の符号で足す。
 規約：KST A.5、全次数 p+q=n。
 使われ方：全テンソルの各直和成分からの写像。 -/
+@[kerodon 00RJ]
 def shuffleBidegree (C D : SimplicialObject (ModuleCat.{u} ℤ))
     (p q n : ℕ) (h : p + q = n) :
     integerTensor (C.obj (op ⦋p⦌)) (D.obj (op ⦋q⦌)) ⟶
@@ -31,6 +33,7 @@ def shuffleBidegree (C D : SimplicialObject (ModuleCat.{u} ℤ))
 方針：各二重次数の写像を全複体の余積から降下させる。
 規約：KST Construction A.5、任意の加群の宇宙。
 使われ方：鎖写像性と AW との標準比較に使う実成分。 -/
+@[kerodon 00RJ]
 def shuffleApp (C D : SimplicialObject (ModuleCat.{u} ℤ)) (n : ℕ) :
     (chainIntegerTensor ((alternatingFaceMapComplex _).obj C)
       ((alternatingFaceMapComplex _).obj D)).X n ⟶

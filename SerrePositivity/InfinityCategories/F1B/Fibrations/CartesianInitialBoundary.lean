@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornComparison
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
 public import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cartesian fibration の fiber の始対象から全空間の相対始点境界充填を得る。
@@ -52,6 +53,7 @@ lemma cartesianFibration_op_toCocartesianHornFibration {E B : SSet.{u}}
 方針：反転した射の cocartesian 輸送を既存の fiber の判定へ渡す。
 規約：始域と底は quasicategory。
 使われ方：fiber の普遍余錐性から大域的な相対充填を得るための構造。 -/
+@[kerodon 02WV]
 lemma initialBoundaryLifting_of_isInitialVertex_fiber {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [CartesianFibration p]
     (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌) (hx : IsInitialVertex x) :

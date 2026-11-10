@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveLocali
 public import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：反射の局所対象と反転する元の辺を写像空間で特徴づける。
@@ -56,6 +57,7 @@ lemma isLocalForHom_homMk_iff_edgeOfSimplex {x y : X _⦋0⦌}
   rfl
 
 /-- 反射の局所対象は元の反射が反転する辺集合に対する局所対象と一致する。 -/
+@[kerodon 06TB]
 lemma reflective_isLocal_iff_invertedEdges (r : ReflectiveSubcategory X P) (z : X _⦋0⦌) :
     r.IsLocal z ↔ IsLocalObject (invertedEdges r.reflector) z := by
   constructor
@@ -121,6 +123,7 @@ lemma reflective_localEquivalenceHom_iff {x y : X _⦋0⦌}
     exact h z ((reflective_isLocal_iff_invertedEdges r z).mpr hz)
 
 /-- 元の反射が反転する辺集合は S-equivalence による拡大で不変。 -/
+@[kerodon 06TB]
 lemma reflective_localEquivalences_eq (r : ReflectiveSubcategory X P) :
     localEquivalences (invertedEdges r.reflector) = invertedEdges r.reflector := by
   ext s

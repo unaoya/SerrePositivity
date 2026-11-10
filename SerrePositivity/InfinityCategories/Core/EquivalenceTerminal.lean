@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の同値による終対象の保存と反映。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：逆射で移した境界を既知の終対象で充填し、逆合成の可逆二胞体で移送する。
 規約：境界の最後の頂点の条件を保つ。
 使われ方：HTT §1.2.12、Kerodon §7.1 の終対象の同値不変性。 -/
+@[kerodon 02MY]
 lemma QCatEquivalence.map_isTerminalVertex {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) {x : X _⦋0⦌}
     (hx : IsTerminalVertex x) : IsTerminalVertex (e.hom.app (Opposite.op ⦋0⦌) x) := by
@@ -44,6 +46,7 @@ lemma QCatEquivalence.map_isTerminalVertex {X Y : SSet.{u}}
 方針：逆同値で終対象性を戻し、単位の頂点での同型で元の頂点へ移す。
 規約：任意の頂点 x を扱う。
 使われ方：HTT §1.2.12、Kerodon §7.1 の終対象の同値不変性。 -/
+@[kerodon 02HS]
 lemma QCatEquivalence.isTerminalVertex_iff {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) (x : X _⦋0⦌) :
     IsTerminalVertex x ↔ IsTerminalVertex (e.hom.app (Opposite.op ⦋0⦌) x) := by
@@ -88,6 +91,7 @@ lemma IsSimplicialHomotopyEquivalence.isContractibleKan_iff {X Y : SSet.{u}}
 方針：像の終対象への写像空間の可縮性をホモトピー同値で戻し、A3d の判定を使う。
 規約：本質的全射性はこの方向には不要。
 使われ方：Kerodon §4.8.3、§7.1 の充満忠実な部分圏での終対象。 -/
+@[kerodon 01JN]
 lemma IsFullyFaithful.reflects_isTerminalVertex {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f)
     {x : X _⦋0⦌} (hx : IsTerminalVertex (f.app (Opposite.op ⦋0⦌) x)) : IsTerminalVertex x := by

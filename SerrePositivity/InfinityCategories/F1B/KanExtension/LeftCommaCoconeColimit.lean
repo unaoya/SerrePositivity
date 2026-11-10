@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
 public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：comma fiber の普遍余錐から候補の局所余錐の余極限性を導く。
@@ -112,6 +113,7 @@ lemma exists_kanLeftExtension_of_local_colimits {K C D : SSet.{u}}
 方針：必要性は点ごとの値、十分性は coherent な普遍余錐の組み立てを使う。
 規約：K・C・D は同じ宇宙の quasicategory。
 使われ方：左 Kan 拡張の存在の点ごとの判定。 -/
+@[kerodon 02YW]
 lemma exists_kanLeftExtension_iff_local_colimits {K C D : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) (F₀ : K ⟶ D) :
     (∃ (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)), IsLeftKanExtension δ F₀ F β) ↔

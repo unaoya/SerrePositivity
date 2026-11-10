@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanSect
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveLeftFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：切断空間と相対関手空間の同型、および Kan 値図式の Bousfield–Kan end の Kan 性。
@@ -64,6 +65,7 @@ lemma simplicialSections_kanComplex {K E : SSet.{u}} (p : E ⟶ K) [LeftFibratio
 方針：weighted nerve の射影の left fibration 性から切断空間の Kan 性を得て同型で移す。
 規約：遷移の fibration 性や添字圏の有限性を要求しない。
 使われ方：Kerodon 7.5.3.12、7.5.4.6 の一般の Kan 図式の homotopy 極限模型。 -/
+@[kerodon 03A1]
 lemma bousfieldKanHolim_kanComplex {I : Type u} [SmallCategory I] (H : I ⥤ SSet.{u})
     [∀ i, KanComplex (H.obj i)] : KanComplex (bousfieldKanHolim H) := by
   have := simplicialSections_kanComplex (weightedNerveProjection H)

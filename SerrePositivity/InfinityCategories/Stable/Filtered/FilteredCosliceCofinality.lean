@@ -8,6 +8,7 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CosliceCoproduct
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：filtered ∞ 圏の有限図式の coslice から元の ∞ 圏への射影は right cofinal。
@@ -42,6 +43,7 @@ lemma isWeaklyContractible_pullback_cosliceProjections {K L C : SSet.{u}}
 方針：各頂点の標準 comma を和の図式の coslice と比較し、Quillen A を適用する。
 規約：right cofinal は余極限を計算する向き。
 使われ方：filtered 図式の余錐を添字にした余極限の制限。 -/
+@[kerodon 06D0]
 lemma isRightCofinal_sliceUnderProjection_of_filtered {K C : SSet.{u}} [K.Finite]
     [Quasicategory C] [IsFilteredInfinity C] (p : K ⟶ C) :
     IsRightCofinal (sliceUnderProjection p) := by

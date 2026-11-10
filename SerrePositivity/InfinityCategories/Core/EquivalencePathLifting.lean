@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.Core.PrismBoundaryExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆な辺の path の始点評価の持ち上げ性。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：正次元では境界上の prism と始点の単体を延長し、全部分複体へ戻す。
 規約：標的の quasicategory 性だけを仮定する。
 使われ方：Kerodon Corollary 4.5.3.24 の始点側の評価。 -/
+@[kerodon 02BY]
 instance trivialKanFibration_equivalencePathEndpoint_zero (Y : SSet.{u}) [Quasicategory Y] :
     TrivialKanFibration (equivalencePathEndpoint Y 0) := by
   apply (trivialKanFibration_iff_boundary _).2

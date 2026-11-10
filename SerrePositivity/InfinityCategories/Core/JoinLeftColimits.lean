@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.JoinLifting
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Connected
 public import Mathlib.CategoryTheory.Adjunction.Limits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の join の左因子の連結な余極限の保存。
@@ -67,6 +68,7 @@ def sliceOverUnderFunctor (K : SSet.{u}) : Under K ⥤ SSet.{u} where
 方針：任意の単体集合に対する slice の普遍性を自然な Hom の同値にする。
 規約：quasicategory 性は不要。
 使われ方：Kerodon Lemma 4.6.2.10 の join の連結な余極限の保存。 -/
+@[kerodon 018A]
 def joinLeftUnderAdjunction (K : SSet.{u}) : joinLeftUnderFunctor K ⊣ sliceOverUnderFunctor K :=
   Adjunction.mkOfHomEquiv
     { homEquiv := fun A p ↦

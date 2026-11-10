@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHorn
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration の反転と先頭の外側ホーンの相対充填。
@@ -63,6 +64,7 @@ lemma reverseSimplex_injective (X : SSet.{u}) (n : ℕ) :
 方針：全図式を反転し、最後のホーンの相対充填を反転して戻す。
 規約：指定した標的の単体を厳密に保つ。
 使われ方：HTT Proposition 1.2.4.3、Kerodon §4.4.2 の相対版。 -/
+@[kerodon 01H0]
 lemma innerFibration_lift_initialHorn {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (q : X ⟶ Y) [InnerFibration q] (n : ℕ)
     (σ : (horn (n + 2) 0 : SSet.{u}) ⟶ X)

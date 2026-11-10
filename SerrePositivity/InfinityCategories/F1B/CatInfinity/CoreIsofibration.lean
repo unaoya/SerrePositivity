@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLifti
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.PathReplacementLifting
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreRightFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：圏論的同値の右持ち上げ条件と可逆 path 置換の core の Kan fibration 性。
@@ -32,6 +33,7 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 方針：inner 性と終点指定の可逆辺の持ち上げを取り出し、core の右ホーンを充填する。
 規約：主張する充填性は元の指定関手の core 自体に対するもの。
 使われ方：path 置換で得られる全試験関手空間の一脚の充填性。 -/
+@[kerodon 01EZ]
 lemma coreMap_fibration_of_kanEquivalenceLifting (p : X ⟶ Y)
     (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : Fibration (quasicategoryCoreMap p) := by
   have := hp.innerFibration

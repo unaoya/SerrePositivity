@@ -7,6 +7,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryM
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
 public import SerrePositivity.InfinityCategories.Core.BoundaryPrismOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeInternalHom
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：前合成同値・同値の右持ち上げ・充満忠実な inner 射の反転による保存。
@@ -50,6 +51,7 @@ lemma isPrecompositionEquivalence_op {A B : SSet.{u}} {f : A ⟶ B}
 方針：試験射を反転して持ち上げ、反転関手の圏同値で二重反転を消す。
 規約：U の両端に quasicategory 性を要求しない。
 使われ方：相対右 Kan の厳密な構成へ isofibration の入力を渡す。 -/
+@[kerodon 01EV]
 lemma EquivalenceLifting.op {D E : SSet.{u}} {U : D ⟶ E}
     (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting (SSet.opFunctor.map U) := by
   have : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor

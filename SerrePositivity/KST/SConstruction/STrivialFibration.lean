@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SOneExact
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # S 構成による trivial Kan fibration の保存
 概要：自明ファイブレーションによる後合成は gapped 条件を反映し、全 S_n で自明ファイブレーションを誘導する。
@@ -20,6 +21,7 @@ open scoped Simplicial
 /-- 概要：内部 Hom の標的の自明ファイブレーションは自明ファイブレーションを誘導する。
 方針：テンソルが単射を保つことと閉随伴の持ち上げ同値を使う。
 規約：対象の Kan 性は不要。使われ方：図式全体の持ち上げ。 -/
+@[kerodon 0071]
 instance ihomMap_trivialKanFibration (K : SSet.{u}) {E B : SSet.{u}}
     (p : E ⟶ B) [TrivialKanFibration p] : TrivialKanFibration ((ihom K).map p) where
   mem := by

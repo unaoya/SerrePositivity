@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseCoverDomain
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseOneBoundary
 public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体の edgewise の右端射影の全境界充填。
@@ -92,6 +93,7 @@ lemma exists_edgewiseRight_weight_extension {K : SSet.{u}} [KanComplex K] {n : �
 方針：正次元の重みの延長と零次元の恒等辺から全境界の充填を得る。
 規約：全境界を持ち上げることが結論であり、対象ごとの同値だけではない。
 使われ方：Kerodon Corollary 8.1.1.13、空間値図式の自然な反転比較の右射影。 -/
+@[kerodon 048J, kerodon 04FA]
 instance edgewiseRight_trivialKanFibration (K : SSet.{u}) [KanComplex K] :
     TrivialKanFibration (edgewiseRight K) :=
   edgewiseRight_trivialKanFibration_of_extensions K
@@ -101,6 +103,7 @@ instance edgewiseRight_trivialKanFibration (K : SSet.{u}) [KanComplex K] :
 方針：右端射影の全単射に対する持ち上げ性からホーンの持ち上げ性を制限し、終対象への射で合成する。
 規約：既存の Fibration クラスはホーンの rlp としてだけ使う。
 使われ方：Kerodon Corollary 8.1.1.13、両端の同値を結ぶ Kan な共通始域。 -/
+@[kerodon 048H]
 instance edgewiseSubdivision_kanComplex (K : SSet.{u}) [KanComplex K] :
     KanComplex (edgewiseSubdivision K) := by
   haveI : HomotopicalAlgebra.Fibration (edgewiseRight K) :=

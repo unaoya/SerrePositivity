@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FatJoin
 public import SerrePositivity.InfinityCategories.Core.JoinBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：fat join から通常の join への比較射。
@@ -130,6 +131,7 @@ lemma joinCylinderMap_one (A B : SSet.{u}) :
 方針：円柱上の比較射を両端の整合性により pushout に降ろす。
 規約：両因子上で既存の join の包含と一致する。
 使われ方：Kerodon Notation 4.6.2.3、Theorem 4.6.2.8 の比較射。 -/
+@[kerodon 01HR, kerodon 01HV]
 noncomputable def fatJoinComparison (A B : SSet.{u}) : fatJoin A B ⟶ join A B :=
   fatJoinDesc (joinInl A B) (joinInr A B) (joinCylinderMap A B)
     (joinCylinderMap_zero A B) (joinCylinderMap_one A B)

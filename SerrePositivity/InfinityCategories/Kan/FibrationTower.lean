@@ -3,6 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の逆向きの塔の極限と相対ホーン充填。
@@ -149,6 +150,7 @@ theorem projection_zero_hasLiftingProperty {A B : SSet.{u}} (j : A ⟶ B)
 方針：全てのホーンに対する右持ち上げ性を移す。
 規約：遷移の fibration 性だけを使う。
 使われ方：Kerodon Corollary 11.9.7.2、BF 1978 §2。写像空間の塔。 -/
+@[kerodon 03HU]
 theorem projection_zero_fibration [∀ n, Fibration (d n)] :
     Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := by
   rw [SSet.modelCategoryQuillen.fibration_iff]
@@ -161,6 +163,7 @@ theorem projection_zero_fibration [∀ n, Fibration (d n)] :
 方針：初段射影と終対象への fibration を合成する。
 規約：任意の厳密極限に対する主張ではない。
 使われ方：Kerodon Corollary 11.9.7.2、HTT A.3.3。スペクトルの Hom の Kan 性。 -/
+@[kerodon 03HU]
 instance limit_kanComplex [∀ n, Fibration (d n)] [KanComplex (X 0)] :
     KanComplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit X d) := by
   let : Fibration (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection X d 0) := _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection_zero_fibration X d

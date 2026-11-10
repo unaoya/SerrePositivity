@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SimplexDiagonalC
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.F2.Presentable.NerveFinalInitialComma
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：宇宙を合わせた反対単体圏の nerve は sifted である。
@@ -41,6 +42,7 @@ lemma nerveMap_isRightCofinal_of_weaklyContractible_comma
 方針：各 comma の最小頂点の追加による弱収縮を用いる。
 規約：元の持ち上げた単体次数を固定する。
 使われ方：二項積への単体的な対角の比較。 -/
+@[kerodon 02QP]
 lemma simplexDegreeDiagonal_nerve_isRightCofinal :
     IsRightCofinal (nerveMap simplexDegreeDiagonal.{u}) :=
   nerveMap_isRightCofinal_of_weaklyContractible_comma _
@@ -50,6 +52,7 @@ lemma simplexDegreeDiagonal_nerve_isRightCofinal :
 方針：非空性と、nerve の積比較を介した元の対角の cofinal 性を示す。
 規約：元の小さい宇宙における sifted 性を与える。
 使われ方：任意の小さい幾何学的実現への sifted 余極限定理の適用。 -/
+@[kerodon 02QP]
 instance smallSimplexOpposite_isSiftedInfinity :
     HomotopyLimits.IsSiftedInfinity (nerve SmallSimplexOpposite.{u}) where
   nonempty_vertices := ⟨nerveVertex (ULiftHom.objUp (ULift.up (Opposite.op ⦋0⦌)))⟩

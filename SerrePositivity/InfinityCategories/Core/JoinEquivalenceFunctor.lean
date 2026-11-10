@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison
 public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：join と fat join による前合成の同値条件の保存。
@@ -82,6 +83,7 @@ lemma IsPrecompositionEquivalence.fatJoinMap_right {A B : SSet.{u}} {f : A ⟶ B
 方針：fat join での保存を一般の比較射と自然性で移す。
 規約：右因子 K は任意、射 f の単射性は不要。
 使われ方：Kerodon Corollary 4.6.2.9。 -/
+@[kerodon 01HW]
 lemma IsPrecompositionEquivalence.joinMap_left {A B : SSet.{u}} {f : A ⟶ B}
     (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
     IsPrecompositionEquivalence (joinMap f (𝟙 K)) := by
@@ -93,6 +95,7 @@ lemma IsPrecompositionEquivalence.joinMap_left {A B : SSet.{u}} {f : A ⟶ B}
 方針：fat join での保存を一般の比較射と自然性で移す。
 規約：左因子 K は任意、射 f の単射性は不要。
 使われ方：Kerodon Corollary 4.6.2.9。 -/
+@[kerodon 01HW]
 lemma IsPrecompositionEquivalence.joinMap_right {A B : SSet.{u}} {f : A ⟶ B}
     (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
     IsPrecompositionEquivalence (joinMap (𝟙 K) f) := by

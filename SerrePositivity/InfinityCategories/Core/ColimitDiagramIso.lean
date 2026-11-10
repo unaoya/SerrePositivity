@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 同型な図式の余極限の存在
 
@@ -53,6 +54,7 @@ lemma hasColimit_iff_equivalenceCylinder_endpoints {K X : SSet.{u}} [Quasicatego
 方針：図式の同型を可逆円柱へ延長し、その両端で余極限の存在を判定する。
 規約：関手単体集合のホモトピー圏の同型を使う。
 使われ方：零対象や零枝の選択を変更する cofiber の存在の輸送。 -/
+@[kerodon 02K2]
 lemma hasColimit_iff_of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X}
     (e : FunctorIso p q) : HasColimit p ↔ HasColimit q := by
   obtain ⟨H, h₀, h₁⟩ := exists_equivalenceCylinder_extension_of_functorIso e

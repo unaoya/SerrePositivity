@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightHomotopyInvariant
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftHomotopyInvariant
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右 Kan 拡張条件を h Fun の指定した射そのものに対して述べる。
@@ -30,6 +31,7 @@ def IsRightKanExtensionHom {K C D : SSet.{u}} [Quasicategory D]
 方針：A1c の代表ホモトピーに点ごとの定義を適用する。
 規約：任意の代表との一致は iff_of_representative で保証する。
 使われ方：h Fun 内の自然変換による Kan 拡張の主張。 -/
+@[kerodon 02YG]
 def IsLeftKanExtensionHom {K C D : SSet.{u}} [Quasicategory D]
     (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : FunctorHom F₀ (δ ≫ F)) : Prop :=
   IsLeftKanExtension δ F₀ F (functorHomHomotopy β)

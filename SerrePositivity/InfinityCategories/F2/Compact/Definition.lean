@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableValues
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：κ-compact 対象を、元の全共変 Hom 関手による小さい κ-filtered 余極限保存で定義。
@@ -28,11 +29,13 @@ def PreservesKappaFilteredColimits (κ : Cardinal.{u})
     IsColimitCone c → IsColimitCone (mapJoinCocone F (JoinCocone.ulift c))
 
 /-- 元の Map(x,−) が小さい κ-filtered 余極限を保つ、という κ-compact 性。 -/
+@[kerodon 064F]
 def IsKappaCompact (κ : Cardinal.{u}) {C : SSet.{max u v}} [Quasicategory C]
     (x : C _⦋0⦌) : Prop :=
   PreservesKappaFilteredColimits.{u, v} κ (C := C) (covariantRepresentableInfinity x)
 
 /-- compact は同じ全 Hom 関手についての ℵ₀-compact 性。 -/
+@[kerodon 064A]
 abbrev IsCompact {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : Prop :=
   IsKappaCompact.{u, u} Cardinal.aleph0 x
 
@@ -53,6 +56,7 @@ lemma IsKappaCompact.of_le {κ μ : Cardinal.{u}} (hκμ : κ ≤ μ)
   PreservesKappaFilteredColimits.of_le hκμ h
 
 /-- ℵ₀-compact 性は、一般の小さい filtered ∞ 圏上の元の余錐で判定する。 -/
+@[kerodon 064A]
 lemma isKappaCompact_aleph0_iff_filtered {C : SSet.{max u v}} [Quasicategory C] (x : C _⦋0⦌) :
     IsKappaCompact.{u, v} Cardinal.aleph0 x ↔
       ∀ (I : SSet.{u}) [Quasicategory I] [IsFilteredInfinity I]

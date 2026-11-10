@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.Enrichment
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 標準 Hom の零単体と閉零射の合成
@@ -72,6 +73,7 @@ lemma standardZeroEval_unit (x : D) :
 方針：閉元への既存の同値と標準零単体の線形同値の逆を合成する。
 規約：dg 圏に任意の通常の圏を別途要求しない。
 使われ方：HA 1.3.1.13 の単体的圏の通常の射との比較。 -/
+@[kerodon 00SF]
 def closedStandardVertexEquiv (x y : ClosedCategory R D) :
     (x ⟶ y) ≃ (standardHomSpace (R := R) (D := D) x y) _⦋0⦌ :=
   (closedHomEquiv R D x y).trans (standardZeroEquiv (R := R) (D := D) x y).toEquiv.symm
@@ -80,6 +82,7 @@ def closedStandardVertexEquiv (x y : ClosedCategory R D) :
 方針：零単体の評価の単射性と dg 単位の評価を使う。
 規約：通常の圏の恒等射について述べる。
 使われ方：HA 1.3.1.13 の EnrichedOrdinaryCategory の単位の条件。 -/
+@[kerodon 00SF]
 lemma closedStandardVertexEquiv_id (x : ClosedCategory R D) :
     closedStandardVertexEquiv (R := R) (D := D) x x (𝟙 x) =
       standardUnit (R := R) (D := D) x 0 := by
@@ -93,6 +96,7 @@ lemma closedStandardVertexEquiv_id (x : ClosedCategory R D) :
 方針：零単体の評価で検査し、閉零射と AW 合成の双方の評価の計算を使う。
 規約：通常の圏の合成順 f ≫ g と AW の順 g、f を対応させる。
 使われ方：HA 1.3.1.13 の EnrichedOrdinaryCategory の合成の条件。 -/
+@[kerodon 00SF]
 lemma closedStandardVertexEquiv_comp {x y z : ClosedCategory R D} (f : x ⟶ y) (g : y ⟶ z) :
     closedStandardVertexEquiv (R := R) (D := D) x z (f ≫ g) =
       standardAW (closedStandardVertexEquiv (R := R) (D := D) y z g)

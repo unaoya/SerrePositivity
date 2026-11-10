@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedArrowMap
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.TargetFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：始点を固定した twisted arrow 射影と、元の coslice からの底上の比較。
@@ -24,6 +25,7 @@ def twistedArrowSourceInclusion {C : SSet.{u}} (x : C _⦋0⦌) : C ⟶ C.op ⊗
   lift (SSet.const (SSet.opObjEquiv.symm x)) (𝟙 C)
 
 /-- 始点を固定した twisted arrow の全空間。 -/
+@[kerodon 03K0]
 def twistedArrowSource {C : SSet.{u}} (x : C _⦋0⦌) : SSet.{u} :=
   pullback (twistedArrowProjection C) (twistedArrowSourceInclusion x)
 

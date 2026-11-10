@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.FreeDegeneraciesColimits
 public import SerrePositivity.KST.Comparison.FreeStandardContraction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CellularNaturalComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 自由な退化の augmentation の局所化可逆性
@@ -26,6 +27,7 @@ open SerrePositivity.SimplicialModel
 規約：値宇宙のモデル構造や可逆性の追加仮定は置かない。
 使われ方：自由な退化の各列の対角への比較。
 -/
+@[kerodon 0124]
 theorem freeDegeneraciesAugmentation_localized_isIso (X : SSet.{u}) :
     IsIso (AnodyneHomotopy.anodyneQ.map (freeDegeneraciesAugmentation.app X)) :=
   CellularNaturalComparison.app_isIso freeDegeneraciesAugmentation

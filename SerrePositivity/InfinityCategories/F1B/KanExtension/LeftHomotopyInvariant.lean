@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanExtension.ComparisonCart
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.TransportEdgeHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceLeft
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定自然変換の h での等式による左 Kan 拡張条件の不変性。
@@ -149,6 +150,7 @@ lemma LeftKanCoconeTransport.coconeFamily_opIso_of_homMk_eq
 方針：固定図式上の余錐の反転内の同型で終対象性を移す。
 規約：α と β は同じ両端を持つ。
 使われ方：Kerodon Remark 7.3.1.10 の左側。 -/
+@[kerodon 02YG]
 lemma isLeftKanExtension_iff_of_homMk_eq {K C D : SSet.{u}} [Quasicategory D]
     (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (α β : SSet.Homotopy F₀ (δ ≫ F))

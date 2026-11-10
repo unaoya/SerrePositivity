@@ -4,6 +4,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 離散単体的集合を値とするホモトピックな二射は等しい
@@ -45,6 +46,7 @@ namespace SerrePositivity.SimplicialModel.PiZeroConstant
 variable {X : SSet.{v}} {T : Type v}
 
 abbrev zero : SimplexCategoryᵒᵖ := op (SimplexCategory.mk 0)
+@[kerodon 00FS, kerodon 00G1]
 abbrev discrete (T : Type v) : SSet.{v} := (Functor.const SimplexCategoryᵒᵖ).obj T
 
 abbrev vertex (n : SimplexCategoryᵒᵖ) (i : Fin (n.unop.len + 1)) : n ⟶ zero :=
@@ -79,6 +81,7 @@ lemma vertex_component (n : SimplexCategoryᵒᵖ) (x : X.obj n)
     fin_cases j
     rfl
 
+@[kerodon 00GP]
 def component (n : SimplexCategoryᵒᵖ) (x : X.obj n) : SSet.π₀ X :=
   SSet.π₀.mk (X.map (vertex n 0) x)
 
@@ -93,6 +96,7 @@ lemma component_operator {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (x : X.obj
   rw [← ConcreteCategory.comp_apply, ← X.map_comp]
   exact (vertex_component n x (θ.unop.toOrderHom 0)).symm
 
+@[kerodon 00GP]
 def fromComponents (t : SSet.π₀ X → T) : X ⟶ discrete T where
   app n := ↾fun x => t (component n x)
   naturality {_ _} θ := by
@@ -118,6 +122,7 @@ Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲�
 構成に現れる射と比較写像を明示し、各成分の等式を照合する。
 既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
 -/
+@[kerodon 00GQ]
 def homEquiv : (X ⟶ discrete T) ≃ (SSet.π₀ X → T) where
   toFun := toComponents
   invFun := fromComponents

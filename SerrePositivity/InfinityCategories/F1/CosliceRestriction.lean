@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import SerrePositivity.InfinityCategories.Core.SliceUnderRestriction
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 任意の right anodyne な単射による coslice の制限
 
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：像への同型と部分複体の包含に分解し、F1 の充填と同型不変性を合成する。
 規約：X は quasicategory、射の表示を固定しない。
 使われ方：S4 の有限部分図式の形の比較への適用。 -/
+@[kerodon 018L]
 lemma sliceUnderRestrict_trivialKanFibration {K₀ K X : SSet.{u}} [Quasicategory X]
     (p : K ⟶ X) (f : K₀ ⟶ K) [Mono f] (hf : rightAnodyneExtensions f) :
     TrivialKanFibration (sliceUnderRestrict p f) := by

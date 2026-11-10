@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：simplicial replacement の fiber と taut scaffold の fiber 比較。
@@ -121,6 +122,7 @@ lemma simplicialReplacementFiberMap_tautScaffoldFiberMap
 方針：係数値との両側の標準同型を可換式に代入する。
 規約：全空間の同値はこの fiber ごとの同型性だけからは主張しない。
 使われ方：Kerodon Example 5.3.4.15、taut scaffold の fiber 条件。 -/
+@[kerodon 026E]
 instance tautScaffoldFiberMap_isIso {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) (c : C) : IsIso (tautScaffoldFiberMap F c) := by
   have h := simplicialReplacementFiberMap_tautScaffoldFiberMap F c

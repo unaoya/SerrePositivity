@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
 public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration の join が inner fibration になることを示す。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：底の単体の時間を使い、両端の分岐と混合分岐を分ける。
 規約：対象に quasicategory 性を要求しない。
 使われ方：相対 join の prism への射影の底変換。 -/
+@[kerodon 02QU]
 instance joinMap_innerFibration {X X' Y Y' : SSet.{u}}
     (f : X ⟶ X') (g : Y ⟶ Y') [InnerFibration f] [InnerFibration g] :
     InnerFibration (joinMap f g) where

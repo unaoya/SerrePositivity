@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import SerrePositivity.InfinityCategories.Core.LimitExamples
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の圏の nerve でホモトピー圏の橋と極限を具体化する。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories
 方針：比較同値と Mathlib の nerve 随伴の余単位を合成する。
 規約：`C : Type u` と `[Category.{u} C]` のみを仮定する。
 使われ方：HTT §1.2.3、Kerodon Example 1.4.5.4 の具体例。 -/
+@[kerodon 004D]
 noncomputable def nerveHomotopyCategoryEquivalence (C : Type u) [Category.{u} C] :
     HomotopyCategory₂ ((truncation 2).obj (nerve C)) ≌ C :=
   (homotopyCategoryBridge (nerve C)).trans

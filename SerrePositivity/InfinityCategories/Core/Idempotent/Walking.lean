@@ -5,6 +5,7 @@ public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.CategoryTheory.Idempotents.Karoubi
 public import Mathlib.CategoryTheory.SingleObj
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：coherent な冪等図式とその強い分裂の小さい添字を構成する。
@@ -21,6 +22,7 @@ attribute [local instance] uliftCategory
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 恒等と一つの非恒等冪等元を持つ一対象圏。 -/
+@[kerodon 03ZN]
 abbrev WalkingIdem := ULift.{u} (SingleObj (WithOne PUnit.{u + 1}))
 
 /-- 両宇宙を同じ小さい宇宙に揃えた添字圏の構造。 -/
@@ -34,6 +36,7 @@ def walkingIdempotent : walkingObject.{u} ⟶ walkingObject.{u} :=
   show WithOne PUnit.{u + 1} from ↑PUnit.unit
 
 /-- 指定した元の射は冪等。 -/
+@[kerodon 03ZN]
 lemma walkingIdempotent_idem :
     walkingIdempotent.{u} ≫ walkingIdempotent.{u} = walkingIdempotent.{u} := rfl
 
@@ -42,6 +45,7 @@ lemma walkingIdempotent_ne_id : walkingIdempotent.{u} ≠ 𝟙 walkingObject := 
   exact WithOne.coe_ne_one
 
 /-- 強い分裂の添字圏。元の冪等元と恒等の二つの形式的像を持つ。 -/
+@[kerodon 03YB]
 abbrev WalkingSplit := CategoryTheory.Idempotents.Karoubi WalkingIdem.{u}
 
 /-- 元の冪等図式から強い分裂図式への包含。 -/
@@ -63,6 +67,7 @@ def walkingRetraction : walkingSource.{u} ⟶ walkingImage.{u} :=
   CategoryTheory.Idempotents.Karoubi.decompId_p walkingImage
 
 /-- 分裂の合成は同じ分裂対象の恒等。 -/
+@[kerodon 03YB]
 lemma walkingSection_retraction :
     walkingSection.{u} ≫ walkingRetraction.{u} = 𝟙 walkingImage :=
   (CategoryTheory.Idempotents.Karoubi.decompId walkingImage).symm
@@ -73,6 +78,7 @@ lemma walkingRetraction_section :
   (CategoryTheory.Idempotents.Karoubi.decomp_p walkingImage).symm
 
 /-- coherent 冪等図式の元の小さい単体集合。 -/
+@[kerodon 03ZT]
 def IdemShape : SSet.{u} := nerve WalkingIdem.{u}
 
 /-- coherent な強い分裂の元の小さい単体集合。 -/

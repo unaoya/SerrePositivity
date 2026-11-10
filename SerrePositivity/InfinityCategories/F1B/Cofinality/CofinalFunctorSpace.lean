@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushou
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cofinality を検査する底上の関手空間とその制限。
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories
 方針：後合成の内部 Hom の指定頂点 fiber を取る。
 規約：F1.relativeFunctorSpace と同じ構成。import の範囲のみを狭める。
 使われ方：Kerodon Definition 7.2.1.1 の相対関手空間。 -/
+@[kerodon 02N1]
 def cofinalFunctorSpace {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) : SSet.{u} :=
   vertexFiber ((ihom A).map p) (functorVertex a)
 

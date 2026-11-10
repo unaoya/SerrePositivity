@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndCardinalChange
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafAllSmallLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の全図式の小余極限の存在と accessibility によって presentable ∞ 圏を定義する。
@@ -18,19 +19,23 @@ open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 宇宙 u の任意の全図式の native な余極限が、元の宇宙 u+1 の標的に存在する。 -/
+@[kerodon 06B7]
 def HasSmallColimits (C : SSet.{u + 1}) : Prop :=
   ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D
 
 /-- 宇宙 u の任意の全図式の native な極限が、元の宇宙 u+1 の標的に存在する。 -/
+@[kerodon 06B7]
 def HasSmallLimits (C : SSet.{u + 1}) : Prop :=
   ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D
 
 /-- 指定された元の任意の小さい全余極限余錐を、同じ全関手で保存すること。 -/
+@[kerodon 06BA]
 def PreservesSmallColimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop :=
   ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
     (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F c)
 
 /-- presentable は、同じ宇宙に関して accessible で、全ての小余極限を持つこと。 -/
+@[kerodon 06ND]
 def IsPresentable (C : SSet.{u + 1}) [Quasicategory C] : Prop :=
   IsAccessible C ∧ HasSmallColimits C
 
@@ -54,6 +59,7 @@ lemma PreservesSmallColimits.isKappaAccessibleFunctor {C E : SSet.{u + 1}}
   exact h K D c hc
 
 /-- 小余極限を保つ元の関手は accessible。 -/
+@[kerodon 06LC]
 lemma PreservesSmallColimits.isAccessibleFunctor {C E : SSet.{u + 1}}
     {F : C ⟶ E} (h : PreservesSmallColimits F) : IsAccessibleFunctor F :=
   ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, h.isKappaAccessibleFunctor _⟩
@@ -74,6 +80,7 @@ lemma space_hasSmallColimits : HasSmallColimits SpaceInfinity.{u} := by
   exact F2.hasColimit_coherentSpaceDiagram D
 
 /-- 元の空間 ∞ 圏は、全ての小極限を持つ。 -/
+@[kerodon 05QQ]
 lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u} := by
   intro K D
   exact hasLimit_coherentSpaceDiagram D

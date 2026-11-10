@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.LeftIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右の pinched 写像空間と coslice fiber の同値。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：coslice fiber との同型の逆と、coslice fiber の区間比較の同値を合成する。
 規約：比較射を新しく選び直さず既存の射の性質を示す。
 使われ方：Kerodon §4.6.6、左右の写像空間の共通模型。 -/
+@[kerodon 01L5]
 lemma pinchedHomLeftToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
     [Quasicategory X] (x y : X _⦋0⦌) :
     IsQCatEquivalence (pinchedHomLeftToIntervalMappingSpace x y) := by

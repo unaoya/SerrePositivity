@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.Core.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! General declarations moved verbatim from their original modules. -/
 @[expose] public section
@@ -17,6 +18,7 @@ open scoped Simplicial
 /-- 概要：quasicategory の同値は始頂点を始頂点へ送る。
 方針：逆射で境界を充填し、単位の可逆二胞体で元の境界に戻す。
 規約：最初の頂点の条件を保つ。使われ方：余極限の模型の比較。 -/
+@[kerodon 02MY]
 lemma QCatEquivalence.map_isInitialVertex {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) {x : X _⦋0⦌}
     (hx : IsInitialVertex x) : IsInitialVertex (e.hom.app (Opposite.op ⦋0⦌) x) := by
@@ -40,6 +42,7 @@ lemma QCatEquivalence.map_isInitialVertex {X Y : SSet.{u}}
 方針：逆同値で始対象性を戻し、単位の頂点での同型で元の頂点へ移す。
 規約：任意の頂点 x を扱う。
 使われ方：HTT §1.2.12、Kerodon §7.1 の始対象の同値不変性。 -/
+@[kerodon 02HS]
 lemma QCatEquivalence.isInitialVertex_iff {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) (x : X _⦋0⦌) :
     IsInitialVertex x ↔ IsInitialVertex (e.hom.app (Opposite.op ⦋0⦌) x) := by

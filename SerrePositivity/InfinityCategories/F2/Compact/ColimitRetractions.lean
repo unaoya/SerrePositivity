@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialRetracts
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：全余錐と κ-filtered 余極限保存関手は、全関手圏内の retract で閉じる。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories.F2.Compact
 open Idempotent
 
 /-- 元の全余極限余錐の全関手圏内の retract は、その元の図式の余極限余錐。 -/
+@[kerodon 05E6]
 lemma isColimitCone_of_functorRetraction {K X : SSet.{u}} [Quasicategory X]
     {p q : K ⟶ X} {c : JoinCocone p} {d : JoinCocone q}
     (r : VertexRetraction (functorVertex c.val) (functorVertex d.val))

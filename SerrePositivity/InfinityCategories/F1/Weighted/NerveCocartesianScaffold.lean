@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianFibration
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
 public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory 値 weighted nerve の taut scaffold は cocartesian scaffold。
@@ -30,6 +31,7 @@ lemma tautScaffold_kanScaffoldFiberMap {C : Type u} [Category.{u} C]
   exact simplicialReplacementConstantLift_tautScaffold F c
 
 /-- quasicategory 値 weighted nerve の taut scaffold は cocartesian scaffold。 -/
+@[kerodon 0379]
 lemma tautScaffold_isCocartesianScaffold {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] :
     SerrePositivity.InfinityCategories.CocartesianScaffold (weightedNerveProjection F) F (tautScaffold F) where

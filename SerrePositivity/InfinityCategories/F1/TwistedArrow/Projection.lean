@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEndpoints
 public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：twisted arrow 単体集合と、その始点・終点を記録する実際の射影。
@@ -17,9 +18,11 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.InfinityCategories
 
 /-- twisted arrow の n 単体は Δ[n]op ⋆ Δ[n] からの射。 -/
+@[kerodon 03JG]
 abbrev TwistedArrow (C : SSet.{u}) : SSet.{u} := edgewiseSubdivision C
 
 /-- twisted arrow の始点と終点を同時に記録する射影。 -/
+@[kerodon 03JK]
 def twistedArrowProjection (C : SSet.{u}) : TwistedArrow C ⟶ C.op ⊗ C :=
   lift (edgewiseLeft C) (edgewiseRight C)
 

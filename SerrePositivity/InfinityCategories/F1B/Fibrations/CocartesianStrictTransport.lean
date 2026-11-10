@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.NerveUnderMap
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionsPrecomposition
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：一般の cocartesian fibration の strict transport の図式と fiber への評価射を構成する。
@@ -27,6 +28,7 @@ open SerrePositivity.InfinityCategories
 方針：under の忘却関手の nerve 上の全部分相対関手空間を取る。
 規約：p の充填性はこの定義には要求しない。
 使われ方：一般の cocartesian fibration の strict な係数図式。 -/
+@[kerodon 035J]
 def cocartesianStrictTransport {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) (c : C) : SSet.{u} :=
   SerrePositivity.InfinityCategories.cocartesianSections p (nerveMap (Under.forget c))
@@ -82,6 +84,7 @@ lemma cocartesianStrictTransportMap_comp {C : Type u} [Category.{u} C] {E : SSet
 方針：構成した対象と射を恒等・合成則で束縛する。
 規約：各値の quasicategory 性は別の instance で与える。
 使われ方：一般の universal scaffold の simplicial replacement の係数。 -/
+@[kerodon 035J]
 def cocartesianStrictTransportDiagram {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) : C ⥤ SSet.{u} where
   obj c := cocartesianStrictTransport p c

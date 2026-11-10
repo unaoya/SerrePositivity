@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：終対象と右 pinched 写像空間の可縮性。
@@ -31,6 +32,7 @@ lemma IsTerminalVertex.pinchedHom_isContractibleKan {X : SSet.{u}} {x : X _⦋0�
 方針：右 pinched 写像空間の非空性と連結性を π₀ と Hom の同値で移す。
 規約：この比較には元の quasicategory 性を仮定する。
 使われ方：HTT §1.2.12、Kerodon §4.7.3 の同型不変性。 -/
+@[kerodon 02HQ]
 noncomputable def IsTerminalVertex.isTerminalHo {X : SSet.{u}} [Quasicategory X]
     {x : X _⦋0⦌} (hx : IsTerminalVertex x) :
     IsTerminal (SSet.HomotopyCategory.mk x : hoFunctor.obj X) := by
@@ -58,6 +60,7 @@ lemma isTerminalVertex_of_pinchedHom_isContractibleKan {X : SSet.{u}} [Quasicate
 方針：終対象の slice 射影の trivial Kan fibration 性と fiber の判定を合わせる。
 規約：可縮性は零次元を含む全境界の充填で、非空性と Kan 性を含む。
 使われ方：HTT Proposition 1.2.12.4、Kerodon Proposition 4.7.3.12。 -/
+@[kerodon 02H7]
 lemma isTerminalVertex_iff_pinchedHom_isContractibleKan {X : SSet.{u}} [Quasicategory X]
     (x : X _⦋0⦌) : IsTerminalVertex x ↔
       ∀ z : X _⦋0⦌, IsContractibleKan (pinchedHom z x) :=

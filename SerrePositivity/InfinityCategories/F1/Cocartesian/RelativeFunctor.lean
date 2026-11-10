@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFu
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cocartesian 辺を保つ元の底上の関手が張る相対関手 ∞ 圏。
@@ -23,6 +24,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 相対関手の頂点が、元の cocartesian 辺を保つ底上の実際の関手であるという条件。 -/
+@[kerodon 02T1]
 def cocartesianRelativeFunctorPredicate {E F B : SSet.{u}}
     (p : E ⟶ B) (q : F ⟶ B) (v : (relativeFunctorSpace q p) _⦋0⦌) : Prop :=
   PreservesCocartesianEdges p q ((relativeFunctorVertexEquiv q p).symm v).val
@@ -37,10 +39,12 @@ lemma cocartesianRelativeFunctorPredicate_vertex {E F B : SSet.{u}}
   rw [Equiv.symm_apply_apply]
 
 /-- 元の相対関手空間のうち、cocartesian 辺を保つ関手が張る全部分複体。 -/
+@[kerodon 02T1]
 def cocartesianRelativeFunctorSpace {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B) : SSet.{u} :=
   fullSubcomplexOnVertices (relativeFunctorSpace q p) (cocartesianRelativeFunctorPredicate p q)
 
 /-- 標的の射影が inner fibration なら、元の相対関手空間は quasicategory。 -/
+@[kerodon 01GS]
 instance relativeFunctorSpace_quasicategory_of_innerFibration {E F B : SSet.{u}}
     (p : E ⟶ B) (q : F ⟶ B) [InnerFibration q] :
     Quasicategory (relativeFunctorSpace q p) :=

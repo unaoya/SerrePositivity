@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 右ファイブレーションによる可逆辺の反映
 
@@ -87,6 +88,7 @@ lemma derived_rightFibration_liftCompStruct {X Y : SSet.{u}} (q : X ⟶ Y) [Righ
 /-- 概要：右ファイブレーションは辺の可逆性を反映する。
 方針：逆三角形を二回持ち上げ、二つの片側逆から両側逆を得る。
 規約：両単体的集合は quasicategory。使われ方：slice の錐の同型不変性。 -/
+@[kerodon 019K]
 lemma derived_rightFibration_reflects_invertibleEdge {X Y : SSet.{u}} [Quasicategory X]
     [Quasicategory Y] (q : X ⟶ Y) [RightFibration q] {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)

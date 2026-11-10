@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.ProExcision.ShuffleChainMap
 public import SerrePositivity.KST.ProExcision.NormalizedAlexanderWhitney
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 正規化 Moore 複体の shuffle 写像
@@ -21,6 +22,7 @@ open scoped Simplicial
 方針：二つの Moore 包含のテンソル、実 shuffle、対角の PInfty 射影を合成する。
 規約：KST Construction A.5、零次 augmentation を落とさない。
 使われ方：正規化した差のテンソルを挟む比較の後半。 -/
+@[kerodon 00RS]
 def normalizedShuffle (C D : SimplicialObject (ModuleCat.{u} ℤ)) :
     chainIntegerTensor ((normalizedMooreComplex _).obj C) ((normalizedMooreComplex _).obj D) ⟶
       (normalizedMooreComplex _).obj (simplicialIntegerTensor C D) :=

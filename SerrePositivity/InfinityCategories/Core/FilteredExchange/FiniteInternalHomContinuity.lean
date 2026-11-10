@@ -3,6 +3,7 @@ public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：有限な形状 K に対する内部 Hom Fun(K,−) は通常の filtered 余極限を保つ。
@@ -37,6 +38,7 @@ def internalHomEvaluationIso (K : SSet.{u}) (n : SimplexCategoryᵒᵖ) :
 /-- 概要：有限形状からの内部 Hom は小さい filtered 余極限を保存する。
 方針：有限な K × Δ[n] の有限表示性による保存を評価関手で束ねる。
 規約：小圏の宇宙は単体集合の宇宙と同じ。使われ方：有限指数の連続性。 -/
+@[kerodon 03X6]
 instance finiteInternalHom_preservesFilteredColimits (K : SSet.{u}) [K.Finite] :
     PreservesFilteredColimitsOfSize.{u, u} (ihom K) where
   preserves_filtered_colimits J _ _ := by

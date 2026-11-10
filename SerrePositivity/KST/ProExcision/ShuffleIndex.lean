@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.ProExcision.AWChainMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Eilenberg–Zilber の shuffle の格子路
@@ -19,6 +20,7 @@ open scoped Simplicial
 方針：Fin n の濃度 p の部分集合として表す。
 規約：KST A.5、残りの n−p ステップは垂直。
 使われ方：標準 shuffle の有限和の添字。 -/
+@[kerodon 00RH]
 abbrev ShuffleIndex (p n : ℕ) := {s : Finset (Fin n) // s.card = p}
 
 /-- 概要：shuffle の垂直ステップの数は q。
@@ -34,6 +36,7 @@ lemma ShuffleIndex.compl_card {p q n : ℕ} (s : ShuffleIndex p n) (h : p + q = 
 方針：頂点 x より前の水平ステップの数を数える。
 規約：KST A.5、反変な単体的加群では退化方向の写像になる。
 使われ方：第一因子に適用する標準 shuffle の写像。 -/
+@[kerodon 00RH]
 def ShuffleIndex.left {p n : ℕ} (s : ShuffleIndex p n) : ⦋n⦌ ⟶ ⦋p⦌ :=
   SimplexCategory.mkHom
     { toFun x := ⟨(s.val.filter (fun j : Fin n ↦ (j : ℕ) < (x : ℕ))).card, by
@@ -50,6 +53,7 @@ def ShuffleIndex.left {p n : ℕ} (s : ShuffleIndex p n) : ⦋n⦌ ⟶ ⦋p⦌ :
 方針：頂点 x より前の補集合のステップの数を数える。
 規約：KST A.5、全ステップ数 n=p+q。
 使われ方：第二因子に適用する標準 shuffle の写像。 -/
+@[kerodon 00RH]
 def ShuffleIndex.right {p q n : ℕ} (s : ShuffleIndex p n) (h : p + q = n) : ⦋n⦌ ⟶ ⦋q⦌ :=
   SimplexCategory.mkHom
     { toFun x := ⟨(s.valᶜ.filter (fun j : Fin n ↦ (j : ℕ) < (x : ℕ))).card, by
@@ -66,6 +70,7 @@ def ShuffleIndex.right {p q n : ℕ} (s : ShuffleIndex p n) (h : p + q = n) : �
 方針：各水平ステップに先行する垂直ステップの数を足す。
 規約：KST A.5 の標準 shuffle の符号 (−1)^inv。
 使われ方：実 shuffle の成分の有限和。 -/
+@[kerodon 00RH]
 def ShuffleIndex.inversions {p n : ℕ} (s : ShuffleIndex p n) : ℕ :=
   ∑ j ∈ s.val, (s.valᶜ.filter (fun k ↦ k < j)).card
 

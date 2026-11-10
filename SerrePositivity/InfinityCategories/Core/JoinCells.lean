@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Coslice
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：pushout-join の内 anodyne 性のためのホーンと部分複体の計算。
@@ -40,6 +41,7 @@ inductive leftHornInclusions : MorphismProperty SSet.{u} where
 方針：生成ホーンの rlp の llp として定義する。
 規約：right anodyne の意味をモデル構造なしで固定する。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の左因子の仮定。 -/
+@[kerodon 0151]
 def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp
 deriving IsMultiplicative, RespectsIso, IsStableUnderCobaseChange, IsStableUnderRetracts,
   IsStableUnderTransfiniteComposition, IsStableUnderCoproducts
@@ -48,6 +50,7 @@ deriving IsMultiplicative, RespectsIso, IsStableUnderCobaseChange, IsStableUnder
 方針：生成ホーンの rlp の llp として定義する。
 規約：left anodyne の意味をモデル構造なしで固定する。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の右因子の仮定。 -/
+@[kerodon 014X, kerodon 0151]
 def leftAnodyneExtensions : MorphismProperty SSet.{u} := leftHornInclusions.rlp.llp
 deriving IsMultiplicative, RespectsIso, IsStableUnderCobaseChange, IsStableUnderRetracts,
   IsStableUnderTransfiniteComposition, IsStableUnderCoproducts
@@ -289,6 +292,7 @@ lemma mem_horn_joinStdSimplexIso_iff (p q n : ℕ)
 方針：連結した写像で欠ける頂点を左右に分ける。
 規約：左ホーンは正次元、右境界は零次元も許す。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第一の基本セル。 -/
+@[kerodon 018N]
 lemma horn_boundary_preimage (p q : ℕ) (i : Fin (p + 2)) :
     (horn ((p + 1) + q + 1) (Fin.cast (by omega) (i.castAdd (q + 1)))).preimage
       (joinStdSimplexIso.{u} (p + 1) q).hom = joinUnion (horn (p + 1) i) (boundary q) := by
@@ -318,6 +322,7 @@ lemma horn_boundary_preimage (p q : ℕ) (i : Fin (p + 2)) :
 方針：連結した写像で欠ける頂点を左右に分ける。
 規約：左境界は零次元も許し、右ホーンは正次元。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第二の基本セル。 -/
+@[kerodon 018N]
 lemma boundary_horn_preimage (p q : ℕ) (j : Fin (q + 2)) :
     (horn (p + (q + 1) + 1) (Fin.cast (by omega) (j.natAdd (p + 1)))).preimage
       (joinStdSimplexIso.{u} p (q + 1)).hom = joinUnion (boundary p) (horn (q + 1) j) := by
@@ -396,6 +401,7 @@ lemma innerAnodyne_preimage_iff {X Y : SSet.{u}} (B : Y.Subcomplex) (e : X ≅ Y
 方針：標準単体の同型で、欠けた面が内点のホーン包含に移す。
 規約：左は Λ[p+1,i]、0<i。右は ∂Δ[q]、q≥0。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第一の生成セル。 -/
+@[kerodon 018N]
 lemma joinUnion_rightHorn_boundary_innerAnodyne (p q : ℕ) (i : Fin (p + 2)) (h0 : 0 < i) :
     innerAnodyneExtensions (joinUnion (horn (p + 1) i) (boundary q)).ι := by
   rw [← Join.horn_boundary_preimage, innerAnodyne_preimage_iff]
@@ -410,6 +416,7 @@ lemma joinUnion_rightHorn_boundary_innerAnodyne (p q : ℕ) (i : Fin (p + 2)) (h
 方針：標準単体の同型で、欠けた面が内点のホーン包含に移す。
 規約：左は ∂Δ[p]、右は Λ[q+1,j]、j<q+1。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第二の生成セル。 -/
+@[kerodon 018N]
 lemma joinUnion_boundary_leftHorn_innerAnodyne (p q : ℕ) (j : Fin (q + 2))
     (hn : j < Fin.last (q + 1)) :
     innerAnodyneExtensions (joinUnion (boundary p) (horn (q + 1) j)).ι := by

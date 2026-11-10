@@ -4,6 +4,7 @@ public import SerrePositivity.KST.Comparison.SubdivisionAnodyne
 public import SerrePositivity.KST.Comparison.HornRightColimit
 public import SerrePositivity.KST.Comparison.ExInfinity
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ColimitWeakEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex∞ の Kan fibration 保存
@@ -29,6 +30,7 @@ open CategoryTheory Limits
 規約：反復の零段階は恒等関手。
 使われ方：Ex∞ の arrow の順序列の各段階の Kan 条件。
 -/
+@[kerodon 00Z4]
 theorem exIterate_map_rlp (n : ℕ) {E B : SSet.{u}} (p : E ⟶ B)
     (hp : SSet.modelCategoryQuillen.J.rlp p) :
     SSet.modelCategoryQuillen.J.rlp ((exIterate n).map p) := by
@@ -42,6 +44,7 @@ theorem exIterate_map_rlp (n : ℕ) {E B : SSet.{u}} (p : E ⟶ B)
 規約：Moss 原論文 Proposition 3.12。Kan 性と同様に保存も証明し、追加の入力とはしない。
 使われ方：Ex∞ による非 Kan 基底から Kan 基底への移行。
 -/
+@[kerodon 00ZG]
 theorem exInfinity_map_rlp {E B : SSet.{u}} (p : E ⟶ B)
     (hp : SSet.modelCategoryQuillen.J.rlp p) :
     SSet.modelCategoryQuillen.J.rlp (exInfinity.map p) := by

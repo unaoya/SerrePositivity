@@ -16,6 +16,7 @@ public import SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence
 public import SerrePositivity.InfinityCategories.Core.FatJoinRightTensor
 public import SerrePositivity.InfinityCategories.Core.FatJoinRightTensorComparison
 public import SerrePositivity.InfinityCategories.Core.LaxCoslice
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Coslice と固定図式上の余錐の族の同値
 
@@ -53,6 +54,7 @@ lemma cosliceCoconeFamilyMap_comp_coconeFamilyLaxCosliceMap {K X : SSet.{u}} (p 
 /-- 概要：coslice と固定図式上の余錐の族の比較は quasicategory の同値。
 方針：太い coslice への二つの比較の同値性と合成の同定を使う。
 規約：値域は quasicategory、図式の形状は任意。使われ方：余極限の族の比較。 -/
+@[kerodon 04J5]
 lemma isQCatEquivalence_cosliceCoconeFamilyMap {K X : SSet.{u}} [Quasicategory X]
     (p : K ⟶ X) : IsQCatEquivalence (cosliceCoconeFamilyMap p) := by
   apply (isQCatEquivalence_coconeFamilyLaxCosliceMap p).cancel_right

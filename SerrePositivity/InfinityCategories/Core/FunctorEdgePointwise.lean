@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：関手単体集合の辺の可逆性の点ごとの判定。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：ホモトピー圏の充満忠実な関手が同型を反映することを使う。
 規約：両端の単体集合は quasicategory。
 使われ方：Kerodon §4.8.3 の可逆性の検出。 -/
+@[kerodon 01JN]
 lemma IsFullyFaithful.reflects_isInvertibleEdge {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (hf : IsFullyFaithful f)
     {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
@@ -167,6 +169,7 @@ lemma functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise {K X : SSet.{u}}
 方針：順方向は評価で写し、逆方向はその辺の uncurry の点ごとの可逆性を使う。
 規約：標的 X は quasicategory、パラメーター K は任意。
 使われ方：Kerodon §4.5.1 の可逆な自然変換の点ごとの判定。 -/
+@[kerodon 01DK]
 lemma isInvertibleEdge_iff_evaluateFunctorAt {K X : SSet.{u}} [Quasicategory X]
     {f g : K ⟶ X} (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X))
       (functorVertex f) (functorVertex g)) :
@@ -190,6 +193,7 @@ lemma isInvertibleEdge_iff_evaluateFunctorAt {K X : SSet.{u}} [Quasicategory X]
 方針：指定された関手の辺の可逆性を使ってホモトピー圏で asIso を取る。
 規約：同型の順方向の射はこのホモトピーの辺の類。
 使われ方：Kerodon §4.5.1、§4.6.2 の実際のホモトピーによる比較。 -/
+@[kerodon 01DK]
 noncomputable def functorIsoOfPointwiseInvertibleHomotopy {K X : SSet.{u}}
     [Quasicategory X] {f g : K ⟶ X} (H : SSet.Homotopy f g)
     (hH : ∀ k : K _⦋0⦌,

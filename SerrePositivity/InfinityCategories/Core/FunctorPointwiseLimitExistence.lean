@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.TerminalVertexLifting
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：点ごとの極限の存在から自然な極限錐を構成する。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：頂点ごとに極限錐を選び、錐の制限の相対終点境界充填で頂点上の選択を自然な族へ延長する。
 規約：X は quasicategory、J・K は任意、選んだ錐の自然性は仮定しない。
 使われ方：HTT Proposition 5.1.2.2、Kerodon Proposition 7.1.8.7 の極限側。 -/
+@[kerodon 02XJ]
 lemma exists_pointwiseLimitCone {J K X : SSet.{u}} [Quasicategory X]
     (p : J ⟶ (ihom K).obj X) (hp : HasPointwiseLimits p) :
     ∃ c : JoinCone p, IsPointwiseLimitCone c := by
@@ -81,6 +83,7 @@ lemma isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits {J K X : SSet.{u
 方針：点ごとの極限性からの判定と、自然な極限錐の存在・一意性による逆方向を合わせる。
 規約：X は quasicategory、J・K は任意、存在仮定は HasPointwiseLimits のみ。
 使われ方：HTT Proposition 5.1.2.2、Kerodon Proposition 7.1.8.3 の極限の完全な比較。 -/
+@[kerodon 05QG]
 lemma isLimitCone_iff_pointwise_of_hasPointwiseLimits {J K X : SSet.{u}} [Quasicategory X]
     {p : J ⟶ (ihom K).obj X} (hp : HasPointwiseLimits p) (c : JoinCone p) :
     IsLimitCone c ↔ IsPointwiseLimitCone c :=

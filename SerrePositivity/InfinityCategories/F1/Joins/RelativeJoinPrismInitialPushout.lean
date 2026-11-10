@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPrismCoverage
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：prism の初期部分 Z(0) を境界 prism と終端の pushout として表す。
@@ -38,6 +39,7 @@ noncomputable def relativeJoinPrismInitialEndpoint (m : ℕ) :
 方針：終端の自然性の pullback を像の和の pushout に変える。
 規約：貼り合わせ部分は標準 m 単体の境界。
 使われ方：Kerodon Proposition 5.2.4.5、写像円柱の比較の前面の構成。 -/
+@[kerodon 00TH]
 lemma relativeJoinPrismInitial_isPushout (m : ℕ) :
     IsPushout (prismEndpoint 1 (boundary m : SSet.{u})) (boundary m).ι
       (relativeJoinPrismInitialBoundary m) (relativeJoinPrismInitialEndpoint m) := by

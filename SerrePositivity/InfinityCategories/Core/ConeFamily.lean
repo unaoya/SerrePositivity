@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：錐の関手単体集合での表示と slice からの比較。
@@ -43,6 +44,7 @@ def coneRestriction (J X : SSet.{u}) :
 方針：錐の制限射の図式の頂点上の厳密な fiber を取る。
 規約：高次単体でも図式を厳密に固定する。
 使われ方：Kerodon Example 4.6.6.8 の比較の標的。 -/
+@[kerodon 04J5]
 def coneFamily {J X : SSet.{u}} (p : J ⟶ X) : SSet.{u} :=
   vertexFiber (coneRestriction J X) (functorVertex p)
 

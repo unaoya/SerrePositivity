@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedPointTransportSquare
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：充満忠実な元の射は、区間模型の実際の Hom 作用にも同値を誘導する。
@@ -20,6 +21,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- 充満忠実な射の実際の区間 Hom への作用は、全対象対で同値。 -/
+@[kerodon 06QP]
 lemma IsFullyFaithful.intervalMappingPost_isQCatEquivalence
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {f : X ⟶ Y} (hf : IsFullyFaithful f) (x y : X _⦋0⦌) :

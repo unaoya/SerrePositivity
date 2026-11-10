@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 標的へのホモトピー類による弱ホモトピー同値と弱可縮性。
@@ -35,6 +36,7 @@ lemma mapPiZero_id (A : SSet.{u}) : SSet.mapπ₀ (𝟙 A) = id :=
 方針：前合成が写像空間の連結成分の全単射を与えると要求する。
 規約：元の単体集合の Kan 性は要求しない。検査標的の宇宙は同じ u。
 使われ方：Kerodon §3.1.7 の定義、Quillen A。 -/
+@[kerodon 00UA]
 def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop :=
   ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))
 
@@ -42,6 +44,7 @@ def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop :=
 方針：選ばれた終対象への射に Kan 標的による検査を適用する。
 規約：K 自体の Kan 性や全境界の充填を定義に含めない。
 使われ方：Kerodon Theorem 7.2.3.1 の slice の条件。 -/
+@[kerodon 04GW]
 def IsWeaklyContractible (K : SSet.{u}) : Prop :=
   IsWeakHomotopyEquivalence (terminal.from K)
 
@@ -100,6 +103,7 @@ lemma IsPrecompositionEquivalence.isWeakHomotopyEquivalence {A B : SSet.{u}}
 方針：全ての quasicategory への前合成による同値に移す。
 規約：この補題では元の両対象が quasicategory。
 使われ方：Kerodon Remark 4.5.4.4、slice 模型の交換。 -/
+@[kerodon 04FA]
 lemma IsQCatEquivalence.isWeakHomotopyEquivalence {A B : SSet.{u}}
     [Quasicategory A] [Quasicategory B] {f : A ⟶ B} (hf : IsQCatEquivalence f) :
     IsWeakHomotopyEquivalence f := hf.isPrecompositionEquivalence.isWeakHomotopyEquivalence

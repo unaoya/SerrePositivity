@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinStdSection
 public import SerrePositivity.InfinityCategories.Core.FatJoinCylinderEpi
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の標準単体の fat join 比較の前合成の同値条件。
@@ -73,6 +74,7 @@ lemma fatJoinComparison_stdSection (n m : ℕ) :
 方針：一方の合成が恒等、他方が可逆な変形を持つ正規化になる切断に二対六則を使う。
 規約：任意の n、m。任意の quasicategory への前合成が同値という結論。
 使われ方：Kerodon Theorem 4.6.2.8 の標準単体の場合。 -/
+@[kerodon 01HY]
 lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex (n m : ℕ) :
     IsPrecompositionEquivalence (fatJoinComparison (Δ[n] : SSet.{u}) Δ[m]) := by
   apply isPrecompositionEquivalence_of_composites (f := fatJoinStdSection n m)

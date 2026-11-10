@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLifting
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単射に沿う関手の同型の厳密化と前合成の境界持ち上げ。
@@ -76,6 +77,7 @@ lemma pre_surjective_of_essentiallySurjective {A B X : SSet.{u}} [Quasicategory 
 方針：制限の inner fibration 性、充満忠実性、厳密化した頂点全射性を合わせる。
 規約：標的 X は任意の quasicategory。
 使われ方：Kerodon §4.6.2 の pushout とセルによる同値の保存。 -/
+@[kerodon 01FS, kerodon 01G6]
 lemma IsPrecompositionEquivalence.trivialKanFibration_pre {A B : SSet.{u}}
     {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i)
     (X : SSet.{u}) [Quasicategory X] : TrivialKanFibration ((pre i).app X) := by

@@ -22,6 +22,7 @@ public import Mathlib.CategoryTheory.NatIso
 public import Mathlib.CategoryTheory.Opposites
 public import Mathlib.CategoryTheory.Types.Basic
 public import SerrePositivity.InfinityCategories.Core.KanCharacterization
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 分割で生成：docstring を書き直すこと
@@ -45,6 +46,7 @@ open SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 
 /-- 小さな亜群の nerve はホモトピー圏の亜群性から Kan となる。 -/
+@[kerodon 0037]
 lemma groupoidNerve_kanComplex (D : Type u) [SmallCategory D] [IsGroupoid D] : KanComplex (nerve D) := by
   let e : hoFunctor.obj (nerve D) ≌ D :=
     Cat.equivOfIso (nerveFunctorCompHoFunctorIso.app (Cat.of D))

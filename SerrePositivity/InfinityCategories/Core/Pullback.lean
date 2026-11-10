@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Square
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cospan の極限としての引き戻し四角形。
@@ -111,6 +112,7 @@ noncomputable def pullbackCone {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
 方針：正方形と join の同型を通じて A2f の極限性を適用する。
 規約：定義自体には quasicategory の仮定は不要。
 使われ方：HTT §1.2.13、Kerodon §7.1・§7.3 の引き戻し四角形。 -/
+@[kerodon 03FF]
 def IsPullbackSquare {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) : Prop := IsLimitCone (pullbackCone F)
 
 /-- 概要：引き戻し四角形の性質は、対応する錐上の slice 射影の trivial Kan fibration 性と同値。

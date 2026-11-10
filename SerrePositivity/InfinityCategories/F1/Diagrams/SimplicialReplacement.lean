@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Weighted.Nerve
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の圏上の単体集合値図式の simplicial replacement。
@@ -38,6 +39,7 @@ def simplicialReplacementSimplexMap {C : Type u} [Category.{u} C]
 方針：始点での係数の輸送の恒等則と合成則を関手の法則から示す。
 規約：ホーン充填性は構成の仮定に含めない。
 使われ方：Kerodon Construction 5.3.2.1、universal および taut scaffold の始域。 -/
+@[kerodon 035V, kerodon 0365]
 def simplicialReplacement {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) : SSet.{u} where
   obj d := simplicialReplacementSimplex F d.unop.len
@@ -66,6 +68,7 @@ def simplicialReplacement {C : Type u} [Category.{u} C]
 方針：単体の対から底の射列を取り出す。
 規約：係数の情報だけを忘れる。
 使われ方：Kerodon Construction 5.3.2.1、scaffold の底に関する可換性。 -/
+@[kerodon 035V]
 def simplicialReplacementProjection {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) : simplicialReplacement F ⟶ nerve C where
   app _ := ↾Sigma.fst

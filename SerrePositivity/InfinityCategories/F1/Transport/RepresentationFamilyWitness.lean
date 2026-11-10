@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationTensor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：一般の二つの選択表現の間の相対射の族の実現を束ねる。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：全パラメーターで始点・終点・底を同時に保持する。
 規約：相対射の可逆性を要求しない。
 使われ方：写像空間全体の射の復元と比較。 -/
+@[kerodon 05R7]
 structure TransportRepresentationFamilyWitness {E F B K : SSet.{u + 1}}
     {p : E ⟶ B} {q : F ⟶ B} [LeftFibration p] [LeftFibration q]
     (R : LeftTransportRepresentation p) (S : LeftTransportRepresentation q)

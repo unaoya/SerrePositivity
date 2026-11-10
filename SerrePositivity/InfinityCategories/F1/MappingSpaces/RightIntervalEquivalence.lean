@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagramRelativeExt
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFatNaturality
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalHomotopySection
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceRetraction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：右 pinched 写像空間と両端固定の区間写像空間の同値。
@@ -51,6 +52,7 @@ lemma pinchedHomToIntervalMappingSpace_exists_retraction {X : SSet.{u}}
 方針：厳密な左逆と既存のホモトピー右逆を可逆二胞体で比較する。
 規約：X は quasicategory、両写像空間は Kan 複体。
 使われ方：Kerodon §4.6.6、coherent nerve の左右の写像空間の比較。 -/
+@[kerodon 01L5]
 lemma pinchedHomToIntervalMappingSpace_isQCatEquivalence {X : SSet.{u}}
     [Quasicategory X] (x y : X _⦋0⦌) :
     IsQCatEquivalence (pinchedHomToIntervalMappingSpace x y) := by

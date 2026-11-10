@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Diagrams.SimplexDiagram
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：fiber ごとの関手の族から、各標準単体上の実際の図式を回収する。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：等式による型の輸送。
 規約：底図式の射の等式であり、自然同型ではない。
 使われ方：一つの大域的な底への射を保つ局所図式の回収。 -/
+@[kerodon 046N]
 def fiberwiseFunctorValue {B T D : SSet.{u}} {F : Over B ⥤ SSet.{u}}
     (s : SerrePositivity.InfinityCategories.FiberwiseFunctorSimplex F D T) {σ : T ⟶ B} (h : s.1 = σ) :
     F.obj (Over.mk σ) ⟶ D := h ▸ s.2

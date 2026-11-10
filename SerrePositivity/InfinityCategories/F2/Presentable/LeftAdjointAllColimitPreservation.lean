@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointCoconePreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左随伴による任意の小さい形状の余極限の保存。
@@ -24,6 +25,7 @@ open HomotopyLimits
 方針：各定値パラメータ族の射の制限を随伴の自然な Hom 全単射で比較する。
 規約：同じ全余錐を保持し、図式の置換を要求しない。
 使われ方：反映した bar の各項と実現の余極限性。 -/
+@[kerodon 02KE]
 lemma mapJoinCocone_isColimit_of_adjunction
     {K X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G)
@@ -66,6 +68,7 @@ lemma mapJoinCocone_isColimit_of_adjunction
 方針：任意の持ち上げた小形状へ一般保存定理を適用する。
 規約：標的の余完備性は要求しない。
 使われ方：前層反映の全小余極限保存。 -/
+@[kerodon 06LC]
 lemma adjunction_preservesSmallColimits {X Y : SSet.{u + 1}}
     [Quasicategory X] [Quasicategory Y] {L : X ⟶ Y} {R : Y ⟶ X}
     (a : QCatAdjunction L R) : PreservesSmallColimits L := by

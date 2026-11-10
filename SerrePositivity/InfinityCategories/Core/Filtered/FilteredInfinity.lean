@@ -3,6 +3,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：filtered ∞ 圏と κ-filtered ∞ 圏の余錐による定義。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2
 /-- 概要：有限な全ての図式が余錐を持つ ∞ 圏。
 方針：有限単体集合からの図式に join による余錐の非空性を課す。
 規約：余錐に余極限性は要求しない。使われ方：通常の filtered ∞ 圏。 -/
+@[kerodon 02PB]
 class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where
   cocone_nonempty {K : SSet.{u}} [K.Finite] (f : K ⟶ C) : Nonempty (JoinCocone f)
 
@@ -29,6 +31,7 @@ class IsFilteredInfinity (C : SSet.{u}) [Quasicategory C] : Prop where
 方針：非退化単体の濃度を制限し、元の図式を延長する余錐を要求する。
 規約：κ は同じ宇宙。正則な κ に対する理論の前提として用いる。
 使われ方：Indκ と κ-compact 対象。 -/
+@[kerodon 05X0]
 class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where
   cocone_nonempty {K : SSet.{u}} (hK : IsKappaSmall κ K) (f : K ⟶ C) :
     Nonempty (JoinCocone f)
@@ -43,6 +46,7 @@ lemma isKappaFiltered_of_le {κ μ : Cardinal.{u}} {C : SSet.{u}} [Quasicategory
 /-- 概要：ℵ₀-filtered 性は filtered 性と同値。
 方針：試験形状について ℵ₀-small 性と有限性の同値を適用する。
 規約：一般の有限単体集合を全て試験する。使われ方：Ind と Indω の整合。 -/
+@[kerodon 05X0]
 lemma isKappaFiltered_aleph0_iff (C : SSet.{u}) [Quasicategory C] :
     IsKappaFiltered Cardinal.aleph0 C ↔ IsFilteredInfinity C := by
   constructor

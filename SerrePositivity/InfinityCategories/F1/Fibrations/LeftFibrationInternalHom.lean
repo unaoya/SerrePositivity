@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.RightPrism
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left fibration の内部 Hom による保存。
@@ -52,6 +53,7 @@ lemma leftAnodyneExtensions_horn_whiskerRight {m : ℕ} (k : Fin (m + 1))
 方針：tensorRight と内部 Hom の随伴で、左ホーンとパラメータの積の持ち上げに移す。
 規約：パラメータと底に quasicategory 性は要求しない。
 使われ方：Kerodon §5.3.1、left fibration 上の関手の族の充填。 -/
+@[kerodon 00TQ]
 instance ihom_map_leftFibration {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
     (A : SSet.{u}) : LeftFibration ((ihom A).map p) where
   mem := by

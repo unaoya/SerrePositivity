@@ -14,6 +14,7 @@ public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 相対始対象の境界充填
 
@@ -65,6 +66,7 @@ lemma initialBoundaryLifting_of_terminalBoundaryLifting_op {E B : SSet.{u}}
 /-- 概要：射の上で始点境界を充填できる頂点は、その fiber の始対象である。
 方針：標的の単体を定値に取る。
 規約：ファイブレーション性は不要。使われ方：相対条件から余極限性へ戻す。 -/
+@[kerodon 02WV]
 lemma InitialBoundaryLifting.isInitialVertex_fiber {E B : SSet.{u}}
     (p : E ⟶ B) (b : B _⦋0⦌) (x : (vertexFiber p b) _⦋0⦌)
     (hx : InitialBoundaryLifting p x.val) : IsInitialVertex x := by
@@ -86,6 +88,7 @@ lemma InitialBoundaryLifting.isInitialVertex_fiber {E B : SSet.{u}}
 方針：固定図式上の余錐の族の始対象性へ制限する。
 規約：値域は quasicategory。逆方向は別の定理を必要とする。
 使われ方：相対的な普遍性から余極限性への接続。 -/
+@[kerodon 02XD]
 lemma isColimitCone_of_initialBoundaryLifting_coconeRestriction
     {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCocone p)
     (hc : InitialBoundaryLifting (coconeRestriction K X) (functorVertex c.val)) :

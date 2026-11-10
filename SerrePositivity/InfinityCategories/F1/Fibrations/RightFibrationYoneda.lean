@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTens
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：right fibration への表現可能な相対射の全空間は、恒等点の fiber と同値。
@@ -24,6 +25,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- right fibration を標的とする、底上の実際の全相対関手空間は Kan 複体。 -/
+@[kerodon 01GZ]
 instance relativeFunctorSpace_kanComplex_of_rightFibration {A E B : SSet.{u}}
     (p : E ⟶ B) [RightFibration p] (a : A ⟶ B) :
     KanComplex (relativeFunctorSpace p a) :=

@@ -4,6 +4,7 @@ public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：境界定数単体による零次数のホモトピー類と連結成分との比較。
@@ -30,6 +31,7 @@ open SerrePositivity.KST.Spectra
 方針：RelStruct₀ による辺の関係を商にする。
 規約：零次数の境界は空であり、基点は代表を制限しない。
 使われ方：Kerodon Example 3.2.2.6。π₀ との比較。 -/
+@[kerodon 00HC, kerodon 00VQ]
 def KanHomotopyZero (X : SSet.{u}) (x : X _⦋0⦌) : Type u :=
   Quot (fun f g : X.PtSimplex 0 x ↦ Nonempty (PtSimplex.RelStruct₀ f g))
 
@@ -48,6 +50,7 @@ def mk (f : X.PtSimplex 0 x) : _root_.SerrePositivity.InfinityCategories.Kan.Kan
 方針：RelStruct₀ と辺の同値で商の間の互いに逆な写像を作る。
 規約：辺の向きが逆なので商の等式の対称性を使う。
 使われ方：Kerodon Example 3.2.2.6。fiber 長完全列の π₀。 -/
+@[kerodon 00HC, kerodon 00VQ]
 def equivPiZero : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero X x ≃ π₀ X where
   toFun := Quot.lift (fun f ↦ π₀.mk (PtSimplex.equiv₀ x f)) (by
     rintro f g ⟨h⟩

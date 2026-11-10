@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinDiagonal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：共通の単体集合へ写る二つの単体集合の relative join。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：joinMap f g を底の区間付き対角へ引き戻す。
 規約：区間成分を第一因子とする。
 使われ方：Kerodon Construction 5.2.3.1、通常の関手を transport として表す全空間。 -/
+@[kerodon 0242]
 noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : SSet.{u} :=
   pullback (joinMap f g) (joinDiagonal S)
 
@@ -27,6 +29,7 @@ noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : 
 方針：引き戻しの第二射影に区間成分の第一射影を合成する。
 規約：零端が X、一端が Y に対応する。
 使われ方：Kerodon Construction 5.2.3.1、区間上の fibration の候補の射影。 -/
+@[kerodon 0242]
 noncomputable def relativeJoinProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
     relativeJoin f g ⟶ (Δ[1] : SSet.{u}) :=
   pullback.snd (joinMap f g) (joinDiagonal S) ≫ fst (Δ[1] : SSet.{u}) S

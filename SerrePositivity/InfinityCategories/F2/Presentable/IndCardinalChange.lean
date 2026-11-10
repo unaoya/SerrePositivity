@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFamilyGeneratorTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallGeneratorPresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：実証済みの濃度条件から、Ind 圏と任意の accessible ∞ 圏の μ-accessibility を得る。
@@ -61,6 +62,7 @@ lemma IsKappaAccessible.exists_larger {κ : Cardinal.{u}}
   exact ⟨μ, hσ, hC.of_cardinalChangeBound h⟩
 
 /-- accessibility は、同じ宇宙の任意の上限より大きい正則濃度で実現できる。 -/
+@[kerodon 06KM]
 lemma IsAccessible.exists_larger {C : SSet.{u + 1}} [Quasicategory C]
     (hC : IsAccessible C) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, σ < μ ∧ IsKappaAccessible μ C := by
@@ -68,6 +70,7 @@ lemma IsAccessible.exists_larger {C : SSet.{u + 1}} [Quasicategory C]
   exact hκ.exists_larger σ
 
 /-- 小さい accessible 圏の族は、任意の上限を超える一つの同じ正則濃度で accessible。 -/
+@[kerodon 06KP]
 lemma exists_common_accessibilityCardinal {ι : Type u} (C : ι → SSet.{u + 1})
     [∀ i, Quasicategory (C i)] (hC : ∀ i, IsAccessible (C i)) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧ ∀ i, IsKappaAccessible μ (C i) := by

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveCocartesianScaffold
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveTransportUnit
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianSectionFamilies
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：係数図式から weighted nerve の cocartesian strict transport への自然な比較。
@@ -68,6 +69,7 @@ lemma weightedNerveCocartesianUnitComponent_ι {C : Type u} [Category.{u} C]
   exact (weightedNerveTransportUnit_app F c n m x α τ).symm
 
 /-- 元の係数図式から cocartesian strict transport への図式全体の自然変換。 -/
+@[kerodon 037B]
 def weightedNerveCocartesianTransportUnit {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] :
     F ⟶ SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram (weightedNerveProjection F) where
@@ -110,6 +112,7 @@ lemma weightedNerveCocartesianTransportUnit_evaluate {C : Type u} [Category.{u} 
   exact weightedNerveTransportUnit_evaluate F c
 
 /-- 同じ図式全体の cocartesian 比較は各対象で ∞ 圏の同値。 -/
+@[kerodon 037B]
 lemma weightedNerveCocartesianTransportUnit_isQCatEquivalence {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, Quasicategory (F.obj c)] (c : C) :
     IsQCatEquivalence ((weightedNerveCocartesianTransportUnit F).app c) := by

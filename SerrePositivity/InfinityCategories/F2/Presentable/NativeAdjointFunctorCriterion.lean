@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.LeftAdjointFunct
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightAdjointFunctorCriterion
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeSmallHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeContravariantHomContinuity
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：小さい錐の宇宙反映を使い随伴関手定理の宇宙比較入力を除去する。
@@ -52,6 +53,7 @@ lemma isKappaAccessibleFunctor_of_indHomTests_native
 方針：小さい生成 Hom 族を共通の正則濃度で保存し、Ind の各点検出で元の保存性へ戻す。
 規約：右随伴の保存性や compact 性を追加入力にしない。
 使われ方：無条件の宇宙反映界面を適用する随伴関手定理の必要方向。 -/
+@[kerodon 06LC]
 lemma rightAdjoint_isAccessible
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsAccessible C) (hD : IsAccessible D)
@@ -93,6 +95,7 @@ lemma accessible_limitPreservingHomModels
 方針：必要方向は右随伴の保存と Hom 濃度、十分方向は小さい Hom 模型の余表現を使う。
 規約：指定宇宙変更の小さい錐の反映を使い、充満忠実性を仮定しない。
 使われ方：presentable 圏の右随伴関手の判定。 -/
+@[kerodon 06Q5]
 lemma exists_leftAdjoint_iff_accessible_preservesLimits
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) :

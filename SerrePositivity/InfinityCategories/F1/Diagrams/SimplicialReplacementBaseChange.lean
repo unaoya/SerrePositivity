@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplaceme
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveBaseChange
 public import SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：simplicial replacement の底変換と taut scaffold の整合性。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：底の射列に H を後合成し、始点の係数単体をそのまま用いる。
 規約：始域の係数図式は H⋙F。
 使われ方：Kerodon Remark 5.3.2.3、底変換の比較射。 -/
+@[kerodon 035X]
 def simplicialReplacementBaseMap {C D : Type u} [Category.{u} C] [Category.{u} D]
     (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
     simplicialReplacement (H ⋙ F) ⟶ simplicialReplacement F where
@@ -42,6 +44,7 @@ lemma simplicialReplacementBaseMap_projection
 方針：各次数で底の一致を代入し、同じ係数単体を新しい射列に添える。
 規約：単体集合の厳密な pullback であり、同値への置換は不要。
 使われ方：Kerodon Remark 5.3.2.3、底の各標準単体上の比較への還元。 -/
+@[kerodon 035X]
 lemma simplicialReplacementBaseMap_isPullback
     {C D : Type u} [Category.{u} C] [Category.{u} D] (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
     IsPullback (simplicialReplacementBaseMap H F) (simplicialReplacementProjection (H ⋙ F))
@@ -74,6 +77,7 @@ lemma tautScaffold_baseMap {C D : Type u} [Category.{u} C] [Category.{u} D]
 方針：各次数で底の射列を固定し、可換な単体の組から係数単体を取り出す。
 規約：係数図式の充填性は不要。
 使われ方：Kerodon Remark 5.3.4.14、taut scaffold の底変換を厳密に計算する。 -/
+@[kerodon 0376]
 lemma tautScaffold_baseMap_isPullback
     {C D : Type u} [Category.{u} C] [Category.{u} D] (H : D ⥤ C) (F : C ⥤ SSet.{u}) :
     IsPullback (tautScaffold (H ⋙ F)) (simplicialReplacementBaseMap H F)

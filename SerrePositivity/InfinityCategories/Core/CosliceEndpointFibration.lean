@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration に対する相対 coslice の射は left fibration。
@@ -123,6 +124,7 @@ lemma cosliceEndpointMap_hasLiftingProperty {A K E B : SSet.{u}}
 方針：左ホーン包含に対する相対持ち上げ補題を適用する。
 規約：元・標的の quasicategory 性は不要。
 使われ方：Kerodon Corollary 4.3.6.9、§5.1.1 の相対 coslice。 -/
+@[kerodon 01C0]
 instance cosliceEndpointMap_leftFibration {K E B : SSet.{u}}
     (a : K ⟶ E) (p : E ⟶ B) [InnerFibration p] : LeftFibration (cosliceEndpointMap a p) where
   mem := by

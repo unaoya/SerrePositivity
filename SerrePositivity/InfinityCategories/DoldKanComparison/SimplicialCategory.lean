@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.StandardVertices
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Dold–Kan の単体的圏と coherent nerve
@@ -25,6 +26,7 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 方針：閉零射と標準零単体の同値を単位からの射へ移し、恒等射と合成の保存を使う。
 規約：Hom は係数環と同じ宇宙 u の単体集合。
 使われ方：HA 1.3.1.13 の C_Δ。 -/
+@[kerodon 00SE, kerodon 00SF]
 instance doldKanSimplicialCategory : SimplicialCategory (ClosedCategory R D) where
   toEnrichedCategory := standardEnrichedCategory (R := R) (D := D)
   homEquiv {x y} := (closedStandardVertexEquiv (R := R) (D := D) x y).trans

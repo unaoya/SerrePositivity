@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の同値による任意の極限錐の保存と反映。
@@ -57,6 +58,7 @@ lemma isLimitCone_iff_mapJoinCone_of_section {K X E : SSet.{u}}
 方針：path 置換への切断と終点射に分解し、各段階で極限錐を検出する。
 規約：図式の単体集合 K は任意。
 使われ方：HTT §1.2.13、Kerodon §7.1 の同値による極限不変性。 -/
+@[kerodon 02JZ]
 lemma IsQCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f)
     {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone f c) := by
@@ -79,6 +81,7 @@ lemma IsQCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
 方針：逆データから同値性を取り出して一般形を適用する。
 規約：像の図式は p≫e.hom。
 使われ方：HTT §1.2.13、Kerodon §7.1 の利用側 API。 -/
+@[kerodon 02JZ]
 lemma QCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y)
     {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone e.hom c) :=

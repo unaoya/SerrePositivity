@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedStrictConeFamily
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：始対象付き図式上の weighted な strict 錐の比較を元の図式へ制限する。
@@ -70,6 +71,7 @@ variable [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
 方針：native な切断の制限の判定と、weighted な錐全体の比較の同値・主可換式を使う。
 規約：添字圏 I と通常の錐 c は任意。追加の比較同値の仮定は不要。
 使われ方：HTT 4.2.4.1、Kerodon 7.5.4.6 の Hom の homotopy 極限から ∞ 極限への接続。 -/
+@[kerodon 03BB]
 lemma strictCoherentCone_isLimit_iff_reflectedStrictConeSectionsComparison {F : I ⥤ C}
     (c : Cone F) :
     IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,

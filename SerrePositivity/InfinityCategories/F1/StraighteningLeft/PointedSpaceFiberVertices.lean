@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：pointed-space 射影と left unstraightening の fiber の零単体を比較する。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：一点空間から K への coherent な辺を通常の射に直し、Yoneda で点を取り出す。
 規約：左辺の宇宙は u+1、右辺の宇宙は u。
 使われ方：Kerodon Construction 5.5.2.1、pointed-space fiber の比較の零次部分。 -/
+@[kerodon 01ZW]
 noncomputable def pointedSpaceFiberVertexEquiv (K : KanObject.{u}) :
     (vertexFiber pointedSpaceProjection (spaceInfinityVertex K)) _⦋0⦌ ≃ K.obj _⦋0⦌ := by
   let e := cosliceFiberVertexEquiv pointSpaceVertex (spaceInfinityVertex K)

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ParameterRightKan
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：右 ∞ 随伴による任意の coherent 図式の指定極限錐の保存を証明する。
@@ -49,6 +50,7 @@ lemma terminalBoundaryLifting_pre_postcomp_of_unitCondition {K L X Y : SSet.{u}}
   exact constantHom_precomp_bijective_of_parameterRightKan δ (H ≫ G) hp A T
 
 /-- 右 ∞ 随伴は、任意の coherent 図式の元の指定極限錐を保存する。 -/
+@[kerodon 02KE]
 lemma mapJoinCone_isLimit_of_adjunction {K X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
     (a : QCatAdjunction F G) {p : K ⟶ Y} (c : JoinCone p) (hc : IsLimitCone c) :

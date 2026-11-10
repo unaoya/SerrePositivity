@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.TriangleRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cocartesian 辺の三角形に沿う合成閉性。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：最初の辺を経由した始点への充填性を長辺を経由した充填性に移す。
 規約：三つの辺はそれぞれ δ₂、δ₀、δ₁ による制限。
 使われ方：Kerodon Corollary 5.1.2.4、transport 関手の合成の各頂点での判定。 -/
+@[kerodon 01TS]
 lemma isCocartesianEdge_triangle_longEdge {X Y : SSet.{u}} [Quasicategory Y]
     (t : (Δ[2] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [InnerFibration q]
     (hfirst : IsCocartesianEdge q (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t)))

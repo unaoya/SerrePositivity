@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Localization.PrecompositionCriterion
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の局所化が反転する辺の範囲内で、指定辺集合を拡大しても局所化である。
@@ -20,6 +21,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 /-- 概要：元の局所化の反転辺内での指定集合の拡大は同じ局所化を表す。
 方針：新旧の全反転関手圏を比較。規約：同じ F。使われ方：飽和への移行。 -/
+@[kerodon 02LT]
 lemma IsLocalization.of_subset_invertedEdges {X D : SSet.{u}} {F : X ⟶ D}
     {W W' : Set (X _⦋1⦌)} (hF : IsLocalization F W)
     (hWW' : W ⊆ W') (hW' : W' ⊆ invertedEdges F) : IsLocalization F W' := by
@@ -61,6 +63,7 @@ lemma IsLocalization.of_subset_invertedEdges {X D : SSet.{u}} {F : X ⟶ D}
 
 /-- 概要：元の局所化は、その反転する全ての辺についても局所化である。
 方針：反転辺の全体への拡大。規約：同じ F。使われ方：飽和集合の公開。 -/
+@[kerodon 04JH]
 lemma IsLocalization.saturate {X D : SSet.{u}} {F : X ⟶ D}
     {W : Set (X _⦋1⦌)} (hF : IsLocalization F W) :
     IsLocalization F (invertedEdges F) :=

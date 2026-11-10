@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同値による元の指定余錐の保存・反映と、小さい κ-filtered 余極限の輸送。
@@ -21,6 +22,7 @@ open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 同じ元の関手が同値なら、元の任意の全余錐の余極限性を保存・反映する。 -/
+@[kerodon 02JZ]
 lemma equivalence_isColimitCone_iff {K C E : SSet.{u}} [Quasicategory C] [Quasicategory E]
     {G : C ⟶ E} (hG : IsQCatEquivalence G) {D : K ⟶ C} (c : JoinCocone D) :
     IsColimitCone c ↔ IsColimitCone (mapJoinCocone G c) :=

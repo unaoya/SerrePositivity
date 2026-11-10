@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorSpace
 public import SerrePositivity.InfinityCategories.Core.InitialCofinality
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右 cofinal な単体集合の射と、始対象の包含による left cofinality。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：任意の left fibration への底上の関手の制限にホモトピー逆の存在を要求する。
 規約：標的の宇宙と同じ宇宙の fibration で検査する。充填性は p だけに課す。
 使われ方：Kerodon Definition 7.2.1.1、極限を計算する向き。 -/
+@[kerodon 02N1]
 def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop :=
   ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p],
     IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)
@@ -31,6 +33,7 @@ def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop :=
 方針：任意の right fibration への底上の関手の制限にホモトピー逆の存在を要求する。
 規約：left の opposite による略記にはせず、元の底上の制限写像を指定する。
 使われ方：Kerodon Definition 7.2.1.1、余極限を計算する向き。 -/
+@[kerodon 02N1]
 def IsRightCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop :=
   ∀ (E : SSet.{u}) (p : E ⟶ B) [RightFibration p],
     IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)

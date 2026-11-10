@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.InitialVertexLocalizedContraction
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Kan 標的による弱同値を同じ射の anodyne 局所化可逆性へ移す -/
 
@@ -15,6 +16,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の弱同値の連続 Kan 置換の実逆と、同じ単位の自然性で元の射の可逆性を得る。 -/
+@[kerodon 00ZJ, kerodon 0104]
 theorem weakHomotopyEquivalence_anodyneQ_isIso {X Y : SSet.{u}} (f : X ⟶ Y)
     (hf : IsWeakHomotopyEquivalence f) : IsIso (AnodyneHomotopy.anodyneQ.map f) := by
   let Q := AnodyneHomotopy.anodyneQ

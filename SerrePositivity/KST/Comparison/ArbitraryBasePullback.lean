@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.ExInfinityFibrations
 public import SerrePositivity.KST.Comparison.ExInfinityLocalization
 public import SerrePositivity.KST.Comparison.KanBasePullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 任意の基底での Kan fibration に沿う局所化同型の引き戻し
@@ -29,6 +30,7 @@ open SerrePositivity.SimplicialModel
 規約：モデル構造や基底の Kan 性を追加で仮定しない。
 使われ方：ホモトピー引き戻しの任意の基底での不変性。
 -/
+@[kerodon 0104]
 theorem pullback_localized_isIso {A B E P : SSet.{u}}
     (i : A ⟶ B) (hi : IsIso (AnodyneHomotopy.anodyneQ.map i))
     (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p)

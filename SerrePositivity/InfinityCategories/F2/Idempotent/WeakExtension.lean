@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakInnerAnodyne
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定した元の弱い retract 図式は、強い分裂へ延長でき、その延長空間は可縮。
@@ -19,6 +20,7 @@ open CategoryTheory Limits MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の弱い retract 添字への制限そのものは、任意の quasicategory に対して trivial Kan。 -/
+@[kerodon 03Z7]
 lemma weakComparisonRestriction_trivialKanFibration (X : SSet.{u}) [Quasicategory X] :
     TrivialKanFibration ((pre weakComparison).app X) :=
   trivialKanFibration_pre_of_innerAnodyne weakComparison weakComparison_innerAnodyne X

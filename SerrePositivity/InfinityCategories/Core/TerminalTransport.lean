@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.TerminalVertices
 public import SerrePositivity.InfinityCategories.Core.HornPointJoin
 public import SerrePositivity.InfinityCategories.Core.Limit
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：終対象性のホモトピー圏の同型による不変性。
@@ -38,6 +39,7 @@ lemma IsTerminalVertex.exists_sliceLift {A X : SSet.{u}} {x : X _⦋0⦌}
 方針：境界を既知の終対象へ錐にし、最後の辺が終対象間の同型である外側ホーンを充填する。
 規約：quasicategory 性を仮定する。
 使われ方：HTT §1.2.12、Kerodon §4.7.3 の同型不変性。 -/
+@[kerodon 02HQ]
 lemma isTerminalVertex_of_isTerminalHo {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (hx : IsTerminalVertex x)
     (hy : IsTerminal (SSet.HomotopyCategory.mk y : hoFunctor.obj X)) : IsTerminalVertex y := by

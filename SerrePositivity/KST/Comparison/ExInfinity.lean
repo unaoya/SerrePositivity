@@ -4,6 +4,7 @@ public import SerrePositivity.KST.Comparison.ExUnit
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import Mathlib.CategoryTheory.Limits.FilteredColimitCommutesFiniteLimit
 public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex の反復と有限極限を保つ順序余極限
@@ -73,6 +74,7 @@ instance exSequence_flip_preservesFiniteLimits : PreservesFiniteLimits exSequenc
 規約：Moss 2020 §3。この定義だけでは Kan 性を主張しない。
 使われ方：有限極限を保つ Kan 置換の候補の実関手。
 -/
+@[kerodon 00ZB]
 def exInfinity : SSet.{u} ⥤ SSet.{u} := exSequence.flip ⋙ colim
 
 /--
@@ -105,6 +107,7 @@ def exInfinityStage (n : ℕ) : exIterate.{u} n ⟶ exInfinity where
 規約：Moss 2020 Corollary 30 の写像の定義。anodyne 性は別に証明する。
 使われ方：引き戻しと両立する Kan 置換の単位の候補。
 -/
+@[kerodon 00ZB]
 def exInfinityUnit : 𝟭 SSet.{u} ⟶ exInfinity := exInfinityStage 0
 
 end SerrePositivity.KST.Comparison

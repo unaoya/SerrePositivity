@@ -13,6 +13,7 @@ public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体の実際のホモトピー同値と全基点 π_* 同型を空の対象も含めて接続する。
@@ -48,6 +49,7 @@ instance kanEquivalencePathReplacement_kanComplex {X Y : SSet.{u}}
 方針：path 置換の二つの射影の全ての単射への RLP と定値 path の厳密な分解を使う。
 規約：元の始域の頂点や非空性を仮定しない。
 使われ方：実際の同値性を既存の Kan fibration の fiber の全次数比較へ渡す。 -/
+@[kerodon 00WV]
 lemma kanPiIsomorphism_of_homotopyEquivalence {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (he : IsSimplicialHomotopyEquivalence f) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
@@ -90,6 +92,7 @@ lemma homotopyEquivalence_of_kanPiIsomorphism_of_vertex {X Y : SSet.{u}}
 方針：源に頂点があれば点つき Whitehead を使い、なければ標的も空であることを確認する。
 規約：空の fiber の全基点条件だけで同値と結論しない。
 使われ方：任意の底頂点上の fiber の比較で空の fiber を含める。 -/
+@[kerodon 00WV]
 lemma homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f)
     (h₀ : Function.Surjective (mapπ₀ f)) : IsSimplicialHomotopyEquivalence f := by

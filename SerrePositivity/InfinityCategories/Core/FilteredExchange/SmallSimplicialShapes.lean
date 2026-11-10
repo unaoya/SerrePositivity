@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 public import Mathlib.SetTheory.Cardinal.Regular
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：非退化単体の個数による κ-small な単体集合。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2
 方針：退化単体を重複計数せず、mathlib の非退化単体の型を使う。
 規約：有限形状を ℵ₀-small として含む。
 使われ方：κ-filtered 性で試験する全ての小さい図式。 -/
+@[kerodon 03S2]
 def IsKappaSmall (κ : Cardinal.{u}) (K : SSet.{u}) : Prop :=
   Cardinal.mk K.N < κ
 

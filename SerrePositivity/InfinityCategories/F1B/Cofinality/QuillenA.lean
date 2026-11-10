@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenARightFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：right cofinality を弱可縮な coslice の引き戻しで特徴付ける Quillen A。
@@ -45,6 +46,7 @@ lemma isRightCofinal_of_weaklyContractible_coslices {A B : SSet.{u}} [Quasicateg
 方針：coslice 射影への引き戻しによる必要性と right fibration による十分性を合わせる。
 規約：標的 B のみ quasicategory、始域 A は任意の単体集合。
 使われ方：Kerodon Theorem 7.2.3.1(2)、HTT Theorem 4.1.3.1 の right cofinal 版。 -/
+@[kerodon 02NY]
 lemma isRightCofinal_iff_weaklyContractible_coslices {A B : SSet.{u}} [Quasicategory B]
     (f : A ⟶ B) :
     IsRightCofinal f ↔ ∀ b : B _⦋0⦌,

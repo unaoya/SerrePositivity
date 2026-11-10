@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：前合成の同値条件の二対六則と可逆ホモトピーによる不変性。
@@ -35,6 +36,7 @@ lemma isPrecompositionEquivalence_of_composites {A B C D : SSet.{u}}
 方針：各標的の関手単体集合で前合成の二つの射を同型にする。
 規約：元の二つの単体集合の quasicategory 性は不要。
 使われ方：Kerodon §4.6.2 の標準単体の変形。 -/
+@[kerodon 033Z]
 lemma isPrecompositionEquivalence_iff_of_homotopy {A B : SSet.{u}} {f g : A ⟶ B}
     (H : SSet.Homotopy f g)
     (hH : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H a).toTruncated) :

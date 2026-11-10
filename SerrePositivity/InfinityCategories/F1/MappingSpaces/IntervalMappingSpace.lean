@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：両端を固定した単位区間からの写像空間とパラメータ付きの普遍性。
@@ -41,6 +42,7 @@ def intervalMappingBoundary {X : SSet.{u}} (x y : X _⦋0⦌) :
 方針：区間から X への内部 Hom を、指定した境界の図式の上に制限する。
 規約：各パラメータ次数でも境界の図式を厳密に固定する。
 使われ方：Kerodon §4.6.5–4.6.6、左右の模型の共通比較先。 -/
+@[kerodon 01J5, kerodon 03X9]
 def intervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :=
   vertexFiber ((pre (boundary 1).ι).app X) (functorVertex (intervalMappingBoundary x y))
 

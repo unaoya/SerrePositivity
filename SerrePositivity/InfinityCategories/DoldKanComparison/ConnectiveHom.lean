@@ -6,6 +6,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Algebra.Homology.Embedding.TruncLE
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.AlgebraicTopology.DoldKan.Equivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 切断した Hom 複体と Mathlib の Dold–Kan 対象
@@ -103,6 +104,7 @@ def doldKanHomModule (x y : D) : SimplicialObject (ModuleCat.{u} R) :=
 方針：単体的加群の後に忘却関手を合成する。
 規約：この時点では標準成分模型との同型や豊穣合成を主張しない。
 使われ方：HA 1.3.1.13、Kerodon 2.5.9.2 の厳密な DK Hom。 -/
+@[kerodon 00SE]
 def doldKanHomSpace (x y : D) : SSet.{u} :=
   doldKanHomModule (R := R) x y ⋙ forget (ModuleCat.{u} R)
 

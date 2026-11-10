@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveUnitInvertible
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：反射に関する局所対象は包含の本質的な像。
@@ -74,6 +75,7 @@ lemma isLocal_of_vertexIso {x y : X _⦋0⦌} (e : VertexIso x y) (hx : r.IsLoca
 方針：局所単位の逆で反射像からの同型を作り、逆方向は像の局所性と同型不変性を使う。
 規約：頂点の等号や P への所属には強めない。
 使われ方：反射の局所対象の本質的な像による特徴づけ。 -/
+@[kerodon 06TB]
 lemma isLocal_iff_essentialImage (x : X _⦋0⦌) :
     r.IsLocal x ↔ ∃ y : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌,
       Nonempty (VertexIso y.val x) := by

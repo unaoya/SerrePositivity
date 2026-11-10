@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.ProExcision.ShuffleBoundaryDecomposition
 public import SerrePositivity.KST.ProExcision.AWTensorDifferential
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 標準 shuffle の実鎖写像
@@ -86,6 +87,7 @@ lemma shuffle_vertical_differential {p q n : ℕ} (h : p + q = n + 1) :
 方針：標準直和包含で比較し、二種類の純粋境界和を合成する。
 規約：KST Construction A.5、実際の鎖複体に対する等式。
 使われ方：標準 shuffle の鎖写像の構成。 -/
+@[kerodon 00RN]
 theorem shuffle_comm (n : ℕ) :
     shuffleApp C D (n + 1) ≫
       ((alternatingFaceMapComplex _).obj (simplicialIntegerTensor C D)).d (n + 1) n =
@@ -101,6 +103,7 @@ theorem shuffle_comm (n : ℕ) :
 方針：格子路の符号付き有限和に検証済みの微分との可換性を付ける。
 規約：KST Construction A.5、正規化前の交代面複体。
 使われ方：Moore 複体への移送と AW との標準ホモトピー。 -/
+@[kerodon 00RN]
 def shuffle :
     chainIntegerTensor ((alternatingFaceMapComplex _).obj C)
       ((alternatingFaceMapComplex _).obj D) ⟶

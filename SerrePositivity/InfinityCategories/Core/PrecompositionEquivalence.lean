@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の quasicategory への前合成による比較射の同値判定の補助条件。
@@ -96,6 +97,7 @@ lemma IsPrecompositionEquivalence.cancel_right {A B C : SSet.{u}} {f : A ⟶ B} 
 方針：関手単体集合の制限の trivial Kan fibration 性を使う。
 規約：元の単体集合の quasicategory 性は不要。
 使われ方：Kerodon §4.6.2 のセルによる比較。 -/
+@[kerodon 01EJ]
 lemma isPrecompositionEquivalence_of_innerAnodyne {A B : SSet.{u}} (f : A ⟶ B)
     (hf : innerAnodyneExtensions f) : IsPrecompositionEquivalence f := by
   intro X hX

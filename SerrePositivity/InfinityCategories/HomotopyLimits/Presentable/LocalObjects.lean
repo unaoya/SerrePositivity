@@ -21,6 +21,7 @@ public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParame
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PinchedActionEquivalences
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定辺集合に対する局所対象と写像空間の局所性の基本性質。
@@ -100,6 +101,7 @@ lemma isLocalForHom_iff_of_vertexIso {x y z z' : X _⦋0⦌}
     exact hx.cancel_right ((hy.comp hf).ofFunctorIso h.symm)
 
 /-- HTT 5.5.4.1 の、指定された辺集合に対する局所対象。 -/
+@[kerodon 06VH]
 def IsLocalObject (W : Set (X _⦋1⦌)) (z : X _⦋0⦌) : Prop :=
   ∀ e ∈ W, IsLocalForHom (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex e)) z
 

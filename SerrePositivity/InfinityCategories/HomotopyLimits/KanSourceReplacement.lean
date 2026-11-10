@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanCoconeColimits
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：非 Kan な単体集合の anodyne な Kan 置換と Kan 対象への写像空間の比較。
@@ -22,6 +23,7 @@ noncomputable section
 方針：全境界との pushout-product の anodyne 性を内部 Hom の二変数随伴で移す。
 規約：始域 A と終域 B の Kan 性は不要。
 使われ方：HTT 4.2.4.1、非 Kan な余極限対象の Kan 置換の写像空間の比較。 -/
+@[kerodon 00UT]
 lemma trivialKanFibration_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
     (hi : SSet.anodyneExtensions i) (X : SSet.{u}) [KanComplex X] :
     TrivialKanFibration ((pre i).app X) := by
@@ -38,6 +40,7 @@ lemma trivialKanFibration_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
 方針：trivial Kan fibration の同値性を Kan な内部 Hom のホモトピー同値へ移す。
 規約：始域の二つの単体集合に充填性を仮定しない。
 使われ方：Kerodon 7.5.4.6、Kan 置換前後の錐の Hom 比較。 -/
+@[kerodon 00UP]
 lemma homotopyEquivalence_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
     (hi : SSet.anodyneExtensions i) (X : SSet.{u}) [KanComplex X] :
     IsSimplicialHomotopyEquivalence ((pre i).app X) := by
@@ -48,6 +51,7 @@ lemma homotopyEquivalence_pre_of_anodyne {A B : SSet.{u}} (i : A ⟶ B)
 方針：既存の関手的 anodyne 置換の終対象への右持ち上げ性を Kan 性として読む。
 規約：元の単体集合に Kan 性を仮定しない。
 使われ方：HTT 4.2.4.1、実際の homotopy 押し出し対象の Kan 置換。 -/
+@[kerodon 00UW]
 def anodyneKanObject (A : SSet.{u}) : KanObject.{u} := by
   let R := SerrePositivity.SimplicialModel.AnodyneKanReplacement.functor
   have : KanComplex (R.obj A) :=
@@ -66,6 +70,7 @@ def anodyneKanObjectUnit (A : SSet.{u}) : A ⟶ (anodyneKanObject A).obj :=
 方針：ホーンの小対象論法の左因子の性質を使う。
 規約：置換の実際の単位射の性質として述べる。
 使われ方：Kan 対象への内部 Hom の前合成の比較の入力。 -/
+@[kerodon 00UW]
 lemma anodyneKanObjectUnit_anodyne (A : SSet.{u}) :
     SSet.anodyneExtensions (anodyneKanObjectUnit A) :=
   SerrePositivity.SimplicialModel.AnodyneKanReplacement.unit_anodyne A

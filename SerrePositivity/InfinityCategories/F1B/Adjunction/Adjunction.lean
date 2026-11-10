@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 public import Mathlib.CategoryTheory.Bicategory.Adjunction.Mate
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の単位・余単位による随伴。
@@ -35,6 +36,7 @@ abbrev qcatMap {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y
 方針：単位・余単位と h Fun 内の三角恒等式を持つ双圏随伴を使う。
 規約：単位・余単位を可逆とは仮定しない。
 使われ方：Kerodon Def 6.2.1.1・Remark 6.2.1.4、HTT §5.2。 -/
+@[kerodon 02EK, kerodon 02EL, kerodon 02EN]
 abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)
 
@@ -44,6 +46,7 @@ local instance (X Y : SSet.QCat.{u}) : Category.{u} (X ⟶ Y) :=
 /-- 概要：双圏の Hom 圏から関手単体集合のホモトピー圏への表示。
 方針：Cat への豊穣構造の底の二胞体を取る。規約：対象は既存の functorVertex。
 使われ方：Kerodon Remark 6.2.1.4、A3a の FunctorIso との接続。 -/
+@[kerodon 02EN]
 def qcatHomFunctor (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] :
     (qcatOf X ⟶ qcatOf Y) ⥤ hoFunctor.obj ((ihom X).obj Y) where
   obj F := SSet.HomotopyCategory.mk (functorVertex F.hom)
@@ -60,6 +63,7 @@ instance qcatHomFunctor_faithful (X Y : SSet.{u}) [Quasicategory X] [Quasicatego
 /-- 概要：h Fun の射と双圏の二胞体は同じデータ。
 方針：豊穣 Hom の包みを外す。規約：ホモトピー圏間の自然変換への忘却ではない。
 使われ方：Kerodon Remark 6.2.1.4 の二胞体の同定。 -/
+@[kerodon 02EN]
 def qcatCellEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F G : X ⟶ Y) :
     (qcatMap F ⟶ qcatMap G) ≃
       ((SSet.HomotopyCategory.mk (functorVertex F) : hoFunctor.obj ((ihom X).obj Y)) ⟶
@@ -188,6 +192,7 @@ namespace QCatAdjunction
 方針：二つの表示関手の忠実性により双圏の三角恒等式に戻す。
 規約：単位・余単位の入力は二胞体で、三角条件だけを h Fun の等式で受け取る。
 使われ方：Kerodon Def 6.2.1.1 と Remark 6.2.1.4 の定義の同値。 -/
+@[kerodon 02EK]
 def mkOfHomTriangles {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X}
     (η : 𝟙 (qcatOf X) ⟶ qcatMap F ≫ qcatMap G)
@@ -214,6 +219,7 @@ def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) :=
 /-- 概要：随伴の合成。
 方針：双圏の合成定理を使う。規約：右随伴の順序は逆。
 使われ方：Kerodon Cor 6.1.5.5、Remark 6.2.1.8。 -/
+@[kerodon 02ES]
 def comp {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory Z]
     {F : X ⟶ Y} {G : Y ⟶ X} {F' : Y ⟶ Z} {G' : Z ⟶ Y}
     (a : QCatAdjunction F G) (b : QCatAdjunction F' G') :
@@ -236,6 +242,7 @@ def leftAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 /-- 概要：随伴の単位を h Fun(X,X) で取り出す。
 方針：二胞体の表示同値を使う。規約：対象ごとの単位だけに忘却しない。
 使われ方：Kerodon Def 6.2.1.1。 -/
+@[kerodon 02EL]
 def unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) :
     (SSet.HomotopyCategory.mk (functorVertex (𝟙 X)) : hoFunctor.obj ((ihom X).obj X)) ⟶
@@ -269,6 +276,7 @@ def leftAdjointFunctorIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
 方針：双圏の三角恒等式を Hom 圏の表示関手で写す。
 規約：端点の単位子を明記し、単体集合の射の厳密な等式に強めない。
 使われ方：Kerodon Def 6.2.1.1 の (Z1)。 -/
+@[kerodon 02EK]
 lemma left_triangle_hom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) :
     (qcatHomFunctor X Y).map (Bicategory.leftZigzag a.unit a.counit) =

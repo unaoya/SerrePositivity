@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.HomotopyPullbackThreeInputs
 public import SerrePositivity.KST.Comparison.AlternativePullback
 public import SerrePositivity.KST.Comparison.FibrantPullbackComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # ホモトピー引き戻し性の二つの脚の対称性
@@ -29,6 +30,7 @@ open SerrePositivity.SimplicialModel
 規約：定義に用いた片方の脚の関手的な置換に依存する非対称性を取り除く。
 使われ方：二重写像円筒の縦射を用いたホモトピー引き戻し性の証明。
 -/
+@[kerodon 010Y]
 theorem isHomotopyPullback_flip_iff {P X Y Z : SSet.{u}}
     {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z} (sq : CommSq a b f g) :
     IsHomotopyPullback sq.flip ↔ IsHomotopyPullback sq := by

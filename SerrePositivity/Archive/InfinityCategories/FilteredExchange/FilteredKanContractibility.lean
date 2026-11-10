@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.HornPointJoin
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体では filtered 性と可縮 Kan 性が一致する。
@@ -64,6 +65,7 @@ lemma isFilteredInfinity_of_isContractibleKan {C : SSet.{u}} [Quasicategory C]
 方針：最後のホーンによる必要性と trivial Kan fibration による十分性を合成する。
 規約：一般の quasicategory の filtered 性を置き換える定義ではない。
 使われ方：filtered な Kan 添字の可縮性の判定。 -/
+@[kerodon 02PL]
 lemma isFilteredInfinity_iff_isContractibleKan (C : SSet.{u}) [KanComplex C] :
     IsFilteredInfinity C ↔ IsContractibleKan C := by
   constructor

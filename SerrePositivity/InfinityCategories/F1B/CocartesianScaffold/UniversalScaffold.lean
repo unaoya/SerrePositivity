@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.UniversalScaffoldEvaluation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：strict transport の simplicial replacement から元の全空間への universal scaffold の射。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：対角評価の自然性を使って次数ごとの評価を単体集合の射にする。
 規約：構成自体に p の 充填性は要求しない。
 使われ方：Kerodon Construction 5.3.4.7、元の全空間との比較の片側の射。 -/
+@[kerodon 026D]
 def cocartesianUniversalScaffold {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) : simplicialReplacement (SerrePositivity.InfinityCategories.cocartesianStrictTransportDiagram p) ⟶ E where
   app _ := ↾fun s ↦ SSet.yonedaEquiv (SerrePositivity.InfinityCategories.cocartesianUniversalScaffoldSimplex p s)

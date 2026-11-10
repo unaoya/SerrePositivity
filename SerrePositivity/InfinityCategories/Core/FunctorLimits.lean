@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：関手 ∞ 圏の図式と錐の各点での評価。
@@ -27,6 +28,7 @@ def evaluateFunctorDiagram {J K X : SSet.{u}} (p : J ⟶ (ihom K).obj X)
 方針：錐の後合成で固定図式も同時に評価する。
 規約：評価後も同じ添字の図式上の join の錐。
 使われ方：HTT 5.1.2.2、Kerodon Definition 7.1.8.1 の点ごとの錐。 -/
+@[kerodon 05QF]
 def evaluateFunctorCone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
     (c : JoinCone p) (k : K _⦋0⦌) : JoinCone (evaluateFunctorDiagram p k) :=
   mapJoinCone (evaluateFunctorAt k) c
@@ -51,6 +53,7 @@ def HasPointwiseLimits {J K X : SSet.{u}} (p : J ⟶ (ihom K).obj X) : Prop :=
 方針：同じ自然な錐の全ての評価に IsLimitCone を要求する。
 規約：独立に選んだ錐の族ではなく、既に関手 ∞ 圏で定義された錐を扱う。
 使われ方：Kerodon Definition 7.1.8.1、HTT 5.1.2.2 の極限判定。 -/
+@[kerodon 05QF]
 def IsPointwiseLimitCone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
     (c : JoinCone p) : Prop := ∀ k : K _⦋0⦌, IsLimitCone (evaluateFunctorCone c k)
 

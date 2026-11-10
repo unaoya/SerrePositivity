@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：sifted 単体集合の弱可縮性を、対角によるホモトピー類の単射性から導く。
@@ -68,6 +69,7 @@ lemma isWeaklyContractible_of_nonempty_of_weakDiagonal {K : SSet.{u}}
   exact ⟨hl.injective, hr.surjective⟩
 
 /-- HTT 5.5.8.7：sifted 単体集合は弱可縮。 -/
+@[kerodon 02QL]
 lemma isWeaklyContractible_of_sifted (K : SSet.{u}) [IsSiftedInfinity K] :
     IsWeaklyContractible K :=
   isWeaklyContractible_of_nonempty_of_weakDiagonal

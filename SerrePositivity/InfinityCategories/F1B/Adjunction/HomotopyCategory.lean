@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PointConstantHomEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantObjectNaturality
+public import Mathlib.Tactic.CrossRefAttribute
 /-!
 概要：実 ∞ 随伴を、同じ二関手の通常のホモトピー圏の随伴へ移す。
 方針：一点上の全パラメータ Hom 対応を評価し、同じ左随伴の右随伴の一意性を使う。
@@ -75,6 +76,7 @@ lemma QCatAdjunction.hoVertexHomEquiv_naturality_left {X Y : SSet.{u}}
   exact a.constantHomEquiv_naturality_left y γ (constantFunctorHomMap _ α)
 
 /-- 同じ実二関手の通常の h 上の Hom 全単射。 -/
+@[kerodon 02EZ]
 def QCatAdjunction.hoHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G)
     (x : hoFunctor.obj X) (y : hoFunctor.obj Y) :
@@ -82,6 +84,7 @@ def QCatAdjunction.hoHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory 
   a.hoVertexHomEquiv x.as.as y.as.as
 
 /-- 実 ∞ 随伴から得る、同じ二関手の通常の h 上の随伴。 -/
+@[kerodon 02EZ]
 def QCatAdjunction.toHoAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) :
     (hoFunctor.map F).toFunctor ⊣ (hoFunctor.map G).toFunctor :=

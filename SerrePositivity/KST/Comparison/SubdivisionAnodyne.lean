@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.HornSubdivisionIso
 public import SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 細分の anodyne 保存と Ex の Kan fibration 保存
@@ -44,6 +45,7 @@ theorem subdivisionHorn_anodyne (n : ℕ) (k : Fin (n + 2)) :
 規約：Moss 原論文 Proposition 3.12 の一回の Ex の場合。
 使われ方：有限反復と Ex∞ の Kan fibration 保存。
 -/
+@[kerodon 00Z4]
 theorem ex_map_rlp {E B : SSet.{u}} (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p) :
     SSet.modelCategoryQuillen.J.rlp (SSet.ex.map p) := by
   intro A D i hi
@@ -58,6 +60,7 @@ theorem ex_map_rlp {E B : SSet.{u}} (p : E ⟶ B) (hp : SSet.modelCategoryQuille
 規約：Moss 原論文 Proposition 2.19。strong anodyne 性の構造は指定しない。
 使われ方：細分と反復 Ex の比較。
 -/
+@[kerodon 00Z3]
 theorem subdivision_map_anodyne {A X : SSet.{u}} (i : A ⟶ X)
     (hi : SSet.anodyneExtensions i) : SSet.anodyneExtensions (SSet.sd.map i) := by
   rw [SSet.anodyneExtensions_eq_llp_rlp]

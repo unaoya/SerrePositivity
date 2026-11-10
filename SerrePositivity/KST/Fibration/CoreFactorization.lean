@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.WeakStringsStability
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 元の単体図式の core 値因子分解と内 anodyne 延長 -/
 
@@ -55,6 +56,7 @@ lemma weakStringPredicate_functorVertex_iff_factorCore {B C : _root_.SerrePositi
   rw [Equiv.symm_apply_apply]
 
 /-- 内 anodyne 包含に沿って、元の quasicategory 値図式を厳密に延長する。 -/
+@[kerodon 007E]
 lemma exists_extension_of_innerAnodyne {A B X : SSet.{u}} [Quasicategory X]
     (i : A ⟶ B) (hi : innerAnodyneExtensions i) (f : A ⟶ X) :
     ∃ g : B ⟶ X, i ≫ g = f := by

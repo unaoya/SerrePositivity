@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration に沿う引き戻しと core の厳密な交換同型。
@@ -66,6 +67,7 @@ variable {E F B : SSet.{u}}
 方針：包含へ合成して二射影で両方の逆条件を比較する。
 規約：第一関手の inner fibration 性だけを仮定し、第二関手は任意。
 使われ方：関手 core の全次数での引き戻し表示。 -/
+@[kerodon 01H6]
 def corePullbackIso [Quasicategory E] [Quasicategory F] [Quasicategory B]
     (p : E ⟶ B) (q : F ⟶ B) [InnerFibration p] :
     (quasicategoryCore (pullback p q) : SSet.{u}) ≅

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.SubdivisionLastVertex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 最終頂点写像から得る Ex への自然変換
@@ -26,6 +27,7 @@ open CategoryTheory Opposite
 規約：Moss 2020 §3。実際の Mathlib の ex 関手を終域とする。
 使われ方：反復する遷移写像の各対象での定義。
 -/
+@[kerodon 00YU, kerodon 00Z2]
 def exUnitAt (X : SSet.{u}) : X ⟶ SSet.ex.obj X where
   app d := TypeCat.ofHom fun s =>
     ULift.up (subdivisionLastVertexAt d.unop ≫ SSet.yonedaEquiv.symm s)

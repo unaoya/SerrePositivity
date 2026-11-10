@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.JoinCells
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：pushout-join の貼り合わせと持ち上げ問題の移送。
@@ -91,6 +92,7 @@ def joinUnionRight {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) 
 方針：部分複体の交わりと和の双カルテジアン正方形を同型で移送する。
 規約：上辺は右因子の包含、左辺は左因子の包含。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の持ち上げ問題の結合。 -/
+@[kerodon 018H]
 lemma joinUnion_isPushout {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
     IsPushout (joinMap (𝟙 (A₀ : SSet.{u})) B₀.ι)
       (joinMap A₀.ι (𝟙 (B₀ : SSet.{u}))) (joinUnionLeft A₀ B₀) (joinUnionRight A₀ B₀) := by

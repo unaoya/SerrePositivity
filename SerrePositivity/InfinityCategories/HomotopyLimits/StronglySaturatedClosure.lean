@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalStrongSaturation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：小添字の宇宙を指定した強飽和生成閉包と局所同値との比較。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories.HomotopyLimits
 variable {X : SSet.{v}} [Quasicategory X]
 
 /-- 指定された小形状について、元の辺集合が生成する最小の強飽和類。 -/
+@[kerodon 06XK]
 def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v})
     (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) :=
   {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}

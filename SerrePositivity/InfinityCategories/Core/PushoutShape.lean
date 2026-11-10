@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.JoinLeftColimits
 public import SerrePositivity.InfinityCategories.Core.Slice
 public import SerrePositivity.InfinityCategories.Core.Square
 public import SerrePositivity.InfinityCategories.Core.Terminal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # span の余錐と正方形
 
@@ -112,6 +113,7 @@ def pushoutCocone {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) : JoinCocone (pusho
 /-- 概要：押し出し四角形はその span の余極限余錐である。
 方針：coslice の始対象による余極限性を適用する。
 規約：h C の通常の押し出しではない。使われ方：HA §1.1 の cofiber 列。 -/
+@[kerodon 03FF]
 def IsPushoutSquare {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) : Prop :=
   IsColimitCone (pushoutCocone F)
 

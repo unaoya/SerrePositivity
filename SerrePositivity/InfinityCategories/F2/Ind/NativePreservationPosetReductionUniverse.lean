@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReduction
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：宇宙分離版の小さい κ-filtered 余極限保存性を通常の κ-filtered poset 上の余錐へ帰着する。
@@ -18,6 +19,7 @@ open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2.Ind
 
 /-- 宇宙分離版：通常の小さい κ-filtered poset 上の全 coherent 余錐の持ち上げを保存すれば一般にも保存する。 -/
+@[kerodon 06E0, kerodon 06E2]
 lemma Compact.preservesKappaFilteredColimits_of_poset {κ : Cardinal.{u}} [Fact κ.IsRegular]
     {C : SSet.{max u v}} {Y : SSet.{max u v + 1}} [Quasicategory C] [Quasicategory Y]
     (F : (SSet.uliftFunctor.{max u v + 1, max u v}).obj C ⟶ Y)

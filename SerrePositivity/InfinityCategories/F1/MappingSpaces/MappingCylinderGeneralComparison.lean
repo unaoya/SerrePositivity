@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderQuasicategoryComparison
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodynePrismExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の単体集合の関手の写像円柱の区間上の比較。
@@ -24,6 +25,7 @@ attribute [local instance] vertexFiber_quasicategory_of_innerFibration
 方針：内ホーンの置換で両因子を充填可能にし、両端固定の prism の延長と円柱の同値で元へ戻す。
 規約：標的 E のみ quasicategory、因子 X・Y と射 f は任意。
 使われ方：Kerodon Theorem 5.2.4.1 の区間上の写像円柱の判定。 -/
+@[kerodon 024P]
 lemma mappingCylinder_isPrecompositionEquivalence
     {X Y E : SSet.{u}} [Quasicategory E]
     (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u}))

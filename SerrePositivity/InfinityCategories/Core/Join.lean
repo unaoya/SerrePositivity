@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 public import Mathlib.Order.Interval.Finset.Fin
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の join の直接構成のための頂点数と切断の計算。
@@ -461,6 +462,7 @@ namespace SerrePositivity.InfinityCategories
 方針：順序写像の先頭区間の逆像に沿って両因子を引き戻す。
 規約：空区間の因子は一点。Day 畳み込みやモデル構造は用いない。
 使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice と錐の基礎。 -/
+@[kerodon 0177]
 def join (K L : SSet.{u}) : SSet.{u} where
   obj n := Join.Simplex K L n.unop.len
   map α := ↾(Join.simplexMap K L α.unop.toOrderHom)
@@ -603,6 +605,7 @@ def joinSubcomplexRight (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
 方針：部分複体の完備束の上限を取る。
 規約：始域は `(A₀ ⋆ B) ∪ (A ⋆ B₀)`。
 使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の pushout-join の包含の始域。 -/
+@[kerodon 018H]
 def joinUnion {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
     (join A B).Subcomplex :=
   joinSubcomplexLeft A₀ B ⊔ joinSubcomplexRight A B₀

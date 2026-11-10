@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.FibrantSquareCriterion
 public import SerrePositivity.KST.Comparison.HomotopyPullbackThreeInputs
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 任意の厳密な引き戻しによるホモトピー引き戻しの判定
@@ -27,6 +28,7 @@ open SerrePositivity.SimplicialModel
 規約：分解の前半には局所化同型、後半には Kan fibration を要求する。
 使われ方：引き戻しを保存する関手を適用した後の比較。
 -/
+@[kerodon 010N]
 theorem isHomotopyPullback_iff_alternative_fiber
     {A X Y B E P : SSet.{u}} {a : A ⟶ X} {b : A ⟶ Y}
     {f : X ⟶ B} {g : Y ⟶ B} (sq : CommSq a b f g)

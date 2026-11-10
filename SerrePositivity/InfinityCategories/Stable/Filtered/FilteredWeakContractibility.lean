@@ -17,6 +17,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousK
 public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCoslices
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexes
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：一般の filtered ∞ 圏と有限図式の下の coslice は弱可縮。
@@ -56,6 +57,7 @@ lemma continuousKanReplacement_isContractibleKan_of_filtered (C : SSet.{u})
 /-- 概要：全ての filtered ∞ 圏は弱可縮。
 方針：証明した Kan 置換の可縮性を元の単位の弱同値で反映する。
 規約：C の Kan 性を仮定しない。使われ方：Kerodon 9.1.1.17 と Quillen A。 -/
+@[kerodon 02PH]
 lemma isWeaklyContractible_of_isFilteredInfinity (C : SSet.{u}) [Quasicategory C]
     [IsFilteredInfinity C] : IsWeaklyContractible C :=
   (continuousKanReplacementUnit_isWeakHomotopyEquivalence C).weaklyContractible_iff.2

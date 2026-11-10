@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
 public import SerrePositivity.InfinityCategories.Core.LeftFiberKan
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：底の図式を固定する相対関手単体集合と、そのパラメータ付き普遍性。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：後合成 p の内部 Hom の functorVertex a 上の fiber を取る。
 規約：p と a の充填性は定義には不要。
 使われ方：Kerodon §5.3.1、strict transport の値の構成。 -/
+@[kerodon 01AB]
 def relativeFunctorSpace {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) : SSet.{u} :=
   vertexFiber ((ihom A).map p) (functorVertex a)
 
@@ -77,6 +79,7 @@ lemma relativeFunctorUncurry_injective {A T E B : SSet.{u}} (p : E ⟶ B) (a : A
 方針：後合成の left fibration 性と頂点 fiber の Kan 判定を使う。
 規約：A、E、B の quasicategory 性は要求しない。
 使われ方：Kerodon Construction 5.3.1.5、strict transport の Kan 値性。 -/
+@[kerodon 01GM, kerodon 01GZ]
 instance relativeFunctorSpace_kanComplex {A E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
     (a : A ⟶ B) : KanComplex (relativeFunctorSpace p a) :=
   vertexFiber_kanComplex_of_leftFibration ((ihom A).map p) (functorVertex a)

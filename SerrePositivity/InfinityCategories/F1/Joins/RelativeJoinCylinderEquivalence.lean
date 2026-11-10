@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPullbackIs
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderPullbackIso
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderStandardTarget
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PrecompositionSimplexLocality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の射の写像円柱から relative join への標準比較の同値条件。
@@ -45,6 +46,7 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_pullback_iff
 方針：底の各標準単体へ引き戻し、既に証明した標準単体を終域とする場合へ還元する。
 規約：任意の quasicategory を標的とする関手単体集合への前合成を試験する。
 使われ方：Kerodon Proposition 5.2.4.5、写像円柱と relative join を使う scaffold の比較。 -/
+@[kerodon 024R]
 lemma isPrecompositionEquivalence_relativeJoinCylinderComparison
     {X Y : SSet.{u}} (f : X ⟶ Y) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison f) := by

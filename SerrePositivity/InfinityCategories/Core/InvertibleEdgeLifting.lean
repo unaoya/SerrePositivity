@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.FibrationRestriction
 public import SerrePositivity.InfinityCategories.Core.OuterHornJoin
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：ホモトピー圏で可逆な辺と外側ホーンの充填条件。
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories
 方針：辺の生成する射に通常の IsIso を課す。
 規約：定義自体には quasicategory 性は不要。
 使われ方：HTT Proposition 1.2.4.3、Kerodon Theorem 4.4.2.6 の第一条件。 -/
+@[kerodon 004R, kerodon 019F]
 abbrev IsInvertibleEdge {X : SSet.{u}} {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Prop :=
   IsIso (SSet.Truncated.HomotopyCategory.homMk e)
@@ -165,6 +167,7 @@ lemma compStruct_nonempty_of_homMk_fac {X : SSet.{u}} [Quasicategory X]
 方針：ホモトピー圏の逆射を一本の辺で表し、合成の等式を三角形に直す。
 規約：両側で同じ逆辺を使う。
 使われ方：HTT §1.2.4、Kerodon Theorem 4.4.2.6 の充填の準備。 -/
+@[kerodon 004V]
 lemma IsInvertibleEdge.nonempty_inverse {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} {e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y}
     (he : IsInvertibleEdge e) :
@@ -263,6 +266,7 @@ lemma leftFibration_liftCompStruct {X Y : SSet.{u}} (q : X ⟶ Y) [LeftFibration
 方針：像の逆三角形を持ち上げて片側逆を作り、その辺でも同じ構成を繰り返す。
 規約：X,Y は quasicategory。相対的な二次の零番目ホーンだけを使う。
 使われ方：HTT Proposition 2.1.1.5、Kerodon Proposition 4.4.2.11。 -/
+@[kerodon 019K]
 lemma leftFibration_reflects_invertibleEdge {X Y : SSet.{u}} [Quasicategory X]
     [Quasicategory Y] (q : X ⟶ Y) [LeftFibration q] {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
@@ -478,6 +482,7 @@ lemma joinUnion_extend_of_invertible_rightEdge {K X : SSet.{u}} [Quasicategory X
 方針：外側ホーンを境界と辺の pushout-join と同定し、coslice の制限に沿い可逆辺を持ち上げる。
 規約：全ての次数二以上を扱い、指定された辺をそのまま保つ。
 使われ方：Kerodon Theorem 4.4.2.6 の (1)⇒(3)、HTT Proposition 1.2.4.3 の双対。 -/
+@[kerodon 019F]
 lemma hasFinalHornFillers_of_isInvertibleEdge {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y)
     (he : IsInvertibleEdge e) : HasFinalHornFillers e := by

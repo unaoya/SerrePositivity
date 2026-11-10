@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 public import SerrePositivity.InfinityCategories.Core.OuterHornConverse
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Kan 始域からの射の実 core 制限
 概要：Kan 複体からの任意の単体的射を、元の標的の core へ持ち上げる。
@@ -22,6 +23,7 @@ lemma kanSource_edge_isInvertible {X : SSet.{u}} [KanComplex X] (s : X _⦋1⦌)
     (hasFinalHornFillers_of_kanComplex _)
 
 /-- Kan 始域からの元の射を、そのまま標的の実 core に持ち上げる。 -/
+@[kerodon 01D8]
 def kanSourceCoreMap {X Y : SSet.{u}} [KanComplex X] (f : X ⟶ Y) :
     X ⟶ (quasicategoryCore Y : SSet) :=
   quasicategoryCoreLift f (fun s =>
@@ -31,6 +33,7 @@ def kanSourceCoreMap {X Y : SSet.{u}} [KanComplex X] (f : X ⟶ Y) :
       ((kanSource_edge_isInvertible s).map f))
 
 /-- 実 core 持ち上げは、包含後に同じ元の射を厳密に回収する。 -/
+@[kerodon 01D8]
 lemma kanSourceCoreMap_inclusion {X Y : SSet.{u}} [KanComplex X] (f : X ⟶ Y) :
     kanSourceCoreMap f ≫ (quasicategoryCore Y).ι = f := rfl
 

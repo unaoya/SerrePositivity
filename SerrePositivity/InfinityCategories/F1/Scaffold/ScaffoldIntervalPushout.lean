@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldIntervalDiagram
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：二点鎖上の simplicial replacement の通常の写像円柱表示。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：末尾の一点とその係数値の同型、および nerve と標準 1 単体の同型で分解を移す。
 規約：貼り合わせる端点は一であり、零端の係数値は prism の始点に残る。
 使われ方：Kerodon Example 5.3.2.13、Theorem 5.2.4.1、scaffold 比較の初期帰納段階。 -/
+@[kerodon 0366]
 lemma scaffoldInterval_isPushout (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
     IsPushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldIntervalMap F)
       (scaffoldIntervalPrism F) (simplicialReplacementConstantLift F (ULift.up 1)) := by
@@ -54,6 +56,7 @@ lemma scaffoldInterval_isPushout (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
 方針：標準の写像円柱の pushout と、構成した全空間の pushout の一意性を使う。
 規約：円柱は標準 1 単体と F(0) の直積、終域部分は F(1)。
 使われ方：Kerodon Example 5.3.2.13、写像円柱の普遍性からの scaffold の構成。 -/
+@[kerodon 0366]
 noncomputable def simplicialReplacementIntervalIso (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
     simplicialReplacement F ≅
       pushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldIntervalMap F) :=

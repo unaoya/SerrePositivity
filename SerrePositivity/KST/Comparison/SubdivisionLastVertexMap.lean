@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.ExUnit
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 全ての単体集合の細分の最終頂点写像
@@ -26,6 +27,7 @@ open CategoryTheory
 規約：Moss 2020 §3。標準単体の頂点上の式で定めた単位を使う。
 使われ方：二重細分からの境界写像の記述。
 -/
+@[kerodon 00YU]
 def subdivisionLastVertexMap : SSet.sd.{u} ⟶ 𝟭 SSet.{u} where
   app X := (SSet.sdExAdjunction.homEquiv _ _).symm (exUnitAt X)
   naturality X Y f := by

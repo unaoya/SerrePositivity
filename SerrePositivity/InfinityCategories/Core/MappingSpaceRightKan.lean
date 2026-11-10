@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の右 pinched 写像空間は Kan 複体。
@@ -185,6 +186,7 @@ lemma pinchedHom_rightHornFilling {X : SSet.{u}} [Quasicategory X] (x y : X _⦋
 方針：正の添字の全ホーンを充填し、A3b の Kan 判定を適用する。
 規約：前提は X の quasicategory 性だけ。
 使われ方：HTT Proposition 1.2.2.3、Kerodon Proposition 4.6.5.5。 -/
+@[kerodon 01JC, kerodon 01L0]
 instance pinchedHom_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
     KanComplex (pinchedHom x y) := by
   apply kanComplex_of_rightHornFillers

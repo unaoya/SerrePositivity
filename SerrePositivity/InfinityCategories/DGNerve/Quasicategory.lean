@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.HornResidual
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 任意の dg 圏の dg nerve は quasicategory
 
@@ -42,6 +43,7 @@ lemma filler_face {n : ℕ} {i : Fin (n + 3)}
 /-- 概要：任意の内部ホーン写像は標準単体全体の写像へ延長できる。
 方針：明示的な充填単体を米田対応で写像にし、ホーンの各面での一致で貼り合わせる。
 規約：HA Proposition 1.3.1.10。使われ方：Mathlib の quasicategory 条件の充足。 -/
+@[kerodon 00PW]
 lemma hornFilling {n : ℕ} {i : Fin (n + 3)}
     (σ : (Λ[n + 2, i] : SSet.{max u v}) ⟶ dgNerve A D)
     (h0 : 0 < i) (hlast : i < Fin.last (n + 2)) :
@@ -51,6 +53,7 @@ lemma hornFilling {n : ℕ} {i : Fin (n + 3)}
 /-- 概要：任意の可換環上の dg 圏の dg nerve は quasicategory。
 方針：全ての内部ホーンに明示的な延長を与える。
 規約：HA Proposition 1.3.1.10。使われ方：ホモトピー圏・写像空間・導来 ∞ 圏への入口。 -/
+@[kerodon 00PW]
 instance instQuasicategory : SSet.Quasicategory (dgNerve A D) where
   hornFilling' _ _ σ h0 hlast := hornFilling A D σ h0 hlast
 

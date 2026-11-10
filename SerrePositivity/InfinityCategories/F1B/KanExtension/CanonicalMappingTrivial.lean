@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightCanonicalMapping
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の標準 Kan 関手の片側の写像空間の制限は自明 Kan fibration。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：単射に沿う前合成の inner 性と指定比較のホモトピー同値を使う。
 規約：相手 G の普遍性や δ の充満忠実性は不要。
 使われ方：左 Kan の写像空間の厳密な可縮性。 -/
+@[kerodon 030M]
 lemma kanLeftCanonical_pinchedHomMap_trivialKanFibration {K C D : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D]
     (δ : K ⟶ C) [Mono δ] (F : C ⟶ D)
@@ -36,6 +38,7 @@ lemma kanLeftCanonical_pinchedHomMap_trivialKanFibration {K C D : SSet.{u}}
 方針：制限の Kan 性と右 Kan の指定比較のホモトピー同値を合わせる。
 規約：始点 G の普遍性や δ の充満忠実性は不要。
 使われ方：右 Kan の写像空間の厳密な可縮性。 -/
+@[kerodon 030M]
 lemma kanRightCanonical_pinchedHomMap_trivialKanFibration {K C D : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D]
     (δ : K ⟶ C) [Mono δ] (F : C ⟶ D)

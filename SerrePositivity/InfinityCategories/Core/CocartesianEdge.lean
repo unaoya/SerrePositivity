@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Core.OuterHornDuality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：射に対する cocartesian な辺の外側ホーン充填条件。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：次元二以上の最初の外側ホーンを量化する。
 規約：quasicategory 性や inner fibration 性は定義には含めない。
 使われ方：Kerodon Definition 5.1.1.1 の cocartesian な辺。 -/
+@[kerodon 01T5]
 def HasCocartesianHornLifting {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y) : Prop :=
   ∀ (n : ℕ) (σ : (horn (n + 2) 0 : SSet.{u}) ⟶ E) (β : (Δ[n + 2] : SSet.{u}) ⟶ B),
@@ -62,6 +64,7 @@ lemma HasCocartesianHornLifting.isInvertibleEdge_of_map {E B : SSet.{u}}
 方針：二つの外側ホーン充填による方向を組み合わせる。
 規約：p は quasicategory 間の inner fibration。
 使われ方：Kerodon §5.1.1 の fiber 内の cocartesian な辺。 -/
+@[kerodon 01T8]
 lemma hasCocartesianHornLifting_iff_isInvertibleEdge_of_map {E B : SSet.{u}}
     [Quasicategory E] [Quasicategory B] (p : E ⟶ B) [InnerFibration p]
     {x y : E _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)

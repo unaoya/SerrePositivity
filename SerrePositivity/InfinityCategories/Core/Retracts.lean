@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import Mathlib.CategoryTheory.Retract
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：頂点の retract と、その元の ∞ 圏内の retract 閉包を定義する。
@@ -18,6 +19,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 同じ二頂点のホモトピー圏内の元の retract データ。 -/
+@[kerodon 03YJ]
 abbrev VertexRetraction {X : SSet.{u}} (x y : X _⦋0⦌) :=
   Retract (HomotopyCategory.mk x) (HomotopyCategory.mk y)
 
@@ -47,6 +49,7 @@ lemma VertexRetraction.hom_unique {X : SSet.{u}} {x y z : X _⦋0⦌}
   rw [← h, Category.assoc, t.retract, Category.comp_id]
 
 /-- 元の頂点 x が元の頂点 y の retract であるという条件。 -/
+@[kerodon 03YJ]
 def IsVertexRetractOf {X : SSet.{u}} (x y : X _⦋0⦌) : Prop :=
   Nonempty (VertexRetraction x y)
 

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆 path の置換を使った小さい ∞ 圏の引き戻し候補。
@@ -25,6 +26,7 @@ variable {A B C : SSet.{u}}
 方針：可逆 path の置換の終点評価を第二関手で引き戻す。
 規約：path の向きは p(a) から q(b)。
 使われ方：Cat_∞ の引き戻しを表す候補の具体的な構成。 -/
+@[kerodon 032Z]
 def catPullback (p : A ⟶ C) (q : B ⟶ C) : SSet.{u} :=
   pullback (equivalencePathReplacementMap p) q
 
@@ -32,6 +34,7 @@ def catPullback (p : A ⟶ C) (q : B ⟶ C) : SSet.{u} :=
 方針：置換の終点評価の inner fibration 性と引き戻しの充填性を使う。
 規約：元の関手 p、q に充填性を仮定しない。
 使われ方：引き戻し候補を Cat_∞ の対象として束縛する。 -/
+@[kerodon 032Z]
 instance catPullback_quasicategory (p : A ⟶ C) (q : B ⟶ C)
     [Quasicategory A] [Quasicategory B] [Quasicategory C] : Quasicategory (catPullback p q) :=
   inferInstanceAs (Quasicategory (pullback (equivalencePathReplacementMap p) q))

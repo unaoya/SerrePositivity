@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEnrichedCategory
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：presentable 圏と保存関手の全 ∞ 圏 Pr^L・Pr^R を定義する。
@@ -46,12 +47,14 @@ instance presentableCoreCategory_sHom_kanComplex (left : Bool)
 方針：元の保存関手と全関手同値を持つ単体的圏の coherent nerve。
 規約：対象は同じ宇宙 u の小余極限に関して presentable。
 使われ方：HTT 5.5.3 の Pr^L。 -/
+@[kerodon 06PF]
 def PrL : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} true)
 
 /-- 概要：presentable 圏と accessible な小極限保存関手の全 ∞ 圏。
 方針：右側の保存条件を持つ単体的圏の coherent nerve。
 規約：随伴存在判定による同一視は d の比較界面が届いてから行う。
 使われ方：HTT 5.5.3 の Pr^R。 -/
+@[kerodon 06UG]
 def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)
 
 instance prL_quasicategory : Quasicategory PrL.{u} :=

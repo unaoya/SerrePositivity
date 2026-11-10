@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 public import Mathlib.CategoryTheory.Monoidal.Braided.PushoutObjObj
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left anodyne な射と単射の pushout-product、および相対内部 Hom の境界持ち上げ。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：左ホーンの持ち上げを対称な pushout-product の持ち上げへ移す。
 規約：元の四つの単体集合の quasicategory 性は不要。
 使われ方：Kerodon §5.3.1、相対関手単体集合の制限の充填性。 -/
+@[kerodon 00TP]
 lemma leftFibration_pullbackObjObjπ {A D E B : SSet.{u}}
     (i : D ⟶ A) [Mono i] (p : E ⟶ B) [LeftFibration p]
     (sq' : internalHom.PullbackObjObj i p) : LeftFibration sq'.π where
@@ -43,6 +45,7 @@ lemma leftFibration_pullbackObjObjπ {A D E B : SSet.{u}}
 方針：相対内部 Hom が left fibration であることを二変数随伴で移す。
 規約：第一因子の単射性、第二因子の left anodyne 性を仮定する。
 使われ方：Kerodon §4.2.5、§5.3.1、相対関手空間の制限。 -/
+@[kerodon 0153]
 lemma leftAnodyneExtensions_pushoutObjObj_right {A D K L : SSet.{u}}
     (i : D ⟶ A) [Mono i] (j : K ⟶ L) (hj : leftAnodyneExtensions j)
     (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
@@ -57,6 +60,7 @@ lemma leftAnodyneExtensions_pushoutObjObj_right {A D K L : SSet.{u}}
 方針：因子の交換により第二因子が left anodyne な場合へ帰着する。
 規約：第一因子の単射性を別に要求しない。
 使われ方：Kerodon §4.2.5、§5.3.1、固定した境界の相対持ち上げ。 -/
+@[kerodon 0153]
 lemma leftAnodyneExtensions_pushoutObjObj_left {A D K L : SSet.{u}}
     (i : D ⟶ A) (hi : leftAnodyneExtensions i) (j : K ⟶ L) [Mono j]
     (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
@@ -69,6 +73,7 @@ lemma leftAnodyneExtensions_pushoutObjObj_left {A D K L : SSet.{u}}
 方針：境界との pushout-product の left anodyne 性を二変数随伴で移す。
 規約：モデル構造を用いず全境界の持ち上げだけを主張する。
 使われ方：Kerodon §5.3.1、始対象の評価の trivial Kan fibration 性。 -/
+@[kerodon 0154]
 lemma trivialKanFibration_relativeHom_of_leftAnodyne {A D E B : SSet.{u}}
     (i : D ⟶ A) (hi : leftAnodyneExtensions i) (p : E ⟶ B) [LeftFibration p]
     (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π := by

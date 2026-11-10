@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps
 
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveLeftFibration
 public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 値図式から left fibration への scaffold の条件と二つの標準例。
@@ -32,6 +33,7 @@ def IsLeftScaffold {C : Type u} [Category.{u} C] {E : SSet.{u}}
 方針：底の可換性と、係数値から weighted nerve の fiber への標準同型を使う。
 規約：全空間の同値はこの時点では結論に含めない。
 使われ方：Kerodon Proposition 5.3.4.17、復元候補との比較の標準例。 -/
+@[kerodon 0379]
 lemma tautScaffold_isLeftScaffold {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] :
     IsLeftScaffold (weightedNerveProjection F) F (tautScaffold F) := by
@@ -56,6 +58,7 @@ instance leftStrictTransportDiagram_kanComplex
 方針：係数値の fiber 比較を恒等射の評価と同定し、その trivial Kan fibration 性を使う。
 規約：元の全空間の quasicategory 性は通常の nerve 上の left fibration 性から得られる。
 使われ方：Kerodon Proposition 5.3.4.8、元の全空間との比較の標準例。 -/
+@[kerodon 0370]
 lemma universalScaffold_isLeftScaffold
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [LeftFibration p] :

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplicialSections
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Bousfield–Kan 重み付き end と weighted nerve の切断空間の同型。
@@ -87,6 +88,7 @@ lemma sectionsBousfieldKanMap_reverse (H : I ⥤ SSet.{u}) :
 方針：両向きの普遍的な評価から作った射とその両逆関係を組み合わせる。
 規約：図式の値の Kan 性も添字の有限性も要求しない。
 使われ方：Kerodon 7.5.3.12、7.5.4.6 の極限の切断模型への比較。 -/
+@[kerodon 03A0]
 noncomputable def bousfieldKanSectionsIso (H : I ⥤ SSet.{u}) :
     bousfieldKanHolim H ≅ simplicialSections (weightedNerveProjection H) where
   hom := bousfieldKanSectionsMap H

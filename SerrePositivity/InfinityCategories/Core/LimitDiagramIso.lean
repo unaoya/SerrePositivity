@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso
+public import Mathlib.Tactic.CrossRefAttribute
 /-!
 概要：関手同型で結ばれた実図式の極限の存在を輸送する。
 方針：可逆円柱へ延長し、両端の同値な単射に沿う実錐の制限を使う。
@@ -36,6 +37,7 @@ lemma hasLimit_iff_equivalenceCylinder_endpoints {K X : SSet.{u}} [Quasicategory
       (hasLimit_iff_restrict_of_precompositionEquivalence H _
         (isPrecompositionEquivalence_equivalenceCylinderEndpoint K true))
 /-- 同型な実図式は、任意 quasicategory 標的で極限の存在が同値。 -/
+@[kerodon 02K2]
 lemma hasLimit_iff_of_functorIso {K X : SSet.{u}} [Quasicategory X] {p q : K ⟶ X}
     (e : FunctorIso p q) : HasLimit p ↔ HasLimit q := by
   obtain ⟨H, h₀, h₁⟩ := exists_equivalenceCylinder_extension_of_functorIso e

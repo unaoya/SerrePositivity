@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定された辺を反転する関手の充満部分 ∞ 圏と局所化の普遍性。
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories
 方針：元の辺を h の射として可逆になるかで判定する。
 規約：X,D の quasicategory 性はこの定義には不要。
 使われ方：反射が反転する辺と局所化の標的条件。 -/
+@[kerodon 04JH]
 def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) :=
   {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}
 
@@ -54,12 +56,14 @@ def IsInvertingFunctorVertex (X E : SSet.{u}) (W : Set (X _⦋1⦌))
 方針：内部 Hom の反転頂点条件の全部分複体を取る。
 規約：E が quasicategory ならこれも quasicategory。
 使われ方：Kerodon Notation 6.3.1.1 の Fun(X[W⁻¹],E)。 -/
+@[kerodon 01MF]
 def invertingFunctors (X E : SSet.{u}) (W : Set (X _⦋1⦌)) : ((ihom X).obj E).Subcomplex :=
   fullSubcomplexOnVertices ((ihom X).obj E) (IsInvertingFunctorVertex X E W)
 
 /-- 概要：quasicategory を標的とする反転関手の圏は quasicategory。
 方針：内部 Hom の全部分複体の quasicategory 性を使う。
 規約：X の quasicategory 性は不要。使われ方：局所化普遍性の同値の型。 -/
+@[kerodon 01MF]
 instance invertingFunctors_quasicategory (X E : SSet.{u}) [Quasicategory E]
     (W : Set (X _⦋1⦌)) : Quasicategory (invertingFunctors X E W : SSet.{u}) :=
   inferInstanceAs (Quasicategory
@@ -69,6 +73,7 @@ instance invertingFunctors_quasicategory (X E : SSet.{u}) [Quasicategory E]
 方針：各頂点の関手を表示し、反転条件の後合成不変性を使う。
 規約：因子化は元の前合成と厳密に両立する。
 使われ方：局所化の普遍性を同値として述べる射。 -/
+@[kerodon 01MP]
 def localizationPrecomposition {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌))
     (hF : InvertsEdges F W) (E : SSet.{u}) :
     (ihom D).obj E ⟶ (invertingFunctors X E W : SSet.{u}) :=
@@ -92,6 +97,7 @@ lemma localizationPrecomposition_ι {X D : SSet.{u}} (F : X ⟶ D)
 方針：W を反転し、各 quasicategory 標的に対する前合成が反転関手の部分圏との同値であること。
 規約：標的は同じ宇宙 u。任意の W に対する局所化の存在は主張しない。
 使われ方：Kerodon Prop 6.3.1.13(2) の普遍性と反射的な場合の構成。 -/
+@[kerodon 01MP]
 def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop :=
   ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E],
     IsQCatEquivalence (localizationPrecomposition F W hF E)

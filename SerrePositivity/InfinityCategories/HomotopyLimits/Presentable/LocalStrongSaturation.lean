@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.Loca
 public import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPushoutEquivalences
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowCoconePrism
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の辺集合上で局所同値の強飽和性を、小さい添字の宇宙を明示して証明する。
@@ -26,6 +27,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 
 /-- 小さい添字の宇宙を明示した、元の辺集合の強飽和性の条件。 -/
+@[kerodon 06XK]
 def IsStronglySaturatedEdgeSetOfShapes {X : SSet.{v}} [Quasicategory X]
     (smallShape : SSet.{u} → SSet.{v}) (S : Set (X _⦋1⦌)) : Prop :=
   (∀ {x y : X _⦋0⦌}
@@ -56,6 +58,7 @@ def IsStronglySaturatedEdgeSetOfShapes {X : SSet.{v}} [Quasicategory X]
     SSet.Truncated.Edge.CompStruct e01 e12 e02 → e12.edge ∈ S → e02.edge ∈ S → e01.edge ∈ S)
 
 /-- 小さい形状の余極限を持つ対象圏で、指定辺への局所同値の元の辺集合は強飽和。 -/
+@[kerodon 06XK]
 lemma localEquivalences_stronglySaturated {X : SSet.{max u v}} [Quasicategory X]
     (W : Set (X _⦋1⦌))
     (hX : ∀ (K : SSet.{u}) (p : (SSet.uliftFunctor.{v, u}).obj K ⟶ X), HasColimit p) :

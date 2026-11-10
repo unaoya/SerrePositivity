@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.PrecompositionRelativeLifting
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単射な圏論的同値に対する右持ち上げ条件を相対 Kan 構成の入力としてまとめる。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：任意の単体集合間の射の持ち上げ性を量化する。
 規約：モデル圏の構造や充填の選択データは含めない。
 使われ方：一般の標的上で相対 Kan 図式を構成するための操作的入力。 -/
+@[kerodon 01FV]
 def EquivalenceLifting {D E : SSet.{u}} (U : D ⟶ E) : Prop :=
   ∀ {A B : SSet.{u}} (i : A ⟶ B), Mono i → IsPrecompositionEquivalence i →
     HasLiftingProperty i U
@@ -31,6 +33,7 @@ def EquivalenceLifting {D E : SSet.{u}} (U : D ⟶ E) : Prop :=
 方針：内部 Hom の二変数の持ち上げ性の交換を使う既存の判定を適用する。
 規約：標的 X のみ quasicategory とする。
 使われ方：既存の境界固定の構成を一般の持ち上げ条件へ接続する。 -/
+@[kerodon 01F3]
 lemma equivalenceLifting_pre {A B X : SSet.{u}} [Quasicategory X]
     (i : A ⟶ B) [Mono i] : EquivalenceLifting ((pre i).app X) := by
   intro K L j hj he
@@ -54,6 +57,7 @@ lemma EquivalenceLifting.innerFibration {D E : SSet.{u}} {U : D ⟶ E}
 方針：閉構造の随伴で左直積に移し、前合成同値の直積による保存を使う。
 規約：パラメータ K に quasicategory 性を要求しない。
 使われ方：後合成の fiber の可逆辺の持ち上げ条件を供給する。 -/
+@[kerodon 01G4, kerodon 01H7]
 lemma EquivalenceLifting.internalHom {D E : SSet.{u}} {U : D ⟶ E}
     (hU : EquivalenceLifting U) (K : SSet.{u}) :
     EquivalenceLifting ((ihom K).map U) := by

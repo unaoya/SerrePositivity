@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismCellPushout
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：prism の各段階をホーンの pushout として構成する。
@@ -59,6 +60,7 @@ noncomputable def relativeJoinPrismCellSimplex (m : ℕ) (k : Fin (m + 1)) :
 方針：単射のセルの貼り合わせ判定に逆像の等式と次段階の生成表示を適用する。
 規約：最後の切替位置も含む通常の pushout の等式。
 使われ方：Kerodon Lemma 3.1.2.12、有限個のホーンの合成。 -/
+@[kerodon 00TH]
 lemma relativeJoinPrismCell_isPushout (m : ℕ) (k : Fin (m + 1)) :
     IsPushout (horn (m + 1) k.succ).ι (relativeJoinPrismCellHorn m k)
       (relativeJoinPrismCellSimplex m k)

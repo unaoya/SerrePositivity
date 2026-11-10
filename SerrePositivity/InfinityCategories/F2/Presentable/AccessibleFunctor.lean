@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Accessible
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：κ-accessible 関手を、元の小さい κ-filtered 全余錐の保存として定義する。
@@ -18,10 +19,12 @@ open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2.Presentable
 
 /-- 宇宙 u の κ-filtered 余極限を保存する、元の宇宙 u+1 の関手。 -/
+@[kerodon 06KY]
 abbrev IsKappaAccessibleFunctor (κ : Cardinal.{u}) {C D : SSet.{u + 1}}
     (F : C ⟶ D) : Prop := Ind.PreservesSmallKappaFilteredColimits κ F
 
 /-- ある正則濃度の小さい filtered 余極限を保存する関手。 -/
+@[kerodon 06KY]
 def IsAccessibleFunctor {C D : SSet.{u + 1}} (F : C ⟶ D) : Prop :=
   ∃ κ : Cardinal.{u}, κ.IsRegular ∧ IsKappaAccessibleFunctor κ F
 

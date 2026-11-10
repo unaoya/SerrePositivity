@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceKan
 public import SerrePositivity.InfinityCategories.Core.TerminalMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：全境界の充填による可縮な Kan 複体の条件。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：全ての境界の射の延長を要求する。
 規約：n=0 も含めて非空性を含む。
 使われ方：HTT Proposition 1.2.12.4、Kerodon §3.5 の可縮な Kan 複体。 -/
+@[kerodon 0072]
 def IsContractibleKan (K : SSet.{u}) : Prop :=
   ∀ (n : ℕ) (b : (boundary n : SSet.{u}) ⟶ K),
     ∃ F : (Δ[n] : SSet.{u}) ⟶ K, (boundary n).ι ≫ F = b
@@ -29,6 +31,7 @@ def IsContractibleKan (K : SSet.{u}) : Prop :=
 方針：A2 の全境界による rlp の判定を使う。
 規約：標的は Mathlib の選択された終対象。
 使われ方：Kerodon Proposition 4.4.2.14 の fiber の可縮性。 -/
+@[kerodon 0072, kerodon 0075]
 lemma isContractibleKan_iff_trivialKanFibration (K : SSet.{u}) :
     IsContractibleKan K ↔ TrivialKanFibration (terminal.from K) := by
   rw [trivialKanFibration_iff_boundary]
@@ -59,6 +62,7 @@ lemma IsContractibleKan.nonempty {K : SSet.{u}} (h : IsContractibleKan K) : None
 方針：点への射の全単射の rlp をホーン包含に適用する。
 規約：追加の quasicategory 性を前提にしない。
 使われ方：HTT Proposition 1.2.12.4、可縮性の条件に含まれる Kan 性。 -/
+@[kerodon 0076]
 lemma IsContractibleKan.kanComplex {K : SSet.{u}} (h : IsContractibleKan K) : KanComplex K := by
   have ht := (isContractibleKan_iff_trivialKanFibration K).1 h
   apply kanComplex_of_rightHornFillers

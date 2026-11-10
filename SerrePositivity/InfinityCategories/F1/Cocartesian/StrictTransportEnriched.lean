@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.StrictTransportM
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreEnrichedFunctor
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
 public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の cocartesian strict transport を全相対 Hom の core に作用する豊穣関手へ束ねる。
@@ -49,6 +50,7 @@ lemma cocartesianStrictTransportCoreEnriched_map_isQCatEquivalence
   (cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence p.val.hom q.val.hom).core
 
 /-- 中間の strict transport 図式の ∞ 圏への、同じ coherent な比較は充満忠実。 -/
+@[kerodon 037V]
 lemma cocartesianStrictTransportInfinityMap_isFullyFaithful (C : Type u) [Category.{u} C] :
     IsFullyFaithful (cocartesianStrictTransportInfinityMap C) := by
   apply (coherentNerveMap_isFullyFaithful_iff

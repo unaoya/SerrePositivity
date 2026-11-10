@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：頂点条件で定義した全部分複体の inner fibration と quasicategory 性。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：ホーンに含まれる全頂点の条件を指定された標的の単体へ移す。
 規約：元の X の quasicategory 性は不要。
 使われ方：Kerodon §4.1.2 の全部分圏の相対充填。 -/
+@[kerodon 01CW]
 instance fullSubcomplexOnVertices_innerFibration (X : SSet.{u}) (P : X _⦋0⦌ → Prop) :
     InnerFibration (fullSubcomplexOnVertices X P).ι where
   mem := by
@@ -48,6 +50,7 @@ instance fullSubcomplexOnVertices_innerFibration (X : SSet.{u}) (P : X _⦋0⦌ 
 方針：包含の inner fibration 性を使う。
 規約：頂点条件 P は任意。
 使われ方：Kerodon §4.1.2 の全部分圏、§5.1.4 の輸送の選択。 -/
+@[kerodon 01CW]
 instance fullSubcomplexOnVertices_quasicategory (X : SSet.{u}) [Quasicategory X]
     (P : X _⦋0⦌ → Prop) : Quasicategory (fullSubcomplexOnVertices X P : SSet.{u}) :=
   quasicategory_of_innerFibration (fullSubcomplexOnVertices X P).ι

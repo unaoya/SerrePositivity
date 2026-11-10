@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.SliceLaxEquivalence
 public import SerrePositivity.InfinityCategories.Core.FatJoinTensorComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：slice と錐の関手単体集合の fiber の同値。
@@ -47,6 +48,7 @@ lemma sliceConeFamilyMap_comp_coneFamilyLaxSliceMap {K X : SSet.{u}} (p : K ⟶ 
 方針：太い slice への二つの比較の同値性と合成の同定から二対三則を使う。
 規約：X は quasicategory、添字 K は任意。
 使われ方：Kerodon Example 4.6.6.8 と Proposition 4.6.6.7 の錐の模型の比較。 -/
+@[kerodon 04J5]
 lemma isQCatEquivalence_sliceConeFamilyMap {K X : SSet.{u}} [Quasicategory X]
     (p : K ⟶ X) : IsQCatEquivalence (sliceConeFamilyMap p) := by
   apply (isQCatEquivalence_coneFamilyLaxSliceMap p).cancel_right

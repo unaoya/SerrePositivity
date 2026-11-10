@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：辺反転の実貼合せは、指定辺集合に対する全関手 ∞ 圏の局所化普遍性を持つ。
@@ -25,6 +26,7 @@ instance inverseAttachmentRestriction_trivialKanFibration (Y : SSet.{u}) [Quasic
   intro n
   exact inverseAttachmentRestriction_lifting W (boundary n).ι
 
+@[kerodon 01N0]
 lemma inverseAttachment_isLocalization : IsLocalization (inverseAttachmentInclusion X W) W := by
   refine ⟨inverseAttachment_inverts X W, fun Y _ => ?_⟩
   change IsQCatEquivalence (inverseAttachmentRestriction X W Y)

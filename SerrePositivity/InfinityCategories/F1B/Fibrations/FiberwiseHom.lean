@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.FiberwiseFunctorEquiv
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.FiberwiseFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackMorphism
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：fiber ごとの関手の全空間 Fun(K/C,D) と、その底上のパラメータ付き普遍性。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：底の標準単体ごとに、その pullback 上の図式を取る。
 規約：全対象の単体の宇宙は u。
 使われ方：fiber ごとの普遍余錐を一つの族として組み立てる。 -/
+@[kerodon 046N]
 def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} :=
   SerrePositivity.InfinityCategories.fiberwiseFunctor (overPullbackUnderlying p) D
 
@@ -30,6 +32,7 @@ def fiberwiseHom {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) : SSet.{u} :=
 方針：各図式の底の標準単体を取る。
 規約：strict な単体集合の射。
 使われ方：全空間上の持ち上げと底上の族の比較。 -/
+@[kerodon 046N]
 def fiberwiseHomProjection {K C : SSet.{u}} (p : K ⟶ C) (D : SSet.{u}) :
     fiberwiseHom p D ⟶ C := SerrePositivity.InfinityCategories.fiberwiseFunctorProjection (overPullbackUnderlying p) D
 
@@ -53,6 +56,7 @@ lemma fiberwiseHomCurry_projection {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶
 方針：一般の族の普遍性を実際の pullback 関手に適用し、底を等式で固定する。
 規約：全ての単体集合パラメータ A に対する strict な普遍性。
 使われ方：族の延長を元の全空間上の図式の延長へ戻す。 -/
+@[kerodon 02TP]
 def fiberwiseHomEquiv {K A C D : SSet.{u}} (p : K ⟶ C) (a : A ⟶ C) :
     (pullback a p ⟶ D) ≃
       { f : A ⟶ fiberwiseHom p D // f ≫ fiberwiseHomProjection p D = a } where

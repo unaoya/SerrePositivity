@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.Limit
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # join と coslice による余極限錐
 
@@ -17,6 +18,7 @@ open scoped Simplicial
 /-- 概要：図式 p の余錐は p に制限される K⋆Δ[0] からの射。
 方針：固定条件を部分型で保持する。
 規約：sliceUnder p の零単体と同じ型。使われ方：余極限の定義の入力。 -/
+@[kerodon 02JN]
 abbrev JoinCocone {K X : SSet.{u}} (p : K ⟶ X) :=
   {F : join K (Δ[0] : SSet.{u}) ⟶ X // joinInl K Δ[0] ≫ F = p}
 
@@ -35,6 +37,7 @@ lemma JoinCocone.vertex_eq {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) :
 /-- 概要：余極限余錐は coslice の始対象である。
 方針：A2e の始対象の境界充填条件を適用する。
 規約：定義には quasicategory 性を要求しない。使われ方：押し出し・cofiber・懸垂。 -/
+@[kerodon 02JN]
 def IsColimitCone {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCocone p) : Prop :=
   IsInitialVertex (X := sliceUnder p) c
 

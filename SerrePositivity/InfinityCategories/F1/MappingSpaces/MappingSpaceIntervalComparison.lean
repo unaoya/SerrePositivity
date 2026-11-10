@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrisms
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberUniversal
 public import SerrePositivity.InfinityCategories.Core.PinchedUniversal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右の pinched 写像空間から両端固定の区間模型への比較射。
@@ -76,6 +77,7 @@ lemma const_point_comp_yoneda {A X : SSet.{u}} (x : X _⦋0⦌) :
 方針：恒等族を join 上に展開し、右の円筒比較で引き戻す。
 規約：標的の quasicategory 性を要求しない。
 使われ方：Kerodon §4.6.5–4.6.6、右模型と区間模型の比較。 -/
+@[kerodon 01L2]
 noncomputable def pinchedHomToIntervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) :
     pinchedHom x y ⟶ intervalMappingSpace x y :=
   intervalMappingCurryOfEndpoints
@@ -100,6 +102,7 @@ noncomputable def cosliceFiberToIntervalMappingSpace {X : SSet.{u}} (x y : X _�
 方針：coslice fiber との同型の逆を既存の区間比較へ続ける。
 規約：端点の順序は x から y のまま。
 使われ方：Kerodon §4.6.5–4.6.6、左右の写像空間の比較。 -/
+@[kerodon 01L2]
 noncomputable def pinchedHomLeftToIntervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) :
     pinchedHomLeft x y ⟶ intervalMappingSpace x y :=
   (cosliceFiberPinchedLeftIso x y).inv ≫ cosliceFiberToIntervalMappingSpace x y

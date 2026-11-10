@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の反転によるホーンと辺の双対化。
@@ -35,6 +36,7 @@ lemma subcomplexOppositeIso_hom_ι {X : SSet.{u}} (A : X.Subcomplex) :
 方針：標準単体の反転同型でホーンの部分複体を引き戻す。
 規約：次数は任意で、外側・内側の全てのホーンを含む。
 使われ方：Kerodon Theorem 4.4.2.6 の左右の双対。 -/
+@[kerodon 003S]
 def hornReverseIso (n : ℕ) (i : Fin (n + 1)) :
     (horn n i.rev : SSet.{u}) ≅ (horn n i : SSet.{u}).op :=
   Subcomplex.eqToIso (op_horn i).symm ≪≫
@@ -76,6 +78,7 @@ lemma stdSimplex_doubleReverse (n : ℕ) :
 方針：内ホーンを反転同型で移し、元の充填を反転して戻す。
 規約：モデル構造は使わず、内ホーンの充填だけを用いる。
 使われ方：HTT Proposition 1.2.4.3、Kerodon Theorem 4.4.2.6 の左右の対称性。 -/
+@[kerodon 003S]
 instance quasicategory_op (X : SSet.{u}) [Quasicategory X] : Quasicategory X.op where
   hornFilling' {n i} σ h₀ hlast := by
     let τ : (horn (n + 2) i.rev : SSet.{u}) ⟶ X :=

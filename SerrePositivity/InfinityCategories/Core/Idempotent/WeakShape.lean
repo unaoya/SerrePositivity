@@ -2,6 +2,7 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：弱い retract の添字 Ret を、二単体の長辺を一点へ潰す商として構成する。
@@ -22,6 +23,7 @@ def longEdgeCollapse : (Δ[1] : SSet.{u}) ⟶ Δ[0] :=
   SSet.stdSimplex.map (SimplexCategory.const ⦋1⦌ ⦋0⦌ 0)
 
 /-- 元の二単体の長辺を一点に潰した、弱い retract の添字。 -/
+@[kerodon 03Z6]
 def WeakShape : SSet.{u} := pushout (stdSimplex.δ (1 : Fin 3)) longEdgeCollapse.{u}
 
 /-- 元の二単体から弱い retract の添字への標準射。 -/
@@ -36,6 +38,7 @@ lemma weakTriangle_longEdge :
   pushout.condition
 
 /-- 弱い retract 図式は元の商全体からの単体的写像。 -/
+@[kerodon 03YZ]
 abbrev WeakRetractionDiagram (X : SSet.{u}) := WeakShape ⟶ X
 
 /-- 長辺が指定した一点となる元の二単体を、元の商へ降ろす。 -/

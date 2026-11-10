@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.RightFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：境界同士の pushout-join と標準単体の境界の比較。
@@ -56,6 +57,7 @@ lemma missing_cast_boundary_iff {p q r : ℕ} (h : p = q) (f : Fin r → Fin p) 
 方針：標準単体の同型の下で頂点の欠落を左右に分解する。
 規約：p と q はともに零も許す。
 使われ方：HTT §1.2.12、Kerodon Corollary 4.7.3.12 の境界充填。 -/
+@[kerodon 02BU]
 lemma boundary_boundary_preimage (p q : ℕ) :
     (boundary (p + q + 1)).preimage (joinStdSimplexIso.{u} p q).hom =
       joinUnion (boundary p) (boundary q) := by
@@ -73,6 +75,7 @@ end Join
 方針：境界が標準単体の join の同型に沿う逆像であることを使う。
 規約：同型は和の部分複体から標準単体の境界へ向かう。
 使われ方：HTT §1.2.12、Kerodon Corollary 4.7.3.12 の終対象の特徴づけ。 -/
+@[kerodon 02BU]
 def boundaryJoinIso (p q : ℕ) :
     (joinUnion (boundary p) (boundary q) : SSet.{u}) ≅ (boundary (p + q + 1) : SSet.{u}) :=
   Subcomplex.eqToIso (Join.boundary_boundary_preimage p q).symm ≪≫

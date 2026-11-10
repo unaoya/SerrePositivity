@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorSpace
 public import Mathlib.CategoryTheory.Monoidal.Braided.PushoutObjObj
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：右ホーンと単射の pushout-product、および right fibration の内部 Hom。
@@ -94,6 +95,7 @@ lemma cofinalRightAnodyne_horn_whiskerRight {m : ℕ} (k : Fin (m + 1))
 方針：tensorRight と内部 Hom の随伴で、右ホーンとパラメータの積の持ち上げに移す。
 規約：パラメータと底に quasicategory 性は要求しない。
 使われ方：Kerodon §5.3.1、right fibration 上の関手の族の充填。 -/
+@[kerodon 00TQ]
 instance cofinalIhom_map_rightFibration {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p]
     (A : SSet.{u}) : RightFibration ((ihom A).map p) where
   mem := by
@@ -116,6 +118,7 @@ instance cofinalIhom_map_rightFibration {E B : SSet.{u}} (p : E ⟶ B) [RightFib
 方針：右ホーンの持ち上げを対称な pushout-product の持ち上げへ移す。
 規約：元の四つの単体集合の quasicategory 性は不要。
 使われ方：Kerodon §5.3.1、相対関手単体集合の制限の充填性。 -/
+@[kerodon 00TP]
 lemma cofinalRightFibration_pullbackObjObjπ {A D E B : SSet.{u}}
     (i : D ⟶ A) [Mono i] (p : E ⟶ B) [RightFibration p]
     (sq' : internalHom.PullbackObjObj i p) : RightFibration sq'.π where
@@ -144,6 +147,7 @@ lemma cofinalRightFibration_pullbackObjObjπ {A D E B : SSet.{u}}
 方針：相対内部 Hom が right fibration であることを二変数随伴で移す。
 規約：第一因子の単射性、第二因子の right anodyne 性を仮定する。
 使われ方：Kerodon §4.2.5、§5.3.1、相対関手空間の制限。 -/
+@[kerodon 0153]
 lemma cofinalRightAnodyne_pushoutObjObj_right {A D K L : SSet.{u}}
     (i : D ⟶ A) [Mono i] (j : K ⟶ L) (hj : rightAnodyneExtensions j)
     (sq : (curriedTensor SSet.{u}).PushoutObjObj i j) :
@@ -170,6 +174,7 @@ lemma cofinalRightAnodyne_pushoutObjObj_left {A D K L : SSet.{u}}
 方針：境界との pushout-product の right anodyne 性を二変数随伴で移す。
 規約：モデル構造を用いず全境界の持ち上げだけを主張する。
 使われ方：Kerodon §5.3.1、始対象の評価の trivial Kan fibration 性。 -/
+@[kerodon 0154]
 lemma cofinalTrivialKanFibration_relativeHom_of_rightAnodyne {A D E B : SSet.{u}}
     (i : D ⟶ A) (hi : rightAnodyneExtensions i) (p : E ⟶ B) [RightFibration p]
     (sq' : internalHom.PullbackObjObj i p) : TrivialKanFibration sq'.π := by

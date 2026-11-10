@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeFamilyDiagramEq
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCanonicalFamilyIso
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitImageIso
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaRelativeLocalReindex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：標準底余錐上の局所相対余極限から元と標的を保つ左 Kan 延長を構成する。
@@ -51,6 +52,7 @@ lemma exists_kanRelativeLeftLocalColimit_over_universal {K C D E : SSet.{u}}
 方針：各底余錐を固定図式の同型で普遍 comma 形へ移し、局所存在から厳密に組み立てる。
 規約：元 F₀ と標的 H₀ を等式で保つ。底余錐は標準のものを入力する。
 使われ方：一般の isofibration 上の元の相対左 Kan 制限の存在部分。 -/
+@[kerodon 0302]
 lemma exists_kanRelativeLeftCanonical_strict_extension_of_local_relative_colimits
     {K C D E : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E]

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinder
 public import SerrePositivity.InfinityCategories.F1.Joins.FatJoinPointCylinder
 public import SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：終域が標準零単体である写像円柱から relative join への比較の同値性。
@@ -32,6 +33,7 @@ instance joinDiagonalCylinder_point_isIso : IsIso (joinDiagonalCylinder (Δ[0] :
 方針：点の対角円柱の同型と、二つの点の join の円柱比較の同型を合成する。
 規約：標準零単体をモノイダル単位と同一視しない。
 使われ方：Kerodon Example 5.2.3.5、通常の join との同型の引き戻し。 -/
+@[kerodon 0246]
 instance joinDiagonal_point_isIso : IsIso (joinDiagonal (Δ[0] : SSet.{u})) := by
   unfold joinDiagonal
   infer_instance
@@ -40,6 +42,7 @@ instance joinDiagonal_point_isIso : IsIso (joinDiagonal (Δ[0] : SSet.{u})) := b
 方針：引き戻す対角射が同型であることを使う。
 規約：左右の単体集合と点への射は任意。
 使われ方：Kerodon Example 5.2.3.5、relative join の通常の join への模型変更。 -/
+@[kerodon 0246]
 instance relativeJoin_point_fst_isIso {X Y : SSet.{u}}
     (f : X ⟶ (Δ[0] : SSet.{u})) (g : Y ⟶ (Δ[0] : SSet.{u})) :
     IsIso (pullback.fst (joinMap f g) (joinDiagonal (Δ[0] : SSet.{u}))) := by

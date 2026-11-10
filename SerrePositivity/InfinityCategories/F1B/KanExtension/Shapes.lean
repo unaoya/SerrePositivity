@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.Limit
 public import SerrePositivity.InfinityCategories.Core.Cocone
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右 Kan 拡張の点ごとの添字と、その上の標準の錐・余錐。
@@ -52,6 +53,7 @@ abbrev leftKanProjection {K C : SSet.{u}} (δ : K ⟶ C) (c : C _⦋0⦌) :
 方針：K への射影と元の図式を合成する。
 規約：値域 D の充填性は定義に不要。
 使われ方：Kerodon Def 7.3.1.2 の点ごとの極限。 -/
+@[kerodon 02Y9]
 def rightKanDiagram {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (c : C _⦋0⦌) :
     rightKanShape δ c ⟶ D := rightKanProjection δ c ≫ F₀
 
@@ -59,6 +61,7 @@ def rightKanDiagram {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (c : C _�
 方針：K への射影と元の図式を合成する。
 規約：値域 D の充填性は定義に不要。
 使われ方：Kerodon Variant 7.3.1.5 の点ごとの余極限。 -/
+@[kerodon 02YC]
 def leftKanDiagram {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (c : C _⦋0⦌) :
     leftKanShape δ c ⟶ D := leftKanProjection δ c ≫ F₀
 

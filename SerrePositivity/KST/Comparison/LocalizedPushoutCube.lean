@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 局所化可逆な span の pushout の比較
@@ -28,6 +29,7 @@ open SerrePositivity.SimplicialModel
 規約：既存のモデル圏版 Quillen/LeftProper の分解を anodyneQ の具体的な定理で実装する。
 使われ方：二重写像円筒の各成分の Kan 置換への移行。
 -/
+@[kerodon 032R]
 theorem pushoutMap_localized_isIso
     {A B D A' B' D' : SSet.{u}} (f : A ⟶ B) (g : A ⟶ D) (f' : A' ⟶ B') (g' : A' ⟶ D')
     (a : A ⟶ A') (b : B ⟶ B') (c : D ⟶ D') [Mono f] [Mono f']

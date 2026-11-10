@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
 public import SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorConeTerminalBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の点ごとの極限性から関手 ∞ 圏の極限性を得る。
@@ -32,6 +33,7 @@ lemma terminalBoundaryLifting_coneRestriction_of_isLimitCone {K X : SSet.{u}}
 方針：極限性からの輸送による方向と fiber への制限による方向を合わせる。
 規約：X は quasicategory、添字 K は任意。
 使われ方：Kerodon Proposition 7.1.6.13 の相対終対象による極限判定。 -/
+@[kerodon 02XD]
 lemma isLimitCone_iff_terminalBoundaryLifting_coneRestriction {K X : SSet.{u}}
     [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) :
     IsLimitCone c ↔ TerminalBoundaryLifting (coneRestriction K X) (functorVertex c.val) :=
@@ -42,6 +44,7 @@ lemma isLimitCone_iff_terminalBoundaryLifting_coneRestriction {K X : SSet.{u}}
 方針：評価した通常の極限錐を相対境界充填へ移し、関手圏への相対充填の移送を適用する。
 規約：X は quasicategory、J と K は任意、追加の相対充填の仮定は不要。
 使われ方：HTT Proposition 5.1.2.2、Kerodon Proposition 7.1.8.5 の極限側。 -/
+@[kerodon 02XP]
 lemma isLimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X]
     {p : J ⟶ (ihom K).obj X} (c : JoinCone p) (hc : IsPointwiseLimitCone c) : IsLimitCone c := by
   apply isLimitCone_of_pointwise_terminalBoundaryLifting c

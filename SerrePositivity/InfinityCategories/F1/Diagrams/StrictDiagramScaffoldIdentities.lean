@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramScaffoldInverse
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：strict な変換と replacement 上の相対射との比較の逆条件。
@@ -118,6 +119,7 @@ lemma strictDiagramMappingScaffoldMap_inverse {C : Type u} [Category.{u} C]
 方針：scaffold の評価と under の普遍評価による回収を、証明済みの二つの逆条件で束ねる。
 規約：射影 q と図式 F の充填性を要求しない厳密な同型。
 使われ方：Kerodon Corollary 5.6.0.6、strict transport の写像空間比較の逆データの基礎。 -/
+@[kerodon 036G]
 def strictDiagramMappingScaffoldIso {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
     strictDiagramMappingSpace F (leftStrictTransportDiagram q) ≅

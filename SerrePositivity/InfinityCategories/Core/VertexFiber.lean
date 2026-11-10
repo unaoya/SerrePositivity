@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の射の頂点上の fiber の直接構成。
@@ -112,6 +113,7 @@ lemma vertexFiber_isContractibleKan {E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFi
 方針：下を定値射とした右ホーンの持ち上げと A3b の Kan 判定を使う。
 規約：標的の quasicategory 性は不要。
 使われ方：Kerodon Corollary 4.4.2.3、写像空間の fiber 模型。 -/
+@[kerodon 019E]
 lemma vertexFiber_kanComplex {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p]
     (b : B _⦋0⦌) : KanComplex (vertexFiber p b) := by
   apply kanComplex_of_rightHornFillers

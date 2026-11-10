@@ -24,6 +24,7 @@ public import SerrePositivity.InfinityCategories.Core.LaxCoslice
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Coslice と太い coslice の比較同値
 
@@ -56,6 +57,7 @@ def laxCosliceFixedDiagramVertexEquiv {K X : SSet.{u}} (p : K ⟶ X) (A : SSet.{
 /-- 概要：coslice の普遍余錐を太い coslice の族にする比較射。
 方針：fat join 比較で普遍余錐を前合成し、太い coslice に curry する。
 規約：左図式を固定する。使われ方：余錐の模型の比較同値。 -/
+@[kerodon 02GH]
 noncomputable def cosliceLaxMap {K X : SSet.{u}} (p : K ⟶ X) : sliceUnder p ⟶ laxCoslice p :=
   laxCosliceCurry (fatJoinComparison K (sliceUnder p) ≫ sliceUnderUncurry (𝟙 (sliceUnder p)))
     (by rw [← Category.assoc, fatJoinInl_comparison, sliceUnderUncurry_fixed])
@@ -139,6 +141,7 @@ lemma exists_functorIso_comp_cosliceLaxMap {K X : SSet.{u}} [Quasicategory X]
 方針：恒等関手の同型類の逆像から逆関手を選び、同型の反映で他方の逆合成を同定する。
 規約：X は quasicategory、K は任意、追加の有限性・非空性は不要。
 使われ方：Kerodon Proposition 4.6.4.19 の太い coslice の比較。 -/
+@[kerodon 01KU, kerodon 02VT]
 lemma isQCatEquivalence_cosliceLaxMap {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     IsQCatEquivalence (cosliceLaxMap p) := by
   obtain ⟨g, ⟨eg⟩⟩ := exists_functorIso_comp_cosliceLaxMap p (laxCoslice p) (𝟙 (laxCoslice p))

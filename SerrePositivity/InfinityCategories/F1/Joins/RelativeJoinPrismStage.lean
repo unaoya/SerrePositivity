@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPrismPenultimate
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinPrismShuffleVertices
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：切替位置の順に最大単体を加える prism の有限段階。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：切替位置が r 未満の生成単体の和と初期部分の和を取る。
 規約：r=0 では初期部分だけ、r=m では Z(m)。
 使われ方：Kerodon Lemma 3.1.2.12、prism の有限分解の添字。 -/
+@[kerodon 00TH]
 noncomputable def relativeJoinPrismStage (m r : ℕ) :
     ((Δ[1] : SSet.{u}) ⊗ Δ[m]).Subcomplex :=
   relativeJoinPrismInitial m ⊔

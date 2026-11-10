@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.ProExcision.AWBoundaryTerms
 public import SerrePositivity.KST.ProExcision.AWBoundaryExpansion
 public import SerrePositivity.KST.ProExcision.AWBoundarySum
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # AW の境界和の合成
@@ -165,6 +166,7 @@ lemma awVertical_sum_split (n : ℕ) (i : Fin (n + 1)) :
 方針：左右の非対角境界和を削除後の切断へ移し、対角和を相殺する。
 規約：KST Construction A.5 の標準 AW、引用や追加公理を使わない。
 使われ方：正規化への射影と shuffle との比較に渡す鎖写像。 -/
+@[kerodon 00S3]
 theorem alexanderWhitney_comm (n : ℕ) :
     alexanderWhitneyApp C D (n + 1) ≫
       (chainIntegerTensor ((alternatingFaceMapComplex _).obj C)
@@ -206,6 +208,7 @@ theorem alexanderWhitney_comm (n : ℕ) :
 方針：共有切断点の有限和の成分に、証明済みの微分との可換性を付ける。
 規約：KST Construction A.5、正規化前の交代面写像複体。
 使われ方：Moore 複体への射影と Eilenberg–Zilber の標準比較。 -/
+@[kerodon 00S3]
 def alexanderWhitney :
     (alternatingFaceMapComplex _).obj (simplicialIntegerTensor C D) ⟶
       chainIntegerTensor ((alternatingFaceMapComplex _).obj C)

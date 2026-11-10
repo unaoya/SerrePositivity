@@ -3,6 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan fibration の連結写像の正次数での群準同型性。
@@ -178,6 +179,7 @@ end ConnectingProduct
 方針：fiber の積を境界に持つ相対持ち上げを作り、隣接する底の積を比較する。
 規約：底は次数 n + 2 の可換群なので隣接積の逆順を可換性で吸収する。
 使われ方：Kerodon §3.2.5。長完全列の連結準同型。 -/
+@[kerodon 00WH]
 theorem connecting_mul {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e)) :
@@ -203,6 +205,7 @@ theorem connecting_mul {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：商へ降ろした連結写像に単位保存と積保存を付ける。
 規約：π_(n+2)(B) から π_(n+1)(fiber) への群準同型。
 使われ方：Kerodon §§3.2.5–3.2.6、Theorem 3.2.6.1。長完全列の群の部分。 -/
+@[kerodon 00WG, kerodon 00WH]
 noncomputable def connectingHom {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e) →*

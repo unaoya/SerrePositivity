@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinPushout
 public import SerrePositivity.InfinityCategories.Core.FatJoinRightMono
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.PrecompositionPushoutGluing
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左因子の単射を含む貼り合わせによる fat join 比較の同値条件。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：両方の join の pushout 保存と比較の自然性を使う。
 規約：f のみが単射。固定因子 K と他の貼り合わせ射は任意。
 使われ方：Kerodon Lemma 4.6.2.10 の左因子のセル分解。 -/
+@[kerodon 01HX]
 lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_left
     {A B C D : SSet.{u}} {f : A ⟶ B} [Mono f] {g : A ⟶ C}
     {r : B ⟶ D} {t : C ⟶ D} (h : IsPushout f g r t) (K : SSet.{u})

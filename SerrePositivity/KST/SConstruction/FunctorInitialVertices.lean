@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.FunctorInitialBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.Core.Pointed
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 関手圏の点ごとの始対象と零対象
 概要：全ての点で始対象・零対象となる関手頂点の普遍性を証明する。
@@ -20,6 +21,7 @@ open scoped Simplicial
 方針：境界の uncurry を直積上で延長し、新しい単体の始点には点ごとの始対象性を使う。
 規約：この向きには標的の quasicategory 性を必要としない。
 使われ方：HTT 5.1.2.2、Kerodon Corollary 7.1.8.15 の空図式の場合の双対。 -/
+@[kerodon 02XP]
 lemma isInitialVertex_functorVertex_of_pointwise {K X : SSet.{u}} (f : K ⟶ X)
     (hf : ∀ k : K _⦋0⦌, IsInitialVertex (f.app (Opposite.op ⦋0⦌) k)) :
     IsInitialVertex (functorVertex f) := by

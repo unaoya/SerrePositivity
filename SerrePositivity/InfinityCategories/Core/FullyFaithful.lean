@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：写像空間による充満忠実性と本質的全射性。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：各右 pinched 写像空間の射が単体的ホモトピー逆を持つことを要求する。
 規約：quasicategory 性は利用する定理に仮定する。
 使われ方：Kerodon Remark 4.8.3.9、Theorem 4.8.4.1。 -/
+@[kerodon 01JH]
 def IsFullyFaithful {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
   ∀ x y : X _⦋0⦌, IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)
 
@@ -28,6 +30,7 @@ def IsFullyFaithful {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
 方針：任意の標的の頂点が像の頂点と同型であることを要求する。
 規約：頂点の等号を要求しない。
 使われ方：Kerodon Definition 4.8.1.1、Theorem 4.8.4.1。 -/
+@[kerodon 01JQ]
 def IsEssentiallySurjective {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
   ∀ y : Y _⦋0⦌, ∃ x : X _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)
 
@@ -94,6 +97,7 @@ noncomputable def IsFullyFaithful.toHoFullyFaithful {X Y : SSet.{u}}
 方針：両ホモトピー圏の対象を頂点として表す。
 規約：この同値自体には quasicategory 性を必要としない。
 使われ方：Kerodon Remark 4.8.1.3。 -/
+@[kerodon 01JS]
 lemma isEssentiallySurjective_iff_hoFunctor {X Y : SSet.{u}} (f : X ⟶ Y) :
     IsEssentiallySurjective f ↔ (hoFunctor.map f).toFunctor.EssSurj := by
   constructor

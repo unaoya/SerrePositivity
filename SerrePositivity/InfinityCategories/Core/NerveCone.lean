@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.ConeAnodyne
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の圏の始対象から、その nerve 全体への錐を直接作る。
@@ -115,6 +116,7 @@ lemma simplexCastIso_hom_app_val {m n : ℕ} (h : m = n) (d : ℕ)
 方針：既存の同型の 0+n+1 を次元の等式で正規化する。
 規約：直接構成した join の表示は維持する。
 使われ方：HTT §1.2.8、Kerodon §4.7.3 の始対象の錐。 -/
+@[kerodon 0177]
 def pointJoinStdSimplexIso (n : ℕ) : join (Δ[0] : SSet.{u}) Δ[n] ≅ Δ[n + 1] :=
   joinStdSimplexIso 0 n ≪≫ simplexCastIso (by omega)
 

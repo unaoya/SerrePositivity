@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.CellularNaturalComparison
 public import SerrePositivity.InfinityCategories.Core.FatJoinInitialComparison
 public import SerrePositivity.InfinityCategories.Core.FatJoinStdComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の二つの単体集合の fat join 比較の前合成による同値性。
@@ -38,6 +39,7 @@ lemma isPrecompositionEquivalence_fatJoinComparison_stdSimplex_left (n : ℕ) (B
 方針：標準単体を左因子とした一般の比較を、左因子のセル分解で全単体集合へ拡張する。
 規約：両因子は任意。比較自体の単射性や quasicategory 性は仮定しない。
 使われ方：Kerodon Theorem 4.6.2.8 の fat join と通常の join の比較。 -/
+@[kerodon 01HV, kerodon 01HX, kerodon 01HY, kerodon 01HZ]
 lemma isPrecompositionEquivalence_fatJoinComparison (A B : SSet.{u}) :
     IsPrecompositionEquivalence (fatJoinComparison A B) := by
   have : ∀ J : Type u, PreservesColimitsOfShape (WidePushoutShape J)

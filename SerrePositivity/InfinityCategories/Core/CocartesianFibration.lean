@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.CocartesianEdge
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cocartesian な辺による輸送を持つ inner fibration。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：内ホーンの持ち上げ性と cocartesian な辺の存在を保持する。
 規約：quasicategory 性は定義に含めない。
 使われ方：Kerodon Definition 5.1.4.1 の cocartesian fibration。 -/
+@[kerodon 01UA]
 class CocartesianHornFibration {E B : SSet.{u}} (p : E ⟶ B) : Prop extends InnerFibration p where
   /-- 始点を指定した基底の辺の cocartesian な持ち上げ。 -/
   exists_lift : ∀ (x : E _⦋0⦌) (b : B _⦋0⦌)

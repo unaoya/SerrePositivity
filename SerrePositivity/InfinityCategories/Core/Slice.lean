@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Join
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：join からの射を単体とする slice と coslice。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories
 方針：n 単体を `join Δ[n] K` からの射で K 上 p に一致するものとし、前合成で引き戻す。
 規約：任意の単体集合間の射 p を扱う。
 使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の図式上の錐。 -/
+@[kerodon 017W]
 def sliceOver {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} where
   obj n := {σ : join (stdSimplex.obj n.unop) K ⟶ X //
     joinInr (stdSimplex.obj n.unop) K ≫ σ = p}
@@ -52,6 +54,7 @@ def sliceOver {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} where
 方針：n 単体を `join K Δ[n]` からの射で K 上 p に一致するものとし、前合成で引き戻す。
 規約：可変因子は右側。quasicategory 性は不要。
 使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の双対的な錐。 -/
+@[kerodon 017Y, kerodon 020T]
 def sliceUnder {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} where
   obj n := {σ : join K (stdSimplex.obj n.unop) ⟶ X //
     joinInl K (stdSimplex.obj n.unop) ≫ σ = p}
@@ -80,6 +83,7 @@ def sliceUnder {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} where
 方針：左包含との合成を Yoneda の同値で X の単体に直す。
 規約：任意の図式 p に対する単体集合の射。
 使われ方：HTT §2.1.2、Kerodon §4.3.5 の slice の射影。 -/
+@[kerodon 017W]
 def sliceOverProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceOver p ⟶ X where
   app n := ↾fun σ ↦ SSet.yonedaEquiv (joinInl (stdSimplex.obj n.unop) K ≫ σ.val)
   naturality _ _ α := by
@@ -95,6 +99,7 @@ def sliceOverProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceOver p ⟶ X where
 方針：右包含との合成を Yoneda の同値で X の単体に直す。
 規約：任意の図式 p に対する単体集合の射。
 使われ方：HTT §2.1.2、Kerodon §4.3.5 の双対的な射影。 -/
+@[kerodon 017Y]
 def sliceUnderProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceUnder p ⟶ X where
   app n := ↾fun σ ↦ SSet.yonedaEquiv (joinInr K (stdSimplex.obj n.unop) ≫ σ.val)
   naturality _ _ α := by
@@ -110,6 +115,7 @@ def sliceUnderProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceUnder p ⟶ X whe
 方針：x に対応する標準零単体からの射に一般の slice を適用する。
 規約：固定図式は `Δ[0] ⟶ X`。
 使われ方：HTT §1.2.12、Kerodon §4.6.7 の終対象。 -/
+@[kerodon 0181]
 def sliceOverVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u} :=
   sliceOver (SSet.yonedaEquiv.symm x)
 
@@ -117,6 +123,7 @@ def sliceOverVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u} :=
 方針：x に対応する標準零単体からの射に一般の coslice を適用する。
 規約：固定図式は `Δ[0] ⟶ X`。
 使われ方：HTT §1.2.12、Kerodon §4.6.7 の始対象。 -/
+@[kerodon 0181]
 def sliceUnderVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u} :=
   sliceUnder (SSet.yonedaEquiv.symm x)
 
@@ -124,6 +131,7 @@ def sliceUnderVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u} :=
 方針：A の各単体からの Yoneda 射との join に沿って F を制限する。
 規約：余極限の一般論を用いない直接構成。
 使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の slice の普遍性の一方向。 -/
+@[kerodon 0189]
 def sliceOverCurry {A K X : SSet.{u}} {p : K ⟶ X}
     (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) : A ⟶ sliceOver p where
   app _ := ↾fun a ↦ ⟨joinMap (SSet.yonedaEquiv.symm a) (𝟙 K) ≫ F, by
@@ -376,6 +384,7 @@ lemma sliceOverUncurryApp_yoneda {A K X : SSet.{u}} {p : K ⟶ X}
 方針：各単体の錐を直接評価して束ね、逆は Yoneda 射との join に沿って制限する。
 規約：任意の単体集合 A を扱い、余極限の一般論も quasicategory 性も用いない。
 使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 のホーン持ち上げ問題の翻訳。 -/
+@[kerodon 0189]
 def sliceOverEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
     (A ⟶ sliceOver p) ≃ {F : join A K ⟶ X // joinInr A K ≫ F = p} where
   toFun f := ⟨sliceOverUncurry f, sliceOverUncurry_fixed f⟩

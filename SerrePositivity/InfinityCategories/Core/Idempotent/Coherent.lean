@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：coherent な冪等図式と、元の全図式を制限で回収する強い分裂。
@@ -30,13 +31,16 @@ def nerveHomotopyFunctor (C : Type u) [SmallCategory C] : C ⥤ hoFunctor.obj (n
     exact (HomotopyCategory.homMk_comp_homMk h).symm
 
 /-- 元の全 Idem 上の写像としての coherent 冪等図式。 -/
+@[kerodon 03ZT]
 abbrev CoherentIdempotent (X : SSet.{u}) := IdemShape.{u} ⟶ X
 
 /-- 元の全冪等図式を同じ包含の制限で厳密に回収する強い分裂。 -/
+@[kerodon 03ZX]
 def StrongSplitting {X : SSet.{u}} (d : CoherentIdempotent X) :=
   {s : SplitShape.{u} ⟶ X // idemInclusion ≫ s = d}
 
 /-- 任意の coherent 冪等図式の強い分裂の存在による冪等完備性。 -/
+@[kerodon 0406]
 def IsIdempotentComplete (X : SSet.{u}) : Prop :=
   ∀ d : CoherentIdempotent X, Nonempty (StrongSplitting d)
 

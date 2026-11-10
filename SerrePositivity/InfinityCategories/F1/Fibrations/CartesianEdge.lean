@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の射に関する cartesian・cocartesian 辺。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：最後の辺が e の持ち上げ問題に解を要求する。
 規約：p の inner fibration 性はこの定義に含めない。
 使われ方：Kerodon Definition 5.1.1.1、cartesian fibration の定義。 -/
+@[kerodon 01T5]
 def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop :=
   ∀ (n : ℕ) (a : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X)
     (b : (Δ[n + 2] : SSet.{u}) ⟶ B),
@@ -31,6 +33,7 @@ def IsCartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop :=
 方針：最初の辺が e の持ち上げ問題に解を要求する。
 規約：p の inner fibration 性はこの定義に含めない。
 使われ方：Kerodon Definition 5.1.1.1、cocartesian fibration の定義。 -/
+@[kerodon 01T5]
 def IsCocartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop :=
   ∀ (n : ℕ) (a : (horn (n + 2) 0 : SSet.{u}) ⟶ X)
     (b : (Δ[n + 2] : SSet.{u}) ⟶ B),

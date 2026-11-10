@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.SliceExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：頂点の終対象・始対象の境界充填条件と trivial Kan fibration。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories
 方針：単射のクラスの rlp として定義する。
 規約：モデル構造や弱同値のクラスを使わない。
 使われ方：Kerodon Definition 1.5.5.1、HTT §1.2.12 の slice 射影。 -/
+@[kerodon 006W, kerodon 0075]
 def trivialKanFibrations : MorphismProperty SSet.{u} := (monomorphisms SSet).rlp
 deriving IsMultiplicative, RespectsIso, IsStableUnderBaseChange, IsStableUnderRetracts
 
@@ -31,6 +33,7 @@ deriving IsMultiplicative, RespectsIso, IsStableUnderBaseChange, IsStableUnderRe
 方針：全単射に対する rlp への所属を保持する。
 規約：充填の選択は構造に含めない。
 使われ方：Kerodon Corollary 4.7.3.12 の終対象の特徴づけ。 -/
+@[kerodon 006W]
 class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
   mem : trivialKanFibrations p
 
@@ -38,6 +41,7 @@ class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
 方針：単射の境界によるセル分解を使う。
 規約：零次元の境界も含める。
 使われ方：Kerodon Definition 1.5.5.1、Corollary 4.7.3.12 の境界テスト。 -/
+@[kerodon 006W, kerodon 006Y]
 lemma trivialKanFibration_iff_boundary {X Y : SSet.{u}} (p : X ⟶ Y) :
     TrivialKanFibration p ↔ ∀ n : ℕ, HasLiftingProperty (boundary n).ι p := by
   constructor
@@ -77,6 +81,7 @@ instance trivialKanFibration_leftFibration {X Y : SSet.{u}} (p : X ⟶ Y)
 方針：HTT の境界充填条件をそのまま Prop とする。
 規約：n は一つ小さい次元で、境界は ∂Δ[n+1]、端点は n+1。
 使われ方：HTT Definition 1.2.12.3、Kerodon Proposition 4.7.3.6 の終対象。 -/
+@[kerodon 02H7, kerodon 06R1]
 def IsTerminalVertex {X : SSet.{u}} (x : X _⦋0⦌) : Prop :=
   ∀ (n : ℕ) (b : (boundary (n + 1) : SSet.{u}) ⟶ X),
     boundaryVertex n (Fin.last (n + 1)) ≫ b = SSet.yonedaEquiv.symm x →
@@ -131,6 +136,7 @@ lemma isTerminalVertex_iff_sliceOverExtension {X : SSet.{u}} (x : X _⦋0⦌) :
 方針：境界充填を join の延長性に直し、slice 射影の全境界に対する持ち上げ性と比較する。
 規約：追加のモデル構造を使わず、任意の単体集合について成り立つ。
 使われ方：HTT §1.2.12、Kerodon Corollary 4.7.3.12。 -/
+@[kerodon 06R2]
 lemma isTerminalVertex_iff_trivialKanFibration {X : SSet.{u}} (x : X _⦋0⦌) :
     IsTerminalVertex x ↔ TrivialKanFibration (sliceOverProjection (SSet.yonedaEquiv.symm x)) := by
   rw [isTerminalVertex_iff_sliceOverExtension, trivialKanFibration_iff_boundary]
@@ -203,6 +209,7 @@ lemma isInitialVertex_iff_sliceUnderExtension {X : SSet.{u}} (x : X _⦋0⦌) :
 方針：境界充填を join の延長性に直し、coslice 射影の全境界に対する持ち上げ性と比較する。
 規約：任意の単体集合に成り立ち、モデル構造は使わない。
 使われ方：HTT §1.2.12、Kerodon Corollary 4.7.3.12 の双対。 -/
+@[kerodon 06R2]
 lemma isInitialVertex_iff_trivialKanFibration {X : SSet.{u}} (x : X _⦋0⦌) :
     IsInitialVertex x ↔ TrivialKanFibration (sliceUnderProjection (SSet.yonedaEquiv.symm x)) := by
   rw [isInitialVertex_iff_sliceUnderExtension, trivialKanFibration_iff_boundary]

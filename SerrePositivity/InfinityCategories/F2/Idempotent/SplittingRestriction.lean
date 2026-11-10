@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingCanonicalColimits
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の全強分裂図式から全 Idem 図式への制限は、inner かつ充満忠実。
@@ -30,6 +31,7 @@ instance strongSplittingRestriction_innerFibration (X : SSet.{u}) [Quasicategory
   inferInstanceAs (InnerFibration ((pre idemInclusion).app X))
 
 /-- 元の制限は、元の全図式間の pinched 写像空間で充満忠実。 -/
+@[kerodon 0402]
 lemma strongSplittingRestriction_isFullyFaithful (X : SSet.{u}) [Quasicategory X] :
     IsFullyFaithful (strongSplittingRestriction X) := by
   intro x y
@@ -39,6 +41,7 @@ lemma strongSplittingRestriction_isFullyFaithful (X : SSet.{u}) [Quasicategory X
     (splittingCanonicalCocones_isColimit F) G
 
 /-- 冪等完備なら、元の全 Idem 図式への元の制限そのものが自明 Kan fibration。 -/
+@[kerodon 0402]
 lemma strongSplittingRestriction_trivialKanFibration_of_complete (X : SSet.{u})
     [Quasicategory X] (hX : IsIdempotentComplete X) :
     TrivialKanFibration (strongSplittingRestriction X) := by

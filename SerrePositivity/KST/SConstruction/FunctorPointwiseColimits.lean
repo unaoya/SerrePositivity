@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import SerrePositivity.InfinityCategories.Core.FunctorLimits
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 関手 ∞ 圏の点ごとの余極限
 概要：各点で余極限となる余錐は関手 ∞ 圏でも余極限となる。
@@ -30,6 +31,7 @@ def evaluateFunctorCocone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
 /-- 概要：全ての評価した余錐が余極限となる条件。
 方針：各頂点で通常の IsColimitCone を要求する。
 規約：関手圏の余極限との比較を定義に含めない。使われ方：HTT 5.1.2.2 の余極限側。 -/
+@[kerodon 05QF]
 def IsPointwiseColimitCone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
     (c : JoinCocone p) : Prop := ∀ k : K _⦋0⦌, IsColimitCone (evaluateFunctorCocone c k)
 
@@ -88,6 +90,7 @@ lemma isColimitCone_of_pointwise_initialBoundaryLifting {J K X : SSet.{u}} [Quas
 方針：各点の余極限性を相対始点境界充填に変え、内部 Hom の交換で移す。
 規約：X は quasicategory。添字 J とパラメーター K は任意。
 使われ方：HTT 5.1.2.2 と cofiber 族の普遍性。 -/
+@[kerodon 02XP]
 lemma isColimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X]
     {p : J ⟶ (ihom K).obj X} (c : JoinCocone p) (hc : IsPointwiseColimitCone c) :
     IsColimitCone c := by

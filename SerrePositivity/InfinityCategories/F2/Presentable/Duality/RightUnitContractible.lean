@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Duality.RightUnitInitialCriterion
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：固定した元の右関手に対する随伴実単位の全空間の可縮性。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable.Duality
 方針：正次元の境界の最初の頂点で充填し、全頂点が元の境界に属すことを使う。
 規約：周囲の単体集合に充填性を仮定しない。
 使われ方：固定右の普遍単位の全高次の可縮性。 -/
+@[kerodon 02HM]
 lemma initialVertices_isContractibleKan {X : SSet.{u}}
     (hne : ∃ x : X _⦋0⦌, IsInitialVertex x) :
     IsContractibleKan (fullSubcomplexOnVertices X IsInitialVertex : SSet.{u}) := by

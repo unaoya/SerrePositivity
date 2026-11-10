@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.ExUnitAnodyne
 public import SerrePositivity.KST.Comparison.ExInfinity
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex∞ の単位の anodyne 性
@@ -44,6 +45,7 @@ def exInfinityAnodyneSequence (X : SSet.{u}) :
 規約：Moss 2020 Corollary 30。
 使われ方：Ex∞ の単位の局所化での可逆性と置換の比較。
 -/
+@[kerodon 00ZH]
 theorem exInfinityUnit_anodyne (X : SSet.{u}) :
     SSet.anodyneExtensions (exInfinityUnit.app X) :=
   SSet.anodyneExtensions.transfiniteCompositionsOfShape_le ℕ _

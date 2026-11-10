@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLifting
 public import SerrePositivity.InfinityCategories.Core.JoinEquivalenceFunctor
 public import SerrePositivity.InfinityCategories.Core.JoinLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同値持ち上げ射が誘導する slice・coslice の後合成も同値を持ち上げる。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 方針：左因子の join が単射な前合成同値を保つことを使う。
 規約：固定図式は任意、両端の quasicategory 性も不要。
 使われ方：対象上の比較同型を元の対象を保って持ち上げる。 -/
+@[kerodon 069C]
 lemma sliceOverPostcomp_equivalenceLifting {K E B : SSet.{u}}
     (x : K ⟶ E) (p : E ⟶ B) (hp : F1B.EquivalenceLifting p) :
     F1B.EquivalenceLifting (sliceOverPostcomp x p) := by
@@ -53,6 +55,7 @@ lemma sliceOverPostcomp_equivalenceLifting {K E B : SSet.{u}}
 方針：右因子の join が単射な前合成同値を保つことを使う。
 規約：元の固定図式を全単体で保持する。
 使われ方：固定対象からの全余錐の同型持ち上げ。 -/
+@[kerodon 069C]
 lemma sliceUnderPostcomp_equivalenceLifting {K E B : SSet.{u}}
     (x : K ⟶ E) (p : E ⟶ B) (hp : F1B.EquivalenceLifting p) :
     F1B.EquivalenceLifting (sliceUnderPostcomp x p) := by

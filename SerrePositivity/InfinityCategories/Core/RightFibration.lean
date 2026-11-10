@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinAnodyne
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右のファイブレーションと、slice 射影の右ファイブレーション性。
@@ -31,6 +32,7 @@ deriving IsMultiplicative, RespectsIso, IsStableUnderBaseChange, IsStableUnderRe
 方針：ホーンの族の右持ち上げ性として定義する。
 規約：零番目のホーンも含む。
 使われ方：HTT Definition 2.0.0.3、Proposition 2.1.2.2 の双対的な射影。 -/
+@[kerodon 00T9]
 def leftFibrations : MorphismProperty SSet.{u} := leftHornInclusions.rlp
 deriving IsMultiplicative, RespectsIso, IsStableUnderBaseChange, IsStableUnderRetracts
 
@@ -38,6 +40,7 @@ deriving IsMultiplicative, RespectsIso, IsStableUnderBaseChange, IsStableUnderRe
 方針：rightFibrations への所属を保持する。
 規約：追加の構造や充填の選択は持たない。
 使われ方：HTT §2.1.2 の slice の型クラスへの接続。 -/
+@[kerodon 00T9]
 class RightFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
   mem : rightFibrations p
 
@@ -45,6 +48,7 @@ class RightFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
 方針：leftFibrations への所属を保持する。
 規約：追加の構造や充填の選択は持たない。
 使われ方：HTT §2.1.2 の coslice の型クラスへの接続。 -/
+@[kerodon 00T9, kerodon 014X]
 class LeftFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
   mem : leftFibrations p
 
@@ -208,6 +212,7 @@ lemma sliceOverProjection_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X
 方針：右ホーン包含の right anodyne 性と射影の持ち上げ補題を使う。
 規約：K の有限性等の追加仮定はない。
 使われ方：HTT Proposition 2.1.2.1、Kerodon §4.3.6 の slice の一般論。 -/
+@[kerodon 018F]
 instance sliceOverProjection_rightFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     RightFibration (sliceOverProjection p) where
   mem := by
@@ -220,6 +225,7 @@ instance sliceOverProjection_rightFibration {K X : SSet.{u}} [Quasicategory X] (
 方針：射影は右ファイブレーション、従って inner fibration である。
 規約：Mathlib の quasicategory_of_innerFibration を適用する。
 使われ方：HTT Proposition 2.1.2.1、極限を slice の終対象として定義する基盤。 -/
+@[kerodon 018F]
 instance sliceOver_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     Quasicategory (sliceOver p) :=
   quasicategory_of_innerFibration (sliceOverProjection p)
@@ -315,6 +321,7 @@ lemma sliceUnderProjection_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory 
 方針：左ホーン包含の left anodyne 性と射影の持ち上げ補題を使う。
 規約：K の有限性等の追加仮定はない。
 使われ方：HTT Proposition 2.1.2.2、Kerodon §4.3.6 の coslice の一般論。 -/
+@[kerodon 018F, kerodon 020U]
 instance sliceUnderProjection_leftFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     LeftFibration (sliceUnderProjection p) where
   mem := by
@@ -327,6 +334,7 @@ instance sliceUnderProjection_leftFibration {K X : SSet.{u}} [Quasicategory X] (
 方針：射影は左ファイブレーション、従って inner fibration である。
 規約：Mathlib の quasicategory_of_innerFibration を適用する。
 使われ方：HTT Proposition 2.1.2.2、余極限を coslice の始対象として定義する基盤。 -/
+@[kerodon 020U]
 instance sliceUnder_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     Quasicategory (sliceUnder p) :=
   quasicategory_of_innerFibration (sliceUnderProjection p)

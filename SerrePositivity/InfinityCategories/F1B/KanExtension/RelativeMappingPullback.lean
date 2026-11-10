@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedHomPullback
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeFunctorMapping
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulFibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：一般 U の相対 Kan 条件から四つの写像空間の引き戻しへの実際の比較同値。
@@ -78,6 +79,7 @@ lemma kanRelativeMappingPullback_right_fibration {K C D E : SSet.{u}}
 方針：元の相対制限の片側比較に引き戻し同型を合成する。
 規約：相手 G の普遍性や U の充填性は不要。
 使われ方：相対 Kan の普遍写像性の左側の四角形。 -/
+@[kerodon 030F]
 lemma kanRelativeLeftMappingPullbackComparison_equivalence {K C D E : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E]
     (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ)
@@ -97,6 +99,7 @@ lemma kanRelativeLeftMappingPullbackComparison_equivalence {K C D E : SSet.{u}}
 方針：右 Kan 関手へ入る元の相対制限の比較と引き戻し同型を合成する。
 規約：始点 F の普遍性や U の充填性は不要。
 使われ方：相対 Kan の普遍写像性の右側の四角形。 -/
+@[kerodon 030F]
 lemma kanRelativeRightMappingPullbackComparison_equivalence {K C D E : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D] [Quasicategory E]
     (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ)

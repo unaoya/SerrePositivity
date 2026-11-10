@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.DegeneracyEquation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 任意の単調写像による単体の引き戻し
 
@@ -47,6 +48,7 @@ lemma exists_pullback {m n : ℕ} (s : Simplex A D n)
 /-- 概要：任意の単調写像に沿って dg nerve の単体を引き戻せる。
 方針：データ部分は指定された三分岐のまま取り、存在補題から方程式だけを得る。
 規約：HA Construction 1.3.1.6。使われ方：`dgNerve.map` の単体的構造。 -/
+@[kerodon 00PQ]
 def pullback {m n : ℕ} (s : Simplex A D n)
     (α : Fin (m + 1) →o Fin (n + 1)) : Simplex A D m where
   toSimplexData := s.toSimplexData.pullback α

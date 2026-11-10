@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionEvaluation
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionBoundary
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：始対象での cocartesian section の評価は自明 Kan fibration。
@@ -97,6 +98,7 @@ lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism
 方針：任意の標準単体の全境界に対して、指定した評価を保つ相対延長を適用する。
 規約：p は cocartesian fibration、底は quasicategory。
 使われ方：評価の同値性と、その fiber の可縮性。 -/
+@[kerodon 035T]
 lemma cocartesianSectionsEvaluate_trivialKanFibration {A E B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌)
     (hv : IsInitialVertex v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v) :=

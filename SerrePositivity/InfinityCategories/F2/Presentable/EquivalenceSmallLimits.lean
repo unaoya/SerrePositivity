@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の全図式の小極限の保存と全同値による存在の輸送。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 方針：小形状とその持ち上げた全図式を量化する。
 規約：任意の単体集合形状を扱う。
 使われ方：右随伴と反映包含の保存性。 -/
+@[kerodon 06BA]
 def PreservesSmallLimits {C E : SSet.{u + 1}} (F : C ⟶ E) : Prop :=
   ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C)
     (c : JoinCone D), IsLimitCone c → IsLimitCone (mapJoinCone F c)

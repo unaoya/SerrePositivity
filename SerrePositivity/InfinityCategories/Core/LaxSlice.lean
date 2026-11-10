@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison
 public import SerrePositivity.InfinityCategories.Core.FatJoinTensorNaturality
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：太い join による錐の関手単体集合の模型。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：右包含の前合成の fiber を取る。
 規約：図式 p を高次単体でも厳密に固定する。
 使われ方：Kerodon §4.6.4・4.6.6 の比較の中間模型。 -/
+@[kerodon 01KU]
 noncomputable def laxSlice {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} :=
   vertexFiber ((pre (fatJoinInr (Δ[0] : SSet.{u}) K)).app X) (functorVertex p)
 

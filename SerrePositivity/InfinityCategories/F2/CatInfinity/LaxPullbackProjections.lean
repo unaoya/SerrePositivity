@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：lax pullback の二射影と指定矢印の族の端点。
@@ -28,6 +29,7 @@ def laxPullbackArrow {A B C : SSet.{u}} (p : A ⟶ C) (q : B ⟶ C) :
 方針：引き戻しの可換式を二つの射影で評価する。
 規約：矢印の向きは p(a) から q(b)。
 使われ方：Tamme §1 の lax pullback と安定圏への接続。 -/
+@[kerodon 01KF]
 def laxPullbackFst {A B C : SSet.{u}} (p : A ⟶ C) (q : B ⟶ C) : laxPullback p q ⟶ A :=
   pullback.snd _ _ ≫ fst A B
 /-- 概要：lax pullback の二射影と指定矢印の族の端点。

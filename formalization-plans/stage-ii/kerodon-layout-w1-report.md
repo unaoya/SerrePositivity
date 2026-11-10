@@ -294,3 +294,9 @@ Python の道具はリポジトリ直下から `python3 scripts/refactor/<ファ
 外部の `EInfinity/FrameHom/AnodyneWeakDetection.lean` は既存候補の対応節の差分で、§7 で承認された外部移動 4 群の対象外。新しい対応元 4 本は表に追加せず、`changes.csv` に記録した。外部移動の承認フラグは、この見直しでは付けていない。
 
 Python の単体試験 11 件が通過し、差分表から 22 行すべての新しい根拠・437 行の維持・パスの一意性を検算した。段 1.6 はビルドを要さない。調整役による確認のため、ここで停止した。
+
+## 段 2 — Kerodon の Tag
+
+停止点 1.6 の承認 `1d39655f0` を取り込んで着手。全 10 章の `ok`・`fix` かつ `own`・`both` の行を `item-tags.csv` と突き合わせ、SerrePositivity の 610 宣言に 672 組の属性を付けた。カーネル環境で宣言名と所有モジュールが全件一致し、対象宣言の型に `ModelCategory` の仮定は 0 件。対応表で唯一該当する Archive の宣言も対象に含めた。部分対応の注記は今回の範囲外。
+
+ビルド鍵を `--wait 1800` で取り、元の依存成果物を複製した一時領域で、変更した 367 本を再コンパイルした。全 367 本が通過した。`#kerodon_tags` を 16 の import 群で実行し、SerrePositivity の 672 組と照合した。欠落・余分はともに 0 件。Mathlib の既存 13 組は集計対象から除いた。出典と位置は [属性台帳](../../research/kerodon-coverage/kerodon-stage2-tags.csv)、照合した出力は [Lean の一覧](../../research/kerodon-coverage/kerodon-tags-lean.txt)。

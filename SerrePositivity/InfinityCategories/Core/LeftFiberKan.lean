@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.Opposite
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left fibration の全ての頂点 fiber の Kan 性。
@@ -51,6 +52,7 @@ lemma kanComplex_of_leftHornFillers (X : SSet.{u})
 方針：fiber の左ホーンを元へ含め、下を定値にして持ち上げ、fiber へ戻す。
 規約：元と底の quasicategory 性は不要。
 使われ方：Kerodon Corollary 4.4.2.3、𝒮 値 unstraightening の fiber の Kan 性。 -/
+@[kerodon 019E]
 lemma vertexFiber_kanComplex_of_leftFibration {E B : SSet.{u}} (p : E ⟶ B)
     [LeftFibration p] (b : B _⦋0⦌) : KanComplex (vertexFiber p b) := by
   apply kanComplex_of_leftHornFillers

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体間の left fibration の全ホーン持ち上げ性。
@@ -49,6 +50,7 @@ lemma leftFibration_hasLiftingProperty_horn_of_kanComplex {X Y : SSet.{u}}
 方針：ホーンごとの持ち上げ性を既存のホーン判定に渡す。
 規約：弱同値やモデル構造の因子分解は使わない。
 使われ方：Kerodon §5.3.1、相対内部 Hom のパラメーター付きの比較。 -/
+@[kerodon 048H]
 lemma leftFibration_fibration_of_kanComplex {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (q : X ⟶ Y) [LeftFibration q] : Fibration q :=
   fibration_of_hasLiftingProperty_horn q (leftFibration_hasLiftingProperty_horn_of_kanComplex q)

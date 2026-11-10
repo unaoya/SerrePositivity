@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeSectionsNativeComparison
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeTransformationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の小さい coherent 空間値図式の、元の全切断を頂点とする native 極限を証明する。
@@ -39,6 +40,7 @@ lemma coherentDiagramSectionsCone_isLimit : IsLimitCone (coherentDiagramSections
   exact (coherentSectionsConeHomComparison_isQCatEquivalence F z).isSimplicialHomotopyEquivalence
 
 /-- 任意の小さい coherent 空間値図式に、小さい全切断で表される極限が存在する。 -/
+@[kerodon 02VD, kerodon 05QQ]
 lemma hasLimit_coherentSpaceDiagram : HasLimit F :=
   ⟨coherentDiagramSectionsCone F, coherentDiagramSectionsCone_isLimit F⟩
 

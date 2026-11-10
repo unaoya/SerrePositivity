@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalSaturatedClosure
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Presentable
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：presentable 圏の任意の小さい辺族について、局所対象への Bousfield 反射が存在する。
@@ -33,6 +34,7 @@ lemma exists_bousfieldLocalEquivalenceReplacement
     stronglySaturatedClosure_subset_localEquivalences (Set.range edges) hC.hasSmallColimits he, hy⟩
 
 /-- 任意の小さい辺族の局所対象全部分圏は、元の presentable 圏の反射的部分圏である。 -/
+@[kerodon 06VH]
 lemma bousfield_isReflectiveSubcategory
     {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
@@ -54,6 +56,7 @@ def bousfieldLocalizationFunctor
     C ⟶ LocalObjects.Category edges := (bousfieldReflection hC edges).reflector
 
 /-- 同じ元の局所対象全部分圏は、構成済みの反射を P-d の公開定理へ渡して presentable。 -/
+@[kerodon 06VH]
 lemma bousfieldLocalObjects_isPresentable
     {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) : IsPresentable (LocalObjects.Category edges) :=

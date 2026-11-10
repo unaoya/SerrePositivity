@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraightening
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：引き戻しの頂点 fiber と元の対応する頂点 fiber の同型。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：pointed space の射影の引き戻しに一般の fiber 同型を適用する。
 規約：元の Kan 複体との同値は後続で別に構成する。
 使われ方：Kerodon Example 5.6.2.9、unstraightening の fiber の値の比較の第一段階。 -/
+@[kerodon 026S]
 noncomputable def leftUnstraighteningFiberIso {C : SSet.{u + 1}}
     (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
     vertexFiber (leftUnstraighteningProjection F) c ≅

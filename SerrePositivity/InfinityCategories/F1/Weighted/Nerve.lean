@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Weighted.NervePrefixes
 public import Mathlib.CategoryTheory.Whiskering
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合値の通常の関手の weighted nerve と、その底の nerve への射影。
@@ -56,6 +57,7 @@ def weightedNerveSimplexMap {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
 方針：合成可能射列と初区間の図式の組を取り、重みの制限で単体作用素を定める。
 規約：通常の nerve 上に射影する単体集合として構成し、充填性は後で示す。
 使われ方：Kerodon Definition 5.3.3.1、strict diagram から fibration への構成。 -/
+@[kerodon 025X]
 def weightedNerve {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) : SSet.{u} where
   obj d := weightedNerveSimplex F d.unop.len
   map α := ↾weightedNerveSimplexMap F α.unop
@@ -92,6 +94,7 @@ def weightedNerve {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) : SSet.{u} 
 方針：各単体の対から合成可能射列を取り出す。
 規約：τ の重み付き図式だけを忘れる。
 使われ方：Kerodon Definition 5.3.3.1、Kan 値関手から構成する fibration の射影。 -/
+@[kerodon 025X]
 def weightedNerveProjection {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
     weightedNerve F ⟶ nerve C where
   app _ := ↾Sigma.fst

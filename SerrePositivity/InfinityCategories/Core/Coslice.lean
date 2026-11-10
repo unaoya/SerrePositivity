@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Slice
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：coslice の普遍性の直接構成。
@@ -238,6 +239,7 @@ lemma sliceUnderEval_yoneda {A K X : SSet.{u}} {p : K ⟶ X}
 方針：各単体に付いた錐を直接評価して束ね、逆は Yoneda 射による制限とする。
 規約：任意の単体集合 A。余極限の一般論と quasicategory 性を使わない。
 使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の双対のホーン持ち上げ問題。 -/
+@[kerodon 0189]
 def sliceUnderEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
     (A ⟶ sliceUnder p) ≃ {F : join K A ⟶ X // joinInl K A ≫ F = p} where
   toFun f := ⟨sliceUnderUncurry f, sliceUnderUncurry_fixed f⟩

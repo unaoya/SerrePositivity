@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：冪等完備な ∞ 圏を標的とする全関手 ∞ 圏は冪等完備。
@@ -17,6 +18,7 @@ open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 冪等完備な元の標的への全関手 ∞ 圏は、任意の添字で冪等完備。 -/
+@[kerodon 040F]
 lemma functor_isIdempotentComplete (K : SSet.{u}) {X : SSet.{u}} [Quasicategory X]
     (hX : IsIdempotentComplete X) : IsIdempotentComplete ((ihom K).obj X) := by
   intro d

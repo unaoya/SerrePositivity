@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingSpace
 public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：全頂点を含む部分図式上で固定した関手の fiber と区間模型の Kan 性。
@@ -80,6 +81,7 @@ lemma isInvertibleEdge_preFiber_of_vertexSurjective {A B X : SSet.{u}}
 方針：制限が inner fibration であることと全辺の可逆性からホモトピー圏の亜群性を得る。
 規約：図式の対象集合を固定する条件であり、元の図式の辺は任意。
 使われ方：Kerodon §4.6.5–4.6.6、区間模型の全ホーン充填。 -/
+@[kerodon 01P1]
 lemma kanComplex_preFiber_of_vertexSurjective {A B X : SSet.{u}} [Quasicategory X]
     (j : A ⟶ B) [Mono j] (hj : Function.Surjective (j.app (Opposite.op ⦋0⦌)))
     (p : ((ihom A).obj X) _⦋0⦌) : KanComplex (vertexFiber ((pre j).app X) p) := by
@@ -96,6 +98,7 @@ lemma kanComplex_preFiber_of_vertexSurjective {A B X : SSet.{u}} [Quasicategory 
 方針：区間の境界が区間の全ての頂点を含むことを一般の固定 fiber の補題に適用する。
 規約：元の X の Kan 性は要求しない。
 使われ方：Kerodon §4.6.5–4.6.6、左右の pinched 模型の共通比較先。 -/
+@[kerodon 01JC]
 instance intervalMappingSpace_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
     KanComplex (intervalMappingSpace x y) := by
   apply kanComplex_preFiber_of_vertexSurjective (boundary 1).ι

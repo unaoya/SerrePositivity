@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.Composition
 public import SerrePositivity.InfinityCategories.F1.Transport.Identity
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory と関手の同型類からなるホモトピー圏。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：関手単体集合のホモトピー圏の同型の存在を使う。
 規約：始域・終域の quasicategory 性はこの同値関係自体には不要。
 使われ方：Kerodon Construction 4.5.1.1、関手の同型類の定義。 -/
+@[kerodon 01DR]
 def homotopyQCatHomSetoid (X Y : SSet.{u}) : Setoid (X ⟶ Y) where
   r f g := Nonempty (FunctorIso f g)
   iseqv := ⟨fun _ ↦ ⟨Iso.refl _⟩, fun ⟨h⟩ ↦ ⟨h.symm⟩,
@@ -30,6 +32,7 @@ def homotopyQCatHomSetoid (X Y : SSet.{u}) : Setoid (X ⟶ Y) where
 方針：単体集合とその内ホーン充填性をまとめる。
 規約：obj は宇宙 u の単体集合。
 使われ方：Kerodon Construction 4.5.1.1、Construction 5.2.5.2 の fiber の値。 -/
+@[kerodon 01DR]
 structure HomotopyQCat where
   /-- 対象の単体集合。 -/
   obj : SSet.{u}
@@ -42,6 +45,7 @@ attribute [instance] HomotopyQCat.isQuasicategory
 方針：前後合成が FunctorIso を保つことから商の合成を定義する。
 規約：関手の合成は左から右。
 使われ方：Kerodon Construction 4.5.1.1、ホモトピー transport 表現の標的の圏構造。 -/
+@[kerodon 01DR]
 instance homotopyQCat_category : Category HomotopyQCat.{u} where
   Hom X Y := Quotient (homotopyQCatHomSetoid X.obj Y.obj)
   id X := Quotient.mk _ (𝟙 X.obj)

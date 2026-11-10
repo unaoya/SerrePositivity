@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FibrationRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration の相対 coslice 制限。
@@ -119,6 +120,7 @@ lemma relativeCosliceMap_hasLiftingProperty {A K X Y : SSet.{u}}
 方針：左 anodyne な全ての左ホーンに前の補題を適用する。
 規約：始域・終域の quasicategory 性は不要。
 使われ方：HTT §2.1.2、Kerodon §4.4.2 の相対外側ホーン。 -/
+@[kerodon 01BZ]
 instance relativeCosliceMap_leftFibration {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y)
     [InnerFibration q] (K₀ : K.Subcomplex) : LeftFibration (relativeCosliceMap p q K₀) where
   mem := by

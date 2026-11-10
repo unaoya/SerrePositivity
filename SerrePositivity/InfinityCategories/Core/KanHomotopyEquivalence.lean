@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体のホモトピー同値と quasicategory の同値の比較。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：ホモトピーを curry して一次単体に戻し、両端を計算する。
 規約：始点は f、終点は g の関手頂点。
 使われ方：Kerodon §4.5.1 の辺とホモトピーの相互変換。 -/
+@[kerodon 00TU]
 def functorEdgeOfSimplicialHomotopy {X Y : SSet.{u}} {f g : X ⟶ Y}
     (H : SSet.Homotopy f g) :
     SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
@@ -59,6 +61,7 @@ lemma IsSimplicialHomotopyEquivalence.isQCatEquivalence {X Y : SSet.{u}}
 方針：可逆二胞体と実際のホモトピーの二つの変換を使う。
 規約：π₀ の全単射だけには置き換えない。
 使われ方：Kerodon Remark 4.8.3.9。 -/
+@[kerodon 03K1]
 lemma isSimplicialHomotopyEquivalence_iff_isQCatEquivalence {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (f : X ⟶ Y) :
     IsSimplicialHomotopyEquivalence f ↔ IsQCatEquivalence f :=

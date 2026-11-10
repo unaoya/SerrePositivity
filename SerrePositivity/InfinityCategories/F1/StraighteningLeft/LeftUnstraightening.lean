@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：𝒮 値の coherent diagram の left unstraightening の全空間と射影。
@@ -19,6 +20,7 @@ namespace SerrePositivity.InfinityCategories
 方針：pointed space の射影との引き戻しを取る。
 規約：F は任意の coherent diagram で、strict diagram に制限しない。
 使われ方：Kerodon Example 5.6.2.9、空間値 unstraightening の対象の構成。 -/
+@[kerodon 026S]
 noncomputable def leftUnstraightening {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
     SSet.{u + 1} := pullback pointedSpaceProjection F
 
@@ -34,6 +36,7 @@ noncomputable def leftUnstraighteningProjection {C : SSet.{u + 1}}
 方針：pointed space の射影の left fibration 性を底変換する。
 規約：底 C の quasicategory 性は要求しない。
 使われ方：Kerodon Example 5.6.2.9、分類の構成方向の充填性。 -/
+@[kerodon 026S]
 instance leftUnstraighteningProjection_leftFibration {C : SSet.{u + 1}}
     (F : C ⟶ SpaceInfinity.{u}) : LeftFibration (leftUnstraighteningProjection F) :=
   ⟨leftFibrations.pullback_snd pointedSpaceProjection F LeftFibration.mem⟩

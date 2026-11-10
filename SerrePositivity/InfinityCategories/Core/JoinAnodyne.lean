@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：pushout-join の包含の inner anodyne 性。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：右因子を固定した相対 slice の射が右ホーンの rlp を持つことと、生成クラスの llp を使う。
 規約：右因子の部分複体包含には追加条件を課さない。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第一の主張。 -/
+@[kerodon 018J]
 lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}}
     (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) :
     innerAnodyneExtensions (joinUnion A₀ B₀).ι := by
@@ -38,6 +40,7 @@ lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}}
 方針：左因子を固定した相対 coslice の射が左ホーンの rlp を持つことと、生成クラスの llp を使う。
 規約：左因子の部分複体包含には追加条件を課さない。
 使われ方：HTT Lemma 2.1.2.3、Kerodon Proposition 4.3.6.4 の第二の主張。 -/
+@[kerodon 018J]
 lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
     (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) :
     innerAnodyneExtensions (joinUnion A₀ B₀).ι := by

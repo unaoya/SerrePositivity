@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.TruncatedTriangles
 public import SerrePositivity.DifferentialGraded.Category.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 辺のホモトピーと閉零射の境界関係
 
@@ -45,6 +46,7 @@ lemma edgeClosed_cycle {x y : (twoTruncation A D) _⦋0⦌₂} (e : SSet.Truncat
 /-- 概要：端点付きの辺と既存の閉零圏の射は同値。
 方針：辺と閉零元の同値を、単位複体からの射との同値に合成する。
 規約：HA Example 1.3.1.8。使われ方：射の商の同値の構成。 -/
+@[kerodon 00PZ]
 def edgeClosedEquiv (x y : (twoTruncation A D) _⦋0⦌₂) :
     SSet.Truncated.Edge x y ≃ (vertexClosed x ⟶ vertexClosed y) :=
   (edgeCycleEquiv x y).trans (closedHomEquiv A D _ _).symm

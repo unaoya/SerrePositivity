@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
 public import SerrePositivity.InfinityCategories.F1.Weighted.NerveFunctor
 public import SerrePositivity.InfinityCategories.F1.Scaffold.TautScaffold
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：simplicial replacement の係数の自然変換に関する関手性。
@@ -74,6 +75,7 @@ lemma simplicialReplacementMap_comp {C : Type u} [Category.{u} C]
 方針：係数の自然変換の射影保存と恒等・合成則を使う。
 規約：これは通常の圏の関手であり、∞ 余極限の存在の主張を含まない。
 使われ方：Kerodon §5.3.2、scaffold の係数に関する比較の束縛。 -/
+@[kerodon 035V]
 def simplicialReplacementFunctor (C : Type u) [Category.{u} C] :
     (C ⥤ SSet.{u}) ⥤ Over (nerve C) where
   obj F := Over.mk (simplicialReplacementProjection F)
@@ -89,6 +91,7 @@ def simplicialReplacementFunctor (C : Type u) [Category.{u} C] :
 方針：各初区間の係数輸送と自然変換の自然性を使う。
 規約：両側で同じ底の射列を保つ。
 使われ方：Kerodon Remark 5.3.4.14、係数の比較に関する scaffold の自然性。 -/
+@[kerodon 0376]
 lemma tautScaffold_map {C : Type u} [Category.{u} C]
     {F G : C ⥤ SSet.{u}} (η : F ⟶ G) :
     simplicialReplacementMap η ≫ tautScaffold G = tautScaffold F ≫ weightedNerveMap η := by

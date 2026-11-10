@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEdgewiseFunctor
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：各豊穣 Hom を edgewise 解像で置き換えた単体的圏。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：元の対象を自明な部分型に包み、新しい通常の圏構造を与えられるようにする。
 規約：対象の選択や商は追加しない。
 使われ方：Kerodon §8.1.1、豊穣 Hom の共通解像の対象。 -/
+@[kerodon 04F9]
 def EdgewiseEnrichedObject (C : Type v) := {_c : C // True}
 
 /-- 概要：edgewise な豊穣 Hom の恒等射。
@@ -40,6 +42,7 @@ def edgewiseEnrichedIdentity {C : Type v} [Category.{u} C] [SimplicialCategory C
 方針：二つの重みからの射を対にして元の豊穣合成へ送る。
 規約：同じ重みのパラメーターで両方の射を評価する。
 使われ方：Kerodon §2.4.3、§8.1.1、解像した高次の Hom の合成。 -/
+@[kerodon 04F9]
 def edgewiseEnrichedComposition {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (X Y Z : C) :
     edgewiseSubdivision (SimplicialCategory.sHom X Y) ⊗
@@ -139,6 +142,7 @@ instance edgewiseEnrichedObject_category (C : Type v) [Category.{u} C] [Simplici
 方針：豊穣単位からの射の恒等の全単射と既存の単位・合成則を使う。
 規約：coherent nerve に局所 Kan 性を別に与えられる。
 使われ方：Kerodon §2.4.3、§8.1.1、edgewise な coherent nerve の構成。 -/
+@[kerodon 04F9]
 instance edgewiseEnrichedObject_simplicialCategory (C : Type v)
     [Category.{u} C] [SimplicialCategory C] : SimplicialCategory (EdgewiseEnrichedObject C) where
   homEquiv := Equiv.refl _
@@ -150,6 +154,7 @@ instance edgewiseEnrichedObject_simplicialCategory (C : Type v)
 方針：各 Hom に edgewise subdivision の Kan 性を適用する。
 規約：元の全ての豊穣 Hom の Kan 性を仮定する。
 使われ方：Kerodon §8.1.1、Corollary 5.6.0.6、coherent nerve の比較を同値として扱う。 -/
+@[kerodon 04FA, kerodon 04FD]
 instance edgewiseEnrichedObject_sHom_kanComplex {C : Type v} [Category.{u} C] [SimplicialCategory C]
     [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : EdgewiseEnrichedObject C) :
     KanComplex (SimplicialCategory.sHom X Y) :=

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.SectionsUnitRepresentation
 public import SerrePositivity.InfinityCategories.F1.Joins.HomotopyConeRealization
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：一般 coherent 空間値図式上に、小さい全切断を頂点とする native な全錐を構成する。
@@ -27,6 +28,7 @@ def coherentSectionsConeRealization :
   homotopyConeRealization (coherentSectionsIdentityHomotopy F)
 
 /-- 元の小さい全切断を頂点とする、同じ一般 coherent 図式上の native な全錐。 -/
+@[kerodon 02VD]
 def coherentDiagramSectionsCone : JoinCone F := (coherentSectionsConeRealization F).cone
 
 /-- 同じ元の全錐の頂点は、元の宇宙の小さい全切断対象そのもの。 -/

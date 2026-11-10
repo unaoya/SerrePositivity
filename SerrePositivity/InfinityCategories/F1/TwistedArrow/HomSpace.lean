@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.LeftFibration
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：twisted arrow 射影の固定両端の写像空間を、join の左右を固定した単体で記述する。
@@ -20,6 +21,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
 /-- twisted arrow の両端を指定頂点に固定した写像空間。 -/
+@[kerodon 03K1]
 def twistedArrowHomSpace {C : SSet.{u}} (x y : C _⦋0⦌) : SSet.{u} :=
   vertexFiber (twistedArrowProjection C) (SSet.opObjEquiv.symm x, y)
 

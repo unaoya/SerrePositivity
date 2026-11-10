@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.Core.ConeHomotopyTransport
 public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定した自然変換が与える点ごとの錐・余錐による左右 Kan 拡張の定義。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories
 方針：標準錐から右図式のホモトピーを持ち上げ、頂点を全時間で固定する。
 規約：時間は第二因子。family の終端が F₀ の制限上の合成錐を表す。
 使われ方：Kerodon Def 7.3.1.2 の α_c の具体的な合成の証拠。 -/
+@[kerodon 02Y9]
 structure RightKanConeTransport {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (α : SSet.Homotopy (δ ≫ F) F₀) (c : C _⦋0⦌) where
   family : join (Δ[0] : SSet.{u}) (rightKanShape δ c) ⊗ Δ[1] ⟶ D
@@ -65,6 +67,7 @@ lemma RightKanConeTransport.cone_vertex {K C D : SSet.{u}} {δ : K ⟶ C} {F₀ 
 方針：標準余錐からホモトピーを終端から持ち上げ、頂点を全時間で固定する。
 規約：時間は第一因子。family の始端が F₀ の制限上の合成余錐を表す。
 使われ方：Kerodon Variant 7.3.1.5 の β_c の具体的な合成の証拠。 -/
+@[kerodon 02YC]
 structure LeftKanCoconeTransport {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (β : SSet.Homotopy F₀ (δ ≫ F)) (c : C _⦋0⦌) where
   family : (Δ[1] : SSet.{u}) ⊗ join (leftKanShape δ c) Δ[0] ⟶ D
@@ -141,6 +144,7 @@ lemma leftKanCoconeTransport_nonempty {K C D : SSet.{u}} [Quasicategory D]
 方針：各 coslice の比較錐の合成を、頂点を固定した輸送で表し、その極限性を要求する。
 規約：輸送は指定した α に両端と全時間で両立する。値だけの条件には置き換えない。
 使われ方：Kerodon Def 7.3.1.2。選択不変性と大域的一意性は後続の定理。 -/
+@[kerodon 02Y9]
 def IsRightKanExtension {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (α : SSet.Homotopy (δ ≫ F) F₀) : Prop :=
   ∀ c : C _⦋0⦌, ∃ t : RightKanConeTransport δ F₀ F α c, IsLimitCone t.cone
@@ -149,6 +153,7 @@ def IsRightKanExtension {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : 
 方針：各 slice の比較余錐の合成を、頂点を固定した輸送で表し、その余極限性を要求する。
 規約：輸送は指定した β に両端と全時間で両立する。値だけの条件には置き換えない。
 使われ方：Kerodon Variant 7.3.1.5。選択不変性と大域的一意性は後続の定理。 -/
+@[kerodon 02YC]
 def IsLeftKanExtension {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (β : SSet.Homotopy F₀ (δ ≫ F)) : Prop :=
   ∀ c : C _⦋0⦌, ∃ t : LeftKanCoconeTransport δ F₀ F β c, IsColimitCone t.cocone

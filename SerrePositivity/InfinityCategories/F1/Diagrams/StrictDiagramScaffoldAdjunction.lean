@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Diagrams.StrictDiagramExtens
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorUnitHom
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacementFiber
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTransportEvaluation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：scaffold の豊穣写像空間同型から、通常の自然変換と底上の射の随伴対応を取り出す。
@@ -32,6 +33,7 @@ noncomputable def strictDiagramMappingVertexEquiv {C : Type u} [Category.{u} C]
 方針：頂点表示、scaffold の写像空間同型の零単体、相対関手の頂点表示を順に合成する。
 規約：順方向は既存の scaffold 評価そのもの。
 使われ方：Kerodon §§5.3.1–5.3.4、復元比較から図式の比較を構成する。 -/
+@[kerodon 036G]
 noncomputable def strictDiagramScaffoldHomEquiv {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C) :
     (F ⟶ leftStrictTransportDiagram q) ≃

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Diagrams.ScaffoldFiberMaps
 
 public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.UniversalScaffoldFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory 値の図式から一般の cocartesian fibration への scaffold の条件。
@@ -69,6 +70,7 @@ lemma cocartesianUniversalScaffold_horizontal {C : Type u} [Category.{u} C] {E :
 方針：底の可換性、水平辺の性質、恒等射での評価同値を束ねる。
 規約：全空間の前合成同値は別の比較定理で証明する。
 使われ方：Kerodon Proposition 5.3.4.8、一般の復元の入力。 -/
+@[kerodon 0370, kerodon 0371]
 lemma cocartesianUniversalScaffold_isCocartesianScaffold
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [CocartesianFibration p] :

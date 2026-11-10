@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の強い分裂の同じ全 Idem 余錐は余極限であり、任意の後合成でも余極限。
@@ -54,6 +55,7 @@ lemma IsIdempotentComplete.hasColimit {X : SSet.{u}} [Quasicategory X]
   exact s.hasColimit
 
 /-- 元の全 Idem 余錐を任意の関手で後合成しても、同じ余錐は余極限。 -/
+@[kerodon 0404]
 lemma StrongSplitting.postcomposeCocone_isColimit {X Y : SSet.{u}} [Quasicategory Y]
     {d : CoherentIdempotent X} (s : StrongSplitting d) (F : X ⟶ Y) :
     IsColimitCone (show JoinCocone (d ≫ F) from

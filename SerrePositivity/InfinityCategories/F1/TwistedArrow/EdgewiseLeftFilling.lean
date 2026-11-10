@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseDuality
 public import SerrePositivity.InfinityCategories.F1.Categories.OppositeSimplexYoneda
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightFilling
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：edgewise の左端射影の全境界充填。
@@ -39,6 +40,7 @@ lemma edgewiseDuality_right (X : SSet.{u}) :
 方針：双対写像の同型性と反転した Kan 複体の右射影の全単射の持ち上げ性を合成する。
 規約：全境界を持ち上げる性質として記録する。
 使われ方：Kerodon Corollary 8.1.1.13、空間とその反転の自然な共通解像。 -/
+@[kerodon 048J]
 instance edgewiseLeft_trivialKanFibration (X : SSet.{u}) [KanComplex X] :
     TrivialKanFibration (edgewiseLeft X) where
   mem := by

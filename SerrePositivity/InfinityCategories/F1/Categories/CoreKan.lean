@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreFaces
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の core は Kan 複体。
@@ -58,6 +59,7 @@ lemma quasicategoryCore_horn_filler_mem {X : SSet.{u}} (n : ℕ) (i : Fin (n + 3
 方針：内ホーンは quasicategory 性、外ホーンは指定辺の可逆性で周囲に充填する。
 規約：モデル構造は使わず、一次ホーンも含む KanComplex の定義を満たす。
 使われ方：Kerodon Corollary 4.4.3.11、Proposition 5.5.3.3 の関手単体集合の core。 -/
+@[kerodon 01H1, kerodon 020B]
 instance quasicategoryCore_kanComplex (X : SSet.{u}) [Quasicategory X] :
     KanComplex (quasicategoryCore X : SSet.{u}) := by
   rw [KanComplex.iff]

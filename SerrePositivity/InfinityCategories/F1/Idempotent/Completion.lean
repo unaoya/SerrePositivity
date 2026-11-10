@@ -8,6 +8,7 @@ public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete
 public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure
 public import SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の Yoneda 因子化が冪等完備化を与えることを証明する。
@@ -26,6 +27,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 冪等完備な標的への充満忠実な関手で、全対象がその像の retract となる条件。 -/
+@[kerodon 040U]
 def IsIdempotentCompletion {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
   IsIdempotentComplete D ∧ IsFullyFaithful f ∧
     ∀ d : D _⦋0⦌, ∃ c : C _⦋0⦌, IsVertexRetractOf d (f.app (Opposite.op ⦋0⦌) c)
@@ -43,6 +45,7 @@ lemma idemVertex_retract_idemYoneda {C : SSet.{u}} [Quasicategory C]
   exact he.symm ▸ hx
 
 /-- 元の全 Yoneda の因子化は、元の前層内の retract 閉包を冪等完備化として与える。 -/
+@[kerodon 040Z]
 lemma idemYoneda_isIdempotentCompletion (C : SSet.{u}) [Quasicategory C] :
     IsIdempotentCompletion (idemYoneda C) := by
   refine ⟨idem_isIdempotentComplete C, idemYoneda_isFullyFaithful C, ?_⟩

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：点を左から join する関手は単射を left anodyne 射に写す。
@@ -50,6 +51,7 @@ lemma coneBoundary_horn_preimage (n : ℕ) :
 方針：標準単体の同型で最初のホーン包含に移す。
 規約：最初のホーンは left horn、最後のホーンではない。
 使われ方：Kerodon Lemma 4.3.7.8 の生成セル。 -/
+@[kerodon 0196]
 lemma joinPoint_boundary_leftAnodyne (n : ℕ) :
     leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) (boundary n).ι) := by
   have hh : leftAnodyneExtensions (horn.{u} (0 + n + 1) 0).ι := by
@@ -110,6 +112,7 @@ lemma sliceUnderPostcomp_trivialKanFibration {X Y : SSet.{u}}
 方針：点下の coslice の射の全単射に対する持ち上げ性を、普遍性で join の射へ戻す。
 規約：f に anodyne 性を仮定しない。
 使われ方：Kerodon Lemma 4.3.7.8、Corollary 4.7.3.22 の始対象の頂点包含。 -/
+@[kerodon 0196]
 lemma joinPoint_mono_leftAnodyne {A B : SSet.{u}} (f : A ⟶ B) [Mono f] :
     leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) f) := by
   intro X Y q hq

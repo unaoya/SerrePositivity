@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinTensorRight
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：区間の両端を射影で潰した fat join の構成。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：区間の零端と第一射影を貼る。
 規約：円柱は (A×Δ[1])×B の順。
 使われ方：Kerodon Notation 4.6.2.3 の fat join の構成。 -/
+@[kerodon 01HR]
 noncomputable def fatJoinStage (A B : SSet.{u}) : SSet.{u} :=
   pushout (SSet.ι₀ (X := A) ▷ B) (fst A B)
 
@@ -34,6 +36,7 @@ noncomputable def fatJoinStageEnd (A B : SSet.{u}) : A ⊗ B ⟶ fatJoinStage A 
 方針：最初の pushout の一端を B へ第二射影で潰す。
 規約：直接定義の join との比較のための補助模型。
 使われ方：Kerodon Notation 4.6.2.3、§4.6.6。 -/
+@[kerodon 01HR]
 noncomputable def fatJoin (A B : SSet.{u}) : SSet.{u} :=
   pushout (fatJoinStageEnd A B) (snd A B)
 

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左右 fibration の標的が冪等完備なら、その全体も冪等完備。
@@ -18,6 +19,7 @@ open CategoryTheory SSet
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 右 fibration の底が冪等完備なら、元の全体も厳密な強い分裂を持つ。 -/
+@[kerodon 0606]
 lemma isIdempotentComplete_of_rightFibration {X Y : SSet.{u}} (p : X ⟶ Y)
     [RightFibration p] (hY : IsIdempotentComplete Y) : IsIdempotentComplete X := by
   intro d
@@ -28,6 +30,7 @@ lemma isIdempotentComplete_of_rightFibration {X Y : SSet.{u}} (p : X ⟶ Y)
   exact ⟨⟨sq.lift, sq.fac_left⟩⟩
 
 /-- 左 fibration の底が冪等完備なら、元の全体も厳密な強い分裂を持つ。 -/
+@[kerodon 0606]
 lemma isIdempotentComplete_of_leftFibration {X Y : SSet.{u}} (p : X ⟶ Y)
     [LeftFibration p] (hY : IsIdempotentComplete Y) : IsIdempotentComplete X := by
   intro d

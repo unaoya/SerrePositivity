@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemInclusionFul
 public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLocalColimits
 public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定した元の全 Idem 図式が余極限を持てば、元の強い coherent 分裂が存在する。
@@ -33,11 +34,13 @@ lemma strongSplitting_exists_of_hasColimit {X : SSet.{u}} [Quasicategory X]
   exact ⟨⟨F, hF⟩⟩
 
 /-- 指定した元の全 coherent 冪等図式の強い分裂の存在と、同じ図式の余極限の存在は同値。 -/
+@[kerodon 0403]
 lemma nonemptyStrongSplitting_iff_hasColimit {X : SSet.{u}} [Quasicategory X]
     (d : CoherentIdempotent X) : Nonempty (StrongSplitting d) ↔ HasColimit d :=
   ⟨fun ⟨s⟩ ↦ s.hasColimit, strongSplitting_exists_of_hasColimit d⟩
 
 /-- 冪等完備性は、全ての元の coherent 冪等図式の余極限の存在と同値。 -/
+@[kerodon 040C]
 lemma isIdempotentComplete_iff_hasColimits (X : SSet.{u}) [Quasicategory X] :
     IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasColimit d := by
   constructor

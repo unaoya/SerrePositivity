@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianTriangleMiddleRestriction
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Composition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：三角形の最初の辺と長辺が cocartesian なら後半の辺も cocartesian。
@@ -72,6 +73,7 @@ lemma sliceUnderRestrict_triangleSecondEdge {Y : SSet.{u}} [Quasicategory Y]
 方針：真ん中の頂点への相対制限から後半の辺への制限を消去する。
 規約：底は quasicategory、射は inner fibration。
 使われ方：Kerodon Corollary 5.1.2.4 の cocartesian 側の消去方向。 -/
+@[kerodon 01TS]
 lemma isCocartesianEdge_triangle_second_of_first_long {X Y : SSet.{u}} [Quasicategory Y]
     (t : (Δ[2] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [InnerFibration q]
     (hf : IsCocartesianEdge q (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t)))

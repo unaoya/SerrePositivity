@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftUnitCanonical
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorIsoExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：全部分圏包含に沿って元の図式を厳密に延長する左 Kan 関手を構成する。
@@ -41,6 +42,7 @@ lemma exists_kanLeftCanonical_strictification {K C D : SSet.{u}}
 方針：指定単位つきの大域的存在を使い、その単位の可逆性で厳密化する。
 規約：δ は単射・inner・写像空間で充満忠実。通常の全部分複体の包含に適用できる。
 使われ方：余極限から coherent に選ぶ元の関手圏の制限射の全射性。 -/
+@[kerodon 02YW]
 lemma exists_kanLeftCanonical_strict_extension_of_local_colimits {K C D : SSet.{u}}
     [Quasicategory K] [Quasicategory C] [Quasicategory D]
     (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) (F₀ : K ⟶ D)

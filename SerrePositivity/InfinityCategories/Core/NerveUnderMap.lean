@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 
 /-!
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：Under.map の nerve を取る。
 規約：f:c→d に対し nerve(d/C) から nerve(c/C) へ写す。
 使われ方：Kerodon §5.3.1、strict transport の共変な射の前合成の始域。 -/
+@[kerodon 035J]
 def nerveUnderMap {C : Type u} [Category.{u} C] {c d : C} (f : c ⟶ d) :
     nerve (Under d) ⟶ nerve (Under c) := nerveMap (Under.map f)
 

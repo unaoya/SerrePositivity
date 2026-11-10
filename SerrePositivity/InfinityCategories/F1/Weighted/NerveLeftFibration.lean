@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Transport.LeftStrictTranspor
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 値 weighted nerve の射影の left fibration 性。
@@ -51,6 +52,7 @@ lemma exists_weightedNerve_leftHorn_lift {C : Type u} [Category.{u} C]
 方針：相対左ホーンの持ち上げを、指定した底の射列の最後の Kan 値で構成する。
 規約：全ての正次元と最後以外の全ての欠ける面を扱う。
 使われ方：Kerodon §5.3.3、通常の圏上の Kan 値表現からの left fibration の構成。 -/
+@[kerodon 036N]
 instance weightedNerveProjection_leftFibration {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] : LeftFibration (weightedNerveProjection F) where
   mem := by

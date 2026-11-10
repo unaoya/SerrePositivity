@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
 public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan fibration のホモトピー長完全列の公開入口。
@@ -30,6 +31,7 @@ open SerrePositivity.KST.Spectra
 方針：fiber、全空間、底の各位置で、基点の逆像と直前の射の像の一致を証明済みの補題で示す。
 規約：fiber と全空間の次数は零を含む。底では全正次数を扱い、連結射の零次数の標的は集合。
 使われ方：Kerodon Theorem 3.2.6.1、Goerss–Jardine I §§7–8。L9b の長完全列。 -/
+@[kerodon 00WM]
 theorem fiberLongExact {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) :
     (∀ (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)),

@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.AlgebraicTopology.SimplicialNerve
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 冪集合の nerve と立方体の座標分離
@@ -27,6 +28,7 @@ variable {T : Type u}
 方針：部分集合の所属と包含を各頂点で計算する。
 規約：包含順序の座標を使い、点の所属を 1 とする。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.4–2.4.5.12 の内部ホーンの立方体への帰着。 -/
+@[kerodon 00LK]
 abbrev cube (T : Type u) : SSet.{u} := nerve (Set T)
 
 /-- 概要：部分集合の一つの所属座標を 0 または 1 として取り出す。
@@ -162,6 +164,7 @@ lemma cubeUnsplit_comp_cubeSplit (i : T) :
 方針：所属座標の抽出と復元が単体的に互いに逆であることを用いる。
 規約：包含順序の座標を使い、点の所属を 1 とする。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.4–2.4.5.12 の内部ホーンの立方体への帰着。 -/
+@[kerodon 00LK]
 noncomputable def cubeSplitIso (i : T) : cube T ≅ cube {x : T // x ≠ i} ⊗ (Δ[1] : SSet.{u}) where
   hom := cubeSplit i
   inv := cubeUnsplit i

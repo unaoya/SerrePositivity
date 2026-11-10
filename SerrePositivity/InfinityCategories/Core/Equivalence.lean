@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 public import Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：関手単体集合のホモトピー圏の可逆な二胞体による quasicategory の同値。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories
 方針：閉構造の curry' と単位からの射の零単体表示を合成する。
 規約：quasicategory 性は不要。
 使われ方：Kerodon Construction 4.5.1.23 の一胞体。 -/
+@[kerodon 00TS, kerodon 00TX]
 def functorVertex {X Y : SSet.{u}} (f : X ⟶ Y) : ((ihom X).obj Y) _⦋0⦌ :=
   SSet.unitHomEquiv _ (curry' f)
 
@@ -53,6 +55,7 @@ def VertexIso.map {X Y : SSet.{u}} {x y : X _⦋0⦌} (e : VertexIso x y) (f : X
 方針：逆射と、二つの合成から恒等への可逆二胞体を保持する。
 規約：合成 f≫g の順序はまず f、次に g。
 使われ方：Kerodon Definition 4.5.1.10、Construction 4.5.1.23。 -/
+@[kerodon 01DY]
 structure QCatEquivalence (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] where
   /-- 順方向の単体集合の射。 -/
   hom : X ⟶ Y
@@ -67,6 +70,7 @@ structure QCatEquivalence (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] w
 方針：逆射と二つの可逆二胞体の存在で定義する。
 規約：射 f を固定し、選択された逆射を命題には含めない。
 使われ方：Kerodon Definition 4.5.1.10、充満忠実性による同値の判定。 -/
+@[kerodon 01DY]
 def IsQCatEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : Prop :=
   ∃ g : Y ⟶ X, Nonempty (FunctorIso (f ≫ g) (𝟙 X)) ∧
     Nonempty (FunctorIso (g ≫ f) (𝟙 Y))

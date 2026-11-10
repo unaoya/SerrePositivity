@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：関手単体集合の辺と実際の単体的ホモトピーの比較。
@@ -61,6 +62,7 @@ lemma functorVertex_uncurry_one {X Y : SSet.{u}} (s : ((ihom X).obj Y) _⦋1⦌)
 方針：辺を uncurry し、両端の頂点表示の単射性を用いる。
 規約：逆辺の存在は仮定しない。
 使われ方：Kerodon §4.5.1 の関手のホモトピー。 -/
+@[kerodon 00TU]
 def simplicialHomotopyOfFunctorEdge {X Y : SSet.{u}} {f g : X ⟶ Y}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom X).obj Y))
       (functorVertex f) (functorVertex g)) : SSet.Homotopy f g where

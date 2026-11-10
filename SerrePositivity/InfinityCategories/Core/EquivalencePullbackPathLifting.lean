@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.RelativeEquivalencePathAt
 public import SerrePositivity.InfinityCategories.Core.PullbackZigzag
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆 path の相対持ち上げを持つ inner fibration に沿う同値の引き戻し。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：同値の path 置換と持ち上げられた path の共通の解像の全境界充填を使う。
 規約：元の三対象は quasicategory、p は inner fibration と相対 path の持ち上げを持つ。
 使われ方：Kerodon §4.5.5 の同値な図式の引き戻しの比較。 -/
+@[kerodon 01HJ]
 lemma IsQCatEquivalence.pullback_snd_of_relativePath {E B F : SSet.{u}}
     [Quasicategory E] [Quasicategory B] [Quasicategory F] {e : E ⟶ B}
     (he : IsQCatEquivalence e) (p : F ⟶ B) [InnerFibration p]

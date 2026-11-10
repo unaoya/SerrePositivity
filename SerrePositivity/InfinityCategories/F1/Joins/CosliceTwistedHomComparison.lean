@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.HomSpace
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedArrowMap
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の coslice fiber の写像空間から、両半分を固定した twisted arrow の写像空間への比較。
@@ -49,6 +50,7 @@ lemma cosliceTwistedHomMap_app_val {C : SSet.{u}} (x y : C _⦋0⦌) (n : ℕ)
       cosliceEdgewiseCollapse ⦋n⦌ ≫ s.val.val := rfl
 
 /-- 比較は元の coslice fiber の単体を区別する。 -/
+@[kerodon 03K1]
 instance cosliceTwistedHomMap_mono {C : SSet.{u}} (x y : C _⦋0⦌) :
     Mono (cosliceTwistedHomMap x y) :=
   mono_of_mono_fac (cosliceTwistedHomMap_ι x y)

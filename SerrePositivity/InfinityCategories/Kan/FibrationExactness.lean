@@ -4,6 +4,7 @@ public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan fibration のホモトピー長完全列の完全性。
@@ -337,6 +338,7 @@ end BaseExactness
 方針：全空間で零となる代表の RelStruct から底の原像を作り、逆向きは複体条件を使う。
 規約：fiber の実際の次数は n + 1、底の原像の次数は n + 2。
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の fiber の正次数での完全性。 -/
+@[kerodon 00WM, kerodon 00WQ]
 theorem exact_connecting_fiber {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
@@ -367,6 +369,7 @@ theorem exact_connecting_fiber {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：底の零ホモトピーを相対充填して fiber の原像を作る。
 規約：全空間と fiber の実際の次数は n + 1。
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の全空間の位置の完全性。 -/
+@[kerodon 00WN]
 theorem exact_fiber_total {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup E n e) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p rfl a = 1 ↔
@@ -402,6 +405,7 @@ theorem exact_fiber_total {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：fiber で零となる境界の RelStruct を貼り合わせ、全空間の代表を構成する。
 規約：底の実際の次数は n + 2。零次数の標的に対する端の完全性は別に扱う。
 使われ方：Kerodon Theorem 3.2.6.1。長完全列の底の位置の完全性。 -/
+@[kerodon 00WM, kerodon 00WS]
 theorem exact_total_base {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B (n + 1) (p.app _ e)) :
@@ -425,6 +429,7 @@ theorem exact_total_base {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：全空間での零ホモトピーから底の原像を構成し、逆向きは複体条件を使う。
 規約：n = 0 は基点付き集合の完全性、n > 0 は群の核と像の一致。
 使われ方：Kerodon Theorem 3.2.6.1。π₀(fiber) を含む長完全列の端。 -/
+@[kerodon 00WQ]
 theorem exact_connecting_fiber_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)) n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) :
@@ -447,6 +452,7 @@ theorem exact_connecting_fiber_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：零次数でも単一の RelStruct に戻せることを使い、境界の零ホモトピーを貼る。
 規約：n = 0 の標的は π₀(fiber) であり、群構造を要求しない。
 使われ方：Kerodon Theorem 3.2.6.1。π₁(B) → π₀(fiber) の位置の完全性。 -/
+@[kerodon 00WS]
 theorem exact_total_base_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
     (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e)) :
@@ -499,6 +505,7 @@ theorem exact_fiber_total_zero {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
 方針：正次数の群の完全性と零次数の辺の持ち上げをまとめる。
 規約：零次数には群構造を要求しない。
 使われ方：Kerodon Theorem 3.2.6.1。全次数のホモトピー長完全列。 -/
+@[kerodon 00WN]
 theorem exact_fiber_total_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy E n e) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n p rfl a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point n ↔

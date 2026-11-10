@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFilteredUnit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredWeakEquivalences
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の単体集合値の filtered 図式の成分ごとの弱同値は余極限でも弱同値。
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories.F2
 /-- 概要：filtered 余極限は任意の単体集合値図式の点ごとの弱同値を保つ。
 方針：Q の像の弱同値と二つの単位の余極限に二対三則を使う。
 規約：通常の小圏で添字付けた strict 図式。使われ方：非 Kan coend 図式の比較。 -/
+@[kerodon 00XE]
 lemma filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise
     {I : Type u} [SmallCategory I] [IsFiltered I]
     {F G : I ⥤ SSet.{u}} (η : F ⟶ G)

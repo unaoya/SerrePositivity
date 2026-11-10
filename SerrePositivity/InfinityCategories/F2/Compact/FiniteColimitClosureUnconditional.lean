@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.FiniteColimitClosure
 public import SerrePositivity.InfinityCategories.F2.Ind.CoherentFiniteLimitExchange
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：κ-compact 対象の有限余極限閉性を、交換の追加仮定なしに結論する。
@@ -18,6 +19,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Compact
 
 /-- 元の有限余極限の全図式が κ-compact なら、その同じ元の頂点も κ-compact。 -/
+@[kerodon 064Y]
 lemma isKappaCompact_finiteColimit {κ : Cardinal.{u}} (hκ : Cardinal.aleph0 ≤ κ)
     {K C : SSet.{max u v}} [K.Finite] [Quasicategory C] {D : K ⟶ C}
     (a : JoinCocone D) (ha : IsColimitCone a)
@@ -26,6 +28,7 @@ lemma isKappaCompact_finiteColimit {κ : Cardinal.{u}} (hκ : Cardinal.aleph0 �
   isKappaCompact_finiteColimit_of_exchange hκ Ind.indFiniteLimitExchangeInput a ha hD
 
 /-- 周囲に有限余極限があれば、compact 全部分圏にも交換入力なしに存在する。 -/
+@[kerodon 064Y]
 lemma hasFiniteColimits_kappaCompactObjects (κ : Cardinal.{u}) (hκ : Cardinal.aleph0 ≤ κ)
     (C : SSet.{max u v}) [Quasicategory C] [HasFiniteColimits C] :
     HasFiniteColimits (kappaCompactObjects.{u, v} κ C) :=

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape
 public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元のホモトピー圏内の retract を、同じ二頂点の実際の分裂三角形へ戻す。
@@ -21,6 +22,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 同じ二頂点の元の二射と、同じ恒等長辺を持つ実際の合成三角形。 -/
+@[kerodon 03YZ]
 abbrev RetractionTriangle {X : SSet.{u}} (x y : X _⦋0⦌) :=
   Σ i : SSet.Edge y x, Σ r : SSet.Edge x y, SSet.Edge.CompStruct i r (SSet.Edge.id y)
 
@@ -96,6 +98,7 @@ lemma RetractionTriangle.weakDiagram_retraction {X : SSet.{u}} {x y : X _⦋0⦌
   exact t.2.2.δ_zero_yonedaEquiv_symm
 
 /-- 元の頂点の retract 条件は、同じ二頂点の実際の分裂三角形の存在と同値。 -/
+@[kerodon 03YZ]
 lemma isVertexRetractOf_iff_retractionTriangle {X : SSet.{u}} [Quasicategory X]
     (x y : X _⦋0⦌) : IsVertexRetractOf y x ↔ Nonempty (RetractionTriangle x y) := by
   constructor

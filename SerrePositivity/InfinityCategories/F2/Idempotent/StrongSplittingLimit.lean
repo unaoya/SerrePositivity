@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone
 public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の強い分裂の同じ全 Idem 錐は極限であり、任意の後合成でも極限。
@@ -50,6 +51,7 @@ lemma IsIdempotentComplete.hasLimit {X : SSet.{u}} [Quasicategory X]
   exact s.hasLimit
 
 /-- 元の全 Idem 錐を任意の関手で後合成しても、同じ錐は極限。 -/
+@[kerodon 0404]
 lemma StrongSplitting.postcomposeCone_isLimit {X Y : SSet.{u}} [Quasicategory Y]
     {d : CoherentIdempotent X} (s : StrongSplitting d) (F : X ⟶ Y) :
     IsLimitCone (show JoinCone (d ≫ F) from

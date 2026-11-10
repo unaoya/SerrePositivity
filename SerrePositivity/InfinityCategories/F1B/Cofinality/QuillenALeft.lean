@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left cofinality を弱可縮な slice の引き戻しで特徴付ける Quillen A。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：反転した射への right 側の Quillen A と頂点の反転の全単射を使う。
 規約：標的 B のみ quasicategory、始域 A は任意の単体集合。
 使われ方：Kerodon Theorem 7.2.3.1(1)、極限を計算する向きの cofinality 判定。 -/
+@[kerodon 02NY]
 lemma isLeftCofinal_iff_weaklyContractible_slices {A B : SSet.{u}} [Quasicategory B]
     (f : A ⟶ B) :
     IsLeftCofinal f ↔ ∀ b : B _⦋0⦌,

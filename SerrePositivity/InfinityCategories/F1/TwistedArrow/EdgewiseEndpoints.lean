@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSubdivision
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：edgewise subdivision から元の単体集合とその反転への自然な両端射影。
@@ -37,6 +38,7 @@ lemma edgewiseStdSimplex_opIso_inv_naturality {a b : SimplexCategory} (α : a �
 方針：右包含で制限した標準単体を Yoneda の同値で単体に戻す。
 規約：頂点では辺の終点を取る。
 使われ方：Kerodon Notation 8.1.1.6、自然な反転比較の右の射影。 -/
+@[kerodon 03JK]
 def edgewiseRight (X : SSet.{u}) : edgewiseSubdivision X ⟶ X where
   app n := ↾fun f ↦ SSet.yonedaEquiv
     (joinInr (stdSimplex.obj n.unop).op (stdSimplex.obj n.unop) ≫ f)
@@ -52,6 +54,7 @@ def edgewiseRight (X : SSet.{u}) : edgewiseSubdivision X ⟶ X where
 方針：左包含で制限し、標準単体の反転同型で戻した単体を反転側の単体として読む。
 規約：頂点では辺の始点を取る。
 使われ方：Kerodon Notation 8.1.1.6、自然な反転比較の左の射影。 -/
+@[kerodon 03JK]
 def edgewiseLeft (X : SSet.{u}) : edgewiseSubdivision X ⟶ X.op where
   app n := ↾fun f ↦ SSet.opObjEquiv.symm (SSet.yonedaEquiv
     ((stdSimplex.opIso n.unop).inv ≫

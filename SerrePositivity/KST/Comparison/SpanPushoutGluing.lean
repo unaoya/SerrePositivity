@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.SpanCylinderColimitNaturality
 public import SerrePositivity.KST.Comparison.SpanGluing
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 単射な脚の通常の pushout のホモトピー引き戻しの貼り合わせ
@@ -27,6 +28,7 @@ open SerrePositivity.SimplicialModel
 規約：両余錐の普遍性と比較の可換性だけを構造的な入力とし、結論を仮定しない。
 使われ方：各有限骨格の境界に沿う pushout の比較。
 -/
+@[kerodon 011T]
 theorem spanPushout_vertex_homotopyPullback {F G : WalkingSpan ⥤ SSet.{u}}
     [Mono (F.map WalkingSpan.Hom.snd)] [Mono (G.map WalkingSpan.Hom.snd)]
     (α : F ⟶ G)

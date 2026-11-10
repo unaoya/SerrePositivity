@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：錐の後合成と trivial Kan fibration による極限の保存・反映。
@@ -45,6 +46,7 @@ lemma mapJoinCone_vertex {K X Y : SSet.{u}} (f : X ⟶ Y) {p : K ⟶ X} (c : Joi
 方針：境界の持ち上げを、join の単射に沿う元の射の持ち上げへ移す。
 規約：固定図式の持ち上げ p は与えられている。
 使われ方：HTT §1.2.13、Kerodon §7.1 の極限の保存と反映。 -/
+@[kerodon 01NT]
 instance trivialKanFibration_sliceOverPostcomp {K E B : SSet.{u}} (p : K ⟶ E) (q : E ⟶ B)
     [TrivialKanFibration q] : TrivialKanFibration (sliceOverPostcomp p q) := by
   apply (trivialKanFibration_iff_boundary _).2

@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.Quasicategory.TwoTruncatedQuasicategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # ホモトピー圏の二つの構成の比較
@@ -85,6 +86,7 @@ lemma path_edge_inverse :
 方針：二つの比較関手の合成が恒等であることを辺の生成元上で示す。
 規約：仮定は Mathlib の `Quasicategory` のみ。標準三公理以外を使わない。
 使われ方：HTT §1.2.3、Kerodon §1.4.5 のホモトピー圏を dg nerve 等に適用する橋。 -/
+@[kerodon 004C]
 noncomputable def homotopyCategoryBridge (X : SSet.{u}) [Quasicategory X] :
     HomotopyCategory₂ ((truncation 2).obj X) ≌ hoFunctor.obj X :=
   CategoryTheory.Equivalence.mk (edgeToPathHomotopyCategory _) (pathToEdgeHomotopyCategory _)

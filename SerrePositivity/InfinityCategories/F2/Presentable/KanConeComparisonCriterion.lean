@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralOriginalC
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体の strict 錐の元の Bousfield–Kan 比較から native な極限性を得る。
@@ -79,6 +80,7 @@ lemma bousfieldKanComparison_of_kanCone_isLimit {F : I ⥤ KanObject.{u}} (c : C
   exact hq.comp he
 
 /-- Kan 複体の任意の strict 錐の native な極限性は、元の比較射の弱同値性で検出できる。 -/
+@[kerodon 03BA]
 lemma kanCone_isLimit_iff_bousfieldKanComparison {F : I ⥤ KanObject.{u}} (c : Cone F) :
     IsLimitCone (strictCoherentCone c) ↔
       IsWeakHomotopyEquivalence (bousfieldKanConeComparison (kanObjectForget.mapCone c)) :=

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.SliceLaxMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：直接定義の slice と太い slice の同値。
@@ -48,6 +49,7 @@ lemma exists_functorIso_comp_sliceLaxMap {K X : SSet.{u}} [Quasicategory X]
 方針：恒等関手の同型類の逆像から逆関手を選び、同型の反映で他方の逆合成を同定する。
 規約：X は quasicategory、K は任意、追加の有限性・非空性は不要。
 使われ方：Kerodon Proposition 4.6.4.19 の太い slice の比較。 -/
+@[kerodon 01KU, kerodon 02VT]
 lemma isQCatEquivalence_sliceLaxMap {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
     IsQCatEquivalence (sliceLaxMap p) := by
   obtain ⟨g, ⟨eg⟩⟩ := exists_functorIso_comp_sliceLaxMap p (laxSlice p) (𝟙 (laxSlice p))

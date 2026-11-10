@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalMappi
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：区間写像空間の可縮性は標的の反転で保存・検出され、始対象性を検出する。
@@ -107,6 +108,7 @@ lemma isInitialVertex_of_intervalMappingSpace_isContractibleKan {X : SSet.{u}}
 方針：反転と右模型の比較による両方向を合わせる。
 規約：左 unstraightening を用いず、区間模型を直接検査できる。
 使われ方：Kerodon §4.7.3、§6.2.6 の局所存在の区間模型での判定。 -/
+@[kerodon 02H7]
 lemma isInitialVertex_iff_intervalMappingSpace_isContractibleKan {X : SSet.{u}}
     [Quasicategory X] (x : X _⦋0⦌) : IsInitialVertex x ↔
       ∀ y : X _⦋0⦌, IsContractibleKan (intervalMappingSpace x y) :=

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFibration
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFactorization
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cofinal な単射の anodyne 性と、一般の cofinal な射の因子分解。
@@ -41,6 +42,7 @@ lemma cofinalLlp_of_mono_trivialKan_factorization (P : MorphismProperty SSet.{u}
 方針：以前の因子分解の cofinal left fibration 側に全境界の判定を適用する。
 規約：合成の一致は厳密な等式。
 使われ方：Kerodon Corollary 7.2.1.15 の双対。 -/
+@[kerodon 02NE]
 lemma IsLeftCofinal.exists_anodyne_trivialKan_factorization {X Y : SSet.{u}} {f : X ⟶ Y}
     (hf : IsLeftCofinal f) :
     ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y),
@@ -85,6 +87,7 @@ lemma IsRightCofinal.rightAnodyneExtensions {X Y : SSet.{u}} {i : X ⟶ Y} [Mono
 方針：anodyne の十分性と cofinal な単射の必要性を合わせる。
 規約：始域・終域は任意。
 使われ方：Kerodon Proposition 7.2.1.3。 -/
+@[kerodon 02N3]
 lemma isLeftCofinal_iff_leftAnodyne_of_mono {X Y : SSet.{u}} (i : X ⟶ Y) [Mono i] :
     IsLeftCofinal i ↔ leftAnodyneExtensions i :=
   ⟨IsLeftCofinal.leftAnodyneExtensions, isLeftCofinal_of_leftAnodyne i⟩
@@ -110,6 +113,7 @@ lemma cofinalMono_of_leftAnodyne {X Y : SSet.{u}} {i : X ⟶ Y}
 方針：anodyne な射の単射性・十分性と、cofinal な単射の必要性を合わせる。
 規約：単射性を暗黙の仮定にせず右辺に明記する。
 使われ方：Kerodon Proposition 7.2.1.3。 -/
+@[kerodon 02N3]
 lemma leftAnodyneExtensions_iff_mono_and_isLeftCofinal
     {X Y : SSet.{u}} (i : X ⟶ Y) :
     leftAnodyneExtensions i ↔ Mono i ∧ IsLeftCofinal i := by
@@ -133,6 +137,7 @@ lemma cofinalMono_of_rightAnodyne {X Y : SSet.{u}} {i : X ⟶ Y}
 方針：anodyne な射の単射性・十分性と、cofinal な単射の必要性を合わせる。
 規約：単射性を暗黙の仮定にせず右辺に明記する。
 使われ方：Kerodon Proposition 7.2.1.3。 -/
+@[kerodon 02N3]
 lemma rightAnodyneExtensions_iff_mono_and_isRightCofinal
     {X Y : SSet.{u}} (i : X ⟶ Y) :
     rightAnodyneExtensions i ↔ Mono i ∧ IsRightCofinal i := by

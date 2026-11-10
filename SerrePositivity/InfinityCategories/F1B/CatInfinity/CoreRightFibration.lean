@@ -8,6 +8,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan
 public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.InvertibleTargetLiftingIso
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreInvertibleEdgeLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration と可逆辺の持ち上げから core の右ファイブレーションを構成する。
@@ -29,6 +30,7 @@ namespace SerrePositivity.InfinityCategories.F2
 方針：低次の辺の持ち上げと高次の相対ホーン充填を組み合わせる。
 規約：高次の充填は全ての辺の可逆性を保つことを core のホーン判定で確認する。
 使われ方：core の全ホーンの持ち上げ性の構成。 -/
+@[kerodon 01EZ]
 lemma coreMap_rightFibration_of_invertibleTargetLifting
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (p : X ⟶ Y) [InnerFibration p]

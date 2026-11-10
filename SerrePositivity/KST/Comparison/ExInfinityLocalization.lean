@@ -4,6 +4,7 @@ public import SerrePositivity.KST.Comparison.ExInfinityAnodyne
 public import SerrePositivity.KST.Comparison.ExInfinityKan
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Constructions.EpiMono
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex∞ と anodyne 局所化
@@ -39,6 +40,7 @@ instance exInfinity_preservesMonomorphisms : exInfinity.{u}.PreservesMonomorphis
 規約：局所化は既存の AnodyneHomotopy.anodyneQ を使う。
 使われ方：単位の自然同型の各成分。
 -/
+@[kerodon 00ZL]
 instance exInfinityUnit_localized_isIso (X : SSet.{u}) :
     IsIso (AnodyneHomotopy.anodyneQ.map (exInfinityUnit.app X)) :=
   Localization.inverts _ SSet.anodyneExtensions _ (exInfinityUnit_anodyne X)
@@ -63,6 +65,7 @@ def exInfinityLocalizedUnitIso : AnodyneHomotopy.anodyneQ.{u} ≅
 規約：Moss 2020 Proposition 31 の弱同値に関する性質。
 使われ方：Kan 置換での比較から元の比較へ戻す。
 -/
+@[kerodon 00ZJ]
 theorem exInfinity_map_localized_isIso_iff {X Y : SSet.{u}} (f : X ⟶ Y) :
     IsIso (AnodyneHomotopy.anodyneQ.map (exInfinity.map f)) ↔
       IsIso (AnodyneHomotopy.anodyneQ.map f) :=

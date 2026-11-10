@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Opposite
 public import SerrePositivity.InfinityCategories.Core.OuterHornConverse
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：外側ホーンの充填条件の左右の双対。
@@ -217,6 +218,7 @@ lemma isInvertibleEdge_of_hasInitialHornFillers {X : SSet.{u}} [Quasicategory X]
 方針：反転による順方向と逆方向を組み合わせる。
 規約：全ての次数二以上を量化し、余分な全射の仮定はない。
 使われ方：HTT Proposition 1.2.4.3、Kerodon Theorem 4.4.2.6 の (1)⇔(2)。 -/
+@[kerodon 019F]
 lemma isInvertibleEdge_iff_hasInitialHornFillers {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
     IsInvertibleEdge e ↔ HasInitialHornFillers e :=

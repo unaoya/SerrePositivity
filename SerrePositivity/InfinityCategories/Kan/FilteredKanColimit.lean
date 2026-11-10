@@ -5,6 +5,7 @@ public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：filtered colimit での有限単体データの相対因子分解と Kan 性。
@@ -89,6 +90,7 @@ theorem kanComplex_of_filtered_isColimit [∀ j, KanComplex (F.obj j)] : KanComp
 方針：余極限 cocone に有限ホーンによる充填を適用する。
 規約：通常の圏論的余極限の Kan 性。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。telescope の比較対象。 -/
+@[kerodon 03HS]
 instance filteredColimit_kanComplex (D : J ⥤ SSet.{u}) [∀ j, KanComplex (D.obj j)] :
     KanComplex (colimit D) := _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit (colimit.isColimit D)
 

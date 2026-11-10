@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitCanonical
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の filtered Kan 図式の任意の指定余極限余錐の native な余極限性。
@@ -18,6 +19,7 @@ namespace SerrePositivity.InfinityCategories.F2.Ind
 open HomotopyLimits
 
 /-- 元の通常の filtered Kan 余錐の台が余極限なら、その同じ native 余錐も余極限。 -/
+@[kerodon 03HS]
 lemma strictNativeCocone_isColimit_of_filtered_forget
     {I : Type u} [SmallCategory I] [IsFiltered I] {F : I ⥤ KanObject.{u}}
     (c : Cocone F) (hc : IsColimit (kanObjectForget.mapCocone c)) :

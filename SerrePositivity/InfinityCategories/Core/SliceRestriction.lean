@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.JoinFunctor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left anodyne 射に沿う slice の制限は trivial Kan fibration。
@@ -122,6 +123,7 @@ lemma sliceOverRestrict_isIso {K₀ K X : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ 
 方針：単射を像への同型と部分複体包含に分け、同型による制限の不変性を使う。
 規約：部分複体の包含という特定の表示は仮定しない。
 使われ方：Kerodon Corollary 4.3.6.14、HTT §4.1.1 の頂点包含への適用。 -/
+@[kerodon 018L]
 lemma sliceOverRestrict_trivialKanFibration {K₀ K X : SSet.{u}} [Quasicategory X]
     (p : K ⟶ X) (f : K₀ ⟶ K) [Mono f] (hf : leftAnodyneExtensions f) :
     TrivialKanFibration (sliceOverRestrict p f) := by

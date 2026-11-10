@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：空間の ∞ 圏の頂点と pointed space の射影。
@@ -40,6 +41,7 @@ noncomputable def spaceInfinityVertex (K : KanObject.{u}) : SpaceInfinity.{u} _�
 方針：標準零単体の全ホーン充填性を使う。
 規約：対象は宇宙 u の Δ[0]。
 使われ方：Kerodon Construction 5.5.2.1、𝒮 内の一点空間。 -/
+@[kerodon 020T]
 def pointKanObject : KanObject.{u} := ⟨Δ[0], by
   rw [KanComplex.iff]
   intro n i f _hf
@@ -57,6 +59,7 @@ noncomputable def pointSpaceVertex : SpaceInfinity.{u} _⦋0⦌ := spaceInfinity
 方針：𝒮 の一点空間の頂点からの coslice を取る。
 規約：厳密な点付き射だけに制限しない。
 使われ方：Kerodon Construction 5.5.2.1、𝒮 値関手の unstraightening の全空間。 -/
+@[kerodon 01ZW]
 noncomputable def PointedSpaceInfinity : SSet.{u + 1} :=
   sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})
 
@@ -71,6 +74,7 @@ noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInf
 方針：quasicategory の coslice 射影の left fibration 性を使う。
 規約：追加の充填仮定を置かない。
 使われ方：Kerodon Proposition 5.5.2.2、底変換での unstraightening。 -/
+@[kerodon 01ZX]
 instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjection.{u} :=
   sliceUnderProjection_leftFibration _
 
@@ -78,6 +82,7 @@ instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjec
 方針：SpaceInfinity への inner fibration 性を使う。
 規約：𝒮 の極限・余極限は使わない。
 使われ方：Kerodon Proposition 5.5.2.2、unstraightening の出発点。 -/
+@[kerodon 01ZX]
 instance pointedSpaceInfinity_quasicategory : Quasicategory PointedSpaceInfinity.{u} :=
   quasicategory_of_innerFibration pointedSpaceProjection
 

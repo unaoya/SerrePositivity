@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.Ho
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：端点を明示した辺に沿う transport。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：端点の fiber と底の辺を固定した cocartesian な prism を要求する。
 規約：辺は二切断の端点付き辺として表す。
 使われ方：Kerodon Definition 5.2.2.4、恒等と合成の比較。 -/
+@[kerodon 019N]
 def IsEdgeTransport {X B : SSet.{u}} (p : X ⟶ B) {a b : B _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b)
     (F : vertexFiber p a ⟶ vertexFiber p b) : Prop :=
@@ -35,6 +37,7 @@ def IsEdgeTransport {X B : SSet.{u}} (p : X ⟶ B) {a b : B _⦋0⦌}
 方針：端点の等式で既存の選択された transport に帰着する。
 規約：値域と定義域の fiber の添字は入力された端点。
 使われ方：Kerodon Proposition 5.2.2.8、Proposition 5.2.5.1 の合成則。 -/
+@[kerodon 023Y]
 noncomputable def edgeTransport {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
     {a b : B _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b) :
     vertexFiber p a ⟶ vertexFiber p b := by

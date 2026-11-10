@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：図式上の錐と極限を slice の頂点と終対象として定義する。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：固定条件を部分型で保持し、slice の零単体と同じ型にする。
 規約：錐の頂点は左因子。
 使われ方：HTT Definition 1.2.13.4、Kerodon §7.1 の錐。 -/
+@[kerodon 02JM]
 abbrev JoinCone {K X : SSet.{u}} (p : K ⟶ X) :=
   {F : join (Δ[0] : SSet.{u}) K ⟶ X // joinInr Δ[0] K ≫ F = p}
 
@@ -43,6 +45,7 @@ lemma JoinCone.vertex_eq {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
 方針：A2e の境界充填条件を slice の単体集合に適用する。
 規約：定義自体に quasicategory の仮定は不要。
 使われ方：HTT Definition 1.2.13.4、Kerodon §7.1 の極限。 -/
+@[kerodon 02JM]
 def IsLimitCone {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : Prop :=
   IsTerminalVertex (X := sliceOver p) c
 

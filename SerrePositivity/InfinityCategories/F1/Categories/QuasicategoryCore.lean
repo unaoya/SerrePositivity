@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆な辺だけを持つ単体の core 部分複体。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：標準一単体からの全ての射で制限した辺の可逆性を要求する。
 規約：退化した辺への制限も含める。
 使われ方：Kerodon Construction 4.4.3.1、quasicategory の core の定義。 -/
+@[kerodon 01D0]
 def quasicategoryCore (X : SSet.{u}) : X.Subcomplex where
   obj n := {s | ∀ f : ⦋1⦌ ⟶ n.unop, IsInvertibleEdge (edgeOfSimplex (X.map f.op s))}
   map {n m} g s hs := by
@@ -42,6 +44,7 @@ lemma quasicategoryCore_edge {X : SSet.{u}} (s : (quasicategoryCore X : SSet.{u}
 方針：自然性によって各単体の辺の制限を元の射の一次成分に移す。
 規約：頂点ごとの条件だけには弱めず、全ての一単体を量化する。
 使われ方：Kerodon Construction 4.4.3.1、core の普遍的な部分複体への持ち上げ。 -/
+@[kerodon 01D8]
 def quasicategoryCoreLift {A X : SSet.{u}} (f : A ⟶ X)
     (hf : ∀ s : A _⦋1⦌, IsInvertibleEdge (edgeOfSimplex (f.app (Opposite.op ⦋1⦌) s))) :
     A ⟶ (quasicategoryCore X : SSet.{u}) :=
@@ -83,6 +86,7 @@ lemma quasicategoryCoreMap_ι {X Y : SSet.{u}} (f : X ⟶ Y) :
 方針：包含の単射性で恒等と合成の式を反映する。
 規約：この段階では値が Kan 複体であるとは主張しない。
 使われ方：Kerodon Remark 5.5.3.9、Kan な豊穣 Hom の合成の準備。 -/
+@[kerodon 01D0]
 def quasicategoryCoreFunctor : SSet.{u} ⥤ SSet.{u} where
   obj X := (quasicategoryCore X : SSet.{u})
   map f := quasicategoryCoreMap f
@@ -146,6 +150,7 @@ lemma intervalEndomorphism_cases (f : ⦋1⦌ ⟶ ⦋1⦌) :
 方針：標準区間の自己射を恒等と二つの定値に分ける。
 規約：可逆性は端点を面で定めた辺に課す。
 使われ方：Kerodon Construction 4.4.3.1、core の辺の正確な特徴づけ。 -/
+@[kerodon 01D0]
 lemma quasicategoryCore_mem_edge_iff {X : SSet.{u}} (s : X _⦋1⦌) :
     s ∈ (quasicategoryCore X).obj (Opposite.op ⦋1⦌) ↔ IsInvertibleEdge (edgeOfSimplex s) := by
   constructor

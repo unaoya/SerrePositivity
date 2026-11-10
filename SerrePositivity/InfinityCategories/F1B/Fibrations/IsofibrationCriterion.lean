@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativePathBo
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EquivalenceLiftingInvertible
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.PathReplacementLifting
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyPathParameters
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：圏論的同値の右持ち上げと inner fibration・可逆辺の持ち上げの同値。
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：仮の延長と標的図式を指定部分で定値な可逆 path で結び、終点指定で持ち上げる。
 規約：元・標的は quasicategory、可逆辺の持ち上げは終点と像を厳密に保つ。
 使われ方：isofibration 上での相対 Kan 拡張の組み立て。 -/
+@[kerodon 01FR]
 lemma equivalenceLifting_of_innerFibration_of_targetLifting
     {D E : SSet.{u}} [Quasicategory D] [Quasicategory E]
     (U : D ⟶ E) [InnerFibration U] (hU : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting U) :
@@ -69,6 +71,7 @@ lemma equivalenceLifting_of_innerFibration_of_targetLifting
 方針：内ホーンと可逆区間への適用、および相対 path による逆向きの構成を合わせる。
 規約：可逆辺の持ち上げは終点指定の向きで述べる。
 使われ方：標準の inner 性と同型持ち上げを相対 Kan 図式の公開入力に使う。 -/
+@[kerodon 01EV, kerodon 01FR]
 lemma equivalenceLifting_iff_inner_and_invertibleTargetLifting
     {D E : SSet.{u}} [Quasicategory D] [Quasicategory E] (U : D ⟶ E) :
     SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U ↔ InnerFibration U ∧ SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting U := by

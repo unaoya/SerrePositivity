@@ -70,6 +70,7 @@ public import Mathlib.SetTheory.Cardinal.Regular
 public import Mathlib.SetTheory.Ordinal.Arithmetic
 public import Mathlib.SetTheory.Ordinal.Basic
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
+public import Mathlib.Tactic.CrossRefAttribute
 
 
 /-! # Concrete smallness of the fixed simplicial generating maps
@@ -121,6 +122,7 @@ lemma hornGenerators_smallObjectArgument : J.{u}.HasSmallObjectArgument.{u} := i
 
 /-- Boundary generation recovers precisely the actual monomorphisms, without
 assuming a weak-equivalence class or the Kan–Quillen model axioms. -/
+@[kerodon 0077]
 lemma boundaryGenerators_leftClass : I.{u}.rlp.llp = MorphismProperty.monomorphisms SSet.{u} := by
   let : I.{u}.HasSmallObjectArgument.{u} := boundaryGenerators_smallObjectArgument
   apply le_antisymm

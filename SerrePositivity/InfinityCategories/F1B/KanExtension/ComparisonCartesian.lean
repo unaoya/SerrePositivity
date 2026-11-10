@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFib
 public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：左 Kan 比較余錐の輸送の cartesian 性と選択不変性。
@@ -164,6 +165,7 @@ lemma LeftKanCoconeTransport.coconeFamily_opIso {K C D : SSet.{u}} [Quasicategor
 方針：固定図式上の余錐の始対象性を反転して同型に沿って移す。
 規約：指定した β は同じである。
 使われ方：Kerodon Warning 7.3.1.4 の左側の選択不変性。 -/
+@[kerodon 02YB]
 lemma LeftKanCoconeTransport.isColimitCone_iff {K C D : SSet.{u}} [Quasicategory D]
     {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
     {β : SSet.Homotopy F₀ (δ ≫ F)} {c : C _⦋0⦌}

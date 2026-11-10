@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.TwistedHomDiagonal
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の coslice fiber から twisted arrow の両端固定の写像空間への主比較は同値。
@@ -24,6 +25,7 @@ namespace SerrePositivity.InfinityCategories
 attribute [local instance] vertexFiber_kanComplex_of_leftFibration
 
 /-- 元の coslice の主比較は、全ての quasicategory と両端に対して実際の同値。 -/
+@[kerodon 03K1]
 lemma cosliceTwistedHomMap_isQCatEquivalence {C : SSet.{u}} [Quasicategory C]
     (x y : C _⦋0⦌) : IsQCatEquivalence (cosliceTwistedHomMap x y) := by
   apply isQCatEquivalence_of_anodyneQ_isIso

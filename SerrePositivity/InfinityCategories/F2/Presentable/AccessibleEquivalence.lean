@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.GeneratorEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：accessibility は同値で不変であり、小さい Ind 表現によって必要十分に判定できる。
@@ -42,6 +43,7 @@ lemma isAccessible_iff_equivalence {C E : SSet.{u + 1}}
     exact ⟨κ, h.of_equivalence e.symm⟩
 
 /-- κ-accessibility は、正則 κ と小さい ∞ 圏の Indκ との同値の存在に必要十分。 -/
+@[kerodon 06K6]
 lemma isKappaAccessible_iff_indEquivalence (κ : Cardinal.{u})
     (C : SSet.{u + 1}) [Quasicategory C] :
     IsKappaAccessible κ C ↔ κ.IsRegular ∧

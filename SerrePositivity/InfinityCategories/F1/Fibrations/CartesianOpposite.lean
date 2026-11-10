@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.Composition
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cartesian 辺と反転した cocartesian 辺の接続。
@@ -109,6 +110,7 @@ lemma isCartesianEdge_iff_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B)
 方針：三角形を反転して cocartesian 辺の合成閉性を使い、元に戻す。
 規約：底を quasicategory とし、射を inner fibration とする。
 使われ方：Kerodon Corollary 5.1.2.4、cartesian な transport の合成。 -/
+@[kerodon 01TS]
 lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B]
     (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p]
     (hfirst : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t)))

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatTensorAndArrowObjects
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Fun(Δ¹,C) と両端評価による lax pullback 対象。
@@ -22,12 +23,14 @@ namespace SerrePositivity.InfinityCategories.F2
 方針：Tamme の定義の strict pullback と inner fibration 性を使う。
 規約：矢印の向きは p(a) から q(b)。
 使われ方：Tamme §1 の lax pullback と安定圏への接続。 -/
+@[kerodon 01KF]
 def laxPullback {A B C : SSet.{u}} (p : A ⟶ C) (q : B ⟶ C) : SSet.{u} :=
   pullback (arrowEndpointPair C) (p ⊗ₘ q)
 /-- 概要：Fun(Δ¹,C) と両端評価による lax pullback 対象。
 方針：Tamme の定義の strict pullback と inner fibration 性を使う。
 規約：矢印の向きは p(a) から q(b)。
 使われ方：Tamme §1 の lax pullback と安定圏への接続。 -/
+@[kerodon 01KH]
 instance laxPullback_quasicategory {A B C : SSet.{u}}
     [Quasicategory A] [Quasicategory B] [Quasicategory C] (p : A ⟶ C) (q : B ⟶ C) :
     Quasicategory (laxPullback p q) := by

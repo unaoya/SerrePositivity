@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralHomHolimComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の小圏上の極限性と余極限性を反転豊穣 Hom の end で判定する。
@@ -23,6 +24,7 @@ variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
 方針：切断比較による判定から一般の end の後合成同値を消去する。
 規約：元の非反転 q_x への移送を仮定せず、反転係数の実際の end を使う。
 使われ方：HTT 4.2.4.1 の双対、Kerodon 7.5.4.6 の一般の極限判定。 -/
+@[kerodon 03BB]
 lemma strictCoherentCone_isLimit_iff_reflectedRepresentableComparison {F : I ⥤ C}
     (c : Cone F) :
     IsLimitCone (strictCoherentCone c) ↔ ∀ x : C,

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantAdjunct
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightHomotopySquare
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：随伴から区間模型の写像空間のホモトピー同値を構成する。
@@ -125,6 +126,7 @@ lemma intervalInverse_map_homotopy {X Y : SSet.{u}} [Quasicategory X] [Quasicate
 方針：選んだ逆射と両合成の実際のホモトピーを束ねる。
 規約：pinched 模型への比較・対象の射に関する自然性・特徴づけの逆向きは別項目。
 使われ方：Kerodon Prop 6.2.1.17 の順方向の区間模型版。 -/
+@[kerodon 02F1]
 lemma intervalMap_isSimplicialHomotopyEquivalence {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
     (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) :

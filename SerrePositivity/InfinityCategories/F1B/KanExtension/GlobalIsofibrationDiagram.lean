@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalLiftingDiagram
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner 性と可逆辺の持ち上げの下での厳密な相対 Kan 図式の組み立て。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：内ホーン充填と指定可逆辺の持ち上げから圏論的同値の右持ち上げを導く。
 規約：元・標的の図式は厳密に固定し、全 fiber の標準 U 余極限性も保つ。
 使われ方：全部分圏からの相対 Kan 拡張の写像空間の制限定理の存在入力。 -/
+@[kerodon 0302]
 lemma exists_kanGlobalRelative_diagram_with_relative_colimits_of_isofibration
     {K C D E : SSet.{u}} [Quasicategory C] [Quasicategory D] [Quasicategory E]
     (p : K ⟶ C) [CocartesianFibration p] (U : D ⟶ E) [InnerFibration U]

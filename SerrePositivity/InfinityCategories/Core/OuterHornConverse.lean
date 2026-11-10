@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import Mathlib.CategoryTheory.Groupoid
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：外側ホーンの充填条件から辺の可逆性を導く。
@@ -194,6 +195,7 @@ lemma isInvertibleEdge_of_hasFinalHornFillers {X : SSet.{u}} {x y : X _⦋0⦌}
 方針：join による順方向と二次・三次ホーンによる逆方向を組み合わせる。
 規約：仮定は quasicategory 性だけで、全ての n≥2 を量化する。
 使われ方：Kerodon Theorem 4.4.2.6 の (1)⇔(3)。 -/
+@[kerodon 019F]
 lemma isInvertibleEdge_iff_hasFinalHornFillers {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
     IsInvertibleEdge e ↔ HasFinalHornFillers e :=
@@ -203,6 +205,7 @@ lemma isInvertibleEdge_iff_hasFinalHornFillers {X : SSet.{u}} [Quasicategory X]
 方針：全ての射を辺で表し、最後の外側ホーンの充填からその可逆性を示す。
 規約：全ての対象間の全ての射を扱う。
 使われ方：HTT Proposition 1.2.5.1、Kerodon Proposition 4.4.2.1 の順方向。 -/
+@[kerodon 0052, kerodon 00HZ]
 instance kanComplex_ho_isGroupoid (X : SSet.{u}) [KanComplex X] :
     IsGroupoid (hoFunctor.obj X) where
   all_isIso {x y} f := by

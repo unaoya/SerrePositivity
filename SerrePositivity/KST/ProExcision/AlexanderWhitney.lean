@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KST.ProExcision.ChainTensorVanishing
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Alexander–Whitney の切断と成分写像
@@ -21,6 +22,7 @@ open scoped Simplicial
 方針：頂点番号を保つ包含を使う。
 規約：KST A.5 の AW、切断点を両因子で共有する。
 使われ方：第一因子の制限写像。 -/
+@[kerodon 00S1]
 def awFront (n : ℕ) (i : Fin (n + 1)) : ⦋(i : ℕ)⦌ ⟶ ⦋n⦌ :=
   SimplexCategory.mkHom
     { toFun j := ⟨j, by have := j.isLt; have := i.isLt; omega⟩
@@ -30,6 +32,7 @@ def awFront (n : ℕ) (i : Fin (n + 1)) : ⦋(i : ℕ)⦌ ⟶ ⦋n⦌ :=
 方針：頂点番号に切断点の番号を加える。
 規約：KST A.5 の AW、後半の次数は n−i。
 使われ方：第二因子の制限写像。 -/
+@[kerodon 00S1]
 def awBack (n : ℕ) (i : Fin (n + 1)) : ⦋n - (i : ℕ)⦌ ⟶ ⦋n⦌ :=
   SimplexCategory.mkHom
     { toFun j := ⟨(i : ℕ) + j, by have := j.isLt; have := i.isLt; omega⟩
@@ -60,6 +63,7 @@ lemma awDegrees (n : ℕ) (i : Fin (n + 1)) :
 方針：前半と後半の制限のテンソルを直和成分へ入れる。
 規約：KST A.5、交代面写像複体での非正規化の成分。
 使われ方：切断点の有限和と鎖写像性の検証。 -/
+@[kerodon 00S2]
 def alexanderWhitneySummand (C D : SimplicialObject (ModuleCat.{u} ℤ))
     (n : ℕ) (i : Fin (n + 1)) :
     (simplicialIntegerTensor C D).obj (op ⦋n⦌) ⟶
@@ -74,6 +78,7 @@ def alexanderWhitneySummand (C D : SimplicialObject (ModuleCat.{u} ℤ))
 方針：共有切断点 i=0,…,n について成分の和を取る。
 規約：KST Construction A.5 の標準的な AW の公式。
 使われ方：鎖写像性と shuffle との標準比較を構成するための実写像。 -/
+@[kerodon 00S2]
 def alexanderWhitneyApp (C D : SimplicialObject (ModuleCat.{u} ℤ)) (n : ℕ) :
     (simplicialIntegerTensor C D).obj (op ⦋n⦌) ⟶
       (chainIntegerTensor ((alternatingFaceMapComplex _).obj C)

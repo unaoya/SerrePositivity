@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalFunctorBaseChange
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cofinality の任意の底図式への適用と合成。
@@ -41,6 +42,7 @@ lemma IsLeftCofinal.restrictDiagram {A B C E : SSet.{u}} {i : A ⟶ B}
 方針：第二の射の制限に続けて、第一の射を任意の底図式へ適用する。
 規約：i の後に j を合成する。
 使われ方：Kerodon Proposition 7.2.1.6。 -/
+@[kerodon 02N6]
 lemma IsLeftCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
     (hi : IsLeftCofinal i) (hj : IsLeftCofinal j) : IsLeftCofinal (i ≫ j) := by
   intro E p hp
@@ -54,6 +56,7 @@ lemma IsLeftCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
 方針：任意の底図式に適用した i の制限を、合成の同値性から消去する。
 規約：逆の消去則は主張しない。
 使われ方：Kerodon Proposition 7.2.1.6 の因子分解。 -/
+@[kerodon 02N6]
 lemma IsLeftCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
     (hi : IsLeftCofinal i) (hij : IsLeftCofinal (i ≫ j)) : IsLeftCofinal j := by
   intro E p hp
@@ -100,6 +103,7 @@ lemma IsRightCofinal.comp {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
 方針：任意の底図式に適用した i の制限を、合成の同値性から消去する。
 規約：逆の消去則は主張しない。
 使われ方：Kerodon Proposition 7.2.1.6 の因子分解。 -/
+@[kerodon 02N6]
 lemma IsRightCofinal.cancel_left {A B C : SSet.{u}} {i : A ⟶ B} {j : B ⟶ C}
     (hi : IsRightCofinal i) (hij : IsRightCofinal (i ≫ j)) : IsRightCofinal j := by
   intro E p hp

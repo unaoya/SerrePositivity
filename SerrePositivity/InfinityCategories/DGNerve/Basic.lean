@@ -2,6 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.Pullback
 public import SerrePositivity.InfinityCategories.DGNerve.LowDimensional
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 任意の dg 圏の dg nerve
 
@@ -28,6 +29,7 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 方針：任意の単調写像に沿う引き戻しを使い、恒等・合成の法則を成分ごとに確認する。
 規約：HA Construction 1.3.1.6、対象宇宙 v と Hom 宇宙 u は独立。
 使われ方：導来 ∞ 圏の定義の基盤。quasicategory 性は後続で証明する。 -/
+@[kerodon 00PQ]
 def dgNerve : SSet.{max u v} where
   obj Δ := DGNerve.Simplex A D Δ.unop.len
   map f := ↾fun s => s.pullback f.unop.toOrderHom

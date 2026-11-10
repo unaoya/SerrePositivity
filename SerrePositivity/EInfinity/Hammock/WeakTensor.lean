@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Tenso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 元の二つの弱ホモトピー同値の直積
@@ -33,6 +34,7 @@ lemma tensor_isSimplicialHomotopyEquivalence {A B C D : SSet.{u}}
   · rw [tensorHom_comp_tensorHom, ← id_tensorHom_id]
     exact ⟨tensorHomotopy H₁ K₁⟩
 
+@[kerodon 02L2]
 lemma weakTensor {A B C D : SSet.{u}} {f : A ⟶ B} {g : C ⟶ D}
     (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) :
     IsWeakHomotopyEquivalence (f ⊗ₘ g) := by

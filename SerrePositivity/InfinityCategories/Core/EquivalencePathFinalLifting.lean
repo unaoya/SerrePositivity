@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆 path の終点評価の持ち上げ性。
@@ -53,6 +54,7 @@ lemma equivalenceHomotopy_extend_final {A B Y : SSet.{u}} [Quasicategory Y]
 方針：正次元では境界上の prism と終点の単体を延長し、全部分複体へ戻す。
 規約：標的の quasicategory 性だけを仮定する。
 使われ方：Kerodon Corollary 4.5.3.24 の終点側の評価。 -/
+@[kerodon 02BY]
 instance trivialKanFibration_equivalencePathEndpoint_one (Y : SSet.{u}) [Quasicategory Y] :
     TrivialKanFibration (equivalencePathEndpoint Y 1) := by
   apply (trivialKanFibration_iff_boundary _).2

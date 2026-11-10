@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquiv
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.Source
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationPointHomFamily
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomActionComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：始点固定の twisted arrow の恒等点は始対象であり、全 Hom による fiber の族は同値。
@@ -53,6 +54,7 @@ lemma cosliceToTwistedArrowSource_isPrecompositionEquivalence
   exact cosliceTwistedHomMap_isQCatEquivalence x y
 
 /-- 元の coslice から始点固定の全空間への実際の比較は quasicategory の同値。 -/
+@[kerodon 03K0]
 lemma cosliceToTwistedArrowSource_isQCatEquivalence
     {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) :
     IsQCatEquivalence (cosliceToTwistedArrowSource x) :=

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory 間の inner anodyne 射の同値性。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：境界との pushout-product の inner anodyne 性と内部 Hom の随伴を使う。
 規約：標的は quasicategory、始域の quasicategory 性は不要。
 使われ方：Kerodon §4.5.3–4.5.4 の相対的な関手のホモトピー。 -/
+@[kerodon 00J9]
 lemma trivialKanFibration_pre_of_innerAnodyne {A B : SSet.{u}} (i : A ⟶ B)
     (hi : innerAnodyneExtensions i) (Y : SSet.{u}) [Quasicategory Y] :
     TrivialKanFibration ((pre i).app Y) := by

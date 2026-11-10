@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cartesian・cocartesian fibration と inner fibration の接続。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：内ホーンの rlp と、終点を指定した cartesian lift の存在を要求する。
 規約：底の quasicategory 性は定義に含めない。
 使われ方：Kerodon Definition 5.1.4.1 の cartesian 側。 -/
+@[kerodon 01UA]
 def cartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦
   innerFibrations p ∧ ∀ (x : X _⦋0⦌) (e : (Δ[1] : SSet.{u}) ⟶ B),
     stdSimplex.δ 0 ≫ e = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) x) →
@@ -43,6 +45,7 @@ def cocartesianFibrations : MorphismProperty SSet.{u} := fun X B p ↦
 方針：射の性質への所属を保持する。
 規約：選択された lift を持たない。
 使われ方：Kerodon Definition 5.1.4.1、cartesian transport の入力。 -/
+@[kerodon 01UA]
 class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where
   mem : cartesianFibrations p
 
@@ -50,6 +53,7 @@ class CartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where
 方針：射の性質への所属を保持する。
 規約：選択された lift を持たない。
 使われ方：Kerodon Definition 5.1.4.1、covariant transport の入力。 -/
+@[kerodon 01UA]
 class CocartesianFibration {X B : SSet.{u}} (p : X ⟶ B) : Prop where
   mem : cocartesianFibrations p
 

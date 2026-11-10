@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.Opposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：反転した標準単体と元の標準単体の join を重みにした edgewise subdivision。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：標準単体の射の反転と元の射を joinMap で同時に写す。
 規約：反転は圏の反対ではなく単体集合の頂点順序の反転。
 使われ方：Kerodon Construction 8.1.1.1、twisted arrow の重みの関手的表示。 -/
+@[kerodon 03JG]
 def edgewiseWeight : SimplexCategory ⥤ SSet.{u} where
   obj n := join (stdSimplex.obj n).op (stdSimplex.obj n)
   map α := joinMap (SSet.opFunctor.map (stdSimplex.map α)) (stdSimplex.map α)
@@ -32,6 +34,7 @@ def edgewiseWeight : SimplexCategory ⥤ SSet.{u} where
 方針：n 単体を Δ[n]op ⋆ Δ[n] から X への射とし、重みの射で前合成する。
 規約：次数 n の射の型を直接使い、宇宙を持ち上げない。
 使われ方：Kerodon Construction 8.1.1.1、Kan 複体とその反転を比較する中間単体集合。 -/
+@[kerodon 03JG]
 def edgewiseSubdivision (X : SSet.{u}) : SSet.{u} where
   obj n := edgewiseWeight.obj n.unop ⟶ X
   map α := ↾fun f ↦ edgewiseWeight.map α.unop ≫ f

@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionLi
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.AllEdges
 public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left fibration の相対関手空間の始対象での評価は、自明 Kan fibration。
@@ -37,6 +38,7 @@ lemma kanCocartesianSectionsι_isIso_of_leftFibration {A E B : SSet.{u}}
     exact isCocartesianEdge_of_leftFibration p _
 
 /-- 始対象での実際の相対 Hom の評価は、全境界を固定した持ち上げを持つ。 -/
+@[kerodon 035T]
 lemma relativeFunctorEvaluate_initial_trivialKanFibration {A E B : SSet.{u}} [Quasicategory B]
     (p : E ⟶ B) [LeftFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) :
     TrivialKanFibration (relativeFunctorEvaluate p a v) := by

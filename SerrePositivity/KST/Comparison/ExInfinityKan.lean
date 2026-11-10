@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.ExInfinityStages
 public import SerrePositivity.KST.Comparison.ExDoubleHornFiller
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex∞ の Kan 性
@@ -52,6 +53,7 @@ theorem exInfinity_hornFilling (X : SSet.{u}) (n : ℕ) (hn : 0 < n) (k : Fin (n
 規約：Moss 2020 Proposition 21。Kan 性を仮定せず明示的な有限段階の充填から導く。
 使われ方：非 Kan 基底を扱う比較の Kan 置換。
 -/
+@[kerodon 00ZK, kerodon 00ZL]
 instance exInfinity_kanComplex (X : SSet.{u}) : SSet.KanComplex (exInfinity.obj X) := by
   apply SSet.KanComplex.iff.mpr
   intro n i f hf

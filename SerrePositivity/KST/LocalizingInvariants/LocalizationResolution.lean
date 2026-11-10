@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.InverseAttachmentUniversal
 public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の辺集合の局所化を、実際の quasicategory と元の射として構成する。
@@ -34,6 +35,7 @@ lemma localization_postcomp_precompositionEquivalence {X P Q : SSet.{u}}
   exact (hj Y).comp (hU Y)
 
 /-- 任意の単体集合と任意の辺集合に対する、同じ宇宙内の実 quasicategory 局所化の存在。 -/
+@[kerodon 01N0]
 theorem exists_quasicategory_localization (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
     ∃ (Q : SSet.{u}) (F : X ⟶ Q), Quasicategory Q ∧ IsLocalization F W := by
   let P := inverseAttachment X W

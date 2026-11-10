@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.IsofibrationCriterion
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単射な圏論的同値の右持ち上げ条件の相対内部 Hom による保存。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：右因子の単射な前合成同値の pushout-product は再び単射な前合成同値。
 規約：始域・標的と固定図式のパラメータに quasicategory 性を要求しない。
 使われ方：指定部分と標的の像を同時に保つ同値の持ち上げ。 -/
+@[kerodon 01F1, kerodon 01G3]
 lemma EquivalenceLifting.relativeInternalHom {A B D E : SSet.{u}}
     {U : D ⟶ E} (hU : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting U) (i : A ⟶ B) [Mono i]
     (sq' : CategoryTheory.MonoidalClosed.internalHom.PullbackObjObj i U) :

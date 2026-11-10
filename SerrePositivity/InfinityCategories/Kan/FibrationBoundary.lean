@@ -4,6 +4,7 @@ public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan fibration の基点上の fiber と連結写像の幾何的構成。
@@ -409,6 +410,7 @@ end BoundaryLift
 方針：代表を定数ホーンに沿って持ち上げ、最後の面の fiber の類を取る。
 規約：π_(n+1)(B,p(e)) から π_n(fiber,e) へ送る。零次数の標的は群としない。
 使われ方：Kerodon Construction 3.2.5.1、Theorem 3.2.6.1。長完全列の連結射。 -/
+@[kerodon 00WG]
 noncomputable def connecting (p : E ⟶ B) [Fibration p] [KanComplex B]
     (e : E _⦋0⦌) (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B n (p.app _ e) →

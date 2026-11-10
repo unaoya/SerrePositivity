@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoin
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：射 X→Y の写像円柱から relative join X⋆_Y Y への標準比較。
@@ -69,6 +70,7 @@ lemma relativeJoinPrism_projection {X Y : SSet.{u}} (f : X ⟶ Y) :
 方針：prism の終端の公式で円柱部分と Y の包含を pushout から貼る。
 規約：射の同値性は構成の仮定にも結論にも含めない。
 使われ方：Kerodon Proposition 5.2.4.5、1 単体上の scaffold の全体比較の射。 -/
+@[kerodon 024R]
 noncomputable def relativeJoinCylinderComparison {X Y : SSet.{u}} (f : X ⟶ Y) :
     pushout (prismEndpoint 1 X) f ⟶ relativeJoin f (𝟙 Y) :=
   pushout.desc (relativeJoinPrism f) (relativeJoinInr f (𝟙 Y)) (relativeJoinPrism_one f)

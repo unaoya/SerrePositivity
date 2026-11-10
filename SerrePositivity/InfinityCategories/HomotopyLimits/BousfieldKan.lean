@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：通常の小圏の図式に対する Bousfield–Kan 型の重みと標準比較射。
@@ -27,6 +28,7 @@ variable {I : Type u} [SmallCategory I]
 方針：over 圏への後合成関手と nerve 関手を合成する。
 規約：I/i の対象は終点 i を持つ射であり、i から出る射ではない。
 使われ方：Kerodon 7.5.1.1 の切断模型と比較する重み付き end。 -/
+@[kerodon 03A0]
 def bousfieldKanWeight (I : Type u) [SmallCategory I] : I ⥤ SSet.{u} :=
   Over.mapFunctor I ⋙ nerveFunctor
 
@@ -34,6 +36,7 @@ def bousfieldKanWeight (I : Type u) [SmallCategory I] : I ⥤ SSet.{u} :=
 方針：N(I/i) を重みとする単体的自然変換の空間を取る。
 規約：任意の H で定義する。Kan 図式での homotopy 極限性は別の証明対象。
 使われ方：Kerodon 7.5.4.1、γ3 の標準比較射の具体的な標的。 -/
+@[kerodon 03A0]
 noncomputable def bousfieldKanHolim (H : I ⥤ SSet.{u}) : SSet.{u} :=
   weightedSections (bousfieldKanWeight I) H
 

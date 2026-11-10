@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の区間付き対角から二つの同じ因子の join への射。
@@ -29,6 +30,7 @@ noncomputable def joinDiagonalCylinder (K : SSet.{u}) :
 方針：両側の係数が同じ円柱を、通常の join の円柱比較へ写す。
 規約：端点零は左包含、端点一は右包含になる。
 使われ方：Kerodon Construction 5.2.3.1、relative join の基底の対角射。 -/
+@[kerodon 0242]
 noncomputable def joinDiagonal (K : SSet.{u}) : (Δ[1] : SSet.{u}) ⊗ K ⟶ join K K :=
   joinDiagonalCylinder K ≫ joinCylinderMap K K
 

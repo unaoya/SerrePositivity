@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.FatNormalFormEquiv
 public import SerrePositivity.KST.Comparison.FatRealizationFunctor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 自由な退化の補助模型
@@ -58,6 +59,7 @@ def freeDegeneracies : SSet.{u} ⥤ SSet.{u} := discreteRowsFunctor ⋙ fatReali
 規約：元の退化写像も使って全射による引き戻しを評価する。
 使われ方：自由な退化の模型の自然な augmentation。
 -/
+@[kerodon 0124]
 def freeDegeneraciesAugmentation : freeDegeneracies.{u} ⟶ 𝟭 SSet.{u} :=
   Functor.whiskerLeft discreteRowsFunctor fatRealizationToDiagonalNatTrans ≫
     discreteRowsDiagonalIso.hom

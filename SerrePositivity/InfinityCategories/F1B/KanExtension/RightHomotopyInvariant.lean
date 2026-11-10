@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.ComparisonCocartesian
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.TransportEdgeHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定自然変換の h での等式による右 Kan 拡張条件の不変性。
@@ -94,6 +95,7 @@ lemma RightKanConeTransport.coneFamily_iso_of_homMk_eq
 方針：輸送を選び、固定図式上の錐の同型によって極限性を移す。
 規約：α と β は同じ両端を持つ。
 使われ方：Kerodon Remark 7.3.1.10 の右側。 -/
+@[kerodon 02YG]
 lemma isRightKanExtension_iff_of_homMk_eq {K C D : SSet.{u}} [Quasicategory D]
     (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
     (α β : SSet.Homotopy (δ ≫ F) F₀)

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：coherent nerve による ∞ 圏の ∞ 圏と空間の ∞ 圏。
@@ -21,12 +22,14 @@ namespace SerrePositivity.InfinityCategories
 方針：関手単体集合の core を Hom とする単体的圏 QCat の coherent nerve を取る。
 規約：対象が宇宙 u+1 に属するので値も SSet.{u+1}。
 使われ方：Kerodon Construction 5.5.3.1、straightening の Cat_∞ 値関手の標的。 -/
+@[kerodon 020T, kerodon 020U]
 noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}
 
 /-- 概要：Cat_∞ は quasicategory。
 方針：QCat の局所 Kan 性から既存の γ1 の定理を適用する。
 規約：coherent nerve の追加の充填仮定は置かない。
 使われ方：Kerodon Proposition 5.5.3.3、Cat_∞ 値の関手 ∞ 圏。 -/
+@[kerodon 020B, kerodon 020U, kerodon 04FD]
 instance catInfinity_quasicategory : Quasicategory CatInfinity.{u} :=
   Coherent.simplicialNerve_quasicategory QCat.{u}
 
@@ -47,6 +50,7 @@ instance catInfinityFunctor_quasicategory (C : SSet.{u + 1}) :
 方針：単体集合と全ホーンの充填性をまとめる。
 規約：単体の宇宙は u、対象の宇宙は u+1。
 使われ方：Kerodon Construction 3.1.6.1、空間の ∞ 圏の単体的圏の対象。 -/
+@[kerodon 00TZ]
 structure KanObject where
   /-- 対象の単体集合。 -/
   obj : SSet.{u}
@@ -83,6 +87,7 @@ instance kanObject_enrichedCategory : EnrichedCategory SSet.{u} KanObject.{u} wh
 方針：内部 Hom の単位からの射との同値を使う。
 規約：通常の圏構造と豊穣構造の合成を整合させる。
 使われ方：Kerodon Construction 3.1.6.1、Kan の単体的圏。 -/
+@[kerodon 00TZ]
 instance kanObject_simplicialCategory : SimplicialCategory KanObject.{u} where
   homEquiv {X Y} := curryHomEquiv' (X := X.obj) (Y := Y.obj)
   homEquiv_id X := curry'_id X.obj
@@ -100,12 +105,14 @@ instance kanObject_sHom_kanComplex (X Y : KanObject.{u}) :
 方針：Kan 複体の単体的圏の coherent nerve を取る。
 規約：極限・余極限の主張はこの定義に含めない。
 使われ方：Kerodon Construction 3.1.6.1、left fibration の straightening の値域。 -/
+@[kerodon 00TZ, kerodon 01ZW]
 def SpaceInfinity : SSet.{u + 1} := SimplicialNerve KanObject.{u}
 
 /-- 概要：空間の ∞ 圏 𝒮 は quasicategory。
 方針：内部 Hom の Kan 性と既存の γ1 を組み合わせる。
 規約：追加の充填仮定を課さない。
 使われ方：Kerodon Construction 3.1.6.1、𝒮 値の関手 ∞ 圏。 -/
+@[kerodon 01YY]
 instance spaceInfinity_quasicategory : Quasicategory SpaceInfinity.{u} :=
   Coherent.simplicialNerve_quasicategory KanObject.{u}
 

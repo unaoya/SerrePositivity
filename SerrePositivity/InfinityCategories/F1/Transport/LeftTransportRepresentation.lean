@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningBaseChange
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：任意の単体集合上の空間値 covariant transport representation のデータ。
@@ -63,6 +64,7 @@ lemma fiberComparisonBaseChange_isQCatEquivalence_fibers
 方針：unstraightening への底上の比較に各 fiber の同値性を添える。
 規約：比較射は実際の単体集合の射であり、同値類や存在命題ではない。
 使われ方：Kerodon Theorem 5.6.5.12、境界上で指定する表現の入力。 -/
+@[kerodon 05QT]
 structure LeftTransportRepresentation {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] where
   diagram : B ⟶ SpaceInfinity.{u}
   comparison : E ⟶ leftUnstraightening diagram

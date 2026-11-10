@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.AnodyneHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 局所化同型から K-L9 のホモトピー類への比較
@@ -64,6 +65,7 @@ theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [Kan
 規約：像の基点は射による実際の像とする。
 使われ方：ループの次数移動との同値の合成。
 -/
+@[kerodon 00ZL]
 def kanHomotopyEquivOfLocalizedIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f))
     (a : A _⦋0⦌) (n : ℕ) :

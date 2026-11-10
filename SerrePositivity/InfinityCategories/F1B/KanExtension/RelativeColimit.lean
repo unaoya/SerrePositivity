@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeSliceMapping
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：写像空間による相対始対象と標準的な U 余極限の定義。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：右 pinched 模型の比較のホモトピー同値性で定義する。
 規約：quasicategory に適用したとき Kerodon Definition 7.1.5.1 の意味を持つ。
 使われ方：局所余錐と大域的な関手の相対普遍性の共通の型。 -/
+@[kerodon 02KU]
 def KanRelativeInitialVertex {D E : SSet.{u}} (U : D ⟶ E) (x : D _⦋0⦌) : Prop :=
   ∀ y : D _⦋0⦌, IsSimplicialHomotopyEquivalence (pinchedHomMap U x y)
 
@@ -29,6 +31,7 @@ def KanRelativeInitialVertex {D E : SSet.{u}} (U : D ⟶ E) (x : D _⦋0⦌) : P
 方針：標準の coslice の頂点 c に相対始対象の条件を課す。
 規約：Kerodon Definition 7.1.6.1 の余極限側。操作的な充填条件は定義に含めない。
 使われ方：標準的な相対 Kan 拡張の局所入力。 -/
+@[kerodon 02KG]
 def IsRelativeColimitCone {K D E : SSet.{u}} (U : D ⟶ E) {p : K ⟶ D}
     (c : JoinCocone p) : Prop :=
   KanRelativeInitialVertex (sliceUnderPostcomp p U) c

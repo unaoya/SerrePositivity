@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Diagrams.OverPullbackColimits
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：底の単体ごとに形が変わる関手の族を、底上の単体集合として構成する。
@@ -78,6 +79,7 @@ lemma fiberwiseFunctorRestrict_comp {B : SSet.{u}} (F : Over B ⥤ SSet.{u})
 方針：標準単体上の射の依存和を各次数に置く。
 規約：底の単体の宇宙 u を保つ。
 使われ方：fiber ごとの普遍余錐の大域的な組み立ての値域。 -/
+@[kerodon 046N]
 def fiberwiseFunctor {B : SSet.{u}} (F : Over B ⥤ SSet.{u}) (D : SSet.{u}) : SSet.{u} where
   obj n := FiberwiseFunctorSimplex F D (stdSimplex.obj n.unop)
   map α := ↾fiberwiseFunctorRestrict F D (stdSimplex.map α.unop)

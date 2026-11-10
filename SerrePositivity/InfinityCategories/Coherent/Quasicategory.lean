@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Coherent.FilledRestriction
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 局所 Kan な単体的圏の coherent nerve
@@ -25,6 +26,7 @@ namespace SerrePositivity.InfinityCategories.Coherent
 方針：各内部ホーンの端点 Hom の Kan 延長から豊穣関手を復元し、面ごとの充填判定を使う。
 規約：前提は単体的圏と全ての豊穣 Hom の Kan 性のみ。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.1。γ1 の最終定理。 -/
+@[kerodon 00LJ]
 instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]
     [∀ X Y : C, SSet.KanComplex (SimplicialCategory.sHom X Y)] :
     SSet.Quasicategory (SimplicialNerve C) := by

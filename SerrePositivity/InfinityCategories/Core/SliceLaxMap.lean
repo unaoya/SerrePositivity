@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramVertexEquiv
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：直接定義の slice から太い slice への比較と任意パラメーターでの表示。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：太い join の比較で普遍錐を前合成し、太い slice の普遍性で curry する。
 規約：図式 p を厳密に固定する。
 使われ方：Kerodon Proposition 4.6.4.19 の対角比較。 -/
+@[kerodon 02GH]
 noncomputable def sliceLaxMap {K X : SSet.{u}} (p : K ⟶ X) : sliceOver p ⟶ laxSlice p :=
   laxSliceCurry (fatJoinComparison (sliceOver p) K ≫ sliceOverUncurry (𝟙 (sliceOver p)))
     (by rw [← Category.assoc, fatJoinInr_comparison, sliceOverUncurry_fixed])

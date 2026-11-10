@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Diagrams.SimplicialReplacement
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：simplicial replacement から weighted nerve への taut scaffold の射。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：各初区間の包含で制限した後、底の始点から各頂点への射を適用する。
 規約：図式の自然性は初区間の包含と係数関手の合成則から従う。
 使われ方：Kerodon Construction 5.3.4.11、taut scaffold の単体ごとの値。 -/
+@[kerodon 0373]
 def tautScaffoldDiagram {C : Type u} [Category.{u} C]
     (F : C ⥤ SSet.{u}) {n : ℕ} (s : simplicialReplacementSimplex F n) :
     simplexPrefixWeight n ⟶ s.1 ⋙ F where
@@ -41,6 +43,7 @@ def tautScaffoldDiagram {C : Type u} [Category.{u} C]
 方針：始点から各初区間への輸送で作った図式を weighted nerve の単体とする。
 規約：係数の Kan 性を仮定せず、面と退化に関する自然性を直接確認する。
 使われ方：Kerodon Construction 5.3.4.11、二つの全空間を比較する共通の始域からの射。 -/
+@[kerodon 0373]
 def tautScaffold {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
     simplicialReplacement F ⟶ weightedNerve F where
   app _ := ↾fun s ↦ ⟨s.1, tautScaffoldDiagram F s⟩
@@ -69,6 +72,7 @@ def tautScaffold {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
 方針：両射とも底の射列を保つことを各次数で確認する。
 規約：射影は simplicial replacement と weighted nerve の標準の射影。
 使われ方：Kerodon Remark 5.3.4.12、scaffold の底に関する可換性。 -/
+@[kerodon 0374]
 lemma tautScaffold_projection {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
     tautScaffold F ≫ weightedNerveProjection F = simplicialReplacementProjection F := rfl
 

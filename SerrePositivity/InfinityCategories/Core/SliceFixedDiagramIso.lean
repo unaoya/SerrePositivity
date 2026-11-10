@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderExtension
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderFixedDiagram
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：固定図式上の join の関手の同型から slice の関手の同型へ戻す。
@@ -102,6 +103,7 @@ lemma nonempty_sliceOverFixedDiagramVertexIso_of_functorIso
 方針：可逆円柱への延長と固定図式上の同型による二方向を組み合わせる。
 規約：X は quasicategory、パラメーター A と添字 K は任意。
 使われ方：Kerodon Lemma 4.6.4.25 の正確な相対的同型判定。 -/
+@[kerodon 01KV]
 lemma nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso
     {A K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (f g : A ⟶ sliceOver p) :
     Nonempty (FunctorIso f g) ↔

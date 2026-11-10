@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCocone
 public import SerrePositivity.InfinityCategories.F1B.Cones.CoconePostCartesian
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitFamilyCriterion
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialFiberTransfer
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration 上の標準 U 余極限条件と全余錐の相対充填の同値。
@@ -69,6 +70,7 @@ lemma kanRelativeCoconeLifting_of_isRelativeColimitCone {K D E : SSet.{u}}
 方針：coslice の写像空間への移送と、fiber から全空間への移送を組み合わせる。
 規約：添字 K に quasicategory 性を要求しない。
 使われ方：標準の相対 Kan 拡張の局所条件と操作的構成の界面。 -/
+@[kerodon 069Q]
 lemma kanRelativeCoconeLifting_iff_isRelativeColimitCone {K D E : SSet.{u}}
     [Quasicategory D] [Quasicategory E] (U : D ⟶ E) [InnerFibration U]
     {p : K ⟶ D} (c : JoinCocone p) :

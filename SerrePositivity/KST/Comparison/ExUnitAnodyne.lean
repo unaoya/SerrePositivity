@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.ExPairingRegular
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Ex の単位の anodyne 性
@@ -37,6 +38,7 @@ theorem exUnitRange_anodyne (X : SSet.{u}) :
 規約：Moss 2020 Theorem 22。
 使われ方：Ex∞ への各遷移とその合成の anodyne 性。
 -/
+@[kerodon 00Z2]
 theorem exUnitAt_anodyne (X : SSet.{u}) : SSet.anodyneExtensions (exUnitAt X) := by
   rw [← SSet.Subcomplex.toRange_ι (exUnitAt X)]
   exact SSet.anodyneExtensions.comp_mem _ _

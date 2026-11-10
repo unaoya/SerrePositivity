@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceFiniteAnodyne
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MissingFaceCardStage
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定面を含まない面の合併の包含は、内点が指定面の両端の間にあれば inner anodyne。
@@ -19,6 +20,7 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2.Idempotent
 
 /-- 元の指定面を含まない面の合併の包含は、指定面の二頂点の間に内点があれば内角 anodyne。 -/
+@[kerodon 03ZB]
 lemma missingFaceComplex_innerAnodyne {n : ℕ} (J : Finset (Fin (n + 1)))
     (j i k : Fin (n + 1)) (hj : j ∉ J) (hi : i ∈ J) (hk : k ∈ J)
     (hij : i < j) (hjk : j < k) :

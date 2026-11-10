@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：coherent nerve の零単体と元の単体的圏の対象の対応。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：全ての対象を K に、全ての Hom を恒等に写す。
 規約：任意の単体的圏で使い、充填性を仮定しない。
 使われ方：Kerodon §2.4.3、Remark 3.1.6.3、𝒮 と Cat_∞ の頂点の表示。 -/
+@[kerodon 020T]
 noncomputable def coherentNerveVertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (K : C) : (SimplicialNerve C) _⦋0⦌ where
   obj _ := K

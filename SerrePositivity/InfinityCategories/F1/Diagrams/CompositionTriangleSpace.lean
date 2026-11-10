@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同じ接続する二辺を固定した、全合成三角形の空間は可縮。
@@ -60,6 +61,7 @@ def compositionTriangleSpace {X : SSet.{u}} {x y z : X _⦋0⦌}
   innerTriangleExtensionSpace (composableEdgeHorn e f)
 
 /-- 任意の quasicategory 内で、同じ指定二辺の全合成三角形の空間は可縮 Kan。 -/
+@[kerodon 007A]
 lemma compositionTriangleSpace_isContractibleKan {X : SSet.{u}} [Quasicategory X]
     {x y z : X _⦋0⦌} (e : X.Edge x y) (f : X.Edge y z) :
     IsContractibleKan (compositionTriangleSpace e f) :=

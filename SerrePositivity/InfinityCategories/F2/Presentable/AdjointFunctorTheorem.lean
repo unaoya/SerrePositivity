@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeAdjointFunctorCriterion
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableInversionLocality
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：presentable 圏の連続前層の表現可能性と随伴関手定理を無条件に接続する。
@@ -42,6 +43,7 @@ lemma presentableContinuous_isRepresentable
 方針：小さい反変 Hom 合成を表現し、元の全随伴を構成する。
 規約：比較界面や一般局所化の存在を追加入力にしない。
 使われ方：HTT 5.5.2.9、Pr^L の随伴による特徴づけ。 -/
+@[kerodon 06Q5]
 lemma exists_rightAdjoint_iff_preservesSmallColimits
     {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D]
     (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) :

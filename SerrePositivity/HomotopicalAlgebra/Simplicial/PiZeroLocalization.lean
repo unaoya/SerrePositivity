@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kan.PiZeroConstant
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # anodyne局所化で可逆な射は実際の連結成分の全単射を誘導する
@@ -44,6 +45,7 @@ namespace SerrePositivity.SimplicialModel.PiZeroLocalization
 open PiZeroConstant
 variable {X Y : SSet.{v}} {T : Type v}
 
+@[kerodon 00GQ]
 def classEquiv : HomotopyClasses.obj X (discrete T) ≃ (SSet.π₀ X → T) where
   toFun := Quot.lift toComponents (fun _ _ ⟨H⟩ => congrArg toComponents (homotopy_eq H))
   invFun t := HomotopyClasses.mk (fromComponents t)

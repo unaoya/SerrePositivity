@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseEnriche
 public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
 public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：edgewise な豊穣 Hom の共通解像から元の coherent nerve への同値。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：各 Hom で重みの右半分への制限を使い、同じ評価点で単位と合成を計算する。
 規約：対象は自明な部分型の値を取り出す。
 使われ方：Kerodon §8.1.1、共通解像を元の coherent nerve と比較する豊穣関手。 -/
+@[kerodon 04F9, kerodon 04FA]
 def edgewiseEnrichedRight (C : Type v) [Category.{u} C] [SimplicialCategory C] :
     EnrichedFunctor SSet.{u} (EdgewiseEnrichedObject C) C where
   obj X := X.val
@@ -75,6 +77,7 @@ lemma edgewiseEnrichedInfinityMap_isEssentiallySurjective (C : Type v)
 方針：写像空間の同値と対象の本質的全射性を同値判定に使う。
 規約：比較の順方向は右端射影の coherent nerve。
 使われ方：Kerodon Corollary 5.6.0.6、左右の Hom の規約を一般の図式で移送する。 -/
+@[kerodon 04FA, kerodon 04FD]
 lemma edgewiseEnrichedInfinityMap_isQCatEquivalence (C : Type v) [Category.{u} C]
     [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] :
     IsQCatEquivalence (edgewiseEnrichedInfinityMap C) :=

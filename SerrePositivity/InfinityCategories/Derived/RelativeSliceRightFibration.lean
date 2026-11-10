@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.JoinAnodyne
 public import SerrePositivity.InfinityCategories.Core.RightFibration
+public import Mathlib.Tactic.CrossRefAttribute
 /-!
 概要：inner fibration の相対 slice 比較は右ファイブレーション。
 方針：右ホーンとの pushout join の inner anodyne 性を、既存の相対 slice 持ち上げに渡す。
@@ -11,6 +12,7 @@ universe u
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory SSet
 /-- inner fibration の相対 slice の全比較は、任意の固定部分図式に対し右ファイブレーション。 -/
+@[kerodon 01BZ, kerodon 01C0]
 instance relativeSliceOverMap_rightFibration {K E B : SSet.{u}}
     (p : K ⟶ E) (r : E ⟶ B) [InnerFibration r] (K₀ : K.Subcomplex) :
     RightFibration (relativeSliceOverMap p K₀.ι r) where

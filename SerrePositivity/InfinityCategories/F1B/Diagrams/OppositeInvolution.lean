@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Opposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：単体集合の反転を二度適用した関手を恒等関手と厳密に同定する。
@@ -38,6 +39,7 @@ lemma opposite_doubleIso_eqToHom (X : SSet.{u}) :
 方針：対象の外延的な等式と標準同型の成分の計算をまとめる。
 規約：射と対象を同時に正規化するための関手の等式。
 使われ方：点ごとの右 Kan 存在条件と構成結果の二重反転を消す。 -/
+@[kerodon 01EV]
 lemma oppositeFunctor_square : SSet.opFunctor.{u} ⋙ SSet.opFunctor = 𝟭 SSet.{u} := by
   exact Functor.ext_of_iso SSet.opFunctorCompOpFunctorIso
     opposite_opposite_eq opposite_doubleIso_eqToHom

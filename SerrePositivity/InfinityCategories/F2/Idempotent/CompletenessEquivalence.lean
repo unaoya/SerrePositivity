@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の coherent 冪等完備性は ∞ 圏の同値で保たれる。
@@ -31,6 +32,7 @@ lemma IsIdempotentComplete.of_equivalence {X Y : SSet.{u}}
   exact strongSplitting_exists_of_hasColimit d ((hasColimit_iff_of_functorIso hd).mp hs)
 
 /-- 指定した元の ∞ 圏同値は、coherent 冪等完備性を保存・反映する。 -/
+@[kerodon 040E]
 lemma isIdempotentComplete_iff_of_equivalence {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) :
     IsIdempotentComplete X ↔ IsIdempotentComplete Y :=

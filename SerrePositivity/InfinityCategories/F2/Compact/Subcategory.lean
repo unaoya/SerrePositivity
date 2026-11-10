@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：κ-compact 対象の全部分 ∞ 圏と、その coherent 冪等完備性を構成。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories.F2.Compact
 open Idempotent
 
 /-- 小さい κ-filtered 添字について compact な対象の、元の圏の全部分 ∞ 圏。 -/
+@[kerodon 064F]
 def kappaCompactObjects (κ : Cardinal.{u}) (C : SSet.{max u v}) [Quasicategory C] :
     SSet.{max u v} :=
   fullSubcomplexOnVertices C (IsKappaCompact.{u, v} κ)

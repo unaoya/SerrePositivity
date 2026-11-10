@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitLeftTriangle
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：各点の標準単位比較の同値性から指定単位を持つ随伴を構成する。
@@ -56,6 +57,7 @@ lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom
 方針：順方向は随伴の標準比較、逆方向は comma 比較と三角恒等式の構成。
 規約：標準比較そのものの同値性を使い、任意の各点の同値へは弱めない。
 使われ方：Kerodon Corollary 6.2.6.5 の局所存在判定。 -/
+@[kerodon 02FX]
 lemma qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition
     {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) :

@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.Core.Slice
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 自明 Kan fibration に沿う余極限の保存と反映
 
@@ -25,6 +26,7 @@ open CategoryTheory SSet
 open scoped Simplicial
 
 /-- 自明 Kan fibration による coslice の後合成も自明 Kan fibration。 -/
+@[kerodon 01NT]
 instance trivialKanFibration_sliceUnderPostcomp {K E B : SSet.{u}} (p : K ⟶ E) (q : E ⟶ B)
     [TrivialKanFibration q] : TrivialKanFibration (sliceUnderPostcomp p q) := by
   apply (trivialKanFibration_iff_boundary _).2

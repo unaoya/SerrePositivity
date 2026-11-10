@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitMappingComparison
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOppositeGeneral
 public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の充満忠実関手は指定した全錐の極限性・余極限性を反映する。
@@ -26,6 +27,7 @@ namespace SerrePositivity.InfinityCategories.F2.Presentable
 方針：像の全 Hom 極限を元の共変 Hom へ全自然同型で戻す。
 規約：元の形状に充填性を要求しない。
 使われ方：小さい Hom 模型への極限保存性の回収。 -/
+@[kerodon 02WD]
 lemma isLimitCone_of_fullyFaithful_image {K C D : SSet.{u}}
     [Quasicategory C] [Quasicategory D] (F : C ⟶ D) (hF : IsFullyFaithful F)
     {a : K ⟶ C} (c : JoinCone a) (hc : IsLimitCone (mapJoinCone F c)) : IsLimitCone c := by

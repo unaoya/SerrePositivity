@@ -3,6 +3,7 @@ module
 public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
 
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体の零次数で、同じ連結成分を一本の RelStruct₀ で表す。
@@ -114,6 +115,7 @@ noncomputable def trans (r : PtSimplex.RelStruct₀ f g) (r' : PtSimplex.RelStru
 方針：退化による反射性と、ホーン充填による対称性・推移性を組み合わせる。
 規約：基点 x は零単体の範囲を制限しない。
 使われ方：Kerodon Proposition 1.2.5.10。商の等式から単一の証人を得る。 -/
+@[kerodon 00HC]
 theorem equivalence : Equivalence (fun f g : X.PtSimplex 0 x ↦
     Nonempty (PtSimplex.RelStruct₀ f g)) :=
   ⟨fun f ↦ ⟨PtSimplex.RelStruct.refl f 0⟩,
@@ -125,6 +127,7 @@ end ZeroRelations
 方針：関係が既に同値関係であることを使い、商の同値閉包を消す。
 規約：一般の単体集合では同値閉包が必要であり、ここで Kan 性を使う。
 使われ方：Kerodon Example 3.2.2.6、Theorem 3.2.6.1。低次数の完全性。 -/
+@[kerodon 00HC]
 theorem KanHomotopyZero.mk_eq_iff {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌}
     (f g : X.PtSimplex 0 x) :
     _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk f = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk g ↔ Nonempty (PtSimplex.RelStruct₀ f g) := by

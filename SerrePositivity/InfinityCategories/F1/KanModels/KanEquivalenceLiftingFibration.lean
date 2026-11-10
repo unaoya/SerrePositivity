@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体間で同値を右に持ち上げる射は、全ホーンを持ち上げる。
@@ -31,6 +32,7 @@ def quasicategoryCoreIsoOfKan (X : SSet.{u}) [KanComplex X] :
   · exact quasicategoryCoreLift_ι (𝟙 X) h
 
 /-- Kan 複体間の同じ射に対する同値の右持ち上げは、全ホーンの右持ち上げを与える。 -/
+@[kerodon 01NW]
 lemma fibration_of_kanEquivalenceLifting_of_kanComplex {X Y : SSet.{u}}
     [KanComplex X] [KanComplex Y] (p : X ⟶ Y)
     (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p) : Fibration p := by

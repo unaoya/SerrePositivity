@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialComparison
 public import SerrePositivity.InfinityCategories.Core.ConeOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：相対終対象と標準相対極限錐を定義し、反転した相対余極限と同定する。
@@ -23,6 +24,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：反転した単体集合の射に相対始対象の条件を課す。
 規約：反転は単体の順序の反転。
 使われ方：通常の slice の後合成で相対極限錐を定義する。 -/
+@[kerodon 02KU]
 def KanRelativeTerminalVertex {D E : SSet.{u}} (U : D ⟶ E) (x : D _⦋0⦌) : Prop :=
   KanRelativeInitialVertex (SSet.opFunctor.map U) (SSet.opObjEquiv.symm x)
 
@@ -30,6 +32,7 @@ def KanRelativeTerminalVertex {D E : SSet.{u}} (U : D ⟶ E) (x : D _⦋0⦌) : 
 方針：指定した錐の頂点に相対終対象条件を課す。
 規約：図式 p と標的の射 U を明示する。
 使われ方：相対右 Kan 関手の元の標準局所錐の条件。 -/
+@[kerodon 02KG]
 def IsRelativeLimitCone {K D E : SSet.{u}} (U : D ⟶ E) {p : K ⟶ D}
     (c : JoinCone p) : Prop := KanRelativeTerminalVertex (sliceOverPostcomp p U) c
 

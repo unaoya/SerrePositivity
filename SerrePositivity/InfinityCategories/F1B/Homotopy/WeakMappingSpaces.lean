@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyDetection
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：弱ホモトピー同値の Kan 標的への写像空間による判定。
@@ -36,6 +37,7 @@ lemma mapPiZero_bijective_of_iso {A B : SSet.{u}} (e : A ≅ B) :
 方針：Z^K へのホモトピー類の全単射を内部 Hom の交換で K からの全単射に移す。
 規約：A、B、K は任意の単体集合で、Z にだけ Kan 性を要求する。
 使われ方：Kerodon Proposition 3.1.7.17。 -/
+@[kerodon 03PJ]
 lemma IsWeakHomotopyEquivalence.precompose_kan {A B : SSet.{u}} {f : A ⟶ B}
     (hf : IsWeakHomotopyEquivalence f) (Z : SSet.{u}) [KanComplex Z] :
     IsSimplicialHomotopyEquivalence ((pre f).app Z) := by
@@ -54,6 +56,7 @@ lemma IsWeakHomotopyEquivalence.precompose_kan {A B : SSet.{u}} {f : A ⟶ B}
 方針：順方向は指数の交換、逆方向は各写像空間の π₀ の全単射を取る。
 規約：元の射の単射性や quasicategory 性は不要。
 使われ方：Kerodon Proposition 3.1.7.17 の同値な表示。 -/
+@[kerodon 03PJ]
 lemma isWeakHomotopyEquivalence_iff_precompose_kan {A B : SSet.{u}} (f : A ⟶ B) :
     IsWeakHomotopyEquivalence f ↔
       ∀ (Z : SSet.{u}) [KanComplex Z], IsSimplicialHomotopyEquivalence ((pre f).app Z) :=

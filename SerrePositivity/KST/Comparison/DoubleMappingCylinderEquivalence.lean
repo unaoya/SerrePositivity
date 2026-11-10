@@ -5,6 +5,7 @@ public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import SerrePositivity.KST.Comparison.LocalizedPushoutCube
 public import SerrePositivity.KST.Comparison.LocalizedCoproductMaps
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 二重写像円筒の模型の局所化不変性
@@ -46,6 +47,7 @@ open scoped _root_.Simplicial
 規約：Segal Lemma 1.7 の模型の不変性の補助。
 使われ方：元の図式と Kan な図式の二重写像円筒の比較。
 -/
+@[kerodon 032S]
 theorem doubleMappingCylinderMap_localized_isIso {C A B C' A' B' : SSet.{u}}
     (f : C ⟶ A) (g : C ⟶ B) (f' : C' ⟶ A') (g' : C' ⟶ B')
     (c : C ⟶ C') (a : A ⟶ A') (b : B ⟶ B')

@@ -3,6 +3,7 @@ public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
 public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 関手圏の余極限の存在と点ごとの判定
 概要：各点での余極限の存在から自然な余極限余錐を構成し、任意の余極限余錐が点ごとに普遍となることを示す。
@@ -34,6 +35,7 @@ lemma IsPointwiseColimitCone.hasPointwiseColimits {J K X : SSet.{u}}
 /-- 概要：図式の全評価に余極限が存在すれば、自然な点ごとの余極限余錐が存在する。
 方針：転置した図式の普遍余錐を族として選び、内部 Hom を再び転置する。
 規約：X は quasicategory、J と K は任意。使われ方：HTT 5.1.2.2 の余極限側の存在。 -/
+@[kerodon 02XJ]
 lemma exists_pointwiseColimitCone {J K X : SSet.{u}} [Quasicategory X]
     (p : J ⟶ (ihom K).obj X) (hp : HasPointwiseColimits p) :
     ∃ c : JoinCocone p, IsPointwiseColimitCone c := by
@@ -71,6 +73,7 @@ lemma exists_pointwiseColimitCone {J K X : SSet.{u}} [Quasicategory X]
 /-- 概要：全評価が余極限を持つ図式は関手圏で余極限を持つ。
 方針：点ごとの自然な余極限余錐を構成して関手圏の判定を使う。
 規約：X は quasicategory。使われ方：パラメーターを保った cofiber の普遍性。 -/
+@[kerodon 05QG]
 lemma hasColimit_of_hasPointwiseColimits {J K X : SSet.{u}} [Quasicategory X]
     (p : J ⟶ (ihom K).obj X) (hp : HasPointwiseColimits p) : HasColimit p := by
   obtain ⟨c, hc⟩ := exists_pointwiseColimitCone p hp
@@ -98,6 +101,7 @@ lemma isPointwiseColimitCone_of_isColimitCone_of_hasPointwiseColimits {J K X : S
 /-- 概要：各点で余極限が存在すれば、自然な余錐の関手圏での余極限性と点ごとの余極限性は同値。
 方針：点ごとの存在・一意性による向きと、点ごとの判定による向きを合わせる。
 規約：X は quasicategory、J・K は任意。使われ方：HTT 5.1.2.2 の余極限の完全な比較。 -/
+@[kerodon 05QG]
 lemma isColimitCone_iff_pointwise_of_hasPointwiseColimits {J K X : SSet.{u}}
     [Quasicategory X] {p : J ⟶ (ihom K).obj X} (hp : HasPointwiseColimits p)
     (c : JoinCocone p) : IsColimitCone c ↔ IsPointwiseColimitCone c :=

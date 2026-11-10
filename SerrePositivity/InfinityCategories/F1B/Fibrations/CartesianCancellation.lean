@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianCancellation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：三角形の cartesian 辺の消去則。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories.F1B
 方針：反転後の最初の辺と長辺を cocartesian な消去則に渡す。
 規約：辺の等式は反転した単体の面の計算で保持する。
 使われ方：cartesian な二つの輸送の間の垂直辺の可逆性。 -/
+@[kerodon 01TS]
 lemma isCartesianEdge_triangle_first_of_second_long {X B : SSet.{u}} [Quasicategory B]
     (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p]
     (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t)))

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：inner fibration に関する可逆辺の cartesian・cocartesian 性。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：可逆な最後の辺を持つ相対外側ホーンを充填する。
 規約：辺の可逆性は始域のホモトピー圏で判定する。
 使われ方：Kerodon Proposition 5.1.1.9 の (1) から (2)。 -/
+@[kerodon 01TB, kerodon 01TC]
 lemma isCartesianEdge_of_isInvertibleEdge {X B : SSet.{u}} [Quasicategory X]
     [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) (he : IsInvertibleEdge e) :
@@ -50,6 +52,7 @@ lemma isCocartesianEdge_of_isInvertibleEdge {X B : SSet.{u}} [Quasicategory X]
 方針：恒等射の可逆性と可逆辺の相対的充填を使う。
 規約：恒等辺は頂点 x の定値一単体として表す。
 使われ方：Kerodon Example 5.2.2.5、恒等 transport の証人。 -/
+@[kerodon 01TC]
 lemma isCocartesianEdge_constant {X B : SSet.{u}} [Quasicategory X] [Quasicategory B]
     (p : X ⟶ B) [InnerFibration p] (x : X _⦋0⦌) :
     IsCocartesianEdge p (PinchedHom.constant x 1) := by
@@ -86,6 +89,7 @@ lemma isInvertibleEdge_of_isCartesianEdge {X B : SSet.{u}} [Quasicategory B]
 方針：可逆辺の相対充填と、底の可逆性による可逆性の検出を組み合わせる。
 規約：p は quasicategory 間の inner fibration。
 使われ方：Kerodon Proposition 5.1.1.9、fiber 内の可逆性の判定。 -/
+@[kerodon 01T8, kerodon 01TB]
 lemma isInvertibleEdge_iff_isCartesianEdge {X B : SSet.{u}} [Quasicategory X]
     [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :
@@ -120,6 +124,7 @@ lemma isInvertibleEdge_of_isCocartesianEdge {X B : SSet.{u}} [Quasicategory X]
 方針：可逆辺の相対充填と、底の可逆性による可逆性の検出を組み合わせる。
 規約：p は quasicategory 間の inner fibration。
 使われ方：Kerodon Proposition 5.1.1.9、fiber 内の可逆性の判定。 -/
+@[kerodon 01TB]
 lemma isInvertibleEdge_iff_isCocartesianEdge {X B : SSet.{u}} [Quasicategory X]
     [Quasicategory B] (p : X ⟶ B) [InnerFibration p] {x y : X _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) :

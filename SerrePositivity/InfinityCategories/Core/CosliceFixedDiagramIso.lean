@@ -25,6 +25,7 @@ public import SerrePositivity.InfinityCategories.Core.LaxCoslice
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry
 public import SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # Coslice の族と固定左図式上の同型
 
@@ -122,6 +123,7 @@ lemma nonempty_sliceUnderFixedDiagramVertexIso_of_functorIso
 方針：可逆円柱への延長と固定図式上の同型による二方向を組み合わせる。
 規約：X は quasicategory、パラメーター A と添字 K は任意。
 使われ方：Kerodon Lemma 4.6.4.25 の正確な相対的同型判定。 -/
+@[kerodon 01KV]
 lemma nonempty_functorIso_iff_sliceUnderFixedDiagramVertexIso
     {A K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (f g : A ⟶ sliceUnder p) :
     Nonempty (FunctorIso f g) ↔

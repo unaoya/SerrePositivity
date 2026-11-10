@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.HomCorrespondence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定された単位による Hom 対応の全単射性から双圏随伴を構成する。
@@ -90,6 +91,7 @@ end BicategoryHomCorrespondence
 方針：自然な対応を構成し、その三角恒等式の定理を適用する。
 規約：余単位と三角恒等式は結論として構成する。
 使われ方：quasicategory の写像空間の単位判定へ接続する代数的な終点。 -/
+@[kerodon 02CY]
 noncomputable def bicategoryAdjunctionOfUnitHomBijective {B : Type u} [Bicategory.{w, v} B]
     {b c : B} {l : b ⟶ c} {r : c ⟶ b} (η : 𝟙 b ⟶ l ≫ r)
     (hη : ∀ {a : B} (g : a ⟶ b) (h : a ⟶ c),
@@ -111,6 +113,7 @@ lemma bicategoryAdjunctionOfUnitHomBijective_unit {B : Type u} [Bicategory.{w, v
 方針：順方向は adjunct の全単射、逆方向は上の構成と単位の回収を使う。
 規約：対象ごとの Hom だけの条件には弱めない。
 使われ方：指定単位による特徴づけの代数的な判定。 -/
+@[kerodon 02CY, kerodon 02CZ]
 lemma bicategory_exists_adjunction_unit_iff {B : Type u} [Bicategory.{w, v} B]
     {b c : B} {l : b ⟶ c} {r : c ⟶ b} (η : 𝟙 b ⟶ l ≫ r) :
     (∃ a : Bicategory.Adjunction l r, a.unit = η) ↔

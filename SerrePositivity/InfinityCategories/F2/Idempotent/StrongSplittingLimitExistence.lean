@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeIdempotent
 public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimit
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：指定した元の全 Idem 図式の極限から、同じ図式の厳密な強い分裂が存在する。
@@ -27,11 +28,13 @@ lemma strongSplitting_exists_of_hasLimit {X : SSet.{u}} [Quasicategory X]
   exact ⟨oppositeIdempotentSplittingToOriginal s⟩
 
 /-- 指定した元の全 coherent 冪等図式の強い分裂の存在と、同じ図式の極限の存在は同値。 -/
+@[kerodon 0403]
 lemma nonemptyStrongSplitting_iff_hasLimit {X : SSet.{u}} [Quasicategory X]
     (d : CoherentIdempotent X) : Nonempty (StrongSplitting d) ↔ HasLimit d :=
   ⟨fun ⟨s⟩ ↦ s.hasLimit, strongSplitting_exists_of_hasLimit d⟩
 
 /-- 冪等完備性は、全ての元の coherent 冪等図式の極限の存在と同値。 -/
+@[kerodon 040C]
 lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] :
     IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d := by
   constructor

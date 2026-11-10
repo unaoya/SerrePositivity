@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.PinchedHom.Index
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 任意の単体的集合の右 pinched 写像空間
 
@@ -109,6 +110,7 @@ open scoped Simplicial
 /-- 概要：任意の単体的集合と二頂点に対する右 pinched 写像空間。
 方針：先頭面と最終頂点を固定した単体を、最終点固定延長で引き戻す。
 規約：Kerodon §4.6.5。使われ方：dg nerve の Kan 写像空間の基礎。 -/
+@[kerodon 01KX]
 def pinchedHom {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} where
   obj n := PinchedHom.Simplex x y n.unop.len
   map f := ↾fun s => s.pullback f.unop

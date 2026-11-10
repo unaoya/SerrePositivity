@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：元の pullback の二射影を保持して core の pullback を回収する。
@@ -18,6 +19,7 @@ open CategoryTheory Limits SSet
 namespace SerrePositivity.InfinityCategories
 
 /-- 元の二射影を変えず、inner fibration に沿う pullback の core を貼り合わせる。 -/
+@[kerodon 01H6]
 lemma quasicategoryCoreMap_isPullback_of_isPullback
     {A B C D : SSet.{u}} [Quasicategory B] [Quasicategory C] [Quasicategory D]
     {p : A ⟶ B} {q : A ⟶ C} {f : B ⟶ D} {g : C ⟶ D}

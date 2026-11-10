@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.HornCover
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.InnerProductProjection
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の twisted arrow 射影は left fibration。
@@ -58,6 +59,7 @@ lemma exists_twistedArrowHorn_weight_extension {C : SSet.{u}} [Quasicategory C] 
     (oppositeSimplexInverse_normalization (b ≫ fst C.op C))
 
 /-- 元の twisted arrow の両端射影は、全ての左ホーンを持ち上げる。 -/
+@[kerodon 03JQ, kerodon 048H]
 instance twistedArrowProjection_leftFibration (C : SSet.{u}) [Quasicategory C] :
     LeftFibration (twistedArrowProjection C) where
   mem := by
@@ -70,6 +72,7 @@ instance twistedArrowProjection_leftFibration (C : SSet.{u}) [Quasicategory C] :
         (exists_twistedArrowHorn_weight_extension hi a b sq)
 
 /-- quasicategory の twisted arrow 単体集合も quasicategory。 -/
+@[kerodon 03JR]
 instance twistedArrow_quasicategory (C : SSet.{u}) [Quasicategory C] :
     Quasicategory (TwistedArrow C) := by
   have : Quasicategory (C.op ⊗ C) := quasicategory_of_innerFibration (fst C.op C)

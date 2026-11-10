@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeFunctorBoundary
 public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：図式と標的での余錐を同時に固定する相対余錐制限。
@@ -87,6 +88,7 @@ def KanRelativeCoconeLifting {K D E : SSet.{u}} (U : D ⟶ E) {p : K ⟶ D}
 方針：二つの射影へ合成し、curry と uncurry の自然性を使う。
 規約：部分パラメータ上の全余錐、K 上の図式、E 上の全余錐を厳密に固定する。
 使われ方：相対 Kan の局所持ち上げを具体的な余錐の族へ戻す。 -/
+@[kerodon 069Q]
 lemma kanRelativeCocone_lift_iff {K D E A B : SSet.{u}} (U : D ⟶ E) (i : A ⟶ B)
     (a : A ⟶ (ihom (join K (Δ[0] : SSet.{u}))).obj D)
     (d : B ⟶ (ihom K).obj D)

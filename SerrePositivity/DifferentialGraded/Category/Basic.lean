@@ -21,6 +21,7 @@ public import Mathlib.CategoryTheory.Triangulated.Pretriangulated
 public import Mathlib.CategoryTheory.Idempotents.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 public import Mathlib.CategoryTheory.Shift.Adjunction
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Category.Basic
@@ -55,11 +56,13 @@ open CategoryTheory MonoidalCategory MonoidalPreadditive
 variable (A : Type u) [CommRing A]
 
 /-- 主モデルは非有界 Ch(A) による Mathlib の豊穣圏。対象宇宙 v は独立。 -/
+@[kerodon 00PA]
 abbrev DGCategory (D : Type v) := EnrichedCategory (Complex A) D
 
 variable (D : Type v) [DGCategory A D]
 
 /-- 閉次数零の圏。単位複体から Hom 複体への chain map を射にする。 -/
+@[kerodon 00PD]
 abbrev ClosedCategory := ForgetEnrichment (Complex A) D
 
 /-- 既存の豊穣構造から Hom 複体を取り出す。 -/
@@ -199,12 +202,14 @@ open CategoryTheory MonoidalCategory HomologicalComplex
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 
 /-- 閉次数零射を結ぶ chain homotopy。境界を同一視する関係。 -/
+@[kerodon 00PZ]
 def boundaryRelation : HomRel (ClosedCategory A D) :=
   fun _ _ f g => Nonempty (Homotopy (ForgetEnrichment.homTo (Complex A) f)
     (ForgetEnrichment.homTo (Complex A) g))
 
 /-- 境界関係は合成に安定な同値関係。
 合成との両立は tensor によるホモトピーの写像から証明する。 -/
+@[kerodon 00Q3]
 instance boundaryCongruence : Congruence (boundaryRelation A D) where
   equivalence :=
     { refl := fun f => ⟨Homotopy.refl _⟩
@@ -239,6 +244,7 @@ lemma boundary_smul (a : A) {x y : ClosedCategory A D} (f g : x ⟶ y)
   ⟨h.some.smul a⟩
 
 /-- H⁰ の対象は D の対象、射は Z⁰ の境界による商。 -/
+@[kerodon 00Q4]
 abbrev HomotopyCategory := CategoryTheory.Quotient (boundaryRelation A D)
 
 /-- H⁰ の合成は境界商上 well-defined で、加法的。 -/
@@ -353,6 +359,7 @@ def complexZeroHomologyClass (K : Complex A) (c : zeroCycles K) : K.homology 0 :
   (complexZeroHomologyQuotientIso A K).hom (Submodule.Quotient.mk c)
 
 /-- 対象のHom複体の実際のMathlib homologyを用いるH⁰の射計算。 -/
+@[kerodon 00Q4]
 def homotopyHomologyEquiv :
     ((toHomotopy A D).obj x ⟶ (toHomotopy A D).obj y) ≃
       (homObject A D x y).homology 0 :=

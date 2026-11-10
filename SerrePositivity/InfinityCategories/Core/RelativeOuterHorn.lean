@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdge
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：可逆な右辺を持つ pushout-join の相対的な充填。
@@ -153,6 +154,7 @@ lemma joinUnion_lift_of_invertible_rightEdge {K X Y : SSet.{u}}
 方針：最後のホーンを境界と区間の pushout-join に同定し、相対 coslice で充填する。
 規約：指定された標的の単体を厳密に持ち上げる。
 使われ方：HTT Proposition 1.2.4.3、Kerodon §4.4.2 の相対版。 -/
+@[kerodon 01H0]
 lemma innerFibration_lift_finalHorn {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
     (q : X ⟶ Y) [InnerFibration q] (n : ℕ)
     (σ : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X)

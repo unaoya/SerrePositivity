@@ -6,6 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativePrecompo
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldPredicateReflection
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.ScaffoldIso
 public import SerrePositivity.InfinityCategories.F1B.CocartesianScaffold.Comparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cocartesian strict transport の元の全相対 Hom 作用は写像空間の同値。
@@ -45,6 +46,7 @@ lemma cocartesianStrictTransportScaffoldRestriction_isQCatEquivalence
     exact (cocartesianRelativeFunctorPredicate_iff_scaffold p q x).mp hx
 
 /-- 同じ strict transport の全相対 Hom 作用は、元の写像空間の quasicategory の同値。 -/
+@[kerodon 037V]
 lemma cocartesianStrictTransportMappingSpaceMap_isQCatEquivalence
     {C : Type u} [Category.{u} C] {E D : SSet.{u}}
     (p : E ⟶ nerve C) (q : D ⟶ nerve C)

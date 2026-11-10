@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.Comparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：cocartesian な prism を証人とする transport の分類と一意性。
@@ -20,6 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：始点・終点・底の辺の族を固定した prism を存在量化する。
 規約：垂直辺には大域的な cocartesian 性を課す。
 使われ方：Kerodon Definition 5.2.2.4、cocartesian fibration で構成した transport の記述。 -/
+@[kerodon 019N]
 def IsCocartesianTransport {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
     (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)) : Prop :=
   ∃ H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X,

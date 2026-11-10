@@ -5,6 +5,7 @@ public import SerrePositivity.InfinityCategories.F1B.Fibrations.TransportUniquen
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：右 Kan 比較錐の輸送を錐の制限の cocartesian な辺にする。
@@ -115,6 +116,7 @@ lemma RightKanConeTransport.coneFamily_iso {K C D : SSet.{u}} [Quasicategory D]
 方針：固定図式上の錐の模型で終対象性を同型に沿って移す。
 規約：指定した α は同じである。α の h での変更は別の課題。
 使われ方：Kerodon Warning 7.3.1.4 の比較錐の合成の選択不変性。 -/
+@[kerodon 02YB]
 lemma RightKanConeTransport.isLimitCone_iff {K C D : SSet.{u}} [Quasicategory D]
     {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D}
     {α : SSet.Homotopy (δ ≫ F) F₀} {c : C _⦋0⦌}

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：同値の写像空間上の充満忠実性と同値判定の両方向。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：逆射との合成の充満忠実性と写像空間の二対六則から結論する。
 規約：実際の単体的ホモトピー逆の存在を結論にする。
 使われ方：Kerodon Theorem 4.8.4.1 の必要条件。 -/
+@[kerodon 06QP]
 lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) :
     IsFullyFaithful f := by

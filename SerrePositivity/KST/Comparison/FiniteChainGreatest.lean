@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.SubdivisionLastVertex
 public import Mathlib.Order.Preorder.Finite
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 部分順序集合の非空有限鎖の最大元
@@ -39,6 +40,7 @@ theorem finiteChain_exists_greatest {P : Type u} [PartialOrder P] (s : NonemptyF
 規約：線形順序上の finiteChainMaximum を部分順序へ拡張する補助。
 使われ方：反復された有限鎖の最終頂点。
 -/
+@[kerodon 00YS]
 def finiteChainGreatest {P : Type u} [PartialOrder P] : NonemptyFiniteChains P →o P where
   toFun s := (finiteChain_exists_greatest s).choose
   monotone' s t h := (finiteChain_exists_greatest t).choose_spec.2 _

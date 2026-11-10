@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：関手単体集合の可逆な path と可逆な path の関手単体集合の比較。
@@ -22,6 +23,7 @@ namespace SerrePositivity.InfinityCategories
 方針：両端の頂点を実際の関手で表して既存の判定を使う。
 規約：K は任意、X は quasicategory。
 使われ方：Kerodon §4.5.3 の可逆 path の全部分複体の条件。 -/
+@[kerodon 01DK]
 lemma isInvertibleEdge_iff_evaluateFunctorAt_any {K X : SSet.{u}} [Quasicategory X]
     {v w : ((ihom K).obj X) _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) v w) :

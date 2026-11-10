@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinder
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Iso
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：恒等射の relative join と写像円柱の比較の厳密な同型性。
@@ -30,6 +31,7 @@ instance relativeJoinSelf_snd_isIso (S : SSet.{u}) :
 方針：引き戻しの第二射影を順方向に使う。
 規約：通常の区間が第一因子となる。
 使われ方：Kerodon Example 5.2.3.6、relative join の同じ係数の両端の同定。 -/
+@[kerodon 0247]
 noncomputable def relativeJoinSelfIso (S : SSet.{u}) :
     relativeJoin (𝟙 S) (𝟙 S) ≅ (Δ[1] : SSet.{u}) ⊗ S :=
   asIso (pullback.snd (joinMap (𝟙 S) (𝟙 S)) (joinDiagonal S))

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：quasicategory の可逆な辺を頂点とする path の単体集合。
@@ -59,6 +60,7 @@ def IsEquivalencePathVertex {Y : SSet.{u}}
 方針：区間からの関手単体集合で可逆な辺を表す頂点が張る全部分複体を取る。
 規約：辺自体の両端は固定しない。
 使われ方：Kerodon Corollary 4.5.3.24、Theorem 4.8.4.1。 -/
+@[kerodon 02BY, kerodon 032Z]
 def equivalencePath (Y : SSet.{u}) : SSet.{u} :=
   (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj Y) IsEquivalencePathVertex : SSet.{u})
 

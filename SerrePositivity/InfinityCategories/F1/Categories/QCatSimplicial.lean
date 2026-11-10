@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreProduct
 public import Mathlib.CategoryTheory.Monoidal.Closed.Enrichment
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：小さな quasicategory の単体的圏。
@@ -21,6 +22,7 @@ namespace SerrePositivity.InfinityCategories
 方針：単体集合と quasicategory 性をまとめる。
 規約：単体の宇宙は u、対象の宇宙は u+1。
 使われ方：Kerodon Construction 5.5.3.1、単体的圏 QCat の対象。 -/
+@[kerodon 020K]
 structure QuasicategoryObject where
   /-- 対象の単体集合。 -/
   obj : SSet.{u}
@@ -45,6 +47,7 @@ instance quasicategoryObject_category : Category.{u} QuasicategoryObject.{u} whe
 方針：閉モノイダル圏の自己豊穣の合成と単位を使う。
 規約：この段階の Hom は core を取る前の関手単体集合。
 使われ方：Kerodon Construction 5.5.3.1、core による豊穣構造の移送元。 -/
+@[kerodon 020K]
 instance quasicategoryObject_enrichedCategory : EnrichedCategory SSet.{u} QuasicategoryObject.{u} where
   Hom X Y := (ihom X.obj).obj Y.obj
   id X := MonoidalClosed.id X.obj
@@ -57,6 +60,7 @@ instance quasicategoryObject_enrichedCategory : EnrichedCategory SSet.{u} Quasic
 方針：閉構造の単位からの射との同値を使う。
 規約：通常の射は QuasicategoryObject の圏構造を使う。
 使われ方：Kerodon Construction 5.5.3.1、core 移送の通常の射の保持。 -/
+@[kerodon 020K]
 instance quasicategoryObject_simplicialCategory : SimplicialCategory.{u} QuasicategoryObject.{u} where
   homEquiv {X Y} := curryHomEquiv' (X := X.obj) (Y := Y.obj)
   homEquiv_id X := curry'_id X.obj
@@ -96,6 +100,7 @@ lemma qCat_sHom (X Y : QCat.{u}) :
 方針：関手単体集合の quasicategory 性と core の Kan 性を使う。
 規約：Hom に追加の充填仮定を置かない。
 使われ方：Kerodon Proposition 5.5.3.3、γ1 の局所 Kan 性の仮定。 -/
+@[kerodon 020B]
 instance qCat_sHom_kanComplex (X Y : QCat.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := by
   rw [qCat_sHom]

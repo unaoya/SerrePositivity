@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinRightBoundaryCorner
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.JoinRightColimits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：left anodyne な右因子に対する join の相対境界の inner anodyne 性。
@@ -51,6 +52,7 @@ lemma joinRightBoundary_subcomplex_isPushout {B : SSet.{u}} (A : B.Subcomplex) (
 方針：像への同型で部分複体版へ移し、pushout-join の inner anodyne 性を使う。
 規約：単射性を明示的に仮定する。
 使われ方：Kerodon Example 4.3.6.5、Theorem 5.3.5.7 の最初の辺と尾部の貼り合わせ。 -/
+@[kerodon 0235]
 lemma joinRightBoundaryMap_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
     (i : A ⟶ B) [Mono i] (K : SSet.{u}) (hi : leftAnodyneExtensions i) :
     innerAnodyneExtensions (joinRightBoundaryMap i K) := by

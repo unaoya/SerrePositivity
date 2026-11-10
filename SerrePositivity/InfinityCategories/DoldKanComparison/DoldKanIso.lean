@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.NormalizedChain
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 標準成分模型と Mathlib Dold–Kan 対象の同型
@@ -27,6 +28,7 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 方針：Dold–Kan 同値の unit と正規化の複体同型への Γ の作用を合成する。
 規約：全ての単調写像について自然な単体的加群の同型。
 使われ方：HA 1.3.1.13、Kerodon 2.5.9.2 の標準 Hom の DK への厳密な同定。 -/
+@[kerodon 00SE]
 def standardDoldKanModuleIso (x y : D) :
     standardModule (R := R) x y ≅ doldKanHomModule (R := R) x y :=
   (Abelian.DoldKan.equivalence : SimplicialObject (ModuleCat.{u} R) ≌
