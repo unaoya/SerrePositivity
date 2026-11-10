@@ -70,6 +70,40 @@ import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorDetection
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcMilnorTensor
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcPerfectCech
 import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationProduct
+import SerrePositivity.BhattScholze.Delta.Division.BaseChange
+import SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision
+import SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope
+import SerrePositivity.BhattScholze.Prismatic.CrystallineBase
+import SerrePositivity.BhattScholze.Prismatic.CrystallineBridge
+import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeCoordinates
+import SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout
+import SerrePositivity.BhattScholze.Prismatic.CrystallineCechResidue
+import SerrePositivity.BhattScholze.Prismatic.CrystallineCechSource
+import SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedFreeDelta
+import SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedPushout
+import SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates
+import SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion
+import SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope
+import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction
+import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel
+import SerrePositivity.BhattScholze.Prismatic.CrystallineExtraPolynomial
+import SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDInclusion
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePDTensorPresentation
+import SerrePositivity.BhattScholze.Prismatic.CrystallinePrincipalResidue
+import SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates
+import SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDFactor
+import SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDSplit
+import SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout
+import SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity
+import SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison
+import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel
+import SerrePositivity.BhattScholze.Prismatic.PDCompletedCech
+import SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
 import Lean.Util.CollectAxioms
 
 /-!
@@ -82,6 +116,40 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Delta.Division.BaseChange,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineAffineDivision,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineAffineEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineBase,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineBridge,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineBridgeCoordinates,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineBridgePushout,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineCechResidue,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineCechSource,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedFreeDelta,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineCompletedPushout,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineCoordinates,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionCompletion,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineDivisionEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineExtraContraction,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineExtraModel,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineExtraPolynomial,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineFreeDivision,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePDInclusion,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePDIntegral,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePDModel,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePDRawComparison,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePDTensorPresentation,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallinePrincipalResidue,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineRawCoordinates,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDFactor,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineRawPDSplit,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineReductionPushout,
+    `SerrePositivity.BhattScholze.Prismatic.CrystallineTensorRegularity,
+    `SerrePositivity.BhattScholze.Prismatic.FrobeniusCechComparison,
+    `SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineModel,
+    `SerrePositivity.BhattScholze.Prismatic.PDCompletedCech,
+    `SerrePositivity.BhattScholze.Prismatic.PDPolynomialCech,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor,
     `SerrePositivity.CommutativeAlgebra.Ultraproduct.Basic,
     `SerrePositivity.CommutativeAlgebra.Ultraproduct.Localization,
     `SerrePositivity.CommutativeAlgebra.ValuationExtension.Aic,

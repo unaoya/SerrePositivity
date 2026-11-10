@@ -34,6 +34,7 @@ public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.ParameterPowerLength
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.CompletionFunctor
 public import SerrePositivity.HomologicalAlgebra.Cech.Basic
 public import SerrePositivity.HomologicalAlgebra.Cech.BaseChange
 public import SerrePositivity.HomologicalAlgebra.Cech.Split
