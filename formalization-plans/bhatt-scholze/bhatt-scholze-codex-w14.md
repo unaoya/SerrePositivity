@@ -36,3 +36,7 @@ BS が E∞ 代数の ∞ 圏を、構造 `EInfinityTheory` を通してだけ�
 5. **G1′ の一般版**（`EInfinity/Perfectoidization/` の CAlg 版界面 `PerfectoidizationInterfaceCAlg` ほかを `E : EInfinityTheory` で述べ直したもの）：**W14 に含める**（段 2 の最後、約 180〜350 行）。A9 で E3 を置き換えるときに模型に依らないようにするため。既存の公開宣言は変えず、新しい名前で足し、既存のものはその模型への特殊化として保つ。
 6. **A1 の drafts の二本**（`CrystallineInput.lean`・`HodgeTateMap.lean`、⑤b の枝に差分がある）：W14 では**触らない**。⑤b の D68 停止点 3 が main に入った後、調整役の合図で ⑤a が書き換える（それまでの段 2 の報告には「A1 の二本は後回し」と書く）。⑤b には、これらに模型の中身への新しい参照を足さないよう伝える。
 7. A1 の `totEInfinity_cohomologyRing : True` の扱いは報告 §4 の 2 のとおり（全次数の cup 積は Tot の専用の条件として、要る段で足す。π₀ や P⁰ から供給した扱いにしない）。
+
+## 4. 追記（2026-11-10、調整役）：drafts の A0・A3 は ⑤c の持ち分
+
+新しいレーン ⑤c（BS-W15、`bhatt-scholze-codex-w15.md`）が、drafts の `A0/`（`CechAlexander.lean` を除く）と `A3/` を書き換える。W14 の段 2 では、この二つ（`A0/CechAlexander.lean` は触ってよい）を触らない。CAlg_R への参照（A0 で 3 か所、A3 で 8 か所）は ⑤c が界面を通す形に直す。段 2 の報告には「A0・A3 は ⑤c」と書く。
