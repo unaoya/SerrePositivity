@@ -29,18 +29,23 @@
 
 ## 引用番号の照合
 
-- Lean の Kerodon の引用は 9,711 件・1,851 ファイル（`citations-summary.md`）。Tag 形式の引用は 0 件。
-- 件数の多い番号（5.6.0.6 の 984 件、7.5.4.6 の 553 件など）は現行版と一致。同じ番号を補助補題に決まり文句として付けているので件数が多い。存在しない番号は Ch 4・5・6 で 0 件。
-- 直すべきずれ（抜き取り。保守で直す候補）：
-  - `Core/Join.lean` の join の構成 66 件が §4.3.5（現行は slice）→ §4.3.3。
-  - `Core/Terminal.lean` の Prop 4.7.3.6 → 4.7.3.11。
-  - Remark 5.6.2.5 の 93 件（`vertexFiberPullbackIso` など）→ 現行では Example 5.6.2.19・5.6.2.9。
-  - `Core/Pullback.lean` の `IsPullbackSquare` が 7.3 → 7.6.2.1。
-  - `Core/FunctorPointwiseLimitCriterion.lean` の 7.1.8.5 → 7.1.8.15 の双対。
-  - `Core/ContractibleKan.lean` の §3.5 → Def 1.5.5.8。
-  - `Kan/FibrationBoundary.lean` の Construction 3.2.5.1 → Construction 3.2.5.3。
-  - ほか、§4.5.5・Prop 4.8.4.5・7.2.1.15・7.2.3.1 の用法、見出し語だけの違い（Proposition/Corollary など）が数件。各章のファイルの注記を参照。
-- 古い docstring：`InfinityCategories/DoldKanComparison.lean` の「∞ 圏の同値の証明は残る」は古い（`coherentComparison_isQCatEquivalence` がある）。
+11-06 の調査で、Lean の引用は 9,711 件・1,851 ファイルだった。段階 II の KL-W1 では、項目の Tag を項目表から、節・小節の Tag を目次から照合して既存の docstring に加えた。[当時の引用集計](citations-summary.md)、[KL-W1 の報告](../../formalization-plans/stage-ii/kerodon-layout-w1-report.md)
+
+| 旧引用 | 照合後の参照先 |
+| --- | --- |
+| join の構成で §4.3.5 | join の構成は [4.3.3（Tag 016K）](https://kerodon.net/tag/016K)。 |
+| 終対象で Proposition 4.7.3.6 | 終対象は Proposition [4.7.3.11（Tag 06R1）](https://kerodon.net/tag/06R1)。 |
+| 元素 ∞ 圏で Remark 5.6.2.5 | 底変換は Remark [5.6.2.18（Tag 0271）](https://kerodon.net/tag/0271)、ファイバーは Example [5.6.2.19（Tag 0272）](https://kerodon.net/tag/0272)、空間値の構成は Example [5.6.2.9（Tag 026S）](https://kerodon.net/tag/026S)。一般の文脈は小節 [5.6.2（Tag 026H）](https://kerodon.net/tag/026H)。 |
+| 引き戻し四角形で §7.3 | 小節 [7.6.2（Tag 03FE）](https://kerodon.net/tag/03FE)、定義は Definition [7.6.2.1（Tag 03FF）](https://kerodon.net/tag/03FF)。 |
+| 各点ごとの極限で Proposition 7.1.8.5 | Corollary [7.1.8.15（Tag 02XP）](https://kerodon.net/tag/02XP) の双対。 |
+| 可縮な Kan 複体で §3.5 | Definition [1.5.5.8（Tag 0072）](https://kerodon.net/tag/0072)。 |
+| 連結射で Construction 3.2.5.1 | Construction [3.2.5.3（Tag 00WG）](https://kerodon.net/tag/00WG)。 |
+| 圏論的引き戻しの比較で §4.5.5 | 引き戻しは [4.5.3（Tag 032Y）](https://kerodon.net/tag/032Y)。押し出しの比較では [4.5.5（Tag 01F6）](https://kerodon.net/tag/01F6) を使う。 |
+| 充満忠実な内ファイブレーションの底変換で Proposition 4.8.4.5 | 写像空間と充満忠実性を扱う小節 [4.8.3（Tag 05AW）](https://kerodon.net/tag/05AW)。 |
+| 一般の anodyne–fibration 因子分解で Corollary 7.2.1.15 | 因子分解を扱う小節 [4.2.4（Tag 014S）](https://kerodon.net/tag/014S)。cofinal な射の判定には元の Corollary を使う。 |
+| 弱可縮性の定義で Theorem 7.2.3.1 | Quillen A の文脈を示す小節 [7.2.3（Tag 02NX）](https://kerodon.net/tag/02NX)。定理の証明では項目 [7.2.3.1（Tag 02NY）](https://kerodon.net/tag/02NY) を使う。 |
+
+Kan fibration の塔の旧引用は付録で番号と Tag を確認した。[Corollary 11.9.7.2（Tag 01C7）](https://kerodon.net/tag/01C7)
 
 ## 項目ごとの対応表（2026-11-07）
 
