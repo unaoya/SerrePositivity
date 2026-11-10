@@ -76,13 +76,12 @@ private theorem pdRawCoefficients_map_ideal :
     rw [pdRawCoefficients_tmul, map_one, DividedPowerAlgebra.map_apply_dp]
     exact PDRelativeFree.dp_mem _ _ (j + 1) (Nat.succ_ne_zero j) _
 
-set_option maxHeartbeats 800000 in
--- 自由分冪代数のテンソル表示と小さい模型の台環を照合するため。
 include hγ in
 /-- 未完備の分冪模型の係数変更は分冪射。 -/
 theorem pdRawCoefficients_isDPMorphism :
     (PDSmallRawEnvelope.dividedPowers p r n γ hk hkreg).IsDPMorphism
-      (PDSmallRawEnvelope.dividedPowers p r n ε hl hlreg) (pdRawCoefficients k l r n).toRingHom := by
+      (PDSmallRawEnvelope.dividedPowers p r n ε hl hlreg)
+      (pdRawCoefficients k l r n).toRingHom := by
   have hI : (PDSmallRawEnvelope.ideal (k := k) (J := J) r n).map
       (pdRawCoefficients k l r n).toRingHom ≤ PDSmallRawEnvelope.ideal (k := l) (J := I) r n :=
     pdRawCoefficients_map_ideal (k := k) (l := l) r n γ ε hγ

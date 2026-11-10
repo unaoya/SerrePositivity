@@ -181,3 +181,9 @@
   - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameRetraction`
   - `SerrePositivity.BhattScholze.Prismatic.BigCechFrameResidue`
   - `SerrePositivity.BhattScholze.Prismatic.PDRawCoefficientPD`
+
+## 段 2（P2）途中 — Witt 比較の有限枠での照合
+
+- `wittToSmall_frame` を示した。有限 Witt 枠から大きい枠へ入れて `wittToSmall` を適用した射は、小さい模型に対する `pdModelBaseChange` と一致する。未完備の分冪包で各頂点の変数像を照合し、完備化の普遍性で等式を移した。
+- `SerrePositivity.BhattScholze.Prismatic.WittToSmallFrame` の鍵付き対象ビルドが通過。段 2 の累計32モジュールの一時監査で、非公開を含む1,145宣言は標準三公理のみ。追加公理と `sorry` は0。
+- 導来 p 完備底変換での擬同型性には、有界な完備 de Rham 複体を使う。まず未完備項の単項式基底でテンソル底変換を照合し、p の有限冪で割った各項を比較する。導来底変換を計算する箇所では有界な模型と平坦性を明示する。
