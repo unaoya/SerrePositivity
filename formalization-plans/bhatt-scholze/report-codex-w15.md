@@ -45,14 +45,8 @@
 
 ## 段 1 の中間記録（2026-11-10）
 
-- 指示書 §3 の承認後、`math/bs-classical` に main `903ec3a0e` を fast-forward した。
-- `Delta/DividedPower/TruncatedPolynomialBasis.lean` を追加。切断イデアルの所属条件から低指数の係数を取り出す線形同型と単項式基底を構成した。対象の単体 Lean 検証を通過。
-- 一般列の候補は、①自由 δ 座標の除算、②分冪表示の普遍射と任意係数への底変換、③ mod p の商・余りで添字付けた分冪ブロック、④ Koszul 正則列の冪、⑤ mod p と p 反転による正則性・Tor、⑥ Frobenius 除算との比較、の順に検証中。推移的 import の静的検査では ∞ 圏・E3 への依存はない。
-- K1 全体の対象ビルド・監査は未完了。停止点 1 の報告と段 2 への移行は、検収条件がそろってから行う。
-- 切断多項式基底は鍵付き対象ビルドでも成功。公開 6 宣言は標準三公理のみで、`#print sorries` は 0。局所整数環の δ 構造、自由座標の Frobenius 除算、一般環上の Koszul 正則列の冪の 3 モジュールも単体 Lean 検証を通過した。
-- 追加済みの 4 モジュールすべてで共有ロック下の対象ビルドと公開 19 宣言の監査が成功した。依存する公理は標準三公理（`propext`、`Classical.choice`、`Quot.sound`）のみで、`#print sorries` は 0。一般列の比較は引き続き検証中。
-- 一般列の未検証の証明候補 7 ファイルと監査の候補は `drafts/A0/W15K1/` に保存した。原典の `ℤ_(p)[X_i]` 上の Tor へ戻す底変換の候補も含む。⑤b の完備模型との標準脚の整合性は要確認。
-- 再検証で `PrincipalReduction` の単体 Lean 検証に成功した。分冪表示では商テンソルの型クラス、剰余ブロックでは代表元上の計算式の公開、係数平坦性では整数からのスカラー塔が残り、修正候補を保存した。
-- ⑤b の `math/bs-d68`（`1fda57035`）との枝差分を再確認した。K1 の本体・候補パスに重複はなく、14 候補の推移的 import 314 件に ∞ 圏・E3 への依存はない。
-- `CommutativeAlgebra/KoszulRegular/PrincipalReduction.lean` の対象ビルドが成功した。公開 3 宣言は標準三公理のみ、`#print sorries` は 0。
-- `RegularSequencePD`（分冪表示・標的への評価・任意係数への底変換）と `FreeDPModPBlocks`（標数 p の切断多項式環上の自由性）は対象ビルドと公開 17 宣言の監査を通過。段 1 の本体 7 モジュールの計 39 宣言で標準三公理のみ、`sorry` 0。停止点 1 には一般列の分冪包との同定、高次 Tor、δ 除算・完備化との照合が残る。
+- `math/bs-classical` に main `903ec3a0e` を fast-forward した。
+- 本体に新規 7 モジュールを追加した。 `PrimeLocalIntegers`、`FrobeniusDivisionPD`、`TruncatedPolynomialBasis`、`Powers` は `3139c7f27`、`PrincipalReduction` は `259c41a97`、`RegularSequencePD` と `FreeDPModPBlocks` は `b21c5c0c2`。自由 δ 座標での生の除算の p 正則性、分冪表示と標的への評価・任意係数への底変換、標数 p での切断多項式環上の自由性、有限 Koszul 正則列の冪と主元の補題を得た。
+- 7 モジュールの鍵付き対象ビルドと公開 39 宣言の監査を通過。公理は標準三公理（`propext`、`Classical.choice`、`Quot.sound`）のみで、`#print sorries` は 0。⑤b の `math/bs-d68`（`1fda57035`）との枝差分に候補パスの重複はなく、本体と草稿の 14 モジュールの推移的 import 314 件に ∞ 圏・E3 への依存はない。
+- 一般列の分冪包との同定、高次 Tor の消滅、Frobenius 除算・完備化との照合が残る。証明候補 7 モジュールと監査案は `drafts/A0/W15K1/`。直近で `PrimeLocalFlat` の整数からのスカラー塔、`RegularSequencePDFactorial` の分冪写像の計算、`RegularSequencePDKoszul` の評価商の証明を修正し、次回の鍵付き検証でこの順に確認する。
+- 修正後の再検証は共有ビルドロックの 30 分待機が満了した。停止点 1 の検収条件は未達で、段 2 は未着手。
