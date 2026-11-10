@@ -60,3 +60,16 @@
 3. **塔の指数と cutoff**。`pdCechTower` は一般の pd 基底で `p^{e+2}` の塔を使い、標準の p の分冪と両立する場合に `p^{e+1}` の塔を得る案。包の分冪と標準脚を同じ選択から取り出す。`crysPullbackSite` では `R̄` と `R̄′` を同じ十分大きな cutoff に置く。比較のための cutoff 不変性は使わない。
 
 段 0 はこの報告まで。Lean ファイルの編集・ビルド・監査は実施していない。承認後に P1 に進む。
+
+## 段 1（P1）途中
+
+- 任意の `J.map (algebraMap k B) ≤ K` について、未完備の相対分冪包、p 完備化への分冪の延長、`exists_completedPDEnvelope` を実装した。段 0 の多項式表示による構成の代わりに、環の式と分冪イデアル内の式を分け、標的での評価が一致する式を同一視した。この構成は入力と同じ宇宙に入り、射の一意性は式の帰納法で従う。
+- `p^{e+2}` による商に分冪が降りることを示し、余終な塔の座標ごとに分冪の公理と延長射の両立を確認した。完備包を分冪イデアルで割った剰余環は入力の剰余環に戻る。
+- `pdFrame`・`pdFrameEval`・`pdCechNerve`・`pdCechAugmentation`・`pdCechNerveMap` を構成し、`pdCechNerveMap_quasiIso` を証明した。表示の比較では二つの写像の変数像を頂点ごとに切り替える余単体ホモトピーを、完備包の各項に直接作った。交代余面複体への移送には既存の `CosimplicialHomotopy.toCochainHomotopy` を使った。台加群を取る関手は Mathlib の可換代数と基底の下の圏の同値から定めた。
+- 鍵付きの対象ビルドと一時監査を次の 5 モジュールで実施した。501 宣言に標準三公理のみ。既存の Lean 宣言の変更なし。以下は停止点 1 での登録候補。
+  - `SerrePositivity.BhattScholze.Prismatic.RelativePDEnvelope`
+  - `SerrePositivity.BhattScholze.Prismatic.PDAdicCompletion`
+  - `SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelope`
+  - `SerrePositivity.BhattScholze.Prismatic.PDCechNerve`
+  - `SerrePositivity.BhattScholze.Prismatic.PDCechFrameHomotopy`
+- 残りは `pdModel_iso_pdCechNerve`。任意の宇宙の係数環に対して小さい枠の添字を合わせるため、`Fin r` を `ULift (Fin r)` として各変数を同じ添字の元に送る。自由分冪代数と階乗表示には D68 の既存部品を使う。⑤c の正則列の包絡と Frobenius 除算のファイルとは重複なし。
