@@ -158,3 +158,8 @@
   - `SerrePositivity.BhattScholze.Prismatic.PDPolynomialGraph`
   - `SerrePositivity.BhattScholze.Prismatic.WittBigCrystalline`
   - `SerrePositivity.BhattScholze.Prismatic.WittPDPrismMaps`
+
+## 段 2（P2）途中 — 小さい模型の係数変更
+
+- `pdModelBaseChange` は小さい完備分冪 Čech 模型の係数変更。未完備の多項式・自由分冪の係数変更を各項で完備化し、余単体構造との可換性を移した。`pdModelBaseChange_unit` で未完備模型との可換性を示した。
+- `SerrePositivity.BhattScholze.Prismatic.PDModelBaseChange` の鍵付き対象ビルドが通過。段 2 の累計26モジュールの一時監査で、非公開を含む904宣言は標準三公理のみ。追加公理と `sorry` は0。
