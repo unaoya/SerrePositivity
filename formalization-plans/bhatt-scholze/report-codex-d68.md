@@ -301,3 +301,10 @@ main の `ba84f342e` を `math/bs-d68` に fast-forward してから着手した
 - `9a5af7052` で `pdDeRhamColumnCollapseHomotopyEquiv` を閉じた。全差座標の評価を、一座標ごとの評価の合成と分冪単項式基底・一次形式の座標基底で照合した。標数 p の未完備表示から完備列に移している。
 - `pdDeRhamCollapse_total_quasiIso` は列のホモトピー同値を定数列への総複体の擬同型に移す。定数余単体の行は正次数で完全なので、第 0 列への射影も `pdDeRhamColumnZeroProjection_quasiIso` で擬同型になる。
 - この時点の実装済み 35 モジュールの対象ビルドは成功。一時監査の 989 宣言は標準三公理のみ。
+
+### 段 4 の加法比較
+
+- `c3bac9b19` で、`pdDeRhamRowZeroIso` により第 0 行の外次数零を消し、`pdDeRhamColumnZeroIso` により第 0 列を通常の多項式 de Rham 複体と同一視した。二つの射影から `pdDeRhamCechToPolynomial` を構成した。
+- 草稿の `pdColumnInclusion`、`pdPoincare_column`、`pdDeRhamCohomologyIso` を本体の証明へ接続し、この三宣言の結晶基底での特殊化を独立した一時ファイルで検査した。
+- ⑤a の変更と重複のない main `2c1222de2` を専用枝へ取り込んだ（`4c2344651`）。実装済み 38 モジュールの鍵付き対象ビルドは成功。一時監査の 1,053 宣言は標準三公理のみ。Barratt–Eccles、operad、hammock、`PerfectoidizationInterface` への依存はない。平方零で使う `CupCommutativity` は既存の Alexander–Whitney の鎖テンソル補題を経由する。
+- 段 4 は総複体の積と射影の乗法性、および整係数の Bockstein 照合が残る。段 5 の有限多変数 Cartier 同型、段 6 の生成元の照合と Hodge–Tate 写像の外積への延長、対象二定理も未完。
