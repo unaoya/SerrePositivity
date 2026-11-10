@@ -23,11 +23,11 @@ variable {C C' D D' E E' F F' : SimplicialObject (ModuleCat.{u} ℤ)}
 規約：KST A.5。使われ方：四辺の可換な正方形のテンソル化。 -/
 lemma simplicialIntegerTensorMap_comp (a : C ⟶ C') (b : D ⟶ D')
     (f : C' ⟶ E) (g : D' ⟶ F) :
-    simplicialIntegerTensorMap (a ≫ f) (b ≫ g) =
-      simplicialIntegerTensorMap a b ≫ simplicialIntegerTensorMap f g := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (a ≫ f) (b ≫ g) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g := by
   apply NatTrans.ext
   funext n
-  exact integerTensorMap_comp (a.app n) (f.app n) (b.app n) (g.app n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp (a.app n) (f.app n) (b.app n) (g.app n)
 
 /-- 概要：標準テンソル比較は四辺の可換な正方形を保つ。
 方針：EZ の自然性を後合成し、端点の等式による比較を付ける。
@@ -37,8 +37,8 @@ lemma normalizedTensorComparisonHomotopy_square
     (a : C ⟶ C') (b : D ⟶ D') (c : E ⟶ E') (d : F ⟶ F')
     (hf : a ≫ f' = f ≫ c) (hg : b ≫ g' = g ≫ d) :
     ChainHomotopySquare
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap a b))
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap c d))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a b))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap c d))
       (normalizedTensorComparisonHomotopy f g) (normalizedTensorComparisonHomotopy f' g') := by
   dsimp only [normalizedTensorComparisonHomotopy]
   apply ChainHomotopySquare.trans (ChainHomotopySquare.ofEq _ _ _ _)
@@ -68,8 +68,8 @@ lemma normalizedTensorComparisonWithHomotopies_square
     (hh : ChainHomotopySquare ((normalizedMooreComplex _).map a) ((normalizedMooreComplex _).map c) h h')
     (hk : ChainHomotopySquare ((normalizedMooreComplex _).map b) ((normalizedMooreComplex _).map d) k k') :
     ChainHomotopySquare
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap a b))
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap c d))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a b))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap c d))
       (normalizedTensorComparisonWithHomotopies f g h k)
       (normalizedTensorComparisonWithHomotopies f' g' h' k') := by
   dsimp only [normalizedTensorComparisonWithHomotopies]
@@ -83,8 +83,8 @@ lemma normalizedTensorComparisonWithHomotopies_square
         exact chainIntegerTensorHomotopy_naturality h h' k k'
           ((normalizedMooreComplex _).map a) ((normalizedMooreComplex _).map b)
           ((normalizedMooreComplex _).map c) ((normalizedMooreComplex _).map d) hU hgn hh hk
-      · exact normalizedAlexanderWhitney_naturality a b
-    · exact normalizedShuffle_naturality c d
+      · exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality a b
+    · exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle_naturality c d
   · apply ChainHomotopySquare.ofEq
 
 /-- 概要：augmentation 補正した三項の鎖比較は自然。
@@ -109,8 +109,8 @@ lemma normalizedTensorAugmentationComparison_square
     (hh : ChainHomotopySquare ((normalizedMooreComplex _).map a) ((normalizedMooreComplex _).map c) h h₁)
     (hk : ChainHomotopySquare ((normalizedMooreComplex _).map b) ((normalizedMooreComplex _).map d) k k₁) :
     ChainHomotopySquare
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap a b))
-      ((normalizedMooreComplex _).map (simplicialIntegerTensorMap c d))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a b))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap c d))
       (normalizedTensorAugmentationComparison f e g e' h k)
       (normalizedTensorAugmentationComparison f₁ e₁ g₁ e₁' h₁ k₁) := by
   dsimp only [normalizedTensorAugmentationComparison]

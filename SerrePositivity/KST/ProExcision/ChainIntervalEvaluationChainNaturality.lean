@@ -25,25 +25,25 @@ lemma chainHomotopyInterval_naturality
     {f g : K ⟶ L} {f' g' : K' ⟶ L'} (H : Homotopy f g) (H' : Homotopy f' g')
     (a : K ⟶ K') (b : L ⟶ L') (hf : a ≫ f' = f ≫ b) (hg : a ≫ g' = g ≫ b)
     (hH : ChainHomotopySquare a b H H') :
-    chainIntegerTensorMap a (𝟙 integerChainInterval) ≫ chainHomotopyInterval H' =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap a (𝟙 integerChainInterval) ≫ chainHomotopyInterval H' =
       chainHomotopyInterval H ≫ b := by
   apply HomologicalComplex.Hom.ext
   funext n
   apply mapBifunctor.hom_ext
   intro p q hpq
   simp only [comp_f]
-  change ιMapBifunctor K integerChainInterval integerTensorBifunctor (.down ℕ) p q n hpq ≫
-      ((chainIntegerTensorMap a (𝟙 integerChainInterval)).f n ≫ chainHomotopyIntervalApp H' n) =
-    ιMapBifunctor K integerChainInterval integerTensorBifunctor (.down ℕ) p q n hpq ≫
+  change ιMapBifunctor K integerChainInterval _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q n hpq ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap a (𝟙 integerChainInterval)).f n ≫ chainHomotopyIntervalApp H' n) =
+    ιMapBifunctor K integerChainInterval _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q n hpq ≫
       (chainHomotopyIntervalApp H n ≫ b.f n)
-  rw [← Category.assoc, ι_chainIntegerTensorMap, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap, Category.assoc,
     ι_chainHomotopyIntervalApp, ← Category.assoc, ι_chainHomotopyIntervalApp]
   change p + q = n at hpq
   cases q with
   | zero =>
     have hn : n = p := by omega
     subst n
-    change integerTensorMap (a.f p) (𝟙 (integerIntervalX 0)) ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (a.f p) (𝟙 (integerIntervalX 0)) ≫
         chainIntervalEndpointEval (f'.f p) (g'.f p) =
       chainIntervalEndpointEval (f.f p) (g.f p) ≫ b.f p
     have hfn := congrArg (fun k ↦ k.f p) hf
@@ -54,7 +54,7 @@ lemma chainHomotopyInterval_naturality
     | zero =>
       have hn : n = p + 1 := hpq.symm
       subst n
-      change integerTensorMap (a.f p) (𝟙 (integerIntervalX 1)) ≫
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (a.f p) (𝟙 (integerIntervalX 1)) ≫
           ((-1 : ℤ) ^ (p + 1) • chainIntervalEdgeEval (H'.hom p (p + 1))) =
         ((-1 : ℤ) ^ (p + 1) • chainIntervalEdgeEval (H.hom p (p + 1))) ≫ b.f (p + 1)
       rw [Preadditive.comp_zsmul, Preadditive.zsmul_comp]

@@ -19,9 +19,9 @@ namespace SerrePositivity.KST.ProExcision
 open CategoryTheory HomologicalComplex AlgebraicTopology
 open scoped Simplicial
 variable {X X' : SSet.{u}} {D D' : SimplicialObject (ModuleCat.{u} ℤ)}
-variable {f g : linearizedSpace X ⟶ D} {f' g' : linearizedSpace X' ⟶ D'}
-variable {R S : (normalizedMooreComplex _).obj (linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D}
-variable {R' S' : (normalizedMooreComplex _).obj (linearizedSpace X') ⟶ (normalizedMooreComplex _).obj D'}
+variable {f g : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D} {f' g' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X' ⟶ D'}
+variable {R S : (normalizedMooreComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D}
+variable {R' S' : (normalizedMooreComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X') ⟶ (normalizedMooreComplex _).obj D'}
 
 /-- 概要：二つの自然な鎖比較の差によるホモトピーは自然。
 方針：和、負の整数倍、恒等比較、等式による端点同定に分解する。
@@ -32,7 +32,7 @@ lemma chainComparisonDifferenceHomotopy_square
     {H₂ : Homotopy ((normalizedMooreComplex _).map g) S}
     {H₁' : Homotopy ((normalizedMooreComplex _).map f') R'}
     {H₂' : Homotopy ((normalizedMooreComplex _).map g') S'}
-    (a : linearizedSpace X ⟶ linearizedSpace X') (b : D ⟶ D')
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X') (b : D ⟶ D')
     (h₁ : ChainHomotopySquare ((normalizedMooreComplex _).map a)
       ((normalizedMooreComplex _).map b) H₁ H₁')
     (h₂ : ChainHomotopySquare ((normalizedMooreComplex _).map a)
@@ -57,7 +57,7 @@ lemma linearizedMHomotopyOfChainComparisons_naturality
     (H₂' : Homotopy ((normalizedMooreComplex _).map g') S')
     (m : ℕ) (hRS : ∀ n, n ≤ m → R.f n = S.f n)
     (m' : ℕ) (hRS' : ∀ n, n ≤ m' → R'.f n = S'.f n)
-    (a : linearizedSpace X ⟶ linearizedSpace X') (b : D ⟶ D')
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X') (b : D ⟶ D')
     (hf : a ≫ f' = f ≫ b) (hg : a ≫ g' = g ≫ b)
     (hR : (normalizedMooreComplex _).map a ≫ R' = R ≫ (normalizedMooreComplex _).map b)
     (hS : (normalizedMooreComplex _).map a ≫ S' = S ≫ (normalizedMooreComplex _).map b)
@@ -65,8 +65,8 @@ lemma linearizedMHomotopyOfChainComparisons_naturality
       ((normalizedMooreComplex _).map b) H₁ H₁')
     (h₂ : ChainHomotopySquare ((normalizedMooreComplex _).map a)
       ((normalizedMooreComplex _).map b) H₂ H₂') :
-    (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) :
-      linearizedCylinder X ⟶ linearizedCylinder X') ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) :
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder X') ≫
       (linearizedMHomotopyOfChainComparisons (X := X') (D := D') (f := f') (g := g') H₁' H₂' m' hRS').h =
         (linearizedMHomotopyOfChainComparisons (X := X) (D := D) (f := f) (g := g) H₁ H₂ m hRS).h ≫ b := by
   let e := normalizedMapReconstruct (R - S + (normalizedMooreComplex _).map g)

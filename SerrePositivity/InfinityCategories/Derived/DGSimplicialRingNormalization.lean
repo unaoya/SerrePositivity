@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.NormalizedShuffle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedShuffle
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.Algebra.Algebra.Bilinear
 /-!
@@ -25,7 +25,7 @@ abbrev simplicialRingIntegerModuleMap {A B : SimplicialObject RingCat.{u}} (f : 
   Functor.whiskerRight f ringIntegerModuleFunctor
 
 def simplicialRingIntegerMultiplication (A : SimplicialObject RingCat.{u}) :
-    simplicialIntegerTensor (simplicialRingIntegerModule A) (simplicialRingIntegerModule A) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor (simplicialRingIntegerModule A) (simplicialRingIntegerModule A) ⟶
       simplicialRingIntegerModule A where
   app n := ModuleCat.ofHom (LinearMap.mul' ℤ (A.obj n))
   naturality n m φ := by
@@ -35,7 +35,7 @@ def simplicialRingIntegerMultiplication (A : SimplicialObject RingCat.{u}) :
     exact ((A.map φ).hom.map_mul x y).symm
 lemma simplicialRingIntegerMultiplication_naturality
     {A B : SimplicialObject RingCat.{u}} (f : A ⟶ B) :
-    simplicialIntegerTensorMap (simplicialRingIntegerModuleMap f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (simplicialRingIntegerModuleMap f)
         (simplicialRingIntegerModuleMap f) ≫ simplicialRingIntegerMultiplication B =
       simplicialRingIntegerMultiplication A ≫ simplicialRingIntegerModuleMap f := by
   apply NatTrans.ext
@@ -49,17 +49,17 @@ abbrev simplicialRingNormalizedChains (A : SimplicialObject RingCat.{u}) :=
 abbrev simplicialRingNormalizedMap {A B : SimplicialObject RingCat.{u}} (f : A ⟶ B) :=
   (normalizedMooreComplex _).map (simplicialRingIntegerModuleMap f)
 def simplicialRingNormalizedMultiplication (A : SimplicialObject RingCat.{u}) :
-    chainIntegerTensor (simplicialRingNormalizedChains A) (simplicialRingNormalizedChains A) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor (simplicialRingNormalizedChains A) (simplicialRingNormalizedChains A) ⟶
       simplicialRingNormalizedChains A :=
-  normalizedShuffle (simplicialRingIntegerModule A) (simplicialRingIntegerModule A) ≫
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle (simplicialRingIntegerModule A) (simplicialRingIntegerModule A) ≫
     (normalizedMooreComplex _).map (simplicialRingIntegerMultiplication A)
 lemma simplicialRingNormalizedMultiplication_naturality
     {A B : SimplicialObject RingCat.{u}} (f : A ⟶ B) :
-    chainIntegerTensorMap (simplicialRingNormalizedMap f) (simplicialRingNormalizedMap f) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (simplicialRingNormalizedMap f) (simplicialRingNormalizedMap f) ≫
         simplicialRingNormalizedMultiplication B =
       simplicialRingNormalizedMultiplication A ≫ simplicialRingNormalizedMap f := by
   dsimp only [simplicialRingNormalizedMultiplication, simplicialRingNormalizedMap]
-  rw [← Category.assoc, normalizedShuffle_naturality]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle_naturality]
   simp only [Category.assoc, ← Functor.map_comp]
   rw [simplicialRingIntegerMultiplication_naturality]
 end SerrePositivity.InfinityCategories

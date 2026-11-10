@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.LinearizedHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy
 
 /-!
 # 線形化した区間の端点の基底公式
@@ -20,8 +20,8 @@ open scoped Simplicial
 方針：有限台関数の同型の逆の公式を使う。
 規約：KST Definition A.3。使われ方：自由化した端点包含の計算。 -/
 @[simp] lemma integerTensorIso_inv_generator (X Y : Type u) (x : X) (y : Y) :
-    (integerTensorIso X Y).inv (integerGenerator (x, y)) =
-      TensorProduct.tmul ℤ (integerGenerator x) (integerGenerator y) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorIso X Y).inv (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (x, y)) =
+      TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator y) := by
   change (finsuppTensorFinsupp' ℤ X Y).symm (Finsupp.single (x, y) 1) = _
   rw [finsuppTensorFinsupp'_symm_single_eq_single_one_tmul]
 
@@ -30,11 +30,11 @@ open scoped Simplicial
 規約：KST Definition A.3。使われ方：bar の m 次ホモトピーの始点条件。 -/
 @[simp] lemma linearizedEndpoint₀_generator (X : SSet.{u}) (n : SimplexCategoryᵒᵖ)
     (x : X.obj n) :
-    (linearizedEndpoint₀ X).app n (integerGenerator x) =
-      TensorProduct.tmul ℤ (integerGenerator x) (integerGenerator (SSet.stdSimplex.const 1 0 n)) := by
-  change (integerTensorIso (X.obj n) ((Δ[1] : SSet.{u}).obj n)).inv
-    (integerLinearization.map (SSet.ι₀.app n) (integerGenerator x)) = _
-  rw [integerLinearization_map_generator]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀ X).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) =
+      TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 0 n)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorIso (X.obj n) ((Δ[1] : SSet.{u}).obj n)).inv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (SSet.ι₀.app n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   have hx : SSet.ι₀.app n x = (x, SSet.stdSimplex.const 1 0 n) := by rfl
   rw [hx, integerTensorIso_inv_generator]
 
@@ -43,11 +43,11 @@ open scoped Simplicial
 規約：KST Definition A.3。使われ方：bar の m 次ホモトピーの終点条件。 -/
 @[simp] lemma linearizedEndpoint₁_generator (X : SSet.{u}) (n : SimplexCategoryᵒᵖ)
     (x : X.obj n) :
-    (linearizedEndpoint₁ X).app n (integerGenerator x) =
-      TensorProduct.tmul ℤ (integerGenerator x) (integerGenerator (SSet.stdSimplex.const 1 1 n)) := by
-  change (integerTensorIso (X.obj n) ((Δ[1] : SSet.{u}).obj n)).inv
-    (integerLinearization.map (SSet.ι₁.app n) (integerGenerator x)) = _
-  rw [integerLinearization_map_generator]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁ X).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) =
+      TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 1 n)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorIso (X.obj n) ((Δ[1] : SSet.{u}).obj n)).inv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (SSet.ι₁.app n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   have hx : SSet.ι₁.app n x = (x, SSet.stdSimplex.const 1 1 n) := by rfl
   rw [hx, integerTensorIso_inv_generator]
 

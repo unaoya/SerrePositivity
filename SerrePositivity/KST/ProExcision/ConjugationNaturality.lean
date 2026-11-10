@@ -62,24 +62,24 @@ theorem conjugationNerveHomotopy_naturality (f : H →* H') (u : H) :
 使われ方：Lemma 4.16 の同変ホモトピーの自然性。 -/
 theorem conjugationLinearizedHomotopy_naturality (f : H →* H') (u : H) :
     (conjugationLinearizedHomotopy u).h ≫
-        linearizedSpaceMap (nerveMap (SingleObj.mapHom H H' f)) =
-      simplicialIntegerTensorMap (linearizedSpaceMap (nerveMap (SingleObj.mapHom H H' f)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (SingleObj.mapHom H H' f)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (SingleObj.mapHom H H' f)))
         (𝟙 _) ≫ (conjugationLinearizedHomotopy (f u)).h := by
-  let F := (SimplicialObject.whiskering _ _).obj integerLinearization
+  let F := (SimplicialObject.whiskering _ _).obj _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization
   let p := nerveMap (SingleObj.mapHom H H' f)
   let I := SSet.stdSimplex.obj (SimplexCategory.mk 1)
-  have hn : simplicialIntegerTensorMap (F.map p) (𝟙 _) ≫
-      (linearizedTensorIso (nerve (SingleObj H')) I).hom =
-      (linearizedTensorIso (nerve (SingleObj H)) I).hom ≫ F.map (p ▷ I) := by
-    have hh := linearizedTensorIso_naturality p (𝟙 I)
-    simp only [linearizedSpaceMap, CategoryTheory.Functor.map_id, tensorHom_id] at hh
+  have hn : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (F.map p) (𝟙 _) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso (nerve (SingleObj H')) I).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso (nerve (SingleObj H)) I).hom ≫ F.map (p ▷ I) := by
+    have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso_naturality p (𝟙 I)
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap, CategoryTheory.Functor.map_id, tensorHom_id] at hh
     exact hh
-  change ((linearizedTensorIso (nerve (SingleObj H)) I).hom ≫
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso (nerve (SingleObj H)) I).hom ≫
       F.map (conjugationNerveHomotopy u).h) ≫ F.map p =
-    simplicialIntegerTensorMap (F.map p) (𝟙 _) ≫
-      ((linearizedTensorIso (nerve (SingleObj H')) I).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (F.map p) (𝟙 _) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorIso (nerve (SingleObj H')) I).hom ≫
         F.map (conjugationNerveHomotopy (f u)).h)
-  rw [← Category.assoc (simplicialIntegerTensorMap _ _) _, hn]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap _ _) _, hn]
   simp only [Category.assoc, ← F.map_comp]
   rw [conjugationNerveHomotopy_naturality f u]
 

@@ -27,24 +27,24 @@ lemma chainIntegerTensorHomotopy_naturality
     (a : K ⟶ K') (b : M ⟶ M') (c : L ⟶ L') (d : N ⟶ N')
     (hF : a ≫ F' = F ≫ c) (hg : b ≫ g' = g ≫ d)
     (hh : ChainHomotopySquare a c h h') (hk : ChainHomotopySquare b d k k') (n : ℕ) :
-    (chainIntegerTensorMap a b).f n ≫ (chainIntegerTensorHomotopy h' k').hom n (n + 1) =
-      (chainIntegerTensorHomotopy h k).hom n (n + 1) ≫ (chainIntegerTensorMap c d).f (n + 1) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap a b).f n ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorHomotopy h' k').hom n (n + 1) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorHomotopy h k).hom n (n + 1) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap c d).f (n + 1) := by
   apply mapBifunctor.hom_ext
   intro p q hpq
-  rw [← Category.assoc, ι_chainIntegerTensorMap, Category.assoc, ι_chainIntegerTensorHomotopy]
-  rw [← Category.assoc (ιMapBifunctor K M integerTensorBifunctor (.down ℕ) p q n hpq),
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap, Category.assoc, ι_chainIntegerTensorHomotopy]
+  rw [← Category.assoc (ιMapBifunctor K M _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q n hpq),
     ι_chainIntegerTensorHomotopy]
   simp only [Preadditive.comp_add, Preadditive.comp_zsmul, Preadditive.add_comp,
-    Preadditive.zsmul_comp, Category.assoc, ι_chainIntegerTensorMap]
+    Preadditive.zsmul_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap]
   have hgb := congrArg (fun t ↦ t.f q) hg
   change b.f q ≫ g'.f q = g.f q ≫ d.f q at hgb
   have hFa := congrArg (fun t ↦ t.f p) hF
   change a.f p ≫ F'.f p = F.f p ≫ c.f p at hFa
   congr 1
-  · rw [← Category.assoc, ← integerTensorMap_comp, hh p, hgb,
-      integerTensorMap_comp, Category.assoc]
+  · rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, hh p, hgb,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, Category.assoc]
   · congr 1
-    rw [← Category.assoc, ← integerTensorMap_comp, hFa, hk q,
-      integerTensorMap_comp, Category.assoc]
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, hFa, hk q,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, Category.assoc]
 
 end SerrePositivity.KST.ProExcision

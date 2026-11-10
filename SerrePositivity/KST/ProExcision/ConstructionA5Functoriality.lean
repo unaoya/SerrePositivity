@@ -39,10 +39,10 @@ lemma constructionA5_functorial
     {T P Q H T₁ P₁ Q₁ H₁ : Type u}
     [Group T] [Group P] [Group Q] [Group H] [Group T₁] [Group P₁] [Group Q₁] [Group H₁]
     (d : GroupProductData T P Q H) (d₁ : GroupProductData T₁ P₁ Q₁ H₁) (m m' : ℕ)
-    (h : LinearizedMHomotopy (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* P)) m)
-    (k : LinearizedMHomotopy (groupLinearizedMap d.β) (groupLinearizedMap (1 : T →* Q)) m')
-    (h₁ : LinearizedMHomotopy (groupLinearizedMap d₁.α) (groupLinearizedMap (1 : T₁ →* P₁)) m)
-    (k₁ : LinearizedMHomotopy (groupLinearizedMap d₁.β) (groupLinearizedMap (1 : T₁ →* Q₁)) m')
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* P)) m)
+    (k : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d.β) (groupLinearizedMap (1 : T →* Q)) m')
+    (h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d₁.α) (groupLinearizedMap (1 : T₁ →* P₁)) m)
+    (k₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d₁.β) (groupLinearizedMap (1 : T₁ →* Q₁)) m')
     (t : T →* T₁) (p : P →* P₁) (q : Q →* Q₁) (r : H →* H₁)
     (hα : ∀ x, d₁.α (t x) = p (d.α x)) (hβ : ∀ x, d₁.β (t x) = q (d.β x))
     (hμ : ∀ x y, d₁.μ (p x, q y) = r (d.μ (x, y)))

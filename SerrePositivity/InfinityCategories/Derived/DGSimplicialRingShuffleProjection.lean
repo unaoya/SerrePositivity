@@ -17,7 +17,7 @@ open EInfinity.BarrattEccles
 open scoped Simplicial
 def ringShuffleBilinear (A : SimplicialObject RingCat.{u}) (p q : ℕ) :
     A.obj (op ⦋p⦌) →ₗ[ℤ] A.obj (op ⦋q⦌) →ₗ[ℤ] A.obj (op ⦋p + q⦌) :=
-  TensorProduct.curry (KST.ProExcision.shuffleBidegree (simplicialRingIntegerModule A)
+  TensorProduct.curry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree (simplicialRingIntegerModule A)
     (simplicialRingIntegerModule A) p q (p + q) rfl ≫
       (simplicialRingIntegerMultiplication A).app (op ⦋p + q⦌)).hom
 lemma ringShuffleBilinear_apply (A : SimplicialObject RingCat.{u}) (p q : ℕ)
@@ -26,7 +26,7 @@ lemma ringShuffleBilinear_apply (A : SimplicialObject RingCat.{u}) (p q : ℕ)
   simplicialRingShuffleProduct_eq_shuffleBidegree A p q x y
 def projectedRingShuffleBilinear (A : SimplicialObject RingCat.{u}) (p q : ℕ) :
     A.obj (op ⦋p⦌) →ₗ[ℤ] A.obj (op ⦋q⦌) →ₗ[ℤ] A.obj (op ⦋p + q⦌) :=
-  TensorProduct.curry (KST.ProExcision.shuffleBidegree (simplicialRingIntegerModule A)
+  TensorProduct.curry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree (simplicialRingIntegerModule A)
     (simplicialRingIntegerModule A) p q (p + q) rfl ≫
       (simplicialRingIntegerMultiplication A).app (op ⦋p + q⦌) ≫
         (PInfty (X := simplicialRingIntegerModule A)).f (p + q)).hom
@@ -36,7 +36,7 @@ lemma projectedRingShuffleBilinear_apply (A : SimplicialObject RingCat.{u}) (p q
       ((PInfty (X := simplicialRingIntegerModule A)).f (p + q)).hom
         (simplicialRingShuffleProduct A p q x y) := by
   change ((PInfty (X := simplicialRingIntegerModule A)).f (p + q)).hom
-    ((KST.ProExcision.shuffleBidegree (simplicialRingIntegerModule A)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree (simplicialRingIntegerModule A)
       (simplicialRingIntegerModule A) p q (p + q) rfl ≫
         (simplicialRingIntegerMultiplication A).app (op ⦋p + q⦌)).hom
           (TensorProduct.tmul ℤ x y)) = _

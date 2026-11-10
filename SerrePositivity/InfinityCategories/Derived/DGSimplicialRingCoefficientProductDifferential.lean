@@ -19,9 +19,9 @@ local notation "mu" => simplicialRingNormalizedMultiplication A
 local notation "E" => integerCoefficientModuleFunctor
 lemma integerCoefficientTensorComparison_precomp
     {M M' Q Q' K : ModuleCat.{u} ℤ} (f : M ⟶ M') (g : Q ⟶ Q')
-    (h : integerTensor M' Q' ⟶ K) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M' Q' ⟶ K) :
     ((E).map f ⊗ₘ (E).map g) ≫ integerCoefficientTensorComparison M' Q' ≫ (E).map h =
-      integerCoefficientTensorComparison M Q ≫ (E).map (integerTensorMap f g ≫ h) := by
+      integerCoefficientTensorComparison M Q ≫ (E).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap f g ≫ h) := by
   simpa only [Functor.map_comp, Category.assoc] using!
     congrArg (fun ψ ↦ ψ ≫ (E).map h) (integerCoefficientTensorComparison_naturality f g)
 
@@ -32,11 +32,11 @@ def simplicialRingCoefficientMooreBidegree (p q n : ℕ) (h : p + q = n) :
 lemma simplicialRingCoefficientMooreBidegree_post_d (p q s n : ℕ) (h : p + q = s) :
     simplicialRingCoefficientMooreBidegree A p q s h ≫ (E).map ((N).d s n) =
     integerCoefficientTensorComparison ((N).X p) ((N).X q) ≫ (E).map
-      (ιMapBifunctor N N integerTensorBifunctor (.down ℕ) p q s h ≫
-        mapBifunctor.D₁ N N integerTensorBifunctor (.down ℕ) s n ≫ (mu).f n) +
+      (ιMapBifunctor N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q s h ≫
+        mapBifunctor.D₁ N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) s n ≫ (mu).f n) +
     integerCoefficientTensorComparison ((N).X p) ((N).X q) ≫ (E).map
-      (ιMapBifunctor N N integerTensorBifunctor (.down ℕ) p q s h ≫
-        mapBifunctor.D₂ N N integerTensorBifunctor (.down ℕ) s n ≫ (mu).f n) := by
+      (ιMapBifunctor N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q s h ≫
+        mapBifunctor.D₂ N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) s n ≫ (mu).f n) := by
   dsimp only [simplicialRingCoefficientMooreBidegree]
   rw [Category.assoc, ← Functor.map_comp, simplicialRingMooreMultiplicationBidegree_d,
     Functor.map_add, Preadditive.comp_add]

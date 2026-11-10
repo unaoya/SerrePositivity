@@ -26,10 +26,10 @@ variable {A : SimplicialMonoidAction G H} {B : SimplicialMonoidAction G H'}
 規約：KST Definition A.3、零次を含む非被約 C(H)。H_* の結論や bar への持ち上げは含めない。
 使われ方：Lemma A.4 の入力と Lemma 4.16 の出力。 -/
 structure HomologicallyMConstant (f : SimplicialActionHom A B) (m : ℕ) where
-  homotopy : LinearizedMHomotopy (linearizedSpaceMap (monoidBarMap f.hom))
-    (linearizedSpaceMap (monoidBarMap (SimplicialActionHom.trivial A B).hom)) m
+  homotopy : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (monoidBarMap f.hom))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (monoidBarMap (SimplicialActionHom.trivial A B).hom)) m
   equivariant (n : SimplexCategoryᵒᵖ) (a : G.obj n) :
-    integerTensorMap (linearizedSetAction (barSetAction A) n a) (𝟙 _) ≫ homotopy.h.app n =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (linearizedSetAction (barSetAction A) n a) (𝟙 _) ≫ homotopy.h.app n =
       homotopy.h.app n ≫ linearizedSetAction (barSetAction B) n a
 
 /-- 概要：m 次同変ホモトピーは半直積の絶対ホモロジー項で自明射との一致を与える。
@@ -43,8 +43,8 @@ theorem lemmaA4_absolute (F : SSet.{u} ⥤ ModuleCat.{u} ℤ)
     F.map (monoidBarMap (simplicialActionProductMap f)) =
       F.map (monoidBarMap (simplicialActionProductMap (SimplicialActionHom.trivial A B))) := by
   let e := SimplicialActionHom.trivial A B
-  have hbar : LinearizedMHomotopy (linearizedSpaceMap (coefficientActionBarMap f))
-      (linearizedSpaceMap (coefficientActionBarMap e)) m :=
+  have hbar : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (coefficientActionBarMap f))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (coefficientActionBarMap e)) m :=
     linearizedActionBarMHomotopy (barSetActionHom f) (barSetActionHom e) rfl rfl
       hf.homotopy hf.equivariant
   have hc := M.map_eq_of_mHomotopy hbar hi

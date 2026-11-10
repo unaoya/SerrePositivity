@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.MHomotopyHomology
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.MHomotopyHomology
 
 /-!
 # 借用する H_* の複体模型の界面
@@ -21,10 +21,10 @@ open CategoryTheory HomologicalComplex
 使われ方：所有レーンの正規化模型との同定を接続するための明示的な界面。 -/
 structure SimplicialHomologyModel (F : SSet.{u} ⥤ ModuleCat.{u} ℤ) (i : ℕ) where
   iso (X : SSet.{u}) : F.obj X ≅
-    ((AlgebraicTopology.alternatingFaceMapComplex _).obj (linearizedSpace X)).homology i
+    ((AlgebraicTopology.alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X)).homology i
   naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
     F.map f ≫ (iso Y).hom = (iso X).hom ≫
-      homologyMap ((AlgebraicTopology.alternatingFaceMapComplex _).map (linearizedSpaceMap f)) i
+      homologyMap ((AlgebraicTopology.alternatingFaceMapComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)) i
 
 /-- 概要：線形化した二つの射の m 次ホモトピーは、借用関手の次数 i≤m で同じ写像を与える。
 方針：複体側で証明したホモロジー写像の一致を自然な模型同型で移す。
@@ -33,7 +33,7 @@ structure SimplicialHomologyModel (F : SSet.{u} ⥤ ModuleCat.{u} ℤ) (i : ℕ)
 theorem SimplicialHomologyModel.map_eq_of_mHomotopy
     {F : SSet.{u} ⥤ ModuleCat.{u} ℤ} {i : ℕ} (M : SimplicialHomologyModel F i)
     {X Y : SSet.{u}} {f g : X ⟶ Y} {m : ℕ}
-    (H : LinearizedMHomotopy (linearizedSpaceMap f) (linearizedSpaceMap g) m) (hi : i ≤ m) :
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap g) m) (hi : i ≤ m) :
     F.map f = F.map g := by
   apply (cancel_mono (M.iso Y).hom).mp
   rw [M.naturality, M.naturality, H.homologyMap_eq i hi]

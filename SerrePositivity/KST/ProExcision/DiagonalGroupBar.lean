@@ -37,13 +37,13 @@ def simplicialGroupBarMap {M N : SimplicialObject GrpCat.{u}} (f : M ⟶ N) :
 使われ方：自然な実区間射の対角の単体性の証明。 -/
 lemma linearizedGroupBar_map_decomposition (M : SimplicialObject GrpCat.{u})
     {k l : SimplexCategoryᵒᵖ} (φ : k ⟶ l) :
-    (linearizedSpace (simplicialGroupBar M)).map φ =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (simplicialGroupBar M)).map φ =
       (groupLinearizedMap (M.map φ).hom).app k ≫
-        (linearizedSpace (nerve (SingleObj (M.obj l)))).map φ := by
-  change integerLinearization.map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj (M.obj l)))).map φ := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map
       (((nerveMap (SingleObj.mapHom _ _ (M.map φ).hom)).app k) ≫
         (nerve (SingleObj (M.obj l))).map φ) = _
-  exact integerLinearization.map_comp _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map_comp _ _
 
 /-- 概要：対角の線形区間の面・退化も係数方向と nerve 方向に分かれる。
 方針：前半の自由化した分解と整数テンソルの合成則を使う。
@@ -51,15 +51,15 @@ lemma linearizedGroupBar_map_decomposition (M : SimplicialObject GrpCat.{u})
 使われ方：次数ごとのホモトピーから対角の実区間射を構成する。 -/
 lemma linearizedGroupBar_cylinder_decomposition (M : SimplicialObject GrpCat.{u})
     {k l : SimplexCategoryᵒᵖ} (φ : k ⟶ l) :
-    (linearizedCylinder (simplicialGroupBar M)).map φ =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder (simplicialGroupBar M)).map φ =
       (linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ (M.map φ).hom))).app k ≫
-        (linearizedCylinder (nerve (SingleObj (M.obj l)))).map φ := by
-  change integerTensorMap ((linearizedSpace (simplicialGroupBar M)).map φ)
-    ((linearizedSpace (Δ[1] : SSet.{u})).map φ) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder (nerve (SingleObj (M.obj l)))).map φ := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (simplicialGroupBar M)).map φ)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).map φ) = _
   rw [linearizedGroupBar_map_decomposition]
-  have ht := integerTensorMap_comp ((groupLinearizedMap (M.map φ).hom).app k)
-    ((linearizedSpace (nerve (SingleObj (M.obj l)))).map φ)
-    (𝟙 ((linearizedSpace (Δ[1] : SSet.{u})).obj k)) ((linearizedSpace (Δ[1] : SSet.{u})).map φ)
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp ((groupLinearizedMap (M.map φ).hom).app k)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj (M.obj l)))).map φ)
+    (𝟙 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).obj k)) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).map φ)
   simp only [Category.id_comp] at ht
   exact ht
 

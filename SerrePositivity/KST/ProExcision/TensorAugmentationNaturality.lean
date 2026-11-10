@@ -67,31 +67,31 @@ lemma normalizedComparisonWhisker_square
 使われ方：μ 版の外部 G 同変性を作用の各自己射について導く。 -/
 lemma linearizedTensorAugmentationMHomotopy_naturality
     {X Y Z U V W : SSet.{u}}
-    {f e : linearizedSpace X ⟶ linearizedSpace U}
-    {g e' : linearizedSpace Y ⟶ linearizedSpace V} {m m' : ℕ}
-    (h : LinearizedMHomotopy f e m) (k : LinearizedMHomotopy g e' m')
-    (a : linearizedSpace Z ⟶ simplicialIntegerTensor (linearizedSpace X) (linearizedSpace Y))
-    (b : simplicialIntegerTensor (linearizedSpace U) (linearizedSpace V) ⟶ linearizedSpace W)
+    {f e : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace U}
+    {g e' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace V} {m m' : ℕ}
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f e m) (k : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy g e' m')
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Z ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y))
+    (b : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace U) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace V) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace W)
     (x : X ⟶ X) (y : Y ⟶ Y) (z : Z ⟶ Z) (u : U ⟶ U) (v : V ⟶ V) (w : W ⟶ W)
-    (hf : linearizedSpaceMap x ≫ f = f ≫ linearizedSpaceMap u)
-    (hg : linearizedSpaceMap y ≫ g = g ≫ linearizedSpaceMap v)
-    (he : linearizedSpaceMap x ≫ e = e ≫ linearizedSpaceMap u)
-    (he' : linearizedSpaceMap y ≫ e' = e' ≫ linearizedSpaceMap v)
-    (hF : linearizedSpaceMap x ≫ h.strictifiedMap = h.strictifiedMap ≫ linearizedSpaceMap u)
-    (hG : linearizedSpaceMap y ≫ k.strictifiedMap = k.strictifiedMap ≫ linearizedSpaceMap v)
-    (hh : simplicialIntegerTensorMap (linearizedSpaceMap x)
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ h.strictificationHomotopy.h =
-        h.strictificationHomotopy.h ≫ linearizedSpaceMap u)
-    (hk : simplicialIntegerTensorMap (linearizedSpaceMap y)
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ k.strictificationHomotopy.h =
-        k.strictificationHomotopy.h ≫ linearizedSpaceMap v)
-    (ha : linearizedSpaceMap z ≫ a =
-      a ≫ simplicialIntegerTensorMap (linearizedSpaceMap x) (linearizedSpaceMap y))
-    (hb : simplicialIntegerTensorMap (linearizedSpaceMap u) (linearizedSpaceMap v) ≫ b =
-      b ≫ linearizedSpaceMap w) :
-    simplicialIntegerTensorMap (linearizedSpaceMap z)
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ (linearizedTensorAugmentationMHomotopy h k a b).h =
-        (linearizedTensorAugmentationMHomotopy h k a b).h ≫ linearizedSpaceMap w := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x ≫ f = f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u)
+    (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y ≫ g = g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x ≫ e = e ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u)
+    (he' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y ≫ e' = e' ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x ≫ h.strictifiedMap = h.strictifiedMap ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y ≫ k.strictifiedMap = k.strictifiedMap ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
+    (hh : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ h.strictificationHomotopy.h =
+        h.strictificationHomotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u)
+    (hk : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ k.strictificationHomotopy.h =
+        k.strictificationHomotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z ≫ a =
+      a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y))
+    (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) ≫ b =
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ (linearizedTensorAugmentationMHomotopy h k a b).h =
+        (linearizedTensorAugmentationMHomotopy h k a b).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w := by
   have hnF := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hF
   have hnG := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hG
   have hne := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) he
@@ -102,32 +102,32 @@ lemma linearizedTensorAugmentationMHomotopy_naturality
   have hleft := normalizedTensorComparisonWithHomotopies_square f g f g
     h.normalizedStrictificationHomotopy k.normalizedStrictificationHomotopy
     h.normalizedStrictificationHomotopy k.normalizedStrictificationHomotopy
-    (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
     hf hg hnF hnh hnk
   have hright := normalizedTensorAugmentationComparison_square f e g e' f e g e'
     h.normalizedStrictificationHomotopy k.normalizedStrictificationHomotopy
     h.normalizedStrictificationHomotopy k.normalizedStrictificationHomotopy
-    (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v)
     hf hg he he' hnF hnh hnk
   dsimp only [linearizedTensorAugmentationMHomotopy]
   apply linearizedMHomotopyOfChainComparisons_naturality _ _ _ _ _ _ _ _
-    (linearizedSpaceMap z) (linearizedSpaceMap w)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w)
   · rw [← Category.assoc, ha]
     simp only [Category.assoc]
-    rw [← Category.assoc (simplicialIntegerTensorMap (linearizedSpaceMap x) _),
+    rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) _),
       ← simplicialIntegerTensorMap_comp, hf, hg, simplicialIntegerTensorMap_comp]
     simp only [Category.assoc]
     rw [hb]
   · simp only [Preadditive.comp_add, Preadditive.comp_sub, Preadditive.add_comp, Preadditive.sub_comp]
-    have hterm (F : linearizedSpace X ⟶ linearizedSpace U)
-        (G : linearizedSpace Y ⟶ linearizedSpace V)
-        (hF : linearizedSpaceMap x ≫ F = F ≫ linearizedSpaceMap u)
-        (hG : linearizedSpaceMap y ≫ G = G ≫ linearizedSpaceMap v) :
-        linearizedSpaceMap z ≫ (a ≫ simplicialIntegerTensorMap F G ≫ b) =
-          (a ≫ simplicialIntegerTensorMap F G ≫ b) ≫ linearizedSpaceMap w := by
+    have hterm (F : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace U)
+        (G : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace V)
+        (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x ≫ F = F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u)
+        (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y ≫ G = G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) :
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z ≫ (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap F G ≫ b) =
+          (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap F G ≫ b) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w := by
       rw [← Category.assoc, ha]
       simp only [Category.assoc]
-      rw [← Category.assoc (simplicialIntegerTensorMap (linearizedSpaceMap x) _),
+      rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) _),
         ← simplicialIntegerTensorMap_comp, hF, hG, simplicialIntegerTensorMap_comp]
       simp only [Category.assoc]
       rw [hb]
@@ -137,7 +137,7 @@ lemma linearizedTensorAugmentationMHomotopy_naturality
   · have ht := normalizedTensorSandwich_naturality
       ((normalizedMooreComplex _).map h.strictifiedMap) ((normalizedMooreComplex _).map k.strictifiedMap)
       ((normalizedMooreComplex _).map h.strictifiedMap) ((normalizedMooreComplex _).map k.strictifiedMap)
-      (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v) hnF hnG
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) hnF hnG
     have han := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) ha
     have hbn := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hb
     simp only [CategoryTheory.Functor.map_comp] at han hbn
@@ -145,15 +145,15 @@ lemma linearizedTensorAugmentationMHomotopy_naturality
   · have ht₁ := normalizedTensorSandwich_naturality
       ((normalizedMooreComplex _).map h.strictifiedMap) ((normalizedMooreComplex _).map e')
       ((normalizedMooreComplex _).map h.strictifiedMap) ((normalizedMooreComplex _).map e')
-      (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v) hnF hne'
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) hnF hne'
     have ht₂ := normalizedTensorSandwich_naturality
       ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map k.strictifiedMap)
       ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map k.strictifiedMap)
-      (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v) hne hnG
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) hne hnG
     have ht₃ := normalizedTensorSandwich_naturality
       ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map e')
       ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map e')
-      (linearizedSpaceMap x) (linearizedSpaceMap y) (linearizedSpaceMap u) (linearizedSpaceMap v) hne hne'
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v) hne hne'
     have han := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) ha
     have hbn := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hb
     simp only [CategoryTheory.Functor.map_comp] at han hbn
@@ -165,13 +165,13 @@ lemma linearizedTensorAugmentationMHomotopy_naturality
       Preadditive.add_comp, Preadditive.sub_comp] using ht
   · apply ChainHomotopySquare.trans (ChainHomotopySquare.ofEq _ _ _ _)
     exact normalizedComparisonWhisker_square _ _ a a b b
-      (simplicialIntegerTensorMap (linearizedSpaceMap x) (linearizedSpaceMap y))
-      (simplicialIntegerTensorMap (linearizedSpaceMap u) (linearizedSpaceMap v))
-      (linearizedSpaceMap z) (linearizedSpaceMap w) ha hb hleft
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w) ha hb hleft
   · apply ChainHomotopySquare.trans (ChainHomotopySquare.ofEq _ _ _ _)
     exact normalizedComparisonWhisker_square _ _ a a b b
-      (simplicialIntegerTensorMap (linearizedSpaceMap x) (linearizedSpaceMap y))
-      (simplicialIntegerTensorMap (linearizedSpaceMap u) (linearizedSpaceMap v))
-      (linearizedSpaceMap z) (linearizedSpaceMap w) ha hb hright
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap u) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap v))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap z) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap w) ha hb hright
 
 end SerrePositivity.KST.ProExcision

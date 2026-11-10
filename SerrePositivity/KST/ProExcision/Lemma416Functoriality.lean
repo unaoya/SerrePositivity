@@ -25,9 +25,9 @@ variable {R R' : Type u} [Ring R] [Ring R']
 使われ方：全 m の関手的実ホモトピーの帰納法。 -/
 lemma lemma416HomotopyStep_functorial (n m : ℕ) (J : TwoSidedIdeal R) (J' : TwoSidedIdeal R')
     (f : R →+* R') (hf : ∀ x, x ∈ J → f x ∈ J') (a : J) (a' : J') (ha : f (a : R) = (a' : R'))
-    (h : LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J) →* triangularBlockGroup n (m + 1) J)) m)
-    (h' : LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J' (a' : R')))
+    (h' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J' (a' : R')))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J') →* triangularBlockGroup n (m + 1) J')) m)
     (hh : linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ (idealVectorMap J J' (Fin n) f hf))) ≫ h'.h =
       h.h ≫ groupLinearizedMap (triangularBlockGroupMap n (m + 1) J J' f hf)) :

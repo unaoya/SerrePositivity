@@ -22,8 +22,8 @@ open scoped Simplicial
 規約：KST Lemma 4.16 の非可換版、a は零次のイデアルの元。
 使われ方：行列同変版による Lemma A.4 の適用。 -/
 def simplicialLemma416Homotopy (I : SimplicialIdealData.{u}) (a : I.ideal (op ⦋0⦌)) (n m : ℕ) :
-    LinearizedMHomotopy (linearizedSpaceMap (simplicialGroupBarMap (I.rightColumnMap a n m)))
-      (linearizedSpaceMap (simplicialGroupBarMap (simplicialGroupTrivialMap (I.columnGroup n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap (I.rightColumnMap a n m)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap (simplicialGroupTrivialMap (I.columnGroup n)
         (I.triangularGroup n (m + 1))))) m :=
   diagonalGroupMHomotopy (fun k ↦ lemma416Homotopy n (I.ideal k) (I.vertexElement a k) m)
     (fun {k l} φ ↦ lemma416Homotopy_functorial n (I.ideal k) (I.ideal l)

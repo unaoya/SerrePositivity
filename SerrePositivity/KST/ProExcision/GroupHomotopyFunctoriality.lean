@@ -24,14 +24,14 @@ open scoped Simplicial
 lemma simplicialIntegerTensorInterval_square
     {A A' B B' : SimplicialObject (ModuleCat.{u} ℤ)}
     (a : A ⟶ A') (b : B ⟶ B') (f : A ⟶ B) (f' : A' ⟶ B') (hf : a ≫ f' = f ≫ b) :
-    simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫
-      simplicialIntegerTensorMap f' (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) =
-    simplicialIntegerTensorMap f (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫
-      simplicialIntegerTensorMap b (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) := by
-  have h₁ := simplicialIntegerTensorMap_comp a (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) f'
-    (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))
-  have h₂ := simplicialIntegerTensorMap_comp f (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) b
-    (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f' (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap b (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) := by
+  have h₁ := simplicialIntegerTensorMap_comp a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) f'
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))
+  have h₂ := simplicialIntegerTensorMap_comp f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) b
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))
   simp only [Category.id_comp] at h₁ h₂
   rw [← h₁, ← h₂, hf]
 
@@ -46,12 +46,12 @@ lemma groupZeroMHomotopy_functorial
     linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ t)) ≫ (groupZeroMHomotopy f').h =
       (groupZeroMHomotopy f).h ≫ groupLinearizedMap r := by
   change linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ t)) ≫
-      (linearizedCylinderProjection _ ≫ groupLinearizedMap f') =
-    (linearizedCylinderProjection _ ≫ groupLinearizedMap f) ≫ groupLinearizedMap r
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection _ ≫ groupLinearizedMap f') =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection _ ≫ groupLinearizedMap f) ≫ groupLinearizedMap r
   rw [← Category.assoc, linearizedCylinderProjection_naturality, Category.assoc]
-  change linearizedCylinderProjection (nerve (SingleObj T)) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection (nerve (SingleObj T)) ≫
     (groupLinearizedMap t ≫ groupLinearizedMap f') =
-      (linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f) ≫ groupLinearizedMap r
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f) ≫ groupLinearizedMap r
   rw [groupLinearizedMap_square f f' t r hf, Category.assoc]
 
 /-- 概要：前合成した共役の実 m 次比較は異なる群データに自然。

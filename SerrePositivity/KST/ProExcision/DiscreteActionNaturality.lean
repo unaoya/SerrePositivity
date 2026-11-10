@@ -29,7 +29,7 @@ lemma discreteNerveAction_linearized (n : SimplexCategoryᵒᵖ) (a : G) :
 方針：次数ごとの同変性を自然変換の外延性で束ねる。
 規約：KST A.5。使われ方：両因子の入力射と厳密化した射の自然性。 -/
 lemma LinearizedEquivariant.discrete_naturality
-    {f : linearizedSpace (nerve (SingleObj T)) ⟶ linearizedSpace (nerve (SingleObj P))}
+    {f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj T)) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj P))}
     (hf : LinearizedEquivariant (discreteNerveAction (MonCat.of G) (MonCat.of T) ρT)
       (discreteNerveAction (MonCat.of G) (MonCat.of P) ρP) f) (a : G) :
     groupLinearizedMap (ρT a) ≫ f = f ≫ groupLinearizedMap (ρP a) := by
@@ -41,11 +41,11 @@ lemma LinearizedEquivariant.discrete_naturality
 方針：区間因子の作用を恒等として各次数の同変性を束ねる。
 規約：KST A.5。使われ方：因子内の厳密化への全区間比較の自然性。 -/
 lemma LinearizedCylinderEquivariant.discrete_naturality
-    {h : linearizedCylinder (nerve (SingleObj T)) ⟶ linearizedSpace (nerve (SingleObj P))}
+    {h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder (nerve (SingleObj T)) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj P))}
     (hh : LinearizedCylinderEquivariant (discreteNerveAction (MonCat.of G) (MonCat.of T) ρT)
       (discreteNerveAction (MonCat.of G) (MonCat.of P) ρP) h) (a : G) :
-    simplicialIntegerTensorMap (groupLinearizedMap (ρT a))
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ h = h ≫ groupLinearizedMap (ρP a) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (groupLinearizedMap (ρT a))
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ h = h ≫ groupLinearizedMap (ρP a) := by
   apply NatTrans.ext
   funext n
   exact hh n a

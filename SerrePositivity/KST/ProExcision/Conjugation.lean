@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
-public import SerrePositivity.KST.ProExcision.LinearizedHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy
 public import Mathlib.Algebra.Group.Hom.Defs
 public import Mathlib.CategoryTheory.SingleObj
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomotopyInvariance
@@ -88,8 +88,8 @@ def conjugationChainHomotopy {C : Type w} [Category.{c} C]
 規約：KST Construction A.6、Definition A.3 の両端条件を全次数で満たす。
 使われ方：Lemma 4.16 の C(ψ) の比較と任意の m 次への制限。 -/
 def conjugationLinearizedHomotopy (u : H) :
-    LinearizedHomotopy (linearizedSpaceMap (nerveMap (𝟭 (SingleObj H))))
-      (linearizedSpaceMap (nerveMap (conjugationFunctor u))) :=
-  linearizedTensorHomotopy (conjugationNerveHomotopy u)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (𝟭 (SingleObj H))))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (conjugationFunctor u))) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedTensorHomotopy (conjugationNerveHomotopy u)
 
 end SerrePositivity.KST.ProExcision

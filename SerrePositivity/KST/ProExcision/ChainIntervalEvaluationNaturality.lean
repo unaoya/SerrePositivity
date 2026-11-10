@@ -22,7 +22,7 @@ open CategoryTheory HomologicalComplex
 lemma chainIntervalEndpointEval_naturality {M M' N N' : ModuleCat.{u} ℤ}
     (f g : M ⟶ N) (f' g' : M' ⟶ N') (a : M ⟶ M') (b : N ⟶ N')
     (hf : a ≫ f' = f ≫ b) (hg : a ≫ g' = g ≫ b) :
-    integerTensorMap a (𝟙 (integerIntervalX 0)) ≫ chainIntervalEndpointEval f' g' =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap a (𝟙 (integerIntervalX 0)) ≫ chainIntervalEndpointEval f' g' =
       chainIntervalEndpointEval f g ≫ b := by
   apply integerTensor_free_hom_ext
   intro m i
@@ -43,7 +43,7 @@ lemma chainIntervalEndpointEval_naturality {M M' N N' : ModuleCat.{u} ℤ}
 lemma chainIntervalEdgeEval_naturality {M M' N N' : ModuleCat.{u} ℤ}
     (h : M ⟶ N) (h' : M' ⟶ N') (a : M ⟶ M') (b : N ⟶ N')
     (hh : a ≫ h' = h ≫ b) :
-    integerTensorMap a (𝟙 (integerIntervalX 1)) ≫ chainIntervalEdgeEval h' =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap a (𝟙 (integerIntervalX 1)) ≫ chainIntervalEdgeEval h' =
       chainIntervalEdgeEval h ≫ b := by
   apply integerTensor_free_hom_ext
   intro m i
@@ -59,7 +59,7 @@ lemma chainIntervalEdgeEval_naturality {M M' N N' : ModuleCat.{u} ℤ}
 lemma chainIntervalEndpointEval_comm {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
     (f g : K ⟶ L) (n : ℕ) :
     chainIntervalEndpointEval (f.f (n + 1)) (g.f (n + 1)) ≫ L.d (n + 1) n =
-      integerTensorMap (K.d (n + 1) n) (𝟙 (integerIntervalX 0)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (K.d (n + 1) n) (𝟙 (integerIntervalX 0)) ≫
         chainIntervalEndpointEval (f.f n) (g.f n) :=
   (chainIntervalEndpointEval_naturality _ _ _ _ _ _
     (f.comm (n + 1) n).symm (g.comm (n + 1) n).symm).symm
@@ -68,7 +68,7 @@ lemma chainIntervalEndpointEval_comm {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ
 方針：辺の境界を終点−始点へ展開し、純テンソルと評価の差へ分配する。
 規約：KST A.3・A.5。使われ方：区間次数1のホモトピー等式。 -/
 lemma chainIntervalEndpointEval_boundary {M N : ModuleCat.{u} ℤ} (f g : M ⟶ N) :
-    integerTensorMap (𝟙 M) integerIntervalBoundary ≫ chainIntervalEndpointEval f g =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (𝟙 M) integerIntervalBoundary ≫ chainIntervalEndpointEval f g =
       chainIntervalEdgeEval (g - f) := by
   apply integerTensor_free_hom_ext
   intro m i

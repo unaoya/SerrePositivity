@@ -30,20 +30,20 @@ include hf hg hH
 規約：KST A.3・A.5。使われ方：Moore 包含による正規化前の段階。 -/
 lemma chainHomotopyCylinderCore_naturality :
     (alternatingFaceMapComplex _).map
-        (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))) ≫
       chainHomotopyCylinderCore H' = chainHomotopyCylinderCore H ≫ (normalizedMooreComplex _).map b := by
-  have haw := alexanderWhitney_naturality a (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))
+  have haw := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))
   simp only [CategoryTheory.Functor.map_id] at haw
   have hp := PInftyToNormalizedMooreComplex_naturality a
   change (alternatingFaceMapComplex _).map a ≫ PInftyToNormalizedMooreComplex C' =
     PInftyToNormalizedMooreComplex C ≫ (normalizedMooreComplex _).map a at hp
   have ht :
-      chainIntegerTensorMap ((alternatingFaceMapComplex _).map a)
-          (𝟙 ((alternatingFaceMapComplex _).obj (linearizedSpace (Δ[1] : SSet.{u})))) ≫
-        chainIntegerTensorMap (PInftyToNormalizedMooreComplex C') integerIntervalComparison =
-      chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison ≫
-        chainIntegerTensorMap ((normalizedMooreComplex _).map a) (𝟙 integerChainInterval) := by
-    rw [← chainIntegerTensorMap_comp, ← chainIntegerTensorMap_comp, hp]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((alternatingFaceMapComplex _).map a)
+          (𝟙 ((alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (PInftyToNormalizedMooreComplex C') integerIntervalComparison =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map a) (𝟙 integerChainInterval) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_comp, hp]
     simp only [Category.id_comp, Category.comp_id]
   have hfn := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hf
   have hgn := congrArg ((normalizedMooreComplex (ModuleCat.{u} ℤ)).map) hg
@@ -53,7 +53,7 @@ lemma chainHomotopyCylinderCore_naturality :
   dsimp only [chainHomotopyCylinderCore]
   rw [← Category.assoc, haw]
   simp only [Category.assoc]
-  rw [← Category.assoc (chainIntegerTensorMap ((alternatingFaceMapComplex _).map a) _), ht]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((alternatingFaceMapComplex _).map a) _), ht]
   simp only [Category.assoc]
   rw [he]
 
@@ -62,16 +62,16 @@ lemma chainHomotopyCylinderCore_naturality :
 規約：KST A.3・A.5。使われ方：復元の自然性を忠実性で検出する。 -/
 lemma chainHomotopyCylinderMap_naturality :
     (normalizedMooreComplex _).map
-        (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))) ≫
       chainHomotopyCylinderMap H' = chainHomotopyCylinderMap H ≫ (normalizedMooreComplex _).map b := by
   have hi := (inclusionOfMooreComplex (ModuleCat.{u} ℤ)).naturality
-    (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))))
   change (normalizedMooreComplex _).map
-      (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))) ≫
-    inclusionOfMooreComplexMap (simplicialIntegerTensor C' (linearizedSpace (Δ[1] : SSet.{u}))) =
-    inclusionOfMooreComplexMap (simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u}))) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))) ≫
+    inclusionOfMooreComplexMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) =
+    inclusionOfMooreComplexMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫
       (alternatingFaceMapComplex _).map
-        (simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))) at hi
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))) at hi
   rw [chainHomotopyCylinderMap, chainHomotopyCylinderMap, ← Category.assoc, hi, Category.assoc,
     chainHomotopyCylinderCore_naturality H H' a b hf hg hH, Category.assoc]
 
@@ -80,7 +80,7 @@ lemma chainHomotopyCylinderMap_naturality :
 規約：KST Definition A.3、Construction A.5、外部群の作用を保つ復元。
 使われ方：構成済みの正規化ホモトピーの G 同変な実区間への移送。 -/
 lemma chainHomotopyCylinderReconstruct_naturality :
-    simplicialIntegerTensorMap a (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫
       chainHomotopyCylinderReconstruct H' = chainHomotopyCylinderReconstruct H ≫ b := by
   apply normalizedMap_eq_of_map_eq
   rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp,

@@ -19,7 +19,7 @@ def simplicialRingDGMooreDegreeProduct (A : SimplicialObject RingCat.{u}) (p q :
       (E).obj ((simplicialRingNormalizedChains A).X q) ⟶
         (E).obj ((simplicialRingNormalizedChains A).X (p + q)) :=
   integerCoefficientTensorComparison _ _ ≫ (E).map
-    (HomologicalComplex.ιMapBifunctor _ _ integerTensorBifunctor (.down ℕ)
+    (HomologicalComplex.ιMapBifunctor _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
       p q (p + q) rfl ≫ (simplicialRingNormalizedMultiplication A).f (p + q))
 
 lemma simplicialRingDGMooreDegreeProduct_tmul

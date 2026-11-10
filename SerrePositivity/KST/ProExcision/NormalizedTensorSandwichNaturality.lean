@@ -28,15 +28,15 @@ lemma normalizedTensorSandwich_naturality
     (a : C ⟶ C') (b : D ⟶ D') (c : E ⟶ E') (d : F ⟶ F')
     (hU : (normalizedMooreComplex _).map a ≫ U' = U ≫ (normalizedMooreComplex _).map c)
     (hV : (normalizedMooreComplex _).map b ≫ V' = V ≫ (normalizedMooreComplex _).map d) :
-    (normalizedMooreComplex _).map (simplicialIntegerTensorMap a b) ≫
-      (normalizedAlexanderWhitney C' D' ≫ chainIntegerTensorMap U' V' ≫ normalizedShuffle E' F') =
-    (normalizedAlexanderWhitney C D ≫ chainIntegerTensorMap U V ≫ normalizedShuffle E F) ≫
-      (normalizedMooreComplex _).map (simplicialIntegerTensorMap c d) := by
-  rw [← Category.assoc, normalizedAlexanderWhitney_naturality]
+    (normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap a b) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C' D' ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap U' V' ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle E' F') =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap U V ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle E F) ≫
+      (normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap c d) := by
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney_naturality]
   simp only [Category.assoc]
-  rw [← Category.assoc (chainIntegerTensorMap ((normalizedMooreComplex _).map a) _),
-    ← chainIntegerTensorMap_comp, hU, hV, chainIntegerTensorMap_comp]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map a) _),
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_comp, hU, hV, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_comp]
   simp only [Category.assoc]
-  rw [normalizedShuffle_naturality]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle_naturality]
 
 end SerrePositivity.KST.ProExcision

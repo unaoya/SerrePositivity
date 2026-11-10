@@ -17,10 +17,10 @@ set_option backward.isDefEq.respectTransparency.types false in
 lemma simplicialRingShuffleProduct_eq_shuffleBidegree
     (A : SimplicialObject RingCat.{u}) (p q : ℕ)
     (x : A.obj (op ⦋p⦌)) (y : A.obj (op ⦋q⦌)) :
-    (shuffleBidegree (simplicialRingIntegerModule A) (simplicialRingIntegerModule A)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree (simplicialRingIntegerModule A) (simplicialRingIntegerModule A)
       p q (p + q) rfl ≫ (simplicialRingIntegerMultiplication A).app (op ⦋p + q⦌)).hom
         (TensorProduct.tmul ℤ x y) = simplicialRingShuffleProduct A p q x y := by
-  rw [shuffleBidegree, Preadditive.sum_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree, Preadditive.sum_comp]
   simp only [Functor.comp_obj, Int.reduceNeg, Functor.comp_map, Linear.smul_comp,
     ModuleCat.hom_sum, ModuleCat.hom_smul, ModuleCat.hom_comp, ConcreteCategory.hom_ofHom,
     LinearMap.restrictScalars_self, LinearMap.coe_sum, LinearMap.coe_smul, LinearMap.coe_comp,

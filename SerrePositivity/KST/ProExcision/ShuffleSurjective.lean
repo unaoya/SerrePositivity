@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.ShufflePath
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShufflePath
 
 /-!
 # shuffle の二つの単体写像の全射性
@@ -61,7 +61,7 @@ lemma discretePath_intermediate {n p : ℕ} (f : Fin (n + 1) → ℕ)
 方針：始点零、終点 p、一歩の増加が0または1であることを使う。
 規約：KST A.5、水平ステップの座標。
 使われ方：第一因子に適用する写像が単体的な退化方向にあることの確認。 -/
-lemma ShuffleIndex.left_surjective {p n : ℕ} (s : ShuffleIndex p n) :
+lemma ShuffleIndex.left_surjective {p n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex p n) :
     Function.Surjective s.left.toOrderHom := by
   intro j
   obtain ⟨x, hx⟩ := discretePath_intermediate (fun x ↦ (s.left.toOrderHom x : ℕ))
@@ -74,7 +74,7 @@ lemma ShuffleIndex.left_surjective {p n : ℕ} (s : ShuffleIndex p n) :
 方針：始点零、終点 q、一歩の増加が0または1であることを使う。
 規約：KST A.5、垂直ステップの座標。
 使われ方：第二因子に適用する写像が単体的な退化方向にあることの確認。 -/
-lemma ShuffleIndex.right_surjective {p q n : ℕ} (s : ShuffleIndex p n) (h : p + q = n) :
+lemma ShuffleIndex.right_surjective {p q n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ShuffleIndex p n) (h : p + q = n) :
     Function.Surjective (s.right h).toOrderHom := by
   intro j
   obtain ⟨x, hx⟩ := discretePath_intermediate (fun x ↦ ((s.right h).toOrderHom x : ℕ))

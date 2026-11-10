@@ -20,7 +20,7 @@ open CategoryTheory HomologicalComplex
 方針：既存の自由化と交代面写像複体の二つの実関手を合成する。
 規約：KST App. A の C(-) の鎖模型。使われ方：H_* の模型同型の自然変換への束ね。 -/
 def linearizedChainFunctor : SSet.{u} ⥤ ChainComplex (ModuleCat.{u} ℤ) ℕ :=
-  (SimplicialObject.whiskering _ _).obj integerLinearization ⋙
+  (SimplicialObject.whiskering _ _).obj _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization ⋙
     AlgebraicTopology.alternatingFaceMapComplex _
 
 /-- 概要：自由整数鎖複体の順序反転の実自然同型。

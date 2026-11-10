@@ -22,36 +22,36 @@ open CategoryTheory HomologicalComplex AlgebraicTopology
 使われ方：非可換標的の群準同型 μ を最後の後合成として適用する。 -/
 def linearizedTensorAugmentationMHomotopy
     {X Y Z : SSet.{u}} {D E F : SimplicialObject (ModuleCat.{u} ℤ)}
-    {f e : linearizedSpace X ⟶ D} {g e' : linearizedSpace Y ⟶ E} {m m' : ℕ}
-    (h : LinearizedMHomotopy f e m) (h' : LinearizedMHomotopy g e' m')
-    (a : linearizedSpace Z ⟶ simplicialIntegerTensor (linearizedSpace X) (linearizedSpace Y))
-    (b : simplicialIntegerTensor D E ⟶ F) :
-    LinearizedMHomotopy (a ≫ simplicialIntegerTensorMap f g ≫ b)
-      (a ≫ (simplicialIntegerTensorMap f e' + simplicialIntegerTensorMap e g -
-        simplicialIntegerTensorMap e e') ≫ b) (m + m' + 1) := by
-  let R₀ := normalizedAlexanderWhitney (linearizedSpace X) (linearizedSpace Y) ≫
-    chainIntegerTensorMap ((normalizedMooreComplex _).map h.strictifiedMap)
-      ((normalizedMooreComplex _).map h'.strictifiedMap) ≫ normalizedShuffle D E
-  let S₀ := normalizedAlexanderWhitney (linearizedSpace X) (linearizedSpace Y) ≫
-    (chainIntegerTensorMap ((normalizedMooreComplex _).map h.strictifiedMap)
+    {f e : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D} {g e' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y ⟶ E} {m m' : ℕ}
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f e m) (h' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy g e' m')
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Z ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y))
+    (b : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor D E ⟶ F) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g ≫ b)
+      (a ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f e' + _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e g -
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e e') ≫ b) (m + m' + 1) := by
+  let R₀ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map h.strictifiedMap)
+      ((normalizedMooreComplex _).map h'.strictifiedMap) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle D E
+  let S₀ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map h.strictifiedMap)
         ((normalizedMooreComplex _).map e') +
-      chainIntegerTensorMap ((normalizedMooreComplex _).map e)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map e)
         ((normalizedMooreComplex _).map h'.strictifiedMap) -
-      chainIntegerTensorMap ((normalizedMooreComplex _).map e)
-        ((normalizedMooreComplex _).map e')) ≫ normalizedShuffle D E
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map e)
+        ((normalizedMooreComplex _).map e')) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle D E
   let R := (((normalizedMooreComplex _).map a) ≫ R₀) ≫ (normalizedMooreComplex _).map b
   let S := (((normalizedMooreComplex _).map a) ≫ S₀) ≫ (normalizedMooreComplex _).map b
   let H₀ := normalizedTensorComparisonWithHomotopies f g
     h.normalizedStrictificationHomotopy h'.normalizedStrictificationHomotopy
   let H₁ := normalizedTensorAugmentationComparison f e g e'
     h.normalizedStrictificationHomotopy h'.normalizedStrictificationHomotopy
-  have HR : Homotopy ((normalizedMooreComplex _).map (a ≫ simplicialIntegerTensorMap f g ≫ b)) R := by
+  have HR : Homotopy ((normalizedMooreComplex _).map (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g ≫ b)) R := by
     refine (Homotopy.ofEq ?_).trans
       ((H₀.compLeft ((normalizedMooreComplex _).map a)).compRight ((normalizedMooreComplex _).map b))
     simp only [CategoryTheory.Functor.map_comp, Category.assoc]
   have HS : Homotopy ((normalizedMooreComplex _).map
-      (a ≫ (simplicialIntegerTensorMap f e' + simplicialIntegerTensorMap e g -
-        simplicialIntegerTensorMap e e') ≫ b)) S := by
+      (a ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f e' + _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e g -
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e e') ≫ b)) S := by
     refine (Homotopy.ofEq ?_).trans
       ((H₁.compLeft ((normalizedMooreComplex _).map a)).compRight ((normalizedMooreComplex _).map b))
     simp only [CategoryTheory.Functor.map_comp, Category.assoc]
@@ -59,6 +59,6 @@ def linearizedTensorAugmentationMHomotopy
   intro n hn
   dsimp only [R, S, R₀, S₀]
   simp only [comp_f, Category.assoc]
-  rw [normalizedStrictifiedTensor_eq_low h h' n hn]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedStrictifiedTensor_eq_low h h' n hn]
 
 end SerrePositivity.KST.ProExcision

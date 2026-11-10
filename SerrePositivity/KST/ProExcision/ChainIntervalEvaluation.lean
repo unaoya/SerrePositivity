@@ -21,7 +21,7 @@ open CategoryTheory HomologicalComplex
 使われ方：全テンソル区間からの実鎖写像の候補成分。 -/
 def chainHomotopyIntervalApp {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
     {f g : K ⟶ L} (H : Homotopy f g) (n : ℕ) :
-    (chainIntegerTensor K integerChainInterval).X n ⟶ L.X n :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor K integerChainInterval).X n ⟶ L.X n :=
   mapBifunctorDesc (fun p q h ↦ chainHomotopyIntervalBidegree H p q n h)
 
 /-- 概要：区間の全次数の評価を標準包含へ制限すると二重次数の評価になる。
@@ -31,7 +31,7 @@ def chainHomotopyIntervalApp {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
     {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ} {f g : K ⟶ L}
     (H : Homotopy f g) (p q n : ℕ)
     (h : ComplexShape.π (.down ℕ) (.down ℕ) (.down ℕ) (p, q) = n) :
-    ιMapBifunctor K integerChainInterval integerTensorBifunctor (.down ℕ) p q n h ≫
+    ιMapBifunctor K integerChainInterval _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q n h ≫
       chainHomotopyIntervalApp H n = chainHomotopyIntervalBidegree H p q n h :=
   ι_mapBifunctorDesc _ _ _ _
 
@@ -40,8 +40,8 @@ def chainHomotopyIntervalApp {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
 規約：KST A.3・A.5、任意の第一因子で成立。
 使われ方：区間次数が二次以上の微分条件の消去。 -/
 lemma integerTensor_punit_hom_zero {M N : ModuleCat.{u} ℤ}
-    (f : integerTensor M (ModuleCat.of ℤ PUnit.{u + 1}) ⟶ N) : f = 0 := by
-  apply integerTensor_pure_hom_ext
+    (f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M (ModuleCat.of ℤ PUnit.{u + 1}) ⟶ N) : f = 0 := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor_pure_hom_ext
   intro x y
   have hy : y = 0 := Subsingleton.elim _ _
   rw [hy, TensorProduct.tmul_zero]

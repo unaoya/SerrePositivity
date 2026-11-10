@@ -34,10 +34,10 @@ lemma cylinderSquare_sub {a : A ⟶ A'} {b : B ⟶ B'} {h k : A ⟶ B} {h' k' : 
 方針：区間射影の自然性と元の射の正方形を合成する。
 規約：KST A.3・4.16。使われ方：連結時の中間定数射と相殺の定数射。 -/
 lemma cylinderSquare_constant {X X' : SSet.{u}} {D D' : SimplicialObject (ModuleCat.{u} ℤ)}
-    (x : X ⟶ X') (b : D ⟶ D') (f : linearizedSpace X ⟶ D) (f' : linearizedSpace X' ⟶ D')
-    (hf : linearizedSpaceMap x ≫ f' = f ≫ b) :
-    linearizedCylinderMap x ≫ (linearizedCylinderProjection X' ≫ f') =
-      (linearizedCylinderProjection X ≫ f) ≫ b := by
+    (x : X ⟶ X') (b : D ⟶ D') (f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D) (f' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X' ⟶ D')
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap x ≫ f' = f ≫ b) :
+    linearizedCylinderMap x ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X' ≫ f') =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection X ≫ f) ≫ b := by
   rw [← Category.assoc, linearizedCylinderProjection_naturality, Category.assoc, hf, Category.assoc]
 
 end SerrePositivity.KST.ProExcision

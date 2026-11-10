@@ -22,19 +22,19 @@ variable {A : SimplicialSetAction G X} {B : SimplicialSetAction G Y} {C : Simpli
 方針：二つのテンソル写像の合成則と入力の同変性を使う。
 規約：KST A.6・4.16。使われ方：ψ を前合成した共役比較。 -/
 lemma LinearizedMHomotopy.precomp_equivariant
-    {f g : linearizedSpace Y ⟶ linearizedSpace Z} {m : ℕ}
-    (H : LinearizedMHomotopy f g m) (p : X ⟶ Y)
-    (hp : LinearizedEquivariant A B (linearizedSpaceMap p))
+    {f g : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Z} {m : ℕ}
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (p : X ⟶ Y)
+    (hp : LinearizedEquivariant A B (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p))
     (hh : LinearizedCylinderEquivariant B C H.h) :
     LinearizedCylinderEquivariant A C (H.precomp p).h := by
   intro n a
-  change integerTensorMap (linearizedSetAction A n a) (𝟙 _) ≫
-      (integerTensorMap ((linearizedSpaceMap p).app n) (𝟙 _) ≫ H.h.app n) =
-    (integerTensorMap ((linearizedSpaceMap p).app n) (𝟙 _) ≫ H.h.app n) ≫ linearizedSetAction C n a
-  rw [← Category.assoc, ← integerTensorMap_comp, hp n a]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (linearizedSetAction A n a) (𝟙 _) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p).app n) (𝟙 _) ≫ H.h.app n) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p).app n) (𝟙 _) ≫ H.h.app n) ≫ linearizedSetAction C n a
+  rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, hp n a]
   simp only [Category.id_comp]
-  have ht := integerTensorMap_comp ((linearizedSpaceMap p).app n) (linearizedSetAction B n a)
-    (𝟙 ((linearizedSpace (Δ[1] : SSet.{u})).obj n)) (𝟙 ((linearizedSpace (Δ[1] : SSet.{u})).obj n))
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap p).app n) (linearizedSetAction B n a)
+    (𝟙 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).obj n)) (𝟙 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).obj n))
   simp only [Category.id_comp] at ht
   erw [ht]
   simp only [Category.id_comp, Category.assoc]
@@ -45,8 +45,8 @@ lemma LinearizedMHomotopy.precomp_equivariant
 規約：KST A.5・A.6・4.16、実連結は線形な加減法。
 使われ方：共役比較と μ 版 A.5 の同変な連結。 -/
 lemma LinearizedMHomotopy.trans_equivariant
-    {f g k : linearizedSpace X ⟶ linearizedSpace Y} {m : ℕ}
-    (H : LinearizedMHomotopy f g m) (K : LinearizedMHomotopy g k m)
+    {f g k : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y} {m : ℕ}
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (K : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy g k m)
     (hh : LinearizedCylinderEquivariant A B H.h) (hk : LinearizedCylinderEquivariant A B K.h)
     (hg : LinearizedEquivariant A B g) :
     LinearizedCylinderEquivariant A B (H.trans K).h :=

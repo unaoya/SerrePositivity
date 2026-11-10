@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.ChainTensorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorHomotopy
 
 /-!
 # 全テンソルへ移したホモトピーの成分
@@ -23,35 +23,35 @@ lemma ι_chainIntegerTensorHomotopy
     {K K' L L' : ChainComplex (ModuleCat.{u} ℤ) ℕ}
     {f f' : K ⟶ K'} {g g' : L ⟶ L'} (h₁ : Homotopy f f') (h₂ : Homotopy g g')
     (p q n : ℕ) (h : p + q = n) :
-    ιMapBifunctor K L integerTensorBifunctor (.down ℕ) p q n h ≫
-      (chainIntegerTensorHomotopy h₁ h₂).hom n (n + 1) =
-    integerTensorMap (h₁.hom p (p + 1)) (g.f q) ≫
-        ιMapBifunctor K' L' integerTensorBifunctor (.down ℕ) (p + 1) q (n + 1) (by change (p + 1) + q = n + 1; omega) +
+    ιMapBifunctor K L _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q n h ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorHomotopy h₁ h₂).hom n (n + 1) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (h₁.hom p (p + 1)) (g.f q) ≫
+        ιMapBifunctor K' L' _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) (p + 1) q (n + 1) (by change (p + 1) + q = n + 1; omega) +
       (-1 : ℤ) ^ p •
-        (integerTensorMap (f'.f p) (h₂.hom q (q + 1)) ≫
-          ιMapBifunctor K' L' integerTensorBifunctor (.down ℕ) p (q + 1) (n + 1) (by change p + (q + 1) = n + 1; omega)) := by
-  change _ ≫ (mapBifunctorMapHomotopy.hom₁ h₁ g integerTensorBifunctor (.down ℕ) n (n + 1) +
-    mapBifunctorMapHomotopy.hom₂ f' h₂ integerTensorBifunctor (.down ℕ) n (n + 1)) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (f'.f p) (h₂.hom q (q + 1)) ≫
+          ιMapBifunctor K' L' _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p (q + 1) (n + 1) (by change p + (q + 1) = n + 1; omega)) := by
+  change _ ≫ (mapBifunctorMapHomotopy.hom₁ h₁ g _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) n (n + 1) +
+    mapBifunctorMapHomotopy.hom₂ f' h₂ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) n (n + 1)) = _
   rw [Preadditive.comp_add,
-    mapBifunctorMapHomotopy.ιMapBifunctor_hom₁ h₁ g integerTensorBifunctor (.down ℕ)
+    mapBifunctorMapHomotopy.ιMapBifunctor_hom₁ h₁ g _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
       (p + 1) p q n (n + 1) h (ChainComplex.prev ℕ p),
-    mapBifunctorMapHomotopy.ιMapBifunctor_hom₂ f' h₂ integerTensorBifunctor (.down ℕ)
+    mapBifunctorMapHomotopy.ιMapBifunctor_hom₂ f' h₂ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
       p (q + 1) q n (n + 1) h (ChainComplex.prev ℕ q)]
-  rw [ιMapBifunctorOrZero_eq K' L' integerTensorBifunctor (.down ℕ)
+  rw [ιMapBifunctorOrZero_eq K' L' _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
       (p + 1) q (n + 1) (by change (p + 1) + q = n + 1; omega),
-    ιMapBifunctorOrZero_eq K' L' integerTensorBifunctor (.down ℕ)
+    ιMapBifunctorOrZero_eq K' L' _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
       p (q + 1) (n + 1) (by change p + (q + 1) = n + 1; omega)]
   have he₁ : ComplexShape.ε₁ (.down ℕ) (.down ℕ) (.down ℕ) (p + 1, q) = 1 := rfl
   have he₂ : ComplexShape.ε₂ (.down ℕ) (.down ℕ) (.down ℕ) (p, q + 1) = (-1 : ℤˣ) ^ p := rfl
   rw [he₁, one_smul, he₂, Units.smul_def]
   simp only [Units.val_pow_eq_pow_val, Units.coe_neg_one]
-  dsimp only [integerTensorBifunctor, integerTensorRight]
-  change integerTensorMap (h₁.hom p (p + 1)) (𝟙 _) ≫
-      integerTensorMap (𝟙 _) (g.f q) ≫ _ +
-    (-1 : ℤ) ^ p • (integerTensorMap (f'.f p) (𝟙 _) ≫
-      integerTensorMap (𝟙 _) (h₂.hom q (q + 1)) ≫ _) = _
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorRight]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (h₁.hom p (p + 1)) (𝟙 _) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (𝟙 _) (g.f q) ≫ _ +
+    (-1 : ℤ) ^ p • (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (f'.f p) (𝟙 _) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (𝟙 _) (h₂.hom q (q + 1)) ≫ _) = _
   simp only [← Category.assoc]
-  simp only [← integerTensorMap_comp, Category.comp_id, Category.id_comp,
+  simp only [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp, Category.comp_id, Category.id_comp,
     Preadditive.zsmul_comp]
 
 end SerrePositivity.KST.ProExcision

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.ProExcision.AlternatingReversalIso
-public import SerrePositivity.KST.ProExcision.LinearizedSpace
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedSpace
 public import Mathlib.AlgebraicTopology.SimplicialSet.Op
 
 /-!
@@ -22,15 +22,15 @@ open AlgebraicTopology
 方針：各次数で同じ自由加群と同じ係数写像であることを使う。
 規約：SW92 §1.2。使われ方：実交代鎖同型への接続。 -/
 def linearizedReversalIso (X : SSet.{u}) :
-    linearizedSpace X.op ≅ SimplicialObject.opFunctor.obj (linearizedSpace X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X.op ≅ SimplicialObject.opFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) :=
   NatIso.ofComponents (fun _ ↦ Iso.refl _) (fun _ ↦ rfl)
 
 /-- 概要：自由化と反転の可換同型は単体的集合の射に自然。
 方針：各次数の実射を定義で評価する。
 規約：SW92 §1.2。使われ方：相対写像への反転の移送。 -/
 lemma linearizedReversalIso_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
-    linearizedSpaceMap (SSet.opFunctor.map f) ≫ (linearizedReversalIso Y).hom =
-      (linearizedReversalIso X).hom ≫ SimplicialObject.opFunctor.map (linearizedSpaceMap f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (SSet.opFunctor.map f) ≫ (linearizedReversalIso Y).hom =
+      (linearizedReversalIso X).hom ≫ SimplicialObject.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f) := by
   apply NatTrans.ext
   funext n
   rfl
@@ -40,28 +40,28 @@ lemma linearizedReversalIso_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
 規約：KST Proposition 4.14、SW92 §1.2。反転不変性を入力にしない。
 使われ方：反対 bar のホモロジー比較。 -/
 def linearizedReversalChainIso (X : SSet.{u}) :
-    AlternatingFaceMapComplex.obj (linearizedSpace X.op) ≅
-      AlternatingFaceMapComplex.obj (linearizedSpace X) :=
+    AlternatingFaceMapComplex.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X.op) ≅
+      AlternatingFaceMapComplex.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) :=
   (alternatingFaceMapComplex _).mapIso (linearizedReversalIso X) ≪≫
-    alternatingReversalIso (linearizedSpace X)
+    alternatingReversalIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X)
 
 /-- 概要：自由整数鎖複体の反転同型は単体的集合の射に自然。
 方針：自由化の可換同型の自然性と交代鎖同型の自然性を合成する。
 規約：SW92 §1.2 の相対比較。使われ方：H_* の自然な実同型への移送。 -/
 lemma linearizedReversalChainIso_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
-    AlternatingFaceMapComplex.map (linearizedSpaceMap (SSet.opFunctor.map f)) ≫
+    AlternatingFaceMapComplex.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (SSet.opFunctor.map f)) ≫
         (linearizedReversalChainIso Y).hom =
-      (linearizedReversalChainIso X).hom ≫ AlternatingFaceMapComplex.map (linearizedSpaceMap f) := by
+      (linearizedReversalChainIso X).hom ≫ AlternatingFaceMapComplex.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f) := by
   let A := alternatingFaceMapComplex (ModuleCat.{u} ℤ)
-  change A.map (linearizedSpaceMap (SSet.opFunctor.map f)) ≫
-      (A.map (linearizedReversalIso Y).hom ≫ (alternatingReversalIso (linearizedSpace Y)).hom) =
-    (A.map (linearizedReversalIso X).hom ≫ (alternatingReversalIso (linearizedSpace X)).hom) ≫
-      A.map (linearizedSpaceMap f)
+  change A.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (SSet.opFunctor.map f)) ≫
+      (A.map (linearizedReversalIso Y).hom ≫ (alternatingReversalIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y)).hom) =
+    (A.map (linearizedReversalIso X).hom ≫ (alternatingReversalIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X)).hom) ≫
+      A.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)
   rw [← Category.assoc, ← A.map_comp, linearizedReversalIso_natural, A.map_comp, Category.assoc]
-  have hr : A.map (SimplicialObject.opFunctor.map (linearizedSpaceMap f)) ≫
-      (alternatingReversalIso (linearizedSpace Y)).hom =
-    (alternatingReversalIso (linearizedSpace X)).hom ≫ A.map (linearizedSpaceMap f) :=
-    alternatingReversalIso_natural (linearizedSpaceMap f)
+  have hr : A.map (SimplicialObject.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)) ≫
+      (alternatingReversalIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y)).hom =
+    (alternatingReversalIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X)).hom ≫ A.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f) :=
+    alternatingReversalIso_natural (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)
   rw [hr, Category.assoc]
 
 end SerrePositivity.KST.ProExcision

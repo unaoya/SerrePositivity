@@ -38,11 +38,11 @@ def integerCoefficientTensorDownAdd (M N : ModuleCat.{u} ℤ) :=
 
 attribute [-instance] ULift.module in
 def integerCoefficientTensorComparison (M N : ModuleCat.{u} ℤ) :
-    (E).obj M ⊗ (E).obj N ⟶ (E).obj (integerTensor M N) := by
+    (E).obj M ⊗ (E).obj N ⟶ (E).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N) := by
   letI := ((E).obj M).isModule
   letI := ((E).obj N).isModule
-  letI : Module simplicialRingCoefficient (integerTensor M N) :=
-    ((E).obj (integerTensor M N)).isModule
+  letI : Module simplicialRingCoefficient (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N) :=
+    ((E).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N)).isModule
   exact ModuleCat.ofHom
     { toFun := integerCoefficientTensorDownAdd M N
       map_add' := (integerCoefficientTensorDownAdd M N).map_add
@@ -61,14 +61,14 @@ lemma integerCoefficientTensorComparison_tmul (M N : ModuleCat.{u} ℤ) (x : M) 
 lemma integerCoefficientTensorComparison_naturality {M M' N N' : ModuleCat.{u} ℤ}
     (f : M ⟶ M') (g : N ⟶ N') :
     ((E).map f ⊗ₘ (E).map g) ≫ integerCoefficientTensorComparison M' N' =
-      integerCoefficientTensorComparison M N ≫ (E).map (integerTensorMap f g) := by
+      integerCoefficientTensorComparison M N ≫ (E).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap f g) := by
   apply ModuleCat.hom_ext
   apply TensorProduct.ext'
   intro x y
   change (integerCoefficientTensorComparison M' N').hom
       (TensorProduct.map ((E).map f).hom ((E).map g).hom
         (TensorProduct.tmul simplicialRingCoefficient x y)) =
-    ((E).map (integerTensorMap f g)).hom
+    ((E).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap f g)).hom
       ((integerCoefficientTensorComparison M N).hom
         (TensorProduct.tmul simplicialRingCoefficient x y))
   rw [TensorProduct.map_tmul, integerCoefficientTensorComparison_tmul,
@@ -93,11 +93,11 @@ def integerCoefficientTensorUpAdd (M N : ModuleCat.{u} ℤ) :=
 
 attribute [-instance] ULift.module in
 def integerCoefficientTensorComparisonInv (M N : ModuleCat.{u} ℤ) :
-    (E).obj (integerTensor M N) ⟶ (E).obj M ⊗ (E).obj N := by
+    (E).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N) ⟶ (E).obj M ⊗ (E).obj N := by
   letI := ((E).obj M).isModule
   letI := ((E).obj N).isModule
-  letI : Module simplicialRingCoefficient (integerTensor M N) :=
-    ((E).obj (integerTensor M N)).isModule
+  letI : Module simplicialRingCoefficient (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N) :=
+    ((E).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N)).isModule
   exact ModuleCat.ofHom
     { toFun := integerCoefficientTensorUpAdd M N
       map_add' := (integerCoefficientTensorUpAdd M N).map_add
@@ -113,7 +113,7 @@ lemma integerCoefficientTensorComparisonInv_tmul (M N : ModuleCat.{u} ℤ) (x : 
 
 
 def integerCoefficientTensorIso (M N : ModuleCat.{u} ℤ) :
-    (E).obj M ⊗ (E).obj N ≅ (E).obj (integerTensor M N) where
+    (E).obj M ⊗ (E).obj N ≅ (E).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N) where
   hom := integerCoefficientTensorComparison M N
   inv := integerCoefficientTensorComparisonInv M N
   hom_inv_id := by

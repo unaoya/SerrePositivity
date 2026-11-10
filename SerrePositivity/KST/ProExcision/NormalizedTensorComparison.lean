@@ -21,15 +21,15 @@ variable {C C' D D' : SimplicialObject (ModuleCat.{u} ℤ)}
 方針：始域の EZ ホモトピーを射の後合成へ移し、shuffle の自然性で整理する。
 規約：KST A.5。使われ方：二つのテンソル比較の共通前半。 -/
 def normalizedTensorComparisonHomotopy (f : C ⟶ C') (g : D ⟶ D') :
-    Homotopy ((normalizedMooreComplex _).map (simplicialIntegerTensorMap f g))
-      (normalizedAlexanderWhitney C D ≫
-        chainIntegerTensorMap ((normalizedMooreComplex _).map f) ((normalizedMooreComplex _).map g) ≫
-          normalizedShuffle C' D') := by
-  let h := (normalizedEZHomotopy C D).compRight
-    ((normalizedMooreComplex _).map (simplicialIntegerTensorMap f g))
+    Homotopy ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C D ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map f) ((normalizedMooreComplex _).map g) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle C' D') := by
+  let h := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedEZHomotopy C D).compRight
+    ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g))
   refine (Homotopy.ofEq ?_).trans (h.trans (Homotopy.ofEq ?_))
   · exact (Category.id_comp _).symm
-  · rw [Category.assoc, ← normalizedShuffle_naturality f g]
+  · rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle_naturality f g]
 
 /-- 概要：両因子の鎖比較を単体的テンソルの全鎖比較へ移す。
 方針：標準テンソル比較の後で二つの鎖ホモトピーの全テンソルを AW と shuffle で挟む。
@@ -40,10 +40,10 @@ def normalizedTensorComparisonWithHomotopies (f : C ⟶ C') (g : D ⟶ D')
     {G : (normalizedMooreComplex _).obj D ⟶ (normalizedMooreComplex _).obj D'}
     (hf : Homotopy ((normalizedMooreComplex _).map f) F)
     (hg : Homotopy ((normalizedMooreComplex _).map g) G) :
-    Homotopy ((normalizedMooreComplex _).map (simplicialIntegerTensorMap f g))
-      (normalizedAlexanderWhitney C D ≫ chainIntegerTensorMap F G ≫ normalizedShuffle C' D') := by
-  let h := ((chainIntegerTensorHomotopy hf hg).compLeft
-    (normalizedAlexanderWhitney C D)).compRight (normalizedShuffle C' D')
+    Homotopy ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f g))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap F G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle C' D') := by
+  let h := ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorHomotopy hf hg).compLeft
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C D)).compRight (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle C' D')
   refine (normalizedTensorComparisonHomotopy f g).trans
     ((Homotopy.ofEq ?_).trans (h.trans (Homotopy.ofEq ?_)))
   · simp only [Category.assoc]
@@ -60,12 +60,12 @@ def normalizedTensorAugmentationComparison
     (hf : Homotopy ((normalizedMooreComplex _).map f) F)
     (hg : Homotopy ((normalizedMooreComplex _).map g) G) :
     Homotopy ((normalizedMooreComplex _).map
-      (simplicialIntegerTensorMap f e' + simplicialIntegerTensorMap e g - simplicialIntegerTensorMap e e'))
-      (normalizedAlexanderWhitney C D ≫
-        (chainIntegerTensorMap F ((normalizedMooreComplex _).map e') +
-          chainIntegerTensorMap ((normalizedMooreComplex _).map e) G -
-          chainIntegerTensorMap ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map e')) ≫
-        normalizedShuffle C' D') := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap f e' + _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e g - _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap e e'))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedAlexanderWhitney C D ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap F ((normalizedMooreComplex _).map e') +
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map e) G -
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((normalizedMooreComplex _).map e) ((normalizedMooreComplex _).map e')) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle C' D') := by
   let h₁ := normalizedTensorComparisonWithHomotopies f e' hf
     (Homotopy.refl ((normalizedMooreComplex _).map e'))
   let h₂ := normalizedTensorComparisonWithHomotopies e g

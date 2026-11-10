@@ -300,3 +300,19 @@ Python の単体試験 11 件が通過し、差分表から 22 行すべての�
 停止点 1.6 の承認 `1d39655f0` を取り込んで着手。全 10 章の `ok`・`fix` かつ `own`・`both` の行を `item-tags.csv` と突き合わせ、SerrePositivity の 610 宣言に 672 組の属性を付けた。カーネル環境で宣言名と所有モジュールが全件一致し、対象宣言の型に `ModelCategory` の仮定は 0 件。対応表で唯一該当する Archive の宣言も対象に含めた。部分対応の注記は今回の範囲外。
 
 ビルド鍵を `--wait 1800` で取り、元の依存成果物を複製した一時領域で、変更した 367 本を再コンパイルした。全 367 本が通過した。`#kerodon_tags` を 16 の import 群で実行し、SerrePositivity の 672 組と照合した。欠落・余分はともに 0 件。Mathlib の既存 13 組は集計対象から除いた。出典と位置は [属性台帳](../../research/kerodon-coverage/kerodon-stage2-tags.csv)、照合した出力は [Lean の一覧](../../research/kerodon-coverage/kerodon-tags-lean.txt)。
+
+## 段 3 — Alexander–Whitney・shuffle・Eilenberg–Zilber 群
+
+承認済みの外部 4 群のうち、Alexander–Whitney・shuffle・Eilenberg–Zilber の import 閉包 56 本を `InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/` に移した。移動先と同じ名前空間に改名し、入口を含む利用側 81 本の import または参照を更新した。追跡対象の Lean ソースを調べ、旧 56 モジュールへの import は 0 件だった。旧名を ∞ 圏の外から使う参照の記録に基づき、88 名に `Project/Compatibility/KSTAlexanderWhitney.lean` で非推奨 alias を用意した。
+
+ビルド鍵を `--wait 1800` で取得し、移動先 56 本と互換モジュールをコンパイルした。利用側の `KST.ProExcision.IntegerLinearizationAdjunction` と `HomologicalAlgebra.Cosimplicial.CupCommutativity` も検査した。保存比較 v3b は対象の移動前後 379 宣言で PASS、未説明差分 0 件。移動した宣言の Kerodon 属性 15 組を `#kerodon_tags` で再確認した。
+
+### 並行する枝での追従
+
+作業枝で追加した Lean ファイルのうち追従対象だけをリポジトリ相対パスの JSON 配列 `$files` にし、取り込み前の枝で `python3 scripts/refactor/klw1_namespace.py collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。収集には、各ソースの依存を同じ版でビルドした Lean 成果物を使う。改名表を取り込んだ後、対象ソースの内容を収集時と揃えて、次の一行でプレビューを作る。
+
+```sh
+python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"
+```
+
+[`kl-module-map.json`](../../scripts/refactor/targets/kl-module-map.json) は旧 import から新 import への対応表で、[`kl-namespace-map.json`](../../scripts/refactor/targets/kl-namespace-map.json) の `modules` にも同じ対応が入る。プレビューの `review.json` で保留箇所を確認し、検査したソースを枝に反映する。移動先と旧名の両方が必要な場合、旧名を公開する互換モジュールを明示的に import する。現時点の改名表と上記の検証は AW 群を対象とする。段 3 全体の停止条件は未達。

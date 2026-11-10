@@ -47,13 +47,13 @@ lemma mooreProjectionRetraction_naturality (f : C ⟶ C') :
 規約：KST Construction A.5、比較の同変性を仮定に追加しない。
 使われ方：正規化した標準 EZ 比較の外部群同変性。 -/
 lemma chainIntegerTensorMooreRetraction_naturality (f : C ⟶ C') (g : D ⟶ D') (n : ℕ) :
-    (chainIntegerTensorMap ((alternatingFaceMapComplex _).map f)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((alternatingFaceMapComplex _).map f)
         ((alternatingFaceMapComplex _).map g)).f n ≫
-        (chainIntegerTensorMooreRetraction C' D').hom n (n + 1) =
-      (chainIntegerTensorMooreRetraction C D).hom n (n + 1) ≫
-        (chainIntegerTensorMap ((alternatingFaceMapComplex _).map f)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMooreRetraction C' D').hom n (n + 1) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMooreRetraction C D).hom n (n + 1) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap ((alternatingFaceMapComplex _).map f)
           ((alternatingFaceMapComplex _).map g)).f (n + 1) := by
-  simp only [chainIntegerTensorMooreRetraction, Homotopy.trans_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMooreRetraction, Homotopy.trans_hom,
     Homotopy.ofEq_hom, Pi.zero_apply, add_zero]
   exact chainIntegerTensorHomotopyToId_naturality _ _ _ _
     ((alternatingFaceMapComplex _).map f) ((alternatingFaceMapComplex _).map g)

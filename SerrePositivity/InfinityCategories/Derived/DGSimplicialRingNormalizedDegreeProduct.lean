@@ -22,40 +22,40 @@ local notation "P" => PInftyToNormalizedMooreComplex (simplicialRingIntegerModul
 local notation "mu" => simplicialRingIntegerMultiplication A
 lemma simplicialRingNormalizedMultiplication_rawFactor :
     simplicialRingNormalizedMultiplication A =
-      chainIntegerTensorMap I I ≫ shuffle C C ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap I I ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffle C C ≫
         (alternatingFaceMapComplex _).map mu ≫ P := by
-  have h := congrArg (fun f ↦ chainIntegerTensorMap I I ≫ shuffle C C ≫ f)
+  have h := congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap I I ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffle C C ≫ f)
     (PInftyToNormalizedMooreComplex_naturality mu).symm
-  simpa only [simplicialRingNormalizedMultiplication, normalizedShuffle, Category.assoc] using! h
+  simpa only [simplicialRingNormalizedMultiplication, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedShuffle, Category.assoc] using! h
 
 def simplicialRingNormalizedDegreeProduct (p q : ℕ) (x : (N).X p) (y : (N).X q) :
     (N).X (p + q) :=
-  (ιMapBifunctor N N integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
+  (ιMapBifunctor N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
     (simplicialRingNormalizedMultiplication A).f (p + q)).hom (TensorProduct.tmul ℤ x y)
 
 lemma simplicialRingNormalizedMultiplication_bidegree (p q : ℕ) :
-    ιMapBifunctor N N integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
+    ιMapBifunctor N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
         (simplicialRingNormalizedMultiplication A).f (p + q) =
-      integerTensorMap ((I).f p) ((I).f q) ≫ shuffleBidegree C C p q (p + q) rfl ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((I).f p) ((I).f q) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree C C p q (p + q) rfl ≫
         (mu).app (op ⦋p + q⦌) ≫ (P).f (p + q) := by
   rw [simplicialRingNormalizedMultiplication_rawFactor]
   simp only [comp_f]
-  rw [← Category.assoc, ι_chainIntegerTensorMap]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap]
   simp only [Category.assoc]
-  change integerTensorMap ((I).f p) ((I).f q) ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((I).f p) ((I).f q) ≫
     ιMapBifunctor ((alternatingFaceMapComplex _).obj C)
-      ((alternatingFaceMapComplex _).obj C) integerTensorBifunctor (.down ℕ)
-      p q (p + q) rfl ≫ shuffleApp C C (p + q) ≫
+      ((alternatingFaceMapComplex _).obj C) _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ)
+      p q (p + q) rfl ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleApp C C (p + q) ≫
         (mu).app (op ⦋p + q⦌) ≫ (P).f (p + q) = _
-  rw [ι_shuffleApp_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_shuffleApp_assoc]
 lemma simplicialRingNormalizedDegreeProduct_value (p q : ℕ) (x : (N).X p) (y : (N).X q) :
     simplicialRingNormalizedDegreeProduct A p q x y = (P).f (p + q)
       (simplicialRingShuffleProduct A p q (((I).f p).hom x) (((I).f q).hom y)) := by
-  change (ιMapBifunctor N N integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
+  change (ιMapBifunctor N N _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor (.down ℕ) p q (p + q) rfl ≫
     (simplicialRingNormalizedMultiplication A).f (p + q)).hom (TensorProduct.tmul ℤ x y) = _
   rw [simplicialRingNormalizedMultiplication_bidegree]
   change ((P).f (p + q)).hom
-    ((shuffleBidegree C C p q (p + q) rfl ≫ (mu).app (op ⦋p + q⦌)).hom
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.shuffleBidegree C C p q (p + q) rfl ≫ (mu).app (op ⦋p + q⦌)).hom
       (TensorProduct.map ((I).f p).hom ((I).f q).hom (TensorProduct.tmul ℤ x y))) = _
   rw [TensorProduct.map_tmul, simplicialRingShuffleProduct_eq_shuffleBidegree]
 lemma simplicialRingNormalizedDegreeProduct_inclusion (p q : ℕ) (x : (N).X p) (y : (N).X q) :

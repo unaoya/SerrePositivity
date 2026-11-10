@@ -22,17 +22,17 @@ open scoped Simplicial
 使われ方：Construction A.5 の因子内の二つの全比較。 -/
 lemma normalizedStrictificationHomotopy_square
     {X X' Y Y' : SSet.{u}}
-    {f e : linearizedSpace X ⟶ linearizedSpace Y}
-    {f' e' : linearizedSpace X' ⟶ linearizedSpace Y'} {m m' : ℕ}
-    (h : LinearizedMHomotopy f e m) (h' : LinearizedMHomotopy f' e' m')
+    {f e : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y}
+    {f' e' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X' ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y'} {m m' : ℕ}
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f e m) (h' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f' e' m')
     (a : X ⟶ X') (b : Y ⟶ Y')
-    (hh : simplicialIntegerTensorMap (linearizedSpaceMap a)
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ h'.strictificationHomotopy.h =
-        h.strictificationHomotopy.h ≫ linearizedSpaceMap b) :
-    ChainHomotopySquare ((normalizedMooreComplex _).map (linearizedSpaceMap a))
-      ((normalizedMooreComplex _).map (linearizedSpaceMap b))
+    (hh : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ h'.strictificationHomotopy.h =
+        h.strictificationHomotopy.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b) :
+    ChainHomotopySquare ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b))
       h.normalizedStrictificationHomotopy h'.normalizedStrictificationHomotopy := by
-  dsimp only [LinearizedMHomotopy.normalizedStrictificationHomotopy]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy.normalizedStrictificationHomotopy]
   apply ChainHomotopySquare.trans (ChainHomotopySquare.ofEq _ _ _ _)
   apply ChainHomotopySquare.trans
   · exact normalizedLinearizedEndpointHomotopy_square h.strictificationHomotopy.h
