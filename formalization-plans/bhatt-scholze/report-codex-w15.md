@@ -63,3 +63,10 @@
 - **Lemma 2.38**。 `dpFamilyUniversalTensorEquiv` と `dpFamilyUniversalTor_subsingleton` は、原典の多項式環上の通常の押し出しと高次 Tor の消滅。Tor の係数には ℤ₍ₚ₎ の `ULift` を用いた。`dpFamilyPresentation_primeRegular`、`dpFamilyFactorialEquiv`、`existsUnique_dpFamilyFactorialDPMorphism` が p 正則性と分冪包の普遍性を与える。`dpFamilyBaseChangeEquiv_generator` が任意の係数への底変換で標準分冪を追跡する。
 - **Corollary 2.39**。 `frobeniusDivisionDPEnvelopeEquiv`、`frobeniusDivision_primeRegular`、`dpFamilyDelta_algebraMap` が正則列に沿う生の δ 除算、p 正則性、係数環の δ 射を与える。有限 δ 表示は既存の `DeltaAdjoinDivision` を使う。`frobeniusDivisionPDCompletionEquiv_base` が導来 p 完備化の H⁰ で係数脚との可換性を与える。D69 §3.4 の任意の J つき分冪包と枠・サイトへの適用は⑤bの持ち分。
 - **検収**。本体の新規 14 モジュールの対象ビルドに成功し、公開 65 宣言を監査した。標準三公理のみ、`sorry` 0。推移的 import 324 件を照合し、∞ 圏・E3 への依存はない。既存の Lean ファイル・宣言と A1 の型は維持した。監査案は `drafts/A0/W15K1/AuditK1.lean`。段 2 は未着手。
+
+## 停止点 2（K2・K3、2026-11-10）
+
+- K1 取り込み済みの main `bb385d21a` を作業枝に反映した。
+- K2。BS 著者版 Example 2.21 の普遍 distinguished δ 環と、Example 3.4 の普遍向き付き prism を追加した。`existsUnique_universalOrientedPrismHom` は向きを保つ射の一意存在、`universalOrientedPrism_regular` は p と mod p の d の正則性、`universalOrientedPrism_bounded` は d 剰余の p 正則性から従う有界性。`universalOrientedPrism_frobenius_isCompletelyFlat` は D74 の mod p Frobenius に沿う加群の d 完全平坦性。自由環の剰余の平坦性を局所化と冪零剰余の比較で移した。
+- K3。`IsCompletelyRegularRel` は Definition 2.42 の古典環の場合で、有限列に関する導来完備性と、零次剰余の平坦性および全次数の標準 Koszul 比較を課す。`IsPrismCompletelyRegularRel` は (p,d) の場合。`frobeniusDivisionPushout_torAlg_subsingleton` は Remark 2.37 の自由多変数の二脚に対する高次 Tor の消滅。`existsUnique_frobeniusDivisionPushoutLift` は零次の通常の押し出しを生の δ 商として同定する。高次 Tor では p 反転後の同型と、局所化の余核を p 冪ねじれの逐次余極限として扱う証明を用いた。
+- 新規 6 モジュールの対象ビルドと公開 33 宣言の監査を通過。標準三公理のみ、`sorry` 0。推移的 import 328 件に ∞ 圏・E3 への依存はなく、BS から KST への直接 import の追加はない。既存の Lean 宣言および A1 の草稿の型を維持した。
