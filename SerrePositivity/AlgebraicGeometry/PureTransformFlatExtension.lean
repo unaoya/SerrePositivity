@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.AlgebraicGeometry.LocalUniversalInjectivity
+public import SerrePositivity.AlgebraicGeometry.PureTransformPullbacks
 public import SerrePositivity.AlgebraicGeometry.PureTransformUniversalExact
 public import Mathlib.RingTheory.Flat.Equalizer
 
@@ -15,7 +16,7 @@ public import Mathlib.RingTheory.Flat.Equalizer
 
 namespace SerrePositivity.AlgebraicGeometry
 
-open Function
+open Function _root_.AlgebraicGeometry CategoryTheory
 open scoped TensorProduct
 
 private theorem flat_middle_of_shortExact
@@ -108,5 +109,25 @@ theorem modulePureTransform_baseChange_flat_of_flat_source
     Module.Flat.of_linearEquiv ((boundaryTorsion a (A ⊗[R] M)).quotEquivOfEqBot
       (boundaryTorsion_eq_bot_of_flat a (A ⊗[R] M) ha))
   exact modulePureTransform_baseChange_flat_of_flat_ends a f g hex hg hf
+
+
+/--
+概要：余核の純変換がすべての試験対象で平坦なら、左端が平坦な普遍単射の標的も同じ性質を持つ。
+方針：各試験対象の係数写像と正則な境界元に、純変換の短完全性を適用する。
+規約：余核は元の基礎環上の値域による商とする。
+使われ方：余核を平坦化する許容中心を元の加群に対して使う。
+-/
+theorem HasFlatPurePullbacks.of_flat_source_cokernel
+    {R : CommRingCat.{u}} {X : Scheme.{u}} {M N : Type u}
+    [AddCommGroup M] [Module R M] [Module.Flat R M] [AddCommGroup N] [Module R N]
+    {p : X ⟶ Spec R} {a : R} (f : M →ₗ[R] N)
+    (hf : ∀ (Q : Type u) [AddCommGroup Q] [Module R Q], Injective (f.lTensor Q))
+    (h : HasFlatPurePullbacks p a (N ⧸ LinearMap.range f)) :
+    HasFlatPurePullbacks p a N := by
+  intro A j φ ha
+  let : Algebra R A := φ.toAlgebra
+  let : Module.Flat A (modulePureTransform (φ a) (A ⊗[R] (N ⧸ LinearMap.range f))) := h A j ha
+  exact modulePureTransform_baseChange_flat_of_flat_source (φ a) ha f (LinearMap.range f).mkQ
+    f.exact_map_mkQ_range (Submodule.mkQ_surjective _) hf
 
 end SerrePositivity.AlgebraicGeometry

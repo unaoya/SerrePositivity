@@ -116,4 +116,30 @@ theorem exists_center_factor_etale_away
   rw [Ideal.map_mul e.symm.toRingHom] at hm
   simpa only [Ideal.map_map, hcomp, hinv, Ideal.map_id] using hm
 
+
+/--
+概要：étale アフィン上の局所中心が基底中心の因子となる主開を有限個で選べる。
+方針：局所分解できる主開の元をすべて集め、どの極大イデアルにも同時に入らないことを示す。
+規約：局所中心は境界元の冪を含む。
+使われ方：Stacks 0814 で、有限個の局所中心を一つの基底中心にまとめる。
+-/
+theorem exists_finset_away_center_factor_cover
+    {R B : Type*} [CommRing R] [IsNoetherianRing R] [CommRing B] [Algebra R B]
+    [Algebra.Etale R B] (J : Ideal B) (a : R) (k : ℕ) (ha : algebraMap R B (a ^ k) ∈ J) :
+    ∃ s : Finset B, Ideal.span (s : Set B) = ⊤ ∧
+      ∀ b ∈ s, ∃ (I : Ideal R) (n : ℕ), a ^ n ∈ I ∧
+        ∃ K : Ideal (Localization.Away b), K.FG ∧ I.map (algebraMap R (Localization.Away b)) =
+          J.map (algebraMap B (Localization.Away b)) * K := by
+  let good : Set B := {b | ∃ (I : Ideal R) (n : ℕ), a ^ n ∈ I ∧
+    ∃ K : Ideal (Localization.Away b), K.FG ∧ I.map (algebraMap R (Localization.Away b)) =
+      J.map (algebraMap B (Localization.Away b)) * K}
+  have hg : Ideal.span good = ⊤ := by
+    by_contra h
+    obtain ⟨p, hp, hpg⟩ := Ideal.exists_le_maximal (Ideal.span good) h
+    obtain ⟨b, hbp, I, _, ⟨n, hn⟩, K, hK, heq⟩ := exists_center_factor_etale_away p J a k ha
+    have hb : b ∈ good := ⟨I, n, hn, K, hK, heq⟩
+    exact hbp (hpg (Ideal.subset_span hb))
+  obtain ⟨s, hs, htop⟩ := (Ideal.span_eq_top_iff_finite good).mp hg
+  exact ⟨s, htop, fun b hb => hs hb⟩
+
 end SerrePositivity.AlgebraicGeometry

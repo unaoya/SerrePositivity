@@ -36,27 +36,32 @@ private theorem flat_of_faithfullyFlat_tower
   exact (Module.Flat.lTensor_preserves_injective_linearMap f hf).comp eM.injective
 
 /--
-概要：射の始域を平坦全射で覆った合成が平坦なら、元の射も平坦。
-方針：茎では平坦な局所準同型が忠実平坦なので、テンソル積による単射性の保存を反映する。
-規約：被覆は一つの平坦全射で表す。
-使われ方：étale 基底変換後の純変換から、元の純変換の平坦性を得る。
+概要：平坦な射の族で始域の各点を覆い、それぞれの合成が平坦なら、元の射も平坦。
+方針：各点を覆う射の茎の忠実平坦性を使い、平坦性を反映する。
+規約：被覆族は点集合上で全射とする。
+使われ方：étale 局所中心から狭義変換の平坦性を降下する。
 -/
-theorem flat_of_flat_surjective_source
-    {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Z ⟶ X)
-    [Flat g] [Surjective g] [Flat (g ≫ f)] : Flat f := by
+theorem flat_of_flat_source_cover
+    {X Y : Scheme.{u}} {ι : Type v} {Z : ι → Scheme.{u}} (f : X ⟶ Y)
+    (g : ∀ i, Z i ⟶ X) (hg : ∀ i, Flat (g i))
+    (hcover : ∀ x : X, ∃ (i : ι) (z : Z i), g i z = x)
+    (hflat : ∀ i, Flat (g i ≫ f)) : Flat f := by
   apply Flat.of_stalkMap
   intro x
-  obtain ⟨z, rfl⟩ := g.surjective x
-  let A : Type u := Y.presheaf.stalk (f (g z))
-  let B : Type u := X.presheaf.stalk (g z)
-  let C : Type u := Z.presheaf.stalk z
-  let φ : A →+* B := (f.stalkMap (g z)).hom
-  let ψ : B →+* C := (g.stalkMap z).hom
-  let : IsLocalHom ψ := inferInstanceAs (IsLocalHom (g.stalkMap z).hom)
-  have hψ : ψ.Flat := Flat.stalkMap g z
+  obtain ⟨i, z, rfl⟩ := hcover x
+  let g₀ := g i
+  let : Flat g₀ := hg i
+  let : Flat (g₀ ≫ f) := hflat i
+  let A : Type u := Y.presheaf.stalk (f (g₀ z))
+  let B : Type u := X.presheaf.stalk (g₀ z)
+  let C : Type u := (Z i).presheaf.stalk z
+  let φ : A →+* B := (f.stalkMap (g₀ z)).hom
+  let ψ : B →+* C := (g₀.stalkMap z).hom
+  let : IsLocalHom ψ := inferInstanceAs (IsLocalHom (g₀.stalkMap z).hom)
+  have hψ : ψ.Flat := Flat.stalkMap g₀ z
   have hcomp : (ψ.comp φ).Flat := by
     rw [← CommRingCat.hom_comp, ← Scheme.Hom.stalkMap_comp]
-    exact Flat.stalkMap (g ≫ f) z
+    exact Flat.stalkMap (g₀ ≫ f) z
   let : Algebra A B := φ.toAlgebra
   let : Algebra B C := ψ.toAlgebra
   let : Algebra A C := (ψ.comp φ).toAlgebra
@@ -65,5 +70,17 @@ theorem flat_of_flat_surjective_source
   let : Module.Flat A C := hcomp
   let : Module.FaithfullyFlat B C := Module.FaithfullyFlat.of_flat_of_isLocalHom
   exact flat_of_faithfullyFlat_tower (R := A) (S := B) (T := C)
+
+/--
+概要：射の始域を平坦全射で覆った合成が平坦なら、元の射も平坦。
+方針：茎では平坦な局所準同型が忠実平坦なので、テンソル積による単射性の保存を反映する。
+規約：被覆は一つの平坦全射で表す。
+使われ方：étale 基底変換後の純変換から、元の純変換の平坦性を得る。
+-/
+theorem flat_of_flat_surjective_source
+    {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Z ⟶ X)
+    [Flat g] [Surjective g] [Flat (g ≫ f)] : Flat f := by
+  exact flat_of_flat_source_cover f (fun (_ : Unit) => g) (fun _ => inferInstance)
+    (fun x => let ⟨z, hz⟩ := g.surjective x; ⟨(), z, hz⟩) (fun _ => inferInstance)
 
 end SerrePositivity.AlgebraicGeometry

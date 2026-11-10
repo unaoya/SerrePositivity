@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.AlgebraicGeometry.FlatSourceDescent
 public import SerrePositivity.AlgebraicGeometry.StrictTransform
 public import Mathlib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant
 
@@ -111,6 +112,40 @@ theorem flat_openImage_comp_iso_iff {Y T S : Scheme.{u}}
   rw [← ker_pullback_snd_opens_ι]
   change Flat ((pullback.snd W.ι e.hom).imageι ≫ e.hom ≫ p) ↔ _
   rw [h, MorphismProperty.cancel_left_of_respectsIso @Flat]
+
+set_option backward.isDefEq.respectTransparency false in
+/--
+概要：開部分の閉包の平坦性は、周辺スキームを覆う平坦な射の族から降下する。
+方針：閉包と平坦な引き戻しを交換し、閉包の点を覆う射の族で平坦性を確かめる。
+規約：開包含は準コンパクトとする。
+使われ方：Stacks 0814 で、局所中心に沿う狭義変換から元の狭義変換の平坦性を得る。
+-/
+theorem flat_openImage_comp_of_flat_source_cover
+    {Y S : Scheme.{u}} {ι : Type v} {T : ι → Scheme.{u}}
+    (W : Y.Opens) [QuasiCompact W.ι] (p : Y ⟶ S)
+    (g : ∀ i, T i ⟶ Y) (hg : ∀ i, Flat (g i))
+    (hcover : ∀ y : Y, ∃ (i : ι) (t : T i), g i t = y)
+    (hflat : ∀ i, Flat ((g i ⁻¹ᵁ W).ι.imageι ≫ g i ≫ p)) :
+    Flat (W.ι.imageι ≫ p) := by
+  let k (i : ι) := pullback.fst W.ι.imageι (g i)
+  apply flat_of_flat_source_cover (W.ι.imageι ≫ p) k
+  · intro i
+    let : Flat (g i) := hg i
+    exact MorphismProperty.of_isPullback (IsPullback.of_hasPullback W.ι.imageι (g i)).flip
+      (hg i)
+  · intro w
+    obtain ⟨i, t, ht⟩ := hcover (W.ι.imageι w)
+    obtain ⟨x, hx, _⟩ := Scheme.Pullback.exists_preimage_pullback w t ht.symm
+    exact ⟨i, x, hx⟩
+  · intro i
+    let : Flat (g i) := hg i
+    let e := imagePullbackIsoOfFlat W.ι (g i)
+    rw [← MorphismProperty.cancel_left_of_respectsIso @Flat e.hom]
+    change Flat (e.hom ≫ pullback.fst W.ι.imageι (g i) ≫ W.ι.imageι ≫ p)
+    rw [pullback.condition_assoc, imagePullbackIsoOfFlat_hom_snd_assoc]
+    change Flat ((pullback.snd W.ι (g i)).ker.subschemeι ≫ g i ≫ p)
+    rw [ker_pullback_snd_opens_ι]
+    exact hflat i
 
 set_option backward.isDefEq.respectTransparency false in
 private theorem flat_openImage_comp_iff_of_openCover {Y S : Scheme.{u}}
