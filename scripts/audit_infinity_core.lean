@@ -254,7 +254,7 @@ import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeig
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftNormalization
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftForget
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.AnchorCylinderCoordinates
-import SerrePositivity.InfinityCategories.Core
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Core
 import SerrePositivity.InfinityCategories.Core.UniverseEdgeTransport
 
 /-!

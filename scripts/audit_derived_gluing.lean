@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.Gluing
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Gluing
 import Lean
 
 open Lean Elab Command in

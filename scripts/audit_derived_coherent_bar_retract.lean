@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarRetractAll
 import Lean
 /-!
 概要：D 所有の変形 retract の各葉について全宣言の公理依存を検査する。

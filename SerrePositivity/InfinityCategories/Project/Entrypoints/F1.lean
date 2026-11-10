@@ -469,7 +469,7 @@ public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTria
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleHomSpan
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleHomTransport
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceTriangleInitialIso
-public import SerrePositivity.InfinityCategories.F1.Fibrations
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.F1Fibrations
 public import SerrePositivity.InfinityCategories.F1.Fibrations.AllEdges
 public import SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge

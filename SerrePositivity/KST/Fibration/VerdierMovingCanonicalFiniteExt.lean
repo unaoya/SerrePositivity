@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.VerdierMovingCanonicalSquareComparison
 public import SerrePositivity.KST.Fibration.VerdierLowerCanonicalFiniteFaces
 public import SerrePositivity.KST.Fibration.VerdierMovingUpperLastComparison
-public import SerrePositivity.InfinityCategories.F1.Diagrams.NativeTriangleSupplyAll
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.NativeTriangleSupplyAll
 
 /-!
 概要：S-1 (a) の native 二単体外延性を四つの元の有限端点へ代入する。

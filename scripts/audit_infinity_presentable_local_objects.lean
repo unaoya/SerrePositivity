@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationLocalObjectsAll
 import Lean.Util.CollectAxioms
 
 /-!

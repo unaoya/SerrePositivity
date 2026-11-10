@@ -21,6 +21,6 @@ public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.Quotie
 
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.ResolvedZeroObstruction
 
-public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeAll
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.NativeAll
 
 /-! D-S 独自集約：固定 cone 間の strict data への接続。 -/

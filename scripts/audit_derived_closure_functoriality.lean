@@ -1,5 +1,5 @@
-import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All
-import SerrePositivity.InfinityCategories.Derived.SuspensionAction.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedClosureFunctorialityAll
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedSuspensionActionAll
 import Lean
 /-! D-S の所有する新規葉の全宣言について、未証明入力と追加公理を排除する。 -/
 open Lean Elab Command in

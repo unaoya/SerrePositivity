@@ -9,9 +9,9 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductInd
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
-public import SerrePositivity.InfinityCategories.F2.Filtered
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Filtered
 public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
 public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredSimplexExchange
 public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTerminal

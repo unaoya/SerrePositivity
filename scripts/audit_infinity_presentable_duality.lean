@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Presentable.Duality.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableDualityAll
 import Lean.Util.CollectAxioms
 
 /-!

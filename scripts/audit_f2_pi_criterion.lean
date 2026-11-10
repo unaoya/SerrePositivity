@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.PiCriterion.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedPiCriterionAll
 import Lean.Util.CollectAxioms
 
 #check @SerrePositivity.InfinityCategories.F2.PiCriterion.totalCoconeComparison

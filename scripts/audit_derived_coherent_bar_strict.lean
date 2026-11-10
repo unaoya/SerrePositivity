@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarStrictComparisonAll
 import Lean
 
 open Lean Elab Command in

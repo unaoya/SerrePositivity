@@ -149,8 +149,8 @@ import SerrePositivity.InfinityCategories.ModelBridge.QuillenLeftFrameAugmentati
 import SerrePositivity.InfinityCategories.ModelBridge.QuillenReplacedFrameHom
 import SerrePositivity.InfinityCategories.ModelBridge.ResolutionHomSourceRestriction
 import SerrePositivity.InfinityCategories.ModelBridge.ResolutionHomTargetReplacement
-import SerrePositivity.InfinityCategories.F2.Presentable
-import SerrePositivity.InfinityCategories.HomotopyLimits
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+import SerrePositivity.InfinityCategories.Project.Entrypoints.HomotopyLimits
 
 set_option pp.universes true
 set_option pp.explicit false

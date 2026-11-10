@@ -71,7 +71,7 @@ import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeMappingSpace
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoconeCompletion
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.BousfieldKanTerminalWeight
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ApexLimitConeTransport
-import SerrePositivity.InfinityCategories.F1B
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B
 import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
 import SerrePositivity.InfinityCategories.F1B.Localization.UniverseDescent
 import SerrePositivity.InfinityCategories.F1B.Cones.LimitDiagramIsoImage

@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableAccessiblePullbackAll
 import Lean.Util.CollectAxioms
 
 /-!

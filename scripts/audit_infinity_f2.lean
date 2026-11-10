@@ -612,7 +612,7 @@ import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoDispla
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompEndpointTransport
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange
-import SerrePositivity.InfinityCategories.F2
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2
 import SerrePositivity.InfinityCategories.F2.Ind.PullbacksArePushouts
 import SerrePositivity.InfinityCategories.F2.Ind.YonedaExactFunctor
 import SerrePositivity.InfinityCategories.F2.Ind.Stability

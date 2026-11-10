@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarAll
 import Lean
 
 /-!

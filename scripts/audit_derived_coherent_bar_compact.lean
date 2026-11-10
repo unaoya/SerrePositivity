@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarCompactAll
 import Lean
 /-!
 概要：D 所有の compact 生成元比較 の各葉について全宣言の公理依存を検査する。

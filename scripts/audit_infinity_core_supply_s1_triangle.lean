@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F1.Diagrams.NativeTriangleSupplyAll
+import SerrePositivity.InfinityCategories.Project.Entrypoints.NativeTriangleSupplyAll
 import Lean.Util.CollectAxioms
 
 /-!

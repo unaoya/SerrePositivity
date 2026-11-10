@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Compact
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Compact
 import Lean.Util.CollectAxioms
 
 open SerrePositivity.InfinityCategories.F2.Compact

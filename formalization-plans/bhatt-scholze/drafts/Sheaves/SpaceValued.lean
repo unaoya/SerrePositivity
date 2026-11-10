@@ -3,7 +3,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.4、S8。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation

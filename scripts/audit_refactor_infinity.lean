@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Core
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Core
 import SerrePositivity.InfinityCategories.Core.LeftFiberKan
 import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback

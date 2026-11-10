@@ -215,7 +215,7 @@ import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathTranspos
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathRealization
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeFiniteCriterion
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeComponents
-import SerrePositivity.InfinityCategories.Derived.PiCriterion.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedPiCriterionAll
 import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
 import SerrePositivity.DifferentialGraded.Derived.Basic
 import SerrePositivity.DifferentialGraded.Morita.Perfect
@@ -247,7 +247,7 @@ import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplac
 
 import SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData
 import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedCoherentBarCompactAll
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartan
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiEquation
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiNaturality
@@ -2205,7 +2205,7 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeComponents
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability
 import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 import SerrePositivity.InfinityCategories.Core.UniverseLimits
-import SerrePositivity.InfinityCategories.Derived
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Derived
 import SerrePositivity.InfinityCategories.Derived.SpanBoundaryAssembly
 import Lean.Util.CollectAxioms
 

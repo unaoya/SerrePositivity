@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll
 public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectConnectiveSequence
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeStageFamily
 

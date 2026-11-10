@@ -345,3 +345,7 @@ python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files
 Ex∞ の構成、Kan 性、anodyne・ファイブレーション・局所化・モノイダル性と、その専用の補助を Kerodon §3.3 の `KanComplexes/TheExInfinityFunctor/` に移した。割り当て済み 60 本と、Ex∞ 群の外からは集約入口を除いて直接使われない補助 12 本。共有補助の `FiberwiseAnodyne`、`HornRightColimit`、`IntervalBoundaryFamily`、`PairContractionAnodyne`、`PairHomotopyLifting`、`SubcomplexContraction` は `KST/Comparison` に置き、移動した側の参照で境界を明示した。モデル圏を使う引き戻し比較も同じ場所に置いた。
 
 利用側 153 本の import または参照を更新した。互換モジュール `Project/Compatibility/KSTExInfinity.lean` は ∞ 圏の外で参照される 8 名を公開する。ビルド鍵 `--wait 1800` で移動先 72 本、互換モジュール、残留 KST 側の 19 本を依存順に検査した。後者には `ArbitraryBasePullback`、`DiagramExInfinity`、`ExInfinityHomotopyPullback`、`ExInfinitySimplicialMonoid`、`SpanGluing` が含まれる。保存比較 v3b は 271 宣言で PASS、未説明差分 0 件。移動した属性 16 組も `#kerodon_tags` の出力と一致した。
+
+### 集約入口
+
+`public import` だけから成り、∞ 圏の宣言ファイルからは推移的にも import されない 47 本を `Project/Entrypoints/` に移した。利用側 31 本の import と README の入口リンクを更新した。宣言または実装側の利用を持つ候補 6 本は、入口に依存する定義側を調べる対象に残した。移動先 47 本がビルドを通過し、保存比較 v3b で 47 本すべての所有宣言数が前後とも 0 件であることを確かめた。

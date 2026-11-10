@@ -364,8 +364,8 @@ import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnodyneHomotopyExt
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchorCylinderKanPrism
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchorCylinderKanCorrection
-import SerrePositivity.InfinityCategories.F1.Cocartesian
-import SerrePositivity.InfinityCategories.F1
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Cocartesian
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
 import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
 import SerrePositivity.InfinityCategories.F1.Joins.FiniteEndpoints

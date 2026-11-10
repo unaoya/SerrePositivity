@@ -155,7 +155,7 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinTransformFamily
 public import SerrePositivity.InfinityCategories.Core.FatJoinVertices
 public import SerrePositivity.InfinityCategories.Core.FiberEdgeCorrection
 public import SerrePositivity.InfinityCategories.Core.FiberwiseHomotopy
-public import SerrePositivity.InfinityCategories.Core.Fibrations
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.CoreFibrations
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.AnchorCylinderCoordinates
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftForget
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftNormalization
@@ -391,7 +391,7 @@ public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
 public import SerrePositivity.InfinityCategories.Core.LimitDiagramIso
 public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
 public import SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp
-public import SerrePositivity.InfinityCategories.Core.MappingSpace
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.MappingSpace
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceFibration
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceKan
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary

@@ -1,6 +1,6 @@
-import SerrePositivity.InfinityCategories.F1.Cocartesian
-import SerrePositivity.InfinityCategories.F1
-import SerrePositivity.InfinityCategories.F1B
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Cocartesian
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B
 
 /-!
 概要：F1 と F1B の集約を同時に読み込み、公開宣言の名前衝突を検査する。

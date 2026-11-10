@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Presentable.Supply.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableSupplyAll
 import SerrePositivity.InfinityCategories.F2.Presentable.CosliceBaseChangePreservation
 import Lean.Util.CollectAxioms
 

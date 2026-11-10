@@ -1,5 +1,5 @@
-import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
-import SerrePositivity.InfinityCategories.Derived.KappaCovers.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaCoversAll
 import Lean
 
 open Lean Elab Command in

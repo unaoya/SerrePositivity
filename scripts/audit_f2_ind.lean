@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.F2.Ind
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Ind
 import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily
 import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitConeFamily
 import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
