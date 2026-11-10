@@ -29,6 +29,20 @@ class NamespaceTests(unittest.TestCase):
         self.assertEqual(result.decode(), text.replace("  OldModule", "  NewModule")
                          .replace(":= Old.f", ":= _root_.New.f"))
 
+    def test_shared_spelling_rewrites_by_owner_and_rejects_alias_collision(self):
+        plan = Migration({"rows": [
+            {"module": "OldA", "old": "Old.f", "new": "NewA.f"},
+            {"module": "OldB", "old": "Old.f", "new": "NewB.f"},
+        ]})
+        scopes = []
+        for owner, destination in (("OldA", b"_root_.NewA.f"), ("OldB", b"_root_.NewB.f")):
+            data = {"module": "Use" + owner, "source": "Old.f", "commands": [],
+                    "refs": [occurrence("Old.f", "Old.f", "Old.f", owner)]}
+            self.assertEqual(rewrite(data, plan), (destination, []))
+            scopes.append((owner, owner + ".lean", data))
+        with self.assertRaisesRegex(ValueError, "separate the scopes"):
+            select_aliases(scopes, plan)
+
     def test_competing_resolutions_block_the_entire_file(self):
         ref = occurrence("same", "same", "Old.same", "OldModule")
         local = {**ref, "kind": "local", "name": "", "module": ""}

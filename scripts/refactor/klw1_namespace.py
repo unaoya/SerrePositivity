@@ -121,19 +121,19 @@ class Migration:
         export_names = set()
         self.namespace_origins = {old for table in self.namespaces.values()
                                   for old, new in table.items() if old != new}
-        public = set()
+        public = defaultdict(list)
         for row in plan["rows"]:
             old, new = row["old"], validate_name(row["new"])
             owner = validate_name(row["module"])
             private = old.startswith("_private.")
             validate_name(private_user_name(owner, old))
             key = owner, old
-            if key in self.symbols or (not private and old in public):
+            if key in self.symbols:
                 raise ValueError(f"duplicate symbol: {key}")
             if new == old:
                 raise ValueError(f"identity rename: {key}")
             if not private:
-                public.add(old)
+                public[old].append(row)
             self.symbols[key] = row
             if receiver := row.get("field_namespace"):
                 receiver = validate_name(receiver)
@@ -144,14 +144,16 @@ class Migration:
                     raise ValueError(f"invalid or ambiguous field export: {key} -> {exported}")
                 self.field_exports[owner].append((old, new_parent, receiver, leaf))
                 export_names.add(exported)
-        self.public_symbols = {old: row for (_, old), row in self.symbols.items() if old in public}
-        self.old_public = public
+        # A name alone can be ambiguous across isolated module environments.
+        # Keep the fallback only when there is one possible definition.
+        self.public_symbols = {old: rows[0] for old, rows in public.items() if len(rows) == 1}
+        self.old_public = set(public)
         destinations = [row["new"] for row in self.symbols.values() if not row["old"].startswith("_private.")]
         if len(destinations) != len(set(destinations)):
             raise ValueError("duplicate public destination")
         if export_names.intersection(destinations):
             raise ValueError("field export shadows a canonical name")
-        if public.intersection(destinations):
+        if self.old_public.intersection(destinations):
             raise ValueError("old public names overlap new public destinations")
         for old, new in self.modules.items():
             validate_name(old)
@@ -338,8 +340,8 @@ def rewrite(data, migration):
             if ref["kind"] == "field" or (dotted and ref["kind"] != "binder"):
                 old_parent, _, old_field = old.rpartition(".")
                 new_parent, _, new_field = name.rpartition(".")
-                parent = (migration.public_symbols.get(old_parent)
-                          or migration.symbols.get((ref["module"], old_parent)))
+                parent = (migration.symbols.get((ref["module"], old_parent))
+                          or migration.public_symbols.get(old_parent))
                 exports_receiver = row is not None and bool(row.get("field_namespace"))
                 stays_with_type = parent is not None and parent["new"] == new_parent
                 if old_text == old_field and (stays_with_type or exports_receiver):
@@ -456,7 +458,11 @@ def select_aliases(inputs, migration):
     selected = {}
     for key, uses in sorted(used.items()):
         row = migration.symbols[key]
-        selected[row["old"]] = {**row, "uses": sorted(uses)}
+        old = row["old"]
+        if old in selected:
+            other = selected[old]["module"]
+            raise ValueError(f"alias {old} resolves to both {other} and {row['module']}; separate the scopes")
+        selected[old] = {**row, "uses": sorted(uses)}
     return selected, {name: sorted(uses) for name, uses in sorted(existing.items())}
 
 
