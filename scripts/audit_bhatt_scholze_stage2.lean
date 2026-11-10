@@ -220,6 +220,11 @@ import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDUniversa
 import SerrePositivity.BhattScholze.Delta.DividedPower.TruncatedPolynomialBasis
 import SerrePositivity.CommutativeAlgebra.KoszulRegular.Powers
 import SerrePositivity.CommutativeAlgebra.KoszulRegular.PrincipalReduction
+import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
+import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
+import SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction
+import SerrePositivity.EInfinity.BarrattEccles.Theory.Conservative
+import SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial
 import Lean.Util.CollectAxioms
 
 /-!
@@ -232,6 +237,11 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.EInfinity.ComplexLimits.StrictHomology,
+    `SerrePositivity.EInfinity.SimplicialLocalization.SourceHom,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.DerivedRestriction,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.Conservative,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.DiscreteInitial,
     `SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalFlat,
     `SerrePositivity.BhattScholze.Delta.Distinguished.PrimeLocalIntegers,
     `SerrePositivity.BhattScholze.Delta.DividedPower.FreeDPModPBlocks,
