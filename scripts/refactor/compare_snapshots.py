@@ -3,6 +3,7 @@
 規約：増減・型・本体・公理・属性をすべて判定する。使われ方：before after --name-map map.json。
 """
 import argparse
+from collections import ChainMap
 import hashlib
 import json
 import re
@@ -13,10 +14,13 @@ from snapshot_identity import notation_auxiliary
 
 
 def rename(name, mapping):
-    for old in sorted(mapping, key=len, reverse=True):
-        if name == old or name.startswith(old + '.'):
-            return mapping[old] + name[len(old):]
-    return name
+    prefix = name
+    while True:
+        if prefix in mapping:
+            return mapping[prefix] + name[len(prefix):]
+        prefix, separator, _ = prefix.rpartition('.')
+        if not separator:
+            return name
 
 
 
@@ -64,6 +68,7 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_
     if snapshot['schema_version'] not in (1, 2):
         raise ValueError('unsupported snapshot version')
     module_map = module_map or {}
+    moved_modules = module_map.get('modules', {})
     records = {}
     reference_kinds = {}
     report_proof_parents = report_proof_parents or set()
@@ -94,8 +99,8 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_
                 continue
             parent = declaration_owner(row, names, by_name) if names else None
             parent = parent or row['parent']
-            target = split.get(row['name'], split.get(parent, module_map.get('modules', {}).get(module, module)))
-            generated_modules = {**module_map.get('modules', {}), module: target}
+            target = split.get(row['name'], split.get(parent, moved_modules.get(module, module)))
+            generated_modules = ChainMap({module: target}, moved_modules)
             def normalized_name(name):
                 return normalize_generated_name(rename(name, mapping), generated_modules)
             key = (normalized_name(row['name']), target)

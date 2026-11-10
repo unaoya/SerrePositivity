@@ -35,14 +35,26 @@ private partial def environmentParent (env : Environment) (n : Name) : Option Na
   if p.isAnonymous then none
   else if env.contains p then some p else environmentParent env p
 
-private abbrev RenameRules := List (String × String)
+private abbrev Rename := String → String
 
-private def hashName (rules : RenameRules) (n : Name) : String := Id.run do
-  let name := canonicalName n
+private def orderedRename (rules : List (String × String)) (name : String) : String := Id.run do
   for (src, dst) in rules do
     if name == src || name.startsWith (src ++ ".") then
       return dst ++ (name.drop src.length).toString
   return name
+
+private def indexedRename (rules : Std.HashMap String String) (name : String) : String := Id.run do
+  if rules.isEmpty then return name
+  let mut candidate := name
+  let mut suffix := ""
+  for part in (name.splitOn ".").reverse do
+    if let some dst := rules[candidate]? then return dst ++ suffix
+    candidate := (candidate.dropEnd (part.length + 1)).toString
+    suffix := "." ++ part ++ suffix
+  return name
+
+private def hashName (rename : Rename) (n : Name) : String :=
+  rename (canonicalName n)
 
 -- The byte count describes the old compact structural JSON if expanded as a
 -- tree. It is accumulated from children and never used to allocate a buffer.
@@ -70,7 +82,7 @@ private structure Memo where
   levels : Std.HashMap Level Digest := {}
   unfolding : Array Name := #[]
 
-private partial def levelDigest (rules : RenameRules) (l : Level) : StateM Memo Digest := do
+private partial def levelDigest (rules : Rename) (l : Level) : StateM Memo Digest := do
   if let some result := (← get).levels[l]? then return result
   let child := levelDigest rules
   let result ← match l with
@@ -92,7 +104,7 @@ private def generatedDefinition (env : Environment) (n : Name) : Bool :=
       s.startsWith "_cstage" || s.startsWith "_spec_" || s.startsWith "_elambda"
   | _ => false
 
-private partial def exprDigest (rules : RenameRules) (env : Option Environment)
+private partial def exprDigest (rules : Rename) (env : Option Environment)
     (proofIrrelevant : Bool) (e : Expr) : StateM Memo Digest := do
   if let some result := (← get).expressions[(e : ExprStructEq)]? then return result
   let child := exprDigest rules env proofIrrelevant
@@ -143,11 +155,15 @@ private partial def exprDigest (rules : RenameRules) (env : Option Environment)
     modify fun m => { m with expressions := m.expressions.insert e result }
   return result
 
+private def fingerprintWith (rename : Rename) (e : Expr)
+    (env : Option Environment) (proofIrrelevant : Bool) : UInt64 × Nat × Nat :=
+  let (d, memo) := (exprDigest rename env proofIrrelevant e).run {}
+  (d.value, memo.expressions.size, d.bytes)
+
 /-- DAG hash, distinct Expr count, and byte length of the hypothetical expanded encoding. -/
 def DeclSnapshot.fingerprint (rules : List (String × String)) (e : Expr)
     (env : Option Environment := none) (proofIrrelevant : Bool := true) : UInt64 × Nat × Nat :=
-  let (d, memo) := (exprDigest rules env proofIrrelevant e).run {}
-  (d.value, memo.expressions.size, d.bytes)
+  fingerprintWith (orderedRename rules) e env proofIrrelevant
 
 /-- Erase proofs before DAG hashing, also under binders opened by Meta.transform. -/
 def DeclSnapshot.eraseProofs (e : Expr) : MetaM Expr :=
@@ -157,11 +173,15 @@ def DeclSnapshot.eraseProofs (e : Expr) : MetaM Expr :=
       return .done (mkConst `_erased_proof)
     else return .continue)
 
+private def termFingerprintWith (rename : Rename) (e : Expr)
+    (proofIrrelevant : Bool) : MetaM (UInt64 × Nat × Nat) := do
+  let normalized ← if proofIrrelevant then DeclSnapshot.eraseProofs e else pure e
+  return fingerprintWith rename normalized (some (← getEnv)) proofIrrelevant
+
 /-- Term-level proof irrelevance; the pure DAG hasher remains available for diagnostics. -/
 def DeclSnapshot.termFingerprint (rules : List (String × String)) (e : Expr)
-    (proofIrrelevant : Bool := true) : MetaM (UInt64 × Nat × Nat) := do
-  let normalized ← if proofIrrelevant then eraseProofs e else pure e
-  return fingerprint rules normalized (some (← getEnv)) proofIrrelevant
+    (proofIrrelevant : Bool := true) : MetaM (UInt64 × Nat × Nat) :=
+  termFingerprintWith (orderedRename rules) e proofIrrelevant
 
 private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bool) : String :=
   if inst then "instance" else
@@ -182,7 +202,8 @@ private def definingModule (env : Environment) (name : Name) : Option Name := do
   return env.header.modules[idx.toNat]!.module
 
 private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
-    (rules : RenameRules) (proofIrrelevant : Bool) : MetaM Json := do
+    (rules : List (String × String)) (proofIrrelevant : Bool) : MetaM Json := do
+  let rename := indexedRename (Std.HashMap.ofList rules)
   let env ← getEnv
   let simp ← Meta.getSimpTheorems
   let mut rows : Array Json := #[]
@@ -211,7 +232,7 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       ("selection_start_line", toJson r.selectionRange.pos.line),
       ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
-    let fingerprint := fun e => DeclSnapshot.termFingerprint rules e proofIrrelevant
+    let fingerprint := fun e => termFingerprintWith rename e proofIrrelevant
     let ty ← fingerprint info.type
     let body ← if info.isTheorem then pure none else
       (info.value? (allowOpaque := true)).mapM fingerprint
@@ -261,7 +282,7 @@ unsafe def main (args : List String) : IO UInt32 := do
   let mut namespacePrefix : Option Name := none
   let mut output : Option String := none
   let mut ownerNames : Option (List String) := none
-  let mut rules : RenameRules := []
+  let mut rules : List (String × String) := []
   let mut proofIrrelevant := true
   let mut rest := args
   while !rest.isEmpty do
