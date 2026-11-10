@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "8f679f1f35da82177d03ed3628265a5ba6ca9f94",
+  "worktree_commit": "b9dda3de2f5c96d85e68cd68f9eec89d26a9bb64",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
