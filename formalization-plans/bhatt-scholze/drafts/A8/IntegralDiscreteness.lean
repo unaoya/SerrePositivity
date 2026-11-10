@@ -2,8 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.4・§3.3、単位 A8-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.RingTheory.AdicCompletion.Algebra
-public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.FiniteEtalePerfectoid
 -- 本ファイルは drafts/A8/{AlmostConnectivity,AlmostPurityConnectivity,Stratification}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean、
@@ -36,6 +36,8 @@ open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EInfinity.Perfectoidization
@@ -46,7 +48,6 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 
 open SerrePositivity.BhattScholze.Almost SerrePositivity.BhattScholze.Prismatic
 open SerrePositivity.CommutativeAlgebra SerrePositivity.DerivedCompletion
-open SerrePositivity.EInfinity.BarrattEccles
 
 def FinitePresentedFinite (U : A_R R) : Prop :=
   letI := U.hom.hom.toAlgebra
@@ -63,7 +64,7 @@ abbrev completedInput (U : A_R R) :=
   (animatedCompletion p R).app _ ((discreteToAnimated R).app _ (nerveVertex U))
 
 abbrev completedPerfd (U : A_R R) :=
-  (perfectoidizationAnimated p R hR).app _ (completedInput p R U)
+  (perfectoidizationAnimated (E := E) p R hR).app _ (completedInput p R U)
 
 /-- 概要：D64：perfectoid 環は被約なので Perfd_{S/} = Perfd_{S_red/}、よって S_perfd ≃ (S_red)_perfd（Prop 8.5 の極限の形）。
 方針：A5-1 `perfectoidization_isLimit_u` と添字圏の同一視。
@@ -72,7 +73,7 @@ abbrev completedPerfd (U : A_R R) :=
 theorem perfectoidization_red :
     let q : ofAlgebra R S ⟶ ofAlgebra R (S ⧸ nilradical S) :=
       Under.homMk (CommRingCat.ofHom (Ideal.Quotient.mk (nilradical S))) rfl
-    IsInvertibleEdge (((nerve.edgeMk q).map (perfectoidizationFunctor p R hR)).toTruncated) := by
+    IsInvertibleEdge (((nerve.edgeMk q).map (perfectoidizationFunctor (E := E) p R hR)).toTruncated) := by
   sorry -- perfectoid 標的は被約。商写像が誘導する Perfd の添字圏の同値と A5 の極限
 
 /-- 概要：G-A8-9：整 R 代数は有限表示有限 R 代数の filtered 余極限（R[x]/I を I の有限生成部分イデアル（モニック関係を含む）で近似）。 -/
@@ -101,10 +102,10 @@ theorem isIntegralPerfectoid_completedFilteredColimit {I : Type u} [SmallCategor
 
 /-- 完備 animated 入力の Δ_perf の離散性と、その H⁰ 上の完全 prism。 -/
 def IsDiscretePerfectPerfection (U : A_R R) : Prop :=
-    let X := (prismaticPerfectionAnimated p R hR).app _ (completedInput p R U)
+    let X := (prismaticPerfectionAnimated (E := E) p R hR).app _ (completedInput p R U)
     let A := perfectPrismRing p R
-    let C := cAlgH0Algebra A X
-    IsDiscrete A X ∧ ∃ Q : OrientedPrism p C.right,
+    let C := cAlgH0Algebra (E := E) A X
+    IsTheoryDiscrete (E := E) A X ∧ ∃ Q : OrientedPrism p C.right,
       Q.generator = C.hom.hom (perfectPrism p R hR).generator ∧ Q.deltaStructure.IsPerfect ∧
         (perfectPrism p R hR).deltaStructure.IsDeltaHom Q.deltaStructure C.hom.hom ∧
         Function.Injective (fun x : C.right => (p : C.right) * x) ∧
@@ -115,11 +116,11 @@ def IsDiscretePerfectPerfection (U : A_R R) : Prop :=
 規約：—
 使われ方：Thm 10.11。 -/
 theorem perfectoidization_discrete_of_finitePresentation_connective
-    (hfin : ∀ U : A_R R, FinitePresentedFinite R U → Derived.IsConnectiveAt R 0 (perfdModule p R hR U))
+    (hfin : ∀ U : A_R R, FinitePresentedFinite R U → Derived.IsConnectiveAt R 0 (perfdModule (E := E) p R hR U))
     (h : Algebra.IsIntegral R S) :
-    IsDiscrete R (completedPerfd p R hR (ofAlgebra R S)) ∧
-      IsIntegralPerfectoid (cAlgH0Algebra R (completedPerfd p R hR (ofAlgebra R S))).right p ∧
-      IsDiscretePerfectPerfection p R hR (ofAlgebra R S) := by
+    IsTheoryDiscrete (E := E) R (completedPerfd (E := E) p R hR (ofAlgebra R S)) ∧
+      IsIntegralPerfectoid (cAlgH0Algebra (E := E) R (completedPerfd (E := E) p R hR (ofAlgebra R S))).right p ∧
+      IsDiscretePerfectPerfection (E := E) p R hR (ofAlgebra R S) := by
   sorry -- 有限表示有限で Lemma 8.4 と Cor 8.14。G-A8-9 の余極限に A4 の保存と G-A8-8 を適用
 
 /-- 概要：n = 1：R → S_red 有限エタール（Lemma 10.12 (2) の普遍同相が同型：p = 0 なら R 完全（perfectoid・被約・Frobenius 全射）で G-A8-5、p 可逆なら構成）
@@ -127,7 +128,7 @@ theorem perfectoidization_discrete_of_finitePresentation_connective
 方針：`perfectoidization_red`、`perfectoidization_of_perfectoid`（A7-2）。 -/
 theorem perfectoidization_connective_of_stratification_one [Module.Finite R S] [Algebra.FinitePresentation R S]
     (g : Fin 1 → R) (hg : IsEtaleStratification p R S g) :
-    Derived.IsConnectiveAt R 0 (perfdModule p R hR (ofAlgebra R S)) := by
+    Derived.IsConnectiveAt R 0 (perfdModule (E := E) p R hR (ofAlgebra R S)) := by
   sorry -- g₁ は単元。p=0 では完全被約な層の普遍同相、p 可逆では p 反転後の同型。
         -- S_red は有限エタールで perfectoid、perfectoidization_red とその単位同型
 
@@ -140,19 +141,19 @@ def quotientTensorInput (U V : A_R R) : (CompleteAnimatedAlgebra p R) _⦋0⦌ :
   exact (completeAnimatedPushout p R D).1.vertex
 
 abbrev tensorPerfdModule (U V : A_R R) :=
-  (perfectoidizationAnimated p R hR ≫ cAlgForgetDerived R).app _ (quotientTensorInput p R U V)
+  (perfectoidizationAnimated (E := E) p R hR ≫ E.forget R).app _ (quotientTensorInput p R U V)
 
 /-- 同じ Q_perfd から π₀(Q) の perfd と、両因子の perfd の完備テンソルへ比較する。
 R₁ を第二因子とすると π₀ は通常の S⊗_R R₁。 -/
 theorem quotientTensor_comparisons [Module.Finite R S] [Algebra.FinitePresentation R S] (g : R) :
     let J := Ideal.span {g}
     let B := QuotientPerfectoidization R J p hR
-    let M := perfdModule p R hR (ofAlgebra R S)
-    let Q := tensorPerfdModule p R hR (ofAlgebra R S) (ofAlgebra R (R ⧸ J))
-    Nonempty (VertexIso Q (perfdModule p R hR (ofAlgebra R (S ⧸ Ideal.span {algebraMap R S g})))) ∧
+    let M := perfdModule (E := E) p R hR (ofAlgebra R S)
+    let Q := tensorPerfdModule (E := E) p R hR (ofAlgebra R S) (ofAlgebra R (R ⧸ J))
+    Nonempty (VertexIso Q (perfdModule (E := E) p R hR (ofAlgebra R (S ⧸ Ideal.span {algebraMap R S g})))) ∧
       Nonempty (VertexIso Q (quotientTensor p R hR J M)) ∧
-      Nonempty (VertexIso (tensorPerfdModule p R hR (ofAlgebra R S) (ofAlgebra R B))
-        (perfdModule p R hR (ofAlgebra R (S ⊗[R] B)))) := by
+      Nonempty (VertexIso (tensorPerfdModule (E := E) p R hR (ofAlgebra R S) (ofAlgebra R B))
+        (perfdModule (E := E) p R hR (ofAlgebra R (S ⊗[R] B)))) := by
   sorry -- Q の π₀=S/gS と Prop 8.5 系4、Prop 8.13 と (R/g)_perfd=B。
         -- B との完備テンソルも π₀=S⊗_R B（有限表示有限で完備）を経る
 
@@ -166,10 +167,10 @@ theorem perfectoidization_quotient_connective_of_ih [Module.Finite R S] [Algebra
     (ih : ∀ (R₁ S₁ : Type u) [CommRing R₁] [CommRing S₁] [Algebra R₁ S₁]
       [Module.Finite R₁ S₁] [Algebra.FinitePresentation R₁ S₁] (h₁ : IsIntegralPerfectoid R₁ p)
       (t : Fin n → R₁), IsEtaleStratification p R₁ S₁ t →
-        Derived.IsConnectiveAt R₁ 0 (perfdModule p R₁ h₁ (ofAlgebra R₁ S₁))) :
+        Derived.IsConnectiveAt R₁ 0 (perfdModule (E := E) p R₁ h₁ (ofAlgebra R₁ S₁))) :
     let J := Ideal.span {g 0}
-    let M := perfdModule p R hR (ofAlgebra R S)
-    let N := perfdModule p R hR (ofAlgebra R (S ⧸ Ideal.span {algebraMap R S (g 0)}))
+    let M := perfdModule (E := E) p R hR (ofAlgebra R S)
+    let N := perfdModule (E := E) p R hR (ofAlgebra R (S ⧸ Ideal.span {algebraMap R S (g 0)}))
     Nonempty (VertexIso (quotientTensor p R hR J M) N) ∧ Derived.IsConnectiveAt R 0 N := by
   sorry -- Q=S⊗̂^L_R R/g₁、π₀Q=S/g₁。系4と Prop 8.13 を順に適用。
         -- R₁=(R/g₁)_perfd との完備テンソルにも同じ二段を用い、S⊗_R R₁ に残り n 層の ih。
@@ -265,7 +266,7 @@ fib(S_perfd → T̂_perfd) ≃ fib((S/g_1)_perfd → (T̂/g_1T̂)_perfd) は (R/
 使われ方：`perfectoidization_almostConnective_of_stratification`。 -/
 theorem perfectoidization_almostIso_integralClosureCompletion [Module.Finite R S] [Algebra.FinitePresentation R S]
     (g : R) (h : Algebra.IsIntegral R S) (het : FiniteEtaleAway R (S ⧸ nilradical S) g) :
-    IsJAlmostZero p R hR (Ideal.span {g}) (perfdMapFiber p R hR (completedClosureArrow p R S g h)) := by
+    IsJAlmostZero p R hR (Ideal.span {g}) (perfdMapFiber (E := E) p R hR (completedClosureArrow p R S g h)) := by
   sorry -- S、T̂、gS の完備性と arcOutside_completionRing で Cor 8.12。商の fibre は (R/g)_perfd 加群
 
 /-- 概要：G-A8-11（W9-III-06）：T への写像を備えた有限表示有限 R 代数 A_λ の filtered 系で、各 A_λ[1/g_1] ≅ B（R[1/g_1] 代数として）、colim A_λ = T。
@@ -295,7 +296,7 @@ G-A8-8 はここでは使わない（(A_λ)_perfd が perfectoid とはまだ分
 `exists_finitePresentation_approximation_fixedLocalization`、A8-1 `isAlmostConnective_completedFilteredColimit`（Codex 第 3 部続き 2 で全接続 ○）。 -/
 theorem perfectoidization_almostConnective_of_stratification [Module.Finite R S] [Algebra.FinitePresentation R S]
     {n : ℕ} (g : Fin (n+1) → R) (hg : IsEtaleStratification p R S g) :
-    IsAlmostConnective p R hR (Ideal.span {g 0}) (perfdModule p R hR (ofAlgebra R S)) := by
+    IsAlmostConnective p R hR (Ideal.span {g 0}) (perfdModule (E := E) p R hR (ofAlgebra R S)) := by
   sorry -- A_λ[1/g₁]≃B に Thm 10.9、G-A8-1 の完備 filtered 余極限の系で T̂_perfd へ。
         -- S→T̂ の almost 同型で戻す。各 A_λ の離散性・perfectoid 性は仮定しない
 
@@ -303,7 +304,7 @@ theorem perfectoidization_almostConnective_of_stratification [Module.Finite R S]
 方針：`exists_finiteEtaleStratification`（A8-3）、上の三つ、A8-1 `connective_iff_almost`。 -/
 theorem perfectoidization_connective_of_finitePresentation [Module.Finite R S] [Algebra.FinitePresentation R S]
     (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) :
-    Derived.IsConnectiveAt R 0 (perfdModule p R hR (ofAlgebra R S)) := by
+    Derived.IsConnectiveAt R 0 (perfdModule (E := E) p R hR (ofAlgebra R S)) := by
   obtain ⟨n, g, hspan, hstrata⟩ := exists_finiteEtaleStratification (R := R) (S := S) p hZp
   sorry -- 長さで帰納。空列なら R は零環、1 層は G-A8-6。帰納段の二条件を Lemma 10.5 で合わせる
 
@@ -312,12 +313,12 @@ theorem perfectoidization_connective_of_finitePresentation [Module.Finite R S] [
 規約：原典の形（D67）。
 使われ方：`e3Integral`。 -/
 theorem prismaticPerfection_discrete_of_integral (h : Algebra.IsIntegral R S) :
-    IsDiscretePerfectPerfection p R hR (ofAlgebra R S) := by
+    IsDiscretePerfectPerfection (E := E) p R hR (ofAlgebra R S) := by
   sorry -- 有限表示有限の連結性、G-A8-9・8、d 進 Nakayama と A4 の完全 δ 構造
 
 theorem perfectoidization_isIntegralPerfectoid_of_integral (h : Algebra.IsIntegral R S) :
-    let x := completedPerfd p R hR (ofAlgebra R S)
-    IsDiscrete R x ∧ IsIntegralPerfectoid (cAlgH0Algebra R x).right p := by
+    let x := completedPerfd (E := E) p R hR (ofAlgebra R S)
+    IsTheoryDiscrete (E := E) R x ∧ IsIntegralPerfectoid (cAlgH0Algebra (E := E) R x).right p := by
   sorry -- p 完備 perfectoid 基底では p 以外の素数は単元。hZp を供給して有限表示有限の
         -- 連結性を perfectoidization_discrete_of_finitePresentation_connective に渡す
 
@@ -328,8 +329,8 @@ Prop 8.5 の系 4（`perfectoidization_piZero`、決定 6）で (LΛ_p S)_perfd 
 使われ方：A9。 -/
 theorem e3Integral (hR : IsIntegralPerfectoid R p := by assumption) (S : A_R R)
     (h : letI : Algebra R S.right := S.hom.hom.toAlgebra; Algebra.IsIntegral R S.right) :
-    IsDiscrete R ((e3Perfd p R hR).app _ (nerveVertex S)) ∧
-      IsIntegralPerfectoid ((e3H0RingData p R hR).ringFunctor.obj S).right p := by
+    IsTheoryDiscrete (E := E) R ((e3Perfd (E := E) p R hR).app _ (nerveVertex S)) ∧
+      IsIntegralPerfectoid ((e3H0RingData (E := E) p R hR).ringFunctor.obj S).right p := by
   sorry -- Thm 10.11 の入力は animated な LΛ_p S。Prop 8.5 系4でその perfd を
         -- π₀(LΛ_p S)=completionRing p S.right の perfd に移し、A4 の完備入力比較で欄を読む
 

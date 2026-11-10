@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.1・§2.2、単位 A5-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
@@ -34,6 +35,8 @@ noncomputable section
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial Cardinal TensorProduct
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -189,8 +192,8 @@ def perfUnder_cechNerveData (U : (PerfUnder_u p (CommRingCat.of S))ᵒᵖ) :
 規約：—
 使われ方：比較写像の終域。 -/
 def perfectStructurePresheaf :
-    Sheaves.Presheaf (perfectSite p R S hR) (CAlg_R (perfectPrismRing p R)) :=
-  Sheaves.ringPresheafToCAlg (perfectPrismRing p R) ((perfectSitePrism p R hR S) ⋙
+    Sheaves.Presheaf (perfectSite p R S hR) (E.CAlg (perfectPrismRing p R)) :=
+  Sheaves.ringPresheafToCAlg (E := E) (perfectPrismRing p R) ((perfectSitePrism p R hR S) ⋙
     { obj := fun X => Under.mk (CommRingCat.ofHom X.toHom.toRingHom)
       map := fun f => Under.homMk (CommRingCat.ofHom f.toHom.toRingHom) (by
         sorry) -- f.comm_base
@@ -199,13 +202,13 @@ def perfectStructurePresheaf :
 
 def perfectStructurePresheafDerived :
     Sheaves.Presheaf (perfectSite p R S hR) (derivedInfinityCategory (perfectPrismRing p R)) :=
-  perfectStructurePresheaf p R hR S ≫ SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived _
+  perfectStructurePresheaf (E := E) p R hR S ≫ E.forget _
 
 /-- 忘却後は A0 の structurePresheafDerived の完全対象への制限。 -/
 def perfectStructureRestriction :
     let i : perfectSite p R S hR ⥤ PrismaticSite (perfectPrism p R hR) S (perfectSiteCutoff p R S) :=
       (ObjectProperty.ι _).op
-    FunctorIso (perfectStructurePresheafDerived p R hR S)
+    FunctorIso (perfectStructurePresheafDerived (E := E) p R hR S)
       ((SSet.uliftFunctor.{u+1,u}).map (nerveMap i.op) ≫
         structurePresheafDerived (perfectPrism p R hR) S (perfectSiteCutoff p R S)) := by
   sorry -- 同じ A 上の環の関手を離散埋め込みで送り、algebraEmbeddingForgetIso を前合成する
@@ -215,7 +218,7 @@ def perfectStructureRestriction :
 規約：D-S1（Čech 層）。
 使われ方：位相非依存（`perfectionComparison_isIso_topology`）。 -/
 theorem perfectStructurePresheaf_isSheaf :
-    Sheaves.IsSheaf (perfectFlatTopology p R S hR) (perfectStructurePresheaf p R hR S) := by
+    Sheaves.IsSheaf (perfectFlatTopology p R S hR) (perfectStructurePresheaf (E := E) p R hR S) := by
   sorry -- 完全な flat 被覆の相対 Čech 項に Cor 3.12 を適用し、CAlg の忘却で極限を検出する
 
 /-! ## Lemma 4.8 と site の記述 -/
@@ -298,23 +301,23 @@ abbrev perfectTestAlgebra (U : (perfectSite p R S hR)ᵒᵖ) : A_R (perfectPrism
   Under.mk (CommRingCat.ofHom ((perfectSitePrism p R hR S).obj U).toHom.toRingHom)
 
 abbrev testValue (U : (perfectSite p R S hR)ᵒᵖ) :=
-  (algebraEmbedding (perfectPrismRing p R)).app _ (nerveVertex (perfectTestAlgebra p R hR S U))
+  (E.discrete (perfectPrismRing p R)).app _ (nerveVertex (perfectTestAlgebra p R hR S U))
 
 def perfectStructureFiber (U : (perfectSite p R S hR)ᵒᵖ) :
-    VertexIso ((perfectStructurePresheaf p R hR S).app _ (ULift.up (nerveVertex U))) (testValue p R hR S U) := by
+    VertexIso ((perfectStructurePresheaf (E := E) p R hR S).app _ (ULift.up (nerveVertex U))) (testValue (E := E) p R hR S U) := by
   sorry -- ringPresheafToCAlg の評価は指定された離散 A 代数の埋め込み
 
-abbrev baseRes := cAlgRestrictScalars (perfectPrism p R hR).deltaStructure.frobeniusLift
+abbrev baseRes := cAlgRestrictScalars (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift
 
 /-- 離散 A 代数の係数制限は構造射を φ_A と合成する。 -/
 def discreteRestrictionIso (U : A_R (perfectPrismRing p R)) :
-    VertexIso ((algebraEmbedding (perfectPrismRing p R)).app _
+    VertexIso ((E.discrete (perfectPrismRing p R)).app _
       (nerveVertex (Under.mk (CommRingCat.ofHom (U.hom.hom.comp (perfectPrism p R hR).deltaStructure.frobeniusLift)))))
-      ((baseRes p R hR).app _ ((algebraEmbedding (perfectPrismRing p R)).app _ (nerveVertex U))) := by
+      ((baseRes (E := E) p R hR).app _ ((E.discrete (perfectPrismRing p R)).app _ (nerveVertex U))) := by
   sorry -- 要確認：ScalarRestriction へ。離散代数の埋め込みと cAlgRestrictScalars の標準比較
 
 def testFrobenius (U : (perfectSite p R S hR)ᵒᵖ) :
-    VertexIso (testValue p R hR S U) ((baseRes p R hR).app _ (testValue p R hR S U)) := by
+    VertexIso (testValue (E := E) p R hR S U) ((baseRes (E := E) p R hR).app _ (testValue (E := E) p R hR S U)) := by
   let X := (perfectSitePrism p R hR S).obj U
   let B := perfectTestAlgebra p R hR S U
   let twist : A_R (perfectPrismRing p R) := Under.mk
@@ -322,92 +325,92 @@ def testFrobenius (U : (perfectSite p R S hR)ᵒᵖ) :
   let φ : B ⟶ twist := Under.homMk (CommRingCat.ofHom X.Q.deltaStructure.frobeniusLift)
     (by sorry) -- toHom は Frobenius と両立する
   haveI : IsIso φ := by sorry -- 完全な X.Q の Frobenius は全単射
-  exact (algebraNerveIso _ (asIso φ)).map (algebraEmbedding _) ≪≫ discreteRestrictionIso p R hR B
+  exact (algebraNerveIso _ (asIso φ)).map (E.discrete _) ≪≫ discreteRestrictionIso (E := E) p R hR B
 
-abbrev deltaValue := (discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S))
+abbrev deltaValue := (discreteDeltaFunctor (E := E) p R hR).app _ (nerveVertex (ofAlgebra R S))
 
 /-- 同じ錐の射影としての評価と Frobenius との整合。完全 site に制限した錐の極限性は仮定しない。 -/
 structure PrismaticEvaluationData where
-  cone : JoinCone (perfectStructurePresheaf p R hR S)
-  vertexIso : VertexIso (deltaValue p R hR S) cone.vertex
-  leg (U : (perfectSite p R S hR)ᵒᵖ) : SSet.Edge (deltaValue p R hR S) (testValue p R hR S U)
+  cone : JoinCone (perfectStructurePresheaf (E := E) p R hR S)
+  vertexIso : VertexIso (deltaValue (E := E) p R hR S) cone.vertex
+  leg (U : (perfectSite p R S hR)ᵒᵖ) : SSet.Edge (deltaValue (E := E) p R hR S) (testValue (E := E) p R hR S U)
   is_projection (U : (perfectSite p R S hR)ᵒᵖ) :
     SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated =
       vertexIso.hom ≫ SSet.Truncated.HomotopyCategory₂.homMk (F2.nativeConeLeg cone (ULift.up (nerveVertex U))) ≫
-        (perfectStructureFiber p R hR S U).hom
+        (perfectStructureFiber (E := E) p R hR S U).hom
   frobenius (U : (perfectSite p R S hR)ᵒᵖ) :
-    SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated ≫ (testFrobenius p R hR S U).hom =
-      SSet.Truncated.HomotopyCategory₂.homMk (discreteDeltaFrobenius p R hR (ofAlgebra R S)).toTruncated ≫
-        (hoFunctor.map (baseRes p R hR)).toFunctor.map (SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated)
+    SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated ≫ (testFrobenius (E := E) p R hR S U).hom =
+      SSet.Truncated.HomotopyCategory₂.homMk (discreteDeltaFrobenius (E := E) p R hR (ofAlgebra R S)).toTruncated ≫
+        (hoFunctor.map (baseRes (E := E) p R hR)).toFunctor.map (SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated)
 
 /-- A0 の O_Δ を CAlg 値にして S2 の大域切断の B での射影を取る。
 多項式分解では各段の射影を A2 の余極限で合わせる。animated 入力では対象を π₀S の site で読む。
 A3 の離散性の仮定の下で H⁰ を取ると prismMapOfDiscrete に一致する。 -/
-def prismaticEvaluation : PrismaticEvaluationData p R hR S := by
+def prismaticEvaluation : PrismaticEvaluationData (E := E) p R hR S := by
   sorry -- A0/S2 の CAlg 値 RΓ の射影待ち（prismaticCohomologyCAlg が True のため）。
         -- Frobenius 両立は structurePresheafFrobenius の自然性
 
 /-- Res^n B → B：完全標的の Frobenius の逆を正の係数制限で反復する。 -/
 def inverseTestFrobenius (U : (perfectSite p R S hR)ᵒᵖ) (n : ℕ) :
-    (HomotopyCategory.mk ((iterateRestriction (baseRes p R hR) n).app _ (testValue p R hR S U)) :
-      hoFunctor.obj (CAlg_R (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (testValue p R hR S U) := by
+    (HomotopyCategory.mk ((iterateRestriction (baseRes (E := E) p R hR) n).app _ (testValue (E := E) p R hR S U)) :
+      hoFunctor.obj (E.CAlg (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (testValue (E := E) p R hR S U) := by
   induction n with
   | zero => exact 𝟙 _
   | succ n ih =>
-    exact (hoFunctor.map (iterateRestriction (baseRes p R hR) n)).toFunctor.map
-      (testFrobenius p R hR S U).inv ≫ ih
+    exact (hoFunctor.map (iterateRestriction (baseRes (E := E) p R hR) n)).toFunctor.map
+      (testFrobenius (E := E) p R hR S U).inv ≫ ih
 
 def evaluationStage (U : (perfectSite p R S hR)ᵒᵖ) (n : ℕ) :=
-  (hoFunctor.map (iterateRestriction (baseRes p R hR) n)).toFunctor.map
-    (SSet.Truncated.HomotopyCategory₂.homMk ((prismaticEvaluation p R hR S).leg U).toTruncated) ≫
-  inverseTestFrobenius p R hR S U n
+  (hoFunctor.map (iterateRestriction (baseRes (E := E) p R hR) n)).toFunctor.map
+    (SSet.Truncated.HomotopyCategory₂.homMk ((prismaticEvaluation (E := E) p R hR S).leg U).toTruncated) ≫
+  inverseTestFrobenius (E := E) p R hR S U n
 
 def towerToPerfection (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) (n : ℕ) :
-    (HomotopyCategory.mk ((iterateRestriction (baseRes p R hR) n).app _ (deltaValue p R hR S)) :
-      hoFunctor.obj (CAlg_R (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (prismaticPerfection p R hR S hS) := by
-  let c := (directTowerColimit p R hR (ofAlgebra R S)).1
+    (HomotopyCategory.mk ((iterateRestriction (baseRes (E := E) p R hR) n).app _ (deltaValue (E := E) p R hR S)) :
+      hoFunctor.obj (E.CAlg (perfectPrismRing p R))) ⟶ HomotopyCategory.mk (prismaticPerfection (E := E) p R hR S hS) := by
+  let c := (directTowerColimit (E := E) p R hR (ofAlgebra R S)).1
   let l := HomotopyLimits.coconeVertexLeg c (ULift.up (nerveVertex n))
   exact eqToHom (by sorry) ≫ SSet.Truncated.HomotopyCategory₂.homMk l.toTruncated ≫
-    functorHomEvaluate (prismCAlgCompletionUnit (p := p) (perfectPrism p R hR)) c.vertex
+    functorHomEvaluate (prismCAlgCompletionUnit (E := E) (p := p) (perfectPrism p R hR)) c.vertex
     -- restrictionSequence の第 n 頂点は Resⁿ Δ_S
 
 /-- 一つの整合した錐を選び、全試験対象と全段で脚を指定する。 -/
 structure PerfectionEvaluationData (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) where
-  cone : JoinCone (perfectStructurePresheaf p R hR S)
-  vertexIso : VertexIso (prismaticPerfection p R hR S hS) cone.vertex
-  leg (U : (perfectSite p R S hR)ᵒᵖ) : SSet.Edge (prismaticPerfection p R hR S hS) (testValue p R hR S U)
+  cone : JoinCone (perfectStructurePresheaf (E := E) p R hR S)
+  vertexIso : VertexIso (prismaticPerfection (E := E) p R hR S hS) cone.vertex
+  leg (U : (perfectSite p R S hR)ᵒᵖ) : SSet.Edge (prismaticPerfection (E := E) p R hR S hS) (testValue (E := E) p R hR S U)
   is_projection (U : (perfectSite p R S hR)ᵒᵖ) :
     vertexIso.hom ≫ SSet.Truncated.HomotopyCategory₂.homMk (F2.nativeConeLeg cone (ULift.up (nerveVertex U))) ≫
-      (perfectStructureFiber p R hR S U).hom = SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated
+      (perfectStructureFiber (E := E) p R hR S U).hom = SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated
   stage (U : (perfectSite p R S hR)ᵒᵖ) (n : ℕ) :
-    towerToPerfection p R hR S hS n ≫ SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated =
-      evaluationStage p R hR S U n
+    towerToPerfection (E := E) p R hR S hS n ≫ SSet.Truncated.HomotopyCategory₂.homMk (leg U).toTruncated =
+      evaluationStage (E := E) p R hR S U n
 
 def perfectionComparisonCone (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    PerfectionEvaluationData p R hR S hS := by
+    PerfectionEvaluationData (E := E) p R hR S hS := by
   sorry -- prismaticEvaluation の錐と φ_B の逆から、試験対象について自然な塔の余錐を作る。
         -- 余極限の普遍性、B の (p,d) 完備性による延長を関手の段で適用する
 
 /-- 第 n 段で φ_B^{-n} ∘ Resⁿ(f) を誘導する、同じ錐の指定された脚。 -/
 def perfectionComparisonLeg (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
     (U : (perfectSite p R S hR)ᵒᵖ) :
-    { e : SSet.Edge (prismaticPerfection p R hR S hS) (testValue p R hR S U) //
-      ∀ n, towerToPerfection p R hR S hS n ≫ SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated =
-        evaluationStage p R hR S U n } :=
-  let c := perfectionComparisonCone p R hR S hS
+    { e : SSet.Edge (prismaticPerfection (E := E) p R hR S hS) (testValue (E := E) p R hR S U) //
+      ∀ n, towerToPerfection (E := E) p R hR S hS n ≫ SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated =
+        evaluationStage (E := E) p R hR S U n } :=
+  let c := perfectionComparisonCone (E := E) p R hR S hS
   ⟨c.leg U, c.stage U⟩
 
 /-- 小さい模型上の構造前層の極限。 -/
-theorem perfectStructure_hasLimit : HasLimit (perfectStructurePresheaf p R hR S) :=
+theorem perfectStructure_hasLimit : HasLimit (perfectStructurePresheaf (E := E) p R hR S) :=
   Sheaves.hasLimit_presheaf (by sorry) _ -- G12：CAlg_A は presentable
 
 /-- 比較の終域は chaotic 位相での O_Δ の大域切断。 -/
 def perfectionComparison (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) :
-    (HomotopyCategory.mk (prismaticPerfection p R hR S hS) : hoFunctor.obj (CAlg_R (perfectPrismRing p R))) ⟶
-      HomotopyCategory.mk (Sheaves.globalSections (perfectStructurePresheaf p R hR S) (perfectStructure_hasLimit p R hR S)) := by
-  let c := perfectionComparisonCone p R hR S hS
-  let l := Sheaves.globalSectionsCone (perfectStructurePresheaf p R hR S) (perfectStructure_hasLimit p R hR S)
-  let lift : (sliceOver (perfectStructurePresheaf p R hR S)).Edge c.cone l := by
+    (HomotopyCategory.mk (prismaticPerfection (E := E) p R hR S hS) : hoFunctor.obj (E.CAlg (perfectPrismRing p R))) ⟶
+      HomotopyCategory.mk (Sheaves.globalSections (perfectStructurePresheaf (E := E) p R hR S) (perfectStructure_hasLimit (E := E) p R hR S)) := by
+  let c := perfectionComparisonCone (E := E) p R hR S hS
+  let l := Sheaves.globalSectionsCone (perfectStructurePresheaf (E := E) p R hR S) (perfectStructure_hasLimit (E := E) p R hR S)
+  let lift : (sliceOver (perfectStructurePresheaf (E := E) p R hR S)).Edge c.cone l := by
     sorry -- l は錐の圏で終対象
   exact c.vertexIso.hom ≫ SSet.Truncated.HomotopyCategory₂.homMk (lift.map (sliceOverProjection _)).toTruncated
 
