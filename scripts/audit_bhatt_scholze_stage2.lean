@@ -109,6 +109,11 @@ import SerrePositivity.BhattScholze.Almost.AlmostTensor
 import SerrePositivity.BhattScholze.Almost.AlmostTensorForward
 import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
 import SerrePositivity.BhattScholze.Almost.AlmostGenerators
+import SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralApproximation
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureApproximation
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureCompletion
+import SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectoidFilteredColimit
 import Lean.Util.CollectAxioms
 
 /-!
@@ -121,6 +126,11 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Almost.FiniteEtaleComparison,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralApproximation,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureApproximation,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralClosureCompletion,
+    `SerrePositivity.BhattScholze.Perfectoidization.Derived.PerfectoidFilteredColimit,
     `SerrePositivity.BhattScholze.Almost.CompletedModuleTensor,
     `SerrePositivity.BhattScholze.Almost.AlmostTensor,
     `SerrePositivity.BhattScholze.Almost.AlmostTensorForward,
