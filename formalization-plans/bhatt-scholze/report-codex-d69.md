@@ -73,3 +73,15 @@
   - `SerrePositivity.BhattScholze.Prismatic.PDCechNerve`
   - `SerrePositivity.BhattScholze.Prismatic.PDCechFrameHomotopy`
 - 残りは `pdModel_iso_pdCechNerve`。任意の宇宙の係数環に対して小さい枠の添字を合わせるため、`Fin r` を `ULift (Fin r)` として各変数を同じ添字の元に送る。自由分冪代数と階乗表示には D68 の既存部品を使う。⑤c の正則列の包絡と Frobenius 除算のファイルとは重複なし。
+
+## 停止点 1（P1 完了）
+
+- `pdModel_iso_pdCechNerve` を証明した。D68 の `pdRaw` に係数イデアル J と正次数の頂点差の分冪が生成するイデアルを取る。有理係数多項式への単射を使って分冪を制限し、標準脚の普遍性と頂点写像との両立を未完備の環で示した。p 正則性で D68 の主完備化と古典的な p 進完備化を比較し、完備化の単位に沿う射の一意性で余単体自然性を得た。
+- 小さい枠の添字は `ULift (Fin r)` とした。これは枠の変数と係数環の宇宙を合わせるためで、各変数は `j.down` 番目の変数に評価する。⑤c の K1 を取り込んだ `bb385d21a` を枝にマージした。P1 は D68 の自由分冪基底・係数拡大・階乗評価を再利用し、K1 で扱う正則列の包と Frobenius 除算との照合は重複させていない。
+- 追加の登録候補は以下の 4 本。段 1 途中の 5 本と合わせて、全 9 本を `BhattScholze.lean` と段階 II の監査に登録する対象とする。
+  - `SerrePositivity.BhattScholze.Prismatic.PDFromGenerators`
+  - `SerrePositivity.BhattScholze.Prismatic.PDRelativeFree`
+  - `SerrePositivity.BhattScholze.Prismatic.PDSmallRawEnvelope`
+  - `SerrePositivity.BhattScholze.Prismatic.PDSmallModelComparison`
+- 全 9 本の `--wait 1800` 付き対象ビルドと一時監査が通過。非公開宣言を含む 661 宣言の依存公理は標準三公理のみ。追加の公理と `sorry` は 0。既存の Lean 宣言の変更と A1 の CAlg_R 部分への編集はない。
+- 段 2 は多項式代数の圏と係数変更を古典的に切り出し、既存の affine 模型を大きい枠へ延ばすところから進める。
