@@ -2,6 +2,9 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1・§2.2、単位 A1-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
+import all SerrePositivity.BhattScholze.Prismatic.HodgeTateOneDerivative
+
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateBocksteinSquare
 public import SerrePositivity.BhattScholze.Prismatic.HodgeTateAffineForms
 
@@ -50,10 +53,10 @@ local instance (i : ℕ) : Module (affineAlgebra P r) (hodgeTateCohomology' P hP
 def htOneData :
     { l : affineForms P r 1 →ₗ[affineAlgebra P r] hodgeTateCohomology' P hP r 1 //
       ∀ f g : affineAlgebra P r, l (f • affineD P r 0 (degreeZeroForm P r g)) =
-        f • bockstein P hP r 0 (hodgeTateMapZero P hP r g) } := by
-  sorry -- dX_j を β(η⁰ X_j) へ送り R 線形に延長。連続 Leibniz 則で d̂g の式を得る
-
-def hodgeTateMapOne := (htOneData P hP r).val
+        f • (bockstein P hP r 0 (hodgeTateMapZero P hP r g) : hodgeTateCohomology' P hP r 1) } :=
+  ⟨hodgeTateMapOne P hP r, fun f g => by
+    change _ = f • htBocksteinZero P hP r g
+    exact hodgeTateMapOne_smul_d P hP r f g⟩
 
 -- BetaSquareZero と bockstein_sq_zero は本体の HodgeTateBocksteinSquare に置く。
 -- p = 2 の場合は δ による余境界で直接証明する。
