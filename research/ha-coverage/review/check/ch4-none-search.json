@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "3957393fd4c1e820f33823b35215fe77dc3e1fe0",
+  "worktree_commit": "f5d8ed98202eda86273d31348396cbcee75dd524",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -15777,6 +15777,696 @@
         }
       ],
       "reason": "Tens の射を順序付きファイバーに値をとる指定の単射で分類する記述は見つからない。置換オペラッドのブロック合成は同じ射の分類を与えない。"
+    },
+    "4.5.1.2": {
+      "ha_page": 593,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.4.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Mod.*operad.*baseChange|coherent.*operad|restrictScalars",
+          "files_with_matches": 316,
+          "total_matching_lines": 1903,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AdicCompletionSection.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineCommonPrincipalOpen.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
+            "SerrePositivity/AlgebraicGeometry/BaseChangeChartCover.lean",
+            "SerrePositivity/AlgebraicGeometry/Blowup.lean",
+            "SerrePositivity/AlgebraicGeometry/CompatiblePowerSections.lean",
+            "SerrePositivity/AlgebraicGeometry/CompatibleReductionSection.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFinsuppCoordinates.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFlatMittagLeffler.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFreeFiniteTensor.lean",
+            "SerrePositivity/AlgebraicGeometry/DeterminantalCenterSplitDescent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Mod.*operad.*baseChange|coherent.*operad|restrictScalars",
+          "files_with_matches": 419,
+          "total_matching_lines": 2860,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Basic.lean",
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Equiv.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/Operations.lean",
+            "Mathlib/Algebra/Algebra/RestrictScalars.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Rank.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Tower.lean",
+            "Mathlib/Algebra/Algebra/Tower.lean",
+            "Mathlib/Algebra/Category/AlgCat/Basic.lean",
+            "Mathlib/Algebra/Category/AlgCat/TensorAlgebra.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+          "sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "coherent ∞ オペラッドの写像に沿う係数の底変換と、添字 K の比較から得る加群オペラッドの関手は見つからない。環の写像に沿う通常のスカラー制限はオペラッド自体を替える操作を与えない。"
+    },
+    "4.5.1.3": {
+      "ha_page": 593,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.4.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ModAssoc|LModA∞|rightActionMap|forget.*AInfinity",
+          "files_with_matches": 8,
+          "total_matching_lines": 94,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/FreeTensor.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Monoidal.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/SigmaRepresentableCoproductInd.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/TensorLeftUnit.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "ModAssoc|LModA∞|rightActionMap|forget.*AInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+          "sha256": "59fcf917d0b542904016bddba5de9f4a0904dae362a68c643f85a5f1d687648b"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "可換加群から Assoc 加群と両側作用を経て A∞ 左加群に至る可変代数上の比較 Θ は見つからない。通常の右作用の構成はこの図式の比較関手を与えない。"
+    },
+    "4.5.1.4": {
+      "ha_page": 593,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.4.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ModAssoc|LModA∞|Module.*homotopy.*pullback",
+          "files_with_matches": 5,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCorrectionReindex.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationCutReindex.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationDegenerateCoefficient.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationDegenerateCut.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleAugmentationDegenerateReindex.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "ModAssoc|LModA∞|Module.*homotopy.*pullback",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "可換加群と A∞ 左加群を比較するホモトピー引き戻し四角形は見つからない。一般の底変換にはこの四角形と比較同値の証明がない。"
+    },
+    "4.5.1.5": {
+      "ha_page": 593,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.1.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.4.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "ModAssoc|LModA∞|Module.*operad.*equiv",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "ModAssoc|LModA∞|Module.*operad.*equiv",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Basic.lean",
+          "sha256": "961239487fbedd93d48bba471429f0ac5d19801c0c33e74c5ef48003fc0893c3"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+          "sha256": "59fcf917d0b542904016bddba5de9f4a0904dae362a68c643f85a5f1d687648b"
+        }
+      ],
+      "reason": "固定可換代数の operadic Mod と A∞ 左加群の比較 Θ が同値になる結果は見つからない。通常の環の加群圏は比較する二つの模型を備えていない。"
+    },
+    "4.5.1.6": {
+      "ha_page": 594,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.1.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.4.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "CAlg.*LMod|Module.*homotopy.*pullback|restrictScalars",
+          "files_with_matches": 321,
+          "total_matching_lines": 1912,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/AdicCompletionSection.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineCommonPrincipalOpen.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineOpenClosure.lean",
+            "SerrePositivity/AlgebraicGeometry/BaseChangeChartCover.lean",
+            "SerrePositivity/AlgebraicGeometry/Blowup.lean",
+            "SerrePositivity/AlgebraicGeometry/CompatiblePowerSections.lean",
+            "SerrePositivity/AlgebraicGeometry/CompatibleReductionSection.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFinsuppCoordinates.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFlatMittagLeffler.lean",
+            "SerrePositivity/AlgebraicGeometry/CompletedFreeFiniteTensor.lean",
+            "SerrePositivity/AlgebraicGeometry/DeterminantalCenterSplitDescent.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "CAlg.*LMod|Module.*homotopy.*pullback|restrictScalars",
+          "files_with_matches": 419,
+          "total_matching_lines": 2860,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Basic.lean",
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Equiv.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/Operations.lean",
+            "Mathlib/Algebra/Algebra/RestrictScalars.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Rank.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Tower.lean",
+            "Mathlib/Algebra/Algebra/Tower.lean",
+            "Mathlib/Algebra/Category/AlgCat/Basic.lean",
+            "Mathlib/Algebra/Category/AlgCat/TensorAlgebra.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+          "sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413"
+        }
+      ],
+      "reason": "可換加群全体を左加群と可換代数のホモトピー引き戻しで同定し、固定代数の両模型を比較する結果は見つからない。通常の加群圏やスカラー制限はこの引き戻しと比較同値を構成していない。"
+    },
+    "4.5.2.2": {
+      "ha_page": 599,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.2.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "operad.*cocartesian|binary.*cocartesian|active.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "operad.*cocartesian|binary.*cocartesian|active.*colimit",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        }
+      ],
+      "reason": "∞ オペラッドが余 Cartesian になることを単位と二項の能動写像の余極限持ち上げだけで判定する定理は見つからない。既に余 Cartesian ファイブレーションを仮定した合成や通常圏の二項テンソルからはこの判定は得られない。"
+    },
+    "4.5.3.1": {
+      "ha_page": 601,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Mod.*CAlg.*coCartesian|Module.*opfibration|extendScalars_μ",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Mod.*CAlg.*coCartesian|Module.*opfibration|extendScalars_μ",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean",
+          "sha256": "0ef4147dcaab596c6157e53052402cdab40bef6d871676ba0b33579611663114"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "可換代数と有限基点集合を同時に動かす加群オペラッドの射影が余 Cartesian ファイブレーションとなる結果は見つからない。固定環のモノイダル圏と環準同型のスカラー拡大はこの全空間を組み立てていない。"
+    },
+    "4.5.3.3": {
+      "ha_page": 601,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimod.*extension|bimod.*adjunction|bimod.*baseChange|extendRestrictScalarsAdj",
+          "files_with_matches": 31,
+          "total_matching_lines": 134,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Prismatic/RelativeCompleteRegularity.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/DifferentialGraded/Morita/QuasiEquivalenceGraph.lean",
+            "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/KernelComparison.lean",
+            "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/PerfectSquares.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/Scalar.lean",
+            "SerrePositivity/DifferentialGraded/SharedFunctoriality/DGFunctorGraphComposition.lean",
+            "SerrePositivity/DifferentialGraded/SharedFunctoriality/DGModuleExtensionComposition.lean",
+            "SerrePositivity/DifferentialGraded/SharedFunctoriality/DGModuleExtensionInputTransport.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/BalancedTensor.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimod.*extension|bimod.*adjunction|bimod.*baseChange|extendRestrictScalarsAdj",
+          "files_with_matches": 5,
+          "total_matching_lines": 41,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Descent.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean",
+            "Mathlib/Algebra/Module/Bimodule.lean",
+            "Mathlib/Algebra/TrivSqZeroExt/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean",
+          "sha256": "0ef4147dcaab596c6157e53052402cdab40bef6d871676ba0b33579611663114"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/KernelComparison.lean",
+          "sha256": "1dcdf3e9f7f52cbee4fdd73e639169a0fdc6c96b69f0a8855884bf8c27f08d4c"
+        }
+      ],
+      "reason": "任意の結合代数の両側制限に対して B⊗ₐM⊗ₐB を左随伴とし、テンソル比較が一般には同値でないという結果は見つからない。dg 圏の片側加群の拡大と可換環加群のモノイダル拡大はこの双加群の結論を与えない。"
+    },
+    "4.5.3.4": {
+      "ha_page": 602,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "local.*cocartesian|operad.*family|inert.*cocartesian",
+          "files_with_matches": 225,
+          "total_matching_lines": 480,
+          "sample_paths": [
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CarrierSourceRightConeNaturality.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/ConstantDiagramFrame.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/SourceRightConeNaturality.lean",
+            "SerrePositivity/EInfinity/Operad/AdjacentTailSplitLast.lean",
+            "SerrePositivity/EInfinity/Operad/AlgebraEvaluationAll.lean",
+            "SerrePositivity/EInfinity/Operad/Composition.lean",
+            "SerrePositivity/EInfinity/Operad/CompositionAdjacentBlockEquivariance.lean",
+            "SerrePositivity/EInfinity/Operad/CompositionAdjacentRecursion.lean",
+            "SerrePositivity/EInfinity/Operad/CompositionAfterFlat.lean",
+            "SerrePositivity/EInfinity/Operad/CompositionBlockDecomposition.lean",
+            "SerrePositivity/EInfinity/Operad/CompositionLastSwap.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "local.*cocartesian|operad.*family|inert.*cocartesian",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "S 上で Cartesian な ∞ オペラッド族が局所余 Cartesian になること、および局所余 Cartesian 辺をファイバーの辺と慣性射で検査する分解結果は見つからない。"
+    },
+    "4.5.3.5": {
+      "ha_page": 603,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.3.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "α.good|alphaGood|binary.*cocartesian|operad.*cocartesian",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "α.good|alphaGood|binary.*cocartesian|operad.*cocartesian",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "局所余 Cartesian な ∞ オペラッド族の余 Cartesian 性を α-good 条件、とくに零項・二項で検査する同値は見つからない。一般の余 Cartesian 辺の合成にはこの簡約の結論がない。"
+    },
+    "4.5.3.6": {
+      "ha_page": 604,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.5.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LMod.*coCartesian|Module.*opfibration|extendRestrictScalarsAdj",
+          "files_with_matches": 13,
+          "total_matching_lines": 47,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Prismatic/RelativeCompleteRegularity.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/Scalar.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/BalancedTensor.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraLinearYonedaBaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/BaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/BaseChangeEquivalence.lean",
+            "SerrePositivity/HomologicalAlgebra/CochainTensor/BaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/TorAcyclicBaseChangeResolution.lean",
+            "SerrePositivity/HomologicalAlgebra/TorBaseChange.lean",
+            "SerrePositivity/HomologicalAlgebra/TorFlatBaseChangeVanishing.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LMod.*coCartesian|Module.*opfibration|extendRestrictScalarsAdj",
+          "files_with_matches": 3,
+          "total_matching_lines": 39,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Descent.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+          "sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413"
+        }
+      ],
+      "reason": "可変結合代数上の左加群の忘却が余 Cartesian ファイブレーションとなる結果は見つからない。通常の可換環での拡大・制限の随伴は各写像の移送を与えるが、当該ファイブレーションの結論を直接与えない。"
     }
   }
 }

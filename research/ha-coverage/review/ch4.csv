@@ -326,6 +326,20 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.4.3.20,none,,指定の単射と写像を延長する順序付き可換四角形の圏の nerve の弱可縮性は見つからない。,,not_found,
 4.4.3.21,none,,段状写像の圏 Step の N(Δ)ᵒᵖ への射影が flat categorical fibration となる結果は見つからない。,,not_found,
 4.4.3.22,none,,Tens の射を順序付きファイバーに値をとる指定の単射で分類する記述は見つからない。置換オペラッドのブロック合成は同じ射の分類を与えない。,,not_found,
+4.5.1.1,partial,ModuleCat @ Mathlib/Algebra/Category/ModuleCat/Basic.lean:56,仮定：固定した通常の可換環 A（Lean は通常の環に限る）。結論：A-加群を対象、A-線型写像を射とする通常の加群圏を構成する（固定 A の基礎圏の部分に一致）。可変 A の一般化 ∞ オペラッドとそのファイバーは含まれない。,,found,special
+4.5.1.2,none,,coherent ∞ オペラッドの写像に沿う係数の底変換と、添字 K の比較から得る加群オペラッドの関手は見つからない。環の写像に沿う通常のスカラー制限はオペラッド自体を替える操作を与えない。,,not_found,
+4.5.1.3,none,,可換加群から Assoc 加群と両側作用を経て A∞ 左加群に至る可変代数上の比較 Θ は見つからない。通常の右作用の構成はこの図式の比較関手を与えない。,,not_found,
+4.5.1.4,none,,可換加群と A∞ 左加群を比較するホモトピー引き戻し四角形は見つからない。一般の底変換にはこの四角形と比較同値の証明がない。,,not_found,
+4.5.1.5,none,,固定可換代数の operadic Mod と A∞ 左加群の比較 Θ が同値になる結果は見つからない。通常の環の加群圏は比較する二つの模型を備えていない。,,not_found,
+4.5.1.6,none,,可換加群全体を左加群と可換代数のホモトピー引き戻しで同定し、固定代数の両模型を比較する結果は見つからない。通常の加群圏やスカラー制限はこの引き戻しと比較同値を構成していない。,,not_found,
+4.5.2.1,partial,SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | SerrePositivity.MonoidalBalancedTensor.rightActionMap @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:52 | SerrePositivity.MonoidalBalancedTensor.moduleObj @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:375,仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean は通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。,,found,special
+4.5.2.2,none,,∞ オペラッドが余 Cartesian になることを単位と二項の能動写像の余極限持ち上げだけで判定する定理は見つからない。既に余 Cartesian ファイブレーションを仮定した合成や通常圏の二項テンソルからはこの判定は得られない。,,not_found,
+4.5.3.1,none,,可換代数と有限基点集合を同時に動かす加群オペラッドの射影が余 Cartesian ファイブレーションとなる結果は見つからない。固定環のモノイダル圏と環準同型のスカラー拡大はこの全空間を組み立てていない。,,not_found,
+4.5.3.2,partial,ModuleCat.extendScalars @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:399 | ModuleCat.extendScalars_ε @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:80 | ModuleCat.extendScalars_μ @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:90,仮定：通常の可換環の準同型 A → B（Lean は通常圏に限る）。結論：B⊗ₐ− を構成し、単位とテンソルの比較射を標準同型の逆と同定する（モノイダルなスカラー拡大の通常圏の成分）。∞ 圏の分類関手とその高次自然性は含まれない。,,found,special
+4.5.3.3,none,,任意の結合代数の両側制限に対して B⊗ₐM⊗ₐB を左随伴とし、テンソル比較が一般には同値でないという結果は見つからない。dg 圏の片側加群の拡大と可換環加群のモノイダル拡大はこの双加群の結論を与えない。,,not_found,
+4.5.3.4,none,,S 上で Cartesian な ∞ オペラッド族が局所余 Cartesian になること、および局所余 Cartesian 辺をファイバーの辺と慣性射で検査する分解結果は見つからない。,,not_found,
+4.5.3.5,none,,局所余 Cartesian な ∞ オペラッド族の余 Cartesian 性を α-good 条件、とくに零項・二項で検査する同値は見つからない。一般の余 Cartesian 辺の合成にはこの簡約の結論がない。,,not_found,
+4.5.3.6,none,,可変結合代数上の左加群の忘却が余 Cartesian ファイブレーションとなる結果は見つからない。通常の可換環での拡大・制限の随伴は各写像の移送を与えるが、当該ファイブレーションの結論を直接与えない。,,not_found,
 4.5.4.1,partial,CategoryTheory.MonoidalCategory.Arrow.pushoutProduct @ Mathlib/CategoryTheory/Monoidal/PushoutProduct.lean:71 | CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.symmetricCategory @ Mathlib/CategoryTheory/Monoidal/Arrow.lean:158,仮定：押し出しを持つモノイダル圏（Lean は二項構成に対称性も全余極限も要求しない。矢印圏の対称構造は始対象を持つ Cartesian 閉の場合）。結論：HA の二項押し出し積と、特殊な場合の矢印圏の対称構造に一致。Σₙ 同変反復と余不変量の写像 σⁿ は型に含まれない。,,found,component
 4.5.4.2,partial,SerrePositivity.Quillen.HasMonoidAxiom @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:66 | SerrePositivity.Quillen.tensorCells_retracts_le_weakEquivalences @ SerrePositivity/HomotopicalAlgebra/Monoidal/MonoidAxiom.lean:85,仮定：モノイダル圏とモデル構造（Lean は組合せ性と対称性を要求しない）。結論：指定宇宙のテンソル生成セルとそのレトラクトの弱同値性（F1 のモノイド公理の範囲に一致）。F2 の組と Σₙ 射影モデルでの F3 は型に含まれない。,,found,component
 4.5.4.3,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74,仮定：モデル圏のテンソルが Quillen 二関手で、f が余ファイブレーション（HA の仮定の下で f を両入力とする）。結論：f□f が底で余ファイブレーション（n=2 で作用を忘れた主張に一致）。全ての n、自明性および Σₙ 射影余ファイブレーション性はこの型に含まれない。,,found,special
