@@ -323,3 +323,41 @@ S′ だけでも **1,900〜2,600行**であり、部分上限2,500行を超え�
 再開時は、上表の順に `RootFamilyFiniteSubfamily`・`RootRelationUniformBound`・`RootRelationColimit`・`RootRelationCompletedColimit`・`RootRelationInitial`・`RootRelationPerfection` の新規ファイル族に分ける案。一般の指数保存・完備余極限の補題は `HomologicalAlgebra/DerivedCompletion/` に置く。完全化側では非完全な源からの `existsUnique_deltaPerfectionPDCompletionHom`、`exists_perfectoidization_of_perfectPrism_quotient`、既存の完全 prism の比較を再利用し、S′ 上の単位を保つ同型まで示す。全有界試験 prism の範囲・零環の枝・drafts の定義は維持する。
 
 今回は調査と本報告のみ。新しい数学・drafts の変更・ビルド・鍵の取得は行っていない。有限 T の43モジュール・3,860行の検証結果は §14 のまま。**規模上限による停止であり、S′ と完全化は未実装。**
+
+## 16. H5 停止点5a：S′ の完備包絡と始性／残る平坦性の規模で停止
+
+main `06672de8f`（停止点4の登録 `e4c3276a8` と指示書 §8）を取り込んだ。**§8 の「S′ の完備余極限と全有界標的への一意な延長」には到達した。停止点5・W17全体の完了ではない。**
+
+### 本体に入れたもの
+
+- `RootRelationCompletedInitial.exists_rootRelationCompletedInitial`：任意添字 J、perfectoid R から、固定 A_inf 上の全初期関係の**有界な実包絡**、S′ の実 H⁰ 完備化からの剰余単位、その θ・係数射との対応式、**任意の有界試験 prism Y と任意の S′→Y/I に対する唯一の prism 射**を返す。標的の p 正則性は課さない。
+- `RootRelationFiniteEnvelopeDiagram`：全変数の持ち上げを一度選び、同じ基底上で全有限段を構成。各段の単位の p 完全忠実平坦性から、剰余のねじれを**全段で共通の指数1**で評価する。
+- `FiniteEnvelopeDiagram`・`FiniteEnvelopeRawColimit`・`FiniteEnvelopeCompletion`：包含の一意な遷移、合成則、生の δ 環余極限、その分母の正則性と剰余の共通指数、実 (p,d) 完備化、全関係の包絡の普遍性。生の余極限を完備環とは同一視しない。
+- `RootRelationCompletedSurjective`：通常の全初期関係商も指数1を持つ。前完備性により、根付き基底から **S′ の実 H⁰ への標準射は全射**。`exists_rootRelationCompletedAdicEquiv` は実 H⁰ と古典的 p 完備化を単位を保って比較する。通常商を分離的とは仮定しない。
+- 任意添字の有限台小数指数基底、通常の変数部分族商、有限初期関係の Koszul 正則性と実完備化、指定指数を保存する G9 の補題を追加した。根の第零段 Xi(0) だけを消し、全ての根を消す商とは区別した。零環の枝も維持した。
+
+K5 の存在・剰余単位の忠実平坦性、Lemma 4.8、既存の δ 余極限・実完備化の普遍性を再利用した。一般の指数補題は `HomologicalAlgebra/DerivedCompletion/`、一般の通常商・余極限は `CommutativeAlgebra/` に置いた。既存の BS にある一般補題 `completedUnitReductionIso`・`discrete_completelyFlat`・`natCast_complete_restrict` は import all で再利用し、同じ補題を作り直していない。
+
+### §15 の見込みと実測
+
+未登録の補題をテーマごとの14ファイルへまとめ、固定基底の最終構成で使わない添字射・二段完備化の一般化は外した。以下は共有ファイルの各節を対応する束に配分し、共通見出しを先頭の束に計上した行数。
+
+| §15 の束 | 見込み | 実測 | 差・残り |
+| --- | ---: | ---: | --- |
+| 任意添字・有限部分族・S′ の実 H⁰ の比較 | 450〜650 | 715 | 上端より65行増 |
+| 遷移と固定基底・生成元・単位の整合性 | 300〜400 | 403 | 上端より3行増 |
+| 共通指数・生の剰余・有界な実完備化・忠実平坦性 | 750〜1,000 | 913 | **有限段の忠実平坦性まで。S′ 単位の忠実平坦性は下記の残り** |
+| S′ 単位・全有界標的への一意延長 | 400〜550 | 333 | 下端より67行減 |
+| 完全化・Cor 7.3 | 400〜600 | 0 | 未着手。全射性の入力は上に実装済み |
+
+追加 **14モジュール・2,364行・106個の名前付き公開宣言**。H5 合計は **57新規モジュール・6,224行**。ビルド **4,738 jobs 成功**、106件の `#check`・`#print axioms`・`#print sorries` も全件成功し、**sorry なし・標準三公理のみ**。ログ：`/tmp/serre-w17/h5/sprime/verify-consolidated.log`。登録用14本の一覧：同ディレクトリの `modules.txt`。直接の KST import、既存の本体宣言・drafts・入口・全体監査の変更はない。
+
+### 残る S′ 単位の完全忠実平坦性と停止理由
+
+**§11・§15 で予定した、S′ 単位そのものの p 完全忠実平坦性は未実装。** 今回の公開した始性の結論には追加していない。この不足は G10 側の Δ との同定とは別の、古典的な証明の残り。
+
+各有限段で底環 T_F が変わる。既存の `directLimit_flat`・`faithfullyFlat_algebraDirectLimit`・`isCompletelyFaithfullyFlat_algebraRingDirectLimit` は固定した底環上の API なので、T_F 上の完全忠実平坦性をそのまま S′ 上の主張へ移せない。追加で要るのは、(1) 共通の剰余底環へ導来基底変更した図式と、その余極限の比較、(2) 実完備包絡の生成元剰余との単位を保つ比較、(3) 実際の Tor 消滅と忠実性の移送。mod p の通常の平坦性だけで Tor 消滅を済ませない。
+
+この残りを **約700〜1,000行**と再見積もりする。S′ 部分の残量は636行なので、予定どおり含めると **S′ 合計3,064〜3,364行**となる。さらに完全化・Cor 7.3 の400〜600行を含む H5 合計は **7,324〜7,824行**の見込み。
+
+指示書 §8 の停止条件「合計が7,500行、または S′ の部分が3,000行を超えそうなとき」に該当するため、**ここで規模による停止。完全化にはまだ入っていない。** 一般 qrsp の Δ・HT 比較も従来どおり drafts に残る。入口と監査への14本の登録は調整役に委ねる。
