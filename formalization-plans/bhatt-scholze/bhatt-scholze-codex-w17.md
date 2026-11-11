@@ -37,3 +37,15 @@ Prisms の地図で「本体に部品」とされた項目のうち、∞ 圏（
 - 満たせない `[ModelCategory SSet]` のような仮定は使わない。
 - KL-W1 の段 3 が main に入ったら、調整役が配る改名表と一行のコマンドで、枝の新しいファイルの import と名前を書き換える。
 - ビルドの鍵は `with_build_lock.sh --wait 3600`、整理券は一枚ずつ。報告は `report-codex-w17.md`。
+
+## 3. 追記（2026-11-11、調整役）：停止点 0 の承認
+
+段 0 の報告（`report-codex-w17.md`、8e982b124）を確かめた。H1〜H4 の型案・置き場所・規模（14〜24 本、約 3,700〜7,000 行）は報告のとおりでよい。段 1 に進んでよい。
+
+1. **D74 と Construction 6.1 の仮定（D77）**：原典の Construction 6.1 は「A/p の Frobenius が平坦」を仮定し、普遍的な向き付き prism はこれを満たすと書く。しかし Ex 3.4 が示すのは「d 完全平坦」だけで、原典の中に普通の平坦性の証明はない。6.1 の証明が使うのは式 (6) の中央の射 A/(p,d) → A/(p,d^p) の忠実平坦性だけで、これは d 完全平坦から出る（報告 §1）。そこで次の形にする。
+   - drafts の `Construction61Hypotheses` は原典どおり（普通の平坦性）に残す。
+   - 本体の補題は、d 完全平坦性（`IsCompletelyFlat (Ideal.span {x}) …`）と A/d の p 正則性を明示的な引数に取る（原典より弱い仮定、一般化）。原典の仮定からこの入力が出ること（平坦 ⇒ d 完全平坦）も一行の補題として置く。
+   - drafts の `universal61`（普遍 prism が普通の平坦性を満たすという型）は使わない。普遍の場合は K2 の `universalOrientedPrism_frobenius_isCompletelyFlat` と `universalOrientedPrism_mod_generator_p_regular` を直接入れる。drafts の `universalOrientedPrism_frobenius_flat`・`universal61` と、それに添字づけされた被覆・保存性の利用箇所を、この入力に付け替える型の変更を承認する（⑤c の持ち分の `A1/HodgeTateComparison.lean`）。
+2. **HT 比較の結論**：`HodgeTateIsoStatement` の結論は今は古典的な型だが、証明は Lemma 4.20 の Δ の底変換（G10、∞ 側）を通る。W17 は報告のとおりその入力（H2 の保存性・Tor 振幅の鎖複体版）までとする。`hodgeTate_iso_*` の組み立ては G10 の後。
+3. **順序**：段 1（H1）・段 2（H2）を先に進める。H3・H4 は、⑤b の BS-D69 の次の停止点の取り込み（`AffineEnvelopeBaseChange`・`AffineEnvelopeCoefficients`・`AffineCechFrameLift`・`BigCechVertexFrame` が main に入る）の後に、main を取り込んでから始める。取り込みは調整役が知らせる。⑤b の枝を直接 merge しない。
+4. **H2 の有界性**：上に有界な既存 API だけで済ませない、という報告の注意のとおりでよい。任意の鎖複体の模型で次数を評価し、その模型が導来テンソルを計算することまで示す。
