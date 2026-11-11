@@ -358,3 +358,40 @@ main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこ�
 `SchurPowerWordLift` と `SchurActionWeights` は未検証なのでコミットに含めず、作業木で検査を続ける。
 残りは自由代数の作用全体の重み保存、実際のセル段の作用・付加生成元・後続段への指定射との照合、微分の重み評価である。
 `hstage` と無条件の `baseChange_forget` は未完了で、停止点 3 には達していない。
+
+
+### 実際のセル段の作用・包含・語の評価（11-11 夕方、停止点 3 の前）
+
+追加五十九本の対象ビルドと再帰的な公理監査が成功した。監査は 864 宣言、標準三公理のみ。
+今回は各モジュールに監査された宣言があることも検査している。`SchurWeightedBasis` の今回新設した係数基底は、返す型を具体的なオペラッドの arity の表記にそろえた（従前の複体と定義上同じ型）。界面と main の既存の公開宣言は変更していない。
+
+- `SchurPowerWordLift` は、Schur 語のテンソル基底を、同じ重みの上限を持つ内側の演算族へ持ち上げる。先頭と末尾を扱う補題に分け、依存する arity の族の型照合を軽くした。宣言ごとの heartbeat 上限の増加は不要になった。
+- `SchurActionWeights` と `SchurUnitWeights` は、自由代数の作用全体と生成元の包含の重み保存を与える。
+- `EraseAlgebraWordAction` と `EraseWordEvaluation` は、微分を消す比較が、基底および任意の指定された斉次入力の語の評価を保つことを示す。
+- `ErasedIsoWeightTransfer` は、微分を消した代数の間の同型が次数ごとの指定基底を保つとき、元の代数の作用の重み保存を移す。元の複体の間の同型は仮定しない。
+- `CellStageActionWeights` は実際のセル段の作用の重み保存を証明した。
+- `CellStageFreeNaturality` は元の球複体の余積による自由表示と段の指定射の自然性。`CellStageInclusionWeights` はこれと `SchurMapWeights` を使い、実際の後続段への包含の重み保存を証明した。
+- `CellStageWordEvaluation` は、元のセル段の基底語を、自由表示の生成元の像に係数演算を作用させた式で表す。
+
+今回追加の登録候補（すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下）:
+
+1. `PowerWordNaturality`
+2. `EraseAlgebraWordAction`
+3. `WeightBasisEquiv`
+4. `ErasedIsoWeightTransfer`
+5. `WeightedPowerMap`
+6. `SchurMapWeights`
+7. `EraseWordEvaluation`
+8. `CellStageFreeNaturality`
+9. `SphereCoproductInclusions`
+10. `SchurPowerWordLift`
+11. `SchurActionWeights`
+12. `CellStageActionWeights`
+13. `FreeWordEvaluation`
+14. `SchurUnitWeights`
+15. `CellStageInclusionWeights`
+16. `CellStageWordEvaluation`
+
+残りは、自由表示で定義した生成元の像を、実際の付加生成元の後続段での像へ照合し、その微分を実際の付加の境界へ結びつける部分。
+境界の重み評価・後続段への包含・語の微分の一般補題をこの照合に適用して、`hstage` と無条件の `baseChange_forget` を閉じる。
+停止点 3 にはまだ達していない。

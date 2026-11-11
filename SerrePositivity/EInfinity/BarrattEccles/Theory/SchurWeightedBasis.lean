@@ -36,7 +36,8 @@ def arityGradedIndex (n : ℕ) (p : ℤ) : Type u :=
 
 /-- A homogeneous basis for every degree of a Barratt–Eccles coefficient complex. -/
 def arityGradedBasis (n : ℕ) (p : ℤ) :
-    Module.Basis (arityGradedIndex n p) A ((complex A n).X p) := by
+    Module.Basis (arityGradedIndex n p) A (((operad A).arity n).X p) := by
+  change Module.Basis (arityGradedIndex n p) A ((complex A n).X p)
   classical
   by_cases hp : p ≤ 0
   · have he : p = -(((-p).toNat : ℕ) : ℤ) := by omega
