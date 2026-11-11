@@ -17,8 +17,8 @@
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 1.5 は main。段 1.6（割り当ての見直し）→ 段 2・3（§8、11-10） |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |
 | ⑤a BS 実装 | Codex | BS-DOC1 → BS-W11 → BS-W12（BM18 の経路 B） | `SerrePositivity-bs-impl`・`math/bs-impl` | `bhatt-scholze/bhatt-scholze-codex-w16.md` | BS-W14 は main（A1 の二本は ⑤b の停止点 3 の後）。BS-W16（実例の欄、G12・P⁰ を除く）段 0（11-10） |
-| ⑤b BS 実装 | Codex | D68 の直接証明（完了）→ D69 と結晶サイトの、∞ 圏に依らない部分 | `SerrePositivity-bs-d68`・`math/bs-d68` | `bhatt-scholze/bhatt-scholze-codex-d69.md` | BS-D68 は main（11-10、09047a87e）。BS-D69 段 0 |
-| ⑤c BS 実装 | Codex | W15（§2・§3・§7 の古典的な残り）完了 → W17（Thm 4.11 の帰着の古典的な部分、Constr 4.17、Rem 4.19） | `SerrePositivity-bs-classical`・`math/bs-classical` | `bhatt-scholze/bhatt-scholze-codex-w17.md` | W17 停止点 1・2 取り込み（11-11）、H3 の main だけで作れる部分 |
+| ⑤b BS 実装 → ③-b ∞ 供給 b | Codex | BS-D69（停止点 3 で区切り、11-12）→ Δ・Δᵒᵖ の橋（G10、幾何学的実現） | `SerrePositivity-bs-d68`・`math/bs-d68` → `math/inf-supply-b` | `stage-ii/inf-supply-w2.md` | D69 停止点 3 は KL-W1 の後に取り込み。IS-W2 は追従の後に段 0 |
+| ⑤c BS 実装 → ③-a ∞ 供給 a | Codex | BS-W17（停止点 5 で区切り、11-12）→ G8 の四角形・G14・G9 | `SerrePositivity-bs-classical`・`math/bs-classical` → `math/inf-supply` | `stage-ii/inf-supply-w1.md` | W17 停止点 5 は KL-W1 の後に取り込み。IS-W1 は追従の後に段 0 |
 | ⑥ スキーム論 | Codex | BS17 Thm 4.1 (i) の経路 | `SerrePositivity-scheme`・`math/scheme` | `stage-ii/scheme-w1.md`（§6 で BS17 に絞る） | 2a′（移動）・2b・2d の一部は main、2d 進行中（11-07） |
 | ① ∞ 中核 | Codex | Verdier 商（K の入口） | — | `stage-ii/inf-core-w1.md` | **止める**（K と一緒に後回し、11-07） |
 
@@ -75,6 +75,7 @@
 | 確認の完了後 | KL-W1（∞ の配置を Kerodon に合わせる、`stage-ii/kerodon-layout-w1.md`）。段 3 の後に下流ビルドと verify を一回（暦は段 1 の承認のときに書く）。①③は KL-W1 の取り込みの後に開始 |
 | KL-W1 の取り込みの直後（調整役） | 対応表の宣言の場所を書き直す（11-11、ユーザー承認）：HTT・HA・Prisms の表と Kerodon・K の地図の「名前 @ パス:行」を、(1) KL-W1 の改名表で名前を置き換え、(2) Lean の `findDeclarationRanges?` で今のモジュールと行を環境から引き直す。見つからない名前は一覧にして止める（黙って消さない）。道具は `scripts/` に置き、以後の移動でも使う。直したら地図を作り直す |
 | 宣言の場所の書き直しの後 | 文献の属性と InfinityCategories/Project の整理（同じ回、`citation-attributes.md` §5）。文献の属性 `@[cite KEY "番号"]` の一括レーン（11-11、ユーザー決定。`stage-ii/citation-attributes.md`）：属性・照会のコマンド・略号表、対応表から属性を自動で付ける（夜の bulk）、地図を属性から作る |
+| KL-W1 の取り込みの後（11-12 決定） | 段階 II 後半の構成は `stage-ii/stage-ii-second-half.md`：⑤c → ③-a（G8 系、IS-W1）、⑤b → ③-b（Δ・Δᵒᵖ の橋、IS-W2）、KL-W1 のチャット → 一括、⑤a は経路 A で続行（sifted の一般部分は ③-b）、⑥ はそのまま。⑤∞（BS の ∞ 側）は 3a-2 の後に開く |
 | ③の G8 の四角形の取り込み | BS に知らせる（S4 の生成辺）。④を開く |
 | 段 G の最初の区切り（目安 12 月上旬） | 保守の束：L1（F-2 の deprecated alias の一括削除）・L2（旧 G8 の削除）。BS・③・KST が新しい名前へ移ったのを確かめてから。担当は①か② |
 | ①の M1・M2・M7 の取り込み | L4（分数の一般版）を①の中で。K 理論レーン（B-3〜）を開く |
