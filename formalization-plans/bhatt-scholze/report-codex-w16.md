@@ -924,3 +924,18 @@ lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTensorProjecti
 次は、この指定された等変ホモトピー同値を整数コチェイン次数に戻し、テンソルと余不変を取る関手へ通す。編集中の `NonpositiveExtension.lean` は、今回の六本の検証・監査・保存には含めない。自由代数の指定比較との一致、実際のセル対への移送、全関手版の同型、native な余積錐はまだ残る。sifted・Tot・段 4 へは進んでいない。
 
 現在までの実測は **四十六本・3,476 行**。今回の六本もすべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、登録候補は上の表の一覧。§15 の九本と §16 の十本も main 未取り込みなので、次の取り込み時の候補は計 **二十五本・261 宣言**となる。入口と共有監査への登録は調整役が行う。既存の公開宣言・界面の型・drafts は変更していない。新規の［一般∞］移動候補は零。実際のセル対の移送は未着手で、1,200 行の上限は継続して確認する。
+
+
+## 18. 指定係数比較の整数次数とテンソル余不変（11-11 夜）
+
+§17 の中間保存 `07c990e8b` の後、係数の同値を元の整数コチェイン次数へ戻した。今回の新規三本は **261 行**。
+
+- `NonpositiveExtension`：非正次数への制限の延長と元の複体との指定同型。正次数では零対象の同型を使い、射との自然性も証明した。
+- `NonpositiveHomotopyExtension`：制限間のホモトピー同値を元の複体へ戻す。順射が元の指定射の制限なら、戻した同値の順射をその元の射そのものにする。
+- `TwoColorCochainEquivalence`：実際の `twoColorCoefficientCochainMap` を順射とする整数次数の等変なホモトピー同値。任意の二色部分群の表現をテンソルして余不変を取る関手を適用した同値も構成した。任意の可換環・任意の表現で使え、テンソルする表現の平坦性・射影性は不要。
+
+`lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorCochainEquivalence` が成功し、新規三本の警告は零（ログ `/tmp/bsw16/graded/two-color-cochain-equivalence-02.log`）。三本・**53 宣言**を再帰監査し、標準三公理のみ（`/tmp/bsw16/graded/audit-two-color-cochain.log`）。sorry・admit・新規公理・デバッグ宣言は零。鍵は各一回のビルドと監査だけ取得し、命令の終了ごとに返却した。
+
+これも承認待ちの停止ではなく、検証済みの中間保存。次は、色付き入力の Schur 表示と実際の自由代数の指定比較をこの係数同値に照合する。モデルの係数比較の等変性・指定増大・順射の照合自体は完了している。実際の自由代数の比較とセル対への移送、`coproduct_tensor` の全関手版、native な余積錐はまだ完了していない。sifted・Tot・段 4 には進んでいない。
+
+現在までの実測は **四十九本・3,737 行**。今回の三本も `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、上の一覧を登録候補とする。§15〜§18 を合わせた未取り込みの候補は **二十八本・314 宣言**。共通入口・監査への登録は調整役が行う。既存の公開宣言・界面の型・drafts・入口・共有監査スクリプトを変更していない。新規の［一般∞］移動候補も零。
