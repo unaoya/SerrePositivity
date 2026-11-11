@@ -65,7 +65,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 1.2.1.15,Definition,拡大で閉じた部分圏,1.2.1,,,,,0,0,,-
 1.2.1.16,Proposition,t 構造を定める局所化の特徴づけ,1.2.1,,,,,0,0,,-
 1.2.1.17,Proposition,t 構造の左完備化の構成,1.2.1,,,,,0,0,,-
-1.2.1.18,Remark,左完備化と下に有界な対象,1.2.1,,,,,0,0,,-
+1.2.1.18,Remark,左完備化と上に有界な対象,1.2.1,,,,,0,0,,-
 1.2.1.19,Proposition,可算積を仮定した左完備性の判定,1.2.1,,,,,0,0,,-
 1.2.1.20,Remark,右完備化と右完備性,1.2.1,,,,,0,0,,-
 1.2.2.1,Remark,フィルター付き鎖複体のスペクトル系列との関係,1.2.2,,,,,0,0,,-
@@ -130,24 +130,24 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 1.2.4.18,Corollary,最高次数だけに値を持つ切断単体的図式の余極限,1.2.4,,,,,0,0,,-
 1.2.4.19,Lemma,拡大切断単体的図式の余極限判定,1.2.4,,,,,0,0,,-
 1.3.0.1,Remark,Verdier の導来圏と入門文献,1.3,,,,,0,0,,-
-1.3.1.1,Definition,可換環上の dg 圏,1.3.1,,,,,0,0,,-
+1.3.1.1,Definition,可換環上の dg 圏,1.3.1,,,,,0,0,2.5.2.1,-
 1.3.1.2,Remark,dg 圏の恒等射の閉性,1.3.1,,,,,0,0,,-
 1.3.1.3,Remark,dg 圏の係数の制限,1.3.1,,,,,0,0,,-
-1.3.1.4,Remark,鎖複体豊穣圏と dg 圏の基礎圏,1.3.1,,,,,0,0,,-
-1.3.1.5,Remark,dg 圏のホモトピー圏,1.3.1,,,,,0,0,,-
-1.3.1.6,Construction,dg nerve の構成,1.3.1,,,,,372,2,,inf
+1.3.1.4,Remark,鎖複体豊穣圏と dg 圏の基礎圏,1.3.1,,,,,0,0,2.5.2.4,-
+1.3.1.5,Remark,dg 圏のホモトピー圏,1.3.1,,,,,0,0,2.5.4.6,-
+1.3.1.6,Construction,dg nerve の構成,1.3.1,,,,,372,2,2.5.3.5 | 4.6.5,inf
 1.3.1.7,Remark,dg nerve の A∞ 圏への一般化,1.3.1,,,,,0,0,,-
-1.3.1.8,Example,dg nerve の低次単体,1.3.1,,,,,134,0,,-
+1.3.1.8,Example,dg nerve の低次単体,1.3.1,,,,,134,0,2.5.3 | 4.6.5,-
 1.3.1.9,Remark,基礎圏の nerve の dg nerve への埋め込み,1.3.1,,,,,0,0,,-
-1.3.1.10,Proposition,dg nerve の準圏性,1.3.1,,,,,559,0,,-
-1.3.1.11,Remark,dg 圏と dg nerve のホモトピー圏の比較,1.3.1,,,,,0,0,,-
-1.3.1.12,Remark,dg nerve の右写像空間の Dold–Kan 模型,1.3.1,,,,,100,0,,-
-1.3.1.13,Construction,Dold–Kan による dg 圏の単体的豊穣化,1.3.1,,,,,93,0,,-
-1.3.1.14,Remark,dg 圏から得られる単体的圏のファイブラント性,1.3.1,,,,,9,0,,-
+1.3.1.10,Proposition,dg nerve の準圏性,1.3.1,,,,,559,0,2.5.3.10,-
+1.3.1.11,Remark,dg 圏と dg nerve のホモトピー圏の比較,1.3.1,,,,,0,0,2.5.4.10,-
+1.3.1.12,Remark,dg nerve の右写像空間の Dold–Kan 模型,1.3.1,,,,,100,0,2.5.6 | 2.5.9,-
+1.3.1.13,Construction,Dold–Kan による dg 圏の単体的豊穣化,1.3.1,,,,,93,0,2.5.6 | 2.5.7 | 2.5.8 | 2.5.9 | 2.5.9.2 | 2.5.9.3,-
+1.3.1.14,Remark,dg 圏から得られる単体的圏のファイブラント性,1.3.1,,,,,9,0,2.5.6 | 2.5.9.2,-
 1.3.1.15,Notation,単体的圏のホモトピー整合 nerve,1.3.1,,,,,0,0,,-
-1.3.1.16,Construction,ホモトピー整合 nerve から dg nerve への比較写像,1.3.1,,,,,185,0,,-
-1.3.1.17,Proposition,ホモトピー整合 nerve と dg nerve の同値,1.3.1,,,,,114,0,,-
-1.3.1.18,Definition,dg 関手,1.3.1,,,,,0,0,,-
+1.3.1.16,Construction,ホモトピー整合 nerve から dg nerve への比較写像,1.3.1,,,,,185,0,2.5.8 | 2.5.9 | 2.5.9.10,-
+1.3.1.17,Proposition,ホモトピー整合 nerve と dg nerve の同値,1.3.1,,,,,114,0,2.5.9 | 2.5.9.18 | 4.6.7.5 | 4.6.7.16 | 4.6.7.23,-
+1.3.1.18,Definition,dg 関手,1.3.1,,,,,0,0,2.5.2.8,-
 1.3.1.19,Proposition,dg 圏の組合せ的モデル構造,1.3.1,,,,,0,0,,-
 1.3.1.20,Proposition,dg nerve の右 Quillen 関手性,1.3.1,,,,,0,0,,-
 1.3.2.1,Definition,鎖複体の dg 圏,1.3.2,,,,,0,0,,-
@@ -308,7 +308,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.0.0.4,Remark,∞-Operads (p. 166),2,,,,,0,0,,-
 2.0.0.5,Remark,∞-Operads (p. 166),2,,,,,0,0,,-
 2.0.0.6,Remark,∞-Operads (p. 167),2,,,,,0,0,,-
-2.0.0.7,Definition,∞-Operads (p. 169),2,,,,,0,0,,-
+2.0.0.7,Definition,対称モノイダル ∞ 圏の余デカルト・ファイブレーションによる定義,2,,,,,0,0,,E∞
 2.0.0.8,Remark,∞-Operads (p. 169),2,,,,,0,0,,-
 2.1.1.1,Definition,From Colored Operads to ∞-Operads (p. 171),2.1.1,,,,,0,0,,-
 2.1.1.2,Remark,From Colored Operads to ∞-Operads (p. 172),2.1.1,,,,,0,0,,-
@@ -319,7 +319,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.1.7,Construction,From Colored Operads to ∞-Operads (p. 173),2.1.1,,,,,0,0,,-
 2.1.1.8,Definition,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,-
 2.1.1.9,Remark,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,-
-2.1.1.10,Definition,From Colored Operads to ∞-Operads (p. 174),2.1.1,,,,,0,0,,-
+2.1.1.10,Definition,∞ オペラッドの inert 持ち上げと Segal 条件,2.1.1,,,,,0,0,,E∞
 2.1.1.11,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
 2.1.1.12,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
 2.1.1.13,Remark,From Colored Operads to ∞-Operads (p. 175),2.1.1,,,,,0,0,,-
@@ -332,7 +332,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.1.20,Example,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
 2.1.1.21,Example,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
 2.1.1.22,Notation,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
-2.1.1.23,Definition,From Colored Operads to ∞-Operads (p. 176),2.1.1,,,,,0,0,,-
+2.1.1.23,Definition,単体的色付きオペラッドのオペラッド nerve,2.1.1,,,,,0,0,,E∞
 2.1.1.24,Remark,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
 2.1.1.25,Remark,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
 2.1.1.26,Definition,From Colored Operads to ∞-Operads (p. 177),2.1.1,,,,,0,0,,-
@@ -343,7 +343,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.2.4,Proposition,Maps of ∞-Operads (p. 178),2.1.2,,,,,0,0,,-
 2.1.2.5,Proposition,Maps of ∞-Operads (p. 178),2.1.2,,,,,0,0,,-
 2.1.2.6,Remark,Maps of ∞-Operads (p. 179),2.1.2,,,,,0,0,,-
-2.1.2.7,Definition,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
+2.1.2.7,Definition,inert 射を保つ ∞ オペラッド写像と代数の ∞ 圏,2.1.2,,,,,0,0,,E∞
 2.1.2.8,Warning,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
 2.1.2.9,Remark,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
 2.1.2.10,Definition,Maps of ∞-Operads (p. 180),2.1.2,,,,,0,0,,-
@@ -359,7 +359,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 2.1.2.20,Remark,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
 2.1.2.21,Example,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
 2.1.2.22,Proposition,Maps of ∞-Operads (p. 183),2.1.2,,,,,0,0,,-
-2.1.3.1,Definition,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
+2.1.3.1,Definition,底を固定したオペラッド代数と可換代数の ∞ 圏,2.1.3,,,,,0,0,,E∞
 2.1.3.2,Remark,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
 2.1.3.3,Example,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
 2.1.3.4,Remark,Algebra Objects (p. 184),2.1.3,,,,,0,0,,-
@@ -613,7 +613,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.1.3.2,Proposition,Construction of Free Algebras (p. 342),3.1.3,,,,,0,0,,-
 3.1.3.3,Proposition,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,-
 3.1.3.4,Corollary,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,-
-3.1.3.5,Corollary,Construction of Free Algebras (p. 343),3.1.3,,,,,0,0,,-
+3.1.3.5,Corollary,オペラッド代数の制限の左随伴,3.1.3,,,,,0,0,,E∞
 3.1.3.6,Example,Construction of Free Algebras (p. 344),3.1.3,,,,,0,0,,-
 3.1.3.7,Corollary,Construction of Free Algebras (p. 344),3.1.3,,,,,0,0,,-
 3.1.3.8,Remark,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
@@ -621,7 +621,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.1.3.10,Notation,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
 3.1.3.11,Remark,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
 3.1.3.12,Definition,Construction of Free Algebras (p. 345),3.1.3,,,,,0,0,,-
-3.1.3.13,Proposition,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,-
+3.1.3.13,Proposition,自由オペラッド代数の存在と対称冪の余積による判定,3.1.3,,,,,0,0,,E∞
 3.1.3.14,Example,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,-
 3.1.3.15,Remark,Construction of Free Algebras (p. 346),3.1.3,,,,,0,0,,-
 3.1.3.16,Lemma,Construction of Free Algebras (p. 347),3.1.3,,,,,0,0,,-
@@ -643,16 +643,16 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.2.2.2,Warning,Limits of Algebras (p. 357),3.2.2,,,,,0,0,,-
 3.2.2.3,Corollary,Limits of Algebras (p. 358),3.2.2,,,,,0,0,,-
 3.2.2.4,Corollary,Limits of Algebras (p. 358),3.2.2,,,,,0,0,,-
-3.2.2.5,Corollary,代数の極限の存在とファイバーごとの計算,3.2.2,,,,,0,2,,BS
-3.2.2.6,Lemma,Limits of Algebras (p. 359),3.2.2,,,,,0,0,,-
+3.2.2.5,Corollary,代数の極限の存在とファイバーごとの計算,3.2.2,,,,,0,2,,BS;E∞
+3.2.2.6,Lemma,各色の評価による代数の同値判定,3.2.2,,,,,0,0,,E∞
 3.2.2.7,Lemma,Limits of Algebras (p. 359),3.2.2,,,,,0,0,,-
 3.2.2.8,Lemma,Limits of Algebras (p. 360),3.2.2,,,,,0,0,,-
 3.2.2.9,Lemma,Limits of Algebras (p. 362),3.2.2,,,,,0,0,,-
-3.2.3.1,Proposition,代数の篩状余極限の存在とファイバーごとの計算,3.2.3,,,,,0,5,,BS
+3.2.3.1,Proposition,代数の篩状余極限の存在とファイバーごとの計算,3.2.3,,,,,0,5,,BS;E∞
 3.2.3.2,Corollary,Colimits of Algebras (p. 365),3.2.3,,,,,0,0,,-
 3.2.3.3,Corollary,Colimits of Algebras (p. 365),3.2.3,,,,,0,0,,-
 3.2.3.4,Lemma,Colimits of Algebras (p. 366),3.2.3,,,,,0,0,,-
-3.2.3.5,Corollary,代数の ∞ 圏のアクセシビリティと表示可能性,3.2.3,,,,,0,4,,BS
+3.2.3.5,Corollary,代数の ∞ 圏のアクセシビリティと表示可能性,3.2.3,,,,,0,4,,BS;E∞
 3.2.3.6,Lemma,Colimits of Algebras (p. 367),3.2.3,,,,,0,0,,-
 3.2.3.7,Lemma,Colimits of Algebras (p. 367),3.2.3,,,,,0,0,,-
 3.2.3.8,Proposition,Colimits of Algebras (p. 368),3.2.3,,,,,0,0,,-
@@ -662,7 +662,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 3.2.4.4,Example,Tensor Products of Commutative Algebras (p. 370),3.2.4,,,,,0,0,,-
 3.2.4.5,Example,Tensor Products of Commutative Algebras (p. 370),3.2.4,,,,,0,0,,-
 3.2.4.6,Proposition,Tensor Products of Commutative Algebras (p. 370),3.2.4,,,,,0,0,,-
-3.2.4.7,Proposition,可換代数のテンソル積と余積,3.2.4,,,,,0,2,,BS
+3.2.4.7,Proposition,可換代数のテンソル積と余積,3.2.4,,,,,0,2,,BS;E∞
 3.2.4.8,Corollary,Tensor Products of Commutative Algebras (p. 371),3.2.4,,,,,0,0,,-
 3.2.4.9,Remark,Tensor Products of Commutative Algebras (p. 372),3.2.4,,,,,0,0,,-
 3.2.4.10,Proposition,Tensor Products of Commutative Algebras (p. 372),3.2.4,,,,,0,0,,-
@@ -854,9 +854,9 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 4.1.7.1,Construction,Monoidal Model Categories (p. 485),4.1.7,,,,,0,0,,-
 4.1.7.2,Proposition,Monoidal Model Categories (p. 486),4.1.7,,,,,0,0,,-
 4.1.7.3,Notation,Monoidal Model Categories (p. 486),4.1.7,,,,,0,0,,-
-4.1.7.4,Proposition,テンソル積と両立するモノイド ∞ 圏の局所化,4.1.7,,,,,0,1,,inf
+4.1.7.4,Proposition,テンソル積と両立するモノイド ∞ 圏の局所化,4.1.7,,,,,0,1,,inf;E∞
 4.1.7.5,Remark,Monoidal Model Categories (p. 486),4.1.7,,,,,0,0,,-
-4.1.7.6,Example,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
+4.1.7.6,Example,余ファイブラント対象の局所化が受け継ぐモノイダル構造,4.1.7,,,,,0,0,,E∞
 4.1.7.7,Definition,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
 4.1.7.8,Definition,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
 4.1.7.9,Remark,Monoidal Model Categories (p. 487),4.1.7,,,,,0,0,,-
@@ -2072,7 +2072,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 6.2.2.11,Corollary,Stabilization of Differentiable Fibrations (p. 1085),6.2.2,,,,,0,0,,-
 6.2.2.12,Remark,Stabilization of Differentiable Fibrations (p. 1085),6.2.2,,,,,0,0,,-
 6.2.2.13,Proposition,Stabilization of Differentiable Fibrations (p. 1086),6.2.2,,,,,0,0,,-
-6.2.2.14,Corollary,Stabilization of Differentiable Fibrations (p. 1086),6.2.2,,,,,0,0,,-
+6.2.2.14,Corollary,Stabilization of Differentiable Fibrations (p. 1086),6.2.2,,,,,0,0,,E∞
 6.2.2.15,Proposition,Stabilization of Differentiable Fibrations (p. 1087),6.2.2,,,,,0,0,,-
 6.2.2.16,Corollary,Stabilization of Differentiable Fibrations (p. 1087),6.2.2,,,,,0,0,,-
 6.2.2.17,Corollary,Stabilization of Differentiable Fibrations (p. 1088),6.2.2,,,,,0,0,,-

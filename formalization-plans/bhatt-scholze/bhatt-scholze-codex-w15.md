@@ -55,3 +55,13 @@ Prisms の地図（`research/bs-coverage/items.csv`、https://claude.ai/artifact
 1. Ex 3.14 の一般の存在（滑らかな全射の核の局所完全正則列による表示、δ 除算包の完全平坦性と貼り合わせ）は**作らない**。
 2. 段 3 は、残りの Lemma 3.7 (2)(3)、Cor 3.12、Prop 3.13 (2)（変数の場合の底変換、drafts `prismaticEnvelope_baseChange_of_variables` の型）へ進む。今回の共通部品（通常のテンソル積の δ 構造と δ 射の一意延長）はそのまま使ってよい。
 3. A3（Ex 7.9）で要る別の場合（f_1, …, f_r の正則列）は K5 で扱う（D21 の注記どおり）。
+
+## 5. 追記（2026-11-11、調整役）：W15 の後の予定（ユーザー決定）
+
+Prisms の地図で「本体に部品」の項目のうち、∞ 圏を待たずに組み立てられて担当がいなかったものを、W15 の段 4（K5）の後に ⑤c に頼む（BS-W17 として、段 4 の終わるころに調整役が指示書を書く）。
+
+1. **Thm 4.11 の帰着**：一般の有界な向き付き基底への帰着（Prop 6.2・Thm 6.3、drafts の A1-4、`A1/HodgeTateComparison`）。結晶基底の場合（BS-D68）と普遍的な向き付き prism（K2）を使う。Construction 6.1 が Frobenius の平坦性を使うので、D74（d 完全平坦）で足りるかを最初に確かめる。
+2. **Construction 4.17**：Čech–Alexander の対象が弱終対象であること。
+3. **Rem 4.19 の底変換との両立**。
+
+`A1/HodgeTateComparison.lean` は、そのとき ⑤c の持ち分にする（⑤a の A1 の二本の書き換えは `CrystallineInput`・`HodgeTateMap` だけ）。
