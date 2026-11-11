@@ -273,6 +273,37 @@ import SerrePositivity.BhattScholze.Prismatic.WittPDPrismMaps
 import SerrePositivity.BhattScholze.Prismatic.WittSmallFrame
 import SerrePositivity.BhattScholze.Prismatic.WittToSmall
 import SerrePositivity.BhattScholze.Prismatic.WittToSmallFrame
+import SerrePositivity.BhattScholze.Delta.Basic.Tensor
+import SerrePositivity.BhattScholze.Prism.Bounded.CompleteCochainPurity
+import SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatCochain
+import SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatDiscrete
+import SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatReduction
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensor
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorCardinal
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorCover
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorFlatness
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorH0
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletelyFlatPrism
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletionFiniteResidue
+import SerrePositivity.BhattScholze.Prismatic.FiniteCechDescent
+import SerrePositivity.BhattScholze.Prismatic.FlatCechComparison
+import SerrePositivity.BhattScholze.Prismatic.FlatCechConerve
+import SerrePositivity.BhattScholze.Prismatic.FlatCechDescent
+import SerrePositivity.BhattScholze.Prismatic.FlatCechLimit
+import SerrePositivity.BhattScholze.Prismatic.FlatCechSheaf
+import SerrePositivity.BhattScholze.Prismatic.FlatCover
+import SerrePositivity.BhattScholze.Prismatic.FlatCoverPushout
+import SerrePositivity.BhattScholze.Prismatic.FlatPushoutResidue
+import SerrePositivity.BhattScholze.Prismatic.FlatSiteResidue
+import SerrePositivity.BhattScholze.Prismatic.FlatSiteSheaf
+import SerrePositivity.BhattScholze.Prismatic.FlatTopologyPushout
+import SerrePositivity.BhattScholze.Prismatic.VariableEnvelopeBaseChange
+import SerrePositivity.CategoryTheory.FiniteWidePushout
+import SerrePositivity.CategoryTheory.FiniteWidePushoutMap
+import SerrePositivity.CommutativeAlgebra.Adic.CompatibleResidues
+import SerrePositivity.CommutativeAlgebra.Adic.ModuleCompleteSup
+import SerrePositivity.CommutativeAlgebra.CompletelyFlat.FiniteIdealReduction
+import SerrePositivity.HomologicalAlgebra.Cech.InverseTower
 import Lean.Util.CollectAxioms
 
 /-!
@@ -285,6 +316,37 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Delta.Basic.Tensor,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompleteCochainPurity,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatCochain,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatDiscrete,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompleteFlatReduction,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensor,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorCardinal,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorCover,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorFlatness,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorH0,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletelyFlatPrism,
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletionFiniteResidue,
+    `SerrePositivity.BhattScholze.Prismatic.FiniteCechDescent,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCechComparison,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCechConerve,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCechDescent,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCechLimit,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCechSheaf,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCover,
+    `SerrePositivity.BhattScholze.Prismatic.FlatCoverPushout,
+    `SerrePositivity.BhattScholze.Prismatic.FlatPushoutResidue,
+    `SerrePositivity.BhattScholze.Prismatic.FlatSiteResidue,
+    `SerrePositivity.BhattScholze.Prismatic.FlatSiteSheaf,
+    `SerrePositivity.BhattScholze.Prismatic.FlatTopologyPushout,
+    `SerrePositivity.BhattScholze.Prismatic.VariableEnvelopeBaseChange,
+    `SerrePositivity.CategoryTheory.FiniteWidePushout,
+    `SerrePositivity.CategoryTheory.FiniteWidePushoutMap,
+    `SerrePositivity.CommutativeAlgebra.Adic.CompatibleResidues,
+    `SerrePositivity.CommutativeAlgebra.Adic.ModuleCompleteSup,
+    `SerrePositivity.CommutativeAlgebra.CompletelyFlat.FiniteIdealReduction,
+    `SerrePositivity.HomologicalAlgebra.Cech.InverseTower,
     `SerrePositivity.BhattScholze.Prismatic.BigCechAffineEnvelope,
     `SerrePositivity.BhattScholze.Prismatic.BigCechAlexander,
     `SerrePositivity.BhattScholze.Prismatic.BigCechCompletionLift,
