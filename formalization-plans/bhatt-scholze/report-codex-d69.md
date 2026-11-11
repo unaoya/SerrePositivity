@@ -351,3 +351,6 @@
 - `CrystallineWittCoefficients` は、係数射の δ 両立と prism 射に加え、(p) の分冪構造から Witt 基底の分冪構造への両立も示した。ここでは既存の `PDFrobeniusLift` の階乗消去の補題を直接使った。
 - `CompleteScalarQuotient` には自然数添字の入口も加えた。実際の通常商を短完全列で指定すれば、整数添字への零延長が導来完備な二つの複体の間の射について、商の射の擬同型から元の射の擬同型が従う。これを適用する `CrystallineSmallBridgeQuasiIso`（整係数の小さい結晶の橋の擬同型）は新規部品と合わせた個別検査を通り、通常の import で再検査中。
 - 作業木の `PDEnvelopeCrystallineCoefficientMaps` は、係数環が異なる場合に分冪包の標準 δ 構造を保つことを示し、個別検査を通った。既存の基底固定の宣言はそのまま使える。次は、実際の小さい分冪模型の係数変更にこの補題を適用する。Witt 環の p 正則性から、標準 ℤ_p 作用の平坦性を示す `CrystallineWittFlat` も検査している。
+
+- `CrystallineSmallBridgeQuasiIso`、`PDEnvelopeCrystallineCoefficientMaps`、`CrystallineWittFlat` の対象ビルドが `/private/tmp/d69-ticket-build-26.log` で成功した。小さい結晶の橋の実際の ℤ_p 線形余鎖射は擬同型となった。証明は通常商での既存の擬同型、両辺の導来 p 完備性、項ごとの p 正則性を使う。Witt 係数射の平坦性は、既存の p 進整数の単元と p の冪への分解と Witt 環の p 正則性から示した。
+- 追加3本を含む106本の一時監査は2,645宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyThree.lean` と `/private/tmp/d69-morning-audit-seventythree.log`。登録候補に上記3本を加える。既存宣言は変更していない。Witt の指定された比較射との係数変更の照合は引き続き残り、停止点2には未到達。
