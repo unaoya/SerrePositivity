@@ -4,9 +4,11 @@
 #       鍵が空いたとき、生きている整理券のうち順位が一番のものだけが取る。
 #       順位は（組の順位、待ち始めた時刻）。組は impl・research・bulk の三つで、
 #       昼（JST 8〜23 時）は impl → research → bulk、夜は bulk → impl → research。
+#       繰り上げ：待ちが impl・research 15 分、bulk 30 分を超えた整理券は先頭の組へ（飢えの防止）。
 # 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 2 秒。
 #       --class を省くと worktree 名から推定（kerodon-layout は bulk、*-review は research、他は impl）。
 #       --status は持ち主と待ちの列を表示して終了する。
+#       owner.json の started は鍵を取った時刻、queued は待ち始めた時刻（11-11 に分けた）。
 # 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 1800 -- lake build Module
 exec python3 - "$@" <<'PY'
 import argparse
@@ -53,7 +55,9 @@ def infer_class(path):
 klass=a.klass or infer_class(worktree)
 token=uuid.uuid4().hex
 enqueued=time.time()
-owner={'pid':os.getpid(),'worktree':worktree,'started':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+queued_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+# owner['started'] is the acquisition time (set when the lock is taken); 'queued' is when waiting began.
+owner={'pid':os.getpid(),'worktree':worktree,'started':None,'queued':queued_at,
        'command':a.command,'token':token,'class':klass}
 ticket=queue/f'{token}.json'
 child=None; acquired=False; interrupted=0; ticketed=False
@@ -108,8 +112,22 @@ def live_tickets():
         out.append(t)
     return out
 
-def order_key(t,hour):
-    return (class_rank(t.get('class','impl'),hour),float(t.get('enqueued',0)),str(t.get('token','')))
+# Aging: a ticket that has waited at least AGING[class] seconds is promoted to the front group
+# (promoted tickets are ordered by enqueue time). Prevents starvation of research/bulk by a
+# steady stream of short impl builds. Override for tests: SERRE_LOCK_AGING="impl=900,research=900,bulk=1800".
+AGING={'impl':900,'research':900,'bulk':1800}
+for part in os.environ.get('SERRE_LOCK_AGING','').split(','):
+    if '=' in part:
+        k,v=part.split('=',1)
+        if k in AGING:
+            try: AGING[k]=float(v)
+            except ValueError: pass
+
+def order_key(t,hour,now=None):
+    now=time.time() if now is None else now
+    c=t.get('class','impl'); enq=float(t.get('enqueued',0))
+    promoted=now-enq>=AGING.get(c,900)
+    return (0 if promoted else 1,0 if promoted else class_rank(c,hour),enq,str(t.get('token','')))
 
 def reap_lock():
     if lock.is_symlink(): raise RuntimeError('refuse symlink lock directory')
@@ -134,7 +152,8 @@ def status():
         ts=sorted(live_tickets(),key=lambda t:order_key(t,hour))
         print(f"queue ({'day' if 8<=hour<23 else 'night'} order): {len(ts)}")
         for i,t in enumerate(ts,1):
-            print(f"  {i}. {Path(t.get('worktree','?')).name} [{t.get('class')}] waiting {int(now-float(t.get('enqueued',now)))//60}m :: {' '.join(t.get('command',[]))[:80]}")
+            up=' (繰り上げ)' if order_key(t,hour,now)[0]==0 else ''
+            print(f"  {i}. {Path(t.get('worktree','?')).name} [{t.get('class')}]{up} waiting {int(now-float(t.get('enqueued',now)))//60}m :: {' '.join(t.get('command',[]))[:80]}")
 
 if a.status:
     status();sys.exit(0)
@@ -171,6 +190,7 @@ try:
                                               'token':token,'command':a.command},ensure_ascii=False)+'\n')
                 position=None
             elif position==1 and not lock.exists():
+                owner['started']=datetime.datetime.now(datetime.timezone.utc).isoformat()
                 lock.mkdir()
                 try: (lock/'owner.json').write_text(json.dumps(owner,ensure_ascii=False)+'\n')
                 except BaseException:
