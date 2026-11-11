@@ -674,3 +674,33 @@ SerrePositivity.BhattScholze.Prismatic.CrystallineCechProWeakTerminal
 SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientMap
 SerrePositivity.BhattScholze.Prismatic.PDCechResidueNaturality
 ```
+
+
+### P3 続行 — 全 Čech の塔・各段の有限冪・cutoff
+
+- `5dad04fc8` の21本に続き、新規12本（BS 10本・共通2本）が対象ビルドを通過した（`/private/tmp/d69-p3-build-11.log`〜`/private/tmp/d69-p3-build-17.log`）。一回30分未満、`--wait 3600`、鍵はビルドの間のみ。夜の二鍵は main から取り込んだスクリプトに任せた。
+- `CrystallineFrameVariablesLift`・`CrystallineFrameLiftResidue`・`PDCechCrystallineVertices`・`PDCechQuotientVariablesLift` は、指定した全頂点の変数像を厚化の射へ一意に延ばす。分冪包の普遍性、剰余の正方形、指定 p 冪の消滅、変数上での射の判定を明示した。
+- `PDCechCrystallineCosimplicial` は各有限 p 冪商を実際の余単体的な厚化の対象にする。`PDCechCrystallineCoproduct.pdCechQuotient_isCoproduct` が、標準頂点の脚による n 次項の余積の普遍性。標的の p 冪の消滅は零次項からの射一本から得た。`pdCechQuotientCechData` は反対圏で指定した有限冪を持つ Čech データ。
+- `PDCechCrystallineTower` は遷移の余単体的自然性、二重添字の `pdCechTower`、射影と遷移の両立を含む `pdCechTowerProCechData` を構成した。通常の圏論だけであり、pro 対象の ∞ の極限は作っていない。
+- `PDEnvelopeCardinality` は有限分岐の構文木から相対分冪包の形式項への全射を作り、未完備包の濃度を入力環と可算濃度で抑える。共通の `Adic.Cardinality` は古典的な完備化から元の加群の可算列への単射を作る。`CompletedPDEnvelopeCardinality` が両者を接続し、Čech 全項を標準の `cutoff k R` で抑える。
+- 濃度条件の精密化：枠の変数は `#S ≤ #k + #R + ℵ₀` としてから包を完備化し、最後に `cutoff k R ≤ κ` を適用する。一般の `#S ≤ κ` だけから κ^ℵ₀=κ を推論してはいない。標準の枠 S=R と有限多項式枠はこの精密化した条件を満たす。既存の `IsCrystallineCutoff` の型は変更しない。
+- 共通の `ProCechNerveTransport` は各段の有限冪を保つ関手による pro Čech データの移送。`CrystallineCechCutoff` の `pdCechTowerOfCutoff`・`pdCechProCechDataOfCutoff`・`pdCechSmallTowerOfCutoff_proWeaklyTerminal` は包の濃度を別に仮定せず、cutoff から小さい結晶サイトの塔と各段の Čech データを供給する。
+- 一時監査は33モジュール・462宣言、標準三公理のみ（`/private/tmp/AuditD69P3ThirtyThree.lean`、`/private/tmp/d69-p3-audit-thirtythree.log`）。追加12本も新規ファイルだけで、sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式の入口・監査は変更していない。
+- 残り：主開局所化の分冪構造、Zariski 位相と引き戻しの照合、構造環の層性と係数制限の自然性、当初の P3 の模型・η の照合の残件を確認する。主開局所化の分数公式と構造前層の引き戻しは作業木で検査中。この記録は停止点3ではない。
+
+登録候補への追加（12本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechCutoff
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLiftResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCoproduct
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCosimplicial
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineTower
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineVertices
+SerrePositivity.BhattScholze.Prismatic.PDCechQuotientVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCardinality
+SerrePositivity.CategoryTheory.ProCechNerveTransport
+SerrePositivity.CommutativeAlgebra.Adic.Cardinality
+```
