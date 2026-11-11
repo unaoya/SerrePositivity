@@ -70,3 +70,70 @@
 - K2。BS 著者版 Example 2.21 の普遍 distinguished δ 環と、Example 3.4 の普遍向き付き prism を追加した。`existsUnique_universalOrientedPrismHom` は向きを保つ射の一意存在、`universalOrientedPrism_regular` は p と mod p の d の正則性、`universalOrientedPrism_bounded` は d 剰余の p 正則性から従う有界性。`universalOrientedPrism_frobenius_isCompletelyFlat` は D74 の mod p Frobenius に沿う加群の d 完全平坦性。自由環の剰余の平坦性を局所化と冪零剰余の比較で移した。
 - K3。`IsCompletelyRegularRel` は Definition 2.42 の古典環の場合で、有限列に関する導来完備性と、零次剰余の平坦性および全次数の標準 Koszul 比較を課す。`IsPrismCompletelyRegularRel` は (p,d) の場合。`frobeniusDivisionPushout_torAlg_subsingleton` は Remark 2.37 の自由多変数の二脚に対する高次 Tor の消滅。`existsUnique_frobeniusDivisionPushoutLift` は零次の通常の押し出しを生の δ 商として同定する。高次 Tor では p 反転後の同型と、局所化の余核を p 冪ねじれの逐次余極限として扱う証明を用いた。
 - 新規 6 モジュールの対象ビルドと公開 33 宣言の監査を通過。標準三公理のみ、`sorry` 0。推移的 import 328 件に ∞ 圏・E3 への依存はなく、BS から KST への直接 import の追加はない。既存の Lean 宣言および A1 の草稿の型を維持した。
+
+## 段 3 の中断（K4、2026-11-10）
+
+- 停止点 2 を含む main `14f8925ae` を作業枝に反映した。
+- BS 著者版 Example 3.14 の一般の存在には、完全 smooth な全射の核から局所的に `IsPrismCompletelyRegularRel` を得る比較と、局所正則列に対する Proposition 3.13 の δ 除算包の完全平坦性・貼り合わせが要る。原典の完全平坦性の証明が使う Lemma 2.43・Corollary 2.44 の一般の相対版も未形式化。本体で存在と完全平坦性が揃っているのは `exists_prismaticEnvelope_of_variables` の自由変数の場合。指示書 §3 の 3 に従い、一般の存在の実装に進む前に中断した。
+- 共通部品 `Delta/Basic/Tensor.lean` は、通常のテンソル積の δ 構造、二脚の δ 射性、両脚に合う δ 射の一意延長を与える。Witt 長さ二の切断の貼り合わせを用い、p 正則性の仮定は不要。対象ビルドと公開 5 宣言の監査に通過し、`sorry`・追加公理は 0。KST・∞ 圏・E3 への import はない。
+- Lemma 3.7 (2)(3)、Corollary 3.12 の平坦な押し出しと完備 Čech の完全性、Proposition 3.13 (2) の完備底変換は未完了。停止点 3 の検収条件は未達。
+
+## 段 3 の再開（K4、2026-11-10）
+
+- D21 を確認し、main `dd046d9f8` を `03f1d4310` で取り込んだ。Ex 3.14 の存在は本体の変数版を使う。
+- `CompleteFlatReduction` を追加。上に有界な導来対象が導来 p 完備で、(p,d) 剰余が離散かつ平坦なら、各 dⁿ による導来剰余は離散で H⁰ の p 冪ねじれは有界。係数の冪零フィルトレーションと既存の主元剰余の定理を使った。Lemma 3.7 (2) の中間結果。
+- 対象ビルドと公開 2 宣言の監査を通過。標準三公理のみ、`sorry` 0。停止点 3 の検収条件は未達。
+- Proposition 3.13 (2) の変数版を `prismaticEnvelope_completedBaseChange_of_variables` に実装。完備テンソル積の二脚を保ち、拡大イデアルに対する envelope の普遍性を示した。正則性・有界性は底変換後の完備自由 δ 環との同型に移した。草稿の型は維持した。
+- `CompletedTensor`・`VariableEnvelopeBaseChange` の対象ビルドと公開 16 宣言の監査を通過。標準三公理のみ、`sorry` 0。∞ 圏・E3 への推移的 import と KST への直接 import はない。
+- Lemma 3.7 (3) を `exists_boundedPrism_of_completelyFlat_deltaAlgebra` に実装。指定の δ 構造・基底射を保ち、基底生成元の像を向きとする有界 prism を得た。Lemma 3.7 (2) の上に有界な版も、古典的完備性と生成元冪商のねじれの有界性まで証明した。次数に上界を置かない鎖複体版は検証中。
+- Corollary 3.12 の部品として `PrismOver.IsFaithfullyFlat`、同型と合成での保存、有限剰余の忠実平坦性と通常の増大 Čech 完全性、完備化前後の有限剰余の標準同型を追加。完備テンソル積の完全忠実平坦性・濃度と完備 Čech の比較は残る。
+- この束の新規 7 モジュールの対象ビルドと公開 11 宣言の監査を通過。標準三公理のみ、`sorry` 0。
+- Lemma 3.7 (2) は `completelyFlatCochain_isDiscrete_of_boundedPrism` で上に有界な仮定を外した。K-flat な項別平坦複体の有限剰余を Milnor 列で調べ、離散性を得てから零次の古典的完備性とねじれの評価を移す。
+- `PrismOver.exists_isPushout_of_completedTensor_completelyFaithfullyFlat` は、完備テンソル積の完全忠実平坦性と濃度を入力に、押し出しの普遍性と剰余の脚の両立を示す。対象ビルドと公開 2 宣言の監査を通過。標準三公理のみ、`sorry` 0。
+- 完全忠実平坦な被覆の有限剰余に使う全射的な逆塔について、次数ごとの逆極限が完全性を保つことを証明した。完備押し出し側では、二座標の導来完備底変換が完全平坦になることを証明した。通常の完備テンソル積への移送と Čech 余脈体の照合は検証中。
+- この束の新規 2 モジュールの対象ビルドと公開 6 宣言の監査を通過。標準三公理のみ、`sorry` 0。
+- `pairCompletedBaseChangeH0LinearEquiv` で導来完備底変換の H⁰ と通常の完備テンソル積を左因子上で同定した。`prismCompletedTensor_mk_le` は古典的に完備な候補の濃度を、有限剰余の可算直積で評価する。
+- `idealPowerCompletedCech_acyclic` は、完全忠実平坦な射のイデアル冪剰余で作った増大 Čech 複体の逆極限が全次数で完全であることを示す。site の完備押し出しから作る余脈体との照合と、構造前層の層条件への接続は残る。
+- この束の新規 3 モジュールの対象ビルドと公開 5 宣言の監査を通過。標準三公理のみ、`sorry` 0。
+- Corollary 3.12 (a) の固定基底の押し出しを `PrismOver.exists_isPushout_isFaithfullyFlat` に実装。完備テンソル積の完全平坦性は導来底変換の H⁰ から、忠実性は有限剰余の通常の忠実平坦底変換から移した。対象ビルドと公開 3 宣言の監査を通過。
+
+### 23 時前の引き継ぎ
+
+- この再開分は本体の新規 19 モジュール、公開 45 宣言。すべて対象ビルドと監査を通過し、標準三公理のみ、`sorry` 0。推移的 import 390 モジュールに ∞ 圏・E3 はなく、KST への直接 import はない。
+- 停止点 3 の残りは、site の完備押し出しから作る増大 Čech 余脈体の有限剰余を通常の余脈体と比較すること。二脚を追跡する完備化前後の剰余同型と通常のテンソル商同型を、余積の普遍性で各次数と余面へ移す。各項の古典的完備性から逆極限模型へ同定し、有限剰余で得た全次数の完全性を構造前層とその d 剰余の層条件へ接続する。
+
+### 夜間の段 3 作業（2026-11-10）
+
+- ビルド前の候補を作業木に置いた。 `CategoryTheory/FiniteWidePushout` で二項押し出しを反復し、`Prismatic/FlatCechConerve` で site の増大 Čech 余脈体を作る。 `Prismatic/FlatPushoutResidue` は通常の環押し出しを基底イデアルで剰余し、完備化の有限剰余同型を両脚とともに移す。 `Prismatic/FlatCechComparison` では基底の下の圏で有限剰余と遷移を関手化し、各次数の押し出し性から増大・余面・余退化と剰余の遷移に自然な比較を作る。
+- `Prismatic/FlatSiteSheaf` では site の環側の反対圏に平坦位相を生成し、環の元ごとの等化子から環値前層の層条件を得る。 `FlatCechSheaf` では増大 Čech の完全性から、その等化子条件を取り出す。草稿の小圏模型に移す際は、その同値に沿って位相と前層を移送する。
+- 未接続は、具体的な完備テンソル積の剰余押し出し性を既存の site 押し出しの普遍性から各次数に運ぶこと、および完備性から得る次数ごとの逆極限同定。構造環には `I^n`、d 剰余には `J_n=(d,p^n)` を使う。後者は `I^(n+1) ≤ J_n` による有限忠実平坦降下と d 剰余の p 進完備性を使う。この逆極限同定で得た完全性を、層条件への候補に適用する。Lean 候補は未ビルド・未コミットで、停止点 3 は未達。
+
+## 段 4 の紙案（K5、2026-11-10 夜）
+
+| 原典 | 本体の型案 | 置き場所 |
+| --- | --- | --- |
+| Lemma 7.7 (1′)(1″) | `(D₀ : DeltaStructure p A) (η : A →+* C) (φ : C →+* C)` に対し、`IsRegular (p : C)`、`φ` が mod p の p 乗、`φ.comp η = η.comp D₀.frobeniusLift` なら `∃! D : DeltaStructure p C, D.frobeniusLift = φ ∧ D₀.IsDeltaHom D η`。環同型で移す版は `DeltaStructure.comapEquiv` で、Frobenius と基底脚を追う。 | `BhattScholze/Semiperfectoid/DiscreteDelta.lean` |
+| Lemma 7.7 (2)(3) | 通常の環 C の δ 構造、p と `η d` に沿う導来完備性、`IsRegular (η d)` を入力に、生成元が `η d` の `OrientedPrism` を返す。C/d の有界 p 冪ねじれを追加して `IsBoundedPrism` を得る。評価脚は基底・剰余・Frobenius に両立する自然な環射族を受け、D36 に従い標的 p 正則なら `isDeltaHom_of_map_frobeniusLift` を適用する。 | `BhattScholze/Semiperfectoid/DiscretePrism.lean` |
+| Lemma 7.8 | 草稿どおり `(F : C ⥤ Under X) (hF : F ⋙ Under.forget X = 𝟭 C)` に対し、冪等完備なら `∃ X' r s, s ≫ r = 𝟙 X' ∧ r ≫ s = e ∧ Nonempty (IsInitial X')`。prism 版は冪等 δ 射の像に基底脚と剰余の R の脚を降ろし、完備性・正則性・有界性・濃度を retract に移す。D36 の始性は p 正則な充満部分圏で述べる。 | `CategoryTheory/InitialOfRetraction.lean`、`BhattScholze/Semiperfectoid/PrismRetract.lean` |
+| Ex 7.9 | `J := P.ideal ⊔ Ideal.span (Set.range f)`、`U` を任意の有界分類基底上の完備自由 δ 環、`E` をその変数 envelope とする。分類射 `U → A` と通常の `N := E ⊗[U] A` を経て、`B := PDCompletionH0 N p (includeRight P.generator)` に δ 構造・A の脚を付ける。まず `IsRegular (η P.generator)` を入力にした `IsLciEnvelope P f Q η` を証明し、続いてその正則性を示す。有界版は `BoundedPTorsion p (A ⧸ J)` を追加し、濃度の仮定の下で `IsInitial` を得る。 | `BhattScholze/Semiperfectoid/LciEnvelope.lean`、`LciEnvelopeRegular.lean` |
+| G-A3-7 | 通常の p 完備なフィルター付き環 C と `q : E/d →+* C` を入力に、p 反転後の `q[1/p]` が連続な retraction をもち、その像が稠密なら `Function.Surjective q[1/p]`。Hausdorff な標的で像は `q[1/p] ∘ r` の固定点集合なので閉じる。稠密性は Fil₀ と gr¹ の差商類、gr の分冪生成、有限段の持ち上げから別の補題で出す。p 反転後の位相は元の p 進格子から取り、p が単元になった環のイデアル p で定義しない。 | `BhattScholze/Semiperfectoid/LciEnvelopeInvertP.lean`。環の位相だけの補題が必要なら `CommutativeAlgebra/` の新規ファイル |
+
+- **D21 と K1 の再利用。** Ex 7.9 の `f̄ : Fin r → A ⧸ P.ideal` には K1/K3 の `IsKoszulResolution` との照合と `RegularSequencePDKoszul` の関係列・切断基底の証明を再利用できる。比較が分冪表示に帰着した後は、`dpFamilyRelations_isKoszulResolution`、`dpFamilyUniversalTensorEquiv`、`dpFamilyBaseChangeEquiv_generator` を使って通常の押し出しと分冪の像を追う。p 正則な係数環の場面では `dpFamilyPresentation_primeRegular` と `dpFamilyFactorialEquiv` も適用できる。
+- **新たに要る比較。** K1 の `frobeniusDivisionDPEnvelopeEquiv` は φ(f)/p の生の除算であり、Ex 7.9 の f/d の除算へは直接適用できない。候補は、d 剰余の普遍変数 envelope の `δ^(k+1)(f_i) ↦ δ^(k+1)(dY_i)` を mod (p,d) で計算し、先頭の単元倍の p 乗と下位項を分離すること。K1 の切断多項式の自由基底を使えるのは、この三角表示とスカラーが確定した後。次に `U/d → U/(d,f)` の Koszul 分解と d 剰余での p 完全平坦性を合わせ、一般の分類射で d 剰余の完備テンソルの離散性を示す。p 冪ねじれ有界性はこの段で別に追う。K1 の p 正則性や高次 Tor 消滅を、一般の A/d や完備前の `E ⊗[U] A` にそのまま移さない。
+- **既存型の区別。** 草稿 `exists_lciEnvelope` は `IsKoszulRegularModGenerator P f` だけを取り、有界性を要求しない。上の有界版で使う `BoundedPTorsion` をその型に足さない。無有界の存在には、同じ候補の正則性を有界性なしで示すか、独立な δ 除算包の構成が要る。G-A3-7 の差商の計算は、自由分解で `D t̃ = f_i - d z_i` と `[z_i] ↦ f̄_i mod J̄²` を確認する。実際の Δ̄ の評価とフィルトレーション、Δ との同一視は草稿側。段 4 の Lean 編集はまだ行っていない。
+
+### 朝に回すビルド順
+
+1. `FiniteWidePushout` → `FlatCechConerve`。別の小束で `FlatPushoutResidue` と `FlatSiteSheaf`。
+2. `FlatCechComparison`。続けて site の二項・有限広押し出しの剰余保存、余脈体の比較と塔の遷移の可換性を検証する。
+3. `FlatCechSheaf` の低次数の計算を検証する。続けて完備構造環と d 剰余の増大 Čech 完全性を検証し、層条件に適用する。新規対象と公開宣言の監査を回し、停止点 3 の条件を確認する。
+
+各束は `source ~/.zshenv` の後、共有ロックの `--wait 1800` を使う。夜間は `$TMPDIR/serre-night-klw1-done` が出た場合に限り開始し、保持は一回 30 分以内。合図がなければ 8 時以降（日本時間）。
+
+## 停止点 3（K4、2026-11-11）
+
+- 朝の main `6e6a3f9a7` を `4d5da8107` で作業枝に取り込んだ。この束の実装は `bc17b4664`。
+- Corollary 3.12 の平坦な被覆に対して `flatCoverage` と `flatAugmentedCechConerve` を構成した。 `exists_completedTensor_pushoutEquiv` は任意の底変換脚に沿う site の押し出しを完備テンソル積と同定し、両脚を追う。
+- `isPushout_flatResidueRing` と `flatResidueCoconeIsColimit` は、基底の p と向きの冪を含むイデアルによる剰余で、二項と有限広押し出しを保つ。 `flatResidueCechIso` で通常の環の増大 Čech 余脈体に比較し、増大・余面・余退化と剰余の遷移に対する自然性を示した。
+- `degreewiseTowerIsoOfBijective` で次数ごとの逆極限同定を余鎖複体の同型にし、全射的な逆塔から完全性を移した。構造環では (p,d) の冪、prism イデアルによる剰余では (d,pⁿ) を使う。 `structureRing_flatCechExact`・`quotientStructureRing_flatCechExact` が全次数の完全性、`structureRing_isSheaf`・`quotientStructureRing_isSheaf` が通常の環値の層条件。
+- この束の新規 11 モジュールの対象ビルドと公開 44 宣言の監査を通過した。標準三公理のみ、`sorry` 0。推移的 import の閉包 345 モジュールに ∞ 圏・E3 はなく、KST への直接 import はない。Lean の差分は新規ファイル 11 本。
