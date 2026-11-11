@@ -117,3 +117,19 @@ D77 を含む main を取り込み（枝の merge は `f5e8bc39d`）、H1 の実
 **検証。** 対象ビルド16本＋6本が成功。名前付き公開宣言77＋18本の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は標準三公理のみ。対象ファイルの sorry・axiom と KST の直接 import も確認した。
 
 段2（H2）へ進む。H3・H4 は⑤bの次の停止点の main への取り込み通知を待つ。
+
+## 7. 段2・停止点2（2026-11-11）
+
+**H2 完了。** 新規8モジュール・728行で、通常の非有界な複体上の完備底変換の零性と擬同型の反映を置いた。入口・監査登録、既存の本体の宣言、drafts の HT 比較の組み立ては変更していない。
+
+- `CochainFlatDetection`：任意の複体の忠実平坦な底変換によるホモロジーの零性の反映と、実際の K-flat 模型の正則列商と Koszul 模型の零性の同値。
+- `CochainCompleteDetection`：任意の複体の主元完備 Nakayama、全座標に完備な複体の有限 Koszul 簡約による検出、標準の完備化単位を使った一回・二回の完備化からの検出。
+- `CompleteBaseChangeConservative`：標的主元の剰余が正則列商を忠実平坦に覆う、という実際の環射の分解から二座標完備底変換の零性の反映を得る一般の環の定理。
+- `Prismatic/Construction61Detection`：標的の (p,p) の反復完備化による `completedCoverModelFunctor` を明示し、式 (6) の (p,d) の商からの忠実平坦射と標的の p 正則性を接続した。任意の非有界な複体の実在する半自由分解に適用でき、模型の存在も証明した。普遍例は K2 の完全平坦性と p 正則性を直接入力する。
+- `CompleteCochainCone`・`Prismatic/Construction61Reflection`：具体的な完備化と実導来完備化の自然同型と三角関手性から、実際の完備底変換した射が擬同型なら元の射も擬同型になることを示す。さらに `completedCover_semifree_map_quasiIso_iff` が完備な半自由模型間の射の前後の擬同型性の同値を与える。
+- `SemifreeBaseChangeModel`：半自由複体の K-projective 性から、模型間の擬同型が任意の係数拡大で保たれることを示す。H1 の任意の半自由分解の存在・前後の K-flat 性、既存の `restrictedBaseChangeComplexIso`、実際の Koszul 増大の比較射と合わせて、通常の導来テンソルを計算する模型であることを確かめる。Tor の下界一・二、完全振幅三は H1 の非有界な定理を再利用し、D⁻ だけの入力には縮めていない。
+- D30：既存の任意の導来対象に対する `derivedRestrictScalars_isComplete`・`derivedRestrictScalars_reflectsIsomorphisms` を再利用し、`DerivedCompletion/PairRestriction` に二座標の `pairCompletionRestrictionIso` と全ての導来射に関する自然性を置いた。普遍基底への制限で用いる比較で、係数射の平坦性や対象の有界性は不要。
+
+**検証。** 対象8モジュールのビルドが成功（依存分を含む4,235ジョブ）。公開24宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。新規ファイルに KST の直接 import はない。
+
+H3・H4 は、指示書 §3 の⑤bの四モジュールの main への取り込み通知を待つ。⑤bの枝の直接 merge はしていない。HT 比較の写像の組み立てと Tot の比較は G10 の後に残す。
