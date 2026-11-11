@@ -1,0 +1,200 @@
+{
+  "A.2.4.2": {
+    "page": 814,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.3",
+        "A.2.4",
+        "A.2.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsStableUnderCobaseChangeAgainst|IsStableUnderBaseChangeAgainst|pushout_map_weakEquivalence|comparison_weakEquivalence_of_span|[Hh]omotopy[Pp]ullback",
+          "SerrePositivity"
+        ],
+        "file_count": 311,
+        "line_count": 1689
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsStableUnderCobaseChangeAgainst|IsStableUnderBaseChangeAgainst|pushout_map_weakEquivalence|comparison_weakEquivalence_of_span|[Hh]omotopy[Pp]ullback",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 11
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 980,
+            "head": "class IsStableUnderBaseChangeAgainst (P P' : MorphismProperty C) : Prop where"
+          },
+          {
+            "line": 1028,
+            "head": "class IsStableUnderCobaseChangeAgainst (P P' : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/LeftProper.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma pushout_map_weakEquivalence {A B D A' B' D' : C} (f : A ⟶ B) (g : A ⟶ D) (f' : A' ⟶ B') (g' : A' ⟶ D') (a : A ⟶ A') (b : B ⟶ B') (c : D ⟶ D') (hf : cofibrations C f) (hf' : cofibrations C f') (ha : weakEquivalences C a) (hb : weakEquivalences C b) (hc : weakEquivalences C c) (ef : f ≫ b = a ≫ f') (eg : g ≫ c = a ≫ g') : weakEquivalences C (pushout.map f g f' g' b c a ef eg)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Under/Quillen.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pushout_map_weakEquivalence (f : X ⟶ Y) {A B : Under X} (a : A ⟶ B) (hA : cofibrations C A.hom) (hB : cofibrations C B.hom) (ha : weakEquivalences C a.right) : weakEquivalences C ((Under.pushout f).map a).right"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanHomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma comparison_weakEquivalence_of_span (D : K ⥤ C) (hD : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst))) : weakEquivalences C ((comparison K I J).app D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PushoutComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma weakEquivalence_of_pushout_comparison {A B D P A' B' D' P' : C} {f : A ⟶ B} {g : A ⟶ D} {l : B ⟶ P} {r : D ⟶ P} {f' : A' ⟶ B'} {g' : A' ⟶ D'} {l' : B' ⟶ P'} {r' : D' ⟶ P'} (s : IsPushout f g l r) (t : IsPushout f' g' l' r') (a : A ⟶ A') (b : B ⟶ B') (c : D ⟶ D') (z : P ⟶ P') (hf : cofibrations C f) (hf' : cofibrations C f') (ha : weakEquivalences C a) (hb : weakEquivalences C b) (hc : weakEquivalences C c) (ef : f ≫ b = a ≫ f') (eg : g ≫ c = a ≫ g') (el : l ≫ z = b ≫ l') (er : r ≫ z = c ≫ r') : weakEquivalences C z"
+          }
+        ]
+      }
+    ],
+    "decision": "native UnderModel.pushout_map_weakEquivalence は固定した base の下の二つの cofibrant under objects に対する Brown preservation であり、全対象が cofibrant という仮定だけから任意の cofibration に沿う weak equivalence の pushout 保存を与えない。Quillen.LeftProper は左固有性を既に仮定し、求める結論を仮定したものは数えない。"
+  },
+  "A.2.4.5": {
+    "page": 816,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.3",
+        "A.2.4",
+        "A.2.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsStableUnderCobaseChangeAgainst|IsStableUnderBaseChangeAgainst|pushout_map_weakEquivalence|comparison_weakEquivalence_of_span|[Hh]omotopy[Pp]ullback",
+          "SerrePositivity"
+        ],
+        "file_count": 311,
+        "line_count": 1689
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsStableUnderCobaseChangeAgainst|IsStableUnderBaseChangeAgainst|pushout_map_weakEquivalence|comparison_weakEquivalence_of_span|[Hh]omotopy[Pp]ullback",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 11
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+        "signatures": [
+          {
+            "line": 980,
+            "head": "class IsStableUnderBaseChangeAgainst (P P' : MorphismProperty C) : Prop where"
+          },
+          {
+            "line": 1028,
+            "head": "class IsStableUnderCobaseChangeAgainst (P P' : MorphismProperty C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/LeftProper.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "lemma pushout_map_weakEquivalence {A B D A' B' D' : C} (f : A ⟶ B) (g : A ⟶ D) (f' : A' ⟶ B') (g' : A' ⟶ D') (a : A ⟶ A') (b : B ⟶ B') (c : D ⟶ D') (hf : cofibrations C f) (hf' : cofibrations C f') (ha : weakEquivalences C a) (hb : weakEquivalences C b) (hc : weakEquivalences C c) (ef : f ≫ b = a ≫ f') (eg : g ≫ c = a ≫ g') : weakEquivalences C (pushout.map f g f' g' b c a ef eg)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Under/Quillen.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma pushout_map_weakEquivalence (f : X ⟶ Y) {A B : Under X} (a : A ⟶ B) (hA : cofibrations C A.hom) (hB : cofibrations C B.hom) (ha : weakEquivalences C a.right) : weakEquivalences C ((Under.pushout f).map a).right"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/SpanHomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma comparison_weakEquivalence_of_span (D : K ⥤ C) (hD : cofibrations C (D.map (e.inverse.map WalkingSpan.Hom.fst))) : weakEquivalences C ((comparison K I J).app D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PushoutComparison.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma weakEquivalence_of_pushout_comparison {A B D P A' B' D' P' : C} {f : A ⟶ B} {g : A ⟶ D} {l : B ⟶ P} {r : D ⟶ P} {f' : A' ⟶ B'} {g' : A' ⟶ D'} {l' : B' ⟶ P'} {r' : D' ⟶ P'} (s : IsPushout f g l r) (t : IsPushout f' g' l' r') (a : A ⟶ A') (b : B ⟶ B') (c : D ⟶ D') (z : P ⟶ P') (hf : cofibrations C f) (hf' : cofibrations C f') (ha : weakEquivalences C a) (hb : weakEquivalences C b) (hc : weakEquivalences C c) (ef : f ≫ b = a ≫ f') (eg : g ≫ c = a ≫ g') (el : l ≫ z = b ≫ l') (er : r ≫ z = c ≫ r') : weakEquivalences C z"
+          }
+        ]
+      }
+    ],
+    "decision": "native projective span の hocolim comparison は追加の locally presentable/cofibrantly generated の仮定を持つ。Cop への形式的な双対化では原典の一般の右固有圏や fibrant objects だけの形を得ず、Cop の追加の生成仮定を満たすとは言えない。具体的な homotopy-pullback comparison の同じ型はない。"
+  }
+}

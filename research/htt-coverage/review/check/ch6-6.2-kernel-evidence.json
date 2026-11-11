@@ -1,0 +1,144 @@
+{
+  "base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "6.2.1.3": {
+      "page": 576,
+      "declarations": [
+        "CategoryTheory.Subobject",
+        "CategoryTheory.small_subobject",
+        "CategoryTheory.wellPowered_of_smallCategory"
+      ]
+    },
+    "6.2.2.1": {
+      "page": 577,
+      "declarations": [
+        "CategoryTheory.Sieve",
+        "CategoryTheory.Sieve.pullback",
+        "CategoryTheory.GrothendieckTopology"
+      ]
+    },
+    "6.2.2.2": {
+      "page": 578,
+      "declarations": [
+        "CategoryTheory.GrothendieckTopology.trivial",
+        "CategoryTheory.GrothendieckTopology.trivial_covering"
+      ]
+    },
+    "6.2.2.3": {
+      "page": 578,
+      "declarations": [
+        "CategoryTheory.GrothendieckTopology",
+        "CategoryTheory.Sieve"
+      ]
+    },
+    "6.2.2.8": {
+      "page": 579,
+      "declarations": [
+        "CategoryTheory.GrothendieckTopology.Cover"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.GrothendieckTopology": {
+      "declaration": "CategoryTheory.GrothendieckTopology",
+      "source": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+      "type": "CategoryTheory.GrothendieckTopology.{u_1,\n  u_2} : (C : Type u_2) → [CategoryTheory.Category.{u_1, u_2} C] → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.GrothendieckTopology.Cover": {
+      "declaration": "CategoryTheory.GrothendieckTopology.Cover",
+      "source": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+      "type": "@CategoryTheory.GrothendieckTopology.Cover.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst → C → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.GrothendieckTopology.trivial": {
+      "declaration": "CategoryTheory.GrothendieckTopology.trivial",
+      "source": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+      "type": "CategoryTheory.GrothendieckTopology.trivial.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.GrothendieckTopology.trivial_covering": {
+      "declaration": "CategoryTheory.GrothendieckTopology.trivial_covering",
+      "source": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+      "type": "@CategoryTheory.GrothendieckTopology.trivial_covering.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X : C}\n  {S : @CategoryTheory.Sieve.{u_1, u_2} C inst X},\n  Iff\n    (@Membership.mem.{max u_2 u_1, max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n      (Set.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X))\n      (@Set.instMembership.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X))\n      (@DFunLike.coe.{max (u_2 + 1) (u_1 + 1), u_2 + 1, max (u_2 + 1) (u_1 + 1)}\n        (@CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst) C\n        (fun X => Set.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X))\n        (@CategoryTheory.GrothendieckTopology.instDFunLikeSetSieve.{u_1, u_2} C inst)\n        (@CategoryTheory.GrothendieckTopology.trivial.{u_1, u_2} C inst) X)\n      S)\n    (@Eq.{max (u_2 + 1) (u_1 + 1)} (@CategoryTheory.Sieve.{u_1, u_2} C inst X) S\n      (@Top.top.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n        (@OrderTop.toTop.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n          (@Preorder.toLE.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n            (@PartialOrder.toPreorder.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n              (@SemilatticeSup.toPartialOrder.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                (@Lattice.toSemilatticeSup.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                  (@CompleteLattice.toLattice.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                    (@CategoryTheory.Sieve.instCompleteLattice.{u_1, u_2} C inst X))))))\n          (@BoundedOrder.toOrderTop.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n            (@Preorder.toLE.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n              (@PartialOrder.toPreorder.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                (@SemilatticeSup.toPartialOrder.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                  (@Lattice.toSemilatticeSup.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                    (@CompleteLattice.toLattice.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n                      (@CategoryTheory.Sieve.instCompleteLattice.{u_1, u_2} C inst X))))))\n            (@CompleteLattice.toBoundedOrder.{max u_2 u_1} (@CategoryTheory.Sieve.{u_1, u_2} C inst X)\n              (@CategoryTheory.Sieve.instCompleteLattice.{u_1, u_2} C inst X))))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.Sieve": {
+      "declaration": "CategoryTheory.Sieve",
+      "source": "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean",
+      "type": "@CategoryTheory.Sieve : {C : Type u_2} → [CategoryTheory.Category.{u_1, u_2} C] → C → Type (max u_2 u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.Sieve.pullback": {
+      "declaration": "CategoryTheory.Sieve.pullback",
+      "source": "Mathlib/CategoryTheory/Sites/Sieves/Basic.lean",
+      "type": "@CategoryTheory.Sieve.pullback : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → {X Y : C} → (Y ⟶ X) → CategoryTheory.Sieve X → CategoryTheory.Sieve Y",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.Subobject": {
+      "declaration": "CategoryTheory.Subobject",
+      "source": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+      "type": "@CategoryTheory.Subobject.{u_1, u_2} : {C : Type u_2} → [CategoryTheory.Category.{u_1, u_2} C] → C → Type (max u_2 u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch4-kernel-evidence.json",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.small_subobject": {
+      "declaration": "CategoryTheory.small_subobject",
+      "source": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+      "type": "CategoryTheory.small_subobject.{u_1, u_2,\n  u_3} : ∀ (C : Type u_3) [inst : CategoryTheory.Category.{u_2, u_3} C]\n  [inst_1 : @CategoryTheory.LocallySmall.{u_1, u_2, u_3} C inst]\n  [@CategoryTheory.WellPowered.{u_1, u_2, u_3} C inst inst_1] (X : C),\n  Small.{u_1, max u_3 u_2} (@CategoryTheory.Subobject.{u_2, u_3} C inst X)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.wellPowered_of_smallCategory": {
+      "declaration": "CategoryTheory.wellPowered_of_smallCategory",
+      "source": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+      "type": "CategoryTheory.wellPowered_of_smallCategory.{u_1} : ∀ (C : Type u_1) [inst : CategoryTheory.SmallCategory.{u_1} C],\n  @CategoryTheory.WellPowered.{u_1, u_1, u_1} C inst ⋯",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    }
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "5.5.1.3": {
+    "page": 459,
+    "citations": {
+      "item": 0,
+      "subsection": 3,
+      "neighboring_subsections": [
+        "5.4.7",
+        "5.5.1",
+        "5.5.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IsPresentable|presheafReflection|Ind.*([Ee]quivalence|[Ii]dempotent)|[Ii]dempotent.*Ind|[Cc]ombinatorial|[Cc]ompact.*[Pp]reserv|SpaceTensorData|[Cc]ompact.*[Cc]olimit)",
+          "SerrePositivity"
+        ],
+        "file_count": 390,
+        "line_count": 1011
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IsPresentable|presheafReflection|Ind.*([Ee]quivalence|[Ii]dempotent)|[Ii]dempotent.*Ind|[Cc]ombinatorial|[Cc]ompact.*[Pp]reserv|SpaceTensorData|[Cc]ompact.*[Cc]olimit)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 169,
+        "line_count": 291
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePresheafReflection.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsPresentable.exists_presheafReflection {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (L : PresheafInfinity A ⟶ C) (R : C ⟶ PresheafInfinity A), Nonempty (QCatAdjunction L R) ∧ IsFullyFaithful R ∧ PreservesSmallColimits L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonEquivalence.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "lemma indComparison_isQCatEquivalence : IsQCatEquivalence G := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective G (indComparison_isFullyFaithful hi hG e) (indComparison_isEssentiallySurjective hi.presentation hG e)"
+          },
+          {
+            "line": 50,
+            "head": "def indComparisonEquivalence : QCatEquivalence (Ind.IndInfinity κ A) C := (indComparison_isQCatEquivalence hi hG e).choose"
+          },
+          {
+            "line": 53,
+            "head": "lemma indComparisonEquivalence_hom : (indComparisonEquivalence hi hG e).hom = G := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/CompactIndEquivalence.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma idemToCompactInd_isQCatEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : IsQCatEquivalence (idemToCompactInd κ C) := idemToCompactInd_isQCatEquivalence_of_retracts κ (compactInd_retract_yoneda κ)"
+          },
+          {
+            "line": 50,
+            "head": "def compactIndEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : QCatEquivalence (Idempotent.Idem C) (kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C)) := (idemToCompactInd_isQCatEquivalence (C := C) κ).choose"
+          },
+          {
+            "line": 55,
+            "head": "lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] : (compactIndEquivalence (C := C) κ).hom = idemToCompactInd κ C := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          },
+          {
+            "line": 48,
+            "head": "def tensorSpaceFunctor (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceInfinity.{u} ⟶ E := (spaceTensorData hE M).tensor"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def IsPresentable (C : SSet.{u + 1}) [Quasicategory C] : Prop := IsAccessible C ∧ HasSmallColimits C"
+          },
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 40,
+            "head": "lemma IsPresentable.hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : HasSmallColimits C := h.2"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 102,
+            "head": "instance [IsAccessibleCategory.{w} C] (X : C) : IsPresentable.{w} X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma accessible_preservesLimits_isCorepresentable {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) (hCa : IsAccessible C) (hCl : HasSmallLimits C) (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) : IsCorepresentableSmallSpaceFunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma presheaf_representableInversionDetectsLocality (A : SSet.{u}) [Quasicategory A] : RepresentableInversionDetectsLocality (PresheafInfinity A)"
+          },
+          {
+            "line": 34,
+            "head": "lemma presentableContinuous_isRepresentable {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) : IsRepresentableSmallSpaceFunctor F := presentableContinuous_isRepresentable_of_inversionLocality presheaf_representableInversionDetectsLocality hC F hF"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hLocal : ∀ (A : SSet.{u}) [Quasicategory A], RepresentableInversionDetectsLocality (PresheafInfinity A)) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "lemma IsPresentable.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : IsPresentable C) (e : QCatEquivalence C E) : IsPresentable E := ⟨(isAccessible_iff_equivalence e).mp hC.1, hC.2.of_equivalence e⟩"
+          },
+          {
+            "line": 45,
+            "head": "lemma isPresentable_iff_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsPresentable C ↔ IsPresentable E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          },
+          {
+            "line": 51,
+            "head": "lemma isPresentable_iff_cocompleteIndEquivalence (C : SSet.{u + 1}) [Quasicategory C] : IsPresentable C ↔ ∃ (κ : Cardinal.{u}), κ.IsRegular ∧ ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA HasSmallColimits (Ind.IndInfinity κ A) ∧ Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma space_isPresentable : IsPresentable SpaceInfinity.{u} := ⟨space_isKappaAccessible_aleph0.isAccessible, space_hasSmallColimits⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "指定した小圏の冪等完備化 f:C→D に対する同じ拡張 Indκ(f) が同値となる。compactIndEquivalence は Idem(C) と Indκ(C) の compact 部分の比較であり、Indκ(f) 自身ではない。個別の Ind 比較の同値判定には生成表示が必要で、f の retract 生成性からその表示を構成する宣言は見つからない。"
+  },
+  "5.5.1.5": {
+    "page": 460,
+    "citations": {
+      "item": 0,
+      "subsection": 3,
+      "neighboring_subsections": [
+        "5.4.7",
+        "5.5.1",
+        "5.5.2"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IsPresentable|presheafReflection|Ind.*([Ee]quivalence|[Ii]dempotent)|[Ii]dempotent.*Ind|[Cc]ombinatorial|[Cc]ompact.*[Pp]reserv|SpaceTensorData|[Cc]ompact.*[Cc]olimit)",
+          "SerrePositivity"
+        ],
+        "file_count": 390,
+        "line_count": 1011
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IsPresentable|presheafReflection|Ind.*([Ee]quivalence|[Ii]dempotent)|[Ii]dempotent.*Ind|[Cc]ombinatorial|[Cc]ompact.*[Pp]reserv|SpaceTensorData|[Cc]ompact.*[Cc]olimit)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 169,
+        "line_count": 291
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePresheafReflection.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsPresentable.exists_presheafReflection {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA ∃ (L : PresheafInfinity A ⟶ C) (R : C ⟶ PresheafInfinity A), Nonempty (QCatAdjunction L R) ∧ IsFullyFaithful R ∧ PreservesSmallColimits L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleReflectiveImage.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma adjunction_isKappaCompact_image {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (hR : IsKappaAccessibleFunctor κ R) {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} κ x) : Compact.IsKappaCompact.{u, u + 1} κ (L.app (Opposite.op ⦋0⦌) x) := (adjunction_hom_preservesKappaFilteredColimits_iff a κ x).mp (hR.comp_universe hx)"
+          },
+          {
+            "line": 42,
+            "head": "lemma reflectiveImage_isKappaAccessible {κ : Cardinal.{u}} {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) (e : FunctorIso (R ≫ L) (𝟙 D)) (hC : IsKappaAccessible κ C) (hD : HasSmallColimits D) (hsD : Ind.HasSmallFixedVertexMaps D) (hR : IsKappaAccessibleFunctor κ R) : IsKappaAccessible κ D"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/IndComparisonEquivalence.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "lemma indComparison_isQCatEquivalence : IsQCatEquivalence G := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective G (indComparison_isFullyFaithful hi hG e) (indComparison_isEssentiallySurjective hi.presentation hG e)"
+          },
+          {
+            "line": 50,
+            "head": "def indComparisonEquivalence : QCatEquivalence (Ind.IndInfinity κ A) C := (indComparison_isQCatEquivalence hi hG e).choose"
+          },
+          {
+            "line": 53,
+            "head": "lemma indComparisonEquivalence_hom : (indComparisonEquivalence hi hG e).hom = G := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/CompactIndEquivalence.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "lemma idemToCompactInd_isQCatEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : IsQCatEquivalence (idemToCompactInd κ C) := idemToCompactInd_isQCatEquivalence_of_retracts κ (compactInd_retract_yoneda κ)"
+          },
+          {
+            "line": 50,
+            "head": "def compactIndEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : QCatEquivalence (Idempotent.Idem C) (kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C)) := (idemToCompactInd_isQCatEquivalence (C := C) κ).choose"
+          },
+          {
+            "line": 55,
+            "head": "lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] : (compactIndEquivalence (C := C) κ).hom = idemToCompactInd κ C := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          },
+          {
+            "line": 48,
+            "head": "def tensorSpaceFunctor (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceInfinity.{u} ⟶ E := (spaceTensorData hE M).tensor"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def IsPresentable (C : SSet.{u + 1}) [Quasicategory C] : Prop := IsAccessible C ∧ HasSmallColimits C"
+          },
+          {
+            "line": 37,
+            "head": "lemma IsPresentable.isAccessible {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : IsAccessible C := h.1"
+          },
+          {
+            "line": 40,
+            "head": "lemma IsPresentable.hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : HasSmallColimits C := h.2"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+        "signatures": [
+          {
+            "line": 102,
+            "head": "instance [IsAccessibleCategory.{w} C] (X : C) : IsPresentable.{w} X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "class ModelCategory where"
+          },
+          {
+            "line": 73,
+            "head": "instance : MorphismProperty.IsWeakFactorizationSystem (trivialCofibrations C) (fibrations C) := MorphismProperty.IsWeakFactorizationSystem.mk' _ _ (fun {A B X Y} i p hi hp ↦ by obtain ⟨_, _⟩ := mem_trivialCofibrations_iff i |>.mp hi rw [← fibration_iff] at hp infer_instance)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma accessible_preservesLimits_isCorepresentable {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) (hCa : IsAccessible C) (hCl : HasSmallLimits C) (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) : IsCorepresentableSmallSpaceFunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma presheaf_representableInversionDetectsLocality (A : SSet.{u}) [Quasicategory A] : RepresentableInversionDetectsLocality (PresheafInfinity A)"
+          },
+          {
+            "line": 34,
+            "head": "lemma presentableContinuous_isRepresentable {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) : IsRepresentableSmallSpaceFunctor F := presentableContinuous_isRepresentable_of_inversionLocality presheaf_representableInversionDetectsLocality hC F hF"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hLocal : ∀ (A : SSet.{u}) [Quasicategory A], RepresentableInversionDetectsLocality (PresheafInfinity A)) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "lemma IsPresentable.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : IsPresentable C) (e : QCatEquivalence C E) : IsPresentable E := ⟨(isAccessible_iff_equivalence e).mp hC.1, hC.2.of_equivalence e⟩"
+          },
+          {
+            "line": 45,
+            "head": "lemma isPresentable_iff_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (e : QCatEquivalence C E) : IsPresentable C ↔ IsPresentable E := ⟨fun h ↦ h.of_equivalence e, fun h ↦ h.of_equivalence e.symm⟩"
+          },
+          {
+            "line": 51,
+            "head": "lemma isPresentable_iff_cocompleteIndEquivalence (C : SSet.{u + 1}) [Quasicategory C] : IsPresentable C ↔ ∃ (κ : Cardinal.{u}), κ.IsRegular ∧ ∃ (A : SSet.{u}) (hA : Quasicategory A), letI := hA HasSmallColimits (Ind.IndInfinity κ A) ∧ Nonempty (QCatEquivalence (Ind.IndInfinity κ A) C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "lemma space_isPresentable : IsPresentable SpaceInfinity.{u} := ⟨space_isKappaAccessible_aleph0.isAccessible, space_hasSmallColimits⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "presentable ∞ 圏の理論と combinatorial model category の理論の同値という注意。一般の simplicial model category の coherent nerve や Quillen 随伴の derived functor はあるが、全 presentable C の具体的な combinatorial 模型とその比較を構成しない。具体 SSet の ModelCategory instance を要求するだけの宣言もこの理論間同値ではない。"
+  }
+}

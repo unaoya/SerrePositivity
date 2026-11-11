@@ -1,0 +1,71 @@
+{
+  "base": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "3.2.2.12": {
+      "page": 185,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.ihom_map_leftFibration",
+        "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration",
+        "SerrePositivity.InfinityCategories.isCocartesianEdge_of_leftFibration"
+      ]
+    },
+    "3.2.5.9": {
+      "page": 197,
+      "declarations": [
+        "SSet.opFunctor"
+      ]
+    }
+  },
+  "declarations": {
+    "SSet.opFunctor": {
+      "declaration": "SSet.opFunctor",
+      "source": "Mathlib/AlgebraicTopology/SimplicialSet/Op.lean",
+      "type": "SSet.opFunctor.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})\n  SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.InfinityCategories.ihom_map_leftFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.ihom_map_leftFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationInternalHom.lean",
+      "type": "@SerrePositivity.InfinityCategories.ihom_map_leftFibration.{u_1} : ∀ {E B : SSet.{u_1}}\n  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p] (A : SSet.{u_1}),\n  SerrePositivity.InfinityCategories.LeftFibration.{u_1}\n    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (CategoryTheory.ihom.{u_1, u_1 + 1} A) p)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.isCocartesianEdge_of_leftFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.isCocartesianEdge_of_leftFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianEdge.lean",
+      "type": "@SerrePositivity.InfinityCategories.isCocartesianEdge_of_leftFibration.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} X B p]\n  (e :\n    @CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1} X\n      (@Opposite.op.{1} SimplexCategory { len := @OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)) })),\n  @SerrePositivity.InfinityCategories.IsCocartesianEdge.{u_1} X B p e",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration": {
+      "declaration": "SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration",
+      "source": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+      "type": "@SerrePositivity.InfinityCategories.leftFibration_cocartesianFibration.{u_1} : ∀ {X B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} X B p],\n  @SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} X B p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/ch4-kernel-evidence.json",
+      "checked_at": "6ca50b3a3cd1ee157bdf284d36f7482e33502344"
+    }
+  }
+}

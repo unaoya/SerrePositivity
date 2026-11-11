@@ -243,10 +243,14 @@ theorem prismaticCohomology_lci_eq_envelope (hf : IsKoszulRegularModGenerator P 
     (lci_isDiscretePrismatic P hP f hf hR)
   exact hc.2
 
-/-- 元の存在補題。普遍性の標的には有界性を課さない。 -/
-theorem exists_lciEnvelope (hf : IsKoszulRegularModGenerator P f) :
+/-- 概要：R = A/(d,f) の p 冪ねじれが有界なら、正則列に対する prismatic envelope が存在する。
+方針：自由変数の包絡を分類射で移し、有界ねじれを使って完備底変換の離散性を得る。
+規約：BS 著者版 Example 7.9、D76。R は有界。普遍性の標的である任意の有界 prism 上の対象には追加の条件を課さない。
+使われ方：lci 商の包絡の存在と、その有界な site の始性。 -/
+theorem exists_lciEnvelope (hf : IsKoszulRegularModGenerator P f)
+    (hR : BoundedPTorsion p (lciQuotient P f)) :
     ∃ (B : CommRingCat.{u}) (Q : OrientedPrism p B) (η : A →+* B), IsLciEnvelope P f Q η := by
-  sorry -- (A,(d,f)) の δ 除算と完備化の普遍性。上の有界な site の始性とは別の存在補題
+  sorry -- 普遍変数の包絡の完備底変換。hR と completedBaseChange_bounded_torsion_pure を使う。
 
 end Lci
 

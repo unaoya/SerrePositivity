@@ -1,0 +1,1388 @@
+{
+  "5.2.2.1": {
+    "page": 340,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "原典のデータは区間上 Cartesian かつ coCartesian な M と両端ファイバーの同値。QCatAdjunction は h Fun 内の単位・余単位と三角恒等式であり、任意のこのデータから区間上 M を構成し逆に回収する比較はない。QuillenCfBifibration は別の模型圏の対応で一般の二準圏を扱わず、この定義の一部とはしない。"
+  },
+  "5.2.2.3": {
+    "page": 340,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "局所 Cartesian な p に対し、指定底辺を含む二単体で局所 Cartesian 辺の合成が局所 Cartesian であれば、局所 coCartesian 辺は coCartesian。CartesianEdge と反対圏の定義、通常圏の Cartesian 射の型を読んだが、底辺ごとの引き戻しによる局所性とこの合成仮定から大域外ホーンを充填する宣言はない。射影の合成の閉性とは別の条件。"
+  },
+  "5.2.2.4": {
+    "page": 341,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "Cartesian fibration 上で coCartesian と局所 coCartesian が同値であるという主張。IsCocartesianEdge は全外ホーンの大域持ち上げを要求するが、底辺 Δ¹ への引き戻しでの同条件と同値にする型はない。isCartesianEdge_iff_isCocartesianEdge_op は双対性であり、局所から大域への含意を与えない。"
+  },
+  "5.2.2.5": {
+    "page": 341,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "Cartesian p が coCartesian であることと、各底辺の逆像輸送 f* が左随伴を持つことの同値。区間上の Cartesian/coCartesian lift の判定はあるが、一般準圏ファイバーの輸送と付随関手・随伴との比較がない。Kan ファイバーの可逆 transport だけでは任意準圏の輸送の左随伴の存在条件を扱えない。"
+  },
+  "5.2.2.10": {
+    "page": 344,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "区間上 inner fibration で C 側全 c′ に対する MapC(c′,c)→MapM(c′,d) の同値と指定辺の Cartesian 性の同値。IntervalCartesianCriterion は全終点で既に Cartesian な lift がある場合の fibration 性であり、写像空間の同値から辺の Cartesian 性を得ない。fiberwiseHom_isCartesianEdge_iff も相対指数と外ホーンの判定で別の結論。"
+  },
+  "5.2.2.11": {
+    "page": 344,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "区間上 inner fibration が Cartesian であることと、H 豊穣 g:hD→hC により MapM(c,d)≃MapC(c,g(d)) が自然に表現されることの同値。NaturalMappingFamilyComparison は既に単体写像として与えた g と全パラメータで自然な比較を入力するため、豊穣ホモトピー圏だけの g から Cartesian 対応を判定する原典より別の入力が必要。"
+  },
+  "5.2.2.12": {
+    "page": 345,
+    "citations": {
+      "item": 0,
+      "subsection": 1,
+      "neighboring_subsections": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          "SerrePositivity"
+        ],
+        "file_count": 1961,
+        "line_count": 10955
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjunction|adjoint|locally.*cartesian|cartesian.*interval|cartesian.*iff|associated.*functor)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 516,
+        "line_count": 6393
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)"
+          },
+          {
+            "line": 211,
+            "head": "def refl (X : SSet.{u}) [Quasicategory X] : QCatAdjunction (𝟙 X) (𝟙 X) := Bicategory.Adjunction.id (qcatOf X)"
+          },
+          {
+            "line": 225,
+            "head": "def rightAdjointIso {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G G' : Y ⟶ X} (a : QCatAdjunction F G) (b : QCatAdjunction F G') : qcatMap G ≅ qcatMap G' := Bicategory.conjugateIsoEquiv a b (Iso.refl _)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/UnitMappingAdjunction.lean",
+        "signatures": [
+          {
+            "line": 18,
+            "head": "local instance unitMappingAdjunctionHomCategory (A B : SSet.QCat.{u}) : Category.{u} (A ⟶ B) := SSet.QCat.bicategory.homCategory A B"
+          },
+          {
+            "line": 25,
+            "head": "noncomputable def qcatAdjunctionOfUnitMappingSpaceCondition {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : QCatAdjunction F G"
+          },
+          {
+            "line": 48,
+            "head": "lemma qcatAdjunctionOfUnitMappingSpaceCondition_unitHom {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (η : FunctorHom (𝟙 X) (F ≫ G)) (hη : UnitMappingSpaceCondition η) : (qcatAdjunctionOfUnitMappingSpaceCondition η hη).unitHom = η := (qcatCellEquiv (𝟙 X) (F ≫ G)).apply_symm_apply η"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/HomotopyCategory.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "def QCatAdjunction.hoVertexHomEquiv {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) : ((HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) ≃ ((HomotopyCategory.mk x : hoFunctor.obj X) ⟶ HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) y)) := (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y).trans ((a.constantHomEquiv (Δ[0] : SSet.{u}) x y).trans (pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y)).symm)"
+          },
+          {
+            "line": 32,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_spec {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (x : X _⦋0⦌) (y : Y _⦋0⦌) (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) : pointConstantHomEquiv X x (G.app (Opposite.op ⦋0⦌) y) (a.hoVertexHomEquiv x y α) = a.constantHomEquiv (Δ[0] : SSet.{u}) x y (pointConstantHomEquiv Y (F.app (Opposite.op ⦋0⦌) x) y α)"
+          },
+          {
+            "line": 44,
+            "head": "lemma QCatAdjunction.hoVertexHomEquiv_naturality_right {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) {x : X _⦋0⦌} {y y' : Y _⦋0⦌} (α : (HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y) (δ : (HomotopyCategory.mk y : hoFunctor.obj Y) ⟶ HomotopyCategory.mk y') : a.hoVertexHomEquiv x y' (α ≫ δ) = a.hoVertexHomEquiv x y α ≫ (hoFunctor.map G).toFunctor.map δ"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Adjunction/NaturalMappingFamilyAdjunction.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "def adjunctionOfPointwiseEquivalence [Quasicategory X] [Quasicategory Y] (hq : q.IsPointwiseEquivalence) : QCatAdjunction F G := q.toMappingArrowComparison.adjunctionOfPointwiseEquivalence hq"
+          },
+          {
+            "line": 81,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalMappingFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, q.IsPointwiseEquivalence"
+          },
+          {
+            "line": 98,
+            "head": "lemma qcat_nonempty_adjunction_iff_exists_naturalPinchedFamilyComparison {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (G : Y ⟶ X) : Nonempty (QCatAdjunction F G) ↔ ∃ q : NaturalMappingFamilyComparison F G, ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence (q.pinchedMap x y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/IntervalCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "lemma cartesianFibration_interval_of_lift {E : SSet.{u}} (p : E ⟶ (Δ[1] : SSet.{u})) [Quasicategory E] [InnerFibration p] (h : ∀ x : E _⦋0⦌, p.app (Opposite.op ⦋0⦌) x = stdSimplex.obj₀Equiv.symm (1 : Fin 2) → ∃ l : (Δ[1] : SSet.{u}) ⟶ E, stdSimplex.δ 0 ≫ l = SSet.yonedaEquiv.symm x ∧ l ≫ p = 𝟙 Δ[1] ∧ IsCartesianEdge p (SSet.yonedaEquiv l)) : CartesianFibration p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Fibrations/FiberwiseHomCartesianCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma fiberwiseHom_isCartesianEdge_iff {K C D : SSet.{u}} (p : K ⟶ C) (e : (SerrePositivity.InfinityCategories.fiberwiseHom p D) _⦋1⦌) : IsCartesianEdge (SerrePositivity.InfinityCategories.fiberwiseHomProjection p D) e ↔ ∀ (n : ℕ) (b : (Δ[n + 2] : SSet.{u}) ⟶ C) (H₀ : pullback ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) p ⟶ D), (SerrePositivity.InfinityCategories.fiberwiseHomCurry p _ H₀).app (Opposite.op ⦋1⦌) (finalHornEdge n) = e → ∃ H : pullback b p ⟶ D, (overPullbackUnderlying p).map (Over.homMk (horn (n + 2) (Fin.last (n + 2))).ι rfl : Over.mk ((horn (n + 2) (Fin.last (n + 2))).ι ≫ b) ⟶ Over.mk b) ≫ H = H₀"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/AdjunctionReflection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def adjunctionOfNerveAdjunction {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : F ⊣ G"
+          },
+          {
+            "line": 62,
+            "head": "lemma adjunctionOfNerveAdjunction_unitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).unit = a.unitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (𝟭 C) (F ⋙ G)).apply_symm_apply a.unitHom"
+          },
+          {
+            "line": 72,
+            "head": "lemma adjunctionOfNerveAdjunction_counitHom {C D : Type u} [Category.{u} C] [Category.{u} D] {F : C ⥤ D} {G : D ⥤ C} (a : QCatAdjunction (nerveMap F) (nerveMap G)) : SerrePositivity.InfinityCategories.F1B.nerveNatTransHom (adjunctionOfNerveAdjunction a).counit = a.counitHom := (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomEquiv (G ⋙ F) (𝟭 D)).apply_symm_apply a.counitHom"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/QuillenCfBifibration.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma quillenCfCollageProjection_cocartesianFibration : CocartesianFibration (quillenCfCollageProjection R)"
+          },
+          {
+            "line": 70,
+            "head": "lemma quillenCfCollageProjection_cartesianFibration : CartesianFibration (quillenCfCollageProjection R)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+        "signatures": [
+          {
+            "line": 108,
+            "head": "structure Adjunction (F : C ⥤ D) (G : D ⥤ C) where"
+          },
+          {
+            "line": 133,
+            "head": "class IsLeftAdjoint (left : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 138,
+            "head": "class IsRightAdjoint (right : D ⥤ C) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/CommaInitialAdjunction.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "lemma qcat_exists_adjunction_unitHom_iff_commaInitial (η : FunctorHom (𝟙 X) (F ≫ G)) : (∃ a : QCatAdjunction F G, a.unitHom = η) ↔ UnitCommaInitialCondition η := (qcat_exists_adjunction_unitHom_iff_unitMappingSpaceCondition η).trans (unitCommaInitialCondition_iff_unitMappingSpaceCondition η).symm"
+          },
+          {
+            "line": 59,
+            "head": "lemma exists_qcatAdjunction_of_commaFiberInitial (G : Y ⟶ X) (h : ∀ x : X _⦋0⦌, ∃ v : (unitCommaFiber G x) _⦋0⦌, IsInitialVertex v) : ∃ F : X ⟶ Y, Nonempty (QCatAdjunction F G)"
+          }
+        ]
+      }
+    ],
+    "decision": "原典は hf の H 豊穣右随伴だけから元の f の右随伴を得る。NaturalMappingFamilyComparison の存在判定は準圏の射 g と全パラメータの族に自然な比較を既に要求し、通常の h の随伴はそもそも豊穣条件を忘れる。nerveAdjunctionOfAdjunction は通常圏の神経の場合だが、ここで仮定する区間上の随伴への比較を持たない。"
+  }
+}

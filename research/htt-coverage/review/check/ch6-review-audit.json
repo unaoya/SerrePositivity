@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-11-11T05:22:14.790955+00:00",
+  "lean_base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "mathlib_worktree_clean": true,
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "chapter_items": 297,
+  "status_counts": {
+    "partial": 19,
+    "none": 275,
+    "mathlib": 2,
+    "own": 1
+  },
+  "partial_kind_counts": {
+    "component": 10,
+    "special": 8,
+    "stronger-hyp": 1
+  },
+  "unsure": 0,
+  "kernel_declarations": 52,
+  "new_kernel_checks": 31,
+  "unchanged_published_kernel_checks": 21,
+  "evidence_reuse": "既存の型・公理の検査記録を再使用する宣言について、toolchain・manifest・自前の再帰的 import 閉包が元の検査から変わらないことを確認。",
+  "none_search_items": 275,
+  "none_search_method": "全 none 行で自前・Mathlib と同じ／隣接 subsection の引用を検索し、近傍候補の型と本文を比較。第6章の docstring 引用は0件だが、全て個別に記録した。§4.3′の subsection 単位省略は使わない。",
+  "kerodon_filled_chapter": 10,
+  "kerodon_filled_all": 199,
+  "kerodon_method": "declarations_new との完全名結合後、HTT と Kerodon の本文を照合。14行に候補、10行を採用。共有する証明部品・異なる主張は除外し ch6-kerodon-check.json に記録。",
+  "source_edition": "2017-04-09; SHA-256 は toc.md に記載",
+  "source_notes": [
+    "6.2.3.8",
+    "6.3.3.5",
+    "6.5.2.3",
+    "6.5.2.7",
+    "6.5.2.16"
+  ],
+  "source_images_verified": true,
+  "goal_items": {
+    "6.2.2.1": "partial",
+    "6.2.2.6": "none",
+    "6.2.2.7": "none",
+    "6.2.3.5": "none",
+    "6.5.2.8": "none"
+  },
+  "items_changed_fields": [
+    "title",
+    "kerodon"
+  ],
+  "review_sha256": "31b333d61d95cdeb1874b872d55195bafcc35c09b17ca216567f0910064b10cb",
+  "deferred": "第1・2章の旧 partial 158件の再判定は段4の後に実施する。"
+}

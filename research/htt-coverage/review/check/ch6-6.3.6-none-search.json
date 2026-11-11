@@ -1,0 +1,956 @@
+{
+  "6.3.6.1": {
+    "page": 635,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "native full subcomplex の生成や ordinary essentialImage はあるが、f*Y を small colimit と finite limit で閉じた最小 ∞ subcategory を image としそれが X 全体となる algebraic geometric morphism の述語はない。単なる本質像は閉包条件が異なる。"
+  },
+  "6.3.6.2": {
+    "page": 635,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "generic accessible reflection はあるが、指定 f の左完全・余極限閉包の像を ∞ トポスとして構成し g* fully faithful と h algebraic の分解を得ない。ordinary essential-image factorization はこの閉包と一致しない。"
+  },
+  "6.3.6.3": {
+    "page": 636,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "native adjoint の一意性は既知の同じ一方の関手から他方を比較するが、image subtopos を通る二つの algebraic/fully-faithful 分解の中間トポスの同値は結論しない。一般の factorization system の一意性にもこの射類の比較がない。"
+  },
+  "6.3.6.4": {
+    "page": 636,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary algebraic geometry の étale morphism は別の圏の射である。native geometric morphism の image closure から algebraic 性を定義した型がなく、全 étale geometric morphism の包含や RTop の filtered limit 安定性の直接の成分もない。"
+  },
+  "6.3.6.5": {
+    "page": 637,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary filtered category や site の stack 的 descent は、原典が scope 外とする filtered stacks over ∞ topoi による生成ではない。native algebraic geometric morphism の類との比較もなく、通常の filtered colimit の閉包を同じ特徴付けとはしない。"
+  },
+  "6.3.6.6": {
+    "page": 637,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "native fully faithful の性質はあるが、1-truncated objects 上の essential surjectivity から全有限 n の同じ射の essential surjectivity を導かない。一般の QCat equivalence 判定は全対象の全射性を仮定するので、結論を仮定する形になってしまう。"
+  },
+  "6.3.6.7": {
+    "page": 638,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "native fully faithful＋essentially surjective の QCat equivalence 判定はあるが、n-localic 性と 1-truncated objects への全射性から全対象の全射性を供給しない。既に同値な関手を追加仮定した tautological case は数えない。"
+  },
+  "6.3.6.8": {
+    "page": 638,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "native truncated Kan spaces の dimension の補題はあっても、X,Y の有限 homotopy dimension 仮定から n-localic 仮定を除いた同値判定はない。ordinary topological dimension は高次トポスの同じ比較ではない。"
+  },
+  "6.3.6.9": {
+    "page": 638,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.5",
+        "6.3.6",
+        "6.4.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 3198,
+        "line_count": 13769
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "algebraic.*[Tt]opos|[Gg]eometric[Mm]orphism|[Ee]ssentialImage|[Ee]ssentiallySurjective|[Ll]ocalic|[Tt]runcated|[Ff]ullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 233,
+        "line_count": 1671
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/EquivalenceFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) : IsFullyFaithful f"
+          },
+          {
+            "line": 40,
+            "head": "lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom := e.isQCatEquivalence.isFullyFaithful"
+          },
+          {
+            "line": 48,
+            "head": "lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f := ⟨fun he ↦ ⟨he.isFullyFaithful, he.choose.isEssentiallySurjective⟩, fun h ↦ isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective f h.1 h.2⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EssentialImage.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def essImage (F : C ⥤ D) : ObjectProperty D := fun Y => ∃ X : C, Nonempty (F.obj X ≅ Y)"
+          },
+          {
+            "line": 48,
+            "head": "def essImage.witness {Y : D} (h : F.essImage Y) : C := h.choose"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary locales と高次 homotopy groups は個々にあるが、X→2-localic(τ≤1X) の algebraic 性や、離散対象への全射性だけの問題を扱わない。一般の n-truncation の構成からでもこの geometric morphism の像閉包の比較が必要である。"
+  }
+}

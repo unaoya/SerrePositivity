@@ -1,0 +1,180 @@
+{
+  "3.2.4.1": {
+    "page": 192,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.3",
+        "3.2.4",
+        "3.2.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|QuillenEquivalence|ModelCategory|relativeFunctor|cocartesianFunctorSpace",
+          "SerrePositivity"
+        ],
+        "file_count": 1636,
+        "line_count": 6462
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|QuillenEquivalence|ModelCategory|relativeFunctor|cocartesianFunctorSpace",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "generic model の derived comparison は存在するが、原典の marked Stφ+/Unφ+ と具体的な source/target ModelCategory instance がない。既に同値と仮定した simplicial functor の nerve equivalence は、この Quillen iff を証明しない。"
+  },
+  "3.2.4.2": {
+    "page": 193,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "3.2.3",
+        "3.2.4",
+        "3.2.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|QuillenEquivalence|ModelCategory|relativeFunctor|cocartesianFunctorSpace",
+          "SerrePositivity"
+        ],
+        "file_count": 1636,
+        "line_count": 6462
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "MarkedSSet|QuillenEquivalence|ModelCategory|relativeFunctor|cocartesianFunctorSpace",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorExponential.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "def relativeFunctorUncurryHom {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : (ihom L).obj (relativeFunctorSpace p a) ⟶ relativeFunctorSpace p (fst A L ≫ a) := relativeFunctorCurry ((α_ A L ((ihom L).obj (relativeFunctorSpace p a))).hom ≫ relativeFunctorUncurry (uncurry (𝟙 ((ihom L).obj (relativeFunctorSpace p a))))) (by rw [Category.assoc, relativeFunctorUncurry_projection] simp only [associator_hom_fst_assoc])"
+          },
+          {
+            "line": 31,
+            "head": "def relativeFunctorExponentialIso {A E B : SSet.{u}} (p : E ⟶ B) (a : A ⟶ B) (L : SSet.{u}) : relativeFunctorSpace p (fst A L ≫ a) ≅ (ihom L).obj (relativeFunctorSpace p a) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/RightStraighteningInfinityEquivalence.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightStraighteningInfinityMap (B : SSet.{u}) : RightFibrationInfinity B ⟶ PresheafInfinity B := rightFibrationOppositeInfinityMap B ≫ leftStraighteningInfinityMap B.op"
+          },
+          {
+            "line": 29,
+            "head": "lemma rightStraighteningInfinityMap_isFullyFaithful (B : SSet.{u}) [Quasicategory B] : IsFullyFaithful (rightStraighteningInfinityMap B) := (rightFibrationOppositeInfinityMap_isQCatEquivalence B).isFullyFaithful.comp (leftStraighteningInfinityMap_isFullyFaithful B.op)"
+          }
+        ]
+      }
+    ],
+    "decision": "native relativeFunctor と cocartesian-preserving functor の core はあるが、任意 S′⊆S に対する全 Cartesian-preserving marked mapping core の restriction と同定する型はない。underlying functor restriction の Kan 性だけは marking の lift の比較を欠く。"
+  }
+}

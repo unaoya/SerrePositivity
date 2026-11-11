@@ -1,0 +1,3010 @@
+{
+  "A.3.3.1": {
+    "page": 870,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "MorphismProperty.functorCategory は通常 functor の評価、EvaluationFamily.detected は予め与えた通常評価族に沿う射類である。任意の EnrichedFunctor S C A の評価族と通常 Hom の同定を構成した一般の五射類の定義はなく、通常図式圏の定義を無比較で移さない。"
+  },
+  "A.3.3.2": {
+    "page": 870,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ManyObjectTransfer は free/evaluation 随伴・生成射の小ささ・free tensor formula を外から与える受け口で、任意の EnrichedFunctor S C A についてそのデータを構成しない。injective model はない。通常 C の Projective model との enrichment 比較も未供給。"
+  },
+  "A.3.3.3": {
+    "page": 870,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ManyObjectPresentability は既に与えた free/evaluation 族の projective right-induced model の小ささを証明する。任意の weakly saturated S′ の全 objectwise class を生成する小さい injective family は出力しない。"
+  },
+  "A.3.3.4": {
+    "page": 870,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "WeightedCones.tensorDiagram は通常 K に添字づけられた SSet-valued 図式と固定 weight だけの作用である。一般の enriched A^C の enrichment/tensor/cotensor と二つの実際のモデルの SM7 はなく、通常図式での同様の式は別の対象。"
+  },
+  "A.3.3.5": {
+    "page": 871,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ManyObjectModelTransfer.freeGenerators_tensor_images は予め与えた L_i,R_j と tensor formula に関する生成射の像を制御する。実際の豊穣 functor 圏の MapC(C,D) tensor で free functor を構成しておらず、injective/projective 二射類の包含そのものではない。"
+  },
+  "A.3.3.6": {
+    "page": 871,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "PostcompositionQuillen は通常 K⥤A の実際の projective model の後合成である。EnrichedFunctor の後合成とその通常図式模型との比較がなく、一般の豊穣 A^C の二模型および Quillen equivalence 保存の成分にはしない。"
+  },
+  "A.3.3.7": {
+    "page": 871,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "EnrichedFunctor.comp と usual right/left Kan extensions はあるが、任意の enriched f:C→C′ について f!,f* の通常随伴を EnrichedFunctor 圏に構成した宣言はない。通常添字の colim/const Quillen 随伴はその比較なしでは原典の特殊形とは数えない。"
+  },
+  "A.3.3.8": {
+    "page": 872,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ProjectiveReindexing は通常圏の strict equivalence e:K≌L を扱う。Hom の弱同値と hC の本質的全射で定める enriched equivalence f の left/right Kan adjunction の derived equivalence とは異なり、双方の enrichment を比較する宣言がない。"
+  },
+  "A.3.3.9": {
+    "page": 873,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Projective.cofibrations_le_objectwise と通常添字同値の lifting class はあるが、CatS の free-arrow cell で生成した cofibration f による restriction が projective cofibration を保つ定理はない。F→f*f!F という指定単位の projective cofibrancy も未供給。"
+  },
+  "A.3.3.10": {
+    "page": 874,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Enriched ordinary category の eCoyoneda はあるが、[1]S→[1]S′ による CatS の実際の pushout と豊穣 left Kan extension を構成していない。指定 representable F の単位 F→f*f!F に関する projective cofibration 判定はない。"
+  },
+  "A.3.3.12": {
+    "page": 876,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Enriched.mapping_isRightQuillen は cofibrant A の eHom の一般保存、HomotopyLimit は通常 K の SSet-valued limit である。enriched f の指定 η:G→f*F を同じ ηA と比較する derived right Kan extension の三条件の iff はない。"
+  },
+  "A.3.3.13": {
+    "page": 877,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "native 準圏の weighted cone は各 representable の Kan limit 条件を使うが、一般の locally fibrant S-enriched A における F,G と enriched f に対する ηA を通じた homotopy right Kan extension ではない。原典の enriched diagram と準圏図式の比較がない。"
+  },
+  "A.3.3.14": {
+    "page": 878,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ModelBifibrantLocalization は選んだ解像から得る準圏の局所化であり、原典の A◦ 上の enriched homotopy limit と A の projective/injective derived Kan extension の同定はない。mapping の fibrancy だけをこの一致の成分にしない。"
+  },
+  "A.3.3.15": {
+    "page": 879,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "native 小部分単体複体の閉包はあるが、κ-good S0-tree の各対象の下方閉 B(C) を選び enriched action ηC と互換に閉じる slice は構成しない。ManyObjectPresentability の cardinal-smallness は別のデータに対する結果である。"
+  },
+  "A.3.3.16": {
+    "page": 881,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "small subcomplex hull と accessible subcategory の小生成は、原典の A(C) tree の各交差 B(C)∩A′(C) に同じ enriched action を制限する二 slice の構成ではない。intersection の閉包・互換性を与える比較がない。"
+  },
+  "A.3.3.17": {
+    "page": 883,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.2",
+        "A.3.3",
+        "A.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          "SerrePositivity"
+        ],
+        "file_count": 5165,
+        "line_count": 40351
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EnrichedFunctor|ManyObject|EvaluationFamily|[Pp]ostcompos|[Kk]anExtension|tensorDiagram|eCoyoneda|[Ss]lice",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 281,
+        "line_count": 2735
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Ordinary/Basic.lean",
+        "signatures": [
+          {
+            "line": 213,
+            "head": "abbrev eCoyoneda (X : C) := (eHomFunctor V C).obj (op X)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectTransfer.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma freeCells_acyclic (hfree : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)) : relativeCells.{w} (EvaluationFamily.generators L J) ≤ EvaluationFamily.detected R (weakEquivalences C)"
+          },
+          {
+            "line": 46,
+            "head": "lemma freeGenerators_tensor_images [BraidedCategory C] (H : ι → ι → C) (e : ∀ i j, L i ⋙ R j ≅ tensorLeft (H i j)) : ∀ i j, J.strictMap (L i) ≤ (tensorRightImages J).inverseImage (R j)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ManyObjectPresentability.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def modelCategoryOfPresentableGenerators : ModelCategory D"
+          },
+          {
+            "line": 41,
+            "head": "lemma modelCategoryOfPresentableGenerators_weakEquivalences : @weakEquivalences D _ (modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e).categoryWithWeakEquivalences = EvaluationFamily.detected R (weakEquivalences C) := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedCones.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev tensorDiagram (W : K ⥤ SSet.{w}) : SSet.{w} ⥤ (K ⥤ SSet.{w}) := (pointwise K (curriedTensor SSet.{w})).flip.obj W"
+          },
+          {
+            "line": 27,
+            "head": "instance tensorDiagram_preservesColimits (W : K ⥤ SSet.{w}) : PreservesColimitsOfSize.{w,w} (tensorDiagram K W)"
+          },
+          {
+            "line": 34,
+            "head": "instance tensorDiagram_isLeftAdjoint (W : K ⥤ SSet.{w}) : (tensorDiagram K W).IsLeftAdjoint"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/PostcompositionQuillen.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma postcompose_isRightQuillen (R : D ⥤ C) [Quillen.IsRightQuillen R] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsRightQuillen ((Functor.whiskeringRight K D C).obj R)"
+          },
+          {
+            "line": 51,
+            "head": "lemma postcompose_isLeftQuillen {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] : let := modelCategory K I J let := modelCategory K I' J' Quillen.IsLeftQuillen ((Functor.whiskeringRight K C D).obj L)"
+          },
+          {
+            "line": 63,
+            "head": "lemma postcompose_isCofibrant {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R) [Quillen.IsLeftQuillen L] (F : K ⥤ C) (hF : let := modelCategory K I J; IsCofibrant F) : let := modelCategory K I' J' IsCofibrant (F ⋙ L)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/ProjectiveReindexing.lean",
+        "signatures": [
+          {
+            "line": 11,
+            "head": "There is no model structure or presentability assumption on the target."
+          },
+          {
+            "line": 23,
+            "head": "lemma llp_map (e : K ≌ L) (Q : MorphismProperty C) {F G : K ⥤ C} (a : F ⟶ G) (ha : (Q.functorCategory K).llp a) : (Q.functorCategory L).llp (Functor.whiskerLeft e.inverse a)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyLimit.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma constant_inverts : (weakEquivalences SSet.{w}).IsInvertedBy ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q)"
+          },
+          {
+            "line": 32,
+            "head": "def localizedConstant : H ⥤ D := Localization.lift ((Functor.const K : SSet.{w} ⥤ _) ⋙ Q) (constant_inverts K Q) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "一般の functor category の pointwise colimit と EvaluationFamily の生成射の小ささはあるが、enriched AC の各 gC∈S0 を同時に小さい slice に包含し、元の f をその S の射の strict pushout と表す型はない。"
+  }
+}

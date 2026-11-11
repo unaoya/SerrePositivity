@@ -1,0 +1,882 @@
+{
+  "6.4.3.1": {
+    "page": 645,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary EquivalenceRelation は jointly monic な二射と反射対称推移を持つが、native groupoid object U• の U1→U0×U0 に (n−2)-truncated 性を課す predicate はない。普通の関係の定義は全 n に対する効率性ではない。"
+  },
+  "6.4.3.2": {
+    "page": 645,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "native 内部 groupoid object の型がないため、全てを ∞-efficient とする convention の同じ述語はない。圏そのものの Kan/groupoid 性や groupoid completion は異なる対象を定義する。"
+  },
+  "6.4.3.3": {
+    "page": 645,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary EquivalenceRelation の三構造はあるが、それを nerve 上の 1-efficient simplicial groupoid object の全構造と相互変換する宣言はない。関係の composable pair の pullback を持つだけはその同値ではない。"
+  },
+  "6.4.3.4": {
+    "page": 645,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "native truncated Kan space の判定はあるが、全 effective internal groupoid の効率性から X が n-category と同値となる iff はない。ordinary EffectiveEquivalenceRelation は kernel pair と coequalizer の対象であり高次の効率性とは比較されない。"
+  },
+  "6.4.3.5": {
+    "page": 645,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "native accessibility の基数増大はあるが、元の τ-compact objects が全部分対象と有限極限で同時に閉じることを保証しない。ordinary WellPowered は部分対象の小ささのみで、compactness の保存とは別である。"
+  },
+  "6.4.3.6": {
+    "page": 646,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary site の層圏はあるが、n-efficient groupoid ちょうど effective という native 仮定から小 n-site と Shv≤n−1(C) の表示を構成しない。ordinary sheafification は指定 site からの順方向で、原典の逆向きではない。"
+  },
+  "6.4.3.7": {
+    "page": 648,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary extensive 圏では strict initial の結果があるが、0-topos の条件と結び付けて全対象が終対象と同値となることを示す型はない。thin category の存在だけでは coproduct disjointness と高次トポスの自明性を結論しない。"
+  },
+  "6.4.3.8": {
+    "page": 649,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.2",
+        "6.4.3",
+        "6.4.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          "SerrePositivity"
+        ],
+        "file_count": 288,
+        "line_count": 906
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "EfficientGroupoid|GroupoidObject|EffectiveEquivalenceRelation|EquivalenceRelation|IsKappaCompact|WellPowered|Giraud",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 16,
+        "line_count": 85
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EquivalenceRelation.lean",
+        "signatures": [
+          {
+            "line": 85,
+            "head": "structure EquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) extends ReflexiveRelation p₁ p₂, SymmetricRelation p₁ p₂, TransitiveRelation p₁ p₂"
+          },
+          {
+            "line": 98,
+            "head": "class IsEquivalenceRelation {R X : C} (p₁ p₂ : R ⟶ X) : Prop where"
+          },
+          {
+            "line": 101,
+            "head": "lemma EquivalenceRelation.isEquivalenceRelation (h : EquivalenceRelation p₁ p₂) : IsEquivalenceRelation p₁ p₂ where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Extensive.lean",
+        "signatures": [
+          {
+            "line": 62,
+            "head": "class HasPullbacksOfInclusions (C : Type u) [Category.{v} C] [HasBinaryCoproducts C] : Prop where"
+          },
+          {
+            "line": 70,
+            "head": "class PreservesPullbacksOfInclusions {C : Type*} [Category* C] {D : Type*} [Category* D] (F : C ⥤ D) [HasBinaryCoproducts C] where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary action groupoid や equivalence-relation quotient はあるが、任意の ∞ トポスで全内部亜群作用の quotient が effective という主張との比較はない。orbifold・stack の概念との接続も一般の GroupoidCompletion の型には含まない。"
+  }
+}

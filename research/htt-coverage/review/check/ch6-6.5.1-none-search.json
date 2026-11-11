@@ -1,0 +1,2642 @@
+{
+  "6.5.1.1": {
+    "page": 658,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native KanHomotopyGroup は点付き Kan 複体の boundary-constant simplex の商である。原典は任意の ∞ トポス内の cotensor X^Sn→X の slice での 0-truncation であり、この sheaf と通常の Kan 群の比較はない。単なる同名 πn の商をこの定義とは数えない。"
+  },
+  "6.5.1.2": {
+    "page": 658,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary plus/sheafification の有限極限保存と native all-small-limit preservation はあるが、任意の ∞ トポスの τ≤n による finite product 保存はない。普通の図式の truncation は添字の切り取りであり homotopy truncation の reflector とは異なる。"
+  },
+  "6.5.1.3": {
+    "page": 659,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Kan の loop/diagonal によるホモトピー群の次数移行はあるが、元の f の slice 内の discrete object πn(f) と πn−1(δ) の同型との比較を欠く。相対 Kan fibration の fiber group は全高次トポスの同じ sheaf ではない。"
+  },
+  "6.5.1.4": {
+    "page": 660,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native KanHomotopyGroup.map は単体集合の射の誘導準同型であって、幾何学的逆像 f* によるホモトピー層の pullback と πn(f*g) の同型ではない。ordinary sheafification の有限極限保存もこの相対 πn の比較を供給しない。"
+  },
+  "6.5.1.5": {
+    "page": 660,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Kan.FibrationExactness の長完全列は実在するが、原典は任意の ∞ トポスの Disc(X/X) 内の pointed sheaves と π1 の π0 への作用を含む。native Kan 群との sheaf 比較、任意の合成射を同じ relative fiber にする比較がなく、その列を直接の特殊化に数えない。"
+  },
+  "6.5.1.6": {
+    "page": 660,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "KanHomotopyGroup の実際の群はあるが、定義 6.5.1.1 の cotensor・slice の 0-truncation で定めた πn(X) を η* で評価してその群に同定する宣言はない。古典的 πn の実装だけは原典のこの同定ではない。"
+  },
+  "6.5.1.7": {
+    "page": 660,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Kan 複体の truncated mapping space の判定はあっても、任意 ∞ トポスの n-truncated f に対する同じ πk(f) の消滅と n を一つ下げる条件を与えない。native relative homotopy sheaf と generic truncated morphism の述語・比較がない。"
+  },
+  "6.5.1.8": {
+    "page": 661,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Whitehead は Kan 空間では成立するが、原典は一般 ∞ トポスでの有限切断性の仮定の必要性を述べる。非超完備な層圏の反例やその homotopy sheaf との比較がなく、Kan の Whitehead を逆向きの警告には数えない。"
+  },
+  "6.5.1.9": {
+    "page": 661,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary simplicial coskeleton はあるが、トポス内の n-truncation p:X→Y が πk(X)→p*πk(Y) を全 k≤n で同型にする比較はない。単体集合の次数切り取りとは異なる相対 sheaf の結論である。"
+  },
+  "6.5.1.10": {
+    "page": 661,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsWeaklyContractible と ordinary EffectiveEpi は別々の対象を扱う。元の ∞ トポス内の effective epi f と πk(f) の消滅を合わせる n-connective の述語はなく、(−1) で全射を許す規約も同じ predicate に組み込まれていない。"
+  },
+  "6.5.1.11": {
+    "page": 661,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native π0 と discreteSpace はあるが、任意の ∞ トポスの対象 X の τ≤0X が終対象となる connected predicate はない。Kan 空間の path-connectedness だけはその reflector との比較を欠く。"
+  },
+  "6.5.1.12": {
+    "page": 661,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsTerminalVertex はあるが、n-connective X の相対ホモトピー層・effective epi 条件と τ≤n−1X の終対象性を同値にする型はない。既に可縮な Kan 複体を仮定した場合はこの一般の truncation 比較を供給しない。"
+  },
+  "6.5.1.13": {
+    "page": 662,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "KanHomotopyGroup の積と contractible Kan の積の結果はあるが、原典の任意の n と ∞ トポスの n-connective objects の同じ述語とは比較されていない。通常の connected topological space の積も対象・連結性の定義が違う。"
+  },
+  "6.5.1.14": {
+    "page": 662,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native localization の local mapping equivalence と factorization system はあるが、その左クラスを (n+1)-connective、右テストを同じ slice の n-truncated object と同定する型はない。generic orthogonality の定義だけはこの iff の成分ではない。"
+  },
+  "6.5.1.15": {
+    "page": 662,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Bousfield reflector は指定した class の unit を反転するが、任意 n-connective f を同じ n の connective lift f0 の像とする比較はない。ordinary epi-mono factorization は高次 n-connective/n-truncated factorization との同定を欠く。"
+  },
+  "6.5.1.16": {
+    "page": 662,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "weak homotopy equivalence の homotopy 不変性・合成消去はあるが、原典の n-connective 射は一般には同値より真に広い。全 n の単調性・geometric inverse image・effective epi descent を同じ class に接続する比較がなく、別 class の安定性を成分にしない。"
+  },
+  "6.5.1.17": {
+    "page": 664,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native stronglySaturatedClosure の pushout 保存は生成射族の閉包についてである。その類と元の ∞ トポスの n-connective 射の同定がないので、この補題の pushout の f の連結性は直接得られない。"
+  },
+  "6.5.1.18": {
+    "page": 664,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary epi/mono と native Kan の loop の次数変化はあるが、任意の f について effective epi＋δ の (n−1)-connective 性と f の n-connective 性を結ぶ型はない。元の sheaf πn の対角比較を欠く。"
+  },
+  "6.5.1.19": {
+    "page": 664,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native slice の射の構成はあるが、X と X/X の相対 homotopy sheaf を同定して同じ σ と f の n-connectivity を比較する宣言はない。ordinary Over の epi の判定は高次連結射の述語に接続されていない。"
+  },
+  "6.5.1.20": {
+    "page": 665,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.5",
+        "6.5.1",
+        "6.5.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          "SerrePositivity"
+        ],
+        "file_count": 3249,
+        "line_count": 16571
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "HomotopyGroup|homotopyGroup|Connective|connective|Truncated|truncation|EffectiveEpi|IsWeaklyContractible",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 100,
+        "line_count": 1187
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/HomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 101,
+            "head": "def KanHomotopyGroup (X : SSet.{u}) [KanComplex X] (n : ℕ) (x : X _⦋0⦌) : Type u := Quotient (_root_.SerrePositivity.InfinityCategories.Kan.simplexSetoid X n x)"
+          },
+          {
+            "line": 113,
+            "head": "def mk (f : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x := Quotient.mk _ f"
+          },
+          {
+            "line": 181,
+            "head": "instance instOne : One (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n x) := ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk .const⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FibrationExactness.lean",
+        "signatures": [
+          {
+            "line": 44,
+            "head": "theorem exists_connecting_of_nullRel_all (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex n (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last n)) : ∃ s : B.PtSimplex (n + 1) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e n (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n b"
+          },
+          {
+            "line": 83,
+            "head": "theorem exists_connecting_of_nullRel (b : (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e)).PtSimplex (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e)) (r : PtSimplex.RelStruct RelativeMorphism.const (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e)) (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point p e) b) (Fin.last (n + 1))) : ∃ s : B.PtSimplex (n + 2) (p.app _ e), _root_.SerrePositivity.InfinityCategories.Kan.connecting p e (n + 1) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk b := _root_.SerrePositivity.InfinityCategories.Kan.FiberExactness.exists_connecting_of_nullRel_all p e b r"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Kan/FunctionComplexHomotopyGroups.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def homotopyMap : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b →* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) where"
+          },
+          {
+            "line": 72,
+            "head": "def homotopyEquiv : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S X) n b ≃* (∀ s, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X n (b s)) := MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap S X n b) ⟨_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_injective S X n b, _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.homotopyMap_surjective S X n b⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsWeaklyContractible (K : SSet.{u}) : Prop := IsWeakHomotopyEquivalence (terminal.from K)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/SimplicialObject/Coskeletal.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def rightExtensionInclusion : RightExtension (Truncated.inclusion n).op ((Truncated.inclusion n).op ⋙ X) := RightExtension.mk _ (𝟙 _)"
+          },
+          {
+            "line": 58,
+            "head": "class IsCoskeletal : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native split epi と Kan の fibration の長完全列はあるが、任意の homotopy section s に対して n-connective f iff (n−1)-connective s を同じ ∞ トポスで導く比較はない。ordinary split epi は高次相対ホモトピー層の消滅を述べない。"
+  }
+}

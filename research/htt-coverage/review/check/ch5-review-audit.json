@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-11T04:22:44.075786+00:00",
+  "lean_base": "a4833a252cc913f95217a21a5aac7774a9263d44",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "mathlib_worktree_clean": true,
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "chapter_items": 427,
+  "status_counts": {
+    "partial": 101,
+    "own": 83,
+    "none": 240,
+    "mathlib": 3
+  },
+  "partial_kind_counts": {
+    "direction": 14,
+    "stronger-hyp": 23,
+    "special": 44,
+    "component": 20
+  },
+  "unsure": 0,
+  "kernel_declarations": 288,
+  "new_kernel_checks": 131,
+  "unchanged_published_kernel_checks": 157,
+  "evidence_reuse": "公開済み #check/#print axioms の型・公理を用い、toolchain・manifest と自前の再帰的 import 閉包が元の検査から変わらないことを確認。新規検査を優先。",
+  "namespace_correction": "補助検査で F2.Presentable と誤記した6宣言を HomotopyLimits に修正。1宣言は公開済み kernel 記録で確認し、残る5宣言は正しい完全名で再検査。",
+  "none_search_items": 240,
+  "none_search_method": "全 none 行で自前と Mathlib、同じ・隣接 subsection の引用候補を検索し、候補の型と本文を比較。subsection 単位の検索省略は用いない。",
+  "kerodon_filled_chapter": 79,
+  "kerodon_filled_all": 189,
+  "kerodon_method": "一致した宣言を Kerodon 表の declarations_new と結合して候補を得た後、HTT の本文の主張と比較。同じ宣言を使うだけの証明部品・異なる主張は除外。5.5.3.5 は Kerodon 9.5.4.7 の離散図式の場合で、accessibility のみの 9.4.7.18 は除外。",
+  "source_edition": "2017-04-09; SHA-256 は toc.md に記載",
+  "source_notes": [
+    "5.3.2.6",
+    "5.4.1.8",
+    "5.5.2.1",
+    "5.5.5.10",
+    "5.5.6.27"
+  ],
+  "review_sha256": "14c971547d64ae81b1e0456240fd64df492273edcb450c507b4a22088ebebb58",
+  "deferred": "第1・2章の旧 partial 158 件の再判定は段4の後に実施する。"
+}

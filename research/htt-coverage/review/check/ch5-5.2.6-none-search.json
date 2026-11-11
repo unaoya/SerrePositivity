@@ -1,0 +1,1077 @@
+{
+  "5.2.6.3": {
+    "page": 361,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.5",
+        "5.2.6",
+        "5.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          "SerrePositivity"
+        ],
+        "file_count": 156,
+        "line_count": 491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 46
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          },
+          {
+            "line": 53,
+            "head": "def presentableAdjointFunctorEquivalence (C D : PresentableInfinityObject.{u}) : QCatEquivalence (PrLFunctorSpace C D) (PrRFunctorSpace D C).op := (pairRightAdjointFunctor_isQCatEquivalence C D).choose"
+          },
+          {
+            "line": 61,
+            "head": "lemma presentableAdjointFunctorEquivalence_hom (C D : PresentableInfinityObject.{u}) : (presentableAdjointFunctorEquivalence C D).hom = pairRightAdjointFunctor C D := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctorMeaning.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairRightAdjointValue {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) : D.obj ⟶ C.obj := rightVertexFunctor (SSet.opObjEquiv ((pairRightAdjointFunctor C D).app (Opposite.op ⦋0⦌) v))"
+          },
+          {
+            "line": 35,
+            "head": "def pairRightAdjointValueIso {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) (a : QCatAdjunction (leftVertexFunctor v) (rightVertexFunctor w)) : FunctorIso (pairRightAdjointValue v) (rightVertexFunctor w)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def presheafInfinityRestriction {C D : SSet.{u}} (f : C ⟶ D) : PresheafInfinity D ⟶ PresheafInfinity C := (pre ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f))).app SpaceInfinity.{u}"
+          },
+          {
+            "line": 38,
+            "head": "lemma presheafInfinityRestriction_id (C : SSet.{u}) : presheafInfinityRestriction (𝟙 C) = 𝟙 (PresheafInfinity C)"
+          },
+          {
+            "line": 48,
+            "head": "lemma presheafInfinityRestriction_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E) : presheafInfinityRestriction (f ≫ g) = presheafInfinityRestriction g ≫ presheafInfinityRestriction f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma presheafInfinityRestriction_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsQCatEquivalence (presheafInfinityRestriction f) := hf.opposite.ulift.precompose SpaceInfinity.{u}"
+          },
+          {
+            "line": 49,
+            "head": "def presheafInfinityRestrictionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : QCatEquivalence (PresheafInfinity D) (PresheafInfinity C) := (presheafInfinityRestriction_isQCatEquivalence hf).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafHomWeightTransport.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafHomWeightDiagram_iso {C D : SSet.{u}} [Quasicategory D] {F G : C ⟶ D} (e : FunctorIso F G) : FunctorIso (presheafHomWeightDiagram F) (presheafHomWeightDiagram G) := ((FunctorIso.ulift.{u, u + 1} e.op).map_pre SpaceInfinity.{u}).precomp (yonedaInfinityMap D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ihomUncurry_precomp {K L A X : SSet.{u}} (δ : K ⟶ L) : (ihom A).map ((pre δ).app X) ≫ (ihomCurryIso K A X).inv = (ihomCurryIso L A X).inv ≫ (pre (δ ▷ A)).app X"
+          },
+          {
+            "line": 31,
+            "head": "lemma parameterRightKanIdentity_of_terminalBoundary {K L Y : SSet.{u}} [Quasicategory Y] (δ : K ⟶ L) (H : L ⟶ Y) (hc : TerminalBoundaryLifting ((pre δ).app Y) (functorVertex H)) (B : SSet.{u}) : RightKanHomUniversal (F := uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (F₀ := (δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (δ ▷ B) (𝟙 (HomotopyCategory.mk (functorVertex ((δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)))))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "noncomputable def lan : (C ⥤ H) ⥤ (D ⥤ H) where"
+          },
+          {
+            "line": 53,
+            "head": "noncomputable def lanUnit : (𝟭 (C ⥤ H)) ⟶ L.lan ⋙ (whiskeringLeft C D H).obj L where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def leftExtensionPostCompose₂RightAdjoint : L.LeftExtension (F ⋙ G₁) ⥤ L.LeftExtension F := StructuredArrow.map₂ (F := (whiskeringRight _ _ _).obj G₂) (G := (whiskeringRight _ _ _).obj G₂) (F.rightUnitor.inv ≫ whiskerLeft F adj.unit ≫ (associator _ _ _).inv) { app _ := (associator _ _ _).hom }"
+          },
+          {
+            "line": 51,
+            "head": "def leftExtensionPostcompose₂ : LeftExtension.postcompose₂ L F G₁ ⊣ adj.leftExtensionPostCompose₂RightAdjoint F L where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) := {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}"
+          },
+          {
+            "line": 35,
+            "head": "def InvertsEdges {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := W ⊆ invertedEdges F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の小準圏の f:C→C′ に対し、空間値前層の制限が P(f) の右随伴となる。presheafInfinityRestriction は元の空間値前層の制限を定義し、同値 f の場合は restriction equivalence もあるが、一般の f について米田上の値を持つ余極限保存延長 P(f) との随伴はない。Mathlib の集合値前層の lanAdjunction はホモトピー余極限と異なり、P(C) のこの定理の直接の特別な場合ではない。"
+  },
+  "5.2.6.4": {
+    "page": 362,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.5",
+        "5.2.6",
+        "5.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          "SerrePositivity"
+        ],
+        "file_count": 156,
+        "line_count": 491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 46
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          },
+          {
+            "line": 53,
+            "head": "def presentableAdjointFunctorEquivalence (C D : PresentableInfinityObject.{u}) : QCatEquivalence (PrLFunctorSpace C D) (PrRFunctorSpace D C).op := (pairRightAdjointFunctor_isQCatEquivalence C D).choose"
+          },
+          {
+            "line": 61,
+            "head": "lemma presentableAdjointFunctorEquivalence_hom (C D : PresentableInfinityObject.{u}) : (presentableAdjointFunctorEquivalence C D).hom = pairRightAdjointFunctor C D := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctorMeaning.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairRightAdjointValue {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) : D.obj ⟶ C.obj := rightVertexFunctor (SSet.opObjEquiv ((pairRightAdjointFunctor C D).app (Opposite.op ⦋0⦌) v))"
+          },
+          {
+            "line": 35,
+            "head": "def pairRightAdjointValueIso {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) (a : QCatAdjunction (leftVertexFunctor v) (rightVertexFunctor w)) : FunctorIso (pairRightAdjointValue v) (rightVertexFunctor w)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def presheafInfinityRestriction {C D : SSet.{u}} (f : C ⟶ D) : PresheafInfinity D ⟶ PresheafInfinity C := (pre ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f))).app SpaceInfinity.{u}"
+          },
+          {
+            "line": 38,
+            "head": "lemma presheafInfinityRestriction_id (C : SSet.{u}) : presheafInfinityRestriction (𝟙 C) = 𝟙 (PresheafInfinity C)"
+          },
+          {
+            "line": 48,
+            "head": "lemma presheafInfinityRestriction_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E) : presheafInfinityRestriction (f ≫ g) = presheafInfinityRestriction g ≫ presheafInfinityRestriction f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma presheafInfinityRestriction_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsQCatEquivalence (presheafInfinityRestriction f) := hf.opposite.ulift.precompose SpaceInfinity.{u}"
+          },
+          {
+            "line": 49,
+            "head": "def presheafInfinityRestrictionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : QCatEquivalence (PresheafInfinity D) (PresheafInfinity C) := (presheafInfinityRestriction_isQCatEquivalence hf).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafHomWeightTransport.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafHomWeightDiagram_iso {C D : SSet.{u}} [Quasicategory D] {F G : C ⟶ D} (e : FunctorIso F G) : FunctorIso (presheafHomWeightDiagram F) (presheafHomWeightDiagram G) := ((FunctorIso.ulift.{u, u + 1} e.op).map_pre SpaceInfinity.{u}).precomp (yonedaInfinityMap D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ihomUncurry_precomp {K L A X : SSet.{u}} (δ : K ⟶ L) : (ihom A).map ((pre δ).app X) ≫ (ihomCurryIso K A X).inv = (ihomCurryIso L A X).inv ≫ (pre (δ ▷ A)).app X"
+          },
+          {
+            "line": 31,
+            "head": "lemma parameterRightKanIdentity_of_terminalBoundary {K L Y : SSet.{u}} [Quasicategory Y] (δ : K ⟶ L) (H : L ⟶ Y) (hc : TerminalBoundaryLifting ((pre δ).app Y) (functorVertex H)) (B : SSet.{u}) : RightKanHomUniversal (F := uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (F₀ := (δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (δ ▷ B) (𝟙 (HomotopyCategory.mk (functorVertex ((δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)))))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "noncomputable def lan : (C ⥤ H) ⥤ (D ⥤ H) where"
+          },
+          {
+            "line": 53,
+            "head": "noncomputable def lanUnit : (𝟭 (C ⥤ H)) ⟶ L.lan ⋙ (whiskeringLeft C D H).obj L where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def leftExtensionPostCompose₂RightAdjoint : L.LeftExtension (F ⋙ G₁) ⥤ L.LeftExtension F := StructuredArrow.map₂ (F := (whiskeringRight _ _ _).obj G₂) (G := (whiskeringRight _ _ _).obj G₂) (F.rightUnitor.inv ≫ whiskerLeft F adj.unit ≫ (associator _ _ _).inv) { app _ := (associator _ _ _).hom }"
+          },
+          {
+            "line": 51,
+            "head": "def leftExtensionPostcompose₂ : LeftExtension.postcompose₂ L F G₁ ⊣ adj.leftExtensionPostCompose₂RightAdjoint F L where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) := {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}"
+          },
+          {
+            "line": 35,
+            "head": "def InvertsEdges {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := W ⊆ invertedEdges F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "f⊣g の前後合成に関して、左右随伴関手準圏の反変同値が可換図式を与えるという注意。presentableAdjointFunctorEquivalence は二対象ごとの全同値だが、PairDuality の公開型は任意の f⊣g に対する全関手圏の可換図式を出力しない。頂点の右随伴の一意性や双圏の mate の通常 Hom 対応だけでは、全自然変換を含むこの整合性にならない。"
+  },
+  "5.2.6.5": {
+    "page": 363,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.5",
+        "5.2.6",
+        "5.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          "SerrePositivity"
+        ],
+        "file_count": 156,
+        "line_count": 491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 46
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          },
+          {
+            "line": 53,
+            "head": "def presentableAdjointFunctorEquivalence (C D : PresentableInfinityObject.{u}) : QCatEquivalence (PrLFunctorSpace C D) (PrRFunctorSpace D C).op := (pairRightAdjointFunctor_isQCatEquivalence C D).choose"
+          },
+          {
+            "line": 61,
+            "head": "lemma presentableAdjointFunctorEquivalence_hom (C D : PresentableInfinityObject.{u}) : (presentableAdjointFunctorEquivalence C D).hom = pairRightAdjointFunctor C D := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctorMeaning.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairRightAdjointValue {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) : D.obj ⟶ C.obj := rightVertexFunctor (SSet.opObjEquiv ((pairRightAdjointFunctor C D).app (Opposite.op ⦋0⦌) v))"
+          },
+          {
+            "line": 35,
+            "head": "def pairRightAdjointValueIso {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) (a : QCatAdjunction (leftVertexFunctor v) (rightVertexFunctor w)) : FunctorIso (pairRightAdjointValue v) (rightVertexFunctor w)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def presheafInfinityRestriction {C D : SSet.{u}} (f : C ⟶ D) : PresheafInfinity D ⟶ PresheafInfinity C := (pre ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f))).app SpaceInfinity.{u}"
+          },
+          {
+            "line": 38,
+            "head": "lemma presheafInfinityRestriction_id (C : SSet.{u}) : presheafInfinityRestriction (𝟙 C) = 𝟙 (PresheafInfinity C)"
+          },
+          {
+            "line": 48,
+            "head": "lemma presheafInfinityRestriction_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E) : presheafInfinityRestriction (f ≫ g) = presheafInfinityRestriction g ≫ presheafInfinityRestriction f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma presheafInfinityRestriction_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsQCatEquivalence (presheafInfinityRestriction f) := hf.opposite.ulift.precompose SpaceInfinity.{u}"
+          },
+          {
+            "line": 49,
+            "head": "def presheafInfinityRestrictionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : QCatEquivalence (PresheafInfinity D) (PresheafInfinity C) := (presheafInfinityRestriction_isQCatEquivalence hf).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafHomWeightTransport.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafHomWeightDiagram_iso {C D : SSet.{u}} [Quasicategory D] {F G : C ⟶ D} (e : FunctorIso F G) : FunctorIso (presheafHomWeightDiagram F) (presheafHomWeightDiagram G) := ((FunctorIso.ulift.{u, u + 1} e.op).map_pre SpaceInfinity.{u}).precomp (yonedaInfinityMap D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ihomUncurry_precomp {K L A X : SSet.{u}} (δ : K ⟶ L) : (ihom A).map ((pre δ).app X) ≫ (ihomCurryIso K A X).inv = (ihomCurryIso L A X).inv ≫ (pre (δ ▷ A)).app X"
+          },
+          {
+            "line": 31,
+            "head": "lemma parameterRightKanIdentity_of_terminalBoundary {K L Y : SSet.{u}} [Quasicategory Y] (δ : K ⟶ L) (H : L ⟶ Y) (hc : TerminalBoundaryLifting ((pre δ).app Y) (functorVertex H)) (B : SSet.{u}) : RightKanHomUniversal (F := uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (F₀ := (δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (δ ▷ B) (𝟙 (HomotopyCategory.mk (functorVertex ((δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)))))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "noncomputable def lan : (C ⥤ H) ⥤ (D ⥤ H) where"
+          },
+          {
+            "line": 53,
+            "head": "noncomputable def lanUnit : (𝟭 (C ⥤ H)) ⟶ L.lan ⋙ (whiskeringLeft C D H).obj L where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def leftExtensionPostCompose₂RightAdjoint : L.LeftExtension (F ⋙ G₁) ⥤ L.LeftExtension F := StructuredArrow.map₂ (F := (whiskeringRight _ _ _).obj G₂) (G := (whiskeringRight _ _ _).obj G₂) (F.rightUnitor.inv ≫ whiskerLeft F adj.unit ≫ (associator _ _ _).inv) { app _ := (associator _ _ _).hom }"
+          },
+          {
+            "line": 51,
+            "head": "def leftExtensionPostcompose₂ : LeftExtension.postcompose₂ L F G₁ ⊣ adj.leftExtensionPostCompose₂RightAdjoint F L where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) := {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}"
+          },
+          {
+            "line": 35,
+            "head": "def InvertsEdges {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := W ⊆ invertedEdges F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "F:P(C)→D の右随伴が y↦MapD(f(-),y) という元の Hom 前層であり、単位が FG を f の自分自身に沿う左 Kan 延長にするという二つの主張。presheafHomWeightDiagram はその Hom 族を構成するが、この F と同じ G の随伴および指定単位の自己左 Kan 条件を返す宣言はない。presentable な D に限った右随伴の存在定理だけでは、その右随伴を原典の G と同定しない。"
+  },
+  "5.2.6.6": {
+    "page": 363,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.5",
+        "5.2.6",
+        "5.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          "SerrePositivity"
+        ],
+        "file_count": 156,
+        "line_count": 491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 46
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          },
+          {
+            "line": 53,
+            "head": "def presentableAdjointFunctorEquivalence (C D : PresentableInfinityObject.{u}) : QCatEquivalence (PrLFunctorSpace C D) (PrRFunctorSpace D C).op := (pairRightAdjointFunctor_isQCatEquivalence C D).choose"
+          },
+          {
+            "line": 61,
+            "head": "lemma presentableAdjointFunctorEquivalence_hom (C D : PresentableInfinityObject.{u}) : (presentableAdjointFunctorEquivalence C D).hom = pairRightAdjointFunctor C D := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctorMeaning.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairRightAdjointValue {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) : D.obj ⟶ C.obj := rightVertexFunctor (SSet.opObjEquiv ((pairRightAdjointFunctor C D).app (Opposite.op ⦋0⦌) v))"
+          },
+          {
+            "line": 35,
+            "head": "def pairRightAdjointValueIso {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) (a : QCatAdjunction (leftVertexFunctor v) (rightVertexFunctor w)) : FunctorIso (pairRightAdjointValue v) (rightVertexFunctor w)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def presheafInfinityRestriction {C D : SSet.{u}} (f : C ⟶ D) : PresheafInfinity D ⟶ PresheafInfinity C := (pre ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f))).app SpaceInfinity.{u}"
+          },
+          {
+            "line": 38,
+            "head": "lemma presheafInfinityRestriction_id (C : SSet.{u}) : presheafInfinityRestriction (𝟙 C) = 𝟙 (PresheafInfinity C)"
+          },
+          {
+            "line": 48,
+            "head": "lemma presheafInfinityRestriction_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E) : presheafInfinityRestriction (f ≫ g) = presheafInfinityRestriction g ≫ presheafInfinityRestriction f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma presheafInfinityRestriction_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsQCatEquivalence (presheafInfinityRestriction f) := hf.opposite.ulift.precompose SpaceInfinity.{u}"
+          },
+          {
+            "line": 49,
+            "head": "def presheafInfinityRestrictionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : QCatEquivalence (PresheafInfinity D) (PresheafInfinity C) := (presheafInfinityRestriction_isQCatEquivalence hf).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafHomWeightTransport.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafHomWeightDiagram_iso {C D : SSet.{u}} [Quasicategory D] {F G : C ⟶ D} (e : FunctorIso F G) : FunctorIso (presheafHomWeightDiagram F) (presheafHomWeightDiagram G) := ((FunctorIso.ulift.{u, u + 1} e.op).map_pre SpaceInfinity.{u}).precomp (yonedaInfinityMap D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ihomUncurry_precomp {K L A X : SSet.{u}} (δ : K ⟶ L) : (ihom A).map ((pre δ).app X) ≫ (ihomCurryIso K A X).inv = (ihomCurryIso L A X).inv ≫ (pre (δ ▷ A)).app X"
+          },
+          {
+            "line": 31,
+            "head": "lemma parameterRightKanIdentity_of_terminalBoundary {K L Y : SSet.{u}} [Quasicategory Y] (δ : K ⟶ L) (H : L ⟶ Y) (hc : TerminalBoundaryLifting ((pre δ).app Y) (functorVertex H)) (B : SSet.{u}) : RightKanHomUniversal (F := uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (F₀ := (δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (δ ▷ B) (𝟙 (HomotopyCategory.mk (functorVertex ((δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)))))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "noncomputable def lan : (C ⥤ H) ⥤ (D ⥤ H) where"
+          },
+          {
+            "line": 53,
+            "head": "noncomputable def lanUnit : (𝟭 (C ⥤ H)) ⟶ L.lan ⋙ (whiskeringLeft C D H).obj L where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def leftExtensionPostCompose₂RightAdjoint : L.LeftExtension (F ⋙ G₁) ⥤ L.LeftExtension F := StructuredArrow.map₂ (F := (whiskeringRight _ _ _).obj G₂) (G := (whiskeringRight _ _ _).obj G₂) (F.rightUnitor.inv ≫ whiskerLeft F adj.unit ≫ (associator _ _ _).inv) { app _ := (associator _ _ _).hom }"
+          },
+          {
+            "line": 51,
+            "head": "def leftExtensionPostcompose₂ : LeftExtension.postcompose₂ L F G₁ ⊣ adj.leftExtensionPostCompose₂RightAdjoint F L where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) := {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}"
+          },
+          {
+            "line": 35,
+            "head": "def InvertsEdges {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := W ⊆ invertedEdges F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "f⊣g と任意の T:C→X に対し Tg が T の f に沿う左 Kan 延長となる。ParameterRightKan は右随伴の後合成による右 Kan 普遍性の保存、Mathlib AdjunctionPreserves も既存の Kan 延長の後合成保存であり、添字 f と右随伴 g によるこの具体的拡張を構成しない。指定変換と canonical な左 Kan 錐を比較する型を確認できなかった。"
+  },
+  "5.2.6.7": {
+    "page": 364,
+    "citations": {
+      "item": 0,
+      "subsection": 2,
+      "neighboring_subsections": [
+        "5.2.5",
+        "5.2.6",
+        "5.2.7"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          "SerrePositivity"
+        ],
+        "file_count": 156,
+        "line_count": 491
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(presheaf.*restriction|restriction.*adjunction|adjoint.*equivalence|presheafHomWeight|leftKan.*adjunction|adjunction.*leftKan)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 20,
+        "line_count": 46
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          },
+          {
+            "line": 53,
+            "head": "def presentableAdjointFunctorEquivalence (C D : PresentableInfinityObject.{u}) : QCatEquivalence (PrLFunctorSpace C D) (PrRFunctorSpace D C).op := (pairRightAdjointFunctor_isQCatEquivalence C D).choose"
+          },
+          {
+            "line": 61,
+            "head": "lemma presentableAdjointFunctorEquivalence_hom (C D : PresentableInfinityObject.{u}) : (presentableAdjointFunctorEquivalence C D).hom = pairRightAdjointFunctor C D := rfl"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctorMeaning.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairRightAdjointValue {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) : D.obj ⟶ C.obj := rightVertexFunctor (SSet.opObjEquiv ((pairRightAdjointFunctor C D).app (Opposite.op ⦋0⦌) v))"
+          },
+          {
+            "line": 35,
+            "head": "def pairRightAdjointValueIso {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) (a : QCatAdjunction (leftVertexFunctor v) (rightVertexFunctor w)) : FunctorIso (pairRightAdjointValue v) (rightVertexFunctor w)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafInfinity.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "def presheafInfinityRestriction {C D : SSet.{u}} (f : C ⟶ D) : PresheafInfinity D ⟶ PresheafInfinity C := (pre ((SSet.uliftFunctor.{u + 1, u}).map (SSet.opFunctor.map f))).app SpaceInfinity.{u}"
+          },
+          {
+            "line": 38,
+            "head": "lemma presheafInfinityRestriction_id (C : SSet.{u}) : presheafInfinityRestriction (𝟙 C) = 𝟙 (PresheafInfinity C)"
+          },
+          {
+            "line": 48,
+            "head": "lemma presheafInfinityRestriction_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E) : presheafInfinityRestriction (f ≫ g) = presheafInfinityRestriction g ≫ presheafInfinityRestriction f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "lemma presheafInfinityRestriction_isQCatEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : IsQCatEquivalence (presheafInfinityRestriction f) := hf.opposite.ulift.precompose SpaceInfinity.{u}"
+          },
+          {
+            "line": 49,
+            "head": "def presheafInfinityRestrictionEquivalence {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] {f : C ⟶ D} (hf : IsQCatEquivalence f) : QCatEquivalence (PresheafInfinity D) (PresheafInfinity C) := (presheafInfinityRestriction_isQCatEquivalence hf).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafHomWeightTransport.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def presheafHomWeightDiagram_iso {C D : SSet.{u}} [Quasicategory D] {F G : C ⟶ D} (e : FunctorIso F G) : FunctorIso (presheafHomWeightDiagram F) (presheafHomWeightDiagram G) := ((FunctorIso.ulift.{u, u + 1} e.op).map_pre SpaceInfinity.{u}).precomp (yonedaInfinityMap D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ParameterRightKan.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ihomUncurry_precomp {K L A X : SSet.{u}} (δ : K ⟶ L) : (ihom A).map ((pre δ).app X) ≫ (ihomCurryIso K A X).inv = (ihomCurryIso L A X).inv ≫ (pre (δ ▷ A)).app X"
+          },
+          {
+            "line": 31,
+            "head": "lemma parameterRightKanIdentity_of_terminalBoundary {K L Y : SSet.{u}} [Quasicategory Y] (δ : K ⟶ L) (H : L ⟶ Y) (hc : TerminalBoundaryLifting ((pre δ).app Y) (functorVertex H)) (B : SSet.{u}) : RightKanHomUniversal (F := uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (F₀ := (δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)) (δ ▷ B) (𝟙 (HomotopyCategory.mk (functorVertex ((δ ▷ B) ≫ uncurry (SSet.const (functorVertex H) : B ⟶ (ihom L).obj Y)))))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Adjunction.lean",
+        "signatures": [
+          {
+            "line": 46,
+            "head": "noncomputable def lan : (C ⥤ H) ⥤ (D ⥤ H) where"
+          },
+          {
+            "line": 53,
+            "head": "noncomputable def lanUnit : (𝟭 (C ⥤ H)) ⟶ L.lan ⋙ (whiskeringLeft C D H).obj L where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/AdjunctionPreserves.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "def leftExtensionPostCompose₂RightAdjoint : L.LeftExtension (F ⋙ G₁) ⥤ L.LeftExtension F := StructuredArrow.map₂ (F := (whiskeringRight _ _ _).obj G₂) (G := (whiskeringRight _ _ _).obj G₂) (F.rightUnitor.inv ≫ whiskerLeft F adj.unit ≫ (associator _ _ _).inv) { app _ := (associator _ _ _).hom }"
+          },
+          {
+            "line": 51,
+            "head": "def leftExtensionPostcompose₂ : LeftExtension.postcompose₂ L F G₁ ⊣ adj.leftExtensionPostCompose₂RightAdjoint F L where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Localization.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def invertedEdges {X D : SSet.{u}} (F : X ⟶ D) : Set (X _⦋1⦌) := {s | IsInvertibleEdge ((edgeOfSimplex s).map ((truncation 2).map F))}"
+          },
+          {
+            "line": 35,
+            "head": "def InvertsEdges {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop := W ⊆ invertedEdges F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointCondition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma pairUnitComposition_vertex {C D : PresentableInfinityObject.{u}} (v : PrLFunctorSpace C D _⦋0⦌) (w : PrRFunctorSpace D C _⦋0⦌) : (pairUnitComposition C D).app (Opposite.op ⦋0⦌) (v, w) = functorVertex (leftVertexFunctor v ≫ rightVertexFunctor w)"
+          },
+          {
+            "line": 36,
+            "head": "def pairLeftFunctor {C D : PresentableInfinityObject.{u}} (x : PairRawUnitCorrespondence C D _⦋0⦌) : C.obj ⟶ D.obj := leftVertexFunctor ((pairRawUnitLeft C D).app (Opposite.op ⦋0⦌) x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairAdjointFunctor.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def pairUnitHomFamilyImageLift (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ Idempotent.fullEssentialImage (pairCovariantYoneda (PrRFunctorSpace D C)) := fullSubcomplexLift _ (pairUnitHomFamily C D) (pairUnitHomFamily_in_covariantYonedaImage C D)"
+          },
+          {
+            "line": 36,
+            "head": "def pairRightAdjointFunctorLifted (C D : PresentableInfinityObject.{u}) : (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrLFunctorSpace C D) ⟶ (SSet.uliftFunctor.{u + 2, u + 1}).obj (PrRFunctorSpace D C).op := pairUnitHomFamilyImageLift C D ≫ (Idempotent.essentialImageEquivalence (pairCovariantYoneda (PrRFunctorSpace D C)) (pairCovariantYoneda_isFullyFaithful _)).inv"
+          }
+        ]
+      }
+    ],
+    "decision": "余極限保存 H:P(C)→X に対し C′→P(C′)→P(C)→X が h=HjC の f に沿う左 Kan 延長となる。presheafHomWeightDiagram とその元図式同型による比較はあるが、一般 f に対する P(f) と制限の随伴、またはこの具体的合成の各 canonical 錐の余極限性を返さない。PΣ の制限比較は別の前層圏の指定延長を仮定するためこの結論の一部ではない。"
+  }
+}

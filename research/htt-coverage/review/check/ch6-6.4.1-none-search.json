@@ -1,0 +1,922 @@
+{
+  "6.4.1.1": {
+    "page": 639,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native truncated-object の全族と P≤n−1(C) の full subcategory がない。ordinary Sheaf と HasSheafify は n=1 の構成に似るが、任意の n-truncated 空間値前層の左完全局所化との比較を供給しない。"
+  },
+  "6.4.1.2": {
+    "page": 639,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Bousfield reflection の accessibility は小さい生成辺族を先に仮定する。n-topos の左完全局所化だけからこの小生成性を導く型はなく、ordinary sheafification の実在する instance から任意の局所化の自動性を結論しない。"
+  },
+  "6.4.1.3": {
+    "page": 639,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification の反射随伴と有限極限保存はあるが、native の 1-topos の全対象を通常の Grothendieck トポスの nerve と同定する比較がない。前向き・後向きとも n-topos predicate と離散空間値前層の構成が必要である。"
+  },
+  "6.4.1.4": {
+    "page": 639,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native terminal quasicategory と IsTerminalVertex はあるが、P≤−2(C) の左完全局所化を全て終準圏と比較する型はない。対象の終対象性と圏全体の終圏への同値は別で、既に終圏と仮定した場合は数えない。"
+  },
+  "6.4.1.5": {
+    "page": 640,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary locale、Subobject.Classifier、反射局所化は各々あるが、native の truncation・n-efficient internal groupoid・relative compact morphism と同じ X の六条件を結ぶ型はない。n=1 の通常層化の構成だけでも Giraud の逆方向を含まない。"
+  },
+  "6.4.1.6": {
+    "page": 640,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary GrothendieckTopology と finite-limit-preserving sheafification はあるが、任意の n-topos の左完全局所化の全 inverted arrows が pullback 安定な mono 生成の類であるという比較がない。小生成 Bousfield reflection はこの入力を要求する側である。"
+  },
+  "6.4.1.7": {
+    "page": 641,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary site の Sheaf は実在するが、任意の n-topos の層表示の site を小さい n-category に取れるという存在定理はない。通常圏を site に取る場合だけでも任意 X の同じ表示を回収する比較が必要である。"
+  },
+  "6.4.1.8": {
+    "page": 642,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.6",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          "SerrePositivity"
+        ],
+        "file_count": 18,
+        "line_count": 35
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "NTopos|nTopos|IsTruncated|TruncatedObject|Giraud|Subobject.Classifier|HasSheafify|LeftExact",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 154
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 584,
+            "head": "noncomputable def classifier : Subobject.Classifier C where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+        "signatures": [
+          {
+            "line": 313,
+            "head": "instance : HasSheafify J (Type (max u v))"
+          },
+          {
+            "line": 320,
+            "head": "instance [FinitaryExtensive D] [HasPullbacks D] [HasSheafify J D] : FinitaryExtensive (Sheaf J D) := finitaryExtensive_of_reflective (sheafificationAdjunction _ _)"
+          },
+          {
+            "line": 324,
+            "head": "instance [Adhesive D] [HasPullbacks D] [HasPushouts D] [HasSheafify J D] : Adhesive (Sheaf J D) := adhesive_of_reflective (sheafificationAdjunction _ _)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FiniteLimitsColimits.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "class HasFiniteLimits (X : SSet.{u}) : Prop where"
+          },
+          {
+            "line": 26,
+            "head": "class HasFiniteColimits (X : SSet.{u}) : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Subobject.Classifier は構造として存在し個別の集合値層圏には instance があるが、presentable 圏の普遍的余極限＋分類子から Grothendieck トポス性を得る iff はない。全 mono がある κ について relatively compact となる主張も対象の compact 性からは出ない。"
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "6.3.2.1": {
+    "page": 603,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.1",
+        "6.3.2",
+        "6.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 71
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 78,
+        "line_count": 224
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma pullback_isPresentable_of_accessiblePullback (hAccessible : ∀ {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p), IsAccessible E → IsAccessible D → IsAccessible B → IsAccessibleFunctor p → IsAccessibleFunctor q → letI := hp.innerFibration IsAccessible (pullback p q)) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B) (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) : letI := hp.innerFibration"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallColimits : HasSmallColimits (pullback p q)"
+          },
+          {
+            "line": 45,
+            "head": "lemma pullback_isColimitCone_iff_components {K : SSet.{u}} {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "piSSet_isPresentable は任意の presentable 族の積を与えるが、∞ トポス性と LTop の積としての普遍性を結論しない。各成分の余極限保存は証明部品であり、全亜群の有効性や左完全局所化の積との比較はない。"
+  },
+  "6.3.2.2": {
+    "page": 603,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.1",
+        "6.3.2",
+        "6.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 71
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 78,
+        "line_count": 224
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma pullback_isPresentable_of_accessiblePullback (hAccessible : ∀ {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p), IsAccessible E → IsAccessible D → IsAccessible B → IsAccessibleFunctor p → IsAccessibleFunctor q → letI := hp.innerFibration IsAccessible (pullback p q)) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B) (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) : letI := hp.innerFibration"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallColimits : HasSmallColimits (pullback p q)"
+          },
+          {
+            "line": 45,
+            "head": "lemma pullback_isColimitCone_iff_components {K : SSet.{u}} {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "presentable な strict pullback の存在と余極限保存の成分判定はあるが、同じ pullback の ∞ トポス性と有限極限保存の判定はない。ordinary finite limits の pointwise 性にも native topological localization との比較がない。"
+  },
+  "6.3.2.3": {
+    "page": 604,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.1",
+        "6.3.2",
+        "6.3.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 71
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "LTop|InfinityTopos|piSSet_isPresentable|pullback_isPresentable|PreservesFiniteLimits",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 78,
+        "line_count": 224
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentablePullback.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma pullback_isPresentable_of_accessiblePullback (hAccessible : ∀ {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p), IsAccessible E → IsAccessible D → IsAccessible B → IsAccessibleFunctor p → IsAccessibleFunctor q → letI := hp.innerFibration IsAccessible (pullback p q)) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) (hp : F1B.EquivalenceLifting p) (hE : IsPresentable E) (hD : IsPresentable D) (hB : IsPresentable B) (hpc : PreservesSmallColimits p) (hqc : PreservesSmallColimits q) : letI := hp.innerFibration"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallColimits : HasSmallColimits (pullback p q)"
+          },
+          {
+            "line": 45,
+            "head": "lemma pullback_isColimitCone_iff_components {K : SSet.{u}} {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      }
+    ],
+    "decision": "PrInfinity の定義と presentable pullback の型はあるが、全小図式の LTop 極限を作る定理や Cat∞ への包含の保存はない。対象の presentability のみは ∞ トポスの極限ではない。"
+  }
+}

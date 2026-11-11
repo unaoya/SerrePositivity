@@ -1,0 +1,364 @@
+{
+  "base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "6.1.0.1": {
+      "page": 528,
+      "declarations": [
+        "CategoryTheory.plusPlusAdjunction",
+        "CategoryTheory.preservesFiniteLimits_presheafToSheaf",
+        "CategoryTheory.sheafification_reflective"
+      ]
+    },
+    "6.1.1.2": {
+      "page": 532,
+      "declarations": [
+        "CategoryTheory.IsUniversalColimit"
+      ]
+    },
+    "6.1.1.5": {
+      "page": 534,
+      "declarations": [
+        "CategoryTheory.EffectiveEpi",
+        "CategoryTheory.EffectiveEpiStruct",
+        "CategoryTheory.isColimitCoforkOfEffectiveEpi",
+        "CategoryTheory.effectiveEpi_of_kernelPair"
+      ]
+    },
+    "6.1.1.6": {
+      "page": 535,
+      "declarations": [
+        "CategoryTheory.epi_iff_surjective",
+        "CategoryTheory.isSplitEpi_iff_surjective",
+        "CategoryTheory.IsSplitEpi.EffectiveEpi",
+        "CategoryTheory.epi_of_effectiveEpi"
+      ]
+    },
+    "6.1.2.2": {
+      "page": 536,
+      "declarations": [
+        "CategoryTheory.SimplicialObject",
+        "CategoryTheory.SimplicialObject.Augmented",
+        "AugmentedSimplexCategory.equivAugmentedSimplicialObject",
+        "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso"
+      ]
+    },
+    "6.1.2.3": {
+      "page": 537,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso"
+      ]
+    },
+    "6.1.2.5": {
+      "page": 538,
+      "declarations": [
+        "CategoryTheory.Functor.Elements",
+        "CategoryTheory.Functor.Elements.π",
+        "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence"
+      ]
+    },
+    "6.1.3.1": {
+      "page": 544,
+      "declarations": [
+        "CategoryTheory.NatTrans.Equifibered"
+      ]
+    },
+    "6.1.3.4": {
+      "page": 546,
+      "declarations": [
+        "CategoryTheory.MorphismProperty.IsStableUnderBaseChange"
+      ]
+    },
+    "6.1.3.15": {
+      "page": 551,
+      "declarations": [
+        "CategoryTheory.IsUniversalColimit.map_reflective"
+      ]
+    },
+    "6.1.6.1": {
+      "page": 566,
+      "declarations": [
+        "CategoryTheory.Subobject.Classifier"
+      ]
+    }
+  },
+  "declarations": {
+    "AugmentedSimplexCategory.equivAugmentedSimplicialObject": {
+      "declaration": "AugmentedSimplexCategory.equivAugmentedSimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/Augmented/Basic.lean",
+      "type": "@AugmentedSimplexCategory.equivAugmentedSimplicialObject.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.Equivalence.{u_1, u_1, max u_2 u_1, max u_2 u_1}\n      (@CategoryTheory.Functor.{0, u_1, 0, u_2} (Opposite.{1} AugmentedSimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} AugmentedSimplexCategory\n          (@CategoryTheory.WithInitial.instCategory.{0, 0} SimplexCategory SimplexCategory.smallCategory))\n        C inst)\n      (@CategoryTheory.SimplicialObject.Augmented.{u_1, u_2} C inst)\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_2} (Opposite.{1} AugmentedSimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} AugmentedSimplexCategory\n          (@CategoryTheory.WithInitial.instCategory.{0, 0} SimplexCategory SimplexCategory.smallCategory))\n        C inst)\n      (@CategoryTheory.SimplicialObject.instCategoryAugmented.{u_1, u_2} C inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.EffectiveEpi": {
+      "declaration": "CategoryTheory.EffectiveEpi",
+      "source": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+      "type": "@CategoryTheory.EffectiveEpi.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      @Quiver.Hom.{u_1, u_2} C\n          (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n          Y X →\n        Prop",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.EffectiveEpiStruct": {
+      "declaration": "CategoryTheory.EffectiveEpiStruct",
+      "source": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+      "type": "@CategoryTheory.EffectiveEpiStruct.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {X Y : C} →\n      @Quiver.Hom.{u_1, u_2} C\n          (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n          Y X →\n        Type (max u_2 u_1)",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.Functor.Elements": {
+      "declaration": "CategoryTheory.Functor.Elements",
+      "source": "Mathlib/CategoryTheory/Elements.lean",
+      "type": "@CategoryTheory.Functor.Elements.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1} → Type (max u_3 u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence": {
+      "declaration": "CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence",
+      "source": "Mathlib/CategoryTheory/Elements.lean",
+      "type": "@CategoryTheory.Functor.Elements.costructuredArrowYonedaEquivalence.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (F :\n        @CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1}) →\n      @CategoryTheory.Equivalence.{u_1, u_1, max u_2 u_1, max u_2 u_1}\n        (Opposite.{max (u_2 + 1) (u_1 + 1)}\n          (@CategoryTheory.Functor.Elements.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F))\n        (@CategoryTheory.CostructuredArrow.{u_1, max u_2 u_1, u_2, max u_2 (u_1 + 1)} C inst\n          (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.yoneda.{u_1, u_2} C inst) F)\n        (@CategoryTheory.Category.opposite.{u_1, max u_2 u_1}\n          (@CategoryTheory.Functor.Elements.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F)\n          (@CategoryTheory.Functor.Elements.instCategory.{u_1, u_1, u_2} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) F))\n        (@CategoryTheory.instCategoryCostructuredArrow.{u_1, max u_2 u_1, u_2, max u_2 (u_1 + 1)} C inst\n          (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) (Type u_1) CategoryTheory.types.{u_1})\n          (@CategoryTheory.yoneda.{u_1, u_2} C inst) F)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.Functor.Elements.π": {
+      "declaration": "CategoryTheory.Functor.Elements.π",
+      "source": "Mathlib/CategoryTheory/Elements.lean",
+      "type": "@CategoryTheory.Functor.Elements.π.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    (F : @CategoryTheory.Functor.{u_2, u_1, u_3, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1}) →\n      @CategoryTheory.Functor.{u_2, u_2, max u_3 u_1, u_3} (@CategoryTheory.Functor.Elements.{u_1, u_2, u_3} C inst F)\n        (@CategoryTheory.Functor.Elements.instCategory.{u_1, u_2, u_3} C inst F) C inst",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.IsSplitEpi.EffectiveEpi": {
+      "declaration": "CategoryTheory.IsSplitEpi.EffectiveEpi",
+      "source": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+      "type": "@CategoryTheory.IsSplitEpi.EffectiveEpi.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {B X : C}\n  (f :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      X B)\n  [@CategoryTheory.IsSplitEpi.{u_1, u_2} C inst X B f], @CategoryTheory.EffectiveEpi.{u_1, u_2} C inst B X f",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.IsUniversalColimit": {
+      "declaration": "CategoryTheory.IsUniversalColimit",
+      "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+      "type": "@CategoryTheory.IsUniversalColimit.{u_1, u_2, u_3,\n    u_4} : {J : Type u_1} →\n  [inst : CategoryTheory.Category.{u_2, u_1} J] →\n    {C : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} C] →\n        {F : CategoryTheory.Functor.{u_2, u_3, u_1, u_4} J C} →\n          CategoryTheory.Limits.Cocone.{u_2, u_3, u_1, u_4} F → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "CategoryTheory.IsUniversalColimit.map_reflective": {
+      "declaration": "CategoryTheory.IsUniversalColimit.map_reflective",
+      "source": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+      "type": "@CategoryTheory.IsUniversalColimit.map_reflective.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : ∀ {J : Type u_1} [inst : CategoryTheory.Category.{u_2, u_1} J] {C : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_3, u_4} C] {D : Type u_6} [inst_2 : CategoryTheory.Category.{u_5, u_6} D]\n  {Gl : @CategoryTheory.Functor.{u_3, u_5, u_4, u_6} C inst_1 D inst_2}\n  {Gr : @CategoryTheory.Functor.{u_5, u_3, u_6, u_4} D inst_2 C inst_1}\n  (adj : @CategoryTheory.Adjunction.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl Gr)\n  [@CategoryTheory.Functor.Full.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr]\n  [@CategoryTheory.Functor.Faithful.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr]\n  {F : @CategoryTheory.Functor.{u_2, u_5, u_1, u_6} J inst D inst_2}\n  {c :\n    @CategoryTheory.Limits.Cocone.{u_2, u_3, u_1, u_4} J inst C inst_1\n      (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr)},\n  @CategoryTheory.IsUniversalColimit.{u_1, u_2, u_3, u_4} J inst C inst_1\n      (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c →\n    ∀\n      [∀ (X : D)\n          (f :\n            @Quiver.Hom.{u_5, u_6} D\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_5, u_6} D\n                (@CategoryTheory.Category.toCategoryStruct.{u_5, u_6} D inst_2))\n              X\n              (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))),\n          @CategoryTheory.Limits.HasPullback.{u_3, u_4} C inst_1\n            (@CategoryTheory.Functor.obj.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr X)\n            (@CategoryTheory.Functor.obj.{u_3, u_3, u_4, u_4} C inst_1 C inst_1\n              (@CategoryTheory.Functor.id.{u_3, u_4} C inst_1)\n              (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))\n            (@CategoryTheory.Functor.obj.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr\n              (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c)))\n            (@CategoryTheory.Functor.map.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr X\n              (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))\n              f)\n            (@CategoryTheory.NatTrans.app.{u_3, u_3, u_4, u_4} C inst_1 C inst_1\n              (@CategoryTheory.Functor.id.{u_3, u_4} C inst_1)\n              (@CategoryTheory.Functor.comp.{u_3, u_5, u_3, u_4, u_6, u_4} C inst_1 D inst_2 C inst_1 Gl Gr)\n              (@CategoryTheory.Adjunction.unit.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl Gr adj)\n              (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))]\n      [∀ (X : D)\n          (f :\n            @Quiver.Hom.{u_5, u_6} D\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_5, u_6} D\n                (@CategoryTheory.Category.toCategoryStruct.{u_5, u_6} D inst_2))\n              X\n              (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))),\n          @CategoryTheory.Limits.PreservesLimit.{0, 0, u_3, u_5, u_4, u_6} C inst_1 D inst_2\n            CategoryTheory.Limits.WalkingCospan\n            (@CategoryTheory.Limits.WidePullbackShape.category.{0} CategoryTheory.Limits.WalkingPair)\n            (@CategoryTheory.Limits.cospan.{u_3, u_4} C inst_1\n              (@CategoryTheory.Functor.obj.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr X)\n              (@CategoryTheory.Functor.obj.{u_3, u_3, u_4, u_4} C inst_1 C inst_1\n                (@CategoryTheory.Functor.id.{u_3, u_4} C inst_1)\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))\n              (@CategoryTheory.Functor.obj.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr\n                (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                  (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                    (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c)))\n              (@CategoryTheory.Functor.map.{u_5, u_3, u_6, u_4} D inst_2 C inst_1 Gr X\n                (@CategoryTheory.Functor.obj.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl\n                  (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                    (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c))\n                f)\n              (@CategoryTheory.NatTrans.app.{u_3, u_3, u_4, u_4} C inst_1 C inst_1\n                (@CategoryTheory.Functor.id.{u_3, u_4} C inst_1)\n                (@CategoryTheory.Functor.comp.{u_3, u_5, u_3, u_4, u_6, u_4} C inst_1 D inst_2 C inst_1 Gl Gr)\n                (@CategoryTheory.Adjunction.unit.{u_3, u_5, u_4, u_6} C inst_1 D inst_2 Gl Gr adj)\n                (@CategoryTheory.Limits.Cocone.pt.{u_2, u_3, u_1, u_4} J inst C inst_1\n                  (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c)))\n            Gl],\n      @CategoryTheory.IsUniversalColimit.{u_1, u_2, u_5, u_6} J inst D inst_2\n        (@CategoryTheory.Functor.comp.{u_2, u_3, u_5, u_1, u_4, u_6} J inst C inst_1 D inst_2\n          (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) Gl)\n        (@CategoryTheory.Functor.mapCocone.{u_2, u_3, u_5, u_1, u_4, u_6} J inst C inst_1 D inst_2 Gl\n          (@CategoryTheory.Functor.comp.{u_2, u_5, u_3, u_1, u_6, u_4} J inst D inst_2 C inst_1 F Gr) c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.MorphismProperty.IsStableUnderBaseChange": {
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderBaseChange",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+      "type": "@CategoryTheory.MorphismProperty.IsStableUnderBaseChange.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.NatTrans.Equifibered": {
+      "declaration": "CategoryTheory.NatTrans.Equifibered",
+      "source": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+      "type": "@CategoryTheory.NatTrans.Equifibered.{u_1, u_2, u_3,\n    u_4} : {J : Type u_2} →\n  {C : Type u_4} →\n    [inst : CategoryTheory.Category.{u_1, u_2} J] →\n      [inst_1 : CategoryTheory.Category.{u_3, u_4} C] →\n        @CategoryTheory.MorphismProperty.{max u_2 u_3, max (max (max u_4 u_2) u_3) u_1}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} J inst C inst_1)\n          (@CategoryTheory.Category.toCategoryStruct.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} J inst C inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} J inst C inst_1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.SimplicialObject": {
+      "declaration": "CategoryTheory.SimplicialObject",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "type": "CategoryTheory.SimplicialObject.{u_1,\n  u_2} : (C : Type u_2) → [CategoryTheory.Category.{u_1, u_2} C] → Type (max u_1 u_2)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-validated/declaration-results.csv",
+      "checked_at": "cd1339097901d18ccef25fcbf40dee05be770d2b"
+    },
+    "CategoryTheory.SimplicialObject.Augmented": {
+      "declaration": "CategoryTheory.SimplicialObject.Augmented",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "type": "CategoryTheory.SimplicialObject.Augmented.{u_1,\n  u_2} : (C : Type u_2) → [CategoryTheory.Category.{u_1, u_2} C] → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "CategoryTheory.Subobject.Classifier": {
+      "declaration": "CategoryTheory.Subobject.Classifier",
+      "source": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+      "type": "CategoryTheory.Subobject.Classifier.{u_1,\n  u_2} : (C : Type u_2) → [CategoryTheory.Category.{u_1, u_2} C] → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.effectiveEpi_of_kernelPair": {
+      "declaration": "CategoryTheory.effectiveEpi_of_kernelPair",
+      "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+      "type": "@CategoryTheory.effectiveEpi_of_kernelPair.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {B X : C}\n  (f :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      X B)\n  [inst_1 : @CategoryTheory.Limits.HasPullback.{u_1, u_2} C inst X X B f f]\n  (hc :\n    @CategoryTheory.Limits.IsColimit.{0, u_1, 0, u_2} CategoryTheory.Limits.WalkingParallelPair\n      CategoryTheory.Limits.walkingParallelPairHomCategory C inst\n      (@CategoryTheory.Limits.parallelPair.{u_1, u_2} C\n        (@CategoryTheory.Limits.pullback.{u_1, u_2} C inst X X B f f inst_1) X inst\n        (@CategoryTheory.Limits.pullback.fst.{u_1, u_2} C inst X X B f f inst_1)\n        (@CategoryTheory.Limits.pullback.snd.{u_1, u_2} C inst X X B f f inst_1))\n      (@CategoryTheory.Limits.Cofork.ofπ.{u_1, u_2} C\n        (@CategoryTheory.Limits.pullback.{u_1, u_2} C inst X X B f f inst_1) X inst\n        (@CategoryTheory.Limits.pullback.fst.{u_1, u_2} C inst X X B f f inst_1)\n        (@CategoryTheory.Limits.pullback.snd.{u_1, u_2} C inst X X B f f inst_1) B f ⋯)),\n  @CategoryTheory.EffectiveEpi.{u_1, u_2} C inst B X f",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.epi_iff_surjective": {
+      "declaration": "CategoryTheory.epi_iff_surjective",
+      "source": "Mathlib/CategoryTheory/Types/Basic.lean",
+      "type": "@CategoryTheory.epi_iff_surjective.{u_1} : ∀ {X Y : Type u_1}\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} (Type u_1)\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} (Type u_1)\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1}))\n      X Y),\n  Iff (@CategoryTheory.Epi.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1} X Y f)\n    (@Function.Surjective.{u_1 + 1, u_1 + 1} ((fun X => X) X) ((fun X => X) Y)\n      (@DFunLike.coe.{u_1 + 1, u_1 + 1, u_1 + 1} (TypeCat.Fun.{u_1, u_1} X Y) ((fun X => X) X) (fun x => (fun X => X) Y)\n        (@TypeCat.instFunLikeFun.{u_1, u_1} X Y)\n        (@CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1} (Type u_1) CategoryTheory.types.{u_1}\n          TypeCat.Fun.{u_1, u_1} (fun X => X) (@TypeCat.instFunLikeFun.{u_1, u_1}) instConcreteCategoryTypeFun.{u_1} X Y\n          f)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.epi_of_effectiveEpi": {
+      "declaration": "CategoryTheory.epi_of_effectiveEpi",
+      "source": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+      "type": "@CategoryTheory.epi_of_effectiveEpi : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C] {X Y : C}\n  (f : Y ⟶ X) [CategoryTheory.EffectiveEpi f], CategoryTheory.Epi f",
+      "axioms": [
+        "propext",
+        "Classical.choice"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.isColimitCoforkOfEffectiveEpi": {
+      "declaration": "CategoryTheory.isColimitCoforkOfEffectiveEpi",
+      "source": "Mathlib/CategoryTheory/Limits/Shapes/RegularMono.lean",
+      "type": "@CategoryTheory.isColimitCoforkOfEffectiveEpi : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {B X : C} →\n      (f : X ⟶ B) →\n        [CategoryTheory.EffectiveEpi f] →\n          (c : CategoryTheory.Limits.PullbackCone f f) →\n            CategoryTheory.Limits.IsLimit c → CategoryTheory.Limits.IsColimit (CategoryTheory.Limits.Cofork.ofπ f ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.isSplitEpi_iff_surjective": {
+      "declaration": "CategoryTheory.isSplitEpi_iff_surjective",
+      "source": "Mathlib/CategoryTheory/Types/Basic.lean",
+      "type": "@CategoryTheory.isSplitEpi_iff_surjective.{u_1} : ∀ {X Y : Type u_1}\n  (f :\n    @Quiver.Hom.{u_1, u_1 + 1} (Type u_1)\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_1 + 1} (Type u_1)\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1}))\n      X Y),\n  Iff (@CategoryTheory.IsSplitEpi.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1} X Y f)\n    (@Function.Surjective.{u_1 + 1, u_1 + 1} ((fun X => X) X) ((fun X => X) Y)\n      (@DFunLike.coe.{u_1 + 1, u_1 + 1, u_1 + 1} (TypeCat.Fun.{u_1, u_1} X Y) ((fun X => X) X) (fun x => (fun X => X) Y)\n        (@TypeCat.instFunLikeFun.{u_1, u_1} X Y)\n        (@CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1} (Type u_1) CategoryTheory.types.{u_1}\n          TypeCat.Fun.{u_1, u_1} (fun X => X) (@TypeCat.instFunLikeFun.{u_1, u_1}) instConcreteCategoryTypeFun.{u_1} X Y\n          f)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.plusPlusAdjunction": {
+      "declaration": "CategoryTheory.plusPlusAdjunction",
+      "source": "Mathlib/CategoryTheory/Sites/ConcreteSheafification.lean",
+      "type": "@CategoryTheory.plusPlusAdjunction.{u_1, u_2, u_3, u_4, u_5,\n    u_6} : {C : Type u_5} →\n  [inst : CategoryTheory.Category.{u_4, u_5} C] →\n    (J : @CategoryTheory.GrothendieckTopology.{u_4, u_5} C inst) →\n      (D : Type u_3) →\n        [inst_1 : CategoryTheory.Category.{u_2, u_3} D] →\n          {FD : D → D → Type u_6} →\n            {CD : D → Type u_1} →\n              [inst_2 : (X Y : D) → FunLike.{u_6 + 1, u_1 + 1, u_1 + 1} (FD X Y) (CD X) (CD Y)] →\n                [instCC : @CategoryTheory.ConcreteCategory.{u_1, u_2, u_3, u_6} D inst_1 FD CD inst_2] →\n                  [inst_3 :\n                      ∀ {X : C} (S : @CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X),\n                        @CategoryTheory.Limits.PreservesLimitsOfShape.{max u_5 u_4, max u_5 u_4, u_2, u_1, u_3, u_1 + 1}\n                          D inst_1 (Type u_1) CategoryTheory.types.{u_1}\n                          (CategoryTheory.Limits.WalkingMulticospan.{max u_5 u_4, max u_5 u_4}\n                            (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_4, u_5} C inst X J S))\n                          (@CategoryTheory.Limits.WalkingMulticospan.instSmallCategory.{max u_5 u_4, max u_5 u_4}\n                            (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_4, u_5} C inst X J S))\n                          (@CategoryTheory.forget.{u_1, u_2, u_3, u_6} D inst_1 FD CD inst_2 instCC)] →\n                    [inst_4 :\n                        ∀\n                          (P :\n                            @CategoryTheory.Functor.{u_4, u_2, u_5, u_3} (Opposite.{u_5 + 1} C)\n                              (@CategoryTheory.Category.opposite.{u_4, u_5} C inst) D inst_1)\n                          (X : C) (S : @CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X),\n                          @CategoryTheory.Limits.HasMultiequalizer.{max u_5 u_4, max u_5 u_4, u_2, u_3} D inst_1\n                            (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_4, u_5} C inst X J S)\n                            (@CategoryTheory.GrothendieckTopology.Cover.index.{u_2, u_3, u_4, u_5} C inst X J D inst_1 S\n                              P)] →\n                      [inst_5 :\n                          ∀ (X : C),\n                            @CategoryTheory.Limits.HasColimitsOfShape.{max u_5 u_4, max u_5 u_4, u_2, u_3}\n                              (Opposite.{max (u_5 + 1) (u_4 + 1)}\n                                (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X))\n                              (@CategoryTheory.Category.opposite.{max u_5 u_4, max u_5 u_4}\n                                (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X)\n                                (@Preorder.smallCategory.{max u_5 u_4}\n                                  (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X)\n                                  (@CategoryTheory.GrothendieckTopology.instPreorderCover.{u_5, u_4} C inst J X)))\n                              D inst_1] →\n                        [inst_6 :\n                            ∀ (X : C),\n                              @CategoryTheory.Limits.PreservesColimitsOfShape.{max u_5 u_4, max u_5 u_4, u_2, u_1, u_3,\n                                    u_1 + 1}\n                                D inst_1 (Type u_1) CategoryTheory.types.{u_1}\n                                (Opposite.{max (u_5 + 1) (u_4 + 1)}\n                                  (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X))\n                                (@CategoryTheory.Category.opposite.{max u_5 u_4, max u_5 u_4}\n                                  (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X)\n                                  (@Preorder.smallCategory.{max u_5 u_4}\n                                    (@CategoryTheory.GrothendieckTopology.Cover.{u_4, u_5} C inst J X)\n                                    (@CategoryTheory.GrothendieckTopology.instPreorderCover.{u_5, u_4} C inst J X)))\n                                (@CategoryTheory.forget.{u_1, u_2, u_3, u_6} D inst_1 FD CD inst_2 instCC)] →\n                          [inst_7 :\n                              @CategoryTheory.Functor.ReflectsIsomorphisms.{u_2, u_3, u_1, u_1 + 1} D inst_1 (Type u_1)\n                                CategoryTheory.types.{u_1}\n                                (@CategoryTheory.forget.{u_1, u_2, u_3, u_6} D inst_1 FD CD inst_2 instCC)] →\n                            @CategoryTheory.Adjunction.{max u_5 u_2, max u_5 u_2, max (max (max u_5 u_4) u_3) u_2,\n                                  max (max (max u_5 u_4) u_3) u_2}\n                              (@CategoryTheory.Functor.{u_4, u_2, u_5, u_3} (Opposite.{u_5 + 1} C)\n                                (@CategoryTheory.Category.opposite.{u_4, u_5} C inst) D inst_1)\n                              (@CategoryTheory.Functor.category.{u_4, u_2, u_5, u_3} (Opposite.{u_5 + 1} C)\n                                (@CategoryTheory.Category.opposite.{u_4, u_5} C inst) D inst_1)\n                              (@CategoryTheory.Sheaf.{u_4, u_2, u_5, u_3} C inst J D inst_1)\n                              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_5 u_2,\n                                    max (max (max u_5 u_4) u_3) u_2}\n                                (@CategoryTheory.Functor.{u_4, u_2, u_5, u_3} (Opposite.{u_5 + 1} C)\n                                  (@CategoryTheory.Category.opposite.{u_4, u_5} C inst) D inst_1)\n                                (@CategoryTheory.Functor.category.{u_4, u_2, u_5, u_3} (Opposite.{u_5 + 1} C)\n                                  (@CategoryTheory.Category.opposite.{u_4, u_5} C inst) D inst_1)\n                                (@CategoryTheory.Presheaf.IsSheaf.{u_4, u_2, u_5, u_3} C inst D inst_1 J))\n                              (@CategoryTheory.plusPlusSheaf.{u_1, u_2, u_3, u_4, u_5, u_6} C inst J D inst_1 FD CD\n                                inst_2 instCC inst_3 inst_4 inst_5 inst_6 inst_7)\n                              (@CategoryTheory.sheafToPresheaf.{u_4, u_2, u_5, u_3} C inst J D inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.preservesFiniteLimits_presheafToSheaf": {
+      "declaration": "CategoryTheory.preservesFiniteLimits_presheafToSheaf",
+      "source": "Mathlib/CategoryTheory/Sites/LeftExact.lean",
+      "type": "@CategoryTheory.preservesFiniteLimits_presheafToSheaf.{u_1, u_2, u_3, u_4,\n    u_5} : ∀ {C : Type u_4} [inst : CategoryTheory.Category.{u_3, u_4} C]\n  {J : @CategoryTheory.GrothendieckTopology.{u_3, u_4} C inst} {D : Type u_2}\n  [inst_1 : CategoryTheory.Category.{u_1, u_2} D]\n  [inst_2 :\n    ∀\n      (P :\n        @CategoryTheory.Functor.{u_3, u_1, u_4, u_2} (Opposite.{u_4 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_3, u_4} C inst) D inst_1)\n      (X : C) (S : @CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X),\n      @CategoryTheory.Limits.HasMultiequalizer.{max u_4 u_3, max u_4 u_3, u_1, u_2} D inst_1\n        (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_3, u_4} C inst X J S)\n        (@CategoryTheory.GrothendieckTopology.Cover.index.{u_1, u_2, u_3, u_4} C inst X J D inst_1 S P)]\n  [inst_3 :\n    ∀ (X : C),\n      @CategoryTheory.Limits.HasColimitsOfShape.{max u_4 u_3, max u_4 u_3, u_1, u_2}\n        (Opposite.{max (u_4 + 1) (u_3 + 1)} (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X))\n        (@CategoryTheory.Category.opposite.{max u_4 u_3, max u_4 u_3}\n          (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X)\n          (@Preorder.smallCategory.{max u_4 u_3} (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X)\n            (@CategoryTheory.GrothendieckTopology.instPreorderCover.{u_4, u_3} C inst J X)))\n        D inst_1]\n  {FD : D → D → Type u_5} {CD : D → Type u_1}\n  [inst_4 : (X Y : D) → FunLike.{u_5 + 1, u_1 + 1, u_1 + 1} (FD X Y) (CD X) (CD Y)]\n  [inst_5 : @CategoryTheory.ConcreteCategory.{u_1, u_1, u_2, u_5} D inst_1 FD CD inst_4]\n  [inst_6 :\n    ∀ (X : C),\n      @CategoryTheory.Limits.PreservesColimitsOfShape.{max u_4 u_3, max u_4 u_3, u_1, u_1, u_2, u_1 + 1} D inst_1\n        (Type u_1) CategoryTheory.types.{u_1}\n        (Opposite.{max (u_4 + 1) (u_3 + 1)} (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X))\n        (@CategoryTheory.Category.opposite.{max u_4 u_3, max u_4 u_3}\n          (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X)\n          (@Preorder.smallCategory.{max u_4 u_3} (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X)\n            (@CategoryTheory.GrothendieckTopology.instPreorderCover.{u_4, u_3} C inst J X)))\n        (@CategoryTheory.forget.{u_1, u_1, u_2, u_5} D inst_1 FD CD inst_4 inst_5)]\n  [inst_7 :\n    @CategoryTheory.Functor.ReflectsIsomorphisms.{u_1, u_2, u_1, u_1 + 1} D inst_1 (Type u_1) CategoryTheory.types.{u_1}\n      (@CategoryTheory.forget.{u_1, u_1, u_2, u_5} D inst_1 FD CD inst_4 inst_5)]\n  [inst_8 :\n    ∀ {X : C} (S : @CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X),\n      @CategoryTheory.Limits.PreservesLimitsOfShape.{max u_4 u_3, max u_4 u_3, u_1, u_1, u_2, u_1 + 1} D inst_1\n        (Type u_1) CategoryTheory.types.{u_1}\n        (CategoryTheory.Limits.WalkingMulticospan.{max u_4 u_3, max u_4 u_3}\n          (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_3, u_4} C inst X J S))\n        (@CategoryTheory.Limits.WalkingMulticospan.instSmallCategory.{max u_4 u_3, max u_4 u_3}\n          (@CategoryTheory.GrothendieckTopology.Cover.shape.{u_3, u_4} C inst X J S))\n        (@CategoryTheory.forget.{u_1, u_1, u_2, u_5} D inst_1 FD CD inst_4 inst_5)]\n  [@CategoryTheory.Limits.PreservesLimits.{u_1, u_1, u_2, u_1 + 1} D inst_1 (Type u_1) CategoryTheory.types.{u_1}\n      (@CategoryTheory.forget.{u_1, u_1, u_2, u_5} D inst_1 FD CD inst_4 inst_5)]\n  [∀ (X : C),\n      Small.{u_1, max u_4 u_3}\n        (Opposite.{max (u_4 + 1) (u_3 + 1)} (@CategoryTheory.GrothendieckTopology.Cover.{u_3, u_4} C inst J X))]\n  [@CategoryTheory.Limits.HasFiniteLimits.{u_1, u_2} D inst_1],\n  @CategoryTheory.Limits.PreservesFiniteLimits.{max u_1 u_4, max u_1 u_4, max (max (max u_1 u_4) u_3) u_2,\n        max (max (max u_1 u_4) u_3) u_2}\n    (@CategoryTheory.Functor.{u_3, u_1, u_4, u_2} (Opposite.{u_4 + 1} C)\n      (@CategoryTheory.Category.opposite.{u_3, u_4} C inst) D inst_1)\n    (@CategoryTheory.Functor.category.{u_3, u_1, u_4, u_2} (Opposite.{u_4 + 1} C)\n      (@CategoryTheory.Category.opposite.{u_3, u_4} C inst) D inst_1)\n    (@CategoryTheory.Sheaf.{u_3, u_1, u_4, u_2} C inst J D inst_1)\n    (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_4 u_1, max (max (max u_4 u_3) u_2) u_1}\n      (@CategoryTheory.Functor.{u_3, u_1, u_4, u_2} (Opposite.{u_4 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_3, u_4} C inst) D inst_1)\n      (@CategoryTheory.Functor.category.{u_3, u_1, u_4, u_2} (Opposite.{u_4 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_3, u_4} C inst) D inst_1)\n      (@CategoryTheory.Presheaf.IsSheaf.{u_3, u_1, u_4, u_2} C inst D inst_1 J))\n    (@CategoryTheory.plusPlusSheaf.{u_1, u_1, u_2, u_3, u_4, u_5} C inst J D inst_1 FD CD inst_4 inst_5 inst_8 inst_2\n      inst_3 inst_6 inst_7)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "CategoryTheory.sheafification_reflective": {
+      "declaration": "CategoryTheory.sheafification_reflective",
+      "source": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+      "type": "@CategoryTheory.sheafification_reflective.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  {J : @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst} {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_3, u_4} D]\n  [inst_2 : @CategoryTheory.HasWeakSheafify.{u_1, u_3, u_2, u_4} C inst J D inst_1],\n  @CategoryTheory.IsIso.{max (max (max u_4 u_2) u_3) u_1, max (max (max u_4 u_2) u_3) u_1}\n    (@CategoryTheory.Functor.{max u_2 u_3, max u_2 u_3, max (max (max u_4 u_2) u_3) u_1,\n          max (max (max u_4 u_2) u_3) u_1}\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J)))\n    (@CategoryTheory.Functor.category.{max u_2 u_3, max u_2 u_3, max (max (max u_4 u_2) u_3) u_1,\n          max (max (max u_4 u_2) u_3) u_1}\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J)))\n    (@CategoryTheory.Functor.comp.{max u_2 u_3, max u_2 u_3, max u_2 u_3, max (max (max u_4 u_2) u_3) u_1,\n          max (max (max u_4 u_2) u_3) u_1, max (max (max u_4 u_2) u_3) u_1}\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n      (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.sheafToPresheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.presheafToSheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1 inst_2))\n    (@CategoryTheory.Functor.id.{max u_2 u_3, max (max (max u_4 u_2) u_3) u_1}\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J)))\n    (@CategoryTheory.Adjunction.counit.{max u_2 u_3, max u_2 u_3, max (max (max u_4 u_2) u_3) u_1,\n          max (max (max u_4 u_2) u_3) u_1}\n      (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n      (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n        (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.presheafToSheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1 inst_2)\n      (@CategoryTheory.sheafToPresheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.sheafificationAdjunction.{u_1, u_3, u_2, u_4} C inst J D inst_1 inst_2))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+      "type": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso.{u_1} : (C D : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    [inst_1 : CategoryTheory.Category.{u_1, u_1} D] →\n      @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.nerve.{u_1, u_1} (@CategoryTheory.Functor.{u_1, u_1, u_1, u_1} C inst D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_1} C inst D inst_1))\n        (@CategoryTheory.nerve.{u_1, u_1} C inst ⟹ @CategoryTheory.nerve.{u_1, u_1} D inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/OppositeIso.lean",
+      "type": "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso.{u_1} : (C : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      (@CategoryTheory.nerve.{u_1, u_1} (Opposite.{u_1 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_1} C inst))\n      (@CategoryTheory.nerve.{u_1, u_1} C inst).op",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    }
+  }
+}

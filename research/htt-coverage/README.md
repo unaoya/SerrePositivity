@@ -2,6 +2,8 @@
 
 作成：2026-11-07（段階 II の調整役）。Kerodon の対応表（`research/kerodon-coverage/`）と同じ形で、Lurie『Higher Topos Theory』（以下 HTT）の項目を Lean の宣言に対応させる。実作業は Codex（`codex-review.md`）、検収と地図（HTML）は調整役。
 
+**完了（2026-11-11）**：全 1,730 項目（own 192・mathlib 50・partial 291・none 1,197・unsure 0）。要約と goal 付き 51 項目の不足表は `review/summary.md`。レーンは閉じ、worktree と枝を削除した。
+
 ## 範囲
 
 **本全体**。全章の Section・Subsection の見出しと全項目を一行ずつ作り、全項目を照合する。
@@ -15,6 +17,8 @@
 **Kerodon との重なり**：HTT の第 1〜5 章の多くは Kerodon と同じ内容で、Lean の docstring も両方を並べて引くことが多い（例「HTT 1.1.5.10、Kerodon 2.4.5.8」）。`kerodon` 列に対応する Kerodon の番号を書き、Kerodon の確認の行（`research/kerodon-coverage/review/ch<N>.csv`）を参照する。ただし主張の比較は HTT の本文で行う（仮定の置き方が違うことがある）。
 
 ## ファイル
+
+- 一覧のページ（非公開の Artifact、調整役が照合の取り込みごとに更新）：https://claude.ai/artifact/FqHTXBvb94z7c9xyMtXcjZ
 
 - `citations.csv`：Lean の docstring の HTT の引用（番号つき、2,374 件、11-07 の main で採取）。列は `file,line,kind,number,section,directory`。番号のない「HTT」は含めない。
 - `plan-citations.csv`：計画（`formalization-plans/`、archive を除く）と `research/k-coverage/` の HTT の引用（223 件）。どの項目が段階 II で要るかの印。

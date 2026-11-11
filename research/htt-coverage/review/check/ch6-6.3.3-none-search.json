@@ -1,0 +1,954 @@
+{
+  "6.3.3.1": {
+    "page": 604,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "native filtered index と presentability の結果はあるが、RTop の filtered limit の ∞ トポス性と Cat∞ への包含の保存を与えない。PrR の定義だけでは有限極限保存の左随伴を持つことを検出しない。"
+  },
+  "6.3.3.2": {
+    "page": 604,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "native の Cartesian/cocartesian section 圏は制限条件付きの切断を扱うが、全 section の MapS(S,X) が ∞ トポスとなる宣言はない。presentable fibration の切断の presentability だけをトポス性とはしない。"
+  },
+  "6.3.3.3": {
+    "page": 605,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Bousfield reflection は明示辺族からの accessible reflection で、filtered poset 上の Cartesian sections の full subcategory との同定と左完全性がない。切断の evaluation の同値は基底の始終対象を仮定する別の場合である。"
+  },
+  "6.3.3.4": {
+    "page": 605,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic localization の強飽和閉包は複数の生成族を合わせられる形だが、元の ∞ トポスの左完全な reflector の交叉を同定し左完全性を保存する比較がない。ordinary topology の inf/sup は同じ高次局所化の交叉ではない。"
+  },
+  "6.3.3.5": {
+    "page": 606,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "基底に始対象を仮定した section evaluation の同値はあるが、一般の filtered poset の任意の fiber への評価に左完全左随伴を構成しない。原文の p の N(A)op と MapN(A) の表記も読み替えず、いずれの向きでも必要な幾何学的比較がない。"
+  },
+  "6.3.3.6": {
+    "page": 607,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "Cartesian section と終対象評価の同値はあるが、分類図式 S▹→Cat∞op が colimit であることから任意の Cartesian section が p-colimit diagram となる型はない。通常圏の pointwise limit や generic cofinality は同じ分類図式の仮定と接続しない。"
+  },
+  "6.3.3.7": {
+    "page": 608,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "native QCatAdjunction の unit/counit は各評価随伴の合成を記述できるが、S 全体にわたる θ:S→Fun(C,C) とその colimit が idC となる図式はない。一つの随伴の三角恒等式はこの全切断の分解ではない。"
+  },
+  "6.3.3.8": {
+    "page": 609,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.2",
+        "6.3.3",
+        "6.3.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          "SerrePositivity"
+        ],
+        "file_count": 345,
+        "line_count": 1645
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "RTop|ToposFibration|CartesianSection|cartesianSection|IsLeftExact|leftExact|Bousfield|cocartesianSectionsEvaluate",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 14,
+        "line_count": 51
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Cofinality/InitialSectionLifting.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f"
+          },
+          {
+            "line": 67,
+            "head": "lemma exists_kanCocartesianSectionsEvaluate_lift {A T E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hv : IsInitialVertex v) (U : T.Subcomplex) (g : (U : SSet.{u}) ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a) (f : T ⟶ vertexFiber p (a.app (Opposite.op ⦋0⦌) v)) (h : g ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = U.ι ≫ f) : ∃ s : T ⟶ SerrePositivity.InfinityCategories.cocartesianSections p a, U.ι ≫ s = g ∧ s ≫ SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v = f := exists_kanCocartesianSectionsEvaluate_lift_of_fixedPrism p a v hv.exists_fixed_initial_prism U g f h"
+          },
+          {
+            "line": 81,
+            "head": "lemma cocartesianSectionsEvaluate_trivialKanFibration_of_fixedPrism {A E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [CocartesianFibration p] (a : A ⟶ B) (v : A _⦋0⦌) (hC : ∃ C : (Δ[1] : SSet.{u}) ⊗ A ⟶ A, prismEndpoint 0 A ≫ C = SSet.const v ∧ prismEndpoint 1 A ≫ C = 𝟙 A ∧ ∀ K : SSet.{u}, (Δ[1] ◁ (SSet.const v : K ⟶ A)) ≫ C = SSet.const v) : TrivialKanFibration (SerrePositivity.InfinityCategories.cocartesianSectionsEvaluate p a v)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "as well as the complete lattice structure on Grothendieck topologies (which gives two additional"
+          },
+          {
+            "line": 72,
+            "head": "structure GrothendieckTopology where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic accessible right adjoint の判定はあるが、全 fiber 評価との合成が幾何学的であることから π* の左随伴の左完全性を検出しない。pointwise な colimit 保存だけは幾何学的射のこの iff の代わりにならない。"
+  }
+}

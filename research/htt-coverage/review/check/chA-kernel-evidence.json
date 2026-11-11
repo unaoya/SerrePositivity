@@ -1,0 +1,569 @@
+{
+  "base": "ff9c3c2ece83140d98225914834acf2b870dcfa8",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "A.1.1.1": {
+      "page": 788,
+      "declarations": [
+        "CategoryTheory.isCardinalFiltered_preorder",
+        "CategoryTheory.IsCardinalFiltered.exists_max"
+      ]
+    },
+    "A.1.1.2": {
+      "page": 788,
+      "declarations": [
+        "CategoryTheory.IsLocallyPresentable",
+        "CategoryTheory.IsCardinalLocallyPresentable"
+      ]
+    },
+    "A.1.2.1": {
+      "page": 789,
+      "declarations": [
+        "CategoryTheory.HasLiftingProperty",
+        "CategoryTheory.MorphismProperty.rlp",
+        "CategoryTheory.MorphismProperty.llp",
+        "CategoryTheory.MorphismProperty.le_llp_rlp"
+      ]
+    },
+    "A.1.2.2": {
+      "page": 789,
+      "declarations": [
+        "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange",
+        "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition",
+        "CategoryTheory.MorphismProperty.IsStableUnderRetracts"
+      ]
+    },
+    "A.1.2.3": {
+      "page": 790,
+      "declarations": [
+        "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition",
+        "CategoryTheory.MorphismProperty.isomorphisms_le_of_containsIdentities",
+        "CategoryTheory.MorphismProperty.comp_mem"
+      ]
+    },
+    "A.1.2.5": {
+      "page": 790,
+      "declarations": [
+        "SerrePositivity.Smith.hasSmallObjectArgument",
+        "SerrePositivity.Smith.AccessibleSmallObject.exists_factorization_at",
+        "SerrePositivity.Smith.generatedLeft_le_of_closed",
+        "SerrePositivity.MorphismClosure.stableUnderCoproducts"
+      ]
+    },
+    "A.1.2.7": {
+      "page": 791,
+      "declarations": [
+        "SerrePositivity.Smith.hasSmallObjectArgument",
+        "SerrePositivity.Smith.generatedLeft_le_of_closed",
+        "SerrePositivity.MorphismClosure.stableUnderCoproducts",
+        "CategoryTheory.MorphismProperty.le_llp_rlp",
+        "CategoryTheory.MorphismProperty.llp_rlp_of_hasSmallObjectArgument"
+      ]
+    },
+    "A.1.3.1": {
+      "page": 793,
+      "declarations": [
+        "CategoryTheory.CartesianMonoidalCategory.ofHasFiniteProducts",
+        "CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts"
+      ]
+    },
+    "A.1.3.2": {
+      "page": 794,
+      "declarations": [
+        "CategoryTheory.MonoidalCategory"
+      ]
+    },
+    "A.1.3.3": {
+      "page": 794,
+      "declarations": [
+        "CategoryTheory.MonoidalOpposite",
+        "CategoryTheory.MonoidalOpposite.tensorLeftIso"
+      ]
+    },
+    "A.1.3.4": {
+      "page": 794,
+      "declarations": [
+        "CategoryTheory.Closed",
+        "CategoryTheory.MonoidalClosed",
+        "CategoryTheory.MonoidalOpposite.tensorLeftIso"
+      ]
+    },
+    "A.1.3.5": {
+      "page": 794,
+      "declarations": [
+        "CategoryTheory.Functor.LaxMonoidal",
+        "CategoryTheory.Functor.OplaxMonoidal",
+        "CategoryTheory.Functor.Monoidal",
+        "CategoryTheory.NatTrans.IsMonoidal"
+      ]
+    },
+    "A.1.3.6": {
+      "page": 795,
+      "declarations": [
+        "CategoryTheory.Adjunction.laxMonoidalEquivOplaxMonoidal"
+      ]
+    },
+    "A.1.3.7": {
+      "page": 795,
+      "declarations": [
+        "CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts",
+        "CategoryTheory.Functor.Monoidal.nonempty_monoidal_iff_preservesFiniteProducts"
+      ]
+    },
+    "A.1.4.1": {
+      "page": 796,
+      "declarations": [
+        "CategoryTheory.MonoidalClosed.enrichedCategorySelf",
+        "CategoryTheory.MonoidalClosed.enrichedCategorySelf_hom",
+        "CategoryTheory.MonoidalOpposite.tensorLeftIso"
+      ]
+    },
+    "A.1.4.2": {
+      "page": 797,
+      "declarations": [
+        "CategoryTheory.ForgetEnrichment",
+        "CategoryTheory.EnrichedCategory"
+      ]
+    },
+    "A.1.4.3": {
+      "page": 797,
+      "declarations": [
+        "CategoryTheory.TransportEnrichment",
+        "CategoryTheory.ForgetEnrichment",
+        "CategoryTheory.EnrichedCategory"
+      ]
+    },
+    "A.1.4.4": {
+      "page": 797,
+      "declarations": [
+        "CategoryTheory.EnrichedFunctor",
+        "CategoryTheory.EnrichedNatTrans"
+      ]
+    },
+    "A.1.4.5": {
+      "page": 799,
+      "declarations": [
+        "CategoryTheory.MonoidalClosed.enrichedCategorySelf",
+        "CategoryTheory.MonoidalClosed.enrichedCategorySelf_hom"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.Adjunction.laxMonoidalEquivOplaxMonoidal": {
+      "declaration": "CategoryTheory.Adjunction.laxMonoidalEquivOplaxMonoidal",
+      "source": "Mathlib/CategoryTheory/Monoidal/Functor.lean",
+      "type": "@CategoryTheory.Adjunction.laxMonoidalEquivOplaxMonoidal.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [inst_3 : @CategoryTheory.MonoidalCategory.{u_2, u_4} D inst_2] →\n            {F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2} →\n              {G : @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_2 C inst} →\n                @CategoryTheory.Adjunction.{u_1, u_2, u_3, u_4} C inst D inst_2 F G →\n                  Equiv.{max (u_4 + 1) (u_1 + 1), max (u_3 + 1) (u_2 + 1)}\n                    (@CategoryTheory.Functor.LaxMonoidal.{u_2, u_1, u_4, u_3} D inst_2 inst_3 C inst inst_1 G)\n                    (@CategoryTheory.Functor.OplaxMonoidal.{u_1, u_2, u_3, u_4} C inst inst_1 D inst_2 inst_3 F)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts": {
+      "declaration": "CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+      "type": "@CategoryTheory.CartesianMonoidalCategory.ofChosenFiniteProducts.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.Limits.LimitCone.{0, 0, u_1, u_2} (CategoryTheory.Discrete.{0} PEmpty.{1})\n        (CategoryTheory.discreteCategory.{0} PEmpty.{1}) C inst (@CategoryTheory.Functor.empty.{0, u_1, u_2} C inst) →\n      ((X Y : C) →\n          @CategoryTheory.Limits.LimitCone.{0, 0, u_1, u_2}\n            (CategoryTheory.Discrete.{0} CategoryTheory.Limits.WalkingPair)\n            (CategoryTheory.discreteCategory.{0} CategoryTheory.Limits.WalkingPair) C inst\n            (@CategoryTheory.Limits.pair.{u_1, u_2} C inst X Y)) →\n        @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.CartesianMonoidalCategory.ofHasFiniteProducts": {
+      "declaration": "CategoryTheory.CartesianMonoidalCategory.ofHasFiniteProducts",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+      "type": "@CategoryTheory.CartesianMonoidalCategory.ofHasFiniteProducts.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.Limits.HasFiniteProducts.{u_1, u_2} C inst] →\n      @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.Closed": {
+      "declaration": "CategoryTheory.Closed",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "type": "@CategoryTheory.Closed.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → C → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.EnrichedCategory": {
+      "declaration": "CategoryTheory.EnrichedCategory",
+      "source": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+      "type": "CategoryTheory.EnrichedCategory.{u_1, u_2,\n  u_3} : (V : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} V] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} V inst] → Type u_3 → Type (max (max u_3 u_2) u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.EnrichedFunctor": {
+      "declaration": "CategoryTheory.EnrichedFunctor",
+      "source": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+      "type": "CategoryTheory.EnrichedFunctor.{u_1, u_2, u_3,\n  u_4} : (V : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} V] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} V inst] →\n      (C : Type u_3) →\n        [@CategoryTheory.EnrichedCategory.{u_1, u_2, u_3} V inst inst_1 C] →\n          (D : Type u_4) →\n            [@CategoryTheory.EnrichedCategory.{u_1, u_2, u_4} V inst inst_1 D] → Type (max (max u_3 u_4) u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.EnrichedNatTrans": {
+      "declaration": "CategoryTheory.EnrichedNatTrans",
+      "source": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+      "type": "@CategoryTheory.EnrichedNatTrans.{u_1, u_2, u_3,\n    u_4} : {V : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} V] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} V inst] →\n      {C : Type u_3} →\n        [inst_2 : @CategoryTheory.EnrichedCategory.{u_1, u_2, u_3} V inst inst_1 C] →\n          {D : Type u_4} →\n            [inst_3 : @CategoryTheory.EnrichedCategory.{u_1, u_2, u_4} V inst inst_1 D] →\n              @CategoryTheory.EnrichedFunctor.{u_1, u_2, u_3, u_4} V inst inst_1 C inst_2 D inst_3 →\n                @CategoryTheory.EnrichedFunctor.{u_1, u_2, u_3, u_4} V inst inst_1 C inst_2 D inst_3 →\n                  Type (max u_3 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.ForgetEnrichment": {
+      "declaration": "CategoryTheory.ForgetEnrichment",
+      "source": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+      "type": "CategoryTheory.ForgetEnrichment.{u_1, u_2,\n  u_3} : (W : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} W] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} W inst] →\n      (C : Type u_3) → [@CategoryTheory.EnrichedCategory.{u_1, u_2, u_3} W inst inst_1 C] → Type u_3",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.Functor.LaxMonoidal": {
+      "declaration": "CategoryTheory.Functor.LaxMonoidal",
+      "source": "Mathlib/CategoryTheory/Monoidal/Functor.lean",
+      "type": "@CategoryTheory.Functor.LaxMonoidal.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [@CategoryTheory.MonoidalCategory.{u_2, u_4} D inst_2] →\n            @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2 → Type (max u_3 u_2)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.Functor.Monoidal": {
+      "declaration": "CategoryTheory.Functor.Monoidal",
+      "source": "Mathlib/CategoryTheory/Monoidal/Functor.lean",
+      "type": "@CategoryTheory.Functor.Monoidal.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [@CategoryTheory.MonoidalCategory.{u_2, u_4} D inst_2] →\n            @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2 → Type (max u_3 u_2)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.Functor.Monoidal.nonempty_monoidal_iff_preservesFiniteProducts": {
+      "declaration": "CategoryTheory.Functor.Monoidal.nonempty_monoidal_iff_preservesFiniteProducts",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+      "type": "@CategoryTheory.Functor.Monoidal.nonempty_monoidal_iff_preservesFiniteProducts.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C]\n  [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_3} C inst] {D : Type u_4}\n  [inst_2 : CategoryTheory.Category.{u_2, u_4} D]\n  [inst_3 : @CategoryTheory.CartesianMonoidalCategory.{u_2, u_4} D inst_2]\n  (F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2),\n  Iff\n    (Nonempty.{max (u_3 + 1) (u_2 + 1)}\n      (@CategoryTheory.Functor.Monoidal.{u_1, u_2, u_3, u_4} C inst\n        (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_3} C inst\n          (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_3} C inst inst_1))\n        D inst_2\n        (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_2, u_4} D inst_2\n          (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_2, u_4} D inst_2 inst_3))\n        F))\n    (@CategoryTheory.Limits.PreservesFiniteProducts.{u_1, u_2, u_3, u_4} C inst D inst_2 F)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.Functor.OplaxMonoidal": {
+      "declaration": "CategoryTheory.Functor.OplaxMonoidal",
+      "source": "Mathlib/CategoryTheory/Monoidal/Functor.lean",
+      "type": "@CategoryTheory.Functor.OplaxMonoidal.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [@CategoryTheory.MonoidalCategory.{u_2, u_4} D inst_2] →\n            @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2 → Type (max u_3 u_2)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts": {
+      "declaration": "CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts",
+      "source": "Mathlib/CategoryTheory/Monoidal/Cartesian/Basic.lean",
+      "type": "@CategoryTheory.Functor.OplaxMonoidal.ofChosenFiniteProducts.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [inst_3 : @CategoryTheory.CartesianMonoidalCategory.{u_2, u_4} D inst_2] →\n            (F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2) →\n              @CategoryTheory.Functor.OplaxMonoidal.{u_1, u_2, u_3, u_4} C inst\n                (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_3} C inst\n                  (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_3} C inst inst_1))\n                D inst_2\n                (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_2, u_4} D inst_2\n                  (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_2, u_4} D inst_2\n                    inst_3))\n                F",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.HasLiftingProperty": {
+      "declaration": "CategoryTheory.HasLiftingProperty",
+      "source": "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+      "type": "@CategoryTheory.HasLiftingProperty.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    {A B X Y : C} →\n      @Quiver.Hom.{u_1, u_2} C\n          (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n            (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n          A B →\n        @Quiver.Hom.{u_1, u_2} C\n            (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n              (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n            X Y →\n          Prop",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.IsCardinalFiltered.exists_max": {
+      "declaration": "CategoryTheory.IsCardinalFiltered.exists_max",
+      "source": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+      "type": "@CategoryTheory.IsCardinalFiltered.exists_max.{u_1, u_2, u_3,\n    u_4} : ∀ {J : Type u_4} [inst : CategoryTheory.Category.{u_2, u_4} J] {κ : Cardinal.{u_1}} [hκ : Fact κ.IsRegular]\n  [@CategoryTheory.IsCardinalFiltered.{u_1, u_2, u_4} J inst κ hκ] {K : Type u_3} (S : K → J),\n  HasCardinalLT.{u_1, u_3} K κ →\n    ∃ j,\n      Nonempty.{max (u_3 + 1) (u_2 + 1)}\n        ((k : K) →\n          @Quiver.Hom.{u_2, u_4} J\n            (@CategoryTheory.CategoryStruct.toQuiver.{u_2, u_4} J\n              (@CategoryTheory.Category.toCategoryStruct.{u_2, u_4} J inst))\n            (S k) j)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.IsCardinalLocallyPresentable": {
+      "declaration": "CategoryTheory.IsCardinalLocallyPresentable",
+      "source": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+      "type": "CategoryTheory.IsCardinalLocallyPresentable.{u_1, u_2,\n  u_3} : (C : Type u_3) → [CategoryTheory.Category.{u_2, u_3} C] → (κ : Cardinal.{u_1}) → [Fact κ.IsRegular] → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.IsLocallyPresentable": {
+      "declaration": "CategoryTheory.IsLocallyPresentable",
+      "source": "Mathlib/CategoryTheory/Presentable/LocallyPresentable.lean",
+      "type": "CategoryTheory.IsLocallyPresentable.{u_1, u_2,\n  u_3} : (C : Type u_3) → [hC : CategoryTheory.Category.{u_2, u_3} C] → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/ch5-5.5-kernel-evidence.json",
+      "checked_at": "a4833a252cc913f95217a21a5aac7774a9263d44"
+    },
+    "CategoryTheory.MonoidalCategory": {
+      "declaration": "CategoryTheory.MonoidalCategory",
+      "source": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+      "type": "CategoryTheory.MonoidalCategory.{u_1,\n  u_2} : (C : Type u_2) → [𝒞 : CategoryTheory.Category.{u_1, u_2} C] → Type (max u_2 u_1)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MonoidalClosed": {
+      "declaration": "CategoryTheory.MonoidalClosed",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "type": "CategoryTheory.MonoidalClosed.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MonoidalClosed.enrichedCategorySelf": {
+      "declaration": "CategoryTheory.MonoidalClosed.enrichedCategorySelf",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Enrichment.lean",
+      "type": "CategoryTheory.MonoidalClosed.enrichedCategorySelf.{u_1,\n  u_2} : (C : Type u_1) →\n  [inst : CategoryTheory.Category.{u_2, u_1} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_2, u_1} C inst] →\n      [@CategoryTheory.MonoidalClosed.{u_2, u_1} C inst inst_1] →\n        @CategoryTheory.EnrichedCategory.{u_2, u_1, u_1} C inst inst_1 C",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MonoidalClosed.enrichedCategorySelf_hom": {
+      "declaration": "CategoryTheory.MonoidalClosed.enrichedCategorySelf_hom",
+      "source": "Mathlib/CategoryTheory/Monoidal/Closed/Enrichment.lean",
+      "type": "@CategoryTheory.MonoidalClosed.enrichedCategorySelf_hom.{u_1,\n    u_2} : ∀ {C : Type u_1} [inst : CategoryTheory.Category.{u_2, u_1} C]\n  [inst_1 : @CategoryTheory.MonoidalCategory.{u_2, u_1} C inst]\n  [inst_2 : @CategoryTheory.MonoidalClosed.{u_2, u_1} C inst inst_1] (X Y : C),\n  @Eq.{u_1 + 1} C\n    (@CategoryTheory.EnrichedCategory.Hom.{u_2, u_1, u_1} C inst inst_1 C\n      (@CategoryTheory.MonoidalClosed.enrichedCategorySelf.{u_1, u_2} C inst inst_1 inst_2) X Y)\n    (X ⟹ Y)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MonoidalOpposite": {
+      "declaration": "CategoryTheory.MonoidalOpposite",
+      "source": "Mathlib/CategoryTheory/Monoidal/Opposite.lean",
+      "type": "CategoryTheory.MonoidalOpposite.{u_1} : Type u_1 → Type u_1",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MonoidalOpposite.tensorLeftIso": {
+      "declaration": "CategoryTheory.MonoidalOpposite.tensorLeftIso",
+      "source": "Mathlib/CategoryTheory/Monoidal/Opposite.lean",
+      "type": "@CategoryTheory.MonoidalOpposite.tensorLeftIso.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      (X : CategoryTheory.MonoidalOpposite.{u_2} C) →\n        @CategoryTheory.Iso.{max u_2 u_1, max u_2 u_1}\n          (@CategoryTheory.Functor.{u_1, u_1, u_2, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n            (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst))\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n            (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst))\n          (@CategoryTheory.MonoidalCategory.tensorLeft.{u_1, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n            (@CategoryTheory.monoidalCategoryMop.{u_1, u_2} C inst inst_1) X)\n          (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_2, u_2, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst) C inst\n            (CategoryTheory.MonoidalOpposite.{u_2} C)\n            (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n            (@CategoryTheory.unmopFunctor.{u_1, u_2} C inst)\n            (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_2, u_2, u_2} C inst C inst\n              (CategoryTheory.MonoidalOpposite.{u_2} C)\n              (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n              (@CategoryTheory.MonoidalCategory.tensorRight.{u_1, u_2} C inst inst_1\n                (@CategoryTheory.MonoidalOpposite.unmop.{u_2} C X))\n              (@CategoryTheory.mopFunctor.{u_1, u_2} C inst)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange": {
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderCobaseChange",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Limits.lean",
+      "type": "@CategoryTheory.MorphismProperty.IsStableUnderCobaseChange.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MorphismProperty.IsStableUnderRetracts": {
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderRetracts",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Retract.lean",
+      "type": "@CategoryTheory.MorphismProperty.IsStableUnderRetracts.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) → Prop",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition": {
+      "declaration": "CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/TransfiniteComposition.lean",
+      "type": "@CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition.{u_1, u_2,\n    u_3} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_2, u_3} C] →\n    @CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst) → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MorphismProperty.comp_mem": {
+      "declaration": "CategoryTheory.MorphismProperty.comp_mem",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Composition.lean",
+      "type": "@CategoryTheory.MorphismProperty.comp_mem.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (W : @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n  [@CategoryTheory.MorphismProperty.IsStableUnderComposition.{u_1, u_2} C inst W] {X Y Z : C}\n  (f :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      X Y)\n  (g :\n    @Quiver.Hom.{u_1, u_2} C\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_2} C\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      Y Z),\n  @W X Y f →\n    @W Y Z g →\n      @W X Z\n        (@CategoryTheory.CategoryStruct.comp.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)\n          X Y Z f g)",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MorphismProperty.isomorphisms_le_of_containsIdentities": {
+      "declaration": "CategoryTheory.MorphismProperty.isomorphisms_le_of_containsIdentities",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/Composition.lean",
+      "type": "@CategoryTheory.MorphismProperty.isomorphisms_le_of_containsIdentities.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (P : @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n  [@CategoryTheory.MorphismProperty.ContainsIdentities.{u_1, u_2} C inst P]\n  [@CategoryTheory.MorphismProperty.RespectsIso.{u_1, u_2} C inst P],\n  @LE.le.{max u_2 u_1}\n    (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n    (@Preorder.toLE.{max u_2 u_1}\n      (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      (@PartialOrder.toPreorder.{max u_2 u_1}\n        (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n        (@CompleteSemilatticeInf.toPartialOrder.{max u_2 u_1}\n          (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n          (@CompleteLattice.toCompleteSemilatticeInf.{max u_2 u_1}\n            (@CategoryTheory.MorphismProperty.{u_1, u_2} C\n              (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n            (@CompleteBooleanAlgebra.toCompleteLattice.{max u_2 u_1}\n              (@CategoryTheory.MorphismProperty.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)))))))\n    (@CategoryTheory.MorphismProperty.isomorphisms.{u_1, u_2} C inst) P",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MorphismProperty.le_llp_rlp": {
+      "declaration": "CategoryTheory.MorphismProperty.le_llp_rlp",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "type": "@CategoryTheory.MorphismProperty.le_llp_rlp.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (T : @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)),\n  @LE.le.{max u_2 u_1}\n    (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n    (@Preorder.toLE.{max u_2 u_1}\n      (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n      (@PartialOrder.toPreorder.{max u_2 u_1}\n        (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n        (@CompleteSemilatticeInf.toPartialOrder.{max u_2 u_1}\n          (@CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n          (@CompleteLattice.toCompleteSemilatticeInf.{max u_2 u_1}\n            (@CategoryTheory.MorphismProperty.{u_1, u_2} C\n              (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n            (@CompleteBooleanAlgebra.toCompleteLattice.{max u_2 u_1}\n              (@CategoryTheory.MorphismProperty.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n              (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_1, u_2} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)))))))\n    T\n    (@CategoryTheory.MorphismProperty.llp.{u_1, u_2} C inst (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst T))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MorphismProperty.llp": {
+      "declaration": "CategoryTheory.MorphismProperty.llp",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "type": "@CategoryTheory.MorphismProperty.llp.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst) →\n      @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst)",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.MorphismProperty.llp_rlp_of_hasSmallObjectArgument": {
+      "declaration": "CategoryTheory.MorphismProperty.llp_rlp_of_hasSmallObjectArgument",
+      "source": "Mathlib/CategoryTheory/SmallObject/Basic.lean",
+      "type": "@CategoryTheory.MorphismProperty.llp_rlp_of_hasSmallObjectArgument.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  (I : @CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n  [@CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_2, u_3} C inst I],\n  @Eq.{max (u_3 + 1) (u_2 + 1)}\n    (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n    (@CategoryTheory.MorphismProperty.llp.{u_2, u_3} C inst (@CategoryTheory.MorphismProperty.rlp.{u_2, u_3} C inst I))\n    (@CategoryTheory.MorphismProperty.retracts.{u_2, u_3} C inst\n      (@CategoryTheory.MorphismProperty.transfiniteCompositions.{u_1, u_2, u_3} C inst\n        (@CategoryTheory.MorphismProperty.pushouts.{u_2, u_3} C inst\n          (@CategoryTheory.MorphismProperty.coproducts.{u_1, u_2, u_3} C inst I))))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.MorphismProperty.rlp": {
+      "declaration": "CategoryTheory.MorphismProperty.rlp",
+      "source": "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+      "type": "@CategoryTheory.MorphismProperty.rlp : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] → CategoryTheory.MorphismProperty C → CategoryTheory.MorphismProperty C",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/ch9-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.NatTrans.IsMonoidal": {
+      "declaration": "CategoryTheory.NatTrans.IsMonoidal",
+      "source": "Mathlib/CategoryTheory/Monoidal/NaturalTransformation.lean",
+      "type": "@CategoryTheory.NatTrans.IsMonoidal.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_3} C inst] →\n      {D : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} D] →\n          [inst_3 : @CategoryTheory.MonoidalCategory.{u_2, u_4} D inst_2] →\n            {F₁ F₂ : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2} →\n              @Quiver.Hom.{max u_3 u_2, max (max (max u_3 u_4) u_1) u_2}\n                  (@CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2)\n                  (@CategoryTheory.CategoryStruct.toQuiver.{max u_3 u_2, max (max (max u_3 u_4) u_1) u_2}\n                    (@CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2)\n                    (@CategoryTheory.Category.toCategoryStruct.{max u_3 u_2, max (max (max u_3 u_4) u_1) u_2}\n                      (@CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_2)\n                      (@CategoryTheory.Functor.category.{u_1, u_2, u_3, u_4} C inst D inst_2)))\n                  F₁ F₂ →\n                [@CategoryTheory.Functor.LaxMonoidal.{u_1, u_2, u_3, u_4} C inst inst_1 D inst_2 inst_3 F₁] →\n                  [@CategoryTheory.Functor.LaxMonoidal.{u_1, u_2, u_3, u_4} C inst inst_1 D inst_2 inst_3 F₂] → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "CategoryTheory.TransportEnrichment": {
+      "declaration": "CategoryTheory.TransportEnrichment",
+      "source": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+      "type": "@CategoryTheory.TransportEnrichment.{u_1, u_2, u_3, u_4,\n    u_5} : {V : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} V] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_3} V inst] →\n      {W : Type u_4} →\n        [inst_2 : CategoryTheory.Category.{u_2, u_4} W] →\n          [inst_3 : @CategoryTheory.MonoidalCategory.{u_2, u_4} W inst_2] →\n            (F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} V inst W inst_2) →\n              [@CategoryTheory.Functor.LaxMonoidal.{u_1, u_2, u_3, u_4} V inst inst_1 W inst_2 inst_3 F] →\n                Type u_5 → Type u_5",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "CategoryTheory.isCardinalFiltered_preorder": {
+      "declaration": "CategoryTheory.isCardinalFiltered_preorder",
+      "source": "Mathlib/CategoryTheory/Presentable/IsCardinalFiltered.lean",
+      "type": "CategoryTheory.isCardinalFiltered_preorder.{u_1} : ∀ (J : Type u_1) [inst : Preorder.{u_1} J] (κ : Cardinal.{u_1})\n  [inst_1 : Fact κ.IsRegular],\n  (∀ ⦃K : Type u_1⦄ (s : K → J),\n      @LT.lt.{u_1 + 1} Cardinal.{u_1}\n          (@Preorder.toLT.{u_1 + 1} Cardinal.{u_1}\n            (@PartialOrder.toPreorder.{u_1 + 1} Cardinal.{u_1} Cardinal.partialOrder.{u_1}))\n          (Cardinal.mk.{u_1} K) κ →\n        ∃ j, ∀ (k : K), @LE.le.{u_1} J (@Preorder.toLE.{u_1} J inst) (s k) j) →\n    @CategoryTheory.IsCardinalFiltered.{u_1, u_1, u_1} J (@Preorder.smallCategory.{u_1} J inst) κ inst_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/ch5-5.3-kernel-evidence.json",
+      "checked_at": "688345e95efb5a280d0cc612a03a5d9cb0264c63"
+    },
+    "SerrePositivity.MorphismClosure.stableUnderCoproducts": {
+      "declaration": "SerrePositivity.MorphismClosure.stableUnderCoproducts",
+      "source": "SerrePositivity/HomotopicalAlgebra/Smith/CoproductClosure.lean",
+      "type": "@SerrePositivity.MorphismClosure.stableUnderCoproducts.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  (P : @CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n  [@CategoryTheory.Limits.HasCoproducts.{u_1, u_2, u_3} C inst]\n  [@CategoryTheory.MorphismProperty.IsStableUnderCobaseChange.{u_2, u_3} C inst P]\n  [@CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition.{u_1, u_2, u_3} C inst P],\n  @CategoryTheory.MorphismProperty.IsStableUnderCoproducts.{u_1, u_2, u_3} C inst P",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.Smith.AccessibleSmallObject.exists_factorization_at": {
+      "declaration": "SerrePositivity.Smith.AccessibleSmallObject.exists_factorization_at",
+      "source": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleSmallObject.lean",
+      "type": "@SerrePositivity.Smith.AccessibleSmallObject.exists_factorization_at.{u_1,\n    u_2} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [@CategoryTheory.Limits.HasColimitsOfSize.{u_1, u_1, u_1, u_2} C inst]\n  (I : @CategoryTheory.MorphismProperty.{u_1, u_2} C (@CategoryTheory.Category.toCategoryStruct.{u_1, u_2} C inst))\n  [@CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_1, u_2} C inst I] (κ : Cardinal.{u_1})\n  [inst_3 : Fact κ.IsRegular]\n  [∀\n      (i :\n        @Set.Elem.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n          (@CategoryTheory.MorphismProperty.toSet.{u_1, u_2} C inst I)),\n      @CategoryTheory.IsCardinalPresentable.{u_1, u_1, u_2} C inst\n        (@CategoryTheory.Arrow.left.{u_1, u_2} C inst\n          (@Subtype.val.{max (u_2 + 1) (u_1 + 1)} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n            (fun x =>\n              @Membership.mem.{max u_2 u_1, max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n                (Set.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst))\n                (@Set.instMembership.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst))\n                (@CategoryTheory.MorphismProperty.toSet.{u_1, u_2} C inst I) x)\n            i))\n        κ inst_3]\n  [∀\n      (i :\n        @Set.Elem.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n          (@CategoryTheory.MorphismProperty.toSet.{u_1, u_2} C inst I)),\n      @CategoryTheory.IsCardinalPresentable.{u_1, u_1, u_2} C inst\n        (@CategoryTheory.Arrow.right.{u_1, u_2} C inst\n          (@Subtype.val.{max (u_2 + 1) (u_1 + 1)} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n            (fun x =>\n              @Membership.mem.{max u_2 u_1, max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst)\n                (Set.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst))\n                (@Set.instMembership.{max u_2 u_1} (@CategoryTheory.Arrow.{u_1, u_2} C inst))\n                (@CategoryTheory.MorphismProperty.toSet.{u_1, u_2} C inst I) x)\n            i))\n        κ inst_3],\n  ∃ d,\n    And\n      (@CategoryTheory.Functor.IsCardinalAccessible.{u_1, u_1, u_1, max u_2 u_1, u_2}\n        (@CategoryTheory.Arrow.{u_1, u_2} C inst) (@CategoryTheory.instCategoryArrow.{u_1, u_2} C inst) C inst\n        (@CategoryTheory.MorphismProperty.FunctorialFactorizationData.Z.{u_1, u_2} C inst\n          (@CategoryTheory.MorphismProperty.llp.{u_1, u_2} C inst\n            (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I))\n          (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I) d)\n        κ inst_3)\n      (And\n        (@CategoryTheory.Functor.IsCardinalAccessible.{u_1, u_1, u_1, max u_2 u_1, max u_2 u_1}\n          (@CategoryTheory.Arrow.{u_1, u_2} C inst) (@CategoryTheory.instCategoryArrow.{u_1, u_2} C inst)\n          (@CategoryTheory.Arrow.{u_1, u_2} C inst) (@CategoryTheory.instCategoryArrow.{u_1, u_2} C inst)\n          (@SerrePositivity.Smith.AccessibleFactorization.leftFactor.{u_1, u_2} C inst\n            (@CategoryTheory.MorphismProperty.llp.{u_1, u_2} C inst\n              (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I))\n            (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I) d)\n          κ inst_3)\n        (@CategoryTheory.Functor.IsCardinalAccessible.{u_1, u_1, u_1, max u_2 u_1, max u_2 u_1}\n          (@CategoryTheory.Arrow.{u_1, u_2} C inst) (@CategoryTheory.instCategoryArrow.{u_1, u_2} C inst)\n          (@CategoryTheory.Arrow.{u_1, u_2} C inst) (@CategoryTheory.instCategoryArrow.{u_1, u_2} C inst)\n          (@SerrePositivity.Smith.AccessibleFactorization.rightFactor.{u_1, u_2} C inst\n            (@CategoryTheory.MorphismProperty.llp.{u_1, u_2} C inst\n              (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I))\n            (@CategoryTheory.MorphismProperty.rlp.{u_1, u_2} C inst I) d)\n          κ inst_3))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.Smith.generatedLeft_le_of_closed": {
+      "declaration": "SerrePositivity.Smith.generatedLeft_le_of_closed",
+      "source": "SerrePositivity/HomotopicalAlgebra/Smith/ClosedGeneratedClass.lean",
+      "type": "@SerrePositivity.Smith.generatedLeft_le_of_closed.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  (G P : @CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n  [@CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_2, u_3} C inst G]\n  [@CategoryTheory.MorphismProperty.IsStableUnderRetracts.{u_2, u_3} C inst P]\n  [@CategoryTheory.MorphismProperty.IsStableUnderCoproducts.{u_1, u_2, u_3} C inst P]\n  [@CategoryTheory.MorphismProperty.IsStableUnderCobaseChange.{u_2, u_3} C inst P]\n  [@CategoryTheory.MorphismProperty.IsStableUnderTransfiniteComposition.{u_1, u_2, u_3} C inst P],\n  @LE.le.{max u_3 u_2}\n      (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n      (@Preorder.toLE.{max u_3 u_2}\n        (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n        (@PartialOrder.toPreorder.{max u_3 u_2}\n          (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n          (@ChainCompletePartialOrder.toPartialOrder.{max u_3 u_2}\n            (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n              (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n            (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_3 u_2}\n              (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n              (@CompleteBooleanAlgebra.toCompleteLattice.{max u_3 u_2}\n                (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n                  (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n                (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_2, u_3} C\n                  (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst)))))))\n      G P →\n    @LE.le.{max u_3 u_2}\n      (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n      (@Preorder.toLE.{max u_3 u_2}\n        (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n        (@PartialOrder.toPreorder.{max u_3 u_2}\n          (@CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n          (@ChainCompletePartialOrder.toPartialOrder.{max u_3 u_2}\n            (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n              (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n            (@ChainCompletePartialOrder.instOfCompleteLattice.{max u_3 u_2}\n              (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n                (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n              (@CompleteBooleanAlgebra.toCompleteLattice.{max u_3 u_2}\n                (@CategoryTheory.MorphismProperty.{u_2, u_3} C\n                  (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n                (@CategoryTheory.MorphismProperty.instCompleteBooleanAlgebra.{u_2, u_3} C\n                  (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst)))))))\n      (@CategoryTheory.MorphismProperty.llp.{u_2, u_3} C inst\n        (@CategoryTheory.MorphismProperty.rlp.{u_2, u_3} C inst G))\n      P",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    },
+    "SerrePositivity.Smith.hasSmallObjectArgument": {
+      "declaration": "SerrePositivity.Smith.hasSmallObjectArgument",
+      "source": "SerrePositivity/HomotopicalAlgebra/Smith/Smallness.lean",
+      "type": "@SerrePositivity.Smith.hasSmallObjectArgument.{u_1, u_2,\n    u_3} : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_2, u_3} C]\n  [@CategoryTheory.IsLocallyPresentable.{u_1, u_2, u_3} C inst]\n  (I : @CategoryTheory.MorphismProperty.{u_2, u_3} C (@CategoryTheory.Category.toCategoryStruct.{u_2, u_3} C inst))\n  [@CategoryTheory.MorphismProperty.IsSmall.{u_1, u_2, u_3} C inst I],\n  @CategoryTheory.MorphismProperty.HasSmallObjectArgument.{u_1, u_2, u_3} C inst I",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/stage4-ch3-01",
+      "checked_at": "752abad80ea8ea4e791d9da15e8ecf4a8b6aa7a6"
+    }
+  }
+}
