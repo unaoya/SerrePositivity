@@ -1,0 +1,911 @@
+{
+  "5.5.2.1": {
+    "page": 462,
+    "citations": {
+      "item": 0,
+      "subsection": 5,
+      "neighboring_subsections": [
+        "5.5.1",
+        "5.5.2",
+        "5.5.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          "SerrePositivity"
+        ],
+        "file_count": 1558,
+        "line_count": 10052
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 440,
+        "line_count": 2906
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafRepresentationRestriction.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def presheafRepresentationCandidate {A : SSet.{u}} [Quasicategory A] (F : (PresheafInfinity A).op ⟶ SpaceInfinity.{u}) : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u} := (uliftOppositeIso.{u, u + 1} A).hom ≫ SSet.opFunctor.map (yonedaInfinityMap A) ≫ F"
+          },
+          {
+            "line": 36,
+            "head": "lemma presheafUniverseDiagram_vertex {A : SSet.{u}} (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : (presheafUniverseDiagram A).app (Opposite.op ⦋0⦌) (ULift.up (functorVertex P)) = functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (uliftOppositeIso.{u, u + 1} A).inv ≫ (SSet.uliftFunctor.{u + 2, u + 1}).map P ≫ Compact.spaceUniverseDiagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma presheaf_representableInversionDetectsLocality (A : SSet.{u}) [Quasicategory A] : RepresentableInversionDetectsLocality (PresheafInfinity A)"
+          },
+          {
+            "line": 34,
+            "head": "lemma presentableContinuous_isRepresentable {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) : IsRepresentableSmallSpaceFunctor F := presentableContinuous_isRepresentable_of_inversionLocality presheaf_representableInversionDetectsLocality hC F hF"
+          },
+          {
+            "line": 45,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality presheaf_representableInversionDetectsLocality hC hD L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 96,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          },
+          {
+            "line": 116,
+            "head": "lemma exists_rightAdjoint_of_colimitPreserving_representability_native {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (hY : IsAccessible Y) (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H → IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : PreservesSmallColimits L) : ∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma accessible_preservesLimits_isCorepresentable {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) (hCa : IsAccessible C) (hCl : HasSmallLimits C) (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) : IsCorepresentableSmallSpaceFunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : HasSmallLimits C"
+          },
+          {
+            "line": 45,
+            "head": "lemma presentable_isLimitCone_iff_representables {C : SSet.{u + 1}} [Quasicategory C] {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C} (c : JoinCone D) : IsLimitCone c ↔ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c)) := isLimitCone_iff_covariantRepresentableInfinity c"
+          },
+          {
+            "line": 56,
+            "head": "lemma IsPresentable.exists_limitCone_representables {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {K : SSet.{u}} (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) : ∃ c : JoinCone D, IsLimitCone c ∧ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeHomInterchangeIso.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma kanRelativeHomInterchangeMap_comp (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : kanRelativeHomInterchangeMap si sj s t ≫ kanRelativeHomInterchangeMap sj si t s = 𝟙 s.pt"
+          },
+          {
+            "line": 54,
+            "head": "def kanRelativeHomInterchangeIso (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : s.pt ≅ t.pt where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def kanCoconeFamilyTranspose {A J D : SSet.{u}} (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) : JoinCocone (joinInl J (Δ[0] : SSet.{u}) ≫ curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f)) := ⟨curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f), rfl⟩"
+          },
+          {
+            "line": 36,
+            "head": "lemma kanRelativeCoconeLifting_relativeFunctor_of_first_vertices {A J D E : SSet.{u}} (U : D ⟶ E) (A₀ : A.Subcomplex) (sj : internalHom.PullbackObjObj A₀.ι U) (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) (hf : ∀ (m : ℕ) (s : A _⦋m + 1⦌), s ∉ A₀.obj (Opposite.op ⦋m + 1⦌) → KanRelativeCoconeLifting U (kanCoconeFamilyAt f (simplexFirstVertex s))) : KanRelativeCoconeLifting sj.π (kanCoconeFamilyTranspose f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteLattice/Defs.lean",
+        "signatures": [
+          {
+            "line": 142,
+            "head": "class CompleteLattice (α : Type*) extends Lattice α, CompleteSemilatticeSup α, CompleteSemilatticeInf α, BoundedOrder α"
+          },
+          {
+            "line": 152,
+            "head": "instance (priority := 100) CompleteLattice.toPartialOrder' [CompleteLattice α] : PartialOrder α := inferInstance"
+          },
+          {
+            "line": 161,
+            "head": "instance : CompleteLattice my_T where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "theorem limit.lift_π_app (H : J ⥤ K ⥤ C) [HasLimit H] (c : Cone H) (j : J) (k : K) : (limit.lift H c).app k ≫ (limit.π H j).app k = (c.π.app j).app k := congr_app (limit.lift_π c j) k"
+          },
+          {
+            "line": 44,
+            "head": "theorem colimit.ι_desc_app (H : J ⥤ K ⥤ C) [HasColimit H] (c : Cocone H) (j : J) (k : K) : (colimit.ι H j).app k ≫ (colimit.desc H c).app k = (c.ι.app j).app k := congr_app (colimit.ι_desc c j) k"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          },
+          {
+            "line": 67,
+            "head": "lemma presheaf_hasSmallLimits (A : SSet.{u}) : HasSmallLimits (PresheafInfinity A)"
+          },
+          {
+            "line": 77,
+            "head": "lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma functor_hasSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) : HasSmallColimits ((ihom A).obj C)"
+          },
+          {
+            "line": 35,
+            "head": "lemma functor_isColimitCone_iff_pointwise (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom A).obj C} (c : JoinCocone D) : IsColimitCone c ↔ IsPointwiseColimitCone c := ⟨isPointwiseColimitCone_of_hasColimits (hC K) c, isColimitCone_of_pointwise c⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hLocal : ∀ (A : SSet.{u}) [Quasicategory A], RepresentableInversionDetectsLocality (PresheafInfinity A)) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def spaceCompactGeneratorCategory : SSet.{u} := smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex"
+          },
+          {
+            "line": 27,
+            "head": "instance spaceCompactGeneratorCategory_quasicategory : Quasicategory spaceCompactGeneratorCategory.{u} := inferInstanceAs (Quasicategory (smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex))"
+          }
+        ]
+      }
+    ],
+    "decision": "採用 PDF 印刷頁462では f:S→Space、F:P(Sop)→Space が f により corepresented、j:S→P(Sop) と記載され、米田の向きが整合しない（画像でも確認）。元の米田 Hom 比較は Map(j(s),f) を f(s) と比較するが、文字通りの F は Map(f,j(s)) を与える。presheafRepresentation_restrictionIso は反対前層圏上の関手についての比較であり、記載のままの型とは異なる。黙って op を追加して一致としない（source-notes 参照）。"
+  },
+  "5.5.2.3": {
+    "page": 463,
+    "citations": {
+      "item": 0,
+      "subsection": 5,
+      "neighboring_subsections": [
+        "5.5.1",
+        "5.5.2",
+        "5.5.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          "SerrePositivity"
+        ],
+        "file_count": 1558,
+        "line_count": 10052
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 440,
+        "line_count": 2906
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafRepresentationRestriction.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def presheafRepresentationCandidate {A : SSet.{u}} [Quasicategory A] (F : (PresheafInfinity A).op ⟶ SpaceInfinity.{u}) : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u} := (uliftOppositeIso.{u, u + 1} A).hom ≫ SSet.opFunctor.map (yonedaInfinityMap A) ≫ F"
+          },
+          {
+            "line": 36,
+            "head": "lemma presheafUniverseDiagram_vertex {A : SSet.{u}} (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : (presheafUniverseDiagram A).app (Opposite.op ⦋0⦌) (ULift.up (functorVertex P)) = functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (uliftOppositeIso.{u, u + 1} A).inv ≫ (SSet.uliftFunctor.{u + 2, u + 1}).map P ≫ Compact.spaceUniverseDiagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma presheaf_representableInversionDetectsLocality (A : SSet.{u}) [Quasicategory A] : RepresentableInversionDetectsLocality (PresheafInfinity A)"
+          },
+          {
+            "line": 34,
+            "head": "lemma presentableContinuous_isRepresentable {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) : IsRepresentableSmallSpaceFunctor F := presentableContinuous_isRepresentable_of_inversionLocality presheaf_representableInversionDetectsLocality hC F hF"
+          },
+          {
+            "line": 45,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality presheaf_representableInversionDetectsLocality hC hD L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 96,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          },
+          {
+            "line": 116,
+            "head": "lemma exists_rightAdjoint_of_colimitPreserving_representability_native {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (hY : IsAccessible Y) (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H → IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : PreservesSmallColimits L) : ∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma accessible_preservesLimits_isCorepresentable {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) (hCa : IsAccessible C) (hCl : HasSmallLimits C) (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) : IsCorepresentableSmallSpaceFunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : HasSmallLimits C"
+          },
+          {
+            "line": 45,
+            "head": "lemma presentable_isLimitCone_iff_representables {C : SSet.{u + 1}} [Quasicategory C] {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C} (c : JoinCone D) : IsLimitCone c ↔ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c)) := isLimitCone_iff_covariantRepresentableInfinity c"
+          },
+          {
+            "line": 56,
+            "head": "lemma IsPresentable.exists_limitCone_representables {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {K : SSet.{u}} (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) : ∃ c : JoinCone D, IsLimitCone c ∧ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeHomInterchangeIso.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma kanRelativeHomInterchangeMap_comp (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : kanRelativeHomInterchangeMap si sj s t ≫ kanRelativeHomInterchangeMap sj si t s = 𝟙 s.pt"
+          },
+          {
+            "line": 54,
+            "head": "def kanRelativeHomInterchangeIso (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : s.pt ≅ t.pt where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def kanCoconeFamilyTranspose {A J D : SSet.{u}} (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) : JoinCocone (joinInl J (Δ[0] : SSet.{u}) ≫ curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f)) := ⟨curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f), rfl⟩"
+          },
+          {
+            "line": 36,
+            "head": "lemma kanRelativeCoconeLifting_relativeFunctor_of_first_vertices {A J D E : SSet.{u}} (U : D ⟶ E) (A₀ : A.Subcomplex) (sj : internalHom.PullbackObjObj A₀.ι U) (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) (hf : ∀ (m : ℕ) (s : A _⦋m + 1⦌), s ∉ A₀.obj (Opposite.op ⦋m + 1⦌) → KanRelativeCoconeLifting U (kanCoconeFamilyAt f (simplexFirstVertex s))) : KanRelativeCoconeLifting sj.π (kanCoconeFamilyTranspose f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteLattice/Defs.lean",
+        "signatures": [
+          {
+            "line": 142,
+            "head": "class CompleteLattice (α : Type*) extends Lattice α, CompleteSemilatticeSup α, CompleteSemilatticeInf α, BoundedOrder α"
+          },
+          {
+            "line": 152,
+            "head": "instance (priority := 100) CompleteLattice.toPartialOrder' [CompleteLattice α] : PartialOrder α := inferInstance"
+          },
+          {
+            "line": 161,
+            "head": "instance : CompleteLattice my_T where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "theorem limit.lift_π_app (H : J ⥤ K ⥤ C) [HasLimit H] (c : Cone H) (j : J) (k : K) : (limit.lift H c).app k ≫ (limit.π H j).app k = (c.π.app j).app k := congr_app (limit.lift_π c j) k"
+          },
+          {
+            "line": 44,
+            "head": "theorem colimit.ι_desc_app (H : J ⥤ K ⥤ C) [HasColimit H] (c : Cocone H) (j : J) (k : K) : (colimit.ι H j).app k ≫ (colimit.desc H c).app k = (c.ι.app j).app k := congr_app (colimit.ι_desc c j) k"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          },
+          {
+            "line": 67,
+            "head": "lemma presheaf_hasSmallLimits (A : SSet.{u}) : HasSmallLimits (PresheafInfinity A)"
+          },
+          {
+            "line": 77,
+            "head": "lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma functor_hasSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) : HasSmallColimits ((ihom A).obj C)"
+          },
+          {
+            "line": 35,
+            "head": "lemma functor_isColimitCone_iff_pointwise (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom A).obj C} (c : JoinCocone D) : IsColimitCone c ↔ IsPointwiseColimitCone c := ⟨isPointwiseColimitCone_of_hasColimits (hC K) c, isColimitCone_of_pointwise c⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hLocal : ∀ (A : SSet.{u}) [Quasicategory A], RepresentableInversionDetectsLocality (PresheafInfinity A)) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def spaceCompactGeneratorCategory : SSet.{u} := smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex"
+          },
+          {
+            "line": 27,
+            "head": "instance spaceCompactGeneratorCategory_quasicategory : Quasicategory spaceCompactGeneratorCategory.{u} := inferInstanceAs (Quasicategory (smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex))"
+          }
+        ]
+      }
+    ],
+    "decision": "X▷×Y▷ の図式で各 Y▷ 列と Y 上の各 X▷ 行が q-colimit なら、最後の X▷ 行も q-colimit となる。kanRelativeHomInterchangeIso は相対 Hom の入れ替えの同型、kanRelativeCoconeLifting_relativeFunctor_of_first_vertices は相対境界充填の一条件であり、この二族の指定余錐から最後の余錐の q-colimit 性を直接結論しない。通常の反復余極限の交換とも相対 q を区別する。"
+  },
+  "5.5.2.6": {
+    "page": 464,
+    "citations": {
+      "item": 0,
+      "subsection": 5,
+      "neighboring_subsections": [
+        "5.5.1",
+        "5.5.2",
+        "5.5.3"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          "SerrePositivity"
+        ],
+        "file_count": 1558,
+        "line_count": 10052
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)([Cc]orepresentable|[Rr]epresentable|[Rr]elative.*[Ii]nterchange|[Cc]otensor|[Hh]asSmallLimits|[Cc]ompleteLattice|[Rr]ightAdjoint|[Ll]eftAdjoint)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 440,
+        "line_count": 2906
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafRepresentationRestriction.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def presheafRepresentationCandidate {A : SSet.{u}} [Quasicategory A] (F : (PresheafInfinity A).op ⟶ SpaceInfinity.{u}) : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u} := (uliftOppositeIso.{u, u + 1} A).hom ≫ SSet.opFunctor.map (yonedaInfinityMap A) ≫ F"
+          },
+          {
+            "line": 36,
+            "head": "lemma presheafUniverseDiagram_vertex {A : SSet.{u}} (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : (presheafUniverseDiagram A).app (Opposite.op ⦋0⦌) (ULift.up (functorVertex P)) = functorVertex ((SSet.uliftFunctor.{u + 2, u + 1}).map (uliftOppositeIso.{u, u + 1} A).inv ≫ (SSet.uliftFunctor.{u + 2, u + 1}).map P ≫ Compact.spaceUniverseDiagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AdjointFunctorTheorem.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma presheaf_representableInversionDetectsLocality (A : SSet.{u}) [Quasicategory A] : RepresentableInversionDetectsLocality (PresheafInfinity A)"
+          },
+          {
+            "line": 34,
+            "head": "lemma presentableContinuous_isRepresentable {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) (F : C.op ⟶ SpaceInfinity.{u}) (hF : SendsSmallColimitsToLimits F) : IsRepresentableSmallSpaceFunctor F := presentableContinuous_isRepresentable_of_inversionLocality presheaf_representableInversionDetectsLocality hC F hF"
+          },
+          {
+            "line": 45,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality presheaf_representableInversionDetectsLocality hC hD L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/NativeAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "lemma rightAdjoint_isAccessible {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsAccessible C) (hD : IsAccessible D) {L : C ⟶ D} {R : D ⟶ C} (a : QCatAdjunction L R) : IsAccessibleFunctor R"
+          },
+          {
+            "line": 96,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          },
+          {
+            "line": 116,
+            "head": "lemma exists_rightAdjoint_of_colimitPreserving_representability_native {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (hY : IsAccessible Y) (hRep : ∀ H : X.op ⟶ SpaceInfinity.{u}, SendsSmallColimitsToLimits H → IsRepresentableSmallSpaceFunctor H) (L : X ⟶ Y) (hL : PreservesSmallColimits L) : ∃ R : Y ⟶ X, Nonempty (QCatAdjunction L R)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessibleCorepresentability.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma accessible_preservesLimits_isCorepresentable {C : SSet.{u + 1}} [Quasicategory C] (F : C ⟶ SpaceInfinity.{u}) (hCa : IsAccessible C) (hCl : HasSmallLimits C) (hFa : IsAccessibleFunctor F) (hFl : PreservesSmallLimits F) : IsCorepresentableSmallSpaceFunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableSmallLimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma IsPresentable.hasSmallLimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) : HasSmallLimits C"
+          },
+          {
+            "line": 45,
+            "head": "lemma presentable_isLimitCone_iff_representables {C : SSet.{u + 1}} [Quasicategory C] {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C} (c : JoinCone D) : IsLimitCone c ↔ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c)) := isLimitCone_iff_covariantRepresentableInfinity c"
+          },
+          {
+            "line": 56,
+            "head": "lemma IsPresentable.exists_limitCone_representables {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {K : SSet.{u}} (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C) : ∃ c : JoinCone D, IsLimitCone c ∧ ∀ x : C _⦋0⦌, IsLimitCone (mapJoinCone (covariantRepresentableInfinity x) (JoinCone.ulift.{u + 1, u + 2} c))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeHomInterchangeIso.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma kanRelativeHomInterchangeMap_comp (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : kanRelativeHomInterchangeMap si sj s t ≫ kanRelativeHomInterchangeMap sj si t s = 𝟙 s.pt"
+          },
+          {
+            "line": 54,
+            "head": "def kanRelativeHomInterchangeIso (si : internalHom.PullbackObjObj i p) (sj : internalHom.PullbackObjObj j p) (s : internalHom.PullbackObjObj j si.π) (t : internalHom.PullbackObjObj i sj.π) : s.pt ≅ t.pt where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeCoconeInterchange.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def kanCoconeFamilyTranspose {A J D : SSet.{u}} (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) : JoinCocone (joinInl J (Δ[0] : SSet.{u}) ≫ curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f)) := ⟨curry ((β_ A (join J (Δ[0] : SSet.{u}))).hom ≫ uncurry f), rfl⟩"
+          },
+          {
+            "line": 36,
+            "head": "lemma kanRelativeCoconeLifting_relativeFunctor_of_first_vertices {A J D E : SSet.{u}} (U : D ⟶ E) (A₀ : A.Subcomplex) (sj : internalHom.PullbackObjObj A₀.ι U) (f : A ⟶ (ihom (join J (Δ[0] : SSet.{u}))).obj D) (hf : ∀ (m : ℕ) (s : A _⦋m + 1⦌), s ∉ A₀.obj (Opposite.op ⦋m + 1⦌) → KanRelativeCoconeLifting U (kanCoconeFamilyAt f (simplexFirstVertex s))) : KanRelativeCoconeLifting sj.π (kanCoconeFamilyTranspose f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteLattice/Defs.lean",
+        "signatures": [
+          {
+            "line": 142,
+            "head": "class CompleteLattice (α : Type*) extends Lattice α, CompleteSemilatticeSup α, CompleteSemilatticeInf α, BoundedOrder α"
+          },
+          {
+            "line": 152,
+            "head": "instance (priority := 100) CompleteLattice.toPartialOrder' [CompleteLattice α] : PartialOrder α := inferInstance"
+          },
+          {
+            "line": 161,
+            "head": "instance : CompleteLattice my_T where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/FunctorCategory/Basic.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "theorem limit.lift_π_app (H : J ⥤ K ⥤ C) [HasLimit H] (c : Cone H) (j : J) (k : K) : (limit.lift H c).app k ≫ (limit.π H j).app k = (c.π.app j).app k := congr_app (limit.lift_π c j) k"
+          },
+          {
+            "line": 44,
+            "head": "theorem colimit.ι_desc_app (H : J ⥤ K ⥤ C) [HasColimit H] (c : Cocone H) (j : J) (k : K) : (colimit.ι H j).app k ≫ (colimit.desc H c).app k = (c.ι.app j).app k := congr_app (colimit.ι_desc c j) k"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          },
+          {
+            "line": 67,
+            "head": "lemma presheaf_hasSmallLimits (A : SSet.{u}) : HasSmallLimits (PresheafInfinity A)"
+          },
+          {
+            "line": 77,
+            "head": "lemma space_hasSmallLimits : HasSmallLimits SpaceInfinity.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorSmallColimits.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma functor_hasSmallColimits (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) : HasSmallColimits ((ihom A).obj C)"
+          },
+          {
+            "line": 35,
+            "head": "lemma functor_isColimitCone_iff_pointwise (A : SSet.{u + 1}) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) {K : SSet.{u}} {D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ (ihom A).obj C} (c : JoinCocone D) : IsColimitCone c ↔ IsPointwiseColimitCone c := ⟨isPointwiseColimitCone_of_hasColimits (hC K) c, isColimitCone_of_pointwise c⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/LeftAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) (hLocal : ∀ (A : SSet.{u}) [Quasicategory A], RepresentableInversionDetectsLocality (PresheafInfinity A)) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (L : C ⟶ D) : (∃ R : D ⟶ C, Nonempty (QCatAdjunction L R)) ↔ PreservesSmallColimits L := exists_rightAdjoint_iff_preservesSmallColimits_of_representability hU hD.isAccessible (fun F hF ↦ presentableContinuous_isRepresentable_of_inversionLocality hLocal hC F hF) L"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresentableEquivalence.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma equivalence_preservesSmallColimits {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] {F : C ⟶ E} (hF : IsQCatEquivalence F) : PreservesSmallColimits F"
+          },
+          {
+            "line": 28,
+            "head": "lemma HasSmallColimits.of_equivalence {C E : SSet.{u + 1}} [Quasicategory C] [Quasicategory E] (hC : HasSmallColimits C) (e : QCatEquivalence C E) : HasSmallColimits E"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/RightAdjointFunctorCriterion.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful (hU : IsFullyFaithful Compact.spaceUniverseDiagram.{u}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : IsPresentable C) (hD : IsPresentable D) (R : D ⟶ C) : (∃ L : C ⟶ D, Nonempty (QCatAdjunction L R)) ↔ IsAccessibleFunctor R ∧ PreservesSmallLimits R"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SpacePresentable.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def spaceCompactGeneratorCategory : SSet.{u} := smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex"
+          },
+          {
+            "line": 27,
+            "head": "instance spaceCompactGeneratorCategory_quasicategory : Quasicategory spaceCompactGeneratorCategory.{u} := inferInstanceAs (Quasicategory (smallFullModel Ind.space_hasSmallFixedVertexMaps finiteSpaceGeneratorVertex))"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の小空間 X による C の cotensor と元の Map の X 乗との自然同型。SpaceTensorData は X⊗C の左随伴であり、cotensor C^X の全反変 Hom 比較ではない。IsPresentable.hasSmallLimits は定値図式の極限の存在を与えるが、その指定頂点の Hom を指数空間と同定する宣言は見つからない。"
+  }
+}
