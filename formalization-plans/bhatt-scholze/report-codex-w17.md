@@ -299,3 +299,27 @@ K5 の `exists_lciRelation_regular_completedTensor` と包絡の分類・存在�
 本体合計6,000行の上限まで **2,140行**。停止点5では、有限部分族の遷移を単位を保つ一意な δ 射で作ること、一様なねじれ指数を取り出すこと、生の余極限と実完備化の比較が不足する。S′ の完備余極限と完全化をこの残量で閉じられるかを開始時に再見積もりし、合計6,000行または S′ 部分2,500行を超えそうなら指示どおり止める。
 
 入口と全体監査への43本の登録、および取り込みの検収は調整役に委ねる。**停止点4で停止。**
+
+## 15. 停止点4後：S′ 開始時の再見積もりと規模による停止
+
+main `ac33a3640`（指示書 §7）を fast-forward で取り込んだ。開始時の再調査では、残りは **約2,300〜3,200行**、既存3,860行と合わせて **約6,160〜7,060行**を見込む。数学的な最小行数ではなく、現在の API から単位・比較まで公開する実装量の見積もりである。残量2,140行を超えそうなので、**指示書 §6・§7 に従い、新規実装に入る前に停止する。停止点5には未到達。**
+
+| 残る束 | 新規行数の見込み |
+| --- | ---: |
+| 任意添字の根付き基底と有限関係部分族の比較、実 H⁰ と S′ の比較 | 450〜650 |
+| 有限包絡の遷移、基底・生成元・単位の整合性 | 300〜400 |
+| 一様ねじれ評価、生の余極限の還元と実完備化、有界 prism と完全忠実平坦性 | 750〜1,000 |
+| 完備余極限上の S′ 単位、全有界標的への一意延長 | 400〜550 |
+| 完全化の標準射・商、Cor 7.3 の単位を保つ唯一の同型と零環の枝 | 400〜600 |
+| 合計 | **2,300〜3,200** |
+
+S′ だけでも **1,900〜2,600行**であり、部分上限2,500行を超える可能性もある。当初 §11 の S′ 1,000〜1,800行から増えた理由は、次の比較を独立に作る必要があるため。
+
+- `exists_rootRelationAinfEnvelope` は変数全体が有限の定理。任意 J の固定した根付き基底上で有限個の関係を殺す定理とは型が異なる。`RootFamilyFractionBasis` の指数分解は `[Finite J]` と `Finsupp.equivFunOnFinite` を使う。`rootFamilyBaseReindex` は添字の全単射であり、有限部分集合の包含・補変数への分離・反復完備化との比較は供給しない。既存の宣言を変更せず、この比較を新規に置く必要がある。
+- 有限 T ごとの `IsBoundedPrism` や `rootRelationRawCompleted_bounded` の「ある指数が存在する」だけでは、図式全体に一様な指数は得られない。生の関係商は `rootRelationRaw_torsion_bound` と perfectoid のねじれ評価から指数1を持つ。`DerivedPurity` の `moduleTowerLimit_power_torsion_bound_of_relations` を再利用して、指定した指数を実完備化へ渡し、それを余極限に渡す補題が要る。存在指数から一様性を仮定することはしない。
+- `deltaAdjoinDivisionFiniteColimitEquiv` は、固定した δ 基底上の **生の**除算環の有限部分族余極限を全族へ比較する。δ 保存・各段の公式・`deltaAdjoinDivisionFiniteColimit_p_mul_injective` は再利用するが、有限 T の選んだ完備包絡の図式、剰余の完全忠実平坦性、S′ の実 H⁰ 完備化との比較までは含まない。生の余極限を完備余極限と同一視して行数を削れない。
+- `RootEnvelope/Source` の bounded-support の Tor 交換と実還元も確認した。これは Thm 7.4 の根添加・除算源の図式であり、今回の Xi(0) のみを殺す商との比較が別途必要。既存の Tor 交換自体は作り直さず利用するが、全ての根を殺す商への置換はしない。
+
+再開時は、上表の順に `RootFamilyFiniteSubfamily`・`RootRelationUniformBound`・`RootRelationColimit`・`RootRelationCompletedColimit`・`RootRelationInitial`・`RootRelationPerfection` の新規ファイル族に分ける案。一般の指数保存・完備余極限の補題は `HomologicalAlgebra/DerivedCompletion/` に置く。完全化側では非完全な源からの `existsUnique_deltaPerfectionPDCompletionHom`、`exists_perfectoidization_of_perfectPrism_quotient`、既存の完全 prism の比較を再利用し、S′ 上の単位を保つ同型まで示す。全有界試験 prism の範囲・零環の枝・drafts の定義は維持する。
+
+今回は調査と本報告のみ。新しい数学・drafts の変更・ビルド・鍵の取得は行っていない。有限 T の43モジュール・3,860行の検証結果は §14 のまま。**規模上限による停止であり、S′ と完全化は未実装。**
