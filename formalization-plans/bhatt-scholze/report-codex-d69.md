@@ -345,3 +345,9 @@
 - ビルド済みの追加2本を含む98本の一時監査は2,554宣言、標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSixtyFive.lean` と `/private/tmp/d69-morning-audit-sixtyfive.log`。登録候補に `CrystallineSmallBridgeCoordinates` と `CrystallineBridgeAlgebra` を加える。
 - 次の7本の対象ビルドを、一つの整理券、`--wait 3600`、鍵の使用1700秒以内で流している（`/private/tmp/d69-ticket-build-25.log`）。上の2本、`CrystallineWittCoefficients`、`CrystallineSmallBridgeComplex`、共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap`・`ScalarQuotient`、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient`。いずれも個別検査済み。
 - `ModuleMap` は既存の `toModules` を射に移し、環のコホモロジー同型から線形な交代余面複体の擬同型を得る。`ScalarQuotient` は実際の環の商射に対応する線形複体の短完全列。`CompleteScalarQuotient` は、商複体を短完全列で指定した形の完備複体の判定と、整数添字への零延長の両立を示す。`CrystallineSmallBridgeComplex` で小さい橋の始域・終域・線形な余鎖射を固定し、両複体の零延長の導来 p 完備性を示した。
+
+- 上記7本の対象ビルドは `/private/tmp/d69-ticket-build-25.log` で成功した。追加5本を含む103本の一時監査は2,619宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventy.lean` と `/private/tmp/d69-morning-audit-seventy.log`。新規ソース中の `sorry`・独自公理は0で、以前の宣言の型や証明の変更はない。
+- 登録候補に `CrystallineWittCoefficients`、`CrystallineSmallBridgeComplex`、共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap`・`ScalarQuotient`、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarQuotient` を加える。
+- `CrystallineWittCoefficients` は、係数射の δ 両立と prism 射に加え、(p) の分冪構造から Witt 基底の分冪構造への両立も示した。ここでは既存の `PDFrobeniusLift` の階乗消去の補題を直接使った。
+- `CompleteScalarQuotient` には自然数添字の入口も加えた。実際の通常商を短完全列で指定すれば、整数添字への零延長が導来完備な二つの複体の間の射について、商の射の擬同型から元の射の擬同型が従う。これを適用する `CrystallineSmallBridgeQuasiIso`（整係数の小さい結晶の橋の擬同型）は新規部品と合わせた個別検査を通り、通常の import で再検査中。
+- 作業木の `PDEnvelopeCrystallineCoefficientMaps` は、係数環が異なる場合に分冪包の標準 δ 構造を保つことを示し、個別検査を通った。既存の基底固定の宣言はそのまま使える。次は、実際の小さい分冪模型の係数変更にこの補題を適用する。Witt 環の p 正則性から、標準 ℤ_p 作用の平坦性を示す `CrystallineWittFlat` も検査している。
