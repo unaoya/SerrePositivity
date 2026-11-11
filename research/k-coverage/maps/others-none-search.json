@@ -1,0 +1,2618 @@
+{
+  "163": {
+    "number": "§1.3",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "古典 Waldhausen 圏での S•・wS•・実現の定義。近接する sConstruction は安定準圏の Gap の充満部分圏。Waldhausen 圏の cofibration と弱同値を移す比較が要る。"
+  },
+  "164": {
+    "number": "1.4.2",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "古典 Waldhausen 圏の cofibration 列に対する加法性。安定準圏の core の反復 S• に対する局所化同型はあるが、同じ古典 S• との比較を確認できない。"
+  },
+  "165": {
+    "number": "1.6.4",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "同じ古典 Waldhausen 圏の二つの弱同値類によるファイバー列。k6Fibration は安定準圏の Verdier 列の連結 K を扱い、v⊂w の比較を与えない。"
+  },
+  "166": {
+    "number": "1.5.9",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "厳密共終部分圏に沿う古典 wS• の比較。凍結 L2 の球状模型を探し、現在の kSpectrumMap_cofinality は準圏の Karoubi 同値を入力とすることを確認した。"
+  },
+  "167": {
+    "number": "1.7.1",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "球状対象の懸垂系とセル濾過の比較。凍結 L2 の球状模型・安定行列の型を調べたが、原典のセル濾過からの写像は確認できない。"
+  },
+  "168": {
+    "number": "1.8.1",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "弱同値まで分裂する cofibration を仮定して懸垂系の wC と wS• を比べる。凍結 L2 の安定行列模型に同じ分裂仮定と比較は見当たらない。"
+  },
+  "169": {
+    "number": "2.3.2",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "有限セルの単体環加群の古典 S• と K′₀×BĜL⁺ の同値。retract 版は全 K₀。凍結 L2 の plus・GL の近接型から古典 S• への同値を確認できない。"
+  },
+  "170": {
+    "number": "2.3.3 | 2.3.4 | 2.3.5",
+    "citations": [],
+    "same_reference_citations": 39,
+    "pattern": "Waldhausen|sConstruction|AdditivityMap|k6Fibration|stableHatGL|plusConstruction",
+    "repository_count": 190,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalComparison.lean",
+        49,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarFundamentalMultiplication.lean",
+        114,
+        "SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/BarPositiveDelooping.lean",
+        74,
+        "SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableGLComponents.lean",
+        108,
+        "SerrePositivity.KST.Comparison.stableHatGLComponentsIso"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        42,
+        "SerrePositivity.KST.Comparison.stableHatGL"
+      ],
+      [
+        "SerrePositivity/KST/Comparison/StableHatGL.lean",
+        51,
+        "SerrePositivity.KST.Comparison.stableHatGL_isGrouplike"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/Gapped.lean": [
+        {
+          "line": 165,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction",
+          "type_excerpt": "def sConstruction (n : ℕ) (C : SSet.{u}) : SSet.{u} := gappedSubcomplex n C  /-- 概要：gapped 図式は quasicategory をなす。 方針：内部 Hom と充満部分複体の quasicategory 性を使う。 規約：C の安定性はまだ不要。使われ方：各段の core。 -/ instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruc"
+        },
+        {
+          "line": 170,
+          "name": "SerrePositivity.KST.SConstruction.sConstruction_quasicategory",
+          "type_excerpt": "instance sConstruction_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] : Quasicategory (sConstruction n C) "
+        },
+        {
+          "line": 217,
+          "name": "SerrePositivity.KST.SConstruction.simplicialSConstruction",
+          "type_excerpt": "def simplicialSConstruction (C : SSet.{u}) : SimplexCategoryᵒᵖ ⥤ SSet.{u} where obj n := sConstruction n.unop.len C map θ := sMap C θ.unop.toOrderHom map_id n := sMap_id n.unop.len C map_comp θ φ := sMap_comp C φ.unop.toOrderHom θ.unop.toOrderHom  end SerrePositivity.KST.SConstruction"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/Cofinality/Thomason.lean": [
+        {
+          "line": 23,
+          "name": "SerrePositivity.KST.SConstruction.Cofinality.kSpectrumMap_cofinality",
+          "type_excerpt": "theorem kSpectrumMap_cofinality {X Y : StableModel.{u}} (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) : (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧ Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) := kSpectrumMap_c"
+        }
+      ],
+      "SerrePositivity/KST/Comparison/GLComponents.lean": [
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.Comparison.hatGLSpace",
+          "type_excerpt": "abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat  /-- 概要：零次行列の成分写像は成分ごとの π₀ の商写像である。 方針：零次単体の成分写像を計算する。 規約：KST 式 (2.2) の行列の縦射。 使われ方：π₀ĜL の同定の各行列成分の計算。 -/ @[simp] theorem matrixToComponents_zero_entry (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :"
+        },
+        {
+          "line": 53,
+          "name": "SerrePositivity.KST.Comparison.hatGLCoefficientEdge",
+          "type_excerpt": "def hatGLCoefficientEdge {a b : hatGLSubmonoid A r 0} (e : (hatGLSpace A r).Edge a b) (i j : Fin r) : (ringSpace A).Edge (a.val i j) (b.val i j) := .mk (e.edge.val i j) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.src_eq) (congrArg (fun s : hatGLSubmonoid A r 0 => s.val i j) e.t"
+        },
+        {
+          "line": 66,
+          "name": "SerrePositivity.KST.Comparison.hatGLEdgeOfCoefficients",
+          "type_excerpt": "def hatGLEdgeOfCoefficients (a b : hatGLSubmonoid A r 0) (e : ∀ i j : Fin r, (ringSpace A).Edge (a.val i j) (b.val i j)) : (hatGLSpace A r).Edge a b "
+        }
+      ]
+    },
+    "result": "2.3.3 は球状模型との比較、2.3.4 は連結性下の単体加群の最初のホモトピー群の比較、2.3.5 は BĜL の球状対象模型。L2 の plus・安定行列から三つの同じ比較は確認できない。"
+  },
+  "172": {
+    "number": "7.4",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "Waldhausen|sConstruction|k6Fibration|AdditivityMap",
+    "repository_count": 163,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Fibration/ComposableWeakArrowSPullback.lean",
+        28,
+        "SerrePositivity.KST.Fibration.composableWeakArrow_sConstruction_isPullback"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/GappedPullback.lean",
+        39,
+        "SerrePositivity.KST.Fibration.sConstruction_isPullback_of_gapped_reflection"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean",
+        26,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean",
+        35,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_nonnegative"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibrationTheorem.lean",
+        38,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_fiberTarget"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibrationTheorem.lean",
+        55,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_quotientEdge"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/CoreAdditivity.lean": [
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.SConstruction.coreSAdditivityMap",
+          "type_excerpt": "def coreSAdditivityMap (X : StableModel.{u}) : coreSRealizationFunctor.obj (cofiberStableModel X) ⟶ coreSRealizationFunctor.obj X ⊗ coreSRealizationFunctor.obj X := CartesianMonoidalCategory.lift (coreSRealizationFunctor.map (cofiberStableSubobject X)) (coreSRealizationFunctor.map (cofiber"
+        },
+        {
+          "line": 74,
+          "name": "SerrePositivity.KST.SConstruction.coreSAdditivityMap_localized_isIso",
+          "type_excerpt": "lemma coreSAdditivityMap_localized_isIso (X : StableModel.{u}) : IsIso (AnodyneHomotopy.anodyneQ.map (coreSAdditivityMap X)) "
+        }
+      ],
+      "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean": [
+        {
+          "line": 26,
+          "name": "SerrePositivity.KST.Fibration.Relative.k6Fibration",
+          "type_excerpt": "theorem k6Fibration : K6FibrationConclusions R D I := k6FibrationOfC5 R D I (VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso (dgKappaNativeVerdierDiagram R D I).toVerdierSequence)  /-- 概要：固定 K(D) から同じ実供給 BF 右辺の Sp fiber への非負次数 π 同型。 方針：無条件主定理から元の実比較射の結論を取り出す。 規約：比較先・指定商射は k"
+        },
+        {
+          "line": 35,
+          "name": "SerrePositivity.KST.Fibration.Relative.k6Fibration_nonnegative",
+          "type_excerpt": "theorem k6Fibration_nonnegative (j : ℤ) (hj : 0 ≤ j) : Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk (dgKappaCanonicalFixedSourceFiberComparison R D I).toTruncated) j) := (k6Fibration R D I).fiber_nonnegative j hj  /-- 概要：元の固定 K の同じ隣接構造射は非負次数 π 同型。 方針：実 c5 と実共終性を代入"
+        }
+      ]
+    },
+    "result": "v6 Thm 7.4 は ∞ トポスに値を取る理論の加法性の諸条件の同値。安定準圏の特定の K の加法性からは任意の理論についての特徴づけは従わない。"
+  },
+  "173": {
+    "number": "§5 | 8.9 | 9.24",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "Waldhausen|sConstruction|k6Fibration|AdditivityMap",
+    "repository_count": 163,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Fibration/ComposableWeakArrowSPullback.lean",
+        28,
+        "SerrePositivity.KST.Fibration.composableWeakArrow_sConstruction_isPullback"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/GappedPullback.lean",
+        39,
+        "SerrePositivity.KST.Fibration.sConstruction_isPullback_of_gapped_reflection"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean",
+        26,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean",
+        35,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_nonnegative"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibrationTheorem.lean",
+        38,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_fiberTarget"
+      ],
+      [
+        "SerrePositivity/KST/Fibration/Relative/ConnectiveFibrationTheorem.lean",
+        55,
+        "SerrePositivity.KST.Fibration.Relative.k6Fibration_quotientEdge"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/SConstruction/CoreAdditivity.lean": [
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.SConstruction.coreSAdditivityMap",
+          "type_excerpt": "def coreSAdditivityMap (X : StableModel.{u}) : coreSRealizationFunctor.obj (cofiberStableModel X) ⟶ coreSRealizationFunctor.obj X ⊗ coreSRealizationFunctor.obj X := CartesianMonoidalCategory.lift (coreSRealizationFunctor.map (cofiberStableSubobject X)) (coreSRealizationFunctor.map (cofiber"
+        },
+        {
+          "line": 74,
+          "name": "SerrePositivity.KST.SConstruction.coreSAdditivityMap_localized_isIso",
+          "type_excerpt": "lemma coreSAdditivityMap_localized_isIso (X : StableModel.{u}) : IsIso (AnodyneHomotopy.anodyneQ.map (coreSAdditivityMap X)) "
+        }
+      ],
+      "SerrePositivity/KST/Fibration/Relative/ConnectiveFibration.lean": [
+        {
+          "line": 26,
+          "name": "SerrePositivity.KST.Fibration.Relative.k6Fibration",
+          "type_excerpt": "theorem k6Fibration : K6FibrationConclusions R D I := k6FibrationOfC5 R D I (VerdierSequence.relativeFirstRowSimplexQuotient_localized_isIso (dgKappaNativeVerdierDiagram R D I).toVerdierSequence)  /-- 概要：固定 K(D) から同じ実供給 BF 右辺の Sp fiber への非負次数 π 同型。 方針：無条件主定理から元の実比較射の結論を取り出す。 規約：比較先・指定商射は k"
+        },
+        {
+          "line": 35,
+          "name": "SerrePositivity.KST.Fibration.Relative.k6Fibration_nonnegative",
+          "type_excerpt": "theorem k6Fibration_nonnegative (j : ℤ) (hj : 0 ≤ j) : Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk (dgKappaCanonicalFixedSourceFiberComparison R D I).toTruncated) j) := (k6Fibration R D I).fiber_nonnegative j hj  /-- 概要：元の固定 K の同じ隣接構造射は非負次数 π 同型。 方針：実 c5 と実共終性を代入"
+        }
+      ]
+    },
+    "result": "v6 §5 の Waldhausen ∞ 圏の S• と Thm 8.9・9.24 の generic fibration を照合。安定圏の S•・Verdier 列の比較は labeled Waldhausen ∞ 圏の構成を供給しない。"
+  },
+  "174": {
+    "number": "§3",
+    "citations": [
+      "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean:12",
+      "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean:28",
+      "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean:58",
+      "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean:73",
+      "SerrePositivity/KST/DerivedGeometry/AbSheafificationLocalExact.lean:88",
+      "SerrePositivity/KST/DerivedGeometry/AcyclicCokernelQuasiIso.lean:9",
+      "SerrePositivity/KST/DerivedGeometry/AcyclicCokernelQuasiIso.lean:24",
+      "SerrePositivity/KST/DerivedGeometry/AcyclicFamilyAttachment.lean:10"
+    ],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "TT §3 は perfect 複体と K の諸性質を扱う。アフィン Dqc⁺ 比較と導来模型の同値から、一般の D_qc の compact=perfect は確認できない。後者の一般スキームでの出典は Bondal–van den Bergh Thm 3.1.1。"
+  },
+  "175": {
+    "number": "3.19",
+    "citations": [
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:11",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:24",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:33",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:42",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:51",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:9",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:25",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:42"
+    ],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "3.19 は閉台の近傍で同型な射に沿う K・G 理論の切除。開制限の核と関手の候補には、指定された引き戻しの K・G 同値が含まれない。"
+  },
+  "176": {
+    "number": "5.1 | 5.2.2 | 5.2.3 | 5.2.4",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "5.1 は台付き連結 K の局所化。5.2.2–5.2.4 は延長の K₀ 障害、射の持ち上げ、零射の判定。開制限の核・商を調べたが同じ三つの主張を確認できない。"
+  },
+  "177": {
+    "number": "7.4",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "Bass 非連結 K の台付きファイバー列。中心局所化による支持判定は対象の核を扱い、非連結 K のファイバー列を供給しない。"
+  },
+  "178": {
+    "number": "8.1",
+    "citations": [
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:11",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:33",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:42",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientModuleRestriction.lean:51",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:9",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:25",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:42",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:51"
+    ],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "有限アフィン被覆の存在は Zariski Mayer–Vietoris の幾何の部品。二開集合に沿う Bass K のホモトピー引き戻しは確認できない。"
+  },
+  "179": {
+    "number": "4.1 | 7.3",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "ベクトル束の射影化の捻り成分による K の分解。導来ブローアップのチャート模型・射影空間の局所比較は K の直和同値を与えない。"
+  },
+  "180": {
+    "number": "6.1 | 6.6 | 7.5",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "6.1 は射影直線から得る Bass の列、6.6 は自然分裂、7.5 は Bass K の切除。dg 懸垂の塔には多項式・Laurent 拡大を結ぶ同じ列と分裂が含まれない。"
+  },
+  "181": {
+    "number": "Appendix B",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "Appendix B の準連接層の導来圏と準連接コホモロジーを持つ層複体の比較。dg 模型は後者を既存の層導来圏により選別しており、各項が準連接な複体からの比較は確認できない。"
+  },
+  "182": {
+    "number": "5.2.2 | 5.2.3 | 5.2.4 | 7.4",
+    "citations": [],
+    "same_reference_citations": 1341,
+    "pattern": "finiteAffineCover|Dqc|SupportedVerdier|excision|ProjectiveBundle|mayerVietoris|Bass",
+    "repository_count": 383,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        375,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        408,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_of_disc"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        481,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        499,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_isPullback"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        510,
+        "SerrePositivity.BhattScholze.PerfectoidizationInterface.perfectoidization_excision_difference_surjective"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean",
+        555,
+        "SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback"
+      ]
+    ],
+    "mathlib_count": 1,
+    "mathlib_examples": [
+      "CategoryTheory/Sites/MayerVietorisSquare.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean": [
+        {
+          "line": 69,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.DqcSupported",
+          "type_excerpt": "abbrev DqcSupported := (B.hasQuasicoherentCohomology ⊓ B.supportedOnComplement U).FullSubcategory  variable [HasDerivedCategory.{w'} (B.restrict U).Modules]  /-- 概要：補集合に台を持つ条件は導来開制限の像が零であることに一致する。 方針：全コホモロジーによる零対象判定を自然な制限比較で移す。 規約：冪等完備化や別の導来対象の選択を加えない。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 "
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 30,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedOnComplement_isTriangulated",
+          "type_excerpt": "instance supportedOnComplement_isTriangulated : (B.supportedOnComplement U).IsTriangulated "
+        },
+        {
+          "line": 40,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.SupportedDerivedQuotient",
+          "type_excerpt": "abbrev SupportedDerivedQuotient := (B.supportedOnComplement U).trW.Localization  /-- 概要：台つき Verdier 商への実際の射影関手。 方針：既存の trW の局所化関手を使う。 規約：商の構成を変更しない。 使われ方：TT 3.19・8.1 の局所化正方形。 -/ def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnCompl"
+        },
+        {
+          "line": 48,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedProjection",
+          "type_excerpt": "def supportedDerivedProjection : DerivedCategory B.Modules ⥤ B.SupportedDerivedQuotient U := (B.supportedOnComplement U).trW.Q  /-- 概要：台つき Verdier 商から開部分の導来圏への比較関手。 方針：導来開制限が台つき対象を零に送る証明で既存 Verdier 降下を適用する。 規約：比較関手の同値性は別定理。 使われ方：Neeman 1992 Thm 2.1、TT 3.19・8.1 の T2。 -/ def supportedDerived"
+        }
+      ],
+      "SerrePositivity/KST/DerivedGeometry/DqcDerivedComparison.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGObject_image_iff",
+          "type_excerpt": "theorem dqcDGObject_image_iff (K : B.DerivedDG) : K ∈ B.dqcDGObjects ↔ B.hasQuasicoherentCohomology (B.derivedDGHomotopyEquivalence.functor.obj ((toHomotopy CoefficientDGBase.{u} B.DerivedDG).obj (ForgetEnrichment.of (Complex CoefficientDGBase.{u}) K))) := (B.mem_dqcDGObjects_iff K).trans "
+        },
+        {
+          "line": 44,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived",
+          "type_excerpt": "def dqcDGToDerived : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel ⥤ _root_.DerivedCategory B.Modules := B.dqcDGModelInclusion.onHomotopy ⋙ B.derivedDGHomotopyEquivalence.functor  /-- 概要：Dqc の dg 模型からの比較関手の像は準連接コホモロジーを持つ。 方針：各 H⁰ 対象を同じ dg 対象で表示し、証明済みの対象条件の同値を使う。 規約：同型により閉じた実際の Dqc の対"
+        },
+        {
+          "line": 54,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcDGToDerived_mem",
+          "type_excerpt": "theorem dqcDGToDerived_mem (T : HomotopyCategory CoefficientDGBase.{u} B.DqcDGModel) : B.hasQuasicoherentCohomology (B.dqcDGToDerived.obj T) "
+        }
+      ],
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.NonConnective.ncKSpectrumCategory",
+          "type_excerpt": "local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} := OmegaSpectrum.simplicialCategory variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hκ : Cardinal.aleph0 < κ) (A : PerfDGInput.{u, max (u + 1) v} R)  /-- 同じ実 κ-compact cone の反復による各段の連結固定 K。 "
+        },
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        }
+      ]
+    },
+    "result": "5.2.2–5.2.4 の延長・射・零射、7.4 の Bass K の局所化。支持核と開制限の構成から、商の冪等完備化との同値と非連結 K の列を得る比較が残る。"
+  },
+  "183": {
+    "number": "2.3",
+    "citations": [
+      "SerrePositivity/KST/DerivedBlowup/Charts.lean:133",
+      "SerrePositivity/KST/DerivedBlowup/UniversalCharts.lean:30"
+    ],
+    "same_reference_citations": 2,
+    "pattern": "blowup.*(push|twist|chart)|projective.*(cohom|vanish)|negative.*twist",
+    "repository_count": 68,
+    "repository_examples": [
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineBlowupFlatBaseChange.lean",
+        21,
+        "SerrePositivity.AlgebraicGeometry.isPullback_affineBlowupChart_of_flat"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineCenterDescentSheaf.lean",
+        37,
+        "SerrePositivity.AlgebraicGeometry.blowupChartIdeal_base_comap"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineCenterDescentSheaf.lean",
+        54,
+        "SerrePositivity.AlgebraicGeometry.blowupChartIdeal_mul"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineCenterDescentSheaf.lean",
+        66,
+        "SerrePositivity.AlgebraicGeometry.blowupChartIdeal_pow"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineStrictTransformFlatness.lean",
+        23,
+        "SerrePositivity.AlgebraicGeometry.specBlowupChartι"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/AffineStrictTransformFlatness.lean",
+        53,
+        "SerrePositivity.AlgebraicGeometry.specBlowupChart_base"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedBlowup/ChartDerivedBaseChange.lean": [
+        {
+          "line": 29,
+          "name": "SerrePositivity.KST.DerivedBlowup.chartDerivedBaseChangeExteriorIso",
+          "type_excerpt": "def chartDerivedBaseChangeExteriorIso (a : Fin (r + 1) → R) (i : Fin (r + 1)) (f : ChartRing R i →ₐ[R] B) [HasDerivedCategory.{w} (ModuleCat.{u} (ChartRing R i))] [HasDerivedCategory.{w'} (ModuleCat.{u} B)] : (DifferentialGraded.ScalarExtension.complexDerivedExtension f.toRingHom).obj (Der"
+        },
+        {
+          "line": 46,
+          "name": "SerrePositivity.KST.DerivedBlowup.overlapChartDerivedComplexIso",
+          "type_excerpt": "def overlapChartDerivedComplexIso (a : Fin (r + 1) → R) (i k : Fin (r + 1)) [HasDerivedCategory.{w} (ModuleCat.{u} (ChartRing R k))] [HasDerivedCategory.{w'} (ModuleCat.{u} (ChartRing R i))] [HasDerivedCategory.{w''} (ModuleCat.{u} (OverlapRing R i k))] : (DifferentialGraded.ScalarExtensio"
+        }
+      ],
+      "SerrePositivity/KST/DerivedBlowup/FiniteOverlapTwistCartesianAction.lean": [
+        {
+          "line": 51,
+          "name": "SerrePositivity.KST.DerivedBlowup.blowupDerivedTwistEquivalence",
+          "type_excerpt": "def blowupDerivedTwistEquivalence (m : ℤ) : CartesianPerfectDerivedDiagramModules R a ≌ CartesianPerfectDerivedDiagramModules R a := (finiteOverlapDerivedTwistEquivalence R a m).congrFullSubcategory (P := diagramCartesianPerfect R a) (Q := diagramCartesianPerfect R a) (by funext X exact pr"
+        },
+        {
+          "line": 62,
+          "name": "SerrePositivity.KST.DerivedBlowup.blowupDerivedTwistEquivalence_obj",
+          "type_excerpt": "theorem blowupDerivedTwistEquivalence_obj (m : ℤ) (X : CartesianPerfectDerivedDiagramModules R a) : (diagramCartesianPerfect R a).ι.obj ((blowupDerivedTwistEquivalence R a m).functor.obj X) = (finiteOverlapDerivedTwistAction R a m).obj X.obj := rfl  /-- 概要：制限した捻り自己同値の underlying 射は元の導来作用で送"
+        },
+        {
+          "line": 70,
+          "name": "SerrePositivity.KST.DerivedBlowup.blowupDerivedTwistEquivalence_map",
+          "type_excerpt": "theorem blowupDerivedTwistEquivalence_map (m : ℤ) {X Y : CartesianPerfectDerivedDiagramModules R a} (f : X ⟶ Y) : (diagramCartesianPerfect R a).ι.map ((blowupDerivedTwistEquivalence R a m).functor.map f) = (finiteOverlapDerivedTwistAction R a m).map ((diagramCartesianPerfect R a).ι.map f) "
+        }
+      ]
+    },
+    "result": "正則中心のブローアップと例外射影束で随伴の単位が同値となり、負の捻りで導来押し出しが消える。普遍・重なりチャートの比較に押し出しの結論はない。"
+  },
+  "185": {
+    "number": "2.1",
+    "citations": [
+      "SerrePositivity/KST/DerivedGeometry/AdjunctionGenerators.lean:44",
+      "SerrePositivity/KST/DerivedGeometry/CoefficientSheaf.lean:125",
+      "SerrePositivity/KST/DerivedGeometry/DerivedForget.lean:69",
+      "SerrePositivity/KST/DerivedGeometry/DerivedRestriction.lean:60",
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean:10",
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean:23",
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean:45",
+      "SerrePositivity/KST/DerivedGeometry/DerivedSupport.lean:67"
+    ],
+    "same_reference_citations": 22,
+    "pattern": "compactIndEquivalence|Compact.*Quotient|supportedDerivedToOpen|karoubi.*Quotient|[Dd]ense.*KZero",
+    "repository_count": 20,
+    "repository_examples": [
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        52,
+        "SerrePositivity.KaroubiFirstQuotient"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        55,
+        "SerrePositivity.karoubiQuotientExtension"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        71,
+        "SerrePositivity.karoubiQuotientExtension_kills"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        677,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctor"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        682,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientLifting"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        692,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctorIsEquivalence"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 57,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen",
+          "type_excerpt": "def supportedDerivedToOpen : B.SupportedDerivedQuotient U ⥤ DerivedCategory (B.restrict U).Modules := SerrePositivity.verdierLift (B.supportedOnComplement U) (B.derivedRestriction U) (fun M h => (B.supportedOnComplement_iff U M).mp h)  /-- 概要：台つき商を経由する比較は同じ導来開制限と自然同型。 方針：既存 Verdier 降下の因子分解"
+        },
+        {
+          "line": 79,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_commShift",
+          "type_excerpt": "instance supportedDerivedToOpen_commShift : (B.supportedDerivedToOpen U).CommShift ℤ "
+        },
+        {
+          "line": 89,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_isTriangulated",
+          "type_excerpt": "instance supportedDerivedToOpen_isTriangulated : (B.supportedDerivedToOpen U).IsTriangulated "
+        }
+      ],
+      "SerrePositivity/InfinityCategories/F2/Compact/CompactIndEquivalence.lean": [
+        {
+          "line": 50,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence",
+          "type_excerpt": "def compactIndEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : QCatEquivalence (Idempotent.Idem C) (kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C)) := (idemToCompactInd_isQCatEquivalence (C := C) κ).choose  /-- 同値の順方向は、保存済みの同じ元の比較そのもの。 -/ lemma compactIndEquivalence_hom (κ : Car"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence_hom",
+          "type_excerpt": "lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] : (compactIndEquivalence (C := C) κ).hom = idemToCompactInd κ C := rfl  end SerrePositivity.InfinityCategories.F2.Compact"
+        }
+      ],
+      "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean": [
+        {
+          "line": 52,
+          "name": "SerrePositivity.KaroubiFirstQuotient",
+          "type_excerpt": "abbrev KaroubiFirstQuotient := (karoubiNullEnvelope P).trW.Localization  /-- 元の商関手の完備化への延長。 -/ noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRet"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.karoubiQuotientExtension",
+          "type_excerpt": "noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRetracts {D : Type*} [Category* D] [Preadditive D] [HasZeroObject D] [HasShift D ℤ] [∀ n : ℤ, (shi"
+        },
+        {
+          "line": 71,
+          "name": "SerrePositivity.karoubiQuotientExtension_kills",
+          "type_excerpt": "lemma karoubiQuotientExtension_kills (X : Karoubi C) (hX : karoubiNullEnvelope P X) : IsZero ((karoubiQuotientExtension P).obj X) "
+        }
+      ]
+    },
+    "result": "compact 生成局所化の商と compact 対象の冪等包の比較。スキームの開制限の核・商関手と dg の商を調べたが、任意の compact 生成三角圏の比較は確認できない。"
+  },
+  "186": {
+    "number": "3.2.3 | 3.1.1",
+    "citations": [],
+    "same_reference_citations": 22,
+    "pattern": "compactIndEquivalence|Compact.*Quotient|supportedDerivedToOpen|karoubi.*Quotient|[Dd]ense.*KZero",
+    "repository_count": 20,
+    "repository_examples": [
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        52,
+        "SerrePositivity.KaroubiFirstQuotient"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        55,
+        "SerrePositivity.karoubiQuotientExtension"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        71,
+        "SerrePositivity.karoubiQuotientExtension_kills"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        677,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctor"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        682,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientLifting"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        692,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctorIsEquivalence"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 57,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen",
+          "type_excerpt": "def supportedDerivedToOpen : B.SupportedDerivedQuotient U ⥤ DerivedCategory (B.restrict U).Modules := SerrePositivity.verdierLift (B.supportedOnComplement U) (B.derivedRestriction U) (fun M h => (B.supportedOnComplement_iff U M).mp h)  /-- 概要：台つき商を経由する比較は同じ導来開制限と自然同型。 方針：既存 Verdier 降下の因子分解"
+        },
+        {
+          "line": 79,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_commShift",
+          "type_excerpt": "instance supportedDerivedToOpen_commShift : (B.supportedDerivedToOpen U).CommShift ℤ "
+        },
+        {
+          "line": 89,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_isTriangulated",
+          "type_excerpt": "instance supportedDerivedToOpen_isTriangulated : (B.supportedDerivedToOpen U).IsTriangulated "
+        }
+      ],
+      "SerrePositivity/InfinityCategories/F2/Compact/CompactIndEquivalence.lean": [
+        {
+          "line": 50,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence",
+          "type_excerpt": "def compactIndEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : QCatEquivalence (Idempotent.Idem C) (kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C)) := (idemToCompactInd_isQCatEquivalence (C := C) κ).choose  /-- 同値の順方向は、保存済みの同じ元の比較そのもの。 -/ lemma compactIndEquivalence_hom (κ : Car"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence_hom",
+          "type_excerpt": "lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] : (compactIndEquivalence (C := C) κ).hom = idemToCompactInd κ C := rfl  end SerrePositivity.InfinityCategories.F2.Compact"
+        }
+      ],
+      "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean": [
+        {
+          "line": 52,
+          "name": "SerrePositivity.KaroubiFirstQuotient",
+          "type_excerpt": "abbrev KaroubiFirstQuotient := (karoubiNullEnvelope P).trW.Localization  /-- 元の商関手の完備化への延長。 -/ noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRet"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.karoubiQuotientExtension",
+          "type_excerpt": "noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRetracts {D : Type*} [Category* D] [Preadditive D] [HasZeroObject D] [HasShift D ℤ] [∀ n : ℤ, (shi"
+        },
+        {
+          "line": 71,
+          "name": "SerrePositivity.karoubiQuotientExtension_kills",
+          "type_excerpt": "lemma karoubiQuotientExtension_kills (X : Karoubi C) (hX : karoubiNullEnvelope P X) : IsZero ((karoubiQuotientExtension P).obj X) "
+        }
+      ]
+    },
+    "result": "Bondal–van den Bergh Cor 3.2.3 は稠密な三角部分圏へ X⊕X[1] が入るという主張。旧行の compact=perfect は Thm 3.1.1。Karoubi・K₀ の候補から、指定された一般の稠密部分圏の判定は確認できない。"
+  },
+  "188": {
+    "number": "A.3.12",
+    "citations": [],
+    "same_reference_citations": 22,
+    "pattern": "compactIndEquivalence|Compact.*Quotient|supportedDerivedToOpen|karoubi.*Quotient|[Dd]ense.*KZero",
+    "repository_count": 20,
+    "repository_examples": [
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        52,
+        "SerrePositivity.KaroubiFirstQuotient"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        55,
+        "SerrePositivity.karoubiQuotientExtension"
+      ],
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        71,
+        "SerrePositivity.karoubiQuotientExtension_kills"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        677,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctor"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        682,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientLifting"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean",
+        692,
+        "SerrePositivity.DifferentialGraded.karoubiFirstPerfectQuotientFunctorIsEquivalence"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/KST/DerivedGeometry/SupportedVerdier.lean": [
+        {
+          "line": 57,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen",
+          "type_excerpt": "def supportedDerivedToOpen : B.SupportedDerivedQuotient U ⥤ DerivedCategory (B.restrict U).Modules := SerrePositivity.verdierLift (B.supportedOnComplement U) (B.derivedRestriction U) (fun M h => (B.supportedOnComplement_iff U M).mp h)  /-- 概要：台つき商を経由する比較は同じ導来開制限と自然同型。 方針：既存 Verdier 降下の因子分解"
+        },
+        {
+          "line": 79,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_commShift",
+          "type_excerpt": "instance supportedDerivedToOpen_commShift : (B.supportedDerivedToOpen U).CommShift ℤ "
+        },
+        {
+          "line": 89,
+          "name": "SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.supportedDerivedToOpen_isTriangulated",
+          "type_excerpt": "instance supportedDerivedToOpen_isTriangulated : (B.supportedDerivedToOpen U).IsTriangulated "
+        }
+      ],
+      "SerrePositivity/InfinityCategories/F2/Compact/CompactIndEquivalence.lean": [
+        {
+          "line": 50,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence",
+          "type_excerpt": "def compactIndEquivalence (κ : Cardinal.{u}) [Fact κ.IsRegular] : QCatEquivalence (Idempotent.Idem C) (kappaCompactObjects.{u, u + 1} κ (Ind.IndInfinity κ C)) := (idemToCompactInd_isQCatEquivalence (C := C) κ).choose  /-- 同値の順方向は、保存済みの同じ元の比較そのもの。 -/ lemma compactIndEquivalence_hom (κ : Car"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.InfinityCategories.F2.Compact.compactIndEquivalence_hom",
+          "type_excerpt": "lemma compactIndEquivalence_hom (κ : Cardinal.{u}) [Fact κ.IsRegular] : (compactIndEquivalence (C := C) κ).hom = idemToCompactInd κ C := rfl  end SerrePositivity.InfinityCategories.F2.Compact"
+        }
+      ],
+      "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean": [
+        {
+          "line": 52,
+          "name": "SerrePositivity.KaroubiFirstQuotient",
+          "type_excerpt": "abbrev KaroubiFirstQuotient := (karoubiNullEnvelope P).trW.Localization  /-- 元の商関手の完備化への延長。 -/ noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRet"
+        },
+        {
+          "line": 55,
+          "name": "SerrePositivity.karoubiQuotientExtension",
+          "type_excerpt": "noncomputable abbrev karoubiQuotientExtension : Karoubi C ⥤ Karoubi P.trW.Localization := (functorExtension₂ _ _).obj P.trW.Q  /-- 三角関手の核は直和因子で閉じている。 -/ instance triangulatedKernel_stableUnderRetracts {D : Type*} [Category* D] [Preadditive D] [HasZeroObject D] [HasShift D ℤ] [∀ n : ℤ, (shi"
+        },
+        {
+          "line": 71,
+          "name": "SerrePositivity.karoubiQuotientExtension_kills",
+          "type_excerpt": "lemma karoubiQuotientExtension_kills (X : Karoubi C) (hX : karoubiNullEnvelope P X) : IsZero ((karoubiQuotientExtension P).obj X) "
+        }
+      ]
+    },
+    "result": "局所化が compact 対象の商の retract 閉包を与える一般 ∞ 版。Idem≃compact Ind の対象別比較から Ind の完全列の移送は確認できない。"
+  },
+  "191": {
+    "number": "A.1.9",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "VerdierSequence|[Kk]aroubiSequence|VerdierExactPrecomposition|[Kk]ernel.*[Rr]etract",
+    "repository_count": 41,
+    "repository_examples": [
+      [
+        "SerrePositivity/CategoryTheory/Triangulated/VerdierKaroubi.lean",
+        59,
+        "SerrePositivity.triangulatedKernel_stableUnderRetracts"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+        349,
+        "SerrePositivity.DifferentialGraded.ModuleGradedSplit.homKernelRetraction"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+        358,
+        "SerrePositivity.DifferentialGraded.ModuleGradedSplit.homKernelRetraction_π"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+        369,
+        "SerrePositivity.DifferentialGraded.ModuleGradedSplit.homKernel_retraction"
+      ],
+      [
+        "SerrePositivity/DifferentialGraded/Verdier/Derived.lean",
+        636,
+        "SerrePositivity.DifferentialGraded.verdierQuotient_kernel_eq_retractClosure"
+      ],
+      [
+        "SerrePositivity/InfinityCategories/Derived/DGQuotientExactFunctorEquivalence.lean",
+        31,
+        "SerrePositivity.InfinityCategories.dgVerdierExactPrecomposition"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/InfinityCategories/Stable/Verdier/VerdierSequence.lean": [
+        {
+          "line": 37,
+          "name": "SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence",
+          "type_excerpt": "structure IsVerdierSequence {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) : Prop where fullyFaithf"
+        },
+        {
+          "line": 45,
+          "name": "SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+          "type_excerpt": "structure VerdierSequence where left : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} middle : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} right : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} inclus"
+        }
+      ],
+      "SerrePositivity/InfinityCategories/Derived/DGQuotientExactFunctorEquivalence.lean": [
+        {
+          "line": 31,
+          "name": "SerrePositivity.InfinityCategories.dgVerdierExactPrecomposition",
+          "type_excerpt": "def dgVerdierExactPrecomposition (P : Set D) (hP : DGQuotient.localKFlat A D P) (Y : SSet.{max u v}) : (exactFunctors (dgQuotientNerve A D P) Y : SSet.{max u v}) ⟶ (zeroingExactFunctors (dgNerve A D) Y (Simplex.vertex '' P) : SSet.{max u v}) "
+        },
+        {
+          "line": 38,
+          "name": "SerrePositivity.InfinityCategories.dgVerdierExactPrecomposition_isQCatEquivalence",
+          "type_excerpt": "lemma dgVerdierExactPrecomposition_isQCatEquivalence (P : Set D) (hP : DGQuotient.localKFlat A D P) (Y : SSet.{max u v}) [Quasicategory Y] [IsStable Y] : IsQCatEquivalence (dgVerdierExactPrecomposition A D P hP Y) "
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/PerfectVerdierSequence.lean": [
+        {
+          "line": 21,
+          "name": "SerrePositivity.KST.SConstruction.PerfectVerdierSequence",
+          "type_excerpt": "structure PerfectVerdierSequence where verdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence.{u} left_complete : IsIdempotentComplete verdier.left.obj middle_complete : IsIdempotentComplete verdier.middle.obj right : _root_.SerrePositivity.InfinityCategories.St"
+        }
+      ]
+    },
+    "result": "任意の完全関手について Verdier 包含、商の核との同値、retract 閉性の三条件。IsVerdierSequence は核をフィールドで要求し、任意の包含から商を構成して三条件を比較する型が残る。"
+  },
+  "195": {
+    "number": "§2.4",
+    "citations": [
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:14",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:34",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:44",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:55",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:74",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/DerivedYoneda.lean:83",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/Pretriangulation.lean:13",
+      "SerrePositivity/KST/DerivedGeometry/DGResolution/Pretriangulation.lean:42"
+    ],
+    "same_reference_citations": 384,
+    "pattern": "[Tt]wistedComplex|[Pp]retriangulat|quotient.*baseChange|quotient.*[Tt]ensor|[Cc]ellResolution",
+    "repository_count": 165,
+    "repository_examples": [
+      [
+        "SerrePositivity/AlgebraicGeometry/FiberPrimeDimension.lean",
+        67,
+        "SerrePositivity.AlgebraicGeometry.fiber_coordinate_quotient_baseChange"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/GenericFreeAlgebra.lean",
+        27,
+        "SerrePositivity.AlgebraicGeometry.mvPolynomialQuotientTensorEquiv"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/PureTransformExactPowers.lean",
+        59,
+        "SerrePositivity.AlgebraicGeometry.modulePureTransformMap_exact_of_quotient_lTensor_injective"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/QuotientModuleBaseChange.lean",
+        27,
+        "SerrePositivity.AlgebraicGeometry.quotientModuleTensorEquiv"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+        85,
+        "SerrePositivity.BhattScholze.Almost.quotientTensor"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+        103,
+        "SerrePositivity.BhattScholze.Almost.quotientTensor_isAlmostZero"
+      ]
+    ],
+    "mathlib_count": 4,
+    "mathlib_examples": [
+      "CategoryTheory/Localization/Triangulated.lean",
+      "CategoryTheory/Triangulated/Pretriangulated.lean",
+      "LinearAlgebra/TensorProduct/Quotient.lean",
+      "RingTheory/TensorProduct/Quotient.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/DifferentialGraded/Quotient/Path/Evaluation.lean": [
+        {
+          "line": 124,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientHomBaseChangeIso",
+          "type_excerpt": "def quotientHomBaseChangeIso (S : Set D) (x y : D) : (extension φ).obj (quotientHom A D S x y) ≅ quotientHom A' (DGBaseChange φ D) S x y := HomologicalComplex.Hom.isoOfComponents (fun n => (HomologicalComplex.eval (ModuleCat.{u} A') (.up ℤ) n).mapIso (internalHomBaseChangeIso φ D S x y)) ("
+        },
+        {
+          "line": 141,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientHomBaseChangeIso_hom_f",
+          "type_excerpt": "lemma quotientHomBaseChangeIso_hom_f (S : Set D) (x y : D) (n : ℤ) : (quotientHomBaseChangeIso φ D S x y).hom.f n = (internalHomBaseChangeIso φ D S x y).hom.f n := rfl  @[reassoc] lemma originalHomInclusion_baseChange (S : Set D) (x y : D) : (extension φ).map (originalHomInclusion A D S x "
+        },
+        {
+          "line": 157,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientIdentity_baseChange",
+          "type_excerpt": "lemma quotientIdentity_baseChange (S : Set D) (x : D) : (unitIso φ).inv ≫ (extension φ).map (quotientIdentity A D S x) ≫ (quotientHomBaseChangeIso φ D S x x).hom = quotientIdentity A' (DGBaseChange φ D) S x "
+        }
+      ],
+      "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean": [
+        {
+          "line": 51,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap",
+          "type_excerpt": "def derivedExtensionUnderivedMap (M : ModuleCategory A D) : (dgDerivedExtension A D E F).obj ((moduleToDerived A D).obj M) ⟶ (moduleToDerived A E).obj ((dgModuleExtension A D E F).onClosed.obj M) := (dgDerivedExtensionResolutionComputation A D E F (moduleCanonicalProjectiveResolution A D M"
+        },
+        {
+          "line": 60,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap_homEquiv",
+          "type_excerpt": "lemma derivedExtensionUnderivedMap_homEquiv (M : ModuleCategory A D) (N : ModuleCategory A E) (s : (dgModuleExtension A D E F).onClosed.obj M ⟶ N) : dgDerivedExtensionHomEquiv A D E F ((moduleToDerived A D).obj M) ((moduleToDerived A E).obj N) (derivedExtensionUnderivedMap A D E F M ≫ (mod"
+        },
+        {
+          "line": 83,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap_isIso",
+          "type_excerpt": "lemma derivedExtensionUnderivedMap_isIso (M : ModuleCategory A D) (hM : moduleHomotopicallyProjective A D M) : IsIso (derivedExtensionUnderivedMap A D E F M) "
+        }
+      ],
+      "SerrePositivity/DifferentialGraded/Resolution/Cell.lean": [
+        {
+          "line": 59,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.initial",
+          "type_excerpt": "def initial : FixedObjectAugmentation A D D id where category := (inferInstance : DGCategory A (DGCategoryCycleCover.Source A D)) map x y := (DGCategoryCycleCover.augmentation A D).map x y map_id x := (DGCategoryCycleCover.augmentation A D).map_id x map_comp x y z := (DGCategoryCycleCover."
+        },
+        {
+          "line": 65,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.initial_homKFlat",
+          "type_excerpt": "lemma initial_homKFlat : (initial A D).HomKFlat := DGCategoryCycleCover.source_homKFlat A D  def stage : ℕ → FixedObjectAugmentation A D D id | 0 => initial A D | n + 1 => (stage n).attach  lemma stage_homKFlat (n : ℕ) : (stage A D n).HomKFlat "
+        },
+        {
+          "line": 67,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.stage",
+          "type_excerpt": "def stage : ℕ → FixedObjectAugmentation A D D id | 0 => initial A D | n + 1 => (stage n).attach  lemma stage_homKFlat (n : ℕ) : (stage A D n).HomKFlat "
+        }
+      ]
+    },
+    "result": "§2.4 は dg 圏の twisted complexes による前三角包と H⁰ の定義。旧候補は商の三角同値。有限半自由や前三角性の型から、この一般の包そのものを確認できない。"
+  },
+  "200": {
+    "number": "1.6.3",
+    "citations": [],
+    "same_reference_citations": 384,
+    "pattern": "[Tt]wistedComplex|[Pp]retriangulat|quotient.*baseChange|quotient.*[Tt]ensor|[Cc]ellResolution",
+    "repository_count": 165,
+    "repository_examples": [
+      [
+        "SerrePositivity/AlgebraicGeometry/FiberPrimeDimension.lean",
+        67,
+        "SerrePositivity.AlgebraicGeometry.fiber_coordinate_quotient_baseChange"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/GenericFreeAlgebra.lean",
+        27,
+        "SerrePositivity.AlgebraicGeometry.mvPolynomialQuotientTensorEquiv"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/PureTransformExactPowers.lean",
+        59,
+        "SerrePositivity.AlgebraicGeometry.modulePureTransformMap_exact_of_quotient_lTensor_injective"
+      ],
+      [
+        "SerrePositivity/AlgebraicGeometry/QuotientModuleBaseChange.lean",
+        27,
+        "SerrePositivity.AlgebraicGeometry.quotientModuleTensorEquiv"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+        85,
+        "SerrePositivity.BhattScholze.Almost.quotientTensor"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Almost/AlmostTensor.lean",
+        103,
+        "SerrePositivity.BhattScholze.Almost.quotientTensor_isAlmostZero"
+      ]
+    ],
+    "mathlib_count": 4,
+    "mathlib_examples": [
+      "LinearAlgebra/TensorProduct/Quotient.lean",
+      "RingTheory/TensorProduct/Quotient.lean",
+      "CategoryTheory/Localization/Triangulated.lean",
+      "CategoryTheory/Triangulated/Pretriangulated.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/DifferentialGraded/Quotient/Path/Evaluation.lean": [
+        {
+          "line": 124,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientHomBaseChangeIso",
+          "type_excerpt": "def quotientHomBaseChangeIso (S : Set D) (x y : D) : (extension φ).obj (quotientHom A D S x y) ≅ quotientHom A' (DGBaseChange φ D) S x y := HomologicalComplex.Hom.isoOfComponents (fun n => (HomologicalComplex.eval (ModuleCat.{u} A') (.up ℤ) n).mapIso (internalHomBaseChangeIso φ D S x y)) ("
+        },
+        {
+          "line": 141,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientHomBaseChangeIso_hom_f",
+          "type_excerpt": "lemma quotientHomBaseChangeIso_hom_f (S : Set D) (x y : D) (n : ℤ) : (quotientHomBaseChangeIso φ D S x y).hom.f n = (internalHomBaseChangeIso φ D S x y).hom.f n := rfl  @[reassoc] lemma originalHomInclusion_baseChange (S : Set D) (x y : D) : (extension φ).map (originalHomInclusion A D S x "
+        },
+        {
+          "line": 157,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.quotientIdentity_baseChange",
+          "type_excerpt": "lemma quotientIdentity_baseChange (S : Set D) (x : D) : (unitIso φ).inv ≫ (extension φ).map (quotientIdentity A D S x) ≫ (quotientHomBaseChangeIso φ D S x x).hom = quotientIdentity A' (DGBaseChange φ D) S x "
+        }
+      ],
+      "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean": [
+        {
+          "line": 51,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap",
+          "type_excerpt": "def derivedExtensionUnderivedMap (M : ModuleCategory A D) : (dgDerivedExtension A D E F).obj ((moduleToDerived A D).obj M) ⟶ (moduleToDerived A E).obj ((dgModuleExtension A D E F).onClosed.obj M) := (dgDerivedExtensionResolutionComputation A D E F (moduleCanonicalProjectiveResolution A D M"
+        },
+        {
+          "line": 60,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap_homEquiv",
+          "type_excerpt": "lemma derivedExtensionUnderivedMap_homEquiv (M : ModuleCategory A D) (N : ModuleCategory A E) (s : (dgModuleExtension A D E F).onClosed.obj M ⟶ N) : dgDerivedExtensionHomEquiv A D E F ((moduleToDerived A D).obj M) ((moduleToDerived A E).obj N) (derivedExtensionUnderivedMap A D E F M ≫ (mod"
+        },
+        {
+          "line": 83,
+          "name": "SerrePositivity.DifferentialGraded.DGQuotient.derivedExtensionUnderivedMap_isIso",
+          "type_excerpt": "lemma derivedExtensionUnderivedMap_isIso (M : ModuleCategory A D) (hM : moduleHomotopicallyProjective A D M) : IsIso (derivedExtensionUnderivedMap A D E F M) "
+        }
+      ],
+      "SerrePositivity/DifferentialGraded/Resolution/Cell.lean": [
+        {
+          "line": 59,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.initial",
+          "type_excerpt": "def initial : FixedObjectAugmentation A D D id where category := (inferInstance : DGCategory A (DGCategoryCycleCover.Source A D)) map x y := (DGCategoryCycleCover.augmentation A D).map x y map_id x := (DGCategoryCycleCover.augmentation A D).map_id x map_comp x y z := (DGCategoryCycleCover."
+        },
+        {
+          "line": 65,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.initial_homKFlat",
+          "type_excerpt": "lemma initial_homKFlat : (initial A D).HomKFlat := DGCategoryCycleCover.source_homKFlat A D  def stage : ℕ → FixedObjectAugmentation A D D id | 0 => initial A D | n + 1 => (stage n).attach  lemma stage_homKFlat (n : ℕ) : (stage A D n).HomKFlat "
+        },
+        {
+          "line": 67,
+          "name": "SerrePositivity.DifferentialGraded.DGCategoryCellResolution.stage",
+          "type_excerpt": "def stage : ℕ → FixedObjectAugmentation A D D id | 0 => initial A D | n + 1 => (stage n).attach  lemma stage_homKFlat (n : ℕ) : (stage A D n).HomKFlat "
+        }
+      ]
+    },
+    "result": "h-flat dg 圏とのテンソルが同じ Drinfeld 商を保つ命題。係数環の base change に関する経路評価とテンソル双加群の型を調べたが、任意の第二 dg 圏との商比較は見つからない。"
+  },
+  "205": {
+    "number": "11.4 | 11.7 | 11.10",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "NonconnectiveK|filteredColimits|FrobeniusPair|thomasonCandidate",
+    "repository_count": 145,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        624,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        634,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_single"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        647,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_coeff"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        657,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_variable"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        668,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputMap"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        675,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_baseMap"
+      ]
+    ],
+    "mathlib_count": 6,
+    "mathlib_examples": [
+      "Algebra/Category/Ring/FinitePresentation.lean",
+      "CategoryTheory/Presentable/Finite.lean",
+      "CategoryTheory/Presentable/Basic.lean",
+      "CategoryTheory/MorphismProperty/Limits.lean",
+      "CategoryTheory/Limits/Preserves/Filtered.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        },
+        {
+          "line": 36,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_succ",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKInput R (dgSuspensionUnconditionalIteration R κ hκ A n) (dgKappaSelectedConeInput R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ)) := rfl  /-- 元の実"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean": [
+        {
+          "line": 27,
+          "name": "SerrePositivity.KST.SConstruction.PreservesPerfectFilteredColimits",
+          "type_excerpt": "def PreservesPerfectFilteredColimits (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop := ∀ (J : SSet.{u}) [Quasicategory J] [F2.IsFilteredInfinity J] (p : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶ perfectStableInfinity.{u}) (c : JoinCocone p), IsColimitCone c → IsColimitCone (mapJoinCocone E c"
+        }
+      ]
+    },
+    "result": "公開稿 11.4・11.7・11.10 は Frobenius 対の IK スペクトルと局所化。dg の懸垂塔と連結比較からは原典の Frobenius 対の値と完全列への適用を得られない。"
+  },
+  "206": {
+    "number": "§7 Lemma 6（公開稿 6.4）",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "NonconnectiveK|filteredColimits|FrobeniusPair|thomasonCandidate",
+    "repository_count": 145,
+    "repository_examples": [
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        624,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        634,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_single"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        647,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_coeff"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        657,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_variable"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        668,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputMap"
+      ],
+      [
+        "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/PowerRootInput.lean",
+        675,
+        "SerrePositivity.BhattScholze.Andre.powerRootFrobeniusPairVarpiInputEquiv_baseMap"
+      ]
+    ],
+    "mathlib_count": 6,
+    "mathlib_examples": [
+      "Algebra/Category/Ring/FinitePresentation.lean",
+      "CategoryTheory/Presentable/Basic.lean",
+      "CategoryTheory/Presentable/Finite.lean",
+      "CategoryTheory/MorphismProperty/Limits.lean",
+      "CategoryTheory/Limits/Preserves/Filtered.lean"
+    ],
+    "nearby_types": {
+      "SerrePositivity/KST/NonConnective/DGNonconnectiveK.lean": [
+        {
+          "line": 28,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK",
+          "type_excerpt": "def dgNonconnectiveKSuspensionK (n : ℕ) : OmegaSpectrum.{max (u + 1) v} := dgKInputSpectrum R (dgSuspensionUnconditionalIteration R κ hκ A n)  /-- 零段は元の同じ固定 K。 -/ theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同"
+        },
+        {
+          "line": 32,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_zero",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_zero : dgNonconnectiveKSuspensionK R κ hκ A 0 = dgKInputSpectrum R A := rfl  /-- 次段は D-8 の同じ実 cone 入力からの実平坦懸垂 K。 -/ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKIn"
+        },
+        {
+          "line": 36,
+          "name": "SerrePositivity.KST.NonConnective.dgNonconnectiveKSuspensionK_succ",
+          "type_excerpt": "theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) : dgNonconnectiveKSuspensionK R κ hκ A (n + 1) = dgKInputSpectrum R (dgKappaSuspensionKInput R (dgSuspensionUnconditionalIteration R κ hκ A n) (dgKappaSelectedConeInput R (dgSuspensionUnconditionalIteration R κ hκ A n) κ hκ)) := rfl  /-- 元の実"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean": [
+        {
+          "line": 27,
+          "name": "SerrePositivity.KST.SConstruction.PreservesPerfectFilteredColimits",
+          "type_excerpt": "def PreservesPerfectFilteredColimits (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop := ∀ (J : SSet.{u}) [Quasicategory J] [F2.IsFilteredInfinity J] (p : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶ perfectStableInfinity.{u}) (c : JoinCocone p), IsColimitCone c → IsColimitCone (mapJoinCocone E c"
+        }
+      ]
+    },
+    "result": "BGT v4 9.8 の証明末尾は非連結 K が filtered colimit を保つことを Schlichting 刊行版 §7 Lemma 6 に帰している。固定 dg 塔の逐次余極限と不変量の保存条件を調べたが、K の保存定理は確認できない。"
+  },
+  "208": {
+    "number": "Introduction 0.1",
+    "citations": [],
+    "same_reference_citations": 0,
+    "pattern": "Goodwillie|[Cc]yclicHomology|[Ii]nfinitesimalK|truncating|Nilinvariant",
+    "repository_count": 1,
+    "repository_examples": [
+      [
+        "SerrePositivity/KST/Descent/Axioms.lean",
+        134,
+        "SerrePositivity.KST.Descent.Nilinvariant"
+      ]
+    ],
+    "mathlib_count": 0,
+    "mathlib_examples": [],
+    "nearby_types": {
+      "SerrePositivity/Inputs/Descent.lean": [
+        {
+          "line": 50,
+          "name": "SerrePositivity.theorem_3_1_K0",
+          "type_excerpt": "theorem theorem_3_1_K0 (A T : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing T] [Algebra A T] [Module.Finite A T] (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p] {e : ℕ} (z : Fin e → A) (_hz : (Ideal.span (Set.range z)).radical = maximalIdeal A) (G : Type u) [Group G"
+        }
+      ],
+      "SerrePositivity/KST/Descent/Axioms.lean": [
+        {
+          "line": 134,
+          "name": "SerrePositivity.KST.Descent.Nilinvariant",
+          "type_excerpt": "class Nilinvariant (S : Scheme.{u}) {Coefficient : Type w} (L : GradedPresheaf.{u + 1, u, w, t} (FiniteTypeSchemes S) Coefficient) : Prop where /-- 概要：冪零 thickening に対する引き戻しは全次数で全単射（論文 §3）。 方針：係数と整数次数を固定して幾何学的な指定写像を評価する。 規約：負次数を含み、単なる抽象同型の存在ではない。 使われ方：reduction とその底変換に沿った比較。 -/ pullback_bi"
+        }
+      ],
+      "SerrePositivity/KST/SConstruction/PerfectLocalizingInvariant.lean": [
+        {
+          "line": 22,
+          "name": "SerrePositivity.KST.SConstruction.PreservesPerfectZeroCategories",
+          "type_excerpt": "def PreservesPerfectZeroCategories (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop := ∀ a : perfectStableInfinity.{u} _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (perfectStableObject a) → IsZeroVertex (E.app (Opposite.op ⦋0⦌) a)  /-- 全ての小さい filtered ∞ 添字の"
+        },
+        {
+          "line": 27,
+          "name": "SerrePositivity.KST.SConstruction.PreservesPerfectFilteredColimits",
+          "type_excerpt": "def PreservesPerfectFilteredColimits (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop := ∀ (J : SSet.{u}) [Quasicategory J] [F2.IsFilteredInfinity J] (p : (SSet.uliftFunctor.{u + 1, u}).obj J ⟶ perfectStableInfinity.{u}) (c : JoinCocone p), IsColimitCone c → IsColimitCone (mapJoinCocone E c"
+        },
+        {
+          "line": 34,
+          "name": "SerrePositivity.KST.SConstruction.IsPerfectLocalizingInvariant",
+          "type_excerpt": "structure IsPerfectLocalizingInvariant (E : perfectStableInfinity.{u} ⟶ Sp.{u}) : Prop where preservesZero : PreservesPerfectZeroCategories E preservesFilteredColimits : PreservesPerfectFilteredColimits E preservesVerdier (d : PerfectVerdierDiagram.{u}) : IsPullbackSquare (d.square ≫ E)  /"
+        }
+      ]
+    },
+    "result": "π₀ の核が冪零な単体環の射の相対 K と相対巡回ホモロジーの有理比較。THH・TC・切断型の候補を調べたが、Goodwillie–Jones の比較射と同値は確認できない。"
+  }
+}

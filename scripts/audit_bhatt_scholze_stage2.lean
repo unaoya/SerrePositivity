@@ -231,6 +231,48 @@ import SerrePositivity.BhattScholze.Prism.Basic.UniversalOriented
 import SerrePositivity.BhattScholze.Prism.Basic.UniversalOrientedFrobenius
 import SerrePositivity.BhattScholze.Prismatic.RelativeCompleteRegularity
 import SerrePositivity.CommutativeAlgebra.CompletelyFlat.LocalizedTor
+import SerrePositivity.BhattScholze.Prismatic.BigCechAffineEnvelope
+import SerrePositivity.BhattScholze.Prismatic.BigCechAlexander
+import SerrePositivity.BhattScholze.Prismatic.BigCechCompletionLift
+import SerrePositivity.BhattScholze.Prismatic.BigCechFrameComparison
+import SerrePositivity.BhattScholze.Prismatic.BigCechFrameLift
+import SerrePositivity.BhattScholze.Prismatic.BigCechFrameResidue
+import SerrePositivity.BhattScholze.Prismatic.BigCechFrameRetraction
+import SerrePositivity.BhattScholze.Prismatic.BigPDModel
+import SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelope
+import SerrePositivity.BhattScholze.Prismatic.PDAdicCompletion
+import SerrePositivity.BhattScholze.Prismatic.PDCechFrameHomotopy
+import SerrePositivity.BhattScholze.Prismatic.PDCechNerve
+import SerrePositivity.BhattScholze.Prismatic.PDCechNerveNaturality
+import SerrePositivity.BhattScholze.Prismatic.PDCompletedColumnContraction
+import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedColumnZero
+import SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedProjection
+import SerrePositivity.BhattScholze.Prismatic.PDFrobeniusLift
+import SerrePositivity.BhattScholze.Prismatic.PDFromGenerators
+import SerrePositivity.BhattScholze.Prismatic.PDModelBaseChange
+import SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor
+import SerrePositivity.BhattScholze.Prismatic.PDPolynomialGraph
+import SerrePositivity.BhattScholze.Prismatic.PDPolynomialSplitEnvelope
+import SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeLinear
+import SerrePositivity.BhattScholze.Prismatic.PDRawCoefficientPD
+import SerrePositivity.BhattScholze.Prismatic.PDRelativeFree
+import SerrePositivity.BhattScholze.Prismatic.PDSmallModelComparison
+import SerrePositivity.BhattScholze.Prismatic.PDSmallRawEnvelope
+import SerrePositivity.BhattScholze.Prismatic.PolynomialCategory
+import SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionFunctor
+import SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionResidue
+import SerrePositivity.BhattScholze.Prismatic.RelativePDEnvelope
+import SerrePositivity.BhattScholze.Prismatic.UniversalWittComparison
+import SerrePositivity.BhattScholze.Prismatic.WittAdicCompleteness
+import SerrePositivity.BhattScholze.Prismatic.WittBigBridge
+import SerrePositivity.BhattScholze.Prismatic.WittBigCrystalline
+import SerrePositivity.BhattScholze.Prismatic.WittCrystallinePrism
+import SerrePositivity.BhattScholze.Prismatic.WittPDBase
+import SerrePositivity.BhattScholze.Prismatic.WittPDEnvelopeCrystalline
+import SerrePositivity.BhattScholze.Prismatic.WittPDPrismMaps
+import SerrePositivity.BhattScholze.Prismatic.WittSmallFrame
+import SerrePositivity.BhattScholze.Prismatic.WittToSmall
+import SerrePositivity.BhattScholze.Prismatic.WittToSmallFrame
 import Lean.Util.CollectAxioms
 
 /-!
@@ -243,6 +285,48 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Prismatic.BigCechAffineEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechAlexander,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechCompletionLift,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechFrameComparison,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechFrameLift,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechFrameResidue,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechFrameRetraction,
+    `SerrePositivity.BhattScholze.Prismatic.BigPDModel,
+    `SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.PDAdicCompletion,
+    `SerrePositivity.BhattScholze.Prismatic.PDCechFrameHomotopy,
+    `SerrePositivity.BhattScholze.Prismatic.PDCechNerve,
+    `SerrePositivity.BhattScholze.Prismatic.PDCechNerveNaturality,
+    `SerrePositivity.BhattScholze.Prismatic.PDCompletedColumnContraction,
+    `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedColumnZero,
+    `SerrePositivity.BhattScholze.Prismatic.PDDeRhamCompletedProjection,
+    `SerrePositivity.BhattScholze.Prismatic.PDFrobeniusLift,
+    `SerrePositivity.BhattScholze.Prismatic.PDFromGenerators,
+    `SerrePositivity.BhattScholze.Prismatic.PDModelBaseChange,
+    `SerrePositivity.BhattScholze.Prismatic.PDPolynomialFunctor,
+    `SerrePositivity.BhattScholze.Prismatic.PDPolynomialGraph,
+    `SerrePositivity.BhattScholze.Prismatic.PDPolynomialSplitEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.PDRawBaseChangeLinear,
+    `SerrePositivity.BhattScholze.Prismatic.PDRawCoefficientPD,
+    `SerrePositivity.BhattScholze.Prismatic.PDRelativeFree,
+    `SerrePositivity.BhattScholze.Prismatic.PDSmallModelComparison,
+    `SerrePositivity.BhattScholze.Prismatic.PDSmallRawEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.PolynomialCategory,
+    `SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionFunctor,
+    `SerrePositivity.BhattScholze.Prismatic.PolynomialCompletionResidue,
+    `SerrePositivity.BhattScholze.Prismatic.RelativePDEnvelope,
+    `SerrePositivity.BhattScholze.Prismatic.UniversalWittComparison,
+    `SerrePositivity.BhattScholze.Prismatic.WittAdicCompleteness,
+    `SerrePositivity.BhattScholze.Prismatic.WittBigBridge,
+    `SerrePositivity.BhattScholze.Prismatic.WittBigCrystalline,
+    `SerrePositivity.BhattScholze.Prismatic.WittCrystallinePrism,
+    `SerrePositivity.BhattScholze.Prismatic.WittPDBase,
+    `SerrePositivity.BhattScholze.Prismatic.WittPDEnvelopeCrystalline,
+    `SerrePositivity.BhattScholze.Prismatic.WittPDPrismMaps,
+    `SerrePositivity.BhattScholze.Prismatic.WittSmallFrame,
+    `SerrePositivity.BhattScholze.Prismatic.WittToSmall,
+    `SerrePositivity.BhattScholze.Prismatic.WittToSmallFrame,
     `SerrePositivity.BhattScholze.Delta.Distinguished.Universal,
     `SerrePositivity.BhattScholze.Delta.Division.FrobeniusPushout,
     `SerrePositivity.BhattScholze.Prism.Basic.UniversalOriented,

@@ -1,0 +1,273 @@
+{
+  "revision": "6e19c5a14cb16a704016efaf924b61d181239c46",
+  "toolchain": "Lean 4.35.0-rc4",
+  "source": "共有ロック下で既存 olean を読み #check と #print axioms",
+  "declarations": {
+    "SerrePositivity.InfinityCategories.F2.laxPullback": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullback.lean",
+      "line": 25,
+      "kind": "def",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullback : {A B C : SSet} → (A ⟶ C) → (B ⟶ C) → SSet",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullback' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackProjections.lean",
+      "line": 66,
+      "kind": "def",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso : {A B C : SSet} →\n  (p : A ⟶ C) →\n    (q : B ⟶ C) →\n      SerrePositivity.InfinityCategories.F2.laxPullback p q ≅\n        CategoryTheory.Limits.pullback (CategoryTheory.MonoidalCategoryStruct.tensorHom p q)\n          (SerrePositivity.InfinityCategories.F2.arrowEndpointPair C)",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackFormulaIso' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullbackVertexEquiv": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackVertexEquiv.lean",
+      "line": 56,
+      "kind": "def",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackVertexEquiv : {A B C : SSet} →\n  (p : A ⟶ C) →\n    (q : B ⟶ C) →\n      (SerrePositivity.InfinityCategories.F2.laxPullback p q).obj (Opposite.op { len := 0 }) ≃\n        SerrePositivity.InfinityCategories.F2.LaxPullbackVertexData p q",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackVertexEquiv' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullbackMappingProduct_isPullback": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackMappingProductSquare.lean",
+      "line": 29,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackMappingProduct_isPullback : ∀ {A B C : SSet} (p : A ⟶ C) (q : B ⟶ C)\n  (x y : (SerrePositivity.InfinityCategories.F2.laxPullback p q).obj (Opposite.op { len := 0 })),\n  CategoryTheory.IsPullback\n    (SerrePositivity.InfinityCategories.pinchedHomMap (SerrePositivity.InfinityCategories.F2.laxPullbackArrow p q) x y)\n    (SerrePositivity.InfinityCategories.F2.laxPullbackMappingProjections p q x y)\n    (SerrePositivity.InfinityCategories.F2.laxPullbackMappingEndpointMap p q x y)\n    (CategoryTheory.MonoidalCategoryStruct.tensorHom\n      (SerrePositivity.InfinityCategories.pinchedHomMap p\n        ((CategoryTheory.ConcreteCategory.hom\n            ((SerrePositivity.InfinityCategories.F2.laxPullbackFst p q).app (Opposite.op { len := 0 })))\n          x)\n        ((CategoryTheory.ConcreteCategory.hom\n            ((SerrePositivity.InfinityCategories.F2.laxPullbackFst p q).app (Opposite.op { len := 0 })))\n          y))\n      (SerrePositivity.InfinityCategories.pinchedHomMap q\n        ((CategoryTheory.ConcreteCategory.hom\n            ((SerrePositivity.InfinityCategories.F2.laxPullbackSnd p q).app (Opposite.op { len := 0 })))\n          x)\n        ((CategoryTheory.ConcreteCategory.hom\n            ((SerrePositivity.InfinityCategories.F2.laxPullbackSnd p q).app (Opposite.op { len := 0 })))\n          y)))",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackMappingProduct_isPullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackEquivalenceIso.lean",
+      "line": 41,
+      "kind": "def",
+      "type": "@SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso : {A B C : SSet} →\n  (p : A ⟶ C) →\n    (q : B ⟶ C) →\n      SerrePositivity.InfinityCategories.F2.catPullback p q ≅\n        (SerrePositivity.InfinityCategories.F2.laxPullbackEquivalenceSubcomplex p q).toSSet",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.catPullbackEquivalenceSubcomplexIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackLaxSquare.lean",
+      "line": 80,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback : ∀ {A B C : SSet} (p : A ⟶ C) (q : B ⟶ C),\n  CategoryTheory.IsPullback (SerrePositivity.InfinityCategories.F2.catPullbackPath p q)\n    (SerrePositivity.InfinityCategories.F2.catPullbackToLax p q) (SerrePositivity.InfinityCategories.equivalencePathι C)\n    (SerrePositivity.InfinityCategories.F2.laxPullbackArrow p q)",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.catPullbackToLax_isPullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackColimitConeExistence.lean",
+      "line": 27,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components : ∀ {J A B C : SSet}\n  [A.Quasicategory] [B.Quasicategory] [C.Quasicategory] (p : A ⟶ C) (q : B ⟶ C)\n  (r : J ⟶ SerrePositivity.InfinityCategories.F2.laxPullback p q)\n  (ca :\n    SerrePositivity.InfinityCategories.JoinCocone\n      (CategoryTheory.CategoryStruct.comp r (SerrePositivity.InfinityCategories.F2.laxPullbackFst p q)))\n  (cb :\n    SerrePositivity.InfinityCategories.JoinCocone\n      (CategoryTheory.CategoryStruct.comp r (SerrePositivity.InfinityCategories.F2.laxPullbackSnd p q))),\n  SerrePositivity.InfinityCategories.IsColimitCone ca →\n    SerrePositivity.InfinityCategories.IsColimitCone cb →\n      SerrePositivity.InfinityCategories.IsColimitCone\n          (SerrePositivity.InfinityCategories.F1B.kanPostcomposeCocone p ca) →\n        SerrePositivity.InfinityCategories.IsColimitCone\n            (SerrePositivity.InfinityCategories.F1B.kanPostcomposeCocone q cb) →\n          ∃ c,\n            SerrePositivity.InfinityCategories.IsColimitCone c ∧\n              SerrePositivity.InfinityCategories.F1B.kanPostcomposeCocone\n                    (SerrePositivity.InfinityCategories.F2.laxPullbackFst p q) c =\n                  ca ∧\n                SerrePositivity.InfinityCategories.F1B.kanPostcomposeCocone\n                    (SerrePositivity.InfinityCategories.F2.laxPullbackSnd p q) c =\n                  cb",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.exists_colimitCone_laxPullback_with_components' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.SConstruction.perfectLaxPullback_isIdempotentComplete": {
+      "file": "SerrePositivity/KST/SConstruction/PerfectLaxIdempotent.lean",
+      "line": 31,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.SConstruction.perfectLaxPullback_isIdempotentComplete : ∀ {A B C : SSet} [A.Quasicategory]\n  [B.Quasicategory] [C.Quasicategory] (p : A ⟶ C) (q : B ⟶ C),\n  SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete A →\n    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete B →\n      SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentComplete\n        (SerrePositivity.InfinityCategories.F2.laxPullback p q)",
+      "axioms": "'SerrePositivity.KST.SConstruction.perfectLaxPullback_isIdempotentComplete' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullback_isStable": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackStable.lean",
+      "line": 57,
+      "kind": "instance",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullback_isStable : ∀ {A B C : SSet} [inst : A.Quasicategory]\n  [inst_1 : B.Quasicategory] [inst_2 : C.Quasicategory] [SerrePositivity.InfinityCategories.IsStable A]\n  [SerrePositivity.InfinityCategories.IsStable B] [SerrePositivity.InfinityCategories.IsStable C] (p : A ⟶ C)\n  (q : B ⟶ C) [SerrePositivity.InfinityCategories.IsExactFunctor p]\n  [SerrePositivity.InfinityCategories.IsExactFunctor q],\n  SerrePositivity.InfinityCategories.IsStable (SerrePositivity.InfinityCategories.F2.laxPullback p q)",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullback_isStable' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackExactProjections.lean",
+      "line": 44,
+      "kind": "instance",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor : ∀ {A B C : SSet} [inst : A.Quasicategory]\n  [inst_1 : B.Quasicategory] [inst_2 : C.Quasicategory] [SerrePositivity.InfinityCategories.IsStable A]\n  [SerrePositivity.InfinityCategories.IsStable B] [SerrePositivity.InfinityCategories.IsStable C] (p : A ⟶ C)\n  (q : B ⟶ C) [SerrePositivity.InfinityCategories.IsExactFunctor p]\n  [SerrePositivity.InfinityCategories.IsExactFunctor q],\n  SerrePositivity.InfinityCategories.IsExactFunctor (SerrePositivity.InfinityCategories.F2.laxPullbackFst p q)",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackFst_isExactFunctor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor": {
+      "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/LaxPullbackExactProjections.lean",
+      "line": 53,
+      "kind": "instance",
+      "type": "@SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor : ∀ {A B C : SSet} [inst : A.Quasicategory]\n  [inst_1 : B.Quasicategory] [inst_2 : C.Quasicategory] [SerrePositivity.InfinityCategories.IsStable A]\n  [SerrePositivity.InfinityCategories.IsStable B] [SerrePositivity.InfinityCategories.IsStable C] (p : A ⟶ C)\n  (q : B ⟶ C) [SerrePositivity.InfinityCategories.IsExactFunctor p]\n  [SerrePositivity.InfinityCategories.IsExactFunctor q],\n  SerrePositivity.InfinityCategories.IsExactFunctor (SerrePositivity.InfinityCategories.F2.laxPullbackSnd p q)",
+      "axioms": "'SerrePositivity.InfinityCategories.F2.laxPullbackSnd_isExactFunctor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxSemiorthogonal.lean",
+      "line": 43,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E →\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E →\n      SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxVerdierSequence' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromCAdjunction": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxCAdjunction.lean",
+      "line": 42,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromCAdjunction : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n    (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n      SerrePositivity.InfinityCategories.QCatAdjunction (SerrePositivity.KST.LocalizingInvariants.laxFst p q).hom\n        (SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC p q)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromCAdjunction' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromDAdjunction": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDAdjunction.lean",
+      "line": 49,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromDAdjunction : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n    (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n      SerrePositivity.InfinityCategories.QCatAdjunction\n        (SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD p q)\n        (SerrePositivity.KST.LocalizingInvariants.laxSnd p q).hom",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromDAdjunction' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean",
+      "line": 26,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n    (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n      (v : E.obj ⟶ D.obj) →\n        SerrePositivity.InfinityCategories.QCatAdjunction q.hom v →\n          SerrePositivity.InfinityCategories.IsFullyFaithful v →\n            SerrePositivity.InfinityCategories.QCatAdjunction\n              (SerrePositivity.KST.LocalizingInvariants.laxDifference p q)\n              (SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceAdjunction' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_fullyFaithful": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceRho.lean",
+      "line": 31,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_fullyFaithful : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj),\n  SerrePositivity.InfinityCategories.IsFullyFaithful v →\n    SerrePositivity.InfinityCategories.IsFullyFaithful (SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_fullyFaithful' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceMapping_equivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceMapping.lean",
+      "line": 24,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceMapping_equivalence : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v),\n  SerrePositivity.InfinityCategories.IsFullyFaithful v →\n    ∀ (x : (SerrePositivity.KST.LocalizingInvariants.laxCategory p q).obj.obj (Opposite.op { len := 0 }))\n      (y : E.obj.obj (Opposite.op { len := 0 })),\n      SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence\n        (SerrePositivity.InfinityCategories.pinchedHomMap (SerrePositivity.KST.LocalizingInvariants.laxDifference p q) x\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v).app (Opposite.op { len := 0 })))\n            y))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceMapping_equivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_sectionIso": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceRho.lean",
+      "line": 40,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_sectionIso : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n    (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n      (v : E.obj ⟶ D.obj) →\n        SerrePositivity.InfinityCategories.QCatAdjunction q.hom v →\n          SerrePositivity.InfinityCategories.IsFullyFaithful v →\n            SerrePositivity.InfinityCategories.FunctorIso\n              (CategoryTheory.CategoryStruct.comp (SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v)\n                (SerrePositivity.KST.LocalizingInvariants.laxDifference p q))\n              (CategoryTheory.CategoryStruct.id E.obj)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_sectionIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean",
+      "line": 48,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v),\n  SerrePositivity.InfinityCategories.IsFullyFaithful v →\n    SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence\n      (SerrePositivity.KST.LocalizingInvariants.pullbackInclusion p q)\n      (SerrePositivity.KST.LocalizingInvariants.exactLaxDifference p q)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifference_isVerdier' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrow_zeroSource": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceCompositeMapping.lean",
+      "line": 24,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrow_zeroSource : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (y : E.obj.obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsZeroSourceArrow\n    ((CategoryTheory.ConcreteCategory.hom\n        ((SerrePositivity.InfinityCategories.F2.laxPullbackArrow p.hom q.hom).app (Opposite.op { len := 0 })))\n      ((CategoryTheory.ConcreteCategory.hom\n          ((SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v).app (Opposite.op { len := 0 })))\n        y))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrow_zeroSource' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrowMapping_equivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceRhoArrowMapping.lean",
+      "line": 32,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrowMapping_equivalence : ∀\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v),\n  SerrePositivity.InfinityCategories.IsFullyFaithful v →\n    ∀ (x : (SerrePositivity.KST.LocalizingInvariants.laxCategory p q).obj.obj (Opposite.op { len := 0 }))\n      (y : E.obj.obj (Opposite.op { len := 0 })),\n      SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence\n        (SerrePositivity.InfinityCategories.pinchedHomMap\n          (SerrePositivity.InfinityCategories.F2.laxPullbackArrow p.hom q.hom) x\n          ((CategoryTheory.ConcreteCategory.hom\n              ((SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho p q v).app (Opposite.op { len := 0 })))\n            y))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_arrowMapping_equivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceMapping_equivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberZeroSourceMapping.lean",
+      "line": 43,
+      "kind": "lemma",
+      "type": "SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceMapping_equivalence : ∀ (X : SSet) [inst : X.Quasicategory]\n  [inst_1 : SerrePositivity.InfinityCategories.IsStable X]\n  (x z : (SSet.stdSimplex.obj { len := 1 } ⟹ X).obj (Opposite.op { len := 0 })),\n  SerrePositivity.InfinityCategories.IsZeroSourceArrow z →\n    SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence\n      (SerrePositivity.InfinityCategories.pinchedHomMap\n        (SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X\n          (CategoryTheory.CategoryStruct.id (SSet.stdSimplex.obj { len := 1 } ⟹ X)))\n        x z)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceMapping_equivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceVertexIso": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/CofiberZeroSourceMapping.lean",
+      "line": 24,
+      "kind": "def",
+      "type": "SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceVertexIso : (X : SSet) →\n  [inst : X.Quasicategory] →\n    [inst_1 : SerrePositivity.InfinityCategories.IsStable X] →\n      (z : (SSet.stdSimplex.obj { len := 1 } ⟹ X).obj (Opposite.op { len := 0 })) →\n        SerrePositivity.InfinityCategories.IsZeroSourceArrow z →\n          SerrePositivity.InfinityCategories.VertexIso z\n            ((CategoryTheory.ConcreteCategory.hom\n                ((SerrePositivity.KST.LocalizingInvariants.cofiberRightAdjoint X).app (Opposite.op { len := 0 })))\n              ((CategoryTheory.ConcreteCategory.hom\n                  ((SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target X).app\n                    (Opposite.op { len := 0 })))\n                z))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.cofiberZeroSourceVertexIso' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.tammeVerdierSequence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxDifferenceAdjunction.lean",
+      "line": 57,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.tammeVerdierSequence : {C D E :\n    SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n  SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E →\n    (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n      (v : E.obj ⟶ D.obj) →\n        SerrePositivity.InfinityCategories.QCatAdjunction q.hom v →\n          SerrePositivity.InfinityCategories.IsFullyFaithful v →\n            SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.tammeVerdierSequence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/Invariant.lean",
+      "line": 27,
+      "kind": "structure",
+      "type": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant : (SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶\n    SerrePositivity.KST.Spectra.Sp) →\n  Prop",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.fiberTriangle_isFiber": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/Invariant.lean",
+      "line": 52,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.fiberTriangle_isFiber : ∀\n  {E : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hE : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant E)\n  (d : SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram),\n  SerrePositivity.InfinityCategories.IsFiberSequence (hE.fiberTriangle d)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.fiberTriangle_isFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.TammePullback.square_isPullback": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean",
+      "line": 63,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.TammePullback.square_isPullback : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (adj : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v)\n  (hv : SerrePositivity.InfinityCategories.IsFullyFaithful v),\n  SerrePositivity.InfinityCategories.IsPullbackSquare\n    (SerrePositivity.KST.LocalizingInvariants.TammePullback.square hΦ p q v adj hv)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.TammePullback.square_isPullback' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.TammePullback.square_boundary": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammePullbackComparison.lean",
+      "line": 67,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.TammePullback.square_boundary : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (adj : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v)\n  (hv : SerrePositivity.InfinityCategories.IsFullyFaithful v),\n  CategoryTheory.CategoryStruct.comp SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame.boundaryι\n      (SerrePositivity.KST.LocalizingInvariants.TammePullback.square hΦ p q v adj hv) =\n    (SerrePositivity.KST.LocalizingInvariants.TammePullback.newFrame p q).diagram",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.TammePullback.square_boundary' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_isFiber": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeFiberSequence.lean",
+      "line": 36,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_isFiber : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v)\n  (hv : SerrePositivity.InfinityCategories.IsFullyFaithful v),\n  SerrePositivity.InfinityCategories.IsFiberSequence\n    (SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ p q v a\n      hv)",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_isFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_bottom": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeFiberSequence.lean",
+      "line": 39,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_bottom : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v)\n  (hv : SerrePositivity.InfinityCategories.IsFullyFaithful v),\n  CategoryTheory.CategoryStruct.comp SerrePositivity.InfinityCategories.squareBottomEdge\n      (SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ p q v a\n          hv).square =\n    SSet.yonedaEquiv.symm\n      ((CategoryTheory.ConcreteCategory.hom (Φ.app (Opposite.op { len := 1 })))\n        (SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow\n            (SerrePositivity.KST.LocalizingInvariants.pullbackInclusion p q)).edge)",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_bottom' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_right": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeFiberSequence.lean",
+      "line": 45,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_right : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) (v : E.obj ⟶ D.obj)\n  (a : SerrePositivity.InfinityCategories.QCatAdjunction q.hom v)\n  (hv : SerrePositivity.InfinityCategories.IsFullyFaithful v),\n  CategoryTheory.CategoryStruct.comp SerrePositivity.InfinityCategories.squareRightEdge\n      (SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle hΦ p q v a\n          hv).square =\n    SSet.yonedaEquiv.symm\n      ((CategoryTheory.ConcreteCategory.hom (Φ.app (Opposite.op { len := 1 })))\n        (SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow\n            (SerrePositivity.KST.LocalizingInvariants.exactLaxDifference p q)).edge)",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeFiberTriangle_right' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
+      "line": 44,
+      "kind": "def",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence : {Φ :\n    SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp} →\n  SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ →\n    {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n      (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n        (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n          SerrePositivity.KST.LocalizingInvariants.SpectrumHo.obj\n              (SerrePositivity.KST.LocalizingInvariants.value Φ\n                (SerrePositivity.KST.LocalizingInvariants.laxCategory p q)) ≅\n            SerrePositivity.KST.LocalizingInvariants.SpectrumHo.obj\n              (SerrePositivity.KST.LocalizingInvariants.Binary.obj (SerrePositivity.KST.LocalizingInvariants.value Φ C)\n                (SerrePositivity.KST.LocalizingInvariants.value Φ D))",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
+      "line": 66,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E),\n  CategoryTheory.CategoryStruct.comp\n      (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n        (SerrePositivity.KST.LocalizingInvariants.Binary.inl (SerrePositivity.KST.LocalizingInvariants.value Φ C)\n          (SerrePositivity.KST.LocalizingInvariants.value Φ D)))\n      (SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ p\n          q).hom =\n    SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n      (SerrePositivity.KST.LocalizingInvariants.valueMap Φ\n        (SerrePositivity.KST.LocalizingInvariants.LaxInclusion.exactFromC p q))",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_C' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D": {
+      "file": "SerrePositivity/InfinityCategories/Derived/Verdier/Fractions/TammeSplitting.lean",
+      "line": 76,
+      "kind": "lemma",
+      "type": "@SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E),\n  CategoryTheory.CategoryStruct.comp\n      (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n        (SerrePositivity.KST.LocalizingInvariants.Binary.inr (SerrePositivity.KST.LocalizingInvariants.value Φ C)\n          (SerrePositivity.KST.LocalizingInvariants.value Φ D)))\n      (SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison hΦ p\n          q).hom =\n    SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n      (SerrePositivity.KST.LocalizingInvariants.valueMap Φ\n        (SerrePositivity.KST.LocalizingInvariants.LaxInclusion.exactFromD p q))",
+      "axioms": "'SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IsLocalizingInvariant.tammeSplitComparison_D' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProjectionEquivalence": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/TammeProjectionEquivalence.lean",
+      "line": 37,
+      "kind": "def",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProjectionEquivalence : {Φ :\n    SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp} →\n  SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ →\n    {C D E : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory} →\n      (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) →\n        (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E) →\n          SerrePositivity.KST.LocalizingInvariants.SpectrumHo.obj\n              (SerrePositivity.KST.LocalizingInvariants.value Φ\n                (SerrePositivity.KST.LocalizingInvariants.laxCategory p q)) ≅\n            SerrePositivity.KST.LocalizingInvariants.SpectrumHo.obj\n              (SerrePositivity.KST.LocalizingInvariants.Binary.obj (SerrePositivity.KST.LocalizingInvariants.value Φ C)\n                (SerrePositivity.KST.LocalizingInvariants.value Φ D))",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.tammeProjectionEquivalence' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_isFiber": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiber.lean",
+      "line": 81,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_isFiber : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E A Q : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)\n  (i :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q))\n  (r :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q) Q)\n  (h : SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r),\n  SerrePositivity.InfinityCategories.IsFiberSequence (hΦ.laxQuotientProductFiberSquare p q i r h).toZeroTriangle",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_isFiber' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_bottom_map": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiberMap.lean",
+      "line": 30,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_bottom_map : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E A Q : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)\n  (i :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q))\n  (r :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q) Q)\n  (h : SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r),\n  CategoryTheory.CategoryStruct.comp\n      (SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberLeftIso hΦ p q i r\n          h).inv\n      (CategoryTheory.CategoryStruct.comp\n        (SerrePositivity.InfinityCategories.squareHoBottom (hΦ.laxQuotientProductFiberSquare p q i r h).square)\n        (SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ p q i\n            r h).hom) =\n    SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n      (SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion p q i)",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_bottom_map' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    },
+    "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_right_map": {
+      "file": "SerrePositivity/KST/LocalizingInvariants/LaxVerdierProductFiberMap.lean",
+      "line": 43,
+      "kind": "lemma",
+      "type": "@SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_right_map : ∀\n  {Φ : SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity ⟶ SerrePositivity.KST.Spectra.Sp}\n  (hΦ : SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant Φ)\n  {C D E A Q : SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory}\n  (p : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E)\n  (q : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)\n  (i :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q))\n  (r :\n    SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap\n      (SerrePositivity.KST.LocalizingInvariants.laxCategory p q) Q)\n  (h : SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i r),\n  CategoryTheory.CategoryStruct.comp\n      (SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberMiddleIso hΦ p q i r\n          h).hom\n      (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom\n        (SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ p q r)) =\n    CategoryTheory.CategoryStruct.comp\n      (SerrePositivity.InfinityCategories.squareHoRight (hΦ.laxQuotientProductFiberSquare p q i r h).square)\n      (SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductFiberRightIso hΦ p q i r\n          h).hom",
+      "axioms": "'SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductFiber_right_map' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]"
+    }
+  }
+}
