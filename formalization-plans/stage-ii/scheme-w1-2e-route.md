@@ -654,3 +654,75 @@ H=H_Cech^q(M;d)、αₙ:H_Cech^q(IⁿM;d)→H を包含から作り、Fₙ=range
 | `reesAdicProjectiveCechTransitionComponent_zero_of_span` | 低次数の斉次核で生成した Rees 部分加群では、十分先の成分の遷移は零。 |
 | `reesAdicProjectiveCechKernel_transition_zero_of_bounded_generators` | 次数が c 以下の斉次核で生成されれば、c だけ遅らせた核の遷移は零。 |
 | `reesAdicProjectiveCechKernel_transition_eventually_zero` | 実際の Čech 包含の核の遷移は、一様に遅らせれば零になる。 |
+
+## 実際の閉厚化の Čech 長完全列と核の評価（11-11）
+
+`bf864a77e`（新規 6 モジュールと直接 importer、501 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,243 jobs 成功**、別の共有鍵による公式監査は **6,103 宣言・標準三公理のみ**。
+
+登録モジュールは `ProjectiveFullCechExact`、`ProjectiveFullGradedCechExact`、`ProjectiveNatCechExact`、`ReesAdicProjectiveQuotient`、`ReesAdicProjectiveClosedCech`、`ReesClosedCechHomology`。全タプル Čech の短完全性の下書きを本体へ移し、整数次数・自然数次数の斉次短完全列に適用した。商の次数分解は既存の `HilbertSerre.isInternal_quotientGrade` を再利用した。
+
+Qₙ=M/IⁿM を実際の商加群として作り、0→IⁿM→M→Qₙ→0 の標準開の全タプル Čech 複体の短完全列を得た。Mathlib の長完全列を使い、包含・射影・連結写像の三か所の完全性を示した。その結果、射影 πₙ:H_Cech^q(M;d)→H_Cech^q(Qₙ;d) の核が、前節の実際の像 Fₙ と等しいことが分かった。従って **実際の閉厚化への Čech 写像の核** について、ある c とすべての n≥c で ker πₙ⊆I^(n−c)H_Cech^q(M;d) を得た。これは Stacks 30.20.4(1) の Hⁱ の核の評価に対応する Čech 版であり、像を核と同定する仮定は残っていない。
+
+### 宣言と主張（ローカルな型クラス設定を除く27件）
+
+| 宣言 | 主張 |
+|---|---|
+| `fullCechComplexFunctor_preservesZeroMorphisms` | 全タプル Čech 関手は零射を保つ。 |
+| `fullCechComplex_shortExact` | 各交叉の係数列が短完全なら、全タプル Čech 複体の列も短完全。 |
+| `projectiveFullCech_shortExact` | 斉次な短完全列は標準開の Čech 複体でも短完全となる。 |
+| `projectiveNatFullCech_shortExact` | 自然数次数を保つ短完全列は、全タプル標準開 Čech 複体でも短完全。 |
+| `reesAdicProjectiveQuotient` | I 進閉厚化の実際の商加群 M/IⁿM。 |
+| `reesAdicProjectiveQuotientPolynomialModule` | 同じ商加群の、多項式環上の加群構造。 |
+| `reesAdicProjectiveQuotientPolynomialModule_scalarTower` | 商における基底作用と多項式作用の両立性。 |
+| `reesAdicProjectiveQuotientProjection` | 閉厚化の商への、多項式環上線形な射影。 |
+| `reesAdicProjectiveQuotientProjection_surjective` | 閉厚化の商への射影は全射。 |
+| `reesAdicProjectiveToModule_quotientProjection_exact` | IⁿM の包含と、閉厚化の商への射影は完全。 |
+| `reesAdicProjectiveQuotientPiece` | I 進閉厚化の商の Proj 次数成分。 |
+| `reesAdicProjectiveQuotientPieceDecomposition` | I 進閉厚化の商は、元の Proj 次数の分解を受け継ぐ。 |
+| `reesAdicProjectiveQuotientProjection_preservesPiece` | 商への射影は Proj 次数を保つ。 |
+| `reesAdicProjectiveQuotientPieceGradedSMul` | 閉厚化の商の次数と、多項式の次数の作用は両立する。 |
+| `reesAdicProjectiveCechInclusionChartMap` | IⁿM の包含から得られる、標準開の係数図式の写像。 |
+| `reesAdicProjectiveClosedCechProjectionChartMap` | 実際の閉厚化の商への射影が誘導する、標準開の係数図式の写像。 |
+| `reesAdicProjectiveClosedCech_shortExact` | 実際の I 進閉厚化の列は、標準開の全タプル Čech 複体でも短完全。 |
+| `reesAdicProjectiveClosedCechShortComplex` | 実際の I 進閉厚化の全タプル Čech 複体からなる短複体。 |
+| `reesAdicProjectiveClosedCechShortComplex_shortExact` | 実際の閉厚化から作った Čech の短複体は短完全。 |
+| `reesAdicProjectiveClosedCechHomology` | 実際の閉厚化 M/IⁿM の全タプル Čech コホモロジーの対象。 |
+| `reesAdicProjectiveClosedCechProjection` | 実際の閉厚化への射影が誘導する Čech コホモロジーの写像。 |
+| `reesAdicProjectiveClosedCechConnecting` | 実際の閉厚化の Čech 長完全列の連結写像。 |
+| `reesAdicProjectiveClosedCech_exact_middle` | 元の加群の Čech コホモロジーにおける、閉厚化の長完全列の完全性。 |
+| `reesAdicProjectiveClosedCech_exact_projection_connecting` | 閉厚化の Čech コホモロジーにおける、長完全列の完全性。 |
+| `reesAdicProjectiveClosedCech_exact_connecting_inclusion` | 次の次数の Čech コホモロジーにおける、長完全列の完全性。 |
+| `reesAdicProjectiveClosedCechProjection_ker_eq_image` | 実際の閉厚化への Čech 写像の核は、IⁿM の Čech 包含の像に等しい。 |
+| `reesAdicProjectiveClosedCechProjection_kernel_bound` | 実際の閉厚化への Čech 写像の核の一様な I 進評価。 |
+
+## 閉厚化の Čech 遷移の自然性と実際の像の安定化（11-11）
+
+`87f64753d`（新規 3 モジュールと直接 importer、268 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,251 jobs 成功**、別の共有鍵による公式監査は **6,133 宣言・標準三公理のみ**。
+
+登録モジュールは `ReesAdicProjectiveQuotientTransition`、`ReesClosedCechTransition`、`ReesClosedCechStabilization`。実際の商 Qᵢ→Qⱼ（j≤i）を作り、IⁱM→IʲM、M の恒等写像、Qᵢ→Qⱼ から、先ほどの Čech 短完全列の間の射を構成した。係数写像の合成則から両方の四角形を示し、連結写像の自然性は Mathlib の `HomologySequence.δ_naturality` を使った。
+
+次の Čech 次数 q+1 での ker α_l→ker α_n の一様零化を、既存の `formalFunctions_range_eq_of_kernel_killed` の **実際の入力** に渡した。その結果、ある c が存在して l≥n+c なら、H_Cech^q(Q_l;d)→H_Cech^q(Q_n;d) の像は H_Cech^q(M;d)→H_Cech^q(Q_n;d) の像と等しい。従ってこの逆系は像が安定する。これは Stacks 30.20.4(3) の Hⁱ の主張の Čech 版であり、条件付きの図式追跡だけではなく、上に構成した実際の商・写像・長完全列について証明済み。
+
+### 宣言と主張（ローカルな型クラス設定を除く11件）
+
+| 宣言 | 主張 |
+|---|---|
+| `reesAdicProjectiveQuotientTransition` | 閉厚化の実際の商加群の間の、多項式環上線形な I 進遷移。 |
+| `reesAdicProjectiveQuotientTransition_projection` | 商への射影は、閉厚化の I 進遷移と可換。 |
+| `reesAdicProjectiveQuotientTransition_preservesPiece` | 閉厚化の商の遷移は、Proj 次数を保つ。 |
+| `reesAdicProjectiveCechTransitionChartMap` | IⁱM→IʲM の写像が誘導する、標準開の係数図式の遷移。 |
+| `reesAdicProjectiveClosedCechTransitionChartMap` | 閉厚化の商の間の写像が誘導する、標準開の係数図式の遷移。 |
+| `reesAdicProjectiveClosedCechShortComplexMap` | 閉厚化の Čech 短完全列の間の、I 進遷移による射。 |
+| `reesAdicProjectiveClosedCechTransition` | 実際の閉厚化の Čech コホモロジーの間の I 進遷移。 |
+| `reesAdicProjectiveClosedCechTransition_projection` | 閉厚化への Čech 射影は、I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechTransition_connecting` | 閉厚化の Čech 連結写像は、I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechTransition_range_eq_of_kernel_killed` | 次の次数の Čech 核が遷移で零になれば、実際の閉厚化の像は元の像に一致。 |
+| `reesAdicProjectiveClosedCechTransition_range_stabilizes` | 実際の閉厚化の Čech コホモロジーの像は、一様に遅らせれば安定する。 |
+
+### 完備化への次の接続と残り
+
+H=H_Cech^q(M;d)、Fₙ=ker πₙ とすると、H/Fₙ は range πₙ と自然に同型である。互換な Qₙ の Čech コホモロジーの族は、各 n で十分先の項から来るので、今回の像の安定化により range πₙ に入る。このため、その互換族を H/Fₙ の互換族と同一視できる。一方 IⁿH⊆Fₙ と F_(n+c)⊆IⁿH の共終性から、H/Fₙ の互換族と Mathlib の `AdicCompletion I H` を比較する。Mathlib の `AdicCompletion.submodule`・`incl`・`eval` は既に互換剰余類の族を与えるので、別の完備化を定義しない。商遷移の恒等・合成則と、この同型の評価写像による特徴付けを次に作る。
+
+残りの主要な群は **完備化の同型と、§9 の五つの整合性の二群**。核の一様評価と像の安定化は、実際の閉厚化について今回までに証明した。一般の固有射のコホモロジー有限性や、導来関手の Hⁱ との比較へは広げない。加群の宇宙と有限な座標の順序は前節の扱いを保ち、BS17 での利用を制限しない。
+
+両コミットの追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存宣言の型・本文は変更していない。全ビルド・全監査は共有の鍵 `--wait 3600` を一回の実行ごとに取り、終了時に返した。ルート全体のビルドは行っていない。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact`、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。
