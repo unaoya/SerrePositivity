@@ -472,3 +472,73 @@ B 側の標準開図式は、既存の B 上の自然数次数の図式が使う
 ### main の取り込みと検証入力の同一性
 
 `61da67328` で main `375deaa6e` を `math/scheme` へ取り込んだ。検証済み AG のローカル import 閉包・Lean/Lake の設定・監査スクリプトの計 **613 ファイル**の SHA-256 を取り込み前後で比較し、不一致 **0**。従って上の対象ビルドと 5,701 宣言の監査は取り込み後にも対応する。入力に変更がないため、同じビルド・監査は繰り返していない。共有鍵の夜二枠の改定も取り込み済み。
+
+## Rees 次数付き Čech 直和の作用と有限性（11-11）
+
+`3704bfef8`（新規 7 モジュールと直接 importer、1,209 行）に保存。対象モジュールと直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは成功し、別の共有鍵による公式監査は **5,900 宣言・標準三公理のみ**。一回のビルド・一回の監査ごとに鍵を返した。
+
+登録モジュールは `ProjectiveGradedChartScalarAction`、`ProjectiveScalarRestrictionTransportComponent`、`ReesIntegerCechComparison`、`ReesIntegerCechInclusion`、`ReesIntegerCechAction`、`ReesIntegerCechComponentAction`、`ReesIntegerCechGradedAction`（すべて `SerrePositivity.AlgebraicGeometry` の下）。既存の宣言の型・本文は変更していない。
+
+### 今回通った主張
+
+P=R[Xᵢ]、B=Rees(I) とする。Proj 次数 d と Čech 次数 q を固定した外部直和
+
+`E = ⨁ n, H_Cech^q(IⁿM; d)`
+
+に、整数次数の自然な比較を用いて B 作用を入れた。この作用について次の式を証明した。
+
+`(a·tⁱ) • lof_j(x) = lof_(i+j)(H_Cech^q(a : IʲM → Iⁱ⁺ʲM; d)(x))`（a∈Iⁱ）。
+
+その結果、`range (lof_n)` による Rees 次数と `reesGrade I` の作用が両立することを `SetLike.GradedSMul` として示した。R が Noether、M が P 上有限なら、**この次数付き性を確認した同じ作用について E は B 上有限生成**。R からのスカラー塔も既存の R 作用と一致する。
+
+以後、像・核の構成には `reesAdicCechIntegerDirectSumTransportedModule`、`reesAdicCechIntegerDirectSumGradedSMul`、`reesAdicCechIntegerDirectSumFinite` を使う。以前の `reesAdicCechDirectSumTransportedModule` は別の比較で移した作用としてそのまま残し、新旧の作用の同一性を仮定していない。
+
+B 側では整数へ延ばした同じ部分加群を使い、R 側もその係数制限を次数として選んだ。直和との対応は所属の命題で示すので、図式全体を次数の関数の等式で移送する必要はなかった。今回の本体には計算量上限の追加はない。変数に有限な線形順序を選ぶだけで、BS17 の有限個の射影座標での利用を制限しない。宇宙も従来どおりで、大きい加群の入口は `Module.Finite.small`・`Shrink.linearEquiv` で移せる。
+
+### 宣言と主張（ローカルな型クラス設定を除く35件）
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveBaseScalarLinearMap` | 基底係数の作用を、係数環上線形な自己写像にする。 |
+| `projectiveGradedAwayMap_baseScalar` | 斉次局所化でこの写像は既存の基底スカラー作用と一致。 |
+| `projectiveGradedModuleChartMap_baseScalar` | 標準開の係数図式では、恒等自然変換のスカラー倍となる。 |
+| `projectiveGradedModuleCechHomologyMap_baseScalar` | その Čech コホモロジー写像も、既存のスカラー作用に一致。 |
+| `projectiveScalarRestrictionTransportOfIso_component_smul` | 同型で移した作用を、成分の写像の可換式から計算する一般補題。成分側には B 作用を要しない。 |
+| `reesAdicProjectiveIntegerBaseGrade` | B 上で整数へ延ばしてから R に係数制限した Rees の Proj 次数。 |
+| `reesAdicProjectiveIntegerBaseGrade_mem_iff` | 直和同値は、この整数次数と各 IⁿM の整数次数を対応させる。 |
+| `reesAdicProjectiveIntegerBaseChartDirectSumIso` | 同じ整数次数の標準開の図式を、各 IⁿM の図式の直和と比較する。 |
+| `reesAdicProjectiveIntegerBaseCechHomologyDirectSumIso` | 同じ R 上の Čech コホモロジーを、各 IⁿM のコホモロジーの直和と比較する。 |
+| `reesAdicProjectiveIntegerCechHomologyDirectSumIso` | B 上の Čech コホモロジーを R へ制限したものから、上の直和への同型。 |
+| `reesAdicProjectiveIntegerCoefficientInclusion` | 各 IⁿM から Rees 加群への P 線形な包含。 |
+| `reesAdicProjectiveIntegerCoefficientInclusion_apply` | この包含は Rees 加群の第 n 単項式を作る。 |
+| `reesAdicProjectiveIntegerChartInclusion` | その包含を標準開の係数図式へ渡す。 |
+| `reesAdicProjectiveIntegerBaseChartDirectSumIso_inclusion` | 標準開の直和比較で、各次数の包含は係数図式の直和への包含になる。 |
+| `reesAdicProjectiveIntegerBaseCechHomologyDirectSumIso_inclusion` | 同じ包含は、Čech コホモロジーの直和比較で lof に移る。 |
+| `reesAdicProjectiveIntegerCoefficientInclusion_monomial` | 単項式の作用と各次数の包含・次数移動が作る P 線形な可換式。 |
+| `reesAdicProjectiveIntegerCoefficientChartIso` | 整数の Proj 次数を固定した、R と B 上の標準開の係数比較。 |
+| `reesAdicProjectiveIntegerBaseScalarChartMap` | b∈B の実際の作用が誘導する R 上の標準開図式の自己写像。 |
+| `reesAdicProjectiveIntegerCoefficientChartIso_scalar` | 標準開の係数比較は、この作用を B 上のスカラー倍と対応させる。 |
+| `reesAdicProjectiveIntegerCoefficientCechHomologyIso` | R と B 上の整数次数の Rees の Čech コホモロジーの比較。 |
+| `reesAdicProjectiveIntegerCoefficientCechHomologyIso_scalar` | この Čech 比較も、実際の Rees スカラー作用と可換。 |
+| `reesAdicProjectiveIntegerChartInclusion_monomial` | 単項式と各次数の包含の可換式を、標準開の図式へ渡す。 |
+| `reesAdicProjectiveIntegerCechObject` | B 上の整数次数の Rees の Čech コホモロジーの対象。 |
+| `reesAdicProjectiveIntegerCechComponentMap` | 各 IⁿM の Čech コホモロジーを、Rees の B 上の計算を R に制限した対象へ送る。 |
+| `reesAdicProjectiveIntegerCechComponentMap_directSum` | この写像は、直和比較で第 n 成分の lof に移る。 |
+| `reesAdicProjectiveIntegerCechComponentMap_monomial` | 単項式の作用は、この成分写像を次数 i+j の写像と対応させる。 |
+| `ReesIntegerCechDirectSum` | 各 IⁿM の同じ Proj・Čech 次数のコホモロジーの外部直和。 |
+| `reesAdicCechIntegerDirectSumTransportedModule` | 整数次数の比較によって、上の直和に B 作用を入れる。作用先の直和の型を明示。 |
+| `reesAdicCechIntegerDirectSumTransportedScalarTower` | その B 作用は直和の既存の R 作用と両立する。 |
+| `reesAdicCechIntegerDirectSumTransportedLinearEquiv` | この作用に関する、直和と B 上の Rees Čech コホモロジーとの B 線形同値。 |
+| `reesAdicCechIntegerDirectSum_monomial_smul_lof` | a·tⁱ の作用は、lof_j(x) を実際の次数移動の Čech 写像の lof_(i+j) に送る。 |
+| `reesAdicCechIntegerDirectSumPiece` | 外部直和の第 n 成分を、lof_n の像という R 部分加群で表す。 |
+| `reesAdicCechIntegerDirectSumGradedSMul` | 上の作用は reesGrade I と外部直和の Rees 次数に関して次数付き。 |
+| `reesAdicProjectiveIntegerCechObject_finite` | R が Noether、M が P 上有限なら、B 上の整数次数の Rees Čech コホモロジーは B 上有限。 |
+| `reesAdicCechIntegerDirectSumFinite` | 同じ仮定で、次数付き性を確認した B 作用について外部直和が B 上有限。 |
+
+### 次の像・核と完備化への接続
+
+H=H_Cech^q(M;d)、αₙ:H_Cech^q(IⁿM;d)→H を包含から作り、Fₙ=range(αₙ) とする。Iⁿ⁺¹M→IⁿM の写像による減少性と、今回の係数作用の可換式による I·Fₙ⊆Fₙ₊₁ を示して I フィルトレーションにする。各 αₙ を像へ制限した全射を直和に取り、既存の `reesFiltrationDirectSumLinearEquiv` と合成すると E→Rees(F) の R 線形全射ができる。単項式での B 線形性は、今回の作用公式と `reesFiltration_monomial_smul_single` から示し、有限和へ延ばす。この実際の入力を `cechFormalFunctions_filtration_bound_of_finiteReesImage` に渡す。H の R 上の有限性は既存の射影 Čech 有限性を使う。
+
+核では Kₙ=ker(αₙ) の成分ごとの直和を E の B 部分加群にする。今回の単項式の公式が閉性を与える。B の Noether 性と E の有限性で核も有限となり、有限生成元の各直和成分を集めて有限な斉次生成元に取り替える。その次数の上界を c とすると、l≥n+c で K_l→K_n が零になる：次数 j≤c の生成元への係数は I^(l-j) に入り、Iⁿ にも入るため、遷移は H_Cech^q(IʲM)→H_Cech^q(M) を経由して零となる。この零化と Čech 複体の短完全列の長完全列を合わせ、実際の核の評価と像の安定化を得る。
+
+完備化では、一様な核の評価と像の安定化を使って互換な剰余類を持ち上げ、既存の I 進完備化との同型を作る。条件付きのフィルトレーション評価だけを形式関数の完成とは呼ばない。これらの構成と、§9 の共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の自然性が残る。**停止点 2e ではない**。最終出力・利用側の `AugmentedRingCechExact` と、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。
