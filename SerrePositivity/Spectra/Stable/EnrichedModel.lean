@@ -20,7 +20,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.GeneralSymmetricSpectrum SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.GeneralSymmetricSpectrum
 open SerrePositivity.Quillen SerrePositivity.ModelGeneration
 
 namespace SerrePositivity.SpectrumStabilization

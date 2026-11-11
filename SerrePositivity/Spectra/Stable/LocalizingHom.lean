@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.MonoidalCategory CategoryTheory.MonoidalClosed
-open SerrePositivity.GeneralSymmetricSpectrum SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.GeneralSymmetricSpectrum
 
 namespace SerrePositivity.SpectrumStabilization
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]

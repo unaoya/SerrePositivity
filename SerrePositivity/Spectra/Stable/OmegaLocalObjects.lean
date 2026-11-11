@@ -15,7 +15,7 @@ independently defined level-fibrant Omega predicate.
 universe w v u
 noncomputable section
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.GeneralSymmetricSpectrum SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.GeneralSymmetricSpectrum
 
 namespace SerrePositivity.SpectrumStabilization
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
