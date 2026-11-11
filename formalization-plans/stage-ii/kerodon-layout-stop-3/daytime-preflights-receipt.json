@@ -1,0 +1,72 @@
+{
+  "time": "2026-11-11T20:37:23.901162+09:00",
+  "comparison": {
+    "targets": 14606,
+    "built": 14606,
+    "with_comparisons": 14606,
+    "verified": 14606,
+    "failed": {},
+    "raw_unexplained_rows_in_current_shards": 0
+  },
+  "tag": {
+    "session": "20261111-evening",
+    "modules": 367,
+    "ready": 367,
+    "tags_expected": 672,
+    "tags_checked": 672,
+    "fresh_groups": 1,
+    "complete": true
+  },
+  "aliases": {
+    "external_base": 5956,
+    "selected": 5972,
+    "additional": 16,
+    "compatibility_modules": 51,
+    "source_matches": 5972,
+    "missing": 0,
+    "extra": 0,
+    "kernel_checked": 5972,
+    "kernel_checked_original": 5956,
+    "pending_groups": [],
+    "failed_groups": []
+  },
+  "alias_groups": [
+    {
+      "group": "batch-01",
+      "modules": 50,
+      "names": 5971,
+      "failed": 0,
+      "input_sha256": "ffa054d52332832d25be70060b1e4bca24fa4bbceb4ac65d03962aa44a2ff4f0",
+      "mapping_sha256": "be69fc6e350b5c5ced215011e12404e3ac0391d87b848200e72be950825c0139",
+      "output_sha256": "ae07504c91be1ced79fe0e05f2931691495f534172e614b34b9dfd806b45875d",
+      "normalized_types_exact": 5689
+    },
+    {
+      "group": "batch-02",
+      "modules": 1,
+      "names": 1,
+      "failed": 0,
+      "input_sha256": "730a006d56024751627622085081342772c5e8a74e59b4769f2f95460302e13c",
+      "mapping_sha256": "5c519f8cebcfbfa85a49729bc8527945eb29960c2d42815da0ef99f5d1a3bfaa",
+      "output_sha256": "a5dd6f138c6ede7b695304d8df6cf5282cd41bb2c2c34516af0fe47978d5edb5",
+      "normalized_types_exact": 1
+    }
+  ],
+  "alias_tool_sha256": "df0ece6118e5c9a0f17f6633b3573f3fc3a4fffbb4a4d39585a8f21748f222d1",
+  "alias_date": "2026-11-10",
+  "exact_alias_body": true,
+  "checked_owners": true,
+  "full_axiom_audits": "nighttime verify; not part of this targeted check",
+  "daytime": {
+    "timeout_seconds": 170,
+    "wait_seconds": 3600,
+    "min_release_to_request_seconds": 60.068184,
+    "new_requests": 24,
+    "timing_source": "shared build-lock history: release time to ticket queued time"
+  },
+  "night_verify": {
+    "jobs": 4,
+    "memory_gb": 32,
+    "requires_main_at_least": "281f5420f"
+  }
+}
