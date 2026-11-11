@@ -939,3 +939,82 @@ lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTensorProjecti
 これも承認待ちの停止ではなく、検証済みの中間保存。次は、色付き入力の Schur 表示と実際の自由代数の指定比較をこの係数同値に照合する。モデルの係数比較の等変性・指定増大・順射の照合自体は完了している。実際の自由代数の比較とセル対への移送、`coproduct_tensor` の全関手版、native な余積錐はまだ完了していない。sifted・Tot・段 4 には進んでいない。
 
 現在までの実測は **四十九本・3,737 行**。今回の三本も `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、上の一覧を登録候補とする。§15〜§18 を合わせた未取り込みの候補は **二十八本・314 宣言**。共通入口・監査への登録は調整役が行う。既存の公開宣言・界面の型・drafts・入口・共有監査スクリプトを変更していない。新規の［一般∞］移動候補も零。
+
+
+## 19. 誘導係数への接続と、セル対の規模による中間停止（11-11 夜）
+
+### 19.1 今回までに閉じた係数比較
+
+§18 の `36249aefe` に続け、`TwoColorInducedCoefficients.lean`（**79 行**）を追加した。Mathlib の `Rep.coinvariantsTensorIndNatIso` を実際の arity の表現の複体へ適用する。`twoColorInducedSourceIso` は、二色部分群から誘導した表現を持つ対称群の係数の余不変を、二色部分群へ制限した係数の余不変へ比較する。関手の合成の複体上の同型も明示した。
+
+`twoColorInducedCoefficientHomotopyEquiv` は、その指定同型の後に元の係数比較を適用する順射を持つ。これは色付き入力語の Schur 分解の成分であり、実際の自由代数全体の比較の擬同型性を証明済みとは扱わない。任意の可換基礎環・任意の二色部分群の表現での主張で、平坦性と群の位数の可逆性を要求しない。
+
+対象ビルドが成功（`/tmp/bsw16/graded/two-color-induced-04.log`）、新規モジュールの警告は零。**14 宣言**の再帰監査は標準三公理のみ（`/tmp/bsw16/graded/audit-two-color-induced.log`）。既報 `ZeroArity` の提案二件は残る。今回の続行で追加した分は、§16 の十本・853 行、§17 の六本・453 行、§18 の三本・261 行、今回の一本・79 行、計 **二十本・1,646 行・222 宣言**。全て対象ビルドと再帰監査を確認した。§15 の九本も含めた未取り込みの候補は **二十九本・2,345 行・328 宣言**。取り込み済みの二十一本を含む現在までの全実測は **五十本・3,816 行**。
+
+### 19.2 セル対へ移すために実際に足りないもの
+
+§15 ではセル対への移送を 850〜1,150 行とした。しかし、係数比較を閉じて移送先の商を具体化すると、その見積もりは小さすぎた。次の既存 API の実際の型・定義を確認した。
+
+1. `OperadWordEvaluation.evaluatedWord_d_mem` と `PowerWordEvaluation.powerWordValue_d_mem` は、微分後も**同じ重みの上限以内**に入る主張。必要な「元の微分から係数微分の項を引いた残りが、入力重みを真に下げる」という主張は供給していない。前者の証明では係数微分の項と入力微分の項を足して同じ上限に入れている。この分解は再利用するが、入力側の真の低下と先頭の係数微分の一致を、新しい主張として示す必要がある。
+2. `InfinityCategories/Derived/SemifreeBasisLayers.lean` の `ComplexSemifreeBasis.layerComplex` は**全微分を零に置く定義**であり、`highProjection_differential` も高い射影が零となる主張。今回必要な入力重みの商には係数の微分が残るため、この商の複体と商射をそのまま流用できない。既存の公開宣言を変更せず、非零の係数微分を持つ層・座標・商射の構成が要る。
+3. `HomologicalAlgebra/ModuleSubcomplex.lean` の `quotient` と `shortExact` は再利用できる。ただし、それだけで入力重みの層の座標、二つの実際のセル代数の余積・テンソルの商の同定、指定比較の商射との可換性が得られるわけではない。
+4. 既存の `Complexes/Perturbation.lean` の `perturbComplex` は、追加する cochain の閉性と二乗零を個別に受け取る。今回の入力重みを下げる項へ、そのまま適用して以下の構成を省けることは確認していない。この未検証の節約を見積もりには入れない。
+
+前回は、係数微分を残す層の新規構成と、入力微分の真の低下の証明を、商の同定の短い一項にまとめすぎていた。特に、既存の高さの商が零微分であることを変更せずに、入力重みの商へ使うという省略はできない。
+
+### 19.3 セル対だけの再見積もりと停止条件 2
+
+以下は**実際のセル対への移送に必要な新規 Lean 全体**の見込みで、汎用の補助もこの内訳に数える。他の置き場所へ移して行数から除くことはしない。色付き入力語の Schur 分解・自由代数の指定比較の残り、強い全関手版、native な余積錐は、以下の見積もりには含めていない。
+
+| セル対への移送の構成 | 新しい見込み |
+| --- | --- |
+| 微分を忘れる関手による実際の余積の移送、両方のセル生成元の和の表示 | 200〜260 行 |
+| 入力語の微分の真の重みの低下と、係数微分を残す先頭項の一致 | 210〜300 行 |
+| 係数微分を持つ入力重みの層・座標・商射 | 180〜240 行 |
+| 重みの段の複体、包含、指定比較の段への制限、網羅性 | 120〜180 行 |
+| 実際の余積側・テンソル側の商を係数と語の表示に同定し、商の指定射を照合 | 300〜380 行 |
+| 短完全列による段ごとの比較から、網羅的な列の余極限での擬同型へ移す | 200〜260 行 |
+| 任意の cofibrant な対へのセル表示・retract の移送 | 100〜150 行 |
+| **セル対の合計** | **1,310〜1,770 行（約 1,300〜1,800 行）** |
+
+これは測定済みの行数ではなく、上の不足する主張を分けた実装見積もりである。現在の経路では中心約 1,500 行となり、§7 の **停止条件 2「実際のセル対への移送が 1,200 行を超えそうなとき」** に当たる。今回の検証済みの係数比較のまとまりで**中間停止し、調整役の判断を待つ**。
+
+§15 の合計規模による停止については、その後の「続けてください」の指示を受けて上記の係数比較を続けた。今回の停止は、その以前の合計上限を再び理由にしたものではなく、別に指定されているセル対の 1,200 行の条件による。解像度・指定増大・実際の比較射と等変な逆は §17〜§18 で構成済みなので、停止条件 3 による断念でもない。
+
+再開時は、残る色付き Schur 分解と実際の自由代数の比較を閉じたうえで、上のセル対の移送へ進む。`coproduct_tensor` の全関手版、native な余積錐、sifted、Tot、段 4 はまだ未完。今回までの本体の追加には sorry・admit・新規公理・デバッグ宣言を残していない。界面の型、既存の公開宣言、drafts、共通入口、共有監査スクリプトは変更していない。全てビルドと監査の一回ごとに鍵を取り、終了ごとに返却した。未検査の Lean ファイルは残さず、監査の鍵も返却済み。
+
+### 19.4 次の取り込み時の登録候補（二十九本）
+
+全て `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。§15〜§19 の未取り込み分で、main 登録済みの §14.4 の二十一本は含めない。入口と監査への登録は調整役が行う。
+
+- `RepresentationComplex`
+- `ArityRepresentationChain`
+- `ArityRepresentationAugmentation`
+- `ArityProjectiveResolution`
+- `TwoColorCoefficientSource`
+- `RepresentationFreeBasis`
+- `TwoColorBidegreeBasis`
+- `TwoColorTensorProjective`
+- `NonpositiveHomotopyRestriction`
+- `NonpositiveUnitRestriction`
+- `RepresentationChainAugmentation`
+- `TwoColorTensorAugmentation`
+- `TwoColorResolutionComparison`
+- `TensorUnitAdjacent`
+- `NullaryFamilyAdjacent`
+- `NullaryPrefixDelete`
+- `NullaryPrefixTail`
+- `TwoColorCoefficientProjections`
+- `TwoColorCoefficientMap`
+- `OperadMorphismInsertion`
+- `OperadMorphismComposition`
+- `CommutativeComposition`
+- `NullaryPrefixAugmentation`
+- `TwoColorCoefficientAugmentation`
+- `TwoColorCoefficientEquivalence`
+- `NonpositiveExtension`
+- `NonpositiveHomotopyExtension`
+- `TwoColorCochainEquivalence`
+- `TwoColorInducedCoefficients`
+
+新規の［一般∞］移動候補は零。既報の五本は動かしていない。
