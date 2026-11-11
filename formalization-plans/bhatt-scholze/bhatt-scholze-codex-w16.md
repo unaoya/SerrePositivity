@@ -62,3 +62,12 @@ BS-W14 で作った界面 `EInfinityTheory` の実例 `barrattEcclesTheory`（dr
 ## 5. 追記（2026-11-11 夕、調整役）：停止点 3 の取り込み
 
 停止点 3（22438e10b、E3 の八欄と Tot 以外の E4、無条件の `barrattEcclesBaseChange_forget`）を main に取り込んだ。新規 116 モジュールを EInfinity の入口と段階 II の監査に登録した。残りは §4 の順（E2 の余積・テンソルの比較 → sifted の保存 → Tot の群、G10 待ち）と段 4 の実例の組み立て。［一般∞］の印の 5 本（`LocalizedAdjunctionWhiskering`・`LocalizedAdjunctionTriangles`・`LocalizedAdjunctionAssembly`・`LocalizedNerveNatTrans`・`OrdinaryHoComposition`）の置き場所は、KL-W1 の取り込みの後に調整役が決める。
+
+## 6. 追記（2026-11-11 夜、調整役）：`coproduct_tensor` の上限を 2,700 行に上げる
+
+§12.2 の中間停止（ae91ee0fe、新しい見込み 1,750〜2,700 行）を受けて。
+
+- **判断**：`coproduct_tensor` は ④ に回さず、W16 の中で続ける。上限を **約 2,700 行**にする（sifted と同じ、§4 の 4）。理由も sifted と同じで、誰が行っても同じ模型・同じ規模になり、④ はまだ開いていない。報告の内訳（Hopf テンソル代数と包含、二色の自由比較、セル対への移送、全関手版への降下）でよい。
+- **native な余積錐（`coprodWith_cocone`）**：見込みに含まれていないので、`coproduct_tensor` の最初の区切りで規模を見積もって報告する。`[ModelCategory SSet]` を要求する版を使わない、という §12.1 の方針でよい。
+- **停止の条件**：合計（`coproduct_tensor` と native な錐）が 3,500 行を超えそうなら止める。二色の自由比較で、等変な鎖ホモトピー同値が既存の API から組めないと分かったときも止める。
+- **順序**：§4 のとおり（`coproduct_tensor` → sifted → Tot）。今回の三本（`CoproductModel`・`CAlgCoproductFunctor`・`RightFrameCoproduct`）は、次の停止点でまとめて登録する。
