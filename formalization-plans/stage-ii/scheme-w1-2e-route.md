@@ -856,3 +856,137 @@ Frobenius には指数標数 p を使う。I.map(Frob)⊆Iᵖ を証明し、Fro
 次の具体的な係数写像の入口としては、`reesExtendedAdic_map_mem` が基底環上線形な写像による IⁿM の保存を既に与える。次数を保つ多項式加群写像に対し、IⁿM と M/IⁿM の写像を作り、`fullCechComplexFunctor.mapShortComplex` で短完全列の間の射へ送る。これで閉厚化の比較と、他の比較を射に自然な形で渡す API を共通に使える。
 
 全ビルド・全監査は共有の鍵 `--wait 3600` を一回の実行ごとに取り、終了時に返した。新規追加に `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存宣言の型・本文は変更していない。数学の未コミット分はない。**停止点 2e ではない**。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は保つ。
+
+## §9：実際の加群写像と閉厚化の比較（11-11 夜）
+
+### 実際の次数付き加群写像の自然性
+
+`318ca02b2`（新規 3 モジュールと直接 importer、329 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,268 jobs 成功**、別の共有鍵による公式監査は **6,310 宣言・標準三公理のみ**。
+
+登録モジュールは `ReesAdicProjectiveModuleMap`、`ReesClosedCechModuleMap`、`ReesClosedCechModuleNaturality`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+次数を保つ多項式加群写像 f:M→N から、IⁿM→IⁿN と M/IⁿM→N/IⁿN を構成した。拡大イデアルの冪の保存は既存の `reesExtendedAdic_map_mem` を使う。実際の商の写像は射影・I 進遷移と可換であり、その Proj 次数の保存も示した。標準開の図式の写像を Čech コホモロジーへ送り、閉厚化の逆系の間の自然変換と、互換族の線形写像を構成した。先に証明した一般的な可換式にこれらの実際の写像を渡し、標準写像と Čech 形式関数の同型の両方について、f との自然性を得た。
+
+宣言と主張（ローカルな型クラス設定を除く 17 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesAdicProjectiveSubmoduleMap` | 多項式加群の写像を、実際の IⁿM の間の写像に制限する。 |
+| `reesAdicProjectiveQuotientMap` | 多項式加群の写像を、実際の I 進閉厚化の商の間へ降ろす。 |
+| `reesAdicProjectiveSubmoduleMap_inclusion` | IⁿM の包含と加群写像の四角形は可換。 |
+| `reesAdicProjectiveQuotientMap_projection` | 閉厚化への射影と加群写像の四角形は可換。 |
+| `reesAdicProjectiveQuotientMap_transition` | 加群写像からの商写像は、閉厚化の遷移と可換。 |
+| `reesAdicProjectiveSubmoduleMap_preservesPiece` | IⁿM の間の写像は、元の写像が保つ Proj 次数を保つ。 |
+| `reesAdicProjectiveQuotientMap_preservesPiece` | 閉厚化の商写像は、元の写像が保つ Proj 次数を保つ。 |
+| `reesAdicProjectiveClosedCechModuleChartMap` | 加群写像から得られる、実際の閉厚化の標準開図式の写像。 |
+| `reesAdicProjectiveClosedCechModuleMap` | 加群写像が誘導する、実際の閉厚化の Čech コホモロジーの写像。 |
+| `reesAdicProjectiveClosedCechModuleChartMap_projection` | 標準開の図式の商写像は、閉厚化への射影と可換。 |
+| `reesAdicProjectiveClosedCechModuleChartMap_transition` | 標準開の図式の商写像は、I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechModuleMap_projection` | 実際の閉厚化の Čech 写像は、元の Čech コホモロジーからの射影と可換。 |
+| `reesAdicProjectiveClosedCechModuleMap_transition` | 実際の閉厚化の Čech 写像は、I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechModuleNatTrans` | 実際の次数付き加群写像が誘導する、閉厚化の Čech 逆系の間の自然変換。 |
+| `reesAdicProjectiveClosedCechModuleFamiliesMap` | 実際の次数付き加群写像が誘導する、閉厚化の Čech 互換族の間の線形写像。 |
+| `reesAdicProjectiveClosedCechCompletionMap_module_naturality` | 完備化からの標準 Čech 写像は、実際の次数付き加群写像と可換。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv_module_naturality` | Čech 形式関数の同型は、実際の次数付き加群写像に自然。 |
+
+### M→M/JM と二重閉厚化の係数比較
+
+`ae7273e40`（新規 2 モジュールと直接 importer、161 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,270 jobs 成功**、別の共有鍵による公式監査は **6,337 宣言・標準三公理のみ**。
+
+登録モジュールは `ReesClosedThickeningNaturality`、`ReesIteratedClosedQuotient`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+上の自然性を、実際の射影 M→M/JM に適用した。商の次数分解と多項式環上の有限性も実際の商から供給し、flat 性を仮定せず、M と M/JM の Čech 形式関数の同型の可換式を示した。さらに全射 M→M/JM による IⁿM の像が Iⁿ(M/JM) に等しいことから、第三同型定理を使って (M/JM)/Iⁿ(M/JM)≃M/(JM+IⁿM) を多項式環上線形に構成した。この同型は元の代表 m を単一の剰余類へ送る。
+
+宣言と主張（ローカルな型クラス設定を除く 8 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedThickeningCechHomologyMap` | M→M/JM が誘導する、元の標準開 Čech コホモロジーの写像。 |
+| `reesClosedThickeningCechFamiliesMap` | M→M/JM が誘導する、I 進閉厚化の Čech 互換族の間の写像。 |
+| `reesClosedThickeningCechCompletionMap_naturality` | 実際の M/JM への閉厚化は、完備化からの標準 Čech 写像と可換。 |
+| `reesClosedThickeningCechCompletionLinearEquiv_naturality` | Čech 形式関数の同型は、実際の M/JM への閉厚化と可換。 |
+| `reesAdicProjectivePolynomialSubmodule` | 多項式環上で見た、基底イデアルの拡大冪による部分加群。 |
+| `reesIteratedClosedQuotient_submodule_image` | 全射 M→M/JM による IⁿM の像は、Iⁿ(M/JM) に等しい。 |
+| `reesIteratedClosedQuotientLinearEquiv` | (M/JM)/Iⁿ(M/JM) と M/(JM+IⁿM) の、多項式環上線形な同型。 |
+| `reesIteratedClosedQuotientLinearEquiv_mk_mk` | 二重閉厚化の同型は、元の加群の代表をそのまま単一の剰余類に送る。 |
+
+### 二重閉厚化の Proj 次数と Čech コホモロジーの比較
+
+`4a8c20976`（新規 2 モジュールと直接 importer、188 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,272 jobs 成功**、別の共有鍵による公式監査は **6,364 宣言・標準三公理のみ**。
+
+登録モジュールは `ProjectiveNatGradedEquiv`、`ReesIteratedClosedGrading`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+上の係数同型と逆写像の両方が、元の Proj 次数を保つことを示した。単一の商の次数成分は G_d の像で与える。両方向で次数を保つ多項式線形同型を、標準開の図式と Čech コホモロジーの同型へ送る一般補題を使い、実際の二重閉厚化と M/(JM+IⁿM) の各 Čech コホモロジーを比較した。Noether 性はこの比較自体には要らない。
+
+宣言と主張（ローカルな型クラス設定を除く 8 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveNatGradedModuleChartIso` | 両方向で Proj 次数を保つ同型が誘導する、標準開の図式の同型。 |
+| `projectiveNatGradedModuleCechHomologyIso` | 次数付き加群の同型が誘導する、標準開 Čech コホモロジーの同型。 |
+| `projectiveNatGradedModuleCechHomologyIso_hom` | Čech の同型の順写像は、元の線形同型からの Čech 写像そのもの。 |
+| `reesIteratedClosedSumPiece` | 単一の商 M/(JM+IⁿM) における、元の Proj 次数成分の像。 |
+| `reesIteratedClosedQuotientLinearEquiv_preservesPiece` | 二重閉厚化から単一の商への同型は、元の Proj 次数を保つ。 |
+| `reesIteratedClosedQuotientLinearEquiv_symm_preservesPiece` | 単一の商から二重閉厚化への逆写像も、元の Proj 次数を保つ。 |
+| `reesIteratedClosedSumPieceGradedSMul` | 単一の商の Proj 次数と、多項式の次数の作用は両立する。 |
+| `reesIteratedClosedCechHomologyIso` | 二重閉厚化と M/(JM+IⁿM) の標準開 Čech コホモロジーの比較同型。 |
+
+### 閉厚化の互換族と形式関数への接続
+
+`6231c8e5c`（新規 4 モジュールと直接 importer、375 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,276 jobs 成功**、別の共有鍵による公式監査は **6,427 宣言・標準三公理のみ**。
+
+登録モジュールは `LinearCompatibleFamiliesEquiv`、`ReesIteratedClosedTransition`、`ReesIteratedClosedCechTransition`、`ReesClosedThickeningFormalFunctions`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+M/(JM+IⁱM)→M/(JM+IʲM) の実際の商写像を作り、係数同型が遷移と可換であることを代表上で示した。標準開の合成則と Čech 関手を使って、各段の Čech 比較同型も I 進遷移と可換と分かった。互換な成分同型を互換族の線形同型へまとめ、M/JM の形式関数と合成した。その結果、AdicCompletion I H_Cech^q(M/JM;d) と、各 H_Cech^q(M/(JM+IⁿM);d) の互換族の間に線形同型を得た。元の M の完備化からの射影についても可換式を示した。
+
+宣言と主張（ローカルな型クラス設定を除く 17 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `compatibleLinearFamiliesEquiv_inverse_commute` | 互換な成分同型の逆写像も、逆向きに遷移と可換。 |
+| `compatibleLinearFamiliesEquiv` | 成分ごとの互換な線形同型が誘導する、互換族の線形同型。 |
+| `compatibleLinearFamiliesEquiv_apply` | 互換族の同型の成分は、もとの成分同型で計算できる。 |
+| `reesIteratedClosedSumTransition` | 一重の商 M/(JM+IⁱM) から M/(JM+IʲM) への遷移。 |
+| `reesIteratedClosedQuotientLinearEquiv_transition` | 二重閉厚化から一重の商への同型は、実際の遷移と可換。 |
+| `reesIteratedClosedSumTransition_preservesPiece` | 一重の商の遷移は、元の Proj 次数を保つ。 |
+| `reesIteratedClosedSumChartTransition` | 一重の商の遷移が誘導する、標準開の係数図式の写像。 |
+| `reesIteratedClosedSumCechHomology` | 一重の商 M/(JM+IⁿM) の Čech コホモロジーの対象。 |
+| `reesIteratedClosedSumCechTransition` | 一重の商の遷移が誘導する、Čech コホモロジーの写像。 |
+| `reesIteratedClosedChartIso` | 二重閉厚化と一重の商の、標準開の係数図式の比較同型。 |
+| `reesIteratedClosedChartIso_transition` | 二重閉厚化の標準開での比較は、実際の遷移と可換。 |
+| `reesIteratedClosedCechHomologyIso_transition` | 二重閉厚化の Čech 比較は、実際の I 進遷移と可換。 |
+| `reesIteratedClosedSumCechFamilies` | 一重の商 M/(JM+IⁿM) の Čech コホモロジーの互換族。 |
+| `reesIteratedClosedCechFamiliesEquiv` | 二重閉厚化と一重の商の Čech 比較を、互換族の線形同型へまとめる。 |
+| `reesClosedThickeningSumCechFamiliesMap` | 元の M の閉厚化の互換族を、一重の商の Čech 互換族へ送る。 |
+| `reesClosedThickeningSumCechFormalFunctions` | M/JM の Čech コホモロジーの完備化を、M/(JM+IⁿM) の互換族と比較する同型。 |
+| `reesClosedThickeningSumCechFormalFunctions_naturality` | 一重の商で表した閉厚化の Čech 形式関数も、元の M からの射影と可換。 |
+
+### 比較先の実際の次数分解と有限性
+
+`567c970e8`（新規 1 モジュールと直接 importer、74 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,277 jobs 成功**、別の共有鍵による公式監査は **6,434 宣言・標準三公理のみ**。
+
+登録モジュールは `ReesIteratedClosedSumDecomposition`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+JM+IⁿM が G の成分射影で保たれることを、和の代表と射影の加法性から示した。既存の `HilbertSerre.isInternal_quotientGrade` を使い、上で定義した単一の商の次数成分が実際の直和分解を与えることを確認した。基底が Noether、M が多項式環上有限という従来の仮定の下で、単一の商の Čech コホモロジーも基底環上有限と示した。
+
+宣言と主張（ローカルな型クラス設定を除く 3 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesIteratedClosedSum_isHomogeneous` | 分母 JM+IⁿM は、元の Proj 次数について斉次。 |
+| `reesIteratedClosedSumPieceDecomposition` | 一重の商の Proj 次数成分は、商加群の直和分解を与える。 |
+| `reesIteratedClosedSumCechHomology_finite` | 一重の商 M/(JM+IⁿM) の標準開 Čech コホモロジーは有限生成。 |
+
+### 今回の到達点と残り
+
+閉厚化については、基底環 R 上の次数付き多項式加群の表示を使い、実際の M→M/JM、二重商と一重商の比較、各 Čech コホモロジー、I 進遷移、互換族、形式関数の同型までを可換にした。原典 Stacks 30.20.5 の Hⁱ の形式関数に対応する **Čech 版**であり、導来関手の Hⁱ との比較は形式化していない。比較先の次数分解と Stacks 30.19.2 に対応する Čech 有限性も供給済み。
+
+この束は R 上の加群としての表示である。R/J 上の係数で述べた標準開図式と、その係数を R へ制限した図式との照合は、次のテンソル積による係数モデルと併せて接続する。非 flat な閉厚化で、コホモロジーとテンソル積の交換を仮定していない。
+
+残る主要な四群は、共通アフィン細分、flat な底変換の比較、実際の Čech Frobenius と p 倍の指数の照合、filtered colimit の比較。底変換では、まず次数零の局所化とテンソル積の複体の比較を作り、flat な場合だけコホモロジーの交換を使う。この係数モデルで上の R/J の照合も扱う。共通細分・二重 Čech には既存の `SerrePositivity.Cech` の API を再利用する。
+
+全新規モジュールに `sorry`・`admit`・追加公理・計算量上限の追加はなく、既存の宣言の型・本文は変更していない。全ビルド・監査は共有鍵 `--wait 3600` を一回ごとに取り、終了時に返した。ルート全体のビルドは行っていない。宇宙の扱いは従来どおりで、BS17 の入口に必要な大きい加群の移送は `Module.Finite.small`・`Shrink.linearEquiv` の方針を保つ。
+
+`3345ac42a` で main `d9e596898` を `math/scheme` に取り込んだ。検証済み AG のローカル import 閉包・Lean/Lake 設定・公式監査スクリプトの **666 ファイルの SHA-256** を前後で比べ、不一致 **0**。従って上のビルドと最新 **6,434 宣言・標準三公理のみ**の監査は、取り込み後にも対応する。入力が同じ検証は繰り返していない。
+
+検証済みの本体はすべて枝にコミット済み。**停止点 2e ではない**。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
