@@ -533,3 +533,7 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - `PointwiseExtension` は完備な標的への半線形代数射の標準線形延長・純テンソルの単位の式・可換な正方形に対する厳密な自然性を与える。大きい枠の二比較を同じ延長で扱うための共通部品。
 - 一時監査は138モジュール・3,209宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundredFive.lean`、ログ `/private/tmp/d69-morning-audit-hundredfive.log`。今回の追加まで本体16本（BS 10本、共通6本）は新規ファイルのみで、sorry・独自公理0。既存宣言・入口・監査登録は変更していない。
 - 残り：大きい affine／分冪枠の鎖ホモトピー同値を延長後の二比較に合わせ、β と `wittToSmall` の大きい模型での検収を閉じる。有限橋の検査が通ったことだけでは停止点2とはしない。
+
+- 共通の `SerrePositivity.HomologicalAlgebra.Cosimplicial.CompletedCoefficientMap` が対象ビルドを通った（`/private/tmp/d69-ticket-build-45.log`）。登録候補の共通部品にこの1本を追加する。
+- `completedCoefficientMap` は、係数の構造射を保つ半線形な余単体環射を、各項の完備係数拡大後の線形余単体射へ延長する。標的の各項の p 完備性を型に置く。`completedCoefficientMap_unit` は純テンソルの単位上で元の半線形射を与え、`completedCoefficientCochainMap` は実際の交代余面複体の射を固定する。
+- 一時監査は139モジュール・3,223宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundredSix.lean`、ログ `/private/tmp/d69-morning-audit-hundredsix.log`。追加17本（BS 10本・共通7本）まで対象ビルド・監査済み、既存宣言は変更していない。
