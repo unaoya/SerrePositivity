@@ -289,3 +289,14 @@ main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこ�
 追加の登録候補は、この節の七本。いずれも `SerrePositivity.EInfinity.BarrattEccles.Theory` の下に置く。
 
 セル段へ移す随伴とモノイダル構造、実際の境界からの重み選択は作業木で検証中。セル段の微分が基底の重みを増やさないことと、`hstage`、無条件の `baseChange_forget` が残る。停止点 3 前の途中記録。
+
+
+### 対称モノイダル構造とオペラッドの検証（11-11 昼）
+
+`EraseDifferentialBraiding`・`EraseDifferentialMonoidal`・`OperadMonoidalImage`・`EraseOperad` の対象ビルドが成功した。先の十七本と合わせた二十一本の再帰監査は 456 宣言、標準三公理のみ。登録候補にこの四本を追加する。
+
+- 忘却の tensorator とその逆を両端に置き、Koszul 対称性を斉次テンソル上で照合した。比較射を相殺して自然性・結合則・単位則も得た。最終のモノイダル構造の対象検査は約 10 秒。
+- `Operad.monoidalImage` は、複体間の lax braided 関手による対称オペラッドの移送。既存の `LaxComparisonSquare` の合成を使い、単位・内外の置換・入れ子と独立な二つの合成則を証明した。
+- `Operad.erase` をこの構成の実例にした。自由代数の比較に必要な右随伴への持ち上げは作業木で検証中。
+
+セル段の微分が重みを増やさないこと、`hstage` と無条件の `baseChange_forget` は引き続き残る。停止点 3 前の途中記録。
