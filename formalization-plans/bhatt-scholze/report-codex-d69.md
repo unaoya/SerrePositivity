@@ -335,3 +335,8 @@
 
 - `CrystallineSmallBridge` で整係数の小さい結晶の橋を固定し、prism の生成元を p に送ることと、前項の mod p の射がこの厳密な射の還元であることを示した。鍵付き対象ビルドは `/private/tmp/d69-ticket-build-22.log` で成功した。95本の一時監査は2,499宣言、標準三公理のみ。監査は `/private/tmp/AuditD69P2MorningSixtyTwo.lean` と `/private/tmp/d69-morning-audit-sixtytwo.log`。
 - 登録候補に `CrystallineSmallBridge` を加える。完備化後の擬同型へ進むため、共通の `CompleteCochainReduction` を作業木で検査している。これは二つの導来完備な複体の間の射を通常のスカラー商で判定する補題で、各項の正則性を仮定する。短完全列と写像錐の比較、既存の `DerivedPurity` の完備ホモロジーの零性判定を使う。
+
+- 共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteCochainReduction` の対象ビルドが `/private/tmp/d69-ticket-build-23.log` で成功した。項ごとにスカラーが正則な二つの導来完備複体の射について、通常のスカラー商の擬同型から元の射の擬同型を導く。通常商を元の環の加群のまま束ね、短完全列、写像錐の関手との比較、既存の `cochain_quasiIso_iff_cone_acyclic` と `DerivedPurity` を使った。環上の平坦性は仮定しない。
+- この共通モジュールも登録候補に加える。96本の一時監査は2,520宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyThree.lean` と `/private/tmp/d69-morning-audit-sixtythree.log`。
+- 作業木では `CrystallineSmallBridgeCoordinates`（各頂点変数の p 乗の式）と `CrystallineBridgeAlgebra`（既存の橋の ℤ_p 上の線形性）が個別検査を通った。`CrystallineWittCoefficients` は、既存の `arcPadicIntMap` とその一意性を使って Witt 基底への係数射を作る。これら3本は一つの整理券で対象ビルドを待っている。
+- 次の適用では、既存の `toModules` と `cohomologyEquivModuleHomology` で環のコホモロジーと基底線形な複体を合わせ、小さい橋の通常商の擬同型に完備複体の判定を適用する。その後、affine 包の完備底変換の比較と分冪側の係数変更を使い、Witt の有限枠の指定された橋との可換図式を閉じる。Witt 側から C 側の比較には既存の第 0 列の自由模型と二射影の係数変更の可換性を使う。P2 の停止点には引き続き未到達。
