@@ -1,0 +1,866 @@
+{
+  "6.2.4.1": {
+    "page": 595,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib canonicalTopology は全 representable が層になる最大位相であり、任意の左完全 f:C→X に相対的に effective-epi family が生成する被覆の定義ではない。coherentCoverage は有限族・ordinary C 内の有効全射で、任意の small family と任意の高次 X には一致しない。"
+  },
+  "6.2.4.2": {
+    "page": 596,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary coherentTopology は有限 effective-epi 族から構成するが、native semitopos への任意の f に相対的な被覆の三公理を示さない。canonicalTopology の最大性を相対 f の effective epi 条件と同定する宣言もない。"
+  },
+  "6.2.4.3": {
+    "page": 597,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification が colimit を保存することだけでは、f(C) が初対象であるという別の関手 f の条件から Lj(C) が初対象になるとは言えない。相対標準位相と native 空間値 sheafification の比較を欠く。"
+  },
+  "6.2.4.4": {
+    "page": 597,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary extensiveTopology の isSheaf_iff_preservesFiniteProducts は有限直和に対する集合値の判定である。原典の fully faithful f で定めた位相・任意の small coproduct・空間値 F との比較がなく、有限集合値の類比を直接の特殊化とは数えない。"
+  },
+  "6.2.4.5": {
+    "page": 598,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Presheaf.IsLocallySurjective は各 section の被覆局所的な持ち上げで、Sheaf.isLocallySurjective_iff_epi も集合値層である。空間値層の π0 の持ち上げと native Čech resolution の有効全射を同定する比較がない。"
+  },
+  "6.2.4.6": {
+    "page": 599,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.3",
+        "6.2.4",
+        "6.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          "SerrePositivity"
+        ],
+        "file_count": 19,
+        "line_count": 25
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "canonicalTopology|coherentTopology|coherentCoverage|IsLocallySurjective|preservesFiniteProducts|EffectiveEpi",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 83,
+        "line_count": 761
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Canonical.lean",
+        "signatures": [
+          {
+            "line": 103,
+            "head": "def canonicalTopology (C : Type u) [Category.{v} C] : GrothendieckTopology C := finestTopology (Set.range yoneda.obj)"
+          },
+          {
+            "line": 107,
+            "head": "theorem isSheaf_yoneda_obj (X : C) : Presieve.IsSheaf (canonicalTopology C) (yoneda.obj X) := fun _ _ hS => sheaf_for_finestTopology _ (Set.mem_range_self _) _ hS"
+          },
+          {
+            "line": 132,
+            "head": "lemma le_canonical (J : GrothendieckTopology C) [Subcanonical J] : J ≤ canonicalTopology C := Subcanonical.le_canonical"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          },
+          {
+            "line": 82,
+            "head": "def coherentTopology [Precoherent C] : GrothendieckTopology C := (coherentCoverage C).toGrothendieck"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/ExtensiveSheaves.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "theorem isSheafFor_extensive_of_preservesFiniteProducts {X : C} (S : Presieve X) [S.Extensive] (F : Cᵒᵖ ⥤ Type w) [PreservesFiniteProducts F] : S.IsSheafFor F"
+          },
+          {
+            "line": 85,
+            "head": "theorem Presieve.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ Type w) : Presieve.IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          },
+          {
+            "line": 115,
+            "head": "theorem Presheaf.isSheaf_iff_preservesFiniteProducts (F : Cᵒᵖ ⥤ D) : IsSheaf (extensiveTopology C) F ↔ PreservesFiniteProducts F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/EffectiveEpimorphic.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def Sieve.EffectiveEpimorphic {X : C} (S : Sieve X) : Prop := Nonempty (IsColimit (S : Presieve X).cocone)"
+          },
+          {
+            "line": 41,
+            "head": "abbrev Presieve.EffectiveEpimorphic {X : C} (S : Presieve X) : Prop := (Sieve.generate S).EffectiveEpimorphic"
+          },
+          {
+            "line": 64,
+            "head": "lemma Sieve.EffectiveEpimorphic.iff_forall_isSheafFor_yoneda {X : C} (S : Sieve X) : S.EffectiveEpimorphic ↔ ∀ Y, S.arrows.IsSheafFor (yoneda.obj Y) := S.forallYonedaIsSheaf_iff_colimit.symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Yoneda の subcanonical site の層への持ち上げはあるが、任意の P(C)⇄X の右随伴 G の層への因子化、さらに fully faithful generator のときの有効全射保存を与えない。relative canonical topology と native sheafification の入力が欠ける。"
+  }
+}

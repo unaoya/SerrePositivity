@@ -1,0 +1,1192 @@
+{
+  "6.4.5.1": {
+    "page": 654,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Adjunction と有限極限保存はあるが、native n-topos を全対象とする TopnR と geometric functor の全部分圏はない。PrR は全 presentable 圏の右随伴で、左随伴の左完全性を課さない。"
+  },
+  "6.4.5.2": {
+    "page": 654,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "nerveFunctorCategoryIso は全 ordinary functor category の nerve を比較するが、1-topoi と ordinary Grothendieck topoi 自体の同値、および geometric morphism の条件への制限を供給しない。全関手の比較のみはこの制限比較の証明部品である。"
+  },
+  "6.4.5.3": {
+    "page": 654,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Locale と FrameHom および topToLocale の随伴はあるが、native 0-topoi 間の geometric morphism の圏と underlying locales の順序付き hom-set の nerve の比較はない。continuous maps からの comap はこの全 geometric functor の同定ではない。"
+  },
+  "6.4.5.4": {
+    "page": 654,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsTerminalVertex と普通の truncated simplicial object はあるが、任意 n-topos の (m−1)-truncated objects の reflector と m-topos の左完全表示を結ぶ型はない。図式の次数の truncation は対象の homotopy truncation ではない。"
+  },
+  "6.4.5.5": {
+    "page": 654,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native presheaf の米田普遍性はあるが、τ≤n−1Y と P≤n−1(C) の両対象切断に geometric functor を制限した全圏の同値はない。ordinary nerve functor category iso はこの高次切断との比較を含まない。"
+  },
+  "6.4.5.6": {
+    "page": 655,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification は存在するが、native Shv(C) と Shv≤n−1(C) の geometric morphism の制限の同値はない。cover-preserving site functor の通常圏の結果だけでは全 n と全高次自然変換の比較にならない。"
+  },
+  "6.4.5.7": {
+    "page": 656,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Ind と Bousfield localization はあるが、任意の m-topos Y に対し τ≤m−1X≃Y を備え全 Z での geometric functor 圏の同値を満たす n-topos X を構成しない。単に Y の nerve を取ることは高次化の普遍性を持たない。"
+  },
+  "6.4.5.8": {
+    "page": 656,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary locales はあるが、m-localic という全幾何学的射圏の truncation-restriction の同値条件を定義する native predicate はない。n-truncated Kan complex の性質とは次数の意味が違う。"
+  },
+  "6.4.5.9": {
+    "page": 657,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native 小生成 localization はあるが、topological mono-generated localization と n-localic の geometric functor による特徴付けを接続しない。通常の topology の refinement は同じ高次局所型の保存ではない。"
+  },
+  "6.4.5.10": {
+    "page": 657,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.4",
+        "6.4.5",
+        "6.5.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          "SerrePositivity"
+        ],
+        "file_count": 2708,
+        "line_count": 11819
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Localic|localic|nTopos|GeometricMorphism|FrameHom|nerveFunctorCategoryIso|Truncated|PrR",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 37,
+        "line_count": 573
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "def nerveFunctorCategoryIso (C D : Type u) [Category.{u} C] [Category.{u} D] : nerve (C ⥤ D) ≅ (ihom (nerve C)).obj (nerve D) := asIso ((expComparison nerveFunctor (Cat.of C)).natTrans.app (Cat.of D))"
+          },
+          {
+            "line": 44,
+            "head": "lemma nerveFunctorCategoryIso_postcomp {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E] (F : D ⥤ E) : nerveMap ((whiskeringRight C D E).obj F) ≫ (nerveFunctorCategoryIso C E).hom = (nerveFunctorCategoryIso C D).hom ≫ (ihom (nerve C)).map (nerveMap F) := ((expComparison nerveFunctor (Cat.of C)).natTrans.naturality F.toCatHom)"
+          },
+          {
+            "line": 54,
+            "head": "lemma nerveFunctorCategoryIso_uncurry (C D : Type u) [Category.{u} C] [Category.{u} D] : CartesianMonoidalCategory.prodComparison nerveFunctor (Cat.of C) (Cat.of (C ⥤ D)) ≫ uncurry (nerveFunctorCategoryIso C D).hom = nerveFunctor.map ((ihom.ev (Cat.of C)).app (Cat.of D))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "def PrR : SSet.{u + 2} := SimplicialNerve (PresentableCoreCategory.{u} false)"
+          },
+          {
+            "line": 60,
+            "head": "instance prR_quasicategory : Quasicategory PrR.{u} := Coherent.simplicialNerve_quasicategory (PresentableCoreCategory.{u} false)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native の空間の truncation の型は対象についてである。原典は τ≤0X を functor の essential image として定義する記法を区別しており、普通の truncated diagram の index の切り取りや nerve の次数はこの意味を与えない。"
+  }
+}

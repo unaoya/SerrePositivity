@@ -1,0 +1,128 @@
+{
+  "base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "6.5.3.1": {
+      "page": 675,
+      "declarations": [
+        "CategoryTheory.SimplicialObject.truncation",
+        "CategoryTheory.SimplicialObject.cosk",
+        "CategoryTheory.SimplicialObject.coskAdj",
+        "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso",
+        "SerrePositivity.InfinityCategories.F1B.nerveAdjunctionOfAdjunction"
+      ]
+    },
+    "6.5.3.6": {
+      "page": 676,
+      "declarations": [
+        "SemiSimplexCategory",
+        "SemiSimplexCategory.Hom",
+        "SemiSimplexCategory.toSimplexCategory"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.SimplicialObject.cosk": {
+      "declaration": "CategoryTheory.SimplicialObject.cosk",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "type": "@CategoryTheory.SimplicialObject.cosk : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] →\n        CategoryTheory.Functor (CategoryTheory.SimplicialObject C) (CategoryTheory.SimplicialObject C)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.SimplicialObject.coskAdj": {
+      "declaration": "CategoryTheory.SimplicialObject.coskAdj",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "type": "@CategoryTheory.SimplicialObject.coskAdj : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : ℕ) →\n      [inst_1 :\n          ∀ (F : CategoryTheory.Functor (SimplexCategory.Truncated n)ᵒᵖ C),\n            (SimplexCategory.Truncated.inclusion n).op.HasRightKanExtension F] →\n        CategoryTheory.SimplicialObject.truncation n ⊣ CategoryTheory.SimplicialObject.Truncated.cosk n",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/ch10-kernel-evidence.json",
+      "checked_at": "33ce6cfca"
+    },
+    "CategoryTheory.SimplicialObject.truncation": {
+      "declaration": "CategoryTheory.SimplicialObject.truncation",
+      "source": "Mathlib/AlgebraicTopology/SimplicialObject/Basic.lean",
+      "type": "@CategoryTheory.SimplicialObject.truncation.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (n : Nat) →\n      @CategoryTheory.Functor.{u_1, u_1, max u_2 u_1, max u_2 u_1} (@CategoryTheory.SimplicialObject.{u_1, u_2} C inst)\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_2} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) C inst)\n        (@CategoryTheory.SimplicialObject.Truncated.{u_1, u_2} C inst n)\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_2} (Opposite.{1} (SimplexCategory.Truncated n))\n          (@CategoryTheory.Category.opposite.{0, 0} (SimplexCategory.Truncated n)\n            (@CategoryTheory.ObjectProperty.FullSubcategory.category.{0, 0} SimplexCategory\n              SimplexCategory.smallCategory fun a => @LE.le.{0} Nat instLENat a.len n))\n          C inst)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SemiSimplexCategory": {
+      "declaration": "SemiSimplexCategory",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+      "type": "SemiSimplexCategory : Type",
+      "axioms": [],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SemiSimplexCategory.Hom": {
+      "declaration": "SemiSimplexCategory.Hom",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+      "type": "SemiSimplexCategory.Hom : SemiSimplexCategory → SemiSimplexCategory → Type",
+      "axioms": [],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SemiSimplexCategory.toSimplexCategory": {
+      "declaration": "SemiSimplexCategory.toSimplexCategory",
+      "source": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+      "type": "SemiSimplexCategory.toSimplexCategory : @CategoryTheory.Functor.{0, 0, 0, 0} SemiSimplexCategory\n  SemiSimplexCategory.smallCategory SimplexCategory SimplexCategory.smallCategory",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveAdjunctionOfAdjunction": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveAdjunctionOfAdjunction",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/Adjunction.lean",
+      "type": "@SerrePositivity.InfinityCategories.F1B.nerveAdjunctionOfAdjunction.{u_1} : {C D : Type u_1} →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    [inst_1 : CategoryTheory.Category.{u_1, u_1} D] →\n      {F : @CategoryTheory.Functor.{u_1, u_1, u_1, u_1} C inst D inst_1} →\n        {G : @CategoryTheory.Functor.{u_1, u_1, u_1, u_1} D inst_1 C inst} →\n          @CategoryTheory.Adjunction.{u_1, u_1, u_1, u_1} C inst D inst_1 F G →\n            @SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} (@CategoryTheory.nerve.{u_1, u_1} C inst)\n              (@CategoryTheory.nerve.{u_1, u_1} D inst_1) ⋯ ⋯ (@CategoryTheory.nerveMap.{u_1, u_1} C D inst inst_1 F)\n              (@CategoryTheory.nerveMap.{u_1, u_1} D C inst_1 inst G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/ch5-5.2-kernel-evidence.json",
+      "checked_at": "97d365384aa39c415ef92760df5a82ff4d579ac7"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/FunctorCategory.lean",
+      "type": "SerrePositivity.InfinityCategories.F1B.nerveFunctorCategoryIso.{u_1} : (C D : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    [inst_1 : CategoryTheory.Category.{u_1, u_1} D] →\n      @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.nerve.{u_1, u_1} (@CategoryTheory.Functor.{u_1, u_1, u_1, u_1} C inst D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_1} C inst D inst_1))\n        (@CategoryTheory.nerve.{u_1, u_1} C inst ⟹ @CategoryTheory.nerve.{u_1, u_1} D inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/all-20261107-01/declaration-results.csv",
+      "checked_at": "81331dffe2771f549dcf6262741a8c7229e42b81"
+    },
+    "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso": {
+      "declaration": "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/NerveComparison/OppositeIso.lean",
+      "type": "SerrePositivity.InfinityCategories.F1B.nerveOppositeIso.{u_1} : (C : Type u_1) →\n  [inst : CategoryTheory.Category.{u_1, u_1} C] →\n    @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      (@CategoryTheory.nerve.{u_1, u_1} (Opposite.{u_1 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_1} C inst))\n      (@CategoryTheory.nerve.{u_1, u_1} C inst).op",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    }
+  }
+}

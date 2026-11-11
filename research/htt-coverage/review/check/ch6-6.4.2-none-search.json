@@ -1,0 +1,677 @@
+{
+  "6.4.2.1": {
+    "page": 642,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.1",
+        "6.4.2",
+        "6.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          "SerrePositivity"
+        ],
+        "file_count": 958,
+        "line_count": 7534
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 536
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          },
+          {
+            "line": 33,
+            "head": "instance (X : Locale) : Frame X := X.unop.str"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "structure Order.Frame.MinimalAxioms (α : Type u) [CompleteLattice α] where"
+          },
+          {
+            "line": 76,
+            "head": "class Order.Frame (α : Type*) extends CompleteLattice α, HeytingAlgebra α where"
+          },
+          {
+            "line": 88,
+            "head": "theorem inf_sSup_eq [Frame α] {s : Set α} {a : α} : a ⊓ sSup s = ⨆ b ∈ s, a ⊓ b := gc_inf_himp.l_sSup"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "abbrev PT := FrameHom L Prop"
+          },
+          {
+            "line": 60,
+            "head": "def openOfElementHom : FrameHom L (Set (PT L)) where"
+          },
+          {
+            "line": 87,
+            "head": "def pt : Locale ⥤ TopCat where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsUniversalColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), (∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)) → Nonempty (IsColimit c')"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def IsUniversalColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsUniversalColimit c) : IsColimit c"
+          },
+          {
+            "line": 90,
+            "head": "theorem IsUniversalColimit.of_iso {F : J ⥤ C} {c c' : Cocone F} (hc : IsUniversalColimit c) (e : c ≅ c') : IsUniversalColimit c'"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Frame と complete lattice の通常圏はあるが、native 0-category の全ての普遍的余極限と (−1)-truncated 空間値層圏の左完全局所化を同定しない。locale の通常の順序構造だけはこの四条件の同値の証明ではない。"
+  },
+  "6.4.2.2": {
+    "page": 642,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.1",
+        "6.4.2",
+        "6.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          "SerrePositivity"
+        ],
+        "file_count": 958,
+        "line_count": 7534
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 536
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          },
+          {
+            "line": 33,
+            "head": "instance (X : Locale) : Frame X := X.unop.str"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "structure Order.Frame.MinimalAxioms (α : Type u) [CompleteLattice α] where"
+          },
+          {
+            "line": 76,
+            "head": "class Order.Frame (α : Type*) extends CompleteLattice α, HeytingAlgebra α where"
+          },
+          {
+            "line": 88,
+            "head": "theorem inf_sSup_eq [Frame α] {s : Set α} {a : α} : a ⊓ sSup s = ⨆ b ∈ s, a ⊓ b := gc_inf_himp.l_sSup"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "abbrev PT := FrameHom L Prop"
+          },
+          {
+            "line": 60,
+            "head": "def openOfElementHom : FrameHom L (Set (PT L)) where"
+          },
+          {
+            "line": 87,
+            "head": "def pt : Locale ⥤ TopCat where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsUniversalColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), (∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)) → Nonempty (IsColimit c')"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def IsUniversalColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsUniversalColimit c) : IsColimit c"
+          },
+          {
+            "line": 90,
+            "head": "theorem IsUniversalColimit.of_iso {F : J ⥤ C} {c c' : Cocone F} (hc : IsUniversalColimit c) (e : c ≅ c') : IsUniversalColimit c'"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsAccessible は filtered 生成を定義するが、全対象間の mapping space が (−1)-truncated という追加条件から essentially small を導く型はない。Mathlib WellPowered は各対象の部分対象の小ささで、圏全体の小ささとは異なる。"
+  },
+  "6.4.2.5": {
+    "page": 643,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.1",
+        "6.4.2",
+        "6.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          "SerrePositivity"
+        ],
+        "file_count": 958,
+        "line_count": 7534
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 536
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          },
+          {
+            "line": 33,
+            "head": "instance (X : Locale) : Frame X := X.unop.str"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "structure Order.Frame.MinimalAxioms (α : Type u) [CompleteLattice α] where"
+          },
+          {
+            "line": 76,
+            "head": "class Order.Frame (α : Type*) extends CompleteLattice α, HeytingAlgebra α where"
+          },
+          {
+            "line": 88,
+            "head": "theorem inf_sSup_eq [Frame α] {s : Set α} {a : α} : a ⊓ sSup s = ⨆ b ∈ s, a ⊓ b := gc_inf_himp.l_sSup"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "abbrev PT := FrameHom L Prop"
+          },
+          {
+            "line": 60,
+            "head": "def openOfElementHom : FrameHom L (Set (PT L)) where"
+          },
+          {
+            "line": 87,
+            "head": "def pt : Locale ⥤ TopCat where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsUniversalColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), (∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)) → Nonempty (IsColimit c')"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def IsUniversalColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsUniversalColimit c) : IsColimit c"
+          },
+          {
+            "line": 90,
+            "head": "theorem IsUniversalColimit.of_iso {F : J ⥤ C} {c c' : Cocone F} (hc : IsUniversalColimit c) (e : c ≅ c') : IsUniversalColimit c'"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Frame の分配律と native nerve comparison は個々にあるが、presentable 0-category の all colimits の普遍性を N(U) の frame 分配律へ同定する型はない。generic ordinary IsUniversalColimit は全ての cocone に関するこの同値を結論しない。"
+  },
+  "6.4.2.6": {
+    "page": 644,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.1",
+        "6.4.2",
+        "6.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          "SerrePositivity"
+        ],
+        "file_count": 958,
+        "line_count": 7534
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 536
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          },
+          {
+            "line": 33,
+            "head": "instance (X : Locale) : Frame X := X.unop.str"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "structure Order.Frame.MinimalAxioms (α : Type u) [CompleteLattice α] where"
+          },
+          {
+            "line": 76,
+            "head": "class Order.Frame (α : Type*) extends CompleteLattice α, HeytingAlgebra α where"
+          },
+          {
+            "line": 88,
+            "head": "theorem inf_sSup_eq [Frame α] {s : Set α} {a : α} : a ⊓ sSup s = ⨆ b ∈ s, a ⊓ b := gc_inf_himp.l_sSup"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "abbrev PT := FrameHom L Prop"
+          },
+          {
+            "line": 60,
+            "head": "def openOfElementHom : FrameHom L (Set (PT L)) where"
+          },
+          {
+            "line": 87,
+            "head": "def pt : Locale ⥤ TopCat where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsUniversalColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), (∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)) → Nonempty (IsColimit c')"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def IsUniversalColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsUniversalColimit c) : IsColimit c"
+          },
+          {
+            "line": 90,
+            "head": "theorem IsUniversalColimit.of_iso {F : J ⥤ C} {c c' : Cocone F} (hc : IsUniversalColimit c) (e : c ≅ c') : IsUniversalColimit c'"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      }
+    ],
+    "decision": "Locale.of は任意の Frame を束縛するが、それが native 0-topos の左完全局所化の全表示と同値であることを与えない。圏としての nerve の存在だけは topological localization の比較ではない。"
+  },
+  "6.4.2.7": {
+    "page": 644,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.1",
+        "6.4.2",
+        "6.4.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          "SerrePositivity"
+        ],
+        "file_count": 958,
+        "line_count": 7534
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Locale|Frame|IsUniversalColimit|WellPowered|IsAccessible|localic",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 49,
+        "line_count": 536
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/Topology/Category/Locale.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def Locale := Frmᵒᵖ deriving LargeCategory"
+          },
+          {
+            "line": 30,
+            "head": "instance : CoeSort Locale Type* := ⟨fun X => X.unop⟩"
+          },
+          {
+            "line": 33,
+            "head": "instance (X : Locale) : Frame X := X.unop.str"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Order/CompleteBooleanAlgebra.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "structure Order.Frame.MinimalAxioms (α : Type u) [CompleteLattice α] where"
+          },
+          {
+            "line": 76,
+            "head": "class Order.Frame (α : Type*) extends CompleteLattice α, HeytingAlgebra α where"
+          },
+          {
+            "line": 88,
+            "head": "theorem inf_sSup_eq [Frame α] {s : Set α} {a : α} : a ⊓ sSup s = ⨆ b ∈ s, a ⊓ b := gc_inf_himp.l_sSup"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Order/Category/FrameAdjunction.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "abbrev PT := FrameHom L Prop"
+          },
+          {
+            "line": 60,
+            "head": "def openOfElementHom : FrameHom L (Set (PT L)) where"
+          },
+          {
+            "line": 87,
+            "head": "def pt : Locale ⥤ TopCat where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def IsUniversalColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), (∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)) → Nonempty (IsColimit c')"
+          },
+          {
+            "line": 67,
+            "head": "noncomputable def IsUniversalColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsUniversalColimit c) : IsColimit c"
+          },
+          {
+            "line": 90,
+            "head": "theorem IsUniversalColimit.of_iso {F : J ⥤ C} {c c' : Cocone F} (hc : IsUniversalColimit c) (e : c ≅ c') : IsUniversalColimit c'"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/WellPowered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "class WellPowered [LocallySmall.{w} C] : Prop where"
+          },
+          {
+            "line": 50,
+            "head": "instance small_subobject [LocallySmall.{w} C] [WellPowered C] (X : C) : Small.{w} (Subobject X) := WellPowered.subobject_small X"
+          },
+          {
+            "line": 91,
+            "head": "instance [LocallySmall.{w} C] [WellPowered.{w} C] : WellPowered.{w, w} (ShrinkHoms C) := wellPowered_of_equiv.{w} (ShrinkHoms.equivalence.{w} C)"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Subobject の lattice と通常位相の層はあるが、0-topos の一般の coproduct が非交とは限らないという高次局所化の反例と、localic topos を終対象の部分対象から回収する比較はない。Frame の sup の冪等性のみをトポスの coproduct の反例とはしない。"
+  }
+}

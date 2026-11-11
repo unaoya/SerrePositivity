@@ -1,0 +1,1109 @@
+{
+  "6.4.4.1": {
+    "page": 650,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "Types.Pushout.isColimitCocone は関数の貼合を与えるが、powerset の順序を保つ Sub(Y∐XZ)≅Sub(Y)×Sub(X)Sub(Z) の同型として公開されていない。Adhesive.isColimitBinaryCofan は一つの固定対象の二部分対象の和で、異なる底集合 Y,Z を貼る原典とは異なる。"
+  },
+  "6.4.4.2": {
+    "page": 650,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary NatTrans.Equifibered と Subobject はあるが、native OX 内の (n−2)-truncated 射を選ぶ OnX と pullback morphism だけの OX(n) の全高次の圏はない。ordinary mono の category は n=1 の類比で、比較宣言を欠く。"
+  },
+  "6.4.4.3": {
+    "page": 650,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "native equivalence の full subcomplex と trivial fibration の補題はあるが、OX の各 fiber の終対象を選んだ O0X の codomain 射影と同定する型はない。generic terminal section lifting はこの内部矢印圏の構成を入力としていない。"
+  },
+  "6.4.4.4": {
+    "page": 650,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary mono の coproduct や native compact object の coproduct の補題は切断射の述語ではない。一般の n≥−2 の mapping-space truncation が small coproduct の射で保存されることの比較を欠く。"
+  },
+  "6.4.4.5": {
+    "page": 651,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary IsVanKampenColimit と Equifibered は全 cocone の pullback 条件を定義するが、native (n−2)-truncated 射の族・分類 functor・right fibration との五条件の同値を与えない。通常圏の descent と型が似るだけでは適用先の比較にならない。"
+  },
+  "6.4.4.6": {
+    "page": 651,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification が finite limits を保存することはあるが、native n-topos の任意の左完全局所化から全 colimit の universality を導かない。Frame の分配律も n=0 の同じ colimit cone との比較を欠く。"
+  },
+  "6.4.4.7": {
+    "page": 652,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "native τ≤nY と truncated morphism の full subcategory がないため、その (n−2)-truncated 射族が local となる型はない。ordinary IsStableUnderBaseChange は locality の全降下条件より弱く、これだけは原典の結論ではない。"
+  },
+  "6.4.4.8": {
+    "page": 652,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib InitialMonoClass は初対象からの射の mono 性を既に仮定する class である。HasStrictInitialObjects からの instance はあるが、presentability＋universality から strict initial を導く比較はなく、結論を class として追加することは direct な特殊化に数えない。"
+  },
+  "6.4.4.9": {
+    "page": 652,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.4.3",
+        "6.4.4",
+        "6.4.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          "SerrePositivity"
+        ],
+        "file_count": 3586,
+        "line_count": 16362
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Subobject|Pushout|Equifibered|Truncated|IsVanKampenColimit|InitialMonoClass|IsStableUnderBaseChange",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 324,
+        "line_count": 4057
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Types/Pushouts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "instance : HasPushouts.{u} (Type u) := hasPushouts_of_hasWidePushouts.{u} (Type u)"
+          },
+          {
+            "line": 40,
+            "head": "def Pushout : Type u := (_root_.Quot (Pushout.Rel f g))"
+          },
+          {
+            "line": 51,
+            "head": "def Pushout' : Type u := _root_.Quot (Pushout.Rel' f g)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Adhesive/Subobject.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "noncomputable def isColimitBinaryCofan (a b : Subobject X) : IsColimit (BinaryCofan.mk (P := Subobject.mk (pushout.desc a.arrow b.arrow pullback.condition)) (le_mk_of_comm (pushout.inl _ _) (pushout.inl_desc _ _ _)).hom (le_mk_of_comm (pushout.inr _ _) (pushout.inr_desc _ _ _)).hom) := BinaryCofan.isColimitMk (fun s ↦ (mk_le_of_comm (pushout.desc (underlying.map (s.ι.app ⟨WalkingPair.left⟩)) (underlying.map (s.ι.app ⟨WalkingPair.right⟩)) (by ext; simp [pullback.condition])) (by cat_disch)).hom) (by intros; rfl) (by intros; rfl) (by intros; rfl)"
+          },
+          {
+            "line": 42,
+            "head": "instance : HasBinaryCoproducts (Subobject X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "def IsVanKampenColimit {F : J ⥤ C} (c : Cocone F) : Prop := ∀ ⦃F' : J ⥤ C⦄ (c' : Cocone F') (α : F' ⟶ F) (f : c'.pt ⟶ c.pt) (_ : α ≫ c.ι = c'.ι ≫ (Functor.const J).map f) (_ : NatTrans.Equifibered α), Nonempty (IsColimit c') ↔ ∀ j : J, IsPullback (c'.ι.app j) (α.app j) f (c.ι.app j)"
+          },
+          {
+            "line": 61,
+            "head": "theorem IsVanKampenColimit.isUniversal {F : J ⥤ C} {c : Cocone F} (H : IsVanKampenColimit c) : IsUniversalColimit c := fun _ c' α f h hα => (H c' α f h hα).mpr"
+          },
+          {
+            "line": 75,
+            "head": "noncomputable def IsVanKampenColimit.isColimit {F : J ⥤ C} {c : Cocone F} (h : IsVanKampenColimit c) : IsColimit c := h.isUniversal.isColimit"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/StrictInitial.lean",
+        "signatures": [
+          {
+            "line": 88,
+            "head": "instance (priority := 100) initial_mono_of_strict_initial_objects : InitialMonoClass C where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary extensive の disjointness はあるが、native の local (n−2)-truncated morphisms の仮定から n-efficient internal groupoid の有効性まで導かない。初対象の strictness や coproduct の部品のみを原典の Giraud 定理の成分とはしない。"
+  }
+}

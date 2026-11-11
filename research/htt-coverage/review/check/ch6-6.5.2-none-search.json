@@ -1,0 +1,3280 @@
+{
+  "6.5.2.1": {
+    "page": 665,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native ModelBridge/Inputs/KanQuillen の kanQuillenModel は SSet の入力で、存在定理には sorry が残る。まして site の simplicial presheaf 圏の local model instance と原典の幾何的局所 lifting による weak equivalence class の同定はない。generic ModelCategory の存在を仮定する定理はこの具体的構造を供給しない。"
+  },
+  "6.5.2.2": {
+    "page": 666,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の stalk と native Kan の weak equivalence はあるが、simplicial presheaf の Jardine local equivalence が全 stalk 上の弱同値である iff はない。enough-points 条件を持つ local-model sheafification と hypercompletion の比較も供給されていない。"
+  },
+  "6.5.2.3": {
+    "page": 666,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native ReflectiveSubcategory は全圏の反射を扱うが、Cartesian lift で閉じる C0 の fiber での local unit が全圏の同じ local unit となる比較はない。原文末尾は C-localization と記されており、C0 と暗黙に読み替えて一致判定しない。"
+  },
+  "6.5.2.4": {
+    "page": 667,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic reflector の unit mapping condition はあるが、Cartesian fibration の全 fiber の reflector を元の C0 へ貼り合わせる構成はない。ordinary category の right adjoint の存在を全圏で既に仮定することは fiberwise の条件からの結論ではない。"
+  },
+  "6.5.2.5": {
+    "page": 667,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native accessible functor と full subcomplex はあるが、各 α(C) が n-truncated となる full subcategory C(n) を accessible とする型はない。ordinary truncated diagram の accessibility は射の homotopy truncation と対象が違う。"
+  },
+  "6.5.2.6": {
+    "page": 667,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Bousfield reflection は明示した生成辺族を必要とする。Fun(Δ¹,X) の全 n-truncated morphism とその local objects を同定する型がなく、射ごとの truncation reflector を全矢印圏の強反射とする比較がない。"
+  },
+  "6.5.2.7": {
+    "page": 667,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "stronglySaturatedClosure は指定射類の閉包で、n-connective morphism 全体の accessibility を示さない。原文は D(n)⊆Fun(Δ¹,X) の後で X の subcategory と記すが、どちらの読みでも連結射との local-class 比較がなく一致には数えない。"
+  },
+  "6.5.2.8": {
+    "page": 668,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の ∞-topos の全 ∞-connective 射が強飽和かつ小生成である主張。native stronglySaturatedClosure は指定した辺族の生成閉包であって、全相対ホモトピー群と有効全射性から定まる ∞-connective 射の類との同定はない。Whitehead や可縮 Kan 空間の判定は任意の ∞-topos の相対射のこの類を扱わず、hypercomplete 反射の型も本体にない。"
+  },
+  "6.5.2.9": {
+    "page": 669,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native finite homotopy groups の型はあるが、X∧ の local-object predicate を (∞-connective morphisms)-local として構成していない。ordinary separated/sheaf は任意の有限 truncation の超完備性との比較がない。"
+  },
+  "6.5.2.10": {
+    "page": 669,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Kan Whitehead は空間間の weak equivalence を homotopy inverse にするが、任意 X の reflector LX とその ∞-connectivity には適用先の比較がない。IsTerminalVertex だけでは LX の全相対ホモトピー層の消滅から終対象性を結論しない。"
+  },
+  "6.5.2.11": {
+    "page": 669,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native の t-structure の complete 性は stable 圏の tower に関する別の概念である。原典で同義とする ∞ トポスの t-completeness/hypercompleteness の述語がなく、用語だけで stable t-completeness の宣言を対応させない。"
+  },
+  "6.5.2.12": {
+    "page": 669,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic localization は local objects の反射を与えるが、元の X の ∞-connective arrows と X∧ 内で定義される ∞-connective arrows の比較がない。そのため単なる reflector の冪等性から原典の内部 Whitehead 性を直接数えない。"
+  },
+  "6.5.2.13": {
+    "page": 669,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ReflectiveSubcategory の universal property は指定 local objects への一般関手についてであり、hypercomplete な Y からの geometric morphism 全体が X∧ に一意に因子化するという同じ Fun* の比較はない。finite-limit 保存への制限も欠く。"
+  },
+  "6.5.2.14": {
+    "page": 670,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ModelBridge の coherent nerve と generic model localization はあるが、simplicial presheaf の local model の具体的 instance、空間値 sheafification、∞-connective localization との三比較がない。SSet のモデル圏を入力しても同じ A° と Shv(C)∧ の同値にはならない。"
+  },
+  "6.5.2.15": {
+    "page": 671,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "simplicialCategory の enriched nerve はあるが、simplicial site の Jardine local model と hypercomplete Shv の同値はない。通常 site に戻した場合も 6.5.2.14 の比較が欠け、模型の違いだけの component にはしない。"
+  },
+  "6.5.2.16": {
+    "page": 671,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native fully faithful や localEquivalences はあるが、mono を反転するなら元から equivalence という条件と、全 inverted arrow の ∞-connectivity の同値を与えない。原文 (2) の末尾は u でなく f is ∞-connective と記すので、黙って変数を直して own と判定しない。"
+  },
+  "6.5.2.17": {
+    "page": 672,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Bousfield reflection はあるが、mono の反転の反映または ∞-connective arrows だけの反転による cotopological predicate はない。一般の left exact localization と同じではなく、ordinary topology の双対もこの定義ではない。"
+  },
+  "6.5.2.18": {
+    "page": 672,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary epi-mono factorization はあるが、native cotopological inverse image の mono の反映と同じ有効全射の iff を接続しない。generic fully faithful functor の epi 反映は cotopological 関手全体の仮定より強く対象も違う。"
+  },
+  "6.5.2.19": {
+    "page": 672,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic localization は明示射族の反射を作るが、任意の accessible lex localization から mono 生成の中間反射 X′ を抽出し残りを cotopological にする型はない。ordinary sheafification の二回 plus は異なる分解である。"
+  },
+  "6.5.2.20": {
+    "page": 672,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native 反射の unit の一意性はあるが、topological/cotopological の二種類を分けた中間 X′ の一意性や全 ∞ トポスの四段構成を与えない。ordinary GrothendieckTopology の定義と generic presheaf の存在だけは同じ分解の比較ではない。"
+  },
+  "6.5.2.21": {
+    "page": 673,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native factorization system の一般定理はあるが、左 class を全 ∞-connective morphism と同定する saturation の比較がない。右 class の一般の pullback 安定性だけは原典の hypercomplete morphism の同じ predicate を与えない。"
+  },
+  "6.5.2.22": {
+    "page": 673,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.5.1",
+        "6.5.2",
+        "6.5.3"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          "SerrePositivity"
+        ],
+        "file_count": 3259,
+        "line_count": 12661
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Hypercomplet|hypercomplet|cotopological|Jardine|Truncated|CartesianFibration|ReflectiveSubcategory|IsWeakHomotopyEquivalence|stronglySaturated",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 34,
+        "line_count": 498
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/Reflective.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where"
+          },
+          {
+            "line": 33,
+            "head": "def IsReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) : Prop := Nonempty (ReflectiveSubcategory X P)"
+          },
+          {
+            "line": 65,
+            "head": "lemma inclusion_fullyFaithful (_r : ReflectiveSubcategory X P) : IsFullyFaithful (fullSubcomplexOnVertices X P).ι := isFullyFaithful_fullSubcomplexOnVertices_ι X P"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/StronglySaturatedClosure.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : Set (X _⦋1⦌) := {e | ∀ S : Set (X _⦋1⦌), IsStronglySaturatedEdgeSetOfShapes smallShape S → W ⊆ S → e ∈ S}"
+          },
+          {
+            "line": 28,
+            "head": "lemma subset_stronglySaturatedClosure (smallShape : SSet.{u} → SSet.{v}) (W : Set (X _⦋1⦌)) : W ⊆ stronglySaturatedClosure smallShape W := fun _ he _ _ hW ↦ hW he"
+          },
+          {
+            "line": 33,
+            "head": "lemma stronglySaturatedClosure_minimal (smallShape : SSet.{u} → SSet.{v}) {W S : Set (X _⦋1⦌)} (hS : IsStronglySaturatedEdgeSetOfShapes smallShape S) (hW : W ⊆ S) : stronglySaturatedClosure smallShape W ⊆ S := fun _ he ↦ he S hS hW"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakHomotopy.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def IsWeakHomotopyEquivalence {A B : SSet.{u}} (f : A ⟶ B) : Prop := ∀ (Z : SSet.{u}) [KanComplex Z], Function.Bijective (SSet.mapπ₀ ((pre f).app Z))"
+          },
+          {
+            "line": 62,
+            "head": "lemma IsWeakHomotopyEquivalence.comp {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) : IsWeakHomotopyEquivalence (f ≫ g)"
+          },
+          {
+            "line": 73,
+            "head": "lemma IsWeakHomotopyEquivalence.cancel_left {A B C : SSet.{u}} {f : A ⟶ B} {g : B ⟶ C} (hf : IsWeakHomotopyEquivalence f) (hfg : IsWeakHomotopyEquivalence (f ≫ g)) : IsWeakHomotopyEquivalence g"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Homotopy/WeakWhitehead.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence {A B : SSet.{u}} [KanComplex A] [KanComplex B] {f : A ⟶ B} (hf : IsWeakHomotopyEquivalence f) : IsSimplicialHomotopyEquivalence f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "theorem kanQuillen_model_exists : ∃ m : ModelCategory SSet.{u}, @cofibrations SSet.{u} _ m.categoryWithCofibrations = MorphismProperty.monomorphisms SSet.{u} ∧ @fibrations SSet.{u} _ m.categoryWithFibrations = SSet.modelCategoryQuillen.J.{u}.rlp ∧ @weakEquivalences SSet.{u} _ m.categoryWithWeakEquivalences = SimplicialModelInputs.geometricWeakEquivalences.{u}"
+          },
+          {
+            "line": 46,
+            "head": "noncomputable def kanQuillenModel : ModelCategory SSet.{u} := Classical.choose kanQuillen_model_exists"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Hypercover/IsSheaf.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "abbrev OneHypercoverFamily := ∀ ⦃X : C⦄, OneHypercover.{w} J X → Prop"
+          },
+          {
+            "line": 62,
+            "head": "class IsGenerating : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の局所性はあるが、∞-connective arrows への全 mapping-space orthogonality が有効全射の Čech totalization から検出できる型はない。一般の localization の right orthogonal の定義は、この被覆から全空間の条件を復元する比較を欠く。"
+  }
+}
