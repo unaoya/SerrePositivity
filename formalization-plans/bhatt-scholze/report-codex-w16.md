@@ -701,3 +701,86 @@ main `892772144` の指示書 §6 を `c0c30cd30` で取り込んだ。`coproduc
 新規の［一般∞］移動候補はない。一般のアーベル圏とモノイダル圏の補助は、この実装の隣に置いている。既報の［一般∞］五本は動かしていない。
 
 **続き。** 単位代数の始対象性と左右の単位同型、二つの包含と余積からの指定比較、実際の二色の解像度比較、セル対への移送、強い全関手版への降下が残る。作業木の `HopfTensorUnitObject`・`TensorUnitCoherence`・`HopfTensorUnitPowers`・`HopfTensorUnitors` は次に型検査する候補で、今回の監査・登録候補・コミットには含めない。承認待ちの停止ではなく、§6 の順に包含の証明を続ける。
+
+## 14. 単位・包含・厳密な自然変換の完成と、合計規模による中間停止（11-11 夜）
+
+§13 の最初の区切りを `50d08b622` に保存した後、単位代数と二つの包含を続けた。今回追加する五本は **459 行**。§13 の十三本 767 行と合わせたテンソル側の新規十八本は **1,226 行**、前回の余積の三本 245 行まで含めると二十一本 **1,471 行**。行数は module docstring と空行を含む新規 Lean ファイル全体で数えている。
+
+### 14.1 今回証明したもの
+
+| モジュール | 宣言・内容 |
+| --- | --- |
+| `HopfTensorUnitObject` | `hopfTensorUnitObject` は Hopf 余単位に沿ってテンソル単位の可換代数を制限する。`hopfTensorUnitIsInitial` は、零入力の余単位が同型ならこの代数が厳密な始対象であることを証明する。`hopfTensorUnitMap` は任意の代数への指定射。自由零代数からの射を、零入力の Schur 包含の同型性で比較している。 |
+| `TensorUnitCoherence` | 二列分離・左右の単位子・任意の作用射の整合性を証明する。`tensorActionRightCounit` と `tensorActionLeftCounit` は、テンソル作用の単位子の保存を実際の Hopf 余単位則へ帰着する。 |
+| `HopfTensorUnitPowers` | `tensorPowerSeparation_rightUnit`・`_leftUnit`。単位因子の反復積で二列分離を縮約すると、元の左右の単位子のテンソル冪になる。空積も含む。 |
+| `HopfTensorUnitors` | `hopfTensorRightUnitor`・`hopfTensorLeftUnitor` は、台の左右の単位子を実際のオペラッド代数の同型へ上げる。零入力の余単位の同型性はこの二つの構成には不要。 |
+| `HopfTensorInclusions` | `hopfTensorInl`・`hopfTensorInr` と両変数の全射での自然性、`hopfCoproductComparison`、固定右因子の `hopfCoproductTensorNat` を構成した。`BarrattEccles.barrattEcclesCoproductTensorNat` は零入力の同型性を §13 の証明で供給し、任意の可換環・任意の右因子で実際の模型へ適用する。 |
+
+単位代数・単位同型・包含の構成は任意の Hopf オペラッドで述べ、始対象性と包含だけに零入力の余単位の同型性を要求する。実際の Barratt–Eccles 模型ではこの入力を証明済みで供給する。cofibrancy・K 平坦性を自然変換の構成の仮定には置いていない。
+
+得られた最後の宣言は、通常の代数の圏の **指定された自然変換**
+
+```lean
+barrattEcclesCoproductTensorNat (R : Type u) [CommRing R]
+    (Y : (operad R).Algebra) :
+  modelCoprodWith Y ⟶ hopfTensorWith (hopf R) Y
+```
+
+である。比較射の擬同型性、CAlg から D への `FunctorIso`、native な余積錐の余極限性はまだ残る。`EInfinityTheory.coproduct_tensor` を供給し終えたとは扱わない。
+
+### 14.2 検証
+
+`lake build SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInclusions` が成功し、五本すべての対象ビルドを確認した。最終ログでは今回の五本の警告は零。親の既報 `ZeroArity` の `letI` に関する提案二件は残っている。
+
+五本・**72 宣言**を再帰監査し、標準三公理のみだった。§13 の十六本・115 宣言と合わせ、二十一本・**187 宣言**を監査済み。sorry・admit・新規公理・デバッグ出力は零。界面の型と既存の公開宣言は変更せず、新規ファイルだけで証明した。drafts と入口と共有監査スクリプトは編集していない。`ModelCategory SSet` の仮定は使っていない。
+
+対象ビルドと監査は、それぞれ一回の `with_build_lock.sh --wait 3600` で実行し、一回の命令が終わるごとに返却した。整理券は一枚。常駐の要求受付セッションとルートビルドは行っていない。このレーンの監査の鍵は返却済み。
+
+### 14.3 実測による再見積もりと停止条件 1
+
+§12.2 で **400〜650 行**とした「Hopf テンソル代数と二つの包含」は、今回までの実測で **1,119 行**になった。新規十八本 1,226 行から、二色比較の前置き二本 107 行を引いた値である。零入力の増大の厳密な同型性、単位代数の始対象性、左右それぞれの単位子の作用保存、全射での包含の自然性までが必要となり、この部分の当初の見積もりが小さすぎた。
+
+残る部分には §12.2 の承認済みの見積もりをそのまま使い、証明済みの二色の前置き 107 行を差し引く。native な錐の見積もりは §13.1 のまま。実測による次の再計算では、前回三本と前置き二本を二重計上していない。
+
+| 区分 | 実測・残りの見込み |
+| --- | --- |
+| 検証済みのテンソル側の十八本（二色の前置き二本を含む） | 1,226 行（実測） |
+| 二色の自由比較の残り（従来 550〜850 行から検証済み 107 行を引く） | 443〜743 行 |
+| 実際のセル対への移送 | 600〜850 行 |
+| 強い全関手版への降下 | 200〜350 行 |
+| native な余積錐（前回三本 245 行を含む） | 615〜800 行 |
+| **合計** | **3,084〜3,969 行（約 3,100〜4,000 行）** |
+
+単に将来の補助が増える可能性ではなく、最初の部分の実測が従来の上限を約 470 行上回ったため、合計約 3,500 行を超える見込みになった。指示書 §6 の **「合計（`coproduct_tensor` と native な錐）が 3,500 行を超えそうなら止める」** に従い、このまとまりで **中間停止し、調整役の判断を待つ**。
+
+停止理由は条件 1 の規模。指定された射を保つ等変な鎖ホモトピー逆の一般の組み立ては §13 で証明済みである。実際の二色の係数複体の射影解像度構造・増大・比較射の照合は残る。セル対への移送では、微分を消す関手と自由関手の余積保存によって二つの既存のセル段を `Free(V ⊕ W)` の表示へ移す経路を検討しているが、この残りの見積もりを小さくできるという証明上の根拠はまだ得ていない。
+
+再開時の次の作業は二色の係数比較である。`sifted`・Tot・段 4 の組み立てには進んでいない。今回の五本まで検証・監査・コミットを揃え、未検査の Lean ファイルを残さずに止める。
+
+### 14.4 取り込み時の登録候補（二十一本）
+
+すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。前回の三本と §13 の十三本、今回の五本を含む。入口と段階 II 監査への登録は調整役が行う。
+
+- `CoproductModel`
+- `CAlgCoproductFunctor`
+- `RightFrameCoproduct`
+- `ConcentratedHomotopy`
+- `HopfTensorAlgebra`
+- `HopfTensorFirstBlock`
+- `HopfTensorFunctor`
+- `HopfTensorInsertion`
+- `HopfTensorNaturality`
+- `HopfTensorOperations`
+- `HopfTensorUnit`
+- `ResolutionAugmentationComparison`
+- `TensorActionAssembly`
+- `TensorFirstBlockCoherence`
+- `TwoColorPermutation`
+- `ZeroArity`
+- `HopfTensorInclusions`
+- `HopfTensorUnitObject`
+- `HopfTensorUnitPowers`
+- `HopfTensorUnitors`
+- `TensorUnitCoherence`
+
+今回も［一般∞］の移動候補の追加は零。既報の五本の場所はそのまま。
