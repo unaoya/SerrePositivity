@@ -1,0 +1,256 @@
+{
+  "worktree_commit": "6bb2e5a42fe5829e4bf04ba94b028d6dd5b0719a",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "A.1.12": {
+      "ha_page": 1405,
+      "declarations": [
+        "CategoryTheory.Sheaf.IsConstant",
+        "CategoryTheory.constantSheaf"
+      ]
+    },
+    "A.2.1": {
+      "ha_page": 1407,
+      "declarations": [
+        "CategoryTheory.Sheaf.isConstant_iff_isIso_counit_app"
+      ]
+    },
+    "A.3.6": {
+      "ha_page": 1414,
+      "declarations": [
+        "SimplexCategory.sd",
+        "SSet.sd",
+        "SSet.sdExAdjunction"
+      ]
+    },
+    "A.3.9": {
+      "ha_page": 1416,
+      "declarations": [
+        "TopCat.Presheaf.isIso_iff_stalkFunctor_map_iso"
+      ]
+    },
+    "A.4.17": {
+      "ha_page": 1420,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeFunctorSpace"
+      ]
+    },
+    "A.5.1": {
+      "ha_page": 1421,
+      "declarations": [
+        "Topology.upperSet"
+      ]
+    },
+    "A.5.7": {
+      "ha_page": 1422,
+      "declarations": [
+        "WellFounded.wellFounded_iff_has_min"
+      ]
+    },
+    "A.5.8": {
+      "ha_page": 1422,
+      "declarations": [
+        "WellFounded.wellFounded_iff_has_min",
+        "wellFounded_iff_isEmpty_descending_chain"
+      ]
+    },
+    "A.6.6": {
+      "ha_page": 1434,
+      "declarations": [
+        "PreAbstractSimplicialComplex"
+      ]
+    },
+    "A.7.3": {
+      "ha_page": 1436,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeFunctorSpace"
+      ]
+    },
+    "A.7.4": {
+      "ha_page": 1437,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex"
+      ]
+    },
+    "A.9.2": {
+      "ha_page": 1457,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.relativeFunctorSpace",
+        "SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex"
+      ]
+    }
+  },
+  "declarations": {
+    "CategoryTheory.Sheaf.IsConstant": {
+      "name": "CategoryTheory.Sheaf.IsConstant",
+      "module": "Mathlib.CategoryTheory.Sites.ConstantSheaf",
+      "path": "Mathlib/CategoryTheory/Sites/ConstantSheaf.lean",
+      "line": 79,
+      "source_sha256": "8aab83c841c3c1384f0b1fffe3c1518d90b36149f028835e19605617ee5d0836",
+      "type": "@CategoryTheory.Sheaf.IsConstant.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (J : @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst) →\n      {D : Type u_4} →\n        [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n          [@CategoryTheory.HasWeakSheafify.{u_1, u_3, u_2, u_4} C inst J D inst_1] →\n            @CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1 → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.constantSheaf": {
+      "name": "CategoryTheory.constantSheaf",
+      "module": "Mathlib.CategoryTheory.Sites.ConstantSheaf",
+      "path": "Mathlib/CategoryTheory/Sites/ConstantSheaf.lean",
+      "line": 64,
+      "source_sha256": "8aab83c841c3c1384f0b1fffe3c1518d90b36149f028835e19605617ee5d0836",
+      "type": "@CategoryTheory.constantSheaf.{u_1, u_2, u_3,\n    u_4} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    (J : @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst) →\n      (D : Type u_4) →\n        [inst_1 : CategoryTheory.Category.{u_3, u_4} D] →\n          [@CategoryTheory.HasWeakSheafify.{u_1, u_3, u_2, u_4} C inst J D inst_1] →\n            @CategoryTheory.Functor.{u_3, max u_2 u_3, u_4, max (max (max u_4 u_2) u_3) u_1} D inst_1\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Sheaf.isConstant_iff_isIso_counit_app": {
+      "name": "CategoryTheory.Sheaf.isConstant_iff_isIso_counit_app",
+      "module": "Mathlib.CategoryTheory.Sites.ConstantSheaf",
+      "path": "Mathlib/CategoryTheory/Sites/ConstantSheaf.lean",
+      "line": 112,
+      "source_sha256": "8aab83c841c3c1384f0b1fffe3c1518d90b36149f028835e19605617ee5d0836",
+      "type": "@CategoryTheory.Sheaf.isConstant_iff_isIso_counit_app.{u_1, u_2, u_3,\n    u_4} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  (J : @CategoryTheory.GrothendieckTopology.{u_1, u_2} C inst) {D : Type u_4}\n  [inst_1 : CategoryTheory.Category.{u_3, u_4} D]\n  [inst_2 : @CategoryTheory.HasWeakSheafify.{u_1, u_3, u_2, u_4} C inst J D inst_1]\n  [@CategoryTheory.Functor.Faithful.{u_3, max u_2 u_3, u_4, max (max (max u_2 u_4) u_1) u_3} D inst_1\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.constantSheaf.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2)]\n  [@CategoryTheory.Functor.Full.{u_3, max u_2 u_3, u_4, max (max (max u_2 u_4) u_1) u_3} D inst_1\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.constantSheaf.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2)]\n  (F : @CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1) {T : C}\n  (hT : @CategoryTheory.Limits.IsTerminal.{u_1, u_2} C inst T),\n  Iff (@CategoryTheory.Sheaf.IsConstant.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2 F)\n    (@CategoryTheory.IsIso.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n      (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n      (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n        (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n      (@CategoryTheory.Functor.obj.{max u_2 u_3, max u_2 u_3, max (max (max u_2 u_4) u_1) u_3,\n            max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Functor.comp.{max u_2 u_3, u_3, max u_2 u_3, max (max (max u_2 u_4) u_1) u_3, u_4,\n              max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n          D inst_1 (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n          (@CategoryTheory.Functor.obj.{u_1, max (max (max u_2 u_4) u_1) u_3, u_2, max (max (max u_2 u_4) u_1) u_3}\n            (Opposite.{u_2 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_2} C inst)\n            (@CategoryTheory.Functor.{max u_2 u_3, u_3, max (max (max u_4 u_2) u_3) u_1, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.Functor.category.{max u_2 u_3, u_3, max (max (max u_2 u_4) u_1) u_3, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.sheafSections.{u_1, u_3, u_2, u_4} C inst J D inst_1) (@Opposite.op.{u_2 + 1} C T))\n          (@CategoryTheory.constantSheaf.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2))\n        F)\n      (@CategoryTheory.Functor.obj.{max u_2 u_3, max u_2 u_3, max (max (max u_2 u_4) u_1) u_3,\n            max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Functor.id.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J)))\n        F)\n      (@CategoryTheory.NatTrans.app.{max u_2 u_3, max u_2 u_3, max (max (max u_2 u_4) u_1) u_3,\n            max (max (max u_2 u_4) u_1) u_3}\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n        (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n            (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n          (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n        (@CategoryTheory.Functor.comp.{max u_2 u_3, u_3, max u_2 u_3, max (max (max u_2 u_4) u_1) u_3, u_4,\n              max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n          D inst_1 (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n          (@CategoryTheory.Functor.obj.{u_1, max (max (max u_2 u_4) u_1) u_3, u_2, max (max (max u_2 u_4) u_1) u_3}\n            (Opposite.{u_2 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_2} C inst)\n            (@CategoryTheory.Functor.{max u_2 u_3, u_3, max (max (max u_4 u_2) u_3) u_1, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.Functor.category.{max u_2 u_3, u_3, max (max (max u_2 u_4) u_1) u_3, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.sheafSections.{u_1, u_3, u_2, u_4} C inst J D inst_1) (@Opposite.op.{u_2 + 1} C T))\n          (@CategoryTheory.constantSheaf.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2))\n        (@CategoryTheory.Functor.id.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n          (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J)))\n        (@CategoryTheory.Adjunction.counit.{u_3, max u_2 u_3, u_4, max (max (max u_2 u_4) u_1) u_3} D inst_1\n          (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n            (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n          (@CategoryTheory.constantSheaf.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2)\n          (@CategoryTheory.Functor.obj.{u_1, max (max (max u_2 u_4) u_1) u_3, u_2, max (max (max u_2 u_4) u_1) u_3}\n            (Opposite.{u_2 + 1} C) (@CategoryTheory.Category.opposite.{u_1, u_2} C inst)\n            (@CategoryTheory.Functor.{max u_2 u_3, u_3, max (max (max u_4 u_2) u_3) u_1, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.Functor.category.{max u_2 u_3, u_3, max (max (max u_2 u_4) u_1) u_3, u_4}\n              (@CategoryTheory.Sheaf.{u_1, u_3, u_2, u_4} C inst J D inst_1)\n              (@CategoryTheory.ObjectProperty.FullSubcategory.category.{max u_2 u_3, max (max (max u_2 u_4) u_1) u_3}\n                (@CategoryTheory.Functor.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Functor.category.{u_1, u_3, u_2, u_4} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) D inst_1)\n                (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_3, u_2, u_4} C inst D inst_1 J))\n              D inst_1)\n            (@CategoryTheory.sheafSections.{u_1, u_3, u_2, u_4} C inst J D inst_1) (@Opposite.op.{u_2 + 1} C T))\n          (@CategoryTheory.constantSheafAdj.{u_1, u_2, u_3, u_4} C inst J D inst_1 inst_2 T hT))\n        F))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SimplexCategory.sd": {
+      "name": "SimplexCategory.sd",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+      "path": "Mathlib/AlgebraicTopology/SimplicialSet/Subdivision.lean",
+      "line": 39,
+      "source_sha256": "da8225a57057726ece6872186bed384f40a33330eb89e06c2248280ac4ba8637",
+      "type": "SimplexCategory.sd.{u_1} : @CategoryTheory.Functor.{0, u_1, 0, u_1 + 1} SimplexCategory SimplexCategory.smallCategory\n  SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SSet.sd": {
+      "name": "SSet.sd",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+      "path": "Mathlib/AlgebraicTopology/SimplicialSet/Subdivision.lean",
+      "line": 45,
+      "source_sha256": "da8225a57057726ece6872186bed384f40a33330eb89e06c2248280ac4ba8637",
+      "type": "SSet.sd.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})\n  SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SSet.sdExAdjunction": {
+      "name": "SSet.sdExAdjunction",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+      "path": "Mathlib/AlgebraicTopology/SimplicialSet/Subdivision.lean",
+      "line": 54,
+      "source_sha256": "da8225a57057726ece6872186bed384f40a33330eb89e06c2248280ac4ba8637",
+      "type": "SSet.sdExAdjunction.{u_1} : @CategoryTheory.Adjunction.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})\n  SSet.{u_1}\n  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n    CategoryTheory.types.{u_1})\n  SSet.sd.{u_1} SSet.ex.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "TopCat.Presheaf.isIso_iff_stalkFunctor_map_iso": {
+      "name": "TopCat.Presheaf.isIso_iff_stalkFunctor_map_iso",
+      "module": "Mathlib.Topology.Sheaves.Stalks",
+      "path": "Mathlib/Topology/Sheaves/Stalks.lean",
+      "line": 683,
+      "source_sha256": "c766350ee04d06f5318c0e3fae2e3b90d470eae1c0e06561751aafa7f5215e78",
+      "type": "@TopCat.Presheaf.isIso_iff_stalkFunctor_map_iso.{u_1, u_2,\n    u_3} : ∀ {C : Type u_2} [inst : CategoryTheory.Category.{u_1, u_2} C]\n  [inst_1 : @CategoryTheory.Limits.HasColimits.{u_1, u_2} C inst] {X : TopCat.{u_1}} {FC : C → C → Type u_3}\n  {CC : C → Type u_1} [inst_2 : (X Y : C) → FunLike.{u_3 + 1, u_1 + 1, u_1 + 1} (FC X Y) (CC X) (CC Y)]\n  [instCC : @CategoryTheory.ConcreteCategory.{u_1, u_1, u_2, u_3} C inst FC CC inst_2]\n  [@CategoryTheory.Limits.PreservesFilteredColimits.{u_1, u_1, u_2, u_1 + 1} C inst (Type u_1)\n      CategoryTheory.types.{u_1} (@CategoryTheory.forget.{u_1, u_1, u_2, u_3} C inst FC CC inst_2 instCC)]\n  [@CategoryTheory.Limits.HasLimits.{u_1, u_2} C inst]\n  [@CategoryTheory.Limits.PreservesLimits.{u_1, u_1, u_2, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1}\n      (@CategoryTheory.forget.{u_1, u_1, u_2, u_3} C inst FC CC inst_2 instCC)]\n  [@CategoryTheory.Functor.ReflectsIsomorphisms.{u_1, u_2, u_1, u_1 + 1} C inst (Type u_1) CategoryTheory.types.{u_1}\n      (@CategoryTheory.forget.{u_1, u_1, u_2, u_3} C inst FC CC inst_2 instCC)]\n  {F G : @TopCat.Sheaf.{u_1, u_1, u_2} C inst X}\n  (f :\n    @Quiver.Hom.{u_1, max u_2 u_1} (@TopCat.Sheaf.{u_1, u_1, u_2} C inst X)\n      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, max u_2 u_1} (@TopCat.Sheaf.{u_1, u_1, u_2} C inst X)\n        (@CategoryTheory.Category.toCategoryStruct.{u_1, max u_2 u_1} (@TopCat.Sheaf.{u_1, u_1, u_2} C inst X)\n          (@TopCat.instCategorySheaf.{u_1, u_1, u_2} C inst X)))\n      F G),\n  Iff\n    (@CategoryTheory.IsIso.{u_1, max u_2 u_1} (@TopCat.Sheaf.{u_1, u_1, u_2} C inst X)\n      (@TopCat.instCategorySheaf.{u_1, u_1, u_2} C inst X) F G f)\n    (∀ (x : ↑X),\n      @CategoryTheory.IsIso.{u_1, u_2} C inst\n        (@CategoryTheory.Functor.obj.{u_1, u_1, max u_2 u_1, u_2} (@TopCat.Presheaf.{u_1, u_1, u_2} C inst X)\n          (@TopCat.instCategoryPresheaf.{u_1, u_1, u_2} C inst X) C inst\n          (@TopCat.Presheaf.stalkFunctor.{u_1, u_2} C inst inst_1 X x)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.obj.{u_1, max u_2 u_1}\n            (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n              (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n              C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str))\n            F))\n        (@CategoryTheory.Functor.obj.{u_1, u_1, max u_2 u_1, u_2} (@TopCat.Presheaf.{u_1, u_1, u_2} C inst X)\n          (@TopCat.instCategoryPresheaf.{u_1, u_1, u_2} C inst X) C inst\n          (@TopCat.Presheaf.stalkFunctor.{u_1, u_2} C inst inst_1 X x)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.obj.{u_1, max u_2 u_1}\n            (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n              (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n              C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str))\n            G))\n        (@CategoryTheory.Functor.map.{u_1, u_1, max u_2 u_1, u_2} (@TopCat.Presheaf.{u_1, u_1, u_2} C inst X)\n          (@TopCat.instCategoryPresheaf.{u_1, u_1, u_2} C inst X) C inst\n          (@TopCat.Presheaf.stalkFunctor.{u_1, u_2} C inst inst_1 X x)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.obj.{u_1, max u_2 u_1}\n            (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n              (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n              C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str))\n            F)\n          (@CategoryTheory.ObjectProperty.FullSubcategory.obj.{u_1, max u_2 u_1}\n            (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n              (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n              C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str))\n            G)\n          (@CategoryTheory.InducedCategory.Hom.hom.{u_1, max u_2 u_1, max u_2 u_1}\n            (@CategoryTheory.ObjectProperty.FullSubcategory.{u_1, max u_2 u_1}\n              (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n                (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n                (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                      (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n                C inst)\n              (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n                (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n                (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                      (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n                C inst)\n              (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n                C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str)))\n            (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n              (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n              (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n              C inst)\n            (@CategoryTheory.ObjectProperty.FullSubcategory.obj.{u_1, max u_2 u_1}\n              (@CategoryTheory.Functor.{u_1, u_1, u_1, u_2}\n                (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n                (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                      (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n                C inst)\n              (@CategoryTheory.Functor.category.{u_1, u_1, u_1, u_2}\n                (Opposite.{u_1 + 1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str))\n                (@CategoryTheory.Category.opposite.{u_1, u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                      (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str))))\n                C inst)\n              (@CategoryTheory.Presheaf.IsSheaf.{u_1, u_1, u_1, u_2} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                (@Preorder.smallCategory.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                  (@PartialOrder.toPreorder.{u_1} (@TopologicalSpace.Opens.{u_1} (↑X) X.str)\n                    (@TopologicalSpace.Opens.instPartialOrder.{u_1} (↑X) X.str)))\n                C inst (@Opens.grothendieckTopology.{u_1} (↑X) X.str)))\n            F G f)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.relativeFunctorSpace": {
+      "name": "SerrePositivity.InfinityCategories.relativeFunctorSpace",
+      "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace",
+      "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+      "line": 25,
+      "source_sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d",
+      "type": "@SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} : {A E B : SSet.{u_1}} →\n  @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B →\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})))\n        A B →\n      SSet.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Topology.upperSet": {
+      "name": "Topology.upperSet",
+      "module": "Mathlib.Topology.Order.UpperLowerSetTopology",
+      "path": "Mathlib/Topology/Order/UpperLowerSetTopology.lean",
+      "line": 64,
+      "source_sha256": "4fa96c114816794177058bd24846230c573cee6e0375aa249a728e00798587d8",
+      "type": "Topology.upperSet.{u_1} : (α : Type u_1) → [Preorder.{u_1} α] → TopologicalSpace.{u_1} α",
+      "axioms": []
+    },
+    "WellFounded.wellFounded_iff_has_min": {
+      "name": "WellFounded.wellFounded_iff_has_min",
+      "module": "Mathlib.Order.WellFounded",
+      "path": "Mathlib/Order/WellFounded.lean",
+      "line": 149,
+      "source_sha256": "2d640a650ee1e5fb6ca0ce845760e7ac822fde33bbe92ec3988bccd53cec589c",
+      "type": "@WellFounded.wellFounded_iff_has_min.{u_1} : ∀ {α : Type u_1} {r : α → α → Prop},\n  Iff (@WellFounded.{u_1 + 1} α r)\n    (∀ (s : Set.{u_1} α),\n      @Set.Nonempty.{u_1} α s →\n        ∃ m,\n          And (@Membership.mem.{u_1, u_1} α (Set.{u_1} α) (@Set.instMembership.{u_1} α) s m)\n            (∀ (x : α), @Membership.mem.{u_1, u_1} α (Set.{u_1} α) (@Set.instMembership.{u_1} α) s x → Not (r x m)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "wellFounded_iff_isEmpty_descending_chain": {
+      "name": "wellFounded_iff_isEmpty_descending_chain",
+      "module": "Mathlib.Order.WellFounded",
+      "path": "Mathlib/Order/WellFounded.lean",
+      "line": 51,
+      "source_sha256": "2d640a650ee1e5fb6ca0ce845760e7ac822fde33bbe92ec3988bccd53cec589c",
+      "type": "@wellFounded_iff_isEmpty_descending_chain.{u_1} : ∀ {α : Sort u_1} {r : α → α → Prop},\n  Iff (@WellFounded.{u_1} α r)\n    (IsEmpty.{max 1 u_1}\n      (@Subtype.{u_1} (Nat → α) fun f =>\n        ∀ (n : Nat),\n          r\n            (f\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) n\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (f n)))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "PreAbstractSimplicialComplex": {
+      "name": "PreAbstractSimplicialComplex",
+      "module": "Mathlib.AlgebraicTopology.SimplicialComplex.Basic",
+      "path": "Mathlib/AlgebraicTopology/SimplicialComplex/Basic.lean",
+      "line": 52,
+      "source_sha256": "2eed81042a5a9eb1d05da3bbc9855f4ce6660e2574ca3a12256b9fdc5fba7476",
+      "type": "PreAbstractSimplicialComplex.{u_1} : Type u_1 → Type u_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex": {
+      "name": "SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex",
+      "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace",
+      "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+      "line": 80,
+      "source_sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d",
+      "type": "@SerrePositivity.InfinityCategories.relativeFunctorSpace_kanComplex.{u_1} : ∀ {A E B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} E B p]\n  (a :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      A B),\n  (@SerrePositivity.InfinityCategories.relativeFunctorSpace.{u_1} A E B p a).KanComplex",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "kernel_commands": [
+    "#check @<declaration>",
+    "#print axioms <declaration>"
+  ]
+}
