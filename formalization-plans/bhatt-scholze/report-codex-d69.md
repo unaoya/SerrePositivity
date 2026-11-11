@@ -354,3 +354,8 @@
 
 - `CrystallineSmallBridgeQuasiIso`、`PDEnvelopeCrystallineCoefficientMaps`、`CrystallineWittFlat` の対象ビルドが `/private/tmp/d69-ticket-build-26.log` で成功した。小さい結晶の橋の実際の ℤ_p 線形余鎖射は擬同型となった。証明は通常商での既存の擬同型、両辺の導来 p 完備性、項ごとの p 正則性を使う。Witt 係数射の平坦性は、既存の p 進整数の単元と p の冪への分解と Witt 環の p 正則性から示した。
 - 追加3本を含む106本の一時監査は2,645宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyThree.lean` と `/private/tmp/d69-morning-audit-seventythree.log`。登録候補に上記3本を加える。既存宣言は変更していない。Witt の指定された比較射との係数変更の照合は引き続き残り、停止点2には未到達。
+
+- `PDSmallCoefficientComparison` の対象ビルドが `/private/tmp/d69-ticket-build-27.log` で成功した。実際の小さい完備分冪模型の係数変更を一般の分冪基底上の完備分冪枠に移し、基底脚・頂点変数・分冪・標準 δ 構造との両立を示した。係数作用は η⁰ に対応する実際の環射に沿う作用として固定した。登録候補にこの一本を加える。
+- 追加を含む107本の一時監査は2,690宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningSeventyFour.lean` と `/private/tmp/d69-morning-audit-seventyfour.log`。新規ソースの `sorry`・独自公理は0、既存宣言の変更はない。
+- 作業木では、`PDEnvelopeAffineBridge`（有限分冪枠への橋と係数変更の厳密な自然性）、`CrystallineSmallBridgeFrame`（既存の整係数の橋の有限枠での仕様）、`CrystallineWittSmallFrame`（Witt 結晶基底上の小さい橋）、`CrystallineWittSmallCoefficients`（整係数から Witt 係数への厳密な可換図式）、`WittFiniteBridgeCrystallineFactor`（既存の `finiteBridgeAt` の ψ に沿う係数変更を通る分解）が一時ファイルによる個別検査を通った。これらと、既存の `CompletedFlatRegularModule` を使う `CrystallineWittCompletedModules` を次の一件の整理券で対象ビルド中。対象ビルド前の新規ファイルはコミットしていない。
+- 係数変更の順序は、まず整係数から Witt 結晶基底への標準 prism 射で小さい橋を移し、その後、一般の基底 P から ψ に沿って Witt 結晶基底へ移す。一般の P に対して結晶基底の生成元 p が P のイデアルに入るとは限らないため、整係数の affine 枠から P の affine 枠へ直接 prism 射を作る手順は使わない。Witt Frobenius 全体と、係数を固定して頂点を p 乗へ送る射も区別している。
