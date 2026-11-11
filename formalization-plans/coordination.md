@@ -12,7 +12,7 @@
 | 調整役 | Claude Code | 暦・合図・取り込み、検収、BS の設計 | main | 計画・本書・`bhatt-scholze/design-status.md` | — |
 | Kerodon の確認 | Codex | 対応表の全項目の確認 | `SerrePositivity-kerodon-review-a`（枝 `research/kerodon-review-a2`）・`-b`・`-c` | `research/kerodon-coverage/codex-review.md` | 全 10 章のやり直しと抜き取りは main（11-10）。-a2・-b は閉じた（11-10）。-c が KL-W1 の段 3 の後に partial・none の一括見直し（§8.2 の 4） |
 | HA の確認 | Codex | HA の全項目の対応表（本全体、HA の形式化の検討の材料） | `SerrePositivity-ha-review`・`research/ha-review` | `research/ha-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
-| HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | `SerrePositivity-htt-review`・`research/htt-review` | `research/htt-coverage/codex-review.md` | 開始（11-07 夜）、段 0 |
+| HTT の確認 | Codex | HTT の全項目の対応表（本全体、Kerodon の行を参照） | （閉じた） | `research/htt-coverage/codex-review.md` | **完了・閉じた**（11-11）：全 1,730 項目、`review/summary.md`。worktree と枝は削除 |
 | K の地図 | Codex | K の文献ごとの全項目の対応表（本論文 §3・§4、KST、Land–Tamme、Tamme、BGT） | （閉じた） | `research/k-coverage/codex-maps.md` | 完了・閉じた（11-11、f15ad120b）。全 17 文献 688 項目、要約 research/k-coverage/maps/summary.md。K の再開時に新しく開く |
 | KL-W1 | Codex | ∞ の配置を Kerodon に合わせる | `SerrePositivity-kerodon-layout`・`refactor/kerodon-layout` | `stage-ii/kerodon-layout-w1.md` | 段 1.5 は main。段 1.6（割り当ての見直し）→ 段 2・3（§8、11-10） |
 | ③ ∞ 供給 | Codex | G8 の四角形 → G14・G9・G10 | `SerrePositivity-inf-supply`・`math/inf-supply` | `stage-ii/inf-supply-w1.md` | KL-W1 の後 |

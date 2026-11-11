@@ -2,6 +2,8 @@
 
 作成：2026-11-07（段階 II の調整役）。Kerodon の対応表（`research/kerodon-coverage/`）と同じ形で、Lurie『Higher Topos Theory』（以下 HTT）の項目を Lean の宣言に対応させる。実作業は Codex（`codex-review.md`）、検収と地図（HTML）は調整役。
 
+**完了（2026-11-11）**：全 1,730 項目（own 192・mathlib 50・partial 291・none 1,197・unsure 0）。要約と goal 付き 51 項目の不足表は `review/summary.md`。レーンは閉じ、worktree と枝を削除した。
+
 ## 範囲
 
 **本全体**。全章の Section・Subsection の見出しと全項目を一行ずつ作り、全項目を照合する。
