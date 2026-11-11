@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.1、単位 A2-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
@@ -9,7 +10,6 @@ public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLab
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.Core.FatJoinTensorDesc
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OppositeIso
-public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
 public import Mathlib.Algebra.MvPolynomial.Basic
@@ -43,6 +43,8 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet MonoidalCategory
 open scoped Simplicial
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
@@ -217,14 +219,14 @@ abbrev animatedPiZero := (animatedPiZeroAdjunction k).1
 def animatedPiZeroUnit := (animatedPiZeroAdjunction k).2.unitHom
 
 /-- 離散多項式代数の E∞ 実現を sifted 延長する。 -/
-def animatedCAlgRealization : AnimatedAlgebra k ⟶ EInfinity.CAlg_R k :=
+def animatedCAlgRealization : AnimatedAlgebra k ⟶ E.CAlg k :=
   siftedLan k (by sorry) -- G12：CAlg(k) は小さい sifted 余極限をもつ
-    (polyAlgebraNerve k ≫ EInfinity.Perfectoidization.algebraEmbedding k)
+    (polyAlgebraNerve k ≫ E.discrete k)
 
 /-- A4 が離散入力へ制限するときの始域の同定。 -/
 def discreteRealizationIso :
-    FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization k)
-      (EInfinity.Perfectoidization.algebraEmbedding k) := by
+    FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization (E := E) k)
+      (E.discrete k) := by
   sorry -- 多項式分解の実現。CAlg の sifted 余極限を底の複体で計算すると S[0] に戻り、
         -- 増大写像は S とその準同型に自然
 

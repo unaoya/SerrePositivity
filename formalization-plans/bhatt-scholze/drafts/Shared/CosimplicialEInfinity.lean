@@ -2,14 +2,12 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.EInfinity.Perfectoidization.Comparison
+public import SerrePositivity.EInfinity.Interface.Theory
+public import Mathlib.Algebra.Homology.Embedding.ExtendHomology
 public import SerrePositivity.InfinityCategories.Derived.Homology
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
-public import SerrePositivity.EInfinity.Operad.CommutativeAlgebraFunctor
-public import SerrePositivity.EInfinity.Operad.DiscreteCommutative
-public import SerrePositivity.EInfinity.BarrattEccles.CAlgAlgebraSource
 -- 本ファイルは drafts/Shared/CosimplicialCupProduct.lean と drafts/Sheaves/{CechConerveLimit,CAlgValued}.lean を使う。
 -- 11-07（a1-design §10.5）：末尾の 3 節（厳密な自然変換の辺、余単体的 cdga の Tot、Tot と係数制限）は drafts/DerivedGeneral/ScalarRestriction.lean も使う。
 
@@ -43,11 +41,13 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+
 namespace SerrePositivity.Cosimplicial
 
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves
 open SerrePositivity.InfinityCategories.F2.Presentable
-open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.Perfectoidization
+open SerrePositivity.EInfinity
 attribute [local instance] HasDerivedCategory.standard
 
 variable (A : Type u) [CommRing A]
@@ -58,46 +58,44 @@ variable (A : Type u) [CommRing A]
 使われ方：Tot_{E∞} の入力。 -/
 abbrev CosimplicialAlgebra := CosimplicialObject (Under (CommRingCat.of A))
 
-/-- 概要：Tot_{E∞}(X^•)：非正規化（または正規化）余鎖複体に Barratt–Eccles の E∞ 構造を入れた CAlg_A の頂点。
-方針：McClure–Smith の余単体的可換環の E∞ 構造（Berger–Fresse の Barratt–Eccles 作用素の余鎖への作用の余単体的版）。
-規約：cofibrant 置換は CAlg_A（cofibrant 代数の局所化の nerve）の構成に含める。
-使われ方：A2 の Δ_0。
-基盤待ち：正規化余鎖への作用と E∞ 錐の両立。 -/
-def totEInfinityFunctor : nerve (CosimplicialAlgebra A) ⟶ CAlg_R A := by
-  sorry -- 正規化余鎖の Barratt–Eccles 構造を余単体的代数の射について関手化する
+/-- 概要：BS 著者版 Construction 7.6 の余単体的可換環の Tot。
+方針：EInfinityTheory が供給する実現関手を用いる。
+規約：指定錐と下の交代余面複体との比較も同じ界面から読む。
+使われ方：A2 の Δ_0。 -/
+def totEInfinityFunctor : nerve (CosimplicialAlgebra A) ⟶ E.CAlg A := E.ofCosimplicial A
 
 abbrev totEInfinity (X : CosimplicialAlgebra A) :=
-  (totEInfinityFunctor A).app _ (nerveVertex X)
+  (totEInfinityFunctor (E := E) A).app _ (nerveVertex X)
 
 /-- 小さい Δ の nerve だけを持ち上げ、各項を離散 E∞ 代数に送る。 -/
 def totDiagram (X : CosimplicialAlgebra A) :
-    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ CAlg_R A := by
-  let D : (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ nerve (Under (CommRingCat.of A)) :=
-    { app := fun _ => ↾fun t => (X.mapComposableArrows _).obj t.down
-      naturality := by sorry } -- X による射列の像は単体の制限と可換
-  exact D ≫ algebraEmbedding A
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ E.CAlg A := cosimplicialNerve X ≫ E.discrete A
 
 /-- 概要：Tot_{E∞} の下の複体は交代余面複体（`alternatingCofaceMapComplex`）。
 方針：構成から。
 規約：D(A) の同値。
 使われ方：A0 の D(A) 値の Tot との一致。 -/
 def totEInfinity_forget (X : CosimplicialAlgebra A) (i : ℕ) :
-    derivedInfinityHomology A (i : ℤ) ((cAlgForgetDerived A).app _ (totEInfinity A X)) ≅
+    derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≅
       ((AlgebraicTopology.alternatingCofaceMapComplex _).obj (X ⋙ discreteAlgebraModule A)).homology i := by
-  sorry -- 正規化と非正規化の比較。右辺は A 加群としてのコホモロジー
+  let K := (AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj
+    (X ⋙ discreteAlgebraModule A)
+  exact (cohomologyOnHo A (i : ℤ)).mapIso ((E.ofCosimplicial_forget A).app (nerveVertex X)) ≪≫
+    (E.strictToD_homologyIso A (i : ℤ)).app ((cosimplicialCochains A).obj X) ≪≫
+    K.extendHomologyIso ComplexShape.embeddingUpNat (j := i) (j' := (i : ℤ)) rfl
 
 /-- A 線形な比較を、cup に使うコホモロジーの加法群に移す。 -/
 def totEInfinity_forget_cohomology (X : CosimplicialAlgebra A) (i : ℕ) :
-    derivedInfinityHomology A (i : ℤ) ((cAlgForgetDerived A).app _ (totEInfinity A X)) ≃+
+    derivedInfinityHomology A (i : ℤ) ((E.forget A).app _ (totEInfinity (E := E) A X)) ≃+
       cohomology (X ⋙ Under.forget _) i := by
-  refine (totEInfinity_forget A X i).toLinearEquiv.toAddEquiv.trans
+  refine (totEInfinity_forget (E := E) A X i).toLinearEquiv.toAddEquiv.trans
     (AddEquiv.trans ?_ (cohomologyEquivHomology (X ⋙ Under.forget _) i).symm)
   sorry -- 加群から加法群への忘却は交代余面複体とホモロジーを保つ
 
 /-- 交代余面複体は次数零から始まる。 -/
 theorem totEInfinity_forget_negative (X : CosimplicialAlgebra A) (i : ℤ) (hi : i < 0) :
-    Limits.IsZero (derivedInfinityHomology A i ((cAlgForgetDerived A).app _ (totEInfinity A X))) := by
-  sorry -- 正規化余鎖を整数次数へ零延長した模型には負次数のコホモロジーがない
+    Limits.IsZero (derivedInfinityHomology A i ((E.forget A).app _ (totEInfinity (E := E) A X))) := by
+  sorry -- ofCosimplicial_forget と strictToD_homologyIso で零延長複体に移す
 
 /-- 概要：Tot_{E∞} の H^* の環構造は cup 積（Shared/CosimplicialCupProduct）に一致。
 方針：E∞ 構造の二項演算 μ_0 が Alexander–Whitney の cup 積（Barratt–Eccles の次数 0 の成分）。
@@ -106,25 +104,24 @@ theorem totEInfinity_forget_negative (X : CosimplicialAlgebra A) (i : ℤ) (hi :
 theorem totEInfinity_cohomologyRing (X : CosimplicialAlgebra A) : True := by trivial
 
 /-- 概要：Tot_{E∞}(X^•) は CAlg_A における余単体的図式 [n] ↦ X^n（離散 E∞ 代数）の Δ 上の極限。
-方針：まず CAlg_A のホモトピー整合的な錐（正規化模型から）を構成し、その underlying cone を各項への射影の錐と同一視してから、U が極限錐を
-保ち反映すること（Sheaves/CAlgValued）と D(A) 側の G10（Δ 上の極限 ＝ 全複体）を使う（W9-I-24：「各項への射影」だけでは CAlg の錐を指定していない）。
+方針：同じ Tot の頂点に対し、界面が供給する指定極限錐を用いる。
 規約：錐は CAlg_A の JoinCone。
 使われ方：CAlg 値の脚注 10。 -/
 def totEInfinityCone (X : CosimplicialAlgebra A) :
-    {c : JoinCone (totDiagram A X) // c.vertex = totEInfinity A X} := by
-  sorry -- 正規化 E∞ 模型から離散な各項への射影を整合的な錐にする（W9-I-24）
+    {c : JoinCone (totDiagram (E := E) A X) // c.vertex = totEInfinity (E := E) A X} := by
+  let c := E.ofCosimplicial_cone A X
+  exact ⟨c.val, c.property.1⟩
 
 theorem totEInfinity_isLimitCone (X : CosimplicialAlgebra A) :
-    IsLimitCone (totEInfinityCone A X).val := by
-  sorry -- 忘却後は G10 の Δ 極限錐。U の極限反映で戻す
+    IsLimitCone (totEInfinityCone (E := E) A X).val := (E.ofCosimplicial_cone A X).property.2
 
 /-- 概要：余単体的 A 代数の射 X → Y は Tot_{E∞} の E∞ 代数の射を誘導し、関手的。
 方針：構成の自然性。
 規約：—
 使われ方：Δ_0 の多項式代数の射についての関手性、Frobenius（半線形は別）。 -/
 def totEInfinity_map {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
-    SSet.Edge (totEInfinity A X) (totEInfinity A Y) :=
-  (nerve.edgeMk f).map (totEInfinityFunctor A)
+    SSet.Edge (totEInfinity (E := E) A X) (totEInfinity (E := E) A Y) :=
+  (nerve.edgeMk f).map (totEInfinityFunctor (E := E) A)
 
 /-- 概要：交代余面複体の擬同型を誘導する余単体的 A 代数の射は、Tot_{E∞} の可逆な辺を与える（11-07、a1-design §10.5）。
 方針：U : CAlg_A → D(A) は保存的（Sheaves/CAlgValued）、`totEInfinity_forget` は射について自然。
@@ -133,19 +130,20 @@ def totEInfinity_map {X Y : CosimplicialAlgebra A} (f : X ⟶ Y) :
 theorem totEInfinity_map_isInvertible {X Y : CosimplicialAlgebra A} (f : X ⟶ Y)
     (hf : QuasiIso ((AlgebraicTopology.alternatingCofaceMapComplex _).map
       (Functor.whiskerRight f (discreteAlgebraModule A)))) :
-    IsInvertibleEdge (totEInfinity_map A f).toTruncated := by
-  sorry -- U の保存性と totEInfinity_forget の自然性。全次数のホモロジーの同型
+    IsInvertibleEdge (totEInfinity_map (E := E) A f).toTruncated := by
+  sorry -- E.forget_conservative。E.strictToD_homologyIso と E.ofCosimplicial_forget の自然性で
+        -- 全次数のホモロジーの射が同型。零延長で QuasiIso を保つ
 
 /-- 概要：脚注 10 の CAlg 版：弱終対象 U の Čech 脈体 U_• と環の前層 O について、CAlg_A 値の RΓ(O) ≃ Tot_{E∞}(O(U_•))（E∞ 代数として）。
 方針：S3 を E = CAlg_A で（`isLimitCone_iff_restrict_cech`）と `totEInfinity_isLimitCone`。
 規約：O は層（Cor 3.12 の CAlg 版、`isSheaf_iff_forget`）。
 使われ方：A2 の Δ_0 の CAlg 値 ＝ Čech–Alexander 模型の Tot_{E∞}。 -/
 def derivedGlobalSectionsCAlg_eq_totEInfinity {𝒟 : Type u} [SmallCategory 𝒟]
-    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (CAlg_R A)) (hA : IsPresentable (CAlg_R A))
-    (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : IsSheaf J (ringPresheafToCAlg A O))
+    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (E.CAlg A)) (hA : IsPresentable (E.CAlg A))
+    (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : IsSheaf J (ringPresheafToCAlg (E := E) A O))
     (U : 𝒟) (hU : IsWeaklyTerminal U) (d : CechNerveData U) :
-    VertexIso (derivedGlobalSectionsCAlg J A hJ hA (ringPresheafToCAlg A O))
-      (totEInfinity A (d.obj.rightOp ⋙ O)) := by
+    VertexIso (derivedGlobalSectionsCAlg (E := E) J A hJ hA (ringPresheafToCAlg (E := E) A O))
+      (totEInfinity (E := E) A (d.obj.rightOp ⋙ O)) := by
   sorry -- S2 の層の RΓ と S3 で d に制限した錐を totEInfinity_isLimitCone と比較
 
 /-! ## 厳密な自然変換から関手 ∞ 圏の辺へ（a1-design §10.5 の (ii)、11-07 追加）
@@ -221,37 +219,31 @@ open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
 使われ方：A1-5 の `pdDeRhamCDGA`。 -/
 abbrev CosimplicialCDGA := CosimplicialObject (CommMon (Complex A))
 
-/-- 概要：cdga の CAlg_A への埋め込み（`formsCAlg` と同じ経路：可換 operad の代数 → Barratt–Eccles への制限 → `algebraCAlgSource`）。
+/-- 概要：厳密な cdga の CAlg_A への実現。
 方針：nerve の後合成。
 規約：—
 使われ方：`totCDGA_evalZero`、A1 の `formsCAlg_eq`。 -/
-def cdgaCAlg : nerve (CommMon (Complex A)) ⟶ CAlg_R A :=
-  nerveMap (commutativeAlgebraFunctor A ⋙ Operad.restrictAlgebra (augmentation A)) ≫ algebraCAlgSource A
+def cdgaCAlg : nerve (CommMon (Complex A)) ⟶ E.CAlg A := E.ofCdga A
 
 /-- 概要：可換 A 代数を次数 0 の cdga とみる関手。
-方針：`commAlgCatEquivUnder` の逆、`moduleCommMonoidFunctor`、次数 0 の single 複体（A1-5 の `singleRootTarget` と同じ経路）。
+方針：界面の厳密入力と同じ次数 0 の single 複体。
 規約：微分は零。
 使われ方：`totCDGA_discrete`、A1-5 の `pdDeRhamProjection`。 -/
-def discreteCDGA : Under (CommRingCat.of A) ⥤ CommMon (Complex A) :=
-  (commAlgCatEquivUnder (CommRingCat.of A)).inverse ⋙ moduleCommMonoidFunctor A ⋙
-    (CochainComplex.singleFunctor (ModuleCat A) 0).mapCommMon
+def discreteCDGA : Under (CommRingCat.of A) ⥤ CommMon (Complex A) := SerrePositivity.EInfinity.discreteCDGA A
 
-/-- 概要：余単体的 cdga の Tot_{E∞}：双複体 K^{n,j} の総複体に Barratt–Eccles の E∞ 構造（余単体の方向は McClure–Smith、形式の方向は
-cdga の積）を入れた CAlg_A の ∞ 関手。
+/-- 概要：余単体的 cdga の Tot_{E∞}：余単体的 cdga を CAlg_A の Δ 上の極限に送る関手。
 方針：`totEInfinityFunctor` と同じ構成を、各項が cdga の場合へ（Berger–Fresse の余単体的 E∞ 代数の Tot）。CAlg_A の Δ 上の極限としても特徴づく。
 規約：下の複体は総複体（交代余面 × 形式の微分、標準の符号）。
 使われ方：A1-5 の段 6。基盤待ち（`totEInfinityFunctor` と同じ）。 -/
-def totCDGAFunctor : nerve (CosimplicialCDGA A) ⟶ CAlg_R A := by
-  sorry -- 総複体の正規化余鎖に Barratt–Eccles 作用素を入れ、cdga の射について関手化する（totEInfinityFunctor と同じ基盤待ち）
+def totCDGAFunctor : nerve (CosimplicialCDGA A) ⟶ E.CAlg A := E.ofCosimplicialCdga A
 
 /-- 概要：次数 0 の cdga からなる余単体的対象では、cdga の Tot は余単体的可換環の Tot に一致（関手として）。
 方針：形式の方向が次数 0 だけなので総複体は交代余面複体、E∞ 構造も同じ構成。
 規約：関手 ∞ 圏の同型。
 使われ方：A1-5 の段 6（`pdDeRhamFunctorIso`）。 -/
 def totCDGA_discrete :
-    FunctorIso (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA A)) ≫ totCDGAFunctor A)
-      (totEInfinityFunctor A) := by
-  sorry -- 構成の比較（同じ正規化余鎖と同じ作用）。厳密な等式で取れれば eqToIso
+    FunctorIso (nerveMap ((Functor.whiskeringRight SimplexCategory _ _).obj (discreteCDGA A)) ≫ totCDGAFunctor (E := E) A)
+      (totEInfinityFunctor (E := E) A) := E.ofCosimplicialCdga_discrete A
 
 /-- 概要：Tot から第 0 項への射影：cdga の Tot から [0] での値への自然な辺（CAlg_A の Δ 上の極限錐の [0] の脚）。
 鎖のレベルでは総複体の列 n = 0 への射影（交代余面の微分は列の番号を上げるので鎖写像、AW 積の前面は [0] で積を保つ）。
@@ -259,8 +251,7 @@ def totCDGA_discrete :
 規約：時刻 0 で Tot、時刻 1 で ev_[0] ≫ cdgaCAlg。
 使われ方：A1-5 の段 6（Tot K → K^0 = Ω^•）。 -/
 def totCDGA_evalZero :
-    SSet.Homotopy (totCDGAFunctor A) (nerveMap ((evaluation SimplexCategory (CommMon (Complex A))).obj ⦋0⦌) ≫ cdgaCAlg A) := by
-  sorry -- 極限錐の [0] の脚。正規化模型では列 0 への射影で厳密に自然
+    SSet.Homotopy (totCDGAFunctor (E := E) A) (nerveMap ((evaluation SimplexCategory (CommMon (Complex A))).obj ⦋0⦌) ≫ cdgaCAlg (E := E) A) := E.ofCosimplicialCdga_evalZero A
 
 /-- 概要：ホモトピー的に定数な余単体的 cdga（全ての構造射が下の複体の擬同型）では、第 0 項への射影は可逆。
 方針：Δ は弱可縮なので、全ての射が同値の図式の極限錐の脚は同値。鎖のレベルでは列についてのスペクトル系列（E_1 は H(X^0) の定数余単体的
@@ -269,7 +260,7 @@ def totCDGA_evalZero :
 使われ方：A1-5 の段 6（pd Poincaré `pdPoincare_column` の一般の k 版から）。 -/
 theorem totCDGA_evalZero_isInvertible (X : CosimplicialCDGA A)
     (hX : ∀ {m n : SimplexCategory} (θ : m ⟶ n), QuasiIso (X.map θ).hom) :
-    IsInvertibleEdge (simplicialHomotopyVertexEdge (totCDGA_evalZero A) (nerveVertex X)).toTruncated := by
+    IsInvertibleEdge (simplicialHomotopyVertexEdge (totCDGA_evalZero (E := E) A) (nerveVertex X)).toTruncated := by
   sorry -- 定数図式との比較（全ての余面が H で同じ同型）。E_1 の列 n ≥ 1 は完全、列 0 だけが残る
 
 end CosimplicialCDGA
@@ -285,12 +276,11 @@ abbrev restrictCosimplicial {A B : Type u} [CommRing A] [CommRing B] (g : A →+
   (Functor.whiskeringRight SimplexCategory _ _).obj (Under.map (CommRingCat.ofHom g))
 
 /-- 概要：Tot_{E∞} は係数制限と可換（関手として）：res_g ∘ Tot_B ≅ Tot_A ∘ res_g。
-方針：Barratt–Eccles の作用は係数環について自然、下の複体は同じ交代余面複体。
+方針：界面の全関手比較を用いる。
 規約：関手 ∞ 圏の同型。DerivedGeneral/ScalarRestriction の `cAlgRestrictScalars`。
 使われ方：A1-5 の `baseChangeTotHomotopy`（随伴の転置）。 -/
 def totEInfinity_restrict {A B : Type u} [CommRing A] [CommRing B] (g : A →+* B) :
-    FunctorIso (nerveMap (restrictCosimplicial g) ≫ totEInfinityFunctor A)
-      (totEInfinityFunctor B ≫ SerrePositivity.InfinityCategories.cAlgRestrictScalars g) := by
-  sorry -- 構成の係数についての自然性。U で見て両辺とも同じ交代余面複体（cAlgRestrictScalars_forget）
+    FunctorIso (nerveMap (restrictCosimplicial g) ≫ totEInfinityFunctor (E := E) A)
+      (totEInfinityFunctor (E := E) B ≫ SerrePositivity.InfinityCategories.cAlgRestrictScalars (E := E) g) := E.ofCosimplicial_restrict g
 
 end SerrePositivity.Cosimplicial

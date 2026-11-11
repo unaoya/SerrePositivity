@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.1・§3.1、単位 A8-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Almost.Lemma103
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
@@ -36,6 +37,8 @@ universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial
 attribute [local instance] HasDerivedCategory.standard
+
+variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Almost
 
@@ -80,7 +83,7 @@ def IsAlmostConnective (M : DVertex R) : Prop :=
 
 def completeModuleRestriction {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) :
     CompleteDerived p B ⟶ CompleteDerived p A :=
-  let D := (fullSubcomplexOnVertices _ (isPCompleteVertex p B)).ι ≫ derivedInfinityRestrictScalars f
+  let D := (fullSubcomplexOnVertices _ (isPCompleteVertex p B)).ι ≫ derivedInfinityRestrictScalars (E := E) f
   fullSubcomplexLift _ D (by sorry) -- 係数を制限しても底の複体の p 完備性は同じ
 
 /-- 概要：内部補題（W9-III-10）：B := (R/J)_perfd（perfectoid、R/K、K := J_perfd）について Lemma 10.3 の B ⊗̂^L_R B ≃ B から、忘却
@@ -92,7 +95,7 @@ U : D_{p-comp}(B) → D_{p-comp}(R) は完全忠実で、極限と余極限を�
 theorem restrictScalars_perfectoidQuotient_fullyFaithful
     (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J)) :
     let B := QuotientPerfectoidization R J p hR
-    let U := completeModuleRestriction p (quotientPerfdMap p R hR J)
+    let U := completeModuleRestriction (E := E) p (quotientPerfdMap p R hR J)
     IsFullyFaithful U ∧ ∀ (I : SSet.{u+1}) (F : I ⟶ CompleteDerived p B),
       (∀ c : JoinCone F, IsLimitCone c → IsLimitCone (mapJoinCone U c)) ∧
       (∀ c : JoinCocone F, IsColimitCone c → IsColimitCone (mapJoinCocone U c)) := by

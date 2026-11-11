@@ -1,0 +1,99 @@
+{
+  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
+  "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
+  "items": {
+    "3.1.1.5": {
+      "ha_page": 319,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.trivialKanFibration_of_leftFibration_of_isQCatEquivalence"
+      ]
+    },
+    "3.2.1.9": {
+      "ha_page": 356,
+      "declarations": [
+        "CategoryTheory.CommMon.trivial",
+        "CategoryTheory.CommMon.uniqueHomFromTrivial"
+      ]
+    },
+    "3.2.2.9": {
+      "ha_page": 362,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone",
+        "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits"
+      ]
+    }
+  },
+  "declarations": {
+    "SerrePositivity.InfinityCategories.trivialKanFibration_of_leftFibration_of_isQCatEquivalence": {
+      "name": "SerrePositivity.InfinityCategories.trivialKanFibration_of_leftFibration_of_isQCatEquivalence",
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationTrivialComparison",
+      "path": "SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationTrivialComparison.lean",
+      "line": 42,
+      "source_sha256": "90fadc0a54de25b7a77987b9b6c983a6c016694e332dead631c22f71783b65b6",
+      "type": "@SerrePositivity.InfinityCategories.trivialKanFibration_of_leftFibration_of_isQCatEquivalence.{u_1} : ∀\n  {E B : SSet.{u_1}} [inst : E.Quasicategory] [inst_1 : B.Quasicategory]\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      E B)\n  [@SerrePositivity.InfinityCategories.LeftFibration.{u_1} E B p],\n  @SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1} E B inst inst_1 p →\n    @SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} E B p",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.CommMon.trivial": {
+      "name": "CategoryTheory.CommMon.trivial",
+      "module": "Mathlib.CategoryTheory.Monoidal.CommMon_",
+      "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+      "line": 44,
+      "source_sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec",
+      "type": "CategoryTheory.CommMon.trivial.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      [inst_2 : @CategoryTheory.BraidedCategory.{u_1, u_2} C inst inst_1] →\n        @CategoryTheory.CommMon.{u_1, u_2} C inst inst_1 inst_2",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.CommMon.uniqueHomFromTrivial": {
+      "name": "CategoryTheory.CommMon.uniqueHomFromTrivial",
+      "module": "Mathlib.CategoryTheory.Monoidal.CommMon_",
+      "path": "Mathlib/CategoryTheory/Monoidal/CommMon_.lean",
+      "line": 134,
+      "source_sha256": "377e652c1a886abd6a7ae4760b5d47054eac7a98e5e11bcd039fd2efd371e1ec",
+      "type": "@CategoryTheory.CommMon.uniqueHomFromTrivial.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      [inst_2 : @CategoryTheory.BraidedCategory.{u_1, u_2} C inst inst_1] →\n        (A : @CategoryTheory.CommMon.{u_1, u_2} C inst inst_1 inst_2) →\n          Unique.{u_1 + 1}\n            (@Quiver.Hom.{u_1, max u_2 u_1} (@CategoryTheory.CommMon.{u_1, u_2} C inst inst_1 inst_2)\n              (@CategoryTheory.CategoryStruct.toQuiver.{u_1, max u_2 u_1}\n                (@CategoryTheory.CommMon.{u_1, u_2} C inst inst_1 inst_2)\n                (@CategoryTheory.Category.toCategoryStruct.{u_1, max u_2 u_1}\n                  (@CategoryTheory.CommMon.{u_1, u_2} C inst inst_1 inst_2)\n                  (@CategoryTheory.CommMon.instCategory.{u_1, u_2} C inst inst_1 inst_2)))\n              (@CategoryTheory.CommMon.trivial.{u_1, u_2} C inst inst_1 inst_2) A)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone": {
+      "name": "SerrePositivity.InfinityCategories.exists_pointwiseLimitCone",
+      "module": "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
+      "path": "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean",
+      "line": 25,
+      "source_sha256": "17c3d894656f052d6a4215fc1ab339d1beb48736b2fc790c6061385c0ba30f09",
+      "type": "@SerrePositivity.InfinityCategories.exists_pointwiseLimitCone.{u_1} : ∀ {J K X : SSet.{u_1}} [X.Quasicategory]\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      J (K ⟹ X)),\n  @SerrePositivity.InfinityCategories.HasPointwiseLimits.{u_1} J K X p →\n    ∃ c, @SerrePositivity.InfinityCategories.IsPointwiseLimitCone.{u_1} J K X p c",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits": {
+      "name": "SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits",
+      "module": "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
+      "path": "SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean",
+      "line": 84,
+      "source_sha256": "17c3d894656f052d6a4215fc1ab339d1beb48736b2fc790c6061385c0ba30f09",
+      "type": "@SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits.{u_1} : ∀ {J K X : SSet.{u_1}}\n  [X.Quasicategory]\n  {p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      J (K ⟹ X)},\n  @SerrePositivity.InfinityCategories.HasPointwiseLimits.{u_1} J K X p →\n    ∀ (c : @SerrePositivity.InfinityCategories.JoinCone.{u_1} J (K ⟹ X) p),\n      Iff (@SerrePositivity.InfinityCategories.IsLimitCone.{u_1} J (K ⟹ X) p c)\n        (@SerrePositivity.InfinityCategories.IsPointwiseLimitCone.{u_1} J K X p c)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "kernel_commands": [
+    "#check @<declaration>",
+    "#print axioms <declaration>"
+  ]
+}

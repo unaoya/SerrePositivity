@@ -35,6 +35,16 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 8. 調整：`../coordination.md`（暦・待ち条件）、`../infinity-codex-g1.md`・`g2.md`（∞ の段 G）。
 9. 勉強ノート：`exposition/ja/bs/`（章＝原典の節）。
 
+### 0.2′ 11-10 の決定（ユーザー）：CAlg_R の界面（D71〜D73）
+
+- **D71〜D73**（`calg-interface-design.md`）：BS は E∞ 代数の ∞ 圏を構造 `EInfinityTheory` を通してだけ使う。今の Barratt–Eccles の模型は実例の一つ。HA の方向で作る場合は別の実例を作り、Hinich Thm 4.1.1 などで比べる。実装は BS-W14（⑤a）。
+- **整理の候補（11-10）**：BS-W15 の `Delta/DividedPower/RegularSequencePDUniversalTor` が `KST/DerivedBlowup/ScalarTensorView`（Mathlib だけを import する係数拡大とテンソルの表示比較の補題）を import している。主定理の閉包に KST のディレクトリが入るのを避けるため、このファイルを `CommutativeAlgebra/` へ移す（alias を残す）。KL-W1 の後の小さな整理で行う。
+- **D74**（BS-W15 §3 の 2）：Ex 2.21・3.4 の普遍的な向き付き prism の Frobenius の平坦性は、原典どおり d 完全平坦の形で本体に置く（drafts の A1 の通常の平坦性の型は、A1 の界面への書き換えのときに見直す）。
+- **D75（11-11、ユーザー決定）：段階 II の BS は E∞ 代数を今の模型（Barratt–Eccles、`barrattEcclesTheory`）で供給する。HA の方向（∞-オペラッドで CAlg(D(R))、Hinich／Pavlov–Scholbach で整流）は BS の経路から外し、「HA の基盤」の課題として別に持つ。** 根拠は `research/einfinity-route/README.md` §6（A 約 83,000〜212,000 行、B 約 12,700〜33,000 行、較正後の上限 約 60,000。A の整流は ∞-monad・Barr–Beck がまだ 0 件の領域に乗る。B の成果は界面を通して A にほぼそのまま使える）。
+  - BS-W16（⑤a）と ④（G12・P⁰・M15）は B で進める。G12 の経路（組合せ的モデル圏の局所化の表現可能性、HTT A.3.7.6 相当）は ④ の開始時に設計する。
+  - 「HA の基盤」レーン（∞-オペラッド・対称モノイダル ∞ 圏、A の行 1〜2、約 12,000〜32,000 行）は、HA の確認が第 2〜4 章を終えた時点で範囲を決める。整流はその後の課題。
+- 11-10 の Prisms の地図の更新：目標に必要な 105 項目のうち、本体（証明済み・特別な場合）59、本体に部品 8、drafts 29、E3 の界面 6、設計だけ 2、なし 1（`research/bs-coverage/`）。
+
 ### 0.3 現在地（11-07 の更新。下の 11-05 の記述は経緯として残す）
 
 - **段階 II のレーン（11-07）**：⑤a BS 実装（BS-DOC1 完了 → BS-W11 進行中：A-2・B-2 は main に入った）、⑤b BS-D68（段 1 進行中）、⑥ スキーム論（BS17 の経路：2a′・2b・2d の一部は main に入った）。設計は調整役。
