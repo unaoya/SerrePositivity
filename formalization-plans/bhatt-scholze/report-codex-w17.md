@@ -159,3 +159,20 @@ main `7a3a0f965` を取り込み（merge `f47a76b45`）、H3 の先行分を続�
 **検証。** 対象3モジュールのビルド成功。公開12宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は標準三公理のみ。鍵は対象ビルドと宣言監査の間だけ使用し、待ちは一枚ずつとした。
 
 停止点3はまだ未到達。指定された⑤bの4モジュールが main にないことを再確認した。`AffineCechFrameLift`・`BigCechVertexFrame`・`AffineEnvelope*` を要する H3 の残りと H4 は、取り込み後に続ける。
+
+## 10. 段3・H3/H4 完了（停止点3）
+
+⑤b の途中の登録 `724b03fa2` を含む main を取り込んだ（merge `a4fedc98c`）。⑤b の枝の直接 merge はしていない。今回の追加は新規6モジュール、公開21宣言。§8・§9 と合わせて段3は新規24モジュール、公開105宣言。既存の数学・drafts・入口・監査登録は変更していない。
+
+- `Prismatic/PrismaticFrameCoproduct`：既存の `PrismOverVertexFrame.lift/hom_ext` から、任意の変数添字の枠の標準余積、各次数の弱始性、反対圏の Čech データを構成した。
+- `Prismatic/AffineCechSiteNerve`：`affineCechVertexFrame` を直接再利用し、drafts の `cechAlexanderAffine_isCoproduct`、有限 affine 模型の弱始性、小さい site の Čech データと弱終性を本体に置いた。`EssentiallySmall` は drafts と同じ明示的仮定。
+- `Prismatic/AffineCechChosenComparison`：既存の `BigCechVertexFrame.model` と先行分の `bigCechSiteAlexander` を site 上で比較した。HasEnvelopes から選んだ包絡の複体との実際の同型を作り、⑤b の `toBig_quasiIso` をその同型で移して有限 affine 枠からの擬同型 `affineToChosenCech_quasiIso` を得た。持ち上げ・混合頂点のホモトピー・大小の比較の証明は再実装していない。
+- `Prism/Bounded/CompletedTensorRingMaps`：完備化 H⁰ の既存の環としての一意延長から、完備テンソル積の環射の両脚による判定を得た。両脚が δ 射なら全体も δ 射であることを、既存の δ 射の延長と接続した。標的の p と左生成元の像の導来完備性を明示する一般の補題。
+- `Prismatic/AffineCechPrismBaseChange`：既存の `exists_affineEnvelopeCoefficientBaseChange_equiv`・`affineEnvelopeCoefficientMap_spec` を再利用した。項ごとの実完備テンソル積に標準の δ 構造と左生成元による prism を与え、`cechAlexanderAffine_baseChange` として drafts の古典的な存在の型（両脚・δ 同型・イデアルの像・基底・各頂点の座標）を本体に置いた。生成元の厳密な保存は要求せず、一般の prism 射を許す。
+- `Prismatic/AffineCechCoefficientComplex`：`affineEnvelopeCoefficientMap_natural` の全単体射に関する自然性を、基底の下の余単体的代数の自然変換と実際の交代余面複体の射にまとめた。項ごとの底変換の右脚はこの指定された係数変更であり、比較・持ち上げをもう一つ作っていない。
+
+項ごとの完備導来底変換を single 対象で計算する部分は、main の `affineEnvelopeTermCompletedBaseChangeIso`・`affineEnvelopeTermCompletedBaseChangeToTargetIso` を再利用する。新設した係数変更の余鎖写像は通常の複体の射であり、複体全体の Tot・導来極限・Δ の底変換の同型を証明したという意味ではない。その部分は指示書どおり G10 の後に残す。
+
+**検証。** 段3の全24対象モジュールのビルドが成功。公開105宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。新規ファイルに KST の直接 import・sorry・新しい公理はない。鍵は `--wait 3600`、整理券は一枚ずつ、対象ビルド・Lean の監査の間だけ使用した。検証ログは `/tmp/serre-w17/h34/build-all.log`・`audit.log`。
+
+**停止点3に到達。** 登録対象は §8 の15本、§9 の3本、今回の6本（計24本）。入口・監査の登録と取り込みは調整役へ渡す。続いて指示書 §5 の H5 は段0の洗い出しだけを報告し、実装の前で止める。
