@@ -729,3 +729,25 @@ SerrePositivity.BhattScholze.Prismatic.PDLocalizationDpow
 SerrePositivity.BhattScholze.Prismatic.PDLocalizationLaws
 SerrePositivity.BhattScholze.Prismatic.PDLocalizationStructure
 ```
+
+
+### P3 続行 — 構造環の層性と小さいサイトの二つの関手
+
+- 新規7本（BS 5本・共通2本）が鍵付きの対象ビルドを通過した（`/private/tmp/d69-p3-build-22.log`・`/private/tmp/d69-p3-build-23.log`）。`--wait 3600`、一回30分未満、鍵はビルドの間のみ。
+- 共通の `AwayGluing` は任意の主開局所化模型に対する一意な貼り合わせ。添字の重複も許し、標準の主開局所化への比較を通して Mathlib の環の貼り合わせ定理へ帰着した。`AwayEquivalence` は可換な同型の正方形による局所化条件の移送。
+- `CrystallineStructureGluing` は、共通主開の実際の結晶厚化への射で両立性を検査して、大きいサイトの型値の構造前層が層であることを示す。`CrystallineSmallStructureSheaf.crystallineStructure_isSheaf` は小さいサイトでの基底環の下の環値の層条件。生成位相を同値による誘導位相で抑え、型値の層性を移し、忘却関手の極限反映で環構造を戻す。
+- `CrystallineBaseStructureRestriction` は分冪基底射に沿う小さいサイトの関手と構造環の係数制限との自然同型。剰余代数上の二つの係数構造の両立条件を型に残す。`CrystallineZariskiIso` と `CrystallineSmallCoverMaps` は単位自然同型で主開被覆を移し、剰余代数の引き戻し・分冪基底の制限による小さいサイトの関手が指定被覆族を保つことを明示した。
+- 一時監査は49モジュール・559宣言、標準三公理のみ（`/private/tmp/AuditD69P3FortyNine.lean`、`/private/tmp/d69-p3-audit-fortynine.log`）。追加7本も新規ファイルのみ、sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- ここでの層性は段0で述べた通常の環値の層性。∞ の篩に対する降下や RΓ の定義への組み立ては草稿に残す。残件の照合と塔の構造環への標準射を続ける。この記録は停止点3ではない。
+
+登録候補への追加（7本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseStructureRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallCoverMaps
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallStructureSheaf
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructureGluing
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiIso
+SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
+SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
+```
