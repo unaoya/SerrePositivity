@@ -1195,3 +1195,62 @@ AdicCompletion I H_Cech^q(M/JM;d) ≃ₗ[R] {R/J 上の各 I 進閉厚化の Če
 **停止点 2e ではない。** 閉厚化の商係数表示については、元の任意の次数付き加群写像、実際の I 進遷移、互換族、標準完備化写像、形式関数まで自然な可換式を供給した。次の主要な作業群は、共通アフィン細分、flat なテンソル底変換、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較。今回の線形な写像の自然性を、これら四群の具体的な比較の完成とは数えない。一般の固有射の有限性・Stein 分解・導来関手の Hⁱ との比較は作っていない。
 
 全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、待ちは同じ worktree から一つだけ、鍵は一回ごとに返した。ルート全体のビルドは行わず、取り込みは調整役に任せる。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
+
+## Čech の実際のテンソル底変換と局所化への接続（11-12）
+
+`1bc0f3ee1` に新規 5 モジュールと直接 importer を保存（452 行）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,315 jobs 成功**。別の共有鍵で行った公式監査は **6,927 宣言・標準三公理のみ**。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry` の下）：
+
+- `ProjectiveCechFlatBaseChange`
+- `ProjectiveCechTensorBaseChange`
+- `ProjectiveCechTensorNaturality`
+- `ProjectiveNatGradedTensorBaseChange`
+- `ProjectiveRightTensorLocalization`
+
+有限な被覆の係数図式 D と任意の環準同型 φ:R→B に対し、実際の `ModuleCat.extendScalars φ` と全タプル Čech 複体の比較を作った。各項は有限なタプル集合上の積なので、`TensorProduct.piRight` でテンソル積と有限積を交換できる。純テンソル上で交代和の微分と可換と示し、複体の同型へまとめた。これは平坦性を仮定せず成立し、係数図式の任意の自然変換に自然である。複体の比較は関手の自然同型としても供給した。
+
+φ が flat な場合だけ、Mathlib の `ModuleCat.preservesFiniteLimits_extendScalars_of_flat` と左随伴による有限余極限の保存を使い、
+
+B ⊗_R H_Cech^q(D) ≅ H_Cech^q(D ⋙ extendScalars φ)
+
+を構成した。このコホモロジーの同型も係数図式の射に自然である。元の R 上の Čech コホモロジーが有限なら、右辺は B 上有限と分かった。原典の Hⁱ の flat 底変換の番号は [Stacks 30.5.2(2), 02KH](https://stacks.math.columbia.edu/tag/02KH) で確認した。
+
+これを、次数付き多項式加群の実際の標準開図式へ適用した。`projectiveNatGradedTensorChartDiagram` は、各標準開の係数を実際に B とテンソル積した図式である。元の R が Noether、加群が R[X] 上有限という従来の仮定と flat な φ から、この図式の Čech コホモロジーが B 上有限と示した。**B の Noether 性は仮定しない。** 比較同型は、元の次数を保つ多項式加群の射に自然である。
+
+標準開の分数表示への接続では、R→P、P 加群 M、R 加群 N と任意の乗法的集合 S⊂P に対して、
+
+S⁻¹(M ⊗_R N) ≃ₗ[P] (S⁻¹M) ⊗_R N
+
+を Mathlib の局所化の普遍性から作った。純テンソルの分数は (m⊗n)/s ↦ (m/s)⊗n で計算できる。P 線形な M の写像と可換で、S が f の冪の場合は標準開を狭める制限にも自然である。この周囲の局所化の比較にも平坦性は要らない。
+
+宣言と主張（ローカルな型クラス設定を除く 20 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveCechFlatBaseChangeIso` | flat なテンソル底変換は、有限被覆の Čech コホモロジーと交換する。 |
+| `projectiveCechFlatBaseChangeIso_naturality` | flat な Čech 底変換の比較は、係数図式の任意の射に自然。 |
+| `projectiveCechFlatBaseChange_finite` | flat 底変換後の Čech コホモロジーは、元のコホモロジーの有限生成性を保つ。 |
+| `projectiveCechTensorCochainsIso` | 実際のテンソル底変換は、加群の射の加法を保つ。 -/ |
+| `projectiveCechTensorCochainsIso_tmul` | 各項のテンソル比較は、純テンソルをタプルごとに評価する。 |
+| `projectiveCechTensorCochainsIso_differential` | テンソル積と有限積の比較は、Čech の交代和の余境界と可換。 |
+| `projectiveCechTensorComplexIso` | 有限被覆の全タプル Čech 複体は、実際のテンソル底変換と交換する。 |
+| `projectiveCechTensorCochainsIso_naturality` | Čech 各項のテンソル比較は、任意の係数図式の射に自然。 |
+| `projectiveCechTensorComplexIso_naturality` | Čech 複体のテンソル比較は、係数図式の自然変換と可換。 |
+| `projectiveCechTensorComplexNatIso` | Čech 複体とテンソル底変換の比較を、係数図式の圏上の自然同型にする。 |
+| `projectiveNatGradedTensorChartDiagram` | 各標準開の係数を実際に B とテンソル積した図式。 |
+| `projectiveNatGradedTensorCechIso` | 標準開 Čech コホモロジーのテンソル積と、テンソル係数の Čech 計算との同型。 |
+| `projectiveNatGradedTensorCechIso_naturality` | テンソル係数の標準開 Čech 比較は、次数を保つ加群写像に自然。 |
+| `projectiveNatGradedTensorCechHomology_finite` | flat なテンソル係数の標準開 Čech コホモロジーは B 上有限生成。 |
+| `projectiveLocalizedModule_mk_add` | 同じ分母を持つ局所化の分数は、分子について加法的である。 |
+| `projectiveRightTensorLocalizationEquiv` | 加群の実際の局所化と右テンソル積を交換する、P 線形な同型。 |
+| `projectiveRightTensorLocalizationEquiv_mk_one` | 局所化と右テンソル積の比較は、分母一の純テンソルを保つ。 |
+| `projectiveRightTensorLocalizationEquiv_mk` | 局所化と右テンソル積の比較は、純テンソルの分母を保つ。 |
+| `projectiveRightTensorLocalizationEquiv_naturality` | 局所化と右テンソル積の比較は、P 線形な加群写像に自然。 |
+| `projectiveRightTensorLocalizationEquiv_restriction` | 局所化と右テンソル積の比較は、標準開を狭める制限にも自然。 |
+
+**今回の範囲と次の接続。** 上の Čech 比較の右辺は D の各係数をテンソル積した図式である。標準開への特殊化でも、まだ「B 上へ基底変更した次数付き加群の、次数零の局所化による標準開図式」との同型は含まない。その接続には、基底変更した多項式加群の B[X] 作用と次数成分、斉次局所化の指定次数部分とテンソル積の照合、そこでの B 線形性と制限射の可換性をまとめる必要がある。周囲の局所化の比較だけで、§9 の底変換の整合性の完成とは呼ばない。元の R[X] を B 代数と仮定する形にはしない。
+
+従って **停止点 2e ではない**。次はこの次数零の接続を進め、既存の閉厚化・I 進系の自然性と合わせる。共通アフィン細分、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較も残っている。導来関手の層コホモロジーとの比較、非平坦なコホモロジーとテンソル積の交換、一般の固有射の有限性・Stein 分解は作っていない。コホモロジーの主張の docstring は原典の Hⁱ の番号と **Čech 版**であることを示し、分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しないと明記した。
+
+全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、同じ worktree の待ちは一つだけ、鍵は一回ごとに返した。ルート全体のビルドは行っていない。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
