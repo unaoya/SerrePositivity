@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v uD vD
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra Hammock
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X)

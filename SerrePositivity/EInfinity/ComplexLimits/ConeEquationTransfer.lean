@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexSimplexData_equation_image_of_pullback {m n : ℕ}

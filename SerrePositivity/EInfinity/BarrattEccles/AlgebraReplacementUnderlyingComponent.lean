@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.FrameHom SimplicialLocalization
+open SerrePositivity.EInfinity.FrameHom
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 

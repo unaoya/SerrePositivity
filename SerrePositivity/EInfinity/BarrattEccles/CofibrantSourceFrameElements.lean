@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
-open SimplicialLocalization
+
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 abbrev sourceFrameElementCategory :=

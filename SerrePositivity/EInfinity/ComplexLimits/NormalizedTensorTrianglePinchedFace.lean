@@ -9,7 +9,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorTriangleSimplex_eq_pinched {n : ℕ}

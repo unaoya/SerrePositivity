@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 attribute [local instance] uliftCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.DifferentialGraded
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 

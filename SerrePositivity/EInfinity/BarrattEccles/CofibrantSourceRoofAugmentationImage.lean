@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet HomotopicalAlgebra
-open Hammock SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open Hammock SerrePositivity.Reedy
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 

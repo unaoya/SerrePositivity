@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)

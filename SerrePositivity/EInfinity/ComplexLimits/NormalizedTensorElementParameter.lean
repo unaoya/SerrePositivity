@@ -19,7 +19,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 attribute [local instance] uliftCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 

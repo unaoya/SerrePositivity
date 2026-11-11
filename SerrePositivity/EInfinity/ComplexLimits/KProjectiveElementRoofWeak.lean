@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 

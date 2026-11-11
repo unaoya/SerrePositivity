@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma complexToClosed_postcomposition (X : Complex A) {P Q : Complex A} (f : P ⟶ Q) :

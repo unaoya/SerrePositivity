@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorRoofEvaluation_family (X Y : Complex A) (n : SimplexCategory)

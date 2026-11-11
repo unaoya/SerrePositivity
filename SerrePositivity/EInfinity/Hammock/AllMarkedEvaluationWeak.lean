@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked
 open CategoryTheory SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.SimplicialLocalization
+
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 

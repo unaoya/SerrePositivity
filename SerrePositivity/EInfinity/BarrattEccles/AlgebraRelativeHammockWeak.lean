@@ -16,7 +16,7 @@ public import SerrePositivity.EInfinity.Hammock.RelativeEquivalenceWeak
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
+open CategoryTheory SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 lemma cofibrantToAlgebraDK_colimitMap_weak
     (X Y : (cofibrantAlgebraRelativeCategory A).category) :

@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorTriangleData_pullback_map {n m : ℕ}

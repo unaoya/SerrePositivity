@@ -27,7 +27,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 
 open CategoryTheory Limits HomotopicalAlgebra Opposite
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.DiagramModel
+open SerrePositivity.DiagramModel
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]

@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra Opposite Hammock MonoidalCategory
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C}

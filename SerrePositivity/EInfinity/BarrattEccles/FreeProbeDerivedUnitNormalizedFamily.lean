@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve ComplexLimits
+open ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 

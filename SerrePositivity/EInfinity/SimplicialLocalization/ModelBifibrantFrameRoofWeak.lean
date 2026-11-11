@@ -19,7 +19,7 @@ universe u v
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory HomotopicalAlgebra Opposite Hammock
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex
+
 open SerrePositivity.EInfinity.FrameHom
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)

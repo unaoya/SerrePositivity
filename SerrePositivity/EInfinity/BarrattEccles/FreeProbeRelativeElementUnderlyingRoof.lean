@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory SSet MonoidalClosed SimplicialLocalization
+open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.FrameHom
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)

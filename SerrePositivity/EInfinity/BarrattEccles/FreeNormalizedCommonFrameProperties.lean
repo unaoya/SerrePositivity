@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
-open SerrePositivity.HomotopyFunctionComplex
+
 variable (A : Type u) [CommRing A]
 
 /-- 概要：同じ共通 frame から元の正規化 frame への全比較射。

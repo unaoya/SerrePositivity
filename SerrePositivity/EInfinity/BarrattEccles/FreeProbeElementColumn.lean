@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SerrePositivity.DifferentialGraded
-open ComplexLimits SerrePositivity.HomotopyFunctionComplex
+open ComplexLimits
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 abbrev freeProbeElementIndex : Type (u + 1) :=
   normalizedTensorElementIndex A

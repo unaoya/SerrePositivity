@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u w
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories DifferentialGraded DGNerve
+open SerrePositivity.InfinityCategories DifferentialGraded
 open scoped Simplicial
 variable (A : Type u) [CommRing A] [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 

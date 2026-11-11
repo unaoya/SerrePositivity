@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
   constantDiagramFrameHomIso constantDiagramSourceHom

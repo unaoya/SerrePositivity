@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
-open SerrePositivity.HomotopyFunctionComplex
+
 variable (A : Type u) [CommRing A]
 
 lemma normalizedOriginalHomComparison_augmentation (X Y : Complex A) (f : X ⟶ Y)

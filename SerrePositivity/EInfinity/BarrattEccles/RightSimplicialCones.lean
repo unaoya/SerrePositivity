@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits HomotopicalAlgebra Opposite
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.DiagramModel
+open SerrePositivity.DiagramModel
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]

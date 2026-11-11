@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorHomPinchedSimplex_postcomp (X : Complex A) {Y Z : Complex A}

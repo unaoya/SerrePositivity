@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (Y : (operad A).Algebra) {X' X : (operad A).Algebra}
 
 def sourceFramePrecomposeIndexMap (f : X' ⟶ X) :

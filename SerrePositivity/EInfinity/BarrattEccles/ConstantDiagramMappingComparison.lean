@@ -22,7 +22,7 @@ universe u v w
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
   {D : Type w} [Category.{v} D] (L : SSet.{u} ⥤ D)
