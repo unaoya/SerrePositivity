@@ -364,3 +364,8 @@
 - `crystallineWittSmallBridgeAt_coefficients` は整係数の実際の小さい橋と Witt 結晶基底上の橋の厳密な可換図式。`wittFiniteBridgeAt_eq_crystalline_comp` は既存の指定された有限 Witt 比較を、ψ による affine 係数変更と Witt 結晶基底の小さい橋の合成に同定する。両方とも有限 affine 包の一意性による等式で、元の比較射の定義は変更していない。
 - 同じ束の `CrystallineWittCompletedModules` は p の像の型合わせで失敗したため、係数射による p の像の等式を直接書き換えて個別検査を通した。次の対象ビルドで再確認する。ほかに、`PDTermCompletelyFlat`、`CrystallineWittFlatCochain`、共通の `PointwiseBaseChange`・`PointwiseRegular` は個別検査済み。`AffineEnvelopeDerivedBaseChange` では、既存の完備自由 δ 環の完全平坦性と有界 prism 上の離散性から、実際の完備テンソルの single 対象が各 affine 項の完備導来底変換を計算する型を準備した。これら6本を `/private/tmp/d69-ticket-build-29.log` の一件の整理券で対象ビルドしている。
 - P2 の残りは、これらの項の比較を余単体構造と合わせ、Witt の指定された二比較について、係数変更後の交代余面複体の擬同型を閉じること。各項への完備係数拡大と、複体全体への導来完備化は別に指定し、両者を同定する証明を省略しない。停止点2には引き続き未到達。
+
+- `CrystallineWittCompletedModules` の修正と、`PDTermCompletelyFlat`、`CrystallineWittFlatCochain`、共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseBaseChange` は `/private/tmp/d69-ticket-build-29.log` で対象ビルドを通った。追加を含む116本の一時監査は2,887宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightyThree.lean` と `/private/tmp/d69-morning-audit-eightythree.log`。登録候補にこの4本を加える。
+- `pdTerm_completelyFlat` は基底の p 正則性を仮定し、未完備模型の自由な基底と既存の主完備化の完全忠実平坦性から (p) 完全平坦性を示す。`crystallineWittCompletedBridge_isIso` は、実際の整係数の小さい橋を通常の Witt 係数拡大と複体全体の導来完備化に移した射の可逆性。この段では各項の完備化との同定は使っていない。
+- 共通の `PointwiseBaseChange` は、single・導来完備化・実際の H⁰ を合成した加法的な加群関手と、その通常の係数拡大との合成を固定する。元の鎖ホモトピーは既存の `Functor.mapHomotopy` で移る。
+- 同じ対象ビルドで `AffineEnvelopeDerivedBaseChange` と共通の `PointwiseRegular` に残った、存在から同型を選ぶ書き方と import の問題は修正している。`PointwiseRegular` は通常の import での個別検査を通った。さらに `PointwiseExact`（両端が正則な短完全列を H⁰ 完備化が保つ）は一時ファイルによる個別検査を通った。これらは対象ビルドが通るまでコミットしない。
