@@ -374,3 +374,52 @@ P→B[X] の代数構造は、既存の `reesPolynomialCoefficientAlgebra` と�
 その後、比較によって B の作用を直和へ移す。作用を移しただけでは、直和の Rees 次数に対する次数付き作用を証明したことにはならない。斉次 Rees 単項式 a·tⁱ の作用を第 n 成分の包含と合成し、第 n+i 成分への写像と一致させる。元の加群の上の入力は `reesFiltration_monomial_smul_single` と `reesMap` の単項式の公式、コホモロジーへの入力は各成分の包含の比較と、今回の `projectiveCechHomologyMap_smul_id` である。
 
 係数変更の比較の、次数を保つ加群写像に対する自然性も合わせて接続する。これは各チャートで斉次分数を代表に取り、両辺が同じ分子の写像を持つ分数になることから示せる。こうして得た実際の次数付き B 作用と有限生成性を、像・核の Rees 加群の構成へ渡す。現時点では、この特殊化と作用の次数移動、実際の核の評価・像の安定化・完備化の同型は未完了である。
+
+## Rees の係数環比較・移送した作用の有限性と次数間の写像（11-11）
+
+`de30e97f1`（新規 8 モジュールと直接 importer、683 行）に保存。対象と直接 importer のビルドは成功し、別の共有鍵による公式 AG 監査は **5,663 宣言・標準三公理のみ**。このコミットは、19:15 の依頼に対する途中取り込み点 **`d63382a9b`＋報告文書 `a0c59bc4e` より後**の継続成果であり、今回選定した取り込み範囲には含めない。取り込み範囲と追加登録 78 モジュールは `scheme-w1-2e-interim-report.md` に固定してある。
+
+有限性を確認済みの B[X] 上の Čech コホモロジーを、各 IⁿM の Čech コホモロジーの直和と R 線形に比較し、その比較で B 作用と有限性を移す。ここで B=Rees(I)、P=R[X]。また、実際の係数 a∈Iⁱ が Rees 次数 j を i+j に移す写像を、元の加群・標準開の図式・Čech コホモロジーに用意した。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveNatGradingInt_restrictScalars` | 負の次数への零延長は係数制限と交換する。 |
+| `projectiveNatPolynomialCoefficientChangeChartIso` | 自然数次数の標準開の図式について、R[X] と B[X] の係数変更を R への係数制限と比較する。 |
+| `projectiveNatPolynomialCoefficientChangeCechHomologyIso` | この比較を Čech コホモロジーの R 線形な同型へ移す。 |
+| `reesAdicProjectiveCoefficientChartIso` | 上の標準開の比較を実際の Rees 加群へ特殊化する。 |
+| `reesAdicProjectiveCoefficientCechHomologyIso` | 実際の Rees 加群の P と B[X] での Čech コホモロジーを R 上で比較する。 |
+| `reesAdicProjectiveCechHomologyDirectSumIso` | B[X] 上の Rees の Čech コホモロジーを R に係数制限したものと、各 IⁿM の同じ Čech コホモロジーの直和を同定する。 |
+| `projectiveScalarRestrictionTransportModule` | 係数制限した加群との R 線形同値で B 作用を移す。 |
+| `projectiveScalarRestrictionTransport_scalarTower` | 移した作用は既存の R 作用と両立する。 |
+| `projectiveScalarRestrictionTransportLinearEquiv` | 移した作用を用いて元の比較を B 線形同値にする。 |
+| `projectiveScalarRestrictionTransportLinearEquiv_apply` | 線形同値の元への値は変わらない。 |
+| `projectiveScalarRestrictionTransport_finite` | B 上の有限性も同じ比較で移る。 |
+| `projectiveScalarRestrictionTransportModuleOfIso` | ModuleCat の同型から終域へ B 作用を移す。 |
+| `projectiveScalarRestrictionTransportOfIso_scalarTower` | 同型による移送も R 作用と両立する。 |
+| `projectiveScalarRestrictionTransportLinearEquivOfIso` | 同型による移送の B 線形同値。 |
+| `projectiveScalarRestrictionTransportOfIso_finite` | 同型による移送での B 上の有限性。 |
+| `reesAdicProjectiveCechObject` | B[X] 上の Rees 加群の標準開 Čech コホモロジーを B 加群の対象としてまとめる。 |
+| `reesAdicCechDirectSumTransportedModule` | Rees の Čech 比較で直和に B 作用を移す。 |
+| `reesAdicCechDirectSumTransportedScalarTower` | この直和の B 作用は、既存の R 作用と両立する。 |
+| `reesAdicCechDirectSumTransportedLinearEquiv` | 移した作用について、直和と Rees の Čech コホモロジーは B 線形に同値。 |
+| `reesAdicProjectiveCechObject_finite` | Noether な R と有限な P 加群 M に対し、Rees の Čech コホモロジーは B 上有限。 |
+| `reesAdicCechDirectSumTransportedFinite` | 同じ仮定で、移した B 作用について直和が B 上有限。 |
+| `reesAdicProjectiveDegreeShift_mem` | a∈Iⁱ の作用は IʲM を Iⁱ⁺ʲM に送る。 |
+| `reesAdicProjectiveDegreeShift` | この作用を P 線形写像にする。 |
+| `reesAdicProjectiveDegreeShift_val` | もとの加群での値は a によるスカラー倍。 |
+| `reesAdicProjectiveDegreeShift_preservesPiece` | この写像は Proj 次数を保つ。 |
+| `reesMap_monomial` | Rees 代数の係数環の写像は、任意の次数の斉次単項式を保つ。 |
+| `reesExtendedModule_monomial_smul_single` | 基底 Rees 環の a·tⁱ が拡大 Rees 加群の第 j 単項式を第 i+j 単項式へ送る公式。 |
+| `projectiveNatGradingInt_map_mem` | 自然数次数を保つ写像は、零で延ばした整数次数も保つ。 |
+| `projectiveNatGradedModuleChartMap` | 自然数の Proj 次数を保つ P 線形写像を、標準開の図式間の写像にする。 |
+| `projectiveNatGradedModuleCechHomologyMap` | 同じ写像を Čech コホモロジーの写像にする。 |
+| `reesAdicProjectiveDegreeShiftChartMap` | a∈Iⁱ による IʲM→Iⁱ⁺ʲM の写像を標準開の図式に渡す。 |
+| `reesAdicProjectiveDegreeShiftCechHomologyMap` | 同じ写像を Čech コホモロジーに渡す。 |
+
+### できた比較と、まだ必要な照合
+
+上の有限性は「比較によって移した B 作用について」の有限性である。この作用が直和の Rees 次数を保つこと、すなわち a·tⁱ が第 j 成分から第 i+j 成分への上記の Čech 写像を与えることは、まだ別の証明義務である。直和の各成分の包含との比較、係数環変更の比較の加群写像への自然性、および今回の単項式の公式を合成して示す。これが通るまでは、次数付き Rees 加群の有限性が完成したとは呼ばない。
+
+その後、像のフィルトレーションへの実際の B 線形全射を作り、既存の条件付き `cechFormalFunctions_filtration_bound_of_finiteReesImage` に渡す。核の直和を次数付き B 部分加群とし、有限斉次生成元の次数の上界から遷移の零化を得て、長完全列へ接続する。像の安定化と一様な核の評価の後、互換な剰余類の持ち上げから完備化の同型を構成する。
+
+残りの主要な群は、(1) 実際の Rees 次数作用との照合、(2) 実際の像・核の評価と像の安定化、(3) 完備化の同型、(4) §9 の共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の自然性。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。宇宙についても、既存の `Module.Finite.small` と `Shrink.linearEquiv` による入口の方針を保つ。
