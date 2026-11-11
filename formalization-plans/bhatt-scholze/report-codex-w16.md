@@ -902,3 +902,25 @@ lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTensorProjecti
 ### 16.3 取り込み時の登録候補
 
 今回の十本は 16.1 の表の一覧で、すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下。前回 `4237883e9` の九本（§15.1）も現在の main では未登録なので、次の取り込みでは **十九本**が候補となる。入口・共有監査への登録は調整役が行う。新しい［一般∞］移動候補は零。既報の五本はそのまま。
+
+
+## 17. 実際の二色係数比較の等変な鎖ホモトピー同値（11-11 夜）
+
+§16 の中間保存 `1364ddf10` に続け、指定増大との可換性を閉じた。今回の新規六本は **453 行**。以下も承認待ちの停止ではなく、検証済みの中間保存である。
+
+| モジュール | 内容 |
+| --- | --- |
+| `OperadMorphismInsertion` | オペラッド射の成分と arity の移送、一段の反復合成の自然性。 |
+| `OperadMorphismComposition` | 任意のオペラッド射が `composeFirstInputs` を保つ。全内側 arity と未代入の尾を許し、零入力も含む。 |
+| `CommutativeComposition` | 可換オペラッドの反復合成を、指定された単位族の縮約として計算する。 |
+| `NullaryPrefixAugmentation` | 零入力への指定代入射 `nullaryPrefixDelete` が実際の増大を保つ。単位からの係数族の挿入と両因子の射の比較も含む。 |
+| `TwoColorCoefficientAugmentation` | 両色への射影が増大を保ち、実際の Hopf 比較 `twoColorCoefficientComparison` と `twoColorTensorAugmentation` の合成が `complexAugmentation` に一致することを証明した。 |
+| `TwoColorCoefficientEquivalence` | `twoColorCoefficientChainMap_augmentation` が二つの射影解像度の指定増大を照合する。これを供給した `twoColorCoefficientHomotopyEquiv` は、任意の可換環上で実際の係数鎖写像を順射に持つ等変な鎖ホモトピー同値。擬同型性も得る。 |
+
+**条件付きの比較補題への入力は、ここで実際の射について供給済みになった。** `twoColorCoefficientHomotopyEquiv` 自体に、射影解像度・増大の可換性・比較射・K 平坦性・群の位数の可逆性を外部入力として残していない。順射を任意の lift に取り替えてもいない。したがって、§7 の停止条件 3 に挙げられていた「二色の係数複体の射影解像度・増大・比較射の照合」の組み立ては、実際の鎖複体について完了した。
+
+対象ビルド `lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorCoefficientEquivalence` が成功し、新規六本の警告は零。ログは `/tmp/bsw16/graded/two-color-equivalence-01.log`。既報 `ZeroArity` の提案二件だけが残る。六本・**26 宣言**の再帰監査は標準三公理のみ（`/tmp/bsw16/graded/audit-two-color-equivalence.log`）。sorry・admit・新規公理・デバッグ宣言は零。対象ビルドと監査の鍵は一回ずつ取り、命令終了ごとに返却した。
+
+次は、この指定された等変ホモトピー同値を整数コチェイン次数に戻し、テンソルと余不変を取る関手へ通す。編集中の `NonpositiveExtension.lean` は、今回の六本の検証・監査・保存には含めない。自由代数の指定比較との一致、実際のセル対への移送、全関手版の同型、native な余積錐はまだ残る。sifted・Tot・段 4 へは進んでいない。
+
+現在までの実測は **四十六本・3,476 行**。今回の六本もすべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、登録候補は上の表の一覧。§15 の九本と §16 の十本も main 未取り込みなので、次の取り込み時の候補は計 **二十五本・261 宣言**となる。入口と共有監査への登録は調整役が行う。既存の公開宣言・界面の型・drafts は変更していない。新規の［一般∞］移動候補は零。実際のセル対の移送は未着手で、1,200 行の上限は継続して確認する。
