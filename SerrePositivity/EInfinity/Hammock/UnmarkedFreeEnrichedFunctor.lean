@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
 namespace EnrichedFoldData
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [EnrichedCategory SSet.{u} D] (F : EnrichedFoldData W D)

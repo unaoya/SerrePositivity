@@ -19,7 +19,7 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {x' y' : E}
 

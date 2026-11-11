@@ -19,7 +19,7 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 open scoped Simplicial
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 

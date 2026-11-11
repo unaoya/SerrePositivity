@@ -27,12 +27,12 @@ variable {Q : Type u} [Quiver.{v} Q] {T : WideSubquiver (Quiver.Symmetrify Q)}
 lemma LeafDeletion.collapseRelative_eq_comp :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
-    D.collapseRelative = D.retractionRelative.comp D.inclusionRelative := rfl
+    (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative D) = D.retractionRelative.comp D.inclusionRelative := rfl
 
 lemma LeafDeletion.collapse_colimitMap_factor :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (S.erase D.leaf)
-    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S), Relative.colimitMap D.collapseRelative x y =
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S), Relative.colimitMap (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative D) x y =
       Relative.colimitMap D.retractionRelative x y ≫
         Relative.colimitMap D.inclusionRelative
           (D.retractionRelative.functor.obj x) (D.retractionRelative.functor.obj y) := by
@@ -56,8 +56,8 @@ lemma LeafDeletion.contractible_of_remaining
   apply contractible_of_weak_factor (Relative.colimitMap D.retractionRelative x y)
     (Relative.colimitMap D.inclusionRelative
       (D.retractionRelative.functor.obj x) (D.retractionRelative.functor.obj y))
-  · rw [← D.collapse_colimitMap_factor]
-    exact D.collapse_colimitMap_isWeakHomotopyEquivalence x y
+  · rw [← (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_colimitMap_factor D)]
+    exact (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapse_colimitMap_isWeakHomotopyEquivalence D) x y
   · exact hrem _ _
 
 end SerrePositivity.EInfinity.Hammock.QuiverTree

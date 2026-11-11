@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve DoldKanComparison
+open DGNerve
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 

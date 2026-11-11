@@ -15,7 +15,7 @@ public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardDataCo
 noncomputable section
 universe u v wO
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 variable {I : Type v} [Category I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type wO}
   (p : (i : I) → O → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : O), (D.map θ).functor.obj (p i X) = p j X)

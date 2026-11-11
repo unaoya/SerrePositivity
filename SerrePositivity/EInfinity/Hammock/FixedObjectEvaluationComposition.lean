@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u uI vI uO
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 variable {I : Type uI} [Category.{vI} I] {D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   {O : Type uO} (T : LocalizationObjects D O)
 

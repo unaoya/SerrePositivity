@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DoldKanComparison
+open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 def normalizedTensorPinchedIso (X Y : Complex A) :

@@ -20,7 +20,7 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
 lemma standardDoldKanPinchedComparison (x y : D) :

@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects
-open CategoryTheory CategoryTheory.Limits SimplicialLocalization
+open CategoryTheory CategoryTheory.Limits
 
 variable {I : Type uI} [Category.{vI} I] {D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   {O : Type uO} (T : LocalizationObjects D O)
