@@ -49,7 +49,7 @@ def pointedKanHomCone_isLimit {I : Type u} [SmallCategory I]
     (Opposite.op Z)).mapCone c)
   rw [pointedKanHomFunctor_eq]
   have : PreservesLimits (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) :=
-    pointedMappingFunctor_preservesLimits Z.obj
+    _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor_preservesLimits Z.obj
   have hm : IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj).mapCone
       (pointedKanProperty.ι.mapCone c)) :=
     isLimitOfPreserves (K := F ⋙ pointedKanProperty.ι) (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) hc
