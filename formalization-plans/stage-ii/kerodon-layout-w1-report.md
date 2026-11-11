@@ -464,20 +464,21 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 
 ### レーン別の追従表
 
-11-10 23:11 JST に、7 レーンの追跡済みと未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と `main` の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決されている旧名も書き換えられる。継承した旧 import は取り込み側の改名に含まれる。[対象ファイル、HEAD、merge base、旧 import の行と行き先](kerodon-layout-stop-3/lane-imports.json)
+2026-11-11 20:40:29 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と main の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
 
-`$handoff` は配布した `kerodon-layout-stop-3` ディレクトリ。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。`$klw1` は KL-W1 の作業木。収集時とソースのバイト列を揃え、改名表を取り込んだ後で次を実行する。新しい出力先を `$preview` に渡し、`review.json` とソース差分を確認してから反映する。
+HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import はいずれも 0 本だったが、推移的な参照を確認するため、計 214 本を収集対象とする。
+
+`$handoff` は配布した `kerodon-layout-stop-3`、`$klw1` は KL-W1 の作業木。`$maps` は最終配置のコミットと同じ版の `kl-module-map.json`・`kl-namespace-map.json` を置いたディレクトリ（`$klw1/scripts/refactor/targets` でもよい）。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。その同じソースを入力にして、以下の一行で新しい出力先 `$preview` にプレビューを作る。`review.json` とソース差分を確認し、main の取り込みと書き換えを一緒に反映する。
 
 | レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
 | --- | ---: | ---: | ---: | --- |
-| ⑤a `math/bs-impl` | 17,500 | 9（17 行） | [43](kerodon-layout-stop-3/bs-impl-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑤b `math/bs-d68` | 17,491 | 0（0 行） | [42](kerodon-layout-stop-3/bs-d68-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑤c `math/bs-classical` | 17,491 | 0（0 行） | [20](kerodon-layout-stop-3/bs-classical-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| ⑥ `math/scheme` | 17,479 | 0（0 行） | [134](kerodon-layout-stop-3/scheme-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| HA `research/ha-review` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| HTT `research/htt-review` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-| K の地図 `research/k-maps` | 17,491 | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"` |
-
+| ⑤a `math/bs-impl` | 17,507 | 0（0 行） | [17](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤b `math/bs-d68` | 17,506 | 0（0 行） | [26](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,506 | 0（0 行） | [30](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑥ `math/scheme` | 17,507 | 0（0 行） | [141](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| HA `research/ha-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| HTT `research/htt-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| K の地図 `research/k-maps` | — | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 
 `kl-module-map.json` は import の改名、`kl-namespace-map.json` は宣言の改名と分割先の定義元を収める。旧名の互換モジュールを使う場合も import は改名表で更新する。ファイルが追加された場合はレーン側でそのパスを収集対象の JSON 配列に加え、改名前の成果物とソースで収集し直す。
 
