@@ -610,3 +610,47 @@ H=H_Cech^q(M;d)、αₙ:H_Cech^q(IⁿM;d)→H を包含から作り、Fₙ=range
 | `reesAdicProjectiveCechImageRees_finite` | 各 IⁿM からの Čech 像の Rees 加群は有限生成。 |
 | `reesAdicProjectiveCechImage_bound` | Čech 版の実際の像の一様な I 進評価。 |
 | `reesAdicProjectiveCechImage_cofinal` | Čech 像のフィルトレーションと I 進フィルトレーションは互いに共終。 |
+
+## 実際の Čech 核の有限斉次生成元と遷移の一様零化（11-11）
+
+`46ddda943`（新規 4 モジュールと直接 importer、409 行）に保存。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,237 jobs 成功**、別の共有鍵による公式監査は **6,040 宣言・標準三公理のみ**。一回のビルド・一回の監査ごとに鍵を返した。新規ファイルに `sorry`・`admit`・追加公理はなく、計算量の上限も追加していない。既存宣言の型・本文は変更していない。
+
+登録モジュールは `LinearMapZeroOnSpan`、`ReesCechKernel`、`ReesCechKernelTransition`、`ReesCechKernelVanishing`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+### 通った主張
+
+前節の実際の Rees 全射 u:E→Rees(F) の核 K を取り、K への所属が「各直和成分 xₙ に対して αₙ(xₙ)=0」と同値であることを示した。従ってこれは実際の ker αₙ の直和であり、B 部分加群である。K は一つの直和成分に入れた核の元で生成され、Noether 基底・M の多項式環上の有限性の下で、有限個の斉次生成元を選べる。その Rees 次数には共通の上界 c がある。
+
+次数 j≤c の生成元の単項式 a·tⁱ 倍の第 l 成分を見ると、i+j=l の場合だけ寄与する。l≥n+c なら i≥n なので、前節の因子分解により IˡM→IⁿM の Čech 写像は αⱼ を経由し、生成元が核にあることから零となる。任意の Rees 係数は単項式の有限和に分け、さらに生成部分加群へ加法的に延ばした。**遷移そのものを B 線形とは仮定していない**。これにより、実際の写像について次を得た。
+
+`∃ c, ∀ n l≥n+c, ∀ x∈ker α_l, H_Cech^q(IˡM→IⁿM;d)(x)=0`。
+
+有限生成元を選ぶ段と、与えられた次数上界から零化する段を別の補題に分けた結果、既定の計算量内で通った。これは Stacks 30.20.4(3) の Hⁱ の像の安定化に渡す **Čech 版の核の零化** である。
+
+### main の取り込みと残り
+
+`b4ea18add` で main `6b91dab00` を `math/scheme` に取り込んだ。検証済み AG のローカル import 閉包・Lean/Lake 設定・監査スクリプトの **631 ファイル**の SHA-256 を比較し、不一致 **0**。従って上の対象ビルドと 6,040 宣言の監査は取り込み後にも対応し、入力が同じビルド・監査は繰り返していない。
+
+残りの主要な群は三つ：閉厚化の短完全列と Čech 長完全列の自然性によって実際の核の評価・像の安定化へ渡すこと、完備化の同型、§9 の五つの整合性。全タプル Čech 複体の短完全性の未検証下書きを `scheme-drafts/ProjectiveFullCechExact.lean` に用意しているが、本体への登録・コミットには含めていない。**停止点 2e ではない**。最終出力と利用側の `AugmentedRingCechExact`、選定済みの途中取り込み点 `a0c59bc4e` は変更しない。
+
+### 宣言と主張（ローカルな型クラス設定を除く17件）
+
+| 宣言 | 主張 |
+|---|---|
+| `linearMap_zero_on_span_of_smul_generators` | 生成元のすべての B 倍で零なら、R 線形写像はその B 生成部分加群で零。 |
+| `reesAdicProjectiveCechKernel` | Čech 像への Rees 全射の核。各段の包含の核をまとめる。 |
+| `reesAdicProjectiveCechKernel_mem_iff` | Rees 核への所属は、各成分が実際の Čech 包含で零になることと同値。 |
+| `reesAdicProjectiveCechKernel_lof_mem_iff` | 一つの斉次成分の Rees 核への所属は、その Čech 包含での零化と同値。 |
+| `reesAdicProjectiveCechKernelHomogeneous` | 各段の実際の Čech 核の元を、一つの直和成分に入れた集合。 |
+| `reesAdicProjectiveCechKernel_span_homogeneous` | 実際の Čech 核の Rees 加群は、その斉次な核の元で生成される。 |
+| `reesAdicProjectiveCechKernel_finite` | Čech 核の Rees 加群は有限生成。 |
+| `reesAdicProjectiveCechKernel_finite_homogeneous_generators` | 実際の Čech 核には有限個の斉次生成元を選べる。 |
+| `reesAdicProjectiveCechTransition_mem_kernel` | 各段の Čech 包含の核は、I 進遷移で保たれる。 |
+| `reesAdicProjectiveCechTransition_degreeShift_zero` | 十分 I 進的な係数による次数移動は、Čech 核の元の遷移を零にする。 |
+| `reesAdicProjectiveCechKernel_bounded_homogeneous_generators` | 実際の Čech 核は、次数に一様な上界のある有限個の斉次元で生成される。 |
+| `reesAdicProjectiveCechTransitionComponent` | 直和の第 l 成分を取り、そこから第 n 段へ遷移する R 線形写像。 |
+| `reesAdicProjectiveCechTransitionComponent_monomial_kernel_zero` | 十分高い次数の成分の遷移は、低次数の斉次核の元の単項式倍で零。 |
+| `reesAdicProjectiveCechTransitionComponent_smul_kernel_zero` | 同じ成分の遷移は、低次数の斉次核の元の任意の Rees 倍で零。 |
+| `reesAdicProjectiveCechTransitionComponent_zero_of_span` | 低次数の斉次核で生成した Rees 部分加群では、十分先の成分の遷移は零。 |
+| `reesAdicProjectiveCechKernel_transition_zero_of_bounded_generators` | 次数が c 以下の斉次核で生成されれば、c だけ遅らせた核の遷移は零。 |
+| `reesAdicProjectiveCechKernel_transition_eventually_zero` | 実際の Čech 包含の核の遷移は、一様に遅らせれば零になる。 |
