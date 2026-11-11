@@ -275,3 +275,6 @@
 
 - `PDTermQuotientModel` と `WittFiniteBridge` が通った。前者では完備分冪模型の実際の各項の p 冪商を未完備項の商と比較した。後者では有限 prismatic 枠から小さい Witt 模型への橋を、基底を ψ、各頂点の変数像を p 乗と指定して構成した。大小の Witt 枠を結ぶ四角形は検査中。
 - 上の2本を含む51本の一時監査は1,574宣言で標準三公理のみ。
+
+- `PDDeRhamSubstitutionWedge` と `PDDeRhamSubstitutionGenerators` で、完備形式の代入が外積を保ち、1 形式では完備 Jacobian になることを示した。`PDDeRhamBicomplexCoefficients` では完備形式の係数変更を双複体の射にし、係数制限で読んだ二つの射影と可換であることを示した。
+- `PDDeRhamColumnBounded` で第 0 列の有界性と各列の導来 p 完備性、`SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeEquivalence` で完備化同値が導来底変換後にも完備化同値になることを示した。これら5本の対象ビルドが通り、56本の一時監査は1,653宣言で標準三公理のみ。
