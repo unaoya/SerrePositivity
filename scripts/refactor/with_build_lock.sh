@@ -7,6 +7,7 @@
 # 規約：--wait 0 は即時保留（終了 75）。既定無期限、再確認 2 秒。
 #       --class を省くと worktree 名から推定（kerodon-layout は bulk、*-review は research、他は impl）。
 #       --status は持ち主と待ちの列を表示して終了する。
+#       owner.json の started は鍵を取った時刻、queued は待ち始めた時刻（11-11 に分けた）。
 # 使われ方：zsh scripts/refactor/with_build_lock.sh --wait 1800 -- lake build Module
 exec python3 - "$@" <<'PY'
 import argparse
@@ -53,7 +54,9 @@ def infer_class(path):
 klass=a.klass or infer_class(worktree)
 token=uuid.uuid4().hex
 enqueued=time.time()
-owner={'pid':os.getpid(),'worktree':worktree,'started':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+queued_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+# owner['started'] is the acquisition time (set when the lock is taken); 'queued' is when waiting began.
+owner={'pid':os.getpid(),'worktree':worktree,'started':None,'queued':queued_at,
        'command':a.command,'token':token,'class':klass}
 ticket=queue/f'{token}.json'
 child=None; acquired=False; interrupted=0; ticketed=False
@@ -171,6 +174,7 @@ try:
                                               'token':token,'command':a.command},ensure_ascii=False)+'\n')
                 position=None
             elif position==1 and not lock.exists():
+                owner['started']=datetime.datetime.now(datetime.timezone.utc).isoformat()
                 lock.mkdir()
                 try: (lock/'owner.json').write_text(json.dumps(owner,ensure_ascii=False)+'\n')
                 except BaseException:
