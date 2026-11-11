@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "f5d8ed98202eda86273d31348396cbcee75dd524",
+  "worktree_commit": "b132757730cf18f48a97d204b5f6cabc3b7b872e",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -16467,6 +16467,4235 @@
         }
       ],
       "reason": "可変結合代数上の左加群の忘却が余 Cartesian ファイブレーションとなる結果は見つからない。通常の可換環での拡大・制限の随伴は各写像の移送を与えるが、当該ファイブレーションの結論を直接与えない。"
+    },
+    "4.4.1.15": {
+      "ha_page": 561,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.4.1.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.4.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Tens|Step|Alg_S|markedCocartesianFunctorSpace",
+          "files_with_matches": 8615,
+          "total_matching_lines": 96312,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicCompletionUniversalInjection.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/AdjoinRootSimpleRootSplit.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineBlowupFlatBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberComponentBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberSupportFlattening.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFlatPureComposition.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineLocalFlatPureRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineSectionComponentLocus.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineStrictTransformFlatness.lean",
+            "SerrePositivity/AlgebraicGeometry/BaseChangedMinorFreeCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Tens|Step|Alg_S|markedCocartesianFunctorSpace",
+          "files_with_matches": 1606,
+          "total_matching_lines": 25354,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Centralizer.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/Azumaya/Basic.lean",
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Azumaya/Matrix.lean",
+            "Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean",
+            "Mathlib/Algebra/BigOperators/Group/Finset/Defs.lean",
+            "Mathlib/Algebra/BrauerGroup/Defs.lean",
+            "Mathlib/Algebra/Category/AlgCat/Monoidal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d"
+        }
+      ],
+      "reason": "S→Step からの Tens の族と、inert 辺を保つ Alg_S の ∞ 圏は見つからない。一般の markedCocartesianFunctorSpace は指定した底と辺から相対関手の部分複体を作るが、本文の Tens・Step とそのマークを構成する宣言がないため、当該 Alg_S を直接導けない。"
+    },
+    "4.4.1.16": {
+      "ha_page": 561,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.4.1.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.4.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.3.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.4.2",
+            "lean": 0,
+            "plan": 2
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Tens|Step|Alg_S|markedCocartesianFunctorSpace",
+          "files_with_matches": 8615,
+          "total_matching_lines": 96312,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicCompletionUniversalInjection.lean",
+            "SerrePositivity/AlgebraicGeometry/AdicTensorRightComparison.lean",
+            "SerrePositivity/AlgebraicGeometry/AdjoinRootSimpleRootSplit.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineBlowupFlatBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberComponentBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFiberSupportFlattening.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineFlatPureComposition.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineLocalFlatPureRefinement.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineSectionComponentLocus.lean",
+            "SerrePositivity/AlgebraicGeometry/AffineStrictTransformFlatness.lean",
+            "SerrePositivity/AlgebraicGeometry/BaseChangedMinorFreeCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Tens|Step|Alg_S|markedCocartesianFunctorSpace",
+          "files_with_matches": 1606,
+          "total_matching_lines": 25354,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Epi.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Centralizer.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/Azumaya/Basic.lean",
+            "Mathlib/Algebra/Azumaya/Defs.lean",
+            "Mathlib/Algebra/Azumaya/Matrix.lean",
+            "Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean",
+            "Mathlib/Algebra/BigOperators/Group/Finset/Defs.lean",
+            "Mathlib/Algebra/BrauerGroup/Defs.lean",
+            "Mathlib/Algebra/Category/AlgCat/Monoidal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean",
+          "sha256": "e919e3ba4f6b4fd47870fa5738ba265c2bbe88b4c5f4f96dd82b6a3ebd285d05"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativeFunctorSpace.lean",
+          "sha256": "c7578033a5de011fefd03364eeef8573f9cbf267287781d24f086d888b50de7d"
+        }
+      ],
+      "reason": "モノイダル ∞ 圏から S 上の Tens を経て Alg_S と関手圏を比較する結果は見つからない。一般の指定辺保存相対関手空間はあるが、Tens の族 C_S とその入力となる Step 上の写像を構成していない。"
+    },
+    "4.6.1.8": {
+      "ha_page": 619,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "DDat|duality.*groupoid|ExactPairing",
+          "files_with_matches": 121,
+          "total_matching_lines": 491,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitPointedFixedFaceOldData.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitPointedFixedFaceOldIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitZeroFaceLongOldData.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitZeroFaceOldLongIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FunctorTriangleCanonicalOldLong.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/KanHomotopyRectificationImage.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitStandardFamily.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardBackwardDiagonalAugmentation.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardBackwardRelativeObject.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardForwardAugmentation.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardForwardData.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "DDat|duality.*groupoid|ExactPairing",
+          "files_with_matches": 18,
+          "total_matching_lines": 140,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/OfEquivalence.lean",
+            "Mathlib/Tactic/Abel.lean",
+            "Mathlib/Tactic/Basify.lean",
+            "Mathlib/Tactic/FieldSimp.lean",
+            "Mathlib/Tactic/ITauto.lean",
+            "Mathlib/Tactic/Linarith/NNRealPreprocessor.lean",
+            "Mathlib/Tactic/Linarith/Preprocessing.lean",
+            "Mathlib/Tactic/Linter/FindDeprecations.lean",
+            "Mathlib/Tactic/Module.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        }
+      ],
+      "reason": "評価の矢印 ∞ 圏の部分圏として双対データの ∞ 群oid DDat(C) を定義し、その忘却を構成する宣言は見つからない。通常圏の対象の組に付く完全対はこの全体の ∞ 圏を与えない。"
+    },
+    "4.6.1.9": {
+      "ha_page": 619,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.1.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "DDat|duality.*groupoid|rightAdjointMate_comp_evaluation",
+          "files_with_matches": 121,
+          "total_matching_lines": 491,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitPointedFixedFaceOldData.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitPointedFixedFaceOldIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitZeroFaceLongOldData.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitZeroFaceOldLongIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/FunctorTriangleCanonicalOldLong.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/KanHomotopyRectificationImage.lean",
+            "SerrePositivity/EInfinity.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeUnitStandardFamily.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardBackwardDiagonalAugmentation.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardBackwardRelativeObject.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardForwardAugmentation.lean",
+            "SerrePositivity/EInfinity/Hammock/FirstColumnBackwardForwardData.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "DDat|duality.*groupoid|rightAdjointMate_comp_evaluation",
+          "files_with_matches": 16,
+          "total_matching_lines": 61,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/FunctorCategory.lean",
+            "Mathlib/Tactic/Abel.lean",
+            "Mathlib/Tactic/Basify.lean",
+            "Mathlib/Tactic/FieldSimp.lean",
+            "Mathlib/Tactic/ITauto.lean",
+            "Mathlib/Tactic/Linarith/NNRealPreprocessor.lean",
+            "Mathlib/Tactic/Linarith/Preprocessing.lean",
+            "Mathlib/Tactic/Linter/FindDeprecations.lean",
+            "Mathlib/Tactic/Module.lean",
+            "Mathlib/Tactic/Order/CollectFacts.lean",
+            "Mathlib/Tactic/Ring/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        }
+      ],
+      "reason": "双対データ間の射の両成分が互いの双対を通じて逆同値となり、忘却の像が双対可能対象の同値だけの部分圏に入る結果は見つからない。通常圏の双対射と評価の自然性はあるが、当該双対データの圏と射の条件からの結論は構成されていない。"
+    },
+    "4.6.1.11": {
+      "ha_page": 620,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.1.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.5.4",
+            "lean": 0,
+            "plan": 3
+          },
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualiz.*limit|RightDual.*limit|functorHasRightDual",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "dualiz.*limit|RightDual.*limit|functorHasRightDual",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Rigid/FunctorCategory.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/FunctorCategory.lean",
+          "sha256": "a27f010c94988aa0319d5b04b23b6ae4145cf1aedf2d49875d541006f45d94d0"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/OfEquivalence.lean",
+          "sha256": "67b9fe4ce0cc62b82d1f6dfc9f98410096f75c1def1dc433ce565e578ab6f7c7"
+        }
+      ],
+      "reason": "モノイダル ∞ 圏の図式の極限で双対可能性が各射影で検出される結果は見つからない。各通常圏が右 rigid である場合の関手圏の構成は、任意の図式の極限での検出を与えない。"
+    },
+    "4.6.2.2": {
+      "ha_page": 622,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimod.*dual|yoneda₀|dual.*criterion",
+          "files_with_matches": 3,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/F2/Presentable/Duality/All.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Duality/LeftUnitContractible.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Duality/RightUnitContractible.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimod.*dual|yoneda₀|dual.*criterion",
+          "files_with_matches": 1,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Bicategory/Yoneda.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Yoneda.lean",
+          "sha256": "8e8bc44ea36248d16e7d1bd8abc3597ff52ec48fed9ea5bf9582a7d2d96d0d91"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "二つの正則な右加群圏での随伴だけから双加群の双対性を判定する補題は見つからない。通常の双圏 Yoneda にはここで指定された二つの検査で十分とする結論がない。"
+    },
+    "4.6.2.4": {
+      "ha_page": 622,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Bimod.*unit.*equiv|Bimod.*dual|ExactPairing",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Bimod.*unit.*equiv|Bimod.*dual|ExactPairing",
+          "files_with_matches": 4,
+          "total_matching_lines": 81,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/OfEquivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        }
+      ],
+      "reason": "単位代数の自己双加群から基礎圏へのモノイダル同値と、その下で二つの双対性が一致する結果は見つからない。通常の双加群双圏と基礎圏の完全対を比較するこの同値は確認できなかった。"
+    },
+    "4.6.2.5": {
+      "ha_page": 622,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "free.*bimod.*dual|Bimod.*adjunction|freeForgetAdjunction",
+          "files_with_matches": 17,
+          "total_matching_lines": 34,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/AllColimits.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Free.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/Monadic.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/PathAcyclicity.lean",
+            "SerrePositivity/EInfinity/DGAlgebra/SmallObject.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModulePresentability.lean",
+            "SerrePositivity/HomotopicalAlgebra/Monoidal/ModuleTransfer.lean",
+            "SerrePositivity/KST/DerivedGeometry/CoefficientAdjunction.lean",
+            "SerrePositivity/Spectra/General/Evaluation.lean",
+            "SerrePositivity/Spectra/General/Free.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "free.*bimod.*dual|Bimod.*adjunction|freeForgetAdjunction",
+          "files_with_matches": 6,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Groupoid/FreeGroupoidOfCategory.lean",
+            "Mathlib/Condensed/Light/Epi.lean",
+            "Mathlib/Condensed/Light/InternallyProjective.lean",
+            "Mathlib/Condensed/Light/Module.lean",
+            "Mathlib/Condensed/Light/Small.lean",
+            "Mathlib/Condensed/Module.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "対象の双対性から X⊗A と A⊗X∨ を異なる底代数を持つ双加群の双対対にし、指定の評価・余評価を与える宣言は見つからない。通常の自由内部加群の忘却への随伴はこの双加群の双対性を示さない。"
+    },
+    "4.6.2.8": {
+      "ha_page": 623,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LinFun|LeftLinear|linear.*preservesColimit",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/KST/DerivedBlowup/DiagramGaugeGraphIso.lean",
+            "SerrePositivity/KST/ProExcision/IntegerLinearizationAdjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LinFun|LeftLinear|linear.*preservesColimit",
+          "files_with_matches": 6,
+          "total_matching_lines": 81,
+          "sample_paths": [
+            "Mathlib/Algebra/Module/Equiv/Basic.lean",
+            "Mathlib/Analysis/CStarAlgebra/Unitary/Maps.lean",
+            "Mathlib/Analysis/InnerProductSpace/TwoDim.lean",
+            "Mathlib/CategoryTheory/Monoidal/Action/LinearFunctor.lean",
+            "Mathlib/LinearAlgebra/Alternating/Curry.lean",
+            "Mathlib/LinearAlgebra/Matrix/Bilinear.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Action/LinearFunctor.lean",
+          "sha256": "5c69c93954b001ce395823ce69cf2930cba5415ac348996d27d446c4d1d27b96"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Limits/Preserves/Basic.lean",
+          "sha256": "a178cba8ee9558abb6b14906f70e0b5794216f114c5e8bd5e8bd7a7be3e091e3"
+        }
+      ],
+      "reason": "色 m での評価から LinFun の ∞ 圏の忘却関手を得て、指定の余極限を保つ全充満部分圏を切り出す宣言は見つからない。通常圏の LeftLinear は個々の関手に付く性質とデータである。"
+    },
+    "4.6.2.9": {
+      "ha_page": 623,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "LeftLinear.*Mod|mapMod|mapLeftModule",
+          "files_with_matches": 3,
+          "total_matching_lines": 8,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Derived/Gluing/MilnorFreeAugmentationSquare.lean",
+            "SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorMapLevels.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorMapLevels.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "LeftLinear.*Mod|mapMod|mapLeftModule",
+          "files_with_matches": 4,
+          "total_matching_lines": 5,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+            "Mathlib/LinearAlgebra/Matrix/Bilinear.lean",
+            "Mathlib/RingTheory/Morita/Matrix.lean",
+            "Mathlib/Tactic/Translate/ToAdditive.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Action/LinearFunctor.lean",
+          "sha256": "5c69c93954b001ce395823ce69cf2930cba5415ac348996d27d446c4d1d27b96"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+          "sha256": "9aa0a7fc1f65b706e81f4bad36d24a4bb2c5717da5468dac552919c237983483"
+        }
+      ],
+      "reason": "C-線型関手を固定の A 上の左加群に作用させ、線型関手に関して関手的な比較を与える宣言は見つからない。通常の LeftLinear の作用比較と内部加群圏はあるが、この比較関手は確認できなかった。"
+    },
+    "4.6.2.10": {
+      "ha_page": 624,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimod.*dual|leftAdjointable|kernelDerivedAdjunction",
+          "files_with_matches": 7,
+          "total_matching_lines": 36,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Morita/AdjunctionDerivedChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/U16Checks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/U16aChecks.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelHomotopyAdjunction.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelResolutionHomotopyAdjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimod.*dual|leftAdjointable|kernelDerivedAdjunction",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+          "sha256": "02ac374942918abf82d868aedca72da15fb7dcbb679b7087b310f7b4f6eebbed"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        }
+      ],
+      "reason": "右作用をもつ任意の ∞ 圏でのテンソルの左随伴と、線型な移送に対する左随伴可能性により双加群の左双対性を判定する定理は見つからない。dg 核の導来テンソルの右随伴はこの判定を与えない。"
+    },
+    "4.6.2.11": {
+      "ha_page": 625,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dual.*regular|dual.*adjointable|Adjunction.*homEquiv",
+          "files_with_matches": 223,
+          "total_matching_lines": 771,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/ProjBase.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGDerivedExtensionAdjunction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRepresentableExtensionUnit.lean",
+            "SerrePositivity/CategoryTheory/Adjunction/Comparison.lean",
+            "SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/DifferentialGraded/Checks/TensorHomAdjunction.lean",
+            "SerrePositivity/DifferentialGraded/Complexes/MaurerCartanCurrying.lean",
+            "SerrePositivity/DifferentialGraded/Derived/FunctorExtensionAdjunction.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Adjunction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dual.*regular|dual.*adjointable|Adjunction.*homEquiv",
+          "files_with_matches": 101,
+          "total_matching_lines": 355,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/AlgCat/Basic.lean",
+            "Mathlib/Algebra/Category/Grp/Adjunctions.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Adjunctions.lean",
+            "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Monoidal/Closed.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/ColimitFunctor.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Free.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Sheafification.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/PullbackContinuous.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf/PullbackFree.lean",
+            "Mathlib/Algebra/Category/MonCat/Adjunctions.lean",
+            "Mathlib/Algebra/Category/Ring/Adjunctions.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+          "sha256": "8d886b21dc4ab48379e9c98653967307f7f57a97cc61f9db0dfd50d4d53353e8"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        }
+      ],
+      "reason": "正則加群 B で左随伴を評価して得る F(B) から Y への同値で、余評価の双対性を特徴づける結果は見つからない。一般の随伴の Hom 同値にはこの双対性判定がない。"
+    },
+    "4.6.2.12": {
+      "ha_page": 625,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimod.*restrict.*dual|dual.*restrict|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 23,
+          "total_matching_lines": 92,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRightKFlatIsoLiftComputation.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorLeft.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorMiddle.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+            "SerrePositivity/DifferentialGraded/Derived/LeftUnit.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulColimit.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulDual.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulTermColimit.lean",
+            "SerrePositivity/HomologicalAlgebra/Ext/LocalCohomology.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimod.*restrict.*dual|dual.*restrict|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 11,
+          "total_matching_lines": 50,
+          "sample_paths": [
+            "Mathlib/Algebra/Module/Submodule/Union.lean",
+            "Mathlib/Analysis/LocallyConvex/HahnBanach.lean",
+            "Mathlib/Analysis/Normed/Module/WeakDual.lean",
+            "Mathlib/Combinatorics/Matroid/Constructions.lean",
+            "Mathlib/Combinatorics/Matroid/Map.lean",
+            "Mathlib/GroupTheory/FiniteAbelian/Duality.lean",
+            "Mathlib/LinearAlgebra/Dual/Defs.lean",
+            "Mathlib/LinearAlgebra/Dual/Lemmas.lean",
+            "Mathlib/LinearAlgebra/RootSystem/BaseExists.lean",
+            "Mathlib/RingTheory/DedekindDomain/Different.lean",
+            "Mathlib/RingTheory/DedekindDomain/LinearDisjoint.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+          "sha256": "ab0e1eeed537cd9f769330d7464aeeec014a84219519ed0ddff508a26c02c488"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "右側の代数を制限しても指定の評価が双対データを与える結果は見つからない。導来双加群の制限と合成の比較には評価と双対性の主張がない。"
+    },
+    "4.6.2.13": {
+      "ha_page": 625,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualiz.*restrict|bimod.*dual|kernelColumnsPerfect",
+          "files_with_matches": 16,
+          "total_matching_lines": 88,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceCompositionCanonicalChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CoherenceCompositionChecks.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Verdier/ChecksGraphPairMorita.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Verdier/ChecksKernelComparisonNaturality.lean",
+            "SerrePositivity/DifferentialGraded/Checks/Verdier/ChecksKernelCompositionDescent.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+            "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+            "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/PerfectSquares.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Kernel.lean",
+            "SerrePositivity/DifferentialGraded/Verdier/Scalar.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dualiz.*restrict|bimod.*dual|kernelColumnsPerfect",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "双加群の左双対可能性を右側の代数の制限、とくに単位代数への制限で検出する定理は見つからない。dg 双加群の完全性条件はこの双対性の同値を与えない。"
+    },
+    "4.6.2.14": {
+      "ha_page": 626,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dual.*restrict|bimod.*evaluation.*dual|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 23,
+          "total_matching_lines": 92,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRightKFlatIsoLiftComputation.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorLeft.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorMiddle.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+            "SerrePositivity/DifferentialGraded/Derived/LeftUnit.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulColimit.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulDual.lean",
+            "SerrePositivity/HomologicalAlgebra/AlgebraKoszulTermColimit.lean",
+            "SerrePositivity/HomologicalAlgebra/Ext/LocalCohomology.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dual.*restrict|bimod.*evaluation.*dual|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 11,
+          "total_matching_lines": 50,
+          "sample_paths": [
+            "Mathlib/Algebra/Module/Submodule/Union.lean",
+            "Mathlib/Analysis/LocallyConvex/HahnBanach.lean",
+            "Mathlib/Analysis/Normed/Module/WeakDual.lean",
+            "Mathlib/Combinatorics/Matroid/Constructions.lean",
+            "Mathlib/Combinatorics/Matroid/Map.lean",
+            "Mathlib/GroupTheory/FiniteAbelian/Duality.lean",
+            "Mathlib/LinearAlgebra/Dual/Defs.lean",
+            "Mathlib/LinearAlgebra/Dual/Lemmas.lean",
+            "Mathlib/LinearAlgebra/RootSystem/BaseExists.lean",
+            "Mathlib/RingTheory/DedekindDomain/Different.lean",
+            "Mathlib/RingTheory/DedekindDomain/LinearDisjoint.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+          "sha256": "ab0e1eeed537cd9f769330d7464aeeec014a84219519ed0ddff508a26c02c488"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "指定の評価が双対データを与えることが右側の代数の制限で保存・反映される結果は見つからない。dg 双加群の制限の比較にはこの評価の条件がない。"
+    },
+    "4.6.2.19": {
+      "ha_page": 629,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Module.*dualiz|Bimod.*dual|ExactPairing",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Module.*dualiz|Bimod.*dual|ExactPairing",
+          "files_with_matches": 4,
+          "total_matching_lines": 81,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/OfEquivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "可換代数の加群の内部相対テンソルに関する双対性と、両側作用に関する双対性を比較する同値は見つからない。通常の対称モノイダル内部加群圏の構成にはこの双対性の移送がない。"
+    },
+    "4.6.2.20": {
+      "ha_page": 629,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.2.20",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dual.*lift|Bimod.*dual|leftDualIso",
+          "files_with_matches": 9,
+          "total_matching_lines": 13,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/FiniteLiftCorrection.lean",
+            "SerrePositivity/AlgebraicGeometry/LinearLiftMittagLeffler.lean",
+            "SerrePositivity/HomologicalAlgebra/Ext/LocalCohomology.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarBaseInvariance.lean",
+            "SerrePositivity/InfinityCategories/F1/Simplicial/FiniteCospanNerveEdges.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/CardinalExchangeShape.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Duality/AdjointFamilyChoice.lean",
+            "SerrePositivity/InfinityCategories/F2/Presentable/Duality/All.lean",
+            "SerrePositivity/InfinityCategories/HomotopyLimits/CoherentReverseThickening.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dual.*lift|Bimod.*dual|leftDualIso",
+          "files_with_matches": 26,
+          "total_matching_lines": 72,
+          "sample_paths": [
+            "Mathlib/Algebra/DualNumber.lean",
+            "Mathlib/AlgebraicTopology/ModelCategory/JoyalTrick.lean",
+            "Mathlib/CategoryTheory/Adjunction/Lifting/Left.lean",
+            "Mathlib/CategoryTheory/Adjunction/Lifting/Right.lean",
+            "Mathlib/CategoryTheory/CommSq.lean",
+            "Mathlib/CategoryTheory/LiftingProperties/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/HasLimits.lean",
+            "Mathlib/CategoryTheory/Limits/IsLimit.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/WidePullbacks.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/MorphismProperty/LiftingProperty.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Equivs.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean",
+          "sha256": "59fcf917d0b542904016bddba5de9f4a0904dae362a68c643f85a5f1d687648b"
+        }
+      ],
+      "reason": "両側作用の双対評価を可換代数上の相対テンソルの双対評価へ持ち上げる結果は見つからない。通常の双対の一意性は、異なる二種類の双対を結ぶこの持ち上げを与えない。"
+    },
+    "4.6.3.1": {
+      "ha_page": 630,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "BMod.*rev|BM.*reversal|bimodule.*opposite|toRightOpposite",
+          "files_with_matches": 22,
+          "total_matching_lines": 178,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Bimodule/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Value.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BalancedSwap.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftModuleCategory.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftModules.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftTensorColimits.lean",
+            "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+            "SerrePositivity/DifferentialGraded/Module/Hom/HomotopyAndOperations.lean",
+            "SerrePositivity/DifferentialGraded/Module/Left/CategoryComparison.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/BalancedElements.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "BMod.*rev|BM.*reversal|bimodule.*opposite|toRightOpposite",
+          "files_with_matches": 3,
+          "total_matching_lines": 15,
+          "sample_paths": [
+            "Mathlib/Geometry/Euclidean/Projection.lean",
+            "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "BM の順序を逆転するオペラッドの involution と、双加群全体の reversal は見つからない。dg 左加群から反対 dg 圏上の右加群への変換は片方の作用に限り、BM の構成を与えない。"
+    },
+    "4.6.3.3": {
+      "ha_page": 631,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "external.*bimod|bimod.*external|Bimod.*symmetric",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "external.*bimod|bimod.*external|Bimod.*symmetric",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Category/Tensor.lean",
+          "sha256": "d45e742b257a6ee3b03d2b2595740efb1e89243d1ecb5201d1219ee2eefcc6c1"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "異なる両側の代数を動かし、外部テンソルを _{A⊗A′}BMod_{B⊗B′} に値をとる対称モノイダル構造として構成する宣言は見つからない。dg 圏のテンソルと双加群の uncurry はこの外部テンソルを与えない。"
+    },
+    "4.6.3.4": {
+      "ha_page": 631,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "external.*relative.*tensor|bimod.*interchange|derivedBalancedComparison",
+          "files_with_matches": 11,
+          "total_matching_lines": 45,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleSimultaneousRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleActions.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleTensor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleTensorFunctor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleTranspose.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Paired.lean",
+            "SerrePositivity/DifferentialGraded/Derived/ScalarExtension.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Adjunction.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Kernel.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "external.*relative.*tensor|bimod.*interchange|derivedBalancedComparison",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Derived/ScalarExtension.lean",
+          "sha256": "50710079bef748c0c6567abb3ddd8f71287bc95df6d7bd162a4ee6f66b4f5b0d"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean",
+          "sha256": "846af9064db9af0808b24ee66c378fa955c659c6852c8bf390224e5f5240f725"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "外部テンソルと二つの異なる底代数上の相対テンソルの交換同値は見つからない。dg 相対テンソルの結合同型と基礎環変更の比較は、この四つの双加群の外部テンソルを比較していない。"
+    },
+    "4.6.3.5": {
+      "ha_page": 632,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "external.*dual|bimod.*tensor.*dual|Adjunction.comp",
+          "files_with_matches": 62,
+          "total_matching_lines": 103,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Adjunction/Comparison.lean",
+            "SerrePositivity/CategoryTheory/Enriched/RepresentedMapping.lean",
+            "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean",
+            "SerrePositivity/DifferentialGraded/Module/Functor.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LayerTriangles.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/ConeReindexPoints.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/FrameConeClasses.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/PointwiseConePoints.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/PointwiseTensorSource.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/RealizationCoefficientMap.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/TensorPiZeroNaturality.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "external.*dual|bimod.*tensor.*dual|Adjunction.comp",
+          "files_with_matches": 23,
+          "total_matching_lines": 44,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Presheaf/Pullback.lean",
+            "Mathlib/AlgebraicGeometry/Group/Affine.lean",
+            "Mathlib/AlgebraicTopology/SingularHomology/Basic.lean",
+            "Mathlib/CategoryTheory/Adjunction/Additive.lean",
+            "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+            "Mathlib/CategoryTheory/Adjunction/Lifting/Left.lean",
+            "Mathlib/CategoryTheory/Adjunction/Lifting/Right.lean",
+            "Mathlib/CategoryTheory/Adjunction/Mates.lean",
+            "Mathlib/CategoryTheory/Adjunction/Opposites.lean",
+            "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+            "Mathlib/CategoryTheory/Bicategory/Adjunction/Mate.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "双対可能な二つの双加群の外部テンソルが双対可能となり、双対も外部テンソルで与えられる結果は見つからない。双圏内の合成随伴は底代数を外部テンソルする操作を与えない。"
+    },
+    "4.6.3.6": {
+      "ha_page": 632,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "reversal.*monoidal|BMod.*rev|external.*opposite",
+          "files_with_matches": 3,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/LocalFlatnessCriterion.lean",
+            "SerrePositivity/KST/Spectra/TripleCircleCoordinates.lean",
+            "SerrePositivity/KST/Spectra/TwoLoopSourceCoordinates.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "reversal.*monoidal|BMod.*rev|external.*opposite",
+          "files_with_matches": 5,
+          "total_matching_lines": 18,
+          "sample_paths": [
+            "Mathlib/Geometry/Euclidean/Angle/Incenter.lean",
+            "Mathlib/Geometry/Euclidean/Angle/Oriented/Affine.lean",
+            "Mathlib/Geometry/Euclidean/Projection.lean",
+            "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "双加群の reversal の対称モノイダル性と、外部テンソルとの比較同値は見つからない。dg 左右加群の対象の対応だけではこの外部テンソルの結論は得られない。"
+    },
+    "4.6.3.7": {
+      "ha_page": 632,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "fold.*operad|evaluationModule|coevaluationModule|diagonal",
+          "files_with_matches": 2165,
+          "total_matching_lines": 14783,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry/FlatOpenImmersion.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCategoryResolution.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGDiagonalRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGDiagonalRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGLeftUnitRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGLeftUnitRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGOuterUnitRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRestrictionModelCalculation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DerivedBimoduleComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeValueLastFactors.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstEndpointSquare.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "fold.*operad|evaluationModule|coevaluationModule|diagonal",
+          "files_with_matches": 378,
+          "total_matching_lines": 4302,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Subalgebra/Matrix.lean",
+            "Mathlib/Algebra/BigOperators/Group/Finset/Defs.lean",
+            "Mathlib/Algebra/BigOperators/NatAntidiagonal.lean",
+            "Mathlib/Algebra/BigOperators/Ring/Multiset.lean",
+            "Mathlib/Algebra/DirectSum/Internal.lean",
+            "Mathlib/Algebra/DirectSum/LinearMap.lean",
+            "Mathlib/Algebra/Homology/HomologicalBicomplex.lean",
+            "Mathlib/Algebra/Lie/Basic.lean",
+            "Mathlib/Algebra/Lie/CartanCriterion.lean",
+            "Mathlib/Algebra/Lie/CartanSubalgebra.lean",
+            "Mathlib/Algebra/Lie/Classical.lean",
+            "Mathlib/Algebra/Lie/Derivation/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Basic.lean",
+          "sha256": "0caf07b83cf694f8c1a3a890fe41d1a53942700791be619b1ccc3d8ec547a32a"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "LM から Assoc への fold 写像と自然変換を用いて A⊗Arev 上の評価加群と Arev⊗A 上の余評価加群を得る構成は見つからない。正則双加群や dg 対角双加群はあるが、この fold と包絡代数上の作用の比較を与えない。"
+    },
+    "4.6.3.8": {
+      "ha_page": 633,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "evaluationModule.*opposite|coevaluationModule.*opposite|Bimod.*rev",
+          "files_with_matches": 5,
+          "total_matching_lines": 9,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Bimodule/Value.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Paired.lean",
+            "SerrePositivity/KST/SConstruction.lean",
+            "SerrePositivity/KST/SConstruction/BimoduleFirstParameterSquare.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "evaluationModule.*opposite|coevaluationModule.*opposite|Bimod.*rev",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Topology/Algebra/LinearTopology.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "A と Arev を交換したときの評価加群・余評価加群のスカラー順序変更による同定は見つからない。通常の正則双加群には指定の包絡代数の順序変更の比較がない。"
+    },
+    "4.6.3.9": {
+      "ha_page": 633,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|coevaluationModule|evaluationModule|bimoduleEquivTensorFunctor",
+          "files_with_matches": 13,
+          "total_matching_lines": 55,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleTensorComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/All.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationModuleNerveIso.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationSpace.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|coevaluationModule|evaluationModule|bimoduleEquivTensorFunctor",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "評価・余評価加群と外部テンソル、相対テンソルを組み合わせる作用交換関手 σ・τ は見つからない。dg 双加群のテンソル圏上の加群との比較は、指定の評価加群による二つの公式を与えない。"
+    },
+    "4.6.3.10": {
+      "ha_page": 634,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|BMod.*forget|uncurryFunctor",
+          "files_with_matches": 4,
+          "total_matching_lines": 10,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleUncurryPresentation.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/HomFiltration.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentFiltration.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|BMod.*forget|uncurryFunctor",
+          "files_with_matches": 3,
+          "total_matching_lines": 5,
+          "sample_paths": [
+            "Mathlib/Algebra/Module/Submodule/RestrictScalars.lean",
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean",
+            "Mathlib/RingTheory/FractionalIdeal/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "作用交換 σ と元の双加群の基礎対象への忘却の可換図式は見つからない。dg 双加群の uncurry の評価公式は、この σ を指定していない。"
+    },
+    "4.6.3.11": {
+      "ha_page": 634,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|coevaluationModule|bimoduleEquivTensorFunctor",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BimoduleTensorComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|coevaluationModule|bimoduleEquivTensorFunctor",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "評価・余評価加群から作った σ・τ が互いに逆の作用交換同値になる結果は見つからない。dg 双加群とテンソル dg 圏上の加群の同値は、指定の二つの関手を比較していない。"
+    },
+    "4.6.3.12": {
+      "ha_page": 634,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "coevaluationModule|evaluationModule|external.*triangle",
+          "files_with_matches": 13,
+          "total_matching_lines": 55,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionMixedActionOperators.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/ResolutionMixedSmallFamilies.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/All.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationModuleNerveIso.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationSpace.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "coevaluationModule|evaluationModule|external.*triangle",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "外部テンソルした評価・余評価加群の相対テンソルが A と Arev を回復する二つの自然同値は見つからない。正則双加群の単位同型には指定の異なる包絡代数上のテンソルの比較がない。"
+    },
+    "4.6.3.13": {
+      "ha_page": 635,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|coevaluationModule|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 8,
+          "total_matching_lines": 56,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorLeftRestrictionKFlat.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGAssociatorSecondMiddleRestrictionCoherence.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGBimoduleLeftRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGRightKFlatIsoLiftComputation.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorLeft.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorMiddle.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+            "SerrePositivity/DifferentialGraded/Derived/LeftUnit.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|coevaluationModule|derivedComposeWithLeftRestrictionIso",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+          "sha256": "ab0e1eeed537cd9f769330d7464aeeec014a84219519ed0ddff508a26c02c488"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean",
+          "sha256": "6ee09b9ee3ef74de9b07e3b4593565f19fe831fa06c5d290013ea91992ea1525"
+        }
+      ],
+      "reason": "三つの代数の写像に沿う制限と作用交換 σ・τ が自然同値で可換となる結果は見つからない。dg 制限の比較はこの評価・余評価の公式を与えない。"
+    },
+    "4.6.3.14": {
+      "ha_page": 635,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "coevaluationModule|external.*evaluation|switch.*action",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "coevaluationModule|external.*evaluation|switch.*action",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Category/Tensor.lean",
+          "sha256": "d45e742b257a6ee3b03d2b2595740efb1e89243d1ecb5201d1219ee2eefcc6c1"
+        }
+      ],
+      "reason": "代数のテンソルに対する評価・余評価加群の外部テンソル分解と、それに整合する作用交換 σ の反復公式は見つからない。"
+    },
+    "4.6.3.15": {
+      "ha_page": 636,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|BMod.*rev|toRightOpposite",
+          "files_with_matches": 22,
+          "total_matching_lines": 178,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Bimodule/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Value.lean",
+            "SerrePositivity/DifferentialGraded/Checks/BalancedSwap.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftModuleCategory.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftModules.lean",
+            "SerrePositivity/DifferentialGraded/Checks/LeftTensorColimits.lean",
+            "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Module/Graded.lean",
+            "SerrePositivity/DifferentialGraded/Module/Hom/HomotopyAndOperations.lean",
+            "SerrePositivity/DifferentialGraded/Module/Left/CategoryComparison.lean",
+            "SerrePositivity/DifferentialGraded/Tensor/BalancedElements.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|BMod.*rev|toRightOpposite",
+          "files_with_matches": 4,
+          "total_matching_lines": 16,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean",
+            "Mathlib/Geometry/Euclidean/Projection.lean",
+            "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "二つの左作用を組紐で交換する操作と、σ による作用交換および reversal との可換図式は見つからない。一般の反対 dg 圏と左・右加群の対応にはこの図式がない。"
+    },
+    "4.6.3.16": {
+      "ha_page": 636,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "bimod.*opposite.*tensor|relative.*tensor.*rev|BMod.*rev",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/LocalFlatnessCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "bimod.*opposite.*tensor|relative.*tensor.*rev|BMod.*rev",
+          "files_with_matches": 3,
+          "total_matching_lines": 15,
+          "sample_paths": [
+            "Mathlib/Geometry/Euclidean/Projection.lean",
+            "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean",
+          "sha256": "846af9064db9af0808b24ee66c378fa955c659c6852c8bf390224e5f5240f725"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "reversal が相対テンソルの順序を逆転する比較同値は見つからない。通常の双加群の結合子や dg の反対加群への対象の対応には、この二つのテンソルの同定がない。"
+    },
+    "4.6.3.17": {
+      "ha_page": 636,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|BMod.*rev|exactPairing_swap",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/LocalFlatnessCriterion.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|BMod.*rev|exactPairing_swap",
+          "files_with_matches": 5,
+          "total_matching_lines": 19,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+            "Mathlib/Geometry/Euclidean/Projection.lean",
+            "Mathlib/LinearAlgebra/AffineSpace/AffineSubspace/Defs.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Conjugation.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+          "sha256": "e0adc97c834712e045ecaef29f24e657f7438e0fd4de0504a75e20d564bd351e"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "作用交換 σ・τ と reversal の可換図式、およびその下で双対対が移送される結果は見つからない。通常の完全対を組紐で交換する定理は、異なる底代数上の作用交換を与えない。"
+    },
+    "4.6.3.18": {
+      "ha_page": 637,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.3.18",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.2",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "switch.*action|coevaluationModule|leftModuleEquivRightOpposite",
+          "files_with_matches": 2,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/LeftModules.lean",
+            "SerrePositivity/DifferentialGraded/Module/Basic.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "switch.*action|coevaluationModule|leftModuleEquivRightOpposite",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "一つの左作用に σ を適用する公式が reversal に自然同値となる結果は見つからない。dg 左加群と反対 dg 圏上の右加群の直接の対象の対応は、評価・余評価による σ の公式と比較されていない。"
+    },
+    "4.6.4.1": {
+      "ha_page": 644,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smoothProper|properDG|smoothDG|serreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "smoothProper|properDG|smoothDG|serreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        }
+      ],
+      "reason": "dg 代数の smooth・proper 性の既存文献への案内に対応する宣言は見つからない。dg 完全加群と Morita 核の理論はあるが、この有限性条件を導入していない。"
+    },
+    "4.6.4.2": {
+      "ha_page": 644,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "properAlgebra|IsProperAlgebra|properDG|HasRightDual",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "properAlgebra|IsProperAlgebra|properDG|HasRightDual",
+          "files_with_matches": 5,
+          "total_matching_lines": 52,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/FunctorCategory.lean",
+            "Mathlib/CategoryTheory/Monoidal/Rigid/OfEquivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "結合代数の基礎対象が双対可能であることを proper と定義する宣言は見つからない。通常圏の HasRightDual は基礎の述語を与えるが、代数の proper 性は定義されていない。"
+    },
+    "4.6.4.3": {
+      "ha_page": 645,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "properAlgebra|properDG|proper.*opposite",
+          "files_with_matches": 26,
+          "total_matching_lines": 38,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core/CatInfinity/ConeHomotopyDiagonalEdge.lean",
+            "SerrePositivity/InfinityCategories/Core/CatInfinity/NativeConeLeg.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutGradedSplit.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGRelativeKFlatModuleNerve.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackKernelLocalization.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/OrdinaryPullbackThickImage.lean",
+            "SerrePositivity/InfinityCategories/F1/Diagrams/StrictDiagramScaffoldIdentities.lean",
+            "SerrePositivity/InfinityCategories/F1/FilteredExchange/ArrowColimitInvertibility.lean",
+            "SerrePositivity/InfinityCategories/F1B/CatInfinity/ConeHomotopyEdges.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/ConeDiagramDiagonalEdge.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/ConeDiagramLowerTriangle.lean",
+            "SerrePositivity/InfinityCategories/F2/CatInfinity/ConeDiagramUpperTriangle.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "properAlgebra|properDG|proper.*opposite",
+          "files_with_matches": 9,
+          "total_matching_lines": 10,
+          "sample_paths": [
+            "Mathlib/AlgebraicGeometry/Morphisms/FiniteType.lean",
+            "Mathlib/AlgebraicGeometry/StructureSheaf.lean",
+            "Mathlib/CategoryTheory/MorphismProperty/Comma.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/ContainsZero.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/InheritedFromHom.lean",
+            "Mathlib/CategoryTheory/ObjectProperty/Small.lean",
+            "Mathlib/RingTheory/Polynomial/Opposites.lean",
+            "Mathlib/Topology/Algebra/Group/Subgroup.lean",
+            "Mathlib/Topology/Instances/AddCircle/Real.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Category/Tensor.lean",
+          "sha256": "d45e742b257a6ee3b03d2b2595740efb1e89243d1ecb5201d1219ee2eefcc6c1"
+        }
+      ],
+      "reason": "代数の proper 性が基礎対象だけに依存し、反対代数への移行で保たれる結果は見つからない。通常圏の双対可能性と dg 反対圏の構成にはこの述語の比較がない。"
+    },
+    "4.6.4.4": {
+      "ha_page": 645,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "properAlgebra|coevaluationModule|SerreBimodule|smoothProper",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "properAlgebra|coevaluationModule|SerreBimodule|smoothProper",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "proper 性、評価・余評価加群の片側双対可能性、作用交換の双対可能性保存を同値とする判定は見つからない。通常の双圏の随伴と dg 完全性には当該評価加群の判定がない。"
+    },
+    "4.6.4.5": {
+      "ha_page": 646,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|serre.?functor|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|serre.?functor|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+          "sha256": "02ac374942918abf82d868aedca72da15fb7dcbb679b7087b310f7b4f6eebbed"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "余評価加群の左双対を作用交換して得る Serre 双加群の定義は見つからない。dg 核の tensor–Hom 随伴はこの双加群を構成していない。"
+    },
+    "4.6.4.6": {
+      "ha_page": 646,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|serre.*opposite|serre.*rev",
+          "files_with_matches": 1266,
+          "total_matching_lines": 2696,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstFixedValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexLongFixedValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUnitValueActionTo.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitUpperUnitTriangle.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFiberEdgeSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFinalFiberIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeLegFiberEvaluation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeLegFiberIso.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeTargetEvaluationComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeTargetFiberEvaluation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentKanRefinementOriginalEdges.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentReverseCompositionBase.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|serre.*opposite|serre.*rev",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "proper 代数の Serre 双加群の reversal との整合性は見つからない。dg 左右加群の対象の対応は Serre 双加群の比較を与えない。"
+    },
+    "4.6.4.7": {
+      "ha_page": 646,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean",
+          "sha256": "846af9064db9af0808b24ee66c378fa955c659c6852c8bf390224e5f5240f725"
+        }
+      ],
+      "reason": "余評価加群の左双対を Serre 双加群と評価加群の相対テンソルで記述する結果は見つからない。通常の相対テンソルと結合子にはこの双対の同定がない。"
+    },
+    "4.6.4.8": {
+      "ha_page": 646,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|evaluationModule|dualizing.*bimodule",
+          "files_with_matches": 11,
+          "total_matching_lines": 52,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/All.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationModuleNerveIso.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationSpace.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/InternalHom.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|evaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "評価加群の右双対から別に構成した双加群が Serre 双加群と同値になる結果は見つからない。通常の双対の一意性には評価・余評価を作用交換する比較がない。"
+    },
+    "4.6.4.9": {
+      "ha_page": 647,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|serre.?functor|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|serre.?functor|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean",
+          "sha256": "809a475d7776eb66490732eed4defad829dfc417444e27bb0e2d4ca3400ab72a"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+          "sha256": "9855b15291230e52afb5d5643bd486be4dc3c692b7240d8b0595b383dbe0917a"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Basic.lean",
+          "sha256": "0caf07b83cf694f8c1a3a890fe41d1a53942700791be619b1ccc3d8ec547a32a"
+        }
+      ],
+      "reason": "Serre 双加群の左右の忘却を A の双対と同定し、両作用を左右逆に誘導する結果は見つからない。基礎の完全対と通常の内部 Hom はこの二つの作用を備えていない。"
+    },
+    "4.6.4.10": {
+      "ha_page": 647,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|switch.*action|properAlgebra",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|switch.*action|properAlgebra",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "proper な A で作用交換後の左双対を元の双対と Serre 双加群のテンソルで表す自然同値は見つからない。双圏の合成随伴には作用交換 σ と Serre 双加群の比較がない。"
+    },
+    "4.6.4.11": {
+      "ha_page": 647,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|properAlgebra|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|properAlgebra|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "proper 代数上の左双対可能な加群が右双対も持ち、その右双対が左双対と Serre 双加群の相対テンソルになる結果は見つからない。"
+    },
+    "4.6.4.12": {
+      "ha_page": 647,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smoothAlgebra|smoothDG|coevaluationModule|evaluationModule",
+          "files_with_matches": 11,
+          "total_matching_lines": 52,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/PowerRootEnvelope/Unconditional/Localization.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean",
+            "SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHomFree.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/All.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationClosedNaturality.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationModuleNerveIso.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationPiChart.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationScalarClosedMap.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/EvaluationValueCohomology.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/NativeEvaluationSpace.lean",
+            "SerrePositivity/Spectra/SymmetricSpectrum/InternalHom.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "smoothAlgebra|smoothDG|coevaluationModule|evaluationModule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        }
+      ],
+      "reason": "評価・余評価加群の反対側の双対可能性と、作用交換による右双対可能性保存を同値とする判定は見つからない。dg 核の完全性判定にはこの評価・余評価の比較がない。"
+    },
+    "4.6.4.13": {
+      "ha_page": 648,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smoothAlgebra|smoothDG|smoothProper|coevaluationModule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "smoothAlgebra|smoothDG|smoothProper|coevaluationModule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "包絡代数上の評価・余評価加群の双対可能性を使う結合代数の smooth 性の定義は見つからない。可換環の幾何学的 smooth 性は当該双対性を定義していない。"
+    },
+    "4.6.4.14": {
+      "ha_page": 648,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "QCoh.*Morita|quasiCoherent.*smooth|properDG|smoothDG",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "QCoh.*Morita|quasiCoherent.*smooth|properDG|smoothDG",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/CriterionDerived.lean",
+          "sha256": "fb26cc0f3b4d3d8e4ae4e08077cd7e133e20790e172c61d9000164a517eb1a00"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "体上の準射影多様体の QCoh を dg 代数の加群として表現し、幾何学的な proper・smooth 性と代数の双対的な有限性を同値とする結果は見つからない。"
+    },
+    "4.6.4.15": {
+      "ha_page": 648,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smoothAlgebra|smoothDG|smooth.*opposite",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "smoothAlgebra|smoothDG|smooth.*opposite",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "Mathlib/Geometry/Manifold/Sheaf/Smooth.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Category/Tensor.lean",
+          "sha256": "d45e742b257a6ee3b03d2b2595740efb1e89243d1ecb5201d1219ee2eefcc6c1"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "結合代数の smooth 性が反対代数への移行で保たれる結果は見つからない。dg の反対構成と完全加群の定義には評価加群の双対性での比較がない。"
+    },
+    "4.6.4.16": {
+      "ha_page": 649,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.16",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualSerre|SerreBimodule|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "dualSerre|SerreBimodule|coevaluationModule|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean",
+          "sha256": "02ac374942918abf82d868aedca72da15fb7dcbb679b7087b310f7b4f6eebbed"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "smooth 代数の余評価加群の右双対を作用交換して得る双対 Serre 双加群の定義は見つからない。"
+    },
+    "4.6.4.17": {
+      "ha_page": 649,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualSerre|SerreBimodule|serre.*opposite",
+          "files_with_matches": 721,
+          "total_matching_lines": 1635,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentKanRefinementOriginalEdges.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CosliceFixedHomComposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CosliceOppositeHomComposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/OppositeHomFixedPostcomposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/OppositeKanPostcomposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedCoherentHomComposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedHomMorphismCompositionDisplay.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedHomMorphismValueComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedHomTriangleValueComparisons.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedLeftHomRefinementSquare.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedOppositeHomActionVertex.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/PointedOppositeHomFixedAction.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dualSerre|SerreBimodule|serre.*opposite",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Module/Basic.lean",
+          "sha256": "129b8622274f982c4c86e17212bc16cc21bc0b9bfa5e9ee33a34b53f58746604"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "双対 Serre 双加群の reversal との整合性は見つからない。通常の反対加群への変換はこの双対双加群を構成していない。"
+    },
+    "4.6.4.18": {
+      "ha_page": 649,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.18",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualSerre|SerreBimodule|switch.*action",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "dualSerre|SerreBimodule|switch.*action",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Galois/Equivalence.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean",
+          "sha256": "aadf4f223b5a80d595d0939224e75158032e1e9dc4fa319cd048da87261f1f7e"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "smooth な A で作用交換後の右双対を元の右双対と双対 Serre 双加群で表す自然同値は見つからない。通常の双圏の随伴の合成はこの比較を与えない。"
+    },
+    "4.6.4.19": {
+      "ha_page": 649,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualSerre|smoothAlgebra|smoothDG|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "dualSerre|smoothAlgebra|smoothDG|dualizing.*bimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "smooth 代数上で基礎対象が双対可能な左加群の両側の双対を構成し、左双対を右双対と双対 Serre 双加群で記述する結果は見つからない。"
+    },
+    "4.6.4.20": {
+      "ha_page": 649,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.20",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "dualSerre|SerreBimodule|smoothProper|kernelMoritaEquivalence",
+          "files_with_matches": 4,
+          "total_matching_lines": 13,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Checks/Morita/CriterionChecks.lean",
+            "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelMoritaCriterionInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGPerfectKernelMoritaInfinity.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "dualSerre|SerreBimodule|smoothProper|kernelMoritaEquivalence",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean",
+          "sha256": "ea1c394976ec0509d0eaff559976a3ea3a58993f63e37862ed522bd6310b7ca0"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "smooth かつ proper な代数の Serre 双加群と双対 Serre 双加群が相対テンソルの互いの逆元になる結果は見つからない。通常の Morita 同値は当該二つの双加群を構成・比較していない。"
+    },
+    "4.6.4.21": {
+      "ha_page": 650,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.4.21",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.6.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smoothProper|symmetric.*bicategory|SerreBimodule|monBicategory",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "smoothProper|symmetric.*bicategory|SerreBimodule|monBicategory",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Bimod.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "代数と双加群の対称モノイダル (∞,2) 圏、および任意のそのような圏の smooth・proper 対象への一般化は見つからない。通常の双加群双圏には外部テンソルと高次のデータがない。"
+    },
+    "4.6.5.2": {
+      "ha_page": 651,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Frobenius.*dual|nondegenerate_compr₂_mul_counit|regular.*dual",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Frobenius.*dual|nondegenerate_compr₂_mul_counit|regular.*dual",
+          "files_with_matches": 3,
+          "total_matching_lines": 11,
+          "sample_paths": [
+            "Mathlib/Algebra/Order/Group/Synonym.lean",
+            "Mathlib/Analysis/Convex/Cone/Basic.lean",
+            "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "非退化な λ の存在と、正則左・右加群の双対が反対側の正則加群となることの同値は見つからない。通常の Frobenius 余代数の非退化形式は、この加群の双対性を構成・比較していない。"
+    },
+    "4.6.5.3": {
+      "ha_page": 651,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreBimodule|serre.?functor|Frobenius.*module",
+          "files_with_matches": 8,
+          "total_matching_lines": 57,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Andre/Envelope/RootFamilyRaw.lean",
+            "SerrePositivity/BhattScholze/Andre/Perfection/DeltaAlgebra.lean",
+            "SerrePositivity/BhattScholze/Delta/Division/FrobeniusPushout.lean",
+            "SerrePositivity/BhattScholze/Delta/Extension/DeltaPDCompletion.lean",
+            "SerrePositivity/BhattScholze/Delta/Free/FreeDeltaFrobeniusFlat.lean",
+            "SerrePositivity/BhattScholze/Prism/Residue/PerfectDeltaResidue.lean",
+            "SerrePositivity/BhattScholze/Prismatic/PolynomialFrobeniusCech.lean",
+            "SerrePositivity/FieldTheory/FrobeniusPowerSubfield.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SerreBimodule|serre.?functor|Frobenius.*module",
+          "files_with_matches": 2,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "Mathlib/Analysis/Matrix/Normed.lean",
+            "Mathlib/FieldTheory/Finite/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "非退化な λ と Serre 双加群の左右の正則加群への同値を対応させる結果は見つからない。通常の Frobenius 形式の全単射には Serre 双加群がない。"
+    },
+    "4.6.5.4": {
+      "ha_page": 651,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|SerreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|SerreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Free.lean",
+          "sha256": "3bf57f7268658348fc2f72f222d05240010bfb762db79bd79ad2bdf85ea71347"
+        }
+      ],
+      "reason": "λ が Serre 双加群を自由正則加群として生成することと非退化性を対応させ、Serre 自己同型を構成する宣言は見つからない。"
+    },
+    "4.6.5.5": {
+      "ha_page": 652,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|Frobenius.*conjug",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|Frobenius.*conjug",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/RingTheory/Frobenius.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        }
+      ],
+      "reason": "Serre 自己同型の λ への依存と、λ を変えても共役類が不変となる結果は見つからない。通常の Frobenius 余代数の構成にこの自己同型はない。"
+    },
+    "4.6.5.6": {
+      "ha_page": 652,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|Frobenius.*automorphism",
+          "files_with_matches": 1,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Delta/Perfect/PerfectDeltaTensor.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SerreAutomorphism|NakayamaAutomorphism|Frobenius.*automorphism",
+          "files_with_matches": 5,
+          "total_matching_lines": 12,
+          "sample_paths": [
+            "Mathlib/FieldTheory/Finite/Extension.lean",
+            "Mathlib/FieldTheory/Galois/NormalBasis.lean",
+            "Mathlib/FieldTheory/Perfect.lean",
+            "Mathlib/RingTheory/Frobenius.lean",
+            "Mathlib/RingTheory/WittVector/Isocrystal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        }
+      ],
+      "reason": "λ(ab)=λ(bσλ(a)) により Serre 自己同型を特徴づける結果は見つからない。乗法と余単位の非退化形式はあるが、この自己同型とその一意性は構成されていない。"
+    },
+    "4.6.5.7": {
+      "ha_page": 652,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "symmetricFrobenius|SerreAutomorphism|SerreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "symmetricFrobenius|SerreAutomorphism|SerreBimodule",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "Serre 双加群を正則双加群と同定するデータ、巡回テンソル上の非退化評価、Serre 自己同型の代数としての恒等へのホモトピーによる symmetric Frobenius の定義は見つからない。"
+    },
+    "4.6.5.8": {
+      "ha_page": 653,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "symmetricFrobenius|SerreAutomorphism|Frobenius.*homotop",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/BhattScholze/Prismatic/FrobeniusCechComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "symmetricFrobenius|SerreAutomorphism|Frobenius.*homotop",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        }
+      ],
+      "reason": "Frobenius 形式の対称性と、Serre 自己同型が基礎圏または代数圏で恒等にホモトピックとなる条件の差の記述は見つからない。通常の余代数の Frobenius 方程式はこの高次の比較を扱わない。"
+    },
+    "4.6.5.9": {
+      "ha_page": 653,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cyclic.*bar|Hochschild|circle.*action|symmetricFrobenius",
+          "files_with_matches": 38,
+          "total_matching_lines": 223,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+            "SerrePositivity/DifferentialGraded/Bimodule/Value.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorLeft.lean",
+            "SerrePositivity/DifferentialGraded/Derived/AssociatorMiddle.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Basic.lean",
+            "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleComposition/Resolution.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/FunctorCoherence.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/IteratedModels.lean",
+            "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle/ModelIndependence.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "cyclic.*bar|Hochschild|circle.*action|symmetricFrobenius",
+          "files_with_matches": 4,
+          "total_matching_lines": 6,
+          "sample_paths": [
+            "Mathlib/Analysis/Complex/UnitDisc/Basic.lean",
+            "Mathlib/Dynamics/Circle/RotationNumber/TranslationNumber.lean",
+            "Mathlib/MeasureTheory/Integral/CircleAverage.lean",
+            "Mathlib/RepresentationTheory/Homological/GroupCohomology/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Right.lean",
+          "sha256": "3d58f192d3941c4f819f22067187dad217bcdbc80744a476393a39ec76528321"
+        }
+      ],
+      "reason": "評価・余評価加群の包絡代数上の相対テンソルによる巡回 bar 関手と、その円周群作用および同変な Frobenius 評価は見つからない。dg 双加群のテンソル圏への比較は Hochschild 型の構成への部品として記されているが、この巡回 bar と円周作用を作っていない。"
+    },
+    "4.6.5.10": {
+      "ha_page": 653,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "cyclic.*bar|symmetricFrobenius|SerreAutomorphism",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "cyclic.*bar|symmetricFrobenius|SerreAutomorphism",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean",
+          "sha256": "c4065dd826b0442e4f342ff170ae905161a82b8d50c0a59f5c416162d46bddd5"
+        }
+      ],
+      "reason": "可換代数から巡回 bar への標準写像の左ホモトピー逆と、Frobenius 構造の対称化および Serre 自己同型の自明性は見つからない。通常の可換乗法だけではこの構成は得られない。"
+    },
+    "4.6.5.11": {
+      "ha_page": 654,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Frobenius.*dual|Frobenius.*forget|nondegenerate_compr₂_mul_counit",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Interface/Theory.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Frobenius.*dual|Frobenius.*forget|nondegenerate_compr₂_mul_counit",
+          "files_with_matches": 1,
+          "total_matching_lines": 4,
+          "sample_paths": [
+            "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+          "sha256": "ec273d322bcd8be72c357916ac563c9ed6b9a5620e4cd4c37cd1f0c5668eb703"
+        }
+      ],
+      "reason": "Frobenius 代数上の双対評価に λ を合成すると基礎圏での双対評価になる定理は見つからない。通常の Frobenius 余代数の snake 方程式には、任意の加群の双対性を忘却する比較がない。"
+    },
+    "4.6.5.12": {
+      "ha_page": 654,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.12",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Frobenius.*adjunction|Frobenius.*coextend|compr₂_mul_counit_bijective",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "Frobenius.*adjunction|Frobenius.*coextend|compr₂_mul_counit_bijective",
+          "files_with_matches": 2,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Closed/Functor.lean",
+            "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean",
+          "sha256": "9d01de37595d4ea19974e64229802c16e091eb747ec4e7ddf0c4b48b1f989413"
+        }
+      ],
+      "reason": "λ の非退化性と、任意の加群・対象に対する Hom_A(M,A⊗N) → Hom(M,N) の同値を対応させる結果は見つからない。通常の coextension の随伴と Frobenius 形式はあるが、指定の λ によるこの比較はない。"
+    },
+    "4.6.5.13": {
+      "ha_page": 655,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smooth.*Frobenius|Frobenius.*dual|dualizing.*module",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "SerrePositivity/HomologicalAlgebra/LinearYoneda.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "smooth.*Frobenius|Frobenius.*dual|dualizing.*module",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        }
+      ],
+      "reason": "smooth な Frobenius 代数上で基礎の双対対象に反対側の加群構造を持ち上げ、λ を通じて元の評価と比較する結果は見つからない。"
+    },
+    "4.6.5.14": {
+      "ha_page": 655,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Frobenius.*dual|Frobenius.*forget|symmetricFrobenius",
+          "files_with_matches": 1,
+          "total_matching_lines": 2,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Interface/Theory.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Frobenius.*dual|Frobenius.*forget|symmetricFrobenius",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        }
+      ],
+      "reason": "可換 Frobenius 代数の内部加群の相対テンソルに関する双対評価が、λ との合成で基礎圏の双対評価になる結果は見つからない。通常の対称内部加群の構造はあるが Frobenius 評価の比較がない。"
+    },
+    "4.6.5.15": {
+      "ha_page": 656,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.6.5.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.6.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.6.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.7.0",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "smooth.*Frobenius|Frobenius.*dual|symmetricFrobenius",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "smooth.*Frobenius|Frobenius.*dual|symmetricFrobenius",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/DifferentialGraded/Morita/Perfect.lean",
+          "sha256": "43d41ae57db80af2a72b7e48243f89ced4ca92c2eb526bb35123b1e5aee3afe9"
+        },
+        {
+          "path": "Mathlib/RingTheory/Coalgebra/IsFrobenius.lean",
+          "sha256": "36b495aee77a0e7336274f2e508d6684b772033e826b8b6237943266a1a42b06"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean",
+          "sha256": "8a02e3383b78db0424497a3fa54a5667aaba262d8bc8cc0abb601df168058171"
+        }
+      ],
+      "reason": "smooth な可換 Frobenius 代数上で基礎対象の双対性を加群の双対性へ持ち上げ、忘却と評価を整合させる結果は見つからない。dg 完全性と通常の Frobenius 方程式にはこの持ち上げがない。"
     }
   }
 }

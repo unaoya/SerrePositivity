@@ -274,8 +274,8 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.4.1.12,none,,単体圏の順序写像と部分区間を確認した。値の差が高々 1 の写像を対象とする矢印圏の充満部分 Step と、隣接値を色にする Φ は見つからなかった。,,not_found,
 4.4.1.13,none,,相対関手のマーク条件を確認した。Φ で Tens の inert 辺に送られる Step の辺を定める型は見つからなかった。,,not_found,
 4.4.1.14,none,,単体圏の連続部分区間の包含を確認した。Step の可換四角形の inert 性を、標的辺の同型と始域辺の連続包含で判定する型は見つからなかった。,,not_found,
-4.4.1.15,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像と指定辺（Lean では S 上の Step、Tens と inert 辺を明示する）。結論：底上で指定辺を余デカルト辺に送る関手の充満部分複体を与える（Alg_S の関手空間の成分に一致）。Tens の S-族と inert 辺は含まれない。,,found,component
-4.4.1.16,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像と指定辺（Lean では Assoc⊗ への Step の写像とマークを明示する）。結論：指定辺の保存を課した相対関手の充満部分複体を得る（HA の最後の表示に一致）。C_S の operad 族とその比較は含まれない。,,found,component
+4.4.1.15,none,,S→Step からの Tens の族と、inert 辺を保つ Alg_S の ∞ 圏は見つからない。一般の markedCocartesianFunctorSpace は指定した底と辺から相対関手の部分複体を作るが、本文の Tens・Step とそのマークを構成する宣言がないため、当該 Alg_S を直接導けない。,,not_found,
+4.4.1.16,none,,モノイダル ∞ 圏から S 上の Tens を経て Alg_S と関手圏を比較する結果は見つからない。一般の指定辺保存相対関手空間はあるが、Tens の族 C_S とその入力となる Step 上の写像を構成していない。,,not_found,
 4.4.1.17,none,,相対関手の前合成同値からマーク付きの制限を比較する型を確認した。Tens と Step の指定写像 Φ が Alg/Tens_S→Alg_S を同値にする結果は見つからなかった。,,not_found,
 4.4.1.18,none,,相対関手の一点評価とマーク付き前合成を確認した。S を [0] にした Step の比較が A∞ 代数と Assoc 代数の比較になる型は見つからなかった。,,not_found,
 4.4.1.19,none,,相対関手空間のカリー化とマーク付き部分複体を確認した。Tens または Step と K の可変な底変換からの関手を表現する Bim と Bim′ の型は見つからなかった。,,not_found,
@@ -310,32 +310,32 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.4.3.4,none,,凸な順序写像から得る Tens の Cartesian ファイブレーション、その分類関手 vα および能動スライスの終対象は見つからない。,,not_found,
 4.4.3.5,none,,凸な α に対するオペラッド左 Kan 拡張の存在と性質を各色の一辺のオペラッド余極限で判定する定理は見つからない。既知の終添字に関する相対余極限の判定には Tens の比較がない。,,not_found,
 4.4.3.6,none,,凸な α で底の写像が vα を経由するとき、vα による前合成をオペラッド左 Kan 拡張とする結果は見つからない。,,not_found,
-4.4.3.7,partial,SimplexCategory.δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:233 | SimplexCategory.coe_δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:606,仮定：有限順序集合 [m] と省く添字 i（Lean は単体圏の部分に限る）。結論：i を飛ばす単調単射を i 番目の面写像として構成する（αᵢ の成分に一致）。Tens 間の ξ は含まれない。,,found,component
+4.4.3.7,partial,SimplexCategory.δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:233 | SimplexCategory.coe_δ @ Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean:606,仮定：有限順序集合 [m] と省く添字 i（Lean が強い：単体圏の部分に限る）。結論：i を飛ばす単調単射を i 番目の面写像として構成する（αᵢ の成分に一致）。Tens 間の ξ は含まれない。,,found,component
 4.4.3.8,none,,面写像に沿うオペラッド左 Kan 拡張を、残る代数・双加群の各色の余極限と内側の相対テンソルの拡張で判定する結果は見つからない。,,not_found,
 4.4.3.9,none,,Tens の断面の射影が余 Cartesian となり、凸写像と内側の面の輸送をそれぞれ制限と相対テンソルで記述する結果は見つからない。通常の双圏はこの射影と輸送の比較を与えない。,,not_found,
 4.4.3.10,none,,指定の余 Cartesian 射影の全空間としての単体集合 BMod(C) は見つからない。通常の双加群双圏は全空間の単体集合を構成していない。,,not_found,
-4.4.3.11,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ（Lean は通常圏に限る）。結論：内部モノイドを対象、双加群を 1-射、双加群準同型を 2-射、相対テンソルを合成とする双圏を構成する。Segal 射影とファイバーの同値は含まれない。,,found,special
-4.4.3.12,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990 | CategoryTheory.EndMonoidal @ Mathlib/CategoryTheory/Bicategory/End.lean:24 | SerrePositivity.MonoidalBalancedTensor.monoidalCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Monoidal.lean:876,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏（内部左加群の構成には組紐と可換モノイドも仮定）。結論：双圏の A の自己射圏は相対テンソルを積とするモノイダル圏となる。可換な場合は内部加群の平衡テンソルによる構造も構成済み。∞ オペラッドの比較は含まれない。,,found,special
-4.4.3.13,partial,SerrePositivity.MonoidalModuleInternalHom.tensorInternalHomAdjunction @ SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean:412 | SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | CategoryTheory.BraidedCategory.tensorLeftIsoTensorRight @ Mathlib/CategoryTheory/Monoidal/Braided/Basic.lean:144 | CategoryTheory.Adjunction.leftAdjoint_preservesColimits @ Mathlib/CategoryTheory/Adjunction/Limits.lean:90 | CategoryTheory.Limits.preservesColimits_of_natIso @ Mathlib/CategoryTheory/Limits/Preserves/Basic.lean:340,仮定：通常の対称閉モノイダル圏の可換内部モノイドと、内部 Hom と平衡テンソルを作る等化子・余等化子および保存条件。結論：平衡テンソルは内部 Hom の左随伴なので通常圏の余極限を保存し、組紐によってもう一方の変数でも保存する。一般の幾何学的実現は含まれない。,,found,special
-4.4.3.14,partial,Bimod.associatorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:720 | SerrePositivity.DifferentialGraded.BimoduleTensor.derivedAssociatorIso @ SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean:1046,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ。または小さい dg 圏と後二つが右相対 K-flat な dg 双加群。結論：相対テンソルの二つの括り方を結ぶ同型を構成し、通常の導来圏の版では第一変数に関して自然な同型を得る。一般の ∞ 双加群圏は含まれない。,,found,special
-4.4.3.15,partial,Bimod.pentagon_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:924,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な四つの双加群。結論：相対テンソルの結合子の五角形の二経路が等しい。一般の高次ホモトピーは含まれない。,,found,special
-4.4.3.16,partial,Bimod.leftUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:730 | Bimod.rightUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:739,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の A-B 双加群 M。結論：A⊗ₐM と M⊗ᵦB を M と同一視する二つの双加群同型を構成する。一般の ∞ 関手の同値は含まれない。,,found,special
-4.4.3.17,partial,Bimod.triangle_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:966,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な二つの双加群。結論：中央に正則双加群を挿入した場合の単位三角が可換となる。両端の図式と一般の高次ホモトピーは含まれない。,,found,component
-4.4.3.18,partial,CategoryTheory.Bicategory.unitors_equal @ Mathlib/CategoryTheory/Bicategory/Basic.lean:451 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の内部モノイド A。結論：双圏の恒等 1-射で左右の単位子の射が等しいので、正則 A-A 双加群の左右の単位写像が一致する。一般の高次ホモトピーは含まれない。,,found,special
+4.4.3.11,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ（Lean が強い：通常圏に限る）。結論：内部モノイドを対象、双加群を 1-射、双加群準同型を 2-射、相対テンソルを合成とする双圏を構成する（この仮定での HA の結論の一部に一致）。Segal 射影とファイバーの同値は含まれない。,,found,special
+4.4.3.12,partial,Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990 | CategoryTheory.EndMonoidal @ Mathlib/CategoryTheory/Bicategory/End.lean:24 | SerrePositivity.MonoidalBalancedTensor.monoidalCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Monoidal.lean:876,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏（内部左加群の構成には組紐と可換モノイドも仮定）（Lean が強い：通常のモノイダル圏と指定した余等化子の存在）。結論：双圏の A の自己射圏は相対テンソルを積とするモノイダル圏となる（この仮定での HA の結論の一部に一致）。可換な場合は内部加群の平衡テンソルによる構造も構成済み。∞ オペラッドの比較は含まれない。,,found,special
+4.4.3.13,partial,SerrePositivity.MonoidalModuleInternalHom.tensorInternalHomAdjunction @ SerrePositivity/CategoryTheory/Monoidal/Mod/InternalHom.lean:412 | SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | CategoryTheory.BraidedCategory.tensorLeftIsoTensorRight @ Mathlib/CategoryTheory/Monoidal/Braided/Basic.lean:144 | CategoryTheory.Adjunction.leftAdjoint_preservesColimits @ Mathlib/CategoryTheory/Adjunction/Limits.lean:90 | CategoryTheory.Limits.preservesColimits_of_natIso @ Mathlib/CategoryTheory/Limits/Preserves/Basic.lean:340,仮定：通常の対称閉モノイダル圏の可換内部モノイドと、内部 Hom と平衡テンソルを作る等化子・余等化子および保存条件（Lean が強い：通常の対称閉モノイダル圏と指定した等化子・余等化子）。結論：平衡テンソルは内部 Hom の左随伴なので通常圏の余極限を保存し、組紐によってもう一方の変数でも保存する（この仮定での HA の結論の一部に一致）。一般の幾何学的実現は含まれない。,,found,special
+4.4.3.14,partial,Bimod.associatorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:720 | SerrePositivity.DifferentialGraded.BimoduleTensor.derivedAssociatorIso @ SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean:1046,仮定：通常のモノイダル圏に必要な余等化子があり左右のテンソルがそれを保つ。または小さい dg 圏と後二つが右相対 K-flat な dg 双加群（Lean が強い：通常圏、または指定した K-flat な dg 双加群）。結論：相対テンソルの二つの括り方を結ぶ同型を構成し、通常の導来圏の版では第一変数に関して自然な同型を得る（この仮定での HA の結論の一部に一致）。一般の ∞ 双加群圏は含まれない。,,found,special
+4.4.3.15,partial,Bimod.pentagon_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:924,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な四つの双加群（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：相対テンソルの結合子の五角形の二経路が等しい（この仮定での HA の結論の一部に一致）。一般の高次ホモトピーは含まれない。,,found,special
+4.4.3.16,partial,Bimod.leftUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:730 | Bimod.rightUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:739,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の A-B 双加群 M（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：A⊗ₐM と M⊗ᵦB を M と同一視する二つの双加群同型を構成する（この仮定での HA の結論の一部に一致）。一般の ∞ 関手の同値は含まれない。,,found,special
+4.4.3.17,partial,Bimod.triangle_bimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:966,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の合成可能な二つの双加群（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：中央に正則双加群を挿入した場合の単位三角が可換となる（この仮定での HA の結論の一部に一致）。両端の図式と一般の高次ホモトピーは含まれない。,,found,component
+4.4.3.18,partial,CategoryTheory.Bicategory.unitors_equal @ Mathlib/CategoryTheory/Bicategory/Basic.lean:451 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：余等化子とそれを保つ左右テンソルをもつ通常のモノイダル圏の内部モノイド A（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：双圏の恒等 1-射で左右の単位子の射が等しいので、正則 A-A 双加群の左右の単位写像が一致する（この仮定での HA の結論の一部に一致）。一般の高次ホモトピーは含まれない。,,found,special
 4.4.3.19,none,,T が空でないとき S への全射を含む指定の順序付きスパンの圏の nerve の弱可縮性は見つからない。一般の Quillen A にはこの圏とファイバーの可縮性の証明がない。,,not_found,
 4.4.3.20,none,,指定の単射と写像を延長する順序付き可換四角形の圏の nerve の弱可縮性は見つからない。,,not_found,
 4.4.3.21,none,,段状写像の圏 Step の N(Δ)ᵒᵖ への射影が flat categorical fibration となる結果は見つからない。,,not_found,
 4.4.3.22,none,,Tens の射を順序付きファイバーに値をとる指定の単射で分類する記述は見つからない。置換オペラッドのブロック合成は同じ射の分類を与えない。,,not_found,
-4.5.1.1,partial,ModuleCat @ Mathlib/Algebra/Category/ModuleCat/Basic.lean:56,仮定：固定した通常の可換環 A（Lean は通常の環に限る）。結論：A-加群を対象、A-線型写像を射とする通常の加群圏を構成する（固定 A の基礎圏の部分に一致）。可変 A の一般化 ∞ オペラッドとそのファイバーは含まれない。,,found,special
+4.5.1.1,partial,ModuleCat @ Mathlib/Algebra/Category/ModuleCat/Basic.lean:56,仮定：固定した通常の可換環 A（Lean が強い：通常の環に限る）。結論：A-加群を対象、A-線型写像を射とする通常の加群圏を構成する（固定 A の基礎圏の部分に一致）。可変 A の一般化 ∞ オペラッドとそのファイバーは含まれない。,,found,special
 4.5.1.2,none,,coherent ∞ オペラッドの写像に沿う係数の底変換と、添字 K の比較から得る加群オペラッドの関手は見つからない。環の写像に沿う通常のスカラー制限はオペラッド自体を替える操作を与えない。,,not_found,
 4.5.1.3,none,,可換加群から Assoc 加群と両側作用を経て A∞ 左加群に至る可変代数上の比較 Θ は見つからない。通常の右作用の構成はこの図式の比較関手を与えない。,,not_found,
 4.5.1.4,none,,可換加群と A∞ 左加群を比較するホモトピー引き戻し四角形は見つからない。一般の底変換にはこの四角形と比較同値の証明がない。,,not_found,
 4.5.1.5,none,,固定可換代数の operadic Mod と A∞ 左加群の比較 Θ が同値になる結果は見つからない。通常の環の加群圏は比較する二つの模型を備えていない。,,not_found,
 4.5.1.6,none,,可換加群全体を左加群と可換代数のホモトピー引き戻しで同定し、固定代数の両模型を比較する結果は見つからない。通常の加群圏やスカラー制限はこの引き戻しと比較同値を構成していない。,,not_found,
-4.5.2.1,partial,SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | SerrePositivity.MonoidalBalancedTensor.rightActionMap @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:52 | SerrePositivity.MonoidalBalancedTensor.moduleObj @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:375,仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean は通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。,,found,special
+4.5.2.1,partial,SerrePositivity.MonoidalBalancedTensor.symmetricCategory @ SerrePositivity/CategoryTheory/Monoidal/Mod/Symmetric.lean:289 | SerrePositivity.MonoidalBalancedTensor.rightActionMap @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:52 | SerrePositivity.MonoidalBalancedTensor.moduleObj @ SerrePositivity/CategoryTheory/Monoidal/Mod/BalancedTensor.lean:375,仮定：通常の対称モノイダル圏の可換内部モノイド A と必要な余等化子およびテンソルによる保存条件（Lean が強い：通常圏に限る）。結論：内部左加群に組紐から右作用を入れ、その作用で平衡化した相対テンソルを積とする対称モノイダル構造を構成する（この仮定での HA の結論の一部に一致）。(1) の通常圏の場合と (2) のテンソル公式に対応し、∞ オペラッド間のモノイダル比較は含まれない。,,found,special
 4.5.2.2,none,,∞ オペラッドが余 Cartesian になることを単位と二項の能動写像の余極限持ち上げだけで判定する定理は見つからない。既に余 Cartesian ファイブレーションを仮定した合成や通常圏の二項テンソルからはこの判定は得られない。,,not_found,
 4.5.3.1,none,,可換代数と有限基点集合を同時に動かす加群オペラッドの射影が余 Cartesian ファイブレーションとなる結果は見つからない。固定環のモノイダル圏と環準同型のスカラー拡大はこの全空間を組み立てていない。,,not_found,
-4.5.3.2,partial,ModuleCat.extendScalars @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:399 | ModuleCat.extendScalars_ε @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:80 | ModuleCat.extendScalars_μ @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:90,仮定：通常の可換環の準同型 A → B（Lean は通常圏に限る）。結論：B⊗ₐ− を構成し、単位とテンソルの比較射を標準同型の逆と同定する（モノイダルなスカラー拡大の通常圏の成分）。∞ 圏の分類関手とその高次自然性は含まれない。,,found,special
+4.5.3.2,partial,ModuleCat.extendScalars @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:399 | ModuleCat.extendScalars_ε @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:80 | ModuleCat.extendScalars_μ @ Mathlib/Algebra/Category/ModuleCat/Monoidal/Adjunction.lean:90,仮定：通常の可換環の準同型 A → B（Lean が強い：通常圏に限る）。結論：B⊗ₐ− を構成し、単位とテンソルの比較射を標準同型の逆と同定する（モノイダルなスカラー拡大の通常圏の成分）。∞ 圏の分類関手とその高次自然性は含まれない。,,found,component
 4.5.3.3,none,,任意の結合代数の両側制限に対して B⊗ₐM⊗ₐB を左随伴とし、テンソル比較が一般には同値でないという結果は見つからない。dg 圏の片側加群の拡大と可換環加群のモノイダル拡大はこの双加群の結論を与えない。,,not_found,
 4.5.3.4,none,,S 上で Cartesian な ∞ オペラッド族が局所余 Cartesian になること、および局所余 Cartesian 辺をファイバーの辺と慣性射で検査する分解結果は見つからない。,,not_found,
 4.5.3.5,none,,局所余 Cartesian な ∞ オペラッド族の余 Cartesian 性を α-good 条件、とくに零項・二項で検査する同値は見つからない。一般の余 Cartesian 辺の合成にはこの簡約の結論がない。,,not_found,
@@ -352,3 +352,89 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.5.4.10,partial,SerrePositivity.Quillen.pushoutProduct_cofibration @ SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean:74 | SerrePositivity.Quillen.tensor_isCofibrant @ SerrePositivity/HomotopicalAlgebra/Monoidal/CofibrantTensor.lean:49,仮定：Quillen テンソルを持つモデル圏で底の二つの余ファイブレーションまたは余ファイブラント対象（Lean が強い：添字圏は両方とも一点、対象については組紐付き閉の場合）。結論：押し出し積が余ファイブレーション、テンソル積が余ファイブラント（その場合に二つの結論が一致）。一般の二つの射影図式の外部積は型に含まれない。,,found,special
 4.5.4.11,none,,射影余ファイブラントな通常図式では余極限とホモトピー余極限の比較が弱同値になる。Σₙ 上で power cofibration から必要な射影余ファイブラント性を得る比較と、σⁿ の余ファイブレーション性は見つからなかった。,,not_found,
 4.5.4.12,none,,dg operad 代数の通常の忘却が sifted 余極限を作る結果と、射影置換でホモトピー余極限を計算する結果を確認した。厳密可換代数の局所化後の忘却が N(C) 型の余極限を保つ比較は見つからなかった。,,not_found,
+4.6.1.1,mathlib,CategoryTheory.ExactPairing @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:78,仮定：通常のモノイダル圏と対象 X、Y（HA と一致）。結論：評価 Y⊗X → 1、余評価 1 → X⊗Y と二つの三角恒等式を双対データとして定義する（HA と一致）。HA がこの項目で扱う通常圏の定義と一致する。,,found,
+4.6.1.2,partial,CategoryTheory.isLeftAdjoint_of_preservesColimits_of_isSeparating @ Mathlib/CategoryTheory/Adjunction/AdjointFunctorTheorems.lean:119 | CategoryTheory.Adjunction.homEquiv @ Mathlib/CategoryTheory/Adjunction/Basic.lean:159,仮定：通常圏の右テンソル関手が余極限を保ち、作用先の圏に余完備性・余 well-powered 性・小さい分離族がある（Lean が強い：通常圏で余完備性・余 well-powered 性・小さい分離族を追加）。結論：固定した C による右テンソルの右随伴が存在し、その値が通常の Hom 関手を表現する（この仮定での HA の結論の一部に一致）。可呈示 ∞ 圏の写像空間の表現可能性は含まれない。,,found,stronger-hyp
+4.6.1.3,partial,CategoryTheory.MonoidalClosed.internalHom @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:289 | CategoryTheory.MonoidalClosed.internalHomAdjunction₂ @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:301 | CategoryTheory.BraidedCategory.tensorLeftIsoTensorRight @ Mathlib/CategoryTheory/Monoidal/Braided/Basic.lean:144,仮定：通常の組紐付き閉モノイダル圏が自分自身に作用する場合（Lean が強い：通常の組紐付き閉モノイダル圏の自己作用）。結論：内部 Hom は指数の変数に反変、値域に共変であり、パラメータ付き随伴をなす（この仮定での HA の結論の一部に一致）。組紐で右テンソルに移せる。一般の ∞ 圏の作用と Yoneda を通じた因子化は含まれない。,,found,special
+4.6.1.4,partial,CategoryTheory.Adjunction.rightAdjoint_preservesLimits @ Mathlib/CategoryTheory/Adjunction/Limits.lean:203,仮定：通常圏の固定 C による右テンソルと指数関手が随伴する場合（Lean が強い：通常圏で固定指数関手の右随伴性を指定）。結論：右随伴である指数関手が通常の極限をすべて保つ（この仮定での HA の結論の一部に一致）。一般の右テンソル ∞ 圏は含まれない。,,found,special
+4.6.1.5,partial,CategoryTheory.tensorRightHomEquiv @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:411 | CategoryTheory.tensorRightAdjunction @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:465,仮定：通常のモノイダル圏が自分自身に作用し、X と X∨ に双対データがある（Lean が強い：通常のモノイダル圏の自己作用）。結論：評価との合成が通常の Hom の全単射を与え、X∨ による右テンソルが X による右テンソルの右随伴となる（この仮定での HA の結論の一部に一致）。一般の ∞ 圏の作用は含まれない。,,found,special
+4.6.1.6,partial,CategoryTheory.tensorRightHomEquiv @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:411,"仮定：通常のモノイダル圏の完全対 (C,B) とその評価（Lean が強い：通常のモノイダル圏の双対データを指定）。結論：評価が Hom(D,A⊗B) と Hom(D⊗C,A) の全単射を与える（この仮定での HA の結論の一部に一致）。(1) ⇒ (2) の通常圏の場合に一致する。逆向きと写像空間は含まれない。",,found,direction
+4.6.1.7,partial,CategoryTheory.HasRightDual @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:237 | CategoryTheory.HasLeftDual @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:243,仮定：通常のモノイダル圏の対象（Lean が強い：通常のモノイダル圏の場合）。結論：左右の双対対象と対応する完全対をもつことを定義する（この仮定での HA の結論の一部に一致）。∞ 圏のホモトピー圏への適用と写像空間での特徴づけは含まれない。,,found,special
+4.6.1.8,none,,評価の矢印 ∞ 圏の部分圏として双対データの ∞ 群oid DDat(C) を定義し、その忘却を構成する宣言は見つからない。通常圏の対象の組に付く完全対はこの全体の ∞ 圏を与えない。,,not_found,
+4.6.1.9,none,,双対データ間の射の両成分が互いの双対を通じて逆同値となり、忘却の像が双対可能対象の同値だけの部分圏に入る結果は見つからない。通常圏の双対射と評価の自然性はあるが、当該双対データの圏と射の条件からの結論は構成されていない。,,not_found,
+4.6.1.10,partial,CategoryTheory.rightDualIso @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:661 | CategoryTheory.leftDualIso @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:673,仮定：通常のモノイダル圏で対象の同じ側の二つの双対データ（Lean が強い：通常圏で同じ対象の二つの双対データを指定）。結論：二つの双対対象の間の標準同型を構成する（ファイバーの対象間の比較に対応）。DDat の射影の自明 Kan ファイブレーション性と高次の可縮性は含まれない。,,found,component
+4.6.1.11,none,,モノイダル ∞ 圏の図式の極限で双対可能性が各射影で検出される結果は見つからない。各通常圏が右 rigid である場合の関手圏の構成は、任意の図式の極限での検出を与えない。,,not_found,
+4.6.1.12,partial,CategoryTheory.BraidedCategory.hasLeftDualOfHasRightDual @ Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean:85 | CategoryTheory.BraidedCategory.hasRightDualOfHasLeftDual @ Mathlib/CategoryTheory/Monoidal/Rigid/Braided.lean:91,仮定：通常の組紐付きモノイダル圏の対象（対称の場合を含む）（Lean が強い：通常の組紐付きモノイダル圏の場合）。結論：右双対から左双対を構成し、左双対からも右双対を構成する（この仮定での HA の結論の一部に一致）。一般の対称モノイダル ∞ 圏の構成は含まれない。,,found,special
+4.6.2.1,partial,CategoryTheory.Bicategory.Adjunction @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:89 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：必要な余等化子があり左右のテンソルがそれを保つ通常のモノイダル圏（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：正則双加群からの余評価と正則双加群への評価が二つの三角式を満たすことを、双加群双圏の随伴のデータとして表す（(1) の通常圏の場合）。作用する ∞ 圏を動かした (2)・(3) との同値は含まれない。,,found,component
+4.6.2.2,none,,二つの正則な右加群圏での随伴だけから双加群の双対性を判定する補題は見つからない。通常の双圏 Yoneda にはここで指定された二つの検査で十分とする結論がない。,,not_found,
+4.6.2.3,partial,CategoryTheory.Bicategory.Adjunction @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:89 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：必要な余等化子があり左右のテンソルがそれを保つ通常のモノイダル圏（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：双加群双圏の 1-射間の随伴として、与えた余評価が左右の双対を示す条件を表す（この仮定での HA の結論の一部に一致）。一般の ∞ 双加群での同値な特徴づけは含まれない。,,found,special
+4.6.2.4,none,,単位代数の自己双加群から基礎圏へのモノイダル同値と、その下で二つの双対性が一致する結果は見つからない。通常の双加群双圏と基礎圏の完全対を比較するこの同値は確認できなかった。,,not_found,
+4.6.2.5,none,,対象の双対性から X⊗A と A⊗X∨ を異なる底代数を持つ双加群の双対対にし、指定の評価・余評価を与える宣言は見つからない。通常の自由内部加群の忘却への随伴はこの双加群の双対性を示さない。,,not_found,
+4.6.2.6,partial,CategoryTheory.Bicategory.Adjunction.comp @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:161 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：必要な余等化子があり左右のテンソルがそれを保つ通常のモノイダル圏と合成可能な双加群の二つの随伴（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：相対テンソルの左右の双対は、双対を逆順に相対テンソルしたものになる（双圏の随伴の合成）。一般の ∞ 双加群は含まれない。,,found,special
+4.6.2.7,partial,CategoryTheory.Functor.LeftLinear @ Mathlib/CategoryTheory/Monoidal/Action/LinearFunctor.lean:156,仮定：通常のモノイダル圏 C が通常圏 M と N に左作用する（Lean が強い：通常のモノイダル作用の圏の場合）。結論：通常の関手に可逆な作用比較と単位・結合の整合性を持たせ、C-線型性を定義する（この仮定での HA の結論の一部に一致）。LM オペラッドで定義する関手の ∞ 圏は含まれない。,,found,special
+4.6.2.8,none,,色 m での評価から LinFun の ∞ 圏の忘却関手を得て、指定の余極限を保つ全充満部分圏を切り出す宣言は見つからない。通常圏の LeftLinear は個々の関手に付く性質とデータである。,,not_found,
+4.6.2.9,none,,C-線型関手を固定の A 上の左加群に作用させ、線型関手に関して関手的な比較を与える宣言は見つからない。通常の LeftLinear の作用比較と内部加群圏はあるが、この比較関手は確認できなかった。,,not_found,
+4.6.2.10,none,,右作用をもつ任意の ∞ 圏でのテンソルの左随伴と、線型な移送に対する左随伴可能性により双加群の左双対性を判定する定理は見つからない。dg 核の導来テンソルの右随伴はこの判定を与えない。,,not_found,
+4.6.2.11,none,,正則加群 B で左随伴を評価して得る F(B) から Y への同値で、余評価の双対性を特徴づける結果は見つからない。一般の随伴の Hom 同値にはこの双対性判定がない。,,not_found,
+4.6.2.12,none,,右側の代数を制限しても指定の評価が双対データを与える結果は見つからない。導来双加群の制限と合成の比較には評価と双対性の主張がない。,,not_found,
+4.6.2.13,none,,双加群の左双対可能性を右側の代数の制限、とくに単位代数への制限で検出する定理は見つからない。dg 双加群の完全性条件はこの双対性の同値を与えない。,,not_found,
+4.6.2.14,none,,指定の評価が双対データを与えることが右側の代数の制限で保存・反映される結果は見つからない。dg 双加群の制限の比較にはこの評価の条件がない。,,not_found,
+4.6.2.15,partial,CategoryTheory.Bicategory.Adjunction.id @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:106 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：必要な余等化子があり左右のテンソルがそれを保つ通常のモノイダル圏（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：双加群双圏の恒等 1-射である正則双加群が両側で自分自身の双対になる（この仮定での HA の結論の一部に一致）。一般の ∞ 双加群は含まれない。,,found,special
+4.6.2.16,partial,Bimod.regular @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:169 | Bimod.rightUnitorBimod @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:739 | CategoryTheory.Bicategory.Adjunction.id @ Mathlib/CategoryTheory/Bicategory/Adjunction/Basic.lean:106 | Bimod.monBicategory @ Mathlib/CategoryTheory/Monoidal/Bimod.lean:990,仮定：必要な余等化子があり左右のテンソルがそれを保つ通常のモノイダル圏の内部モノイド A（Lean が強い：必要な余等化子をもつ通常のモノイダル圏の場合）。結論：正則 A-A 双加群と、その自己相対テンソルの単位同型で与える自己双対を構成する（この仮定での HA の結論の一部に一致）。異なる二つの代数への制限と、その間の双対性は含まれない。,,found,component
+4.6.2.17,partial,ModuleCat.extendRestrictScalarsAdj @ Mathlib/Algebra/Category/ModuleCat/ChangeOfRings.lean:880 | SerrePositivity.DifferentialGraded.dgModuleExtensionRestrictionAdjunction @ SerrePositivity/DifferentialGraded/Module/Functor.lean:931 | SerrePositivity.DifferentialGraded.dgDerivedExtensionRestrictionAdjunction @ SerrePositivity/DifferentialGraded/Derived/FunctorExtensionAdjunction.lean:548,仮定：通常の可換環の準同型、または小さい dg 圏の dg 関手（Lean が強い：通常圏と通常の導来圏に限る）。結論：加群の制限に対してテンソルによる拡大が左随伴となり、dg では導来拡大・制限にも随伴を構成する（この仮定での HA の結論の一部に一致）。一般の左テンソル ∞ 圏は含まれない。,,found,special
+4.6.2.18,partial,CategoryTheory.tensorRightHomEquiv @ Mathlib/CategoryTheory/Monoidal/Rigid/Basic.lean:411,"仮定：通常のモノイダル圏で A が単位代数の場合の完全対 (Y,X)（Lean が強い：通常圏で底代数を単位代数に特殊化）。結論：余評価から Hom(C⊗Y,M) → Hom(C,M⊗X) の全単射を与える（条件 (*) のこの場合に一致）。逆向きと一般の代数での写像空間は含まれない。",,found,direction
+4.6.2.19,none,,可換代数の加群の内部相対テンソルに関する双対性と、両側作用に関する双対性を比較する同値は見つからない。通常の対称モノイダル内部加群圏の構成にはこの双対性の移送がない。,,not_found,
+4.6.2.20,none,,両側作用の双対評価を可換代数上の相対テンソルの双対評価へ持ち上げる結果は見つからない。通常の双対の一意性は、異なる二種類の双対を結ぶこの持ち上げを与えない。,,not_found,
+4.6.3.1,none,,BM の順序を逆転するオペラッドの involution と、双加群全体の reversal は見つからない。dg 左加群から反対 dg 圏上の右加群への変換は片方の作用に限り、BM の構成を与えない。,,not_found,
+4.6.3.2,partial,SerrePositivity.DifferentialGraded.leftModuleEquivRightOpposite @ SerrePositivity/DifferentialGraded/Module/Basic.lean:370 | SerrePositivity.DifferentialGraded.LeftModule.toRightOpposite @ SerrePositivity/DifferentialGraded/Module/Basic.lean:346,仮定：可換基礎環上の小さい dg 圏 D（Lean が強い：通常の dg 加群の対象に限る）。結論：D 上の左 dg 加群と Dᵒᵖ 上の右 dg 加群を互いに逆な変換で対応させる（この仮定での HA の結論の一部に一致）。BM の部分オペラッドと全加群単体集合の同型は含まれない。,,found,component
+4.6.3.3,none,,異なる両側の代数を動かし、外部テンソルを _{A⊗A′}BMod_{B⊗B′} に値をとる対称モノイダル構造として構成する宣言は見つからない。dg 圏のテンソルと双加群の uncurry はこの外部テンソルを与えない。,,not_found,
+4.6.3.4,none,,外部テンソルと二つの異なる底代数上の相対テンソルの交換同値は見つからない。dg 相対テンソルの結合同型と基礎環変更の比較は、この四つの双加群の外部テンソルを比較していない。,,not_found,
+4.6.3.5,none,,双対可能な二つの双加群の外部テンソルが双対可能となり、双対も外部テンソルで与えられる結果は見つからない。双圏内の合成随伴は底代数を外部テンソルする操作を与えない。,,not_found,
+4.6.3.6,none,,双加群の reversal の対称モノイダル性と、外部テンソルとの比較同値は見つからない。dg 左右加群の対象の対応だけではこの外部テンソルの結論は得られない。,,not_found,
+4.6.3.7,none,,LM から Assoc への fold 写像と自然変換を用いて A⊗Arev 上の評価加群と Arev⊗A 上の余評価加群を得る構成は見つからない。正則双加群や dg 対角双加群はあるが、この fold と包絡代数上の作用の比較を与えない。,,not_found,
+4.6.3.8,none,,A と Arev を交換したときの評価加群・余評価加群のスカラー順序変更による同定は見つからない。通常の正則双加群には指定の包絡代数の順序変更の比較がない。,,not_found,
+4.6.3.9,none,,評価・余評価加群と外部テンソル、相対テンソルを組み合わせる作用交換関手 σ・τ は見つからない。dg 双加群のテンソル圏上の加群との比較は、指定の評価加群による二つの公式を与えない。,,not_found,
+4.6.3.10,none,,作用交換 σ と元の双加群の基礎対象への忘却の可換図式は見つからない。dg 双加群の uncurry の評価公式は、この σ を指定していない。,,not_found,
+4.6.3.11,none,,評価・余評価加群から作った σ・τ が互いに逆の作用交換同値になる結果は見つからない。dg 双加群とテンソル dg 圏上の加群の同値は、指定の二つの関手を比較していない。,,not_found,
+4.6.3.12,none,,外部テンソルした評価・余評価加群の相対テンソルが A と Arev を回復する二つの自然同値は見つからない。正則双加群の単位同型には指定の異なる包絡代数上のテンソルの比較がない。,,not_found,
+4.6.3.13,none,,三つの代数の写像に沿う制限と作用交換 σ・τ が自然同値で可換となる結果は見つからない。dg 制限の比較はこの評価・余評価の公式を与えない。,,not_found,
+4.6.3.14,none,,代数のテンソルに対する評価・余評価加群の外部テンソル分解と、それに整合する作用交換 σ の反復公式は見つからない。,,not_found,
+4.6.3.15,none,,二つの左作用を組紐で交換する操作と、σ による作用交換および reversal との可換図式は見つからない。一般の反対 dg 圏と左・右加群の対応にはこの図式がない。,,not_found,
+4.6.3.16,none,,reversal が相対テンソルの順序を逆転する比較同値は見つからない。通常の双加群の結合子や dg の反対加群への対象の対応には、この二つのテンソルの同定がない。,,not_found,
+4.6.3.17,none,,作用交換 σ・τ と reversal の可換図式、およびその下で双対対が移送される結果は見つからない。通常の完全対を組紐で交換する定理は、異なる底代数上の作用交換を与えない。,,not_found,
+4.6.3.18,none,,一つの左作用に σ を適用する公式が reversal に自然同値となる結果は見つからない。dg 左加群と反対 dg 圏上の右加群の直接の対象の対応は、評価・余評価による σ の公式と比較されていない。,,not_found,
+4.6.4.1,none,,dg 代数の smooth・proper 性の既存文献への案内に対応する宣言は見つからない。dg 完全加群と Morita 核の理論はあるが、この有限性条件を導入していない。,,not_found,
+4.6.4.2,none,,結合代数の基礎対象が双対可能であることを proper と定義する宣言は見つからない。通常圏の HasRightDual は基礎の述語を与えるが、代数の proper 性は定義されていない。,,not_found,
+4.6.4.3,none,,代数の proper 性が基礎対象だけに依存し、反対代数への移行で保たれる結果は見つからない。通常圏の双対可能性と dg 反対圏の構成にはこの述語の比較がない。,,not_found,
+4.6.4.4,none,,proper 性、評価・余評価加群の片側双対可能性、作用交換の双対可能性保存を同値とする判定は見つからない。通常の双圏の随伴と dg 完全性には当該評価加群の判定がない。,,not_found,
+4.6.4.5,none,,余評価加群の左双対を作用交換して得る Serre 双加群の定義は見つからない。dg 核の tensor–Hom 随伴はこの双加群を構成していない。,,not_found,
+4.6.4.6,none,,proper 代数の Serre 双加群の reversal との整合性は見つからない。dg 左右加群の対象の対応は Serre 双加群の比較を与えない。,,not_found,
+4.6.4.7,none,,余評価加群の左双対を Serre 双加群と評価加群の相対テンソルで記述する結果は見つからない。通常の相対テンソルと結合子にはこの双対の同定がない。,,not_found,
+4.6.4.8,none,,評価加群の右双対から別に構成した双加群が Serre 双加群と同値になる結果は見つからない。通常の双対の一意性には評価・余評価を作用交換する比較がない。,,not_found,
+4.6.4.9,none,,Serre 双加群の左右の忘却を A の双対と同定し、両作用を左右逆に誘導する結果は見つからない。基礎の完全対と通常の内部 Hom はこの二つの作用を備えていない。,,not_found,
+4.6.4.10,none,,proper な A で作用交換後の左双対を元の双対と Serre 双加群のテンソルで表す自然同値は見つからない。双圏の合成随伴には作用交換 σ と Serre 双加群の比較がない。,,not_found,
+4.6.4.11,none,,proper 代数上の左双対可能な加群が右双対も持ち、その右双対が左双対と Serre 双加群の相対テンソルになる結果は見つからない。,,not_found,
+4.6.4.12,none,,評価・余評価加群の反対側の双対可能性と、作用交換による右双対可能性保存を同値とする判定は見つからない。dg 核の完全性判定にはこの評価・余評価の比較がない。,,not_found,
+4.6.4.13,none,,包絡代数上の評価・余評価加群の双対可能性を使う結合代数の smooth 性の定義は見つからない。可換環の幾何学的 smooth 性は当該双対性を定義していない。,,not_found,
+4.6.4.14,none,,体上の準射影多様体の QCoh を dg 代数の加群として表現し、幾何学的な proper・smooth 性と代数の双対的な有限性を同値とする結果は見つからない。,,not_found,
+4.6.4.15,none,,結合代数の smooth 性が反対代数への移行で保たれる結果は見つからない。dg の反対構成と完全加群の定義には評価加群の双対性での比較がない。,,not_found,
+4.6.4.16,none,,smooth 代数の余評価加群の右双対を作用交換して得る双対 Serre 双加群の定義は見つからない。,,not_found,
+4.6.4.17,none,,双対 Serre 双加群の reversal との整合性は見つからない。通常の反対加群への変換はこの双対双加群を構成していない。,,not_found,
+4.6.4.18,none,,smooth な A で作用交換後の右双対を元の右双対と双対 Serre 双加群で表す自然同値は見つからない。通常の双圏の随伴の合成はこの比較を与えない。,,not_found,
+4.6.4.19,none,,smooth 代数上で基礎対象が双対可能な左加群の両側の双対を構成し、左双対を右双対と双対 Serre 双加群で記述する結果は見つからない。,,not_found,
+4.6.4.20,none,,smooth かつ proper な代数の Serre 双加群と双対 Serre 双加群が相対テンソルの互いの逆元になる結果は見つからない。通常の Morita 同値は当該二つの双加群を構成・比較していない。,,not_found,
+4.6.4.21,none,,"代数と双加群の対称モノイダル (∞,2) 圏、および任意のそのような圏の smooth・proper 対象への一般化は見つからない。通常の双加群双圏には外部テンソルと高次のデータがない。",,not_found,
+4.6.5.1,partial,Coalgebra.IsFrobenius.nondegenerate_compr₂_mul_counit @ Mathlib/RingTheory/Coalgebra/IsFrobenius.lean:185 | Coalgebra.IsFrobenius.compr₂_mul_counit_bijective @ Mathlib/RingTheory/Coalgebra/IsFrobenius.lean:189 | Coalgebra.IsFrobenius.lTensor_counit_comp_left_comp_rTensor_algebraLinearMap @ Mathlib/RingTheory/Coalgebra/IsFrobenius.lean:213 | Coalgebra.IsFrobenius.rTensor_counit_comp_right_comp_lTensor_algebraLinearMap @ Mathlib/RingTheory/Coalgebra/IsFrobenius.lean:222,仮定：通常の可換基礎環上の代数 A に余代数構造があり Frobenius 方程式を満たす（Lean が強い：余代数構造を指定した場合）。結論：λ を余単位とすると λ(ab) の双線型形式が非退化で双対への写像が全単射になり、余積と単位から得る余評価が二つの snake 方程式を満たす（この仮定での HA の結論の一部に一致）。任意の ∞ モノイダル圏での Frobenius データの定義は含まれない。,,found,special
+4.6.5.2,none,,非退化な λ の存在と、正則左・右加群の双対が反対側の正則加群となることの同値は見つからない。通常の Frobenius 余代数の非退化形式は、この加群の双対性を構成・比較していない。,,not_found,
+4.6.5.3,none,,非退化な λ と Serre 双加群の左右の正則加群への同値を対応させる結果は見つからない。通常の Frobenius 形式の全単射には Serre 双加群がない。,,not_found,
+4.6.5.4,none,,λ が Serre 双加群を自由正則加群として生成することと非退化性を対応させ、Serre 自己同型を構成する宣言は見つからない。,,not_found,
+4.6.5.5,none,,Serre 自己同型の λ への依存と、λ を変えても共役類が不変となる結果は見つからない。通常の Frobenius 余代数の構成にこの自己同型はない。,,not_found,
+4.6.5.6,none,,λ(ab)=λ(bσλ(a)) により Serre 自己同型を特徴づける結果は見つからない。乗法と余単位の非退化形式はあるが、この自己同型とその一意性は構成されていない。,,not_found,
+4.6.5.7,none,,Serre 双加群を正則双加群と同定するデータ、巡回テンソル上の非退化評価、Serre 自己同型の代数としての恒等へのホモトピーによる symmetric Frobenius の定義は見つからない。,,not_found,
+4.6.5.8,none,,Frobenius 形式の対称性と、Serre 自己同型が基礎圏または代数圏で恒等にホモトピックとなる条件の差の記述は見つからない。通常の余代数の Frobenius 方程式はこの高次の比較を扱わない。,,not_found,
+4.6.5.9,none,,評価・余評価加群の包絡代数上の相対テンソルによる巡回 bar 関手と、その円周群作用および同変な Frobenius 評価は見つからない。dg 双加群のテンソル圏への比較は Hochschild 型の構成への部品として記されているが、この巡回 bar と円周作用を作っていない。,,not_found,
+4.6.5.10,none,,可換代数から巡回 bar への標準写像の左ホモトピー逆と、Frobenius 構造の対称化および Serre 自己同型の自明性は見つからない。通常の可換乗法だけではこの構成は得られない。,,not_found,
+4.6.5.11,none,,Frobenius 代数上の双対評価に λ を合成すると基礎圏での双対評価になる定理は見つからない。通常の Frobenius 余代数の snake 方程式には、任意の加群の双対性を忘却する比較がない。,,not_found,
+4.6.5.12,none,,"λ の非退化性と、任意の加群・対象に対する Hom_A(M,A⊗N) → Hom(M,N) の同値を対応させる結果は見つからない。通常の coextension の随伴と Frobenius 形式はあるが、指定の λ によるこの比較はない。",,not_found,
+4.6.5.13,none,,smooth な Frobenius 代数上で基礎の双対対象に反対側の加群構造を持ち上げ、λ を通じて元の評価と比較する結果は見つからない。,,not_found,
+4.6.5.14,none,,可換 Frobenius 代数の内部加群の相対テンソルに関する双対評価が、λ との合成で基礎圏の双対評価になる結果は見つからない。通常の対称内部加群の構造はあるが Frobenius 評価の比較がない。,,not_found,
+4.6.5.15,none,,smooth な可換 Frobenius 代数上で基礎対象の双対性を加群の双対性へ持ち上げ、忘却と評価を整合させる結果は見つからない。dg 完全性と通常の Frobenius 方程式にはこの持ち上げがない。,,not_found,
