@@ -1132,4 +1132,4 @@ AdicCompletion I H_Cech^q(M/JM;d) ≃ₗ[R] {R/J 上の各 I 進閉厚化の Če
 
 全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、一回ごとに鍵を返した。待ちは同じ worktree から一つだけ。ルート全体のビルドは行わず、取り込みは調整役に任せる。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
 
-`da2713482` で main `c1266c240` を取り込んだ。検証済み AG のローカル import 閉包・設定・公式監査スクリプト **680 ファイル**の SHA-256 を前後で比較し、不一致 **0**。main 側の変更は文書のみで、上の 4,291 jobs のビルドと 6,704 宣言の監査は取り込み後にも対応する。
+`da2713482` で main `e3dc5ba4b` を取り込んだ。検証済み AG のローカル import 閉包・設定・公式監査スクリプト **680 ファイル**の SHA-256 を前後で比較し、不一致 **0**。main 側の変更は文書のみで、上の 4,291 jobs のビルドと 6,704 宣言の監査は取り込み後にも対応する。
