@@ -1,0 +1,4 @@
+number,status,declarations,reason,axioms,check,partial_kind
+0.0.0.1,mathlib,SSet.Quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Basic.lean:41,仮定：単体集合 C（HA と一致）。結論：全内ホーン 0<i<n の充填条件で準圏を定義する（HA と一致。定義では n≥2 として空虚な低次を省く）。,,found,
+0.0.0.2,partial,CategoryTheory.Nerve.quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Nerve.lean:32,仮定：通常圏 C（HA と一致）。結論：その nerve は準圏となる（原典の数学的主張に一致）。weak Kan complex という歴史的呼称と一般化の文献案内は含まれない。,,found,component
+0.0.0.3,none,,Joyal の講義録等の文献案内と本書の前提知識を述べる項目に対応する宣言は見つからない。準圏や特異単体集合の定義はあるが、この引用と読書上の前提を主張していない。,,not_found,

@@ -1,6 +1,6 @@
 number,kind,title,section,status,declarations,reason,confidence,lean_citations,plan_citations,kerodon,goal
-0.0.0.1,Definition,内角充填条件による ∞ 圏の定義,0,,,,,0,0,,-
-0.0.0.2,Remark,弱 Kan 複体と準圏の呼称,0,,,,,0,0,,-
+0.0.0.1,Definition,内角充填条件による ∞ 圏の定義,0,,,,,0,0,1.4.0.1,-
+0.0.0.2,Remark,弱 Kan 複体と準圏の呼称,0,,,,,0,0,1.3.4.2,-
 0.0.0.3,Remark,∞ 圏の文献,0,,,,,0,0,,-
 1.1.0.1,Remark,安定モデル圏と安定 ∞ 圏の文献,1.1,,,,,0,0,,-
 1.1.0.2,Remark,体上の dg 圏と安定 ∞ 圏の関係,1.1,,,,,0,0,,-
@@ -1401,20 +1401,20 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 4.8.5.20,Corollary,Behavior of the Functor Θ (p. 754),4.8.5,,,,,0,0,,-
 4.8.5.21,Corollary,Behavior of the Functor Θ (p. 754),4.8.5,,,,,0,0,,-
 4.8.5.22,Corollary,Behavior of the Functor Θ (p. 755),4.8.5,,,,,0,0,,-
-5.1.0.1,Definition,Definitions and Basic Properties (p. 758),5.1,,,,,0,0,,-
+5.1.0.1,Definition,立方体の rectilinear embedding と Rect,5.1,,,,,0,0,,-
 5.1.0.2,Definition,Definitions and Basic Properties (p. 758),5.1,,,,,0,0,,-
-5.1.0.3,Proposition,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
-5.1.0.4,Definition,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
+5.1.0.3,Proposition,little cubes の射影の ∞ operad 性,5.1,,,,,0,0,,-
+5.1.0.4,Definition,little cubes ∞ operad Eₖ,5.1,,,,,0,0,,-
 5.1.0.5,Remark,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
 5.1.0.6,Example,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
 5.1.0.7,Example,Definitions and Basic Properties (p. 759),5.1,,,,,0,0,,-
-5.1.0.8,Theorem,May,5.1,,,,,0,0,,-
-5.1.1.1,Theorem,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
-5.1.1.2,Definition,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
+5.1.0.8,Theorem,群的 Eₖ 空間の反復ループ認識,5.1,,,,,0,0,,-
+5.1.1.1,Theorem,little cubes の coherence,5.1.1,,,,,0,0,,-
+5.1.1.2,Definition,有限配置空間 Conf,5.1.1,,,,,0,0,,-
 5.1.1.3,Lemma,Little Cubes and Configuration Spaces (p. 761),5.1.1,,,,,0,0,,-
 5.1.1.4,Proposition,Little Cubes and Configuration Spaces (p. 762),5.1.1,,,,,0,0,,-
-5.1.1.5,Corollary,Little Cubes and Configuration Spaces (p. 762),5.1.1,,,,,0,0,,-
-5.1.1.6,Notation,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
+5.1.1.5,Corollary,little cubes の余極限 Comm,5.1.1,,,,,0,0,,-
+5.1.1.6,Notation,E∞ と可換代数の塔,5.1.1,,,,,0,0,,-
 5.1.1.7,Corollary,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
 5.1.1.8,Notation,Little Cubes and Configuration Spaces (p. 763),5.1.1,,,,,0,0,,-
 5.1.1.9,Construction,Little Cubes and Configuration Spaces (p. 764),5.1.1,,,,,0,0,,-
@@ -1423,7 +1423,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.2.1,Construction,The Additivity Theorem (p. 768),5.1.2,,,,,0,0,,-
 5.1.2.2,Theorem,Dunn Additivity Theorem,5.1.2,,,,,0,0,,-
 5.1.2.3,Example,Baez-Dolan Stabilization Hypothesis,5.1.2,,,,,0,0,,-
-5.1.2.4,Example,Braided Monoidal Categories,5.1.2,,,,,0,0,,-
+5.1.2.4,Example,E₂ と通常の braided monoidal 圏,5.1.2,,,,,0,0,,-
 5.1.2.5,Remark,The Additivity Theorem (p. 770),5.1.2,,,,,0,0,,-
 5.1.2.6,Corollary,The Additivity Theorem (p. 770),5.1.2,,,,,0,0,,-
 5.1.2.7,Remark,The Additivity Theorem (p. 771),5.1.2,,,,,0,0,,-
@@ -1433,7 +1433,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.2.11,Proposition,The Additivity Theorem (p. 773),5.1.2,,,,,0,0,,-
 5.1.2.12,Corollary,The Additivity Theorem (p. 773),5.1.2,,,,,0,0,,-
 5.1.2.13,Proposition,The Additivity Theorem (p. 775),5.1.2,,,,,0,0,,-
-5.1.2.14,Notation,The Additivity Theorem (p. 775),5.1.2,,,,,0,0,,-
+5.1.2.14,Notation,位相的豊穣図式への Sing の適用,5.1.2,,,,,0,0,,-
 5.1.2.15,Construction,The Additivity Theorem (p. 776),5.1.2,,,,,0,0,,-
 5.1.2.16,Proposition,The Additivity Theorem (p. 777),5.1.2,,,,,0,0,,-
 5.1.2.17,Proposition,The Additivity Theorem (p. 777),5.1.2,,,,,0,0,,-
@@ -1463,18 +1463,18 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.1.4.9,Construction,Comparison of Tensor Products (p. 794),5.1.4,,,,,0,0,,-
 5.1.4.10,Theorem,Comparison of Tensor Products (p. 795),5.1.4,,,,,0,0,,-
 5.1.4.11,Corollary,Comparison of Tensor Products (p. 795),5.1.4,,,,,0,0,,-
-5.1.4.12,Lemma,Comparison of Tensor Products (p. 796),5.1.4,,,,,0,0,,-
-5.2.1.1,Construction,Twisted Arrow ∞-Categories (p. 804),5.2.1,,,,,0,0,,-
+5.1.4.12,Lemma,ordinal join Δ×Δ→Δ の right cofinal 性,5.1.4,,,,,0,0,,-
+5.2.1.1,Construction,twisted arrow ∞ 圏の構成,5.2.1,,,,,0,0,8.1.1.1,-
 5.2.1.2,Example,Twisted Arrow ∞-Categories (p. 804),5.2.1,,,,,0,0,,-
-5.2.1.3,Proposition,Twisted Arrow ∞-Categories (p. 805),5.2.1,,,,,0,0,,-
+5.2.1.3,Proposition,twisted arrow 射影の right fibration 性,5.2.1,,,,,0,0,8.1.1.11,-
 5.2.1.4,Remark,Twisted Arrow ∞-Categories (p. 806),5.2.1,,,,,0,0,,-
 5.2.1.5,Definition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
 5.2.1.6,Remark,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.7,Example,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
+5.2.1.7,Example,twisted arrow の pairing,5.2.1,,,,,0,0,8.1.1.11,-
 5.2.1.8,Definition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
 5.2.1.9,Construction,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.10,Proposition,Twisted Arrow ∞-Categories (p. 807),5.2.1,,,,,0,0,,-
-5.2.1.11,Proposition,Twisted Arrow ∞-Categories (p. 810),5.2.1,,,,,0,0,,-
+5.2.1.10,Proposition,pairing の universal 対象と同値射,5.2.1,,,,,0,0,8.1.2.1;8.1.2.23,-
+5.2.1.11,Proposition,twisted arrow の分類と Yoneda,5.2.1,,,,,0,0,8.3.3.1;8.3.3.9,-
 5.2.1.12,Remark,Twisted Arrow ∞-Categories (p. 810),5.2.1,,,,,0,0,,-
 5.2.1.13,Definition,Twisted Arrow ∞-Categories (p. 812),5.2.1,,,,,0,0,,-
 5.2.1.14,Construction,Twisted Arrow ∞-Categories (p. 813),5.2.1,,,,,0,0,,-
@@ -1486,7 +1486,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.1.20,Remark,Twisted Arrow ∞-Categories (p. 815),5.2.1,,,,,0,0,,-
 5.2.1.21,Remark,Twisted Arrow ∞-Categories (p. 815),5.2.1,,,,,0,0,,-
 5.2.1.22,Corollary,Twisted Arrow ∞-Categories (p. 816),5.2.1,,,,,0,0,,-
-5.2.1.23,Lemma,Twisted Arrow ∞-Categories (p. 817),5.2.1,,,,,0,0,,-
+5.2.1.23,Lemma,pairing の Hom 射影の Kan fibration 性,5.2.1,,,,,0,0,,-
 5.2.1.24,Construction,Twisted Arrow ∞-Categories (p. 819),5.2.1,,,,,0,0,,-
 5.2.1.25,Example,Twisted Arrow ∞-Categories (p. 819),5.2.1,,,,,0,0,,-
 5.2.1.26,Proposition,Twisted Arrow ∞-Categories (p. 820),5.2.1,,,,,0,0,,-
@@ -1500,7 +1500,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.2.5,Proposition,The Bar Construction for Associative Algebras (p. 822),5.2.2,,,,,0,0,,-
 5.2.2.6,Lemma,The Bar Construction for Associative Algebras (p. 822),5.2.2,,,,,0,0,,-
 5.2.2.7,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
-5.2.2.8,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
+5.2.2.8,Remark,増大代数の simplicial bar 表示,5.2.2,,,,,0,0,,-
 5.2.2.9,Remark,The Bar Construction for Associative Algebras (p. 823),5.2.2,,,,,0,0,,-
 5.2.2.10,Remark,The Bar Construction for Associative Algebras (p. 824),5.2.2,,,,,0,0,,-
 5.2.2.11,Construction,The Bar Construction for Associative Algebras (p. 824),5.2.2,,,,,0,0,,-
@@ -1531,7 +1531,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.2.36,Proposition,The Bar Construction for Associative Algebras (p. 835),5.2.2,,,,,0,0,,-
 5.2.2.37,Corollary,The Bar Construction for Associative Algebras (p. 836),5.2.2,,,,,0,0,,-
 5.2.2.38,Remark,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
-5.2.2.39,Corollary,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
+5.2.2.39,Corollary,right fibration の相対余極限の判定,5.2.2,,,,,0,0,,-
 5.2.2.40,Lemma,The Bar Construction for Associative Algebras (p. 837),5.2.2,,,,,0,0,,-
 5.2.2.41,Corollary,The Bar Construction for Associative Algebras (p. 838),5.2.2,,,,,0,0,,-
 5.2.3.1,Theorem,Iterated Bar Constructions (p. 839),5.2.3,,,,,0,0,,-
@@ -1548,9 +1548,9 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.3.12,Example,Iterated Bar Constructions (p. 844),5.2.3,,,,,0,0,,-
 5.2.3.13,Example,Iterated Bar Constructions (p. 845),5.2.3,,,,,0,0,,-
 5.2.3.14,Example,Iterated Bar Constructions (p. 846),5.2.3,,,,,0,0,,-
-5.2.3.15,Proposition,Iterated Bar Constructions (p. 847),5.2.3,,,,,0,0,,-
+5.2.3.15,Proposition,自由 Eₖ 代数と反復 Bar・懸垂,5.2.3,,,,,0,0,,-
 5.2.4.1,Definition,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
-5.2.4.2,Remark,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
+5.2.4.2,Remark,reduced pairing の単位 fiber の可縮性,5.2.4,,,,,0,0,,-
 5.2.4.3,Definition,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
 5.2.4.4,Example,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
 5.2.4.5,Remark,Reduced Pairings (p. 849),5.2.4,,,,,0,0,,-
@@ -1576,8 +1576,8 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.5.3,Remark,Koszul Duality for $E_{k}$-Algebras (p. 859),5.2.5,,,,,0,0,,-
 5.2.5.4,Warning,Koszul Duality for $E_{k}$-Algebras (p. 859),5.2.5,,,,,0,0,,-
 5.2.5.5,Definition,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
-5.2.5.6,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
-5.2.5.7,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
+5.2.5.6,Remark,弱左双対・弱右双対の普遍性,5.2.5,,,,,0,0,,-
+5.2.5.7,Remark,実双対から弱双対へ,5.2.5,,,,,0,0,,-
 5.2.5.8,Remark,Koszul Duality for $E_{k}$-Algebras (p. 860),5.2.5,,,,,0,0,,-
 5.2.5.9,Construction,Koszul Duality for $E_{k}$-Algebras (p. 861),5.2.5,,,,,0,0,,-
 5.2.5.10,Remark,Koszul Duality for $E_{k}$-Algebras (p. 861),5.2.5,,,,,0,0,,-
@@ -1586,7 +1586,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.5.13,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
 5.2.5.14,Proposition,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
 5.2.5.15,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
-5.2.5.16,Remark,Koszul Duality for $E_{k}$-Algebras (p. 862),5.2.5,,,,,0,0,,-
+5.2.5.16,Remark,Koszul 双対と単位加群の End,5.2.5,,,,,0,0,,-
 5.2.5.17,Remark,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
 5.2.5.18,Construction,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
 5.2.5.19,Remark,Koszul Duality for $E_{k}$-Algebras (p. 863),5.2.5,,,,,0,0,,-
@@ -1612,18 +1612,18 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.6.1,Remark,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.2,Definition,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.3,Example,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
-5.2.6.4,Example,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
+5.2.6.4,Example,空間の群的性と π₀ の群性,5.2.6,,,,,0,0,,-
 5.2.6.5,Remark,Iterated Loop Spaces (p. 872),5.2.6,,,,,0,0,,-
 5.2.6.6,Definition,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
 5.2.6.7,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
 5.2.6.8,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
-5.2.6.9,Remark,Iterated Loop Spaces (p. 873),5.2.6,,,,,0,0,,-
-5.2.6.10,Theorem,"Boardman-Vogt, May",5.2.6,,,,,0,0,,-
+5.2.6.9,Remark,群的 Eₖ 空間の余極限閉性,5.2.6,,,,,0,0,,-
+5.2.6.10,Theorem,反復ループ空間の認識定理,5.2.6,,,,,0,0,,-
 5.2.6.11,Notation,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
 5.2.6.12,Remark,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
 5.2.6.13,Example,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
-5.2.6.14,Example,Iterated Loop Spaces (p. 874),5.2.6,,,,,0,0,,-
-5.2.6.15,Theorem,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
+5.2.6.14,Example,離散群の Bar と分類空間 BG,5.2.6,,,,,0,0,,-
+5.2.6.15,Theorem,∞ トポスの群的 monoid と Cobar,5.2.6,,,,,0,0,,-
 5.2.6.16,Lemma,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
 5.2.6.17,Remark,Iterated Loop Spaces (p. 875),5.2.6,,,,,0,0,,-
 5.2.6.18,Corollary,Iterated Loop Spaces (p. 876),5.2.6,,,,,0,0,,-
@@ -1635,7 +1635,7 @@ number,kind,title,section,status,declarations,reason,confidence,lean_citations,p
 5.2.6.24,Remark,Iterated Loop Spaces (p. 877),5.2.6,,,,,0,0,,-
 5.2.6.25,Remark,Iterated Loop Spaces (p. 878),5.2.6,,,,,0,0,,-
 5.2.6.26,Remark,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
-5.2.6.27,Corollary,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
+5.2.6.27,Corollary,Ω∞ の保守性と sifted 余極限保存,5.2.6,,,,,0,0,,-
 5.2.6.28,Remark,Iterated Loop Spaces (p. 879),5.2.6,,,,,0,0,,-
 5.2.6.29,Remark,Iterated Loop Spaces (p. 880),5.2.6,,,,,0,0,,-
 5.3.1.1,Example,Centers and Centralizers (p. 882),5.3.1,,,,,0,0,,-
