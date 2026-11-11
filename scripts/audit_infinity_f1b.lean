@@ -1694,8 +1694,8 @@ section
 universe u
 open CategoryTheory
 open SerrePositivity.InfinityCategories
-variable {K C D : SSet.{u}} (p : K ⟶ C) [CocartesianFibration p] [SSet.Quasicategory D]
-#synth CartesianFibration (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomProjection (relativeJoinBaseProjection p (𝟙 C)) D)
+variable {K C D : SSet.{u}} (p : K ⟶ C) [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration p] [SSet.Quasicategory D]
+#synth _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration (SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fiberwiseHomProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.relativeJoinBaseProjection p (𝟙 C)) D)
 end
 #check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_triangle_first_of_second_long
 #check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.exists_kanCartesianComparisonTriangle

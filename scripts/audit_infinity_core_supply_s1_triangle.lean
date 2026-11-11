@@ -34,4 +34,4 @@ example : ∀ (C : Type v) [Category.{u} C] [SimplicialCategory C]
     (SimplicialNerve C).δ (0 : Fin 3) F = (SimplicialNerve C).δ (0 : Fin 3) G →
     (SimplicialNerve C).δ (2 : Fin 3) F = (SimplicialNerve C).δ (2 : Fin 3) G →
     HEq (F.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
-      (G.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) → F = G := nativeTriangle_ext
+      (G.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) → F = G := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nativeTriangle_ext

@@ -674,14 +674,14 @@ import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Unive
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftFibrations
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
-#check @SerrePositivity.InfinityCategories.RightFibration.mk
-#print axioms SerrePositivity.InfinityCategories.RightFibration.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration.mk
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration.mem
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration.mem
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration
-#check @SerrePositivity.InfinityCategories.LeftFibration.mk
-#print axioms SerrePositivity.InfinityCategories.LeftFibration.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mk
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightFibration_innerFibration
@@ -758,8 +758,8 @@ import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Unive
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration
-#check @SerrePositivity.InfinityCategories.TrivialKanFibration.mk
-#print axioms SerrePositivity.InfinityCategories.TrivialKanFibration.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mk
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary
@@ -1114,8 +1114,8 @@ import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Unive
 #print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence_functor
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence_inverse
 #print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.toHoEquivalence_inverse
-#check @SerrePositivity.InfinityCategories.QCatEquivalence.mk
-#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.mk
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.hom
 #print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.hom
 #check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.inv
@@ -1907,15 +1907,15 @@ open scoped Simplicial
 
 example {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
-    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialCofinality hc F
 
 example {I : Type (u + 1)} [Category.{u} I] {c : I} (hc : IsInitial c)
     {X : SSet.{u + 1}} [Quasicategory X] (F : nerve I ⟶ X) :
-    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialCofinality hc F
 
 example {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
     {X : SSet.{u}} [Quasicategory X] (F : nerve I ⟶ X) :
-    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialRestriction F c) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.initialCofinality hc F
 
 end InitialCofinalityUniverses
 
@@ -3411,11 +3411,11 @@ end InitialCofinalityUniverses
 #check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.cosliceEndpointMap_leftFibration
 #print axioms SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.cosliceEndpointMap_leftFibration
 
-#check @SerrePositivity.InfinityCategories.CocartesianHornFibration.mk
-#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.mk
 
-#check @SerrePositivity.InfinityCategories.CocartesianHornFibration.toInnerFibration
-#print axioms SerrePositivity.InfinityCategories.CocartesianHornFibration.toInnerFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.toInnerFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.toInnerFibration
 
 #check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.exists_lift
 #print axioms SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianHornFibration.exists_lift

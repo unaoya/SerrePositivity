@@ -384,6 +384,14 @@ def rewrite(data, migration):
                 if receiver and receiver["new"] != parent_name:
                     block(ref, f"unmoved extension on renamed receiver requires an explicit call or export for {old}")
                     continue
+            if row is None and ref["kind"] in ("term", "syntax"):
+                parents = [old.rpartition(".")[0]]
+                if old.endswith("_assoc"):
+                    parents.append(old[:-6])
+                if any((parent := migration.symbols.get((ref["module"], name)))
+                       and parent["new"] != name for name in parents):
+                    block(ref, f"unmapped member of renamed declaration requires review for {old}")
+                    continue
             if row is None and not loses_relative_scope:
                 if ref["kind"] in ("local", "term", "field"):
                     other_resolution = True
@@ -473,7 +481,10 @@ def rewrite(data, migration):
     for _, stop in ranges:
         ends.append(max(ends[-1] if ends else 0, stop))
     for token in IDENT.finditer(code):
-        if token[0].removeprefix("_root_.") not in migration.old_public:
+        literal = token[0].removeprefix("_root_.")
+        if (literal not in migration.old_public and
+                literal.rpartition(".")[0] not in migration.old_public and
+                not (literal.endswith("_assoc") and literal[:-6] in migration.old_public)):
             continue
         a, b = (len(text[:p].encode()) for p in token.span())
         index = bisect_right(ranges, (a, len(source))) - 1

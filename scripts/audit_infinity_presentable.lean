@@ -1050,5 +1050,5 @@ example {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategor
     (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) :
     letI := hp.innerFibration
     _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (pullback p q) :=
-  F2.Presentable.pullback_isPresentable_of_accessiblePullback
-    F2.Presentable.AccessiblePullback.pullback_isAccessible p q hp hE hD hB hpc hqc
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible p q hp hE hD hB hpc hqc

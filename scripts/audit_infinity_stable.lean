@@ -2747,7 +2747,7 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle.hoShortComplex_eq_tail
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle.tailShortComplexIso
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_cofiberTailShortComplex
-#print axioms SerrePositivity.InfinityCategories.CofiberRotationRectangle.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberRotationRectangle.mk
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomAddCommMonoid
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_additiveInverse_of_zeroSourcePushout
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exists_stableHom_additiveInverse
@@ -4339,7 +4339,7 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingLeftToOuterShape_middle
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pastingLeftToOuterHomotopy_middle
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle
-#print axioms SerrePositivity.InfinityCategories.CofiberCompositionRectangle.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle.mk
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle.diagram
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle.left_eq
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle.bottom_eq
@@ -4358,7 +4358,7 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionRectangle.connecting_comm
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle_mor₃_naturality
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle
-#print axioms SerrePositivity.InfinityCategories.PushoutCofiberRectangle.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.mk
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.diagram
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.left_eq
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.zero_end
@@ -4378,7 +4378,7 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.connecting_comp
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCofiberRectangle.triangle_connecting_comp
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram
-#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram.mk
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram.first
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberOctahedronDiagram.second
 #print axioms SerrePositivity.InfinityCategories.HA.StableInfinityCategories.nonempty_cofiberOctahedronDiagram
@@ -4752,7 +4752,7 @@ open Lean in
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgHomotopyAdjunction_counit_closed_exists
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelResolutionCounit_quasiIso_exists
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit
-#check SerrePositivity.InfinityCategories.DGUniversalCounit.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.source
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.counit
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.quasiIso
@@ -4809,7 +4809,7 @@ open Lean in
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositePrimitive_boundary
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositePrimitive_boundary
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject
-#check SerrePositivity.InfinityCategories.DGFunctorCommaObject.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.source
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.replacement
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.augmentation
@@ -4843,7 +4843,7 @@ open Lean in
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorComma_comp_id
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgDoubleOppositeDown
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel
-#check SerrePositivity.InfinityCategories.DGUniversalCommaLabel.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.target
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.universal
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniversalCommaDualLabel

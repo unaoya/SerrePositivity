@@ -140,6 +140,28 @@ class NamespaceTests(unittest.TestCase):
         self.assertIsNone(rendered)
         self.assertIn("unmoved extension on renamed receiver", issues[0]["reason"])
 
+    def test_unmapped_member_of_renamed_declaration_requires_review(self):
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+            {"module": "TypeOwner", "old": "Old.f", "new": "New.f"},
+        ]})
+        for text, owner, indexed in (("Old.Record.mk", "TypeOwner", True),
+                                      ("Old.Record.mk", "TypeOwner", False),
+                                      ("Old.f_assoc", "TypeOwner", True),
+                                      ("Old.f_assoc", "TypeOwner", False)):
+            refs = [occurrence(text, text, text, owner)] if indexed else []
+            rendered, issues = rewrite({"module": "Uses", "source": text,
+                                        "refs": refs, "commands": []}, plan)
+            self.assertIsNone(rendered)
+            self.assertTrue(issues)
+        # A retained external method remains callable by its original full name.
+        text = "Old.Record.retained"
+        ref = occurrence(text, text, text, "ExternalOwner")
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": [ref], "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, text.encode())
+
     def test_detached_method_adds_a_name_resolution_export(self):
         text = "def Old.Record.step (n : Nat) := n + 1\n"
         ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")

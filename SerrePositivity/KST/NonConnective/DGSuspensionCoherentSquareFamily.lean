@@ -35,7 +35,7 @@ theorem dgSuspensionCoherentSquareSuspension_vertex
     (dgKappaResolvedConnectiveSquare_vertices R A (s A).cone).2.2.1
 
 /-- 元の厳密 hF を保持し、hedge を端点固定の指定可逆比較にした全作用入口。 -/
-def _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput.ofSquareFamily
+def _root_.SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.ofSquareFamily
     (d : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R}, (A ⟶ B) →
       DGKappaSuspensionMapData R A B (s A).cone (s B).cone)
     (hedgeIso : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B),

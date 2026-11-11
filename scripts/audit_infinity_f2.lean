@@ -1757,7 +1757,7 @@ run_cmd do
 -- R17: the shape input is supplied unconditionally; existing declaration types remain unchanged.
 
 open CategoryTheory SSet SerrePositivity.InfinityCategories in
-example (K : SSet.{u}) : F2.HasSpaceLimitsOfShape K := F2.hasSpaceLimitsOfShape K
+example (K : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.HasSpaceLimitsOfShape K := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.hasSpaceLimitsOfShape K
 
 -- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
 open Lean in
@@ -2054,19 +2054,20 @@ run_cmd do
 open Lean in
 run_cmd do
   let env ← getEnv
-  let replacements : Array (Name × Name) := #[
-    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural),
-    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison_projection, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural_projection),
-    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison_isPrecompositionEquivalence, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence),
-    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sectionsEquivalence, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sectionsEquivalenceNatural),
-    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.tensorSpaceFunctor_setWeightHom, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.tensorSpaceFunctor_setWeightHomNatural)
+  let replacements : Array (Name × Name × String) := #[
+    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural, "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural"),
+    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison_projection, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural_projection, "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection"),
+    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.elementsComparison_isPrecompositionEquivalence, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence, "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence"),
+    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sectionsEquivalence, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.sectionsEquivalenceNatural, "SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural"),
+    (`SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.tensorSpaceFunctor_setWeightHom, `SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetWeight.tensorSpaceFunctor_setWeightHomNatural, "SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural")
   ]
-  for (oldName, newName) in replacements do
+  -- Retain the pre-layout deprecation message exactly; names above are current.
+  for (oldName, newName, historicalTarget) in replacements do
     unless (env.find? oldName).isSome && (env.find? newName).isSome do
       throwError "C3: missing compatibility or canonical declaration: {oldName}, {newName}"
     let some entry := Linter.deprecatedAttr.getParam? env oldName
       | throwError "C3: compatibility declaration is not deprecated: {oldName}"
-    let expected := s!"Use `{newName}` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+    let expected := s!"Use `{historicalTarget}` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
     unless entry.since? == some "2026-11-05" && entry.text? == some expected do
       throwError "C3: missing migration guidance: {oldName}"
     if (Linter.deprecatedAttr.getParam? env newName).isSome then

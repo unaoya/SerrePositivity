@@ -4711,7 +4711,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgHomotopyAdjunction_counit_closed_exists
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKernelResolutionCounit_quasiIso_exists
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit
-#check SerrePositivity.InfinityCategories.DGUniversalCounit.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.source
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.counit
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCounit.quasiIso
@@ -4768,7 +4768,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositePrimitive_boundary
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositePrimitive_boundary
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject
-#check SerrePositivity.InfinityCategories.DGFunctorCommaObject.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.source
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.replacement
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject.augmentation
@@ -4802,7 +4802,7 @@ example : SSet.Quasicategory
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorComma_comp_id
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgDoubleOppositeDown
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel
-#check SerrePositivity.InfinityCategories.DGUniversalCommaLabel.mk
+#check _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.mk
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.target
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniversalCommaLabel.universal
 #check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniversalCommaDualLabel

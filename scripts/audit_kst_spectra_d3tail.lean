@@ -14,9 +14,9 @@ open OmegaSpectrum.AdjointLoopRelativeBF
 universe u
 
 -- B 以外の仮定を持たず、元の nativeLoop と元の Sp を結論する型を検査。
-example : (hB : NativeLoopComparison.{u}) → IsQCatEquivalence nativeLoop.{u} :=
+example : (hB : NativeLoopComparison.{u}) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence nativeLoop.{u} :=
   nativeLoop_isQCatEquivalence_of_tailComparison
-example : (hB : NativeLoopComparison.{u}) → IsStable Sp.{u} := sp_isStable
+example : (hB : NativeLoopComparison.{u}) → _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Sp.{u} := sp_isStable
 #check @nativeLoop_isQCatEquivalence_of_tailComparison
 #check @sp_isStable
 

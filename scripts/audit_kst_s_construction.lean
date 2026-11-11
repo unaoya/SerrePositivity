@@ -10050,8 +10050,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #check @SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.leftTop
 #print axioms SerrePositivity.KST.SConstruction.CoherentSquareMappingTriangles.leftTop
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition.mk
 
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition.inverse
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition.inverse
@@ -10707,8 +10707,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #check @SerrePositivity.KST.SConstruction.coherentStringDiagramCell_naturality
 #print axioms SerrePositivity.KST.SConstruction.coherentStringDiagramCell_naturality
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.mk
 
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.length
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.length
@@ -10719,8 +10719,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.long_edge
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString.long_edge
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowStringHom.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowStringHom.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowStringHom.mk
 
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowStringHom.map
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowStringHom.map
@@ -12879,8 +12879,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_trace
 #check @SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_zero
 #print axioms SerrePositivity.KST.SConstruction.monicKPrismNativeDirectCorrectionData_zero
-#check @_root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition.mk
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition.mk
 #check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition.edge
 #print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition.edge
 #check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition.triangle
@@ -13351,8 +13351,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.correction
 #check @SerrePositivity.KST.SConstruction.RawComparisonStage.boundary
 #print axioms SerrePositivity.KST.SConstruction.RawComparisonStage.boundary
-#check @_root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron.simplex
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron.simplex
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron.original_face
@@ -13443,8 +13443,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms SerrePositivity.KST.SConstruction.coherentSimplexFaceMapping_heq
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTriangleLongEdgeData
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTriangleLongEdgeData
-#check @_root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron.simplex
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron.simplex
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron.second_face
@@ -13573,8 +13573,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_face_of_heq
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_common_face
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialEqualityTransport_common_face
-#check @_root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.TriangleDiamondData.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondData.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondData.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondData.first
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondData.first
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondData.second
@@ -15591,8 +15591,8 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms SerrePositivity.KST.SConstruction.triangleRightCancellationComparisonOverData_relative
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron
-#check @_root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron.simplex
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron.simplex
 #check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleRightTetrahedron.second_face
@@ -19657,8 +19657,8 @@ end SerrePositivity.KST.SConstruction
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_obj_map
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_map
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose_map
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.vertexMax
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.vertexMax
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.joints
@@ -19669,8 +19669,8 @@ end SerrePositivity.KST.SConstruction
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.last_mem
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.mem_le
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.mem_le
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.map
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.map
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.map_first
@@ -19679,8 +19679,8 @@ end SerrePositivity.KST.SConstruction
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.map_last
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.ext
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.ext
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.necklace
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.necklace
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.map
@@ -19689,8 +19689,8 @@ end SerrePositivity.KST.SConstruction
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.map_first
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.map_last
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn.map_last
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceInHom.mk
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom.mk
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom.mk
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom.necklaceHom
 #print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom.necklaceHom
 #check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInHom.w
@@ -20345,16 +20345,16 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_relation
 #check @SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_apply
 #print axioms SerrePositivity.KST.SConstruction.necklaceCubicalComposeCell_apply
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inl_inl_assoc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inl_inl_assoc
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_inl_assoc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_inl_assoc
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_assoc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceAssociator_inr_assoc
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr_assoc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceLeftUnitor_inr_assoc
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl_assoc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceRightUnitor_inl_assoc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inl_inl_assoc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inl_inl_assoc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inr_inl_assoc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inr_inl_assoc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inr_assoc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceAssociator_inr_assoc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceLeftUnitor_inr_assoc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceLeftUnitor_inr_assoc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceRightUnitor_inl_assoc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceRightUnitor_inl_assoc
 #check @SerrePositivity.KST.SConstruction.cubicalExternalLeft
 #print axioms SerrePositivity.KST.SConstruction.cubicalExternalLeft
 #check @SerrePositivity.KST.SConstruction.cubicalExternalRight
