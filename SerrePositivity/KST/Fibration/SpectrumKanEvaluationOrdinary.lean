@@ -41,7 +41,7 @@ theorem spectrumKanEvaluationOrdinary_map (n : ℕ) {X Y : OmegaSpectrum.{u}} (f
 
 /-- Kan 性だけを忘れると、元の同じ点つき段評価と厳密に一致する。 -/
 theorem spectrumKanEvaluationOrdinary_forget (n : ℕ) :
-    spectrumKanEvaluationOrdinary.{u} n ⋙ pointedKanProperty.ι = spectrumLevelFunctor n := by
+    spectrumKanEvaluationOrdinary.{u} n ⋙ pointedKanProperty.ι = _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]

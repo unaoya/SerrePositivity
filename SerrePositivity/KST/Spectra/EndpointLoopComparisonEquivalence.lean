@@ -29,7 +29,7 @@ def rawComparison (Y : OmegaSpectrum.{u}) (n : ℕ) : ((obj Y).level n).space �
 lemma rawComparison_fst (Y : OmegaSpectrum.{u}) (n : ℕ) :
     rawComparison Y n ≫ pullback.fst (pathEndpoint (Y.level n).space)
         (PointedObject.fromPoint (Y.level n).space) =
-      (spectrumPullbackFst (basedPathProjection Y) (fromPoint Y)).app n ≫
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackFst (basedPathProjection Y) (fromPoint Y)).app n ≫
         (cotensorProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y).app n :=
   PointedPullbackChange.map_fst _ _ _
 
@@ -49,7 +49,7 @@ lemma comparison_raw (Y : OmegaSpectrum.{u}) (n : ℕ) :
     have hf := congrArg
       (fun t : cotensor endpointCircle Y ⟶ basedPath Y ↦ t.app n) (comparison_fst Y)
     change (comparison Y).app n ≫
-      (spectrumPullbackFst (basedPathProjection Y) (fromPoint Y)).app n = _ at hf
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackFst (basedPathProjection Y) (fromPoint Y)).app n = _ at hf
     rw [hf, endpointLoopToPath_comparison, Category.assoc, pointedEndpointLoopIso_hom_fst]
   · exact PointedObject.point_isZero.eq_of_tgt _ _
 

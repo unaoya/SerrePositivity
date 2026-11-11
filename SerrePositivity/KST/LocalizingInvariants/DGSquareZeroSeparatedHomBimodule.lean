@@ -36,7 +36,7 @@ lemma coefficient_left : M.actLeft ≫ coefficient M N r =
   simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr] at hl
   rw [tensorHom_comp_tensorHom, biprod.inl_map, biprod.inr_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 include hd in
@@ -52,7 +52,7 @@ lemma coefficient_right : M.actRight ≫ coefficient M N r =
   simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl] at hl
   rw [tensorHom_comp_tensorHom, biprod.inr_map, biprod.inl_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 def coefficientBimoduleMap : M ⟶ bimoduleRestrict (base M N r) N where

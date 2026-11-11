@@ -40,10 +40,10 @@ lemma fixed_endpoints (x y : E _⦋0⦌)
     (by rw [face_right, Category.assoc, hy, SSet.comp_const])
   apply PointedObject.tensorRightCoprod_hom_ext
   · rw [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl, whiskerRight_fst_assoc,
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl_assoc]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl_assoc]
     exact endpoint_fixed H _ y h₁
   · rw [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inr, whiskerRight_fst_assoc,
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr_assoc]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inr_assoc]
     exact endpoint_fixed H _ x h₀
 
 end SerrePositivity.KST.Spectra.SquareAdjustment

@@ -30,8 +30,8 @@ def coefficientMap : algebra A M ⟶ algebra A N := by
       simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr, Category.assoc,
         biprod.inl_map, biprod.inr_map, tensorHom_comp_tensorHom_assoc,
         Category.id_comp, ← whiskerLeft_comp_tensorHom_assoc,
-        ← whiskerRight_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc,
-        _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc, MonoidalPreadditive.zero_tensor, MonoidalPreadditive.tensor_zero,
+        ← whiskerRight_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl_assoc,
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr_assoc, MonoidalPreadditive.zero_tensor, MonoidalPreadditive.tensor_zero,
         zero_comp, comp_zero, f.left_act_hom_assoc, f.right_act_hom_assoc]
 
 def Derivation.map (d : Derivation A M) : Derivation A N where

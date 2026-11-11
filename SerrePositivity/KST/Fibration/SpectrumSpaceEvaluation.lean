@@ -61,7 +61,7 @@ theorem spectrumSpaceEvaluationOrdinary_map {X Y : OmegaSpectrum.{u}} (f : X ⟶
 /-- Kan 性だけを忘れると、同じ元の段評価の基点忘却と一致する。 -/
 theorem spectrumSpaceEvaluationOrdinary_forget (n : ℕ) :
     spectrumSpaceEvaluationOrdinary.{u} n ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget =
-      spectrumLevelFunctor n ⋙ PointedSimplicialSet.forget := by
+      _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n ⋙ PointedSimplicialSet.forget := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]

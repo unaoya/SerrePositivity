@@ -39,7 +39,7 @@ lemma d3StageOrdinary_map (n : ℕ) {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
 
 /-- Kan 性だけを忘れると同じ元の通常段評価である。 -/
 lemma d3StageOrdinary_forget (n : ℕ) :
-    d3StageOrdinary.{u} n ⋙ pointedKanProperty.ι = spectrumLevelFunctor n := by
+    d3StageOrdinary.{u} n ⋙ pointedKanProperty.ι = _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n := by
   refine CategoryTheory.Functor.ext (fun _ ↦ rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -61,18 +61,18 @@ variable {E X B : OmegaSpectrum.{u}} (p : E ⟶ B) (q : X ⟶ B)
 /-- 元の BF 引き戻し錐を同じ点つき Kan 段で評価した通常錐。 -/
 def d3StagePullbackCone (n : ℕ) :
     Cone (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p q ⋙ d3StageOrdinary n) :=
-  (d3StageOrdinary n).mapCone (spectrumPullbackCone p q)
+  (d3StageOrdinary n).mapCone (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone p q)
 
 /-- 元の段の実極限性から、同じ段錐の全 Kan 豊穣 Hom の極限性を得る。 -/
 def d3StagePullbackCone_hom_isLimit (n : ℕ) (Z : PointedKanObject.{u}) :
     IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (d3StagePullbackCone p q n) Z) := by
   have hc : IsLimit (pointedKanProperty.ι.mapCone (d3StagePullbackCone p q n)) := by
     have h : IsLimit ((d3StageOrdinary n ⋙ pointedKanProperty.ι).mapCone
-        (spectrumPullbackCone p q)) := by
+        (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone p q)) := by
       rw [d3StageOrdinary_forget]
-      exact spectrumPullbackCone_level_isLimit p q n
+      exact _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone_level_isLimit p q n
     exact IsLimit.ofIsoLimit h (CategoryTheory.Functor.mapConeMapCone
-      (H := d3StageOrdinary n) (H' := pointedKanProperty.ι) (spectrumPullbackCone p q)).symm
+      (H := d3StageOrdinary n) (H' := pointedKanProperty.ι) (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone p q)).symm
   change IsLimit (((SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj
     (Opposite.op Z)).mapCone (d3StagePullbackCone p q n))
   rw [d3PointedKanHomFunctor]
@@ -101,7 +101,7 @@ lemma d3StagePullbackInfinityCone_isLimit (n : ℕ) :
   have h := d3StagePullbackCone_isLimit p q n
   change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone
     ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (d3StageKanEnriched n)).mapCone
-      (spectrumPullbackCone p q))) at h
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone p q))) at h
   rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentCone_postcomp] at h
   exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentConeCast_isLimit_iff _ _).mp h
 

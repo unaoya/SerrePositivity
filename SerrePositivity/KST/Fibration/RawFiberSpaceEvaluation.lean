@@ -39,12 +39,12 @@ def rawFiberSpaceEvaluationCone_forget_isLimit (n : ℕ) :
     IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget.mapCone (rawFiberSpaceEvaluationCone p n)) := by
   have hl := FiberModel.smallCone_level_isLimit p n
   have hm : IsLimit (PointedSimplicialSet.forget.mapCone
-      ((spectrumLevelFunctor n).mapCone (FiberModel.smallCone p))) :=
+      ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n).mapCone (FiberModel.smallCone p))) :=
     isLimitOfPreserves PointedSimplicialSet.forget hl
-  have hc : IsLimit ((spectrumLevelFunctor n ⋙ PointedSimplicialSet.forget).mapCone
+  have hc : IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n ⋙ PointedSimplicialSet.forget).mapCone
       (FiberModel.smallCone p)) :=
     IsLimit.ofIsoLimit hm (CategoryTheory.Functor.mapConeMapCone
-      (H := spectrumLevelFunctor n) (H' := PointedSimplicialSet.forget) (FiberModel.smallCone p))
+      (H := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor n) (H' := PointedSimplicialSet.forget) (FiberModel.smallCone p))
   rw [← spectrumSpaceEvaluationOrdinary_forget] at hc
   exact IsLimit.ofIsoLimit hc (CategoryTheory.Functor.mapConeMapCone
     (H := spectrumSpaceEvaluationOrdinary n) (H' := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget)

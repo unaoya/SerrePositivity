@@ -82,7 +82,7 @@ def spectrumTowerOrdinaryCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n +
 使われ方：豊穣 Hom の極限性へ渡す段ごとの条件。 -/
 def spectrumTowerOrdinaryCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
-    IsLimit ((spectrumLevelFunctor k).mapCone (spectrumTowerOrdinaryCone X d)) where
+    IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor k).mapCone (spectrumTowerOrdinaryCone X d)) where
   lift c := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift _ _ (fun n ↦ c.π.app (Opposite.op n)) (fun n ↦ by
     have h := c.w (homOfLE (Nat.le_succ n)).op
     rw [Functor.comp_map, Functor.ofOpSequence_map_homOfLE_succ] at h
@@ -115,7 +115,7 @@ def spectrumTowerCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ 
 使われ方：実際の豊穣 Hom の極限性。 -/
 def spectrumTowerCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
-    IsLimit (spectrumLevelCone (spectrumTowerCone X d) k) :=
+    IsLimit (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone (spectrumTowerCone X d) k) :=
   (spectrumTowerOrdinaryCone_level_isLimit X d k).whiskerEquivalence
     (AsSmall.equiv : ℕᵒᵖ ≌ AsSmall.{u} ℕᵒᵖ).symm
 
@@ -132,7 +132,7 @@ local instance spectrumTowers_locallyKan (X Y : OmegaSpectrum.{u}) :
 def spectrumTowerCone_hom_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (Z : OmegaSpectrum.{u}) :
     IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (spectrumTowerCone X d) Z) :=
-  spectrumHomCone_isLimit_of_levelwise _ (spectrumTowerCone_level_isLimit X d) Z
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise _ (spectrumTowerCone_level_isLimit X d) Z
 
 /-- 概要：L9 の Ω スペクトルの塔の実際の coherent nerve の錐。
 方針：段ごとに作った極限スペクトルの通常の錐を coherent nerve へ移す。
@@ -155,7 +155,7 @@ lemma spectrumTowerInfinityCone_isLimit (X : ℕ → OmegaSpectrum.{u}) (d : ∀
     change Fibration (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj
       (Opposite.op Z)).map ((Functor.ofOpSequence d).map (homOfLE (Nat.le_succ n)).op))
     rw [Functor.ofOpSequence_map_homOfLE_succ]
-    exact spectrumHomMap_fibration Z (d n)
+    exact _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_fibration Z (d n)
   exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_tower_homLimit (spectrumTowerCone X d)
     (spectrumTowerCone_hom_isLimit X d)
 

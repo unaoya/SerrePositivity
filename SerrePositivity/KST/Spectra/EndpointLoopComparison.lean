@@ -39,14 +39,14 @@ def comparison (Y : OmegaSpectrum.{u}) : cotensor endpointCircle Y ⟶ obj Y := 
 /-- 第一射影との合成は元の BF path への制限。 -/
 @[reassoc (attr := simp)]
 lemma comparison_fst (Y : OmegaSpectrum.{u}) :
-    comparison Y ≫ spectrumPullbackFst (basedPathProjection Y) (fromPoint Y) =
+    comparison Y ≫ _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackFst (basedPathProjection Y) (fromPoint Y) =
       endpointLoopToPath Y :=
   OmegaSpectrum.Hom.ext (fun _ ↦ pullback.lift_fst _ _ _)
 
 /-- 第二射影との合成は一点への零射。 -/
 @[reassoc (attr := simp)]
 lemma comparison_snd (Y : OmegaSpectrum.{u}) :
-    comparison Y ≫ spectrumPullbackSnd (basedPathProjection Y) (fromPoint Y) = 0 :=
+    comparison Y ≫ _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackSnd (basedPathProjection Y) (fromPoint Y) = 0 :=
   OmegaSpectrum.Hom.ext (fun _ ↦ pullback.lift_snd _ _ _)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.BasedLoop
