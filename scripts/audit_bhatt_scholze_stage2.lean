@@ -332,6 +332,36 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularQuotientH0
 import SerrePositivity.HomologicalAlgebra.DerivedScalarExtensionComposition
 import SerrePositivity.HomologicalAlgebra.KoszulRegularBaseChange
 import SerrePositivity.HomologicalAlgebra.RegularRelationCompletedBaseChange
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDReduction
+import SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTruncatedFlat
+import SerrePositivity.BhattScholze.Prism.Basic.Construction61Frobenius
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCover
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCochainTor
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCompleteTor
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverFactorization
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverPairTor
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverReduction
+import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverRegularity
+import SerrePositivity.BhattScholze.Prismatic.Construction61Detection
+import SerrePositivity.BhattScholze.Prismatic.Construction61Reflection
+import SerrePositivity.CommutativeAlgebra.Adic.RegularLift
+import SerrePositivity.CommutativeAlgebra.Frobenius.PrincipalQuotientFlat
+import SerrePositivity.CommutativeAlgebra.Koszul.UnboundedTensor
+import SerrePositivity.HomologicalAlgebra.CochainCompleteDetection
+import SerrePositivity.HomologicalAlgebra.CochainCompleteTorAmplitude
+import SerrePositivity.HomologicalAlgebra.CochainFlatDetection
+import SerrePositivity.HomologicalAlgebra.CompleteBaseChangeConservative
+import SerrePositivity.HomologicalAlgebra.CompleteCochainCone
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairRestriction
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedCoordinate
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedCoordinateResidue
+import SerrePositivity.HomologicalAlgebra.KoszulTorBound
+import SerrePositivity.HomologicalAlgebra.RegularQuotientUnboundedModel
+import SerrePositivity.HomologicalAlgebra.ScalarConeQuotientModel
+import SerrePositivity.HomologicalAlgebra.SemifreeBaseChangeModel
+import SerrePositivity.HomologicalAlgebra.TorPostFlatComposition
+import SerrePositivity.HomologicalAlgebra.TwoCoordinateCompleteTor
+import SerrePositivity.HomologicalAlgebra.UnboundedSemifreeModel
 import Lean.Util.CollectAxioms
 
 /-!
@@ -344,6 +374,36 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDReduction,
+    `SerrePositivity.BhattScholze.Delta.DividedPower.RegularSequencePDTruncatedFlat,
+    `SerrePositivity.BhattScholze.Prism.Basic.Construction61Frobenius,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCover,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCochainTor,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCompleteTor,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverFactorization,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverPairTor,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverReduction,
+    `SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverRegularity,
+    `SerrePositivity.BhattScholze.Prismatic.Construction61Detection,
+    `SerrePositivity.BhattScholze.Prismatic.Construction61Reflection,
+    `SerrePositivity.CommutativeAlgebra.Adic.RegularLift,
+    `SerrePositivity.CommutativeAlgebra.Frobenius.PrincipalQuotientFlat,
+    `SerrePositivity.CommutativeAlgebra.Koszul.UnboundedTensor,
+    `SerrePositivity.HomologicalAlgebra.CochainCompleteDetection,
+    `SerrePositivity.HomologicalAlgebra.CochainCompleteTorAmplitude,
+    `SerrePositivity.HomologicalAlgebra.CochainFlatDetection,
+    `SerrePositivity.HomologicalAlgebra.CompleteBaseChangeConservative,
+    `SerrePositivity.HomologicalAlgebra.CompleteCochainCone,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairRestriction,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedCoordinate,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedCoordinateResidue,
+    `SerrePositivity.HomologicalAlgebra.KoszulTorBound,
+    `SerrePositivity.HomologicalAlgebra.RegularQuotientUnboundedModel,
+    `SerrePositivity.HomologicalAlgebra.ScalarConeQuotientModel,
+    `SerrePositivity.HomologicalAlgebra.SemifreeBaseChangeModel,
+    `SerrePositivity.HomologicalAlgebra.TorPostFlatComposition,
+    `SerrePositivity.HomologicalAlgebra.TwoCoordinateCompleteTor,
+    `SerrePositivity.HomologicalAlgebra.UnboundedSemifreeModel,
     `SerrePositivity.BhattScholze.Semiperfectoid.DiscreteDelta,
     `SerrePositivity.BhattScholze.Semiperfectoid.DiscretePrism,
     `SerrePositivity.BhattScholze.Semiperfectoid.LciEnvelope,
