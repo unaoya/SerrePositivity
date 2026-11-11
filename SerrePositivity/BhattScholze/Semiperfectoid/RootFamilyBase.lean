@@ -31,6 +31,7 @@ abbrev rootFamilyRaw :=
 /-- 根付き変数環の実 p 完備化の H⁰。 -/
 abbrev rootFamilyBase := PrincipalCompletionH0 (rootFamilyRaw p R J) (p : rootFamilyRaw p R J)
 
+/-- 根付き基底には、既存の実主元完備化の H⁰ の環構造を使う。 -/
 instance rootFamilyBaseCommRing : CommRing (rootFamilyBase p R J) :=
   principalCompletionCommRing _ _
 
@@ -38,6 +39,7 @@ instance rootFamilyBaseCommRing : CommRing (rootFamilyBase p R J) :=
 def rootFamilyUnit : rootFamilyRaw p R J →+* rootFamilyBase p R J :=
   principalCompletionUnitRingHom _ _
 
+/-- 生の係数射と実完備化の単位を合成し、根付き基底の係数作用を定める。 -/
 instance rootFamilyBaseAlgebra : Algebra R (rootFamilyBase p R J) :=
   ((rootFamilyUnit p R J).comp (algebraMap R (rootFamilyRaw p R J))).toAlgebra
 

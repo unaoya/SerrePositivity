@@ -26,6 +26,7 @@ open DerivedCompletion Prismatic
 set_option backward.isDefEq.respectTransparency false
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
 
+/-- 零環上の prism。乗法の単射性と二つの完備性を直接示し、零環の剰余表示に使う。 -/
 private def zeroPrism [Subsingleton R] : OrientedPrism p R := by
   let D := (DeltaStructure.existsUnique_of_mod_p
     (show Function.Injective (fun x : R => (p : R) * x) from fun _ _ _ => Subsingleton.elim _ _)

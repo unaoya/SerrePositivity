@@ -271,3 +271,31 @@ main は `0ec3d99b0` まで取り込み済み（停止点3の登録 `f3ff89155` 
 追加14モジュール・1,289行・17個の名前付き公開宣言。ビルド `...RootRelationEnvelopeFaithful`（4,719 jobs）成功。追加14本の `#check`・`#print axioms`・`#print sorries` は17件すべて成功、sorryなし・標準三公理のみ。ログ：`/tmp/serre-w17/h5/finite/build-45.log`、`audit-faithful.log`。§12 と合わせて36新規モジュール・3,092行・104宣言。入口と全体監査への登録は未実施。
 
 残りの有限 T：ULift 添字・その全初期関係の商・実 H⁰ 完備化までの具体比較と、固定した A_inf の θ・δ・剰余表示の照合。前者を編集中。S′ の実装はまだ始めていない。6,000行の上限は引き続き確認する。
+
+## 14. H5 停止点4：固定 A_inf 上の有限 T
+
+**停止点4に到達。有限 T の公開出力を閉じ、ここで止める。** §12・§13 の途中報告で残していた固定 A_inf と ULift の具体比較は、この節で解消した。
+
+### 実装した型と対応
+
+- `RootRelationLift`・`RootRelationLiftInitial`：Fin r と ULift の各段の根・係数・初期関係イデアル・通常商を比較し、通常の有限 T と ULift 関係商の **実 H⁰ p 完備化**との単位を保つ同型を証明した。外側の環圏の完備化表示まで含む `exists_rootRelationLiftCompletionEquiv` と、そこへの忠実平坦な単位・全有界標的への始性がある。殺すのは Xi(0)−fi で、全ての根を殺すイデアルではない。
+- `PerfectoidWittEquiv`・`FontainePrism`：既存の完全 prism の Witt 復元、完備 Witt 商の Fontaine 比較の全単射性、θ の自然性を再利用し、剰余が R の完全 prism を **固定した W(R♭)** へ δ・θ を保って戻す。Witt 環をその完備化に置き換えるだけでは済ませていない。
+- `AinfClassical`・`AinfClassicalMaps`：drafts の `ainfCoefficients`・`ainfTheta`・`ainfDelta` と同じ二分岐の定義式で、実際の有界な完全 prism と θ を保つ剰余同型を供給した。p が単元の枝では perfectoid R が零環であることから直接構成し、非零性を仮定として足していない。選択した prism・剰余作用と、根付き基底への `rootFamilyAinfMap` もある。
+- 最終出力 **`exists_rootRelationAinfEnvelope`**（`RootRelationAinfEnvelope`）：perfectoid R と任意の r・fi を入力し、ULift 根付き基底の固定 A_inf 上で、θ(wi)=Xi(0)−fi を満たす wi、有界な実 prism Q、イデアル (d)⊔(wi) の実 `IsFiniteLciRelationEnvelope`、実完備な有限 T から Q/(d) への単位 v を返す。v は元の θ と係数射を保ち、**T 上** p 完全忠実平坦。さらに任意の有界 prism Y と任意の T→Y/(d) に対し、v を保つ Q→Y が一意に存在する。標的を p 正則なものに狭めていない。
+
+K5 の `exists_lciRelation_regular_completedTensor` と包絡の分類・存在、普遍自由変数除算の実 mod (p,d) の忠実平坦性、Lemma 4.8 を再利用した。D76 の T の有界性は具体表示から供給し、入力に新しい有界性仮定を足していない。D77 の普通の Frobenius 平坦性への逆戻りもない。新しい数学は新規ファイルだけで、既存の本体の宣言・入口・全体監査の登録は変更していない。A3 drafts は承認済みの filtration の証明コメントだけを修正した。
+
+Δ との同定、`QrspDiscrete`・`InitialDelta` への移送、一般 qrsp の HT filtration は完了と扱わず、G10 側に残す。S′ の生の余極限・完備余極限・完全化と Cor 7.3 は、次の停止点5の対象であり、まだ実装していない。
+
+### 検証と規模
+
+今回の最後の追加は **7モジュール・42個の名前付き公開宣言**。H5 の合計は **43新規モジュール・3,860行・146個の名前付き公開宣言**（docstring の補充を含む）。
+
+- 最終ビルド：`RootRelationAinfEnvelope` と従来の `RootRelationEnvelope` の二つの葉から全43本を含め、**4,729 jobs 成功**。共有鍵は `--wait 3600`、待ちは常に一枚、鍵はビルド・Lean 検証の間だけ使用した。
+- 公理監査：87＋17＋42件の `#check`・`#print axioms`・`#print sorries` がすべて成功。**146件とも sorry なし、標準三公理のみ**。直接の KST import もない。
+- 最終ログ：`/tmp/serre-w17/h5/finite/build-stop4.log`。監査：同ディレクトリの `audit-1.log`・`audit-faithful.log`・`audit-stop4.log`。登録用43本の一覧：`stop4-modules.txt`。
+- 基点は main `0ec3d99b0`（停止点3登録 `f3ff89155` を含む）。最後に main `cba436208` の関連差分（PointwiseExtension・PointwiseTensor など）も閲覧した。今回の導来 H⁰・Koszul 完備化の比較と同じ宣言の追加はなく、既存の D30・G9 の API を再利用している。⑤b の枝は直接取り込んでいない。
+
+本体合計6,000行の上限まで **2,140行**。停止点5では、有限部分族の遷移を単位を保つ一意な δ 射で作ること、一様なねじれ指数を取り出すこと、生の余極限と実完備化の比較が不足する。S′ の完備余極限と完全化をこの残量で閉じられるかを開始時に再見積もりし、合計6,000行または S′ 部分2,500行を超えそうなら指示どおり止める。
+
+入口と全体監査への43本の登録、および取り込みの検収は調整役に委ねる。**停止点4で停止。**
