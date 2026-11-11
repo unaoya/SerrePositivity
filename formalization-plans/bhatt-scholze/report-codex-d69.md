@@ -508,3 +508,8 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - 一時監査は124モジュール・3,005宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetyOne.lean`、ログ `/private/tmp/d69-morning-audit-ninetyone.log`。今回の登録候補追加は上記の共通2本。入口・共通監査の登録は変更していない。
 - Nakayama の整理候補：⑤c の `HomologicalAlgebra.CochainCompleteDetection.cochain_homology_isZero_of_complete_of_scalarCone_isZero` に、⑤b の `CompleteCochainReduction` が持つ正則な通常商とスカラー錐の比較を組み合わせれば、通常商版の証明を同じ入口へ寄せられる見込み。現段階では両ファイルを変更せず、停止点2で再確認する。
 - 最後の二比較は引き続き未完了。実際の小さい分冪項の完備テンソル同型と、有限・大きい Witt の射を余面構造まで合わせる。
+
+- 続いて `PDTermCompletedTensor`・`PDTermPointwiseCoefficients` と共通の `SerrePositivity.HomologicalAlgebra.DerivedCompletion.RepeatedPrincipalRing` が対象ビルドを通った（`/private/tmp/d69-ticket-build-34.log`・`/private/tmp/d69-ticket-build-35.log`、鍵は待ち3600秒、ビルド中のみ）。登録候補に BS 2本・共通1本を追加する。
+- `pdTermCompletedTensorAlgEquiv` は、任意の係数代数について、小さい完備分冪項の通常テンソルの主完備化を係数変更後の項に同定する。`pdTermCompletedTensorAlgEquiv_coefficient` は右脚が既存の `pdModelBaseChange` そのものであることを示す。公開型で関手の内部の定義展開を要求しないよう、新規の型付き入口 `pdTermCoefficientRingHom` を使った。
+- `pdTermPointwiseCoefficientIso` とその単位の式は、加群の各項の完備係数拡大関手から実際の分冪項への線形同型と右脚を固定する。`repeatedPrincipalAlgEquiv` は二座標 (p,p) の H⁰ を主完備環に、元の環上で単位を保って同定する。いずれの環の同型にも正則性や平坦性を追加していない。
+- 追加を含む一時監査は127モジュール・3,040宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningNinetyFour.lean`、ログ `/private/tmp/d69-morning-audit-ninetyfour.log`。ここまでの新規5本に `sorry`・独自の公理はなく、既存宣言の変更もない。停止点2の二比較の検収は引き続き残る。
