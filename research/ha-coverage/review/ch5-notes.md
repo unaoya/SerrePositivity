@@ -1,7 +1,7 @@
 # 第5章・序章の照合
 
 原典は2017-09-18版。main `7bf1c5fbb` のソースを照合した。
-段4の1,062項目のうち序章3件・第5章500件を完了した。残る第6章・付録A・Bの後で全体の `summary.md` を作る。
+段4の1,062項目のうち、このメモは序章3件・第5章500件を扱う。第6章・付録A・Bも照合を完了し、全体は `summary.md` にまとめた。
 
 | 範囲 | own | mathlib | partial | none | unsure | 合計 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -24,6 +24,6 @@
 - **多様体・単位化**：局所同相の厳密微分による十分条件、compact→Hausdorffの同相判定、連続写像のcurryが部分対応。通常の非単位代数のR⊕Aによる単位化は対応するが、A∞のquasi-unitの全coherenceとは区別した。可換環のAway局所化の普遍性は可換な試験対象に限定した。
 - **Ran・層・Verdier**：非空有限部分集合の集合、Vietoris有限部分集合のpreconnected性、通常のcover descentとcosheafのHom条件が部分対応。HAのRan位相との比較、hyperdescent、factorization homology、compact-support Verdier双対は未対応。KSTのSupportedVerdierはVerdier商であり、ここでのVerdier双対ではない。
 - **compact support・交換**：compact supportを持つ連続写像は自明束のsectionの0単体の場合。S¹でのcompact support除去は全自由ループ空間・Hochschild比較ではない。5.5.6.17は空間値・filtered添字のKan pullback比較に限定し、任意sifted・任意∞トポスの結論を主張しない。
-- **Kerodon**：宣言と検収済み表の照合でこの段の追加は8項目（全体13→21）。後半では5.5.3.12のfilteredなcoslice射影が9.1.4.16に対応する。一般補題を共有するだけの番号は加えていない。
+- **Kerodon**：宣言と検収済み表の照合で第5章までの追加は8項目（全体13→21）。段4全体では第6章・付録を含め全体33項目となった。後半では5.5.3.12のfilteredなcoslice射影が9.1.4.16に対応する。一般補題を共有するだけの番号は加えていない。
 
 BSの検収結果は維持する：7.1.3.18は界面で埋め込みのみ、7.2.2.10はD20のホモロジーによる定義を使うため、これらを理由とするBS側の追加作業はない。
