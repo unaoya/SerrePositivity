@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：元の本質像の相対実現の Ex∞ の二次以上のホモトピーは一意。

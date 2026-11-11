@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGMod
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories
 open DGNerve.HomotopyComparison
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]

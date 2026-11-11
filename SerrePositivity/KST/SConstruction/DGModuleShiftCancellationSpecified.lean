@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationRecover
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma transportedAddArrow (s t q : ℤ) (h : s + t = q) (M : RightModule R D) :
     dgModuleNaturalConeArrow R D ((moduleShiftDG R D s).comp (moduleShiftDG R D t))

@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
+
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration

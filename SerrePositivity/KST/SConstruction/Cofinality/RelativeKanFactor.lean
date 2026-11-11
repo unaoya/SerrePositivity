@@ -15,7 +15,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory Limits HomotopicalAlgebra MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 

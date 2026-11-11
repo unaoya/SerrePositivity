@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStr
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma nervePrecompRecovery
     (A : Type u) [CommRing A] (E : Type v) [DGCategory A E] [Small.{u} E]
     (X Y : Type (max (u + 1) v)) [DGCategory A X] [DGCategory A Y]

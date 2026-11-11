@@ -15,7 +15,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 private lemma composeNegLeft {R : Type u} [CommRing R] {E : Type v} [DGCategory R E]
     {x y z : E} {p q n : ℤ} (g : GradedHom R y z q) (f : GradedHom R x y p)
     (hn : p + q = n) : compose R (-g) f hn = -compose R g f hn := by

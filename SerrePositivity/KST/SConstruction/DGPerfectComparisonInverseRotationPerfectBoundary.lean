@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Funct
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 
 private lemma normalizeBoundary
     {A X : SSet.{u}} [SSet.Quasicategory X]

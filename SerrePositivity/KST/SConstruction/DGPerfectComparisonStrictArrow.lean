@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectComparisonHomGluing
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E P : Type (u + 1))
   [DGCategory R E] [Small.{u} E] [DGCategory R P]
   (F G : DGFunctor R P (PerfectDGModule R E))

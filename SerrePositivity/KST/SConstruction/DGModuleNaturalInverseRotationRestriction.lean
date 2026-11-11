@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationBo
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma restrictTriple {C D : Type*} [Category C] [Category D]
     (Q : C ⥤ D) {A B C' : C} {X Z : D}
     (a : A ⟶ B) (b : B ⟶ C') (j : Q.obj A ⟶ X)

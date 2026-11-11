@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Funct
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   {P : Type (max (u + 1) v)} [DGCategory R P]
   (F G : DGFunctor R P (PerfectDGModule R E))

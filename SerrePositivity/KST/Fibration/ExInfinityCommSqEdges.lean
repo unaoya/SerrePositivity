@@ -12,7 +12,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の通常射の Ex∞ 像を、同じ実 Kan 値間の射として読む。 -/

@@ -13,7 +13,7 @@ noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元 descent の左右入力の全自然性は同じ実 Hom end の全自然性を与える。

@@ -23,7 +23,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
 /-- 指定した同じ coherent 左辺から回収した、同じ零角への完全関手。 -/

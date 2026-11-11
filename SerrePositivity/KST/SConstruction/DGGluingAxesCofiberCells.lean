@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomZero
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Limits DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory Limits DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))

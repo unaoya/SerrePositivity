@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 
 /-- 概要：元次数 −1 族の閉零次数後合成は同じ符号付き全自然性を持つ。
 方針：全次数の二自然性と指定次数での結合則を使用する。

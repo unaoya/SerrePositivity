@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCateg
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalClosed SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalClosed SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 
 /-- 概要：同じ元 cone 全二単体の最初の辺は元厳密変換の指定ホモトピー辺。

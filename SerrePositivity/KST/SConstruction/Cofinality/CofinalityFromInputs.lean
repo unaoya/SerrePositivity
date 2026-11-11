@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：採用済み一般射影と相対全旗自然性の入力から同じ実 K 射の共終性条件を得る。

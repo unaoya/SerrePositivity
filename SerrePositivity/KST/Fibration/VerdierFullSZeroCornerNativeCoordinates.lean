@@ -19,7 +19,7 @@ open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の native core S(A) 座標から、同じ全 S(A) の実 Kan 値への実包含。 -/

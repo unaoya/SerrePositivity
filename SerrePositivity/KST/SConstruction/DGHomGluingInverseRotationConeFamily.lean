@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotationCone
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D]
   (E : Type z) [DGCategory R E] [Small.{u} E]

@@ -61,9 +61,9 @@ def d3PointedKanCofiberCone_hom_isLimit (Z : PointedKanObject.{u}) :
   change IsLimit (((SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj
     (Opposite.op Z)).mapCone (d3PointedKanCofiberCone i Y))
   rw [d3PointedKanHomFunctor]
-  have hm := isLimitOfPreserves (pointedMappingFunctor Z.obj) hc
+  have hm := isLimitOfPreserves (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) hc
   exact IsLimit.ofIsoLimit hm (CategoryTheory.Functor.mapConeMapCone
-    (H := pointedKanProperty.ι) (H' := pointedMappingFunctor Z.obj)
+    (H := pointedKanProperty.ι) (H' := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj)
     (d3PointedKanCofiberCone i Y))
 
 /-- 元の単射パラメータによる同じ制限錐は、実際の Kan ∞ 極限錐。 -/

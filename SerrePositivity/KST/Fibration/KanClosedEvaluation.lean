@@ -12,7 +12,7 @@ universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
 /-- 基点だけを忘れ、同じ Kan 値と全基点固定 Hom の包含を保持する。 -/

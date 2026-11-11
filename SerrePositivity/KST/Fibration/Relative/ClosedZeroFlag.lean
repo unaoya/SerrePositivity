@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：選んだ同じ零自己関手の零図式を全旗へ送る。

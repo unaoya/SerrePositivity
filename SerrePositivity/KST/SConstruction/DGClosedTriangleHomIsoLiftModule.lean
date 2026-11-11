@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGMod
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve DGNerve.HomotopyComparison
+open CategoryTheory DifferentialGraded InfinityCategories DGNerve.HomotopyComparison
 variable {R : Type u} [CommRing R] {C : Type v} [DGCategory R C]
   {D : Type w} [DGCategory R D] [Small.{u} D] (F : DGFunctor R C (RightModule R D))
   {X Y Z : ClosedCategory R C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)

@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma factoryArrow {R : Type u} [CommRing R] {C : Type v}
     [DGCategory R C] [Small.{u} C] {P : Type w} [DGCategory R P]
     (F G : DGFunctor R P (RightModule R C))

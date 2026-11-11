@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Funct
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma inclusionLawOfMiddleRecovery
     {A X : SSet.{u}} [SSet.Quasicategory X] {f g g' h : A ⟶ X}
     (a : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f g) (a' : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f g')

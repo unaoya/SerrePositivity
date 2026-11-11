@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisFullConeTri
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)

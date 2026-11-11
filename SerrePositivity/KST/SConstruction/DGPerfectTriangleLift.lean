@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded InfinityCategories DGNerve SSet
+open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded InfinityCategories SSet
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
 local notation "I" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R E Set.univ)

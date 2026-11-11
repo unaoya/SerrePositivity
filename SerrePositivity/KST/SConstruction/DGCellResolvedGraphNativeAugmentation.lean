@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGMod
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (B : Type (max (u + 1) v))
   [DGCategory R B] [Small.{u} B]
 local notation "P" => DGCategoryCellResolution.Source R B

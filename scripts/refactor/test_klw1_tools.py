@@ -68,6 +68,16 @@ class NamespaceTests(unittest.TestCase):
         self.assertIsNone(result)
         self.assertIn("obsolete namespace", issues[0]["reason"])
 
+    def test_removed_open_qualifies_unmoved_relative_names(self):
+        text = "open Old\n#check Realization.functor\n"
+        ref = occurrence(text, "Realization.functor", "Old.Realization.functor", "Retained")
+        command = {"kind": "open", "start": 5, "stop": 8, "mode": "simple", "names": ["Old"],
+                   "command": {"start": 5, "stop": 8}}
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref],
+                                    "commands": [command]}, Migration({"rows": [], "opens": {"Old": None}}))
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"\n#check _root_.Old.Realization.functor\n")
+
     def test_competing_resolutions_block_the_entire_file(self):
         ref = occurrence("same", "same", "Old.same", "OldModule")
         local = {**ref, "kind": "local", "name": "", "module": ""}

@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：元の境界商の Ex∞ における指定基点の群条件。

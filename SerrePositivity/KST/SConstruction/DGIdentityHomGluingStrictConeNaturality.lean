@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoFamilyNatura
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma fullHomNaturalityOfCycle {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] [Small.{u} C] {T : Type w} [DGCategory R T]
     (F G : DGFunctor R T (RightModule R C))

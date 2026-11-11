@@ -15,7 +15,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type (max (u + 1) v))
   [DGCategory R E] [Small.{u} E]
 local notation "I" => DGFunctor.id E

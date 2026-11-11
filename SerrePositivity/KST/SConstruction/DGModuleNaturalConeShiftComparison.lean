@@ -14,7 +14,7 @@ public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma shiftBoundary {M N : ModuleCategory R D} (s : ℤ) (f : M ⟶ N)
     (p : moduleShiftObj R D s M ⟶ moduleShiftObj R D s N)

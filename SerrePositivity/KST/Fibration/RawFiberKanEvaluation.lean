@@ -34,7 +34,7 @@ theorem pointedKan_whiskerLeft (Z : PointedKanObject.{u}) {V W : PointedKanObjec
 /-- 元の Kan Hom 関手は、同じ点つき写像空間の通常の関手である。 -/
 theorem pointedKanHomFunctor_eq (Z : PointedKanObject.{u}) :
     (SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj (Opposite.op Z) =
-      pointedKanProperty.ι ⋙ pointedMappingFunctor Z.obj := by
+      pointedKanProperty.ι ⋙ _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro V W f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -48,21 +48,21 @@ def pointedKanHomCone_isLimit {I : Type u} [SmallCategory I]
   change IsLimit (((SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj
     (Opposite.op Z)).mapCone c)
   rw [pointedKanHomFunctor_eq]
-  have : PreservesLimits (pointedMappingFunctor Z.obj) :=
+  have : PreservesLimits (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) :=
     pointedMappingFunctor_preservesLimits Z.obj
-  have hm : IsLimit ((pointedMappingFunctor Z.obj).mapCone
+  have hm : IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj).mapCone
       (pointedKanProperty.ι.mapCone c)) :=
-    isLimitOfPreserves (K := F ⋙ pointedKanProperty.ι) (pointedMappingFunctor Z.obj) hc
+    isLimitOfPreserves (K := F ⋙ pointedKanProperty.ι) (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) hc
   exact IsLimit.ofIsoLimit hm
     (CategoryTheory.Functor.mapConeMapCone
-      (H := pointedKanProperty.ι) (H' := pointedMappingFunctor Z.obj) c)
+      (H := pointedKanProperty.ι) (H' := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) c)
 
 variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
   [hp : ∀ n, Fibration (p.app n).right]
 
 /-- 元の実 fiber 錐を、同じ Kan な段で評価した通常の錐。 -/
 def rawFiberKanEvaluationCone (n : ℕ) :
-    Cone (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙
+    Cone (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙
       spectrumKanEvaluationOrdinary n) :=
   (spectrumKanEvaluationOrdinary n).mapCone (FiberModel.smallCone p)
 
@@ -83,7 +83,7 @@ theorem rawFiberKanEvaluationCone_isLimit (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (rawFiberKanEvaluationCone p n)) := by
   have : ∀ Z : PointedKanObject.{u}, Fibration
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
-        (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙ spectrumKanEvaluationOrdinary n)
+        (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙ spectrumKanEvaluationOrdinary n)
           Z).map (AsSmall.up.map WalkingCospan.Hom.inl)) := fun Z => by
     change Fibration (eHomWhiskerLeft SSet Z ((spectrumKanEvaluationOrdinary n).map p))
     rw [pointedKan_whiskerLeft, spectrumKanEvaluationOrdinary_map]

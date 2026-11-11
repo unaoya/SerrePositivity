@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   {P : Type (max (u + 1) v)} [DGCategory R P] [Small.{u} P]
   (F G : DGFunctor R P (PerfectDGModule R E))

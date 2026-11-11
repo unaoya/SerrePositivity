@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositio
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma zeroInput
     (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
     {M N M' N' : ModuleCategory R D}

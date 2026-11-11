@@ -33,7 +33,7 @@ lemma rightShape_eq : rightShape.{u} =
 
 lemma rightDiagram_eq {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) :
     rightShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram
-      (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y)) =
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y)) =
         SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge := by
   rw [rightShape, Category.assoc]
   exact CospanShape.strictDiagram_left _ _

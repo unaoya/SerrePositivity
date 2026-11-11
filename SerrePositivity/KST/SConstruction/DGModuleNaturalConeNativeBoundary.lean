@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStr
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 section Image
 variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]

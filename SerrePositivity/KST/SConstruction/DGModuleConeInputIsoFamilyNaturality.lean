@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoNaturality
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：同じ実作用を回収する二族は元入力 cone 同型で全次数可換。

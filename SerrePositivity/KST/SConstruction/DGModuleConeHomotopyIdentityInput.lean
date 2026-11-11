@@ -12,7 +12,7 @@ public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元恒等 square の入力は元左包含と元ホモトピーの後合成の和。

@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Fun
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (D P : Type (u + 1))
   [DGCategory R D] [Small.{u} D] [DGCategory R P] [Small.{u} P]

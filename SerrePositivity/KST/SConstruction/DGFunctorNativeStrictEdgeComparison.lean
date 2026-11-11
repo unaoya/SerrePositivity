@@ -17,7 +17,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 open scoped Simplicial
 
 /-- 概要：全 end の単位からの係数挿入を同じ全次数評価へ送る。

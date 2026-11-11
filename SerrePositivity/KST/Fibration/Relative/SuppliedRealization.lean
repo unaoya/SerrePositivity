@@ -15,7 +15,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison SerrePositivity.SimplicialModel
+open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：同じ指定全四角形と元の商実現の二比較を無条件で構成する。

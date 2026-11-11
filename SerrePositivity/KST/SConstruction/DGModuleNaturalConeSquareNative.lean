@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
   (F G F' G' : DGFunctor R P (RightModule R D))

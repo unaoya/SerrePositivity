@@ -52,12 +52,12 @@ lemma cone_isLimit (Y : OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCate
   let d := spectrumPullbackInfinityCone (basedPathProjection Y) (fromPoint Y)
   let i := CospanShape.strictCospanHornIso.{u, u + 1}.inv
   have := DiagramLimitTransport.restriction_trivial
-    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (spectrumPullbackDiagram (basedPathProjection Y) (fromPoint Y))) i
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram (basedPathProjection Y) (fromPoint Y))) i
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso CospanShape.strictCospanHornIso.symm)
   have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d := spectrumPullbackInfinityCone_isLimit _ _
   let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict
-      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (spectrumPullbackDiagram (basedPathProjection Y) (fromPoint Y))) i)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram (basedPathProjection Y) (fromPoint Y))) i)
   have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (DiagramLimitTransport.restrict d i) :=
     (e.isTerminalVertex_iff d).1 hd
   exact hc.cast (CospanShape.strictDiagram_eq (basedPathProjection Y) (fromPoint Y))

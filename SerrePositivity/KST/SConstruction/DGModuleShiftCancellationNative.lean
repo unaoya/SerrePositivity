@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInvNa
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma mappedIsoRecovery {M N : ModuleCategory R D} (a : M ⟶ N) (e : M ≅ N)

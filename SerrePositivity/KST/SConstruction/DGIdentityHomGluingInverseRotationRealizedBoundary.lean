@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Funct
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 
 private lemma precompInclusionEquation
     {A B X : SSet.{u}} [SSet.Quasicategory X]

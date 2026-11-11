@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaPointPair
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories
 open scoped Simplicial ComonObj
 
 /-- 概要：元一単体の厳密区間 Hom 作用は同じ増大後の元閉辺。

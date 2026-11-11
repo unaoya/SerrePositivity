@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluin
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Limits MonoidalCategory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory Limits MonoidalCategory DifferentialGraded InfinityCategories
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)

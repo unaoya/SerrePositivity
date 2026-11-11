@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNullHomotopy
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma mapNegativeNaturality {R : Type u} [CommRing R]
     {C : Type v} {E : Type w} [DGCategory R C] [DGCategory R E]
     (Q : DGFunctor R C E) {A B A' B' : C}

@@ -68,7 +68,7 @@ lemma anodyneFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
           (b ≫ evaluation X Z (n + 1)) ≫
             _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
       change (prev.val ≫ step X Y n) ≫
-          (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (p.app (n + 1)) = _
+          (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (p.app (n + 1)) = _
       rw [Category.assoc, step_post X (Y := Y) (Z := Z) p n,
         ← Category.assoc]
       change (prev.val ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right) ≫

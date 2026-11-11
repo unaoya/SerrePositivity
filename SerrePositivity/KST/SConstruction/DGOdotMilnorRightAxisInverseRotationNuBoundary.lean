@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRota
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 
 private lemma postcompBoundaryResidual
     {A X Y : SSet.{u}} [SSet.Quasicategory X] [SSet.Quasicategory Y]

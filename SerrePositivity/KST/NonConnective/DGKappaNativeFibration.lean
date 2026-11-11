@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Fibration SerrePositivity.KST.Comparison
+open SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)

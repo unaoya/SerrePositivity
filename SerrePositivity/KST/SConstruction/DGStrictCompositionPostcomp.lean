@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStr
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 
 /-- 概要：元全厳密合成は同じ dg 後合成と交換する。
 方針：元閉零成分の全斉次合成保存と外延性を使用する。

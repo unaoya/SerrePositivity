@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExten
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve SSet
+open CategoryTheory DifferentialGraded InfinityCategories SSet
 /-- 概要：全厳密合成等号から指定三辺の実合成二単体を得る。
 方針：native 合成則を指定三辺の既存延長へ渡す。
 規約：三つの全ホモトピーを保持。使われ方：実 connecting の指定比較面。 -/

@@ -16,7 +16,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison SerrePositivity.SimplicialModel
+open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：S1 の元の閉部分圏四角形を Ex∞ の native 四角形として保持する。

@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
 /-- 全 S_n 作用を元の core へ制限すると、同じ全零値族の元の K-S• 作用と厳密一致する。 -/

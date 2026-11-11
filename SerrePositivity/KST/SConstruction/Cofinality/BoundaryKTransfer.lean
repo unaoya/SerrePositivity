@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：境界 Kan 射の π₁ 単射・高次全単射は元の境界 K 射の零次単射・正次数全単射。

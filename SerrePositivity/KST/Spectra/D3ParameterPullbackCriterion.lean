@@ -95,9 +95,9 @@ def d3ParameterPullbackSmallCone_hom_isLimit (Z : PointedKanObject.{u}) :
   change IsLimit (((SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj
     (Opposite.op Z)).mapCone (d3ParameterPullbackSmallCone D Y))
   rw [d3PointedKanHomFunctor]
-  have hm := isLimitOfPreserves (pointedMappingFunctor Z.obj) hc
+  have hm := isLimitOfPreserves (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) hc
   exact IsLimit.ofIsoLimit hm (Functor.mapConeMapCone
-    (H := pointedKanProperty.ι) (H' := pointedMappingFunctor Z.obj)
+    (H := pointedKanProperty.ι) (H' := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj)
     (d3ParameterPullbackSmallCone D Y))
 
 include hD in

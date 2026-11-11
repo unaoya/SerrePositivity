@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotati
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 
 private lemma normalizeComposite
     {A X : SSet.{u}} {f g f' g' z z' : A ⟶ X}

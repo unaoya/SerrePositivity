@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma zeroDescCongr {M N T : ModuleCategory R D}
     (f g : M ⟶ N) (b c : N ⟶ T) (ef : f = g) (eb : b = c)

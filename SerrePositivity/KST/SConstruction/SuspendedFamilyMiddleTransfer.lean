@@ -44,7 +44,7 @@ lemma pointed_suspension_middle_lift {D : SSet.{u}} {X B R Z : PointedSimplicial
       eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B) Z =
       lift (a ≫ (PointedObject.basedHomMap X p).right ≫ (suspensionHom X R).right) h ≫
         eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension R) Z := by
-  have hn := suspensionHom_post X p
+  have hn := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post X p
   change (PointedObject.basedHomMap X p).right ≫ (suspensionHom X R).right =
     (suspensionHom X B).right ≫
       (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (PointedSimplicialSet.circle.{u} ◁ p)).right at hn

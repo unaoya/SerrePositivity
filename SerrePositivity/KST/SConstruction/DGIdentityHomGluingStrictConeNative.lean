@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGMod
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 private lemma recoverStrictArrow {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] [Small.{u} C]

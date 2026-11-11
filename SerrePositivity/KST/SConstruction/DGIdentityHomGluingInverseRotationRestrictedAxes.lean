@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeFamilyInc
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma shiftedRecovery {R : Type u} [CommRing R] {E : Type v}
     [DGCategory R E] [Small.{u} E] {P : Type w} [DGCategory R P]
     {L : Type z} [DGCategory R L] (H : DGFunctor R P L)

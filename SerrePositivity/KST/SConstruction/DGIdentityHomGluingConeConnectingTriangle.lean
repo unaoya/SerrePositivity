@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectin
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma isoTriangle {V : Type*} [Category V] {X Y Z : V} (e : X ≅ Y) (f : X ⟶ Z) :
     e.hom ≫ (e.inv ≫ f) = f := by
   rw [← Category.assoc, Iso.hom_inv_id, Category.id_comp]

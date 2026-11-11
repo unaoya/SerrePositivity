@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleInverseRotationCone
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元零 shift 同型の全厳密自然比較。

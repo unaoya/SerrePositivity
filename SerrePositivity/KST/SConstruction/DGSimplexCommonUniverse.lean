@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGNer
 noncomputable section
 universe u v w z t
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable {R : Type u} [CommRing R] {C : Type v} [DGCategory R C]
   {D : Type w} [DGCategory R D] {E : Type z} [DGCategory R E]
 

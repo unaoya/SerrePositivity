@@ -12,7 +12,7 @@ noncomputable section
 universe u v w z t
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (E : Type z) [DGCategory R E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)

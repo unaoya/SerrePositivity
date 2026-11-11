@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisPerfNativeN
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory MonoidalClosed SSet DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)

@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：本質像の元の全旗核の Ex∞ の一点射は局所化同型。

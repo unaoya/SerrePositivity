@@ -30,7 +30,7 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) [hp : ∀ n, Fibration (p.app n
 
 /-- 元の実 BF fiber 錐を、同じ段で基点を忘れて評価した通常の錐。 -/
 def rawFiberSpaceEvaluationCone (n : ℕ) :
-    Cone (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙
+    Cone (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙
       spectrumSpaceEvaluationOrdinary n) :=
   (spectrumSpaceEvaluationOrdinary n).mapCone (FiberModel.smallCone p)
 
@@ -55,7 +55,7 @@ theorem rawFiberSpaceEvaluationCone_isLimit (n : ℕ) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (rawFiberSpaceEvaluationCone p n)) := by
   have : ∀ Z : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}, Fibration
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
-        (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙ spectrumSpaceEvaluationOrdinary n)
+        (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y) ⋙ spectrumSpaceEvaluationOrdinary n)
           Z).map (AsSmall.up.map WalkingCospan.Hom.inl)) := fun Z => by
     change Fibration (((SimplicialCategory.sHomFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}).obj (Opposite.op Z)).map
       ((spectrumSpaceEvaluationOrdinary n).map p))
