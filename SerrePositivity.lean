@@ -34,6 +34,8 @@ public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.ParameterPowerLength
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCommutativity
+public import SerrePositivity.CategoryTheory.CechNerveData
+public import SerrePositivity.CategoryTheory.CechNerveTransport
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialDeRhamCompletionUnit
 public import SerrePositivity.HomologicalAlgebra.BicomplexProjectionNaturality
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.ModuleMap

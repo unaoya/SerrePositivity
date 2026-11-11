@@ -567,6 +567,30 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseExact
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PointwiseRegular
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelEquivalence
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
+import SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorRingMaps
+import SerrePositivity.BhattScholze.Prismatic.AffineCechChosenComparison
+import SerrePositivity.BhattScholze.Prismatic.AffineCechCoefficientComplex
+import SerrePositivity.BhattScholze.Prismatic.AffineCechPrismBaseChange
+import SerrePositivity.BhattScholze.Prismatic.AffineCechSiteNerve
+import SerrePositivity.BhattScholze.Prismatic.BigCechSiteAffine
+import SerrePositivity.BhattScholze.Prismatic.BigCechSiteAlexander
+import SerrePositivity.BhattScholze.Prismatic.BigCechSitePresentation
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderAssembly
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderBigComparison
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderBounds
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderChoice
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderComplex
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderCoproduct
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeData
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeLift
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeMaps
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderFreeDelta
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderPresentation
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderRingPresentation
+import SerrePositivity.BhattScholze.Prismatic.CechAlexanderSmall
+import SerrePositivity.BhattScholze.Prismatic.PrismaticFrameCoproduct
+import SerrePositivity.CategoryTheory.CechNerveData
+import SerrePositivity.CategoryTheory.CechNerveTransport
 import Lean.Util.CollectAxioms
 
 /-!
@@ -579,6 +603,30 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Prism.Bounded.CompletedTensorRingMaps,
+    `SerrePositivity.BhattScholze.Prismatic.AffineCechChosenComparison,
+    `SerrePositivity.BhattScholze.Prismatic.AffineCechCoefficientComplex,
+    `SerrePositivity.BhattScholze.Prismatic.AffineCechPrismBaseChange,
+    `SerrePositivity.BhattScholze.Prismatic.AffineCechSiteNerve,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechSiteAffine,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechSiteAlexander,
+    `SerrePositivity.BhattScholze.Prismatic.BigCechSitePresentation,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderAssembly,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderBigComparison,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderBounds,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderChoice,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderComplex,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderCoproduct,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeData,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeLift,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderEnvelopeMaps,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderFreeDelta,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderPresentation,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderRingPresentation,
+    `SerrePositivity.BhattScholze.Prismatic.CechAlexanderSmall,
+    `SerrePositivity.BhattScholze.Prismatic.PrismaticFrameCoproduct,
+    `SerrePositivity.CategoryTheory.CechNerveData,
+    `SerrePositivity.CategoryTheory.CechNerveTransport,
     `SerrePositivity.BhattScholze.Delta.Division.HomExt,
     `SerrePositivity.BhattScholze.Prismatic.AffineCechFrameLift,
     `SerrePositivity.BhattScholze.Prismatic.AffineCechVertexFrame,
