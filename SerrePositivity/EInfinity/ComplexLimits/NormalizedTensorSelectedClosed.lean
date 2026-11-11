@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementSelectedCochain_closed {n : ℕ}

@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 

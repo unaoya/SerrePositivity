@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory CategoryTheory.Limits Hammock Hammock.DoubleSimplicial MonoidalCategory
+open CategoryTheory CategoryTheory.Limits Hammock MonoidalCategory
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y Z : C.category)
 
 def freeHammockResolutionComposition :

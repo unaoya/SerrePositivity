@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.InfinityCategories
-open Zigzag.FirstBoundary TwoSidedDiagram.FixedVertices
+open TwoSidedDiagram.FixedVertices
 variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeFirstLeftSpaceIso :
     leftSpace (freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
