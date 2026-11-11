@@ -1,0 +1,1058 @@
+{
+  "5.4.5.6": {
+    "page": 437,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "projective モデル構造の図式のホモトピー引き戻しで、他の三辺が homotopy colimit なら第四もそうなる。filtered の SSet 値の通常の pullback と余極限の交換や Kan 弱同値の保存はあるが、この projective 構造の具体的 instance と指定 homotopy pullback の全図式への比較がない。準圏 Space の有限極限交換は原典のモデル圏図式に比較されていない。"
+  },
+  "5.4.5.8": {
+    "page": 439,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "filtered 準圏間で、各標的対象から像への辺が存在する weakly cofinal と、小さく弱可縮な各図式の余スライスにこの条件を課す κ-cofinal の二述語。IsRightCofinal は全スライスの弱可縮性であり、この二つの対象別の条件を定義していない。Mathlib の通常圏の Functor.Final も同じ二つの述語ではない。"
+  },
+  "5.4.5.9": {
+    "page": 439,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "τ-filtered I の τ-small 図式の余スライス射影が τ-cofinal。isKappaFiltered_sliceUnder は全空間の filtered 性、sliceUnderRestrict_trivialKanFibration は共終形状への制限であり、この射影の各小弱可縮図式の余スライスでの対象到達条件ではない。IsRightCofinal の類似だけでは κ-cofinal の結論を持たない。"
+  },
+  "5.4.5.10": {
+    "page": 439,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "(A⋆B)∪B(B⋆C)→A⋆B⋆C の categorical equivalence（B が弱可縮）。joinUnion の inner anodyne 補題は一方の部分複体の左右 anodyne 性を仮定し、この中間因子の弱可縮性から指定包含の equivalence を構成しない。joinUnion の pushout の存在だけはこの同値の証明ではない。"
+  },
+  "5.4.5.11": {
+    "page": 440,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "κ-cofinal f:I→J と κ-small p に対する I×J Jp/ の τ-filtered 性と誘導射の κ-cofinal 性。native の IsRightCofinal の基底変換は本来の共終性を扱い、ここでの weakly cofinal な余スライス条件がない。isKappaFiltered_sliceUnder は I 自身の図式の余スライスであり、J の図式の pullback と異なる。"
+  },
+  "5.4.5.12": {
+    "page": 441,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          "SerrePositivity"
+        ],
+        "file_count": 1019,
+        "line_count": 5392
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(sliceUnderPostcomp|pullbackCoslice|pullback.*(Colimit|Compact)|isInitialVertex_pullback|[Ww]eaklyCofinal|[Kk]appaCofinal|[Cc]ofinal|joinUnion|SourceCoslice|[Cc]ompactSourceSlice)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 57,
+        "line_count": 397
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma pullback_hasSmallKappaFilteredColimits : Ind.HasSmallKappaFilteredColimits κ (pullback p q)"
+          },
+          {
+            "line": 46,
+            "head": "lemma pullback_filtered_isColimitCone_iff_components {K : SSet.{u}} [Quasicategory K] [IsKappaFiltered κ K] {r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ pullback p q} (c : JoinCocone r) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (pullback.fst p q) c) ∧ IsColimitCone (mapJoinCocone (pullback.snd p q) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PullbackCompactObjects.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "local instance {E B D : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (G : D ⟶ B) : LeftFibration (pullback.snd p G) := ⟨leftFibrations.pullback_snd p G (LeftFibration.mem (p := p))⟩"
+          },
+          {
+            "line": 32,
+            "head": "lemma isKappaCompact_pullback_of_components {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [InnerFibration p] (hf : IsKappaAccessibleFunctor μ (pullback.fst p q)) (hs : IsKappaAccessibleFunctor μ (pullback.snd p q)) (hp : IsKappaAccessibleFunctor μ p) (v : (pullback p q) _⦋0⦌) (he : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.fst p q).app _ v)) (hd : Compact.IsKappaCompact.{u, u + 1} μ ((pullback.snd p q).app _ v)) (hb : Compact.IsKappaCompact.{u, u + 1} μ (p.app _ ((pullback.fst p q).app _ v))) : Compact.IsKappaCompact.{u, u + 1} μ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "lemma compactSourceClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x : C _⦋0⦌} (hx : Compact.IsKappaCompact.{u, u + 1} μ x) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x))) := hx.of_functorIso (Compact.covariantRepresentableInfinity_cosliceIso x)"
+          },
+          {
+            "line": 44,
+            "head": "lemma edgeTargetClassification_preservesKappaFilteredColimits {μ : Cardinal.{u}} {C : SSet.{u + 1}} [Quasicategory C] {x y : C _⦋0⦌} (f : C.Edge x y) (hy : Compact.IsKappaCompact.{u, u + 1} μ y) : Compact.PreservesKappaFilteredColimits.{u, u + 1} μ (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm f.edge)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SourceCosliceFilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma sourceCoslice_hasColimit_of_rightCofinal {K L C : SSet.{u}} [Quasicategory K] [Quasicategory L] [Quasicategory C] (p : K ⟶ C) (D : L ⟶ sliceUnder p) (hr : IsRightCofinal (joinInr K L)) (hD : HasColimit (D ≫ sliceUnderProjection p)) : HasColimit D"
+          },
+          {
+            "line": 45,
+            "head": "lemma sourceCoslice_hasSmallKappaFilteredColimits {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (hC : Ind.HasSmallKappaFilteredColimits κ C) (x : C _⦋0⦌) : Ind.HasSmallKappaFilteredColimits κ (sliceUnder (SSet.yonedaEquiv.symm x))"
+          },
+          {
+            "line": 73,
+            "head": "lemma sourceCoslice_isColimitCone_iff_projection_kappaFiltered {κ : Cardinal.{u}} (hκ : κ.IsRegular) {C : SSet.{u + 1}} [Quasicategory C] (x : C _⦋0⦌) {I : SSet.{u}} [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{u + 1, u}).obj I ⟶ sliceUnder (SSet.yonedaEquiv.symm x)) (c : JoinCocone D) : IsColimitCone c ↔ IsColimitCone (mapJoinCocone (sliceUnderProjection (SSet.yonedaEquiv.symm x)) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/AccessibleCompactSourceTests.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma nonempty_compactSourceSlice_cocone_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) (K : SSet.{u}) (hK : IsKappaSmall μ K) (r : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ compactSourceSlice μ x) : Nonempty (JoinCocone r)"
+          },
+          {
+            "line": 60,
+            "head": "lemma compactSourceSlice_model_isKappaFiltered_of_isKappaAccessible {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {C : SSet.{u + 1}} [Quasicategory C] (hC : IsKappaAccessible μ C) (x : (Δ[0] : SSet.{u + 1}) ⟶ C) {M : SSet.{u}} [Quasicategory M] (e : QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj M) (compactSourceSlice μ x)) : IsKappaFiltered μ M := isKappaFiltered_of_small_tests_equivalence e (fun K hK r ↦ nonempty_compactSourceSlice_cocone_of_isKappaAccessible hμ hC x K hK r)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/AccessiblePullback/SmallSourceCosliceCompactness.lean",
+        "signatures": [
+          {
+            "line": 51,
+            "head": "lemma isKappaCompact_smallSourceCosliceVertex {μ : Cardinal.{u}} [Fact μ.IsRegular] (hμ : Cardinal.aleph0 < μ) {A : SSet.{u}} [Quasicategory A] (hA : IsKappaSmall μ A) {C : SSet.{u + 1}} [Quasicategory C] (hC : HasSmallColimits C) (q : (SSet.uliftFunctor.{u + 1, u}).obj A ⟶ C) (hq : ∀ a, Compact.IsKappaCompact.{u, u + 1} μ (q.app _ a)) (c : JoinCocone q) (hc : Compact.IsKappaCompact.{u, u + 1} μ c.vertex) : Compact.IsKappaCompact.{u, u + 1} μ (C := sliceUnder q) c"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/CatInfinity/PullbackInitialVertices.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma isInitialVertex_pullback_of_components {E D B : SSet.{u}} [Quasicategory E] [Quasicategory D] [Quasicategory B] (p : E ⟶ B) (q : D ⟶ B) [Quasicategory (pullback p q)] (hp : ∀ x y : E _⦋0⦌, Fibration (pinchedHomMap p x y)) (x : (pullback p q) _⦋0⦌) (he : IsInitialVertex ((pullback.fst p q).app (Opposite.op ⦋0⦌) x)) (hd : IsInitialVertex ((pullback.snd p q).app (Opposite.op ⦋0⦌) x)) (hb : IsInitialVertex (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) x))) : IsInitialVertex x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/JoinAnodyne.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          },
+          {
+            "line": 41,
+            "head": "lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) : innerAnodyneExtensions (joinUnion A₀ B₀).ι"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Final.lean",
+        "signatures": [
+          {
+            "line": 91,
+            "head": "class Final (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 99,
+            "head": "class Initial (F : C ⥤ D) : Prop where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "filtered 準圏間の κ-cofinal 性から cofinal 性を導く主張。cofinal_iff_sliceWeaklyContractible の判定と filtered⇒弱可縮は証明部品としてあるが、指定した f の pullback スライスが κ-filtered であることを κ-cofinal 条件から示す宣言はない。"
+  }
+}
