@@ -1,0 +1,71 @@
+{
+  "base": "0bf6fa239864f47fb62372d0d59624502efda45a",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "items": {
+    "6.3.1.2": {
+      "page": 600,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso",
+        "SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointFunctorIso"
+      ]
+    },
+    "6.3.1.4": {
+      "page": 601,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.QCatAdjunction.comp",
+        "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp"
+      ]
+    }
+  },
+  "declarations": {
+    "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp": {
+      "declaration": "SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp",
+      "source": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+      "type": "@SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp.{u_1} : ∀ {C D E : SSet.{u_1 + 1}}\n  {F :\n    @Quiver.Hom.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.catToReflQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})))\n      C D}\n  {G :\n    @Quiver.Hom.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n        (@CategoryTheory.catToReflQuiver.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n          (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n            CategoryTheory.types.{u_1 + 1})))\n      D E},\n  @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.{u_1} C D F →\n    @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.{u_1} D E G →\n      @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.{u_1} C E\n        (@CategoryTheory.CategoryStruct.comp.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n          (@CategoryTheory.Category.toCategoryStruct.{u_1 + 1, u_1 + 2} SSet.{u_1 + 1}\n            (@CategoryTheory.Functor.category.{0, u_1 + 1, 0, u_1 + 2} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type (u_1 + 1))\n              CategoryTheory.types.{u_1 + 1}))\n          C D E F G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SerrePositivity.InfinityCategories.QCatAdjunction.comp": {
+      "declaration": "SerrePositivity.InfinityCategories.QCatAdjunction.comp",
+      "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+      "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.comp.{u_1} : {X Y Z : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      [inst_2 : SSet.Quasicategory.{u_1} Z] →\n        {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n          {G : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n            {F' : Quiver.Hom.{u_1, u_1 + 1} Y Z} →\n              {G' : Quiver.Hom.{u_1, u_1 + 1} Z Y} →\n                SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n                  SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F' G' →\n                    SerrePositivity.InfinityCategories.QCatAdjunction.{u_1}\n                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F F')\n                      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} G' G)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    },
+    "SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointFunctorIso": {
+      "declaration": "SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointFunctorIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+      "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.leftAdjointFunctorIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : X.Quasicategory] →\n    [inst_1 : Y.Quasicategory] →\n      {F F' :\n          @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})))\n            X Y} →\n        {G :\n            @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1})))\n              Y X} →\n          @SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} X Y inst inst_1 F G →\n            @SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} X Y inst inst_1 F' G →\n              @SerrePositivity.InfinityCategories.FunctorIso.{u_1} X Y F F'",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/htt-coverage/review/check/runs/ch6-61b",
+      "checked_at": "0bf6fa239864f47fb62372d0d59624502efda45a"
+    },
+    "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso": {
+      "declaration": "SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso",
+      "source": "SerrePositivity/InfinityCategories/F1B/Adjunction/Adjunction.lean",
+      "type": "@SerrePositivity.InfinityCategories.QCatAdjunction.rightAdjointFunctorIso.{u_1} : {X Y : SSet.{u_1}} →\n  [inst : SSet.Quasicategory.{u_1} X] →\n    [inst_1 : SSet.Quasicategory.{u_1} Y] →\n      {F : Quiver.Hom.{u_1, u_1 + 1} X Y} →\n        {G G' : Quiver.Hom.{u_1, u_1 + 1} Y X} →\n          SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G →\n            SerrePositivity.InfinityCategories.QCatAdjunction.{u_1} F G' →\n              SerrePositivity.InfinityCategories.FunctorIso.{u_1} G G'",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "evidence": "research/kerodon-coverage/review/check/runs/stage1-prime-01/verified-candidates.csv",
+      "checked_at": "446e88527bccb820971b728d89eca9ff52c012a4"
+    }
+  }
+}

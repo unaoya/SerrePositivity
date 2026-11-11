@@ -1,0 +1,3656 @@
+{
+  "6.2.3.1": {
+    "page": 586,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "native presentability はあるが、普遍的余極限と全 Čech groupoid の有効性を合わせた semitopos の述語はない。ordinary EffectiveEpi や Arrow.cechNerve の定義は圏全体のこの三公理ではない。"
+  },
+  "6.2.3.2": {
+    "page": 586,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary 集合値層の left exact sheafification はあるが、native ∞Topos と Semitopos の述語・同じ Čech groupoid の有効性との比較を欠く。全ての射が effective epi という主張と取り違えない。"
+  },
+  "6.2.3.3": {
+    "page": 586,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "native presentable slice の結果は presentability の部分だけであり、全余極限の普遍性と内部 Čech groupoid の有効性を同時に引き継ぐ型はない。ordinary Over の limits の存在のみはその証明部品である。"
+  },
+  "6.2.3.4": {
+    "page": 586,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary augmentedCechNerve は kernel pair の反復で、像への (−1)-truncation とその underlying diagram の colimit を同一視しない。native の colimit の存在と truncation の一般論にもこの特定の Čech augmentation の比較がない。"
+  },
+  "6.2.3.5": {
+    "page": 587,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "semitopos X の元の f に対する τ≤−1(f) の上圏内の終対象性と、同じ Čech nerve の増大錐が極限ではなく余極限解消となることの iff。Mathlib EffectiveEpi は通常圏の joint coequalizer、Arrow.augmentedCechNerve は通常圏の厳密な核対反復で、この高次切断・解消との比較を持たない。BS の flatAugmentedCechConerve は環の向きの特定の余脈体であり、任意 semitopos の元の f の iff ではない。"
+  },
+  "6.2.3.6": {
+    "page": 587,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib Functor.map_effectiveEpi は PreservesEffectiveEpis を先に仮定する。左完全な左随伴からその native instance を導く比較はなく、ordinary の regular epi の保存も Čech resolution と高次 truncation による原典の有効全射の同定なしでは適用できない。"
+  },
+  "6.2.3.7": {
+    "page": 588,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary effectiveEpiStructOfIsIso は同型の coequalizer 性を与えるが、任意の準圏の同値から原典の Čech resolution を構成する比較はない。homotopic 射の条件と left-exact presentable functor での保存もその通常圏の型には含まない。"
+  },
+  "6.2.3.8": {
+    "page": 588,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "原文の結論は X×T S→X で、f の基底変換の終域 S ではない（source-notes §6.2.3.8）。読み替えず none とする。ordinary Preregular は有効全射を引き戻せる細分の存在を公理とするもので、semitopos の公理から実際の homotopy pullback の射が effective epi となる定理ではない。native Čech resolution の base change との比較を欠く。"
+  },
+  "6.2.3.9": {
+    "page": 588,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary extensive の coproduct pullback 補題はあるが、Sub(∐Xα)→∏Sub(Xα) の任意の small family での単射性・非交性下の全単射を主張しない。有限直和の標準 pullback の存在だけは原典の部分対象の順序同型ではない。"
+  },
+  "6.2.3.10": {
+    "page": 588,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Subobject.pullback は順序関手を定義し EffectiveEpi は kernel pair の coequalizer を使うが、両者の injectivity による iff は見つからない。native の (−1)-truncation による有効全射との比較もなく、epi の cancellation だけをこの判定とはしない。"
+  },
+  "6.2.3.11": {
+    "page": 589,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary effective-epi family と coproduct の補題は通常の matching morphism の因子化条件であり、native semitopos の全 Čech resolution による有効全射の small coproduct 保存と同定できない。集合の全射の直和だけは別対象の類比である。"
+  },
+  "6.2.3.12": {
+    "page": 589,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary effectiveEpi_of_effectiveEpi_epi_comp は手前に Epi の仮定を要求する。原典の (2) は合成が effective epi であれば手前の射への仮定なしで右因子が effective epi となる。通常の型を適用する仮定を native semitopos から得る比較がなく、(1) の高次合成安定性も含まない。"
+  },
+  "6.2.3.13": {
+    "page": 590,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary 有効全射族の定義はあるが、任意の単体集合 K 上の native colimit cone の全頂点の coproduct が同じ Čech resolution を与える型はない。ordinary coproduct の universal morphism 自体は有効全射の証明ではない。"
+  },
+  "6.2.3.14": {
+    "page": 590,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary topology の local 性は被覆篩の公理であり、任意の native pullback・coproduct 安定な射族 S に対する有効全射降下と local class の iff ではない。generic localization の局所対象とも異なる。"
+  },
+  "6.2.3.15": {
+    "page": 591,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary IsLocallySurjective の合成の補題は集合値前層の section の持ち上げであり、semitopos の有効全射が g の effective-epi 性の下で f′ から f へ降下することと比較されていない。Preregular の pullback 公理だけは逆方向の検出を与えない。"
+  },
+  "6.2.3.16": {
+    "page": 592,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheaf の locally injective/surjective からの isIso は sectionwise な型で、native semitopos の任意の pullback square での effective epi に沿う同値の検出ではない。通常圏での mono/epi cancellation のみでもこの四角の前提を得られない。"
+  },
+  "6.2.3.17": {
+    "page": 592,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "native Kan space の truncation の結果は対象の点ごとの性質であり、任意の semitopos の n-truncated morphism を effective epi で検出する型はない。ordinary mono の pullback 安定性は n=−1 の類比であって高次射との比較がない。"
+  },
+  "6.2.3.18": {
+    "page": 593,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Sieve.generate と functorInclusion は存在するが、空間値 P(C) における coproduct of representables→j(C) の (−1)-truncation と同じ mono を同定しない。集合値の imageSieve は全高次前層の切断との比較がない。"
+  },
+  "6.2.3.19": {
+    "page": 593,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary site の cover-preserving functor や sheafification の随伴はあるが、native X→P(C) の因子化を逆像の covering family の effective epi 性で判定しない。対象 X は任意の ∞ トポスであり集合値層の Hom 集合だけには還元されない。"
+  },
+  "6.2.3.20": {
+    "page": 594,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "native presheaf の free cocompletion は Fun(C,X) の拡張を与えるが、空間値 Shv(C) への制限の fully faithful 性と covering family の有効全射保存による像の記述を含まない。通常の Sites の pullback functor は native Fun* との比較がない。"
+  },
+  "6.2.3.21": {
+    "page": 595,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          "SerrePositivity"
+        ],
+        "file_count": 2303,
+        "line_count": 10176
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Semitopos|EffectiveEpi|cechNerve|Truncated|Subobject|IsLocallySurjective|PreservesEffectiveEpis",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 145,
+        "line_count": 2120
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Basic.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "structure EffectiveEpiStruct {X Y : C} (f : Y ⟶ X) where"
+          },
+          {
+            "line": 71,
+            "head": "class EffectiveEpi {X Y : C} (f : Y ⟶ X) : Prop where"
+          },
+          {
+            "line": 77,
+            "head": "def EffectiveEpi.getStruct {X Y : C} (f : Y ⟶ X) [EffectiveEpi f] : EffectiveEpiStruct f := EffectiveEpi.effectiveEpi.some"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Comp.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) (i : (a : α) → X a ⟶ Y a) (hi : ∀ a, i a ≫ g a = 𝟙 _) [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) where"
+          },
+          {
+            "line": 57,
+            "head": "def effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi {α : Type*} {B : C} {X Y : α → C} (f : (a : α) → X a ⟶ B) (g : (a : α) → Y a ⟶ X a) [∀ a, IsSplitEpi (g a)] [EffectiveEpiFamily _ f] : EffectiveEpiFamilyStruct _ (fun a ↦ g a ≫ f a) := effectiveEpiFamilyStructCompOfEffectiveEpiSplitEpi' f g (fun a ↦ section_ (g a)) (fun a ↦ IsSplitEpi.id (g a))"
+          },
+          {
+            "line": 72,
+            "head": "instance IsSplitEpi.EffectiveEpi {B X : C} (f : X ⟶ B) [IsSplitEpi f] : EffectiveEpi f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/EffectiveEpi/Preserves.lean",
+        "signatures": [
+          {
+            "line": 52,
+            "head": "def effectiveEpiFamilyStructOfEquivalence : EffectiveEpiFamilyStruct (fun a ↦ e.functor.obj (X a)) (fun a ↦ e.functor.map (π a)) where"
+          },
+          {
+            "line": 96,
+            "head": "class PreservesEffectiveEpis (F : C ⥤ D) : Prop where"
+          },
+          {
+            "line": 103,
+            "head": "instance map_effectiveEpi (F : C ⥤ D) [F.PreservesEffectiveEpis] {X Y : C} (f : X ⟶ Y) [EffectiveEpi f] : EffectiveEpi (F.map f) := PreservesEffectiveEpis.preserves f"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/CechNerve.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "def cechNerve : SimplicialObject C where"
+          },
+          {
+            "line": 99,
+            "head": "def cechNerve : Arrow C ⥤ SimplicialObject C where"
+          },
+          {
+            "line": 146,
+            "head": "def cechNerveEquiv (X : SimplicialObject.Augmented C) (F : Arrow C) : (Augmented.toArrow.obj X ⟶ F) ≃ (X ⟶ F.augmentedCechNerve) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Basic.lean",
+        "signatures": [
+          {
+            "line": 94,
+            "head": "Essentially all the structure defined above on `MonoOver X` descends to `Subobject X`,"
+          },
+          {
+            "line": 102,
+            "head": "def Subobject (X : C) := ThinSkeleton (MonoOver X)"
+          },
+          {
+            "line": 105,
+            "head": "instance (X : C) : PartialOrder (Subobject X) := inferInstanceAs <| PartialOrder (ThinSkeleton (MonoOver X))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/LocallySurjective.lean",
+        "signatures": [
+          {
+            "line": 92,
+            "head": "class IsLocallySurjective {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "lemma imageSieve_mem {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] {U : Cᵒᵖ} (s : ToType (G.obj U)) : imageSieve f s ∈ J U.unop := IsLocallySurjective.imageSieve_mem _"
+          },
+          {
+            "line": 99,
+            "head": "instance {F G : Cᵒᵖ ⥤ A} (f : F ⟶ G) [IsLocallySurjective J f] : IsLocallySurjective J (whiskerRight f (forget A)) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Coherent/Basic.lean",
+        "signatures": [
+          {
+            "line": 55,
+            "head": "class Precoherent : Prop where"
+          },
+          {
+            "line": 69,
+            "head": "def coherentCoverage [Precoherent C] : Coverage C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/BhattScholze/Prismatic/FlatCechConerve.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "theorem hasWidePushout_flat (hκ : IsAdmissibleCutoff P R κ) (f : X ⟶ Y) (hf : IsFaithfullyFlat f) (n : ℕ) : HasWidePushout X (fun _ : Fin n ↦ Y) (fun _ ↦ f) := hasWidePushout_repeated f (fun {_} g ↦ by obtain ⟨_, _, _, h, _⟩ := exists_isPushout_isFaithfullyFlat hκ f hf g exact h.hasPushout) n"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary left Kan extension は一般の C で定義できるが、原典が言及する Fun*(Shv(C),X) の essential image の一般化ではない。有限極限仮定を除くための covering family と高次 flatness の比較は本体にない。"
+  }
+}

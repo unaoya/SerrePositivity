@@ -1,0 +1,4426 @@
+{
+  "6.3.5.1": {
+    "page": 616,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native の slice の終対象上の同値による presentability の特殊例はあるが、任意の X/U の ∞ トポス性と π!⊣π*⊣π* の随伴列はない。ordinary Over.mapPullbackAdj は postcomposition⊣pullback だけで、native の colimit-preserving inverse image と依存積の比較を欠く。"
+  },
+  "6.3.5.2": {
+    "page": 617,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over の pullback は対象の積を作るが、native π* の右随伴が sections の関手を表現する宣言はない。ordinary local homeomorphism の sections sheaf と ∞ トポスの切断圏との同値もない。"
+  },
+  "6.3.5.3": {
+    "page": 617,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "pairDuality は全 presentable 左右随伴の固定二対象間の反同値で、étale という slice 表示を満たす射の global subcategory を作らない。RTopét と LTopét の同じ slice 射を持つ反同値には接続しない。"
+  },
+  "6.3.5.4": {
+    "page": 618,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Subobject.Classifier は mono の分類子であり、元の U の global section を選ぶ全トポス Y と全幾何学的射の homotopy pullback による定義とは異なる。native pointed object の存在だけはこの Fun* の四角を定義しない。"
+  },
+  "6.3.5.5": {
+    "page": 618,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over の恒等射が終対象であることはあるが、全トポス Z での geometric functor category の homotopy pullback と X/U を同定する型はない。slice adjunction の一つの unit はこの分類の普遍性を含まない。"
+  },
+  "6.3.5.6": {
+    "page": 618,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "generic left fibration の分類はあるが、Fun*(X/U,Z)→Fun*(X,Z) をその left fibration とし fiber を MapZ(1,φ*U) とする比較はない。全関手圏の restriction の lifting property だけは左完全・余極限保存への制限に適用できない。"
+  },
+  "6.3.5.7": {
+    "page": 618,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native slice の mapping space の fiber formula はあるが、LTop の写像空間と MapX(V,U) を同定する宣言はない。通常の Over の Hom formula は元の二つの切断トポス間の幾何学的射の全空間ではない。"
+  },
+  "6.3.5.8": {
+    "page": 619,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over の pullback の可換性はあるが、X→Y と X/U→Y/f*U というトポスの四角の LTop 内での pushout 性はない。native での SSet の pushout とも圏の向き・普遍性が異なる。"
+  },
+  "6.3.5.9": {
+    "page": 619,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "普通の local homeomorphism の合成・消去は位相空間の主張であり、原典の geometric morphism が slice projection の右随伴として表されることの iff ではない。native fully faithful 関手の cancellation だけも étale の表現を供給しない。"
+  },
+  "6.3.5.10": {
+    "page": 619,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native OX の Cartesian edge と通常の Over はあるが、Xop と (LTopét)X/ を全高次の関手で同値にする χ はない。generic straightening は分類先の étale topology を同定する定理ではない。"
+  },
+  "6.3.5.11": {
+    "page": 622,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native conservative functor や adjoint functor criterion はあるが、f! の conservative 性と相対 push-pull 四角から元の f* を slice の逆像と同定する型はない。ordinary Over の adjunction のみは三条件との iff の成分ではない。"
+  },
+  "6.3.5.12": {
+    "page": 622,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Over の pullback functor の対称性・随伴は存在するが、native f! の dependent Frobenius formula f!(f*X×f*Y Z)≃X×Yf!Z と同定されていない。通常の SSet の積との分配律は別対象の類比である。"
+  },
+  "6.3.5.13": {
+    "page": 623,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native presentable な圏自身の small colimit はあるが、RTopét の図式の余極限トポスとその各脚が同じ étale morphism になることの型はない。全 PrL/PrR と全 étale subcategory の比較が必要である。"
+  },
+  "6.3.5.14": {
+    "page": 623,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native slice 構成は定義されるが、χ:X→LTopop/X の同じ幾何学的関手を構成していない。slice への postcomposition functor の colimit 保存とは対象が違い、étale topoi の colimit の主張にはならない。"
+  },
+  "6.3.5.15": {
+    "page": 625,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary free GroupoidCompletion は圏そのものを亜群化するが、LTopétop 内の simplicial object を次数零と実現を保って groupoid object にする自由分解ではない。高次内部亜群の reflector の比較がない。"
+  },
+  "6.3.5.16": {
+    "page": 626,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "PreservesSmallLimits は native の関手の条件として存在するが、Xop の全大きい図式の上に C 値層の full subcategory ShvC(X) を作る宣言はない。ordinary Sheaf J A は site J と matching Hom 集合を使い別の表示である。"
+  },
+  "6.3.5.17": {
+    "page": 626,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native ulift による presheaf 比較はあるが、小極限保存関手としての ShvS(X)≃X と大宇宙層圏の ∞ トポス性・包含の colimit 保存を同時に与えない。単体集合を持ち上げる同型だけでは local objects の宇宙間の比較にならない。"
+  },
+  "6.3.5.18": {
+    "page": 627,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Ind の left Kan 拡張による accessible functor はあるが、ShvŜ(X) の precomposition の左随伴とその左完全性を同定する型はない。Ind の preservation は指定した filtered colimit に関するもので、幾何学的射の有限極限保存の比較を欠く。"
+  },
+  "6.3.5.19": {
+    "page": 628,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary GrothendieckTopology は小さい site の被覆篩のデータである。ここでの大きい LTop 全体上で各 étale slice Xop に制限した functor の極限保存という sheaf 条件には対応する native 宣言がない。"
+  },
+  "6.3.5.20": {
+    "page": 628,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native Yoneda は一般の圏の表現前層を作るが、LTop の étale slice の colimit-preservation 比較がなく、それが原典の Shv(LTopop) に入るという sheaf 性を与えない。一般の米田の充満忠実性のみは証明部品である。"
+  },
+  "6.3.5.21": {
+    "page": 628,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification の left exact 性はあるが、大きい LTop からの層圏を大宇宙の ∞ トポスとして構成し各 X への制限が U-small colimit と finite limit を保存する型はない。小さい通常 site の結果はこの対象の同じ反射ではない。"
+  },
+  "6.3.5.22": {
+    "page": 630,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary Equifibered は通常の自然性四角の pullback 条件である。原典は全ての幾何学的射に対する宇宙拡大した逆像 f̂* を含む四角であり、native ShvŜ とその変換がないためこの predicate と同定できない。"
+  },
+  "6.3.5.23": {
+    "page": 630,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib IsStableUnderBaseChange と Equifibered.comp は通常の morphism property である。原典の universal では f̂* を通じた元の四角と層圏の pullback の比較を要し、その predicate が本体にないので別の構成だけを同じ安定性とは数えない。"
+  },
+  "6.3.5.24": {
+    "page": 630,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary IsVanKampenColimit は個々の cocone を扱うが、native 全トポス上の層圏の普遍的射とその colimit 脚を同定する型はない。generic colimit-preserving functor の合成だけでは各四角が pullback であることを得られない。"
+  },
+  "6.3.5.25": {
+    "page": 630,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native representability criterion は presentable 圏の極限保存 functor を扱うが、全 LTop 上の universal morphism F→eX の small fiber から F をある étale Y/X で表す比較を欠く。ordinary Subobject.Classifier は mono だけの別の表現問題である。"
+  },
+  "6.3.5.26": {
+    "page": 630,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary representable presheaf の fiber の記述はあるが、native étale Y/X に対応する universal morphism と essentially small な homotopy fiber の両条件を戻す型はない。一般の表現前層の yoneda lemma はその比較を供給しない。"
+  },
+  "6.3.5.27": {
+    "page": 631,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "native essentially small space と幾何学的実現の存在はあるが、各 Xn の成分と全構造射の κ-small homotopy fiber から X0→|X•| の fiber の同じ κ-smallness を得る型はない。small colimit の smallness は全空間についてで相対 fiber の大きさの判定ではない。"
+  },
+  "6.3.5.28": {
+    "page": 632,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "6.3.4",
+        "6.3.5",
+        "6.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          "SerrePositivity"
+        ],
+        "file_count": 201,
+        "line_count": 977
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "Etale|étale|LTop|RTop|Shv|classifying|PreservesSmallLimits|Over.mapPullbackAdj|Equifibered|essentiallySmall",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 98,
+        "line_count": 1016
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PrInfinity.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def PresentableCoreCategory (left : Bool) := ForgetEnrichment SSet.{u + 1} (TransportEnrichment quasicategoryCoreFunctor.{u + 1} (PresentableEnrichedObjects.{u} left))"
+          },
+          {
+            "line": 29,
+            "head": "instance presentableCoreCategory_category (left : Bool) : Category.{u + 1} (PresentableCoreCategory.{u} left)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Duality/PairDuality.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma pairRightAdjointFunctor_isFullyFaithful (C D : PresentableInfinityObject.{u}) : IsFullyFaithful (pairRightAdjointFunctor C D)"
+          },
+          {
+            "line": 43,
+            "head": "lemma pairRightAdjointFunctor_isQCatEquivalence (C D : PresentableInfinityObject.{u}) : IsQCatEquivalence (pairRightAdjointFunctor C D) := isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective (pairRightAdjointFunctor C D) (pairRightAdjointFunctor_isFullyFaithful C D) (pairRightAdjointFunctor_isEssentiallySurjective C D)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Comma/Over/Pullback.lean",
+        "signatures": [
+          {
+            "line": 60,
+            "head": "def pullback {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over Y ⥤ Over X where"
+          },
+          {
+            "line": 71,
+            "head": "def mapPullbackAdj {X Y : C} (f : X ⟶ Y) [HasPullbacksAlong f] : Over.map f ⊣ pullback f := Adjunction.mkOfHomEquiv { homEquiv := fun x y => { toFun := fun u => Over.homMk (pullback.lift u.left x.hom <| by simp) invFun := fun v => Over.homMk (v.left ≫ pullback.fst _ _) <| by simp [← Over.w v, pullback.condition] left_inv"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Subobject/Classifier/Defs.lean",
+        "signatures": [
+          {
+            "line": 16,
+            "head": "We define a structure containing the data of a subobject classifier in a category `C` as"
+          },
+          {
+            "line": 81,
+            "head": "structure Classifier (C : Type u) [Category.{v} C] where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/FunctorPresentable.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "lemma functorPostcomp_isKappaAccessible {κ : Cardinal.{u}} (A : SSet.{u + 1}) {C D : SSet.{u + 1}} [Quasicategory C] [Quasicategory D] (hC : Ind.HasSmallKappaFilteredColimits κ C) (F : C ⟶ D) (hF : IsKappaAccessibleFunctor κ F) : IsKappaAccessibleFunctor κ ((ihom A).map F)"
+          },
+          {
+            "line": 41,
+            "head": "lemma functorInd_isPresentable (K A : SSet.{u}) [Quasicategory K] [Quasicategory A] (κ : Cardinal.{u}) [Fact κ.IsRegular] (hI : HasSmallColimits (Ind.IndInfinity κ A)) : IsPresentable ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj K)).obj (Ind.IndInfinity κ A))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/BousfieldUniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma bousfieldLocalizationFunctor_preservesSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : PreservesSmallColimits (bousfieldLocalizationFunctor hC edges) := adjunction_preservesSmallColimits (bousfieldReflection hC edges).adjunction"
+          },
+          {
+            "line": 29,
+            "head": "lemma bousfieldLocalizationFunctor_isAccessible {C : SSet.{u + 1}} [Quasicategory C] (hC : IsPresentable C) {I : Type u} (edges : I → C _⦋1⦌) : IsAccessibleFunctor (bousfieldLocalizationFunctor hC edges) := ⟨Cardinal.aleph0, Cardinal.isRegular_aleph0, (bousfieldLocalizationFunctor_preservesSmallColimits hC edges).isKappaAccessibleFunctor _⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equifibered.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "def Equifibered : MorphismProperty (J ⥤ C) := fun {F G} α ↦ ∀ ⦃i j : J⦄ (f : i ⟶ j), IsPullback (F.map f) (α.app i) (α.app j) (G.map f)"
+          },
+          {
+            "line": 50,
+            "head": "theorem Equifibered.of_isIso {F G : J ⥤ C} (α : F ⟶ G) [IsIso α] : Equifibered α := fun _ _ f => IsPullback.of_vert_isIso ⟨naturality _ f⟩"
+          },
+          {
+            "line": 53,
+            "head": "theorem Equifibered.comp {F G H : J ⥤ C} {α : F ⟶ G} {β : G ⟶ H} (hα : Equifibered α) (hβ : Equifibered β) : Equifibered (α ≫ β) := fun _ _ f => (hα f).paste_vert (hβ f)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Sites/Sheafification.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "abbrev HasWeakSheafify : Prop := (sheafToPresheaf J A).IsRightAdjoint"
+          },
+          {
+            "line": 46,
+            "head": "class HasSheafify : Prop where"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary sheafification の finite-limit 保存はあるが、元の大きい Fun(Xop,Ŝ) の左完全反射を ShvŜ(X) と比較し、essentially small values・homotopy fibers を保存する宣言はない。native arbitrary localization の preservation だけではこれらのサイズを保証しない。"
+  }
+}
