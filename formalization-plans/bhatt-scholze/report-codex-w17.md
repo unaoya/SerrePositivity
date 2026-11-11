@@ -1,4 +1,6 @@
-# BS-W17 段0・停止点0（2026-11-11）
+# BS-W17 作業報告
+
+§1–4 は段0（2026-11-11）の調査、§6 は段1・停止点1の報告。
 
 基準は `math/bs-classical`、main `3520dfa62`（W15 の取り込み `acbf9fc5e` を含む）。指示書 W17、a0-design §2.8–2.9、a1-design §2.4–2.5・§3・D30、D74・D76、草稿 A1/HodgeTateComparison・A0/CechAlexander・A0/BaseChange を照合した。著者版 PDF は main 作業木の `paper/refs/BS-prisms-author.pdf` を読み、Construction 6.1 の式 (6)、Prop 6.2・Thm 6.3（著者版 pp.51–53）、Construction 4.17–4.18・Rem 4.19（pp.41–43）を確認した。段0は紙の検討で、Lean の編集・ビルドは行っていない。
 
@@ -99,3 +101,19 @@ D77 を含む main を取り込み（枝の merge は `f5e8bc39d`）、H1 の実
 対象ビルド成功。公開77宣言の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。既存の数学の宣言と入口・監査登録は変更していない。
 
 残りは、共通の非有界模型を被覆へ適用する下界一・二、完全 Koszul の上界三、drafts の D77 の接続。これらを閉じて停止点1を報告する。
+
+## 6. 段1・停止点1（2026-11-11）
+
+**H1 完了。** 中間コミット `ebf28afd6` と今回の差分で、新規22モジュール・公開の名前付き95宣言を置いた。入口・監査登録と既存の本体の宣言は変更していない。
+
+- D77：`Construction61.completelyFlat_of_flat` が原典の通常平坦性を d 完全平坦性へ送る。普遍例は K2 の二定理を直接使う。
+- 被覆の環・prism・標準射・有界性、生の除算包との同型、mod p の分冪表示と係数脚を接続した。K1 の `RegularSequencePD*` と切断分冪基底を再利用した。式(6)の分解と、その後半の忠実平坦性を実際の環射で示した。
+- `modPBaseChange_homology_isZero_below` は下界を一、`coverMapToModP_homology_isZero_below` は二だけ下げる。いずれも任意の複体と実際の K-flat 分解射を入力する。
+- `crystallineCoverMap_torAmplitude` は `HasCochainCompleteTorAmplitude … ![p,d] 3`。全ての非有界な半自由分解上で、標的の p の錐を通常剰余へ比較し、残りの錐の長完全列から上界三を得た。一般の計算は `HomologicalAlgebra/TwoCoordinateCompleteTor.lean` に置いた。
+- 模型の存在は既存の半自由分解から供給し、Koszul 増大との比較が擬同型になることも示した。上に有界な対象へ制限していない。H2 にも使う共通部品を H1 で先行実装したため、段0の本数の見込みより増えた。KST の直接 import はない。
+
+**D77 の drafts 変更。** A1/HodgeTateComparison の `Construction61Hypotheses` の二つのフィールド（通常の平坦性・商の p ねじれなし）は保った。普遍 prism と被覆は本体の模型を参照し、利用箇所を明示的な完全平坦性・p 正則性へ付け替えた。`universalOrientedPrism_frobenius_flat`・`universal61` の強い主張を経由しない。∞ 関手への接続と HT 比較の組み立ては drafts に残し、G10 の後とする。drafts は指示どおり非ビルド領域として扱った。
+
+**検証。** 対象ビルド16本＋6本が成功。名前付き公開宣言77＋18本の `#check`・`#print axioms`・`#print sorries` が通り、sorry なし、依存公理は標準三公理のみ。対象ファイルの sorry・axiom と KST の直接 import も確認した。
+
+段2（H2）へ進む。H3・H4 は⑤bの次の停止点の main への取り込み通知を待つ。

@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
+public import SerrePositivity.BhattScholze.Prism.Basic.CrystallineCoverCompleteTor
 -- 本ファイルは drafts/A0/{PrismaticSite,PrismaticEnvelope,CechAlexander}.lean、drafts/A1/{HodgeTateMap,CrystallineInput}.lean、drafts/Shared/DeRhamPolynomial.lean を import する。
 -- 結晶側の計算（D68 改訂後：Lemma 5.4・pd Poincaré・BdJ・Cartier の mod p の直接証明）は drafts/A1/CrystallineInput.lean（本ファイルより先）。DeRhamComparisonPoly は本ファイルより後。
 
@@ -78,37 +79,17 @@ def orientationDenominators (p : ℕ) [Fact p.Prime] : Submonoid freeOrientation
   Submonoid.closure (insert ((freeOrientationDelta p).delta freeOrientation)
     (Set.range (fun n : {n : ℕ // Nat.Coprime n p} => (n.val : freeOrientationRing))))
 
-abbrev universalDistinguishedRing (p : ℕ) [Fact p.Prime] :=
-  Localization ((freeOrientationDelta p).frobeniusDenominators (orientationDenominators p))
+-- D77：普遍 prism の実装は K2 の本体を直接使う。
+abbrev universalDistinguishedRing (p : ℕ) [Fact p.Prime] := UniversalDistinguishedRing.{u} p
+abbrev distinguishedDelta (p : ℕ) [Fact p.Prime] := universalDistinguishedDelta.{u} p
+abbrev rawOrientation (p : ℕ) [Fact p.Prime] := universalDistinguishedGenerator.{u} p
+abbrev universalOrientedPrismRing (p : ℕ) [Fact p.Prime] := UniversalOrientedPrismRing.{u} p
+abbrev universalOrientedPrism (p : ℕ) [Fact p.Prime] :=
+  BhattScholze.universalOrientedPrism.{u} p
 
-def distinguishedDelta (p : ℕ) [Fact p.Prime] : DeltaStructure p (universalDistinguishedRing.{u} p) :=
-  (freeOrientationDelta p).localization _ _ ((freeOrientationDelta p).frobeniusDenominators_stable _)
-
-def rawOrientation (p : ℕ) [Fact p.Prime] : universalDistinguishedRing.{u} p :=
-  algebraMap freeOrientationRing _ freeOrientation
-
-/-- Ex 3.4。p と rawOrientation の順の導来完備化の H⁰。 -/
-abbrev universalOrientedPrismRing (p : ℕ) [Fact p.Prime] :=
-  PDCompletionH0 (universalDistinguishedRing.{u} p) p (rawOrientation p)
-
-instance (p : ℕ) [Fact p.Prime] : CommRing (universalOrientedPrismRing.{u} p) :=
-  pdCompletionCommRing _ p (rawOrientation p)
-
-def universalOrientedPrism (p : ℕ) [Fact p.Prime] : OrientedPrism p (universalOrientedPrismRing.{u} p) where
-  deltaStructure := deltaPDCompletionStructure (distinguishedDelta p) (rawOrientation p)
-  generator := pdCompletionUnit _ p (rawOrientation p) (rawOrientation p)
-  generator_regular := by sorry -- 自由 δ 環で (p,d) は正則列。局所化と完備化後も d は正則
-  complete_p := by sorry -- PD 完備化は p 完備
-  complete_generator := by sorry -- 同じ完備化は d 完備
-  p_mem := by sorry -- δ(d) は単元なので distinguished、従って p ∈ (d,φ(d))
-
-/-- 概要：Ex 3.4 の性質：(p, d) は正則列、A_0/p の Frobenius は d 完全平坦（F_p{d, δ(d)^{-1}} の Frobenius は多項式環の p 乗で自由、
-局所化と d 完備化で d 完全平坦）。
-方針：`FreeDeltaFrobeniusFlat` の mod p の自由性。
-規約：Construction 6.1 の仮定（(6) の二つ目の射の忠実平坦性）に使う。
-使われ方：`crystallineCover` の A_0 への適用。 -/
-theorem universalOrientedPrism_bounded : IsBoundedPrism (universalOrientedPrism (p := p)) := by
-  sorry -- d を殺した商は p ねじれなし
+/-- Ex 3.4 の有界性。普遍 Frobenius には d 完全平坦性だけを使う（D77）。 -/
+theorem universalOrientedPrism_bounded : IsBoundedPrism (universalOrientedPrism (p := p)) :=
+  BhattScholze.universalOrientedPrism_bounded p
 
 abbrev modPrime (p : ℕ) (A : Type u) [CommRing A] := A ⧸ Ideal.span {(p : A)}
 
@@ -124,9 +105,8 @@ def FrobeniusFlatModP (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] : Prop 
   letI : Module (modPrime p A) (modPrime p A) := Module.compHom _ (modPrimeFrob p A)
   Module.Flat (modPrime p A) (modPrime p A)
 
-theorem universalOrientedPrism_frobenius_flat (p : ℕ) [Fact p.Prime] :
-    FrobeniusFlatModP p (universalOrientedPrismRing.{u} p) := by
-  sorry -- mod p は δ 座標の多項式環の局所化と d 完備化。p 乗指数の剰余類で自由な Frobenius の平坦性を移す
+-- D77：普遍 prism の通常の Frobenius 平坦性は主張しない。
+-- K2 の universalOrientedPrism_frobenius_isCompletelyFlat を直接入力する。
 
 /-- 概要：普遍性：任意の向き付き prism (A,(d_A)) に対し、d ↦ d_A の prism の射 A_0 → A が一意。
 方針：d_A は distinguished（`OrientedPrism.isDistinguished_generator`）なので δ(d_A) は単元、自由 δ 環と局所化の普遍性、A の (p,d) 完備性で
@@ -136,9 +116,14 @@ theorem universalOrientedPrism_frobenius_flat (p : ℕ) [Fact p.Prime] :
 theorem universalOrientedPrism_hom {A : Type u} [CommRing A] (P : OrientedPrism p A) :
     ∃! f : OrientedPrism.Hom (universalOrientedPrism (p := p)) P,
       f.toRingHom (universalOrientedPrism (p := p)).generator = P.generator := by
-  sorry -- d↦P.generator の自由 δ 射を局所化して (p,d) 完備化の普遍性で延長
+  exact existsUnique_universalOrientedPrismHom P
 
-/-! ## Construction 6.1 -/
+/-! ## Construction 6.1
+
+D77：環・prism・標準射と非有界な鎖複体の振幅の入力は本体の
+`Construction61Frobenius`・`CrystallineCover*` にある。
+以下の ∞ 圏の保存性と HT 比較の組み立ては G10 の後に接続する。
+-/
 
 variable {A : Type u} [CommRing A] (P : OrientedPrism p A)
 
@@ -173,46 +158,23 @@ def FlatKoszulComparison {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : 
 
 /-- 概要：Construction 6.1 の仮定：A/p の Frobenius が平坦、A/d が p ねじれなし。
 方針：述語。
-規約：普遍向き付き prism は満たす（`universalOrientedPrism_frobenius_flat`、(p,d) 正則）。
-使われ方：`crystallineCover`。 -/
+規約：原典の通常の平坦性を保つ。普遍例はこの構造を経由せず、D77 の二つの入力を使う。
+使われ方：原典どおりの仮定の記録。本体の適用は D77 の二入力で行う。 -/
 structure Construction61Hypotheses : Prop where
   frobenius_flat : FrobeniusFlatModP p A
   quotient_p_torsionFree : ∀ x : A ⧸ P.ideal, (p : A ⧸ P.ideal) * x = 0 → x = 0
 
-/-- 概要：B := A{φ(d)/p}^∧（φ(d)/p を自由に添加した δ-A 代数の p 完備化）。
-方針：`DeltaAdjoinDivision P.deltaStructure p (fun _ : Unit => φ(d))` の p ねじれ商と完備化（Cor 2.39 の r = 1、`Andre/Envelope/PDivision` の形）。
-規約：Lemma 2.24（`isDistinguished_factor`）で φ(d) = p·u、u 単元。(p, φ(d)) 完備ゆえ (p,d) 完備。(d) の pd 包の p 完備化で離散・p ねじれなし
-（d は A/p で正則、仮定）。
-使われ方：結晶 prism (B,(p))。 -/
-abbrev coverDivision := DeltaDivisionTorsionQuotient P.deltaStructure (p : A)
-  (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)
-abbrev coverDivisionMap := deltaDivisionTorsionMap P.deltaStructure (p : A)
-  (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)
+-- H1 の古典的な構成は本体の同じ模型を使う。環・prism・射は入力の証明に依存しない。
+abbrev coverDivision := Construction61.coverDivision P
+abbrev coverDivisionMap := Construction61.coverDivisionMap P
+abbrev crystallineCoverRing := Construction61.crystallineCoverRing P
+abbrev coverBase := Construction61.coverBase P
+abbrev crystallineCover := Construction61.crystallineCover P
+abbrev crystallineCoverMap := Construction61.crystallineCoverMap P
 
-/-- (p,p) 完備化は一変数 p 完備化。ここで Frobenius 余極限は取らない。 -/
-abbrev crystallineCoverRing (_ : Construction61Hypotheses P) :=
-  PDCompletionH0 (coverDivision P) p (p : coverDivision P)
-
-instance (h : Construction61Hypotheses P) : CommRing (crystallineCoverRing P h) := pdCompletionCommRing _ p _
-def coverBase (h : Construction61Hypotheses P) : A →+* crystallineCoverRing P h :=
-  (pdCompletionUnit _ p (p : coverDivision P)).comp (coverDivisionMap P)
-
-def crystallineCover (h : Construction61Hypotheses P) : OrientedPrism p (crystallineCoverRing P h) where
-  deltaStructure := deltaPDCompletionStructure (deltaDivisionTorsionStructure P.deltaStructure (p : A)
-    (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)) (p : coverDivision P)
-  generator := p
-  generator_regular := by sorry -- Cor 2.39 の変数一個の場合と p ねじれ除去、p 完備化
-  complete_p := by sorry -- PDCompletionH0 の完備性
-  complete_generator := by sorry -- 生成元は p
-  p_mem := Ideal.subset_span (Set.mem_insert _ _)
-
-theorem crystallineCover_generator (h : Construction61Hypotheses P) :
-    (crystallineCover P h).generator = (p : crystallineCoverRing P h) := rfl
-
-def crystallineCoverMap (h : Construction61Hypotheses P) : OrientedPrism.Hom P (crystallineCover P h) where
-  toRingHom := (coverBase P h).comp P.deltaStructure.frobeniusLift
-  map_delta := by sorry -- δ 射の合成
-  ideal_le := by sorry -- φ(d)/p を添加したので α(d)∈(p)
+/-- 結晶被覆の生成元は p。 -/
+theorem crystallineCover_generator :
+    (crystallineCover P).generator = (p : crystallineCoverRing P) := rfl
 
 /-- D(A) の (p,d) 完備な頂点とその反射。 -/
 abbrev CompleteModules := fullSubcomplexOnVertices (derivedInfinityCategory A)
@@ -223,9 +185,9 @@ def moduleReflection : Σ L : derivedInfinityCategory A ⟶ (CompleteModules P :
     QCatAdjunction L (moduleInclusion P) := by
   sorry -- 要確認：DerivedGeneral/CompletionFunctor へ。(p,d) を指定した完備反射
 
-def alphaStar (h : Construction61Hypotheses P) :=
-  moduleInclusion P ≫ derivedInfinityBaseChange (crystallineCoverMap P h).toRingHom ≫
-    (moduleReflection (crystallineCover P h)).1
+def alphaStar :=
+  moduleInclusion P ≫ derivedInfinityBaseChange (crystallineCoverMap P).toRingHom ≫
+    (moduleReflection (crystallineCover P)).1
 
 def ReflectsEquivalences {X Y : SSet.{u+1}} (F : X ⟶ Y) : Prop :=
   ∀ {x y : X _⦋0⦌} (e : X.Edge x y), IsIso (HomotopyCategory.homMk (e.map F)) → IsIso (HomotopyCategory.homMk e)
@@ -234,8 +196,11 @@ def ReflectsEquivalences {X Y : SSet.{u+1}} (F : X ⟶ Y) : Prop :=
 方針：mod p の分解 (6)：A/p → A/(p,d)（導来 Nakayama で保存的）→ A/(p,d^p)（Frobenius、忠実平坦）→ B/p = D_{(d)}(A/p)（pd 包、自由）。
 規約：導来 Nakayama は G-A1-4。
 使われ方：Prop 6.2 (b)(c)。 -/
-theorem crystallineCoverMap_conservative (h : Construction61Hypotheses P) :
-    ReflectsEquivalences (alphaStar P h) := by
+theorem crystallineCoverMap_conservative (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) :
+    ReflectsEquivalences (alphaStar P) := by
   sorry -- cofiber を mod p に落とし、(6) の d 完備 Nakayama と忠実平坦な Frobenius・pd 包を順に使う
 
 /-- A0 §2.9。任意の K∈D^{≥m}(A) を底変換したあと、標的の Koszul 複体を掛ける。
@@ -249,32 +214,43 @@ def HasFiniteCompleteTorAmplitude {B : Type u} [CommRing B] (f : A →+* B)
     let M := (dgNerve.vertexEquiv B (Semifree B) Y).val
     ∀ i : ℤ, i < m - c → Limits.IsZero ((koszulComplexOn (f ∘ x) M).homology i)
 
-def alphaModP (h : Construction61Hypotheses P) : modPrime p A →+* modPrime p (crystallineCoverRing P h) :=
-  Ideal.quotientMap _ (crystallineCoverMap P h).toRingHom (by sorry) -- p ↦ p
+abbrev alphaModP := Construction61.alphaModP P
 
-theorem torAmplitude_modP_le_one (h : Construction61Hypotheses P) (n : ℤ)
+theorem torAmplitude_modP_le_one (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) (n : ℤ)
     (K : (derivedInfinityCategory (modPrime p A)) _⦋0⦌) (hK : Derived.IsCoconnectiveAt _ n K) :
-    Derived.IsCoconnectiveAt _ (n-1) ((derivedInfinityBaseChange (alphaModP P h)).app _ K) := by
-  sorry -- (6) は d 正則元による商と平坦射の合成。これは mod p の通常の振幅
+    Derived.IsCoconnectiveAt _ (n-1) ((derivedInfinityBaseChange (alphaModP P)).app _ K) := by
+  sorry -- 本体 Construction61.modPBaseChange_homology_isZero_below の半自由模型の評価を頂点に移す
 
-theorem crystallineCoverMap_torAmplitude (h : Construction61Hypotheses P) :
-    HasFiniteCompleteTorAmplitude (crystallineCoverMap P h).toRingHom ![(p : A), P.generator] 3 := by
-  sorry -- D4-04。B/p は A 上 Tor 次元 ≤2（A/p で一段、torAmplitude_modP_le_one で一段）。
+theorem crystallineCoverMap_torAmplitude (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) :
+    HasFiniteCompleteTorAmplitude (crystallineCoverMap P).toRingHom ![(p : A), P.generator] 3 := by
+  sorry -- 本体 Construction61.crystallineCoverMap_torAmplitude は非有界な半自由模型で上界3を示す。
         -- Kos_B(p,pu) ≃ Kos_B(p,0) の零元の分がもう一段。普遍例の K=A/(p,d) で H⁻³=B/p
         -- Lemma 4.22 には上界の有限性だけを用いる
 
-theorem crystallineCoverMap_finiteTorAmplitude (h : Construction61Hypotheses P) :
-    ∃ c : ℕ, HasFiniteCompleteTorAmplitude (crystallineCoverMap P h).toRingHom ![(p : A), P.generator] c :=
-  ⟨_, crystallineCoverMap_torAmplitude P h⟩
+theorem crystallineCoverMap_finiteTorAmplitude (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) :
+    ∃ c : ℕ, HasFiniteCompleteTorAmplitude (crystallineCoverMap P).toRingHom ![(p : A), P.generator] c :=
+  ⟨_, crystallineCoverMap_torAmplitude P hF hR⟩
 
 /-- 概要：Construction 6.1 (3)：α̂^*Δ_{R/A} ≃ Δ_{R_B/B}（Lemma 4.20）。
 方針：Rem 4.19 の模型の項ごとの底変換と Lemma 4.22。
 規約：—
 使われ方：Prop 6.2 (b)。 -/
-theorem crystallineCoverMap_prismaticCohomology (hP : IsBoundedPrism P) (h : Construction61Hypotheses P) (r : ℕ) :
-    PrismaticCohomologyBaseChangeStatement P hP r (crystallineCover P h)
+theorem crystallineCoverMap_prismaticCohomology (hP : IsBoundedPrism P) (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) (r : ℕ) :
+    PrismaticCohomologyBaseChangeStatement P hP r (crystallineCover P)
       (by sorry) -- mod p では p=0
-      (crystallineCoverMap P h) := by
+      (crystallineCoverMap P) := by
   sorry -- crystallineCoverMap_finiteTorAmplitude と A0 の項別比較を Lemma 4.22 で Tot に移す
 
 /-! ## Prop 6.2（一般の r）と Thm 6.3 -/
@@ -283,7 +259,10 @@ theorem crystallineCoverMap_prismaticCohomology (hP : IsBoundedPrism P) (h : Con
 方針：α̂^* は保存的、α̂^*Δ_{R/A} ≃ Δ_{R_B/B}、(B,(p)) は結晶 prism で `hodgeTate_iso_crystalline`、α̂^*η^* が B 側の η^* に一致（生成元で）。
 規約：—
 使われ方：普遍向き付き prism への適用、Prop 6.2 (c)。 -/
-theorem hodgeTate_iso_of_construction61 (hP : IsBoundedPrism P) (h : Construction61Hypotheses P) (r : ℕ) :
+theorem hodgeTate_iso_of_construction61 (hP : IsBoundedPrism P) (hF : IsCompletelyFlat
+      (Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)}) P.generator})
+      (baseChangeScalarModule (modPMap p P.deltaStructure.frobeniusLift)))
+    (hR : IsSMulRegular (A ⧸ P.ideal) (p : A ⧸ P.ideal)) (r : ℕ) :
     HodgeTateIsoStatement P hP r := by
   sorry -- α̂* は保存的。生成元で HT 写像を比較し結晶 prism 側の Cor 5.5 で検出
 
@@ -292,13 +271,17 @@ theorem hodgeTate_iso_of_construction61 (hP : IsBoundedPrism P) (h : Constructio
 規約：K は導来 (p,d) 完備な A 複体。
 使われ方：Prop 6.2 (c)。 -/
 abbrev orientationMap := (universalOrientedPrism_hom P).exists.choose
-def universal61 (p : ℕ) [Fact p.Prime] : Construction61Hypotheses (universalOrientedPrism.{u} p) :=
-  ⟨universalOrientedPrism_frobenius_flat p, by sorry⟩ -- Ex 3.4：A₀/d₀ は p ねじれなし
-abbrev universalCover (p : ℕ) [Fact p.Prime] := crystallineCover (universalOrientedPrism.{u} p) (universal61 p)
+-- D77：universal61（通常の Frobenius 平坦性）は使わない。
+-- 保存性・Tor の入力には、次の K2 の二定理を直接渡す。
+abbrev universalFrobeniusInput (p : ℕ) [Fact p.Prime] :=
+  universalOrientedPrism_frobenius_isCompletelyFlat.{u} p
+abbrev universalPrimeInput (p : ℕ) [Fact p.Prime] :=
+  universalOrientedPrism_mod_generator_p_regular.{u} p
+abbrev universalCover (p : ℕ) [Fact p.Prime] := crystallineCover (universalOrientedPrism.{u} p)
 
 def baseChangeB : (CompleteModules P : SSet) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
   moduleInclusion P ≫ derivedInfinityRestrictScalars (E := E) (orientationMap P).toRingHom ≫
-    derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection (universalCover p)).1
+    derivedInfinityBaseChange (crystallineCoverMap (universalOrientedPrism.{u} p)).toRingHom ≫ (moduleReflection (universalCover p)).1
 
 /-- 概要：底変換関手 ĉ^*（c : Z_p → E の読み替え）：(− ⊗^L_{Z_p} A) の後に Res_{A_0}、â^*。
 方針：D30。
@@ -306,14 +289,14 @@ def baseChangeB : (CompleteModules P : SSet) ⟶ (CompleteModules (universalCove
 使われ方：Prop 6.2 (c)。 -/
 def baseChangeC : derivedInfinityCategory (crystallineBase.{u} p) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
   derivedInfinityBaseChange (padicCoefficientMap P) ≫ derivedInfinityRestrictScalars (E := E) (orientationMap P).toRingHom ≫
-    derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection _).1
+    derivedInfinityBaseChange (crystallineCoverMap (universalOrientedPrism.{u} p)).toRingHom ≫ (moduleReflection _).1
 
 /-- 概要：b̂^* は (p,d) 完備な A 複体の上で保存的（Res は完備性と零を保ち、â^* は保存的）。
 方針：`crystallineCoverMap_conservative` を A_0 に。
 規約：—
 使われ方：Prop 6.2 (c)。 -/
 theorem baseChangeB_conservative : ReflectsEquivalences (baseChangeB (E := E) P) := by
-  sorry -- d を保つ分類射での制限は完備性と零を反映し、universal61 の α̂* は保存的
+  sorry -- d を保つ分類射での制限は完備性と零を反映し、普遍 prism には K2 の universalFrobeniusInput と universalPrimeInput を直接渡す
 
 /-- 概要：Rem 4.19 の複体の項ごとの一致 b̂^*C^n_{R/A} ≃ ĉ^*C^n_{F_p[X]/Z_p}、したがって b̂^*Δ_{R/A} ≃ ĉ^*Δ_{F_p[X]/Z_p}。
 方針：C^n_A = C^n_{A_0} ⊗̂_{A_0} A、C^n_{A_0} ⊗̂_{A_0} D_0 = C^n_{D_0} = C^n_{Z_p} ⊗̂_{Z_p} D_0（A0 の `cechAlexanderAffine_baseChange`）、テンソルの結合則。
