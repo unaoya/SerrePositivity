@@ -595,3 +595,51 @@ SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedBasisKFlat
 SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedPowerMap
 SerrePositivity.EInfinity.BarrattEccles.Theory.WeightedTensorFamily
 ```
+
+## 12. E2 再開と規模上限による中間停止（11-11 夕）
+
+停止点 3 の取り込みを受け、`math/bs-impl` に main `7a3a0f965` を取り込んだ。登録 `afe1366a0` を含む。今回触る三本は新規で、⑤b・⑤c・⑥ の担当ファイルとの重複はない。界面の型・既存の公開宣言・入口・共有監査スクリプトは変更していない。
+
+### 12.1 証明した部分と未完了の欄
+
+三本、計 245 行を追加した。
+
+| モジュール（すべて `EInfinity/BarrattEccles/Theory/`） | 供給する宣言・内容 |
+| --- | --- |
+| `CoproductModel` | `modelCoprodWith`、`modelCoprodWith_isLeftQuillen`、`modelCoprodWith_cofibrant`、`modelCoprodWith_map_weakEquivalence`。指定された余積射の pushout 性で cofibration と trivial cofibration の保存を示し、Ken Brown で cofibrant 入力間の弱同値の保存を得る。`cofibrantAlgebraCoprodWith` で実際の Barratt–Eccles 模型の cofibrant 部分圏へ制限する。ここで使うレポジトリの `Quillen.IsLeftQuillen` は二つの保存条件であり、固定右因子との余積に通常の右随伴があるとは主張していない。 |
+| `CAlgCoproductFunctor` | `cofibrantAlgebraDKCoprodWith`、`cofibrantAlgebraDKCoprodWith_map_weak`、`cofibrantAlgebraCoprodRelative`、`cAlgCoprodWithModel`、`cAlgCoprodWithModel_vertex`、`barrattEcclesCoprodWith`。cofibrant な厳密余積を同じ DK 入力の相対関手にし、`localizationNerveMap` で CAlg の全関手へ送る。右因子 y は `cAlgVertexEquiv` の逆像で選ぶ。 |
+| `RightFrameCoproduct` | `coprodOppositeProductIso`、`rightFrameCoprodHomIso` とその `_fst`・`_snd`。共通の右 frame への simplicial Hom を二つの Hom の積に分解し、二つの射が指定包含による前合成であることを等式で示す。 |
+
+`coprodWith` の型の関手はできた。一方、`coprodWith_cocone`（指定された native な余積錐とその余極限性）と、右因子ごとの強い `coproduct_tensor : FunctorIso ...` はまだ証明していない。ここを E2 の完了や停止点 2 の追加達成とは扱わない。sifted 保存には依存していない。Tot・段 4 の実例の組み立てにはまだ進んでいない。
+
+native な錐への次の比較では、`binaryCoconeOfEdges` の指定脚、`ModelRightFrameComparison.modelRightFramePinchedEquivalence`、`isColimitCone_of_pointHomFamily_comparison` を候補として使える。今回の Hom の積同型だけから native な余極限性を結論してはいない。`HomotopyFunctionComplex.FrameComparison.homLeft_weakEquivalence` や `ChosenComparison.left_weakEquivalence` の `[ModelCategory SSet]` を要求する版は使わない。
+
+### 12.2 上限の再見積もりと停止理由
+
+指示書 §3 の 1：**「二つのどちらかが見積もりの上限（各 1,500 行程度）を超えそうなら、そこで止めて報告する」**。sifted の上限だけは §4 の 4 で約 2,700 行に更新されている。`coproduct_tensor` の上限を変更する決定はないため、その規則による中間停止とする。
+
+§8.2 の 850〜1,450 行は、準自由表示を共有するほか、二色の自由比較を 500〜800 行で閉じる見込みに基づいていた。停止点 3 の成果と残る API を照合すると、この部分を過小評価していた。新規の見込みは次のとおり。native な余積錐の残作業はこの表に含めない。
+
+| `coproduct_tensor` に残る部分 | 再利用できるもの | なお必要なもの | 新規行数の目安 |
+| --- | --- | --- | --- |
+| Hopf テンソル代数と二つの包含 | `BarrattEccles.hopf`、`Hopf.diagonalComponent`、`Hadamard.separate`・`pair`、テンソル冪の置換と代入の比較 | `X.carrier ⊗ Y.carrier` 上の作用、等変性・単位・代入の則、零入力を使った二つの包含が代数射であること、全射での自然性。既存の `ConvolutionAlgebra` は内部 Hom の構成で、このテンソル代数を供給しない。 | 400〜650 |
+| 二色の自由比較 | `equivariantBasis`・`equivariantBasis_rightAction`、arity の増大、Mathlib の `Rep` の射影解像度の比較 | `Σ_m × Σ_n` への制限、`E(m+n)` と `E(m) ⊗ E(n)` の指定比較、同変な鎖ホモトピー同値、二色の語と余不変による自由代数比較。対角の存在だけから余不変後の擬同型は従わない。 | 550〜850 |
+| 実際のセル対への移送 | `cellStageErasedFreeIso`、`cellStageWordBasis`、`cellStageWeight`、`cellBoundaryWord_weight_lt`、`WeightedTensorFamily` と `TensorWordWeights` | 二色の入力を併せた余積の表示、比較射の指定された重み商での式、商を上の二色比較と同定すること、擬同型を次数ごとの分裂・filtered 余極限・retract へ移すこと。既存の K 平坦性の結論はこの比較の擬同型性を供給しない。 | 600〜850 |
+| 強い全関手版への降下 | `cofibrantCarrierKFlat`、停止点 3 の semifree 増大の比較、`cAlgLocalizationSource_descendIso` | 同じ厳密な比較射を全射で自然な二胞体にし、固定右因子の `tensorWith` と同定して降ろす。 | 200〜350 |
+| **計** | 停止点 3 で完成した補助は再計上しない | native な余積錐の残作業は別 | **1,750〜2,700** |
+
+特に停止点 3 で得たのは一色の次数付き自由表示と、微分が重みを増やさないこと・境界が下の重みに入ることである。二色の部分群の解像度比較や、比較射の重み商の擬同型性を、そこから追加証明なしに使うことはできない。③ を待つことが判明したための停止ではなく、許可された規模を超える見込みによる停止である。上限を変更してこの経路を続けるかは調整役の判断を待つ。指示書 §4 の順序を保ち、sifted へ先に飛ばさない。
+
+### 12.3 検証・登録候補
+
+対象ビルド：`lake build SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoproductFunctor SerrePositivity.EInfinity.BarrattEccles.Theory.RightFrameCoproduct` が成功。依存する新規 `CoproductModel` も対象ビルド済み。最終ログに警告なし。ルートビルドは行っていない。
+
+三本・34 宣言の再帰的な公理監査に成功し、依存する公理は標準三公理のみだった。ソースの sorry・admit・新規公理は零。ビルドと監査はそれぞれ一回の `with_build_lock.sh --wait 3600` で実行し、常駐セッションは使っていない。このレーンの鍵は監査終了時に返却済み。
+
+登録候補は、いずれも `SerrePositivity.EInfinity.BarrattEccles.Theory` の下の次の三本。登録は調整役が取り込み時に行う。
+
+- `CoproductModel`
+- `CAlgCoproductFunctor`
+- `RightFrameCoproduct`
+
+新規の［一般∞］移動候補はない。`RightFrameCoproduct` の一般部分は通常の圏と simplicial Hom の補題で、今回は Barratt–Eccles の証明の隣に置いた。既報の［一般∞］五本は移動していない。
