@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
+  "worktree_commit": "a299ca161bd32f68d4b04b87f23f2790b5198d09",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -2321,6 +2321,1554 @@
         }
       ],
       "reason": "dg operad 代数の通常の忘却が sifted 余極限を作る結果と、射影置換でホモトピー余極限を計算する結果を確認した。厳密可換代数の局所化後の忘却が N(C) 型の余極限を保つ比較は見つからなかった。"
+    },
+    "4.1.0.3": {
+      "ha_page": 452,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "HSpace|rectifi.*monoid|toHSpace|monoidGroupCompletionMap",
+          "files_with_matches": 161,
+          "total_matching_lines": 799,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathVertices.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpace.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceContraction.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceFibration.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimitProjections.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoefficientIntervalPathComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "HSpace|rectifi.*monoid|toHSpace|monoidGroupCompletionMap",
+          "files_with_matches": 14,
+          "total_matching_lines": 274,
+          "sample_paths": [
+            "Mathlib/Analysis/SpecialFunctions/Log/ENNRealLogExp.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/Basic.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/EmbeddingReal.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.lean",
+            "Mathlib/MeasureTheory/Measure/FiniteMeasureExt.lean",
+            "Mathlib/MeasureTheory/Measure/Haar/Quotient.lean",
+            "Mathlib/MeasureTheory/Measure/LevyConvergence.lean",
+            "Mathlib/MeasureTheory/Measure/RegularityCompacts.lean",
+            "Mathlib/Topology/Homotopy/HSpaces.lean",
+            "Mathlib/Topology/MetricSpace/GromovHausdorff.lean",
+            "Mathlib/Topology/MetricSpace/Perfect.lean",
+            "Mathlib/Topology/MetricSpace/PiNat.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Topology/Homotopy/HSpaces.lean",
+          "sha256": "91b47ed6be6928f148da0bf82a07065c7f89c602a7b7b1f3550943a5438e574b"
+        },
+        {
+          "path": "SerrePositivity/KST/Comparison/GrouplikeComparison.lean",
+          "sha256": "df52bf6da71c95605e72c2c79fdfae71653ba5665206255a71baee56b317c4d7"
+        }
+      ],
+      "reason": "位相モノイドから H-space を作る宣言と単体モノイドの群完備化を確認した。与えられたホモトピー結合的 H-space が厳密な位相モノイドと H-space として弱同値になる条件は見つからなかった。"
+    },
+    "4.1.0.4": {
+      "ha_page": 452,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "HSpace|associahedron|delooping|monoidGroupCompletionMap",
+          "files_with_matches": 197,
+          "total_matching_lines": 901,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathVertices.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpace.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceContraction.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceFibration.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimitProjections.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoefficientIntervalPathComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "HSpace|associahedron|delooping|monoidGroupCompletionMap",
+          "files_with_matches": 14,
+          "total_matching_lines": 274,
+          "sample_paths": [
+            "Mathlib/Analysis/SpecialFunctions/Log/ENNRealLogExp.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/Basic.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/EmbeddingReal.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.lean",
+            "Mathlib/MeasureTheory/Measure/FiniteMeasureExt.lean",
+            "Mathlib/MeasureTheory/Measure/Haar/Quotient.lean",
+            "Mathlib/MeasureTheory/Measure/LevyConvergence.lean",
+            "Mathlib/MeasureTheory/Measure/RegularityCompacts.lean",
+            "Mathlib/Topology/Homotopy/HSpaces.lean",
+            "Mathlib/Topology/MetricSpace/GromovHausdorff.lean",
+            "Mathlib/Topology/MetricSpace/Perfect.lean",
+            "Mathlib/Topology/MetricSpace/PiNat.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Topology/Homotopy/HSpaces.lean",
+          "sha256": "91b47ed6be6928f148da0bf82a07065c7f89c602a7b7b1f3550943a5438e574b"
+        },
+        {
+          "path": "SerrePositivity/KST/Comparison/GrouplikeComparison.lean",
+          "sha256": "df52bf6da71c95605e72c2c79fdfae71653ba5665206255a71baee56b317c4d7"
+        }
+      ],
+      "reason": "既に群状単体モノイドである対象の delooping はある。H-space の積に対して associahedron で高次結合を補い、H-space としてループ空間と比較できる条件は見つからなかった。"
+    },
+    "4.1.0.6": {
+      "ha_page": 453,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.6",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "associahedron|rectifi.*algebra|homotopy.*associative|AInfinity",
+          "files_with_matches": 228,
+          "total_matching_lines": 901,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/FrameHom/HomInfinityEquivalenceTransport.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGAlgebraMoritaInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGAlgebraPerfectMoritaInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaPointedDisplay.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelCellSourceComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelClassicalComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelMoritaCriterionInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelResolutionPerfectComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelTargetModelChoiceIndependence.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpacePointed.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "associahedron|rectifi.*algebra|homotopy.*associative|AInfinity",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Localization/Monoidal.lean",
+          "sha256": "fd8330f75058b4960e1cc8c536707a0f416c9bca8b04140c594d8f2303dde05d"
+        }
+      ],
+      "reason": "通常の導来加群でのテンソルと厳密 dg 代数を確認した。hC の指定した積を一般のモノイダル ∞ 圏 C で整合的な積に持ち上げる条件は見つからなかった。"
+    },
+    "4.1.0.7": {
+      "ha_page": 454,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.7",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "nonunital|quasiUnit|unital.*lift|AInfinity",
+          "files_with_matches": 300,
+          "total_matching_lines": 1361,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/FrameHom/HomInfinityEquivalenceTransport.lean",
+            "SerrePositivity/InfinityCategories/Derived.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/Compact/CosliceUnderlyingValueComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGAlgebraMoritaInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGAlgebraPerfectMoritaInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGCosliceYonedaPointedDisplay.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelCellSourceComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelClassicalComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelMoritaCriterionInfinity.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelResolutionPerfectComparison.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGKernelTargetModelChoiceIndependence.lean",
+            "SerrePositivity/InfinityCategories/Derived/DGModuleUnderlyingSpacePointed.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "nonunital|quasiUnit|unital.*lift|AInfinity",
+          "files_with_matches": 265,
+          "total_matching_lines": 5596,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Bilinear.lean",
+            "Mathlib/Algebra/Algebra/Defs.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalSubalgebra.lean",
+            "Mathlib/Algebra/Algebra/Operations.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Pi.lean",
+            "Mathlib/Algebra/Algebra/Spectrum/Quasispectrum.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Basic.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Unitization.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/BigOperators/Finprod.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "Mathlib/Topology/Homotopy/HSpaces.lean",
+          "sha256": "91b47ed6be6928f148da0bf82a07065c7f89c602a7b7b1f3550943a5438e574b"
+        }
+      ],
+      "reason": "単位付きの厳密な dg 代数と一般の H-space の単位ホモトピーを確認した。非単位的な持ち上げと hC 上の単位付き代数の持ち上げの同値は見つからなかった。"
+    },
+    "4.1.0.8": {
+      "ha_page": 454,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "rectifi.*algebra|associative.*localization|monoidal.*localization",
+          "files_with_matches": 21,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrism.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismOne.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismProjection.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/CofibrantSourceRoofNativePrismZero.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementFamilyComparison.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementForgetFamily.lean",
+            "SerrePositivity/EInfinity/BarrattEccles/FreeProbeRelativeElementUnderlyingRoof.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnMixedRightWeak.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnReverseLeftIso.lean",
+            "SerrePositivity/EInfinity/Hammock/FreeFirstColumnReverseLeftWeak.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/KanEnrichedMap.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "rectifi.*algebra|associative.*localization|monoidal.*localization",
+          "files_with_matches": 3,
+          "total_matching_lines": 11,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Localization/Monoidal/Basic.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Braided.lean",
+            "Mathlib/CategoryTheory/Localization/Monoidal/Functor.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/DGAlgebra/ModelCategory.lean",
+          "sha256": "61a27b689696e5f1260e82e692b2274efaa51d807f59652291922f4e17c1cef8"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/Localization/Monoidal.lean",
+          "sha256": "fd8330f75058b4960e1cc8c536707a0f416c9bca8b04140c594d8f2303dde05d"
+        }
+      ],
+      "reason": "厳密 dg 代数のモデル構造と通常のモノイダル局所化を確認した。局所化したモノイダル ∞ 圏の結合代数を元のモデル圏の厳密な結合代数で実現する比較は見つからなかった。"
+    },
+    "4.1.0.9": {
+      "ha_page": 454,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.0.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.0",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "3.4.4",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "simplicialMonoid|geometricRealization.*monoid|rectifi.*monoid|HSpace",
+          "files_with_matches": 208,
+          "total_matching_lines": 1008,
+          "sample_paths": [
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathVertices.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpace.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceContraction.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceFibration.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimit.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoconePathSpaceLimitProjections.lean",
+            "SerrePositivity/InfinityCategories/Derived/Gluing/CoefficientIntervalPathComparison.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "simplicialMonoid|geometricRealization.*monoid|rectifi.*monoid|HSpace",
+          "files_with_matches": 14,
+          "total_matching_lines": 274,
+          "sample_paths": [
+            "Mathlib/Analysis/SpecialFunctions/Log/ENNRealLogExp.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/Basic.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/EmbeddingReal.lean",
+            "Mathlib/MeasureTheory/Constructions/Polish/StronglyMeasurable.lean",
+            "Mathlib/MeasureTheory/Measure/FiniteMeasureExt.lean",
+            "Mathlib/MeasureTheory/Measure/Haar/Quotient.lean",
+            "Mathlib/MeasureTheory/Measure/LevyConvergence.lean",
+            "Mathlib/MeasureTheory/Measure/RegularityCompacts.lean",
+            "Mathlib/Topology/Homotopy/HSpaces.lean",
+            "Mathlib/Topology/MetricSpace/GromovHausdorff.lean",
+            "Mathlib/Topology/MetricSpace/Perfect.lean",
+            "Mathlib/Topology/MetricSpace/PiNat.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/KST/Comparison/GroupCompletionSpace.lean",
+          "sha256": "b45cdbffe85aa70ef3a6403435453e65f57bce013065997c1bb6d145f7437020"
+        },
+        {
+          "path": "Mathlib/Topology/Category/TopCat/Monoidal.lean",
+          "sha256": "c4303d3aab90b6d39ecb37c71bcd677a6c9a1e8c2f738d51a842be36e1de8f71"
+        }
+      ],
+      "reason": "単体モノイドの bar と位相空間の直積モノイダル構造を確認した。空間の ∞ 圏の結合代数を単体モノイドで実現する rectification、またその主張に必要な実現との比較は見つからなかった。"
+    },
+    "4.1.1.1": {
+      "ha_page": 455,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "associativeOperad|assocOperad|linearOrder.*operad|blockEquiv_assoc",
+          "files_with_matches": 3,
+          "total_matching_lines": 3,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/Operad/BlockPermutationAssociativity.lean",
+            "SerrePositivity/EInfinity/Operad/TensorFamilyPermutationLast.lean",
+            "SerrePositivity/EInfinity/Operad/TensorFamilyPermutationTail.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "associativeOperad|assocOperad|linearOrder.*operad|blockEquiv_assoc",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/BlockPermutationAssociativity.lean",
+          "sha256": "8e2c52afd6078f137461654e56ccc852a26771169d11edee15a0cc1f2b233005"
+        }
+      ],
+      "reason": "一色の dg operad とブロック置換の合成を確認した。有限集合の全順序を演算とし、各ファイバーの順序を辞書式に合成する集合値の Assoc は見つからなかった。"
+    },
+    "4.1.1.3": {
+      "ha_page": 455,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.3",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "assocOperad|associativeOperad|operadicNerve|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "assocOperad|associativeOperad|operadicNerve|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/Nerve.lean",
+          "sha256": "f4385a9d91a6a0617ae316c48891329df36922bf8fa73096d79efb052c7441da"
+        }
+      ],
+      "reason": "通常の圏の神経と一色 dg operad を確認した。全順序を持つファイバーからなる圏 Assoc⊗ の構成と、その神経の ∞ operad 構造は見つからなかった。"
+    },
+    "4.1.1.4": {
+      "ha_page": 455,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "associativeOperad|FinPointed|lex.*fiber|blockEquiv_assoc",
+          "files_with_matches": 574,
+          "total_matching_lines": 1779,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexFirstInitialEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexPointedInitialEndpoint.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanFiberPathComposition.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelFiberEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelLeftCorrectionImage.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelNativeComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelNativeEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanModelTotalEquivalence.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeConeSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFaceSections.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFiberCospanEnd.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCospanNativeFiberEdgeSections.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "associativeOperad|FinPointed|lex.*fiber|blockEquiv_assoc",
+          "files_with_matches": 7,
+          "total_matching_lines": 24,
+          "sample_paths": [
+            "Mathlib/Algebra/Homology/Factorizations/CM5b.lean",
+            "Mathlib/Algebra/Homology/HomotopyCategory/MappingCone.lean",
+            "Mathlib/Algebra/Homology/HomotopyCofiber.lean",
+            "Mathlib/Algebra/Homology/HomotopyFiber.lean",
+            "Mathlib/Analysis/Complex/ReImTopology.lean",
+            "Mathlib/Combinatorics/Additive/CauchyDavenport.lean",
+            "Mathlib/Order/WellFoundedSet.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Data/Finset/Sort.lean",
+          "sha256": "7406405adb644f84405b1bbbf7ec3c8cedf9a61901e0c8e0a75d5de701cb6eeb"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/BlockPermutationAssociativity.lean",
+          "sha256": "8e2c52afd6078f137461654e56ccc852a26771169d11edee15a0cc1f2b233005"
+        }
+      ],
+      "reason": "有限集合の整列とブロック置換の合成はある。基点付き写像と各非基点ファイバーの全順序を射として束ね、辞書式合成を持つ Assoc⊗ は見つからなかった。"
+    },
+    "4.1.1.5": {
+      "ha_page": 456,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.5",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "associativeOperad|assocOperad|vertexFiber|FinPointed",
+          "files_with_matches": 2230,
+          "total_matching_lines": 11202,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomPointComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitValue.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalHomUnitVertices.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalValueToEndpoints.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalActionReflection.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentCoconeIntervalTransportAction.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCandidateLongValueCriterion.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientMap.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCoefficientValues.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitApexCompositeThroughMiddle.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "associativeOperad|assocOperad|vertexFiber|FinPointed",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "準圏写像の頂点ファイバーはある。Assoc⊗ の h1i ファイバーを具体的に Δ0 と同定する型は見つからなかった。"
+    },
+    "4.1.1.8": {
+      "ha_page": 456,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "associativeOperad|AlgAssoc|mopEquiv|operadic.*section",
+          "files_with_matches": 0,
+          "total_matching_lines": 0,
+          "sample_paths": []
+        },
+        "Mathlib": {
+          "pattern": "associativeOperad|AlgAssoc|mopEquiv|operadic.*section",
+          "files_with_matches": 3,
+          "total_matching_lines": 30,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Action/End.lean",
+            "Mathlib/CategoryTheory/Monoidal/Opposite.lean",
+            "Mathlib/CategoryTheory/Monoidal/Opposite/Mon.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Opposite/Mon.lean",
+          "sha256": "e6073d4fdabba7b70f133c779442d5e524399b334c194a3c993a998c7f1d8ab8"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+          "sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416"
+        }
+      ],
+      "reason": "通常の内部モノイドの反転同値と余デカルト射影の底変換を確認した。抽象 operad としての AlgAssoc を二つの section 準圏の余積へ分ける型は見つからなかった。"
+    },
+    "4.1.1.11": {
+      "ha_page": 457,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "assocOperad|associativeOperad|vertexFiber|MonoidalCategory",
+          "files_with_matches": 11731,
+          "total_matching_lines": 28262,
+          "sample_paths": [
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellBoundaryOperator.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellBoundaryRecursion.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellCategory.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellCompositionDifferential.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellInternalComposition.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGCellPrependDifferential.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/DGLeftUnitRestriction.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGEvaluation.lean",
+            "SerrePositivity/Archive/DifferentialGraded/Checks/U12e/FreeDGPaths.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/BousfieldKanTerminalAugmentation.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/ChosenTransportSourceComparison.lean",
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoconeIntervalFiberTransport.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "assocOperad|associativeOperad|vertexFiber|MonoidalCategory",
+          "files_with_matches": 218,
+          "total_matching_lines": 1478,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/AlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/BialgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/CoalgCat/ComonEquivalence.lean",
+            "Mathlib/Algebra/Category/CoalgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/CommAlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/CommBialgCat.lean",
+            "Mathlib/Algebra/Category/FGModuleCat/Basic.lean",
+            "Mathlib/Algebra/Category/Grp/CartesianMonoidal.lean",
+            "Mathlib/Algebra/Category/Grp/LeftExactFunctor.lean",
+            "Mathlib/Algebra/Category/HopfAlgCat/Monoidal.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Adjunctions.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Descent.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/VertexFiber.lean",
+          "sha256": "446cb85d15d74581e3a55a38c161304a735d51a81e61227919a1549c96dc7fdd"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        }
+      ],
+      "reason": "通常のモノイダル構造と一般の準圏の頂点ファイバーはある。Assoc⊗ 上の全体と h1i ファイバーを区別するこの略記に対応する型は見つからなかった。"
+    },
+    "4.1.1.17": {
+      "ha_page": 458,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.17",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "tensor.*invertible|picard|invertible.*object|fullSubcomplexOnVertices",
+          "files_with_matches": 708,
+          "total_matching_lines": 2160,
+          "sample_paths": [
+            "SerrePositivity/EInfinity/ComplexLimits/ComplexClosedEdgeHomotopyEquivalence.lean",
+            "SerrePositivity/EInfinity/ComplexLimits/NormalizedTensorAugmentationFamily.lean",
+            "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantRightKanReduction.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedTensorAugmentationIso.lean",
+            "SerrePositivity/HomologicalAlgebra/ScalarWeightedColimit.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCosliceLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianHomotopyExtension.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathLifting.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianPathSpace.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePath.lean",
+            "SerrePositivity/InfinityCategories/Core/EquivalencePathFinalLifting.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "tensor.*invertible|picard|invertible.*object|fullSubcomplexOnVertices",
+          "files_with_matches": 10,
+          "total_matching_lines": 147,
+          "sample_paths": [
+            "Mathlib/Algebra/Module/StablyFree/FreeOfInvertible.lean",
+            "Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.lean",
+            "Mathlib/Analysis/ODE/ExistUnique.lean",
+            "Mathlib/Analysis/ODE/PicardLindelof.lean",
+            "Mathlib/Analysis/SpecialFunctions/Integrals/Basic.lean",
+            "Mathlib/CategoryTheory/Iso.lean",
+            "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+            "Mathlib/CategoryTheory/Skeletal.lean",
+            "Mathlib/Geometry/Manifold/IntegralCurve/ExistUnique.lean",
+            "Mathlib/RingTheory/PicardGroup.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+          "sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Core/FullSubcomplexFibration.lean",
+          "sha256": "13971dc2a3e915fc118fdd580814211873c66d8efa8a43ec02c158077851628f"
+        }
+      ],
+      "reason": "通常のモノイダル圏の単位と一般の頂点充満部分複体を確認した。左右のテンソル逆対象を持つ対象の部分 ∞ 圏が Assoc⊗ 上でモノイダルとなる宣言は見つからなかった。"
+    },
+    "4.1.1.19": {
+      "ha_page": 458,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.19",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "countable.*coproduct|free.*associative|TensorAlgebra",
+          "files_with_matches": 58,
+          "total_matching_lines": 729,
+          "sample_paths": [
+            "SerrePositivity/AlgebraicGeometry.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFlatBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFreeNeighborhoodCenterOver.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFreeNeighborhoodsSingleBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryFreeNeighborhoodsTensorCancel.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankCharts.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryGenericRankLocalization.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryHigherMinorVanishing.lean",
+            "SerrePositivity/AlgebraicGeometry/BoundaryMinorCoefficientPower.lean",
+            "SerrePositivity/AlgebraicGeometry/FiniteTypeTensorPureTransformBaseChange.lean",
+            "SerrePositivity/AlgebraicGeometry/GenericPureFreeBaseLocalization.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "countable.*coproduct|free.*associative|TensorAlgebra",
+          "files_with_matches": 22,
+          "total_matching_lines": 254,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/AlgCat/TensorAlgebra.lean",
+            "Mathlib/Algebra/Category/ModuleCat/Sheaf.lean",
+            "Mathlib/Algebra/Free.lean",
+            "Mathlib/Algebra/FreeAlgebra.lean",
+            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
+            "Mathlib/Algebra/Lie/Free.lean",
+            "Mathlib/Algebra/Lie/SerreConstruction.lean",
+            "Mathlib/Algebra/Lie/UniversalEnveloping.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Countable.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Basic.lean",
+            "Mathlib/LinearAlgebra/CliffordAlgebra/Grading.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/LinearAlgebra/TensorAlgebra/ToTensorPower.lean",
+          "sha256": "8e7e42b2ee2322546ac077759202942afb44e91bd9467cac3ace443862b18204"
+        },
+        {
+          "path": "Mathlib/LinearAlgebra/TensorAlgebra/Basic.lean",
+          "sha256": "8106253131df46e4565972359db7418a25edd47af523061fb31c92b72fcaaefb"
+        }
+      ],
+      "reason": "加群のテンソル冪の直和の同型と自由テンソル代数を確認した。一般のモノイダル ∞ 圏で可算余積だけの存在と各変数での保存から前命題を導く型は見つからなかった。"
+    },
+    "4.1.1.20": {
+      "ha_page": 459,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.1.20",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.1",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.0",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.2",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "coherent.*operad|associativeOperad|Ext.*pushout|SpaceArbitraryPushouts",
+          "files_with_matches": 145,
+          "total_matching_lines": 187,
+          "sample_paths": [
+            "SerrePositivity/CategoryTheory/Limits.lean",
+            "SerrePositivity/EInfinity/HomotopyWeight/ConeLifting.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneIntervalEndpoints.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneLocalizedTensor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalAnodyne.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalKanTests.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/HomotopyClassesClosed.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanFibrationEndpointExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanHomotopyExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoEndpointExtension.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoPushoutExtension.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "coherent.*operad|associativeOperad|Ext.*pushout|SpaceArbitraryPushouts",
+          "files_with_matches": 20,
+          "total_matching_lines": 54,
+          "sample_paths": [
+            "Mathlib/Algebra/Category/Ring/Constructions.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Inner/PushoutProduct.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/Pairing.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/AnodyneExtensions/PushoutProduct.lean",
+            "Mathlib/CategoryTheory/Abelian/GrothendieckAxioms/Connected.lean",
+            "Mathlib/CategoryTheory/Adhesive/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/NormalMono/Equalizers.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Pullback/Equalizer.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Pullback/HasPullback.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Basic.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/BicartesianSq.lean",
+            "Mathlib/CategoryTheory/Limits/Shapes/Pullback/IsPullback/Defs.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceArbitraryPushouts.lean",
+          "sha256": "c941ebafa932acef5a1c2834bc2434eff5c4042535a266ed91f4d8af68d3e686"
+        }
+      ],
+      "reason": "一色 dg operad と準圏のホモトピー押し出しを確認した。Assoc⊗ の Ext を有限順序集合の切断で記述し、coherence を得る宣言は見つからなかった。"
+    },
+    "4.1.2.8": {
+      "ha_page": 462,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.8",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "MonAssoc|associativeOperad|monTypeEquivalenceMon|monoidWordEquiv",
+          "files_with_matches": 11,
+          "total_matching_lines": 15,
+          "sample_paths": [
+            "SerrePositivity/KST/Comparison/BarSegal.lean",
+            "SerrePositivity/KST/Comparison/SimplicialMonoidInternal.lean",
+            "SerrePositivity/KST/ProExcision/ActionNerveCoordinates.lean",
+            "SerrePositivity/KST/ProExcision/ActionNerveWord.lean",
+            "SerrePositivity/KST/ProExcision/BarAction.lean",
+            "SerrePositivity/KST/ProExcision/BarSequentialColimits.lean",
+            "SerrePositivity/KST/ProExcision/CoefficientBisimplicialBar.lean",
+            "SerrePositivity/KST/ProExcision/ConstantActionBar.lean",
+            "SerrePositivity/KST/ProExcision/GroupProductData.lean",
+            "SerrePositivity/KST/ProExcision/LinearizedGroupProductNaturality.lean",
+            "SerrePositivity/KST/ProExcision/PropA1Naturality.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "MonAssoc|associativeOperad|monTypeEquivalenceMon|monoidWordEquiv",
+          "files_with_matches": 2,
+          "total_matching_lines": 16,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Internal/Types/Grp.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean",
+          "sha256": "89aaea0305d3bbbdfce53afa308774d9953ce835d6ad35381a893a8fc295fcc1"
+        },
+        {
+          "path": "SerrePositivity/KST/Comparison/BarSegal.lean",
+          "sha256": "618ec8e78dba32e1a8ec09c3d26b8b80f1cb12d53cf410655ef846527c3a3d71"
+        }
+      ],
+      "reason": "通常の集合の内部モノイドの圏と bar の Segal 写像を確認した。二種類の準圏モノイドの比較が一般に同型でないという区別を表す宣言は見つからなかった。"
+    },
+    "4.1.2.9": {
+      "ha_page": 462,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Cut.*Assoc|associativeOperad|FinPointed|order.*convex.*cut",
+          "files_with_matches": 35,
+          "total_matching_lines": 58,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedCutValueRecovery.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedNonemptyIso.lean",
+            "SerrePositivity/EInfinity/TableReduction/CanonicalFilteredRows.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostChainKanParameter.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostCompositionChain.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftParameterTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/InverseSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutDiagram.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutGraded.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Cut.*Assoc|associativeOperad|FinPointed|order.*convex.*cut",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Data/Nat/Choose/Factorization.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+          "sha256": "00dc75a50cc37f6aa33e4492b224b2325381eaf935cdb0578f51be38dd7d28e8"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+          "sha256": "10aeb98ebfe7ddfefb44e94dccaf4b0de691ffb121929adb3233b0a7baedc274"
+        }
+      ],
+      "reason": "単体圏の順序写像と nerve の Segal 構造を確認した。凸な二分割を基点付き集合にし、各逆像の順序を保つ Cut 関手は見つからなかった。"
+    },
+    "4.1.2.10": {
+      "ha_page": 463,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.10",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "MonAssoc|Cut.*Assoc|monoidWordEquiv|monTypeEquivalenceMon",
+          "files_with_matches": 46,
+          "total_matching_lines": 73,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedCutValueRecovery.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedNonemptyIso.lean",
+            "SerrePositivity/EInfinity/TableReduction/CanonicalFilteredRows.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostChainKanParameter.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostCompositionChain.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftParameterTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/InverseSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutDiagram.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutGraded.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "MonAssoc|Cut.*Assoc|monoidWordEquiv|monTypeEquivalenceMon",
+          "files_with_matches": 3,
+          "total_matching_lines": 17,
+          "sample_paths": [
+            "Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean",
+            "Mathlib/CategoryTheory/Monoidal/Internal/Types/Grp.lean",
+            "Mathlib/Data/Nat/Choose/Factorization.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/KST/Comparison/BarSegal.lean",
+          "sha256": "618ec8e78dba32e1a8ec09c3d26b8b80f1cb12d53cf410655ef846527c3a3d71"
+        },
+        {
+          "path": "Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean",
+          "sha256": "89aaea0305d3bbbdfce53afa308774d9953ce835d6ad35381a893a8fc295fcc1"
+        }
+      ],
+      "reason": "単一対象圏の神経に対する Segal の全単射と通常集合の内部モノイドを確認した。有限積のある C で Cut に沿う二種類のモノイド準圏の同値は見つからなかった。"
+    },
+    "4.1.2.11": {
+      "ha_page": 463,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.11",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "Cut.*Assoc|operad.*approximation|associativeOperad|CartesianFibration",
+          "files_with_matches": 731,
+          "total_matching_lines": 1983,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedCutValueRecovery.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedNonemptyIso.lean",
+            "SerrePositivity/EInfinity/TableReduction/CanonicalFilteredRows.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostChainKanParameter.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostCompositionChain.lean",
+            "SerrePositivity/InfinityCategories/Core.lean",
+            "SerrePositivity/InfinityCategories/Core/CartesianInitialBoundary.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianCoslice.lean",
+            "SerrePositivity/InfinityCategories/Core/CocartesianEdgePullback.lean",
+            "SerrePositivity/InfinityCategories/Core/ConeRestrictionCocartesianEdge.lean",
+            "SerrePositivity/InfinityCategories/Core/Fibrations.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "Cut.*Assoc|operad.*approximation|associativeOperad|CartesianFibration",
+          "files_with_matches": 1,
+          "total_matching_lines": 1,
+          "sample_paths": [
+            "Mathlib/Data/Nat/Choose/Factorization.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/Basic.lean",
+          "sha256": "00dc75a50cc37f6aa33e4492b224b2325381eaf935cdb0578f51be38dd7d28e8"
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Fibrations/CartesianFibration.lean",
+          "sha256": "4c09a1053eb632692498cab47bb69f466f9f0e1aa5dd4b64c2eebc5c911e92f2"
+        }
+      ],
+      "reason": "単体圏の順序写像の定義と余デカルト写像の持ち上げを確認した。Cut の各色への局所余デカルト辺と active 射の Cartesian 持ち上げを示す operadic approximation は見つからなかった。"
+    },
+    "4.1.2.13": {
+      "ha_page": 464,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.13",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SemiSimplexCategory|Segal.*restrict|monoid.*nonunital|IsStrictSegal",
+          "files_with_matches": 7,
+          "total_matching_lines": 20,
+          "sample_paths": [
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/NonsingularPresentation.lean",
+            "SerrePositivity/InfinityCategories/F1.lean",
+            "SerrePositivity/InfinityCategories/F1/Categories/DiscreteSpace.lean",
+            "SerrePositivity/InfinityCategories/F1/CoreFlag/StrictSegalHomotopy.lean",
+            "SerrePositivity/InfinityCategories/F1/Simplicial/TwoSimplexSegalRestrictions.lean",
+            "SerrePositivity/InfinityCategories/F1B/NerveComparison/ExtOne.lean",
+            "SerrePositivity/KST/ProExcision/NonUnitalHatGL.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SemiSimplexCategory|Segal.*restrict|monoid.*nonunital|IsStrictSegal",
+          "files_with_matches": 27,
+          "total_matching_lines": 119,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/DirectSum/Ring.lean",
+            "Mathlib/Algebra/Ring/Defs.lean",
+            "Mathlib/Algebra/Ring/Equiv.lean",
+            "Mathlib/Algebra/Ring/Hom/Defs.lean",
+            "Mathlib/Algebra/SkewMonoidAlgebra/Basic.lean",
+            "Mathlib/Algebra/Star/Basic.lean",
+            "Mathlib/Algebra/Star/StarAlgHom.lean",
+            "Mathlib/AlgebraicTopology/Quasicategory/StrictSegal.lean",
+            "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/Coskeletal.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+          "sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+          "sha256": "10aeb98ebfe7ddfefb44e94dccaf4b0de691ffb121929adb3233b0a7baedc274"
+        }
+      ],
+      "reason": "半単体圏の包含と単体集合の strict Segal 条件を確認した。準圏の単体図式の Segal 積条件が、単射への制限の非単位的モノイド条件と同値となる型は見つからなかった。"
+    },
+    "4.1.2.14": {
+      "ha_page": 464,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.14",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "SemiSimplexCategory|Cut.*Assoc|operad.*approximation|nonunital.*operad",
+          "files_with_matches": 36,
+          "total_matching_lines": 65,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedCutValueRecovery.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedNonemptyIso.lean",
+            "SerrePositivity/EInfinity/TableReduction/CanonicalFilteredRows.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/NonsingularPresentation.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostChainKanParameter.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostCompositionChain.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftParameterTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/InverseSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutDiagram.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "SemiSimplexCategory|Cut.*Assoc|operad.*approximation|nonunital.*operad",
+          "files_with_matches": 3,
+          "total_matching_lines": 35,
+          "sample_paths": [
+            "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+            "Mathlib/AlgebraicTopology/SimplicialSet/NonsingularColimit.lean",
+            "Mathlib/Data/Nat/Choose/Factorization.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+          "sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a"
+        },
+        {
+          "path": "SerrePositivity/EInfinity/Operad/Basic.lean",
+          "sha256": "8070ebd0967dd5c16983af75ef08368f6e7b81a53da124f9207f2ecfe0b6ec6c"
+        }
+      ],
+      "reason": "半単体圏の包含はある。非単位的 Assoc への Cut の制限と、単射で制限した operadic approximation の持ち上げ条件は見つからなかった。"
+    },
+    "4.1.2.15": {
+      "ha_page": 465,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.2.15",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.2",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.1",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "MonAssoc|nonunital.*monoid|SemiSimplexCategory|Cut.*Assoc",
+          "files_with_matches": 39,
+          "total_matching_lines": 69,
+          "sample_paths": [
+            "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedCutValueRecovery.lean",
+            "SerrePositivity/EInfinity/Hammock/UnmarkedNonemptyIso.lean",
+            "SerrePositivity/EInfinity/TableReduction/CanonicalFilteredRows.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/NonsingularPresentation.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostChainKanParameter.lean",
+            "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/PostCompositionChain.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftParameterTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeLiftSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/CoconeSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/InverseSourceTerm.lean",
+            "SerrePositivity/InfinityCategories/Derived/CoherentBar/StrictComparison/CoherentCutDiagram.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "MonAssoc|nonunital.*monoid|SemiSimplexCategory|Cut.*Assoc",
+          "files_with_matches": 26,
+          "total_matching_lines": 104,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Unitization.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/DirectSum/Ring.lean",
+            "Mathlib/Algebra/Group/Hom/Defs.lean",
+            "Mathlib/Algebra/Ring/CentroidHom.lean",
+            "Mathlib/Algebra/Ring/Defs.lean",
+            "Mathlib/Algebra/Ring/Hom/Defs.lean",
+            "Mathlib/Algebra/Ring/Pi.lean",
+            "Mathlib/Algebra/Ring/Submonoid/Pointwise.lean",
+            "Mathlib/Algebra/Ring/Subsemiring/Basic.lean",
+            "Mathlib/Algebra/Ring/SumsOfSquares.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "Mathlib/Algebra/Category/Semigrp/Basic.lean",
+          "sha256": "989f9f9443b060d1fd45551a06445f5a01067abb60bc8cbcbe876d7022db5d65"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+          "sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a"
+        }
+      ],
+      "reason": "通常の半群圏と半単体圏を確認した。有限積のある C で、非単位的 Assoc からのモノイドと半単体 Segal モノイドを Cut に沿って比較する同値は見つからなかった。"
     }
   }
 }

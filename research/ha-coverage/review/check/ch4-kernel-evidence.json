@@ -1,9 +1,149 @@
 {
-  "worktree_commit": "dbcece44125311ff2644b54a22b79a558eabd514",
+  "worktree_commit": "a299ca161bd32f68d4b04b87f23f2790b5198d09",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
   "items": {
+    "4.1.0.1": {
+      "ha_page": 451,
+      "declarations": [
+        "IsTopologicalGroup.toHSpace"
+      ]
+    },
+    "4.1.0.2": {
+      "ha_page": 452,
+      "declarations": [
+        "Path.instHSpace"
+      ]
+    },
+    "4.1.0.5": {
+      "ha_page": 452,
+      "declarations": [
+        "SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso"
+      ]
+    },
+    "4.1.1.2": {
+      "ha_page": 455,
+      "declarations": [
+        "CategoryTheory.Mon"
+      ]
+    },
+    "4.1.1.6": {
+      "ha_page": 456,
+      "declarations": [
+        "CategoryTheory.Mon"
+      ]
+    },
+    "4.1.1.7": {
+      "ha_page": 456,
+      "declarations": [
+        "MonObj.mopEquiv"
+      ]
+    },
+    "4.1.1.9": {
+      "ha_page": 456,
+      "declarations": [
+        "Semigrp"
+      ]
+    },
+    "4.1.1.10": {
+      "ha_page": 457,
+      "declarations": [
+        "CategoryTheory.MonoidalCategory"
+      ]
+    },
+    "4.1.1.12": {
+      "ha_page": 457,
+      "declarations": [
+        "CategoryTheory.MonoidalCategory"
+      ]
+    },
+    "4.1.1.13": {
+      "ha_page": 457,
+      "declarations": [
+        "CategoryTheory.Mon.forget",
+        "CategoryTheory.Mon"
+      ]
+    },
+    "4.1.1.14": {
+      "ha_page": 457,
+      "declarations": [
+        "SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd"
+      ]
+    },
+    "4.1.1.15": {
+      "ha_page": 457,
+      "declarations": [
+        "CategoryTheory.MonoidalClosed"
+      ]
+    },
+    "4.1.1.16": {
+      "ha_page": 458,
+      "declarations": [
+        "CategoryTheory.Adjunction.homEquiv"
+      ]
+    },
+    "4.1.1.18": {
+      "ha_page": 458,
+      "declarations": [
+        "TensorAlgebra.lift",
+        "TensorAlgebra.equivDirectSum"
+      ]
+    },
+    "4.1.2.1": {
+      "ha_page": 460,
+      "declarations": [
+        "CategoryTheory.yonedaMonFullyFaithful",
+        "CategoryTheory.yonedaMonObjRepresentableBy",
+        "CategoryTheory.yonedaMonObjIsoOfRepresentableBy"
+      ]
+    },
+    "4.1.2.2": {
+      "ha_page": 460,
+      "declarations": [
+        "monTypeEquivalenceMon"
+      ]
+    },
+    "4.1.2.3": {
+      "ha_page": 461,
+      "declarations": [
+        "MonCat.toCat",
+        "MonCat.toCat_full",
+        "MonCat.toCat_faithful",
+        "CategoryTheory.SingleObj.toEnd"
+      ]
+    },
+    "4.1.2.4": {
+      "ha_page": 461,
+      "declarations": [
+        "SerrePositivity.KST.Comparison.constantMonoidBarIso",
+        "SerrePositivity.KST.Comparison.monoidWordEquiv"
+      ]
+    },
+    "4.1.2.5": {
+      "ha_page": 461,
+      "declarations": [
+        "SSet.IsStrictSegal"
+      ]
+    },
+    "4.1.2.6": {
+      "ha_page": 461,
+      "declarations": [
+        "SerrePositivity.KST.Comparison.monoidWordEquiv"
+      ]
+    },
+    "4.1.2.7": {
+      "ha_page": 461,
+      "declarations": [
+        "CategoryTheory.Grp.toMon"
+      ]
+    },
+    "4.1.2.12": {
+      "ha_page": 464,
+      "declarations": [
+        "SemiSimplexCategory.toSimplexCategory"
+      ]
+    },
     "4.1.7.3": {
       "ha_page": 486,
       "declarations": [
@@ -80,6 +220,327 @@
     }
   },
   "declarations": {
+    "IsTopologicalGroup.toHSpace": {
+      "name": "IsTopologicalGroup.toHSpace",
+      "module": "Mathlib.Topology.Homotopy.HSpaces",
+      "path": "Mathlib/Topology/Homotopy/HSpaces.lean",
+      "line": 121,
+      "source_sha256": "91b47ed6be6928f148da0bf82a07065c7f89c602a7b7b1f3550943a5438e574b",
+      "type": "IsTopologicalGroup.toHSpace.{u_1} : (M : Type u_1) →\n  [inst : MulOneClass.{u_1} M] →\n    [inst_1 : TopologicalSpace.{u_1} M] →\n      [@ContinuousMul.{u_1} M inst_1 (@MulOne.toMul.{u_1} M (@MulOneClass.toMulOne.{u_1} M inst))] →\n        @HSpace.{u_1} M inst_1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Path.instHSpace": {
+      "name": "Path.instHSpace",
+      "module": "Mathlib.Topology.Homotopy.HSpaces",
+      "path": "Mathlib/Topology/Homotopy/HSpaces.lean",
+      "line": 240,
+      "source_sha256": "91b47ed6be6928f148da0bf82a07065c7f89c602a7b7b1f3550943a5438e574b",
+      "type": "@Path.instHSpace.{u_1} : {X : Type u_1} →\n  [inst : TopologicalSpace.{u_1} X] →\n    (x : X) → @HSpace.{u_1} (@Path.{u_1} X inst x x) (@Path.instTopologicalSpace.{u_1} X inst x x)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso": {
+      "name": "SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso",
+      "module": "SerrePositivity.KST.Comparison.GrouplikeComparison",
+      "path": "SerrePositivity/KST/Comparison/GrouplikeComparison.lean",
+      "line": 33,
+      "source_sha256": "df52bf6da71c95605e72c2c79fdfae71653ba5665206255a71baee56b317c4d7",
+      "type": "SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso.{u_1} : ∀\n  (M : @CategoryTheory.SimplicialObject.{u_1, u_1 + 1} MonCat.{u_1} MonCat.instCategory.{u_1}),\n  SerrePositivity.KST.Comparison.SimplicialMonoid.IsGrouplike.{u_1} M →\n    @CategoryTheory.IsIso.{u_1 + 1, u_1 + 1}\n      (@CategoryTheory.MorphismProperty.Localization.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        SSet.anodyneExtensions.{u_1})\n      (@CategoryTheory.MorphismProperty.instCategoryLocalization.{u_1 + 1, u_1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        SSet.anodyneExtensions.{u_1})\n      (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.MorphismProperty.Localization.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        (@CategoryTheory.MorphismProperty.instCategoryLocalization.{u_1 + 1, u_1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.{u_1}\n        (SerrePositivity.KST.Comparison.monoidSpace.{u_1} M))\n      (@CategoryTheory.Functor.obj.{u_1, u_1 + 1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.MorphismProperty.Localization.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        (@CategoryTheory.MorphismProperty.instCategoryLocalization.{u_1 + 1, u_1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.{u_1}\n        (@CategoryTheory.Under.right.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          (@CategoryTheory.MonoidalCategoryStruct.tensorUnit.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})\n                (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1})\n                  (@CategoryTheory.Functor.cartesianMonoidalCategory.{0, 0, u_1, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (Type u_1) (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                    CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))))\n          (SerrePositivity.KST.Comparison.monoidGroupCompletionSpace.{u_1} M)))\n      (@CategoryTheory.Functor.map.{u_1, u_1 + 1, u_1 + 1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n          CategoryTheory.types.{u_1})\n        (@CategoryTheory.MorphismProperty.Localization.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        (@CategoryTheory.MorphismProperty.instCategoryLocalization.{u_1 + 1, u_1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          SSet.anodyneExtensions.{u_1})\n        SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.{u_1}\n        (SerrePositivity.KST.Comparison.monoidSpace.{u_1} M)\n        (@CategoryTheory.Under.right.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})\n          (@CategoryTheory.MonoidalCategoryStruct.tensorUnit.{u_1, u_1 + 1} SSet.{u_1}\n            (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n              (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n              CategoryTheory.types.{u_1})\n            (@CategoryTheory.MonoidalCategory.toMonoidalCategoryStruct.{u_1, u_1 + 1} SSet.{u_1}\n              (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                CategoryTheory.types.{u_1})\n              (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} SSet.{u_1}\n                (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                  (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                  CategoryTheory.types.{u_1})\n                (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} SSet.{u_1}\n                  (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n                    CategoryTheory.types.{u_1})\n                  (@CategoryTheory.Functor.cartesianMonoidalCategory.{0, 0, u_1, u_1 + 1} (Opposite.{1} SimplexCategory)\n                    (Type u_1) (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory)\n                    CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))))\n          (SerrePositivity.KST.Comparison.monoidGroupCompletionSpace.{u_1} M))\n        (SerrePositivity.KST.Comparison.monoidGroupCompletionMap.{u_1} M))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Mon": {
+      "name": "CategoryTheory.Mon",
+      "module": "Mathlib.CategoryTheory.Monoidal.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+      "line": 251,
+      "source_sha256": "9aa0a7fc1f65b706e81f4bad36d24a4bb2c5717da5468dac552919c237983483",
+      "type": "CategoryTheory.Mon.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → Type (max u_2 u_1)",
+      "axioms": []
+    },
+    "MonObj.mopEquiv": {
+      "name": "MonObj.mopEquiv",
+      "module": "Mathlib.CategoryTheory.Monoidal.Opposite.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Opposite/Mon.lean",
+      "line": 97,
+      "source_sha256": "e6073d4fdabba7b70f133c779442d5e524399b334c194a3c993a998c7f1d8ab8",
+      "type": "MonObj.mopEquiv.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      @CategoryTheory.Equivalence.{u_1, u_1, max u_2 u_1, max u_2 u_1} (@CategoryTheory.Mon.{u_1, u_2} C inst inst_1)\n        (@CategoryTheory.Mon.{u_1, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n          (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n          (@CategoryTheory.monoidalCategoryMop.{u_1, u_2} C inst inst_1))\n        (@CategoryTheory.Mon.instCategory.{u_1, u_2} C inst inst_1)\n        (@CategoryTheory.Mon.instCategory.{u_1, u_2} (CategoryTheory.MonoidalOpposite.{u_2} C)\n          (@CategoryTheory.MonoidalOpposite.monoidalOppositeCategory.{u_1, u_2} C inst)\n          (@CategoryTheory.monoidalCategoryMop.{u_1, u_2} C inst inst_1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "Semigrp": {
+      "name": "Semigrp",
+      "module": "Mathlib.Algebra.Category.Semigrp.Basic",
+      "path": "Mathlib/Algebra/Category/Semigrp/Basic.lean",
+      "line": 216,
+      "source_sha256": "989f9f9443b060d1fd45551a06445f5a01067abb60bc8cbcbe876d7022db5d65",
+      "type": "Semigrp.{u_1} : Type (u_1 + 1)",
+      "axioms": []
+    },
+    "CategoryTheory.MonoidalCategory": {
+      "name": "CategoryTheory.MonoidalCategory",
+      "module": "Mathlib.CategoryTheory.Monoidal.Category",
+      "path": "Mathlib/CategoryTheory/Monoidal/Category.lean",
+      "line": 161,
+      "source_sha256": "b01b442645dd4879af53cf071472ec6aee6c98bf509c494eb9c1247ac7c9b6c9",
+      "type": "CategoryTheory.MonoidalCategory.{u_1,\n  u_2} : (C : Type u_2) → [𝒞 : CategoryTheory.Category.{u_1, u_2} C] → Type (max u_2 u_1)",
+      "axioms": []
+    },
+    "CategoryTheory.Mon.forget": {
+      "name": "CategoryTheory.Mon.forget",
+      "module": "Mathlib.CategoryTheory.Monoidal.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Mon.lean",
+      "line": 590,
+      "source_sha256": "9aa0a7fc1f65b706e81f4bad36d24a4bb2c5717da5468dac552919c237983483",
+      "type": "CategoryTheory.Mon.forget.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] →\n      @CategoryTheory.Functor.{u_1, u_1, max u_2 u_1, u_2} (@CategoryTheory.Mon.{u_1, u_2} C inst inst_1)\n        (@CategoryTheory.Mon.instCategory.{u_1, u_2} C inst inst_1) C inst",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd": {
+      "name": "SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd",
+      "module": "SerrePositivity.InfinityCategories.F1.Fibrations.BaseChange",
+      "path": "SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean",
+      "line": 92,
+      "source_sha256": "0cd3742fe1d73bb8e2149579e13cc97c140c71ec3a49cd6ba9975fb8d597e416",
+      "type": "@SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd.{u_1} : ∀ {X Y B : SSet.{u_1}}\n  (p :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      X B)\n  (q :\n    @Quiver.Hom.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.ReflQuiver.toQuiver.{u_1, u_1 + 1} SSet.{u_1}\n        (@CategoryTheory.catToReflQuiver.{u_1, u_1 + 1} SSet.{u_1}\n          (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n            (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n            CategoryTheory.types.{u_1})))\n      Y B)\n  [@SerrePositivity.InfinityCategories.CocartesianFibration.{u_1} X B p],\n  @SerrePositivity.InfinityCategories.CocartesianFibration.{u_1}\n    (@CategoryTheory.Limits.pullback.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      X Y B p q ⋯)\n    Y\n    (@CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1} SSet.{u_1}\n      (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1})\n      X Y B p q ⋯)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.MonoidalClosed": {
+      "name": "CategoryTheory.MonoidalClosed",
+      "module": "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+      "path": "Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean",
+      "line": 46,
+      "source_sha256": "6bf0d6868c7794382cfc073f06c533e30e5579d8a0e49750e931328b9330cf43",
+      "type": "CategoryTheory.MonoidalClosed.{u_1,\n  u_2} : (C : Type u_2) →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [@CategoryTheory.MonoidalCategory.{u_1, u_2} C inst] → Type (max u_2 u_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Adjunction.homEquiv": {
+      "name": "CategoryTheory.Adjunction.homEquiv",
+      "module": "Mathlib.CategoryTheory.Adjunction.Basic",
+      "path": "Mathlib/CategoryTheory/Adjunction/Basic.lean",
+      "line": 159,
+      "source_sha256": "8d886b21dc4ab48379e9c98653967307f7f57a97cc61f9db0dfd50d4d53353e8",
+      "type": "@CategoryTheory.Adjunction.homEquiv.{u_1, u_2, u_3,\n    u_4} : {C : Type u_3} →\n  [inst : CategoryTheory.Category.{u_1, u_3} C] →\n    {D : Type u_4} →\n      [inst_1 : CategoryTheory.Category.{u_2, u_4} D] →\n        {F : @CategoryTheory.Functor.{u_1, u_2, u_3, u_4} C inst D inst_1} →\n          {G : @CategoryTheory.Functor.{u_2, u_1, u_4, u_3} D inst_1 C inst} →\n            @CategoryTheory.Adjunction.{u_1, u_2, u_3, u_4} C inst D inst_1 F G →\n              (X : C) →\n                (Y : D) →\n                  Equiv.{u_2 + 1, u_1 + 1}\n                    (@Quiver.Hom.{u_2, u_4} D\n                      (@CategoryTheory.CategoryStruct.toQuiver.{u_2, u_4} D\n                        (@CategoryTheory.Category.toCategoryStruct.{u_2, u_4} D inst_1))\n                      (@CategoryTheory.Functor.obj.{u_1, u_2, u_3, u_4} C inst D inst_1 F X) Y)\n                    (@Quiver.Hom.{u_1, u_3} C\n                      (@CategoryTheory.CategoryStruct.toQuiver.{u_1, u_3} C\n                        (@CategoryTheory.Category.toCategoryStruct.{u_1, u_3} C inst))\n                      X (@CategoryTheory.Functor.obj.{u_2, u_1, u_4, u_3} D inst_1 C inst G Y))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "TensorAlgebra.lift": {
+      "name": "TensorAlgebra.lift",
+      "module": "Mathlib.LinearAlgebra.TensorAlgebra.Basic",
+      "path": "Mathlib/LinearAlgebra/TensorAlgebra/Basic.lean",
+      "line": 132,
+      "source_sha256": "8106253131df46e4565972359db7418a25edd47af523061fb31c92b72fcaaefb",
+      "type": "TensorAlgebra.lift.{u_1, u_2,\n  u_3} : (R : Type u_1) →\n  [inst : CommSemiring.{u_1} R] →\n    {M : Type u_2} →\n      [inst_1 : AddCommMonoid.{u_2} M] →\n        [inst_2 : @Module.{u_1, u_2} R M (@CommSemiring.toSemiring.{u_1} R inst) inst_1] →\n          {A : Type u_3} →\n            [inst_3 : Semiring.{u_3} A] →\n              [inst_4 : @Algebra.{u_1, u_3} R A inst inst_3] →\n                Equiv.{max (u_3 + 1) (u_2 + 1), max (u_3 + 1) ((max u_2 u_1) + 1)}\n                  (@LinearMap.{u_1, u_1, u_2, u_3} R R (@CommSemiring.toSemiring.{u_1} R inst)\n                    (@CommSemiring.toSemiring.{u_1} R inst)\n                    (@RingHom.id.{u_1} R (@Semiring.toNonAssocSemiring.{u_1} R (@CommSemiring.toSemiring.{u_1} R inst)))\n                    M A inst_1 (@Semiring.toAddCommMonoid.{u_3} A inst_3) inst_2\n                    (@Algebra.toModule.{u_1, u_3} R A inst inst_3 inst_4))\n                  (@AlgHom.{u_1, max u_2 u_1, u_3} R (@TensorAlgebra.{u_1, u_2} R inst M inst_1 inst_2) A inst\n                    (@TensorAlgebra.instSemiring.{u_1, u_2} R inst M inst_1 inst_2) inst_3\n                    (@TensorAlgebra.instAlgebra.{u_1, u_1, u_2} R R M inst inst_1 inst (@Algebra.id.{u_1} R inst) inst_2\n                      inst_2 ⋯)\n                    inst_4)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "TensorAlgebra.equivDirectSum": {
+      "name": "TensorAlgebra.equivDirectSum",
+      "module": "Mathlib.LinearAlgebra.TensorAlgebra.ToTensorPower",
+      "path": "Mathlib/LinearAlgebra/TensorAlgebra/ToTensorPower.lean",
+      "line": 158,
+      "source_sha256": "8e7e42b2ee2322546ac077759202942afb44e91bd9467cac3ace443862b18204",
+      "type": "@TensorAlgebra.equivDirectSum.{u_1,\n    u_2} : {R : Type u_1} →\n  {M : Type u_2} →\n    [inst : CommSemiring.{u_1} R] →\n      [inst_1 : AddCommMonoid.{u_2} M] →\n        [inst_2 : @Module.{u_1, u_2} R M (@CommSemiring.toSemiring.{u_1} R inst) inst_1] →\n          @AlgEquiv.{u_1, max u_2 u_1, max u_1 u_2} R (@TensorAlgebra.{u_1, u_2} R inst M inst_1 inst_2)\n            (@DirectSum.{0, max u_1 u_2} Nat (fun n => @TensorPower.{u_1, u_2} R n M inst inst_1 inst_2) fun i =>\n              @PiTensorProduct.instAddCommMonoid.{0, u_1, u_2} (Fin i) R inst (fun x => M) (fun i => inst_1) fun i =>\n                inst_2)\n            inst (@TensorAlgebra.instSemiring.{u_1, u_2} R inst M inst_1 inst_2)\n            (@DirectSum.semiring.{0, max u_1 u_2} Nat instDecidableEqNat\n              (fun n => @TensorPower.{u_1, u_2} R n M inst inst_1 inst_2)\n              (fun i =>\n                @PiTensorProduct.instAddCommMonoid.{0, u_1, u_2} (Fin i) R inst (fun x => M) (fun i => inst_1) fun i =>\n                  inst_2)\n              Nat.instAddMonoid (@TensorPower.gsemiring.{u_1, u_2} R M inst inst_1 inst_2))\n            (@TensorAlgebra.instAlgebra.{u_1, u_1, u_2} R R M inst inst_1 inst (@Algebra.id.{u_1} R inst) inst_2 inst_2\n              ⋯)\n            (@DirectSum.instAlgebra.{0, u_1, max u_1 u_2} Nat R\n              (fun n => @TensorPower.{u_1, u_2} R n M inst inst_1 inst_2) inst\n              (fun i =>\n                @PiTensorProduct.instAddCommMonoid.{0, u_1, u_2} (Fin i) R inst (fun x => M) (fun i => inst_1) fun i =>\n                  inst_2)\n              (fun i =>\n                @PiTensorProduct.instModule.{0, u_1, u_2} (Fin i) R inst (fun x => M) (fun i => inst_1) fun i => inst_2)\n              Nat.instAddMonoid (@TensorPower.gsemiring.{u_1, u_2} R M inst inst_1 inst_2)\n              (@TensorPower.galgebra.{u_1, u_2} R M inst inst_1 inst_2) instDecidableEqNat)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.yonedaMonFullyFaithful": {
+      "name": "CategoryTheory.yonedaMonFullyFaithful",
+      "module": "Mathlib.CategoryTheory.Monoidal.Cartesian.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean",
+      "line": 387,
+      "source_sha256": "c153b6b32acd6275757d58836f2ef2a5a1e447d7fff54b3dd6c806ccc842be27",
+      "type": "@CategoryTheory.yonedaMonFullyFaithful.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      @CategoryTheory.Functor.FullyFaithful.{u_1, max u_2 u_1, max u_2 u_1, max u_2 (u_1 + 1)}\n        (@CategoryTheory.Mon.{u_1, u_2} C inst\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_2} C inst\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_2} C inst inst_1)))\n        (@CategoryTheory.Mon.instCategory.{u_1, u_2} C inst\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_2} C inst\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_2} C inst inst_1)))\n        (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1})\n        (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n          (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1})\n        (@CategoryTheory.yonedaMon.{u_1, u_2} C inst inst_1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.yonedaMonObjRepresentableBy": {
+      "name": "CategoryTheory.yonedaMonObjRepresentableBy",
+      "module": "Mathlib.CategoryTheory.Monoidal.Cartesian.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean",
+      "line": 374,
+      "source_sha256": "c153b6b32acd6275757d58836f2ef2a5a1e447d7fff54b3dd6c806ccc842be27",
+      "type": "@CategoryTheory.yonedaMonObjRepresentableBy.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      (M : C) →\n        [inst_2 :\n            @CategoryTheory.MonObj.{u_1, u_2} C inst\n              (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_2} C inst\n                (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_2} C inst inst_1))\n              M] →\n          @CategoryTheory.Functor.RepresentableBy.{u_1, u_1, u_2} C inst\n            (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_2, u_1 + 1, u_1 + 1} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1} (Type u_1)\n              CategoryTheory.types.{u_1} (@CategoryTheory.yonedaMonObj.{u_1, u_2} C inst inst_1 M inst_2)\n              (@CategoryTheory.forget.{u_1, u_1, u_1 + 1, u_1} MonCat.{u_1} MonCat.instCategory.{u_1}\n                (fun x1 x2 =>\n                  @MonoidHom.{u_1, u_1} (↑x1) (↑x2)\n                    (@MulOneClass.toMulOne.{u_1} (↑x1) (@Monoid.toMulOneClass.{u_1} (↑x1) x1.str))\n                    (@MulOneClass.toMulOne.{u_1} (↑x2) (@Monoid.toMulOneClass.{u_1} (↑x2) x2.str)))\n                MonCat.carrier.{u_1}\n                (fun X Y =>\n                  @MonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n                    (@MulOneClass.toMulOne.{u_1} (↑X) ((fun X => @Monoid.toMulOneClass.{u_1} (↑X) X.str) X))\n                    (@MulOneClass.toMulOne.{u_1} (↑Y) (@Monoid.toMulOneClass.{u_1} (↑Y) Y.str)))\n                MonCat.instConcreteCategoryMonoidHomCarrier.{u_1}))\n            M",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.yonedaMonObjIsoOfRepresentableBy": {
+      "name": "CategoryTheory.yonedaMonObjIsoOfRepresentableBy",
+      "module": "Mathlib.CategoryTheory.Monoidal.Cartesian.Mon",
+      "path": "Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean",
+      "line": 337,
+      "source_sha256": "c153b6b32acd6275757d58836f2ef2a5a1e447d7fff54b3dd6c806ccc842be27",
+      "type": "@CategoryTheory.yonedaMonObjIsoOfRepresentableBy.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      (X : C) →\n        (F :\n            @CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n              (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1}) →\n          (α :\n              @CategoryTheory.Functor.RepresentableBy.{u_1, u_1, u_2} C inst\n                (@CategoryTheory.Functor.comp.{u_1, u_1, u_1, u_2, u_1 + 1, u_1 + 1} (Opposite.{u_2 + 1} C)\n                  (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1}\n                  (Type u_1) CategoryTheory.types.{u_1} F\n                  (@CategoryTheory.forget.{u_1, u_1, u_1 + 1, u_1} MonCat.{u_1} MonCat.instCategory.{u_1}\n                    (fun x1 x2 =>\n                      @MonoidHom.{u_1, u_1} (↑x1) (↑x2)\n                        (@MulOneClass.toMulOne.{u_1} (↑x1) (@Monoid.toMulOneClass.{u_1} (↑x1) x1.str))\n                        (@MulOneClass.toMulOne.{u_1} (↑x2) (@Monoid.toMulOneClass.{u_1} (↑x2) x2.str)))\n                    MonCat.carrier.{u_1}\n                    (fun X Y =>\n                      @MonoidHom.instFunLike.{u_1, u_1} (↑X) (↑Y)\n                        (@MulOneClass.toMulOne.{u_1} (↑X) ((fun X => @Monoid.toMulOneClass.{u_1} (↑X) X.str) X))\n                        (@MulOneClass.toMulOne.{u_1} (↑Y) (@Monoid.toMulOneClass.{u_1} (↑Y) Y.str)))\n                    MonCat.instConcreteCategoryMonoidHomCarrier.{u_1}))\n                X) →\n            @CategoryTheory.Iso.{max u_2 u_1, max u_2 (u_1 + 1)}\n              (@CategoryTheory.Functor.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n                (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1})\n              (@CategoryTheory.Functor.category.{u_1, u_1, u_2, u_1 + 1} (Opposite.{u_2 + 1} C)\n                (@CategoryTheory.Category.opposite.{u_1, u_2} C inst) MonCat.{u_1} MonCat.instCategory.{u_1})\n              (@CategoryTheory.yonedaMonObj.{u_1, u_2} C inst inst_1 X\n                (@CategoryTheory.MonObj.ofRepresentableBy.{u_1, u_1, u_2} C inst inst_1 X F α))\n              F",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "monTypeEquivalenceMon": {
+      "name": "monTypeEquivalenceMon",
+      "module": "Mathlib.CategoryTheory.Monoidal.Internal.Types.Basic",
+      "path": "Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean",
+      "line": 78,
+      "source_sha256": "89aaea0305d3bbbdfce53afa308774d9953ce835d6ad35381a893a8fc295fcc1",
+      "type": "monTypeEquivalenceMon.{u_1} : @CategoryTheory.Equivalence.{u_1, u_1, u_1 + 1, u_1 + 1}\n  (@CategoryTheory.Mon.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1}\n    (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n      CategoryTheory.types.{u_1}\n      (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n        CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n  MonCat.{u_1}\n  (@CategoryTheory.Mon.instCategory.{u_1, u_1 + 1} (Type u_1) CategoryTheory.types.{u_1}\n    (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n      CategoryTheory.types.{u_1}\n      (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_1 + 1} (Type u_1)\n        CategoryTheory.types.{u_1} CategoryTheory.typesCartesianMonoidalCategory.{u_1})))\n  MonCat.instCategory.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "MonCat.toCat": {
+      "name": "MonCat.toCat",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "path": "Mathlib/CategoryTheory/SingleObj.lean",
+      "line": 234,
+      "source_sha256": "4241433d3dbb2745077d18f4b43bb8c1d7e75afdf81041e52fbefdc81da5d0d7",
+      "type": "MonCat.toCat.{u_1} : @CategoryTheory.Functor.{u_1, u_1, u_1 + 1, u_1 + 1} MonCat.{u_1} MonCat.instCategory.{u_1}\n  CategoryTheory.Cat.{u_1, 0} CategoryTheory.Cat.category.{u_1, 0}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "MonCat.toCat_full": {
+      "name": "MonCat.toCat_full",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "path": "Mathlib/CategoryTheory/SingleObj.lean",
+      "line": 238,
+      "source_sha256": "4241433d3dbb2745077d18f4b43bb8c1d7e75afdf81041e52fbefdc81da5d0d7",
+      "type": "MonCat.toCat_full.{u_1} : @CategoryTheory.Functor.Full.{u_1, u_1, u_1 + 1, u_1 + 1} MonCat.{u_1}\n  MonCat.instCategory.{u_1} CategoryTheory.Cat.{u_1, 0} CategoryTheory.Cat.category.{u_1, 0} MonCat.toCat.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "MonCat.toCat_faithful": {
+      "name": "MonCat.toCat_faithful",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "path": "Mathlib/CategoryTheory/SingleObj.lean",
+      "line": 243,
+      "source_sha256": "4241433d3dbb2745077d18f4b43bb8c1d7e75afdf81041e52fbefdc81da5d0d7",
+      "type": "MonCat.toCat_faithful.{u_1} : @CategoryTheory.Functor.Faithful.{u_1, u_1, u_1 + 1, u_1 + 1} MonCat.{u_1}\n  MonCat.instCategory.{u_1} CategoryTheory.Cat.{u_1, 0} CategoryTheory.Cat.category.{u_1, 0} MonCat.toCat.{u_1}",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.SingleObj.toEnd": {
+      "name": "CategoryTheory.SingleObj.toEnd",
+      "module": "Mathlib.CategoryTheory.SingleObj",
+      "path": "Mathlib/CategoryTheory/SingleObj.lean",
+      "line": 102,
+      "source_sha256": "4241433d3dbb2745077d18f4b43bb8c1d7e75afdf81041e52fbefdc81da5d0d7",
+      "type": "CategoryTheory.SingleObj.toEnd.{u_1} : (M : Type u_1) →\n  [inst : Monoid.{u_1} M] →\n    @MulEquiv.{u_1, u_1} M\n      (@CategoryTheory.End.{u_1, 0} (CategoryTheory.SingleObj.{u_1} M)\n        (@CategoryTheory.SingleObj.categoryStruct.{u_1} M\n          (@MulOne.toOne.{u_1} M (@MulOneClass.toMulOne.{u_1} M (@Monoid.toMulOneClass.{u_1} M inst)))\n          (@MulOne.toMul.{u_1} M (@MulOneClass.toMulOne.{u_1} M (@Monoid.toMulOneClass.{u_1} M inst))))\n        (CategoryTheory.SingleObj.star.{u_1} M))\n      (@MulOne.toMul.{u_1} M (@MulOneClass.toMulOne.{u_1} M (@Monoid.toMulOneClass.{u_1} M inst)))\n      (@CategoryTheory.End.instMul.{u_1, 0} (CategoryTheory.SingleObj.{u_1} M)\n        (@CategoryTheory.SingleObj.categoryStruct.{u_1} M\n          (@MulOne.toOne.{u_1} M (@MulOneClass.toMulOne.{u_1} M (@Monoid.toMulOneClass.{u_1} M inst)))\n          (@MulOne.toMul.{u_1} M (@MulOneClass.toMulOne.{u_1} M (@Monoid.toMulOneClass.{u_1} M inst))))\n        (CategoryTheory.SingleObj.star.{u_1} M))",
+      "axioms": []
+    },
+    "SerrePositivity.KST.Comparison.constantMonoidBarIso": {
+      "name": "SerrePositivity.KST.Comparison.constantMonoidBarIso",
+      "module": "SerrePositivity.KST.Comparison.BarVertexInclusion",
+      "path": "SerrePositivity/KST/Comparison/BarVertexInclusion.lean",
+      "line": 44,
+      "source_sha256": "ff145783f81780d4c0afe46b3693108c39d2425f8081d13f538d498162bd8769",
+      "type": "SerrePositivity.KST.Comparison.constantMonoidBarIso.{u_1} : (T : MonCat.{u_1}) →\n  @CategoryTheory.Iso.{u_1, u_1 + 1} SSet.{u_1}\n    (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n      (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n      CategoryTheory.types.{u_1})\n    (SerrePositivity.KST.Comparison.monoidBar.{u_1}\n      (@CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} MonCat.{u_1} MonCat.instCategory.{u_1}\n        (@CategoryTheory.Functor.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) MonCat.{u_1}\n          MonCat.instCategory.{u_1})\n        (@CategoryTheory.Functor.category.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) MonCat.{u_1}\n          MonCat.instCategory.{u_1})\n        (@CategoryTheory.Functor.const.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n          (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) MonCat.{u_1}\n          MonCat.instCategory.{u_1})\n        T))\n    (@CategoryTheory.nerve.{u_1, 0} (CategoryTheory.SingleObj.{u_1} ↑T)\n      (@CategoryTheory.SingleObj.category.{u_1} (↑T) T.str))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SerrePositivity.KST.Comparison.monoidWordEquiv": {
+      "name": "SerrePositivity.KST.Comparison.monoidWordEquiv",
+      "module": "SerrePositivity.KST.Comparison.BarSegal",
+      "path": "SerrePositivity/KST/Comparison/BarSegal.lean",
+      "line": 93,
+      "source_sha256": "618ec8e78dba32e1a8ec09c3d26b8b80f1cb12d53cf410655ef846527c3a3d71",
+      "type": "SerrePositivity.KST.Comparison.monoidWordEquiv.{u_1} : (T : MonCat.{u_1}) →\n  (n : Nat) →\n    Equiv.{u_1 + 1, u_1 + 1}\n      (@CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (Opposite.{1} SimplexCategory)\n        (@CategoryTheory.Category.opposite.{0, 0} SimplexCategory SimplexCategory.smallCategory) (Type u_1)\n        CategoryTheory.types.{u_1}\n        (@CategoryTheory.nerve.{u_1, 0} (CategoryTheory.SingleObj.{u_1} ↑T)\n          (@CategoryTheory.SingleObj.category.{u_1} (↑T) T.str))\n        (@Opposite.op.{1} SimplexCategory { len := n }))\n      (Fin n → ↑T)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SSet.IsStrictSegal": {
+      "name": "SSet.IsStrictSegal",
+      "module": "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+      "path": "Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean",
+      "line": 274,
+      "source_sha256": "10aeb98ebfe7ddfefb44e94dccaf4b0de691ffb121929adb3233b0a7baedc274",
+      "type": "SSet.IsStrictSegal.{u_1} : SSet.{u_1} → Prop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CategoryTheory.Grp.toMon": {
+      "name": "CategoryTheory.Grp.toMon",
+      "module": "Mathlib.CategoryTheory.Monoidal.Grp",
+      "path": "Mathlib/CategoryTheory/Monoidal/Grp.lean",
+      "line": 93,
+      "source_sha256": "a514c715528dd4a02a168e9a8758e1fc8d682ed1af940987d913d7f6acb0ab6d",
+      "type": "@CategoryTheory.Grp.toMon.{u_1,\n    u_2} : {C : Type u_2} →\n  [inst : CategoryTheory.Category.{u_1, u_2} C] →\n    [inst_1 : @CategoryTheory.CartesianMonoidalCategory.{u_1, u_2} C inst] →\n      @CategoryTheory.Grp.{u_1, u_2} C inst inst_1 →\n        @CategoryTheory.Mon.{u_1, u_2} C inst\n          (@CategoryTheory.SemiCartesianMonoidalCategory.toMonoidalCategory.{u_1, u_2} C inst\n            (@CategoryTheory.CartesianMonoidalCategory.toSemiCartesianMonoidalCategory.{u_1, u_2} C inst inst_1))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "SemiSimplexCategory.toSimplexCategory": {
+      "name": "SemiSimplexCategory.toSimplexCategory",
+      "module": "Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory",
+      "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+      "line": 74,
+      "source_sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a",
+      "type": "SemiSimplexCategory.toSimplexCategory : @CategoryTheory.Functor.{0, 0, 0, 0} SemiSimplexCategory\n  SemiSimplexCategory.smallCategory SimplexCategory SimplexCategory.smallCategory",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
     "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization": {
       "name": "SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization",
       "module": "SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization",

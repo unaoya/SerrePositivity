@@ -1,4 +1,48 @@
 number,status,declarations,reason,axioms,check,partial_kind
+4.1.0.1,partial,IsTopologicalGroup.toHSpace @ Mathlib/Topology/Homotopy/HSpaces.lean:121,仮定：単位付き乗法と連続な乗法（Lean は結合律を仮定しない。HA の位相モノイドはこれを満たす）。結論：元の乗法と単位 1 から H-space を得て、単位ホモトピーには厳密な単位律を使う（この成分は一致）。H-space のホモトピー結合性は型に含まれない。,,found,component
+4.1.0.2,mathlib,Path.instHSpace @ Mathlib/Topology/Homotopy/HSpaces.lean:240,仮定：位相空間 X と基点 x（HA と一致）。結論：ループ空間 Path x x が定値ループを単位、区間を二等分した Path.trans を積とする H-space となる（一致）。,,found,
+4.1.0.3,none,,位相モノイドから H-space を作る宣言と単体モノイドの群完備化を確認した。与えられたホモトピー結合的 H-space が厳密な位相モノイドと H-space として弱同値になる条件は見つからなかった。,,not_found,
+4.1.0.4,none,,既に群状単体モノイドである対象の delooping はある。H-space の積に対して associahedron で高次結合を補い、H-space としてループ空間と比較できる条件は見つからなかった。,,not_found,
+4.1.0.5,partial,SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso @ SerrePositivity/KST/Comparison/GrouplikeComparison.lean:33,仮定：群状単体モノイド M（HA の π₀ が群という条件の単体模型）。結論：M からその bar の Kan 置換のループ空間への標準写像が anodyne 局所化で同型となる（群状モノイドの delooping の成分に一致）。Moore ループの厳密積と通常ループとの比較は含まれない。,,found,component
+4.1.0.6,none,,通常の導来加群でのテンソルと厳密 dg 代数を確認した。hC の指定した積を一般のモノイダル ∞ 圏 C で整合的な積に持ち上げる条件は見つからなかった。,,not_found,
+4.1.0.7,none,,単位付きの厳密な dg 代数と一般の H-space の単位ホモトピーを確認した。非単位的な持ち上げと hC 上の単位付き代数の持ち上げの同値は見つからなかった。,,not_found,
+4.1.0.8,none,,厳密 dg 代数のモデル構造と通常のモノイダル局所化を確認した。局所化したモノイダル ∞ 圏の結合代数を元のモデル圏の厳密な結合代数で実現する比較は見つからなかった。,,not_found,
+4.1.0.9,none,,単体モノイドの bar と位相空間の直積モノイダル構造を確認した。空間の ∞ 圏の結合代数を単体モノイドで実現する rectification、またその主張に必要な実現との比較は見つからなかった。,,not_found,
+4.1.1.1,none,,一色の dg operad とブロック置換の合成を確認した。有限集合の全順序を演算とし、各ファイバーの順序を辞書式に合成する集合値の Assoc は見つからなかった。,,not_found,
+4.1.1.2,partial,CategoryTheory.Mon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:251,仮定：通常のモノイダル圏（HA の対称モノイダル圏を含む）。結論：単位・乗法・結合律を持つ通常の結合代数を内部モノイド Mon として与える（結論の代数側の構造に一致）。Assoc からの colored operad 写像との対応は型に含まれない。,,found,component
+4.1.1.3,none,,通常の圏の神経と一色 dg operad を確認した。全順序を持つファイバーからなる圏 Assoc⊗ の構成と、その神経の ∞ operad 構造は見つからなかった。,,not_found,
+4.1.1.4,none,,有限集合の整列とブロック置換の合成はある。基点付き写像と各非基点ファイバーの全順序を射として束ね、辞書式合成を持つ Assoc⊗ は見つからなかった。,,not_found,
+4.1.1.5,none,,準圏写像の頂点ファイバーはある。Assoc⊗ の h1i ファイバーを具体的に Δ0 と同定する型は見つからなかった。,,not_found,
+4.1.1.6,partial,CategoryTheory.Mon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:251,仮定：通常のモノイダル圏 C（Lean は HA のモノイダル ∞ 圏の通常圏の場合に限る）。結論：単位付き結合代数とその準同型を対象・射とする圏を得る（通常圏の場合の Alg(C) に一致）。一般の operadic section 準圏は型に含まれない。,,found,special
+4.1.1.7,partial,MonObj.mopEquiv @ Mathlib/CategoryTheory/Monoidal/Opposite/Mon.lean:97,仮定：通常のモノイダル圏 C（Lean は HA の通常圏の場合に限る）。結論：モノイドの圏とテンソルの順を逆にした圏のモノイドの圏との同値を与える（通常圏での反対代数の比較に一致）。Assoc⊗ の反転に沿う ∞ operad の比較は型に含まれない。,,found,special
+4.1.1.8,none,,通常の内部モノイドの反転同値と余デカルト射影の底変換を確認した。抽象 operad としての AlgAssoc を二つの section 準圏の余積へ分ける型は見つからなかった。,,not_found,
+4.1.1.9,partial,Semigrp @ Mathlib/Algebra/Category/Semigrp/Basic.lean:216,仮定：直積モノイダル構造を持つ通常の集合の圏（Lean は HA の通常の集合の場合に限る）。結論：単位を要求しない結合的乗法の対象と準同型の圏 Semigrp を与える（この場合の非単位的結合代数の圏に一致）。全射で切り出す Assoc⊗nu と一般の Algⁿᵘ は型に含まれない。,,found,special
+4.1.1.10,partial,CategoryTheory.MonoidalCategory @ Mathlib/CategoryTheory/Monoidal/Category.lean:161,仮定：通常の圏 C（Lean は HA の通常圏の模型に限る）。結論：テンソル、単位、結合子と単位子が整合的なモノイダル構造を定める（通常圏の場合に一致）。Assoc⊗ への余デカルト operadic fibration としては与えない。,,found,special
+4.1.1.11,none,,通常のモノイダル構造と一般の準圏の頂点ファイバーはある。Assoc⊗ 上の全体と h1i ファイバーを区別するこの略記に対応する型は見つからなかった。,,not_found,
+4.1.1.12,partial,CategoryTheory.MonoidalCategory @ Mathlib/CategoryTheory/Monoidal/Category.lean:161,仮定：通常の圏のモノイダル構造（Lean は通常圏の模型に限る）。結論：単位、二項テンソル、結合子と単位子を与える（通常圏での単位と積の成分に一致）。Assoc⊗ のファイバー Cⁿ やその輸送、一般の hC の構成は含まれない。,,found,special
+4.1.1.13,partial,CategoryTheory.Mon.forget @ Mathlib/CategoryTheory/Monoidal/Mon.lean:590 | CategoryTheory.Mon @ Mathlib/CategoryTheory/Monoidal/Mon.lean:251,仮定：通常のモノイダル圏の内部モノイド（Lean は HA の通常圏の模型に限る）。結論：基礎対象への忘却と、その対象の単位・結合的乗法を与える（通常圏の場合の忘却と代数構造に一致）。∞ operad の active 射に沿う全ての演算は含まれない。,,found,special
+4.1.1.14,partial,SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd @ SerrePositivity/InfinityCategories/F1/Fibrations/BaseChange.lean:92,仮定：単体集合上の余デカルトファイブレーションと底変換写像（HA の p が対称モノイダルである方向の余デカルト性に一致）。結論：引き戻し写像は余デカルトファイブレーションとなる（Assoc⊗ への底変換に適用した片方向に一致）。逆向きの二単体による検出は含まれない。,,found,direction
+4.1.1.15,partial,CategoryTheory.MonoidalClosed @ Mathlib/CategoryTheory/Monoidal/Closed/Basic.lean:46,仮定：通常のモノイダル圏（Lean は HA の通常圏の場合に限る）。結論：各 X に対して X⊗− が右随伴を持つことをモノイダル閉構造として束ねる（HA の left closed の通常圏の場合に一致）。−⊗X の右随伴と一般の ∞ 圏は含まれない。,,found,special
+4.1.1.16,partial,CategoryTheory.Adjunction.homEquiv @ Mathlib/CategoryTheory/Adjunction/Basic.lean:159,仮定：通常のモノイダル圏で −⊗X に右随伴がある（Lean は HA の通常圏の場合で右閉性を既知とする）。結論：随伴の余単位による Hom 集合の全単射を与える（閉性から評価の普遍性を得る成分に一致）。写像空間の条件から ∞ 圏の右随伴を構成する方向は含まれない。,,found,special
+4.1.1.17,none,,通常のモノイダル圏の単位と一般の頂点充満部分複体を確認した。左右のテンソル逆対象を持つ対象の部分 ∞ 圏が Assoc⊗ 上でモノイダルとなる宣言は見つからなかった。,,not_found,
+4.1.1.18,partial,TensorAlgebra.lift @ Mathlib/LinearAlgebra/TensorAlgebra/Basic.lean:132 | TensorAlgebra.equivDirectSum @ Mathlib/LinearAlgebra/TensorAlgebra/ToTensorPower.lean:158,仮定：可換半環 R と R-加群 M（Lean は HA の通常の加群圏の場合に限る）。結論：テンソル代数への自由代数の Hom 同値と、テンソル冪の直和との代数同型を与える（自由結合代数とその台の通常の加群の場合に一致）。モノイダル ∞ 圏一般の自由関手は含まれない。,,found,special
+4.1.1.19,none,,加群のテンソル冪の直和の同型と自由テンソル代数を確認した。一般のモノイダル ∞ 圏で可算余積だけの存在と各変数での保存から前命題を導く型は見つからなかった。,,not_found,
+4.1.1.20,none,,一色 dg operad と準圏のホモトピー押し出しを確認した。Assoc⊗ の Ext を有限順序集合の切断で記述し、coherence を得る宣言は見つからなかった。,,not_found,
+4.1.2.1,mathlib,CategoryTheory.yonedaMonFullyFaithful @ Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean:387 | CategoryTheory.yonedaMonObjRepresentableBy @ Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean:374 | CategoryTheory.yonedaMonObjIsoOfRepresentableBy @ Mathlib/CategoryTheory/Monoidal/Cartesian/Mon.lean:337,仮定：有限積を直積モノイダル構造として持つ通常圏 C（HA と一致）。結論：内部モノイドをモノイド値の前層へ充満忠実に送り、基礎集合値前層が表現可能であることとその像に入ることを示す（一致）。,,found,
+4.1.2.2,mathlib,monTypeEquivalenceMon @ Mathlib/CategoryTheory/Monoidal/Internal/Types/Basic.lean:78,仮定：集合の通常圏 Type に直積モノイダル構造を取る（HA と一致）。結論：内部モノイドの圏は単位と結合的積を持つ通常のモノイドの圏と同値（一致）。,,found,
+4.1.2.3,partial,MonCat.toCat @ Mathlib/CategoryTheory/SingleObj.lean:234 | MonCat.toCat_full @ Mathlib/CategoryTheory/SingleObj.lean:238 | MonCat.toCat_faithful @ Mathlib/CategoryTheory/SingleObj.lean:243 | CategoryTheory.SingleObj.toEnd @ Mathlib/CategoryTheory/SingleObj.lean:102,仮定：通常のモノイド（HA と一致）。結論：単一対象の圏に送り、指定対象の自己準同型モノイドを元のモノイドと同定し、通常圏への関手が充満忠実となる（この成分に一致）。指定された一対象を持つ圏全体への本質的全射性を表す型は含まれない。,,found,component
+4.1.2.4,partial,SerrePositivity.KST.Comparison.constantMonoidBarIso @ SerrePositivity/KST/Comparison/BarVertexInclusion.lean:44 | SerrePositivity.KST.Comparison.monoidWordEquiv @ SerrePositivity/KST/Comparison/BarSegal.lean:93,仮定：通常のモノイド T を定値単体モノイドとする（HA の通常モノイドの場合）。結論：bar が SingleObj T の nerve に同型で、その n 単体と n 個の T の元の列が全単射になる（分類空間の構成と Segal 写像の成分に一致）。任意の単体集合からのモノイド再構成は含まれない。,,found,component
+4.1.2.5,partial,SSet.IsStrictSegal @ Mathlib/AlgebraicTopology/SimplicialSet/StrictSegal.lean:274,仮定：通常の集合の圏の単体対象で、0 単体が一点の場合に取る（Lean は HA の Set の場合に限る）。結論：各単体から合成可能な辺の列への spine 写像が全単射であるという述語を与える（0 単体が一点のとき辺の列が直積となる）。一般の準圏の積とモノイド対象の充満部分準圏は含まれない。,,found,special
+4.1.2.6,partial,SerrePositivity.KST.Comparison.monoidWordEquiv @ SerrePositivity/KST/Comparison/BarSegal.lean:93,仮定：通常モノイド T から作った単一対象圏の神経（Lean は HA の集合の場合のこの模型に限る）。結論：n 単体が 1 単体の n 個の列と同定される（この場合の X([n]) の標準同定に一致）。一般の準圏の積としての比較は含まれない。,,found,special
+4.1.2.7,partial,CategoryTheory.Grp.toMon @ Mathlib/CategoryTheory/Monoidal/Grp.lean:93,仮定：直積モノイダル構造を持つ通常圏の内部群（Lean は HA の通常圏の場合に限る）。結論：同じ対象に対して逆元を忘れた内部モノイドを得る（この場合に一致）。一般の準圏での Segal 図式の比較は含まれない。,,found,special
+4.1.2.8,none,,通常の集合の内部モノイドの圏と bar の Segal 写像を確認した。二種類の準圏モノイドの比較が一般に同型でないという区別を表す宣言は見つからなかった。,,not_found,
+4.1.2.9,none,,単体圏の順序写像と nerve の Segal 構造を確認した。凸な二分割を基点付き集合にし、各逆像の順序を保つ Cut 関手は見つからなかった。,,not_found,
+4.1.2.10,none,,単一対象圏の神経に対する Segal の全単射と通常集合の内部モノイドを確認した。有限積のある C で Cut に沿う二種類のモノイド準圏の同値は見つからなかった。,,not_found,
+4.1.2.11,none,,単体圏の順序写像の定義と余デカルト写像の持ち上げを確認した。Cut の各色への局所余デカルト辺と active 射の Cartesian 持ち上げを示す operadic approximation は見つからなかった。,,not_found,
+4.1.2.12,partial,SemiSimplexCategory.toSimplexCategory @ Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean:74,仮定：有限順序集合 [n] と単射の順序写像（HA の ∆s と一致）。結論：これらからなる半単体圏と単体圏への包含を与える（添字圏の成分に一致）。非単位的モノイドの Segal 条件と充満部分準圏は含まれない。,,found,component
+4.1.2.13,none,,半単体圏の包含と単体集合の strict Segal 条件を確認した。準圏の単体図式の Segal 積条件が、単射への制限の非単位的モノイド条件と同値となる型は見つからなかった。,,not_found,
+4.1.2.14,none,,半単体圏の包含はある。非単位的 Assoc への Cut の制限と、単射で制限した operadic approximation の持ち上げ条件は見つからなかった。,,not_found,
+4.1.2.15,none,,通常の半群圏と半単体圏を確認した。有限積のある C で、非単位的 Assoc からのモノイドと半単体 Segal モノイドを Cut に沿って比較する同値は見つからなかった。,,not_found,
 4.1.7.1,none,,通常の相対圏と弱同値を保つ LocalizerMorphism を調べた。準圏上のホモトピーで閉じた systems の順序集合を分類する WCat∞ のデカルト・ファイブレーションは確認できなかった。,,not_found,
 4.1.7.2,none,,モデル圏から個別の hammock 局所化を作る宣言はある。WCat∞ 上でそのような局所化を関手化して G の左随伴とし、有限積保存を与える型は見つからなかった。,,not_found,
 4.1.7.3,partial,SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization @ SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean:84,仮定：C はモデル圏の通常の nerve で、W は弱同値。関手的分解と指定フレームを要求する（Lean が強い：一般の準圏と system を扱わない）。結論：指定された弱同値を反転する普遍的な C[W⁻¹] の模型（一致する特殊例。全 system に対する左随伴の構成は型にない）。,,found,special
