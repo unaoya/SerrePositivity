@@ -83,6 +83,6 @@ lemma compositionStringDirect_anodyne :
   apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint_leftAnodyne (compositionStringDirect_isInitial f g) p
   intro C D i hi
   cases hi with
-  | _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftHornInclusions.intro i hn => exact hp _ (SSet.modelCategoryQuillen.horn_ι_mem_J _ _)
+  | intro i hn => exact hp _ (SSet.modelCategoryQuillen.horn_ι_mem_J _ _)
 
 end SerrePositivity.KST.SConstruction

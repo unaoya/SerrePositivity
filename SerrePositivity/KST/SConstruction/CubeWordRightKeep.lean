@@ -41,9 +41,9 @@ lemma cubeGeneratorRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCate
   cases X
   cases Y
   cases g with
-  | _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.face b n i => exact Subtype.ext (cubeVertexRightKeep_face b _ i).symm
-  | _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.degeneracy n i => exact Subtype.ext (cubeVertexRightKeep_degeneracy _ i).symm
-  | _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.connection n i => exact Subtype.ext (cubeVertexRightKeep_connection _ i).symm
+  | face b n i => exact Subtype.ext (cubeVertexRightKeep_face b _ i).symm
+  | degeneracy n i => exact Subtype.ext (cubeVertexRightKeep_degeneracy _ i).symm
+  | connection n i => exact Subtype.ext (cubeVertexRightKeep_connection _ i).symm
 
 /-- 元の任意の語の右端保持は、同じ具体的な頂点写像を回収する。 -/
 lemma cubeWordRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords} (p : X ⟶ Y) :

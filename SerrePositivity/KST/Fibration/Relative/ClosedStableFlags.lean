@@ -33,12 +33,12 @@ lemma closedStableClosure_iff {B : StableModel.{u}} (P : ClosedStablePredicate B
   constructor
   · intro h
     induction h with
-    | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_mem hx => exact hx
-    | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_zero hx => exact P.zero_mem hx
-    | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_iso e _ ih => exact P.of_iso ih e
-    | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_cofiber t ht _ _ ih₀ ih₁ =>
+    | of_mem hx => exact hx
+    | of_zero hx => exact P.zero_mem hx
+    | of_iso e _ ih => exact P.of_iso ih e
+    | of_cofiber t ht _ _ ih₀ ih₁ =>
       exact P.pushout_mem t.square ht ih₀ ih₁ (P.zero_mem t.zero_corner)
-    | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_fiber t ht _ _ ih₁ ih₂ =>
+    | of_fiber t ht _ _ ih₁ ih₂ =>
       exact P.pullback_mem t.square ht ih₁ (P.zero_mem t.zero_corner) ih₂
   · exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_mem
 

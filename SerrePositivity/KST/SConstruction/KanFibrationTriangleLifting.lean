@@ -30,7 +30,7 @@ lemma exists_kanFibration_liftOuterTriangle {E B : SSet.{u}} (q : E ⟶ B) [Fibr
   let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration q := ⟨by
     intro A X i hi
     cases hi with
-    | @_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftHornInclusions.intro n i hn =>
+    | @intro n i hn =>
       exact ((SSet.modelCategoryQuillen.fibration_iff q).mp inferInstance) _ (horn_ι_mem_J _ _)⟩
   obtain ⟨g', t', ht'⟩ :=
     (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.leftFibration_liftCompStruct q f.toTruncated h.toTruncated g.toTruncated t.toTruncated).some

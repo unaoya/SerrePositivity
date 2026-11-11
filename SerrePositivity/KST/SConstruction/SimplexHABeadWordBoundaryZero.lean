@@ -19,12 +19,12 @@ lemma simplexHABeadWordBoundaryValue_zero {n : ℕ} (s : _root_.SerrePositivity.
     {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     d = 0 → simplexHABeadWordBoundaryValue A s word = 0 := by
   induction word with
-  | _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord.bead I hI =>
+  | bead I hI =>
     intro hd
     have hc : I.card = 2 := by omega
     exact (congrArg (fun w => serreCubeOrientationSign (I.card - 2) • w)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.rhs_of_card_two s I _ _ _ hI rfl rfl (by omega) hc)).trans (smul_zero _)
-  | @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord.join a b c p q left right ihL ihR =>
+  | @join a b c p q left right ihL ihR =>
     intro hd
     have hl := ihL (by omega)
     have hr := ihR (by omega)

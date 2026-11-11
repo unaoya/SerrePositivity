@@ -275,6 +275,13 @@ def updateBox (b : Box) : Box := { b with value := 4 }
 namespace Nested
 def result := f 0
 end Nested
+inductive Branch where
+  | bead : Branch
+  | join : Branch → Branch → Branch
+def collapseBranch (b : Branch) : Nat := by
+  cases b with
+  | bead => exact 0
+  | join left right => exact 1
 scoped notation "kRef" => f 1
 end Old
 
@@ -300,7 +307,7 @@ def withNotation := kRef
             owner = module_name(path)
             subprocess.run([lean, "--run", str(helper), owner, path, capture.name], cwd=root, check=True)
             data = checked_capture(root, path, capture)
-            symbols = ["Old.f", "Old.Box", "Old.Box.mk", "Old.Box.value", "Old.destruct", "Old.destructExplicit", "Old.rebuild", "Old.updateBox", "Old.Nested.result"]
+            symbols = ["Old.f", "Old.Box", "Old.Box.mk", "Old.Box.value", "Old.destruct", "Old.destructExplicit", "Old.rebuild", "Old.updateBox", "Old.Nested.result", "Old.Branch", "Old.Branch.bead", "Old.Branch.join", "Old.collapseBranch"]
             plan = Migration({"rows": [{"module": owner, "old": n, "new": n.replace("Old.", "New.Home.", 1)} for n in symbols],
                               "namespaces": {owner: {"Old": "New.Home"}}, "opens": {"Old": "New.Home"}})
             result, issues = rewrite(data, plan)
