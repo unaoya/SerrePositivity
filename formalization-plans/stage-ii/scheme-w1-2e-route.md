@@ -1133,3 +1133,65 @@ AdicCompletion I H_Cech^q(M/JM;d) ≃ₗ[R] {R/J 上の各 I 進閉厚化の Če
 全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、一回ごとに鍵を返した。待ちは同じ worktree から一つだけ。ルート全体のビルドは行わず、取り込みは調整役に任せる。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
 
 `da2713482` で main `e3dc5ba4b` を取り込んだ。検証済み AG のローカル import 閉包・設定・公式監査スクリプト **680 ファイル**の SHA-256 を前後で比較し、不一致 **0**。main 側の変更は文書のみで、上の 4,291 jobs のビルドと 6,704 宣言の監査は取り込み後にも対応する。
+
+## I 進系全体の加群写像に対する自然性（11-12）
+
+`6e414c886` に新規 5 モジュールと直接 importer を保存（979 行）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,296 jobs 成功**。終了後に共有鍵を取り直して行った公式監査は **6,876 宣言・標準三公理のみ**。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry` の下）：
+
+- `ReesClosedCoefficientAdicModuleNaturality`
+- `ReesCoefficientAdicFamiliesNaturality`
+- `ReesCoefficientAdicFormalFunctionsNaturality`
+- `ReesCoefficientAdicModuleCech`
+- `ReesCoefficientAdicModuleMap`
+
+前回残した、I 進系全体の比較を任意の次数付き加群写像に自然にする可換式をまとめた。全射な係数変更 R→B を固定し、B[X] 上線形な次数付き加群写像 f:M→N を、同じ型の実際の I 進商 M/IⁿM→N/IⁿN へ降ろした。この商写像は B[X] 上線形で、R[X] へ係数制限すると既存の実際の商写像に戻る。射影・I 進遷移と可換で、Proj 次数を保つ。
+
+この実際の商写像を標準開と Čech コホモロジーへ送り、元の R 上と変更後の B 上の両方で全遷移との可換性を示した。各段の係数比較が f と可換であることを使い、I 進 Čech 互換族の比較の順写像・逆写像が共に f に自然と分かった。R 線形写像の合成としての可換式も供給した。
+
+元の R 上の互換族写像は、既存の `reesAdicProjectiveClosedCechModuleFamiliesMap` そのものであることを成分で照合した。この照合と既存の形式関数の自然性を合成して、B 上で各段を計算した互換族への標準完備化写像が f と可換であることを示した。標準写像の自然性には Noether 性と有限生成性を使わない。Noether な R と R[X] 上有限な M,N の下では、形式関数の線形同型についても同じ自然性が成り立ち、その順写像は標準完備化写像と一致する。
+
+最後に B=R/J、係数加群 M/JM,N/JN とし、元の任意の R[X] 上の次数付き写像 M→N が誘導する実際の商写像に特殊化した。既存の `reesClosedCoefficientAdicCechFamiliesEquiv` と `reesClosedCoefficientAdicCechFormalFunctions` の型・本文を保ったまま、各 I 進段・互換族・形式関数の比較がその写像と可換であることを証明した。互換族の特殊化は成分の可換式に分け、次数族や互換族全体の等式による重い輸送を避けて検証した。
+
+宣言と主張（ローカルな型クラス設定を除く 31 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedCoefficientAdicModuleFamiliesMap` | 実際の M/JM→N/JN が誘導する、商係数の I 進 Čech 互換族の写像。 |
+| `reesClosedCoefficientAdicModuleCechMap` | 実際の M/JM→N/JN が各 I 進段で誘導する、商係数の Čech 写像。 |
+| `reesClosedCoefficientAdicCechIso_module_naturality` | 実際の閉厚化の各 I 進段の係数比較は、任意の元の次数付き加群写像に自然。 |
+| `reesClosedCoefficientAdicCechFamiliesEquiv_module_naturality` | 実際の閉厚化の I 進互換族の係数比較は、任意の元の次数付き加群写像に自然。 |
+| `reesClosedCoefficientAdicCechFormalFunctions_module_naturality` | M/JM の商係数表示の Čech 形式関数は、任意の元の次数付き加群写像に自然。 |
+| `reesCoefficientAdicOriginalCechFamiliesMap` | 元の R 上の I 進 Čech 互換族の、実際の加群写像が誘導する写像。 |
+| `reesCoefficientAdicRestrictedCechFamiliesMap` | B 上で計算した I 進 Čech 互換族の、実際の加群写像が誘導する写像。 |
+| `reesCoefficientAdicCechFamiliesEquiv_module_naturality` | I 進 Čech 互換族の係数比較は、実際の加群写像に自然。 |
+| `reesCoefficientAdicCechFamiliesEquiv_module_naturality_linear` | 互換族の係数比較の自然性を、R 線形写像の可換な合成として述べる。 |
+| `reesCoefficientAdicCechFamiliesEquiv_symm_module_naturality` | 互換族の係数比較の逆写像も、実際の加群写像に自然。 |
+| `reesCoefficientAdicCompletionMap` | 完備化から実際の I 進 Čech 互換族への標準写像を、B 上の表示へ送る。 |
+| `reesCoefficientAdicOriginalCechFamiliesMap_eq_native` | 元の R 上の実際の互換族写像は、既存の I 進 Čech 写像に一致する。 |
+| `reesCoefficientAdicCompletionMap_module_naturality` | 商係数表示の完備化からの標準 Čech 写像は、任意の次数付き加群写像に自然。 |
+| `reesCoefficientAdicFormalFunctions` | Čech 形式関数を、B 上で計算した実際の I 進閉厚化の互換族で表す同型。 |
+| `reesCoefficientAdicFormalFunctions_toLinearMap` | 商係数表示の形式関数の順写像は、既存の標準 Čech 写像そのものである。 |
+| `reesCoefficientAdicFormalFunctions_module_naturality` | 商係数表示の Čech 形式関数は、任意の次数付き加群写像に自然。 |
+| `reesCoefficientAdicModuleChartMap` | 実際の加群写像から得られる、B 上の I 進商の標準開の写像。 |
+| `reesCoefficientAdicOriginalModuleChartMap` | 元の R 上で計算する、実際の加群写像の I 進商の標準開の写像。 |
+| `reesCoefficientAdicModuleChartMap_transition` | B 上の I 進標準開写像は、実際の I 進遷移と可換。 |
+| `reesCoefficientAdicOriginalModuleChartMap_transition` | R 上の I 進標準開写像も、実際の I 進遷移と可換。 |
+| `reesCoefficientAdicChartIso_module_naturality` | 各 I 進段の標準開係数比較は、実際の加群写像に自然。 |
+| `reesCoefficientAdicOriginalCechModuleMap` | 元の R 上での、実際の加群写像からの I 進 Čech コホモロジーの写像。 |
+| `reesCoefficientAdicRestrictedCechModuleMap` | B 上の実際の加群写像からの I 進 Čech 写像の係数制限。 |
+| `reesCoefficientAdicOriginalCechModuleMap_transition` | R 上の実際の I 進 Čech 写像は遷移と可換。 |
+| `reesCoefficientAdicRestrictedCechModuleMap_transition` | B 上の実際の I 進 Čech 写像の係数制限も遷移と可換。 |
+| `reesCoefficientAdicCechIso_module_naturality` | I 進 Čech コホモロジーの係数比較は、実際の加群写像に自然。 |
+| `reesCoefficientAdicQuotientModuleMap` | 変更後の多項式環上で見た、実際の加群写像の I 進商への降下。 |
+| `reesCoefficientAdicQuotientModuleMap_restrictScalars` | 商係数の I 進商の写像の係数制限は、元の実際の商写像である。 |
+| `reesCoefficientAdicQuotientModuleMap_projection` | 商係数の I 進商の写像は、商への実際の射影と可換。 |
+| `reesCoefficientAdicQuotientModuleMap_transition` | 商係数の I 進商の写像は、実際の I 進遷移と可換。 |
+| `reesCoefficientAdicQuotientModuleMap_preservesPiece` | 商係数の I 進商の写像は、元の射が保つ Proj 次数を保つ。 |
+
+コホモロジーと形式関数の主張は、原典 Stacks 30.20.5 の Hⁱ に対応する **Čech 版**。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化していない。完備化は引き続き元の R 上の I 進完備化であり、非平坦なコホモロジーとテンソル積の交換は使っていない。
+
+**停止点 2e ではない。** 閉厚化の商係数表示については、元の任意の次数付き加群写像、実際の I 進遷移、互換族、標準完備化写像、形式関数まで自然な可換式を供給した。次の主要な作業群は、共通アフィン細分、flat なテンソル底変換、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較。今回の線形な写像の自然性を、これら四群の具体的な比較の完成とは数えない。一般の固有射の有限性・Stein 分解・導来関手の Hⁱ との比較は作っていない。
+
+全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、待ちは同じ worktree から一つだけ、鍵は一回ごとに返した。ルート全体のビルドは行わず、取り込みは調整役に任せる。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
