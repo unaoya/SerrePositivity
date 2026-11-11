@@ -374,3 +374,8 @@
 - `affineEnvelopeTermCompletedBaseChangeIso` は、両基底が有界 prism という仮定の下で、有限 affine 項の実際の完備テンソル積の single 対象が二座標完備導来底変換を計算する。係数射そのものの通常の平坦性は仮定せず、既存の完備自由 δ 環の完全平坦性、有界 prism 上の離散性、H⁰ の係数線形な比較を使う。`affineEnvelopeTermCompletedBaseChangeToTargetIso` は既存の係数脚を保つ完備テンソルの同型を通して、標準の係数変更先の項へ移す。
 - `PointwiseRegular` は加群上だけのスカラーの正則性から、主導来完備化の純性と H⁰ の正則性を示す。`PointwiseExact` は、両端でスカラーが正則な短完全列が H⁰ 完備化後も短完全であることを、標準導来三角形と長完全列で示す。
 - 作業木の `PointwiseCochain` では、非輪状な正則複体のサイクルの短完全列を使い、各項の H⁰ 完備化が正則な複体の擬同型を保つことを個別検査で確認した。さらに平坦な通常の係数拡大と合成し、整数・自然数の両添字に対する入口を用意した。実際の整係数の小さい橋に適用する `CrystallineWittPointwiseBridge` も検査中。対象ビルド前なので、この2本はまだコミットしない。
+
+- 共通の `PointwiseCochain`・`PointwiseAlgebra` と BS の `CrystallineWittPointwiseBridge` の対象ビルドは `/private/tmp/d69-ticket-build-31.log` で成功した。追加を含む122本の一時監査は2,948宣言で標準三公理のみ。監査とログは `/private/tmp/AuditD69P2MorningEightyNine.lean` と `/private/tmp/d69-morning-audit-eightynine.log`。登録候補にこの3本を加える。
+- `PointwiseCochain` は、指定スカラーが各項で正則な非輪状複体をサイクルの短完全列に分け、各項の H⁰ 完備化後も非輪状であることを示す。写像錐の比較から擬同型の保存を得て、平坦な通常の係数拡大と合成した整数・自然数両添字の宣言を閉じた。`crystallineWittPointwiseBridge_quasiIso` は、実際の整係数の小さい橋にこの自然数添字の宣言を適用する。
+- `PointwiseAlgebra` は各項の H⁰ 完備化を既存の主完備環の係数加群に同定する。標準の完備化単位を保ち、任意の係数線形写像について厳密に自然である。自然性の証明には既存の `principalCompletionLinearMap_ext` を使う。
+- 次はこの同定と通常テンソルの係数を保つ比較を合わせ、各項の完備係数拡大を実際の有限 Witt 模型と照合する。作業木の `PointwiseTensor` でこの比較と単位の式を準備している。P2 の最終の二比較は引き続き残り、停止点2には未到達。
