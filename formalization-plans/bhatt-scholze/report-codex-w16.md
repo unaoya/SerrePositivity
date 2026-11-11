@@ -784,3 +784,79 @@ barrattEcclesCoproductTensorNat (R : Type u) [CommRing R]
 - `TensorUnitCoherence`
 
 今回も［一般∞］の移動候補の追加は零。既報の五本の場所はそのまま。
+
+
+## 15. 二色の係数の射影性と、合計規模による中間停止（11-11 夜）
+
+main `727ab85f3` を `math/bs-impl` に取り込み、指示書 §7 に従って二色係数の比較から再開した。§14.4 の二十一本は取り込み済みなので、今回の登録候補には含めない。今回も界面・既存の公開宣言・drafts・入口・共有監査スクリプトは変更していない。
+
+### 15.1 今回のまとまり
+
+| 新規モジュール | 内容 |
+| --- | --- |
+| `RepresentationComplex` | 複体の自己射による群作用を、表現の圏の複体と射にする。忘却後の全複体との指定同型、各成分の射の一致を保持する。 |
+| `ArityRepresentationChain` | `arityComplexAction` と `arityRepresentationChain`。逆元で右作用を左作用へ直し、既存の `arityDegreeFreeIso` から各鎖次数の射影性を得る。 |
+| `ArityRepresentationAugmentation` | 実際の `complexAugmentation` の零次成分を使う、表現の圏の指定増大。鎖複体の忘却と元の正規化鎖の同型も作る。 |
+| `ArityProjectiveResolution` | `arityRepresentationAugmentation_forget` は指定増大の忘却を `normalizedChainContraction.hom` と照合する。`arityProjectiveResolution` は任意の可換環上で、実際の arity の複体とこの増大を持つ射影解像度。 |
+| `TwoColorCoefficientSource` | ブロック置換の像 `TwoColorGroup` と Σ_m × Σ_n の指定同型、両色への群準同型を定義する。`twoColorSourceResolution` は部分群への制限が射影対象とホモロジーを保つ既存 API を使った、実際の始域の射影解像度。 |
+| `RepresentationFreeBasis` | 左正則な自由軌道基底から自由表現への指定同型。基底を送る自由射の台を基底の線形同型と照合する。 |
+| `TwoColorBidegreeBasis` | 二つの実際の arity の基底をまとめ、`twoColorBidegreeFreeIso` と `twoColorBidegree_projective` を証明する。 |
+| `TwoColorTensorProjective` | 非正双次数の自由性と正次数の零性を使い、実際のコチェインテンソルの全次数の射影性を `twoColorTensorDegree_projective` として証明する。双次数の指定包含を持つ既存の `tensorDegreeRepresentationIsColimit` を使う。 |
+| `NonpositiveHomotopyRestriction` | 非正複体の指定されたホモトピーと同値を q ↦ −q に沿って制限する。零次の境界で始域の正一次が零という条件を明示する。 |
+
+群の位数の可逆性・体・標数零は仮定していない。任意の可換基礎環での表現の圏を使い、`ModelCategory SSet` も要求しない。
+
+**まだ得られていないもの。** テンソル側の指定増大を備えた射影解像度、零入力への代入で作る両色の係数射とその等変性・増大の可換性、実際の Hopf 比較との一致、Schur 表示と余不変への移送は残る。特に `twoColorTensorDegree_projective` だけで係数の指定比較のホモトピー同値を供給したとは扱わない。`coproduct_tensor`・native な余積錐・sifted・Tot・段 4 は未完のまま。
+
+### 15.2 実測と残りの見積もり
+
+今回の新規九本は **699 行**（module docstring と空行を含む実測）。検証結果は下の検証欄に記す。二色の前置き二本 107 行は、取り込み済みのテンソル側 1,226 行に含まれる。今回の分と重複して足さない。
+
+§12.2 の「二色の自由比較全体 550〜850 行」は、解像度の比較定理だけでなく、その入力を実際の表現・複体・増大として用意する部分を過小評価していた。今回の準備だけで約 700 行になり、次の三群がまだ要る。
+
+| 二色比較の残り | 見込みと具体的な接続 |
+| --- | --- |
+| テンソル側の指定増大・解像度 | 180〜260 行。`cochainTensorHomotopyEquiv` と `complexContraction` を合成し、`NonpositiveHomotopyRestriction` で鎖次数へ移し、忘却後の指定増大の一致を照合する。 |
+| 両色の係数射・等変性・増大 | 320〜500 行。`Operad.composition` に零入力の単位と一入力の単位を代入する。外側の既存の等変性は `composition_adjacent_block_equivariance` なので、ブロック内の置換を隣接互換で生成する段と、出力の添字同定が必要。Hopf 対角・余単位を通す増大の図式も含む。 |
+| 実際の自由比較への照合 | 300〜450 行。指定係数射と `barrattEcclesCoproductTensorNat` の自由生成元上の一致、色付き入力語への分解、群の余不変を取った指定比較を照合し、`resolutionHomotopyEquivOfAugmentation` の順射をこの射のまま移す。 |
+| **二色比較の残り小計** | **800〜1,210 行** |
+
+セル対への移送も、既存の K 平坦性の結論だけの適用にはならない。`weightedSemifreeBasis.height` は「入力の重み − コチェイン次数」で、arity の微分も高さを下げる。この高さの商では arity の微分が消える。一方、二色の係数の**鎖**ホモトピー同値を商へ適用するには、arity の微分を残す入力重みのフィルトレーションを使う必要がある。既存の入力重みの安定性・基底・短完全列の補題は再利用するが、段・商と指定比較の同定は新しく要る。
+
+| 実際のセル対への移送の内訳 | 見込み |
+| --- | --- |
+| 微分を忘れた二つのセル段の余積と、自由代数の和の表示 | 200〜250 行 |
+| 入力重みの段と比較射の安定性 | 150〜200 行 |
+| 商を係数複体と色付き語の和に同定し、指定比較を照合 | 250〜350 行 |
+| 短完全列による段ごとの比較と、網羅的な列の余極限 | 150〜200 行 |
+| 任意の cofibrant な対への retract・段の移送 | 100〜150 行 |
+| **セル対の小計** | **850〜1,150 行** |
+
+これにより、従来の残りの見積もりをそのまま使うことはできない。
+
+| 全体 | 実測・見込み |
+| --- | --- |
+| 取り込み済みのテンソル側十八本 | 1,226 行（実測、前置き 107 行を含む） |
+| 今回の係数の準備 | 699 行（実測） |
+| 二色の自由比較の残り | 800〜1,210 行 |
+| 実際のセル対への移送 | 850〜1,150 行 |
+| 強い全関手版への降下 | 200〜350 行 |
+| native な余積錐 | 615〜800 行（取り込み済み三本 245 行を含む） |
+| **合計** | **約 4,400〜5,400 行、中心は約 4,900 行** |
+
+したがって、§7 の **停止条件 1「合計が 4,500 行を超えそうなとき」** に当たり、今回の検証済みのまとまりで中間停止し、調整役の判断を待つ。セル対の見込みは現在 1,200 行以下なので、停止条件 2 による停止とは扱わない。始域の射影解像度とテンソル側の次数ごとの射影性は組めており、指定係数射の残りが既存 API から構成不可能と判明したわけでもない。停止条件 3 による断念とは区別する。
+
+### 15.3 検証・登録候補
+
+対象ビルドは次の一回の `lake build` が成功し、依存する九本すべてを確認した。
+
+```text
+lake build SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTensorProjective \
+  SerrePositivity.EInfinity.BarrattEccles.Theory.NonpositiveHomotopyRestriction
+```
+
+最終ログ：`/tmp/bsw16/graded/two-color-projective-06.log`。今回の九本の警告は零。九本・**106 宣言**を `/tmp/bsw16/graded/audit-two-color-resolution.lean` で再帰監査し、標準三公理（`propext`・`Classical.choice`・`Quot.sound`）のみだった。監査ログ：`/tmp/bsw16/graded/audit-two-color-resolution.log`。sorry・admit・新規公理・デバッグ宣言は零。新規 Lean の 100 字超の行と末尾空白、報告書の `git diff --check` の指摘も零。
+
+ビルド・監査はそれぞれ一回の `with_build_lock.sh --wait 3600` で行い、命令の終了ごとに返却した。整理券は一枚。常駐セッション・編集中の鍵の保持・ルートビルドは行っていない。監査の鍵は返却済み。今回の九本と報告書を枝に保存し、未検査の Lean ファイルを残さず、上記の停止条件 1 の判断を待つ。
+
+今回の九本はすべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下で、15.1 の表のとおり。登録は調整役が行う。新規の［一般∞］移動候補は零。一般の表現・複体の補助も今回の実装の隣に置き、既報の［一般∞］五本は動かしていない。
