@@ -40,6 +40,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 - **D71〜D73**（`calg-interface-design.md`）：BS は E∞ 代数の ∞ 圏を構造 `EInfinityTheory` を通してだけ使う。今の Barratt–Eccles の模型は実例の一つ。HA の方向で作る場合は別の実例を作り、Hinich Thm 4.1.1 などで比べる。実装は BS-W14（⑤a）。
 - **整理の候補（11-10）**：BS-W15 の `Delta/DividedPower/RegularSequencePDUniversalTor` が `KST/DerivedBlowup/ScalarTensorView`（Mathlib だけを import する係数拡大とテンソルの表示比較の補題）を import している。主定理の閉包に KST のディレクトリが入るのを避けるため、このファイルを `CommutativeAlgebra/` へ移す（alias を残す）。KL-W1 の後の小さな整理で行う。
 - **D74**（BS-W15 §3 の 2）：Ex 2.21・3.4 の普遍的な向き付き prism の Frobenius の平坦性は、原典どおり d 完全平坦の形で本体に置く（drafts の A1 の通常の平坦性の型は、A1 の界面への書き換えのときに見直す）。
+- **D77（11-11）**：Construction 6.1 の仮定。原典は「A/p の Frobenius が平坦」と書くが、Ex 3.4 が示すのは d 完全平坦だけで、証明が使うのは式 (6) の中央の射の忠実平坦性だけ。drafts の `Construction61Hypotheses` は原典どおり残し、本体の補題は d 完全平坦性と A/d の p 正則性を引数に取る（一般化）。普遍の場合は K2 の定理を直接入れ、drafts の `universal61` は使わない（BS-W17 §3）。
 - **D76（11-11）**：drafts の Ex 7.9 の存在補題 `exists_lciEnvelope` に、原典どおり R の p 冪ねじれの有界性を足す（原典より強い主張だったため。利用者なし、E3 の経路は有界な場合だけ。BS-W15 §6）。
 - **D75（11-11、ユーザー決定）：段階 II の BS は E∞ 代数を今の模型（Barratt–Eccles、`barrattEcclesTheory`）で供給する。HA の方向（∞-オペラッドで CAlg(D(R))、Hinich／Pavlov–Scholbach で整流）は BS の経路から外し、「HA の基盤」の課題として別に持つ。** 根拠は `research/einfinity-route/README.md` §6（A 約 83,000〜212,000 行、B 約 12,700〜33,000 行、較正後の上限 約 60,000。A の整流は ∞-monad・Barr–Beck がまだ 0 件の領域に乗る。B の成果は界面を通して A にほぼそのまま使える）。
   - BS-W16（⑤a）と ④（G12・P⁰・M15）は B で進める。G12 の経路（組合せ的モデル圏の局所化の表現可能性、HTT A.3.7.6 相当）は ④ の開始時に設計する。

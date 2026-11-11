@@ -1,0 +1,1617 @@
+{
+  "5.3.6.3": {
+    "page": 412,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.5",
+        "5.3.6",
+        "5.4.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          "SerrePositivity"
+        ],
+        "file_count": 3637,
+        "line_count": 22417
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 950,
+        "line_count": 16433
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def kappaContinuousFunctorVertex (κ : Cardinal.{u}) {X D : SSet.{u + 1}} (G : X ⟶ D) (hG : PreservesSmallKappaFilteredColimits κ G) : (KappaContinuousFunctorInfinity κ X D) _⦋0⦌ := ⟨functorVertex G, by intro v have hv : v = 𝟙 _ := Subsingleton.elim _ _ subst v have hrec : (functorVertexEquiv X D).symm (functorVertex G) = G := (functorVertexEquiv X D).symm_apply_apply G simpa only [op_id, CategoryTheory.Functor.map_id_apply, hrec] using hG⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma presheafLeftKanCanonicalCocone_restrict_val (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : ((leftKanCanonicalCocone (yonedaInfinityMap A) F (functorVertex P)).restrict (presheafElementsLeftKanComparison P)).val = (mapJoinCocone F (presheafDensityCocone P)).val"
+          },
+          {
+            "line": 57,
+            "head": "lemma presheaf_densityImages_isLeftKanExtension (hF : ∀ P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}, IsColimitCone (mapJoinCocone F (presheafDensityCocone P))) : IsLeftKanExtension (yonedaInfinityMap A) (yonedaInfinityMap A ≫ F) F (functorHomotopyRefl (yonedaInfinityMap A ≫ F)) := F1B.kanLeftKanExtension_refl_of_canonicalColimits _ _ (presheaf_densityImages_canonicalColimits F hF)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 51,
+            "head": "instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) : Quasicategory (PrLFunctorSpace C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemYoneda_pre_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : IsQCatEquivalence ((pre (idemYoneda C)).app E) := IsIdempotentCompletion.pre_isQCatEquivalence (idemYoneda C) (idemYoneda_isIdempotentCompletion C) hE"
+          },
+          {
+            "line": 55,
+            "head": "def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : QCatEquivalence ((ihom (Idem C)).obj E) ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj E) := (idemYoneda_pre_isQCatEquivalence C E hE).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 74,
+            "head": "def ofCocone {I : Type v} [SmallCategory I] [IsFiltered I] {F : I ⥤ C} (c : Cocone (F ⋙ yoneda)) (hc : IsColimit c) : IndObjectPresentation c.pt where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Construction.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "def Localization := CategoryTheory.Quotient (Localization.Construction.relations W)"
+          },
+          {
+            "line": 111,
+            "head": "def Q : C ⥤ W.Localization where"
+          },
+          {
+            "line": 156,
+            "head": "def lift : W.Localization ⥤ D := Quotient.lift (relations W) (liftToPathCategory G hG) (by rintro ⟨X⟩ ⟨Y⟩ f₁ f₂ r rcases r with ⟨⟩ <;> all_goals aesop)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ind_isKappaCompact_of_presheaf (κ : Cardinal.{u}) (x : Ind.IndInfinity κ C _⦋0⦌) (hx : IsKappaCompact.{u, u + 1} κ ((Ind.indInclusionPresheaf κ C).app _ x)) : IsKappaCompact.{u, u + 1} κ x := isKappaCompact_fullSubcomplex_of_image κ (Ind.IsIndVertex κ C) x (fun _ _ _ D c hc ↦ Ind.ind_inclusion_isColimit κ D c hc) hx"
+          },
+          {
+            "line": 32,
+            "head": "lemma indYoneda_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma presheafEvaluationUniverse_preservesKappaFilteredColimits (κ : Cardinal.{u}) (y : C _⦋0⦌) : PreservesKappaFilteredColimits.{u, u + 1} κ ((SSet.uliftFunctor.{u + 2, u + 1}).map (presheafInfinityEvaluation y) ≫ spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 38,
+            "head": "lemma representablePresheafInfinity_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ (functorVertex (representablePresheafInfinity y)) := (presheafEvaluationUniverse_preservesKappaFilteredColimits κ y).of_functorIso (yonedaEvaluation_universeIso y).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "def KappaContinuousFunctorInfinity (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))"
+          },
+          {
+            "line": 23,
+            "head": "instance kappaContinuousFunctorInfinity_quasicategory (κ : Cardinal.{u}) (X D : SSet.{u + 1}) [Quasicategory D] : Quasicategory (KappaContinuousFunctorInfinity κ X D) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v)) : SSet.{u + 1}))"
+          },
+          {
+            "line": 31,
+            "head": "def kappaContinuousFunctorInclusion (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : KappaContinuousFunctorInfinity κ X D ⟶ (ihom X).obj D := (fullSubcomplexOnVertices _ (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma hasKappaFilteredElements_kappaColimitClosed : IsKappaColimitClosed κ (HasKappaFilteredElements κ (C := C))"
+          },
+          {
+            "line": 40,
+            "head": "lemma isIndVertex_iff_hasKappaFilteredElements (v : (PresheafInfinity C) _⦋0⦌) : IsIndVertex κ C v ↔ HasKappaFilteredElements κ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def HasKappaFilteredElements (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (v : (PresheafInfinity C) _⦋0⦌) : Prop := IsKappaFiltered κ (smallRightUnstraightening ((presheafInfinityObjectEquiv C).symm v))"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_functorVertex (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : HasKappaFilteredElements κ (functorVertex F) ↔ IsKappaFiltered κ (smallRightUnstraightening F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma strictClassifiedIndCocone_image_isColimit {I : Type u} [PartialOrder I] [IsCardinalFiltered I κ] (F : I ⥤ RightFibrationObject C) (hF : ∀ v, IsIndVertex κ C ((HomotopyLimits.strictCoherentDiagram F ≫ rightStraighteningInfinityMap C).app (Opposite.op ⦋0⦌) v)) : IsColimitCone (mapJoinCocone G (strictClassifiedIndCocone κ F hF))"
+          },
+          {
+            "line": 46,
+            "head": "lemma indLeftKanExtension_preservesSmallKappaFilteredColimits : PreservesSmallKappaFilteredColimits κ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma indKappaContinuousRestriction_isFullyFaithful : IsFullyFaithful (indKappaContinuousRestriction κ C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma representablePresheaf_kappaFiltered_elements (x : C _⦋0⦌) : IsKappaFiltered κ (smallRightUnstraightening (representablePresheafInfinity x)) := isKappaFiltered_of_isTerminalVertex κ (canonicalYonedaUnstraighteningIdentity_isInitialVertex x).op_isTerminalVertex"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_yoneda (x : C _⦋0⦌) : HasKappaFilteredElements κ ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma continuousFunctorEdge_isInvertible_of_restriction {F G : IndInfinity κ C ⟶ D} (hF : PreservesSmallKappaFilteredColimits κ F) (hG : PreservesSmallKappaFilteredColimits κ G) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (IndInfinity κ C)).obj D)) (functorVertex F) (functorVertex G)) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map ((pre (indYoneda κ C)).app D)))) : IsInvertibleEdge e"
+          },
+          {
+            "line": 55,
+            "head": "lemma indKappaContinuousRestriction_reflects_isInvertibleEdge {x y : (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D) _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D)) x y) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map (indKappaContinuousRestriction κ C D)))) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSingleFilteredRepresentablePresentation (v : (PresheafInfinity C) _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ C, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ yonedaInfinityMap C), c.vertex = v ∧ IsColimitCone c"
+          },
+          {
+            "line": 30,
+            "head": "lemma isIndVertex_has_singleFilteredPresentation {v : (PresheafInfinity C) _⦋0⦌} (hv : IsIndVertex κ C v) : HasSingleFilteredRepresentablePresentation κ C v"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の K,R の自由完備化が R を余極限に写し、j と共に同値を除き一意になる主張。Ind の普遍性は R が空の場合の構成であり、任意の関係の保存や、二つの一般の構成を比較する宣言を持たない。一般の局所化の一意性は指定余極限保存部分関手圏の比較ではない。"
+  },
+  "5.3.6.5": {
+    "page": 415,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.5",
+        "5.3.6",
+        "5.4.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          "SerrePositivity"
+        ],
+        "file_count": 3637,
+        "line_count": 22417
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 950,
+        "line_count": 16433
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def kappaContinuousFunctorVertex (κ : Cardinal.{u}) {X D : SSet.{u + 1}} (G : X ⟶ D) (hG : PreservesSmallKappaFilteredColimits κ G) : (KappaContinuousFunctorInfinity κ X D) _⦋0⦌ := ⟨functorVertex G, by intro v have hv : v = 𝟙 _ := Subsingleton.elim _ _ subst v have hrec : (functorVertexEquiv X D).symm (functorVertex G) = G := (functorVertexEquiv X D).symm_apply_apply G simpa only [op_id, CategoryTheory.Functor.map_id_apply, hrec] using hG⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma presheafLeftKanCanonicalCocone_restrict_val (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : ((leftKanCanonicalCocone (yonedaInfinityMap A) F (functorVertex P)).restrict (presheafElementsLeftKanComparison P)).val = (mapJoinCocone F (presheafDensityCocone P)).val"
+          },
+          {
+            "line": 57,
+            "head": "lemma presheaf_densityImages_isLeftKanExtension (hF : ∀ P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}, IsColimitCone (mapJoinCocone F (presheafDensityCocone P))) : IsLeftKanExtension (yonedaInfinityMap A) (yonedaInfinityMap A ≫ F) F (functorHomotopyRefl (yonedaInfinityMap A ≫ F)) := F1B.kanLeftKanExtension_refl_of_canonicalColimits _ _ (presheaf_densityImages_canonicalColimits F hF)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 51,
+            "head": "instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) : Quasicategory (PrLFunctorSpace C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemYoneda_pre_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : IsQCatEquivalence ((pre (idemYoneda C)).app E) := IsIdempotentCompletion.pre_isQCatEquivalence (idemYoneda C) (idemYoneda_isIdempotentCompletion C) hE"
+          },
+          {
+            "line": 55,
+            "head": "def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : QCatEquivalence ((ihom (Idem C)).obj E) ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj E) := (idemYoneda_pre_isQCatEquivalence C E hE).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 74,
+            "head": "def ofCocone {I : Type v} [SmallCategory I] [IsFiltered I] {F : I ⥤ C} (c : Cocone (F ⋙ yoneda)) (hc : IsColimit c) : IndObjectPresentation c.pt where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Construction.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "def Localization := CategoryTheory.Quotient (Localization.Construction.relations W)"
+          },
+          {
+            "line": 111,
+            "head": "def Q : C ⥤ W.Localization where"
+          },
+          {
+            "line": 156,
+            "head": "def lift : W.Localization ⥤ D := Quotient.lift (relations W) (liftToPathCategory G hG) (by rintro ⟨X⟩ ⟨Y⟩ f₁ f₂ r rcases r with ⟨⟩ <;> all_goals aesop)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ind_isKappaCompact_of_presheaf (κ : Cardinal.{u}) (x : Ind.IndInfinity κ C _⦋0⦌) (hx : IsKappaCompact.{u, u + 1} κ ((Ind.indInclusionPresheaf κ C).app _ x)) : IsKappaCompact.{u, u + 1} κ x := isKappaCompact_fullSubcomplex_of_image κ (Ind.IsIndVertex κ C) x (fun _ _ _ D c hc ↦ Ind.ind_inclusion_isColimit κ D c hc) hx"
+          },
+          {
+            "line": 32,
+            "head": "lemma indYoneda_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma presheafEvaluationUniverse_preservesKappaFilteredColimits (κ : Cardinal.{u}) (y : C _⦋0⦌) : PreservesKappaFilteredColimits.{u, u + 1} κ ((SSet.uliftFunctor.{u + 2, u + 1}).map (presheafInfinityEvaluation y) ≫ spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 38,
+            "head": "lemma representablePresheafInfinity_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ (functorVertex (representablePresheafInfinity y)) := (presheafEvaluationUniverse_preservesKappaFilteredColimits κ y).of_functorIso (yonedaEvaluation_universeIso y).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "def KappaContinuousFunctorInfinity (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))"
+          },
+          {
+            "line": 23,
+            "head": "instance kappaContinuousFunctorInfinity_quasicategory (κ : Cardinal.{u}) (X D : SSet.{u + 1}) [Quasicategory D] : Quasicategory (KappaContinuousFunctorInfinity κ X D) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v)) : SSet.{u + 1}))"
+          },
+          {
+            "line": 31,
+            "head": "def kappaContinuousFunctorInclusion (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : KappaContinuousFunctorInfinity κ X D ⟶ (ihom X).obj D := (fullSubcomplexOnVertices _ (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma hasKappaFilteredElements_kappaColimitClosed : IsKappaColimitClosed κ (HasKappaFilteredElements κ (C := C))"
+          },
+          {
+            "line": 40,
+            "head": "lemma isIndVertex_iff_hasKappaFilteredElements (v : (PresheafInfinity C) _⦋0⦌) : IsIndVertex κ C v ↔ HasKappaFilteredElements κ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def HasKappaFilteredElements (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (v : (PresheafInfinity C) _⦋0⦌) : Prop := IsKappaFiltered κ (smallRightUnstraightening ((presheafInfinityObjectEquiv C).symm v))"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_functorVertex (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : HasKappaFilteredElements κ (functorVertex F) ↔ IsKappaFiltered κ (smallRightUnstraightening F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma strictClassifiedIndCocone_image_isColimit {I : Type u} [PartialOrder I] [IsCardinalFiltered I κ] (F : I ⥤ RightFibrationObject C) (hF : ∀ v, IsIndVertex κ C ((HomotopyLimits.strictCoherentDiagram F ≫ rightStraighteningInfinityMap C).app (Opposite.op ⦋0⦌) v)) : IsColimitCone (mapJoinCocone G (strictClassifiedIndCocone κ F hF))"
+          },
+          {
+            "line": 46,
+            "head": "lemma indLeftKanExtension_preservesSmallKappaFilteredColimits : PreservesSmallKappaFilteredColimits κ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma indKappaContinuousRestriction_isFullyFaithful : IsFullyFaithful (indKappaContinuousRestriction κ C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma representablePresheaf_kappaFiltered_elements (x : C _⦋0⦌) : IsKappaFiltered κ (smallRightUnstraightening (representablePresheafInfinity x)) := isKappaFiltered_of_isTerminalVertex κ (canonicalYonedaUnstraighteningIdentity_isInitialVertex x).op_isTerminalVertex"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_yoneda (x : C _⦋0⦌) : HasKappaFilteredElements κ ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma continuousFunctorEdge_isInvertible_of_restriction {F G : IndInfinity κ C ⟶ D} (hF : PreservesSmallKappaFilteredColimits κ F) (hG : PreservesSmallKappaFilteredColimits κ G) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (IndInfinity κ C)).obj D)) (functorVertex F) (functorVertex G)) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map ((pre (indYoneda κ C)).app D)))) : IsInvertibleEdge e"
+          },
+          {
+            "line": 55,
+            "head": "lemma indKappaContinuousRestriction_reflects_isInvertibleEdge {x y : (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D) _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D)) x y) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map (indKappaContinuousRestriction κ C D)))) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSingleFilteredRepresentablePresentation (v : (PresheafInfinity C) _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ C, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ yonedaInfinityMap C), c.vertex = v ∧ IsColimitCone c"
+          },
+          {
+            "line": 30,
+            "head": "lemma isIndVertex_has_singleFilteredPresentation {v : (PresheafInfinity C) _⦋0⦌} (hv : IsIndVertex κ C v) : HasSingleFilteredRepresentablePresentation κ C v"
+          }
+        ]
+      }
+    ],
+    "decision": "K⊆K′ の任意の二クラスに対し、既存の K-余極限を関係とする PK′K(C) の記法。IndInfinity は filtered 閉包であり既存の任意の指定余極限を関係として課す構成ではない。PrLFunctorSpace も関手を制限するだけで新しい圏を構成しない。"
+  },
+  "5.3.6.8": {
+    "page": 415,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.5",
+        "5.3.6",
+        "5.4.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          "SerrePositivity"
+        ],
+        "file_count": 3637,
+        "line_count": 22417
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 950,
+        "line_count": 16433
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def kappaContinuousFunctorVertex (κ : Cardinal.{u}) {X D : SSet.{u + 1}} (G : X ⟶ D) (hG : PreservesSmallKappaFilteredColimits κ G) : (KappaContinuousFunctorInfinity κ X D) _⦋0⦌ := ⟨functorVertex G, by intro v have hv : v = 𝟙 _ := Subsingleton.elim _ _ subst v have hrec : (functorVertexEquiv X D).symm (functorVertex G) = G := (functorVertexEquiv X D).symm_apply_apply G simpa only [op_id, CategoryTheory.Functor.map_id_apply, hrec] using hG⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma presheafLeftKanCanonicalCocone_restrict_val (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : ((leftKanCanonicalCocone (yonedaInfinityMap A) F (functorVertex P)).restrict (presheafElementsLeftKanComparison P)).val = (mapJoinCocone F (presheafDensityCocone P)).val"
+          },
+          {
+            "line": 57,
+            "head": "lemma presheaf_densityImages_isLeftKanExtension (hF : ∀ P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}, IsColimitCone (mapJoinCocone F (presheafDensityCocone P))) : IsLeftKanExtension (yonedaInfinityMap A) (yonedaInfinityMap A ≫ F) F (functorHomotopyRefl (yonedaInfinityMap A ≫ F)) := F1B.kanLeftKanExtension_refl_of_canonicalColimits _ _ (presheaf_densityImages_canonicalColimits F hF)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 51,
+            "head": "instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) : Quasicategory (PrLFunctorSpace C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemYoneda_pre_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : IsQCatEquivalence ((pre (idemYoneda C)).app E) := IsIdempotentCompletion.pre_isQCatEquivalence (idemYoneda C) (idemYoneda_isIdempotentCompletion C) hE"
+          },
+          {
+            "line": 55,
+            "head": "def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : QCatEquivalence ((ihom (Idem C)).obj E) ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj E) := (idemYoneda_pre_isQCatEquivalence C E hE).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 74,
+            "head": "def ofCocone {I : Type v} [SmallCategory I] [IsFiltered I] {F : I ⥤ C} (c : Cocone (F ⋙ yoneda)) (hc : IsColimit c) : IndObjectPresentation c.pt where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Construction.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "def Localization := CategoryTheory.Quotient (Localization.Construction.relations W)"
+          },
+          {
+            "line": 111,
+            "head": "def Q : C ⥤ W.Localization where"
+          },
+          {
+            "line": 156,
+            "head": "def lift : W.Localization ⥤ D := Quotient.lift (relations W) (liftToPathCategory G hG) (by rintro ⟨X⟩ ⟨Y⟩ f₁ f₂ r rcases r with ⟨⟩ <;> all_goals aesop)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ind_isKappaCompact_of_presheaf (κ : Cardinal.{u}) (x : Ind.IndInfinity κ C _⦋0⦌) (hx : IsKappaCompact.{u, u + 1} κ ((Ind.indInclusionPresheaf κ C).app _ x)) : IsKappaCompact.{u, u + 1} κ x := isKappaCompact_fullSubcomplex_of_image κ (Ind.IsIndVertex κ C) x (fun _ _ _ D c hc ↦ Ind.ind_inclusion_isColimit κ D c hc) hx"
+          },
+          {
+            "line": 32,
+            "head": "lemma indYoneda_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma presheafEvaluationUniverse_preservesKappaFilteredColimits (κ : Cardinal.{u}) (y : C _⦋0⦌) : PreservesKappaFilteredColimits.{u, u + 1} κ ((SSet.uliftFunctor.{u + 2, u + 1}).map (presheafInfinityEvaluation y) ≫ spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 38,
+            "head": "lemma representablePresheafInfinity_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ (functorVertex (representablePresheafInfinity y)) := (presheafEvaluationUniverse_preservesKappaFilteredColimits κ y).of_functorIso (yonedaEvaluation_universeIso y).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "def KappaContinuousFunctorInfinity (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))"
+          },
+          {
+            "line": 23,
+            "head": "instance kappaContinuousFunctorInfinity_quasicategory (κ : Cardinal.{u}) (X D : SSet.{u + 1}) [Quasicategory D] : Quasicategory (KappaContinuousFunctorInfinity κ X D) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v)) : SSet.{u + 1}))"
+          },
+          {
+            "line": 31,
+            "head": "def kappaContinuousFunctorInclusion (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : KappaContinuousFunctorInfinity κ X D ⟶ (ihom X).obj D := (fullSubcomplexOnVertices _ (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma hasKappaFilteredElements_kappaColimitClosed : IsKappaColimitClosed κ (HasKappaFilteredElements κ (C := C))"
+          },
+          {
+            "line": 40,
+            "head": "lemma isIndVertex_iff_hasKappaFilteredElements (v : (PresheafInfinity C) _⦋0⦌) : IsIndVertex κ C v ↔ HasKappaFilteredElements κ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def HasKappaFilteredElements (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (v : (PresheafInfinity C) _⦋0⦌) : Prop := IsKappaFiltered κ (smallRightUnstraightening ((presheafInfinityObjectEquiv C).symm v))"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_functorVertex (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : HasKappaFilteredElements κ (functorVertex F) ↔ IsKappaFiltered κ (smallRightUnstraightening F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma strictClassifiedIndCocone_image_isColimit {I : Type u} [PartialOrder I] [IsCardinalFiltered I κ] (F : I ⥤ RightFibrationObject C) (hF : ∀ v, IsIndVertex κ C ((HomotopyLimits.strictCoherentDiagram F ≫ rightStraighteningInfinityMap C).app (Opposite.op ⦋0⦌) v)) : IsColimitCone (mapJoinCocone G (strictClassifiedIndCocone κ F hF))"
+          },
+          {
+            "line": 46,
+            "head": "lemma indLeftKanExtension_preservesSmallKappaFilteredColimits : PreservesSmallKappaFilteredColimits κ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma indKappaContinuousRestriction_isFullyFaithful : IsFullyFaithful (indKappaContinuousRestriction κ C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma representablePresheaf_kappaFiltered_elements (x : C _⦋0⦌) : IsKappaFiltered κ (smallRightUnstraightening (representablePresheafInfinity x)) := isKappaFiltered_of_isTerminalVertex κ (canonicalYonedaUnstraighteningIdentity_isInitialVertex x).op_isTerminalVertex"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_yoneda (x : C _⦋0⦌) : HasKappaFilteredElements κ ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma continuousFunctorEdge_isInvertible_of_restriction {F G : IndInfinity κ C ⟶ D} (hF : PreservesSmallKappaFilteredColimits κ F) (hG : PreservesSmallKappaFilteredColimits κ G) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (IndInfinity κ C)).obj D)) (functorVertex F) (functorVertex G)) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map ((pre (indYoneda κ C)).app D)))) : IsInvertibleEdge e"
+          },
+          {
+            "line": 55,
+            "head": "lemma indKappaContinuousRestriction_reflects_isInvertibleEdge {x y : (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D) _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D)) x y) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map (indKappaContinuousRestriction κ C D)))) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSingleFilteredRepresentablePresentation (v : (PresheafInfinity C) _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ C, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ yonedaInfinityMap C), c.vertex = v ∧ IsColimitCone c"
+          },
+          {
+            "line": 30,
+            "head": "lemma isIndVertex_has_singleFilteredPresentation {v : (PresheafInfinity C) _⦋0⦌} (hv : IsIndVertex κ C v) : HasSingleFilteredRepresentablePresentation κ C v"
+          }
+        ]
+      }
+    ],
+    "decision": "C が κ-small 余極限を持つとき、Indκ がそれを保存しつつ全小余極限を自由に付加する。Ind の有限余極限保存はあるが、任意の κ-small 形状の保存と全小余極限保存関手の同じ制限同値がない。IndPresentable は compact 生成による presentability であって、この比較の普遍性ではない。"
+  },
+  "5.3.6.10": {
+    "page": 416,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.5",
+        "5.3.6",
+        "5.4.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          "SerrePositivity"
+        ],
+        "file_count": 3637,
+        "line_count": 22417
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 950,
+        "line_count": 16433
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def kappaContinuousFunctorVertex (κ : Cardinal.{u}) {X D : SSet.{u + 1}} (G : X ⟶ D) (hG : PreservesSmallKappaFilteredColimits κ G) : (KappaContinuousFunctorInfinity κ X D) _⦋0⦌ := ⟨functorVertex G, by intro v have hv : v = 𝟙 _ := Subsingleton.elim _ _ subst v have hrec : (functorVertexEquiv X D).symm (functorVertex G) = G := (functorVertexEquiv X D).symm_apply_apply G simpa only [op_id, CategoryTheory.Functor.map_id_apply, hrec] using hG⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma presheafLeftKanCanonicalCocone_restrict_val (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : ((leftKanCanonicalCocone (yonedaInfinityMap A) F (functorVertex P)).restrict (presheafElementsLeftKanComparison P)).val = (mapJoinCocone F (presheafDensityCocone P)).val"
+          },
+          {
+            "line": 57,
+            "head": "lemma presheaf_densityImages_isLeftKanExtension (hF : ∀ P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}, IsColimitCone (mapJoinCocone F (presheafDensityCocone P))) : IsLeftKanExtension (yonedaInfinityMap A) (yonedaInfinityMap A ≫ F) F (functorHomotopyRefl (yonedaInfinityMap A ≫ F)) := F1B.kanLeftKanExtension_refl_of_canonicalColimits _ _ (presheaf_densityImages_canonicalColimits F hF)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 51,
+            "head": "instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) : Quasicategory (PrLFunctorSpace C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemYoneda_pre_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : IsQCatEquivalence ((pre (idemYoneda C)).app E) := IsIdempotentCompletion.pre_isQCatEquivalence (idemYoneda C) (idemYoneda_isIdempotentCompletion C) hE"
+          },
+          {
+            "line": 55,
+            "head": "def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : QCatEquivalence ((ihom (Idem C)).obj E) ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj E) := (idemYoneda_pre_isQCatEquivalence C E hE).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 74,
+            "head": "def ofCocone {I : Type v} [SmallCategory I] [IsFiltered I] {F : I ⥤ C} (c : Cocone (F ⋙ yoneda)) (hc : IsColimit c) : IndObjectPresentation c.pt where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Construction.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "def Localization := CategoryTheory.Quotient (Localization.Construction.relations W)"
+          },
+          {
+            "line": 111,
+            "head": "def Q : C ⥤ W.Localization where"
+          },
+          {
+            "line": 156,
+            "head": "def lift : W.Localization ⥤ D := Quotient.lift (relations W) (liftToPathCategory G hG) (by rintro ⟨X⟩ ⟨Y⟩ f₁ f₂ r rcases r with ⟨⟩ <;> all_goals aesop)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ind_isKappaCompact_of_presheaf (κ : Cardinal.{u}) (x : Ind.IndInfinity κ C _⦋0⦌) (hx : IsKappaCompact.{u, u + 1} κ ((Ind.indInclusionPresheaf κ C).app _ x)) : IsKappaCompact.{u, u + 1} κ x := isKappaCompact_fullSubcomplex_of_image κ (Ind.IsIndVertex κ C) x (fun _ _ _ D c hc ↦ Ind.ind_inclusion_isColimit κ D c hc) hx"
+          },
+          {
+            "line": 32,
+            "head": "lemma indYoneda_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma presheafEvaluationUniverse_preservesKappaFilteredColimits (κ : Cardinal.{u}) (y : C _⦋0⦌) : PreservesKappaFilteredColimits.{u, u + 1} κ ((SSet.uliftFunctor.{u + 2, u + 1}).map (presheafInfinityEvaluation y) ≫ spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 38,
+            "head": "lemma representablePresheafInfinity_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ (functorVertex (representablePresheafInfinity y)) := (presheafEvaluationUniverse_preservesKappaFilteredColimits κ y).of_functorIso (yonedaEvaluation_universeIso y).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "def KappaContinuousFunctorInfinity (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))"
+          },
+          {
+            "line": 23,
+            "head": "instance kappaContinuousFunctorInfinity_quasicategory (κ : Cardinal.{u}) (X D : SSet.{u + 1}) [Quasicategory D] : Quasicategory (KappaContinuousFunctorInfinity κ X D) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v)) : SSet.{u + 1}))"
+          },
+          {
+            "line": 31,
+            "head": "def kappaContinuousFunctorInclusion (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : KappaContinuousFunctorInfinity κ X D ⟶ (ihom X).obj D := (fullSubcomplexOnVertices _ (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma hasKappaFilteredElements_kappaColimitClosed : IsKappaColimitClosed κ (HasKappaFilteredElements κ (C := C))"
+          },
+          {
+            "line": 40,
+            "head": "lemma isIndVertex_iff_hasKappaFilteredElements (v : (PresheafInfinity C) _⦋0⦌) : IsIndVertex κ C v ↔ HasKappaFilteredElements κ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def HasKappaFilteredElements (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (v : (PresheafInfinity C) _⦋0⦌) : Prop := IsKappaFiltered κ (smallRightUnstraightening ((presheafInfinityObjectEquiv C).symm v))"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_functorVertex (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : HasKappaFilteredElements κ (functorVertex F) ↔ IsKappaFiltered κ (smallRightUnstraightening F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma strictClassifiedIndCocone_image_isColimit {I : Type u} [PartialOrder I] [IsCardinalFiltered I κ] (F : I ⥤ RightFibrationObject C) (hF : ∀ v, IsIndVertex κ C ((HomotopyLimits.strictCoherentDiagram F ≫ rightStraighteningInfinityMap C).app (Opposite.op ⦋0⦌) v)) : IsColimitCone (mapJoinCocone G (strictClassifiedIndCocone κ F hF))"
+          },
+          {
+            "line": 46,
+            "head": "lemma indLeftKanExtension_preservesSmallKappaFilteredColimits : PreservesSmallKappaFilteredColimits κ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma indKappaContinuousRestriction_isFullyFaithful : IsFullyFaithful (indKappaContinuousRestriction κ C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma representablePresheaf_kappaFiltered_elements (x : C _⦋0⦌) : IsKappaFiltered κ (smallRightUnstraightening (representablePresheafInfinity x)) := isKappaFiltered_of_isTerminalVertex κ (canonicalYonedaUnstraighteningIdentity_isInitialVertex x).op_isTerminalVertex"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_yoneda (x : C _⦋0⦌) : HasKappaFilteredElements κ ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma continuousFunctorEdge_isInvertible_of_restriction {F G : IndInfinity κ C ⟶ D} (hF : PreservesSmallKappaFilteredColimits κ F) (hG : PreservesSmallKappaFilteredColimits κ G) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (IndInfinity κ C)).obj D)) (functorVertex F) (functorVertex G)) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map ((pre (indYoneda κ C)).app D)))) : IsInvertibleEdge e"
+          },
+          {
+            "line": 55,
+            "head": "lemma indKappaContinuousRestriction_reflects_isInvertibleEdge {x y : (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D) _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D)) x y) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map (indKappaContinuousRestriction κ C D)))) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSingleFilteredRepresentablePresentation (v : (PresheafInfinity C) _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ C, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ yonedaInfinityMap C), c.vertex = v ∧ IsColimitCone c"
+          },
+          {
+            "line": 30,
+            "head": "lemma isIndVertex_has_singleFilteredPresentation {v : (PresheafInfinity C) _⦋0⦌} (hv : IsIndVertex κ C v) : HasSingleFilteredRepresentablePresentation κ C v"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の K⊆K′ に対する Cat∞K′→Cat∞K の左随伴という全対象での主張。PrL や PrR の全 Hom の構成は presentable 圏間の保存関手を扱うが、ここでの任意の K-余完備圏の高次圏とその包含を構成していない。各 Ind の個別普遍性からこの指定包含の随伴を構成した宣言もない。"
+  },
+  "5.3.6.11": {
+    "page": 416,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.5",
+        "5.3.6",
+        "5.4.1"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          "SerrePositivity"
+        ],
+        "file_count": 3637,
+        "line_count": 22417
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(adjoin|free.*colimit|colimit.*completion|KappaContinuousFunctor|Presheaf.*(Universal|Kan)|idemYoneda|PrLFunctorSpace|localization)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 950,
+        "line_count": 16433
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionEquivalence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def kappaContinuousFunctorVertex (κ : Cardinal.{u}) {X D : SSet.{u + 1}} (G : X ⟶ D) (hG : PreservesSmallKappaFilteredColimits κ G) : (KappaContinuousFunctorInfinity κ X D) _⦋0⦌ := ⟨functorVertex G, by intro v have hv : v = 𝟙 _ := Subsingleton.elim _ _ subst v have hrec : (functorVertexEquiv X D).symm (functorVertex G) = G := (functorVertexEquiv X D).symm_apply_apply G simpa only [op_id, CategoryTheory.Functor.map_id_apply, hrec] using hG⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PresheafDensityLeftKanCriterion.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma presheafLeftKanCanonicalCocone_restrict_val (P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}) : ((leftKanCanonicalCocone (yonedaInfinityMap A) F (functorVertex P)).restrict (presheafElementsLeftKanComparison P)).val = (mapJoinCocone F (presheafDensityCocone P)).val"
+          },
+          {
+            "line": 57,
+            "head": "lemma presheaf_densityImages_isLeftKanExtension (hF : ∀ P : (SSet.uliftFunctor.{u + 1, u}).obj A.op ⟶ SpaceInfinity.{u}, IsColimitCone (mapJoinCocone F (presheafDensityCocone P))) : IsLeftKanExtension (yonedaInfinityMap A) (yonedaInfinityMap A ≫ F) F (functorHomotopyRefl (yonedaInfinityMap A ≫ F)) := F1B.kanLeftKanExtension_refl_of_canonicalColimits _ _ (presheaf_densityImages_canonicalColimits F hF)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PreservingFunctorSpaces.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "def PrLFunctorSpace (C D : PresentableInfinityObject.{u}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom C.obj).obj D.obj) (fun v ↦ PreservesSmallColimits ((functorVertexEquiv C.obj D.obj).symm v))"
+          },
+          {
+            "line": 51,
+            "head": "instance prLFunctorSpace_quasicategory (C D : PresentableInfinityObject.{u}) : Quasicategory (PrLFunctorSpace C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/PiPresentable.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma piInd_isPresentable {ι : Type u} (A : ι → SSet.{u}) [∀ i, Quasicategory (A i)] (κ : ι → Cardinal.{u}) [∀ i, Fact (κ i).IsRegular] (hI : ∀ i, HasSmallColimits (Ind.IndInfinity (κ i) (A i))) : IsPresentable (piSSet (fun i ↦ Ind.IndInfinity (κ i) (A i)))"
+          },
+          {
+            "line": 57,
+            "head": "lemma piSSet_isPresentable {ι : Type u} {C : ι → SSet.{u + 1}} [∀ i, Quasicategory (C i)] (hC : ∀ i, IsPresentable (C i)) : IsPresentable (piSSet C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemYoneda_pre_isQCatEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : IsQCatEquivalence ((pre (idemYoneda C)).app E) := IsIdempotentCompletion.pre_isQCatEquivalence (idemYoneda C) (idemYoneda_isIdempotentCompletion C) hE"
+          },
+          {
+            "line": 55,
+            "head": "def idemYonedaUniversalEquivalence (C : SSet.{u}) [Quasicategory C] (E : SSet.{u + 1}) [Quasicategory E] (hE : IsIdempotentComplete E) : QCatEquivalence ((ihom (Idem C)).obj E) ((ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj E) := (idemYoneda_pre_isQCatEquivalence C E hE).choose"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 74,
+            "head": "def ofCocone {I : Type v} [SmallCategory I] [IsFiltered I] {F : I ⥤ C} (c : Cocone (F ⋙ yoneda)) (hc : IsColimit c) : IndObjectPresentation c.pt where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Localization/Construction.lean",
+        "signatures": [
+          {
+            "line": 106,
+            "head": "def Localization := CategoryTheory.Quotient (Localization.Construction.relations W)"
+          },
+          {
+            "line": 111,
+            "head": "def Q : C ⥤ W.Localization where"
+          },
+          {
+            "line": 156,
+            "head": "def lift : W.Localization ⥤ D := Quotient.lift (relations W) (liftToPathCategory G hG) (by rintro ⟨X⟩ ⟨Y⟩ f₁ f₂ r rcases r with ⟨⟩ <;> all_goals aesop)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/IndCompact.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma ind_isKappaCompact_of_presheaf (κ : Cardinal.{u}) (x : Ind.IndInfinity κ C _⦋0⦌) (hx : IsKappaCompact.{u, u + 1} κ ((Ind.indInclusionPresheaf κ C).app _ x)) : IsKappaCompact.{u, u + 1} κ x := isKappaCompact_fullSubcomplex_of_image κ (Ind.IsIndVertex κ C) x (fun _ _ _ D c hc ↦ Ind.ind_inclusion_isColimit κ D c hc) hx"
+          },
+          {
+            "line": 32,
+            "head": "lemma indYoneda_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ ((Ind.indYoneda κ C).app (Opposite.op ⦋0⦌) (ULift.up y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/YonedaCompact.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma presheafEvaluationUniverse_preservesKappaFilteredColimits (κ : Cardinal.{u}) (y : C _⦋0⦌) : PreservesKappaFilteredColimits.{u, u + 1} κ ((SSet.uliftFunctor.{u + 2, u + 1}).map (presheafInfinityEvaluation y) ≫ spaceUniverseDiagram.{u})"
+          },
+          {
+            "line": 38,
+            "head": "lemma representablePresheafInfinity_isKappaCompact (κ : Cardinal.{u}) (y : C _⦋0⦌) : IsKappaCompact.{u, u + 1} κ (functorVertex (representablePresheafInfinity y)) := (presheafEvaluationUniverse_preservesKappaFilteredColimits κ y).of_functorIso (yonedaEvaluation_universeIso y).symm"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/ContinuousFunctorRestriction.lean",
+        "signatures": [
+          {
+            "line": 19,
+            "head": "def KappaContinuousFunctorInfinity (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : SSet.{u + 1} := fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))"
+          },
+          {
+            "line": 23,
+            "head": "instance kappaContinuousFunctorInfinity_quasicategory (κ : Cardinal.{u}) (X D : SSet.{u + 1}) [Quasicategory D] : Quasicategory (KappaContinuousFunctorInfinity κ X D) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices ((ihom X).obj D) (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v)) : SSet.{u + 1}))"
+          },
+          {
+            "line": 31,
+            "head": "def kappaContinuousFunctorInclusion (κ : Cardinal.{u}) (X D : SSet.{u + 1}) : KappaContinuousFunctorInfinity κ X D ⟶ (ihom X).obj D := (fullSubcomplexOnVertices _ (fun v => PreservesSmallKappaFilteredColimits κ ((functorVertexEquiv X D).symm v))).ι"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsClosure.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma hasKappaFilteredElements_kappaColimitClosed : IsKappaColimitClosed κ (HasKappaFilteredElements κ (C := C))"
+          },
+          {
+            "line": 40,
+            "head": "lemma isIndVertex_iff_hasKappaFilteredElements (v : (PresheafInfinity C) _⦋0⦌) : IsIndVertex κ C v ↔ HasKappaFilteredElements κ v"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsCondition.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def HasKappaFilteredElements (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (v : (PresheafInfinity C) _⦋0⦌) : Prop := IsKappaFiltered κ (smallRightUnstraightening ((presheafInfinityObjectEquiv C).symm v))"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_functorVertex (κ : Cardinal.{u}) {C : SSet.{u}} [Quasicategory C] (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) : HasKappaFilteredElements κ (functorVertex F) ↔ IsKappaFiltered κ (smallRightUnstraightening F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredElementsMembership.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma isIndVertex_of_kappaFiltered_elements (hF : IsKappaFiltered κ (smallRightUnstraightening F)) : IsIndVertex κ C (functorVertex F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndLeftKanPreservation.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma strictClassifiedIndCocone_image_isColimit {I : Type u} [PartialOrder I] [IsCardinalFiltered I κ] (F : I ⥤ RightFibrationObject C) (hF : ∀ v, IsIndVertex κ C ((HomotopyLimits.strictCoherentDiagram F ≫ rightStraighteningInfinityMap C).app (Opposite.op ⦋0⦌) v)) : IsColimitCone (mapJoinCocone G (strictClassifiedIndCocone κ F hF))"
+          },
+          {
+            "line": 46,
+            "head": "lemma indLeftKanExtension_preservesSmallKappaFilteredColimits : PreservesSmallKappaFilteredColimits κ G"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/IndRestrictionFullyFaithful.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma indKappaContinuousRestriction_isFullyFaithful : IsFullyFaithful (indKappaContinuousRestriction κ C D)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RepresentableFilteredElements.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma representablePresheaf_kappaFiltered_elements (x : C _⦋0⦌) : IsKappaFiltered κ (smallRightUnstraightening (representablePresheafInfinity x)) := isKappaFiltered_of_isTerminalVertex κ (canonicalYonedaUnstraighteningIdentity_isInitialVertex x).op_isTerminalVertex"
+          },
+          {
+            "line": 29,
+            "head": "lemma hasKappaFilteredElements_yoneda (x : C _⦋0⦌) : HasKappaFilteredElements κ ((yonedaInfinityMap C).app (Opposite.op ⦋0⦌) (ULift.up x))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/RestrictionInvertibilityDetection.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma continuousFunctorEdge_isInvertible_of_restriction {F G : IndInfinity κ C ⟶ D} (hF : PreservesSmallKappaFilteredColimits κ F) (hG : PreservesSmallKappaFilteredColimits κ G) (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom (IndInfinity κ C)).obj D)) (functorVertex F) (functorVertex G)) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map ((pre (indYoneda κ C)).app D)))) : IsInvertibleEdge e"
+          },
+          {
+            "line": 55,
+            "head": "lemma indKappaContinuousRestriction_reflects_isInvertibleEdge {x y : (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D) _⦋0⦌} (e : SSet.Truncated.Edge (X := (truncation 2).obj (KappaContinuousFunctorInfinity κ (IndInfinity κ C) D)) x y) (he : IsInvertibleEdge (X := (ihom ((SSet.uliftFunctor.{u + 1, u}).obj C)).obj D) (e.map ((truncation 2).map (indKappaContinuousRestriction κ C D)))) : IsInvertibleEdge e"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/SingleFilteredPresentation.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSingleFilteredRepresentablePresentation (v : (PresheafInfinity C) _⦋0⦌) : Prop := ∃ (I : SSet.{u}) (hI : Quasicategory I), letI := hI IsKappaFiltered κ I ∧ ∃ a : I ⟶ C, ∃ c : JoinCocone ((SSet.uliftFunctor.{u + 1, u}).map a ≫ yonedaInfinityMap C), c.vertex = v ∧ IsColimitCone c"
+          },
+          {
+            "line": 30,
+            "head": "lemma isIndVertex_has_singleFilteredPresentation {v : (PresheafInfinity C) _⦋0⦌} (hv : IsIndVertex κ C v) : HasSingleFilteredRepresentablePresentation κ C v"
+          }
+        ]
+      }
+    ],
+    "decision": "積の各変数で指定した余極限関係について、二段階に付加した一般の PK′ と一度の付加の同じ比較の同値。PiPresentable は積の presentability、Ind の普遍性は一変数の filtered 完備化にとどまり、この多変数関係族や指定比較を持たない。"
+  }
+}

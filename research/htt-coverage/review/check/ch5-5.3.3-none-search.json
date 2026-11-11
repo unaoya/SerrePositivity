@@ -1,0 +1,167 @@
+{
+  "5.3.3.2": {
+    "page": 394,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.2",
+        "5.3.3",
+        "5.3.4"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(corepresentable|covariantRepresentable.*coslice|representable.*(colimit|contract)|coherentDiagramTotal.*colimit|filtered.*LimitExchange|HasSmallColimits)",
+          "SerrePositivity"
+        ],
+        "file_count": 257,
+        "line_count": 543
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(corepresentable|covariantRepresentable.*coslice|representable.*(colimit|contract)|coherentDiagramTotal.*colimit|filtered.*LimitExchange|HasSmallColimits)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 23,
+        "line_count": 266
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Compact/RepresentableCoslice.lean",
+        "signatures": [
+          {
+            "line": 45,
+            "head": "def covariantRepresentableInfinity_cosliceIso {C : SSet.{u}} [Quasicategory C] (x : C _⦋0⦌) : FunctorIso (covariantRepresentableInfinity x) (leftStraighteningInfinityDiagram (sliceUnderProjection (SSet.yonedaEquiv.symm x)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/SigmaYonedaInitial.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma representablePresheafInfinity_initialValue_isContractibleKan {C : SSet.{u}} [Quasicategory C] {x : C _⦋0⦌} (hx : IsInitialVertex x) (y : C _⦋0⦌) : IsContractibleKan (spaceInfinityObject ((representablePresheafInfinity y).app (Opposite.op ⦋0⦌) (ULift.up (SSet.opObjEquiv.symm x)))).obj := (representablePresheafValueEquivalence x y).symm.isContractibleKan ((pinchedHomLeftRightEquivalence x y).isContractibleKan (hx.pinchedHomLeft_isContractibleKan y))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/CardinalExchangeShape.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "def CardinalFilteredLimitExchangeShape (μ : Cardinal.{u}) (K : SSet.{u}) : Prop := ∀ (B : SSet.{u}) [Quasicategory B] [IsKappaFiltered μ B] (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ (ihom (join (Δ[0] : SSet.{u + 1}) ((SSet.uliftFunctor.{u + 1, u}).obj K))).obj SpaceInfinity.{u}) (c : JoinCocone F), IsPointwiseColimitCone c → (∀ b : B _⦋0⦌, IsLimitCone (functorVertexCone (F.app (Opposite.op ⦋0⦌) (ULift.up b)))) → IsLimitCone (functorVertexCone c.vertex)"
+          },
+          {
+            "line": 35,
+            "head": "lemma CardinalFilteredLimitExchangeShape.of_iso {μ : Cardinal.{u}} {L K : SSet.{u}} (e : L ≅ K) (h : CardinalFilteredLimitExchangeShape μ L) : CardinalFilteredLimitExchangeShape μ K"
+          },
+          {
+            "line": 49,
+            "head": "lemma cardinalFilteredLimitExchangeShape_poset {κ μ : Cardinal.{u}} [Fact κ.IsRegular] [Fact μ.IsRegular] (h : IsCardinalChangeBound κ μ) (I : Type u) [PartialOrder I] (hI : HasCardinalLT I μ) : CardinalFilteredLimitExchangeShape μ (nerve I) := coherentCardinalFilteredLimitExchange_poset h I hI"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/FilteredColimitFiniteLimitPreservation.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "def smallSpaceColimitFunctor (B : SSet.{u}) : (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u} ⟶ SpaceInfinity.{u} := chosenColimitFunctor _ _ (fun p ↦ hasColimit_coherentSpaceDiagram p)"
+          },
+          {
+            "line": 36,
+            "head": "lemma smallSpaceFilteredColimit_map_isLimit_finite (B : SSet.{u}) [Quasicategory B] [IsFilteredInfinity B] {K : SSet.{u + 1}} [K.Finite] {p : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj B)).obj SpaceInfinity.{u}} (c : JoinCone p) (hc : IsLimitCone c) : IsLimitCone (mapJoinCone (smallSpaceColimitFunctor B) c)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 40,
+            "head": "lemma IsPresentable.hasSmallColimits {C : SSet.{u + 1}} [Quasicategory C] (h : IsPresentable C) : HasSmallColimits C := h.2"
+          },
+          {
+            "line": 44,
+            "head": "lemma HasSmallColimits.hasSmallKappaFilteredColimits {C : SSet.{u + 1}} (h : HasSmallColimits C) (κ : Cardinal.{u}) : Ind.HasSmallKappaFilteredColimits κ C"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Yoneda.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "def colimitCocone (X : Cᵒᵖ) : Cocone (coyoneda.obj X) where"
+          },
+          {
+            "line": 50,
+            "head": "def colimitCoconeIsColimit (X : Cᵒᵖ) : IsColimit (colimitCocone X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Compact/Definition.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def PreservesKappaFilteredColimits (κ : Cardinal.{u}) {C : SSet.{max u v}} {Y : SSet.{max u v + 1}} (F : (SSet.uliftFunctor.{max u v + 1, max u v}).obj C ⟶ Y) : Prop := ∀ (I : SSet.{u}) [Quasicategory I] [IsKappaFiltered κ I] (D : (SSet.uliftFunctor.{v, u}).obj I ⟶ C) (c : JoinCocone D), IsColimitCone c → IsColimitCone (mapJoinCocone F (JoinCocone.ulift c))"
+          },
+          {
+            "line": 31,
+            "head": "def IsKappaCompact (κ : Cardinal.{u}) {C : SSet.{max u v}} [Quasicategory C] (x : C _⦋0⦌) : Prop := PreservesKappaFilteredColimits.{u, v} κ (C := C) (covariantRepresentableInfinity x)"
+          }
+        ]
+      }
+    ],
+    "decision": "任意の余表現可能 F:K→Space の余極限が可縮となる。covariantRepresentableInfinity_cosliceIso は全 Hom 分類図式との同型、coherentDiagramTotalCocone_isColimit は全空間の Kan 置換を頂点に持つ一般の余極限を与えるが、元の余表現可能 F のこの頂点を一点と比較する宣言はない。representablePresheafInfinity_initialValue_isContractibleKan は始対象における前層の一つの値であり、F 全体の余極限の可縮性とは別。"
+  }
+}

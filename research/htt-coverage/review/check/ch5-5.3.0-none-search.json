@@ -1,0 +1,120 @@
+{
+  "5.3.0.1": {
+    "page": 380,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "5.3.0",
+        "5.3.1"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(Indization|IndObject|[Ff]initelyPresented|GrpCat.*[Cc]olimit|[Gg]roup.*[Ff]iltered)",
+          "SerrePositivity"
+        ],
+        "file_count": 14,
+        "line_count": 31
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(Indization|IndObject|[Ff]initelyPresented|GrpCat.*[Cc]olimit|[Gg]roup.*[Ff]iltered)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 25,
+        "line_count": 178
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/GroupTheory/FinitelyPresentedGroup.lean",
+        "signatures": [
+          {
+            "line": 87,
+            "head": "class AddGroup.IsFinitelyPresented (G : Type*) [AddGroup G] : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class Group.IsFinitelyPresented (G : Type*) [Group G] : Prop where"
+          },
+          {
+            "line": 104,
+            "head": "theorem equiv (iso : G ≃* H) [h : IsFinitelyPresented G] : IsFinitelyPresented H"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/IndObject.lean",
+        "signatures": [
+          {
+            "line": 56,
+            "head": "structure IndObjectPresentation (A : Cᵒᵖ ⥤ Type v) where"
+          },
+          {
+            "line": 100,
+            "head": "noncomputable def extend {A B : Cᵒᵖ ⥤ Type v} (P : IndObjectPresentation A) (η : A ⟶ B) [IsIso η] : IndObjectPresentation B := .ofCocone (P.cocone.extend η) (P.coconeIsColimit.extendIso η)"
+          },
+          {
+            "line": 119,
+            "head": "def yoneda (X : C) : IndObjectPresentation (yoneda.obj X) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Indization/Category.lean",
+        "signatures": [
+          {
+            "line": 180,
+            "head": "theorem Ind.isIndObject_inclusion_obj (X : Ind C) : IsIndObject ((Ind.inclusion C).obj X) := X.2"
+          },
+          {
+            "line": 184,
+            "head": "noncomputable def Ind.presentation (X : Ind C) : IndObjectPresentation ((Ind.inclusion C).obj X) := X.isIndObject_inclusion_obj.presentation"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Category/Grp/FilteredColimits.lean",
+        "signatures": [
+          {
+            "line": 203,
+            "head": "noncomputable instance forget₂Group_preservesFilteredColimits : PreservesFilteredColimits (forget₂ CommGrpCat GrpCat.{u}) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Ind/PresheafSubcategory.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} := fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)"
+          },
+          {
+            "line": 28,
+            "head": "instance indInfinity_quasicategory (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Quasicategory (IndInfinity κ C) := inferInstanceAs (Quasicategory (fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C) : SSet.{u + 1}))"
+          }
+        ]
+      }
+    ],
+    "decision": "有限表示群の圏の古典的 Ind が全群の圏と同値となる例。Mathlib の Group.IsFinitelyPresented は有限生成元・有限関係の表示を与え、Indization は任意の圏の Ind を構成するが、GrpCat での filtered 表示の生成・充満忠実性の比較はない。代数的理論一般への拡張もなく、単に両側の構成があることを一致としない。"
+  }
+}
