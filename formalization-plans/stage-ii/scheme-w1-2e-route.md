@@ -257,3 +257,51 @@ C⁽q⁾ₙ = Hᵠ_Čech(IⁿM) とする。これらの直和が B 上有限で
 これはまだ停止点 2e ではない。今回の局所化同値は元の多項式環 P 上の周囲の加群の比較である。次に、基底環上に係数を制限して Proj 次数零に制限し、既存の P→B[X] の局所化の係数変更とつなぐ。局所化の比較は、各成分の射影に対する式と斉次分数表示で次数を保つ。逆方向は有限台の直和を各成分の包含に分け、各斉次分数を全 Rees 加群の同じ次数の分数に持ち上げる。
 
 その後、標準開の制限と可換な比較を Čech 複体へ移す。次数を移す作用の自然性を使ってコホモロジー同型の B 線形性を得てから、核の評価と像の安定化に適用する。実際の Čech コホモロジーでの二評価、完備化の同型、および §9 の五つの整合性は残っている。条件付きフィルトレーションの評価を、これらの完成とは扱わない。
+
+## 斉次局所化の直和比較と標準開の制限（11-11、続き）
+
+`d5e67da87`（2 モジュールと直接 importer、166 行）と `3518217df`（8 モジュールと直接 importer、510 行）を保存した。前者の AG 監査は 5,377 宣言、後者は **5,436 宣言、いずれも標準三公理のみ**。各対象と直接 importer のビルドは成功した。main `7a3a0f965` を merge `da96e3024` で取り込み、17:10 追加の鍵の規則も取り込んだ。以後は一回のビルド・監査ごとに鍵を返し、編集や検討中に鍵を保持しない。以前の修正待ちを含むローカル検証用スクリプトは無効化した。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveDirectSumSubmodule` | 各成分が指定部分加群に属する、周囲の直和の部分加群。 |
+| `mem_projectiveDirectSumSubmodule` | その所属を各成分で判定する。 |
+| `projectiveDirectSumSubmodule_range` | 各成分の部分加群の包含の直和の像が、この部分加群となる。 |
+| `projectiveDirectSumSubmoduleLinearEquiv` | 部分加群の外部直和と、周囲の直和の部分加群の線形同値。 |
+| `projectiveDirectSumSubmoduleLinearEquiv_val` | 比較の周囲への値は、各成分の包含の直和。 |
+| `projectiveGradedLocalizedDirectSum_map` | 局所化と直和の同値は、分子の指定部分の斉次局所化を対応させる。 |
+| `projectiveGradedLocalizedDirectSumLinearEquiv` | 各成分で指定した分子の斉次局所化の直和と、周囲の直和の同じ斉次局所化の同値。 |
+| `projectiveGradedLocalizedDirectSumLinearEquiv_val` | 斉次成分の比較は、周囲の局所化の比較を制限したもの。 |
+| `projectiveGradedAwayCongr` | 分子の指定部分を対応させる線形同値を、斉次局所化へ移す。 |
+| `projectiveGradedAwayCongr_val` | この移送は、周囲の局所化の誘導写像と同じ値を持つ。 |
+| `projectiveGradedLocalizedDirectSumTransport` | 周囲の加群が直和と同値であり分子も対応するなら、その斉次局所化を各成分の斉次局所化の直和へ移せる。 |
+| `reesAdicDirectSumPolynomialLinearEquiv_projective_mem` | Rees 加群の分子の Proj 次数を、各 IⁿM の同じ次数で判定する。 |
+| `reesAdicGradedLocalizedDirectSumLinearEquiv` | 分母 f の第 k 冪に Proj 次数 ν k の分子を許す Rees 局所化は、各 IⁿM の同じ斉次局所化の直和と R 線形に同値。 |
+| `projectiveLocalizedDirectSumLinearEquiv_restriction` | 周囲の局所化の直和比較は、分母を広げる制限写像と可換。 |
+| `projectiveGradedLocalizedDirectSumLinearEquiv_component_val` | 斉次成分の比較の各成分は、周囲の局所化の同じ成分。 |
+| `projectiveDirectSumSubmodule_restriction_mem` | 分母を広げる因子の冪が各分子を保つなら、その直和の分子も保つ。 |
+| `projectiveGradedLocalizedDirectSumLinearEquiv_restriction` | 斉次局所化の直和比較は、標準開の制限に自然。 |
+| `projectiveModuleScalarGradedAwayLinearEquiv` | 任意の加群の P 上の斉次局所化と、P→Q で分母を写した Q 上の斉次局所化を R 線形に比較する。 |
+| `projectiveModuleScalarGradedAwayLinearEquiv_val` | この斉次成分の比較は、周囲の加群局所化の係数変更と同じ値。 |
+| `reesPolynomialCoefficientAlgebra_scalarTower` | P→B[X] の係数変更は、基底環 R からの代数構造と両立する。 |
+| `reesPolynomialBaseChange_base_scalarTower` | B[X] 上の制限した加群作用は、P を経由する R 作用と両立する。 |
+| `projectiveGradedLocalizedDirectSumTransport_val` | 斉次成分の移送は、周囲の加群同値を局所化し、直和と局所化を交換したものに一致する。 |
+| `projectiveGradedLocalizedDirectSumTransport_component_val` | 移送の第 n 成分を、周囲の局所化の第 n 成分で計算する。 |
+| `projectiveGradedLocalizedDirectSumTransport_fraction` | 分子に逆の加群同値を適用し、同じ分母で各成分を割る、一般の斉次分数の式。 |
+| `projectiveLaurentDenominator_mem_natGrade` | 標準開の分母は、反転する変数の個数の自然数次数に斉次。 |
+| `projectiveNatGradedChartZero_mul_denominator` | 分母を掛けると、次数零の分子の第 k 段は第 k+1 段へ移る。 |
+| `projectiveNatGradedChartZero_submodule_eq` | 自然数次数を整数次数に延ばした標準開の次数零の分子は、元の G(k·card T) の分子と一致する。 |
+| `projectiveNatGradedChartZeroLinearEquiv` | 既存の標準開係数図式の次数零の対象を、G(k·card T) の斉次局所化と比較する。 |
+
+この結果で、以前は周囲の加群だけだった Rees 局所化の比較を、指定 Proj 次数の分子へ制限した。`ν k = k·card T` と分母を変数の積に取るための、既存の自然数次数の標準開との照合もできる。一般の斉次局所化の直和比較については、標準開の制限との自然性を証明した。
+
+まだ停止点 2e ではない。Rees 加群の P 上と B[X] 上の比較を実際の標準開係数図式へまとめ、コホモロジーの直和比較と Rees 単項式の作用をつないで B 線形性を示す接続が残る。その後、実際の Čech コホモロジーへの核の評価・像の安定化の適用と、完備化の同型へ進む。今回の局所化の係数環の変更はテンソル積による底変換の定理ではなく、§9 の五整合性の底変換を完了したことにはならない。共通アフィン細分・閉厚化・Frobenius・filtered colimit についても、引き続き §9 の条件を満たす必要がある。
+
+### Čech コホモロジーと係数制限
+
+`511aea3da`（新モジュールと直接 importer、60 行）で次を保存した。main 取り込み後の対象モジュールと直接 importer のビルドは成功し、別の鍵で実行した公式 AG 監査は **5,447 宣言・標準三公理のみ**だった。
+
+- `projectiveCechRestrictScalarsComplexIso`：B 加群の係数図式の Čech 複体を R に係数制限したものと、係数図式を R に制限してから作った Čech 複体との同型。各タプルの成分の恒等同型と交代和の式で比較する。
+- `projectiveCechRestrictScalarsHomologyIso`：上の複体の同型と Mathlib の係数制限の完全性・`ShortComplex.mapHomologyIso` により、Čech コホモロジーと係数制限の交換を得る。原典 Stacks 30.20.1 の Hⁱ に対応する Rees–Čech 比較の途中の入力であり、層コホモロジーの導来関手との比較は含めない。
+
+この係数制限もテンソル積による底変換ではない。係数図式の自然変換に対するコホモロジー同型の可換式と、Rees のチャートの図式・作用への適用を次に接続する。最終出力の `AugmentedRingCechExact` の型や、その利用側の型は変更していない。
