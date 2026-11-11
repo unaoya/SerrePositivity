@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory MonoidalCategory
-open SerrePositivity.KST.Comparison
+
 
 /-- 概要：同じ Ex∞ で豊穣 Hom を Kan 化した対象の型（Dwyer–Kan）。
 方針：元の対象の豊穣構造を有限積保存 Ex∞ で移す。

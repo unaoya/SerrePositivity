@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Opposite
 
 namespace SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements
-open SerrePositivity.HomotopyFunctionComplex
+
 
 variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (V : C)
 

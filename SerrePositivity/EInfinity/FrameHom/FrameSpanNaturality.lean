@@ -23,7 +23,7 @@ universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 
 open CategoryTheory
-open SerrePositivity.HomotopyFunctionComplex
+
 
 variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
   {X Y Z Z' : C} {A A' : SimplexCategory ⥤ C}

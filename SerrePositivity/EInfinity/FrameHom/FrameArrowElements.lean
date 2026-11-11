@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.FrameHom.FrameArrows
-open CategoryTheory Opposite SerrePositivity.HomotopyFunctionComplex
+open CategoryTheory Opposite
 variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (Y : C)
 
 def elementsToCostructured : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤

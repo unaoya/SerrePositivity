@@ -9,7 +9,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
 lemma simplexData_ext_of_components {n : ℕ} (s t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (ho : ∀ i, s.obj i = t.obj i)
@@ -17,7 +17,7 @@ lemma simplexData_ext_of_components {n : ℕ} (s t : _root_.SerrePositivity.Infi
       (t.hom I a b k hI ha hb hk)) : s = t := by
   have ho' : s.obj = t.obj := funext ho
   cases s with
-  | _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.mk so sh =>
+  | mk so sh =>
     cases t with
     | _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.mk tobj th =>
       dsimp only at ho' hh ⊢

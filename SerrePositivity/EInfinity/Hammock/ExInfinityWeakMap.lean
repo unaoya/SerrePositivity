@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory SerrePositivity.KST.Comparison SerrePositivity.InfinityCategories
+open CategoryTheory SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 
 lemma exInfinity_map_weak {X Y : SSet.{u}} (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) :

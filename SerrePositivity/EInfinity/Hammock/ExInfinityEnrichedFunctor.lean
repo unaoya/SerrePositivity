@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory MonoidalCategory SerrePositivity.KST.Comparison
+open CategoryTheory MonoidalCategory
 variable {C : Type v} [EnrichedCategory SSet.{u} C]
   {D : Type w} [EnrichedCategory SSet.{u} D]
 

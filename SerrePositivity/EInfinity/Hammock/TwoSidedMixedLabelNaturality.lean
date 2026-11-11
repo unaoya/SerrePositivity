@@ -18,7 +18,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabel
-open CategoryTheory Opposite TwoSidedGrothendieck
+open CategoryTheory Opposite
 
 variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) {S T : W ⥤ Type u}
 

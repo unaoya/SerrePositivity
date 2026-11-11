@@ -37,7 +37,7 @@ lemma leftAnodyne_anodyne {A B : SSet.{u}} (i : A ⟶ B) (hi : _root_.SerrePosit
   apply hi p
   intro X Y j hj
   cases hj with
-  | _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftHornInclusions.intro k _ => exact hp _ (SSet.modelCategoryQuillen.horn_ι_mem_J _ k)
+  | intro k _ => exact hp _ (SSet.modelCategoryQuillen.horn_ι_mem_J _ k)
 
 /-- 概要：元の left cofinal な射は任意の anodyne 反転関手で同型（Quillen A）。
 方針：元の因子分解の左因子を反転し、右因子には同じ切断と収縮を使う。

@@ -12,7 +12,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
 
 abbrev SimplexDataHomAgreementOn {n : ℕ} (s t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
