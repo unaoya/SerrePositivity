@@ -1,5 +1,5 @@
 {
-  "worktree_commit": "99d3440486a3625f8a6d8d8079f4a7710f7d5100",
+  "worktree_commit": "e4b114fd120b2c89e6127467e2e5dc101ec3c738",
   "mathlib_commit": "e6bbacd0e1b7307ff6e17da09cd2455f60804fa6",
   "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
   "ha_pdf_sha256": "112b145a95a62daefb8275851cac9ab6430004cfc8f751a33a8d981fd7ad68c3",
@@ -5093,6 +5093,84 @@
       ],
       "reason": "モデル圏の局所化と指定辺を保つ相対関手空間を確認した。有限段 Tⁿ の inert マークの fibrant replacement が表現する O(n) と普遍非単位的 Aₙ 代数は見つからなかった。"
     },
+    "4.1.4.9": {
+      "ha_page": 470,
+      "citation_scan": {
+        "exact": {
+          "prefix": "4.1.4.9",
+          "lean": 0,
+          "plan": 0
+        },
+        "subsection": {
+          "prefix": "4.1.4",
+          "lean": 0,
+          "plan": 0
+        },
+        "neighbors": [
+          {
+            "prefix": "4.1.3",
+            "lean": 0,
+            "plan": 0
+          },
+          {
+            "prefix": "4.1.5",
+            "lean": 0,
+            "plan": 0
+          }
+        ]
+      },
+      "search": {
+        "SerrePositivity": {
+          "pattern": "nonunital.*An|markedCocartesianFamilyColimitLift|inverse.*limit|SemiSimplexCategory",
+          "files_with_matches": 38,
+          "total_matching_lines": 75,
+          "sample_paths": [
+            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawFirstUnitComparison.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/DerivedPurity.lean",
+            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ModuleTower.lean",
+            "SerrePositivity/HomologicalAlgebra/ScalarWeightedColimit.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/NonsingularPresentation.lean",
+            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/BoundaryLifting.lean",
+            "SerrePositivity/HomotopicalAlgebra/Simplicial/GeneratedLeftClassFunctor.lean",
+            "SerrePositivity/HomotopicalAlgebra/Transfer/CellMap.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
+            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean"
+          ]
+        },
+        "Mathlib": {
+          "pattern": "nonunital.*An|markedCocartesianFamilyColimitLift|inverse.*limit|SemiSimplexCategory",
+          "files_with_matches": 93,
+          "total_matching_lines": 326,
+          "sample_paths": [
+            "Mathlib/Algebra/Algebra/Defs.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
+            "Mathlib/Algebra/Algebra/NonUnitalSubalgebra.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
+            "Mathlib/Algebra/Algebra/Subalgebra/Unitization.lean",
+            "Mathlib/Algebra/Algebra/Unitization.lean",
+            "Mathlib/Algebra/Category/Grp/FilteredColimits.lean",
+            "Mathlib/Algebra/Colimit/Ring.lean",
+            "Mathlib/Algebra/DirectSum/Internal.lean",
+            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
+            "Mathlib/Algebra/Group/Hom/Defs.lean",
+            "Mathlib/Algebra/Jordan/Basic.lean"
+          ]
+        }
+      },
+      "sources_read": [
+        {
+          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
+          "sha256": "560d8d5d1c408fa2bd6d71241eed42ccf9d366d6c30fd674a65949cd6338f994"
+        },
+        {
+          "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
+          "sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a"
+        }
+      ],
+      "reason": "余極限で与えた添字からのマーク付き相対関手の一意な貼り合わせを確認した。非単位的 A∞ 代数から [0] を除いた表示への比較と、有限段の塔の Cat∞ における極限への同値を与える宣言は見つからなかった。"
+    },
     "4.1.4.10": {
       "ha_page": 472,
       "citation_scan": {
@@ -6690,84 +6768,6 @@
         }
       ],
       "reason": "マーク付き関手の余極限添字からの貼り合わせを確認した。有限切断次数のモノイダル ∞ 圏で A∞ が有限段に止まり、その一段手前の本質像を β の零ホモトピーで記述する型は見つからなかった。"
-    },
-    "4.1.4.9": {
-      "ha_page": 470,
-      "citation_scan": {
-        "exact": {
-          "prefix": "4.1.4.9",
-          "lean": 0,
-          "plan": 0
-        },
-        "subsection": {
-          "prefix": "4.1.4",
-          "lean": 0,
-          "plan": 0
-        },
-        "neighbors": [
-          {
-            "prefix": "4.1.3",
-            "lean": 0,
-            "plan": 0
-          },
-          {
-            "prefix": "4.1.5",
-            "lean": 0,
-            "plan": 0
-          }
-        ]
-      },
-      "search": {
-        "SerrePositivity": {
-          "pattern": "nonunital.*An|markedCocartesianFamilyColimitLift|inverse.*limit|SemiSimplexCategory",
-          "files_with_matches": 38,
-          "total_matching_lines": 75,
-          "sample_paths": [
-            "SerrePositivity/Archive/InfinityCategories/FilteredExchange/CoherentColimitRawFirstUnitComparison.lean",
-            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/DerivedPurity.lean",
-            "SerrePositivity/HomologicalAlgebra/DerivedCompletion/ModuleTower.lean",
-            "SerrePositivity/HomologicalAlgebra/ScalarWeightedColimit.lean",
-            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/NonsingularPresentation.lean",
-            "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/BoundaryLifting.lean",
-            "SerrePositivity/HomotopicalAlgebra/Simplicial/GeneratedLeftClassFunctor.lean",
-            "SerrePositivity/HomotopicalAlgebra/Transfer/CellMap.lean",
-            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
-            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitLift.lean",
-            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitDescent.lean",
-            "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorCoreColimitLift.lean"
-          ]
-        },
-        "Mathlib": {
-          "pattern": "nonunital.*An|markedCocartesianFamilyColimitLift|inverse.*limit|SemiSimplexCategory",
-          "files_with_matches": 93,
-          "total_matching_lines": 326,
-          "sample_paths": [
-            "Mathlib/Algebra/Algebra/Defs.lean",
-            "Mathlib/Algebra/Algebra/NonUnitalHom.lean",
-            "Mathlib/Algebra/Algebra/NonUnitalSubalgebra.lean",
-            "Mathlib/Algebra/Algebra/Subalgebra/Lattice.lean",
-            "Mathlib/Algebra/Algebra/Subalgebra/Unitization.lean",
-            "Mathlib/Algebra/Algebra/Unitization.lean",
-            "Mathlib/Algebra/Category/Grp/FilteredColimits.lean",
-            "Mathlib/Algebra/Colimit/Ring.lean",
-            "Mathlib/Algebra/DirectSum/Internal.lean",
-            "Mathlib/Algebra/FreeNonUnitalNonAssocAlgebra.lean",
-            "Mathlib/Algebra/Group/Hom/Defs.lean",
-            "Mathlib/Algebra/Jordan/Basic.lean"
-          ]
-        }
-      },
-      "sources_read": [
-        {
-          "path": "SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorColimitDescent.lean",
-          "sha256": "560d8d5d1c408fa2bd6d71241eed42ccf9d366d6c30fd674a65949cd6338f994"
-        },
-        {
-          "path": "Mathlib/AlgebraicTopology/SimplexCategory/SemiSimplexCategory.lean",
-          "sha256": "d83431814b02e0b164dd838f511b68249aaa9f2752b9261f4488bdfa46f2ae4a"
-        }
-      ],
-      "reason": "余極限で与えた添字からのマーク付き相対関手の一意な貼り合わせを確認した。非単位的 A∞ 代数から [0] を除いた表示への比較と、有限段の塔の Cat∞ における極限への同値を与える宣言は見つからなかった。"
     }
   }
 }

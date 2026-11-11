@@ -67,14 +67,19 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.4.1,none,,半単体圏と一般の頂点条件による充満部分複体を確認した。次数 1 から n に限った半単体圏の神経 Tⁿ とその増大列は見つからなかった。,,not_found,
 4.1.4.2,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：底の上の写像 q と Tⁿᵒᵖ の包含、その指定辺（Lean では planar 条件は不要で、包含と inert 辺を明示する）。結論：底の上で inert 辺を余デカルト辺に送る関手の充満部分複体を与える（HA の関手空間の成分に一致）。Tⁿ とその inert 辺の定義は含まれない。,,found,component
 4.1.4.3,none,,部分区間の写像とマークの被覆による関手述語の反映を確認した。非単位的 Aₙ 関手について [1] への辺だけの余デカルト性が全 inert 辺の余デカルト性を含意する型は見つからなかった。,,not_found,
+4.1.4.4,own,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace_isTerminal_of_isInitial @ SerrePositivity/InfinityCategories/F1/FunctorCategories/EmptyRelativeFunctorHom.lean:33,仮定：相対関手の始域が初対象（T⁰ が空という HA の仮定と一致し、q やマークは任意）。結論：マークを保つ相対関手空間が単体集合の終対象、すなわち Δ0 と同型となる（一致）。,,found,
+4.1.4.5,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorEvaluate @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorInvertibleDetection.lean:24,仮定：マークを保つ相対関手空間と添字の指定頂点（Lean では Tⁿ の [1] を頂点として明示する）。結論：その頂点の底ファイバーへの評価を与える（忘却写像の成分に一致）。有限次数の非単位的 Aₙ の型は含まれない。,,found,component
+4.1.4.6,partial,SerrePositivity.InfinityCategories.relativePointFunctorIso @ SerrePositivity/InfinityCategories/F1/FunctorCategories/RelativePointFunctorIso.lean:67,仮定：相対関手の始域が Δ0 で、底への写像が [1] を選ぶ（HA の T¹ の場合）。結論：一点上の相対関手空間の評価が指定ファイバーとの同型となる（評価による同型の成分に一致）。非単位的 A₁ のマーク条件が空になる同定は含まれない。,,found,component
 4.1.4.7,partial,SerrePositivity.InfinityCategories.markedCocartesianFunctorSpace @ SerrePositivity/InfinityCategories/F1/Cocartesian/MarkedCocartesianFunctorSpace.lean:38,仮定：共通の底への写像 q と Tⁿᵒᵖ からの写像、始域の指定辺（Lean では Assoc⊗ とその inert 辺を明示する）。結論：HA の表示と同じ、指定辺を余デカルト辺に送る相対関手の充満部分複体を与える。planar 引き戻しからの表示との同定は含まれない。,,found,component
 4.1.4.8,none,,モデル圏の局所化と指定辺を保つ相対関手空間を確認した。有限段 Tⁿ の inert マークの fibrant replacement が表現する O(n) と普遍非単位的 Aₙ 代数は見つからなかった。,,not_found,
 4.1.4.9,none,,余極限で与えた添字からのマーク付き相対関手の一意な貼り合わせを確認した。非単位的 A∞ 代数から [0] を除いた表示への比較と、有限段の塔の Cat∞ における極限への同値を与える宣言は見つからなかった。,,not_found,
 4.1.4.10,none,,通常の単体集合の strict Segal 条件と準圏の有限積円錐を確認した。有限段の半単体関手で [1] の値の積を検査する非単位的 Aₙ モノイドの型は見つからなかった。,,not_found,
 4.1.4.11,none,,準圏の有限積円錐とマーク付き関手を確認した。直積モノイダル構造に対して有限段の代数と Segal 積条件のモノイドが同値となる宣言は見つからなかった。,,not_found,
+4.1.5.1,partial,SerrePositivity.InfinityCategories.Coherent.cube @ SerrePositivity/InfinityCategories/Coherent/Cube.lean:30 | SerrePositivity.InfinityCategories.Coherent.cubeSplitIso @ SerrePositivity/InfinityCategories/Coherent/Cube.lean:165 | SerrePositivity.InfinityCategories.Coherent.cubeBoundary @ SerrePositivity/InfinityCategories/Coherent/HollowCube.lean:54,仮定：座標集合 T（Lean は任意の集合を取り、HA の場合は Fin n を取る）。結論：包含順序の冪集合の神経、座標を一つ分離した ∆¹ との積同型、いずれかの座標が一定となる境界を与える（立方体と境界の定義に一致）。全 n 座標を同時に並べる積との同型は型に含まれない。,,found,component
 4.1.5.2,none,,冪集合の神経と有限部分集合の整列を確認した。部分集合 J を [card J+1] に送り、両端を保つ順位の写像によって Tⁿ⁺¹ への基本立方体 γ を作る宣言は見つからなかった。,,not_found,
 4.1.5.3,none,,一般の立方体境界と単体圏の区間辺を確認した。Tⁿ から [1]→[n] の両端辺を含む全単体を除いた最大部分集合 T◦ⁿ は見つからなかった。,,not_found,
 4.1.5.4,none,,半単体圏の包含と頂点条件の部分複体を確認した。T◦ⁿ への Tⁿ⁻¹ の包含を与える型は見つからなかった。,,not_found,
+4.1.5.5,partial,CategoryTheory.Nerve.quasicategory @ Mathlib/AlgebraicTopology/Quasicategory/Nerve.lean:32,仮定：通常圏 C（HA の Tⁿ を与える半単体圏の充満部分圏を C に取る）。結論：その神経が準圏となる（Tⁿ が準圏である成分に一致）。辺を除いた T◦ⁿ が一般に準圏でないことは含まれない。,,found,component
 4.1.5.6,none,,立方体の境界を一定座標で定義する宣言を確認した。基本立方体 γ による T◦ⁿ⁺¹ の逆像として境界を同定する引き戻しは見つからなかった。,,not_found,
 4.1.5.7,none,,一般の単体集合の押し出しに沿うマーク保存関手の貼り合わせを確認した。基本立方体の境界を T◦ⁿ⁺¹ に貼った押し出しが Tⁿ⁺¹ となる指定の四角形は見つからなかった。,,not_found,
 4.1.5.8,none,,前合成同値とマーク被覆が既知のときの相対関手制限が自明 Kan となる宣言を確認した。Tⁿ⁻¹ から T◦ⁿ への特定の拡大について、planar の積と余デカルト性からその制限が自明 Kan となる型は見つからなかった。,,not_found,
@@ -87,11 +92,15 @@ number,status,declarations,reason,axioms,check,partial_kind
 4.1.6.7,none,,"準圏の相対関手制限と cubical rigidification の写像を確認した。指定した Aₙ₋₁ から ∂Kₙ→Map(A⊗ⁿ,A) を作り、Aₙ への延長がその零ホモトピーを与える型は見つからなかった。",,not_found,
 4.1.6.8,none,,"押し出しに沿うマーク付き相対関手の引き戻しを確認した。A を固定した Aₙ→Aₙ₋₁ が Map(A⊗ⁿ,A) の Kₙ から ∂Kₙ への制限の引き戻しとなる型は見つからなかった。",,not_found,
 4.1.6.9,none,,Kan 複体での境界の持ち上げと相対関手の延長空間を確認した。Aₙ への延長を β_A の零ホモトピーと同値にする宣言は見つからなかった。,,not_found,
+4.1.6.10,partial,MagmaCat @ Mathlib/Algebra/Category/Semigrp/Basic.lean:47,仮定：通常の集合の圏の直積（Lean は HA の通常の集合の場合に限る）。結論：集合に積 A×A→A だけを指定し、単位も結合律も課さない magma の構造を与える（A₂ の通常の集合の場合のデータに一致）。一般のモノイダル ∞ 圏での比較は含まれない。,,found,special
+4.1.6.11,partial,Semigroup @ Mathlib/Algebra/Group/Semigroup.lean:144,仮定：通常の集合 A の積（Lean は写像空間が離散の Set に限る）。結論：二通りの三重積の等式を持つ半群の構造を与える（通常の集合での A₃ の積条件に一致）。二つの写像間のホモトピーによる一般の ∞ 圏の延長は含まれない。,,found,special
 4.1.6.12,none,,空間のホモトピー押し出しと古典的な高次積の候補を確認した。∂Kₙ の二重化から二つの Aₙ 構造と Aₙ₋₁ 射の universal Massey product を作る型は見つからなかった。,,not_found,
 4.1.6.13,none,,相対関手の拡張ファイバーの模型を確認した。Aₙ の射の空間を universal Massey product 上のホモトピーファイバーとする列は見つからなかった。,,not_found,
 4.1.6.14,none,,マーク付き相対関手の制限と境界固定の持ち上げを確認した。Aₙ₋₁ 射が Aₙ 射に延長することを universal Massey product の零ホモトピーで検査する型は見つからなかった。,,not_found,
+4.1.6.15,partial,MulHom @ Mathlib/Algebra/Group/Hom/Defs.lean:294,仮定：通常の集合 A、B とそれぞれの積（Lean は HA の通常の集合の場合に限る）。結論：写像に二つの積の合成が等しい条件を課す（離散写像空間での A₂ 射の積適合条件に一致）。一般の写像空間での二点のホモトピーは含まれない。,,found,special
 4.1.6.16,none,,充満忠実な準圏写像とマーク付き相対関手の制限を確認した。写像空間の (m−1)-切断性から、n の指定の範囲で Aₙ→Aₙ₋₁ が充満忠実・同値となる型は見つからなかった。,,not_found,
 4.1.6.17,none,,マーク付き関手の余極限添字からの貼り合わせを確認した。有限切断次数のモノイダル ∞ 圏で A∞ が有限段に止まり、その一段手前の本質像を β の零ホモトピーで記述する型は見つからなかった。,,not_found,
+4.1.6.18,partial,Semigrp @ Mathlib/Algebra/Category/Semigrp/Basic.lean:216 | Semigroup @ Mathlib/Algebra/Group/Semigroup.lean:144,仮定：直積モノイダル構造の通常の集合の圏（Lean は HA の通常モノイダル圏のうち Set に限る）。結論：積が厳密な結合律を満たす非単位的代数と、その準同型を半群圏として与える（HA の積による記述の成分に一致）。有限段 Aₙ の圏との同値は型に含まれない。,,found,special
 4.1.7.1,none,,通常の相対圏と弱同値を保つ LocalizerMorphism を調べた。準圏上のホモトピーで閉じた systems の順序集合を分類する WCat∞ のデカルト・ファイブレーションは確認できなかった。,,not_found,
 4.1.7.2,none,,モデル圏から個別の hammock 局所化を作る宣言はある。WCat∞ 上でそのような局所化を関手化して G の左随伴とし、有限積保存を与える型は見つからなかった。,,not_found,
 4.1.7.3,partial,SerrePositivity.EInfinity.SimplicialLocalization.modelHammock_isLocalization @ SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean:84,仮定：C はモデル圏の通常の nerve で、W は弱同値。関手的分解と指定フレームを要求する（Lean が強い：一般の準圏と system を扱わない）。結論：指定された弱同値を反転する普遍的な C[W⁻¹] の模型（一致する特殊例。全 system に対する左随伴の構成は型にない）。,,found,special
