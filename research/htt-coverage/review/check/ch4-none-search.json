@@ -10242,6 +10242,136 @@
     ],
     "decision": "相対左 Kan 関手の制限の始点境界充填と、自明 Kan ファイブレーションからの切断を調べた。固定底上の二つの関手準圏間で、指定した切断と制限を左・右随伴として結ぶ宣言は見つからなかった。"
   },
+  "4.3.3.2": {
+    "page": 285,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(relativeJoinCylinder|leftKanCylinder|RelativeJoinRealization|IsLeftKanExtension|exists_kanLeftCanonical_strictification)",
+          "SerrePositivity"
+        ],
+        "file_count": 182,
+        "line_count": 736
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(relativeJoinCylinder|leftKanCylinder|RelativeJoinRealization|IsLeftKanExtension|exists_kanLeftCanonical_strictification)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 18,
+        "line_count": 262
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderEquivalence.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_pullback_iff {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : IsPrecompositionEquivalence (overPullbackMap (relativeJoinCylinderComparisonOver f) (Over.mk h)) ↔ IsPrecompositionEquivalence (relativeJoinCylinderComparison (pullback.snd f h))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isPrecompositionEquivalence_relativeJoinCylinderComparison {X Y : SSet.{u}} (f : X ⟶ Y) : IsPrecompositionEquivalence (relativeJoinCylinderComparison f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRealization.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def leftKanCylinderDiagram {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) : pushout (prismEndpoint 1 K) δ ⟶ D := pushout.desc ((β_ (Δ[1] : SSet.{u}) K).hom ≫ β.h) F (by rw [← Category.assoc, prismEndpoint_one_braiding] exact β.h₁)"
+          },
+          {
+            "line": 36,
+            "head": "structure LeftKanRelativeJoinRealization {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) where"
+          },
+          {
+            "line": 46,
+            "head": "lemma leftKanRelativeJoinRealization_nonempty {K C D : SSet.{u}} [Quasicategory D] (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) : Nonempty (LeftKanRelativeJoinRealization δ F₀ F β)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isLeftKanExtension_iff_of_diagram_eq_of_h_eq {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ F₀' : K ⟶ D} {F F' : C ⟶ D} (h₀ : F₀ = F₀') (hF : F = F') (α : SSet.Homotopy F₀ (δ ≫ F)) (β : SSet.Homotopy F₀' (δ ≫ F')) (h : α.h = β.h) : IsLeftKanExtension δ F₀ F α ↔ IsLeftKanExtension δ F₀' F' β"
+          },
+          {
+            "line": 43,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : IsLeftKanExtension δ F₀ F β ↔ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          },
+          {
+            "line": 58,
+            "head": "lemma IsLeftKanExtension.exists_relativeJoin_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} (hβ : IsLeftKanExtension δ F₀ F β) : ∃ (s : LeftKanRelativeJoinRealization δ F₀ F β) (r : s.Strictification), (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy r.transformation) = SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)) ∧ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma exists_kanLeftCanonical_strictification {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) {F₀ : K ⟶ D} {F : C ⟶ D} (β : SSet.Homotopy F₀ (δ ≫ F)) (hβ : IsLeftKanExtension δ F₀ F β) : ∃ G : C ⟶ D, δ ≫ G = F₀ ∧ ∀ c : C _⦋0⦌, IsColimitCone (leftKanCanonicalCocone δ G c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+        "signatures": [
+          {
+            "line": 171,
+            "head": "class IsLeftKanExtension : Prop where"
+          },
+          {
+            "line": 178,
+            "head": "noncomputable def isUniversalOfIsLeftKanExtension : (LeftExtension.mk F' α).IsUniversal := IsLeftKanExtension.nonempty_isUniversal.some"
+          },
+          {
+            "line": 183,
+            "head": "noncomputable def descOfIsLeftKanExtension (G : D ⥤ H) (β : F ⟶ L ⋙ G) : F' ⟶ G := (F'.isUniversalOfIsLeftKanExtension α).desc (LeftExtension.mk G β)"
+          }
+        ]
+      }
+    ],
+    "decision": "標準の相対結合への写像円筒の比較は、区間上の圏同値を与える。しかし、指定延長を厳密に因子分解し、包含に沿う左 Kan 条件を課すという定義全体をこの模型と比較する宣言は見つからなかった。比較写像の構成だけでは定義の内容を得られない。"
+  },
   "4.3.3.4": {
     "page": 286,
     "citations": {
@@ -10354,6 +10484,136 @@
       }
     ],
     "decision": "標準の相対結合への比較と、指定した変換の類を保つ厳密化はある。任意の区間上の単射な圏同値で円筒を広げ、元の図式を等式で回収する左 Kan 延長を得る宣言は見つからなかった。"
+  },
+  "4.3.3.5": {
+    "page": 287,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.3.2",
+        "4.3.3",
+        "4.4.1"
+      ],
+      "files": {
+        "SerrePositivity/KST/SConstruction/LimitBaseTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FirstRowPositiveBoundary.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitDiagramTransport.lean": 1,
+        "SerrePositivity/KST/SConstruction/FrameCofiberCompatibility.lean": 1,
+        "SerrePositivity/KST/SConstruction/FramePreservingCompletion.lean": 1,
+        "SerrePositivity/KST/SConstruction/ColimitBaseTransport.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(relativeJoinCylinder|leftKanCylinder|RelativeJoinRealization|IsLeftKanExtension|exists_kanLeftCanonical_strictification)",
+          "SerrePositivity"
+        ],
+        "file_count": 182,
+        "line_count": 736
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(relativeJoinCylinder|leftKanCylinder|RelativeJoinRealization|IsLeftKanExtension|exists_kanLeftCanonical_strictification)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 18,
+        "line_count": 262
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Joins/RelativeJoinCylinderEquivalence.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_pullback_iff {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) : IsPrecompositionEquivalence (overPullbackMap (relativeJoinCylinderComparisonOver f) (Over.mk h)) ↔ IsPrecompositionEquivalence (relativeJoinCylinderComparison (pullback.snd f h))"
+          },
+          {
+            "line": 48,
+            "head": "lemma isPrecompositionEquivalence_relativeJoinCylinderComparison {X Y : SSet.{u}} (f : X ⟶ Y) : IsPrecompositionEquivalence (relativeJoinCylinderComparison f)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinRealization.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "def leftKanCylinderDiagram {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) : pushout (prismEndpoint 1 K) δ ⟶ D := pushout.desc ((β_ (Δ[1] : SSet.{u}) K).hom ≫ β.h) F (by rw [← Category.assoc, prismEndpoint_one_braiding] exact β.h₁)"
+          },
+          {
+            "line": 36,
+            "head": "structure LeftKanRelativeJoinRealization {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) where"
+          },
+          {
+            "line": 46,
+            "head": "lemma leftKanRelativeJoinRealization_nonempty {K C D : SSet.{u}} [Quasicategory D] (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D) (β : SSet.Homotopy F₀ (δ ≫ F)) : Nonempty (LeftKanRelativeJoinRealization δ F₀ F β)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/RelativeJoinLeftCriterion.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma isLeftKanExtension_iff_of_diagram_eq_of_h_eq {K C D : SSet.{u}} (δ : K ⟶ C) {F₀ F₀' : K ⟶ D} {F F' : C ⟶ D} (h₀ : F₀ = F₀') (hF : F = F') (α : SSet.Homotopy F₀ (δ ≫ F)) (β : SSet.Homotopy F₀' (δ ≫ F')) (h : α.h = β.h) : IsLeftKanExtension δ F₀ F α ↔ IsLeftKanExtension δ F₀' F' β"
+          },
+          {
+            "line": 43,
+            "head": "lemma LeftKanRelativeJoinRealization.Strictification.isLeftKanExtension_iff_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} {s : LeftKanRelativeJoinRealization δ F₀ F β} (r : s.Strictification) : IsLeftKanExtension δ F₀ F β ↔ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          },
+          {
+            "line": 58,
+            "head": "lemma IsLeftKanExtension.exists_relativeJoin_local_colimits {K C D : SSet.{u}} [Quasicategory D] {δ : K ⟶ C} {F₀ : K ⟶ D} {F : C ⟶ D} {β : SSet.Homotopy F₀ (δ ≫ F)} (hβ : IsLeftKanExtension δ F₀ F β) : ∃ (s : LeftKanRelativeJoinRealization δ F₀ F β) (r : s.Strictification), (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy r.transformation) = SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy β)) ∧ ∀ c : C _⦋0⦌, IsColimitCone (kanRelativeJoinDiagramCocone δ c r.diagram)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/KanExtension/LeftStrictExistence.lean",
+        "signatures": [
+          {
+            "line": 26,
+            "head": "lemma exists_kanLeftCanonical_strictification {K C D : SSet.{u}} [Quasicategory K] [Quasicategory C] [Quasicategory D] (δ : K ⟶ C) [Mono δ] [InnerFibration δ] (hδ : IsFullyFaithful δ) {F₀ : K ⟶ D} {F : C ⟶ D} (β : SSet.Homotopy F₀ (δ ≫ F)) (hβ : IsLeftKanExtension δ F₀ F β) : ∃ G : C ⟶ D, δ ≫ G = F₀ ∧ ∀ c : C _⦋0⦌, IsColimitCone (leftKanCanonicalCocone δ G c)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Functor/KanExtension/Basic.lean",
+        "signatures": [
+          {
+            "line": 171,
+            "head": "class IsLeftKanExtension : Prop where"
+          },
+          {
+            "line": 178,
+            "head": "noncomputable def isUniversalOfIsLeftKanExtension : (LeftExtension.mk F' α).IsUniversal := IsLeftKanExtension.nonempty_isUniversal.some"
+          },
+          {
+            "line": 183,
+            "head": "noncomputable def descOfIsLeftKanExtension (G : D ⥤ H) (β : F ⟶ L ⋙ G) : F' ⟶ G := (F'.isUniversalOfIsLeftKanExtension α).desc (LeftExtension.mk G β)"
+          }
+        ]
+      }
+    ],
+    "decision": "点ごとの一般左 Kan 条件と恒等単位の標準局所余錐の余極限性の比較、および充満単射上での厳密化はある。原典の写像円筒上の厳密な因子分解による一般左 Kan 条件を経由する (1)・(2) の比較を与える宣言は見つからなかった。"
   },
   "4.3.3.6": {
     "page": 288,
@@ -10779,101 +11039,6 @@
     ],
     "decision": "相対結合を用いた局所余錐の判定と、指定した余デカルト辺を保つ写像を読んだ。二つの余デカルトファイブレーション間の任意の添字写像について、同じ単位の全空間と繊維での左 Kan 条件を比較する宣言は見つからなかった。"
   },
-  "4.4.1.1": {
-    "page": 294,
-    "citations": {
-      "item": 0,
-      "subsection": 0,
-      "neighboring_subsections": [
-        "4.3.3",
-        "4.4.1",
-        "4.4.2"
-      ],
-      "files": {
-        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/SequentialColimits.lean": 1,
-        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean": 2,
-        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialPreservedColimits.lean": 1,
-        "SerrePositivity/InfinityCategories/Core/PastingShapes.lean": 1,
-        "SerrePositivity/KST/SConstruction/GappedDegenerateSquares.lean": 1,
-        "SerrePositivity/InfinityCategories/Stable/Pasting.lean": 2,
-        "SerrePositivity/InfinityCategories/Stable/PullbackPasting.lean": 2,
-        "SerrePositivity/KST/SConstruction/PushoutTranspose.lean": 1,
-        "SerrePositivity/KST/SConstruction/GappedTriples.lean": 1
-      }
-    },
-    "searches": [
-      {
-        "root": "SerrePositivity",
-        "argv": [
-          "rg",
-          "--count",
-          "--glob",
-          "*.lean",
-          "--glob",
-          "!**/Archive/**",
-          "-e",
-          "(?i)colimit.*(disjoint|sigma|sum|amalgamat|coproduct)|(disjoint|sigma|sum|amalgamat|coproduct).*colimit",
-          "SerrePositivity"
-        ],
-        "file_count": 182,
-        "line_count": 616
-      },
-      {
-        "root": ".lake/packages/mathlib/Mathlib",
-        "argv": [
-          "rg",
-          "--count",
-          "--glob",
-          "*.lean",
-          "--glob",
-          "!**/Archive/**",
-          "-e",
-          "(?i)colimit.*(disjoint|sigma|sum|amalgamat|coproduct)|(disjoint|sigma|sum|amalgamat|coproduct).*colimit",
-          ".lake/packages/mathlib/Mathlib"
-        ],
-        "file_count": 85,
-        "line_count": 371
-      }
-    ],
-    "examined": [
-      {
-        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SimplicialCoproducts.lean",
-        "signatures": [
-          {
-            "line": 86,
-            "head": "def simplicialCoproduct_isColimit (F : J → SSet.{u}) : IsColimit (Cofan.mk (simplicialCoproduct F) (simplicialCoproductι F)) where"
-          }
-        ]
-      },
-      {
-        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/SpaceCoproducts.lean",
-        "signatures": [
-          {
-            "line": 39,
-            "head": "def kanCoproductCocone_forget_isColimit (F : Discrete J ⥤ KanObject.{u}) : IsColimit (kanObjectForget.mapCocone (kanCoproductCocone F)) where"
-          },
-          {
-            "line": 51,
-            "head": "noncomputable def kanCoproductCocone_isColimit (F : Discrete J ⥤ KanObject.{u}) : IsColimit (kanCoproductCocone F) := kanObjectCocone_isColimit_of_forget _ (kanCoproductCocone_forget_isColimit F)"
-          },
-          {
-            "line": 78,
-            "head": "lemma spaceCoproductCocone_isColimitCone (F : Discrete J ⥤ KanObject.{u}) : IsColimitCone (spaceCoproductCocone F)"
-          }
-        ]
-      },
-      {
-        "file": "Mathlib/CategoryTheory/Limits/MonoCoprod.lean",
-        "signatures": [
-          {
-            "line": 130,
-            "head": "def isColimitBinaryCofanSum : IsColimit (binaryCofanSum c c₁ c₂ hc₁ hc₂) := BinaryCofan.IsColimit.mk _ (fun f₁ f₂ => Cofan.IsColimit.desc hc (fun i => match i with | Sum.inl i₁ => c₁.inj i₁ ≫ f₁ | Sum.inr i₂ => c₂.inj i₂ ≫ f₂)) (fun f₁ f₂ => Cofan.IsColimit.hom_ext hc₁ _ _ (by simp)) (fun f₁ f₂ => Cofan.IsColimit.hom_ext hc₂ _ _ (by simp)) (fun f₁ f₂ m hm₁ hm₂ => by apply Cofan.IsColimit.hom_ext hc rintro (i₁ | i₂) <;> cat_disch)"
-          }
-        ]
-      }
-    ],
-    "decision": "単体集合の非交和そのものの余積、空間の離散図式の余極限、通常の圏で二組の余積を一つにまとめる型を読んだ。任意の部分図式の余極限を一つずつ指定し、全図式の余極限とその頂点の余積を比較する宣言は見つからなかった。"
-  },
   "4.4.2.8": {
     "page": 297,
     "citations": {
@@ -11020,5 +11185,1574 @@
       }
     ],
     "decision": "左ファイブレーションに沿う円筒の持ち上げと、単点を結合する場合の左アノダイン性を調べた。弱可縮な任意の形状について、指定余錐が相対余極限となるコスライスの自明 Kan ファイブレーションを与える宣言は見つからなかった。"
+  },
+  "4.4.3.1": {
+    "page": 299,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.4.2",
+        "4.4.3",
+        "4.4.4"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/SequentialColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialPreservedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/PastingShapes.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedDegenerateSquares.lean": 1,
+        "SerrePositivity/InfinityCategories/Stable/Pasting.lean": 2,
+        "SerrePositivity/InfinityCategories/Stable/PullbackPasting.lean": 2,
+        "SerrePositivity/KST/SConstruction/PushoutTranspose.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedTriples.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(coequa|parallelPair|multicoequalizer|colimitAttachmentApexEdge|hasColimit_pushout_shape)",
+          "SerrePositivity"
+        ],
+        "file_count": 90,
+        "line_count": 389
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(coequa|parallelPair|multicoequalizer|colimitAttachmentApexEdge|hasColimit_pushout_shape)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 120,
+        "line_count": 1988
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Derived/BoundaryFaceGluing.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma boundaryFaceMulticoequalizer (n : ℕ) : Subcomplex.MulticoequalizerDiagram (boundary (n + 2) : (Δ[n + 2] : SSet.{u}).Subcomplex) (fun j : Fin (n + 3) => stdSimplex.face {j}ᶜ) (fun j k => stdSimplex.face {j, k}ᶜ) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/HomotopyLimits/ColimitAttachmentComparison.lean",
+        "signatures": [
+          {
+            "line": 64,
+            "head": "def colimitAttachmentApexEdge (c : JoinCocone p) (hc : IsColimitCone c) (i : A ⟶ C) (F : C ⟶ X) (hi : i ≫ F = p) (d : JoinCocone F) : SSet.Truncated.Edge (X := (truncation 2).obj X) c.vertex d.vertex"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Stable/Pasting.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "lemma isPushoutSquare_pasting_iff {X : SSet.{u}} [Quasicategory X] (F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hleft : IsPushoutSquare (pastingSquare F 2)) : IsPushoutSquare (pastingSquare F 0) ↔ IsPushoutSquare (pastingSquare F 1) := (pastingCocone_isColimitCone_iff_right F).symm.trans ((pastingCocone_isColimitCone_iff_outerCocone F hleft).trans (pastingOuterCocone_isColimitCone_iff_outer F))"
+          },
+          {
+            "line": 32,
+            "head": "lemma isPushoutSquare_pasting {X : SSet.{u}} [Quasicategory X] (F : (Δ[2] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hleft : IsPushoutSquare (pastingSquare F 2)) (hright : IsPushoutSquare (pastingSquare F 0)) : IsPushoutSquare (pastingSquare F 1) := (isPushoutSquare_pasting_iff F hleft).mp hright"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma hasPreservedColimit_countable_op_of_finite_sequential {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (hseq : ∀ G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ X, Ind.HasPreservedColimit U G) (B : SSet.{u}) [Countable B.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ X) : Ind.HasPreservedColimit U F"
+          },
+          {
+            "line": 48,
+            "head": "lemma hasPreservedColimit_countable_of_coproducts_finite {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (K : SSet.{u}) [Countable K.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ X) : Ind.HasPreservedColimit U F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Constructions/LimitsOfProductsAndEqualizers.lean",
+        "signatures": [
+          {
+            "line": 373,
+            "head": "noncomputable def colimitCoconeOfCoequalizerAndCoproduct (F : J ⥤ C) [HasColimit (Discrete.functor F.obj)] [HasColimit (Discrete.functor fun f : Σ p : J × J, p.1 ⟶ p.2 => F.obj f.1.1)] [HasCoequalizers C] : ColimitCocone F where"
+          },
+          {
+            "line": 387,
+            "head": "theorem hasColimit_of_coequalizer_and_coproduct (F : J ⥤ C) [HasColimit (Discrete.functor F.obj)] [HasColimit (Discrete.functor fun f : Σ p : J × J, p.1 ⟶ p.2 => F.obj f.1.1)] [HasCoequalizers C] : HasColimit F := HasColimit.mk (colimitCoconeOfCoequalizerAndCoproduct F)"
+          },
+          {
+            "line": 405,
+            "head": "theorem has_colimits_of_hasCoequalizers_and_coproducts [HasCoproducts.{w} C] [HasCoequalizers C] : HasColimitsOfSize.{w, w} C where"
+          }
+        ]
+      }
+    ],
+    "decision": "単体集合の多重余等化子による境界の貼り合わせ、余極限頂点の比較辺、Mathlib の通常の平行対の余等化子を調べた。互いに素な二つの包含による商の余極限を、誘導された同じ二辺の余等化子と比較する宣言は見つからなかった。"
+  },
+  "4.4.3.3": {
+    "page": 299,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.4.2",
+        "4.4.3",
+        "4.4.4"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Presentable/Localization/SequentialColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean": 2,
+        "SerrePositivity/InfinityCategories/F2/Presentable/Supply/SequentialPreservedColimits.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/PastingShapes.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedDegenerateSquares.lean": 1,
+        "SerrePositivity/InfinityCategories/Stable/Pasting.lean": 2,
+        "SerrePositivity/InfinityCategories/Stable/PullbackPasting.lean": 2,
+        "SerrePositivity/KST/SConstruction/PushoutTranspose.lean": 1,
+        "SerrePositivity/KST/SConstruction/GappedTriples.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(closedUnderColimits|coequa.*coprod|coprod.*coequa|generatedSource.*(colimit|coproduct)|indArrowImage.*(colimit|coproduct))",
+          "SerrePositivity"
+        ],
+        "file_count": 44,
+        "line_count": 173
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(closedUnderColimits|coequa.*coprod|coprod.*coequa|generatedSource.*(colimit|coproduct)|indArrowImage.*(colimit|coproduct))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 31,
+        "line_count": 219
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/GeneratedSourceCoproducts.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "lemma generatedSource_coproduct_colimit_mem (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) {B : Type u} (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶ generatedSourceCategory edges x) (c : JoinCocone (D ≫ generatedSourceInclusion edges x)) (hc : IsColimitCone c) : (JoinCocone.leg c.vertex (𝟙 Δ[0])).edge ∈ generatedEdges edges"
+          },
+          {
+            "line": 83,
+            "head": "lemma generatedSource_hasPreservedCoproduct (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) (B : Type u) (D : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (Discrete B)) ⟶ generatedSourceCategory edges x) : Ind.HasPreservedColimit (generatedSourceInclusion edges x) D"
+          },
+          {
+            "line": 99,
+            "head": "lemma generatedSource_hasSmallCoproducts (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌) : HasSmallCoproducts (generatedSourceCategory edges x)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/IndImageAllFiniteColimits.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma indArrowImage_hasPreservedFiniteColimit (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ indArrowImageCategory edges G) : Ind.HasPreservedColimit (indArrowImageInclusion edges G) D"
+          },
+          {
+            "line": 65,
+            "head": "lemma indArrowImage_hasFiniteColimits : HasFiniteColimits (indArrowImageCategory edges G)"
+          },
+          {
+            "line": 73,
+            "head": "lemma indArrowImageInclusion_preservesFiniteColimit (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ indArrowImageCategory edges G) (c : JoinCocone D) (hc : IsColimitCone c) : IsColimitCone (mapJoinCocone (indArrowImageInclusion edges G) c) := (indArrowImage_hasPreservedFiniteColimit edges hC h G hff hG hcompact hcover K D).map_isColimit c hc"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Supply/FiniteCoproductColimitGeneration.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma hasPreservedColimit_countable_op_of_finite_sequential {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (hseq : ∀ G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} ℕ)) ⟶ X, Ind.HasPreservedColimit U G) (B : SSet.{u}) [Countable B.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj B.op ⟶ X) : Ind.HasPreservedColimit U F"
+          },
+          {
+            "line": 48,
+            "head": "lemma hasPreservedColimit_countable_of_coproducts_finite {X Y : SSet.{u + 1}} [Quasicategory X] [Quasicategory Y] (U : X ⟶ Y) (hX : HasSmallCoproducts X) (hU : PreservesSmallCoproducts U) (hfin : ∀ (K : SSet.{u + 1}) [K.Finite] (D : K ⟶ X), Ind.HasPreservedColimit U D) (K : SSet.{u}) [Countable K.S] (F : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ X) : Ind.HasPreservedColimit U F"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/ObjectProperty/ColimitsOfShape.lean",
+        "signatures": [
+          {
+            "line": 193,
+            "head": "class IsClosedUnderColimitsOfShape (P : ObjectProperty C) (J : Type u') [Category.{v'} J] where"
+          },
+          {
+            "line": 197,
+            "head": "lemma IsClosedUnderColimitsOfShape.mk' [P.IsClosedUnderIsomorphisms] (h : P.strictColimitsOfShape J ≤ P) : P.IsClosedUnderColimitsOfShape J where"
+          },
+          {
+            "line": 205,
+            "head": "instance [Nonempty J] : IsClosedUnderColimitsOfShape (⊥ : ObjectProperty C) J where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Constructions/LimitsOfProductsAndEqualizers.lean",
+        "signatures": [
+          {
+            "line": 373,
+            "head": "noncomputable def colimitCoconeOfCoequalizerAndCoproduct (F : J ⥤ C) [HasColimit (Discrete.functor F.obj)] [HasColimit (Discrete.functor fun f : Σ p : J × J, p.1 ⟶ p.2 => F.obj f.1.1)] [HasCoequalizers C] : ColimitCocone F where"
+          },
+          {
+            "line": 387,
+            "head": "theorem hasColimit_of_coequalizer_and_coproduct (F : J ⥤ C) [HasColimit (Discrete.functor F.obj)] [HasColimit (Discrete.functor fun f : Σ p : J × J, p.1 ⟶ p.2 => F.obj f.1.1)] [HasCoequalizers C] : HasColimit F := HasColimit.mk (colimitCoconeOfCoequalizerAndCoproduct F)"
+          },
+          {
+            "line": 405,
+            "head": "theorem has_colimits_of_hasCoequalizers_and_coproducts [HasCoproducts.{w} C] [HasCoequalizers C] : HasColimitsOfSize.{w, w} C where"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の圏の形状別の閉性、部分圏への余極限の移送、準圏で生成部分圏の押し出しと小余積への閉性を調べた。任意の充満部分圏について余等化子と κ 小余積での閉性から κ 小余極限での閉性を導く宣言は見つからなかった。"
+  },
+  "4.4.4.4": {
+    "page": 300,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.4.3",
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(RepresentableSmallSpaceFunctor|RepresentableBy|enriched.*represent|represent.*enriched|homInfinity|HomotopyEnrich)",
+          "SerrePositivity"
+        ],
+        "file_count": 133,
+        "line_count": 451
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(RepresentableSmallSpaceFunctor|RepresentableBy|enriched.*represent|represent.*enriched|homInfinity|HomotopyEnrich)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 27,
+        "line_count": 358
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/ContravariantContinuity.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "def IsRepresentableSmallSpaceFunctor {C : SSet.{u + 1}} [Quasicategory C] (F : C.op ⟶ SpaceInfinity.{u}) : Prop := ∃ x : C _⦋0⦌, Nonempty (FunctorIso (representablePresheafInfinity x) ((SSet.uliftFunctor.{u + 2, u + 1}).map F ≫ Compact.spaceUniverseDiagram))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/YonedaInfinityConstruction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def twistedArrowHomInfinity (C : SSet.{u}) [Quasicategory C] : (SSet.uliftFunctor.{u + 1, u}).obj (C.op ⊗ C) ⟶ SpaceInfinity.{u} := leftStraighteningInfinityDiagram (twistedArrowProjection C)"
+          },
+          {
+            "line": 33,
+            "head": "def homInfinityJointEvaluation (C : SSet.{u}) [Quasicategory C] : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⊗ (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ SpaceInfinity.{u} := (HomotopyLimits.uliftTensorIso.{u, u + 1} C.op C).inv ≫ twistedArrowHomInfinity C"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Fibrations/TerminalRightFibrationRepresentation.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "def rightFibrationTerminalSliceMap {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : sliceOver (SSet.yonedaEquiv.symm t) ⟶ sliceOver (SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) t)) := sliceOverPostcomp _ p ≫ (eqToIso (congrArg sliceOver (SSet.yonedaEquiv_symm_comp t p))).hom"
+          },
+          {
+            "line": 31,
+            "head": "lemma rightFibrationTerminalSliceMap_projection {E B : SSet.{u}} (p : E ⟶ B) (t : E _⦋0⦌) : rightFibrationTerminalSliceMap p t ≫ sliceOverProjection _ = sliceOverProjection _ ≫ p"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma StrongSplitting.cone_restrict {X : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) : (restrictJoinCone (splittingDiagramCone s.val) idemInclusion).val = s.cone.val"
+          },
+          {
+            "line": 30,
+            "head": "lemma StrongSplitting.cone_isLimit {X : SSet.{u}} [Quasicategory X] {d : CoherentIdempotent X} (s : StrongSplitting d) : IsLimitCone s.cone"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class EnrichedCategory (C : Type u₁) where"
+          },
+          {
+            "line": 77,
+            "head": "def eId (X : C) : 𝟙_ V ⟶ X ⟶[V] X := EnrichedCategory.id X"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Yoneda.lean",
+        "signatures": [
+          {
+            "line": 284,
+            "head": "structure RepresentableBy (F : Cᵒᵖ ⥤ Type v) (Y : C) where"
+          },
+          {
+            "line": 290,
+            "head": "lemma RepresentableBy.comp_homEquiv_symm {F : Cᵒᵖ ⥤ Type v} {Y : C} (e : F.RepresentableBy Y) {X X' : C} (x : F.obj (op X')) (f : X ⟶ X') : f ≫ e.homEquiv.symm x = e.homEquiv.symm (F.map f.op x) := e.homEquiv.injective (by simp [homEquiv_comp])"
+          },
+          {
+            "line": 295,
+            "head": "lemma RepresentableBy.homEquiv_unop_comp {F : Cᵒᵖ ⥤ Type*} {Y : C} (h : F.RepresentableBy Y) {X : Cᵒᵖ} {X' : C} (f : Opposite.op X' ⟶ X) (g : X' ⟶ Y) : h.homEquiv (f.unop ≫ g) = F.map f (h.homEquiv g) := h.homEquiv_comp _ _"
+          }
+        ]
+      }
+    ],
+    "decision": "宇宙変更した元の前層と表現可能 Hom との全関手同型を要求する述語はある。指定した η が誘導する各写像の同値性、および H 豊穣ホモトピー圏上の表現とこの述語の比較を与える宣言は見つからなかった。"
+  },
+  "4.4.4.9": {
+    "page": 302,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "4.4.3",
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(tensorSpaceFunctor|cocone.*(constant|HomFamily)|constant.*(cocone|Hom)|spaceTensor|colimit.*(powers|exponent))",
+          "SerrePositivity"
+        ],
+        "file_count": 672,
+        "line_count": 2204
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(tensorSpaceFunctor|cocone.*(constant|HomFamily)|constant.*(cocone|Hom)|spaceTensor|colimit.*(powers|exponent))",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 114
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Tensor/Space.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "structure SpaceTensorData (M : E _⦋0⦌) where"
+          },
+          {
+            "line": 31,
+            "head": "def spaceTensorData (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceTensorData M"
+          },
+          {
+            "line": 48,
+            "head": "def tensorSpaceFunctor (hE : F2.Presentable.IsPresentable E) (M : E _⦋0⦌) : SpaceInfinity.{u} ⟶ E := (spaceTensorData hE M).tensor"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Yoneda/PresheafDensity/Support/CoconeFiberHomComparison.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def coconeFiberHomComparisonIso (c : JoinCocone F) (z : SpaceInfinity.{u} _⦋0⦌) : FunctorIso (coconePointHomRelativeComposite c z ≫ (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom) ((pointedIntervalTransport (pinchedHomLeftToIntervalMappingSpace c.vertex z)).map ≫ (pre (coconeFiberMap c)).app (vertexFiber pointedSpaceProjection z))"
+          },
+          {
+            "line": 54,
+            "head": "lemma coconeFiberHomComparison_of_pre (c : JoinCocone F) (z : SpaceInfinity.{u} _⦋0⦌) (hp : IsSimplicialHomotopyEquivalence ((pre (coconeFiberMap c)).app (vertexFiber pointedSpaceProjection z))) : IsSimplicialHomotopyEquivalence (coconePointHomRelativeComposite c z ≫ (constantUnstraighteningRelativeIso (leftUnstraighteningProjection F) z).hom)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/ContractibleConstantColimits.lean",
+        "signatures": [
+          {
+            "line": 29,
+            "head": "def constantJoinCocone (K : SSet.{u}) {X : SSet.{u}} (x : X _⦋0⦌) : JoinCocone (SSet.const x : K ⟶ X) := ⟨SSet.const x, SSet.comp_const _ _⟩"
+          },
+          {
+            "line": 36,
+            "head": "lemma constantJoinCocone_isColimit_of_pointCofinal {K X : SSet.{u}} [Quasicategory X] (hK : IsRightCofinal (stdSimplex.isTerminalObj₀.from K)) (x : X _⦋0⦌) : IsColimitCone (constantJoinCocone K x)"
+          },
+          {
+            "line": 51,
+            "head": "lemma constantJoinCocone_isColimit {K X : SSet.{u}} [Quasicategory X] (hK : IsWeaklyContractible K) (x : X _⦋0⦌) : IsColimitCone (constantJoinCocone K x) := constantJoinCocone_isColimit_of_pointCofinal (pointProjection_isRightCofinal hK) x"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma StrongSplitting.cone_restrict {X : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) : (restrictJoinCone (splittingDiagramCone s.val) idemInclusion).val = s.cone.val"
+          },
+          {
+            "line": 30,
+            "head": "lemma StrongSplitting.cone_isLimit {X : SSet.{u}} [Quasicategory X] {d : CoherentIdempotent X} (s : StrongSplitting d) : IsLimitCone s.cone"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 59,
+            "head": "class EnrichedCategory (C : Type u₁) where"
+          },
+          {
+            "line": 77,
+            "head": "def eId (X : C) : 𝟙_ V ⟶ X ⟶[V] X := EnrichedCategory.id X"
+          }
+        ]
+      }
+    ],
+    "decision": "余錐の写像空間による一般の判定と、presentable な準圏で空間によるテンソルと Hom の随伴を調べた。任意の準圏の定値図式で、指定余錐が与える [K]→Map(X,Y) と写像空間の指数 [K] を同じ判定で結ぶ宣言は見つからなかった。"
+  },
+  "4.4.5.1": {
+    "page": 303,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(stablyFree|finiteFree|idempotent.*(projective|perfect|complex)|complex.*idempotent|dgNerve.*complete)",
+          "SerrePositivity"
+        ],
+        "file_count": 103,
+        "line_count": 457
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(stablyFree|finiteFree|idempotent.*(projective|perfect|complex)|complex.*idempotent|dgNerve.*complete)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 12,
+        "line_count": 50
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "def nerveHomotopyFunctor (C : Type u) [SmallCategory C] : C ⥤ hoFunctor.obj (nerve C) where"
+          },
+          {
+            "line": 33,
+            "head": "abbrev CoherentIdempotent (X : SSet.{u}) := IdemShape.{u} ⟶ X"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma strongSplitting_exists_of_hasLimit {X : SSet.{u}} [Quasicategory X] (d : CoherentIdempotent X) (hd : HasLimit d) : Nonempty (StrongSplitting d)"
+          },
+          {
+            "line": 30,
+            "head": "lemma nonemptyStrongSplitting_iff_hasLimit {X : SSet.{u}} [Quasicategory X] (d : CoherentIdempotent X) : Nonempty (StrongSplitting d) ↔ HasLimit d := ⟨fun ⟨s⟩ ↦ s.hasLimit, strongSplitting_exists_of_hasLimit d⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Derived/Gluing/NativePerfectYonedaEquivalence.lean",
+        "signatures": [
+          {
+            "line": 20,
+            "head": "lemma dgGluingNativePerfectYoneda_fullyFaithful : IsFullyFaithful (dgNerve.map (dgPerfectYoneda R C))"
+          },
+          {
+            "line": 27,
+            "head": "lemma dgGluingNativePerfectYoneda_equivalence (hC : IsIdempotentComplete (dgNerve R C)) : IsQCatEquivalence (dgNerve.map (dgPerfectYoneda R C))"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Idempotents/Karoubi.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "structure Karoubi where"
+          },
+          {
+            "line": 58,
+            "head": "theorem ext {P Q : Karoubi C} (h_X : P.X = Q.X) (h_p : P.p ≫ eqToHom h_X = eqToHom h_X ≫ Q.p) : P = Q"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Algebra/Module/Projective.lean",
+        "signatures": [
+          {
+            "line": 71,
+            "head": "class Module.Projective (R : Type*) [Semiring R] (P : Type*) [AddCommMonoid P] [Module R P] : Prop where"
+          },
+          {
+            "line": 82,
+            "head": "theorem projective_def : Projective R P ↔ ∃ s : P →ₗ[R] P →₀ R, Function.LeftInverse (linearCombination R id) s := ⟨fun h => h.1, fun h => ⟨h⟩⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "dg 神経の完全対象、有限セル複体、Karoubi 完備化と有限生成射影加群を調べた。有限自由有界複体の準圏の冪等完備性を、すべての有限生成射影加群の安定自由性と同値にする宣言は見つからなかった。"
+  },
+  "4.4.5.17": {
+    "page": 308,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IdemShape|idemInclusion|WalkingIdem|nerveMap.*[Cc]ofinal|[Cc]ofinal.*nerveMap|NoMaxOrder)",
+          "SerrePositivity"
+        ],
+        "file_count": 94,
+        "line_count": 304
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(IdemShape|idemInclusion|WalkingIdem|nerveMap.*[Cc]ofinal|[Cc]ofinal.*nerveMap|NoMaxOrder)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 90,
+        "line_count": 305
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "lemma idemInclusion_coslice_isWeaklyContractible (P : WalkingSplit.{u}) : IsWeaklyContractible (pullback idemInclusion (sliceUnderProjection (nervePoint P)))"
+          },
+          {
+            "line": 55,
+            "head": "lemma idemInclusion_isRightCofinal : IsRightCofinal idemInclusion.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def idemShapeContraction : SSet.Homotopy (𝟙 IdemShape.{u}) (SSet.const (nerveVertex walkingObject))"
+          },
+          {
+            "line": 34,
+            "head": "lemma idemShape_isWeaklyContractible : IsWeaklyContractible IdemShape.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Localization/MonotoneNerveCofinality.lean",
+        "signatures": [
+          {
+            "line": 38,
+            "head": "lemma monotone_nerveMap_isRightCofinal {P Q : Type u} [Preorder P] [Preorder Q] [IsDirectedOrder P] {f : P → Q} (hf : Monotone f) (h : ∀ q, ∃ p, q ≤ f p) : IsRightCofinal (nerveMap hf.functor)"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Category/Preorder.lean",
+        "signatures": [
+          {
+            "line": 17,
+            "head": "We install a category instance on any preorder. This is not to be confused with the category _of_"
+          },
+          {
+            "line": 42,
+            "head": "The category structure coming from a preorder. There is a morphism `X ⟶ Y` if and only if `X ≤ Y`."
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Filtered/Basic.lean",
+        "signatures": [
+          {
+            "line": 82,
+            "head": "class IsFilteredOrEmpty : Prop where"
+          },
+          {
+            "line": 95,
+            "head": "class IsFiltered : Prop extends IsFilteredOrEmpty C where"
+          }
+        ]
+      }
+    ],
+    "decision": "Idem の弱可縮性、Idem→Idem⁺ の共終性、単体的列と通常圏の神経の共終性を調べた。最大元のない任意の全順序 A から、非退化単体を非退化に送る指定の N(A)→Idem の共終性を与える宣言は見つからなかった。"
+  },
+  "4.4.5.18": {
+    "page": 308,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(idem.*sequential|sequential.*idem|idempotent.*colimit|StrongSplitting.*[Cc]olimit|IdemShape|WalkingIdem)",
+          "SerrePositivity"
+        ],
+        "file_count": 57,
+        "line_count": 181
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(idem.*sequential|sequential.*idem|idempotent.*colimit|StrongSplitting.*[Cc]olimit|IdemShape|WalkingIdem)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 2,
+        "line_count": 5
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma StrongSplitting.cocone_isColimit {X : SSet.{u}} [Quasicategory X] {d : CoherentIdempotent X} (s : StrongSplitting d) : IsColimitCone s.cocone"
+          },
+          {
+            "line": 46,
+            "head": "lemma StrongSplitting.hasColimit {X : SSet.{u}} [Quasicategory X] {d : CoherentIdempotent X} (s : StrongSplitting d) : HasColimit d := ⟨s.cocone, s.cocone_isColimit⟩"
+          },
+          {
+            "line": 51,
+            "head": "lemma IsIdempotentComplete.hasColimit {X : SSet.{u}} [Quasicategory X] (hX : IsIdempotentComplete X) (d : CoherentIdempotent X) : HasColimit d"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def walkingCommaCosliceIso (P : WalkingSplit.{u}) : nerve (StructuredArrow P walkingInclusion) ≅ pullback idemInclusion (sliceUnderProjection (nervePoint P)) := SerrePositivity.InfinityCategories.F1B.nerveRightKanShapeIso P walkingInclusion ≪≫ pullbackSymmetry _ _"
+          },
+          {
+            "line": 36,
+            "head": "lemma walkingCommaCosliceIso_projection (P : WalkingSplit.{u}) : (walkingCommaCosliceIso P).hom ≫ pullback.fst idemInclusion (sliceUnderProjection (nervePoint P)) = nerveMap (StructuredArrow.proj P walkingInclusion)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma StrongSplitting.cone_restrict {X : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) : (restrictJoinCone (splittingDiagramCone s.val) idemInclusion).val = s.cone.val"
+          },
+          {
+            "line": 30,
+            "head": "lemma StrongSplitting.cone_isLimit {X : SSet.{u}} [Quasicategory X] {d : CoherentIdempotent X} (s : StrongSplitting d) : IsLimitCone s.cone"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class IsIdempotentComplete : Prop where"
+          },
+          {
+            "line": 64,
+            "head": "theorem isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent : IsIdempotentComplete C ↔ ∀ (X : C) (p : X ⟶ X), p ≫ p = p → HasEqualizer (𝟙 X) p"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Shapes/SequentialProduct.lean",
+        "signatures": [
+          {
+            "line": 36,
+            "head": "lemma functorObj_eq_pos {n m : ℕ} (h : m < n) : (fun i ↦ if _ : i < n then M i else N i) m = M m := dite_eq_left h"
+          },
+          {
+            "line": 39,
+            "head": "lemma functorObj_eq_neg {n m : ℕ} (h : ¬(m < n)) : (fun i ↦ if _ : i < n then M i else N i) m = N m := dite_eq_right h"
+          }
+        ]
+      }
+    ],
+    "decision": "強い分裂が与える元の Idem 全図式の余極限と、その任意の関手による保存はある。非負整数の神経から Idem への指定共終写像と、同じ冪等射の反復列の余極限をこの分裂対象と同定する宣言は見つからなかった。"
+  },
+  "4.4.5.19": {
+    "page": 309,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(Homeomorph|classifyingSpace|Groupoid|endomorphism_idem|CoherentIdempotent)",
+          "SerrePositivity"
+        ],
+        "file_count": 292,
+        "line_count": 1577
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(Homeomorph|classifyingSpace|Groupoid|endomorphism_idem|CoherentIdempotent)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 442,
+        "line_count": 4398
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "abbrev CoherentIdempotent (X : SSet.{u}) := IdemShape.{u} ⟶ X"
+          },
+          {
+            "line": 36,
+            "head": "def StrongSplitting {X : SSet.{u}} (d : CoherentIdempotent X) := {s : SplitShape.{u} ⟶ X // idemInclusion ≫ s = d}"
+          },
+          {
+            "line": 44,
+            "head": "def StrongSplitting.map {X Y : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) (F : X ⟶ Y) : StrongSplitting (d ≫ F) := ⟨s.val ≫ F, by rw [← Category.assoc, s.property]⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma weakComparisonRestriction_trivialKanFibration (X : SSet.{u}) [Quasicategory X] : TrivialKanFibration ((pre weakComparison).app X) := trivialKanFibration_pre_of_innerAnodyne weakComparison weakComparison_innerAnodyne X"
+          },
+          {
+            "line": 27,
+            "head": "def weakDiagramExtensionSpace {X : SSet.{u}} (d : WeakRetractionDiagram X) : SSet.{u} := vertexFiber ((pre weakComparison).app X) (functorVertex d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "def walkingIdemCocone : Cocone (𝟭 WalkingIdem.{u}) where"
+          },
+          {
+            "line": 37,
+            "head": "def idemConeRetraction : join IdemShape (Δ[0] : SSet.{u}) ⟶ IdemShape := (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv walkingIdemCocone).val"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/SingleObj.lean",
+        "signatures": [
+          {
+            "line": 84,
+            "head": "instance groupoid : Groupoid (SingleObj G) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/Topology/Homeomorph/Defs.lean",
+        "signatures": [
+          {
+            "line": 43,
+            "head": "structure Homeomorph (X : Type*) (Y : Type*) [TopologicalSpace X] [TopologicalSpace Y] extends X ≃ Y where"
+          },
+          {
+            "line": 86,
+            "head": "theorem symm_bijective : Function.Bijective (Homeomorph.symm : (X ≃ₜ Y) → Y ≃ₜ X) := Function.bijective_iff_has_inverse.mpr ⟨_, symm_symm, symm_symm⟩"
+          },
+          {
+            "line": 128,
+            "head": "theorem homeomorph_mk_coe_symm (a : X ≃ Y) (b c) : ((Homeomorph.mk a b c).symm : Y → X) = a.symm := rfl"
+          }
+        ]
+      }
+    ],
+    "decision": "ホモトピー圏の冪等射、coherent 冪等図式の神経、群の分類空間を調べた。区間の端点を固定する同相群とその縮小準同型 λ による指定反例、および λ の反復列からの非分裂性を与える宣言は見つからなかった。"
+  },
+  "4.4.5.20": {
+    "page": 310,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(endomorphism_idem|CoherentIdempotent|fundamentalGroupoid|idempotent.*(lift|coher|homotop)|homotop.*idempotent)",
+          "SerrePositivity"
+        ],
+        "file_count": 73,
+        "line_count": 280
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(endomorphism_idem|CoherentIdempotent|fundamentalGroupoid|idempotent.*(lift|coher|homotop)|homotop.*idempotent)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 13,
+        "line_count": 88
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean",
+        "signatures": [
+          {
+            "line": 33,
+            "head": "abbrev CoherentIdempotent (X : SSet.{u}) := IdemShape.{u} ⟶ X"
+          },
+          {
+            "line": 36,
+            "head": "def StrongSplitting {X : SSet.{u}} (d : CoherentIdempotent X) := {s : SplitShape.{u} ⟶ X // idemInclusion ≫ s = d}"
+          },
+          {
+            "line": 44,
+            "head": "def StrongSplitting.map {X Y : SSet.{u}} {d : CoherentIdempotent X} (s : StrongSplitting d) (F : X ⟶ Y) : StrongSplitting (d ≫ F) := ⟨s.val ≫ F, by rw [← Category.assoc, s.property]⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+        "signatures": [
+          {
+            "line": 22,
+            "head": "lemma weakComparisonRestriction_trivialKanFibration (X : SSet.{u}) [Quasicategory X] : TrivialKanFibration ((pre weakComparison).app X) := trivialKanFibration_pre_of_innerAnodyne weakComparison weakComparison_innerAnodyne X"
+          },
+          {
+            "line": 27,
+            "head": "def weakDiagramExtensionSpace {X : SSet.{u}} (d : WeakRetractionDiagram X) : SSet.{u} := vertexFiber ((pre weakComparison).app X) (functorVertex d)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "abbrev RetractionTriangle {X : SSet.{u}} (x y : X _⦋0⦌) := Σ i : SSet.Edge y x, Σ r : SSet.Edge x y, SSet.Edge.CompStruct i r (SSet.Edge.id y)"
+          },
+          {
+            "line": 28,
+            "head": "def RetractionTriangle.vertexRetraction {X : SSet.{u}} {x y : X _⦋0⦌} (t : RetractionTriangle x y) : VertexRetraction y x where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/FundamentalGroupoid/Basic.lean",
+        "signatures": [
+          {
+            "line": 235,
+            "head": "structure FundamentalGroupoid (X : Type*) where"
+          },
+          {
+            "line": 245,
+            "head": "def equiv (X : Type*) : FundamentalGroupoid X ≃ X where"
+          },
+          {
+            "line": 279,
+            "head": "instance {X : Type*} [Inhabited X] : Inhabited (FundamentalGroupoid X) := ⟨⟨default⟩⟩"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class IsIdempotentComplete : Prop where"
+          },
+          {
+            "line": 64,
+            "head": "theorem isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent : IsIdempotentComplete C ↔ ∀ (X : C) (p : X ⟶ X), p ≫ p = p → HasEqualizer (𝟙 X) p"
+          }
+        ]
+      }
+    ],
+    "decision": "CoherentIdempotent の全図式から二乗が同じホモトピー類になる宣言と、弱い retract の強い分裂への延長を読んだ。指定自己射の二乗へのホモトピーについて二通りの三重合成のホモトピーが一致する条件と、Idem 全体への持ち上げを同値にする宣言は見つからなかった。"
+  },
+  "4.4.5.21": {
+    "page": 310,
+    "citations": {
+      "item": 0,
+      "subsection": 45,
+      "neighboring_subsections": [
+        "4.4.4",
+        "4.4.5"
+      ],
+      "files": {
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePushout.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceAttachment.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceCardStage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/IdemConeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceFiniteAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingSimplex.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStageBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedCoordinates.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/AlternatingCellBoundary.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaces.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStages.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveIdempotents.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/MissingFaceInnerAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakMono.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/OppositeIdempotent.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionTriangle.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingSpaceContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/SplittingDiagramCone.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingSpace.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/EffectiveSplittingRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/WeakImage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/RetractionStagePreimage.lean": 1,
+        "SerrePositivity/InfinityCategories/F2/Idempotent/PuncturedFaceAnodyne.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingCones.lean": 1,
+        "SerrePositivity/InfinityCategories/F1/Idempotent/StrongSplittingColimit.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemConeRetraction.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemWeakContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/IdemLeftCofinality.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/WalkingLeftCommaContractibility.lean": 1,
+        "SerrePositivity/InfinityCategories/F1B/Idempotent/StrongSplittingExistence.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakShape.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingImageLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WalkingSourceLeftComma.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Walking.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/Coherent.lean": 1,
+        "SerrePositivity/InfinityCategories/Core/Idempotent/WeakComparison.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/IdemCoconeRestriction.lean": 1,
+        "SerrePositivity/InfinityCategories/HomotopyLimits/Idempotent/SplittingDiagramCocone.lean": 1
+      }
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(idempotent.*filtered|filtered.*idempotent|finiteInternalHom_preservesFilteredColimits|IsIdempotentComplete|weakDiagram_extension_exists)",
+          "SerrePositivity"
+        ],
+        "file_count": 164,
+        "line_count": 609
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "(?i)(idempotent.*filtered|filtered.*idempotent|finiteInternalHom_preservesFilteredColimits|IsIdempotentComplete|weakDiagram_extension_exists)",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 9,
+        "line_count": 58
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/FilteredExchange/FiniteInternalHomContinuity.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "instance finiteInternalHom_preservesFilteredColimits (K : SSet.{u}) [K.Finite] : PreservesFilteredColimitsOfSize.{u, u} (ihom K) where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/WeakExtension.lean",
+        "signatures": [
+          {
+            "line": 37,
+            "head": "lemma weakDiagram_extension_exists {X : SSet.{u}} [Quasicategory X] (d : WeakRetractionDiagram X) : ∃ s : SplitShape ⟶ X, weakComparison ≫ s = d"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Idempotent/StrongSplittingLimitExistence.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma isIdempotentComplete_iff_hasLimits (X : SSet.{u}) [Quasicategory X] : IsIdempotentComplete X ↔ ∀ d : CoherentIdempotent X, HasLimit d"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Idempotents/Basic.lean",
+        "signatures": [
+          {
+            "line": 54,
+            "head": "class IsIdempotentComplete : Prop where"
+          },
+          {
+            "line": 64,
+            "head": "theorem isIdempotentComplete_iff_hasEqualizer_of_id_and_idempotent : IsIdempotentComplete C ↔ ∀ (X : C) (p : X ⟶ X), p ≫ p = p → HasEqualizer (𝟙 X) p"
+          },
+          {
+            "line": 102,
+            "head": "theorem isIdempotentComplete_iff_idempotents_have_kernels [Preadditive C] : IsIdempotentComplete C ↔ ∀ (X : C) (p : X ⟶ X), p ≫ p = p → HasKernel p"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Limits/Filtered.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "theorem IsFiltered.iff_nonempty_limit : IsFiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F.op ⋙ yoneda.obj X))"
+          },
+          {
+            "line": 53,
+            "head": "theorem IsCofiltered.iff_nonempty_limit : IsCofiltered C ↔ ∀ {J : Type v} [SmallCategory J] [FinCategory J] (F : J ⥤ C), ∃ (X : C), Nonempty (limit (F ⋙ coyoneda.obj (op X)))"
+          }
+        ]
+      }
+    ],
+    "decision": "有限内部 Hom のフィルター付き余極限保存と Ret 図式の強い分裂への延長、冪等完備な対象の像の閉性を調べた。任意のフィルター付き図式の準圏の余極限が冪等完備であることを、この二つの比較をつないで結論する宣言は見つからなかった。"
   }
 }
