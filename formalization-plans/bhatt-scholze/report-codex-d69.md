@@ -522,3 +522,7 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarCokernelTensor
 - `pdTermPointwiseCoefficientIso_naturality` はすべての単体の構造射について厳密な自然性を示す。`pdCechPointwiseCoefficientIso` は実際の `pdCechRings` の台加群の余単体的同型、`pdCompletedCoefficientComplexIso` は小さい分冪交代余面複体へ各項の H⁰ 完備係数拡大を適用した標準の比較同型。複体全体の完備導来テンソルとの同定を暗黙に使っていない。
 - 共通の `PointwiseTensorExt` は完備な標的への線形射を純テンソルの単位上で判定し、係数拡大した任意の加群射について単位の自然性を示す。`MapComplex` は加法的関手を各項に適用する操作と交代余面複体との交換同型を固定する。
 - 一時監査は133モジュール・3,098宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundred.lean`、ログ `/private/tmp/d69-morning-audit-hundred.log`。対象ビルド済みの追加11本に sorry・独自公理はなく、既存宣言の変更も0。Witt の指定された二比較の最終的な検収は残っており、この記録を停止点2の報告とはしない。
+
+- `AffineCechPointwiseCoefficients`・`CrystallineWittTransportedBridge` の対象ビルドが成功した（`/private/tmp/d69-ticket-build-40.log`・`/private/tmp/d69-ticket-build-41.log`）。登録候補に BS のこの2本を追加する。
+- 前者は、各項の比較を実際の `htRings` の台加群の余単体的同型へ組む。後者は、この affine 側の同型と分冪側の同型を通して、既存の整係数の橋を実際の Witt affine・分冪交代余面複体の間へ移し、その射が擬同型であることを示す。指定された `crystallineWittSmallBridgeAt` との各次数の照合は、次の新規ファイルで続けている。
+- 一時監査は135モジュール・3,135宣言、標準三公理のみ。`/private/tmp/AuditD69P2MorningHundredTwo.lean`、ログ `/private/tmp/d69-morning-audit-hundredtwo.log`。対象ビルド済みの追加13本はすべて新規ファイルで、入口・監査登録・既存宣言の変更はない。停止点2にはまだ達していない。
