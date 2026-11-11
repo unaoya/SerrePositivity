@@ -1,0 +1,192 @@
+{
+  "method": "declarations_new 完全名結合後、HTT と Kerodon の本文を照合。一般の受け口・異なる対象・証明部品は除外。",
+  "checked_source_urls": [
+    "https://kerodon.net/tag/006B",
+    "https://kerodon.net/tag/00DD",
+    "https://kerodon.net/tag/00DY",
+    "https://kerodon.net/tag/00ED",
+    "https://kerodon.net/tag/05UE",
+    "https://kerodon.net/tag/002M",
+    "https://kerodon.net/tag/000U",
+    "https://kerodon.net/tag/01R1"
+  ],
+  "items": {
+    "A.1.2.1": {
+      "candidate_numbers": [
+        "1.5.4.3",
+        "9.6.0.1",
+        "9.6.2.1",
+        "9.6.4.1",
+        "9.6.4.11",
+        "9.6.4.14",
+        "9.6.4.15",
+        "9.6.4.16",
+        "9.6.4.17",
+        "9.6.4.20",
+        "9.6.4.21",
+        "9.6.4.23",
+        "9.6.4.3",
+        "9.6.4.8"
+      ],
+      "accepted": [
+        "1.5.4.3"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    },
+    "A.1.2.2": {
+      "candidate_numbers": [
+        "1.5.4.13",
+        "1.5.4.4",
+        "1.5.4.7",
+        "9.6.0.3",
+        "9.6.1.12"
+      ],
+      "accepted": [
+        "1.5.4.13"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    },
+    "A.1.2.3": {
+      "candidate_numbers": [
+        "1.5.4.13",
+        "9.6.1.12"
+      ],
+      "accepted": [],
+      "comparison": "1.5.4.13 は弱飽和性の定義であり、同型・合成閉性の二つの帰結の主張ではない。"
+    },
+    "A.1.3.2": {
+      "candidate_numbers": [
+        "2.1.2.10"
+      ],
+      "accepted": [],
+      "comparison": "2.1.2.10 は構造の定義。HTT の略記の慣習とは違い、番号だけを転記しない。"
+    },
+    "A.1.3.4": {
+      "candidate_numbers": [
+        "7.7.3.1",
+        "7.7.3.4"
+      ],
+      "accepted": [],
+      "comparison": "候補は Cartesian な積に対する closedness。HTT は非対称も含む任意のモノイダル積の左右 closedness なので別の特殊な定義を同一視しない。"
+    },
+    "A.1.3.5": {
+      "candidate_numbers": [
+        "2.1.4.10",
+        "2.1.4.16",
+        "2.1.4.3",
+        "2.1.4.4",
+        "2.1.5.11",
+        "2.1.5.18",
+        "2.1.5.8",
+        "2.1.6.1",
+        "2.1.6.9"
+      ],
+      "accepted": [
+        "2.1.5.8",
+        "2.1.6.1"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    },
+    "A.1.4.2": {
+      "candidate_numbers": [
+        "2.1.7.1"
+      ],
+      "accepted": [],
+      "comparison": "2.1.7.1 は一般の enriched category の定義。Set-enriched と普通圏の同定は 2.1.7.2 だが、この完全名結合には現れない。"
+    },
+    "A.1.4.3": {
+      "candidate_numbers": [
+        "2.1.7.1"
+      ],
+      "accepted": [],
+      "comparison": "共有する enrichedCategory の定義は 2.1.7.1。実際の基底変換と underlying は 2.1.7.4/5 に述べられるが今回の結合候補ではない。"
+    },
+    "A.1.4.4": {
+      "candidate_numbers": [
+        "2.1.7.10",
+        "2.4.1.11"
+      ],
+      "accepted": [
+        "2.1.7.10"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    },
+    "A.2.4.4": {
+      "candidate_numbers": [
+        "3.4.2.11"
+      ],
+      "accepted": [],
+      "comparison": "3.4.2.11 は Kan 複体のホモトピー押出しの判定。任意のモデル圏の元の cofibration と同じ strict pushout の比較ではない。"
+    },
+    "A.2.6.2": {
+      "candidate_numbers": [
+        "9.4.0.1"
+      ],
+      "accepted": [],
+      "comparison": "9.4.0.1 は高次の accessible category。普通圏の包含の accessible subcategory を定める原典とは模型も主張も異なる。"
+    },
+    "A.2.7.2": {
+      "candidate_numbers": [
+        "1.1.0.12",
+        "1.1.0.13",
+        "1.3.1.1",
+        "1.3.1.6",
+        "2.5.6.9"
+      ],
+      "accepted": [],
+      "comparison": "1.1.0.12/13 は空/終単体集合、1.3.1.1/6 は nerve と skeleton、2.5.6.9 は Dold–Kan の計算。任意の線形順序の標準単体と Yoneda 評価の表記そのものではない。"
+    },
+    "A.2.7.3": {
+      "candidate_numbers": [
+        "1.2.4.1"
+      ],
+      "accepted": [
+        "1.2.4.1"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    },
+    "A.2.8.1": {
+      "candidate_numbers": [
+        "1.5.4.3",
+        "9.6.4.11"
+      ],
+      "accepted": [],
+      "comparison": "共有の llp/rlp は一般の持上げ性の受け口で、五つの diagram model classes の定義の主張とは違う。"
+    },
+    "A.2.8.2": {
+      "candidate_numbers": [
+        "7.5.6.1",
+        "9.1.6.12",
+        "9.1.6.13",
+        "9.1.6.7",
+        "9.1.6.8"
+      ],
+      "accepted": [],
+      "comparison": "候補は homotopy pushout の局所的主張か simplicial-set-valued diagram の filtered colimits/projective cofibration。任意の A の二つの diagram model existence と同一視しない。"
+    },
+    "A.2.8.5": {
+      "candidate_numbers": [
+        "9.1.6.13",
+        "9.1.6.8"
+      ],
+      "accepted": [],
+      "comparison": "候補は SSet の特定の filtered diagram の projective cofibration の計算。任意のモデル圏の objectwise class inclusion という同じ主張ではない。"
+    },
+    "A.2.8.12": {
+      "candidate_numbers": [
+        "7.5.6.1"
+      ],
+      "accepted": [],
+      "comparison": "7.5.6.1 の simplicial-set の homotopy pushout から共有される proof component。任意の A の projective cofibrant span の iff とは異なる。"
+    },
+    "A.3.5.11": {
+      "candidate_numbers": [
+        "5.6.1.1"
+      ],
+      "accepted": [
+        "5.6.1.1"
+      ],
+      "comparison": "本文の同じ定義・assertion（部分一致の場合は同じ成分）を確認。"
+    }
+  }
+}

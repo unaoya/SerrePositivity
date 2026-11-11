@@ -1,0 +1,1962 @@
+{
+  "A.3.5.1": {
+    "page": 891,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native ReflectiveSubcategory と形式的な単体辺の局所化はあるが、CatS の指定 cofibrant E と coproduct W に沿う strict pushout C[W^-1] を構成しない。準圏の反転関手は別模型で比較がない。"
+  },
+  "A.3.5.2": {
+    "page": 892,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "generic left properness は CatS の ModelCategory を外から仮定しなければ使えず、その instance と指定 pushout C[W^-1] が未供給。別の localization の普遍性からこの strict construction の弱同値保存を数えない。"
+  },
+  "A.3.5.3": {
+    "page": 892,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏では可逆辺の区間延長と lifting の宣言があるが、CatS の [1]S→E の cofibrant replacement を固定した同じ extension iff はない。通常 WalkingIso も E のモデル論的置換とは異なる。"
+  },
+  "A.3.5.4": {
+    "page": 892,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ReflectiveSubcategory.localizationPrecompositionEquivalence は既に与えた準圏 reflective localization からの関手を扱う。原典の CatS-pushout C[W^-1] の strict enriched functor の延長 iff と同定していないため成分にしない。"
+  },
+  "A.3.5.5": {
+    "page": 893,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "準圏の局所化の functor-space 同値はあるが、原典の HomhCatS(C[W^-1],D) の像を hC→hD 上の W 反転で指定する比較がない。模型の比較を追加していない native localization を同じ主張とみなさない。"
+  },
+  "A.3.5.6": {
+    "page": 893,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の ordinary cylinder/arrow-comma と native marked localization はあるが、HomM(X,Y)=MapD(fX,Y) の enriched collage と指定 W の反転後の j の enriched weak equivalence はない。通常の deformation retraction はこのモデル比較を供給しない。"
+  },
+  "A.3.5.7": {
+    "page": 894,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "ObjectProperty.FullSubcategory と Grothendieck.forget は普通の対象上の次数を与えるが、任意の S-enriched C の r(C)≰r(D) に対する HomC(C,D) の initiality を課す filtered enrichment の定義はない。κ-filtered な添字圏の filtered とも意味が異なる。"
+  },
+  "A.3.5.8": {
+    "page": 894,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 full subcategory inclusion と colimit はあるが、A-filtered enriched C の C≤a[Wa^-1] を CatS の strict pushout から構成する χW とその colimit 同型がない。準圏の反転の colimit 保存だけでは同じ指定同型を与えない。"
+  },
+  "A.3.5.9": {
+    "page": 894,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "generic enriched ManyObject transfer は指定 free/evaluation に対する右誘導であり、任意の A-filtered C を対象全単射で置換し Hom の initiality と CatS-projective cofibrancy を同時に保つ f:C′→C を出力しない。"
+  },
+  "A.3.5.10": {
+    "page": 895,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "原文は lim χ≃C[W^-1] の直後に C を homotopy colimit と書く。native の通常 Projective hocolim 比較は CatS の具体的 instance を持たず、この χ と反転圏の比較もない。C を C[W^-1] と読み替えた判定はしない。"
+  },
+  "A.3.5.12": {
+    "page": 896,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "Grothendieck の ordinary toTransport/forget と inclusion はあるが、一般の enriched Groth(p)≤a の CatS における反転と πa の enriched weak equivalence はない。通常 functor の adjunction だけでは指定反転の比較を与えない。"
+  },
+  "A.3.5.13": {
+    "page": 896,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "native left unstraightening の total-cocone colimit は space-valued/Kan-valued な別の構成。CatS における任意 enriched p の Groth(p)[W^-1] と projective hocolim の同じ canonical isomorphism はない。Mathlib の通常 Grothendieck construction の定義のみでは足りない。"
+  },
+  "A.3.5.14": {
+    "page": 896,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "MonoidalClosed と準圏 localization の積保存は別々の模型であり、CatS の strict tensor C⊗D と自由射反転の指定比較 (C⊗D)[W′^-1]→C[W^-1]⊗D の enriched weak equivalence ではない。"
+  },
+  "A.3.5.15": {
+    "page": 896,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.4",
+        "A.3.5",
+        "A.3.6"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          "SerrePositivity"
+        ],
+        "file_count": 2922,
+        "line_count": 16904
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localization|Localization|Grothendieck|[Mm]appingCylinder|[Cc]ollage|[Hh]omotopyColimit|[Qq]uillenBifunctor",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 603,
+        "line_count": 9715
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/CategoryTheory/Grothendieck.lean",
+        "signatures": [
+          {
+            "line": 73,
+            "head": "structure Grothendieck where"
+          },
+          {
+            "line": 86,
+            "head": "structure Hom (X Y : Grothendieck F) where"
+          },
+          {
+            "line": 93,
+            "head": "theorem ext {X Y : Grothendieck F} (f g : Hom X Y) (w_base : f.base = g.base) (w_fiber : eqToHom (by rw [w_base]) ≫ f.fiber = g.fiber) : f = g"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/EnrichedCat.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "def EnrichedCat := Bundled (EnrichedCategory.{w, v, u} V)"
+          },
+          {
+            "line": 38,
+            "head": "instance : CoeSort (EnrichedCat V) (Type u) := ⟨Bundled.α⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 47,
+            "head": "theorem isQuillenBifunctor_iff_pullbackHom {F : C₁ ⥤ C₂ ⥤ C₃} {G : C₁ᵒᵖ ⥤ C₃ ⥤ C₂} (adj : F ⊣₂ G) : IsQuillenBifunctor F ↔ HasQuillenPullbackHom G"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Diagram/HomotopyColimit.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)"
+          },
+          {
+            "line": 25,
+            "head": "def cofibrantFactorization : let := Projective.modelCategory K I J MorphismProperty.FunctorialFactorizationData (cofibrations (K ⥤ C)) (trivialFibrations (K ⥤ C))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1B/Localization/ReflectiveLocalization.lean",
+        "signatures": [
+          {
+            "line": 83,
+            "head": "def localizationRestriction (E : SSet.{u}) : (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) ⟶ (ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E := (invertingFunctors X E (invertedEdges r.reflector)).ι ≫ (pre (fullSubcomplexOnVertices X P).ι).app E"
+          },
+          {
+            "line": 93,
+            "head": "def localizationPrecompositionEquivalence (E : SSet.{u}) [Quasicategory E] : QCatEquivalence ((ihom (fullSubcomplexOnVertices X P : SSet.{u})).obj E) (invertingFunctors X E (invertedEdges r.reflector) : SSet.{u}) where"
+          },
+          {
+            "line": 118,
+            "head": "lemma isLocalization : IsLocalization r.reflector (invertedEdges r.reflector)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F1/FilteredExchange/CoherentTotalColimit.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "lemma coherentDiagramTotalCocone_isColimit (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : IsColimitCone (coherentDiagramTotalCocone F) := isColimitCone_of_coconeFiberMap_pre_homotopyEquivalence (coherentDiagramTotalCocone F) (coherentTotalCoconeFiber_pre_homotopyEquivalence F)"
+          },
+          {
+            "line": 37,
+            "head": "lemma hasColimit_coherentSpaceDiagram (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) : HasColimit F := ⟨coherentDiagramTotalCocone F, coherentDiagramTotalCocone_isColimit F⟩"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Quillen bifunctor は既存モデル内の tensor を扱うが、CatS の tensor が任意 D に対しその条件を満たす宣言はない。通常 product の colimit 保存や準圏 Cat∞ の別の colimit 普遍性を、この projective p の strict colimit 比較へ移さない。"
+  }
+}

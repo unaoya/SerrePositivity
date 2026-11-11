@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-11-11T07:38:04.959035+00:00",
+  "lean_base": "f85f831ff",
+  "review_base": "ff9c3c2ece83140d98225914834acf2b870dcfa8",
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "manifest_sha256": "37cfca69980e8259f632487f25714dba21efe9b8cb573f6f44cc0649512c0cc9",
+  "chapter_items": 226,
+  "status_counts": {
+    "partial": 46,
+    "none": 157,
+    "mathlib": 19,
+    "own": 4
+  },
+  "partial_kind_counts": {
+    "component": 19,
+    "direction": 8,
+    "stronger-hyp": 14,
+    "special": 5
+  },
+  "unsure": 0,
+  "kernel_declarations": 135,
+  "new_kernel_checks": 106,
+  "unchanged_published_kernel_checks": 29,
+  "new_kernel_runs": {
+    "stage4-ch3-01": {
+      "declarations": 90,
+      "exit_code": 0
+    },
+    "stage4-chA-01": {
+      "declarations": 58,
+      "exit_code": 0
+    }
+  },
+  "axioms": "全 positive 宣言は propext/Classical.choice/Quot.sound のみ。sorryAx なし。",
+  "model_instance_rule": "抽象 ModelCategory と具体的 SSet を分離。Inputs/KanQuillen の選択は sorryAx に依存し、証明済み instance には数えない。",
+  "none_search_items": 157,
+  "none_search_method": "各項目で自前・Mathlib、同じ/隣接 subsection の引用ファイルの型を調べた。§4.3′ の subsection 単位省略は使っていない。",
+  "kerodon_filled_chapter": 6,
+  "kerodon_filled_all": 213,
+  "source_edition": "2017-04-09; SHA-256 は toc.md",
+  "source_images_verified": [
+    "A.1.5.11",
+    "A.2.9.10",
+    "A.2.9.19",
+    "A.3.5.10",
+    "A.3.7.7"
+  ],
+  "goal_items": {},
+  "items_changed_fields": [
+    "title",
+    "kerodon"
+  ],
+  "review_sha256": "f1a3db3c932e3e667d90240b27233cb8defed066efbf9c93d0c01582de50fd89"
+}

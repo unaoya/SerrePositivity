@@ -1,0 +1,1112 @@
+{
+  "A.3.7.1": {
+    "page": 906,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "native mappingTest は cofibrant/fibrant 置換による RMap の弱同値を定め、EnrichedTestComparison は V-valued derived Hom からの片方向の比較である。原典の非 cofibrant な始域も許した実際の Map(B,X)→Map(A,X) が trivial Kan fibration という iff はなく、SM7 の一般角射はこの S-local 判定そのものではない。"
+  },
+  "A.3.7.5": {
+    "page": 911,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "Representatives.localObjects_eq_of_weakRepresentatives は既に与えた同じ weak-arrow 代表の不変性であり、任意の cofibration f を原典の二つの pushout と cofibrant endpoint の gf へ変え、局所対象の iff を証明する構成ではない。chosen cofibrantSource は source category の functor だがその map f は一般に cofibration とは限らず、この主張の代用にしない。"
+  },
+  "A.3.7.6": {
+    "page": 911,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "native IsPresentable と ModelPresentation はそれぞれ準圏と通常モデル圏上の構成。任意の可呈示準圏 C から simplicial combinatorial A と N(A◦) の比較同値を構成する定理、および任意のその A の presentability の比較はない。模型が異なるだけという理由では数えない。"
+  },
+  "A.3.7.7": {
+    "page": 912,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "generic derivedAdjunction と ModelBifibrantLocalization はあるが、任意の二つの combinatorial simplicial A,B の N(A◦) 同値を simplicial Quillen 同値の鎖に持ち上げる比較はない。原文の only if/if の方向名の混同も読み替えず、両向きとも指定された一般の比較は未供給。"
+  },
+  "A.3.7.8": {
+    "page": 912,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "native Bousfield.modelPresentation は小さい通常射類 S と補助 Kan model を仮定する。与えた accessible localization C′⊆N(A◦) からその S を選び、元の L:hC→hC′ が反転する射類と native localEquivalences を同定する比較がないため、この特定 A′ の存在とは数えない。"
+  },
+  "A.3.7.10": {
+    "page": 913,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.6",
+        "A.3.7"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          "SerrePositivity"
+        ],
+        "file_count": 1106,
+        "line_count": 3496
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "localEquivalences|localObjects|ModelPresentation|IsLocalizationModel|enriched_localization|leftQuillen|derived_inverts|weakRepresentatives|FullyFaithful",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 148,
+        "line_count": 468
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelExistence.lean",
+        "signatures": [
+          {
+            "line": 39,
+            "head": "structure ModelPresentation (S : MorphismProperty C) where"
+          },
+          {
+            "line": 88,
+            "head": "lemma ModelPresentation.localFibrant_of_fibrant {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) (Y : C) (hY : p.model.categoryWithFibrations.fibrations (terminal.from Y)) : localFibrantObjects.{v, u} (C := C) cof fib S Y"
+          },
+          {
+            "line": 98,
+            "head": "lemma ModelPresentation.isLocalizationModel {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S) : IsLocalizationModel.{v, u} cof fib S p.model"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedExistence.lean",
+        "signatures": [
+          {
+            "line": 49,
+            "head": "lemma exists_enriched_localization (S : MorphismProperty C) [S.IsSmall.{w}] (hdom : ∀ {A B : V} (i : A ⟶ B), IV i → IsCofibrant A) (hcompat : ∀ {A B : V} (i : A ⟶ B), IV i → ∀ {X Y : C} (s : X ⟶ Y), S s → localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj A).map ((HomotopyFunctionComplex.cofibrantSource cof).map s)) ∧ localEquivalences.{v, u} (C := C) cof fib S ((P.tensor.obj B).map ((HomotopyFunctionComplex.cofibrantSource cof).map s))) : ∃ p : ModelPresentation.{w} cof fib I S, @Quillen.IsQuillenBifunctor V _ base C _ p.model C _ p.model P.tensor ∧ @Quillen.HasQuillenPullbackHom C _ p.model V _ base C _ p.model (eHomFunctor V C) ∧ @Quillen.HasQuillenPullbackHom V _ base C _ p.model C _ p.model P.cotensor ∧ @SerrePositivity.Enriched.HasTensorUnitAxiom V _ _ base C _ p.model _ P ∧ (localObjects.{v, u} (C := C) cof fib S ="
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedTestComparison.lean",
+        "signatures": [
+          {
+            "line": 63,
+            "head": "lemma localObjects_of_enrichedLocalObjects (S : MorphismProperty C) (Y : C) (hY : SerrePositivity.Enriched.localObjects (V := V) cof fib S Y) : localObjects.{vC, uC} (C := C) cof fib S Y"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/EnrichedDetection.lean",
+        "signatures": [
+          {
+            "line": 41,
+            "head": "lemma localObjects_eq_enriched : let := original Bousfield.localObjects.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localObjects (V := V) cof fib S"
+          },
+          {
+            "line": 56,
+            "head": "lemma localEquivalences_eq_enriched : let := original Bousfield.localEquivalences.{vC, uC} (C := C) cof fib S = SerrePositivity.Enriched.localEquivalences (V := V) cof fib S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/QuillenCriterion.lean",
+        "signatures": [
+          {
+            "line": 35,
+            "head": "lemma leftQuillen_iff_rightAdjoint_local : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ (Y : D), IsFibrant Y → @localObjects C _ original simplicial cof fib S (R.obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/UniversalProperty.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "lemma leftQuillen_iff_cofibrant_test : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → weakEquivalences D (L.map (((@HomotopyFunctionComplex.cofibrantSource C _ original cof)).map f))"
+          },
+          {
+            "line": 113,
+            "head": "lemma leftQuillen_iff_derived_inverts : @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations m.categoryWithWeakEquivalences target.categoryWithCofibrations target.categoryWithWeakEquivalences L ↔ ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f))"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/ModelComparison.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma classes_eq_of_localObjects_eq (h : @localObjects C _ original simplicial cof fib S = @localObjects C _ original simplicial cof fib T) : m.categoryWithCofibrations.cofibrations = n.categoryWithCofibrations.cofibrations ∧ m.categoryWithWeakEquivalences.weakEquivalences = n.categoryWithWeakEquivalences.weakEquivalences ∧ m.categoryWithFibrations.fibrations = n.categoryWithFibrations.fibrations"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Representatives.lean",
+        "signatures": [
+          {
+            "line": 47,
+            "head": "lemma localObjects_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localObjects cof fib S = localObjects cof fib T"
+          },
+          {
+            "line": 60,
+            "head": "lemma localEquivalences_eq_of_weakRepresentatives {S T : MorphismProperty C} (h : SameWeakRepresentatives S T) : localEquivalences cof fib S = localEquivalences cof fib T := MappingTests.localEquivalences_eq_of_localObjects _ _ (localObjects_eq_of_weakRepresentatives cof fib hcof h)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Localization/Minimality.lean",
+        "signatures": [
+          {
+            "line": 31,
+            "head": "lemma identity_leftQuillen_of_contains (n : ModelCategory C) (hc : n.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations) (hW : original.categoryWithWeakEquivalences.weakEquivalences ≤ n.categoryWithWeakEquivalences.weakEquivalences) (hS : S ≤ n.categoryWithWeakEquivalences.weakEquivalences) : @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences n.categoryWithCofibrations n.categoryWithWeakEquivalences (𝟭 C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FibrantCriterion.lean",
+        "signatures": [
+          {
+            "line": 25,
+            "head": "lemma isLeftQuillen_of_fibrant_test (hcof : cofibrations C ≤ (cofibrations D).inverseImage L) (hfib : ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)) : IsLeftQuillen L"
+          },
+          {
+            "line": 39,
+            "head": "lemma isLeftQuillen_iff_fibrant_test : IsLeftQuillen L ↔ (cofibrations C ≤ (cofibrations D).inverseImage L) ∧ ∀ {X Y : D} (p : X ⟶ Y), IsFibrant X → IsFibrant Y → Fibration p → fibrations C (R.map p)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/FullyFaithfulReflection.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "lemma weakEquivalence_of_map (hcof : cofibrations C ≤ (cofibrations D).inverseImage F) {X Y : C} (f : X ⟶ Y) (hf : weakEquivalences D (F.map f)) : weakEquivalences C f"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/F2/Presentable/Definition.lean",
+        "signatures": [
+          {
+            "line": 21,
+            "head": "def HasSmallColimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasColimit D"
+          },
+          {
+            "line": 25,
+            "head": "def HasSmallLimits (C : SSet.{u + 1}) : Prop := ∀ (K : SSet.{u}) (D : (SSet.uliftFunctor.{u + 1, u}).obj K ⟶ C), HasLimit D"
+          }
+        ]
+      }
+    ],
+    "decision": "Smith の認識と Bousfield の小さい S に対する存在はあるが、任意の LF の逆像 W′ を小さい S で生成し、同じ source 上の新模型の弱同値をその全逆像と同定する定理はない。FullyFaithfulReflection は通常圏の fully faithful F の弱同値反映であり、right-derived RG の充満忠実性による新 Quillen equivalence 判定ではない。"
+  }
+}

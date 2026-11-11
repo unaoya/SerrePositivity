@@ -1,0 +1,817 @@
+{
+  "A.3.1.7": {
+    "page": 852,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.9",
+        "A.3.1",
+        "A.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          "SerrePositivity"
+        ],
+        "file_count": 2272,
+        "line_count": 11047
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1734,
+        "line_count": 33042
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          },
+          {
+            "line": 130,
+            "head": "lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] : IsLeftQuillen (F.obj A)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class MonoidalModelCategory : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "theorem monoidalModelCategory_iff : MonoidalModelCategory C ↔ HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C"
+          },
+          {
+            "line": 74,
+            "head": "lemma pushoutProduct_cofibration [IsQuillenBifunctor (curriedTensor C)] {A B X Y : C} (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] : Cofibration (Arrow.mk i □ Arrow.mk j).hom := IsQuillenBifunctor.cofibration i j (Functor.PushoutObjObj.ofHasPushout _ i j) inferInstance inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H) (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂) [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂] (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι) (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) (hIJ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), J₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) : IsQuillenBifunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma simplicial_isQuillenBifunctor : IsQuillenBifunctor (curriedTensor SSet.{u})"
+          },
+          {
+            "line": 104,
+            "head": "lemma simplicial_monoidalModel : MonoidalModelCategory SSet.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma mapping_isFibrant (X Y : C) [IsCofibrant X] [IsFibrant Y] : IsFibrant (((eHomFunctor V C).obj (Opposite.op X)).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem derived_isEquivalence_iff : LF.IsEquivalence ↔ (∀ (X : C), IsCofibrant X → IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X))) ∧ (∀ (Y : D), IsFibrant Y → IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y)))"
+          },
+          {
+            "line": 135,
+            "head": "theorem derived_isEquivalence_of_mate_weakEquivalences (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y → ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) : LF.IsEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "structure TensorCotensor where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex := cosimplicialResolutionFamily (MorphismProperty.functorialFactorizationData _ _)"
+          },
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          }
+        ]
+      }
+    ],
+    "decision": "simplicial_isQuillenBifunctor は SSet 自体に hCof/hFib を与えた場合の定理で、任意の simplicial C の Δn→Δ0 tensor の弱同値から trivial pushout-product 条件を導く定理ではない。GeneratedBifunctor の生成射テストも原典の三条件と filtered-colimit 仮定からそのテストを供給していない。"
+  },
+  "A.3.1.9": {
+    "page": 855,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.9",
+        "A.3.1",
+        "A.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          "SerrePositivity"
+        ],
+        "file_count": 2272,
+        "line_count": 11047
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1734,
+        "line_count": 33042
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          },
+          {
+            "line": 130,
+            "head": "lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] : IsLeftQuillen (F.obj A)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class MonoidalModelCategory : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "theorem monoidalModelCategory_iff : MonoidalModelCategory C ↔ HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C"
+          },
+          {
+            "line": 74,
+            "head": "lemma pushoutProduct_cofibration [IsQuillenBifunctor (curriedTensor C)] {A B X Y : C} (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] : Cofibration (Arrow.mk i □ Arrow.mk j).hom := IsQuillenBifunctor.cofibration i j (Functor.PushoutObjObj.ofHasPushout _ i j) inferInstance inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H) (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂) [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂] (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι) (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) (hIJ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), J₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) : IsQuillenBifunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma simplicial_isQuillenBifunctor : IsQuillenBifunctor (curriedTensor SSet.{u})"
+          },
+          {
+            "line": 104,
+            "head": "lemma simplicial_monoidalModel : MonoidalModelCategory SSet.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma mapping_isFibrant (X Y : C) [IsCofibrant X] [IsFibrant Y] : IsFibrant (((eHomFunctor V C).obj (Opposite.op X)).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem derived_isEquivalence_iff : LF.IsEquivalence ↔ (∀ (X : C), IsCofibrant X → IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X))) ∧ (∀ (Y : D), IsFibrant Y → IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y)))"
+          },
+          {
+            "line": 135,
+            "head": "theorem derived_isEquivalence_of_mate_weakEquivalences (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y → ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) : LF.IsEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "structure TensorCotensor where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex := cosimplicialResolutionFamily (MorphismProperty.functorialFactorizationData _ _)"
+          },
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          }
+        ]
+      }
+    ],
+    "decision": "ordinary derivedAdjunction と tensor parameter の Quillen 性はあるが、右随伴 G だけが豊穣なときに定まる β:S⊗F(X)→F(S⊗X) の構成と全ての simplicial S での弱同値はない。両側が strict に tensor を保つ特殊形を原典の指定 β と比較する宣言もない。"
+  },
+  "A.3.1.10": {
+    "page": 855,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.9",
+        "A.3.1",
+        "A.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          "SerrePositivity"
+        ],
+        "file_count": 2272,
+        "line_count": 11047
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1734,
+        "line_count": 33042
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          },
+          {
+            "line": 130,
+            "head": "lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] : IsLeftQuillen (F.obj A)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class MonoidalModelCategory : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "theorem monoidalModelCategory_iff : MonoidalModelCategory C ↔ HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C"
+          },
+          {
+            "line": 74,
+            "head": "lemma pushoutProduct_cofibration [IsQuillenBifunctor (curriedTensor C)] {A B X Y : C} (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] : Cofibration (Arrow.mk i □ Arrow.mk j).hom := IsQuillenBifunctor.cofibration i j (Functor.PushoutObjObj.ofHasPushout _ i j) inferInstance inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H) (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂) [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂] (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι) (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) (hIJ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), J₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) : IsQuillenBifunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma simplicial_isQuillenBifunctor : IsQuillenBifunctor (curriedTensor SSet.{u})"
+          },
+          {
+            "line": 104,
+            "head": "lemma simplicial_monoidalModel : MonoidalModelCategory SSet.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma mapping_isFibrant (X Y : C) [IsCofibrant X] [IsFibrant Y] : IsFibrant (((eHomFunctor V C).obj (Opposite.op X)).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem derived_isEquivalence_iff : LF.IsEquivalence ↔ (∀ (X : C), IsCofibrant X → IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X))) ∧ (∀ (Y : D), IsFibrant Y → IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y)))"
+          },
+          {
+            "line": 135,
+            "head": "theorem derived_isEquivalence_of_mate_weakEquivalences (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y → ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) : LF.IsEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "structure TensorCotensor where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex := cosimplicialResolutionFamily (MorphismProperty.functorialFactorizationData _ _)"
+          },
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          }
+        ]
+      }
+    ],
+    "decision": "Quillen.derived_isEquivalence_iff は局所化した通常圏の同値を判定する。原典の enriched G:D◦→C◦ の Hom 対象の弱同値と hC 上の本質的全射を持つ同じ functor との iff はなく、β 条件からこの比較を組み立てる宣言がない。"
+  },
+  "A.3.1.11": {
+    "page": 855,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.9",
+        "A.3.1",
+        "A.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          "SerrePositivity"
+        ],
+        "file_count": 2272,
+        "line_count": 11047
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1734,
+        "line_count": 33042
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          },
+          {
+            "line": 130,
+            "head": "lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] : IsLeftQuillen (F.obj A)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class MonoidalModelCategory : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "theorem monoidalModelCategory_iff : MonoidalModelCategory C ↔ HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C"
+          },
+          {
+            "line": 74,
+            "head": "lemma pushoutProduct_cofibration [IsQuillenBifunctor (curriedTensor C)] {A B X Y : C} (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] : Cofibration (Arrow.mk i □ Arrow.mk j).hom := IsQuillenBifunctor.cofibration i j (Functor.PushoutObjObj.ofHasPushout _ i j) inferInstance inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H) (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂) [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂] (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι) (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) (hIJ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), J₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) : IsQuillenBifunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma simplicial_isQuillenBifunctor : IsQuillenBifunctor (curriedTensor SSet.{u})"
+          },
+          {
+            "line": 104,
+            "head": "lemma simplicial_monoidalModel : MonoidalModelCategory SSet.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma mapping_isFibrant (X Y : C) [IsCofibrant X] [IsFibrant Y] : IsFibrant (((eHomFunctor V C).obj (Opposite.op X)).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem derived_isEquivalence_iff : LF.IsEquivalence ↔ (∀ (X : C), IsCofibrant X → IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X))) ∧ (∀ (Y : D), IsFibrant Y → IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y)))"
+          },
+          {
+            "line": 135,
+            "head": "theorem derived_isEquivalence_of_mate_weakEquivalences (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y → ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) : LF.IsEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "structure TensorCotensor where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex := cosimplicialResolutionFamily (MorphismProperty.functorialFactorizationData _ _)"
+          },
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib EnrichedCategory は宇宙を変えられるが、hS-valued base change を使う一般の enriched weak equivalence の定義がなく、小さい定義を大きい圏に拡げる同じ記法はない。通常圏 IsEquivalence とは異なる。"
+  },
+  "A.3.1.12": {
+    "page": 856,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.2.9",
+        "A.3.1",
+        "A.3.2"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          "SerrePositivity"
+        ],
+        "file_count": 2272,
+        "line_count": 11047
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "IsQuillenBifunctor|MonoidalModelCategory|TensorCotensor|mapping_isFibrant|[Bb]eta|β|derived_isEquivalence|simplicial_isQuillen",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 1734,
+        "line_count": 33042
+      }
+    ],
+    "examined": [
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/QuillenBifunctor.lean",
+        "signatures": [
+          {
+            "line": 32,
+            "head": "class IsQuillenBifunctor (F : C₁ ⥤ C₂ ⥤ C₃) : Prop where"
+          },
+          {
+            "line": 112,
+            "head": "instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] : IsQuillenBifunctor F.flip where"
+          },
+          {
+            "line": 130,
+            "head": "lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F] [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] : IsLeftQuillen (F.obj A)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/ModelCategory.lean",
+        "signatures": [
+          {
+            "line": 40,
+            "head": "class MonoidalModelCategory : Prop where"
+          },
+          {
+            "line": 61,
+            "head": "theorem monoidalModelCategory_iff : MonoidalModelCategory C ↔ HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C"
+          },
+          {
+            "line": 74,
+            "head": "lemma pushoutProduct_cofibration [IsQuillenBifunctor (curriedTensor C)] {A B X Y : C} (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] : Cofibration (Arrow.mk i □ Arrow.mk j).hom := IsQuillenBifunctor.cofibration i j (Functor.PushoutObjObj.ofHasPushout _ i j) inferInstance inferInstance"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "lemma isQuillenBifunctor_of_generators (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H) (I₁ J₁ : MorphismProperty C₁) (I₂ J₂ : MorphismProperty C₂) [CofibrantlyGenerated.{w₁} I₁ J₁] [CofibrantlyGenerated.{w₂} I₂ J₂] (hII : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, Cofibration sq.ι) (hJI : ∀ {A B : C₁} (i : A ⟶ B), J₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), I₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) (hIJ : ∀ {A B : C₁} (i : A ⟶ B), I₁ i → ∀ {X Y : C₂} (j : X ⟶ Y), J₂ j → ∀ sq : F.PushoutObjObj i j, trivialCofibrations C₃ sq.ι) : IsQuillenBifunctor F"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean",
+        "signatures": [
+          {
+            "line": 68,
+            "head": "lemma simplicial_isQuillenBifunctor : IsQuillenBifunctor (curriedTensor SSet.{u})"
+          },
+          {
+            "line": 104,
+            "head": "lemma simplicial_monoidalModel : MonoidalModelCategory SSet.{u}"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 28,
+            "head": "theorem tensor_iff_cotensor_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom S.cotensor := isQuillenBifunctor_iff_pullbackHom S.tensorCotensor"
+          },
+          {
+            "line": 34,
+            "head": "theorem tensor_iff_mapping_model : IsQuillenBifunctor S.tensor ↔ HasQuillenPullbackHom (eHomFunctor V C)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 50,
+            "head": "lemma mapping_isFibrant (X Y : C) [IsCofibrant X] [IsFibrant Y] : IsFibrant (((eHomFunctor V C).obj (Opposite.op X)).obj Y)"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Quillen/Equivalence.lean",
+        "signatures": [
+          {
+            "line": 72,
+            "head": "theorem derived_isEquivalence_iff : LF.IsEquivalence ↔ (∀ (X : C), IsCofibrant X → IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X))) ∧ (∀ (Y : D), IsFibrant Y → IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y)))"
+          },
+          {
+            "line": 135,
+            "head": "theorem derived_isEquivalence_of_mate_weakEquivalences (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y → ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) : LF.IsEquivalence"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 48,
+            "head": "structure TensorCotensor where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 27,
+            "head": "def modelSourceFrameFamily : CofibrantResolutionFamily (C := C) simplex := cosimplicialResolutionFamily (MorphismProperty.functorialFactorizationData _ _)"
+          },
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          }
+        ]
+      }
+    ],
+    "decision": "generic Quillen 同値は通常の homotopy category に対するもの。native ModelBifibrantLocalization は既存の hammock/解像豊穣模型からの局所化を構成するが、任意の simplicial right adjoint G による指定 N(D◦)→N(C◦) の categorical equivalence と同定する型はない。"
+  }
+}

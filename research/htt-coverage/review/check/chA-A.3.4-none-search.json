@@ -1,0 +1,2492 @@
+{
+  "A.3.4.1": {
+    "page": 885,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Mathlib の functorial factorization と native Smith は通常 functor による因子分解である。有限な全 outgoing/incoming family の product/coproduct を enriched functor として同時に分解し、指定 full U 内に留める chunk の定義はない。"
+  },
+  "A.3.4.2": {
+    "page": 885,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "generic cofibrantSource/fibrantTarget は ambient C 内の置換であり、原典の chunk U の閉性からその内部の enriched functorial replacements を得る型ではない。通常の置換の存在だけを U 内の主張に数えない。"
+  },
+  "A.3.4.3": {
+    "page": 885,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "通常の full subcategory inclusion とモデルの bifibrant 置換はあるが、同じ hA 本質像を持つ二つの chunks の U◦→U′◦ が enriched weak equivalence という型はない。hC の本質的全射と各 Hom の弱同値を比較する宣言が未供給。"
+  },
+  "A.3.4.4": {
+    "page": 885,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Smith の SOA は通常 functorial factorization で、S-enriched functorial factorization を構成しない。原典 A.1.2.6 の enriched SOA の比較もないため、A 自体が chunk という実例を直接与えない。"
+  },
+  "A.3.4.5": {
+    "page": 886,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "ObjectProperty.FullSubcategory は任意の対象条件を制限するが、hA で指定集合と同型な対象への制限が enriched finite factorization を保つ型はない。weak-equivalence 閉包だけでは chunk の enriched functoriality は供給しない。"
+  },
+  "A.3.4.6": {
+    "page": 886,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "Yoneda/eCoyoneda と ManyObjectTransfer の一般モデル構成は別々に存在する。任意の small enriched C から実際の U◦ への enriched weak equivalence、および U の chunk 性を伴うモデル A を作る比較はない。"
+  },
+  "A.3.4.7": {
+    "page": 886,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "generic PathObject は一つの A∈C の diagonal を分解するが、豊穣圏 U◦ 全体の span A→B×C と二つの弱同値を対象にした P(U) ではない。native frame spans も対象数・Hom が別であり、π,π′,τ の enrichment 比較はない。"
+  },
+  "A.3.4.8": {
+    "page": 886,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "PathObject.exists_very_good は既存 ModelCategory における一対象のもの。CatS のモデル instance と P(U) の明示構成がなく、原典の τ の weak equivalence および (π,π′) の CatS-fibration を得る型はない。"
+  },
+  "A.3.4.9": {
+    "page": 888,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "generic EnrichedFunctor の category と ordinary projective diagram model はあるが、任意の enriched C に対する UC⊆AC の chunk 条件の定義はない。ambient U の closure と diagram-category closure を混同しない。"
+  },
+  "A.3.4.10": {
+    "page": 888,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "native natural equivalence の準圏の判定はあるが、hCatS の [f]=[f′] と enriched diagram model AC の object-weak-equivalence を結ぶ iff はない。通常の NatIso を homotopy に送る部品ではこの比較を補わない。"
+  },
+  "A.3.4.11": {
+    "page": 889,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 fully faithful functor の Hom 全単射や準圏の Fun の full faithfulness はあるが、原典の HomhCatS(D,C)→HomhCatS(D,C′) の単射性と hC′ 本質像による像の記述とは異なる。CatS と準圏の局所化の同定がない。"
+  },
+  "A.3.4.12": {
+    "page": 889,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "普通の enriched functor の分類とモデル圏の通常 localization はあるが、π0 AC の weak-equivalence 同値類を HomhCatS(C,A◦) に送る原典の φ とその全単射はない。ModelBifibrantLocalization の準圏局所化もこの φ の比較を供給しない。"
+  },
+  "A.3.4.13": {
+    "page": 890,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "MonoidalClosed の一般 internal Hom と EnrichedRepresentability は対象 Hom の表現であり、CatS の homotopy category における D↦HomhCatS(C⊗D,A◦) の representability ではない。evaluation e の同じ局所化 Hom の全単射がない。"
+  },
+  "A.3.4.14": {
+    "page": 890,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "通常 full subcategory restriction はあるが、C-chunk U の (UC)◦⊗C→U◦ の enriched evaluation と HomhCatS での全単射はない。ambient A の enrichment の表現性だけをこの小部分圏に移さない。"
+  },
+  "A.3.4.15": {
+    "page": 890,
+    "citations": {
+      "item": 0,
+      "subsection": 0,
+      "neighboring_subsections": [
+        "A.3.3",
+        "A.3.4",
+        "A.3.5"
+      ],
+      "files": {}
+    },
+    "searches": [
+      {
+        "root": "SerrePositivity",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          "SerrePositivity"
+        ],
+        "file_count": 1299,
+        "line_count": 6310
+      },
+      {
+        "root": ".lake/packages/mathlib/Mathlib",
+        "argv": [
+          "rg",
+          "--count",
+          "--glob",
+          "*.lean",
+          "--glob",
+          "!**/Archive/**",
+          "-e",
+          "[Cc]hunk|[Pp]athObject|[Bb]ifibrant|[Ff]unctorialFactorization|EnrichedFunctor|eCoyoneda|[Ee]nrichedRepresentability",
+          ".lake/packages/mathlib/Mathlib"
+        ],
+        "file_count": 44,
+        "line_count": 604
+      }
+    ],
+    "examined": [
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/PathObject.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "extends another structure `PrepathObject A` (which does not assume that `C`"
+          },
+          {
+            "line": 32,
+            "head": "in the lemma `PathObject.exists_very_good`."
+          },
+          {
+            "line": 52,
+            "head": "structure PrepathObject (A : C) where"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/AlgebraicTopology/ModelCategory/BifibrantObjectHomotopy.lean",
+        "signatures": [
+          {
+            "line": 42,
+            "head": "def homRel : HomRel (BifibrantObject C) := fun _ _ f g ↦ RightHomotopyRel f.hom g.hom"
+          },
+          {
+            "line": 45,
+            "head": "lemma homRel_iff_rightHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ RightHomotopyRel f.hom g.hom := Iff.rfl"
+          },
+          {
+            "line": 48,
+            "head": "lemma homRel_iff_leftHomotopyRel {X Y : BifibrantObject C} {f g : X ⟶ Y} : homRel C f g ↔ LeftHomotopyRel f.hom g.hom"
+          }
+        ]
+      },
+      {
+        "file": "Mathlib/CategoryTheory/Enriched/Basic.lean",
+        "signatures": [
+          {
+            "line": 293,
+            "head": "structure EnrichedFunctor (C : Type u₁) [EnrichedCategory V C] (D : Type u₂) [EnrichedCategory V D] where"
+          },
+          {
+            "line": 313,
+            "head": "def id (C : Type u₁) [EnrichedCategory V C] : EnrichedFunctor V C C where"
+          },
+          {
+            "line": 317,
+            "head": "instance : Inhabited (EnrichedFunctor V C C) := ⟨EnrichedFunctor.id V C⟩"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleFactorization.lean",
+        "signatures": [
+          {
+            "line": 24,
+            "head": "lemma arrowFunctor_isCardinalAccessible (F : D ⥤ Arrow C) (κ : Cardinal.{w}) [Fact κ.IsRegular] [(F ⋙ Arrow.leftFunc).IsCardinalAccessible κ] [(F ⋙ Arrow.rightFunc).IsCardinalAccessible κ] : F.IsCardinalAccessible κ where"
+          },
+          {
+            "line": 40,
+            "head": "def leftFactor : Arrow C ⥤ Arrow C where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/HomotopicalAlgebra/Enriched/DerivedMapping.lean",
+        "signatures": [
+          {
+            "line": 30,
+            "head": "def derivedHom : Cᵒᵖ ⥤ C ⥤ V := (cofibrantSource cof).op ⋙ eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (fibrantTarget fib)"
+          },
+          {
+            "line": 34,
+            "head": "abbrev localObjects (S : MorphismProperty C) : C → Prop := Bousfield.MappingTests.localObjects (derivedHom (V := V) cof fib) (weakEquivalences V) S"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean",
+        "signatures": [
+          {
+            "line": 262,
+            "head": "structure EnrichedRepresentability where"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/EInfinity/SimplicialLocalization/ModelBifibrantLocalization.lean",
+        "signatures": [
+          {
+            "line": 34,
+            "head": "lemma modelBifibrantFrameRightKanMap_cofinal (X : BifibrantObject C) : IsLeftCofinal (modelBifibrantFrameRightKanMap X ((modelSourceFrameFamily (C := C)).atObject X.obj)) := modelBifibrantFrameRightKanMap_isLeftCofinal X _ r"
+          },
+          {
+            "line": 43,
+            "head": "lemma modelBifibrantSourceRightKanExtension_refl {E : SSet.{max u v}} [Quasicategory E] (G : kanHammockNerve (modelBifibrantRelativeCategory C) ⟶ E) : IsRightKanExtension (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G) G (functorHomotopyRefl (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) ≫ G)) := modelBifibrantSourceRightKanExtension_refl_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) G"
+          },
+          {
+            "line": 58,
+            "head": "lemma modelBifibrantSourceRightKanDiagram_hasLimit_all {E : SSet.{max u v}} [Quasicategory E] (F : nerve (modelBifibrantRelativeCategory C).category ⟶ E) (hF : InvertsEdges F (weakNerveEdges (modelBifibrantRelativeCategory C))) (z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌) : HasLimit (rightKanDiagram (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) F z) := modelBifibrantSourceRightKanDiagram_hasLimit_all_of_frameCofinality (fun X => (modelSourceFrameFamily (C := C)).atObject X.obj) (fun X => modelBifibrantFrameRightKanMap_cofinal r X) F hF z"
+          }
+        ]
+      },
+      {
+        "file": "SerrePositivity/InfinityCategories/Core/SmallSimplicialModel.lean",
+        "signatures": [
+          {
+            "line": 23,
+            "head": "abbrev model (X : SSet.{v}) [∀ d, Small.{u} (X.obj d)] : SSet.{u} := FunctorToTypes.shrink X"
+          },
+          {
+            "line": 27,
+            "head": "def simplexToAmbient {X : SSet.{v}} [∀ d, Small.{u} (X.obj d)] {n : ℕ} (f : (Δ[n] : SSet.{u}) ⟶ model X) : (Δ[n] : SSet.{v}) ⟶ X := SSet.yonedaEquiv.symm ((equivShrink.{u} _).symm (SSet.yonedaEquiv f))"
+          }
+        ]
+      }
+    ],
+    "decision": "native small subcomplex hull は単体集合の小さい充填閉包である。元の A の full U を含み、同じ hA 本質像を保ち、全ての Cα の enriched finite-family factorization に閉じる small V ではない。ordinary accessible hull の小生成もこの enriched closure を供給しない。"
+  }
+}
