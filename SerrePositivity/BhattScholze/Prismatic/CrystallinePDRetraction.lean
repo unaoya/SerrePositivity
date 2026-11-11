@@ -63,6 +63,9 @@ local notation "hkern" => PDPolynomialFunctor.base_ker (J := Jp) Q
 local notation "frame" => PDPolynomialFunctor.frame (J := Jp) Q
 local notation "E" n => PDCechNerve.term p γ hp hkern frame n
 
+private abbrev envelope (n : ℕ) :=
+  PDCechNerve.term.{u} p γ hp hkern frame n
+
 private theorem frobenius_base : (Jp).map (Z).deltaStructure.frobeniusLift ≤ Jp := by
   change (Jp).map (crystallineBaseDelta p).frobeniusLift ≤ Jp
   rw [crystallineBaseDelta_frobenius, Ideal.map_id]
@@ -99,6 +102,29 @@ private theorem difference_mem (n : ℕ) (j : Fin r) (i : Fin (n + 1)) :
 private def evaluate (n : ℕ) : (pdDeltaRings.{u} p r).obj ⦋n⦌ →+* (E n).carrier := by
   exact pdFrobeniusDivisionEvaluation Z r n γ (E n) (regular p r n) (local_base p)
     (frobenius_base p) (crystallineBase_generator p) (difference_mem p r n)
+
+private def envelopeMap {m n : SimplexCategory} (θ : m ⟶ n) :
+    (envelope.{u} p r m.len).carrier →ₐ[crystallineBase.{u} p]
+      (envelope.{u} p r n.len).carrier :=
+  PDCechNerve.mapCopies p γ hp hkern frame θ.toOrderHom
+
+private theorem envelopeMap_dp {m n : SimplexCategory} (θ : m ⟶ n) :
+    (envelope.{u} p r m.len).dividedPowers.IsDPMorphism
+      (envelope.{u} p r n.len).dividedPowers (envelopeMap.{u} p r θ).toRingHom :=
+  PDCechNerve.mapCopies_isDPMorphism p γ hp hkern frame θ.toOrderHom
+
+private theorem envelopeMap_variable {m n : SimplexCategory} (θ : m ⟶ n)
+    (j : ULift.{u} (Fin r)) (i : Fin (m.len + 1)) :
+    envelopeMap.{u} p r θ ((envelope.{u} p r m.len).unit (MvPolynomial.X (j, i))) =
+      (envelope.{u} p r n.len).unit (MvPolynomial.X (j, θ.toOrderHom i)) :=
+  PDCechNerve.mapCopies_variableImage p γ hp hkern frame θ.toOrderHom (j, i)
+
+private theorem envelopeMap_termEquiv {m n : SimplexCategory} (θ : m ⟶ n)
+    (x : pdTerm p (crystallineBase.{u} p) r m.len) :
+    termEquiv.{u} p r n.len (((pdModel p (crystallineBase.{u} p) r).map θ).right.hom x) =
+      envelopeMap.{u} p r θ (termEquiv.{u} p r m.len x) := by
+  have he := PDSmallModelComparison.termIso_natural p (crystallineBase.{u} p) γ hp hk hr r hkern θ
+  exact ConcreteCategory.congr_hom (congrArg Under.Hom.right he) x
 
 /-- 初期座標を通常の小さい分冪模型へ送る結晶の環射。 -/
 def retractAt (n : ℕ) : (pdDeltaRings.{u} p r).obj ⦋n⦌ →+* pdTerm p k r n :=

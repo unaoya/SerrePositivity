@@ -327,3 +327,8 @@
 - `PDRawRingHomExt` と `PDTermRingHomExt` で、p 正則・p 局所な標的への代数射を頂点の変数で比較できることを示した。未完備の模型では階乗を消去し、完備項では主完備化の一意延長を使う。`SerrePositivity.BhattScholze.Delta.Division.HomExt` で、p 正則な完備標的への δ 射を標準脚で比較する共通補題を追加した。
 - 上の6本を含む91本の一時監査は2,405宣言で標準三公理のみ。新規ソースの `sorry`・独自公理は0で、既存宣言の変更もない。対象ビルドは `/private/tmp/d69-ticket-build-18.log`、一時監査は `/private/tmp/AuditD69P2MorningFiftyEight.lean` と `/private/tmp/d69-morning-audit-fiftyeight.log`。
 - この6本も登録候補に加える。自然性と分冪包含の切断を記す `CrystallinePDRetractionNaturality` と `CrystallinePDRetractionSplit` は作業木で検査中。次は切断を使って既存の mod p の包含と結晶の橋のコホモロジー同型を、小さい分冪模型への橋へ移す。
+
+- `CrystallinePDRetractionNaturality` で、結晶の δ 除算模型から小さい分冪模型への評価を厳密な余単体射にまとめた。`CrystallinePDRetractionSplit` で、既存の分冪包含にこの評価を続けると整係数で恒等射になることを示した。各次数の包の改名は既存の `CrystallinePDRetraction` 内に私的な補題として足した。以前の宣言の型と証明は変更していない。
+- `CrystallineSmallBridgeModP` で、この切断を mod p に降ろした。既存の包含のコホモロジー同型を消去すると評価もコホモロジー同型になり、既存の結晶の橋との合成も同様になる。型照合では、次数を自然数で固定してから余単体の対象に組み立て、完備模型の内部での `m` と `⦋m.len⦌` の照合を避けた。
+- この追加3本の鍵付き対象ビルドは `/private/tmp/d69-ticket-build-20.log` と `/private/tmp/d69-ticket-build-21.log` で成功した。94本の一時監査は2,496宣言で標準三公理のみ。一時監査とログは `/private/tmp/AuditD69P2MorningSixtyOne.lean` と `/private/tmp/d69-morning-audit-sixtyone.log`。新規ソース中の `sorry`・独自公理は0。
+- 登録候補に `CrystallinePDRetractionNaturality`、`CrystallinePDRetractionSplit`、`CrystallineSmallBridgeModP` を加える。P2 は継続中で、整係数の橋との還元の照合と、完備化後の Witt の指定された二比較への適用を続ける。
