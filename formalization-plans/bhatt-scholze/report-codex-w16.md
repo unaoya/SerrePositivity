@@ -232,3 +232,44 @@ main の `898ab07c4` を `5527355d9` で取り込んだ。⑤b・⑤c・⑥ と�
 - `CAlgExtensionForget`、`CellularGenerators`、`DerivedExtensionNerve`、`DerivedExtensionSource`
 
 ［一般∞］移動候補は `LocalizedAdjunctionWhiskering`、`LocalizedAdjunctionTriangles`、`LocalizedAdjunctionAssembly`、`LocalizedNerveNatTrans`、`OrdinaryHoComposition`。
+
+## 10. 次数付き自由表示の構成（停止点 3 の前）
+
+D75 の Barratt–Eccles 実例で進める。界面の型は §9 のまま。E2 の余積と sifted 保存は停止点 3 の後に扱う。
+
+- 複体の微分を消す関手は各次数の加群を保つ。テンソルの次数成分を比較し、右随伴は各次数で cycle の対 `Z^i(Y) × Z^{i+1}(Y)` を取る。微分は `(a,b) ↦ (b,0)`。随伴で射 `u` を `(u,ud)` に送る。オペラッドの微分も消し、arity の比較とその随伴像で台の随伴を代数へ持ち上げる。
+- 微分を消した自由代数の比較は、台の右随伴が忘却と可換なことから左随伴の一意性で得る。付加の pushout とその coproduct を代数の左随伴で送り、disk の次数ごとの分裂を使う。元の付加の境界側の射は disk の左因子、新生成元は右因子になる。pushout は先行段と新生成元の自由代数の余積になる。
+- 超限合成では、段 `j` の余錐を `k < j` で付加した生成元で添字づける。後続段は先行段の余錐と新生成元の余錐を組み合わせる。極限段は早い段の降下射が生成元上で一致することから整合性を得て、元の連続な図式の余極限を使う。
+- 余不変の基底は、各 arity の `equivariantBasis` を先頭置換の逆元で左正則表現として読み、`Rep.coinvariantsTensorFreeLEquiv` を適用する。Schur 図式は次数ごとに arity の余不変の直和へ分解する。残る比較は、テンソルの双次数成分とこの自由表現、語のテンソル基底、付加の境界と Leibniz 則の照合。
+- 各セルの重みをその正の余鎖次数以上にも取ると、重み `n` 以下の基底の張る複体は次数 `n` より上で零になる。この部分複体は次数ごとに自由で、基底全体がその filtered 余極限を与える。さらに「重み − 余鎖次数」を自然数の高さにすれば、重みが増えない微分で高さが真に下がる。既存の `ComplexSemifreeBasis` と `moduleSemifree_objectwiseKFlat` をこの形で使う。
+
+整理券方式を含む main の `c77013db6` を `2455d678f` で取り込んだ。旧方式で待っていたこのレーンの二件を終了し、`--wait 1800` で対象ビルドを一件にまとめて並べ直した。
+
+
+### 検証済みの補助三本（11-11 午前）
+
+`738c1f44f` に `EraseDifferential`・`AttachCoproductCells`・`WeightedBasisKFlat` をコミットした。三本の対象ビルドは成功し、再帰的な公理監査は計 61 宣言、標準三公理のみ。新しい公理と sorry は零。既存の公開宣言と界面の型は変更していない。
+
+- `eraseDifferential` は次数の加群と射を保ち、零射と各図式形の余極限を保存する。次数付きテンソルと単位の比較同型を含む。
+- `mapAttachCells` と `attachComplementIsColimit` は、指定されたセル付加の pushout を関手で送り、境界と補完因子の余積表示から付加後の余積表示を得る。
+- `cellularWeightAbove` はセルの次数の下限と境界単項式の重みを同時に支配する。`complexKFlat_of_weightedBasis` は、次数を支配し微分で増えない重み付き基底から既存の semifree 基底を作り、K 平坦性を得る。
+
+登録候補は上記三モジュール（いずれも `SerrePositivity.EInfinity.BarrattEccles.Theory` の下）。残りの自由表示・双次数の表現分解・境界の重みの照合は作業中。`hstage` と無条件の `baseChange_forget` はまだ閉じておらず、停止点 3 には達していない。
+
+
+### 追加の検証（11-11 午前、停止点 3 の前）
+
+`a3dedbc65` に `ArityCoinvariantColimit`・`ArityFreeRepresentation`・`OperadTransportAdjunction`・`TransfiniteCoproductCells` をコミットした。先の三本と合わせて 156 宣言の再帰的な公理監査を通過。
+
+`81d4b3668` に `EraseDifferentialAdjunction`・`EraseDisk`・`TensorDegreeRepresentation` と、`EraseDifferential` の比較射の直接構成をコミットした。以上十本の対象ビルドと再帰的な公理監査は成功し、計 228 宣言、標準三公理のみ。公開される型と界面の型は変更していない。
+
+- `transportAdjunction` は、複体上の強モノイダル随伴と互いに随伴な arity 比較から、実際のオペラッド代数上の随伴を作る。
+- `cellStageCofanIsColimit` は、始段の始対象・後続段の指定余積・極限段の連続性から、先行セル全体で添字づけた指定余積を与える。
+- `arityDegreeFreeIso` と `arityDegreeCoinvariantsTensorBasis` は、実際の正則 arity の作用と、対角余不変の基底を照合する。
+- `arityDiagramCoconeIsColimit` と `schurDegreeArityIso` は、Schur の有限全単射上の図式を arity の余不変に分解する。
+- `eraseDifferentialAdjunction` と `erasedDiskCofanIsColimit` は、微分を消す複体上の随伴と disk の指定された分裂を与える。
+- `tensorDegreeRepresentationIsColimit` と `tensorDegreeCoinvariantsIso` は、複体の群作用を保つ双次数分解と、その余不変の分解を与える。
+
+今回追加で登録する候補は、上記七本（すべて `SerrePositivity.EInfinity.BarrattEccles.Theory` の下）。`SchurDegreeDecomposition` は対象の型検査まで通り、公理監査とコミットは後続の基底の比較と合わせて行う。モノイダル比較・代数への持ち上げ・実際のセル段の自由表示は引き続き検証中。境界と基底の重みの照合、`hstage`、無条件の `baseChange_forget` は残っている。
+
+main `7a689544b` を `4c3faf273` で取り込んだ。以後、整理券はこの worktree で一件、待機は `--wait 3600`、鍵の占有は一回 30 分以内としている。
